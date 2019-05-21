@@ -11,7 +11,7 @@ export class ColorExamples extends React.Component {
                     <td className='p1 center align-middle mod-border-bottom bold' colSpan={3}>{color.toUpperCase()}</td>
                 </tr>
             ) : (
-                    <tr>
+                    <tr key={color}>
                         <td className='p2 mod-border-bottom'>
                             <Color
                                 key={color}
