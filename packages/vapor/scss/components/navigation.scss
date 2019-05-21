@@ -50,6 +50,7 @@
 
   .navigation-menu {
     position: relative;
+    margin-top: 1em;
 
     height: 100%;
     overflow-x: visible;
@@ -65,13 +66,10 @@
           align-items: center;
 
           display: flex;
-          height: 50px;
+          height: 55px;
 
-          font-size: $default-font-size;
+          font-size: $navigation-section-font-size;
           font-weight: $navigation-menu-header-font-weight;
-          text-transform: uppercase;
-
-          border-top: 1px solid $dark-grey;
 
           cursor: pointer;
 
@@ -84,8 +82,7 @@
 
         .navigation-menu-section-items {
           overflow-x: auto;
-
-          border-top: 1px solid $dark-grey;
+          margin-bottom: 1em;
 
           .navigation-menu-section-item {
             font-weight: $navigation-menu-item-font-weight;
@@ -93,6 +90,8 @@
             border-left: $navigation-active-border-width solid transparent;
 
             cursor: pointer;
+
+            opacity: 0.8;
 
             .navigation-menu-section-item-link {
               align-items: center;
@@ -105,6 +104,7 @@
 
               color: $white;
               font-size: $default-font-size;
+              letter-spacing: 0.05em;
 
               &.state-locked {
                 color: $navigation-locked-color;
@@ -138,10 +138,12 @@
             &.state-active {
               background-color: $navigation-active-background-color;
               border-left-color: $orange;
+              opacity: 1;
             }
 
             &:hover {
               background-color: $navigation-active-background-color;
+              opacity: 1;
             }
           }
         }
@@ -160,7 +162,7 @@
   padding: $navigation-tag-padding;
 
   font-size: $navigation-tag-font-size;
-  text-transform: uppercase;
+  text-transform: none;
   word-break: keep-all;
 
   border: $default-border;
@@ -174,6 +176,7 @@
   right: $navigation-section-arrow-margin;
 
   display: block;
+  font-size: 13px;
 
   transform: translateY(-50%);
   transform-origin: center center;

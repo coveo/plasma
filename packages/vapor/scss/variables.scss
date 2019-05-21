@@ -28,6 +28,7 @@ $default-border: $default-border-size solid $medium-grey;
 $small-font-size: 13px;
 $default-font-size: 15px;
 $title-font-size: 16px;
+$navigation-section-font-size: 16px;
 $medium-title-font-size: 18px;
 $big-font-size: 24px;
 $big-title-font-size: 32px;
@@ -214,7 +215,7 @@ $card-minimum-width: 160px;
 $card-minimum-height: 70px;
 
 // Navigation
-$navigation-menu-header-font-weight: 700;
+$navigation-menu-header-font-weight: 900;
 $navigation-menu-item-font-weight: 400;
 $navigation-width: 245px;
 $navigation-border-for-scroll-bar: 1px;
@@ -225,8 +226,7 @@ $navigation-section-icon-size: 20px;
 $navigation-section-icon-margin-right: 10px;
 $navigation-section-icon-margin-left: 15px;
 $navigation-section-arrow-margin: 15px;
-$navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right +
-$navigation-section-icon-margin-left - $navigation-active-border-width;
+$navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right - $navigation-active-border-width;
 $navigation-right-margin: $navigation-section-arrow-margin;
 $navigation-locked-color: $medium-grey;
 $navigation-tag-font-size: 9px;
