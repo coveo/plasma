@@ -270,7 +270,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: PopoverConnectedExamples, componentName: 'Popover'},
         {component: TableHOCExamples, componentName: 'Table (hoc)'},
         {component: TableHOCServerExamples, componentName: 'Table (server + hoc)'},
-        {component: ColorExamples, componentName: 'Color'},
+        {component: ColorExamples, componentName: 'Colors'},
         {component: InfoBoxExamples, componentName: 'Info Box'},
         {component: NumericInputExamples, componentName: 'Numeric Input'},
         {component: StickyFooterExamples, componentName: 'StickyFooter'},
