@@ -100,7 +100,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                 parentSelector={this.props.parentSelector}
                 renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
-                    <div style={style} ref={this.dropRef = dropRef} className={classNames('show-on-top', this.props.listContainerProps.className)} {...this.props.listContainerProps} >
+                    <div style={style} ref={this.dropRef = dropRef} className={classNames('drop', this.props.listContainerProps.className)} {...this.props.listContainerProps} >
                         {this.props.children}
                     </div>
                 )}
