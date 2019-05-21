@@ -7,7 +7,7 @@ export class ColorExamples extends React.Component {
         const VaporColors: {[key: string]: string} = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
         const colors = _.map(VaporColors, (value, color) => (
             (value === "'category'") ? (
-                <tr className='bg-grey-2'>
+                <tr className='bg-grey-2' key={color}>
                     <td className='p1 center align-middle mod-border-bottom bold' colSpan={3}>{color.toUpperCase()}</td>
                 </tr>
             ) : (
