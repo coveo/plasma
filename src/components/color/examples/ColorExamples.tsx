@@ -8,7 +8,7 @@ export class ColorExamples extends React.Component {
         const colors = _.map(VaporColors, (value: string, color: string) => value === 'category'
             ? (
                 <tr className='bg-grey-2 no-hover' key={color}>
-                    <td colSpan={3}>{(color.toUpperCase()).replace('-', ' ')}</td>
+                    <td colSpan={3}>{color.toUpperCase().replace('-', ' ')}</td>
                 </tr>
             )
             : (
