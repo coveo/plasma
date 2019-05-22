@@ -1,46 +1,17 @@
-// Primary palette
-$darker-blue: #193045;
-$dark-blue: #263e55;
-$medium-blue: #1d4f76;
-$light-blue: #296896;
-$dark-grey: #373737;
-$dark-medium-grey: #7a7d81;
-$medium-grey: #bcc3ca;
-$light-grey: #e6ecf0;
-$white: #f1f3f4;
-$pure-white: #ffffff;
-$orange: #f58020;
-$stratos: #08080e;
-$purple-blue: #1e2541;
-
-// Secondary palette
-$red: #ce3f00;
-$soft-red: #edbcbf;
-$yellow: #ecad00;
-$green: #009830;
-$soft-green: #d0e9c4;
-$blue: #009ad9;
-$black: #000000;
-$turquoise: #26e8cc;
-
-// Brands
-$salesforce-blue: #00a0de;
-$google-red: #dd4b39;
-$office365-red: #eb3c00;
-
-/* ----------- New Coveo Colors ----------- */
-
 // Primary colors
+$primary-colors: category;
 $mirage: #1e253f;
 $coveo-blue: #004990;
-$coveo-orange: $orange;
+$coveo-orange: #f58020;
 
 // Secondary colors
+$secondary-colors: category;
 $azure: #0d80ef;
 $anakiwa: #4ed6ff;
-$java: $turquoise;
+$java: #26e8cc;
 
 // Primary palette
+$primary-palette: category;
 $science-blue: #0061c0;
 $dodger-blue: #3ca0ff;
 $tropical-rain-forest: #007766;
@@ -55,10 +26,12 @@ $neon-carrot: #ff9844;
 $tan-hide: #f8aa69;
 
 // Partners palette
+$partners-palette: category;
 $coveo-sitecore-red: #dc291e;
 $coveo-salesforce-blue: #009ddc;
 
 // Grey palette
+$grey-palette: category;
 $oxford-blue: #313a45;
 $coveo-grey: $nepal;
 $grey-1: #f7f8f9;
@@ -73,6 +46,7 @@ $grey-9: #4e5f71;
 $grey-10: #37424e;
 
 // Blue palette
+$blue-palette: category;
 $blue-1: #cde7ff;
 $blue-2: #8fc9ff;
 $blue-3: $dodger-blue;
@@ -83,7 +57,7 @@ $blue-7: #00305c;
 $blue-8: #00284b;
 $blue-9: #00203a;
 $blue-10: #00101e;
-$astral: $light-blue;
+$astral: #296896;
 $matisse: #257bab;
 $curious-blue-1: #218ec0;
 $curious-blue-2: #1da2d5;
@@ -93,6 +67,7 @@ $onahau: #c6f2ff;
 $onahau-1: #b6eeff;
 
 // Blue/Purple palette
+$blue-purple-palette: category;
 $coveo-blue-purple: $mirage;
 $blue-purple-1: #3e5485;
 $blue-purple-2: #354878;
@@ -101,6 +76,7 @@ $blue-purple-4: $coveo-blue-purple;
 $blue-purple-5: #101425;
 
 // Green palette
+$green-palette: category;
 $frosted-mint: #d3fff8;
 $frosted-mint-1: #a9fff2;
 $persian-green: #00a78a;
@@ -109,6 +85,7 @@ $cyprus: #004446;
 $deep-teal: #003530;
 
 // Orange/Yellow palette
+$orange-palette: category;
 $orange-1: #ffbc86;
 $orange-2: $neon-carrot;
 $orange-3: $coveo-orange;
@@ -116,7 +93,7 @@ $orange-4: #ed731a;
 $orange-5: $tango;
 $orange-6: #de590d;
 $orange-7: #d64c06;
-$orange-8: $red;
+$orange-8: #ce3f00;
 $carrot-orange: #ec8c25;
 $tahiti-gold: #dc7704;
 $buttercup: #f39e08;
@@ -129,6 +106,7 @@ $lemon-chiffon: #fff9cf;
 $travertine: #fffde9;
 
 // Red/Pink palette
+$red-pink-palette: category;
 $lonestar-2: #550500;
 $lonestar-1: #720700;
 $red-berry: #8b0900;
@@ -140,5 +118,43 @@ $bittersweet: #ff8675;
 $mona-lisa: #ffa79b;
 $melon: #ffc4bc;
 
-// Transparent
+// Status
+$status: category;
+$red: $orange-8;
+$yellow: #ecad00;
+$green: #009830;
+
+// Utilities
+$utilities: category;
 $transparent: transparent;
+
+/* ----------- Deprecated Palette ----------- */
+
+$deprecated-palette: category;
+
+// Primary palette
+$darker-blue: #193045;
+$dark-blue: #263e55;
+$medium-blue: #1d4f76;
+$light-blue: $astral;
+$dark-grey: #373737;
+$dark-medium-grey: #7a7d81;
+$medium-grey: #bcc3ca;
+$light-grey: #e6ecf0;
+$white: #f1f3f4;
+$pure-white: #ffffff;
+$orange: $coveo-orange;
+$stratos: #08080e;
+$purple-blue: #1e2541;
+
+// Secondary palette
+$soft-red: #edbcbf;
+$soft-green: #d0e9c4;
+$blue: #009ad9;
+$black: #000000;
+$turquoise: $java;
+
+// Brands
+$salesforce-blue: $coveo-salesforce-blue;
+$google-red: $orange-8;
+$office365-red: $orange-8;
