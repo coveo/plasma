@@ -7,32 +7,37 @@ export class ColorExamples extends React.Component {
         const VaporColors: {[key: string]: string} = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
         const colors = _.map(VaporColors, (value: string, color: string) => value === 'category'
             ? (
-                <tr className='bg-grey-2' key={color}>
-                    <td className='p1 center align-middle mod-border-bottom bold' colSpan={3}>{color.toUpperCase()}</td>
+                <tr className='bg-grey-2 no-hover' key={color}>
+                    <td colSpan={3}>{(color.toUpperCase()).replace('-', ' ')}</td>
                 </tr>
             )
             : (
-                <tr key={color}>
-                    <td className='p2 mod-border-bottom'>
+                <tr  className = 'no-hover' key={color}>
+                    <td>
                         <Color
                             key={color}
                             color={color}
                             className='p2 material card'
                         />
                     </td>
-                    <td className='p2 align-middle mod-border-bottom'>
+                    <td>
                         <p>{color}</p>
                     </td>
-                    <td className='p2 align-middle mod-border-bottom'>
+                    <td>
                         {value.toUpperCase()}
                     </td>
                 </tr>
-            )
+            ),
         );
         return (
-            <div className='mt2'>
+            <div className='my2'>
                 <h1 className='text-medium-blue mb1 bold'>Colors</h1>
-                <table className='mod-border'>
+                <table className='table mod-width-50 mod-border'>
+                    <thead className = ''>
+                        <th>Sample</th>
+                        <th>Name</th>
+                        <th>Value</th>
+                    </thead>
                     <tbody>
                         {colors}
                     </tbody>
