@@ -43,6 +43,7 @@ export interface ISelectStateProps {
 export type ISelectDispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 export interface ISelectButtonProps {
+    onClick: (e: React.MouseEvent) => void;
     onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => void;
     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
     placeholder?: string;
@@ -115,11 +116,12 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                 buttonContainerProps={{className: pickerClasses}}
                 renderOpenButton={(onClick: () => void) => (
-                    <div className='js-drop-button-container' onClick={() => !this.props.disabled && onClick()} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
+                    <div className='js-drop-button-container' ref={(ref: HTMLDivElement) => this.dropdown = ref}>
                         <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
-                            placeholder: this.props.placeholder,
-                            onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
+                            onClick,
                             onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
+                            onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
+                            placeholder: this.props.placeholder,
                         }} key={`${this.props.id}-button`} />
                     </div>
                 )}

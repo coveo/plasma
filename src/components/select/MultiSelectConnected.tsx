@@ -2,6 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {DropTarget, IDropTargetProps} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
@@ -16,7 +17,7 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends
@@ -44,6 +45,8 @@ export interface IMultiSelectProps extends
     IMultiSelectOwnProps,
     IMultiSelectStateProps,
     IMultiSelectDispatchProps {}
+
+const selectPropsKeys = keys<ISelectOwnProps>();
 
 const makeMapStateToProps = () => {
     const getStateProps = createStructuredSelector({
@@ -85,11 +88,8 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
             <SelectConnected
                 id={this.props.id}
                 key={this.props.id}
-                button={(props: ISelectButtonProps) => this.getButton(props)}
-                items={this.props.items}
-                noResultItem={this.props.noResultItem}
-                selectClasses={this.props.selectClasses}
-                hasFocusableChild={this.props.hasFocusableChild}
+                {..._.pick(this.props, selectPropsKeys)}
+                button={this.getButton}
                 multi
             >
                 {this.props.children}
@@ -156,7 +156,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
             : null;
     }
 
-    private getButton(props: ISelectButtonProps): JSX.Element {
+    private getButton = (props: ISelectButtonProps): JSX.Element => {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
         const buttonAttrs = !this.props.noDisabled
             && this.props.selected
@@ -174,11 +174,11 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
                     </div>,
                 )}
                 <button
-
                     className='btn dropdown-toggle multiselect-add dropdown-toggle-placeholder'
                     type='button'
                     onKeyDown={props.onKeyDown}
                     onKeyUp={props.onKeyUp}
+                    onClick={props.onClick}
                     {...buttonAttrs}
                 >
                     <span className='dropdown-no-value'>{this.props.placeholder}</span>
