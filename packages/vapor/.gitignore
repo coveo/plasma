@@ -40,3 +40,4 @@ package-lock.json*
 # ruby / bundle
 .bundle
 docs/.jekyll-metadata
+vendor
