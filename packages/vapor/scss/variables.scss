@@ -35,8 +35,8 @@ $big-title-font-size: 32px;
 $default-line-height: 16px;
 $big-line-height: 21px;
 $code-font-size: 14px;
-$base-font-family: 'Lato', Arial, Helvetica, sans-serif;
-$code-font-family: source_code_pro_regular, 'Courier New', Courier, monospace;
+$base-font-family: "Lato", Arial, Helvetica, sans-serif;
+$code-font-family: source_code_pro_regular, "Courier New", Courier, monospace;
 $standard-line-height: 1.35em;
 $help-text-font-size: 14px;
 $help-text-line-height: 17px;
@@ -226,7 +226,8 @@ $navigation-section-icon-size: 20px;
 $navigation-section-icon-margin-right: 10px;
 $navigation-section-icon-margin-left: 15px;
 $navigation-section-arrow-margin: 15px;
-$navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right - $navigation-active-border-width;
+$navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right -
+  $navigation-active-border-width;
 $navigation-right-margin: $navigation-section-arrow-margin;
 $navigation-locked-color: $medium-grey;
 $navigation-tag-font-size: 9px;
@@ -266,17 +267,13 @@ $table-header-inner-height: 30px;
 $table-header-height: $table-header-inner-height + 2 * $table-border-width;
 $table-header-font-size: 12px;
 $table-header-line-height: 16px;
-$table-header-top-bottom-padding: (
-  ($table-header-inner-height - $table-header-line-height) / 2
-);
+$table-header-top-bottom-padding: (($table-header-inner-height - $table-header-line-height) / 2);
 $table-header-z-index: 2;
 $table-row-inner-height: 36px;
 $table-row-height: $table-row-inner-height + $table-border-width;
 $table-row-font-size: 15px;
 $table-row-line-height: 18px;
-$table-row-top-bottom-padding: (
-  ($table-row-inner-height - $table-row-line-height) / 2
-);
+$table-row-top-bottom-padding: (($table-row-inner-height - $table-row-line-height) / 2);
 $table-border: $table-border-width solid $medium-grey;
 $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
@@ -373,10 +370,9 @@ $selected-option-close-width: 22px;
 $dropdown-multiselect-icon-size: 12px;
 $dropdown-multiselect-icon-thickness: 2px;
 $dropdown-multiselect-icon-margin: 5px;
-$dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size / 2 -
-  $dropdown-multiselect-icon-thickness / 2;
+$dropdown-multiselect-icon-position: $dropdown-multiselect-icon-size / 2 - $dropdown-multiselect-icon-thickness / 2;
 $multiselect-padding: 2 * $spacing;
-$multiselect-dropdown-margin: calc(-#{$multiselect-padding} -  2 * #{$default-border-size});
+$multiselect-dropdown-margin: calc(-#{$multiselect-padding} - 2 * #{$default-border-size});
 
 // Chosen
 $chosen-clear-icon-size: 10px;
@@ -438,7 +434,7 @@ $splash-wizard-width: 1025px;
 $splash-wizard-padding-top: 145px;
 $splash-large-wizard-width: 1400px;
 $splash-vertical-padding: 70px;
-$splash-box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+$splash-box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
 $splash-min-height: 45px;
 $splash-mobile-min-height: 60px;
 
@@ -456,7 +452,7 @@ $calendar-limit-border-length: 5px;
 $date-picker-button-hover-bg: rgba($light-blue, 0.2);
 
 // Tooltip
-$tooltip-z-index: 10000;
+$tooltip-z-index: 100000;
 $tooltip-spacing: 10px;
 
 // Home card
@@ -546,9 +542,9 @@ $flippable-transition-duration: 0.8s;
 $flippable-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
 
 // Material Card
-$material-card-shadow: 0 2px 20px 0 rgba(0,0,0,0.1);
-$material-card-shadow-hover: 0 2px 30px 0 rgba(0,0,0,0.3);
-$material-card-shadow-active: 0 2px 20px 0 rgba(0,0,0,0.3);
+$material-card-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
+$material-card-shadow-hover: 0 2px 30px 0 rgba(0, 0, 0, 0.3);
+$material-card-shadow-active: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder
@@ -621,3 +617,6 @@ $status-card-small-width: 160px;
 
 // Toast
 $toast-close-padding-left: 5px;
+
+// Drop
+$drop-z-index: 10000;
