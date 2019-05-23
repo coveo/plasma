@@ -101,7 +101,7 @@
     "classnames": "2.2.6",
     "codecov": "3.2.0",
     "codemirror": "5.42.0",
-    "coveo-styleguide": "3.9.x",
+    "coveo-styleguide": "3.10.x",
     "css-loader": "1.0.1",
     "d3": "3.5.17",
     "del": "4.0.0",
