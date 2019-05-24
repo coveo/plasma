@@ -19,7 +19,7 @@ export interface ISideNavigationSectionDispatchProps {
 
 export interface ISideNavigationSectionProps extends ISideNavigationSectionOwnProps, ISideNavigationSectionStateProps, ISideNavigationSectionDispatchProps {}
 
-const arrowClassName = 'collapsible-arrow icon fill-white';
+const arrowClassName = 'collapsible-arrow icon fill-white transparency-4';
 
 export class SideNavigationMenuSection extends React.Component<ISideNavigationSectionProps> {
     private handleClick() {
