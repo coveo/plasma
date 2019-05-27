@@ -1,86 +1,66 @@
-![logo](vapor.gif)
 
-# Vapor CSS
+# Vapor
 
 [![Build Status](https://img.shields.io/travis/coveo/vapor.svg?style=flat-square)](https://travis-ci.org/coveo/vapor)
+[![Greenkeeper badge](https://badges.greenkeeper.io/coveo/vapor.svg?style=flat-square)](https://greenkeeper.io/)
+[![Npm total downloads badge](https://img.shields.io/npm/dt/coveo-styleguide.svg?style=flat-square)](https://www.npmjs.com/package/coveo-styleguide)
 [![npm](https://img.shields.io/npm/v/coveo-styleguide.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/coveo-styleguide)
-[![dependencies](https://img.shields.io/david/coveo/vapor.svg?style=flat-square)](https://david-dm.org/coveo/vapor#info=dependencies&view=list)
-[![dev-dependencies](https://img.shields.io/david/dev/coveo/vapor.svg?style=flat-square)](https://david-dm.org/coveo/vapor#info=devDependencies&view=table)
-[![Greenkeeper badge](https://badges.greenkeeper.io/coveo/vapor.svg)](https://greenkeeper.io/)
-[![license](http://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](LICENSE)
+[![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
 
-Vapor CSS is Coveo's collection of UI components used in Coveo's Administration Console. All components and their documentation is [available here](http://coveo.github.io/vapor/)
+![logo](vapor.gif)
 
-## Install
+Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation is [available here](http://coveo.github.io/vapor/general-guidelines/#content-numbers)
 
-```sh
+## Usage
+
+```bash
 npm install coveo-styleguide
 ```
 
 Also available on our cdn :
 
-```
+```txt
 static.cloud.coveo.com/styleguide/v1.x.y/css/CoveoStyleGuide.css
 ```
 
-> The project is at its early stages, some components can still have _lots_ of breaking changes between versions.
+## Contributing
 
-### Dependencies
+### Build
 
-- [jQuery](https://jquery.com/) (tested with 2.1.4)
-- [Underscore](http://underscorejs.org/)  (tested with 1.8.3)
+Make sure you have both [Node.js](https://nodejs.org/)'s and [NPM](https://www.npmjs.com/package/npm)'s LTS versions installed, then install `vapor`'s dependencies.
 
-### Building
-Make sure you have Node JS and NPM installed.
-Run `npm install` to get the required dependencies.
-
-To build the dist folder and export it into the docs folder, simply run `gulp docs`.
-
-### Running documentation locally
-
-```sh
-# Install ruby package manager
-gem install bundler
-# Install this project packages
-bundle install
-# Build and run server
-bundle exec jekyll server
-
-# Open http://localhost:4000/styleguide/ in your favorite browser and voila!
-open http://localhost:4000/vapor/
+```bash
+npm install
 ```
 
-### Test locally without publishing
-To easily test the result locally without publishing a new package at each build:
+### Running the demo page locally
 
-1. Create a [npm link](https://docs.npmjs.com/cli/link) of your local repository.
-2. In your project, use that link to get the new package `npm link coveo-styleguide`
-3. Rebuild your project, you will then see your changes applied.
+```bash
+# Install ruby package manager
+gem install bundler
 
-### Publishing on npm
-All you need is to bump the version and re-[publish the package on npm](https://docs.npmjs.com/getting-started/publishing-npm-packages):
+# Install the project's packages
+bundle install
 
-> This requires an [npm account](https://www.npmjs.com/signup) with permission to publish to [coveo-styleguide](https://www.npmjs.com/package/coveo-styleguide). Create an account if you don't have one and ask our team for publish access.
+# Build and run the local server
+npm start
+```
 
-1. Install [npm-release](https://github.com/phuu/npm-release) `npm install -g npm-release`
-2. `npm-release patch`
+Open [http://localhost:4000/vapor/](http://localhost:4000/vapor/) in your favorite browser and voila!
 
-# Thanks
+### Testing your changes locally directly in your project
 
-Vapor cherry picks from these awesome UI Libraries
+You can easily test your changes locally directly in your projects by leveraging [npm's link feature](https://docs.npmjs.com/cli/link). For the sake of the example, we'll suppose we want to use our local `vapor` changes inside [`react-vapor`](https://github.com/coveo/react-vapor).
 
-* [Bootstrap](https://github.com/twbs/bootstrap)
-* [BassCss](https://github.com/basscss/basscss)
-* [ResetCss](http://meyerweb.com/eric/tools/css/reset/)
-* [Materialize](https://github.com/Dogfalo/materialize)
+| Step | Terminal window 1  | Terminal window 2                    |
+| ---- | ------------------ | ------------------------------------ |
+| 1    | `cd path/to/vapor` | `cd path/to/react-vapor`             |
+| 2    |                    | `npm link ../relative/path/to/vapor` |
+| 3    | `npm start`        |                                      |
+| 4    |                    | `npm start`                          |
 
-# Contributing
+You can leave both terminal windows running. Changes saved in either repositories will trigger a rebuild of the local demo.
 
-1. Search the issues, if it is not already there, add one.
-2. Fork the repository
-3. Code Code Code
-4. Submit a pull request
-5. Wait for some nice guy to review and merge
+## License
 
-# License
 Vapor is distributed under [Apache 2.0 license](LICENSE).
