@@ -193,7 +193,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 .filter((item: IItemBoxProps) => !item.hidden
                     && !this.props.multi
                     && !item.disabled
-                    || !_.contains(this.props.selectedValues, item.value)
+                    || !_.contains(this.props.selectedValues, item.value),
                 )
                 .value();
             const active = actives[mod(this.props.active, actives.length)];
