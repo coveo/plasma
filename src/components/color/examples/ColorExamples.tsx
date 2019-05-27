@@ -12,7 +12,7 @@ export class ColorExamples extends React.Component {
                 </tr>
             )
             : (
-                <tr  className = 'no-hover' key={color}>
+                <tr className='no-hover' key={color}>
                     <td>
                         <Color
                             key={color}
@@ -33,7 +33,7 @@ export class ColorExamples extends React.Component {
             <div className='my2'>
                 <h1 className='text-medium-blue mb1 bold'>Colors</h1>
                 <table className='table mod-width-50 mod-border'>
-                    <thead className = ''>
+                    <thead className=''>
                         <th>Sample</th>
                         <th>Name</th>
                         <th>Value</th>
