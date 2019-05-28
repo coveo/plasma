@@ -169,6 +169,8 @@ $popover-navigation-section-border-radius: 1px 0 0 1px;
 $popover-navigation-section-width: 30px;
 
 // Modal
+$base-backdrop-z-index: 1050;
+$base-modal-z-index: $base-backdrop-z-index;
 $modal-header-height: 100px;
 $modal-form-width-small: 440px;
 $modal-footer-padding: 24px 40px;
