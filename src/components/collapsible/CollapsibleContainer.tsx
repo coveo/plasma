@@ -44,7 +44,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
                 headerClasses={classNames(styles.header, this.props.expanded ? 'bg-light-grey' : 'bg-white')}
-                toggleIconClassName='fill-medium-blue mr3'
+                toggleIconClassName='fill-medium-blue mr4'
                 withBorders
             >
                 <div className={contentClasses}>

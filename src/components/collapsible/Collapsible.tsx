@@ -55,7 +55,7 @@ export class Collapsible extends React.Component<CollapsibleProps> {
                     <CollapsibleToggle
                         expanded={this.props.expanded}
                         svgClassName={this.props.toggleIconClassName}
-                        className='mr3'
+                        className='mr2'
                     />
                 </div>
                 <SlideY id={this.props.id} in={this.props.expanded} timeout={Collapsible.TIMEOUT} duration={Collapsible.TIMEOUT}>

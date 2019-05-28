@@ -36,7 +36,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
     private getHeader(): React.ReactNode {
         return this.props.isSection
             ? (
-                <div className='flex full-content-x'>
+                <div className='flex pl1'>
                     <h2 className='text-medium-blue'>{this.props.title}</h2>
                     {
                         this.props.sectionAdditionalContent

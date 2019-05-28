@@ -33,7 +33,7 @@ export const CollapsibleInfoBoxExamples = () => (
             <label className='form-control-label'>Collapsible information box for a page section with additional information only showing if the minute is even</label>
             <div className='form-control'>
                 <CollapsibleInfoBox
-                    id='collapsible-info-box-example-2'
+                    id='collapsible-info-box-example-3'
                     title='Section A'
                     sectionAdditionalContent={<span style={{position: 'relative', top: '8px', marginLeft: '20px'}}>Add anything here</span>}
                     sectionAdditionalContentCondition={() => !(new Date().getMinutes() % 2)}
