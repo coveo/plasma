@@ -12,6 +12,9 @@ stylesheet: '/scss/components/modal.scss'
 </button>
 <button class="btn js-modal-trigger" data-modal="ModalWithInnerBackdrop">Modal with a prompt</button>
 
+<!-- The main backdrop -->
+<div class="modal-backdrop closed"></div>
+
 <!-- Modals -->
 <div class="modal-container" id="BaseModal">
     <div class="modal-content">
@@ -101,6 +104,9 @@ stylesheet: '/scss/components/modal.scss'
 </div>
 <div class="modal-container mod-big mod-fade-in-scale" id="ModalWithInnerBackdrop">
     <div class="modal-content">
+        <!-- The inner backdrop for the prompt -->
+        <div class="modal-backdrop prompt-backdrop"></div>
+
         <header class="modal-header">
             <h1>Modal with a prompt</h1>
             <span class="small-close js-modal-close">
@@ -118,9 +124,6 @@ stylesheet: '/scss/components/modal.scss'
         <footer class="modal-footer">
             <button class="btn js-modal-close">Close</button>
         </footer>
-
-        <!-- The inner backdrop for the prompt -->
-        <div class="modal-backdrop prompt-backdrop"></div>
     </div>
 </div>
 
@@ -145,6 +148,3 @@ stylesheet: '/scss/components/modal.scss'
         <footer class="modal-footer"></footer>
     </div>
 </div>
-
-<!-- The main backdrop -->
-<div class="modal-backdrop closed"></div>
