@@ -11,11 +11,11 @@
 - 
 - 
 
-### Potential breaking changes
+### Potential Breaking Changes
 
 <!-- List all changes that might be breaking to react-vapor's users if any. -->
 
-### Acceptance criteria
+### Acceptance Criteria
 
 - [ ] The proposed changes are covered by unit tests
 - [ ] The potential breaking changes are clearly identified
