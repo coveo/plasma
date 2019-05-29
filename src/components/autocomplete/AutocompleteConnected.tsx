@@ -2,24 +2,23 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
+
 import {SlideY} from '../../animations/SlideY';
 import {IReactVaporState} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
+import {defaultMatchFilter} from '../../utils/FilterUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
-import {addAutocomplete, removeAutocomplete, setAutocompleteActive, setAutocompleteValue, toggleAutocomplete} from './AutocompleteActions';
+import {
+    addAutocomplete,
+    removeAutocomplete,
+    setAutocompleteActive,
+    setAutocompleteValue,
+    toggleAutocomplete,
+} from './AutocompleteActions';
 import {IAutocompleteState} from './AutocompleteReducers';
-
-const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-    if (filterValue === '') {
-        return true;
-    }
-
-    const regex = new RegExp(filterValue, 'i');
-    return regex.test(item.value) || regex.test(item.displayValue);
-};
 
 export interface IAutocompleteOwnProps {
     id: string;
