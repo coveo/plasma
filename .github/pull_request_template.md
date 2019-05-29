@@ -15,8 +15,8 @@
 
 <!-- List all changes that might be breaking to react-vapor's users if any. -->
 
-### Acceptance criteria:
+### Acceptance criteria
 
 - [ ] The proposed changes are covered by unit tests
 - [ ] The potential breaking changes are clearly identified
-- [ ] README.md is ajusted to reflect the proposed changes (if relevant)
+- [ ] [README.md](https://github.com/coveo/react-vapor/blob/master/README.md) is adjusted to reflect the proposed changes (if relevant)
