@@ -2,114 +2,116 @@
 // Inspired by: http://www.basscss.com/docs/white-space/
 
 .mx-auto {
-  margin-right: auto;
-  margin-left: auto;
+    margin-right: auto;
+    margin-left: auto;
 }
 
 .ml-auto {
-  margin-left: auto;
+    margin-left: auto;
 }
 
 .mr-auto {
-  margin-right: auto;
+    margin-right: auto;
 }
 
 @for $i from 0 through 5 {
-  .w#{$i} {
-    width: $i * $spacing;
-  }
+    .w#{$i} {
+        width: $i * $spacing;
+    }
 
-  .p#{$i} {
-    padding: $i * $spacing;
-  }
+    .p#{$i} {
+        padding: $i * $spacing;
+    }
 
-  .px#{$i} {
-    padding-right: $i * $spacing;
-    padding-left: $i * $spacing;
-  }
+    .px#{$i} {
+        padding-right: $i * $spacing;
+        padding-left: $i * $spacing;
+    }
 
-  .py#{$i} {
-    padding-top: $i * $spacing;
-    padding-bottom: $i * $spacing;
-  }
+    .py#{$i} {
+        padding-top: $i * $spacing;
+        padding-bottom: $i * $spacing;
+    }
 }
 
 // Loop is duplicated so that individual paddings overwrite general ones
 @for $i from 0 through 5 {
-  .pt#{$i} {
-    padding-top: $i * $spacing;
-  }
+    .pt#{$i} {
+        padding-top: $i * $spacing;
+    }
 
-  .pb#{$i} {
-    padding-bottom: $i * $spacing;
-  }
+    .pb#{$i} {
+        padding-bottom: $i * $spacing;
+    }
 
-  .pl#{$i} {
-    padding-left: $i * $spacing;
-  }
+    .pl#{$i} {
+        padding-left: $i * $spacing;
+    }
 
-  .pr#{$i} {
-    padding-right: $i * $spacing;
-  }
+    .pr#{$i} {
+        padding-right: $i * $spacing;
+    }
 }
 
 @for $i from -5 through 5 {
-  .m#{$i} {
-    margin: $i * $spacing;
-  }
+    .m#{$i} {
+        margin: $i * $spacing;
+    }
 
-  .mx#{$i} {
-    margin-right: $i * $spacing;
-    margin-left: $i * $spacing;
-  }
+    .mx#{$i} {
+        margin-right: $i * $spacing;
+        margin-left: $i * $spacing;
+    }
 
-  .my#{$i} {
-    margin-top: $i * $spacing;
-    margin-bottom: $i * $spacing;
-  }
+    .my#{$i} {
+        margin-top: $i * $spacing;
+        margin-bottom: $i * $spacing;
+    }
 }
 
 // Loop is duplicated so that individual margins overwrite general ones
 @for $i from -5 through 5 {
-  .mt#{$i} {
-    margin-top: $i * $spacing;
-  }
+    .mt#{$i} {
+        margin-top: $i * $spacing;
+    }
 
-  .mr#{$i} {
-    margin-right: $i * $spacing;
-  }
+    .mr#{$i} {
+        margin-right: $i * $spacing;
+    }
 
-  .mb#{$i} {
-    margin-bottom: $i * $spacing;
-  }
+    .mb#{$i} {
+        margin-bottom: $i * $spacing;
+    }
 
-  .ml#{$i} {
-    margin-left: $i * $spacing;
-  }
+    .ml#{$i} {
+        margin-left: $i * $spacing;
+    }
 }
 
 .mod-header-padding {
-  padding-right: $header-padding;
-  padding-left: $header-padding;
+    padding-right: $header-padding;
+    padding-left: $header-padding;
 
-  // Use mod-cancel-header-padding to cancel the header-padding where necessary.
-  .mod-cancel-header-padding {
-    width: calc(100% + 2 * #{$header-padding});
-    margin-left: -$header-padding;
-  }
+    // Use mod-cancel-header-padding to cancel the header-padding where necessary.
+    .mod-cancel-header-padding {
+        width: calc(100% + 2 * #{$header-padding});
+        margin-left: -$header-padding;
+    }
 }
 
-.mod-form-top-bottom-padding, &.mod-form-top-bottom-padding {
-  padding-top: $form-top-padding;
-  padding-bottom: $form-bottom-padding;
+.mod-form-top-bottom-padding,
+&.mod-form-top-bottom-padding {
+    padding-top: $form-top-padding;
+    padding-bottom: $form-bottom-padding;
 }
 
-.input, .textarea {
-  .initial-padding {
-    padding: 0;
-  }
+.input,
+.textarea {
+    .initial-padding {
+        padding: 0;
+    }
 
-  .initial-margin {
-    margin: 0;
-  }
+    .initial-margin {
+        margin: 0;
+    }
 }

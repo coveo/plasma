@@ -1,36 +1,36 @@
 .material-card {
-  padding: 2 * $spacing;
+    padding: 2 * $spacing;
 
-  background-color: $pure-white;
-  box-shadow: $material-card-shadow;
-  border: 1px solid rgba($grey-5, $transparency-4);
-  border-radius: $border-radius;
+    background-color: $pure-white;
+    box-shadow: $material-card-shadow;
+    border: 1px solid rgba($grey-5, $transparency-4);
+    border-radius: $border-radius;
 
-  transition: box-shadow 0.1s ease-out;
+    transition: box-shadow 0.1s ease-out;
 
-  .color-bar-border {
-    position: relative;
-    bottom: 0;
-    left: 0;
+    .color-bar-border {
+        position: relative;
+        bottom: 0;
+        left: 0;
 
-    line-height: $material-card-colored-border-height;
+        line-height: $material-card-colored-border-height;
 
-    .color-bar-color {
-      &:first-child {
-        border-bottom-left-radius: $border-radius;
-      }
+        .color-bar-color {
+            &:first-child {
+                border-bottom-left-radius: $border-radius;
+            }
 
-      &:last-child {
-        border-bottom-right-radius: $border-radius;
-      }
+            &:last-child {
+                border-bottom-right-radius: $border-radius;
+            }
+        }
     }
-  }
 }
 
 .material-card.with-hover:hover {
-  box-shadow: $material-card-shadow-hover;
+    box-shadow: $material-card-shadow-hover;
 }
 
 .material-card.with-active:active {
-  box-shadow: $material-card-shadow-active;
+    box-shadow: $material-card-shadow-active;
 }

@@ -1,12 +1,12 @@
 %selection-indicator {
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
 
-  width: $table-selected-border-width;
+    width: $table-selected-border-width;
 
-  content: '';
+    content: '';
 
-  background-color: $orange;
+    background-color: $orange;
 }

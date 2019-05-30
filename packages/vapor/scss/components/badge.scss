@@ -1,17 +1,17 @@
 .badge {
-  box-sizing: border-box;
-  display: inline-block;
-  height: $badge-height;
-  padding: $badge-padding;
-  margin-right: $badge-margin;
+    box-sizing: border-box;
+    display: inline-block;
+    height: $badge-height;
+    padding: $badge-padding;
+    margin-right: $badge-margin;
 
-  color: $pure-white;
-  font-size: $badge-font-size;
-  line-height: $badge-height;
+    color: $pure-white;
+    font-size: $badge-font-size;
+    line-height: $badge-height;
 
-  background-color: $orange;
+    background-color: $orange;
 
-  &:last-child {
-    margin-right: 0;
-  }
+    &:last-child {
+        margin-right: 0;
+    }
 }

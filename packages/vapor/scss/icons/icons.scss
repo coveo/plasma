@@ -1,105 +1,105 @@
 .icon {
-  display: inline-block;
-  width: 0.9em;
-  height: 0.9em;
-  overflow: visible;
+    display: inline-block;
+    width: 0.9em;
+    height: 0.9em;
+    overflow: visible;
 
-  &.mod-small {
-    width: 0.7em;
-    height: 0.7em;
-  }
-
-  &.mod-normal {
-    width: 1em;
-    height: 1em;
-  }
-
-  &.mod-align-with-text {
-    line-height: 16px;
-    vertical-align: -2px;
-  }
-
-  @for $i from 5 through 15 {
-    $size: $i * 2;
-    &.mod-#{$size} {
-      width: $size + px;
-      height: $size + px;
-
-      @extend .mod-align-with-text;
+    &.mod-small {
+        width: 0.7em;
+        height: 0.7em;
     }
-  }
 
-  /* makes the icon 33% larger relative to the icon container */
-  &.mod-lg {
-    width: (4em / 3);
-    height: (4em / 3);
+    &.mod-normal {
+        width: 1em;
+        height: 1em;
+    }
 
-    line-height: (4em / 3);
-    vertical-align: -0.1em;
-  }
+    &.mod-align-with-text {
+        line-height: 16px;
+        vertical-align: -2px;
+    }
 
-  &.mod-2x {
-    width: 2em;
-    height: 2em;
+    @for $i from 5 through 15 {
+        $size: $i * 2;
+        &.mod-#{$size} {
+            width: $size + px;
+            height: $size + px;
 
-    vertical-align: -0.5em;
-  }
+            @extend .mod-align-with-text;
+        }
+    }
 
-  &.mod-3x {
-    width: 3em;
-    height: 3em;
+    /* makes the icon 33% larger relative to the icon container */
+    &.mod-lg {
+        width: (4em / 3);
+        height: (4em / 3);
 
-    vertical-align: -1em;
-  }
+        line-height: (4em / 3);
+        vertical-align: -0.1em;
+    }
 
-  &.mod-4x {
-    width: 4em;
-    height: 4em;
+    &.mod-2x {
+        width: 2em;
+        height: 2em;
 
-    vertical-align: -1.5em;
-  }
+        vertical-align: -0.5em;
+    }
 
-  &.mod-5x {
-    width: 5em;
-    height: 5em;
+    &.mod-3x {
+        width: 3em;
+        height: 3em;
 
-    vertical-align: -2em;
-  }
+        vertical-align: -1em;
+    }
+
+    &.mod-4x {
+        width: 4em;
+        height: 4em;
+
+        vertical-align: -1.5em;
+    }
+
+    &.mod-5x {
+        width: 5em;
+        height: 5em;
+
+        vertical-align: -2em;
+    }
 }
 
 .icon-container {
-  display: inline-block;
+    display: inline-block;
 }
 
 .shadow svg {
-  position: absolute;
-  left: calc(50%);
-  z-index: 1;
+    position: absolute;
+    left: calc(50%);
+    z-index: 1;
 
-  display: none;
+    display: none;
 
-  transform: translateX(calc(-50% + #{$icon-hover-offset}));
+    transform: translateX(calc(-50% + #{$icon-hover-offset}));
 }
 
 .with-hover svg {
-  position: relative;
-  z-index: 2;
+    position: relative;
+    z-index: 2;
 
-  transition: fill 0.5s ease;
+    transition: fill 0.5s ease;
 }
 
 .icon-hover-right:hover {
-  .shadow svg {
-    display: initial;
-  }
+    .shadow svg {
+        display: initial;
+    }
 
-  .with-hover svg {
-    fill: $orange;
-  }
+    .with-hover svg {
+        fill: $orange;
+    }
 }
 
 .hover-wrapper {
-  position: relative;
+    position: relative;
 
-  display: inline;
+    display: inline;
 }

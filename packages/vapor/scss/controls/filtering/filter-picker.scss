@@ -1,101 +1,105 @@
 .filter-expression-picker {
-  .filters {
-    background-color: $white;
-  }
-
-  .admin-filterbox {
-    position: relative;
-    align-items: center;
-
-    display: flex;
-    padding: $filterpickerbox-padding;
-    margin-bottom: $filterpickerbox-margin-bottom;
-
-    &.mod-small {
-      padding: $filterpickerbox-small-padding;
-    }
-
-    .filter-badge {
-      box-sizing: border-box;
-      height: $filter-badge-height;
-
-      font-weight: normal;
-      text-transform: initial;
-    }
-
-    .filter-badge {
-      display: inline-block;
-      margin-left: $filter-badge-margin-left;
-      overflow: visible;
-
-      color: $dark-grey;
-      font-size: $filter-badge-font-size;
-
-      background-color: $pure-white;
-
-      cursor: pointer;
-
-      .edit-filter {
-        box-sizing: border-box;
-      }
-
-      .edit-filter-content {
-        font-size: $filter-badge-font-size;
-        line-height: $edit-filter-content-line-height;
-      }
-
-      .filter-operator {
-        &.mod-negative {
-          color: $red;
-        }
-        &.mod-positive {
-          color: $green;
-        }
-      }
-
-      .filter-value-join {
-        color: $dark-grey;
-      }
-
-      .dropdown-toggle:disabled {
-        .filter-operator, .filter-value-join {
-          color: $medium-grey;
-        }
-      }
-    }
-
-    .filterbox-filters-container {
-      flex-grow: 2;
-
-      padding: $filterbox-filters-container-padding;
-
-      background-color: $medium-grey;
-    }
-
     .filters {
-      position: relative;
-
-      display: inline;
-      margin-right: $filters-margin-right;
-
-      vertical-align: baseline;
-
-      &:empty {
-        margin-right: 0;
-      }
-
-      .active-filters {
-        display: inline;
-      }
-
-      .editable-filters, .editable-filter {
-        display: inline-flex;
-      }
+        background-color: $white;
     }
-  }
 
-  .filters .btn.dropdown-toggle, .filters .filter-badge, .filters .predefined-filter {
-    box-shadow: none;
-    outline: none;
-  }
+    .admin-filterbox {
+        position: relative;
+        align-items: center;
+
+        display: flex;
+        padding: $filterpickerbox-padding;
+        margin-bottom: $filterpickerbox-margin-bottom;
+
+        &.mod-small {
+            padding: $filterpickerbox-small-padding;
+        }
+
+        .filter-badge {
+            box-sizing: border-box;
+            height: $filter-badge-height;
+
+            font-weight: normal;
+            text-transform: initial;
+        }
+
+        .filter-badge {
+            display: inline-block;
+            margin-left: $filter-badge-margin-left;
+            overflow: visible;
+
+            color: $dark-grey;
+            font-size: $filter-badge-font-size;
+
+            background-color: $pure-white;
+
+            cursor: pointer;
+
+            .edit-filter {
+                box-sizing: border-box;
+            }
+
+            .edit-filter-content {
+                font-size: $filter-badge-font-size;
+                line-height: $edit-filter-content-line-height;
+            }
+
+            .filter-operator {
+                &.mod-negative {
+                    color: $red;
+                }
+                &.mod-positive {
+                    color: $green;
+                }
+            }
+
+            .filter-value-join {
+                color: $dark-grey;
+            }
+
+            .dropdown-toggle:disabled {
+                .filter-operator,
+                .filter-value-join {
+                    color: $medium-grey;
+                }
+            }
+        }
+
+        .filterbox-filters-container {
+            flex-grow: 2;
+
+            padding: $filterbox-filters-container-padding;
+
+            background-color: $medium-grey;
+        }
+
+        .filters {
+            position: relative;
+
+            display: inline;
+            margin-right: $filters-margin-right;
+
+            vertical-align: baseline;
+
+            &:empty {
+                margin-right: 0;
+            }
+
+            .active-filters {
+                display: inline;
+            }
+
+            .editable-filters,
+            .editable-filter {
+                display: inline-flex;
+            }
+        }
+    }
+
+    .filters .btn.dropdown-toggle,
+    .filters .filter-badge,
+    .filters .predefined-filter {
+        box-shadow: none;
+        outline: none;
+    }
 }

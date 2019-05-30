@@ -5,69 +5,69 @@ $child-arrow-width: 16px;
 $child-arrow-height: 10px;
 
 .coveo-child {
-  position: relative;
+    position: relative;
 
-  padding: $child-padding-y $child-padding-x;
+    padding: $child-padding-y $child-padding-x;
 
-  background-color: $white;
-  border-radius: $border-radius;
-  border-top-left-radius: 0;
+    background-color: $white;
+    border-radius: $border-radius;
+    border-top-left-radius: 0;
 
-  &:not(.vertical) {
-    margin-top: $child-arrow-height + $child-parent-spacing;
-  }
-
-  &:before {
-    position: absolute;
-    top: -$child-arrow-height;
-    left: 0;
-
-    display: block;
-    width: 0;
-    height: 0;
-
-    content: '';
-
-    border-right: $child-arrow-width / 2 solid transparent;
-    border-bottom: $child-arrow-height solid $white;
-    border-left: $child-arrow-width / 2 solid transparent;
-  }
-
-  &.vertical {
-    margin-left: $child-arrow-height + $child-parent-spacing;
-
-    border-top-left-radius: $border-radius;
+    &:not(.vertical) {
+        margin-top: $child-arrow-height + $child-parent-spacing;
+    }
 
     &:before {
-      top: calc(50% - #{$child-arrow-height});
-      left: -$child-arrow-height - ($child-arrow-width / 2);
+        position: absolute;
+        top: -$child-arrow-height;
+        left: 0;
 
-      border-top: $child-arrow-width / 2 solid transparent;
-      border-right: $child-arrow-height solid $white;
-      border-bottom: $child-arrow-width / 2 solid transparent;
+        display: block;
+        width: 0;
+        height: 0;
+
+        content: '';
+
+        border-right: $child-arrow-width / 2 solid transparent;
+        border-bottom: $child-arrow-height solid $white;
+        border-left: $child-arrow-width / 2 solid transparent;
     }
-  }
 
-  &.mod-fixed-width {
-    max-width: $input-max-width;
-  }
+    &.vertical {
+        margin-left: $child-arrow-height + $child-parent-spacing;
 
-  &.mod-pure-white {
-    background-color: $pure-white;
+        border-top-left-radius: $border-radius;
 
-    &:before {
-      border-bottom-color: $pure-white;
+        &:before {
+            top: calc(50% - #{$child-arrow-height});
+            left: -$child-arrow-height - ($child-arrow-width / 2);
+
+            border-top: $child-arrow-width / 2 solid transparent;
+            border-right: $child-arrow-height solid $white;
+            border-bottom: $child-arrow-width / 2 solid transparent;
+        }
     }
-  }
+
+    &.mod-fixed-width {
+        max-width: $input-max-width;
+    }
+
+    &.mod-pure-white {
+        background-color: $pure-white;
+
+        &:before {
+            border-bottom-color: $pure-white;
+        }
+    }
 }
 
 .child-section {
-  padding-left: $child-section-spacing-left;
-  margin-top: $child-section-spacing-top;
+    padding-left: $child-section-spacing-left;
+    margin-top: $child-section-spacing-top;
 
-  border-left: $child-section-border-size solid $light-grey;
+    border-left: $child-section-border-size solid $light-grey;
 }
 
 .mod-child-section-first-input {
-  padding-top: $child-section-first-input-spacing-top;
+    padding-top: $child-section-first-input-spacing-top;
 }

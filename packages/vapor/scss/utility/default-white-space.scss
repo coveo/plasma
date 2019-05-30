@@ -1,31 +1,31 @@
 @function set-white-space($halfOrDefault) {
-  @if $halfOrDefault == half {
-    @return $default-margin / 2;
-  } @else {
-    @return $default-margin;
-  }     
+    @if $halfOrDefault == half {
+        @return $default-margin / 2;
+    } @else {
+        @return $default-margin;
+    }
 }
-  
-@each $whiteSpace in margin, padding {
-  @each $defaultOrHalf in default, half {
-    .#{$defaultOrHalf}-#{$whiteSpace} {
-      #{$whiteSpace}: set-white-space($defaultOrHalf);
-    }
-    
-    .#{$defaultOrHalf}-#{$whiteSpace}-x {
-      #{$whiteSpace}-right: set-white-space($defaultOrHalf);
-      #{$whiteSpace}-left: set-white-space($defaultOrHalf);
-    }
-    
-    .#{$defaultOrHalf}-#{$whiteSpace}-y {
-      #{$whiteSpace}-top: set-white-space($defaultOrHalf);
-      #{$whiteSpace}-bottom: set-white-space($defaultOrHalf);
-    }
 
-    @each $side in top, bottom, right, left {
-      .#{$defaultOrHalf}-#{$whiteSpace}-#{$side} {
-        #{$whiteSpace}-#{$side}: set-white-space($defaultOrHalf);
-      }
+@each $whiteSpace in margin, padding {
+    @each $defaultOrHalf in default, half {
+        .#{$defaultOrHalf}-#{$whiteSpace} {
+            #{$whiteSpace}: set-white-space($defaultOrHalf);
+        }
+
+        .#{$defaultOrHalf}-#{$whiteSpace}-x {
+            #{$whiteSpace}-right: set-white-space($defaultOrHalf);
+            #{$whiteSpace}-left: set-white-space($defaultOrHalf);
+        }
+
+        .#{$defaultOrHalf}-#{$whiteSpace}-y {
+            #{$whiteSpace}-top: set-white-space($defaultOrHalf);
+            #{$whiteSpace}-bottom: set-white-space($defaultOrHalf);
+        }
+
+        @each $side in top, bottom, right, left {
+            .#{$defaultOrHalf}-#{$whiteSpace}-#{$side} {
+                #{$whiteSpace}-#{$side}: set-white-space($defaultOrHalf);
+            }
+        }
     }
-  }
 }

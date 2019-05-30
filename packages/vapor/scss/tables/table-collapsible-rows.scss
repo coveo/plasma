@@ -1,138 +1,138 @@
 table {
-  &.mod-collapsible-rows {
-    tbody tr {
-      td {
-        [data-collapse-state='collapsed'] {
-          .state-expanded {
-            display: none;
-          }
-          .state-collapsed {
-            display: inline;
-          }
-        }
+    &.mod-collapsible-rows {
+        tbody tr {
+            td {
+                [data-collapse-state='collapsed'] {
+                    .state-expanded {
+                        display: none;
+                    }
+                    .state-collapsed {
+                        display: inline;
+                    }
+                }
 
-        [data-collapse-state='expanded'] {
-          .state-expanded {
-            display: inline;
-          }
-          .state-collapsed {
-            display: none;
-          }
-        }
-      }
-
-      &.heading-row {
-        &.opened:not(:hover) td {
-          background-color: $white;
-        }
-      }
-
-      &.collapsible-row {
-        height: 0;
-
-        > td {
-          padding: 0;
-
-          border-bottom: 0;
-
-          &:first-child {
-            border-left: 0;
-          }
-
-          .container {
-            display: none;
-          }
-
-          .section-title {
-            padding-top: $collapsible-title-padding;
-
-            color: $medium-blue;
-            font-size: $collapsible-content-font-size;
-            font-weight: bold;
-            text-transform: uppercase;
-          }
-
-          .row-error-container {
-            padding: 15px $table-first-column-padding-left;
-            margin-right: -$table-first-column-padding-left;
-            margin-left: -$table-first-column-padding-left;
-
-            background: $pure-white;
-            border-bottom: 1px solid;
-            border-bottom-color: $medium-grey;
-
-            .details-container {
-              padding-right: $details-container-padding;
+                [data-collapse-state='expanded'] {
+                    .state-expanded {
+                        display: inline;
+                    }
+                    .state-collapsed {
+                        display: none;
+                    }
+                }
             }
 
-            .value {
-              padding: 5px 0;
-
-              font-size: 14px;
-              line-height: 15px;
-
-              b {
-                font-weight: bold;
-              }
-
-              i {
-                font-style: italic;
-              }
-
-              ul {
-                padding-left: 20px;
-
-                list-style-type: disc;
-              }
+            &.heading-row {
+                &.opened:not(:hover) td {
+                    background-color: $white;
+                }
             }
 
-            .label {
-              padding: 5px 0;
+            &.collapsible-row {
+                height: 0;
 
-              font-size: 12px;
-              font-weight: normal;
+                > td {
+                    padding: 0;
+
+                    border-bottom: 0;
+
+                    &:first-child {
+                        border-left: 0;
+                    }
+
+                    .container {
+                        display: none;
+                    }
+
+                    .section-title {
+                        padding-top: $collapsible-title-padding;
+
+                        color: $medium-blue;
+                        font-size: $collapsible-content-font-size;
+                        font-weight: bold;
+                        text-transform: uppercase;
+                    }
+
+                    .row-error-container {
+                        padding: 15px $table-first-column-padding-left;
+                        margin-right: -$table-first-column-padding-left;
+                        margin-left: -$table-first-column-padding-left;
+
+                        background: $pure-white;
+                        border-bottom: 1px solid;
+                        border-bottom-color: $medium-grey;
+
+                        .details-container {
+                            padding-right: $details-container-padding;
+                        }
+
+                        .value {
+                            padding: 5px 0;
+
+                            font-size: 14px;
+                            line-height: 15px;
+
+                            b {
+                                font-weight: bold;
+                            }
+
+                            i {
+                                font-style: italic;
+                            }
+
+                            ul {
+                                padding-left: 20px;
+
+                                list-style-type: disc;
+                            }
+                        }
+
+                        .label {
+                            padding: 5px 0;
+
+                            font-size: 12px;
+                            font-weight: normal;
+                        }
+
+                        .error-title {
+                            padding: 0;
+
+                            color: $red;
+                        }
+
+                        .error-description-container {
+                            flex-basis: calc(33% - #{$details-container-padding});
+
+                            li {
+                                padding-bottom: 5px;
+                            }
+
+                            .error-description {
+                                padding-top: 5px;
+
+                                color: $red;
+                            }
+                        }
+
+                        .troubleshooting-container {
+                            flex-basis: calc(66% - #{$details-container-padding});
+                        }
+                    }
+                }
+
+                &.in td {
+                    border-bottom: $table-border;
+                }
+
+                td {
+                    background-color: $pure-white;
+                }
             }
-
-            .error-title {
-              padding: 0;
-
-              color: $red;
-            }
-
-            .error-description-container {
-              flex-basis: calc(33% - #{$details-container-padding});
-
-              li {
-                padding-bottom: 5px;
-              }
-
-              .error-description {
-                padding-top: 5px;
-
-                color: $red;
-              }
-            }
-
-            .troubleshooting-container {
-              flex-basis: calc(66% - #{$details-container-padding});
-            }
-          }
         }
 
-        &.in td {
-          border-bottom: $table-border;
+        &.mod-slim {
+            tbody:not(.loading-row) tr {
+                height: auto;
+            }
         }
-
-        td {
-          background-color: $pure-white;
-        }
-      }
     }
-
-    &.mod-slim {
-      tbody:not(.loading-row) tr {
-        height: auto;
-      }
-    }
-  }
 }

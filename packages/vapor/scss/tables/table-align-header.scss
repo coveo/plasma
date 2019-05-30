@@ -1,25 +1,25 @@
 table.mod-align-header {
-  th:first-child {
-    padding-left: $header-padding;
-  }
-
-  tbody tr td:first-child {
-    padding-left: $header-padding;
-  }
-
-  &.mod-collapsible-rows tbody tr.collapsible-row td:first-child {
-    padding-left: $header-padding;
-
-    .container {
-      // fix so that elements can take the full width of the table during animation
-      padding-right: $header-padding;
-      padding-left: $header-padding;
-      margin-right: -$header-padding;
-      margin-left: -$header-padding;
+    th:first-child {
+        padding-left: $header-padding;
     }
-  }
 
-  &.mod-collapsible-rows tbody tr.collapsible-row td:last-child {
-    padding-right: $header-padding;
-  }
+    tbody tr td:first-child {
+        padding-left: $header-padding;
+    }
+
+    &.mod-collapsible-rows tbody tr.collapsible-row td:first-child {
+        padding-left: $header-padding;
+
+        .container {
+            // fix so that elements can take the full width of the table during animation
+            padding-right: $header-padding;
+            padding-left: $header-padding;
+            margin-right: -$header-padding;
+            margin-left: -$header-padding;
+        }
+    }
+
+    &.mod-collapsible-rows tbody tr.collapsible-row td:last-child {
+        padding-right: $header-padding;
+    }
 }

@@ -1,97 +1,100 @@
-.flippable, .flippable-ie {
-  width: 100%;
+.flippable,
+.flippable-ie {
+    width: 100%;
 }
 
 .flipper {
-  position: relative;
+    position: relative;
 }
 
 .flipper-front {
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .flipper-back {
-  position: absolute;
-  top: 0;
-  z-index: -1;
+    position: absolute;
+    top: 0;
+    z-index: -1;
 
-  box-shadow: $flippable-shadow;
+    box-shadow: $flippable-shadow;
 }
 
 .flippable {
-  z-index: $flippable-z-index;
+    z-index: $flippable-z-index;
 
-  perspective: $flippable-perspective;
-  transform-style: preserve-3d;
-
-  transition: z-index $flippable-transition-duration;
-
-  .flipper {
+    perspective: $flippable-perspective;
     transform-style: preserve-3d;
 
-    transition: transform $flippable-transition-duration 0s, opacity 0s $flippable-transition-duration / 2;
+    transition: z-index $flippable-transition-duration;
 
-    &.show-back {
-      transform: rotateY(0.5turn);
+    .flipper {
+        transform-style: preserve-3d;
 
-      .flipper-back {
-        z-index: 1;
-      }
+        transition: transform $flippable-transition-duration 0s, opacity 0s $flippable-transition-duration / 2;
+
+        &.show-back {
+            transform: rotateY(0.5turn);
+
+            .flipper-back {
+                z-index: 1;
+            }
+        }
+
+        &.show-front {
+            transform: rotateY(0);
+        }
     }
 
-    &.show-front {
-      transform: rotateY(0);
+    .flipper-front,
+    .flipper-back {
+        margin: 0;
+
+        transform-style: preserve-3d;
+
+        backface-visibility: hidden;
     }
-  }
 
-  .flipper-front, .flipper-back {
-    margin: 0;
+    .flipper-front {
+        transform: rotateY(0);
+    }
 
-    transform-style: preserve-3d;
+    .flipper-back {
+        right: 0;
 
-    backface-visibility: hidden;
-  }
-
-  .flipper-front {
-    transform: rotateY(0);
-  }
-
-  .flipper-back {
-    right: 0;
-
-    transform: rotateY(-0.5turn);
-  }
+        transform: rotateY(-0.5turn);
+    }
 }
 
 .flippable-ie .flipper {
-  &.show-back {
-    .flipper-front {
-      opacity: 0;
-      pointer-events: none;
+    &.show-back {
+        .flipper-front {
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        .flipper-back {
+            z-index: 1;
+
+            opacity: 1;
+        }
+    }
+
+    &.show-front {
+        .flipper-front {
+            opacity: 1;
+        }
+
+        .flipper-back {
+            opacity: 0;
+        }
+    }
+
+    .flipper-front,
+    .flipper-back {
+        transition: opacity $flippable-transition-duration / 4 ease-in-out;
     }
 
     .flipper-back {
-      z-index: 1;
-
-      opacity: 1;
+        left: 0;
     }
-  }
-
-  &.show-front {
-    .flipper-front {
-      opacity: 1;
-    }
-
-    .flipper-back {
-      opacity: 0;
-    }
-  }
-
-  .flipper-front, .flipper-back {
-    transition: opacity $flippable-transition-duration / 4 ease-in-out;
-  }
-
-  .flipper-back {
-    left: 0;
-  }
 }

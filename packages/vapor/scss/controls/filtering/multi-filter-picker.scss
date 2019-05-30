@@ -1,80 +1,80 @@
 .filter-expression-picker {
-  .multi-filter {
-    position: relative;
+    .multi-filter {
+        position: relative;
 
-    .multi-filter-picker {
-      position: relative;
+        .multi-filter-picker {
+            position: relative;
 
-      margin-bottom: $multi-filter-picker-margin-bottom;
+            margin-bottom: $multi-filter-picker-margin-bottom;
 
-      .admin-filterbox {
-        border-bottom: $multi-filter-picker-border-bottom;
-      }
-    }
-
-    .add-container {
-      overflow: auto;
-
-      background-color: rgba($white, 0.4);
-
-      .add {
-        padding: $multi-filterpickerbox-add-padding;
-
-        cursor: pointer;
-        opacity: 1;
-
-        svg {
-          width: $multi-filter-picker-add-icon-width;
-          height: $multi-filter-picker-add-icon-width;
-
-          vertical-align: text-bottom;
-
-          fill: $orange;
+            .admin-filterbox {
+                border-bottom: $multi-filter-picker-border-bottom;
+            }
         }
-      }
-    }
 
-    .admin-filterbox {
-      .pre-operator {
-        display: inline-block;
-        padding: $pre-operator-padding;
-        margin: $pre-operator-margin;
+        .add-container {
+            overflow: auto;
 
-        font-family: $base-font-family;
-        font-size: $pre-operator-font-size;
-        font-weight: bold;
-        line-height: $pre-operator-line-height;
-      }
+            background-color: rgba($white, 0.4);
 
-      .filter-where {
-        float: left;
-        padding: $filter-where-padding;
-        margin-right: $filter-where-margin-right;
-        margin-bottom: $filter-where-margin-bottom;
-        margin-left: $filter-where-margin-left;
+            .add {
+                padding: $multi-filterpickerbox-add-padding;
 
-        line-height: $filter-where-line-height;
+                cursor: pointer;
+                opacity: 1;
 
-        background-color: $pure-white;
-      }
+                svg {
+                    width: $multi-filter-picker-add-icon-width;
+                    height: $multi-filter-picker-add-icon-width;
 
-      .filter-type {
-        box-sizing: border-box;
-      }
-    }
+                    vertical-align: text-bottom;
 
-    .filter-popup {
-      margin-bottom: 0;
-
-      .filter-actions {
-        .btn + .btn {
-          margin: 0;
+                    fill: $orange;
+                }
+            }
         }
-      }
 
-      .event-type {
-        display: none;
-      }
+        .admin-filterbox {
+            .pre-operator {
+                display: inline-block;
+                padding: $pre-operator-padding;
+                margin: $pre-operator-margin;
+
+                font-family: $base-font-family;
+                font-size: $pre-operator-font-size;
+                font-weight: bold;
+                line-height: $pre-operator-line-height;
+            }
+
+            .filter-where {
+                float: left;
+                padding: $filter-where-padding;
+                margin-right: $filter-where-margin-right;
+                margin-bottom: $filter-where-margin-bottom;
+                margin-left: $filter-where-margin-left;
+
+                line-height: $filter-where-line-height;
+
+                background-color: $pure-white;
+            }
+
+            .filter-type {
+                box-sizing: border-box;
+            }
+        }
+
+        .filter-popup {
+            margin-bottom: 0;
+
+            .filter-actions {
+                .btn + .btn {
+                    margin: 0;
+                }
+            }
+
+            .event-type {
+                display: none;
+            }
+        }
     }
-  }
 }

@@ -1,21 +1,23 @@
 @import 'font';
 
 html {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
-*, *:before, *:after {
-  box-sizing: inherit;
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
 }
 
 body {
-  align-content: flex-start;
-  flex-flow: column nowrap;
+    align-content: flex-start;
+    flex-flow: column nowrap;
 
-  display: flex;
+    display: flex;
 
-  font-family: $base-font-family;
-  // Base font size for the entire app
-  font-size: 13px;
-  -webkit-font-smoothing: antialiased;
+    font-family: $base-font-family;
+    // Base font size for the entire app
+    font-size: 13px;
+    -webkit-font-smoothing: antialiased;
 }

@@ -1,27 +1,37 @@
 table.mod-alternate {
-  tbody, tbody:hover {
-    tr, tr:hover, tr.collapsible-row, tr.collapsible-row:hover {
-      td, td:hover {
-        background-color: $pure-white;
-      }
+    tbody,
+    tbody:hover {
+        tr,
+        tr:hover,
+        tr.collapsible-row,
+        tr.collapsible-row:hover {
+            td,
+            td:hover {
+                background-color: $pure-white;
+            }
 
-      &.selected {
-        td, td:hover {
-          background-color: $white;
+            &.selected {
+                td,
+                td:hover {
+                    background-color: $white;
+                }
+            }
         }
-      }
-    }
 
-    &:nth-child(2n) {
-      tr, tr:hover, tr.collapsible-row, tr.collapsible-row:hover {
-        td, td:hover {
-          background-color: $white;
+        &:nth-child(2n) {
+            tr,
+            tr:hover,
+            tr.collapsible-row,
+            tr.collapsible-row:hover {
+                td,
+                td:hover {
+                    background-color: $white;
 
-          .row-error-container {
-            background-color: $white;
-          }
+                    .row-error-container {
+                        background-color: $white;
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

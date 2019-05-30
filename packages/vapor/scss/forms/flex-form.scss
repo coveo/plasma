@@ -1,24 +1,24 @@
 // DEPRECATED, you should use flex utility classes
 .coveo-flex-form {
-  flex-flow: row wrap;
+    flex-flow: row wrap;
 
-  display: flex;
-  margin-top: -1 * $form-elements-margin;
-  margin-left: -1 * $form-elements-margin;
+    display: flex;
+    margin-top: -1 * $form-elements-margin;
+    margin-left: -1 * $form-elements-margin;
 
-  .coveo-slide-toggle-label.boxed {
-    flex: auto;
+    .coveo-slide-toggle-label.boxed {
+        flex: auto;
 
-    width: 0;
-    margin-top: $form-elements-margin;
-    margin-left: $form-elements-margin;
+        width: 0;
+        margin-top: $form-elements-margin;
+        margin-left: $form-elements-margin;
 
-    &:empty {
-      height: 0;
-      padding: 0;
-      margin-top: 0;
+        &:empty {
+            height: 0;
+            padding: 0;
+            margin-top: 0;
 
-      border: 0;
+            border: 0;
+        }
     }
-  }
 }

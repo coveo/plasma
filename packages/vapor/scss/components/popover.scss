@@ -1,43 +1,43 @@
 .popover {
-  min-width: $popover-min-width;
+    min-width: $popover-min-width;
 
-  background-color: $pure-white;
-  box-shadow: 0 2px 4px rgba($stratos, 0.4);
-  border: $default-border;
-  border-radius: $border-radius;
+    background-color: $pure-white;
+    box-shadow: 0 2px 4px rgba($stratos, 0.4);
+    border: $default-border;
+    border-radius: $border-radius;
 }
 
 .popover-body {
-  padding: $button-padding-x;
+    padding: $button-padding-x;
 }
 
 .popover-footer {
-  align-items: center;
-  justify-content: flex-end;
+    align-items: center;
+    justify-content: flex-end;
 
-  display: flex;
-  padding: $popover-footer-y-padding $button-padding-x;
-  overflow: hidden;
+    display: flex;
+    padding: $popover-footer-y-padding $button-padding-x;
+    overflow: hidden;
 
-  background-color: $white;
-  border-top: solid 1px $medium-grey;
-  border-radius: 0 0 $border-radius $border-radius;
+    background-color: $white;
+    border-top: solid 1px $medium-grey;
+    border-radius: 0 0 $border-radius $border-radius;
 }
 
 .popover-navigation-section {
-  align-items: center;
-  flex-direction: column;
+    align-items: center;
+    flex-direction: column;
 
-  display: flex;
-  width: $popover-navigation-section-width;
+    display: flex;
+    width: $popover-navigation-section-width;
 
-  background-color: $white;
-  border-right: $default-border;
-  border-radius: $popover-navigation-section-border-radius;
+    background-color: $white;
+    border-right: $default-border;
+    border-radius: $popover-navigation-section-border-radius;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  .back {
-    margin-top: $popover-back-margin-top;
-  }
+    .back {
+        margin-top: $popover-back-margin-top;
+    }
 }

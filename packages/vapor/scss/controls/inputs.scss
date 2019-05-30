@@ -1,57 +1,73 @@
 @include placeholder();
 
-select, textarea, input[type='text'], input[type='password'], input[type='datetime'], input[type='datetime-local'], input[type='date'], input[type='month'], input[type='time'], input[type='week'], input[type='number'], input[type='email'], input[type='url'], input[type='search'], input[type='tel'], input[type='color'] {
-  padding: 3px 6px;
+select,
+textarea,
+input[type='text'],
+input[type='password'],
+input[type='datetime'],
+input[type='datetime-local'],
+input[type='date'],
+input[type='month'],
+input[type='time'],
+input[type='week'],
+input[type='number'],
+input[type='email'],
+input[type='url'],
+input[type='search'],
+input[type='tel'],
+input[type='color'] {
+    padding: 3px 6px;
 
-  color: $dark-grey;
-  font-family: $base-font-family;
-  font-size: $title-font-size;
+    color: $dark-grey;
+    font-family: $base-font-family;
+    font-size: $title-font-size;
 
-  border: 1px solid $medium-grey;
-  border-radius: 2px;
+    border: 1px solid $medium-grey;
+    border-radius: 2px;
 }
 
-input[type='text'], textarea {
-  &.admin-invisible-textbox {
-    padding: 4px 6px;
-    margin-bottom: 0;
+input[type='text'],
+textarea {
+    &.admin-invisible-textbox {
+        padding: 4px 6px;
+        margin-bottom: 0;
 
-    background: transparent;
-    border-width: 0;
+        background: transparent;
+        border-width: 0;
 
-    resize: none;
-  }
+        resize: none;
+    }
 
-  &:-ms-input-placeholder {
-    color: $medium-grey;
-    font-family: $base-font-family;
-    font-size: inherit;
-    text-transform: none;
+    &:-ms-input-placeholder {
+        color: $medium-grey;
+        font-family: $base-font-family;
+        font-size: inherit;
+        text-transform: none;
 
-    transition: color 0.2s ease;
-  }
+        transition: color 0.2s ease;
+    }
 }
 
 .input-group {
-  input {
-    height: 30px;
-  }
-  .add-on {
-    display: inline-block;
-    height: 30px;
-    padding: 0;
-    margin-left: -5px;
+    input {
+        height: 30px;
+    }
+    .add-on {
+        display: inline-block;
+        height: 30px;
+        padding: 0;
+        margin-left: -5px;
 
-    vertical-align: top;
+        vertical-align: top;
 
-    background-color: $medium-grey;
-    border: 1px solid darken($medium-grey, 10%);
-    border-radius: 0 2px 2px 0;
-  }
+        background-color: $medium-grey;
+        border: 1px solid darken($medium-grey, 10%);
+        border-radius: 0 2px 2px 0;
+    }
 }
 
 .textarea.textarea-autosize {
-  width: 100%;
+    width: 100%;
 
-  resize: none;
+    resize: none;
 }

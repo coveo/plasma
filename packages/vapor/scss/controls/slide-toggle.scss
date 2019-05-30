@@ -1,107 +1,110 @@
-input[type=checkbox].coveo-slide-toggle {
-  display: none;
+input[type='checkbox'].coveo-slide-toggle {
+    display: none;
 
-  & + button {
-    position: relative;
+    & + button {
+        position: relative;
 
-    width: 32px;
-    height: 20px;
+        width: 32px;
+        height: 20px;
 
-    border: none;
+        border: none;
 
-    cursor: pointer;
+        cursor: pointer;
 
-    &:before, &:after {
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 0;
+        &:before,
+        &:after {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
 
-      display: block;
-      width: 32px;
-      border-radius: 1em;
+            display: block;
+            width: 32px;
+            border-radius: 1em;
 
-      content: ' ';
+            content: ' ';
 
-      background-color: $medium-grey;
+            background-color: $medium-grey;
 
-      transition: all 0.2s linear;
+            transition: all 0.2s linear;
+        }
+
+        &:after {
+            top: 2px;
+            bottom: 2px;
+
+            width: 18px;
+            margin-left: 2px;
+
+            background-color: $white;
+        }
     }
 
-    &:after {
-      top: 2px;
-      bottom: 2px;
+    &:checked {
+        + button:before {
+            background-color: $orange;
+        }
 
-      width: 18px;
-      margin-left: 2px;
-
-      background-color: $white;
-    }
-  }
-
-  &:checked {
-    + button:before {
-      background-color: $orange;
+        + button:after {
+            margin-left: 12px;
+        }
     }
 
-    + button:after {
-      margin-left: 12px;
+    &:disabled + button {
+        outline: none;
+
+        cursor: default;
+        opacity: 0.4;
     }
-  }
-
-  &:disabled + button {
-    outline: none;
-
-    cursor: default;
-    opacity: 0.4;
-  }
 }
 
 .coveo-slide-toggle-label {
-  align-items: center;
+    align-items: center;
 
-  display: inline-flex;
+    display: inline-flex;
 
-  line-height: 20px;
+    line-height: 20px;
 
-  transition: opacity 0.35s ease;
+    transition: opacity 0.35s ease;
 
-  user-select: none;
+    user-select: none;
 
-  &.disabled, &[for].disabled {
-    cursor: default;
-    opacity: 0.4;
-  }
-
-  &.boxed {
-    display: inline-block; // Required for the float button placement.
-    padding: 8px 10px;
-
-    border: solid 1px $medium-grey;
-
-    .toggle-description {
-      display: block;
-      margin-top: 8px;
-
-      color: $dark-grey;
-      font-size: 13px;
-      line-height: 16px;
+    &.disabled,
+    &[for].disabled {
+        cursor: default;
+        opacity: 0.4;
     }
 
-    button {
-      float: right;
+    &.boxed {
+        display: inline-block; // Required for the float button placement.
+        padding: 8px 10px;
+
+        border: solid 1px $medium-grey;
+
+        .toggle-description {
+            display: block;
+            margin-top: 8px;
+
+            color: $dark-grey;
+            font-size: 13px;
+            line-height: 16px;
+        }
+
+        button {
+            float: right;
+        }
     }
-  }
 
-  .toggle-label {
-    font-size: $title-font-size;
-  }
+    .toggle-label {
+        font-size: $title-font-size;
+    }
 
-  button + .toggle-label, .toggle-label + .coveo-slide-toggle + button {
-    margin-left: $checkbox-label-margin;
-  }
+    button + .toggle-label,
+    .toggle-label + .coveo-slide-toggle + button {
+        margin-left: $checkbox-label-margin;
+    }
 }
 
 label[for].coveo-slide-toggle-label {
-  cursor: pointer;
+    cursor: pointer;
 }

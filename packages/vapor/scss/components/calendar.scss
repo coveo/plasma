@@ -1,366 +1,382 @@
 .date-picker-dropdown {
-  position: relative;
+    position: relative;
 
-  .dropdown-menu {
-    max-height: none;
-    min-width: 0;
-    padding: 0;
+    .dropdown-menu {
+        max-height: none;
+        min-width: 0;
+        padding: 0;
 
-    &.on-right {
-      right: 0;
-      left: auto;
+        &.on-right {
+            right: 0;
+            left: auto;
+        }
     }
-  }
 
-  .dropdown-selected-value {
-    font-weight: normal;
-  }
+    .dropdown-selected-value {
+        font-weight: normal;
+    }
 
-  .to-label {
-    color: $dark-grey;
-  }
+    .to-label {
+        color: $dark-grey;
+    }
 }
 
 .date-picker-box {
-  width: $date-picker-width;
+    width: $date-picker-width;
 
-  background-color: $pure-white;
-  border: $default-border;
-  border-radius: $border-radius;
+    background-color: $pure-white;
+    border: $default-border;
+    border-radius: $border-radius;
 
-  &.simple {
-    width: auto;
-  }
+    &.simple {
+        width: auto;
+    }
 }
 
 .dropdown-menu .date-picker-box {
-  border: none;
+    border: none;
 }
 
 .calendar {
-  table.calendar-grid {
-    width: $calendar-width;
+    table.calendar-grid {
+        width: $calendar-width;
 
-    table-layout: fixed;
+        table-layout: fixed;
 
-    &.selecting {
-      td:not(.un-selectable) {
-        cursor: pointer;
-      }
-    }
-
-    td, th, td:first-child, td:last-child, th:first-child, th:last-child {
-      width: $calendar-cell-dimensions;
-      height: $calendar-cell-dimensions;
-      padding: 0;
-
-      text-align: center;
-    }
-
-    th {
-      color: $dark-grey;
-      text-transform: uppercase;
-
-      border-bottom: $calendar-border;
-    }
-
-    td {
-      border: $calendar-border;
-      border-top: none;
-      border-left: none;
-
-      &:last-child {
-        border-right: none;
-      }
-    }
-
-    .other-month-date, .un-selectable {
-      color: $medium-grey;
-    }
-
-    .selected-date {
-      position: relative;
-      top: 0;
-      left: -#{$calendar-border-width};
-
-      display: block;
-      width: calc(#{$calendar-cell-dimensions} + #{$calendar-border-width});
-      height: $selected-date-height;
-
-      color: $pure-white;
-      line-height: $selected-date-height;
-    }
-
-    .lower-limit, .upper-limit {
-      width: calc(#{$calendar-cell-dimensions} - #{$selected-date-offset} - #{$calendar-limit-border-width});
-
-      &:before, &:after {
-        position: absolute;
-
-        display: block;
-        width: $calendar-limit-border-length;
-        height: $calendar-limit-border-width;
-
-        content: '';
-
-        background: $medium-blue;
-      }
-
-      &:before {
-        top: -#{$selected-date-offset};
-      }
-
-      &:after {
-        bottom: -#{$selected-date-offset};
-      }
-    }
-
-    .lower-limit {
-      left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width});
-
-      border-left: $calendar-limit-border-width solid $medium-blue;
-
-      &:before, &:after {
-        left: -#{$calendar-limit-border-width};
-      }
-    }
-
-    .upper-limit {
-      border-right: $calendar-limit-border-width solid $medium-blue;
-
-      &:before, &:after {
-        right: -#{$calendar-limit-border-width};
-      }
-    }
-
-    .lower-limit.upper-limit {
-      width: calc(#{$calendar-cell-dimensions} - #{$selected-date-offset} * 2 - #{$calendar-limit-border-width} * 2 - #{$selected-date-offset});
-
-      span {
-        &:before, &:after {
-          position: absolute;
-          right: -#{$calendar-limit-border-width};
-
-          display: block;
-          width: $calendar-limit-border-length;
-          height: $calendar-limit-border-width;
-
-          content: '';
-
-          background: $medium-blue;
+        &.selecting {
+            td:not(.un-selectable) {
+                cursor: pointer;
+            }
         }
 
-        &:before {
-          top: -#{$calendar-limit-border-width};
+        td,
+        th,
+        td:first-child,
+        td:last-child,
+        th:first-child,
+        th:last-child {
+            width: $calendar-cell-dimensions;
+            height: $calendar-cell-dimensions;
+            padding: 0;
+
+            text-align: center;
         }
 
-        &:after {
-          bottom: -#{$calendar-limit-border-width};
+        th {
+            color: $dark-grey;
+            text-transform: uppercase;
+
+            border-bottom: $calendar-border;
         }
-      }
-    }
 
-    tr:hover td {
-      background: none;
-    }
+        td {
+            border: $calendar-border;
+            border-top: none;
+            border-left: none;
 
-    tr:last-child {
-      td {
-        border-bottom: none;
-      }
+            &:last-child {
+                border-right: none;
+            }
+        }
+
+        .other-month-date,
+        .un-selectable {
+            color: $medium-grey;
+        }
+
+        .selected-date {
+            position: relative;
+            top: 0;
+            left: -#{$calendar-border-width};
+
+            display: block;
+            width: calc(#{$calendar-cell-dimensions} + #{$calendar-border-width});
+            height: $selected-date-height;
+
+            color: $pure-white;
+            line-height: $selected-date-height;
+        }
+
+        .lower-limit,
+        .upper-limit {
+            width: calc(#{$calendar-cell-dimensions} - #{$selected-date-offset} - #{$calendar-limit-border-width});
+
+            &:before,
+            &:after {
+                position: absolute;
+
+                display: block;
+                width: $calendar-limit-border-length;
+                height: $calendar-limit-border-width;
+
+                content: '';
+
+                background: $medium-blue;
+            }
+
+            &:before {
+                top: -#{$selected-date-offset};
+            }
+
+            &:after {
+                bottom: -#{$selected-date-offset};
+            }
+        }
+
+        .lower-limit {
+            left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width});
+
+            border-left: $calendar-limit-border-width solid $medium-blue;
+
+            &:before,
+            &:after {
+                left: -#{$calendar-limit-border-width};
+            }
+        }
+
+        .upper-limit {
+            border-right: $calendar-limit-border-width solid $medium-blue;
+
+            &:before,
+            &:after {
+                right: -#{$calendar-limit-border-width};
+            }
+        }
+
+        .lower-limit.upper-limit {
+            width: calc(
+                #{$calendar-cell-dimensions} - #{$selected-date-offset} * 2 - #{$calendar-limit-border-width} * 2 - #{$selected-date-offset}
+            );
+
+            span {
+                &:before,
+                &:after {
+                    position: absolute;
+                    right: -#{$calendar-limit-border-width};
+
+                    display: block;
+                    width: $calendar-limit-border-length;
+                    height: $calendar-limit-border-width;
+
+                    content: '';
+
+                    background: $medium-blue;
+                }
+
+                &:before {
+                    top: -#{$calendar-limit-border-width};
+                }
+
+                &:after {
+                    bottom: -#{$calendar-limit-border-width};
+                }
+            }
+        }
+
+        tr:hover td {
+            background: none;
+        }
+
+        tr:last-child {
+            td {
+                border-bottom: none;
+            }
+        }
     }
-  }
 }
 
 .options-cycle {
-  font-size: $big-font-size;
+    font-size: $big-font-size;
 
-  &.mod-inline {
-    display: inline-flex;
-  }
+    &.mod-inline {
+        display: inline-flex;
+    }
 
-  .options-cycle-option {
-    display: inline-block;
-  }
+    .options-cycle-option {
+        display: inline-block;
+    }
 
-  &:first-child .options-cycle-option {
-    min-width: 120px;
+    &:first-child .options-cycle-option {
+        min-width: 120px;
 
-    text-align: center;
-  }
+        text-align: center;
+    }
 }
 
 .options-cycle-button {
-  padding: 0;
+    padding: 0;
 
-  background: none;
-  border: none;
+    background: none;
+    border: none;
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .option-picker {
-  li {
-    width: 50%;
+    li {
+        width: 50%;
 
-    background: $pure-white;
+        background: $pure-white;
 
-    button {
-      box-sizing: border-box;
-      display: block;
-      width: 100%;
-      padding: $dropdown-choices-top-bottom-margin;
+        button {
+            box-sizing: border-box;
+            display: block;
+            width: 100%;
+            padding: $dropdown-choices-top-bottom-margin;
 
-      color: $medium-blue;
-      font-size: $button-font-size;
+            color: $medium-blue;
+            font-size: $button-font-size;
 
-      background: none;
-      border: $default-border;
-      border-top-color: transparent;
-      border-left-color: transparent;
-      outline: none;
+            background: none;
+            border: $default-border;
+            border-top-color: transparent;
+            border-left-color: transparent;
+            outline: none;
 
-      cursor: pointer;
-    }
-
-    &:last-child:nth-child(2n+1) {
-      width: 100%;
-    }
-
-    // Here we change the border radius of the options in the corners (the options are shown in a 2xX grid)
-    &:first-child {
-      @include button-border('top', 'left', true);
-    }
-
-    &:nth-child(2) {
-      @include button-border('top', 'right', true);
-    }
-
-    &:nth-last-child(2):not(:nth-child(2n)), &:last-child:nth-child(2n+1) {
-      @include button-border('bottom', 'left');
-    }
-
-    &:last-child {
-      @include button-border('bottom', 'right');
-    }
-
-    &:nth-child(2n-1) {
-      button {
-        border-left: $default-border;
-      }
-    }
-
-    &:nth-child(1n) {
-      button {
-        &:hover, &.active {
-          background-color: $date-picker-button-hover-bg;
+            cursor: pointer;
         }
 
-        &.active {
-          border-color: $blue;
+        &:last-child:nth-child(2n + 1) {
+            width: 100%;
         }
-      }
+
+        // Here we change the border radius of the options in the corners (the options are shown in a 2xX grid)
+        &:first-child {
+            @include button-border('top', 'left', true);
+        }
+
+        &:nth-child(2) {
+            @include button-border('top', 'right', true);
+        }
+
+        &:nth-last-child(2):not(:nth-child(2n)),
+        &:last-child:nth-child(2n + 1) {
+            @include button-border('bottom', 'left');
+        }
+
+        &:last-child {
+            @include button-border('bottom', 'right');
+        }
+
+        &:nth-child(2n-1) {
+            button {
+                border-left: $default-border;
+            }
+        }
+
+        &:nth-child(1n) {
+            button {
+                &:hover,
+                &.active {
+                    background-color: $date-picker-button-hover-bg;
+                }
+
+                &.active {
+                    border-color: $blue;
+                }
+            }
+        }
     }
-  }
 }
 
 .date-picker {
-  justify-content: space-between;
+    justify-content: space-between;
 
-  input {
-    width: 100%;
-    padding: $dropdown-choices-top-bottom-margin;
+    input {
+        width: 100%;
+        padding: $dropdown-choices-top-bottom-margin;
 
-    font-size: $default-font-size;
+        font-size: $default-font-size;
 
-    border-radius: $border-radius;
-    outline: none;
+        border-radius: $border-radius;
+        outline: none;
 
-    &:not(.picking-date):not(.date-picked) {
-      border: $default-border;
+        &:not(.picking-date):not(.date-picked) {
+            border: $default-border;
+        }
+
+        &.picking-date,
+        &.date-picked {
+            border-style: solid;
+            border-width: 2px;
+        }
+
+        &.date-picked {
+            color: $pure-white;
+        }
     }
 
-    &.picking-date, &.date-picked {
-      border-style: solid;
-      border-width: 2px;
+    > span {
+        order: 1;
+
+        margin-left: $default-margin;
     }
-
-    &.date-picked {
-      color: $pure-white;
-    }
-  }
-
-  > span {
-    order: 1;
-
-    margin-left: $default-margin;
-  }
 }
 
 .mod-inline {
-  justify-content: space-between;
+    justify-content: space-between;
 
-  .date-picker {
-    width: calc(50% - #{$button-margin-width});
+    .date-picker {
+        width: calc(50% - #{$button-margin-width});
 
-    input {
-      width: 100%;
+        input {
+            width: 100%;
+        }
     }
-  }
 }
 
 .date-button {
-  box-sizing: border-box;
-  display: block;
-  width: $date-picker-dimension;
-  height: $date-picker-dimension;
-  padding: $button-small-padding-x;
+    box-sizing: border-box;
+    display: block;
+    width: $date-picker-dimension;
+    height: $date-picker-dimension;
+    padding: $button-small-padding-x;
 
-  background: none;
-  border: $default-border;
-  border-radius: $border-radius;
+    background: none;
+    border: $default-border;
+    border-radius: $border-radius;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  &:hover {
-    background-color: $date-picker-button-hover-bg;
-  }
+    &:hover {
+        background-color: $date-picker-button-hover-bg;
+    }
 }
 
 .clear-selection-button {
-  box-sizing: border-box;
-  display: block;
-  width: 100%;
-  padding: $dropdown-choices-top-bottom-margin;
+    box-sizing: border-box;
+    display: block;
+    width: 100%;
+    padding: $dropdown-choices-top-bottom-margin;
 
-  color: $medium-blue;
-  font-size: $button-font-size;
+    color: $medium-blue;
+    font-size: $button-font-size;
 
-  background: none;
-  border: $default-border;
-  border-radius: $border-radius;
+    background: none;
+    border: $default-border;
+    border-radius: $border-radius;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  &:hover {
-    background-color: $date-picker-button-hover-bg;
-  }
+    &:hover {
+        background-color: $date-picker-button-hover-bg;
+    }
 }
 
 .date-separator {
-  font-size: $default-font-size;
-  line-height: $date-picker-dimension;
+    font-size: $default-font-size;
+    line-height: $date-picker-dimension;
 
-  &.mod-vertical {
-    display: block;
+    &.mod-vertical {
+        display: block;
 
-    line-height: $default-font-size;
-    text-align: center;
+        line-height: $default-font-size;
+        text-align: center;
 
-    span {
-      display: inline-block;
+        span {
+            display: inline-block;
 
-      transform: rotate(90deg);
+            transform: rotate(90deg);
+        }
     }
-  }
 }

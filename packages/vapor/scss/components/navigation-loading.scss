@@ -1,52 +1,52 @@
 .loading-bg-grey {
-  background: $white;
-  background: linear-gradient(to right, #647686 8%, #778a9a 18%, #647686 33%);
-  background-size: $navigation-loading-background-size;
+    background: $white;
+    background: linear-gradient(to right, #647686 8%, #778a9a 18%, #647686 33%);
+    background-size: $navigation-loading-background-size;
 }
 
 .loading-bg-light-grey {
-  background: $light-grey;
-  background: linear-gradient(to right, #e9eef2 8%, #d1dbe3 18%, #e9eef2 33%);
-  background-size: $navigation-loading-background-size;
+    background: $light-grey;
+    background: linear-gradient(to right, #e9eef2 8%, #d1dbe3 18%, #e9eef2 33%);
+    background-size: $navigation-loading-background-size;
 }
 
 .navigation-loading-animation {
-  transform: translate3d(0,0,0);
+    transform: translate3d(0, 0, 0);
 
-  animation-duration: 2s;
-  animation-iteration-count: infinite;
-  animation-name: move-background-horizontal;
-  animation-timing-function: linear;
-  animation-fill-mode: forwards;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+    animation-name: move-background-horizontal;
+    animation-timing-function: linear;
+    animation-fill-mode: forwards;
 }
 
 .navigation-loading-item {
-  position: relative;
+    position: relative;
 
-  height: $default-font-size;
-  max-width: 90%;
-  margin: $default-margin 0;
+    height: $default-font-size;
+    max-width: 90%;
+    margin: $default-margin 0;
 
-  background-size: $navigation-loading-background-size;
-  border-radius: $navigation-loading-item-border-radius;
+    background-size: $navigation-loading-background-size;
+    border-radius: $navigation-loading-item-border-radius;
 
-  @extend .navigation-loading-animation;
+    @extend .navigation-loading-animation;
 }
 
 .navigation-loading-item-light-grey {
-  @extend .navigation-loading-item;
-  @extend .loading-bg-light-grey;
+    @extend .navigation-loading-item;
+    @extend .loading-bg-light-grey;
 }
 
 .navigation-loading-item-grey {
-  @extend .navigation-loading-item;
-  @extend .loading-bg-grey;
+    @extend .navigation-loading-item;
+    @extend .loading-bg-grey;
 }
 
 .mod-navigation-loading-bullet {
-  width: $default-font-size;
+    width: $default-font-size;
 }
 
 .mod-sub-navigation-left-margin {
-  margin-left: $navigation-horizontal-space;
+    margin-left: $navigation-horizontal-space;
 }

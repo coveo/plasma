@@ -1,43 +1,43 @@
 .sub-navigation {
-  min-width: $sub-navigation-min-width;
-  overflow: auto;
+    min-width: $sub-navigation-min-width;
+    overflow: auto;
 
-  background-color: $white;
-  border-right: $sub-navigation-min-width;
+    background-color: $white;
+    border-right: $sub-navigation-min-width;
 
-  @include slim-scroll($medium-grey, $dark-grey);
+    @include slim-scroll($medium-grey, $dark-grey);
 
-  .sub-navigation-items {
-    padding-top: $sub-navigation-padding-top;
+    .sub-navigation-items {
+        padding-top: $sub-navigation-padding-top;
 
-    .sub-navigation-item {
-      position: relative;
+        .sub-navigation-item {
+            position: relative;
 
-      .sub-navigation-item-link {
-        display: block;
-        padding: $sub-navigation-item-padding;
+            .sub-navigation-item-link {
+                display: block;
+                padding: $sub-navigation-item-padding;
 
-        color: $medium-blue;
-        line-height: $sub-navigation-line-height;
-      }
+                color: $medium-blue;
+                line-height: $sub-navigation-line-height;
+            }
 
-      &.mod-selected {
-        background-color: $light-grey;
+            &.mod-selected {
+                background-color: $light-grey;
 
-        &:before {
-          position: absolute;
-          top: 0;
-          left: 0;
+                &:before {
+                    position: absolute;
+                    top: 0;
+                    left: 0;
 
-          display: block;
-          width: $sub-navigation-selected-border-width;
-          height: 100%;
+                    display: block;
+                    width: $sub-navigation-selected-border-width;
+                    height: 100%;
 
-          content: '';
+                    content: '';
 
-          background-color: $orange;
+                    background-color: $orange;
+                }
+            }
         }
-      }
     }
-  }
 }

@@ -1,15 +1,16 @@
-a, .link {
-  color: $links-color;
-  text-decoration: none;
+a,
+.link {
+    color: $links-color;
+    text-decoration: none;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  &.disabled {
-    cursor: default;
-    pointer-events: none;
-  }
+    &.disabled {
+        cursor: default;
+        pointer-events: none;
+    }
 
-  &:focus {
-    @include focus-border(-2px);
-  }
+    &:focus {
+        @include focus-border(-2px);
+    }
 }

@@ -1,48 +1,48 @@
 .ribbon-container {
-  position: relative;
+    position: relative;
 
-  overflow: hidden;
+    overflow: hidden;
 }
 
 .corner-ribbon {
-  position: absolute;
+    position: absolute;
 
-  width: $ribbon-width;
-  height: $ribbon-height;
+    width: $ribbon-width;
+    height: $ribbon-height;
 
-  color: $pure-white;
-  font-size: $ribbon-font-size;
-  line-height: $ribbon-height;
-  letter-spacing: $ribbon-letter-spacing;
-  text-align: center;
+    color: $pure-white;
+    font-size: $ribbon-font-size;
+    line-height: $ribbon-height;
+    letter-spacing: $ribbon-letter-spacing;
+    text-align: center;
 
-  background-color: $medium-grey;
+    background-color: $medium-grey;
 
-  &.left {
-    left: $ribbon-x-offset;
-  }
-
-  &.right {
-    right: $ribbon-x-offset;
-  }
-
-  &.top {
-    top: $ribbon-y-offset;
-    &.right {
-      transform: rotate($ribbon-rotation-angle);
-    }
     &.left {
-      transform: rotate(-$ribbon-rotation-angle);
+        left: $ribbon-x-offset;
     }
-  }
 
-  &.bottom {
-    bottom: $ribbon-y-offset;
     &.right {
-      transform: rotate(-$ribbon-rotation-angle);
+        right: $ribbon-x-offset;
     }
-    &.left {
-      transform: rotate($ribbon-rotation-angle);
+
+    &.top {
+        top: $ribbon-y-offset;
+        &.right {
+            transform: rotate($ribbon-rotation-angle);
+        }
+        &.left {
+            transform: rotate(-$ribbon-rotation-angle);
+        }
     }
-  }
+
+    &.bottom {
+        bottom: $ribbon-y-offset;
+        &.right {
+            transform: rotate(-$ribbon-rotation-angle);
+        }
+        &.left {
+            transform: rotate($ribbon-rotation-angle);
+        }
+    }
 }

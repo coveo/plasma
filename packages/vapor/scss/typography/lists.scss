@@ -1,30 +1,30 @@
 .list-reset {
-  padding-left: 0;
+    padding-left: 0;
 
-  list-style: none;
+    list-style: none;
 }
 
 /* @deprecated use .list-disc instead */
 .bullet-list {
-  padding-left: $list-padding;
+    padding-left: $list-padding;
 
-  list-style: disc;
+    list-style: disc;
 
-  li {
-    margin-bottom: $box-spacing;
-  }
+    li {
+        margin-bottom: $box-spacing;
+    }
 }
 
 $list-style-types: disc, circle, square, decimal, lower-alpha, upper-alpha;
 
 @each $style-type in $list-style-types {
-  .list-#{$style-type} {
-    padding-left: $list-padding;
+    .list-#{$style-type} {
+        padding-left: $list-padding;
 
-    list-style: $style-type;
+        list-style: $style-type;
 
-    li {
-      margin-bottom: $box-spacing;
+        li {
+            margin-bottom: $box-spacing;
+        }
     }
-  }
 }

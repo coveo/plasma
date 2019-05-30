@@ -1,7 +1,7 @@
-$(document).ready(function () {
+$(document).ready(function() {
     // manually reset the hash to force the browser to go to the selected menu item on page refresh
     var hash = window.location.hash;
-    window.location.hash = "";
+    window.location.hash = '';
     window.location.hash = hash;
 
     $('.coveo-slider-input').slider();
@@ -16,14 +16,18 @@ $(document).ready(function () {
 
     var selectedTab;
     if (window.location.hash) {
-        var selectedTabChild = $('.navigation-menu-section-item-link[href="' + window.location.pathname + window.location.hash + '"]');
+        var selectedTabChild = $(
+            '.navigation-menu-section-item-link[href="' + window.location.pathname + window.location.hash + '"]'
+        );
         selectedTab = selectedTabChild.parent().addClass('state-active');
     } else {
         var selectedTabParend = $('.navigation-menu-section-item-link[href*="' + window.location.pathname + '"]');
-        selectedTab = $(selectedTabParend[0]).parent().addClass('state-active');
+        selectedTab = $(selectedTabParend[0])
+            .parent()
+            .addClass('state-active');
     }
 
-    $('.navigation-menu-section-item').click(function () {
+    $('.navigation-menu-section-item').click(function() {
         if (selectedTab) {
             selectedTab.removeClass('state-active');
         }
@@ -31,16 +35,20 @@ $(document).ready(function () {
         selectedTab = $(this);
     });
 
-    $('.navigation-menu-section-header').click(function (event) {
-        $(this).find('.collapsible-arrow').toggleClass('open');
-        $(this).next('.navigation-menu-section-items').slideToggle();
+    $('.navigation-menu-section-header').click(function(event) {
+        $(this)
+            .find('.collapsible-arrow')
+            .toggleClass('open');
+        $(this)
+            .next('.navigation-menu-section-items')
+            .slideToggle();
     });
 
     // Simple script to handle opening/closing modals
     function modalHandler() {
         var backdrop = $('.modal-backdrop');
 
-        $('.js-modal-trigger').each(function (i, modalTrigger) {
+        $('.js-modal-trigger').each(function(i, modalTrigger) {
             var modal = $('#' + modalTrigger.getAttribute('data-modal'));
             var modalPrompt = $('#' + modalTrigger.getAttribute('data-modal') + 'Prompt');
 
@@ -65,7 +73,7 @@ $(document).ready(function () {
                 backdrop.on('click', removeModal);
             }
 
-            $(modalTrigger).on('click', function () {
+            $(modalTrigger).on('click', function() {
                 modal.addClass('opened');
 
                 backdrop.removeClass('closed');
@@ -79,12 +87,12 @@ $(document).ready(function () {
                 }
             });
 
-            closeButton.on('click', function (event) {
+            closeButton.on('click', function(event) {
                 event.stopPropagation();
                 removeModal();
             });
 
-            promptCloseButton.on('click', function (event) {
+            promptCloseButton.on('click', function(event) {
                 event.stopPropagation();
                 removePrompt();
             });
@@ -107,7 +115,7 @@ $(document).ready(function () {
         $el.find('[data-collapse-state]').attr('data-collapse-state', 'collapsed');
     }
 
-    $('tr.heading-row').click(function (jQueryEventObject) {
+    $('tr.heading-row').click(function(jQueryEventObject) {
         var $el = $(jQueryEventObject.currentTarget);
         if ($el.hasClass('opened')) {
             collapseRowView($el.parent());
@@ -117,14 +125,13 @@ $(document).ready(function () {
     });
 
     // Handle open/close dropdown
-    $('button.dropdown-toggle').click(function (event) {
+    $('button.dropdown-toggle').click(function(event) {
         var dropdownEl = $(event.currentTarget).parent();
         dropdownEl.toggleClass('open', !dropdownEl.hasClass('open'));
     });
 
-
     // Handle open/close dropdown search
-    $('.mod-search button.dropdown-toggle').click(function (event) {
+    $('.mod-search button.dropdown-toggle').click(function(event) {
         var buttonEl = $(event.currentTarget);
         var dropdownEl = $(event.currentTarget).parent();
         buttonEl.toggleClass('open', !dropdownEl.hasClass('open'));
@@ -134,7 +141,7 @@ $(document).ready(function () {
         dropdownEl.find('.filter-box').focus();
     });
 
-    $('.mod-search .filter-box').blur(function (event) {
+    $('.mod-search .filter-box').blur(function(event) {
         var filterElement = $(event.currentTarget).parent();
         var dropdownEl = filterElement.parent();
         filterElement.find('filter-box').context.value = '';
@@ -145,7 +152,7 @@ $(document).ready(function () {
     });
 
     // Handle selection in flat-select
-    $('.flat-select-option').click(function (event) {
+    $('.flat-select-option').click(function(event) {
         var optionEl = $(event.currentTarget);
         var flatSelectEl = optionEl.parent();
 
@@ -154,8 +161,11 @@ $(document).ready(function () {
     });
 
     // Handle flippable flip/unflip
-    $('.flippable').click(function () {
-        $(this).find('.flipper').toggleClass('show-back').toggleClass('show-front');
+    $('.flippable').click(function() {
+        $(this)
+            .find('.flipper')
+            .toggleClass('show-back')
+            .toggleClass('show-front');
     });
 
     // handle side nav toggle

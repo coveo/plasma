@@ -1,204 +1,217 @@
 .input-field {
-  position: relative;
+    position: relative;
 
-  margin-top: $input-margin-top;
+    margin-top: $input-margin-top;
 
-  // General Styles
+    // General Styles
 
-  > input, > textarea, .input-wrapper > input {
-    width: 100%;
-    height: $input-height;
-    padding: $input-padding;
+    > input,
+    > textarea,
+    .input-wrapper > input {
+        width: 100%;
+        height: $input-height;
+        padding: $input-padding;
 
-    font-size: $input-font-size;
+        font-size: $input-font-size;
 
-    background-color: transparent;
-    box-shadow: none;
-    border: 0;
-    border-bottom: $input-border;
-    border-radius: 0;
-    outline: 0;
+        background-color: transparent;
+        box-shadow: none;
+        border: 0;
+        border-bottom: $input-border;
+        border-radius: 0;
+        outline: 0;
 
-    transition: $input-transition;
+        transition: $input-transition;
 
-    &:focus:not([readonly]), &:valid, &:disabled {
-      color: $dark-grey;
+        &:focus:not([readonly]),
+        &:valid,
+        &:disabled {
+            color: $dark-grey;
 
-      border-bottom: 1px solid $medium-blue;
+            border-bottom: 1px solid $medium-blue;
 
-      @include placeholder();
+            @include placeholder();
 
-      & + label {
-        @extend .active;
-      }
+            & + label {
+                @extend .active;
+            }
 
-      &:focus:not([readonly]) {
-        border-bottom-color: $azure;
+            &:focus:not([readonly]) {
+                border-bottom-color: $azure;
 
-        & + label {
-          color: $azure;
+                & + label {
+                    color: $azure;
+                }
+            }
         }
-      }
+
+        &:disabled,
+        &[readonly='readonly'] {
+            color: $medium-grey;
+
+            border-bottom-color: $medium-grey;
+
+            -webkit-text-fill-color: $medium-grey;
+
+            & + label {
+                color: $medium-grey;
+            }
+        }
     }
 
-    &:disabled, &[readonly='readonly'] {
-      color: $medium-grey;
-
-      border-bottom-color: $medium-grey;
-
-      -webkit-text-fill-color: $medium-grey;
-
-      & + label {
-        color: $medium-grey;
-      }
-    }
-  }
-
-  > label, .input-wrapper > label {
-    position: absolute;
-    top: 10px;
-    left: 0;
-
-    box-sizing: content-box;
-    display: flex; // Used for inline-help-tooltip placement
-    height: 100%;
-
-    color: $medium-grey;
-    font-size: $input-font-size;
-
-    transition: $input-transition;
-
-    pointer-events: none;
-
-    &.active {
-      top: -1 * $input-margin-top;
-
-      padding-bottom: $input-margin-top;
-
-      color: $medium-blue;
-      font-size: $form-control-label-font-size;
-    }
-  }
-
-  > input, .input-wrapper > input {
-    padding: $input-vertical-padding 0;
-
-    color: transparent; // Make the input text color transparent when input is invalid (closed).
-    font-size: $input-font-size;
-
-    background-color: transparent;
-    box-shadow: none; // Remove firefox invalid input box shadow.
-
-    transition: $input-color-transition;
-
-    @include placeholder(transparent);
-  }
-
-  > textarea {
-    min-height: $input-height;
-    padding: 10px 0 24px 0;
-    overflow-y: hidden;
-
-    transition: height ease 0.2s;
-
-    resize: none;
-
-    -ms-overflow-y: hidden !important; // ie
-    @include placeholder(transparent);
-  }
-
-  &.mod-resizeable textarea {
-    padding: 5px 0 2px; // Tweak to make it look like a normal input-field
-
-    resize: vertical;
-  }
-
-  &.mod-fixed-width {
-    max-width: $input-max-width;
-  }
-
-  // Validation feedback
-  &.validate > input, &.validate .input-wrapper > input, .validate > input, &.validate > textarea, .validate > textarea, &.validate .input {
-    transition: 0.2s margin-bottom ease, 0.2s color ease;
-
-    &.valid, &.invalid {
-      margin-bottom: 20px;
-    }
-
-    &.valid {
-      border-bottom-color: $green;
-
-      & + label:after {
-        color: $green;
-        content: attr(data-valid-message);
-
-        opacity: 1;
-      }
-    }
-
-    &.invalid {
-      border-bottom-color: $red;
-    }
-
-    &.invalid + label:after {
-      color: $red;
-      content: attr(data-invalid-message);
-
-      opacity: 1;
-    }
-
-    & + label {
-      width: 100%;
-
-      &:after {
+    > label,
+    .input-wrapper > label {
         position: absolute;
-        top: 100%;
+        top: 10px;
         left: 0;
 
+        box-sizing: content-box;
+        display: flex; // Used for inline-help-tooltip placement
+        height: 100%;
+
+        color: $medium-grey;
+        font-size: $input-font-size;
+
+        transition: $input-transition;
+
+        pointer-events: none;
+
+        &.active {
+            top: -1 * $input-margin-top;
+
+            padding-bottom: $input-margin-top;
+
+            color: $medium-blue;
+            font-size: $form-control-label-font-size;
+        }
+    }
+
+    > input,
+    .input-wrapper > input {
+        padding: $input-vertical-padding 0;
+
+        color: transparent; // Make the input text color transparent when input is invalid (closed).
+        font-size: $input-font-size;
+
+        background-color: transparent;
+        box-shadow: none; // Remove firefox invalid input box shadow.
+
+        transition: $input-color-transition;
+
+        @include placeholder(transparent);
+    }
+
+    > textarea {
+        min-height: $input-height;
+        padding: 10px 0 24px 0;
+        overflow-y: hidden;
+
+        transition: height ease 0.2s;
+
+        resize: none;
+
+        -ms-overflow-y: hidden !important; // ie
+        @include placeholder(transparent);
+    }
+
+    &.mod-resizeable textarea {
+        padding: 5px 0 2px; // Tweak to make it look like a normal input-field
+
+        resize: vertical;
+    }
+
+    &.mod-fixed-width {
+        max-width: $input-max-width;
+    }
+
+    // Validation feedback
+    &.validate > input,
+    &.validate .input-wrapper > input,
+    .validate > input,
+    &.validate > textarea,
+    .validate > textarea,
+    &.validate .input {
+        transition: 0.2s margin-bottom ease, 0.2s color ease;
+
+        &.valid,
+        &.invalid {
+            margin-bottom: 20px;
+        }
+
+        &.valid {
+            border-bottom-color: $green;
+
+            & + label:after {
+                color: $green;
+                content: attr(data-valid-message);
+
+                opacity: 1;
+            }
+        }
+
+        &.invalid {
+            border-bottom-color: $red;
+        }
+
+        &.invalid + label:after {
+            color: $red;
+            content: attr(data-invalid-message);
+
+            opacity: 1;
+        }
+
+        & + label {
+            width: 100%;
+
+            &:after {
+                position: absolute;
+                top: 100%;
+                left: 0;
+
+                display: block;
+                margin-top: $input-message-position;
+
+                font-size: 12px;
+
+                transition: 0.2s all ease;
+            }
+
+            &.active {
+                &:after {
+                    margin-top: $input-message-position / 2;
+                }
+            }
+        }
+
+        &.input + label {
+            top: $input-height;
+        }
+    }
+
+    // For multiline input validation feedback
+    .input-wrapper.validate > input {
+        & + label {
+            &:after {
+                margin-top: $input-message-position * 1.5;
+            }
+
+            &.active {
+                &:after {
+                    margin-top: $input-message-position;
+                }
+            }
+        }
+    }
+
+    // Temp fix for the textarea since using label:after doesn't work (because of textarea variable size)
+    &.validate textarea.invalid {
+        border-bottom-color: $red;
+    }
+
+    &.validate .generic-form-error {
         display: block;
-        margin-top: $input-message-position;
-
-        font-size: 12px;
-
-        transition: 0.2s all ease;
-      }
-
-      &.active {
-        &:after {
-          margin-top: $input-message-position / 2;
-        }
-      }
+        // Make it look like the input > label:after error
+        margin-top: 3px;
+        margin-bottom: 0;
     }
-
-    &.input + label {
-      top: $input-height;
-    }
-  }
-
-  // For multiline input validation feedback
-  .input-wrapper.validate > input {
-    & + label {
-      &:after {
-        margin-top: $input-message-position * 1.5;
-      }
-
-      &.active {
-        &:after {
-          margin-top: $input-message-position;
-        }
-      }
-    }
-  }
-
-  // Temp fix for the textarea since using label:after doesn't work (because of textarea variable size)
-  &.validate textarea.invalid {
-    border-bottom-color: $red;
-  }
-
-  &.validate .generic-form-error {
-    display: block;
-    // Make it look like the input > label:after error
-    margin-top: 3px;
-    margin-bottom: 0;
-  }
 }

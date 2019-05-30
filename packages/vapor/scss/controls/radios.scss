@@ -1,98 +1,99 @@
 .radio-option {
-  position: relative;
+    position: relative;
 
-  input[type='radio'] {
-    // Hide the html radio under our custom one instead of using display:none to let the default keyboard navigation work.
-    position: absolute;
-
-    margin: 0;
-
-    opacity: 0;
-
-    & + label {
-      position: relative;
-      align-items: center;
-
-      display: inline-flex;
-      height: $radio-button-option-height;
-      padding-left: $radio-button-size + $checkbox-label-margin;
-
-      color: $dark-grey;
-      line-height: $radio-button-option-height;
-
-      transition: 0.28s ease;
-
-      cursor: pointer;
-      user-select: none;
-
-      &:before, &:after {
+    input[type='radio'] {
+        // Hide the html radio under our custom one instead of using display:none to let the default keyboard navigation work.
         position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 0;
 
-        width: $radio-button-size;
-        height: $radio-button-size;
+        margin: 0;
 
-        content: '';
+        opacity: 0;
 
-        background-color: $pure-white;
-        border-radius: 50%;
+        & + label {
+            position: relative;
+            align-items: center;
 
-        transition: 0.28s ease;
-      }
-    }
+            display: inline-flex;
+            height: $radio-button-option-height;
+            padding-left: $radio-button-size + $checkbox-label-margin;
 
-    &:focus + label:before {
-      box-shadow: 0 0 0 8px $light-grey;
-    }
+            color: $dark-grey;
+            line-height: $radio-button-option-height;
 
-    &:not(:checked) + label {
-      &:before {
-        border: 2px solid $medium-blue;
-      }
+            transition: 0.28s ease;
 
-      &:after {
-        z-index: -1;
+            cursor: pointer;
+            user-select: none;
 
-        transform: scale(0);
-      }
-    }
+            &:before,
+            &:after {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
 
-    &:checked + label {
-      &:before {
-        border: 2px solid $orange;
-      }
+                width: $radio-button-size;
+                height: $radio-button-size;
 
-      &:after {
-        z-index: 0;
+                content: '';
 
-        background-color: $orange;
-        transform: scale(0.5);
-      }
-    }
+                background-color: $pure-white;
+                border-radius: 50%;
 
-    &:disabled {
-      & + label {
-        color: $medium-grey;
-        cursor: not-allowed;
-
-        &:before {
-          border-color: $medium-grey;
+                transition: 0.28s ease;
+            }
         }
-      }
 
-      &:checked {
-        & + label:after {
-          background-color: $medium-grey;
+        &:focus + label:before {
+            box-shadow: 0 0 0 8px $light-grey;
         }
-      }
+
+        &:not(:checked) + label {
+            &:before {
+                border: 2px solid $medium-blue;
+            }
+
+            &:after {
+                z-index: -1;
+
+                transform: scale(0);
+            }
+        }
+
+        &:checked + label {
+            &:before {
+                border: 2px solid $orange;
+            }
+
+            &:after {
+                z-index: 0;
+
+                background-color: $orange;
+                transform: scale(0.5);
+            }
+        }
+
+        &:disabled {
+            & + label {
+                color: $medium-grey;
+                cursor: not-allowed;
+
+                &:before {
+                    border-color: $medium-grey;
+                }
+            }
+
+            &:checked {
+                & + label:after {
+                    background-color: $medium-grey;
+                }
+            }
+        }
     }
-  }
 }
 
 .radio-select {
-  .radio-option + .radio-option {
-    margin-top: $checkbox-label-margin-top;
-  }
+    .radio-option + .radio-option {
+        margin-top: $checkbox-label-margin-top;
+    }
 }

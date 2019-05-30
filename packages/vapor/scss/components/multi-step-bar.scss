@@ -1,149 +1,164 @@
 .multi-step-bar-container {
-  position: relative;
-  &.mod-small {
-    .multi-step-bar {
-      min-height: $multi-step-small-height;
+    position: relative;
+    &.mod-small {
+        .multi-step-bar {
+            min-height: $multi-step-small-height;
+        }
+        .multi-step-bar-text {
+            padding: $multi-step-bar-mod-small-text-padding;
+        }
     }
-    .multi-step-bar-text {
-      padding: $multi-step-bar-mod-small-text-padding;
-    }
-  }
-  &.mod-multi-step-bar-in-progress-sliding-animation {
-    .multi-step-bar-doing {
-      z-index: 1;
+    &.mod-multi-step-bar-in-progress-sliding-animation {
+        .multi-step-bar-doing {
+            z-index: 1;
 
-      background-image: repeating-linear-gradient(90deg, transparent, transparent 11px, $multi-step-animation-color 10px, $multi-step-animation-color 25px);
-      background-repeat: repeat-x;
-      background-size: $multi-step-sliding-animation-background-width $multi-step-sliding-animation-background-height;
+            background-image: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 11px,
+                $multi-step-animation-color 10px,
+                $multi-step-animation-color 25px
+            );
+            background-repeat: repeat-x;
+            background-size: $multi-step-sliding-animation-background-width
+                $multi-step-sliding-animation-background-height;
 
-      animation: slide-background 0.4s linear infinite;
+            animation: slide-background 0.4s linear infinite;
+        }
     }
-  }
-  &.mod-multi-step-bar-in-progress-shine-animation {
-    .multi-step-bar-doing {
-      animation: shine-background 5s linear reverse infinite;
+    &.mod-multi-step-bar-in-progress-shine-animation {
+        .multi-step-bar-doing {
+            animation: shine-background 5s linear reverse infinite;
+        }
     }
-  }
-  &.mod-multi-step-bar-flare-animation {
-    &:after {
-      position: absolute;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
+    &.mod-multi-step-bar-flare-animation {
+        &:after {
+            position: absolute;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
 
-      content: '';
+            content: '';
 
-      background-image: linear-gradient(90deg, transparent, transparent 25%, $multi-step-animation-color 49%, $multi-step-animation-color 51%, transparent 75%);
-      background-repeat: no-repeat;
-      background-size: 25% 100%;
+            background-image: linear-gradient(
+                90deg,
+                transparent,
+                transparent 25%,
+                $multi-step-animation-color 49%,
+                $multi-step-animation-color 51%,
+                transparent 75%
+            );
+            background-repeat: no-repeat;
+            background-size: 25% 100%;
 
-      animation: slide-shine 3s linear infinite;
+            animation: slide-shine 3s linear infinite;
+        }
     }
-  }
-  &.mod-multi-step-bar-separated {
-    .multi-step-bar:not(:last-child) {
-      margin-right: $multi-step-bar-separation;
+    &.mod-multi-step-bar-separated {
+        .multi-step-bar:not(:last-child) {
+            margin-right: $multi-step-bar-separation;
+        }
     }
-  }
 }
 
 .multi-step-bar {
-  align-items: center;
-  align-content: center;
-  flex: 1;
+    align-items: center;
+    align-content: center;
+    flex: 1;
 
-  display: flex;
-  min-height: $multi-step-min-height;
+    display: flex;
+    min-height: $multi-step-min-height;
 
-  opacity: 1;
+    opacity: 1;
 }
 
 .multi-step-bar-text {
-  flex: 1;
+    flex: 1;
 
-  padding: $multi-step-bar-text-padding;
+    padding: $multi-step-bar-text-padding;
 
-  text-align: center;
+    text-align: center;
 
-  cursor: default;
+    cursor: default;
 }
 
-.multi-step-bar-content-container, .multi-step-bar-backdrop-container {
-  flex-wrap: wrap;
+.multi-step-bar-content-container,
+.multi-step-bar-backdrop-container {
+    flex-wrap: wrap;
 
-  display: flex;
+    display: flex;
 }
 
 .multi-step-bar-content-container {
-  position: absolute;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 1;
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1;
 }
 
 .multi-step-bar-backdrop-container {
-  overflow: hidden;
+    overflow: hidden;
 
-  color: transparent;
+    color: transparent;
 
-  pointer-events: none;
-  .multi-step-bar {
-    transform: skewX(-20deg);
-    &:first-child {
-      padding-left: $default-margin;
-      margin-left: -$default-margin;
+    pointer-events: none;
+    .multi-step-bar {
+        transform: skewX(-20deg);
+        &:first-child {
+            padding-left: $default-margin;
+            margin-left: -$default-margin;
+        }
+        &:last-child {
+            padding-right: $default-margin;
+            margin-right: -$default-margin;
+        }
     }
-    &:last-child {
-      padding-right: $default-margin;
-      margin-right: -$default-margin;
+    .multi-step-bar-to-do {
+        background-color: $multi-step-to-do-color;
     }
-  }
-  .multi-step-bar-to-do {
-    background-color: $multi-step-to-do-color;
-  }
-  .multi-step-bar-doing {
-    background-color: $multi-step-doing-color;
-  }
-  .multi-step-bar-done {
-    background-color: $multi-step-done-color;
-  }
-  .multi-step-bar-error {
-    background-color: $multi-step-error-color;
-  }
-  .multi-step-bar-warning {
-    background-color: $multi-step-warning-color;
-  }
+    .multi-step-bar-doing {
+        background-color: $multi-step-doing-color;
+    }
+    .multi-step-bar-done {
+        background-color: $multi-step-done-color;
+    }
+    .multi-step-bar-error {
+        background-color: $multi-step-error-color;
+    }
+    .multi-step-bar-warning {
+        background-color: $multi-step-warning-color;
+    }
 }
 
 @keyframes slide-shine {
-  0% {
-    background-position: -25% 0;
-  }
-  100% {
-    background-position: 125% 0;
-  }
+    0% {
+        background-position: -25% 0;
+    }
+    100% {
+        background-position: 125% 0;
+    }
 }
 
 @keyframes slide-background {
-  0% {
-    background-position: 0 0;
-  }
-  100% {
-    background-position: $multi-step-sliding-animation-background-width 0;
-  }
+    0% {
+        background-position: 0 0;
+    }
+    100% {
+        background-position: $multi-step-sliding-animation-background-width 0;
+    }
 }
 
 @keyframes shine-background {
-  0% {
-    opacity: 0;
-  }
-  50% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0;
-  }
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

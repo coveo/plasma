@@ -1,42 +1,45 @@
 .pagination-container {
-  flex-flow: row wrap;
+    flex-flow: row wrap;
 
-  display: flex;
-  margin-bottom: $pagination-vertical-margin;
+    display: flex;
+    margin-bottom: $pagination-vertical-margin;
 
-  &.loading-view {
+    &.loading-view {
+        .spinner {
+            display: block;
+            margin-top: 30px;
+        }
+
+        .items-per-page,
+        .pagination {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+    }
+
+    .items-per-page {
+        margin: $pagination-vertical-margin $header-padding 0 $header-padding;
+    }
+
+    .pagination {
+        margin: $pagination-vertical-margin calc(#{$header-padding} - 5px) 0 calc(#{$header-padding} - 5px);
+    }
+
+    .pagination .pagination-icon {
+        vertical-align: -2px;
+    }
+
     .spinner {
-      display: block;
-      margin-top: 30px;
+        display: none;
     }
-
-    .items-per-page, .pagination {
-      opacity: 0.4;
-      pointer-events: none;
-    }
-  }
-
-  .items-per-page {
-    margin: $pagination-vertical-margin $header-padding 0 $header-padding;
-  }
-
-  .pagination {
-    margin: $pagination-vertical-margin calc(#{$header-padding} - 5px) 0 calc(#{$header-padding} - 5px);
-  }
-
-  .pagination .pagination-icon {
-    vertical-align: -2px;
-  }
-
-  .spinner {
-    display: none;
-  }
 }
 
-.modal, .modal-container .modal-body {
-  .pagination-container {
-    .items-per-page, .pagination {
-      margin: $pagination-vertical-margin -5px 0 0;
+.modal,
+.modal-container .modal-body {
+    .pagination-container {
+        .items-per-page,
+        .pagination {
+            margin: $pagination-vertical-margin -5px 0 0;
+        }
     }
-  }
 }

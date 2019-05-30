@@ -1,38 +1,38 @@
 .color-dot {
-  display: inline-block;
-  width: $color-dot-size;
-  height: $color-dot-size;
-  min-width: $color-dot-size;
-  min-height: $color-dot-size;
+    display: inline-block;
+    width: $color-dot-size;
+    height: $color-dot-size;
+    min-width: $color-dot-size;
+    min-height: $color-dot-size;
 
-  background-color: $green;
-  border-radius: 100%;
+    background-color: $green;
+    border-radius: 100%;
 
-  &.state-critical {
-    background-color: $red;
-  }
+    &.state-critical {
+        background-color: $red;
+    }
 
-  &.state-major {
-    background-color: $orange;
-  }
+    &.state-major {
+        background-color: $orange;
+    }
 
-  &.state-minor {
-    background-color: $yellow;
-  }
+    &.state-minor {
+        background-color: $yellow;
+    }
 
-  &.state-info {
-    background-color: $blue;
-  }
+    &.state-info {
+        background-color: $blue;
+    }
 
-  &.state-disabled {
-    background-color: $light-grey;
-  }
+    &.state-disabled {
+        background-color: $light-grey;
+    }
 
-  &.state-executing {
-    animation: scaleoutCentered 1.0s infinite ease-in-out;
-  }
+    &.state-executing {
+        animation: scaleoutCentered 1s infinite ease-in-out;
+    }
 
-  &.state-waiting {
-    background-color: $medium-grey;
-  }
+    &.state-waiting {
+        background-color: $medium-grey;
+    }
 }

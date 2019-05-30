@@ -1,120 +1,129 @@
 .filter-expression-picker {
-  .add-filter-popup, .edit-filter-popup, .filter-type-popup {
-    position: absolute;
-    z-index: 999;
+    .add-filter-popup,
+    .edit-filter-popup,
+    .filter-type-popup {
+        position: absolute;
+        z-index: 999;
 
-    width: $filter-pop-up-width;
+        width: $filter-pop-up-width;
 
-    .operator, .select-operator, .value-selector {
-      .admin-select {
-        width: 100%;
+        .operator,
+        .select-operator,
+        .value-selector {
+            .admin-select {
+                width: 100%;
 
-        .dropdown-toggle {
-          box-sizing: border-box;
-          width: 100%;
+                .dropdown-toggle {
+                    box-sizing: border-box;
+                    width: 100%;
 
-          text-align: left;
+                    text-align: left;
+                }
+            }
         }
-      }
     }
-  }
 
-  .add-filter-popup.left {
-    right: $add-filter-popup-right;
-  }
+    .add-filter-popup.left {
+        right: $add-filter-popup-right;
+    }
 
-  .edit-filter-popup.left {
-    right: $edit-filter-popup-right;
-  }
+    .edit-filter-popup.left {
+        right: $edit-filter-popup-right;
+    }
 
-  .filter-choices, .columns-picker {
-    .popup-content {
-      .section {
-        display: inline-block;
-        width: 100%;
-        padding-left: $filter-choices-section-padding-left;
-        margin-top: $filter-choices-section-margin-top;
+    .filter-choices,
+    .columns-picker {
+        .popup-content {
+            .section {
+                display: inline-block;
+                width: 100%;
+                padding-left: $filter-choices-section-padding-left;
+                margin-top: $filter-choices-section-margin-top;
 
-        color: $medium-blue;
-        text-transform: uppercase;
-      }
+                color: $medium-blue;
+                text-transform: uppercase;
+            }
 
-      .list {
+            .list {
+                @include slim-scroll($light-grey, $medium-grey);
+            }
+        }
+    }
+
+    .filter-choices .popup-content {
+        max-height: 300px;
+        overflow: auto;
+
         @include slim-scroll($light-grey, $medium-grey);
-      }
     }
-  }
 
-  .filter-choices .popup-content {
-    max-height: 300px;
-    overflow: auto;
-
-    @include slim-scroll($light-grey, $medium-grey);
-  }
-
-  .filter-choices, .edit-filter-values {
-    .popup-header {
-      background-color: $white;
-      border-bottom: $default-border;
-    }
-  }
-
-  .filter-choices .popup-header {
-    /// @deprecated the prefix coveo is no longer used.
-    .coveo-filter-container, .filter-container {
-      width: $filter-box-width-small-screen;
-
-      .filter-icon {
-        right: $icon-offset-small-screen;
-      }
-
-      input.filter-box {
-        width: $filter-box-width-small-screen;
-
-        & + span {
-          right: $icon-offset-small-screen;
+    .filter-choices,
+    .edit-filter-values {
+        .popup-header {
+            background-color: $white;
+            border-bottom: $default-border;
         }
-      }
     }
 
-    .event-type {
-      width: $filter-event-type-width;
-      margin-bottom: $filter-event-type-margin-bottom;
-    }
-  }
+    .filter-choices .popup-header {
+        /// @deprecated the prefix coveo is no longer used.
+        .coveo-filter-container,
+        .filter-container {
+            width: $filter-box-width-small-screen;
 
-  .available-filters, .edit-filter-values {
-    ul {
-      margin: 0;
-    }
+            .filter-icon {
+                right: $icon-offset-small-screen;
+            }
 
-    .filter:not(.selected-filter) {
-      box-sizing: content-box;
-      min-height: $filter-not-selected-min-height;
-      padding: $filter-padding;
-      margin-right: $filter-not-selected-margin-right;
-      overflow-x: hidden;
+            input.filter-box {
+                width: $filter-box-width-small-screen;
 
-      line-height: $filter-not-selected-line-height;
-      text-overflow: ellipsis;
-      white-space: nowrap;
+                & + span {
+                    right: $icon-offset-small-screen;
+                }
+            }
+        }
 
-      background-color: $pure-white;
-
-      cursor: pointer;
-
-      .type {
-        color: $medium-grey;
-        font-size: $filter-type-font-size;
-      }
+        .event-type {
+            width: $filter-event-type-width;
+            margin-bottom: $filter-event-type-margin-bottom;
+        }
     }
 
-    li.filter:hover, li.filter.active {
-      background-color: $light-grey;
-    }
+    .available-filters,
+    .edit-filter-values {
+        ul {
+            margin: 0;
+        }
 
-    label.filter {
-      cursor: default;
+        .filter:not(.selected-filter) {
+            box-sizing: content-box;
+            min-height: $filter-not-selected-min-height;
+            padding: $filter-padding;
+            margin-right: $filter-not-selected-margin-right;
+            overflow-x: hidden;
+
+            line-height: $filter-not-selected-line-height;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+
+            background-color: $pure-white;
+
+            cursor: pointer;
+
+            .type {
+                color: $medium-grey;
+                font-size: $filter-type-font-size;
+            }
+        }
+
+        li.filter:hover,
+        li.filter.active {
+            background-color: $light-grey;
+        }
+
+        label.filter {
+            cursor: default;
+        }
     }
-  }
 }

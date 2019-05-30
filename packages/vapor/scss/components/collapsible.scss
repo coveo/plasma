@@ -1,50 +1,50 @@
 .collapsible {
-  .collapsible-header {
-    display: block;
-    width: 100%;
-    min-height: $collapsible-height;
-    padding: 0 $header-padding;
+    .collapsible-header {
+        display: block;
+        width: 100%;
+        min-height: $collapsible-height;
+        padding: 0 $header-padding;
 
-    font-size: $collapsible-header-font-size;
-    line-height: $collapsible-height;
-    text-align: left;
-    text-transform: uppercase;
+        font-size: $collapsible-header-font-size;
+        line-height: $collapsible-height;
+        text-align: left;
+        text-transform: uppercase;
 
-    background-color: $white;
-    background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgLTEgMTIuMzY2IDcuMDg2KSIgICAgICAgIGQ9Im0xMS40MjEgNy4wNGMtLjMgMC0uNS0uMS0uNy0uM2wtNC42LTQuNi00LjYgNC42Yy0uNC40LTEgLjQtMS40IDBzLS40LTEgMC0xLjRsNS4yLTUuMmMuNC0uNCAxLjItLjQgMS42IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNC0uMi4yLS40LjMtLjcuMyIvPjwvc3ZnPg==');
-    background-repeat: no-repeat;
-    background-position: right $header-padding center;
-    background-size: $collapsible-header-icon-size $collapsible-header-icon-size;
-    border: none;
-    border-bottom: $default-border;
-    outline: none;
+        background-color: $white;
+        background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgLTEgMTIuMzY2IDcuMDg2KSIgICAgICAgIGQ9Im0xMS40MjEgNy4wNGMtLjMgMC0uNS0uMS0uNy0uM2wtNC42LTQuNi00LjYgNC42Yy0uNC40LTEgLjQtMS40IDBzLS40LTEgMC0xLjRsNS4yLTUuMmMuNC0uNCAxLjItLjQgMS42IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNC0uMi4yLS40LjMtLjcuMyIvPjwvc3ZnPg==');
+        background-repeat: no-repeat;
+        background-position: right $header-padding center;
+        background-size: $collapsible-header-icon-size $collapsible-header-icon-size;
+        border: none;
+        border-bottom: $default-border;
+        outline: none;
 
-    cursor: pointer;
+        cursor: pointer;
 
-    &.active {
-      background-color: $light-grey;
-      background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCAgICAgIGQ9Im0xMS4zIDcuMDRjLS4zIDAtLjUtLjEtLjctLjNsLTQuNi00LjYtNC42IDQuNmMtLjQuNC0xIC40LTEuNCAwcy0uNC0xIDAtMS40bDUuMi01LjJjLjQtLjQgMS4yLS40IDEuNiAwbDUuMiA1LjJjLjQuNC40IDEgMCAxLjQtLjIuMi0uNC4zLS43LjMiLz48L3N2Zz4=');
+        &.active {
+            background-color: $light-grey;
+            background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCAgICAgIGQ9Im0xMS4zIDcuMDRjLS4zIDAtLjUtLjEtLjctLjNsLTQuNi00LjYtNC42IDQuNmMtLjQuNC0xIC40LTEuNCAwcy0uNC0xIDAtMS40bDUuMi01LjJjLjQtLjQgMS4yLS40IDEuNiAwbDUuMiA1LjJjLjQuNC40IDEgMCAxLjQtLjIuMi0uNC4zLS43LjMiLz48L3N2Zz4=');
+        }
     }
-  }
 
-  .collapsible-body {
-    box-sizing: border-box;
-    display: none;
-    padding: $form-top-padding $header-padding;
+    .collapsible-body {
+        box-sizing: border-box;
+        display: none;
+        padding: $form-top-padding $header-padding;
 
-    border-bottom: $default-border;
-  }
+        border-bottom: $default-border;
+    }
 
-  .collapsible-body-visible {
-    box-sizing: border-box;
-    padding: $form-top-padding $header-padding;
+    .collapsible-body-visible {
+        box-sizing: border-box;
+        padding: $form-top-padding $header-padding;
 
-    border-bottom: $default-border;
-  }
+        border-bottom: $default-border;
+    }
 
-  .round-contextual-help {
-    position: relative;
-    top: $collapsible-contextual-help-positioning;
-    left: $collapsible-contextual-help-positioning;
-  }
+    .round-contextual-help {
+        position: relative;
+        top: $collapsible-contextual-help-positioning;
+        left: $collapsible-contextual-help-positioning;
+    }
 }

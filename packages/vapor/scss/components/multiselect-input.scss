@@ -1,70 +1,72 @@
 .multiselect-input {
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
 
-  display: flex;
-  width: $dropdown-button-min-width;
-  padding: $multiselect-padding;
+    display: flex;
+    width: $dropdown-button-min-width;
+    padding: $multiselect-padding;
 
-  border-radius: $border-radius;
+    border-radius: $border-radius;
 
-  @extend .mod-border-transparency-4;
+    @extend .mod-border-transparency-4;
 }
 
 .select-dropdown.mod-multi .select-dropdown-button + .select-dropdown-container {
-  margin-top: $multiselect-dropdown-margin;
+    margin-top: $multiselect-dropdown-margin;
 }
 
 .multiselect-add {
-  width: 100%;
+    width: 100%;
 }
 
 .multiselect-selected {
-  align-items: center;
-  flex-flow: row nowrap;
-  justify-content: space-between;
+    align-items: center;
+    flex-flow: row nowrap;
+    justify-content: space-between;
 
-  display: flex;
+    display: flex;
 }
 
 .selected-options-container {
-  flex-flow: row wrap;
+    flex-flow: row wrap;
 
-  display: inline-flex;
+    display: inline-flex;
 
-  .selected-option, .sortable-selected-option {
-    margin: 0 $dropdown-multiselect-margin $dropdown-multiselect-margin 0;
-  }
+    .selected-option,
+    .sortable-selected-option {
+        margin: 0 $dropdown-multiselect-margin $dropdown-multiselect-margin 0;
+    }
 }
 
 .multiselect-input.mod-sortable .selected-options-container {
-  align-items: flex-start;
-  flex-flow: column nowrap;
+    align-items: flex-start;
+    flex-flow: column nowrap;
 
-  .selected-option {
-    margin: 0;
-  }
+    .selected-option {
+        margin: 0;
+    }
 }
 
 .multiselect-empty {
-  margin-bottom: $spacing;
+    margin-bottom: $spacing;
 
-  color: $medium-grey;
-  line-height: $button-small-height + 2 * $button-border-width;
+    color: $medium-grey;
+    line-height: $button-small-height + 2 * $button-border-width;
 }
 
-.selected-option:last-child, .sortable-selected-option:last-child {
-  margin-bottom: $spacing;
+.selected-option:last-child,
+.sortable-selected-option:last-child {
+    margin-bottom: $spacing;
 }
 
 .remove-all-selected-options {
-  align-self: flex-start;
+    align-self: flex-start;
 
-  padding: $dropdown-multiselect-items-margin;
+    padding: $dropdown-multiselect-items-margin;
 }
 
 .remove-all-selected-options:hover {
-  cursor: pointer;
+    cursor: pointer;
 }

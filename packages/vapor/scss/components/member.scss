@@ -1,40 +1,40 @@
 .member {
-  align-items: center;
+    align-items: center;
 
-  display: flex;
+    display: flex;
 
-  .member-icon {
-    width: 42px;
-    height: 42px;
-    overflow: hidden;
+    .member-icon {
+        width: 42px;
+        height: 42px;
+        overflow: hidden;
 
-    background-color: $white;
-    border-radius: 100%;
+        background-color: $white;
+        border-radius: 100%;
 
-    .member-icon-provider {
-      display: block;
-      height: 42px;
-      max-width: 26px;
-      margin: auto;
-    }
-  }
-
-  .member-info {
-    margin-left: 14px;
-
-    .member-info-name {
-      font-size: 13px;
-      font-weight: 700;
-      line-height: 16px;
-      text-transform: uppercase;
+        .member-icon-provider {
+            display: block;
+            height: 42px;
+            max-width: 26px;
+            margin: auto;
+        }
     }
 
-    .member-info-email {
-      margin-top: 2px;
+    .member-info {
+        margin-left: 14px;
 
-      font-size: 12px;
-      font-weight: 400;
-      line-height: 15px;
+        .member-info-name {
+            font-size: 13px;
+            font-weight: 700;
+            line-height: 16px;
+            text-transform: uppercase;
+        }
+
+        .member-info-email {
+            margin-top: 2px;
+
+            font-size: 12px;
+            font-weight: 400;
+            line-height: 15px;
+        }
     }
-  }
 }

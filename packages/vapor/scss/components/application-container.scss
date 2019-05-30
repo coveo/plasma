@@ -1,17 +1,17 @@
 .application-container {
-  flex-basis: 0;
-  flex-grow: 1;
-  order: 2;
+    flex-basis: 0;
+    flex-grow: 1;
+    order: 2;
 
-  max-width: 100vw;
-  overflow: auto;
+    max-width: 100vw;
+    overflow: auto;
 
-  border-top-left-radius: 2px;
+    border-top-left-radius: 2px;
 }
 
 .application-wrapper {
-  align-content: flex-start;
-  flex-basis: 0;
-  flex-flow: row nowrap;
-  flex-grow: 1;
+    align-content: flex-start;
+    flex-basis: 0;
+    flex-flow: row nowrap;
+    flex-grow: 1;
 }

@@ -2,261 +2,268 @@ $icon-size: (4em / 3);
 
 // This generate classes layer-1, layer-2, ..., layer-10.
 @mixin generate-layers($nbr-layers, $base) {
-  @for $i from 1 through $nbr-layers {
-    &.layer-#{$i} {
-      z-index: $base + ($i - 1) * 20;
+    @for $i from 1 through $nbr-layers {
+        &.layer-#{$i} {
+            z-index: $base + ($i - 1) * 20;
+        }
     }
-  }
 }
 
+.modal-backdrop,
+.modal-container {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
 
-.modal-backdrop, .modal-container {
-  position: fixed;
-  top: 0;
-  right: 0;
-  bottom: 0;
-  left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
 
-  width: 100vw;
-  height: 100vh;
-  overflow: hidden;
+    &.prompt-backdrop {
+        width: 100%;
+        height: 100%;
+    }
 
-  &.prompt-backdrop {
-    width: 100%;
-    height: 100%;
-  }
+    .modal-container,
+    .modal-container + .modal-backdrop {
+        top: calc((100vh - 100%) / -2);
+        left: calc((100vw - 100%) / -2);
 
-  .modal-container, .modal-container + .modal-backdrop {
-    top: calc((100vh - 100%) / -2);
-    left: calc((100vw - 100%) / -2);
+        &.mod-stick-bottom {
+            bottom: 0;
+        }
+    }
 
     &.mod-stick-bottom {
-      bottom: 0;
+        .modal-container,
+        .modal-container + .modal-backdrop {
+            top: calc((100vh - 95%) / -2);
+        }
     }
-  }
-
-  &.mod-stick-bottom {
-    .modal-container, .modal-container + .modal-backdrop {
-      top: calc((100vh - 95%) / -2);
-    }
-  }
 }
 
 .modal-backdrop {
-  z-index: $base-backdrop-z-index;
+    z-index: $base-backdrop-z-index;
 
-  background: rgba($purple-blue, 0.9);
+    background: rgba($purple-blue, 0.9);
 
-  transition: all 0.3s;
+    transition: all 0.3s;
 
-  opacity: 1;
-
-  @include generate-layers(10, $base-backdrop-z-index);
-  &.--react-modal {
-    opacity: 0;
-  }
-
-  &.prompt-backdrop {
-    position: absolute;
-
-    opacity: 0.5;
-    .mask {
-      position: fixed;
-      top: 0;
-      right: 0;
-      bottom: 0;
-      left: 0;
-    }
-  }
-
-  &.opened {
     opacity: 1;
-  }
 
-  &.clear, &.closed {
-    opacity: 0;
-  }
+    @include generate-layers(10, $base-backdrop-z-index);
+    &.--react-modal {
+        opacity: 0;
+    }
 
-  &.closed {
-    visibility: hidden;
-  }
+    &.prompt-backdrop {
+        position: absolute;
+
+        opacity: 0.5;
+        .mask {
+            position: fixed;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            left: 0;
+        }
+    }
+
+    &.opened {
+        opacity: 1;
+    }
+
+    &.clear,
+    &.closed {
+        opacity: 0;
+    }
+
+    &.closed {
+        visibility: hidden;
+    }
 }
 
 .modal-container {
-  align-items: center;
-  justify-content: center;
-  z-index: $base-modal-z-index;
-
-  display: flex;
-
-  pointer-events: none; // Required to allow clicking through the modal-container on the modal-backdrop. Known issue: wont work on IE 10.
-
-  @include generate-layers(10, $base-modal-z-index);
-
-  &:not(.--react-modal) {
-    visibility: hidden;
-  }
-
-  &.opening, &.opened {
-    visibility: visible;
-
-     > .modal-content {
-      opacity: 1;
-    }
-  }
-
-  .modal-content {
-    position: relative;
-    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: $base-modal-z-index;
 
     display: flex;
-    width: $modal-width;
-    height: $modal-height;
 
-    transform: translate3d(0, 0, 0); // Required for drag and drop positioning with dragula inside the modal.
+    pointer-events: none; // Required to allow clicking through the modal-container on the modal-backdrop. Known issue: wont work on IE 10.
 
-    opacity: 0;
-    pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
-  }
+    @include generate-layers(10, $base-modal-z-index);
 
-  &.mod-medium > .modal-content {
-    width: $modal-medium-width;
-    height: $modal-medium-height;
-  }
+    &:not(.--react-modal) {
+        visibility: hidden;
+    }
 
-  &.mod-big > .modal-content {
-    width: $modal-big-width;
-    height: $modal-big-height;
-  }
+    &.opening,
+    &.opened {
+        visibility: visible;
 
-  // need to be after other mod to combine with other below
-  &.mod-width-small > .modal-content {
-    width: $modal-form-width-small + 2 * $header-padding;
-  }
+        > .modal-content {
+            opacity: 1;
+        }
+    }
 
-  &.mod-stick-bottom {
-    align-items: flex-end;
+    .modal-content {
+        position: relative;
+        flex-direction: column;
 
-     > .modal-content {
-      height: $modal-height-stick;
+        display: flex;
+        width: $modal-width;
+        height: $modal-height;
 
-       > .modal-footer {
-        border-radius: 0;
-      }
+        transform: translate3d(0, 0, 0); // Required for drag and drop positioning with dragula inside the modal.
+
+        opacity: 0;
+        pointer-events: auto; // Required to reverse "pointer-events: none" effects on modal-content. Known issue: wont work on IE 10.
     }
 
     &.mod-medium > .modal-content {
-      height: $modal-medium-height-stick;
+        width: $modal-medium-width;
+        height: $modal-medium-height;
     }
 
     &.mod-big > .modal-content {
-      height: $modal-big-height-stick;
+        width: $modal-big-width;
+        height: $modal-big-height;
     }
-  }
 
-  &.mod-fade-in-scale > .modal-content, &.closed.mod-fade-in-scale > .modal-content {
-    transform: scale(0.7);
+    // need to be after other mod to combine with other below
+    &.mod-width-small > .modal-content {
+        width: $modal-form-width-small + 2 * $header-padding;
+    }
 
-    transition: all 0.3s;
-  }
+    &.mod-stick-bottom {
+        align-items: flex-end;
 
-  &.opened.mod-fade-in-scale > .modal-content {
-    transform: scale(1);
-  }
+        > .modal-content {
+            height: $modal-height-stick;
 
-  &.mod-slide-in-bottom > .modal-content, &closed.mod-slide-in-bottom > .modal-content {
-    transform: translate3d(0, 20%, 0);
+            > .modal-footer {
+                border-radius: 0;
+            }
+        }
 
-    transition: all 0.3s;
-  }
+        &.mod-medium > .modal-content {
+            height: $modal-medium-height-stick;
+        }
 
-  &.opened.mod-slide-in-bottom > .modal-content {
-    transform: translate3d(0, 0, 0);
-  }
+        &.mod-big > .modal-content {
+            height: $modal-big-height-stick;
+        }
+    }
+
+    &.mod-fade-in-scale > .modal-content,
+    &.closed.mod-fade-in-scale > .modal-content {
+        transform: scale(0.7);
+
+        transition: all 0.3s;
+    }
+
+    &.opened.mod-fade-in-scale > .modal-content {
+        transform: scale(1);
+    }
+
+    &.mod-slide-in-bottom > .modal-content,
+    &closed.mod-slide-in-bottom > .modal-content {
+        transform: translate3d(0, 20%, 0);
+
+        transition: all 0.3s;
+    }
+
+    &.opened.mod-slide-in-bottom > .modal-content {
+        transform: translate3d(0, 0, 0);
+    }
 }
 
 .modal-header {
-  align-items: center;
+    align-items: center;
 
-  display: flex;
-  height: $modal-header-height;
-  padding: 0 $header-padding;
+    display: flex;
+    height: $modal-header-height;
+    padding: 0 $header-padding;
 
-  color: $pure-white;
+    color: $pure-white;
 
-  background-color: $pure-white;
-  border-radius: $border-radius $border-radius 0 0;
+    background-color: $pure-white;
+    border-radius: $border-radius $border-radius 0 0;
 
-  &:not(.mod-no-border-bottom) {
-    border-bottom: $default-border;
-  }
-
-  &.mod-confirmation {
-    background-color: $yellow;
-  }
-
-  &.mod-warning {
-    background-color: $red;
-  }
-
-  &.mod-info {
-    background-color: $medium-blue;
-  }
-
-  h1 {
-    flex-grow: 1;
-
-    overflow: hidden;
-
-    color: $medium-blue;
-    line-height: 30px;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
-
-  .small-close {
-    position: absolute;
-    top: -($icon-size + pxtoem(10));
-    right: 0;
-
-    cursor: pointer;
-
-    // Make both the icon and his containing span the same size.
-    &, & .icon {
-      width: $icon-size;
-      height: $icon-size;
+    &:not(.mod-no-border-bottom) {
+        border-bottom: $default-border;
     }
-  }
+
+    &.mod-confirmation {
+        background-color: $yellow;
+    }
+
+    &.mod-warning {
+        background-color: $red;
+    }
+
+    &.mod-info {
+        background-color: $medium-blue;
+    }
+
+    h1 {
+        flex-grow: 1;
+
+        overflow: hidden;
+
+        color: $medium-blue;
+        line-height: 30px;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    .small-close {
+        position: absolute;
+        top: -($icon-size + pxtoem(10));
+        right: 0;
+
+        cursor: pointer;
+
+        // Make both the icon and his containing span the same size.
+        &,
+        & .icon {
+            width: $icon-size;
+            height: $icon-size;
+        }
+    }
 }
 
 .modal-body {
-  flex-basis: 0;
-  flex-grow: 1;
+    flex-basis: 0;
+    flex-grow: 1;
 
-  overflow: auto;
+    overflow: auto;
 
-  background-color: $pure-white;
+    background-color: $pure-white;
 
-  -webkit-overflow-scrolling: touch;
+    -webkit-overflow-scrolling: touch;
 
-  .tab-content {
-    height: 100%;
-  }
+    .tab-content {
+        height: 100%;
+    }
 }
 
 .modal-footer {
-  align-items: center;
-  justify-content: flex-end;
+    align-items: center;
+    justify-content: flex-end;
 
-  display: flex;
-  padding: $modal-footer-padding;
-  overflow: hidden;
+    display: flex;
+    padding: $modal-footer-padding;
+    overflow: hidden;
 
-  background-color: $white;
-  border-top: $default-border;
-  border-radius: 0 0 $border-radius $border-radius;
+    background-color: $white;
+    border-top: $default-border;
+    border-radius: 0 0 $border-radius $border-radius;
 
-  &.mod-small {
-    padding: $modal-footer-small-padding;
-  }
+    &.mod-small {
+        padding: $modal-footer-small-padding;
+    }
 }

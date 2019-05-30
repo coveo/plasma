@@ -1,14 +1,14 @@
 .breadcrumb-title {
-  @extend .h1;
-  @extend .inline-flex;
-  @extend .bold;
-  @extend .flex-center;
+    @extend .h1;
+    @extend .inline-flex;
+    @extend .bold;
+    @extend .flex-center;
 }
 
 .breadcrumb-arrow {
-  margin-top: $breadcrumb-icon-vertical-alignment;
+    margin-top: $breadcrumb-icon-vertical-alignment;
 
-  @extend .icon;
-  @extend .mod-normal;
-  fill: $medium-grey;
+    @extend .icon;
+    @extend .mod-normal;
+    fill: $medium-grey;
 }

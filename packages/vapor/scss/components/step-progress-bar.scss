@@ -1,29 +1,29 @@
 .step-progress-bar-container {
-  align-items: flex-start;
+    align-items: flex-start;
 
-  display: flex;
+    display: flex;
 }
 
 .step-progress-bar {
-  flex: 1;
+    flex: 1;
 
-  height: $step-progress-bar-height;
-  padding: 0;
-  margin: 0;
+    height: $step-progress-bar-height;
+    padding: 0;
+    margin: 0;
 
-  &:not(:last-child) {
-    border-right: $step-progress-bar-border-width solid $pure-white;
-  }
+    &:not(:last-child) {
+        border-right: $step-progress-bar-border-width solid $pure-white;
+    }
 }
 
 .step-progress-bar-done {
-  background-color: $step-progress-bar-done-color;
+    background-color: $step-progress-bar-done-color;
 }
 
 .step-progress-bar-doing {
-  background-color: $step-progress-bar-doing-color;
+    background-color: $step-progress-bar-doing-color;
 }
 
 .step-progress-bar-to-do {
-  background-color: $step-progress-bar-to-do-color;
+    background-color: $step-progress-bar-to-do-color;
 }

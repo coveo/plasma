@@ -1,44 +1,44 @@
 table.drag-and-drop-table-view {
-  [draggable] {
-    user-select: none;
+    [draggable] {
+        user-select: none;
 
-    -webkit-user-drag: element;
-  }
-
-  tr th.drag-column {
-    width: $table-column-draggable-width;
-    padding: $table-column-draggable-padding;
-  }
-
-  tr.drag-over {
-    background-color: $table-row-drag-over-color;
-
-    td.drag-feedback {
-      background-color: $table-row-drag-over-color;
-    }
-  }
-
-  .drag-feedback {
-    position: relative;
-  }
-
-  .handle {
-    padding: 0;
-    padding-left: 5px;
-
-    text-align: center;
-
-    cursor: move; // grab is not available for ie 11 ref: https://msdn.microsoft.com/library/aa358795(v=vs.85).aspx
-    cursor: grab;
-
-    &:active {
-      cursor: grabbing;
+        -webkit-user-drag: element;
     }
 
-    .icon {
-      pointer-events: none;
-
-      fill: $medium-grey;
+    tr th.drag-column {
+        width: $table-column-draggable-width;
+        padding: $table-column-draggable-padding;
     }
-  }
+
+    tr.drag-over {
+        background-color: $table-row-drag-over-color;
+
+        td.drag-feedback {
+            background-color: $table-row-drag-over-color;
+        }
+    }
+
+    .drag-feedback {
+        position: relative;
+    }
+
+    .handle {
+        padding: 0;
+        padding-left: 5px;
+
+        text-align: center;
+
+        cursor: move; // grab is not available for ie 11 ref: https://msdn.microsoft.com/library/aa358795(v=vs.85).aspx
+        cursor: grab;
+
+        &:active {
+            cursor: grabbing;
+        }
+
+        .icon {
+            pointer-events: none;
+
+            fill: $medium-grey;
+        }
+    }
 }

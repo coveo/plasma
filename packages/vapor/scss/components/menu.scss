@@ -1,33 +1,34 @@
 .dropdown.mod-menu {
-  .dropdown-toggle {
-    height: auto;
-    min-height: $button-height;
+    .dropdown-toggle {
+        height: auto;
+        min-height: $button-height;
 
-    text-transform: none;
+        text-transform: none;
 
-    background-color: transparent;
-    border: none;
+        background-color: transparent;
+        border: none;
 
-    cursor: pointer;
+        cursor: pointer;
 
-    .dropdown-toggle-arrow {
-      @include arrow-down-icon($pure-white);
+        .dropdown-toggle-arrow {
+            @include arrow-down-icon($pure-white);
+        }
     }
-  }
 
-  &.open > .dropdown-toggle .dropdown-toggle-arrow {
-    @include arrow-up-icon($pure-white);
-  }
-
-  .dropdown-menu {
-    li {
-      > a, > span {
-        padding: 8px 38px;
-      }
-
-      &.divider {
-        margin: 8px 0;
-      }
+    &.open > .dropdown-toggle .dropdown-toggle-arrow {
+        @include arrow-up-icon($pure-white);
     }
-  }
+
+    .dropdown-menu {
+        li {
+            > a,
+            > span {
+                padding: 8px 38px;
+            }
+
+            &.divider {
+                margin: 8px 0;
+            }
+        }
+    }
 }

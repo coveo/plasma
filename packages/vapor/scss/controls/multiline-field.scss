@@ -1,146 +1,149 @@
 .multiline-field {
-  .input-field {
-    margin-top: 0;
-  }
-
-  .input-wrapper {
-    position: relative;
-
-    padding-bottom: 8px;
-
-    &:nth-child(1) label {
-      visibility: visible;
-    }
-  }
-
-  &.input-field input, input {
-    padding-right: $multiline-input-padding-right;
-  }
-
-  label {
-    visibility: hidden;
-    &:after {
-      visibility: visible;
+    .input-field {
+        margin-top: 0;
     }
 
-    &.first-label {
-      visibility: visible;
-    }
-  }
+    .input-wrapper {
+        position: relative;
 
-  .multiline-label .inline-help-tooltip {
-    width: 1em;
-    height: 1em;
-  }
+        padding-bottom: 8px;
 
-  ul {
-    li {
-      &:first-child label {
-        display: flex;
-      }
-
-      input {
-        margin-bottom: 10px;
-
-        &::-ms-clear {
-          // ie: remove the X on right
-          display: none;
+        &:nth-child(1) label {
+            visibility: visible;
         }
-      }
     }
 
-    &:not(:empty) + .input-wrapper {
-      input {
-        @include placeholder();
-      }
+    &.input-field input,
+    input {
+        padding-right: $multiline-input-padding-right;
+    }
 
-      label.first-label {
+    label {
         visibility: hidden;
-      }
+        &:after {
+            visibility: visible;
+        }
+
+        &.first-label {
+            visibility: visible;
+        }
     }
-  }
+
+    .multiline-label .inline-help-tooltip {
+        width: 1em;
+        height: 1em;
+    }
+
+    ul {
+        li {
+            &:first-child label {
+                display: flex;
+            }
+
+            input {
+                margin-bottom: 10px;
+
+                &::-ms-clear {
+                    // ie: remove the X on right
+                    display: none;
+                }
+            }
+        }
+
+        &:not(:empty) + .input-wrapper {
+            input {
+                @include placeholder();
+            }
+
+            label.first-label {
+                visibility: hidden;
+            }
+        }
+    }
 }
 
 // Action icons
 .input-actions {
-  position: absolute;
-  top: 4px;
-  right: -2px;
+    position: absolute;
+    top: 4px;
+    right: -2px;
 
-  .js-add-value-button, .js-delete-value-button {
-    position: relative;
-
-    padding: 4px;
-
-    &:hover {
-      cursor: pointer;
-    }
-
-    &:focus {
-      i {
-        box-shadow: 0 0 6px 1px $medium-blue;
-      }
-    }
-  }
-
-  button {
-    width: auto;
-
-    background: none;
-    border: none;
-    outline: none;
-  }
-
-  .tooltip {
-    width: $tooltip-width;
-  }
-
-  i {
-    position: relative;
-
-    display: block;
-    width: 18px;
-    height: 18px;
-
-    border: 2px solid $medium-blue;
-    border-radius: 18px;
-
-    &.add-action, &.delete-action {
-      &:before {
+    .js-add-value-button,
+    .js-delete-value-button {
         position: relative;
-        top: 6px;
-        left: 2px;
 
-        display: block;
-        width: 10px;
-        height: 2px;
+        padding: 4px;
 
-        content: '';
+        &:hover {
+            cursor: pointer;
+        }
 
-        background-color: $medium-blue;
-      }
+        &:focus {
+            i {
+                box-shadow: 0 0 6px 1px $medium-blue;
+            }
+        }
     }
 
-    &.add-action {
-      border-color: $orange;
+    button {
+        width: auto;
 
-      &:before {
-        background-color: $orange;
-      }
+        background: none;
+        border: none;
+        outline: none;
+    }
 
-      &:after {
-        position: absolute;
-        top: 2px;
-        left: 6px;
+    .tooltip {
+        width: $tooltip-width;
+    }
+
+    i {
+        position: relative;
 
         display: block;
-        width: 2px;
-        height: 10px;
+        width: 18px;
+        height: 18px;
 
-        content: '';
+        border: 2px solid $medium-blue;
+        border-radius: 18px;
 
-        background-color: $orange;
-      }
+        &.add-action,
+        &.delete-action {
+            &:before {
+                position: relative;
+                top: 6px;
+                left: 2px;
+
+                display: block;
+                width: 10px;
+                height: 2px;
+
+                content: '';
+
+                background-color: $medium-blue;
+            }
+        }
+
+        &.add-action {
+            border-color: $orange;
+
+            &:before {
+                background-color: $orange;
+            }
+
+            &:after {
+                position: absolute;
+                top: 2px;
+                left: 6px;
+
+                display: block;
+                width: 2px;
+                height: 10px;
+
+                content: '';
+
+                background-color: $orange;
+            }
+        }
     }
-  }
 }

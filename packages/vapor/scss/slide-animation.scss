@@ -1,15 +1,15 @@
 .slide-y {
-  height: 0;
+    height: 0;
 
-  transition-duration: $slide-y-transition-duration;
-  transition-property: none;
-  transition-timing-function: ease-in-out;
+    transition-duration: $slide-y-transition-duration;
+    transition-property: none;
+    transition-timing-function: ease-in-out;
 }
 
 .slide-y-transition {
-  overflow-y: hidden;
+    overflow-y: hidden;
 }
 
 .slide-y-closed {
-  display: none;
+    display: none;
 }

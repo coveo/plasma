@@ -1,69 +1,71 @@
 .search-bar {
-  height: $input-height;
-  min-width: $search-bar-min-width;
+    height: $input-height;
+    min-width: $search-bar-min-width;
 
-  border: $default-border;
-  border-radius: $border-radius;
+    border: $default-border;
+    border-radius: $border-radius;
 }
 
 .search-bar-input {
-  float: left;
-  width: calc(100% - #{$search-bar-width-without-input});
-  height: $input-height;
-  margin-top: -$default-border-size;
-  margin-left: $search-bar-input-margin-left;
+    float: left;
+    width: calc(100% - #{$search-bar-width-without-input});
+    height: $input-height;
+    margin-top: -$default-border-size;
+    margin-left: $search-bar-input-margin-left;
 
-  background-color: transparent;
-  border: none;
+    background-color: transparent;
+    border: none;
 
-  &:focus {
-    outline: 0;
-  }
+    &:focus {
+        outline: 0;
+    }
 }
 
 .search-bar-icon-container {
-  float: right;
-  margin: $search-bar-icon-margin;
+    float: right;
+    margin: $search-bar-icon-margin;
 
-  &, svg {
-    width: $search-bar-icon-size;
-    height: $search-bar-icon-size;
-  }
+    &,
+    svg {
+        width: $search-bar-icon-size;
+        height: $search-bar-icon-size;
+    }
 
-  svg {
-    cursor: pointer;
+    svg {
+        cursor: pointer;
 
-    fill: $medium-blue;
-  }
+        fill: $medium-blue;
+    }
 }
 
 .search-bar-disabled svg {
-  cursor: default;
+    cursor: default;
 
-  fill: $light-grey;
+    fill: $light-grey;
 }
 
 .search-bar-loading .search-bar-icon-container {
-  position: relative;
+    position: relative;
 }
 
 .search-bar-spinner {
-  animation: loading-spinner 1s linear infinite;
+    animation: loading-spinner 1s linear infinite;
 
-  &, &:after {
-    position: absolute;
-    top: $search-bar-spinner-offset;
-    left: $search-bar-spinner-offset;
+    &,
+    &:after {
+        position: absolute;
+        top: $search-bar-spinner-offset;
+        left: $search-bar-spinner-offset;
 
-    width: $search-bar-spinner-size;
-    height: $search-bar-spinner-size;
+        width: $search-bar-spinner-size;
+        height: $search-bar-spinner-size;
 
-    border: $search-bar-spinner-border;
-    border-top-color: transparent;
-    border-radius: 50%;
-  }
+        border: $search-bar-spinner-border;
+        border-top-color: transparent;
+        border-radius: 50%;
+    }
 
-  &:after {
-    transform: rotate(90deg);
-  }
+    &:after {
+        transform: rotate(90deg);
+    }
 }

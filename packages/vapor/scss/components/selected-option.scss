@@ -1,74 +1,74 @@
 .selected-option {
-  position: relative;
-  align-items: center;
-  flex: 0 1 auto;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
+    position: relative;
+    align-items: center;
+    flex: 0 1 auto;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 
-  display: inline-flex;
-  height: 100%;
-  max-width: 100%;
-  min-height: $dropdown-multiselect-option-height;
-  margin: $dropdown-multiselect-margin;
+    display: inline-flex;
+    height: 100%;
+    max-width: 100%;
+    min-height: $dropdown-multiselect-option-height;
+    margin: $dropdown-multiselect-margin;
 
-  color: $medium-blue;
-  font-size: $button-small-font-size;
-  line-height: $dropdown-multiselect-option-height;
+    color: $medium-blue;
+    font-size: $button-small-font-size;
+    line-height: $dropdown-multiselect-option-height;
 
-  background-color: $pure-white;
-  border: $default-border;
-  border-radius: $border-radius;
+    background-color: $pure-white;
+    border: $default-border;
+    border-radius: $border-radius;
 
-  cursor: default;
+    cursor: default;
 }
 
 .selected-option-item {
-  align-self: center;
-  flex: 0 1 auto;
+    align-self: center;
+    flex: 0 1 auto;
 }
 
 .selected-option-value {
-  display: inline-flex;
-  margin-left: $dropdown-multiselect-items-margin;
-  overflow: hidden;
+    display: inline-flex;
+    margin-left: $dropdown-multiselect-items-margin;
+    overflow: hidden;
 
-  text-overflow: ellipsis;
+    text-overflow: ellipsis;
 
-  @extend .selected-option-item;
+    @extend .selected-option-item;
 }
 
 .move-option {
-  justify-content: center;
+    justify-content: center;
 
-  height: 100%;
-  margin-right: $dropdown-multiselect-items-margin;
+    height: 100%;
+    margin-right: $dropdown-multiselect-items-margin;
 }
 
 .remove-option {
-  align-items: center;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    justify-content: center;
 
-  display: flex;
-  height: 100%;
-  min-width: $dropdown-multiselect-option-height;
-  margin-left: $dropdown-multiselect-items-margin;
+    display: flex;
+    height: 100%;
+    min-width: $dropdown-multiselect-option-height;
+    margin-left: $dropdown-multiselect-items-margin;
 
-  border-left: $default-border;
+    border-left: $default-border;
 
-  transition: $button-color-transition;
+    transition: $button-color-transition;
 
-  @extend .selected-option-item;
+    @extend .selected-option-item;
 }
 
 .remove-option:hover {
-  background-color: darken($light-grey, 5%);
+    background-color: darken($light-grey, 5%);
 
-  cursor: pointer;
+    cursor: pointer;
 }
 
 .remove-option:active {
-  background-color: darken($light-grey, 10%);
+    background-color: darken($light-grey, 10%);
 }

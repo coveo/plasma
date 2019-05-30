@@ -1,47 +1,47 @@
 .wizard-card {
-  align-content: flex-start;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  display: flex;
-  width: $wizard-card-width;
-
-  background-color: $white;
-  box-shadow: 0 1px 2px 0 rgba(0,0,0,0.14);
-  border: 1px solid $medium-grey;
-  border-radius: $border-radius;
-
-  .wizard-card-body {
-    margin-bottom: auto;
-
-    .coveo-form {
-      padding-top: $wizard-card-form-padding;
-      padding-right: $wizard-card-form-padding;
-      padding-left: $wizard-card-form-padding;
-    }
-  }
-
-  .wizard-card-footer {
-    align-self: flex-end;
+    align-content: flex-start;
+    flex-direction: column;
     flex-wrap: wrap;
-    justify-content: flex-end;
 
     display: flex;
-    width: 100%;
-    padding: $wizard-card-footer-padding;
-    margin-top: auto;
+    width: $wizard-card-width;
 
-    .btn {
-      width: auto;
-      margin: 0;
+    background-color: $white;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
+    border: 1px solid $medium-grey;
+    border-radius: $border-radius;
+
+    .wizard-card-body {
+        margin-bottom: auto;
+
+        .coveo-form {
+            padding-top: $wizard-card-form-padding;
+            padding-right: $wizard-card-form-padding;
+            padding-left: $wizard-card-form-padding;
+        }
     }
-  }
 
-  &.mod-small {
-    width: $wizard-card-small-width;
-  }
+    .wizard-card-footer {
+        align-self: flex-end;
+        flex-wrap: wrap;
+        justify-content: flex-end;
 
-  &.mod-large {
-    width: $wizard-card-large-width;
-  }
+        display: flex;
+        width: 100%;
+        padding: $wizard-card-footer-padding;
+        margin-top: auto;
+
+        .btn {
+            width: auto;
+            margin: 0;
+        }
+    }
+
+    &.mod-small {
+        width: $wizard-card-small-width;
+    }
+
+    &.mod-large {
+        width: $wizard-card-large-width;
+    }
 }

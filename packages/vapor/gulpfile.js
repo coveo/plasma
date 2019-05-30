@@ -62,7 +62,8 @@ gulp.task('lib', () => {
         });
     });
 
-    return gulp.src(dependencies)
+    return gulp
+        .src(dependencies)
         .pipe(concat('CoveoStyleGuide.Dependencies.js'))
         .pipe(gulp.dest('./dist/js'))
         .pipe(gulpif(useMinifiedSources, uglify()))
@@ -74,12 +75,7 @@ gulp.task('lib', () => {
 gulp.task('clean', (done) => {
     const filesToDelete = ['./dist', './docs/dist', './_gh_pages', './.sass-cache', './tmp'];
     if (cleanAll) {
-        filesToDelete.concat([
-            '**/*.orig',
-            '**/*.rej',
-            'node_modules',
-            'package-lock.json',
-        ]);
+        filesToDelete.concat(['**/*.orig', '**/*.rej', 'node_modules', 'package-lock.json']);
     }
     return del(filesToDelete).then((deletedFiles) => {
         log(colors.green('Files deleted:', deletedFiles.join(', ')));
@@ -100,7 +96,8 @@ gulp.task('copy:js', () => {
 });
 
 gulp.task('palette', (done) => {
-    const paletteMap = fs.readFileSync('./scss/common/palette.scss', 'utf8')
+    const paletteMap = fs
+        .readFileSync('./scss/common/palette.scss', 'utf8')
         .match(/\$.+(?=:)/g)
         .reduce(
             (partialPalette, sassVariable) => `${partialPalette}    ${sassVariable.slice(1)}: ${sassVariable},\n`,
@@ -112,21 +109,25 @@ gulp.task('palette', (done) => {
 });
 
 gulp.task('sprites', () => {
-    const template = '<%= "i." + node.className + ", ." + node.className %> {\
+    const template =
+        '<%= "i." + node.className + ", ." + node.className %> {\
       background-position:<%= -node.x / ratio %>px <%= -node.y / ratio %>px;\
       width:<%= node.width / ratio %>px;\
       height:<%= node.height / ratio %>px;\
       text-indent:<%= node.width / ratio %>px;\
     }';
 
-    return gulp.src('./resources/sprites/**/*.png')
-        .pipe(pngSprite.gulp({
-            cssPath: 'sprites.scss',
-            pngPath: '../dist/images/CoveoStyleGuide.Sprites.png',
-            relPath: '../images/CoveoStyleGuide.Sprites.png',
-            eachTemplate: template,
-            namespace: 'coveo-sprites',
-        }))
+    return gulp
+        .src('./resources/sprites/**/*.png')
+        .pipe(
+            pngSprite.gulp({
+                cssPath: 'sprites.scss',
+                pngPath: '../dist/images/CoveoStyleGuide.Sprites.png',
+                relPath: '../images/CoveoStyleGuide.Sprites.png',
+                eachTemplate: template,
+                namespace: 'coveo-sprites',
+            })
+        )
         .pipe(gulp.dest('scss'));
 });
 
@@ -142,7 +143,16 @@ function Dictionary(from) {
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
             const svgString = JSON.stringify(that.json[key]);
-            code += '        ' + camelizedKey + ': { name : \'' + camelizedKey + '\', svgString : ' + svgString + ', render : function(svgClass, spanClass, title, attr) { return svgWrapper(VaporSVG.svg[\'' + camelizedKey + '\'].svgString, svgClass, spanClass, title, attr); } }, \n';
+            code +=
+                '        ' +
+                camelizedKey +
+                ": { name : '" +
+                camelizedKey +
+                "', svgString : " +
+                svgString +
+                ", render : function(svgClass, spanClass, title, attr) { return svgWrapper(VaporSVG.svg['" +
+                camelizedKey +
+                "'].svgString, svgClass, spanClass, title, attr); } }, \n";
         });
         code += '    };';
 
@@ -163,31 +173,39 @@ gulp.task('svg:concat', () => {
     );
 
     return src
-        .pipe(svgmin({
-            plugins: [{
-                removeAttrs: {
-                    attrs: ['xmlns:*', 'xmlns', 'id'],
-                },
-            }, {
-                removeUselessDefs: true,
-            }, {
-                removeComments: true,
-            }],
-        }))
-        .pipe(cheerio(($) => {
-            // tslint:disable-next-line
-            $('svg').each(function() {
-                const svg = $(this);
-                if (svg) {
-                    const attrs = svg[0].attribs;
-                    for (const attrName in attrs) {
-                        if (attrName.match(/xmlns:.+/)) {
-                            svg.removeAttr(attrName);
+        .pipe(
+            svgmin({
+                plugins: [
+                    {
+                        removeAttrs: {
+                            attrs: ['xmlns:*', 'xmlns', 'id'],
+                        },
+                    },
+                    {
+                        removeUselessDefs: true,
+                    },
+                    {
+                        removeComments: true,
+                    },
+                ],
+            })
+        )
+        .pipe(
+            cheerio(($) => {
+                // tslint:disable-next-line
+                $('svg').each(function() {
+                    const svg = $(this);
+                    if (svg) {
+                        const attrs = svg[0].attribs;
+                        for (const attrName in attrs) {
+                            if (attrName.match(/xmlns:.+/)) {
+                                svg.removeAttr(attrName);
+                            }
                         }
                     }
-                }
-            });
-        }))
+                });
+            })
+        )
         .pipe(filesToJson('CoveoStyleGuideSvg.json'))
         .pipe(gulp.dest('dist/svg'))
         .pipe(sortJSON())
@@ -195,77 +213,75 @@ gulp.task('svg:concat', () => {
         .pipe(gulp.dest('docs/_data/'));
 });
 
-gulp.task('svg:enum', gulp.series('svg:concat', () => {
-    const dict = new Dictionary('dist/svg/CoveoStyleGuideSvg.json');
+gulp.task(
+    'svg:enum',
+    gulp.series('svg:concat', () => {
+        const dict = new Dictionary('dist/svg/CoveoStyleGuideSvg.json');
 
-    if (!fs.existsSync('tmp')) {
-        fs.mkdirSync('tmp');
-    }
+        if (!fs.existsSync('tmp')) {
+            fs.mkdirSync('tmp');
+        }
 
-    dict.writeSvgEnumFile('tmp/svg.js');
+        dict.writeSvgEnumFile('tmp/svg.js');
 
-    dict.writeVaporSvgVersionFile('tmp/version.js');
+        dict.writeVaporSvgVersionFile('tmp/version.js');
 
-    return gulp.src('resources/js/VaporSVG.js')
-        .pipe(gfi({'/* SVG Enum */': 'tmp/svg.js'}))
-        .pipe(gfi({'/* VaporSVG version */': 'tmp/version.js'}))
-        .pipe(gulp.dest('dist/js/'));
-}));
+        return gulp
+            .src('resources/js/VaporSVG.js')
+            .pipe(gfi({'/* SVG Enum */': 'tmp/svg.js'}))
+            .pipe(gfi({'/* VaporSVG version */': 'tmp/version.js'}))
+            .pipe(gulp.dest('dist/js/'));
+    })
+);
 
 gulp.task('svg', gulp.series('svg:enum'));
 
-gulp.task('sass', gulp.series('palette', 'sprites', (done) => {
-    return gulp.src('./scss/guide.scss')
-        .pipe(sourcemaps.init())
-        .pipe(sass().on('error', (err) => {
-            sassError(err, done);
-        }))
-        .pipe(autoprefixer(config.autoprefixerOptions))
-        .pipe(rename('CoveoStyleGuide.css'))
-        .pipe(sourcemaps.write('../css'))
-        .pipe(gulp.dest('./dist/css'))
-        .pipe(gulpif(useMinifiedSources, minifyCSS({
-            keepSpecialComments: 0,
-            processImport: false,
-        })))
-        .pipe(gulpif(useGzippedSources, gzip(config.gzipOptions)))
-        .pipe(gulpif(useMinifiedSources, rename('CoveoStyleGuide.min.css')))
-        .pipe(gulpif(useMinifiedSources, gulp.dest('./dist/css')));
-}));
-
-gulp.task('sass:format', () => {
-    return gulp.src([
-        './scss/**/*.scss',
-        '!./scss/icons/svgs.scss',
-        '!./scss/utility/colors.scss',
-        '!./scss/utility/border.scss',
-        '!./scss/utility/default-white-space.scss',
-        '!./scss/helpers.scss',
-        '!./scss/sprites.scss',
-    ])
-        .pipe(csscomb())
-        .pipe(gulp.dest('./scss'));
-});
+gulp.task(
+    'sass',
+    gulp.series('palette', 'sprites', (done) => {
+        return gulp
+            .src('./scss/guide.scss')
+            .pipe(sourcemaps.init())
+            .pipe(
+                sass().on('error', (err) => {
+                    sassError(err, done);
+                })
+            )
+            .pipe(autoprefixer(config.autoprefixerOptions))
+            .pipe(rename('CoveoStyleGuide.css'))
+            .pipe(sourcemaps.write('../css'))
+            .pipe(gulp.dest('./dist/css'))
+            .pipe(
+                gulpif(
+                    useMinifiedSources,
+                    minifyCSS({
+                        keepSpecialComments: 0,
+                        processImport: false,
+                    })
+                )
+            )
+            .pipe(gulpif(useGzippedSources, gzip(config.gzipOptions)))
+            .pipe(gulpif(useMinifiedSources, rename('CoveoStyleGuide.min.css')))
+            .pipe(gulpif(useMinifiedSources, gulp.dest('./dist/css')));
+    })
+);
 
 function sassError(err, doneCallback) {
     process.stderr.write(new PluginError('sass', err.messageFormatted).toString() + '\n');
     doneCallback(1);
 }
 
-gulp.task('default', gulp.series(
-    gulp.parallel('sass', 'lib'),
-    gulp.parallel('copy:images', 'copy:fonts', 'copy:js'),
-    'svg'
-));
+gulp.task(
+    'default',
+    gulp.series(gulp.parallel('sass', 'lib'), gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg')
+);
 
 gulp.task('docs:external-libs', () => {
-    return gulp.src('./node_modules/autosize/dist/autosize.js')
-        .pipe(gulp.dest('./docs/dist/js'));
+    return gulp.src('./node_modules/autosize/dist/autosize.js').pipe(gulp.dest('./docs/dist/js'));
 });
 
 gulp.task('docs:copy', () => {
-    return gulp.src('./dist/**/*')
-        .pipe(gulp.dest('./docs/dist'));
+    return gulp.src('./dist/**/*').pipe(gulp.dest('./docs/dist'));
 });
 
 gulp.task('docs', gulp.series('clean', 'default', 'docs:external-libs', 'docs:copy'));

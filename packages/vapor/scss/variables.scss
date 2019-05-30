@@ -35,8 +35,8 @@ $big-title-font-size: 32px;
 $default-line-height: 16px;
 $big-line-height: 21px;
 $code-font-size: 14px;
-$base-font-family: "Lato", Arial, Helvetica, sans-serif;
-$code-font-family: source_code_pro_regular, "Courier New", Courier, monospace;
+$base-font-family: 'Lato', Arial, Helvetica, sans-serif;
+$code-font-family: source_code_pro_regular, 'Courier New', Courier, monospace;
 $standard-line-height: 1.35em;
 $help-text-font-size: 14px;
 $help-text-line-height: 17px;
@@ -195,14 +195,14 @@ $modal-prompt-min-width: 500px;
 $modal-prompt-max-width: 550px;
 $modal-prompt-header-height: 90px;
 $modal-prompt-footer-height: calc(
-  2 * 24px + #{$button-height} + 2 * #{$button-border-width}
+    2 * 24px + #{$button-height} + 2 * #{$button-border-width}
 ); // Calculate the button height + 2 border top and bottom and the space below the button for the max height
 $modal-prompt-footer-height-ie: 84px;
 $modal-prompt-body-min-height: calc(
-  #{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height}
+    #{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height}
 );
 $modal-prompt-body-min-height-ie: calc(
-  #{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height-ie}
+    #{$modal-prompt-min-height} - #{$modal-prompt-header-height} - #{$modal-prompt-footer-height-ie}
 );
 
 // Wizard card
@@ -229,7 +229,7 @@ $navigation-section-icon-margin-right: 10px;
 $navigation-section-icon-margin-left: 15px;
 $navigation-section-arrow-margin: 15px;
 $navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right -
-  $navigation-active-border-width;
+    $navigation-active-border-width;
 $navigation-right-margin: $navigation-section-arrow-margin;
 $navigation-locked-color: $medium-grey;
 $navigation-tag-font-size: 9px;

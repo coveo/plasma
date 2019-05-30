@@ -1,63 +1,65 @@
 .list-box {
-  z-index: 1000;
+    z-index: 1000;
 
-  max-height: $list-box-max-height;
-  min-width: 100%;
-  padding: $list-box-vertical-spacing 0;
-  margin: 0;
-  overflow-y: auto;
+    max-height: $list-box-max-height;
+    min-width: 100%;
+    padding: $list-box-vertical-spacing 0;
+    margin: 0;
+    overflow-y: auto;
 
-  box-shadow: $list-box-box-shadow;
-  border: $default-border;
-  border-radius: $list-box-border-radius;
+    box-shadow: $list-box-box-shadow;
+    border: $default-border;
+    border-radius: $list-box-border-radius;
 
-  @include slim-scroll($light-grey, $medium-grey);
+    @include slim-scroll($light-grey, $medium-grey);
 }
 
 .item-box {
-  padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
-  overflow: hidden;
+    padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+    overflow: hidden;
 
-  color: $dark-grey;
-  font-size: $small-font-size;
-  line-height: $default-line-height;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  list-style: none;
+    color: $dark-grey;
+    font-size: $small-font-size;
+    line-height: $default-line-height;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    list-style: none;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  &:hover, &:focus, &.active {
-    color: $dark-blue;
+    &:hover,
+    &:focus,
+    &.active {
+        color: $dark-blue;
 
-    background: $light-grey;
-  }
+        background: $light-grey;
+    }
 
-  &.selected {
-    color: $dark-blue;
-    font-weight: bold;
-  }
+    &.selected {
+        color: $dark-blue;
+        font-weight: bold;
+    }
 
-  &.disabled {
-    color: $medium-grey;
+    &.disabled {
+        color: $medium-grey;
 
-    background: $pure-white;
+        background: $pure-white;
 
-    cursor: default;
-  }
+        cursor: default;
+    }
 
-  &.multi-line {
-    word-break: break-word;
-    white-space: normal;
-  }
+    &.multi-line {
+        word-break: break-word;
+        white-space: normal;
+    }
 
-  &.divider {
-    height: $item-box-divider-height;
-    padding: 0;
-    margin: $item-box-vertical-spacing 0;
+    &.divider {
+        height: $item-box-divider-height;
+        padding: 0;
+        margin: $item-box-vertical-spacing 0;
 
-    background-color: $medium-grey;
+        background-color: $medium-grey;
 
-    cursor: default;
-  }
+        cursor: default;
+    }
 }

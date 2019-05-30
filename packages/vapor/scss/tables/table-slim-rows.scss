@@ -1,14 +1,14 @@
 table.mod-slim {
-  td {
-    padding-top: 0;
-    padding-bottom: 0;
-  }
-
-  tbody {
-    tr:not(.empty) {
-      height: auto;
-
-      font-size: $table-slim-font-size;
+    td {
+        padding-top: 0;
+        padding-bottom: 0;
     }
-  }
+
+    tbody {
+        tr:not(.empty) {
+            height: auto;
+
+            font-size: $table-slim-font-size;
+        }
+    }
 }

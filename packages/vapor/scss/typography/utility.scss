@@ -2,85 +2,85 @@
 // Source: https://github.com/basscss/utility-typography
 
 .bold {
-  font-weight: bold;
+    font-weight: bold;
 }
 
 .semibold {
-  font-weight: 600;
+    font-weight: 600;
 }
 
 .regular {
-  font-weight: normal;
+    font-weight: normal;
 }
 
 .italic {
-  font-style: italic;
+    font-style: italic;
 }
 
 .underline {
-  text-decoration: underline;
+    text-decoration: underline;
 }
 
 .caps {
-  text-transform: uppercase;
+    text-transform: uppercase;
 }
 
 .reset-text-transform {
-  text-transform: none;
+    text-transform: none;
 }
 
 .left-align {
-  text-align: left;
+    text-align: left;
 }
 
 .center {
-  text-align: center;
+    text-align: center;
 }
 
 .right-align {
-  text-align: right;
+    text-align: right;
 }
 
 .justify {
-  text-align: justify;
+    text-align: justify;
 }
 
 .nowrap {
-  white-space: nowrap;
+    white-space: nowrap;
 }
 
 .break-word {
-  word-wrap: break-word; // Fallback for IE11
-  word-break: break-word; 
+    word-wrap: break-word; // Fallback for IE11
+    word-break: break-word;
 }
 
 .break-all {
-  word-break: break-all;
+    word-break: break-all;
 }
 
 .truncate {
-  max-width: 100%;
-  overflow: hidden;
+    max-width: 100%;
+    overflow: hidden;
 
-  text-overflow: ellipsis;
-  white-space: nowrap;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .normal-white-space {
-  white-space: normal;
+    white-space: normal;
 }
 
 .smaller {
-  font-size: 0.8em;
+    font-size: 0.8em;
 }
 
 .help-text {
-  color: $lynch;
-  font-size: $help-text-font-size;
-  line-height: $help-text-line-height;
+    color: $lynch;
+    font-size: $help-text-font-size;
+    line-height: $help-text-line-height;
 }
 
 .sup {
-  font-size: xx-small;
-  vertical-align: super;
+    font-size: xx-small;
+    vertical-align: super;
 }

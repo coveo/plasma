@@ -1,214 +1,225 @@
 @mixin button-variant($color, $background) {
-  color: $color;
+    color: $color;
 
-  background-color: $background;
-  border: $button-border-width solid $background;
+    background-color: $background;
+    border: $button-border-width solid $background;
 
-  &:hover, &:focus {
-    background-color: lighten($background, 5%);
-    border: $button-border-width solid lighten($background, 5%);
-  }
+    &:hover,
+    &:focus {
+        background-color: lighten($background, 5%);
+        border: $button-border-width solid lighten($background, 5%);
+    }
 
-  &:disabled, &.state-disabled {
-    background-color: lighten($background, 20%);
-    border: $button-border-width solid lighten($background, 20%);
-  }
+    &:disabled,
+    &.state-disabled {
+        background-color: lighten($background, 20%);
+        border: $button-border-width solid lighten($background, 20%);
+    }
 
-  .icon {
-    fill: $color;
-  }
+    .icon {
+        fill: $color;
+    }
 }
 
 @mixin button-focus($offset) {
-  background-color: $light-grey;
+    background-color: $light-grey;
 
-  @include focus-border($offset);
+    @include focus-border($offset);
 }
 
 .btn {
-  box-sizing: border-box;
-  display: inline-block;
-  height: $button-height;
-  padding: $button-padding-y $button-padding-x;
+    box-sizing: border-box;
+    display: inline-block;
+    height: $button-height;
+    padding: $button-padding-y $button-padding-x;
 
-  color: $medium-blue;
-  font-family: $base-font-family;
-  font-size: $button-font-size;
-  font-weight: $button-font-weight;
-  line-height: $button-line-height;
-  text-decoration: none;
-  text-overflow: ellipsis;
-  text-transform: uppercase;
-  vertical-align: middle;
-  white-space: nowrap;
-
-  background-color: $pure-white;
-  border: $button-border-width solid $medium-grey;
-  border-radius: $border-radius;
-
-  cursor: pointer;
-
-  .icon:not([class*='fill-']) {
-    fill: $medium-blue;
-  }
-
-  &:hover, &:focus {
+    color: $medium-blue;
+    font-family: $base-font-family;
+    font-size: $button-font-size;
+    font-weight: $button-font-weight;
+    line-height: $button-line-height;
     text-decoration: none;
-  }
+    text-overflow: ellipsis;
+    text-transform: uppercase;
+    vertical-align: middle;
+    white-space: nowrap;
 
-  &:focus {
-    @include button-focus(-2px);
-  }
+    background-color: $pure-white;
+    border: $button-border-width solid $medium-grey;
+    border-radius: $border-radius;
 
-  &:disabled, &.state-disabled {
-    color: $medium-grey;
+    cursor: pointer;
 
-    cursor: default;
-
-    .icon {
-      fill: $medium-grey;
-    }
-  }
-
-  &.mod-small {
-    height: $button-small-height;
-    padding: 0 $button-small-padding-x;
-
-    font-size: $button-small-font-size;
-    line-height: $button-small-line-height;
-  }
-
-  &.mod-large {
-    height: $button-large-height;
-  }
-
-  &.mod-primary {
-    @include button-variant($pure-white, $orange);
-  }
-
-  &.mod-danger {
-    @include button-variant($pure-white, $red);
-  }
-
-  &.mod-link {
-    background-color: transparent;
-    border: none;
-  }
-
-  & + .btn, + .btn-container {
-    margin-left: $button-margin-width;
-  }
-
-  .confirm-icon-error, .confirm-icon-success {
-    display: none;
-  }
-
-  &.mod-confirm-success, &.mod-confirm-error {
-    position: relative;
-
-    color: transparent;
-
-    outline: 0;
-
-    transition: background-color 0.2s ease;
-
-    user-select: none;
-
-    &:before {
-      position: absolute;
-      top: $button-height + 6px;
-
-      font-size: 11px;
-      text-transform: initial;
-
-      animation: vp-fadeIn ease-in 1;
-      animation-duration: 0.3s;
-      animation-fill-mode: forwards;
-
-      opacity: 0;
+    .icon:not([class*='fill-']) {
+        fill: $medium-blue;
     }
 
-    &.mod-confirm-right:before {
-      right: 0;
+    &:hover,
+    &:focus {
+        text-decoration: none;
     }
 
-    &.mod-confirm-left:before {
-      left: 0;
+    &:focus {
+        @include button-focus(-2px);
     }
 
-    .confirm-icon-error, .confirm-icon-success {
-      position: absolute;
-      top: calc(50% - #{$button-confirm-icon-width} / 2);
-      right: calc(50% - #{$button-confirm-icon-width} / 2);
+    &:disabled,
+    &.state-disabled {
+        color: $medium-grey;
 
-      display: inline-block;
+        cursor: default;
 
-      font-size: $button-confirm-icon-width;
-
-      fill: $pure-white;
-    }
-  }
-
-  &.mod-confirm {
-    margin-bottom: $button-confirm-margin-bottom;
-  }
-
-  &.mod-confirm-success {
-    background-color: $green;
-    border: $button-border-width solid $green;
-
-    &:focus, &:hover {
-      background-color: $green;
+        .icon {
+            fill: $medium-grey;
+        }
     }
 
-    &:before {
-      color: $green;
-      content: attr(data-confirm-success);
+    &.mod-small {
+        height: $button-small-height;
+        padding: 0 $button-small-padding-x;
+
+        font-size: $button-small-font-size;
+        line-height: $button-small-line-height;
     }
 
-    .confirm-icon-error {
-      display: none;
-    }
-  }
-
-  &.mod-confirm-error {
-    background-color: $red;
-    border: $button-border-width solid $red;
-
-    &:focus, &:hover {
-      background-color: $red;
+    &.mod-large {
+        height: $button-large-height;
     }
 
-    &:before {
-      color: $red;
-      content: attr(data-confirm-error);
+    &.mod-primary {
+        @include button-variant($pure-white, $orange);
     }
 
+    &.mod-danger {
+        @include button-variant($pure-white, $red);
+    }
+
+    &.mod-link {
+        background-color: transparent;
+        border: none;
+    }
+
+    & + .btn,
+    + .btn-container {
+        margin-left: $button-margin-width;
+    }
+
+    .confirm-icon-error,
     .confirm-icon-success {
-      display: none;
+        display: none;
     }
-  }
+
+    &.mod-confirm-success,
+    &.mod-confirm-error {
+        position: relative;
+
+        color: transparent;
+
+        outline: 0;
+
+        transition: background-color 0.2s ease;
+
+        user-select: none;
+
+        &:before {
+            position: absolute;
+            top: $button-height + 6px;
+
+            font-size: 11px;
+            text-transform: initial;
+
+            animation: vp-fadeIn ease-in 1;
+            animation-duration: 0.3s;
+            animation-fill-mode: forwards;
+
+            opacity: 0;
+        }
+
+        &.mod-confirm-right:before {
+            right: 0;
+        }
+
+        &.mod-confirm-left:before {
+            left: 0;
+        }
+
+        .confirm-icon-error,
+        .confirm-icon-success {
+            position: absolute;
+            top: calc(50% - #{$button-confirm-icon-width} / 2);
+            right: calc(50% - #{$button-confirm-icon-width} / 2);
+
+            display: inline-block;
+
+            font-size: $button-confirm-icon-width;
+
+            fill: $pure-white;
+        }
+    }
+
+    &.mod-confirm {
+        margin-bottom: $button-confirm-margin-bottom;
+    }
+
+    &.mod-confirm-success {
+        background-color: $green;
+        border: $button-border-width solid $green;
+
+        &:focus,
+        &:hover {
+            background-color: $green;
+        }
+
+        &:before {
+            color: $green;
+            content: attr(data-confirm-success);
+        }
+
+        .confirm-icon-error {
+            display: none;
+        }
+    }
+
+    &.mod-confirm-error {
+        background-color: $red;
+        border: $button-border-width solid $red;
+
+        &:focus,
+        &:hover {
+            background-color: $red;
+        }
+
+        &:before {
+            color: $red;
+            content: attr(data-confirm-error);
+        }
+
+        .confirm-icon-success {
+            display: none;
+        }
+    }
 }
 
 .btn-container {
-  display: inline-block;
-  margin: 0;
+    display: inline-block;
+    margin: 0;
 
-  .btn[disabled] {
-    pointer-events: none;
-  }
+    .btn[disabled] {
+        pointer-events: none;
+    }
 
-  & + .btn, + .btn-container {
-    margin-left: $button-margin-width;
-  }
+    & + .btn,
+    + .btn-container {
+        margin-left: $button-margin-width;
+    }
 }
 
 .btn-hover:hover {
-  .icon {
-    fill: $links-color;
-  }
+    .icon {
+        fill: $links-color;
+    }
 
-  .btn-hover-text {
-    color: $links-color;
-  }
+    .btn-hover-text {
+        color: $links-color;
+    }
 }

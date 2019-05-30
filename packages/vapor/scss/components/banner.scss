@@ -1,18 +1,18 @@
 .banner {
-  width: 100%;
-  height: $banner-height;
-  padding: 0 40px;
+    width: 100%;
+    height: $banner-height;
+    padding: 0 40px;
 }
 
 .banner-description {
-  flex-grow: 1;
+    flex-grow: 1;
 
-  color: $white;
-  font-size: 18px;
-  text-align: center;
-  button {
-    margin-left: 20px;
+    color: $white;
+    font-size: 18px;
+    text-align: center;
+    button {
+        margin-left: 20px;
 
-    border: none;
-  }
+        border: none;
+    }
 }

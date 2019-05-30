@@ -1,31 +1,29 @@
 # Site settings
 title: Vapor CSS
 email: styleguide@coveo.com
-description:
-  Vapor CSS is a collection of UI components used in Coveo's Administration Console.
-  It is widely inspired by Bootstrap 3.0 and borrows some of its components.
-  The project is at its early stages, some components can still have lots of breaking changes.
-baseurl: ""
+description: Vapor CSS is a collection of UI components used in Coveo's Administration Console.
+    It is widely inspired by Bootstrap 3.0 and borrows some of its components.
+    The project is at its early stages, some components can still have lots of breaking changes.
 twitter_username: coveo
-github_username:  Coveo
+github_username: Coveo
 github_repo: https://github.com/coveo/styleguide/blob/master
 
 # Collections
 collections:
-  components:
-    output: false
+    components:
+        output: false
 
 # Build settings
 highlighter: rouge
 markdown: kramdown
 kramdown:
-  input: GFM
+    input: GFM
 sass:
-  sass_dir: _sass
-  style: :compressed
+    sass_dir: _sass
+    style: :compressed
 
 # Server
 source: docs
 destination: _gh_pages
-baseurl: "/vapor"
-url: "http://coveo.github.io/vapor/"
+baseurl: '/vapor'
+url: 'http://coveo.github.io/vapor/'

@@ -1,100 +1,100 @@
 .spinner {
-  width: $loading-size;
-  margin: 0 auto;
+    width: $loading-size;
+    margin: 0 auto;
 
-  text-align: center;
+    text-align: center;
 
-  cursor: default;
+    cursor: default;
 
-  &.mod-vertical-margin {
-    margin-top: $loading-vertical-margin;
-    margin-bottom: $loading-vertical-margin;
-  }
+    &.mod-vertical-margin {
+        margin-top: $loading-vertical-margin;
+        margin-bottom: $loading-vertical-margin;
+    }
 
-  & > div {
-    display: inline-block;
-    width: $bounce-size;
-    height: $bounce-size;
+    & > div {
+        display: inline-block;
+        width: $bounce-size;
+        height: $bounce-size;
 
-    background-color: $orange;
-    border-radius: 100%;
+        background-color: $orange;
+        border-radius: 100%;
 
-    animation: bouncedelay 1.7s infinite ease-in-out;
-    /* Prevent first frame from flickering when animation starts */
-    animation-fill-mode: both;
-  }
+        animation: bouncedelay 1.7s infinite ease-in-out;
+        /* Prevent first frame from flickering when animation starts */
+        animation-fill-mode: both;
+    }
 
-  .bounce1 {
-    animation-delay: -0.32s;
-  }
+    .bounce1 {
+        animation-delay: -0.32s;
+    }
 
-  .bounce2 {
-    animation-delay: -0.16s;
-  }
+    .bounce2 {
+        animation-delay: -0.16s;
+    }
 }
 
 .loading-prompt {
-  margin-top: $loading-prompt-margin-top;
-  margin-bottom: $loading-prompt-margin-bottom;
+    margin-top: $loading-prompt-margin-top;
+    margin-bottom: $loading-prompt-margin-bottom;
 
-  font-size: $loading-font-size;
-  text-align: center;
+    font-size: $loading-font-size;
+    text-align: center;
 
-  .spinner {
-    width: $big-loading-size;
-    margin-top: $big-loading-margin-top;
+    .spinner {
+        width: $big-loading-size;
+        margin-top: $big-loading-margin-top;
 
-    & > div {
-      width: $big-bounce-size;
-      height: $big-bounce-size;
+        & > div {
+            width: $big-bounce-size;
+            height: $big-bounce-size;
 
-      background-color: $orange;
+            background-color: $orange;
+        }
     }
-  }
 }
 
 .table-container {
-  .loading-row {
-    display: none;
-  }
+    .loading-row {
+        display: none;
+    }
 
-  .spinner {
-    display: none;
-  }
+    .spinner {
+        display: none;
+    }
 }
 
 .loading-component {
-  position: relative;
+    position: relative;
 
-  & > * {
-    opacity: 0.4;
-    pointer-events: none;
-  }
+    & > * {
+        opacity: 0.4;
+        pointer-events: none;
+    }
 
-  .loading-row {
-    display: table-row-group;
+    .loading-row {
+        display: table-row-group;
 
-    opacity: 1;
-  }
+        opacity: 1;
+    }
 
-  .spinner {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    z-index: 999;
+    .spinner {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        z-index: 999;
 
-    display: block;
+        display: block;
 
-    transform: translate(-50%, -50%);
+        transform: translate(-50%, -50%);
 
-    opacity: 1;
-  }
+        opacity: 1;
+    }
 }
 
 .mod-loading-content {
-  pointer-events: none;
+    pointer-events: none;
 
-  tbody {
-    opacity: 0.4;
-  }
+    tbody {
+        opacity: 0.4;
+    }
 }

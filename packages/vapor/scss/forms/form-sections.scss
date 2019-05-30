@@ -1,88 +1,89 @@
 .section-heading {
-  .heading-title {
-    color: $medium-blue;
-    font-size: $title-font-size;
-    font-weight: bold;
-  }
+    .heading-title {
+        color: $medium-blue;
+        font-size: $title-font-size;
+        font-weight: bold;
+    }
 
-  .heading-description {
-    margin-top: $form-heading-description-margin-top;
+    .heading-description {
+        margin-top: $form-heading-description-margin-top;
 
-    color: $dark-grey;
-    font-size: 12px;
-  }
+        color: $dark-grey;
+        font-size: 12px;
+    }
 }
 
 .coveo-form {
-  .form-group + .section-heading {
-    margin-top: $form-group-margin;
-    margin-bottom: $form-section-header-margin-bottom;
-  }
+    .form-group + .section-heading {
+        margin-top: $form-group-margin;
+        margin-bottom: $form-section-header-margin-bottom;
+    }
 }
 
 .form-section {
-  margin-top: 10px;
+    margin-top: 10px;
 
-  .section-heading {
-    margin-bottom: $form-section-header-margin-bottom;
-  }
-
-  .form-subsection {
-    + .form-subsection {
-      margin-top: 10px;
+    .section-heading {
+        margin-bottom: $form-section-header-margin-bottom;
     }
 
-    .subsection-heading {
-      margin: 5px 0;
-
-      .heading-title {
-        color: $medium-blue;
-        font-size: 13px;
-        text-transform: uppercase;
-
-        svg {
-          fill: $medium-blue;
+    .form-subsection {
+        + .form-subsection {
+            margin-top: 10px;
         }
-      }
+
+        .subsection-heading {
+            margin: 5px 0;
+
+            .heading-title {
+                color: $medium-blue;
+                font-size: 13px;
+                text-transform: uppercase;
+
+                svg {
+                    fill: $medium-blue;
+                }
+            }
+        }
     }
-  }
 }
 
 .form-section-separator {
-  position: relative;
+    position: relative;
 
-  width: 100%;
-  margin: 20px 0 10px;
+    width: 100%;
+    margin: 20px 0 10px;
 
-  text-align: center;
+    text-align: center;
 
-  span {
-    display: inline-block;
+    span {
+        display: inline-block;
 
-    color: $medium-grey;
-    text-transform: uppercase;
+        color: $medium-grey;
+        text-transform: uppercase;
 
-    &:before, &:after {
-      position: absolute;
-      top: 4px;
+        &:before,
+        &:after {
+            position: absolute;
+            top: 4px;
 
-      width: 235px;
+            width: 235px;
 
-      content: ' ';
+            content: ' ';
 
-      border-top: solid 1px;
+            border-top: solid 1px;
+        }
+
+        &:before {
+            left: 0;
+
+            border-image: linear-gradient(to left, $medium-grey, white) 1;
+        }
+
+        &:after {
+            left: 265px;
+
+            border-image: linear-gradient(to right, $medium-grey, white) 1;
+        }
     }
-
-    &:before {
-      left: 0;
-
-      border-image: linear-gradient(to left, $medium-grey, white) 1;
-    }
-
-    &:after {
-      left: 265px;
-
-      border-image: linear-gradient(to right, $medium-grey, white) 1;
-    }
-  }
 }

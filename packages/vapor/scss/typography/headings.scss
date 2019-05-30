@@ -1,32 +1,41 @@
-h1, h2, h3, h4, h5, h6 {
-  font-family: $base-font-family;
-  line-height: $standard-line-height;
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: $base-font-family;
+    line-height: $standard-line-height;
 }
 
-h1, .h1 {
-  font-size: $big-font-size;
+h1,
+.h1 {
+    font-size: $big-font-size;
 }
 
-h2, .h2 {
-  font-size: 20px;
+h2,
+.h2 {
+    font-size: 20px;
 }
 
-h3, .h3 {
-  font-size: $default-font-size;
+h3,
+.h3 {
+    font-size: $default-font-size;
 }
 
-h4, .h4 {
-  font-size: 13px;
+h4,
+.h4 {
+    font-size: 13px;
 }
 
 h5 {
-  font-size: 13px;
+    font-size: 13px;
 }
 
 h6 {
-  font-size: 13px;
+    font-size: 13px;
 }
 
 .mod-header-min-height {
-  min-height: $header-line-height;
+    min-height: $header-line-height;
 }

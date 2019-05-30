@@ -10,128 +10,128 @@ $toast-description-margin-top: 15px;
 $toast-close-size: 16px;
 
 @keyframes toastFadeInTop {
-  from {
-    transform: translate(0, -100%);
+    from {
+        transform: translate(0, -100%);
 
-    opacity: 0;
-  }
-  to {
-    transform: translate(0, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
 
-    opacity: 1;
-  }
+        opacity: 1;
+    }
 }
 
 @keyframes toastFadeInBottom {
-  from {
-    transform: translate(0, 100%);
+    from {
+        transform: translate(0, 100%);
 
-    opacity: 0;
-  }
-  to {
-    transform: translate(0, 0);
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
 
-    opacity: 1;
-  }
+        opacity: 1;
+    }
 }
 
 .toast-container {
-  position: fixed;
-  top: $toast-margin-top;
-  right: 0;
-  left: 0;
-  align-items: center;
-  flex-flow: column-reverse;
-  z-index: $toast-z-index;
+    position: fixed;
+    top: $toast-margin-top;
+    right: 0;
+    left: 0;
+    align-items: center;
+    flex-flow: column-reverse;
+    z-index: $toast-z-index;
 
-  box-sizing: border-box;
-  display: flex;
+    box-sizing: border-box;
+    display: flex;
 
-  pointer-events: none;
+    pointer-events: none;
 
-  &.mod-bottom {
-    top: inherit;
-    bottom: $toast-margin;
-    flex-flow: column;
+    &.mod-bottom {
+        top: inherit;
+        bottom: $toast-margin;
+        flex-flow: column;
 
-    .toast.mod-animated {
-      animation-name: toastFadeInBottom;
-    }
-  }
-
-  &.mod-left {
-    right: inherit;
-    left: $toast-margin;
-    align-items: flex-start;
-  }
-
-  &.mod-right {
-    right: $toast-margin;
-    left: inherit;
-    align-items: flex-end;
-  }
-
-  .toast {
-    display: block;
-    min-width: $toast-min-width;
-    padding: $toast-padding;
-    margin-top: $toast-margin;
-
-    pointer-events: all;
-
-    &.mod-success {
-      background-color: $green;
+        .toast.mod-animated {
+            animation-name: toastFadeInBottom;
+        }
     }
 
-    &.mod-warning {
-      background-color: $yellow;
+    &.mod-left {
+        right: inherit;
+        left: $toast-margin;
+        align-items: flex-start;
     }
 
-    &.mod-error {
-      background-color: $red;
+    &.mod-right {
+        right: $toast-margin;
+        left: inherit;
+        align-items: flex-end;
     }
 
-    &.mod-hidden {
-      display: none;
+    .toast {
+        display: block;
+        min-width: $toast-min-width;
+        padding: $toast-padding;
+        margin-top: $toast-margin;
+
+        pointer-events: all;
+
+        &.mod-success {
+            background-color: $green;
+        }
+
+        &.mod-warning {
+            background-color: $yellow;
+        }
+
+        &.mod-error {
+            background-color: $red;
+        }
+
+        &.mod-hidden {
+            display: none;
+        }
+
+        &.mod-animated {
+            animation-duration: 0.3s;
+            animation-iteration-count: 1;
+            animation-name: toastFadeInTop;
+            animation-timing-function: ease-in;
+            animation-fill-mode: forwards;
+
+            opacity: 0;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: underline;
+        }
     }
 
-    &.mod-animated {
-      animation-duration: 0.3s;
-      animation-iteration-count: 1;
-      animation-name: toastFadeInTop;
-      animation-timing-function: ease-in;
-      animation-fill-mode: forwards;
+    .toast-close {
+        float: right;
+        padding-left: $toast-close-padding-left;
 
-      opacity: 0;
+        cursor: pointer;
+
+        svg {
+            width: $toast-close-size;
+            height: $toast-close-size;
+        }
     }
 
-    a {
-      color: inherit;
-      text-decoration: underline;
+    .toast-title {
+        color: $toast-text-color;
+        font-size: $toast-title-font-size;
     }
-  }
 
-  .toast-close {
-    float: right;
-    padding-left: $toast-close-padding-left;
+    .toast-description {
+        margin-top: $toast-description-margin-top;
 
-    cursor: pointer;
-
-    svg {
-      width: $toast-close-size;
-      height: $toast-close-size;
+        color: $toast-text-color;
+        font-size: $toast-description-font-size;
     }
-  }
-
-  .toast-title {
-    color: $toast-text-color;
-    font-size: $toast-title-font-size;
-  }
-
-  .toast-description {
-    margin-top: $toast-description-margin-top;
-
-    color: $toast-text-color;
-    font-size: $toast-description-font-size;
-  }
 }

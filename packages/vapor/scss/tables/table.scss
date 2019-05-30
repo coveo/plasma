@@ -1,257 +1,261 @@
-
 .table {
-  width: 100%;
+    width: 100%;
 
-  text-align: left;
-
-  border: none;
-  border-spacing: 0;
-
-  th, td {
-    position: relative;
-
-    background-clip: padding-box;
     text-align: left;
-    vertical-align: middle;
 
-    &.selection {
-      width: 25px !important;
-      margin: 0;
+    border: none;
+    border-spacing: 0;
+
+    th,
+    td {
+        position: relative;
+
+        background-clip: padding-box;
+        text-align: left;
+        vertical-align: middle;
+
+        &.selection {
+            width: 25px !important;
+            margin: 0;
+        }
+
+        &:last-child {
+            padding-right: 20px;
+        }
+
+        .coveo-checkbox-label + .cell-content {
+            margin-left: 10px;
+        }
     }
 
-    &:last-child {
-      padding-right: 20px;
+    thead tr {
+        height: $table-header-height;
+
+        color: $medium-blue;
+        font-size: $table-header-font-size;
+        font-weight: bold;
+        line-height: $table-header-line-height;
+
+        background-color: transparent;
     }
 
-    .coveo-checkbox-label + .cell-content {
-      margin-left: 10px;
-    }
-  }
+    th {
+        position: sticky;
+        top: 0;
+        z-index: 1;
 
-  thead tr {
-    height: $table-header-height;
+        padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
 
-    color: $medium-blue;
-    font-size: $table-header-font-size;
-    font-weight: bold;
-    line-height: $table-header-line-height;
+        white-space: nowrap;
 
-    background-color: transparent;
-  }
+        background-color: $pure-white;
+        border-top: $table-border;
+        border-bottom: $table-border;
 
-  th {
-    position: sticky;
-    top: 0;
-    z-index: 1;
-
-    padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
-
-    white-space: nowrap;
-
-    background-color: $pure-white;
-    border-top: $table-border;
-    border-bottom: $table-border;
-
-    &.admin-sort {
-      cursor: pointer;
-
-      .admin-sort-icon {
-        display: inline-flex;
-
-        .tables-sort {
-          width: 7px;
-          height: 12px;
-          margin-left: 5px;
-
-          vertical-align: -2px;
-
-          fill: $medium-blue;
-
-          .asc-arrow, .desc-arrow {
+        &.admin-sort {
             cursor: pointer;
-            opacity: 0.3;
+
+            .admin-sort-icon {
+                display: inline-flex;
+
+                .tables-sort {
+                    width: 7px;
+                    height: 12px;
+                    margin-left: 5px;
+
+                    vertical-align: -2px;
+
+                    fill: $medium-blue;
+
+                    .asc-arrow,
+                    .desc-arrow {
+                        cursor: pointer;
+                        opacity: 0.3;
+
+                        &:hover {
+                            opacity: 0.6;
+                        }
+                    }
+                }
+            }
+
+            &.admin-sort-descending .admin-sort-icon .desc-arrow {
+                opacity: 1;
+            }
+
+            &.admin-sort-ascending .admin-sort-icon .asc-arrow {
+                opacity: 1;
+            }
 
             &:hover {
-              opacity: 0.6;
+                background-color: $light-grey;
             }
-          }
         }
-      }
-
-      &.admin-sort-descending .admin-sort-icon .desc-arrow {
-        opacity: 1;
-      }
-
-      &.admin-sort-ascending .admin-sort-icon .asc-arrow {
-        opacity: 1;
-      }
-
-      &:hover {
-        background-color: $light-grey;
-      }
-    }
-  }
-
-  thead.mod-no-border-top th {
-    border-top: none;
-  }
-
-  tbody.table-loading {
-    opacity: 0.3;
-  }
-
-  tr {
-    position: relative;
-
-    height: $table-row-height;
-
-    font-size: $table-row-font-size;
-    line-height: $table-row-line-height;
-
-    &.disabled div.wrapper {
-      opacity: 0.4;
     }
 
-    &:not(.no-hover):not(.collapsible-row):not(.empty):hover td {
-      background-color: $light-grey;
+    thead.mod-no-border-top th {
+        border-top: none;
     }
 
-    &.empty td {
-      padding: 25px;
-
-      text-align: center;
-    }
-
-    &.selected {
-      &:not(:hover) td {
-        background-color: $white;
-      }
-
-      td:first-child::before {
-        @extend %selection-indicator;
-      }
-    }
-
-    &.blankslate-rows:hover td {
-      background-color: $pure-white;
-    }
-  }
-
-  td {
-    padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
-
-    text-align: left;
-
-    border-bottom: $table-border;
-
-    .mod-max-width {
-      max-width: 300px;
-      overflow: hidden;
-
-      text-overflow: ellipsis;
-    }
-
-    &.edit.enabled {
-      color: $medium-blue;
-
-      cursor: pointer;
-    }
-
-    .btn-icon, .dropdown-toggle {
-      &.enabled:active:hover {
-        border-radius: $border-radius;
-      }
-
-      &.disabled {
-        cursor: default;
+    tbody.table-loading {
         opacity: 0.3;
-      }
     }
 
-    .coveo-checkbox-label {
-      position: relative;
-      top: -1px; // Small hack to make it work in all browsers...
+    tr {
+        position: relative;
+
+        height: $table-row-height;
+
+        font-size: $table-row-font-size;
+        line-height: $table-row-line-height;
+
+        &.disabled div.wrapper {
+            opacity: 0.4;
+        }
+
+        &:not(.no-hover):not(.collapsible-row):not(.empty):hover td {
+            background-color: $light-grey;
+        }
+
+        &.empty td {
+            padding: 25px;
+
+            text-align: center;
+        }
+
+        &.selected {
+            &:not(:hover) td {
+                background-color: $white;
+            }
+
+            td:first-child::before {
+                @extend %selection-indicator;
+            }
+        }
+
+        &.blankslate-rows:hover td {
+            background-color: $pure-white;
+        }
     }
-  }
 
-  &.row-selected td, &.row-selected:hover td {
-    background-color: $light-grey;
-  }
+    td {
+        padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
 
-  &.confirm-delete {
-    .row-selected td, &.row-selected:hover td {
-      background-color: rgba($red, 0.1);
-      border-color: $red;
+        text-align: left;
 
-      transition: background-color 300ms;
+        border-bottom: $table-border;
+
+        .mod-max-width {
+            max-width: 300px;
+            overflow: hidden;
+
+            text-overflow: ellipsis;
+        }
+
+        &.edit.enabled {
+            color: $medium-blue;
+
+            cursor: pointer;
+        }
+
+        .btn-icon,
+        .dropdown-toggle {
+            &.enabled:active:hover {
+                border-radius: $border-radius;
+            }
+
+            &.disabled {
+                cursor: default;
+                opacity: 0.3;
+            }
+        }
+
+        .coveo-checkbox-label {
+            position: relative;
+            top: -1px; // Small hack to make it work in all browsers...
+        }
     }
-  }
 
-  &.mod-deleting tbody tr.selected td {
-    background-color: rgba($red, 0.1);
-  }
+    &.row-selected td,
+    &.row-selected:hover td {
+        background-color: $light-grey;
+    }
+
+    &.confirm-delete {
+        .row-selected td,
+        &.row-selected:hover td {
+            background-color: rgba($red, 0.1);
+            border-color: $red;
+
+            transition: background-color 300ms;
+        }
+    }
+
+    &.mod-deleting tbody tr.selected td {
+        background-color: rgba($red, 0.1);
+    }
 }
 
 .table-layout-fixed {
-  table-layout: fixed;
+    table-layout: fixed;
 }
 
 .table-last-update {
-  margin: 10px $header-padding;
+    margin: 10px $header-padding;
 
-  color: rgba($dark-grey, 0.5);
-  font-size: 11px;
-  text-align: right;
+    color: rgba($dark-grey, 0.5);
+    font-size: 11px;
+    text-align: right;
 }
 
 @supports ((position: sticky) or (postion: -webkit-sticky)) {
-  .coveo-table-actions-container + table:not(.datepicker-table) th {
-    top: $table-actions-container-height;
-  }
+    .coveo-table-actions-container + table:not(.datepicker-table) th {
+        top: $table-actions-container-height;
+    }
 }
 
 .table-container {
-  &.table-card {
-    overflow: hidden;
+    &.table-card {
+        overflow: hidden;
 
-    box-shadow: $table-shadow;
-    border-radius: $border-radius;
-  }
+        box-shadow: $table-shadow;
+        border-radius: $border-radius;
+    }
 }
 
 .state-icon-row {
-  width: $table-state-icon-size;
-  height: $table-state-icon-size;
-  svg {
-    width: inherit;
-    height: inherit;
-  }
+    width: $table-state-icon-size;
+    height: $table-state-icon-size;
+    svg {
+        width: inherit;
+        height: inherit;
+    }
 }
 
 $row-style: (
-  success: $green,
-  warning: $orange-2,
-  error: $red,
+    success: $green,
+    warning: $orange-2,
+    error: $red,
 );
 
 @each $style, $color in $row-style {
-  .row-#{$style} {
-    > td:first-child {
-      color: $color;
+    .row-#{$style} {
+        > td:first-child {
+            color: $color;
 
-      border-left-color: $color;
-      svg {
-        fill: $color;
-      }
+            border-left-color: $color;
+            svg {
+                fill: $color;
+            }
+        }
     }
-  }
 }
 .row-disabled {
-  color: $dark-medium-grey;
-  > td:first-child {
-    border-left-color: $dark-medium-grey;
-  }
-  svg {
-    fill: $dark-medium-grey;
-  }
+    color: $dark-medium-grey;
+    > td:first-child {
+        border-left-color: $dark-medium-grey;
+    }
+    svg {
+        fill: $dark-medium-grey;
+    }
 }

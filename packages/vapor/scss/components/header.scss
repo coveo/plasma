@@ -1,41 +1,38 @@
 .header {
-  display: flex;
-  width: 100%;
-  height: $header-height;
+    display: flex;
+    width: 100%;
+    height: $header-height;
 
-  color: $white;
+    color: $white;
 
-  background-color: $purple-blue;
+    background-color: $purple-blue;
 }
 
 .header-section {
-
-  &.mod-padded {
-    padding: 0 25px;
-  }
-
+    &.mod-padded {
+        padding: 0 25px;
+    }
 }
 
-
 .header-height {
-  height: $panel-header-height;
+    height: $panel-header-height;
 }
 
 .header-hamburger {
-  padding: $header-hamburger-padding;
+    padding: $header-hamburger-padding;
 
-  background-color: transparent;
-  border: none;
-  outline-width: 0;
+    background-color: transparent;
+    border: none;
+    outline-width: 0;
 
-  transition: opacity $navigation-toggle-duration ease-in-out;
+    transition: opacity $navigation-toggle-duration ease-in-out;
 
-  cursor: pointer;
-  opacity: $transparency-2;
+    cursor: pointer;
+    opacity: $transparency-2;
 }
 
 .header-hamburger-opened {
-  transition: opacity $navigation-toggle-duration ease-in-out;
+    transition: opacity $navigation-toggle-duration ease-in-out;
 
-  opacity: $transparency-4;
+    opacity: $transparency-4;
 }

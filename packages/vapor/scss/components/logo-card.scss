@@ -1,42 +1,42 @@
 .logo-card {
-  display: flex;
-  padding: $logo-card-padding;
-  margin: $logo-card-margin;
+    display: flex;
+    padding: $logo-card-padding;
+    margin: $logo-card-margin;
 
-  border: $logo-card-border;
+    border: $logo-card-border;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  &.disabled {
-    cursor: default;
+    &.disabled {
+        cursor: default;
 
-    *:not(.corner-ribbon) {
-      opacity: $logo-card-disabled-opacity;
-      filter: $logo-card-disabled-filter;
+        *:not(.corner-ribbon) {
+            opacity: $logo-card-disabled-opacity;
+            filter: $logo-card-disabled-filter;
 
-      /* Disable the filter on Edge since it breaks the flippable animation */
-      @supports (-ms-ime-align:auto) {
-        filter: none;
-      }
+            /* Disable the filter on Edge since it breaks the flippable animation */
+            @supports (-ms-ime-align: auto) {
+                filter: none;
+            }
+        }
+
+        &.ribbon-container .corner-ribbon {
+            background-color: $medium-grey;
+        }
     }
-
-    &.ribbon-container .corner-ribbon {
-      background-color: $medium-grey;
-    }
-  }
 }
 
 .logo-card-logo {
-  margin-right: 1.5rem;
+    margin-right: 1.5rem;
 }
 
 .logo-card-content {
-  flex-direction: column;
-  justify-content: space-between;
+    flex-direction: column;
+    justify-content: space-between;
 
-  display: flex;
+    display: flex;
 }
 
 .logo-card-title {
-  color: $logo-card-title-color;
+    color: $logo-card-title-color;
 }

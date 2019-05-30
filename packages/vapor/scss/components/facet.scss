@@ -1,272 +1,275 @@
 .facet-column {
-  display: block;
-  width: $facet-column-width;
-  max-width: $facet-column-max-width;
-  padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
-  margin-right: 0;
+    display: block;
+    width: $facet-column-width;
+    max-width: $facet-column-max-width;
+    padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
+    margin-right: 0;
 
-  border-right: $default-border;
+    border-right: $default-border;
 }
 
 .facet {
-  position: relative;
+    position: relative;
 
-  padding-bottom: $facet-spacing;
-  margin: $facet-margin-y 0;
+    padding-bottom: $facet-spacing;
+    margin: $facet-margin-y 0;
 
-  background: $pure-white;
-  border: $default-border;
-  border-radius: $border-radius;
+    background: $pure-white;
+    border: $default-border;
+    border-radius: $border-radius;
 }
 
 .facet-header {
-  position: relative;
+    position: relative;
 
-  padding: $button-padding-x;
-  clear: both;
+    padding: $button-padding-x;
+    clear: both;
 
-  background: $white;
-  border-top-right-radius: $border-radius;
-  border-top-left-radius: $border-radius;
+    background: $white;
+    border-top-right-radius: $border-radius;
+    border-top-left-radius: $border-radius;
 }
 
 .facet-header-eraser {
-  position: absolute;
-  top: 0;
-  right: $facet-header-eraser-right-position;
+    position: absolute;
+    top: 0;
+    right: $facet-header-eraser-right-position;
 
-  height: 100%;
+    height: 100%;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  .icon {
-    position: relative;
-    top: 50%;
+    .icon {
+        position: relative;
+        top: 50%;
 
-    display: block;
-    width: $facet-more-button-icon-size;
-    height: $facet-more-button-icon-size;
+        display: block;
+        width: $facet-more-button-icon-size;
+        height: $facet-more-button-icon-size;
 
-    transform: translateY(-50%);
+        transform: translateY(-50%);
 
-    &:hover {
-      fill: $dark-grey;
+        &:hover {
+            fill: $dark-grey;
+        }
     }
-  }
 }
 
 .remove-selected-tooltip {
-  display: block;
-  height: 100%;
+    display: block;
+    height: 100%;
 }
 
 .facet-header-title {
-  font-family: $base-font-family;
-  font-size: $default-font-size;
+    font-family: $base-font-family;
+    font-size: $default-font-size;
 }
 
 .facet-values {
-  padding-top: $facet-value-spacing;
-  margin: 0;
+    padding-top: $facet-value-spacing;
+    margin: 0;
 
-  list-style: none;
+    list-style: none;
 }
 
 .facet-value {
-  position: relative;
+    position: relative;
 
-  padding: 0 $facet-spacing;
-  margin: 0;
+    padding: 0 $facet-spacing;
+    margin: 0;
 
-  &:hover {
-    background-color: $light-grey;
-    .exclude-button {
-      display: flex;
+    &:hover {
+        background-color: $light-grey;
+        .exclude-button {
+            display: flex;
+        }
     }
-  }
 }
 
 .facet-value-label {
-  justify-content: space-between;
+    justify-content: space-between;
 
-  display: flex;
-  padding: $facet-value-spacing 0;
+    display: flex;
+    padding: $facet-value-spacing 0;
 
-  font-size: $default-font-size;
-  line-height: $facet-value-line-height;
+    font-size: $default-font-size;
+    line-height: $facet-value-line-height;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  .label {
-    flex-grow: 1;
+    .label {
+        flex-grow: 1;
 
-    display: block;
-    overflow: hidden;
+        display: block;
+        overflow: hidden;
 
-    text-overflow: ellipsis;
-    white-space: nowrap;
-  }
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
 
-  .coveo-checkbox-button {
-    flex-shrink: 0;
-  }
+    .coveo-checkbox-button {
+        flex-shrink: 0;
+    }
 }
 
 .facet-value-count {
-  padding-left: $facet-value-spacing;
+    padding-left: $facet-value-spacing;
 
-  color: $medium-grey;
+    color: $medium-grey;
 }
 
 .facet-more {
-  &:hover .facet-more-button {
-    border-style: solid;
-  }
+    &:hover .facet-more-button {
+        border-style: solid;
+    }
 
-  .label {
-    color: $blue;
-  }
+    .label {
+        color: $blue;
+    }
 }
 
 .facet-exclude {
-  padding-right: $facet-exclude-padding-right;
+    padding-right: $facet-exclude-padding-right;
 }
 
 .text-exclude {
-  text-decoration: line-through;
+    text-decoration: line-through;
 }
 
 .exclude-icon {
-  position: relative;
+    position: relative;
 
-  display: none;
-  width: $facet-exclude-checkbox-icon-size;
-  height: $facet-exclude-checkbox-icon-size;
+    display: none;
+    width: $facet-exclude-checkbox-icon-size;
+    height: $facet-exclude-checkbox-icon-size;
 
-  svg {
-    position: absolute;
-    top: 0;
-    left: 0;
-  }
+    svg {
+        position: absolute;
+        top: 0;
+        left: 0;
+    }
 }
 
 .exclude-button {
-  display: none;
-  width: $facet-exclude-button-size;
-  height: $facet-exclude-button-size;
-  svg {
-    width: inherit;
-    height: inherit;
-  }
-  &:hover svg {
-    fill: $dark-blue;
-  }
+    display: none;
+    width: $facet-exclude-button-size;
+    height: $facet-exclude-button-size;
+    svg {
+        width: inherit;
+        height: inherit;
+    }
+    &:hover svg {
+        fill: $dark-blue;
+    }
 }
 
 .facet-exclude-button {
-  position: absolute;
-  top: 0;
-  right: 0;
+    position: absolute;
+    top: 0;
+    right: 0;
 
-  width: $facet-exclude-padding-right;
-  height: 100%;
+    width: $facet-exclude-padding-right;
+    height: 100%;
 
-  cursor: pointer;
+    cursor: pointer;
 
-  + .coveo-checkbox-label > .exclude-box, &:hover + .coveo-checkbox-label > button {
-    align-items: center;
-    justify-content: center;
+    + .coveo-checkbox-label > .exclude-box,
+    &:hover + .coveo-checkbox-label > button {
+        align-items: center;
+        justify-content: center;
 
-    display: flex;
+        display: flex;
 
-    background: $pure-white;
-    border: $checkbox-default-border;
+        background: $pure-white;
+        border: $checkbox-default-border;
 
-    &:before {
-      content: none;
+        &:before {
+            content: none;
+        }
+
+        .exclude-icon {
+            display: block;
+        }
     }
-
-    .exclude-icon {
-      display: block;
-    }
-  }
 }
 
 .coveo-checkbox:checked + .exclude-button {
-  display: none;
+    display: none;
 }
 
 .facet-more-button {
-  float: left;
+    float: left;
 
-  border: $facet-more-button-border;
+    border: $facet-more-button-border;
 
-  @extend .coveo-checkbox-button;
+    @extend .coveo-checkbox-button;
 
-  & + .label {
-    margin-left: $checkbox-label-margin;
-  }
+    & + .label {
+        margin-left: $checkbox-label-margin;
+    }
 
-  &:before, &:after {
-    position: absolute;
-    top: 50%;
-    left: 50%;
+    &:before,
+    &:after {
+        position: absolute;
+        top: 50%;
+        left: 50%;
 
-    display: block;
+        display: block;
 
-    content: '';
+        content: '';
 
-    background-color: $medium-grey;
-    transform: translate(-50%, -50%);
-  }
+        background-color: $medium-grey;
+        transform: translate(-50%, -50%);
+    }
 
-  &:before {
-    width: $facet-checkbox-line-width;
-    height: $facet-checkbox-mark-size;
-  }
+    &:before {
+        width: $facet-checkbox-line-width;
+        height: $facet-checkbox-mark-size;
+    }
 
-  &:after {
-    width: $facet-checkbox-mark-size;
-    height: $facet-checkbox-line-width;
-  }
+    &:after {
+        width: $facet-checkbox-mark-size;
+        height: $facet-checkbox-line-width;
+    }
 }
 
 .facet-search {
-  margin: $facet-margin-y $facet-spacing;
+    margin: $facet-margin-y $facet-spacing;
 
-  // @deprecated the prefix coveo is no longer used.
-  .coveo-filter-container, .filter-container {
-    width: 100%;
+    // @deprecated the prefix coveo is no longer used.
+    .coveo-filter-container,
+    .filter-container {
+        width: 100%;
 
-    input.filter-box {
-      width: 100%;
+        input.filter-box {
+            width: 100%;
+        }
     }
-  }
 }
 
 .facet-search-results {
-  position: absolute;
-  top: $facet-search-results-top-position;
-  left: $button-padding-x;
-  z-index: $facet-search-results-z-index;
+    position: absolute;
+    top: $facet-search-results-top-position;
+    left: $button-padding-x;
+    z-index: $facet-search-results-z-index;
 
-  width: calc(100% - #{$button-padding-x} * 2);
-  max-height: $facet-more-height;
-  padding: $dropdown-choices-top-bottom-margin 0;
-  margin: $facet-search-results-margin-y 0;
-  overflow-x: hidden;
-  overflow-y: auto;
+    width: calc(100% - #{$button-padding-x} * 2);
+    max-height: $facet-more-height;
+    padding: $dropdown-choices-top-bottom-margin 0;
+    margin: $facet-search-results-margin-y 0;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-  list-style: none;
+    list-style: none;
 
-  background-color: $pure-white;
-  border: $default-border;
-  border-radius: $border-radius;
+    background-color: $pure-white;
+    border: $default-border;
+    border-radius: $border-radius;
 
-  @include slim-scroll($light-grey, $medium-grey);
+    @include slim-scroll($light-grey, $medium-grey);
 }
 
 .facet-opened:last-child .facet-search-results {
-  top: auto;
-  bottom: $facet-search-results-bottom-position;
+    top: auto;
+    bottom: $facet-search-results-bottom-position;
 }

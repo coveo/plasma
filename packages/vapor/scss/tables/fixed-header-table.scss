@@ -1,59 +1,59 @@
 .fixed-header-table-container {
-  position: relative;
+    position: relative;
 
-  padding-top: $table-header-inner-height;
-  overflow: hidden;
-
-  border-top: $table-border;
-
-  .fixed-header-table {
-    overflow-y: scroll;
+    padding-top: $table-header-inner-height;
+    overflow: hidden;
 
     border-top: $table-border;
-    border-bottom: $table-border;
 
-    @include slim-scroll($light-grey, $medium-grey);
+    .fixed-header-table {
+        overflow-y: scroll;
 
-    table {
-      thead tr {
-        height: 0;
+        border-top: $table-border;
+        border-bottom: $table-border;
 
-        line-height: 0;
-      }
+        @include slim-scroll($light-grey, $medium-grey);
 
-      th {
-        position: inherit;
+        table {
+            thead tr {
+                height: 0;
 
-        padding-top: 0;
-        padding-bottom: 0;
+                line-height: 0;
+            }
 
-        font-size: 0;
-        white-space: nowrap;
+            th {
+                position: inherit;
 
-        border: none;
+                padding-top: 0;
+                padding-bottom: 0;
 
-        &.admin-sort .admin-sort-icon {
-          left: 0;
+                font-size: 0;
+                white-space: nowrap;
+
+                border: none;
+
+                &.admin-sort .admin-sort-icon {
+                    left: 0;
+                }
+
+                div.fixed-header-container {
+                    position: absolute;
+                    top: 0;
+
+                    padding: $table-header-top-bottom-padding 0;
+
+                    font-size: 12px;
+                    line-height: $table-header-line-height;
+                }
+            }
+
+            tbody tr:last-child {
+                height: $table-row-inner-height;
+
+                td {
+                    border-bottom: none;
+                }
+            }
         }
-
-        div.fixed-header-container {
-          position: absolute;
-          top: 0;
-
-          padding: $table-header-top-bottom-padding 0;
-
-          font-size: 12px;
-          line-height: $table-header-line-height;
-        }
-      }
-
-      tbody tr:last-child {
-        height: $table-row-inner-height;
-
-        td {
-          border-bottom: none;
-        }
-      }
     }
-  }
 }

@@ -1,74 +1,81 @@
 // DEPRECATED, won't be used once Salesforce panel will have been refactored and once coveo-form will be completed.
 form {
-  .coveo-block-form {
-    .form-group + .form-group {
-      margin-top: 10px;
-    }
+    .coveo-block-form {
+        .form-group + .form-group {
+            margin-top: 10px;
+        }
 
-    .form-group.sub {
-      margin-left: 10px;
+        .form-group.sub {
+            margin-left: 10px;
+        }
     }
-  }
 }
 
 // New simple form, scoped under coveo-form to prevent breaking the table-form
 .coveo-form {
-  .form-control-label {
-    align-items: center;
+    .form-control-label {
+        align-items: center;
 
-    display: inline-flex; // Used for inline-help-tooltip placement
-    margin-bottom: $form-control-label-margin;
+        display: inline-flex; // Used for inline-help-tooltip placement
+        margin-bottom: $form-control-label-margin;
 
-    color: $medium-blue;
-    font-size: $form-control-label-font-size;
+        color: $medium-blue;
+        font-size: $form-control-label-font-size;
 
-    &.flex {
-      display: flex;
-    }
-  }
-
-  .form-group {
-    display: block;
-
-    & + .form-group {
-      margin-top: $form-group-margin;
-
-      &.input-field {
-        margin-top: $form-group-margin + $input-margin-top;
-      }
+        &.flex {
+            display: flex;
+        }
     }
 
-    &.coveo-checkbox-label, &.coveo-slide-toggle-label {
-      display: flex;
+    .form-group {
+        display: block;
+
+        & + .form-group {
+            margin-top: $form-group-margin;
+
+            &.input-field {
+                margin-top: $form-group-margin + $input-margin-top;
+            }
+        }
+
+        &.coveo-checkbox-label,
+        &.coveo-slide-toggle-label {
+            display: flex;
+        }
+
+        &.collapsable-panel-group {
+            .panel-heading a {
+                padding-left: 18px;
+            }
+            .toggle-icon {
+                left: 0;
+            }
+        }
     }
 
-    &.collapsable-panel-group {
-      .panel-heading a {
-        padding-left: 18px;
-      }
-      .toggle-icon {
-        left: 0;
-      }
+    .inline-help-tooltip {
+        margin-left: 10px;
+
+        pointer-events: visible; // Very useful inside an input-field
+
+        &,
+        .inline-help-icon,
+        .inline-help-icon > svg,
+        .inline-link-icon,
+        .inline-link-icon > svg {
+            display: inline-block;
+            width: 1.2em;
+            height: 1.2em;
+        }
+
+        .inline-help-icon,
+        .inline-help-icon > svg {
+            fill: $medium-grey;
+        }
+
+        .inline-link-icon,
+        .inline-link-icon > svg {
+            fill: $orange;
+        }
     }
-  }
-
-  .inline-help-tooltip {
-    margin-left: 10px;
-
-    pointer-events: visible; // Very useful inside an input-field
-
-    &, .inline-help-icon, .inline-help-icon > svg, .inline-link-icon, .inline-link-icon > svg {
-      display: inline-block;
-      width: 1.2em;
-      height: 1.2em;
-    }
-
-    .inline-help-icon, .inline-help-icon > svg {
-      fill: $medium-grey;
-    }
-
-    .inline-link-icon, .inline-link-icon > svg {
-      fill: $orange;
-    }
-  }
 }
