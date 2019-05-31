@@ -19,3 +19,12 @@ export const keyCode = {
     insert: 45,
     delete: 46,
 };
+
+/**
+ * taken from https://stackoverflow.com/a/7394787
+ */
+export const decodeHtml = (html: string) => {
+    const txt = document.createElement('textarea');
+    txt.innerHTML = html;
+    return txt.value;
+};
