@@ -1,6 +1,6 @@
 import {decodeHtml} from './InputUtils';
 
-fdescribe('decodeHtml', () => {
+describe('decodeHtml', () => {
     it('should not throw when passing falsy values', () => {
         expect(() => {
             decodeHtml('');
