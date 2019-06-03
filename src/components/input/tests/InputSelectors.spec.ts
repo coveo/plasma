@@ -1,6 +1,6 @@
 import {InputSelectors} from '../InputSelectors';
 
-fdescribe('InputSelectors', () => {
+describe('InputSelectors', () => {
     const ownProps = {
         id: 'iron man',
     };
