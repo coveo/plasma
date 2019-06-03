@@ -1,9 +1,3 @@
-# Ignore compiled files
-dist
-coverage
-docs/assets/
-travis-deploy-key
-
 # Node files
 node_modules
 npm-debug.log.*
@@ -12,6 +6,7 @@ npm-debug.log.*
 ._*
 .DS_Store
 .idea
+.vscode
 
 # Other various
 *.diff
@@ -25,9 +20,3 @@ npm-debug.log.*
 
 # package-lock.json
 package-lock.json
-
-# Visual Studio Code files
-.vscode
-
-# awesome-typescript-loader
-.awcache

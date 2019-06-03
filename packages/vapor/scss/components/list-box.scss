@@ -1,0 +1,61 @@
+.list-box {
+    z-index: 1000;
+    min-width: 100%;
+
+    max-height: $list-box-max-height;
+    margin: 0;
+    padding: $list-box-vertical-spacing 0;
+    overflow-y: auto;
+    border: $default-border;
+    border-radius: $list-box-border-radius;
+
+    box-shadow: $list-box-box-shadow;
+
+    @include slim-scroll($light-grey, $medium-grey);
+}
+
+.item-box {
+    padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+    overflow: hidden;
+    color: $dark-grey;
+    font-size: $small-font-size;
+    line-height: $default-line-height;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    list-style: none;
+
+    cursor: pointer;
+
+    &:hover,
+    &:focus,
+    &.active {
+        color: $dark-blue;
+        background: $light-grey;
+    }
+
+    &.selected {
+        color: $dark-blue;
+        font-weight: bold;
+    }
+
+    &.disabled {
+        color: $medium-grey;
+        background: $pure-white;
+
+        cursor: default;
+    }
+
+    &.multi-line {
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    &.divider {
+        height: $item-box-divider-height;
+        margin: $item-box-vertical-spacing 0;
+        padding: 0;
+        background-color: $medium-grey;
+
+        cursor: default;
+    }
+}
