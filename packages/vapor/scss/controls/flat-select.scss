@@ -1,19 +1,16 @@
 .flat-select {
     display: flex;
-
     background-color: $pure-white;
     border-radius: $border-radius;
 
     .flat-select-option {
-        height: $flat-select-option-size;
         min-width: $flat-select-option-size;
+        height: $flat-select-option-size;
         padding: 0 4px;
-
         color: $pure-white;
         font-size: 13px;
         line-height: $flat-select-option-size - 2px;
         text-align: center;
-
         background-color: $medium-blue;
         border: 1px solid $medium-blue;
         border-radius: $border-radius;
@@ -28,7 +25,6 @@
 
         .icon-container {
             margin-right: 5px;
-
             vertical-align: -3px;
 
             &,
@@ -56,7 +52,6 @@
 
         &.selectable {
             color: $medium-blue;
-
             background-color: $pure-white;
             border: 1px solid $medium-grey;
 
@@ -78,10 +73,8 @@
         &.mod-link,
         &.selectable.mod-link {
             padding: 0;
-
             color: $medium-blue;
             font-size: $default-font-size;
-
             background-color: $pure-white;
             border: none;
 
@@ -102,12 +95,11 @@
     &.mod-btn-group .flat-select-option {
         height: $button-height;
         padding: $button-padding-y $button-padding-x;
+        font-weight: $button-font-weight;
 
         font-size: $button-font-size;
-        font-weight: $button-font-weight;
         line-height: $button-line-height;
         text-transform: uppercase;
-
         border-radius: 0;
 
         &:focus {
@@ -129,9 +121,7 @@
 
     &.mod-option-picker .flat-select-option {
         flex: auto;
-
         color: $medium-blue;
-
         background-color: $light-grey;
         border: 1px solid $blue;
         border-right-width: 0;
@@ -162,13 +152,11 @@
 }
 
 .prepended-flat-select {
-    align-items: center;
-
     display: flex;
+    align-items: center;
 
     .flat-select-prepend {
         margin-right: 10px;
-
         color: $medium-grey;
         font-size: $default-font-size;
         line-height: 18px;

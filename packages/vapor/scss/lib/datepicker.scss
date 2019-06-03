@@ -3,13 +3,11 @@ div.datepicker {
     top: 0;
     left: 0;
     z-index: 5555;
+    display: none;
 
     box-sizing: content-box;
-    display: none;
     width: 196px;
-
     font-size: 12px;
-
     cursor: default;
 }
 
@@ -40,20 +38,17 @@ div.datepicker table {
 div.datepicker a {
     color: black;
     text-decoration: none;
-
     outline: none;
 }
 
 div.datepicker table td {
-    padding: 0;
     margin: 0;
-
+    padding: 0;
     text-align: center;
 }
 
 div.datepicker th {
     padding: 0;
-
     color: #666666;
     font-weight: normal;
     text-align: center;
@@ -67,7 +62,6 @@ div.datepicker tbody a {
     width: 20px;
     height: 16px;
     padding-right: 2px;
-
     line-height: 16px;
 }
 
@@ -75,7 +69,6 @@ div.datepicker tbody a {
 .datepickerMonths a {
     width: 39px;
     height: 36px;
-
     line-height: 36px;
     text-align: center;
 }
@@ -126,7 +119,6 @@ a.datepickerGoPrev,
 a.datepickerMonth {
     float: left;
     height: 20px;
-
     line-height: 20px;
     text-align: center;
 }
@@ -135,7 +127,6 @@ div.datepicker th a.datepickerGoNext,
 div.datepicker th a.datepickerGoPrev {
     display: none;
     width: 20px;
-
     color: #666666;
 }
 
@@ -187,7 +178,6 @@ td.datepickerDisabled.datepickerNotInMonth a {
 /* Not used by default, calendar cells can be marked as special if desired (doesn't seem to be totally working) */
 div.datepicker tbody.datepickerDays td.datepickerSpecial a {
     color: white;
-
     background: #770000;
 }
 
@@ -198,7 +188,6 @@ div.datepicker tbody.datepickerDays td.datepickerSpecial.datepickerSelected a {
 /* Datepicker border styling */
 .datepicker {
     padding: 10px;
-
     background-color: #f7f7f7;
     border: 1px solid #cccccc;
 }

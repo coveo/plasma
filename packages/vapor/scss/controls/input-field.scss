@@ -1,6 +1,5 @@
 .input-field {
     position: relative;
-
     margin-top: $input-margin-top;
 
     // General Styles
@@ -11,23 +10,19 @@
         width: 100%;
         height: $input-height;
         padding: $input-padding;
-
         font-size: $input-font-size;
-
         background-color: transparent;
-        box-shadow: none;
         border: 0;
         border-bottom: $input-border;
         border-radius: 0;
         outline: 0;
-
+        box-shadow: none;
         transition: $input-transition;
 
         &:focus:not([readonly]),
         &:valid,
         &:disabled {
             color: $dark-grey;
-
             border-bottom: 1px solid $medium-blue;
 
             @include placeholder();
@@ -48,7 +43,6 @@
         &:disabled,
         &[readonly='readonly'] {
             color: $medium-grey;
-
             border-bottom-color: $medium-grey;
 
             -webkit-text-fill-color: $medium-grey;
@@ -64,23 +58,18 @@
         position: absolute;
         top: 10px;
         left: 0;
+        display: flex; // Used for inline-help-tooltip placement
 
         box-sizing: content-box;
-        display: flex; // Used for inline-help-tooltip placement
         height: 100%;
-
         color: $medium-grey;
         font-size: $input-font-size;
-
         transition: $input-transition;
-
         pointer-events: none;
 
         &.active {
             top: -1 * $input-margin-top;
-
             padding-bottom: $input-margin-top;
-
             color: $medium-blue;
             font-size: $form-control-label-font-size;
         }
@@ -89,13 +78,10 @@
     > input,
     .input-wrapper > input {
         padding: $input-vertical-padding 0;
-
         color: transparent; // Make the input text color transparent when input is invalid (closed).
         font-size: $input-font-size;
-
         background-color: transparent;
         box-shadow: none; // Remove firefox invalid input box shadow.
-
         transition: $input-color-transition;
 
         @include placeholder(transparent);
@@ -104,19 +90,16 @@
     > textarea {
         min-height: $input-height;
         padding: 10px 0 24px 0;
-        overflow-y: hidden;
 
+        -ms-overflow-y: hidden !important;
+        overflow-y: hidden; // ie
         transition: height ease 0.2s;
-
         resize: none;
-
-        -ms-overflow-y: hidden !important; // ie
         @include placeholder(transparent);
     }
 
     &.mod-resizeable textarea {
         padding: 5px 0 2px; // Tweak to make it look like a normal input-field
-
         resize: vertical;
     }
 
@@ -143,9 +126,8 @@
 
             & + label:after {
                 color: $green;
-                content: attr(data-valid-message);
-
                 opacity: 1;
+                content: attr(data-valid-message);
             }
         }
 
@@ -155,9 +137,8 @@
 
         &.invalid + label:after {
             color: $red;
-            content: attr(data-invalid-message);
-
             opacity: 1;
+            content: attr(data-invalid-message);
         }
 
         & + label {
@@ -167,12 +148,9 @@
                 position: absolute;
                 top: 100%;
                 left: 0;
-
                 display: block;
                 margin-top: $input-message-position;
-
                 font-size: 12px;
-
                 transition: 0.2s all ease;
             }
 

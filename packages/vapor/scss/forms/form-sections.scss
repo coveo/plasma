@@ -1,13 +1,12 @@
 .section-heading {
     .heading-title {
         color: $medium-blue;
-        font-size: $title-font-size;
         font-weight: bold;
+        font-size: $title-font-size;
     }
 
     .heading-description {
         margin-top: $form-heading-description-margin-top;
-
         color: $dark-grey;
         font-size: 12px;
     }
@@ -50,15 +49,12 @@
 
 .form-section-separator {
     position: relative;
-
     width: 100%;
     margin: 20px 0 10px;
-
     text-align: center;
 
     span {
         display: inline-block;
-
         color: $medium-grey;
         text-transform: uppercase;
 
@@ -66,23 +62,18 @@
         &:after {
             position: absolute;
             top: 4px;
-
             width: 235px;
-
-            content: ' ';
-
             border-top: solid 1px;
+            content: ' ';
         }
 
         &:before {
             left: 0;
-
             border-image: linear-gradient(to left, $medium-grey, white) 1;
         }
 
         &:after {
             left: 265px;
-
             border-image: linear-gradient(to right, $medium-grey, white) 1;
         }
     }

@@ -1,9 +1,9 @@
 .slide-y {
     height: 0;
+    transition-timing-function: ease-in-out;
 
     transition-duration: $slide-y-transition-duration;
     transition-property: none;
-    transition-timing-function: ease-in-out;
 }
 
 .slide-y-transition {

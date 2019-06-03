@@ -26,10 +26,9 @@
 @mixin placeholder($text-color: $medium-grey, $font-family: $base-font-family) {
     &::placeholder {
         color: $text-color;
-        font-family: $font-family;
         font-size: inherit;
+        font-family: $font-family;
         text-transform: none;
-
         transition: color 0.2s ease;
     }
 

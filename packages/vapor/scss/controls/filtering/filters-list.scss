@@ -4,7 +4,6 @@
     .filter-type-popup {
         position: absolute;
         z-index: 999;
-
         width: $filter-pop-up-width;
 
         .operator,
@@ -16,7 +15,6 @@
                 .dropdown-toggle {
                     box-sizing: border-box;
                     width: 100%;
-
                     text-align: left;
                 }
             }
@@ -37,9 +35,8 @@
             .section {
                 display: inline-block;
                 width: 100%;
-                padding-left: $filter-choices-section-padding-left;
                 margin-top: $filter-choices-section-margin-top;
-
+                padding-left: $filter-choices-section-padding-left;
                 color: $medium-blue;
                 text-transform: uppercase;
             }
@@ -99,14 +96,12 @@
         .filter:not(.selected-filter) {
             box-sizing: content-box;
             min-height: $filter-not-selected-min-height;
-            padding: $filter-padding;
             margin-right: $filter-not-selected-margin-right;
+            padding: $filter-padding;
             overflow-x: hidden;
-
             line-height: $filter-not-selected-line-height;
-            text-overflow: ellipsis;
             white-space: nowrap;
-
+            text-overflow: ellipsis;
             background-color: $pure-white;
 
             cursor: pointer;

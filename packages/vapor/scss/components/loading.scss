@@ -1,9 +1,7 @@
 .spinner {
     width: $loading-size;
     margin: 0 auto;
-
     text-align: center;
-
     cursor: default;
 
     &.mod-vertical-margin {
@@ -15,10 +13,8 @@
         display: inline-block;
         width: $bounce-size;
         height: $bounce-size;
-
         background-color: $orange;
         border-radius: 100%;
-
         animation: bouncedelay 1.7s infinite ease-in-out;
         /* Prevent first frame from flickering when animation starts */
         animation-fill-mode: both;
@@ -36,7 +32,6 @@
 .loading-prompt {
     margin-top: $loading-prompt-margin-top;
     margin-bottom: $loading-prompt-margin-bottom;
-
     font-size: $loading-font-size;
     text-align: center;
 
@@ -47,7 +42,6 @@
         & > div {
             width: $big-bounce-size;
             height: $big-bounce-size;
-
             background-color: $orange;
         }
     }
@@ -73,7 +67,6 @@
 
     .loading-row {
         display: table-row-group;
-
         opacity: 1;
     }
 
@@ -82,9 +75,7 @@
         top: 50%;
         left: 50%;
         z-index: 999;
-
         display: block;
-
         transform: translate(-50%, -50%);
 
         opacity: 1;

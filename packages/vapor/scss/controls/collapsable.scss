@@ -3,26 +3,23 @@
 .collapsable-panel-group {
     .collapse {
         display: none;
-
         visibility: hidden;
 
         &.in {
             display: table;
             width: 100%;
-
             visibility: visible;
         }
     }
 
     .collapsing {
         position: relative;
-
         height: 0;
         overflow: hidden;
+        transition-timing-function: ease;
 
         transition-duration: 0.35s;
         transition-property: height, visibility;
-        transition-timing-function: ease;
     }
 
     .panel {
@@ -38,15 +35,14 @@
 
             a {
                 display: block;
-                padding: 3px 0 3px 26px;
                 margin-bottom: 5px;
-
+                padding: 3px 0 3px 26px;
                 color: $medium-blue;
-                font-family: $base-font-family;
                 font-size: $default-font-size;
+                font-family: $base-font-family;
                 line-height: initial;
-                text-decoration: none;
                 text-transform: uppercase;
+                text-decoration: none;
             }
 
             i.toggle-icon {
@@ -54,9 +50,7 @@
                 top: 8px;
                 left: 10px;
                 z-index: -1;
-
                 display: inline-block;
-
                 content: '\00a0';
 
                 @extend .coveo-sprites-misc-panel-expended;

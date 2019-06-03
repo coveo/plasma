@@ -5,29 +5,25 @@
     .rc-slider-rail {
         height: $slider-rail-height;
         margin-top: $slider-rail-margin-top;
-
         background-color: $grey-3;
     }
 
     .rc-slider-track {
         height: $slider-track-height;
-
         background: $blue-5;
         border-radius: 0;
     }
 
     .rc-slider-dot {
         bottom: initial;
-
         width: $slider-dot-width;
         height: $slider-dot-height;
         margin-top: $slider-dot-margin-top;
         margin-left: $slider-dot-margin-left;
-
         background-color: $heather;
-        box-shadow: $slider-dot-box-shadow;
         border: none;
         border-radius: initial;
+        box-shadow: $slider-dot-box-shadow;
     }
 
     .rc-slider-handle {
@@ -35,17 +31,16 @@
         height: $slider-handle-height;
         margin-top: $slider-handle-margin-top;
         margin-left: $slider-handle-margin-left;
-
         background: url('../../resources/icons/svg/slider-handle.svg') no-repeat;
         background-size: $slider-handle-background-size;
-        box-shadow: $slider-handle-box-shadow;
         border: none;
         border-radius: $slider-handle-border-radius;
+        box-shadow: $slider-handle-box-shadow;
     }
 
     .rc-slider-mark-text {
-        color: $bali-hai;
         bottom: 3 * $spacing;
+        color: $bali-hai;
     }
 }
 
@@ -61,7 +56,6 @@
             color: $dark-blue;
             font-size: $small-font-size;
             line-height: $default-line-height;
-
             background-color: transparent;
             box-shadow: none;
         }

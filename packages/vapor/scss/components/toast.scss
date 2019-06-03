@@ -40,13 +40,12 @@ $toast-close-size: 16px;
     top: $toast-margin-top;
     right: 0;
     left: 0;
-    align-items: center;
-    flex-flow: column-reverse;
     z-index: $toast-z-index;
+    display: flex;
+    flex-flow: column-reverse;
+    align-items: center;
 
     box-sizing: border-box;
-    display: flex;
-
     pointer-events: none;
 
     &.mod-bottom {
@@ -74,9 +73,8 @@ $toast-close-size: 16px;
     .toast {
         display: block;
         min-width: $toast-min-width;
-        padding: $toast-padding;
         margin-top: $toast-margin;
-
+        padding: $toast-padding;
         pointer-events: all;
 
         &.mod-success {
@@ -96,13 +94,12 @@ $toast-close-size: 16px;
         }
 
         &.mod-animated {
-            animation-duration: 0.3s;
-            animation-iteration-count: 1;
-            animation-name: toastFadeInTop;
-            animation-timing-function: ease-in;
-            animation-fill-mode: forwards;
-
             opacity: 0;
+            animation-name: toastFadeInTop;
+            animation-duration: 0.3s;
+            animation-timing-function: ease-in;
+            animation-iteration-count: 1;
+            animation-fill-mode: forwards;
         }
 
         a {
@@ -114,7 +111,6 @@ $toast-close-size: 16px;
     .toast-close {
         float: right;
         padding-left: $toast-close-padding-left;
-
         cursor: pointer;
 
         svg {
@@ -130,7 +126,6 @@ $toast-close-size: 16px;
 
     .toast-description {
         margin-top: $toast-description-margin-top;
-
         color: $toast-text-color;
         font-size: $toast-description-font-size;
     }

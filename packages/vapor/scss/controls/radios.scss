@@ -4,25 +4,19 @@
     input[type='radio'] {
         // Hide the html radio under our custom one instead of using display:none to let the default keyboard navigation work.
         position: absolute;
-
         margin: 0;
-
         opacity: 0;
 
         & + label {
             position: relative;
-            align-items: center;
-
             display: inline-flex;
+            align-items: center;
             height: $radio-button-option-height;
             padding-left: $radio-button-size + $checkbox-label-margin;
-
             color: $dark-grey;
             line-height: $radio-button-option-height;
-
-            transition: 0.28s ease;
-
             cursor: pointer;
+            transition: 0.28s ease;
             user-select: none;
 
             &:before,
@@ -31,16 +25,12 @@
                 top: 0;
                 left: 0;
                 z-index: 0;
-
                 width: $radio-button-size;
                 height: $radio-button-size;
-
-                content: '';
-
                 background-color: $pure-white;
                 border-radius: 50%;
-
                 transition: 0.28s ease;
+                content: '';
             }
         }
 
@@ -55,7 +45,6 @@
 
             &:after {
                 z-index: -1;
-
                 transform: scale(0);
             }
         }
@@ -67,7 +56,6 @@
 
             &:after {
                 z-index: 0;
-
                 background-color: $orange;
                 transform: scale(0.5);
             }

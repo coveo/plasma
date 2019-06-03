@@ -1,7 +1,6 @@
 .search-bar {
-    height: $input-height;
     min-width: $search-bar-min-width;
-
+    height: $input-height;
     border: $default-border;
     border-radius: $border-radius;
 }
@@ -12,7 +11,6 @@
     height: $input-height;
     margin-top: -$default-border-size;
     margin-left: $search-bar-input-margin-left;
-
     background-color: transparent;
     border: none;
 
@@ -33,14 +31,12 @@
 
     svg {
         cursor: pointer;
-
         fill: $medium-blue;
     }
 }
 
 .search-bar-disabled svg {
     cursor: default;
-
     fill: $light-grey;
 }
 
@@ -56,10 +52,8 @@
         position: absolute;
         top: $search-bar-spinner-offset;
         left: $search-bar-spinner-offset;
-
         width: $search-bar-spinner-size;
         height: $search-bar-spinner-size;
-
         border: $search-bar-spinner-border;
         border-top-color: transparent;
         border-radius: 50%;

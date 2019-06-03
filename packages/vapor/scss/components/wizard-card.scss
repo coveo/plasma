@@ -1,15 +1,13 @@
 .wizard-card {
-    align-content: flex-start;
+    display: flex;
     flex-direction: column;
     flex-wrap: wrap;
-
-    display: flex;
+    align-content: flex-start;
     width: $wizard-card-width;
-
     background-color: $white;
-    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
     border: 1px solid $medium-grey;
     border-radius: $border-radius;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.14);
 
     .wizard-card-body {
         margin-bottom: auto;
@@ -22,14 +20,13 @@
     }
 
     .wizard-card-footer {
-        align-self: flex-end;
-        flex-wrap: wrap;
-        justify-content: flex-end;
-
         display: flex;
+        flex-wrap: wrap;
+        align-self: flex-end;
+        justify-content: flex-end;
         width: 100%;
-        padding: $wizard-card-footer-padding;
         margin-top: auto;
+        padding: $wizard-card-footer-padding;
 
         .btn {
             width: auto;

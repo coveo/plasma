@@ -1,7 +1,6 @@
 .sub-navigation {
     min-width: $sub-navigation-min-width;
     overflow: auto;
-
     background-color: $white;
     border-right: $sub-navigation-min-width;
 
@@ -16,7 +15,6 @@
             .sub-navigation-item-link {
                 display: block;
                 padding: $sub-navigation-item-padding;
-
                 color: $medium-blue;
                 line-height: $sub-navigation-line-height;
             }
@@ -28,14 +26,11 @@
                     position: absolute;
                     top: 0;
                     left: 0;
-
                     display: block;
                     width: $sub-navigation-selected-border-width;
                     height: 100%;
-
-                    content: '';
-
                     background-color: $orange;
+                    content: '';
                 }
             }
         }

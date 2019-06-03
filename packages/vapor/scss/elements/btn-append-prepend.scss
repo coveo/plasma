@@ -8,7 +8,6 @@
             display: inline-flex;
             height: $button-height - $button-border-width;
             padding: 0 $button-padding-x;
-
             vertical-align: top; // Fix for Edge, otherwise, button text will be misaligned
 
             &.mod-icon {
@@ -19,7 +18,6 @@
         &.dropdown-toggle {
             .dropdown-toggle-arrow {
                 position: static;
-
                 display: inline-block;
                 margin-left: $dropdown-icon-text-spacing;
             }
@@ -49,7 +47,6 @@
 
         .btn-append {
             margin-left: $button-padding-x;
-
             border-left: $button-border-width solid $medium-grey;
         }
     }
@@ -59,7 +56,6 @@
 
         .btn-prepend {
             margin-right: $button-padding-x;
-
             border-right: $button-border-width solid $medium-grey;
         }
     }

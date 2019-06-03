@@ -1,13 +1,11 @@
 .multiselect-input {
-    align-items: center;
+    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    align-items: center;
     justify-content: space-between;
-
-    display: flex;
     width: $dropdown-button-min-width;
     padding: $multiselect-padding;
-
     border-radius: $border-radius;
 
     @extend .mod-border-transparency-4;
@@ -22,17 +20,15 @@
 }
 
 .multiselect-selected {
-    align-items: center;
-    flex-flow: row nowrap;
-    justify-content: space-between;
-
     display: flex;
+    flex-flow: row nowrap;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .selected-options-container {
-    flex-flow: row wrap;
-
     display: inline-flex;
+    flex-flow: row wrap;
 
     .selected-option,
     .sortable-selected-option {
@@ -41,8 +37,8 @@
 }
 
 .multiselect-input.mod-sortable .selected-options-container {
-    align-items: flex-start;
     flex-flow: column nowrap;
+    align-items: flex-start;
 
     .selected-option {
         margin: 0;
@@ -51,7 +47,6 @@
 
 .multiselect-empty {
     margin-bottom: $spacing;
-
     color: $medium-grey;
     line-height: $button-small-height + 2 * $button-border-width;
 }

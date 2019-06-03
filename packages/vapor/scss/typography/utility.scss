@@ -61,9 +61,9 @@
 .truncate {
     max-width: 100%;
     overflow: hidden;
+    white-space: nowrap;
 
     text-overflow: ellipsis;
-    white-space: nowrap;
 }
 
 .normal-white-space {

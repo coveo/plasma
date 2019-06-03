@@ -15,21 +15,18 @@
     position: absolute;
     top: 0;
     z-index: -1;
-
     box-shadow: $flippable-shadow;
 }
 
 .flippable {
     z-index: $flippable-z-index;
-
-    perspective: $flippable-perspective;
     transform-style: preserve-3d;
 
+    perspective: $flippable-perspective;
     transition: z-index $flippable-transition-duration;
 
     .flipper {
         transform-style: preserve-3d;
-
         transition: transform $flippable-transition-duration 0s, opacity 0s $flippable-transition-duration / 2;
 
         &.show-back {
@@ -48,7 +45,6 @@
     .flipper-front,
     .flipper-back {
         margin: 0;
-
         transform-style: preserve-3d;
 
         backface-visibility: hidden;
@@ -60,7 +56,6 @@
 
     .flipper-back {
         right: 0;
-
         transform: rotateY(-0.5turn);
     }
 }
@@ -74,7 +69,6 @@
 
         .flipper-back {
             z-index: 1;
-
             opacity: 1;
         }
     }

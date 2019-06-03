@@ -1,39 +1,32 @@
 .tab-navigation {
     min-height: $tab-navigation-min-height;
     padding: 0 $header-padding;
-
     border-bottom: $default-border;
 
     .tab {
         position: relative;
         bottom: -1px;
-
         display: inline-block;
-        padding: $tab-padding;
         margin-right: $tab-margin-right;
-
+        padding: $tab-padding;
         color: $medium-blue;
-        font-size: $tab-font-size;
         font-weight: bold;
+        font-size: $tab-font-size;
         line-height: 16px;
         letter-spacing: 0.3px;
         text-transform: uppercase;
-
         border-bottom: $tab-bottom-border-height solid transparent;
 
-        transition: all 0.2s ease;
-
         cursor: pointer;
+        transition: all 0.2s ease;
 
         &.active {
             color: $medium-blue;
-
             border-bottom: $tab-bottom-border-height solid $orange;
         }
 
         &.disabled {
             color: $medium-grey;
-
             cursor: not-allowed;
         }
 
@@ -44,9 +37,8 @@
 
     &.sub-tabs {
         .tab {
-            font-size: $sub-tab-font-size;
             font-weight: 400;
-
+            font-size: $sub-tab-font-size;
             border-bottom-width: 2px;
         }
     }
@@ -54,12 +46,10 @@
 
 .tab-pane {
     display: none;
-
     visibility: hidden;
 
     &.active {
         display: block;
-
         visibility: visible;
 
         @extend .slideInLeft;

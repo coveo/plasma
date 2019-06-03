@@ -1,21 +1,17 @@
 .ribbon-container {
     position: relative;
-
     overflow: hidden;
 }
 
 .corner-ribbon {
     position: absolute;
-
     width: $ribbon-width;
     height: $ribbon-height;
-
     color: $pure-white;
     font-size: $ribbon-font-size;
     line-height: $ribbon-height;
     letter-spacing: $ribbon-letter-spacing;
     text-align: center;
-
     background-color: $medium-grey;
 
     &.left {

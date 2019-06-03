@@ -1,7 +1,6 @@
 .limit-box {
     width: $limit-box-width;
     min-width: $limit-box-width;
-
     border: $default-border;
     border-radius: $border-radius;
 }
@@ -23,20 +22,17 @@
     width: 100%;
     height: $input-height;
     padding: $input-padding;
-
     font-size: $input-font-size;
 }
 
 .limit-box-footer {
     width: 100%;
     height: $limit-progress-bar-height;
-
     background-color: $light-grey;
 }
 
 .limit-box-bar {
     height: 100%;
-
     background-color: $green;
 }
 
@@ -68,6 +64,5 @@
 .limit-history-button {
     position: relative;
     top: -2px;
-
     cursor: pointer;
 }

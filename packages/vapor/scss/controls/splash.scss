@@ -1,6 +1,5 @@
 .splash-header {
     position: absolute;
-
     width: 100%;
     height: $splash-default-height;
     min-height: 230px;
@@ -25,7 +24,6 @@
 
 .splash-container {
     z-index: 1;
-
     width: 495px;
     padding-top: 50px;
     padding-bottom: 50px;
@@ -52,12 +50,10 @@
 
 .splash-box {
     margin: 0 1em;
-
     text-align: center;
-
     background: $pure-white;
-    box-shadow: $splash-box-shadow;
     border-radius: $big-border-radius;
+    box-shadow: $splash-box-shadow;
 
     .splash-box-title {
         padding: $splash-vertical-padding 0 40px;
@@ -86,7 +82,6 @@
 
     .splash-box-footer {
         margin-top: 50px;
-
         border-radius: 0 0 $big-border-radius $big-border-radius;
     }
 
@@ -97,7 +92,6 @@
 
 .splash-footer {
     z-index: 1;
-
     min-height: $splash-min-height;
     padding: 10px 20px 10px;
 

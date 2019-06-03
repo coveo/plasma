@@ -2,8 +2,8 @@
     position: relative;
 
     .dropdown-menu {
-        max-height: none;
         min-width: 0;
+        max-height: none;
         padding: 0;
 
         &.on-right {
@@ -23,7 +23,6 @@
 
 .date-picker-box {
     width: $date-picker-width;
-
     background-color: $pure-white;
     border: $default-border;
     border-radius: $border-radius;
@@ -40,7 +39,6 @@
 .calendar {
     table.calendar-grid {
         width: $calendar-width;
-
         table-layout: fixed;
 
         &.selecting {
@@ -58,14 +56,12 @@
             width: $calendar-cell-dimensions;
             height: $calendar-cell-dimensions;
             padding: 0;
-
             text-align: center;
         }
 
         th {
             color: $dark-grey;
             text-transform: uppercase;
-
             border-bottom: $calendar-border;
         }
 
@@ -88,11 +84,9 @@
             position: relative;
             top: 0;
             left: -#{$calendar-border-width};
-
             display: block;
             width: calc(#{$calendar-cell-dimensions} + #{$calendar-border-width});
             height: $selected-date-height;
-
             color: $pure-white;
             line-height: $selected-date-height;
         }
@@ -104,14 +98,11 @@
             &:before,
             &:after {
                 position: absolute;
-
                 display: block;
                 width: $calendar-limit-border-length;
                 height: $calendar-limit-border-width;
-
-                content: '';
-
                 background: $medium-blue;
+                content: '';
             }
 
             &:before {
@@ -125,7 +116,6 @@
 
         .lower-limit {
             left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width});
-
             border-left: $calendar-limit-border-width solid $medium-blue;
 
             &:before,
@@ -153,14 +143,11 @@
                 &:after {
                     position: absolute;
                     right: -#{$calendar-limit-border-width};
-
                     display: block;
                     width: $calendar-limit-border-length;
                     height: $calendar-limit-border-width;
-
-                    content: '';
-
                     background: $medium-blue;
+                    content: '';
                 }
 
                 &:before {
@@ -198,14 +185,12 @@
 
     &:first-child .options-cycle-option {
         min-width: 120px;
-
         text-align: center;
     }
 }
 
 .options-cycle-button {
     padding: 0;
-
     background: none;
     border: none;
 
@@ -215,18 +200,15 @@
 .option-picker {
     li {
         width: 50%;
-
         background: $pure-white;
 
         button {
-            box-sizing: border-box;
             display: block;
+            box-sizing: border-box;
             width: 100%;
             padding: $dropdown-choices-top-bottom-margin;
-
             color: $medium-blue;
             font-size: $button-font-size;
-
             background: none;
             border: $default-border;
             border-top-color: transparent;
@@ -285,9 +267,7 @@
     input {
         width: 100%;
         padding: $dropdown-choices-top-bottom-margin;
-
         font-size: $default-font-size;
-
         border-radius: $border-radius;
         outline: none;
 
@@ -326,12 +306,11 @@
 }
 
 .date-button {
-    box-sizing: border-box;
     display: block;
+    box-sizing: border-box;
     width: $date-picker-dimension;
     height: $date-picker-dimension;
     padding: $button-small-padding-x;
-
     background: none;
     border: $default-border;
     border-radius: $border-radius;
@@ -344,14 +323,12 @@
 }
 
 .clear-selection-button {
-    box-sizing: border-box;
     display: block;
+    box-sizing: border-box;
     width: 100%;
     padding: $dropdown-choices-top-bottom-margin;
-
     color: $medium-blue;
     font-size: $button-font-size;
-
     background: none;
     border: $default-border;
     border-radius: $border-radius;
@@ -369,13 +346,11 @@
 
     &.mod-vertical {
         display: block;
-
         line-height: $default-font-size;
         text-align: center;
 
         span {
             display: inline-block;
-
             transform: rotate(90deg);
         }
     }

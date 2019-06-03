@@ -1,7 +1,6 @@
 .filter-expression-picker {
     .edit-filter-values {
         position: relative;
-
         overflow: visible;
 
         .popup-main-section {
@@ -14,10 +13,9 @@
             .selected-filter {
                 height: $selected-filter-height;
                 padding-left: $selected-filter-padding-left;
-
                 color: $medium-blue;
-                font-size: $default-font-size;
                 font-weight: bold;
+                font-size: $default-font-size;
                 line-height: $selected-filter-height;
             }
 

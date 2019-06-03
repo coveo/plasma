@@ -14,12 +14,10 @@ $datepicker-day-disabled-color: #666666;
     width: 100% !important;
     height: auto !important;
     padding: 0;
-
     border: none;
 
     .datepickerContainer {
         position: relative;
-
         width: 100% !important;
         height: 100% !important;
     }
@@ -39,20 +37,17 @@ $datepicker-day-disabled-color: #666666;
 
                 th {
                     padding: 3px 0;
-
                     text-align: center;
                 }
 
                 &.datepickerDoW {
                     th {
                         padding: 2px 0;
-
                         border-bottom: 1px solid $medium-grey;
                     }
                     span {
                         color: $medium-grey;
                         font-size: 9px;
-
                         border-top: none;
                         border-right: none;
                         border-bottom: none;
@@ -63,7 +58,6 @@ $datepicker-day-disabled-color: #666666;
             tr:first-child th {
                 a:hover {
                     text-decoration: none;
-
                     background: $medium-grey;
 
                     cursor: pointer;
@@ -74,7 +68,6 @@ $datepicker-day-disabled-color: #666666;
                     margin: 0 37px;
                     &:hover {
                         text-decoration: underline;
-
                         background-color: transparent;
                     }
                 }
@@ -102,20 +95,16 @@ $datepicker-day-disabled-color: #666666;
 
                 td {
                     padding: 0;
-
                     font-size: 11px;
                     text-align: center;
-
                     border: 1px solid $white;
 
                     a {
                         box-sizing: border-box;
                         width: 37px;
                         height: 26px;
-
                         line-height: 26px;
                         text-decoration: none;
-
                         cursor: pointer;
                     }
 
@@ -145,7 +134,6 @@ $datepicker-day-disabled-color: #666666;
                                 background-color: $light-grey;
                                 a {
                                     color: $medium-grey;
-
                                     cursor: default;
                                 }
                             }
@@ -157,7 +145,6 @@ $datepicker-day-disabled-color: #666666;
 
                         a {
                             color: $medium-grey;
-
                             cursor: default;
                         }
                     }

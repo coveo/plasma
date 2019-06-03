@@ -16,7 +16,6 @@ $icon-size: (4em / 3);
     right: 0;
     bottom: 0;
     left: 0;
-
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -46,12 +45,10 @@ $icon-size: (4em / 3);
 
 .modal-backdrop {
     z-index: $base-backdrop-z-index;
-
     background: rgba($purple-blue, 0.9);
 
-    transition: all 0.3s;
-
     opacity: 1;
+    transition: all 0.3s;
 
     @include generate-layers(10, $base-backdrop-z-index);
     &.--react-modal {
@@ -60,7 +57,6 @@ $icon-size: (4em / 3);
 
     &.prompt-backdrop {
         position: absolute;
-
         opacity: 0.5;
         .mask {
             position: fixed;
@@ -86,12 +82,10 @@ $icon-size: (4em / 3);
 }
 
 .modal-container {
+    z-index: $base-modal-z-index;
+    display: flex;
     align-items: center;
     justify-content: center;
-    z-index: $base-modal-z-index;
-
-    display: flex;
-
     pointer-events: none; // Required to allow clicking through the modal-container on the modal-backdrop. Known issue: wont work on IE 10.
 
     @include generate-layers(10, $base-modal-z-index);
@@ -111,12 +105,10 @@ $icon-size: (4em / 3);
 
     .modal-content {
         position: relative;
-        flex-direction: column;
-
         display: flex;
+        flex-direction: column;
         width: $modal-width;
         height: $modal-height;
-
         transform: translate3d(0, 0, 0); // Required for drag and drop positioning with dragula inside the modal.
 
         opacity: 0;
@@ -161,7 +153,6 @@ $icon-size: (4em / 3);
     &.mod-fade-in-scale > .modal-content,
     &.closed.mod-fade-in-scale > .modal-content {
         transform: scale(0.7);
-
         transition: all 0.3s;
     }
 
@@ -172,7 +163,6 @@ $icon-size: (4em / 3);
     &.mod-slide-in-bottom > .modal-content,
     &closed.mod-slide-in-bottom > .modal-content {
         transform: translate3d(0, 20%, 0);
-
         transition: all 0.3s;
     }
 
@@ -182,14 +172,11 @@ $icon-size: (4em / 3);
 }
 
 .modal-header {
-    align-items: center;
-
     display: flex;
+    align-items: center;
     height: $modal-header-height;
     padding: 0 $header-padding;
-
     color: $pure-white;
-
     background-color: $pure-white;
     border-radius: $border-radius $border-radius 0 0;
 
@@ -213,18 +200,16 @@ $icon-size: (4em / 3);
         flex-grow: 1;
 
         overflow: hidden;
-
         color: $medium-blue;
         line-height: 30px;
-        text-overflow: ellipsis;
         white-space: nowrap;
+        text-overflow: ellipsis;
     }
 
     .small-close {
         position: absolute;
         top: -($icon-size + pxtoem(10));
         right: 0;
-
         cursor: pointer;
 
         // Make both the icon and his containing span the same size.
@@ -241,7 +226,6 @@ $icon-size: (4em / 3);
     flex-grow: 1;
 
     overflow: auto;
-
     background-color: $pure-white;
 
     -webkit-overflow-scrolling: touch;
@@ -252,13 +236,11 @@ $icon-size: (4em / 3);
 }
 
 .modal-footer {
+    display: flex;
     align-items: center;
     justify-content: flex-end;
-
-    display: flex;
     padding: $modal-footer-padding;
     overflow: hidden;
-
     background-color: $white;
     border-top: $default-border;
     border-radius: 0 0 $border-radius $border-radius;

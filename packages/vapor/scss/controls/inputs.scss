@@ -17,11 +17,9 @@ input[type='search'],
 input[type='tel'],
 input[type='color'] {
     padding: 3px 6px;
-
     color: $dark-grey;
-    font-family: $base-font-family;
     font-size: $title-font-size;
-
+    font-family: $base-font-family;
     border: 1px solid $medium-grey;
     border-radius: 2px;
 }
@@ -29,21 +27,18 @@ input[type='color'] {
 input[type='text'],
 textarea {
     &.admin-invisible-textbox {
-        padding: 4px 6px;
         margin-bottom: 0;
-
+        padding: 4px 6px;
         background: transparent;
         border-width: 0;
-
         resize: none;
     }
 
     &:-ms-input-placeholder {
         color: $medium-grey;
-        font-family: $base-font-family;
         font-size: inherit;
+        font-family: $base-font-family;
         text-transform: none;
-
         transition: color 0.2s ease;
     }
 }
@@ -55,11 +50,9 @@ textarea {
     .add-on {
         display: inline-block;
         height: 30px;
-        padding: 0;
         margin-left: -5px;
-
+        padding: 0;
         vertical-align: top;
-
         background-color: $medium-grey;
         border: 1px solid darken($medium-grey, 10%);
         border-radius: 0 2px 2px 0;
@@ -68,6 +61,5 @@ textarea {
 
 .textarea.textarea-autosize {
     width: 100%;
-
     resize: none;
 }

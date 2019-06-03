@@ -6,15 +6,12 @@
     &.input-validation-error,
     &.multiline-input-validation-error {
         .input-validation-error-details {
-            align-items: center;
-
             display: flex;
+            align-items: center;
             padding: 0 10px;
-
             color: $pure-white;
             font-size: 12px;
             line-height: 16px;
-
             background-color: $red;
 
             .input-validation-error-icon {
@@ -47,7 +44,6 @@
 .generic-form-error {
     display: inline-block;
     margin-bottom: 10px;
-
     color: $red;
     font-size: 12px;
 

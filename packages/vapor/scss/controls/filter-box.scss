@@ -41,7 +41,6 @@
         input.filter-box {
             width: $filter-box-width-mod-small;
             height: $filter-box-small-height;
-
             font-size: $filter-box-small-font-size;
         }
     }
@@ -49,17 +48,15 @@
     .filter-icon {
         position: absolute;
         top: 8px;
-
         display: none;
-
         cursor: default;
     }
 
     input.filter-box {
         height: $filter-box-height;
+        margin: 0;
         padding-right: 40px;
         padding-left: 20px;
-        margin: 0;
 
         &::-ms-clear {
             display: none;
@@ -68,9 +65,7 @@
         & + span {
             position: absolute;
             top: calc(50% - #{$clear-icon-height} / 2);
-
             line-height: 0;
-
             cursor: pointer;
 
             svg {

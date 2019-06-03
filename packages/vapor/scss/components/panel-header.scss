@@ -8,9 +8,8 @@
     }
 
     .action-bar {
-        flex-flow: row nowrap;
-
         display: flex;
+        flex-flow: row nowrap;
     }
 
     .admin-description {
@@ -21,9 +20,7 @@
         display: inline-block;
         height: $button-height;
         padding: 0;
-
         vertical-align: bottom;
-
         background-color: $pure-white;
         border: 1px solid $medium-grey;
         border-radius: 2px;
@@ -41,7 +38,6 @@
 
             &.state-disabled {
                 color: $medium-grey;
-
                 cursor: default;
             }
         }

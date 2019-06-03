@@ -1,9 +1,7 @@
 .navigation-wrapper {
     width: $navigation-width;
     margin-left: -$navigation-width;
-
     transform: translate3d(0, 0, 0);
-
     transition: margin-left $navigation-toggle-duration ease-in-out;
     will-change: transform;
 }
@@ -16,9 +14,7 @@
     width: $navigation-width;
     overflow-x: auto;
     overflow-y: overlay;
-
     background-color: $navigation-background-color;
-
     user-select: none;
 
     @include slim-scroll($purple-blue, rgba(255, 255, 255, 0.5));
@@ -54,27 +50,22 @@
 
     .navigation-menu {
         position: relative;
-        margin-top: 1em;
-
         height: 100%;
+        margin-top: 1em;
         overflow-x: visible;
-
         color: $white;
-
         background-color: $navigation-background-color;
 
         .navigation-menu-sections {
             .navigation-menu-section {
                 .navigation-menu-section-header {
                     position: relative;
-                    align-items: center;
-
                     display: flex;
+                    align-items: center;
                     height: 55px;
-
-                    font-size: $navigation-section-font-size;
                     font-weight: $navigation-menu-header-font-weight;
 
+                    font-size: $navigation-section-font-size;
                     cursor: pointer;
 
                     .navigation-menu-section-header-icon {
@@ -85,12 +76,11 @@
                 }
 
                 .navigation-menu-section-items {
-                    overflow-x: auto;
                     margin-bottom: 1em;
+                    overflow-x: auto;
 
                     .navigation-menu-section-item {
                         font-weight: $navigation-menu-item-font-weight;
-
                         border-left: $navigation-active-border-width solid transparent;
 
                         cursor: pointer;
@@ -98,14 +88,12 @@
                         opacity: 0.8;
 
                         .navigation-menu-section-item-link {
+                            display: flex;
                             align-items: center;
                             justify-content: space-between;
-
-                            display: flex;
                             height: $navigation-menu-section-height;
-                            padding-left: $navigation-horizontal-space;
                             margin-right: $navigation-right-margin;
-
+                            padding-left: $navigation-horizontal-space;
                             color: $white;
                             font-size: $default-font-size;
                             letter-spacing: 0.05em;
@@ -118,7 +106,6 @@
                         &.state-locked {
                             .icon-folder-locked {
                                 display: inline-block;
-
                                 visibility: visible;
                             }
                         }
@@ -126,7 +113,6 @@
                         &.state-closed {
                             .icon-folder-closed {
                                 display: inline-block;
-
                                 visibility: visible;
                             }
                         }
@@ -134,7 +120,6 @@
                         &.state-opened {
                             .icon-folder-opened {
                                 display: inline-block;
-
                                 visibility: visible;
                             }
                         }
@@ -165,11 +150,9 @@
 .navigation-tag {
     display: inline-block;
     padding: $navigation-tag-padding;
-
     font-size: $navigation-tag-font-size;
     text-transform: none;
     word-break: keep-all;
-
     border: $default-border;
     border-color: $orange;
     border-radius: $border-radius;
@@ -179,10 +162,8 @@
     position: absolute;
     top: 50%;
     right: $navigation-section-arrow-margin;
-
     display: block;
     font-size: 13px;
-
     transform: translateY(-50%);
     transform-origin: center center;
 

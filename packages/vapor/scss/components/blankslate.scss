@@ -1,9 +1,7 @@
 .blankslate {
     padding: $blankslate-padding;
-
     color: $medium-blue;
     text-align: center;
-
     background-color: $white;
     border: 1px solid $medium-blue;
     border-radius: $border-radius;
@@ -19,7 +17,6 @@
 
     p {
         margin-bottom: $blankslate-paragraph-margin-bottom;
-
         color: $medium-blue;
     }
 
@@ -28,13 +25,11 @@
         h1 {
             margin-top: $blankslate-small-h1-margin-top;
             margin-bottom: $blankslate-margin;
-
             font-size: $blankslate-small-h1-font-size;
         }
 
         p {
             margin-bottom: $blankslate-small-p-margin-bottom;
-
             font-size: $blankslate-small-p-font-size;
         }
     }

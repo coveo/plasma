@@ -1,8 +1,7 @@
 .logo-card {
     display: flex;
-    padding: $logo-card-padding;
     margin: $logo-card-margin;
-
+    padding: $logo-card-padding;
     border: $logo-card-border;
 
     cursor: pointer;
@@ -31,10 +30,9 @@
 }
 
 .logo-card-content {
+    display: flex;
     flex-direction: column;
     justify-content: space-between;
-
-    display: flex;
 }
 
 .logo-card-title {

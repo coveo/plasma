@@ -5,11 +5,10 @@
 
     .admin-filterbox {
         position: relative;
-        align-items: center;
-
         display: flex;
-        padding: $filterpickerbox-padding;
+        align-items: center;
         margin-bottom: $filterpickerbox-margin-bottom;
+        padding: $filterpickerbox-padding;
 
         &.mod-small {
             padding: $filterpickerbox-small-padding;
@@ -18,7 +17,6 @@
         .filter-badge {
             box-sizing: border-box;
             height: $filter-badge-height;
-
             font-weight: normal;
             text-transform: initial;
         }
@@ -27,10 +25,8 @@
             display: inline-block;
             margin-left: $filter-badge-margin-left;
             overflow: visible;
-
             color: $dark-grey;
             font-size: $filter-badge-font-size;
-
             background-color: $pure-white;
 
             cursor: pointer;
@@ -69,16 +65,13 @@
             flex-grow: 2;
 
             padding: $filterbox-filters-container-padding;
-
             background-color: $medium-grey;
         }
 
         .filters {
             position: relative;
-
             display: inline;
             margin-right: $filters-margin-right;
-
             vertical-align: baseline;
 
             &:empty {
@@ -99,7 +92,7 @@
     .filters .btn.dropdown-toggle,
     .filters .filter-badge,
     .filters .predefined-filter {
-        box-shadow: none;
         outline: none;
+        box-shadow: none;
     }
 }

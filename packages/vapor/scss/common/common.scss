@@ -11,13 +11,12 @@ html {
 }
 
 body {
-    align-content: flex-start;
-    flex-flow: column nowrap;
-
     display: flex;
-
-    font-family: $base-font-family;
+    flex-flow: column nowrap;
+    align-content: flex-start;
     // Base font size for the entire app
     font-size: 13px;
+
+    font-family: $base-font-family;
     -webkit-font-smoothing: antialiased;
 }

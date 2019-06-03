@@ -1,10 +1,9 @@
 .popover {
     min-width: $popover-min-width;
-
     background-color: $pure-white;
-    box-shadow: 0 2px 4px rgba($stratos, 0.4);
     border: $default-border;
     border-radius: $border-radius;
+    box-shadow: 0 2px 4px rgba($stratos, 0.4);
 }
 
 .popover-body {
@@ -12,25 +11,21 @@
 }
 
 .popover-footer {
+    display: flex;
     align-items: center;
     justify-content: flex-end;
-
-    display: flex;
     padding: $popover-footer-y-padding $button-padding-x;
     overflow: hidden;
-
     background-color: $white;
     border-top: solid 1px $medium-grey;
     border-radius: 0 0 $border-radius $border-radius;
 }
 
 .popover-navigation-section {
-    align-items: center;
-    flex-direction: column;
-
     display: flex;
+    flex-direction: column;
+    align-items: center;
     width: $popover-navigation-section-width;
-
     background-color: $white;
     border-right: $default-border;
     border-radius: $popover-navigation-section-border-radius;

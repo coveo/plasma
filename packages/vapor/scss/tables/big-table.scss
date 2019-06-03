@@ -2,7 +2,6 @@ table.big-table {
     tbody {
         tr {
             height: $big-table-row-height;
-
             cursor: default;
 
             td {
@@ -16,7 +15,6 @@ table.big-table {
                     width: $big-table-row-height;
                     height: $big-table-row-height;
                     margin-right: $big-table-icon-margin;
-
                     vertical-align: -3px;
                 }
 
@@ -48,7 +46,6 @@ table.big-table {
 
                 div.second-row {
                     margin-top: 2px;
-
                     font-size: $big-table-second-row-font-size;
                     line-height: $big-table-second-row-line-height;
                 }

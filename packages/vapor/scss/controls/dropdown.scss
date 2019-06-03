@@ -1,6 +1,5 @@
 .dropdown {
     position: relative;
-
     display: inline-block;
 
     &.open > .dropdown-toggle,
@@ -22,7 +21,6 @@
 
 .dropdown-prepend {
     padding-right: 5px;
-
     color: $medium-grey;
 }
 
@@ -35,10 +33,10 @@
     display: inline-block;
     max-width: 100%;
     overflow: hidden;
+    white-space: nowrap;
+    text-transform: none;
 
     text-overflow: ellipsis;
-    text-transform: none;
-    white-space: nowrap;
 
     &.with-append {
         width: calc(100% - #{$dropdown-toggle-with-append-right-padding});
@@ -47,18 +45,16 @@
 
 .dropdown-toggle {
     position: relative;
-    align-items: center;
-    flex-direction: row;
-
     display: flex;
+    flex-direction: row;
+    align-items: center;
     padding: $button-padding-y $dropdown-toggle-right-padding $button-padding-y $button-padding-x;
     overflow: hidden;
-
     font-size: $dropdown-button-font-size;
     line-height: 16px;
-    text-overflow: ellipsis;
-    text-transform: none;
     white-space: nowrap;
+    text-transform: none;
+    text-overflow: ellipsis;
 
     &:disabled .dropdown-toggle-arrow {
         @include arrow-down-icon($medium-grey);
@@ -80,7 +76,6 @@
     .dropdown-option-append {
         float: right;
         width: $dropdown-toggle-append-width;
-
         color: $medium-blue;
         text-align: right;
     }
@@ -91,7 +86,6 @@
             50% - (#{$dropdown-arrow-icon-size} - 2px) / 2
         ); // Remove the approximated svg inner top/bottom padding
         right: $button-padding-x;
-
         width: $dropdown-arrow-icon-size;
         height: $dropdown-arrow-icon-size;
 
@@ -119,13 +113,11 @@
     display: inline-block;
     padding: $dropdown-option-padding;
     overflow: hidden;
-
     color: $dark-grey;
     font-size: $dropdown-choice-font-size;
     line-height: $default-line-height;
-    text-overflow: ellipsis;
     white-space: nowrap;
-
+    text-overflow: ellipsis;
     cursor: pointer;
 }
 
@@ -134,23 +126,22 @@
     top: 100%;
     left: 0;
     z-index: 1000;
-
-    box-sizing: border-box;
     display: none;
     float: left;
-    max-height: $dropdown-menu-max-height;
-    min-width: 100%;
-    padding: $dropdown-choices-top-bottom-margin 0;
-    margin: 0;
-    overflow-y: auto;
 
+    box-sizing: border-box;
+    min-width: 100%;
+    max-height: $dropdown-menu-max-height;
+    margin: 0;
+    padding: $dropdown-choices-top-bottom-margin 0;
+    overflow-y: auto;
     color: $dark-blue;
     list-style: none;
 
     background-color: $pure-white;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
     border: 1px solid $medium-grey;
     border-radius: 0 0 2px 2px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
 
     @include slim-scroll($light-grey, $medium-grey);
 
@@ -164,7 +155,6 @@
         &:hover,
         &:focus {
             color: $dark-blue;
-
             background: $light-grey;
         }
 
@@ -173,7 +163,6 @@
             > span,
             .dropdown-option-append {
                 color: $medium-grey;
-
                 cursor: default;
             }
         }
@@ -191,26 +180,23 @@
 
             &.disabled {
                 color: $medium-grey;
-
                 cursor: default;
             }
 
             &.no-search-results {
-                word-break: break-word;
                 white-space: normal;
+                word-break: break-word;
             }
         }
 
         &.active {
             color: $dark-blue;
-
             background-color: $light-grey;
         }
 
         &.divider {
             height: 1px;
             margin: 8px 0;
-
             background-color: $medium-grey;
 
             cursor: default;
@@ -249,13 +235,13 @@
 
 .select-dropdown-container {
     z-index: $table-header-z-index;
-
-    box-shadow: $list-box-box-shadow;
     border: $default-border;
     border-radius: $border-radius;
 
+    box-shadow: $list-box-box-shadow;
+
     .list-box {
-        box-shadow: initial;
         border: none;
+        box-shadow: initial;
     }
 }

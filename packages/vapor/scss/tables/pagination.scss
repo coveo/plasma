@@ -1,7 +1,6 @@
 .pagination-container {
-    flex-flow: row wrap;
-
     display: flex;
+    flex-flow: row wrap;
     margin-bottom: $pagination-vertical-margin;
 
     &.loading-view {

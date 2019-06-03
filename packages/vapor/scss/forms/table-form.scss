@@ -2,17 +2,13 @@
 .coveo-table-form {
     display: table;
     width: 100%;
-
     text-align: left;
-
     table-layout: fixed;
-
     transition: opacity 0.35s ease;
 
     .form-group {
         display: table-row;
         height: 36px;
-
         color: $dark-grey;
 
         &.hidden {
@@ -26,9 +22,7 @@
         & > label:first-child,
         .value {
             display: table-cell;
-
             vertical-align: middle;
-
             border-top: 2px solid white;
             border-bottom: $table-border;
         }
@@ -36,11 +30,9 @@
         & > label:first-child {
             width: 30%;
             padding: 0 10px;
-
             color: $medium-blue;
-            font-family: $base-font-family;
             font-size: $title-font-size;
-
+            font-family: $base-font-family;
             background-color: $pure-white;
         }
 
@@ -55,16 +47,13 @@
 
         .value {
             height: 39px;
-
             font-size: $title-font-size;
-
             background-color: $white;
 
             input:disabled:not([type='radio']) {
-                font-family: $base-font-family;
-                font-size: $title-font-size;
                 font-weight: 600;
-
+                font-size: $title-font-size;
+                font-family: $base-font-family;
                 background-color: $pure-white;
 
                 opacity: 0.4;
@@ -84,11 +73,9 @@
             input {
                 width: 100%;
                 height: 39px;
-
                 background-color: transparent;
-                box-shadow: none;
                 border-width: 0;
-
+                box-shadow: none;
                 resize: none;
             }
 
@@ -106,19 +93,16 @@
 
             &.admin-non-editable {
                 padding-left: 9px;
-
                 background-color: $pure-white;
 
                 i {
                     margin-right: 5px;
-
                     vertical-align: text-bottom;
                 }
             }
 
             .admin-multiline {
                 margin-bottom: 0;
-
                 border: none;
             }
 
@@ -130,13 +114,11 @@
                     width: 100%;
                     padding-right: 30px;
                     padding-left: 0;
-
                     font-size: $title-font-size;
                     text-align: left;
-
                     background-color: transparent;
-                    box-shadow: none;
                     border: none;
+                    box-shadow: none;
 
                     cursor: pointer;
                     opacity: 1;
@@ -155,7 +137,6 @@
                     width: 100%;
                     max-height: 250px;
                     overflow-y: auto;
-
                     text-align: left;
 
                     @include slim-scroll();
@@ -164,7 +145,6 @@
                         a i {
                             margin-top: 0;
                             margin-bottom: 0;
-
                             vertical-align: text-top;
                         }
 
@@ -179,11 +159,9 @@
             textarea {
                 width: 100%;
                 margin-bottom: 0;
-
                 background-color: transparent;
-                box-shadow: none;
                 border: none;
-
+                box-shadow: none;
                 resize: vertical;
 
                 @include slim-scroll();

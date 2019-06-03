@@ -1,18 +1,15 @@
 .table {
     width: 100%;
-
     text-align: left;
-
     border: none;
     border-spacing: 0;
 
     th,
     td {
         position: relative;
-
-        background-clip: padding-box;
         text-align: left;
         vertical-align: middle;
+        background-clip: padding-box;
 
         &.selection {
             width: 25px !important;
@@ -30,12 +27,10 @@
 
     thead tr {
         height: $table-header-height;
-
         color: $medium-blue;
-        font-size: $table-header-font-size;
         font-weight: bold;
+        font-size: $table-header-font-size;
         line-height: $table-header-line-height;
-
         background-color: transparent;
     }
 
@@ -43,11 +38,8 @@
         position: sticky;
         top: 0;
         z-index: 1;
-
         padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
-
         white-space: nowrap;
-
         background-color: $pure-white;
         border-top: $table-border;
         border-bottom: $table-border;
@@ -62,9 +54,7 @@
                     width: 7px;
                     height: 12px;
                     margin-left: 5px;
-
                     vertical-align: -2px;
-
                     fill: $medium-blue;
 
                     .asc-arrow,
@@ -103,9 +93,7 @@
 
     tr {
         position: relative;
-
         height: $table-row-height;
-
         font-size: $table-row-font-size;
         line-height: $table-row-line-height;
 
@@ -119,7 +107,6 @@
 
         &.empty td {
             padding: 25px;
-
             text-align: center;
         }
 
@@ -140,21 +127,17 @@
 
     td {
         padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
-
         text-align: left;
-
         border-bottom: $table-border;
 
         .mod-max-width {
             max-width: 300px;
             overflow: hidden;
-
             text-overflow: ellipsis;
         }
 
         &.edit.enabled {
             color: $medium-blue;
-
             cursor: pointer;
         }
 
@@ -186,7 +169,6 @@
         &.row-selected:hover td {
             background-color: rgba($red, 0.1);
             border-color: $red;
-
             transition: background-color 300ms;
         }
     }
@@ -202,7 +184,6 @@
 
 .table-last-update {
     margin: 10px $header-padding;
-
     color: rgba($dark-grey, 0.5);
     font-size: 11px;
     text-align: right;
@@ -217,9 +198,9 @@
 .table-container {
     &.table-card {
         overflow: hidden;
+        border-radius: $border-radius;
 
         box-shadow: $table-shadow;
-        border-radius: $border-radius;
     }
 }
 
@@ -242,7 +223,6 @@ $row-style: (
     .row-#{$style} {
         > td:first-child {
             color: $color;
-
             border-left-color: $color;
             svg {
                 fill: $color;

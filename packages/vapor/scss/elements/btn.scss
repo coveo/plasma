@@ -1,6 +1,5 @@
 @mixin button-variant($color, $background) {
     color: $color;
-
     background-color: $background;
     border: $button-border-width solid $background;
 
@@ -28,22 +27,20 @@
 }
 
 .btn {
-    box-sizing: border-box;
     display: inline-block;
+    box-sizing: border-box;
     height: $button-height;
     padding: $button-padding-y $button-padding-x;
-
     color: $medium-blue;
-    font-family: $base-font-family;
-    font-size: $button-font-size;
     font-weight: $button-font-weight;
+    font-size: $button-font-size;
+    font-family: $base-font-family;
     line-height: $button-line-height;
+    white-space: nowrap;
+    text-transform: uppercase;
     text-decoration: none;
     text-overflow: ellipsis;
-    text-transform: uppercase;
     vertical-align: middle;
-    white-space: nowrap;
-
     background-color: $pure-white;
     border: $button-border-width solid $medium-grey;
     border-radius: $border-radius;
@@ -66,7 +63,6 @@
     &:disabled,
     &.state-disabled {
         color: $medium-grey;
-
         cursor: default;
 
         .icon {
@@ -77,7 +73,6 @@
     &.mod-small {
         height: $button-small-height;
         padding: 0 $button-small-padding-x;
-
         font-size: $button-small-font-size;
         line-height: $button-small-line-height;
     }
@@ -112,27 +107,20 @@
     &.mod-confirm-success,
     &.mod-confirm-error {
         position: relative;
-
         color: transparent;
-
         outline: 0;
-
         transition: background-color 0.2s ease;
-
         user-select: none;
 
         &:before {
             position: absolute;
             top: $button-height + 6px;
-
             font-size: 11px;
             text-transform: initial;
-
+            opacity: 0;
             animation: vp-fadeIn ease-in 1;
             animation-duration: 0.3s;
             animation-fill-mode: forwards;
-
-            opacity: 0;
         }
 
         &.mod-confirm-right:before {
@@ -148,11 +136,8 @@
             position: absolute;
             top: calc(50% - #{$button-confirm-icon-width} / 2);
             right: calc(50% - #{$button-confirm-icon-width} / 2);
-
             display: inline-block;
-
             font-size: $button-confirm-icon-width;
-
             fill: $pure-white;
         }
     }

@@ -7,7 +7,6 @@ table.mod-slim {
     tbody {
         tr:not(.empty) {
             height: auto;
-
             font-size: $table-slim-font-size;
         }
     }

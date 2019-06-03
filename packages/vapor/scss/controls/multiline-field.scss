@@ -5,7 +5,6 @@
 
     .input-wrapper {
         position: relative;
-
         padding-bottom: 8px;
 
         &:nth-child(1) label {
@@ -71,7 +70,6 @@
     .js-add-value-button,
     .js-delete-value-button {
         position: relative;
-
         padding: 4px;
 
         &:hover {
@@ -87,7 +85,6 @@
 
     button {
         width: auto;
-
         background: none;
         border: none;
         outline: none;
@@ -99,11 +96,9 @@
 
     i {
         position: relative;
-
         display: block;
         width: 18px;
         height: 18px;
-
         border: 2px solid $medium-blue;
         border-radius: 18px;
 
@@ -113,14 +108,11 @@
                 position: relative;
                 top: 6px;
                 left: 2px;
-
                 display: block;
                 width: 10px;
                 height: 2px;
-
-                content: '';
-
                 background-color: $medium-blue;
+                content: '';
             }
         }
 
@@ -135,14 +127,11 @@
                 position: absolute;
                 top: 2px;
                 left: 6px;
-
                 display: block;
                 width: 2px;
                 height: 10px;
-
-                content: '';
-
                 background-color: $orange;
+                content: '';
             }
         }
     }

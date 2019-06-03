@@ -32,7 +32,6 @@ table {
 
                 > td {
                     padding: 0;
-
                     border-bottom: 0;
 
                     &:first-child {
@@ -45,18 +44,16 @@ table {
 
                     .section-title {
                         padding-top: $collapsible-title-padding;
-
                         color: $medium-blue;
-                        font-size: $collapsible-content-font-size;
                         font-weight: bold;
+                        font-size: $collapsible-content-font-size;
                         text-transform: uppercase;
                     }
 
                     .row-error-container {
-                        padding: 15px $table-first-column-padding-left;
                         margin-right: -$table-first-column-padding-left;
                         margin-left: -$table-first-column-padding-left;
-
+                        padding: 15px $table-first-column-padding-left;
                         background: $pure-white;
                         border-bottom: 1px solid;
                         border-bottom-color: $medium-grey;
@@ -67,7 +64,6 @@ table {
 
                         .value {
                             padding: 5px 0;
-
                             font-size: 14px;
                             line-height: 15px;
 
@@ -81,21 +77,19 @@ table {
 
                             ul {
                                 padding-left: 20px;
-
                                 list-style-type: disc;
                             }
                         }
 
                         .label {
                             padding: 5px 0;
+                            font-weight: normal;
 
                             font-size: 12px;
-                            font-weight: normal;
                         }
 
                         .error-title {
                             padding: 0;
-
                             color: $red;
                         }
 
@@ -108,7 +102,6 @@ table {
 
                             .error-description {
                                 padding-top: 5px;
-
                                 color: $red;
                             }
                         }

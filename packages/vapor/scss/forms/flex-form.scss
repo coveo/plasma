@@ -1,8 +1,7 @@
 // DEPRECATED, you should use flex utility classes
 .coveo-flex-form {
-    flex-flow: row wrap;
-
     display: flex;
+    flex-flow: row wrap;
     margin-top: -1 * $form-elements-margin;
     margin-left: -1 * $form-elements-margin;
 
@@ -15,9 +14,8 @@
 
         &:empty {
             height: 0;
-            padding: 0;
             margin-top: 0;
-
+            padding: 0;
             border: 0;
         }
     }

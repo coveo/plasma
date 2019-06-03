@@ -1,10 +1,9 @@
 .color-dot {
     display: inline-block;
     width: $color-dot-size;
-    height: $color-dot-size;
     min-width: $color-dot-size;
+    height: $color-dot-size;
     min-height: $color-dot-size;
-
     background-color: $green;
     border-radius: 100%;
 

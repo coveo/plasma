@@ -2,18 +2,16 @@
     display: block;
     width: $facet-column-width;
     max-width: $facet-column-max-width;
-    padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
     margin-right: 0;
-
+    padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
     border-right: $default-border;
 }
 
 .facet {
     position: relative;
-
-    padding-bottom: $facet-spacing;
     margin: $facet-margin-y 0;
 
+    padding-bottom: $facet-spacing;
     background: $pure-white;
     border: $default-border;
     border-radius: $border-radius;
@@ -21,32 +19,27 @@
 
 .facet-header {
     position: relative;
-
-    padding: $button-padding-x;
     clear: both;
 
+    padding: $button-padding-x;
     background: $white;
-    border-top-right-radius: $border-radius;
     border-top-left-radius: $border-radius;
+    border-top-right-radius: $border-radius;
 }
 
 .facet-header-eraser {
     position: absolute;
     top: 0;
     right: $facet-header-eraser-right-position;
-
     height: 100%;
-
     cursor: pointer;
 
     .icon {
         position: relative;
         top: 50%;
-
         display: block;
         width: $facet-more-button-icon-size;
         height: $facet-more-button-icon-size;
-
         transform: translateY(-50%);
 
         &:hover {
@@ -61,22 +54,21 @@
 }
 
 .facet-header-title {
-    font-family: $base-font-family;
     font-size: $default-font-size;
+    font-family: $base-font-family;
 }
 
 .facet-values {
-    padding-top: $facet-value-spacing;
     margin: 0;
-
+    padding-top: $facet-value-spacing;
     list-style: none;
 }
 
 .facet-value {
     position: relative;
+    margin: 0;
 
     padding: 0 $facet-spacing;
-    margin: 0;
 
     &:hover {
         background-color: $light-grey;
@@ -87,24 +79,20 @@
 }
 
 .facet-value-label {
-    justify-content: space-between;
-
     display: flex;
+    justify-content: space-between;
     padding: $facet-value-spacing 0;
-
     font-size: $default-font-size;
     line-height: $facet-value-line-height;
-
     cursor: pointer;
 
     .label {
-        flex-grow: 1;
-
         display: block;
+        flex-grow: 1;
         overflow: hidden;
+        white-space: nowrap;
 
         text-overflow: ellipsis;
-        white-space: nowrap;
     }
 
     .coveo-checkbox-button {
@@ -114,7 +102,6 @@
 
 .facet-value-count {
     padding-left: $facet-value-spacing;
-
     color: $medium-grey;
 }
 
@@ -138,7 +125,6 @@
 
 .exclude-icon {
     position: relative;
-
     display: none;
     width: $facet-exclude-checkbox-icon-size;
     height: $facet-exclude-checkbox-icon-size;
@@ -167,19 +153,15 @@
     position: absolute;
     top: 0;
     right: 0;
-
     width: $facet-exclude-padding-right;
     height: 100%;
-
     cursor: pointer;
 
     + .coveo-checkbox-label > .exclude-box,
     &:hover + .coveo-checkbox-label > button {
+        display: flex;
         align-items: center;
         justify-content: center;
-
-        display: flex;
-
         background: $pure-white;
         border: $checkbox-default-border;
 
@@ -199,7 +181,6 @@
 
 .facet-more-button {
     float: left;
-
     border: $facet-more-button-border;
 
     @extend .coveo-checkbox-button;
@@ -213,13 +194,10 @@
         position: absolute;
         top: 50%;
         left: 50%;
-
         display: block;
-
-        content: '';
-
         background-color: $medium-grey;
         transform: translate(-50%, -50%);
+        content: '';
     }
 
     &:before {
@@ -252,14 +230,12 @@
     top: $facet-search-results-top-position;
     left: $button-padding-x;
     z-index: $facet-search-results-z-index;
-
     width: calc(100% - #{$button-padding-x} * 2);
     max-height: $facet-more-height;
-    padding: $dropdown-choices-top-bottom-margin 0;
     margin: $facet-search-results-margin-y 0;
+    padding: $dropdown-choices-top-bottom-margin 0;
     overflow-x: hidden;
     overflow-y: auto;
-
     list-style: none;
 
     background-color: $pure-white;

@@ -2,9 +2,7 @@
     display: flex;
     width: 100%;
     height: $header-height;
-
     color: $white;
-
     background-color: $purple-blue;
 }
 
@@ -20,19 +18,16 @@
 
 .header-hamburger {
     padding: $header-hamburger-padding;
-
     background-color: transparent;
     border: none;
     outline-width: 0;
 
-    transition: opacity $navigation-toggle-duration ease-in-out;
-
     cursor: pointer;
     opacity: $transparency-2;
+    transition: opacity $navigation-toggle-duration ease-in-out;
 }
 
 .header-hamburger-opened {
-    transition: opacity $navigation-toggle-duration ease-in-out;
-
     opacity: $transparency-4;
+    transition: opacity $navigation-toggle-duration ease-in-out;
 }

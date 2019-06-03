@@ -36,7 +36,6 @@
 .clearfix:before,
 .clearfix:after {
     display: table;
-
     content: ' ';
 }
 
@@ -53,8 +52,8 @@
 }
 
 .fullscreen {
-    height: 100px; // IE fix.
     min-width: 100vw;
+    height: 100px; // IE fix.
     min-height: 100vh;
 }
 
@@ -82,7 +81,6 @@
 
 .hidden {
     display: none;
-
     visibility: hidden;
 }
 

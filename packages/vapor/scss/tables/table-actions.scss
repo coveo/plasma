@@ -1,12 +1,12 @@
 .coveo-table-actions-container {
     position: sticky;
     top: 0;
+    z-index: $table-header-z-index;
+    display: flex;
     flex-flow: row wrap;
     justify-content: flex-end;
-    z-index: $table-header-z-index;
 
     box-sizing: content-box; // Make sure $table-actions-container-height is respected with or without the mod-border-top class.
-    display: flex;
     min-height: $table-actions-container-height;
     // Workaround to make the action bar have a border between multiple rows
 
@@ -19,17 +19,16 @@
 }
 
 .coveo-table-actions {
+    display: flex;
     align-items: center;
 
     box-sizing: border-box; // Cancel the box-sizing: content-box for coveo-table-actions-container children.
-    display: flex;
     height: $table-actions-container-height;
     padding: 0 $table-actions-margin;
 
     .actions-row {
-        align-items: center;
-
         display: flex;
+        align-items: center;
     }
 
     .admin-select {
@@ -40,7 +39,6 @@
 
     .action {
         line-height: 0; // Fix to make sure the action respect its children height.
-
         border: 1px solid transparent;
         border-radius: 2px;
 
@@ -57,9 +55,9 @@
         }
 
         &.dropdown {
-            padding: 3px $table-actions-dropdown-padding-x;
             margin-right: -$table-actions-dropdown-padding-x;
             margin-left: calc(#{$table-actions-margin} - #{$table-actions-dropdown-padding-x});
+            padding: 3px $table-actions-dropdown-padding-x;
 
             .dropdown-toggle {
                 padding: 0;
@@ -78,10 +76,9 @@
         .action-label {
             margin-top: 1px; // Hack to fix label vertical alignment...
             margin-left: $table-action-margin-left;
-
             color: $medium-blue;
-            font-size: 13px;
             font-weight: bold;
+            font-size: 13px;
             line-height: 11px;
             text-transform: uppercase;
         }
@@ -94,8 +91,8 @@
         }
 
         &.prompt-action {
-            padding: $button-padding-y $button-padding-x;
             margin-left: $button-margin-width;
+            padding: $button-padding-y $button-padding-x;
         }
     }
 }
@@ -110,7 +107,6 @@
 
 .coveo-table-actions.predicate-filters + .coveo-table-actions:last-child {
     padding-left: 0;
-
     border-left: none;
 }
 
@@ -125,13 +121,11 @@
 .item-filter-item {
     display: inline-block;
     margin: 0 $table-item-filter-padding-x;
-
     color: $blue;
 }
 
 .item-filter-clear {
     padding: 0;
-
     background: none;
     border: none;
     outline: none;
@@ -145,7 +139,6 @@
 
         .action-label {
             margin-left: $table-action-margin-left / 2;
-
             font-size: $button-small-font-size;
         }
 

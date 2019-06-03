@@ -4,12 +4,10 @@
         width: 100%;
         min-height: $collapsible-height;
         padding: 0 $header-padding;
-
         font-size: $collapsible-header-font-size;
         line-height: $collapsible-height;
         text-align: left;
         text-transform: uppercase;
-
         background-color: $white;
         background-image: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMi42IDcuMiI+ICA8cGF0aCB0cmFuc2Zvcm09Im1hdHJpeCgtMSAwIDAgLTEgMTIuMzY2IDcuMDg2KSIgICAgICAgIGQ9Im0xMS40MjEgNy4wNGMtLjMgMC0uNS0uMS0uNy0uM2wtNC42LTQuNi00LjYgNC42Yy0uNC40LTEgLjQtMS40IDBzLS40LTEgMC0xLjRsNS4yLTUuMmMuNC0uNCAxLjItLjQgMS42IDBsNS4yIDUuMmMuNC40LjQgMSAwIDEuNC0uMi4yLS40LjMtLjcuMyIvPjwvc3ZnPg==');
         background-repeat: no-repeat;
@@ -28,17 +26,15 @@
     }
 
     .collapsible-body {
-        box-sizing: border-box;
         display: none;
+        box-sizing: border-box;
         padding: $form-top-padding $header-padding;
-
         border-bottom: $default-border;
     }
 
     .collapsible-body-visible {
         box-sizing: border-box;
         padding: $form-top-padding $header-padding;
-
         border-bottom: $default-border;
     }
 

@@ -6,9 +6,7 @@ $child-arrow-height: 10px;
 
 .coveo-child {
     position: relative;
-
     padding: $child-padding-y $child-padding-x;
-
     background-color: $white;
     border-radius: $border-radius;
     border-top-left-radius: 0;
@@ -21,27 +19,22 @@ $child-arrow-height: 10px;
         position: absolute;
         top: -$child-arrow-height;
         left: 0;
-
         display: block;
         width: 0;
         height: 0;
-
-        content: '';
-
         border-right: $child-arrow-width / 2 solid transparent;
         border-bottom: $child-arrow-height solid $white;
         border-left: $child-arrow-width / 2 solid transparent;
+        content: '';
     }
 
     &.vertical {
         margin-left: $child-arrow-height + $child-parent-spacing;
-
         border-top-left-radius: $border-radius;
 
         &:before {
             top: calc(50% - #{$child-arrow-height});
             left: -$child-arrow-height - ($child-arrow-width / 2);
-
             border-top: $child-arrow-width / 2 solid transparent;
             border-right: $child-arrow-height solid $white;
             border-bottom: $child-arrow-width / 2 solid transparent;
@@ -62,9 +55,8 @@ $child-arrow-height: 10px;
 }
 
 .child-section {
-    padding-left: $child-section-spacing-left;
     margin-top: $child-section-spacing-top;
-
+    padding-left: $child-section-spacing-left;
     border-left: $child-section-border-size solid $light-grey;
 }
 

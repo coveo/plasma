@@ -3,11 +3,11 @@ $prompt-message-line-height: 20px;
 .modal-container {
     &.mod-prompt {
         .modal-content {
-            height: auto; // Required or modal-content height is always equal to $modal-prompt-max-height.
-            max-width: $modal-prompt-max-width;
-            max-height: $modal-prompt-max-height;
             min-width: $modal-prompt-min-width;
+            max-width: $modal-prompt-max-width;
+            height: auto; // Required or modal-content height is always equal to $modal-prompt-max-height.
             min-height: $modal-prompt-min-height;
+            max-height: $modal-prompt-max-height;
 
             .modal-header {
                 height: $modal-prompt-header-height;
@@ -39,7 +39,6 @@ $prompt-message-line-height: 20px;
 
                 .prompt-message {
                     padding-top: $modal-prompt-text-padding-y;
-
                     line-height: $prompt-message-line-height;
                 }
 
@@ -52,7 +51,6 @@ $prompt-message-line-height: 20px;
             .modal-footer {
                 height: $modal-prompt-footer-height;
                 padding: $header-height-padding $modal-prompt-horizontal-padding;
-
                 background-color: $pure-white;
                 border-top: 0;
             }
@@ -64,8 +62,8 @@ $prompt-message-line-height: 20px;
             max-height: initial;
 
             .modal-body {
-                max-height: initial;
                 min-height: initial;
+                max-height: initial;
             }
         }
     }

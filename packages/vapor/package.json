@@ -20,7 +20,7 @@
         "start": "concurrently \"npm run build && bundle exec jekyll server --host=0.0.0.0\" \"gulp watch\"",
         "version": "gulp clean && npm run build",
         "reconstruct": "gulp clean --all && npm install && gulp",
-        "lintfix": "prettier --write './*.@(json|yml|js|md)' './scss/**/*.scss' './resources/js/**/*.js'"
+        "lintfix": "stylelint './scss/**/*.scss' --fix && prettier --write './*.@(json|yml|js|md)' './scss/**/*.scss' './resources/js/**/*.js'"
     },
     "repository": {
         "type": "git",
@@ -59,6 +59,11 @@
         "minimist": "1.2.0",
         "plugin-error": "1.0.1",
         "prettier": "1.17.1",
+        "stylelint": "10.0.1",
+        "stylelint-config-prettier": "5.2.0",
+        "stylelint-config-rational-order": "0.1.2",
+        "stylelint-order": "3.0.0",
+        "stylelint-prettier": "1.1.1",
         "underscore": "1.9.1",
         "underscore.string": "3.3.5"
     },
@@ -88,6 +93,12 @@
         "**/*.{js,scss,json,md,yml}": [
             "npm run lintfix",
             "git add"
+        ]
+    },
+    "stylelint": {
+        "extends": [
+            "stylelint-prettier/recommended",
+            "stylelint-config-rational-order"
         ]
     }
 }

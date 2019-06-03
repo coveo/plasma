@@ -7,7 +7,6 @@
     .value {
         padding: 5px;
         overflow: hidden;
-
         text-overflow: ellipsis;
     }
 
@@ -35,16 +34,14 @@
 }
 
 .columns {
-    flex-flow: row wrap;
-
     display: flex;
+    flex-flow: row wrap;
 
     .box {
         flex-basis: 33%;
 
         &.padded {
             flex-basis: calc(33% - #{$collapsible-box-padding});
-
             word-break: break-all;
         }
     }
