@@ -1,6 +1,0 @@
-<svg viewBox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
-  <path d="m7 6h-1v7h1z"/>
-  <path d="m10 6h-1v7h1z"/>
-  <path d="m12.5 4.5v9.4c0 .3-.3.5-.4.6h-8.3c-.1 0-.3-.2-.3-.5v-9.5zm1.5-1.5h-12v11c0 1.1.9 2 1.8 2h8.3c.9 0 1.8-1 1.8-2v-11z"/>
-  <path d="m6 0v1h-6v1h16v-1h-6v-1z"/>
-</svg>
