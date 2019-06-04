@@ -2,7 +2,6 @@
 dist
 coverage
 docs/assets/
-travis-deploy-key
 
 # awesome-typescript-loader
 .awcache
