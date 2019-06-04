@@ -8,11 +8,6 @@ node_js:
 addons:
   chrome: stable
 
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
-
 before_install:
   - eval "$(ssh-agent -s)" #start the ssh agent
   - openssl aes-256-cbc -K $encrypted_6a1e0d13907f_key -iv $encrypted_6a1e0d13907f_iv -in id_rsa.enc -out travis-deploy-key -d
@@ -51,6 +46,11 @@ after_success:
  - cd ../../
  - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
  - cp -a packages/vapor/dist/. "packages/vapor/deploy/$TRAVIS_TAG"
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
 
 deploy:
   - provider: surge

@@ -6,7 +6,7 @@ description: Vapor CSS is a collection of UI components used in Coveo's Administ
     The project is at its early stages, some components can still have lots of breaking changes.
 twitter_username: coveo
 github_username: Coveo
-github_repo: https://github.com/coveo/styleguide/blob/master
+github_repo: https://github.com/coveo/react-vapor/
 
 # Collections
 collections:
@@ -25,5 +25,5 @@ sass:
 # Server
 source: docs
 destination: _gh_pages
-baseurl: '/vapor'
-url: 'http://coveo.github.io/vapor/'
+baseurl: ''
+url: 'http://vapor.surge.sh/'
