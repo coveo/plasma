@@ -37,7 +37,7 @@ script:
  - cd ../../
 
 after_script:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./packages/react-vapor/create-live-demo.sh; fi' # run this line on pull request builds only
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then cd packages/react-vapor && ./create-live-demo.sh && cd ../../; fi' # run this line on pull request builds only
 
 after_success:
  - cd packages/react-vapor
