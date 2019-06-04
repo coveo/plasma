@@ -24,6 +24,7 @@ before_install:
 install:
   - npm install -g gulp lerna
   - lerna bootstrap --no-ci
+  - cd packages/vapor && bundle install && cd ../../
 
 script:
  - cd packages/vapor
