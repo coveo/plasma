@@ -38,7 +38,7 @@ See the README inside [Vapor](packages/vapor) and [React-Vapor](packages/react-v
 
 ### Testing your changes locally directly in your project
 
-Since the project are in the same repository and we use Lerna, we don't have to link them together anymore.
+Since the projects are in the same repository and we use Lerna, we don't have to link them together anymore.
 
 ## License
 
