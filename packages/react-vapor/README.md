@@ -99,4 +99,4 @@ npm test
 
 ## License
 
-`react-vapor` is distributed under [Apache 2.0 license](LICENSE).
+`react-vapor` is distributed under [Apache 2.0 license](../../LICENSE).

@@ -52,15 +52,14 @@ Open [http://localhost:4000/vapor/](http://localhost:4000/vapor/) in your favori
 
 You can easily test your changes locally directly in your projects by leveraging [npm's link feature](https://docs.npmjs.com/cli/link). For the sake of the example, we'll suppose we want to use our local `vapor` changes inside [`react-vapor`](https://github.com/coveo/react-vapor).
 
-| Step | Terminal window 1  | Terminal window 2                    |
-| ---- | ------------------ | ------------------------------------ |
-| 1    | `cd path/to/vapor` | `cd path/to/react-vapor`             |
-| 2    |                    | `npm link ../relative/path/to/vapor` |
-| 3    | `npm start`        |                                      |
-| 4    |                    | `npm start`                          |
+| Step | Terminal window 1   | Terminal window 2         |
+| ---- | ------------------- | ------------------------- |
+| 1    | `learna bootstrap`  |                           |
+| 2    | `cd packages/vapor` | `cd packages/react-vapor` |
+| 3    | `npm start`         | `npm start`               |
 
 You can leave both terminal windows running. Changes saved in either repositories will trigger a rebuild of the local demo.
 
 ## License
 
-Vapor is distributed under [Apache 2.0 license](LICENSE).
+Vapor is distributed under [Apache 2.0 license](../../LICENSE).
