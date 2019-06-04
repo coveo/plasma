@@ -2,7 +2,7 @@
   "name": "root",
   "private": true,
   "devDependencies": {
-    "axios": "0.18.0",
+    "axios": "0.19.0",
     "lerna": "3.14.1",
     "underscore": "1.9.1"
   }
