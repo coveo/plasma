@@ -75,3 +75,8 @@ deploy:
     on:
       tags: true
       repo: coveo/react-vapor
+
+notifications:
+  email:
+    on_success: never
+    on_failure: never
