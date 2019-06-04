@@ -26,14 +26,14 @@ install:
   - lerna bootstrap --no-ci
 
 script:
- - cd packages/react-vapor
+ - cd packages/vapor
+ - npm run build
+ - npm run buildpages
+ - cd ../react-vapor
  - npm run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
  - npm run test
  - npm run docs
- - cd ../vapor
- - npm run build
- - npm run buildpages
- - cd ..
+ - cd ../../
 
 after_script:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./packages/react-vapor/create-live-demo.sh; fi' # run this line on pull request builds only
