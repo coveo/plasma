@@ -93,7 +93,6 @@
     "ansi-colors": "3.2.4",
     "autoprefixer": "9.4.0",
     "awesome-typescript-loader": "5.2.1",
-    "axios": "0.18.0",
     "chosen-js": "1.8.2",
     "classnames": "2.2.6",
     "codecov": "3.2.0",

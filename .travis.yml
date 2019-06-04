@@ -24,7 +24,13 @@ before_install:
 install:
   - npm install -g gulp lerna
   - lerna bootstrap --no-ci
+  - npm install
   - cd packages/vapor && bundle install && cd ../../
+
+  cache:
+    directories:
+    - node_modules
+    - packages/vapor/vendor/bundle
 
 script:
  - cd packages/vapor
@@ -37,7 +43,7 @@ script:
  - cd ../../
 
 after_script:
-  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then cd packages/react-vapor && ./create-live-demo.sh && cd ../../; fi' # run this line on pull request builds only
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
 
 after_success:
  - cd packages/react-vapor
