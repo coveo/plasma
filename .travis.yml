@@ -1,0 +1,70 @@
+sudo: required
+
+language: node_js
+
+node_js:
+  - '12.2'
+
+addons:
+  chrome: stable
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
+
+before_install:
+  - eval "$(ssh-agent -s)" #start the ssh agent
+  - openssl aes-256-cbc -K $encrypted_6a1e0d13907f_key -iv $encrypted_6a1e0d13907f_iv -in id_rsa.enc -out travis-deploy-key -d
+  - chmod 600 travis-deploy-key # this key should have push access
+  - ssh-add travis-deploy-key
+  - rvm install 2.5.3 && rvm use 2.5.3
+  - gem install bundler
+
+install:
+  - npm install -g gulp lerna
+  - lerna bootstrap
+
+script:
+ - cd packages/react-vapor
+ - npm run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
+ - npm run test
+ - npm run docs
+ - cd ../vapor
+ - npm run build
+ - npm run buildpages
+ - cd ..
+
+after_script:
+  - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./packages/react-vapor/create-live-demo.sh; fi' # run this line on pull request builds only
+
+after_success:
+ - cd packages/react-vapor
+ - npm run report-coverage
+ - cd ../../
+ - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
+ - cp -a packages/vapor/dist/. "packages/vapor/deploy/$TRAVIS_TAG"
+
+deploy:
+  - provider: surge
+    project: ./packages/react-vapor/docs/
+    domain: react-vapor.surge.sh
+    skip_cleanup: true
+
+  - provider: surge
+    project: ./packages/vapor/_gh_pages/
+    domain: vapor.surge.sh
+    skip_cleanup: true
+
+  - provider: s3
+    skip_cleanup: true
+    access_key_id: AKIAJ72WQIJQMW6TCHDA
+    secret_access_key:
+      secure: i3DHmH/JK5uSh8gqB1cW1LqkCneV1YhtyWrXVQZkGbFRFOrPfgZQu/21GW1GN+29/iNddBf7RN/7X1ULZq2pNBlD0kifpfxQFa4pLiJX04ZV47vF5DOPYq2xWU6hQcAOiNcLoig23DrwssbVe1EeAPxr3s3CpxZrq01UUWhTsoA= # https://docs.travis-ci.com/user/encryption-keys/
+    bucket: coveo-public-content
+    local-dir: packages/vapor/deploy
+    upload-dir: styleguide
+    acl: public_read
+    on:
+      tags: true
+      repo: coveo/react-vapor

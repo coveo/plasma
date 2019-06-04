@@ -15,6 +15,7 @@ echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
 cp -R docs "$TRAVIS_PULL_REQUEST_BRANCH"
 git add .
 git commit -m "live demo at https://coveo.github.io/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/" --no-verify
+echo "Deploying demo at https://coveo.github.io/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/"
 
 SHA=`git rev-parse --verify HEAD`
 
