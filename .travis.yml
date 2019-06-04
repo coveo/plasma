@@ -67,7 +67,7 @@ deploy:
     skip_cleanup: true
     access_key_id: AKIAJ72WQIJQMW6TCHDA
     secret_access_key:
-      secure: i3DHmH/JK5uSh8gqB1cW1LqkCneV1YhtyWrXVQZkGbFRFOrPfgZQu/21GW1GN+29/iNddBf7RN/7X1ULZq2pNBlD0kifpfxQFa4pLiJX04ZV47vF5DOPYq2xWU6hQcAOiNcLoig23DrwssbVe1EeAPxr3s3CpxZrq01UUWhTsoA= # https://docs.travis-ci.com/user/encryption-keys/
+      secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ= # https://docs.travis-ci.com/user/encryption-keys/
     bucket: coveo-public-content
     local-dir: packages/vapor/deploy
     upload-dir: styleguide
