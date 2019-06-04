@@ -20,3 +20,6 @@ npm-debug.log.*
 
 # package-lock.json
 package-lock.json
+
+# travis
+travis-deploy-key
