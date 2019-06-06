@@ -2,15 +2,17 @@
 dist
 docs/_data
 tmp
+out
 
 # Ignore docs files
 .sass-cache
 _gh_pages
 docs/dist
+.next
 
 node_modules
 
-# OS/editor 
+# OS/editor
 ._*
 .DS_Store
 .idea

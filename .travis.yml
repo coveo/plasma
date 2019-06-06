@@ -30,7 +30,8 @@ cache:
 script:
  - cd packages/vapor
  - npm run build
- - npm run buildpages
+ - BRANCH_ROOT="" && [[ "$TRAVIS_PULL_REQUEST" != "false" ]] && BRANCH_ROOT="/$TRAVIS_PULL_REQUEST_BRANCH/vapor"
+ - BASE_URL=$BRANCH_ROOT npm run buildpages
  - cd ../react-vapor
  - npm run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
  - npm run test
