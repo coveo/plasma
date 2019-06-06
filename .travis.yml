@@ -20,7 +20,6 @@ install:
   - npm install -g gulp lerna
   - lerna bootstrap --no-ci
   - npm install
-  - cd packages/vapor && bundle install && cd ../../
 
 cache:
   directories:
