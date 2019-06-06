@@ -1,0 +1,26 @@
+import Header from './Header';
+import Navigation from './Navigation';
+import Footer from './Footer';
+
+import '../docs/_sass/main.scss';
+import '../scss/guide.scss';
+
+const Layout = (props) => (
+    <>
+        <Header />
+
+        <div className="flex flex-row application-wrapper">
+            <div className="flex flex-column navigation-wrapper navigation-wrapper-opened">
+                <Navigation />
+            </div>
+
+            <div className="page-content application-container flex flex-column">
+                <div className="wrapper application-main-content m0 flex-auto">{props.children}</div>
+
+                <Footer />
+            </div>
+        </div>
+    </>
+);
+
+export default Layout;
