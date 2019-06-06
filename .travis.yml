@@ -3,15 +3,10 @@ sudo: required
 language: node_js
 
 node_js:
-  - '12.2'
+  - '12.3'
 
 addons:
   chrome: stable
-
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
 
 before_install:
   - eval "$(ssh-agent -s)" #start the ssh agent
@@ -51,6 +46,11 @@ after_success:
  - cd ../../
  - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
  - cp -a packages/vapor/dist/. "packages/vapor/deploy/$TRAVIS_TAG"
+
+branches:
+  only:
+    - master
+    - /^greenkeeper/.*$/
 
 deploy:
   - provider: surge

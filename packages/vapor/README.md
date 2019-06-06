@@ -46,7 +46,7 @@ bundle install
 npm start
 ```
 
-Open [http://localhost:4000/vapor/](http://localhost:4000/vapor/) in your favorite browser and voila!
+Open [http://localhost:4000/](http://localhost:4000/) in your favorite browser and voila!
 
 ### Testing your changes locally directly in your project
 
