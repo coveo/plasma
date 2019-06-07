@@ -1,26 +1,7 @@
 {
+  "extends": "./tsconfig",
   "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "downlevelIteration": true,
     "inlineSourceMap": true,
-    "jsx": "react",
-    "allowJs": true,
-    "module": "commonjs",
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "skipLibCheck": true,
     "sourceMap": false,
-    "target": "ES5",
-    "plugins": [
-      {"transform": "ts-transformer-keys/transformer"}
-    ],
-    "lib": ["es2015", "dom"]
   },
-  "include": [
-    "src/**/*.tsx",
-    "src/**/*.ts",
-    "types/**/*.d.ts"
-  ]
 }

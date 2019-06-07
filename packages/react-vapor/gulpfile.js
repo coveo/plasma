@@ -48,7 +48,7 @@ gulp.task('clean', gulp.series(gulp.parallel('clean:dist', 'clean:docs', 'clean:
 // <editor-fold desc="Typescript d.ts generation">
 gulp.task('internalDefs', () =>
     dtsGenerator.default({
-        project: './',
+        project: 'tsconfig.build.json',
         out: 'dist/react-vapor.d.ts',
         exclude: [
             'node_modules/**/*.d.ts',
