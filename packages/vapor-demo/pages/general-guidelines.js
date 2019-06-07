@@ -1,4 +1,4 @@
-import Layout from '../layouts/Layout.js';
+import Layout from '../layouts/Layout';
 import Component from '../components/Component';
 
 export default function GeneralGuidelines() {

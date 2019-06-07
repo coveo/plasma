@@ -12,8 +12,8 @@ module.exports = {
         filename: 'js/[name].js',
         library: 'VaporSVG',
         libraryTarget: 'umd',
+        globalObject: 'this',
     },
-    devtool: 'source-map',
     resolve: {
         extensions: ['.js', '.scss'],
     },
@@ -41,7 +41,7 @@ module.exports = {
                             },
                         },
                     },
-                    {loader: 'css-loader', options: {sourceMap: true}},
+                    {loader: 'css-loader'},
                     {
                         loader: 'postcss-loader',
                         options: {
@@ -50,7 +50,6 @@ module.exports = {
                                 require('autoprefixer')(),
                                 require('cssnano')({zindex: false, preset: ['default', {mergeLonghand: false}]}),
                             ],
-                            sourceMap: true,
                         },
                     },
                     {loader: 'resolve-url-loader'},

@@ -1,7 +1,6 @@
 import NavigationSection from './NavigationSection';
 import NavigationLink from './NavigationLink';
-import Info from '../resources/icons/svg/info.svg';
-import Open from '../resources/icons/svg/open.svg';
+import * as VaporSVG from 'coveo-styleguide';
 
 const Navigation = () => {
     return (
@@ -10,10 +9,10 @@ const Navigation = () => {
                 <ul className="navigation-menu-sections">
                     <NavigationSection
                         key="general"
-                        icon={<Info />}
+                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svgEnum.info.svgString}} />}
                         title="General Guidelines"
                         pages={[
-                            <NavigationLink key="content-number" href="/general-guidelines" name="Content / Numbers" />,
+                            <NavigationLink key="content-number" href="/" name="Content / Numbers" />,
                             <NavigationLink
                                 key="content-ui-text-and-error-messages"
                                 href="/general-guidelines#content-ui-text-and-error-messages"
@@ -23,7 +22,7 @@ const Navigation = () => {
                     />
                     <NavigationSection
                         key="buttons"
-                        icon={<Open />}
+                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svgEnum.open.svgString}} />}
                         title="Buttons"
                         pages={[
                             <NavigationLink key="overview" href="/buttons#overview" name="Overview" />,

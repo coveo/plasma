@@ -1,13 +1,10 @@
-const path = require('path');
 const cssLoaderConfig = require('@zeit/next-css/css-loader-config');
-const reactSvg = require('next-react-svg');
 
-module.exports = reactSvg({
+module.exports = {
     assetPrefix: process.env.BASE_URL || '',
     env: {
         BASE_URL: process.env.BASE_URL || '',
     },
-    include: path.resolve(__dirname, 'resources/icons/svg'),
     webpack: (config, options) => {
         const {dev, isServer} = options;
         const {cssModules, cssLoaderOptions, postcssLoaderOptions} = config;
@@ -39,7 +36,7 @@ module.exports = reactSvg({
                 use: options.defaultLoaders.sass,
             },
             {
-                test: /\.(png|eot|woff|ttf)$/,
+                test: /\.(svg|png|eot|woff|ttf)$/,
                 use: [
                     {
                         loader: 'file-loader',
@@ -53,4 +50,4 @@ module.exports = reactSvg({
 
         return config;
     },
-});
+};

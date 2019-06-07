@@ -17,7 +17,7 @@ const Footer = () => (
                     <ul className="social-media-list">
                         <li>
                             <a href={`https://github.com/${config.github_username}`}>
-                                Github: <span className="username">{config.github_username}}</span>
+                                Github: <span className="username">{config.github_username}</span>
                             </a>
                         </li>
 

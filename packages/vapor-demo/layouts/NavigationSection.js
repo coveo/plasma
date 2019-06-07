@@ -1,5 +1,3 @@
-import Arrow from '../resources/icons/svg/arrow-bottom-rounded.svg';
-
 const NavigationSection = ({icon, title, pages}) => (
     <li className="block navigation-menu-section">
         <header className="navigation-menu-section-header text-white">

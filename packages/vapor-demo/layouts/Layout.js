@@ -2,8 +2,7 @@ import Header from './Header';
 import Navigation from './Navigation';
 import Footer from './Footer';
 
-import '../docs/_sass/main.scss';
-import '../scss/guide.scss';
+import '../style/main.scss';
 
 const Layout = (props) => (
     <>

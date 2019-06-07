@@ -129,7 +129,7 @@ function Dictionary(from) {
     };
 
     this.writeSvgEnumFile = (to) => {
-        let code = 'modules.export = { svgEnum: {\n';
+        let code = 'export var svgEnum = {\n';
         const that = this;
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
@@ -145,7 +145,7 @@ function Dictionary(from) {
                 camelizedKey +
                 "'].svgString, svgClass, spanClass, title, attr); } }, \n";
         });
-        code += '    }\n};';
+        code += '};';
 
         fs.writeFileSync(to, code);
     };
