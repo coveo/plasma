@@ -52,7 +52,7 @@ const config = {
                 loader: 'awesome-typescript-loader',
                 options: {
                     compiler: 'ttypescript',
-                    configFileName: 'tsconfig.build.json'
+                    configFileName: 'tsconfig.build.json',
                 },
             },
             {
