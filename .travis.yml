@@ -17,33 +17,26 @@ before_install:
   - gem install bundler
 
 install:
-  - npm install -g gulp lerna
+  - npm install -g lerna
   - lerna bootstrap --no-ci
   - npm install
-  - cd packages/vapor && bundle install && cd ../../
 
 cache:
   directories:
     - node_modules
-    - packages/vapor/vendor/bundle
 
 script:
- - cd packages/vapor
- - npm run build
- - npm run buildpages
- - cd ../react-vapor
- - npm run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
- - npm run test
- - npm run docs
- - cd ../../
+ - BRANCH_ROOT="" && [[ "$TRAVIS_PULL_REQUEST" != "false" ]] && BRANCH_ROOT="/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/vapor"
+ - lerna run build
+ - BASE_URL=$BRANCH_ROOT lerna run docs
+ - lerna run test
+ - lerna run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
 
 after_script:
   - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
 
 after_success:
- - cd packages/react-vapor
- - npm run report-coverage
- - cd ../../
+ - lerna run report-coverage
  - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
  - cp -a packages/vapor/dist/. "packages/vapor/deploy/$TRAVIS_TAG"
 
