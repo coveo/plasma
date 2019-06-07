@@ -32,7 +32,7 @@ module.exports = {
                     loader: 'tslint-loader',
                     options: {
                         configFile: './node_modules/tsjs/tslint.json',
-                        tsConfigFile: './tsconfig.json',
+                        tsConfigFile: './tsconfig.build.json',
                         emitErrors: isTravis,
                         failOnHint: isTravis,
                     },
@@ -55,6 +55,7 @@ module.exports = {
                     useCache: true,
                     cacheDirectory: '.awcache',
                     compiler: 'ttypescript',
+                    configFileName: 'tsconfig.build.json',
                 },
             },
             {

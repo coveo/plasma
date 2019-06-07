@@ -93,7 +93,7 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
                 const primaryAction = this.props.withReduxState
                     ? <PrimaryActionConnected action={action} parentId={this.props.id} />
                     : <PrimaryAction action={action} />;
-                return <div className='dropdown action primary-action' key={'primary-' + index}>{primaryAction}</div>;
+                return <div className='action primary-action' key={'primary-' + index}>{primaryAction}</div>;
             }
         });
 
