@@ -18,21 +18,12 @@ const merge = require('merge-stream');
 const svgmin = require('gulp-svgmin');
 const cheerio = require('gulp-cheerio');
 const filesToJson = require('gulp-files-to-json');
-const gfi = require('gulp-file-insert');
 const sortJSON = require('gulp-json-sort').default;
-const PluginError = require('plugin-error');
 const parseArgs = require('minimist');
-const sourcemaps = require('gulp-sourcemaps');
-const sass = require('gulp-sass');
-const autoprefixer = require('gulp-autoprefixer');
-const minifyCSS = require('gulp-clean-css');
 const _ = require('underscore');
 const s = require('underscore.string');
 
 const config = {
-    autoprefixerOptions: {
-        browsers: ['cover 90%', 'last 1 versions', 'IE 11', 'not dead'],
-    },
     gzipOptions: {
         append: false,
     },
@@ -123,7 +114,7 @@ gulp.task('sprites', () => {
             pngSprite.gulp({
                 cssPath: 'sprites.scss',
                 pngPath: '../dist/images/CoveoStyleGuide.Sprites.png',
-                relPath: '../images/CoveoStyleGuide.Sprites.png',
+                relPath: '../dist/images/CoveoStyleGuide.Sprites.png',
                 eachTemplate: template,
                 namespace: 'coveo-sprites',
             })
@@ -138,7 +129,7 @@ function Dictionary(from) {
     };
 
     this.writeSvgEnumFile = (to) => {
-        let code = 'var svgEnum = {\n';
+        let code = 'export var svgEnum = {\n';
         const that = this;
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
@@ -154,13 +145,8 @@ function Dictionary(from) {
                 camelizedKey +
                 "'].svgString, svgClass, spanClass, title, attr); } }, \n";
         });
-        code += '    };';
+        code += '};';
 
-        fs.writeFileSync(to, code);
-    };
-
-    this.writeVaporSvgVersionFile = (to) => {
-        const code = 'VaporSVG.version = ' + JSON.stringify(require('./package.json').version) + ';';
         fs.writeFileSync(to, code);
     };
 }
@@ -215,7 +201,7 @@ gulp.task('svg:concat', () => {
 
 gulp.task(
     'svg:enum',
-    gulp.series('svg:concat', () => {
+    gulp.series('svg:concat', (done) => {
         const dict = new Dictionary('dist/svg/CoveoStyleGuideSvg.json');
 
         if (!fs.existsSync('tmp')) {
@@ -224,56 +210,15 @@ gulp.task(
 
         dict.writeSvgEnumFile('tmp/svg.js');
 
-        dict.writeVaporSvgVersionFile('tmp/version.js');
-
-        return gulp
-            .src('resources/js/VaporSVG.js')
-            .pipe(gfi({'/* SVG Enum */': 'tmp/svg.js'}))
-            .pipe(gfi({'/* VaporSVG version */': 'tmp/version.js'}))
-            .pipe(gulp.dest('dist/js/'));
+        done();
     })
 );
 
 gulp.task('svg', gulp.series('svg:enum'));
 
 gulp.task(
-    'sass',
-    gulp.series('palette', 'sprites', (done) => {
-        return gulp
-            .src('./scss/guide.scss')
-            .pipe(sourcemaps.init())
-            .pipe(
-                sass().on('error', (err) => {
-                    sassError(err, done);
-                })
-            )
-            .pipe(autoprefixer(config.autoprefixerOptions))
-            .pipe(rename('CoveoStyleGuide.css'))
-            .pipe(sourcemaps.write('../css'))
-            .pipe(gulp.dest('./dist/css'))
-            .pipe(
-                gulpif(
-                    useMinifiedSources,
-                    minifyCSS({
-                        keepSpecialComments: 0,
-                        processImport: false,
-                    })
-                )
-            )
-            .pipe(gulpif(useGzippedSources, gzip(config.gzipOptions)))
-            .pipe(gulpif(useMinifiedSources, rename('CoveoStyleGuide.min.css')))
-            .pipe(gulpif(useMinifiedSources, gulp.dest('./dist/css')));
-    })
-);
-
-function sassError(err, doneCallback) {
-    process.stderr.write(new PluginError('sass', err.messageFormatted).toString() + '\n');
-    doneCallback(1);
-}
-
-gulp.task(
     'default',
-    gulp.series(gulp.parallel('sass', 'lib'), gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg')
+    gulp.series('lib', 'palette', 'sprites', gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg')
 );
 
 gulp.task('docs:external-libs', () => {
