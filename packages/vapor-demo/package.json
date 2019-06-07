@@ -25,6 +25,7 @@
     "devDependencies": {
         "@zeit/next-sass": "1.0.1",
         "acorn": "^6.0.0",
+        "coveo-styleguide": "^4.0.1",
         "file-loader": "4.0.0",
         "husky": "2.3.0",
         "lint-staged": "8.1.7",
