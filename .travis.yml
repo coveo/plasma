@@ -24,7 +24,6 @@ install:
 cache:
   directories:
     - node_modules
-    - packages/vapor/vendor/bundle
 
 script:
  - cd packages/vapor
