@@ -5,7 +5,6 @@ const colors = require('ansi-colors');
 const log = require('fancy-log');
 const parseArgs = require('minimist');
 const optimizeDeclarations = require('dts-generator-optimizer');
-const path = require('path');
 
 const argv = parseArgs(process.argv.slice(2), {boolean: 'all'});
 const cleanAll = argv.all;
