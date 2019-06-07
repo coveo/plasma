@@ -10,6 +10,7 @@ echo "Syncing with gh-pages from branch: $TRAVIS_PULL_REQUEST_BRANCH"
 git stash
 git pull --no-edit --strategy-option ours "$SSH_REPO" gh-pages
 git rm "$TRAVIS_PULL_REQUEST_BRANCH" -r
+git commit -m "Clean old build" --no-verify
 git stash pop
 
 echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
