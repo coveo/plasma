@@ -19,7 +19,7 @@
     },
     "scripts": {
         "start": "next dev",
-        "build": "next build && next export",
+        "docs": "next build && next export",
         "lintfix": "prettier --write './*.@(json|yml|js|md)' './scss/**/*.scss' './resources/js/**/*.js'"
     },
     "devDependencies": {

@@ -9,7 +9,7 @@ const Navigation = () => {
                 <ul className="navigation-menu-sections">
                     <NavigationSection
                         key="general"
-                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svgEnum.info.svgString}} />}
+                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svg.info.svgString}} />}
                         title="General Guidelines"
                         pages={[
                             <NavigationLink key="content-number" href="/" name="Content / Numbers" />,
@@ -22,7 +22,7 @@ const Navigation = () => {
                     />
                     <NavigationSection
                         key="buttons"
-                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svgEnum.open.svgString}} />}
+                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svg.open.svgString}} />}
                         title="Buttons"
                         pages={[
                             <NavigationLink key="overview" href="/buttons#overview" name="Overview" />,

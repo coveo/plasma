@@ -7,7 +7,7 @@ const Header = () => (
             <a
                 href="http://coveo.com"
                 target="_blank"
-                dangerouslySetInnerHTML={{__html: VaporSVG.svgEnum.logo.svgString}}
+                dangerouslySetInnerHTML={{__html: VaporSVG.svg.logo.svgString}}
             />
             <p className="h2 mt1">
                 <span className="text-medium-grey px1">|</span>

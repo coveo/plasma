@@ -129,7 +129,7 @@ function Dictionary(from) {
     };
 
     this.writeSvgEnumFile = (to) => {
-        let code = 'export var svgEnum = {\n';
+        let code = 'export var svg = {\n';
         const that = this;
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
@@ -221,17 +221,8 @@ gulp.task(
     gulp.series('lib', 'palette', 'sprites', gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg')
 );
 
-gulp.task('docs:external-libs', () => {
-    return gulp.src('./node_modules/autosize/dist/autosize.js').pipe(gulp.dest('./docs/dist/js'));
-});
-
-gulp.task('docs:copy', () => {
-    return gulp.src('./dist/**/*').pipe(gulp.dest('./docs/dist'));
-});
-
-gulp.task('docs', gulp.series('clean', 'default', 'docs:external-libs', 'docs:copy'));
+gulp.task('docs', gulp.series('clean', 'default'));
 
 gulp.task('watch', () => {
-    gulp.watch(['./scss/**/*.scss', '!./scss/common/palette-map.scss', '!./scss/sprites.scss'], gulp.series('docs'));
     gulp.watch('./resources/js/*.js', gulp.series('copy:js'));
 });
