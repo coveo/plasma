@@ -27,6 +27,7 @@ cache:
 
 script:
  - BRANCH_ROOT="" && [[ "$TRAVIS_PULL_REQUEST" != "false" ]] && BRANCH_ROOT="/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/vapor"
+ - echo $BRANCH_ROOT
  - lerna run build
  - BASE_URL=$BRANCH_ROOT lerna run docs
  - lerna run test
