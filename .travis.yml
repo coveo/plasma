@@ -41,11 +41,6 @@ after_success:
  - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
  - cp -a packages/vapor/dist/. "packages/vapor/deploy/$TRAVIS_TAG"
 
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
-
 deploy:
   - provider: surge
     project: ./packages/react-vapor/docs/
