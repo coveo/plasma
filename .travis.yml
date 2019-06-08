@@ -26,7 +26,8 @@ cache:
     - node_modules
 
 script:
- - BRANCH_ROOT="" && [[ "$TRAVIS_PULL_REQUEST" != "false" ]] && BRANCH_ROOT="/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/vapor"
+ - BRANCH_ROOT=""
+ - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then BRANCH_ROOT="/react-vapor/$TRAVIS_PULL_REQUEST_BRANCH/vapor"; fi' # run this line on pull request builds only
  - echo $BRANCH_ROOT
  - lerna run build
  - BASE_URL=$BRANCH_ROOT lerna run docs
@@ -40,11 +41,6 @@ after_success:
  - lerna run report-coverage
  - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
  - cp -a packages/vapor/dist/. "packages/vapor/deploy/$TRAVIS_TAG"
-
-branches:
-  only:
-    - master
-    - /^greenkeeper/.*$/
 
 deploy:
   - provider: surge
