@@ -23,7 +23,9 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
     };
     const onMouseLeave = () => setPosition({...position, position: ''});
 
-    const barWidth = (xScale(xDomain[1]) - xScale(xDomain[0])) / (series[0].data.length - 1);
+    const barWidth = series[0].data.length > 1
+        ? (xScale(xDomain[1]) - xScale(xDomain[0])) / series[0].data.length
+        : xScale(xDomain[0]);
     const bars = series[0].data.map((point: XYPoint, index: number) => {
         const x = xScale(point.x);
         return (

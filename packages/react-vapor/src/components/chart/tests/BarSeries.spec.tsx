@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import {BarSeries} from '../BarSeries';
 import {ChartUtils} from '../ChartUtils';
-import {XYChartContextMock} from './XYChartContextMock';
+import {XYChartContextMock, XYChartOnePointContextMock} from './XYChartContextMock';
 
 describe('<BarSeries />', () => {
     it('should not throw', () => {
@@ -25,5 +25,13 @@ describe('<BarSeries />', () => {
         const component = shallow(<BarSeries />);
 
         expect(component.find('rect').length).toBe(ChartUtils.getXValues(series).length * series.length);
+    });
+
+    it('should not throw when there is only one point in a serie', () => {
+        spyOn(React, 'useContext').and.returnValue(XYChartOnePointContextMock);
+
+        expect(() => {
+            shallow(<BarSeries />);
+        }).not.toThrow();
     });
 });

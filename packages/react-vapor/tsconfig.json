@@ -9,10 +9,8 @@
     "noImplicitAny": true,
     "noImplicitThis": true,
     "noUnusedLocals": true,
-    "outDir": "./dist/split/",
     "removeComments": true,
     "skipLibCheck": true,
-    "sourceMap": true,
     "target": "ES5",
     "plugins": [
       {
@@ -24,14 +22,7 @@
       "dom"
     ],
   },
-  "include": [
-    "src/**/*.tsx",
-    "src/**/*.ts",
-    "types/**/*.d.ts"
-  ],
   "exclude": [
-    "src/**/*.spec.*",
-    "src/utils/tests/TestUtils.tsx",
-    "src/components/tables/tests/TableTestCommon.tsx"
+    "node_modules"
   ]
 }
