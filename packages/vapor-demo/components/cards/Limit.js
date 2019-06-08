@@ -14,7 +14,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">42</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="FirstLimit" type="number" value="100" required/>
+                        <input id="FirstLimit" type="number" defaultValue="100" required />
                         <label htmlFor="FirstLimit">Limit</label>
                     </div>
                 </div>
@@ -38,7 +38,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">100</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="SecondLimit" type="number" value="110" required/>
+                        <input id="SecondLimit" type="number" defaultValue="110" required/>
                         <label htmlFor="SecondLimit">Limit</label>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">30</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="ThirdLimit" type="number" value="30" required/>
+                        <input id="ThirdLimit" type="number" defaultValue="30" required/>
                         <label htmlFor="ThirdLimit">Limit</label>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">30</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="FourthLimit" type="number" value="30" required/>
+                        <input id="FourthLimit" type="number" defaultValue="30" required/>
                         <label htmlFor="FourthLimit">Limit</label>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ const Limit = () => (
                 </div>
                 <div className="limit-box-numbers pt1 flex">
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="FifthLimit" type="number" value="219000" required/>
+                        <input id="FifthLimit" type="number" defaultValue="219000" required/>
                         <label htmlFor="FifthLimit">Limit</label>
                     </div>
                 </div>
