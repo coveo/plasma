@@ -6,11 +6,12 @@ import {DropPod} from '../../drop/DropPod';
 import {ChartTooltip} from '../ChartTooltip';
 import {ChartTooltipContent} from '../ChartTooltipContent';
 import {ChartUtils} from '../ChartUtils';
-import {XYChartContextMock} from './XYChartContextMock';
+import {XYChartContextMock, XYChartOnePointContextMock} from './XYChartContextMock';
 
 describe('<ChartTooltip />', () => {
+    let contextSpy: jasmine.Spy;
     beforeEach(() => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
+        contextSpy = spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
     });
 
     it('should not throw', () => {
@@ -72,5 +73,13 @@ describe('<ChartTooltip />', () => {
         component.setProps({sort: false});
 
         expect(component.find('.chart-tooltip-line').exists()).toBe(false);
+    });
+
+    it('should not throw when there is only one point in a serie', () => {
+        contextSpy.and.returnValue(XYChartOnePointContextMock);
+
+        expect(() => {
+            shallow(<ChartTooltip />);
+        }).not.toThrow();
     });
 });

@@ -161,6 +161,29 @@ export const ChartExamples: React.FunctionComponent = () => {
                     )} />
                 </div>
             </div>
+            <div className='form-group'>
+                <label className='form-control-label'>Date Chart</label>
+                <div className='form-control' style={{height: '300px'}}>
+                    <ChartContainer renderChart={(width, height) => (
+                        <XYChart
+                            series={[
+                                {
+                                    label: 'First',
+                                    data: [{x: moment().startOf('day').unix(), y: 500}],
+                                },
+                            ]}
+                            height={height}
+                            width={width}
+                            xFormat={(value: number) => moment.unix(value).format('YYYY-MM-DD')}
+                        >
+                            <XYAxis x={{tickTextSize: 120}} y={{show: false}}>
+                                <BarSeries />
+                                <ChartTooltip sort />
+                            </XYAxis>
+                        </XYChart>
+                    )} />
+                </div>
+            </div>
         </div>
     );
 };
