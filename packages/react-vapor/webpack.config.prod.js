@@ -31,7 +31,7 @@ const config = {
                     loader: 'tslint-loader',
                     options: {
                         configFile: './node_modules/tsjs/tslint.json',
-                        tsConfigFile: './tsconfig.json',
+                        tsConfigFile: './tsconfig.build.json',
                         emitErrors: true,
                         failOnHint: isTravis,
                     },
@@ -52,6 +52,7 @@ const config = {
                 loader: 'awesome-typescript-loader',
                 options: {
                     compiler: 'ttypescript',
+                    configFileName: 'tsconfig.build.json',
                 },
             },
             {
