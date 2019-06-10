@@ -284,7 +284,7 @@ gulp.task('docs:copy', () => {
     return gulp.src('./dist/**/*').pipe(gulp.dest('./docs/dist'));
 });
 
-gulp.task('docs', gulp.series('clean', 'default', 'docs:external-libs', 'docs:copy'));
+gulp.task('docs', gulp.series('default', 'docs:external-libs', 'docs:copy'));
 
 gulp.task('watch', () => {
     gulp.watch(['./scss/**/*.scss', '!./scss/common/palette-map.scss', '!./scss/sprites.scss'], gulp.series('docs'));
