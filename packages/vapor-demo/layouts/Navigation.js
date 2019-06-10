@@ -1,6 +1,7 @@
 import NavigationSection from './NavigationSection';
 import NavigationLink from './NavigationLink';
 import * as VaporSVG from 'coveo-styleguide';
+import Svg from '../components/Svg';
 
 const Navigation = () => {
     return (
@@ -63,6 +64,32 @@ const Navigation = () => {
                         title="Colors"
                         pages={[
                             <NavigationLink href="/colors" name="Palette" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="others"
+                        icon={<Svg name={VaporSVG.svg.more.name} />}
+                        title="Other Components"
+                        pages={[
+                            <NavigationLink href="/components#badge" name="Badge" />,
+                            <NavigationLink href="/components#banner" name="Banner" />,
+                            <NavigationLink href="/components#blank-slate" name="Blank Slate" />,
+                            <NavigationLink href="/components#breadcrumbs" name="Breadcrumbs" />,
+                            <NavigationLink href="/components#calendar-date-picker" name="Calendar & Date Picker" />,
+                            <NavigationLink href="/components#collapsible" name="Collapsible" />,
+                            <NavigationLink href="/components#content-placeholder" name="Content placeholder" />,
+                            <NavigationLink href="/components#corner-ribbon" name="Corner ribbon" />,
+                            <NavigationLink href="/components#facet" name="Facet" />,
+                            <NavigationLink href="/components#card" name="Card" />,
+                            <NavigationLink href="/components#search-field" name="Search Field" />,
+                            <NavigationLink href="/components#list-box" name="List Box" />,
+                            <NavigationLink href="/components#loading" name="Loading" />,
+                            <NavigationLink href="/components#member" name="Member" />,
+                            <NavigationLink href="/components#modal" name="Modal" />,
+                            <NavigationLink href="/components#multi-step-bar" name="Multi step bar" />,
+                            <NavigationLink href="/components#sync-feedback" name="Sync Feedback" />,
+                            <NavigationLink href="/components#tabs" name="Tabs" />,
                         ]}
                     />
                 </ul>
