@@ -109,24 +109,26 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
     }
 
     private renderOption(item: IItemBoxProps): JSX.Element {
+        const displayValue = item.displayValue || item.value;
         return (
             <SelectedOption
-                label={item.displayValue || item.value}
+                label={displayValue}
                 value={item.value}
                 key={item.value}
                 onRemoveClick={() => this.props.onRemoveClick(item)}
-            />
+            >
+                {displayValue}
+            </SelectedOption>
         );
     }
 
     private renderDraggableOption(item: IItemBoxProps, index: number): JSX.Element {
         return (
-            <div className='flex flex-row flex-center sortable-selected-option'>
+            <div className='flex flex-row flex-center sortable-selected-option' key={item.value}>
                 <span className='mr1 text-medium-grey'>{index + 1}</span>
                 <DraggableSelectedOption
                     label={item.displayValue || item.value}
                     value={item.value}
-                    key={item.value}
                     onRemoveClick={() => this.props.onRemoveClick(item)}
                     index={index}
                     move={(dragIndex: number, hoverIndex: number) => this.move(dragIndex, hoverIndex)}

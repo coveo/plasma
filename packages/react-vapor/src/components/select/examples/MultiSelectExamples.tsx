@@ -51,7 +51,7 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
 
     render() {
         return (
-            <div>
+            <div className='mb2'>
                 <h1>Multi Select</h1>
                 <div className='form-group'>
                     <label className='form-control-label'>A Simple Multi Select without items</label>
