@@ -30,6 +30,19 @@ describe('Table HOC', () => {
             expect(tableHeadersState).toBe(oldState);
         });
 
+        it('should return the state with all actions deselect ', () => {
+            const oldState: ITableRowState[] = [
+                {id: 'a', tableId: 'b', selected: true},
+                {id: 'ab', tableId: 'b', selected: true},
+            ];
+            const action = TableRowActions.deselectAll('b');
+
+            const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
+
+            const newState = _.map(oldState, (item: any) => ({...item, selected: false}));
+            expect(tableHeadersState).toEqual(newState);
+        });
+
         it('should return the old state with one more ITableRowState when the action is "TableRowActions.addTableRow"', () => {
             const expectedId = 'a';
             const expectedTableId = 'b';
