@@ -43,7 +43,7 @@ describe('DraggableSelectedOption', () => {
             const label: string = 'displayTest';
             mountOption({label});
 
-            expect(selectedOption.find('.selected-option-value').text()).toBe(label);
+            expect(selectedOption.find('.selected-option-value').first().text()).toBe(label);
         });
 
         it('should change the opacity when the element is dragged', () => {
