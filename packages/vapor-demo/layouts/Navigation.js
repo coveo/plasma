@@ -10,7 +10,7 @@ const Navigation = () => {
                 <ul className="navigation-menu-sections">
                     <NavigationSection
                         key="general"
-                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svg.info.svgString}} />}
+                        icon={<Svg name={VaporSVG.svg.info.name} className='icon mod-20' />}
                         title="General Guidelines"
                         pages={[
                             <NavigationLink key="content-number" href="/" name="Content / Numbers" />,
@@ -28,7 +28,7 @@ const Navigation = () => {
                     />
                     <NavigationSection
                         key="buttons"
-                        icon={<span dangerouslySetInnerHTML={{__html: VaporSVG.svg.open.svgString}} />}
+                        icon={<Svg name={VaporSVG.svg.open.name} className='icon mod-20' />}
                         title="Buttons"
                         pages={[
                             <NavigationLink key="overview" href="/buttons#overview" name="Overview" />,
@@ -69,7 +69,7 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="others"
-                        icon={<Svg name={VaporSVG.svg.more.name} />}
+                        icon={<Svg name={VaporSVG.svg.more.name} className='icon mod-20' />}
                         title="Other Components"
                         pages={[
                             <NavigationLink href="/components#badge" name="Badge" />,
@@ -90,6 +90,151 @@ const Navigation = () => {
                             <NavigationLink href="/components#multi-step-bar" name="Multi step bar" />,
                             <NavigationLink href="/components#sync-feedback" name="Sync Feedback" />,
                             <NavigationLink href="/components#tabs" name="Tabs" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="filtering"
+                        icon={<Svg name={VaporSVG.svg.filter.name} className='icon mod-20' />}
+                        title="Filtering Controls"
+                        pages={[
+                            <NavigationLink href="/filtering#picker" name="Picker" />,
+                            <NavigationLink href="/filtering#pickers" name="Pickers" />,
+                            <NavigationLink href="/filtering#list-popup" name="List Popup" />,
+                            <NavigationLink href="/filtering#value-popup" name="Value Popup" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="form-controls"
+                        icon={<Svg name={VaporSVG.svg.menuOptimization.name} className='icon mod-20' />}
+                        title="Form Controls"
+                        pages={[
+                            <NavigationLink href="/form-controls#text-input" name="Text input" />,
+                            <NavigationLink href="/form-controls#numeric-spinner" name="Numeric spinner" />,
+                            <NavigationLink href="/form-controls#checkboxes-Infos" name="Checkboxes / Infos" />,
+                            <NavigationLink href="/form-controls#checkboxes" name="Checkboxes" />,
+                            <NavigationLink href="/form-controls#radio-buttons" name="Radio buttons" />,
+                            <NavigationLink href="/form-controls#slide-toggle" name="Slide toggle" />,
+                            <NavigationLink href="/form-controls#slide-toggle-modifiers" name="Slide toggle modifiers" />,
+                            <NavigationLink href="/form-controls#slide-toggle-double" name="Slide toggle double" />,
+                            <NavigationLink href="/form-controls#filter-box" name="Filter box" />,
+                            <NavigationLink href="/form-controls#input-slider" name="Input slider" />,
+                            <NavigationLink href="/form-controls#date-picker" name="Date picker" />,
+                            <NavigationLink href="/form-controls#dropdown" name="Dropdown" />,
+                            <NavigationLink href="/form-controls#dropdown-modifiers" name="Dropdown modifiers" />,
+                            <NavigationLink href="/form-controls#flat-select" name="Flat select" />,
+                            <NavigationLink href="/form-controls#prepended-flat-select" name="Prepended flat select" />,
+                            <NavigationLink href="/form-controls#flat-select-modifiers" name="Flat select modifiers" />,
+                            <NavigationLink href="/form-controls#chosen-single-select" name="Chosen single select" />,
+                            <NavigationLink href="/form-controls#chosen-multi-select" name="Chosen multi select" />,
+                            <NavigationLink href="/form-controls#form-controls" name="Form controls" />,
+                            <NavigationLink href="/form-controls#multiline-input" name="Multiline input" />,
+                            <NavigationLink href="/form-controls#progress-bar" name="Progress bar" />,
+                            <NavigationLink href="/form-controls#step=progress-bar" name="Step progress bar" />,
+                            <NavigationLink href="/form-controls#dropdown-search" name="Dropdown Search" />,
+                            <NavigationLink href="/form-controls#multiselect-dropdown-search" name="MultiSelect Dropdown Search" />,
+                            <NavigationLink href="/form-controls#file-input" name="File input" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="form-layout"
+                        icon={<Svg name={VaporSVG.svg.dashboard.name} className='icon mod-20' />}
+                        title="Form Layout"
+                        pages={[
+                            <NavigationLink href="/form-layout#groups" name="Groups" />,
+                            <NavigationLink href="/form-layout#child-element" name="Child element" />,
+                            <NavigationLink href="/form-layout#split-layout" name="Split layout" />,
+                            <NavigationLink href="/form-layout#child-section-element" name="Child section element" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="headers"
+                        icon={<Svg name={VaporSVG.svg.explorer.name} className='icon mod-20' />}
+                        title="Headers"
+                        pages={[
+                            <NavigationLink href="/headers#panel" name="Panel" />,
+                            <NavigationLink href="/headers#site" name="Site" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="Icons"
+                        icon={<Svg name={VaporSVG.svg.noContent.name} className='icon mod-20' />}
+                        title="Icons"
+                        pages={[
+                            <NavigationLink href="/icons" name="Icons" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="Messages"
+                        icon={<Svg name={VaporSVG.svg.ftList.name} className='icon mod-20' />}
+                        title="Messages"
+                        pages={[
+                            <NavigationLink href="/messages#popover" name="Popover" />,
+                            <NavigationLink href="/messages#prompt" name="Prompt" />,
+                            <NavigationLink href="/messages#toast" name="Toast" />,
+                            <NavigationLink href="/messages#tooltip" name="Tooltip" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="Navigation"
+                        icon={<Svg name={VaporSVG.svg.invert.name} className='icon mod-20' />}
+                        title="Navigation"
+                        pages={[
+                            <NavigationLink href="/navigation#navigation" name="Navigation" />,
+                            <NavigationLink href="/navigation#sub-navigation" name="Sub Navigation" />,
+                            <NavigationLink href="/navigation#navigation-loading" name="Navigation Loading" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="Tables"
+                        icon={<Svg name={VaporSVG.svg.filterFacet.name} className='icon mod-20' />}
+                        title="Tables"
+                        pages={[
+                            <NavigationLink href="/tables#base" name="Base" />,
+                            <NavigationLink href="/tables#drag-and-drop" name="Drag and drop" />,
+                            <NavigationLink href="/tables#fixed-header" name="Fixed header" />,
+                            <NavigationLink href="/tables#actions-container" name="Actions container" />,
+                            <NavigationLink href="/tables#small-actions-container" name="Small actions container" />,
+                            <NavigationLink href="/tables#collapsible-rows" name="Collapsible rows" />,
+                            <NavigationLink href="/tables#alternating-color-rows" name="Alternating color rows" />,
+                            <NavigationLink href="/tables#pagination" name="Pagination" />,
+                            <NavigationLink href="/tables#smaller-rows" name="Smaller rows" />,
+                            <NavigationLink href="/tables#loading" name="Loading" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="Typography"
+                        icon={<span className="bold">T</span>}
+                        title="Typography"
+                        pages={[
+                            <NavigationLink href="/typography#headings" name="Headings" />,
+                            <NavigationLink href="/typography#colors" name="Colors" />,
+                            <NavigationLink href="/typography#utilities" name="Utilities" />,
+                            <NavigationLink href="/typography#lists" name="Lists" />,
+                            <NavigationLink href="/typography#line-height" name="Line-height" />,
+                        ]}
+                    />
+
+                    <NavigationSection
+                        key="Utility"
+                        icon={<Svg name={VaporSVG.svg.maintenance.name} className='icon mod-20' />}
+                        title="Utility"
+                        pages={[
+                            <NavigationLink href="/utility#whitespace" name="Whitespace" />,
+                            <NavigationLink href="/utility#spaced-box" name="Spaced box" />,
+                            <NavigationLink href="/utility#cursor" name="Cursor" />,
+                            <NavigationLink href="/utility#color-dots" name="Color dots" />,
+                            <NavigationLink href="/utility#borders" name="Borders" />,
+                            <NavigationLink href="/utility#transparency" name="Transparency" />,
+                            <NavigationLink href="/utility#hover" name="Hover" />,
                         ]}
                     />
                 </ul>
