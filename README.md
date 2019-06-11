@@ -6,7 +6,7 @@
 [![npm](https://img.shields.io/npm/v/react-vapor.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
 
-React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [vapor](http://coveo.github.io/vapor/general-guidelines/#content-numbers) or [react-vapor](http://react-vapor.surge.sh/). Vapor contains the CSS implementation of those component and react-vapor is a react implementation.
+React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [vapor](http://vapor.surge.sh) or [react-vapor](http://react-vapor.surge.sh/). Vapor contains the CSS implementation of those component and react-vapor is a react implementation.
 
 All new components should only be implemented in react-vapor.
 
@@ -34,7 +34,7 @@ lerna bootstrap
 
 ### Running the demo pages locally
 
-See the README inside [Vapor](packages/vapor) and [React-Vapor](packages/react-vapor) for specific instructions.
+See the README inside [Vapor](packages/vapor), [Vapor Demo](packages/vapor-demo), and [React-Vapor](packages/react-vapor) for specific instructions.
 
 ### Testing your changes locally directly in your project
 
