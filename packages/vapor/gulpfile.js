@@ -18,7 +18,6 @@ const merge = require('merge-stream');
 const svgmin = require('gulp-svgmin');
 const cheerio = require('gulp-cheerio');
 const filesToJson = require('gulp-files-to-json');
-const sortJSON = require('gulp-json-sort').default;
 const parseArgs = require('minimist');
 const _ = require('underscore');
 const s = require('underscore.string');
@@ -64,7 +63,7 @@ gulp.task('lib', () => {
 });
 
 gulp.task('clean', (done) => {
-    const filesToDelete = ['./dist', './docs/dist', './_gh_pages', './.sass-cache', './tmp'];
+    const filesToDelete = ['./dist', './_gh_pages', './.sass-cache', './tmp'];
     if (cleanAll) {
         filesToDelete.concat(['**/*.orig', '**/*.rej', 'node_modules', 'package-lock.json']);
     }
@@ -193,10 +192,7 @@ gulp.task('svg:concat', () => {
             })
         )
         .pipe(filesToJson('CoveoStyleGuideSvg.json'))
-        .pipe(gulp.dest('dist/svg'))
-        .pipe(sortJSON())
-        .pipe(rename('icons.json'))
-        .pipe(gulp.dest('docs/_data/'));
+        .pipe(gulp.dest('dist/svg'));
 });
 
 gulp.task(
@@ -220,8 +216,6 @@ gulp.task(
     'default',
     gulp.series('lib', 'palette', 'sprites', gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg')
 );
-
-gulp.task('docs', gulp.series('clean', 'default'));
 
 gulp.task('watch', () => {
     gulp.watch('./resources/js/*.js', gulp.series('copy:js'));

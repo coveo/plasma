@@ -14,8 +14,8 @@
     "license": "MIT",
     "main": "dist/js/VaporSVG.js",
     "scripts": {
-        "build": "gulp docs && webpack",
-        "start": "gulp docs && concurrently \"gulp watch\" \"webpack --watch\"",
+        "build": "webpack",
+        "start": "concurrently \"gulp watch\" \"webpack --watch\"",
         "version": "npm run build",
         "reconstruct": "gulp clean --all && npm install && gulp",
         "lintfix": "stylelint './scss/**/*.scss' --fix && prettier --write './*.@(json|yml|js|md)' './scss/**/*.scss' './resources/js/**/*.js'"
@@ -45,7 +45,6 @@
         "gulp-files-to-json": "0.2.1",
         "gulp-gzip": "1.4.1",
         "gulp-if": "2.0.2",
-        "gulp-json-sort": "1.0.0",
         "gulp-rename": "1.2.2",
         "gulp-svgmin": "1.2.4",
         "gulp-uglify": "3.0.0",
