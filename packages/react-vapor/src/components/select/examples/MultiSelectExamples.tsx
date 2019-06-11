@@ -153,6 +153,17 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                         customValues />
                 </div>
+                <div className='form-group'>
+                    <label className='form-control-label'>A Multi Select With Filter, default list and Custom
+                        Values </label>
+                    <br />
+                    <MultiSelectWithFilter
+                        id={UUID.generate()}
+                        defaultCustomValues={['b'.repeat(100)]}
+                        items={[{value: 'a'.repeat(100)}]}
+                        customValues
+                    />
+                </div>
             </div>
         );
     }

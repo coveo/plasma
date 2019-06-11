@@ -221,7 +221,15 @@ gulp.task(
     gulp.series('lib', 'palette', 'sprites', gulp.parallel('copy:images', 'copy:fonts', 'copy:js'), 'svg')
 );
 
-gulp.task('docs', gulp.series('clean', 'default'));
+gulp.task('docs:external-libs', () => {
+    return gulp.src('./node_modules/autosize/dist/autosize.js').pipe(gulp.dest('./docs/dist/js'));
+});
+
+gulp.task('docs:copy', () => {
+    return gulp.src('./dist/**/*').pipe(gulp.dest('./docs/dist'));
+});
+
+gulp.task('docs', gulp.series('default', 'docs:external-libs', 'docs:copy'));
 
 gulp.task('watch', () => {
     gulp.watch('./resources/js/*.js', gulp.series('copy:js'));
