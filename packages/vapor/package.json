@@ -14,8 +14,8 @@
     "license": "MIT",
     "main": "dist/js/VaporSVG.js",
     "scripts": {
-        "build": "webpack",
-        "start": "concurrently \"gulp watch\" \"webpack --watch\"",
+        "build": "gulp && webpack",
+        "start": "gulp && concurrently \"gulp watch\" \"webpack --watch\"",
         "version": "npm run build",
         "reconstruct": "gulp clean --all && npm install && gulp",
         "lintfix": "stylelint './scss/**/*.scss' --fix && prettier --write './*.@(json|yml|js|md)' './scss/**/*.scss' './resources/js/**/*.js'"
