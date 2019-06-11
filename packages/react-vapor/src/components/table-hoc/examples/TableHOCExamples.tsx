@@ -3,11 +3,16 @@ import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {DateUtils} from '../../../utils/DateUtils';
+import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {UUID} from '../../../utils/UUID';
+import {Button} from '../../button/Button';
 import {SELECTION_BOX, SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {SingleSelectConnected} from '../../select/SingleSelectConnected';
+import {TableRowActions} from '../actions/TableRowActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
+import {tableWithActions} from '../TableWithActions';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {ITableWithDatePickerProps, tableWithDatePicker} from '../TableWithDatePicker';
 import {tableWithFilter} from '../TableWithFilter';
@@ -16,8 +21,14 @@ import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
 import {IExampleRowData} from './TableHOCServerExampleReducer';
 
+export type TableHOCExamplesDispatchProps = ReturnType<typeof mapDispatchToProps>;
+
 const TableWithFilter = _.compose(
     tableWithFilter({placeholder: 'custom placeholder'}),
+)(TableHOC);
+
+const TableWithActions = _.compose(
+    tableWithActions(),
 )(TableHOC);
 
 const TableWithPredicate = _.compose(
@@ -99,7 +110,12 @@ const TableWithSortFilterAndPagination = _.compose(
     tableWithPagination({perPageNumbers: [3, 5, 10]}),
 )(TableHOC);
 
-export class TableHOCExamples extends React.Component {
+const mapDispatchToProps = (dispatch: IDispatch) => ({
+    unselectActions: () => dispatch(TableRowActions.deselectAll('table-with-unselect-all')),
+});
+
+@ReduxConnect(null, mapDispatchToProps)
+export class TableHOCExamples extends React.Component<TableHOCExamplesDispatchProps> {
     render() {
         const generateData = (length: number) => _.map(_.range(length), (i: number) => {
             seed(i + 1); // ensure that we always have the same data
@@ -109,8 +125,10 @@ export class TableHOCExamples extends React.Component {
                 email: data.email,
                 username: data.username,
                 dateOfBirth: data.dob,
+                id: UUID.generate(),
             };
         });
+
         const generateRows = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
             <tr key={data.username}>
                 <td key='city'>{data.city}</td>
@@ -133,10 +151,70 @@ export class TableHOCExamples extends React.Component {
                         Tables with no special behaviour
                     </label>
                     <TableHOC
-                        id='1'
+                        id='basic-table'
                         className='table'
                         data={generateData(3)}
                         renderBody={generateRows}
+                        tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th></tr></thead>}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with actions
+                    </label>
+                    <TableWithActions
+                        id='table-with-actions'
+                        className='table'
+                        data={generateData(3)}
+                        renderBody={(allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
+                            <TableRowConnected
+                                id={data.id}
+                                tableId={'table-with-actions'}
+                                key={data.id}
+                                actions={[
+                                    {primary: true, icon: 'edit', name: 'edit', enabled: true, trigger: () => alert('trigger on action'), callOnDoubleClick: true},
+                                    {primary: false, icon: 'view', name: 'view', enabled: true},
+                                    {primary: false, icon: 'copy', name: 'copy', enabled: true},
+                                    {primary: false, icon: 'delete', name: 'delete', enabled: true},
+                                ]}
+                            >
+                                <td key='city'>{data.city}</td>
+                                <td key='email'>{data.email.toLowerCase()}</td>
+                                <td key='username'><SingleSelectConnected id={data.id + 'dropdown'} /></td>
+                            </TableRowConnected>
+                        ))}
+                        tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th></tr></thead>}
+                    />
+                </div>
+
+                <div className='form-group'>
+                    <label className='form-control-label'>
+                        Tables with multi selection on rows and a button to unselect all
+                    </label>
+                    <div className='p2'>
+                        <Button name='Unselect actions' onClick={() => this.props.unselectActions()} enabled />
+                    </div>
+                    <TableWithActions
+                        id='table-with-unselect-all'
+                        className='table'
+                        data={generateData(3)}
+                        renderBody={(allData: IExampleRowData[]) => allData.map((data: IExampleRowData) => (
+                            <TableRowConnected
+                                id={data.id}
+                                tableId={'table-with-unselect-all'}
+                                key={data.id}
+                                isMultiselect
+                                actions={[
+                                    {primary: true, icon: 'edit', name: 'edit', enabled: true, trigger: () => alert('trigger on action'), callOnDoubleClick: true},
+                                    {primary: false, icon: 'view', name: 'view', enabled: true},
+                                ]}
+                            >
+                                <td key='city'>{data.city}</td>
+                                <td key='email'>{data.email.toLowerCase()}</td>
+                                <td key='username'><SingleSelectConnected id={data.id + 'dropdown'} /></td>
+                            </TableRowConnected>
+                        ))}
                         tableHeader={<thead><tr><th>City</th><th>Email</th><th>Username</th></tr></thead>}
                     />
                 </div>

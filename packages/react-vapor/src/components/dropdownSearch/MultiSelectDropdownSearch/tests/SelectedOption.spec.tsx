@@ -1,13 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {UUID} from '../../../../utils/UUID';
 import {ISelectedOptionProps, SelectedOption} from '../SelectedOption';
 
 describe('SelectedOption', () => {
-    const key: string = UUID.generate();
     const props: ISelectedOptionProps = {
-        key,
         value: 'test',
         label: '',
     };
@@ -35,7 +32,7 @@ describe('SelectedOption', () => {
                 const label: string = 'displayTest';
                 selectedOption.setProps({label});
 
-                expect(selectedOption.find('.selected-option-value').text()).toBe(label);
+                expect(selectedOption.find('.selected-option-value').first().text()).toBe(label);
             });
         });
 
@@ -55,7 +52,7 @@ describe('SelectedOption', () => {
 
                 selectedOption.simulate('click');
                 selectedOption.find('.selected-option').simulate('click');
-                selectedOption.find('.selected-option-value').simulate('click');
+                selectedOption.find('.selected-option-value').first().simulate('click');
 
                 expect(onRemoveOptionClick).not.toHaveBeenCalled();
             });
