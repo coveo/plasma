@@ -1,13 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {UUID} from '../../../../utils/UUID';
 import {ISelectedOptionProps, SelectedOption} from '../SelectedOption';
 
 describe('SelectedOption', () => {
-    const key: string = UUID.generate();
     const props: ISelectedOptionProps = {
-        key,
         value: 'test',
         label: '',
     };
