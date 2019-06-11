@@ -18,6 +18,7 @@ export interface IExampleRowData {
     email: string;
     username: string;
     dateOfBirth: Date;
+    id: string;
 }
 
 interface ISetExampleDataPayload {
