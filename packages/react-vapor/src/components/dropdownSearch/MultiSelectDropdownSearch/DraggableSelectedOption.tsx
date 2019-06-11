@@ -3,6 +3,7 @@ import {DragSource, DropTarget, IDragSource, IDropTarget} from 'react-dnd';
 import {findDOMNode} from 'react-dom';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {Svg} from '../../svg/Svg';
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
@@ -88,22 +89,25 @@ const DraggableSelectedOptionPropsToOmit = keys<IDraggableSelectedOptionOwnProps
     isDragging: monitor.isDragging(),
 }),
 )
-export class DraggableSelectedOption extends React.Component<IDraggableSelectedOptionProps> {
+export class DraggableSelectedOption extends React.PureComponent<IDraggableSelectedOptionProps> {
     render() {
         const opacity = this.props.isDragging ? 0 : 1;
 
-        const content: React.ReactNode = [
-            this.props.connectDragSource(
-                <div className='move-option infline-flex cursor-move align-center'>
-                    <Svg svgName='drag-drop' svgClass='icon mod-small' />
-                </div>,
-            ),
-            this.props.label,
-        ];
         return this.props.connectDragPreview(
             this.props.connectDropTarget(
                 <div className='selected-option-wrapper' style={{opacity}}>
-                    <SelectedOption {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)} label={content} />
+                    <SelectedOption {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)}
+                        label={this.props.isDragging ? null : this.props.label}
+                    >
+                        <div className='inline-flex'>
+                            {this.props.connectDragSource(
+                                <div className='move-option infline-flex cursor-move align-center'>
+                                    <Svg svgName='drag-drop' svgClass='icon mod-small' />
+                                </div>,
+                            )}
+                            {this.props.label}
+                        </div>
+                    </SelectedOption>
                 </div>,
             ),
         );

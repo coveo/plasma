@@ -4,6 +4,7 @@ export const TableRowActionsType = {
     add: 'ADD_TABLE_ROW',
     remove: 'REMOVE_TABLE_ROW',
     select: 'SELECT_TABLE_ROW',
+    deselectAll: 'DESELECT_ALL_TABLE_ROW',
     toggleCollapsible: 'TOGGLE_TABLE_COLLAPSIBLE_ROW',
 };
 
@@ -30,6 +31,11 @@ const selectRow = (id: string, isMulti: boolean = false): IReduxAction<ITableRow
     payload: {id, isMulti},
 });
 
+const deselectAllRows = (id: string): IReduxAction<ITableRowSelectPayload> => ({
+    type: TableRowActionsType.deselectAll,
+    payload: {id},
+});
+
 export interface ITableRowToggleCollapsiblePayload extends BasePayload {
     opened?: boolean;
 }
@@ -43,5 +49,6 @@ export const TableRowActions = {
     add: addTableRow,
     remove: removeTableRow,
     select: selectRow,
+    deselectAll: deselectAllRows,
     toggleCollapsible: toggleCollapsibleRow,
 };
