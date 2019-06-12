@@ -149,19 +149,11 @@ const Navigation = () => {
                             <NavigationLink href="/form-controls#dropdown" name="Dropdown" />,
                             <NavigationLink href="/form-controls#dropdown-modifiers" name="Dropdown modifiers" />,
                             <NavigationLink href="/form-controls#flat-select" name="Flat select" />,
-                            <NavigationLink href="/form-controls#prepended-flat-select" name="Prepended flat select" />,
+                            <NavigationLink href="/form-controls#flat-select-prepend" name="Prepended flat select" />,
                             <NavigationLink href="/form-controls#flat-select-modifiers" name="Flat select modifiers" />,
-                            <NavigationLink href="/form-controls#chosen-single-select" name="Chosen single select" />,
-                            <NavigationLink href="/form-controls#chosen-multi-select" name="Chosen multi select" />,
-                            <NavigationLink href="/form-controls#form-controls" name="Form controls" />,
                             <NavigationLink href="/form-controls#multiline-input" name="Multiline input" />,
                             <NavigationLink href="/form-controls#progress-bar" name="Progress bar" />,
                             <NavigationLink href="/form-controls#step=progress-bar" name="Step progress bar" />,
-                            <NavigationLink href="/form-controls#dropdown-search" name="Dropdown Search" />,
-                            <NavigationLink
-                                href="/form-controls#multiselect-dropdown-search"
-                                name="MultiSelect Dropdown Search"
-                            />,
                             <NavigationLink href="/form-controls#file-input" name="File input" />,
                         ]}
                     />
