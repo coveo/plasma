@@ -18,7 +18,7 @@ import {CodeMirrorGutters} from './EditorConstants';
 
 export interface ICodeEditorProps {
     value: string;
-    readOnly?: any;
+    readOnly?: boolean;
     onChange?: (code: string) => void;
     onMount?: (codemirror: ReactCodeMirror.Controlled) => void;
     errorMessage?: string;
@@ -93,7 +93,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     }
 
     private removeCursorWhenEditorIsReadOnly(isItReadOnly: boolean) {
-        return isItReadOnly === true ? 'nocursor' : false;
+        return isItReadOnly ? 'nocursor' : false;
     }
 
     private handleChange(code: string) {
