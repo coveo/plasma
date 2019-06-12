@@ -10,7 +10,7 @@ const Navigation = () => {
                 <ul className="navigation-menu-sections">
                     <NavigationSection
                         key="general"
-                        icon={<Svg name={VaporSVG.svg.info.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.info.name} className="icon mod-20" />}
                         title="General Guidelines"
                         pages={[
                             <NavigationLink key="content-number" href="/" name="Content / Numbers" />,
@@ -20,33 +20,58 @@ const Navigation = () => {
                                 name="Content / UI texts and error messages"
                             />,
                             <NavigationLink key="dialog" href="/general-guidelines#dialog" name="Dialog" />,
-                            <NavigationLink key="messages-error" href="/general-guidelines#messages-error" name="Messages / Error" />,
-                            <NavigationLink key="messages-success" href="/general-guidelines#messages-success" name="Messages / Success" />,
-                            <NavigationLink key="messages-warning" href="/general-guidelines#messages-warning" name="Messages / Warning" />,
+                            <NavigationLink
+                                key="messages-error"
+                                href="/general-guidelines#messages-error"
+                                name="Messages / Error"
+                            />,
+                            <NavigationLink
+                                key="messages-success"
+                                href="/general-guidelines#messages-success"
+                                name="Messages / Success"
+                            />,
+                            <NavigationLink
+                                key="messages-warning"
+                                href="/general-guidelines#messages-warning"
+                                name="Messages / Warning"
+                            />,
                             <NavigationLink key="hit-zones" href="/general-guidelines#hit-zones" name="Hit Zones" />,
                         ]}
                     />
                     <NavigationSection
                         key="buttons"
-                        icon={<Svg name={VaporSVG.svg.open.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.open.name} className="icon mod-20" />}
                         title="Buttons"
                         pages={[
                             <NavigationLink key="overview" href="/buttons#overview" name="Overview" />,
                             <NavigationLink key="base" href="/buttons#base" name="Base" />,
-                            <NavigationLink key="color-modifiers" href="/buttons#color-modifiers" name="Color modifiers" />,
-                            <NavigationLink key="size-modifiers" href="/buttons#size-modifiers" name="Size modifiers" />,
-                            <NavigationLink key="append-prepend" href="/buttons#append-prepend" name="Append and Prepend" />,
+                            <NavigationLink
+                                key="color-modifiers"
+                                href="/buttons#color-modifiers"
+                                name="Color modifiers"
+                            />,
+                            <NavigationLink
+                                key="size-modifiers"
+                                href="/buttons#size-modifiers"
+                                name="Size modifiers"
+                            />,
+                            <NavigationLink
+                                key="append-prepend"
+                                href="/buttons#append-prepend"
+                                name="Append and Prepend"
+                            />,
                             <NavigationLink key="alignment" href="/buttons#alignment" name="Alignment" />,
                         ]}
                     />
 
                     <NavigationSection
                         key="cards"
-                        icon={(
+                        icon={
                             <svg viewBox="0 0 20 20">
-                                <path d="M2 19V1c0-.607.399-1 1-1h14c.603 0 1 .395 1 1v18c0 .605-.399.998-1 1H3c-.603 0-1-.393-1-1m2-1V2h12v16"></path><path d="M11 15a.75.75 0 0 1 0-1.061L12.939 12 11 10.061A.75.75 0 1 1 12.061 9l3 3-3 3A.75.75 0 0 1 11 15M7.939 11l-3-3 3-3A.75.75 0 1 1 9 6.061L7.061 8 9 9.939A.75.75 0 1 1 7.939 11" />
+                                <path d="M2 19V1c0-.607.399-1 1-1h14c.603 0 1 .395 1 1v18c0 .605-.399.998-1 1H3c-.603 0-1-.393-1-1m2-1V2h12v16" />
+                                <path d="M11 15a.75.75 0 0 1 0-1.061L12.939 12 11 10.061A.75.75 0 1 1 12.061 9l3 3-3 3A.75.75 0 0 1 11 15M7.939 11l-3-3 3-3A.75.75 0 1 1 9 6.061L7.061 8 9 9.939A.75.75 0 1 1 7.939 11" />
                             </svg>
-                        )}
+                        }
                         title="Cards"
                         pages={[
                             <NavigationLink key="flippable" href="/cards#flippable" name="Flippable" />,
@@ -62,14 +87,12 @@ const Navigation = () => {
                         key="colors"
                         icon={<span className="smaller bold">rgb</span>}
                         title="Colors"
-                        pages={[
-                            <NavigationLink href="/colors" name="Palette" />,
-                        ]}
+                        pages={[<NavigationLink href="/colors" name="Palette" />]}
                     />
 
                     <NavigationSection
                         key="others"
-                        icon={<Svg name={VaporSVG.svg.more.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.more.name} className="icon mod-20" />}
                         title="Other Components"
                         pages={[
                             <NavigationLink href="/components#badge" name="Badge" />,
@@ -95,7 +118,7 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="filtering"
-                        icon={<Svg name={VaporSVG.svg.filter.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.filter.name} className="icon mod-20" />}
                         title="Filtering Controls"
                         pages={[
                             <NavigationLink href="/filtering#picker" name="Picker" />,
@@ -107,40 +130,37 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="form-controls"
-                        icon={<Svg name={VaporSVG.svg.menuOptimization.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.menuOptimization.name} className="icon mod-20" />}
                         title="Form Controls"
                         pages={[
                             <NavigationLink href="/form-controls#text-input" name="Text input" />,
                             <NavigationLink href="/form-controls#numeric-spinner" name="Numeric spinner" />,
-                            <NavigationLink href="/form-controls#checkboxes-Infos" name="Checkboxes / Infos" />,
+                            <NavigationLink href="/form-controls#checkboxes-infos" name="Checkboxes / Infos" />,
                             <NavigationLink href="/form-controls#checkboxes" name="Checkboxes" />,
                             <NavigationLink href="/form-controls#radio-buttons" name="Radio buttons" />,
                             <NavigationLink href="/form-controls#slide-toggle" name="Slide toggle" />,
-                            <NavigationLink href="/form-controls#slide-toggle-modifiers" name="Slide toggle modifiers" />,
+                            <NavigationLink
+                                href="/form-controls#slide-toggle-modifiers"
+                                name="Slide toggle modifiers"
+                            />,
                             <NavigationLink href="/form-controls#slide-toggle-double" name="Slide toggle double" />,
                             <NavigationLink href="/form-controls#filter-box" name="Filter box" />,
                             <NavigationLink href="/form-controls#input-slider" name="Input slider" />,
-                            <NavigationLink href="/form-controls#date-picker" name="Date picker" />,
                             <NavigationLink href="/form-controls#dropdown" name="Dropdown" />,
                             <NavigationLink href="/form-controls#dropdown-modifiers" name="Dropdown modifiers" />,
                             <NavigationLink href="/form-controls#flat-select" name="Flat select" />,
-                            <NavigationLink href="/form-controls#prepended-flat-select" name="Prepended flat select" />,
+                            <NavigationLink href="/form-controls#flat-select-prepend" name="Prepended flat select" />,
                             <NavigationLink href="/form-controls#flat-select-modifiers" name="Flat select modifiers" />,
-                            <NavigationLink href="/form-controls#chosen-single-select" name="Chosen single select" />,
-                            <NavigationLink href="/form-controls#chosen-multi-select" name="Chosen multi select" />,
-                            <NavigationLink href="/form-controls#form-controls" name="Form controls" />,
                             <NavigationLink href="/form-controls#multiline-input" name="Multiline input" />,
                             <NavigationLink href="/form-controls#progress-bar" name="Progress bar" />,
-                            <NavigationLink href="/form-controls#step=progress-bar" name="Step progress bar" />,
-                            <NavigationLink href="/form-controls#dropdown-search" name="Dropdown Search" />,
-                            <NavigationLink href="/form-controls#multiselect-dropdown-search" name="MultiSelect Dropdown Search" />,
+                            <NavigationLink href="/form-controls#step-progress-bar" name="Step progress bar" />,
                             <NavigationLink href="/form-controls#file-input" name="File input" />,
                         ]}
                     />
 
                     <NavigationSection
                         key="form-layout"
-                        icon={<Svg name={VaporSVG.svg.dashboard.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.dashboard.name} className="icon mod-20" />}
                         title="Form Layout"
                         pages={[
                             <NavigationLink href="/form-layout#groups" name="Groups" />,
@@ -152,7 +172,7 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="headers"
-                        icon={<Svg name={VaporSVG.svg.explorer.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.explorer.name} className="icon mod-20" />}
                         title="Headers"
                         pages={[
                             <NavigationLink href="/headers#panel" name="Panel" />,
@@ -162,16 +182,18 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="Icons"
-                        icon={<Svg name={VaporSVG.svg.noContent.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.noContent.name} className="icon mod-20" />}
                         title="Icons"
                         pages={[
-                            <NavigationLink href="/icons" name="Icons" />,
+                            <NavigationLink href="/icons#modifiers" name="Icon modifiers" />,
+                            <NavigationLink href="/icons#fillers" name="Icon fillers" />,
+                            <NavigationLink href="/icons#list" name="Icons" />,
                         ]}
                     />
 
                     <NavigationSection
                         key="Messages"
-                        icon={<Svg name={VaporSVG.svg.ftList.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.ftList.name} className="icon mod-20" />}
                         title="Messages"
                         pages={[
                             <NavigationLink href="/messages#popover" name="Popover" />,
@@ -183,7 +205,7 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="Navigation"
-                        icon={<Svg name={VaporSVG.svg.invert.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.invert.name} className="icon mod-20" />}
                         title="Navigation"
                         pages={[
                             <NavigationLink href="/navigation#navigation" name="Navigation" />,
@@ -194,7 +216,7 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="Tables"
-                        icon={<Svg name={VaporSVG.svg.filterFacet.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.filterFacet.name} className="icon mod-20" />}
                         title="Tables"
                         pages={[
                             <NavigationLink href="/tables#base" name="Base" />,
@@ -225,7 +247,7 @@ const Navigation = () => {
 
                     <NavigationSection
                         key="Utility"
-                        icon={<Svg name={VaporSVG.svg.maintenance.name} className='icon mod-20' />}
+                        icon={<Svg name={VaporSVG.svg.maintenance.name} className="icon mod-20" />}
                         title="Utility"
                         pages={[
                             <NavigationLink href="/utility#whitespace" name="Whitespace" />,

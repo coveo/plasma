@@ -1,17 +1,17 @@
 import Component from '../components/Component';
 import Layout from '../layouts/Layout';
-import FilterPicker from '../components/filtering/FilterPicker';
+import Picker from '../components/filtering/FilterPicker';
 
 const Tables = () => {
     return (
         <Layout>
             <Component
-                id='filter-picker'
+                id="filter-picker"
                 title="FilterPicker"
-                usage='This is the standard filter picker control.'
+                usage="This is the standard filter picker control."
                 stylesheet="scss/controls/filter-picker.scss"
             >
-                <FilterPicker />
+                <Picker />
             </Component>
         </Layout>
     );
