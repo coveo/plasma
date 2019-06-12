@@ -8,7 +8,13 @@ import FormChildSection from '../components/form-layouts/FormChildSection';
 const FormLayout = () => {
     return (
         <Layout>
-            <Component id="groups" title="Groups" usage="Simple vertical form!" stylesheet="scss/forms/block-form.scss">
+            <Component
+                id="groups"
+                title="Groups"
+                usage="Simple vertical form!"
+                stylesheet="scss/forms/block-form.scss"
+                withSource
+            >
                 <FormGroups />
             </Component>
 
@@ -17,6 +23,7 @@ const FormLayout = () => {
                 title="Child element"
                 usage="Displays a from element has the child of another."
                 stylesheet="scss/forms/form-child.scss"
+                withSource
             >
                 <FormChild />
             </Component>
@@ -26,6 +33,7 @@ const FormLayout = () => {
                 title="Split layout"
                 usage="Simple flex column layout, principally used in our forms."
                 stylesheet="scss/utility/layout.scss"
+                withSource
             >
                 <SplitLayout />
             </Component>
@@ -35,6 +43,7 @@ const FormLayout = () => {
                 title="Child section element"
                 usage="Displays a from section has the child of another."
                 stylesheet="scss/forms/form-child.scss"
+                withSource
             >
                 <FormChildSection />
             </Component>
