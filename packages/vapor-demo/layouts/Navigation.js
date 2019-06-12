@@ -153,7 +153,7 @@ const Navigation = () => {
                             <NavigationLink href="/form-controls#flat-select-modifiers" name="Flat select modifiers" />,
                             <NavigationLink href="/form-controls#multiline-input" name="Multiline input" />,
                             <NavigationLink href="/form-controls#progress-bar" name="Progress bar" />,
-                            <NavigationLink href="/form-controls#step=progress-bar" name="Step progress bar" />,
+                            <NavigationLink href="/form-controls#step-progress-bar" name="Step progress bar" />,
                             <NavigationLink href="/form-controls#file-input" name="File input" />,
                         ]}
                     />
