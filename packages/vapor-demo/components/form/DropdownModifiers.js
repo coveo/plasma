@@ -7,8 +7,12 @@ export default function DropdownModifiers() {
                     mod-menu
                 </button>
                 <ul className="dropdown-menu">
-                    <li><span>Item 1</span></li>
-                    <li><span>Item 2</span></li>
+                    <li>
+                        <span>Item 1</span>
+                    </li>
+                    <li>
+                        <span>Item 2</span>
+                    </li>
                 </ul>
             </div>
 
@@ -18,11 +22,14 @@ export default function DropdownModifiers() {
                     mod-right
                 </button>
                 <ul className="dropdown-menu mod-right">
-                    <li><span>Item 1</span></li>
-                    <li><span>Really Long Item</span></li>
+                    <li>
+                        <span>Item 1</span>
+                    </li>
+                    <li>
+                        <span>Really Long Item</span>
+                    </li>
                 </ul>
             </div>
-
         </>
     );
-};
+}

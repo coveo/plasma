@@ -19,9 +19,9 @@ const NavigationLink = ({href, name}) => {
 
     const focusOnElement = () => {
         if (getIsActive(url) && ref.current) {
-            ref.current.scrollIntoView({behavior: 'instant', block: 'nearest'})
+            ref.current.scrollIntoView({behavior: 'instant', block: 'nearest'});
         }
-    }
+    };
 
     const handleRouteChange = () => {
         focusOnElement();

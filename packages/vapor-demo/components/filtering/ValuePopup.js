@@ -1,4 +1,4 @@
-import * as VaporSVG from "coveo-styleguide";
+import * as VaporSVG from 'coveo-styleguide';
 import {useState} from 'react';
 
 import Svg from '../Svg';
@@ -7,14 +7,19 @@ export const ValuePopup = () => {
     const [show, setShow] = useState(true);
     return (
         <>
-            <button type="button" onClick={() => setShow(!show)} className="btn js-tether-target-list">Form Toggle</button>
+            <button type="button" onClick={() => setShow(!show)} className="btn js-tether-target-list">
+                Form Toggle
+            </button>
             {show && (
                 <div className="filter-expression-picker js-tether-element-values">
                     <div className="edit-filter-popup popover">
                         <div className="edit-filter-values popover-row flex">
                             <div className="popover-navigation-section">
                                 <div className="back">
-                                    <Svg name={VaporSVG.svg.arrowLeftRounded.name} className="icon arrow-left-rounded mod-lg" />
+                                    <Svg
+                                        name={VaporSVG.svg.arrowLeftRounded.name}
+                                        className="icon arrow-left-rounded mod-lg"
+                                    />
                                 </div>
                             </div>
                             <div className="popup-main-section">
@@ -33,24 +38,27 @@ export const ValuePopup = () => {
                                                     </button>
                                                     <ul className="dropdown-menu" role="menu">
                                                         <li>
-                                                <span className="enabled selected-value state-selected  " title="">
-                                                    Is
-                                                </span>
+                                                            <span
+                                                                className="enabled selected-value state-selected  "
+                                                                title=""
+                                                            >
+                                                                Is
+                                                            </span>
                                                         </li>
                                                         <li>
-                                                <span className="enabled" title="">
-                                                    Is not
-                                                </span>
+                                                            <span className="enabled" title="">
+                                                                Is not
+                                                            </span>
                                                         </li>
                                                         <li>
-                                                <span className="enabled" title="">
-                                                    Contains
-                                                </span>
+                                                            <span className="enabled" title="">
+                                                                Contains
+                                                            </span>
                                                         </li>
                                                         <li>
-                                                <span className="enabled" title="">
-                                                    Does not contain
-                                                </span>
+                                                            <span className="enabled" title="">
+                                                                Does not contain
+                                                            </span>
                                                         </li>
                                                     </ul>
                                                 </div>
@@ -61,22 +69,35 @@ export const ValuePopup = () => {
                                             <div className="input-field multiline-field form-group">
                                                 <ul>
                                                     <li className="input-wrapper">
-                                                        <input type="text" className="js-value-input" value="Chrome" required />
-                                                            <label>Value</label>
-                                                            <div className="input-actions">
-                                                                <button className="js-delete-value-button" type="button">
-                                                                    <i className="delete-action" title="Delete this entry" />
-                                                                </button>
-                                                            </div>
+                                                        <input
+                                                            type="text"
+                                                            className="js-value-input"
+                                                            value="Chrome"
+                                                            required
+                                                        />
+                                                        <label>Value</label>
+                                                        <div className="input-actions">
+                                                            <button className="js-delete-value-button" type="button">
+                                                                <i
+                                                                    className="delete-action"
+                                                                    title="Delete this entry"
+                                                                />
+                                                            </button>
+                                                        </div>
                                                     </li>
                                                 </ul>
                                                 <div className="input-wrapper">
-                                                    <input type="text" className="js-new-value-input" placeholder="Enter filter value" required />
-                                                        <div className="input-actions">
-                                                            <button className="js-add-value-button">
-                                                                <i className="add-action" title="Add a new entry"></i>
-                                                            </button>
-                                                        </div>
+                                                    <input
+                                                        type="text"
+                                                        className="js-new-value-input"
+                                                        placeholder="Enter filter value"
+                                                        required
+                                                    />
+                                                    <div className="input-actions">
+                                                        <button className="js-add-value-button">
+                                                            <i className="add-action" title="Add a new entry" />
+                                                        </button>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -86,21 +107,25 @@ export const ValuePopup = () => {
                                         <div className="form-control coveo-checkbox-labels-group">
                                             <label className="coveo-checkbox-label">
                                                 <input type="checkbox" className="coveo-checkbox empty-filter" />
-                                                    <button type="button" />
-                                                    <span className="label">Include blank values in filter</span>
+                                                <button type="button" />
+                                                <span className="label">Include blank values in filter</span>
                                             </label>
                                             <label className="coveo-checkbox-label">
                                                 <input type="checkbox" className="coveo-checkbox null-filter" />
-                                                    <button type="button" />
-                                                    <span className="label">Include n/a values in filter</span>
+                                                <button type="button" />
+                                                <span className="label">Include n/a values in filter</span>
                                             </label>
                                         </div>
                                     </div>
                                 </div>
 
                                 <div className="popover-footer">
-                                    <button className="btn mod-primary mod-small" type="button">Add</button>
-                                    <button className="btn mod-small" type="button">Cancel</button>
+                                    <button className="btn mod-primary mod-small" type="button">
+                                        Add
+                                    </button>
+                                    <button className="btn mod-small" type="button">
+                                        Cancel
+                                    </button>
                                 </div>
                             </div>
                         </div>

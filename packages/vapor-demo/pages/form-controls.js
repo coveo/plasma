@@ -16,7 +16,7 @@ const FormControls = () => {
     return (
         <Layout>
             <Component
-                id='text-input'
+                id="text-input"
                 title="Text input"
                 usage='This is the standard single-line input-field. The animation is done in pure css by leveraging "required" and "valid" states.'
                 stylesheet="scss/controls/input-field.scss"
@@ -26,23 +26,23 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='numeric-spinner'
+                id="numeric-spinner"
                 title="Numeric Spinner"
-                usage='Spinner for numeric values. Replacement for HTML5'
+                usage="Spinner for numeric values. Replacement for HTML5"
                 stylesheet="scss/controls/numeric-spinner.scss"
                 withSource
             >
                 <NumericSpinner />
             </Component>
 
-            <Component id='checkboxes-infos' title="Checkboxes / Infos">
+            <Component id="checkboxes-infos" title="Checkboxes / Infos">
                 <CheckboxesInfos />
             </Component>
 
             <Component
-                id='checkboxes'
+                id="checkboxes"
                 title="Checkboxes"
-                usage='Custom checkboxes'
+                usage="Custom checkboxes"
                 stylesheet="scss/controls/checkboxes.scss"
                 withSource
             >
@@ -50,9 +50,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='radio-buttons'
+                id="radio-buttons"
                 title="Radio buttons"
-                usage='Custom radio button'
+                usage="Custom radio button"
                 stylesheet="scss/controls/radios.scss"
                 withSource
             >
@@ -60,9 +60,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='slide-toggle'
+                id="slide-toggle"
                 title="Slide toggle"
-                usage='Another style for a checkbox with stylish animations.'
+                usage="Another style for a checkbox with stylish animations."
                 stylesheet="scss/controls/slide-toggle.scss"
                 withSource
             >
@@ -70,9 +70,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='slide-toggle-modifiers'
+                id="slide-toggle-modifiers"
                 title="Slide toggle modifiers"
-                usage='Add boxed option, for boxes'
+                usage="Add boxed option, for boxes"
                 stylesheet="scss/controls/slide-toggle.scss"
                 withSource
             >
@@ -80,9 +80,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='slide-toggle-double'
+                id="slide-toggle-double"
                 title="Slide toggle double"
-                usage='A slide toggle with two options'
+                usage="A slide toggle with two options"
                 stylesheet="scss/controls/slide-toggle-double.scss"
                 withSource
             >
@@ -90,9 +90,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='filter-box'
+                id="filter-box"
                 title="Filter box"
-                usage='Basic filter box.'
+                usage="Basic filter box."
                 stylesheet="scss/controls/filter-box.scss"
                 withSource
             >
@@ -100,24 +100,26 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='input-slider'
+                id="input-slider"
                 title="Input slider"
-                usage={(
+                usage={
                     <>
-                        Styled input slider for cross-browser compatibility. IE10+, FF, Chrome, Safari.<br />
-                        Initialize the component's colors whenever it is rendered by using <code>$(selector).slider()</code>.<br />
+                        Styled input slider for cross-browser compatibility. IE10+, FF, Chrome, Safari.
+                        <br />
+                        Initialize the component's colors whenever it is rendered by using{' '}
+                        <code>$(selector).slider()</code>.<br />
                         See <a href="https://github.com/coveo/slider">Coveo Slider</a> for more infos.
                     </>
-                )}
+                }
                 withSource
             >
                 <input type="range" className="coveo-slider-input" min="1" max="100" defaultValue="50" />
             </Component>
 
             <Component
-                id='dropdown'
+                id="dropdown"
                 title="Dropdown"
-                usage='A dropdown control. Basically, it replaces the HTML select tag. The dropdown prepend is optional.'
+                usage="A dropdown control. Basically, it replaces the HTML select tag. The dropdown prepend is optional."
                 stylesheet="scss/controls/dropdown.scss"
                 withSource
             >
@@ -125,9 +127,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='dropdown-modifiers'
+                id="dropdown-modifiers"
                 title="Dropdown modifiers"
-                usage='Modifiers for the Dropdown control { mod-menu, mod-right } .'
+                usage="Modifiers for the Dropdown control { mod-menu, mod-right } ."
                 stylesheet="sscss/controls/dropdown.scss"
                 withSource
             >

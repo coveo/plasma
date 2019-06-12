@@ -9,27 +9,27 @@ const Filtering = () => {
     return (
         <Layout>
             <Component
-                id='picker'
+                id="picker"
                 title="Picker"
-                usage='This is the standard filter picker control.'
+                usage="This is the standard filter picker control."
                 stylesheet="scss/controls/filter-picker.scss"
             >
                 <FilterPicker />
             </Component>
 
             <Component
-                id='pickers'
+                id="pickers"
                 title="Pickers"
-                usage='This is the standard multiple filter pickers control.'
+                usage="This is the standard multiple filter pickers control."
                 stylesheet="scss/controls/multi-filter-picker.scss"
             >
                 <Pickers />
             </Component>
 
             <Component
-                id='list-popup'
+                id="list-popup"
                 title="List Popup"
-                usage='This is the field picker control used to select a filter field.'
+                usage="This is the field picker control used to select a filter field."
                 stylesheet="scss/controls/filters-list.scss"
                 withSource
             >
@@ -37,9 +37,9 @@ const Filtering = () => {
             </Component>
 
             <Component
-                id='value-popup'
+                id="value-popup"
                 title="Value Popup"
-                usage='This is the filter picker control used to define a filter on a field.'
+                usage="This is the filter picker control used to define a filter on a field."
                 stylesheet="scss/controls/filters-values.scss"
                 withSource
             >

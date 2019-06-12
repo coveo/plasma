@@ -6,9 +6,9 @@ const Utility = () => {
     return (
         <Layout>
             <Component
-                id='filter-picker'
+                id="filter-picker"
                 title="FilterPicker"
-                usage='This is the standard filter picker control.'
+                usage="This is the standard filter picker control."
                 stylesheet="scss/controls/filter-picker.scss"
             >
                 <Picker />

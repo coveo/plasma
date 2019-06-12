@@ -8,20 +8,24 @@ export default function SlideToggle() {
     return (
         <>
             <label className="coveo-slide-toggle-label">
-                <span className="toggle-label" onClick={() => setFirst(!first)}>Label before</span>
-                <input type="checkbox" className="coveo-slide-toggle" checked={first}/>
-                <button type="button" onClick={() => setFirst(!first)}/>
+                <span className="toggle-label" onClick={() => setFirst(!first)}>
+                    Label before
+                </span>
+                <input type="checkbox" className="coveo-slide-toggle" checked={first} />
+                <button type="button" onClick={() => setFirst(!first)} />
             </label>
-            <br/>
+            <br />
             <div className="coveo-slide-toggle-label mt1">
-                <input type="checkbox" className="coveo-slide-toggle" checked={second}/>
-                <button type="button" onClick={() => setSecond(!second)}/>
-                <span className="toggle-label" onClick={() => setSecond(!second)}>Label after</span>
+                <input type="checkbox" className="coveo-slide-toggle" checked={second} />
+                <button type="button" onClick={() => setSecond(!second)} />
+                <span className="toggle-label" onClick={() => setSecond(!second)}>
+                    Label after
+                </span>
             </div>
 
             <p className="mt1">The slide toggle can also be used without the coveo-slide-toggle-label label.</p>
-            <input type="checkbox" className="coveo-slide-toggle" checked={third}/>
-            <button type="button" className="mt1" onClick={() => setThird(!third)}/>
+            <input type="checkbox" className="coveo-slide-toggle" checked={third} />
+            <button type="button" className="mt1" onClick={() => setThird(!third)} />
         </>
     );
-};
+}
