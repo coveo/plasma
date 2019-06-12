@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
 
-fdescribe('CodeEditor', () => {
+describe('CodeEditor', () => {
     const basicProps: ICodeEditorProps = {
         value: 'any string',
         mode: CodeMirrorModes.Python,
