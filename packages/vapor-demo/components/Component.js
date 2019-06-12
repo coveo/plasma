@@ -17,7 +17,7 @@ export const Component = ({id, title, usage, stylesheet, className, children, st
         </header>
 
         <div className="sg-component-body">
-            <div className={`sg-component-display ${className || ''}`} style={style || {}}>
+            <div className={`sg-component-display relative ${className || ''}`} style={style || {}}>
                 {children}
             </div>
             <div className="clearfix mb4" />
