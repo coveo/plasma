@@ -9,7 +9,7 @@ export const FilterPicker = () => (
                 <div className="filter-actions">
                     <a className="btn add-filter">
                         <span>
-                            <Svg name={VaporSVG.svg.filter.name} className="icon mod-lg icon-small" />
+                            <Svg name={VaporSVG.svg.filterAdd.name} className="icon mod-lg icon-small" />
                         </span>
                     </a>
                 </div>
