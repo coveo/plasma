@@ -32,7 +32,7 @@ export const HeaderPanel = () => {
                         </div>
                     </div>
 
-                    <div className={`dropdown action ${isOpened ? 'open' : ''}`} title="More" onClick={toggleOpened}>
+                    <div className={`dropdown action${isOpened ? ' open' : ''}`} title="More" onClick={toggleOpened}>
                         <span className="dropdown-toggle" id="options" data-toggle="dropdown">
                             <Svg name="more" className="icon mod-lg" />
                         </span>
