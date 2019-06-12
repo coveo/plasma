@@ -11,6 +11,13 @@ import SlideToggleDouble from '../components/form/SlideToggleDouble';
 import DropdownModifiers from '../components/form/DropdownModifiers';
 import Dropdown from '../components/form/Dropdown';
 import FilterBox from '../components/form/FilterBox';
+import FlatSelect from '../components/form/FlatSelect';
+import FlatSelectPrepend from '../components/form/FlatSelectPrepend';
+import FlatSelectModifiers from '../components/form/FlatSelectBtnGroup';
+import MultilineInput from '../components/form/MultilineInput';
+import ProgressBar from '../components/form/ProgressBar';
+import StepProgressBar from '../components/form/StepProgressBar';
+import FileInput from '../components/form/FileInput';
 
 const FormControls = () => {
     return (
@@ -130,10 +137,79 @@ const FormControls = () => {
                 id="dropdown-modifiers"
                 title="Dropdown modifiers"
                 usage="Modifiers for the Dropdown control { mod-menu, mod-right } ."
-                stylesheet="sscss/controls/dropdown.scss"
+                stylesheet="scss/controls/dropdown.scss"
                 withSource
             >
                 <DropdownModifiers />
+            </Component>
+
+            <Component
+                id='flat-select'
+                title="Flat select"
+                usage='A flat single select control.'
+                stylesheet="scss/controls/flat-select.scss"
+                withSource
+            >
+                <FlatSelect />
+            </Component>
+
+            <Component
+                id='flat-select-prepend'
+                title="Flat select prepend"
+                usage='A flat single select control with a label.'
+                stylesheet="scss/controls/flat-select.scss"
+                withSource
+            >
+                <FlatSelectPrepend />
+            </Component>
+
+            <Component
+                id='flat-select-modifiers'
+                title="Flat select modifiers"
+                usage='Modifiers for the Flat select control { mod-btn-group } .'
+                stylesheet="scss/controls/flat-select.scss"
+                withSource
+            >
+                <FlatSelectModifiers />
+            </Component>
+
+            <Component
+                id='multiline-input'
+                title="Multiline input"
+                usage='This is a serie of inputs to add multiple entries for the same field type.'
+                stylesheet="scss/controls/multiline-field.scss"
+                withSource
+            >
+                <MultilineInput />
+            </Component>
+
+            <Component
+                id='progress-bar'
+                title="Progress bar"
+                usage='Show a progression between 0 and 100%.'
+                stylesheet="scss/elements/progress-bar.scss"
+                withSource
+            >
+                <ProgressBar />
+            </Component>
+
+            <Component
+                id='step-progress-bar'
+                title="Step progress bar"
+                usage='Show a progression between steps.'
+                stylesheet="scss/components/step-step-progress-bar.scss"
+                withSource
+            >
+                <StepProgressBar />
+            </Component>
+
+            <Component
+                id='file-input'
+                title="File input"
+                stylesheet="scss/controls/file-input.scss"
+                withSource
+            >
+                <FileInput />
             </Component>
         </Layout>
     );
