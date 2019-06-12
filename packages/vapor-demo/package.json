@@ -55,8 +55,7 @@
     },
     "lint-staged": {
         "**/*.{js,scss,json,md,yml}": [
-            "npm run lintfix",
-            "git add"
+            "npm run lintfix"
         ]
     }
 }

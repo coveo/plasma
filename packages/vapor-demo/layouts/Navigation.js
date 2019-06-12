@@ -112,7 +112,7 @@ const Navigation = () => {
                         pages={[
                             <NavigationLink href="/form-controls#text-input" name="Text input" />,
                             <NavigationLink href="/form-controls#numeric-spinner" name="Numeric spinner" />,
-                            <NavigationLink href="/form-controls#checkboxes-Infos" name="Checkboxes / Infos" />,
+                            <NavigationLink href="/form-controls#checkboxes-infos" name="Checkboxes / Infos" />,
                             <NavigationLink href="/form-controls#checkboxes" name="Checkboxes" />,
                             <NavigationLink href="/form-controls#radio-buttons" name="Radio buttons" />,
                             <NavigationLink href="/form-controls#slide-toggle" name="Slide toggle" />,
@@ -120,7 +120,6 @@ const Navigation = () => {
                             <NavigationLink href="/form-controls#slide-toggle-double" name="Slide toggle double" />,
                             <NavigationLink href="/form-controls#filter-box" name="Filter box" />,
                             <NavigationLink href="/form-controls#input-slider" name="Input slider" />,
-                            <NavigationLink href="/form-controls#date-picker" name="Date picker" />,
                             <NavigationLink href="/form-controls#dropdown" name="Dropdown" />,
                             <NavigationLink href="/form-controls#dropdown-modifiers" name="Dropdown modifiers" />,
                             <NavigationLink href="/form-controls#flat-select" name="Flat select" />,
