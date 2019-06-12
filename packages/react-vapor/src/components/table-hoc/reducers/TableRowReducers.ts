@@ -82,6 +82,7 @@ const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
     [TableRowActionsType.add]: addTableRowReducer,
     [TableRowActionsType.remove]: removeTableRowReducer,
     [TableRowActionsType.select]: selectTableRowReducer,
+    [TableRowActionsType.deselectAll]: deselectTableRowReducer,
     [TableRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
     [PerPageActions.change]: deselectTableRowReducer,
     [PaginationActions.changePage]: deselectTableRowReducer,
