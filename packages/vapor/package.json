@@ -93,7 +93,8 @@
     },
     "lint-staged": {
         "**/*.{js,scss,json,md,yml}": [
-            "npm run lintfix"
+            "npm run lintfix",
+            "git add"
         ]
     },
     "stylelint": {
