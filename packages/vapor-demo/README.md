@@ -29,11 +29,11 @@ npm start
 
 You can easily test your changes locally directly in your projects by leveraging [npm's link feature](https://docs.npmjs.com/cli/link). For the sake of the example, we'll suppose we want to use our local `vapor` changes inside `vapor-demo`.
 
-| Step | Terminal window 1   | Terminal window 2         |
-| ---- | ------------------- | ------------------------- |
-| 1    | `learna bootstrap`  |                           |
+| Step | Terminal window 1   | Terminal window 2        |
+| ---- | ------------------- | ------------------------ |
+| 1    | `learna bootstrap`  |                          |
 | 2    | `cd packages/vapor` | `cd packages/vapor-demo` |
-| 3    | `npm start`         | `npm start`               |
+| 3    | `npm start`         | `npm start`              |
 
 You can leave both terminal windows running. Changes saved in either repositories will trigger a rebuild of the local demo.
 
