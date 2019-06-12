@@ -93,9 +93,8 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     }
 
     private removeCursorWhenEditorIsReadOnly(isItReadOnly: boolean) {
-        return isItReadOnly === true ? "nocursor" : false;
+        return isItReadOnly === true ? 'nocursor' : false;
     }
-
 
     private handleChange(code: string) {
         callIfDefined(this.props.onChange, code);
