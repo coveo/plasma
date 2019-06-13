@@ -1,15 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 
 const withSvgClass = (svgString, svgClass) => {
-    if (typeof document !== 'undefined') {
-        const parser = document.createElement('div');
-        parser.innerHTML = svgString;
-
-        parser.children[0].setAttribute('class', svgClass);
-
-        return parser.innerHTML;
-    }
-    return svgString;
+    return svgString.replace('<svg ', `<svg class='${svgClass}' `);
 };
 
 export const Svg = ({name, svgClass = '', ...props}) => {
