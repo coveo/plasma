@@ -18,7 +18,7 @@ export default function Loading() {
                         <th className="admin-sort">
                             Column 1
                             <div className="admin-sort-icon">
-                                <Svg name={VaporSVG.svg.ascDesc.name} svgclassName='tables-sort icon'/>
+                                <Svg name={VaporSVG.svg.ascDesc.name} svgClass='tables-sort icon'/>
                             </div>
                         </th>
                         <th>Column 2</th>
@@ -29,7 +29,7 @@ export default function Loading() {
                             </label>
                             <span className="cell-content">Column 3</span>
                             <div className="admin-sort-icon">
-                                <Svg name={VaporSVG.svg.ascDesc.name} svgclassName='tables-sort icon'/>
+                                <Svg name={VaporSVG.svg.ascDesc.name} svgClass='tables-sort icon'/>
                             </div>
                         </th>
                     </tr>
@@ -103,7 +103,7 @@ export default function Loading() {
                         <th className="admin-sort">
                             Column 1
                             <div className="admin-sort-icon">
-                                <Svg name={VaporSVG.svg.ascDesc.name} svgclassName='tables-sort icon'/>
+                                <Svg name={VaporSVG.svg.ascDesc.name} svgClass='tables-sort icon'/>
                             </div>
                         </th>
                         <th>Column 2</th>
@@ -114,7 +114,7 @@ export default function Loading() {
                             </label>
                             <span className="cell-content">Column 3</span>
                             <div className="admin-sort-icon">
-                                <Svg name={VaporSVG.svg.ascDesc.name} svgclassName='tables-sort icon'/>
+                                <Svg name={VaporSVG.svg.ascDesc.name} svgClass='tables-sort icon'/>
                             </div>
                         </th>
                     </tr>
