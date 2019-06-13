@@ -5,7 +5,7 @@ const withSvgClass = (svgString, svgClass) => {
         const parser = document.createElement('div');
         parser.innerHTML = svgString;
 
-        (parser.children[0]).setAttribute('class', svgClass);
+        parser.children[0].setAttribute('class', svgClass);
 
         return parser.innerHTML;
     }
@@ -16,12 +16,7 @@ export const Svg = ({name, svgClass = '', ...props}) => {
     if (VaporSVG.svg[name]) {
         const html = withSvgClass(VaporSVG.svg[name].svgString, svgClass);
 
-        return (
-            <span
-                {...props}
-                dangerouslySetInnerHTML={{__html: html}}
-            />
-        )
+        return <span {...props} dangerouslySetInnerHTML={{__html: html}} />;
     }
 
     console.error(`SVG ${name} doesn't exists in Vapor`);

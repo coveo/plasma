@@ -136,7 +136,7 @@ const FormControls = () => {
             <Component
                 id="dropdown-modifiers"
                 title="Dropdown modifiers"
-                usage='Modifiers for the Dropdown control { mod-menu, mod-right }.'
+                usage="Modifiers for the Dropdown control { mod-menu, mod-right }."
                 stylesheet="scss/controls/dropdown.scss"
                 withSource
             >
@@ -144,9 +144,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='flat-select'
+                id="flat-select"
                 title="Flat select"
-                usage='A flat single select control.'
+                usage="A flat single select control."
                 stylesheet="scss/controls/flat-select.scss"
                 withSource
             >
@@ -154,9 +154,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='flat-select-prepend'
+                id="flat-select-prepend"
                 title="Flat select prepend"
-                usage='A flat single select control with a label.'
+                usage="A flat single select control with a label."
                 stylesheet="scss/controls/flat-select.scss"
                 withSource
             >
@@ -164,9 +164,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='flat-select-modifiers'
+                id="flat-select-modifiers"
                 title="Flat select modifiers"
-                usage='Modifiers for the Flat select control { mod-btn-group } .'
+                usage="Modifiers for the Flat select control { mod-btn-group } ."
                 stylesheet="scss/controls/flat-select.scss"
                 withSource
             >
@@ -174,9 +174,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='multiline-input'
+                id="multiline-input"
                 title="Multiline input"
-                usage='This is a serie of inputs to add multiple entries for the same field type.'
+                usage="This is a serie of inputs to add multiple entries for the same field type."
                 stylesheet="scss/controls/multiline-field.scss"
                 withSource
             >
@@ -184,9 +184,9 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='progress-bar'
+                id="progress-bar"
                 title="Progress bar"
-                usage='Show a progression between 0 and 100%.'
+                usage="Show a progression between 0 and 100%."
                 stylesheet="scss/elements/progress-bar.scss"
                 withSource
             >
@@ -194,21 +194,16 @@ const FormControls = () => {
             </Component>
 
             <Component
-                id='step-progress-bar'
+                id="step-progress-bar"
                 title="Step progress bar"
-                usage='Show a progression between steps.'
+                usage="Show a progression between steps."
                 stylesheet="scss/components/step-step-progress-bar.scss"
                 withSource
             >
                 <StepProgressBar />
             </Component>
 
-            <Component
-                id='file-input'
-                title="File input"
-                stylesheet="scss/controls/file-input.scss"
-                withSource
-            >
+            <Component id="file-input" title="File input" stylesheet="scss/controls/file-input.scss" withSource>
                 <FileInput />
             </Component>
         </Layout>
