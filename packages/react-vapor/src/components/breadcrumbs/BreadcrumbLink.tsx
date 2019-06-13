@@ -25,7 +25,7 @@ export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
         const linkClasses = classNames('link', this.props.classes);
         return (<li className='breadcrumb-title'>
             <a className={linkClasses} href={this.props.link} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleOnClick(e)}>{this.props.name}</a>
-            <Svg svgName='arrow-right-rounded' svgClass='breadcrumb-arrow' />
+            <Svg svgName='arrow-right-rounded' className='breadcrumb-arrow' />
         </li>);
     }
 }
