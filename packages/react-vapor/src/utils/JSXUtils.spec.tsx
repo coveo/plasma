@@ -9,7 +9,7 @@ describe('JSXUtils', () => {
             expect(getReactNodeTextContent(<></>)).toBe('');
         });
 
-        it('should return the text content of the react node reveived as argument', () => {
+        it('should return the text content of the react node received as argument', () => {
             expect(getReactNodeTextContent(
                 <span>Hello world!</span>,
             )).toBe('Hello world!');
