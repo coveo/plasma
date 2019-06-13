@@ -2,13 +2,10 @@ import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {UUID} from '../../../../utils/UUID';
 import {DraggableSelectedOption, IDraggableSelectedOptionProps} from '../DraggableSelectedOption';
 
 describe('DraggableSelectedOption', () => {
-    const key: string = UUID.generate();
     const props: Partial<IDraggableSelectedOptionProps> = {
-        key,
         value: 'test',
         label: '',
         index: 0,
@@ -43,7 +40,7 @@ describe('DraggableSelectedOption', () => {
             const label: string = 'displayTest';
             mountOption({label});
 
-            expect(selectedOption.find('.selected-option-value').text()).toBe(label);
+            expect(selectedOption.find('.selected-option-value').first().text()).toBe(label);
         });
 
         it('should change the opacity when the element is dragged', () => {

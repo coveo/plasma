@@ -109,22 +109,26 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
     }
 
     private renderOption(item: IItemBoxProps): JSX.Element {
-        return <SelectedOption
-            label={item.displayValue || item.value}
-            value={item.value}
-            key={item.value}
-            onRemoveClick={() => this.props.onRemoveClick(item)}
-        />;
+        const displayValue = item.displayValue || item.value;
+        return (
+            <SelectedOption
+                label={displayValue}
+                value={item.value}
+                key={item.value}
+                onRemoveClick={() => this.props.onRemoveClick(item)}
+            >
+                {displayValue}
+            </SelectedOption>
+        );
     }
 
     private renderDraggableOption(item: IItemBoxProps, index: number): JSX.Element {
         return (
-            <div className='flex flex-row flex-center sortable-selected-option'>
+            <div className='flex flex-row flex-center sortable-selected-option' key={item.value}>
                 <span className='mr1 text-medium-grey'>{index + 1}</span>
                 <DraggableSelectedOption
                     label={item.displayValue || item.value}
                     value={item.value}
-                    key={item.value}
                     onRemoveClick={() => this.props.onRemoveClick(item)}
                     index={index}
                     move={(dragIndex: number, hoverIndex: number) => this.move(dragIndex, hoverIndex)}
@@ -149,7 +153,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
         return this.getSelectedOptions().length > 1
             ? <Tooltip title={this.props.deselectAllTooltipText} placement='top' noSpanWrapper>
-                <div className='remove-all-selected-options' onClick={() => this.props.onRemoveAll()}>
+                <div className='remove-all-selected-options ml1' onClick={() => this.props.onRemoveAll()}>
                     <Svg svgName='clear' svgClass='icon fill-medium-blue' />
                 </div>
             </Tooltip>
@@ -166,8 +170,8 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
         return (
             <div className={classes} style={this.props.multiSelectStyle}>
                 {this.props.connectDropTarget(
-                    <div className='multiselect-selected flex flex-center flex-auto'>
-                        <div className='selected-options-container'>
+                    <div className='multiselect-selected flex flex-center flex-auto full-content'>
+                        <div className='selected-options-container truncate'>
                             {this.getSelectedOptionComponents()}
                         </div>
                         {this.getRemoveAllSelectedOptionsButton()}

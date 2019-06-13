@@ -12,7 +12,9 @@ export interface BarSeriesProps {
 export const BarSeries: React.FunctionComponent<BarSeriesProps> = ({barRatio = 0.8, children}) => {
     const {series, xScale, yScale, xDomain, yDomain, color, colorPattern} = React.useContext(XYChartContext);
     const xValues = ChartUtils.getXValues(series);
-    const barWidth = (xScale(xDomain[1]) - xScale(xDomain[0])) / (xValues.length - 1) / 2 * barRatio;
+    const barWidth = xValues.length > 1
+        ? (xScale(xDomain[1]) - xScale(xDomain[0])) / xValues.length / 2 * barRatio
+        : xScale(xDomain[0]) / 2 * barRatio;
 
     const innerXScale = d3.scale.ordinal<number, number>()
         .domain(d3.range(series.length))
