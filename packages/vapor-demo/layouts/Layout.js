@@ -9,7 +9,7 @@ const Layout = (props) => (
         <Header />
 
         <div className="flex flex-row application-wrapper">
-            <div className="flex flex-column navigation-wrapper navigation-wrapper-opened">
+            <div className="flex flex-column navigation-wrapper navigation-wrapper-opened sg-navigation">
                 <Navigation />
             </div>
 

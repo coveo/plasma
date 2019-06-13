@@ -136,7 +136,7 @@ const FormControls = () => {
             <Component
                 id="dropdown-modifiers"
                 title="Dropdown modifiers"
-                usage="Modifiers for the Dropdown control { mod-menu, mod-right } ."
+                usage="Modifiers for the Dropdown control { mod-menu, mod-right }."
                 stylesheet="scss/controls/dropdown.scss"
                 withSource
             >
