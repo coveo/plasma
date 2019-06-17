@@ -5,6 +5,7 @@
 [![Npm total downloads badge](https://img.shields.io/npm/dt/react-vapor.svg?style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![npm](https://img.shields.io/npm/v/react-vapor.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [vapor](http://vapor.surge.sh) or [react-vapor](http://react-vapor.surge.sh/). Vapor contains the CSS implementation of those component and react-vapor is a react implementation.
 
