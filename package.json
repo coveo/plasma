@@ -1,9 +1,48 @@
 {
-  "name": "root",
-  "private": true,
-  "devDependencies": {
-    "axios": "0.19.0",
-    "lerna": "3.14.1",
-    "underscore": "1.9.1"
-  }
+    "name": "root",
+    "private": true,
+    "devDependencies": {
+        "axios": "0.19.0",
+        "husky": "2.4.1",
+        "lerna": "3.14.1",
+        "lint-staged": "8.2.1",
+        "prettier": "1.18.2",
+        "stylelint": "10.1.0",
+        "stylelint-config-prettier": "5.2.0",
+        "stylelint-config-rational-order": "0.1.2",
+        "stylelint-order": "3.0.0",
+        "stylelint-prettier": "1.1.1",
+        "tsjs": "0.8.2",
+        "tslint": "5.17.0",
+        "underscore": "1.9.1"
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged"
+        }
+    },
+    "lint-staged": {
+        "**/*.{scss}": [
+            "stylelint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{ts,tsx,js,jsx}": [
+            "tslint -c ./tslint.json --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{json,md,yml,html}": [
+            "prettier --write",
+            "git add"
+        ]
+    },
+    "prettier": "tsjs/prettier-config",
+    "stylelint": "tsjs/stylelint-config",
+    "browserslist": [
+        "cover 90%",
+        "last 1 versions",
+        "IE 11",
+        "not dead"
+    ]
 }
