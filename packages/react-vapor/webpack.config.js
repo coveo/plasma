@@ -31,7 +31,7 @@ module.exports = {
                 use: {
                     loader: 'tslint-loader',
                     options: {
-                        configFile: './node_modules/tsjs/tslint.json',
+                        configFile: '../../tslint.json',
                         tsConfigFile: './tsconfig.build.json',
                         emitErrors: isTravis,
                         failOnHint: isTravis,
