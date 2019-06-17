@@ -43,33 +43,42 @@ export interface IAutocompleteDispatchProps {
     setActive?: (diff: number) => void;
 }
 
-export interface IAutocompleteProps extends IAutocompleteOwnProps, IAutocompleteStateProps, IAutocompleteDispatchProps {}
+export interface IAutocompleteProps
+    extends IAutocompleteOwnProps,
+        IAutocompleteStateProps,
+        IAutocompleteDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProps): IAutocompleteStateProps => {
     const autocomplete: IAutocompleteState = _.findWhere(state.autocompletes, {id: ownProps.id});
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
     const defaultValue = listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : '';
-    const value = autocomplete && autocomplete.value || defaultValue;
+    const value = (autocomplete && autocomplete.value) || defaultValue;
 
-    const itemsWithHidden = _.map(ownProps.items, (item: IItemBoxProps): IItemBoxProps => {
-        const visible = _.isFunction(ownProps.matchFilter)
-            ? ownProps.matchFilter(value, item)
-            : defaultMatchFilter(value, item);
+    const itemsWithHidden = _.map(
+        ownProps.items,
+        (item: IItemBoxProps): IItemBoxProps => {
+            const visible = _.isFunction(ownProps.matchFilter)
+                ? ownProps.matchFilter(value, item)
+                : defaultMatchFilter(value, item);
 
-        return {...item, hidden: !visible || !!item.hidden};
-    });
+            return {...item, hidden: !visible || !!item.hidden};
+        }
+    );
 
     let index = 0;
     const activeIndex = autocomplete && autocomplete.active;
     const visibleLength = _.filter(itemsWithHidden, (item: IItemBoxProps) => !item.hidden && !item.disabled).length;
-    const visibleItems = _.map(itemsWithHidden, (item: IItemBoxProps): IItemBoxProps => {
-        let active = false;
-        if (!item.hidden && !item.disabled) {
-            active = mod(activeIndex, visibleLength) === index;
-            index++;
+    const visibleItems = _.map(
+        itemsWithHidden,
+        (item: IItemBoxProps): IItemBoxProps => {
+            let active = false;
+            if (!item.hidden && !item.disabled) {
+                active = mod(activeIndex, visibleLength) === index;
+                index++;
+            }
+            return {...item, highlight: value, active};
         }
-        return {...item, highlight: value, active};
-    });
+    );
 
     return {
         value,
@@ -89,7 +98,10 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IAutocompleteOwnProps
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class AutocompleteConnected extends React.Component<IAutocompleteProps & React.HTMLProps<AutocompleteConnected>, {}> {
+export class AutocompleteConnected extends React.Component<
+    IAutocompleteProps & React.HTMLProps<AutocompleteConnected>,
+    {}
+> {
     private dropdown: HTMLDivElement;
     private menu: HTMLDivElement;
 
@@ -119,19 +131,21 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps & 
             'show-on-top': !this.props.inline,
         });
         return (
-            <div className={pickerClasses} ref={(ref: HTMLDivElement) => this.dropdown = ref}>
-                <div className='input-wrapper validate input-field'>
+            <div className={pickerClasses} ref={(ref: HTMLDivElement) => (this.dropdown = ref)}>
+                <div className="input-wrapper validate input-field">
                     <input
                         onFocus={() => this.props.onFocus()}
                         onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyUp(e)}
                         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.onKeyDown(e)}
-                        onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.props.onValueChange(e.target.value, true)}
+                        onChange={(e: React.ChangeEvent<HTMLInputElement>) =>
+                            this.props.onValueChange(e.target.value, true)
+                        }
                         value={this.props.value}
                         required
                     />
                     {this.props.children}
                 </div>
-                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => this.menu = ref}>
+                <div className={dropdownClasses} ref={(ref: HTMLDivElement) => (this.menu = ref)}>
                     <SlideY in={this.props.isOpen} timeout={350}>
                         <ListBoxConnected id={this.props.id} classes={['relative']} items={this.props.visibleItems} />
                     </SlideY>
@@ -184,5 +198,5 @@ export class AutocompleteConnected extends React.Component<IAutocompleteProps & 
                 this.props.onDocumentClick();
             }
         }
-    }
+    };
 }

@@ -66,17 +66,13 @@ export class Modal extends React.Component<IModalProps, {}> {
     }
 
     render() {
-        const classes = classNames(
-            'modal-container',
-            this.props.classes,
-            {
-                'opened': this.props.isOpened,
-            },
-        );
+        const classes = classNames('modal-container', this.props.classes, {
+            opened: this.props.isOpened,
+        });
 
         return (
             <div className={classes}>
-                <div className='modal-content' ref={this.props.contentRef}>
+                <div className="modal-content" ref={this.props.contentRef}>
                     {this.props.children}
                 </div>
             </div>

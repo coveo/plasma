@@ -24,10 +24,9 @@ describe('CodeEditor', () => {
         let codeEditorInstance: CodeEditor;
 
         const mountWithProps = (props: Partial<ICodeEditorProps> = {}) => {
-            codeEditor = mount(
-                <CodeEditor {..._.defaults(props, basicProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            codeEditor = mount(<CodeEditor {..._.defaults(props, basicProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
             codeEditorInstance = codeEditor.instance() as any;
         };
 

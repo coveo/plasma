@@ -30,7 +30,11 @@ export interface ITableActionPayload {
     data?: IData;
 }
 
-export const addTable = (id: string, initialTableData: ITableData, predicates: ITablePredicate[]): IReduxAction<ITableActionPayload> => ({
+export const addTable = (
+    id: string,
+    initialTableData: ITableData,
+    predicates: ITablePredicate[]
+): IReduxAction<ITableActionPayload> => ({
     type: TableActions.add,
     payload: {id, initialTableData, predicates: predicates || []},
 });
@@ -48,7 +52,7 @@ export const setIsInError = (id: string, isInError: boolean): IReduxAction<ITabl
 export const modifyState = (
     id: string,
     tableStateModifier: ITableStateModifier,
-    shouldResetPage: boolean,
+    shouldResetPage: boolean
 ): IReduxAction<ITableActionPayload> => ({
     type: TableActions.modifyState,
     payload: {
@@ -58,7 +62,11 @@ export const modifyState = (
     },
 });
 
-export const updateSelectedRows = (id: string, selectedIds: string[], hasMultipleSelectedRow: boolean): IReduxAction<ITableActionPayload> => ({
+export const updateSelectedRows = (
+    id: string,
+    selectedIds: string[],
+    hasMultipleSelectedRow: boolean
+): IReduxAction<ITableActionPayload> => ({
     type: TableActions.updateSelectedIds,
     payload: {
         id,

@@ -29,9 +29,22 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
  * @type {string[]}
  */
 const chosenSelectPropsToOmit = [
-    'allowSingleDeselect', 'children', 'disableSearch', 'disableSearchThreshold', 'displayDisabledOptions', 'displaySelectedOptions',
-    'enableSplitWordSearch', 'inheritSelectClasses', 'maxSelectedOptions', 'noResultsText', 'onChosenChange',
-    'placeholderTextMultiple', 'placeholderTextSingle', 'searchContains', 'singleBackstrokeDelete', 'width',
+    'allowSingleDeselect',
+    'children',
+    'disableSearch',
+    'disableSearchThreshold',
+    'displayDisabledOptions',
+    'displaySelectedOptions',
+    'enableSplitWordSearch',
+    'inheritSelectClasses',
+    'maxSelectedOptions',
+    'noResultsText',
+    'onChosenChange',
+    'placeholderTextMultiple',
+    'placeholderTextSingle',
+    'searchContains',
+    'singleBackstrokeDelete',
+    'width',
 ];
 
 /**
@@ -61,13 +74,14 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
                 single_backstroke_delete: this.props.singleBackstrokeDelete,
                 width: this.props.width,
             })
-            .change((event: JQueryEventObject, args: Chosen.SelectedData) => this.props.onChosenChange && this.props.onChosenChange(event, args));
+            .change(
+                (event: JQueryEventObject, args: Chosen.SelectedData) =>
+                    this.props.onChosenChange && this.props.onChosenChange(event, args)
+            );
     }
 
     componentWillUnmount() {
-        this.select
-            .off('change')
-            .chosen('destroy');
+        this.select.off('change').chosen('destroy');
     }
 
     /**
@@ -80,7 +94,7 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
         // Omit ChosenSelect props to avoid warnings.
         const selectProps = _.extend({}, _.omit(this.props, chosenSelectPropsToOmit));
         return (
-            <select {...selectProps} ref={(select: HTMLSelectElement) => this.select = $(select)} onChange={_.noop}>
+            <select {...selectProps} ref={(select: HTMLSelectElement) => (this.select = $(select))} onChange={_.noop}>
                 {this.props.children}
             </select>
         );

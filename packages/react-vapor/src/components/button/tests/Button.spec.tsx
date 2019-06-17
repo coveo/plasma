@@ -5,7 +5,6 @@ import {Tooltip} from '../../tooltip/Tooltip';
 import {Button, IButtonProps} from '../Button';
 
 describe('Button', () => {
-
     let buttonComponent: ReactWrapper<IButtonProps, any>;
 
     it('should render without errors', () => {
@@ -15,12 +14,8 @@ describe('Button', () => {
     });
 
     describe('<Button /> with default props', () => {
-
         beforeEach(() => {
-            buttonComponent = mount(
-                <Button enabled={true} />,
-                {attachTo: document.getElementById('App')},
-            );
+            buttonComponent = mount(<Button enabled={true} />, {attachTo: document.getElementById('App')});
         });
 
         it('should render the default name', () => {
@@ -33,12 +28,10 @@ describe('Button', () => {
     });
 
     describe('<Button /> with custom props', () => {
-
         const showButton = (props: Partial<IButtonProps>) => {
-            buttonComponent = mount(
-                <Button {..._.defaults(props, {enabled: true})} />,
-                {attachTo: document.getElementById('App')},
-            );
+            buttonComponent = mount(<Button {..._.defaults(props, {enabled: true})} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         it('should render the custom name', () => {
@@ -94,7 +87,6 @@ describe('Button', () => {
         });
 
         describe('with the link button', () => {
-
             const link: string = 'link';
 
             it('should render the custom name', () => {

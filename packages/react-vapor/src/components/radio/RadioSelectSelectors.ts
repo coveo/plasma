@@ -8,7 +8,10 @@ const get = (state: IReactVaporState, {id}: {id: string}): IRadioSelectState => 
     return _.findWhere(state.radioSelects, {id}) || radioSelectInitialState;
 };
 
-const getValue = createSelector(get, (radioSelect: IRadioSelectState) => radioSelect && radioSelect.value);
+const getValue = createSelector(
+    get,
+    (radioSelect: IRadioSelectState) => radioSelect && radioSelect.value
+);
 
 export const RadioSelectSelectors = {
     get,

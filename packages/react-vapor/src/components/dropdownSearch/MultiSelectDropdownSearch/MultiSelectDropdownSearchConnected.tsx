@@ -43,7 +43,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IDropdownSearchOwnProps,
+    ownProps: IDropdownSearchOwnProps
 ): IDropdownSearchDispatchProps => ({
     onMount: () => dispatch(addMultiSelectDropdownSearch(ownProps.id, ownProps.defaultOptions)),
     onDestroy: () => dispatch(removeDropdownSearch(ownProps.id)),
@@ -55,8 +55,12 @@ const mapDispatchToProps = (
     onKeyDownFilterBox: (keyCode: number) => dispatch(keyDownMultiselectDropdownSearch(ownProps.id, keyCode)),
     onRemoveSelectedOption: (value: string) => dispatch(deselectOptionDropdownSearch(ownProps.id, value)),
     onRemoveAllSelectedOptions: () => dispatch(deselectAllOptionsMultiselectDropdownSearch(ownProps.id)),
-    updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options, undefined, false)),
+    updateOptions: (options: IDropdownOption[]) =>
+        dispatch(updateOptionsDropdownSearch(ownProps.id, options, undefined, false)),
 });
 
-export const MultiSelectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(MultiSelectDropdownSearch);
+export const MultiSelectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(MultiSelectDropdownSearch);

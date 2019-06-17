@@ -103,7 +103,11 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.previous-option').simulate('click');
 
-            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1))).toBe(true);
+            expect(
+                store.isActionDispatched(
+                    changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1)
+                )
+            ).toBe(true);
         });
 
         it('should dispatch a changeOptionsCycle by wrapping around when at max and the user press the next button', () => {

@@ -13,7 +13,10 @@ export interface IFilterState {
 export const filterBoxInitialState: IFilterState = {id: undefined, filterText: undefined};
 export const filtersInitialState: IFilterState[] = [];
 
-export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, action: IReduxAction<IReduxActionsPayload>): IFilterState => {
+export const filterBoxReducer = (
+    state: IFilterState = filterBoxInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IFilterState => {
     if (state.id !== action.payload.id && action.type !== FilterActions.addFilter) {
         return state;
     }
@@ -39,9 +42,9 @@ export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, ac
             return cast.isOpen === true || _.isUndefined(cast.isOpen)
                 ? state
                 : {
-                    id: state.id,
-                    filterText: '',
-                };
+                      id: state.id,
+                      filterText: '',
+                  };
         default:
             return state;
     }
@@ -49,7 +52,7 @@ export const filterBoxReducer = (state: IFilterState = filterBoxInitialState, ac
 
 export const filterBoxesReducer = (
     state: IFilterState[] = filtersInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IFilterState[] => {
     switch (action.type) {
         case ListBoxActions.select:
@@ -57,10 +60,7 @@ export const filterBoxesReducer = (
         case FilterActions.filterThrough:
             return state.map((filterBox) => filterBoxReducer(filterBox, action));
         case FilterActions.addFilter:
-            return [
-                ...state,
-                filterBoxReducer(undefined, action),
-            ];
+            return [...state, filterBoxReducer(undefined, action)];
         case FilterActions.removeFilter:
             return _.reject(state, (filterBox: IFilterState) => action.payload.id === filterBox.id);
         default:

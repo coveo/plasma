@@ -1,6 +1,10 @@
 import {TableSortingOrder} from '../TableConstants';
 import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from '../TableHeaderCellActions';
-import {tableHeaderCellReducer, tableHeaderCellsInitialState, tableHeaderCellsReducer} from '../TableHeaderCellReducers';
+import {
+    tableHeaderCellReducer,
+    tableHeaderCellsInitialState,
+    tableHeaderCellsReducer,
+} from '../TableHeaderCellReducers';
 import {getNextTableSortingOrder} from '../TableUtils';
 
 describe('tableHeaderCellsReducer', () => {
@@ -25,8 +29,12 @@ describe('tableHeaderCellsReducer', () => {
         const newState = {
             [testHeaderCell.id]: testHeaderCell,
         };
-        expect(tableHeaderCellsReducer(undefined, addHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId)))
-            .toEqual(newState);
+        expect(
+            tableHeaderCellsReducer(
+                undefined,
+                addHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId)
+            )
+        ).toEqual(newState);
     });
 
     it('should return the state with the new header cell in it on TableHeaderCellActions.remove', () => {
@@ -35,8 +43,7 @@ describe('tableHeaderCellsReducer', () => {
         };
 
         const nextState = {};
-        expect(tableHeaderCellsReducer(currentState, removeHeaderCell(testHeaderCell.id)))
-            .toEqual(nextState);
+        expect(tableHeaderCellsReducer(currentState, removeHeaderCell(testHeaderCell.id))).toEqual(nextState);
     });
 
     describe('on TableHeaderCellActions.sort', () => {
@@ -48,8 +55,12 @@ describe('tableHeaderCellsReducer', () => {
             const nextState = {
                 [testHeaderCell.id]: {...testHeaderCell, sorted: getNextTableSortingOrder(testHeaderCell.sorted)},
             };
-            expect(tableHeaderCellsReducer(currentState, sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId)))
-                .toEqual(nextState);
+            expect(
+                tableHeaderCellsReducer(
+                    currentState,
+                    sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, testHeaderCell.tableId)
+                )
+            ).toEqual(nextState);
         });
 
         it('should modify the sorted prop to UNSORTED if the header cell have a different id and and a similar tableId as the ones in the payload', () => {
@@ -60,8 +71,12 @@ describe('tableHeaderCellsReducer', () => {
             const nextState = {
                 [testHeaderCell.id]: {...testHeaderCell, sorted: TableSortingOrder.UNSORTED},
             };
-            expect(tableHeaderCellsReducer(currentState, sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, testHeaderCell.tableId)))
-                .toEqual(nextState);
+            expect(
+                tableHeaderCellsReducer(
+                    currentState,
+                    sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, testHeaderCell.tableId)
+                )
+            ).toEqual(nextState);
         });
 
         it('should not modify the sorted prop of the header cell having an identical id but a different tableId', () => {
@@ -69,8 +84,12 @@ describe('tableHeaderCellsReducer', () => {
                 [testHeaderCell.id]: testHeaderCell,
             };
 
-            expect(tableHeaderCellsReducer(currentState, sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, 'differentTableId')))
-                .toEqual(currentState);
+            expect(
+                tableHeaderCellsReducer(
+                    currentState,
+                    sortFromHeaderCell(testHeaderCell.id, testHeaderCell.attributeToSort, 'differentTableId')
+                )
+            ).toEqual(currentState);
         });
 
         it('should not modify the sorted prop of the header cell having a different id and a different tableId', () => {
@@ -78,8 +97,12 @@ describe('tableHeaderCellsReducer', () => {
                 [testHeaderCell.id]: testHeaderCell,
             };
 
-            expect(tableHeaderCellsReducer(currentState, sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, 'differentTableId')))
-                .toEqual(currentState);
+            expect(
+                tableHeaderCellsReducer(
+                    currentState,
+                    sortFromHeaderCell('differentId', testHeaderCell.attributeToSort, 'differentTableId')
+                )
+            ).toEqual(currentState);
         });
     });
 });

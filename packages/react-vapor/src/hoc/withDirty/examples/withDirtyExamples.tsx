@@ -11,11 +11,11 @@ class ComponentWithDirtyExample extends React.Component<IWithDirtyProps> {
 
     render() {
         return (
-            <div className='mt2'>
-                <div className='mb2'>
+            <div className="mt2">
+                <div className="mb2">
                     <Input
-                        id='input'
-                        labelTitle='Enter something, go ahead, make me dirty...'
+                        id="input"
+                        labelTitle="Enter something, go ahead, make me dirty..."
                         onChange={() => this.props.toggleIsDirty(true)}
                     />
                 </div>
@@ -25,6 +25,7 @@ class ComponentWithDirtyExample extends React.Component<IWithDirtyProps> {
     }
 }
 
-export const ComponentWithDirtyExampleHOC = withDirty(
-    {id: ComponentWithDirtyExample.ID, showDirty: (isDirty: boolean) => isDirty && <div className='mt2'>You did it</div>},
-)(ComponentWithDirtyExample);
+export const ComponentWithDirtyExampleHOC = withDirty({
+    id: ComponentWithDirtyExample.ID,
+    showDirty: (isDirty: boolean) => isDirty && <div className="mt2">You did it</div>,
+})(ComponentWithDirtyExample);

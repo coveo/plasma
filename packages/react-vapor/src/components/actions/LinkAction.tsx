@@ -5,10 +5,9 @@ import {Action, IBasicActionProps} from './Action';
 export interface ILinkActionProps extends React.ClassAttributes<LinkAction>, IBasicActionProps {}
 
 export class LinkAction extends React.Component<ILinkActionProps> {
-
     render() {
         const actionClasses: string = classNames({
-            'enabled': this.props.action.enabled,
+            enabled: this.props.action.enabled,
             'state-disabled': !this.props.action.enabled && !this.props.action.hideDisabled,
             'inline-flex flex-center': !this.props.simple,
         });
@@ -21,8 +20,6 @@ export class LinkAction extends React.Component<ILinkActionProps> {
             opts.rel = 'noopener noreferrer';
         }
 
-        return (
-            <a className={actionClasses} href={href} title={this.props.action.name} {...opts} />
-        );
+        return <a className={actionClasses} href={href} title={this.props.action.name} {...opts} />;
     }
 }

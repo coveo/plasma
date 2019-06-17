@@ -3,7 +3,11 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {
-    DESCRIPTION_LABEL, ERROR_CODE_LABEL, IErrorSection, ITableErrorProps, TableError,
+    DESCRIPTION_LABEL,
+    ERROR_CODE_LABEL,
+    IErrorSection,
+    ITableErrorProps,
+    TableError,
     TROUBLESHOOTING_LABEL,
 } from '../TableError';
 
@@ -19,11 +23,7 @@ describe('Tables', () => {
     describe('<TableError />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <TableError
-                        error={error}
-                    />,
-                );
+                shallow(<TableError error={error} />);
             }).not.toThrow();
         });
     });
@@ -32,12 +32,7 @@ describe('Tables', () => {
         let tableError: ReactWrapper<ITableErrorProps, any>;
 
         beforeEach(() => {
-            tableError = mount(
-                <TableError
-                    error={error}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            tableError = mount(<TableError error={error} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

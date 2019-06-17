@@ -27,16 +27,17 @@ export class RadioSelectExample extends React.Component<IRadioSelectExampleProps
 
     render() {
         return (
-            <div className='form-group'>
-                <label className='form-control-label'>A Radio Select</label>
+            <div className="form-group">
+                <label className="form-control-label">A Radio Select</label>
                 <RadioSelect
                     value={this.state.value}
-                    onChange={((value) => this.handleChange(value))}
-                    disabled={this.props.disabled}>
-                    <Radio id='Option1' name='enabledOptions' value='blue'>
+                    onChange={(value) => this.handleChange(value)}
+                    disabled={this.props.disabled}
+                >
+                    <Radio id="Option1" name="enabledOptions" value="blue">
                         <Label>Blue</Label>
                     </Radio>
-                    <Radio id='Option2' name='enabledOptions' value='green'>
+                    <Radio id="Option2" name="enabledOptions" value="green">
                         <Label>Green</Label>
                     </Radio>
                 </RadioSelect>

@@ -27,14 +27,21 @@ const defaultSort = () => 0;
 
 export type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps & ITableWithSortProps>;
 
-export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) => (Component: SortableTableComponent): SortableTableComponent => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithSortStateProps | ITableHOCOwnProps => {
+export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) => (
+    Component: SortableTableComponent
+): SortableTableComponent => {
+    const mapStateToProps = (
+        state: IReactVaporState,
+        ownProps: ITableHOCOwnProps
+    ): ITableWithSortStateProps | ITableHOCOwnProps => {
         const config = HocUtils.supplyConfig(supplier);
         const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);
         const sort = config.sort || defaultSort;
         if (tableSort && ownProps.data) {
             return {
-                data: config.isServer ? ownProps.data : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
+                data: config.isServer
+                    ? ownProps.data
+                    : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
                 sortKey: tableSort && tableSort.id,
                 isAsc: tableSort && tableSort.isAsc,
             };
@@ -44,7 +51,6 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) =>
 
     @ReduxConnect(mapStateToProps)
     class TableWithSort extends React.Component<ITableHOCOwnProps & ITableWithSortProps> {
-
         componentDidUpdate(prevProps: ITableWithSortProps) {
             if (prevProps.sortKey !== this.props.sortKey || prevProps.isAsc !== this.props.isAsc) {
                 callIfDefined(this.props.onUpdate);
@@ -53,11 +59,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) =>
 
         render() {
             const newProps = {..._.omit(this.props, [...TableWithSortPropsToOmit])};
-            return (
-                <Component {...newProps}>
-                    {this.props.children}
-                </Component>
-            );
+            return <Component {...newProps}>{this.props.children}</Component>;
         }
     }
 

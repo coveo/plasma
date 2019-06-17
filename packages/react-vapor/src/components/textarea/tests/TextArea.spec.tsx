@@ -14,9 +14,7 @@ describe('TextArea', () => {
     describe('<TextArea />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <TextArea id='textarea-id' />,
-                );
+                shallow(<TextArea id="textarea-id" />);
             }).not.toThrow();
         });
     });
@@ -26,10 +24,7 @@ describe('TextArea', () => {
         let textArea: ReactWrapper<HTMLAttributes, any>;
 
         beforeEach(() => {
-            wrapper = mount(
-                <TextArea id='textarea-id' />,
-                {attachTo: document.getElementById('App')},
-            );
+            wrapper = mount(<TextArea id="textarea-id" />, {attachTo: document.getElementById('App')});
 
             textArea = wrapper.find('textarea').first();
         });
@@ -101,7 +96,10 @@ describe('TextArea', () => {
         it('should call prop onMount on mount', () => {
             const onMount = jasmine.createSpy('onMount');
 
-            wrapper.setProps({onMount}).unmount().mount();
+            wrapper
+                .setProps({onMount})
+                .unmount()
+                .mount();
 
             expect(onMount).toHaveBeenCalledTimes(1);
         });
@@ -120,12 +118,13 @@ describe('TextArea', () => {
 
             const getTextAreaStateFromId = (id: string): ITextAreaState => findWhere(store.getState().textAreas, {id});
 
-            const mountComponentWithProps = (props: ITextAreaProps) => mount(
-                <Provider store={store}>
-                    <TextAreaConnected {...props} />
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            );
+            const mountComponentWithProps = (props: ITextAreaProps) =>
+                mount(
+                    <Provider store={store}>
+                        <TextAreaConnected {...props} />
+                    </Provider>,
+                    {attachTo: document.getElementById('App')}
+                );
 
             beforeEach(() => {
                 store = TestUtils.buildStore();
@@ -139,15 +138,27 @@ describe('TextArea', () => {
 
             describe('dispatch props', () => {
                 it('should not throw when calling onMount with basic props', () => {
-                    expect(() => mountComponentWithProps(textAreaProps).find(TextArea).prop('onMount')()).not.toThrow();
+                    expect(() =>
+                        mountComponentWithProps(textAreaProps)
+                            .find(TextArea)
+                            .prop('onMount')()
+                    ).not.toThrow();
                 });
 
                 it('should not throw when calling onUnmount', () => {
-                    expect(() => mountComponentWithProps(textAreaProps).find(TextArea).prop('onUnmount')()).not.toThrow();
+                    expect(() =>
+                        mountComponentWithProps(textAreaProps)
+                            .find(TextArea)
+                            .prop('onUnmount')()
+                    ).not.toThrow();
                 });
 
                 it('should not throw when calling onChange', () => {
-                    expect(() => mountComponentWithProps(textAreaProps).find(TextArea).prop('onChange')({target: {value: 'some value'}} as any)).not.toThrow();
+                    expect(() =>
+                        mountComponentWithProps(textAreaProps)
+                            .find(TextArea)
+                            .prop('onChange')({target: {value: 'some value'}} as any)
+                    ).not.toThrow();
                 });
             });
 

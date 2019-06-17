@@ -8,35 +8,28 @@ import Material from '../components/cards/Material';
 import Wizard from '../components/cards/Wizard';
 
 const Cards = () => {
-
     return (
         <Layout>
             <Component
-                key='flippable'
-                id='flippable'
+                key="flippable"
+                id="flippable"
                 title="Flippable"
-                usage='A compact and interactive way of displaying content'
+                usage="A compact and interactive way of displaying content"
                 stylesheet="scss/components/flippable.scss"
                 withSource
             >
                 <Flippable />
             </Component>
 
-            <Component
-                key='home'
-                id='home'
-                title="Home"
-                stylesheet="scss/components/home-card.scss"
-                withSource
-            >
+            <Component key="home" id="home" title="Home" stylesheet="scss/components/home-card.scss" withSource>
                 <Home />
             </Component>
 
             <Component
-                key='logo'
-                id='logo'
+                key="logo"
+                id="logo"
                 title="Logo"
-                usage='Logo driven way of displaying information'
+                usage="Logo driven way of displaying information"
                 stylesheet="scss/components/logo-card.scss"
                 withSource
             >
@@ -44,10 +37,10 @@ const Cards = () => {
             </Component>
 
             <Component
-                key='limit'
-                id='limit'
+                key="limit"
+                id="limit"
                 title="Limit"
-                usage='Visually show the usage of a limit'
+                usage="Visually show the usage of a limit"
                 stylesheet="scss/components/limit-box.scss"
                 withSource
             >
@@ -55,10 +48,10 @@ const Cards = () => {
             </Component>
 
             <Component
-                key='material'
-                id='material'
+                key="material"
+                id="material"
                 title="Material"
-                usage='A container to display content'
+                usage="A container to display content"
                 stylesheet="scss/components/material-card.scss"
                 withSource
             >
@@ -66,10 +59,10 @@ const Cards = () => {
             </Component>
 
             <Component
-                key='wizard'
-                id='wizard'
+                key="wizard"
+                id="wizard"
                 title="Wizard"
-                usage='Use it with configuration wizards'
+                usage="Use it with configuration wizards"
                 stylesheet="scss/components/wizard-card.scss"
                 withSource
             >

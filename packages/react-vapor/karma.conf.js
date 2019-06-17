@@ -29,10 +29,7 @@ module.exports = (config) => {
 
         coverageReporter: {
             dir: 'coverage',
-            reporters: [
-                {type: 'json', subdir: '.', file: 'coverage.json'},
-                {type: 'text-summary'},
-            ],
+            reporters: [{type: 'json', subdir: '.', file: 'coverage.json'}, {type: 'text-summary'}],
         },
 
         client: {

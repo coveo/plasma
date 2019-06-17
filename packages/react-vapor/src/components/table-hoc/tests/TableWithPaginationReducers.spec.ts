@@ -45,10 +45,12 @@ describe('Table HOC', () => {
                 {
                     id: 'some-table-header-1',
                     count: 0,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     count: 5,
-                }, {
+                },
+                {
                     id: 'some-table-header-3',
                     count: 0,
                 },
@@ -66,7 +68,8 @@ describe('Table HOC', () => {
                 {
                     id: 'some-table-header-1',
                     count: 0,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     count: 0,
                 },

@@ -29,19 +29,41 @@ export default function Pagination() {
                 <div className="pagination">
                     <div className="flat-select">
                         <a className="flat-select-option mod-link disabled" data-page="-1">
-                            <Svg name={VaporSVG.svg.arrowLeftRounded.name} svgClass='icon icon-small mod-lg' className='pagination-icon' />
+                            <Svg
+                                name={VaporSVG.svg.arrowLeftRounded.name}
+                                svgClass="icon icon-small mod-lg"
+                                className="pagination-icon"
+                            />
                             Previous
                         </a>
-                        <a className="flat-select-option" data-page="0">1</a>
-                        <a className="flat-select-option selectable" data-page="1">2</a>
-                        <a className="flat-select-option selectable" data-page="2">3</a>
-                        <a className="flat-select-option selectable" data-page="3">4</a>
-                        <a className="flat-select-option selectable" data-page="4">5</a>
-                        <a className="flat-select-option selectable" data-page="5">6</a>
-                        <a className="flat-select-option selectable" data-page="6">7</a>
+                        <a className="flat-select-option" data-page="0">
+                            1
+                        </a>
+                        <a className="flat-select-option selectable" data-page="1">
+                            2
+                        </a>
+                        <a className="flat-select-option selectable" data-page="2">
+                            3
+                        </a>
+                        <a className="flat-select-option selectable" data-page="3">
+                            4
+                        </a>
+                        <a className="flat-select-option selectable" data-page="4">
+                            5
+                        </a>
+                        <a className="flat-select-option selectable" data-page="5">
+                            6
+                        </a>
+                        <a className="flat-select-option selectable" data-page="6">
+                            7
+                        </a>
                         <a className="flat-select-option mod-link selectable" data-page="1">
                             Next
-                            <Svg name={VaporSVG.svg.arrowRightRounded.name} svgClass='icon icon-small mod-lg' className='pagination-icon' />
+                            <Svg
+                                name={VaporSVG.svg.arrowRightRounded.name}
+                                svgClass="icon icon-small mod-lg"
+                                className="pagination-icon"
+                            />
                         </a>
                     </div>
                 </div>
@@ -72,19 +94,41 @@ export default function Pagination() {
                 <div className="pagination">
                     <div className="flat-select">
                         <a className="flat-select-option mod-link disabled" data-page="-1">
-                            <Svg name={VaporSVG.svg.arrowLeftRounded.name} svgClass='icon icon-small mod-lg' className='pagination-icon' />
+                            <Svg
+                                name={VaporSVG.svg.arrowLeftRounded.name}
+                                svgClass="icon icon-small mod-lg"
+                                className="pagination-icon"
+                            />
                             Previous
                         </a>
-                        <a className="flat-select-option" data-page="0">1</a>
-                        <a className="flat-select-option selectable" data-page="1">2</a>
-                        <a className="flat-select-option selectable" data-page="2">3</a>
-                        <a className="flat-select-option selectable" data-page="3">4</a>
-                        <a className="flat-select-option selectable" data-page="4">5</a>
-                        <a className="flat-select-option selectable" data-page="5">6</a>
-                        <a className="flat-select-option selectable" data-page="6">7</a>
+                        <a className="flat-select-option" data-page="0">
+                            1
+                        </a>
+                        <a className="flat-select-option selectable" data-page="1">
+                            2
+                        </a>
+                        <a className="flat-select-option selectable" data-page="2">
+                            3
+                        </a>
+                        <a className="flat-select-option selectable" data-page="3">
+                            4
+                        </a>
+                        <a className="flat-select-option selectable" data-page="4">
+                            5
+                        </a>
+                        <a className="flat-select-option selectable" data-page="5">
+                            6
+                        </a>
+                        <a className="flat-select-option selectable" data-page="6">
+                            7
+                        </a>
                         <a className="flat-select-option mod-link selectable" data-page="1">
                             Next
-                            <Svg name={VaporSVG.svg.arrowRightRounded.name} svgClass='icon icon-small mod-lg' className='pagination-icon' />
+                            <Svg
+                                name={VaporSVG.svg.arrowRightRounded.name}
+                                svgClass="icon icon-small mod-lg"
+                                className="pagination-icon"
+                            />
                         </a>
                     </div>
                 </div>

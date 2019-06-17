@@ -6,8 +6,12 @@ export interface ColorProps {
     color: string;
 }
 
-// tslint:disable-next-line
-export const VaporColors: Record<string, string> = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
+// tslint:disable
+export const VaporColors: Record<
+    string,
+    string
+> = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
+// tslint:enable
 
 export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
@@ -16,7 +20,7 @@ export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivE
 
     render() {
         const isHex = _.keys(VaporColors).indexOf(this.props.color) === -1;
-        let colorStyle: React.CSSProperties = isHex && {backgroundColor: this.props.color} || {};
+        let colorStyle: React.CSSProperties = (isHex && {backgroundColor: this.props.color}) || {};
         if (this.props.style) {
             colorStyle = {...colorStyle, ...this.props.style};
         }
@@ -27,7 +31,9 @@ export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivE
                 className={classNames(this.props.className, {
                     [`bg-${this.props.color}`]: !isHex,
                 })}
-            >{this.props.children}</div>
+            >
+                {this.props.children}
+            </div>
         );
     }
 }

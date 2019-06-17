@@ -10,7 +10,14 @@ describe('<XYChart />', () => {
             shallow(<XYChart height={10} width={50} series={[]} />);
             shallow(<XYChart height={10} width={50} series={XYChartContextMock.series} />);
             shallow(<XYChart height={10} width={50} series={XYChartContextMock.series} padding={10} />);
-            shallow(<XYChart height={10} width={50} series={XYChartContextMock.series.concat({label: 'name', data: []})} padding={{top: 10}} />);
+            shallow(
+                <XYChart
+                    height={10}
+                    width={50}
+                    series={XYChartContextMock.series.concat({label: 'name', data: []})}
+                    padding={{top: 10}}
+                />
+            );
             shallow(
                 <XYChart
                     height={10}
@@ -21,7 +28,7 @@ describe('<XYChart />', () => {
                     yFormat={(value: number) => value * 10 + '%'}
                     xTicksCount={5}
                     yTicksCount={10}
-                />,
+                />
             );
         }).not.toThrow();
     });
@@ -35,7 +42,9 @@ describe('<XYChart />', () => {
 
     it('should render a context provider', () => {
         const colorPattern = ['red', 'blue', 'green'];
-        const component = shallow(<XYChart height={100} width={100} series={XYChartContextMock.series} colorPattern={colorPattern} />);
+        const component = shallow(
+            <XYChart height={100} width={100} series={XYChartContextMock.series} colorPattern={colorPattern} />
+        );
 
         const provider = component.find(XYChartContext.Provider);
         const context = provider.prop('value');
@@ -46,12 +55,7 @@ describe('<XYChart />', () => {
         const expectedWidth = 10;
         const expectedHeight = 50;
         const component = shallow(
-            <XYChart
-                height={expectedHeight}
-                width={expectedWidth}
-                series={XYChartContextMock.series}
-                padding={0}
-            />,
+            <XYChart height={expectedHeight} width={expectedWidth} series={XYChartContextMock.series} padding={0} />
         );
 
         const svg = component.find('svg');
@@ -65,12 +69,7 @@ describe('<XYChart />', () => {
         const initialHeight = 50;
         const padding = 5;
         const component = shallow(
-            <XYChart
-                height={initialHeight}
-                width={initialWidth}
-                series={XYChartContextMock.series}
-                padding={padding}
-            />,
+            <XYChart height={initialHeight} width={initialWidth} series={XYChartContextMock.series} padding={padding} />
         );
 
         const svg = component.find('svg');
@@ -87,7 +86,7 @@ describe('<XYChart />', () => {
                 width={200}
                 series={XYChartContextMock.series}
                 padding={{left: expectedLeftPadding, top: expectedTopPadding}}
-            />,
+            />
         );
 
         const g = component.find('g');

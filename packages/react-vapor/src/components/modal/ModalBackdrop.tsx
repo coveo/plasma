@@ -19,8 +19,10 @@ export interface IModalBackdropDispatchProps {
     onClick?: () => void;
 }
 
-export interface IModalBackdropProps extends IModalBackdropOwnProps, IModalBackdropStateProps, IModalBackdropDispatchProps {
-}
+export interface IModalBackdropProps
+    extends IModalBackdropOwnProps,
+        IModalBackdropStateProps,
+        IModalBackdropDispatchProps {}
 
 const ModalBackdropPropsToOmit = keys<IModalBackdropProps>();
 
@@ -45,7 +47,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
     // the last opened modal after the last one was closed on escape
     componentDidUpdate() {
         this.canClose = false;
-        _.defer(() => this.canClose = this.props.lastOpened);
+        _.defer(() => (this.canClose = this.props.lastOpened));
     }
 
     componentWillUnmount() {
@@ -59,17 +61,18 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
     }
 
     render() {
-        const classes = classNames(
-            'modal-backdrop',
-            {
-                'closed': !this.props.display,
-                'prompt-backdrop': this.props.isPrompt,
-            },
-        );
+        const classes = classNames('modal-backdrop', {
+            closed: !this.props.display,
+            'prompt-backdrop': this.props.isPrompt,
+        });
 
         return (
-            <div {..._.omit(this.props, ModalBackdropPropsToOmit)} className={classNames(this.props.className, classes)} onClick={() => this.handleClick()}>
-                <div className='mask'></div>
+            <div
+                {..._.omit(this.props, ModalBackdropPropsToOmit)}
+                className={classNames(this.props.className, classes)}
+                onClick={() => this.handleClick()}
+            >
+                <div className="mask"></div>
             </div>
         );
     }
@@ -80,5 +83,5 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
             e.preventDefault();
             this.handleClick();
         }
-    }
+    };
 }

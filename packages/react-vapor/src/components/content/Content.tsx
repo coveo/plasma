@@ -13,7 +13,6 @@ export interface IContentProps {
  * @deprecated Use React.ReactNode instead.
  */
 export class Content extends React.Component<IContentProps, {}> {
-
     static defaultProps: Partial<IContentProps> = {
         classes: [],
         tag: 'span',

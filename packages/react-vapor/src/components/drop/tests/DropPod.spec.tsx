@@ -6,11 +6,9 @@ import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from '../DropPod';
 
 describe('DropPod', () => {
-
     const defaultDrop: any = null;
 
     describe('<DropPod />', () => {
-
         const defaultParentOffset = {
             bottom: 400,
             top: 50,
@@ -25,26 +23,26 @@ describe('DropPod', () => {
             const bottomStyle = _.isEmpty(styleCalculated)
                 ? {}
                 : {
-                    style: styleCalculated,
-                    lastPosition: {
-                        position: DropPodPosition.bottom,
-                        orientation: DropPodPosition.left,
-                    },
-                };
+                      style: styleCalculated,
+                      lastPosition: {
+                          position: DropPodPosition.bottom,
+                          orientation: DropPodPosition.left,
+                      },
+                  };
             bottomPositionCalculatedSpy = spyOn(DomPositionCalculator, 'bottom').and.returnValue(bottomStyle);
             topPositionCalculatedSpy = spyOn(DomPositionCalculator, 'top').and.returnValue({});
             spyOn(React, 'createRef').and.returnValue({
                 current: {
-                    getBoundingClientRect: () => (dropOffset),
+                    getBoundingClientRect: () => dropOffset,
                 } as any,
             });
 
             buttonRef = {
                 current: {
                     closest: () => ({
-                        getBoundingClientRect: () => (parentOffset),
+                        getBoundingClientRect: () => parentOffset,
                     }),
-                    getBoundingClientRect: () => (buttonOffset),
+                    getBoundingClientRect: () => buttonOffset,
                 },
             } as any;
 
@@ -60,11 +58,7 @@ describe('DropPod', () => {
         it('should mount and unmount without errors', () => {
             let wrapper: any;
             expect(() => {
-                wrapper = shallow(
-                    <DropPod
-                        renderDrop={() => defaultDrop}
-                        ref={buttonRef}
-                    />, {}).dive();
+                wrapper = shallow(<DropPod renderDrop={() => defaultDrop} ref={buttonRef} />, {}).dive();
             }).not.toThrow('mount');
 
             expect(() => {
@@ -73,14 +67,11 @@ describe('DropPod', () => {
         });
 
         describe('once mounted', () => {
-
             let wrapper: any;
-            const shallowDropPod = (props: IDropPodProps = {renderDrop: () => defaultDrop}): ShallowWrapper<IDropPodProps> =>
-                wrapper = shallowWithState(
-                    <DropPod
-                        ref={buttonRef}
-                        {...props}
-                    />, {});
+            const shallowDropPod = (
+                props: IDropPodProps = {renderDrop: () => defaultDrop}
+            ): ShallowWrapper<IDropPodProps> =>
+                (wrapper = shallowWithState(<DropPod ref={buttonRef} {...props} />, {}));
 
             afterEach(() => {
                 if (wrapper) {
@@ -113,7 +104,7 @@ describe('DropPod', () => {
 
                 it('should set the position absolute on style object', () => {
                     shallowDropPod({
-                        renderDrop: (style, dropRef) => styleRendered = style,
+                        renderDrop: (style, dropRef) => (styleRendered = style),
                     }).dive();
 
                     expect(styleRendered.position).toBe('absolute');
@@ -121,7 +112,7 @@ describe('DropPod', () => {
 
                 it('should set the display inline-block on style object', () => {
                     shallowDropPod({
-                        renderDrop: (style, dropRef) => styleRendered = style,
+                        renderDrop: (style, dropRef) => (styleRendered = style),
                     }).dive();
 
                     expect(styleRendered.display).toBe('inline-block');
@@ -129,24 +120,26 @@ describe('DropPod', () => {
 
                 it('should set the visibility hidden if the drop cant be show', () => {
                     shallowDropPod({
-                        renderDrop: (style, dropRef) => styleRendered = style,
+                        renderDrop: (style, dropRef) => (styleRendered = style),
                     }).dive();
 
                     expect(styleRendered.visibility).toBe('hidden');
                 });
 
                 describe('calculate style position for the dropPod', () => {
-
-                    const shallowDropPodForStyle = (props: Partial<IDropPodProps> = {}) => wrapper = shallow(
-                        <DropPod
-                            ref={buttonRef}
-                            renderDrop={(style) => {
-                                styleRendered = style;
-                                return null;
-                            }}
-                            isOpen
-                            {...props}
-                        />, {}).dive();
+                    const shallowDropPodForStyle = (props: Partial<IDropPodProps> = {}) =>
+                        (wrapper = shallow(
+                            <DropPod
+                                ref={buttonRef}
+                                renderDrop={(style) => {
+                                    styleRendered = style;
+                                    return null;
+                                }}
+                                isOpen
+                                {...props}
+                            />,
+                            {}
+                        ).dive());
 
                     it('should set the visibility visible if the drop can be show', () => {
                         setupReference();
@@ -163,16 +156,20 @@ describe('DropPod', () => {
                     });
 
                     it('should set position with bottom and orientation with left if the position sent is not available', () => {
-                        setupReference({
-                            top: 100,
-                            bottom: 500,
-                        }, {
+                        setupReference(
+                            {
+                                top: 100,
+                                bottom: 500,
+                            },
+                            {
                                 width: 50,
                                 height: 50,
-                            }, {
+                            },
+                            {
                                 left: 100,
                                 top: 200,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: ['universe'],
                         });
@@ -192,15 +189,18 @@ describe('DropPod', () => {
                     });
 
                     it('should call DomPositionCalculator for each position in the array and one more for the last position bottom', () => {
-                        setupReference({
-                            top: 100,
-                            bottom: 500,
-                            left: 0,
-                            right: 500,
-                        }, {
+                        setupReference(
+                            {
+                                top: 100,
+                                bottom: 500,
+                                left: 0,
+                                right: 500,
+                            },
+                            {
                                 width: 50,
                                 height: 50,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom, DropPodPosition.top],
                         });
@@ -210,16 +210,20 @@ describe('DropPod', () => {
                     });
 
                     it('should set top with the minY from the bounding limit if the dropOffset top is smaller than minY', () => {
-                        setupReference({
-                            top: 100,
-                            bottom: 500,
-                        }, {
+                        setupReference(
+                            {
+                                top: 100,
+                                bottom: 500,
+                            },
+                            {
                                 width: 50,
                                 height: 50,
-                            }, {
+                            },
+                            {
                                 top: 20,
                                 left: 100,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -228,16 +232,20 @@ describe('DropPod', () => {
                     });
 
                     it('should set top with the minY from the bounding limit if the dropOffset top calculated is equal than minY', () => {
-                        setupReference({
-                            top: 100,
-                            bottom: 500,
-                        }, {
+                        setupReference(
+                            {
+                                top: 100,
+                                bottom: 500,
+                            },
+                            {
                                 width: 50,
                                 height: 50,
-                            }, {
+                            },
+                            {
                                 top: 100,
                                 left: 100,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -245,55 +253,65 @@ describe('DropPod', () => {
                         expect(styleRendered.top).toBe(100);
                     });
 
-                    it('should set top with max without drop height from the calculated bounding limit if the dropOffset is bigger than maxY',
-                        () => {
-                            setupReference({
+                    it('should set top with max without drop height from the calculated bounding limit if the dropOffset is bigger than maxY', () => {
+                        setupReference(
+                            {
                                 top: 100,
                                 bottom: 500,
-                            }, {
-                                    width: 50,
-                                    height: 50,
-                                }, {
-                                    top: 600,
-                                    left: 100,
-                                });
-                            shallowDropPodForStyle({
-                                positions: [DropPodPosition.bottom],
-                            });
-
-                            expect(styleRendered.top).toBe(450);
-                        });
-
-                    it('should set top with max without drop height from the calculated bounding limit if the dropOffset is equal than maxY',
-                        () => {
-                            setupReference({
-                                top: 100,
-                                bottom: 500,
-                            }, {
-                                    width: 50,
-                                    height: 50,
-                                }, {
-                                    top: 450,
-                                    left: 100,
-                                });
-                            shallowDropPodForStyle({
-                                positions: [DropPodPosition.bottom],
-                            });
-
-                            expect(styleRendered.top).toBe(450);
-                        });
-
-                    it('should set left with the minX from the bounding limit if the dropOffset is smaller than minX', () => {
-                        setupReference({
-                            left: 50,
-                            right: 500,
-                        }, {
+                            },
+                            {
                                 width: 50,
                                 height: 50,
-                            }, {
+                            },
+                            {
+                                top: 600,
+                                left: 100,
+                            }
+                        );
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
+                        });
+
+                        expect(styleRendered.top).toBe(450);
+                    });
+
+                    it('should set top with max without drop height from the calculated bounding limit if the dropOffset is equal than maxY', () => {
+                        setupReference(
+                            {
+                                top: 100,
+                                bottom: 500,
+                            },
+                            {
+                                width: 50,
+                                height: 50,
+                            },
+                            {
+                                top: 450,
+                                left: 100,
+                            }
+                        );
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
+                        });
+
+                        expect(styleRendered.top).toBe(450);
+                    });
+
+                    it('should set left with the minX from the bounding limit if the dropOffset is smaller than minX', () => {
+                        setupReference(
+                            {
+                                left: 50,
+                                right: 500,
+                            },
+                            {
+                                width: 50,
+                                height: 50,
+                            },
+                            {
                                 top: 100,
                                 left: 20,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -302,16 +320,20 @@ describe('DropPod', () => {
                     });
 
                     it('should set left with the minX from the bounding limit if the dropOffset is equal than minX', () => {
-                        setupReference({
-                            left: 50,
-                            right: 500,
-                        }, {
+                        setupReference(
+                            {
+                                left: 50,
+                                right: 500,
+                            },
+                            {
                                 width: 50,
                                 height: 50,
-                            }, {
+                            },
+                            {
                                 top: 100,
                                 left: 50,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                         });
@@ -319,60 +341,71 @@ describe('DropPod', () => {
                         expect(styleRendered.left).toBe(50);
                     });
 
-                    it('should set right with the maxX without drop width from the bounding limit if the dropOffset is bigger than maxX',
-                        () => {
-                            setupReference({
+                    it('should set right with the maxX without drop width from the bounding limit if the dropOffset is bigger than maxX', () => {
+                        setupReference(
+                            {
                                 left: 50,
                                 right: 500,
-                            }, {
-                                    width: 50,
-                                    height: 50,
-                                }, {
-                                    top: 100,
-                                    left: 550,
-                                });
-                            shallowDropPodForStyle({
-                                positions: [DropPodPosition.bottom],
-                            });
-
-                            expect(styleRendered.left).toBe(450);
+                            },
+                            {
+                                width: 50,
+                                height: 50,
+                            },
+                            {
+                                top: 100,
+                                left: 550,
+                            }
+                        );
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
                         });
 
-                    it('should set right with the maxX without drop width from the bounding limit if the dropOffset is equal than maxX',
-                        () => {
-                            setupReference({
+                        expect(styleRendered.left).toBe(450);
+                    });
+
+                    it('should set right with the maxX without drop width from the bounding limit if the dropOffset is equal than maxX', () => {
+                        setupReference(
+                            {
                                 left: 50,
                                 right: 500,
-                            }, {
-                                    width: 50,
-                                    height: 50,
-                                }, {
-                                    top: 100,
-                                    left: 450,
-                                });
-                            shallowDropPodForStyle({
-                                positions: [DropPodPosition.bottom],
-                            });
-
-                            expect(styleRendered.left).toBe(450);
+                            },
+                            {
+                                width: 50,
+                                height: 50,
+                            },
+                            {
+                                top: 100,
+                                left: 450,
+                            }
+                        );
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
                         });
+
+                        expect(styleRendered.left).toBe(450);
+                    });
 
                     it('should return style with the width equal than the button width if the prop hasSameWidth is set to true', () => {
-                        setupReference({
-                            left: 0,
-                            right: 1024,
-                            top: 0,
-                            bottom: 1024,
-                        }, {
+                        setupReference(
+                            {
+                                left: 0,
+                                right: 1024,
+                                top: 0,
+                                bottom: 1024,
+                            },
+                            {
                                 width: 50,
                                 height: 50,
                                 toJSON: () => ({}),
-                            }, {
+                            },
+                            {
                                 top: 100,
                                 left: 100,
-                            }, {
+                            },
+                            {
                                 width: 100,
-                            });
+                            }
+                        );
                         shallowDropPodForStyle({
                             positions: [DropPodPosition.bottom],
                             hasSameWidth: true,
@@ -382,7 +415,6 @@ describe('DropPod', () => {
                     });
 
                     describe('DomPositionCalculator', () => {
-
                         it('should be call with the buttonOffset, dropOffsetPrime, boundingLimit and the last position calculated', () => {
                             const parentOffset = {
                                 top: 10,
@@ -405,34 +437,34 @@ describe('DropPod', () => {
                                     top: 100,
                                     bottom: 100,
                                 },
-                                buttonOffset,
+                                buttonOffset
                             );
                             shallowDropPodForStyle({
                                 positions: [DropPodPosition.bottom],
                             });
 
-                            expect(bottomPositionCalculatedSpy).toHaveBeenCalledWith(buttonOffset, dropOffset, {
-                                maxY: 20,
-                                minY: 10,
-                                maxX: 20,
-                                minX: 10,
-                            }, {});
+                            expect(bottomPositionCalculatedSpy).toHaveBeenCalledWith(
+                                buttonOffset,
+                                dropOffset,
+                                {
+                                    maxY: 20,
+                                    minY: 10,
+                                    maxX: 20,
+                                    minX: 10,
+                                },
+                                {}
+                            );
                         });
                     });
                 });
 
                 describe('events', () => {
-
                     let RWrapper: ShallowWrapper;
 
                     it('should add events if the dropPod is open', () => {
                         const spy = spyOn(window, 'addEventListener');
 
-                        shallowWithState(
-                            <DropPod
-                                renderDrop={() => defaultDrop}
-                                isOpen={true}
-                            />, {}).dive();
+                        shallowWithState(<DropPod renderDrop={() => defaultDrop} isOpen={true} />, {}).dive();
 
                         expect(spy).toHaveBeenCalledTimes(2);
                     });
@@ -440,11 +472,7 @@ describe('DropPod', () => {
                     it('should not add events if the dropPod is close', () => {
                         const spy = spyOn(window, 'addEventListener');
 
-                        shallowWithState(
-                            <DropPod
-                                renderDrop={() => defaultDrop}
-                                isOpen={false}
-                            />, {}).dive();
+                        shallowWithState(<DropPod renderDrop={() => defaultDrop} isOpen={false} />, {}).dive();
 
                         expect(spy).toHaveBeenCalledTimes(0);
                     });
@@ -453,10 +481,9 @@ describe('DropPod', () => {
                         const spy = spyOn(window, 'removeEventListener');
 
                         RWrapper = shallowWithState(
-                            <DropPod
-                                renderDrop={() => defaultDrop}
-                                isOpen={false}
-                            />, {}).dive();
+                            <DropPod renderDrop={() => defaultDrop} isOpen={false} />,
+                            {}
+                        ).dive();
 
                         RWrapper.unmount();
 
@@ -467,10 +494,9 @@ describe('DropPod', () => {
                         const spy = spyOn(window, 'addEventListener');
 
                         RWrapper = shallowWithState(
-                            <DropPod
-                                renderDrop={() => defaultDrop}
-                                isOpen={false}
-                            />, {}).dive();
+                            <DropPod renderDrop={() => defaultDrop} isOpen={false} />,
+                            {}
+                        ).dive();
 
                         RWrapper.setProps({isOpen: true});
                         RWrapper.update();
@@ -482,10 +508,9 @@ describe('DropPod', () => {
                         const spy = spyOn(window, 'addEventListener');
 
                         RWrapper = shallowWithState(
-                            <DropPod
-                                renderDrop={() => defaultDrop}
-                                isOpen={false}
-                            />, {}).dive();
+                            <DropPod renderDrop={() => defaultDrop} isOpen={false} />,
+                            {}
+                        ).dive();
 
                         RWrapper.setProps({isOpen: false});
                         RWrapper.update();
@@ -497,10 +522,9 @@ describe('DropPod', () => {
                         const spy = spyOn(window, 'removeEventListener');
 
                         RWrapper = shallowWithState(
-                            <DropPod
-                                renderDrop={() => defaultDrop}
-                                isOpen={true}
-                            />, {}).dive();
+                            <DropPod renderDrop={() => defaultDrop} isOpen={true} />,
+                            {}
+                        ).dive();
 
                         RWrapper.setProps({isOpen: false});
                         RWrapper.update();

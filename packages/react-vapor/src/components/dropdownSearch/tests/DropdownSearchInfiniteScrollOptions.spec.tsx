@@ -2,7 +2,10 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as InfiniteScroll from 'react-infinite-scroll-component';
 
-import {DropdownSearchInfiniteScrollOptions, DropdownSearchInfiniteScrollOptionsProps} from '../DropdownSearchInfiniteScrollOptions';
+import {
+    DropdownSearchInfiniteScrollOptions,
+    DropdownSearchInfiniteScrollOptionsProps,
+} from '../DropdownSearchInfiniteScrollOptions';
 
 describe('DropdownSearchInfiniteScrollOptions', () => {
     let basicProps: DropdownSearchInfiniteScrollOptionsProps;
@@ -10,10 +13,7 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
     beforeEach(() => {
         basicProps = {
             onMouseEnter: jasmine.createSpy('onMouseEnter'),
-            options: [
-                <div key='1'>1</div>,
-                <div key='2'>2</div>,
-            ],
+            options: [<div key="1">1</div>, <div key="2">2</div>],
             ulElementRefFunction: jasmine.createSpy('refFunction'),
             infiniteScroll: {
                 dataLength: 42,
@@ -33,10 +33,9 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
         let infiniteScrollOptions: ReactWrapper<DropdownSearchInfiniteScrollOptionsProps, any>;
 
         beforeEach(() => {
-            infiniteScrollOptions = mount(
-                <DropdownSearchInfiniteScrollOptions {...basicProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            infiniteScrollOptions = mount(<DropdownSearchInfiniteScrollOptions {...basicProps} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {

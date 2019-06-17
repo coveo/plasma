@@ -27,7 +27,10 @@ export interface ISubNavigationItem {
     link?: string;
 }
 
-export interface ISubNavigationProps extends ISubNavigationOwnProps, ISubNavigationStateProps, ISubNavigationDispatchProps {}
+export interface ISubNavigationProps
+    extends ISubNavigationOwnProps,
+        ISubNavigationStateProps,
+        ISubNavigationDispatchProps {}
 
 const ISubNavigationPropsToOmit = keys<ISubNavigationProps>();
 
@@ -44,16 +47,12 @@ export class SubNavigation extends React.PureComponent<ISubNavigationProps & Rea
         const selected = this.props.selected || this.props.defaultSelected;
         const navProps = omit(this.props, ISubNavigationPropsToOmit);
         const items = map(this.props.items, ({id, link, label}: ISubNavigationItem) => (
-            <li
-                key={id}
-                className={classNames(
-                    'sub-navigation-item',
-                    {'mod-selected': id === selected},
-                )}>
+            <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selected})}>
                 <a
                     href={link || '#'}
-                    className='sub-navigation-item-link'
-                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleItemClick(e, id)}>
+                    className="sub-navigation-item-link"
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleItemClick(e, id)}
+                >
                     {label}
                 </a>
             </li>
@@ -61,9 +60,7 @@ export class SubNavigation extends React.PureComponent<ISubNavigationProps & Rea
 
         return (
             <nav {...navProps} className={classNames('sub-navigation', navProps.className)}>
-                <ul className='sub-navigation-items'>
-                    {items}
-                </ul>
+                <ul className="sub-navigation-items">{items}</ul>
             </nav>
         );
     }
@@ -71,5 +68,5 @@ export class SubNavigation extends React.PureComponent<ISubNavigationProps & Rea
     private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
         callIfDefined(this.props.onClickItem, id);
-    }
+    };
 }

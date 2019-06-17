@@ -7,7 +7,6 @@ export interface IPromptExamplesState {
 }
 
 export class ModalPromptExamples extends React.Component<any, IPromptExamplesState> {
-
     componentWillMount() {
         this.state = {isOpened: false};
     }
@@ -27,29 +26,24 @@ export class ModalPromptExamples extends React.Component<any, IPromptExamplesSta
 
     render() {
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>Modal prompt</label>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Modal prompt</label>
                     <div>
-                        <button
-                            className='btn mod-primary'
-                            onClick={() => this.openPrompt()}>
+                        <button className="btn mod-primary" onClick={() => this.openPrompt()}>
                             Open Prompt
-            </button>
+                        </button>
                         <ModalPrompt
-                            id='prompt-confirmation'
+                            id="prompt-confirmation"
                             isOpened={this.state.isOpened}
-                            message='This is the message.'
-                            confirmLabel='Confirm'
-                            title='Confirmation prompt'
+                            message="This is the message."
+                            confirmLabel="Confirm"
+                            title="Confirmation prompt"
                             onCancel={() => this.cancel()}
                             onConfirm={() => this.confirm()}
-                            cancelLabel='Cancel'
+                            cancelLabel="Cancel"
                         />
-                        <ModalBackdrop
-                            display={this.state.isOpened}
-                            onClick={() => this.cancel()}
-                        />
+                        <ModalBackdrop display={this.state.isOpened} onClick={() => this.cancel()} />
                     </div>
                 </div>
             </div>

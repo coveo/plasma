@@ -22,25 +22,30 @@ export interface ITableWithFilterDispatchProps {
     onRender: () => void;
 }
 
-export interface ITableWithFilterProps extends Partial<ITableWithFilterStateProps>,
-    Partial<ITableWithFilterDispatchProps>,
-    ITableHOCOwnProps {}
+export interface ITableWithFilterProps
+    extends Partial<ITableWithFilterStateProps>,
+        Partial<ITableWithFilterDispatchProps>,
+        ITableHOCOwnProps {}
 
 const TableWithFilterPropsToOmit = keys<ITableWithFilterStateProps>();
 
-const defaultMatchFilter = (filter: string, datum: any) => JSON.stringify(_.values(datum).map((v: string) => v.toLowerCase())).indexOf(filter.toLowerCase()) !== -1;
+const defaultMatchFilter = (filter: string, datum: any) =>
+    JSON.stringify(_.values(datum).map((v: string) => v.toLowerCase())).indexOf(filter.toLowerCase()) !== -1;
 
 type FilterableTableComponent = React.ComponentClass<ITableWithFilterProps>;
 
-export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig> = {}) => (Component: FilterableTableComponent): FilterableTableComponent => {
-
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithFilterProps): ITableWithFilterStateProps | ITableHOCOwnProps => {
+export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig> = {}) => (
+    Component: FilterableTableComponent
+): FilterableTableComponent => {
+    const mapStateToProps = (
+        state: IReactVaporState,
+        ownProps: ITableWithFilterProps
+    ): ITableWithFilterStateProps | ITableHOCOwnProps => {
         const config = HocUtils.supplyConfig(supplier);
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = config.matchFilter || defaultMatchFilter;
-        const filterData = () => filterText
-            ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum))
-            : ownProps.data;
+        const filterData = () =>
+            filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
 
         return {
             filter: filterText,
@@ -50,7 +55,6 @@ export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig>
 
     @ReduxConnect(mapStateToProps)
     class TableWithFilter extends React.Component<ITableWithFilterProps> {
-
         componentDidUpdate(prevProps: ITableWithFilterProps) {
             if (prevProps.filter !== this.props.filter) {
                 callIfDefined(this.props.onUpdate);
@@ -61,9 +65,9 @@ export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig>
             const {placeholder} = HocUtils.supplyConfig(supplier);
             const filterAction = (
                 <FilterBoxConnected
-                    key='FilterBox'
+                    key="FilterBox"
                     id={this.props.id}
-                    className='coveo-table-actions'
+                    className="coveo-table-actions"
                     filterPlaceholder={placeholder}
                     isAutoFocus
                 />

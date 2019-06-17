@@ -4,7 +4,6 @@ import {emptyAllFacets, FacetActions, IChangeFacetActionPayload, IFacetActionPay
 import {facetInitialState, facetReducer, facetsInitialState, facetsReducer, IFacetState} from '../FacetReducers';
 
 describe('Facets', () => {
-
     describe('FacetReducers', () => {
         const genericAction: IReduxAction<IFacetActionPayload> = {
             type: 'DO_SOMETHING',
@@ -66,11 +65,13 @@ describe('Facets', () => {
                     facet: 'some-facet2',
                     opened: false,
                     selected: [],
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: true,
                     selected: [],
-                }, {
+                },
+                {
                     facet: 'some-facet3',
                     opened: false,
                     selected: [],
@@ -102,11 +103,13 @@ describe('Facets', () => {
                     facet: 'some-facet2',
                     opened: openValue,
                     selected: [],
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: openValue,
                     selected: [],
-                }, {
+                },
+                {
                     facet: 'some-facet3',
                     opened: openValue,
                     selected: [],
@@ -136,11 +139,13 @@ describe('Facets', () => {
                     facet: 'some-facet2',
                     opened: true,
                     selected: [],
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: false,
                     selected: [],
-                }, {
+                },
+                {
                     facet: 'some-facet3',
                     opened: true,
                     selected: [],
@@ -175,11 +180,13 @@ describe('Facets', () => {
                     facet: 'some-facet2',
                     opened: true,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: false,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet3',
                     opened: true,
                     selected: selectedRows,
@@ -195,21 +202,26 @@ describe('Facets', () => {
 
             expect(facetsState.length).toBe(oldState.length);
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(0);
-            expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+            expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
+                selectedRows.length
+            );
         });
 
         it('should set the selected facet exclude property to true if it aleady selected to not exclude', () => {
-            const selectedRows: IFacet[] = [{
-                name: 'row',
-                formattedName: 'Row',
-                exclude: false,
-            }];
+            const selectedRows: IFacet[] = [
+                {
+                    name: 'row',
+                    formattedName: 'Row',
+                    exclude: false,
+                },
+            ];
             const oldState: IFacetState[] = [
                 {
                     facet: 'some-facet2',
                     opened: true,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: false,
                     selected: [],
@@ -246,11 +258,13 @@ describe('Facets', () => {
                     facet: 'some-facet2',
                     opened: true,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: false,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet3',
                     opened: true,
                     selected: selectedRows,
@@ -279,11 +293,13 @@ describe('Facets', () => {
                     facet: 'some-facet2',
                     opened: true,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet1',
                     opened: false,
                     selected: selectedRows,
-                }, {
+                },
+                {
                     facet: 'some-facet3',
                     opened: true,
                     selected: selectedRows,
@@ -303,9 +319,13 @@ describe('Facets', () => {
             let facetsState: IFacetState[] = facetsReducer(oldState, action);
 
             expect(facetsState.length).toBe(oldState.length);
-            expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(selectedRows.length + 1);
+            expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(
+                selectedRows.length + 1
+            );
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected[0].name).toBe(newRow.name);
-            expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+            expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
+                selectedRows.length
+            );
 
             action = {
                 type: FacetActions.changeFacet,
@@ -315,8 +335,12 @@ describe('Facets', () => {
                 },
             };
             facetsState = facetsReducer(facetsState, action);
-            expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(selectedRows.length);
-            expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(selectedRows.length);
+            expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(
+                selectedRows.length
+            );
+            expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
+                selectedRows.length
+            );
         });
     });
 });

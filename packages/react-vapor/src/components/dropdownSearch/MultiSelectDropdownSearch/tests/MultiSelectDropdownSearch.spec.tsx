@@ -7,11 +7,7 @@ import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
 
 describe('MultiSelectDropdownSearch', () => {
     const id: string = UUID.generate();
-    const options = [
-        {value: 'test a'},
-        {value: 'test b'},
-        {value: 'test c'},
-    ];
+    const options = [{value: 'test a'}, {value: 'test b'}, {value: 'test c'}];
 
     const props: IDropdownSearchProps = {
         id,
@@ -31,10 +27,9 @@ describe('MultiSelectDropdownSearch', () => {
         let multiSelectDropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
 
         const renderMultiSelectDropdownSearch = (currentProps?: IDropdownSearchProps) => {
-            multiSelectDropdownSearch = mount(
-                <MultiSelectDropdownSearch {...currentProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            multiSelectDropdownSearch = mount(<MultiSelectDropdownSearch {...currentProps} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         beforeEach(() => {
@@ -78,7 +73,9 @@ describe('MultiSelectDropdownSearch', () => {
                     options: [...options, {value: filterText, selected: true, custom: true}],
                 });
 
-                expect(multiSelectDropdownSearch.find('li span').text()).toEqual(multiSelectDropdownSearch.props().noResultText);
+                expect(multiSelectDropdownSearch.find('li span').text()).toEqual(
+                    multiSelectDropdownSearch.props().noResultText
+                );
             });
 
             it('should call onKeyDownFilterBox props on key down in input', () => {

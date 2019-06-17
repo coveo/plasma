@@ -1,7 +1,10 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {FlatSelectActions, IFlatSelectActionPayload} from '../FlatSelectActions';
 import {
-    flatSelectInitialState, flatSelectReducer, flatSelectsInitialState, flatSelectsReducer,
+    flatSelectInitialState,
+    flatSelectReducer,
+    flatSelectsInitialState,
+    flatSelectsReducer,
     IFlatSelectState,
 } from '../FlatSelectReducers';
 
@@ -65,10 +68,12 @@ describe('FlatSelect', () => {
             {
                 id: 'flat-select-id-1',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-2',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-3',
                 selectedOptionId: undefined,
             },
@@ -97,10 +102,12 @@ describe('FlatSelect', () => {
             {
                 id: 'flat-select-id-1',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-2',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-3',
                 selectedOptionId: undefined,
             },
@@ -122,10 +129,12 @@ describe('FlatSelect', () => {
             {
                 id: 'flat-select-id-1',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-2',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-3',
                 selectedOptionId: undefined,
             },
@@ -139,7 +148,10 @@ describe('FlatSelect', () => {
         };
 
         const flatSelectState: IFlatSelectState[] = flatSelectsReducer(oldState, action);
-        expect(flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId).length).toBe(1);
+        expect(
+            flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId)
+                .length
+        ).toBe(1);
     });
 
     it('should return the old state if the id does not exist when the action is "SELECT_FLAT_SELECT"', () => {
@@ -147,10 +159,12 @@ describe('FlatSelect', () => {
             {
                 id: 'flat-select-id-1',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-2',
                 selectedOptionId: undefined,
-            }, {
+            },
+            {
                 id: 'flat-select-id-3',
                 selectedOptionId: undefined,
             },
@@ -164,6 +178,9 @@ describe('FlatSelect', () => {
         };
 
         const flatSelectState: IFlatSelectState[] = flatSelectsReducer(oldState, action);
-        expect(flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId).length).toBe(0);
+        expect(
+            flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId)
+                .length
+        ).toBe(0);
     });
 });

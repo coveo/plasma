@@ -8,8 +8,7 @@
 
 <!-- Explain with bullet points what are your changes. -->
 
-- 
-- 
+## -
 
 ### Potential Breaking Changes
 
@@ -17,6 +16,6 @@
 
 ### Acceptance Criteria
 
-- [ ] The proposed changes are covered by unit tests
-- [ ] The potential breaking changes are clearly identified
-- [ ] [README.md](https://github.com/coveo/react-vapor/blob/master/README.md) is adjusted to reflect the proposed changes (if relevant)
+-   [ ] The proposed changes are covered by unit tests
+-   [ ] The potential breaking changes are clearly identified
+-   [ ] [README.md](https://github.com/coveo/react-vapor/blob/master/README.md) is adjusted to reflect the proposed changes (if relevant)

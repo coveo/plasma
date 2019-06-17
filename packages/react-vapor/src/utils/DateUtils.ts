@@ -32,7 +32,9 @@ export class DateUtils {
     static getMonthWeeks(firstDay: Date, startingDay: number): IDay[][] {
         const weeks: IDay[][] = [];
         let done = false;
-        let date = moment(firstDay).startOf('week').add(startingDay, 'day');
+        let date = moment(firstDay)
+            .startOf('week')
+            .add(startingDay, 'day');
         let monthIndex = date.month();
         let count = 0;
 
@@ -94,7 +96,11 @@ export class DateUtils {
      * * `!moment(null).isSame(null)` will return `true`
      * * `DateUtils.isDifferent(null, null)` will return `false`
      */
-    static isDifferent(firstDate: moment.MomentInput, secondDate: moment.MomentInput, granularity?: moment.unitOfTime.StartOf): boolean {
+    static isDifferent(
+        firstDate: moment.MomentInput,
+        secondDate: moment.MomentInput,
+        granularity?: moment.unitOfTime.StartOf
+    ): boolean {
         return !moment(firstDate).isSame(secondDate, granularity) && (!!firstDate || !!secondDate);
     }
 }

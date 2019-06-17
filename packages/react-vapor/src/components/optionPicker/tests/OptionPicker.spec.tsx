@@ -21,9 +21,7 @@ describe('Option picker', () => {
     describe('<OptionPicker />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <OptionPicker {...OPTION_PICKER_BASIC_PROPS} />,
-                );
+                shallow(<OptionPicker {...OPTION_PICKER_BASIC_PROPS} />);
             }).not.toThrow();
         });
     });
@@ -33,10 +31,9 @@ describe('Option picker', () => {
         let optionPickerInstance: OptionPicker;
 
         beforeEach(() => {
-            optionPicker = mount(
-                <OptionPicker {...OPTION_PICKER_BASIC_PROPS} />,
-                {attachTo: document.getElementById('App')},
-            );
+            optionPicker = mount(<OptionPicker {...OPTION_PICKER_BASIC_PROPS} />, {
+                attachTo: document.getElementById('App'),
+            });
             optionPickerInstance = optionPicker.instance() as OptionPicker;
         });
 
@@ -52,17 +49,15 @@ describe('Option picker', () => {
         });
 
         it('should display as many <Option /> as there are options in the options prop', () => {
-            const moreOptionsProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS,
-                {
-                    options: [
-                        ...OPTION_PICKER_BASIC_PROPS.options,
-                        {
-                            label: 'Option 3',
-                            value: () => 'aaa',
-                        },
-                    ],
-                },
-            );
+            const moreOptionsProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
+                options: [
+                    ...OPTION_PICKER_BASIC_PROPS.options,
+                    {
+                        label: 'Option 3',
+                        value: () => 'aaa',
+                    },
+                ],
+            });
 
             expect(optionPicker.find('Option').length).toBe(OPTION_PICKER_BASIC_PROPS.options.length);
 
@@ -86,7 +81,9 @@ describe('Option picker', () => {
 
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
-            const withDestroyProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {onDestroy: destroySpy});
+            const withDestroyProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
+                onDestroy: destroySpy,
+            });
 
             expect(() => optionPickerInstance.componentWillUnmount()).not.toThrow();
 
@@ -103,7 +100,9 @@ describe('Option picker', () => {
             const expectedLabel: string = 'label';
             const withOnClickProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {onClick: onClickSpy});
 
-            expect(() => optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel)).not.toThrow();
+            expect(() =>
+                optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel)
+            ).not.toThrow();
             expect(onClickSpy).not.toHaveBeenCalled();
 
             optionPicker.setProps(withOnClickProps);
@@ -115,11 +114,15 @@ describe('Option picker', () => {
         it('should call handleClick when clicking an option', () => {
             const handleClickSpy: jasmine.Spy = spyOn<any>(optionPickerInstance, 'handleClick');
 
-            optionPicker.find('Option').first().find('button').simulate('click');
+            optionPicker
+                .find('Option')
+                .first()
+                .find('button')
+                .simulate('click');
 
             expect(handleClickSpy).toHaveBeenCalledWith(
                 OPTION_PICKER_BASIC_PROPS.options[0].value(),
-                OPTION_PICKER_BASIC_PROPS.options[0].label,
+                OPTION_PICKER_BASIC_PROPS.options[0].label
             );
         });
     });

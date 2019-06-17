@@ -11,7 +11,10 @@ export interface ILastUpdatedState {
 export const lastUpdatedInitialState: ILastUpdatedState = {id: undefined, time: new Date()};
 export const lastUpdatedCompositeInitialState: ILastUpdatedState[] = [];
 
-export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitialState, action: IReduxAction<IReduxActionsPayload>): ILastUpdatedState => {
+export const lastUpdatedReducer = (
+    state: ILastUpdatedState = lastUpdatedInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): ILastUpdatedState => {
     switch (action.type) {
         case LastUpdatedActions.addLastUpdated:
             return {
@@ -30,21 +33,19 @@ export const lastUpdatedReducer = (state: ILastUpdatedState = lastUpdatedInitial
     }
 };
 
-export const lastUpdatedCompositeReducer = (state: ILastUpdatedState[] = lastUpdatedCompositeInitialState, action: IReduxAction<IReduxActionsPayload>): ILastUpdatedState[] => {
+export const lastUpdatedCompositeReducer = (
+    state: ILastUpdatedState[] = lastUpdatedCompositeInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): ILastUpdatedState[] => {
     switch (action.type) {
         case LastUpdatedActions.addLastUpdated:
-            return [
-                ...state,
-                lastUpdatedReducer(undefined, action),
-            ];
+            return [...state, lastUpdatedReducer(undefined, action)];
         case LastUpdatedActions.removeLastUpdated:
             return _.reject(state, (lastUpdated: ILastUpdatedState) => {
                 return action.payload.id === lastUpdated.id;
             });
         case LastUpdatedActions.changeLastUpdated:
-            return state.map((lastUpdated: ILastUpdatedState) =>
-                lastUpdatedReducer(lastUpdated, action),
-            );
+            return state.map((lastUpdated: ILastUpdatedState) => lastUpdatedReducer(lastUpdated, action));
         default:
             return state;
     }

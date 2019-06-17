@@ -3,7 +3,6 @@ import Svg from '../Svg';
 
 export const AppendPrepend = () => (
     <div className="spaced-boxes-container flex flex-wrap">
-
         <button type="button" className="btn mod-append spaced-box">
             Button append<span className="btn-append">S</span>
         </button>
@@ -23,11 +22,13 @@ export const AppendPrepend = () => (
         <button type="button" className="btn mod-prepend mod-large spaced-box">
             <span className="btn-prepend mod-icon">
                 <Svg className="icon" style={{width: 32, height: 32}} name={VaporSVG.svg.domainGoogle.name} />
-            </span>Login with Google
+            </span>
+            Login with Google
         </button>
 
         <button type="button" className="btn dropdown-toggle mod-append spaced-box">
-            Dropdown append<span className="dropdown-toggle-arrow"></span><span className="btn-append">S</span>
+            Dropdown append<span className="dropdown-toggle-arrow"></span>
+            <span className="btn-append">S</span>
         </button>
 
         <button type="button" className="btn mod-prepend dropdown-toggle spaced-box">

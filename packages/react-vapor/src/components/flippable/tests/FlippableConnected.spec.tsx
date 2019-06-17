@@ -25,7 +25,7 @@ describe('Flippable', () => {
                 <Provider store={store}>
                     <FlippableConnected {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             flippable = wrapper.find(Flippable).first();
         };
@@ -101,7 +101,10 @@ describe('Flippable', () => {
 
             expect(wrapper.find(Flippable).props().isFlipped).toBe(true);
 
-            wrapper.find(Flippable).props().onUnflip();
+            wrapper
+                .find(Flippable)
+                .props()
+                .onUnflip();
             wrapper.update();
 
             expect(wrapper.find(Flippable).props().isFlipped).toBe(false);

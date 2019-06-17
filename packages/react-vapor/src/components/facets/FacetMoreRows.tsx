@@ -25,8 +25,11 @@ export interface IFacetMoreRowsChildrenProps {
     filterPlaceholder?: string;
 }
 
-export interface IFacetMoreRowsProps extends IFacetMoreRowsOwnProps, IFacetMoreRowsDispatchProps,
-    IFacetMoreRowsStateProps, IFacetMoreRowsChildrenProps {}
+export interface IFacetMoreRowsProps
+    extends IFacetMoreRowsOwnProps,
+        IFacetMoreRowsDispatchProps,
+        IFacetMoreRowsStateProps,
+        IFacetMoreRowsChildrenProps {}
 
 export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
     private facetSearch: HTMLDivElement;
@@ -63,32 +66,33 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
                 this.props.onDocumentClick();
             }
         }
-    }
+    };
 
     render() {
         const moreSearchClasses: string = 'facet-more-search' + (!this.props.isOpened ? ' hidden' : '');
-        const rowsFiltered: JSX.Element[] = this.props.filterText && this.props.filterText.length
-            ? _.map(this.props.facetRows, (facetRow: JSX.Element) => {
-                const facetText = facetRow.props.facetRow.formattedName;
-                if (s.contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
-                    return facetRow;
-                }
-            }).filter(Boolean)
-            : this.props.facetRows;
+        const rowsFiltered: JSX.Element[] =
+            this.props.filterText && this.props.filterText.length
+                ? _.map(this.props.facetRows, (facetRow: JSX.Element) => {
+                      const facetText = facetRow.props.facetRow.formattedName;
+                      if (s.contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
+                          return facetRow;
+                      }
+                  }).filter(Boolean)
+                : this.props.facetRows;
         const resultsClass: string = 'facet-search-results' + (!rowsFiltered.length ? ' hidden' : '');
         const filterBoxId: string = 'filter-' + this.props.facet;
-        const filterBox: JSX.Element = this.props.withReduxState ?
-            <FilterBoxConnected id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} /> :
-            <FilterBox id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} />;
+        const filterBox: JSX.Element = this.props.withReduxState ? (
+            <FilterBoxConnected id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} />
+        ) : (
+            <FilterBox id={filterBoxId} filterPlaceholder={this.props.filterPlaceholder} />
+        );
 
         return (
             <div className={moreSearchClasses}>
-                <div className='facet-search' ref={(facetSearch: HTMLDivElement) => this.facetSearch = facetSearch}>
+                <div className="facet-search" ref={(facetSearch: HTMLDivElement) => (this.facetSearch = facetSearch)}>
                     {filterBox}
                 </div>
-                <ul className={resultsClass}>
-                    {rowsFiltered}
-                </ul>
+                <ul className={resultsClass}>{rowsFiltered}</ul>
             </div>
         );
     }

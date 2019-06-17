@@ -10,9 +10,11 @@ export interface ITabsHeaderProps {
 
 export const TabsHeader = (props: ITabsHeaderProps) => {
     if (props.tabs) {
-        return (<TabNavigation>
-            {..._.map(props.tabs, (tab: ITabProps) => <TabConnected key={tab.id} {...tab} />)}
-        </TabNavigation>);
+        return (
+            <TabNavigation>
+                {..._.map(props.tabs, (tab: ITabProps) => <TabConnected key={tab.id} {...tab} />)}
+            </TabNavigation>
+        );
     }
 
     return null;

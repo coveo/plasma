@@ -25,9 +25,7 @@ describe('Calendar day', () => {
     describe('<CalendarDay />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />,
-                );
+                shallow(<CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />);
             }).not.toThrow();
         });
     });
@@ -39,10 +37,9 @@ describe('Calendar day', () => {
         beforeEach(() => {
             document.getElementById('App').innerHTML = '<table><tbody><tr id="AppTableRow"></tr></tbody></table>';
 
-            calendarDay = mount(
-                <CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />,
-                {attachTo: document.getElementById('AppTableRow')},
-            );
+            calendarDay = mount(<CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />, {
+                attachTo: document.getElementById('AppTableRow'),
+            });
             calendarDayInstance = calendarDay.instance() as CalendarDay;
         });
 
@@ -157,7 +154,9 @@ describe('Calendar day', () => {
 
         it('should call onClick when clicking a selectable day', () => {
             const unSelectableDay: IDay = _.extend({}, DAY, {isSelectable: false});
-            const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {day: unSelectableDay});
+            const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {
+                day: unSelectableDay,
+            });
 
             calendarDay.find('td').simulate('click');
 
@@ -171,8 +170,15 @@ describe('Calendar day', () => {
         });
 
         it('should call onSelectUnselectable when the day has been selected, but is unselectable at the same time', () => {
-            const unSelectableDay: IDay = _.extend({}, DAY, {isSelectable: false, isUpperLimit: true, isSelected: true});
-            const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {day: unSelectableDay, onSelectUnselectable: jasmine.createSpy('onSelectUnselectable')});
+            const unSelectableDay: IDay = _.extend({}, DAY, {
+                isSelectable: false,
+                isUpperLimit: true,
+                isSelected: true,
+            });
+            const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {
+                day: unSelectableDay,
+                onSelectUnselectable: jasmine.createSpy('onSelectUnselectable'),
+            });
 
             calendarDay.setProps(unSelectableDayProps);
 

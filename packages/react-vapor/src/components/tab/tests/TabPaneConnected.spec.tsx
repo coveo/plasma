@@ -24,11 +24,9 @@ describe('TabPane', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <TabPaneConnected
-                        id={id}
-                    />
+                    <TabPaneConnected id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             tabPane = wrapper.find(TabPane).first();
         });

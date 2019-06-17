@@ -5,13 +5,10 @@ import {IInputProps} from '../../input/Input';
 import {DeletableInput} from '../DeletableInput';
 
 describe('DeletableInput', () => {
-
     describe('<DeletableInput />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <DeletableInput />,
-                );
+                shallow(<DeletableInput />);
             }).not.toThrow();
         });
     });
@@ -20,10 +17,7 @@ describe('DeletableInput', () => {
         let deleteInput: ReactWrapper<IInputProps, any>;
 
         beforeEach(() => {
-            deleteInput = mount(
-                <DeletableInput />,
-                {attachTo: document.getElementById('App')},
-            );
+            deleteInput = mount(<DeletableInput />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

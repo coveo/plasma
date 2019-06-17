@@ -65,7 +65,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
             <div className={this.getContainerClasses()} style={{minWidth, maxWidth}}>
                 <input
                     id={this.props.id}
-                    type='text'
+                    type="text"
                     className={this.getInputClasses()}
                     placeholder={this.props.placeholder}
                     disabled={this.props.disabled || this.props.searching}
@@ -73,9 +73,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
                     onKeyUp={(event) => event.keyCode === keyCode.enter && this.search()}
                     onChange={(event) => this.props.onChange && this.props.onChange(event)}
                 />
-                <div className='search-bar-icon-container'>
-                    {this.getSearchIcon()}
-                </div>
+                <div className="search-bar-icon-container">{this.getSearchIcon()}</div>
             </div>
         );
     }
@@ -87,25 +85,26 @@ export class SearchBar extends React.Component<ISearchBarProps> {
                 'search-bar-disabled': this.props.disabled,
                 'search-bar-loading': this.props.searching,
             },
-            this.props.containerClassNames,
+            this.props.containerClassNames
         );
     }
 
     private getInputClasses(): string {
-        return classNames(
-            'search-bar-input',
-            this.props.inputClassNames,
-        );
+        return classNames('search-bar-input', this.props.inputClassNames);
     }
 
     private getSearchIcon(): JSX.Element {
-        const searchIcon = !this.props.searching
-            ? <Svg svgName='search' svgClass={this.props.disabled ? 'fill-light-grey' : 'fill-medium-blue'} />
-            : <div className='search-bar-spinner'></div>;
+        const searchIcon = !this.props.searching ? (
+            <Svg svgName="search" svgClass={this.props.disabled ? 'fill-light-grey' : 'fill-medium-blue'} />
+        ) : (
+            <div className="search-bar-spinner"></div>
+        );
 
-        return !this.props.searching && !this.props.disabled
-            ? <span onClick={() => this.search()}>{searchIcon}</span>
-            : searchIcon;
+        return !this.props.searching && !this.props.disabled ? (
+            <span onClick={() => this.search()}>{searchIcon}</span>
+        ) : (
+            searchIcon
+        );
     }
 
     private search() {

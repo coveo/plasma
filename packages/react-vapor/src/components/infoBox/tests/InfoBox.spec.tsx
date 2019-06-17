@@ -18,7 +18,7 @@ describe('InfoBox', () => {
     });
 
     it('should render children', () => {
-        const expectedChildren = <div className='to-find' />;
+        const expectedChildren = <div className="to-find" />;
         const wrapper = shallow(<InfoBox>{expectedChildren}</InfoBox>);
 
         expect(wrapper.contains(expectedChildren)).toBe(true);

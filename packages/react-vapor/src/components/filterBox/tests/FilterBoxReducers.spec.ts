@@ -11,7 +11,6 @@ import {
 } from '../FilterBoxReducers';
 
 describe('FilterBox', () => {
-
     describe('FilterBoxReducers', () => {
         const genericAction: IReduxAction<IFilterActionPayload> = {
             type: 'DO_SOMETHING',
@@ -79,10 +78,12 @@ describe('FilterBox', () => {
                 {
                     id: 'some-filter2',
                     filterText: '',
-                }, {
+                },
+                {
                     id: 'some-filter1',
                     filterText: 'sdf',
-                }, {
+                },
+                {
                     id: 'some-filter3',
                     filterText: '',
                 },
@@ -111,10 +112,12 @@ describe('FilterBox', () => {
                 {
                     id: 'some-filter2',
                     filterText: '',
-                }, {
+                },
+                {
                     id: 'some-filter1',
                     filterText: 'sdf',
-                }, {
+                },
+                {
                     id: 'some-filter3',
                     filterText: '',
                 },
@@ -130,26 +133,35 @@ describe('FilterBox', () => {
             const filtersState: IFilterState[] = filterBoxesReducer(oldState, action);
 
             expect(filtersState.length).toBe(oldState.length);
-            expect(filtersState.filter((filterBox) => filterBox.id === action.payload.id)[0].filterText).toBe(newFilter);
+            expect(filtersState.filter((filterBox) => filterBox.id === action.payload.id)[0].filterText).toBe(
+                newFilter
+            );
         });
 
         it('should clear the filter text of a filter box when the action is "ListBoxActions.select"', () => {
             const id = 'some-filter';
-            const oldState: IFilterState[] = [{
-                id,
-                filterText: 'some-value',
-            }];
-            const filtersState: IFilterState[] = filterBoxesReducer(oldState, selectListBoxOption(id, true, 'new value'));
+            const oldState: IFilterState[] = [
+                {
+                    id,
+                    filterText: 'some-value',
+                },
+            ];
+            const filtersState: IFilterState[] = filterBoxesReducer(
+                oldState,
+                selectListBoxOption(id, true, 'new value')
+            );
 
             expect(filtersState[0].filterText).toBe('');
         });
 
         it('should clear the filter text of a filter box when the action is "SelectActions.toggle" and open is false', () => {
             const id = 'some-filter';
-            const oldState: IFilterState[] = [{
-                id,
-                filterText: 'some-value',
-            }];
+            const oldState: IFilterState[] = [
+                {
+                    id,
+                    filterText: 'some-value',
+                },
+            ];
             const filtersState: IFilterState[] = filterBoxesReducer(oldState, toggleSelect(id, false));
 
             expect(filtersState[0].filterText).toBe('');
@@ -157,10 +169,12 @@ describe('FilterBox', () => {
 
         it('should not clear the filter text of a filter box when the action is "SelectActions.toggle" but open is true', () => {
             const id = 'some-filter';
-            const oldState: IFilterState[] = [{
-                id,
-                filterText: 'some-value',
-            }];
+            const oldState: IFilterState[] = [
+                {
+                    id,
+                    filterText: 'some-value',
+                },
+            ];
             const filtersState: IFilterState[] = filterBoxesReducer(oldState, toggleSelect(id, true));
 
             expect(filtersState[0].filterText).not.toBe('');

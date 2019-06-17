@@ -21,7 +21,7 @@ export const inputsInitialState: IInputState[] = [];
 
 export const inputReducer = (
     state: IInputState = inputInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IInputState => {
     switch (action.type) {
         case InputActions.add:
@@ -37,13 +37,9 @@ export const inputReducer = (
                 : state;
 
         case InputActions.validateValue:
-            return state.id === action.payload.id
-                ? {...state, valid: action.payload.valid}
-                : state;
+            return state.id === action.payload.id ? {...state, valid: action.payload.valid} : state;
         case InputActions.setDisabled:
-            return state.id === action.payload.id
-                ? {...state, disabled: action.payload.disabled}
-                : state;
+            return state.id === action.payload.id ? {...state, disabled: action.payload.disabled} : state;
         default:
             return state;
     }
@@ -51,14 +47,11 @@ export const inputReducer = (
 
 export const inputsReducer = (
     state: IInputState[] = inputsInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IInputState[] => {
     switch (action.type) {
         case InputActions.add:
-            return [
-                ...state,
-                inputReducer(undefined, action),
-            ];
+            return [...state, inputReducer(undefined, action)];
         case InputActions.remove:
             return _.reject(state, (input: IInputState) => input.id === action.payload.id);
         case InputActions.changeValue:

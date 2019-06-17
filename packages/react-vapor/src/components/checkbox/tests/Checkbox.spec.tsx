@@ -18,10 +18,7 @@ describe('Checkbox', () => {
                     checkbox.unmount();
                 }
 
-                checkbox = mount(
-                    <Checkbox {...props} />,
-                    {attachTo: document.getElementById('App')},
-                );
+                checkbox = mount(<Checkbox {...props} />, {attachTo: document.getElementById('App')});
             };
 
             afterEach(() => {

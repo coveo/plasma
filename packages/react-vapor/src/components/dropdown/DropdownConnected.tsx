@@ -15,12 +15,18 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownOwnProps): 
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: IDropdownOwnProps): IDropdownDispatchProps => ({
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+    ownProps: IDropdownOwnProps
+): IDropdownDispatchProps => ({
     onRender: () => dispatch(addDropdown(ownProps.id)),
     onDestroy: () => dispatch(removeDropdown(ownProps.id)),
     onClick: () => dispatch(toggleDropdown(ownProps.id)),
     onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
 });
 
-export const DropdownConnected: React.ComponentClass<IDropdownProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Dropdown);
+export const DropdownConnected: React.ComponentClass<IDropdownProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Dropdown);

@@ -1,7 +1,12 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {IRadioSelectActionPayload, removeRadioSelect, setRadioSelect} from '../RadioSelectActions';
-import {IRadioSelectState, radioSelectInitialState, radioSelectsInitialState, radioSelectsReducer} from '../RadioSelectReducers';
+import {
+    IRadioSelectState,
+    radioSelectInitialState,
+    radioSelectsInitialState,
+    radioSelectsReducer,
+} from '../RadioSelectReducers';
 
 describe('RadioSelect', () => {
     describe('RadioSelectReducers', () => {
@@ -44,7 +49,9 @@ describe('RadioSelect', () => {
 
         describe('"RadioSelectAction.set" when id is arleady in the state', () => {
             it('should return the old state with the same number of IRadioSelectStatec and update the proper IRadioSelectState', () => {
-                let oldState: IRadioSelectState[] = [{...radioSelectInitialState, id: 'somealreadyexistingradioselect'}];
+                let oldState: IRadioSelectState[] = [
+                    {...radioSelectInitialState, id: 'somealreadyexistingradioselect'},
+                ];
                 const radioSelectId = 'testRadioSelect';
                 const action = setRadioSelect(radioSelectId, {value: 'anywoulddo'});
                 let radioSelectsState: IRadioSelectState[] = radioSelectsReducer(oldState, action);
@@ -58,11 +65,15 @@ describe('RadioSelect', () => {
 
                 expect(radioSelectsState.length).toBe(oldState.length);
                 expect(_.findWhere(radioSelectsState, {id: action.payload.id}).value).toBe(action.payload.value);
-                expect(_.reject(radioSelectsState, (radio) => radio.id === action.payload.id)).toEqual(_.reject(oldState, (radio) => radio.id === action.payload.id));
+                expect(_.reject(radioSelectsState, (radio) => radio.id === action.payload.id)).toEqual(
+                    _.reject(oldState, (radio) => radio.id === action.payload.id)
+                );
             });
 
             it('should not change the value if the value in the payload is also in the disabled values in the state', () => {
-                let oldState: IRadioSelectState[] = [{...radioSelectInitialState, id: 'somealreadyexistingradioselect'}];
+                let oldState: IRadioSelectState[] = [
+                    {...radioSelectInitialState, id: 'somealreadyexistingradioselect'},
+                ];
                 const radioSelectId = 'testRadioSelect';
                 const action = setRadioSelect(radioSelectId, {value: 'anywoulddo', disabledValues: ['disabledValue']});
                 let radioSelectsState: IRadioSelectState[] = radioSelectsReducer(oldState, action);

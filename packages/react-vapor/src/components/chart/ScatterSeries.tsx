@@ -18,10 +18,11 @@ export const ScatterSeries: React.FunctionComponent<ScatterSeriesProps> = ({chil
                 r={radius}
                 fill={color(i, colorPattern, point)}
             />
-        )));
+        ))
+    );
 
     return (
-        <g className='scatter-series'>
+        <g className="scatter-series">
             {points}
             {children}
         </g>

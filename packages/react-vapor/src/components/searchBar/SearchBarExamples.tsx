@@ -19,8 +19,8 @@ class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
     render() {
         return (
             <SearchBar
-                id='search-bar-1'
-                placeholder='Search awesome things'
+                id="search-bar-1"
+                placeholder="Search awesome things"
                 value={this.state.value}
                 disabled={this.state.disabled}
                 searching={this.state.searching}
@@ -40,42 +40,42 @@ class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
 export class SearchBarExamples extends React.Component<any, any> {
     render() {
         return (
-            <div className='mt2'>
-                <h1 className='text-blue mb1 bold'>SearchBar List</h1>
-                <div className='form-group'>
-                    <label className='form-control-label'>SearchBar disabled</label>
-                    <div className='text-dark-grey'>
+            <div className="mt2">
+                <h1 className="text-blue mb1 bold">SearchBar List</h1>
+                <div className="form-group">
+                    <label className="form-control-label">SearchBar disabled</label>
+                    <div className="text-dark-grey">
                         <SearchBar
-                            id='search-bar-2'
+                            id="search-bar-2"
                             disabled
-                            placeholder='Currently disabled.'
+                            placeholder="Currently disabled."
                             onSearch={() => alert('Implement your own search logic with the onSearch prop.')}
                         />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>SearchBar searching</label>
-                    <div className='text-dark-grey'>
+                <div className="form-group">
+                    <label className="form-control-label">SearchBar searching</label>
+                    <div className="text-dark-grey">
                         <SearchBar
-                            id='search-bar-3'
+                            id="search-bar-3"
                             searching
-                            placeholder='Searching for something'
+                            placeholder="Searching for something"
                             onSearch={() => alert('Implement your own search logic with the onSearch prop.')}
                         />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>SearchBar not connected but fully working</label>
-                    <div className='text-dark-grey'>
+                <div className="form-group">
+                    <label className="form-control-label">SearchBar not connected but fully working</label>
+                    <div className="text-dark-grey">
                         <SearchBarExample />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>SearchBarConnected</label>
-                    <div className='text-dark-grey'>
+                <div className="form-group">
+                    <label className="form-control-label">SearchBarConnected</label>
+                    <div className="text-dark-grey">
                         <SearchBarConnected
-                            id='search-bar-4'
-                            placeholder='Type something and press enter, or click the loupe'
+                            id="search-bar-4"
+                            placeholder="Type something and press enter, or click the loupe"
                             onSearch={(filterText: string) => {
                                 ReactVaporStore.dispatch(toggleSearching('search-bar-4', true));
                                 setTimeout(() => {
@@ -85,11 +85,14 @@ export class SearchBarExamples extends React.Component<any, any> {
                             }}
                         />
                         <button
-                            type='button'
+                            type="button"
                             onClick={() => {
-                                const searchBar = findWhere(ReactVaporStore.getState().searchBars, {id: 'search-bar-4'});
+                                const searchBar = findWhere(ReactVaporStore.getState().searchBars, {
+                                    id: 'search-bar-4',
+                                });
                                 ReactVaporStore.dispatch(toggleSearchBarDisabled('search-bar-4', !searchBar.disabled));
-                            }}>
+                            }}
+                        >
                             Toggle disabled state
                         </button>
                     </div>

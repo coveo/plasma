@@ -36,13 +36,19 @@ describe('Select', () => {
         const mountMultiSelect = (
             items: IItemBoxProps[] = [],
             options: IFlatSelectOptionProps[] = defaultFlatSelectOptions,
-            sortable: boolean = false,
+            sortable: boolean = false
         ) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <MultiSelectWithPredicate id={id} items={items} options={options} matchPredicate={matchPredicate} sortable={sortable} />
+                    <MultiSelectWithPredicate
+                        id={id}
+                        items={items}
+                        options={options}
+                        matchPredicate={matchPredicate}
+                        sortable={sortable}
+                    />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             multiSelect = wrapper.find(SelectConnected).first();
         };
@@ -85,11 +91,7 @@ describe('Select', () => {
         });
 
         it('should hide items when they do not match the predicates', () => {
-            const items = [
-                {value: 'a'},
-                {value: 'b', selected: true},
-                {value: 'c', selected: true},
-            ];
+            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
             mountMultiSelect(items);
             store.dispatch(toggleSelect(id, true));
@@ -98,16 +100,14 @@ describe('Select', () => {
             multiSelect = wrapper.find(SelectConnected);
 
             expect(multiSelect.props().items.length).toBe(items.length);
-            multiSelect.find(SelectConnected).props().items
-                .every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+            multiSelect
+                .find(SelectConnected)
+                .props()
+                .items.every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
         });
 
         it('should not show items that are already hidden', () => {
-            const items = [
-                {value: 'a', hidden: true},
-                {value: 'b', selected: true},
-                {value: 'c', selected: true},
-            ];
+            const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
             mountMultiSelect(items);
             store.dispatch(toggleSelect(id, true));
@@ -124,31 +124,29 @@ describe('Select', () => {
         describe('Sortable', () => {
             it('should be possible to reorder items', () => {
                 const spy = spyOn(store, 'dispatch').and.callThrough();
-                const items = [
-                    {value: 'a', hidden: true},
-                    {value: 'b', selected: true},
-                    {value: 'c', selected: true},
-                ];
+                const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
                 mountMultiSelect(items, defaultFlatSelectOptions, true);
 
                 // Move b from 0 to 1
-                multiSelect.find(DraggableSelectedOption).first().prop('move')(0, 1);
+                multiSelect
+                    .find(DraggableSelectedOption)
+                    .first()
+                    .prop('move')(0, 1);
                 expect(spy).toHaveBeenCalledWith(reorderListBoxOption(id, [items[2].value, items[1].value]));
             });
 
             it('should be possible to delete an item', () => {
                 const spy = spyOn(store, 'dispatch').and.callThrough();
-                const items = [
-                    {value: 'a', hidden: true},
-                    {value: 'b', selected: true},
-                    {value: 'c', selected: true},
-                ];
+                const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
                 mountMultiSelect(items, defaultFlatSelectOptions, true);
 
                 // Move b from 0 to 1
-                multiSelect.find(DraggableSelectedOption).first().prop('onRemoveClick')();
+                multiSelect
+                    .find(DraggableSelectedOption)
+                    .first()
+                    .prop('onRemoveClick')();
                 expect(spy).toHaveBeenCalledWith(unselectListBoxOption(id, items[1].value));
             });
         });

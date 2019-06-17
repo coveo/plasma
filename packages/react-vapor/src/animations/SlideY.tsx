@@ -8,7 +8,7 @@ export interface SlideYProps {
     id?: string;
     duration?: number;
     in?: boolean;
-    timeout?: number | {enter?: number, exit?: number};
+    timeout?: number | {enter?: number; exit?: number};
 }
 
 export class SlideY extends React.PureComponent<SlideYProps> {
@@ -42,15 +42,18 @@ export class SlideY extends React.PureComponent<SlideYProps> {
     }
 
     render() {
-        const style = this.props.duration && {style: {transitionDuration: `${this.props.duration}ms`, transitionTimingFunction: 'ease-in-out'}};
+        const style = this.props.duration && {
+            style: {transitionDuration: `${this.props.duration}ms`, transitionTimingFunction: 'ease-in-out'},
+        };
         return (
             <Transition
                 in={this.props.in}
                 timeout={this.props.timeout}
                 onEntering={() => this.onEntering()}
                 onExiting={() => this.onExiting()}
-                onTransitionEnd={() => this.handleTransitionEnd()}>
-                <div className='slide-y slide-y-closed' ref={(el: HTMLElement) => this.el = el} {...style}>
+                onTransitionEnd={() => this.handleTransitionEnd()}
+            >
+                <div className="slide-y slide-y-closed" ref={(el: HTMLElement) => (this.el = el)} {...style}>
                     {this.props.children}
                 </div>
             </Transition>

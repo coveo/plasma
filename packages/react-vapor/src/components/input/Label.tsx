@@ -14,10 +14,12 @@ export class Label extends React.Component<ILabelProps, any> {
         const classes = classNames(this.props.classes);
 
         return (
-            <label className={classes}
+            <label
+                className={classes}
                 data-valid-message={this.props.validMessage}
                 data-invalid-message={this.props.invalidMessage}
-                htmlFor={this.props.htmlFor}>
+                htmlFor={this.props.htmlFor}
+            >
                 {this.props.children}
             </label>
         );

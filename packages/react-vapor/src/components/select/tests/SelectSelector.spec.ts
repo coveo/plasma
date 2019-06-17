@@ -9,7 +9,6 @@ import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('Select Selector', () => {
-
         const id: string = 'a';
         const defaultState: IReactVaporState = {
             filters: [],
@@ -29,7 +28,9 @@ describe('Select', () => {
             });
 
             it('should return the current list in the state if the id is in the state', () => {
-                expect(SelectSelector.getListState({selectWithFilter: {[id]: {id, list}}}, defaultOwnProps)).toEqual(list);
+                expect(SelectSelector.getListState({selectWithFilter: {[id]: {id, list}}}, defaultOwnProps)).toEqual(
+                    list
+                );
             });
         });
 
@@ -66,12 +67,16 @@ describe('Select', () => {
                 });
 
                 it('should return items with hidden false if match filter return true', () => {
-                    expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([{value: 'a', hidden: false}]);
+                    expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilter)).toEqual([
+                        {value: 'a', hidden: false},
+                    ]);
                 });
 
                 it('should return items with hidden true if match filter return false', () => {
                     const matchFilterFalse: MatchFilter = () => false;
-                    expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([{value: 'a', hidden: true}]);
+                    expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([
+                        {value: 'a', hidden: true},
+                    ]);
                 });
             });
 

@@ -8,10 +8,6 @@
         "lint-staged": "8.2.1",
         "prettier": "1.18.2",
         "stylelint": "10.1.0",
-        "stylelint-config-prettier": "5.2.0",
-        "stylelint-config-rational-order": "0.1.2",
-        "stylelint-order": "3.0.0",
-        "stylelint-prettier": "1.1.1",
         "tsjs": "0.8.2",
         "tslint": "5.17.0",
         "underscore": "1.9.1"
@@ -22,23 +18,27 @@
         }
     },
     "lint-staged": {
-        "**/*.{scss}": [
+        "**/*.scss": [
             "stylelint --fix",
             "prettier --write",
             "git add"
         ],
-        "**/*.{ts,tsx,js,jsx}": [
-            "tslint -c ./tslint.json --fix",
+        "**/*.{ts,tsx}": [
             "prettier --write",
+            "tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
             "git add"
         ],
-        "**/*.{json,md,yml,html}": [
+        "**/*.{js,jsx,json,md,yml,html}": [
             "prettier --write",
             "git add"
         ]
     },
+    "stylelint": {
+        "extends": [
+            "tsjs/stylelint-config"
+        ]
+    },
     "prettier": "tsjs/prettier-config",
-    "stylelint": "tsjs/stylelint-config",
     "browserslist": [
         "cover 90%",
         "last 1 versions",

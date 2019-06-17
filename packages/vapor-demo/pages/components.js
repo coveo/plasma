@@ -22,10 +22,10 @@ import Tab from '../components/components/Tab';
 const Components = () => (
     <Layout>
         <Component
-            key='badge'
-            id='badge'
+            key="badge"
+            id="badge"
             title="Badge"
-            usage='Use to indicate a special feature or status'
+            usage="Use to indicate a special feature or status"
             stylesheet="scss/components/badge.scss"
             withSource
         >
@@ -33,10 +33,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='banner'
-            id='banner'
+            key="banner"
+            id="banner"
             title="Banner"
-            usage='Use it to provide info in your application.'
+            usage="Use it to provide info in your application."
             stylesheet="scss/components/banner.scss"
             withSource
         >
@@ -44,10 +44,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='blank-slate'
-            id='blank-slate'
+            key="blank-slate"
+            id="blank-slate"
             title="Blank Slate"
-            usage='Use it to provide information when no dynamic content exists'
+            usage="Use it to provide information when no dynamic content exists"
             stylesheet="scss/components/blankslate.scss"
             withSource
         >
@@ -55,10 +55,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='breadcrumbs'
-            id='breadcrumbs'
+            key="breadcrumbs"
+            id="breadcrumbs"
             title="Breadcrumbs"
-            usage='Use it to provide hierarchical information on the current page'
+            usage="Use it to provide hierarchical information on the current page"
             stylesheet="scss/components/breadcrumbs.scss"
             withSource
         >
@@ -66,8 +66,8 @@ const Components = () => (
         </Component>
 
         <Component
-            key='calendar-date-picker'
-            id='calendar-date-picker'
+            key="calendar-date-picker"
+            id="calendar-date-picker"
             title="Calendar & Date Picker"
             stylesheet="scss/components/calendar.scss"
             withSource
@@ -75,12 +75,11 @@ const Components = () => (
             <Calendar />
         </Component>
 
-
         <Component
-            key='collapsible'
-            id='collapsible'
+            key="collapsible"
+            id="collapsible"
             title="Collapsible"
-            usage='Simple accordion elements based on Materialize Collapsible.'
+            usage="Simple accordion elements based on Materialize Collapsible."
             stylesheet="scss/components/collapsible.scss"
             withSource
         >
@@ -88,10 +87,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='content-placeholder'
-            id='content-placeholder'
+            key="content-placeholder"
+            id="content-placeholder"
             title="Content Placeholder"
-            usage='Style to use when content is loading'
+            usage="Style to use when content is loading"
             stylesheet="scss/components/material-card.scss"
             withSource
         >
@@ -99,10 +98,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='corner-ribbon'
-            id='corner-ribbon'
+            key="corner-ribbon"
+            id="corner-ribbon"
             title="Corner Ribbon"
-            usage='Use to indicate a component special state'
+            usage="Use to indicate a component special state"
             stylesheet="scss/components/corner-ribbon.scss"
             withSource
         >
@@ -110,10 +109,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='facet'
-            id='facet'
+            key="facet"
+            id="facet"
             title="Facet"
-            usage='Facet styling'
+            usage="Facet styling"
             stylesheet="scss/components/facet.scss"
             withSource
         >
@@ -121,10 +120,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='card'
-            id='card'
+            key="card"
+            id="card"
             title="Card"
-            usage='Utils to apply style on card or container'
+            usage="Utils to apply style on card or container"
             stylesheet="scss/components/card.scss"
             withSource
         >
@@ -132,10 +131,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='search-field'
-            id='search-field'
+            key="search-field"
+            id="search-field"
             title="Search Field"
-            usage='An input to use in a search context'
+            usage="An input to use in a search context"
             stylesheet="scss/components/search-bar.scss"
             withSource
         >
@@ -143,10 +142,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='list-box'
-            id='list-box'
+            key="list-box"
+            id="list-box"
             title="List Box"
-            usage='Use when displaying a list of items with different state.'
+            usage="Use when displaying a list of items with different state."
             stylesheet="scss/components/list-box.scss"
             withSource
         >
@@ -154,10 +153,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='loading'
-            id='loading'
+            key="loading"
+            id="loading"
             title="Loading"
-            usage='Use it while fetching data'
+            usage="Use it while fetching data"
             stylesheet="scss/components/loading.scss"
             withSource
         >
@@ -165,10 +164,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='member'
-            id='member'
+            key="member"
+            id="member"
             title="Member"
-            usage='Use when displaying a user or member thumbnail.'
+            usage="Use when displaying a user or member thumbnail."
             stylesheet="scss/components/member.scss"
             withSource
         >
@@ -176,10 +175,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='modal'
-            id='modal'
+            key="modal"
+            id="modal"
             title="Modal"
-            usage='Modal window styling'
+            usage="Modal window styling"
             stylesheet="scss/components/modal.scss"
             withSource
         >
@@ -187,10 +186,10 @@ const Components = () => (
         </Component>
 
         <Component
-            key='multi-step-bar'
-            id='multi-step-bar'
+            key="multi-step-bar"
+            id="multi-step-bar"
             title="Multi Step Bar"
-            usage='A bar used to display multiple steps status'
+            usage="A bar used to display multiple steps status"
             stylesheet="scss/components/multi-step-bar.scss"
             withSource
         >
@@ -198,23 +197,17 @@ const Components = () => (
         </Component>
 
         <Component
-            key='sync-feedback'
-            id='sync-feedback'
+            key="sync-feedback"
+            id="sync-feedback"
             title="Sync Feedback"
-            usage='Use it when you want to give feedback to the user'
+            usage="Use it when you want to give feedback to the user"
             stylesheet="scss/components/sync-feedback.scss"
             withSource
         >
             <SyncFeedback />
         </Component>
 
-        <Component
-            key='tabs'
-            id='tabs'
-            title="Tabs"
-            stylesheet="scss/components/tab.scss"
-            withSource
-        >
+        <Component key="tabs" id="tabs" title="Tabs" stylesheet="scss/components/tab.scss" withSource>
             <Tab />
         </Component>
     </Layout>

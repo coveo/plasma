@@ -13,7 +13,10 @@ export interface ITableRowState {
 export const tableRowInitialState: ITableRowState = {id: undefined, opened: undefined, selected: undefined};
 export const tableRowsInitialState: ITableRowState[] = [];
 
-export const tableRowReducer = (state: ITableRowState = tableRowInitialState, action: IReduxAction<ITableRowActionPayload>): ITableRowState => {
+export const tableRowReducer = (
+    state: ITableRowState = tableRowInitialState,
+    action: IReduxAction<ITableRowActionPayload>
+): ITableRowState => {
     switch (action.type) {
         case TableRowActions.add:
             return {
@@ -35,20 +38,19 @@ export const tableRowReducer = (state: ITableRowState = tableRowInitialState, ac
                 ? {...state, selected: state.id === action.payload.id}
                 : state;
         case TableRowActions.unselectAll:
-            return state.tableId === action.payload.tableId
-                ? {...state, selected: false, opened: false}
-                : state;
-        default: return state;
+            return state.tableId === action.payload.tableId ? {...state, selected: false, opened: false} : state;
+        default:
+            return state;
     }
 };
 
-export const tableRowsReducer = (state: ITableRowState[] = tableRowsInitialState, action: IReduxAction<ITableRowActionPayload>): ITableRowState[] => {
+export const tableRowsReducer = (
+    state: ITableRowState[] = tableRowsInitialState,
+    action: IReduxAction<ITableRowActionPayload>
+): ITableRowState[] => {
     switch (action.type) {
         case TableRowActions.add:
-            return [
-                ...state,
-                tableRowReducer(undefined, action),
-            ];
+            return [...state, tableRowReducer(undefined, action)];
         case TableRowActions.remove:
             return _.reject(state, (row: ITableRowState) => {
                 return action.payload.id === row.id;

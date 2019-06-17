@@ -17,11 +17,13 @@ import {TableHeadingRow} from '../TableHeadingRow';
 describe('<TableChildBody />', () => {
     const spyOnRowClick: jasmine.Spy = jasmine.createSpy('onRowClick');
     const spyHandleOnRowClick: jasmine.Spy = jasmine.createSpy('handleOnRowClick');
-    const someActions: IActionOptions[] = [{
-        name: 'some-action',
-        trigger: jasmine.createSpy('triggerMethod'),
-        enabled: true,
-    }];
+    const someActions: IActionOptions[] = [
+        {
+            name: 'some-action',
+            trigger: jasmine.createSpy('triggerMethod'),
+            enabled: true,
+        },
+    ];
     const tableChildBodyProps: ITableChildBodyProps = {
         tableId: 'best-table',
         rowData: {
@@ -69,7 +71,7 @@ describe('<TableChildBody />', () => {
                 <Provider store={store}>
                     <TableChildBody {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             return wrapper.find(TableChildBody);
         };
@@ -81,15 +83,19 @@ describe('<TableChildBody />', () => {
         it('should add additional classes on the cell element for each row', () => {
             const component = mountComponentWithProps({
                 ...tableChildBodyProps,
-                headingAttributes: [{
-                    attributeName: 'email',
-                    titleFormatter: _.identity,
-                    attributeFormatter: _.escape,
-                    filterFormatter: _.identity,
-                    additionalCellClasses: [{
-                        className: 'new-class',
-                    }],
-                }],
+                headingAttributes: [
+                    {
+                        attributeName: 'email',
+                        titleFormatter: _.identity,
+                        attributeFormatter: _.escape,
+                        filterFormatter: _.identity,
+                        additionalCellClasses: [
+                            {
+                                className: 'new-class',
+                            },
+                        ],
+                    },
+                ],
             });
             expect(component.find('td.new-class')).toBeDefined();
         });
@@ -99,10 +105,12 @@ describe('<TableChildBody />', () => {
 
             const component = mountComponentWithProps({
                 ...tableChildBodyProps,
-                headingAttributes: [{
-                    ...tableChildBodyProps.headingAttributes[0],
-                    onClickCell: spy,
-                }],
+                headingAttributes: [
+                    {
+                        ...tableChildBodyProps.headingAttributes[0],
+                        onClickCell: spy,
+                    },
+                ],
             });
 
             component.find('td').simulate('click');
@@ -114,9 +122,13 @@ describe('<TableChildBody />', () => {
         });
 
         it('should render a <TableCollapsibleRowWrapper /> if the prop collapsibleFormatter is defined', () => {
-            expect(mountComponentWithProps(_.extend({}, tableChildBodyProps, {
-                collapsibleFormatter: () => <div></div>,
-            })).find(TableCollapsibleRowWrapper).length).toBe(1);
+            expect(
+                mountComponentWithProps(
+                    _.extend({}, tableChildBodyProps, {
+                        collapsibleFormatter: () => <div></div>,
+                    })
+                ).find(TableCollapsibleRowWrapper).length
+            ).toBe(1);
         });
 
         it('should render a <TableHeadingRow />', () => {
@@ -128,7 +140,9 @@ describe('<TableChildBody />', () => {
         });
 
         it('should render a <TableCollapsibleRow /> if there is a defined collapsibleFormatter ouput', () => {
-            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {collapsibleFormatter: (rowData: IData) => rowData.url});
+            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
+                collapsibleFormatter: (rowData: IData) => rowData.url,
+            });
             expect(mountComponentWithProps(newProps).find(TableCollapsibleRow).length).toBe(1);
         });
 
@@ -138,7 +152,9 @@ describe('<TableChildBody />', () => {
 
         it('should call onRowClick with getActions result if it is defined on click of a heading row', () => {
             spyOnRowClick.calls.reset();
-            mountComponentWithProps().find(TableHeadingRow).simulate('click');
+            mountComponentWithProps()
+                .find(TableHeadingRow)
+                .simulate('click');
 
             expect(spyOnRowClick).toHaveBeenCalledTimes(1);
             expect(tableChildBodyProps.getActions).toHaveBeenCalled();
@@ -149,7 +165,9 @@ describe('<TableChildBody />', () => {
 
         it('should call handleOnRowClick if it is defined on click of a heading row', () => {
             spyHandleOnRowClick.calls.reset();
-            mountComponentWithProps().find(TableHeadingRow).simulate('click');
+            mountComponentWithProps()
+                .find(TableHeadingRow)
+                .simulate('click');
 
             expect(spyHandleOnRowClick).toHaveBeenCalledTimes(1);
 
@@ -158,22 +176,27 @@ describe('<TableChildBody />', () => {
 
         it('should call getActions results with option callOnDoubleClick true on row double click', () => {
             const actionSpy: jasmine.Spy = jasmine.createSpy('actionSpy');
-            const twoActions: IActionOptions[] = [{
-                name: 'action that should not be called',
-                enabled: true,
-                trigger: () => {
-                    throw new Error('This action should not be called');
+            const twoActions: IActionOptions[] = [
+                {
+                    name: 'action that should not be called',
+                    enabled: true,
+                    trigger: () => {
+                        throw new Error('This action should not be called');
+                    },
                 },
-            }, {
-                name: 'action that should be called',
-                callOnDoubleClick: true,
-                enabled: true,
-                trigger: actionSpy,
-            }];
+                {
+                    name: 'action that should be called',
+                    callOnDoubleClick: true,
+                    enabled: true,
+                    trigger: actionSpy,
+                },
+            ];
             const getActionsSpy: jasmine.Spy = jasmine.createSpy('getActions').and.returnValue(twoActions);
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {getActions: getActionsSpy});
 
-            mountComponentWithProps(newProps).find(TableHeadingRow).simulate('dblclick');
+            mountComponentWithProps(newProps)
+                .find(TableHeadingRow)
+                .simulate('dblclick');
 
             expect(getActionsSpy).toHaveBeenCalled();
             expect(actionSpy).toHaveBeenCalledTimes(1);
@@ -184,22 +207,32 @@ describe('<TableChildBody />', () => {
         });
 
         it('should send not send disabled as a class to the <TableHeadingRow /> if the enabled property is set to true on the row data', () => {
-            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: true})});
+            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
+                rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: true}),
+            });
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(0);
         });
 
         it('should send disabled as a class to the <TableHeadingRow /> if the enabled property is set to false on the row data', () => {
-            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: false})});
+            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
+                rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: false}),
+            });
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should send disabled as a class to the <TableHeadingRow /> if the disabled property is set to true on the row data', () => {
-            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {rowData: _.extend({}, tableChildBodyProps.rowData, {disabled: true})});
+            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
+                rowData: _.extend({}, tableChildBodyProps.rowData, {disabled: true}),
+            });
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBeGreaterThanOrEqual(1);
         });
 
         it('should set the selectionDisabled prop to false on the <TableHeadingRow /> if there are actions defined for the row', () => {
-            expect(mountComponentWithProps().find(TableHeadingRow).props().selectionDisabled).toBe(false);
+            expect(
+                mountComponentWithProps()
+                    .find(TableHeadingRow)
+                    .props().selectionDisabled
+            ).toBe(false);
         });
 
         it('should set the selectionDisabled prop to true on the <TableHeadingRow /> if there are no actions defined for the row', () => {
@@ -207,7 +240,11 @@ describe('<TableChildBody />', () => {
                 getActions: jasmine.createSpy('getActions').and.returnValue([]),
             });
 
-            expect(mountComponentWithProps(newProps).find(TableHeadingRow).props().selectionDisabled).toBe(true);
+            expect(
+                mountComponentWithProps(newProps)
+                    .find(TableHeadingRow)
+                    .props().selectionDisabled
+            ).toBe(true);
         });
     });
 });

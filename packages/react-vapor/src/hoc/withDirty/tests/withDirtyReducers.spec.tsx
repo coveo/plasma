@@ -30,14 +30,18 @@ describe('withEditing', () => {
                 const oldState: ComponentId[] = [];
                 const expectedState: ComponentId[] = [payload[0]];
 
-                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(expectedState);
+                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
+                    expectedState
+                );
             });
 
             it('should return the oldState if the id is already in the state', () => {
                 const oldState: ComponentId[] = [payload[0]];
                 const expectedState: ComponentId[] = [payload[0]];
 
-                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(expectedState);
+                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
+                    expectedState
+                );
             });
         });
 
@@ -48,14 +52,18 @@ describe('withEditing', () => {
                 const oldState: ComponentId[] = [payload[0]];
                 const expectedState: ComponentId[] = [];
 
-                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(expectedState);
+                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
+                    expectedState
+                );
             });
 
             it('should return the oldState if the id passed in the payload is not in the state', () => {
                 const oldState: ComponentId[] = [];
                 const expectedState: ComponentId[] = [];
 
-                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(expectedState);
+                expect(withDirtyReducer(oldState, WithDirtyActions.toggle(payload[0], payload[1]))).toEqual(
+                    expectedState
+                );
             });
         });
     });

@@ -13,10 +13,7 @@ describe('SelectedOption', () => {
         let selectedOption: ReactWrapper<ISelectedOptionProps, any>;
 
         const renderSelectedOption = (currentProps?: ISelectedOptionProps) => {
-            selectedOption = mount(
-                <SelectedOption {...currentProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            selectedOption = mount(<SelectedOption {...currentProps} />, {attachTo: document.getElementById('App')});
         };
 
         beforeEach(() => {
@@ -32,7 +29,12 @@ describe('SelectedOption', () => {
                 const label: string = 'displayTest';
                 selectedOption.setProps({label});
 
-                expect(selectedOption.find('.selected-option-value').first().text()).toBe(label);
+                expect(
+                    selectedOption
+                        .find('.selected-option-value')
+                        .first()
+                        .text()
+                ).toBe(label);
             });
         });
 
@@ -52,7 +54,10 @@ describe('SelectedOption', () => {
 
                 selectedOption.simulate('click');
                 selectedOption.find('.selected-option').simulate('click');
-                selectedOption.find('.selected-option-value').first().simulate('click');
+                selectedOption
+                    .find('.selected-option-value')
+                    .first()
+                    .simulate('click');
 
                 expect(onRemoveOptionClick).not.toHaveBeenCalled();
             });

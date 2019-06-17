@@ -9,9 +9,7 @@ import {
 } from '../OptionPickerActions';
 
 describe('Option picker', () => {
-
     describe('OptionsPickerActions', () => {
-
         const OPTION_PICKER_ID: string = 'option-picker';
 
         it('should create an action to add the option picker', () => {

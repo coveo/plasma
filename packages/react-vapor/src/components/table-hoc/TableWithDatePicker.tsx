@@ -11,9 +11,10 @@ import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConne
 import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
 import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
 
-export interface ITableWithDatePickerConfig extends IMaybeServerConfig,
-    Partial<IDatePickerDropdownOwnProps>,
-    Partial<IDatePickerDropdownChildrenProps> {
+export interface ITableWithDatePickerConfig
+    extends IMaybeServerConfig,
+        Partial<IDatePickerDropdownOwnProps>,
+        Partial<IDatePickerDropdownChildrenProps> {
     matchDates?: (data: any, lowerLimit: Date, upperLimit?: Date) => boolean;
 }
 
@@ -26,9 +27,10 @@ export interface ITableWithFilterDispatchProps {
     onRender: () => void;
 }
 
-export interface ITableWithDatePickerProps extends Partial<ITableWithDatePickerStateProps>,
-    Partial<ITableWithFilterDispatchProps>,
-    ITableHOCOwnProps {}
+export interface ITableWithDatePickerProps
+    extends Partial<ITableWithDatePickerStateProps>,
+        Partial<ITableWithFilterDispatchProps>,
+        ITableHOCOwnProps {}
 
 const TableWithFilterPropsToOmit = keys<ITableWithDatePickerStateProps>();
 
@@ -36,15 +38,20 @@ export type FilterableTableComponent = React.ComponentClass<ITableWithDatePicker
 
 const defaultMatchDates = () => true;
 
-export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePickerConfig> = {}) => (Component: FilterableTableComponent): FilterableTableComponent => {
-
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithDatePickerProps): ITableWithDatePickerStateProps | ITableHOCOwnProps => {
+export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePickerConfig> = {}) => (
+    Component: FilterableTableComponent
+): FilterableTableComponent => {
+    const mapStateToProps = (
+        state: IReactVaporState,
+        ownProps: ITableWithDatePickerProps
+    ): ITableWithDatePickerStateProps | ITableHOCOwnProps => {
         const config = HocUtils.supplyConfig(supplier);
         const [lowerLimit, upperLimit] = DatePickerSelectors.getDatePickerLimits(state, {id: ownProps.id});
         const matchDates = config.matchDates || defaultMatchDates;
-        const filterData = () => lowerLimit
-            ? _.filter(ownProps.data, (datum: any) => matchDates(datum, lowerLimit, upperLimit))
-            : ownProps.data;
+        const filterData = () =>
+            lowerLimit
+                ? _.filter(ownProps.data, (datum: any) => matchDates(datum, lowerLimit, upperLimit))
+                : ownProps.data;
         return {
             lowerLimit,
             upperLimit,
@@ -59,8 +66,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
         };
 
         componentDidUpdate(prevProps: ITableWithDatePickerProps) {
-            if (prevProps.lowerLimit !== this.props.lowerLimit
-                || prevProps.upperLimit !== this.props.upperLimit) {
+            if (prevProps.lowerLimit !== this.props.lowerLimit || prevProps.upperLimit !== this.props.upperLimit) {
                 callIfDefined(this.props.onUpdate);
             }
         }
@@ -69,7 +75,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
             const config = HocUtils.supplyConfig(supplier);
             const datePickerAction = (
                 <DatePickerDropdownConnected
-                    {...config as any}
+                    {...(config as any)}
                     id={this.props.id}
                     key={this.props.id}
                     className={classNames('coveo-table-actions', config.className)}

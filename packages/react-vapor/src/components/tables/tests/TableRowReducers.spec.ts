@@ -9,7 +9,6 @@ import {
 } from '../TableRowReducers';
 
 describe('Tables', () => {
-
     describe('TableRowReducers', () => {
         const doesNotMatter = false;
         const genericAction: IReduxAction<ITableRowActionPayload> = {
@@ -72,11 +71,13 @@ describe('Tables', () => {
                     id: 'row2',
                     opened: false,
                     selected: false,
-                }, {
+                },
+                {
                     id: 'row1',
                     opened: true,
                     selected: false,
-                }, {
+                },
+                {
                     id: 'row3',
                     opened: false,
                     selected: false,
@@ -170,12 +171,14 @@ describe('Tables', () => {
                         tableId: 'table3',
                         opened: false,
                         selected: false,
-                    }, {
+                    },
+                    {
                         id: 'row1',
                         tableId: 'table3',
                         opened: true,
                         selected: false,
-                    }, {
+                    },
+                    {
                         id: 'row3',
                         tableId: 'table3',
                         opened: false,
@@ -215,8 +218,9 @@ describe('Tables', () => {
                 const rowsState = tableRowsReducer(oldState, action);
 
                 expect(rowsState.filter((row) => row.id === action.payload.id)[0].selected).toBe(true);
-                expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected))
-                    .toBe(true);
+                expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected)).toBe(
+                    true
+                );
             });
 
             it('should preserve the same selected row if you perform the exact same toggle action twice', () => {
@@ -224,8 +228,9 @@ describe('Tables', () => {
                 const rowsState = tableRowsReducer(tableRowsReducer(oldState, action), action);
 
                 expect(rowsState.filter((row) => row.id === action.payload.id)[0].selected).toBe(true);
-                expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected))
-                    .toBe(true);
+                expect(rowsState.filter((row) => row.id !== action.payload.id).every((row) => !row.selected)).toBe(
+                    true
+                );
             });
 
             it('should select a new row on the second time the toggle action is performed with a new row id', () => {
@@ -234,8 +239,9 @@ describe('Tables', () => {
                 const rowsState = tableRowsReducer(tableRowsReducer(oldState, action1), action2);
 
                 expect(rowsState.filter((row) => row.id === action2.payload.id)[0].selected).toBe(true);
-                expect(rowsState.filter((row) => row.id !== action2.payload.id).every((row) => !row.selected))
-                    .toBe(true);
+                expect(rowsState.filter((row) => row.id !== action2.payload.id).every((row) => !row.selected)).toBe(
+                    true
+                );
             });
 
             it('should unselect all rows having a table id identical to the one received in the payload', () => {
@@ -251,7 +257,11 @@ describe('Tables', () => {
                 const tableId = 'tableId';
                 const action = unselectAllRows(tableId);
 
-                const currentStateWithTableId = oldState.map((rowState) => ({...rowState, tableId: `different${tableId}`, selected: true}));
+                const currentStateWithTableId = oldState.map((rowState) => ({
+                    ...rowState,
+                    tableId: `different${tableId}`,
+                    selected: true,
+                }));
 
                 expect(tableRowsReducer(currentStateWithTableId, action).every((row) => row.selected)).toBe(true);
             });
@@ -263,12 +273,14 @@ describe('Tables', () => {
                         tableId: 'table3',
                         opened: false,
                         selected: false,
-                    }, {
+                    },
+                    {
                         id: 'row1',
                         tableId: 'table3',
                         opened: true,
                         selected: false,
-                    }, {
+                    },
+                    {
                         id: 'row3',
                         tableId: 'table3',
                         opened: false,

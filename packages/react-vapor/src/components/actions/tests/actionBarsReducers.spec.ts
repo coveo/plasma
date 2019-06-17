@@ -15,7 +15,6 @@ import {
 } from '../ActionBarReducers';
 
 describe('Actions', () => {
-
     describe('actionBars', () => {
         const genericAction: IReduxAction<IActionBarPayload> = {
             type: 'DO_SOMETHING',
@@ -80,11 +79,13 @@ describe('Actions', () => {
                         id: 'some-action-bar2',
                         actions: undefined,
                         tableYPosition: 10,
-                    }, {
+                    },
+                    {
                         id: 'some-action-bar',
                         actions: undefined,
                         tableYPosition: 40,
-                    }, {
+                    },
+                    {
                         id: 'some-action-bar3',
                         actions: undefined,
                         tableYPosition: undefined,
@@ -137,24 +138,30 @@ describe('Actions', () => {
                 const actionBarsState: IActionBarState[] = actionBarsReducer(oldState, action);
 
                 expect(actionBarsState.length).toBe(oldState.length);
-                expect(actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].actions).toBeDefined();
-                expect(actionBarsState.filter((actionBar) => actionBar.id !== action.payload.id)[0].actions).toBeUndefined();
+                expect(
+                    actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].actions
+                ).toBeDefined();
+                expect(
+                    actionBarsState.filter((actionBar) => actionBar.id !== action.payload.id)[0].actions
+                ).toBeUndefined();
             });
 
             it('should set the actionbar isLoading prop to true when a loading action is dispatched and contain its id', () => {
                 const actionBarsState = actionBarsReducer(oldState, turnOnLoading([oldState[2].id]));
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).isLoading).toBe(true);
-                expect(actionBarsState.filter(((actionBar) => actionBar.id !== oldState[2].id)))
-                    .toEqual(oldState.filter(((actionBar) => actionBar.id !== oldState[2].id)));
+                expect(actionBarsState.filter((actionBar) => actionBar.id !== oldState[2].id)).toEqual(
+                    oldState.filter((actionBar) => actionBar.id !== oldState[2].id)
+                );
             });
 
             it('should set the actionbar isLoading prop to false when a loading action is dispatched and contain its id', () => {
                 const actionBarsState = actionBarsReducer(oldState, turnOffLoading([oldState[2].id]));
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).isLoading).toBe(false);
-                expect(actionBarsState.filter(((actionBar) => actionBar.id !== oldState[2].id)))
-                    .toEqual(oldState.filter(((actionBar) => actionBar.id !== oldState[2].id)));
+                expect(actionBarsState.filter((actionBar) => actionBar.id !== oldState[2].id)).toEqual(
+                    oldState.filter((actionBar) => actionBar.id !== oldState[2].id)
+                );
             });
 
             it('should remove the actions when a change perPage action is dispatched and contain its id', () => {
@@ -166,13 +173,19 @@ describe('Actions', () => {
 
             it('should remove the actions when a change page action is dispatched and contain its id', () => {
                 const newPage = 5;
-                const actionBarsState = actionBarsReducer(oldState, changePage(TableHOCUtils.getPaginationId(oldState[2].id), newPage));
+                const actionBarsState = actionBarsReducer(
+                    oldState,
+                    changePage(TableHOCUtils.getPaginationId(oldState[2].id), newPage)
+                );
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
             });
 
             it('should remove the actions when a change select action is dispatched and contain its id', () => {
-                const actionBarsState = actionBarsReducer(oldState, selectListBoxOption(oldState[2].id, false, 'new-value'));
+                const actionBarsState = actionBarsReducer(
+                    oldState,
+                    selectListBoxOption(oldState[2].id, false, 'new-value')
+                );
 
                 expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
             });

@@ -24,12 +24,13 @@ export const actionBarInitialState: IActionBarState = {
 };
 export const actionBarsInitialState: IActionBarState[] = [];
 
-export const actionBarReducer = (state: IActionBarState = actionBarInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState => {
+export const actionBarReducer = (
+    state: IActionBarState = actionBarInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IActionBarState => {
     switch (action.type) {
         case ActionBarActions.addActions:
-            return state.id !== action.payload.id
-                ? state
-                : {...state, actions: action.payload.actions};
+            return state.id !== action.payload.id ? state : {...state, actions: action.payload.actions};
         case ActionBarActions.add:
             return {
                 ...state,
@@ -39,25 +40,24 @@ export const actionBarReducer = (state: IActionBarState = actionBarInitialState,
         case PerPageActions.change:
         case PaginationActions.changePage:
         case ListBoxActions.select:
-            return state.id === action.payload.id
-                || TableHOCUtils.getPaginationId(state.id) === action.payload.id
-                || s.contains(action.payload.id, state.id)
+            return state.id === action.payload.id ||
+                TableHOCUtils.getPaginationId(state.id) === action.payload.id ||
+                s.contains(action.payload.id, state.id)
                 ? {...state, actions: []}
                 : state;
         case LoadingActions.turnOn:
-            return _.contains(action.payload.ids, state.id)
-                ? {...state, isLoading: true}
-                : state;
+            return _.contains(action.payload.ids, state.id) ? {...state, isLoading: true} : state;
         case LoadingActions.turnOff:
-            return _.contains(action.payload.ids, state.id)
-                ? {...state, isLoading: false}
-                : state;
+            return _.contains(action.payload.ids, state.id) ? {...state, isLoading: false} : state;
         default:
             return state;
     }
 };
 
-export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialState, action: IReduxAction<IReduxActionsPayload>): IActionBarState[] => {
+export const actionBarsReducer = (
+    state: IActionBarState[] = actionBarsInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IActionBarState[] => {
     switch (action.type) {
         case ActionBarActions.addActions:
         case PaginationActions.changePage:
@@ -65,14 +65,9 @@ export const actionBarsReducer = (state: IActionBarState[] = actionBarsInitialSt
         case ListBoxActions.select:
         case LoadingActions.turnOn:
         case LoadingActions.turnOff:
-            return state.map((bar) =>
-                actionBarReducer(bar, action),
-            );
+            return state.map((bar) => actionBarReducer(bar, action));
         case ActionBarActions.add:
-            return [
-                ...state,
-                actionBarReducer(undefined, action),
-            ];
+            return [...state, actionBarReducer(undefined, action)];
         case ActionBarActions.remove:
             return _.reject(state, (bar) => {
                 return action.payload.id === bar.id;

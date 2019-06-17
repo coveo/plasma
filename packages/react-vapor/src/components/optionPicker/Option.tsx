@@ -13,12 +13,15 @@ export interface IOptionProps extends React.ClassAttributes<Option> {
 }
 
 export class Option extends React.Component<IOptionProps, any> {
-
     render() {
         const buttonClass = this.props.isActive ? 'active' : '';
 
         return (
-            <button type='button' className={buttonClass} onClick={() => this.props.onClick(this.props.option.value(), this.props.option.label)}>
+            <button
+                type="button"
+                className={buttonClass}
+                onClick={() => this.props.onClick(this.props.option.value(), this.props.option.label)}
+            >
                 {this.props.option.label}
             </button>
         );

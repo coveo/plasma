@@ -29,12 +29,12 @@ export interface IOptionsCycleDispatchProps {
     onChange: (index: number) => void;
 }
 
-export interface IOptionsCycleProps extends IOptionsCycleOwnProps,
-    Partial<IOptionsCycleStateProps>,
-    Partial<IOptionsCycleDispatchProps> {}
+export interface IOptionsCycleProps
+    extends IOptionsCycleOwnProps,
+        Partial<IOptionsCycleStateProps>,
+        Partial<IOptionsCycleDispatchProps> {}
 
 export class OptionsCycle extends React.Component<IOptionsCycleProps> {
-
     static defaultProps: Partial<IOptionsCycleProps> = {
         currentOption: 0,
         wrapAround: true,
@@ -42,14 +42,17 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
 
     private goToPreviousOption() {
         if (this.props.onChange) {
-            const newOptionIndex = this.props.currentOption ? this.props.currentOption - 1 : this.props.options.length - 1;
+            const newOptionIndex = this.props.currentOption
+                ? this.props.currentOption - 1
+                : this.props.options.length - 1;
             this.props.onChange(newOptionIndex);
         }
     }
 
     private goToNextOption() {
         if (this.props.onChange) {
-            const newOptionIndex = this.props.currentOption === this.props.options.length - 1 ? 0 : this.props.currentOption + 1;
+            const newOptionIndex =
+                this.props.currentOption === this.props.options.length - 1 ? 0 : this.props.currentOption + 1;
             this.props.onChange(newOptionIndex);
         }
     }
@@ -64,23 +67,29 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
 
     render() {
         return (
-            <div className={classNames('options-cycle text-medium-blue', this.props.className, {'mod-inline': this.props.isInline})}>
+            <div
+                className={classNames('options-cycle text-medium-blue', this.props.className, {
+                    'mod-inline': this.props.isInline,
+                })}
+            >
                 <button
-                    type='button'
+                    type="button"
                     className={classNames('options-cycle-button previous-option', this.props.previousClassName)}
                     onClick={() => this.goToPreviousOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === 0}
                 >
-                    <Svg svgName='arrow-left-rounded' svgClass='icon fill-dark-blue mod-16' />
+                    <Svg svgName="arrow-left-rounded" svgClass="icon fill-dark-blue mod-16" />
                 </button>
-                <span className={classNames('options-cycle-option', this.props.buttonClassName)}>{this.props.options[this.props.currentOption]}</span>
+                <span className={classNames('options-cycle-option', this.props.buttonClassName)}>
+                    {this.props.options[this.props.currentOption]}
+                </span>
                 <button
-                    type='button'
+                    type="button"
                     className={classNames('options-cycle-button next-option', this.props.nextClassName)}
                     onClick={() => this.goToNextOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === this.props.options.length - 1}
                 >
-                    <Svg svgName='arrow-right-rounded' svgClass='icon fill-dark-blue mod-16' />
+                    <Svg svgName="arrow-right-rounded" svgClass="icon fill-dark-blue mod-16" />
                 </button>
             </div>
         );

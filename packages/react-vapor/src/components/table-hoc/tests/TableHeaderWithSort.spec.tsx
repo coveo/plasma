@@ -16,11 +16,13 @@ describe('Table HOC', () => {
 
         beforeEach(() => {
             store = createMockStore({
-                tableHOCHeader: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    isAsc: false,
-                }],
+                tableHOCHeader: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        isAsc: false,
+                    },
+                ],
             });
         });
 
@@ -35,12 +37,13 @@ describe('Table HOC', () => {
         });
 
         it('should not throw when rendering children', () => {
-            const render = () => shallowWithStore(
-                <TableHeaderWithSort {...defaultProps}>
-                    <div>Hello</div>
-                </TableHeaderWithSort>,
-                store,
-            ).dive();
+            const render = () =>
+                shallowWithStore(
+                    <TableHeaderWithSort {...defaultProps}>
+                        <div>Hello</div>
+                    </TableHeaderWithSort>,
+                    store
+                ).dive();
 
             expect(render).not.toThrow();
         });

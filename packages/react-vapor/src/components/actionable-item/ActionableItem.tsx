@@ -30,34 +30,34 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         'actionable-item-content inline-block text-medium-blue border-color-medium-grey mod-border bg-pure-white',
                         actionableItemContent,
                         actionableItemContainer,
-                        this.props.containerClassName,
+                        this.props.containerClassName
                     )}
                     onClick={(e: React.MouseEvent<HTMLDivElement>) => callIfDefined(this.props.onItemClick, e)}
                 >
                     {this.props.children}
                 </div>
-                {
-                    this.props.actions && this.props.actions.length
-                        ? (
-                            <Drop
-                                id={this.props.id}
-                                positions={[DropPodPosition.bottom, DropPodPosition.top]}
-                                buttonContainerProps={{className: 'inline-block'}}
-                                parentSelector={'body'}
-                                renderOpenButton={(onClick: () => void) => (
-                                    <div
-                                        onClick={onClick}
-                                        className={classNames('actionable-item-dots cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom bg-pure-white', actionableItemDots, actionableItemContainer)}
-                                    >
-                                        <Svg svgName='more-append' svgClass='icon mod-12 fill-medium-blue' />
-                                    </div>
+                {this.props.actions && this.props.actions.length ? (
+                    <Drop
+                        id={this.props.id}
+                        positions={[DropPodPosition.bottom, DropPodPosition.top]}
+                        buttonContainerProps={{className: 'inline-block'}}
+                        parentSelector={'body'}
+                        renderOpenButton={(onClick: () => void) => (
+                            <div
+                                onClick={onClick}
+                                className={classNames(
+                                    'actionable-item-dots cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom bg-pure-white',
+                                    actionableItemDots,
+                                    actionableItemContainer
                                 )}
                             >
-                                <ListBox items={this.props.actions} />
-                            </Drop>
-                        )
-                        : null
-                }
+                                <Svg svgName="more-append" svgClass="icon mod-12 fill-medium-blue" />
+                            </div>
+                        )}
+                    >
+                        <ListBox items={this.props.actions} />
+                    </Drop>
+                ) : null}
             </div>
         );
     }

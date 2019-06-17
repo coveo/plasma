@@ -31,18 +31,12 @@ describe('Svg', () => {
     };
 
     it('should render without error', () => {
-        expect(() => shallow(
-            <Svg {...BASIC_SVG} />,
-        )).not.toThrow();
+        expect(() => shallow(<Svg {...BASIC_SVG} />)).not.toThrow();
     });
 
     describe('<Svg />', () => {
-
         const mountWithProps = (props: ISvgProps) => {
-            svg = mount(
-                <Svg {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            svg = mount(<Svg {...props} />, {attachTo: document.getElementById('App')});
         };
 
         afterEach(() => {

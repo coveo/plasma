@@ -16,28 +16,23 @@ const Tables = () => {
     return (
         <Layout>
             <Component
-                id='base'
+                id="base"
                 title="Base"
-                usage='Base style for all tables.'
+                usage="Base style for all tables."
                 stylesheet="scss/tables/table.scss"
                 withSource
             >
                 <Base />
             </Component>
 
-            <Component
-                id='drag-and-drop'
-                title="Drag and drop"
-                stylesheet="scss/tables/table.scss"
-                withSource
-            >
+            <Component id="drag-and-drop" title="Drag and drop" stylesheet="scss/tables/table.scss" withSource>
                 <DragAndDrop />
             </Component>
 
             <Component
-                id='fixed-header'
+                id="fixed-header"
                 title="Fixed header"
-                usage='Base markup to implement a simple table with a fixed header in pure CSS.'
+                usage="Base markup to implement a simple table with a fixed header in pure CSS."
                 stylesheet="scss/tables/fixed-header-table.scss"
                 withSource
             >
@@ -45,9 +40,9 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='actions-container'
+                id="actions-container"
                 title="Actions container"
-                usage='This defines how to set a filter box for a table and where to place actions button for each table elements. Add the mod-border-top class when the table is not right under the panel-header.'
+                usage="This defines how to set a filter box for a table and where to place actions button for each table elements. Add the mod-border-top class when the table is not right under the panel-header."
                 stylesheet="scss/tables/table-actions.scss"
                 withSource
             >
@@ -55,9 +50,9 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='small-actions-container'
+                id="small-actions-container"
                 title="Small actions container"
-                usage='This defines how to set small actions on a table. Useful when lots of actions are needed for the space available.'
+                usage="This defines how to set small actions on a table. Useful when lots of actions are needed for the space available."
                 stylesheet="scss/tables/table-actions.scss"
                 withSource
             >
@@ -65,9 +60,9 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='collapsible-rows'
+                id="collapsible-rows"
                 title="Collapsible rows"
-                usage='Allows to use collapsible rows, when you want to display more information than what is displayed on a single row.'
+                usage="Allows to use collapsible rows, when you want to display more information than what is displayed on a single row."
                 stylesheet="scss/tables/table-collapsible-rows.scss"
                 withSource
             >
@@ -75,7 +70,7 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='alternating-color-rows'
+                id="alternating-color-rows"
                 title="Alternating color rows"
                 stylesheet="scss/tables/table-alternating-rows.scss"
                 withSource
@@ -84,9 +79,9 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='pagination'
+                id="pagination"
                 title="Pagination"
-                usage='Adds buttons to change the number of items per page and change page.'
+                usage="Adds buttons to change the number of items per page and change page."
                 stylesheet="scss/tables/pagination.scss"
                 withSource
             >
@@ -94,9 +89,9 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='smaller-rows'
+                id="smaller-rows"
                 title="Smaller rows"
-                usage='Used when there are many rows.'
+                usage="Used when there are many rows."
                 stylesheet="scss/tables/table-slim-rows.scss"
                 withSource
             >
@@ -104,7 +99,7 @@ const Tables = () => {
             </Component>
 
             <Component
-                id='loading'
+                id="loading"
                 title="Loading"
                 usage="A style to display while table data is retrieved."
                 stylesheet="scss/tables/table.scss"

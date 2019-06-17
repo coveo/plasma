@@ -16,9 +16,7 @@ export interface GetMatchFilterTextProps {
     matchFilter?: MatchFilter;
 }
 const getMatchFilter = (state: IReactVaporState, props: GetMatchFilterTextProps): MatchFilter => {
-    return _.isUndefined(props.matchFilter)
-        ? defaultMatchFilter
-        : props.matchFilter;
+    return _.isUndefined(props.matchFilter) ? defaultMatchFilter : props.matchFilter;
 };
 
 export const FilterBoxSelectors = {

@@ -43,10 +43,12 @@ describe('Facets', () => {
                 name: 'facet1',
                 formattedName: 'Facet 1',
             };
-            selectedFacetRows = [{
-                name: 'row2',
-                formattedName: 'Row 2',
-            }];
+            selectedFacetRows = [
+                {
+                    name: 'row2',
+                    formattedName: 'Row 2',
+                },
+            ];
             onToggleFacet = jasmine.createSpy('onToggleFacet');
             clearFacet = jasmine.createSpy('clearFacet');
 
@@ -63,7 +65,7 @@ describe('Facets', () => {
                         maxRowsToShow={maxRowsToShow}
                     />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             facetComponent = wrapper.find(Facet);
         });
@@ -135,23 +137,27 @@ describe('Facets', () => {
                 {
                     name: 'row4',
                     formattedName: 'Row 4',
-                }, {
+                },
+                {
                     name: 'row5',
                     formattedName: 'Row 5',
-                }, {
+                },
+                {
                     name: 'row6',
                     formattedName: 'Row 6',
-                },
+                }
             );
 
-            newRow = <FacetConnected
-                facetRows={facetRows}
-                facet={facet}
-                selectedFacetRows={selectedFacetRows}
-                toggleFacet={onToggleFacet}
-                clearFacet={clearFacet}
-                maxRowsToShow={maxRowsToShow}
-            />;
+            newRow = (
+                <FacetConnected
+                    facetRows={facetRows}
+                    facet={facet}
+                    selectedFacetRows={selectedFacetRows}
+                    toggleFacet={onToggleFacet}
+                    clearFacet={clearFacet}
+                    maxRowsToShow={maxRowsToShow}
+                />
+            );
             wrapper.setProps({children: newRow}).update();
 
             expect(wrapper.find(Facet).find(FacetMoreToggle).length).toBe(1);
@@ -164,23 +170,27 @@ describe('Facets', () => {
                 {
                     name: 'row4',
                     formattedName: 'Row 4',
-                }, {
+                },
+                {
                     name: 'row5',
                     formattedName: 'Row 5',
-                }, {
+                },
+                {
                     name: 'row6',
                     formattedName: 'Row 6',
-                },
+                }
             );
 
-            newRow = <FacetConnected
-                facetRows={facetRows}
-                facet={facet}
-                selectedFacetRows={selectedFacetRows}
-                toggleFacet={onToggleFacet}
-                clearFacet={clearFacet}
-                maxRowsToShow={maxRowsToShow}
-            />;
+            newRow = (
+                <FacetConnected
+                    facetRows={facetRows}
+                    facet={facet}
+                    selectedFacetRows={selectedFacetRows}
+                    toggleFacet={onToggleFacet}
+                    clearFacet={clearFacet}
+                    maxRowsToShow={maxRowsToShow}
+                />
+            );
             wrapper.setProps({children: newRow});
             wrapper.update();
 
@@ -192,13 +202,15 @@ describe('Facets', () => {
 
             selectedFacetRows = [];
 
-            newRow = <FacetConnected
-                facetRows={facetRows}
-                facet={facet}
-                selectedFacetRows={selectedFacetRows}
-                toggleFacet={onToggleFacet}
-                clearFacet={clearFacet}
-            />;
+            newRow = (
+                <FacetConnected
+                    facetRows={facetRows}
+                    facet={facet}
+                    selectedFacetRows={selectedFacetRows}
+                    toggleFacet={onToggleFacet}
+                    clearFacet={clearFacet}
+                />
+            );
             wrapper.setProps({children: newRow});
             wrapper.update();
 
@@ -210,7 +222,10 @@ describe('Facets', () => {
         });
 
         it('should call onToggleFacet when buildCategoryFacet is called', () => {
-            const facetRowLabel = facetComponent.find(FacetRow).first().find('label');
+            const facetRowLabel = facetComponent
+                .find(FacetRow)
+                .first()
+                .find('label');
 
             expect(onToggleFacet).not.toHaveBeenCalled();
 

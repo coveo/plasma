@@ -67,11 +67,13 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
-                }, {
+                },
+                {
                     id: 'some-table-header-3',
                     tableId: 'not-important',
                     selected: true,
@@ -90,7 +92,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
@@ -111,7 +114,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
@@ -132,7 +136,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
@@ -154,7 +159,8 @@ describe('Table HOC', () => {
                     tableId: 'not-important',
                     selected: false,
                     opened: true,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
@@ -176,7 +182,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
@@ -198,7 +205,8 @@ describe('Table HOC', () => {
                     tableId: 'current-table',
                     selected: false,
                     opened: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'other-table',
                     selected: true,
@@ -219,7 +227,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     selected: true,
@@ -251,7 +260,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     selected: true,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     selected: true,
@@ -269,7 +279,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     selected: true,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     selected: true,

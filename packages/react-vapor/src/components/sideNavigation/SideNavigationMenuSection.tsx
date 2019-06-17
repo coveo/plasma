@@ -17,7 +17,10 @@ export interface ISideNavigationSectionDispatchProps {
     onClick?: () => void;
 }
 
-export interface ISideNavigationSectionProps extends ISideNavigationSectionOwnProps, ISideNavigationSectionStateProps, ISideNavigationSectionDispatchProps {}
+export interface ISideNavigationSectionProps
+    extends ISideNavigationSectionOwnProps,
+        ISideNavigationSectionStateProps,
+        ISideNavigationSectionDispatchProps {}
 
 const arrowClassName = 'collapsible-arrow icon fill-white transparency-4';
 
@@ -30,12 +33,10 @@ export class SideNavigationMenuSection extends React.Component<ISideNavigationSe
 
     render() {
         return (
-            <div className='block navigation-menu-section'>
+            <div className="block navigation-menu-section">
                 {this.buildHeader()}
                 <SlideY in={!(this.props.expandable && !this.props.expanded)} timeout={350}>
-                    <div className='navigation-menu-section-items'>
-                        {this.props.children}
-                    </div>
+                    <div className="navigation-menu-section-items">{this.props.children}</div>
                 </SlideY>
             </div>
         );
@@ -45,9 +46,11 @@ export class SideNavigationMenuSection extends React.Component<ISideNavigationSe
         if (this.props.header) {
             let arrow = null;
             if (this.props.expandable) {
-                arrow = this.props.expanded
-                    ? <Svg svgName='arrow-top-rounded' className={arrowClassName} />
-                    : <Svg svgName='arrow-bottom-rounded' className={arrowClassName} />;
+                arrow = this.props.expanded ? (
+                    <Svg svgName="arrow-top-rounded" className={arrowClassName} />
+                ) : (
+                    <Svg svgName="arrow-bottom-rounded" className={arrowClassName} />
+                );
             }
             return (
                 <SideNavigationHeader {...this.props.header} onClick={() => this.handleClick()}>

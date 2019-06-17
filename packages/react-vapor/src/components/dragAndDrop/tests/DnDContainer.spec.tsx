@@ -3,7 +3,6 @@ import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {DnDContainer} from '../DnDContainer';
 
 describe('DnDContainer', () => {
-
     const id = 'im an id, OK!!';
 
     describe('<DnDContainer />', () => {
@@ -26,9 +25,7 @@ describe('DnDContainer', () => {
         });
 
         describe('once rendered', () => {
-
             describe('icon to drag and drop', () => {
-
                 it('should set additional props on draggable icon if draggableIconProps is defined', () => {
                     const component = RTestUtils.renderComponent(DnDContainer, {
                         id,
@@ -82,7 +79,7 @@ describe('DnDContainer', () => {
                 it('should set the icon if defined as prop', () => {
                     const component = RTestUtils.renderComponent(DnDContainer, {
                         id,
-                        icon: <div className='select-me'>test</div>,
+                        icon: <div className="select-me">test</div>,
                     });
 
                     expect(component.wrapper.find('.select-me').length).toBe(1);
@@ -90,7 +87,6 @@ describe('DnDContainer', () => {
             });
 
             describe('drag and drop content', () => {
-
                 it('should set additional props on draggable container if draggableContainerProps is defined', () => {
                     const component = RTestUtils.renderComponent(DnDContainer, {
                         id,

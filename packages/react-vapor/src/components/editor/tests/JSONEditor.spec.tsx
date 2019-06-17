@@ -21,10 +21,9 @@ describe('JSONEditor', () => {
         let jsonEditorInstance: JSONEditor;
 
         const mountWithProps = (props: Partial<IJSONEditorProps> = {}) => {
-            jsonEditor = mount(
-                <JSONEditor {..._.defaults(props, basicProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            jsonEditor = mount(<JSONEditor {..._.defaults(props, basicProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
             jsonEditorInstance = jsonEditor.instance() as any;
         };
 
@@ -70,7 +69,10 @@ describe('JSONEditor', () => {
             const handleChangeSpy: jasmine.Spy = spyOn<any>(JSONEditor.prototype, 'handleChange');
             const expectedValue: string = 'anything at all really';
 
-            jsonEditor.find(CodeEditor).props().onChange(expectedValue);
+            jsonEditor
+                .find(CodeEditor)
+                .props()
+                .onChange(expectedValue);
 
             expect(handleChangeSpy).toHaveBeenCalledTimes(1);
             expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);

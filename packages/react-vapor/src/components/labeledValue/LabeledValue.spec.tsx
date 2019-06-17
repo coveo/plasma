@@ -28,18 +28,13 @@ describe('LabeledValue', () => {
 
     it('should render without error with informations', () => {
         expect(() => {
-            shallow(<LabeledValue {...props} information='some info' />);
+            shallow(<LabeledValue {...props} information="some info" />);
         }).not.toThrow();
     });
 
     it('should render without error with informations and specific info placement', () => {
         expect(() => {
-            shallow(
-                <LabeledValue
-                    {...props}
-                    information='some info'
-                    informationPlacement={TooltipPlacement.Bottom} />,
-            );
+            shallow(<LabeledValue {...props} information="some info" informationPlacement={TooltipPlacement.Bottom} />);
         }).not.toThrow();
     });
 
@@ -48,11 +43,7 @@ describe('LabeledValue', () => {
         let labeledValue: ShallowWrapper<any, any>;
 
         beforeEach(() => {
-            labeledValue = shallow(
-                <LabeledValue
-                    {...props}
-                    information={testInformations} />,
-            );
+            labeledValue = shallow(<LabeledValue {...props} information={testInformations} />);
         });
 
         it('should render with the label inside the label section', () => {
@@ -64,7 +55,7 @@ describe('LabeledValue', () => {
         });
 
         it('should render with the value inside the value section if value is a JSX.element', () => {
-            const jsxValue: JSX.Element = <div className='jsx-value'>value</div>;
+            const jsxValue: JSX.Element = <div className="jsx-value">value</div>;
             labeledValue.setProps({value: jsxValue}).update();
             expect(labeledValue.find('.value').find('.jsx-value').length).toBe(1);
         });
@@ -83,7 +74,12 @@ describe('LabeledValue', () => {
         });
 
         it('should render an svg inside the tooltip having the "info-14" name', () => {
-            expect(labeledValue.find(Tooltip).find(Svg).prop('svgName')).toBe('info-14');
+            expect(
+                labeledValue
+                    .find(Tooltip)
+                    .find(Svg)
+                    .prop('svgName')
+            ).toBe('info-14');
         });
 
         it('should have the padding prop set to true and the class "padded" by default', () => {
@@ -92,7 +88,7 @@ describe('LabeledValue', () => {
         });
 
         it('should not have the class "padded" if prop padding is set to false', () => {
-            labeledValue.setProps({'padding': false});
+            labeledValue.setProps({padding: false});
             expect(labeledValue.find('.box').hasClass('padded')).toBe(false);
         });
 
@@ -103,7 +99,7 @@ describe('LabeledValue', () => {
         });
 
         it('should have the singleLine class if prop singleLine is set to true', () => {
-            labeledValue.setProps({'singleLine': true});
+            labeledValue.setProps({singleLine: true});
             expect(labeledValue.find('.label').hasClass('inline-block')).toBe(true);
             expect(labeledValue.find('.value').hasClass('inline-block')).toBe(true);
         });

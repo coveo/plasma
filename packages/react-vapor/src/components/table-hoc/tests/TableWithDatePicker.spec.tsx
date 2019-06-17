@@ -8,13 +8,15 @@ import {FilterableTableComponent, tableWithDatePicker} from '../TableWithDatePic
 
 describe('Table HOC', () => {
     describe('TableWithDatePicker', () => {
-        const TableWithDatePicker = _.compose(
-            tableWithDatePicker(),
-        )(TableHOC);
+        const TableWithDatePicker = _.compose(tableWithDatePicker())(TableHOC);
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
-            data: _.map(_.range(10), (i) => moment().subtract(i, 'm').toDate()),
+            data: _.map(_.range(10), (i) =>
+                moment()
+                    .subtract(i, 'm')
+                    .toDate()
+            ),
             renderBody: _.identity,
         };
 
@@ -26,8 +28,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithDatePicker id='a' data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithDatePicker id='b' data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithDatePicker id="a" data={[]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithDatePicker id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
         });
 
         it('should render a TableHOC', () => {
@@ -36,7 +38,10 @@ describe('Table HOC', () => {
         });
 
         it('should not filter the rows if no function is sent in the config', () => {
-            const wrapper = shallowWithState(<TableWithDatePicker {...defaultProps} />, getStateWithDatePicker(new Date())).dive();
+            const wrapper = shallowWithState(
+                <TableWithDatePicker {...defaultProps} />,
+                getStateWithDatePicker(new Date())
+            ).dive();
             const tableData = wrapper.find(TableHOC).prop('data');
 
             expect(tableData).toEqual(defaultProps.data);
@@ -49,15 +54,18 @@ describe('Table HOC', () => {
             beforeEach(() => {
                 matchDatesSpy = jasmine.createSpy('match').and.returnValue(true);
 
-                TableWithDatePickerAndMatch = _.compose(
-                    tableWithDatePicker({matchDates: matchDatesSpy}),
-                )(TableHOC);
+                TableWithDatePickerAndMatch = _.compose(tableWithDatePicker({matchDates: matchDatesSpy}))(TableHOC);
             });
 
             it('should filter call the matchDates function for every rows', () => {
-                const lowerLimit = moment().subtract(10, 'm').toDate();
+                const lowerLimit = moment()
+                    .subtract(10, 'm')
+                    .toDate();
 
-                shallowWithState(<TableWithDatePickerAndMatch {...defaultProps} />, getStateWithDatePicker(lowerLimit)).dive();
+                shallowWithState(
+                    <TableWithDatePickerAndMatch {...defaultProps} />,
+                    getStateWithDatePicker(lowerLimit)
+                ).dive();
                 expect(matchDatesSpy).toHaveBeenCalledTimes(defaultProps.data.length);
                 _.forEach(defaultProps.data, (value: Date) => {
                     expect(matchDatesSpy).toHaveBeenCalledWith(value, lowerLimit, null);
@@ -65,10 +73,17 @@ describe('Table HOC', () => {
             });
 
             it('should filter call the matchDates function with lower & upper for every rows', () => {
-                const lowerLimit = moment().subtract(10, 'm').toDate();
-                const upperLimit = moment().subtract(5, 'm').toDate();
+                const lowerLimit = moment()
+                    .subtract(10, 'm')
+                    .toDate();
+                const upperLimit = moment()
+                    .subtract(5, 'm')
+                    .toDate();
 
-                shallowWithState(<TableWithDatePickerAndMatch {...defaultProps} />, getStateWithDatePicker(lowerLimit, upperLimit)).dive();
+                shallowWithState(
+                    <TableWithDatePickerAndMatch {...defaultProps} />,
+                    getStateWithDatePicker(lowerLimit, upperLimit)
+                ).dive();
                 expect(matchDatesSpy).toHaveBeenCalledTimes(defaultProps.data.length);
                 _.forEach(defaultProps.data, (value: Date) => {
                     expect(matchDatesSpy).toHaveBeenCalledWith(value, lowerLimit, upperLimit);
@@ -77,12 +92,13 @@ describe('Table HOC', () => {
         });
 
         describe('when server side', () => {
-            const TableWithDatePickerServer = _.compose(
-                tableWithDatePicker({isServer: true}),
-            )(TableHOC);
+            const TableWithDatePickerServer = _.compose(tableWithDatePicker({isServer: true}))(TableHOC);
 
             it('should not filter out elements if the date picker is server side', () => {
-                const wrapper = shallowWithState(<TableWithDatePickerServer {...defaultProps} />, getStateWithDatePicker(new Date())).dive();
+                const wrapper = shallowWithState(
+                    <TableWithDatePickerServer {...defaultProps} />,
+                    getStateWithDatePicker(new Date())
+                ).dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
 
@@ -91,8 +107,13 @@ describe('Table HOC', () => {
 
             it('should call onUpdate when the lowerLimit changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const lowerLimit = moment().subtract(5, 'm').toDate();
-                const wrapper = shallowWithState(<TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />, getStateWithDatePicker(lowerLimit)).dive();
+                const lowerLimit = moment()
+                    .subtract(5, 'm')
+                    .toDate();
+                const wrapper = shallowWithState(
+                    <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithDatePicker(lowerLimit)
+                ).dive();
 
                 wrapper.setProps({lowerLimit: new Date()});
                 wrapper.update();
@@ -102,9 +123,16 @@ describe('Table HOC', () => {
 
             it('should call onUpdate when the upperLimit changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const lowerLimit = moment().subtract(15, 'm').toDate();
-                const upperLimit = moment().subtract(5, 'm').toDate();
-                const wrapper = shallowWithState(<TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />, getStateWithDatePicker(lowerLimit, upperLimit)).dive();
+                const lowerLimit = moment()
+                    .subtract(15, 'm')
+                    .toDate();
+                const upperLimit = moment()
+                    .subtract(5, 'm')
+                    .toDate();
+                const wrapper = shallowWithState(
+                    <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithDatePicker(lowerLimit, upperLimit)
+                ).dive();
 
                 wrapper.setProps({upperLimit: new Date()});
                 wrapper.update();
@@ -114,8 +142,13 @@ describe('Table HOC', () => {
 
             it('should not call onUpdate when the date picker does not changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const lowerLimit = moment().subtract(5, 'm').toDate();
-                const wrapper = shallowWithState(<TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />, getStateWithDatePicker(lowerLimit, new Date())).dive();
+                const lowerLimit = moment()
+                    .subtract(5, 'm')
+                    .toDate();
+                const wrapper = shallowWithState(
+                    <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithDatePicker(lowerLimit, new Date())
+                ).dive();
 
                 wrapper.setProps({ignore: true});
                 wrapper.update();

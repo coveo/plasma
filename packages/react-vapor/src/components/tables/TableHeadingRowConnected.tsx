@@ -15,7 +15,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnP
 
     return {
         opened: item && item.opened,
-        selected: table && table.data.selectedIds && !!table.data.selectedIds.length && table.data.selectedIds.indexOf(ownProps.rowId) !== -1,
+        selected:
+            table &&
+            table.data.selectedIds &&
+            !!table.data.selectedIds.length &&
+            table.data.selectedIds.indexOf(ownProps.rowId) !== -1,
     };
 };
 
@@ -33,5 +37,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnPr
     onDestroy: () => dispatch(removeRow(ownProps.id)),
 });
 
-export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TableHeadingRow);
+export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(TableHeadingRow);

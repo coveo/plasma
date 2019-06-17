@@ -30,15 +30,14 @@ export class InputExamples extends React.Component<any, IInputExampleStateProps>
 
     render() {
         return (
-            <div className='form-group'>
+            <div className="form-group">
                 <Input
                     innerInputClasses={this.state.inputClasses}
-                    placeholder='Please, do not leave me empty!'
-                    ref={(innerInput: Input) => this.innerInput = innerInput}
-                    onKeyUp={() => this.onChange()}>
-                    <Label
-                        validMessage='Great!'
-                        invalidMessage='The input box must not be empty.'>
+                    placeholder="Please, do not leave me empty!"
+                    ref={(innerInput: Input) => (this.innerInput = innerInput)}
+                    onKeyUp={() => this.onChange()}
+                >
+                    <Label validMessage="Great!" invalidMessage="The input box must not be empty.">
                         An Input Box
                     </Label>
                 </Input>

@@ -40,11 +40,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
         lineNumbers: true,
         foldGutter: true,
         lint: true,
-        gutters: [
-            CodeMirrorGutters.LineNumbers,
-            CodeMirrorGutters.FoldGutter,
-            CodeMirrorGutters.LintMarkers,
-        ],
+        gutters: [CodeMirrorGutters.LineNumbers, CodeMirrorGutters.FoldGutter, CodeMirrorGutters.LintMarkers],
         extraKeys: {
             'Ctrl-Space': 'autocomplete',
             'Alt-F': 'findPersistent',
@@ -99,7 +95,9 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     private addExtraKeywords() {
         if (this.props.extraKeywords) {
             const mode: string = this.props.mode.name || this.props.mode;
-            (CodeMirror as any).helpers.hintWords[mode] = (CodeMirror as any).helpers.hintWords[mode].concat(this.props.extraKeywords);
+            (CodeMirror as any).helpers.hintWords[mode] = (CodeMirror as any).helpers.hintWords[mode].concat(
+                this.props.extraKeywords
+            );
         }
     }
 }

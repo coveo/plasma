@@ -31,9 +31,10 @@ export interface NumericInputDispatchProps {
     setValue: (value: number | string) => void;
 }
 
-export interface NumericInputProps extends NumericInputOwnProps,
-    Partial<NumericInputStateProps>,
-    Partial<NumericInputDispatchProps> {}
+export interface NumericInputProps
+    extends NumericInputOwnProps,
+        Partial<NumericInputStateProps>,
+        Partial<NumericInputDispatchProps> {}
 
 export const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => {
     return {
@@ -45,7 +46,8 @@ export const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputO
 export const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
     mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value)),
     unmount: () => dispatch(NumericInputActions.unmount(ownProps.id)),
-    setValue: (value: React.ReactText) => dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
+    setValue: (value: React.ReactText) =>
+        dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
@@ -56,7 +58,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
 
     componentDidMount() {
         const initialValue = _.isUndefined(this.props.initialValue)
-            ? initialNumericInputState.value as number
+            ? (initialNumericInputState.value as number)
             : this.props.initialValue;
         this.props.mount(initialValue);
     }
@@ -67,28 +69,34 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
 
     render() {
         const valueAsNumber = parseFloat('' + this.props.value);
-        const incrementEnabled = _.isUndefined(this.props.max)
-            || _.isNaN(valueAsNumber)
-            || valueAsNumber < this.props.max;
-        const decrementEnabled = _.isUndefined(this.props.min)
-            || _.isNaN(valueAsNumber)
-            || valueAsNumber > this.props.min;
+        const incrementEnabled =
+            _.isUndefined(this.props.max) || _.isNaN(valueAsNumber) || valueAsNumber < this.props.max;
+        const decrementEnabled =
+            _.isUndefined(this.props.min) || _.isNaN(valueAsNumber) || valueAsNumber > this.props.min;
         return (
-            <div className='flex flex-row'>
-                <Button classes={['js-decrement mr1 p0', styles.numericInputButton]} enabled={decrementEnabled} onClick={this.onDecrement}>
-                    <Svg svgName='minus' svgClass='icon mod-12 fill-pure-white' />
+            <div className="flex flex-row">
+                <Button
+                    classes={['js-decrement mr1 p0', styles.numericInputButton]}
+                    enabled={decrementEnabled}
+                    onClick={this.onDecrement}
+                >
+                    <Svg svgName="minus" svgClass="icon mod-12 fill-pure-white" />
                 </Button>
-                <div className='flex flex-column'>
+                <div className="flex flex-column">
                     <input
                         {..._.omit(this.props, keys<NumericInputProps>())}
                         className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
                         value={this.props.value}
                         onChange={this.onChange}
                     />
-                    {this.props.hasError && <span className='generic-form-error'>{this.props.invalidMessage}</span>}
+                    {this.props.hasError && <span className="generic-form-error">{this.props.invalidMessage}</span>}
                 </div>
-                <Button classes={['js-increment ml1 p0', styles.numericInputButton]} enabled={incrementEnabled} onClick={this.onIncrement}>
-                    <Svg svgName='plus' svgClass='icon mod-12 fill-pure-white' />
+                <Button
+                    classes={['js-increment ml1 p0', styles.numericInputButton]}
+                    enabled={incrementEnabled}
+                    onClick={this.onIncrement}
+                >
+                    <Svg svgName="plus" svgClass="icon mod-12 fill-pure-white" />
                 </Button>
             </div>
         );
@@ -97,7 +105,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
     private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = (e.target as HTMLInputElement).value;
         this.props.setValue(value);
-    }
+    };
 
     private getValueAsNumber() {
         let value = this.props.value;
@@ -122,7 +130,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         }
 
         this.props.setValue(newValue);
-    }
+    };
 
     private onIncrement = () => {
         let newValue = this.normalizeValue(this.getValueAsNumber() + (this.props.step || 1));
@@ -132,5 +140,5 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         }
 
         this.props.setValue(newValue);
-    }
+    };
 }

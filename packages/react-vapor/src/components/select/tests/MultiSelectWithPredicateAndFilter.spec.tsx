@@ -30,9 +30,14 @@ describe('Select', () => {
         const mountMultiSelect = () => {
             wrapper = mount(
                 <Provider store={store}>
-                    <MultiSelectWithPredicateAndFilter id={id} items={[]} options={defaultFlatSelectOptions} matchPredicate={matchPredicate} />
+                    <MultiSelectWithPredicateAndFilter
+                        id={id}
+                        items={[]}
+                        options={defaultFlatSelectOptions}
+                        matchPredicate={matchPredicate}
+                    />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         };
 

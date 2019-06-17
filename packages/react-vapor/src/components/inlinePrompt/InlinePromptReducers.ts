@@ -12,7 +12,10 @@ export interface IPromptState {
 export const promptInitialState: IPromptState = {id: undefined, options: {userChoice: undefined, onClick: undefined}};
 export const promptsInitialState: IPromptState[] = [];
 
-export const promptReducer = (state: IPromptState = promptInitialState, action: IReduxAction<IReduxActionsPayload>): IPromptState => {
+export const promptReducer = (
+    state: IPromptState = promptInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IPromptState => {
     switch (action.type) {
         case PromptActions.add:
             return _.extend({}, state, {
@@ -24,13 +27,13 @@ export const promptReducer = (state: IPromptState = promptInitialState, action: 
     }
 };
 
-export const promptsReducer = (state: IPromptState[] = promptsInitialState, action: IReduxAction<IReduxActionsPayload>): IPromptState[] => {
+export const promptsReducer = (
+    state: IPromptState[] = promptsInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IPromptState[] => {
     switch (action.type) {
         case PromptActions.add:
-            return [
-                ...state,
-                promptReducer(undefined, action),
-            ];
+            return [...state, promptReducer(undefined, action)];
         case PromptActions.remove:
             return _.reject(state, (prompt: IPromptState) => {
                 return action.payload.id === prompt.id;

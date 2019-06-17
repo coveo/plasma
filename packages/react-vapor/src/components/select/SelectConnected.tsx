@@ -58,12 +58,13 @@ const makeMapStateToProps = () => {
         active: SelectSelector.getListBoxActive,
     });
 
-    return (state: IReactVaporState, ownProps: ISelectOwnProps): ISelectStateProps => statePropsSelector(state, ownProps);
+    return (state: IReactVaporState, ownProps: ISelectOwnProps): ISelectStateProps =>
+        statePropsSelector(state, ownProps);
 };
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ISelectOwnProps & ISelectSpecificProps,
+    ownProps: ISelectOwnProps & ISelectSpecificProps
 ) => ({
     onRender: () => dispatch(addSelect(ownProps.id)),
     onDestroy: () => dispatch(removeSelect(ownProps.id)),
@@ -92,22 +93,17 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
         const wentFromOpenedToClosed = prevProps.isOpened && !this.props.isOpened;
         const selectionChanged = prevProps.selectedValues.length <= this.props.selectedValues.length;
 
-        if ((this.props.isOpened && !this.props.hasFocusableChild)
-            || (wentFromOpenedToClosed && selectionChanged)) {
+        if ((this.props.isOpened && !this.props.hasFocusableChild) || (wentFromOpenedToClosed && selectionChanged)) {
             this.focusOnButton();
         }
     }
 
     render() {
-        const pickerClasses = classNames(
-            'select-dropdown dropdown',
-            this.props.selectClasses,
-            {
-                open: this.props.isOpened,
-                'mod-multi': this.props.multi,
-            },
-        );
-        const minWidth = this.dropdown && this.dropdown.clientWidth || undefined;
+        const pickerClasses = classNames('select-dropdown dropdown', this.props.selectClasses, {
+            open: this.props.isOpened,
+            'mod-multi': this.props.multi,
+        });
+        const minWidth = (this.dropdown && this.dropdown.clientWidth) || undefined;
         return (
             <Drop
                 id={this.props.id}
@@ -116,19 +112,27 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                 buttonContainerProps={{className: pickerClasses}}
                 renderOpenButton={(onClick: () => void) => (
-                    <div className='js-drop-button-container' ref={(ref: HTMLDivElement) => this.dropdown = ref}>
-                        <Content content={this.props.button} classes={['select-dropdown-button']} componentProps={{
-                            onClick,
-                            onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
-                            onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
-                            placeholder: this.props.placeholder,
-                        }} key={`${this.props.id}-button`} />
+                    <div className="js-drop-button-container" ref={(ref: HTMLDivElement) => (this.dropdown = ref)}>
+                        <Content
+                            content={this.props.button}
+                            classes={['select-dropdown-button']}
+                            componentProps={{
+                                onClick,
+                                onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
+                                onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
+                                placeholder: this.props.placeholder,
+                            }}
+                            key={`${this.props.id}-button`}
+                        />
                     </div>
                 )}
                 minWidth={minWidth}
                 closeOnClickDrop={false}
             >
-                <div className={classNames('select-dropdown-container bg-pure-white', this.props.dropClasses)} style={{minWidth}}>
+                <div
+                    className={classNames('select-dropdown-container bg-pure-white', this.props.dropClasses)}
+                    style={{minWidth}}
+                >
                     {this.renderChildren()}
                     <ListBoxConnected
                         id={this.props.id}
@@ -151,11 +155,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                     });
                 }
             });
-            return (
-                <div className='flex p2 flex-center bg-white flex-column mod-border-bottom'>
-                    {newChildren}
-                </div>
-            );
+            return <div className="flex p2 flex-center bg-white flex-column mod-border-bottom">{newChildren}</div>;
         }
         return null;
     }
@@ -178,8 +178,10 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     private onKeyDown(e: React.KeyboardEvent<HTMLElement>) {
-        if (_.contains([keyCode.escape, keyCode.downArrow, keyCode.upArrow, keyCode.enter], e.keyCode)
-            || (e.keyCode === keyCode.tab && this.props.isOpened)) {
+        if (
+            _.contains([keyCode.escape, keyCode.downArrow, keyCode.upArrow, keyCode.enter], e.keyCode) ||
+            (e.keyCode === keyCode.tab && this.props.isOpened)
+        ) {
             e.stopPropagation();
             e.preventDefault();
         }
@@ -192,10 +194,10 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
 
         if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpened) {
             const actives = _.chain(this.props.items)
-                .filter((item: IItemBoxProps) => !item.hidden
-                    && !this.props.multi
-                    && !item.disabled
-                    || !_.contains(this.props.selectedValues, item.value),
+                .filter(
+                    (item: IItemBoxProps) =>
+                        (!item.hidden && !this.props.multi && !item.disabled) ||
+                        !_.contains(this.props.selectedValues, item.value)
                 )
                 .value();
             const active = actives[mod(this.props.active, actives.length)];
@@ -203,8 +205,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 this.props.onSelectValue(active.value, this.props.multi);
                 this.onToggleDropdown(e);
             }
-        } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode)
-            && !this.props.isOpened) {
+        } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode) && !this.props.isOpened) {
             this.onToggleDropdown(e);
         }
 

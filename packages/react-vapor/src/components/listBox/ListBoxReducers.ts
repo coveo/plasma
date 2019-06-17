@@ -13,7 +13,10 @@ export interface IListBoxState {
 export const listBoxInitialState: IListBoxState = {id: undefined, selected: []};
 export const listBoxesInitialState: IListBoxState[] = [];
 
-export const listBoxReducer = (state: IListBoxState = listBoxInitialState, action: IReduxAction<IListBoxPayload>): IListBoxState => {
+export const listBoxReducer = (
+    state: IListBoxState = listBoxInitialState,
+    action: IReduxAction<IListBoxPayload>
+): IListBoxState => {
     if (state.id !== action.payload.id && action.type !== ListBoxActions.add) {
         return state;
     }
@@ -78,14 +81,11 @@ export const listBoxReducer = (state: IListBoxState = listBoxInitialState, actio
 
 export const listBoxesReducer = (
     state: IListBoxState[] = listBoxesInitialState,
-    action: IReduxAction<IListBoxPayload>,
+    action: IReduxAction<IListBoxPayload>
 ): IListBoxState[] => {
     switch (action.type) {
         case ListBoxActions.add:
-            return [
-                ...state,
-                listBoxReducer(undefined, action),
-            ];
+            return [...state, listBoxReducer(undefined, action)];
         case ListBoxActions.remove:
             return _.reject(state, (listBox: IListBoxState) => action.payload.id === listBox.id);
         case ListBoxActions.clear:

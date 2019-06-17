@@ -13,7 +13,7 @@ export const checkboxesInitialState: ICheckboxState[] = [];
 
 export const checkboxReducer = (
     state: ICheckboxState = checkboxInitialState,
-    action: IReduxAction<ICheckboxActionPayload>,
+    action: IReduxAction<ICheckboxActionPayload>
 ): ICheckboxState => {
     switch (action.type) {
         case CheckboxActions.add:
@@ -26,11 +26,9 @@ export const checkboxReducer = (
             return state.id !== action.payload.id
                 ? state
                 : {
-                    ...state,
-                    checked: _.isUndefined(action.payload.checked)
-                        ? !state.checked
-                        : action.payload.checked,
-                };
+                      ...state,
+                      checked: _.isUndefined(action.payload.checked) ? !state.checked : action.payload.checked,
+                  };
         default:
             return state;
     }
@@ -38,14 +36,11 @@ export const checkboxReducer = (
 
 export const checkboxesReducer = (
     state: ICheckboxState[] = checkboxesInitialState,
-    action: IReduxAction<ICheckboxActionPayload>,
+    action: IReduxAction<ICheckboxActionPayload>
 ): ICheckboxState[] => {
     switch (action.type) {
         case CheckboxActions.add:
-            return [
-                ...state,
-                checkboxReducer(undefined, action),
-            ];
+            return [...state, checkboxReducer(undefined, action)];
         case CheckboxActions.remove:
             return _.reject(state, (checkbox: ICheckboxState) => {
                 return action.payload.id === checkbox.id;

@@ -20,11 +20,11 @@ npm install react-vapor coveo-styleguide
 
 ### Build
 
-Make sure you have 
+Make sure you have
 
-- [Node.js](https://nodejs.org/)'s LTS version
-- [NPM](https://www.npmjs.com/package/npm)'s LTS version
-- [Lerna](https://lerna.js.org/)'s latest version `npm install -g lerna`.
+-   [Node.js](https://nodejs.org/)'s LTS version
+-   [NPM](https://www.npmjs.com/package/npm)'s LTS version
+-   [Lerna](https://lerna.js.org/)'s latest version `npm install -g lerna`.
 
 To install the project dependencies use:
 

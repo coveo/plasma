@@ -20,29 +20,36 @@ const mapStateToProps = () => {
     return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>) => void): ILastUpdateConnectedExamplesProps => {
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IFacetActionPayload>) => void
+): ILastUpdateConnectedExamplesProps => {
     return {
         onRender: () => {
-            dispatch(changeFacet(facet2.name, {
-                name: 'row2',
-                formattedName: 'Row 2',
-            }));
-            dispatch(changeFacet(facet4.name, {
-                name: 'row2',
-                formattedName: 'Row 2',
-            }));
-            dispatch(changeFacet(facet4.name, {
-                name: 'row3',
-                formattedName: 'Row 3',
-                exclude: true,
-            }));
+            dispatch(
+                changeFacet(facet2.name, {
+                    name: 'row2',
+                    formattedName: 'Row 2',
+                })
+            );
+            dispatch(
+                changeFacet(facet4.name, {
+                    name: 'row2',
+                    formattedName: 'Row 2',
+                })
+            );
+            dispatch(
+                changeFacet(facet4.name, {
+                    name: 'row3',
+                    formattedName: 'Row 3',
+                    exclude: true,
+                })
+            );
         },
     };
 };
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class FacetConnectedExamples extends React.Component<ILastUpdateConnectedExamplesProps, any> {
-
     componentDidMount() {
         this.props.onRender();
     }
@@ -52,10 +59,12 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
             {
                 name: 'row1',
                 formattedName: 'Row 1',
-            }, {
+            },
+            {
                 name: 'row2',
                 formattedName: 'Row 2',
-            }, {
+            },
+            {
                 name: 'row3',
                 formattedName: 'Row 3 with a very long name and also a count',
                 count: '23412',
@@ -79,31 +88,62 @@ export class FacetConnectedExamples extends React.Component<ILastUpdateConnected
                 name: 'row7',
                 formattedName: 'Row 7 with a very long name and also a count',
                 count: '7903231',
-            },
+            }
         );
-        const toggleFacet: (facet: string, facetRow: IFacet) => void = () => {return;};
-        const clearFacet: (facet: string) => void = () => {return;};
+        const toggleFacet: (facet: string, facetRow: IFacet) => void = () => {
+            return;
+        };
+        const clearFacet: (facet: string) => void = () => {
+            return;
+        };
         return (
-            <div className='mt2' style={{width: 400}}>
-                <div className='form-group'>
-                    <label className='form-control-label'>Facet with Redux state</label>
-                    <FacetConnected facet={facet} facetRows={facetRows} clearFacet={clearFacet} toggleFacet={toggleFacet} />
+            <div className="mt2" style={{width: 400}}>
+                <div className="form-group">
+                    <label className="form-control-label">Facet with Redux state</label>
+                    <FacetConnected
+                        facet={facet}
+                        facetRows={facetRows}
+                        clearFacet={clearFacet}
+                        toggleFacet={toggleFacet}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Facet with Redux state and a selected row</label>
-                    <FacetConnected facet={facet2} facetRows={facetRows} clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                <div className="form-group">
+                    <label className="form-control-label">Facet with Redux state and a selected row</label>
+                    <FacetConnected
+                        facet={facet2}
+                        facetRows={facetRows}
+                        clearFacet={clearFacet}
+                        toggleFacet={toggleFacet}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Facet with many rows</label>
-                    <FacetConnected facet={facet3} facetRows={moreFacetRows} clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                <div className="form-group">
+                    <label className="form-control-label">Facet with many rows</label>
+                    <FacetConnected
+                        facet={facet3}
+                        facetRows={moreFacetRows}
+                        clearFacet={clearFacet}
+                        toggleFacet={toggleFacet}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Facet with exclude enabled</label>
-                    <FacetConnected facet={facet4} facetRows={facetRows} enableExclusions clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                <div className="form-group">
+                    <label className="form-control-label">Facet with exclude enabled</label>
+                    <FacetConnected
+                        facet={facet4}
+                        facetRows={facetRows}
+                        enableExclusions
+                        clearFacet={clearFacet}
+                        toggleFacet={toggleFacet}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Facet with exclude enabled and many rows</label>
-                    <FacetConnected facet={facet5} facetRows={moreFacetRows} enableExclusions clearFacet={clearFacet} toggleFacet={toggleFacet} />
+                <div className="form-group">
+                    <label className="form-control-label">Facet with exclude enabled and many rows</label>
+                    <FacetConnected
+                        facet={facet5}
+                        facetRows={moreFacetRows}
+                        enableExclusions
+                        clearFacet={clearFacet}
+                        toggleFacet={toggleFacet}
+                    />
                 </div>
             </div>
         );

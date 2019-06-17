@@ -24,7 +24,10 @@ export interface IMultilineInputDispatchProps {
     onChange?: (values: IMultilineInputValue[]) => void;
 }
 
-export interface IMultilineInputProps extends IMultilineInputOwnProps, IMultilineInputStateProps, IMultilineInputDispatchProps {}
+export interface IMultilineInputProps
+    extends IMultilineInputOwnProps,
+        IMultilineInputStateProps,
+        IMultilineInputDispatchProps {}
 
 export class MultilineInput extends React.Component<IMultilineInputProps, any> {
     private handleChange(newValues: IMultilineInputValue[]) {
@@ -71,7 +74,8 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
                 <DeletableInput
                     placeholder={this.props.placeholder}
                     value={inputValue.value}
-                    onBlur={(newValue: string) => this.handleDeleteInputChange(newValue, inputValue.id)}>
+                    onBlur={(newValue: string) => this.handleDeleteInputChange(newValue, inputValue.id)}
+                >
                     <Label>{index === 0 ? this.props.title : ''}</Label>
                 </DeletableInput>
             </li>
@@ -80,19 +84,22 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
 
     render() {
         const deletableInputs: JSX.Element[] = this.props.values
-            ? this.props.values.map((input: IMultilineInputValue, index: number) => this.getDeletableInput(input, index))
+            ? this.props.values.map((input: IMultilineInputValue, index: number) =>
+                  this.getDeletableInput(input, index)
+              )
             : null;
 
         return (
-            <div className='input-field multiline-field form-group'>
-                <ul>
-                    {deletableInputs}
-                </ul>
+            <div className="input-field multiline-field form-group">
+                <ul>{deletableInputs}</ul>
                 <AddInput
                     placeholder={this.props.placeholder}
-                    value=''
-                    onBlur={(newValue: string) => this.handleAddInputChange(newValue)}>
-                    <Label classes={this.props.values && this.props.values.length === 0 ? ['first-label'] : []}>{this.props.title}</Label>
+                    value=""
+                    onBlur={(newValue: string) => this.handleAddInputChange(newValue)}
+                >
+                    <Label classes={this.props.values && this.props.values.length === 0 ? ['first-label'] : []}>
+                        {this.props.title}
+                    </Label>
                 </AddInput>
             </div>
         );

@@ -10,15 +10,15 @@ describe('<SyncFeedback>', () => {
         expect(() => shallow(<SyncFeedback state={SyncFeedbackState.SYNCING} />)).not.toThrow();
         expect(() => shallow(<SyncFeedback state={SyncFeedbackState.SUCCESS} />)).not.toThrow();
         expect(() => shallow(<SyncFeedback state={SyncFeedbackState.ERROR} />)).not.toThrow();
-        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.NONE} feedback='none' />)).not.toThrow();
-        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.SYNCING} feedback='Syncing' />)).not.toThrow();
-        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.SUCCESS} feedback='Success!' />)).not.toThrow();
-        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.ERROR} feedback='NOOOOO!!!!' />)).not.toThrow();
+        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.NONE} feedback="none" />)).not.toThrow();
+        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.SYNCING} feedback="Syncing" />)).not.toThrow();
+        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.SUCCESS} feedback="Success!" />)).not.toThrow();
+        expect(() => shallow(<SyncFeedback state={SyncFeedbackState.ERROR} feedback="NOOOOO!!!!" />)).not.toThrow();
     });
 
     it('should be empty if the state is none', () => {
         const shallowed = shallow(<SyncFeedback state={SyncFeedbackState.NONE} />);
-        const shallowedWithFeedback = shallow(<SyncFeedback state={SyncFeedbackState.NONE} feedback='Not empty' />);
+        const shallowedWithFeedback = shallow(<SyncFeedback state={SyncFeedbackState.NONE} feedback="Not empty" />);
 
         expect(shallowed.text()).toBe('');
         expect(shallowedWithFeedback.text()).toBe('');

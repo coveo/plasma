@@ -12,12 +12,15 @@ import {
     resetDatePickers,
     selectDate,
 } from '../DatePickerActions';
-import {IAddDatePickerPayload, IChangeDatePickerPayload, IDatePickerPayload, ISelectDatePickerPayload} from '../DatePickerActions';
+import {
+    IAddDatePickerPayload,
+    IChangeDatePickerPayload,
+    IDatePickerPayload,
+    ISelectDatePickerPayload,
+} from '../DatePickerActions';
 
 describe('Date picker', () => {
-
     describe('DatePickerActions', () => {
-
         const DATE_PICKER_ID: string = 'date-picker';
         const COLOR: string = 'gray';
         const CALENDAR_ID: string = 'calendar-666';
@@ -39,7 +42,9 @@ describe('Date picker', () => {
                 },
             };
 
-            expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined, COLOR, CALENDAR_ID, true, true)).toEqual(expectedAction);
+            expect(addDatePicker(DATE_PICKER_ID, IS_RANGE, undefined, COLOR, CALENDAR_ID, true, true)).toEqual(
+                expectedAction
+            );
         });
 
         it('should create an action to add the date picker with default values if optional values are not specified', () => {

@@ -25,16 +25,14 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     render() {
-        const className: string = classNames(
-            'facet-value',
-            'facet-selectable',
-            {'facet-exclude': this.props.enableExclusions},
-        );
+        const className: string = classNames('facet-value', 'facet-selectable', {
+            'facet-exclude': this.props.enableExclusions,
+        });
         return (
             <li className={className}>
                 {this.getExcludeCheckbox()}
                 <label
-                    className='coveo-checkbox-label facet-value-label'
+                    className="coveo-checkbox-label facet-value-label"
                     onClick={(e) => {
                         // prevent event bubbling and trigger onToggleFacet only once no matter where you click on the row
                         e.preventDefault();
@@ -42,15 +40,15 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                     }}
                 >
                     <input
-                        type='checkbox'
+                        type="checkbox"
                         name={this.props.facetRow.name}
-                        className='coveo-checkbox facet-checkbox-input'
+                        className="coveo-checkbox facet-checkbox-input"
                         checked={this.props.isChecked && !this.isExclude}
                         onClick={this.stopEvent}
                         onChange={_.noop}
                     />
-                    <button type='button' className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
-                        <Svg svgName='clear' className='icon hide exclude-icon' svgClass='fill-red' />
+                    <button type="button" className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
+                        <Svg svgName="clear" className="icon hide exclude-icon" svgClass="fill-red" />
                     </button>
                     {this.getLabel()}
                     {this.getCount()}
@@ -60,7 +58,6 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private getLabel(): JSX.Element {
-
         const maxCalculatedNameLength = this.props.facetRow.count
             ? this.props.maxTooltipLabelLength - this.props.facetRow.count.length
             : this.props.maxTooltipLabelLength;
@@ -68,30 +65,40 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
         const className = classNames({'text-exclude': this.props.isChecked && this.isExclude});
         const label: JSX.Element = <span className={className}>{this.props.facetRow.formattedName}</span>;
 
-        return (this.props.facetRow.formattedName.length > maxCalculatedNameLength)
-            ? <Tooltip
+        return this.props.facetRow.formattedName.length > maxCalculatedNameLength ? (
+            <Tooltip
                 title={this.props.facetRow.tooltipLabel || this.props.facetRow.formattedName}
-                placement='top'
-                className='label'
+                placement="top"
+                className="label"
             >
                 {label}
             </Tooltip>
-            : <span className='label'>{label}</span>;
+        ) : (
+            <span className="label">{label}</span>
+        );
     }
 
     private getCount(): JSX.Element {
         if (!_.isUndefined(this.props.facetRow.count)) {
-            return <span className={classNames('facet-value-count', {'text-exclude': this.props.isChecked && this.isExclude})}>{this.props.facetRow.count}</span>;
+            return (
+                <span
+                    className={classNames('facet-value-count', {
+                        'text-exclude': this.props.isChecked && this.isExclude,
+                    })}
+                >
+                    {this.props.facetRow.count}
+                </span>
+            );
         }
     }
 
     private getExcludeCheckbox(): JSX.Element {
         if (!!this.props.enableExclusions) {
             return (
-                <div className='flex center-align facet-exclude-button' onClick={() => this.toggleFacetToExclude()}>
+                <div className="flex center-align facet-exclude-button" onClick={() => this.toggleFacetToExclude()}>
                     <input
-                        type='checkbox'
-                        className='coveo-checkbox'
+                        type="checkbox"
+                        className="coveo-checkbox"
                         checked={this.props.isChecked && this.isExclude}
                         onClick={this.stopEvent}
                         onChange={_.noop}
@@ -103,11 +110,16 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
     }
 
     private getExcludeButton(): JSX.Element {
-        return this.props.excludeTooltipMessage
-            ? <Tooltip className='exclude-button' title={this.props.excludeTooltipMessage(this.props.facetRow.formattedName)}>
-                <Svg svgName='exclude' className='icon' svgClass='fill-medium-grey' />
+        return this.props.excludeTooltipMessage ? (
+            <Tooltip
+                className="exclude-button"
+                title={this.props.excludeTooltipMessage(this.props.facetRow.formattedName)}
+            >
+                <Svg svgName="exclude" className="icon" svgClass="fill-medium-grey" />
             </Tooltip>
-            : <Svg svgName='exclude' className='exclude-button icon' svgClass='fill-medium-grey' />;
+        ) : (
+            <Svg svgName="exclude" className="exclude-button icon" svgClass="fill-medium-grey" />
+        );
     }
 
     private stopEvent(event: React.MouseEvent<HTMLInputElement>): void {

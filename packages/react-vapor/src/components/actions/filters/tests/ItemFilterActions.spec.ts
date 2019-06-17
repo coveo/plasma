@@ -1,12 +1,17 @@
 import {IReduxAction} from '../../../../utils/ReduxUtils';
-import {addItemFilter, filterItems, IItemFilterActionPayload, IItemFilteringActionPayload, ItemFilterActions, removeItemFilter} from '../ItemFilterActions';
+import {
+    addItemFilter,
+    filterItems,
+    IItemFilterActionPayload,
+    IItemFilteringActionPayload,
+    ItemFilterActions,
+    removeItemFilter,
+} from '../ItemFilterActions';
 
 const ITEM_FILTER_ID: string = 'the-item-filter';
 
 describe('Item filter', () => {
-
     describe('ItemFilterActions', () => {
-
         it('should create an action to add the item filter', () => {
             const expectedAction: IReduxAction<IItemFilterActionPayload> = {
                 type: ItemFilterActions.add,

@@ -23,20 +23,21 @@ export interface INavigationPaginationDispatchProps {
     onPageClick?: (pageNb: number) => void;
 }
 
-export interface INavigationPaginationProps extends INavigationPaginationOwnProps,
-    INavigationPaginationStateProps, INavigationPaginationDispatchProps {}
+export interface INavigationPaginationProps
+    extends INavigationPaginationOwnProps,
+        INavigationPaginationStateProps,
+        INavigationPaginationDispatchProps {}
 
 export const NUMBER_OF_PAGES_SHOWING: number = 7;
 export const PREVIOUS_LABEL: string = 'Previous';
 export const NEXT_LABEL: string = 'Next';
 
 export class NavigationPagination extends React.Component<INavigationPaginationProps, any> {
-
     private handlePageClick = (pageNb: number) => {
         if (this.props.onPageClick && pageNb >= 0 && this.props.currentPage !== pageNb) {
             this.props.onPageClick(pageNb);
         }
-    }
+    };
 
     componentWillMount() {
         if (this.props.onRender) {
@@ -58,8 +59,10 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
         let start: number = 0;
         let end: number = showXPages;
         const lastPage: number = this.props.totalPages - 1;
-        const previousClasses: string = 'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
-        const nextClasses: string = 'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
+        const previousClasses: string =
+            'flat-select-option mod-link ' + (currentPage === 0 ? 'disabled' : 'selectable');
+        const nextClasses: string =
+            'flat-select-option mod-link ' + (currentPage === lastPage ? 'disabled' : 'selectable');
         const pageSelects: JSX.Element[] = [];
 
         if (!this.props.hidePages) {
@@ -72,30 +75,44 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
             }
 
             _.each(_.range(start, end + 1), (p: number): void => {
-                pageSelects.push(<NavigationPaginationSelect
-                    key={'page-' + p}
-                    onPageClick={this.handlePageClick}
-                    pageNb={p}
-                    selected={p === currentPage}
-                />);
+                pageSelects.push(
+                    <NavigationPaginationSelect
+                        key={'page-' + p}
+                        onPageClick={this.handlePageClick}
+                        pageNb={p}
+                        selected={p === currentPage}
+                    />
+                );
             });
         }
 
         return (
-            <div className='pagination'>
-                <div className='flat-select'>
-                    <a className={previousClasses}
+            <div className="pagination">
+                <div className="flat-select">
+                    <a
+                        className={previousClasses}
                         data-page={currentPage - 1}
-                        onClick={() => this.handlePageClick(currentPage - 1)}>
-                        <Svg svgName='arrow-left-rounded' className='pagination-icon' svgClass='icon icon-small mod-lg' />
+                        onClick={() => this.handlePageClick(currentPage - 1)}
+                    >
+                        <Svg
+                            svgName="arrow-left-rounded"
+                            className="pagination-icon"
+                            svgClass="icon icon-small mod-lg"
+                        />
                         {previousLabel}
                     </a>
                     {pageSelects}
-                    <a className={nextClasses}
+                    <a
+                        className={nextClasses}
                         data-page={currentPage + 1}
-                        onClick={() => this.handlePageClick(currentPage + 1)}>
+                        onClick={() => this.handlePageClick(currentPage + 1)}
+                    >
                         {nextLabel}
-                        <Svg svgName='arrow-right-rounded' className='pagination-icon' svgClass='icon icon-small mod-lg' />
+                        <Svg
+                            svgName="arrow-right-rounded"
+                            className="pagination-icon"
+                            svgClass="icon icon-small mod-lg"
+                        />
                     </a>
                 </div>
             </div>

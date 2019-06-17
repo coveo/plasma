@@ -13,13 +13,7 @@ import {
 } from '../TableActions';
 import {DEFAULT_TABLE_DATA, TableChildComponent} from '../TableConstants';
 import {sortFromHeaderCell} from '../TableHeaderCellActions';
-import {
-    ITablesState,
-    ITableState,
-    tableReducer,
-    tablesInitialState,
-    tablesReducer,
-} from '../TableReducers';
+import {ITablesState, ITableState, tableReducer, tablesInitialState, tablesReducer} from '../TableReducers';
 import {getTableChildComponentId} from '../TableUtils';
 import {IData} from './../Table';
 
@@ -121,21 +115,22 @@ describe('TableReducers', () => {
             const tableDataModifier = (state: ITableState) => ({...state, isLoading: true});
             const newStateFromModifier = tableDataModifier(oldState[tableId]);
 
-            expect(tablesReducer(oldState, modifyState(tableId, tableDataModifier, true))[tableId])
-                .toEqual(newStateFromModifier);
+            expect(tablesReducer(oldState, modifyState(tableId, tableDataModifier, true))[tableId]).toEqual(
+                newStateFromModifier
+            );
         });
 
         it('should not call and return the result of the function received from the payload on modify state if the table id is not the same', () => {
             // make a minor change to the state just to test that it works (using isLoading, but could have been anything)
             const tableDataModifier = (state: ITableState) => ({...state, isLoading: true});
 
-            expect(tablesReducer(oldState, modifyState('some other id', tableDataModifier, true))[tableId])
-                .toEqual(oldState[tableId]);
+            expect(tablesReducer(oldState, modifyState('some other id', tableDataModifier, true))[tableId]).toEqual(
+                oldState[tableId]
+            );
         });
     });
 
     describe('ModifyState action', () => {
-
         const getModifyStateAction = () => ({
             type: TableActions.modifyState,
             payload: {

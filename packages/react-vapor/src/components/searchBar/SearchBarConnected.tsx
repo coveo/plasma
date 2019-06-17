@@ -3,7 +3,13 @@ import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {ISearchBarDispatchProps, ISearchBarOwnProps, ISearchBarProps, ISearchBarStateProps, SearchBar} from './SearchBar';
+import {
+    ISearchBarDispatchProps,
+    ISearchBarOwnProps,
+    ISearchBarProps,
+    ISearchBarStateProps,
+    SearchBar,
+} from './SearchBar';
 import {addSearchBar, removeSearchBar, setSearchBarValue} from './SearchBarActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISearchBarOwnProps): ISearchBarStateProps => {
@@ -19,8 +25,12 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISearchBarOwnProps):
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISearchBarOwnProps): ISearchBarDispatchProps => ({
     onMount: () => dispatch(addSearchBar(ownProps.id, ownProps.disabledOnMount)),
     onUnmount: () => dispatch(removeSearchBar(ownProps.id)),
-    onChange: (event: React.ChangeEvent<HTMLInputElement>) => dispatch(setSearchBarValue(ownProps.id, event.target.value)),
+    onChange: (event: React.ChangeEvent<HTMLInputElement>) =>
+        dispatch(setSearchBarValue(ownProps.id, event.target.value)),
 });
 
-export const SearchBarConnected: React.ComponentClass<ISearchBarProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SearchBar);
+export const SearchBarConnected: React.ComponentClass<ISearchBarProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(SearchBar);

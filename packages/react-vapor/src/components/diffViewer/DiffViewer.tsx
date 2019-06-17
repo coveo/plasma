@@ -45,8 +45,10 @@ export class DiffViewer extends React.Component<DiffViewerProps> {
             outputFormat: DiffViewer.OutputFormat.Line,
         });
 
-        return !DiffViewer.EmptyHtmlRegex.test(html)
-            ? <div className={styles.diffViewer} dangerouslySetInnerHTML={{__html: html}}></div>
-            : <BlankSlate title={this.props.noChangesLabel} description={this.props.noChangesDescription} />;
+        return !DiffViewer.EmptyHtmlRegex.test(html) ? (
+            <div className={styles.diffViewer} dangerouslySetInnerHTML={{__html: html}}></div>
+        ) : (
+            <BlankSlate title={this.props.noChangesLabel} description={this.props.noChangesDescription} />
+        );
     }
 }

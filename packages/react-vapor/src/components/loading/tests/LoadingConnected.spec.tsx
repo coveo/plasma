@@ -14,10 +14,10 @@ describe('<LoadingConnected />', () => {
             const wrapper: ReactWrapper<any, any> = mount(
                 <Provider store={store}>
                     <div>
-                        <LoadingConnected id='loading' />
+                        <LoadingConnected id="loading" />
                     </div>
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             wrapper.unmount();
             wrapper.detach();

@@ -1,0 +1,4 @@
+**/node_modules/
+**/dist/
+**/_gh_pages/
+packages/vapor/docs/

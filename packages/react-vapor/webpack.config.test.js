@@ -30,9 +30,7 @@ module.exports = {
                  *  Transform let and const to var in js files below to make them ES5 compatible
                  *  Target only problematic files to prevent compilation from hanging
                  */
-                include: [
-                    path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
-                ],
+                include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
                 loader: 'awesome-typescript-loader',
             },
             {
@@ -54,11 +52,14 @@ module.exports = {
             {
                 test: /\.css$/,
                 exclude: path.join(__dirname, 'src/components'),
-                use: [{
-                    loader: 'style-loader',
-                }, {
-                    loader: 'css-loader',
-                }],
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                ],
             },
             {
                 test: /\.scss$/,
