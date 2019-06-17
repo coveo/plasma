@@ -6,6 +6,7 @@
 [![Npm total downloads badge](https://img.shields.io/npm/dt/react-vapor.svg?style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![npm](https://img.shields.io/npm/v/react-vapor.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 [Vapor's CSS components](https://github.com/coveo/vapor) implemented with React.
 
@@ -34,10 +35,7 @@ const React = require('react');
 const ReactDom = require('react-dom');
 const Badge = require('react-vapor').Badge;
 
-ReactDom.render(
-    <Badge label='Hello react-vapor!' />,
-    document.getElementById('SomewhereInYourApp')
-);
+ReactDom.render(<Badge label="Hello react-vapor!" />, document.getElementById('SomewhereInYourApp'));
 ```
 
 In a `.tsx` context:
@@ -47,10 +45,7 @@ import * as React from 'react';
 import * as ReactDom from 'react-dom';
 import {Badge} from 'react-vapor';
 
-ReactDom.render(
-    <Badge label='Hello react-vapor!' />,
-    document.getElementById('SomewhereInYourApp')
-);
+ReactDom.render(<Badge label="Hello react-vapor!" />, document.getElementById('SomewhereInYourApp'));
 ```
 
 ## Contributing
@@ -85,17 +80,16 @@ npm test
 
 ### Guidelines
 
-* A pull request that increases or does not change the code coverage ratio has a higher chance of being merged quickly.
-* Make sure your pull requests follow the project's code style. Normally the `lintfix` npm script is run on pre-commit so this should not be a problem. However, you can double check by running the script manually with `npm run lintfix`.
-* We're pretty flexible on the commit messages structure and pull requests descriptions, but still, make sure your commit messages and pull request descriptions provide enough details for fellow reviewers.
-* We tend to avoid comments in our code base, we strongly prefer good naming and code structure.
+-   A pull request that increases or does not change the code coverage ratio has a higher chance of being merged quickly.
+-   We're pretty flexible on the commit messages structure and pull requests descriptions, but still, make sure your commit messages and pull request descriptions provide enough details for fellow reviewers.
+-   We tend to avoid comments in our code base, we strongly prefer good naming and code structure.
 
 ### Tips and tricks
 
-* `npm test` command creates a local coverage report at the end of its execution that you can browse through in order to see the hits and misses of your unit tests. View the report by opening the `coverage/lcov-report/index.html` file in your favorite browser.
-* `npm run test:watch` command will run tests on file save.
-* `npm run reconstruct` command will reinstall and rebuild your local branch from scratch without discarding any pending change. Run this if you think your current state is corrupted.
-* You can target specific unit tests or test suites by putting an `f` character in front of any `it` or `describe` block (thus writing `fit` and `fdescribe`). Only tests in the targeted blocks will be run on the next execution. **Don't forget to remove the `f` before committing.**
+-   `npm test` command creates a local coverage report at the end of its execution that you can browse through in order to see the hits and misses of your unit tests. View the report by opening the `coverage/lcov-report/index.html` file in your favorite browser.
+-   `npm run test:watch` command will run tests on file save.
+-   `npm run reconstruct` command will reinstall and rebuild your local branch from scratch without discarding any pending change. Run this if you think your current state is corrupted.
+-   You can target specific unit tests or test suites by putting an `f` character in front of any `it` or `describe` block (thus writing `fit` and `fdescribe`). Only tests in the targeted blocks will be run on the next execution. **Don't forget to remove the `f` before committing.**
 
 ## License
 
