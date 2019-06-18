@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config.test.js');
-const mainReporter = !!process.env.TRAVIS ? 'dots' : 'mocha';
+const mainReporter = !!process.env.TRAVIS ? 'dots' : 'nyan';
 
 module.exports = (config) => {
     config.set({
@@ -23,8 +23,8 @@ module.exports = (config) => {
 
         reporters: [mainReporter, 'coverage'],
 
-        mochaReporter: {
-            ignoreSkipped: true,
+        nyanReporter: {
+            renderOnRunCompleteOnly: !!process.env.TRAVIS,
         },
 
         coverageReporter: {
