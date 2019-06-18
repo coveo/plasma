@@ -71,5 +71,5 @@ module.exports = {
             commonjs: 'underscore.string',
             amd: 'underscore.string',
         },
-    }
+    },
 };

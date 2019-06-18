@@ -37,5 +37,7 @@ export function svgWrapper(svgString, svgClass = '', spanClass = '', title = '',
 
     const titleToDisplay = title ? 'title="' + title + '"' : '';
     const spanClassAttribute = spanClass ? 'class="' + spanClass + '"' : '';
-    return '<span ' + spanClassAttribute + ' ' + titleToDisplay + '>' + renderSvg(svgString, svgClass, attr) + '</span>';
+    return (
+        '<span ' + spanClassAttribute + ' ' + titleToDisplay + '>' + renderSvg(svgString, svgClass, attr) + '</span>'
+    );
 }

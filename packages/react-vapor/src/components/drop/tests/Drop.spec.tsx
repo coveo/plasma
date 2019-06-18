@@ -74,6 +74,15 @@ describe('Drop', () => {
                 return wrapper;
             };
 
+            it('should toggle false on unmount', () => {
+                const store = RTestUtils.buildMockStore(defaultStore(true));
+                wrapper = mountDropWithStore({}, store);
+
+                wrapper.unmount();
+
+                expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(true);
+            });
+
             it('should render a <DropPod>', () => {
                 wrapper = mountDropWithStore({}, RTestUtils.buildMockStore());
 
