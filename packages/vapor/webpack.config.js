@@ -62,4 +62,14 @@ module.exports = {
             },
         ],
     },
+    externals: {
+        jquery: {root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery'},
+        underscore: {root: '_', commonjs2: 'underscore', commonjs: 'underscore', amd: 'underscore'},
+        'underscore.string': {
+            root: 's',
+            commonjs2: 'underscore.string',
+            commonjs: 'underscore.string',
+            amd: 'underscore.string',
+        },
+    }
 };
