@@ -121,10 +121,10 @@ gulp.task('sprites', () => {
         .pipe(gulp.dest('scss'));
 });
 
-const svgTemplate = (key, string) => `        
+const svgTemplate = (key, svgString) => `
     ${key}: {
         name: "${key}",
-        svgString: ${string},
+        svgString: ${svgString},
         render: (...args) => svgWrapper(svg.${key}.svgString, ...args)
     },`;
 
@@ -136,14 +136,14 @@ function Dictionary(from) {
 
     this.writeSvgEnumFile = (to) => {
         let code = 'import {svgWrapper} from "../svgWrapper.js";\n';
-        code += 'export var svg = {\n';
+        code += 'export var svg = {';
         const that = this;
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
             const svgString = JSON.stringify(that.json[key]);
             code += svgTemplate(camelizedKey, svgString);
         });
-        code += '};';
+        code += '\n};';
 
         fs.writeFileSync(to, code);
     };
