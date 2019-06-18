@@ -3,8 +3,8 @@ import { FlatSelectSelectors } from '../FlatSelectSelectors';
 
 fdescribe('FlatSelectSelectors', () => {
     describe('getInput', () => {
-        it('Should return the default flatSelect state', () => {
-            const FlatSelect = FlatSelectSelectors.getInput({ flatSelect: [] }, { id: 'nothing-is-selected-by-the-user' });
+        it('should return the default flatSelect state when the flatSelect is not in the store', () => {
+            const FlatSelect = FlatSelectSelectors.getInput({ flatSelect: [] }, { id: 'nothing is selected by the user' });
             expect(FlatSelect).toEqual(flatSelectInitialState);
         });
 
