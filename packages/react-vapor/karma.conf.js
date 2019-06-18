@@ -1,5 +1,4 @@
 const webpackConfig = require('./webpack.config.test.js');
-const mainReporter = !!process.env.TRAVIS ? 'dots' : 'nyan';
 
 module.exports = (config) => {
     config.set({
