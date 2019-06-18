@@ -5,6 +5,9 @@
     "sourceMap": true,
     "rootDir": ".",
   },
+  "include": [
+    "src/**/*"
+  ],
   "exclude": [
     "src/**/*.spec.*",
     "src/utils/tests/TestUtils.tsx",
