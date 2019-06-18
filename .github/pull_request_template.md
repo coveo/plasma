@@ -1,14 +1,6 @@
-### Description
-
-<!-- Include screenshots, animated .gif or videos if necessary. -->
-<!-- Briefly describe what is the cause of this PR or link the related issue. -->
-<!-- ex: "X was broken when doing this or that." or "We currently have no X component that allows to do Y." -->
-
 ### Proposed Changes
 
-<!-- Explain with bullet points what are your changes. -->
-
-## -
+<!-- Explain what are your changes. -->
 
 ### Potential Breaking Changes
 
