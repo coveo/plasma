@@ -19,7 +19,7 @@ describe('CodeEditor', () => {
         }).not.toThrow();
     });
 
-    fdescribe('<CodeEditor />', () => {
+    describe('<CodeEditor />', () => {
         let codeEditor: ReactWrapper<ICodeEditorProps, CodeEditorState>;
         let codeEditorInstance: CodeEditor;
 
