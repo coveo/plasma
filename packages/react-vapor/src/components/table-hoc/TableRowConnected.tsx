@@ -12,7 +12,7 @@ import {IActionOptions} from '../actions/Action';
 import {addActionsToActionBar} from '../actions/ActionBarActions';
 import {Collapsible} from '../collapsible/Collapsible';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
-import {TableRowActions} from './actions/TableRowActions';
+import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {TableSelectors} from './TableSelectors';
 
 export interface CollapsibleRowProps {
@@ -70,28 +70,28 @@ const mapDispatchToProps = (
     const refreshActionBarActions = (isMulti: boolean) => {
         if (!_.isEmpty(ownProps.actions)) {
             dispatch(addActionsToActionBar(ownProps.tableId, ownProps.actions));
-            dispatch(TableRowActions.select(ownProps.id, isMulti));
+            dispatch(TableHOCRowActions.select(ownProps.id, isMulti));
         }
     };
 
     return ({
         onMount: () => {
-            dispatch(TableRowActions.add(ownProps.id, ownProps.tableId));
+            dispatch(TableHOCRowActions.add(ownProps.id, ownProps.tableId));
             if (isCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
-                dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
+                dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
-        onUnmount: () => dispatch(TableRowActions.remove(ownProps.id)),
+        onUnmount: () => dispatch(TableHOCRowActions.remove(ownProps.id)),
         handleClick: (isMulti: boolean, isOpened: boolean) => {
             refreshActionBarActions(isMulti);
             if (isCollapsible(ownProps)) {
                 callIfDefined(ownProps.collapsible.onToggleCollapsible, !isOpened);
-                dispatch(TableRowActions.toggleCollapsible(ownProps.id));
+                dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id));
             }
         },
         onUpdateToCollapsibleRow: () => {
             if (ownProps.collapsible.expandOnMount) {
-                dispatch(TableRowActions.toggleCollapsible(ownProps.id, true));
+                dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
         onActionBarActionsChanged: () => refreshActionBarActions(false),

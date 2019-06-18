@@ -7,8 +7,8 @@ import {
     ITableRowAddPayload,
     ITableRowSelectPayload,
     ITableRowToggleCollapsiblePayload,
-    TableRowActionsType,
-} from '../actions/TableRowActions';
+    TableHOCRowActionsType,
+} from '../actions/TableHOCRowActions';
 import {TableHOCUtils} from '../TableHOCUtils';
 
 export interface ITableRowState {
@@ -79,11 +79,11 @@ const deselectTableRowReducer = (state: ITableRowState[], action: IReduxAction<I
 };
 
 const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
-    [TableRowActionsType.add]: addTableRowReducer,
-    [TableRowActionsType.remove]: removeTableRowReducer,
-    [TableRowActionsType.select]: selectTableRowReducer,
-    [TableRowActionsType.deselectAll]: deselectTableRowReducer,
-    [TableRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
+    [TableHOCRowActionsType.add]: addTableRowReducer,
+    [TableHOCRowActionsType.remove]: removeTableRowReducer,
+    [TableHOCRowActionsType.select]: selectTableRowReducer,
+    [TableHOCRowActionsType.deselectAll]: deselectTableRowReducer,
+    [TableHOCRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
     [PerPageActions.change]: deselectTableRowReducer,
     [PaginationActions.changePage]: deselectTableRowReducer,
 };

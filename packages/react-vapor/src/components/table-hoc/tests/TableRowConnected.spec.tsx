@@ -6,7 +6,7 @@ import {createMockStore, mockStore} from 'redux-test-utils';
 import {IReactVaporState} from '../../../ReactVapor';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
-import {TableRowActions} from '../actions/TableRowActions';
+import {TableHOCRowActions} from '../actions/TableHOCRowActions';
 import {ITableRowConnectedProps, TableRowConnected} from '../TableRowConnected';
 import {TableSelectors} from '../TableSelectors';
 
@@ -66,16 +66,16 @@ describe('Table HOC', () => {
             expect(wrapper.find('tr').hasClass('selected')).toBe(false);
         });
 
-        it('should dispatch a TableRowActions.add on componentDidMount', () => {
-            const expectedAction = TableRowActions.add(defaultProps.id, defaultProps.tableId);
+        it('should dispatch a TableHOCRowActions.add on componentDidMount', () => {
+            const expectedAction = TableHOCRowActions.add(defaultProps.id, defaultProps.tableId);
 
             shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
 
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch an TableRowActions.remove on componentWillUnmount', () => {
-            const expectedAction = TableRowActions.remove(defaultProps.id);
+        it('should dispatch an TableHOCRowActions.remove on componentWillUnmount', () => {
+            const expectedAction = TableHOCRowActions.remove(defaultProps.id);
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.unmount();
@@ -93,8 +93,8 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch a TableRowActions.select action on click when actions is not empty', () => {
-            const expectedAction = TableRowActions.select(defaultProps.id, false);
+        it('should dispatch a TableHOCRowActions.select action on click when actions is not empty', () => {
+            const expectedAction = TableHOCRowActions.select(defaultProps.id, false);
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} />, store).dive();
             wrapper.find('tr').simulate('click', {});
@@ -114,10 +114,10 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should dispatch a TableRowActions.select action when the action change and the row was selected', () => {
+        it('should dispatch a TableHOCRowActions.select action when the action change and the row was selected', () => {
             const actions = [{name: 'name', enabled: false}];
             const newActions = [{name: 'name', enabled: true}];
-            const expectedAction = TableRowActions.select(defaultProps.id, false);
+            const expectedAction = TableHOCRowActions.select(defaultProps.id, false);
             spyOn(TableSelectors, 'getTableRow').and.returnValue({selected: true, opened: false});
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
@@ -126,8 +126,8 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(expectedAction)).toBe(true);
         });
 
-        it('should not dispatch a TableRowActions.select action on click when actions is empty', () => {
-            const actionNotExpected = TableRowActions.select(defaultProps.id, false);
+        it('should not dispatch a TableHOCRowActions.select action on click when actions is empty', () => {
+            const actionNotExpected = TableHOCRowActions.select(defaultProps.id, false);
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.find('tr').simulate('click', {});
@@ -135,8 +135,8 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(actionNotExpected)).toBe(false);
         });
 
-        it('should not dispatch a TableRowActions.select action on click when clicking inside an underlying dropdown', () => {
-            const actionNotExpected = TableRowActions.select(defaultProps.id, false);
+        it('should not dispatch a TableHOCRowActions.select action on click when clicking inside an underlying dropdown', () => {
+            const actionNotExpected = TableHOCRowActions.select(defaultProps.id, false);
 
             // We must mount the component here because simulated events don't propagate throughout ShallowWrappers
             const wrapper = mountWithStore(
@@ -153,9 +153,9 @@ describe('Table HOC', () => {
             expect(store.isActionDispatched(actionNotExpected)).toBe(false);
         });
 
-        it('should dispatch an TableRowActions.select on click and handle multi-select', () => {
-            const expectedActionWithMulti = TableRowActions.select(defaultProps.id, true);
-            const expectedActionWithoutMulti = TableRowActions.select(defaultProps.id, false);
+        it('should dispatch an TableHOCRowActions.select on click and handle multi-select', () => {
+            const expectedActionWithMulti = TableHOCRowActions.select(defaultProps.id, true);
+            const expectedActionWithoutMulti = TableHOCRowActions.select(defaultProps.id, false);
 
             const wrapper = shallowWithStore(
                 <TableRowConnected
@@ -256,7 +256,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch a toggleCollapsible action when clicking on a collapsible heading-row', () => {
-                const expectedAction = TableRowActions.toggleCollapsible(defaultProps.id);
+                const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id);
 
                 wrapper.find('tr.heading-row').simulate('click', {});
 
@@ -265,7 +265,7 @@ describe('Table HOC', () => {
         });
 
         it('should dispatch a toggleCollapsible action with opened:true on mount when expandOnMount is set to true', () => {
-            const expectedAction = TableRowActions.toggleCollapsible(defaultProps.id, true);
+            const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
             store = createMockStore({
                 tableHOCRow: [{
@@ -292,7 +292,7 @@ describe('Table HOC', () => {
         });
 
         it('should dispatch a toggleCollapsible action with opened:true when changing from a non-collapsible to a collapsible row', () => {
-            const expectedAction = TableRowActions.toggleCollapsible(defaultProps.id, true);
+            const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
             store = createMockStore({
                 tableHOCRow: [{
@@ -323,7 +323,7 @@ describe('Table HOC', () => {
         });
 
         it('should not dispatch a toggleCollapsible action when changing from a non-collapsible to a collapsible row if expandOnMount is false', () => {
-            const actionNotExpected = TableRowActions.toggleCollapsible(defaultProps.id, true);
+            const actionNotExpected = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
             store = createMockStore({
                 tableHOCRow: [{

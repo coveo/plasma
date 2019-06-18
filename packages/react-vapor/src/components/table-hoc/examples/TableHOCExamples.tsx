@@ -8,7 +8,7 @@ import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {SELECTION_BOX, SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {SingleSelectConnected} from '../../select/SingleSelectConnected';
-import {TableRowActions} from '../actions/TableRowActions';
+import {TableHOCRowActions} from '../actions/TableHOCRowActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
@@ -111,7 +111,7 @@ const TableWithSortFilterAndPagination = _.compose(
 )(TableHOC);
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
-    unselectActions: () => dispatch(TableRowActions.deselectAll('table-with-unselect-all')),
+    unselectActions: () => dispatch(TableHOCRowActions.deselectAll('table-with-unselect-all')),
 });
 
 @ReduxConnect(null, mapDispatchToProps)
