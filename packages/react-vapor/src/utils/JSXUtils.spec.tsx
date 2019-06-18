@@ -16,7 +16,7 @@ describe('JSXUtils', () => {
 
             expect(getReactNodeTextContent(
                 <div>
-                    {'Hello there! '}
+                    {'Hello there!    '}
                     <span>
                         {'Can you see me? '}
                         <span>I can.</span>
