@@ -9,13 +9,12 @@ import {IFlatSelectOptionProps} from './FlatSelectOption';
 import {IFlatSelectState} from './FlatSelectReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFlatSelectOwnProps): IFlatSelectStateProps => {
-    const flatSelectState: IFlatSelectState = _.findWhere(state.flatSelect, {id: ownProps.id});
+    const flatSelect: IFlatSelectState = _.findWhere(state.flatSelect, {id: ownProps.id});
 
-    if (flatSelectState && flatSelectState.selectedOptionId) {
-        return {selectedOptionId: flatSelectState.selectedOptionId};
+    return {
+        selectedOptionId: flatSelect && flatSelect.selectedOptionId
     }
 
-    return {selectedOptionId: ownProps.options.length && ownProps.options[0].id};
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IFlatSelectOwnProps): IFlatSelectDispatchProps => ({
