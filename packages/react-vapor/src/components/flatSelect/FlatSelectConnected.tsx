@@ -12,8 +12,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFlatSelectOwnProps)
     const flatSelect: IFlatSelectState = _.findWhere(state.flatSelect, {id: ownProps.id});
 
     return {
-        selectedOptionId: flatSelect && flatSelect.selectedOptionId
-    }
+        selectedOptionId: flatSelect && flatSelect.selectedOptionId,
+    };
 
 };
 
