@@ -14,9 +14,7 @@ describe('NavigationPerPageSelect', () => {
     describe('<NavigationPerPageSelect />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
-                );
+                shallow(<NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />);
             }).not.toThrow();
         });
     });
@@ -25,10 +23,9 @@ describe('NavigationPerPageSelect', () => {
         let navigationPerPageSelect: ReactWrapper<INavigationPerPageSelectProps, any>;
 
         beforeEach(() => {
-            navigationPerPageSelect = mount(
-                <NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            navigationPerPageSelect = mount(<NavigationPerPageSelect {...basicNavigationPerPageSelectProps} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {

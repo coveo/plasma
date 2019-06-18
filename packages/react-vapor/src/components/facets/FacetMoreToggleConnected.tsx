@@ -21,9 +21,14 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreToggleOwnP
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetMoreToggleDispatchProps => ({
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void
+): IFacetMoreToggleDispatchProps => ({
     onToggleMore: (facet: string) => dispatch(toggleMoreFacetRows(facet)),
 });
 
-export const FacetMoreToggleConnected: React.ComponentClass<IFacetMoreToggleProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FacetMoreToggle);
+export const FacetMoreToggleConnected: React.ComponentClass<IFacetMoreToggleProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(FacetMoreToggle);

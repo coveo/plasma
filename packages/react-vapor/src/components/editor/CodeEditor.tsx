@@ -40,11 +40,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
         lineNumbers: true,
         foldGutter: true,
         lint: true,
-        gutters: [
-            CodeMirrorGutters.LineNumbers,
-            CodeMirrorGutters.FoldGutter,
-            CodeMirrorGutters.LintMarkers,
-        ],
+        gutters: [CodeMirrorGutters.LineNumbers, CodeMirrorGutters.FoldGutter, CodeMirrorGutters.LintMarkers],
         extraKeys: {
             'Ctrl-Space': 'autocomplete',
             'Alt-F': 'findPersistent',
@@ -86,10 +82,17 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                 }}
                 value={this.state.value}
                 onChange={(editor, data, value: string) => this.handleChange(value)}
-                options={_.extend({}, CodeEditor.Options, {readOnly: this.props.readOnly, mode: this.props.mode})}
+                options={_.extend({}, CodeEditor.Options, {
+                    readOnly: this.removeCursorWhenEditorIsReadOnly(),
+                    mode: this.props.mode,
+                })}
                 className={this.props.className}
             />
         );
+    }
+
+    private removeCursorWhenEditorIsReadOnly() {
+        return this.props.readOnly ? 'nocursor' : this.props.readOnly;
     }
 
     private handleChange(code: string) {
@@ -99,7 +102,9 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     private addExtraKeywords() {
         if (this.props.extraKeywords) {
             const mode: string = this.props.mode.name || this.props.mode;
-            (CodeMirror as any).helpers.hintWords[mode] = (CodeMirror as any).helpers.hintWords[mode].concat(this.props.extraKeywords);
+            (CodeMirror as any).helpers.hintWords[mode] = (CodeMirror as any).helpers.hintWords[mode].concat(
+                this.props.extraKeywords
+            );
         }
     }
 }

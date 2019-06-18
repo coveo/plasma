@@ -6,23 +6,27 @@ import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
 
 describe('SubNavigation', () => {
     it('should render without errors', () => {
-        expect(() => shallow(<SubNavigation items={[]} selected='' />)).not.toThrow();
-        expect(() => shallow(<SubNavigation items={[]} selected='hello' />)).not.toThrow();
-        expect(() => shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected='a' />)).not.toThrow();
-        expect(() => shallow(<SubNavigation items={[{id: 'a', label: 'A'}, {id: 'b', label: 'B'}]} selected='b' />)).not.toThrow();
-        expect(() => shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected='not-existing-id' />)).not.toThrow();
+        expect(() => shallow(<SubNavigation items={[]} selected="" />)).not.toThrow();
+        expect(() => shallow(<SubNavigation items={[]} selected="hello" />)).not.toThrow();
+        expect(() => shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="a" />)).not.toThrow();
+        expect(() =>
+            shallow(<SubNavigation items={[{id: 'a', label: 'A'}, {id: 'b', label: 'B'}]} selected="b" />)
+        ).not.toThrow();
+        expect(() =>
+            shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="not-existing-id" />)
+        ).not.toThrow();
     });
 
     it('should call onRender when the element is created', () => {
         const spy = jasmine.createSpy('onRender');
-        shallow(<SubNavigation items={[]} defaultSelected='' onRender={spy} />);
+        shallow(<SubNavigation items={[]} defaultSelected="" onRender={spy} />);
 
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('should call onDestroy when the element is created', () => {
         const spy = jasmine.createSpy('onDestroy');
-        const subNav = shallow(<SubNavigation items={[]} defaultSelected='' onDestroy={spy} />);
+        const subNav = shallow(<SubNavigation items={[]} defaultSelected="" onDestroy={spy} />);
         subNav.unmount();
 
         expect(spy).toHaveBeenCalledTimes(1);
@@ -31,10 +35,7 @@ describe('SubNavigation', () => {
     describe('<SubNavigation />', () => {
         let subNavigation: ShallowWrapper<ISubNavigationProps>;
         const basicProps: ISubNavigationProps = {
-            items: [
-                {id: 'a', label: 'A'},
-                {id: 'b', label: 'B'},
-            ],
+            items: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],
         };
 
         it('should render one navigation link per item', () => {
@@ -48,7 +49,12 @@ describe('SubNavigation', () => {
 
             subNavigation = shallow(<SubNavigation {...basicProps} selected={selectedItem} />);
 
-            expect(subNavigation.find('li').findWhere((node) => node.key() === selectedItem).hasClass('mod-selected')).toBe(true);
+            expect(
+                subNavigation
+                    .find('li')
+                    .findWhere((node) => node.key() === selectedItem)
+                    .hasClass('mod-selected')
+            ).toBe(true);
         });
 
         it('should call the onClickItem prop when clicking on an item', () => {
@@ -56,7 +62,11 @@ describe('SubNavigation', () => {
             const spy = jasmine.createSpy('onClickItem');
 
             subNavigation = shallow(<SubNavigation {...basicProps} onClickItem={spy} />);
-            subNavigation.find('li').findWhere((node) => node.key() === clickedItem).find('.sub-navigation-item-link').simulate('click', {preventDefault: noop});
+            subNavigation
+                .find('li')
+                .findWhere((node) => node.key() === clickedItem)
+                .find('.sub-navigation-item-link')
+                .simulate('click', {preventDefault: noop});
 
             expect(spy).toHaveBeenCalledTimes(1);
             expect(spy).toHaveBeenCalledWith(clickedItem);

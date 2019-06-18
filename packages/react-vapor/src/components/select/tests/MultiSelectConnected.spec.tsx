@@ -25,7 +25,7 @@ describe('Select', () => {
                 <Provider store={store}>
                     <MultiSelectConnected id={id} items={items} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             multiSelect = wrapper.find(SelectConnected).first();
         };
@@ -70,30 +70,21 @@ describe('Select', () => {
         it('should allow a custom placeholder', () => {
             const expectedPlaceholder = 'select thingy';
 
-            mountMultiSelect([
-                {value: 'a'},
-                {value: 'b'},
-            ], {placeholder: expectedPlaceholder});
+            mountMultiSelect([{value: 'a'}, {value: 'b'}], {placeholder: expectedPlaceholder});
 
             expect(multiSelect.html()).toContain(expectedPlaceholder);
         });
 
         it('should contains a the selected value', () => {
             const selectedValue = 'dis 1';
-            mountMultiSelect([
-                {value: 'a'},
-                {value: selectedValue, selected: true},
-            ]);
+            mountMultiSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             expect(multiSelect.html()).toContain(selectedValue);
         });
 
         it('should contains the display value when the selected value has one', () => {
             const selectedDisplayValue = 'dis 2';
-            mountMultiSelect([
-                {value: 'a'},
-                {value: 'dis 1', displayValue: selectedDisplayValue, selected: true},
-            ]);
+            mountMultiSelect([{value: 'a'}, {value: 'dis 1', displayValue: selectedDisplayValue, selected: true}]);
 
             expect(multiSelect.html()).toContain(selectedDisplayValue);
         });
@@ -109,8 +100,18 @@ describe('Select', () => {
             ]);
 
             expect(multiSelect.find(SelectedOption).length).toBe(2);
-            expect(multiSelect.find(SelectedOption).at(0).props().value).toBe(firstSelected);
-            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(secondSelected);
+            expect(
+                multiSelect
+                    .find(SelectedOption)
+                    .at(0)
+                    .props().value
+            ).toBe(firstSelected);
+            expect(
+                multiSelect
+                    .find(SelectedOption)
+                    .at(1)
+                    .props().value
+            ).toBe(secondSelected);
         });
 
         it('should disable the dropdown if there is no options', () => {
@@ -120,19 +121,13 @@ describe('Select', () => {
         });
 
         it('should not disable the dropdown if one of the options is not is selected', () => {
-            mountMultiSelect([
-                {value: 'a', selected: false},
-                {value: 'b', selected: true},
-            ]);
+            mountMultiSelect([{value: 'a', selected: false}, {value: 'b', selected: true}]);
 
             expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeUndefined();
         });
 
         it('should disable the dropdown when every option is selected', () => {
-            mountMultiSelect([
-                {value: 'a', selected: true},
-                {value: 'b', selected: true},
-            ]);
+            mountMultiSelect([{value: 'a', selected: true}, {value: 'b', selected: true}]);
 
             expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
         });
@@ -150,7 +145,11 @@ describe('Select', () => {
             let state = _.findWhere(store.getState().listBoxes, {id});
             expect(state.selected).toEqual([firstSelected, secondSelected]);
 
-            multiSelect.find(SelectedOption).at(0).find('.remove-option').simulate('click');
+            multiSelect
+                .find(SelectedOption)
+                .at(0)
+                .find('.remove-option')
+                .simulate('click');
 
             state = _.findWhere(store.getState().listBoxes, {id});
             expect(state.selected).toEqual([secondSelected]);

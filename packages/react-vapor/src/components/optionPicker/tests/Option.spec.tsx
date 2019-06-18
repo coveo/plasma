@@ -17,9 +17,7 @@ describe('Option picker', () => {
     describe('<Option />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <Option {...OPTION_BASIC_PROPS} />,
-                );
+                shallow(<Option {...OPTION_BASIC_PROPS} />);
             }).not.toThrow();
         });
     });
@@ -28,10 +26,7 @@ describe('Option picker', () => {
         let option: ReactWrapper<IOptionProps, any>;
 
         beforeEach(() => {
-            option = mount(
-                <Option {...OPTION_BASIC_PROPS} />,
-                {attachTo: document.getElementById('App')},
-            );
+            option = mount(<Option {...OPTION_BASIC_PROPS} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -77,7 +72,7 @@ describe('Option picker', () => {
 
             expect(OPTION_BASIC_PROPS.onClick).toHaveBeenCalledWith(
                 OPTION_BASIC_PROPS.option.value(),
-                OPTION_BASIC_PROPS.option.label,
+                OPTION_BASIC_PROPS.option.label
             );
         });
     });

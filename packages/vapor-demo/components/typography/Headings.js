@@ -9,4 +9,4 @@ export default function Headings() {
             <h6>Admin heading 6</h6>
         </>
     );
-};
+}

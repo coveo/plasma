@@ -3,35 +3,34 @@
 
 .stickyFooter {
     position: sticky;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    display: flex;
     align-items: center;
     justify-content: flex-end;
-  
-    display: flex;
+    height: 0;
+    padding: 0;
     overflow: hidden;
-  
     background-color: $white;
     border-radius: 0 0 $border-radius $border-radius;
 
     transform: translate3d(0, 100%, 0);
     visibility: hidden;
     opacity: 0;
-    height: 0;
-    padding: 0;
-    transition: transform $navigation-toggle-duration ease-in-out, width $navigation-toggle-duration ease-in-out, opacity $navigation-toggle-duration ease-in-out;
+    transition: transform $navigation-toggle-duration ease-in-out, width $navigation-toggle-duration ease-in-out,
+        opacity $navigation-toggle-duration ease-in-out;
     will-change: transform;
 }
 
 .stickyFooterOpened {
-  transform: translate3d(0, 0, 0);
-  visibility: visible;
-  opacity: 1;
-  height: unset;
-  padding: $modal-footer-small-padding;
+    height: unset;
+    padding: $modal-footer-small-padding;
+    transform: translate3d(0, 0, 0);
+    visibility: visible;
+    opacity: 1;
 }
 
 :global(.sticky-footer-mod-header) {
-    margin-left: -$header-padding;
     margin-right: -$header-padding;
+    margin-left: -$header-padding;
 }

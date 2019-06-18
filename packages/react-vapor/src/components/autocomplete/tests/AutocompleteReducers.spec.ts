@@ -2,10 +2,20 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {
-    addAutocomplete, IAutocompletePayload, removeAutocomplete, setAutocompleteActive, setAutocompleteValue,
+    addAutocomplete,
+    IAutocompletePayload,
+    removeAutocomplete,
+    setAutocompleteActive,
+    setAutocompleteValue,
     toggleAutocomplete,
 } from '../AutocompleteActions';
-import {autocompleteCompositeInitialState, autocompleteInitialState, autocompleteReducer, autocompletesReducer, IAutocompleteState} from '../AutocompleteReducers';
+import {
+    autocompleteCompositeInitialState,
+    autocompleteInitialState,
+    autocompleteReducer,
+    autocompletesReducer,
+    IAutocompleteState,
+} from '../AutocompleteReducers';
 
 describe('Autocomplete', () => {
     describe('Autocomplete Reducers', () => {
@@ -152,14 +162,20 @@ describe('Autocomplete', () => {
             it('should set the value and set the open property to open', () => {
                 const expectedValue = 'new-value';
                 const oldState: IAutocompleteState[] = defaultState;
-                const newState: IAutocompleteState[] = autocompletesReducer(oldState, setAutocompleteValue(id, expectedValue, true));
+                const newState: IAutocompleteState[] = autocompletesReducer(
+                    oldState,
+                    setAutocompleteValue(id, expectedValue, true)
+                );
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
                 expect(newState[0].open).toBe(true);
                 expect(newState[0].value).toBe(expectedValue);
 
-                const newerState: IAutocompleteState[] = autocompletesReducer(oldState, setAutocompleteValue(id, expectedValue, false));
+                const newerState: IAutocompleteState[] = autocompletesReducer(
+                    oldState,
+                    setAutocompleteValue(id, expectedValue, false)
+                );
                 expect(newerState.length).toBe(oldState.length);
                 expect(newerState[0].id).toBe(id);
                 expect(newerState[0].open).toBe(false);
@@ -169,7 +185,7 @@ describe('Autocomplete', () => {
             it('should not modify the old state', () => {
                 const oldState: IAutocompleteState[] = [autocompleteInitialState];
                 const oldStateBefore = _.clone(oldState);
-                autocompletesReducer(oldState, setAutocompleteValue(id, '¯\_(ツ)_/¯', true));
+                autocompletesReducer(oldState, setAutocompleteValue(id, '¯_(ツ)_/¯', true));
 
                 expect(oldState).toEqual(oldStateBefore);
             });
@@ -187,7 +203,10 @@ describe('Autocomplete', () => {
                 const expectedValue = -1;
                 defaultState[0].active = 0;
                 const oldState: IAutocompleteState[] = defaultState;
-                const newState: IAutocompleteState[] = autocompletesReducer(oldState, setAutocompleteActive(id, expectedValue));
+                const newState: IAutocompleteState[] = autocompletesReducer(
+                    oldState,
+                    setAutocompleteActive(id, expectedValue)
+                );
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
@@ -239,7 +258,10 @@ describe('Autocomplete', () => {
 
             it('should set the open property to true', () => {
                 const oldState: IAutocompleteState[] = defaultState;
-                const newState: IAutocompleteState[] = autocompletesReducer(oldState, selectListBoxOption(id, false, 'anything'));
+                const newState: IAutocompleteState[] = autocompletesReducer(
+                    oldState,
+                    selectListBoxOption(id, false, 'anything')
+                );
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
@@ -252,7 +274,9 @@ describe('Autocomplete', () => {
 
                 const oldState: IAutocompleteState[] = state;
                 let newState: IAutocompleteState[] = [];
-                expect(() => newState = autocompletesReducer(oldState, selectListBoxOption(id, false, 'value'))).not.toThrow();
+                expect(
+                    () => (newState = autocompletesReducer(oldState, selectListBoxOption(id, false, 'value')))
+                ).not.toThrow();
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);

@@ -7,7 +7,7 @@ import {tableWithSort} from '../TableWithSort';
 describe('Table HOC', () => {
     describe('TableWithSort', () => {
         const TableWithSort = _.compose(
-            tableWithSort({sort: (sortKey: string, isAsc: boolean, a: any, b: any) => b.value - a.value}),
+            tableWithSort({sort: (sortKey: string, isAsc: boolean, a: any, b: any) => b.value - a.value})
         )(TableHOC);
 
         const defaultProps: ITableHOCProps = {
@@ -21,8 +21,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithSort id='a' data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithSort id='b' data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithSort id="a" data={[]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithSort id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
         });
 
         it('should render a TableHOC', () => {
@@ -31,7 +31,10 @@ describe('Table HOC', () => {
         });
 
         it('should sort elements', () => {
-            const wrapper = shallowWithState(<TableWithSort {...defaultProps} />, getStateWithSort(true, 'value')).dive();
+            const wrapper = shallowWithState(
+                <TableWithSort {...defaultProps} />,
+                getStateWithSort(true, 'value')
+            ).dive();
 
             const sortedData = [...defaultProps.data].sort((a, b) => b.value - a.value);
             const tableData = wrapper.find(TableHOC).prop('data');
@@ -40,23 +43,25 @@ describe('Table HOC', () => {
         });
 
         it('should not sort if the function is not defined', () => {
-            const TableWithDefaultSort = _.compose(
-                tableWithSort({}),
-            )(TableHOC);
+            const TableWithDefaultSort = _.compose(tableWithSort({}))(TableHOC);
 
-            const wrapper = shallowWithState(<TableWithDefaultSort {...defaultProps} />, getStateWithSort(true, 'value')).dive();
+            const wrapper = shallowWithState(
+                <TableWithDefaultSort {...defaultProps} />,
+                getStateWithSort(true, 'value')
+            ).dive();
             const tableData = wrapper.find(TableHOC).prop('data');
 
             expect(tableData).toEqual(defaultProps.data);
         });
 
         describe('when server side', () => {
-            const TableWithPredicateServer = _.compose(
-                tableWithSort({isServer: true}),
-            )(TableHOC);
+            const TableWithPredicateServer = _.compose(tableWithSort({isServer: true}))(TableHOC);
 
             it('should not sort elements', () => {
-                const wrapper = shallowWithState(<TableWithPredicateServer {...defaultProps} />, getStateWithSort(true, 'value')).dive();
+                const wrapper = shallowWithState(
+                    <TableWithPredicateServer {...defaultProps} />,
+                    getStateWithSort(true, 'value')
+                ).dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
 
@@ -65,7 +70,10 @@ describe('Table HOC', () => {
 
             it('should call onUpdate when the sort changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const wrapper = shallowWithState(<TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />, getStateWithSort(true, 'value')).dive();
+                const wrapper = shallowWithState(
+                    <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithSort(true, 'value')
+                ).dive();
 
                 wrapper.setProps({isAsc: false});
                 wrapper.update();
@@ -75,7 +83,10 @@ describe('Table HOC', () => {
 
             it('should not call onUpdate when the predicate does not changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const wrapper = shallowWithState(<TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />, getStateWithSort(true, 'value')).dive();
+                const wrapper = shallowWithState(
+                    <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithSort(true, 'value')
+                ).dive();
 
                 wrapper.setProps({ignore: true});
                 wrapper.update();

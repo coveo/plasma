@@ -15,9 +15,7 @@ describe('Actions', () => {
     describe('<Action />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <Action action={action} />,
-                );
+                shallow(<Action action={action} />);
             }).not.toThrow();
         });
 
@@ -34,13 +32,9 @@ describe('Actions', () => {
             if (actionComponent && actionComponent.length) {
                 actionComponent.unmount();
             }
-            actionComponent = mount(
-                <Action
-                    action={action}
-                    simple={simple}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            actionComponent = mount(<Action action={action} simple={simple} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {

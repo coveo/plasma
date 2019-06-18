@@ -27,9 +27,9 @@ describe('SearchBarConnected', () => {
         expect(() => {
             searchBarConnectedPropsScenarios.forEach((props) => {
                 mount(
-                    <Provider store={store} >
+                    <Provider store={store}>
                         <SearchBarConnected {...props} />
-                    </Provider>,
+                    </Provider>
                 ).unmount();
             });
         }).not.toThrow();
@@ -37,9 +37,9 @@ describe('SearchBarConnected', () => {
 
     it('should add and remove the search bar on mount and unmount respectively', () => {
         const component = mount(
-            <Provider store={store} >
+            <Provider store={store}>
                 <SearchBarConnected {...requiredProps} />
-            </Provider>,
+            </Provider>
         );
 
         expect(store.getState().searchBars[0].id).toBe(requiredProps.id);
@@ -51,24 +51,26 @@ describe('SearchBarConnected', () => {
 
     it('should mount with a state not searching, not disabled, and without value by default', () => {
         mount(
-            <Provider store={store} >
+            <Provider store={store}>
                 <SearchBarConnected {...requiredProps} />
-            </Provider>,
+            </Provider>
         );
 
-        expect(store.getState().searchBars[0])
-            .toEqual(jasmine.objectContaining({searching: false, disabled: false, value: ''}));
+        expect(store.getState().searchBars[0]).toEqual(
+            jasmine.objectContaining({searching: false, disabled: false, value: ''})
+        );
     });
 
     it('should mount with a state not searching, disabled, and without value if disabledOnMount is passed as prop', () => {
         mount(
-            <Provider store={store} >
+            <Provider store={store}>
                 <SearchBarConnected {...requiredProps} disabledOnMount />
-            </Provider>,
+            </Provider>
         );
 
-        expect(store.getState().searchBars[0])
-            .toEqual(jasmine.objectContaining({searching: false, disabled: true, value: ''}));
+        expect(store.getState().searchBars[0]).toEqual(
+            jasmine.objectContaining({searching: false, disabled: true, value: ''})
+        );
     });
 
     describe('after mount', () => {
@@ -76,9 +78,9 @@ describe('SearchBarConnected', () => {
 
         beforeEach(() => {
             component = mount(
-                <Provider store={store} >
+                <Provider store={store}>
                     <SearchBarConnected {...requiredProps} />
-                </Provider>,
+                </Provider>
             );
         });
 
@@ -105,13 +107,23 @@ describe('SearchBarConnected', () => {
             store.dispatch(toggleSearching(requiredProps.id, true));
             component.update();
 
-            expect(component.find('div').first().hasClass('search-bar-loading')).toBe(true);
+            expect(
+                component
+                    .find('div')
+                    .first()
+                    .hasClass('search-bar-loading')
+            ).toBe(true);
             expect(component.find('input').prop('disabled')).toBe(true);
 
             store.dispatch(toggleSearching(requiredProps.id, false));
             component.update();
 
-            expect(component.find('div').first().hasClass('search-bar-loading')).toBe(false);
+            expect(
+                component
+                    .find('div')
+                    .first()
+                    .hasClass('search-bar-loading')
+            ).toBe(false);
             expect(component.find('input').prop('disabled')).toBe(false);
         });
     });

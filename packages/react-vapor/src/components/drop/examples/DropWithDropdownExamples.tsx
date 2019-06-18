@@ -7,12 +7,9 @@ import {ListBox} from '../../listBox/ListBox';
 import {Drop} from '../Drop';
 import {dropWithDropdown} from '../hoc/DropWithDropdown';
 
-const DropWithDropdownExamples1 = _.compose(
-    dropWithDropdown(),
-)(Drop);
+const DropWithDropdownExamples1 = _.compose(dropWithDropdown())(Drop);
 
 export class DropWithDropdownExamples extends React.PureComponent {
-
     render() {
         const triggerAlertFunction = () => {
             alert(`Alert function triggered`);
@@ -26,41 +23,33 @@ export class DropWithDropdownExamples extends React.PureComponent {
         ];
 
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>Default drop with dropdown</label>
-                    <div className='form-control pt5'>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Default drop with dropdown</label>
+                    <div className="form-control pt5">
                         <DropWithDropdownExamples1
                             id={UUID.generate()}
                             buttonContainerProps={{
                                 className: 'inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
-                                <Button
-                                    name={'Text'}
-                                    enabled={true}
-                                    onClick={onClick}
-                                />
+                                <Button name={'Text'} enabled={true} onClick={onClick} />
                             )}
                         >
                             <ListBox items={defaultItems} />
                         </DropWithDropdownExamples1>
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Drop with dropdown without close on click inside drop</label>
-                    <div className='form-control pt5'>
+                <div className="form-group">
+                    <label className="form-control-label">Drop with dropdown without close on click inside drop</label>
+                    <div className="form-control pt5">
                         <DropWithDropdownExamples1
                             id={UUID.generate()}
                             buttonContainerProps={{
                                 className: 'inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
-                                <Button
-                                    name={'Text'}
-                                    enabled={true}
-                                    onClick={onClick}
-                                />
+                                <Button name={'Text'} enabled={true} onClick={onClick} />
                             )}
                             closeOnClickDrop={false}
                         >
@@ -68,20 +57,16 @@ export class DropWithDropdownExamples extends React.PureComponent {
                         </DropWithDropdownExamples1>
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Drop with dropdown without close on click outside drop</label>
-                    <div className='form-control pt5'>
+                <div className="form-group">
+                    <label className="form-control-label">Drop with dropdown without close on click outside drop</label>
+                    <div className="form-control pt5">
                         <DropWithDropdownExamples1
                             id={UUID.generate()}
                             buttonContainerProps={{
                                 className: 'inline-block',
                             }}
                             renderOpenButton={(onClick: () => void) => (
-                                <Button
-                                    name={'Text'}
-                                    enabled={true}
-                                    onClick={onClick}
-                                />
+                                <Button name={'Text'} enabled={true} onClick={onClick} />
                             )}
                             closeOnClickOutside={false}
                         >

@@ -42,11 +42,7 @@ export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttribut
     noSpanWrapper?: boolean;
 }
 
-const PROPS_TO_OMIT: string[] = [
-    'title',
-    'className',
-    'children',
-];
+const PROPS_TO_OMIT: string[] = ['title', 'className', 'children'];
 
 const TOOLTIP_PROPS_TO_OMIT: string[] = [
     ...PROPS_TO_OMIT,
@@ -99,27 +95,27 @@ export class Tooltip extends React.Component<ITooltipProps> {
     }
 
     render() {
-        const tooltipFooter: JSX.Element = this.props.footer
-            ? <div className='tooltip-footer'>{this.props.footer}</div>
-            : null;
+        const tooltipFooter: JSX.Element = this.props.footer ? (
+            <div className="tooltip-footer">{this.props.footer}</div>
+        ) : null;
 
-        const tooltip: JSX.Element = <BootstrapTooltip
-            id={_.uniqueId('tooltip-')}
-            ref={this.overlay}
-            {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
-            className='react-vapor-tooltip'
-        >
-            {this.props.title}
-            {tooltipFooter}
-        </BootstrapTooltip>;
+        const tooltip: JSX.Element = (
+            <BootstrapTooltip
+                id={_.uniqueId('tooltip-')}
+                ref={this.overlay}
+                {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
+                className="react-vapor-tooltip"
+            >
+                {this.props.title}
+                {tooltipFooter}
+            </BootstrapTooltip>
+        );
 
-        const children = this.props.noSpanWrapper
-            ? this.props.children as any
-            : (
-                <span className={this.props.className}>
-                    {this.props.children}
-                </span>
-            );
+        const children = this.props.noSpanWrapper ? (
+            (this.props.children as any)
+        ) : (
+            <span className={this.props.className}>{this.props.children}</span>
+        );
 
         if (this.props.title) {
             return (

@@ -17,17 +17,12 @@ describe('<LinkSvg>', () => {
     });
 
     it('should render without error', () => {
-        expect(() => shallow(
-            <LinkSvg {...linkSvgProps} />,
-        )).not.toThrow();
+        expect(() => shallow(<LinkSvg {...linkSvgProps} />)).not.toThrow();
     });
 
     it('should mount and unmount/detach without error', () => {
         expect(() => {
-            linkSvgComponent = mount(
-                <LinkSvg {...linkSvgProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            linkSvgComponent = mount(<LinkSvg {...linkSvgProps} />, {attachTo: document.getElementById('App')});
         }).not.toThrow();
 
         expect(() => {
@@ -42,10 +37,9 @@ describe('<LinkSvg>', () => {
         });
 
         const renderLinkSvg = (props: Partial<ILinkSvgProps> = {}) => {
-            linkSvgComponent = mount(
-                <LinkSvg {..._.extend(linkSvgProps, props)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            linkSvgComponent = mount(<LinkSvg {..._.extend(linkSvgProps, props)} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         it('should set the link on the <a> href', () => {

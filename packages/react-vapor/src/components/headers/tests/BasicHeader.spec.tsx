@@ -5,7 +5,6 @@ import {BasicHeader, IBasicHeaderProps} from '../BasicHeader';
 import {HeaderWrapper} from '../HeaderWrapper';
 
 describe('<BasicHeader/>', () => {
-
     const defaultProps: IBasicHeaderProps = {
         title: {
             text: 'test',
@@ -21,12 +20,8 @@ describe('<BasicHeader/>', () => {
     });
 
     describe('<Breadcrumb /> with default props', () => {
-
         beforeEach(() => {
-            basicHeaderComponent = mount(
-                <BasicHeader {...defaultProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            basicHeaderComponent = mount(<BasicHeader {...defaultProps} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

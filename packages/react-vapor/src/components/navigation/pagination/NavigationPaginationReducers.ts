@@ -18,7 +18,10 @@ export const paginationInitialState: IPaginationState = {
 
 export const paginationCompositeInitialState: IPaginationState[] = [];
 
-export const paginationReducer = (state: IPaginationState = paginationInitialState, action: IReduxAction<IReduxActionsPayload>): IPaginationState => {
+export const paginationReducer = (
+    state: IPaginationState = paginationInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IPaginationState => {
     switch (action.type) {
         case PaginationActions.add:
             return {
@@ -27,29 +30,25 @@ export const paginationReducer = (state: IPaginationState = paginationInitialSta
             };
         case PaginationActions.changePage:
         case PaginationActions.reset:
-            return state.id === action.payload.id
-                ? {id: state.id, pageNb: action.payload.pageNb}
-                : state;
+            return state.id === action.payload.id ? {id: state.id, pageNb: action.payload.pageNb} : state;
         case TableActions.modifyState:
             return s.contains(state.id, action.payload.id) && action.payload.shouldResetPage
                 ? {...state, pageNb: 0}
                 : state;
         case FilterActions.filterThrough:
-            return s.contains(state.id, action.payload.id)
-                ? {...state, pageNb: 0}
-                : state;
+            return s.contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
         default:
             return state;
     }
 };
 
-export const paginationCompositeReducer = (state: IPaginationState[] = paginationCompositeInitialState, action: IReduxAction<IReduxActionsPayload>): IPaginationState[] => {
+export const paginationCompositeReducer = (
+    state: IPaginationState[] = paginationCompositeInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): IPaginationState[] => {
     switch (action.type) {
         case PaginationActions.add:
-            return [
-                ...state,
-                paginationReducer(undefined, action),
-            ];
+            return [...state, paginationReducer(undefined, action)];
         case PaginationActions.remove:
             return _.reject(state, (pagination: IPaginationState) => {
                 return pagination.id === action.payload.id;

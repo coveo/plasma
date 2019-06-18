@@ -16,7 +16,11 @@ import {IModalFooterProps, ModalFooter} from './ModalFooter';
 import {IModalHeaderDispatchProps, IModalHeaderOwnProps, IModalHeaderProps, ModalHeader} from './ModalHeader';
 import {ModalHeaderConnected} from './ModalHeaderConnected';
 
-export interface IModalCompositeOwnProps extends IModalOwnProps, IModalHeaderOwnProps, IModalFooterProps, IModalBackdropOwnProps {
+export interface IModalCompositeOwnProps
+    extends IModalOwnProps,
+        IModalHeaderOwnProps,
+        IModalFooterProps,
+        IModalBackdropOwnProps {
     modalHeaderChildren?: React.ReactNode;
     modalHeaderClasses?: IClassName;
     modalBodyChildren?: React.ReactNode;
@@ -33,11 +37,16 @@ export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IMo
 
 export interface IModalCompositeDispatchProps extends IModalDispatchProps, IModalHeaderDispatchProps {}
 
-export interface IModalCompositeProps extends IModalCompositeOwnProps, Partial<IModalCompositeStateProps>, Partial<IModalCompositeDispatchProps> {}
+export interface IModalCompositeProps
+    extends IModalCompositeOwnProps,
+        Partial<IModalCompositeStateProps>,
+        Partial<IModalCompositeDispatchProps> {}
 
 const modalPropsToOmit = keys<IModalCompositeProps>();
 
-export class ModalComposite extends React.PureComponent<IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>> {
+export class ModalComposite extends React.PureComponent<
+    IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>
+> {
     static defaultProps: Partial<IModalCompositeProps> = {
         id: _.uniqueId('modal'),
         closeTimeout: Defaults.MODAL_TIMEOUT,
@@ -57,18 +66,14 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
                 key={this.props.id}
                 isOpen={this.props.isOpened}
                 className={{
-                    base: classNames(
-                        'modal-container --react-modal',
-                        this.props.classes,
-                    ),
+                    base: classNames('modal-container --react-modal', this.props.classes),
                     afterOpen: 'opened',
                     beforeClose: 'closed',
                 }}
                 overlayClassName={{
-                    base: classNames(
-                        'modal-backdrop --react-modal',
-                        {[`layer-${this.props.layer}`]: this.props.layer > 0},
-                    ),
+                    base: classNames('modal-backdrop --react-modal', {
+                        [`layer-${this.props.layer}`]: this.props.layer > 0,
+                    }),
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}
@@ -78,7 +83,7 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
                 parentSelector={this.getParent}
                 {...reactModalprops}
             >
-                <div className='modal-content' id={this.props.id}>
+                <div className="modal-content" id={this.props.id}>
                     {this.getModalHeader()}
                     {this.getModalBody()}
                     {this.getModalFooter()}
@@ -127,22 +132,30 @@ export class ModalComposite extends React.PureComponent<IModalCompositeProps & P
             docLink: this.props.docLink,
         };
 
-        return this.props.withReduxState
-            ? <ModalHeaderConnected key='modal-header' {...basicProps}>{this.props.modalHeaderChildren}</ModalHeaderConnected>
-            : <ModalHeader key='modal-header' {...basicProps} onClose={this.props.onClose}>{this.props.modalHeaderChildren}</ModalHeader>;
+        return this.props.withReduxState ? (
+            <ModalHeaderConnected key="modal-header" {...basicProps}>
+                {this.props.modalHeaderChildren}
+            </ModalHeaderConnected>
+        ) : (
+            <ModalHeader key="modal-header" {...basicProps} onClose={this.props.onClose}>
+                {this.props.modalHeaderChildren}
+            </ModalHeader>
+        );
     }
 
-    private getModalBody = () => this.props.modalBodyChildren && (
-        <ModalBody key='modal-body' classes={this.props.modalBodyClasses}>
-            {this.props.modalBodyChildren}
-        </ModalBody>
-    )
+    private getModalBody = () =>
+        this.props.modalBodyChildren && (
+            <ModalBody key="modal-body" classes={this.props.modalBodyClasses}>
+                {this.props.modalBodyChildren}
+            </ModalBody>
+        );
 
-    private getModalFooter = () => this.props.modalFooterChildren && (
-        <ModalFooter key='modal-footer' classes={this.props.modalFooterClasses}>
-            {this.props.modalFooterChildren}
-        </ModalFooter>
-    )
+    private getModalFooter = () =>
+        this.props.modalFooterChildren && (
+            <ModalFooter key="modal-footer" classes={this.props.modalFooterClasses}>
+                {this.props.modalFooterChildren}
+            </ModalFooter>
+        );
 
     private getParent = (): HTMLElement => document.querySelector(Defaults.MODAL_ROOT);
 }

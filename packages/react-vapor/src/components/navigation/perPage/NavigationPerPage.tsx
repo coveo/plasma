@@ -24,8 +24,10 @@ export interface INavigationPerPageDispatchProps {
     onPerPageClick?: (newPerPage: number, currentPerPage?: number, currentPage?: number) => void;
 }
 
-export interface INavigationPerPageProps extends INavigationPerPageOwnProps, INavigationPerPageStateProps,
-    INavigationPerPageDispatchProps {}
+export interface INavigationPerPageProps
+    extends INavigationPerPageOwnProps,
+        INavigationPerPageStateProps,
+        INavigationPerPageDispatchProps {}
 
 export const PER_PAGE_NUMBERS: number[] = [10, 20, 30];
 export const PER_PAGE_LABEL: string = 'Results per page';
@@ -44,7 +46,9 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps> 
     }
 
     componentWillMount() {
-        this.initialPosition = !_.isUndefined(this.props.initialPosition) ? this.props.initialPosition : Math.ceil(this.props.perPageNumbers.length / 2) - 1;
+        this.initialPosition = !_.isUndefined(this.props.initialPosition)
+            ? this.props.initialPosition
+            : Math.ceil(this.props.perPageNumbers.length / 2) - 1;
         callIfDefined(this.props.onRender, this.props.perPageNumbers[this.initialPosition]);
     }
 
@@ -56,29 +60,30 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps> 
         const currentPerPage: number = this.props.currentPerPage || this.props.perPageNumbers[this.initialPosition];
         const topNumber: number = this.props.totalEntries;
 
-        const perPageSelects: JSX.Element[] = _.map(this.props.perPageNumbers, (num: number, index: number): JSX.Element => {
-            const shouldShowPerPageSelect: boolean = topNumber > (this.props.perPageNumbers[index - 1] || 0);
+        const perPageSelects: JSX.Element[] = _.map(
+            this.props.perPageNumbers,
+            (num: number, index: number): JSX.Element => {
+                const shouldShowPerPageSelect: boolean = topNumber > (this.props.perPageNumbers[index - 1] || 0);
 
-            if (shouldShowPerPageSelect) {
-                const selectId: string = `perpage-${this.props.id || ''}-${num}`;
-                const isSelected: boolean = currentPerPage === num;
-                return (
-                    <NavigationPerPageSelect
-                        onPerPageClick={(newPerPageNb: number) => this.handleClick(newPerPageNb)}
-                        perPageNb={num}
-                        key={selectId}
-                        selected={isSelected}
-                    />
-                );
+                if (shouldShowPerPageSelect) {
+                    const selectId: string = `perpage-${this.props.id || ''}-${num}`;
+                    const isSelected: boolean = currentPerPage === num;
+                    return (
+                        <NavigationPerPageSelect
+                            onPerPageClick={(newPerPageNb: number) => this.handleClick(newPerPageNb)}
+                            perPageNb={num}
+                            key={selectId}
+                            selected={isSelected}
+                        />
+                    );
+                }
             }
-        });
+        );
 
         return (
-            <div className='items-per-page prepended-flat-select'>
-                <div className='flat-select-prepend'>{this.props.label}:</div>
-                <div className='flat-select clearfix'>
-                    {perPageSelects}
-                </div>
+            <div className="items-per-page prepended-flat-select">
+                <div className="flat-select-prepend">{this.props.label}:</div>
+                <div className="flat-select clearfix">{perPageSelects}</div>
             </div>
         );
     }

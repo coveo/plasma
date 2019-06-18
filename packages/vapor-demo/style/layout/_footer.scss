@@ -2,20 +2,20 @@
  * Site footer
  */
 .site-footer {
-    border-top: 1px solid $grey-color-light;
     padding: $spacing-unit / 2 0;
+    border-top: 1px solid $grey-color-light;
 }
 
 .contact-list,
 .social-media-list {
-    list-style: none;
     margin-left: 0;
+    list-style: none;
 }
 
 .footer-col-wrapper {
-    font-size: 15px;
-    color: $grey-color;
     margin-left: -$spacing-unit / 2;
+    color: $grey-color;
+    font-size: 15px;
     @extend .clearfix;
 }
 

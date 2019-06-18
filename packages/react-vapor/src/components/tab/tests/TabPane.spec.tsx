@@ -9,11 +9,7 @@ describe('TabPane', () => {
     describe('<TabPane />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <TabPane
-                        id={id}
-                    />,
-                );
+                shallow(<TabPane id={id} />);
             }).not.toThrow();
         });
     });
@@ -22,12 +18,7 @@ describe('TabPane', () => {
         let tab: ReactWrapper<ITabPaneProps, any>;
 
         beforeEach(() => {
-            tab = mount(
-                <TabPane
-                    id={id}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            tab = mount(<TabPane id={id} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -35,16 +26,31 @@ describe('TabPane', () => {
         });
 
         it('should set active class on container when isActive is true', () => {
-            expect(tab.find('div').first().hasClass('active')).toBe(false);
+            expect(
+                tab
+                    .find('div')
+                    .first()
+                    .hasClass('active')
+            ).toBe(false);
 
             tab.setProps({id, isActive: true});
             tab.mount();
-            expect(tab.find('div').first().hasClass('active')).toBe(true);
+            expect(
+                tab
+                    .find('div')
+                    .first()
+                    .hasClass('active')
+            ).toBe(true);
         });
 
         it('should add classNames when className prop set', () => {
             tab.setProps({id, className: 'hello'}).mount();
-            expect(tab.find('div').first().hasClass('hello')).toBe(true);
+            expect(
+                tab
+                    .find('div')
+                    .first()
+                    .hasClass('hello')
+            ).toBe(true);
         });
     });
 });

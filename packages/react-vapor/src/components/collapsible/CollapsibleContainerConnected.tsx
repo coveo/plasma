@@ -10,11 +10,17 @@ import {
     ICollapsibleContainerStateProps,
 } from './CollapsibleContainer';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ICollapsibleContainerOwnProps): ICollapsibleContainerStateProps => {
+const mapStateToProps = (
+    state: IReactVaporState,
+    ownProps: ICollapsibleContainerOwnProps
+): ICollapsibleContainerStateProps => {
     const collapsibleState = findWhere(state.collapsibles, {id: ownProps.id});
 
     return {expanded: collapsibleState && collapsibleState.expanded};
 };
 
-export const CollapsibleContainerConnected: React.ComponentClass<ICollapsibleContainerProps> =
-    connect(mapStateToProps, undefined, ReduxUtils.mergeProps)(CollapsibleContainer);
+export const CollapsibleContainerConnected: React.ComponentClass<ICollapsibleContainerProps> = connect(
+    mapStateToProps,
+    undefined,
+    ReduxUtils.mergeProps
+)(CollapsibleContainer);

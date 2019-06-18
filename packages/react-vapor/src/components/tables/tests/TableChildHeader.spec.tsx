@@ -30,7 +30,7 @@ describe('<TableChildHeader />', () => {
                 <Provider store={store}>
                     <TableChildHeader {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         };
 
@@ -54,8 +54,10 @@ describe('<TableChildHeader />', () => {
         });
 
         it('should render with a mod-no-border-top and a mod-deactivate-pointer class if table is loading', () => {
-            const tableHeader = mountComponentWithProps({...tablePropsMock, tableCompositeState: {isLoading: true}} as any)
-                .find(TableHeader);
+            const tableHeader = mountComponentWithProps({
+                ...tablePropsMock,
+                tableCompositeState: {isLoading: true},
+            } as any).find(TableHeader);
 
             expect(tableHeader.props().headerClass).toContain('mod-no-border-top');
             expect(tableHeader.props().headerClass).toContain('mod-deactivate-pointer');
@@ -63,15 +65,23 @@ describe('<TableChildHeader />', () => {
 
         it('should render with class name if defined', () => {
             const newClassToAdd = 'wow';
-            const tableHeader = mountComponentWithProps({...tablePropsMock, tableHeaderClasses: [newClassToAdd]}).find(TableHeader);
+            const tableHeader = mountComponentWithProps({...tablePropsMock, tableHeaderClasses: [newClassToAdd]}).find(
+                TableHeader
+            );
 
             expect(tableHeader.props().headerClass).toContain(newClassToAdd);
         });
 
         it('should have class on header when defined in the attributes', () => {
             const newClassToAdd = 'wow';
-            const headerAttributesWithHeaderClasses = tablePropsMock.headingAttributes.map((attribute) => ({...attribute, headerClasses: [newClassToAdd]}));
-            const tableHeader = mountComponentWithProps({...tablePropsMock, headingAttributes: headerAttributesWithHeaderClasses}).find(TableHeader);
+            const headerAttributesWithHeaderClasses = tablePropsMock.headingAttributes.map((attribute) => ({
+                ...attribute,
+                headerClasses: [newClassToAdd],
+            }));
+            const tableHeader = mountComponentWithProps({
+                ...tablePropsMock,
+                headingAttributes: headerAttributesWithHeaderClasses,
+            }).find(TableHeader);
 
             tableHeader.find(TableHeaderCell).forEach((headerCell) => {
                 expect(headerCell.props().className).toContain(newClassToAdd);
@@ -79,23 +89,34 @@ describe('<TableChildHeader />', () => {
         });
 
         it('should have no connected header cells if no headerAttribute has sort', () => {
-            const tableHeader = mountComponentWithProps(tablePropsMock)
-                .find(TableHeader);
+            const tableHeader = mountComponentWithProps(tablePropsMock).find(TableHeader);
 
             expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);
             expect(tableHeader.find(TableHeaderCell).length).not.toBe(0);
         });
 
         it('should have as many connected header cells as there are headerAttribute with sort', () => {
-            const headerAttributesWithSort = tablePropsMock.headingAttributes.map((attribute) => ({...attribute, sort: true}));
-            const tableHeader = mountComponentWithProps({...tablePropsMock, headingAttributes: headerAttributesWithSort}).find(TableHeader);
+            const headerAttributesWithSort = tablePropsMock.headingAttributes.map((attribute) => ({
+                ...attribute,
+                sort: true,
+            }));
+            const tableHeader = mountComponentWithProps({
+                ...tablePropsMock,
+                headingAttributes: headerAttributesWithSort,
+            }).find(TableHeader);
 
             expect(tableHeader.find(TableHeaderCellConnected).length).toBe(headerAttributesWithSort.length);
         });
 
         it('should have proper sort information for each connected header cell', () => {
-            const headerAttributesWithSort = tablePropsMock.headingAttributes.map((attribute) => ({...attribute, sort: true}));
-            const tableHeader = mountComponentWithProps({...tablePropsMock, headingAttributes: headerAttributesWithSort}).find(TableHeader);
+            const headerAttributesWithSort = tablePropsMock.headingAttributes.map((attribute) => ({
+                ...attribute,
+                sort: true,
+            }));
+            const tableHeader = mountComponentWithProps({
+                ...tablePropsMock,
+                headingAttributes: headerAttributesWithSort,
+            }).find(TableHeader);
 
             tableHeader.find(TableHeaderCellConnected).forEach((headerCell, index) => {
                 expect(headerCell.props().tableId).toBe(tablePropsMock.id);

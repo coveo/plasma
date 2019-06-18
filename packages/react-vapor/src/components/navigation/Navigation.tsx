@@ -48,9 +48,19 @@ export class Navigation extends React.Component<INavigationProps, any> {
             hidePages: this.props.hidePages || !this.props.totalPages || this.props.totalPages === 1,
         };
 
-        const pagination: JSX.Element = this.props.withReduxState
-            ? <NavigationPaginationConnected id={`pagination-${this.props.id}`} loadingIds={this.props.loadingIds} {...paginationProps} />
-            : <NavigationPagination currentPage={this.props.currentPage} onPageClick={this.props.onPageClick} {...paginationProps} />;
+        const pagination: JSX.Element = this.props.withReduxState ? (
+            <NavigationPaginationConnected
+                id={`pagination-${this.props.id}`}
+                loadingIds={this.props.loadingIds}
+                {...paginationProps}
+            />
+        ) : (
+            <NavigationPagination
+                currentPage={this.props.currentPage}
+                onPageClick={this.props.onPageClick}
+                {...paginationProps}
+            />
+        );
         const paginationClass: string = this.props.totalPages > 1 ? '' : 'hidden';
 
         const perPageProps: INavigationPerPageProps = {
@@ -62,25 +72,26 @@ export class Navigation extends React.Component<INavigationProps, any> {
         if (this.props.currentPerPage) {
             perPageProps.currentPerPage = this.props.currentPerPage;
         }
-        const perPage: JSX.Element = this.props.withReduxState
-            ? <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} />
-            : <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />;
-        const perPageClass = this.props.perPageNumbers.length && this.props.totalEntries > this.props.perPageNumbers[0] ? '' : 'hidden';
+        const perPage: JSX.Element = this.props.withReduxState ? (
+            <NavigationPerPageConnected id={this.props.id} loadingIds={this.props.loadingIds} {...perPageProps} />
+        ) : (
+            <NavigationPerPage onPerPageClick={this.props.onPerPageClick} {...perPageProps} />
+        );
+        const perPageClass =
+            this.props.perPageNumbers.length && this.props.totalEntries > this.props.perPageNumbers[0] ? '' : 'hidden';
 
         const navigationClasses: string = `pagination-container${this.props.isLoading ? ' loading-view' : ''}`;
-        const loading: JSX.Element = this.props.withReduxState ? <LoadingConnected id={`loading-${this.props.id}`} /> : <Loading />;
+        const loading: JSX.Element = this.props.withReduxState ? (
+            <LoadingConnected id={`loading-${this.props.id}`} />
+        ) : (
+            <Loading />
+        );
 
         return (
             <div className={navigationClasses}>
-                <div className={perPageClass}>
-                    {perPage}
-                </div>
-                <div className='flex-auto'>
-                    {loading}
-                </div>
-                <div className={paginationClass}>
-                    {pagination}
-                </div>
+                <div className={perPageClass}>{perPage}</div>
+                <div className="flex-auto">{loading}</div>
+                <div className={paginationClass}>{pagination}</div>
             </div>
         );
     }

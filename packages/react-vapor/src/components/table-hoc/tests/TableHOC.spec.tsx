@@ -14,8 +14,8 @@ describe('TableHOC', () => {
         };
 
         it('should not throw', () => {
-            expect(() => shallow(<TableHOC id='table' data={[]} renderBody={_.identity} />)).not.toThrow();
-            expect(() => shallow(<TableHOC id='table-2' data={null} renderBody={_.identity} />)).not.toThrow();
+            expect(() => shallow(<TableHOC id="table" data={[]} renderBody={_.identity} />)).not.toThrow();
+            expect(() => shallow(<TableHOC id="table-2" data={null} renderBody={_.identity} />)).not.toThrow();
         });
 
         it('should render a table', () => {
@@ -25,7 +25,13 @@ describe('TableHOC', () => {
 
         it('should render the data', () => {
             const data = _.map(_.range(10), (i: number) => ({value: i}));
-            const wrapper = shallow(<TableHOC id='a' data={data} renderBody={(d: any[]) => _.map(d, ({value}) => <tr className={`row-${value}`}></tr>)} />);
+            const wrapper = shallow(
+                <TableHOC
+                    id="a"
+                    data={data}
+                    renderBody={(d: any[]) => _.map(d, ({value}) => <tr className={`row-${value}`}></tr>)}
+                />
+            );
             _.each(data, ({value}) => {
                 expect(wrapper.find(`tr.row-${value}`).exists()).toBe(true);
             });
@@ -69,7 +75,9 @@ describe('TableHOC', () => {
         });
 
         it('should render an ActionBarConnected if the table prop hasActionButtons is false but the table have some actions', () => {
-            const wrapper = shallow(<TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />);
+            const wrapper = shallow(
+                <TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />
+            );
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
     });

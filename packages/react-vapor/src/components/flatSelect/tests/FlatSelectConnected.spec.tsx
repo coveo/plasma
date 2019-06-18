@@ -13,7 +13,6 @@ import {FlatSelectConnected} from '../FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
-
     describe('<FlatSelectConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let flatSelect: ReactWrapper<IFlatSelectProps, void>;
@@ -27,7 +26,8 @@ describe('FlatSelect', () => {
                 option: {
                     content: 'test',
                 },
-            }, {
+            },
+            {
                 id: anOptionId,
                 option: {
                     content: 'test 1',
@@ -40,7 +40,7 @@ describe('FlatSelect', () => {
                 <Provider store={store}>
                     <FlatSelectConnected id={id} options={defaultOptions} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             flatSelect = wrapper.find(FlatSelect).first();
         };
@@ -55,7 +55,6 @@ describe('FlatSelect', () => {
         });
 
         describe('mount and unmount', () => {
-
             beforeEach(() => {
                 renderDropdownSearchConnected();
             });
@@ -74,7 +73,9 @@ describe('FlatSelect', () => {
                 store.dispatch(clearState());
                 expect(store.getState().flatSelect.length).toBe(0);
 
-                const newFlatSelect = <FlatSelectConnected id={id} options={defaultOptions} defaultSelectedOptionId={anOptionId} />;
+                const newFlatSelect = (
+                    <FlatSelectConnected id={id} options={defaultOptions} defaultSelectedOptionId={anOptionId} />
+                );
                 wrapper.setProps({children: newFlatSelect});
 
                 wrapper.mount();
@@ -89,7 +90,6 @@ describe('FlatSelect', () => {
         });
 
         describe('mapStateToProps', () => {
-
             beforeEach(() => {
                 renderDropdownSearchConnected();
             });
@@ -128,7 +128,6 @@ describe('FlatSelect', () => {
         });
 
         describe('mapDispatchToProps', () => {
-
             beforeEach(() => {
                 renderDropdownSearchConnected();
             });

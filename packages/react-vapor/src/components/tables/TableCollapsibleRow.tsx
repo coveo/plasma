@@ -20,34 +20,30 @@ export interface ITableCollapsibleRowChildrenProps {
     errorCodeLabel?: string;
 }
 
-export interface ITableCollapsibleRowProps extends ITableCollapsibleRowOwnProps, ITableCollapsibleRowStateProps,
-    ITableCollapsibleRowChildrenProps {}
+export interface ITableCollapsibleRowProps
+    extends ITableCollapsibleRowOwnProps,
+        ITableCollapsibleRowStateProps,
+        ITableCollapsibleRowChildrenProps {}
 
 export class TableCollapsibleRow extends React.Component<ITableCollapsibleRowProps, any> {
     render() {
-        const rowClasses: string = classNames(
-            'collapsible-row',
-            this.props.id,
-            {'in': this.props.opened},
-        );
-        const error: JSX.Element = this.props.isInError ?
+        const rowClasses: string = classNames('collapsible-row', this.props.id, {in: this.props.opened});
+        const error: JSX.Element = this.props.isInError ? (
             <TableError
                 error={this.props.error}
                 descriptionLabel={this.props.descriptionLabel}
                 troubleshootingLabel={this.props.troubleshootingLabel}
                 errorCodeLabel={this.props.errorCodeLabel}
-            /> :
-            null;
+            />
+        ) : null;
 
         return (
             <tr className={rowClasses}>
                 <td colSpan={this.props.nbColumns}>
                     <SlideY in={this.props.opened} timeout={350}>
                         {error}
-                        <div className='clearfix'></div>
-                        <section className='columns'>
-                            {this.props.children}
-                        </section>
+                        <div className="clearfix"></div>
+                        <section className="columns">{this.props.children}</section>
                     </SlideY>
                 </td>
             </tr>

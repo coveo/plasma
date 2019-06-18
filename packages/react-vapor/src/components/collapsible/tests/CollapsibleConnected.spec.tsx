@@ -24,11 +24,9 @@ describe('<CollapsibleConnected />', () => {
         }
         collapsible = mount(
             <Provider store={store}>
-                <CollapsibleConnected {...props}>
-                    dummy children
-                </CollapsibleConnected>
+                <CollapsibleConnected {...props}>dummy children</CollapsibleConnected>
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
         return collapsible;
     };
@@ -44,15 +42,30 @@ describe('<CollapsibleConnected />', () => {
     });
 
     it('should not throw when calling onMount', () => {
-        expect(() => mountComponentWithProps(basicCollapsibleProps).find(Collapsible).props().onMount()).not.toThrow();
+        expect(() =>
+            mountComponentWithProps(basicCollapsibleProps)
+                .find(Collapsible)
+                .props()
+                .onMount()
+        ).not.toThrow();
     });
 
     it('should not throw when calling onUnmount', () => {
-        expect(() => mountComponentWithProps(basicCollapsibleProps).find(Collapsible).props().onUnmount()).not.toThrow();
+        expect(() =>
+            mountComponentWithProps(basicCollapsibleProps)
+                .find(Collapsible)
+                .props()
+                .onUnmount()
+        ).not.toThrow();
     });
 
     it('should not throw when calling onToggleExpandedState', () => {
-        expect(() => mountComponentWithProps(basicCollapsibleProps).find(Collapsible).props().onToggleExpandedState(true)).not.toThrow();
+        expect(() =>
+            mountComponentWithProps(basicCollapsibleProps)
+                .find(Collapsible)
+                .props()
+                .onToggleExpandedState(true)
+        ).not.toThrow();
     });
 
     describe('render', () => {
@@ -80,14 +93,17 @@ describe('<CollapsibleConnected />', () => {
         describe('Expansion/Toggling logic', () => {
             it('should toggle the expanded prop on click of the collapsible header button', () => {
                 mountComponentWithProps(basicCollapsibleProps);
-                const expandedBeforeClick = findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded;
+                const expandedBeforeClick = findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id})
+                    .expanded;
                 collapsible.find(`.${basicCollapsibleProps.headerClasses}`).simulate('click');
-                expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded)
-                    .toBe(!expandedBeforeClick);
+                expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(
+                    !expandedBeforeClick
+                );
 
                 collapsible.find(`.${basicCollapsibleProps.headerClasses}`).simulate('click');
-                expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded)
-                    .toBe(expandedBeforeClick);
+                expect(findWhere(store.getState().collapsibles, {id: basicCollapsibleProps.id}).expanded).toBe(
+                    expandedBeforeClick
+                );
             });
 
             it('should toggle the SlideY component when CollapsibleActions.setExpanded is triggered', () => {

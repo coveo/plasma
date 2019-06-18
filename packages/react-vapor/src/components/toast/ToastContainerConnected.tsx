@@ -11,24 +11,21 @@ import {
     ToastContainer,
 } from './ToastContainer';
 
-const mapStateToProps = (
-    state: IReactVaporState,
-    ownProps: IToastContainerOwnProps,
-): IToastContainerStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: IToastContainerOwnProps): IToastContainerStateProps => {
     const container = _.findWhere(state.toastContainers, {id: ownProps.id}) || {id: null, toasts: []};
     return {
         toasts: container.toasts,
     };
 };
 
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: IToastContainerOwnProps,
-): IToastContainerDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IToastContainerOwnProps): IToastContainerDispatchProps => ({
     onRender: () => dispatch(addToastContainer(ownProps.id)),
     onDestroy: () => dispatch(removeToastContainer(ownProps.id)),
     onCloseToast: (id: string) => dispatch(removeToast(ownProps.id, id)),
 });
 
-export const ToastContainerConnected: React.ComponentClass<IToastContainerProps> = connect(mapStateToProps, mapDispatchToProps,
-    ReduxUtils.mergeProps)(ToastContainer);
+export const ToastContainerConnected: React.ComponentClass<IToastContainerProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ToastContainer);

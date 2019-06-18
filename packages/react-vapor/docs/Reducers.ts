@@ -1,6 +1,12 @@
 import * as Redux from 'redux';
-import {IListBoxExampleCompositeState, listBoxExampleReducer} from '../src/components/listBox/examples/ListBoxExampleReducer';
-import {IExampleServerTableState, TableHOCServerExampleReducer} from '../src/components/table-hoc/examples/TableHOCServerExampleReducer';
+import {
+    IListBoxExampleCompositeState,
+    listBoxExampleReducer,
+} from '../src/components/listBox/examples/ListBoxExampleReducer';
+import {
+    IExampleServerTableState,
+    TableHOCServerExampleReducer,
+} from '../src/components/table-hoc/examples/TableHOCServerExampleReducer';
 import {IReactVaporState} from '../src/ReactVapor';
 import {ReactVaporReducers} from '../src/ReactVaporReducers';
 import {IMembersCompositeState} from './members-example/reducers/MembersReducers';

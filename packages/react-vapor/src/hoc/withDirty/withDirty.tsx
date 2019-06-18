@@ -21,7 +21,9 @@ export interface IWithDirtyDispatchProps {
 
 export interface IWithDirtyProps extends Partial<IWithDirtyStateProps>, Partial<IWithDirtyDispatchProps> {}
 
-export const withDirty = <T, R = any>(config: IWithDirty) => (Component: React.ComponentClass<IWithDirtyProps & T, R>): React.ComponentClass<IWithDirtyProps & T, R> => {
+export const withDirty = <T, R = any>(config: IWithDirty) => (
+    Component: React.ComponentClass<IWithDirtyProps & T, R>
+): React.ComponentClass<IWithDirtyProps & T, R> => {
     const mapStateToProps = (state: IReactVaporState): IWithDirtyStateProps => ({
         isDirty: WithDirtySelectors.getIsDirty(state, {id: config.id}),
     });
@@ -43,9 +45,7 @@ export const withDirty = <T, R = any>(config: IWithDirty) => (Component: React.C
         render() {
             return (
                 <>
-                    <Component {...this.props}>
-                        {this.props.children}
-                    </Component>
+                    <Component {...this.props}>{this.props.children}</Component>
                     {config.showDirty(this.props.isDirty)}
                 </>
             );

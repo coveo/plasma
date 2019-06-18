@@ -30,7 +30,7 @@ describe('Tables', () => {
                         </tbody>
                     </table>
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             tableHeadingRow = wrapper.find(TableHeadingRow).first();
         };

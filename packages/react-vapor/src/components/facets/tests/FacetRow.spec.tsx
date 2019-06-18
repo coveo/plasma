@@ -109,7 +109,10 @@ describe('Facets', () => {
                 name: 'something',
                 formattedName: new Array(maxTooltipLabelLength + 2).join('a'),
             };
-            const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxTooltipLabelLength});
+            const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {
+                facetRow: longerFormattedNameFacetRow,
+                maxTooltipLabelLength,
+            });
 
             expect(facetRowView.find('Tooltip').length).toBe(0);
 
@@ -125,7 +128,10 @@ describe('Facets', () => {
                 formattedName: new Array(maxTooltipLabelLength).join('a'),
                 count: '11',
             };
-            const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {facetRow: longerFormattedNameFacetRow, maxTooltipLabelLength});
+            const newProps: IFacetRowProps = _.extend({}, FACET_ROW_PROPS, {
+                facetRow: longerFormattedNameFacetRow,
+                maxTooltipLabelLength,
+            });
 
             expect(facetRowView.find('Tooltip').length).toBe(0);
 
@@ -182,7 +188,10 @@ describe('Facets', () => {
         });
 
         it('should call onToggle with good attribute when exclude behavior is enabled', () => {
-            facetRowExcludeView.find('.facet-exclude-button').first().simulate('click');
+            facetRowExcludeView
+                .find('.facet-exclude-button')
+                .first()
+                .simulate('click');
             const facet: IFacet = {
                 ...facetRowExcludeView.props().facetRow,
                 exclude: true,
@@ -210,7 +219,11 @@ describe('Facets', () => {
                     formattedName: 'Something',
                     count: '11',
                 };
-                const newProps: IFacetRowProps = {...FACET_ROW_PROPS, facetRow, excludeTooltipMessage: () => 'test exclude tooltip'};
+                const newProps: IFacetRowProps = {
+                    ...FACET_ROW_PROPS,
+                    facetRow,
+                    excludeTooltipMessage: () => 'test exclude tooltip',
+                };
 
                 expect(facetRowExcludeView.find('Tooltip').length).toBe(0);
 

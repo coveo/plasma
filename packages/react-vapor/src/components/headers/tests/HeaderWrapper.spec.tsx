@@ -12,7 +12,6 @@ import {HeaderWrapper, IHeaderWrapperProps} from '../HeaderWrapper';
 import {TabsHeader} from '../TabsHeader';
 
 describe('<HeaderWrapper/>', () => {
-
     let headerWrapperComponent: ReactWrapper<IHeaderWrapperProps, any>;
     let store: Store<IReactVaporState>;
 
@@ -31,7 +30,6 @@ describe('<HeaderWrapper/>', () => {
     });
 
     describe('<HeaderWrapper /> with custom props', () => {
-
         const customProps: IHeaderWrapperProps = {
             description: 'description test',
             actions: [{content: Button}, {content: Button}],
@@ -44,7 +42,7 @@ describe('<HeaderWrapper/>', () => {
                 <Provider store={store}>
                     <HeaderWrapper {..._.extend({}, customProps, props)} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         };
 

@@ -10,13 +10,19 @@ export interface IWithEditing {
     footerChildren?: React.ReactNode;
 }
 
-export const withEditing = <T, R = any>(config: IWithEditing) => (Component: React.ComponentClass<T, R>): React.ComponentClass<T, R> => {
+export const withEditing = <T, R = any>(config: IWithEditing) => (
+    Component: React.ComponentClass<T, R>
+): React.ComponentClass<T, R> => {
     return withDirty<T, R>({
-        id: config.id, isDirty: config.isDirty, showDirty: (isDirty: boolean) => {
-            return config.footerChildren && (
-                <StickyFooter className={config.footerClassName} isOpened={isDirty}>
-                    {config.footerChildren}
-                </StickyFooter>
+        id: config.id,
+        isDirty: config.isDirty,
+        showDirty: (isDirty: boolean) => {
+            return (
+                config.footerChildren && (
+                    <StickyFooter className={config.footerClassName} isOpened={isDirty}>
+                        {config.footerChildren}
+                    </StickyFooter>
+                )
             );
         },
     })(Component);

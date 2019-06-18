@@ -8,15 +8,15 @@ describe('EventUtils', () => {
         let wrapper: ShallowWrapper;
         const shallowWithHandler = (eventHandler: (e: React.MouseEvent<any>) => void) => {
             wrapper = shallow(
-                <div className='div1' onClick={eventHandler}>
+                <div className="div1" onClick={eventHandler}>
                     <ul>
                         <li>
-                            <div className='div2'>
-                                <div className='div3' />
+                            <div className="div2">
+                                <div className="div3" />
                             </div>
                         </li>
                     </ul>
-                </div>,
+                </div>
             );
         };
 
@@ -56,17 +56,25 @@ describe('EventUtils', () => {
             wrapper.find('li').simulate('click');
         });
 
-        it('should return false if the click event happens directly on the element with the specified classname ' +
-            'since it is not considered as "inside"', () => {
+        it(
+            'should return false if the click event happens directly on the element with the specified classname ' +
+                'since it is not considered as "inside"',
+            () => {
                 shallowWithHandler((e: React.MouseEvent<any>) => {
                     expect(EventUtils.isClickingInsideElementWithClassname(e, 'div2')).toBe(false);
                 });
 
                 wrapper.find('.div2').simulate('click');
-            });
+            }
+        );
 
         it('should not throw and return false when the event target is null', () => {
-            expect(EventUtils.isClickingInsideElementWithClassname({target: null, currentTarget: {}} as React.MouseEvent, 'whatever')).toBe(false);
+            expect(
+                EventUtils.isClickingInsideElementWithClassname(
+                    {target: null, currentTarget: {}} as React.MouseEvent,
+                    'whatever'
+                )
+            ).toBe(false);
         });
     });
 });

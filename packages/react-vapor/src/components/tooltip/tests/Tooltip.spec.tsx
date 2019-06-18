@@ -52,7 +52,9 @@ describe('Tooltip', () => {
 
             tooltipWrapper.setProps(newProps);
 
-            expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1].props.className).toBe('tooltip-footer');
+            expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1].props.className).toBe(
+                'tooltip-footer'
+            );
         });
 
         it('should not display the tooltip if the title is empty', () => {
@@ -69,20 +71,30 @@ describe('Tooltip', () => {
     describe('<Tooltip />', () => {
         it('should render with a span wrapper if noSpanWrapper prop is not passed', () => {
             const content = <li>test</li>;
-            tooltipWrapper = shallow(
-                <Tooltip {...TOOLTIP_PROPS}>{content}</Tooltip>,
-            );
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>{content}</Tooltip>);
 
-            expect(tooltipWrapper.find('li').parent().type()).toBe('span');
+            expect(
+                tooltipWrapper
+                    .find('li')
+                    .parent()
+                    .type()
+            ).toBe('span');
         });
 
         it('should not render with a span wrapper if noSpanWrapper prop is passed', () => {
             const content = <li>test</li>;
             tooltipWrapper = shallow(
-                <Tooltip noSpanWrapper {...TOOLTIP_PROPS}>{content}</Tooltip>,
+                <Tooltip noSpanWrapper {...TOOLTIP_PROPS}>
+                    {content}
+                </Tooltip>
             );
 
-            expect(tooltipWrapper.find('li').parent().type()).not.toBe('span');
+            expect(
+                tooltipWrapper
+                    .find('li')
+                    .parent()
+                    .type()
+            ).not.toBe('span');
         });
     });
 

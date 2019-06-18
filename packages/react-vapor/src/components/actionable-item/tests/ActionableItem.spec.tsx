@@ -30,8 +30,16 @@ describe('ActionableItem', () => {
             store.dispatch(clearState());
         });
 
-        const shallowWithProps = (props: Partial<IActionableItemProps> = basicProps, children: React.ReactNode = '') => {
-            actionableItem = shallowWithStore(<ActionableItem {...basicProps} {...props}>{children}</ActionableItem>, store);
+        const shallowWithProps = (
+            props: Partial<IActionableItemProps> = basicProps,
+            children: React.ReactNode = ''
+        ) => {
+            actionableItem = shallowWithStore(
+                <ActionableItem {...basicProps} {...props}>
+                    {children}
+                </ActionableItem>,
+                store
+            );
         };
 
         it('should mount without error', () => {
@@ -45,7 +53,7 @@ describe('ActionableItem', () => {
             });
 
             it('should render the children in the actionable-item-content container', () => {
-                const children = <div className='children'>hello world</div>;
+                const children = <div className="children">hello world</div>;
                 shallowWithProps(undefined, children);
 
                 expect(actionableItem.find('.actionable-item-content').find('.children').length).toBe(1);
@@ -54,7 +62,9 @@ describe('ActionableItem', () => {
             it('should render the more-append svg in the Drop', () => {
                 shallowWithProps();
 
-                const renderButton: () => React.ReactElement = actionableItem.find(Drop).prop('renderOpenButton') as any;
+                const renderButton: () => React.ReactElement = actionableItem
+                    .find(Drop)
+                    .prop('renderOpenButton') as any;
                 const button = shallow(renderButton());
                 expect(button.find(Svg).prop('svgName')).toBe('more-append');
             });

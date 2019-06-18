@@ -14,13 +14,14 @@ describe('<Popover>', () => {
 
     let toggleOpenedSpy: jasmine.Spy;
 
-    const mountPopover = (props: IPopoverProps) => popoverWrapper = mount(
-        <Popover {...props} >
-            <span id={popoverToggleId}>Toggle</span>
-            <span id={popoverElementId}>Tether element</span>
-        </Popover>,
-        {attachTo: document.getElementById('App')},
-    );
+    const mountPopover = (props: IPopoverProps) =>
+        (popoverWrapper = mount(
+            <Popover {...props}>
+                <span id={popoverToggleId}>Toggle</span>
+                <span id={popoverElementId}>Tether element</span>
+            </Popover>,
+            {attachTo: document.getElementById('App')}
+        ));
 
     beforeEach(() => {
         popoverProps = {
@@ -31,21 +32,25 @@ describe('<Popover>', () => {
     });
 
     it('should render without error', () => {
-        expect(() => shallow(
-            <Popover {...popoverProps}>
-                <span>Toggle</span>
-                <span>Tether element</span>
-            </Popover>,
-        )).not.toThrow();
+        expect(() =>
+            shallow(
+                <Popover {...popoverProps}>
+                    <span>Toggle</span>
+                    <span>Tether element</span>
+                </Popover>
+            )
+        ).not.toThrow();
     });
 
     it('should render without error with style prop', () => {
-        expect(() => shallow(
-            <Popover {...popoverProps} style={{'margin-left': '10px'}}>
-                <span>Toggle</span>
-                <span>Tether element</span>
-            </Popover>,
-        )).not.toThrow();
+        expect(() =>
+            shallow(
+                <Popover {...popoverProps} style={{'margin-left': '10px'}}>
+                    <span>Toggle</span>
+                    <span>Tether element</span>
+                </Popover>
+            )
+        ).not.toThrow();
     });
 
     it('should mount and unmount/detach without error', () => {
@@ -65,16 +70,14 @@ describe('<Popover>', () => {
                 shallow(
                     <Popover {...popoverProps}>
                         <span>Toggle</span>
-                    </Popover>,
+                    </Popover>
                 );
             }).not.toThrow();
         });
 
         it('should not throw when redering a Popover without children', () => {
             expect(() => {
-                shallow(
-                    <Popover {...popoverProps} />,
-                );
+                shallow(<Popover {...popoverProps} />);
             }).not.toThrow();
         });
     });

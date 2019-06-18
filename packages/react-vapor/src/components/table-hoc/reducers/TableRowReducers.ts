@@ -7,8 +7,8 @@ import {
     ITableRowAddPayload,
     ITableRowSelectPayload,
     ITableRowToggleCollapsiblePayload,
-    TableRowActionsType,
-} from '../actions/TableRowActions';
+    TableHOCRowActionsType,
+} from '../actions/TableHOCRowActions';
 import {TableHOCUtils} from '../TableHOCUtils';
 
 export interface ITableRowState {
@@ -44,15 +44,16 @@ const selectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITa
                     selected: true,
                 };
             }
-            return row.tableId === current.tableId
-                ? {...row, selected: row.selected && action.payload.isMulti}
-                : row;
+            return row.tableId === current.tableId ? {...row, selected: row.selected && action.payload.isMulti} : row;
         });
     }
     return state;
 };
 
-const toggleCollasibleTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowToggleCollapsiblePayload>) => {
+const toggleCollasibleTableRowReducer = (
+    state: ITableRowState[],
+    action: IReduxAction<ITableRowToggleCollapsiblePayload>
+) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
         return _.map(state, (row: ITableRowState) => {
@@ -62,9 +63,7 @@ const toggleCollasibleTableRowReducer = (state: ITableRowState[], action: IRedux
                     opened: _.isBoolean(action.payload.opened) ? action.payload.opened : !current.opened,
                 };
             }
-            return row.tableId === current.tableId
-                ? {...row, opened: false}
-                : row;
+            return row.tableId === current.tableId ? {...row, opened: false} : row;
         });
     }
     return state;
@@ -79,11 +78,11 @@ const deselectTableRowReducer = (state: ITableRowState[], action: IReduxAction<I
 };
 
 const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
-    [TableRowActionsType.add]: addTableRowReducer,
-    [TableRowActionsType.remove]: removeTableRowReducer,
-    [TableRowActionsType.select]: selectTableRowReducer,
-    [TableRowActionsType.deselectAll]: deselectTableRowReducer,
-    [TableRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
+    [TableHOCRowActionsType.add]: addTableRowReducer,
+    [TableHOCRowActionsType.remove]: removeTableRowReducer,
+    [TableHOCRowActionsType.select]: selectTableRowReducer,
+    [TableHOCRowActionsType.deselectAll]: deselectTableRowReducer,
+    [TableHOCRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
     [PerPageActions.change]: deselectTableRowReducer,
     [PaginationActions.changePage]: deselectTableRowReducer,
 };

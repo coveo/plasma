@@ -14,7 +14,10 @@ describe('RadioSelectSelectors', () => {
                 value: 'choice-2',
                 disabledValues: [],
             };
-            const radioSelect = RadioSelectSelectors.get({radioSelects: [expectedRadioSelect]}, {id: expectedRadioSelect.id});
+            const radioSelect = RadioSelectSelectors.get(
+                {radioSelects: [expectedRadioSelect]},
+                {id: expectedRadioSelect.id}
+            );
             expect(radioSelect).toEqual(expectedRadioSelect);
         });
     });
@@ -31,7 +34,10 @@ describe('RadioSelectSelectors', () => {
                 value: 'choice-2',
                 disabledValues: [],
             };
-            const selectedValue = RadioSelectSelectors.getValue({radioSelects: [expectedRadioSelect]}, {id: expectedRadioSelect.id});
+            const selectedValue = RadioSelectSelectors.getValue(
+                {radioSelects: [expectedRadioSelect]},
+                {id: expectedRadioSelect.id}
+            );
             expect(selectedValue).toBe(expectedRadioSelect.value);
         });
     });

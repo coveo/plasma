@@ -6,7 +6,6 @@ import {Tooltip} from '../../tooltip/Tooltip';
 import {ITitleProps, Title} from '../Title';
 
 describe('<Title/>', () => {
-
     const defaultProps: ITitleProps = {
         text: 'title',
     };
@@ -19,12 +18,8 @@ describe('<Title/>', () => {
     });
 
     describe('<Title /> with default props', () => {
-
         beforeEach(() => {
-            titleComponent = mount(
-                <Title {...defaultProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            titleComponent = mount(<Title {...defaultProps} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -49,7 +44,6 @@ describe('<Title/>', () => {
     });
 
     describe('<Title /> with custom props', () => {
-
         const customProps: ITitleProps = {
             prefix: 'prefix',
             text: 'title',
@@ -66,10 +60,9 @@ describe('<Title/>', () => {
         };
 
         const renderTitle = (props: Partial<ITitleProps> = {}) => {
-            titleComponent = mount(
-                <Title {..._.defaults(props, customProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            titleComponent = mount(<Title {..._.defaults(props, customProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         afterEach(() => {

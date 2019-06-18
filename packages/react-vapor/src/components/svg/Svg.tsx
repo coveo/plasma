@@ -25,7 +25,7 @@ export class Svg extends React.Component<ISvgProps> {
         (parser.children[0] as SVGElement).setAttribute('class', svgClass);
 
         return parser.innerHTML;
-    }
+    };
 
     render() {
         const formattedSvgName: string = camelize(this.props.svgName);
@@ -36,11 +36,14 @@ export class Svg extends React.Component<ISvgProps> {
 
         if (svgString) {
             return (
-                <span {...svgSpanProps} dangerouslySetInnerHTML={{__html: this.setSvgClass(svgString, this.props.svgClass)}} />
+                <span
+                    {...svgSpanProps}
+                    dangerouslySetInnerHTML={{__html: this.setSvgClass(svgString, this.props.svgClass)}}
+                />
             );
         } else {
             return (
-                <span {...svgSpanProps} >
+                <span {...svgSpanProps}>
                     <svg className={this.props.svgClass} />
                 </span>
             );

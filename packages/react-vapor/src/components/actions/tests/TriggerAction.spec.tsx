@@ -16,11 +16,7 @@ describe('Actions', () => {
     describe('<TriggerAction />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <TriggerAction
-                        action={action}
-                    />,
-                );
+                shallow(<TriggerAction action={action} />);
             }).not.toThrow();
         });
     });
@@ -32,13 +28,9 @@ describe('Actions', () => {
         beforeEach(() => {
             triggerSpy = jasmine.createSpy('triggerMethod');
             action.trigger = triggerSpy;
-            triggerAction = mount(
-                <TriggerAction
-                    action={action}
-                    simple={simple}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            triggerAction = mount(<TriggerAction action={action} simple={simple} />, {
+                attachTo: document.getElementById('App'),
+            });
             triggerActionInstance = triggerAction.instance() as TriggerAction;
         });
 
@@ -134,8 +126,10 @@ describe('Actions', () => {
             expect(() => triggerActionInstance['onTriggerAction'].call(triggerActionInstance)).not.toThrow();
         });
 
-        it('should send a function that calls the trigger of the action and the onConfirm prop when confirmation is required and ' +
-            'onTriggerConfirm is set', () => {
+        it(
+            'should send a function that calls the trigger of the action and the onConfirm prop when confirmation is required and ' +
+                'onTriggerConfirm is set',
+            () => {
                 const onTriggerConfirm = (onClick: () => void) => {
                     onClick();
                 };
@@ -148,11 +142,16 @@ describe('Actions', () => {
                         cancel: 'cancel',
                     },
                 };
-                triggerAction.setProps({action: newAction, onTriggerConfirm: onTriggerConfirm, onConfirm: onConfirmSpy});
+                triggerAction.setProps({
+                    action: newAction,
+                    onTriggerConfirm: onTriggerConfirm,
+                    onConfirm: onConfirmSpy,
+                });
                 triggerAction.find('.enabled').simulate('click');
                 expect(triggerSpy).toHaveBeenCalled();
                 expect(onConfirmSpy).toHaveBeenCalled();
-            });
+            }
+        );
 
         it('should not thrown on the function sent when the trigger of the action or the onConfirm prop are not set', () => {
             const onTriggerConfirm = (onClick: () => void) => {

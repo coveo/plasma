@@ -1,10 +1,16 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {IModalActionPayload, ModalAction} from '../ModalActions';
-import {IModalState, modalInitialState, modalReducer, modalsInitialState, modalsReducer, openModalsReducer} from '../ModalReducers';
+import {
+    IModalState,
+    modalInitialState,
+    modalReducer,
+    modalsInitialState,
+    modalsReducer,
+    openModalsReducer,
+} from '../ModalReducers';
 
 describe('Modal', () => {
-
     describe('ModalReducers', () => {
         const genericAction: IReduxAction<IModalActionPayload> = {
             type: 'DO_SOMETHING',
@@ -90,10 +96,12 @@ describe('Modal', () => {
                 {
                     id: 'some-modal2',
                     isOpened: false,
-                }, {
+                },
+                {
                     id: 'some-modal1',
                     isOpened: false,
-                }, {
+                },
+                {
                     id: 'some-modal3',
                     isOpened: false,
                 },
@@ -122,10 +130,12 @@ describe('Modal', () => {
                 {
                     id: 'some-modal1',
                     isOpened: false,
-                }, {
+                },
+                {
                     id: 'some-modal2',
                     isOpened: false,
-                }, {
+                },
+                {
                     id: 'some-modal3',
                     isOpened: true,
                 },
@@ -181,11 +191,7 @@ describe('Modal', () => {
             });
 
             it('should return the old state without all of the ids when the action is "ModalAction.closeModals"', () => {
-                const oldState: string[] = [
-                    'some-modal2',
-                    'some-modal1',
-                    'some-modal3',
-                ];
+                const oldState: string[] = ['some-modal2', 'some-modal1', 'some-modal3'];
                 const action: IReduxAction<IModalActionPayload> = {
                     type: ModalAction.closeModals,
                     payload: {

@@ -9,11 +9,7 @@ describe('FilterBox', () => {
     describe('<FilterBox />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <FilterBox
-                        id={id}
-                    />,
-                );
+                shallow(<FilterBox id={id} />);
             }).not.toThrow();
         });
     });
@@ -23,12 +19,7 @@ describe('FilterBox', () => {
         let filterBoxInstance: FilterBox;
 
         beforeEach(() => {
-            filterBox = mount(
-                <FilterBox
-                    id={id}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            filterBox = mount(<FilterBox id={id} />, {attachTo: document.getElementById('App')});
             filterBoxInstance = filterBox.instance() as FilterBox;
         });
 
@@ -96,33 +87,63 @@ describe('FilterBox', () => {
         });
 
         it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
+            expect(
+                filterBox
+                    .find('span')
+                    .first()
+                    .hasClass('hidden')
+            ).toBe(true);
 
             filterBoxInstance.filterInput.value = 'something';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
+            expect(
+                filterBox
+                    .find('span')
+                    .first()
+                    .hasClass('hidden')
+            ).toBe(false);
 
             filterBoxInstance.filterInput.value = '';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
+            expect(
+                filterBox
+                    .find('span')
+                    .first()
+                    .hasClass('hidden')
+            ).toBe(true);
         });
 
         it('should remove the hidden class of the clear icon if there is a value in the input without a change event', () => {
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
+            expect(
+                filterBox
+                    .find('span')
+                    .first()
+                    .hasClass('hidden')
+            ).toBe(true);
 
             (filterBox.instance() as FilterBox).filterInput.value = 'non empty';
             filterBox.mount().update();
 
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
+            expect(
+                filterBox
+                    .find('span')
+                    .first()
+                    .hasClass('hidden')
+            ).toBe(false);
         });
 
         it('should leave the hidden class of the clear icon if there is an empty value in the input without a change event', () => {
             filterBoxInstance.filterInput.value = '';
             filterBox.update();
 
-            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
+            expect(
+                filterBox
+                    .find('span')
+                    .first()
+                    .hasClass('hidden')
+            ).toBe(true);
         });
 
         it('should clear the filter input when clicking the clear icon', () => {
@@ -146,10 +167,20 @@ describe('FilterBox', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
-            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(false);
+            expect(
+                filterBox
+                    .find('.filter-container')
+                    .first()
+                    .hasClass(containerClass)
+            ).toBe(false);
 
             filterBox.setProps({id: id, containerClasses}).update();
-            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true);
+            expect(
+                filterBox
+                    .find('.filter-container')
+                    .first()
+                    .hasClass(containerClass)
+            ).toBe(true);
         });
 
         it('should call onBlur when the input loose focus', () => {
@@ -194,13 +225,9 @@ describe('FilterBox', () => {
 
         describe('withTitleOnInput', () => {
             beforeEach(() => {
-                filterBox = mount(
-                    <FilterBox
-                        id={id}
-                        withTitleOnInput={true}
-                    />,
-                    {attachTo: document.getElementById('App')},
-                );
+                filterBox = mount(<FilterBox id={id} withTitleOnInput={true} />, {
+                    attachTo: document.getElementById('App'),
+                });
             });
 
             it('should not have a title on the input container if the input has a value in it', () => {
@@ -217,13 +244,7 @@ describe('FilterBox', () => {
 
         describe('maxWidth', () => {
             it('should set a max width in px on the filter container and the filter input when max width is set', () => {
-                filterBox = mount(
-                    <FilterBox
-                        id={id}
-                        maxWidth={130}
-                    />,
-                    {attachTo: document.getElementById('App')},
-                );
+                filterBox = mount(<FilterBox id={id} maxWidth={130} />, {attachTo: document.getElementById('App')});
 
                 expect(filterBox.find('.filter-container').prop('style')).toEqual({maxWidth: '130px'});
                 expect(filterBox.find('.filter-box').prop('style')).toEqual({maxWidth: '130px'});
@@ -232,24 +253,13 @@ describe('FilterBox', () => {
 
         describe('truncate', () => {
             it('should not add the "truncate" class to the filter input if it is not set', () => {
-                filterBox = mount(
-                    <FilterBox
-                        id={id}
-                    />,
-                    {attachTo: document.getElementById('App')},
-                );
+                filterBox = mount(<FilterBox id={id} />, {attachTo: document.getElementById('App')});
 
                 expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(false);
             });
 
             it('should add the "truncate" class to the filter input if it is true', () => {
-                filterBox = mount(
-                    <FilterBox
-                        id={id}
-                        truncate={true}
-                    />,
-                    {attachTo: document.getElementById('App')},
-                );
+                filterBox = mount(<FilterBox id={id} truncate={true} />, {attachTo: document.getElementById('App')});
 
                 expect(filterBox.find('.filter-box').hasClass('truncate')).toBe(true);
             });

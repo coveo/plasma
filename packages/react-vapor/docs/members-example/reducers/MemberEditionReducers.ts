@@ -24,7 +24,10 @@ export const defaultMemberEditionState: IMemberEditionState = {
     isOpen: false,
 };
 
-const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
+const applyChangesReducer = (
+    state: IMemberEditionState,
+    action: IReduxAction<IMemberEditionActionPayload>
+): IMemberEditionState => {
     if (action.payload.id !== state.id) {
         return state;
     }
@@ -34,7 +37,10 @@ const applyChangesReducer = (state: IMemberEditionState, action: IReduxAction<IM
     });
 };
 
-const cancelChangesReducer = (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionPayload>): IMemberEditionState => {
+const cancelChangesReducer = (
+    state: IMemberEditionState,
+    action: IReduxAction<IMemberEditionActionPayload>
+): IMemberEditionState => {
     if (action.payload.id !== state.id) {
         return state;
     }
@@ -44,7 +50,10 @@ const cancelChangesReducer = (state: IMemberEditionState, action: IReduxAction<I
     });
 };
 
-const changeEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeEmailPayload>): IMemberEditionState => {
+const changeEmailReducer = (
+    state: IMemberEditionState,
+    action: IReduxAction<IChangeEmailPayload>
+): IMemberEditionState => {
     if (action.payload.id !== state.id) {
         return state;
     }
@@ -55,7 +64,10 @@ const changeEmailReducer = (state: IMemberEditionState, action: IReduxAction<ICh
     });
 };
 
-const changeSendEmailReducer = (state: IMemberEditionState, action: IReduxAction<IChangeSendEmailPayload>): IMemberEditionState => {
+const changeSendEmailReducer = (
+    state: IMemberEditionState,
+    action: IReduxAction<IChangeSendEmailPayload>
+): IMemberEditionState => {
     if (action.payload.id !== state.id) {
         return state;
     }
@@ -76,7 +88,10 @@ const toggleOpen = (state: IMemberEditionState, action: IReduxAction<IToggleOpen
 };
 
 interface IMemberEditionActionsReducers {
-    [key: string]: (state: IMemberEditionState, action: IReduxAction<IMemberEditionActionsPayloads>) => IMemberEditionState;
+    [key: string]: (
+        state: IMemberEditionState,
+        action: IReduxAction<IMemberEditionActionsPayloads>
+    ) => IMemberEditionState;
 }
 
 const memberEditionActionsReducers: IMemberEditionActionsReducers = {
@@ -89,7 +104,7 @@ const memberEditionActionsReducers: IMemberEditionActionsReducers = {
 
 export const memberEditionReducers = (
     state: IMemberEditionState = defaultMemberEditionState,
-    action: IReduxAction<IMemberEditionActionsPayloads>,
+    action: IReduxAction<IMemberEditionActionsPayloads>
 ): IMemberEditionState => {
     if (_.isUndefined(memberEditionActionsReducers[action.type])) {
         return state;

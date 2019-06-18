@@ -25,11 +25,9 @@ describe('LastUpdated', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <LastUpdatedConnected
-                        id={id}
-                    />
+                    <LastUpdatedConnected id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             lastUpdated = wrapper.find(LastUpdated).first();
         });
@@ -77,7 +75,9 @@ describe('LastUpdated', () => {
 
             const storedTime = store.getState().lastUpdatedComposite.filter((timer) => timer.id === id)[0].time;
             store.dispatch(changeLastUpdated(id));
-            expect(store.getState().lastUpdatedComposite.filter((timer) => timer.id === id)[0].time).not.toBe(storedTime);
+            expect(store.getState().lastUpdatedComposite.filter((timer) => timer.id === id)[0].time).not.toBe(
+                storedTime
+            );
         });
 
         it('should remove the last update time in the store on destroy', () => {

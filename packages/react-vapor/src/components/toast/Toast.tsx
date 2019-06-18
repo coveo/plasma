@@ -73,22 +73,24 @@ export class Toast extends React.Component<IToastProps, {}> {
         const classes = classNames(
             'toast',
             {
-                'mod-success': this.props.type === ToastType.Success || (_.isEmpty(this.props.className) && _.isEmpty(this.props.type)),
+                'mod-success':
+                    this.props.type === ToastType.Success ||
+                    (_.isEmpty(this.props.className) && _.isEmpty(this.props.type)),
                 'mod-warning': this.props.type === ToastType.Warning,
                 'mod-error': this.props.type === ToastType.Error,
                 'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
             },
-            this.props.className,
+            this.props.className
         );
 
         const closeButton = this.props.dismissible && (
-            <span className='toast-close' onClick={() => this.close()}>
-                <Svg svgName='close' className='icon mod-lg fill-pure-white' />
+            <span className="toast-close" onClick={() => this.close()}>
+                <Svg svgName="close" className="icon mod-lg fill-pure-white" />
             </span>
         );
 
         const toastContent = (!!this.props.content || !!this.props.children) && (
-            <div className='toast-description'>
+            <div className="toast-description">
                 {this.props.children}
                 {_.isString(this.props.content) || !this.props.content
                     ? this.props.content
@@ -97,14 +99,9 @@ export class Toast extends React.Component<IToastProps, {}> {
         );
 
         return (
-            <div
-                className={classes}
-                onMouseEnter={() => this.clearTimeout()}
-                onMouseLeave={() => this.setTimeout()}>
+            <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
                 {closeButton}
-                <div className='toast-title'>
-                    {this.props.title}
-                </div>
+                <div className="toast-title">{this.props.title}</div>
                 {toastContent}
             </div>
         );

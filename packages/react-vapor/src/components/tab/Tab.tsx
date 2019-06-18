@@ -55,5 +55,5 @@ export class Tab extends React.Component<ITabProps, any> {
         if (!this.props.disabled) {
             callIfDefined(this.props.onSelect, e);
         }
-    }
+    };
 }

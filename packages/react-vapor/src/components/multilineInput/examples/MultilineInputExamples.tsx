@@ -7,7 +7,10 @@ export interface IMultilineInputExampleStateProps {
     values: IMultilineInputValue[];
 }
 
-export class MultilineInputExamples extends React.Component<IMultilineInputExampleProps, IMultilineInputExampleStateProps> {
+export class MultilineInputExamples extends React.Component<
+    IMultilineInputExampleProps,
+    IMultilineInputExampleStateProps
+> {
     constructor(props: IMultilineInputExampleProps, state: IMultilineInputExampleStateProps) {
         super(props, state);
         this.state = {
@@ -23,14 +26,15 @@ export class MultilineInputExamples extends React.Component<IMultilineInputExamp
 
     render() {
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>Multiline Input</label>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Multiline Input</label>
                     <MultilineInput
-                        title='A Multiline Input'
-                        placeholder='Enter a value'
+                        title="A Multiline Input"
+                        placeholder="Enter a value"
                         values={this.state.values}
-                        onChange={(values: IMultilineInputValue[]) => this.handleChange(values)} />
+                        onChange={(values: IMultilineInputValue[]) => this.handleChange(values)}
+                    />
                 </div>
             </div>
         );

@@ -21,7 +21,10 @@ export interface ITableHOCCompositeState {
 }
 
 const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
-    const tableSort: ITableWithSortState = _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc));
+    const tableSort: ITableWithSortState = _.find(
+        state.tableHOCHeader,
+        (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc)
+    );
     const paginationState = _.findWhere(state.paginationComposite, {id: getPaginationId(id)});
     const perPageState = _.findWhere(state.perPageComposite, {id});
     const filter: IFilterState = _.findWhere(state.filters, {id});

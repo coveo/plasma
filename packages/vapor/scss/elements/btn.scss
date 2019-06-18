@@ -183,6 +183,10 @@
             display: none;
         }
     }
+
+    &.collapsible-header {
+        border-radius: 0;
+    }
 }
 
 .btn-container {

@@ -25,16 +25,14 @@ export interface ICollapsibleContainerStateProps {
     expanded?: boolean;
 }
 
-export interface ICollapsibleContainerProps extends
-    ICollapsibleContainerOwnProps,
-    ICollapsibleContainerStateProps {}
+export interface ICollapsibleContainerProps extends ICollapsibleContainerOwnProps, ICollapsibleContainerStateProps {}
 
 export class CollapsibleContainer extends React.Component<ICollapsibleContainerProps> {
     render() {
         const contentClasses = classNames(
             {[styles.content]: !this.props.withoutContentPadding},
             this.props.collapsibleBodyClassName,
-            'mod-border-bottom',
+            'mod-border-bottom'
         );
 
         return (
@@ -44,12 +42,10 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
                 headerClasses={classNames(styles.header, this.props.expanded ? 'bg-light-grey' : 'bg-white')}
-                toggleIconClassName='fill-medium-blue mr4'
+                toggleIconClassName="fill-medium-blue mr4"
                 withBorders
             >
-                <div className={contentClasses}>
-                    {this.props.children}
-                </div>
+                <div className={contentClasses}>{this.props.children}</div>
             </CollapsibleConnected>
         );
     }
@@ -57,7 +53,7 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
     private getHeader = (): React.ReactNode => {
         const headerClasses = classNames(
             'inline-flex flex-center text-medium-blue caps p2 bold ml3',
-            this.props.collapsibleHeaderClassName,
+            this.props.collapsibleHeaderClassName
         );
         return (
             <div className={headerClasses}>
@@ -65,16 +61,13 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
                 {this.getCollapsibleHeaderIcon()}
             </div>
         );
-    }
+    };
 
     private getSvgClass(): string {
-        return classNames(
-            'icon mod-lg ml1',
-            {
-                'fill-orange': !!this.props.informationUrl,
-                'fill-medium-grey': !this.props.informationUrl,
-            },
-        );
+        return classNames('icon mod-lg ml1', {
+            'fill-orange': !!this.props.informationUrl,
+            'fill-medium-grey': !this.props.informationUrl,
+        });
     }
 
     private getCollapsibleHeaderIcon(): JSX.Element {
@@ -85,10 +78,14 @@ export class CollapsibleContainer extends React.Component<ICollapsibleContainerP
         const tooltipProps = {placement: 'right', ...this.props.informationTooltip};
         const svgProps = {svgName: this.props.informationUrl ? 'help' : 'info', svgClass: this.getSvgClass()};
 
-        const collapsibleHeaderIcon = this.props.informationUrl
-            ? <LinkSvg url={this.props.informationUrl} target='_blank' tooltip={tooltipProps} svg={svgProps} />
-            : <Tooltip {...tooltipProps}><Svg {...svgProps} /></Tooltip>;
+        const collapsibleHeaderIcon = this.props.informationUrl ? (
+            <LinkSvg url={this.props.informationUrl} target="_blank" tooltip={tooltipProps} svg={svgProps} />
+        ) : (
+            <Tooltip {...tooltipProps}>
+                <Svg {...svgProps} />
+            </Tooltip>
+        );
 
-        return <span className='round-contextual-help'>{collapsibleHeaderIcon}</span>;
+        return <span className="round-contextual-help">{collapsibleHeaderIcon}</span>;
     }
 }

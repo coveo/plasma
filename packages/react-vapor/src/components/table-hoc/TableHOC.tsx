@@ -29,7 +29,11 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
 
     render() {
         return (
-            <div className={classNames('table-container', this.props.containerClassName, {'loading-component': this.props.isLoading})}>
+            <div
+                className={classNames('table-container', this.props.containerClassName, {
+                    'loading-component': this.props.isLoading,
+                })}
+            >
                 {this.renderActions()}
                 <table className={classNames(this.props.className)}>
                     {this.props.tableHeader}
@@ -46,7 +50,11 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                 <ActionBarConnected
                     id={this.props.id}
                     removeDefaultContainerClasses
-                    extraContainerClasses={['coveo-table-actions-container', 'mod-cancel-header-padding', 'mod-align-header']}
+                    extraContainerClasses={[
+                        'coveo-table-actions-container',
+                        'mod-cancel-header-padding',
+                        'mod-align-header',
+                    ]}
                 >
                     {this.props.actions}
                 </ActionBarConnected>

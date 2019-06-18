@@ -2,11 +2,7 @@ import * as _ from 'underscore';
 import {IData, ITableRowData} from './Table';
 import {DEFAULT_TABLE_DATA, TableChildComponent, TableSortingOrder} from './TableConstants';
 
-const {
-    ASCENDING,
-    DESCENDING,
-    UNSORTED,
-} = TableSortingOrder;
+const {ASCENDING, DESCENDING, UNSORTED} = TableSortingOrder;
 
 export const getNextTableSortingOrder = (sortedState: TableSortingOrder): TableSortingOrder =>
     _.contains([UNSORTED, DESCENDING], sortedState) ? ASCENDING : DESCENDING;
@@ -24,13 +20,16 @@ export const getTableChildComponentId = (tableId: string, childComponent: TableC
     }
 };
 
-export const getTableLoadingIds = (tableId: string): string[] => ([
+export const getTableLoadingIds = (tableId: string): string[] => [
     tableId,
     getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
     getTableChildComponentId(tableId, TableChildComponent.LOADING_NAVIGATION),
-]);
+];
 
-export const convertInitialCollectionToDataById = (collection: Array<{[key: string]: any}>, attributeNameForId: string): ITableRowData => {
+export const convertInitialCollectionToDataById = (
+    collection: Array<{[key: string]: any}>,
+    attributeNameForId: string
+): ITableRowData => {
     return collection.reduce((finalData: ITableRowData, model: {[key: string]: any}) => {
         return {
             ...finalData,
@@ -43,7 +42,10 @@ export const convertInitialCollectionToDataById = (collection: Array<{[key: stri
     }, DEFAULT_TABLE_DATA.byId);
 };
 
-export const convertDataByIdToCollection = (dataById: ITableRowData, keepIdAttribute = true): Array<{[key: string]: any}> => {
+export const convertDataByIdToCollection = (
+    dataById: ITableRowData,
+    keepIdAttribute = true
+): Array<{[key: string]: any}> => {
     return _.values(dataById).map((data: IData) => {
         const model: {[key: string]: any} = {
             ...data,

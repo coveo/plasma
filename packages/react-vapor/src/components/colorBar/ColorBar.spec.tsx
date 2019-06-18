@@ -44,16 +44,18 @@ describe('ColorBar', () => {
         withColorsPropsScenarios.forEach((props) => {
             const nonZeroNonTransparentColors = _.omit(props.widthPerColor, (width: number, color: string) => !width);
 
-            shallow(<ColorBar {...props} />).find('.color-bar-color').forEach((color) => {
-                const {width} = color.first().prop('style');
-                const colorProp = color.first().prop('color');
+            shallow(<ColorBar {...props} />)
+                .find('.color-bar-color')
+                .forEach((color) => {
+                    const {width} = color.first().prop('style');
+                    const colorProp = color.first().prop('color');
 
-                if (colorProp !== 'transparent') {
-                    expect(nonZeroNonTransparentColors[colorProp]).toBe(parseInt(width.toString(), 10));
-                } else {
-                    expect(colorProp).toBe('transparent');
-                }
-            });
+                    if (colorProp !== 'transparent') {
+                        expect(nonZeroNonTransparentColors[colorProp]).toBe(parseInt(width.toString(), 10));
+                    } else {
+                        expect(colorProp).toBe('transparent');
+                    }
+                });
         });
     });
 
@@ -66,46 +68,70 @@ describe('ColorBar', () => {
             },
         };
 
-        shallow(<ColorBar {...doubledWidthProps} />).find('.color-bar-color').forEach((color) => {
-            const {width} = color.prop('style');
-            const colorProp = color.first().prop('color');
-            expect(doubledWidthProps.widthPerColor[colorProp] / 2).toBe(parseInt(width.toString(), 10));
-        });
+        shallow(<ColorBar {...doubledWidthProps} />)
+            .find('.color-bar-color')
+            .forEach((color) => {
+                const {width} = color.prop('style');
+                const colorProp = color.first().prop('color');
+                expect(doubledWidthProps.widthPerColor[colorProp] / 2).toBe(parseInt(width.toString(), 10));
+            });
     });
 
     it('should have a 5px height by default', () => {
-        const {height} = shallow(<ColorBar widthPerColor={{blue: 10}} />).find('.color-bar-color').first().prop('style');
+        const {height} = shallow(<ColorBar widthPerColor={{blue: 10}} />)
+            .find('.color-bar-color')
+            .first()
+            .prop('style');
 
         expect(height).toBe('5px');
     });
 
     it('should change the default height if height is passed as prop', () => {
-        const {height} = shallow(<ColorBar widthPerColor={{blue: 10}} height='10px' />).find('.color-bar-color').first().prop('style');
+        const {height} = shallow(<ColorBar widthPerColor={{blue: 10}} height="10px" />)
+            .find('.color-bar-color')
+            .first()
+            .prop('style');
 
         expect(height).toBe('10px');
     });
 
     it('should pass extra classes to container if passed as prop', () => {
-        const colorBar = shallow(<ColorBar widthPerColor={{blue: 10}} className='extra-class' />).find('div').first();
+        const colorBar = shallow(<ColorBar widthPerColor={{blue: 10}} className="extra-class" />)
+            .find('div')
+            .first();
 
         expect(colorBar.prop('className')).toContain('extra-class');
     });
 
     it('should render without tooltip if no tooltipPerColor is passed', () => {
-        const colorBar = shallow(<ColorBar widthPerColor={{blue: 10}} className='extra-class' />);
+        const colorBar = shallow(<ColorBar widthPerColor={{blue: 10}} className="extra-class" />);
 
         expect(colorBar.find(Tooltip).length).toBe(0);
     });
 
     it('should render with a tooltip on the right color if some tooltipPerColor values are passed', () => {
         const widthPerColor: KeyValue<number> = {blue: 10, green: 90};
-        const tooltipPerColor: KeyValue<ITooltipProps> = {blue: {title: 'superTooltipPropsForBlue'}, green: {title: 'superTooltipPropsForGreen'}};
+        const tooltipPerColor: KeyValue<ITooltipProps> = {
+            blue: {title: 'superTooltipPropsForBlue'},
+            green: {title: 'superTooltipPropsForGreen'},
+        };
 
-        const colorBar = shallow(<ColorBar {...{widthPerColor, tooltipPerColor}} className='extra-class' />);
+        const colorBar = shallow(<ColorBar {...{widthPerColor, tooltipPerColor}} className="extra-class" />);
 
         _.keys(widthPerColor).map((color: string, index: number) => {
-            expect(colorBar.find(Tooltip).at(index).props()).toEqual(jasmine.objectContaining(tooltipPerColor[color]));
-            expect(colorBar.find(Tooltip).at(index).find('.color-bar-color').html()).toContain(color);
+            expect(
+                colorBar
+                    .find(Tooltip)
+                    .at(index)
+                    .props()
+            ).toEqual(jasmine.objectContaining(tooltipPerColor[color]));
+            expect(
+                colorBar
+                    .find(Tooltip)
+                    .at(index)
+                    .find('.color-bar-color')
+                    .html()
+            ).toContain(color);
         });
     });
 });

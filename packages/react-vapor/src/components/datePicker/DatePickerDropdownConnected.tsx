@@ -8,13 +8,7 @@ import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from '../dro
 import {IDropdownState} from '../dropdown/DropdownReducers';
 import {resetOptionPickers} from '../optionPicker/OptionPickerActions';
 import {changeOptionsCycle} from '../optionsCycle/OptionsCycleActions';
-import {
-    applyDatePicker,
-    clearSelection,
-    DateLimits,
-    resetDatePickers,
-    selectDate,
-} from './DatePickerActions';
+import {applyDatePicker, clearSelection, DateLimits, resetDatePickers, selectDate} from './DatePickerActions';
 import {
     DatePickerDropdown,
     IDatePickerDropdownDispatchProps,
@@ -25,7 +19,10 @@ import {
 import {IDatePickerState} from './DatePickerReducers';
 import {DatePickerSelectors} from './DatePickerSelectors';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
+const mapStateToProps = (
+    state: IReactVaporState,
+    ownProps: IDatePickerDropdownOwnProps
+): IDatePickerDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});
 
     return {
@@ -35,7 +32,10 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatePickerDropdownO
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownDispatchProps => ({
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+    ownProps: IDatePickerDropdownOwnProps
+): IDatePickerDropdownDispatchProps => ({
     onRender: () => dispatch(addDropdown(ownProps.id)),
     onDestroy: () => dispatch(removeDropdown(ownProps.id)),
     onClick: (datePicker: IDatePickerState) => {
@@ -65,5 +65,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     },
 });
 
-export const DatePickerDropdownConnected: React.ComponentClass<IDatePickerDropdownProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(DatePickerDropdown);
+export const DatePickerDropdownConnected: React.ComponentClass<IDatePickerDropdownProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(DatePickerDropdown);

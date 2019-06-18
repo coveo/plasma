@@ -8,35 +8,24 @@ import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, 
 
 describe('MultilineBox', () => {
     describe('<MultilineBox/>', () => {
-
         let store: mockStore<IReactVaporState>;
         const id = 'multiline-box';
         const defaultProps: IMultilineBoxOwnProps = {
             id,
             data: [],
-            renderBody: () => <div className='multiline-box' />,
+            renderBody: () => <div className="multiline-box" />,
         };
 
         it('should not throw on create', () => {
-            expect(() => shallowWithState(
-                <MultilineBox
-                    {...defaultProps}
-                />, {})).not.toThrow();
+            expect(() => shallowWithState(<MultilineBox {...defaultProps} />, {})).not.toThrow();
         });
 
         it('should mount without errors', () => {
-            expect(() => shallowWithState(
-                <MultilineBox
-                    {...defaultProps}
-                />, {}).dive(),
-            ).not.toThrow();
+            expect(() => shallowWithState(<MultilineBox {...defaultProps} />, {}).dive()).not.toThrow();
         });
 
         it('should unmount without errors', () => {
-            const wrapper = shallowWithState(
-                <MultilineBox
-                    {...defaultProps}
-                />, {}).dive();
+            const wrapper = shallowWithState(<MultilineBox {...defaultProps} />, {}).dive();
 
             expect(() => wrapper.unmount()).not.toThrow();
         });
@@ -47,11 +36,10 @@ describe('MultilineBox', () => {
         });
 
         describe('store actions', () => {
-
             const propsWithData: IMultilineBoxOwnProps = {
                 id,
                 data: [{name: 'princess'}],
-                renderBody: () => <div className='multiline-box' />,
+                renderBody: () => <div className="multiline-box" />,
             };
 
             it('should add an additional ids in the store on mount', () => {
@@ -80,7 +68,7 @@ describe('MultilineBox', () => {
                                 return <div />;
                             }}
                         />,
-                        store,
+                        store
                     ).dive();
 
                     expect(store.isActionTypeDispatched(StringListActions.removeValue)).toBe(true);
@@ -96,7 +84,7 @@ describe('MultilineBox', () => {
                                 return <div />;
                             }}
                         />,
-                        store,
+                        store
                     ).dive();
 
                     expect(store.isActionTypeDispatched(StringListActions.addValue)).toBe(true);
@@ -113,7 +101,7 @@ describe('MultilineBox', () => {
                                 return <div />;
                             }}
                         />,
-                        store,
+                        store
                     ).dive();
 
                     expect(parentId).toBe(id);
@@ -121,7 +109,6 @@ describe('MultilineBox', () => {
             });
 
             describe('data sent to the renderBody', () => {
-
                 let dataToBody: any[] = [];
 
                 it('should return an array of data with an generated id for the initial data object and and an other one for the default box at the end', () => {
@@ -143,7 +130,7 @@ describe('MultilineBox', () => {
                                     list: [testId],
                                 },
                             },
-                        },
+                        }
                     ).dive();
 
                     expect(dataToBody[0].id).toBe(testId);
@@ -168,7 +155,7 @@ describe('MultilineBox', () => {
                                     list: [testId, '1234'],
                                 },
                             },
-                        },
+                        }
                     ).dive();
 
                     expect(dataToBody[0].isLast).toBe(false);
@@ -194,7 +181,7 @@ describe('MultilineBox', () => {
                                     list: [testId],
                                 },
                             },
-                        },
+                        }
                     ).dive();
 
                     expect(dataToBody[0].props).toEqual({name: 'princess'});
@@ -220,7 +207,7 @@ describe('MultilineBox', () => {
                                     list: ['uniqueID'],
                                 },
                             },
-                        },
+                        }
                     ).dive();
 
                     expect(dataToBody[0].props).toEqual({});
@@ -249,7 +236,7 @@ describe('MultilineBox', () => {
                                     list: ['uniqueID'],
                                 },
                             },
-                        },
+                        }
                     ).dive();
 
                     expect(dataToBody[0].props).toEqual(theInitialProps);
@@ -257,17 +244,13 @@ describe('MultilineBox', () => {
             });
 
             describe('on component did update', () => {
-
                 it('should not call updateData if the previous data is equal than the old props data', () => {
-
                     const dataToTest: any = [{name: 'princess'}];
 
                     store = RTestUtils.buildMockStore();
-                    const wrapper = shallowWithStore(<MultilineBox
-                        {...defaultProps}
-                        data={dataToTest}
-                    />,
-                        store,
+                    const wrapper = shallowWithStore(
+                        <MultilineBox {...defaultProps} data={dataToTest} />,
+                        store
                     ).dive();
 
                     wrapper.setProps({
@@ -279,11 +262,9 @@ describe('MultilineBox', () => {
 
                 it('should call updateData if the previous data is not equal than the old props data', () => {
                     store = RTestUtils.buildMockStore();
-                    const wrapper = shallowWithStore(<MultilineBox
-                        {...defaultProps}
-                        data={[{name: 'princess'}]}
-                    />,
-                        store,
+                    const wrapper = shallowWithStore(
+                        <MultilineBox {...defaultProps} data={[{name: 'princess'}]} />,
+                        store
                     ).dive();
 
                     wrapper.setProps({

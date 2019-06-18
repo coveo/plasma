@@ -16,9 +16,7 @@ describe('InlinePrompt', () => {
             };
 
             expect(() => {
-                shallow(
-                    <InlinePrompt options={options} />,
-                );
+                shallow(<InlinePrompt options={options} />);
             }).not.toThrow();
         });
     });
@@ -45,10 +43,7 @@ describe('InlinePrompt', () => {
                 className: 'some-class',
             };
 
-            inlinePrompt = mount(
-                <InlinePrompt options={options} />,
-                {attachTo: document.getElementById('App')},
-            );
+            inlinePrompt = mount(<InlinePrompt options={options} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -116,7 +111,10 @@ describe('InlinePrompt', () => {
         });
 
         it('should call the onClick prop when choice is clicked', () => {
-            inlinePrompt.find('.prompt-action').first().simulate('click');
+            inlinePrompt
+                .find('.prompt-action')
+                .first()
+                .simulate('click');
             expect(onClickSpy.calls.count()).toBe(1);
         });
 
@@ -127,7 +125,10 @@ describe('InlinePrompt', () => {
             expect(() => inlinePromptInstance['onCancelClick'].call(inlinePromptInstance)).not.toThrow();
 
             inlinePrompt.setProps({options: options, onCancel: onCancelSpy});
-            inlinePrompt.find('.cancel').first().simulate('click');
+            inlinePrompt
+                .find('.cancel')
+                .first()
+                .simulate('click');
             expect(onCancelSpy.calls.count()).toBe(1);
         });
     });

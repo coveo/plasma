@@ -24,11 +24,9 @@ describe('Modal', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <ModalConnected
-                        id={id}
-                    />
+                    <ModalConnected id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             modal = wrapper.find(Modal).first();
         });
@@ -74,12 +72,9 @@ describe('Modal', () => {
             wrapper.unmount();
             wrapper = mount(
                 <Provider store={store}>
-                    <ModalConnected
-                        id={id}
-                        openOnMount
-                    />
+                    <ModalConnected id={id} openOnMount />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
 
             const modalInState = store.getState().modals.filter((currentModal) => currentModal.id === id);

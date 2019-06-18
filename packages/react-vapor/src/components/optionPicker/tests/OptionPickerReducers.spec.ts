@@ -10,7 +10,6 @@ import {
 } from '../OptionPickerReducers';
 
 describe('Option picker', () => {
-
     const genericAction: IReduxAction<IOptionPickerPayload> = {
         type: 'DO_SOMETHING',
         payload: {
@@ -26,7 +25,9 @@ describe('Option picker', () => {
         });
 
         it('should return the old state when the action is not defined', () => {
-            const oldState: IOptionPickerState[] = [{id: 'some-option-picker', selectedValue: 'anything', selectedLabel: 'the label'}];
+            const oldState: IOptionPickerState[] = [
+                {id: 'some-option-picker', selectedValue: 'anything', selectedLabel: 'the label'},
+            ];
             const optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, genericAction);
 
             expect(optionPickersState).toBe(oldState);
@@ -43,14 +44,20 @@ describe('Option picker', () => {
             let optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
 
             expect(optionPickersState.length).toBe(oldState.length + 1);
-            expect(optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id).length).toBe(1);
+            expect(
+                optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
+                    .length
+            ).toBe(1);
 
             oldState = optionPickersState;
             action.payload.id = 'some-option-picker2';
             optionPickersState = optionPickersReducer(oldState, action);
 
             expect(optionPickersState.length).toBe(oldState.length + 1);
-            expect(optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id).length).toBe(1);
+            expect(
+                optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
+                    .length
+            ).toBe(1);
         });
 
         it('should return the old state without the IOptionPickerState when the action is "REMOVE_OPTION_PICKER', () => {
@@ -59,11 +66,13 @@ describe('Option picker', () => {
                     id: 'some-option-picker2',
                     selectedValue: '',
                     selectedLabel: '',
-                }, {
+                },
+                {
                     id: 'some-option-picker',
                     selectedValue: 'something',
                     selectedLabel: 'something',
-                }, {
+                },
+                {
                     id: 'some-option-picker3',
                     selectedValue: 'nothing',
                     selectedLabel: 'nothing',
@@ -78,58 +87,71 @@ describe('Option picker', () => {
             let optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
 
             expect(optionPickersState.length).toBe(oldState.length - 1);
-            expect(optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id).length).toBe(0);
+            expect(
+                optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
+                    .length
+            ).toBe(0);
 
             oldState = optionPickersState;
             action.payload.id = 'some-option-picker2';
             optionPickersState = optionPickersReducer(oldState, action);
 
             expect(optionPickersState.length).toBe(oldState.length - 1);
-            expect(optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id).length).toBe(0);
+            expect(
+                optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
+                    .length
+            ).toBe(0);
         });
 
-        it('should return the old state when the action is "REMOVE_OPTION_PICKER" and the options cycle id does not exist',
+        it('should return the old state when the action is "REMOVE_OPTION_PICKER" and the options cycle id does not exist', () => {
+            const oldState: IOptionPickerState[] = [
+                {
+                    id: 'some-option-picker2',
+                    selectedValue: '',
+                    selectedLabel: '',
+                },
+                {
+                    id: 'some-option-picker',
+                    selectedValue: 'something',
+                    selectedLabel: 'something',
+                },
+                {
+                    id: 'some-option-picker3',
+                    selectedValue: 'nothing',
+                    selectedLabel: 'nothing',
+                },
+            ];
+            const action: IReduxAction<IOptionPickerPayload> = {
+                type: OptionPickerActions.remove,
+                payload: {
+                    id: 'some-option-picker4',
+                },
+            };
+            const optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
+
+            expect(optionPickersState.length).toBe(oldState.length);
+            expect(
+                optionPickersState.filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id)
+                    .length
+            ).toBe(0);
+        });
+
+        it(
+            'should return the state with the new selected value and label for the option picker with the action id when' +
+                'the action is "CHANGE_OPTION"',
             () => {
                 const oldState: IOptionPickerState[] = [
                     {
                         id: 'some-option-picker2',
                         selectedValue: '',
                         selectedLabel: '',
-                    }, {
-                        id: 'some-option-picker',
-                        selectedValue: 'something',
-                        selectedLabel: 'something',
-                    }, {
-                        id: 'some-option-picker3',
-                        selectedValue: 'nothing',
-                        selectedLabel: 'nothing',
                     },
-                ];
-                const action: IReduxAction<IOptionPickerPayload> = {
-                    type: OptionPickerActions.remove,
-                    payload: {
-                        id: 'some-option-picker4',
-                    },
-                };
-                const optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
-
-                expect(optionPickersState.length).toBe(oldState.length);
-                expect(optionPickersState
-                    .filter((optionPicker: IOptionPickerState) => optionPicker.id === action.payload.id).length).toBe(0);
-            });
-
-        it('should return the state with the new selected value and label for the option picker with the action id when' +
-            'the action is "CHANGE_OPTION"', () => {
-                const oldState: IOptionPickerState[] = [
                     {
-                        id: 'some-option-picker2',
-                        selectedValue: '',
-                        selectedLabel: '',
-                    }, {
                         id: 'some-option-picker',
                         selectedValue: 'something',
                         selectedLabel: 'something',
-                    }, {
+                    },
+                    {
                         id: 'some-option-picker3',
                         selectedValue: 'nothing',
                         selectedLabel: 'nothing',
@@ -145,9 +167,14 @@ describe('Option picker', () => {
                 };
                 const optionPickersState: IOptionPickerState[] = optionPickersReducer(oldState, action);
 
-                expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedValue).toBe(action.payload.value);
-                expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedLabel).toBe(action.payload.label);
-            });
+                expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedValue).toBe(
+                    action.payload.value
+                );
+                expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedLabel).toBe(
+                    action.payload.label
+                );
+            }
+        );
 
         it('should reset all option pickers starting with the action id if the action is "RESET_OPTION_PICKERS"', () => {
             const oldState: IOptionPickerState[] = [
@@ -155,15 +182,18 @@ describe('Option picker', () => {
                     id: 'some-option-picker2',
                     selectedValue: '',
                     selectedLabel: '',
-                }, {
+                },
+                {
                     id: 'some-option-picker',
                     selectedValue: 'something',
                     selectedLabel: 'something',
-                }, {
+                },
+                {
                     id: 'some-option-picker3',
                     selectedValue: 'nothing',
                     selectedLabel: 'nothing',
-                }, {
+                },
+                {
                     id: 'other-id',
                     selectedValue: 'this will not be reset',
                     selectedLabel: 'this wont be rest either',
@@ -212,7 +242,11 @@ describe('Option picker', () => {
         });
 
         it('should return the old state when the action is not defined', () => {
-            const oldState: IOptionPickerState = {id: 'some-option-picker', selectedValue: 'anything', selectedLabel: 'aaa'};
+            const oldState: IOptionPickerState = {
+                id: 'some-option-picker',
+                selectedValue: 'anything',
+                selectedLabel: 'aaa',
+            };
             const optionPickerState: IOptionPickerState = optionPickerReducer(oldState, genericAction);
 
             expect(optionPickerState).toBe(oldState);

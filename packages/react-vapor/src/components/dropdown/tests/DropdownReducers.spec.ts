@@ -9,7 +9,6 @@ import {
 } from '../DropdownReducers';
 
 describe('Reducers', () => {
-
     describe('facets', () => {
         const genericAction: IReduxAction<IDropdownActionPayload> = {
             type: 'DO_SOMETHING',
@@ -70,10 +69,12 @@ describe('Reducers', () => {
                 {
                     id: 'dropdown2',
                     opened: false,
-                }, {
+                },
+                {
                     id: 'dropdown3',
                     opened: true,
-                }, {
+                },
+                {
                     id: 'dropdown1',
                     opened: false,
                 },
@@ -103,10 +104,12 @@ describe('Reducers', () => {
                 {
                     id: 'dropdown1',
                     opened: openValue,
-                }, {
+                },
+                {
                     id: 'dropdown3',
                     opened: openValue,
-                }, {
+                },
+                {
                     id: 'dropdown',
                     opened: openValue,
                 },
@@ -134,10 +137,12 @@ describe('Reducers', () => {
                 {
                     id: 'dropdown3',
                     opened: true,
-                }, {
+                },
+                {
                     id: 'dropdown2',
                     opened: false,
-                }, {
+                },
+                {
                     id: 'dropdown1',
                     opened: true,
                 },

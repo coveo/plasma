@@ -4,13 +4,10 @@ import * as React from 'react';
 import {DeleteInputAction, IDeleteInputActionProps} from '../DeleteInputAction';
 
 describe('DeleteInputAction', () => {
-
     describe('<DeleteInputAction />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <DeleteInputAction onClick={() => 1} />,
-                );
+                shallow(<DeleteInputAction onClick={() => 1} />);
             }).not.toThrow();
         });
     });
@@ -19,10 +16,7 @@ describe('DeleteInputAction', () => {
         let deleteInput: ReactWrapper<IDeleteInputActionProps, any>;
 
         beforeEach(() => {
-            deleteInput = mount(
-                <DeleteInputAction onClick={() => 1} />,
-                {attachTo: document.getElementById('App')},
-            );
+            deleteInput = mount(<DeleteInputAction onClick={() => 1} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

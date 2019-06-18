@@ -6,7 +6,6 @@ import {FlatSelect, IFlatSelectOwnProps, IFlatSelectProps} from '../FlatSelect';
 import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
-
     const id = 'id';
     const defaultOptions: IFlatSelectOptionProps[] = [
         {
@@ -14,7 +13,8 @@ describe('FlatSelect', () => {
             option: {
                 content: 'test',
             },
-        }, {
+        },
+        {
             id: UUID.generate(),
             option: {
                 content: 'test',
@@ -35,10 +35,7 @@ describe('FlatSelect', () => {
         let flatSelectInstance: FlatSelect;
 
         const renderFlatSelect = (props?: IFlatSelectProps) => {
-            flatSelect = mount(
-                <FlatSelect {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            flatSelect = mount(<FlatSelect {...props} />, {attachTo: document.getElementById('App')});
             flatSelectInstance = flatSelect.instance() as FlatSelect;
         };
 
@@ -47,7 +44,6 @@ describe('FlatSelect', () => {
         });
 
         describe('default props', () => {
-
             beforeEach(() => {
                 renderFlatSelect(ownProps);
             });
@@ -66,15 +62,16 @@ describe('FlatSelect', () => {
 
             it('should render without error with no options provided', () => {
                 expect(() => {
-                    renderFlatSelect(_.extend({}, ownProps, {
-                        options: [],
-                    }));
+                    renderFlatSelect(
+                        _.extend({}, ownProps, {
+                            options: [],
+                        })
+                    );
                 }).not.toThrow();
             });
         });
 
         describe('event props', () => {
-
             beforeEach(() => {
                 renderFlatSelect(ownProps);
             });
@@ -106,7 +103,11 @@ describe('FlatSelect', () => {
                 const onClick = jasmine.createSpy('onClick');
                 flatSelect.setProps({onClick});
 
-                flatSelect.find(FlatSelectOption).first().props().onClick({} as any);
+                flatSelect
+                    .find(FlatSelectOption)
+                    .first()
+                    .props()
+                    .onClick({} as any);
 
                 expect(onClick).toHaveBeenCalled();
             });
@@ -115,26 +116,33 @@ describe('FlatSelect', () => {
                 const onOptionClick = jasmine.createSpy('onOptionClick');
                 flatSelect.setProps({onOptionClick});
 
-                flatSelect.find(FlatSelectOption).first().props().onClick({} as any);
+                flatSelect
+                    .find(FlatSelectOption)
+                    .first()
+                    .props()
+                    .onClick({} as any);
 
                 expect(onOptionClick).toHaveBeenCalled();
             });
         });
 
         describe('Props functionality', () => {
-
             it('should add the class mod-btn-group if group is set to true', () => {
-                renderFlatSelect(_.extend({}, ownProps, {
-                    group: true,
-                }));
+                renderFlatSelect(
+                    _.extend({}, ownProps, {
+                        group: true,
+                    })
+                );
 
                 expect(flatSelect.find('.flat-select').hasClass('mod-btn-group')).toBe(true);
             });
 
             it('should add the class mod-option-picker if optionPicker is set to true', () => {
-                renderFlatSelect(_.extend({}, ownProps, {
-                    optionPicker: true,
-                }));
+                renderFlatSelect(
+                    _.extend({}, ownProps, {
+                        optionPicker: true,
+                    })
+                );
 
                 expect(flatSelect.find('.flat-select').hasClass('mod-option-picker')).toBe(true);
             });

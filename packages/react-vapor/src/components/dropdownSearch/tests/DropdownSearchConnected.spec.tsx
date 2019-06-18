@@ -33,7 +33,7 @@ describe('DropdownSearch', () => {
                 <Provider store={store}>
                     <DropdownSearchConnected id={id} defaultOptions={defaultOptions} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             dropdownSearch = wrapper.find(DropdownSearch).first();
         };
@@ -48,7 +48,6 @@ describe('DropdownSearch', () => {
         });
 
         describe('mount and unmount', () => {
-
             beforeEach(() => {
                 renderDropdownSearchConnected();
             });
@@ -69,9 +68,13 @@ describe('DropdownSearch', () => {
 
                 wrapper = mount(
                     <Provider store={store}>
-                        <DropdownSearchConnected id={id} defaultOptions={defaultOptions} defaultSelectedOption={defaultSelectedOptionPlaceholder} />
+                        <DropdownSearchConnected
+                            id={id}
+                            defaultOptions={defaultOptions}
+                            defaultSelectedOption={defaultSelectedOptionPlaceholder}
+                        />
                     </Provider>,
-                    {attachTo: document.getElementById('App')},
+                    {attachTo: document.getElementById('App')}
                 );
 
                 expect(store.getState().lastAction.type).toBe(DropdownSearchActions.update);
@@ -84,7 +87,6 @@ describe('DropdownSearch', () => {
         });
 
         describe('mapStateToProps', () => {
-
             beforeEach(() => {
                 renderDropdownSearchConnected();
             });
@@ -135,11 +137,9 @@ describe('DropdownSearch', () => {
 
                 expect(activeOptionProp).toBeUndefined();
             });
-
         });
 
         describe('mapDispatchToProps', () => {
-
             beforeEach(() => {
                 renderDropdownSearchConnected();
             });
@@ -206,7 +206,10 @@ describe('DropdownSearch', () => {
             it('should close the dropdown on calling onClose', () => {
                 wrapper.find('.dropdown-toggle').simulate('click');
                 expect(wrapper.find('.open').length).toBe(1);
-                wrapper.find(DropdownSearch).props().onClose();
+                wrapper
+                    .find(DropdownSearch)
+                    .props()
+                    .onClose();
                 wrapper.update();
                 expect(wrapper.find('.dropdown').find('.open').length).toBe(0);
             });
@@ -226,7 +229,10 @@ describe('DropdownSearch', () => {
                 store.dispatch(toggleDropdownSearch(id));
                 wrapper.update();
 
-                wrapper.find('li span').first().simulate('mouseDown');
+                wrapper
+                    .find('li span')
+                    .first()
+                    .simulate('mouseDown');
 
                 const selectedOption = store.getState().dropdownSearch[0].options[0];
                 expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);
@@ -249,7 +255,10 @@ describe('DropdownSearch', () => {
 
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
 
-                wrapper.find(DropdownSearch).props().onKeyDownDropdownButton(keyCode.enter, {value: 'anywoulddo', selected: false});
+                wrapper
+                    .find(DropdownSearch)
+                    .props()
+                    .onKeyDownDropdownButton(keyCode.enter, {value: 'anywoulddo', selected: false});
                 wrapper.update();
 
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(true);
@@ -263,7 +272,10 @@ describe('DropdownSearch', () => {
 
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
 
-                wrapper.find(DropdownSearch).props().onKeyDownDropdownButton(keyCode.tab, {value: 'anywoulddo', selected: false});
+                wrapper
+                    .find(DropdownSearch)
+                    .props()
+                    .onKeyDownDropdownButton(keyCode.tab, {value: 'anywoulddo', selected: false});
                 wrapper.update();
 
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(true);
@@ -277,7 +289,10 @@ describe('DropdownSearch', () => {
 
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
 
-                wrapper.find(DropdownSearch).props().onKeyDownFilterBox(keyCode.tab, {value: 'anywoulddo', selected: false});
+                wrapper
+                    .find(DropdownSearch)
+                    .props()
+                    .onKeyDownFilterBox(keyCode.tab, {value: 'anywoulddo', selected: false});
                 wrapper.update();
 
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(true);

@@ -5,11 +5,11 @@
 
 .sg-component {
     margin: 2em 0;
+    font-size: 15px;
+    line-height: 1.5;
     border: 1px solid #e7e7e7;
     border-radius: 4px;
     box-shadow: 0px 2px 20px 0px rgba(0, 0, 0, 0.1);
-    font-size: 15px;
-    line-height: 1.5;
 }
 
 .sg-component-header ul {
@@ -24,10 +24,9 @@
 }
 
 .sg-component-description {
+    margin: 5px 0;
     font-size: 15px;
     line-height: 18px;
-
-    margin: 5px 0;
 }
 
 .sg-component-stylesheet {
@@ -36,13 +35,13 @@
 }
 
 .sg-component-body {
-    padding: 2em;
     position: relative;
+    padding: 2em;
 }
 
 .sg-component h2 {
-    margin-bottom: 5px;
     margin-top: 10px;
+    margin-bottom: 5px;
 }
 
 .sg-component code {
@@ -57,10 +56,10 @@
 }
 
 .sg-icons-list {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     li {
         display: inline-block;
         width: 100px;
@@ -81,8 +80,8 @@
         }
 
         label {
-            margin-top: 10px;
             display: block;
+            margin-top: 10px;
             font-size: 12px;
             text-align: center;
             word-wrap: break-word;
@@ -101,6 +100,6 @@
 
 .codepen-form {
     position: absolute;
-    bottom: 2.4rem;
     right: 1.5rem;
+    bottom: 2.4rem;
 }

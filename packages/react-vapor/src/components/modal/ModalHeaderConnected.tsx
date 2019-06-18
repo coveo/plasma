@@ -8,5 +8,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalHeaderOwnProps)
     onClose: () => dispatch(closeModal(ownProps.id)),
 });
 
-export const ModalHeaderConnected: React.ComponentClass<IModalHeaderProps> =
-    connect(undefined, mapDispatchToProps, ReduxUtils.mergeProps)(ModalHeader);
+export const ModalHeaderConnected: React.ComponentClass<IModalHeaderProps> = connect(
+    undefined,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ModalHeader);

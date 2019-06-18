@@ -11,17 +11,15 @@ const lorem = loremIpsum({count: 200});
 class ComponentWithEditingExample extends React.Component<IWithDirtyProps> {
     static ID = 'ComponentWithEdit';
 
-    static footerChildren = (
-        <Button primary name='Save' />
-    );
+    static footerChildren = <Button primary name="Save" />;
 
     render() {
         return (
-            <div className='mt2'>
-                <div className='mb2'>
+            <div className="mt2">
+                <div className="mb2">
                     <Input
-                        id='input'
-                        labelTitle='Enter something, go ahead, make me dirty...'
+                        id="input"
+                        labelTitle="Enter something, go ahead, make me dirty..."
                         onChange={() => this.props.toggleIsDirty(true)}
                     />
                 </div>
@@ -31,6 +29,8 @@ class ComponentWithEditingExample extends React.Component<IWithDirtyProps> {
     }
 }
 
-export const ComponentWithEditingExampleHOC = withEditing(
-    {id: ComponentWithEditingExample.ID, footerChildren: ComponentWithEditingExample.footerChildren, footerClassName: 'sticky-footer-mod-header'},
-)(ComponentWithEditingExample);
+export const ComponentWithEditingExampleHOC = withEditing({
+    id: ComponentWithEditingExample.ID,
+    footerChildren: ComponentWithEditingExample.footerChildren,
+    footerClassName: 'sticky-footer-mod-header',
+})(ComponentWithEditingExample);

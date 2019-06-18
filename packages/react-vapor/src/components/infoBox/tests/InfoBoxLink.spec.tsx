@@ -6,7 +6,7 @@ describe('InfoBoxLink', () => {
     it('should not throw', () => {
         expect(() => shallow(<InfoBoxLink />)).not.toThrow();
         expect(() => shallow(<InfoBoxLink>Link</InfoBoxLink>)).not.toThrow();
-        expect(() => shallow(<InfoBoxLink href='#'>Link</InfoBoxLink>)).not.toThrow();
+        expect(() => shallow(<InfoBoxLink href="#">Link</InfoBoxLink>)).not.toThrow();
     });
 
     it('should allow custom classes', () => {
@@ -17,7 +17,7 @@ describe('InfoBoxLink', () => {
     });
 
     it('should render children', () => {
-        const expectedChildren = <div className='to-find' />;
+        const expectedChildren = <div className="to-find" />;
         const wrapper = shallow(<InfoBoxLink>{expectedChildren}</InfoBoxLink>);
 
         expect(wrapper.contains(expectedChildren)).toBe(true);

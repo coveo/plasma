@@ -17,7 +17,10 @@ export class StickyFooter extends React.Component<IStickyFooterProps> {
     render() {
         const {id, className, isOpened} = this.props;
         return (
-            <div id={id} className={classNames(styles.stickyFooter, {[styles.stickyFooterOpened]: isOpened}, className)}>
+            <div
+                id={id}
+                className={classNames(styles.stickyFooter, {[styles.stickyFooterOpened]: isOpened}, className)}
+            >
                 {this.props.children}
             </div>
         );

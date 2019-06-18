@@ -16,9 +16,7 @@ describe('Actions', () => {
     describe('<LinkAction />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <LinkAction action={action} />,
-                );
+                shallow(<LinkAction action={action} />);
             }).not.toThrow();
         });
     });
@@ -28,13 +26,9 @@ describe('Actions', () => {
         const simple: boolean = false;
 
         beforeEach(() => {
-            linkAction = mount(
-                <LinkAction
-                    action={action}
-                    simple={simple}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            linkAction = mount(<LinkAction action={action} simple={simple} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {

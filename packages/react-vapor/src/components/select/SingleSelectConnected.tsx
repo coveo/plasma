@@ -37,7 +37,10 @@ export interface ISingleSelectDispatchProps {
     deselect: () => void;
 }
 
-export interface ISingleSelectProps extends ISingleSelectOwnProps, Partial<ISingleSelectStateProps>, Partial<ISingleSelectDispatchProps> {}
+export interface ISingleSelectProps
+    extends ISingleSelectOwnProps,
+        Partial<ISingleSelectStateProps>,
+        Partial<ISingleSelectDispatchProps> {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
     const customSelected: string[] = SelectSelector.getListState(state, ownProps);
@@ -53,7 +56,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.PureComponent<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
+export class SingleSelectConnected extends React.PureComponent<
+    ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>
+> {
     static defaultProps: Partial<ISingleSelectOwnProps>;
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
@@ -64,10 +69,7 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
 
     render() {
         return (
-            <SelectConnected
-                {..._.pick(this.props, selectPropsKeys)}
-                button={this.getButton}
-            >
+            <SelectConnected {..._.pick(this.props, selectPropsKeys)} button={this.getButton}>
                 {this.props.children}
             </SelectConnected>
         );
@@ -85,7 +87,7 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
         return (
             <button
                 className={buttonClasses}
-                type='button'
+                type="button"
                 onClick={props.onClick}
                 onKeyDown={props.onKeyDown}
                 onKeyUp={props.onKeyUp}
@@ -95,11 +97,11 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
                 {option && option.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
                 {option && option.append ? <Content {...option.append} /> : null}
-                <span className='dropdown-toggle-arrow' />
+                <span className="dropdown-toggle-arrow" />
                 {showClear && this.getDeselectOptionButton()}
             </button>
         );
-    }
+    };
 
     private getSelectedOptionElement(option: IItemBoxProps): JSX.Element {
         if (option) {
@@ -107,7 +109,7 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
             return (
                 <span
                     key={option.value}
-                    className='dropdown-selected-value flex-auto left-align'
+                    className="dropdown-selected-value flex-auto left-align"
                     data-value={option.value}
                     title={displayValue}
                 >
@@ -116,13 +118,13 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
             );
         }
 
-        return <span className='dropdown-no-value'>{this.props.placeholder}</span>;
+        return <span className="dropdown-no-value">{this.props.placeholder}</span>;
     }
 
     private getDeselectOptionButton(): React.ReactNode {
         return (
-            <Tooltip title={this.props.deselectTooltipText} placement='top' noSpanWrapper onClick={this.handleDeselect}>
-                <Svg svgName={VaporSVG.svg.clear.name} svgClass='icon mod-12' className='btn-append center-align' />
+            <Tooltip title={this.props.deselectTooltipText} placement="top" noSpanWrapper onClick={this.handleDeselect}>
+                <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon mod-12" className="btn-append center-align" />
             </Tooltip>
         );
     }
@@ -131,7 +133,7 @@ export class SingleSelectConnected extends React.PureComponent<ISingleSelectProp
         if (!this.props.disabled) {
             this.props.deselect();
         }
-    }
+    };
 }
 
 SingleSelectConnected.defaultProps = {

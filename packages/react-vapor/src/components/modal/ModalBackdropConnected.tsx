@@ -27,7 +27,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnPro
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IModalBackdropOwnProps,
+    ownProps: IModalBackdropOwnProps
 ): IModalBackdropDispatchProps => ({
     onClick: () => dispatch(closeModals(ownProps.displayFor)),
 });
@@ -35,4 +35,10 @@ const mapDispatchToProps = (
 /**
  * @deprecated use ModalCompositeConnected instead
  */
-export const ModalBackdropConnected: React.ComponentClass<IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalBackdrop);
+export const ModalBackdropConnected: React.ComponentClass<
+    IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>
+> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ModalBackdrop);

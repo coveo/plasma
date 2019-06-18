@@ -5,13 +5,10 @@ import {IInputProps} from '../../input/Input';
 import {AddInput} from '../AddInput';
 
 describe('AddInput', () => {
-
     describe('<AddInput />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <AddInput />,
-                );
+                shallow(<AddInput />);
             }).not.toThrow();
         });
     });
@@ -20,10 +17,7 @@ describe('AddInput', () => {
         let addInput: ReactWrapper<IInputProps, any>;
 
         beforeEach(() => {
-            addInput = mount(
-                <AddInput />,
-                {attachTo: document.getElementById('App')},
-            );
+            addInput = mount(<AddInput />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

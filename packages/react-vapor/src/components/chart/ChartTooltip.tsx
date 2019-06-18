@@ -23,15 +23,16 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
     };
     const onMouseLeave = () => setPosition({...position, position: ''});
 
-    const barWidth = series[0].data.length > 1
-        ? (xScale(xDomain[1]) - xScale(xDomain[0])) / series[0].data.length
-        : xScale(xDomain[0]);
+    const barWidth =
+        series[0].data.length > 1
+            ? (xScale(xDomain[1]) - xScale(xDomain[0])) / series[0].data.length
+            : xScale(xDomain[0]);
     const bars = series[0].data.map((point: XYPoint, index: number) => {
         const x = xScale(point.x);
         return (
             <React.Fragment key={`chart-zone-${index}`}>
                 <rect
-                    fill='transparent'
+                    fill="transparent"
                     width={barWidth / 2}
                     height={yScale(yDomain[0])}
                     x={x - barWidth / 2}
@@ -40,7 +41,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                     onMouseLeave={onMouseLeave}
                 />
                 <rect
-                    fill='transparent'
+                    fill="transparent"
                     width={barWidth / 2}
                     height={yScale(yDomain[0])}
                     x={x}
@@ -53,15 +54,28 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
     });
 
     return (
-        <g className='chart-tooltip-zones'>
-            {!!position.position && <rect className='chart-tooltip-line' width={2} x={xScale(position.pointX) - 1} y={yScale(yDomain[1])} height={yScale(yDomain[0])} fill={VaporColors.orange} />}
-            <circle cx={position.x} cy={position.y} r='1' fill='transparent' ref={dropRoot} />
+        <g className="chart-tooltip-zones">
+            {!!position.position && (
+                <rect
+                    className="chart-tooltip-line"
+                    width={2}
+                    x={xScale(position.pointX) - 1}
+                    y={yScale(yDomain[1])}
+                    height={yScale(yDomain[0])}
+                    fill={VaporColors.orange}
+                />
+            )}
+            <circle cx={position.x} cy={position.y} r="1" fill="transparent" ref={dropRoot} />
             <DropPod
                 ref={dropRoot}
                 isOpen={!!position.position}
                 positions={[position.position, DropPodPosition.left, DropPodPosition.right]}
                 parentSelector={Defaults.DROP_ROOT}
-                renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>, dropPosition: IDropUIPosition): React.ReactNode => (
+                renderDrop={(
+                    style: React.CSSProperties,
+                    dropRef: React.RefObject<HTMLDivElement>,
+                    dropPosition: IDropUIPosition
+                ): React.ReactNode => (
                     <div
                         ref={dropRef}
                         style={{...style, pointerEvents: 'none'}}

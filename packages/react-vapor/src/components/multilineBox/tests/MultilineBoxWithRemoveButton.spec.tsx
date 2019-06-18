@@ -12,20 +12,20 @@ import {IMultilineBoxOwnProps, MultilineBox} from '../MultilineBox';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
-
         let store: mockStore<IReactVaporState>;
 
         const id = 'multiline-box';
-        const DefaultMultilineBoxWithRemoveButton = _.compose(
-            multilineBoxWithRemoveButton(),
-        )(MultilineBox);
+        const DefaultMultilineBoxWithRemoveButton = _.compose(multilineBoxWithRemoveButton())(MultilineBox);
 
-        const shallowComponent = (Component: any, props: Partial<IMultilineBoxOwnProps> = {}, state = {}): ShallowWrapper => {
-            return shallowWithState(
-                <Component
-                    {...props}
-                    id={id}
-                />, state).dive().dive().dive();
+        const shallowComponent = (
+            Component: any,
+            props: Partial<IMultilineBoxOwnProps> = {},
+            state = {}
+        ): ShallowWrapper => {
+            return shallowWithState(<Component {...props} id={id} />, state)
+                .dive()
+                .dive()
+                .dive();
         };
 
         it('should mount without errors', () => {
@@ -34,7 +34,7 @@ describe('Multiline box with remove button', () => {
                     data: [],
                     renderBody: () => _.identity,
                     defaultProps: {},
-                }),
+                })
             ).not.toThrow();
         });
 
@@ -56,54 +56,66 @@ describe('Multiline box with remove button', () => {
             const testId = 'id';
             RTestUtils.mockUUID(testId);
 
-            expect(() => shallowComponent(
-                DefaultMultilineBoxWithRemoveButton,
-                {}, {
-                    multilineIds: {
-                        [id]: {
-                            id: id,
-                            list: [testId],
+            expect(() =>
+                shallowComponent(
+                    DefaultMultilineBoxWithRemoveButton,
+                    {},
+                    {
+                        multilineIds: {
+                            [id]: {
+                                id: id,
+                                list: [testId],
+                            },
                         },
-                    },
-                },
-            )).not.toThrow();
+                    }
+                )
+            ).not.toThrow();
         });
 
         it('should not throw if he containerNode is not defined and the data is defined ', () => {
             const testId = 'id';
             RTestUtils.mockUUID(testId);
 
-            expect(() => shallowComponent(
-                DefaultMultilineBoxWithRemoveButton,
-                {
-                    data: [{name: 'test'}],
-                }, {
-                    multilineIds: {
-                        [id]: {
-                            id: id,
-                            list: [testId],
-                        },
+            expect(() =>
+                shallowComponent(
+                    DefaultMultilineBoxWithRemoveButton,
+                    {
+                        data: [{name: 'test'}],
                     },
-                },
-            )).not.toThrow();
+                    {
+                        multilineIds: {
+                            [id]: {
+                                id: id,
+                                list: [testId],
+                            },
+                        },
+                    }
+                )
+            ).not.toThrow();
         });
 
         describe('once rendered', () => {
-
-            const shallowComponentWithStore = (Component: any, props: Partial<IMultilineBoxOwnProps> = {}, s: any): ShallowWrapper => {
-                return shallowWithStore(
-                    <Component
-                        {...props}
-                        id={id}
-                    />, s).dive().dive().dive();
+            const shallowComponentWithStore = (
+                Component: any,
+                props: Partial<IMultilineBoxOwnProps> = {},
+                s: any
+            ): ShallowWrapper => {
+                return shallowWithStore(<Component {...props} id={id} />, s)
+                    .dive()
+                    .dive()
+                    .dive();
             };
 
             it('should contains a Button inside the remove button element sent as arguments', () => {
                 store = RTestUtils.buildMockStore();
 
-                const wrapper = shallowComponentWithStore(DefaultMultilineBoxWithRemoveButton, {
-                    data: [],
-                }, store);
+                const wrapper = shallowComponentWithStore(
+                    DefaultMultilineBoxWithRemoveButton,
+                    {
+                        data: [],
+                    },
+                    store
+                );
 
                 expect(wrapper.find(Button).length).toBe(1);
             });
@@ -121,22 +133,36 @@ describe('Multiline box with remove button', () => {
                     },
                 });
 
-                const wrapper = shallowComponentWithStore(DefaultMultilineBoxWithRemoveButton, {
-                    data: [{name: 'potatos'}],
-                }, store);
+                const wrapper = shallowComponentWithStore(
+                    DefaultMultilineBoxWithRemoveButton,
+                    {
+                        data: [{name: 'potatos'}],
+                    },
+                    store
+                );
 
-                wrapper.find(Button).first().props().onClick();
+                wrapper
+                    .find(Button)
+                    .first()
+                    .props()
+                    .onClick();
 
                 expect(store.isActionTypeDispatched(StringListActions.removeValue)).toBe(true);
             });
 
             describe('with a containerNode', () => {
-
                 const ModifiedMultilineBoxWithRemoveButton = _.compose(
                     multilineBoxWithRemoveButton({
-                        containerNode: (child: React.ReactNode, getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode): React.ReactNode =>
-                            <div className={'pick-me-plz'}>{child}{getRemoveButton({})}</div>,
-                    }),
+                        containerNode: (
+                            child: React.ReactNode,
+                            getRemoveButton: (props?: Partial<IButtonProps>) => React.ReactNode
+                        ): React.ReactNode => (
+                            <div className={'pick-me-plz'}>
+                                {child}
+                                {getRemoveButton({})}
+                            </div>
+                        ),
+                    })
                 )(MultilineBox);
 
                 it('should render the container node', () => {
@@ -152,9 +178,13 @@ describe('Multiline box with remove button', () => {
                         },
                     });
 
-                    const wrapper = shallowComponentWithStore(ModifiedMultilineBoxWithRemoveButton, {
-                        data: [{name: 'potatos'}],
-                    }, store);
+                    const wrapper = shallowComponentWithStore(
+                        ModifiedMultilineBoxWithRemoveButton,
+                        {
+                            data: [{name: 'potatos'}],
+                        },
+                        store
+                    );
 
                     expect(wrapper.find('.pick-me-plz').length).toBe(1);
                 });

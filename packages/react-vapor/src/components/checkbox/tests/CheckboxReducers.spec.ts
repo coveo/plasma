@@ -1,6 +1,12 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {CheckboxActions, ICheckboxActionPayload} from '../CheckboxActions';
-import {checkboxesInitialState, checkboxesReducer, checkboxInitialState, checkboxReducer, ICheckboxState} from '../CheckboxReducers';
+import {
+    checkboxesInitialState,
+    checkboxesReducer,
+    checkboxInitialState,
+    checkboxReducer,
+    ICheckboxState,
+} from '../CheckboxReducers';
 
 describe('Checkbox', () => {
     describe('CheckboxReducers', () => {
@@ -67,11 +73,13 @@ describe('Checkbox', () => {
                     id: 'some-checkbox2',
                     checked: false,
                     disabled: false,
-                }, {
+                },
+                {
                     id: 'some-checkbox1',
                     checked: false,
                     disabled: false,
-                }, {
+                },
+                {
                     id: 'some-checkbox3',
                     checked: false,
                     disabled: false,

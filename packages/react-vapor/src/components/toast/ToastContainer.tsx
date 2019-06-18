@@ -22,10 +22,12 @@ export interface IToastContainerDispatchProps {
     onCloseToast?: (id: string) => void;
 }
 
-export interface IToastContainerProps extends IToastContainerOwnProps, IToastContainerStateProps, IToastContainerDispatchProps {}
+export interface IToastContainerProps
+    extends IToastContainerOwnProps,
+        IToastContainerStateProps,
+        IToastContainerDispatchProps {}
 
 export class ToastContainer extends React.Component<IToastContainerProps, {}> {
-
     componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
@@ -51,11 +53,11 @@ export class ToastContainer extends React.Component<IToastContainerProps, {}> {
             'mod-right': this.props.right,
         });
         const toasts = this.props.toasts
-            ? _.map(this.props.toasts, (toast: IToastProps) => <Toast key={toast.id} {...toast} onClose={() => this.onCloseToast(toast.id)} />)
+            ? _.map(this.props.toasts, (toast: IToastProps) => (
+                  <Toast key={toast.id} {...toast} onClose={() => this.onCloseToast(toast.id)} />
+              ))
             : this.props.children;
 
-        return (
-            <div className={classes}>{toasts}</div>
-        );
+        return <div className={classes}>{toasts}</div>;
     }
 }

@@ -10,11 +10,7 @@ describe('Modal', () => {
     describe('<Modal />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <Modal
-                        id={id}
-                    />,
-                );
+                shallow(<Modal id={id} />);
             }).not.toThrow();
         });
     });
@@ -24,12 +20,7 @@ describe('Modal', () => {
         let modalInstance: Modal;
 
         beforeEach(() => {
-            modal = mount(
-                <Modal
-                    id={id}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            modal = mount(<Modal id={id} />, {attachTo: document.getElementById('App')});
             modalInstance = modal.instance() as Modal;
         });
 
@@ -95,11 +86,21 @@ describe('Modal', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const classes = [containerClass];
-            expect(modal.find('div').first().html()).not.toContain(containerClass);
+            expect(
+                modal
+                    .find('div')
+                    .first()
+                    .html()
+            ).not.toContain(containerClass);
 
             modal.setProps({id, classes});
             modal.mount();
-            expect(modal.find('div').first().html()).toContain(containerClass);
+            expect(
+                modal
+                    .find('div')
+                    .first()
+                    .html()
+            ).toContain(containerClass);
         });
     });
 });

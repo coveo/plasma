@@ -16,5 +16,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableCollapsibleRow
 
 const mapDispatchToProps = () => ({});
 
-export const TableCollapsibleRowConnected: React.ComponentClass<ITableCollapsibleRowProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TableCollapsibleRow);
+export const TableCollapsibleRowConnected: React.ComponentClass<ITableCollapsibleRowProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(TableCollapsibleRow);

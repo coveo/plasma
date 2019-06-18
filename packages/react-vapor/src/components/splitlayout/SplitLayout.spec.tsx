@@ -9,8 +9,8 @@ describe('SplitLayout', () => {
     const testClassesArray = ['some', 'classes'];
 
     const basicProps: ISplitLayoutProps = {
-        leftChildren: <div className='left'></div>,
-        rightChildren: <div className='right'></div>,
+        leftChildren: <div className="left"></div>,
+        rightChildren: <div className="right"></div>,
     };
 
     it('should render without error with basic props and one child on each side', () => {
@@ -24,33 +24,47 @@ describe('SplitLayout', () => {
     });
 
     it('should render without error with basic props and extra classes as string on containers', () => {
-        expect(() => shallow(
-            <SplitLayout
-                {...basicProps}
-                className={testClassesString}
-                leftContainerClassName={testClassesString}
-                rightContainerClassName={testClassesString}
-            />,
-        )).not.toThrow();
+        expect(() =>
+            shallow(
+                <SplitLayout
+                    {...basicProps}
+                    className={testClassesString}
+                    leftContainerClassName={testClassesString}
+                    rightContainerClassName={testClassesString}
+                />
+            )
+        ).not.toThrow();
     });
 
     it('should render without error with basic props and extra classes as array on containers', () => {
-        expect(() => shallow(
-            <SplitLayout
-                {...basicProps}
-                className={testClassesArray}
-                leftContainerClassName={testClassesArray}
-                rightContainerClassName={testClassesArray}
-            />,
-        )).not.toThrow();
+        expect(() =>
+            shallow(
+                <SplitLayout
+                    {...basicProps}
+                    className={testClassesArray}
+                    leftContainerClassName={testClassesArray}
+                    rightContainerClassName={testClassesArray}
+                />
+            )
+        ).not.toThrow();
     });
 
     describe('SplitLayout Content', () => {
         it('should render with a left child in first column and a right child in right column', () => {
             const splitLayout = shallow(<SplitLayout {...basicProps} />);
 
-            expect(splitLayout.find('.column').first().find('.left').length).toBe(1);
-            expect(splitLayout.find('.column').last().find('.right').length).toBe(1);
+            expect(
+                splitLayout
+                    .find('.column')
+                    .first()
+                    .find('.left').length
+            ).toBe(1);
+            expect(
+                splitLayout
+                    .find('.column')
+                    .last()
+                    .find('.right').length
+            ).toBe(1);
         });
 
         it('should render with left children in first column and right children in right column with multiple children', () => {
@@ -58,8 +72,20 @@ describe('SplitLayout', () => {
             const rightChildren = range(2).map(() => basicProps.rightChildren) as JSXRenderable;
             const splitLayout = shallow(<SplitLayout leftChildren={leftChildren} rightChildren={rightChildren} />);
 
-            expect(splitLayout.find('.column').first().html().match(/left/g).length).toBe(2);
-            expect(splitLayout.find('.column').last().html().match(/right/g).length).toBe(2);
+            expect(
+                splitLayout
+                    .find('.column')
+                    .first()
+                    .html()
+                    .match(/left/g).length
+            ).toBe(2);
+            expect(
+                splitLayout
+                    .find('.column')
+                    .last()
+                    .html()
+                    .match(/right/g).length
+            ).toBe(2);
         });
 
         it('should render with extra classes on container if passed in props as string', () => {
@@ -79,28 +105,48 @@ describe('SplitLayout', () => {
         it('should render with extra classes on left children container if passed in props as string', () => {
             const splitLayout = shallow(<SplitLayout {...basicProps} leftContainerClassName={testClassesString} />);
             testClassesString.split(' ').forEach((testClass) => {
-                expect(splitLayout.find('.column').first().hasClass(testClass)).toBe(true);
+                expect(
+                    splitLayout
+                        .find('.column')
+                        .first()
+                        .hasClass(testClass)
+                ).toBe(true);
             });
         });
 
         it('should render with extra classes on left children container if passed in props as array', () => {
             const splitLayout = shallow(<SplitLayout {...basicProps} leftContainerClassName={testClassesArray} />);
             testClassesArray.forEach((testClass) => {
-                expect(splitLayout.find('.column').first().hasClass(testClass)).toBe(true);
+                expect(
+                    splitLayout
+                        .find('.column')
+                        .first()
+                        .hasClass(testClass)
+                ).toBe(true);
             });
         });
 
         it('should render with extra classes on right children container if passed in props as string', () => {
             const splitLayout = shallow(<SplitLayout {...basicProps} rightContainerClassName={testClassesString} />);
             testClassesString.split(' ').forEach((testClass) => {
-                expect(splitLayout.find('.column').last().hasClass(testClass)).toBe(true);
+                expect(
+                    splitLayout
+                        .find('.column')
+                        .last()
+                        .hasClass(testClass)
+                ).toBe(true);
             });
         });
 
         it('should render with extra classes on right children container if passed in props as array', () => {
             const splitLayout = shallow(<SplitLayout {...basicProps} rightContainerClassName={testClassesArray} />);
             testClassesArray.forEach((testClass) => {
-                expect(splitLayout.find('.column').last().hasClass(testClass)).toBe(true);
+                expect(
+                    splitLayout
+                        .find('.column')
+                        .last()
+                        .hasClass(testClass)
+                ).toBe(true);
             });
         });
     });

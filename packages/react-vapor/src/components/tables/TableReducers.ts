@@ -5,11 +5,7 @@ import {IActionOptions} from '../actions/Action';
 import {LoadingActions} from '../loading/LoadingActions';
 import {ITablePredicate} from './Table';
 import {ITableActionPayload, TableActions} from './TableActions';
-import {
-    DEFAULT_TABLE_DATA,
-    TableChildComponent,
-    TableSortingOrder,
-} from './TableConstants';
+import {DEFAULT_TABLE_DATA, TableChildComponent, TableSortingOrder} from './TableConstants';
 import {TableHeaderCellActions} from './TableHeaderCellActions';
 import {getTableChildComponentId} from './TableUtils';
 
@@ -94,10 +90,13 @@ export const tableInitialState: ITableState = {
     dataDeleted: false,
 };
 
-export const tablesInitialState: {[tableId: string]: ITableState;} = {};
+export const tablesInitialState: {[tableId: string]: ITableState} = {};
 
 export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]): ITableState => {
-    const newSelectedIds = _.reject(oldSelectedIds, (selectedId: string) => !_.contains(state.data.displayedIds, selectedId));
+    const newSelectedIds = _.reject(
+        oldSelectedIds,
+        (selectedId: string) => !_.contains(state.data.displayedIds, selectedId)
+    );
     return {
         ...state,
         dataDeleted: false,
@@ -110,7 +109,7 @@ export const updateSelectedIDs = (state: ITableState, oldSelectedIds: string[]):
 
 export const tableReducer = (
     state: ITableState = tableInitialState,
-    action: IReduxAction<ITableActionPayload>,
+    action: IReduxAction<ITableActionPayload>
 ): ITableState => {
     switch (action.type) {
         case TableActions.add:
@@ -121,8 +120,12 @@ export const tableReducer = (
                 perPageId: getTableChildComponentId(action.payload.id, TableChildComponent.PER_PAGE),
                 paginationId: getTableChildComponentId(action.payload.id, TableChildComponent.PAGINATION),
                 filterId: getTableChildComponentId(action.payload.id, TableChildComponent.FILTER),
-                predicateIds: action.payload.predicates.map((predicate: ITablePredicate) =>
-                    `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`),
+                predicateIds: action.payload.predicates.map(
+                    (predicate: ITablePredicate) =>
+                        `${getTableChildComponentId(action.payload.id, TableChildComponent.PREDICATE)}${
+                            predicate.attributeName
+                        }`
+                ),
                 datePickerId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER),
                 datePickerRangeId: getTableChildComponentId(action.payload.id, TableChildComponent.DATEPICKER_RANGE),
                 dataDeleted: false,
@@ -195,20 +198,20 @@ export const tableReducer = (
             };
         case TableActions.updateTableDataEntry:
             return state.data.byId[action.payload.data.id]
-                ? ({
-                    ...state,
-                    dataDeleted: false,
-                    data: {
-                        ...state.data,
-                        byId: {
-                            ...state.data.byId,
-                            [action.payload.data.id]: {
-                                ...state.data.byId[action.payload.data.id],
-                                ...action.payload.data,
-                            },
-                        },
-                    },
-                })
+                ? {
+                      ...state,
+                      dataDeleted: false,
+                      data: {
+                          ...state.data,
+                          byId: {
+                              ...state.data.byId,
+                              [action.payload.data.id]: {
+                                  ...state.data.byId[action.payload.data.id],
+                                  ...action.payload.data,
+                              },
+                          },
+                      },
+                  }
                 : state;
         default:
             return state;
@@ -226,8 +229,13 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
             return _.omit(tablesState, action.payload.id);
         default:
             const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
-                ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
-                : _.findKey(tablesState, (tableState, tableId: string) => contains(action.payload && action.payload.id, tableId));
+                ? _.chain(action.payload.ids)
+                      .intersection(_.keys(tablesState))
+                      .first()
+                      .value()
+                : _.findKey(tablesState, (tableState, tableId: string) =>
+                      contains(action.payload && action.payload.id, tableId)
+                  );
 
             return currentTableId
                 ? {...tablesState, [currentTableId]: tableReducer(tablesState[currentTableId], action)}

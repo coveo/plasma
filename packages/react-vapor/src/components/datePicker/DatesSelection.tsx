@@ -47,8 +47,11 @@ export interface IDatesSelectionChildrenProps {
     setToNowTooltip?: string;
 }
 
-export interface IDatesSelectionProps extends IDatesSelectionOwnProps, IDatesSelectionStateProps,
-    IDatesSelectionDispatchProps, IDatesSelectionChildrenProps {}
+export interface IDatesSelectionProps
+    extends IDatesSelectionOwnProps,
+        IDatesSelectionStateProps,
+        IDatesSelectionDispatchProps,
+        IDatesSelectionChildrenProps {}
 
 export const LOWER_LIMIT_PLACEHOLDER: string = 'Select a start date';
 export const UPPER_LIMIT_PLACEHOLDER: string = 'Select an end date';
@@ -102,7 +105,10 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         const formattedUpperLimit: string = DateUtils.getDateWithTimeString(this.props.inputUpperLimit);
         const formattedInputDate: string = DateUtils.getDateWithTimeString(date);
 
-        if ((!isUpperLimit && formattedLowerLimit !== formattedInputDate) || (isUpperLimit && formattedUpperLimit !== formattedInputDate)) {
+        if (
+            (!isUpperLimit && formattedLowerLimit !== formattedInputDate) ||
+            (isUpperLimit && formattedUpperLimit !== formattedInputDate)
+        ) {
             this.onDateChange(date, isUpperLimit);
         }
     }
@@ -124,22 +130,27 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         if (isLarge) {
             separatorClasses.push('mod-vertical');
         }
-        const separator: JSX.Element = this.props.isRange
-            ? <span className={separatorClasses.join(' ')}>
+        const separator: JSX.Element = this.props.isRange ? (
+            <span className={separatorClasses.join(' ')}>
                 <span>-</span>
             </span>
-            : null;
-        const toDate: JSX.Element = this.props.isRange
-            ? <DatePicker
+        ) : null;
+        const toDate: JSX.Element = this.props.isRange ? (
+            <DatePicker
                 upperLimit
                 date={this.props.upperLimit}
                 {...datePickerProps}
-                placeholder={this.props.upperLimitPlaceholder} />
-            : null;
+                placeholder={this.props.upperLimitPlaceholder}
+            />
+        ) : null;
 
         return (
             <div className={wrapperClasses}>
-                <DatePicker date={this.props.lowerLimit} {...datePickerProps} placeholder={this.props.lowerLimitPlaceholder} />
+                <DatePicker
+                    date={this.props.lowerLimit}
+                    {...datePickerProps}
+                    placeholder={this.props.lowerLimitPlaceholder}
+                />
                 {separator}
                 {toDate}
             </div>

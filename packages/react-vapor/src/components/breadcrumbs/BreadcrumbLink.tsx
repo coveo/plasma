@@ -6,11 +6,10 @@ export interface IBreadcrumbLinkProps {
     name: string;
     link?: string;
     classes?: string;
-    onClick?: (props: IBreadcrumbLinkProps) => boolean;  // return false to cancel the href event
+    onClick?: (props: IBreadcrumbLinkProps) => boolean; // return false to cancel the href event
 }
 
 export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
-
     private handleOnClick(e: React.MouseEvent<HTMLAnchorElement>): boolean {
         if (this.props.onClick && !this.props.onClick(this.props)) {
             e.stopPropagation();
@@ -23,9 +22,17 @@ export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
 
     render() {
         const linkClasses = classNames('link', this.props.classes);
-        return (<li className='breadcrumb-title'>
-            <a className={linkClasses} href={this.props.link} onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleOnClick(e)}>{this.props.name}</a>
-            <Svg svgName='arrow-right-rounded' className='breadcrumb-arrow' />
-        </li>);
+        return (
+            <li className="breadcrumb-title">
+                <a
+                    className={linkClasses}
+                    href={this.props.link}
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleOnClick(e)}
+                >
+                    {this.props.name}
+                </a>
+                <Svg svgName="arrow-right-rounded" className="breadcrumb-arrow" />
+            </li>
+        );
     }
 }

@@ -2,7 +2,10 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {DropdownSearchAutoInfiniteScroll, IDropdownSearchAutoInfiniteScrollProps} from '../DropdownSearchAutoInfiniteScroll';
+import {
+    DropdownSearchAutoInfiniteScroll,
+    IDropdownSearchAutoInfiniteScrollProps,
+} from '../DropdownSearchAutoInfiniteScroll';
 import {DropdownSearchInfiniteScrollOptions} from '../DropdownSearchInfiniteScrollOptions';
 
 describe('DropdownSearchAutoInfiniteScroll', () => {
@@ -11,7 +14,11 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
     const optionsPerPage = 10;
 
     function getOptions(prependText: string, total: number) {
-        return _.times(total, (n: number) => <div key={n}>{prependText} {n}</div>);
+        return _.times(total, (n: number) => (
+            <div key={n}>
+                {prependText} {n}
+            </div>
+        ));
     }
 
     beforeEach(() => {
@@ -32,10 +39,9 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
         let autoInfiniteScroll: ReactWrapper<IDropdownSearchAutoInfiniteScrollProps, any>;
 
         beforeEach(() => {
-            autoInfiniteScroll = mount(
-                <DropdownSearchAutoInfiniteScroll {...basicProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            autoInfiniteScroll = mount(<DropdownSearchAutoInfiniteScroll {...basicProps} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {
@@ -79,10 +85,16 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
         it('should update activeOptions and respect the paging when loading additional options', () => {
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options.slice(0, optionsPerPage));
 
-            autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.next();
+            autoInfiniteScroll
+                .find(DropdownSearchInfiniteScrollOptions)
+                .props()
+                .infiniteScroll.next();
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options.slice(0, optionsPerPage * 2));
 
-            autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.next();
+            autoInfiniteScroll
+                .find(DropdownSearchInfiniteScrollOptions)
+                .props()
+                .infiniteScroll.next();
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options);
         });
 
@@ -94,12 +106,16 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
         });
 
         it('should not show endMessage if infinite scrolling is unused (less options shown then per page)', () => {
-            expect(autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage).toBe(basicProps.endMessage);
+            expect(autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage).toBe(
+                basicProps.endMessage
+            );
 
             const newOptions = getOptions('Other options', optionsPerPage - 1);
             autoInfiniteScroll.setProps({options: newOptions});
 
-            expect(autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage).toBeNull();
+            expect(
+                autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage
+            ).toBeNull();
         });
     });
 });

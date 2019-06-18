@@ -14,30 +14,36 @@ describe('Reducers', () => {
         });
 
         it('should return the old state when the action is unrelated to collapsible s', () => {
-            const oldState: CollapsibleState[] = [{
-                id: 'some-',
-                expanded: false,
-            }];
+            const oldState: CollapsibleState[] = [
+                {
+                    id: 'some-',
+                    expanded: false,
+                },
+            ];
             const newState: CollapsibleState[] = collapsiblesReducer(oldState, unrelatedAction);
 
             expect(oldState).toEqual(newState);
         });
 
         it('should return the old state when the action is unrelated for one ', () => {
-            const oldState: CollapsibleState[] = [{
-                id: 'some-',
-                expanded: false,
-            }];
+            const oldState: CollapsibleState[] = [
+                {
+                    id: 'some-',
+                    expanded: false,
+                },
+            ];
             const newState: CollapsibleState[] = collapsiblesReducer(oldState, unrelatedAction);
 
             expect(oldState).toEqual(newState);
         });
 
         it('should return the old state with one more Collapsible when the action is CollapsibleActions.add', () => {
-            const oldState: CollapsibleState[] = [{
-                id: 'some-',
-                expanded: false,
-            }];
+            const oldState: CollapsibleState[] = [
+                {
+                    id: 'some-',
+                    expanded: false,
+                },
+            ];
             const action = addCollapsible('new-collapsible', true);
             const newState = collapsiblesReducer(oldState, action);
 
@@ -46,10 +52,12 @@ describe('Reducers', () => {
         });
 
         it('should return the old state with one less Collapsible when the action is CollapsibleActions.remove', () => {
-            const oldState: CollapsibleState[] = [{
-                id: 'some-',
-                expanded: false,
-            }];
+            const oldState: CollapsibleState[] = [
+                {
+                    id: 'some-',
+                    expanded: false,
+                },
+            ];
             const action = removeCollapsible(oldState[0].id);
             const newState = collapsiblesReducer(oldState, action);
 
@@ -58,10 +66,12 @@ describe('Reducers', () => {
         });
 
         it('should modify the expanded state for the Collapsible having the same id as in the action payload', () => {
-            const oldState: CollapsibleState[] = [{
-                id: 'some-',
-                expanded: false,
-            }];
+            const oldState: CollapsibleState[] = [
+                {
+                    id: 'some-',
+                    expanded: false,
+                },
+            ];
             const setExpandedToTrueAction = setCollapsibleExpanded(oldState[0].id, true);
             const newState = collapsiblesReducer(oldState, setExpandedToTrueAction);
 
@@ -74,10 +84,12 @@ describe('Reducers', () => {
         });
 
         it('should not modify the expanded state for the Collapsible having a different id as in the action payload', () => {
-            const oldState: CollapsibleState[] = [{
-                id: 'some-',
-                expanded: undefined,
-            }];
+            const oldState: CollapsibleState[] = [
+                {
+                    id: 'some-',
+                    expanded: undefined,
+                },
+            ];
             const setExpandedToTrueAction = setCollapsibleExpanded('a different id', true);
             const newState = collapsiblesReducer(oldState, setExpandedToTrueAction);
 

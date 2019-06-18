@@ -6,24 +6,25 @@ import {IActionOptions} from '../Action';
 import {ActionBar, DEFAULT_ACTIONS_CONTAINER_CLASSES, IActionBarProps} from '../ActionBar';
 
 describe('Actions', () => {
-    const actions: IActionOptions[] = [{
-        name: 'action',
-        link: 'http://coveo.com',
-        target: '_blank',
-        primary: true,
-        enabled: true,
-    }, {
-        name: 'action2',
-        trigger: jasmine.createSpy('triggerMethod'),
-        enabled: true,
-    }];
+    const actions: IActionOptions[] = [
+        {
+            name: 'action',
+            link: 'http://coveo.com',
+            target: '_blank',
+            primary: true,
+            enabled: true,
+        },
+        {
+            name: 'action2',
+            trigger: jasmine.createSpy('triggerMethod'),
+            enabled: true,
+        },
+    ];
 
     describe('<ActionBar />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ActionBar />,
-                );
+                shallow(<ActionBar />);
             }).not.toThrow();
         });
     });
@@ -33,10 +34,7 @@ describe('Actions', () => {
         let actionBarInstance: ActionBar;
 
         const renderActionBar = (props: IActionBarProps = {}) => {
-            actionBar = mount(
-                <ActionBar actions={actions} {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            actionBar = mount(<ActionBar actions={actions} {...props} />, {attachTo: document.getElementById('App')});
             actionBarInstance = actionBar.instance() as ActionBar;
         };
 
@@ -139,21 +137,36 @@ describe('Actions', () => {
             describe('removeDefaultContainerClasses', () => {
                 it('should leave the default container classes if it is not set', () => {
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                        expect(actionBar.find('div').first().html()).toContain(className);
+                        expect(
+                            actionBar
+                                .find('div')
+                                .first()
+                                .html()
+                        ).toContain(className);
                     });
                 });
 
                 it('should leave the default container classes if it is set to false', () => {
                     actionBar.setProps({removeDefaultContainerClasses: false});
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                        expect(actionBar.find('div').first().html()).toContain(className);
+                        expect(
+                            actionBar
+                                .find('div')
+                                .first()
+                                .html()
+                        ).toContain(className);
                     });
                 });
 
                 it('should remove the default container classes if it is set to true', () => {
                     actionBar.setProps({removeDefaultContainerClasses: true});
                     DEFAULT_ACTIONS_CONTAINER_CLASSES.forEach((className: string) => {
-                        expect(actionBar.find('div').first().html()).not.toContain(className);
+                        expect(
+                            actionBar
+                                .find('div')
+                                .first()
+                                .html()
+                        ).not.toContain(className);
                     });
                 });
             });
@@ -163,7 +176,12 @@ describe('Actions', () => {
                     const extraContainerClasses = ['test', 'with', 'multiple', 'classes', 'tobesure'];
                     actionBar.setProps({extraContainerClasses});
                     extraContainerClasses.forEach((className: string) => {
-                        expect(actionBar.find('div').first().html()).toContain(className);
+                        expect(
+                            actionBar
+                                .find('div')
+                                .first()
+                                .html()
+                        ).toContain(className);
                     });
                 });
             });
@@ -171,12 +189,22 @@ describe('Actions', () => {
             describe('loading behavior', () => {
                 it('should not have the mod-deactivate-pointer class if the action bar is not loading', () => {
                     actionBar.setProps({isLoading: false});
-                    expect(actionBar.find('div').first().html()).not.toContain('mod-deactivate-pointer');
+                    expect(
+                        actionBar
+                            .find('div')
+                            .first()
+                            .html()
+                    ).not.toContain('mod-deactivate-pointer');
                 });
 
                 it('should have the mod-deactivate-pointer class if the action bar is loading', () => {
                     actionBar.setProps({isLoading: true});
-                    expect(actionBar.find('div').first().html()).toContain('mod-deactivate-pointer');
+                    expect(
+                        actionBar
+                            .find('div')
+                            .first()
+                            .html()
+                    ).toContain('mod-deactivate-pointer');
                 });
             });
         });
@@ -199,7 +227,12 @@ describe('Actions', () => {
                     width: expectedWidth,
                 });
 
-                expect(actionBar.find('div').first().props().style).toEqual({width: expectedWidth});
+                expect(
+                    actionBar
+                        .find('div')
+                        .first()
+                        .props().style
+                ).toEqual({width: expectedWidth});
             });
         });
     });

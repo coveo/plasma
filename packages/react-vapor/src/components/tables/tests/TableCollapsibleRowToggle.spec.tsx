@@ -4,14 +4,10 @@ import * as React from 'react';
 import {ITableCollapsibleRowToggleProps, TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
 
 describe('Tables', () => {
-
     describe('<TableCollapsibleRowToggle />', () => {
         it('should render without errors', () => {
-
             expect(() => {
-                shallow(
-                    <TableCollapsibleRowToggle isExpanded={false} />,
-                );
+                shallow(<TableCollapsibleRowToggle isExpanded={false} />);
             }).not.toThrow();
         });
     });
@@ -24,10 +20,9 @@ describe('Tables', () => {
             document.getElementById('App').innerHTML = '<table><tbody><tr id="AppTableBodyRow"></tr></tbody></table>';
             isExpanded = false;
 
-            tableCollapsibleRowToggle = mount(
-                <TableCollapsibleRowToggle isExpanded={isExpanded} />,
-                {attachTo: document.getElementById('AppTableBodyRow')},
-            );
+            tableCollapsibleRowToggle = mount(<TableCollapsibleRowToggle isExpanded={isExpanded} />, {
+                attachTo: document.getElementById('AppTableBodyRow'),
+            });
         });
 
         afterEach(() => {

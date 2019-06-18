@@ -14,10 +14,7 @@ export class Badge extends React.Component<IBadgeProps> {
     };
 
     render() {
-        const className = classNames(
-            DEFAULT_BADGE_CLASSNAME,
-            this.props.extraClasses,
-        );
+        const className = classNames(DEFAULT_BADGE_CLASSNAME, this.props.extraClasses);
         return <span className={className}>{this.props.label}</span>;
     }
 }

@@ -10,7 +10,7 @@ const get = (state: IReactVaporState, {id}: {id: string}) => {
 
 const getIsSelected = createSelector(
     get,
-    (checkbox: ICheckboxState): boolean => checkbox && checkbox.checked,
+    (checkbox: ICheckboxState): boolean => checkbox && checkbox.checked
 );
 
 export const CheckboxSelectors = {

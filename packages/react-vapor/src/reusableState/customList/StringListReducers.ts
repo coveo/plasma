@@ -12,18 +12,20 @@ export interface IStringListState {
 
 export const stringListInitialState: IStringListCompositeState = {};
 
-export const convertStringListToItemsBox = (list: string[], itemsBoxParams: Partial<IItemBoxProps> = {}): IItemBoxProps[] => _.map(list,
-    (value: string) => ({...itemsBoxParams, value}));
+export const convertStringListToItemsBox = (
+    list: string[],
+    itemsBoxParams: Partial<IItemBoxProps> = {}
+): IItemBoxProps[] => _.map(list, (value: string) => ({...itemsBoxParams, value}));
 export const convertItemsBoxToStringList = (items: IItemBoxProps[]): string[] => _.pluck(items, 'value');
 
 export const stringListCompositeReducer = (
     state: IStringListCompositeState = stringListInitialState,
-    action: IReduxAction<IStringListPayload>,
+    action: IReduxAction<IStringListPayload>
 ): IStringListCompositeState => {
-
-    if (!action.payload
-        || (!state[action.payload.id] && action.type !== StringListActions.add)
-        || (state[action.payload.id] && action.type === StringListActions.add)
+    if (
+        !action.payload ||
+        (!state[action.payload.id] && action.type !== StringListActions.add) ||
+        (state[action.payload.id] && action.type === StringListActions.add)
     ) {
         return state;
     }
@@ -46,7 +48,9 @@ export const stringListCompositeReducer = (
                 ...state,
                 [action.payload.id]: {
                     ...state[action.payload.id],
-                    list: action.payload.reset ? [action.payload.value] : _.uniq([...state[action.payload.id].list, action.payload.value]),
+                    list: action.payload.reset
+                        ? [action.payload.value]
+                        : _.uniq([...state[action.payload.id].list, action.payload.value]),
                 },
             };
         case StringListActions.removeValue:

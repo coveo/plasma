@@ -8,9 +8,10 @@ export interface TableChildLastUpdatedProps extends ITableProps {
     pullLeft?: boolean;
 }
 
-export const TableChildLastUpdated = (props: TableChildLastUpdatedProps): JSX.Element =>
+export const TableChildLastUpdated = (props: TableChildLastUpdatedProps): JSX.Element => (
     <LastUpdatedConnected
         className={props.pullLeft && 'left'}
         label={props.lastUpdatedLabel}
         id={getTableChildComponentId(props.id, TableChildComponent.LAST_UPDATED)}
-    />;
+    />
+);

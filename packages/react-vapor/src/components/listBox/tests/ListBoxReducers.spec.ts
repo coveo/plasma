@@ -11,7 +11,13 @@ import {
     setActiveListBoxOption,
     unselectListBoxOption,
 } from '../ListBoxActions';
-import {IListBoxState, listBoxesInitialState, listBoxesReducer, listBoxInitialState, listBoxReducer} from '../ListBoxReducers';
+import {
+    IListBoxState,
+    listBoxesInitialState,
+    listBoxesReducer,
+    listBoxInitialState,
+    listBoxReducer,
+} from '../ListBoxReducers';
 
 describe('ListBox', () => {
     describe('ListBox Reducers', () => {
@@ -58,7 +64,10 @@ describe('ListBox', () => {
         describe('ADD_LIST_BOX', () => {
             const id = 'added-list-box';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            const selected = _.chain(items)
+                .where({selected: true})
+                .pluck('value')
+                .value();
 
             it('should return the old state with one more list box', () => {
                 const oldState: IListBoxState[] = [listBoxInitialState];
@@ -114,7 +123,10 @@ describe('ListBox', () => {
         describe('SELECT_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            const selected = _.chain(items)
+                .where({selected: true})
+                .pluck('value')
+                .value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -124,7 +136,10 @@ describe('ListBox', () => {
             it('should select the new item when the list box is not multi', () => {
                 const expectedValue = items[0].value;
                 const oldState: IListBoxState[] = defaultState;
-                const newState: IListBoxState[] = listBoxesReducer(oldState, selectListBoxOption(id, false, expectedValue));
+                const newState: IListBoxState[] = listBoxesReducer(
+                    oldState,
+                    selectListBoxOption(id, false, expectedValue)
+                );
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
@@ -156,7 +171,10 @@ describe('ListBox', () => {
         describe('SET_VALUE_AUTOCOMPLETE', () => {
             const id = 'list-box-id';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            const selected = _.chain(items)
+                .where({selected: true})
+                .pluck('value')
+                .value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -166,7 +184,10 @@ describe('ListBox', () => {
             it('should select the new item', () => {
                 const expectedValue = items[0].value;
                 const oldState: IListBoxState[] = defaultState;
-                const newState: IListBoxState[] = listBoxesReducer(oldState, setAutocompleteValue(id, expectedValue, false));
+                const newState: IListBoxState[] = listBoxesReducer(
+                    oldState,
+                    setAutocompleteValue(id, expectedValue, false)
+                );
 
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
@@ -190,7 +211,10 @@ describe('ListBox', () => {
             let selected: any[];
 
             beforeEach(() => {
-                selected = _.chain(items).where({selected: true}).pluck('value').value();
+                selected = _.chain(items)
+                    .where({selected: true})
+                    .pluck('value')
+                    .value();
                 defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
             });
 
@@ -239,7 +263,10 @@ describe('ListBox', () => {
         describe('REORDER_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
             const items = [{value: 'a', selected: true}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            const selected = _.chain(items)
+                .where({selected: true})
+                .pluck('value')
+                .value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -268,7 +295,10 @@ describe('ListBox', () => {
         describe('SET_ACTIVE_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
             const items = [{value: 'a', selected: true}, {value: 'b', selected: true}];
-            const selected = _.chain(items).where({selected: true}).pluck('value').value();
+            const selected = _.chain(items)
+                .where({selected: true})
+                .pluck('value')
+                .value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -326,7 +356,10 @@ describe('ListBox', () => {
 
             it('should unselect the selected item', () => {
                 const selected = items[1].value;
-                const oldState: IListBoxState[] = [_.extend({}, listBoxInitialState, {id, selected: [selected]}), listBoxInitialState];
+                const oldState: IListBoxState[] = [
+                    _.extend({}, listBoxInitialState, {id, selected: [selected]}),
+                    listBoxInitialState,
+                ];
                 const newState: IListBoxState[] = listBoxesReducer(oldState, clearListBoxOption(id));
 
                 expect(newState.length).toBe(oldState.length);
@@ -336,7 +369,10 @@ describe('ListBox', () => {
 
             it('should unselect all items when there is more than one', () => {
                 const selected = _.pluck(items, 'value');
-                const oldState: IListBoxState[] = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
+                const oldState: IListBoxState[] = [
+                    _.extend({}, listBoxInitialState, {id, selected}),
+                    listBoxInitialState,
+                ];
                 const newState: IListBoxState[] = listBoxesReducer(oldState, clearListBoxOption(id));
 
                 expect(newState.length).toBe(oldState.length);

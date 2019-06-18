@@ -11,7 +11,6 @@ import {TabNavigation} from '../../tab/TabNavigation';
 import {ITabsHeaderProps, TabsHeader} from '../TabsHeader';
 
 describe('<TabsHeader/>', () => {
-
     let tabsHeaderComponent: ReactWrapper<ITabsHeaderProps, any>;
     let store: Store<IReactVaporState>;
 
@@ -30,13 +29,12 @@ describe('<TabsHeader/>', () => {
     });
 
     describe('<Title /> with default props', () => {
-
         beforeEach(() => {
             tabsHeaderComponent = mount(
                 <Provider store={store}>
                     <TabsHeader />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         });
 
@@ -50,7 +48,6 @@ describe('<TabsHeader/>', () => {
     });
 
     describe('<TabsHeader /> with custom props', () => {
-
         const tab1: ITabProps = {
             id: 'a',
             title: 'test',
@@ -66,7 +63,7 @@ describe('<TabsHeader/>', () => {
                 <Provider store={store}>
                     <TabsHeader {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         };
 

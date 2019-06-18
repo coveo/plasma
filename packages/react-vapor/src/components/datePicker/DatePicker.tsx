@@ -43,9 +43,7 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     }
 
     private getStringFromDate(date: Date): string {
-        return this.props.withTime
-            ? DateUtils.getDateWithTimeString(date)
-            : DateUtils.getSimpleDate(date);
+        return this.props.withTime ? DateUtils.getDateWithTimeString(date) : DateUtils.getSimpleDate(date);
     }
 
     private setToToday() {
@@ -64,10 +62,15 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
 
     handleDocumentClick = (e: MouseEvent) => {
         const target = $(e.target);
-        if (this.isPicked && !target.closest('.date-picker').length && !target.closest(`.${CalendarDay.DEFAULT_DATE_CLASS}`).length && !target.closest('.date-picker-dropdown').length) {
+        if (
+            this.isPicked &&
+            !target.closest('.date-picker').length &&
+            !target.closest(`.${CalendarDay.DEFAULT_DATE_CLASS}`).length &&
+            !target.closest('.date-picker-dropdown').length
+        ) {
             this.handleChangeDate();
         }
-    }
+    };
 
     componentDidMount() {
         document.addEventListener('click', this.handleDocumentClick);
@@ -83,7 +86,9 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
         } else {
             this.dateInput.value = '';
         }
-        this.isPicked = nextProps.isSelecting === DateLimits.upper && nextProps.upperLimit || nextProps.isSelecting === DateLimits.lower && !nextProps.upperLimit;
+        this.isPicked =
+            (nextProps.isSelecting === DateLimits.upper && nextProps.upperLimit) ||
+            (nextProps.isSelecting === DateLimits.lower && !nextProps.upperLimit);
     }
 
     componentWillUnmount() {
@@ -91,9 +96,9 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
     }
 
     render() {
-        const nowButton: JSX.Element = this.props.hasSetToNowButton
-            ? <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
-            : null;
+        const nowButton: JSX.Element = this.props.hasSetToNowButton ? (
+            <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
+        ) : null;
 
         const inputClasses: string[] = [`border-${this.props.color}`];
         if (this.isPicked) {
@@ -103,10 +108,10 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
         }
 
         return (
-            <div className='date-picker flex'>
+            <div className="date-picker flex">
                 <input
                     className={inputClasses.join(' ')}
-                    ref={(dateInput: HTMLInputElement) => this.dateInput = dateInput}
+                    ref={(dateInput: HTMLInputElement) => (this.dateInput = dateInput)}
                     onBlur={() => this.handleChangeDate()}
                     onClick={() => this.props.onClick(this.props.upperLimit)}
                     placeholder={this.props.placeholder}

@@ -33,7 +33,7 @@ export const toastsContainerInitialState: IToastsState[] = [];
 
 export const toastContainerReducer = (
     state: IToastsState = toastContainerInitialState,
-    action: IReduxAction<IToastContainerActionPayload>,
+    action: IReduxAction<IToastContainerActionPayload>
 ): IToastsState => {
     switch (action.type) {
         case ToastAction.addToastContainer:
@@ -58,7 +58,7 @@ const toastsReducer = (state: IToastState[], action: IReduxAction<IToastActionPa
 
 export const toastsContainerReducer = (
     state: IToastsState[] = toastsContainerInitialState,
-    action: IReduxAction<IToastContainerActionPayload>,
+    action: IReduxAction<IToastContainerActionPayload>
 ): IToastsState[] => {
     switch (action.type) {
         case ToastAction.addToastContainer:
@@ -67,12 +67,14 @@ export const toastsContainerReducer = (
             return _.reject(state, (container: IToastsState) => action.payload.id === container.id);
         case ToastAction.addToast:
         case ToastAction.removeToast:
-            return state.map((container: IToastsState): IToastsState => {
-                const toastAction = action as IReduxAction<IToastActionPayload>;
-                return toastAction.payload.containerId === container.id
-                    ? {...container, toasts: toastsReducer(container.toasts, toastAction)}
-                    : container;
-            });
+            return state.map(
+                (container: IToastsState): IToastsState => {
+                    const toastAction = action as IReduxAction<IToastActionPayload>;
+                    return toastAction.payload.containerId === container.id
+                        ? {...container, toasts: toastsReducer(container.toasts, toastAction)}
+                        : container;
+                }
+            );
         default:
             return state;
     }

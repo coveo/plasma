@@ -1,6 +1,6 @@
 import {BasePayload, IReduxAction} from '../../../utils/ReduxUtils';
 
-export const TableRowActionsType = {
+export const TableHOCRowActionsType = {
     add: 'ADD_TABLE_ROW',
     remove: 'REMOVE_TABLE_ROW',
     select: 'SELECT_TABLE_ROW',
@@ -13,12 +13,12 @@ export interface ITableRowAddPayload extends BasePayload {
 }
 
 const addTableRow = (id: string, tableId: string): IReduxAction<ITableRowAddPayload> => ({
-    type: TableRowActionsType.add,
+    type: TableHOCRowActionsType.add,
     payload: {id, tableId},
 });
 
 const removeTableRow = (id: string): IReduxAction<BasePayload> => ({
-    type: TableRowActionsType.remove,
+    type: TableHOCRowActionsType.remove,
     payload: {id},
 });
 
@@ -27,12 +27,12 @@ export interface ITableRowSelectPayload extends BasePayload {
 }
 
 const selectRow = (id: string, isMulti: boolean = false): IReduxAction<ITableRowSelectPayload> => ({
-    type: TableRowActionsType.select,
+    type: TableHOCRowActionsType.select,
     payload: {id, isMulti},
 });
 
 const deselectAllRows = (id: string): IReduxAction<ITableRowSelectPayload> => ({
-    type: TableRowActionsType.deselectAll,
+    type: TableHOCRowActionsType.deselectAll,
     payload: {id},
 });
 
@@ -41,11 +41,11 @@ export interface ITableRowToggleCollapsiblePayload extends BasePayload {
 }
 
 const toggleCollapsibleRow = (id: string, opened?: boolean): IReduxAction<ITableRowToggleCollapsiblePayload> => ({
-    type: TableRowActionsType.toggleCollapsible,
+    type: TableHOCRowActionsType.toggleCollapsible,
     payload: {id, opened},
 });
 
-export const TableRowActions = {
+export const TableHOCRowActions = {
     add: addTableRow,
     remove: removeTableRow,
     select: selectRow,

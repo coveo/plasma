@@ -2,7 +2,6 @@
 @import '~coveo-styleguide/scss/variables.scss';
 
 .diffViewer {
-
     :global(.d2h-file-wrapper) {
         border: none;
     }
@@ -20,28 +19,29 @@
     }
 
     :global(.d2h-diff-table) {
+        font-size: $code-font-size;
         font-family: $code-font-family;
         border-bottom: $default-border;
-        font-size: $code-font-size;
     }
 
     :global(.d2h-code-linenumber) {
-        background: $white;
-        color: $dark-grey;
+        top: -#{$diff-line-ajustment};
         width: auto;
         height: calc(#{$diff-line-height} + #{$diff-line-ajustment});
+        margin-top: $diff-line-ajustment;
+        color: $dark-grey;
+        background: $white;
         border: none;
         border-left: $default-border;
-        margin-top: $diff-line-ajustment;
         cursor: initial;
-        top: -#{$diff-line-ajustment};
 
         &:global(.d2h-change) {
             background: $white;
         }
     }
 
-    :global(.line-num1), :global(.line-num2) {
+    :global(.line-num1),
+    :global(.line-num2) {
         width: $diff-line-number-width;
     }
 
@@ -50,8 +50,8 @@
     }
 
     :global(tr) {
-        display: block;
         position: relative;
+        display: block;
     }
 
     :global(td) {
@@ -65,20 +65,20 @@
     :global(td.d2h-info) {
         height: auto;
         line-height: normal;
-        border: $default-border;
-        border-left: none;
-        border-right: none;
         background: none;
+        border: $default-border;
+        border-right: none;
+        border-left: none;
 
         &:global(.d2h-code-linenumber) {
-            border-left: none;
-            border-bottom: none;
-            border-right: none;
+            top: 0;
             width: calc(#{$diff-line-number-width} * 2 + #{$diff-line-number-width});
+            height: $diff-line-ajustment * 2;
             margin-top: 0;
             background: $pure-white;
-            height: $diff-line-ajustment * 2;
-            top: 0;
+            border-right: none;
+            border-bottom: none;
+            border-left: none;
         }
     }
 
@@ -90,29 +90,29 @@
         margin-left: $diff-line-number-width * 2;
 
         &:global(.d2h-info) {
-            background: $pure-white;
+            position: relative;
+            width: 100%;
+            margin-bottom: $diff-separator-margin;
+            margin-left: 0;
             color: $pure-white;
             font-size: 0;
-            width: 100%;
-            margin-left: 0;
+            background: $pure-white;
             border-bottom: 2px solid $medium-grey;
-            margin-bottom: $diff-separator-margin;
-            position: relative;
 
             &:before {
-                content: '...';
-                border: $default-border-size solid $white;
-                border-radius: $border-radius;
-                content: '...';
-                font-size: $diff-separator-font-size;
-                line-height: $diff-separator-line-height;
+                position: absolute;
+                top: 50%;
+                left: 0;
                 padding-bottom: $diff-separator-padding;
                 color: $dark-medium-grey;
-                position: absolute;
-                left: 0;
-                top: 50%;
+                font-size: $diff-separator-font-size;
+                line-height: $diff-separator-line-height;
                 background: white;
+                border: $default-border-size solid $white;
+                border-radius: $border-radius;
                 transform: translateY(-50%);
+                content: '...';
+                content: '...';
             }
         }
     }
@@ -121,7 +121,8 @@
         background: $soft-green;
     }
 
-    :global(.d2h-code-line), :global(.d2h-code-side-line) {
+    :global(.d2h-code-line),
+    :global(.d2h-code-side-line) {
         :global(ins) {
             background: $soft-green;
         }

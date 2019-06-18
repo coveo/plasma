@@ -6,7 +6,11 @@ import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, ICornerRibbonProps} from '../cornerRibbon/CornerRibbon';
+import {
+    CornerRibbon,
+    DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
+    ICornerRibbonProps,
+} from '../cornerRibbon/CornerRibbon';
 import {Svg} from '../svg/Svg';
 
 export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card';
@@ -49,27 +53,17 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
     render() {
         const containerClassName = classNames(
             DEFAULT_LOGO_CARD_CLASSNAME,
-            (this.props.disabled || this.props.ribbon) ? DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME : '',
+            this.props.disabled || this.props.ribbon ? DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME : '',
             this.props.extraContainerClasses,
-            this.props.disabled ? 'disabled' : '',
+            this.props.disabled ? 'disabled' : ''
         );
-        const logoIconClassName = classNames(
-            DEFAULT_LOGO_ICON_CLASSNAME,
-            DEFAULT_LOGO_ICON_SIZE,
-        );
-        const descriptionClassName = classNames(
-            this.props.badges.length ? 'ml1' : '',
-        );
+        const logoIconClassName = classNames(DEFAULT_LOGO_ICON_CLASSNAME, DEFAULT_LOGO_ICON_SIZE);
+        const descriptionClassName = classNames(this.props.badges.length ? 'ml1' : '');
 
-        const badges = this.props.badges.map((badgeProps) =>
-            <Badge
-                {...badgeProps}
-                key={slugify(badgeProps.label)}
-            />,
-        );
-        const description = this.props.description
-            ? <span className={descriptionClassName}>{this.props.description}</span>
-            : null;
+        const badges = this.props.badges.map((badgeProps) => <Badge {...badgeProps} key={slugify(badgeProps.label)} />);
+        const description = this.props.description ? (
+            <span className={descriptionClassName}>{this.props.description}</span>
+        ) : null;
 
         let ribbon = null;
         if (this.props.disabled) {
@@ -82,12 +76,13 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
             <div
                 className={containerClassName}
                 onClick={() => this.handleClick()}
-                {..._.omit(this.props, LogoCardPropsToOmit)}>
-                <div className='logo-card-logo'>
+                {..._.omit(this.props, LogoCardPropsToOmit)}
+            >
+                <div className="logo-card-logo">
                     <Svg svgName={this.props.svgName} className={logoIconClassName} />
                 </div>
-                <div className='logo-card-content'>
-                    <h2 className='logo-card-title'>{this.props.title}</h2>
+                <div className="logo-card-content">
+                    <h2 className="logo-card-title">{this.props.title}</h2>
                     <div>
                         {...badges}
                         {description}

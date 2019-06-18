@@ -26,19 +26,16 @@ export const TextColorClass = {
 export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
     render() {
         const style = this.getUserFeedbackStyle();
-        return (
-            <div className={style.classes}>
-                {this.props.feedbackText}
-            </div>
-        );
+        return <div className={style.classes}>{this.props.feedbackText}</div>;
     }
 
     private getUserFeedbackStyle(): IUserFeedbackStyle {
-        const state = (this.props.state in UserFeedbackState) ? this.props.state : UserFeedbackState.VALID;
+        const state = this.props.state in UserFeedbackState ? this.props.state : UserFeedbackState.VALID;
         const displayClassOnShow = this.props.displayOnShow || DisplayClass.BLOCK;
 
         const renderedDisplayClass = state === UserFeedbackState.VALID ? DisplayClass.HIDDEN : displayClassOnShow;
-        const renderedTextColorClass = state === UserFeedbackState.ERROR ? TextColorClass.error : TextColorClass.default;
+        const renderedTextColorClass =
+            state === UserFeedbackState.ERROR ? TextColorClass.error : TextColorClass.default;
         const renderedExtraClasses = this.props.extraClasses || [];
 
         return {

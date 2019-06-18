@@ -25,7 +25,12 @@ export interface ISetNumericInputPayload {
     max?: number;
 }
 
-const setValue = (id: string, value: React.ReactText, min?: number, max?: number): IReduxAction<ISetNumericInputPayload> => ({
+const setValue = (
+    id: string,
+    value: React.ReactText,
+    min?: number,
+    max?: number
+): IReduxAction<ISetNumericInputPayload> => ({
     type: NumericInputActionTypes.set,
     payload: {id, value, min, max},
 });
