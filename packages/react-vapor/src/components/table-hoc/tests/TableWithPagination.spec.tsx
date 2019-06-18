@@ -14,9 +14,7 @@ describe('Table HOC', () => {
     describe('TableWithPagination', () => {
         let store: mockStore<IReactVaporState>;
 
-        const TableWithPagination = _.compose(
-            tableWithPagination(),
-        )(TableHOC);
+        const TableWithPagination = _.compose(tableWithPagination())(TableHOC);
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
@@ -33,8 +31,12 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(() => shallowWithStore(<TableWithPagination id='a' data={[]} renderBody={_.identity} />, store)).not.toThrow();
-            expect(() => shallowWithStore(<TableWithPagination id='b' data={[{value: 'a'}]} renderBody={_.identity} />, store)).not.toThrow();
+            expect(() =>
+                shallowWithStore(<TableWithPagination id="a" data={[]} renderBody={_.identity} />, store)
+            ).not.toThrow();
+            expect(() =>
+                shallowWithStore(<TableWithPagination id="b" data={[{value: 'a'}]} renderBody={_.identity} />, store)
+            ).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
@@ -83,7 +85,9 @@ describe('Table HOC', () => {
 
             it('should not throw if the data is null', () => {
                 store = getStoreWithPage(1, 5);
-                expect(() => shallowWithStore(<TableWithPagination {...defaultProps} data={null} />, store).dive()).not.toThrow();
+                expect(() =>
+                    shallowWithStore(<TableWithPagination {...defaultProps} data={null} />, store).dive()
+                ).not.toThrow();
             });
 
             it('should return the correct page', () => {
@@ -93,13 +97,11 @@ describe('Table HOC', () => {
                 store = getStoreWithPage(page, perPage);
                 const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
                 const tableData = wrapper.find(TableHOC).prop('data');
-                expect(tableData).toEqual(defaultProps.data.slice((page * perPage), (page + 1) * perPage));
+                expect(tableData).toEqual(defaultProps.data.slice(page * perPage, (page + 1) * perPage));
             });
 
             describe('when server side', () => {
-                const TableWithPaginationServer = _.compose(
-                    tableWithPagination({isServer: true}),
-                )(TableHOC);
+                const TableWithPaginationServer = _.compose(tableWithPagination({isServer: true}))(TableHOC);
 
                 it('should not slice data', () => {
                     const perPage = 3;
@@ -117,7 +119,10 @@ describe('Table HOC', () => {
                     const initialPerPage = 2;
 
                     store = getStoreWithPage(initialPage, initialPerPage);
-                    const wrapper = shallowWithStore(<TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />, store).dive();
+                    const wrapper = shallowWithStore(
+                        <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
+                        store
+                    ).dive();
 
                     wrapper.setProps({pageNb: initialPage + 1});
                     wrapper.update();
@@ -134,7 +139,10 @@ describe('Table HOC', () => {
                     const updateSpy = jasmine.createSpy('update');
 
                     store = getStoreWithPage(1, 10);
-                    const wrapper = shallowWithStore(<TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />, store).dive();
+                    const wrapper = shallowWithStore(
+                        <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
+                        store
+                    ).dive();
 
                     wrapper.setProps({ignore: true});
                     wrapper.update();

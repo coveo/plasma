@@ -40,62 +40,114 @@ describe('Numeric Input', () => {
         });
 
         it('should disable the decrement button when the value is lower than the min', () => {
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} min={initialValue} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} min={initialValue} />,
+                store
+            ).dive();
 
-            expect(component.find(Button).at(0).prop('enabled')).toBe(false);
+            expect(
+                component
+                    .find(Button)
+                    .at(0)
+                    .prop('enabled')
+            ).toBe(false);
         });
 
         it('should trigger a setValue onClick on the decrement button', () => {
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} />,
+                store
+            ).dive();
 
-            component.find(Button).at(0).prop('onClick')();
+            component
+                .find(Button)
+                .at(0)
+                .prop('onClick')();
             expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue - 1))).toBe(true);
         });
 
         it('should decrement by the step prop value onClick on the increment button', () => {
             const step = 10;
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} step={step} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                store
+            ).dive();
 
-            component.find(Button).at(0).prop('onClick')();
+            component
+                .find(Button)
+                .at(0)
+                .prop('onClick')();
             expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue - step))).toBe(true);
         });
 
         it('should disable the increment button when the value is greater than the max', () => {
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} max={initialValue} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} max={initialValue} />,
+                store
+            ).dive();
 
-            expect(component.find(Button).at(1).prop('enabled')).toBe(false);
+            expect(
+                component
+                    .find(Button)
+                    .at(1)
+                    .prop('enabled')
+            ).toBe(false);
         });
 
         it('should not overflow the min onClick on the decrement button', () => {
             const step = 10;
             const min = initialValue - 1;
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} step={step} min={min} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} min={min} />,
+                store
+            ).dive();
 
-            component.find(Button).at(0).prop('onClick')();
+            component
+                .find(Button)
+                .at(0)
+                .prop('onClick')();
             expect(store.isActionDispatched(NumericInputActions.setValue(id, min, min))).toBe(true);
         });
 
         it('should trigger a setValue onClick on the increment button', () => {
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} />,
+                store
+            ).dive();
 
-            component.find(Button).at(1).prop('onClick')();
+            component
+                .find(Button)
+                .at(1)
+                .prop('onClick')();
             expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue + 1))).toBe(true);
         });
 
         it('should increment by the step prop value onClick on the increment button', () => {
             const step = 10;
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} step={step} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                store
+            ).dive();
 
-            component.find(Button).at(1).prop('onClick')();
+            component
+                .find(Button)
+                .at(1)
+                .prop('onClick')();
             expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue + step))).toBe(true);
         });
 
         it('should not overflow the max onClick on the increment button', () => {
             const step = 10;
             const max = initialValue + 1;
-            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} step={step} max={max} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} max={max} />,
+                store
+            ).dive();
 
-            component.find(Button).at(1).prop('onClick')();
+            component
+                .find(Button)
+                .at(1)
+                .prop('onClick')();
             expect(store.isActionDispatched(NumericInputActions.setValue(id, max, undefined, max))).toBe(true);
         });
 
@@ -106,7 +158,10 @@ describe('Numeric Input', () => {
                     [id]: {value: 20, hasError: true},
                 },
             });
-            const component = shallowWithStore(<NumericInputConnected id={id} invalidMessage={expectedMessage} />, store).dive();
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} invalidMessage={expectedMessage} />,
+                store
+            ).dive();
             expect(component.find('.generic-form-error').text()).toBe(expectedMessage);
         });
 
@@ -130,28 +185,50 @@ describe('Numeric Input', () => {
             it('should decrement to the default value if initialValue is not defined', () => {
                 const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
 
-                component.find(Button).at(0).prop('onClick')();
-                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialNumericInputState.value))).toBe(true);
+                component
+                    .find(Button)
+                    .at(0)
+                    .prop('onClick')();
+                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialNumericInputState.value))).toBe(
+                    true
+                );
             });
 
             it('should increment to the default value if initialValue is not defined', () => {
                 const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
 
-                component.find(Button).at(1).prop('onClick')();
-                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialNumericInputState.value))).toBe(true);
+                component
+                    .find(Button)
+                    .at(1)
+                    .prop('onClick')();
+                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialNumericInputState.value))).toBe(
+                    true
+                );
             });
 
             it('should decrement to the initialValue if initialValue is defined', () => {
-                const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store).dive();
+                const component = shallowWithStore(
+                    <NumericInputConnected id={id} initialValue={initialValue} />,
+                    store
+                ).dive();
 
-                component.find(Button).at(0).prop('onClick')();
+                component
+                    .find(Button)
+                    .at(0)
+                    .prop('onClick')();
                 expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue))).toBe(true);
             });
 
             it('should increment to the default value if initialValue is not defined', () => {
-                const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store).dive();
+                const component = shallowWithStore(
+                    <NumericInputConnected id={id} initialValue={initialValue} />,
+                    store
+                ).dive();
 
-                component.find(Button).at(1).prop('onClick')();
+                component
+                    .find(Button)
+                    .at(1)
+                    .prop('onClick')();
                 expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue))).toBe(true);
             });
         });

@@ -9,7 +9,6 @@ import {
 } from '../NavigationPerPageReducers';
 
 describe('Reducers', () => {
-
     describe('NavigationPerPageReducers', () => {
         const genericAction: IReduxAction<IChangePerPageActionPayload> = {
             type: 'DO_SOMETHING',
@@ -75,10 +74,12 @@ describe('Reducers', () => {
                 {
                     id: 'per-page',
                     perPage: 20,
-                }, {
+                },
+                {
                     id: 'per-page2',
                     perPage: 50,
-                }, {
+                },
+                {
                     id: 'per-page1',
                     perPage: 300,
                 },

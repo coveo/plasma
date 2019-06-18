@@ -53,7 +53,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         if (this.props.onFilter) {
             this.props.onFilter(this.props.id, this.filterInput.value);
         }
-    }
+    };
 
     private handleOnBlur() {
         if (this.props.onBlur) {
@@ -76,7 +76,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     private clearValue = () => {
         this.filterInput.focus();
         this.handleChange('');
-    }
+    };
 
     placeCursorAtEndOfInputValue(e: React.FocusEvent<any>) {
         const input = e.target as HTMLInputElement;
@@ -107,8 +107,8 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         const inputMaxWidth = {maxWidth: `${this.props.maxWidth}px`};
         const filterPlaceholder = this.props.filterPlaceholder || FILTER_PLACEHOLDER;
         const filterBoxContainerClasses = classNames('filter-container', this.props.containerClasses);
-        const filterInputClasses = classNames('filter-box', {'truncate': this.props.truncate});
-        const svgClearClasses = classNames({'hidden': !(this.filterInput && this.filterInput.value)});
+        const filterInputClasses = classNames('filter-box', {truncate: this.props.truncate});
+        const svgClearClasses = classNames({hidden: !(this.filterInput && this.filterInput.value)});
 
         return (
             <div className={this.props.className}>
@@ -116,23 +116,30 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                     id={this.props.id}
                     className={filterBoxContainerClasses}
                     style={inputMaxWidth}
-                    title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}>
+                    title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}
+                >
                     <input
-                        ref={(filterInput: HTMLInputElement) => this.filterInput = filterInput}
-                        type='text'
+                        ref={(filterInput: HTMLInputElement) => (this.filterInput = filterInput)}
+                        type="text"
                         className={filterInputClasses}
                         placeholder={filterPlaceholder}
                         onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
                         onBlur={() => this.handleOnBlur()}
-                        onFocus={(e: React.FocusEvent<HTMLInputElement>) => {this.placeCursorAtEndOfInputValue(e);}}
+                        onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
+                            this.placeCursorAtEndOfInputValue(e);
+                        }}
                         onKeyDown={(e) => this.handleOnKeyDown(e)}
                         onKeyUp={(e) => this.handleOnKeyUp(e)}
                         style={inputMaxWidth}
                         autoFocus={this.props.isAutoFocus}
                     />
-                    <Svg svgName='clear' className={svgClearClasses} svgClass='icon mod-lg fill-medium-grey' onClick={() => this.clearValue()} />
-                    <Svg svgName='filter' className='filter-icon' svgClass='icon fill-medium-grey mod-lg' />
-
+                    <Svg
+                        svgName="clear"
+                        className={svgClearClasses}
+                        svgClass="icon mod-lg fill-medium-grey"
+                        onClick={() => this.clearValue()}
+                    />
+                    <Svg svgName="filter" className="filter-icon" svgClass="icon fill-medium-grey mod-lg" />
                 </div>
                 {this.props.children}
             </div>

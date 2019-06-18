@@ -43,18 +43,26 @@ export class Checkbox extends React.Component<ICheckboxProps> {
     }
 
     render() {
-        const classes: string = classNames('coveo-checkbox-label', {disabled: !!this.props.disabled}, this.props.classes);
-        const innerInputClasses: string = classNames('coveo-checkbox', 'react-vapor-checkbox', this.props.innerInputClasses);
+        const classes: string = classNames(
+            'coveo-checkbox-label',
+            {disabled: !!this.props.disabled},
+            this.props.classes
+        );
+        const innerInputClasses: string = classNames(
+            'coveo-checkbox',
+            'react-vapor-checkbox',
+            this.props.innerInputClasses
+        );
         return (
             <Input
                 {...this.props}
                 classes={[classes]}
                 innerInputClasses={[innerInputClasses]}
-                type='checkbox'
+                type="checkbox"
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly
             >
-                <button type='button' disabled={!!this.props.disabled}></button>
+                <button type="button" disabled={!!this.props.disabled}></button>
                 {this.props.children}
             </Input>
         );

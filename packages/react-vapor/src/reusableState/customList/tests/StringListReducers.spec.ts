@@ -16,9 +16,7 @@ import {
 } from '../StringListReducers';
 
 describe('StringList', () => {
-
     describe('StringList Reducers', () => {
-
         const stateId: string = 'test';
         const oldState: IStringListCompositeState = {
             [stateId]: {
@@ -38,19 +36,28 @@ describe('StringList', () => {
         });
 
         it('should return the default state if the payload id is not in the state, the action type is not ADD_STRING_LIST and the state is undefined', () => {
-            const newState: IStringListCompositeState = stringListCompositeReducer(undefined, {...genericAction, payload: {id: 'pokemon'}});
+            const newState: IStringListCompositeState = stringListCompositeReducer(undefined, {
+                ...genericAction,
+                payload: {id: 'pokemon'},
+            });
 
             expect(newState).toEqual(stringListInitialState);
         });
 
         it('should return the oldState state if the payload id is not in the state and the action type is not ADD_STRING_LIST', () => {
-            const newState: IStringListCompositeState = stringListCompositeReducer(oldState, {...genericAction, payload: {id: 'pokemon'}});
+            const newState: IStringListCompositeState = stringListCompositeReducer(oldState, {
+                ...genericAction,
+                payload: {id: 'pokemon'},
+            });
 
             expect(newState).toBe(oldState);
         });
 
         it('should return the oldState state if the id is in the state but the action type do not exist in the StringListActions', () => {
-            const newState: IStringListCompositeState = stringListCompositeReducer(oldState, {type: 'custom_action', payload: {id: stateId}});
+            const newState: IStringListCompositeState = stringListCompositeReducer(oldState, {
+                type: 'custom_action',
+                payload: {id: stateId},
+            });
 
             expect(newState).toBe(oldState);
         });
@@ -59,7 +66,10 @@ describe('StringList', () => {
             const newId: string = 'charmeleon';
 
             it('should return the oldState if the id is already in the state', () => {
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, addStringList(stateId));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    addStringList(stateId)
+                );
 
                 expect(newState).toBe(oldState);
             });
@@ -78,7 +88,10 @@ describe('StringList', () => {
 
             it('should add the new list sent as parameter in the state', () => {
                 const newList: string[] = ['a', 'b', 'c'];
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, addStringList(newId, newList));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    addStringList(newId, newList)
+                );
 
                 expect(newState[newId].list).toEqual(newList);
             });
@@ -88,13 +101,19 @@ describe('StringList', () => {
             const newId: string = 'pidgeot';
 
             it('should remove nothing if the id is not in the state', () => {
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, removeStringList(newId));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    removeStringList(newId)
+                );
 
                 expect(newState).toBe(oldState);
             });
 
             it('should remove the list if the id is in the state', () => {
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, removeStringList(stateId));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    removeStringList(stateId)
+                );
 
                 expect(newState).not.toEqual(oldState);
             });
@@ -105,13 +124,19 @@ describe('StringList', () => {
             const newValue: string = 'ivysaur';
 
             it('should return the oldState if the id where to add the value is not in the state', () => {
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, addValueStringList(newId, newValue));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    addValueStringList(newId, newValue)
+                );
 
                 expect(newState).toBe(oldState);
             });
 
             it('should add the value at the end of the list if the id is in the state', () => {
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, addValueStringList(stateId, newValue));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    addValueStringList(stateId, newValue)
+                );
 
                 const newStateListLength: number = newState[stateId].list.length;
                 expect(newStateListLength).toBeGreaterThan(oldState[stateId].list.length);
@@ -126,7 +151,10 @@ describe('StringList', () => {
                     },
                 };
 
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldStateWithValues, addValueStringList(stateId, newValue, true));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldStateWithValues,
+                    addValueStringList(stateId, newValue, true)
+                );
 
                 expect(newState[stateId].list.length).toBe(1);
                 expect(newState[stateId].list[0]).toBe(newValue);
@@ -138,14 +166,20 @@ describe('StringList', () => {
             const newValue: string = 'venusaur';
 
             it('should return the oldState if the id where to remove the value is not in the state', () => {
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldState, removeValueStringList(newId, newValue));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldState,
+                    removeValueStringList(newId, newValue)
+                );
 
                 expect(newState).toBe(oldState);
             });
 
             it('should remove the value in the list if the id is in the state', () => {
                 const oldStateWithList: IStringListCompositeState = {[stateId]: {id: stateId, list: [newValue]}};
-                const newState: IStringListCompositeState = stringListCompositeReducer(oldStateWithList, removeValueStringList(stateId, newValue));
+                const newState: IStringListCompositeState = stringListCompositeReducer(
+                    oldStateWithList,
+                    removeValueStringList(stateId, newValue)
+                );
 
                 const newStateListLength: number = newState[stateId].list.length;
                 expect(newStateListLength).toBeLessThan(oldStateWithList[stateId].list.length);

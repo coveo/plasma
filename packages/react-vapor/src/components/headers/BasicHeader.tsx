@@ -8,13 +8,15 @@ export interface IBasicHeaderProps extends IHeaderWrapperProps {
 }
 
 export class BasicHeader extends React.Component<IBasicHeaderProps, {}> {
-
-    static defaultProps: Partial<IBasicHeaderProps> = _.extend({
-        title: {
-            text: '',
+    static defaultProps: Partial<IBasicHeaderProps> = _.extend(
+        {
+            title: {
+                text: '',
+            },
+            classes: [],
         },
-        classes: [],
-    }, HeaderWrapper.defaultProps);
+        HeaderWrapper.defaultProps
+    );
 
     render() {
         return (

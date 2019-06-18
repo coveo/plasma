@@ -36,12 +36,8 @@ import {ContentExamples} from '../src/components/content/examples/ContentExample
 import {CornerRibbonExamples} from '../src/components/cornerRibbon/examples/CornerRibbonExamples';
 import {DatePickerBoxConnectedExamples} from '../src/components/datePicker/examples/DatePickerBoxConnectedExamples';
 import {DatePickerBoxExamples} from '../src/components/datePicker/examples/DatePickerBoxExamples';
-import {
-    DatePickerDropdownConnectedExamples,
-} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
-import {
-    DatePickerDropdownConnectedSingleDateExamples,
-} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
+import {DatePickerDropdownConnectedExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedExamples';
+import {DatePickerDropdownConnectedSingleDateExamples} from '../src/components/datePicker/examples/DatePickerDropdownConnectedSingleDateExamples';
 import {DatesSelectionConnectedExamples} from '../src/components/datePicker/examples/DatesSelectionConnectedExamples';
 import {DatesSelectionExamples} from '../src/components/datePicker/examples/DatesSelectionExamples';
 import {DiffViewerExamples} from '../src/components/diffViewer/examples/DiffViewerExamples';
@@ -155,17 +151,17 @@ class Header extends React.Component<{}, HeaderState> {
 
     render() {
         return (
-            <div className='flex flex-colum flex-center'>
+            <div className="flex flex-colum flex-center">
                 <div
-                    className='cursor-pointer'
+                    className="cursor-pointer"
                     onClick={() => document.dispatchEvent(new Event(SideNavigation.toggleEvent))}
                 >
                     <Svg
                         svgName={this.state.sideNavOpened ? 'arrow-left' : 'hamburger'}
-                        svgClass='icon mod-lg ml2 fill-pure-white'
+                        svgClass="icon mod-lg ml2 fill-pure-white"
                     />
                 </div>
-                <div className='h1 p2'>React Vapor</div>
+                <div className="h1 p2">React Vapor</div>
             </div>
         );
     }
@@ -241,7 +237,10 @@ class App extends React.PureComponent<{}, AppState> {
         {component: DatePickerBoxExamples, componentName: 'DatePickerBox'},
         {component: DatePickerBoxConnectedExamples, componentName: 'DatePickerBoxConnected'},
         {component: DatePickerDropdownConnectedExamples, componentName: 'DatePickerDropdownConnected'},
-        {component: DatePickerDropdownConnectedSingleDateExamples, componentName: 'DatePickerDropdownConnectedSingleDate'},
+        {
+            component: DatePickerDropdownConnectedSingleDateExamples,
+            componentName: 'DatePickerDropdownConnectedSingleDate',
+        },
         {component: MultilineInputExamples, componentName: 'MultilineInput'},
         {component: BlankSlateExample, componentName: 'BlankSlate'},
         {component: ToastExamples, componentName: 'Toast'},
@@ -312,46 +311,56 @@ class App extends React.PureComponent<{}, AppState> {
     render() {
         return (
             <Provider store={ReactVaporStore}>
-                <div className='coveo-form flex full-content'>
-                    <div className={classNames('flex flex-column', {'hide': !this.state.sideNavOpened, 'navigation-wrapper-opened': this.state.sideNavOpened})} style={{maxWidth: '245px'}}>
+                <div className="coveo-form flex full-content">
+                    <div
+                        className={classNames('flex flex-column', {
+                            hide: !this.state.sideNavOpened,
+                            'navigation-wrapper-opened': this.state.sideNavOpened,
+                        })}
+                        style={{maxWidth: '245px'}}
+                    >
                         <SubNavigation
                             selected={this.state.activeComponentId}
                             items={this.components.sort(this.sortComponentsByName).map(this.formatComponentsExamples)}
                             onClickItem={this.activateItem}
                         />
                     </div>
-                    <div className='flex-auto mod-header-padding mt2 overflow-auto'>
-                        {
-                            this.state.activeComponentId
-                            && React.createElement(this.getSelectedComponent(this.state.activeComponentId))
-                        }
+                    <div className="flex-auto mod-header-padding mt2 overflow-auto">
+                        {this.state.activeComponentId &&
+                            React.createElement(this.getSelectedComponent(this.state.activeComponentId))}
                     </div>
                 </div>
             </Provider>
         );
     }
 
-    private sortComponentsByName = (a: ExampleProps, b: ExampleProps) => a.componentName.toLowerCase().localeCompare(b.componentName.toLowerCase());
-    private formatComponentsExamples = (example: ExampleProps) => ({label: example.componentName, id: example.componentName, link: `#${example.componentName}`});
+    private sortComponentsByName = (a: ExampleProps, b: ExampleProps) =>
+        a.componentName.toLowerCase().localeCompare(b.componentName.toLowerCase());
+    private formatComponentsExamples = (example: ExampleProps) => ({
+        label: example.componentName,
+        id: example.componentName,
+        link: `#${example.componentName}`,
+    });
     private getSelectedComponent = (id: string): any => {
         const selected = this.components.filter((component: ExampleProps) => component.componentName === id);
         return selected.length && selected[0].component;
-    }
+    };
 
     private activateItem = (id: string) => {
         this.setState({activeComponentId: id});
         window.location.hash = id;
-    }
+    };
 
     private getHash = () => {
         return decodeURIComponent(window.location.hash.replace(/^#/, ''));
-    }
+    };
 
     private getActiveComponentId() {
         const componentIdFromHash = this.getHash();
         const firstComponentId = this.components.sort(this.sortComponentsByName);
-        return (this.getSelectedComponent(componentIdFromHash) && componentIdFromHash)
-            || firstComponentId[0].componentName;
+        return (
+            (this.getSelectedComponent(componentIdFromHash) && componentIdFromHash) || firstComponentId[0].componentName
+        );
     }
 }
 

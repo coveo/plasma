@@ -3,12 +3,7 @@ import {findWhere} from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    IPopoverDispatchProps,
-    IPopoverProps,
-    IPopoverState,
-    Popover,
-} from './Popover';
+import {IPopoverDispatchProps, IPopoverProps, IPopoverState, Popover} from './Popover';
 import {addPopover, removePopover, setPopoverIsOpen} from './PopoverActions';
 
 export const mapStateToProps = (state: IReactVaporState, ownProps: IPopoverProps): IPopoverState => {
@@ -23,5 +18,8 @@ export const mapDispatchToProps = (dispatch: IDispatch, ownProps: IPopoverProps)
     onUnmount: () => dispatch(removePopover(ownProps.id)),
 });
 
-export const PopoverConnected: React.ComponentClass<IPopoverProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Popover);
+export const PopoverConnected: React.ComponentClass<IPopoverProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Popover);

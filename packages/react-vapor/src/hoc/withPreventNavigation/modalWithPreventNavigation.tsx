@@ -33,15 +33,23 @@ export const preventNavigationDefaultConfig: Partial<IWithPreventNavigationConfi
     stay: 'Cancel',
 };
 
-export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (Component: React.ComponentClass<T, R>): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
-
-    const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IWithPreventNavigationDispatchProps => ({
+export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavigationConfig) => (
+    Component: React.ComponentClass<T, R>
+): React.ComponentClass<T & Partial<IWithPreventNavigationInjectedProps>, R> => {
+    const mapDispatchToProps = (
+        dispatch: (action: IReduxAction<IModalActionPayload>) => void
+    ): IWithPreventNavigationDispatchProps => ({
         closeModal: (id: string) => dispatch(closeModal(id)),
     });
 
     @ReduxConnect(undefined, mapDispatchToProps)
-    class ModalWithPreventNavigation extends React.PureComponent<IWithPreventNavigationDispatchProps, IWithPreventNavigationState> {
-        private ComponentWithDirty: React.ComponentClass<IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>>;
+    class ModalWithPreventNavigation extends React.PureComponent<
+        IWithPreventNavigationDispatchProps,
+        IWithPreventNavigationState
+    > {
+        private ComponentWithDirty: React.ComponentClass<
+            IWithDirtyProps & T & Partial<IWithPreventNavigationInjectedProps>
+        >;
 
         constructor(props: IWithPreventNavigationDispatchProps) {
             super(props);
@@ -53,20 +61,22 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
             this.ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
                 id: config.id,
                 showDirty: (isDirty: boolean) => {
-                    return isDirty && (
-                        <PreventNavigationPrompt
-                            id={`prevent-navigation-${config.id}`}
-                            isOpen={this.state.showPrevent}
-                            title={title}
-                            onStay={() => this.setState({showPrevent: false})}
-                            onClose={() => {
-                                this.setState({showPrevent: false});
-                                this.props.closeModal(config.id);
-                            }}
-                            exit={exit}
-                            stay={stay}
-                            content={content}
-                        />
+                    return (
+                        isDirty && (
+                            <PreventNavigationPrompt
+                                id={`prevent-navigation-${config.id}`}
+                                isOpen={this.state.showPrevent}
+                                title={title}
+                                onStay={() => this.setState({showPrevent: false})}
+                                onClose={() => {
+                                    this.setState({showPrevent: false});
+                                    this.props.closeModal(config.id);
+                                }}
+                                exit={exit}
+                                stay={stay}
+                                content={content}
+                            />
+                        )
                     );
                 },
             })(Component as any);
@@ -83,11 +93,7 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
                     return true;
                 },
             };
-            return (
-                <this.ComponentWithDirty {...newProps}>
-                    {this.props.children}
-                </this.ComponentWithDirty>
-            );
+            return <this.ComponentWithDirty {...newProps}>{this.props.children}</this.ComponentWithDirty>;
         }
     }
 

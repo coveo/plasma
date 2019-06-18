@@ -32,11 +32,11 @@ export class TestUtils {
     }
 
     static randomDate() {
-        return new Date(+(new Date()) - Math.floor(Math.random() * 10000000000));
+        return new Date(+new Date() - Math.floor(Math.random() * 10000000000));
     }
 
     static randomValue1To100() {
-        return Math.floor((Math.random() * 100) + 1);
+        return Math.floor(Math.random() * 100 + 1);
     }
 
     static makeDebounceStatic() {

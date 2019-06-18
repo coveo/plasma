@@ -19,15 +19,20 @@ export interface IGroupableCheckboxOwnProps extends ICheckboxProps {
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOwnProps): IInputStateProps => {
-    const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, {parentId: ownProps.parentId || ownProps.id});
+    const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, {
+        parentId: ownProps.parentId || ownProps.id,
+    });
     if (groupableCheckboxesState) {
-        const checkbox: ICheckboxState = ownProps.isParent ? groupableCheckboxesState.parent : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});
+        const checkbox: ICheckboxState = ownProps.isParent
+            ? groupableCheckboxesState.parent
+            : _.findWhere(groupableCheckboxesState.checkboxes, {id: ownProps.id});
         return {
             checked: checkbox ? checkbox.checked : !!ownProps.defaultChecked,
             disabled: checkbox ? checkbox.disabled : !!ownProps.defaultDisabled,
-            indeterminate: ownProps.isParent
-                && groupableCheckboxesState.nbChecked > 0
-                && groupableCheckboxesState.nbChecked < groupableCheckboxesState.total,
+            indeterminate:
+                ownProps.isParent &&
+                groupableCheckboxesState.nbChecked > 0 &&
+                groupableCheckboxesState.nbChecked < groupableCheckboxesState.total,
         };
     }
 
@@ -38,12 +43,28 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOw
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IGroupableCheckboxActionPayload>) => void, ownProps: IGroupableCheckboxOwnProps): IInputDispatchProps => {
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IGroupableCheckboxActionPayload>) => void,
+    ownProps: IGroupableCheckboxOwnProps
+): IInputDispatchProps => {
     return {
-        onRender: () => dispatch(addGroupedCheckbox(ownProps.id, ownProps.defaultChecked, !!ownProps.defaultDisabled, ownProps.parentId, !!ownProps.isParent)),
+        onRender: () =>
+            dispatch(
+                addGroupedCheckbox(
+                    ownProps.id,
+                    ownProps.defaultChecked,
+                    !!ownProps.defaultDisabled,
+                    ownProps.parentId,
+                    !!ownProps.isParent
+                )
+            ),
         onDestroy: () => dispatch(removeGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
         onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
     };
 };
 
-export const GroupableCheckboxConnected: React.ComponentClass<IGroupableCheckboxOwnProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);
+export const GroupableCheckboxConnected: React.ComponentClass<IGroupableCheckboxOwnProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Checkbox);

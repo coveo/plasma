@@ -11,9 +11,9 @@ export class DeleteInputAction extends React.Component<IDeleteInputActionProps, 
     render() {
         const title = this.props.title ? this.props.title : DEFAULT_TITLE;
         return (
-            <div className='input-actions' onClick={() => this.props.onClick()}>
-                <button className='js-add-value-button' type='button'>
-                    <i className='delete-action' title={title}></i>
+            <div className="input-actions" onClick={() => this.props.onClick()}>
+                <button className="js-add-value-button" type="button">
+                    <i className="delete-action" title={title}></i>
                 </button>
             </div>
         );

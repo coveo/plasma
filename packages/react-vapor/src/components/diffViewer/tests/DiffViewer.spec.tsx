@@ -21,10 +21,7 @@ describe('DiffViewer', () => {
         let diffViewer: ReactWrapper<DiffViewerProps>;
 
         beforeEach(() => {
-            diffViewer = mount(
-                <DiffViewer {...basicProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            diffViewer = mount(<DiffViewer {...basicProps} />, {attachTo: document.getElementById('App')});
         });
 
         it('should get the orginal string for the diff as a prop', () => {

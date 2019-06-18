@@ -4,13 +4,10 @@ import * as React from 'react';
 import {AddInputAction, IAddInputActionProps} from '../AddInputAction';
 
 describe('AddInputAction', () => {
-
     describe('<AddInputAction />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <AddInputAction />,
-                );
+                shallow(<AddInputAction />);
             }).not.toThrow();
         });
     });
@@ -19,10 +16,7 @@ describe('AddInputAction', () => {
         let addInput: ReactWrapper<IAddInputActionProps, any>;
 
         beforeEach(() => {
-            addInput = mount(
-                <AddInputAction />,
-                {attachTo: document.getElementById('App')},
-            );
+            addInput = mount(<AddInputAction />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -33,7 +27,10 @@ describe('AddInputAction', () => {
             const title = 'a title';
             expect(addInput.find(`[title="${title}"]`).length).toBe(0);
 
-            addInput.setProps({title}).mount().update();
+            addInput
+                .setProps({title})
+                .mount()
+                .update();
             expect(addInput.find(`[title="${title}"]`).length).toBeGreaterThanOrEqual(1);
         });
 

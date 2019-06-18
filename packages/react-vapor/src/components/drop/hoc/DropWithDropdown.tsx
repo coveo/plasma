@@ -16,20 +16,14 @@ const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps):
 });
 
 export const dropWithDropdown = () => (Component: DropWithDropdownComponent): DropWithDropdownComponent => {
-
     @ReduxConnect(mapStateToProps)
     class DropWithDropdown extends React.PureComponent<IDropProps> {
-
         static defaultProps: Partial<IDropProps>;
 
         render() {
             return (
-                <Component
-                    {..._.omit(this.props, PropsToOmitUtils.internal)}
-                >
-                    <SlideY in={this.props.isOpen}>
-                        {this.props.children}
-                    </SlideY>
+                <Component {..._.omit(this.props, PropsToOmitUtils.internal)}>
+                    <SlideY in={this.props.isOpen}>{this.props.children}</SlideY>
                 </Component>
             );
         }

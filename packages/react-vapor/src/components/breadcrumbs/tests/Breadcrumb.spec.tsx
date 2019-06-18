@@ -6,7 +6,6 @@ import {Breadcrumb, IBreadcrumbProps} from '../Breadcrumb';
 import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 describe('<Breadcrumb/>', () => {
-
     const defaultProps: IBreadcrumbProps = {
         title: {
             text: 'test',
@@ -22,12 +21,8 @@ describe('<Breadcrumb/>', () => {
     });
 
     describe('<Breadcrumb /> with default props', () => {
-
         beforeEach(() => {
-            breadcrumbComponent = mount(
-                <Breadcrumb {...defaultProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            breadcrumbComponent = mount(<Breadcrumb {...defaultProps} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -42,17 +37,15 @@ describe('<Breadcrumb/>', () => {
     });
 
     describe('<Breadcrumb /> with custom props', () => {
-
         const defaultLink: IBreadcrumbLinkProps = {
             name: 'title',
             link: '#',
         };
 
         const renderBreadcrumb = (props: Partial<IBreadcrumbProps> = {}) => {
-            breadcrumbComponent = mount(
-                <Breadcrumb {..._.defaults(props, defaultProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            breadcrumbComponent = mount(<Breadcrumb {..._.defaults(props, defaultProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         afterEach(() => {

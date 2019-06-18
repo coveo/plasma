@@ -8,9 +8,7 @@ describe('ChildForm', () => {
     describe('<ChildForm />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ChildForm />,
-                );
+                shallow(<ChildForm />);
             }).not.toThrow();
         });
     });
@@ -21,9 +19,9 @@ describe('ChildForm', () => {
         beforeEach(() => {
             childForm = mount(
                 <ChildForm>
-                    <Radio id='id' />
+                    <Radio id="id" />
                 </ChildForm>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         });
 
@@ -32,13 +30,34 @@ describe('ChildForm', () => {
         });
 
         it('should disable children when disabled property is true', () => {
-            expect(childForm.find(Radio).first().prop('disabled')).toBe(false);
+            expect(
+                childForm
+                    .find(Radio)
+                    .first()
+                    .prop('disabled')
+            ).toBe(false);
 
-            childForm.setProps({disabled: false}).mount().update();
-            expect(childForm.find(Radio).first().prop('disabled')).toBe(false);
+            childForm
+                .setProps({disabled: false})
+                .mount()
+                .update();
+            expect(
+                childForm
+                    .find(Radio)
+                    .first()
+                    .prop('disabled')
+            ).toBe(false);
 
-            childForm.setProps({disabled: true}).mount().update();
-            expect(childForm.find(Radio).first().prop('disabled')).toBe(true);
+            childForm
+                .setProps({disabled: true})
+                .mount()
+                .update();
+            expect(
+                childForm
+                    .find(Radio)
+                    .first()
+                    .prop('disabled')
+            ).toBe(true);
         });
     });
 });

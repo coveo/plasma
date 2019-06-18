@@ -1,7 +1,14 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {addMenu, IMenuPayload, removeMenu, toggleMenu} from '../MenuActions';
-import {IMenusState, IMenuState, menuCompositeInitialState, menuCompositeReducer, menuInitialState, menuReducer} from '../MenuReducers';
+import {
+    IMenusState,
+    IMenuState,
+    menuCompositeInitialState,
+    menuCompositeReducer,
+    menuInitialState,
+    menuReducer,
+} from '../MenuReducers';
 
 describe('Menu', () => {
     describe('Menu Reducers', () => {
@@ -25,7 +32,7 @@ describe('Menu', () => {
         });
 
         it('should return the old state when the action is not defined', () => {
-            const oldState: IMenusState = {'test': menuInitialState};
+            const oldState: IMenusState = {test: menuInitialState};
             const newState: IMenusState = menuCompositeReducer(oldState, genericAction);
 
             expect(newState).toBe(oldState);
@@ -128,7 +135,7 @@ describe('Menu', () => {
 
                 const oldState: IMenusState = state;
                 let newState: IMenusState = {};
-                expect(() => newState = menuCompositeReducer(oldState, toggleMenu(id, true))).not.toThrow();
+                expect(() => (newState = menuCompositeReducer(oldState, toggleMenu(id, true)))).not.toThrow();
 
                 expect(newState[id].id).toBe(id);
                 expect(newState[id].open).toBe(true);

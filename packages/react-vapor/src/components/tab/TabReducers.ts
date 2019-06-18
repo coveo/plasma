@@ -19,10 +19,7 @@ export const tabsInitialState: ITabState[] = [];
 export const tabGroupInitialState: ITabGroupState = {id: undefined, tabs: []};
 export const tabGroupsInitialState: ITabGroupState[] = [];
 
-export const tabReducer = (
-    state: ITabState = tabInitialState,
-    action: IReduxAction<ITabActionPayload>,
-): ITabState => {
+export const tabReducer = (state: ITabState = tabInitialState, action: IReduxAction<ITabActionPayload>): ITabState => {
     switch (action.type) {
         case TabAction.addTab:
             return {
@@ -41,7 +38,7 @@ export const tabReducer = (
 
 export const tabsReducer = (
     state: ITabState[] = tabsInitialState,
-    action: IReduxAction<ITabActionPayload>,
+    action: IReduxAction<ITabActionPayload>
 ): ITabState[] => {
     switch (action.type) {
         case TabAction.addTab:
@@ -49,10 +46,7 @@ export const tabsReducer = (
             if (state.length === 0) {
                 isSelected = true;
             }
-            return [
-                ...state,
-                tabReducer({id: undefined, isSelected}, action),
-            ];
+            return [...state, tabReducer({id: undefined, isSelected}, action)];
         case TabAction.removeTab:
             return _.reject(state, (tab: ITabState) => {
                 return action.payload.id === tab.id;
@@ -66,7 +60,7 @@ export const tabsReducer = (
 
 export const tabGroupReducer = (
     state: ITabGroupState = tabGroupInitialState,
-    action: IReduxAction<ITabActionPayload>,
+    action: IReduxAction<ITabActionPayload>
 ): ITabGroupState => {
     switch (action.type) {
         case TabAction.addTab:
@@ -91,7 +85,7 @@ const findGroup = (state: ITabGroupState[], id: string) => {
 
 export const tabGroupsReducer = (
     state: ITabGroupState[] = tabGroupsInitialState,
-    action: IReduxAction<ITabActionPayload>,
+    action: IReduxAction<ITabActionPayload>
 ): ITabGroupState[] => {
     switch (action.type) {
         case TabAction.addTab:
@@ -100,10 +94,7 @@ export const tabGroupsReducer = (
             if (addgroup) {
                 return state.map((tabGroup: ITabGroupState) => tabGroupReducer(tabGroup, action));
             }
-            return [
-                ...state,
-                tabGroupReducer({id: addgroupId, tabs: []}, action),
-            ];
+            return [...state, tabGroupReducer({id: addgroupId, tabs: []}, action)];
         case TabAction.removeTab:
             const groupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
             const group = findGroup(state, groupId);

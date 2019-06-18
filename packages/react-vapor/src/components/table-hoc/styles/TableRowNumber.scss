@@ -3,26 +3,26 @@
 @import '~coveo-styleguide/scss/placeholders.scss';
 
 :global(.coveo-styleguide .table.table-numbered) {
-  tr:global(.selected) td {
-    &:first-child::before {
-      display: none;
-    }
+    tr:global(.selected) td {
+        &:first-child::before {
+            display: none;
+        }
 
-    &:nth-child(2)::before {
-      @extend %selection-indicator;
+        &:nth-child(2)::before {
+            @extend %selection-indicator;
+        }
     }
-  }
 }
 
 :global(.coveo-styleguide .table) .tableNumberedRow:first-child {
-  padding:0;
-  width: 60px;
-} 
+    width: 60px;
+    padding: 0;
+}
 
 :global(.coveo-styleguide .table) .tableNumberedRowContainer {
-  color: $medium-blue;
-  border-left: none;
-  width: 60px;
-  text-align: center;
-  padding: $default-margin;
-} 
+    width: 60px;
+    padding: $default-margin;
+    color: $medium-blue;
+    text-align: center;
+    border-left: none;
+}

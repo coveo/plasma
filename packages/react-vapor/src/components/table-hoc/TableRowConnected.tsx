@@ -45,15 +45,15 @@ export interface ITableRowDispatchProps {
     onActionBarActionsChanged: () => void;
 }
 
-export interface ITableRowConnectedProps extends
-    ITableRowOwnProps,
-    Partial<ITableRowStateProps>,
-    Partial<ITableRowDispatchProps> {}
+export interface ITableRowConnectedProps
+    extends ITableRowOwnProps,
+        Partial<ITableRowStateProps>,
+        Partial<ITableRowDispatchProps> {}
 
 const TableRowPropsToOmit = keys<ITableRowConnectedProps>();
 
-const isCollapsible = (props: ITableRowOwnProps): boolean => props.collapsible
-    && (React.isValidElement(props.collapsible.content) || _.isString(props.collapsible.content));
+const isCollapsible = (props: ITableRowOwnProps): boolean =>
+    props.collapsible && (React.isValidElement(props.collapsible.content) || _.isString(props.collapsible.content));
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) => {
     const {selected, opened} = TableSelectors.getTableRow(state, {id: ownProps.id}) || {selected: false, opened: false};
@@ -63,10 +63,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) =
     };
 };
 
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: ITableRowOwnProps,
-): ITableRowDispatchProps => {
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps): ITableRowDispatchProps => {
     const refreshActionBarActions = (isMulti: boolean) => {
         if (!_.isEmpty(ownProps.actions)) {
             dispatch(addActionsToActionBar(ownProps.tableId, ownProps.actions));
@@ -74,7 +71,7 @@ const mapDispatchToProps = (
         }
     };
 
-    return ({
+    return {
         onMount: () => {
             dispatch(TableHOCRowActions.add(ownProps.id, ownProps.tableId));
             if (isCollapsible(ownProps) && ownProps.collapsible.expandOnMount) {
@@ -95,11 +92,13 @@ const mapDispatchToProps = (
             }
         },
         onActionBarActionsChanged: () => refreshActionBarActions(false),
-    });
+    };
 };
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>> {
+class TableRowConnected extends React.PureComponent<
+    ITableRowConnectedProps & React.HTMLAttributes<HTMLTableRowElement>
+> {
     static defaultProps: Partial<ITableRowOwnProps>;
 
     componentDidUpdate(prevProps: ITableRowConnectedProps) {
@@ -125,19 +124,17 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
         const collapsibleContentRow = rowIsCollapsible && (
             <tr
                 key={`${this.props.tableId}-${this.props.id}-collapsible`}
-                className={classNames(
-                    'collapsible-row',
-                    this.props.collapsible.className,
-                    {
-                        'in': this.props.opened,
-                    },
-                )}>
+                className={classNames('collapsible-row', this.props.collapsible.className, {
+                    in: this.props.opened,
+                })}
+            >
                 <td colSpan={this.columnCount + 1}>
                     <SlideY
                         id={`${this.props.tableId}-${this.props.id}-collapsible`}
                         in={this.props.opened}
                         timeout={Collapsible.TIMEOUT}
-                        duration={Collapsible.TIMEOUT}>
+                        duration={Collapsible.TIMEOUT}
+                    >
                         {this.props.collapsible.content}
                     </SlideY>
                 </td>
@@ -147,9 +144,13 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
         let collapsibleRowToggle: React.ReactNode = [];
         if (rowIsCollapsible) {
             const customToggle = callIfDefined(this.props.collapsible.renderCustomToggleCell, this.props.opened);
-            collapsibleRowToggle = React.isValidElement(customToggle)
-                ? customToggle
-                : <td><CollapsibleToggle expanded={this.props.opened} svgClassName='mod-12' /></td>;
+            collapsibleRowToggle = React.isValidElement(customToggle) ? (
+                customToggle
+            ) : (
+                <td>
+                    <CollapsibleToggle expanded={this.props.opened} svgClassName="mod-12" />
+                </td>
+            );
         }
 
         return (
@@ -157,15 +158,12 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
                 <tr
                     key={`${this.props.tableId}-${this.props.id}-heading`}
                     {..._.omit(this.props, TableRowPropsToOmit)}
-                    className={classNames(
-                        this.props.className,
-                        {
-                            selected: this.props.selected,
-                            opened: this.props.opened,
-                            'heading-row': rowIsCollapsible,
-                            'row-disabled': this.props.disabled,
-                        },
-                    )}
+                    className={classNames(this.props.className, {
+                        selected: this.props.selected,
+                        opened: this.props.opened,
+                        'heading-row': rowIsCollapsible,
+                        'row-disabled': this.props.disabled,
+                    })}
                     onClick={this.handleClick}
                     onDoubleClick={this.handleDoubleClick}
                 >
@@ -178,7 +176,9 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
     }
 
     private get columnCount(): number {
-        return React.Children.toArray(this.props.children).filter((child: React.ReactChild) => React.isValidElement(child)).length;
+        return React.Children.toArray(this.props.children).filter((child: React.ReactChild) =>
+            React.isValidElement(child)
+        ).length;
     }
 
     private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
@@ -187,13 +187,13 @@ class TableRowConnected extends React.PureComponent<ITableRowConnectedProps & Re
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
             this.props.handleClick(isMulti, this.props.opened);
         }
-    }
+    };
 
     private handleDoubleClick = () => {
         _(this.props.actions)
             .filter((action: IActionOptions) => action.callOnDoubleClick)
             .forEach((action: IActionOptions) => action.trigger());
-    }
+    };
 }
 
 TableRowConnected.defaultProps = {

@@ -15,7 +15,12 @@ export interface IInputActionPayload {
     disabled?: boolean;
 }
 
-export const addInput = (id: string, value = '', valid = true, disabled = false): IReduxAction<IInputActionPayload> => ({
+export const addInput = (
+    id: string,
+    value = '',
+    valid = true,
+    disabled = false
+): IReduxAction<IInputActionPayload> => ({
     type: InputActions.add,
     payload: {id, value, valid, disabled},
 });

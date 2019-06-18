@@ -20,29 +20,46 @@ describe('RadioSelectConnected', () => {
         store.dispatch(clearState());
     });
 
-    const mountComponentWithProps = (props: IRadioSelectAllProps = {id: 'someid'}) => mount(
-        <Provider store={store}>
-            <RadioSelectConnected {...props} />
-        </Provider>,
-        {attachTo: document.getElementById('App')},
-    );
+    const mountComponentWithProps = (props: IRadioSelectAllProps = {id: 'someid'}) =>
+        mount(
+            <Provider store={store}>
+                <RadioSelectConnected {...props} />
+            </Provider>,
+            {attachTo: document.getElementById('App')}
+        );
 
     const radioSelectProps = {
         id: 'radioSelectId',
     };
-    const fullRadioSelectProps = {...radioSelectProps, valueOnMount: 'valueonmount', disabledValuesOnMount: ['disabledvalue']};
+    const fullRadioSelectProps = {
+        ...radioSelectProps,
+        valueOnMount: 'valueonmount',
+        disabledValuesOnMount: ['disabledvalue'],
+    };
 
     describe('dispatch props', () => {
         it('should not throw when calling onRender with basic props', () => {
-            expect(() => mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onMount')(radioSelectProps.id, 'somevalue', [])).not.toThrow();
+            expect(() =>
+                mountComponentWithProps(radioSelectProps)
+                    .find(RadioSelect)
+                    .prop('onMount')(radioSelectProps.id, 'somevalue', [])
+            ).not.toThrow();
         });
 
         it('should not throw when calling onUnmount', () => {
-            expect(() => mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onUnmount')(radioSelectProps.id)).not.toThrow();
+            expect(() =>
+                mountComponentWithProps(radioSelectProps)
+                    .find(RadioSelect)
+                    .prop('onUnmount')(radioSelectProps.id)
+            ).not.toThrow();
         });
 
         it('should not throw when calling onChange with basic props', () => {
-            expect(() => mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onChange')('somevalue', radioSelectProps.id)).not.toThrow();
+            expect(() =>
+                mountComponentWithProps(radioSelectProps)
+                    .find(RadioSelect)
+                    .prop('onChange')('somevalue', radioSelectProps.id)
+            ).not.toThrow();
         });
     });
 

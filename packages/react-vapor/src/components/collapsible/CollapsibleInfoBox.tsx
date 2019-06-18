@@ -21,43 +21,35 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
             <CollapsibleConnected
                 id={this.props.id}
                 className={classNames(styles.container, 'text-grey-9 mod-rounded-border-2')}
-                headerClasses='p1'
-                toggleIconClassName='fill-medium-blue'
+                headerClasses="p1"
+                toggleIconClassName="fill-medium-blue"
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
-                <div className={classNames(styles.alignWithIcon, 'px1 pb1 mr3')}>
-                    {this.props.children}
-                </div>
+                <div className={classNames(styles.alignWithIcon, 'px1 pb1 mr3')}>{this.props.children}</div>
             </CollapsibleConnected>
         );
     }
 
     private getHeader(): React.ReactNode {
-        return this.props.isSection
-            ? (
-                <div className='flex pl1'>
-                    <h2 className='text-medium-blue'>{this.props.title}</h2>
-                    {
-                        this.props.sectionAdditionalContent
-                        && <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
-                    }
-                </div>
-            )
-            : (
-                <div className='inline-flex'>
-                    <Svg svgName='info' className='icon mod-20 mx1 js-info-svg' svgClass='fill-medium-grey' />
-                    <h3 className='text-medium-blue'>{this.props.title}</h3>
-                </div>
-            );
+        return this.props.isSection ? (
+            <div className="flex pl1">
+                <h2 className="text-medium-blue">{this.props.title}</h2>
+                {this.props.sectionAdditionalContent && (
+                    <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
+                )}
+            </div>
+        ) : (
+            <div className="inline-flex">
+                <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" svgClass="fill-medium-grey" />
+                <h3 className="text-medium-blue">{this.props.title}</h3>
+            </div>
+        );
     }
 
     private getAdditionalInfoClasses() {
-        return classNames(
-            this.props.sectionAdditionalContentClasses,
-            {
-                hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
-            },
-        );
+        return classNames(this.props.sectionAdditionalContentClasses, {
+            hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
+        });
     }
 }

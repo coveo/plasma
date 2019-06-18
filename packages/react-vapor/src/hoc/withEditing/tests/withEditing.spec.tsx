@@ -27,9 +27,7 @@ describe('Component with editing', () => {
         static ID = 'SomeInput';
 
         render() {
-            return (
-                <Input onChange={() => this.props.toggleIsDirty(true)} />
-            );
+            return <Input onChange={() => this.props.toggleIsDirty(true)} />;
         }
     }
 
@@ -38,7 +36,7 @@ describe('Component with editing', () => {
         return mount(
             <Provider store={store}>
                 <SomeInputWithEditingHOC />
-            </Provider>,
+            </Provider>
         );
     };
 

@@ -16,8 +16,20 @@ describe('Toasts', () => {
         });
 
         it('should render without errors with children', () => {
-            expect(() => shallow(<ToastContainer><a href='#'>Hello</a></ToastContainer>)).not.toThrow();
-            expect(() => shallow(<ToastContainer><Toast title='test' /></ToastContainer>)).not.toThrow();
+            expect(() =>
+                shallow(
+                    <ToastContainer>
+                        <a href="#">Hello</a>
+                    </ToastContainer>
+                )
+            ).not.toThrow();
+            expect(() =>
+                shallow(
+                    <ToastContainer>
+                        <Toast title="test" />
+                    </ToastContainer>
+                )
+            ).not.toThrow();
         });
     });
 
@@ -56,7 +68,9 @@ describe('Toasts', () => {
         });
 
         it('should be possible to pass toasts in props', () => {
-            const newToastAttributes = _.extend({}, basicProps, {toasts: [{id: 'toast-id', title: 'some toast title'}]});
+            const newToastAttributes = _.extend({}, basicProps, {
+                toasts: [{id: 'toast-id', title: 'some toast title'}],
+            });
 
             component.setProps(newToastAttributes);
 
@@ -70,13 +84,19 @@ describe('Toasts', () => {
 
             component.setProps(newToastAttributes).mount();
 
-            component.find(Toast).props().onClose();
+            component
+                .find(Toast)
+                .props()
+                .onClose();
             expect(onCloseToast).toHaveBeenCalledTimes(0);
 
             newToastAttributes = _.extend({}, newToastAttributes, {onCloseToast});
             component.setProps(newToastAttributes).mount();
 
-            component.find(Toast).props().onClose();
+            component
+                .find(Toast)
+                .props()
+                .onClose();
             expect(onCloseToast).toHaveBeenCalledTimes(1);
             expect(onCloseToast).toHaveBeenCalledWith(newToastAttributes.toasts[0].id);
         });

@@ -87,29 +87,29 @@ const DraggableSelectedOptionPropsToOmit = keys<IDraggableSelectedOptionOwnProps
     connectDragSource: connect.dragSource(),
     connectDragPreview: connect.dragPreview(),
     isDragging: monitor.isDragging(),
-}),
-)
+}))
 export class DraggableSelectedOption extends React.PureComponent<IDraggableSelectedOptionProps> {
     render() {
         const opacity = this.props.isDragging ? 0 : 1;
 
         return this.props.connectDragPreview(
             this.props.connectDropTarget(
-                <div className='selected-option-wrapper' style={{opacity}}>
-                    <SelectedOption {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)}
+                <div className="selected-option-wrapper" style={{opacity}}>
+                    <SelectedOption
+                        {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)}
                         label={this.props.isDragging ? null : this.props.label}
                     >
-                        <div className='inline-flex'>
+                        <div className="inline-flex">
                             {this.props.connectDragSource(
-                                <div className='move-option infline-flex cursor-move align-center'>
-                                    <Svg svgName='drag-drop' svgClass='icon mod-small' />
-                                </div>,
+                                <div className="move-option infline-flex cursor-move align-center">
+                                    <Svg svgName="drag-drop" svgClass="icon mod-small" />
+                                </div>
                             )}
                             {this.props.label}
                         </div>
                     </SelectedOption>
-                </div>,
-            ),
+                </div>
+            )
         );
     }
 }

@@ -19,51 +19,56 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
     const actionBar = _.isBoolean(props.actionBar) ? {} : props.actionBar;
     const filter = _.isBoolean(props.filter) ? {} : props.filter;
 
-    const filterBoxConnected: JSX.Element = actionBar && filter
-        ? (
-            <div className='coveo-table-actions'>
+    const filterBoxConnected: JSX.Element =
+        actionBar && filter ? (
+            <div className="coveo-table-actions">
                 <FilterBoxConnected
                     {...filter}
                     id={getTableChildComponentId(props.id, TableChildComponent.FILTER)}
                     key={getTableChildComponentId(props.id, TableChildComponent.FILTER)}
                 />
             </div>
-        )
-        : null;
+        ) : null;
 
-    const predicatesConnected: JSX.Element = actionBar && predicates
-        ? (
-            <div className='coveo-table-actions predicate-filters'>
+    const predicatesConnected: JSX.Element =
+        actionBar && predicates ? (
+            <div className="coveo-table-actions predicate-filters">
                 {predicates.map((predicate: ITablePredicate, i: number) => {
-                    const predicateId = `${getTableChildComponentId(props.id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
+                    const predicateId = `${getTableChildComponentId(props.id, TableChildComponent.PREDICATE)}${
+                        predicate.attributeName
+                    }`;
                     const containerClasses = i ? ['ml1'] : [''];
                     const defaultValue = _.findWhere(predicate.props.defaultOptions, {default: true});
 
                     return (
                         <DropdownSearchConnected
                             maxWidth={260}
-                            defaultSelectedOption={{value: defaultValue && defaultValue.value || TABLE_PREDICATE_DEFAULT_VALUE}}
+                            defaultSelectedOption={{
+                                value: (defaultValue && defaultValue.value) || TABLE_PREDICATE_DEFAULT_VALUE,
+                            }}
                             {...predicate.props}
                             key={predicateId}
-                            fixedPrepend={(predicate.attributeNameFormatter
-                                ? predicate.attributeNameFormatter(predicate.attributeName)
-                                : humanize(predicate.attributeName)) as any}
+                            fixedPrepend={
+                                (predicate.attributeNameFormatter
+                                    ? predicate.attributeNameFormatter(predicate.attributeName)
+                                    : humanize(predicate.attributeName)) as any
+                            }
                             id={predicateId}
                             containerClasses={containerClasses}
                             onOptionClickCallBack={(option: IDropdownOption) => {
                                 if (props.onPredicateOptionClick) {
                                     props.onPredicateOptionClick(predicateId, option);
                                 }
-                            }} />
+                            }}
+                        />
                     );
                 })}
             </div>
-        )
-        : null;
+        ) : null;
 
-    const datePickerConnected: JSX.Element = actionBar && datePicker
-        ? (
-            <div className='coveo-table-actions'>
+    const datePickerConnected: JSX.Element =
+        actionBar && datePicker ? (
+            <div className="coveo-table-actions">
                 <DatePickerDropdownConnected
                     {...datePicker}
                     id={getTableChildComponentId(props.id, TableChildComponent.DATEPICKER)}
@@ -71,14 +76,14 @@ export const TableChildActionBar = (props: ITableProps): JSX.Element => {
                     onRight
                 />
             </div>
-        )
-        : null;
+        ) : null;
 
     return (
         <ActionBarConnected
             {...actionBar}
             prefixContent={prefixContent}
-            id={getTableChildComponentId(props.id, TableChildComponent.ACTION_BAR)}>
+            id={getTableChildComponentId(props.id, TableChildComponent.ACTION_BAR)}
+        >
             {predicatesConnected}
             {filterBoxConnected}
             {datePickerConnected}

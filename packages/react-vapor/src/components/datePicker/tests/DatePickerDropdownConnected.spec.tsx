@@ -35,7 +35,7 @@ describe('Date picker', () => {
                 <Provider store={store}>
                     <DatePickerDropdownConnected {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             datePickerDropdown = wrapper.find(DatePickerDropdown).first();
         };
@@ -175,10 +175,14 @@ describe('Date picker', () => {
         });
 
         it('should toggle the open property of the dropdown when calling the onClick prop', () => {
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(false);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                false
+            );
 
             datePickerDropdown.props().onClick(datePickerDropdown.props().datePicker);
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(true);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                true
+            );
         });
 
         it(`should select the date picker's lower limit when calling the onClick prop`, () => {
@@ -197,10 +201,14 @@ describe('Date picker', () => {
 
         it('should close the dropdown menu when calling onDocumentClick prop', () => {
             store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(true);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                true
+            );
 
             datePickerDropdown.props().onDocumentClick();
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(false);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                false
+            );
         });
 
         it('should apply the dates when calling onApply prop', () => {
@@ -231,18 +239,26 @@ describe('Date picker', () => {
 
         it('should close the dropdown when calling onApply prop', () => {
             store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(true);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                true
+            );
 
             datePickerDropdown.props().onApply();
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(false);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                false
+            );
         });
 
         it('should close the dropdown when calling onCancel prop', () => {
             store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(true);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                true
+            );
 
             datePickerDropdown.props().onCancel(1, 1, true);
-            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(false);
+            expect(_.findWhere(store.getState().dropdowns, {id: DATE_PICKER_DROPDOWN_BASIC_PROPS.id}).opened).toBe(
+                false
+            );
         });
 
         it('should reset the option picker when calling onCancel prop', () => {
@@ -284,8 +300,10 @@ describe('Date picker', () => {
             expect(_.findWhere(store.getState().optionsCycles, {id: cycleId}).currentOption).toBe(1);
         });
 
-        it('should reset the month to the datepicker\'s lower limit when calling onCancelProp', () => {
-            const propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {isOpened: true});
+        it("should reset the month to the datepicker's lower limit when calling onCancelProp", () => {
+            const propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                isOpened: true,
+            });
             mountWithProps(propsIsOpen);
 
             const pickerId: string = DATE_PICKER_DROPDOWN_BASIC_PROPS.id + '6868';
@@ -302,12 +320,18 @@ describe('Date picker', () => {
 
             store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
-            datePickerDropdown.find(ModalFooter).find(Button).last().simulate('click');
+            datePickerDropdown
+                .find(ModalFooter)
+                .find(Button)
+                .last()
+                .simulate('click');
 
-            expect(_.findWhere(store.getState().optionsCycles, {id: monthCycleId}).currentOption)
-                .toBe(newLowerLimit.getMonth());
-            expect(_.findWhere(store.getState().optionsCycles, {id: yearCycleId}).currentOption)
-                .toBe(DEFAULT_YEARS.indexOf(newLowerLimit.getFullYear().toString()));
+            expect(_.findWhere(store.getState().optionsCycles, {id: monthCycleId}).currentOption).toBe(
+                newLowerLimit.getMonth()
+            );
+            expect(_.findWhere(store.getState().optionsCycles, {id: yearCycleId}).currentOption).toBe(
+                DEFAULT_YEARS.indexOf(newLowerLimit.getFullYear().toString())
+            );
         });
 
         it('should not reset anything if the date picker dropdown is already closed', () => {
@@ -336,7 +360,9 @@ describe('Date picker', () => {
         });
 
         it('should display a <DatePickerBox /> with a "withReduxState" prop set to true when the dropdown is opened', () => {
-            const propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {isOpened: true});
+            const propsIsOpen: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                isOpened: true,
+            });
             mountWithProps(propsIsOpen);
 
             expect(datePickerDropdown.find(DatePickerBox).props().withReduxState).toBe(true);

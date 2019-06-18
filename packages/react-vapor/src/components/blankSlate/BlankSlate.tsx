@@ -17,7 +17,6 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
 }
 
 export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
-
     static defaultProps: Partial<IBlankSlateProps> = {
         title: '',
         buttons: [],
@@ -29,15 +28,13 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
     };
 
     private getSvgTemplate() {
-        return this.props.svgName
-            ? <Svg svgName={this.props.svgName} svgClass={`icon mod-4x ${this.props.svgClass}`} />
-            : null;
+        return this.props.svgName ? (
+            <Svg svgName={this.props.svgName} svgClass={`icon mod-4x ${this.props.svgClass}`} />
+        ) : null;
     }
 
     private getDescriptionTemplate(): JSX.Element {
-        return this.props.description
-            ? <p>{this.props.description}</p>
-            : null;
+        return this.props.description ? <p>{this.props.description}</p> : null;
     }
 
     private getButtonsTemplate(): JSX.Element[] {
@@ -51,7 +48,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
         const blankSlateClasses: string = `blankslate ${marginClasses} ${this.props.classes.join(' ')}`;
         const modalClasses: string = classNames(
             {'mod-header-padding': this.props.withModal},
-            this.props.containerClasses,
+            this.props.containerClasses
         );
 
         return (

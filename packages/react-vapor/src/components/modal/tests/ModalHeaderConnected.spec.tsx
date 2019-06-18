@@ -28,13 +28,9 @@ describe('ModalHeader', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <ModalHeaderConnected
-                        id={id}
-                        title={title}
-                        lastOpened
-                    />
+                    <ModalHeaderConnected id={id} title={title} lastOpened />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             modalHeader = wrapper.find(ModalHeader).first();
         });
@@ -66,12 +62,12 @@ describe('ModalHeader', () => {
 
         it('should close the modalHeader in the store when clicking on modalHeader x', () => {
             store.dispatch(addModal(id));
-            expect(_.findWhere(store.getState().modals, ((modal: IModalState) => modal.id === id)).isOpened).toBe(false);
+            expect(_.findWhere(store.getState().modals, (modal: IModalState) => modal.id === id).isOpened).toBe(false);
             store.dispatch(openModal(id));
-            expect(_.findWhere(store.getState().modals, ((modal: IModalState) => modal.id === id)).isOpened).toBe(true);
+            expect(_.findWhere(store.getState().modals, (modal: IModalState) => modal.id === id).isOpened).toBe(true);
 
             modalHeader.find('.small-close').simulate('click');
-            expect(_.findWhere(store.getState().modals, ((modal: IModalState) => modal.id === id)).isOpened).toBe(false);
+            expect(_.findWhere(store.getState().modals, (modal: IModalState) => modal.id === id).isOpened).toBe(false);
         });
     });
 });

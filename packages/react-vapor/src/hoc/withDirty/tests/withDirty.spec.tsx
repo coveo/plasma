@@ -20,9 +20,7 @@ describe('Component with dirty', () => {
         static ID = 'SomeInput';
 
         render() {
-            return (
-                <Input onChange={() => this.props.toggleIsDirty(true)} />
-            );
+            return <Input onChange={() => this.props.toggleIsDirty(true)} />;
         }
     }
 
@@ -60,14 +58,14 @@ describe('Component with dirty', () => {
     });
 
     it('should contains the showDirty element', () => {
-        const el = <span className='this-is-it' />;
+        const el = <span className="this-is-it" />;
         const component = mountComponentWithProps({showDirty: () => el});
 
         expect(component.find('.this-is-it').exists()).toBe(true);
     });
 
     it('should get the toggleIsDirty as a prop', () => {
-        const el = <span className='this-is-it' />;
+        const el = <span className="this-is-it" />;
         const component = mountComponentWithProps({showDirty: () => el});
 
         expect(component.find('.this-is-it').exists()).toBe(true);

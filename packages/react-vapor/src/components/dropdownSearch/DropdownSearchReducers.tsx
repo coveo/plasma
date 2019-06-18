@@ -52,18 +52,22 @@ export const getNextIndexPosition = (array: any[], item: any, key: number): numb
     return index;
 };
 
-export const isNotCustomOption = (option: IDropdownOption, includeSelected: boolean = true): boolean => includeSelected
-    ? !option.custom
-    : !option.custom || option.selected;
+export const isNotCustomOption = (option: IDropdownOption, includeSelected: boolean = true): boolean =>
+    includeSelected ? !option.custom : !option.custom || option.selected;
 
 // removeCustomOptions only utilized in supportSingleCustomOption scenarios, otherwise causes side effects for multiselect
-export const removeCustomOptions = (options: IDropdownOption[], supportSingleCustomOption: boolean, includeSelected: boolean = true) => {
+export const removeCustomOptions = (
+    options: IDropdownOption[],
+    supportSingleCustomOption: boolean,
+    includeSelected: boolean = true
+) => {
     return !supportSingleCustomOption
         ? deepClone(options)
         : deepClone(options.filter((option: IDropdownOption) => isNotCustomOption(option, includeSelected)));
 };
 
-export const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean => !!(option.default || (option.custom && option.value === filterText));
+export const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean =>
+    !!(option.default || (option.custom && option.value === filterText));
 
 export const deselectOption = (options: IDropdownOption[], value: string): IDropdownOption[] => {
     const nextOptions: IDropdownOption[] = deepClone(options);
@@ -81,9 +85,7 @@ export const deselectOption = (options: IDropdownOption[], value: string): IDrop
 
 export const deselectLastSelectedOption = (options: IDropdownOption[]): IDropdownOption[] => {
     const lastSelectedOption: IDropdownOption = _.find(options.slice().reverse(), {selected: true});
-    return lastSelectedOption
-        ? deselectOption(options, lastSelectedOption.value)
-        : deepClone(options);
+    return lastSelectedOption ? deselectOption(options, lastSelectedOption.value) : deepClone(options);
 };
 
 export const deselectAllOptions = (options: IDropdownOption[], includeCustom: boolean = false): IDropdownOption[] => {
@@ -98,7 +100,11 @@ export const deselectAllOptions = (options: IDropdownOption[], includeCustom: bo
     return nextOptions;
 };
 
-export const addUniqueSelectedOption = (options: IDropdownOption[], value: string, displayValue?: string): IDropdownOption[] => {
+export const addUniqueSelectedOption = (
+    options: IDropdownOption[],
+    value: string,
+    displayValue?: string
+): IDropdownOption[] => {
     const sameValueDoesNotExist = _.findWhere(options, {value}) === undefined;
 
     if (sameValueDoesNotExist) {
@@ -120,16 +126,16 @@ export const getDisplayedOptions = (state: IDropdownSearchState): IDropdownOptio
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
     const currentFilterText: string = filterText || state.filterText || '';
-    return _.filter(getDisplayedOptions(state),
-        (option: IDropdownOption) => {
-            const displayValue = option.displayValue || option.value;
-            return s.contains(displayValue.toLowerCase(), (currentFilterText).toLowerCase());
-        });
+    return _.filter(getDisplayedOptions(state), (option: IDropdownOption) => {
+        const displayValue = option.displayValue || option.value;
+        return s.contains(displayValue.toLowerCase(), currentFilterText.toLowerCase());
+    });
 };
 
 export const selectSingleOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
     return _.map(options, (option: IDropdownOption) =>
-        _.extend(deepClone(option), {selected: option.value === selectedOption.value}));
+        _.extend(deepClone(option), {selected: option.value === selectedOption.value})
+    );
 };
 
 export const multiSelectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
@@ -151,10 +157,12 @@ export const multiSelectOption = (options: IDropdownOption[], selectedOption: ID
     return newOptions;
 };
 
-export const updateOptions = (options: IDropdownOption[], selectAValue: boolean = true, selectedOption?: IDropdownOption): IDropdownOption[] => {
-    let updatedOptions: IDropdownOption[] = options
-        ? deepClone(options)
-        : [];
+export const updateOptions = (
+    options: IDropdownOption[],
+    selectAValue: boolean = true,
+    selectedOption?: IDropdownOption
+): IDropdownOption[] => {
+    let updatedOptions: IDropdownOption[] = options ? deepClone(options) : [];
 
     if (selectAValue) {
         const defaultSelectedOption = selectedOption
@@ -171,7 +179,7 @@ export const updateOptions = (options: IDropdownOption[], selectAValue: boolean 
 
 export const dropdownSearchReducer = (
     state: IDropdownSearchState = dropdownSearchInitialState,
-    action: IReduxAction<IOptionsDropdownSearchPayload>,
+    action: IReduxAction<IOptionsDropdownSearchPayload>
 ): IDropdownSearchState => {
     let nextOptions: IDropdownOption[] = [];
 
@@ -208,26 +216,42 @@ export const dropdownSearchReducer = (
             return {
                 ...state,
                 id: action.payload.id,
-                options: updateOptions(action.payload.dropdownOptions, action.payload.selectAValue, action.payload.defaultSelectedOption),
+                options: updateOptions(
+                    action.payload.dropdownOptions,
+                    action.payload.selectAValue,
+                    action.payload.defaultSelectedOption
+                ),
                 setFocusOnDropdownButton: false,
             };
         case DropdownSearchActions.filter:
             const options = state.options || [];
-            const shouldReturnNewOptions: boolean = state.supportSingleCustomOption && options
-                .filter((option: IDropdownOption) => !option.custom && !option.default)
-                .every((option: IDropdownOption) => (option.displayValue || option.value).toLowerCase() !== (action.payload.filterText || '').toLowerCase());
+            const shouldReturnNewOptions: boolean =
+                state.supportSingleCustomOption &&
+                options
+                    .filter((option: IDropdownOption) => !option.custom && !option.default)
+                    .every(
+                        (option: IDropdownOption) =>
+                            (option.displayValue || option.value).toLowerCase() !==
+                            (action.payload.filterText || '').toLowerCase()
+                    );
 
             nextOptions = shouldReturnNewOptions
-                ? options.map((option: IDropdownOption) => _.extend(option, {hidden: shouldHideOnFilter(option, action.payload.filterText)}))
+                ? options.map((option: IDropdownOption) =>
+                      _.extend(option, {hidden: shouldHideOnFilter(option, action.payload.filterText)})
+                  )
                 : options;
 
             if (shouldReturnNewOptions) {
-                const newCustomOption: IDropdownOption[] = action.payload.filterText !== ''
-                    ? [{value: action.payload.filterText, selected: false, custom: true, hidden: false}]
-                    : [];
+                const newCustomOption: IDropdownOption[] =
+                    action.payload.filterText !== ''
+                        ? [{value: action.payload.filterText, selected: false, custom: true, hidden: false}]
+                        : [];
 
                 const newState = _.extend(deepClone(state), {
-                    options: [...newCustomOption, ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false)],
+                    options: [
+                        ...newCustomOption,
+                        ...removeCustomOptions(nextOptions, state.supportSingleCustomOption, false),
+                    ],
                 });
 
                 return {
@@ -252,15 +276,14 @@ export const dropdownSearchReducer = (
                 return state;
             }
 
-            const optionsWithOneSelectedOption = selectSingleOption(deselectAllOptions(state.options, true), action.payload.addedSelectedOption);
+            const optionsWithOneSelectedOption = selectSingleOption(
+                deselectAllOptions(state.options, true),
+                action.payload.addedSelectedOption
+            );
 
             nextOptions = !state.supportSingleCustomOption
                 ? selectSingleOption(state.options, action.payload.addedSelectedOption)
-                : removeCustomOptions(
-                    optionsWithOneSelectedOption,
-                    state.supportSingleCustomOption,
-                    false,
-                );
+                : removeCustomOptions(optionsWithOneSelectedOption, state.supportSingleCustomOption, false);
 
             return {
                 ...state,
@@ -273,7 +296,11 @@ export const dropdownSearchReducer = (
         case DropdownSearchActions.add:
             return {
                 ...state,
-                options: updateOptions(action.payload.dropdownOptions, action.payload.selectAValue, action.payload.defaultSelectedOption),
+                options: updateOptions(
+                    action.payload.dropdownOptions,
+                    action.payload.selectAValue,
+                    action.payload.defaultSelectedOption
+                ),
                 id: action.payload.id,
                 filterText: '',
                 isOpened: false,
@@ -285,9 +312,9 @@ export const dropdownSearchReducer = (
             const isFirstSelectedOption = keyPressed === keyCode.upArrow && state.activeOption === optionsFiltered[0];
 
             const shouldSelectSecondOption: boolean =
-                keyPressed === keyCode.downArrow
-                && (state.activeOption && state.activeOption.value) === (optionsFiltered[0] && optionsFiltered[0].value)
-                && !!state.filterText;
+                keyPressed === keyCode.downArrow &&
+                (state.activeOption && state.activeOption.value) === (optionsFiltered[0] && optionsFiltered[0].value) &&
+                !!state.filterText;
 
             const activeOption: IDropdownOption = shouldSelectSecondOption
                 ? optionsFiltered[1]
@@ -297,7 +324,10 @@ export const dropdownSearchReducer = (
                 return {
                     ...state,
                     isOpened: !isFirstSelectedOption,
-                    options: state.supportSingleCustomOption && isFirstSelectedOption ? removeCustomOptions(state.options, false) : state.options,
+                    options:
+                        state.supportSingleCustomOption && isFirstSelectedOption
+                            ? removeCustomOptions(state.options, false)
+                            : state.options,
                     activeOption: !isFirstSelectedOption ? activeOption : undefined,
                     setFocusOnDropdownButton: isFirstSelectedOption,
                 };
@@ -321,7 +351,7 @@ export const dropdownSearchReducer = (
 
 export const dropdownsSearchReducer = (
     state: IDropdownSearchState[] = dropdownsSearchInitialState,
-    action: IReduxAction<IOptionsDropdownSearchPayload>,
+    action: IReduxAction<IOptionsDropdownSearchPayload>
 ): IDropdownSearchState[] => {
     switch (action.type) {
         case DropdownSearchActions.update:
@@ -337,15 +367,9 @@ export const dropdownsSearchReducer = (
                     : dropdownSearch;
             });
         case DropdownSearchActions.add:
-            return [
-                ...state,
-                dropdownSearchReducer(undefined, action),
-            ];
+            return [...state, dropdownSearchReducer(undefined, action)];
         case DropdownSearchActions.addMultiSelect:
-            return [
-                ...state,
-                multiSelectDropdownSearchReducer(undefined, action),
-            ];
+            return [...state, multiSelectDropdownSearchReducer(undefined, action)];
         case DropdownSearchActions.deselectAllOptions:
         case DropdownSearchActions.multiSelect:
         case DropdownSearchActions.addCustomSelectedOption:

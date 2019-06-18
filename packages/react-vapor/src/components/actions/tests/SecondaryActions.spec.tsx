@@ -5,26 +5,28 @@ import {IActionOptions} from '../Action';
 import {ISecondaryActionsProps, SecondaryActions} from '../SecondaryActions';
 
 describe('Actions', () => {
-    const actions: IActionOptions[] = [{
-        name: 'action',
-        link: 'http://coveo.com',
-        target: '_blank',
-        enabled: true,
-    }, {
-        separator: true,
-        enabled: true,
-    }, {
-        name: 'action2',
-        trigger: jasmine.createSpy('triggerMethod'),
-        enabled: true,
-    }];
+    const actions: IActionOptions[] = [
+        {
+            name: 'action',
+            link: 'http://coveo.com',
+            target: '_blank',
+            enabled: true,
+        },
+        {
+            separator: true,
+            enabled: true,
+        },
+        {
+            name: 'action2',
+            trigger: jasmine.createSpy('triggerMethod'),
+            enabled: true,
+        },
+    ];
 
     describe('<SecondaryActions />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <SecondaryActions actions={actions} />,
-                );
+                shallow(<SecondaryActions actions={actions} />);
             }).not.toThrow();
         });
     });
@@ -33,12 +35,9 @@ describe('Actions', () => {
         let secondaryActions: ReactWrapper<ISecondaryActionsProps, any>;
 
         beforeEach(() => {
-            secondaryActions = mount(
-                <SecondaryActions
-                    actions={actions}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            secondaryActions = mount(<SecondaryActions actions={actions} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {

@@ -9,9 +9,7 @@ describe('Options cycle', () => {
     describe('<OptionsCycle />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <OptionsCycle options={OPTIONS} />,
-                );
+                shallow(<OptionsCycle options={OPTIONS} />);
             }).not.toThrow();
         });
     });
@@ -21,10 +19,7 @@ describe('Options cycle', () => {
         let optionsCycleInstance: OptionsCycle;
 
         beforeEach(() => {
-            optionsCycle = mount(
-                <OptionsCycle options={OPTIONS} />,
-                {attachTo: document.getElementById('App')},
-            );
+            optionsCycle = mount(<OptionsCycle options={OPTIONS} />, {attachTo: document.getElementById('App')});
             optionsCycleInstance = optionsCycle.instance() as OptionsCycle;
         });
 
@@ -72,9 +67,9 @@ describe('Options cycle', () => {
         it('should display the selected option even if it is not a string', () => {
             const className = 'catch-me-if-you-can';
             const options = [
-                <span className='something' />,
+                <span className="something" />,
                 <span className={className} />,
-                <span className='something-else' />,
+                <span className="something-else" />,
             ];
             optionsCycle.setProps({options, currentOption: 1});
 
@@ -139,23 +134,22 @@ describe('Options cycle', () => {
             optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: 0});
             optionsCycle.find('.previous-option').simulate('click');
 
-            expect(onChangeSpy).toHaveBeenCalledWith((OPTIONS.length - 1));
+            expect(onChangeSpy).toHaveBeenCalledWith(OPTIONS.length - 1);
         });
 
-        it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one',
-            () => {
-                const onChangeSpy = jasmine.createSpy('onChange');
+        it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one', () => {
+            const onChangeSpy = jasmine.createSpy('onChange');
 
-                optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: 2});
-                optionsCycle.find('.previous-option').simulate('click');
+            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: 2});
+            optionsCycle.find('.previous-option').simulate('click');
 
-                expect(onChangeSpy).toHaveBeenCalledWith(1);
-            });
+            expect(onChangeSpy).toHaveBeenCalledWith(1);
+        });
 
         it('should call onChange with the first option when clicking on the next arrow if the current option is the last one', () => {
             const onChangeSpy = jasmine.createSpy('onChange');
 
-            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: (OPTIONS.length - 1)});
+            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: OPTIONS.length - 1});
             optionsCycle.find('.next-option').simulate('click');
 
             expect(onChangeSpy).toHaveBeenCalledWith(0);
@@ -184,10 +178,9 @@ describe('Options cycle', () => {
             expect(optionsCycle.html()).toContain(OPTIONS[0]);
 
             optionsCycle.unmount();
-            optionsCycle = mount(
-                <OptionsCycle options={OPTIONS} currentOption={startAt} />,
-                {attachTo: document.getElementById('App')},
-            );
+            optionsCycle = mount(<OptionsCycle options={OPTIONS} currentOption={startAt} />, {
+                attachTo: document.getElementById('App'),
+            });
 
             expect(optionsCycle.html()).toContain(OPTIONS[startAt]);
         });

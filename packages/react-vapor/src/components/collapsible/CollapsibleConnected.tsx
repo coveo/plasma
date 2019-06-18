@@ -22,14 +22,15 @@ const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps)
     return {expanded: ownProps.expandedOnMount};
 };
 
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: CollapsibleOwnProps,
-): CollapsibleDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: CollapsibleOwnProps): CollapsibleDispatchProps => ({
     onMount: () => dispatch(addCollapsible(ownProps.id, !!ownProps.expandedOnMount)),
     onUnmount: () => dispatch(removeCollapsible(ownProps.id)),
-    onToggleExpandedState: (currentExpandedState: boolean) => dispatch(setCollapsibleExpanded(ownProps.id, !currentExpandedState)),
+    onToggleExpandedState: (currentExpandedState: boolean) =>
+        dispatch(setCollapsibleExpanded(ownProps.id, !currentExpandedState)),
 });
 
-export const CollapsibleConnected: React.ComponentClass<CollapsibleProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Collapsible);
+export const CollapsibleConnected: React.ComponentClass<CollapsibleProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Collapsible);

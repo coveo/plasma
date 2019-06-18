@@ -18,10 +18,10 @@ export const ChartTooltipContent: React.FunctionComponent<ChartTooltipContentPro
     const title = xFormat(xValues[x]);
     return (
         <div className={classNames('flex flex-column bg-pure-white', styles.chartTooltipContent)}>
-            <div className='flex flex-row center-align flex-start tooltip-serie-title'>
+            <div className="flex flex-row center-align flex-start tooltip-serie-title">
                 <div className={classNames(styles.chartTooltipColor)} />
                 <div className={classNames('px1', styles.chartTooltipLabel)}>{title}</div>
-                <div className='pr1 flex-auto' />
+                <div className="pr1 flex-auto" />
             </div>
             {_.chain(series)
                 .sortBy((serie: XYSerie, index: number) => {
@@ -33,16 +33,23 @@ export const ChartTooltipContent: React.FunctionComponent<ChartTooltipContentPro
                 })
                 .map((serie: XYSerie, serieIndex) => {
                     const point = serie.data[x];
-                    return point && (
-                        <div key={`tooltip-serie-row-${serie.label}`} className='flex flex-row center-align flex-start tooltip-serie-row'>
-                            <Color className={classNames(styles.chartTooltipColor)} color={color(serieIndex, colorPattern, point)} />
-                            <div className={classNames('pl1 pr2', styles.chartTooltipLabel)}>{serie.label}</div>
-                            <div className='pr1 flex-auto right-align'>{yFormat(point.y)}</div>
-                        </div>
+                    return (
+                        point && (
+                            <div
+                                key={`tooltip-serie-row-${serie.label}`}
+                                className="flex flex-row center-align flex-start tooltip-serie-row"
+                            >
+                                <Color
+                                    className={classNames(styles.chartTooltipColor)}
+                                    color={color(serieIndex, colorPattern, point)}
+                                />
+                                <div className={classNames('pl1 pr2', styles.chartTooltipLabel)}>{serie.label}</div>
+                                <div className="pr1 flex-auto right-align">{yFormat(point.y)}</div>
+                            </div>
+                        )
                     );
                 })
-                .value()
-            }
+                .value()}
         </div>
     );
 };

@@ -1,10 +1,21 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ITabActionPayload, TabAction} from '../TabActions';
-import {DEFAULT_GROUP_ID, ITabGroupState, ITabState, tabGroupInitialState, tabGroupReducer, tabGroupsInitialState, tabGroupsReducer, tabInitialState, tabReducer, tabsInitialState, tabsReducer} from '../TabReducers';
+import {
+    DEFAULT_GROUP_ID,
+    ITabGroupState,
+    ITabState,
+    tabGroupInitialState,
+    tabGroupReducer,
+    tabGroupsInitialState,
+    tabGroupsReducer,
+    tabInitialState,
+    tabReducer,
+    tabsInitialState,
+    tabsReducer,
+} from '../TabReducers';
 
 describe('Tab', () => {
-
     describe('TabReducers', () => {
         const genericAction: IReduxAction<ITabActionPayload> = {
             type: 'DO_SOMETHING',
@@ -69,10 +80,12 @@ describe('Tab', () => {
                 {
                     id: 'some-tab2',
                     isSelected: true,
-                }, {
+                },
+                {
                     id: 'some-tab1',
                     isSelected: false,
-                }, {
+                },
+                {
                     id: 'some-tab3',
                     isSelected: false,
                 },
@@ -102,10 +115,12 @@ describe('Tab', () => {
                 {
                     id: 'some-tab1',
                     isSelected: false,
-                }, {
+                },
+                {
                     id: 'some-tab2',
                     isSelected: false,
-                }, {
+                },
+                {
                     id: 'some-tab3',
                     isSelected: true,
                 },
@@ -195,7 +210,8 @@ describe('Tab', () => {
                         {
                             id: 'some-tab2',
                             isSelected: true,
-                        }, {
+                        },
+                        {
                             id: 'some-tab1',
                             isSelected: false,
                         },
@@ -230,7 +246,8 @@ describe('Tab', () => {
                         {
                             id: 'some-tab2',
                             isSelected: true,
-                        }, {
+                        },
+                        {
                             id: 'some-tab1',
                             isSelected: false,
                         },
@@ -242,7 +259,8 @@ describe('Tab', () => {
                         {
                             id: 'some-tab2',
                             isSelected: true,
-                        }, {
+                        },
+                        {
                             id: 'some-tab1',
                             isSelected: false,
                         },

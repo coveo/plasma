@@ -9,26 +9,28 @@ describe('Actions', () => {
     const actionLink: string = 'http://coveo.com';
     const actionTrigger: jasmine.Spy = jasmine.createSpy('methodTrigger');
 
-    const actions: IActionOptions[] = [{
-        name: 'action',
-        link: actionLink,
-        target: '_blank',
-        enabled: true,
-    }, {
-        separator: true,
-        enabled: true,
-    }, {
-        name: 'action2',
-        trigger: actionTrigger,
-        enabled: true,
-    }];
+    const actions: IActionOptions[] = [
+        {
+            name: 'action',
+            link: actionLink,
+            target: '_blank',
+            enabled: true,
+        },
+        {
+            separator: true,
+            enabled: true,
+        },
+        {
+            name: 'action2',
+            trigger: actionTrigger,
+            enabled: true,
+        },
+    ];
 
     describe('<ActionsDropdown />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ActionsDropdown actions={actions} />,
-                );
+                shallow(<ActionsDropdown actions={actions} />);
             }).not.toThrow();
         });
     });
@@ -37,10 +39,7 @@ describe('Actions', () => {
         let actionsDropdown: ReactWrapper<IActionsDropdownProps, any>;
 
         beforeEach(() => {
-            actionsDropdown = mount(
-                <ActionsDropdown actions={actions} />,
-                {attachTo: document.getElementById('App')},
-            );
+            actionsDropdown = mount(<ActionsDropdown actions={actions} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

@@ -13,7 +13,7 @@ const Facet = () => (
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet title</div>
-                        <div className="facet-header-wait-animation" style={{display: "none"}} />
+                        <div className="facet-header-wait-animation" style={{display: 'none'}} />
                     </div>
                     <ul className="facet-values">
                         <li className="facet-value facet-selectable">
@@ -125,7 +125,7 @@ const Facet = () => (
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet title</div>
-                        <div className="facet-header-wait-animation" style={{display: "none"}} />
+                        <div className="facet-header-wait-animation" style={{display: 'none'}} />
                     </div>
                     <ul className="facet-values">
                         <li className="facet-value facet-selectable">

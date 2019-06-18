@@ -27,9 +27,7 @@ export interface IMultiStepBarProps {
 }
 
 const getStepContent = (step: IStep): JSX.Element => {
-    return step.text
-        ? <div className='multi-step-bar-text'>{step.text}</div>
-        : null;
+    return step.text ? <div className="multi-step-bar-text">{step.text}</div> : null;
 };
 
 export const MultiStepBar = (props: IMultiStepBarProps) => {
@@ -45,30 +43,31 @@ export const MultiStepBar = (props: IMultiStepBarProps) => {
     const stepsContent = steps.map(getStepContent);
     return (
         <div className={containerClasses}>
-            <div className='multi-step-bar-backdrop-container'>
+            <div className="multi-step-bar-backdrop-container">
                 {steps.map((step: IStep, i: number) => {
                     const classes = classNames('multi-step-bar', `multi-step-bar-${step.state}`);
-                    return <div key={`multi-step-bar-backdrop-${i}`} className={classes}>{stepsContent[i]}</div>;
+                    return (
+                        <div key={`multi-step-bar-backdrop-${i}`} className={classes}>
+                            {stepsContent[i]}
+                        </div>
+                    );
                 })}
             </div>
-            <div className='multi-step-bar-content-container'>
+            <div className="multi-step-bar-content-container">
                 {steps.map((step: IStep, i: number) => {
                     const key = `multi-step-bar-${i}`;
                     const classes = classNames('multi-step-bar');
-                    return step.tooltip && step.tooltip.title
-                        ? (
-                            <Tooltip {...step.tooltip}
-                                key={key}
-                                className={classes}>
-                                {stepsContent[i]}
-                            </Tooltip>
-                        )
-                        : (
-                            <span key={key} className={classes}>
-                                {stepsContent[i]}
-                            </span>
-                        );
-                })}</div>
+                    return step.tooltip && step.tooltip.title ? (
+                        <Tooltip {...step.tooltip} key={key} className={classes}>
+                            {stepsContent[i]}
+                        </Tooltip>
+                    ) : (
+                        <span key={key} className={classes}>
+                            {stepsContent[i]}
+                        </span>
+                    );
+                })}
+            </div>
         </div>
     );
 };

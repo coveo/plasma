@@ -17,18 +17,9 @@ export interface ITabPaneDispatchProps {}
 export interface ITabPaneProps extends ITabPaneOwnProps, ITabPaneStateProps, ITabPaneDispatchProps {}
 
 export class TabPane extends React.Component<ITabPaneProps, any> {
-
     render() {
-        const classes = classNames(
-            'tab-pane',
-            this.props.className,
-            {active: this.props.isActive},
-        );
+        const classes = classNames('tab-pane', this.props.className, {active: this.props.isActive});
 
-        return (
-            <div className={classes}>
-                {this.props.children}
-            </div>
-        );
+        return <div className={classes}>{this.props.children}</div>;
     }
 }

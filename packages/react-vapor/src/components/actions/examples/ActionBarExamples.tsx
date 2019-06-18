@@ -3,7 +3,6 @@ import {IActionOptions} from '../Action';
 import {ActionBar} from '../ActionBar';
 
 export class ActionBarExamples extends React.Component<any, any> {
-
     render() {
         const actions: IActionOptions[] = [
             {
@@ -13,11 +12,13 @@ export class ActionBarExamples extends React.Component<any, any> {
                 icon: 'exit',
                 primary: true,
                 enabled: true,
-            }, {
+            },
+            {
                 name: 'action1',
                 trigger: () => alert('Action 1 was triggered'),
                 enabled: true,
-            }, {
+            },
+            {
                 separator: true,
                 enabled: true,
             },
@@ -34,7 +35,7 @@ export class ActionBarExamples extends React.Component<any, any> {
                 primary: true,
                 enabled: false,
                 hideDisabled: false,
-                tooltip: 'You cannot access Coveo\'s website at the moment.',
+                tooltip: "You cannot access Coveo's website at the moment.",
                 tooltipPlacement: 'bottom',
             },
             {
@@ -51,21 +52,27 @@ export class ActionBarExamples extends React.Component<any, any> {
         ];
 
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>Action bar without actions</label>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Action bar without actions</label>
                     <ActionBar />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Action bar with actions</label>
+                <div className="form-group">
+                    <label className="form-control-label">Action bar with actions</label>
                     <ActionBar actions={actions} />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Action bar with default classes turned off and extra classes</label>
-                    <ActionBar actions={actions} removeDefaultContainerClasses extraContainerClasses={['coveo-table-actions-container', 'p2']} />
+                <div className="form-group">
+                    <label className="form-control-label">
+                        Action bar with default classes turned off and extra classes
+                    </label>
+                    <ActionBar
+                        actions={actions}
+                        removeDefaultContainerClasses
+                        extraContainerClasses={['coveo-table-actions-container', 'p2']}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Action bar with small actions</label>
+                <div className="form-group">
+                    <label className="form-control-label">Action bar with small actions</label>
                     <ActionBar actions={actions} withSmallActions />
                 </div>
             </div>

@@ -24,10 +24,15 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
 
     render() {
         return (
-            <div className='mt2'>
-                <h1 className='text-medium-blue mb1 bold'>Checkboxes</h1>
-                <p className='m2'>See <a href='http://coveo.github.io/vapor/controls/#checkboxes-infos' target='_blank'>Usage and guidelines</a></p>
-                <div className='form-group'>
+            <div className="mt2">
+                <h1 className="text-medium-blue mb1 bold">Checkboxes</h1>
+                <p className="m2">
+                    See{' '}
+                    <a href="http://coveo.github.io/vapor/controls/#checkboxes-infos" target="_blank">
+                        Usage and guidelines
+                    </a>
+                </p>
+                <div className="form-group">
                     <Checkbox>
                         <Label classes={['label']}>A checkbox unchecked</Label>
                     </Checkbox>
@@ -52,8 +57,8 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
                         <Label classes={['label']}>A checkbox with state</Label>
                     </Checkbox>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A checkbox with no label</label>
+                <div className="form-group">
+                    <label className="form-control-label">A checkbox with no label</label>
                     <br />
                     <Checkbox />
                 </div>

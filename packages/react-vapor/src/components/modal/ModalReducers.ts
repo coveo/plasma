@@ -12,7 +12,7 @@ export const modalsInitialState: IModalState[] = [];
 
 export const modalReducer = (
     state: IModalState = modalInitialState,
-    action: IReduxAction<IModalActionPayload>,
+    action: IReduxAction<IModalActionPayload>
 ): IModalState => {
     switch (action.type) {
         case ModalAction.addModal:
@@ -24,16 +24,16 @@ export const modalReducer = (
             return state.id !== action.payload.id
                 ? state
                 : {
-                    ...state,
-                    isOpened: true,
-                };
+                      ...state,
+                      isOpened: true,
+                  };
         case ModalAction.closeModals:
             return action.payload.ids && action.payload.ids.length !== 0 && !_.contains(action.payload.ids, state.id)
                 ? state
                 : {
-                    ...state,
-                    isOpened: false,
-                };
+                      ...state,
+                      isOpened: false,
+                  };
 
         default:
             return state;
@@ -42,14 +42,11 @@ export const modalReducer = (
 
 export const modalsReducer = (
     state: IModalState[] = modalsInitialState,
-    action: IReduxAction<IModalActionPayload>,
+    action: IReduxAction<IModalActionPayload>
 ): IModalState[] => {
     switch (action.type) {
         case ModalAction.addModal:
-            return [
-                ...state,
-                modalReducer(undefined, action),
-            ];
+            return [...state, modalReducer(undefined, action)];
         case ModalAction.removeModal:
             return _.reject(state, (modal: IModalState) => {
                 return action.payload.id === modal.id;
@@ -65,10 +62,7 @@ export const modalsReducer = (
 export const openModalsReducer = (state: string[] = [], action: IReduxAction<IModalActionPayload>): string[] => {
     switch (action.type) {
         case ModalAction.openModal:
-            return [
-                ...state,
-                action.payload.id,
-            ];
+            return [...state, action.payload.id];
         case ModalAction.closeModals:
             return _.without(state, ...action.payload.ids);
         default:

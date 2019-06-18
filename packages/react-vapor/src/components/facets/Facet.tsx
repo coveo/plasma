@@ -62,14 +62,14 @@ export class Facet extends React.Component<IFacetProps, any> {
         if (this.props.onToggleFacet) {
             this.props.onToggleFacet(this.props.facet.name, facetRow);
         }
-    }
+    };
 
     private clearFacet = () => {
         this.props.clearFacet(this.props.facet.name);
         if (this.props.onClearFacet) {
             this.props.onClearFacet(this.props.facet.name);
         }
-    }
+    };
 
     private sortFacetRows(facetRows: IFacet[]) {
         return _.sortBy(facetRows, (facetRow: IFacet) => facetRow.formattedName.toLowerCase());
@@ -91,7 +91,8 @@ export class Facet extends React.Component<IFacetProps, any> {
         if (!this.props.facetRows.length && !this.props.selectedFacetRows.length) {
             return null;
         }
-        const removeSelectedClass: string = 'facet-header-eraser' + (this.props.selectedFacetRows.length ? '' : ' hidden');
+        const removeSelectedClass: string =
+            'facet-header-eraser' + (this.props.selectedFacetRows.length ? '' : ' hidden');
         const selected: IFacet[] = this.sortFacetRows(this.props.selectedFacetRows);
         const unselected: IFacet[] = this.sortFacetRows(this.props.facetRows);
         const allRows: IFacet[] = _.union(selected, unselected);
@@ -116,27 +117,30 @@ export class Facet extends React.Component<IFacetProps, any> {
         if (rows.length === rowsToShow + 1) {
             rowsToShow += 1;
         }
-        const moreRowsToggle: JSX.Element = rows.length > rowsToShow
-            ? (this.props.withReduxState
-                ? <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
-                : <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
-            )
-            : null;
+        const moreRowsToggle: JSX.Element =
+            rows.length > rowsToShow ? (
+                this.props.withReduxState ? (
+                    <FacetMoreToggleConnected facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
+                ) : (
+                    <FacetMoreToggle facet={this.props.facet.name} moreLabel={this.props.moreLabel} />
+                )
+            ) : null;
         const facetClasses: string = this.props.facet.name + ' facet' + (this.props.isOpened ? ' facet-opened' : '');
 
         return (
             <div className={facetClasses}>
-                <div className='facet-header'>
-                    <div
-                        className={removeSelectedClass}
-                        onClick={() => this.clearFacet()}>
-                        <Tooltip className='remove-selected-tooltip' title={`${this.props.clearFacetLabel} ${this.props.facet.formattedName}`}>
-                            <Svg svgName='clear' className='icon fill-medium-grey' />
+                <div className="facet-header">
+                    <div className={removeSelectedClass} onClick={() => this.clearFacet()}>
+                        <Tooltip
+                            className="remove-selected-tooltip"
+                            title={`${this.props.clearFacetLabel} ${this.props.facet.formattedName}`}
+                        >
+                            <Svg svgName="clear" className="icon fill-medium-grey" />
                         </Tooltip>
                     </div>
-                    <div className='facet-header-title bold text-medium-blue'>{this.props.facet.formattedName}</div>
+                    <div className="facet-header-title bold text-medium-blue">{this.props.facet.formattedName}</div>
                 </div>
-                <ul className='facet-values'>
+                <ul className="facet-values">
                     {rows.slice(0, rowsToShow)}
                     {moreRowsToggle}
                 </ul>
@@ -147,15 +151,19 @@ export class Facet extends React.Component<IFacetProps, any> {
 
     private getMoreRows(needMoreRows: boolean, rows: JSX.Element[]): JSX.Element {
         if (needMoreRows) {
-            return this.props.withReduxState
-                ? <FacetMoreRowsConnected
+            return this.props.withReduxState ? (
+                <FacetMoreRowsConnected
                     facet={this.props.facet.name}
                     facetRows={rows}
-                    filterPlaceholder={this.props.filterPlaceholder} />
-                : <FacetMoreRows
+                    filterPlaceholder={this.props.filterPlaceholder}
+                />
+            ) : (
+                <FacetMoreRows
                     facet={this.props.facet.name}
                     facetRows={rows}
-                    filterPlaceholder={this.props.filterPlaceholder} />;
+                    filterPlaceholder={this.props.filterPlaceholder}
+                />
+            );
         }
     }
 }

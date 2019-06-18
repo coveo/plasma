@@ -8,10 +8,7 @@ import {MultilineBox} from '../MultilineBox';
 
 describe('Multiline box with drag & drop', () => {
     describe('<MultilineBoxWithDnD/>', () => {
-
-        const DefaultMultilineBoxWithDnD = _.compose(
-            multilineBoxWithDnD(),
-        )(MultilineBox);
+        const DefaultMultilineBoxWithDnD = _.compose(multilineBoxWithDnD())(MultilineBox);
 
         const id = 'multiline-box';
 
@@ -52,21 +49,23 @@ describe('Multiline box with drag & drop', () => {
             const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                 id,
                 data: [],
-                renderBody: () => <div className='pick-me' />,
+                renderBody: () => <div className="pick-me" />,
             });
 
             expect(component.wrapper.find('.pick-me').length).toBe(1);
         });
 
         describe('once rendered', () => {
-
             it('should dispatch a reorder action on onReorder', () => {
                 const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
                 });
 
-                component.wrapper.find(MultilineBox).props().onReorder(['a']);
+                component.wrapper
+                    .find(MultilineBox)
+                    .props()
+                    .onReorder(['a']);
 
                 expect(component.store.getState().multilineIds[id].list).toEqual(['a']);
             });
@@ -79,14 +78,16 @@ describe('Multiline box with drag & drop', () => {
                     data: [],
                 });
 
-                component.wrapper.find(DnDContainer).props().move();
+                component.wrapper
+                    .find(DnDContainer)
+                    .props()
+                    .move();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
         });
 
         describe('with supplier', () => {
-
             const CustomMultilineBoxWithDnD = _.compose(
                 multilineBoxWithDnD({
                     DnDContainerProps: {
@@ -94,7 +95,7 @@ describe('Multiline box with drag & drop', () => {
                             className: 'select-me-plz',
                         },
                     },
-                }),
+                })
             )(MultilineBox);
 
             it('should add props on DnDContainer if added in the supplier for the hoc', () => {

@@ -23,7 +23,6 @@ export interface IItemBoxProps {
 }
 
 export class ItemBox extends React.Component<IItemBoxProps> {
-
     static defaultProps: Partial<IItemBoxProps> = {
         tooltip: {
             title: '',
@@ -56,31 +55,34 @@ export class ItemBox extends React.Component<IItemBoxProps> {
     }
 
     private getClasses(): string {
-        return classNames('item-box',
+        return classNames(
+            'item-box',
             {
-                'selected': this.props.selected,
-                'active': this.props.active,
-                'disabled': this.props.disabled,
-                'hidden': this.props.hidden,
-                'divider': this.props.divider,
+                selected: this.props.selected,
+                active: this.props.active,
+                disabled: this.props.disabled,
+                hidden: this.props.hidden,
+                divider: this.props.divider,
             },
-            this.props.classes);
+            this.props.classes
+        );
     }
 
     private handleOnOptionClick = () => {
         if (this.props.onOptionClick) {
             this.props.onOptionClick(this.props);
         }
-    }
+    };
 
     render() {
         return (
             <Tooltip {...this.props.tooltip}>
                 <li
-                    ref={(li: HTMLLIElement) => this.listItem = li}
+                    ref={(li: HTMLLIElement) => (this.listItem = li)}
                     className={this.getClasses()}
                     onClick={() => this.handleOnOptionClick()}
-                    data-value={this.props.value}>
+                    data-value={this.props.value}
+                >
                     {this.props.prepend ? <Content {...this.props.prepend} /> : null}
                     <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>
                         {this.props.displayValue || this.props.value}

@@ -16,7 +16,7 @@ describe('<XYAxis />', () => {
                 <XYAxis
                     x={{size: 25, innerPadding: 50, show: true, tickSize: 10}}
                     y={{size: 50, innerPadding: 10, show: false, tickSize: 5}}
-                />,
+                />
             );
         }).not.toThrow();
     });
@@ -48,11 +48,14 @@ describe('<XYAxis />', () => {
         const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
 
         // D3 doesn't enforce a strict tick count
-        const linearScale = d3.scale.linear()
+        const linearScale = d3.scale
+            .linear()
             .range(XYChartContextMock.xScale.range())
             .domain(XYChartContextMock.xDomain);
 
-        expect(component.find('.x-axis-tick text').length).toBe(linearScale.ticks(XYChartContextMock.xTicksCount).length);
+        expect(component.find('.x-axis-tick text').length).toBe(
+            linearScale.ticks(XYChartContextMock.xTicksCount).length
+        );
     });
 
     it('should render as many y ticks as defined in the context', () => {
@@ -60,6 +63,8 @@ describe('<XYAxis />', () => {
         const component = shallow(<XYAxis x={{show: false}} y={{show: true}} />);
 
         // D3 doesn't enforce a strict tick count
-        expect(component.find('.y-axis-tick').length).toBe(XYChartContextMock.yScale.ticks(XYChartContextMock.yTicksCount).length);
+        expect(component.find('.y-axis-tick').length).toBe(
+            XYChartContextMock.yScale.ticks(XYChartContextMock.yTicksCount).length
+        );
     });
 });

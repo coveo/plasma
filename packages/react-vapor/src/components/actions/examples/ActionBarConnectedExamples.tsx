@@ -7,7 +7,6 @@ import {ActionBarConnected} from '../ActionBarConnected';
 const actionBarId = 'action-bar-connected';
 
 export class ActionBarConnectedExamples extends React.Component<any, any> {
-
     componentDidMount() {
         const actions: IActionOptions[] = [
             {
@@ -71,9 +70,11 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
 
     render() {
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>Action bar with Redux state and inline prompt (actions appear after 4 seconds)</label>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">
+                        Action bar with Redux state and inline prompt (actions appear after 4 seconds)
+                    </label>
                     <ActionBarConnected id={actionBarId} />
                 </div>
             </div>

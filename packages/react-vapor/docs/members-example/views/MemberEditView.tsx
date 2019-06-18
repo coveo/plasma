@@ -26,12 +26,16 @@ export interface IMemberEditViewDispatchProps {
     cancelMemberChanges?: () => void;
 }
 
-export interface IMemberEditViewProps extends IMemberEditViewOwnProps,
-    IMemberEditViewStateProps,
-    IMemberEditViewDispatchProps,
-    IReduxProps {}
+export interface IMemberEditViewProps
+    extends IMemberEditViewOwnProps,
+        IMemberEditViewStateProps,
+        IMemberEditViewDispatchProps,
+        IReduxProps {}
 
-const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditViewOwnProps): IMemberEditViewStateProps => {
+const mapStateToProps = (
+    state: IReactVaporExampleState,
+    ownProps: IMemberEditViewOwnProps
+): IMemberEditViewStateProps => {
     let item: IMemberEditionState;
 
     if (_.isNull(ownProps.id)) {
@@ -50,7 +54,10 @@ const mapStateToProps = (state: IReactVaporExampleState, ownProps: IMemberEditVi
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: Action) => void, ownProps: IMemberEditViewOwnProps): IMemberEditViewDispatchProps => {
+const mapDispatchToProps = (
+    dispatch: (action: Action) => void,
+    ownProps: IMemberEditViewOwnProps
+): IMemberEditViewDispatchProps => {
     return {
         toggleMemberOpen: (isOpen: boolean) => dispatch(toggleOpen(ownProps.id, isOpen)),
         changeMemberEmail: (email: string) => dispatch(changeEmail(ownProps.id, email)),
@@ -69,50 +76,65 @@ export class MemberEditView extends React.Component<IMemberEditViewProps, IMembe
 
         return (
             <Popover
-                attachment='top left'
-                targetAttachment='bottom left'
-                constraints={[{
-                    to: 'scrollParent',
-                    pin: true,
-                }]}
+                attachment="top left"
+                targetAttachment="bottom left"
+                constraints={[
+                    {
+                        to: 'scrollParent',
+                        pin: true,
+                    },
+                ]}
                 isOpen={this.props.isOpen}
                 onToggle={(isOpen: boolean) => this.props.toggleMemberOpen(isOpen)}
-                isModal>
-                <button type='button' className='btn'>
+                isModal
+            >
+                <button type="button" className="btn">
                     {isNew ? 'Add member' : this.props.appliedEmail}
                 </button>
-                <div className='popover'>
-                    <div className='popover-body coveo-form p2'>
-                        <fieldset className='form-group input-field'>
+                <div className="popover">
+                    <div className="popover-body coveo-form p2">
+                        <fieldset className="form-group input-field">
                             <input
-                                type='text' required name='email'
+                                type="text"
+                                required
+                                name="email"
                                 value={this.props.email}
                                 onChange={(event: React.FormEvent<HTMLInputElement>) => {
                                     this.props.changeMemberEmail((event.target as HTMLInputElement).value);
-                                }} />
+                                }}
+                            />
                             <label>Email</label>
                         </fieldset>
-                        <fieldset className='form-group'>
-                            <label className='form-control-label'>Send invite</label>
-                            <div className='form-control'>
-                                <label className='coveo-checkbox-label'>
+                        <fieldset className="form-group">
+                            <label className="form-control-label">Send invite</label>
+                            <div className="form-control">
+                                <label className="coveo-checkbox-label">
                                     <input
-                                        type='checkbox' className='coveo-checkbox' name='sendEmail'
-                                        ref={(sendEmailCheckbox) => this.sendEmailCheckbox = sendEmailCheckbox}
+                                        type="checkbox"
+                                        className="coveo-checkbox"
+                                        name="sendEmail"
+                                        ref={(sendEmailCheckbox) => (this.sendEmailCheckbox = sendEmailCheckbox)}
                                         checked={this.props.sendEmail}
                                         onChange={(event: React.FormEvent<HTMLInputElement>) => {
-                                            this.props.changeMemberSendEmail((event.target as HTMLInputElement).checked);
-                                        }} />
-                                    <button type='button' onClick={() => this.sendEmailCheckbox.click()} />
+                                            this.props.changeMemberSendEmail(
+                                                (event.target as HTMLInputElement).checked
+                                            );
+                                        }}
+                                    />
+                                    <button type="button" onClick={() => this.sendEmailCheckbox.click()} />
                                 </label>
                             </div>
                         </fieldset>
                     </div>
-                    <div className='popover-footer'>
-                        <button type='button' className='btn mod-primary mod-small' onClick={() => this.onSaveMember()}>
+                    <div className="popover-footer">
+                        <button type="button" className="btn mod-primary mod-small" onClick={() => this.onSaveMember()}>
                             {isNew ? 'Add' : 'Save'}
                         </button>
-                        <button type='button' className='btn mod-small' onClick={() => this.props.cancelMemberChanges()}>
+                        <button
+                            type="button"
+                            className="btn mod-small"
+                            onClick={() => this.props.cancelMemberChanges()}
+                        >
                             Cancel
                         </button>
                     </div>

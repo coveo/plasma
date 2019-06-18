@@ -16,12 +16,7 @@ describe('Facets', () => {
         it('should render without errors', () => {
             expect(() => {
                 shallow(
-                    <Facet
-                        facetRows={facetRows}
-                        facet={facet}
-                        toggleFacet={toggleFacet}
-                        clearFacet={clearFacet}
-                    />,
+                    <Facet facetRows={facetRows} facet={facet} toggleFacet={toggleFacet} clearFacet={clearFacet} />
                 );
             }).not.toThrow();
         });
@@ -40,10 +35,7 @@ describe('Facets', () => {
                 clearFacet: clearFacet,
                 maxRowsToShow,
             };
-            facetComponent = mount(
-                <Facet {...facetBasicAttributes} />,
-                {attachTo: document.getElementById('App')},
-            );
+            facetComponent = mount(<Facet {...facetBasicAttributes} />, {attachTo: document.getElementById('App')});
             facetInstance = facetComponent.instance() as Facet;
         });
 
@@ -169,8 +161,10 @@ describe('Facets', () => {
             expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
         });
 
-        it('should not display <FacetMoreToggle /> and <FacetMoreRows /> if it has ' +
-            'more than maxRowsToShow (number in props + 1 extra) and they are all selected', () => {
+        it(
+            'should not display <FacetMoreToggle /> and <FacetMoreRows /> if it has ' +
+                'more than maxRowsToShow (number in props + 1 extra) and they are all selected',
+            () => {
                 const multipleRows = [
                     {
                         name: '1',
@@ -199,8 +193,10 @@ describe('Facets', () => {
                         count: '5243421',
                     },
                 ];
-                const newFacetAttributes = _.extend({}, facetBasicAttributes,
-                    {facetRows: multipleRows, selectedFacetRows: multipleRows});
+                const newFacetAttributes = _.extend({}, facetBasicAttributes, {
+                    facetRows: multipleRows,
+                    selectedFacetRows: multipleRows,
+                });
 
                 expect(facetComponent.find('FacetMoreRows').length).toBe(0);
                 expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
@@ -210,11 +206,20 @@ describe('Facets', () => {
 
                 expect(facetComponent.find('FacetMoreRows').length).toBe(0);
                 expect(facetComponent.find('FacetMoreToggle').length).toBe(0);
-            });
+            }
+        );
 
         it('should display the last facet if the component has one more facet than allowed', () => {
-            const multipleRows = [{name: '1', formattedName: '1'}, {name: '2', formattedName: '2'}, {name: '3', formattedName: '3'}];
-            const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows, selectedFacetRows: [], maxRowsToShow: multipleRows.length - 1});
+            const multipleRows = [
+                {name: '1', formattedName: '1'},
+                {name: '2', formattedName: '2'},
+                {name: '3', formattedName: '3'},
+            ];
+            const newFacetAttributes = _.extend({}, facetBasicAttributes, {
+                facetRows: multipleRows,
+                selectedFacetRows: [],
+                maxRowsToShow: multipleRows.length - 1,
+            });
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
@@ -225,8 +230,16 @@ describe('Facets', () => {
         });
 
         it('should display the more if the component has two more facet than allowed', () => {
-            const multipleRows = [{name: '1', formattedName: '1'}, {name: '2', formattedName: '2'}, {name: '3', formattedName: '3'}];
-            const newFacetAttributes = _.extend({}, facetBasicAttributes, {facetRows: multipleRows, selectedFacetRows: [], maxRowsToShow: multipleRows.length - 2});
+            const multipleRows = [
+                {name: '1', formattedName: '1'},
+                {name: '2', formattedName: '2'},
+                {name: '3', formattedName: '3'},
+            ];
+            const newFacetAttributes = _.extend({}, facetBasicAttributes, {
+                facetRows: multipleRows,
+                selectedFacetRows: [],
+                maxRowsToShow: multipleRows.length - 2,
+            });
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
@@ -238,7 +251,10 @@ describe('Facets', () => {
 
         it('should have class "facet-open" if it has isOpened prop set to true', () => {
             const expectedClass = '.facet-opened';
-            const newFacetAttributes = _.extend({}, facetBasicAttributes, {isOpened: true, facetRows: [{name: 'a', formattedName: 'b'}]});
+            const newFacetAttributes = _.extend({}, facetBasicAttributes, {
+                isOpened: true,
+                facetRows: [{name: 'a', formattedName: 'b'}],
+            });
 
             expect(facetComponent.find(expectedClass).length).toBe(0);
 
@@ -313,16 +329,39 @@ describe('Facets', () => {
                     count: '213',
                 },
             ];
-            const newAttributes = _.extend({}, facetBasicAttributes, {facetRows: unselected, selectedFacetRows: selected});
+            const newAttributes = _.extend({}, facetBasicAttributes, {
+                facetRows: unselected,
+                selectedFacetRows: selected,
+            });
 
             facetComponent.setProps(newAttributes);
             facetComponent.mount();
 
             expect(facetComponent.find(FacetRow).length).toBe(4);
-            expect(facetComponent.find(FacetRow).at(0).props().facetRow).toEqual(jasmine.objectContaining(selected[1]));
-            expect(facetComponent.find(FacetRow).at(1).props().facetRow).toEqual(jasmine.objectContaining(selected[0]));
-            expect(facetComponent.find(FacetRow).at(2).props().facetRow).toEqual(jasmine.objectContaining(unselected[1]));
-            expect(facetComponent.find(FacetRow).at(3).props().facetRow).toEqual(jasmine.objectContaining(unselected[0]));
+            expect(
+                facetComponent
+                    .find(FacetRow)
+                    .at(0)
+                    .props().facetRow
+            ).toEqual(jasmine.objectContaining(selected[1]));
+            expect(
+                facetComponent
+                    .find(FacetRow)
+                    .at(1)
+                    .props().facetRow
+            ).toEqual(jasmine.objectContaining(selected[0]));
+            expect(
+                facetComponent
+                    .find(FacetRow)
+                    .at(2)
+                    .props().facetRow
+            ).toEqual(jasmine.objectContaining(unselected[1]));
+            expect(
+                facetComponent
+                    .find(FacetRow)
+                    .at(3)
+                    .props().facetRow
+            ).toEqual(jasmine.objectContaining(unselected[0]));
         });
     });
 });

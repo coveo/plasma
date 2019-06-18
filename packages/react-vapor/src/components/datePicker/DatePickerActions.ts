@@ -51,7 +51,7 @@ export const addDatePicker = (
     initiallyUnselected = false,
     isClearable = false,
     simple = false,
-    initialDateRange?: DatePickerDateRange,
+    initialDateRange?: DatePickerDateRange
 ): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {

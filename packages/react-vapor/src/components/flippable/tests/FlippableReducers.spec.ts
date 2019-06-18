@@ -9,7 +9,6 @@ import {
 } from '../FlippableReducers';
 
 describe('Flippable', () => {
-
     const FLIPPED_FLIPPABLE: IFlippableState = {
         id: 'flippy-the-flippable',
         flipped: true,
@@ -78,34 +77,43 @@ describe('Flippable', () => {
             expect(newFlippables.filter(filterById(action.payload.id)).length).toBe(0);
         });
 
-        it('should return the old state with when the action is removeFlippable and the flipable id ' +
-            `doesn't exist in the state`, () => {
+        it(
+            'should return the old state with when the action is removeFlippable and the flipable id ' +
+                `doesn't exist in the state`,
+            () => {
                 const action = removeFlippable('some-random-flippable');
                 const newFlippables: IFlippableState[] = flippablesReducer(SOME_FLIPPABLES, action);
 
                 expect(newFlippables.length).toBe(SOME_FLIPPABLES.length);
                 expect(newFlippables.filter(filterById(action.payload.id)).length).toBe(0);
-            });
+            }
+        );
 
-        it('should set the flipped state prop to true when the action is changeFlippableSide, the flippable id ' +
-            'match the action payload id and flipped payload is set to true', () => {
+        it(
+            'should set the flipped state prop to true when the action is changeFlippableSide, the flippable id ' +
+                'match the action payload id and flipped payload is set to true',
+            () => {
                 const action = changeFlippableSide(UNFLIPPED_FLIPPABLE.id, true);
                 const newFlippables: IFlippableState[] = flippablesReducer(SOME_FLIPPABLES, action);
 
                 expect(newFlippables.length).toBe(SOME_FLIPPABLES.length);
                 expect(newFlippables.filter(filterById(action.payload.id))[0].flipped).toBe(true);
                 expect(newFlippables.filter(filterById(ANOTHER_UNFLIPPED_FLIPPABLE.id))[0].flipped).toBe(false);
-            });
+            }
+        );
 
-        it('should set the flipped state to false when the action is changeFlippableSide, the flippable id ' +
-            'match the action payload id and flipped payload is set to false', () => {
+        it(
+            'should set the flipped state to false when the action is changeFlippableSide, the flippable id ' +
+                'match the action payload id and flipped payload is set to false',
+            () => {
                 const action = changeFlippableSide(FLIPPED_FLIPPABLE.id, false);
                 const newFlippables: IFlippableState[] = flippablesReducer(SOME_FLIPPABLES, action);
 
                 expect(newFlippables.length).toBe(SOME_FLIPPABLES.length);
                 expect(newFlippables.filter(filterById(action.payload.id))[0].flipped).toBe(false);
                 expect(newFlippables.filter(filterById(ANOTHER_FLIPPED_FLIPPABLE.id))[0].flipped).toBe(true);
-            });
+            }
+        );
     });
 
     describe('flippableReducer', () => {
@@ -136,22 +144,28 @@ describe('Flippable', () => {
             expect(newFlippable).toBe(UNFLIPPED_FLIPPABLE);
         });
 
-        it('should return a new state with flipped set to true when the action is "CHANGE_FLIPPABLE_SIDE" ' +
-            'and flipped is set to true in the payload', () => {
+        it(
+            'should return a new state with flipped set to true when the action is "CHANGE_FLIPPABLE_SIDE" ' +
+                'and flipped is set to true in the payload',
+            () => {
                 const action = changeFlippableSide(UNFLIPPED_FLIPPABLE.id, true);
                 const newFlippable = flippableReducer(UNFLIPPED_FLIPPABLE, action);
 
                 expect(newFlippable).not.toBe(UNFLIPPED_FLIPPABLE);
                 expect(newFlippable.flipped).toBe(action.payload.flipped);
-            });
+            }
+        );
 
-        it('should return a new state with flipped set to false when the action is "CHANGE_FLIPPABLE_SIDE" ' +
-            'and flipped is set to false in the payload', () => {
+        it(
+            'should return a new state with flipped set to false when the action is "CHANGE_FLIPPABLE_SIDE" ' +
+                'and flipped is set to false in the payload',
+            () => {
                 const action = changeFlippableSide(FLIPPED_FLIPPABLE.id, false);
                 const newFlippable = flippableReducer(FLIPPED_FLIPPABLE, action);
 
                 expect(newFlippable).not.toBe(FLIPPED_FLIPPABLE);
                 expect(newFlippable.flipped).toBe(action.payload.flipped);
-            });
+            }
+        );
     });
 });

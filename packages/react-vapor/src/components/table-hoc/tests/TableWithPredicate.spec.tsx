@@ -13,9 +13,7 @@ describe('Table HOC', () => {
             {displayValue: 'test', value: 'test'},
         ];
 
-        const TableWithPredicate = _.compose(
-            tableWithPredicate({id: predicateId, values: predicateValues}),
-        )(TableHOC);
+        const TableWithPredicate = _.compose(tableWithPredicate({id: predicateId, values: predicateValues}))(TableHOC);
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
@@ -28,8 +26,8 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithPredicate id='a' data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithPredicate id='b' data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {}));
+            expect(shallowWithState(<TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
         });
 
         it('should render a TableHOC', () => {
@@ -45,7 +43,10 @@ describe('Table HOC', () => {
 
         it('should filter out elements not matching the predicate in the state', () => {
             const predicate = predicateValues[1].value;
-            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, getStateWithPredicate(predicate)).dive();
+            const wrapper = shallowWithState(
+                <TableWithPredicate {...defaultProps} />,
+                getStateWithPredicate(predicate)
+            ).dive();
 
             const filteredData = _.filter(defaultProps.data, ({city}) => city === predicate);
             const tableData = wrapper.find(TableHOC).prop('data');
@@ -55,12 +56,15 @@ describe('Table HOC', () => {
 
         describe('when server side', () => {
             const TableWithPredicateServer = _.compose(
-                tableWithPredicate({id: predicateId, isServer: true, values: predicateValues}),
+                tableWithPredicate({id: predicateId, isServer: true, values: predicateValues})
             )(TableHOC);
 
             it('should not filter out elements', () => {
                 const predicate = predicateValues[1].value;
-                const wrapper = shallowWithState(<TableWithPredicateServer {...defaultProps} />, getStateWithPredicate(predicate)).dive();
+                const wrapper = shallowWithState(
+                    <TableWithPredicateServer {...defaultProps} />,
+                    getStateWithPredicate(predicate)
+                ).dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
 
@@ -70,7 +74,10 @@ describe('Table HOC', () => {
             it('should call onUpdate when the predicate changes', () => {
                 const updateSpy = jasmine.createSpy('update');
                 const predicate = predicateValues[1].value;
-                const wrapper = shallowWithState(<TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />, getStateWithPredicate(predicate)).dive();
+                const wrapper = shallowWithState(
+                    <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithPredicate(predicate)
+                ).dive();
 
                 wrapper.setProps({predicate: predicateValues[0].value});
                 wrapper.update();
@@ -81,7 +88,10 @@ describe('Table HOC', () => {
             it('should not call onUpdate when the predicate does not changes', () => {
                 const updateSpy = jasmine.createSpy('update');
                 const predicate = predicateValues[1].value;
-                const wrapper = shallowWithState(<TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />, getStateWithPredicate(predicate)).dive();
+                const wrapper = shallowWithState(
+                    <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
+                    getStateWithPredicate(predicate)
+                ).dive();
 
                 wrapper.setProps({ignore: true});
                 wrapper.update();

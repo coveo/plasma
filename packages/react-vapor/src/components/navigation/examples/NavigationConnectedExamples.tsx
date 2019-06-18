@@ -9,7 +9,6 @@ const navigationConnectedExampleId = 'navigation-connected';
 const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedExampleId];
 
 export class NavigationConnectedExamples extends React.Component<any, any> {
-
     // Remove loading after a few seconds
     componentWillMount() {
         ReactVaporStore.subscribe(() => {
@@ -29,9 +28,9 @@ export class NavigationConnectedExamples extends React.Component<any, any> {
             loadingIds: navigationConnectedExampleLoadingIds,
         };
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>Navigation with Redux state and loading</label>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Navigation with Redux state and loading</label>
                     <NavigationConnected {...navigationProps} />
                 </div>
             </div>

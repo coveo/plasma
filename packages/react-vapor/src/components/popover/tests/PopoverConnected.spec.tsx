@@ -27,24 +27,39 @@ describe('<PopoverConnected />', () => {
         return mount(
             <Provider store={store}>
                 <PopoverConnected {...props}>
-                    <div className='toggler'>toggler</div>
+                    <div className="toggler">toggler</div>
                     <div>popover</div>
                 </PopoverConnected>
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
     };
 
     it('should not throw when calling onMount', () => {
-        expect(() => mountComponentWithProps(basicPopoverProps).find(Popover).props().onMount(true)).not.toThrow();
+        expect(() =>
+            mountComponentWithProps(basicPopoverProps)
+                .find(Popover)
+                .props()
+                .onMount(true)
+        ).not.toThrow();
     });
 
     it('should not throw when calling onUnmount', () => {
-        expect(() => mountComponentWithProps(basicPopoverProps).find(Popover).props().onUnmount()).not.toThrow();
+        expect(() =>
+            mountComponentWithProps(basicPopoverProps)
+                .find(Popover)
+                .props()
+                .onUnmount()
+        ).not.toThrow();
     });
 
     it('should not throw when calling onToggle', () => {
-        expect(() => mountComponentWithProps(basicPopoverProps).find(Popover).props().onToggle(true)).not.toThrow();
+        expect(() =>
+            mountComponentWithProps(basicPopoverProps)
+                .find(Popover)
+                .props()
+                .onToggle(true)
+        ).not.toThrow();
     });
 
     describe('render', () => {
@@ -72,12 +87,12 @@ describe('<PopoverConnected />', () => {
                 const popover = mountComponentWithProps(basicPopoverProps);
                 const isOpenBeforeClick = findWhere(store.getState().popovers, {id: basicPopoverProps.id}).isOpen;
                 popover.find('.toggler').simulate('click');
-                expect(findWhere(store.getState().popovers, {id: basicPopoverProps.id}).isOpen)
-                    .toBe(!isOpenBeforeClick);
+                expect(findWhere(store.getState().popovers, {id: basicPopoverProps.id}).isOpen).toBe(
+                    !isOpenBeforeClick
+                );
 
                 popover.find('.toggler').simulate('click');
-                expect(findWhere(store.getState().popovers, {id: basicPopoverProps.id}).isOpen)
-                    .toBe(isOpenBeforeClick);
+                expect(findWhere(store.getState().popovers, {id: basicPopoverProps.id}).isOpen).toBe(isOpenBeforeClick);
             });
         });
     });

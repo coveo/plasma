@@ -26,12 +26,15 @@ describe('Select', () => {
 
         const id: string = 'single-select-with-filter';
 
-        const mountSingleSelect = (items: IItemBoxProps[] = [], matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined) => {
+        const mountSingleSelect = (
+            items: IItemBoxProps[] = [],
+            matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined
+        ) => {
             wrapper = mount(
                 <Provider store={store}>
                     <SingleSelectWithFilter id={id} items={items} matchFilter={matchFilter} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             singleSelect = wrapper.find(SelectConnected).first();
         };
@@ -96,11 +99,7 @@ describe('Select', () => {
         });
 
         it('should hide items when they do not match the filter', () => {
-            const items = [
-                {value: 'a'},
-                {value: 'b', selected: true},
-                {value: 'c'},
-            ];
+            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
             mountSingleSelect(items);
             store.dispatch(toggleSelect(id, true));
@@ -109,16 +108,14 @@ describe('Select', () => {
             singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
-            singleSelect.find(SelectConnected).props().items
-                .every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+            singleSelect
+                .find(SelectConnected)
+                .props()
+                .items.every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
         });
 
         it('should not show items that are already hidden', () => {
-            const items = [
-                {value: 'a', hidden: true},
-                {value: 'b', selected: true},
-                {value: 'c'},
-            ];
+            const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c'}];
 
             mountSingleSelect(items);
             store.dispatch(toggleSelect(id, true));
@@ -134,11 +131,7 @@ describe('Select', () => {
         });
 
         it('should hide items that do not match custom filter', () => {
-            const items = [
-                {value: 'a'},
-                {value: 'b', selected: true},
-                {value: 'c'},
-            ];
+            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
             mountSingleSelect(items, () => false);
             store.dispatch(toggleSelect(id, true));
@@ -147,17 +140,15 @@ describe('Select', () => {
             singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
-            singleSelect.find(SelectConnected).props().items
-                .every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+            singleSelect
+                .find(SelectConnected)
+                .props()
+                .items.every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
         });
 
         it('should set the highlight value equal to the filter', () => {
             const filterValue = 'a';
-            const items = [
-                {value: 'aaaa'},
-                {value: 'baba', selected: true},
-                {value: 'dada'},
-            ];
+            const items = [{value: 'aaaa'}, {value: 'baba', selected: true}, {value: 'dada'}];
 
             mountSingleSelect(items, () => true);
             store.dispatch(toggleSelect(id, true));
@@ -166,16 +157,14 @@ describe('Select', () => {
             singleSelect = wrapper.find(SelectConnected);
 
             expect(singleSelect.props().items.length).toBe(items.length);
-            singleSelect.find(SelectConnected).props().items
-                .every((item: IItemBoxProps) => expect(item.highlight).toBe(filterValue));
+            singleSelect
+                .find(SelectConnected)
+                .props()
+                .items.every((item: IItemBoxProps) => expect(item.highlight).toBe(filterValue));
         });
 
         describe('interactions', () => {
-            const items = [
-                {value: 'a'},
-                {value: 'b', selected: true},
-                {value: 'c'},
-            ];
+            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
             let dispatchSpy: jasmine.Spy;
 
             beforeEach(() => {
@@ -186,7 +175,8 @@ describe('Select', () => {
             it('should select the active element if the user press enter', () => {
                 store.dispatch(toggleSelect(id, true));
 
-                wrapper.find('.dropdown-toggle')
+                wrapper
+                    .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.enter})
                     .simulate('keyup', {keyCode: keyCode.enter});
 
@@ -198,14 +188,18 @@ describe('Select', () => {
                 wrapper.update();
 
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
-                wrapper.find(FilterBoxConnected).find('input')
+                wrapper
+                    .find(FilterBoxConnected)
+                    .find('input')
                     .simulate('keydown', {keyCode: keyCode.downArrow})
                     .simulate('keyup', {keyCode: keyCode.downArrow});
 
                 expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 1));
 
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, -1));
-                wrapper.find(FilterBoxConnected).find('input')
+                wrapper
+                    .find(FilterBoxConnected)
+                    .find('input')
                     .simulate('keydown', {keyCode: keyCode.upArrow})
                     .simulate('keyup', {keyCode: keyCode.upArrow});
 
@@ -214,7 +208,8 @@ describe('Select', () => {
 
             it('should dispatch a setActiveListBoxOption with 0 as the active parameter when the user press the up or down arrow but the dropdown is not open', () => {
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
-                singleSelect.find('.dropdown-toggle')
+                singleSelect
+                    .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.downArrow})
                     .simulate('keyup', {keyCode: keyCode.downArrow});
 
@@ -225,7 +220,8 @@ describe('Select', () => {
                 dispatchSpy.calls.reset();
 
                 expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
-                singleSelect.find('.dropdown-toggle')
+                singleSelect
+                    .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.upArrow})
                     .simulate('keyup', {keyCode: keyCode.upArrow});
 
@@ -234,18 +230,24 @@ describe('Select', () => {
         });
 
         describe('With CustomValue Props', () => {
-            const items = [
-                {value: 'a'},
-                {value: 'b', selected: true},
-                {value: 'c'},
-            ];
+            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
-            const mountSingleSelectCustomValues = (newItems: IItemBoxProps[] = [], matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined, props: Partial<ISelectWithFilterProps> = {}) => {
+            const mountSingleSelectCustomValues = (
+                newItems: IItemBoxProps[] = [],
+                matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined,
+                props: Partial<ISelectWithFilterProps> = {}
+            ) => {
                 wrapper = mount(
                     <Provider store={store}>
-                        <SingleSelectWithFilter id={id} items={newItems} matchFilter={matchFilter} customValues {...props} />
+                        <SingleSelectWithFilter
+                            id={id}
+                            items={newItems}
+                            matchFilter={matchFilter}
+                            customValues
+                            {...props}
+                        />
                     </Provider>,
-                    {attachTo: document.getElementById('App')},
+                    {attachTo: document.getElementById('App')}
                 );
 
                 store.dispatch(toggleSelect(id, true));
@@ -270,7 +272,8 @@ describe('Select', () => {
                 expect(store.getState().selectWithFilter[id].list.length).toBe(0);
                 store.dispatch(filterThrough(id, ''));
 
-                wrapper.find(SelectConnected)
+                wrapper
+                    .find(SelectConnected)
                     .find(Button)
                     .find('button')
                     .simulate('click');
@@ -286,7 +289,8 @@ describe('Select', () => {
                 expect(store.getState().selectWithFilter[id].list.length).toBe(0);
                 store.dispatch(filterThrough(id, filterValue));
 
-                wrapper.find(SelectConnected)
+                wrapper
+                    .find(SelectConnected)
                     .find(Button)
                     .find('button')
                     .simulate('click');
@@ -303,7 +307,8 @@ describe('Select', () => {
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
-                const itemsBox = wrapper.find(SelectConnected)
+                const itemsBox = wrapper
+                    .find(SelectConnected)
                     .find(ItemBox)
                     .first();
 
@@ -318,7 +323,8 @@ describe('Select', () => {
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
-                const itemsBox = wrapper.find(SelectConnected)
+                const itemsBox = wrapper
+                    .find(SelectConnected)
                     .find(ItemBox)
                     .get(1);
 
@@ -332,7 +338,8 @@ describe('Select', () => {
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
-                wrapper.find(SelectConnected)
+                wrapper
+                    .find(SelectConnected)
                     .find(ItemBox)
                     .find('li')
                     .simulate('click');

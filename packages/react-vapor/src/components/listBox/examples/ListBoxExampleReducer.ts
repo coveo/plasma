@@ -13,7 +13,7 @@ export const listBoxExampleCompositeInitialState: IListBoxExampleCompositeState 
 
 export const listBoxExampleReducer = (
     state: IListBoxExampleCompositeState = listBoxExampleCompositeInitialState,
-    action: IReduxAction<IListBoxExamplePayload>,
+    action: IReduxAction<IListBoxExamplePayload>
 ): IListBoxExampleCompositeState => {
     switch (action.type) {
         case ListBoxExampleActions.add:

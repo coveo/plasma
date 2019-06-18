@@ -7,8 +7,8 @@ describe('StickyFooter', () => {
     it('should render without error', () => {
         expect(() => shallow(<StickyFooter isOpened={true} />)).not.toThrow();
         expect(() => shallow(<StickyFooter isOpened={false} />)).not.toThrow();
-        expect(() => shallow(<StickyFooter className='someclass' isOpened={true} />)).not.toThrow();
-        expect(() => shallow(<StickyFooter id='oyeah' isOpened={true} />)).not.toThrow();
+        expect(() => shallow(<StickyFooter className="someclass" isOpened={true} />)).not.toThrow();
+        expect(() => shallow(<StickyFooter id="oyeah" isOpened={true} />)).not.toThrow();
     });
 
     it('should render with extra classes on container if classes is passed as prop', () => {

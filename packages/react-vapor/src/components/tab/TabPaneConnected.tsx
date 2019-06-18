@@ -5,10 +5,7 @@ import {ReduxUtils} from '../../utils/ReduxUtils';
 import {ITabPaneDispatchProps, ITabPaneOwnProps, ITabPaneProps, ITabPaneStateProps, TabPane} from './TabPane';
 import {DEFAULT_GROUP_ID, ITabGroupState} from './TabReducers';
 
-const mapStateToProps = (
-    state: IReactVaporState,
-    ownProps: ITabPaneOwnProps,
-): ITabPaneStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: ITabPaneOwnProps): ITabPaneStateProps => {
     const id = ownProps.groupId ? ownProps.groupId : DEFAULT_GROUP_ID;
     const tabGroup = _.find(state.tabs, (currentTabGroup: ITabGroupState) => currentTabGroup.id === id);
     return {
@@ -18,4 +15,8 @@ const mapStateToProps = (
 
 const mapDispatchToProps = (): ITabPaneDispatchProps => ({});
 
-export const TabPaneConnected: React.ComponentClass<ITabPaneProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TabPane);
+export const TabPaneConnected: React.ComponentClass<ITabPaneProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(TabPane);

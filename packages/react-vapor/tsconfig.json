@@ -1,28 +1,23 @@
 {
-  "compilerOptions": {
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "downlevelIteration": true,
-    "jsx": "react",
-    "module": "commonjs",
-    "allowJs": true,
-    "noImplicitAny": true,
-    "noImplicitThis": true,
-    "noUnusedLocals": true,
-    "removeComments": true,
-    "skipLibCheck": true,
-    "target": "ES5",
-    "plugins": [
-      {
-        "transform": "ts-transformer-keys/transformer"
-      }
-    ],
-    "lib": [
-      "es2015",
-      "dom"
-    ],
-  },
-  "exclude": [
-    "node_modules"
-  ]
+    "compilerOptions": {
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "jsx": "react",
+        "module": "commonjs",
+        "allowJs": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "removeComments": true,
+        "noUnusedLocals": true,
+        "skipLibCheck": true,
+        "target": "ES5",
+        "plugins": [
+            {
+                "transform": "ts-transformer-keys/transformer"
+            }
+        ],
+        "lib": ["es2015", "dom"]
+    },
+    "exclude": ["node_modules", "dist", "coverage"]
 }

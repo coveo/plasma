@@ -8,9 +8,7 @@ import {ISideNavigationSectionProps, SideNavigationMenuSection} from '../SideNav
 describe('<SideNavigationMenuSection />', () => {
     it('should render without errors', () => {
         expect(() => {
-            shallow(
-                <SideNavigationMenuSection />,
-            );
+            shallow(<SideNavigationMenuSection />);
         }).not.toThrow();
     });
 });
@@ -20,10 +18,7 @@ describe('<SideNavigationMenuSection />', () => {
     let wrapper: ReactWrapper<ISideNavigationSectionProps, any>;
 
     beforeEach(() => {
-        wrapper = mount(
-            <SideNavigationMenuSection />,
-            {attachTo: document.getElementById('App')},
-        );
+        wrapper = mount(<SideNavigationMenuSection />, {attachTo: document.getElementById('App')});
     });
 
     afterEach(() => {
@@ -63,7 +58,10 @@ describe('<SideNavigationMenuSection />', () => {
         const onClickSpy = jasmine.createSpy('click');
         wrapper.setProps({header: {title}, onClick: onClickSpy});
         wrapper.mount();
-        wrapper.find(SideNavigationHeader).first().simulate('click');
+        wrapper
+            .find(SideNavigationHeader)
+            .first()
+            .simulate('click');
 
         expect(onClickSpy).toHaveBeenCalledTimes(1);
     });

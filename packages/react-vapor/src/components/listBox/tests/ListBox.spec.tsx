@@ -5,7 +5,6 @@ import {ItemBox} from '../../itemBox/ItemBox';
 import {IListBoxProps, ListBox} from '../ListBox';
 
 describe('ListBox', () => {
-
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;
 
     const spyOnOptionClick = jasmine.createSpy('onOptionClick');
@@ -30,12 +29,8 @@ describe('ListBox', () => {
     });
 
     describe('<BoxItem /> with default props', () => {
-
         beforeEach(() => {
-            listBoxComponent = mount(
-                <ListBox {...defaultProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            listBoxComponent = mount(<ListBox {...defaultProps} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -52,12 +47,10 @@ describe('ListBox', () => {
     });
 
     describe('<BoxItem /> with custom props', () => {
-
         const renderListBox = (props: Partial<IListBoxProps> = {}) => {
-            listBoxComponent = mount(
-                <ListBox {...defaultProps} {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            listBoxComponent = mount(<ListBox {...defaultProps} {...props} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         afterEach(() => {
@@ -88,7 +81,10 @@ describe('ListBox', () => {
         it('should render items with events on onOptionClick on the item', () => {
             renderListBox();
 
-            (listBoxComponent.find(ItemBox).at(1).instance() as any).handleOnOptionClick({target: 'target'});
+            (listBoxComponent
+                .find(ItemBox)
+                .at(1)
+                .instance() as any).handleOnOptionClick({target: 'target'});
             expect(spyOnOptionClick).toHaveBeenCalled();
         });
 
@@ -98,7 +94,10 @@ describe('ListBox', () => {
                 onOptionClick,
             });
 
-            (listBoxComponent.find(ItemBox).first().instance() as any).handleOnOptionClick({target: 'target'});
+            (listBoxComponent
+                .find(ItemBox)
+                .first()
+                .instance() as any).handleOnOptionClick({target: 'target'});
             expect(onOptionClick).toHaveBeenCalled();
         });
 

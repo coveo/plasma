@@ -42,12 +42,9 @@ describe('InlinePrompt', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <InlinePromptConnected
-                        id={id}
-                        options={options}
-                    />
+                    <InlinePromptConnected id={id} options={options} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             inlinePrompt = wrapper.find(InlinePrompt).first();
         });

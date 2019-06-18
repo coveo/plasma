@@ -2,12 +2,14 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../../../utils/ReduxUtils';
 import {IItemFilterActionPayload, IItemFilteringActionPayload, ItemFilterActions} from '../ItemFilterActions';
 import {
-    IItemFilterState, itemFilterOriginalState, itemFilterReducer, itemFiltersOriginalState,
+    IItemFilterState,
+    itemFilterOriginalState,
+    itemFilterReducer,
+    itemFiltersOriginalState,
     itemFiltersReducer,
 } from '../ItemFilterReducers';
 
 describe('Item filters', () => {
-
     const genericAction: IReduxAction<IItemFilterActionPayload> = {
         type: 'DO_SOMETHING',
         payload: {
@@ -56,10 +58,12 @@ describe('Item filters', () => {
                 {
                     id: 'some-filter2',
                     item: '',
-                }, {
+                },
+                {
                     id: 'some-filter',
                     item: '',
-                }, {
+                },
+                {
                     id: 'some-filter3',
                     item: '',
                 },
@@ -88,10 +92,12 @@ describe('Item filters', () => {
                 {
                     id: 'some-filter2',
                     item: '',
-                }, {
+                },
+                {
                     id: 'some-filter',
                     item: '',
-                }, {
+                },
+                {
                     id: 'some-filter3',
                     item: '',
                 },
@@ -113,10 +119,12 @@ describe('Item filters', () => {
                 {
                     id: 'some-filter2',
                     item: '',
-                }, {
+                },
+                {
                     id: 'some-filter',
                     item: '',
-                }, {
+                },
+                {
                     id: 'some-filter3',
                     item: '',
                 },

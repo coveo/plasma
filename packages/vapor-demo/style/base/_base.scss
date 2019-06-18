@@ -25,11 +25,11 @@ figure {
  * Basic styling
  */
 body > div {
-    background-color: $background-color;
-    flex-flow: column nowrap;
     display: flex;
-    overflow: hidden;
+    flex-flow: column nowrap;
     height: 100%;
+    overflow: hidden;
+    background-color: $background-color;
 }
 
 .application-wrapper {
@@ -75,20 +75,20 @@ body > div {
 }
 
 .vapor-header-logo svg {
-    height: 30px;
     width: 80px;
+    height: 30px;
 }
 
 /**
  * Blockquotes
  */
 blockquote {
-    color: $grey-color;
-    border-left: 4px solid $grey-color-light;
     padding-left: $spacing-unit / 2;
+    color: $grey-color;
     font-size: 18px;
-    letter-spacing: -1px;
     font-style: italic;
+    letter-spacing: -1px;
+    border-left: 4px solid $grey-color-light;
 
     > :last-child {
         margin-bottom: 0;
@@ -100,8 +100,8 @@ blockquote {
  */
 .clearfix {
     &:after {
-        content: '';
         display: table;
         clear: both;
+        content: '';
     }
 }

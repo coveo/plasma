@@ -1,10 +1,15 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ILoadingActionPayload, LoadingActions} from '../LoadingActions';
-import {ILoadingState, loadingInitialState, loadingReducer, loadingsInitialState, loadingsReducer} from '../LoadingReducers';
+import {
+    ILoadingState,
+    loadingInitialState,
+    loadingReducer,
+    loadingsInitialState,
+    loadingsReducer,
+} from '../LoadingReducers';
 
 describe('Reducers', () => {
-
     describe('LoadingReducers', () => {
         const genericAction: IReduxAction<ILoadingActionPayload> = {
             type: 'DO_SOMETHING',
@@ -26,10 +31,12 @@ describe('Reducers', () => {
         });
 
         it('should return the old state when the action is not defined for the loading state', () => {
-            const oldState: ILoadingState[] = [{
-                id: 'some-loading',
-                isOn: false,
-            }];
+            const oldState: ILoadingState[] = [
+                {
+                    id: 'some-loading',
+                    isOn: false,
+                },
+            ];
             const loadingState: ILoadingState[] = loadingsReducer(oldState, genericAction);
 
             expect(loadingState).toBe(oldState);
@@ -71,10 +78,12 @@ describe('Reducers', () => {
                 {
                     id: 'some-loading',
                     isOn: true,
-                }, {
+                },
+                {
                     id: 'some-loading2',
                     isOn: false,
-                }, {
+                },
+                {
                     id: 'some-loading1',
                     isOn: true,
                 },

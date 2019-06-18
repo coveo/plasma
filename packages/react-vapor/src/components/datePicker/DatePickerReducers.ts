@@ -29,18 +29,30 @@ export const datePickerInitialState: IDatePickerState = {
     isRange: false,
     isClearable: false,
     simple: false,
-    lowerLimit: moment().startOf('day').toDate(),
-    upperLimit: moment().endOf('day').toDate(),
+    lowerLimit: moment()
+        .startOf('day')
+        .toDate(),
+    upperLimit: moment()
+        .endOf('day')
+        .toDate(),
     selected: '',
-    inputLowerLimit: moment().startOf('day').toDate(),
-    inputUpperLimit: moment().endOf('day').toDate(),
-    appliedLowerLimit: moment().startOf('day').toDate(),
-    appliedUpperLimit: moment().endOf('day').toDate(),
+    inputLowerLimit: moment()
+        .startOf('day')
+        .toDate(),
+    inputUpperLimit: moment()
+        .endOf('day')
+        .toDate(),
+    appliedLowerLimit: moment()
+        .startOf('day')
+        .toDate(),
+    appliedUpperLimit: moment()
+        .endOf('day')
+        .toDate(),
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 
 const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePickerPayload>): IDatePickerState => {
-    const mayBeNull = (d: Date) => action.payload.initiallyUnselected ? null : d;
+    const mayBeNull = (d: Date) => (action.payload.initiallyUnselected ? null : d);
     const appliedLowerLimit = (action.payload.initialDateRange || [])[0];
     const appliedUpperLimit = (action.payload.initialDateRange || [])[1];
 
@@ -63,28 +75,30 @@ const addDatePicker = (state: IDatePickerState, action: IReduxAction<IAddDatePic
 };
 
 const changeLowerLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    const nullifyIfBefore = (currentUpperLimit: Date, newLowerLimit: Date) => newLowerLimit && state.isRange
-        && moment(newLowerLimit).isAfter(currentUpperLimit)
-        ? null
-        : currentUpperLimit;
+    const nullifyIfBefore = (currentUpperLimit: Date, newLowerLimit: Date) =>
+        newLowerLimit && state.isRange && moment(newLowerLimit).isAfter(currentUpperLimit) ? null : currentUpperLimit;
 
     const simpleSelected = state.simple ? DateLimits.lower : '';
 
-    return state.id !== action.payload.id ? state : _.extend({}, state, {
-        lowerLimit: action.payload.date,
-        inputLowerLimit: action.payload.date,
-        upperLimit: nullifyIfBefore(state.upperLimit, action.payload.date),
-        inputUpperLimit: nullifyIfBefore(state.inputUpperLimit, action.payload.date),
-        selected: state.isRange ? DateLimits.upper : simpleSelected,
-    });
+    return state.id !== action.payload.id
+        ? state
+        : _.extend({}, state, {
+              lowerLimit: action.payload.date,
+              inputLowerLimit: action.payload.date,
+              upperLimit: nullifyIfBefore(state.upperLimit, action.payload.date),
+              inputUpperLimit: nullifyIfBefore(state.inputUpperLimit, action.payload.date),
+              selected: state.isRange ? DateLimits.upper : simpleSelected,
+          });
 };
 
 const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    return state.id !== action.payload.id ? state : _.extend({}, state, {
-        upperLimit: action.payload.date,
-        inputUpperLimit: action.payload.date,
-        selected: '',
-    });
+    return state.id !== action.payload.id
+        ? state
+        : _.extend({}, state, {
+              upperLimit: action.payload.date,
+              inputUpperLimit: action.payload.date,
+              selected: '',
+          });
 };
 
 const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
@@ -92,45 +106,51 @@ const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
 };
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    const lowerLimit: Date = (state.lowerLimit || !state.isClearable) ? state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit : null;
-    let upperLimit: Date = (state.upperLimit || !state.isClearable) ? state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit : null;
+    const lowerLimit: Date =
+        state.lowerLimit || !state.isClearable
+            ? state.lowerLimit || state.inputLowerLimit || state.appliedLowerLimit
+            : null;
+    let upperLimit: Date =
+        state.upperLimit || !state.isClearable
+            ? state.upperLimit || state.inputUpperLimit || state.appliedUpperLimit
+            : null;
     upperLimit = upperLimit >= lowerLimit ? upperLimit : lowerLimit;
 
     return state.id.indexOf(action.payload.id) !== 0
         ? state
         : _.extend({}, state, {
-            appliedLowerLimit: lowerLimit,
-            appliedUpperLimit: upperLimit,
-            inputLowerLimit: lowerLimit,
-            inputUpperLimit: upperLimit,
-        });
+              appliedLowerLimit: lowerLimit,
+              appliedUpperLimit: upperLimit,
+              inputLowerLimit: lowerLimit,
+              inputUpperLimit: upperLimit,
+          });
 };
 
 const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
     return state.id.indexOf(action.payload.id) !== 0
         ? state
         : _.extend({}, state, {
-            selected: '',
-            lowerLimit: state.appliedLowerLimit,
-            upperLimit: state.appliedUpperLimit,
-        });
+              selected: '',
+              lowerLimit: state.appliedLowerLimit,
+              upperLimit: state.appliedUpperLimit,
+          });
 };
 
 const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
     return state.id.indexOf(action.payload.id) !== 0 || !state.isClearable
         ? state
         : _.extend({}, state, {
-            selected: DateLimits.lower,
-            lowerLimit: null,
-            upperLimit: null,
-            inputLowerLimit: null,
-            inputUpperLimit: null,
-        });
+              selected: DateLimits.lower,
+              lowerLimit: null,
+              upperLimit: null,
+              inputLowerLimit: null,
+              inputUpperLimit: null,
+          });
 };
 
 export const datePickerReducer = (
     state: IDatePickerState = datePickerInitialState,
-    action: IReduxAction<any>,
+    action: IReduxAction<any>
 ): IDatePickerState => {
     switch (action.type) {
         case DatePickerActions.add:
@@ -154,14 +174,11 @@ export const datePickerReducer = (
 
 export const datePickersReducer = (
     state: IDatePickerState[] = datePickersInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IDatePickerState[] => {
     switch (action.type) {
         case DatePickerActions.add:
-            return [
-                ...state,
-                datePickerReducer(undefined, action),
-            ];
+            return [...state, datePickerReducer(undefined, action)];
         case DatePickerActions.remove:
             return _.reject(state, (datePicker: IDatePickerState) => {
                 return action.payload.id === datePicker.id;
@@ -172,9 +189,7 @@ export const datePickersReducer = (
         case DatePickerActions.apply:
         case DatePickerActions.reset:
         case DatePickerActions.clear:
-            return state.map((datePicker: IDatePickerState) =>
-                datePickerReducer(datePicker, action),
-            );
+            return state.map((datePicker: IDatePickerState) => datePickerReducer(datePicker, action));
         default:
             return state;
     }

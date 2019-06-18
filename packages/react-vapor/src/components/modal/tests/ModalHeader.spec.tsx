@@ -16,9 +16,7 @@ describe('ModalHeader', () => {
     describe('<ModalHeader />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ModalHeader {...basicProps} />,
-                );
+                shallow(<ModalHeader {...basicProps} />);
             }).not.toThrow();
         });
     });
@@ -27,10 +25,7 @@ describe('ModalHeader', () => {
         let modal: ReactWrapper<IModalHeaderProps, any>;
 
         beforeEach(() => {
-            modal = mount(
-                <ModalHeader {...basicProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            modal = mount(<ModalHeader {...basicProps} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -79,11 +74,21 @@ describe('ModalHeader', () => {
         it('should set class when the class is specified', () => {
             const headerClass = 'mod-big';
             const classes = [headerClass];
-            expect(modal.find('header').first().html()).not.toContain(headerClass);
+            expect(
+                modal
+                    .find('header')
+                    .first()
+                    .html()
+            ).not.toContain(headerClass);
 
             modal.setProps(_.extend({}, basicProps, {classes}));
             modal.mount();
-            expect(modal.find('header').first().html()).toContain(headerClass);
+            expect(
+                modal
+                    .find('header')
+                    .first()
+                    .html()
+            ).toContain(headerClass);
         });
 
         it('should not have a tooltip, anchor, and svg for doclink by default', () => {

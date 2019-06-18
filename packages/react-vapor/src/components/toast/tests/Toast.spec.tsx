@@ -12,7 +12,7 @@ describe('Toasts', () => {
 
     describe('<Toast />', () => {
         it('should render without errors', () => {
-            expect(() => shallow(<Toast title='Hello' />)).not.toThrow();
+            expect(() => shallow(<Toast title="Hello" />)).not.toThrow();
         });
     });
 
@@ -126,7 +126,9 @@ describe('Toasts', () => {
         it('should allow JSX in the content', () => {
             const descriptionContainer = '.toast-description';
             const expectedDescription = 'description';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: () => <a href='#'>{expectedDescription}</a>});
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {
+                content: () => <a href="#">{expectedDescription}</a>,
+            });
 
             expect(toastComponent.find(descriptionContainer).length).toBe(0);
 
@@ -140,15 +142,17 @@ describe('Toasts', () => {
             const descriptionContainer = '.toast-description';
             const expectedChildren = <div>my toast content</div>;
 
-            toastComponent = mount(
-                <Toast {...toastBasicAttributes}>
-                    {expectedChildren}
-                </Toast>,
-                {attachTo: document.getElementById('App')},
-            );
+            toastComponent = mount(<Toast {...toastBasicAttributes}>{expectedChildren}</Toast>, {
+                attachTo: document.getElementById('App'),
+            });
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
-            expect(toastComponent.find(descriptionContainer).children().equals(expectedChildren)).toBe(true);
+            expect(
+                toastComponent
+                    .find(descriptionContainer)
+                    .children()
+                    .equals(expectedChildren)
+            ).toBe(true);
         });
 
         it('should contain a toast-close when the prop is undefined or true', () => {

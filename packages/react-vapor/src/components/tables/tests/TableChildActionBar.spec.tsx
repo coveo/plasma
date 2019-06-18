@@ -35,7 +35,7 @@ describe('<TableChildActionBar />', () => {
                 <Provider store={store}>
                     <TableChildActionBar {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         };
 
@@ -60,7 +60,11 @@ describe('<TableChildActionBar />', () => {
 
             it('should render without error if an actionBar prop and a datePicker prop are passed', () => {
                 expect(() => {
-                    mountComponentWithProps({...tablePropsMock, actionBar: true, datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'}});
+                    mountComponentWithProps({
+                        ...tablePropsMock,
+                        actionBar: true,
+                        datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'},
+                    });
                 }).not.toThrow();
             });
 
@@ -70,9 +74,7 @@ describe('<TableChildActionBar />', () => {
                         ...tablePropsMock,
                         actionBar: true,
                         filter: true,
-                        predicates: [
-                            {attributeName: 'email', attributeNameFormatter: _.identity, props: {}},
-                        ],
+                        predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
                     });
                 }).not.toThrow();
             });
@@ -113,7 +115,9 @@ describe('<TableChildActionBar />', () => {
             });
 
             it('should render with an action bar if there is an actionBar prop', () => {
-                expect(mountComponentWithProps({...tablePropsMock, actionBar: true}).find(ActionBarConnected).length).toBe(1);
+                expect(
+                    mountComponentWithProps({...tablePropsMock, actionBar: true}).find(ActionBarConnected).length
+                ).toBe(1);
             });
 
             it('should render with an action bar and a filter inside it if there is an actionBar prop and a filter prop', () => {
@@ -123,7 +127,11 @@ describe('<TableChildActionBar />', () => {
             });
 
             it('should render with an action bar and a datePicker inside it if there is an actionBar prop and a datePicker prop', () => {
-                const tableActionBar = mountComponentWithProps({...tablePropsMock, actionBar: true, datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'}});
+                const tableActionBar = mountComponentWithProps({
+                    ...tablePropsMock,
+                    actionBar: true,
+                    datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'},
+                });
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(DatePickerDropdownConnected).length).toBe(1);
             });
@@ -132,9 +140,7 @@ describe('<TableChildActionBar />', () => {
                 const tableActionBar = mountComponentWithProps({
                     ...tablePropsMock,
                     actionBar: true,
-                    predicates: [
-                        {attributeName: 'email', attributeNameFormatter: _.identity, props: {}},
-                    ],
+                    predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
                 });
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).length).toBe(1);
@@ -171,12 +177,14 @@ describe('<TableChildActionBar />', () => {
                     ...tablePropsMock,
                     onPredicateOptionClick: onPredicateOptionClickSpy,
                     actionBar: true,
-                    predicates: [
-                        {attributeName: 'email', attributeNameFormatter: _.identity, props: {}},
-                    ],
+                    predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
                 });
-                tableActionBar.find(ActionBarConnected)
-                    .find(DropdownSearchConnected).first().props().onOptionClickCallBack({value: 'test'});
+                tableActionBar
+                    .find(ActionBarConnected)
+                    .find(DropdownSearchConnected)
+                    .first()
+                    .props()
+                    .onOptionClickCallBack({value: 'test'});
 
                 expect(onPredicateOptionClickSpy).toHaveBeenCalledTimes(1);
             });
@@ -185,13 +193,15 @@ describe('<TableChildActionBar />', () => {
                 const tableActionBar = mountComponentWithProps({
                     ...tablePropsMock,
                     actionBar: true,
-                    predicates: [
-                        {attributeName: 'email', attributeNameFormatter: _.identity, props: {}},
-                    ],
+                    predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
                 });
 
-                expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected)
-                    .prop('defaultSelectedOption')).toEqual({value: TABLE_PREDICATE_DEFAULT_VALUE});
+                expect(
+                    tableActionBar
+                        .find(ActionBarConnected)
+                        .find(DropdownSearchConnected)
+                        .prop('defaultSelectedOption')
+                ).toEqual({value: TABLE_PREDICATE_DEFAULT_VALUE});
             });
 
             it('should put the option with defaut: true as defaultSelectedOption (if there is one)', () => {
@@ -201,14 +211,19 @@ describe('<TableChildActionBar />', () => {
                     actionBar: true,
                     predicates: [
                         {
-                            attributeName: 'userName', attributeNameFormatter: _.identity, props:
-                                {defaultOptions: [{value: customDefaultValue, default: true}]},
+                            attributeName: 'userName',
+                            attributeNameFormatter: _.identity,
+                            props: {defaultOptions: [{value: customDefaultValue, default: true}]},
                         },
                     ],
                 });
 
-                expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected)
-                    .prop('defaultSelectedOption')).toEqual({value: customDefaultValue});
+                expect(
+                    tableActionBar
+                        .find(ActionBarConnected)
+                        .find(DropdownSearchConnected)
+                        .prop('defaultSelectedOption')
+                ).toEqual({value: customDefaultValue});
             });
         });
     });

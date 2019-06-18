@@ -6,17 +6,18 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem,
-                    non efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non,
-                    fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis
-                    sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
             <div className="home-card-footer">
-                <a href="#" className="home-card-footer-link">View More</a>
+                <a href="#" className="home-card-footer-link">
+                    View More
+                </a>
             </div>
         </div>
 
@@ -26,11 +27,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
             <div className="home-card-footer">
@@ -44,15 +46,18 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
             <div className="home-card-footer">
-                <a href="#" className="home-card-footer-link">View More</a>
+                <a href="#" className="home-card-footer-link">
+                    View More
+                </a>
             </div>
         </div>
 
@@ -62,11 +67,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
             <div className="home-card-footer">
@@ -80,11 +86,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
         </div>
@@ -95,11 +102,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
         </div>
@@ -110,11 +118,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
         </div>
@@ -125,11 +134,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
         </div>
@@ -149,18 +159,20 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p className="pb2">
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
         </div>
@@ -171,11 +183,12 @@ const Home = () => (
             </div>
             <div className="home-card-body home-card-padded">
                 <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet tortor pharetra vel.
-                    Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non efficitur ante leo ac ante. Proin
-                    non nisl porttitor, egestas augue non, fermentum justo. Praesent faucibus quis mi eu maximus. Suspendisse sagittis
-                    ultrices risus vel aliquam. Mauris vel risus non nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris
-                    sit amet iaculis. Suspendisse sed nibh tortor.
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean varius ante orci, malesuada laoreet
+                    tortor pharetra vel. Duis gravida, nulla quis tincidunt blandit, justo lectus tincidunt lorem, non
+                    efficitur ante leo ac ante. Proin non nisl porttitor, egestas augue non, fermentum justo. Praesent
+                    faucibus quis mi eu maximus. Suspendisse sagittis ultrices risus vel aliquam. Mauris vel risus non
+                    nulla luctus rhoncus ac iaculis sapien. Nam cursus quis mauris sit amet iaculis. Suspendisse sed
+                    nibh tortor.
                 </p>
             </div>
             <div className="home-card-footer">

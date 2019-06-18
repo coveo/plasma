@@ -20,11 +20,15 @@ export class DropdownSearchInfiniteScrollOptions extends React.Component<Dropdow
         return (
             <div
                 id={this.id}
-                className='dropdown-menu'
+                className="dropdown-menu"
                 ref={(menu: HTMLElement) => this.props.ulElementRefFunction(menu)}
                 onMouseEnter={() => this.props.onMouseEnter()}
             >
-                <InfiniteScroll {...this.props.infiniteScroll} scrollableTarget={this.id} style={{...this.props.infiniteScroll.style, overflow: 'initial'}}>
+                <InfiniteScroll
+                    {...this.props.infiniteScroll}
+                    scrollableTarget={this.id}
+                    style={{...this.props.infiniteScroll.style, overflow: 'initial'}}
+                >
                     {this.props.options}
                 </InfiniteScroll>
             </div>

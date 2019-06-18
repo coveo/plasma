@@ -1,6 +1,7 @@
-.tablePredicateFilters {}
+.tablePredicateFilters {
+}
 
 .tablePredicateFilters + .tablePredicateFilters {
-  border-left: none;
-  padding-left: 0;
+    padding-left: 0;
+    border-left: none;
 }

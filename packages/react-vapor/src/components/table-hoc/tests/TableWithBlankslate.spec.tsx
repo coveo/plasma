@@ -7,9 +7,7 @@ import {tableWithBlankSlate} from '../TableWithBlankSlate';
 
 describe('Table HOC', () => {
     describe('TableWithBlankSlate', () => {
-        const TableWithBlankSlate = _.compose(
-            tableWithBlankSlate(),
-        )(TableHOC);
+        const TableWithBlankSlate = _.compose(tableWithBlankSlate())(TableHOC);
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
@@ -23,7 +21,6 @@ describe('Table HOC', () => {
         });
 
         describe('props and content', () => {
-
             const shallowWithProps = (props: Partial<ITableHOCProps> = {}) => {
                 return shallowWithState(<TableWithBlankSlate {...defaultProps} {...props} />, {});
             };
@@ -75,7 +72,7 @@ describe('Table HOC', () => {
                 const expectedTitle = 'First';
                 const TableWithDoubleBlankSlate = _.compose(
                     tableWithBlankSlate({title: expectedTitle}),
-                    tableWithBlankSlate({title: 'Second'}),
+                    tableWithBlankSlate({title: 'Second'})
                 )(TableHOC);
 
                 const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...defaultProps} />, {}).dive();

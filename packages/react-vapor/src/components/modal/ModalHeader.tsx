@@ -23,7 +23,10 @@ export interface IModalHeaderDispatchProps {
     onClose: () => void;
 }
 
-export interface IModalHeaderProps extends IModalHeaderOwnProps, Partial<IModalHeaderStateProps>, Partial<IModalHeaderDispatchProps> {}
+export interface IModalHeaderProps
+    extends IModalHeaderOwnProps,
+        Partial<IModalHeaderStateProps>,
+        Partial<IModalHeaderDispatchProps> {}
 
 export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
     static defaultProps: Partial<IModalHeaderProps> = {
@@ -38,7 +41,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
 
     componentDidUpdate() {
         this.canClose = false;
-        _.defer(() => this.canClose = this.props.lastOpened);
+        _.defer(() => (this.canClose = this.props.lastOpened));
     }
 
     close() {
@@ -51,31 +54,32 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
         const classes = classNames('modal-header', this.props.classes);
         const docLinkProps: ILinkSvgProps = this.props.docLink
             ? {
-                svg: {
-                    svgName: 'help',
-                    svgClass: 'fill-orange icon mod-20',
-                },
-                ...this.props.docLink,
-            }
+                  svg: {
+                      svgName: 'help',
+                      svgClass: 'fill-orange icon mod-20',
+                  },
+                  ...this.props.docLink,
+              }
             : null;
 
         let closeComponent: JSX.Element = null;
         if (this.props.onClose) {
             closeComponent = (
-                <span className='small-close' onClick={() => {this.close();}}>
-                    <Svg svgName='close' className='icon mod-lg fill-pure-white' />
+                <span
+                    className="small-close"
+                    onClick={() => {
+                        this.close();
+                    }}
+                >
+                    <Svg svgName="close" className="icon mod-lg fill-pure-white" />
                 </span>
             );
         }
 
         return (
             <header className={classes}>
-                <div className='truncate'>
-                    <Title
-                        text={this.props.title}
-                        documentationLink={docLinkProps}
-                        classes={['regular']}
-                    />
+                <div className="truncate">
+                    <Title text={this.props.title} documentationLink={docLinkProps} classes={['regular']} />
                 </div>
                 {this.props.children}
                 {closeComponent}

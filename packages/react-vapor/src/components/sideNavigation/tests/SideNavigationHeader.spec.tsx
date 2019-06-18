@@ -7,9 +7,7 @@ describe('<SideNavigationHeader />', () => {
     const title = 'hello';
     it('should render without errors', () => {
         expect(() => {
-            shallow(
-                <SideNavigationHeader title={title} />,
-            );
+            shallow(<SideNavigationHeader title={title} />);
         }).not.toThrow();
     });
 });
@@ -19,10 +17,7 @@ describe('<SideNavigationHeader />', () => {
     const title = 'hello';
 
     beforeEach(() => {
-        wrapper = mount(
-            <SideNavigationHeader title={title} />,
-            {attachTo: document.getElementById('App')},
-        );
+        wrapper = mount(<SideNavigationHeader title={title} />, {attachTo: document.getElementById('App')});
     });
 
     afterEach(() => {

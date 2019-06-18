@@ -17,9 +17,9 @@ export class AddInputAction extends React.Component<IAddInputActionProps, any> {
     render() {
         const title = this.props.title ? this.props.title : DEFAULT_TITLE;
         return (
-            <div className='input-actions' onClick={() => this.handleClick()}>
-                <button className='js-add-value-button'>
-                    <i className='add-action' title={title}></i>
+            <div className="input-actions" onClick={() => this.handleClick()}>
+                <button className="js-add-value-button">
+                    <i className="add-action" title={title}></i>
                 </button>
             </div>
         );

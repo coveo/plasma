@@ -1,7 +1,13 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {addSelect, ISelectPayload, removeSelect} from '../SelectActions';
-import {ISelectState, selectCompositeInitialState, selectCompositeReducer, selectInitialState, selectReducer} from '../SelectReducers';
+import {
+    ISelectState,
+    selectCompositeInitialState,
+    selectCompositeReducer,
+    selectInitialState,
+    selectReducer,
+} from '../SelectReducers';
 
 describe('Select', () => {
     describe('Select Reducers', () => {

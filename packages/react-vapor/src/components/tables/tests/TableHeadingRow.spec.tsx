@@ -15,9 +15,7 @@ describe('Tables', () => {
             };
 
             expect(() => {
-                shallow(
-                    <TableHeadingRow {...basicTableHeadingRowProps} />,
-                );
+                shallow(<TableHeadingRow {...basicTableHeadingRowProps} />);
             }).not.toThrow();
         });
     });
@@ -35,9 +33,11 @@ describe('Tables', () => {
 
             tableHeadingRow = mount(
                 <TableHeadingRow {...basicTableHeadingRowProps}>
-                    <td><div className='dropdown' /></td>
+                    <td>
+                        <div className="dropdown" />
+                    </td>
                 </TableHeadingRow>,
-                {attachTo: document.getElementById('AppTableBody')},
+                {attachTo: document.getElementById('AppTableBody')}
             );
             tableHeadingRowInstance = tableHeadingRow.instance() as TableHeadingRow;
         });
@@ -83,7 +83,7 @@ describe('Tables', () => {
             const onRenderSpy = jasmine.createSpy('onRender');
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onRender: onRenderSpy});
 
-            expect(() => (tableHeadingRowInstance.componentWillMount())).not.toThrow();
+            expect(() => tableHeadingRowInstance.componentWillMount()).not.toThrow();
 
             tableHeadingRow.unmount();
             tableHeadingRow.setProps(newTabledHeadingRowProps);
@@ -95,7 +95,7 @@ describe('Tables', () => {
             const onDestroySpy = jasmine.createSpy('onDestroy');
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onDestroy: onDestroySpy});
 
-            expect(() => (tableHeadingRowInstance.componentWillUnmount())).not.toThrow();
+            expect(() => tableHeadingRowInstance.componentWillUnmount()).not.toThrow();
 
             tableHeadingRow.unmount();
             tableHeadingRow.setProps(newTabledHeadingRowProps);

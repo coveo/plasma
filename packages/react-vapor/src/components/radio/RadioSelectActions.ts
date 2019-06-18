@@ -11,7 +11,10 @@ export const RadioSelectActions = {
     remove: 'REMOVE_RADIOSELECT',
 };
 
-export const setRadioSelect = (id: string, state: {value?: string, disabledValues?: string[]}): IReduxAction<IRadioSelectActionPayload> => ({
+export const setRadioSelect = (
+    id: string,
+    state: {value?: string; disabledValues?: string[]}
+): IReduxAction<IRadioSelectActionPayload> => ({
     type: RadioSelectActions.set,
     payload: {
         id,

@@ -13,10 +13,11 @@ export interface IAdditionalClass {
 }
 
 export const getAdditionalClasses = (additionalClasses: IAdditionalClass[], dataToUse: any): IClassName => {
-    return _.map(additionalClasses, (additionalClass: IAdditionalClass) => additionalClass.condition
-        ? {
-            [additionalClass.className]: additionalClass.condition(dataToUse),
-        }
-        : additionalClass.className,
+    return _.map(additionalClasses, (additionalClass: IAdditionalClass) =>
+        additionalClass.condition
+            ? {
+                  [additionalClass.className]: additionalClass.condition(dataToUse),
+              }
+            : additionalClass.className
     );
 };

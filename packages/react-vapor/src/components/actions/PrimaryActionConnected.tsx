@@ -9,5 +9,8 @@ const mapStateToProps = (): IPrimaryActionStateProps => ({
 
 const mapDispatchToProps = () => ({});
 
-export const PrimaryActionConnected: React.ComponentClass<IPrimaryActionProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(PrimaryAction);
+export const PrimaryActionConnected: React.ComponentClass<IPrimaryActionProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(PrimaryAction);

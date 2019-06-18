@@ -30,13 +30,9 @@ describe('Actions', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <TriggerActionConnected
-                        action={action}
-                        simple={simple}
-                        parentId={parentId}
-                    />
+                    <TriggerActionConnected action={action} simple={simple} parentId={parentId} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             triggerAction = wrapper.find(TriggerAction).first();
         });
@@ -77,8 +73,14 @@ describe('Actions', () => {
         });
 
         it('should remove the prompt onConfirm', () => {
-            store.dispatch(addPrompt(parentId,
-                {onClick: jasmine.createSpy('onClick'), userChoice: {}, isOpened: false, className: 'someClass'}));
+            store.dispatch(
+                addPrompt(parentId, {
+                    onClick: jasmine.createSpy('onClick'),
+                    userChoice: {},
+                    isOpened: false,
+                    className: 'someClass',
+                })
+            );
             expect(store.getState().prompts.length).toBe(1);
             triggerAction.props().onConfirm();
             expect(store.getState().prompts.length).toBe(0);

@@ -39,26 +39,26 @@ export class Collapsible extends React.Component<CollapsibleProps> {
     }
 
     render() {
-        const headerClasses = classNames(
-            'cursor-pointer flex space-between center-align',
-            this.props.headerClasses,
-            {'mod-border-bottom mod-border-top': this.props.withBorders},
-        );
+        const headerClasses = classNames('cursor-pointer flex space-between center-align', this.props.headerClasses, {
+            'mod-border-bottom mod-border-top': this.props.withBorders,
+        });
 
         return (
             <div className={classNames(this.props.className)}>
-                <div
-                    className={headerClasses}
-                    onClick={() => this.handleHeaderClick()}
-                >
+                <div className={headerClasses} onClick={() => this.handleHeaderClick()}>
                     {this.props.headerContent}
                     <CollapsibleToggle
                         expanded={this.props.expanded}
                         svgClassName={this.props.toggleIconClassName}
-                        className='mr2'
+                        className="mr2"
                     />
                 </div>
-                <SlideY id={this.props.id} in={this.props.expanded} timeout={Collapsible.TIMEOUT} duration={Collapsible.TIMEOUT}>
+                <SlideY
+                    id={this.props.id}
+                    in={this.props.expanded}
+                    timeout={Collapsible.TIMEOUT}
+                    duration={Collapsible.TIMEOUT}
+                >
                     {this.props.children}
                 </SlideY>
             </div>

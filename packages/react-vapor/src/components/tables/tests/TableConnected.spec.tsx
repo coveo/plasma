@@ -31,12 +31,11 @@ describe('<TableConnected />', () => {
             <Provider store={store}>
                 <TableConnected {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
     };
 
     describe('render', () => {
-
         const getInitialTableDataMock: any = (selectedIds: string[] = ['id1']) => ({
             byId: {
                 id1: {
@@ -80,7 +79,12 @@ describe('<TableConnected />', () => {
 
         it('should update action in props with the selectedIds array and the rowsData from the state', () => {
             const actions = [{id: 'action1', enabled: true}];
-            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, getActions: () => actions, initialTableData: getInitialTableDataMock()});
+            const wrapper = mountComponentWithProps({
+                ...tablePropsMock,
+                actionBar: true,
+                getActions: () => actions,
+                initialTableData: getInitialTableDataMock(),
+            });
 
             const tableConnected = wrapper.find(Table);
 
@@ -89,7 +93,13 @@ describe('<TableConnected />', () => {
 
         it('should update action grouped in props with the selectedIds array and the rowsData from the state if rowsMultiSelect is true', () => {
             const actions = [{id: 'action1', enabled: true}, {id: 'action2', enabled: true, grouped: true}];
-            const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, getActions: () => actions, initialTableData: getInitialTableDataMock(['id1', 'id2']), rowsMultiSelect: true});
+            const wrapper = mountComponentWithProps({
+                ...tablePropsMock,
+                actionBar: true,
+                getActions: () => actions,
+                initialTableData: getInitialTableDataMock(['id1', 'id2']),
+                rowsMultiSelect: true,
+            });
 
             const tableConnected = wrapper.find(Table);
 
@@ -158,7 +168,9 @@ describe('<TableConnected />', () => {
             };
             const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, predicates: [predicate]});
             const tableConnected = wrapper.find(Table);
-            const predicateId = `${getTableChildComponentId(tableConnected.props().id, TableChildComponent.PREDICATE)}${predicate.attributeName}`;
+            const predicateId = `${getTableChildComponentId(tableConnected.props().id, TableChildComponent.PREDICATE)}${
+                predicate.attributeName
+            }`;
             store.dispatch(openDropdownSearch(predicateId));
             wrapper.update();
 
@@ -216,19 +228,29 @@ describe('<TableConnected />', () => {
             const tableComposite2 = tablePropsMock.tableCompositeState;
             tableConnected.props().onModifyData(shouldResetPage, tableComposite1, tableComposite2);
             expect(manualSpy).toHaveBeenCalledTimes(1);
-            expect(_.rest(manualSpy.calls.mostRecent().args)).toEqual([shouldResetPage, tableComposite1, tableComposite2]);
+            expect(_.rest(manualSpy.calls.mostRecent().args)).toEqual([
+                shouldResetPage,
+                tableComposite1,
+                tableComposite2,
+            ]);
         });
 
         it('should call the default data modifier thunk if manual is not in ownProps on onModifyData', () => {
             const wrapper = mountComponentWithProps({...tablePropsMockWithData});
             const tableConnected = wrapper.find(Table);
-            const defaultTableStateModifierThunkSpy = spyOn(TableDataModifier, 'defaultTableStateModifierThunk').and.returnValue(_.noop);
+            const defaultTableStateModifierThunkSpy = spyOn(
+                TableDataModifier,
+                'defaultTableStateModifierThunk'
+            ).and.returnValue(_.noop);
 
             const shouldResetPage = true;
             const tableComposite1 = tablePropsMock.tableCompositeState;
             tableConnected.props().onModifyData(shouldResetPage, tableComposite1);
             expect(defaultTableStateModifierThunkSpy).toHaveBeenCalledTimes(1);
-            expect(_.rest(defaultTableStateModifierThunkSpy.calls.mostRecent().args)).toEqual([shouldResetPage, tableComposite1]);
+            expect(_.rest(defaultTableStateModifierThunkSpy.calls.mostRecent().args)).toEqual([
+                shouldResetPage,
+                tableComposite1,
+            ]);
         });
     });
 });

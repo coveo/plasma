@@ -9,5 +9,8 @@ const mapStateToProps = (): IActionsDropdownStateProps => ({
 
 const mapDispatchToProps = () => ({});
 
-export const ActionsDropdownConnected: React.ComponentClass<IActionsDropdownProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ActionsDropdown);
+export const ActionsDropdownConnected: React.ComponentClass<IActionsDropdownProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ActionsDropdown);

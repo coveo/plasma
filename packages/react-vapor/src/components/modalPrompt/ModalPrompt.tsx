@@ -34,7 +34,6 @@ export interface IModalPromptProps extends IModalPromptOwnProps, IModalPromptSta
  * @deprecated use ModalComposite instead
  */
 export class ModalPrompt extends React.Component<IModalPromptProps, any> {
-
     static defaultProps: Partial<IModalPromptProps> = {
         cancelLabel: DEFAULT_MODAL_PROMPT_CANCEL_LABEL,
         confirmLabel: DEFAULT_MODAL_PROMPT_CONFIRM_LABEL,
@@ -50,31 +49,24 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
 
     render() {
         return (
-            <Modal
-                id={this.props.id}
-                isOpened={this.props.isOpened}
-                classes={['mod-prompt', 'mod-fade-in-scale']}>
-                <ModalHeader title={this.props.title}
+            <Modal id={this.props.id} isOpened={this.props.isOpened} classes={['mod-prompt', 'mod-fade-in-scale']}>
+                <ModalHeader
+                    title={this.props.title}
                     classes={['mod-confirmation']}
-                    onClose={() => this.cancel()}>
-                </ModalHeader>
+                    onClose={() => this.cancel()}
+                ></ModalHeader>
                 <ModalBody classes={['mod-header-padding', 'mod-form-top-bottom-padding']}>
-                    <div className='prompt-message'>
-                        {this.props.message}
-                    </div>
+                    <div className="prompt-message">{this.props.message}</div>
                 </ModalBody>
                 <ModalFooter>
-                    <button
-                        className='btn mod-small mod-primary js-confirm'
-                        onClick={() => this.confirm()}>
+                    <button className="btn mod-small mod-primary js-confirm" onClick={() => this.confirm()}>
                         {this.props.confirmLabel}
                     </button>
-                    <button
-                        className='btn mod-small js-cancel'
-                        onClick={() => this.cancel()}>
+                    <button className="btn mod-small js-cancel" onClick={() => this.cancel()}>
                         {this.props.cancelLabel}
                     </button>
                 </ModalFooter>
-            </Modal>);
+            </Modal>
+        );
     }
 }

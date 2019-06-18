@@ -20,10 +20,7 @@ describe('MultiSelectInput', () => {
         let multiSelectInput: ReactWrapper<IMultiselectInputProps, any>;
 
         const renderMultiSelectInput = (curentProps?: IMultiselectInputProps) => {
-            multiSelectInput = mount(
-                <MultiselectInput {...curentProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            multiSelectInput = mount(<MultiselectInput {...curentProps} />, {attachTo: document.getElementById('App')});
         };
 
         beforeEach(() => {
@@ -75,7 +72,6 @@ describe('MultiSelectInput', () => {
         });
 
         describe('handle functions', () => {
-
             it('should handle on remove all', () => {
                 const onRemoveAll = jasmine.createSpy('onRemoveAll');
 

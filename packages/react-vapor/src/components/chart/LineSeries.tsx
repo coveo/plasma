@@ -8,10 +8,15 @@ export interface LineSeriesProps {
     strokeWith?: number;
 }
 
-export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolate = 'linear', strokeWith = 2, children}) => {
+export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({
+    interpolate = 'linear',
+    strokeWith = 2,
+    children,
+}) => {
     const {series, xScale, yScale, color, colorPattern} = React.useContext(XYChartContext);
 
-    const line = d3.svg.line<XYPoint>()
+    const line = d3.svg
+        .line<XYPoint>()
         .x((d) => xScale(d.x))
         .y((d) => yScale(d.y))
         .interpolate(interpolate);
@@ -19,7 +24,7 @@ export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolat
     const lines = series.map((serie: XYSerie, i: number) => (
         <path
             key={`line-${i}`}
-            fill='none'
+            fill="none"
             strokeWidth={strokeWith}
             stroke={color(i, colorPattern)}
             d={line(serie.data)}
@@ -27,7 +32,7 @@ export const LineSeries: React.FunctionComponent<LineSeriesProps> = ({interpolat
     ));
 
     return (
-        <g className='line-series'>
+        <g className="line-series">
             {lines}
             {children}
         </g>

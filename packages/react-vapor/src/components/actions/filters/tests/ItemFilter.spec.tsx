@@ -16,9 +16,7 @@ describe('Item filter', () => {
     describe('<ItemFilter />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ItemFilter {...ITEM_FILTER_BASIC_PROPS} />,
-                );
+                shallow(<ItemFilter {...ITEM_FILTER_BASIC_PROPS} />);
             }).not.toThrow();
         });
     });
@@ -27,10 +25,9 @@ describe('Item filter', () => {
         let itemFilterComponent: ReactWrapper<IItemFilterProps, any>;
 
         beforeEach(() => {
-            itemFilterComponent = mount(
-                <ItemFilter {...ITEM_FILTER_BASIC_PROPS} />,
-                {attachTo: document.getElementById('App')},
-            );
+            itemFilterComponent = mount(<ItemFilter {...ITEM_FILTER_BASIC_PROPS} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {
@@ -77,26 +74,24 @@ describe('Item filter', () => {
 
         it('should crop the item to the length of the crop prop', () => {
             const longItem: string = 'longer than 10 characters for sure';
-            let cropProps: IItemFilterProps = _.extend({}, ITEM_FILTER_BASIC_PROPS,
-                {crop: 10, item: longItem});
+            let cropProps: IItemFilterProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, {crop: 10, item: longItem});
             itemFilterComponent.setProps(cropProps);
 
             expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(ELLIPSIS.length + cropProps.crop);
 
-            cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS,
-                {crop: -12, item: longItem});
+            cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, {crop: -12, item: longItem});
             itemFilterComponent.setProps(cropProps);
 
-            expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(ELLIPSIS.length + Math.abs(cropProps.crop));
+            expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(
+                ELLIPSIS.length + Math.abs(cropProps.crop)
+            );
 
-            cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS,
-                {crop: longItem.length, item: longItem});
+            cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, {crop: longItem.length, item: longItem});
             itemFilterComponent.setProps(cropProps);
 
             expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(longItem.length);
 
-            cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS,
-                {crop: -longItem.length, item: longItem});
+            cropProps = _.extend({}, ITEM_FILTER_BASIC_PROPS, {crop: -longItem.length, item: longItem});
             itemFilterComponent.setProps(cropProps);
 
             expect(itemFilterComponent.find('.item-filter-item').text().length).toBe(longItem.length);

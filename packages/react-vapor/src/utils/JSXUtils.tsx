@@ -6,5 +6,8 @@ import * as s from 'underscore.string';
 export type JSXRenderable = JSX.Element | JSX.Element[] | string | number;
 
 export const getReactNodeTextContent = (node: React.ReactNode): string => {
-    return _.compose(s.stripTags, s.clean)(renderToStaticMarkup(<div>{node}</div>));
+    return _.compose(
+        s.stripTags,
+        s.clean
+    )(renderToStaticMarkup(<div>{node}</div>));
 };

@@ -50,7 +50,11 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
             if (regExp.test(component)) {
                 const parts: React.ReactNode[] = component.split(regExp);
                 for (let i = 1; i < parts.length; i += 2) {
-                    parts[i] = <span className='bold' key={`match-${i}`}>{parts[i]}</span>;
+                    parts[i] = (
+                        <span className="bold" key={`match-${i}`}>
+                            {parts[i]}
+                        </span>
+                    );
                 }
                 yield parts;
             } else {

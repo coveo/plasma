@@ -44,13 +44,15 @@ export interface ISelectWithFilterDispatchProps {
 
 const SelectWithFilterPropsToOmit = keys<ISelectWithFilterOwnProps>();
 
-export interface ISelectWithFilterProps extends ISelectWithFilterOwnProps,
-    Partial<ISelectWithFilterStateProps>,
-    Partial<ISelectWithFilterDispatchProps>,
-    ISelectOwnProps {}
+export interface ISelectWithFilterProps
+    extends ISelectWithFilterOwnProps,
+        Partial<ISelectWithFilterStateProps>,
+        Partial<ISelectWithFilterDispatchProps>,
+        ISelectOwnProps {}
 
-export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>)): React.ComponentClass<ISelectWithFilterProps> => {
-
+export const selectWithFilter = (
+    Component: React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>
+): React.ComponentClass<ISelectWithFilterProps> => {
     const makeMapStateToProps = () => {
         const getStateProps = createStructuredSelector({
             filterValue: FilterBoxSelectors.getFilterText,
@@ -62,7 +64,10 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             getStateProps(state, ownProps);
     };
 
-    const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps & ISelectSpecificProps): ISelectWithFilterDispatchProps => ({
+    const mapDispatchToProps = (
+        dispatch: IDispatch,
+        ownProps: ISelectOwnProps & ISelectSpecificProps
+    ): ISelectWithFilterDispatchProps => ({
         onRenderFilter: (items: string[]) => dispatch(addStringList(ownProps.id, items)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
         onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
@@ -70,7 +75,6 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
 
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
-
         static defaultProps: Partial<ISelectWithFilterProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
@@ -131,24 +135,28 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             if (!_.isEmpty(this.props.filterValue)) {
                 this.props.onSelectCustomValue(this.props.filterValue);
             }
-        }
+        };
 
         private getAddValueButton(): React.ReactNode {
-            return this.props.customValues && (
-                <div className='ml1'>
-                    <Button classes={['p1']} onClick={this.handleOnClick} {...this.props.filterButton}>
-                        <Svg svgName={'add'} className='icon mod-lg mod-align-with-text' />
-                    </Button>
-                </div>
+            return (
+                this.props.customValues && (
+                    <div className="ml1">
+                        <Button classes={['p1']} onClick={this.handleOnClick} {...this.props.filterButton}>
+                            <Svg svgName={'add'} className="icon mod-lg mod-align-with-text" />
+                        </Button>
+                    </div>
+                )
             );
         }
 
         private isDuplicateValue(): boolean {
-            return _.chain(this.props.items)
-                .pluck('value')
-                .concat(this.props.selected)
-                .indexOf(this.props.filterValue)
-                .value() !== -1;
+            return (
+                _.chain(this.props.items)
+                    .pluck('value')
+                    .concat(this.props.selected)
+                    .indexOf(this.props.filterValue)
+                    .value() !== -1
+            );
         }
 
         private allValuesAreSelected(): boolean {
@@ -161,11 +169,13 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
         render() {
             const filterBoxClassNames: string = classNames({
                 'flex flex-center': this.props.customValues,
-                'mb2': !!this.props.children,
+                mb2: !!this.props.children,
             });
 
             let noResultItem: React.ReactNode = this.props.noResultItem || this.noResultFilter();
-            let items = this.props.items.map((item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue}));
+            let items = this.props.items.map(
+                (item: IItemBoxProps): IItemBoxProps => ({...item, highlight: this.props.filterValue})
+            );
 
             if (this.isDuplicateValue()) {
                 noResultItem = this.duplicateValue();
@@ -183,7 +193,12 @@ export const selectWithFilter = (Component: (React.ComponentClass<ISelectWithFil
             };
 
             return (
-                <Component {...newProps} noResultItem={noResultItem} noDisabled={this.props.customValues} hasFocusableChild>
+                <Component
+                    {...newProps}
+                    noResultItem={noResultItem}
+                    noDisabled={this.props.customValues}
+                    hasFocusableChild
+                >
                     <FilterBoxConnected
                         {...this.props.filter}
                         id={this.props.id}

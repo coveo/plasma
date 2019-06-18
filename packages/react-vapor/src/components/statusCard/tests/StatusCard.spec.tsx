@@ -24,8 +24,10 @@ describe('StatusCard', () => {
 
         const mountWithProps = (props?: Partial<StatusCardProps>) => {
             statusCard = mount(
-                <StatusCard {...basicProps} {...props}>{statusCardChild}</StatusCard>,
-                {attachTo: document.getElementById('App')},
+                <StatusCard {...basicProps} {...props}>
+                    {statusCardChild}
+                </StatusCard>,
+                {attachTo: document.getElementById('App')}
             );
         };
 

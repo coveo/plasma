@@ -20,49 +20,60 @@ describe('Table HOC', () => {
 
         beforeEach(() => {
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                    },
+                ],
             });
         });
 
         it('should not throw', () => {
-            expect(() => shallowWithStore(<TableRowConnected id='a' tableId='b' />, store)).not.toThrow();
-            expect(() => shallowWithStore(<TableRowConnected id='b' tableId='c' actions={[{enabled: false, name: 'test'}]} />, store)).not.toThrow();
+            expect(() => shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)).not.toThrow();
+            expect(() =>
+                shallowWithStore(
+                    <TableRowConnected id="b" tableId="c" actions={[{enabled: false, name: 'test'}]} />,
+                    store
+                )
+            ).not.toThrow();
         });
 
         it('should render a tr', () => {
-            const wrapper = shallowWithStore(<TableRowConnected id='a' tableId='b' />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
             expect(wrapper.find('tr').exists()).toBe(true);
         });
 
         it('should have the class selected if the row is selected in the state', () => {
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: true,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: true,
+                    },
+                ],
             });
-            const wrapper = shallowWithStore(<TableRowConnected id='a' tableId='b' />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
             expect(wrapper.find('tr').hasClass('selected')).toBe(true);
         });
 
         it('should have the class "row-disabled" if the row has disabled prop to true', () => {
-            const wrapper = shallowWithStore(<TableRowConnected id='a' tableId='b' disabled />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" disabled />, store).dive();
             expect(wrapper.find('tr').hasClass('row-disabled')).toBe(true);
         });
 
         it('should not have the class selected if the row is not selected in the state', () => {
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: false,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: false,
+                    },
+                ],
             });
-            const wrapper = shallowWithStore(<TableRowConnected id='a' tableId='b' />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
             expect(wrapper.find('tr').hasClass('selected')).toBe(false);
         });
 
@@ -96,7 +107,10 @@ describe('Table HOC', () => {
         it('should dispatch a TableHOCRowActions.select action on click when actions is not empty', () => {
             const expectedAction = TableHOCRowActions.select(defaultProps.id, false);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} />, store).dive();
+            const wrapper = shallowWithStore(
+                <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} />,
+                store
+            ).dive();
             wrapper.find('tr').simulate('click', {});
 
             expect(store.isActionDispatched(expectedAction)).toBe(true);
@@ -140,12 +154,12 @@ describe('Table HOC', () => {
 
             // We must mount the component here because simulated events don't propagate throughout ShallowWrappers
             const wrapper = mountWithStore(
-                <TableRowConnected
-                    {...defaultProps}
-                    actions={[{enabled: true, name: 'action'}]} >
-                    <td><div className='dropdown'></div></td>
+                <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]}>
+                    <td>
+                        <div className="dropdown"></div>
+                    </td>
                 </TableRowConnected>,
-                store,
+                store
             );
 
             wrapper.find('.dropdown').simulate('click');
@@ -158,11 +172,8 @@ describe('Table HOC', () => {
             const expectedActionWithoutMulti = TableHOCRowActions.select(defaultProps.id, false);
 
             const wrapper = shallowWithStore(
-                <TableRowConnected
-                    {...defaultProps}
-                    actions={[{enabled: true, name: 'action'}]}
-                    isMultiselect />,
-                store,
+                <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} isMultiselect />,
+                store
             ).dive();
 
             wrapper.find('tr').simulate('click', {ctrlKey: true});
@@ -180,7 +191,7 @@ describe('Table HOC', () => {
                     {...defaultProps}
                     actions={[{enabled: true, name: 'action', callOnDoubleClick: true, trigger: triggerActionSpy}]}
                 />,
-                store,
+                store
             ).dive();
 
             wrapper.find('tr').simulate('doubleclick');
@@ -193,12 +204,14 @@ describe('Table HOC', () => {
 
             beforeEach(() => {
                 store = createMockStore({
-                    tableHOCRow: [{
-                        id: defaultProps.id,
-                        tableId: defaultProps.tableId,
-                        selected: false,
-                        opened: true,
-                    }],
+                    tableHOCRow: [
+                        {
+                            id: defaultProps.id,
+                            tableId: defaultProps.tableId,
+                            selected: false,
+                            opened: true,
+                        },
+                    ],
                 });
 
                 wrapper = shallowWithStore(
@@ -216,14 +229,24 @@ describe('Table HOC', () => {
                         {[]}
                         {false}
                     </TableRowConnected>,
-                    store,
+                    store
                 ).dive();
             });
 
             it('should render an additional row for the collapsible content', () => {
                 expect(wrapper.find('tr').length).toBe(2);
-                expect(wrapper.find('tr').at(0).hasClass('heading-row')).toBe(true);
-                expect(wrapper.find('tr').at(1).hasClass('collapsible-row')).toBe(true);
+                expect(
+                    wrapper
+                        .find('tr')
+                        .at(0)
+                        .hasClass('heading-row')
+                ).toBe(true);
+                expect(
+                    wrapper
+                        .find('tr')
+                        .at(1)
+                        .hasClass('collapsible-row')
+                ).toBe(true);
             });
 
             it('should render a single cell in the collapsible row that spans accross all the columns +1 for the toggle', () => {
@@ -252,7 +275,12 @@ describe('Table HOC', () => {
                     },
                 });
 
-                expect(wrapper.find('tr.heading-row td').last().equals(expectedToggle)).toBe(true);
+                expect(
+                    wrapper
+                        .find('tr.heading-row td')
+                        .last()
+                        .equals(expectedToggle)
+                ).toBe(true);
             });
 
             it('should dispatch a toggleCollapsible action when clicking on a collapsible heading-row', () => {
@@ -268,12 +296,14 @@ describe('Table HOC', () => {
             const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: false,
-                    opened: false,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: false,
+                        opened: false,
+                    },
+                ],
             });
 
             shallowWithStore(
@@ -285,7 +315,7 @@ describe('Table HOC', () => {
                         expandOnMount: true,
                     }}
                 />,
-                store,
+                store
             ).dive();
 
             expect(store.isActionDispatched(expectedAction)).toBe(true);
@@ -295,12 +325,14 @@ describe('Table HOC', () => {
             const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: false,
-                    opened: false,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: false,
+                        opened: false,
+                    },
+                ],
             });
 
             const row = shallowWithStore(
@@ -309,7 +341,7 @@ describe('Table HOC', () => {
                     tableId={defaultProps.tableId}
                     collapsible={{expandOnMount: true}}
                 />,
-                store,
+                store
             ).dive();
             expect(store.isActionDispatched(expectedAction)).toBe(false);
 
@@ -326,20 +358,19 @@ describe('Table HOC', () => {
             const actionNotExpected = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: false,
-                    opened: false,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: false,
+                        opened: false,
+                    },
+                ],
             });
 
             const row = shallowWithStore(
-                <TableRowConnected
-                    id={defaultProps.id}
-                    tableId={defaultProps.tableId}
-                />,
-                store,
+                <TableRowConnected id={defaultProps.id} tableId={defaultProps.tableId} />,
+                store
             ).dive();
             expect(store.isActionDispatched(actionNotExpected)).toBe(false);
 
@@ -354,12 +385,14 @@ describe('Table HOC', () => {
         it('should call the onToggleCollapsible props with true the row is opened', () => {
             const spy = jasmine.createSpy('onToggle');
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: false,
-                    opened: false,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: false,
+                        opened: false,
+                    },
+                ],
             });
 
             const row = shallowWithStore(
@@ -371,7 +404,7 @@ describe('Table HOC', () => {
                         onToggleCollapsible: spy,
                     }}
                 />,
-                store,
+                store
             ).dive();
 
             row.find('tr.heading-row').simulate('click', {});
@@ -381,12 +414,14 @@ describe('Table HOC', () => {
         it('should call the onToggleCollapsible props with false the row is closed', () => {
             const spy = jasmine.createSpy('onToggle');
             store = createMockStore({
-                tableHOCRow: [{
-                    id: defaultProps.id,
-                    tableId: defaultProps.tableId,
-                    selected: false,
-                    opened: true,
-                }],
+                tableHOCRow: [
+                    {
+                        id: defaultProps.id,
+                        tableId: defaultProps.tableId,
+                        selected: false,
+                        opened: true,
+                    },
+                ],
             });
 
             const row = shallowWithStore(
@@ -398,7 +433,7 @@ describe('Table HOC', () => {
                         onToggleCollapsible: spy,
                     }}
                 />,
-                store,
+                store
             ).dive();
 
             row.find('tr.heading-row').simulate('click', {});

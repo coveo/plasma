@@ -23,10 +23,10 @@ export interface ITableHeaderWithSortDispatchProps {
     onUnmount: () => void;
 }
 
-export interface ITableHeaderWithSortProps extends
-    ITableHeaderWithSortOwnProps,
-    Partial<ITableHeaderStateProps>,
-    Partial<ITableHeaderWithSortDispatchProps> {}
+export interface ITableHeaderWithSortProps
+    extends ITableHeaderWithSortOwnProps,
+        Partial<ITableHeaderStateProps>,
+        Partial<ITableHeaderWithSortDispatchProps> {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderWithSortOwnProps) => {
     const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id: ownProps.id});
@@ -38,7 +38,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderWithSort
 
 const mapDispatchToProps = (
     dispatch: IDispatch,
-    ownProps: ITableHeaderWithSortOwnProps,
+    ownProps: ITableHeaderWithSortOwnProps
 ): ITableHeaderWithSortDispatchProps => ({
     onMount: () => dispatch(TableHeaderActions.addTableHeader(ownProps.id, ownProps.tableId, ownProps.isDefault)),
     onSort: () => dispatch(TableHeaderActions.sortTable(ownProps.id)),
@@ -46,7 +46,9 @@ const mapDispatchToProps = (
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class TableHeaderWithSort extends React.Component<ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>> {
+export class TableHeaderWithSort extends React.Component<
+    ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
+> {
     componentDidMount() {
         this.props.onMount();
     }
@@ -62,12 +64,10 @@ export class TableHeaderWithSort extends React.Component<ITableHeaderWithSortPro
         });
 
         return (
-            <th
-                className={headerCellClasses}
-                onClick={() => this.props.onSort()}>
+            <th className={headerCellClasses} onClick={() => this.props.onSort()}>
                 {this.props.children}
-                <div className='admin-sort-icon'>
-                    <Svg svgName='asc-desc' className='tables-sort icon' />
+                <div className="admin-sort-icon">
+                    <Svg svgName="asc-desc" className="tables-sort icon" />
                 </div>
             </th>
         );
