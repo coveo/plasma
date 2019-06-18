@@ -21,7 +21,7 @@ module.exports = (config) => {
             noInfo: true,
         },
 
-        reporters: [mainReporter, 'coverage'],
+        reporters: ['nyan', 'coverage'],
 
         nyanReporter: {
             renderOnRunCompleteOnly: !!process.env.TRAVIS,
