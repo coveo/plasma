@@ -10,19 +10,19 @@ describe('JSXUtils', () => {
         });
 
         it('should return the text content of the react node received as argument', () => {
-            expect(getReactNodeTextContent(
-                <span>Hello world!</span>,
-            )).toBe('Hello world!');
+            expect(getReactNodeTextContent(<span>Hello world!</span>)).toBe('Hello world!');
 
-            expect(getReactNodeTextContent(
-                <div>
-                    {'Hello there!    '}
-                    <span>
-                        {'Can you see me? '}
-                        <span>I can.</span>
-                    </span>
-                </div>,
-            )).toBe('Hello there! Can you see me? I can.');
+            expect(
+                getReactNodeTextContent(
+                    <div>
+                        {'Hello there!    '}
+                        <span>
+                            {'Can you see me? '}
+                            <span>I can.</span>
+                        </span>
+                    </div>
+                )
+            ).toBe('Hello there! Can you see me? I can.');
         });
     });
 });
