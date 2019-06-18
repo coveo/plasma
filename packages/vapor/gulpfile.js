@@ -121,6 +121,13 @@ gulp.task('sprites', () => {
         .pipe(gulp.dest('scss'));
 });
 
+const svgTemplate = (key, string) => `        
+    ${key}: {
+        name: "${key}",
+        svgString: ${string},
+        render: (...args) => svgWrapper(svg.${key}.svgString, ...args)
+    },`;
+
 function Dictionary(from) {
     this.json = JSON.parse(fs.readFileSync(from));
     this.merge = (dict) => {
@@ -128,21 +135,13 @@ function Dictionary(from) {
     };
 
     this.writeSvgEnumFile = (to) => {
-        let code = 'export var svg = {\n';
+        let code = 'import {svgWrapper} from "../svgWrapper.js";\n';
+        code += 'export var svg = {\n';
         const that = this;
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
             const svgString = JSON.stringify(that.json[key]);
-            code +=
-                '        ' +
-                camelizedKey +
-                ": { name : '" +
-                camelizedKey +
-                "', svgString : " +
-                svgString +
-                ", render : function(svgClass, spanClass, title, attr) { return svgWrapper(VaporSVG.svg['" +
-                camelizedKey +
-                "'].svgString, svgClass, spanClass, title, attr); } }, \n";
+            code += svgTemplate(camelizedKey, svgString);
         });
         code += '};';
 
