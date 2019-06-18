@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         VaporSVG: './index.js',
     },
-    mode: 'development',
+    mode: 'production',
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: 'js/[name].js',
