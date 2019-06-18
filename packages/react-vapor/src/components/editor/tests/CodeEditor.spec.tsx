@@ -19,7 +19,7 @@ describe('CodeEditor', () => {
         }).not.toThrow();
     });
 
-    describe('<CodeEditor />', () => {
+    fdescribe('<CodeEditor />', () => {
         let codeEditor: ReactWrapper<ICodeEditorProps, CodeEditorState>;
         let codeEditorInstance: CodeEditor;
 
@@ -53,7 +53,7 @@ describe('CodeEditor', () => {
             expect(readOnlyProp).toBe(true);
         });
 
-        it('should set readOnly to \'nocursor\' when receiving true from props, else keep props', () => {
+        it('should set readOnly to `nocursor` when receiving true from props, else keep props', () => {
             mountWithProps({readOnly: true});
             expect((codeEditorInstance as any)
                 .removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly))
