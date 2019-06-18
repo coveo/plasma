@@ -17,20 +17,20 @@ describe('FlatSelectSelectors', () => {
             expect(selectedFlatSelect).toEqual(expectedSelectedFlatSelect);
         });
     });
-});
-
-describe('getSelectedOptionId', () => {
-    it('should return undefined state if no other value is chosen in the state', () => {
-        const selectedOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [] }, { id: 'nothing-is-selected-by-the-user' });
-        expect(selectedOptionId).toBeUndefined();
-    });
-
-    it('should return the flatSelected value from the state that the user chose', () => {
-        const expectedSelectedFlatSelect: IFlatSelectState = {
-            id: 'the-id',
-            selectedOptionId: 'the-selected-option-id',
-        };
-        const selectedFlatSelectOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [expectedSelectedFlatSelect] }, { id: expectedSelectedFlatSelect.id });
-        expect(expectedSelectedFlatSelect.selectedOptionId).toEqual(selectedFlatSelectOptionId);
+    
+    describe('getSelectedOptionId', () => {
+        it('should return undefined state if no other value is chosen in the state', () => {
+            const selectedOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [] }, { id: 'nothing-is-selected-by-the-user' });
+            expect(selectedOptionId).toBeUndefined();
+        });
+    
+        it('should return the flatSelected value from the state that the user chose', () => {
+            const expectedSelectedFlatSelect: IFlatSelectState = {
+                id: 'the-id',
+                selectedOptionId: 'the-selected-option-id',
+            };
+            const selectedFlatSelectOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [expectedSelectedFlatSelect] }, { id: expectedSelectedFlatSelect.id });
+            expect(expectedSelectedFlatSelect.selectedOptionId).toEqual(selectedFlatSelectOptionId);
+        });
     });
 });
