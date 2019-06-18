@@ -82,10 +82,14 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                 }}
                 value={this.state.value}
                 onChange={(editor, data, value: string) => this.handleChange(value)}
-                options={_.extend({}, CodeEditor.Options, {readOnly: this.props.readOnly, mode: this.props.mode})}
+                options={_.extend({}, CodeEditor.Options, {readOnly: this.removeCursorWhenEditorIsReadOnly(), mode: this.props.mode})}
                 className={this.props.className}
             />
         );
+    }
+
+    private removeCursorWhenEditorIsReadOnly() {
+        return this.props.readOnly ? 'nocursor' : this.props.readOnly;
     }
 
     private handleChange(code: string) {
