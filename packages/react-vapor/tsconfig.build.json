@@ -5,12 +5,11 @@
     "sourceMap": true,
     "rootDir": ".",
   },
-  "include": [
-    "src/**/*"
-  ],
   "exclude": [
     "src/**/*.spec.*",
     "src/utils/tests/TestUtils.tsx",
-    "src/components/tables/tests/TableTestCommon.tsx"
+    "src/components/tables/tests/TableTestCommon.tsx",
+    "karma.entry.ts",
+    "index.ts"
   ]
 }
