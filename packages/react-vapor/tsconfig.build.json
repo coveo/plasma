@@ -11,6 +11,6 @@
   "exclude": [
     "src/**/*.spec.*",
     "src/utils/tests/TestUtils.tsx",
-    "src/components/tables/tests/TableTestCommon.tsx",
+    "src/components/tables/tests/TableTestCommon.tsx"
   ]
 }
