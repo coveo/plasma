@@ -1,11 +1,11 @@
-import { flatSelectInitialState, IFlatSelectState } from '../FlatSelectReducers';
+import { IFlatSelectState } from '../FlatSelectReducers';
 import { FlatSelectSelectors } from '../FlatSelectSelectors';
 
-describe('FlatSelectSelectors', () => {
+fdescribe('FlatSelectSelectors', () => {
     describe('getInput', () => {
         it('should return the default flatSelect state when the flatSelect is not in the store', () => {
             const FlatSelect = FlatSelectSelectors.getInput({ flatSelect: [] }, { id: 'nothing is selected by the user' });
-            expect(FlatSelect).toEqual(flatSelectInitialState);
+            expect(FlatSelect).toBeUndefined();
         });
 
         it('should return the selected FlatSelect', () => {
@@ -17,13 +17,13 @@ describe('FlatSelectSelectors', () => {
             expect(selectedFlatSelect).toEqual(expectedSelectedFlatSelect);
         });
     });
-    
+
     describe('getSelectedOptionId', () => {
         it('should return undefined state if no other value is chosen in the state', () => {
             const selectedOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [] }, { id: 'nothing-is-selected-by-the-user' });
             expect(selectedOptionId).toBeUndefined();
         });
-    
+
         it('should return the flatSelected value from the state that the user chose', () => {
             const expectedSelectedFlatSelect: IFlatSelectState = {
                 id: 'the-id',

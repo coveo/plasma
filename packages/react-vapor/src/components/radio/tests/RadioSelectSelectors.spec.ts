@@ -1,10 +1,10 @@
-import {IRadioSelectState, radioSelectInitialState} from '../RadioSelectReducers';
-import {RadioSelectSelectors} from '../RadioSelectSelectors';
+import { IRadioSelectState, radioSelectInitialState } from '../RadioSelectReducers';
+import { RadioSelectSelectors } from '../RadioSelectSelectors';
 
 describe('RadioSelectSelectors', () => {
     describe('get', () => {
         it('should return the default radio select state when the radio select does not exist in the state', () => {
-            const radioSelect = RadioSelectSelectors.get({radioSelects: []}, {id: 'I-do-not-exist-in-the-state'});
+            const radioSelect = RadioSelectSelectors.get({ radioSelects: [] }, { id: 'I-do-not-exist-in-the-state' });
             expect(radioSelect).toEqual(radioSelectInitialState);
         });
 
@@ -14,14 +14,14 @@ describe('RadioSelectSelectors', () => {
                 value: 'choice-2',
                 disabledValues: [],
             };
-            const radioSelect = RadioSelectSelectors.get({radioSelects: [expectedRadioSelect]}, {id: expectedRadioSelect.id});
+            const radioSelect = RadioSelectSelectors.get({ radioSelects: [expectedRadioSelect] }, { id: expectedRadioSelect.id });
             expect(radioSelect).toEqual(expectedRadioSelect);
         });
     });
 
     describe('getValue', () => {
         it('should return undefined when the radio select does not exist in the state', () => {
-            const selectdValue = RadioSelectSelectors.getValue({radioSelects: []}, {id: 'I-do-not-exist-in-the-state'});
+            const selectdValue = RadioSelectSelectors.getValue({ radioSelects: [] }, { id: 'I-do-not-exist-in-the-state' });
             expect(selectdValue).toBeUndefined();
         });
 
@@ -31,7 +31,7 @@ describe('RadioSelectSelectors', () => {
                 value: 'choice-2',
                 disabledValues: [],
             };
-            const selectedValue = RadioSelectSelectors.getValue({radioSelects: [expectedRadioSelect]}, {id: expectedRadioSelect.id});
+            const selectedValue = RadioSelectSelectors.getValue({ radioSelects: [expectedRadioSelect] }, { id: expectedRadioSelect.id });
             expect(selectedValue).toBe(expectedRadioSelect.value);
         });
     });
