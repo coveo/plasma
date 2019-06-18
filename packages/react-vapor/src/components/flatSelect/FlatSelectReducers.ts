@@ -12,7 +12,7 @@ export const flatSelectsInitialState: IFlatSelectState[] = [];
 
 export const flatSelectReducer = (
     state: IFlatSelectState = flatSelectInitialState,
-    action: (IReduxAction<IFlatSelectActionPayload>),
+    action: IReduxAction<IFlatSelectActionPayload>
 ): IFlatSelectState => {
     switch (action.type) {
         case FlatSelectActions.select:
@@ -29,20 +29,15 @@ export const flatSelectReducer = (
 
 export const flatSelectsReducer = (
     state: IFlatSelectState[] = flatSelectsInitialState,
-    action: IReduxAction<IFlatSelectActionPayload>,
+    action: IReduxAction<IFlatSelectActionPayload>
 ): IFlatSelectState[] => {
     switch (action.type) {
         case FlatSelectActions.select:
             return state.map((flatSelect: IFlatSelectState) => {
-                return flatSelect.id === action.payload.id
-                    ? flatSelectReducer(flatSelect, action)
-                    : flatSelect;
+                return flatSelect.id === action.payload.id ? flatSelectReducer(flatSelect, action) : flatSelect;
             });
         case FlatSelectActions.add:
-            return [
-                ...state,
-                flatSelectReducer(undefined, action),
-            ];
+            return [...state, flatSelectReducer(undefined, action)];
         case FlatSelectActions.remove:
             return _.reject(state, (flatSelect: IFlatSelectState) => {
                 return action.payload.id === flatSelect.id;

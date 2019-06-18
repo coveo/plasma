@@ -15,7 +15,10 @@ export interface IMembersCompositeViewDispatchProps {
     addMember?: () => void;
 }
 
-export interface IMembersCompositeViewProps extends IMembersCompositeViewStateProps, IMembersCompositeViewDispatchProps, IReduxProps {}
+export interface IMembersCompositeViewProps
+    extends IMembersCompositeViewStateProps,
+        IMembersCompositeViewDispatchProps,
+        IReduxProps {}
 
 const mapStateToProps = (state: IReactVaporExampleState): IMembersCompositeViewStateProps => {
     return {
@@ -34,22 +37,16 @@ export class MembersCompositeView extends React.Component<IMembersCompositeViewP
     render() {
         const memberEditViews = _.map(this.props.members, (member: IMemberEditionState) => {
             return (
-                <div className='spaced-box' key={member.id}>
-                    <MemberEditView
-                        id={member.id}
-                        onAddMember={null}
-                    />
+                <div className="spaced-box" key={member.id}>
+                    <MemberEditView id={member.id} onAddMember={null} />
                 </div>
             );
         });
 
         return (
-            <div className='spaced-boxes-container flex flex-wrap'>
-                <div className='spaced-box'>
-                    <MemberEditView
-                        id={null}
-                        onAddMember={() => this.props.addMember()}
-                    />
+            <div className="spaced-boxes-container flex flex-wrap">
+                <div className="spaced-box">
+                    <MemberEditView id={null} onAddMember={() => this.props.addMember()} />
                 </div>
                 {memberEditViews}
             </div>

@@ -16,7 +16,6 @@ export interface ILoadingDispatchProps {
 export interface ILoadingProps extends ILoadingOwnProps, ILoadingDispatchProps {}
 
 export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTMLDivElement>, any> {
-
     componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
@@ -31,10 +30,10 @@ export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTM
 
     render() {
         return (
-            <div className={classNames('spinner', this.props.className)} {...omit(this.props, keys<ILoadingProps>())} >
-                <div className='bounce1'></div>
-                <div className='bounce2'></div>
-                <div className='bounce3'></div>
+            <div className={classNames('spinner', this.props.className)} {...omit(this.props, keys<ILoadingProps>())}>
+                <div className="bounce1"></div>
+                <div className="bounce2"></div>
+                <div className="bounce3"></div>
             </div>
         );
     }

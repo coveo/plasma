@@ -23,7 +23,7 @@ describe('Menu', () => {
                 <Provider store={store}>
                     <MenuConnected id={id} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             menuWrapper = wrapper.find(MenuConnected).first();
         };
@@ -95,7 +95,7 @@ describe('Menu', () => {
             });
 
             it('should add the custom svg', () => {
-                mountMenuConnected([], {buttonSvg: <Svg svgName='add' />});
+                mountMenuConnected([], {buttonSvg: <Svg svgName="add" />});
 
                 expect(menuWrapper.find(Svg).props().svgName).toBe('add');
             });

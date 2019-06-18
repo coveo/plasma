@@ -34,12 +34,9 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
     }
 
     render() {
-        const classes: string = classNames(
-            'form-group',
-            {
-                'input-validation-error': this.state.isInError,
-            },
-        );
+        const classes: string = classNames('form-group', {
+            'input-validation-error': this.state.isInError,
+        });
         return (
             <div className={classes}>
                 <CodeEditor
@@ -54,14 +51,12 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
     }
 
     private getValidationDetails(): JSX.Element {
-        return this.state.isInError
-            ? (
-                <div className='input-validation-error-details'>
-                    <Svg className='input-validation-error-icon' svgName='message-alert' svgClass='icon fill-white' />
-                    <span className='input-validation-error-message'>{this.props.errorMessage}</span>
-                </div>
-            )
-            : null;
+        return this.state.isInError ? (
+            <div className="input-validation-error-details">
+                <Svg className="input-validation-error-icon" svgName="message-alert" svgClass="icon fill-white" />
+                <span className="input-validation-error-message">{this.props.errorMessage}</span>
+            </div>
+        ) : null;
     }
 
     private handleChange(json: string) {

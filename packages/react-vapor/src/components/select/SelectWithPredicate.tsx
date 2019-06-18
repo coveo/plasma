@@ -16,11 +16,12 @@ const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
 
 export interface ISelectWithPredicateProps extends ISelectWithPredicateOwnProps, ISelectProps {}
 
-export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProps> | React.StatelessComponent<ISelectProps>)): React.ComponentClass<ISelectWithPredicateProps> => {
-
+export const selectWithPredicate = (
+    Component: React.ComponentClass<ISelectProps> | React.StatelessComponent<ISelectProps>
+): React.ComponentClass<ISelectWithPredicateProps> => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ISelectWithPredicateProps): Partial<ISelectProps> => {
         const flatSelect = _.findWhere(state.flatSelect, {id: ownProps.id});
-        const predicate = flatSelect && flatSelect.selectedOptionId || ownProps.options[0].id;
+        const predicate = (flatSelect && flatSelect.selectedOptionId) || ownProps.options[0].id;
 
         const items = _.map(ownProps.items, (item: IItemBoxProps) => {
             const visible = ownProps.matchPredicate(predicate, item);
@@ -38,7 +39,13 @@ export const selectWithPredicate = (Component: (React.ComponentClass<ISelectProp
         render() {
             return (
                 <Component {..._.omit(this.props, SelectWithPredicatePropsToOmit)}>
-                    <FlatSelectConnected id={this.props.id} classes={['full-content-x']} options={this.props.options} group optionPicker />
+                    <FlatSelectConnected
+                        id={this.props.id}
+                        classes={['full-content-x']}
+                        options={this.props.options}
+                        group
+                        optionPicker
+                    />
                     {this.props.children}
                 </Component>
             );

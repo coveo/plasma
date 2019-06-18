@@ -2,7 +2,9 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {IMenuPayload, MenuActions} from './MenuActions';
 
-export interface IMenusState {[id: string]: IMenuState;}
+export interface IMenusState {
+    [id: string]: IMenuState;
+}
 
 export interface IMenuState {
     id: string;
@@ -32,7 +34,7 @@ export const menuReducer = (state: IMenuState = menuInitialState, action: IRedux
 
 export const menuCompositeReducer = (
     state: IMenusState = menuCompositeInitialState,
-    action: IReduxAction<IMenuPayload>,
+    action: IReduxAction<IMenuPayload>
 ): IMenusState => {
     switch (action.type) {
         case MenuActions.add:

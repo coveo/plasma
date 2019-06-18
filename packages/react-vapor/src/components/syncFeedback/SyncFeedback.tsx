@@ -36,11 +36,11 @@ export class SyncFeedback extends React.Component<ISyncFeedbackProps, any> {
 
     private renderIcon() {
         if (this.props.state === SyncFeedbackState.SYNCING) {
-            return <span className='status-dot syncing sync-feedback-icon'></span>;
+            return <span className="status-dot syncing sync-feedback-icon"></span>;
         } else if (this.props.state === SyncFeedbackState.SUCCESS) {
-            return <Svg svgName='check' className='sync-feedback-icon' svgClass='icon' />;
+            return <Svg svgName="check" className="sync-feedback-icon" svgClass="icon" />;
         } else if (this.props.state === SyncFeedbackState.ERROR) {
-            return <Svg svgName='clear' className='sync-feedback-icon' svgClass='icon' />;
+            return <Svg svgName="clear" className="sync-feedback-icon" svgClass="icon" />;
         } else {
             return null;
         }
@@ -48,11 +48,17 @@ export class SyncFeedback extends React.Component<ISyncFeedbackProps, any> {
 
     private renderContent() {
         if (this.props.state === SyncFeedbackState.SYNCING) {
-            return <span className='sync-feedback-text'>{this.props.feedback || DEFAULT_SYNC_FEEDBACK_SYNCING_LABEL}</span>;
+            return (
+                <span className="sync-feedback-text">{this.props.feedback || DEFAULT_SYNC_FEEDBACK_SYNCING_LABEL}</span>
+            );
         } else if (this.props.state === SyncFeedbackState.SUCCESS) {
-            return <span className='sync-feedback-text'>{this.props.feedback || DEFAULT_SYNC_FEEDBACK_SUCCESS_LABEL}</span>;
+            return (
+                <span className="sync-feedback-text">{this.props.feedback || DEFAULT_SYNC_FEEDBACK_SUCCESS_LABEL}</span>
+            );
         } else if (this.props.state === SyncFeedbackState.ERROR) {
-            return <span className='sync-feedback-text'>{this.props.feedback || DEFAULT_SYNC_FEEDBACK_ERROR_LABEL}</span>;
+            return (
+                <span className="sync-feedback-text">{this.props.feedback || DEFAULT_SYNC_FEEDBACK_ERROR_LABEL}</span>
+            );
         } else {
             return null;
         }

@@ -4,7 +4,11 @@ import * as _ from 'underscore';
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {SingleSelectWithFilter, SingleSelectWithPredicate, SingleSelectWithPredicateAndFilter} from '../SelectComponents';
+import {
+    SingleSelectWithFilter,
+    SingleSelectWithPredicate,
+    SingleSelectWithPredicateAndFilter,
+} from '../SelectComponents';
 import {SingleSelectConnected} from '../SingleSelectConnected';
 
 const defaultItems: IItemBoxProps[] = [
@@ -37,7 +41,9 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
         const second = _.map(defaultItems, (item) => _.clone(item));
         second[0].selected = true;
 
-        const hoc = _.map(defaultItems, (item) => _.extend({}, item, {append: {content: () => <span className='text-medium-grey ml1'>{item.value}</span>}}));
+        const hoc = _.map(defaultItems, (item) =>
+            _.extend({}, item, {append: {content: () => <span className="text-medium-grey ml1">{item.value}</span>}})
+        );
         hoc[0].selected = true;
 
         this.state = {
@@ -49,60 +55,67 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
 
     render() {
         return (
-            <div className='my2'>
+            <div className="my2">
                 <h1>Single Select</h1>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Simple Single Select with a Custom Placeholder</label>
+                <div className="form-group">
+                    <label className="form-control-label">A Simple Single Select with a Custom Placeholder</label>
                     <br />
-                    <SingleSelectConnected id={UUID.generate()} items={this.state.first} placeholder='Select something' />
+                    <SingleSelectConnected
+                        id={UUID.generate()}
+                        items={this.state.first}
+                        placeholder="Select something"
+                    />
                 </div>
 
-                <div className='form-group'>
-                    <label className='form-control-label'>A Simple Single Select with a Clear Button</label>
+                <div className="form-group">
+                    <label className="form-control-label">A Simple Single Select with a Clear Button</label>
                     <br />
                     <SingleSelectConnected id={UUID.generate()} items={this.state.first} canClear />
                 </div>
 
-                <div className='form-group'>
-                    <label className='form-control-label'>Disabled Simple Single Select</label>
+                <div className="form-group">
+                    <label className="form-control-label">Disabled Simple Single Select</label>
                     <br />
-                    <SingleSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        disabled
-                    />
+                    <SingleSelectConnected id={UUID.generate()} items={this.state.hoc} disabled />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Single Select with prepended text</label>
+                <div className="form-group">
+                    <label className="form-control-label">Single Select with prepended text</label>
                     <br />
-                    <SingleSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        disabled
-                    />
+                    <SingleSelectConnected id={UUID.generate()} items={this.state.hoc} disabled />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Filter</label>
+                <div className="form-group">
+                    <label className="form-control-label">A Single Select With Filter</label>
                     <br />
                     <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Filter and a custom value</label>
+                <div className="form-group">
+                    <label className="form-control-label">A Single Select With Filter and a custom value</label>
                     <br />
                     <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Filter that only match display value</label>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        A Single Select With Filter that only match display value
+                    </label>
                     <br />
-                    <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1} />
+                    <SingleSelectWithFilter
+                        id={UUID.generate()}
+                        items={this.state.hoc}
+                        matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Predicates</label>
+                <div className="form-group">
+                    <label className="form-control-label">A Single Select With Predicates</label>
                     <br />
-                    <SingleSelectWithPredicate id={UUID.generate()} items={this.state.hoc} options={defaultFlatSelectOptions} matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)} />
+                    <SingleSelectWithPredicate
+                        id={UUID.generate()}
+                        items={this.state.hoc}
+                        options={defaultFlatSelectOptions}
+                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Filter and Predicates</label>
+                <div className="form-group">
+                    <label className="form-control-label">A Single Select With Filter and Predicates</label>
                     <br />
                     <SingleSelectWithPredicateAndFilter
                         id={UUID.generate()}
@@ -111,8 +124,10 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                     />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Filter, Predicates and a custom value</label>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        A Single Select With Filter, Predicates and a custom value
+                    </label>
                     <br />
                     <SingleSelectWithPredicateAndFilter
                         id={UUID.generate()}
@@ -122,15 +137,17 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
                         customValues
                     />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>A Single Select With Filter and Predicates And Lots Of Values</label>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        A Single Select With Filter and Predicates And Lots Of Values
+                    </label>
                     <br />
                     <SingleSelectWithPredicateAndFilter
                         id={UUID.generate()}
                         items={this.state.hoc}
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                        dropClasses='drop-this'
+                        dropClasses="drop-this"
                     />
                 </div>
             </div>

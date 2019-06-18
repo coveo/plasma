@@ -8,17 +8,14 @@ import {DropReducerActions, IDropPayload} from './DropActions';
 
 export interface IDropState {
     [groupId: string]: {
-        id: string,
-        isOpen: boolean,
+        id: string;
+        isOpen: boolean;
     };
 }
 
 export const dropInitialState: IDropState = {};
 
-export const dropReducer = (
-    state: IDropState = dropInitialState,
-    action: IReduxAction<IDropPayload>,
-): IDropState => {
+export const dropReducer = (state: IDropState = dropInitialState, action: IReduxAction<IDropPayload>): IDropState => {
     switch (action.type) {
         case ListBoxActions.select:
             const selectGroup = DropSelectors.getByGroup({drop: state}, {groupId: SelectConnected.DropGroup});
@@ -55,9 +52,10 @@ export const dropReducer = (
     }
 };
 
-const getDropByGroup = (state: IReactVaporState, {groupId}: {groupId: string}) => state.drop && state.drop[groupId] || undefined;
+const getDropByGroup = (state: IReactVaporState, {groupId}: {groupId: string}) =>
+    (state.drop && state.drop[groupId]) || undefined;
 
-const isDropOpen = (state: IReactVaporState, {id, groupId}: {id: string, groupId: string}): boolean => {
+const isDropOpen = (state: IReactVaporState, {id, groupId}: {id: string; groupId: string}): boolean => {
     const drop = getDropByGroup(state, {groupId});
     return drop && drop.id === id ? drop.isOpen : false;
 };

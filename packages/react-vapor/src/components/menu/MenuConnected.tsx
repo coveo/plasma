@@ -39,10 +39,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IMenuOwnProps): IMen
     };
 };
 
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: IMenuOwnProps,
-): IMenuDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMenuOwnProps): IMenuDispatchProps => ({
     onRender: () => dispatch(addMenu(ownProps.id)),
     onDestroy: () => dispatch(removeMenu(ownProps.id)),
     onToggleMenu: () => dispatch(toggleMenu(ownProps.id)),
@@ -71,29 +68,31 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     }
 
     render() {
-        const pickerClasses = classNames(
-            'select-dropdown dropdown',
-            this.props.className,
-            {
-                open: this.props.isOpen,
-            },
-        );
-        const dropdownClasses = classNames('select-dropdown-container absolute bg-pure-white', this.props.dropdownClassName, {
-            hidden: !this.props.isOpen,
+        const pickerClasses = classNames('select-dropdown dropdown', this.props.className, {
+            open: this.props.isOpen,
         });
+        const dropdownClasses = classNames(
+            'select-dropdown-container absolute bg-pure-white',
+            this.props.dropdownClassName,
+            {
+                hidden: !this.props.isOpen,
+            }
+        );
         return (
             <div className={pickerClasses}>
                 <button
-                    className={classNames('btn menu-toggle', this.props.toggleClassName, {'bg-light-grey': this.props.isOpen})}
-                    type='button'
+                    className={classNames('btn menu-toggle', this.props.toggleClassName, {
+                        'bg-light-grey': this.props.isOpen,
+                    })}
+                    type="button"
                     onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
-                    ref={(ref: HTMLButtonElement) => this.button = ref}
+                    ref={(ref: HTMLButtonElement) => (this.button = ref)}
                 >
                     {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
                 </button>
                 <div
                     className={dropdownClasses}
-                    ref={(ref: HTMLDivElement) => this.list = ref}
+                    ref={(ref: HTMLDivElement) => (this.list = ref)}
                     onClick={() => this.onClickMenu()}
                 >
                     {this.props.children}
@@ -109,12 +108,7 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
     }
 
     private getDefaultSvg() {
-        return (
-            <Svg
-                svgName='more-append'
-                svgClass='fill-medium-blue icon mod-lg'
-            />
-        );
+        return <Svg svgName="more-append" svgClass="fill-medium-blue icon mod-lg" />;
     }
 
     private onToggleMenu(e: React.SyntheticEvent<HTMLElement>) {
@@ -130,8 +124,8 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
         if (this.button) {
             this.list.style.minWidth = `${this.button.clientWidth + 2}px`;
             this.props.positionRight
-                ? this.list.style.right = `${this.button.offsetLeft + this.props.customOffset}px`
-                : this.list.style.left = `${this.button.offsetLeft + this.props.customOffset}px`;
+                ? (this.list.style.right = `${this.button.offsetLeft + this.props.customOffset}px`)
+                : (this.list.style.left = `${this.button.offsetLeft + this.props.customOffset}px`);
         }
     }
 
@@ -144,5 +138,5 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                 this.props.onDocumentClick();
             }
         }
-    }
+    };
 }

@@ -8,18 +8,19 @@ export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
 }
 
 export class BreadcrumbHeader extends React.Component<IBreadcrumbHeaderProps, {}> {
-
-    static defaultProps: Partial<IBreadcrumbHeaderProps> = _.extend({
-        breadcrumb: {
-            title: {
-                text: '',
+    static defaultProps: Partial<IBreadcrumbHeaderProps> = _.extend(
+        {
+            breadcrumb: {
+                title: {
+                    text: '',
+                },
             },
+            classes: [],
         },
-        classes: [],
-    }, HeaderWrapper.defaultProps);
+        HeaderWrapper.defaultProps
+    );
 
     render() {
-
         return (
             <HeaderWrapper {..._.omit(this.props, 'breadcrumb')}>
                 <Breadcrumb {...this.props.breadcrumb} />

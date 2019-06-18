@@ -18,7 +18,7 @@ export const optionPickersInitialState: IOptionPickerState[] = [];
 
 export const optionPickerReducer = (
     state: IOptionPickerState = optionPickerInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IOptionPickerState => {
     switch (action.type) {
         case OptionPickerActions.add:
@@ -49,26 +49,19 @@ export const optionPickerReducer = (
 
 export const optionPickersReducer = (
     state: IOptionPickerState[] = optionPickersInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IOptionPickerState[] => {
     switch (action.type) {
         case OptionPickerActions.add:
-            return [
-                ...state,
-                optionPickerReducer(undefined, action),
-            ];
+            return [...state, optionPickerReducer(undefined, action)];
         case OptionPickerActions.remove:
             return _.reject(state, (optionPicker: IOptionPickerState) => {
                 return action.payload.id === optionPicker.id;
             });
         case OptionPickerActions.change:
-            return state.map((optionPicker: IOptionPickerState) =>
-                optionPickerReducer(optionPicker, action),
-            );
+            return state.map((optionPicker: IOptionPickerState) => optionPickerReducer(optionPicker, action));
         case OptionPickerActions.reset:
-            return state.map((optionPicker: IOptionPickerState) =>
-                optionPickerReducer(optionPicker, action),
-            );
+            return state.map((optionPicker: IOptionPickerState) => optionPickerReducer(optionPicker, action));
         default:
             return state;
     }

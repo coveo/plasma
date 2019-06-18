@@ -26,7 +26,6 @@ export interface IFlatSelectDispatchProps {
 export interface IFlatSelectProps extends IFlatSelectOwnProps, IFlatSelectStateProps, IFlatSelectDispatchProps {}
 
 export class FlatSelect extends React.Component<IFlatSelectProps> {
-
     componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
@@ -51,7 +50,8 @@ export class FlatSelect extends React.Component<IFlatSelectProps> {
 
     private getOptions(): JSX.Element[] {
         return _.map(this.props.options, (flatSelectOption: IFlatSelectOptionProps, index: number) => {
-            flatSelectOption.selected = this.props.selectedOptionId && this.props.selectedOptionId === flatSelectOption.id;
+            flatSelectOption.selected =
+                this.props.selectedOptionId && this.props.selectedOptionId === flatSelectOption.id;
             flatSelectOption.onClick = (option: IFlatSelectOptionProps) => this.handleOnOptionClick(option);
 
             return <FlatSelectOption key={index} {...flatSelectOption} />;
@@ -59,15 +59,15 @@ export class FlatSelect extends React.Component<IFlatSelectProps> {
     }
 
     render() {
-        const classes: string = classNames('flat-select', {
-            'mod-btn-group': this.props.group,
-            'mod-option-picker': this.props.optionPicker,
-        }, this.props.classes);
-
-        return (
-            <div className={classes}>
-                {this.getOptions()}
-            </div>
+        const classes: string = classNames(
+            'flat-select',
+            {
+                'mod-btn-group': this.props.group,
+                'mod-option-picker': this.props.optionPicker,
+            },
+            this.props.classes
         );
+
+        return <div className={classes}>{this.getOptions()}</div>;
     }
 }

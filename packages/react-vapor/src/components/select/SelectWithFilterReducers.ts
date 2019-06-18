@@ -14,7 +14,7 @@ export const selectWithFilterInitialState: ISelectWithFilterCompositeState = {};
 
 export const selectWithFilterCompositeReducer = (
     state: ISelectWithFilterCompositeState = selectWithFilterInitialState,
-    action: IReduxAction<ISelectWithFilterPayload>,
+    action: IReduxAction<ISelectWithFilterPayload>
 ): ISelectWithFilterCompositeState => {
     if (_.contains(StringListActions, action.type)) {
         return stringListCompositeReducer(state, action);
@@ -31,7 +31,9 @@ export const selectWithFilterCompositeReducer = (
                 ...state,
                 [action.payload.id]: {
                     ...stateList,
-                    list: action.payload.multi ? _.uniq([...stateList.list, action.payload.value]) : [action.payload.value],
+                    list: action.payload.multi
+                        ? _.uniq([...stateList.list, action.payload.value])
+                        : [action.payload.value],
                 },
             };
         case ListBoxActions.unselect:

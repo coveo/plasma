@@ -36,7 +36,7 @@ describe('<NavigationConnected />', () => {
                     <NavigationConnected {...basicNavigationProps} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
         navigation = wrapper.find(Navigation).first();
     });
@@ -68,27 +68,41 @@ describe('<NavigationConnected />', () => {
         expect(navigation.find(NavigationPaginationConnected).length).toBe(1);
     });
 
-    it('should render a <NavigationPerPageConnected /> component if totalEntries is higher than the first perPageNumber',
-        () => {
-            expect(navigation.find(NavigationPerPageConnected).length).toBe(1);
-        });
+    it('should render a <NavigationPerPageConnected /> component if totalEntries is higher than the first perPageNumber', () => {
+        expect(navigation.find(NavigationPerPageConnected).length).toBe(1);
+    });
 
     it('should adjust page selected to appropriate one if a perPageSelect is clicked', () => {
-        wrapper.find(NavigationPaginationSelect).last().simulate('click');
+        wrapper
+            .find(NavigationPaginationSelect)
+            .last()
+            .simulate('click');
 
-        expect(_.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb)
-            .toBe(6);
+        expect(
+            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
+        ).toBe(6);
 
-        navigation.find(NavigationPerPageSelect).last().simulate('click');
+        navigation
+            .find(NavigationPerPageSelect)
+            .last()
+            .simulate('click');
         wrapper.update();
 
-        expect(_.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb)
-            .toBe(0);
+        expect(
+            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
+        ).toBe(0);
 
-        wrapper.find(NavigationPaginationSelect).at(1).simulate('click');
-        wrapper.find(NavigationPerPageSelect).first().simulate('click');
+        wrapper
+            .find(NavigationPaginationSelect)
+            .at(1)
+            .simulate('click');
+        wrapper
+            .find(NavigationPerPageSelect)
+            .first()
+            .simulate('click');
 
-        expect(_.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb)
-            .toBe(10);
+        expect(
+            _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
+        ).toBe(10);
     });
 });

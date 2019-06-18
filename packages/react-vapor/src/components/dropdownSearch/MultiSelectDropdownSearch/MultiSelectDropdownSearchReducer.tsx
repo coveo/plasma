@@ -17,9 +17,8 @@ import {
 
 export const multiSelectDropdownSearchReducer = (
     state: IDropdownSearchState = dropdownSearchInitialState,
-    action: IReduxAction<IOptionsDropdownSearchPayload>,
+    action: IReduxAction<IOptionsDropdownSearchPayload>
 ): IDropdownSearchState => {
-
     switch (action.type) {
         case DropdownSearchActions.addMultiSelect:
             return {
@@ -65,12 +64,12 @@ export const multiSelectDropdownSearchReducer = (
                 return {
                     ...state,
                     isOpened: !isFirstSelectedOption,
-                    activeOption: !isFirstSelectedOption ?
-                        filteredOptions[getNextIndexPosition(filteredOptions, state.activeOption, keyPressed)] : undefined,
+                    activeOption: !isFirstSelectedOption
+                        ? filteredOptions[getNextIndexPosition(filteredOptions, state.activeOption, keyPressed)]
+                        : undefined,
                     setFocusOnDropdownButton: isFirstSelectedOption,
                 };
             } else if (_.contains([keyCode.enter, keyCode.tab], keyPressed) && state.activeOption) {
-
                 return {
                     ...state,
                     options: multiSelectOption(state.options, state.activeOption),
@@ -80,7 +79,11 @@ export const multiSelectDropdownSearchReducer = (
                     filterText: '',
                     setFocusOnDropdownButton: true,
                 };
-            } else if ((_.contains([keyCode.enter, keyCode.tab], keyPressed) && !state.activeOption && state.filterText)) {
+            } else if (
+                _.contains([keyCode.enter, keyCode.tab], keyPressed) &&
+                !state.activeOption &&
+                state.filterText
+            ) {
                 return {
                     ...state,
                     options: addUniqueSelectedOption(state.options, state.filterText),

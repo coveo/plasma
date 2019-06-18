@@ -17,9 +17,9 @@ export interface ITetherComponentCopiedProps {
     enabled?: boolean;
     classes?: any;
     className?: string;
-    style?: {[key: string]: any;};
+    style?: {[key: string]: any};
     classPrefix?: string;
-    optimizations?: {[key: string]: any;};
+    optimizations?: {[key: string]: any};
     constraints?: any[];
     onUpdate?: (...args: any[]) => void;
     onRepositioned?: (...args: any[]) => void;
@@ -88,12 +88,10 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     render() {
         const children = React.Children.toArray(this.props.children);
 
-        const isOpen: boolean = this.state && this.state.isOpen || this.props.isOpen;
+        const isOpen: boolean = (this.state && this.state.isOpen) || this.props.isOpen;
 
         return (
-            <TetherComponent
-                {..._.omit(this.props, 'children')}
-            >
+            <TetherComponent {..._.omit(this.props, 'children')}>
                 <div ref={this.tetherToggle} onClick={() => this.toggleOpened(!isOpen)}>
                     {children[0]}
                 </div>
@@ -131,5 +129,5 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
                 this.toggleOpened(false);
             }
         }
-    }
+    };
 }

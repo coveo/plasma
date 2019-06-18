@@ -45,10 +45,6 @@ export class ToggleForm extends React.Component<IToggleFormProps, any> {
         const classes: string = classNames('coveo-parent', this.props.classes);
         const children = this.getChildren();
 
-        return (
-            <div className={classes}>
-                {children}
-            </div>
-        );
+        return <div className={classes}>{children}</div>;
     }
 }

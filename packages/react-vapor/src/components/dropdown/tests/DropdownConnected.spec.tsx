@@ -17,22 +17,18 @@ describe('Dropdown', () => {
         let store: Store<IReactVaporState>;
         const basicDropdownProps: IDropdownProps = {
             id: 'dropdown-id',
-            toggleContent: [<span key='toggle'>Toggle</span>],
-            dropdownItems: [
-                <li key='option1'>Option 1</li>,
-                <li key='options2'>Option 2</li>,
-            ],
+            toggleContent: [<span key="toggle">Toggle</span>],
+            dropdownItems: [<li key="option1">Option 1</li>, <li key="options2">Option 2</li>],
         };
 
         beforeEach(() => {
-
             store = TestUtils.buildStore();
 
             wrapper = mount(
                 <Provider store={store}>
                     <DropdownConnected {...basicDropdownProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             dropdown = wrapper.find(Dropdown);
         });

@@ -14,9 +14,7 @@ describe('NavigationPaginationSelect', () => {
     describe('<NavigationPaginationSelect />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <NavigationPaginationSelect {...basicNavigationPaginationSelectProps} />,
-                );
+                shallow(<NavigationPaginationSelect {...basicNavigationPaginationSelectProps} />);
             }).not.toThrow();
         });
     });
@@ -27,7 +25,7 @@ describe('NavigationPaginationSelect', () => {
         beforeEach(() => {
             navigationPaginationSelect = mount(
                 <NavigationPaginationSelect {...basicNavigationPaginationSelectProps} />,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         });
 
@@ -65,7 +63,9 @@ describe('NavigationPaginationSelect', () => {
         });
 
         it('should display the page number', () => {
-            expect(navigationPaginationSelect.html()).toContain((basicNavigationPaginationSelectProps.pageNb + 1).toString());
+            expect(navigationPaginationSelect.html()).toContain(
+                (basicNavigationPaginationSelectProps.pageNb + 1).toString()
+            );
         });
 
         it('should call onPageClick on page click', () => {

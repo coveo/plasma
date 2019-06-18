@@ -19,7 +19,6 @@ export interface IMultiselectInputProps {
 }
 
 export class MultiselectInput extends React.Component<IMultiselectInputProps, any> {
-
     static defaultProps: Partial<IMultiselectInputProps> = {
         deselectAllTooltipText: 'Deselect all options',
     };
@@ -34,7 +33,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
         if (this.props.onFilterTextChange) {
             this.props.onFilterTextChange(e.target.value);
         }
-    }
+    };
 
     private handleOnBlur() {
         if (this.props.onBlur) {
@@ -64,7 +63,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
                     label={selectedOption.displayValue}
                     key={selectedOption.value}
                     onRemoveClick={this.props.onRemoveClick}
-                />,
+                />
             );
         });
 
@@ -75,8 +74,8 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
         if (this.props.selectedOptions.length) {
             return (
                 <Tooltip title={this.props.deselectAllTooltipText} placement={'top'}>
-                    <div className='remove-all-selected-options' onClick={() => this.handleOnRemoveAll()}>
-                        <Svg svgName='clear' svgClass='icon fill-medium-blue' />
+                    <div className="remove-all-selected-options" onClick={() => this.handleOnRemoveAll()}>
+                        <Svg svgName="clear" svgClass="icon fill-medium-blue" />
                     </div>
                 </Tooltip>
             );
@@ -85,16 +84,14 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
 
     render() {
         return (
-            <div className='multiselect-input'>
-                <div className='multiselect-selected flex flex-center flex-auto'>
-                    <div className='selected-options-container'>
-                        {this.getSelectedOptionComponents()}
-                    </div>
+            <div className="multiselect-input">
+                <div className="multiselect-selected flex flex-center flex-auto">
+                    <div className="selected-options-container">{this.getSelectedOptionComponents()}</div>
                     {this.getRemoveAllSelectedOptionsButton()}
                 </div>
-                <div className='multiselect-add flex flex-center flex-auto'>
+                <div className="multiselect-add flex flex-center flex-auto">
                     <input
-                        className='mod-no-border flex-auto'
+                        className="mod-no-border flex-auto"
                         placeholder={this.props.filterPlaceholder}
                         onChange={(e: React.ChangeEvent<HTMLInputElement>) => this.handleInputChange(e)}
                         onBlur={() => this.handleOnBlur()}
@@ -102,7 +99,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
                         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
                         value={this.props.filterText}
                     />
-                    <Svg svgName='filter' className='icon fill-dark-medium-grey' />
+                    <Svg svgName="filter" className="icon fill-dark-medium-grey" />
                 </div>
             </div>
         );

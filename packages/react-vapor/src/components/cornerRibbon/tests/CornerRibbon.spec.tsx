@@ -1,6 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import {CornerRibbon, DEFAULT_CORNER_RIBBON_CLASSNAME, ICornerRibbonProps, PlacementX, PlacementY} from '../CornerRibbon';
+import {
+    CornerRibbon,
+    DEFAULT_CORNER_RIBBON_CLASSNAME,
+    ICornerRibbonProps,
+    PlacementX,
+    PlacementY,
+} from '../CornerRibbon';
 
 describe('CornerRibbon', () => {
     let cornerRibbon: ReactWrapper<ICornerRibbonProps, any>;
@@ -13,10 +19,7 @@ describe('CornerRibbon', () => {
 
     describe('<CornerRibbon />', () => {
         const mountWithProps = (props: Partial<ICornerRibbonProps>) => {
-            cornerRibbon = mount(
-                <CornerRibbon {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            cornerRibbon = mount(<CornerRibbon {...props} />, {attachTo: document.getElementById('App')});
         };
 
         it('should have the default corner-ribon class', () => {

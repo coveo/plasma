@@ -6,7 +6,6 @@ import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
 import {IItemBoxProps, ItemBox} from '../ItemBox';
 
 describe('ItemBox', () => {
-
     let ItemBoxComponent: ReactWrapper<IItemBoxProps, any>;
     const defaultProps: IItemBoxProps = {
         value: 'test',
@@ -14,19 +13,13 @@ describe('ItemBox', () => {
 
     it('should render without errors', () => {
         expect(() => {
-            shallow(<ItemBox
-                value='test'
-            />);
+            shallow(<ItemBox value="test" />);
         }).not.toThrow();
     });
 
     describe('<ItemBox /> with default props', () => {
-
         beforeEach(() => {
-            ItemBoxComponent = mount(
-                <ItemBox {...defaultProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            ItemBoxComponent = mount(<ItemBox {...defaultProps} />, {attachTo: document.getElementById('App')});
         });
 
         it('should render with the box-item class', () => {
@@ -39,7 +32,6 @@ describe('ItemBox', () => {
     });
 
     describe('<ItemBox /> with custom props', () => {
-
         const content: IContentProps = {
             content: 'Prefix',
             classes: ['text-medium-grey', 'mr1'],
@@ -52,10 +44,9 @@ describe('ItemBox', () => {
         };
 
         const renderItemBox = (props: Partial<IItemBoxProps> = {}) => {
-            ItemBoxComponent = mount(
-                <ItemBox {..._.defaults(props, defaultProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            ItemBoxComponent = mount(<ItemBox {..._.defaults(props, defaultProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         it('should render the display value', () => {

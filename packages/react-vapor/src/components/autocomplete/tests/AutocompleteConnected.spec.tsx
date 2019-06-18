@@ -24,7 +24,7 @@ describe('Autocomplete', () => {
                 <Provider store={store}>
                     <AutocompleteConnected id={id} items={items} {...otherProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             autocomplete = wrapper.find(AutocompleteConnected).first();
         };
@@ -68,30 +68,21 @@ describe('Autocomplete', () => {
 
         it('should contains a the selected value', () => {
             const selectedValue = 'dis 1';
-            mountAutocomplete([
-                {value: 'a'},
-                {value: selectedValue, selected: true},
-            ]);
+            mountAutocomplete([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             expect(autocomplete.html()).toContain(selectedValue);
         });
 
         it('should contains the display value when the selected value has one', () => {
             const selectedDisplayValue = 'dis 2';
-            mountAutocomplete([
-                {value: 'a'},
-                {value: 'dis 1', displayValue: selectedDisplayValue, selected: true},
-            ]);
+            mountAutocomplete([{value: 'a'}, {value: 'dis 1', displayValue: selectedDisplayValue, selected: true}]);
 
             expect(autocomplete.html()).toContain(selectedDisplayValue);
         });
 
         it('should contains the selected item as a prop', () => {
             const selectedValue = 'dis 1';
-            mountAutocomplete([
-                {value: 'a'},
-                {value: selectedValue, selected: true},
-            ]);
+            mountAutocomplete([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             const value: string = autocomplete.find('input').prop<string>('value');
             expect(value).toBe(selectedValue);
@@ -113,7 +104,8 @@ describe('Autocomplete', () => {
                 matchFilter: spy,
             });
 
-            autocomplete.find('input')
+            autocomplete
+                .find('input')
                 .simulate('focus')
                 .simulate('change', {target: {value: 'anything'}});
 
@@ -177,11 +169,7 @@ describe('Autocomplete', () => {
 
             it('should change the value when the user press enter and a value is active', () => {
                 const expectedValue = 'b';
-                mountAutocomplete([
-                    {value: 'a'},
-                    {value: expectedValue},
-                    {value: 'c'},
-                ]);
+                mountAutocomplete([{value: 'a'}, {value: expectedValue}, {value: 'c'}]);
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.downArrow}); // select a
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.downArrow}); // select expectedValue
@@ -191,14 +179,13 @@ describe('Autocomplete', () => {
             });
 
             it('should not change the value if no item is active', () => {
-                mountAutocomplete([
-                    {value: 'a'},
-                    {value: 'b'},
-                    {value: 'c'},
-                ]);
+                mountAutocomplete([{value: 'a'}, {value: 'b'}, {value: 'c'}]);
 
                 expect(autocomplete.prop('active')).toBeUndefined();
-                autocomplete.find('input').simulate('focus').simulate('keyup', {keyCode: keyCode.enter});
+                autocomplete
+                    .find('input')
+                    .simulate('focus')
+                    .simulate('keyup', {keyCode: keyCode.enter});
 
                 expect(autocomplete.prop('active')).toBeUndefined();
                 expect(store.getState().autocompletes[0].value).toBe('');

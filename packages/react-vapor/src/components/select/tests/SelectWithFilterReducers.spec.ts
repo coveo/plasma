@@ -4,7 +4,11 @@ import {IStringListCompositeState} from '../../../reusableState/customList/Strin
 import {stringListInitialState} from '../../../reusableState/customList/StringListReducers';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {clearListBoxOption, selectListBoxOption, unselectListBoxOption} from '../../listBox/ListBoxActions';
-import {ISelectWithFilterCompositeState, ISelectWithFilterPayload, selectWithFilterCompositeReducer} from '../SelectWithFilterReducers';
+import {
+    ISelectWithFilterCompositeState,
+    ISelectWithFilterPayload,
+    selectWithFilterCompositeReducer,
+} from '../SelectWithFilterReducers';
 
 describe('Select', () => {
     describe('SelectWithFilter reducers', () => {
@@ -46,7 +50,10 @@ describe('Select', () => {
         });
 
         it('should return the default state if the action type do not exist', () => {
-            const newState: IStringListCompositeState = selectWithFilterCompositeReducer(oldState, {...genericAction, payload: {id: stateId}});
+            const newState: IStringListCompositeState = selectWithFilterCompositeReducer(oldState, {
+                ...genericAction,
+                payload: {id: stateId},
+            });
 
             expect(newState).toBe(oldState);
         });
@@ -61,14 +68,20 @@ describe('Select', () => {
             const newValue: string = 'b';
 
             it('should add the value in the list if multi and the id exist in the state', () => {
-                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(oldState, selectListBoxOption(stateId, true, newValue));
+                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
+                    oldState,
+                    selectListBoxOption(stateId, true, newValue)
+                );
 
                 expect(newState[stateId].list.length).toBe(2);
                 expect(newState[stateId].list[1]).toBe(newValue);
             });
 
             it('should add only the value in the list if no multi and the id exist in the state', () => {
-                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(oldState, selectListBoxOption(stateId, false, newValue));
+                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
+                    oldState,
+                    selectListBoxOption(stateId, false, newValue)
+                );
 
                 expect(newState[stateId].list.length).toBe(1);
                 expect(newState[stateId].list[0]).toBe(newValue);
@@ -79,7 +92,10 @@ describe('Select', () => {
             it('should remove the value in the list if the id exist in the state', () => {
                 expect(oldState[stateId].list.length).toBe(1);
 
-                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(oldState, unselectListBoxOption(stateId, stateValue));
+                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
+                    oldState,
+                    unselectListBoxOption(stateId, stateValue)
+                );
 
                 expect(newState[stateId].list.length).toBe(0);
             });
@@ -94,7 +110,10 @@ describe('Select', () => {
             };
 
             it('should clear the list if the id exist in the state', () => {
-                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(oldStateTest, clearListBoxOption(stateId));
+                const newState: IStringListCompositeState = selectWithFilterCompositeReducer(
+                    oldStateTest,
+                    clearListBoxOption(stateId)
+                );
 
                 expect(newState[stateId].list.length).toBe(0);
             });

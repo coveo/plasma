@@ -98,7 +98,7 @@ export interface ITableOwnProps extends React.ClassAttributes<Table>, ITableBody
         tableOwnProps?: Partial<ITableOwnProps>,
         shouldResetPage?: boolean,
         tableCompositeState?: ITableCompositeState,
-        previousTableCompositeState?: ITableCompositeState,
+        previousTableCompositeState?: ITableCompositeState
     ) => IThunkAction;
 }
 
@@ -114,7 +114,7 @@ export interface ITableDispatchProps {
     onModifyData?: (
         shouldResetPage: boolean,
         tableCompositeState: ITableCompositeState,
-        previousTableCompositeState?: ITableCompositeState,
+        previousTableCompositeState?: ITableCompositeState
     ) => void;
     onPredicateOptionClick?: (predicateId: string, option: IDropdownOption) => void;
     onRowClick?: (actions: IActionOptions[], numberOfSelectedIds: number) => void;
@@ -165,7 +165,10 @@ export class Table extends React.Component<ITableProps> {
     }
 
     componentDidUpdate() {
-        if (this.isInitialLoad && JSON.stringify(this.props.tableCompositeState.data) !== JSON.stringify(DEFAULT_TABLE_DATA)) {
+        if (
+            this.isInitialLoad &&
+            JSON.stringify(this.props.tableCompositeState.data) !== JSON.stringify(DEFAULT_TABLE_DATA)
+        ) {
             this.isInitialLoad = false;
         }
     }
@@ -175,10 +178,9 @@ export class Table extends React.Component<ITableProps> {
 
         if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {
             // if the change occurs outside the navigation (per page, pagination), reset the pagination to 0
-            const shouldResetPage = (
-                tableCompositeState.page === nextProps.tableCompositeState.page
-                && tableCompositeState.perPage === nextProps.tableCompositeState.perPage
-            );
+            const shouldResetPage =
+                tableCompositeState.page === nextProps.tableCompositeState.page &&
+                tableCompositeState.perPage === nextProps.tableCompositeState.perPage;
 
             this.props.onModifyData(shouldResetPage, nextProps.tableCompositeState, tableCompositeState);
         }
@@ -199,26 +201,32 @@ export class Table extends React.Component<ITableProps> {
                 'mod-loading-content': !!(this.props.tableCompositeState && this.props.tableCompositeState.isLoading),
                 'loading-component': this.isInitialLoad && !this.props.tableCompositeState.isInError,
             },
-            this.props.tableClasses,
+            this.props.tableClasses
         );
 
-        const tableBodyNode: React.ReactNode = this.shouldShowTableBody()
-            ? this.getTableBody()
-            : <TableChildBlankSlate {...this.props} />;
+        const tableBodyNode: React.ReactNode = this.shouldShowTableBody() ? (
+            this.getTableBody()
+        ) : (
+            <TableChildBlankSlate {...this.props} />
+        );
 
-        const tableChildLastUpdatedNode: React.ReactNode = !this.props.withoutLastUpdated
-            ? <TableChildLastUpdated {...this.props} pullLeft={this.props.pullLastUpdateLeft} />
-            : null;
+        const tableChildLastUpdatedNode: React.ReactNode = !this.props.withoutLastUpdated ? (
+            <TableChildLastUpdated {...this.props} pullLeft={this.props.pullLastUpdateLeft} />
+        ) : null;
 
         return (
-            <div className={classNames('table-container', this.props.tableContainerClasses, {'table-card': this.props.asCard})}>
+            <div
+                className={classNames('table-container', this.props.tableContainerClasses, {
+                    'table-card': this.props.asCard,
+                })}
+            >
                 <TableChildActionBar {...this.props} />
                 {this.setFixedHeaderWrapper(
                     <table id={`table-${this.props.id}`} className={tableClasses}>
                         <TableChildLoadingRow {...this.props} isInitialLoad={this.isInitialLoad} />
                         {!this.props.asCard || this.shouldShowTableBody() ? <TableChildHeader {...this.props} /> : null}
                         {tableBodyNode}
-                    </table>,
+                    </table>
                 )}
                 <TableChildNavigation {...this.props} />
                 {tableChildLastUpdatedNode}
@@ -227,35 +235,35 @@ export class Table extends React.Component<ITableProps> {
     }
 
     private setFixedHeaderWrapper(tableElement: React.ReactNode) {
-        return this.props.withFixedHeader
-            ? (
-                <div className='fixed-header-table-container'>
-                    <div className='fixed-header-table'>
-                        {tableElement}
-                    </div>
-                </div>
-            )
-            : tableElement;
+        return this.props.withFixedHeader ? (
+            <div className="fixed-header-table-container">
+                <div className="fixed-header-table">{tableElement}</div>
+            </div>
+        ) : (
+            tableElement
+        );
     }
 
     private hasTableCompositeStateChanged(
         currentTableCompositeState: ITableCompositeState,
-        nextTableCompositeState: ITableCompositeState,
+        nextTableCompositeState: ITableCompositeState
     ): boolean {
-        return !!currentTableCompositeState && (
-            currentTableCompositeState.filter !== nextTableCompositeState.filter
-            || currentTableCompositeState.perPage !== nextTableCompositeState.perPage
-            || currentTableCompositeState.page !== nextTableCompositeState.page
-            || currentTableCompositeState.sortState.attribute !== nextTableCompositeState.sortState.attribute
-            || currentTableCompositeState.sortState.order !== nextTableCompositeState.sortState.order
-            || (_.isEmpty(currentTableCompositeState.predicates) && !_.isEmpty(nextTableCompositeState.predicates))
-            || _.some(
-                currentTableCompositeState.predicates,
-                (attributeValue: any, attributeName: string) => attributeValue !== nextTableCompositeState.predicates[attributeName],
-            )
-            || currentTableCompositeState.from !== nextTableCompositeState.from
-            || currentTableCompositeState.to !== nextTableCompositeState.to
-            || !!currentTableCompositeState.dataDeleted
+        return (
+            !!currentTableCompositeState &&
+            (currentTableCompositeState.filter !== nextTableCompositeState.filter ||
+                currentTableCompositeState.perPage !== nextTableCompositeState.perPage ||
+                currentTableCompositeState.page !== nextTableCompositeState.page ||
+                currentTableCompositeState.sortState.attribute !== nextTableCompositeState.sortState.attribute ||
+                currentTableCompositeState.sortState.order !== nextTableCompositeState.sortState.order ||
+                (_.isEmpty(currentTableCompositeState.predicates) && !_.isEmpty(nextTableCompositeState.predicates)) ||
+                _.some(
+                    currentTableCompositeState.predicates,
+                    (attributeValue: any, attributeName: string) =>
+                        attributeValue !== nextTableCompositeState.predicates[attributeName]
+                ) ||
+                currentTableCompositeState.from !== nextTableCompositeState.from ||
+                currentTableCompositeState.to !== nextTableCompositeState.to ||
+                !!currentTableCompositeState.dataDeleted)
         );
     }
 
@@ -263,41 +271,45 @@ export class Table extends React.Component<ITableProps> {
         const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
         const numberOfSelectedIds: number = tableData.selectedIds ? tableData.selectedIds.length : 0;
 
-        const tableBodyNode: React.ReactNode = tableData.displayedIds.map((id: string, yPosition: number): JSX.Element => {
-            const currentRowData: IData = tableData.byId[id];
+        const tableBodyNode: React.ReactNode = tableData.displayedIds.map(
+            (id: string, yPosition: number): JSX.Element => {
+                const currentRowData: IData = tableData.byId[id];
 
-            return (
-                <TableChildBody
-                    key={id}
-                    disabled={this.props.disabled}
-                    tableId={this.props.id}
-                    rowData={currentRowData}
-                    isLoading={this.props.tableCompositeState.isLoading}
-                    getActions={(rowData?: IData) => (this.props.getActions && this.props.getActions(rowData)) || []}
-                    headingAttributes={this.props.headingAttributes}
-                    collapsibleFormatter={this.props.collapsibleFormatter}
-                    onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions, numberOfSelectedIds)}
-                    handleOnRowClick={this.props.handleOnRowClick}
-                    additionalRowClasses={this.props.additionalRowClasses}
-                    isMultiSelect={this.props.rowsMultiSelect}
-                    withoutHoverOnRow={this.props.withoutHoverOnRow}
-                />
-            );
-        });
+                return (
+                    <TableChildBody
+                        key={id}
+                        disabled={this.props.disabled}
+                        tableId={this.props.id}
+                        rowData={currentRowData}
+                        isLoading={this.props.tableCompositeState.isLoading}
+                        getActions={(rowData?: IData) =>
+                            (this.props.getActions && this.props.getActions(rowData)) || []
+                        }
+                        headingAttributes={this.props.headingAttributes}
+                        collapsibleFormatter={this.props.collapsibleFormatter}
+                        onRowClick={(actions: IActionOptions[]) => this.props.onRowClick(actions, numberOfSelectedIds)}
+                        handleOnRowClick={this.props.handleOnRowClick}
+                        additionalRowClasses={this.props.additionalRowClasses}
+                        isMultiSelect={this.props.rowsMultiSelect}
+                        withoutHoverOnRow={this.props.withoutHoverOnRow}
+                    />
+                );
+            }
+        );
 
-        return this.props.collapsibleFormatter
-            ? tableBodyNode
-            : (
-                <tbody className={classNames(this.props.tableBodyClasses)}>
-                    {tableBodyNode}
-                </tbody>
-            );
+        return this.props.collapsibleFormatter ? (
+            tableBodyNode
+        ) : (
+            <tbody className={classNames(this.props.tableBodyClasses)}>{tableBodyNode}</tbody>
+        );
     }
 
     private shouldShowTableBody(): boolean {
         const tableData = this.props.tableCompositeState.data || this.props.initialTableData;
 
-        return !this.props.tableCompositeState.isInError
-            && !!(tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad);
+        return (
+            !this.props.tableCompositeState.isInError &&
+            !!(tableData.displayedIds.length || this.props.tableCompositeState.isLoading || this.isInitialLoad)
+        );
     }
 }

@@ -6,7 +6,6 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 
 describe('ModalBackdrop', () => {
-
     describe('<ModalBackdrop />', () => {
         it('should render without errors', () => {
             expect(() => {
@@ -22,10 +21,7 @@ describe('ModalBackdrop', () => {
         beforeEach(() => {
             TestUtils.makeDeferSync();
 
-            modalBackdrop = mount(
-                <ModalBackdrop />,
-                {attachTo: document.getElementById('App')},
-            );
+            modalBackdrop = mount(<ModalBackdrop />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

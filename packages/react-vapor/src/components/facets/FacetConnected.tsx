@@ -18,10 +18,13 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFa
     };
 };
 
-const getSelectedRows = (rows: IFacet[], selectedRows: IFacet[]): IFacet[] => _.compact(_.map(rows, (row: IFacet) => {
-    const selectedRow: IFacet = _.findWhere(selectedRows, {name: row.name});
-    return selectedRow && {...selectedRow, ...row};
-}));
+const getSelectedRows = (rows: IFacet[], selectedRows: IFacet[]): IFacet[] =>
+    _.compact(
+        _.map(rows, (row: IFacet) => {
+            const selectedRow: IFacet = _.findWhere(selectedRows, {name: row.name});
+            return selectedRow && {...selectedRow, ...row};
+        })
+    );
 
 const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void): IFacetDispatchProps => ({
     onRender: (facet: string) => dispatch(addFacet(facet)),
@@ -30,4 +33,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onClearFacet: (facet: string) => dispatch(emptyFacet(facet)),
 });
 
-export const FacetConnected: React.ComponentClass<IFacetProps> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Facet);
+export const FacetConnected: React.ComponentClass<IFacetProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Facet);

@@ -16,14 +16,20 @@ const exitSinceDemoIsAlreadyPosted = () => {
     console.log('Demo URL is already posted in GitHub Pull Request.');
     process.exit();
 };
-axios.get(APIEndpointWithAuthentication)
-    .then((response) => _.chain(response.data).pluck('body').contains(liveDemoMessage).value()
-        ? exitSinceDemoIsAlreadyPosted()
-        : axios.post(APIEndpointWithAuthentication, {event: 'COMMENT', body: liveDemoMessage})
-            .then(() => {
-                console.log('Demo URL successfully posted in GitHub Pull Request');
-                process.exit();
-            })
-            .catch(handleError)
+axios
+    .get(APIEndpointWithAuthentication)
+    .then((response) =>
+        _.chain(response.data)
+            .pluck('body')
+            .contains(liveDemoMessage)
+            .value()
+            ? exitSinceDemoIsAlreadyPosted()
+            : axios
+                  .post(APIEndpointWithAuthentication, {event: 'COMMENT', body: liveDemoMessage})
+                  .then(() => {
+                      console.log('Demo URL successfully posted in GitHub Pull Request');
+                      process.exit();
+                  })
+                  .catch(handleError)
     )
     .catch(handleError);

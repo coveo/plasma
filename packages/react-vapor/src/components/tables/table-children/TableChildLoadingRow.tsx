@@ -9,9 +9,13 @@ export interface ITableChildLoadingRowProps extends ITableProps {
 
 export const TableChildLoadingRow = (props: ITableChildLoadingRowProps): JSX.Element => {
     return props.isInitialLoad ? (
-        <tbody className='loading-row'>
+        <tbody className="loading-row">
             <tr>
-                <td colSpan={props.headingAttributes.length + (!!props.collapsibleFormatter ? TOGGLE_ARROW_CELL_COUNT : 0)}>
+                <td
+                    colSpan={
+                        props.headingAttributes.length + (!!props.collapsibleFormatter ? TOGGLE_ARROW_CELL_COUNT : 0)
+                    }
+                >
                     <Loading />
                 </td>
             </tr>

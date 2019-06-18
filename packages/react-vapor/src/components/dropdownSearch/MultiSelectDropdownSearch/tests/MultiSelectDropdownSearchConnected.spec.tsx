@@ -22,7 +22,6 @@ import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';
 import {MultiSelectDropdownSearchConnected} from '../MultiSelectDropdownSearchConnected';
 
 describe('MultiSelectDropdownSearch', () => {
-
     const id: string = UUID.generate();
 
     describe('<MultiSelectDropdownSearchConnected />', () => {
@@ -42,7 +41,7 @@ describe('MultiSelectDropdownSearch', () => {
                 <Provider store={store}>
                     <MultiSelectDropdownSearchConnected {...currentProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             multiSelectDropdownSearchConnected = wrapper.find(MultiSelectDropdownSearch).first();
         };
@@ -57,7 +56,6 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         describe('mount and unmount', () => {
-
             beforeEach(() => {
                 renderMultiSelectDropdownSearchConnected(props);
             });
@@ -78,7 +76,6 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         describe('mapDispatchToProps', () => {
-
             beforeEach(() => {
                 renderMultiSelectDropdownSearchConnected(props);
             });
@@ -132,7 +129,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should get what to do on onRemoveAllSelectedOptions as a prop', () => {
-                const onRemoveAllSelectedOptions = multiSelectDropdownSearchConnected.props().onRemoveAllSelectedOptions;
+                const onRemoveAllSelectedOptions = multiSelectDropdownSearchConnected.props()
+                    .onRemoveAllSelectedOptions;
 
                 expect(onRemoveAllSelectedOptions).toBeDefined();
             });
@@ -151,7 +149,10 @@ describe('MultiSelectDropdownSearch', () => {
                 store.dispatch(closeDropdownSearch(id, []));
                 wrapper.update();
 
-                wrapper.find(MultiSelectDropdownSearch).props().onFocus();
+                wrapper
+                    .find(MultiSelectDropdownSearch)
+                    .props()
+                    .onFocus();
                 wrapper.update();
 
                 expect(wrapper.find('.open').length).toBe(1);
@@ -161,7 +162,10 @@ describe('MultiSelectDropdownSearch', () => {
                 store.dispatch(updateOptionsDropdownSearch(id, [{value: 'test 1'}, {value: 'test 2'}]));
                 store.dispatch(openDropdownSearch(id));
 
-                wrapper.find('li span').first().simulate('mouseDown');
+                wrapper
+                    .find('li span')
+                    .first()
+                    .simulate('mouseDown');
 
                 const selectedOption = store.getState().dropdownSearch[0].options[0];
                 expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);
@@ -201,7 +205,9 @@ describe('MultiSelectDropdownSearch', () => {
 
                 multiSelectDropdownSearchConnected.props().onRemoveSelectedOption(selectedOptionValue);
 
-                expect(_.find(store.getState().dropdownSearch[0].options, {value: selectedOptionValue})).toBeUndefined();
+                expect(
+                    _.find(store.getState().dropdownSearch[0].options, {value: selectedOptionValue})
+                ).toBeUndefined();
             });
 
             it('should remove all selected option', () => {

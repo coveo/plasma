@@ -26,7 +26,7 @@ const Buttons = () => {
                 key="color-modifiers"
                 id="color-modifiers"
                 title="Color modifiers"
-                usage='Use any of the available button classes to quickly create a styled button.'
+                usage="Use any of the available button classes to quickly create a styled button."
                 stylesheet="/scss/elements/btn.scss"
                 withSource
             >
@@ -37,20 +37,26 @@ const Buttons = () => {
                 key="size-modifiers"
                 id="size-modifiers"
                 title="Size modifiers"
-                usage='Fancy larger buttons? Use `.mod-large` for a larger button, used in our login form.'
+                usage="Fancy larger buttons? Use `.mod-large` for a larger button, used in our login form."
                 stylesheet="/scss/elements/btn.scss"
                 withSource
             >
-                <button type="button" className="btn mod-small">Small</button>
-                <button type="button" className="btn">Default</button>
-                <button type="button" className="btn mod-large">Large</button>
+                <button type="button" className="btn mod-small">
+                    Small
+                </button>
+                <button type="button" className="btn">
+                    Default
+                </button>
+                <button type="button" className="btn mod-large">
+                    Large
+                </button>
             </Component>
 
             <Component
                 key="append-prepend"
                 id="append-prepend"
                 title="Append and Prepend"
-                usage='Add text or icons before and after any button.'
+                usage="Add text or icons before and after any button."
                 stylesheet="/scss/elements/btn-prepend.scss"
                 withSource
             >
@@ -61,7 +67,7 @@ const Buttons = () => {
                 key="alignment"
                 id="alignment"
                 title="Alignment"
-                usage='Show how to dispose your multiple buttons'
+                usage="Show how to dispose your multiple buttons"
                 stylesheet="/scss/elements/btn.scss"
                 withSource
             >
@@ -74,7 +80,9 @@ const Buttons = () => {
                     <a className="btn mod-primary state-disabled">Link disabled with a tooltip</a>
                 </div>
                 <div className="btn-container" title="tooltip ...">
-                    <button className="btn" disabled>Button disabled with a tooltip</button>
+                    <button className="btn" disabled>
+                        Button disabled with a tooltip
+                    </button>
                 </div>
             </Component>
         </Layout>

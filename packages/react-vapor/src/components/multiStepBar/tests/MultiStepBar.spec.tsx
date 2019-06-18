@@ -36,11 +36,13 @@ describe('<MultiStepBar />', () => {
     });
 
     it('should render without error with mandatory props and className as string', () => {
-        expect(() => shallow(<MultiStepBar {...testProps} className='some classes' />)).not.toThrow();
+        expect(() => shallow(<MultiStepBar {...testProps} className="some classes" />)).not.toThrow();
     });
 
     it('should render without error with a steps with a tooltip', () => {
-        expect(() => shallow(<MultiStepBar steps={[{state: MultiStepState.Doing, tooltip: {title: 'Some Tooltip'}}]} />)).not.toThrow();
+        expect(() =>
+            shallow(<MultiStepBar steps={[{state: MultiStepState.Doing, tooltip: {title: 'Some Tooltip'}}]} />)
+        ).not.toThrow();
     });
 
     describe('MultiStepBar Content', () => {
@@ -49,7 +51,10 @@ describe('<MultiStepBar />', () => {
 
             it('should render one step per state in the backdrop', () => {
                 eachPossibleStepSelectors.forEach((state) => {
-                    expect(multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`).length).toBe(1);
+                    expect(
+                        multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`)
+                            .length
+                    ).toBe(1);
                 });
             });
 
@@ -77,8 +82,13 @@ describe('<MultiStepBar />', () => {
 
             it('should render one step per state in the backdrop and in the content container', () => {
                 eachPossibleStepSelectors.forEach((state) => {
-                    expect(multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`).length).toBe(1);
-                    expect(multiStepBar.find(`${multiStepBarContainerSelector} ${multiStepBarDoneSelector}`).length).toBe(1);
+                    expect(
+                        multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`)
+                            .length
+                    ).toBe(1);
+                    expect(
+                        multiStepBar.find(`${multiStepBarContainerSelector} ${multiStepBarDoneSelector}`).length
+                    ).toBe(1);
                 });
             });
         });

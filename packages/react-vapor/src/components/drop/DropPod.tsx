@@ -5,13 +5,18 @@ import {Defaults} from '../../Defaults';
 import {
     DomPositionCalculator,
     DropPodPosition,
-    IBoundingLimit, IDomPositionCalculatorReturn,
+    IBoundingLimit,
+    IDomPositionCalculatorReturn,
     IDropUIPosition,
     OrientationByPosition,
 } from './DomPositionCalculator';
 
 export interface IDropPodProps {
-    renderDrop: (style: React.CSSProperties, dropRef: React.RefObject<HTMLElement>, position: IDropUIPosition) => React.ReactNode;
+    renderDrop: (
+        style: React.CSSProperties,
+        dropRef: React.RefObject<HTMLElement>,
+        position: IDropUIPosition
+    ) => React.ReactNode;
     isOpen?: boolean;
     positions?: string[];
     selector?: string;
@@ -29,7 +34,12 @@ export interface IDropPodState {
     offset: ClientRect | DOMRect;
 }
 
-export const defaultDropPodPosition = [DropPodPosition.right, DropPodPosition.bottom, DropPodPosition.top, DropPodPosition.left];
+export const defaultDropPodPosition = [
+    DropPodPosition.right,
+    DropPodPosition.bottom,
+    DropPodPosition.top,
+    DropPodPosition.left,
+];
 
 class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     readonly dropRef: React.RefObject<HTMLElement>;
@@ -62,7 +72,11 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             this.setEventsOnDocument();
         }
 
-        if (this.props.positions && !!this.props.positions.length && _.contains(DropPodPosition, this.props.positions[0])) {
+        if (
+            this.props.positions &&
+            !!this.props.positions.length &&
+            _.contains(DropPodPosition, this.props.positions[0])
+        ) {
             this.lastPosition = {
                 position: this.props.positions && this.props.positions[0],
                 orientation: OrientationByPosition[this.props.positions[0]][0],
@@ -122,13 +136,14 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     private calculateStyleOffset(): React.CSSProperties {
         let newDomPosition: IDomPositionCalculatorReturn = {};
         if (this.canRenderDrop()) {
-            const buttonOffset: ClientRect | DOMRect = this.props.buttonRef.current &&
-                this.props.buttonRef.current.getBoundingClientRect() || this.state.offset;
+            const buttonOffset: ClientRect | DOMRect =
+                (this.props.buttonRef.current && this.props.buttonRef.current.getBoundingClientRect()) ||
+                this.state.offset;
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
 
-            const parentOffset = this.props.parentSelector ?
-                this.props.buttonRef.current.closest(this.props.parentSelector).getBoundingClientRect() :
-                this.props.buttonRef.current.offsetParent.getBoundingClientRect();
+            const parentOffset = this.props.parentSelector
+                ? this.props.buttonRef.current.closest(this.props.parentSelector).getBoundingClientRect()
+                : this.props.buttonRef.current.offsetParent.getBoundingClientRect();
             const boundingLimit: IBoundingLimit = {
                 maxY: Math.min(parentOffset.bottom, window.innerHeight),
                 minY: Math.max(parentOffset.top, 0),
@@ -146,12 +161,17 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
             while (_.isEmpty(newDomPosition) && index < this.props.positions.length) {
                 const validator = DomPositionCalculator[this.props.positions[index]];
-                newDomPosition = validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {}) || {};
+                newDomPosition = (validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {})) || {};
                 index += 1;
             }
 
             if (_.isEmpty(newDomPosition)) {
-                newDomPosition = DomPositionCalculator[this.lastPosition.position](buttonOffset, dropOffsetPrime, boundingLimit, this.lastPosition);
+                newDomPosition = DomPositionCalculator[this.lastPosition.position](
+                    buttonOffset,
+                    dropOffsetPrime,
+                    boundingLimit,
+                    this.lastPosition
+                );
             }
 
             const {style} = newDomPosition;
@@ -159,12 +179,14 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 if (style.top < boundingLimit.minY) {
                     style.top = Math.max(boundingLimit.minY, style.top as number);
                 } else {
-                    style.top = Math.min(boundingLimit.maxY, style.top as number + dropOffset.height) - dropOffset.height;
+                    style.top =
+                        Math.min(boundingLimit.maxY, (style.top as number) + dropOffset.height) - dropOffset.height;
                 }
                 if (style.left < boundingLimit.minX) {
                     style.left = Math.max(boundingLimit.minX, style.left as number);
                 } else {
-                    style.left = Math.min(boundingLimit.maxX, style.left as number + dropOffset.width) - dropOffset.width;
+                    style.left =
+                        Math.min(boundingLimit.maxX, (style.left as number) + dropOffset.width) - dropOffset.width;
                 }
             }
 
@@ -188,20 +210,25 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
     render() {
         const selector: any = this.props.selector || Defaults.DROP_ROOT;
-        const drop: React.ReactNode = this.props.renderDrop({
-            position: 'absolute',
-            display: 'inline-block',
-            ...{
-                ...this.calculateStyleOffset(),
-                visibility: this.canRenderDrop() ? 'visible' : 'hidden',
+        const drop: React.ReactNode = this.props.renderDrop(
+            {
+                position: 'absolute',
+                display: 'inline-block',
+                ...{
+                    ...this.calculateStyleOffset(),
+                    visibility: this.canRenderDrop() ? 'visible' : 'hidden',
+                },
             },
-        }, this.dropRef, this.lastPosition);
+            this.dropRef,
+            this.lastPosition
+        );
 
         return ReactDOM.createPortal(drop, document.querySelector(selector));
     }
 }
 
-export const DropPod: React.ForwardRefExoticComponent<IDropPodProps & React.RefAttributes<HTMLElement>> =
-    React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) =>
-        <RDropPod {...props} buttonRef={ref} />,
-    );
+export const DropPod: React.ForwardRefExoticComponent<
+    IDropPodProps & React.RefAttributes<HTMLElement>
+> = React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) => (
+    <RDropPod {...props} buttonRef={ref} />
+));

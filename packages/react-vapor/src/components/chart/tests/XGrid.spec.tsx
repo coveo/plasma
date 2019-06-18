@@ -9,7 +9,7 @@ describe('<XGrid />', () => {
         expect(() => {
             shallow(<XGrid />);
             shallow(<XGrid padding={10} />);
-            shallow(<XGrid padding={30} color='red' />);
+            shallow(<XGrid padding={30} color="red" />);
         }).not.toThrow();
     });
 
@@ -19,7 +19,7 @@ describe('<XGrid />', () => {
         expect(() => {
             shallow(<XGrid />);
             shallow(<XGrid padding={10} />);
-            shallow(<XGrid padding={30} color='red' />);
+            shallow(<XGrid padding={30} color="red" />);
         }).not.toThrow();
     });
 

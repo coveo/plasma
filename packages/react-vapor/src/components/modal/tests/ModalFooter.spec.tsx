@@ -4,13 +4,10 @@ import * as React from 'react';
 import {IModalFooterProps, ModalFooter} from '../ModalFooter';
 
 describe('ModalFooter', () => {
-
     describe('<ModalFooter />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <ModalFooter />,
-                );
+                shallow(<ModalFooter />);
             }).not.toThrow();
         });
     });
@@ -19,10 +16,7 @@ describe('ModalFooter', () => {
         let modalFooter: ReactWrapper<IModalFooterProps, any>;
 
         beforeEach(() => {
-            modalFooter = mount(
-                <ModalFooter />,
-                {attachTo: document.getElementById('App')},
-            );
+            modalFooter = mount(<ModalFooter />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -32,11 +26,21 @@ describe('ModalFooter', () => {
         it('should set class when the class is specified', () => {
             const containerClass = 'mod-header-padding';
             const classes = [containerClass];
-            expect(modalFooter.find('div').first().html()).not.toContain(containerClass);
+            expect(
+                modalFooter
+                    .find('div')
+                    .first()
+                    .html()
+            ).not.toContain(containerClass);
 
             modalFooter.setProps({classes});
             modalFooter.mount();
-            expect(modalFooter.find('div').first().html()).toContain(containerClass);
+            expect(
+                modalFooter
+                    .find('div')
+                    .first()
+                    .html()
+            ).toContain(containerClass);
         });
     });
 });

@@ -29,7 +29,11 @@ export class CalendarDay extends React.Component<ICalendarDayProps, {}> {
     }
 
     componentWillReceiveProps(nextProps: ICalendarDayProps) {
-        if (!nextProps.day.isSelectable && nextProps.day.isSelected && (nextProps.day.isLowerLimit || nextProps.day.isUpperLimit)) {
+        if (
+            !nextProps.day.isSelectable &&
+            nextProps.day.isSelected &&
+            (nextProps.day.isLowerLimit || nextProps.day.isUpperLimit)
+        ) {
             nextProps.onSelectUnselectable();
         }
     }
@@ -63,9 +67,8 @@ export class CalendarDay extends React.Component<ICalendarDayProps, {}> {
             }
         }
 
-        const bothLimitsElement: JSX.Element = this.props.day.isLowerLimit && this.props.day.isUpperLimit
-            ? <span></span>
-            : null;
+        const bothLimitsElement: JSX.Element =
+            this.props.day.isLowerLimit && this.props.day.isUpperLimit ? <span></span> : null;
 
         return (
             <td className={dayCellClasses.join(' ')} onClick={() => this.handleClick()}>

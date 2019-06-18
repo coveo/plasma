@@ -5,7 +5,12 @@ import {extend} from 'underscore';
 
 import {IReactVaporState} from '../ReactVapor';
 
-export type IThunkAction<R = any, S extends IReactVaporState = IReactVaporState> = ThunkAction<R, S, any, IReduxAction<any>>;
+export type IThunkAction<R = any, S extends IReactVaporState = IReactVaporState> = ThunkAction<
+    R,
+    S,
+    any,
+    IReduxAction<any>
+>;
 export type IDispatch<S extends IReactVaporState = IReactVaporState> = ThunkDispatch<S, any, IReduxAction<any>>;
 
 export class ReduxUtils {
@@ -28,8 +33,19 @@ export const clearState = (): Redux.Action => ({
     type: CommonActions.clearState,
 });
 
-export function ReduxConnect(mapStateToProps?: any, mapDispatchToProps?: any, mergeProps?: any, options?: any): (target: any) => any {
-    return (target) => connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any;
+export function ReduxConnect(
+    mapStateToProps?: any,
+    mapDispatchToProps?: any,
+    mergeProps?: any,
+    options?: any
+): (target: any) => any {
+    return (target) =>
+        connect(
+            mapStateToProps,
+            mapDispatchToProps,
+            mergeProps,
+            options
+        )(target) as any;
 }
 
 export interface BasePayload {
@@ -42,7 +58,9 @@ export interface IReduxAction<T = {}> extends Redux.Action {
 }
 
 export interface IReduxProps {
-    dispatch?: (action: IReduxAction<any> | JQueryDeferred<any> | JQueryXHR | ((dispatch: Redux.Dispatch<any>) => void)) => void;
+    dispatch?: (
+        action: IReduxAction<any> | JQueryDeferred<any> | JQueryXHR | ((dispatch: Redux.Dispatch<any>) => void)
+    ) => void;
 }
 
 export interface IReduxStatePossibleProps {

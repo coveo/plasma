@@ -33,7 +33,11 @@ export interface IRadioSelectStateProps {
     disabledValues?: string[];
 }
 
-export interface IRadioSelectAllProps extends IRadioSelectProps, IRadioSelectConnectedProps, IRadioSelectDispatchProps, IRadioSelectStateProps {}
+export interface IRadioSelectAllProps
+    extends IRadioSelectProps,
+        IRadioSelectConnectedProps,
+        IRadioSelectDispatchProps,
+        IRadioSelectStateProps {}
 
 export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     componentWillMount() {
@@ -58,11 +62,7 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
             });
         });
 
-        return (
-            <div className='form-control radio-select'>
-                {children}
-            </div>
-        );
+        return <div className="form-control radio-select">{children}</div>;
     }
 
     private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
@@ -71,6 +71,8 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     }
 
     private isValueDisabled(childValue: string): boolean {
-        return this.props.disabled || (!!this.props.disabledValues && _.contains(this.props.disabledValues, childValue));
+        return (
+            this.props.disabled || (!!this.props.disabledValues && _.contains(this.props.disabledValues, childValue))
+        );
     }
 }

@@ -21,14 +21,14 @@ describe('Select', () => {
 
         const id: string = 'list-box-connected';
 
-        const mountSingleSelect = (items: IItemBoxProps[] = [], props: Partial<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = {}) => {
-            singleSelect = mount(
-                <SingleSelectConnected id={id} items={items} {...props} />,
-                {
-                    attachTo: document.getElementById('App'),
-                    context: {store},
-                },
-            );
+        const mountSingleSelect = (
+            items: IItemBoxProps[] = [],
+            props: Partial<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = {}
+        ) => {
+            singleSelect = mount(<SingleSelectConnected id={id} items={items} {...props} />, {
+                attachTo: document.getElementById('App'),
+                context: {store},
+            });
             select = singleSelect.find(SelectConnected).first();
         };
 
@@ -74,40 +74,28 @@ describe('Select', () => {
         it('should allow a custom placeholder', () => {
             const expectedPlaceholder = 'select thingy';
 
-            mountSingleSelect([
-                {value: 'a'},
-                {value: 'b'},
-            ], {placeholder: expectedPlaceholder});
+            mountSingleSelect([{value: 'a'}, {value: 'b'}], {placeholder: expectedPlaceholder});
 
             expect(select.html()).toContain(expectedPlaceholder);
         });
 
         it('should contain the selected value', () => {
             const selectedValue = 'dis 1';
-            mountSingleSelect([
-                {value: 'a'},
-                {value: selectedValue, selected: true},
-            ]);
+            mountSingleSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             expect(select.html()).toContain(selectedValue);
         });
 
         it('should contain the display value when the selected value has one', () => {
             const selectedDisplayValue = 'dis 2';
-            mountSingleSelect([
-                {value: 'a'},
-                {value: 'dis 1', displayValue: selectedDisplayValue, selected: true},
-            ]);
+            mountSingleSelect([{value: 'a'}, {value: 'dis 1', displayValue: selectedDisplayValue, selected: true}]);
 
             expect(select.html()).toContain(selectedDisplayValue);
         });
 
         it('should contain the selected item as a prop', () => {
             const selectedValue = 'dis 1';
-            mountSingleSelect([
-                {value: 'a'},
-                {value: selectedValue, selected: true},
-            ]);
+            mountSingleSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             const value: string = select.find('.dropdown-selected-value').prop<string>('data-value');
             expect(value).toBe(selectedValue);
@@ -133,7 +121,13 @@ describe('Select', () => {
             const expectedPrepend = <span>{'some prepended text'}</span>;
             mountSingleSelect([], {buttonPrepend: expectedPrepend});
 
-            expect(select.find('.dropdown-toggle').children().first().equals(expectedPrepend)).toBe(true);
+            expect(
+                select
+                    .find('.dropdown-toggle')
+                    .children()
+                    .first()
+                    .equals(expectedPrepend)
+            ).toBe(true);
         });
 
         it('should contain the prepend and append in the button when selected', () => {
@@ -181,16 +175,16 @@ describe('Select', () => {
             const spy = spyOn(store, 'dispatch').and.callThrough();
             mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
 
-            select.find('.btn-append').first().simulate('click');
+            select
+                .find('.btn-append')
+                .first()
+                .simulate('click');
             expect(spy).toHaveBeenCalledWith(clearListBoxOption(id));
         });
 
         it('should display the selectedDisplayValue if defined in the button for the selected item', () => {
             const selectedDisplayValue = 'Another selected value bites the dust';
-            mountSingleSelect([
-                {value: 'a', selected: true, selectedDisplayValue},
-                {value: 'b', selected: false},
-            ]);
+            mountSingleSelect([{value: 'a', selected: true, selectedDisplayValue}, {value: 'b', selected: false}]);
             const buttonHTML = select.find('.dropdown-toggle').html();
 
             expect(buttonHTML).toContain(selectedDisplayValue);
@@ -216,7 +210,10 @@ describe('Select', () => {
             mountSingleSelect([{value: 'a'}, {value: 'b'}], {onSelectOptionCallback: onSelectOptionCallbackSpy});
 
             select.find('.dropdown-toggle').simulate('click');
-            select.find('.item-box').first().simulate('click');
+            select
+                .find('.item-box')
+                .first()
+                .simulate('click');
 
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('a');
         });

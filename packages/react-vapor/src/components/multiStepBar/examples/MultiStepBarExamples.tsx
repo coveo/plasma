@@ -2,7 +2,6 @@ import * as React from 'react';
 import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar';
 
 export class MultiStepBarExamples extends React.Component<any, any> {
-
     render() {
         const stepsWithoutText: IStep[] = [
             {
@@ -51,26 +50,31 @@ export class MultiStepBarExamples extends React.Component<any, any> {
             steps: stepsWithText,
         };
         return (
-            <div className='mt2'>
-                <h1 className='text-blue mb1 bold'>Multi Step Bar List</h1>
-                <div className='form-group'>
-                    <label className='form-control-label'>Multi Step Bar</label>
+            <div className="mt2">
+                <h1 className="text-blue mb1 bold">Multi Step Bar List</h1>
+                <div className="form-group">
+                    <label className="form-control-label">Multi Step Bar</label>
                     <MultiStepBar {...multiStepBarProps} />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Multi Step Bar with in-progress shine animation</label>
+                <div className="form-group">
+                    <label className="form-control-label">Multi Step Bar with in-progress shine animation</label>
                     <MultiStepBar {...multiStepBarProps} inProgressAnimation={'shine'} />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Small Multi Step Bar with flare animation</label>
+                <div className="form-group">
+                    <label className="form-control-label">Small Multi Step Bar with flare animation</label>
                     <MultiStepBar {...multiStepBarProps} steps={stepsWithoutText} small={true} barAnimation={'flare'} />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Small Multi Step Bar with in progress slide animation</label>
-                    <MultiStepBar {...multiStepBarProps} steps={stepsWithoutText} small={true} inProgressAnimation={'slide'} />
+                <div className="form-group">
+                    <label className="form-control-label">Small Multi Step Bar with in progress slide animation</label>
+                    <MultiStepBar
+                        {...multiStepBarProps}
+                        steps={stepsWithoutText}
+                        small={true}
+                        inProgressAnimation={'slide'}
+                    />
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Multi Step Bar with separator</label>
+                <div className="form-group">
+                    <label className="form-control-label">Multi Step Bar with separator</label>
                     <MultiStepBar {...multiStepBarProps} separator={true} />
                 </div>
             </div>

@@ -24,5 +24,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IL
     onOptionClick: (option: IItemBoxProps) => dispatch(selectListBoxOption(ownProps.id, ownProps.multi, option.value)),
 });
 
-export const ListBoxConnected: React.ComponentClass<IListBoxProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.defaultMergeProps)(ListBox);
+export const ListBoxConnected: React.ComponentClass<IListBoxProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.defaultMergeProps
+)(ListBox);

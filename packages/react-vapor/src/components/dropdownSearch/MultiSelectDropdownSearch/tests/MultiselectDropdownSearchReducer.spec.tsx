@@ -7,18 +7,13 @@ import {IDropdownSearchState} from '../../DropdownSearchReducers';
 import {multiSelectDropdownSearchReducer} from '../MultiSelectDropdownSearchReducer';
 
 describe('DropdownSearch', () => {
-
     describe('MultiSelectDropdownSearchReducers', () => {
-
         const defaultPayload = {id: 'new-dropdown-search'};
         let options: IDropdownOption[] = [];
         let defaultOldState: IDropdownSearchState = {id: 'new-dropdown-search'};
 
         beforeEach(() => {
-            options = [
-                {value: 'test 1'},
-                {value: 'test 2'},
-            ];
+            options = [{value: 'test 1'}, {value: 'test 2'}];
 
             defaultOldState = {
                 ...defaultOldState,
@@ -124,9 +119,14 @@ describe('DropdownSearch', () => {
 
             const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(defaultOldState, action);
 
-            expect(_.findWhere(_.reject(updatedState.options, (option) => {
-                return option.custom || option.hidden;
-            }), {value: selectedOptionValue})).toBeDefined();
+            expect(
+                _.findWhere(
+                    _.reject(updatedState.options, (option) => {
+                        return option.custom || option.hidden;
+                    }),
+                    {value: selectedOptionValue}
+                )
+            ).toBeDefined();
         });
 
         it('should add a custom selected option on "ADD_CUSTOM_SELECTED_OPTION"', () => {
@@ -143,7 +143,6 @@ describe('DropdownSearch', () => {
         });
 
         describe('on key down', () => {
-
             it('should return the new state with active option above the last one if the keyCode is "Up Arrow"', () => {
                 const oldstate: IDropdownSearchState = {
                     ...defaultOldState,
@@ -175,7 +174,10 @@ describe('DropdownSearch', () => {
                     payload: {...defaultPayload, keyCode: keycode},
                 };
 
-                const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
+                const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(
+                    stateWithFilterTextPresent,
+                    action
+                );
 
                 expect(_.where(updatedState.options, {selected: true, value: customValue}).length).toBe(1);
             });
@@ -214,7 +216,10 @@ describe('DropdownSearch', () => {
                     {...options[1], selected: false, hidden: false},
                 ];
 
-                const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
+                const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(
+                    stateWithFilterTextPresent,
+                    action
+                );
 
                 expect(updatedState.options).toEqual(expectedOptions);
             });
@@ -234,7 +239,10 @@ describe('DropdownSearch', () => {
 
                 const expectedSelectedOptions: IDropdownOption[] = [];
 
-                const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(stateWithFilterTextPresent, action);
+                const updatedState: IDropdownSearchState = multiSelectDropdownSearchReducer(
+                    stateWithFilterTextPresent,
+                    action
+                );
 
                 expect(_.where(updatedState.options, {selected: true})).toEqual(expectedSelectedOptions);
             });

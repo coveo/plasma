@@ -16,9 +16,7 @@ describe('Date picker', () => {
     describe('<DatePicker />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <DatePicker {...DATE_PICKER_BASIC_PROPS} />,
-                );
+                shallow(<DatePicker {...DATE_PICKER_BASIC_PROPS} />);
             }).not.toThrow();
         });
     });
@@ -28,10 +26,7 @@ describe('Date picker', () => {
         let datePickerInstance: DatePicker;
 
         beforeEach(() => {
-            datePicker = mount(
-                <DatePicker {...DATE_PICKER_BASIC_PROPS} />,
-                {attachTo: document.getElementById('App')},
-            );
+            datePicker = mount(<DatePicker {...DATE_PICKER_BASIC_PROPS} />, {attachTo: document.getElementById('App')});
             datePickerInstance = datePicker.instance() as DatePicker;
         });
 
@@ -59,20 +54,21 @@ describe('Date picker', () => {
             expect(datePicker.find('input').length).toBe(1);
         });
 
-        it('should have a class "border-COLOR_PROP" on the input or "border-DEFAULT_COLOR" if the color prop is not set',
+        it('should have a class "border-COLOR_PROP" on the input or "border-DEFAULT_COLOR" if the color prop is not set', () => {
+            const propsWithColor: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {color: 'blood'});
+
+            expect(datePicker.find('input').hasClass(`border-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(true);
+
+            datePicker.setProps(propsWithColor);
+
+            expect(datePicker.find('input').hasClass(`border-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
+            expect(datePicker.find('input').hasClass(`border-${propsWithColor.color}`)).toBe(true);
+        });
+
+        it(
+            'should have the class "picking-date" on the input if the picker is the lower limit and the lower limit is ' +
+                'being selected or if the picker is the upper limit and the upper limit is being selected',
             () => {
-                const propsWithColor: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {color: 'blood'});
-
-                expect(datePicker.find('input').hasClass(`border-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(true);
-
-                datePicker.setProps(propsWithColor);
-
-                expect(datePicker.find('input').hasClass(`border-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
-                expect(datePicker.find('input').hasClass(`border-${propsWithColor.color}`)).toBe(true);
-            });
-
-        it('should have the class "picking-date" on the input if the picker is the lower limit and the lower limit is ' +
-            'being selected or if the picker is the upper limit and the upper limit is being selected', () => {
                 let newProps: IDatePickerProps;
 
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
@@ -92,10 +88,13 @@ describe('Date picker', () => {
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower, upperLimit: true});
                 datePicker.setProps(newProps);
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
-            });
+            }
+        );
 
-        it('should have the classes "date-picked" and "bg-COLOR_PROP" or "bg-DEFAULT_COLOR" on the input if we are not' +
-            ' selecting the picker and there is a date set in the input', () => {
+        it(
+            'should have the classes "date-picked" and "bg-COLOR_PROP" or "bg-DEFAULT_COLOR" on the input if we are not' +
+                ' selecting the picker and there is a date set in the input',
+            () => {
                 let newProps: IDatePickerProps;
 
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
@@ -111,12 +110,16 @@ describe('Date picker', () => {
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
                 expect(datePicker.find('input').hasClass(`bg-${newProps.color}`)).toBe(true);
 
-                newProps =
-                    _.extend({}, DATE_PICKER_BASIC_PROPS, {date: new Date(), isSelecting: DateLimits.lower, upperLimit: false});
+                newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                    date: new Date(),
+                    isSelecting: DateLimits.lower,
+                    upperLimit: false,
+                });
                 datePicker.setProps(newProps);
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
-            });
+            }
+        );
 
         it('should call setToToday when clicking the set to now button', () => {
             const withButtonProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {hasSetToNowButton: true});
@@ -128,39 +131,41 @@ describe('Date picker', () => {
             expect(setToNowSpy).toHaveBeenCalled();
         });
 
-        it('should change the input value to the current time when calling setToToday and withTime prop is set to true',
-            () => {
-                const expectedDate: Date = new Date();
-                const withTimeProps: IDatePickerProps =
-                    _.extend({}, DATE_PICKER_BASIC_PROPS, {withTime: true, hasSetToNowButton: true});
-                datePicker.setProps(withTimeProps);
-
-                expect(datePickerInstance['dateInput'].value).toBe('');
-
-                jasmine.clock().install();
-                jasmine.clock().mockDate(expectedDate);
-                datePicker.find('button').simulate('click');
-
-                expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getDateWithTimeString(expectedDate));
-                jasmine.clock().uninstall();
+        it('should change the input value to the current time when calling setToToday and withTime prop is set to true', () => {
+            const expectedDate: Date = new Date();
+            const withTimeProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                withTime: true,
+                hasSetToNowButton: true,
             });
+            datePicker.setProps(withTimeProps);
 
-        it('should change the input value to the current day when calling setToToday and withTime prop is set to false',
-            () => {
-                const expectedDate: Date = new Date();
-                const withoutTimeProps: IDatePickerProps =
-                    _.extend({}, DATE_PICKER_BASIC_PROPS, {withTime: false, hasSetToNowButton: true});
-                datePicker.setProps(withoutTimeProps);
+            expect(datePickerInstance['dateInput'].value).toBe('');
 
-                expect(datePickerInstance['dateInput'].value).toBe('');
+            jasmine.clock().install();
+            jasmine.clock().mockDate(expectedDate);
+            datePicker.find('button').simulate('click');
 
-                jasmine.clock().install();
-                jasmine.clock().mockDate(expectedDate);
-                datePicker.find('button').simulate('click');
+            expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getDateWithTimeString(expectedDate));
+            jasmine.clock().uninstall();
+        });
 
-                expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getSimpleDate(expectedDate));
-                jasmine.clock().uninstall();
+        it('should change the input value to the current day when calling setToToday and withTime prop is set to false', () => {
+            const expectedDate: Date = new Date();
+            const withoutTimeProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                withTime: false,
+                hasSetToNowButton: true,
             });
+            datePicker.setProps(withoutTimeProps);
+
+            expect(datePickerInstance['dateInput'].value).toBe('');
+
+            jasmine.clock().install();
+            jasmine.clock().mockDate(expectedDate);
+            datePicker.find('button').simulate('click');
+
+            expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getSimpleDate(expectedDate));
+            jasmine.clock().uninstall();
+        });
 
         it('should call handleChange when calling setToToday', () => {
             const withButtonProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {hasSetToNowButton: true});
@@ -195,8 +200,10 @@ describe('Date picker', () => {
             datePickerInstance['dateInput'].value = simpleDate;
             datePickerInstance['handleChangeDate'].call(datePickerInstance);
 
-            expect(DATE_PICKER_BASIC_PROPS.onBlur).toHaveBeenCalledWith(DateUtils.getDateFromSimpleDateString(simpleDate),
-                DATE_PICKER_BASIC_PROPS.upperLimit);
+            expect(DATE_PICKER_BASIC_PROPS.onBlur).toHaveBeenCalledWith(
+                DateUtils.getDateFromSimpleDateString(simpleDate),
+                DATE_PICKER_BASIC_PROPS.upperLimit
+            );
         });
 
         it('should call the onBlur prop with a full date if withTime prop is set to true', () => {
@@ -207,12 +214,16 @@ describe('Date picker', () => {
             datePickerInstance['dateInput'].value = fullDate;
             datePickerInstance['handleChangeDate'].call(datePickerInstance);
 
-            expect(withTimeProps.onBlur).toHaveBeenCalledWith(DateUtils.getDateFromTimeString(fullDate),
-                withTimeProps.upperLimit);
+            expect(withTimeProps.onBlur).toHaveBeenCalledWith(
+                DateUtils.getDateFromTimeString(fullDate),
+                withTimeProps.upperLimit
+            );
         });
 
-        it('should change the value of the date input when passing it a new date as prop that is different than the ' +
-            'current one', () => {
+        it(
+            'should change the value of the date input when passing it a new date as prop that is different than the ' +
+                'current one',
+            () => {
                 let newDate: Date = new Date();
                 let dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: newDate});
                 datePicker.setProps(dateProps);
@@ -229,7 +240,8 @@ describe('Date picker', () => {
                 datePicker.setProps(dateProps);
 
                 expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getDateWithTimeString(newDate));
-            });
+            }
+        );
 
         it('should set an empty value in the date input when passing it a null date as prop', () => {
             const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: null});
@@ -285,7 +297,9 @@ describe('Date picker', () => {
             });
 
             it('should not call handleChangeDate when clicking a calendar day', () => {
-                const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower});
+                const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                    isSelecting: DateLimits.lower,
+                });
                 const handleChangeDateSpy: jasmine.Spy = spyOn<any>(datePickerInstance, 'handleChangeDate');
 
                 datePicker.setProps(dateProps);
@@ -298,7 +312,10 @@ describe('Date picker', () => {
             });
 
             it('should not call prop onBlur when clicking a calendar day', () => {
-                const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower, onBlur: jasmine.createSpy('onBlur')});
+                const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                    isSelecting: DateLimits.lower,
+                    onBlur: jasmine.createSpy('onBlur'),
+                });
 
                 datePicker.setProps(dateProps);
                 document.getElementById('CalendarDay').click();

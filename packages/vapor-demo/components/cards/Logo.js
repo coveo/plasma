@@ -1,4 +1,4 @@
-import * as VaporSVG from "coveo-styleguide";
+import * as VaporSVG from 'coveo-styleguide';
 import Svg from '../Svg';
 
 const Logo = () => (

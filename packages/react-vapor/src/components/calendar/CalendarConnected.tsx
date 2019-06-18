@@ -37,12 +37,19 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): 
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ICalendarOwnProps,
+    ownProps: ICalendarOwnProps
 ): ICalendarDispatchProps => ({
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
         dispatch(resetOptionPickers(pickerId));
         if (value && isUpperLimit) {
-            dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
+            dispatch(
+                changeDatePickerUpperLimit(
+                    pickerId,
+                    moment(value)
+                        .endOf('day')
+                        .toDate()
+                )
+            );
         } else if (value) {
             dispatch(changeDatePickerLowerLimit(pickerId, value));
 
@@ -63,5 +70,8 @@ const mapDispatchToProps = (
     onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue)),
 });
 
-export const CalendarConnected: React.ComponentClass<ICalendarProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Calendar);
+export const CalendarConnected: React.ComponentClass<ICalendarProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Calendar);

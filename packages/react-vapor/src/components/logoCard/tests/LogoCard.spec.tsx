@@ -1,21 +1,32 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {CornerRibbon, DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME, PlacementX, PlacementY} from '../../cornerRibbon/CornerRibbon';
-import {DEFAULT_LOGO_CARD_CLASSNAME, DEFAULT_LOGO_ICON, DEFAULT_LOGO_ICON_CLASSNAME, DEFAULT_LOGO_ICON_SIZE, ILogoCardProps, LogoCard} from '../LogoCard';
+import {
+    CornerRibbon,
+    DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
+    PlacementX,
+    PlacementY,
+} from '../../cornerRibbon/CornerRibbon';
+import {
+    DEFAULT_LOGO_CARD_CLASSNAME,
+    DEFAULT_LOGO_ICON,
+    DEFAULT_LOGO_ICON_CLASSNAME,
+    DEFAULT_LOGO_ICON_SIZE,
+    ILogoCardProps,
+    LogoCard,
+} from '../LogoCard';
 
 describe('LogoCard', () => {
     let logoCard: ReactWrapper<ILogoCardProps>;
     const mountWithProps = (props: Partial<ILogoCardProps>) => {
-        logoCard = mount(
-            <LogoCard {..._.defaults(props, {title: 'test card'})} />,
-            {attachTo: document.getElementById('App')},
-        );
+        logoCard = mount(<LogoCard {..._.defaults(props, {title: 'test card'})} />, {
+            attachTo: document.getElementById('App'),
+        });
     };
 
     it('should render without errors', () => {
         expect(() => {
-            shallow(<LogoCard title='test card' />);
+            shallow(<LogoCard title="test card" />);
         }).not.toThrow();
     });
 

@@ -2,17 +2,17 @@
 @import '~coveo-styleguide/scss/variables.scss';
 
 .banner {
+    position: relative;
+    padding: $banner-padding;
     background: linear-gradient(45deg, $mirage 0%, $science-blue 100%);
     box-shadow: $banner-box-shadow;
-    padding: $banner-padding;
-    position: relative;
 }
 
 .bannerName {
-    font-size: $small-font-size;
     color: $pure-white;
-    opacity: $transparency-3;
+    font-size: $small-font-size;
     text-transform: uppercase;
+    opacity: $transparency-3;
 }
 
 .bannerSubtitle {
@@ -21,11 +21,11 @@
 }
 
 .bannerMain {
-    color: $pure-white;
-    width: 100%;
     box-sizing: border-box;
+    width: 100%;
     margin-top: 2 * $spacing;
     margin-bottom: 2 * $spacing;
+    color: $pure-white;
 }
 
 .bannerTitle {
@@ -33,8 +33,8 @@
 }
 
 .bannerWarningTitle {
-    color: $school-bus-yellow;
     position: relative;
+    color: $school-bus-yellow;
 }
 
 .bannerErrorTitle {
@@ -42,9 +42,9 @@
 }
 
 .bannerWarningIcon {
-    fill: $school-bus-yellow;
     position: relative;
     top: $banner-warning-icon-fix;
+    fill: $school-bus-yellow;
 
     .bannerErrorTitle & {
         fill: $red;
@@ -52,16 +52,16 @@
 }
 
 .bannerDescription {
-    font-size: $medium-title-font-size;
     color: rgba($pure-white, $transparency-2);
+    font-size: $medium-title-font-size;
 }
 
 .bannerRight {
-    font-size: $default-font-size;
     color: rgba($pure-white, $transparency-2);
+    font-size: $default-font-size;
 }
 
 .bannerBottomRightInfos {
-    max-width: $banner-right-width;
     display: inline;
+    max-width: $banner-right-width;
 }

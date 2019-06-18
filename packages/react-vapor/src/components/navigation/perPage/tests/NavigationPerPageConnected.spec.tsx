@@ -37,7 +37,7 @@ describe('<NavigationPerPageConnected />', () => {
                     <NavigationPerPageConnected {...basicNavigationPerPageProps} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
         navigationPerPage = wrapper.find(NavigationPerPage).first();
     });
@@ -72,7 +72,7 @@ describe('<NavigationPerPageConnected />', () => {
                     <NavigationPerPageConnected {...basicNavigationPerPageProps} perPageNumbers={perPageNumber} />
                 </div>
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
         store.dispatch(clearState());
         wrapper.update();
@@ -110,10 +110,14 @@ describe('<NavigationPerPageConnected />', () => {
     it('should turn on loading and change the per page number when clicking on a <NavigationPerPageSelect /> link', () => {
         const perPageSelected = navigationPerPage.find('a').last();
 
-        expect(_.findWhere(store.getState().loadings, {id: basicNavigationPerPageProps.loadingIds[0]}).isOn).toBe(false);
+        expect(_.findWhere(store.getState().loadings, {id: basicNavigationPerPageProps.loadingIds[0]}).isOn).toBe(
+            false
+        );
 
         perPageSelected.simulate('click');
-        expect(_.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage.toString()).toBe(perPageSelected.find('span').text());
+        expect(
+            _.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage.toString()
+        ).toBe(perPageSelected.find('span').text());
         expect(_.findWhere(store.getState().loadings, {id: basicNavigationPerPageProps.loadingIds[0]}).isOn).toBe(true);
     });
 
@@ -137,15 +141,21 @@ describe('<NavigationPerPageConnected />', () => {
         expect(_.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage).toBe(20);
     });
 
-    it('should change the page to the one starting with the same item as the previous per page when a new per page is' +
-        'selected', () => {
+    it(
+        'should change the page to the one starting with the same item as the previous per page when a new per page is' +
+            'selected',
+        () => {
             const paginationId: string = 'pagination-' + basicNavigationPerPageProps.id;
-            const firstPerPage: ReactWrapper<INavigationPerPageSelectProps, any> =
-                navigationPerPage.find(NavigationPerPageSelect).first() as ReactWrapper<INavigationPerPageSelectProps, any>;
-            const secondPerPage: ReactWrapper<INavigationPerPageSelectProps, any> =
-                navigationPerPage.find(NavigationPerPageSelect).at(1) as ReactWrapper<INavigationPerPageSelectProps, any>;
+            const firstPerPage: ReactWrapper<INavigationPerPageSelectProps, any> = navigationPerPage
+                .find(NavigationPerPageSelect)
+                .first() as ReactWrapper<INavigationPerPageSelectProps, any>;
+            const secondPerPage: ReactWrapper<INavigationPerPageSelectProps, any> = navigationPerPage
+                .find(NavigationPerPageSelect)
+                .at(1) as ReactWrapper<INavigationPerPageSelectProps, any>;
             const startingPage: number = 4;
-            const expectedPage: number = Math.floor(startingPage * firstPerPage.props().perPageNb / secondPerPage.props().perPageNb);
+            const expectedPage: number = Math.floor(
+                (startingPage * firstPerPage.props().perPageNb) / secondPerPage.props().perPageNb
+            );
 
             store.dispatch(addPagination(paginationId));
             store.dispatch(changePage(paginationId, 4));
@@ -155,5 +165,6 @@ describe('<NavigationPerPageConnected />', () => {
 
             firstPerPage.find('a').simulate('click');
             expect(_.findWhere(store.getState().paginationComposite, {id: paginationId}).pageNb).toBe(startingPage);
-        });
+        }
+    );
 });

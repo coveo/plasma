@@ -9,14 +9,22 @@ describe('BannerContainer', () => {
         expect(() => {
             shallow(<BannerContainer />);
             shallow(<BannerContainer>Hello</BannerContainer>);
-            shallow(<BannerContainer className='test'>Hello</BannerContainer>);
-            shallow(<BannerContainer className='test' onClick={_.noop}>Hello</BannerContainer>);
+            shallow(<BannerContainer className="test">Hello</BannerContainer>);
+            shallow(
+                <BannerContainer className="test" onClick={_.noop}>
+                    Hello
+                </BannerContainer>
+            );
         }).not.toThrow();
     });
 
     it('should contain the children', () => {
         const id = 'this-is-my-id';
-        const wrapper = shallow(<BannerContainer><div id={id} /></BannerContainer>);
+        const wrapper = shallow(
+            <BannerContainer>
+                <div id={id} />
+            </BannerContainer>
+        );
 
         expect(wrapper.find(`#${id}`).exists()).toBe(true);
     });

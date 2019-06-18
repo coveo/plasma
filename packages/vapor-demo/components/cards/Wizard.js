@@ -9,17 +9,21 @@ const Wizard = () => (
             <div className="wizard-card-body">
                 <div className="coveo-form">
                     <div className="form-group left-align">
-                        <h3>Coveo Cloud has identified the following <em className="bold text-medium-blue">Coveo organizations</em> related
-                            to your account.</h3>
+                        <h3>
+                            Coveo Cloud has identified the following{' '}
+                            <em className="bold text-medium-blue">Coveo organizations</em> related to your account.
+                        </h3>
                     </div>
                     <div className="form-group input-field">
-                        <input type="text" value="my org name" required disabled/>
+                        <input type="text" value="my org name" required disabled />
                         <label>Coveo organization</label>
                     </div>
                 </div>
             </div>
             <footer className="wizard-card-footer">
-                <button type="button" className="btn mod-primary mod-small">Next</button>
+                <button type="button" className="btn mod-primary mod-small">
+                    Next
+                </button>
             </footer>
         </div>
 
@@ -33,14 +37,16 @@ const Wizard = () => (
                 <div className="coveo-form">
                     <div className="form-group">
                         <div className="input-field validate">
-                            <input type="text" value="A new org name" required/>
+                            <input type="text" value="A new org name" required />
                             <label>Organization name</label>
                         </div>
                     </div>
                 </div>
             </div>
             <footer className="wizard-card-footer">
-                <button type="button" className="btn mod-primary mod-small">Create</button>
+                <button type="button" className="btn mod-primary mod-small">
+                    Create
+                </button>
             </footer>
         </div>
     </div>

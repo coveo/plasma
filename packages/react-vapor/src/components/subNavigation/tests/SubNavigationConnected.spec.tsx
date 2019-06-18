@@ -17,10 +17,7 @@ describe('SubNavigation', () => {
     describe('<SubNavigationConnected />', () => {
         const basicProps: ISubNavigationProps = {
             id: 'sub-nav-id',
-            items: [
-                {id: 'a', label: 'A'},
-                {id: 'b', label: 'B'},
-            ],
+            items: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],
             defaultSelected: 'b',
         };
 
@@ -31,7 +28,7 @@ describe('SubNavigation', () => {
                 <Provider store={store}>
                     <SubNavigationConnected {...basicProps} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             subNavigation = wrapper.find(SubNavigation);
         });
@@ -68,9 +65,12 @@ describe('SubNavigation', () => {
         });
 
         it('should set the selected property of the sub navigation on item click', () => {
-            expect(findWhere(store.getState().subNavigations, {id: basicProps.id}).selected).toBe(basicProps.defaultSelected);
+            expect(findWhere(store.getState().subNavigations, {id: basicProps.id}).selected).toBe(
+                basicProps.defaultSelected
+            );
 
-            const li = subNavigation.find('.sub-navigation-item')
+            const li = subNavigation
+                .find('.sub-navigation-item')
                 .filterWhere((item) => item.key() !== basicProps.defaultSelected)
                 .first();
             li.find('.sub-navigation-item-link').simulate('click');
@@ -84,17 +84,14 @@ describe('SubNavigation', () => {
             store = TestUtils.buildStore();
             const props: ISubNavigationProps = {
                 id: 'sub-nav-id',
-                items: [
-                    {id: 'a', label: 'A'},
-                    {id: 'b', label: 'B'},
-                ],
+                items: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],
             };
 
             wrapper = mount(
                 <Provider store={store}>
                     <SubNavigationConnected {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
 
             expect(findWhere(store.getState().subNavigations, {id: props.id}).selected).toBe(props.items[0].id);
@@ -108,12 +105,14 @@ describe('SubNavigation', () => {
                 items: [],
             };
 
-            expect(() => mount(
-                <Provider store={store}>
-                    <SubNavigationConnected {...props} />
-                </Provider>,
-                {attachTo: document.getElementById('App')},
-            ).unmount()).not.toThrow();
+            expect(() =>
+                mount(
+                    <Provider store={store}>
+                        <SubNavigationConnected {...props} />
+                    </Provider>,
+                    {attachTo: document.getElementById('App')}
+                ).unmount()
+            ).not.toThrow();
         });
     });
 });

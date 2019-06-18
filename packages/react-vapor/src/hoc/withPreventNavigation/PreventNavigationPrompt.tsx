@@ -12,7 +12,16 @@ export interface PreventNavigationPromptProps {
     onStay: () => void;
 }
 
-export const PreventNavigationPrompt = ({id, title, content, exit, stay, isOpen, onClose, onStay}: PreventNavigationPromptProps) => (
+export const PreventNavigationPrompt = ({
+    id,
+    title,
+    content,
+    exit,
+    stay,
+    isOpen,
+    onClose,
+    onStay,
+}: PreventNavigationPromptProps) => (
     <ModalComposite
         id={id}
         isOpen={isOpen}
@@ -22,11 +31,15 @@ export const PreventNavigationPrompt = ({id, title, content, exit, stay, isOpen,
         modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
         modalBodyChildren={content}
         onClose={() => onStay()}
-        modalFooterChildren={(
+        modalFooterChildren={
             <>
-                <button className='btn mod-small mod-primary js-exit' onClick={() => onClose()}>{exit}</button>
-                <button className='btn mod-small js-stay' onClick={() => onStay()}>{stay}</button>
+                <button className="btn mod-small mod-primary js-exit" onClick={() => onClose()}>
+                    {exit}
+                </button>
+                <button className="btn mod-small js-stay" onClick={() => onStay()}>
+                    {stay}
+                </button>
             </>
-        )}
+        }
     />
 );

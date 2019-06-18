@@ -25,12 +25,13 @@ export interface IGroupableCheckboxesState {
 export const groupableCheckboxInitialState: IGroupableCheckboxesState = {total: 0, nbChecked: 0, checkboxes: []};
 export const groupableCheckboxesInitialState: IGroupableCheckboxesState[] = [];
 
-export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = groupableCheckboxInitialState, action: IReduxAction<IGroupableCheckboxActionPayload>): IGroupableCheckboxesState => {
+export const groupableCheckboxReducer = (
+    state: IGroupableCheckboxesState = groupableCheckboxInitialState,
+    action: IReduxAction<IGroupableCheckboxActionPayload>
+): IGroupableCheckboxesState => {
     switch (action.type) {
         case GroupableCheckboxActions.addGroup:
-            return action.payload.isParent
-                ? addParentCheckbox(state, action)
-                : addChildCheckbox(state, action);
+            return action.payload.isParent ? addParentCheckbox(state, action) : addChildCheckbox(state, action);
 
         case GroupableCheckboxActions.toggleGroup:
             if (state.parentId === action.payload.id || state.parentId === action.payload.parentId) {
@@ -53,21 +54,27 @@ export const groupableCheckboxReducer = (state: IGroupableCheckboxesState = grou
     }
 };
 
-export const groupableCheckboxesReducer = (state: IGroupableCheckboxesState[] = groupableCheckboxesInitialState, action: IReduxAction<IGroupableCheckboxActionPayload>): IGroupableCheckboxesState[] => {
+export const groupableCheckboxesReducer = (
+    state: IGroupableCheckboxesState[] = groupableCheckboxesInitialState,
+    action: IReduxAction<IGroupableCheckboxActionPayload>
+): IGroupableCheckboxesState[] => {
     switch (action.type) {
         case GroupableCheckboxActions.addGroup:
-            if (_.some(state, (groupableCheckboxes: IGroupableCheckboxesState) => groupableCheckboxes.parentId === (action.payload.parentId || action.payload.id))) {
+            if (
+                _.some(
+                    state,
+                    (groupableCheckboxes: IGroupableCheckboxesState) =>
+                        groupableCheckboxes.parentId === (action.payload.parentId || action.payload.id)
+                )
+            ) {
                 return _.map(state, (groupableCheckboxes: IGroupableCheckboxesState) =>
                     groupableCheckboxes.parentId === (action.payload.parentId || action.payload.id)
                         ? _.extend({}, groupableCheckboxes, groupableCheckboxReducer(groupableCheckboxes, action))
-                        : groupableCheckboxes,
+                        : groupableCheckboxes
                 );
             }
 
-            return [
-                ...state,
-                groupableCheckboxReducer(undefined, action),
-            ];
+            return [...state, groupableCheckboxReducer(undefined, action)];
         case GroupableCheckboxActions.removeGroup:
             if (action.payload.isParent) {
                 return removeParentCheckbox(state, action);
@@ -76,12 +83,14 @@ export const groupableCheckboxesReducer = (state: IGroupableCheckboxesState[] = 
             return _.map(state, (groupableCheckboxes: IGroupableCheckboxesState) =>
                 groupableCheckboxes.parentId === (action.payload.parentId || action.payload.id)
                     ? _.extend({}, groupableCheckboxes, removeChildCheckbox(groupableCheckboxes, action))
-                    : groupableCheckboxes,
+                    : groupableCheckboxes
             );
         case GroupableCheckboxActions.toggleGroup:
         case GroupableCheckboxActions.disabledGroup:
         case GroupableCheckboxActions.disabledAllGroup:
-            return state.map((groupableCheckboxes: IGroupableCheckboxesState) => groupableCheckboxReducer(groupableCheckboxes, action));
+            return state.map((groupableCheckboxes: IGroupableCheckboxesState) =>
+                groupableCheckboxReducer(groupableCheckboxes, action)
+            );
         default:
             return state;
     }

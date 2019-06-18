@@ -10,7 +10,6 @@ import {
 } from '../OptionsCycleReducers';
 
 describe('Options cycle', () => {
-
     const genericAction: IReduxAction<IOptionsCyclePayload> = {
         type: 'DO_SOMETHING',
         payload: {
@@ -44,14 +43,20 @@ describe('Options cycle', () => {
             let optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, action);
 
             expect(optionsCyclesState.length).toBe(oldState.length + 1);
-            expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id).length).toBe(1);
+            expect(
+                optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
+                    .length
+            ).toBe(1);
 
             oldState = optionsCyclesState;
             action.payload.id = 'some-options-cycle2';
             optionsCyclesState = optionsCyclesReducer(oldState, action);
 
             expect(optionsCyclesState.length).toBe(oldState.length + 1);
-            expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id).length).toBe(1);
+            expect(
+                optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
+                    .length
+            ).toBe(1);
         });
 
         it('should return the old state without the IOptionsCycleState when the action is "REMOVE_OPTIONS_CYCLE', () => {
@@ -59,10 +64,12 @@ describe('Options cycle', () => {
                 {
                     id: 'some-options-cycle2',
                     currentOption: 1,
-                }, {
+                },
+                {
                     id: 'some-options-cycle',
                     currentOption: 0,
-                }, {
+                },
+                {
                     id: 'some-options-cycle3',
                     currentOption: 2,
                 },
@@ -76,14 +83,20 @@ describe('Options cycle', () => {
             let optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, action);
 
             expect(optionsCyclesState.length).toBe(oldState.length - 1);
-            expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id).length).toBe(0);
+            expect(
+                optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
+                    .length
+            ).toBe(0);
 
             oldState = optionsCyclesState;
             action.payload.id = 'some-options-cycle2';
             optionsCyclesState = optionsCyclesReducer(oldState, action);
 
             expect(optionsCyclesState.length).toBe(oldState.length - 1);
-            expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id).length).toBe(0);
+            expect(
+                optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
+                    .length
+            ).toBe(0);
         });
 
         it('should return the old state when the action is "REMOVE_OPTIONS_CYCLE" and the options cycle id does not exist', () => {
@@ -91,10 +104,12 @@ describe('Options cycle', () => {
                 {
                     id: 'some-options-cycle2',
                     currentOption: 4,
-                }, {
+                },
+                {
                     id: 'some-options-cycle',
                     currentOption: 2,
-                }, {
+                },
+                {
                     id: 'some-options-cycle3',
                     currentOption: 1,
                 },
@@ -108,7 +123,10 @@ describe('Options cycle', () => {
             const optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, action);
 
             expect(optionsCyclesState.length).toBe(oldState.length);
-            expect(optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id).length).toBe(0);
+            expect(
+                optionsCyclesState.filter((optionsCycle: IOptionsCycleState) => optionsCycle.id === action.payload.id)
+                    .length
+            ).toBe(0);
         });
 
         it('should return the state with the new current option for the options cycle with the action id when the action is "CHANGE_OPTIONS_CYCLE"', () => {
@@ -116,10 +134,12 @@ describe('Options cycle', () => {
                 {
                     id: 'some-options-cycle2',
                     currentOption: 7,
-                }, {
+                },
+                {
                     id: 'some-options-cycle',
                     currentOption: 9,
-                }, {
+                },
+                {
                     id: 'some-options-cycle3',
                     currentOption: 3,
                 },
@@ -132,7 +152,9 @@ describe('Options cycle', () => {
                 },
             };
             const optionsCyclesState: IOptionsCycleState[] = optionsCyclesReducer(oldState, action);
-            expect(_.findWhere(optionsCyclesState, {id: action.payload.id}).currentOption).toBe(action.payload.currentOption);
+            expect(_.findWhere(optionsCyclesState, {id: action.payload.id}).currentOption).toBe(
+                action.payload.currentOption
+            );
         });
 
         it('should not change the original state', () => {

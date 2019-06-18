@@ -13,16 +13,16 @@ export const subNavigationsInitialState: ISubNavigationState[] = [];
 
 export const subNavigationReducer = (
     state: ISubNavigationState = subNavigationInitialState,
-    action: (IReduxAction<IReduxActionsPayload>),
+    action: IReduxAction<IReduxActionsPayload>
 ): ISubNavigationState => {
     switch (action.type) {
         case SubNavigationActions.select:
             return state.id !== action.payload.id
                 ? state
                 : {
-                    id: state.id,
-                    selected: action.payload.selected,
-                };
+                      id: state.id,
+                      selected: action.payload.selected,
+                  };
         case SubNavigationActions.add:
             return {
                 id: action.payload.id,
@@ -35,7 +35,7 @@ export const subNavigationReducer = (
 
 export const subNavigationsReducer = (
     state: ISubNavigationState[] = subNavigationsInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): ISubNavigationState[] => {
     switch (action.type) {
         case SubNavigationActions.select:

@@ -25,33 +25,32 @@ const ServerTable = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithPredicate({
         id: 'address.city',
-        prepend: <span className='mr1 text-medium-grey'>City:</span>,
+        prepend: <span className="mr1 text-medium-grey">City:</span>,
         isServer: true,
-        values: [
-            {displayValue: 'All', value: '', selected: true},
-            {displayValue: 'Lebsackbury', value: 'Lebsackbury'},
-        ],
+        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'Lebsackbury', value: 'Lebsackbury'}],
     }),
     tableWithPredicate({
         id: 'username',
-        prepend: <span className='mr1 text-medium-grey'>Username:</span>,
+        prepend: <span className="mr1 text-medium-grey">Username:</span>,
         isServer: true,
-        values: [
-            {displayValue: 'All', value: '', selected: true},
-            {displayValue: 'bret', value: 'Bret'},
-        ],
+        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'bret', value: 'Bret'}],
     }),
     tableWithFilter({isServer: true}),
     tableWithDatePicker({
         isServer: true,
         datesSelectionBoxes: SELECTION_BOXES_LONG,
         years: [...DateUtils.getPreviousYears(25), DateUtils.currentYear.toString()],
-        initialDateRange: [moment().subtract(25, 'years').toDate(), moment().toDate()],
+        initialDateRange: [
+            moment()
+                .subtract(25, 'years')
+                .toDate(),
+            moment().toDate(),
+        ],
     }),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
     tableWithSort({isServer: true}),
     tableWithPagination({isServer: true, perPageNumbers: [3, 5, 10]}),
-    tableWithActions(),
+    tableWithActions()
 )(TableHOC);
 
 interface TableHOCServerDispatchProps {
@@ -64,8 +63,7 @@ interface TableHOCServerStateProps {
     totalEntries: number;
     totalPages: number;
 }
-interface TableHOCServerProps extends Partial<TableHOCServerDispatchProps>,
-    Partial<TableHOCServerStateProps> {}
+interface TableHOCServerProps extends Partial<TableHOCServerDispatchProps>, Partial<TableHOCServerStateProps> {}
 
 const mapStateToProps = (state: IReactVaporTestState) => ({
     isLoading: state.tableHOCExample.isLoading,
@@ -80,33 +78,44 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
     static TABLE_ID = 'complex-example';
 
     render() {
-        const generateRows = (allData: IExampleRowData[]) => allData.map((data: IExampleRowData, i: number) => (
-            <TableRowConnected
-                id={data.username}
-                tableId={TableHOCServerExamples.TABLE_ID}
-                key={data.username}
-                actions={[{primary: true, icon: 'edit', name: 'edit', enabled: true, trigger: () => alert(data.username), callOnDoubleClick: true}]}
-                isMultiselect
-                disabled={i % 3 === 0}
-            >
-                <TableRowNumberColumn number={i + 1} />
-                <td key='city'>{data.city}</td>
-                <td key='email'>{data.email.toLowerCase()}</td>
-                <td key='username'>{data.username.toLowerCase()}</td>
-                <td key='date-of-birth'>{data.dateOfBirth.toLocaleDateString()}</td>
-            </TableRowConnected>
-        ));
+        const generateRows = (allData: IExampleRowData[]) =>
+            allData.map((data: IExampleRowData, i: number) => (
+                <TableRowConnected
+                    id={data.username}
+                    tableId={TableHOCServerExamples.TABLE_ID}
+                    key={data.username}
+                    actions={[
+                        {
+                            primary: true,
+                            icon: 'edit',
+                            name: 'edit',
+                            enabled: true,
+                            trigger: () => alert(data.username),
+                            callOnDoubleClick: true,
+                        },
+                    ]}
+                    isMultiselect
+                    disabled={i % 3 === 0}
+                >
+                    <TableRowNumberColumn number={i + 1} />
+                    <td key="city">{data.city}</td>
+                    <td key="email">{data.email.toLowerCase()}</td>
+                    <td key="username">{data.username.toLowerCase()}</td>
+                    <td key="date-of-birth">{data.dateOfBirth.toLocaleDateString()}</td>
+                </TableRowConnected>
+            ));
 
         return (
-            <div className='mt2'>
-                <div className='form-group'>
-                    <label className='form-control-label'>
-                        Server table with numbered rows
-                    </label>
-                    <span className='block my2 text-grey-7'>Please note that the backend service doesn't support dates but we still make a request for every change in the date range.</span>
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Server table with numbered rows</label>
+                    <span className="block my2 text-grey-7">
+                        Please note that the backend service doesn't support dates but we still make a request for every
+                        change in the date range.
+                    </span>
                     <ServerTable
                         id={TableHOCServerExamples.TABLE_ID}
-                        className='table table-numbered'
+                        className="table table-numbered"
                         data={this.props.serverData}
                         renderBody={generateRows}
                         tableHeader={this.renderHeader()}
@@ -125,10 +134,16 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
             <thead>
                 <tr>
                     <TableRowNumberHeader />
-                    <TableHeaderWithSort id='address.city' tableId={TableHOCServerExamples.TABLE_ID}>City</TableHeaderWithSort>
-                    <TableHeaderWithSort id='email' tableId={TableHOCServerExamples.TABLE_ID}>Email</TableHeaderWithSort>
-                    <TableHeaderWithSort id='username' tableId={TableHOCServerExamples.TABLE_ID} isDefault>Username</TableHeaderWithSort>
-                    <th key='date-of-birth'>Date of Birth</th>
+                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExamples.TABLE_ID}>
+                        City
+                    </TableHeaderWithSort>
+                    <TableHeaderWithSort id="email" tableId={TableHOCServerExamples.TABLE_ID}>
+                        Email
+                    </TableHeaderWithSort>
+                    <TableHeaderWithSort id="username" tableId={TableHOCServerExamples.TABLE_ID} isDefault>
+                        Username
+                    </TableHeaderWithSort>
+                    <th key="date-of-birth">Date of Birth</th>
                 </tr>
             </thead>
         );
@@ -136,5 +151,5 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
 
     private onUpdate = () => {
         this.props.fetch();
-    }
+    };
 }

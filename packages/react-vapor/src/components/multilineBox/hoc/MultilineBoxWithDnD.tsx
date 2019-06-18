@@ -27,15 +27,17 @@ export interface IMultilineBoxWithDnDDispatchProps {
     onReorder?: (list: string[]) => void;
 }
 
-export interface IMultilineBoxWithRemoveButtonProps<T> extends IMultilineBoxWithDnDSupplierProps,
-    IMultilineBoxStateProps,
-    IDraggableContainerOwnProps,
-    IMultilineBoxOwnProps<T>,
-    Partial<IMultilineBoxWithDnDDispatchProps>,
-    Partial<IMultilineBoxDispatchProps> {}
+export interface IMultilineBoxWithRemoveButtonProps<T>
+    extends IMultilineBoxWithDnDSupplierProps,
+        IMultilineBoxStateProps,
+        IDraggableContainerOwnProps,
+        IMultilineBoxOwnProps<T>,
+        Partial<IMultilineBoxWithDnDDispatchProps>,
+        Partial<IMultilineBoxDispatchProps> {}
 
-export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) => (Component: MultilineBoxWithDnDComponent): MultilineBoxWithDnDComponent => {
-
+export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDnDSupplierProps> = {}) => (
+    Component: MultilineBoxWithDnDComponent
+): MultilineBoxWithDnDComponent => {
     const makeMapStateToProps = () => {
         const getStateProps = createStructuredSelector({
             multilineBoxIds: MultilineBoxSelectors.getIds,
@@ -45,7 +47,10 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             getStateProps(state, {id: ownProps.id});
     };
 
-    const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps): IMultilineBoxWithDnDDispatchProps => ({
+    const mapDispatchToProps = (
+        dispatch: IDispatch,
+        ownProps: IMultilineBoxOwnProps
+    ): IMultilineBoxWithDnDDispatchProps => ({
         onReorder: (list: string[]) => dispatch(reorderStringList(ownProps.id, list)),
     });
 
@@ -54,7 +59,6 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
     }))
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithRemoveButtonProps<T>> {
-
         static defaultProps = {
             renderBody: () => <div />,
         };
@@ -74,7 +78,9 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
                         id={id}
                         key={`${id}DnD`}
                         index={index}
-                        move={(dragIndex: number, hoverIndex: number) => DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)}
+                        move={(dragIndex: number, hoverIndex: number) =>
+                            DnDUtils.move(dragIndex, hoverIndex, this.props.multilineBoxIds, this.props.onReorder)
+                        }
                         child={child}
                         isDraggable={!isLast}
                         {...supplierProps.DnDContainerProps}
@@ -87,7 +93,9 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             return (
                 <Component
                     {...this.props}
-                    renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)}
+                    renderBody={(boxProps: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) =>
+                        this.getDnDWrapper(this.props.renderBody(boxProps, parentProps), boxProps)
+                    }
                 >
                     {this.props.children}
                 </Component>

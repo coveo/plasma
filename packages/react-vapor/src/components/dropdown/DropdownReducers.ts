@@ -13,7 +13,7 @@ export const dropdownsInitialState: IDropdownState[] = [];
 
 export const dropdownReducer = (
     state: IDropdownState = dropdownInitialState,
-    action: (IReduxAction<IReduxActionsPayload>),
+    action: IReduxAction<IReduxActionsPayload>
 ): IDropdownState => {
     switch (action.type) {
         case DropdownActions.toggle:
@@ -46,17 +46,14 @@ export const dropdownReducer = (
 
 export const dropdownsReducer = (
     state: IDropdownState[] = dropdownsInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IDropdownState[] => {
     switch (action.type) {
         case DropdownActions.toggle:
         case DropdownActions.close:
             return state.map((dropdown: IDropdownState) => dropdownReducer(dropdown, action));
         case DropdownActions.add:
-            return [
-                ...state,
-                dropdownReducer(undefined, action),
-            ];
+            return [...state, dropdownReducer(undefined, action)];
         case DropdownActions.remove:
             return _.reject(state, (dropdown: IDropdownState) => {
                 return action.payload.id === dropdown.id;

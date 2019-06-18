@@ -34,7 +34,7 @@ describe('<Table />', () => {
             <Provider store={store}>
                 <Table {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
     };
 
@@ -72,7 +72,7 @@ describe('<Table />', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
                 ...tablePropsMock,
                 tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: ['test'], totalEntries: 1, totalPages: 1},
+                    data: {byId: {test: {}}, allIds: ['test'], displayedIds: ['test'], totalEntries: 1, totalPages: 1},
                 },
             } as any);
 
@@ -95,7 +95,7 @@ describe('<Table />', () => {
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
                 tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    data: {byId: {test: {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
                     isLoading: false,
                 },
             } as any);
@@ -108,7 +108,7 @@ describe('<Table />', () => {
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
                 tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    data: {byId: {test: {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
                     isLoading: false,
                     isInError: true,
                 },
@@ -131,7 +131,7 @@ describe('<Table />', () => {
             const tableAsAny: any = mountComponentWithProps({
                 ...tablePropsMock,
                 tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    data: {byId: {test: {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
                     isLoading: false,
                     isInError: false,
                 },
@@ -145,7 +145,7 @@ describe('<Table />', () => {
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
                 tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    data: {byId: {test: {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
                     isLoading: false,
                     isInError: false,
                 },
@@ -158,7 +158,7 @@ describe('<Table />', () => {
             const tableAsAny: any = mountComponentWithProps({
                 ...tablePropsMock,
                 tableCompositeState: {
-                    data: {byId: {'test': {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
+                    data: {byId: {test: {}}, allIds: ['test'], displayedIds: [], totalEntries: 1, totalPages: 1},
                     isLoading: false,
                     isInError: true,
                 },
@@ -192,7 +192,10 @@ describe('<Table />', () => {
             expect(tableAsAny.props.tableCompositeState.data).toEqual(DEFAULT_TABLE_DATA);
             expect(tableAsAny.isInitialLoad).toBe(true);
 
-            tableAsAny.props.tableCompositeState.data = {...DEFAULT_TABLE_DATA, allIds: ['trigger-change-in-default-table-data']};
+            tableAsAny.props.tableCompositeState.data = {
+                ...DEFAULT_TABLE_DATA,
+                allIds: ['trigger-change-in-default-table-data'],
+            };
             tableAsAny.componentDidUpdate();
 
             expect(tableAsAny.isInitialLoad).toBe(false);
@@ -216,20 +219,29 @@ describe('<Table />', () => {
         });
 
         it('should render as many <TableChildBody /> as there are displayed ids', () => {
-            expect(mountComponentWithProps(tablePropsMockWithData).find(TableChildBody).length)
-                .toBe(tablePropsMockWithData.tableCompositeState.data.displayedIds.length);
+            expect(mountComponentWithProps(tablePropsMockWithData).find(TableChildBody).length).toBe(
+                tablePropsMockWithData.tableCompositeState.data.displayedIds.length
+            );
         });
 
         it('should call onRowClick when a <TableChildBody /> calls its onRowClick function', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
-            table.find(TableChildBody).first().props().onRowClick([]);
+            table
+                .find(TableChildBody)
+                .first()
+                .props()
+                .onRowClick([]);
 
             expect(tablePropsMockWithData.onRowClick).toHaveBeenCalledTimes(1);
         });
 
         it('should call getActions when a <TableChildBody /> calls its getActions function', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
-            table.find(TableChildBody).first().props().getActions({id: 'any'});
+            table
+                .find(TableChildBody)
+                .first()
+                .props()
+                .getActions({id: 'any'});
 
             expect(tablePropsMockWithData.getActions).toHaveBeenCalled();
         });
@@ -262,7 +274,11 @@ describe('<Table />', () => {
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = true;
-                expect(onModifyDataSpy).toHaveBeenCalledWith(shouldResetPage, nextProps.tableCompositeState, tableProps.tableCompositeState);
+                expect(onModifyDataSpy).toHaveBeenCalledWith(
+                    shouldResetPage,
+                    nextProps.tableCompositeState,
+                    tableProps.tableCompositeState
+                );
             });
 
             it('should call onMofidyData with shouldResetPage false if next tableCompositeState is not identical to the previous and change is in pagination', () => {
@@ -277,7 +293,11 @@ describe('<Table />', () => {
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = false;
-                expect(onModifyDataSpy).toHaveBeenCalledWith(shouldResetPage, nextProps.tableCompositeState, tableProps.tableCompositeState);
+                expect(onModifyDataSpy).toHaveBeenCalledWith(
+                    shouldResetPage,
+                    nextProps.tableCompositeState,
+                    tableProps.tableCompositeState
+                );
             });
 
             it('should call onMofidyData with shouldResetPage false if next tableCompositeState is not identical to the previous and change is in perPage', () => {
@@ -292,7 +312,11 @@ describe('<Table />', () => {
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = false;
-                expect(onModifyDataSpy).toHaveBeenCalledWith(shouldResetPage, nextProps.tableCompositeState, tableProps.tableCompositeState);
+                expect(onModifyDataSpy).toHaveBeenCalledWith(
+                    shouldResetPage,
+                    nextProps.tableCompositeState,
+                    tableProps.tableCompositeState
+                );
             });
 
             describe('hasTableCompositeStateChanged', () => {
@@ -302,8 +326,12 @@ describe('<Table />', () => {
                 });
 
                 it('should return false if nothing changed in the tableCompositeState', () => {
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, tableProps.tableCompositeState))
-                        .toBe(false);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            tableProps.tableCompositeState
+                        )
+                    ).toBe(false);
                 });
 
                 it('should return true if the filter has changed and nothing else has', () => {
@@ -311,8 +339,12 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         filter: 'someone just searched for something in the table',
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the from (datepicker) has changed and nothing else has', () => {
@@ -320,8 +352,12 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         from: Date.now(),
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the to (datepicker) has changed and nothing else has', () => {
@@ -329,8 +365,12 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         to: Date.now(),
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the perPage has changed and nothing else has', () => {
@@ -338,8 +378,12 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         perPage: 50,
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the page has changed and nothing else has', () => {
@@ -347,8 +391,12 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         page: 3,
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the sort attribute has changed and nothing else has', () => {
@@ -359,8 +407,12 @@ describe('<Table />', () => {
                             attribute: 'userName',
                         },
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the sort order has changed and nothing else has', () => {
@@ -371,8 +423,12 @@ describe('<Table />', () => {
                             order: TableSortingOrder.ASCENDING,
                         },
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if the predicates were empty and next state has one', () => {
@@ -382,8 +438,12 @@ describe('<Table />', () => {
                             anyWouldDo: 'anyWouldDo',
                         },
                     };
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableProps.tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(
+                        tableAsAny.hasTableCompositeStateChanged(
+                            tableProps.tableCompositeState,
+                            nextTableCompositeState
+                        )
+                    ).toBe(true);
                 });
 
                 it('should return true if predicates were not empty but one of the value of the predicates changed', () => {
@@ -401,8 +461,9 @@ describe('<Table />', () => {
                         },
                     };
 
-                    expect(tableAsAny.hasTableCompositeStateChanged(tableCompositeState, nextTableCompositeState))
-                        .toBe(true);
+                    expect(tableAsAny.hasTableCompositeStateChanged(tableCompositeState, nextTableCompositeState)).toBe(
+                        true
+                    );
                 });
             });
         });

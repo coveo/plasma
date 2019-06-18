@@ -16,71 +16,64 @@ export class SubNavigationConnectedExamples extends React.Component<any, any> {
         return (
             <>
                 <div>
-                    <label className='form-control-label'>Sub Navigation</label>
-                    <div className='flex' style={{height: '200px'}}>
-                        <SubNavigationConnected
-                            id='first-sub-nav'
-                            items={exampleItems}
-                        />
+                    <label className="form-control-label">Sub Navigation</label>
+                    <div className="flex" style={{height: '200px'}}>
+                        <SubNavigationConnected id="first-sub-nav" items={exampleItems} />
                     </div>
                 </div>
-                <div className='mt3'>
-                    <label className='form-control-label'>Sub Navigation with default selected</label>
-                    <div className='flex' style={{height: '120px'}}>
-                        <SubNavigationConnected
-                            id='second-sub-nav'
-                            items={exampleItems}
-                            defaultSelected='star-wars'
-                        />
+                <div className="mt3">
+                    <label className="form-control-label">Sub Navigation with default selected</label>
+                    <div className="flex" style={{height: '120px'}}>
+                        <SubNavigationConnected id="second-sub-nav" items={exampleItems} defaultSelected="star-wars" />
                     </div>
                 </div>
-                <div className='mt3'>
-                    <label className='form-control-label'>Sub-navigation with custom links</label>
-                    <div className='flex' style={{width: '250px', height: '200px'}}>
+                <div className="mt3">
+                    <label className="form-control-label">Sub-navigation with custom links</label>
+                    <div className="flex" style={{width: '250px', height: '200px'}}>
                         <SubNavigationConnected
-                            id='third-sub-nav'
+                            id="third-sub-nav"
                             items={[
                                 {
                                     label: (
-                                        <span className='flex space-between'>
-                                            <span className='truncate'>Avatar</span>
-                                            <Svg svgName='thumb-up' svgClass='icon fill-green' />
+                                        <span className="flex space-between">
+                                            <span className="truncate">Avatar</span>
+                                            <Svg svgName="thumb-up" svgClass="icon fill-green" />
                                         </span>
                                     ),
                                     id: 'avatar',
                                 },
                                 {
                                     label: (
-                                        <span className='flex space-between'>
-                                            <span className='truncate'>Titanic</span>
-                                            <Svg svgName='thumb-up' svgClass='icon fill-green' />
+                                        <span className="flex space-between">
+                                            <span className="truncate">Titanic</span>
+                                            <Svg svgName="thumb-up" svgClass="icon fill-green" />
                                         </span>
                                     ),
                                     id: 'titanic',
                                 },
                                 {
                                     label: (
-                                        <span className='flex space-between'>
-                                            <span className='truncate pr1'>Star Wars: The Force Awakens</span>
-                                            <Svg svgName='thumb-up' svgClass='icon fill-green' />
+                                        <span className="flex space-between">
+                                            <span className="truncate pr1">Star Wars: The Force Awakens</span>
+                                            <Svg svgName="thumb-up" svgClass="icon fill-green" />
                                         </span>
                                     ),
                                     id: 'star-wars',
                                 },
                                 {
                                     label: (
-                                        <span className='flex space-between'>
-                                            <span className='truncate'>Jurassic World</span>
-                                            <Svg svgName='thumb-down' svgClass='icon fill-red' />
+                                        <span className="flex space-between">
+                                            <span className="truncate">Jurassic World</span>
+                                            <Svg svgName="thumb-down" svgClass="icon fill-red" />
                                         </span>
                                     ),
                                     id: 'jurasic-world',
                                 },
                                 {
                                     label: (
-                                        <span className='flex space-between'>
-                                            <span className='truncate'>The Avengers</span>
-                                            <Svg svgName='thumb-down' svgClass='icon fill-red' />
+                                        <span className="flex space-between">
+                                            <span className="truncate">The Avengers</span>
+                                            <Svg svgName="thumb-down" svgClass="icon fill-red" />
                                         </span>
                                     ),
                                     id: 'the-avengers',

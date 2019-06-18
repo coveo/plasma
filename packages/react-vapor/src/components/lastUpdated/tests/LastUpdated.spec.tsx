@@ -13,11 +13,8 @@ describe('LastUpdated', () => {
         let time: Date;
 
         it('should render without errors', () => {
-
             expect(() => {
-                shallow(
-                    <LastUpdated />,
-                );
+                shallow(<LastUpdated />);
             }).not.toThrow();
         });
 
@@ -26,11 +23,7 @@ describe('LastUpdated', () => {
 
             const expectedTime = moment(time).format('LTS');
 
-            lastUpdatedWrapper = shallow(
-                <LastUpdated
-                    time={time}
-                />,
-            );
+            lastUpdatedWrapper = shallow(<LastUpdated time={time} />);
 
             expect(s.contains(lastUpdatedWrapper.html(), expectedTime));
         });
@@ -42,9 +35,7 @@ describe('LastUpdated', () => {
 
             const expectedTime = moment(time).format('LTS');
 
-            lastUpdatedWrapper = shallow(
-                <LastUpdated />,
-            );
+            lastUpdatedWrapper = shallow(<LastUpdated />);
 
             expect(s.contains(lastUpdatedWrapper.html(), expectedTime));
 
@@ -52,9 +43,7 @@ describe('LastUpdated', () => {
         });
 
         it('should use the label passed as a prop to display the time, else it uses the default label', () => {
-            lastUpdatedWrapper = shallow(
-                <LastUpdated />,
-            );
+            lastUpdatedWrapper = shallow(<LastUpdated />);
             expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL));
 
             const expectedLabel = 'Last update was at =>';
@@ -64,10 +53,7 @@ describe('LastUpdated', () => {
 
         it('should trigger onRender prop when mounting', () => {
             const renderSpy = jasmine.createSpy('onRender');
-            lastUpdated = mount(
-                <LastUpdated />,
-                {attachTo: document.getElementById('App')},
-            );
+            lastUpdated = mount(<LastUpdated />, {attachTo: document.getElementById('App')});
 
             expect(() => (lastUpdated.instance() as LastUpdated).componentWillMount()).not.toThrow();
 
@@ -79,10 +65,7 @@ describe('LastUpdated', () => {
 
         it('should trigger onDestroy prop when unmounting', () => {
             const destroySpy = jasmine.createSpy('onDestroy');
-            lastUpdated = mount(
-                <LastUpdated />,
-                {attachTo: document.getElementById('App')},
-            );
+            lastUpdated = mount(<LastUpdated />, {attachTo: document.getElementById('App')});
             expect(() => (lastUpdated.instance() as LastUpdated).componentWillUnmount()).not.toThrow();
 
             lastUpdated.unmount();

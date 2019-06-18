@@ -15,9 +15,7 @@ describe('Tables', () => {
             title = 'Header 1';
 
             expect(() => {
-                shallow(
-                    <TableHeaderCell title={title} />,
-                );
+                shallow(<TableHeaderCell title={title} />);
             }).not.toThrow();
         });
     });
@@ -31,13 +29,9 @@ describe('Tables', () => {
             title = 'Header 1';
             className = 'special';
 
-            tableHeaderCell = mount(
-                <TableHeaderCell
-                    title={title}
-                    className={className}
-                />,
-                {attachTo: document.getElementById('AppTableHeadRow')},
-            );
+            tableHeaderCell = mount(<TableHeaderCell title={title} className={className} />, {
+                attachTo: document.getElementById('AppTableHeadRow'),
+            });
         });
 
         afterEach(() => {
@@ -159,7 +153,9 @@ describe('Tables', () => {
             });
 
             it('should have a sort icon in a sorted descending state if it has sort in state DESCENDING', () => {
-                tableHeaderCell.setProps({sorted: TableSortingOrder.DESCENDING, attributeToSort: 'anyWouldDo'}).update();
+                tableHeaderCell
+                    .setProps({sorted: TableSortingOrder.DESCENDING, attributeToSort: 'anyWouldDo'})
+                    .update();
 
                 throwIfSvgNotPresent();
                 expect(tableHeaderCell.find(`.${sortDefaultClass}`).length).toBe(1);

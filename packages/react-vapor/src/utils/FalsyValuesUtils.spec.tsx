@@ -31,13 +31,7 @@ describe('callIfDefined', () => {
     });
 
     it('should call the callback and pass down args properly', () => {
-        const args = [
-            'some'
-            [1],
-            -10,
-            true,
-            () => 'ooookay',
-        ];
+        const args = ['some'[1], -10, true, () => 'ooookay'];
 
         callIfDefined(callbackSpy, ...args);
 

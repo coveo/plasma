@@ -18,11 +18,7 @@ describe('Tables', () => {
             columns = [];
 
             expect(() => {
-                shallow(
-                    <TableHeader
-                        columns={columns}
-                    />,
-                );
+                shallow(<TableHeader columns={columns} />);
             }).not.toThrow();
         });
     });
@@ -33,24 +29,24 @@ describe('Tables', () => {
         beforeEach(() => {
             document.getElementById('App').innerHTML = '<table id="AppTable"></table>';
 
-            columns = [{
-                title: 'Header 1',
-                className: 'special',
-            }, {
-                title: 'Header 2',
-            }, {
-                title: 'Header 3',
-            }];
+            columns = [
+                {
+                    title: 'Header 1',
+                    className: 'special',
+                },
+                {
+                    title: 'Header 2',
+                },
+                {
+                    title: 'Header 3',
+                },
+            ];
 
             headerClass = 'header-class';
 
-            tableHeader = mount(
-                <TableHeader
-                    columns={columns}
-                    headerClass={headerClass}
-                />,
-                {attachTo: document.getElementById('AppTable')},
-            );
+            tableHeader = mount(<TableHeader columns={columns} headerClass={headerClass} />, {
+                attachTo: document.getElementById('AppTable'),
+            });
         });
 
         afterEach(() => {
@@ -95,34 +91,49 @@ describe('Tables', () => {
             it('should have connected cells if withReduxState is passed as prop and some cells have an attribute to sort', () => {
                 tableHeader = mount(
                     <Provider store={store}>
-                        <TableHeader
-                            columns={_.values(currentColumns)}
-                            withReduxState
-                        />
+                        <TableHeader columns={_.values(currentColumns)} withReduxState />
                     </Provider>,
-                    {attachTo: document.getElementById('AppTable')},
+                    {attachTo: document.getElementById('AppTable')}
                 );
 
                 expect(tableHeader.find(TableHeaderCellConnected).length).toBe(1);
 
-                expect(tableHeader.find(TableHeaderCellConnected).first().text()).toBe(currentColumns.cellWithAttributeToSort.title as string);
-                expect(tableHeader.find(TableHeaderCell).last().text()).toBe(currentColumns.cellWithoutAttributeToSort.title as string);
+                expect(
+                    tableHeader
+                        .find(TableHeaderCellConnected)
+                        .first()
+                        .text()
+                ).toBe(currentColumns.cellWithAttributeToSort.title as string);
+                expect(
+                    tableHeader
+                        .find(TableHeaderCell)
+                        .last()
+                        .text()
+                ).toBe(currentColumns.cellWithoutAttributeToSort.title as string);
             });
 
             it('should not have connected cells if withReduxState is not passed as prop even if some cells have an attribute to sort', () => {
                 tableHeader = mount(
                     <Provider store={store}>
-                        <TableHeader
-                            columns={_.values(currentColumns)}
-                        />
+                        <TableHeader columns={_.values(currentColumns)} />
                     </Provider>,
-                    {attachTo: document.getElementById('AppTable')},
+                    {attachTo: document.getElementById('AppTable')}
                 );
 
                 expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);
 
-                expect(tableHeader.find(TableHeaderCell).first().text()).toBe(currentColumns.cellWithAttributeToSort.title as string);
-                expect(tableHeader.find(TableHeaderCell).last().text()).toBe(currentColumns.cellWithoutAttributeToSort.title as string);
+                expect(
+                    tableHeader
+                        .find(TableHeaderCell)
+                        .first()
+                        .text()
+                ).toBe(currentColumns.cellWithAttributeToSort.title as string);
+                expect(
+                    tableHeader
+                        .find(TableHeaderCell)
+                        .last()
+                        .text()
+                ).toBe(currentColumns.cellWithoutAttributeToSort.title as string);
             });
         });
     });

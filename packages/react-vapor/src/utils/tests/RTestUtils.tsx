@@ -29,18 +29,14 @@ const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode
         render() {
             return (
                 <Provider store={store}>
-                    <ComponentClass {...props} >
-                        {child}
-                    </ComponentClass>
+                    <ComponentClass {...props}>{child}</ComponentClass>
                 </Provider>
             );
         }
     }
 
     const Draggable = DD(Tester);
-    const wrapper = mount(
-        <Draggable {...props} />,
-    );
+    const wrapper = mount(<Draggable {...props} />);
 
     return {
         wrapper,

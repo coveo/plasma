@@ -9,10 +9,7 @@ import {tablePropsMock} from './TableTestCommon';
 describe('<TableChildLoadingRow />', () => {
     describe('render', () => {
         const mountComponentWithProps = (props: ITableChildLoadingRowProps) => {
-            return mount(
-                <TableChildLoadingRow {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            return mount(<TableChildLoadingRow {...props} />, {attachTo: document.getElementById('App')});
         };
 
         it('should render without error if basic props are passed with isInitialLoad true', () => {
@@ -38,19 +35,30 @@ describe('<TableChildLoadingRow />', () => {
         });
 
         it('should render the default blanslate that spans accross all table columns', () => {
-            expect(mountComponentWithProps({
-                ...tablePropsMock,
-                isInitialLoad: true,
-            }).find('td').prop('colSpan')).toBe(tablePropsMock.headingAttributes.length);
-        });
-
-        it('should render the default blanslate that spans accross all table columns + the collapsible toggle column ' +
-            'when the table has at least one collapsible column', () => {
-                expect(mountComponentWithProps({
+            expect(
+                mountComponentWithProps({
                     ...tablePropsMock,
                     isInitialLoad: true,
-                    collapsibleFormatter: () => null,
-                }).find('td').prop('colSpan')).toBe(tablePropsMock.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT);
-            });
+                })
+                    .find('td')
+                    .prop('colSpan')
+            ).toBe(tablePropsMock.headingAttributes.length);
+        });
+
+        it(
+            'should render the default blanslate that spans accross all table columns + the collapsible toggle column ' +
+                'when the table has at least one collapsible column',
+            () => {
+                expect(
+                    mountComponentWithProps({
+                        ...tablePropsMock,
+                        isInitialLoad: true,
+                        collapsibleFormatter: () => null,
+                    })
+                        .find('td')
+                        .prop('colSpan')
+                ).toBe(tablePropsMock.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT);
+            }
+        );
     });
 });

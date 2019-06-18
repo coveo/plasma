@@ -24,13 +24,9 @@ export const StepProgressBar = (props: IStepProgressBarProps) => {
                 'step-progress-bar-done': stepNumber < currentStep,
                 'step-progress-bar-doing': stepNumber === currentStep,
                 'step-progress-bar-to-do': stepNumber > currentStep,
-            })}>
-        </div>
+            })}
+        ></div>
     ));
 
-    return (
-        <div className={classNames('step-progress-bar-container', props.className)}>
-            {stepProgressBarSteps}
-        </div>
-    );
+    return <div className={classNames('step-progress-bar-container', props.className)}>{stepProgressBarSteps}</div>;
 };

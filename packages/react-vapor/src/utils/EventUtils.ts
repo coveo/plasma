@@ -12,5 +12,5 @@ export class EventUtils {
         }
 
         return isClickingInside;
-    }
+    };
 }

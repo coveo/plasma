@@ -8,7 +8,7 @@ describe('<LineSeries />', () => {
     it('should not throw', () => {
         expect(() => {
             shallow(<LineSeries />);
-            shallow(<LineSeries interpolate='monotone' strokeWith={2} />);
+            shallow(<LineSeries interpolate="monotone" strokeWith={2} />);
         }).not.toThrow();
     });
 

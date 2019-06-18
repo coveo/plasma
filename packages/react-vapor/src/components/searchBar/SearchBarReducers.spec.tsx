@@ -25,12 +25,14 @@ describe('Reducers', () => {
         });
 
         it('should return the old state when the action is not defined for the searchBar state', () => {
-            const oldState: ISearchBarState[] = [{
-                id: 'some-searchBar',
-                searching: false,
-                disabled: false,
-                value: 'anywoulddo',
-            }];
+            const oldState: ISearchBarState[] = [
+                {
+                    id: 'some-searchBar',
+                    searching: false,
+                    disabled: false,
+                    value: 'anywoulddo',
+                },
+            ];
             const searchBarState: ISearchBarState[] = searchBarsReducer(oldState, genericAction);
 
             expect(searchBarState).toEqual(oldState);
@@ -49,7 +51,10 @@ describe('Reducers', () => {
         });
 
         it('should remove the searchBar in the state on removeSearchBar', () => {
-            const oldState = [{...searchBarDefaultState, id: 'search-bar'}, {...searchBarDefaultState, id: 'search-bar-2'}];
+            const oldState = [
+                {...searchBarDefaultState, id: 'search-bar'},
+                {...searchBarDefaultState, id: 'search-bar-2'},
+            ];
             const searchBarState: ISearchBarState[] = searchBarsReducer(oldState, removeSearchBar('search-bar'));
 
             expect(searchBarState[0]).toEqual(oldState[1]);
@@ -57,8 +62,14 @@ describe('Reducers', () => {
         });
 
         it('should toggle the searching property of the searchBar with the id passed in the payload', () => {
-            let oldState = [{...searchBarDefaultState, id: 'search-bar'}, {...searchBarDefaultState, id: 'search-bar-2'}];
-            let newState: ISearchBarState[] = searchBarsReducer(oldState, toggleSearching('search-bar', !oldState[0].searching));
+            let oldState = [
+                {...searchBarDefaultState, id: 'search-bar'},
+                {...searchBarDefaultState, id: 'search-bar-2'},
+            ];
+            let newState: ISearchBarState[] = searchBarsReducer(
+                oldState,
+                toggleSearching('search-bar', !oldState[0].searching)
+            );
 
             expect(newState[0].searching).toBe(!oldState[0].searching);
             expect(newState[1].searching).toBe(oldState[1].searching);
@@ -77,8 +88,14 @@ describe('Reducers', () => {
         });
 
         it('should toggle the disabled property of the searchBar with the id passed in the payload', () => {
-            let oldState = [{...searchBarDefaultState, id: 'search-bar'}, {...searchBarDefaultState, id: 'search-bar-2'}];
-            let newState: ISearchBarState[] = searchBarsReducer(oldState, toggleSearchBarDisabled('search-bar', !oldState[0].disabled));
+            let oldState = [
+                {...searchBarDefaultState, id: 'search-bar'},
+                {...searchBarDefaultState, id: 'search-bar-2'},
+            ];
+            let newState: ISearchBarState[] = searchBarsReducer(
+                oldState,
+                toggleSearchBarDisabled('search-bar', !oldState[0].disabled)
+            );
 
             expect(newState[0].disabled).toBe(!oldState[0].disabled);
             expect(newState[1].disabled).toBe(oldState[1].disabled);
@@ -97,8 +114,14 @@ describe('Reducers', () => {
         });
 
         it('should set the value property of the search bar with the id passed in the payload', () => {
-            const oldState = [{...searchBarDefaultState, id: 'search-bar'}, {...searchBarDefaultState, id: 'search-bar-2'}];
-            const newState: ISearchBarState[] = searchBarsReducer(oldState, setSearchBarValue('search-bar', 'new value'));
+            const oldState = [
+                {...searchBarDefaultState, id: 'search-bar'},
+                {...searchBarDefaultState, id: 'search-bar-2'},
+            ];
+            const newState: ISearchBarState[] = searchBarsReducer(
+                oldState,
+                setSearchBarValue('search-bar', 'new value')
+            );
 
             expect(newState[0].value).toBe('new value');
             expect(newState[1].value).toBe(oldState[1].value);

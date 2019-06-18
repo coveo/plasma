@@ -14,7 +14,11 @@ import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaAction
 export interface ITextAreaOwnProps {
     id: string;
     className?: string;
-    additionalAttributes?: React.DetailedHTMLProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>, HTMLTextAreaElement> & TextareaAutosizeProps;
+    additionalAttributes?: React.DetailedHTMLProps<
+        React.TextareaHTMLAttributes<HTMLTextAreaElement>,
+        HTMLTextAreaElement
+    > &
+        TextareaAutosizeProps;
     /**
      * Use with TextAreaConnected. Only useful in a Redux context.
      */
@@ -40,10 +44,7 @@ export interface ITextAreaDispatchProps {
     onUnmount?: () => void;
 }
 
-export interface ITextAreaProps extends
-    ITextAreaOwnProps,
-    ITextAreaStateProps,
-    ITextAreaDispatchProps {}
+export interface ITextAreaProps extends ITextAreaOwnProps, ITextAreaStateProps, ITextAreaDispatchProps {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITextAreaOwnProps): ITextAreaStateProps => {
     const {value, disabled} = _.findWhere(state.textAreas, {id: ownProps.id}) || {value: '', disabled: false};
@@ -94,5 +95,8 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
     }
 }
 
-export const TextAreaConnected: React.ComponentClass<ITextAreaProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TextArea);
+export const TextAreaConnected: React.ComponentClass<ITextAreaProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(TextArea);

@@ -17,24 +17,26 @@ describe('<ChosenSelect>', () => {
     });
 
     it('should render without error', () => {
-        expect(() => mount(
-            <ChosenSelect {...chosenSelectProps}>
-                <option value='1'>Option 1</option>
-                <option value='2'>Option 2</option>
-                <option value='3'>Option 3</option>
-            </ChosenSelect>,
-        )).not.toThrow();
+        expect(() =>
+            mount(
+                <ChosenSelect {...chosenSelectProps}>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
+                </ChosenSelect>
+            )
+        ).not.toThrow();
     });
 
     it('should mount and unmount/detach without error', () => {
         expect(() => {
             chosenSelectWrapper = mount(
                 <ChosenSelect {...chosenSelectProps}>
-                    <option value='1'>Option 1</option>
-                    <option value='2'>Option 2</option>
-                    <option value='3'>Option 3</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
                 </ChosenSelect>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         }).not.toThrow();
 
@@ -48,11 +50,11 @@ describe('<ChosenSelect>', () => {
         beforeEach(() => {
             chosenSelectWrapper = mount(
                 <ChosenSelect {...chosenSelectProps}>
-                    <option value='1'>Option 1</option>
-                    <option value='2'>Option 2</option>
-                    <option value='3'>Option 3</option>
+                    <option value="1">Option 1</option>
+                    <option value="2">Option 2</option>
+                    <option value="3">Option 3</option>
                 </ChosenSelect>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
         });
 

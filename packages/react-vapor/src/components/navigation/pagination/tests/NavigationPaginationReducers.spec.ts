@@ -16,7 +16,6 @@ import {
 } from '../NavigationPaginationReducers';
 
 describe('Reducers', () => {
-
     describe('NavigationPaginationReducers', () => {
         const genericAction: IReduxAction<IChangePaginationActionPayload> = {
             type: 'DO_SOMETHING',
@@ -82,10 +81,12 @@ describe('Reducers', () => {
                 {
                     id: 'some-pagination',
                     pageNb: 2,
-                }, {
+                },
+                {
                     id: 'some-pagination2',
                     pageNb: 5,
-                }, {
+                },
+                {
                     id: 'some-pagination1',
                     pageNb: 33,
                 },
@@ -153,7 +154,9 @@ describe('Reducers', () => {
                 pageNb: 22,
             };
 
-            expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(0);
+            expect(
+                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb
+            ).toBe(0);
         });
 
         it('should not reset the page for the table state modification action if the table id is in the pagination id and shouldResetPage is false', () => {
@@ -164,7 +167,9 @@ describe('Reducers', () => {
                 pageNb: 22,
             };
 
-            expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
+            expect(
+                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb
+            ).toBe(oldState.pageNb);
         });
 
         it('should not reset the page for the table state modification action if the table id is not in the pagination id regardless of shouldResetPage', () => {
@@ -175,7 +180,9 @@ describe('Reducers', () => {
                 pageNb: 22,
             };
 
-            expect(paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb).toBe(oldState.pageNb);
+            expect(
+                paginationCompositeReducer([oldState], modifyState(tableId, _.identity, shouldResetPage))[0].pageNb
+            ).toBe(oldState.pageNb);
         });
 
         it('should set the page number at 0 for the filterThrough action if the filter id is in the pagination id', () => {

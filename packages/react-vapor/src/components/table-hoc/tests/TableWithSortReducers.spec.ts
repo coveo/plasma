@@ -63,11 +63,13 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     isAsc: undefined,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     isAsc: undefined,
-                }, {
+                },
+                {
                     id: 'some-table-header-3',
                     tableId: 'not-important',
                     isAsc: undefined,
@@ -86,7 +88,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     isAsc: undefined,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     isAsc: true,
@@ -107,7 +110,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     isAsc: undefined,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     isAsc: true,

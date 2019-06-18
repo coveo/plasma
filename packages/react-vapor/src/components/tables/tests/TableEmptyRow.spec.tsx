@@ -11,11 +11,8 @@ describe('Tables', () => {
 
     describe('<TableEmptyRow />', () => {
         it('should render without errors', () => {
-
             expect(() => {
-                shallow(
-                    <TableEmptyRow {...tableEmptyRowBasicProps} />,
-                );
+                shallow(<TableEmptyRow {...tableEmptyRowBasicProps} />);
             }).not.toThrow();
         });
     });
@@ -26,10 +23,9 @@ describe('Tables', () => {
         beforeEach(() => {
             document.getElementById('App').innerHTML = '<table id="AppTable"></table>';
 
-            tableEmptyRow = mount(
-                <TableEmptyRow {...tableEmptyRowBasicProps} />,
-                {attachTo: document.getElementById('AppTable')},
-            );
+            tableEmptyRow = mount(<TableEmptyRow {...tableEmptyRowBasicProps} />, {
+                attachTo: document.getElementById('AppTable'),
+            });
         });
 
         afterEach(() => {

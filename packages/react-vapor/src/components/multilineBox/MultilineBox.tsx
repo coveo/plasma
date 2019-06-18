@@ -32,7 +32,11 @@ export interface IMultilineBoxOwnProps<T = any> {
     data: T[];
     renderBody?: (data: Array<IMultilineSingleBoxProps<T>>, parentProps: IMultilineParentProps) => React.ReactNode;
     defaultProps?: T;
-    renderWrapper?: (children: React.ReactNode, boxProps: IMultilineSingleBoxProps<T>, parentProps: IMultilineParentProps) => React.ReactNode;
+    renderWrapper?: (
+        children: React.ReactNode,
+        boxProps: IMultilineSingleBoxProps<T>,
+        parentProps: IMultilineParentProps
+    ) => React.ReactNode;
 }
 
 export interface IMultilineBoxStateProps {
@@ -47,9 +51,10 @@ export interface IMultilineBoxDispatchProps {
     updateBox: (defaultIds: string[]) => void;
 }
 
-export interface IMultilineBoxProps<T = any> extends IMultilineBoxOwnProps<T>,
-    Partial<IMultilineBoxStateProps>,
-    Partial<IMultilineBoxDispatchProps> {}
+export interface IMultilineBoxProps<T = any>
+    extends IMultilineBoxOwnProps<T>,
+        Partial<IMultilineBoxStateProps>,
+        Partial<IMultilineBoxDispatchProps> {}
 
 const makeMapStateToProps = () => {
     const getStateProps = createStructuredSelector({
@@ -70,7 +75,6 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 export class MultilineBox<T> extends React.PureComponent<IMultilineBoxProps<T>> {
-
     private initialData: {[id: string]: T};
 
     static defaultProps = {

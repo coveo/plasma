@@ -4,7 +4,8 @@ import {IToastContainerActionPayload, ToastAction} from '../ToastActions';
 import {
     IToastsState,
     toastContainerInitialState,
-    toastContainerReducer, toastInitialState,
+    toastContainerReducer,
+    toastInitialState,
     toastsContainerInitialState,
     toastsContainerReducer,
 } from '../ToastReducers';
@@ -89,7 +90,9 @@ describe('Reducers', () => {
 
         it('should return the old state state without the ToastState when the action is "REMOVE_TOAST"', () => {
             const toastToRemove = 'toast-id';
-            const oldState: IToastsState[] = [{id: 'some-id', toasts: [_.extend({}, toastInitialState, {id: toastToRemove, title: 'test'})]}];
+            const oldState: IToastsState[] = [
+                {id: 'some-id', toasts: [_.extend({}, toastInitialState, {id: toastToRemove, title: 'test'})]},
+            ];
             const action: IReduxAction<any> = {
                 type: ToastAction.removeToast,
                 payload: {id: toastToRemove, containerId: 'some-id'},

@@ -42,7 +42,9 @@ describe('Modal with Prevent Navigation', () => {
         const spy = jasmine.createSpy('onStay');
         shallowWithProps({onStay: spy});
 
-        const footer = shallow(<div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>);
+        const footer = shallow(
+            <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>
+        );
         footer.find('.js-stay').simulate('click');
         expect(spy).toHaveBeenCalledTimes(1);
     });
@@ -51,7 +53,9 @@ describe('Modal with Prevent Navigation', () => {
         const spy = jasmine.createSpy('onClose');
         shallowWithProps({onClose: spy});
 
-        const footer = shallow(<div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>);
+        const footer = shallow(
+            <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>
+        );
         footer.find('.js-exit').simulate('click');
         expect(spy).toHaveBeenCalledTimes(1);
     });

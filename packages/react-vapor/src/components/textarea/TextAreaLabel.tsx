@@ -8,10 +8,9 @@ export interface ITextAreaLabelProps {
     containerClassName?: string;
 }
 
-export const TextAreaLabel = (props: ITextAreaLabelProps) =>
+export const TextAreaLabel = (props: ITextAreaLabelProps) => (
     <div className={classNames('input-field form-group', props.containerClassName)}>
         {props.children}
-        <label htmlFor={props.children.props.id}>
-            {props.label}
-        </label>
-    </div>;
+        <label htmlFor={props.children.props.id}>{props.label}</label>
+    </div>
+);

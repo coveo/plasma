@@ -1,10 +1,15 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addOptionsCycle, changeOptionsCycle, IChangeOptionsCyclePayload, IOptionsCyclePayload, OptionsCycleActions, removeOptionsCycle} from '../OptionsCycleActions';
+import {
+    addOptionsCycle,
+    changeOptionsCycle,
+    IChangeOptionsCyclePayload,
+    IOptionsCyclePayload,
+    OptionsCycleActions,
+    removeOptionsCycle,
+} from '../OptionsCycleActions';
 
 describe('Options cycle', () => {
-
     describe('OptionsCycleActions', () => {
-
         const OPTIONS_CYCLE_ID: string = 'option-cycle';
         const CURRENT_OPTION: number = 3;
 

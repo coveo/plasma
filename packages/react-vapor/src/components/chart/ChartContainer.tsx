@@ -17,16 +17,16 @@ export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (pro
     const toggleSvgs = (show: boolean) => {
         if (container.current) {
             const svgs = container.current.querySelectorAll('svg');
-            _.each(svgs, (svg: SVGElement) => svg.style.display = show ? 'block' : 'none');
+            _.each(svgs, (svg: SVGElement) => (svg.style.display = show ? 'block' : 'none'));
         }
     };
 
     toggleSvgs(false);
-    const {width, height} = container.current && container.current.getBoundingClientRect() || {width: 0, height: 0};
+    const {width, height} = (container.current && container.current.getBoundingClientRect()) || {width: 0, height: 0};
     toggleSvgs(true);
 
     return (
-        <div className='full-content' {..._.omit(props, 'renderChart')} ref={container}>
+        <div className="full-content" {..._.omit(props, 'renderChart')} ref={container}>
             {width > 0 && height > 0 ? props.renderChart(width, height) : null}
         </div>
     );

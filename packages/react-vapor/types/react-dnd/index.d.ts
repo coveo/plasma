@@ -26,8 +26,16 @@ declare module ReactDnD {
 
     type IDragSourceCollect = (connect: DragSourceConnector, monitor: DragSourceMonitor) => any;
     type IDragTargetCollect = (connect: DropTargetConnector, monitor: DropTargetMonitor) => any;
-    const DropTarget: (type: DropTargetTypes, spec: IDropTarget, collect: IDragTargetCollect) => (component: React.ReactComponent) => ReactClass;
-    const DragSource: (type: DragSourceType, spec: IDragSource, collect: IDragSourceCollect) => (component: React.ReactComponent) => ReactClass;
+    const DropTarget: (
+        type: DropTargetTypes,
+        spec: IDropTarget,
+        collect: IDragTargetCollect
+    ) => (component: React.ReactComponent) => ReactClass;
+    const DragSource: (
+        type: DragSourceType,
+        spec: IDragSource,
+        collect: IDragSourceCollect
+    ) => (component: React.ReactComponent) => ReactClass;
 
     const DragDropContext: any;
 }

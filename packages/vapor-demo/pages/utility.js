@@ -14,13 +14,16 @@ const Utility = () => {
             <Component
                 id="whitespace"
                 title="Whitespace"
-                usage={(
-                  <>
-                      Immutable margin and padding utilities are based on a multiple of a basic spacing unit.<br/>
-                      These can dramatically help reduce the size of large stylesheets and allow for greater flexibility and quicker iteration when designing in the browser.<br/>
-                      Those classes are available from p0 to p2 and m0 to m2.
-                  </>
-                )}
+                usage={
+                    <>
+                        Immutable margin and padding utilities are based on a multiple of a basic spacing unit.
+                        <br />
+                        These can dramatically help reduce the size of large stylesheets and allow for greater
+                        flexibility and quicker iteration when designing in the browser.
+                        <br />
+                        Those classes are available from p0 to p2 and m0 to m2.
+                    </>
+                }
                 stylesheet="scss/utility/white-space.scss"
                 withSource
             >

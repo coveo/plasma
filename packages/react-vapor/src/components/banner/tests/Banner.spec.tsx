@@ -20,9 +20,7 @@ describe('Banner', () => {
             if (banner && banner.length) {
                 banner.unmount();
             }
-            banner = mount(
-                <Banner {...basicProps} {...props} />,
-            );
+            banner = mount(<Banner {...basicProps} {...props} />);
         };
 
         beforeEach(() => {
@@ -105,10 +103,7 @@ describe('Banner', () => {
         it('should display a bannerDescription if there are children', () => {
             expect(banner.find(`.${styles.bannerDescription}`).length).toBe(0);
 
-            banner = mount(
-                <Banner {...basicProps}>I am a child!</Banner>,
-                {attachTo: document.getElementById('App')},
-            );
+            banner = mount(<Banner {...basicProps}>I am a child!</Banner>, {attachTo: document.getElementById('App')});
 
             expect(banner.find(`.${styles.bannerDescription}`).length).toBe(1);
         });

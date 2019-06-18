@@ -14,7 +14,10 @@ import {
 import {addPagination, changePage, removePagination} from './NavigationPaginationActions';
 import {IPaginationState} from './NavigationPaginationReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginationOwnProps): INavigationPaginationStateProps => {
+const mapStateToProps = (
+    state: IReactVaporState,
+    ownProps: INavigationPaginationOwnProps
+): INavigationPaginationStateProps => {
     const item: IPaginationState = _.findWhere(state.paginationComposite, {id: ownProps.id});
 
     return {
@@ -24,7 +27,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationPaginatio
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: INavigationPaginationOwnProps,
+    ownProps: INavigationPaginationOwnProps
 ): INavigationPaginationDispatchProps => ({
     onRender: () => dispatch(addPagination(ownProps.id)),
     onDestroy: () => dispatch(removePagination(ownProps.id)),
@@ -34,5 +37,8 @@ const mapDispatchToProps = (
     },
 });
 
-export const NavigationPaginationConnected: React.ComponentClass<INavigationPaginationProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(NavigationPagination);
+export const NavigationPaginationConnected: React.ComponentClass<INavigationPaginationProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(NavigationPagination);

@@ -11,13 +11,10 @@ import {
 } from '../DatesSelection';
 
 describe('Date picker', () => {
-
     describe('<DatesSelection />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <DatesSelection />,
-                );
+                shallow(<DatesSelection />);
             }).not.toThrow();
         });
     });
@@ -27,10 +24,7 @@ describe('Date picker', () => {
         let datesSelectionInstance: DatesSelection;
 
         beforeEach(() => {
-            datesSelection = mount(
-                <DatesSelection />,
-                {attachTo: document.getElementById('App')},
-            );
+            datesSelection = mount(<DatesSelection />, {attachTo: document.getElementById('App')});
             datesSelectionInstance = datesSelection.instance() as DatesSelection;
         });
 
@@ -89,26 +83,40 @@ describe('Date picker', () => {
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
         });
 
-        it('should call onDateChange with the date and whether or not the picker is the upper limit when calling the ' +
-            'onChange prop on the picker', () => {
+        it(
+            'should call onDateChange with the date and whether or not the picker is the upper limit when calling the ' +
+                'onChange prop on the picker',
+            () => {
                 const expectedDate: Date = new Date();
                 const expectedIsUpperLimit: boolean = true;
                 const onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
 
-                datesSelection.find(DatePicker).first().props().onBlur(expectedDate, expectedIsUpperLimit);
+                datesSelection
+                    .find(DatePicker)
+                    .first()
+                    .props()
+                    .onBlur(expectedDate, expectedIsUpperLimit);
 
                 expect(onDateChangeSpy).toHaveBeenCalledWith(expectedDate, expectedIsUpperLimit);
-            });
+            }
+        );
 
-        it('should call onDateClick with and whether or not the picker is the upper limit when calling the onClick prop ' +
-            'on the picker', () => {
+        it(
+            'should call onDateClick with and whether or not the picker is the upper limit when calling the onClick prop ' +
+                'on the picker',
+            () => {
                 const expectedIsUpperLimit: boolean = true;
                 const onDateClickSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateClick');
 
-                datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
+                datesSelection
+                    .find(DatePicker)
+                    .first()
+                    .props()
+                    .onClick(expectedIsUpperLimit);
 
                 expect(onDateClickSpy).toHaveBeenCalledWith(expectedIsUpperLimit);
-            });
+            }
+        );
 
         it('should call onBlur prop if defined when calling onDateChange', () => {
             const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
@@ -210,12 +218,18 @@ describe('Date picker', () => {
             const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
 
             expect(() => {
-                datesSelection.find(DatePicker).props().onBlur(new Date(), false);
+                datesSelection
+                    .find(DatePicker)
+                    .props()
+                    .onBlur(new Date(), false);
             }).not.toThrow();
 
             datesSelection.setProps({onBlur: onBlurSpy}).update();
             (datesSelection.find('input').instance() as any).value = DateUtils.getDateWithTimeString(new Date());
-            datesSelection.find(DatePicker).props().onBlur(new Date(), false);
+            datesSelection
+                .find(DatePicker)
+                .props()
+                .onBlur(new Date(), false);
 
             expect(onBlurSpy).toHaveBeenCalledTimes(1);
         });

@@ -33,10 +33,8 @@ export class CornerRibbon extends React.Component<ICornerRibbonProps> {
             DEFAULT_CORNER_RIBBON_CLASSNAME,
             this.props.placementY,
             this.props.placementX,
-            this.props.extraClasses,
+            this.props.extraClasses
         );
-        return (
-            <div className={className}>{this.props.label}</div>
-        );
+        return <div className={className}>{this.props.label}</div>;
     }
 }

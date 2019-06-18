@@ -10,9 +10,7 @@ describe('Radio', () => {
     describe('<Radio />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <Radio id={anId} />,
-                );
+                shallow(<Radio id={anId} />);
             }).not.toThrow();
         });
     });
@@ -21,10 +19,7 @@ describe('Radio', () => {
         let radio: ReactWrapper<IInputProps, any>;
 
         beforeEach(() => {
-            radio = mount(
-                <Radio id={anId} />,
-                {attachTo: document.getElementById('App')},
-            );
+            radio = mount(<Radio id={anId} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -40,7 +35,10 @@ describe('Radio', () => {
             const name = 'salut';
             expect(radio.find('input').prop('name')).toBe(undefined);
 
-            radio.setProps({name}).mount().update();
+            radio
+                .setProps({name})
+                .mount()
+                .update();
             expect(radio.find('input').prop('name')).toBe(name);
         });
 
@@ -63,18 +61,30 @@ describe('Radio', () => {
         });
 
         it('should set disabled prop when specified', () => {
-            radio.setProps({disabled: false}).mount().update();
+            radio
+                .setProps({disabled: false})
+                .mount()
+                .update();
             expect(radio.find('input').prop('disabled')).toBe(false);
 
-            radio.setProps({disabled: true}).mount().update();
+            radio
+                .setProps({disabled: true})
+                .mount()
+                .update();
             expect(radio.find('input').prop('disabled')).toBe(true);
         });
 
         it('should set checked prop when specified', () => {
-            radio.setProps({checked: false}).mount().update();
+            radio
+                .setProps({checked: false})
+                .mount()
+                .update();
             expect(radio.find('input').prop('checked')).toBe(false);
 
-            radio.setProps({checked: true}).mount().update();
+            radio
+                .setProps({checked: true})
+                .mount()
+                .update();
             expect(radio.find('input').prop('checked')).toBe(true);
         });
 
@@ -83,7 +93,10 @@ describe('Radio', () => {
             const classes = [innerClass];
             expect(radio.find('div').hasClass(innerClass)).toBe(false);
 
-            radio.setProps({classes}).mount().update();
+            radio
+                .setProps({classes})
+                .mount()
+                .update();
             expect(radio.find('div').hasClass(innerClass)).toBe(true);
         });
 

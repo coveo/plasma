@@ -24,16 +24,22 @@ import {ITableById, ITableCompositeState, ITableData, ITableState} from './Table
 import {getTableChildComponentId} from './TableUtils';
 
 export const getTableCompositeState = (state: IReactVaporState, id: string): ITableCompositeState => {
-    const tableState: ITableState = state.tables[id] || {} as ITableState;
+    const tableState: ITableState = state.tables[id] || ({} as ITableState);
     const filterState: IFilterState = tableState && _.findWhere(state.filters, {id: tableState.filterId});
-    const paginationState: IPaginationState = tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
+    const paginationState: IPaginationState =
+        tableState && _.findWhere(state.paginationComposite, {id: tableState.paginationId});
     const perPageState: IPerPageState = tableState && _.findWhere(state.perPageComposite, {id: tableState.perPageId});
-    const tableHeaderCellState: ITableHeaderCellState = tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
-    const predicateStates: IDropdownSearchState[] = tableState && _.reject(
-        state.dropdownSearch,
-        (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id),
-    ) || [];
-    const datePickerState: IDatePickerState = tableState && _.findWhere(state.datePickers, {id: tableState.datePickerRangeId});
+    const tableHeaderCellState: ITableHeaderCellState =
+        tableState && state.tableHeaderCells[tableState.tableHeaderCellId];
+    const predicateStates: IDropdownSearchState[] =
+        (tableState &&
+            _.reject(
+                state.dropdownSearch,
+                (dropdownSearch: IDropdownSearchState) => !contains(dropdownSearch.id, id)
+            )) ||
+        [];
+    const datePickerState: IDatePickerState =
+        tableState && _.findWhere(state.datePickers, {id: tableState.datePickerRangeId});
 
     return {
         id: tableState.id,
@@ -50,11 +56,13 @@ export const getTableCompositeState = (state: IReactVaporState, id: string): ITa
         },
         predicates: predicateStates.reduce((currentPredicates, nextPredicate: IDropdownSearchState) => {
             // the attribute name is stored in the id of the dropdownSearch
-            const attributeName = nextPredicate.id.split(getTableChildComponentId(id, TableChildComponent.PREDICATE))[1];
+            const attributeName = nextPredicate.id.split(
+                getTableChildComponentId(id, TableChildComponent.PREDICATE)
+            )[1];
             const selectedOption = _.findWhere(nextPredicate.options, {selected: true});
             return {
                 ...currentPredicates,
-                [attributeName]: selectedOption && selectedOption.value || TABLE_PREDICATE_DEFAULT_VALUE,
+                [attributeName]: (selectedOption && selectedOption.value) || TABLE_PREDICATE_DEFAULT_VALUE,
             };
         }, {}),
         from: datePickerState && datePickerState.appliedLowerLimit,
@@ -68,16 +76,17 @@ const getSelectedIds = (data: ITableData, props: ITableOwnProps): string[] => da
 
 const getMultiSelect = (data: ITableData, props: ITableOwnProps): boolean => props.rowsMultiSelect;
 
-const getGetActionsMethod = (data: ITableData, props: ITableOwnProps): (rowData?: IData) => IActionOptions[] => props.getActions;
+const getGetActionsMethod = (data: ITableData, props: ITableOwnProps): ((rowData?: IData) => IActionOptions[]) =>
+    props.getActions;
 
 const getFinalActions = (
     byId: ITableById,
     selectedIds: string[],
     isMultiSelect: boolean,
-    getActions: (rowData?: IData) => IActionOptions[],
-): IActionOptions[] => getActions && selectedIds.length
-        ? getActions(byId[selectedIds[0]])
-            .filter((action) => !isMultiSelect || (isMultiSelect && !!action.grouped))
+    getActions: (rowData?: IData) => IActionOptions[]
+): IActionOptions[] =>
+    getActions && selectedIds.length
+        ? getActions(byId[selectedIds[0]]).filter((action) => !isMultiSelect || (isMultiSelect && !!action.grouped))
         : [];
 
 const actionsSelector = createSelector(
@@ -85,7 +94,7 @@ const actionsSelector = createSelector(
     getSelectedIds,
     getMultiSelect,
     getGetActionsMethod,
-    getFinalActions,
+    getFinalActions
 );
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
@@ -98,13 +107,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITa
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITableDispatchProps => ({
     onDidMount: () => {
-        dispatch(
-            addTable(
-                ownProps.id,
-                ownProps.initialTableData || DEFAULT_TABLE_DATA,
-                ownProps.predicates,
-            ),
-        );
+        dispatch(addTable(ownProps.id, ownProps.initialTableData || DEFAULT_TABLE_DATA, ownProps.predicates));
     },
     onUnmount: () => {
         dispatch(removeTable(ownProps.id));
@@ -117,7 +120,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
     onModifyData: (
         shouldResetPage: boolean,
         tableCompositeState: ITableCompositeState,
-        previousTableCompositeState: ITableCompositeState,
+        previousTableCompositeState: ITableCompositeState
     ) => {
         if (ownProps.manual) {
             dispatch(ownProps.manual(ownProps, shouldResetPage, tableCompositeState, previousTableCompositeState));
@@ -126,15 +129,11 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
         }
     },
     onRowClick: (actions: IActionOptions[] = [], numberOfSelectedIds: number) => {
-        actions = ownProps.rowsMultiSelect && numberOfSelectedIds >= 2
-            ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
-            : actions;
-        dispatch(
-            addActionsToActionBar(
-                getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR),
-                actions,
-            ),
-        );
+        actions =
+            ownProps.rowsMultiSelect && numberOfSelectedIds >= 2
+                ? _.filter(actions, (action: IActionOptions) => !!action.grouped)
+                : actions;
+        dispatch(addActionsToActionBar(getTableChildComponentId(ownProps.id, TableChildComponent.ACTION_BAR), actions));
     },
     onPredicateOptionClick: (predicateId: string, option: IDropdownOption) => {
         dispatch(selectOptionDropdownSearch(predicateId, option));
@@ -142,5 +141,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
     },
 });
 
-export const TableConnected: React.ComponentClass<ITableProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);
+export const TableConnected: React.ComponentClass<ITableProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Table);

@@ -5,8 +5,8 @@ import {SimpleChildFormExample} from './SimpleChildFormExample';
 export class ChildFormExamples extends React.Component<any, any> {
     render() {
         return (
-            <div className='mt2'>
-                <h1 className='text-blue mb1 bold'>Child Form Element</h1>
+            <div className="mt2">
+                <h1 className="text-blue mb1 bold">Child Form Element</h1>
                 <SimpleChildFormExample />
                 <ChildFormWithRadiosExamples />
             </div>
