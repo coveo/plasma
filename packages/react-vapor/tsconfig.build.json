@@ -10,6 +10,6 @@
         "src/utils/tests/TestUtils.tsx",
         "src/components/tables/tests/TableTestCommon.tsx",
         "karma.entry.ts",
-        "index.ts"
+        "Index.ts"
     ]
 }
