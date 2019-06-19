@@ -1,20 +1,18 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {FlatSelect, IFlatSelectDispatchProps, IFlatSelectOwnProps, IFlatSelectProps, IFlatSelectStateProps} from './FlatSelect';
-import {addFlatSelect, removeFlatSelect, selectFlatSelect} from './FlatSelectActions';
-import {IFlatSelectOptionProps} from './FlatSelectOption';
-import {IFlatSelectState} from './FlatSelectReducers';
+import { IReactVaporState } from '../../ReactVapor';
+import { IDispatch, ReduxUtils } from '../../utils/ReduxUtils';
+import { FlatSelect, IFlatSelectDispatchProps, IFlatSelectOwnProps, IFlatSelectProps, IFlatSelectStateProps } from './FlatSelect';
+import { addFlatSelect, removeFlatSelect, selectFlatSelect } from './FlatSelectActions';
+import { IFlatSelectOptionProps } from './FlatSelectOption';
+import { FlatSelectSelectors } from './FlatSelectSelectors'
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFlatSelectOwnProps): IFlatSelectStateProps => {
-    const flatSelect: IFlatSelectState = _.findWhere(state.flatSelect, {id: ownProps.id});
 
     return {
-        selectedOptionId: flatSelect && flatSelect.selectedOptionId,
+        selectedOptionId: FlatSelectSelectors.getSelectedOptionId(state, ownProps),
     };
-
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IFlatSelectOwnProps): IFlatSelectDispatchProps => ({
