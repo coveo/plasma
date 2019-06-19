@@ -1,7 +1,7 @@
-import {IItemBoxProps} from '../../components/itemBox/ItemBox';
-import {defaultMatchFilter} from '../FilterUtils';
+import {IItemBoxProps} from '../components/itemBox/ItemBox';
+import {defaultMatchFilter} from './FilterUtils';
 
-describe('Utils', () => {
+describe('FilterUtils', () => {
     describe('defaultMatchFilter', () => {
         const defaultItemBox: IItemBoxProps = {
             value: 'abc',
@@ -45,7 +45,9 @@ describe('Utils', () => {
             });
 
             it('should return true if the item displayValue contain a exact match with the filterValue', () => {
-                expect(defaultMatchFilter(itemBoxWithDisplayValue.displayValue, itemBoxWithDisplayValue)).toBe(true);
+                expect(
+                    defaultMatchFilter(itemBoxWithDisplayValue.displayValue as string, itemBoxWithDisplayValue)
+                ).toBe(true);
             });
 
             it('should return false if the item displayValue do not contain the filterValue', () => {

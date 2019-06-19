@@ -6,6 +6,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
+import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -105,7 +106,8 @@ export class SingleSelectConnected extends React.PureComponent<
 
     private getSelectedOptionElement(option: IItemBoxProps): JSX.Element {
         if (option) {
-            const displayValue = option.selectedDisplayValue || option.displayValue || option.value;
+            const displayValue =
+                option.selectedDisplayValue || getReactNodeTextContent(option.displayValue) || option.value;
             return (
                 <span
                     key={option.value}
