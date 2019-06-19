@@ -59,7 +59,7 @@ describe('Actions', () => {
                 <Provider store={store}>
                     <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             store.dispatch(addActionsToActionBar(id, actions));
             store.dispatch(filterItems(id, itemFilter));
@@ -83,7 +83,9 @@ describe('Actions', () => {
             const actionsProp = actionBar.props().actions;
 
             expect(actionsProp).toBeDefined();
-            expect(actionsProp.length).toBe(actions.filter((action) => action.enabled || action.hideDisabled === false).length);
+            expect(actionsProp.length).toBe(
+                actions.filter((action) => action.enabled || action.hideDisabled === false).length
+            );
             expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
         });
 
@@ -141,7 +143,7 @@ describe('Actions', () => {
                 <Provider store={store}>
                     <ActionBarConnected id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             actionBar = wrapper.find(ActionBar).first();
 
@@ -182,9 +184,13 @@ describe('Actions', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <ActionBarConnected id={id} itemFilterLabel={itemFilterLabel} onClearItemFilter={onClearItemFilterSpy} />
+                    <ActionBarConnected
+                        id={id}
+                        itemFilterLabel={itemFilterLabel}
+                        onClearItemFilter={onClearItemFilterSpy}
+                    />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             actionBar = wrapper.find(ActionBar).first();
 

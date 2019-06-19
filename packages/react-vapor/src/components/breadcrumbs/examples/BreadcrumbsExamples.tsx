@@ -6,7 +6,6 @@ import {Breadcrumb} from '../Breadcrumb';
 import {IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 export class BreadcrumbsExamples extends React.Component<any, any> {
-
     render() {
         const documentationLink: ILinkSvgProps = {
             url: 'https://www.google.ca',
@@ -54,35 +53,35 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
         const defaultLinkPath: string = 'https://www.google.ca/?q=pokemon/';
 
         return (
-            <div className='mt2'>
-                <h1 className='text-blue mb1 bold'>Breadcrumbs List</h1>
-                <div className='form-group'>
-                    <label className='form-control-label'>Default breadcrumb</label>
-                    <div className='form-control'>
+            <div className="mt2">
+                <h1 className="text-blue mb1 bold">Breadcrumbs List</h1>
+                <div className="form-group">
+                    <label className="form-control-label">Default breadcrumb</label>
+                    <div className="form-control">
                         <Breadcrumb title={defaultTitle} />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Breadcrumb with 1 link</label>
-                    <div className='form-control'>
+                <div className="form-group">
+                    <label className="form-control-label">Breadcrumb with 1 link</label>
+                    <div className="form-control">
                         <Breadcrumb title={defaultTitle} links={[link1]} />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Breadcrumb with 2 links</label>
-                    <div className='form-control'>
+                <div className="form-group">
+                    <label className="form-control-label">Breadcrumb with 2 links</label>
+                    <div className="form-control">
                         <Breadcrumb title={defaultTitle} links={[link1, link2]} />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Breadcrumb with 2 links and a defaultPath</label>
-                    <div className='form-control'>
+                <div className="form-group">
+                    <label className="form-control-label">Breadcrumb with 2 links and a defaultPath</label>
+                    <div className="form-control">
                         <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[link3, link4]} />
                     </div>
                 </div>
-                <div className='form-group'>
-                    <label className='form-control-label'>Breadcrumb with 2 links and onClick event</label>
-                    <div className='form-control'>
+                <div className="form-group">
+                    <label className="form-control-label">Breadcrumb with 2 links and onClick event</label>
+                    <div className="form-control">
                         <Breadcrumb title={defaultTitle} defaultLinkPath={defaultLinkPath} links={[link5, link6]} />
                     </div>
                 </div>

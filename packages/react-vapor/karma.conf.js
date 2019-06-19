@@ -1,5 +1,4 @@
 const webpackConfig = require('./webpack.config.test.js');
-const mainReporter = !!process.env.TRAVIS ? 'dots' : 'mocha';
 
 module.exports = (config) => {
     config.set({
@@ -21,18 +20,15 @@ module.exports = (config) => {
             noInfo: true,
         },
 
-        reporters: [mainReporter, 'coverage'],
+        reporters: ['nyan', 'coverage'],
 
-        mochaReporter: {
-            ignoreSkipped: true,
+        nyanReporter: {
+            renderOnRunCompleteOnly: !!process.env.TRAVIS,
         },
 
         coverageReporter: {
             dir: 'coverage',
-            reporters: [
-                {type: 'json', subdir: '.', file: 'coverage.json'},
-                {type: 'text-summary'},
-            ],
+            reporters: [{type: 'json', subdir: '.', file: 'coverage.json'}, {type: 'text-summary'}],
         },
 
         client: {

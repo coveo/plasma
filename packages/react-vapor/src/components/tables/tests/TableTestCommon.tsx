@@ -50,36 +50,39 @@ export const predictableData: IData = {
     avatar: 'whatever',
     userName: 'funkyUserName',
     password: 'lakjhdslfksh98323qasd',
-    lastLogin: moment().add(2, 'day').format('YYYY-MM-DD hh:mm:ss'),
+    lastLogin: moment()
+        .add(2, 'day')
+        .format('YYYY-MM-DD hh:mm:ss'),
     url: 'https://www.larrypage.com',
 };
 
-export const dataById = _.range(10).reduce((byId, index) => {
-    const email = internet.email();
-    const avatar = internet.avatar();
-    const userName = internet.userName();
-    const password = internet.password();
-    const lastLogin = moment(date.recent(30)).format('YYYY-MM-DD hh:mm:ss');
+export const dataById = _.range(10).reduce(
+    (byId, index) => {
+        const email = internet.email();
+        const avatar = internet.avatar();
+        const userName = internet.userName();
+        const password = internet.password();
+        const lastLogin = moment(date.recent(30)).format('YYYY-MM-DD hh:mm:ss');
 
-    return {
-        ...byId,
-        [userName]: {
-            id: userName,
-            email,
-            avatar,
-            userName,
-            password,
-            lastLogin,
-            url: index % 2 ? internet.url() : undefined,
-        },
-    };
-}, {[predictableData.userName]: {...predictableData}});
+        return {
+            ...byId,
+            [userName]: {
+                id: userName,
+                email,
+                avatar,
+                userName,
+                password,
+                lastLogin,
+                url: index % 2 ? internet.url() : undefined,
+            },
+        };
+    },
+    {[predictableData.userName]: {...predictableData}}
+);
 
 export const tablePropsMockWithData = {
     ...tablePropsMock,
-    collapsibleFormatter: (rowData: IData) => rowData.url
-        ? <p>{rowData.url}</p>
-        : undefined,
+    collapsibleFormatter: (rowData: IData) => (rowData.url ? <p>{rowData.url}</p> : undefined),
     tableCompositeState: {
         sortState: {},
         data: {
@@ -100,14 +103,38 @@ export const tablePossibleProps = [
     {...tablePropsMock, navigation: true, actionBar: true},
     {...tablePropsMock, navigation: true, actionBar: true, filter: true},
     {...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo'},
-    {...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => []},
-    {...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => []},
     {
-        ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+        ...tablePropsMock,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
+    },
+    {
+        ...tablePropsMock,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
+    },
+    {
+        ...tablePropsMock,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
         predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
     },
     {
-        ...tablePropsMock, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+        ...tablePropsMock,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
         datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'},
     },
     tablePropsMockWithData,
@@ -115,14 +142,38 @@ export const tablePossibleProps = [
     {...tablePropsMockWithData, navigation: true, actionBar: true},
     {...tablePropsMockWithData, navigation: true, actionBar: true, filter: true},
     {...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo'},
-    {...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => []},
-    {...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => []},
     {
-        ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+        ...tablePropsMockWithData,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
+    },
+    {
+        ...tablePropsMockWithData,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
+    },
+    {
+        ...tablePropsMockWithData,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
         predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
     },
     {
-        ...tablePropsMockWithData, navigation: true, actionBar: true, filter: true, lastUpdatedLabel: 'anyWouldDo', getActions: (): IActionOptions[] => [],
+        ...tablePropsMockWithData,
+        navigation: true,
+        actionBar: true,
+        filter: true,
+        lastUpdatedLabel: 'anyWouldDo',
+        getActions: (): IActionOptions[] => [],
         datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'},
     },
 ] as any;

@@ -25,8 +25,7 @@ export interface IFlippableStateProps {
     isFlipped?: boolean;
 }
 
-export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchProps,
-    IFlippableStateProps {}
+export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchProps, IFlippableStateProps {}
 
 const FlippablePropsToOmit = keys<IFlippableProps>();
 
@@ -68,11 +67,11 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
         const containerClassName = classNames(
             BrowserUtils.isIE() ? 'flippable-ie' : Flippable.CONTAINER_CLASSNAME,
             this.props.isFlipped ? 'show-on-top' : '',
-            this.props.className,
+            this.props.className
         );
         const flipperClassName = classNames(
             Flippable.FLIPPER_CLASSNAME,
-            this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT,
+            this.props.isFlipped ? Flippable.triggers.BACK : Flippable.triggers.FRONT
         );
 
         return (
@@ -81,13 +80,13 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
                     <div
                         className={Flippable.sides.FRONT}
                         onClick={this.handleClickOnFront}
-                        ref={(frontside: HTMLDivElement) => this.frontside = frontside}
+                        ref={(frontside: HTMLDivElement) => (this.frontside = frontside)}
                     >
                         {this.props.front}
                     </div>
                     <div
                         className={Flippable.sides.BACK}
-                        ref={(backside: HTMLDivElement) => this.backside = backside}
+                        ref={(backside: HTMLDivElement) => (this.backside = backside)}
                     >
                         {this.props.back}
                     </div>
@@ -100,7 +99,7 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
         if (this.props.onFlip && !this.props.isFlipped) {
             this.props.onFlip();
         }
-    }
+    };
 
     private handleOutsideClick = (e: MouseEvent) => {
         if (this.props.isFlipped) {
@@ -108,12 +107,16 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
             const backside: Element | Text = ReactDOM.findDOMNode(this.backside);
             const target: Node = e.target as Node;
 
-            if (!backside.contains(target) && !frontside.contains(target) && (!this.props.allowUnflip || this.props.allowUnflip(target))) {
+            if (
+                !backside.contains(target) &&
+                !frontside.contains(target) &&
+                (!this.props.allowUnflip || this.props.allowUnflip(target))
+            ) {
                 this.handleUnflip();
                 e.preventDefault();
             }
         }
-    }
+    };
 
     private handleUnflip() {
         if (this.props.onUnflip) {

@@ -1,14 +1,22 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {addTextArea, changeTextAreaValue, ITextAreaActionPayload, removeTextArea, setDisabledTextArea} from '../TextAreaActions';
+import {
+    addTextArea,
+    changeTextAreaValue,
+    ITextAreaActionPayload,
+    removeTextArea,
+    setDisabledTextArea,
+} from '../TextAreaActions';
 import {ITextAreaState, textAreaInitialState, textAreasInitialState, textAreasReducer} from '../TextAreaReducers';
 
 describe('Reducers', () => {
     let oldState: ITextAreaState[];
 
     beforeEach(() => {
-        oldState = [{
-            ...textAreaInitialState,
-        }];
+        oldState = [
+            {
+                ...textAreaInitialState,
+            },
+        ];
     });
 
     describe('TextAreaReducers', () => {
@@ -28,8 +36,10 @@ describe('Reducers', () => {
         });
 
         describe('addTextArea', () => {
-            const getNewTextArea = (state: ITextAreaState[], action: IReduxAction<ITextAreaActionPayload>): ITextAreaState[] =>
-                state.filter((textArea) => textArea.id === action.payload.id);
+            const getNewTextArea = (
+                state: ITextAreaState[],
+                action: IReduxAction<ITextAreaActionPayload>
+            ): ITextAreaState[] => state.filter((textArea) => textArea.id === action.payload.id);
 
             it('should return the old state with one more TextArea', () => {
                 const action = addTextArea('new-textArea');

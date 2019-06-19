@@ -3,7 +3,7 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
 import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
-import {ITableRowAddPayload, TableRowActions} from '../actions/TableRowActions';
+import {ITableRowAddPayload, TableHOCRowActions} from '../actions/TableHOCRowActions';
 import {ITableRowState, TableRowReducers} from '../reducers/TableRowReducers';
 
 describe('Table HOC', () => {
@@ -35,7 +35,7 @@ describe('Table HOC', () => {
                 {id: 'a', tableId: 'b', selected: true},
                 {id: 'ab', tableId: 'b', selected: true},
             ];
-            const action = TableRowActions.deselectAll('b');
+            const action = TableHOCRowActions.deselectAll('b');
 
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
@@ -43,11 +43,11 @@ describe('Table HOC', () => {
             expect(tableHeadersState).toEqual(newState);
         });
 
-        it('should return the old state with one more ITableRowState when the action is "TableRowActions.addTableRow"', () => {
+        it('should return the old state with one more ITableRowState when the action is "TableHOCRowActions.addTableRow"', () => {
             const expectedId = 'a';
             const expectedTableId = 'b';
             const expectedSelected = false;
-            const action = TableRowActions.add(expectedId, expectedTableId);
+            const action = TableHOCRowActions.add(expectedId, expectedTableId);
 
             const oldState: ITableRowState[] = [];
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
@@ -61,43 +61,46 @@ describe('Table HOC', () => {
             expect(headerState.selected).toBe(expectedSelected);
         });
 
-        it('should return the old state without the ITableRowState when the action is "TableRowActions.removeTableRow"', () => {
+        it('should return the old state without the ITableRowState when the action is "TableHOCRowActions.removeTableRow"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
-                }, {
+                },
+                {
                     id: 'some-table-header-3',
                     tableId: 'not-important',
                     selected: true,
                 },
             ];
-            const action = TableRowActions.remove(oldState[1].id);
+            const action = TableHOCRowActions.remove(oldState[1].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length - 1);
             expect(_.findWhere(tableHeadersState, {id: action.payload.id})).toBeUndefined();
         });
 
-        it('should set the selected on the table row when the action is "TableRowActions.selectRow"', () => {
+        it('should set the selected on the table row when the action is "TableHOCRowActions.selectRow"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
                 },
             ];
 
-            const action = TableRowActions.select(oldState[0].id, false);
+            const action = TableHOCRowActions.select(oldState[0].id, false);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -105,20 +108,21 @@ describe('Table HOC', () => {
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(false);
         });
 
-        it('should set opened on the table row when the action is "TableRowActions.toggleCollapsible"', () => {
+        it('should set opened on the table row when the action is "TableHOCRowActions.toggleCollapsible"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
                 },
             ];
 
-            const action = TableRowActions.toggleCollapsible(oldState[0].id, true);
+            const action = TableHOCRowActions.toggleCollapsible(oldState[0].id, true);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -126,20 +130,21 @@ describe('Table HOC', () => {
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(false);
         });
 
-        it('should toggle opened the row when the action is "TableRowActions.toggleCollapsible" and no opened payload is specified', () => {
+        it('should toggle opened the row when the action is "TableHOCRowActions.toggleCollapsible" and no opened payload is specified', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
                 },
             ];
 
-            const action = TableRowActions.toggleCollapsible(oldState[0].id);
+            const action = TableHOCRowActions.toggleCollapsible(oldState[0].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -147,14 +152,15 @@ describe('Table HOC', () => {
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(false);
         });
 
-        it('should collapse other rows of the same table row when the action is "TableRowActions.toggleCollapsible"', () => {
+        it('should collapse other rows of the same table row when the action is "TableHOCRowActions.toggleCollapsible"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
                     opened: true,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
@@ -162,7 +168,7 @@ describe('Table HOC', () => {
                 },
             ];
 
-            const action = TableRowActions.toggleCollapsible(oldState[1].id);
+            const action = TableHOCRowActions.toggleCollapsible(oldState[1].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -170,20 +176,21 @@ describe('Table HOC', () => {
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(true);
         });
 
-        it('should not deselect other rows of the same table row when the action is "TableRowActions.selectRow" and multi is true', () => {
+        it('should not deselect other rows of the same table row when the action is "TableHOCRowActions.selectRow" and multi is true', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'not-important',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'not-important',
                     selected: true,
                 },
             ];
 
-            const action = TableRowActions.select(oldState[0].id, true);
+            const action = TableHOCRowActions.select(oldState[0].id, true);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
@@ -191,14 +198,15 @@ describe('Table HOC', () => {
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(true);
         });
 
-        it('should not collapse other rows of the same table row when the action is "TableRowActions.toggleCollapsibel"', () => {
+        it('should not collapse other rows of the same table row when the action is "TableHOCRowActions.toggleCollapsibel"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
                     tableId: 'current-table',
                     selected: false,
                     opened: false,
-                }, {
+                },
+                {
                     id: 'some-table-header-2',
                     tableId: 'other-table',
                     selected: true,
@@ -206,41 +214,42 @@ describe('Table HOC', () => {
                 },
             ];
 
-            const action = TableRowActions.toggleCollapsible(oldState[0].id);
+            const action = TableHOCRowActions.toggleCollapsible(oldState[0].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(true);
         });
 
-        it('should not modify the selected for the other tables when the action is "TableRowActions.selectRow"', () => {
+        it('should not modify the selected for the other tables when the action is "TableHOCRowActions.selectRow"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     selected: false,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     selected: true,
                 },
             ];
 
-            const action = TableRowActions.select(oldState[0].id);
+            const action = TableHOCRowActions.select(oldState[0].id);
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(oldState[1].selected);
         });
 
         it('should not throw on toggleCollapsible if the table row does not exists', () => {
             const oldState: ITableRowState[] = [];
-            const action = TableRowActions.toggleCollapsible('To toggle or not to toggle');
+            const action = TableHOCRowActions.toggleCollapsible('To toggle or not to toggle');
 
             expect(() => TableRowReducers(oldState, action)).not.toThrow();
         });
 
         it('should not throw on select if the table row does not exists', () => {
             const oldState: ITableRowState[] = [];
-            const action = TableRowActions.select('To be or not to be');
+            const action = TableHOCRowActions.select('To be or not to be');
 
             expect(() => TableRowReducers(oldState, action)).not.toThrow();
         });
@@ -251,7 +260,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     selected: true,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     selected: true,
@@ -269,7 +279,8 @@ describe('Table HOC', () => {
                     id: 'some-table-header',
                     tableId: 'current-table',
                     selected: true,
-                }, {
+                },
+                {
                     id: 'other-table-header',
                     tableId: 'other-table',
                     selected: true,

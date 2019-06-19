@@ -6,7 +6,7 @@ describe('PartialStringMatch', () => {
     const testString = 'test-string';
 
     it('should not throw when there is no children', () => {
-        expect(() => shallow(<PartialStringMatch partialMatch='a' />)).not.toThrow();
+        expect(() => shallow(<PartialStringMatch partialMatch="a" />)).not.toThrow();
     });
 
     it('should render an empty string if the wholeString is a falsy value', () => {
@@ -20,11 +20,19 @@ describe('PartialStringMatch', () => {
     });
 
     it('should render the wholeString unchanged if partialMatch is not in the wholeString', () => {
-        expect(shallow(<PartialStringMatch wholeString={testString} partialMatch='i am not in whole string' />).find('span.bold').length).toBe(0);
+        expect(
+            shallow(<PartialStringMatch wholeString={testString} partialMatch="i am not in whole string" />).find(
+                'span.bold'
+            ).length
+        ).toBe(0);
     });
 
     it('should render the wholeString unchanged if partialMatch is in the wholeString but with different casing (if case sensitive)', () => {
-        expect(shallow(<PartialStringMatch wholeString={testString} partialMatch={testString.toUpperCase()} />).find('span.bold').length).toBe(0);
+        expect(
+            shallow(<PartialStringMatch wholeString={testString} partialMatch={testString.toUpperCase()} />).find(
+                'span.bold'
+            ).length
+        ).toBe(0);
     });
 
     it('should render a span with the partialString match in bold if contained in the wholeString', () => {
@@ -45,7 +53,9 @@ describe('PartialStringMatch', () => {
 
     it('should render a span with the partialString in bold regardless of casing, when caseInsensitive is passed as prop', () => {
         const partialMatch = testString.substr(3, 5);
-        const component = shallow(<PartialStringMatch wholeString={testString} partialMatch={partialMatch.toUpperCase()} caseInsensitive />);
+        const component = shallow(
+            <PartialStringMatch wholeString={testString} partialMatch={partialMatch.toUpperCase()} caseInsensitive />
+        );
 
         expect(component.find('span.bold').length).toBe(1);
     });
@@ -60,13 +70,14 @@ describe('PartialStringMatch', () => {
 
     it('should correctly wrap all matches in a string with a span.bold when there is multiple children', () => {
         const partialMatch = 'match';
-        const component = shallow((
+        const component = shallow(
             <PartialStringMatch partialMatch={partialMatch}>
-                Wow, is this really working? Because the <span className='some-wrapper'>match</span> can already be in spans
+                Wow, is this really working? Because the <span className="some-wrapper">match</span> can already be in
+                spans
                 <br />
                 <div>Or they can be in a div, like this match</div>
             </PartialStringMatch>
-        ));
+        );
         expect(component.find('span.bold').length).toBe(2);
     });
 });

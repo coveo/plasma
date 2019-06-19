@@ -11,20 +11,17 @@ const Flippable = () => {
             <div className="flippable" style={{width: 200}} onClick={() => setShowBack1(!showBack1)}>
                 <div className={`flipper ${showBack1 ? 'show-back' : 'show-front'}`}>
                     <div className="flipper-front bg-white p2">
-                        Front side. <br/>
-                        Flippable takes the height of the front side content by default no matter how big is the back side.
+                        Front side. <br />
+                        Flippable takes the height of the front side content by default no matter how big is the back
+                        side.
                     </div>
-                    <div className="flipper-back bg-light-grey p2">
-                        Some content on the back.
-                    </div>
+                    <div className="flipper-back bg-light-grey p2">Some content on the back.</div>
                 </div>
             </div>
 
             <div className="flippable mt1" style={{width: 200}} onClick={() => setShowBack2(!showBack2)}>
                 <div className={`flipper ${showBack2 ? 'show-back' : 'show-front'}`}>
-                    <div className="flipper-front bg-white p2">
-                        Front side.
-                    </div>
+                    <div className="flipper-front bg-white p2">Front side.</div>
                     <div className="flipper-back bg-light-grey p2" style={{width: 500, height: 130}}>
                         <div className="logo-card ribbon-container disabled">
                             <div className="logo-card-logo">

@@ -9,7 +9,10 @@ export interface ISelectState {
 export const selectInitialState: ISelectState = {id: undefined};
 export const selectCompositeInitialState: ISelectState[] = [];
 
-export const selectReducer = (state: ISelectState = selectInitialState, action: IReduxAction<ISelectPayload>): ISelectState => {
+export const selectReducer = (
+    state: ISelectState = selectInitialState,
+    action: IReduxAction<ISelectPayload>
+): ISelectState => {
     if (state.id !== action.payload.id && action.type !== SelectActions.add) {
         return state;
     }
@@ -24,14 +27,11 @@ export const selectReducer = (state: ISelectState = selectInitialState, action: 
 
 export const selectCompositeReducer = (
     state: ISelectState[] = selectCompositeInitialState,
-    action: IReduxAction<ISelectPayload>,
+    action: IReduxAction<ISelectPayload>
 ): ISelectState[] => {
     switch (action.type) {
         case SelectActions.add:
-            return [
-                ...state,
-                selectReducer(undefined, action),
-            ];
+            return [...state, selectReducer(undefined, action)];
         case SelectActions.remove:
             return _.reject(state, (listBox: ISelectState) => action.payload.id === listBox.id);
         default:

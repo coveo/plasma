@@ -25,21 +25,28 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarOwnProps):
 
     return {
         withReduxState: true,
-        actions: actionBar && actionBar.actions ? _.filter(actionBar.actions, (action: IActionOptions) => action.enabled || action.hideDisabled === false) : [],
+        actions:
+            actionBar && actionBar.actions
+                ? _.filter(
+                      actionBar.actions,
+                      (action: IActionOptions) => action.enabled || action.hideDisabled === false
+                  )
+                : [],
         isLoading: actionBar && actionBar.isLoading,
-        prompt: prompt && prompt.options ?
-            <div className='prompt'>
-                <InlinePromptConnected
-                    id={prompt.id}
-                    options={prompt.options}
-                />
-            </div> :
-            null,
+        prompt:
+            prompt && prompt.options ? (
+                <div className="prompt">
+                    <InlinePromptConnected id={prompt.id} options={prompt.options} />
+                </div>
+            ) : null,
         itemFilter: itemFilter ? itemFilter.item : '',
     };
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload>) => void, ownProps: IActionBarOwnProps): IActionBarDispatchProps => ({
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+    ownProps: IActionBarOwnProps
+): IActionBarDispatchProps => ({
     onRender: () => {
         dispatch(addActionBar(ownProps.id));
         if (ownProps.itemFilterLabel) {
@@ -58,5 +65,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     },
 });
 
-export const ActionBarConnected: React.ComponentClass<IActionBarProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ActionBar);
+export const ActionBarConnected: React.ComponentClass<IActionBarProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ActionBar);

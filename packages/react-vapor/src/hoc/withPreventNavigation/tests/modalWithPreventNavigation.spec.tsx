@@ -24,7 +24,12 @@ describe('Modal with Prevent Navigation', () => {
 
         render() {
             return (
-                <ModalCompositeConnected{...this.props} id={SomeModal.ID} title='Modal composite' modalBodyChildren='Body' />
+                <ModalCompositeConnected
+                    {...this.props}
+                    id={SomeModal.ID}
+                    title="Modal composite"
+                    modalBodyChildren="Body"
+                />
             );
         }
     }
@@ -70,7 +75,11 @@ describe('Modal with Prevent Navigation', () => {
         mountComponentWithProps({}, false);
 
         // First because the prevent navigate modal is added after in the DOM
-        component.find(ReactModal).first().props().onRequestClose(fakeEvent);
+        component
+            .find(ReactModal)
+            .first()
+            .props()
+            .onRequestClose(fakeEvent);
         expect(component.find('ModalWithPreventNavigation').state().showPrevent).toBe(false);
     });
 
@@ -78,7 +87,11 @@ describe('Modal with Prevent Navigation', () => {
         mountComponentWithProps({}, true);
 
         // First because the prevent navigate modal is added after in the DOM
-        component.find(ReactModal).first().props().onRequestClose(fakeEvent);
+        component
+            .find(ReactModal)
+            .first()
+            .props()
+            .onRequestClose(fakeEvent);
         expect(component.find('ModalWithPreventNavigation').state().showPrevent).toBe(true);
     });
 

@@ -10,25 +10,16 @@ import {DefaultGroupIds, DropActions} from '../redux/DropActions';
 
 describe('Drop', () => {
     describe('<Drop />', () => {
-
         const defaultButton: React.ReactNode = <div className={'onclick'}></div>;
 
         it('should mount without errors', () => {
             expect(() => {
-                shallowWithState(
-                    <Drop
-                        id={'test'}
-                        renderOpenButton={() => defaultButton}
-                    />, {}).dive();
+                shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {}).dive();
             }).not.toThrow();
         });
 
         it('should unmount without errors', () => {
-            const wrapper = shallowWithState(
-                <Drop
-                    id={'test'}
-                    renderOpenButton={() => defaultButton}
-                />, {}).dive();
+            const wrapper = shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {}).dive();
             expect(() => {
                 wrapper.unmount();
             }).not.toThrow();
@@ -36,17 +27,12 @@ describe('Drop', () => {
 
         it('should call renderOpenButton on mount', () => {
             const renderOpenButtonSpy = jasmine.createSpy('renderOpenButton').and.returnValue(<div>DIV</div>);
-            shallowWithState(
-                <Drop
-                    id={'test'}
-                    renderOpenButton={renderOpenButtonSpy}
-                />, {}).dive();
+            shallowWithState(<Drop id={'test'} renderOpenButton={renderOpenButtonSpy} />, {}).dive();
 
             expect(renderOpenButtonSpy).toHaveBeenCalledTimes(1);
         });
 
         describe('once mounted', () => {
-
             const id = 'DropId';
 
             let wrapper: ReactWrapper<IDropProps>;
@@ -68,20 +54,34 @@ describe('Drop', () => {
                 RTestUtils.removeHTMLElementWithId();
             });
 
-            const mountDropWithStore = (props: Partial<IDropProps>, store: mockStore<IReactVaporState>, child: React.ReactNode = null) => {
-
+            const mountDropWithStore = (
+                props: Partial<IDropProps>,
+                store: mockStore<IReactVaporState>,
+                child: React.ReactNode = null
+            ) => {
                 wrapper = mountWithStore(
                     <Drop
                         id={id}
-                        renderOpenButton={(onClick: () => void) => <div id={'Button'} className={'button'} onClick={onClick}></div>}
+                        renderOpenButton={(onClick: () => void) => (
+                            <div id={'Button'} className={'button'} onClick={onClick}></div>
+                        )}
                         {...props}
                     >
                         {child}
                     </Drop>,
-                    store,
+                    store
                 );
                 return wrapper;
             };
+
+            it('should toggle false on unmount', () => {
+                const store = RTestUtils.buildMockStore(defaultStore(true));
+                wrapper = mountDropWithStore({}, store);
+
+                wrapper.unmount();
+
+                expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(true);
+            });
 
             it('should render a <DropPod>', () => {
                 wrapper = mountDropWithStore({}, RTestUtils.buildMockStore());
@@ -109,26 +109,23 @@ describe('Drop', () => {
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(true);
             });
 
-            it('should not dispatch an action to toggle drop isOpen if the element target is in the body but not inside the button if closeOnClickOutside is false',
-                () => {
-                    const store = RTestUtils.buildMockStore(defaultStore(false));
-                    mountDropWithStore({
+            it('should not dispatch an action to toggle drop isOpen if the element target is in the body but not inside the button if closeOnClickOutside is false', () => {
+                const store = RTestUtils.buildMockStore(defaultStore(false));
+                mountDropWithStore(
+                    {
                         closeOnClickOutside: false,
                     },
-                        store,
-                    );
+                    store
+                );
 
-                    RTestUtils.clickOnElement();
+                RTestUtils.clickOnElement();
 
-                    expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
-                });
+                expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
+            });
 
             it('should dispatch an action to toggle drop isOpen if the element target is in the body and inside the drop element', () => {
                 const store = RTestUtils.buildMockStore(defaultStore(true));
-                mountDropWithStore({},
-                    store,
-                    <div id={'Drop'} className={'drop'}></div>,
-                );
+                mountDropWithStore({}, store, <div id={'Drop'} className={'drop'}></div>);
 
                 store.dispatch(DropActions.toggle(id, DefaultGroupIds.default));
 
@@ -139,10 +136,7 @@ describe('Drop', () => {
 
             it('should not dispatch an action to toggle drop isOpen if drop is close', () => {
                 const store = RTestUtils.buildMockStore(defaultStore(false));
-                mountDropWithStore({},
-                    store,
-                    <div id={'Drop'} className={'drop'}></div>,
-                );
+                mountDropWithStore({}, store, <div id={'Drop'} className={'drop'}></div>);
 
                 store.dispatch(DropActions.toggle(id, DefaultGroupIds.default));
 
@@ -151,48 +145,45 @@ describe('Drop', () => {
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
             });
 
-            it('should not dispatch an action to toggle drop isOpen if the element target is in the body and inside the drop element if closeOnClickDrop is false',
-                () => {
-                    const store = RTestUtils.buildMockStore(defaultStore(true));
-                    mountDropWithStore({
+            it('should not dispatch an action to toggle drop isOpen if the element target is in the body and inside the drop element if closeOnClickDrop is false', () => {
+                const store = RTestUtils.buildMockStore(defaultStore(true));
+                mountDropWithStore(
+                    {
                         closeOnClickDrop: false,
                     },
-                        store,
-                        <div id={'Drop'} className={'drop'}></div>,
-                    );
+                    store,
+                    <div id={'Drop'} className={'drop'}></div>
+                );
 
-                    RTestUtils.clickOnElement(document.getElementById('Drop'));
+                RTestUtils.clickOnElement(document.getElementById('Drop'));
 
-                    expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
-                });
+                expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, false))).toBe(false);
+            });
 
             it('should dispatch a toggle event when we call onClick sent with renderOpenButton', () => {
                 const store = RTestUtils.buildMockStore(defaultStore(false));
-                mountDropWithStore({
-                    renderOpenButton: (onClick: () => void) => {
-                        onClick();
-                        return <div></div>;
+                mountDropWithStore(
+                    {
+                        renderOpenButton: (onClick: () => void) => {
+                            onClick();
+                            return <div></div>;
+                        },
                     },
-                },
                     store,
-                    <div id={'Drop'} className={'drop'}></div>,
+                    <div id={'Drop'} className={'drop'}></div>
                 );
 
                 expect(store.isActionDispatched(DropActions.toggle(id, DefaultGroupIds.default, true))).toBe(true);
             });
 
             describe('events', () => {
-
                 it('should add the event on click if the drop is opening', () => {
                     const spy = spyOn(document, 'addEventListener');
                     let shallowWrapper: ShallowWrapper;
 
                     shallowWrapper = shallowWithState(
-                        <Drop
-                            id={'test'}
-                            renderOpenButton={() => defaultButton}
-                        />,
-                        {},
+                        <Drop id={'test'} renderOpenButton={() => defaultButton} />,
+                        {}
                     ).dive();
 
                     expect(spy).toHaveBeenCalledTimes(0);
@@ -207,11 +198,8 @@ describe('Drop', () => {
                     let shallowWrapper: ShallowWrapper;
 
                     shallowWrapper = shallowWithState(
-                        <Drop
-                            id={'test'}
-                            renderOpenButton={() => defaultButton}
-                        />,
-                        {},
+                        <Drop id={'test'} renderOpenButton={() => defaultButton} />,
+                        {}
                     ).dive();
 
                     shallowWrapper.setProps({isOpen: true});

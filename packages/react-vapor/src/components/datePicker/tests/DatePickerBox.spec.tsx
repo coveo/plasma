@@ -21,9 +21,7 @@ describe('Date picker', () => {
     describe('<DatePickerBox />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />,
-                );
+                shallow(<DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />);
             }).not.toThrow();
         });
     });
@@ -32,10 +30,9 @@ describe('Date picker', () => {
         let datePickerBox: ReactWrapper<IDatePickerBoxProps, any>;
 
         beforeEach(() => {
-            datePickerBox = mount(
-                <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />,
-                {attachTo: document.getElementById('App')},
-            );
+            datePickerBox = mount(<DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {
@@ -58,7 +55,9 @@ describe('Date picker', () => {
                 datesSelectionBoxes: [...DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes, {title: 'other box'}],
             });
 
-            expect(datePickerBox.find('DatesSelection').length).toBe(DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length);
+            expect(datePickerBox.find('DatesSelection').length).toBe(
+                DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length
+            );
 
             datePickerBox.setProps(moreBoxesProps);
 
@@ -70,7 +69,9 @@ describe('Date picker', () => {
                 datesSelectionBoxes: [...DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes, {title: 'other box'}],
             });
 
-            expect(datePickerBox.find('OptionPicker').length).toBe(DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length);
+            expect(datePickerBox.find('OptionPicker').length).toBe(
+                DATE_PICKER_BOX_BASIC_PROPS.datesSelectionBoxes.length
+            );
 
             datePickerBox.setProps(moreBoxesProps);
 
@@ -104,12 +105,24 @@ describe('Date picker', () => {
                 const clearLabel: string = 'CLEAR_LABEL';
                 const newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), {clearLabel});
 
-                expect(getClearButton().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
+                expect(
+                    getClearButton()
+                        .first()
+                        .text()
+                ).toContain(DEFAULT_CLEAR_DATE_LABEL);
 
                 datePickerBox.setProps(newProps);
 
-                expect(getClearButton().first().text()).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
-                expect(getClearButton().first().text()).toContain(clearLabel);
+                expect(
+                    getClearButton()
+                        .first()
+                        .text()
+                ).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
+                expect(
+                    getClearButton()
+                        .first()
+                        .text()
+                ).toContain(clearLabel);
             });
 
             it('should call onClear prop when clicking on the clear button', () => {
@@ -117,7 +130,9 @@ describe('Date picker', () => {
                 const onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), {onClear: onClearSpy});
 
                 datePickerBox.setProps(onClearProps);
-                getClearButton().first().simulate('click');
+                getClearButton()
+                    .first()
+                    .simulate('click');
 
                 expect(onClearSpy).toHaveBeenCalled();
             });
@@ -125,7 +140,9 @@ describe('Date picker', () => {
 
         it('should display anything sent as the footer prop', () => {
             const footerClass: string = 'the-footer-added';
-            const propsWithFooter: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {footer: <div className={footerClass}></div>});
+            const propsWithFooter: IDatePickerBoxProps = _.extend({}, DATE_PICKER_BOX_BASIC_PROPS, {
+                footer: <div className={footerClass}></div>,
+            });
 
             expect(datePickerBox.find(`.${footerClass}`).length).toBe(0);
 
@@ -154,7 +171,7 @@ describe('Date picker', () => {
                 <Provider store={TestUtils.buildStore()}>
                     <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} withReduxState />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             datePickerBox = wrapper.find(DatePickerBox).first();
         });

@@ -8,7 +8,7 @@ const getDatePicker = (state: IReactVaporState, props: {id: string}): IDatePicke
             return datePicker;
         }
     }).filter(Boolean);
-    return datePickers && datePickers[0] || null;
+    return (datePickers && datePickers[0]) || null;
 };
 
 const getDatePickerLimits = (state: IReactVaporState, props: {id: string}): [Date, Date?] => {

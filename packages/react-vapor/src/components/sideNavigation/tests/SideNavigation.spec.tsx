@@ -6,10 +6,7 @@ describe('<SideNavigation />', () => {
     let wrapper: ReactWrapper<ISideNavProps, any>;
 
     beforeEach(() => {
-        wrapper = mount(
-            <SideNavigation />,
-            {attachTo: document.getElementById('App')},
-        );
+        wrapper = mount(<SideNavigation />, {attachTo: document.getElementById('App')});
     });
 
     afterEach(() => {
@@ -18,16 +15,22 @@ describe('<SideNavigation />', () => {
 
     it('should render without errors', () => {
         expect(() => {
-            shallow(
-                <SideNavigation />,
-            );
+            shallow(<SideNavigation />);
         }).not.toThrow();
     });
 
     it('should render a <SideNavigation /> with classes prop', () => {
         const className = 'foo';
-        wrapper.setProps({className}).mount().update();
-        expect(wrapper.find('nav').first().hasClass(className)).toBe(true);
+        wrapper
+            .setProps({className})
+            .mount()
+            .update();
+        expect(
+            wrapper
+                .find('nav')
+                .first()
+                .hasClass(className)
+        ).toBe(true);
     });
 
     it('should not have class navigation-opened if opened prop is true and withReduxState prop is false.', () => {

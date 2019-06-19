@@ -9,7 +9,17 @@ const isTravis = process.env.TRAVIS;
 const config = {
     entry: {
         'react-vapor': ['./Index.ts'],
-        'react-vapor.dependencies': ['jquery', 'underscore', 'react', 'react-dom', 'react-redux', 'redux', 'codemirror', 'd3'],
+        'react-vapor.dependencies': [
+            'jquery',
+            'underscore',
+            'underscore.string',
+            'react',
+            'react-dom',
+            'react-redux',
+            'redux',
+            'codemirror',
+            'd3',
+        ],
     },
     mode: 'production',
     output: {
@@ -30,7 +40,7 @@ const config = {
                 use: {
                     loader: 'tslint-loader',
                     options: {
-                        configFile: './node_modules/tsjs/tslint.json',
+                        configFile: '../../tslint.json',
                         tsConfigFile: './tsconfig.build.json',
                         emitErrors: true,
                         failOnHint: isTravis,
@@ -42,9 +52,7 @@ const config = {
                  *  Transform let and const to var in js files below to make them ES5 compatible
                  *  Target only problematic files to prevent compilation from hanging
                  */
-                include: [
-                    path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
-                ],
+                include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
                 loader: 'awesome-typescript-loader',
             },
             {
@@ -58,11 +66,14 @@ const config = {
             {
                 test: /\.css$/,
                 exclude: path.join(__dirname, 'src/components'),
-                use: [{
-                    loader: 'style-loader',
-                }, {
-                    loader: 'css-loader',
-                }],
+                use: [
+                    {
+                        loader: 'style-loader',
+                    },
+                    {
+                        loader: 'css-loader',
+                    },
+                ],
             },
             {
                 test: /\.scss$/,
@@ -113,6 +124,12 @@ const config = {
         'react-redux': {root: 'ReactRedux', commonjs2: 'react-redux', commonjs: 'react-redux', amd: 'react-redux'},
         redux: {root: 'Redux', commonjs2: 'redux', commonjs: 'redux', amd: 'redux'},
         underscore: {root: '_', commonjs2: 'underscore', commonjs: 'underscore', amd: 'underscore'},
+        'underscore.string': {
+            root: 's',
+            commonjs2: 'underscore.string',
+            commonjs: 'underscore.string',
+            amd: 'underscore.string',
+        },
     },
 };
 

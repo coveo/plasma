@@ -30,16 +30,17 @@ export const defaultTitle: ITitleProps = {
     documentationLink,
 };
 
-export const actions: IContentProps[] = [{
-    content: Button,
-    componentProps: {name: 'Add'},
-    classes: ['btn-container'],
-},
-{
-    content: Button,
-    componentProps: {name: 'Add'},
-    classes: ['btn-container'],
-},
+export const actions: IContentProps[] = [
+    {
+        content: Button,
+        componentProps: {name: 'Add'},
+        classes: ['btn-container'],
+    },
+    {
+        content: Button,
+        componentProps: {name: 'Add'},
+        classes: ['btn-container'],
+    },
 ];
 
 export const defaultBreadcrumb: IBreadcrumbProps = {
@@ -49,7 +50,8 @@ export const defaultBreadcrumb: IBreadcrumbProps = {
 
 export const defaultBreadcrumbLongTitle: IBreadcrumbProps = {
     title: {
-        text: 'Pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika ',
+        text:
+            'Pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika pika ',
         prefix: 'Catch this pokemon:',
         documentationLink,
     },

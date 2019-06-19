@@ -10,26 +10,27 @@ export interface IBreadcrumbProps extends React.ClassAttributes<Breadcrumb> {
 }
 
 export class Breadcrumb extends React.Component<IBreadcrumbProps, {}> {
-
     static defaultProps: Partial<IBreadcrumbProps> = {
         links: [],
         defaultLinkPath: '',
     };
 
     private getLinks(): JSX.Element[] {
-        return _.map(this.props.links, (link: IBreadcrumbLinkProps) =>
-            <BreadcrumbLink key={link.name} {..._.extend(link, {link: `${this.props.defaultLinkPath}${link.link}`})} />);
+        return _.map(this.props.links, (link: IBreadcrumbLinkProps) => (
+            <BreadcrumbLink key={link.name} {..._.extend(link, {link: `${this.props.defaultLinkPath}${link.link}`})} />
+        ));
     }
 
     render() {
         return (
             <nav>
-                <ul className='flex'>
+                <ul className="flex">
                     {this.getLinks()}
-                    <li className='breadcrumb-title truncate'>
+                    <li className="breadcrumb-title truncate">
                         <Title {...this.props.title} />
                     </li>
                 </ul>
-            </nav>);
+            </nav>
+        );
     }
 }

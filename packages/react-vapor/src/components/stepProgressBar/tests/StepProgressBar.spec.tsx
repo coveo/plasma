@@ -26,7 +26,7 @@ describe('StepProgressBar', () => {
     });
 
     it('should render without error with mandatory props and className as string', () => {
-        expect(() => shallow(<StepProgressBar {...testProps} className='some classes' />)).not.toThrow();
+        expect(() => shallow(<StepProgressBar {...testProps} className="some classes" />)).not.toThrow();
     });
 
     describe('StepProgressBar Content', () => {
@@ -37,13 +37,21 @@ describe('StepProgressBar', () => {
         });
 
         it('should render the current step after the last done step', () => {
-            expect(stepProgressBar.find(`${stepProgressBarDoneSelector} + ${stepProgressBarDoingSelector}`).length).toBe(1);
+            expect(
+                stepProgressBar.find(`${stepProgressBarDoneSelector} + ${stepProgressBarDoingSelector}`).length
+            ).toBe(1);
         });
 
         it('should render with steps to-do above the current step', () => {
-            expect(stepProgressBar.find(`${stepProgressBarDoingSelector} + ${stepProgressBarToDoSelector}`).length).toBe(1);
-            const currentStepAndDoneStepsCombined = stepProgressBar.find(stepProgressBarDoneSelector).length + stepProgressBar.find(stepProgressBarDoingSelector).length;
-            expect(stepProgressBar.find(stepProgressBarToDoSelector).length).toBe(testProps.numberOfSteps - currentStepAndDoneStepsCombined);
+            expect(
+                stepProgressBar.find(`${stepProgressBarDoingSelector} + ${stepProgressBarToDoSelector}`).length
+            ).toBe(1);
+            const currentStepAndDoneStepsCombined =
+                stepProgressBar.find(stepProgressBarDoneSelector).length +
+                stepProgressBar.find(stepProgressBarDoingSelector).length;
+            expect(stepProgressBar.find(stepProgressBarToDoSelector).length).toBe(
+                testProps.numberOfSteps - currentStepAndDoneStepsCombined
+            );
         });
 
         it('should have as many div.progress-bar as there are number of steps', () => {
@@ -55,7 +63,9 @@ describe('StepProgressBar', () => {
             const stepProgressBarWithClasses = shallow(<StepProgressBar {...testProps} className={testClasses} />);
 
             testClasses.forEach((testClass: string) => {
-                expect(stepProgressBarWithClasses.find(stepProgressBarContainerSelector).hasClass(testClass)).toBe(true);
+                expect(stepProgressBarWithClasses.find(stepProgressBarContainerSelector).hasClass(testClass)).toBe(
+                    true
+                );
             });
         });
 
@@ -64,7 +74,9 @@ describe('StepProgressBar', () => {
             const stepProgressBarWithClasses = shallow(<StepProgressBar {...testProps} className={testClasses} />);
 
             testClasses.split(' ').forEach((testClass: string) => {
-                expect(stepProgressBarWithClasses.find(stepProgressBarContainerSelector).hasClass(testClass)).toBe(true);
+                expect(stepProgressBarWithClasses.find(stepProgressBarContainerSelector).hasClass(testClass)).toBe(
+                    true
+                );
             });
         });
     });

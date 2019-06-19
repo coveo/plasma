@@ -6,7 +6,6 @@ import {BrowserUtils} from '../../../utils/BrowserUtils';
 import {Flippable, IFlippableProps} from '../Flippable';
 
 describe('Flippable', () => {
-
     it('should render without errors', () => {
         expect(() => {
             shallow(<Flippable />);
@@ -17,10 +16,7 @@ describe('Flippable', () => {
         let flippable: ReactWrapper<IFlippableProps>;
 
         beforeEach(() => {
-            flippable = mount(
-                <Flippable />,
-                {attachTo: document.getElementById('App')},
-            );
+            flippable = mount(<Flippable />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
@@ -79,7 +75,7 @@ describe('Flippable', () => {
 
         it('should render the front side content on the front', () => {
             flippable.setProps({
-                front: <div id='MyFrontContent'></div>,
+                front: <div id="MyFrontContent"></div>,
             });
 
             const renderedFrontSide = flippable.find(`.${Flippable.sides.FRONT}`);
@@ -90,7 +86,7 @@ describe('Flippable', () => {
 
         it('should render the back side content on the back', () => {
             flippable.setProps({
-                back: <div id='MyBackContent'></div>,
+                back: <div id="MyBackContent"></div>,
             });
 
             const renderedBackSide = flippable.find(`.${Flippable.sides.BACK}`);
@@ -142,8 +138,10 @@ describe('Flippable', () => {
             expect(flippable.find(`.${Flippable.FLIPPER_CLASSNAME}`).hasClass(Flippable.triggers.FRONT)).toBe(true);
         });
 
-        it('should call onUnflip prop if any when clicking outside the back side of the flippable ' +
-            'only when it is flipped', () => {
+        it(
+            'should call onUnflip prop if any when clicking outside the back side of the flippable ' +
+                'only when it is flipped',
+            () => {
                 const onUnflipSpy = jasmine.createSpy('onUnflip');
 
                 flippable.setProps({
@@ -162,7 +160,8 @@ describe('Flippable', () => {
 
                 document.getElementById('App').click();
                 expect(onUnflipSpy).toHaveBeenCalledTimes(1);
-            });
+            }
+        );
 
         it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {
             const onUnflipSpy = jasmine.createSpy('onUnflip');

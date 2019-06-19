@@ -11,7 +11,6 @@ import {FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
 import {FacetMoreToggleConnected} from '../FacetMoreToggleConnected';
 
 describe('Facets', () => {
-
     describe('<FacetMoreToggleConnected />', () => {
         const facet: string = 'facet title';
         let wrapper: ReactWrapper<any, any>;
@@ -23,11 +22,9 @@ describe('Facets', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <FacetMoreToggleConnected
-                        facet={facet}
-                    />
+                    <FacetMoreToggleConnected facet={facet} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             store.dispatch(addFacet(facet));
             wrapper.update();
@@ -67,7 +64,12 @@ describe('Facets', () => {
             store.dispatch(toggleMoreFacetRows(facet));
             wrapper.update();
 
-            expect(wrapper.find(FacetMoreToggle).find('li').hasClass('hidden')).toBe(true);
+            expect(
+                wrapper
+                    .find(FacetMoreToggle)
+                    .find('li')
+                    .hasClass('hidden')
+            ).toBe(true);
         });
     });
 });

@@ -28,7 +28,6 @@ export interface IListBoxDispatchProps {
 export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
 
 export class ListBox extends React.Component<IListBoxProps, {}> {
-
     static defaultProps: Partial<IListBoxProps> = {
         noResultItem: {
             value: 'No Items',
@@ -48,8 +47,10 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     protected getItems(): React.ReactNode {
-        const shouldShow = (item: IItemBoxProps) => !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
-        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled).length;
+        const shouldShow = (item: IItemBoxProps) =>
+            !item.hidden && (!this.props.multi || !_.contains(this.props.selected, item.value));
+        const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled)
+            .length;
 
         let index = 0;
         let activeSet = false;
@@ -76,12 +77,14 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
                 }
                 return {...item, active};
             })
-            .map((item: IItemBoxProps) => <ItemBox
-                key={item.value}
-                {...item}
-                onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item)}
-                selected={_.contains(this.props.selected, item.value)}
-            />)
+            .map((item: IItemBoxProps) => (
+                <ItemBox
+                    key={item.value}
+                    {...item}
+                    onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item)}
+                    selected={_.contains(this.props.selected, item.value)}
+                />
+            ))
             .value();
 
         const emptyItem = (
@@ -95,11 +98,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     render() {
-        return (
-            <ul className={this.getClasses()}>
-                {this.getItems()}
-            </ul>
-        );
+        return <ul className={this.getClasses()}>{this.getItems()}</ul>;
     }
 
     private onSelectItem(item: IItemBoxProps) {

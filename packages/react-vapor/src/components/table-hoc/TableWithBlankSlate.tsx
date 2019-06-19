@@ -17,8 +17,13 @@ export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateS
 
 const TableWithBlankSlatePropsToOmit = keys<ITableWithBlankSlateStateProps>();
 
-export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateProps> = {}) => (Component: React.ComponentClass<ITableHOCOwnProps>): React.ComponentClass<ITableWithBlankSlateProps & React.HTMLAttributes<HTMLTableElement>> => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithBlankSlateStateProps | ITableHOCOwnProps => {
+export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateProps> = {}) => (
+    Component: React.ComponentClass<ITableHOCOwnProps>
+): React.ComponentClass<ITableWithBlankSlateProps & React.HTMLAttributes<HTMLTableElement>> => {
+    const mapStateToProps = (
+        state: IReactVaporState,
+        ownProps: ITableHOCOwnProps
+    ): ITableWithBlankSlateStateProps | ITableHOCOwnProps => {
         const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,
@@ -28,7 +33,6 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateProps> =
 
     @ReduxConnect(mapStateToProps)
     class TableWithBlankSlate extends React.Component<ITableHOCOwnProps & ITableWithBlankSlateProps> {
-
         render() {
             const newProps = {
                 ..._.omit(this.props, [...TableWithBlankSlatePropsToOmit]),

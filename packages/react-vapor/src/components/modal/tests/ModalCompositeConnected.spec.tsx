@@ -29,7 +29,9 @@ describe('<ModalCompositeConnected />', () => {
     });
 
     it('should have isOpened prop to true if the modal is opened in the store', () => {
-        mockstore = createMockStore({modals: [{id: 'another-modal', isOpened: false}, {id: basicProps.id, isOpened: true}]});
+        mockstore = createMockStore({
+            modals: [{id: 'another-modal', isOpened: false}, {id: basicProps.id, isOpened: true}],
+        });
         const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
 
         expect(modalCompositeConnected.props().isOpened).toBe(true);
@@ -62,7 +64,10 @@ describe('<ModalCompositeConnected />', () => {
     });
 
     it('should dispatch a close modal action when closing the modal', () => {
-        const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithStore(<ModalCompositeConnected {...basicProps} isOpened />, mockstore).dive();
+        const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithStore(
+            <ModalCompositeConnected {...basicProps} isOpened />,
+            mockstore
+        ).dive();
 
         modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeEvent'));
 

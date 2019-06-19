@@ -19,18 +19,8 @@ export const fakeJSON = {
     registered: 'Sunday, January 31, 2016 2:37 AM',
     latitude: '-11.761137',
     longitude: '-23.176443',
-    tags: [
-        'voluptate',
-        'et',
-        'sunt',
-        'sunt',
-        'cupidatat',
-    ],
-    range: [
-        0,
-        1,
-        2,
-    ],
+    tags: ['voluptate', 'et', 'sunt', 'sunt', 'cupidatat'],
+    range: [0, 1, 2],
     friends: [
         {
             id: 0,
@@ -47,10 +37,7 @@ export const fakeJSON = {
 
 const fakeJSONCopy: {[key: string]: any} = {
     ...fakeJSON,
-    range: [
-        5,
-        6,
-    ],
+    range: [5, 6],
     friends: [
         ...fakeJSON.friends,
         {

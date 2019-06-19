@@ -11,12 +11,19 @@ export const YGrid: React.FunctionComponent<YGridProps> = ({padding = 0, color =
     const context = React.useContext(XYChartContext);
     const {xDomain, xScale, yScale, yTicksCount} = context;
 
-    const lines = yScale.ticks(yTicksCount).map((tick: number) => (
-        <line key={`y-grid-${tick}`} stroke={color} x1={xScale(xDomain[0]) - padding} x2={xScale(xDomain[1]) + padding} y1={yScale(tick)} y2={yScale(tick)} />
-    ));
+    const lines = yScale
+        .ticks(yTicksCount)
+        .map((tick: number) => (
+            <line
+                key={`y-grid-${tick}`}
+                stroke={color}
+                x1={xScale(xDomain[0]) - padding}
+                x2={xScale(xDomain[1]) + padding}
+                y1={yScale(tick)}
+                y2={yScale(tick)}
+            />
+        ));
 
-    return (
-        <>{lines}</>
-    );
+    return <>{lines}</>;
 };
 YGrid.displayName = 'YGrid';

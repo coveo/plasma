@@ -15,11 +15,13 @@ describe('Actions', () => {
     const actionTrigger: jasmine.Spy = jasmine.createSpy('triggerMethod');
 
     const id: string = 'dropdown-actions';
-    const actions: IActionOptions[] = [{
-        name: 'action2',
-        trigger: actionTrigger,
-        enabled: true,
-    }];
+    const actions: IActionOptions[] = [
+        {
+            name: 'action2',
+            trigger: actionTrigger,
+            enabled: true,
+        },
+    ];
 
     describe('<ActionsDropdownConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
@@ -31,12 +33,9 @@ describe('Actions', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <ActionsDropdownConnected
-                        actions={actions}
-                        id={id}
-                    />
+                    <ActionsDropdownConnected actions={actions} id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             actionsDropdown = wrapper.find(ActionsDropdown).first();
         });

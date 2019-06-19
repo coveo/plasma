@@ -9,12 +9,9 @@ export interface ISplitLayoutProps {
     rightContainerClassName?: string | string[];
 }
 
-export const SplitLayout = (props: ISplitLayoutProps): JSX.Element =>
+export const SplitLayout = (props: ISplitLayoutProps): JSX.Element => (
     <div className={classNames('split-layout', props.className)}>
-        <div className={classNames('column', props.leftContainerClassName)}>
-            {props.leftChildren}
-        </div>
-        <div className={classNames('column', props.rightContainerClassName)}>
-            {props.rightChildren}
-        </div>
-    </div>;
+        <div className={classNames('column', props.leftContainerClassName)}>{props.leftChildren}</div>
+        <div className={classNames('column', props.rightContainerClassName)}>{props.rightChildren}</div>
+    </div>
+);

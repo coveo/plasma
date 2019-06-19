@@ -19,7 +19,6 @@ export interface ITriggerActionProps extends ITriggerActionOwnProps, ITriggerAct
 export const CONFIRM_LABEL: string = 'Are you sure?';
 
 export class TriggerAction extends React.Component<ITriggerActionProps, any> {
-
     private onTriggerAction() {
         const confirmData: IConfirmData = this.props.action.requiresConfirmation;
 
@@ -44,7 +43,7 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
                         confirm: confirmData.buttonLabels.confirm,
                     },
                 },
-                confirmData.confirmType,
+                confirmData.confirmType
             );
         } else {
             if (this.props.action.trigger) {
@@ -56,13 +55,17 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
 
     render() {
         const actionClasses: string = classNames({
-            'enabled': this.props.action.enabled,
+            enabled: this.props.action.enabled,
             'state-disabled': !this.props.action.enabled && (this.props.simple || !this.props.action.hideDisabled),
-            'disabled': !this.props.action.enabled && !this.props.simple,
+            disabled: !this.props.action.enabled && !this.props.simple,
         });
 
         return (
-            <span onClick={() => this.props.action.enabled && this.onTriggerAction()} className={actionClasses} title={this.props.action.name}>
+            <span
+                onClick={() => this.props.action.enabled && this.onTriggerAction()}
+                className={actionClasses}
+                title={this.props.action.name}
+            >
                 <Action action={this.props.action} simple={this.props.simple} />
             </span>
         );

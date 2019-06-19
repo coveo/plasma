@@ -5,12 +5,9 @@ import {Radio} from '../Radio';
 import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
 
 describe('<RadioSelect />', () => {
-
     it('should mount without errors', () => {
         expect(() => {
-            shallow(
-                <RadioSelect />,
-            );
+            shallow(<RadioSelect />);
         }).not.toThrow();
     });
 
@@ -32,12 +29,10 @@ describe('<RadioSelect />', () => {
         const shallowRadioSelect = (props: IRadioSelectAllProps = {}) => {
             spy = jasmine.createSpy('onClick');
             radioSelect = shallow(
-                <RadioSelect
-                    {...props}
-                >
-                    <Radio id='radio1' value={firstRadioValue} onClick={spy} />
-                    <Radio id='radio2' value={secondRadioValue} name={radioName} />
-                </RadioSelect>,
+                <RadioSelect {...props}>
+                    <Radio id="radio1" value={firstRadioValue} onClick={spy} />
+                    <Radio id="radio2" value={secondRadioValue} name={radioName} />
+                </RadioSelect>
             );
         };
 
@@ -65,7 +60,12 @@ describe('<RadioSelect />', () => {
                 disabled: true,
             });
 
-            expect(radioSelect.find(Radio).first().props().disabled).toBe(true);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .first()
+                    .props().disabled
+            ).toBe(true);
         });
 
         it('should set disabled on child if the child value is present in the disabled values list', () => {
@@ -74,14 +74,29 @@ describe('<RadioSelect />', () => {
                 disabledValues: [firstRadioValue, secondRadioValue],
             });
 
-            expect(radioSelect.find(Radio).first().props().disabled).toBe(true);
-            expect(radioSelect.find(Radio).last().props().disabled).toBe(true);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .first()
+                    .props().disabled
+            ).toBe(true);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .last()
+                    .props().disabled
+            ).toBe(true);
         });
 
         it('should use the name from the child if defined', () => {
             shallowRadioSelect();
 
-            expect(radioSelect.find(Radio).last().props().name).toBe(radioName);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .last()
+                    .props().name
+            ).toBe(radioName);
         });
 
         it('should use the name prop instead of the child name if its not defined', () => {
@@ -89,7 +104,12 @@ describe('<RadioSelect />', () => {
                 name: 'leaf',
             });
 
-            expect(radioSelect.find(Radio).first().props().name).toBe('leaf');
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .first()
+                    .props().name
+            ).toBe('leaf');
         });
 
         it('should pass disabledTooltip prop to each child', () => {
@@ -98,8 +118,18 @@ describe('<RadioSelect />', () => {
                 disabledTooltip,
             });
 
-            expect(radioSelect.find(Radio).first().props().disabledTooltip).toBe(disabledTooltip);
-            expect(radioSelect.find(Radio).last().props().disabledTooltip).toBe(disabledTooltip);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .first()
+                    .props().disabledTooltip
+            ).toBe(disabledTooltip);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .last()
+                    .props().disabledTooltip
+            ).toBe(disabledTooltip);
         });
 
         it('should set the prop checked of the children with the same value than the radio select', () => {
@@ -107,16 +137,35 @@ describe('<RadioSelect />', () => {
                 value: firstRadioValue,
             });
 
-            expect(radioSelect.find(Radio).first().props().checked).toBe(true);
-            expect(radioSelect.find(Radio).last().props().checked).toBe(false);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .first()
+                    .props().checked
+            ).toBe(true);
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .last()
+                    .props().checked
+            ).toBe(false);
         });
 
         it('should call onClick on children props if defined', () => {
             shallowRadioSelect();
 
-            expect(radioSelect.find(Radio).first().props().onClick).toBeDefined();
+            expect(
+                radioSelect
+                    .find(Radio)
+                    .first()
+                    .props().onClick
+            ).toBeDefined();
 
-            radioSelect.find(Radio).first().props().onClick({} as any);
+            radioSelect
+                .find(Radio)
+                .first()
+                .props()
+                .onClick({} as any);
 
             expect(spy).toHaveBeenCalledTimes(1);
         });
@@ -127,7 +176,11 @@ describe('<RadioSelect />', () => {
                 onChange: spyOnChange,
             });
 
-            radioSelect.find(Radio).first().props().onClick({} as any);
+            radioSelect
+                .find(Radio)
+                .first()
+                .props()
+                .onClick({} as any);
 
             expect(spyOnChange).toHaveBeenCalledTimes(1);
         });
@@ -138,7 +191,11 @@ describe('<RadioSelect />', () => {
                 onChangeCallback: spyOnChangeCallback,
             });
 
-            radioSelect.find(Radio).first().props().onClick({} as any);
+            radioSelect
+                .find(Radio)
+                .first()
+                .props()
+                .onClick({} as any);
 
             expect(spyOnChangeCallback).toHaveBeenCalledTimes(1);
         });

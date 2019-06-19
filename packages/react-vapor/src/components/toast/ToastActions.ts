@@ -27,7 +27,11 @@ export interface IToastAddPayload extends IToastActionPayload, IToastAddOptional
     title: React.ReactNode;
 }
 
-export const addToast = (containerId: string, title: string, optionals: Partial<IToastProps> = {}): IReduxAction<IToastAddPayload> => ({
+export const addToast = (
+    containerId: string,
+    title: string,
+    optionals: Partial<IToastProps> = {}
+): IReduxAction<IToastAddPayload> => ({
     type: ToastAction.addToast,
     payload: {
         title,

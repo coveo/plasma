@@ -17,7 +17,7 @@ export const itemFiltersOriginalState: IItemFilterState[] = [];
 
 export const itemFilterReducer = (
     state: IItemFilterState = itemFilterOriginalState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IItemFilterState => {
     switch (action.type) {
         case ItemFilterActions.add:
@@ -41,14 +41,11 @@ export const itemFilterReducer = (
 
 export const itemFiltersReducer = (
     state: IItemFilterState[] = itemFiltersOriginalState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IItemFilterState[] => {
     switch (action.type) {
         case ItemFilterActions.add:
-            return [
-                ...state,
-                itemFilterReducer(undefined, action),
-            ];
+            return [...state, itemFilterReducer(undefined, action)];
         case ItemFilterActions.filter:
             return state.map((itemFilter: IItemFilterState) => itemFilterReducer(itemFilter, action));
         case ItemFilterActions.remove:

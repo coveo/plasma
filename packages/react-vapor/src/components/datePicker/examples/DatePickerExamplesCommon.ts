@@ -11,27 +11,63 @@ export const SELECTION_BOXES: IDatesSelectionBox[] = [
         quickOptions: [
             {
                 label: 'Last 10 seconds',
-                value: () => moment().subtract(10, 'seconds').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(10, 'seconds')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last minute',
-                value: () => moment().subtract(1, 'minute').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'minute')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last 5 minutes',
-                value: () => moment().subtract(5, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(5, 'minutes')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last 30 minutes',
-                value: () => moment().subtract(30, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(30, 'minutes')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last hour',
-                value: () => moment().subtract(1, 'hour').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'hour')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last day',
-                value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'day')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
         ],
         isRange: true,
@@ -44,19 +80,43 @@ export const SELECTION_BOXES: IDatesSelectionBox[] = [
 const defaultQuickOptions = [
     {
         label: 'Last day',
-        value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+        value: () =>
+            moment()
+                .subtract(1, 'day')
+                .toDate()
+                .toString() +
+            DATES_SEPARATOR +
+            new Date().toString(),
     },
     {
         label: 'Last week',
-        value: () => moment().subtract(1, 'week').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+        value: () =>
+            moment()
+                .subtract(1, 'week')
+                .toDate()
+                .toString() +
+            DATES_SEPARATOR +
+            new Date().toString(),
     },
     {
         label: 'Last month',
-        value: () => moment().subtract(1, 'month').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+        value: () =>
+            moment()
+                .subtract(1, 'month')
+                .toDate()
+                .toString() +
+            DATES_SEPARATOR +
+            new Date().toString(),
     },
     {
         label: 'Last year',
-        value: () => moment().subtract(1, 'year').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+        value: () =>
+            moment()
+                .subtract(1, 'year')
+                .toDate()
+                .toString() +
+            DATES_SEPARATOR +
+            new Date().toString(),
     },
 ];
 
@@ -99,19 +159,43 @@ export const FOUR_SELECTION_BOXES: IDatesSelectionBox[] = [
         quickOptions: [
             {
                 label: 'Last 5 minutes',
-                value: () => moment().subtract(5, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(5, 'minutes')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last 30 minutes',
-                value: () => moment().subtract(30, 'minutes').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(30, 'minutes')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last hour',
-                value: () => moment().subtract(1, 'hour').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'hour')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
             {
                 label: 'Last day',
-                value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'day')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
             },
         ],
         isRange: true,
@@ -123,7 +207,11 @@ export const FOUR_SELECTION_BOXES: IDatesSelectionBox[] = [
 
 export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
     {
-        test: (date: Date) => date >= moment().startOf('day').toDate(), // You cannot select a date in the past
+        test: (date: Date) =>
+            date >=
+            moment()
+                .startOf('day')
+                .toDate(), // You cannot select a date in the past
         isFor: CalendarSelectionRuleType.all,
     },
     {
@@ -150,19 +238,35 @@ export const SELECTION_BOX: IDatesSelectionBox[] = [
         quickOptions: [
             {
                 label: 'A year ago',
-                value: () => moment().subtract(1, 'year').toDate().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'year')
+                        .toDate()
+                        .toString(),
             },
             {
                 label: 'A month ago',
-                value: () => moment().subtract(1, 'month').toDate().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'month')
+                        .toDate()
+                        .toString(),
             },
             {
                 label: 'A week ago',
-                value: () => moment().subtract(1, 'week').toDate().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'week')
+                        .toDate()
+                        .toString(),
             },
             {
                 label: 'Yesterday',
-                value: () => moment().subtract(1, 'day').toDate().toString(),
+                value: () =>
+                    moment()
+                        .subtract(1, 'day')
+                        .toDate()
+                        .toString(),
             },
         ],
         isRange: false,
@@ -179,4 +283,9 @@ export const CALENDAR_SELECTION_RULES_SINGLE_DATE: ICalendarSelectionRule[] = [
     },
 ];
 
-export const DATE_RANGE_EXAMPLE: DatePickerDateRange = [moment().toDate(), moment().add(3, 'day').toDate()];
+export const DATE_RANGE_EXAMPLE: DatePickerDateRange = [
+    moment().toDate(),
+    moment()
+        .add(3, 'day')
+        .toDate(),
+];

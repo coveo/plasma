@@ -64,8 +64,11 @@ export interface IDatePickerDropdownDispatchProps {
     onClear?: () => void;
 }
 
-export interface IDatePickerDropdownProps extends IDatePickerDropdownOwnProps, IDatePickerDropdownStateProps,
-    IDatePickerDropdownDispatchProps, IDatePickerDropdownChildrenProps {}
+export interface IDatePickerDropdownProps
+    extends IDatePickerDropdownOwnProps,
+        IDatePickerDropdownStateProps,
+        IDatePickerDropdownDispatchProps,
+        IDatePickerDropdownChildrenProps {}
 
 export const DEFAULT_DATE_PICKER_DROPDOWN_LABEL: string = 'Select date';
 export const DEFAULT_APPLY_DATE_LABEL: string = 'Apply';
@@ -119,7 +122,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             if (this.props.datePicker.isRange) {
                 const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
                 if (formattedUpper !== label) {
-                    toLabel = <span className='to-label'> {this.props.toLabel} </span>;
+                    toLabel = <span className="to-label"> {this.props.toLabel} </span>;
                     labelSecondPart = formattedUpper;
                 }
             }
@@ -128,51 +131,46 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         if (this.props.readonly) {
             return (
                 <Input
-                    value={`${label} ${this.props.datePicker && this.props.datePicker.isRange ? this.props.toLabel + ' ' + labelSecondPart : ''}`}
+                    value={`${label} ${
+                        this.props.datePicker && this.props.datePicker.isRange
+                            ? this.props.toLabel + ' ' + labelSecondPart
+                            : ''
+                    }`}
                     readOnly
                 />
             );
         }
 
-        const dropdownClasses: string = classNames(
-            ...this.props.extraDropdownClasses,
-            'dropdown-wrapper',
-            'dropdown',
-            {
-                open: this.props.isOpened,
-            },
-        );
-
-        const menuClasses: string = classNames(
-            'dropdown-menu',
-            'normal-height',
-            {
-                'on-right': this.props.onRight,
-            },
-        );
-
-        const toggleClasses = classNames('dropdown-toggle btn inline-flex flex-center', this.props.extraDropdownToggleClasses, {
-            'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
+        const dropdownClasses: string = classNames(...this.props.extraDropdownClasses, 'dropdown-wrapper', 'dropdown', {
+            open: this.props.isOpened,
         });
+
+        const menuClasses: string = classNames('dropdown-menu', 'normal-height', {
+            'on-right': this.props.onRight,
+        });
+
+        const toggleClasses = classNames(
+            'dropdown-toggle btn inline-flex flex-center',
+            this.props.extraDropdownToggleClasses,
+            {
+                'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
+            }
+        );
 
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
-                <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
-                    <span
-                        className={toggleClasses}
-                        onClick={() => this.handleClick()}>
-                        <span className='dropdown-selected-value'>
+                <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
+                    <span className={toggleClasses} onClick={() => this.handleClick()}>
+                        <span className="dropdown-selected-value">
                             <label>
                                 {label}
                                 {toLabel}
                                 {labelSecondPart}
                             </label>
                         </span>
-                        <span className='dropdown-toggle-arrow'></span>
+                        <span className="dropdown-toggle-arrow"></span>
                     </span>
-                    <div className={menuClasses}>
-                        {this.getDatePickerBox()}
-                    </div>
+                    <div className={menuClasses}>{this.getDatePickerBox()}</div>
                 </div>
             </div>
         );
@@ -182,7 +180,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         if (this.props.onClick) {
             this.props.onClick(this.props.datePicker);
         }
-    }
+    };
 
     private handleDocumentClick = (e: MouseEvent) => {
         const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
@@ -190,7 +188,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             this.props.onDocumentClick();
             this.handleCancel();
         }
-    }
+    };
 
     private handleApply() {
         if (this.props.onBeforeApply) {
@@ -204,13 +202,15 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
     private handleCancel() {
         if (this.props.onCancel) {
-            const currentMonth: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
-                ? this.props.datePicker.appliedLowerLimit.getMonth()
-                : DateUtils.currentMonth;
+            const currentMonth: number =
+                this.props.datePicker && this.props.datePicker.appliedLowerLimit
+                    ? this.props.datePicker.appliedLowerLimit.getMonth()
+                    : DateUtils.currentMonth;
             const years: string[] = this.props.years || DEFAULT_YEARS;
-            const currentYear: number = this.props.datePicker && this.props.datePicker.appliedLowerLimit
-                ? this.props.datePicker.appliedLowerLimit.getFullYear()
-                : DateUtils.currentYear;
+            const currentYear: number =
+                this.props.datePicker && this.props.datePicker.appliedLowerLimit
+                    ? this.props.datePicker.appliedLowerLimit.getFullYear()
+                    : DateUtils.currentYear;
             this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()), this.props.isOpened);
         }
     }
@@ -230,8 +230,12 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     private hasExceededRangeLimit(): boolean {
         if (this.props.datePicker && this.props.datePicker.rangeLimit) {
             const {weeks, days, hours} = this.props.datePicker.rangeLimit;
-            const limitInMinutes: number = (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0);
-            const diffInMinutes: number = moment(this.props.datePicker.inputUpperLimit).diff(moment(this.props.datePicker.inputLowerLimit), 'minutes');
+            const limitInMinutes: number =
+                (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0);
+            const diffInMinutes: number = moment(this.props.datePicker.inputUpperLimit).diff(
+                moment(this.props.datePicker.inputLowerLimit),
+                'minutes'
+            );
             return diffInMinutes > limitInMinutes;
         }
 
@@ -262,25 +266,31 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 onClear: () => this.handleClear(),
                 footer: (
                     <ModalFooter classes={['mod-small']}>
-                        <Button enabled={!hasExceededRangeLimit}
+                        <Button
+                            enabled={!hasExceededRangeLimit}
                             name={this.props.applyLabel}
                             small={true}
                             primary={true}
                             tooltip={hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : ''}
                             tooltipPlacement={'left'}
-                            onClick={() => this.handleApply()} />
-                        <Button enabled={true}
+                            onClick={() => this.handleApply()}
+                        />
+                        <Button
+                            enabled={true}
                             name={this.props.cancelLabel}
                             small={true}
                             primary={true}
-                            onClick={() => this.handleCancel()} />
+                            onClick={() => this.handleCancel()}
+                        />
                     </ModalFooter>
                 ),
             };
 
-            return this.props.withReduxState
-                ? <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
-                : <DatePickerBox {...datePickerBoxProps} />;
+            return this.props.withReduxState ? (
+                <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
+            ) : (
+                <DatePickerBox {...datePickerBoxProps} />
+            );
         }
     }
 }

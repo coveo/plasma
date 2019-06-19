@@ -1,12 +1,14 @@
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ILastUpdatedPayload, LastUpdatedActions} from '../LastUpdatedActions';
 import {
-    ILastUpdatedState, lastUpdatedCompositeInitialState, lastUpdatedCompositeReducer,
-    lastUpdatedInitialState, lastUpdatedReducer,
+    ILastUpdatedState,
+    lastUpdatedCompositeInitialState,
+    lastUpdatedCompositeReducer,
+    lastUpdatedInitialState,
+    lastUpdatedReducer,
 } from '../LastUpdatedReducers';
 
 describe('LastUpdated', () => {
-
     describe('LastUpdatedReducers', () => {
         const genericAction: IReduxAction<ILastUpdatedPayload> = {
             type: 'DO_SOMETHING',
@@ -66,10 +68,12 @@ describe('LastUpdated', () => {
                 {
                     id: 'some_timer2',
                     time: initialDate,
-                }, {
+                },
+                {
                     id: 'some_timer',
                     time: initialDate,
-                }, {
+                },
+                {
                     id: 'some_timer3',
                     time: initialDate,
                 },
@@ -100,10 +104,12 @@ describe('LastUpdated', () => {
                 {
                     id: 'some_timer2',
                     time: initialDate,
-                }, {
+                },
+                {
                     id: 'some_timer',
                     time: initialDate,
-                }, {
+                },
+                {
                     id: 'some_timer3',
                     time: initialDate,
                 },

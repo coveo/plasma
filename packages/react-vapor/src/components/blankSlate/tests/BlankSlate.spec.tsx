@@ -5,7 +5,6 @@ import {Svg} from '../../svg/Svg';
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
 
 describe('BlankSlate', () => {
-
     let blankSlateComponent: ReactWrapper<IBlankSlateProps, any>;
 
     it('should render without errors', () => {
@@ -15,12 +14,8 @@ describe('BlankSlate', () => {
     });
 
     describe('<Blankslate /> with default props', () => {
-
         beforeEach(() => {
-            blankSlateComponent = mount(
-                <BlankSlate />,
-                {attachTo: document.getElementById('App')},
-            );
+            blankSlateComponent = mount(<BlankSlate />, {attachTo: document.getElementById('App')});
         });
 
         it('should render the default title', () => {
@@ -41,7 +36,6 @@ describe('BlankSlate', () => {
     });
 
     describe('<Blankslate /> with custom props', () => {
-
         const customProps = {
             title: 'title',
             description: 'description test',
@@ -57,10 +51,9 @@ describe('BlankSlate', () => {
         };
 
         const renderBlankSlate = (props: IBlankSlateProps = {}) => {
-            blankSlateComponent = mount(
-                <BlankSlate {..._.defaults(props, customProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            blankSlateComponent = mount(<BlankSlate {..._.defaults(props, customProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         it('should render the custom title', () => {
@@ -93,7 +86,8 @@ describe('BlankSlate', () => {
                         name: 'test',
                         primary: true,
                         enabled: true,
-                    }, {
+                    },
+                    {
                         name: 'test 2',
                         primary: true,
                         enabled: true,

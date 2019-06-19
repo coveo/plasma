@@ -53,8 +53,10 @@ export interface IDatePickerBoxChildrenProps {
 
 export const DEFAULT_CLEAR_DATE_LABEL = 'Clear';
 
-export interface IDatePickerBoxProps extends IDatePickerBoxOwnProps, IDatePickerBoxStateProps,
-    IDatePickerBoxChildrenProps {}
+export interface IDatePickerBoxProps
+    extends IDatePickerBoxOwnProps,
+        IDatePickerBoxStateProps,
+        IDatePickerBoxChildrenProps {}
 
 export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
     static defaultProps: Partial<IDatePickerBoxProps> = {
@@ -83,25 +85,24 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
             simple: this.props.simple,
         };
 
-        const calendar: JSX.Element = this.props.withReduxState ? <CalendarConnected {...calendarProps} /> : <Calendar />;
-
-        const datePickerClasses: string = classNames(
-            'date-picker-box',
-            'flex',
-            'flex-column',
-            {
-                'simple': this.props.simple,
-            },
+        const calendar: JSX.Element = this.props.withReduxState ? (
+            <CalendarConnected {...calendarProps} />
+        ) : (
+            <Calendar />
         );
 
-        const inside: JSX.Element = this.props.simple
-            ? calendar
-            : (
-                <div className='split-layout'>
-                    {calendar}
-                    {this.getdatePickerRightPart()}
-                </div>
-            );
+        const datePickerClasses: string = classNames('date-picker-box', 'flex', 'flex-column', {
+            simple: this.props.simple,
+        });
+
+        const inside: JSX.Element = this.props.simple ? (
+            calendar
+        ) : (
+            <div className="split-layout">
+                {calendar}
+                {this.getdatePickerRightPart()}
+            </div>
+        );
 
         return (
             <div className={datePickerClasses}>
@@ -113,10 +114,10 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     private getdatePickerRightPart(): JSX.Element {
         return (
-            <div className='date-selection column mod-small-content p2' >
+            <div className="date-selection column mod-small-content p2">
                 {this.getdateSelectionBoxes()}
                 {this.getClearOptions()}
-            </div >
+            </div>
         );
     }
 
@@ -128,9 +129,11 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 id: boxId,
                 options: datesSelectionBox.quickOptions,
             };
-            const optionPicker: JSX.Element = this.props.withReduxState
-                ? <OptionPickerConnected {...quickOptionsProps} />
-                : <OptionPicker {...quickOptionsProps} />;
+            const optionPicker: JSX.Element = this.props.withReduxState ? (
+                <OptionPickerConnected {...quickOptionsProps} />
+            ) : (
+                <OptionPicker {...quickOptionsProps} />
+            );
 
             const datesSelectionProps: IDatesSelectionProps = {
                 id: boxId,
@@ -147,13 +150,15 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 initiallyUnselected: this.props.initiallyUnselected,
                 initialDateRange: this.props.initialDateRange,
             };
-            const dateSelection: JSX.Element = this.props.withReduxState
-                ? <DatesSelectionConnected {...datesSelectionProps} />
-                : <DatesSelection {...datesSelectionProps} />;
+            const dateSelection: JSX.Element = this.props.withReduxState ? (
+                <DatesSelectionConnected {...datesSelectionProps} />
+            ) : (
+                <DatesSelection {...datesSelectionProps} />
+            );
 
             return (
                 <div key={boxId}>
-                    <h3 className='bold text-medium-blue'>{datesSelectionBox.title}</h3>
+                    <h3 className="bold text-medium-blue">{datesSelectionBox.title}</h3>
                     {optionPicker}
                     {dateSelection}
                 </div>
@@ -162,8 +167,10 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
     }
 
     private getClearOptions(): JSX.Element {
-        return this.props.isClearable
-            ? <button type='button' onClick={() => this.props.onClear()} className='clear-selection-button mt2' >{this.props.clearLabel}</button>
-            : null;
+        return this.props.isClearable ? (
+            <button type="button" onClick={() => this.props.onClear()} className="clear-selection-button mt2">
+                {this.props.clearLabel}
+            </button>
+        ) : null;
     }
 }

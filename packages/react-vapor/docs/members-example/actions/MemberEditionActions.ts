@@ -24,10 +24,11 @@ export interface IToggleOpenPayload extends IMemberEditionActionPayload {
     isOpen: boolean;
 }
 
-export interface IMemberEditionActionsPayloads extends IMemberEditionActionPayload,
-    IChangeEmailPayload,
-    IChangeSendEmailPayload,
-    IToggleOpenPayload {}
+export interface IMemberEditionActionsPayloads
+    extends IMemberEditionActionPayload,
+        IChangeEmailPayload,
+        IChangeSendEmailPayload,
+        IToggleOpenPayload {}
 
 export const applyChanges = (id: string): IReduxAction<IMemberEditionActionPayload> => {
     return {

@@ -18,7 +18,11 @@ export const GroupableCheckboxActions = {
     disabledAllGroup: 'DISABLED_ALL_GROUP_CHECKBOX',
 };
 
-export const toggleGroupedCheckbox = (id: string, parentId: string, isParent: boolean = false): IReduxAction<IGroupableCheckboxActionPayload> => ({
+export const toggleGroupedCheckbox = (
+    id: string,
+    parentId: string,
+    isParent: boolean = false
+): IReduxAction<IGroupableCheckboxActionPayload> => ({
     type: GroupableCheckboxActions.toggleGroup,
     payload: {
         id,
@@ -27,7 +31,13 @@ export const toggleGroupedCheckbox = (id: string, parentId: string, isParent: bo
     },
 });
 
-export const addGroupedCheckbox = (id: string, checked: boolean, disabled: boolean, parentId: string, isParent: boolean = false): IReduxAction<IGroupableCheckboxActionPayload> => ({
+export const addGroupedCheckbox = (
+    id: string,
+    checked: boolean,
+    disabled: boolean,
+    parentId: string,
+    isParent: boolean = false
+): IReduxAction<IGroupableCheckboxActionPayload> => ({
     type: GroupableCheckboxActions.addGroup,
     payload: {
         id,
@@ -38,7 +48,11 @@ export const addGroupedCheckbox = (id: string, checked: boolean, disabled: boole
     },
 });
 
-export const removeGroupedCheckbox = (id: string, parentId: string, isParent: boolean = false): IReduxAction<IGroupableCheckboxActionPayload> => ({
+export const removeGroupedCheckbox = (
+    id: string,
+    parentId: string,
+    isParent: boolean = false
+): IReduxAction<IGroupableCheckboxActionPayload> => ({
     type: GroupableCheckboxActions.removeGroup,
     payload: {
         id,
@@ -47,7 +61,11 @@ export const removeGroupedCheckbox = (id: string, parentId: string, isParent: bo
     },
 });
 
-export const toggleDisabledGroupedCheckbox = (id: string, parentId: string, isParent: boolean = false): IReduxAction<IGroupableCheckboxActionPayload> => ({
+export const toggleDisabledGroupedCheckbox = (
+    id: string,
+    parentId: string,
+    isParent: boolean = false
+): IReduxAction<IGroupableCheckboxActionPayload> => ({
     type: GroupableCheckboxActions.disabledGroup,
     payload: {
         id,
@@ -56,7 +74,11 @@ export const toggleDisabledGroupedCheckbox = (id: string, parentId: string, isPa
     },
 });
 
-export const toggleDisabledAllGroupedCheckbox = (id: string, parentId?: string, disabled?: boolean): IReduxAction<IGroupableCheckboxActionPayload> => ({
+export const toggleDisabledAllGroupedCheckbox = (
+    id: string,
+    parentId?: string,
+    disabled?: boolean
+): IReduxAction<IGroupableCheckboxActionPayload> => ({
     type: GroupableCheckboxActions.disabledAllGroup,
     payload: {
         id,

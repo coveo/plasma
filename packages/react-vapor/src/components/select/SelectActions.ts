@@ -22,4 +22,5 @@ export const removeSelect = (id: string): IReduxAction<ISelectPayload> => ({
     payload: {id},
 });
 
-export const toggleSelect = (id: string, open?: boolean): IReduxAction<ISelectPayload> => DropActions.toggle(id, SelectConnected.DropGroup, open);
+export const toggleSelect = (id: string, open?: boolean): IReduxAction<ISelectPayload> =>
+    DropActions.toggle(id, SelectConnected.DropGroup, open);

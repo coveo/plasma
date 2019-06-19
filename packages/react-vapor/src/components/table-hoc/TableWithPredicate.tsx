@@ -26,24 +26,31 @@ export interface ITableWithPredicateStateProps {
     predicate: string;
 }
 
-export interface ITableWithPredicateProps extends Partial<ITableWithPredicateStateProps>,
-    ITableHOCOwnProps {}
+export interface ITableWithPredicateProps extends Partial<ITableWithPredicateStateProps>, ITableHOCOwnProps {}
 
 const TableWithPredicatePropsToOmit = keys<ITableWithPredicateStateProps>();
 
-const defaultMatchPredicate = (predicate: string, datum: any) => !predicate || _.some(_.values(datum), (value: string) => value === predicate);
+const defaultMatchPredicate = (predicate: string, datum: any) =>
+    !predicate || _.some(_.values(datum), (value: string) => value === predicate);
 
 type TableWithPredicateComponent = React.ComponentClass<ITableWithPredicateProps>;
 
-export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => (Component: TableWithPredicateComponent): TableWithPredicateComponent => {
-
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithPredicateProps): ITableWithPredicateStateProps | ITableHOCOwnProps => {
+export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => (
+    Component: TableWithPredicateComponent
+): TableWithPredicateComponent => {
+    const mapStateToProps = (
+        state: IReactVaporState,
+        ownProps: ITableWithPredicateProps
+    ): ITableWithPredicateStateProps | ITableHOCOwnProps => {
         const config = HocUtils.supplyConfig(supplier);
-        const predicate = SelectSelector.getListBoxSelected(state, {id: TableHOCUtils.getPredicateId(ownProps.id, config.id)})[0];
+        const predicate = SelectSelector.getListBoxSelected(state, {
+            id: TableHOCUtils.getPredicateId(ownProps.id, config.id),
+        })[0];
         const matchPredicate = config.matchPredicate || defaultMatchPredicate;
-        const predicateData = () => !config.isServer && predicate
-            ? _.filter(ownProps.data, (datum: any) => matchPredicate(predicate, datum))
-            : ownProps.data;
+        const predicateData = () =>
+            !config.isServer && predicate
+                ? _.filter(ownProps.data, (datum: any) => matchPredicate(predicate, datum))
+                : ownProps.data;
         return {
             predicate: predicate,
             data: ownProps.data && predicateData(),
@@ -52,7 +59,6 @@ export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateC
 
     @ReduxConnect(mapStateToProps)
     class TableWithPredicate extends React.Component<ITableWithPredicateProps> {
-
         componentDidUpdate(prevProps: ITableWithPredicateProps) {
             if (prevProps.predicate !== this.props.predicate) {
                 callIfDefined(this.props.onUpdate);
@@ -64,7 +70,10 @@ export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateC
             const key = TableHOCUtils.getPredicateId(this.props.id, config.id);
             const actions = this.props.actions || [];
             const predicateAction = (
-                <div className={classNames('coveo-table-actions predicate-filters', styles.tablePredicateFilters)} key={key}>
+                <div
+                    className={classNames('coveo-table-actions predicate-filters', styles.tablePredicateFilters)}
+                    key={key}
+                >
                     <SingleSelectConnected id={key} items={config.values} buttonPrepend={config.prepend} />
                 </div>
             );

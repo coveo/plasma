@@ -11,11 +11,7 @@ describe('Facets', () => {
     describe('<FacetMoreToggle />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <FacetMoreToggle
-                        {...basicFacetMoreToggleProps}
-                    />,
-                );
+                shallow(<FacetMoreToggle {...basicFacetMoreToggleProps} />);
             }).not.toThrow();
         });
     });
@@ -24,12 +20,9 @@ describe('Facets', () => {
         let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
 
         beforeEach(() => {
-            facetMoreToggle = mount(
-                <FacetMoreToggle
-                    {...basicFacetMoreToggleProps}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            facetMoreToggle = mount(<FacetMoreToggle {...basicFacetMoreToggleProps} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {
@@ -63,12 +56,9 @@ describe('Facets', () => {
             facetMoreToggle.find('input').simulate('change');
             expect(handleOnChangeSpy).toHaveBeenCalled();
 
-            facetMoreToggle = mount(
-                <FacetMoreToggle
-                    {...newFacetMoreToggleProps}
-                />,
-                {attachTo: document.getElementById('App')},
-            );
+            facetMoreToggle = mount(<FacetMoreToggle {...newFacetMoreToggleProps} />, {
+                attachTo: document.getElementById('App'),
+            });
             const newHandleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
 
             facetMoreToggle.find('input').simulate('change');

@@ -17,16 +17,22 @@ const defaultMembersCompositeState: IMembersCompositeState = {
 
 const generateMemberId = (): string => _.uniqueId('member');
 
-const setMembersReduder = (state: IMembersCompositeState, action: IReduxAction<ISetMembersPayload>): IMembersCompositeState => {
+const setMembersReduder = (
+    state: IMembersCompositeState,
+    action: IReduxAction<ISetMembersPayload>
+): IMembersCompositeState => {
     return _.extend({}, state, {
-        members: _.map(action.payload.members, (member: IMemberAttributes): IMemberEditionState => {
-            return {
-                appliedState: _.extend({}, member),
-                editionState: _.extend({}, member),
-                id: generateMemberId(),
-                isOpen: false,
-            };
-        }),
+        members: _.map(
+            action.payload.members,
+            (member: IMemberAttributes): IMemberEditionState => {
+                return {
+                    appliedState: _.extend({}, member),
+                    editionState: _.extend({}, member),
+                    id: generateMemberId(),
+                    isOpen: false,
+                };
+            }
+        ),
     });
 };
 
@@ -34,12 +40,15 @@ const addMemberReducer = (state: IMembersCompositeState): IMembersCompositeState
     const newState: IMembersCompositeState = _.extend({}, state);
 
     // Clone and add the new member
-    const newMember: IMemberEditionState = _.extend({}, {
-        appliedState: _.extend({}, state.addMemberState.editionState),
-        editionState: _.extend({}, state.addMemberState.editionState),
-        id: generateMemberId(),
-        isOpen: false,
-    });
+    const newMember: IMemberEditionState = _.extend(
+        {},
+        {
+            appliedState: _.extend({}, state.addMemberState.editionState),
+            editionState: _.extend({}, state.addMemberState.editionState),
+            id: generateMemberId(),
+            isOpen: false,
+        }
+    );
     newState.members = [].concat(state.members, [newMember]);
 
     // Reset the addMemberState
@@ -50,7 +59,7 @@ const addMemberReducer = (state: IMembersCompositeState): IMembersCompositeState
 
 const applyMemberEditionReducers = (
     state: IMembersCompositeState,
-    action: IReduxAction<IMemberEditionActionsPayloads>,
+    action: IReduxAction<IMemberEditionActionsPayloads>
 ): IMembersCompositeState => {
     const newState: IMembersCompositeState = _.extend({}, state);
 
@@ -64,7 +73,10 @@ const applyMemberEditionReducers = (
 };
 
 interface IMembersActionsReducers {
-    [key: string]: (state: IMembersCompositeState, action: IReduxAction<IMembersActionsPayloads>) => IMembersCompositeState;
+    [key: string]: (
+        state: IMembersCompositeState,
+        action: IReduxAction<IMembersActionsPayloads>
+    ) => IMembersCompositeState;
 }
 
 const membersActionsReducers: IMembersActionsReducers = {
@@ -79,7 +91,7 @@ const membersActionsReducers: IMembersActionsReducers = {
 
 export const membersReducers = (
     state: IMembersCompositeState = defaultMembersCompositeState,
-    action: IReduxAction<IMembersActionsPayloads>,
+    action: IReduxAction<IMembersActionsPayloads>
 ): IMembersCompositeState => {
     if (_.isUndefined(membersActionsReducers[action.type])) {
         return state;

@@ -6,7 +6,7 @@ module.exports = {
     entry: {
         VaporSVG: './index.js',
     },
-    mode: 'development',
+    mode: 'production',
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: 'js/[name].js',
@@ -61,5 +61,15 @@ module.exports = {
                 loader: 'file-loader',
             },
         ],
+    },
+    externals: {
+        jquery: {root: '$', commonjs2: 'jquery', commonjs: 'jquery', amd: 'jquery'},
+        underscore: {root: '_', commonjs2: 'underscore', commonjs: 'underscore', amd: 'underscore'},
+        'underscore.string': {
+            root: 's',
+            commonjs2: 'underscore.string',
+            commonjs: 'underscore.string',
+            amd: 'underscore.string',
+        },
     },
 };

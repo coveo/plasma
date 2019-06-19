@@ -39,7 +39,12 @@ export const selectRow = (id: string, tableId?: string, rowId?: string): IReduxA
     },
 });
 
-export const toggleRowOpened = (id: string, tableId?: string, rowId?: string, opened?: boolean): IReduxAction<ITableRowActionPayload> => ({
+export const toggleRowOpened = (
+    id: string,
+    tableId?: string,
+    rowId?: string,
+    opened?: boolean
+): IReduxAction<ITableRowActionPayload> => ({
     type: TableRowActions.toggleOpen,
     payload: {
         id,

@@ -6,15 +6,23 @@ import {DisplayClass} from '../../utils/ComponentUtils';
 import {IUserFeedbackProps, TextColorClass, UserFeedback, UserFeedbackState} from './UserFeedback';
 
 describe('<UserFeedback>', () => {
-    const getShallowOutput = (feedbackText: string, state: string, extraClasses?: string[], displayOnShow?: string): ShallowWrapper<IUserFeedbackProps, any> => {
-
+    const getShallowOutput = (
+        feedbackText: string,
+        state: string,
+        extraClasses?: string[],
+        displayOnShow?: string
+    ): ShallowWrapper<IUserFeedbackProps, any> => {
         let props: IUserFeedbackProps = {
             feedbackText,
             state,
         };
 
-        if (extraClasses) {props = extend(props, {extraClasses});}
-        if (displayOnShow) {props = extend(props, {displayOnShow});}
+        if (extraClasses) {
+            props = extend(props, {extraClasses});
+        }
+        if (displayOnShow) {
+            props = extend(props, {displayOnShow});
+        }
 
         return shallow(<UserFeedback {...props} />);
     };
@@ -28,9 +36,15 @@ describe('<UserFeedback>', () => {
                 expect(() => getShallowOutput('hello', UserFeedbackState.VALID, ['m1'])).not.toThrow();
                 expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'])).not.toThrow();
                 expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'])).not.toThrow();
-                expect(() => getShallowOutput('hello', UserFeedbackState.VALID, ['m1'], DisplayClass.BLOCK)).not.toThrow();
-                expect(() => getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'], DisplayClass.BLOCK)).not.toThrow();
-                expect(() => getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'], DisplayClass.BLOCK)).not.toThrow();
+                expect(() =>
+                    getShallowOutput('hello', UserFeedbackState.VALID, ['m1'], DisplayClass.BLOCK)
+                ).not.toThrow();
+                expect(() =>
+                    getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'], DisplayClass.BLOCK)
+                ).not.toThrow();
+                expect(() =>
+                    getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'], DisplayClass.BLOCK)
+                ).not.toThrow();
             });
         });
 
@@ -64,8 +78,16 @@ describe('<UserFeedback>', () => {
                 });
 
                 it('should be invisible on state VALID, even with prop displayOnShow provided', () => {
-                    expect(getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(DisplayClass.HIDDEN)).toBe(true);
-                    expect(getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(DisplayClass.BLOCK)).toBe(false);
+                    expect(
+                        getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(
+                            DisplayClass.HIDDEN
+                        )
+                    ).toBe(true);
+                    expect(
+                        getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(
+                            DisplayClass.BLOCK
+                        )
+                    ).toBe(false);
                 });
             });
 
@@ -76,8 +98,16 @@ describe('<UserFeedback>', () => {
                 });
 
                 it('should have a display class equal to the value of the displayOnShow prop', () => {
-                    expect(getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.INLINE_BLOCK)).toBe(true);
-                    expect(getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.HIDDEN)).toBe(false);
+                    expect(
+                        getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(
+                            DisplayClass.INLINE_BLOCK
+                        )
+                    ).toBe(true);
+                    expect(
+                        getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(
+                            DisplayClass.HIDDEN
+                        )
+                    ).toBe(false);
                 });
 
                 it('should have the default text color class', () => {
@@ -93,8 +123,16 @@ describe('<UserFeedback>', () => {
                 });
 
                 it('should have a display class equal to the value of the displayOnShow prop', () => {
-                    expect(getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.INLINE_BLOCK)).toBe(true);
-                    expect(getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(DisplayClass.HIDDEN)).toBe(false);
+                    expect(
+                        getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(
+                            DisplayClass.INLINE_BLOCK
+                        )
+                    ).toBe(true);
+                    expect(
+                        getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(
+                            DisplayClass.HIDDEN
+                        )
+                    ).toBe(false);
                 });
 
                 it('should have the error text color class', () => {
@@ -122,7 +160,10 @@ describe('<UserFeedback>', () => {
                 const extraClassesRealLife: string[] = ['mt1', 'mb2'];
                 let testComponent: ShallowWrapper<IUserFeedbackProps, any> = getShallowOutput('', '', extraClass);
 
-                const areClassesAddedToElement = (currentExtraClasses: string[], shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>): boolean => {
+                const areClassesAddedToElement = (
+                    currentExtraClasses: string[],
+                    shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>
+                ): boolean => {
                     const allClasses: string[] = currentExtraClasses;
                     allClasses.unshift(TextColorClass.default, DisplayClass.HIDDEN);
 

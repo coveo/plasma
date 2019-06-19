@@ -29,20 +29,32 @@ export interface ITableWithPaginationDispatchProps {
     onUnmount: () => void;
 }
 
-export interface ITableWithPaginationProps extends Partial<ITableWithPaginationStateProps>,
-    Partial<ITableWithPaginationDispatchProps> {}
+export interface ITableWithPaginationProps
+    extends Partial<ITableWithPaginationStateProps>,
+        Partial<ITableWithPaginationDispatchProps> {}
 
 const TableWithPaginationPropsToOmit = keys<ITableWithPaginationStateProps>();
 const TableWithPaginationConfigToOmit = keys<ITableWithPaginationConfig>();
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
-export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps>> = {}) => (Component: (React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>)): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps): ITableWithPaginationStateProps | ITableHOCOwnProps => {
+export const tableWithPagination = (
+    supplier: ConfigSupplier<ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps>> = {}
+) => (
+    Component: React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>
+): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
+    const mapStateToProps = (
+        state: IReactVaporState,
+        ownProps: ITableHOCOwnProps
+    ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
         const config = HocUtils.supplyConfig(supplier);
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
         const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
-        const length = TableSelectors.getDataCount(state, {id: ownProps.id, data: ownProps.data, isServer: config.isServer});
+        const length = TableSelectors.getDataCount(state, {
+            id: ownProps.id,
+            data: ownProps.data,
+            isServer: config.isServer,
+        });
 
         const startingIndex = pageNb * perPage;
         const endingIndex = startingIndex + perPage;
@@ -52,13 +64,15 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
             perPage,
             totalEntries: length,
             totalPages: Math.ceil(length / perPage),
-            data: config.isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
+            data: config.isServer
+                ? ownProps.data
+                : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
         };
     };
 
     const mapDispatchToProps = (
         dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-        ownProps: ITableHOCOwnProps,
+        ownProps: ITableHOCOwnProps
     ): ITableWithPaginationDispatchProps => ({
         onMount: () => {
             dispatch(turnOffLoading([`loading-${ownProps.id}`]));
@@ -69,7 +83,6 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class TableWithPagination extends React.Component<ITableHOCOwnProps & ITableWithPaginationProps> {
-
         componentDidMount() {
             this.props.onMount();
         }

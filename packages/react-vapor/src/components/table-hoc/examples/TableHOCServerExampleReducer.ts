@@ -46,7 +46,10 @@ const setIsLoading = (isLoading: boolean): IReduxAction<ISetExampleIsLoadingPayl
 });
 
 const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IReactVaporTestState) => {
-    const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(TableHOCServerExamples.TABLE_ID, getState());
+    const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
+        TableHOCServerExamples.TABLE_ID,
+        getState()
+    );
     const params: any = {
         _page: compositeState.pageNb + 1,
         _limit: compositeState.perPage,
@@ -56,23 +59,24 @@ const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IRea
         from: compositeState.dateLimits[0].toISOString(),
         to: compositeState.dateLimits[1].toISOString(),
     };
-    _.each(compositeState.predicates, (predicate: {id: string, value: string}) => {
+    _.each(compositeState.predicates, (predicate: {id: string; value: string}) => {
         params[predicate.id] = predicate.value;
     });
     dispatch(setIsLoading(true));
-    $.get('https://jsonplaceholder.typicode.com/users', params)
-        .done((response: any[], status, request) => {
-            const count = request.getResponseHeader('x-total-count');
-            const users = response.map((user: any) => ({
-                city: user.address.city,
-                username: user.username,
-                email: user.email,
-                dateOfBirth: moment().subtract(user.address.city.length, 'years').toDate(), // fake a year of birth
-            }));
-            dispatch(setData(users));
-            dispatch(turnOffLoading([TableHOCServerExamples.TABLE_ID]));
-            dispatch(TableWithPaginationActions.setCount(TableHOCServerExamples.TABLE_ID, count));
-        });
+    $.get('https://jsonplaceholder.typicode.com/users', params).done((response: any[], status, request) => {
+        const count = request.getResponseHeader('x-total-count');
+        const users = response.map((user: any) => ({
+            city: user.address.city,
+            username: user.username,
+            email: user.email,
+            dateOfBirth: moment()
+                .subtract(user.address.city.length, 'years')
+                .toDate(), // fake a year of birth
+        }));
+        dispatch(setData(users));
+        dispatch(turnOffLoading([TableHOCServerExamples.TABLE_ID]));
+        dispatch(TableWithPaginationActions.setCount(TableHOCServerExamples.TABLE_ID, count));
+    });
 };
 
 export const TableHOCServerActions = {
@@ -82,7 +86,10 @@ export const TableHOCServerActions = {
 };
 
 type IExamplePayload = ISetExampleDataPayload | ISetExampleIsLoadingPayload;
-export const TableHOCServerExampleReducer = (state: IExampleServerTableState = {data: [], isLoading: true}, action: IReduxAction<IExamplePayload>) => {
+export const TableHOCServerExampleReducer = (
+    state: IExampleServerTableState = {data: [], isLoading: true},
+    action: IReduxAction<IExamplePayload>
+) => {
     if (action.type === TableHOCServerActionsType.setData) {
         const payload = action.payload as ISetExampleDataPayload;
         return {

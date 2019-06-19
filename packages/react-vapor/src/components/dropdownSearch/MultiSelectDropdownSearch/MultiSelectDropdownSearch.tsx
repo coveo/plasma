@@ -20,10 +20,16 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
     };
 
     protected getNoOptions(): JSX.Element[] {
-        if (this.props.filterText.length > 0 && !_.findWhere(this.getSelectedOptions(), ({value: this.props.filterText}))) {
+        if (
+            this.props.filterText.length > 0 &&
+            !_.findWhere(this.getSelectedOptions(), {value: this.props.filterText})
+        ) {
             return [
-                <li key='noResultDropdownSearch' onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}>
-                    <span className='no-search-results'>{`${this.props.createOptionText}"${this.props.filterText}"`}</span>
+                <li
+                    key="noResultDropdownSearch"
+                    onMouseDown={() => this.props.onCustomOptionClick(this.props.filterText)}
+                >
+                    <span className="no-search-results">{`${this.props.createOptionText}"${this.props.filterText}"`}</span>
                 </li>,
             ];
         }
@@ -45,7 +51,12 @@ export class MultiSelectDropdownSearch extends DropdownSearch {
                     filterText={this.props.filterText}
                     deselectAllTooltipText={this.props.deselectAllTooltipText}
                 />
-                <ul className='dropdown-menu' ref={(input: HTMLUListElement) => {this.ulElement = input;}}>
+                <ul
+                    className="dropdown-menu"
+                    ref={(input: HTMLUListElement) => {
+                        this.ulElement = input;
+                    }}
+                >
                     {this.getDropdownOptions()}
                 </ul>
             </div>

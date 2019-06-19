@@ -13,7 +13,7 @@ export const optionsCyclesInitialState: IOptionsCycleState[] = [];
 
 export const optionsCycleReducer = (
     state: IOptionsCycleState = optionsCycleInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IOptionsCycleState => {
     switch (action.type) {
         case OptionsCycleActions.change:
@@ -37,16 +37,13 @@ export const optionsCycleReducer = (
 
 export const optionsCyclesReducer = (
     state: IOptionsCycleState[] = optionsCyclesInitialState,
-    action: IReduxAction<IReduxActionsPayload>,
+    action: IReduxAction<IReduxActionsPayload>
 ): IOptionsCycleState[] => {
     switch (action.type) {
         case OptionsCycleActions.change:
             return state.map((optionsCycle: IOptionsCycleState) => optionsCycleReducer(optionsCycle, action));
         case OptionsCycleActions.add:
-            return [
-                ...state,
-                optionsCycleReducer(undefined, action),
-            ];
+            return [...state, optionsCycleReducer(undefined, action)];
         case OptionsCycleActions.remove:
             return _.reject(state, (optionsCycle: IOptionsCycleState) => {
                 return action.payload.id === optionsCycle.id;

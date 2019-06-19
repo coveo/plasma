@@ -23,5 +23,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IFlatSelectOwnProps):
     onOptionClick: (selected: IFlatSelectOptionProps) => dispatch(selectFlatSelect(ownProps.id, selected.id)),
 });
 
-export const FlatSelectConnected: React.ComponentClass<IFlatSelectProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FlatSelect);
+export const FlatSelectConnected: React.ComponentClass<IFlatSelectProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(FlatSelect);

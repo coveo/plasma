@@ -10,12 +10,15 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationOwnProps)
     const item: ILoadingState = _.findWhere(state.loadings, {id: 'loading-' + ownProps.id});
 
     return {
-        isLoading: item && item.isOn || false,
+        isLoading: (item && item.isOn) || false,
         withReduxState: true,
     };
 };
 
 const mapDispatchToProps = () => ({});
 
-export const NavigationConnected: React.ComponentClass<INavigationProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Navigation);
+export const NavigationConnected: React.ComponentClass<INavigationProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(Navigation);

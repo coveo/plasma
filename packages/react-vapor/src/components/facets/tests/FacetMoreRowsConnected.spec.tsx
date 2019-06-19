@@ -15,7 +15,6 @@ import {FacetMoreRowsConnected} from '../FacetMoreRowsConnected';
 import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {
-
     describe('<FacetMoreRowConnected />', () => {
         let facet: string;
         let facetRows: JSX.Element[];
@@ -26,30 +25,30 @@ describe('Facets', () => {
         beforeEach(() => {
             const onToggleFacet = jasmine.createSpy('onToggleFacet');
             facet = 'facetTitle';
-            facetRows = [<FacetRow
-                key='row1'
-                facet={facet}
-                facetRow={{name: 'row1', formattedName: 'Row 1'}}
-                onToggleFacet={onToggleFacet}
-                isChecked={false}
-            />, <FacetRow
-                key='row2'
-                facet={facet}
-                facetRow={{name: 'row2', formattedName: 'Row 2'}}
-                onToggleFacet={onToggleFacet}
-                isChecked={false}
-            />];
+            facetRows = [
+                <FacetRow
+                    key="row1"
+                    facet={facet}
+                    facetRow={{name: 'row1', formattedName: 'Row 1'}}
+                    onToggleFacet={onToggleFacet}
+                    isChecked={false}
+                />,
+                <FacetRow
+                    key="row2"
+                    facet={facet}
+                    facetRow={{name: 'row2', formattedName: 'Row 2'}}
+                    onToggleFacet={onToggleFacet}
+                    isChecked={false}
+                />,
+            ];
 
             store = TestUtils.buildStore();
 
             wrapper = mount(
                 <Provider store={store}>
-                    <FacetMoreRowsConnected
-                        facet={facet}
-                        facetRows={facetRows}
-                    />
+                    <FacetMoreRowsConnected facet={facet} facetRows={facetRows} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             store.dispatch(addFacet(facet));
             wrapper.update();

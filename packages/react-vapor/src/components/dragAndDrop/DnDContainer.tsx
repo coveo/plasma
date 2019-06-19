@@ -33,14 +33,13 @@ export const DraggableContainerType = 'CONTAINER_BOX';
     isDragging: monitor.isDragging(),
 }))
 export class DnDContainer extends React.Component<IDraggableContainerOwnProps & IDraggableContainerDnDProps> {
-
     static defaultProps = {
         isDraggable: true,
         draggableContainerProps: {
             className: 'flex flex-center',
         },
         draggableIconProps: {},
-        icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass='icon' />,
+        icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon" />,
     };
 
     private getIcon() {
@@ -62,17 +61,12 @@ export class DnDContainer extends React.Component<IDraggableContainerOwnProps & 
         const opacity = this.props.isDragging ? 0 : 1;
 
         const content = (
-            <div
-                {...this.props.draggableContainerProps}
-                style={{opacity}}
-            >
+            <div {...this.props.draggableContainerProps} style={{opacity}}>
                 {this.getIcon()}
                 {this.props.child && React.cloneElement(this.props.child, this.props.child.props)}
             </div>
         );
 
-        return this.props.isDraggable
-            ? this.props.connectDropTarget(this.props.connectDragPreview(content))
-            : content;
+        return this.props.isDraggable ? this.props.connectDropTarget(this.props.connectDragPreview(content)) : content;
     }
 }

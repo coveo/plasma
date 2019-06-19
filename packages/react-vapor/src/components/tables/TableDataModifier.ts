@@ -8,19 +8,19 @@ import {changeLastUpdated} from '../lastUpdated/LastUpdatedActions';
 import {turnOffLoading, turnOnLoading} from '../loading/LoadingActions';
 import {ITableHeadingAttribute, ITableOwnProps, ITableRowData} from './Table';
 import {ITableStateModifier, modifyState} from './TableActions';
-import {DEFAULT_TABLE_PER_PAGE, TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent, TableSortingOrder} from './TableConstants';
+import {
+    DEFAULT_TABLE_PER_PAGE,
+    TABLE_PREDICATE_DEFAULT_VALUE,
+    TableChildComponent,
+    TableSortingOrder,
+} from './TableConstants';
 import {ITableCompositeState, ITableState} from './TableReducers';
 import {unselectAllRows} from './TableRowActions';
 import {getTableChildComponentId, getTableLoadingIds} from './TableUtils';
 
 export const dispatchPreTableStateModification = (tableId: string, dispatch: IDispatch) => {
     dispatch(unselectAllRows(tableId));
-    dispatch(
-        addActionsToActionBar(
-            getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),
-            [],
-        ),
-    );
+    dispatch(addActionsToActionBar(getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR), []));
     dispatch(turnOnLoading(getTableLoadingIds(tableId)));
 };
 
@@ -32,7 +32,7 @@ export const dispatchPostTableStateModification = (tableId: string, dispatch: ID
 export const applyPredicatesOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
-    tableCompositeState: ITableCompositeState,
+    tableCompositeState: ITableCompositeState
 ): string[] => {
     if (!_.isEmpty(tableCompositeState.predicates)) {
         _.pairs(tableCompositeState.predicates).forEach((keyValuePair: string[]) => {
@@ -40,8 +40,9 @@ export const applyPredicatesOnDisplayedIds = (
             const attributeValue = keyValuePair[1];
 
             if (attributeValue !== TABLE_PREDICATE_DEFAULT_VALUE) {
-                nextDisplayedIds = nextDisplayedIds.filter((dataId: string) =>
-                    tableDataById[dataId][attributeName] === attributeValue);
+                nextDisplayedIds = nextDisplayedIds.filter(
+                    (dataId: string) => tableDataById[dataId][attributeName] === attributeValue
+                );
             }
         });
     }
@@ -53,7 +54,7 @@ export const applyFilterOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps,
+    tableOwnProps: ITableOwnProps
 ): string[] => {
     if (tableCompositeState.filter) {
         const filterDefault = (dataId: string): boolean => {
@@ -63,15 +64,22 @@ export const applyFilterOnDisplayedIds = (
                 let attributeValueToUse = filterFormatter
                     ? filterFormatter(attributeValue, tableDataById[dataId])
                     : attributeValue;
-                attributeValueToUse = !filterFormatter && attributeFormatter
-                    ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
-                    : attributeValueToUse;
-                return contains(convertUndefinedAndNullToEmptyString(attributeValueToUse).toString().toLowerCase(), tableCompositeState.filter.toLowerCase());
+                attributeValueToUse =
+                    !filterFormatter && attributeFormatter
+                        ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
+                        : attributeValueToUse;
+                return contains(
+                    convertUndefinedAndNullToEmptyString(attributeValueToUse)
+                        .toString()
+                        .toLowerCase(),
+                    tableCompositeState.filter.toLowerCase()
+                );
             });
         };
 
         const filterMethod = tableOwnProps.filterMethod
-            ? (dataId: string): boolean => tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps, tableCompositeState.filter)
+            ? (dataId: string): boolean =>
+                  tableOwnProps.filterMethod(tableDataById[dataId], tableOwnProps, tableCompositeState.filter)
             : filterDefault;
 
         nextDisplayedIds = nextDisplayedIds.filter(filterMethod);
@@ -84,13 +92,13 @@ export const applyDatePickerOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps,
+    tableOwnProps: ITableOwnProps
 ): string[] => {
     const {from, to} = tableCompositeState;
     const {datePicker} = tableOwnProps;
     if (from && to && datePicker && datePicker.attributeName) {
         nextDisplayedIds = nextDisplayedIds.filter((dataId: string): boolean =>
-            moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to),
+            moment(tableDataById[dataId][datePicker.attributeName]).isBetween(from, to)
         );
     }
 
@@ -101,11 +109,13 @@ export const applySortOnDisplayedIds = (
     nextDisplayedIds: string[],
     tableDataById: ITableRowData,
     tableCompositeState: ITableCompositeState,
-    tableOwnProps: ITableOwnProps,
+    tableOwnProps: ITableOwnProps
 ): string[] => {
     const {sortState} = tableCompositeState;
     if (sortState && sortState.order !== TableSortingOrder.UNSORTED && !_.isUndefined(sortState.attribute)) {
-        const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {attributeName: sortState.attribute});
+        const headingAttributeToSort = _.findWhere(tableOwnProps.headingAttributes, {
+            attributeName: sortState.attribute,
+        });
         const hasCustomSortByMethod = headingAttributeToSort && headingAttributeToSort.sortByMethod;
         const hasCustomSortMethod = headingAttributeToSort && headingAttributeToSort.sortMethod;
 
@@ -114,21 +124,22 @@ export const applySortOnDisplayedIds = (
                 headingAttributeToSort.sortMethod(
                     _.map(nextDisplayedIds, (displayedId: string) => tableDataById[displayedId]),
                     sortState.attribute,
-                    sortState.order === TableSortingOrder.ASCENDING,
+                    sortState.order === TableSortingOrder.ASCENDING
                 ),
-                'id',
+                'id'
             );
         } else if (hasCustomSortByMethod) {
-            nextDisplayedIds = _.sortBy(
-                nextDisplayedIds,
-                (displayedId: string): string => {
-                    const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
-                    return headingAttributeToSort.sortByMethod(cleanAttributeValue, tableDataById[displayedId]);
-                },
-            );
+            nextDisplayedIds = _.sortBy(nextDisplayedIds, (displayedId: string): string => {
+                const cleanAttributeValue = convertUndefinedAndNullToEmptyString(
+                    tableDataById[displayedId][sortState.attribute]
+                );
+                return headingAttributeToSort.sortByMethod(cleanAttributeValue, tableDataById[displayedId]);
+            });
         } else {
             const defaultSortByMethod = (displayedId: string) => {
-                const cleanAttributeValue = convertUndefinedAndNullToEmptyString(tableDataById[displayedId][sortState.attribute]);
+                const cleanAttributeValue = convertUndefinedAndNullToEmptyString(
+                    tableDataById[displayedId][sortState.attribute]
+                );
                 return cleanAttributeValue.toString().toLowerCase();
             };
 
@@ -145,7 +156,7 @@ export const applySortOnDisplayedIds = (
 
 export const applyPaginationOnDisplayedIds = (
     nextDisplayedIds: string[],
-    tableCompositeState: ITableCompositeState,
+    tableCompositeState: ITableCompositeState
 ): string[] => {
     const startingIndex = (tableCompositeState.page || 0) * (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
     const endingIndex = startingIndex + (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE);
@@ -155,15 +166,25 @@ export const applyPaginationOnDisplayedIds = (
 
 export const defaultTableStateModifier = (
     tableOwnProps: ITableOwnProps,
-    tableCompositeState: ITableCompositeState,
+    tableCompositeState: ITableCompositeState
 ): ITableStateModifier => {
     return (tableState: ITableState): ITableState => {
-        const tableDataById = tableCompositeState.data && tableCompositeState.data.byId || {};
-        let nextDisplayedIds = [...(tableCompositeState.data && tableCompositeState.data.allIds || [])];
+        const tableDataById = (tableCompositeState.data && tableCompositeState.data.byId) || {};
+        let nextDisplayedIds = [...((tableCompositeState.data && tableCompositeState.data.allIds) || [])];
 
         nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
-        nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
-        nextDisplayedIds = applyDatePickerOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+        nextDisplayedIds = applyFilterOnDisplayedIds(
+            nextDisplayedIds,
+            tableDataById,
+            tableCompositeState,
+            tableOwnProps
+        );
+        nextDisplayedIds = applyDatePickerOnDisplayedIds(
+            nextDisplayedIds,
+            tableDataById,
+            tableCompositeState,
+            tableOwnProps
+        );
 
         const totalEntries = nextDisplayedIds.length;
         const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));
@@ -186,7 +207,7 @@ export const defaultTableStateModifier = (
 export const defaultTableStateModifierThunk = (
     tableOwnProps: ITableOwnProps,
     shouldResetPage: boolean,
-    tableCompositeState: ITableCompositeState,
+    tableCompositeState: ITableCompositeState
 ) => {
     return (dispatch: IDispatch) => {
         const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);

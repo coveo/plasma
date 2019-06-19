@@ -13,19 +13,23 @@ import {SecondaryActionsConnected} from '../SecondaryActionsConnected';
 
 describe('Actions', () => {
     const id: string = 'secondary-actions';
-    const actions: IActionOptions[] = [{
-        name: 'action',
-        link: 'http://coveo.com',
-        target: '_blank',
-        enabled: true,
-    }, {
-        separator: true,
-        enabled: true,
-    }, {
-        name: 'action2',
-        trigger: jasmine.createSpy('triggerMethod'),
-        enabled: true,
-    }];
+    const actions: IActionOptions[] = [
+        {
+            name: 'action',
+            link: 'http://coveo.com',
+            target: '_blank',
+            enabled: true,
+        },
+        {
+            separator: true,
+            enabled: true,
+        },
+        {
+            name: 'action2',
+            trigger: jasmine.createSpy('triggerMethod'),
+            enabled: true,
+        },
+    ];
 
     describe('<SecondaryActionsConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
@@ -37,12 +41,9 @@ describe('Actions', () => {
 
             wrapper = mount(
                 <Provider store={store}>
-                    <SecondaryActionsConnected
-                        actions={actions}
-                        id={id}
-                    />
+                    <SecondaryActionsConnected actions={actions} id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             secondaryActions = wrapper.find(SecondaryActions).first();
         });
@@ -72,12 +73,9 @@ describe('Actions', () => {
         it('should display a <PrimaryActionConnected /> if there is only one action', () => {
             wrapper = mount(
                 <Provider store={store}>
-                    <SecondaryActionsConnected
-                        actions={[actions[0]]}
-                        id={id}
-                    />
+                    <SecondaryActionsConnected actions={[actions[0]]} id={id} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             secondaryActions = wrapper.find(SecondaryActions).first();
 

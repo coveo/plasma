@@ -11,7 +11,6 @@ import {TableCollapsibleRowConnected} from '../TableCollapsibleRowConnected';
 import {addRow} from '../TableRowActions';
 
 describe('Tables', () => {
-
     describe('<TableCollapsibleRowConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let tableCollapsibleRow: ReactWrapper<ITableCollapsibleRowProps, any>;
@@ -42,7 +41,7 @@ describe('Tables', () => {
                         </tbody>
                     </table>
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             store.dispatch(addRow(basicTableCollapsibleRowProps.id));
 

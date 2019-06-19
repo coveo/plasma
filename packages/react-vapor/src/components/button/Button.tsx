@@ -14,7 +14,6 @@ export interface IButtonProps extends IBaseActionOptions {
 const ButtonPropsToOmit = keys<IButtonProps>();
 
 export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
-
     static defaultProps: Partial<IButtonProps> = {
         enabled: true,
         name: '',
@@ -48,34 +47,40 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
             });
 
             buttonElement = (
-                <a className={`${buttonClass} btn-container`}
-                    {...buttonAttrs}>
+                <a className={`${buttonClass} btn-container`} {...buttonAttrs}>
                     {this.props.name}
                     {this.props.children}
-                </a>);
+                </a>
+            );
         } else {
             buttonElement = (
-                <button className={buttonClass}
-                    {...buttonAttrs}>
+                <button className={buttonClass} {...buttonAttrs}>
                     {this.props.name}
                     {this.props.children}
-                </button>);
+                </button>
+            );
         }
 
-        return !_.isEmpty(this.props.tooltip)
-            ? <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement} className='btn-container'>
+        return !_.isEmpty(this.props.tooltip) ? (
+            <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement} className="btn-container">
                 {buttonElement}
             </Tooltip>
-            : buttonElement;
+        ) : (
+            buttonElement
+        );
     }
 
     private getClasses() {
-        return classNames('btn', {
-            'mod-primary': this.props.primary,
-            'mod-small': this.props.small,
-            'state-disabled disabled': !this.props.enabled,
-            'text-medium-grey': !this.props.primary && !this.props.enabled,
-        }, this.props.classes);
+        return classNames(
+            'btn',
+            {
+                'mod-primary': this.props.primary,
+                'mod-small': this.props.small,
+                'state-disabled disabled': !this.props.enabled,
+                'text-medium-grey': !this.props.primary && !this.props.enabled,
+            },
+            this.props.classes
+        );
     }
 
     render() {

@@ -32,11 +32,7 @@ gulp.task('clean:tests', (done) => {
 
 gulp.task('clean:others', (done) => {
     if (cleanAll) {
-        clean([
-            '**/*.orig',
-            '**/*.rej',
-            'node_modules',
-        ], done);
+        clean(['**/*.orig', '**/*.rej', 'node_modules'], done);
     } else {
         done();
     }
@@ -60,15 +56,19 @@ gulp.task('internalDefs', () =>
             '**/*.spec.*',
             'src/utils/tests/**/*',
         ],
-    }));
+    })
+);
 
 gulp.task('cleanDefs', () =>
-    gulp.src('dist/react-vapor.d.ts')
-        .pipe(optimizeDeclarations({
-            libraryName: 'ReactVapor',
-            externalTypesToExport: ['redux-thunk'],
-            internalImportPaths: ['src/'],
-        }))
+    gulp
+        .src('dist/react-vapor.d.ts')
+        .pipe(
+            optimizeDeclarations({
+                libraryName: 'ReactVapor',
+                externalTypesToExport: ['redux-thunk'],
+                internalImportPaths: ['src/'],
+            })
+        )
         .pipe(gulp.dest('dist'))
 );
 gulp.task('ts:definitions', gulp.series('internalDefs', 'cleanDefs'));

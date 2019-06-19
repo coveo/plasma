@@ -6,19 +6,14 @@ import {Dropdown, IDropdownProps} from '../Dropdown';
 
 describe('Dropdown', () => {
     const basicDropdownProps: IDropdownProps = {
-        toggleContent: [<span key='toggle'>Toggle</span>],
-        dropdownItems: [
-            <li key='option1'>Option 1</li>,
-            <li key='option2'>Option 2</li>,
-        ],
+        toggleContent: [<span key="toggle">Toggle</span>],
+        dropdownItems: [<li key="option1">Option 1</li>, <li key="option2">Option 2</li>],
     };
 
     describe('<Dropdown />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <Dropdown {...basicDropdownProps} />,
-                );
+                shallow(<Dropdown {...basicDropdownProps} />);
             }).not.toThrow();
         });
     });
@@ -28,10 +23,7 @@ describe('Dropdown', () => {
         let dropdownInstance: Dropdown;
 
         beforeEach(() => {
-            dropdown = mount(
-                <Dropdown {...basicDropdownProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            dropdown = mount(<Dropdown {...basicDropdownProps} />, {attachTo: document.getElementById('App')});
             dropdownInstance = dropdown.instance() as Dropdown;
         });
 

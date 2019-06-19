@@ -27,34 +27,35 @@ export class ColorBar extends React.Component<IColorBarProps> {
     render() {
         return (
             <div className={classNames('full-content-x color-bar', this.props.className)}>
-                {_.map(
-                    this.getAdjustedWidthPerColor(),
-                    (width: number, color: string) => {
-                        const colorBarSection: JSX.Element = (
-                            <Color
-                                key={color}
-                                className='inline-block color-bar-color'
-                                color={color}
-                                style={{height: this.props.height, width: `${width}%`}}>
-                            </Color>
-                        );
+                {_.map(this.getAdjustedWidthPerColor(), (width: number, color: string) => {
+                    const colorBarSection: JSX.Element = (
+                        <Color
+                            key={color}
+                            className="inline-block color-bar-color"
+                            color={color}
+                            style={{height: this.props.height, width: `${width}%`}}
+                        ></Color>
+                    );
 
-                        return this.props.tooltipPerColor[color]
-                            ? (
-                                <Tooltip key={color} {...this.props.tooltipPerColor[color]}>
-                                    {colorBarSection}
-                                </Tooltip>
-                            )
-                            : colorBarSection;
-                    },
-                )}
+                    return this.props.tooltipPerColor[color] ? (
+                        <Tooltip key={color} {...this.props.tooltipPerColor[color]}>
+                            {colorBarSection}
+                        </Tooltip>
+                    ) : (
+                        colorBarSection
+                    );
+                })}
             </div>
         );
     }
 
     getAdjustedWidthPerColor(): KeyValue<number> {
         const nonZeroWidthColors = _.omit(this.props.widthPerColor, (width: number) => !width);
-        const totalColoredWidth = _.reduce(nonZeroWidthColors, (totalWidth: number, width: number) => width + totalWidth, 0);
+        const totalColoredWidth = _.reduce(
+            nonZeroWidthColors,
+            (totalWidth: number, width: number) => width + totalWidth,
+            0
+        );
 
         if (totalColoredWidth === 0) {
             return {transparent: 100};
@@ -63,10 +64,7 @@ export class ColorBar extends React.Component<IColorBarProps> {
         } else if (totalColoredWidth === 100) {
             return nonZeroWidthColors;
         } else {
-            return _.mapObject(
-                nonZeroWidthColors,
-                (width: number) => Math.round(width / totalColoredWidth * 100),
-            );
+            return _.mapObject(nonZeroWidthColors, (width: number) => Math.round((width / totalColoredWidth) * 100));
         }
     }
 }

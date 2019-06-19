@@ -5,7 +5,6 @@ import {BreadcrumbHeader, IBreadcrumbHeaderProps} from '../BreadcrumbHeader';
 import {HeaderWrapper} from '../HeaderWrapper';
 
 describe('<BreadcrumbHeader/>', () => {
-
     const defaultProps: IBreadcrumbHeaderProps = {
         breadcrumb: {
             title: {
@@ -23,12 +22,10 @@ describe('<BreadcrumbHeader/>', () => {
     });
 
     describe('<BreadcrumbHeader /> with default props', () => {
-
         beforeEach(() => {
-            basicHeaderComponent = mount(
-                <BreadcrumbHeader {...defaultProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            basicHeaderComponent = mount(<BreadcrumbHeader {...defaultProps} />, {
+                attachTo: document.getElementById('App'),
+            });
         });
 
         afterEach(() => {
@@ -38,7 +35,9 @@ describe('<BreadcrumbHeader/>', () => {
         it('should render the default Breadcrumb', () => {
             const breadcrumbHeaderComponent = basicHeaderComponent.find(Breadcrumb);
             expect(breadcrumbHeaderComponent.length).toBe(1);
-            expect((breadcrumbHeaderComponent.props() as IBreadcrumbProps).title.text).toBe(defaultProps.breadcrumb.title.text);
+            expect((breadcrumbHeaderComponent.props() as IBreadcrumbProps).title.text).toBe(
+                defaultProps.breadcrumb.title.text
+            );
         });
 
         it('should render the HeaderWrapper', () => {

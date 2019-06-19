@@ -13,7 +13,10 @@ export interface IAutocompleteState {
 export const autocompleteInitialState: IAutocompleteState = {id: undefined, open: false, value: '', active: undefined};
 export const autocompleteCompositeInitialState: IAutocompleteState[] = [];
 
-export const autocompleteReducer = (state: IAutocompleteState = autocompleteInitialState, action: IReduxAction<IAutocompletePayload>): IAutocompleteState => {
+export const autocompleteReducer = (
+    state: IAutocompleteState = autocompleteInitialState,
+    action: IReduxAction<IAutocompletePayload>
+): IAutocompleteState => {
     if (state.id !== action.payload.id && action.type !== AutocompleteActions.add) {
         return state;
     }
@@ -47,14 +50,11 @@ export const autocompleteReducer = (state: IAutocompleteState = autocompleteInit
 
 export const autocompletesReducer = (
     state: IAutocompleteState[] = autocompleteCompositeInitialState,
-    action: IReduxAction<IAutocompletePayload>,
+    action: IReduxAction<IAutocompletePayload>
 ): IAutocompleteState[] => {
     switch (action.type) {
         case AutocompleteActions.add:
-            return [
-                ...state,
-                autocompleteReducer(undefined, action),
-            ];
+            return [...state, autocompleteReducer(undefined, action)];
         case AutocompleteActions.remove:
             return _.reject(state, (listBox: IAutocompleteState) => action.payload.id === listBox.id);
         case ListBoxActions.select:

@@ -9,23 +9,31 @@ export const ModalCompositeExamples: React.FunctionComponent = () => {
     const [isOpened, setOpened] = useState(false);
 
     return (
-        <div className='mt2'>
-            <div className='form-group'>
-                <label className='form-control-label'>Modal Composite (initialize a modal with just one component)</label>
+        <div className="mt2">
+            <div className="form-group">
+                <label className="form-control-label">
+                    Modal Composite (initialize a modal with just one component)
+                </label>
                 <div>
-                    <button className='btn' onClick={() => setOpened(true)}>Open Modal</button>
+                    <button className="btn" onClick={() => setOpened(true)}>
+                        Open Modal
+                    </button>
                     <ModalComposite
-                        id='modal-composite'
+                        id="modal-composite"
                         isOpened={isOpened}
-                        title='Modal composite'
+                        title="Modal composite"
                         onClose={() => setOpened(false)}
-                        modalHeaderChildren={(
-                            <Tooltip title='A tooltip for the title'>
-                                <Svg svgName='help' className='icon mod-2x ml1' svgClass='fill-orange' />
+                        modalHeaderChildren={
+                            <Tooltip title="A tooltip for the title">
+                                <Svg svgName="help" className="icon mod-2x ml1" svgClass="fill-orange" />
                             </Tooltip>
-                        )}
-                        modalBodyChildren='The content of the modal'
-                        modalFooterChildren={<button className='btn' onClick={() => setOpened(false)}>Close</button>}
+                        }
+                        modalBodyChildren="The content of the modal"
+                        modalFooterChildren={
+                            <button className="btn" onClick={() => setOpened(false)}>
+                                Close
+                            </button>
+                        }
                         modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                     />
                 </div>

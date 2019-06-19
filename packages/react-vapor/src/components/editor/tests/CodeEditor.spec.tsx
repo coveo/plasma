@@ -24,10 +24,9 @@ describe('CodeEditor', () => {
         let codeEditorInstance: CodeEditor;
 
         const mountWithProps = (props: Partial<ICodeEditorProps> = {}) => {
-            codeEditor = mount(
-                <CodeEditor {..._.defaults(props, basicProps)} />,
-                {attachTo: document.getElementById('App')},
-            );
+            codeEditor = mount(<CodeEditor {..._.defaults(props, basicProps)} />, {
+                attachTo: document.getElementById('App'),
+            });
             codeEditorInstance = codeEditor.instance() as any;
         };
 
@@ -51,6 +50,18 @@ describe('CodeEditor', () => {
             readOnlyProp = codeEditor.props().readOnly;
 
             expect(readOnlyProp).toBe(true);
+        });
+
+        it('should set readOnly to `nocursor` when receiving true from props, else keep props', () => {
+            mountWithProps({readOnly: true});
+            expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(
+                'nocursor'
+            );
+
+            codeEditor.setProps({readOnly: false});
+            expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(
+                codeEditor.props().readOnly
+            );
         });
 
         it('should get what to do on change state as a prop if set', () => {

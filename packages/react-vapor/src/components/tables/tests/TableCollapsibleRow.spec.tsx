@@ -7,13 +7,10 @@ import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibl
 import {TableError} from '../TableError';
 
 describe('Tables', () => {
-
     describe('<TableCollapsibleRow />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <TableCollapsibleRow nbColumns={6} id='collapsible-row' />,
-                );
+                shallow(<TableCollapsibleRow nbColumns={6} id="collapsible-row" />);
             }).not.toThrow();
         });
     });
@@ -39,10 +36,9 @@ describe('Tables', () => {
                 },
             };
 
-            tableCollapsibleRow = mount(
-                <TableCollapsibleRow {...basicTableCollapsibleRowProps} />,
-                {attachTo: document.getElementById('AppTableBody')},
-            );
+            tableCollapsibleRow = mount(<TableCollapsibleRow {...basicTableCollapsibleRowProps} />, {
+                attachTo: document.getElementById('AppTableBody'),
+            });
         });
 
         afterEach(() => {

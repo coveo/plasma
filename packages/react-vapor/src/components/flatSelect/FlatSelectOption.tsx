@@ -15,7 +15,6 @@ export interface IFlatSelectOptionProps {
 }
 
 export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, any> {
-
     static defaultProps: Partial<IFlatSelectOptionProps> = {
         selected: false,
     };
@@ -27,17 +26,22 @@ export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, an
     }
 
     render() {
-        const classes: string = classNames('flat-select-option', {
-            'selectable': !this.props.selected,
-        },
-            this.props.classes);
+        const classes: string = classNames(
+            'flat-select-option',
+            {
+                selectable: !this.props.selected,
+            },
+            this.props.classes
+        );
 
-        return <a className={classes} onClick={() => this.onClick()}>
-            <Tooltip {...this.props.tooltip}>
-                {this.props.prepend ? <Content {...this.props.prepend} /> : null}
-                {<Content {...this.props.option} />}
-                {this.props.append ? <Content {...this.props.append} /> : null}
-            </Tooltip>
-        </a>;
+        return (
+            <a className={classes} onClick={() => this.onClick()}>
+                <Tooltip {...this.props.tooltip}>
+                    {this.props.prepend ? <Content {...this.props.prepend} /> : null}
+                    {<Content {...this.props.option} />}
+                    {this.props.append ? <Content {...this.props.append} /> : null}
+                </Tooltip>
+            </a>
+        );
     }
 }

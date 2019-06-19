@@ -7,14 +7,9 @@ export interface IModalFooterProps {
 }
 
 export class ModalFooter extends React.Component<IModalFooterProps, {}> {
-
     render() {
         const classes = classNames('modal-footer', this.props.classes);
 
-        return (
-            <div className={classes}>
-                {this.props.children}
-            </div>
-        );
+        return <div className={classes}>{this.props.children}</div>;
     }
 }

@@ -15,7 +15,7 @@ import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';
 const FILTER_THROUGH_DEBOUNCE = 400;
 export const debouncedFilterThrough = _.debounce(
     (dispatch: IDispatch, id: string, filterText: string) => dispatch(filterThrough(id, filterText)),
-    FILTER_THROUGH_DEBOUNCE,
+    FILTER_THROUGH_DEBOUNCE
 );
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => {
@@ -32,5 +32,8 @@ const mapDispatchToProps = (dispatch: IDispatch): IFilterBoxDispatchProps => ({
     onFilter: (id: string, filterText: string) => debouncedFilterThrough(dispatch, id, filterText),
 });
 
-export const FilterBoxConnected: React.ComponentClass<IFilterBoxProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FilterBox);
+export const FilterBoxConnected: React.ComponentClass<IFilterBoxProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(FilterBox);

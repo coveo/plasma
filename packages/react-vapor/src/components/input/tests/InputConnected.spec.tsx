@@ -32,7 +32,7 @@ describe('<InputConnected />', () => {
             <Provider store={store}>
                 <InputConnected {...props} />
             </Provider>,
-            {attachTo: document.getElementById('App')},
+            {attachTo: document.getElementById('App')}
         );
     };
 

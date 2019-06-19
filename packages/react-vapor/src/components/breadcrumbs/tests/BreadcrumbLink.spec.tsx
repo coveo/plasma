@@ -3,7 +3,6 @@ import * as React from 'react';
 import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 describe('<BreadcrumbLink/>', () => {
-
     const defaultProps: IBreadcrumbLinkProps = {
         name: 'title',
         link: '#',
@@ -18,12 +17,8 @@ describe('<BreadcrumbLink/>', () => {
     });
 
     describe('<BreadcrumbLink /> with default props', () => {
-
         const renderBreadcrumbLink = (props: IBreadcrumbLinkProps = defaultProps) => {
-            breadcrumbLinkComponent = mount(
-                <BreadcrumbLink {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            breadcrumbLinkComponent = mount(<BreadcrumbLink {...props} />, {attachTo: document.getElementById('App')});
         };
 
         afterEach(() => {
@@ -62,10 +57,15 @@ describe('<BreadcrumbLink/>', () => {
 
         it('should call each event stop propagation on onClick if it returns false ', () => {
             const stopPropagationSpy: jasmine.Spy = jasmine.createSpy('stopPropagation').and.callThrough();
-            const stopImmediatePropagationSpy: jasmine.Spy = jasmine.createSpy('stopImmediatePropagation').and.callThrough();
+            const stopImmediatePropagationSpy: jasmine.Spy = jasmine
+                .createSpy('stopImmediatePropagation')
+                .and.callThrough();
             const preventDefaultSpy: jasmine.Spy = jasmine.createSpy('preventDefault').and.callThrough();
 
-            const handleOnClickSpy: jasmine.Spy = spyOn<any>(BreadcrumbLink.prototype, 'handleOnClick').and.callThrough();
+            const handleOnClickSpy: jasmine.Spy = spyOn<any>(
+                BreadcrumbLink.prototype,
+                'handleOnClick'
+            ).and.callThrough();
 
             renderBreadcrumbLink({...defaultProps, onClick: () => false});
             breadcrumbLinkComponent.find('a.link').simulate('click', {

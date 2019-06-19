@@ -17,12 +17,17 @@ export class SideNavigationHeader extends React.Component<ISideNavigationHeaderP
     }
 
     render() {
-        const svgClass = classNames('navigation-menu-section-header-icon icon mod-lg transparency-3', this.props.svgClass);
-        const icon = this.props.svgName
-            ? <Svg svgName={this.props.svgName} svgClass={svgClass} />
-            : <span className='navigation-menu-section-header-icon' />;
+        const svgClass = classNames(
+            'navigation-menu-section-header-icon icon mod-lg transparency-3',
+            this.props.svgClass
+        );
+        const icon = this.props.svgName ? (
+            <Svg svgName={this.props.svgName} svgClass={svgClass} />
+        ) : (
+            <span className="navigation-menu-section-header-icon" />
+        );
         return (
-            <div className='navigation-menu-section-header text-white' onClick={() => this.handleClick()}>
+            <div className="navigation-menu-section-header text-white" onClick={() => this.handleClick()}>
                 {icon}
                 {this.props.title}
                 {this.props.children}

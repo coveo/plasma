@@ -6,13 +6,10 @@ import {DeletableInput} from '../DeletableInput';
 import {IMultilineInputProps, IMultilineInputValue, MultilineInput} from '../MultilineInput';
 
 describe('MultilineInput', () => {
-
     describe('<MultilineInput />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <MultilineInput />,
-                );
+                shallow(<MultilineInput />);
             }).not.toThrow();
         });
     });
@@ -28,10 +25,7 @@ describe('MultilineInput', () => {
         const aNewValue = 'a-new-value';
 
         beforeEach(() => {
-            multilineInput = mount(
-                <MultilineInput />,
-                {attachTo: document.getElementById('App')},
-            );
+            multilineInput = mount(<MultilineInput />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

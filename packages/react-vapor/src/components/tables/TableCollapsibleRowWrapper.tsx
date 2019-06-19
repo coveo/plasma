@@ -5,7 +5,6 @@ export interface ITableCollapsibleRowWrapperProps {
     className?: string;
 }
 
-export const TableCollapsibleRowWrapper = (props?: ITableCollapsibleRowWrapperProps): JSX.Element =>
-    <tbody className={props.className}>
-        {props.children}
-    </tbody>;
+export const TableCollapsibleRowWrapper = (props?: ITableCollapsibleRowWrapperProps): JSX.Element => (
+    <tbody className={props.className}>{props.children}</tbody>
+);

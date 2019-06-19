@@ -29,7 +29,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
         if (this.props.onClick) {
             this.props.onClick();
         }
-    }
+    };
 
     private handleDocumentClick = (e: MouseEvent) => {
         if (this.props.isOpened) {
@@ -39,7 +39,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
                 this.props.onDocumentClick();
             }
         }
-    }
+    };
 
     componentWillMount() {
         if (this.props.onRender) {
@@ -62,20 +62,14 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     }
 
     render() {
-        const dropdownClasses = classNames(
-            'dropdown',
-            {'open': this.props.isOpened},
-            this.props.className,
-        );
+        const dropdownClasses = classNames('dropdown', {open: this.props.isOpened}, this.props.className);
 
         return (
-            <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => this.dropdown = dropdown}>
-                <span className='dropdown-toggle inline-flex flex-center' onClick={() => this.handleClick()}>
+            <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
+                <span className="dropdown-toggle inline-flex flex-center" onClick={() => this.handleClick()}>
                     {this.props.toggleContent}
                 </span>
-                <ul className='dropdown-menu normal-height'>
-                    {this.props.dropdownItems}
-                </ul>
+                <ul className="dropdown-menu normal-height">{this.props.dropdownItems}</ul>
             </div>
         );
     }

@@ -29,7 +29,7 @@ describe('Date picker', () => {
                 <Provider store={store}>
                     <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             wrapper.update();
             datesSelection = wrapper.find(DatesSelection).first();
@@ -224,23 +224,26 @@ describe('Date picker', () => {
             expect(_.findWhere(store.getState().datePickers, {id: DATES_SELECTION_ID}).upperLimit).toBe(expectedValue);
         });
 
-        it('should deselect the quick option when calling onBlur prop if the call does not come from the option picker',
-            () => {
-                const expectedValue: string = 'anything';
-                const expectedLabel: string = 'something';
+        it('should deselect the quick option when calling onBlur prop if the call does not come from the option picker', () => {
+            const expectedValue: string = 'anything';
+            const expectedLabel: string = 'something';
 
-                store.dispatch(addOptionPicker(DATES_SELECTION_ID));
-                store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedLabel, expectedValue));
+            store.dispatch(addOptionPicker(DATES_SELECTION_ID));
+            store.dispatch(changeOptionPicker(DATES_SELECTION_ID, expectedLabel, expectedValue));
 
-                datesSelection.props().onBlur(new Date(), true, true);
+            datesSelection.props().onBlur(new Date(), true, true);
 
-                expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe(expectedValue);
-                expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe(expectedLabel);
+            expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe(
+                expectedValue
+            );
+            expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe(
+                expectedLabel
+            );
 
-                datesSelection.props().onBlur(new Date(), true, false);
-                expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe('');
-                expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe('');
-            });
+            datesSelection.props().onBlur(new Date(), true, false);
+            expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe('');
+            expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe('');
+        });
 
         it('should remove the selected limit on blur if the lowerLimit input has changed', () => {
             store.dispatch(selectDate(DATES_SELECTION_ID, DateLimits.lower));

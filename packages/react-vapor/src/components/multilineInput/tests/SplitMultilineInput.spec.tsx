@@ -5,7 +5,13 @@ import * as _ from 'underscore';
 import {Input} from '../../input/Input';
 import {AddInputAction} from '../AddInputAction';
 import {DeleteInputAction} from '../DeleteInputAction';
-import {ISplitInput, ISplitMultilineInputProps, ISplitMultilineInputState, ISplitValue, SplitMultilineInput} from '../SplitMultilineInput';
+import {
+    ISplitInput,
+    ISplitMultilineInputProps,
+    ISplitMultilineInputState,
+    ISplitValue,
+    SplitMultilineInput,
+} from '../SplitMultilineInput';
 
 describe('SplitMultilineInput', () => {
     const basicProps: ISplitMultilineInputProps = {
@@ -25,9 +31,7 @@ describe('SplitMultilineInput', () => {
     describe('<SplitMultilineInput />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <SplitMultilineInput {...basicProps} />,
-                );
+                shallow(<SplitMultilineInput {...basicProps} />);
             }).not.toThrow();
         });
     });
@@ -37,15 +41,14 @@ describe('SplitMultilineInput', () => {
         let splitMultilineInputInstance: SplitMultilineInput;
 
         const defaultValue: ISplitValue = {
-            'first': 'something',
-            'second': 'something else',
+            first: 'something',
+            second: 'something else',
         };
 
         beforeEach(() => {
-            splitMultilineInput = mount(
-                <SplitMultilineInput {...basicProps} />,
-                {attachTo: document.getElementById('App')},
-            );
+            splitMultilineInput = mount(<SplitMultilineInput {...basicProps} />, {
+                attachTo: document.getElementById('App'),
+            });
             splitMultilineInputInstance = splitMultilineInput.instance() as any;
         });
 
@@ -87,11 +90,17 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should not throw if the default values do not reference the inputs correctly', () => {
-            expect(() => splitMultilineInput.setProps(_.extend({}, basicProps, {
-                defaultValues: [{
-                    'third': 'where does this value go?',
-                }],
-            }))).not.toThrow();
+            expect(() =>
+                splitMultilineInput.setProps(
+                    _.extend({}, basicProps, {
+                        defaultValues: [
+                            {
+                                third: 'where does this value go?',
+                            },
+                        ],
+                    })
+                )
+            ).not.toThrow();
         });
 
         it('should call removeLine with the index of the input when clicking the delete input action', () => {
@@ -110,10 +119,20 @@ describe('SplitMultilineInput', () => {
             const expectedValue: string = 'a new value';
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
-            splitMultilineInput.find(Input).first().props().onChange(expectedValue, true);
+            splitMultilineInput
+                .find(Input)
+                .first()
+                .props()
+                .onChange(expectedValue, true);
 
             expect(changeValueSpy).toHaveBeenCalledTimes(1);
-            expect(changeValueSpy).toHaveBeenCalledWith(expectedValue, true, 0, _.keys(defaultValue)[0], jasmine.anything());
+            expect(changeValueSpy).toHaveBeenCalledWith(
+                expectedValue,
+                true,
+                0,
+                _.keys(defaultValue)[0],
+                jasmine.anything()
+            );
         });
 
         it('should call addLine when clicking the <AddInputAction />', () => {
@@ -134,32 +153,60 @@ describe('SplitMultilineInput', () => {
                         validation: (value: any) => true,
                     },
                 ],
-                defaultValues: [{
-                    'new': 'a default value',
-                }],
+                defaultValues: [
+                    {
+                        new: 'a default value',
+                    },
+                ],
             });
             splitMultilineInput.setProps(newProps);
 
-            expect(splitMultilineInput.find(Input).first().props().validate('anything')).toBe(true);
-            expect(splitMultilineInput.find(Input).last().props().validate('anything')).toBe(true);
+            expect(
+                splitMultilineInput
+                    .find(Input)
+                    .first()
+                    .props()
+                    .validate('anything')
+            ).toBe(true);
+            expect(
+                splitMultilineInput
+                    .find(Input)
+                    .last()
+                    .props()
+                    .validate('anything')
+            ).toBe(true);
 
             newProps.inputs[0].validation = (value: any) => false;
             splitMultilineInput.setProps(newProps);
 
-            expect(splitMultilineInput.find(Input).first().props().validate('anything')).toBe(false);
-            expect(splitMultilineInput.find(Input).last().props().validate('anything')).toBe(false);
+            expect(
+                splitMultilineInput
+                    .find(Input)
+                    .first()
+                    .props()
+                    .validate('anything')
+            ).toBe(false);
+            expect(
+                splitMultilineInput
+                    .find(Input)
+                    .last()
+                    .props()
+                    .validate('anything')
+            ).toBe(false);
         });
 
         it('should remove the split value from the state when calling removeLine with the index of the value', () => {
-            splitMultilineInput.setProps(_.extend({}, basicProps, {
-                defaultValues: [
-                    defaultValue,
-                    {
-                        'first': 'another one',
-                        'second': 'second input of the second value',
-                    },
-                ],
-            }));
+            splitMultilineInput.setProps(
+                _.extend({}, basicProps, {
+                    defaultValues: [
+                        defaultValue,
+                        {
+                            first: 'another one',
+                            second: 'second input of the second value',
+                        },
+                    ],
+                })
+            );
 
             expect(splitMultilineInput.state().values.length).toBe(2);
 
@@ -255,7 +302,9 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should call onChange if it is set as a prop when calling handleChange', () => {
-            const newProps: ISplitMultilineInputProps = _.extend({}, basicProps, {onChange: jasmine.createSpy('onChange')});
+            const newProps: ISplitMultilineInputProps = _.extend({}, basicProps, {
+                onChange: jasmine.createSpy('onChange'),
+            });
 
             expect(() => (splitMultilineInputInstance as any).handleChange()).not.toThrow();
 

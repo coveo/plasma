@@ -1,13 +1,15 @@
 {
-  "extends": "./tsconfig",
-  "compilerOptions": {
-    "outDir": "./dist/split/",
-    "sourceMap": true,
-    "rootDir": ".",
-  },
-  "exclude": [
-    "src/**/*.spec.*",
-    "src/utils/tests/TestUtils.tsx",
-    "src/components/tables/tests/TableTestCommon.tsx"
-  ]
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "outDir": "./dist/split/",
+        "sourceMap": true,
+        "rootDir": "."
+    },
+    "exclude": [
+        "src/**/*.spec.*",
+        "src/utils/tests/TestUtils.tsx",
+        "src/components/tables/tests/TableTestCommon.tsx",
+        "karma.entry.ts",
+        "index.ts"
+    ]
 }

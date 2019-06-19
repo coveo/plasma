@@ -13,7 +13,10 @@ import {ILabelProps, Label} from './Label';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 
-type IInputNativeTagOwnProps = Omit<React.AllHTMLAttributes<HTMLInputElement>, 'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'>;
+type IInputNativeTagOwnProps = Omit<
+    React.AllHTMLAttributes<HTMLInputElement>,
+    'defaultValue' | 'onClick' | 'onChange' | 'onBlur' | 'value'
+>;
 
 export interface IInputAdditionalOwnProps {
     id?: string;
@@ -26,8 +29,8 @@ export interface IInputAdditionalOwnProps {
     disabledOnMount?: boolean;
     validateOnMount?: boolean;
     disabledTooltip?: string;
-    minimum?: number; /* @deprecated use min instead */
-    maximum?: number; /* @deprecated use max instead */
+    minimum?: number /* @deprecated use min instead */;
+    maximum?: number /* @deprecated use max instead */;
     onBlur?: (value: string) => void;
     defaultValue?: string;
 }
@@ -83,15 +86,10 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
     componentWillMount() {
         if (this.props.onRender) {
             // undefined validOnMount will default to true in the state
-            const validOnMount = this.props.validateOnMount
-                && this.props.validate
-                && this.props.validate(this.props.defaultValue || '');
+            const validOnMount =
+                this.props.validateOnMount && this.props.validate && this.props.validate(this.props.defaultValue || '');
 
-            this.props.onRender(
-                this.props.defaultValue,
-                validOnMount,
-                this.props.disabledOnMount,
-            );
+            this.props.onRender(this.props.defaultValue, validOnMount, this.props.disabledOnMount);
         }
     }
 
@@ -116,8 +114,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
     }
 
     getInnerValue(): string {
-        return (this.innerInput && this.innerInput.value)
-            || '';
+        return (this.innerInput && this.innerInput.value) || '';
     }
 
     validate() {
@@ -134,9 +131,8 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private handleChange() {
         if (this.props.onChange) {
-            const validOnChange = this.props.validateOnChange
-                && this.props.validate
-                && this.props.validate(this.getInnerValue());
+            const validOnChange =
+                this.props.validateOnChange && this.props.validate && this.props.validate(this.getInnerValue());
             this.props.onChange(this.getInnerValue(), validOnChange);
         }
     }
@@ -155,9 +151,11 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
-        return labelTitle || this.props.validate
-            ? <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>{labelTitle}</Label>
-            : null;
+        return labelTitle || this.props.validate ? (
+            <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>
+                {labelTitle}
+            </Label>
+        ) : null;
     }
 
     render() {
@@ -166,11 +164,14 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
             {
                 'input-field': contains(validatedInputTypes, this.props.type),
             },
-            this.props.classes,
+            this.props.classes
         );
-        const innerInputClasses = classNames({
-            invalid: !this.state.valid && contains(validatedInputTypes, this.props.type),
-        }, this.props.innerInputClasses);
+        const innerInputClasses = classNames(
+            {
+                invalid: !this.state.valid && contains(validatedInputTypes, this.props.type),
+            },
+            this.props.innerInputClasses
+        );
 
         const inputElements = [
             <input
@@ -178,7 +179,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 id={this.props.id}
                 className={innerInputClasses}
                 defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
-                ref={(innerInput: HTMLInputElement) => this.innerInput = innerInput}
+                ref={(innerInput: HTMLInputElement) => (this.innerInput = innerInput)}
                 onBlur={() => this.handleBlur()}
                 onChange={() => this.handleChange()}
                 onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
@@ -190,14 +191,16 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
             this.props.children,
         ];
 
-        return this.props.disabled && this.props.disabledTooltip
-            ? (
-                <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
-                    <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
-                        {inputElements}
-                    </Tooltip>
-                </div>
-            )
-            : <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>{inputElements}</div>;
+        return this.props.disabled && this.props.disabledTooltip ? (
+            <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
+                <Tooltip title={this.props.disabledTooltip} placement={TooltipPlacement.Right}>
+                    {inputElements}
+                </Tooltip>
+            </div>
+        ) : (
+            <div className={classes} onClick={(e: React.MouseEvent<HTMLElement>) => this.handleClick(e)}>
+                {inputElements}
+            </div>
+        );
     }
 }

@@ -9,8 +9,7 @@ export interface IDropdownSearchAutoInfiniteScrollOptions {
     loader?: React.ReactNode;
 }
 
-export interface IDropdownSearchAutoInfiniteScrollProps
-    extends IDropdownSearchAutoInfiniteScrollOptions {
+export interface IDropdownSearchAutoInfiniteScrollProps extends IDropdownSearchAutoInfiniteScrollOptions {
     options: JSX.Element[];
     onMouseEnter: () => void;
     ulElementRefFunction: (menu: HTMLElement) => void;
@@ -20,7 +19,10 @@ interface IDropdownSearchAutoInfiniteScrollState {
     activeOptions: JSX.Element[];
 }
 
-export class DropdownSearchAutoInfiniteScroll extends React.Component<IDropdownSearchAutoInfiniteScrollProps, IDropdownSearchAutoInfiniteScrollState> {
+export class DropdownSearchAutoInfiniteScroll extends React.Component<
+    IDropdownSearchAutoInfiniteScrollProps,
+    IDropdownSearchAutoInfiniteScrollState
+> {
     constructor(props: IDropdownSearchAutoInfiniteScrollProps, state: IDropdownSearchAutoInfiniteScrollState) {
         super(props, state);
         this.state = {

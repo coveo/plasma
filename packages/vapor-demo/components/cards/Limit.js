@@ -1,4 +1,4 @@
-import * as VaporSVG from "coveo-styleguide";
+import * as VaporSVG from 'coveo-styleguide';
 import Svg from '../Svg';
 
 const Limit = () => (
@@ -29,8 +29,8 @@ const Limit = () => (
                 <div className="flex space-between">
                     <label className="form-control-label">Limit with History</label>
                     <span className="icon mod-lg limit-history-button">
-                    <Svg name={VaporSVG.svg.menuAnalytics.name} className='fill-medium-blue' />
-                </span>
+                        <Svg name={VaporSVG.svg.menuAnalytics.name} className="fill-medium-blue" />
+                    </span>
                 </div>
                 <div className="limit-box-numbers pt1 flex">
                     <div className="limit-box-usage">
@@ -38,7 +38,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">100</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="SecondLimit" type="number" defaultValue="110" required/>
+                        <input id="SecondLimit" type="number" defaultValue="110" required />
                         <label htmlFor="SecondLimit">Limit</label>
                     </div>
                 </div>
@@ -59,7 +59,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">30</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="ThirdLimit" type="number" defaultValue="30" required/>
+                        <input id="ThirdLimit" type="number" defaultValue="30" required />
                         <label htmlFor="ThirdLimit">Limit</label>
                     </div>
                 </div>
@@ -80,7 +80,7 @@ const Limit = () => (
                         <span className="limit-box-usage-value">30</span>
                     </div>
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="FourthLimit" type="number" defaultValue="30" required/>
+                        <input id="FourthLimit" type="number" defaultValue="30" required />
                         <label htmlFor="FourthLimit">Limit</label>
                     </div>
                 </div>
@@ -97,7 +97,7 @@ const Limit = () => (
                 </div>
                 <div className="limit-box-numbers pt1 flex">
                     <div className="limit-box-limit form-group input-field validate">
-                        <input id="FifthLimit" type="number" defaultValue="219000" required/>
+                        <input id="FifthLimit" type="number" defaultValue="219000" required />
                         <label htmlFor="FifthLimit">Limit</label>
                     </div>
                 </div>

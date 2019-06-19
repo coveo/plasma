@@ -8,12 +8,12 @@ export interface GetPaginationProps {
 
 const getPaginationPage = (state: IReactVaporState, props: GetPaginationProps): number => {
     const pagination = _.findWhere(state.paginationComposite, {id: props.id});
-    return pagination && pagination.pageNb || 0;
+    return (pagination && pagination.pageNb) || 0;
 };
 
 const getPerPage = (state: IReactVaporState, props: GetPaginationProps): number => {
     const pagination = _.findWhere(state.perPageComposite, {id: props.id});
-    return pagination && pagination.perPage || PER_PAGE_NUMBERS[1];
+    return (pagination && pagination.perPage) || PER_PAGE_NUMBERS[1];
 };
 
 export const NavigationSelectors = {

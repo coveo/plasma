@@ -20,9 +20,7 @@ export interface IDropOwnProps extends Partial<IDropPodProps> {
 export type IDropStateProps = ReturnType<typeof mapStateToProps>;
 export type IDropDispatchProps = ReturnType<typeof mapDispatchToProps>;
 
-export interface IDropProps extends IDropOwnProps,
-    Partial<IDropStateProps>,
-    Partial<IDropDispatchProps> {}
+export interface IDropProps extends IDropOwnProps, Partial<IDropStateProps>, Partial<IDropDispatchProps> {}
 
 const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps) => ({
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
@@ -55,6 +53,9 @@ export class Drop extends React.PureComponent<IDropProps> {
 
     componentWillUnmount() {
         this.removeEventOnClickOnDocument();
+        if (this.props.isOpen) {
+            this.props.toggle(false);
+        }
     }
 
     componentDidUpdate(prevProps: Readonly<IDropProps>) {
@@ -68,10 +69,7 @@ export class Drop extends React.PureComponent<IDropProps> {
     render() {
         return (
             <>
-                <div
-                    ref={this.button}
-                    {...this.props.buttonContainerProps}
-                >
+                <div ref={this.button} {...this.props.buttonContainerProps}>
                     {this.props.renderOpenButton(this.onClick)}
                 </div>
                 {this.createPortalMenu()}
@@ -100,7 +98,12 @@ export class Drop extends React.PureComponent<IDropProps> {
                 parentSelector={this.props.parentSelector}
                 renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
-                    <div style={style} ref={this.dropRef = dropRef} className={classNames('drop', this.props.listContainerProps.className)} {...this.props.listContainerProps} >
+                    <div
+                        style={style}
+                        ref={(this.dropRef = dropRef)}
+                        className={classNames('drop', this.props.listContainerProps.className)}
+                        {...this.props.listContainerProps}
+                    >
                         {this.props.children}
                     </div>
                 )}

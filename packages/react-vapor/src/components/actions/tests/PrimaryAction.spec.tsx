@@ -5,16 +5,19 @@ import {IActionOptions} from '../Action';
 import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction';
 
 describe('Actions', () => {
-    const actions: IActionOptions[] = [{
-        name: 'action',
-        link: 'http://google.com',
-        target: '_blank',
-        enabled: true,
-    }, {
-        name: 'action2',
-        trigger: jasmine.createSpy('triggerMethod'),
-        enabled: true,
-    }];
+    const actions: IActionOptions[] = [
+        {
+            name: 'action',
+            link: 'http://google.com',
+            target: '_blank',
+            enabled: true,
+        },
+        {
+            name: 'action2',
+            trigger: jasmine.createSpy('triggerMethod'),
+            enabled: true,
+        },
+    ];
 
     describe('<PrimaryAction />', () => {
         it('should render without errors', () => {
@@ -28,10 +31,7 @@ describe('Actions', () => {
         let primaryAction: ReactWrapper<IPrimaryActionProps, any>;
 
         beforeEach(() => {
-            primaryAction = mount(
-                <PrimaryAction action={actions[0]} />,
-                {attachTo: document.getElementById('App')},
-            );
+            primaryAction = mount(<PrimaryAction action={actions[0]} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {

@@ -11,7 +11,9 @@ const mapStateToProps = () => {
     return {};
 };
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<ILastUpdatedPayload>) => void): ILastUpdateConnectedExamplesProps => {
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<ILastUpdatedPayload>) => void
+): ILastUpdateConnectedExamplesProps => {
     return {
         onRefresh: () => {
             dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));
@@ -21,7 +23,6 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<ILastUpdatedPayload>
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateConnectedExamplesProps, any> {
-
     componentDidMount() {
         setInterval(() => {
             this.props.onRefresh();
@@ -30,10 +31,13 @@ export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateCon
 
     render() {
         return (
-            <div className='form-group' style={{width: 400}}>
+            <div className="form-group" style={{width: 400}}>
                 <div>
-                    <label className='form-control-label'>Last update updating with Redux (every 10 seconds here with the changeLastUpdated action with the id)</label>
-                    <LastUpdatedConnected id='LastUpdatedConnectedExampleComponent' />
+                    <label className="form-control-label">
+                        Last update updating with Redux (every 10 seconds here with the changeLastUpdated action with
+                        the id)
+                    </label>
+                    <LastUpdatedConnected id="LastUpdatedConnectedExampleComponent" />
                 </div>
             </div>
         );

@@ -9,7 +9,6 @@ import {
 } from '../InlinePromptReducers';
 
 describe('InlinePrompt', () => {
-
     describe('prompts', () => {
         const genericAction: IReduxAction<IPromptActionPayload> = {
             type: 'DO_SOMETHING',
@@ -71,10 +70,12 @@ describe('InlinePrompt', () => {
                 {
                     id: 'some-prompt2',
                     options: {userChoice: undefined, onClick: undefined},
-                }, {
+                },
+                {
                     id: 'some-prompt',
                     options: {userChoice: undefined, onClick: undefined},
-                }, {
+                },
+                {
                     id: 'some-prompt3',
                     options: {userChoice: undefined, onClick: undefined},
                 },
@@ -103,10 +104,12 @@ describe('InlinePrompt', () => {
                 {
                     id: 'some-prompt2',
                     options: {userChoice: undefined, onClick: undefined},
-                }, {
+                },
+                {
                     id: 'some-prompt',
                     options: {userChoice: undefined, onClick: undefined},
-                }, {
+                },
+                {
                     id: 'some-prompt3',
                     options: {userChoice: undefined, onClick: undefined},
                 },

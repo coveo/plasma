@@ -8,17 +8,15 @@ describe('Badge', () => {
 
     it('should render without errors', () => {
         expect(() => {
-            shallow(<Badge label='badge' />);
+            shallow(<Badge label="badge" />);
         }).not.toThrow();
     });
 
     describe('<Badge />', () => {
-
         const mountWithProps = (props: Partial<IBadgeProps>) => {
-            badge = mount(
-                <Badge {..._.defaults(props, {label: 'badge'})} />,
-                {attachTo: document.getElementById('App')},
-            );
+            badge = mount(<Badge {..._.defaults(props, {label: 'badge'})} />, {
+                attachTo: document.getElementById('App'),
+            });
         };
 
         it('should render badge with the label specified as prop', () => {

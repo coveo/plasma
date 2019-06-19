@@ -32,46 +32,51 @@ export interface ITableChildBodyProps extends ITableBodyInheritedFromTableProps 
 }
 
 export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
-    const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${props.rowData.id}`;
-    const tableHeadingRowContent = _.map(props.headingAttributes, (headingAttribute: ITableHeadingAttribute, xPosition: number) => {
-        const {attributeName, attributeFormatter} = headingAttribute;
-        const headingRowContent: React.ReactNode = attributeFormatter
-            ? attributeFormatter(props.rowData[attributeName], attributeName, props.rowData)
-            : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
+    const headingAndCollapsibleId = `${getTableChildComponentId(props.tableId, TableChildComponent.TABLE_HEADING_ROW)}${
+        props.rowData.id
+    }`;
+    const tableHeadingRowContent = _.map(
+        props.headingAttributes,
+        (headingAttribute: ITableHeadingAttribute, xPosition: number) => {
+            const {attributeName, attributeFormatter} = headingAttribute;
+            const headingRowContent: React.ReactNode = attributeFormatter
+                ? attributeFormatter(props.rowData[attributeName], attributeName, props.rowData)
+                : convertUndefinedAndNullToEmptyString(props.rowData[attributeName]);
 
-        return (
-            <td key={`cell-${xPosition}`}
-                className={classNames(getAdditionalClasses(headingAttribute.additionalCellClasses, props.rowData))}
-                onClick={(event: React.MouseEvent<HTMLTableDataCellElement>) => handleOnClick(event, headingAttribute, props)}
-            >
-                <div className='wrapper'>
-                    {headingRowContent}
-                </div>
-            </td>
-        );
-    });
+            return (
+                <td
+                    key={`cell-${xPosition}`}
+                    className={classNames(getAdditionalClasses(headingAttribute.additionalCellClasses, props.rowData))}
+                    onClick={(event: React.MouseEvent<HTMLTableDataCellElement>) =>
+                        handleOnClick(event, headingAttribute, props)
+                    }
+                >
+                    <div className="wrapper">{headingRowContent}</div>
+                </td>
+            );
+        }
+    );
     const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(props.rowData);
-    const collapsibleRow = collapsibleData
-        ? (
-            <TableCollapsibleRowConnected
-                id={headingAndCollapsibleId}
-                key={`collapsible-row-${props.rowData.id}`}
-                nbColumns={props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}>
-                {collapsibleData}
-            </TableCollapsibleRowConnected>
-        )
-        : null;
+    const collapsibleRow = collapsibleData ? (
+        <TableCollapsibleRowConnected
+            id={headingAndCollapsibleId}
+            key={`collapsible-row-${props.rowData.id}`}
+            nbColumns={props.headingAttributes.length + TOGGLE_ARROW_CELL_COUNT}
+        >
+            {collapsibleData}
+        </TableCollapsibleRowConnected>
+    ) : null;
 
     const tableRowWrapperClasses = classNames({
         'table-body-loading': !!props.isLoading,
     });
     const tableRowClasses = classNames(
         {
-            disabled: !!props.rowData.disabled || !_.isUndefined(props.rowData.enabled) && !props.rowData.enabled,
+            disabled: !!props.rowData.disabled || (!_.isUndefined(props.rowData.enabled) && !props.rowData.enabled),
             'no-hover': !!props.withoutHoverOnRow,
             'row-disabled': props.disabled,
         },
-        getAdditionalClasses(props.additionalRowClasses, props.rowData),
+        getAdditionalClasses(props.additionalRowClasses, props.rowData)
     );
 
     const tableHeadingRowConnectedNode = (
@@ -90,9 +95,11 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
                     props.handleOnRowClick(props.getActions(props.rowData), props.rowData);
                 }
             }}
-            onDoubleClick={() => props.getActions(props.rowData)
-                .filter((action) => action.callOnDoubleClick)
-                .forEach((action) => action.trigger())
+            onDoubleClick={() =>
+                props
+                    .getActions(props.rowData)
+                    .filter((action) => action.callOnDoubleClick)
+                    .forEach((action) => action.trigger())
             }
             isMultiSelect={props.isMultiSelect}
             selectionDisabled={props.getActions(props.rowData).length < 1}
@@ -102,16 +109,20 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         </TableHeadingRowConnected>
     );
 
-    return collapsibleRow || !!props.collapsibleFormatter
-        ? (
-            <TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
-                {tableHeadingRowConnectedNode}
-                {collapsibleRow}
-            </TableCollapsibleRowWrapper>
-        )
-        : tableHeadingRowConnectedNode;
+    return collapsibleRow || !!props.collapsibleFormatter ? (
+        <TableCollapsibleRowWrapper className={tableRowWrapperClasses}>
+            {tableHeadingRowConnectedNode}
+            {collapsibleRow}
+        </TableCollapsibleRowWrapper>
+    ) : (
+        tableHeadingRowConnectedNode
+    );
 };
 
-const handleOnClick = (event: React.MouseEvent<HTMLTableDataCellElement>, headingAttributes: ITableHeadingAttribute, childBodyProps: ITableChildBodyProps) => {
+const handleOnClick = (
+    event: React.MouseEvent<HTMLTableDataCellElement>,
+    headingAttributes: ITableHeadingAttribute,
+    childBodyProps: ITableChildBodyProps
+) => {
     callIfDefined(headingAttributes.onClickCell, event, childBodyProps);
 };

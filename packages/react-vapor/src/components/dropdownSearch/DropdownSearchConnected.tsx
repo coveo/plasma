@@ -2,7 +2,13 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {DropdownSearch, IDropdownOption, IDropdownSearchOwnProps, IDropdownSearchProps, IDropdownSearchStateProps} from './DropdownSearch';
+import {
+    DropdownSearch,
+    IDropdownOption,
+    IDropdownSearchOwnProps,
+    IDropdownSearchProps,
+    IDropdownSearchStateProps,
+} from './DropdownSearch';
 import {
     addDropdownSearch,
     applyFilterDropdownSearch,
@@ -36,12 +42,16 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps
     };
 };
 
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: IDropdownSearchOwnProps,
-) => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IDropdownSearchOwnProps) => ({
     onMount: () => {
-        dispatch(addDropdownSearch(ownProps.id, ownProps.defaultOptions, ownProps.defaultSelectedOption, ownProps.supportSingleCustomOption));
+        dispatch(
+            addDropdownSearch(
+                ownProps.id,
+                ownProps.defaultOptions,
+                ownProps.defaultSelectedOption,
+                ownProps.supportSingleCustomOption
+            )
+        );
 
         // TODO: remove this once the component is refactored and the DropdownSearchReducer is not overwriting the defaultSelectedOption passed above anymore.
         if (ownProps.defaultSelectedOption) {
@@ -53,12 +63,18 @@ const mapDispatchToProps = (
     onBlur: () => dispatch(toggleDropdownSearch(ownProps.id)),
     onOptionClick: (option: IDropdownOption) => dispatch(selectOptionDropdownSearch(ownProps.id, option)),
     onFilterTextChange: (filterText: string) => dispatch(applyFilterDropdownSearch(ownProps.id, filterText)),
-    onKeyDownFilterBox: (keyCode: number, activeOption?: IDropdownOption) => dispatch(selectOrSetNextActiveOption(ownProps.id, keyCode, activeOption)),
-    onKeyDownDropdownButton: (keyCode: number, activeOption?: IDropdownOption) => dispatch(selectOrSetNextActiveOption(ownProps.id, keyCode, activeOption)),
-    onMouseEnterDropdown: (activeOption?: IDropdownOption) => dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1, activeOption)),
+    onKeyDownFilterBox: (keyCode: number, activeOption?: IDropdownOption) =>
+        dispatch(selectOrSetNextActiveOption(ownProps.id, keyCode, activeOption)),
+    onKeyDownDropdownButton: (keyCode: number, activeOption?: IDropdownOption) =>
+        dispatch(selectOrSetNextActiveOption(ownProps.id, keyCode, activeOption)),
+    onMouseEnterDropdown: (activeOption?: IDropdownOption) =>
+        dispatch(updateActiveOptionDropdownSearch(ownProps.id, -1, activeOption)),
     onClose: () => dispatch(closeDropdownSearch(ownProps.id)),
     updateOptions: (options: IDropdownOption[]) => dispatch(updateOptionsDropdownSearch(ownProps.id, options)),
 });
 
-export const DropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(DropdownSearch);
+export const DropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(DropdownSearch);

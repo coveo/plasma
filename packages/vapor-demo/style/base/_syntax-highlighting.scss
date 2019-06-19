@@ -2,17 +2,16 @@
 * Syntax highlighting styles
 */
 .highlight {
+    margin: 1em 0;
+    padding: 1em;
+
+    overflow: auto;
     font-size: 13px;
     font-family: monospace;
     line-height: 20px;
-
-    margin: 1em 0;
-    padding: 1em;
     background: #f6f6f6;
     border: 1px solid #eeeeee;
     border-radius: 0.15em;
-
-    overflow: auto;
     .c {
         color: #998;
         font-style: italic;

@@ -10,9 +10,7 @@ describe('FlatSelect', () => {
     describe('<FlatSelectOption />', () => {
         it('should render without errors', () => {
             expect(() => {
-                shallow(
-                    <FlatSelectOption id={UUID.generate()} option={{content: 'test'}} />,
-                );
+                shallow(<FlatSelectOption id={UUID.generate()} option={{content: 'test'}} />);
             }).not.toThrow();
         });
     });
@@ -31,10 +29,7 @@ describe('FlatSelect', () => {
         const content: IContentProps = {content: () => <Svg {...svg} />, classes: ['mr1']};
 
         const renderFlatSelectOption = (props: IFlatSelectOptionProps = defaultProps) => {
-            flatSelect = mount(
-                <FlatSelectOption {...props} />,
-                {attachTo: document.getElementById('App')},
-            );
+            flatSelect = mount(<FlatSelectOption {...props} />, {attachTo: document.getElementById('App')});
         };
 
         afterEach(() => {
@@ -54,18 +49,22 @@ describe('FlatSelect', () => {
         });
 
         it('should not have the class selectable if the props selected is true', () => {
-            renderFlatSelectOption(_.extend({}, defaultProps, {
-                selected: true,
-            }));
+            renderFlatSelectOption(
+                _.extend({}, defaultProps, {
+                    selected: true,
+                })
+            );
 
             const optionElement = flatSelect.find('a');
             expect(optionElement.hasClass('selectable')).toBe(false);
         });
 
         it('should have the class selectable if the props selected is false', () => {
-            renderFlatSelectOption(_.extend({}, defaultProps, {
-                selected: false,
-            }));
+            renderFlatSelectOption(
+                _.extend({}, defaultProps, {
+                    selected: false,
+                })
+            );
 
             const optionElement = flatSelect.find('a');
             expect(optionElement.hasClass('selectable')).toBe(true);
@@ -78,17 +77,21 @@ describe('FlatSelect', () => {
         });
 
         it('should have 2 <Content/> if a prop prepend is set', () => {
-            renderFlatSelectOption(_.extend({}, defaultProps, {
-                prepend: content,
-            }));
+            renderFlatSelectOption(
+                _.extend({}, defaultProps, {
+                    prepend: content,
+                })
+            );
 
             expect(flatSelect.find(Content).length).toBe(2);
         });
 
         it('should have 2 <Content/> if a prop append is set', () => {
-            renderFlatSelectOption(_.extend({}, defaultProps, {
-                append: content,
-            }));
+            renderFlatSelectOption(
+                _.extend({}, defaultProps, {
+                    append: content,
+                })
+            );
 
             expect(flatSelect.find(Content).length).toBe(2);
         });

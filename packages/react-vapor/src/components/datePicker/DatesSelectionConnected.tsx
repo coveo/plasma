@@ -38,19 +38,22 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnPr
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: IDatesSelectionOwnProps,
+    ownProps: IDatesSelectionOwnProps
 ): IDatesSelectionDispatchProps => ({
     onRender: () => {
-        dispatch(addDatePicker(ownProps.id,
-            ownProps.isRange,
-            ownProps.rangeLimit,
-            ownProps.color,
-            ownProps.calendarId,
-            ownProps.initiallyUnselected,
-            ownProps.isClearable,
-            undefined,
-            ownProps.initialDateRange,
-        ));
+        dispatch(
+            addDatePicker(
+                ownProps.id,
+                ownProps.isRange,
+                ownProps.rangeLimit,
+                ownProps.color,
+                ownProps.calendarId,
+                ownProps.initiallyUnselected,
+                ownProps.isClearable,
+                undefined,
+                ownProps.initialDateRange
+            )
+        );
     },
     onDestroy: () => dispatch(removeDatePicker(ownProps.id)),
     onBlur: (date: Date, isUpperLimit: boolean, optionPicker = false) => {
@@ -68,9 +71,12 @@ const mapDispatchToProps = (
         }
     },
     onClick: (isUpperLimit: boolean) => {
-        dispatch(selectDate(ownProps.id, (isUpperLimit ? DateLimits.upper : DateLimits.lower)));
+        dispatch(selectDate(ownProps.id, isUpperLimit ? DateLimits.upper : DateLimits.lower));
     },
 });
 
-export const DatesSelectionConnected: React.ComponentClass<IDatesSelectionProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(DatesSelection);
+export const DatesSelectionConnected: React.ComponentClass<IDatesSelectionProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(DatesSelection);

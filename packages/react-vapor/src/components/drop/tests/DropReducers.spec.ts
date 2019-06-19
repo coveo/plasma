@@ -4,7 +4,6 @@ import {dropInitialState, dropReducer, DropSelectors} from '../redux/DropReducer
 
 describe('dropReducer', () => {
     describe('DROP_TOGGLE', () => {
-
         const id = 'petit pied';
         const groupId = 'groupTest';
         const initialState = {[groupId]: {id, isOpen: false}};
@@ -30,13 +29,11 @@ describe('dropReducer', () => {
     });
 
     describe('DropSelectors', () => {
-
         const id = 'id';
         const groupId = 'tomatos';
         const mockState = {drop: {[groupId]: {id, isOpen: false}}};
 
         describe('getDropByGroup', () => {
-
             it('should return undefined if the the group do not exist', () => {
                 expect(DropSelectors.getByGroup(mockState, {groupId: 'notAGroupId'})).toBeUndefined();
             });
@@ -47,7 +44,6 @@ describe('dropReducer', () => {
         });
 
         describe('isDropOpen', () => {
-
             it('should return false if the group do not exist', () => {
                 expect(DropSelectors.isOpen(mockState, {id: 'test', groupId: 'notAGroupId'})).toBe(false);
             });

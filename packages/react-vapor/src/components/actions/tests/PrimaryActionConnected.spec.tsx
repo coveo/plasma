@@ -11,7 +11,6 @@ import {PrimaryActionConnected} from '../PrimaryActionConnected';
 import {TriggerActionConnected} from '../TriggerActionConnected';
 
 describe('Actions', () => {
-
     describe('TablePrimaryActionView', () => {
         const action: IActionOptions = {
             name: 'action2',
@@ -29,7 +28,7 @@ describe('Actions', () => {
                 <Provider store={store}>
                     <PrimaryActionConnected action={action} />
                 </Provider>,
-                {attachTo: document.getElementById('App')},
+                {attachTo: document.getElementById('App')}
             );
             primaryAction = wrapper.find(PrimaryAction).first();
         });

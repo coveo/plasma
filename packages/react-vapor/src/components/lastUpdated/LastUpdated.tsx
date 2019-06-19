@@ -22,7 +22,6 @@ export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedSta
 export const LAST_UPDATE_LABEL: string = 'Last update:';
 
 export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
-
     componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
@@ -41,7 +40,9 @@ export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
         const lastUpdateTime: string = moment(time).format('LTS');
 
         return (
-            <div className={classNames('table-last-update', this.props.className)}>{label} {lastUpdateTime}</div>
+            <div className={classNames('table-last-update', this.props.className)}>
+                {label} {lastUpdateTime}
+            </div>
         );
     }
 }

@@ -9,5 +9,8 @@ const mapStateToProps = (): ISecondaryActionsStateProps => ({
 
 const mapDispatchToProps = () => ({});
 
-export const SecondaryActionsConnected: React.ComponentClass<ISecondaryActionsProps> =
-    connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SecondaryActions);
+export const SecondaryActionsConnected: React.ComponentClass<ISecondaryActionsProps> = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(SecondaryActions);

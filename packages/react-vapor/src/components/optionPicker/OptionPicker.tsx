@@ -17,10 +17,12 @@ export interface IOptionPickerDispatchProps {
     onClick?: (value: string, label: string) => void;
 }
 
-export interface IOptionPickerProps extends IOptionPickerOwnProps, IOptionPickerStateProps, IOptionPickerDispatchProps {}
+export interface IOptionPickerProps
+    extends IOptionPickerOwnProps,
+        IOptionPickerStateProps,
+        IOptionPickerDispatchProps {}
 
 export class OptionPicker extends React.Component<IOptionPickerProps, any> {
-
     private handleClick(value: string, label: string) {
         if (this.props.onClick) {
             this.props.onClick(value, label);
@@ -41,20 +43,17 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
 
     render() {
         const options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => {
-
-            return <li key={`option-${this.props.id}-${index}`}>
-                <Option
-                    option={option}
-                    onClick={(value: string, label: string) => this.handleClick(value, label)}
-                    isActive={this.props.activeLabel && option.label === this.props.activeLabel}
-                />
-            </li>;
+            return (
+                <li key={`option-${this.props.id}-${index}`}>
+                    <Option
+                        option={option}
+                        onClick={(value: string, label: string) => this.handleClick(value, label)}
+                        isActive={this.props.activeLabel && option.label === this.props.activeLabel}
+                    />
+                </li>
+            );
         });
 
-        return (
-            <ul className='option-picker flex flex-wrap mt2 mb2'>
-                {options}
-            </ul>
-        );
+        return <ul className="option-picker flex flex-wrap mt2 mb2">{options}</ul>;
     }
 }

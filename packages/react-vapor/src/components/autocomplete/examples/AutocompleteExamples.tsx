@@ -26,7 +26,10 @@ export class AutocompleteExamples extends React.Component<{}, ISingleSelectExamp
     constructor(props: {}, state: ISingleSelectExamplesState) {
         super(props, state);
 
-        const second = _.map(defaultItems, (item: IItemBoxProps): IItemBoxProps => ({value: item.displayValue, disabled: item.disabled}));
+        const second = _.map(
+            defaultItems,
+            (item: IItemBoxProps): IItemBoxProps => ({value: item.displayValue, disabled: item.disabled})
+        );
         second[0].selected = true;
 
         this.state = {
@@ -38,22 +41,22 @@ export class AutocompleteExamples extends React.Component<{}, ISingleSelectExamp
 
     render() {
         return (
-            <div className='mt2'>
+            <div className="mt2">
                 <h1>Autocomplete</h1>
-                <div className='form-group'>
+                <div className="form-group">
                     <AutocompleteConnected id={UUID.generate()} items={this.state.first}>
                         <Label>An autocomplete</Label>
                     </AutocompleteConnected>
                 </div>
 
-                <div className='form-group'>
+                <div className="form-group">
                     <AutocompleteConnected id={UUID.generate()} items={this.state.second} inline>
                         <Label>An inline autocomplete with a selected value</Label>
                     </AutocompleteConnected>
                 </div>
 
-                <div className='form-group'>
-                    <AutocompleteConnected id={UUID.generate()} className='block' items={this.state.third}>
+                <div className="form-group">
+                    <AutocompleteConnected id={UUID.generate()} className="block" items={this.state.third}>
                         <Label>An autocomplete with a display value different than the value</Label>
                     </AutocompleteConnected>
                 </div>

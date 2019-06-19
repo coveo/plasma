@@ -15,7 +15,10 @@ export const loadingInitialState: ILoadingState = {
 
 export const loadingsInitialState: ILoadingState[] = [];
 
-export const loadingReducer = (state: ILoadingState = loadingInitialState, action: IReduxAction<IReduxActionsPayload>): ILoadingState => {
+export const loadingReducer = (
+    state: ILoadingState = loadingInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): ILoadingState => {
     switch (action.type) {
         case LoadingActions.add:
             return {
@@ -45,13 +48,13 @@ export const loadingReducer = (state: ILoadingState = loadingInitialState, actio
     }
 };
 
-export const loadingsReducer = (state: ILoadingState[] = loadingsInitialState, action: IReduxAction<IReduxActionsPayload>): ILoadingState[] => {
+export const loadingsReducer = (
+    state: ILoadingState[] = loadingsInitialState,
+    action: IReduxAction<IReduxActionsPayload>
+): ILoadingState[] => {
     switch (action.type) {
         case LoadingActions.add:
-            return [
-                ...state,
-                loadingReducer(undefined, action),
-            ];
+            return [...state, loadingReducer(undefined, action)];
         case LoadingActions.remove:
             return _.reject(state, (loading: ILoadingState) => {
                 return loading.id === action.payload.ids[0];
