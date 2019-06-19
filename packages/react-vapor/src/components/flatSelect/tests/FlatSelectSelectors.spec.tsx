@@ -1,10 +1,10 @@
-import { IFlatSelectState } from '../FlatSelectReducers';
-import { FlatSelectSelectors } from '../FlatSelectSelectors';
+import {IFlatSelectState} from '../FlatSelectReducers';
+import {FlatSelectSelectors} from '../FlatSelectSelectors';
 
-fdescribe('FlatSelectSelectors', () => {
+describe('FlatSelectSelectors', () => {
     describe('getInput', () => {
         it('should return the default flatSelect state when the flatSelect is not in the store', () => {
-            const FlatSelect = FlatSelectSelectors.getInput({ flatSelect: [] }, { id: 'nothing is selected by the user' });
+            const FlatSelect = FlatSelectSelectors.getInput({flatSelect: []}, {id: 'nothing is selected by the user'});
             expect(FlatSelect).toBeUndefined();
         });
 
@@ -13,14 +13,20 @@ fdescribe('FlatSelectSelectors', () => {
                 id: 'the-id',
                 selectedOptionId: 'the-selected-option-id',
             };
-            const selectedFlatSelect = FlatSelectSelectors.getInput({ flatSelect: [expectedSelectedFlatSelect] }, { id: expectedSelectedFlatSelect.id });
+            const selectedFlatSelect = FlatSelectSelectors.getInput(
+                {flatSelect: [expectedSelectedFlatSelect]},
+                {id: expectedSelectedFlatSelect.id}
+            );
             expect(selectedFlatSelect).toEqual(expectedSelectedFlatSelect);
         });
     });
 
     describe('getSelectedOptionId', () => {
         it('should return undefined state if no other value is chosen in the state', () => {
-            const selectedOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [] }, { id: 'nothing-is-selected-by-the-user' });
+            const selectedOptionId = FlatSelectSelectors.getSelectedOptionId(
+                {flatSelect: []},
+                {id: 'nothing-is-selected-by-the-user'}
+            );
             expect(selectedOptionId).toBeUndefined();
         });
 
@@ -29,7 +35,10 @@ fdescribe('FlatSelectSelectors', () => {
                 id: 'the-id',
                 selectedOptionId: 'the-selected-option-id',
             };
-            const selectedFlatSelectOptionId = FlatSelectSelectors.getSelectedOptionId({ flatSelect: [expectedSelectedFlatSelect] }, { id: expectedSelectedFlatSelect.id });
+            const selectedFlatSelectOptionId = FlatSelectSelectors.getSelectedOptionId(
+                {flatSelect: [expectedSelectedFlatSelect]},
+                {id: expectedSelectedFlatSelect.id}
+            );
             expect(expectedSelectedFlatSelect.selectedOptionId).toEqual(selectedFlatSelectOptionId);
         });
     });
