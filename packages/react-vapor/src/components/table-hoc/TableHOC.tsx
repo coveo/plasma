@@ -35,7 +35,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                 })}
             >
                 {this.renderActions()}
-                <table className={classNames(this.props.className)}>
+                <table className={classNames(this.props.className)} id={this.props.id}>
                     {this.props.tableHeader}
                     <tbody>{this.props.renderBody(this.props.data || [])}</tbody>
                 </table>

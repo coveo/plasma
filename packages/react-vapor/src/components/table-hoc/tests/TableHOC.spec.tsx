@@ -43,6 +43,12 @@ describe('TableHOC', () => {
             expect(wrapper.find('table').hasClass(expectedClass)).toBe(true);
         });
 
+        fit('should allow custom id on the table', () => {
+            const expectedID = 'some-id';
+            const wrapper = shallow(<TableHOC {...defaultProps} id={expectedID} />);
+            expect(wrapper.find('table').prop('id')).toEqual(expectedID);
+        });
+
         it('should render a .table-container', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} />);
             expect(wrapper.find('.table-container').exists()).toBe(true);
