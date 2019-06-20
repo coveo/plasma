@@ -101,7 +101,9 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
                     <SingleSelectWithFilter
                         id={UUID.generate()}
                         items={this.state.hoc}
-                        matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1}
+                        matchFilter={(filter: string, item: IItemBoxProps) =>
+                            _.isString(item.displayValue) ? item.displayValue.indexOf(filter) !== -1 : false
+                        }
                     />
                 </div>
                 <div className="form-group">

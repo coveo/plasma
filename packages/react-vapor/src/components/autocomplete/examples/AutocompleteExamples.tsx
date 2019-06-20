@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import {getReactNodeTextContent} from '../../../utils/JSXUtils';
 import {UUID} from '../../../utils/UUID';
 import {Label} from '../../input/Label';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -28,12 +29,18 @@ export class AutocompleteExamples extends React.Component<{}, ISingleSelectExamp
 
         const second = _.map(
             defaultItems,
-            (item: IItemBoxProps): IItemBoxProps => ({value: item.displayValue, disabled: item.disabled})
+            (item: IItemBoxProps): IItemBoxProps => ({
+                value: getReactNodeTextContent(item.displayValue),
+                disabled: item.disabled,
+            })
         );
         second[0].selected = true;
 
         this.state = {
-            first: _.map(defaultItems, (item: IItemBoxProps) => ({value: item.displayValue, disabled: item.disabled})),
+            first: _.map(defaultItems, (item: IItemBoxProps) => ({
+                value: getReactNodeTextContent(item.displayValue),
+                disabled: item.disabled,
+            })),
             second,
             third: _.clone(defaultItems),
         };
