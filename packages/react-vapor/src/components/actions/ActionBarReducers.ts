@@ -6,6 +6,7 @@ import {ListBoxActions} from '../listBox/ListBoxActions';
 import {LoadingActions} from '../loading/LoadingActions';
 import {PaginationActions} from '../navigation/pagination/NavigationPaginationActions';
 import {PerPageActions} from '../navigation/perPage/NavigationPerPageActions';
+import {TableHOCRowActionsType} from '../table-hoc/actions/TableHOCRowActions';
 import {TableHOCUtils} from '../table-hoc/TableHOCUtils';
 import {IActionOptions} from './Action';
 import {ActionBarActions} from './ActionBarActions';
@@ -39,6 +40,7 @@ export const actionBarReducer = (
             };
         case PerPageActions.change:
         case PaginationActions.changePage:
+        case TableHOCRowActionsType.deselectAll:
         case ListBoxActions.select:
             return state.id === action.payload.id ||
                 TableHOCUtils.getPaginationId(state.id) === action.payload.id ||
@@ -61,6 +63,7 @@ export const actionBarsReducer = (
     switch (action.type) {
         case ActionBarActions.addActions:
         case PaginationActions.changePage:
+        case TableHOCRowActionsType.deselectAll:
         case PerPageActions.change:
         case ListBoxActions.select:
         case LoadingActions.turnOn:
