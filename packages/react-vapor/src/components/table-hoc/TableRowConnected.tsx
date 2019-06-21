@@ -191,7 +191,7 @@ class TableRowConnected extends React.PureComponent<
 
     private handleDoubleClick = () => {
         _(this.props.actions).each((action: IActionOptions) =>
-            action.callOnDoubleClick && action.link ? window.location.replace(action.link) : action.trigger()
+            action.callOnDoubleClick && action.link ? (window.location.href = action.link) : action.trigger()
         );
     };
 }
