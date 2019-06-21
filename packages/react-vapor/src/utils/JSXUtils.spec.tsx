@@ -17,7 +17,7 @@ describe('JSXUtils', () => {
                     <div>
                         {'Hello there!    '}
                         <span>
-                            {'Can you see me? '}
+                            {' Can you see me? '}
                             <span>I can.</span>
                         </span>
                     </div>

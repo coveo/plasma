@@ -3,3 +3,4 @@
 **/_gh_pages/
 packages/vapor/docs
 .github
+react-vapor/packages/vapor/scss/sprites.scss

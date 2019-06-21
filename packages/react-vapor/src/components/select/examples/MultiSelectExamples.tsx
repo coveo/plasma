@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {getReactNodeTextContent} from '../../../utils/JSXUtils';
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -149,7 +150,9 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                     <MultiSelectWithFilter
                         id={UUID.generate()}
                         items={this.state.hoc}
-                        matchFilter={(filter: string, item: IItemBoxProps) => item.displayValue.indexOf(filter) !== -1}
+                        matchFilter={(filter: string, item: IItemBoxProps) =>
+                            getReactNodeTextContent(item.displayValue).indexOf(filter) !== -1
+                        }
                     />
                 </div>
                 <div className="form-group">

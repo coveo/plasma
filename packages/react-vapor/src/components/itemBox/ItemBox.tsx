@@ -7,7 +7,7 @@ import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 
 export interface IItemBoxProps {
     value: string;
-    displayValue?: string;
+    displayValue?: React.ReactNode;
     highlight?: string;
     selected?: boolean;
     active?: boolean;

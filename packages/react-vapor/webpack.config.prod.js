@@ -124,6 +124,12 @@ const config = {
         'react-redux': {root: 'ReactRedux', commonjs2: 'react-redux', commonjs: 'react-redux', amd: 'react-redux'},
         redux: {root: 'Redux', commonjs2: 'redux', commonjs: 'redux', amd: 'redux'},
         underscore: {root: '_', commonjs2: 'underscore', commonjs: 'underscore', amd: 'underscore'},
+        'coveo-styleguide': {
+            root: 'VaporSVG',
+            commonjs2: 'coveo-styleguide',
+            commonjs: 'coveo-styleguide',
+            amd: 'coveo-styleguide',
+        },
         'underscore.string': {
             root: 's',
             commonjs2: 'underscore.string',
