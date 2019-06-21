@@ -2,10 +2,11 @@ import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {IFlatSelectState} from './FlatSelectReducers';
+import {flatSelectInitialState, IFlatSelectState} from './FlatSelectReducers';
+
 
 const getInput = (state: IReactVaporState, ownProps: {id: string}): IFlatSelectState => {
-    return _.findWhere(state.flatSelect, {id: ownProps.id});
+    return _.findWhere(state.flatSelect, {id: ownProps.id}) ||flatSelectInitialState;
 };
 
 const getSelectedOptionId = createSelector(
