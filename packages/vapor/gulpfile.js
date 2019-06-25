@@ -125,7 +125,7 @@ const svgTemplate = (key, svgString) => `
     ${key}: {
         name: "${key}",
         svgString: ${svgString},
-        render: (...args) => svgWrapper(svg.${key}.svgString, ...args)
+        render: function(svgClass, spanClass, title, attr){ return svgWrapper(svg.${key}.svgString, svgClass, spanClass, title, attr)},
     },`;
 
 function Dictionary(from) {
