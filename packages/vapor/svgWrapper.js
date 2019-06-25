@@ -27,17 +27,23 @@ function renderSvg(svgString, svgClass, attr) {
     return '<svg class="' + svgClass + '"></svg>';
 }
 
-export function svgWrapper(svgString, svgClass = '', spanClass = '', title = '', attr = {}) {
+export function svgWrapper(svgString, svgClass, spanClass, title, attr) {
     if (svgString.indexOf('#coveo-icon-') !== -1) {
         const svgNameFormatted = formatSvgName(svgString.replace('#coveo-icon-', ''));
         if (!_.isUndefined(svgEnum[svgNameFormatted])) {
-            return svgEnum[svgNameFormatted].render(svgClass, spanClass, title, attr);
+            return svgEnum[svgNameFormatted].render(svgClass || '', spanClass || '', title || '', attr || '');
         }
     }
 
     const titleToDisplay = title ? 'title="' + title + '"' : '';
     const spanClassAttribute = spanClass ? 'class="' + spanClass + '"' : '';
     return (
-        '<span ' + spanClassAttribute + ' ' + titleToDisplay + '>' + renderSvg(svgString, svgClass, attr) + '</span>'
+        '<span ' +
+        spanClassAttribute +
+        ' ' +
+        titleToDisplay +
+        '>' +
+        renderSvg(svgString || '', svgClass || '', attr || '') +
+        '</span>'
     );
 }
