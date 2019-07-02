@@ -21,7 +21,8 @@ const config = {
             'd3',
         ],
     },
-    mode: 'production',
+    mode: 'development',
+    devtool: 'source-map',
     output: {
         path: path.join(__dirname, '/dist'),
         filename: '[name].js',

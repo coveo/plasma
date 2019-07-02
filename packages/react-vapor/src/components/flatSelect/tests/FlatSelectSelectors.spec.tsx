@@ -1,4 +1,4 @@
-import {IFlatSelectState, flatSelectInitialState} from '../FlatSelectReducers';
+import {flatSelectInitialState, IFlatSelectState} from '../FlatSelectReducers';
 import {FlatSelectSelectors} from '../FlatSelectSelectors';
 
 describe('FlatSelectSelectors', () => {
