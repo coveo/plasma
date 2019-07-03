@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "4.2.1",
+    "version": "4.2.2",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -20,12 +20,12 @@
         "url": "git+https://github.com/coveo/react-vapor.git"
     },
     "scripts": {
-        "start": "npm run docs && webpack-dev-server --mode development --config webpack.config.js --host 0.0.0.0 --devtool eval --inline --hot --progress --colors",
-        "docs": "webpack --config webpack.config.js",
+        "start": "webpack-dev-server --progress",
+        "docs": "webpack --devtool source-map",
         "compileTs": "webpack --config webpack.config.prod.js",
         "minify": "webpack --config webpack.config.prod.minify.js",
-        "build": "gulp clean && npm run compileTs && npm run minify && gulp ts:definitions",
-        "build:dev": "gulp clean && npm run compileTs && gulp ts:definitions",
+        "build": "gulp clean && concurrently \"npm run compileTs\" \"npm run minify\" \"gulp ts:definitions\"",
+        "build:dev": "gulp clean && concurrently \"npm run compileTs\" \"gulp ts:definitions\"",
         "pretest": "gulp clean:tests",
         "test": "karma start",
         "test:compile": "webpack --display-error-details --config webpack.config.test.js",
@@ -97,7 +97,8 @@
         "classnames": "2.2.6",
         "codecov": "3.2.0",
         "codemirror": "5.42.0",
-        "coveo-styleguide": "^4.2.0",
+        "concurrently": "4.1.0",
+        "coveo-styleguide": "^4.2.2",
         "css-loader": "1.0.1",
         "d3": "3.5.17",
         "del": "4.0.0",

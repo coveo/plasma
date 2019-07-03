@@ -17,12 +17,12 @@ describe('JSXUtils', () => {
                     <div>
                         {'Hello there!    '}
                         <span>
-                            {' Can you see me? '}
+                            {" Can't you see me? "}
                             <span>I can.</span>
                         </span>
                     </div>
                 )
-            ).toBe('Hello there! Can you see me? I can.');
+            ).toBe("Hello there! Can't you see me? I can.");
         });
     });
 });
