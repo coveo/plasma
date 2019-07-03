@@ -83,7 +83,7 @@ const Utility = () => {
 
             <Component
                 id="hover"
-                title="hover"
+                title="Hover"
                 usage="Utility to apply hover on element."
                 stylesheet="scss/utility/layout.scss"
                 withSource
@@ -93,7 +93,7 @@ const Utility = () => {
 
             <Component
                 id="shadow"
-                title="shadow"
+                title="Shadow"
                 usage="Utility to apply shadow on element."
                 stylesheet="scss/utility/shadow.scss"
                 withSource
