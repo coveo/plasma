@@ -7,6 +7,7 @@ import Hover from '../components/utility/Hover';
 import SpacedBoxes from '../components/utility/SpacedBoxes';
 import Transparency from '../components/utility/Transparency';
 import Whitespace from '../components/utility/Whitespace';
+import Shadows from '../components/utility/Shadow';
 
 const Utility = () => {
     return (
@@ -82,12 +83,22 @@ const Utility = () => {
 
             <Component
                 id="hover"
-                title="hover"
+                title="Hover"
                 usage="Utility to apply hover on element."
                 stylesheet="scss/utility/layout.scss"
                 withSource
             >
                 <Hover />
+            </Component>
+
+            <Component
+                id="shadow"
+                title="Shadow"
+                usage="Utility to apply shadow on element."
+                stylesheet="scss/utility/shadow.scss"
+                withSource
+            >
+                <Shadows />
             </Component>
         </Layout>
     );
