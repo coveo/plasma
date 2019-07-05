@@ -257,6 +257,7 @@ const Navigation = () => {
                             <NavigationLink href="/utility#borders" name="Borders" />,
                             <NavigationLink href="/utility#transparency" name="Transparency" />,
                             <NavigationLink href="/utility#hover" name="Hover" />,
+                            <NavigationLink href="/utility#shadow" name="Shadow" />,
                         ]}
                     />
                 </ul>

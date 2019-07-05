@@ -13,7 +13,7 @@ module.exports = {
         publicPath: '/assets/',
         filename: 'bundle.js',
     },
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
@@ -21,6 +21,7 @@ module.exports = {
         new webpack.DefinePlugin({
             WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
         }),
+        new webpack.HotModuleReplacementPlugin(),
     ],
     module: {
         rules: [
@@ -111,8 +112,11 @@ module.exports = {
         ],
     },
     devServer: {
-        contentBase: './docs',
+        contentBase: path.join(__dirname, 'docs'),
         host: '0.0.0.0',
         disableHostCheck: true,
+        compress: true,
+        hot: true,
+        inline: true,
     },
 };
