@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
 import {Tooltip} from '../tooltip/Tooltip';
 
-export interface ITitleProps extends React.ClassAttributes<Title> {
+export interface ITitleProps {
     prefix?: string;
     text: string;
     withTitleTooltip?: boolean;
@@ -13,45 +13,33 @@ export interface ITitleProps extends React.ClassAttributes<Title> {
     classes?: string[];
 }
 
-export class Title extends React.Component<ITitleProps, {}> {
-    static defaultProps: Partial<ITitleProps> = {
-        prefix: '',
-        withTitleTooltip: false,
-    };
+export const Title: React.FunctionComponent<ITitleProps> = (props) => {
+    const linkClasses = classNames('inline-doc-link', props.documentationLink && props.documentationLink.linkClasses);
+    const titleClasses: string = classNames('bold', 'text-medium-blue', 'mr1', 'truncate', props.classes);
+    const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
 
-    private getLinkIcon(): JSX.Element {
-        if (!this.props.documentationLink) {
-            return null;
-        }
+    const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;
+    const title = props.withTitleTooltip ? (
+        <Tooltip title={props.text} placement="left">
+            {props.text}
+        </Tooltip>
+    ) : (
+        props.text
+    );
 
-        const linkClasses = classNames('inline-doc-link', this.props.documentationLink.linkClasses).split(' ');
+    return (
+        <div className="flex flex-center full-content-x">
+            <h1 className={titleClasses}>
+                <span className={prefixClasses}>{props.prefix}</span>
+                {title}
+            </h1>
+            {linkIcon}
+            {props.children}
+        </div>
+    );
+};
 
-        return <LinkSvg {...this.props.documentationLink} linkClasses={linkClasses} />;
-    }
-
-    render() {
-        const prefixClasses: string = classNames({
-            mr1: !_.isEmpty(this.props.prefix),
-        });
-
-        const titleClasses: string = classNames('bold', 'text-medium-blue', 'mr1', 'truncate', this.props.classes);
-
-        const title = this.props.withTitleTooltip ? (
-            <Tooltip title={this.props.text} placement="left">
-                {this.props.text}
-            </Tooltip>
-        ) : (
-            this.props.text
-        );
-
-        return (
-            <div className="flex flex-center full-content-x">
-                <h1 className={titleClasses}>
-                    <span className={prefixClasses}>{this.props.prefix}</span>
-                    {title}
-                </h1>
-                {this.getLinkIcon()}
-            </div>
-        );
-    }
-}
+Title.defaultProps = {
+    prefix: '',
+    withTitleTooltip: false,
+};

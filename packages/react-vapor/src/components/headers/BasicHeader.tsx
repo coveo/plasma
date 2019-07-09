@@ -21,7 +21,7 @@ export class BasicHeader extends React.Component<IBasicHeaderProps, {}> {
     render() {
         return (
             <HeaderWrapper {..._.omit(this.props, 'title')}>
-                <Title {...this.props.title} />
+                <Title {...this.props.title}>{this.props.children}</Title>
             </HeaderWrapper>
         );
     }
