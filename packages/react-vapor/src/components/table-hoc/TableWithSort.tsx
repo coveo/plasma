@@ -2,15 +2,16 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
-import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
+import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 
-export interface ITableWithSortConfig extends IMaybeServerConfig {
+export interface ITableWithSortConfig extends WithServerSideProcessingProps {
     sort?: (sortKey: string, isAsc: boolean, a: any, b: any) => number;
 }
 
@@ -19,29 +20,34 @@ export interface ITableWithSortStateProps {
     sortKey?: string;
 }
 
-export interface ITableWithSortProps extends Partial<ITableWithSortStateProps> {}
+export interface ITableWithSortProps
+    extends ITableHOCOwnProps,
+        Partial<ITableWithSortStateProps>,
+        WithServerSideProcessingProps {}
 
 const TableWithSortPropsToOmit = keys<ITableWithSortStateProps>();
 
 const defaultSort = () => 0;
 
-export type SortableTableComponent = React.ComponentClass<ITableHOCOwnProps & ITableWithSortProps>;
+export type SortableTableComponent = React.ComponentType<ITableWithSortProps>;
 
-export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) => (
+export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {}) => (
     Component: SortableTableComponent
 ): SortableTableComponent => {
+    const config = HocUtils.supplyConfig(supplier);
+
     const mapStateToProps = (
         state: IReactVaporState,
-        ownProps: ITableHOCOwnProps
+        ownProps: ITableWithSortProps
     ): ITableWithSortStateProps | ITableHOCOwnProps => {
-        const config = HocUtils.supplyConfig(supplier);
         const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);
         const sort = config.sort || defaultSort;
         if (tableSort && ownProps.data) {
             return {
-                data: config.isServer
-                    ? ownProps.data
-                    : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
+                data:
+                    ownProps.isServer || config.isServer
+                        ? ownProps.data
+                        : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
                 sortKey: tableSort && tableSort.id,
                 isAsc: tableSort && tableSort.isAsc,
             };
@@ -50,7 +56,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig>) =>
     };
 
     @ReduxConnect(mapStateToProps)
-    class TableWithSort extends React.Component<ITableHOCOwnProps & ITableWithSortProps> {
+    class TableWithSort extends React.Component<ITableWithSortProps> {
         componentDidUpdate(prevProps: ITableWithSortProps) {
             if (prevProps.sortKey !== this.props.sortKey || prevProps.isAsc !== this.props.isAsc) {
                 callIfDefined(this.props.onUpdate);

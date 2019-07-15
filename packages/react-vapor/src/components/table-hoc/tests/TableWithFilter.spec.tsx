@@ -1,6 +1,8 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithFilter} from '../TableWithFilter';
 
@@ -40,14 +42,19 @@ describe('Table HOC', () => {
         });
 
         describe('when server side', () => {
-            const TableWithFilterServer = _.compose(tableWithFilter({isServer: true}))(TableHOC);
+            const TableWithFilterServer = _.compose(
+                withServerSideProcessing,
+                tableWithFilter()
+            )(TableHOC);
 
             it('should not filter out elements if the filter is server side', () => {
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} />,
                     getStateWithFilter(filterText)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
 
@@ -60,7 +67,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithFilter(filterText)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.setProps({filter: 'a'});
                 wrapper.update();
@@ -74,7 +83,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithFilter(filterText)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.setProps({ignore: true});
                 wrapper.update();

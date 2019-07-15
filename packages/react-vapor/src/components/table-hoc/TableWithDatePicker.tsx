@@ -2,6 +2,8 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
@@ -9,10 +11,10 @@ import {ReduxConnect} from '../../utils/ReduxUtils';
 import {IDatePickerDropdownChildrenProps, IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
 import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConnected';
 import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
-import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
+import {ITableHOCOwnProps} from './TableHOC';
 
 export interface ITableWithDatePickerConfig
-    extends IMaybeServerConfig,
+    extends WithServerSideProcessingProps,
         Partial<IDatePickerDropdownOwnProps>,
         Partial<IDatePickerDropdownChildrenProps> {
     matchDates?: (data: any, lowerLimit: Date, upperLimit?: Date) => boolean;
@@ -30,7 +32,8 @@ export interface ITableWithFilterDispatchProps {
 export interface ITableWithDatePickerProps
     extends Partial<ITableWithDatePickerStateProps>,
         Partial<ITableWithFilterDispatchProps>,
-        ITableHOCOwnProps {}
+        ITableHOCOwnProps,
+        WithServerSideProcessingProps {}
 
 const TableWithFilterPropsToOmit = keys<ITableWithDatePickerStateProps>();
 
@@ -41,11 +44,12 @@ const defaultMatchDates = () => true;
 export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePickerConfig> = {}) => (
     Component: FilterableTableComponent
 ): FilterableTableComponent => {
+    const config = HocUtils.supplyConfig(supplier);
+
     const mapStateToProps = (
         state: IReactVaporState,
         ownProps: ITableWithDatePickerProps
     ): ITableWithDatePickerStateProps | ITableHOCOwnProps => {
-        const config = HocUtils.supplyConfig(supplier);
         const [lowerLimit, upperLimit] = DatePickerSelectors.getDatePickerLimits(state, {id: ownProps.id});
         const matchDates = config.matchDates || defaultMatchDates;
         const filterData = () =>
@@ -55,7 +59,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
         return {
             lowerLimit,
             upperLimit,
-            data: config.isServer ? ownProps.data : ownProps.data && filterData(),
+            data: config.isServer || ownProps.isServer ? ownProps.data : ownProps.data && filterData(),
         };
     };
 
@@ -72,7 +76,6 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
         }
 
         render(): React.ReactNode {
-            const config = HocUtils.supplyConfig(supplier);
             const datePickerAction = (
                 <DatePickerDropdownConnected
                     {...(config as any)}

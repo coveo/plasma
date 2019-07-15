@@ -2,6 +2,8 @@ import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {createMockStore, mockStore} from 'redux-test-utils';
 import * as _ from 'underscore';
+
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../../ReactVapor';
 import {turnOffLoading} from '../../loading/LoadingActions';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
@@ -101,14 +103,19 @@ describe('Table HOC', () => {
             });
 
             describe('when server side', () => {
-                const TableWithPaginationServer = _.compose(tableWithPagination({isServer: true}))(TableHOC);
+                const TableWithPaginationServer = _.compose(
+                    withServerSideProcessing,
+                    tableWithPagination()
+                )(TableHOC);
 
                 it('should not slice data', () => {
                     const perPage = 3;
                     const page = 2;
 
                     store = getStoreWithPage(page, perPage);
-                    const wrapper = shallowWithStore(<TableWithPaginationServer {...defaultProps} />, store).dive();
+                    const wrapper = shallowWithStore(<TableWithPaginationServer {...defaultProps} />, store)
+                        .dive()
+                        .dive();
                     const tableData = wrapper.find(TableHOC).prop('data');
                     expect(tableData).toEqual(defaultProps.data);
                 });
@@ -122,7 +129,9 @@ describe('Table HOC', () => {
                     const wrapper = shallowWithStore(
                         <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
                         store
-                    ).dive();
+                    )
+                        .dive()
+                        .dive();
 
                     wrapper.setProps({pageNb: initialPage + 1});
                     wrapper.update();
@@ -142,7 +151,9 @@ describe('Table HOC', () => {
                     const wrapper = shallowWithStore(
                         <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
                         store
-                    ).dive();
+                    )
+                        .dive()
+                        .dive();
 
                     wrapper.setProps({ignore: true});
                     wrapper.update();

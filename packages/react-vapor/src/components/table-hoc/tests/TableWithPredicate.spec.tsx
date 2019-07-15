@@ -1,6 +1,8 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {TableHOCUtils} from '../TableHOCUtils';
 import {tableWithPredicate} from '../TableWithPredicate';
@@ -56,7 +58,8 @@ describe('Table HOC', () => {
 
         describe('when server side', () => {
             const TableWithPredicateServer = _.compose(
-                tableWithPredicate({id: predicateId, isServer: true, values: predicateValues})
+                withServerSideProcessing,
+                tableWithPredicate({id: predicateId, values: predicateValues})
             )(TableHOC);
 
             it('should not filter out elements', () => {
@@ -64,7 +67,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} />,
                     getStateWithPredicate(predicate)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
 
@@ -77,7 +82,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithPredicate(predicate)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.setProps({predicate: predicateValues[0].value});
                 wrapper.update();
@@ -91,7 +98,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithPredicate(predicate)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.setProps({ignore: true});
                 wrapper.update();
