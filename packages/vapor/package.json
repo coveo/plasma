@@ -23,15 +23,17 @@
         "type": "git",
         "url": "https://github.com/coveo/react-vapor.git"
     },
-    "dependencies": {
-        "chosen-npm": "1.4.2",
-        "coveo-slider": "1.0.1",
-        "materialize-css": "0.98.2"
+    "peerDependencies": {
+        "chosen-npm": "^1.4.2",
+        "coveo-slider": "^1.0.1",
+        "materialize-css": "^0.98.2"
     },
     "devDependencies": {
         "ansi-colors": "3.2.4",
         "autosize": "3.0.21",
         "concurrently": "4.0.1",
+        "chosen-npm": "1.4.2",
+        "coveo-slider": "1.0.1",
         "coveo-png-sprite": "1.0.1",
         "css-loader": "2.1.1",
         "cssnano": "4.1.10",
@@ -47,6 +49,7 @@
         "gulp-rename": "1.2.2",
         "gulp-svgmin": "1.2.4",
         "gulp-uglify": "3.0.0",
+        "materialize-css": "0.98.2",
         "merge-stream": "1.0.1",
         "mini-css-extract-plugin": "0.7.0",
         "minimist": "1.2.0",
