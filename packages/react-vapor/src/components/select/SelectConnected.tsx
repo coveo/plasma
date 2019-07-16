@@ -11,7 +11,6 @@ import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
-import {DropActions} from '../drop/redux/DropActions';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
@@ -71,7 +70,7 @@ const mapDispatchToProps = (
     onToggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
     onSelectValue: (value: string, isMulti: boolean) => {
         dispatch(selectListBoxOption(ownProps.id, isMulti, value));
-        dispatch(DropActions.toggle(ownProps.id, SelectConnected.DropGroup, false));
+        // dispatch(DropActions.toggle(ownProps.id, SelectConnected.DropGroup, false));
     },
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
@@ -205,7 +204,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
             if (active) {
                 this.props.onSelectValue(active.value, this.props.multi);
             }
-        } else if (keyCode.enter === e.keyCode) {
+        } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode) && !this.props.isOpened) {
             this.onToggleDropdown(e);
         }
 
