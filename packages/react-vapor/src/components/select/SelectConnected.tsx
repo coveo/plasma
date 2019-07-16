@@ -70,7 +70,6 @@ const mapDispatchToProps = (
     onToggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
     onSelectValue: (value: string, isMulti: boolean) => {
         dispatch(selectListBoxOption(ownProps.id, isMulti, value));
-        // dispatch(DropActions.toggle(ownProps.id, SelectConnected.DropGroup, false));
     },
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
