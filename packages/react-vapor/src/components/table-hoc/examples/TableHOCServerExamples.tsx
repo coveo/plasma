@@ -2,6 +2,7 @@ import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {DateUtils} from '../../../utils/DateUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
@@ -22,22 +23,20 @@ import {tableWithSort} from '../TableWithSort';
 import {IExampleRowData, TableHOCServerActions} from './TableHOCServerExampleReducer';
 
 const ServerTable = _.compose(
+    withServerSideProcessing,
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithPredicate({
         id: 'address.city',
         prepend: <span className="mr1 text-medium-grey">City:</span>,
-        isServer: true,
         values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'Lebsackbury', value: 'Lebsackbury'}],
     }),
     tableWithPredicate({
         id: 'username',
         prepend: <span className="mr1 text-medium-grey">Username:</span>,
-        isServer: true,
         values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'bret', value: 'Bret'}],
     }),
-    tableWithFilter({isServer: true}),
+    tableWithFilter(),
     tableWithDatePicker({
-        isServer: true,
         datesSelectionBoxes: SELECTION_BOXES_LONG,
         years: [...DateUtils.getPreviousYears(25), DateUtils.currentYear.toString()],
         initialDateRange: [
@@ -48,8 +47,8 @@ const ServerTable = _.compose(
         ],
     }),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
-    tableWithSort({isServer: true}),
-    tableWithPagination({isServer: true, perPageNumbers: [3, 5, 10]}),
+    tableWithSort(),
+    tableWithPagination({perPageNumbers: [3, 5, 10]}),
     tableWithActions()
 )(TableHOC);
 

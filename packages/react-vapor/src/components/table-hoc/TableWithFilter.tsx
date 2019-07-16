@@ -1,15 +1,17 @@
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
-import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
+import {ITableHOCOwnProps} from './TableHOC';
 
-export interface ITableWithFilterConfig extends IMaybeServerConfig {
+export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
     matchFilter?: (filterValue: string, datum: any) => boolean;
     placeholder?: string;
 }
@@ -25,7 +27,8 @@ export interface ITableWithFilterDispatchProps {
 export interface ITableWithFilterProps
     extends Partial<ITableWithFilterStateProps>,
         Partial<ITableWithFilterDispatchProps>,
-        ITableHOCOwnProps {}
+        ITableHOCOwnProps,
+        WithServerSideProcessingProps {}
 
 const TableWithFilterPropsToOmit = keys<ITableWithFilterStateProps>();
 
@@ -37,11 +40,12 @@ type FilterableTableComponent = React.ComponentClass<ITableWithFilterProps>;
 export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig> = {}) => (
     Component: FilterableTableComponent
 ): FilterableTableComponent => {
+    const config = HocUtils.supplyConfig(supplier);
+
     const mapStateToProps = (
         state: IReactVaporState,
         ownProps: ITableWithFilterProps
     ): ITableWithFilterStateProps | ITableHOCOwnProps => {
-        const config = HocUtils.supplyConfig(supplier);
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = config.matchFilter || defaultMatchFilter;
         const filterData = () =>
@@ -49,7 +53,7 @@ export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig>
 
         return {
             filter: filterText,
-            data: config.isServer ? ownProps.data : ownProps.data && filterData(),
+            data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
         };
     };
 
@@ -62,13 +66,12 @@ export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig>
         }
 
         render() {
-            const {placeholder} = HocUtils.supplyConfig(supplier);
             const filterAction = (
                 <FilterBoxConnected
                     key="FilterBox"
                     id={this.props.id}
                     className="coveo-table-actions"
-                    filterPlaceholder={placeholder}
+                    filterPlaceholder={config.placeholder}
                     isAutoFocus
                 />
             );
