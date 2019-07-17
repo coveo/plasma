@@ -59,7 +59,9 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            if (wrapper && wrapper.exists()) {
+                wrapper.detach();
+            }
         });
 
         describe('mount and unmount', () => {
@@ -171,6 +173,22 @@ describe('Select', () => {
                     .dive()
                     .dive();
                 expect(component.props().items).toEqual(items);
+            });
+
+            it('should trigger the onUpdate prop when the selected predicate changes', () => {
+                const onUpdateSpy = jasmine.createSpy('onUpdate');
+                const component: ShallowWrapper<ISelectWithPredicateProps> = shallowWithStore(
+                    <ServerSideMultiSelectWithPredicates {...basicProps} onUpdate={onUpdateSpy} />,
+                    store
+                )
+                    .dive()
+                    .dive();
+
+                expect(onUpdateSpy).not.toHaveBeenCalled();
+
+                component.setProps({predicate: 'some-other-predicate'});
+
+                expect(onUpdateSpy).not.toHaveBeenCalledTimes(1);
             });
         });
     });
