@@ -55,6 +55,12 @@ const getCustomItemsWithFilter: (state: IReactVaporState, ownProps: ISelectProps
     (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems]
 );
 
+const getServerFilteredItems = createSelector(
+    getItems,
+    getCustomItems,
+    (serverSideProcessedItems, customValuesFiltered) => [...serverSideProcessedItems, ...customValuesFiltered]
+);
+
 const listBoxSelectedCombiner = (listBox: IListBoxState): string[] =>
     listBox && listBox.selected ? listBox.selected : [];
 
@@ -89,6 +95,7 @@ export const SelectSelector = {
     getSelectOpened,
     getCustomItemsWithFilter,
     getMultiSelectSelectedValues,
+    getServerFilteredItems,
 };
 
 export const SelectCombiners = {

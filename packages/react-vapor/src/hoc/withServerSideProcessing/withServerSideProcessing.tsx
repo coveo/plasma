@@ -5,7 +5,9 @@ export interface WithServerSideProcessingProps {
 }
 
 export function withServerSideProcessing<T extends {}>(
-    WrappedComponent: React.ComponentType<T>
+    Component: React.ComponentType<T>
 ): React.ComponentType<T & WithServerSideProcessingProps> {
-    return (props: T) => <WrappedComponent {...props} isServer />;
+    const WrappedComponent: React.FunctionComponent<T> = (props) => <Component {...props} isServer />;
+    WrappedComponent.displayName = `ServerSide${Component.displayName}`;
+    return WrappedComponent;
 }
