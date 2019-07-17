@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const isTravis = process.env.TRAVIS;
-const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--no-single-run') !== -1;
+const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 
 module.exports = function(options) {
     const config = {
@@ -103,7 +103,7 @@ module.exports = function(options) {
     };
 
     if (!skipCoverageProcessing) {
-        config.module.push({
+        config.module.rules.push({
             enforce: 'post',
             test: /src\/(?:(?!Examples)(?!spec)(?!tests)(?!Utils).)*\.(?!scss).+$/i,
             exclude: /(node_modules)/,

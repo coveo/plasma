@@ -1,5 +1,5 @@
 const webpackConfig = require('./webpack.config.test.js')();
-const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--no-single-run') !== -1;
+const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 
 module.exports = (config) => {
     const configuration = {
