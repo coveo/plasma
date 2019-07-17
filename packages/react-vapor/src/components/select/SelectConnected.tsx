@@ -32,6 +32,7 @@ export interface ISelectOwnProps {
     items?: IItemBoxProps[];
     hasFocusableChild?: boolean;
     disabled?: boolean;
+    onUpdate?: () => void;
 }
 
 export interface ISelectStateProps {
