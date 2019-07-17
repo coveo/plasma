@@ -21,7 +21,7 @@ import {MultiSelectWithPredicate} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
 import {ISelectWithPredicateProps, selectWithPredicate} from '../SelectWithPredicate';
 
-fdescribe('Select', () => {
+describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
         let wrapper: ReactWrapper<any, any>;
         let multiSelect: ReactWrapper<IMultiSelectProps, void>;
