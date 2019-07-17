@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const isTravis = process.env.TRAVIS;
-const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--no-single-run') !== -1;
+const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 
 module.exports = function(options) {
     const config = {
