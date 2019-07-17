@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
+import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
@@ -15,7 +16,7 @@ import {selectFlatSelect} from '../../flatSelect/FlatSelectActions';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {reorderListBoxOption, unselectListBoxOption} from '../../listBox/ListBoxActions';
-import {IMultiSelectOwnProps, IMultiSelectProps} from '../MultiSelectConnected';
+import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
 import {toggleSelect} from '../SelectActions';
 import {MultiSelectWithPredicate} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
@@ -157,7 +158,7 @@ describe('Select', () => {
             const ServerSideMultiSelectWithPredicates = _.compose(
                 withServerSideProcessing,
                 selectWithPredicate
-            )(MultiSelectWithPredicate);
+            )(MultiSelectConnected);
 
             const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
@@ -177,18 +178,22 @@ describe('Select', () => {
 
             it('should trigger the onUpdate prop when the selected predicate changes', () => {
                 const onUpdateSpy = jasmine.createSpy('onUpdate');
-                const component: ShallowWrapper<ISelectWithPredicateProps> = shallowWithStore(
-                    <ServerSideMultiSelectWithPredicates {...basicProps} onUpdate={onUpdateSpy} />,
-                    store
-                )
-                    .dive()
-                    .dive();
 
-                expect(onUpdateSpy).not.toHaveBeenCalled();
+                wrapper = mount(
+                    <Provider store={store}>
+                        <ServerSideMultiSelectWithPredicates {...basicProps} onUpdate={onUpdateSpy} />
+                    </Provider>,
+                    {attachTo: document.getElementById('App')}
+                );
 
-                component.setProps({predicate: 'some-other-predicate'});
+                expect(onUpdateSpy).toHaveBeenCalledTimes(1);
 
-                expect(onUpdateSpy).not.toHaveBeenCalledTimes(1);
+                store.dispatch(toggleSelect(id, true));
+                act(() => {
+                    store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
+                });
+
+                expect(onUpdateSpy).toHaveBeenCalledTimes(2);
             });
         });
     });
