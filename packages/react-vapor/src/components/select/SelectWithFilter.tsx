@@ -76,7 +76,7 @@ export const selectWithFilter = (
 
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
-        static displayName = `${Component.displayName}WithFilter`;
+        static displayName = `withFilter(${Component.displayName})`;
         static defaultProps: Partial<ISelectWithFilterProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
