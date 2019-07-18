@@ -28,6 +28,7 @@ export interface ISelectWithFilterOwnProps {
     noItemsText?: string;
     filterButton?: IButtonProps;
     filter?: IFilterBoxOwnProps;
+    filterPlaceholder?: string;
 }
 
 export interface ISelectWithFilterStateProps {
@@ -205,6 +206,7 @@ export const selectWithFilter = (
                         onKeyDown={(this.props as any).onKeyDown}
                         onKeyUp={(this.props as any).onKeyUp}
                         className={filterBoxClassNames}
+                        filterPlaceholder={this.props.filterPlaceholder}
                         isAutoFocus
                     >
                         {this.getAddValueButton()}
