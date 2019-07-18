@@ -70,5 +70,7 @@ export const selectWithPredicate = (
         );
     };
 
+    WrappedComponent.displayName = `withPredicate(${Component.displayName})`;
+
     return connect(mapStateToProps)(WrappedComponent);
 };
