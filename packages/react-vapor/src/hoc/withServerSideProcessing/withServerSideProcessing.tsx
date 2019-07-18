@@ -8,6 +8,6 @@ export function withServerSideProcessing<T extends {}>(
     Component: React.ComponentType<T>
 ): React.ComponentType<T & WithServerSideProcessingProps> {
     const WrappedComponent: React.FunctionComponent<T> = (props) => <Component {...props} isServer />;
-    WrappedComponent.displayName = `ServerSide${Component.displayName}`;
+    WrappedComponent.displayName = `withServerSideProcessing(${Component.displayName})`;
     return WrappedComponent;
 }
