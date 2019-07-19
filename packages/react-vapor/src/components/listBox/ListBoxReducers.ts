@@ -40,6 +40,7 @@ export const listBoxReducer = (
                 selected: action.payload.multi
                     ? _.uniq([...state.selected, action.payload.value])
                     : [action.payload.value],
+                active: action.payload.multi ? null : state.active,
             };
         case AutocompleteActions.setValue:
             return {
