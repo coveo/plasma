@@ -20,9 +20,9 @@ export interface IListBoxPayload {
     diff?: number;
 }
 
-export const addListBox = (id: string, items: IItemBoxProps[]): IReduxAction<IListBoxPayload> => ({
+export const addListBox = (id: string, items: IItemBoxProps[], multi = false): IReduxAction<IListBoxPayload> => ({
     type: ListBoxActions.add,
-    payload: {id, items},
+    payload: {id, items, multi},
 });
 
 export const removeListBox = (id: string): IReduxAction<IListBoxPayload> => ({

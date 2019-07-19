@@ -28,7 +28,7 @@ export const listBoxReducer = (
                 .pluck('value')
                 .value();
             let selectedIndex = _.findIndex(action.payload.items, (e) => e.selected);
-            selectedIndex = selectedIndex === -1 ? 0 : selectedIndex;
+            selectedIndex = selectedIndex === -1 || action.payload.multi ? 0 : selectedIndex;
             return {
                 id: action.payload.id,
                 selected: selected,
@@ -40,7 +40,6 @@ export const listBoxReducer = (
                 selected: action.payload.multi
                     ? _.uniq([...state.selected, action.payload.value])
                     : [action.payload.value],
-                active: null,
             };
         case AutocompleteActions.setValue:
             return {
