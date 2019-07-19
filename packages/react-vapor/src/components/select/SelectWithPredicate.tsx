@@ -31,26 +31,6 @@ export interface ISelectWithPredicateProps
 export const selectWithPredicate = (
     Component: React.ComponentType<ISelectProps>
 ): React.ComponentType<ISelectWithPredicateProps> => {
-    const mapStateToProps = (
-        state: IReactVaporState,
-        ownProps: ISelectWithPredicateProps
-    ): SelectWithPredicateStateProps => {
-        const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id}) || ownProps.options[0].id;
-
-        const items = ownProps.isServer
-            ? ownProps.items
-            : _.map(ownProps.items, (item: IItemBoxProps) => {
-                  const visible = ownProps.matchPredicate(predicate, item);
-
-                  return {...item, hidden: !visible || item.hidden};
-              });
-
-        return {
-            items,
-            predicate,
-        };
-    };
-
     const WrappedComponent: React.FunctionComponent<ISelectWithPredicateProps> = (props) => {
         React.useEffect(() => {
             callIfDefined(props.onUpdate);
@@ -74,3 +54,20 @@ export const selectWithPredicate = (
 
     return connect(mapStateToProps)(WrappedComponent);
 };
+
+function mapStateToProps(state: IReactVaporState, ownProps: ISelectWithPredicateProps): SelectWithPredicateStateProps {
+    const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id}) || ownProps.options[0].id;
+
+    const items = ownProps.isServer
+        ? ownProps.items
+        : _.map(ownProps.items, (item: IItemBoxProps) => {
+              const visible = ownProps.matchPredicate(predicate, item);
+
+              return {...item, hidden: !visible || item.hidden};
+          });
+
+    return {
+        items,
+        predicate,
+    };
+}
