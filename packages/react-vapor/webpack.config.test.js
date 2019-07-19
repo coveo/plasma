@@ -45,7 +45,6 @@ module.exports = function(options) {
                         compiler: 'ttypescript',
                     },
                 },
-
                 {
                     test: /\.css$/,
                     exclude: path.join(__dirname, 'src/components'),
