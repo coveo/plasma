@@ -16,11 +16,11 @@ import {selectFlatSelect} from '../../flatSelect/FlatSelectActions';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {reorderListBoxOption, unselectListBoxOption} from '../../listBox/ListBoxActions';
+import {ISelectWithPredicateProps, withPredicate} from '../hoc/withPredicate';
 import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
 import {toggleSelect} from '../SelectActions';
 import {MultiSelectWithPredicate} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
-import {ISelectWithPredicateProps, selectWithPredicate} from '../SelectWithPredicate';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
@@ -157,7 +157,7 @@ describe('Select', () => {
         describe('when predicates are processed on the server side', () => {
             const ServerSideMultiSelectWithPredicates = _.compose(
                 withServerSideProcessing,
-                selectWithPredicate
+                withPredicate
             )(MultiSelectConnected);
 
             const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];

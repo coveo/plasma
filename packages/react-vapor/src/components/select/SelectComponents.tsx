@@ -1,8 +1,9 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 
+import {ISelectWithFilterProps, withFilter} from './hoc/withFilter';
+import {ISelectWithPredicateProps, withPredicate} from './hoc/withPredicate';
 import {IMultiSelectOwnProps, MultiSelectConnected} from './MultiSelectConnected';
-import {ISelectWithFilterProps, selectWithFilter} from './SelectWithFilter';
-import {ISelectWithPredicateProps, selectWithPredicate} from './SelectWithPredicate';
 import {ISingleSelectOwnProps, SingleSelectConnected} from './SingleSelectConnected';
 
 type ButtonHTMLAttributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -12,21 +13,27 @@ export interface ISelectWithPredicateAndFilterProps extends ISelectWithFilterPro
 // Single Select
 export const SingleSelectWithFilter: React.ComponentType<
     ISelectWithFilterProps & ISingleSelectOwnProps & ButtonHTMLAttributes
-> = selectWithFilter(SingleSelectConnected);
+> = withFilter(SingleSelectConnected);
 export const SingleSelectWithPredicate: React.ComponentType<
     ISelectWithPredicateProps & ISingleSelectOwnProps & ButtonHTMLAttributes
-> = selectWithPredicate(SingleSelectConnected);
+> = withPredicate(SingleSelectConnected);
 export const SingleSelectWithPredicateAndFilter: React.ComponentType<
     ISelectWithPredicateAndFilterProps & ISingleSelectOwnProps & ButtonHTMLAttributes
-> = selectWithPredicate(selectWithFilter(SingleSelectConnected));
+> = _.compose(
+    withPredicate,
+    withFilter
+)(SingleSelectConnected);
 
 // Multi Select
 export const MultiSelectWithFilter: React.ComponentType<
     ISelectWithFilterProps & IMultiSelectOwnProps & ButtonHTMLAttributes
-> = selectWithFilter(MultiSelectConnected);
+> = withFilter(MultiSelectConnected);
 export const MultiSelectWithPredicate: React.ComponentType<
     ISelectWithPredicateProps & IMultiSelectOwnProps & ButtonHTMLAttributes
-> = selectWithPredicate(MultiSelectConnected);
+> = withPredicate(MultiSelectConnected);
 export const MultiSelectWithPredicateAndFilter: React.ComponentType<
     ISelectWithPredicateAndFilterProps & IMultiSelectOwnProps & ButtonHTMLAttributes
-> = selectWithPredicate(selectWithFilter(MultiSelectConnected));
+> = _.compose(
+    withPredicate,
+    withFilter
+)(MultiSelectConnected);

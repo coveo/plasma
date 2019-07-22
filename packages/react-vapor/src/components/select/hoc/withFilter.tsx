@@ -4,21 +4,21 @@ import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVapor';
-import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
-import {MatchFilter} from '../../utils/FilterUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {UUID} from '../../utils/UUID';
-import {Button, IButtonProps} from '../button/Button';
-import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
-import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
-import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {Svg} from '../svg/Svg';
-import {ISelectOwnProps, ISelectSpecificProps} from './SelectConnected';
-import {SelectSelector} from './SelectSelector';
+import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../ReactVapor';
+import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
+import {callIfDefined} from '../../../utils/FalsyValuesUtils';
+import {MatchFilter} from '../../../utils/FilterUtils';
+import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {UUID} from '../../../utils/UUID';
+import {Button, IButtonProps} from '../../button/Button';
+import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
+import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {Svg} from '../../svg/Svg';
+import {ISelectOwnProps, ISelectSpecificProps} from '../SelectConnected';
+import {SelectSelector} from '../SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
@@ -53,7 +53,7 @@ export interface ISelectWithFilterProps
         WithServerSideProcessingProps,
         ISelectOwnProps {}
 
-export const selectWithFilter = (
+export const withFilter = (
     Component: React.ComponentType<ISelectWithFilterProps>
 ): React.ComponentType<ISelectWithFilterProps> => {
     const makeMapStateToProps = (initialState: IReactVaporState, initialOwnProps: ISelectWithFilterProps) =>

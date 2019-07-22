@@ -7,10 +7,10 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {filterThrough} from '../../filterBox/FilterBoxActions';
 import {ItemBox} from '../../itemBox/ItemBox';
+import {ISelectWithFilterProps} from '../hoc/withFilter';
 import {toggleSelect} from '../SelectActions';
 import {MultiSelectWithFilter} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
-import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('MultiSelectWithFilter', () => {

@@ -1,4 +1,5 @@
 import * as Redux from 'redux';
+
 import {IActionOptions} from './components/actions/Action';
 import {IActionBarState} from './components/actions/ActionBarReducers';
 import {IItemFilterState} from './components/actions/filters/ItemFilterReducers';
@@ -32,8 +33,8 @@ import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers
 import {IPopoverState} from './components/popover/Popover';
 import {IRadioSelectState} from './components/radio/RadioSelectReducers';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
+import {ISelectWithFilterCompositeState} from './components/select/hoc/SelectWithFilterReducers';
 import {ISelectState} from './components/select/SelectReducers';
-import {ISelectWithFilterCompositeState} from './components/select/SelectWithFilterReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
 import {ITableRowState as HOCTableRowState} from './components/table-hoc/reducers/TableRowReducers';

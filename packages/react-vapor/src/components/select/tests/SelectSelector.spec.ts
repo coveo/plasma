@@ -4,8 +4,8 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {MatchFilter} from '../../../utils/FilterUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
+import {ISelectWithFilterProps} from '../hoc/withFilter';
 import {SelectCombiners, SelectSelector} from '../SelectSelector';
-import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('Select Selector', () => {

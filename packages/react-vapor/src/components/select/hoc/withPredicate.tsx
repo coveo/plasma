@@ -3,14 +3,14 @@ import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
-import {FlatSelectConnected} from '../flatSelect/FlatSelectConnected';
-import {IFlatSelectOptionProps} from '../flatSelect/FlatSelectOption';
-import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {ISelectProps} from './SelectConnected';
+import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../ReactVapor';
+import {callIfDefined} from '../../../utils/FalsyValuesUtils';
+import {FlatSelectConnected} from '../../flatSelect/FlatSelectConnected';
+import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
+import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {ISelectProps} from '../SelectConnected';
 
 export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
@@ -28,7 +28,7 @@ export interface ISelectWithPredicateProps
         Partial<SelectWithPredicateStateProps>,
         WithServerSideProcessingProps {}
 
-export const selectWithPredicate = (
+export const withPredicate = (
     Component: React.ComponentType<ISelectProps>
 ): React.ComponentType<ISelectWithPredicateProps> => {
     const WrappedComponent: React.FunctionComponent<ISelectWithPredicateProps> = (props) => {

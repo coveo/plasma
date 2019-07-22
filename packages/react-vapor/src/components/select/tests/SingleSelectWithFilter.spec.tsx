@@ -15,11 +15,11 @@ import {filterThrough} from '../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
+import {ISelectWithFilterProps, withFilter} from '../hoc/withFilter';
 import {IMultiSelectProps} from '../MultiSelectConnected';
 import {toggleSelect} from '../SelectActions';
 import {SingleSelectWithFilter} from '../SelectComponents';
 import {SelectConnected} from '../SelectConnected';
-import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
 import {SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
@@ -348,7 +348,7 @@ describe('Select', () => {
         describe('when filter is processed on the server side', () => {
             const ServerSideMultiSingleSelectWithFilter: React.ComponentType<ISelectWithFilterProps> = _.compose(
                 withServerSideProcessing,
-                selectWithFilter
+                withFilter
             )(SingleSelectConnected);
 
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
