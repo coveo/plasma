@@ -33,7 +33,7 @@ import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers
 import {IPopoverState} from './components/popover/Popover';
 import {IRadioSelectState} from './components/radio/RadioSelectReducers';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
-import {ISelectWithFilterCompositeState} from './components/select/hoc/SelectWithFilterReducers';
+import {ISelectWithFilterCompositeState} from './components/select/hoc/withFilterReducers';
 import {ISelectState} from './components/select/SelectReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';

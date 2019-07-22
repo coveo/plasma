@@ -8,7 +8,7 @@ import {
     ISelectWithFilterCompositeState,
     ISelectWithFilterPayload,
     selectWithFilterCompositeReducer,
-} from '../hoc/SelectWithFilterReducers';
+} from '../hoc/withFilterReducers';
 
 describe('Select', () => {
     describe('SelectWithFilter reducers', () => {

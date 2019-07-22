@@ -30,7 +30,7 @@ import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReduce
 import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
-import {selectWithFilterCompositeReducer} from './components/select/hoc/SelectWithFilterReducers';
+import {selectWithFilterCompositeReducer} from './components/select/hoc/withFilterReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
