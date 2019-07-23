@@ -206,13 +206,9 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
             }
         } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode) && !this.props.isOpened) {
             this.onToggleDropdown(e);
-        }
-
-        if (keyCode.downArrow === e.keyCode) {
+        } else if (keyCode.downArrow === e.keyCode) {
             this.props.setActive(this.props.isOpened ? 1 : 0);
-        }
-
-        if (keyCode.upArrow === e.keyCode) {
+        } else if (keyCode.upArrow === e.keyCode) {
             this.props.setActive(this.props.isOpened ? -1 : 0);
         }
     }
