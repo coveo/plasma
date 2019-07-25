@@ -10,7 +10,7 @@ export interface PartialStringMatchProps {
     caseInsensitive?: boolean;
 }
 
-export class PartialStringMatch extends React.Component<PartialStringMatchProps> {
+export class PartialStringMatch extends React.PureComponent<PartialStringMatchProps> {
     static defaultProps: Partial<PartialStringMatchProps> = {
         wholeString: '',
         partialMatch: '',
@@ -22,10 +22,13 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
             return toRender;
         }
 
-        const escaped = escapeRegExp(this.props.partialMatch);
-        const iterator = this.deepReplaceStrings(toRender, escaped);
+        return this.lookupChildren(toRender);
+    }
 
-        const children = [];
+    private lookupChildren(component: React.ReactNode): React.ReactNode[] {
+        const iterator = this.deepReplaceStrings(component);
+
+        const children: React.ReactNode[] = [];
         let result: IteratorResult<React.ReactNode>;
         do {
             result = iterator.next();
@@ -35,44 +38,46 @@ export class PartialStringMatch extends React.Component<PartialStringMatchProps>
         return children;
     }
 
-    private *deepReplaceStrings(component: React.ReactNode, escaped: string): IterableIterator<React.ReactNode> {
-        const flags = this.props.caseInsensitive ? 'ig' : 'g';
-        const regExp = new RegExp(`(${escaped})`, flags);
-
-        const cast = component as any;
+    private *deepReplaceStrings(component: React.ReactNode): IterableIterator<React.ReactNode> {
+        const element = component as JSX.Element;
         if (!component) {
             return;
         } else if (component instanceof Array) {
             for (let i = 0; i < component.length; i++) {
-                yield* this.deepReplaceStrings(component[i], escaped);
+                yield* this.deepReplaceStrings(component[i]);
             }
         } else if (typeof component === 'string') {
-            if (regExp.test(component)) {
-                const parts: React.ReactNode[] = component.split(regExp);
-                for (let i = 1; i < parts.length; i += 2) {
-                    parts[i] = (
-                        <span className="bold" key={`match-${i}`}>
-                            {parts[i]}
-                        </span>
-                    );
-                }
-                yield parts;
-            } else {
-                yield component;
-            }
-        } else if (cast.props && cast.props.children) {
-            const newChildren = [];
-            const iterator = this.deepReplaceStrings(cast.props.children, escaped);
-
-            let result: IteratorResult<React.ReactNode>;
-            do {
-                result = iterator.next();
-                newChildren.push(result.value);
-            } while (!result.done);
-
-            yield React.cloneElement(cast, {...cast.props, children: newChildren});
+            yield this.hightlightMatches(component);
+        } else if (element.props && element.props.children) {
+            // The node is a React.Component, we iterate over its children
+            // We iterate over its children
+            yield React.cloneElement(element, {
+                ...element.props,
+                children: this.lookupChildren(element.props.children),
+            });
+        } else if (typeof element.type === 'function') {
+            // The node is a React.FunctionComponent, we iterate over what's rendered by the function
+            yield this.lookupChildren(element.type(element.props));
         } else {
             yield component;
         }
     }
+
+    private hightlightMatches(str: string): React.ReactNode {
+        const flags = this.props.caseInsensitive ? 'ig' : 'g';
+        const matcher = escapeRegExp(this.props.partialMatch);
+        const regExp = new RegExp(`(${matcher})`, flags);
+
+        if (regExp.test(str)) {
+            const parts: React.ReactNode[] = str.split(regExp);
+            for (let i = 1; i < parts.length; i += 2) {
+                parts[i] = <Highlight key={`match-${i}`}>{parts[i]}</Highlight>;
+            }
+            return parts;
+        } else {
+            return str;
+        }
+    }
 }
+
+const Highlight: React.FunctionComponent<{}> = ({children}) => <span className="bold">{children}</span>;
