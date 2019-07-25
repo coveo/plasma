@@ -76,7 +76,7 @@ export class ItemBox extends React.Component<IItemBoxProps> {
 
     render() {
         return (
-            <Tooltip {...this.props.tooltip}>
+            <Tooltip noSpanWrapper {...this.props.tooltip}>
                 <li
                     ref={(li: HTMLLIElement) => (this.listItem = li)}
                     className={this.getClasses()}

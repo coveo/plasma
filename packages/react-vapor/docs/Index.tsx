@@ -83,6 +83,7 @@ import {PopoverConnectedExamples} from '../src/components/popover/examples/Popov
 import {RadioExamples} from '../src/components/radio/examples/RadioExamples';
 import {SearchBarExamples} from '../src/components/searchBar/SearchBarExamples';
 import {MultiSelectExamples} from '../src/components/select/examples/MultiSelectExamples';
+import {ServerSideSelectExamples} from '../src/components/select/examples/ServerSideSelectExamples';
 import {SingleSelectExamples} from '../src/components/select/examples/SingleSelectExamples';
 import {SideNavigationExample} from '../src/components/sideNavigation/examples/SideNavigationExample';
 import {SideNavigationLoadingExample} from '../src/components/sideNavigation/examples/SideNavigationLoadingExample';
@@ -279,6 +280,7 @@ class App extends React.PureComponent<{}, AppState> {
         {component: DropExamples, componentName: 'Drop'},
         {component: DropWithDropdownExamples, componentName: 'DropWithDropdown'},
         {component: ChartExamples, componentName: 'Charts'},
+        {component: ServerSideSelectExamples, componentName: 'Server-Side Selects'},
     ];
 
     constructor(props: {}, state: AppState) {

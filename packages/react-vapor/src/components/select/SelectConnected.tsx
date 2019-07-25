@@ -3,6 +3,7 @@ import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
+import {keys} from 'ts-transformer-keys';
 import {Defaults} from '../../Defaults';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
@@ -12,6 +13,7 @@ import {Content} from '../content/Content';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
+import {IListBoxOwnProps} from '../listBox/ListBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
@@ -19,20 +21,19 @@ import {SelectSelector} from './SelectSelector';
 
 export interface ISelectSpecificProps {
     button: React.ReactNode;
-    multi?: boolean;
 }
 
-export interface ISelectOwnProps {
+export interface ISelectOwnProps extends IListBoxOwnProps {
     id: string;
     placeholder?: string;
-    noResultItem?: IItemBoxProps;
     selectClasses?: string;
     dropClasses?: string;
-    items?: IItemBoxProps[];
     hasFocusableChild?: boolean;
     disabled?: boolean;
     onUpdate?: () => void;
 }
+
+const listBoxProps = keys<IListBoxOwnProps>();
 
 export interface ISelectStateProps {
     isOpened: boolean;
@@ -133,12 +134,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                     style={{minWidth}}
                 >
                     {this.renderChildren()}
-                    <ListBoxConnected
-                        id={this.props.id}
-                        items={this.props.items}
-                        multi={this.props.multi}
-                        noResultItem={this.props.noResultItem || undefined}
-                    />
+                    <ListBoxConnected {..._.pick(this.props, listBoxProps)} />
                 </div>
             </Drop>
         );
