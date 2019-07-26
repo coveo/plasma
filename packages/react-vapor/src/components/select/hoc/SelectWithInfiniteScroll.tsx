@@ -6,14 +6,14 @@ import {Loading} from '../../loading/Loading';
 import {ISelectOwnProps} from '../SelectConnected';
 
 export interface SelectWithInfiniteScrollProps {
-    totalEntries?: number;
+    totalEntries: number;
     next: () => void;
 }
 
-export function selectWithInfiniteScroll<P extends ISelectOwnProps & SelectWithInfiniteScrollProps>(
+export function selectWithInfiniteScroll<P extends ISelectOwnProps>(
     Component: React.ComponentType<P>
-): React.ComponentType<P> {
-    const ComponentWithInfiniteScroll: React.FunctionComponent<P> = (props) => {
+): React.ComponentType<P & SelectWithInfiniteScrollProps> {
+    const ComponentWithInfiniteScroll: React.FunctionComponent<P & SelectWithInfiniteScrollProps> = (props) => {
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;
 
@@ -38,8 +38,6 @@ export function selectWithInfiniteScroll<P extends ISelectOwnProps & SelectWithI
     ComponentWithInfiniteScroll.displayName = `withInfiniteScroll(${Component.displayName})`;
     ComponentWithInfiniteScroll.defaultProps = {
         totalEntries: 0,
-        items: [],
-        onUpdate: _.noop,
-    } as Partial<P>;
+    } as Partial<P & SelectWithInfiniteScrollProps>;
     return ComponentWithInfiniteScroll;
 }

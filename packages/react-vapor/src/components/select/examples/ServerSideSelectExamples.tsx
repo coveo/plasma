@@ -35,7 +35,7 @@ function usePhotosAPIMock(initialPhotos: any[] = []): [any[], (params?: any, ove
 
         return fetch(`https://jsonplaceholder.typicode.com/photos${queryString}`)
             .then((response) => response.json())
-            .then((newPhotos) => {
+            .then((newPhotos: any) => {
                 if (overwrite) {
                     setPhotos(newPhotos);
                 } else {
@@ -58,17 +58,17 @@ export const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, 
     );
 };
 
-const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = _.compose(
-    withServerSideProcessing,
-    selectWithFilter,
-    selectWithInfiniteScroll
-)(SingleSelectConnected);
-
 function mapStateToProps(state: IReactVaporExampleState, props: {id: string}) {
     return {
         filterValue: FilterBoxSelectors.getFilterText(state, props),
     };
 }
+
+const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = _.compose(
+    withServerSideProcessing,
+    selectWithFilter,
+    selectWithInfiniteScroll
+)(SingleSelectConnected);
 
 function ServerSideSingleSelectExampleDisconnected({
     filterValue,
