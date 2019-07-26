@@ -1,6 +1,6 @@
 {
     "extends": ["tsjs/tslint-config"],
     "linterOptions": {
-        "exclude": ["**/node_modules/**", "**/dist/**", "**/coverage/**"]
+        "exclude": ["**/node_modules/**", "**/dist/**", "**/coverage/**", "**/*.scss.d.ts"]
     }
 }
