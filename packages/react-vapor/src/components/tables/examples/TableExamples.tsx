@@ -209,11 +209,13 @@ const manualModeThunk = (
 };
 
 export class TableExamples extends React.Component<any, any> {
+    static deprecated = true;
+
     render() {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Table in manual mode.</label>
+                    <label className="form-control-label">Table in manual mode. DEPRECATED</label>
                     <TableConnected
                         id={_.uniqueId('react-vapor-table')}
                         manual={manualModeThunk}

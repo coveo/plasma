@@ -24,6 +24,8 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class ModalConnectedExamples extends React.Component<IModalExamplesProps, any> {
+    static deprecated = true;
+
     openModal(id: string) {
         this.props.openModal(id);
     }
@@ -35,7 +37,7 @@ export class ModalConnectedExamples extends React.Component<IModalExamplesProps,
     render() {
         return (
             <div className="mt2">
-                <label className="form-control-label">Modal Connected</label>
+                <label className="form-control-label">Modal Connected DEPRECATED</label>
                 <div>
                     <div className="form-group">
                         <button

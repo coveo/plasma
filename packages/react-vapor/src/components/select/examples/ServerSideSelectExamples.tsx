@@ -47,7 +47,7 @@ function usePhotosAPIMock(initialPhotos: any[] = []): [any[], (params?: any, ove
     return [photos, fetchPhotos];
 }
 
-export const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => {
+const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => {
     return (
         <div className="flex flex-center">
             <a href={url} target="__blank" className="mr2">
