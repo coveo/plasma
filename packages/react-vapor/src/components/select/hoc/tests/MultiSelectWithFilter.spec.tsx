@@ -9,8 +9,8 @@ import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {ItemBox} from '../../../itemBox/ItemBox';
 import {toggleSelect} from '../../SelectActions';
-import {MultiSelectWithFilter} from '../../SelectComponents';
 import {SelectConnected} from '../../SelectConnected';
+import {MultiSelectWithFilter} from '../SelectComponents';
 import {ISelectWithFilterProps} from '../SelectWithFilter';
 
 describe('Select', () => {

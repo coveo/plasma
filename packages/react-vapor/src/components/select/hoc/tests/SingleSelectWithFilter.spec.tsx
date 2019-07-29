@@ -17,9 +17,9 @@ import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
 import {IMultiSelectProps} from '../../MultiSelectConnected';
 import {toggleSelect} from '../../SelectActions';
-import {SingleSelectWithFilter} from '../../SelectComponents';
 import {SelectConnected} from '../../SelectConnected';
 import {SingleSelectConnected} from '../../SingleSelectConnected';
+import {SingleSelectWithFilter} from '../SelectComponents';
 import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {

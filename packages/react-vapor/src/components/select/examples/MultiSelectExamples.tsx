@@ -5,8 +5,12 @@ import {getReactNodeTextContent} from '../../../utils/JSXUtils';
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {
+    MultiSelectWithFilter,
+    MultiSelectWithPredicate,
+    MultiSelectWithPredicateAndFilter,
+} from '../hoc/SelectComponents';
 import {MultiSelectConnected} from '../MultiSelectConnected';
-import {MultiSelectWithFilter, MultiSelectWithPredicate, MultiSelectWithPredicateAndFilter} from '../SelectComponents';
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},

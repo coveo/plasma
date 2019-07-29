@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {ISelectWithFilterProps, selectWithFilter} from './hoc/SelectWithFilter';
-import {ISelectWithPredicateProps, selectWithPredicate} from './hoc/SelectWithPredicate';
-import {IMultiSelectOwnProps, MultiSelectConnected} from './MultiSelectConnected';
-import {ISingleSelectOwnProps, SingleSelectConnected} from './SingleSelectConnected';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../MultiSelectConnected';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {ISelectWithFilterProps, selectWithFilter} from './SelectWithFilter';
+import {ISelectWithPredicateProps, selectWithPredicate} from './SelectWithPredicate';
 
 type ButtonHTMLAttributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
 
