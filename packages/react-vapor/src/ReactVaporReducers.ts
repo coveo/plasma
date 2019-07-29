@@ -1,4 +1,5 @@
 import {ReducersMapObject} from 'redux';
+
 import {membersReducers} from '../docs/members-example/reducers/MembersReducers';
 import {actionBarsReducer} from './components/actions/ActionBarReducers';
 import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
@@ -29,8 +30,8 @@ import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReduce
 import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
+import {selectWithFilterCompositeReducer} from './components/select/hoc/SelectWithFilterReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
-import {selectWithFilterCompositeReducer} from './components/select/SelectWithFilterReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
 import {TableRowReducers} from './components/table-hoc/reducers/TableRowReducers';

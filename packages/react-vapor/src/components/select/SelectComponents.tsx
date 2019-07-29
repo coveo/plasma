@@ -1,8 +1,9 @@
 import * as React from 'react';
+import * as _ from 'underscore';
 
+import {ISelectWithFilterProps, selectWithFilter} from './hoc/SelectWithFilter';
+import {ISelectWithPredicateProps, selectWithPredicate} from './hoc/SelectWithPredicate';
 import {IMultiSelectOwnProps, MultiSelectConnected} from './MultiSelectConnected';
-import {ISelectWithFilterProps, selectWithFilter} from './SelectWithFilter';
-import {ISelectWithPredicateProps, selectWithPredicate} from './SelectWithPredicate';
 import {ISingleSelectOwnProps, SingleSelectConnected} from './SingleSelectConnected';
 
 type ButtonHTMLAttributes = React.ButtonHTMLAttributes<HTMLButtonElement>;
@@ -18,7 +19,10 @@ export const SingleSelectWithPredicate: React.ComponentType<
 > = selectWithPredicate(SingleSelectConnected);
 export const SingleSelectWithPredicateAndFilter: React.ComponentType<
     ISelectWithPredicateAndFilterProps & ISingleSelectOwnProps & ButtonHTMLAttributes
-> = selectWithPredicate(selectWithFilter(SingleSelectConnected));
+> = _.compose(
+    selectWithPredicate,
+    selectWithFilter
+)(SingleSelectConnected);
 
 // Multi Select
 export const MultiSelectWithFilter: React.ComponentType<
@@ -29,4 +33,7 @@ export const MultiSelectWithPredicate: React.ComponentType<
 > = selectWithPredicate(MultiSelectConnected);
 export const MultiSelectWithPredicateAndFilter: React.ComponentType<
     ISelectWithPredicateAndFilterProps & IMultiSelectOwnProps & ButtonHTMLAttributes
-> = selectWithPredicate(selectWithFilter(MultiSelectConnected));
+> = _.compose(
+    selectWithPredicate,
+    selectWithFilter
+)(MultiSelectConnected);
