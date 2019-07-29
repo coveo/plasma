@@ -1,13 +1,16 @@
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {createMockStore, mockStore} from 'redux-test-utils';
+import {MockStoreEnhanced} from 'redux-mock-store';
+
 import {IReactVaporState} from '../../../ReactVapor';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {TableHeaderActions} from '../actions/TableHeaderActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 
 describe('Table HOC', () => {
     describe('TableHeaderWithSort', () => {
-        let store: mockStore<IReactVaporState>;
+        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
 
         const defaultProps = {
             id: 'a',
@@ -15,7 +18,7 @@ describe('Table HOC', () => {
         };
 
         beforeEach(() => {
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCHeader: [
                     {
                         id: defaultProps.id,
@@ -53,7 +56,7 @@ describe('Table HOC', () => {
 
             shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch an removeTableHeader on componentWillUnmount', () => {
@@ -62,7 +65,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
             wrapper.unmount();
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch an sortTable on click', () => {
@@ -71,7 +74,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
             wrapper.find('th').simulate('click');
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
     });
 });

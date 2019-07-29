@@ -1,9 +1,11 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {createMockStore, mockStore} from 'redux-test-utils';
 
+import {MockStoreEnhanced} from 'redux-mock-store';
 import {IReactVaporState} from '../../../ReactVapor';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle';
 import {addOptionsCycle, changeOptionsCycle} from '../OptionsCycleActions';
 import {OptionsCycleConnected} from '../OptionsCycleConnected';
@@ -16,14 +18,14 @@ describe('Options cycle', () => {
 
     describe('<OptionsCycleConnected />', () => {
         let optionsCycle: ShallowWrapper<IOptionsCycleProps>;
-        let store: mockStore<IReactVaporState>;
+        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
 
         const shallowCycleWithProps = (props: Partial<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = {}) => {
             return shallowWithStore(<OptionsCycleConnected {...optionsCycleBasicProps} {...props} />, store);
         };
 
         beforeEach(() => {
-            store = createMockStore({
+            store = getStoreMock({
                 optionsCycles: [],
             });
         });
@@ -59,13 +61,13 @@ describe('Options cycle', () => {
 
         it('should add the optionCycle to the state when mounted', () => {
             optionsCycle = shallowCycleWithProps().dive();
-            expect(store.isActionDispatched(addOptionsCycle(optionsCycleBasicProps.id, 0))).toBe(true);
+            expect(store.getActions()).toContain(addOptionsCycle(optionsCycleBasicProps.id, 0));
         });
 
         it('should add the optionCycle to the state when mounted with the startAt', () => {
             const startAt = 3;
             optionsCycle = shallowCycleWithProps({startAt}).dive();
-            expect(store.isActionDispatched(addOptionsCycle(optionsCycleBasicProps.id, startAt))).toBe(true);
+            expect(store.getActions()).toContain(addOptionsCycle(optionsCycleBasicProps.id, startAt));
         });
 
         it('should set the currentOption to the startAt prop', () => {
@@ -87,7 +89,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.previous-option').simulate('click');
 
-            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, startAt - 1))).toBe(true);
+            expect(store.getActions()).toContain(changeOptionsCycle(optionsCycleBasicProps.id, startAt - 1));
         });
 
         it('should dispatch a changeOptionsCycle when pressing the next button', () => {
@@ -95,7 +97,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.next-option').simulate('click');
 
-            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, startAt + 1))).toBe(true);
+            expect(store.getActions()).toContain(changeOptionsCycle(optionsCycleBasicProps.id, startAt + 1));
         });
 
         it('should dispatch a changeOptionsCycle by wrapping around when at 0 and the user press the previous button', () => {
@@ -103,11 +105,9 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.previous-option').simulate('click');
 
-            expect(
-                store.isActionDispatched(
-                    changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1)
-                )
-            ).toBe(true);
+            expect(store.getActions()).toContain(
+                changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1)
+            );
         });
 
         it('should dispatch a changeOptionsCycle by wrapping around when at max and the user press the next button', () => {
@@ -115,7 +115,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.next-option').simulate('click');
 
-            expect(store.isActionDispatched(changeOptionsCycle(optionsCycleBasicProps.id, 0))).toBe(true);
+            expect(store.getActions()).toContain(changeOptionsCycle(optionsCycleBasicProps.id, 0));
         });
 
         it('should disable the previous button when wrapAround is false and the cycle is at 0', () => {
