@@ -5,12 +5,13 @@ import * as Redux from 'redux';
 import thunk from 'redux-thunk';
 import * as _ from 'underscore';
 
+import createMockStore from 'redux-mock-store';
 import {ISvgProps} from '../../components/svg/Svg';
 import {IExampleServerTableState} from '../../components/table-hoc/examples/TableHOCServerExampleReducer';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {IReactVaporState} from '../../ReactVapor';
 import {ReactVaporReducers} from '../../ReactVaporReducers';
-import {CommonActions} from '../ReduxUtils';
+import {CommonActions, IDispatch} from '../ReduxUtils';
 
 export interface IReactVaporTestState extends IReactVaporState {
     lastAction?: Redux.Action;
@@ -85,3 +86,5 @@ export const defaultTooltipProps: ITooltipProps = {
 export const triggerAlertFunction = () => {
     alert(`Alert function triggered`);
 };
+
+export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch<IReactVaporState>>([thunk]);
