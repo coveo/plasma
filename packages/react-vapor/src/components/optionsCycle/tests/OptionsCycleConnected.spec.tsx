@@ -2,10 +2,7 @@ import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
-import {MockStoreEnhanced} from 'redux-mock-store';
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {IOptionsCycleConnectedOwnProps, IOptionsCycleProps} from '../OptionsCycle';
 import {addOptionsCycle, changeOptionsCycle} from '../OptionsCycleActions';
 import {OptionsCycleConnected} from '../OptionsCycleConnected';
@@ -18,7 +15,7 @@ describe('Options cycle', () => {
 
     describe('<OptionsCycleConnected />', () => {
         let optionsCycle: ShallowWrapper<IOptionsCycleProps>;
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
 
         const shallowCycleWithProps = (props: Partial<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = {}) => {
             return shallowWithStore(<OptionsCycleConnected {...optionsCycleBasicProps} {...props} />, store);

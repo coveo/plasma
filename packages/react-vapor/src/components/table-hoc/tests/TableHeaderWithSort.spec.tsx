@@ -1,16 +1,13 @@
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {TableHeaderActions} from '../actions/TableHeaderActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 
 describe('Table HOC', () => {
     describe('TableHeaderWithSort', () => {
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
 
         const defaultProps = {
             id: 'a',

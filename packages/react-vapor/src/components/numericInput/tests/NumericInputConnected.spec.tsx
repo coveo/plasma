@@ -1,9 +1,7 @@
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
 import {NumericInputActions} from '../NumericInputActions';
 import {NumericInputConnected} from '../NumericInputConnected';
@@ -11,7 +9,7 @@ import {initialNumericInputState} from '../NumericInputReducers';
 
 describe('Numeric Input', () => {
     describe('<NumericInputConnected />', () => {
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
         const id = 'numeric-input';
         const initialValue = 50;
 

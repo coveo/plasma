@@ -2,13 +2,10 @@ import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactModal from 'react-modal';
-import {MockStoreEnhanced} from 'redux-mock-store';
 
 import {closeModal} from '../../../components/modal/ModalActions';
 import {ModalCompositeConnected} from '../../../components/modal/ModalCompositeConnected';
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {
     IWithPreventNavigationConfig,
     IWithPreventNavigationInjectedProps,
@@ -18,7 +15,7 @@ import {
 import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt';
 
 describe('Modal with Prevent Navigation', () => {
-    let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+    let store: ReactVaporMockStore;
     let component: ReactWrapper<any, any>;
 
     class SomeModal extends React.Component<IWithPreventNavigationInjectedProps> {

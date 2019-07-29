@@ -1,21 +1,18 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
-import {IDispatch} from '../../../utils/ReduxUtils';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Button, IButtonProps} from '../../button/Button';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineBoxOwnProps, MultilineBox} from '../MultilineBox';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
 
         const id = 'multiline-box';
         const DefaultMultilineBoxWithRemoveButton = _.compose(multilineBoxWithRemoveButton())(MultilineBox);
