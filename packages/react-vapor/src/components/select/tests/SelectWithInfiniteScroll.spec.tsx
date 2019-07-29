@@ -24,6 +24,17 @@ describe('SelectWithInfiniteScroll', () => {
         {value: '3', displayValue: <span>3</span>},
     ];
 
+    const renderInfiniteScroll = (
+        props: Partial<ISingleSelectOwnProps & SelectWithInfiniteScrollProps>
+    ): ShallowWrapper<InfiniteScroll.InfiniteScrollProps> => {
+        const component: ShallowWrapper<ISelectProps> = shallowWithStore(
+            <SingleSelectWithInfiniteScroll {...basicProps} {...props} />,
+            getStoreMock()
+        ).dive();
+
+        return shallow(<div>{component.prop('wrapItems')(items)}</div>);
+    };
+
     it('should not throw when rendering and unmounting', () => {
         expect(() => {
             const component = shallowWithStore(
@@ -49,35 +60,29 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('should set hasMore prop to false on the infinite scroll component when the total number of items is less than the totalEntries prop', () => {
-        const component: ShallowWrapper<ISelectProps> = shallowWithStore(
-            <SingleSelectWithInfiniteScroll {...basicProps} totalEntries={3} items={itemsProps} />,
-            getStoreMock()
-        ).dive();
-
-        const wrappedItems = shallow(<div>{component.prop('wrapItems')(items)}</div>);
+        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: itemsProps});
 
         expect(wrappedItems.find(InfiniteScroll).prop('hasMore')).toBe(false);
     });
 
     it('should set hasMore prop to true on the infinite scroll component when the total number of items is less than the totalEntries prop', () => {
-        const component: ShallowWrapper<ISelectProps> = shallowWithStore(
-            <SingleSelectWithInfiniteScroll {...basicProps} totalEntries={4} items={itemsProps} />,
-            getStoreMock()
-        ).dive();
-
-        const wrappedItems = shallow(<div>{component.prop('wrapItems')(items)}</div>);
+        const wrappedItems = renderInfiniteScroll({totalEntries: 4, items: itemsProps});
 
         expect(wrappedItems.find(InfiniteScroll).prop('hasMore')).toBe(true);
     });
 
     it('should set dataLength prop to the number of items on the infinite scroll', () => {
-        const component: ShallowWrapper<ISelectProps> = shallowWithStore(
-            <SingleSelectWithInfiniteScroll {...basicProps} items={itemsProps} />,
-            getStoreMock()
-        ).dive();
-
-        const wrappedItems = shallow(<div>{component.prop('wrapItems')(items)}</div>);
+        const wrappedItems = renderInfiniteScroll({items: itemsProps});
 
         expect(wrappedItems.find(InfiniteScroll).prop('dataLength')).toBe(itemsProps.length);
+    });
+
+    it('should call the next prop when the user scrolls to the bottom of the list', () => {
+        const nextSpy = jasmine.createSpy('next');
+        const wrappedItems = renderInfiniteScroll({items: itemsProps, next: nextSpy});
+
+        wrappedItems.find(InfiniteScroll).prop('next')();
+
+        expect(nextSpy).toHaveBeenCalledTimes(1);
     });
 });
