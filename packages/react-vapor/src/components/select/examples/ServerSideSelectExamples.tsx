@@ -6,8 +6,8 @@ import {IReactVaporExampleState} from '../../../../docs/Reducers';
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {selectWithFilter} from '../hoc/SelectWithFilter';
 import {selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '../hoc/SelectWithInfiniteScroll';
-import {selectWithFilter} from '../SelectWithFilter';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 const TOTAL_ENTRIES = 5000;

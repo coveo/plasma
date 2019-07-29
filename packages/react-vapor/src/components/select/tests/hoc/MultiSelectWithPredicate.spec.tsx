@@ -6,21 +6,21 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {UUID} from '../../../utils/UUID';
-import {DraggableSelectedOption} from '../../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
-import {selectFlatSelect} from '../../flatSelect/FlatSelectActions';
-import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {reorderListBoxOption, unselectListBoxOption} from '../../listBox/ListBoxActions';
-import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
-import {toggleSelect} from '../SelectActions';
-import {MultiSelectWithPredicate} from '../SelectComponents';
-import {SelectConnected} from '../SelectConnected';
-import {ISelectWithPredicateProps, selectWithPredicate} from '../SelectWithPredicate';
+import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../../ReactVapor';
+import {clearState} from '../../../../utils/ReduxUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
+import {UUID} from '../../../../utils/UUID';
+import {DraggableSelectedOption} from '../../../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
+import {selectFlatSelect} from '../../../flatSelect/FlatSelectActions';
+import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
+import {IItemBoxProps} from '../../../itemBox/ItemBox';
+import {reorderListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
+import {ISelectWithPredicateProps, selectWithPredicate} from '../../hoc/SelectWithPredicate';
+import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../../MultiSelectConnected';
+import {toggleSelect} from '../../SelectActions';
+import {MultiSelectWithPredicate} from '../../SelectComponents';
+import {SelectConnected} from '../../SelectConnected';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
