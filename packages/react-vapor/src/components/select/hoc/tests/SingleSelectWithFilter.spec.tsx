@@ -15,12 +15,12 @@ import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
 import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
-import {ISelectWithFilterProps, selectWithFilter} from '../../hoc/SelectWithFilter';
 import {IMultiSelectProps} from '../../MultiSelectConnected';
 import {toggleSelect} from '../../SelectActions';
 import {SingleSelectWithFilter} from '../../SelectComponents';
 import {SelectConnected} from '../../SelectConnected';
 import {SingleSelectConnected} from '../../SingleSelectConnected';
+import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
