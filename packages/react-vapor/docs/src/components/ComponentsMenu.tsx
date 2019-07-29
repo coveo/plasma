@@ -14,14 +14,14 @@ const Menu: React.FunctionComponent<IMenuProps> = ({components, match, location,
         <div className="flex flex-column navigation-wrapper-opened" style={{maxWidth: '245px'}}>
             <SubNavigation
                 selected={(selectedLink && selectedLink.path) || components[0].path}
-                items={components.map((c: IComponent) => ({
-                    id: c.path,
-                    label: c.name,
-                    link: `#/${c.name}`,
+                items={components.map(({path, name, link, component}: IComponent) => ({
+                    id: path,
+                    label: `${name}${component.deprecated ? ' (deprecated)' : ''}`,
+                    link: `#${link}`,
                 }))}
                 onClickItem={(id: string) => {
-                    const link: IComponent = _.findWhere(components, {path: id});
-                    history.push(`/${link.name}`);
+                    const {link} = _.findWhere(components, {path: id});
+                    history.push(link);
                 }}
             />
         </div>

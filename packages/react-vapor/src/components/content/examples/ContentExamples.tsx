@@ -6,10 +6,12 @@ import {Tooltip} from '../../tooltip/Tooltip';
 import {Content} from '../Content';
 
 export class ContentExamples extends React.Component<any, any> {
+    static deprecated = true;
+
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Content</h1>
+                <h1 className="text-blue mb1 bold">Content DEPRECATED</h1>
 
                 <div className="form-group">
                     <label className="form-control-label">Content with an string</label>

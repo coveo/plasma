@@ -13,6 +13,8 @@ export interface IModalExamplesState {
 }
 
 export class ModalExamples extends React.Component<any, IModalExamplesState> {
+    static deprecated = true;
+
     constructor(props: any) {
         super(props);
         this.state = {isOpened: false};
@@ -30,7 +32,7 @@ export class ModalExamples extends React.Component<any, IModalExamplesState> {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Modal</label>
+                    <label className="form-control-label">Modal DEPRECATED</label>
                     <div>
                         <button
                             className="btn"

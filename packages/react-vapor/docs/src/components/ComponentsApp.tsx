@@ -10,22 +10,23 @@ import {ComponentsMenu} from './ComponentsMenu';
 
 export const ComponentsApp: React.FunctionComponent = () => {
     const req = require.context('../../../src/components/', true, /Examples?\.tsx?$/i);
-    const components: IComponent[] = [];
-    req.keys().forEach((key) => {
-        const component = req(key);
-        const code = require('!raw-loader!../../../src/components/' + key.replace('./', '')).default;
+    const components: IComponent[] = req.keys().map((path) => {
+        const component = req(path);
+        const code = require('!raw-loader!../../../src/components/' + path.replace('./', '')).default;
         const name = _.keys(component)[0].replace(/Examples?/i, '');
-        components.push({name, code, path: key, component: _.values(component)[0]});
+        const link = `/${name}`;
+        const componentPrototype = _.values(component)[0];
+        return {name, link, code, path, component: componentPrototype};
     });
 
-    const routes = components.map((c: IComponent) => (
+    const routes = components.map(({path, link, code, component}: IComponent) => (
         <Route
-            key={c.path}
-            path={`/${c.name}`}
+            key={path}
+            path={link}
             component={() => (
                 <>
-                    {React.createElement(c.component)}
-                    <ComponentCode>{c.code}</ComponentCode>
+                    {React.createElement(component)}
+                    <ComponentCode>{code}</ComponentCode>
                 </>
             )}
         />
