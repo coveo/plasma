@@ -1,9 +1,8 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {createMockStore, mockStore} from 'redux-test-utils';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addModal, closeModal, removeModal} from '../ModalActions';
 import {IModalCompositeProps} from '../ModalComposite';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
@@ -16,61 +15,59 @@ describe('<ModalCompositeConnected />', () => {
         title: 'Some random title',
     };
 
-    let mockstore: mockStore<IReactVaporState>;
-
-    beforeEach(() => {
-        mockstore = createMockStore();
-    });
-
     it('should get withReduxState set to true as a prop', () => {
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, getStoreMock());
 
         expect(modalCompositeConnected.props().withReduxState).toBe(true);
     });
 
     it('should have isOpened prop to true if the modal is opened in the store', () => {
-        mockstore = createMockStore({
+        const store = getStoreMock({
             modals: [{id: 'another-modal', isOpened: false}, {id: basicProps.id, isOpened: true}],
         });
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store);
 
         expect(modalCompositeConnected.props().isOpened).toBe(true);
     });
 
     it('should have the layer prop set to the position of the current modal in opened modal stack + 1', () => {
-        mockstore = createMockStore({openModals: ['meeeeehhh-I-m-a-sheep', basicProps.id, 'mooooohhh-I-m-a-cow']});
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore);
+        const store = getStoreMock({openModals: ['meeeeehhh-I-m-a-sheep', basicProps.id, 'mooooohhh-I-m-a-cow']});
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store);
 
         expect(modalCompositeConnected.props().layer).toBe(2);
     });
 
     it('should dispatch an "ADD_MODAL" action when it mounts', () => {
-        shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
+        const store = getStoreMock();
+        shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
 
-        expect(mockstore.isActionDispatched(addModal(basicProps.id))).toBe(true);
+        expect(store.getActions()).toContain(addModal(basicProps.id));
     });
 
     it('should dispatch a "REMOVE_MODAL" action when it unmounts', () => {
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
+        const store = getStoreMock();
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
 
         modalCompositeConnected.unmount();
 
-        expect(mockstore.isActionDispatched(removeModal(basicProps.id))).toBe(true);
+        expect(store.getActions()).toContain(removeModal(basicProps.id));
     });
 
     it('should display a <ModalHeaderConnected /> component', () => {
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, mockstore).dive();
+        const store = getStoreMock();
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
         expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(1);
     });
 
     it('should dispatch a close modal action when closing the modal', () => {
+        const store = getStoreMock();
         const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithStore(
             <ModalCompositeConnected {...basicProps} isOpened />,
-            mockstore
+            store
         ).dive();
 
         modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeEvent'));
 
-        expect(mockstore.isActionDispatched(closeModal(basicProps.id))).toBe(true);
+        expect(store.getActions()).toContain(closeModal(basicProps.id));
     });
 });

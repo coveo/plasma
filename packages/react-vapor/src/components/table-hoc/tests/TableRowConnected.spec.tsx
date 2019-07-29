@@ -1,9 +1,11 @@
 import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {createMockStore, mockStore} from 'redux-test-utils';
+import {MockStoreEnhanced} from 'redux-mock-store';
 
 import {IReactVaporState} from '../../../ReactVapor';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from '../actions/TableHOCRowActions';
@@ -12,18 +14,19 @@ import {TableSelectors} from '../TableSelectors';
 
 describe('Table HOC', () => {
     describe('TableRowConnected', () => {
-        let store: mockStore<IReactVaporState>;
+        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
         const defaultProps = {
             id: 'a',
             tableId: 'b',
         };
 
         beforeEach(() => {
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
                         tableId: defaultProps.tableId,
+                        selected: false,
                     },
                 ],
             });
@@ -45,7 +48,7 @@ describe('Table HOC', () => {
         });
 
         it('should have the class selected if the row is selected in the state', () => {
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
@@ -64,7 +67,7 @@ describe('Table HOC', () => {
         });
 
         it('should not have the class selected if the row is not selected in the state', () => {
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
@@ -82,7 +85,7 @@ describe('Table HOC', () => {
 
             shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch an TableHOCRowActions.remove on componentWillUnmount', () => {
@@ -91,7 +94,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.unmount();
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch an addActionsToActionBar on click', () => {
@@ -101,7 +104,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
             wrapper.find('tr').simulate('click', {});
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch a TableHOCRowActions.select action on click when actions is not empty', () => {
@@ -113,7 +116,7 @@ describe('Table HOC', () => {
             ).dive();
             wrapper.find('tr').simulate('click', {});
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch an addActionsToActionBar when the actions change and the row was selected', () => {
@@ -125,7 +128,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
             wrapper.setProps({actions: newActions});
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch a TableHOCRowActions.select action when the action change and the row was selected', () => {
@@ -137,7 +140,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
             wrapper.setProps({actions: newActions});
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should not dispatch a TableHOCRowActions.select action on click when actions is empty', () => {
@@ -146,7 +149,7 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.find('tr').simulate('click', {});
 
-            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+            expect(store.getActions()).not.toContain(actionNotExpected);
         });
 
         it('should not dispatch a TableHOCRowActions.select action on click when clicking inside an underlying dropdown', () => {
@@ -164,7 +167,7 @@ describe('Table HOC', () => {
 
             wrapper.find('.dropdown').simulate('click');
 
-            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+            expect(store.getActions()).not.toContain(actionNotExpected);
         });
 
         it('should dispatch an TableHOCRowActions.select on click and handle multi-select', () => {
@@ -177,10 +180,10 @@ describe('Table HOC', () => {
             ).dive();
 
             wrapper.find('tr').simulate('click', {ctrlKey: true});
-            expect(store.isActionDispatched(expectedActionWithMulti)).toBe(true);
+            expect(store.getActions()).toContain(expectedActionWithMulti);
 
             wrapper.find('tr').simulate('click', {ctrlKey: false});
-            expect(store.isActionDispatched(expectedActionWithoutMulti)).toBe(true);
+            expect(store.getActions()).toContain(expectedActionWithoutMulti);
         });
 
         it('should dispatch trigger actions with callOnDoubleClick=true when double clicking the row', () => {
@@ -203,7 +206,7 @@ describe('Table HOC', () => {
             const collapsibleContent = <div>Collapsible content</div>;
 
             beforeEach(() => {
-                store = createMockStore({
+                store = getStoreMock({
                     tableHOCRow: [
                         {
                             id: defaultProps.id,
@@ -288,14 +291,14 @@ describe('Table HOC', () => {
 
                 wrapper.find('tr.heading-row').simulate('click', {});
 
-                expect(store.isActionDispatched(expectedAction)).toBe(true);
+                expect(store.getActions()).toContain(expectedAction);
             });
         });
 
         it('should dispatch a toggleCollapsible action with opened:true on mount when expandOnMount is set to true', () => {
             const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
@@ -318,13 +321,13 @@ describe('Table HOC', () => {
                 store
             ).dive();
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should dispatch a toggleCollapsible action with opened:true when changing from a non-collapsible to a collapsible row', () => {
             const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
@@ -343,7 +346,7 @@ describe('Table HOC', () => {
                 />,
                 store
             ).dive();
-            expect(store.isActionDispatched(expectedAction)).toBe(false);
+            expect(store.getActions()).not.toContain(expectedAction);
 
             row.setProps({
                 collapsible: {
@@ -351,13 +354,13 @@ describe('Table HOC', () => {
                     content: <div>Whatever</div>,
                 },
             });
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should not dispatch a toggleCollapsible action when changing from a non-collapsible to a collapsible row if expandOnMount is false', () => {
             const actionNotExpected = TableHOCRowActions.toggleCollapsible(defaultProps.id, true);
 
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
@@ -372,19 +375,19 @@ describe('Table HOC', () => {
                 <TableRowConnected id={defaultProps.id} tableId={defaultProps.tableId} />,
                 store
             ).dive();
-            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+            expect(store.getActions()).not.toContain(actionNotExpected);
 
             row.setProps({
                 collapsible: {
                     content: <div>Whatever</div>,
                 },
             });
-            expect(store.isActionDispatched(actionNotExpected)).toBe(false);
+            expect(store.getActions()).not.toContain(actionNotExpected);
         });
 
         it('should call the onToggleCollapsible props with true the row is opened', () => {
             const spy = jasmine.createSpy('onToggle');
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,
@@ -413,7 +416,7 @@ describe('Table HOC', () => {
 
         it('should call the onToggleCollapsible props with false the row is closed', () => {
             const spy = jasmine.createSpy('onToggle');
-            store = createMockStore({
+            store = getStoreMock({
                 tableHOCRow: [
                     {
                         id: defaultProps.id,

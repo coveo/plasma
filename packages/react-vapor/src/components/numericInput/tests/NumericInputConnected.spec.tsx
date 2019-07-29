@@ -1,7 +1,9 @@
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {createMockStore, mockStore} from 'redux-test-utils';
+import {MockStoreEnhanced} from 'redux-mock-store';
 import {IReactVaporState} from '../../../ReactVapor';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
 import {NumericInputActions} from '../NumericInputActions';
 import {NumericInputConnected} from '../NumericInputConnected';
@@ -9,21 +11,21 @@ import {initialNumericInputState} from '../NumericInputReducers';
 
 describe('Numeric Input', () => {
     describe('<NumericInputConnected />', () => {
-        let store: mockStore<IReactVaporState>;
+        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
         const id = 'numeric-input';
         const initialValue = 50;
 
         beforeEach(() => {
-            store = createMockStore({
+            store = getStoreMock({
                 numericInputs: {
-                    [id]: {value: initialValue},
+                    [id]: {value: initialValue, hasError: false},
                 },
             });
         });
 
         it('should not throw', () => {
             expect(() => {
-                store = createMockStore({numericInputs: {}});
+                store = getStoreMock({numericInputs: {}});
 
                 const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
                 component.unmount();
@@ -36,7 +38,7 @@ describe('Numeric Input', () => {
 
             shallowWithStore(<NumericInputConnected id={id} initialValue={expectedInitialValue} />, store).dive();
 
-            expect(store.isActionDispatched(expectedAction)).toBe(true);
+            expect(store.getActions()).toContain(expectedAction);
         });
 
         it('should disable the decrement button when the value is lower than the min', () => {
@@ -63,7 +65,7 @@ describe('Numeric Input', () => {
                 .find(Button)
                 .at(0)
                 .prop('onClick')();
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue - 1))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - 1));
         });
 
         it('should decrement by the step prop value onClick on the increment button', () => {
@@ -77,7 +79,7 @@ describe('Numeric Input', () => {
                 .find(Button)
                 .at(0)
                 .prop('onClick')();
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue - step))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
         });
 
         it('should disable the increment button when the value is greater than the max', () => {
@@ -106,7 +108,7 @@ describe('Numeric Input', () => {
                 .find(Button)
                 .at(0)
                 .prop('onClick')();
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, min, min))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, min, min));
         });
 
         it('should trigger a setValue onClick on the increment button', () => {
@@ -119,7 +121,7 @@ describe('Numeric Input', () => {
                 .find(Button)
                 .at(1)
                 .prop('onClick')();
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue + 1))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + 1));
         });
 
         it('should increment by the step prop value onClick on the increment button', () => {
@@ -133,7 +135,7 @@ describe('Numeric Input', () => {
                 .find(Button)
                 .at(1)
                 .prop('onClick')();
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue + step))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
         });
 
         it('should not overflow the max onClick on the increment button', () => {
@@ -148,12 +150,12 @@ describe('Numeric Input', () => {
                 .find(Button)
                 .at(1)
                 .prop('onClick')();
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, max, undefined, max))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, max, undefined, max));
         });
 
         it('should display the error if the input is in error', () => {
             const expectedMessage = 'why?!?';
-            store = createMockStore({
+            store = getStoreMock({
                 numericInputs: {
                     [id]: {value: 20, hasError: true},
                 },
@@ -170,14 +172,14 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
 
             component.find('.js-numeric-input').simulate('change', {target: {value: newValue}});
-            expect(store.isActionDispatched(NumericInputActions.setValue(id, newValue))).toBe(true);
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, newValue));
         });
 
         describe('when the value is a string', () => {
             beforeEach(() => {
-                store = createMockStore({
+                store = getStoreMock({
                     numericInputs: {
-                        [id]: {value: 'not over 9000'},
+                        [id]: {value: 'not over 9000', hasError: false},
                     },
                 });
             });
@@ -189,9 +191,7 @@ describe('Numeric Input', () => {
                     .find(Button)
                     .at(0)
                     .prop('onClick')();
-                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialNumericInputState.value))).toBe(
-                    true
-                );
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialNumericInputState.value));
             });
 
             it('should increment to the default value if initialValue is not defined', () => {
@@ -201,9 +201,7 @@ describe('Numeric Input', () => {
                     .find(Button)
                     .at(1)
                     .prop('onClick')();
-                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialNumericInputState.value))).toBe(
-                    true
-                );
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialNumericInputState.value));
             });
 
             it('should decrement to the initialValue if initialValue is defined', () => {
@@ -216,7 +214,7 @@ describe('Numeric Input', () => {
                     .find(Button)
                     .at(0)
                     .prop('onClick')();
-                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue))).toBe(true);
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue));
             });
 
             it('should increment to the default value if initialValue is not defined', () => {
@@ -229,7 +227,7 @@ describe('Numeric Input', () => {
                     .find(Button)
                     .at(1)
                     .prop('onClick')();
-                expect(store.isActionDispatched(NumericInputActions.setValue(id, initialValue))).toBe(true);
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue));
             });
         });
     });

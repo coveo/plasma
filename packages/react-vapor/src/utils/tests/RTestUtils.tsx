@@ -4,7 +4,7 @@ import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
-import {createMockStore, mockStore} from 'redux-test-utils';
+
 import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
 import {IReactVaporState} from '../../ReactVapor';
 import {UUID} from '../UUID';
@@ -13,8 +13,6 @@ import {TestUtils} from './TestUtils';
 const mockUUID = (generatedId: string = 'id') => {
     spyOn(UUID, 'generate').and.returnValue(generatedId);
 };
-
-const buildMockStore = (state: IReactVaporState = {}): mockStore<IReactVaporState> => createMockStore(state);
 
 const mockTagContext = () => {
     DnDUtils.TagControlContext = (DecoratedClass: any) => DecoratedClass;
@@ -67,7 +65,6 @@ const clickOnElement = (el: Element = document.getElementById(defaultId), event:
 };
 
 export const RTestUtils = {
-    buildMockStore,
     mockUUID,
     mockTagContext,
     renderComponent,
