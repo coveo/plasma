@@ -3,13 +3,13 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {UUID} from '../../../utils/UUID';
-import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {MultiSelectWithPredicateAndFilter} from '../SelectComponents';
+import {IReactVaporState} from '../../../../ReactVapor';
+import {clearState} from '../../../../utils/ReduxUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
+import {UUID} from '../../../../utils/UUID';
+import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
+import {IItemBoxProps} from '../../../itemBox/ItemBox';
+import {MultiSelectWithPredicateAndFilter} from '../../SelectComponents';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicateAndFilter/>', () => {
