@@ -16,11 +16,11 @@ import {selectFlatSelect} from '../../../flatSelect/FlatSelectActions';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
 import {reorderListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
-import {ISelectWithPredicateProps, selectWithPredicate} from '../../hoc/SelectWithPredicate';
 import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../../MultiSelectConnected';
 import {toggleSelect} from '../../SelectActions';
-import {MultiSelectWithPredicate} from '../../SelectComponents';
 import {SelectConnected} from '../../SelectConnected';
+import {MultiSelectWithPredicate} from '../SelectComponents';
+import {ISelectWithPredicateProps, selectWithPredicate} from '../SelectWithPredicate';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {

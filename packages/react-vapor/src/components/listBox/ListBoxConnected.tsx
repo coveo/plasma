@@ -11,7 +11,6 @@ import {IListBoxState} from './ListBoxReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IListBoxOwnProps): IListBoxStateProps => {
     const list: IListBoxState = _.findWhere(state.listBoxes, {id: ownProps.id});
-
     return {
         selected: list ? list.selected : [],
         active: list ? list.active : undefined,
@@ -19,7 +18,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IListBoxOwnProps): I
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IListBoxDispatchProps => ({
-    onRender: () => dispatch(addListBox(ownProps.id, ownProps.items)),
+    onRender: () => dispatch(addListBox(ownProps.id, ownProps.items, ownProps.multi)),
     onDestroy: () => dispatch(removeListBox(ownProps.id)),
     onOptionClick: (option: IItemBoxProps) => dispatch(selectListBoxOption(ownProps.id, ownProps.multi, option.value)),
 });

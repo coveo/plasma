@@ -15,12 +15,12 @@ import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
 import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
-import {ISelectWithFilterProps, selectWithFilter} from '../../hoc/SelectWithFilter';
 import {IMultiSelectProps} from '../../MultiSelectConnected';
 import {toggleSelect} from '../../SelectActions';
-import {SingleSelectWithFilter} from '../../SelectComponents';
 import {SelectConnected} from '../../SelectConnected';
 import {SingleSelectConnected} from '../../SingleSelectConnected';
+import {SingleSelectWithFilter} from '../SelectComponents';
+import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
@@ -212,26 +212,23 @@ describe('Select', () => {
                 expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, -1));
             });
 
-            it('should dispatch a setActiveListBoxOption with 0 as the active parameter when the user press the up or down arrow but the dropdown is not open', () => {
-                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+            it('should dispatch a toggleSelect to open the Select when the user press the up or down arrow', () => {
                 singleSelect
                     .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.downArrow})
                     .simulate('keyup', {keyCode: keyCode.downArrow});
-
-                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+                expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
 
                 // Close the dropdown
                 store.dispatch(toggleSelect(id, false));
                 dispatchSpy.calls.reset();
 
-                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
                 singleSelect
                     .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.upArrow})
                     .simulate('keyup', {keyCode: keyCode.upArrow});
 
-                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+                expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
             });
         });
 

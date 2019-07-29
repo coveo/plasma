@@ -5,9 +5,9 @@ import * as InfiniteScroll from 'react-infinite-scroll-component';
 
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '../../hoc/SelectWithInfiniteScroll';
 import {ISelectProps} from '../../SelectConnected';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
+import {selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '../SelectWithInfiniteScroll';
 
 describe('SelectWithInfiniteScroll', () => {
     const SingleSelectWithInfiniteScroll = selectWithInfiniteScroll(SingleSelectConnected);

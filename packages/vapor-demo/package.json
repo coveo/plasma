@@ -1,7 +1,7 @@
 {
     "name": "vapor-demo",
     "private": true,
-    "version": "4.3.1",
+    "version": "4.3.2",
     "description": "Demo page for the vapor components.",
     "keywords": [
         "coveo",
@@ -24,7 +24,7 @@
     "devDependencies": {
         "@zeit/next-sass": "1.0.1",
         "acorn": "^6.0.0",
-        "coveo-styleguide": "^4.3.1",
+        "coveo-styleguide": "^4.3.2",
         "file-loader": "4.0.0",
         "next": "8.1.0",
         "next-react-svg": "1.1.0",

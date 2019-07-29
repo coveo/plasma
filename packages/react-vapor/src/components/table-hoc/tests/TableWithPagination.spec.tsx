@@ -2,11 +2,8 @@ import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {MockStoreEnhanced} from 'redux-mock-store';
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {turnOffLoading} from '../../loading/LoadingActions';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
@@ -16,7 +13,7 @@ import {tableWithPagination} from '../TableWithPagination';
 
 describe('Table HOC', () => {
     describe('TableWithPagination', () => {
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
 
         const TableWithPagination = _.compose(tableWithPagination())(TableHOC);
 

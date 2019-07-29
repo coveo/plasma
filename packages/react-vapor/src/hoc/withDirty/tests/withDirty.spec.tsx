@@ -1,16 +1,13 @@
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
 
 import {Input} from '../../../components/input/Input';
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {IWithDirty, IWithDirtyProps, withDirty} from '../withDirty';
 import {WithDirtyActions} from '../withDirtyActions';
 
 describe('Component with dirty', () => {
-    let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+    let store: ReactVaporMockStore;
 
     beforeEach(() => {
         store = getStoreMock({

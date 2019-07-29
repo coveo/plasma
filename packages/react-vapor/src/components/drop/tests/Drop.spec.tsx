@@ -1,12 +1,9 @@
 import {ReactWrapper, ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
@@ -59,7 +56,7 @@ describe('Drop', () => {
 
             const mountDropWithStore = (
                 props?: Partial<IDropProps>,
-                store?: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>,
+                store?: ReactVaporMockStore,
                 child: React.ReactNode = null
             ) => {
                 wrapper = mountWithStore(

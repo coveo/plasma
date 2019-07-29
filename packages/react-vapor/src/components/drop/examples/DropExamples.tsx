@@ -8,7 +8,7 @@ import {ListBox} from '../../listBox/ListBox';
 import {IModalExamplesProps} from '../../modal/examples/ModalCompositeConnectedExamples';
 import {IModalActionPayload, openModal} from '../../modal/ModalActions';
 import {ModalCompositeConnected} from '../../modal/ModalCompositeConnected';
-import {SingleSelectWithFilter} from '../../select/SelectComponents';
+import {SingleSelectWithFilter} from '../../select/hoc/SelectComponents';
 import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop} from '../Drop';
 

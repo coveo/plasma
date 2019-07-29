@@ -1,18 +1,15 @@
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
-import {IDispatch} from '../../../utils/ReduxUtils';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 
 describe('MultilineBox', () => {
     describe('<MultilineBox/>', () => {
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
         const id = 'multiline-box';
         const defaultProps: IMultilineBoxOwnProps = {
             id,

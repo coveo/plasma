@@ -1,11 +1,8 @@
 import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {MockStoreEnhanced} from 'redux-mock-store';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {IDispatch} from '../../../utils/ReduxUtils';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from '../actions/TableHOCRowActions';
@@ -14,7 +11,7 @@ import {TableSelectors} from '../TableSelectors';
 
 describe('Table HOC', () => {
     describe('TableRowConnected', () => {
-        let store: MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
+        let store: ReactVaporMockStore;
         const defaultProps = {
             id: 'a',
             tableId: 'b',
