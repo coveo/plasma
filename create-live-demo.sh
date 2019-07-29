@@ -5,7 +5,6 @@ git config user.email "$COMMIT_AUTHOR_EMAIL"
 
 REPO=`git config remote.origin.url`
 SSH_REPO=${REPO/https:\/\/github.com\//git@github.com:}
-BRANCH_FOLDER_NAME=`$TRAVIS_PULL_REQUEST_BRANCH | md5sum | awk '{print $1}'`
 
 echo "Syncing with gh-pages from branch: $TRAVIS_PULL_REQUEST_BRANCH"
 git stash
