@@ -1,18 +1,18 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {mockStore} from 'redux-test-utils';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../../ReactVapor';
+
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Button, IButtonProps} from '../../button/Button';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineBoxOwnProps, MultilineBox} from '../MultilineBox';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
-        let store: mockStore<IReactVaporState>;
+        let store: ReactVaporMockStore;
 
         const id = 'multiline-box';
         const DefaultMultilineBoxWithRemoveButton = _.compose(multilineBoxWithRemoveButton())(MultilineBox);
@@ -107,7 +107,7 @@ describe('Multiline box with remove button', () => {
             };
 
             it('should contains a Button inside the remove button element sent as arguments', () => {
-                store = RTestUtils.buildMockStore();
+                store = getStoreMock();
 
                 const wrapper = shallowComponentWithStore(
                     DefaultMultilineBoxWithRemoveButton,
@@ -124,7 +124,7 @@ describe('Multiline box with remove button', () => {
                 const testId = 'testid';
 
                 RTestUtils.mockUUID(testId);
-                store = RTestUtils.buildMockStore({
+                store = getStoreMock({
                     multilineIds: {
                         [id]: {
                             id: id,
@@ -147,7 +147,7 @@ describe('Multiline box with remove button', () => {
                     .props()
                     .onClick();
 
-                expect(store.isActionTypeDispatched(StringListActions.removeValue)).toBe(true);
+                expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.removeValue);
             });
 
             describe('with a containerNode', () => {
@@ -169,7 +169,7 @@ describe('Multiline box with remove button', () => {
                     const testId = 'testid';
 
                     RTestUtils.mockUUID(testId);
-                    store = RTestUtils.buildMockStore({
+                    store = getStoreMock({
                         multilineIds: {
                             [id]: {
                                 id: id,
