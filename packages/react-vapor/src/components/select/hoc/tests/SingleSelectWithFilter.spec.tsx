@@ -1,26 +1,26 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {shallowWithStore} from 'enzyme-redux';
-import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVapor';
-import {keyCode} from '../../../utils/InputUtils';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Button} from '../../button/Button';
-import {filterThrough} from '../../filterBox/FilterBoxActions';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox';
-import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
-import {IMultiSelectProps} from '../MultiSelectConnected';
-import {toggleSelect} from '../SelectActions';
+import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../../ReactVapor';
+import {keyCode} from '../../../../utils/InputUtils';
+import {clearState} from '../../../../utils/ReduxUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
+import {Button} from '../../../button/Button';
+import {filterThrough} from '../../../filterBox/FilterBoxActions';
+import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
+import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
+import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
+import {IMultiSelectProps} from '../../MultiSelectConnected';
+import {toggleSelect} from '../../SelectActions';
+import {SelectConnected} from '../../SelectConnected';
+import {SingleSelectConnected} from '../../SingleSelectConnected';
 import {SingleSelectWithFilter} from '../SelectComponents';
-import {SelectConnected} from '../SelectConnected';
 import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
-import {SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {

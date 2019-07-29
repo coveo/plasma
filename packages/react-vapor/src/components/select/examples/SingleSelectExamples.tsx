@@ -8,7 +8,7 @@ import {
     SingleSelectWithFilter,
     SingleSelectWithPredicate,
     SingleSelectWithPredicateAndFilter,
-} from '../SelectComponents';
+} from '../hoc/SelectComponents';
 import {SingleSelectConnected} from '../SingleSelectConnected';
 
 const defaultItems: IItemBoxProps[] = [
