@@ -1,7 +1,6 @@
 const axios = require('axios');
 const _ = require('underscore');
 const branchName = process.env.BRANCH_FOLDER_NAME;
-console.log(JSON.stringify(process.env));
 const prNumber = process.env.TRAVIS_PULL_REQUEST;
 const userpassword = process.env.GITUSRPWD;
 const APIEndpointWithAuthentication = `https://${userpassword}@api.github.com/repos/coveo/react-vapor/pulls/${prNumber}/reviews`;
