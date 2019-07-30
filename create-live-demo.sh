@@ -26,4 +26,4 @@ SHA=`git rev-parse --verify HEAD`
 echo "Pushing live demo to gh-pages for branch: $TRAVIS_PULL_REQUEST_BRANCH"
 git push -f "$SSH_REPO" "$SHA:gh-pages"
 
-BRANCH_NAME=$BRANCH_FOLDER_NAME node ./create-live-demo.js
+BRANCH_NAME="$BRANCH_FOLDER_NAME" node ./create-live-demo.js
