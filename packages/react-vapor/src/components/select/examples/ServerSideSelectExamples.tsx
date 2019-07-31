@@ -10,7 +10,6 @@ import {selectWithFilter} from '../hoc/SelectWithFilter';
 import {selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '../hoc/SelectWithInfiniteScroll';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
 
-const TOTAL_ENTRIES = 5000;
 const PER_PAGE = 10;
 const IMG_SIZE = 50;
 
@@ -24,8 +23,9 @@ interface PhotoProps {
 
 const clean = <T extends object>(o: T) => _(o).pick(_.identity);
 
-function usePhotosAPIMock(initialPhotos: any[] = []): [any[], (params?: any, overwrite?: boolean) => void] {
-    const [photos, setPhotos] = React.useState(initialPhotos);
+function usePhotosAPIMock(): [any[], number, (params?: any, overwrite?: boolean) => void] {
+    const [photos, setPhotos] = React.useState([]);
+    const [totalEntries, setTotalEntries] = React.useState(0);
 
     function fetchPhotos(params?: any, overwrite = true) {
         const cleanParams = clean(params);
@@ -34,8 +34,11 @@ function usePhotosAPIMock(initialPhotos: any[] = []): [any[], (params?: any, ove
             : '';
 
         return fetch(`https://jsonplaceholder.typicode.com/photos${queryString}`)
-            .then((response) => response.json())
-            .then((newPhotos: any) => {
+            .then((response) => {
+                setTotalEntries(parseInt(response.headers.get('x-total-count'), 10));
+                return response.json();
+            })
+            .then((newPhotos) => {
                 if (overwrite) {
                     setPhotos(newPhotos);
                 } else {
@@ -44,7 +47,7 @@ function usePhotosAPIMock(initialPhotos: any[] = []): [any[], (params?: any, ove
             });
     }
 
-    return [photos, fetchPhotos];
+    return [photos, totalEntries, fetchPhotos];
 }
 
 const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => {
@@ -58,11 +61,9 @@ const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbna
     );
 };
 
-function mapStateToProps(state: IReactVaporExampleState, props: {id: string}) {
-    return {
-        filterValue: FilterBoxSelectors.getFilterText(state, props),
-    };
-}
+const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) => ({
+    filterValue: FilterBoxSelectors.getFilterText(state, props),
+});
 
 const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = _.compose(
     withServerSideProcessing,
@@ -74,7 +75,7 @@ function ServerSideSingleSelectExampleDisconnected({
     filterValue,
     id,
 }: {id: string} & ReturnType<typeof mapStateToProps>) {
-    const [photos, fetchPhotos] = usePhotosAPIMock([]);
+    const [photos, totalEntries, fetchPhotos] = usePhotosAPIMock();
     const [pageNbr, setPage] = React.useState(1);
 
     React.useEffect(() => {
@@ -82,12 +83,12 @@ function ServerSideSingleSelectExampleDisconnected({
     }, []);
 
     function fetchNextPage() {
-        fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue}, false);
+        fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue});
         setPage(pageNbr + 1);
     }
 
     function applyFilter() {
-        fetchPhotos({_page: 1, _limit: PER_PAGE, q: filterValue}, true);
+        fetchPhotos({_page: 1, _limit: PER_PAGE, q: filterValue});
         setPage(1);
     }
 
@@ -105,7 +106,7 @@ function ServerSideSingleSelectExampleDisconnected({
                             displayValue: <PhotoItem {...photo} />,
                         })
                     )}
-                    totalEntries={TOTAL_ENTRIES}
+                    totalEntries={totalEntries}
                     next={fetchNextPage}
                     onUpdate={applyFilter}
                     canClear
