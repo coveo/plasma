@@ -1,10 +1,13 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ActionBarConnected} from '../actions/ActionBarConnected';
 
-export interface IMaybeServerConfig {
-    isServer?: boolean;
-}
+/**
+ * @deprecated Use WithServerSideProcessingProps directly instead
+ */
+export type IMaybeServerConfig = WithServerSideProcessingProps;
 
 export interface ITableHOCOwnProps {
     id: string;

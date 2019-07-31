@@ -1,21 +1,26 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
+import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {UUID} from '../../../utils/UUID';
-import {DraggableSelectedOption} from '../../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
-import {selectFlatSelect} from '../../flatSelect/FlatSelectActions';
-import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {reorderListBoxOption, unselectListBoxOption} from '../../listBox/ListBoxActions';
-import {IMultiSelectProps} from '../MultiSelectConnected';
-import {toggleSelect} from '../SelectActions';
+import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../../ReactVapor';
+import {clearState} from '../../../../utils/ReduxUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
+import {UUID} from '../../../../utils/UUID';
+import {DraggableSelectedOption} from '../../../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
+import {selectFlatSelect} from '../../../flatSelect/FlatSelectActions';
+import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
+import {IItemBoxProps} from '../../../itemBox/ItemBox';
+import {reorderListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
+import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../../MultiSelectConnected';
+import {toggleSelect} from '../../SelectActions';
+import {SelectConnected} from '../../SelectConnected';
 import {MultiSelectWithPredicate} from '../SelectComponents';
-import {SelectConnected} from '../SelectConnected';
+import {ISelectWithPredicateProps, selectWithPredicate} from '../SelectWithPredicate';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
@@ -28,25 +33,21 @@ describe('Select', () => {
             {id: UUID.generate(), option: {content: 'All'}, selected: true},
             {id: UUID.generate(), option: {content: 'None'}},
         ];
-
         const matchPredicate = (predicate: string, item: IItemBoxProps) => {
             return predicate === defaultFlatSelectOptions[0].id;
         };
 
-        const mountMultiSelect = (
-            items: IItemBoxProps[] = [],
-            options: IFlatSelectOptionProps[] = defaultFlatSelectOptions,
-            sortable: boolean = false
-        ) => {
+        const basicProps: ISelectWithPredicateProps & IMultiSelectOwnProps = {
+            id,
+            items: [],
+            options: defaultFlatSelectOptions,
+            matchPredicate,
+        };
+
+        const mountMultiSelect = (props?: Partial<ISelectWithPredicateProps & IMultiSelectOwnProps>) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <MultiSelectWithPredicate
-                        id={id}
-                        items={items}
-                        options={options}
-                        matchPredicate={matchPredicate}
-                        sortable={sortable}
-                    />
+                    <MultiSelectWithPredicate {...basicProps} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
@@ -59,7 +60,9 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            if (wrapper && wrapper.exists()) {
+                wrapper.detach();
+            }
         });
 
         describe('mount and unmount', () => {
@@ -93,7 +96,7 @@ describe('Select', () => {
         it('should hide items when they do not match the predicates', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
-            mountMultiSelect(items);
+            mountMultiSelect({items});
             store.dispatch(toggleSelect(id, true));
             store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
             wrapper.update();
@@ -109,7 +112,7 @@ describe('Select', () => {
         it('should not show items that are already hidden', () => {
             const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
-            mountMultiSelect(items);
+            mountMultiSelect({items});
             store.dispatch(toggleSelect(id, true));
             store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[0].id));
             wrapper.update();
@@ -126,7 +129,7 @@ describe('Select', () => {
                 const spy = spyOn(store, 'dispatch').and.callThrough();
                 const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
-                mountMultiSelect(items, defaultFlatSelectOptions, true);
+                mountMultiSelect({items, sortable: true});
 
                 // Move b from 0 to 1
                 multiSelect
@@ -140,7 +143,7 @@ describe('Select', () => {
                 const spy = spyOn(store, 'dispatch').and.callThrough();
                 const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
-                mountMultiSelect(items, defaultFlatSelectOptions, true);
+                mountMultiSelect({items, sortable: true});
 
                 // Move b from 0 to 1
                 multiSelect
@@ -148,6 +151,49 @@ describe('Select', () => {
                     .first()
                     .prop('onRemoveClick')();
                 expect(spy).toHaveBeenCalledWith(unselectListBoxOption(id, items[1].value));
+            });
+        });
+
+        describe('when predicates are processed on the server side', () => {
+            const ServerSideMultiSelectWithPredicates = _.compose(
+                withServerSideProcessing,
+                selectWithPredicate
+            )(MultiSelectConnected);
+
+            const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
+
+            it('should not filter the items based on any predicate because it is done on the server', () => {
+                const component: ShallowWrapper<ISelectWithPredicateProps> = shallowWithStore(
+                    <ServerSideMultiSelectWithPredicates
+                        {...basicProps}
+                        items={items}
+                        predicate={basicProps.options[1].id}
+                    />,
+                    store
+                )
+                    .dive()
+                    .dive();
+                expect(component.props().items).toEqual(items);
+            });
+
+            it('should trigger the onUpdate prop when the selected predicate changes', () => {
+                const onUpdateSpy = jasmine.createSpy('onUpdate');
+
+                wrapper = mount(
+                    <Provider store={store}>
+                        <ServerSideMultiSelectWithPredicates {...basicProps} onUpdate={onUpdateSpy} />
+                    </Provider>,
+                    {attachTo: document.getElementById('App')}
+                );
+
+                expect(onUpdateSpy).toHaveBeenCalledTimes(1);
+
+                store.dispatch(toggleSelect(id, true));
+                act(() => {
+                    store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
+                });
+
+                expect(onUpdateSpy).toHaveBeenCalledTimes(2);
             });
         });
     });

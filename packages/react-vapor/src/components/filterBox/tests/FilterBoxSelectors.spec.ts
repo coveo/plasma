@@ -1,6 +1,6 @@
 import {IReactVaporState} from '../../../ReactVapor';
 import {defaultMatchFilter, MatchFilter} from '../../../utils/FilterUtils';
-import {ISelectWithFilterProps} from '../../select/SelectWithFilter';
+import {ISelectWithFilterProps} from '../../select/hoc/SelectWithFilter';
 import {IFilterState} from '../FilterBoxReducers';
 import {FilterBoxSelectors} from '../FilterBoxSelectors';
 

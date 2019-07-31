@@ -3,6 +3,8 @@ import * as _ from 'underscore';
 import {ChosenSelect} from '../ChosenSelect';
 
 export class ChosenSelectExamples extends React.Component<any, any> {
+    static deprecated = true;
+
     getNumberOfOptions(num: number) {
         return _.times(num, (index: number) => {
             const indexShow = index + 1;
@@ -17,7 +19,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Chosen Single Select</h1>
+                <h1 className="text-blue mb1 bold">Chosen Single Select DEPRECATED</h1>
                 <div className="form-group">
                     <label className="form-control-label">Default Chosen single select</label>
                     <div className="form-control">

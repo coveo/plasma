@@ -1,7 +1,8 @@
-const webpackConfig = require('./webpack.config.test.js');
+const webpackConfig = require('./webpack.config.test.js')();
+const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 
 module.exports = (config) => {
-    config.set({
+    const configuration = {
         frameworks: ['jasmine', 'source-map-support'],
 
         files: ['./karma.entry.ts'],
@@ -20,15 +21,10 @@ module.exports = (config) => {
             noInfo: true,
         },
 
-        reporters: ['nyan', 'coverage'],
+        reporters: ['nyan'],
 
         nyanReporter: {
             renderOnRunCompleteOnly: !!process.env.TRAVIS,
-        },
-
-        coverageReporter: {
-            dir: 'coverage',
-            reporters: [{type: 'json', subdir: '.', file: 'coverage.json'}, {type: 'text-summary'}],
         },
 
         client: {
@@ -52,5 +48,15 @@ module.exports = (config) => {
         singleRun: true,
 
         browserNoActivityTimeout: 30000,
-    });
+    };
+
+    if (!skipCoverageProcessing) {
+        configuration.reporters.push('coverage');
+        configuration.coverageReporter = {
+            dir: 'coverage',
+            reporters: [{type: 'json', subdir: '.', file: 'coverage.json'}, {type: 'text-summary'}],
+        };
+    }
+
+    config.set(configuration);
 };

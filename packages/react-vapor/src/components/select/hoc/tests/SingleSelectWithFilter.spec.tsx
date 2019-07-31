@@ -1,22 +1,26 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {keyCode} from '../../../utils/InputUtils';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Button} from '../../button/Button';
-import {filterThrough} from '../../filterBox/FilterBoxActions';
-import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
-import {IItemBoxProps, ItemBox} from '../../itemBox/ItemBox';
-import {selectListBoxOption, setActiveListBoxOption} from '../../listBox/ListBoxActions';
-import {IMultiSelectProps} from '../MultiSelectConnected';
-import {toggleSelect} from '../SelectActions';
+import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../../ReactVapor';
+import {keyCode} from '../../../../utils/InputUtils';
+import {clearState} from '../../../../utils/ReduxUtils';
+import {TestUtils} from '../../../../utils/tests/TestUtils';
+import {Button} from '../../../button/Button';
+import {filterThrough} from '../../../filterBox/FilterBoxActions';
+import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
+import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
+import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
+import {IMultiSelectProps} from '../../MultiSelectConnected';
+import {toggleSelect} from '../../SelectActions';
+import {SelectConnected} from '../../SelectConnected';
+import {SingleSelectConnected} from '../../SingleSelectConnected';
 import {SingleSelectWithFilter} from '../SelectComponents';
-import {SelectConnected} from '../SelectConnected';
-import {ISelectWithFilterProps} from '../SelectWithFilter';
+import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
@@ -25,14 +29,14 @@ describe('Select', () => {
         let store: Store<IReactVaporState>;
 
         const id: string = 'single-select-with-filter';
+        const basicProps: ISelectWithFilterProps = {
+            id,
+        };
 
-        const mountSingleSelect = (
-            items: IItemBoxProps[] = [],
-            matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined
-        ) => {
+        const mountSingleSelect = (props?: Partial<ISelectWithFilterProps>) => {
             wrapper = mount(
                 <Provider store={store}>
-                    <SingleSelectWithFilter id={id} items={items} matchFilter={matchFilter} />
+                    <SingleSelectWithFilter {...basicProps} {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
@@ -45,7 +49,9 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            if (wrapper && wrapper.exists()) {
+                wrapper.detach();
+            }
         });
 
         beforeAll(() => {
@@ -101,7 +107,7 @@ describe('Select', () => {
         it('should hide items when they do not match the filter', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
-            mountSingleSelect(items);
+            mountSingleSelect({items});
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
             wrapper.update();
@@ -117,7 +123,7 @@ describe('Select', () => {
         it('should not show items that are already hidden', () => {
             const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c'}];
 
-            mountSingleSelect(items);
+            mountSingleSelect({items});
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
             store.dispatch(filterThrough(id, ''));
@@ -133,7 +139,7 @@ describe('Select', () => {
         it('should hide items that do not match custom filter', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
-            mountSingleSelect(items, () => false);
+            mountSingleSelect({items, matchFilter: () => false});
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, 'wontmatchanything'));
             wrapper.update();
@@ -150,7 +156,7 @@ describe('Select', () => {
             const filterValue = 'a';
             const items = [{value: 'aaaa'}, {value: 'baba', selected: true}, {value: 'dada'}];
 
-            mountSingleSelect(items, () => true);
+            mountSingleSelect({items, matchFilter: () => true});
             store.dispatch(toggleSelect(id, true));
             store.dispatch(filterThrough(id, filterValue));
             wrapper.update();
@@ -169,7 +175,7 @@ describe('Select', () => {
 
             beforeEach(() => {
                 dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
-                mountSingleSelect(items);
+                mountSingleSelect({items});
             });
 
             it('should select the active element if the user press enter', () => {
@@ -206,46 +212,33 @@ describe('Select', () => {
                 expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, -1));
             });
 
-            it('should dispatch a setActiveListBoxOption with 0 as the active parameter when the user press the up or down arrow but the dropdown is not open', () => {
-                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+            it('should dispatch a toggleSelect to open the Select when the user press the up or down arrow', () => {
                 singleSelect
                     .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.downArrow})
                     .simulate('keyup', {keyCode: keyCode.downArrow});
-
-                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+                expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
 
                 // Close the dropdown
                 store.dispatch(toggleSelect(id, false));
                 dispatchSpy.calls.reset();
 
-                expect(dispatchSpy).not.toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
                 singleSelect
                     .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.upArrow})
                     .simulate('keyup', {keyCode: keyCode.upArrow});
 
-                expect(dispatchSpy).toHaveBeenCalledWith(setActiveListBoxOption(id, 0));
+                expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
             });
         });
 
         describe('With CustomValue Props', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
-            const mountSingleSelectCustomValues = (
-                newItems: IItemBoxProps[] = [],
-                matchFilter: (filterValue: string, item: IItemBoxProps) => boolean = undefined,
-                props: Partial<ISelectWithFilterProps> = {}
-            ) => {
+            const mountSingleSelectCustomValues = (props: Partial<ISelectWithFilterProps> = {}) => {
                 wrapper = mount(
                     <Provider store={store}>
-                        <SingleSelectWithFilter
-                            id={id}
-                            items={newItems}
-                            matchFilter={matchFilter}
-                            customValues
-                            {...props}
-                        />
+                        <SingleSelectWithFilter {...basicProps} {...props} customValues />
                     </Provider>,
                     {attachTo: document.getElementById('App')}
                 );
@@ -255,19 +248,19 @@ describe('Select', () => {
             };
 
             it('should not add a button with the filter if customValue is false', () => {
-                mountSingleSelect(items, () => false);
+                mountSingleSelect({items, matchFilter: () => false});
 
                 expect(wrapper.find(Button).length).toBe(0);
             });
 
             it('should add a button with the filter', () => {
-                mountSingleSelectCustomValues(items, () => false);
+                mountSingleSelectCustomValues({items, matchFilter: () => false});
 
                 expect(wrapper.find(Button).length).toBe(1);
             });
 
             it('should not add the value in the store list on click button if the filter value is empty', () => {
-                mountSingleSelectCustomValues(items, () => false);
+                mountSingleSelectCustomValues({items, matchFilter: () => false});
 
                 expect(store.getState().selectWithFilter[id].list.length).toBe(0);
                 store.dispatch(filterThrough(id, ''));
@@ -284,7 +277,7 @@ describe('Select', () => {
             it('should add the value in the store list on click button if the filterValue is not empty', () => {
                 const filterValue: string = 'wontmatchanything';
 
-                mountSingleSelectCustomValues(items, () => false);
+                mountSingleSelectCustomValues({items, matchFilter: () => false});
 
                 expect(store.getState().selectWithFilter[id].list.length).toBe(0);
                 store.dispatch(filterThrough(id, filterValue));
@@ -303,7 +296,7 @@ describe('Select', () => {
                 const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
                 const filterValue: string = 'a';
 
-                mountSingleSelectCustomValues(complexItems);
+                mountSingleSelectCustomValues({items: complexItems});
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
@@ -319,7 +312,7 @@ describe('Select', () => {
                 const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
                 const filterValue: string = 'a';
 
-                mountSingleSelectCustomValues(complexItems);
+                mountSingleSelectCustomValues({items: complexItems});
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
@@ -334,7 +327,7 @@ describe('Select', () => {
             it('should add an itemBox with the filter value in the list on click list item', () => {
                 const filterValue: string = 'a';
 
-                mountSingleSelectCustomValues([]);
+                mountSingleSelectCustomValues({items: []});
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
@@ -346,6 +339,45 @@ describe('Select', () => {
 
                 expect(store.getState().selectWithFilter[id].list.length).toBe(1);
                 expect(store.getState().selectWithFilter[id].list[0]).toBe(filterValue);
+            });
+        });
+
+        describe('when filter is processed on the server side', () => {
+            const ServerSideMultiSingleSelectWithFilter: React.ComponentType<ISelectWithFilterProps> = _.compose(
+                withServerSideProcessing,
+                selectWithFilter
+            )(SingleSelectConnected);
+
+            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
+
+            it('should not filter the items because it is done on the server', () => {
+                const component: ShallowWrapper<ISelectWithFilterProps> = shallowWithStore(
+                    <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} filterValue="a" />,
+                    store
+                ).dive();
+
+                expect(component.props().items).toEqual(items);
+            });
+
+            it('should trigger the onUpdate prop when the selected predicate changes', () => {
+                const onUpdateSpy = jasmine.createSpy('onUpdate');
+                const component: ShallowWrapper<ISelectWithFilterProps> = shallowWithStore(
+                    <ServerSideMultiSingleSelectWithFilter
+                        {...basicProps}
+                        items={items}
+                        filterValue="current-filter-value"
+                        onUpdate={onUpdateSpy}
+                    />,
+                    store
+                )
+                    .dive()
+                    .dive();
+
+                expect(onUpdateSpy).not.toHaveBeenCalled();
+
+                component.setProps({filterValue: 'some-new-filter-value'});
+
+                expect(onUpdateSpy).toHaveBeenCalledTimes(1);
             });
         });
     });

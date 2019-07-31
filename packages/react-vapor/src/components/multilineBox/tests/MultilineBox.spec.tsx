@@ -1,14 +1,15 @@
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {mockStore} from 'redux-test-utils';
-import {IReactVaporState} from '../../../ReactVapor';
+import * as _ from 'underscore';
+
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 
 describe('MultilineBox', () => {
     describe('<MultilineBox/>', () => {
-        let store: mockStore<IReactVaporState>;
+        let store: ReactVaporMockStore;
         const id = 'multiline-box';
         const defaultProps: IMultilineBoxOwnProps = {
             id,
@@ -43,23 +44,23 @@ describe('MultilineBox', () => {
             };
 
             it('should add an additional ids in the store on mount', () => {
-                store = RTestUtils.buildMockStore();
+                store = getStoreMock();
                 shallowWithStore(<MultilineBox {...defaultProps} />, store).dive();
 
-                expect(store.isActionTypeDispatched(StringListActions.add)).toBe(true);
+                expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.add);
             });
 
             it('should remove ids in the store on unmount', () => {
-                store = RTestUtils.buildMockStore();
+                store = getStoreMock();
                 const wrapper = shallowWithStore(<MultilineBox {...defaultProps} />, store).dive();
                 wrapper.unmount();
 
-                expect(store.isActionTypeDispatched(StringListActions.remove)).toBe(true);
+                expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.remove);
             });
 
             describe('parentProps sent to the renderBody', () => {
                 it('should dispatch action to remove the current box id from the list on removeBox sent with the ParentProps object', () => {
-                    store = RTestUtils.buildMockStore();
+                    store = getStoreMock();
                     shallowWithStore(
                         <MultilineBox
                             {...propsWithData}
@@ -71,11 +72,11 @@ describe('MultilineBox', () => {
                         store
                     ).dive();
 
-                    expect(store.isActionTypeDispatched(StringListActions.removeValue)).toBe(true);
+                    expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.removeValue);
                 });
 
                 it('should dispatch action to add a new id on addNewBox sent with the ParentProps object', () => {
-                    store = RTestUtils.buildMockStore();
+                    store = getStoreMock();
                     shallowWithStore(
                         <MultilineBox
                             {...propsWithData}
@@ -87,12 +88,12 @@ describe('MultilineBox', () => {
                         store
                     ).dive();
 
-                    expect(store.isActionTypeDispatched(StringListActions.addValue)).toBe(true);
+                    expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.addValue);
                 });
 
                 it('should dispatch action to add a new id on addNewBox sent with the ParentProps object', () => {
                     let parentId: string = '';
-                    store = RTestUtils.buildMockStore();
+                    store = getStoreMock();
                     shallowWithStore(
                         <MultilineBox
                             {...propsWithData}
@@ -247,7 +248,7 @@ describe('MultilineBox', () => {
                 it('should not call updateData if the previous data is equal than the old props data', () => {
                     const dataToTest: any = [{name: 'princess'}];
 
-                    store = RTestUtils.buildMockStore();
+                    store = getStoreMock();
                     const wrapper = shallowWithStore(
                         <MultilineBox {...defaultProps} data={dataToTest} />,
                         store
@@ -257,11 +258,11 @@ describe('MultilineBox', () => {
                         data: dataToTest,
                     });
 
-                    expect(store.isActionTypeDispatched(StringListActions.updateValues)).toBe(false);
+                    expect(_.pluck(store.getActions(), 'type')).not.toContain(StringListActions.updateValues);
                 });
 
                 it('should call updateData if the previous data is not equal than the old props data', () => {
-                    store = RTestUtils.buildMockStore();
+                    store = getStoreMock();
                     const wrapper = shallowWithStore(
                         <MultilineBox {...defaultProps} data={[{name: 'princess'}]} />,
                         store
@@ -271,7 +272,7 @@ describe('MultilineBox', () => {
                         data: {name: 'Succubus'},
                     });
 
-                    expect(store.isActionTypeDispatched(StringListActions.updateValues)).toBe(true);
+                    expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.updateValues);
                 });
             });
         });

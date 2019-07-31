@@ -1,6 +1,7 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithSort} from '../TableWithSort';
 
@@ -55,13 +56,18 @@ describe('Table HOC', () => {
         });
 
         describe('when server side', () => {
-            const TableWithPredicateServer = _.compose(tableWithSort({isServer: true}))(TableHOC);
+            const TableWithPredicateServer = _.compose(
+                withServerSideProcessing,
+                tableWithSort()
+            )(TableHOC);
 
             it('should not sort elements', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} />,
                     getStateWithSort(true, 'value')
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
 
@@ -73,7 +79,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.setProps({isAsc: false});
                 wrapper.update();
@@ -86,7 +94,9 @@ describe('Table HOC', () => {
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.setProps({ignore: true});
                 wrapper.update();

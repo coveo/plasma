@@ -2,6 +2,7 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
@@ -11,11 +12,14 @@ import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navig
 import {NavigationConnected} from '../navigation/NavigationConnected';
 import {NavigationSelectors} from '../navigation/NavigationSelectors';
 import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
-import {IMaybeServerConfig, ITableHOCOwnProps} from './TableHOC';
+import {ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './TableHOCUtils';
 import {TableSelectors} from './TableSelectors';
 
-export interface ITableWithPaginationConfig extends IMaybeServerConfig {}
+export interface ITableWithPaginationConfig
+    extends WithServerSideProcessingProps,
+        Partial<INavigationOwnProps>,
+        Partial<INavigationChildrenProps> {}
 
 export interface ITableWithPaginationStateProps {
     totalEntries: number;
@@ -31,29 +35,30 @@ export interface ITableWithPaginationDispatchProps {
 
 export interface ITableWithPaginationProps
     extends Partial<ITableWithPaginationStateProps>,
-        Partial<ITableWithPaginationDispatchProps> {}
+        Partial<ITableWithPaginationDispatchProps>,
+        ITableHOCOwnProps,
+        WithServerSideProcessingProps {}
 
 const TableWithPaginationPropsToOmit = keys<ITableWithPaginationStateProps>();
 const TableWithPaginationConfigToOmit = keys<ITableWithPaginationConfig>();
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
-export const tableWithPagination = (
-    supplier: ConfigSupplier<ITableWithPaginationConfig & Partial<INavigationOwnProps & INavigationChildrenProps>> = {}
-) => (
-    Component: React.ComponentClass<ITableHOCOwnProps> | React.StatelessComponent<ITableHOCOwnProps>
+export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) => (
+    Component: React.ComponentType<ITableWithPaginationProps>
 ): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
+    const config = HocUtils.supplyConfig(supplier);
     const mapStateToProps = (
         state: IReactVaporState,
-        ownProps: ITableHOCOwnProps
+        ownProps: ITableWithPaginationProps
     ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
-        const config = HocUtils.supplyConfig(supplier);
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
         const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
+        const isServer = ownProps.isServer || config.isServer;
         const length = TableSelectors.getDataCount(state, {
             id: ownProps.id,
             data: ownProps.data,
-            isServer: config.isServer,
+            isServer,
         });
 
         const startingIndex = pageNb * perPage;
@@ -64,9 +69,7 @@ export const tableWithPagination = (
             perPage,
             totalEntries: length,
             totalPages: Math.ceil(length / perPage),
-            data: config.isServer
-                ? ownProps.data
-                : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
+            data: isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
         };
     };
 
@@ -104,7 +107,7 @@ export const tableWithPagination = (
                     <NavigationConnected
                         id={this.props.id}
                         {..._.pick(this.props, TableWithPaginationPropsToOmit)}
-                        {..._.omit(HocUtils.supplyConfig(supplier), [...TableWithPaginationConfigToOmit])}
+                        {..._.omit(config, [...TableWithPaginationConfigToOmit])}
                         loadingIds={[this.props.id]}
                     />
                     {this.props.children}

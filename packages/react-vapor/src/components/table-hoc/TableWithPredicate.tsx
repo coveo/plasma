@@ -3,6 +3,7 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
@@ -14,41 +15,44 @@ import * as styles from './styles/TableWithPredicates.scss';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './TableHOCUtils';
 
-export interface ITableWithPredicateConfig {
+export interface ITableWithPredicateConfig extends WithServerSideProcessingProps {
     id: string;
     values: IItemBoxProps[];
     prepend?: React.ReactNode;
     matchPredicate?: (predicate: string, datum: any) => boolean;
-    isServer?: boolean;
 }
 
 export interface ITableWithPredicateStateProps {
     predicate: string;
 }
 
-export interface ITableWithPredicateProps extends Partial<ITableWithPredicateStateProps>, ITableHOCOwnProps {}
+export interface ITableWithPredicateProps
+    extends Partial<ITableWithPredicateStateProps>,
+        ITableHOCOwnProps,
+        WithServerSideProcessingProps {}
 
 const TableWithPredicatePropsToOmit = keys<ITableWithPredicateStateProps>();
 
 const defaultMatchPredicate = (predicate: string, datum: any) =>
     !predicate || _.some(_.values(datum), (value: string) => value === predicate);
 
-type TableWithPredicateComponent = React.ComponentClass<ITableWithPredicateProps>;
+type TableWithPredicateComponent = React.ComponentType<ITableWithPredicateProps>;
 
 export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => (
     Component: TableWithPredicateComponent
 ): TableWithPredicateComponent => {
+    const config = HocUtils.supplyConfig(supplier);
+
     const mapStateToProps = (
         state: IReactVaporState,
         ownProps: ITableWithPredicateProps
     ): ITableWithPredicateStateProps | ITableHOCOwnProps => {
-        const config = HocUtils.supplyConfig(supplier);
         const predicate = SelectSelector.getListBoxSelected(state, {
             id: TableHOCUtils.getPredicateId(ownProps.id, config.id),
         })[0];
         const matchPredicate = config.matchPredicate || defaultMatchPredicate;
         const predicateData = () =>
-            !config.isServer && predicate
+            !ownProps.isServer && !config.isServer && predicate
                 ? _.filter(ownProps.data, (datum: any) => matchPredicate(predicate, datum))
                 : ownProps.data;
         return {
@@ -66,7 +70,6 @@ export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateC
         }
 
         render() {
-            const config = HocUtils.supplyConfig(supplier);
             const key = TableHOCUtils.getPredicateId(this.props.id, config.id);
             const actions = this.props.actions || [];
             const predicateAction = (

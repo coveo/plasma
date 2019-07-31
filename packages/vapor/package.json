@@ -1,6 +1,6 @@
 {
     "name": "coveo-styleguide",
-    "version": "4.3.1",
+    "version": "4.3.2",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -23,16 +23,18 @@
         "type": "git",
         "url": "https://github.com/coveo/react-vapor.git"
     },
-    "dependencies": {
-        "chosen-npm": "1.4.2",
-        "coveo-slider": "1.0.1",
-        "materialize-css": "0.98.2"
+    "peerDependencies": {
+        "chosen-npm": "^1.4.2",
+        "coveo-slider": "^1.0.1",
+        "materialize-css": "^0.98.2"
     },
     "devDependencies": {
         "ansi-colors": "3.2.4",
         "autosize": "3.0.21",
+        "chosen-npm": "1.4.2",
         "concurrently": "4.0.1",
         "coveo-png-sprite": "1.0.1",
+        "coveo-slider": "1.0.1",
         "css-loader": "2.1.1",
         "cssnano": "4.1.10",
         "del": "3.0.0",
@@ -47,6 +49,7 @@
         "gulp-rename": "1.2.2",
         "gulp-svgmin": "1.2.4",
         "gulp-uglify": "3.0.0",
+        "materialize-css": "0.98.2",
         "merge-stream": "1.0.1",
         "mini-css-extract-plugin": "0.7.0",
         "minimist": "1.2.0",

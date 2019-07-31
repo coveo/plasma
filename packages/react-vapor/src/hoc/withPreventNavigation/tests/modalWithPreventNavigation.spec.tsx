@@ -2,11 +2,10 @@ import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactModal from 'react-modal';
-import {createMockStore, mockStore} from 'redux-test-utils';
-import {closeModal} from '../../../components/modal/ModalActions';
 
+import {closeModal} from '../../../components/modal/ModalActions';
 import {ModalCompositeConnected} from '../../../components/modal/ModalCompositeConnected';
-import {IReactVaporState} from '../../../ReactVapor';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {
     IWithPreventNavigationConfig,
     IWithPreventNavigationInjectedProps,
@@ -16,7 +15,7 @@ import {
 import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt';
 
 describe('Modal with Prevent Navigation', () => {
-    let store: mockStore<IReactVaporState>;
+    let store: ReactVaporMockStore;
     let component: ReactWrapper<any, any>;
 
     class SomeModal extends React.Component<IWithPreventNavigationInjectedProps> {
@@ -35,9 +34,9 @@ describe('Modal with Prevent Navigation', () => {
     }
 
     const mountComponentWithProps = (config?: Partial<IWithPreventNavigationConfig>, isDirty = false) => {
-        store = createMockStore({
+        store = getStoreMock({
             dirtyComponents: [isDirty ? SomeModal.ID : ''],
-            modals: [{id: SomeModal.ID, isOpen: true}],
+            modals: [{id: SomeModal.ID, isOpened: true}],
         });
 
         const SomeModalWithPreventNaviationHOC = modalWithPreventNavigation({id: SomeModal.ID, ...config})(SomeModal);
@@ -141,13 +140,13 @@ describe('Modal with Prevent Navigation', () => {
         mountComponentWithProps({}, true);
         component.find(PreventNavigationPrompt).prop('onClose')();
 
-        expect(store.isActionDispatched(closeModal(SomeModal.ID))).toBe(true);
+        expect(store.getActions()).toContain(closeModal(SomeModal.ID));
     });
 
     it('should not dispatch a close modal when the prevent navigation onStay is called', () => {
         mountComponentWithProps({}, true);
         component.find(PreventNavigationPrompt).prop('onStay')();
 
-        expect(store.isActionDispatched(closeModal(SomeModal.ID))).toBe(false);
+        expect(store.getActions()).not.toContain(closeModal(SomeModal.ID));
     });
 });

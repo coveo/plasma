@@ -7,6 +7,8 @@ export interface IPromptExamplesState {
 }
 
 export class ModalPromptExamples extends React.Component<any, IPromptExamplesState> {
+    static deprecated = true;
+
     componentWillMount() {
         this.state = {isOpened: false};
     }
@@ -28,7 +30,7 @@ export class ModalPromptExamples extends React.Component<any, IPromptExamplesSta
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Modal prompt</label>
+                    <label className="form-control-label">Modal prompt DEPRECATED</label>
                     <div>
                         <button className="btn mod-primary" onClick={() => this.openPrompt()}>
                             Open Prompt

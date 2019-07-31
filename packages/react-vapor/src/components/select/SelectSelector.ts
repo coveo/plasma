@@ -8,9 +8,9 @@ import {DropSelectors} from '../drop/redux/DropReducers';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
+import {ISelectWithFilterProps} from './hoc/SelectWithFilter';
 import {IMultiSelectProps} from './MultiSelectConnected';
 import {ISelectProps, SelectConnected} from './SelectConnected';
-import {ISelectWithFilterProps} from './SelectWithFilter';
 
 const getListState = (state: IReactVaporState, ownProps: ISelectProps): string[] =>
     state.selectWithFilter && state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
@@ -55,6 +55,12 @@ const getCustomItemsWithFilter: (state: IReactVaporState, ownProps: ISelectProps
     (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems]
 );
 
+const getServerFilteredItems = createSelector(
+    getItems,
+    getCustomItems,
+    (serverSideProcessedItems, customValuesFiltered) => [...serverSideProcessedItems, ...customValuesFiltered]
+);
+
 const listBoxSelectedCombiner = (listBox: IListBoxState): string[] =>
     listBox && listBox.selected ? listBox.selected : [];
 
@@ -89,6 +95,7 @@ export const SelectSelector = {
     getSelectOpened,
     getCustomItemsWithFilter,
     getMultiSelectSelectedValues,
+    getServerFilteredItems,
 };
 
 export const SelectCombiners = {

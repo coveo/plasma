@@ -4,19 +4,21 @@ import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
-import {addStringList, addValueStringList, removeStringList} from '../../reusableState/customList/StringListActions';
-import {MatchFilter} from '../../utils/FilterUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {UUID} from '../../utils/UUID';
-import {Button, IButtonProps} from '../button/Button';
-import {IFilterBoxOwnProps} from '../filterBox/FilterBox';
-import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
-import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
-import {IItemBoxProps} from '../itemBox/ItemBox';
-import {Svg} from '../svg/Svg';
-import {ISelectOwnProps, ISelectSpecificProps} from './SelectConnected';
-import {SelectSelector} from './SelectSelector';
+import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IReactVaporState} from '../../../ReactVapor';
+import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
+import {callIfDefined} from '../../../utils/FalsyValuesUtils';
+import {MatchFilter} from '../../../utils/FilterUtils';
+import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {UUID} from '../../../utils/UUID';
+import {Button, IButtonProps} from '../../button/Button';
+import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
+import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
+import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
+import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {Svg} from '../../svg/Svg';
+import {ISelectOwnProps, ISelectSpecificProps} from '../SelectConnected';
+import {SelectSelector} from '../SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
     defaultCustomValues?: string[];
@@ -48,21 +50,20 @@ export interface ISelectWithFilterProps
     extends ISelectWithFilterOwnProps,
         Partial<ISelectWithFilterStateProps>,
         Partial<ISelectWithFilterDispatchProps>,
+        WithServerSideProcessingProps,
         ISelectOwnProps {}
 
 export const selectWithFilter = (
-    Component: React.ComponentClass<ISelectWithFilterProps> | React.StatelessComponent<ISelectWithFilterProps>
-): React.ComponentClass<ISelectWithFilterProps> => {
-    const makeMapStateToProps = () => {
-        const getStateProps = createStructuredSelector({
+    Component: React.ComponentType<ISelectWithFilterProps>
+): React.ComponentType<ISelectWithFilterProps> => {
+    const makeMapStateToProps = (initialState: IReactVaporState, initialOwnProps: ISelectWithFilterProps) =>
+        createStructuredSelector({
             filterValue: FilterBoxSelectors.getFilterText,
-            items: SelectSelector.getCustomItemsWithFilter,
+            items: initialOwnProps.isServer
+                ? SelectSelector.getServerFilteredItems
+                : SelectSelector.getCustomItemsWithFilter,
             selected: SelectSelector.getListBoxSelected,
         });
-
-        return (state: IReactVaporState, ownProps: ISelectWithFilterProps): ISelectWithFilterStateProps =>
-            getStateProps(state, ownProps);
-    };
 
     const mapDispatchToProps = (
         dispatch: IDispatch,
@@ -75,6 +76,7 @@ export const selectWithFilter = (
 
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
     class WrappedComponent extends React.Component<ISelectWithFilterProps> {
+        static displayName = `withFilter(${Component.displayName})`;
         static defaultProps: Partial<ISelectWithFilterProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
@@ -92,6 +94,12 @@ export const selectWithFilter = (
 
         componentWillMount() {
             this.props.onRenderFilter(this.props.defaultCustomValues);
+        }
+
+        componentDidUpdate(prevProps: ISelectWithFilterProps) {
+            if (prevProps.filterValue !== this.props.filterValue) {
+                callIfDefined(this.props.onUpdate);
+            }
         }
 
         componentWillUnmount() {
