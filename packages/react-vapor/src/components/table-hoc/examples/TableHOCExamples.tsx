@@ -74,7 +74,7 @@ const TableWithFilterAndPagination = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
-    tableWithPagination({perPageNumbers: [3, 5, 10]})
+    tableWithPagination()
 )(TableHOC);
 
 const TableWithSortFilterAndPagination = _.compose(

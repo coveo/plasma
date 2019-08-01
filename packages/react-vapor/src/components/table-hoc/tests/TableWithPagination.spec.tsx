@@ -9,7 +9,7 @@ import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {TableHOCUtils} from '../TableHOCUtils';
-import {tableWithPagination} from '../TableWithPagination';
+import {ITableWithPaginationProps, tableWithPagination} from '../TableWithPagination';
 
 describe('Table HOC', () => {
     describe('TableWithPagination', () => {
@@ -73,6 +73,16 @@ describe('Table HOC', () => {
             wrapper.unmount();
 
             expect(store.getActions()).toContain(expectedAction);
+        });
+
+        it('should slice the data according to the perPageNumbers specified in the HOC config', () => {
+            const expectedPerPageNumbers = [2, 3, 4];
+            const MyTable: React.ComponentType<ITableWithPaginationProps> = _.compose(
+                tableWithPagination({perPageNumbers: expectedPerPageNumbers})
+            )(TableHOC);
+            const table = shallowWithStore(<MyTable {...defaultProps} />, getStoreMock()).dive();
+
+            expect(table.find(NavigationConnected).prop('perPageNumbers')).toEqual(expectedPerPageNumbers);
         });
 
         describe('with store data', () => {
