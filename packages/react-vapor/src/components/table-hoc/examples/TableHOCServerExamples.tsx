@@ -24,7 +24,7 @@ import {IExampleRowData, TableHOCServerActions} from './TableHOCServerExampleRed
 
 const ServerTable = _.compose(
     withServerSideProcessing,
-    tableWithBlankSlate({title: 'No data fetched from the server'}),
+    tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithPredicate({
         id: 'address.city',
         prepend: <span className="mr1 text-medium-grey">City:</span>,
@@ -46,6 +46,7 @@ const ServerTable = _.compose(
             moment().toDate(),
         ],
     }),
+    tableWithBlankSlate({title: 'Filter caused the table to be empty'}),
     tableWithSort(),
     tableWithPagination({perPageNumbers: [3, 5, 10]}),
     tableWithActions()

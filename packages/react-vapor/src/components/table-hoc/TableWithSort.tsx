@@ -42,15 +42,17 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {
     ): ITableWithSortStateProps | ITableHOCOwnProps => {
         const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);
         const sort = config.sort || defaultSort;
-
-        return {
-            data:
-                ownProps.isServer || config.isServer
-                    ? ownProps.data
-                    : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
-            sortKey: tableSort && tableSort.id,
-            isAsc: !!(tableSort && tableSort.isAsc),
-        };
+        if (tableSort && ownProps.data) {
+            return {
+                data:
+                    ownProps.isServer || config.isServer
+                        ? ownProps.data
+                        : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
+                sortKey: tableSort && tableSort.id,
+                isAsc: tableSort && tableSort.isAsc,
+            };
+        }
+        return {};
     };
 
     @ReduxConnect(mapStateToProps)
