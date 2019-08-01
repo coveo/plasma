@@ -33,7 +33,8 @@ export interface ITableWithFilterProps
 const TableWithFilterPropsToOmit = keys<ITableWithFilterStateProps>();
 
 const defaultMatchFilter = (filter: string, datum: any) =>
-    JSON.stringify(_.values(datum).map((v: string) => v.toLowerCase())).indexOf(filter.toLowerCase()) !== -1;
+    JSON.stringify(_.values(datum).map((v: any) => _.isString(v) && v.toLowerCase())).indexOf(filter.toLowerCase()) !==
+    -1;
 
 type FilterableTableComponent = React.ComponentClass<ITableWithFilterProps>;
 
