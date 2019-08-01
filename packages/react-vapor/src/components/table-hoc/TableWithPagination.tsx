@@ -39,8 +39,7 @@ export interface ITableWithPaginationProps
         ITableHOCOwnProps,
         WithServerSideProcessingProps {}
 
-const TableWithPaginationPropsToOmit = keys<ITableWithPaginationStateProps>();
-const TableWithPaginationConfigToOmit = keys<ITableWithPaginationConfig>();
+const TableWithPaginationProps = keys<ITableWithPaginationStateProps>();
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 
@@ -101,14 +100,14 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         }
 
         render() {
-            const newProps = _.omit(this.props, [...TableWithPaginationPropsToOmit]);
+            const newProps = _.omit(this.props, [...TableWithPaginationProps]);
             return (
                 <Component {...newProps}>
                     <NavigationConnected
                         id={this.props.id}
-                        {..._.pick(this.props, TableWithPaginationPropsToOmit)}
-                        {..._.omit(config, [...TableWithPaginationConfigToOmit])}
                         loadingIds={[this.props.id]}
+                        {...config}
+                        {..._.pick(this.props, TableWithPaginationProps)}
                     />
                     {this.props.children}
                 </Component>
