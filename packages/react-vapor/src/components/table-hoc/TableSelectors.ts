@@ -10,6 +10,12 @@ export interface TableSelectorsProps {
     isServer?: boolean;
 }
 
+const initialTableSort: ITableWithSortState = {
+    id: '',
+    tableId: '',
+    isAsc: true,
+};
+
 const getIsEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean =>
     props.data !== null && (!props.data || props.data.length === 0);
 
@@ -20,9 +26,9 @@ const getDataCount = (state: IReactVaporState, props: TableSelectorsProps): numb
         : (props.data && props.data.length) || 0;
 };
 
-const getSort = (state: IReactVaporState, props: TableSelectorsProps): ITableWithSortState => {
-    return _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === props.id && _.isBoolean(v.isAsc));
-};
+const getSort = (state: IReactVaporState, props: TableSelectorsProps): ITableWithSortState =>
+    _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === props.id && _.isBoolean(v.isAsc)) ||
+    initialTableSort;
 
 const getTableRow = (state: IReactVaporState, {id}: {id: string}): ITableRowState =>
     _.findWhere(state.tableHOCRow, {id});
