@@ -12,6 +12,7 @@ export interface IListBoxOwnProps {
     id?: string;
     multi?: boolean;
     items?: IItemBoxProps[];
+    wrapItems?: (items: React.ReactNode) => React.ReactNode;
 }
 
 export interface IListBoxStateProps {
@@ -32,6 +33,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         noResultItem: {
             value: 'No Items',
         },
+        wrapItems: _.identity,
     };
 
     componentWillMount() {
@@ -98,7 +100,11 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     }
 
     render() {
-        return <ul className={this.getClasses()}>{this.getItems()}</ul>;
+        return (
+            <ul className={this.getClasses()} id={this.props.id}>
+                {this.props.wrapItems(this.getItems())}
+            </ul>
+        );
     }
 
     private onSelectItem(item: IItemBoxProps) {

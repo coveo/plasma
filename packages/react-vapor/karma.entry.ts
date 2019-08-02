@@ -2,6 +2,7 @@ import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
 import * as $ from 'jquery';
 import * as s from 'underscore.string';
+import {Defaults} from './src/Defaults';
 
 // Polyfill MouseEvent if needed
 ((window) => {
@@ -46,6 +47,7 @@ beforeEach(() => {
     if (!$('#App').length) {
         $('body').append('<div id="App" class="coveo-styleguide"></div>');
     }
+    Defaults.APP_ELEMENT = '#App';
     jasmine.clock().uninstall();
 });
 

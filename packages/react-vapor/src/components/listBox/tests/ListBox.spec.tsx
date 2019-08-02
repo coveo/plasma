@@ -34,7 +34,9 @@ describe('ListBox', () => {
         });
 
         afterEach(() => {
-            listBoxComponent.detach();
+            if (listBoxComponent && listBoxComponent.exists()) {
+                listBoxComponent.detach();
+            }
         });
 
         it('should render with the box-item class', () => {
@@ -54,7 +56,9 @@ describe('ListBox', () => {
         };
 
         afterEach(() => {
-            listBoxComponent.detach();
+            if (listBoxComponent && listBoxComponent.exists()) {
+                listBoxComponent.detach();
+            }
         });
 
         it('should call onRender on mount', () => {
@@ -134,6 +138,13 @@ describe('ListBox', () => {
             });
 
             expect(listBoxComponent.find(ItemBox).props().value).not.toBe(ListBox.defaultProps.noResultItem.value);
+        });
+
+        it('should wrap the items using the result from the "wrapItems" prop', () => {
+            const wrapItems = (items: React.ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
+            const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
+
+            expect(list.children().hasClass('wrapping-those-items-real-hard')).toBe(true);
         });
     });
 });
