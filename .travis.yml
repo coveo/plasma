@@ -48,7 +48,7 @@ deploy:
       skip_cleanup: true
 
     - provider: surge
-      project: ./packages/vapor/_gh_pages/
+      project: ./packages/vapor-demo/out
       domain: vapor.surge.sh
       skip_cleanup: true
 
