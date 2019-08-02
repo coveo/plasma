@@ -79,11 +79,11 @@ function ServerSideSingleSelectExampleDisconnected({
     const [pageNbr, setPage] = React.useState(1);
 
     React.useEffect(() => {
-        fetchPhotos({_page: 1, _limit: PER_PAGE}, false);
+        fetchPhotos({_page: 1, _limit: PER_PAGE});
     }, []);
 
     function fetchNextPage() {
-        fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue});
+        fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue}, false);
         setPage(pageNbr + 1);
     }
 
