@@ -47,7 +47,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {
             data:
                 ownProps.isServer || config.isServer
                     ? ownProps.data
-                    : [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
+                    : ownProps.data && [...ownProps.data].sort((a, b) => sort(tableSort.id, tableSort.isAsc, a, b)),
             sortKey: tableSort && tableSort.id,
             isAsc: !!(tableSort && tableSort.isAsc),
         };
