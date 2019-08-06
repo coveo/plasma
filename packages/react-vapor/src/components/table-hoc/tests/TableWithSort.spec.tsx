@@ -34,7 +34,7 @@ describe('Table HOC', () => {
         it('should not throw if the ownProps data is null', () => {
             expect(() => {
                 shallowWithState(<TableWithSort {...defaultProps} data={null} />, {}).dive();
-            });
+            }).not.toThrow();
         });
 
         it('should sort elements', () => {
