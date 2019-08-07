@@ -31,6 +31,12 @@ describe('Table HOC', () => {
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
+        it('should not throw if the ownProps data is null', () => {
+            expect(() => {
+                shallowWithState(<TableWithSort {...defaultProps} data={null} />, {}).dive();
+            }).not.toThrow();
+        });
+
         it('should sort elements', () => {
             const wrapper = shallowWithState(
                 <TableWithSort {...defaultProps} />,
