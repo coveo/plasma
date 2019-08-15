@@ -1,6 +1,5 @@
 import {ReducersMapObject} from 'redux';
 
-import {membersReducers} from '../docs/members-example/reducers/MembersReducers';
 import {actionBarsReducer} from './components/actions/ActionBarReducers';
 import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
 import {autocompletesReducer} from './components/autocomplete/AutocompleteReducers';
@@ -57,7 +56,6 @@ export const ReactVaporReducers: ReducersMapObject = {
     tableHOCHeader: TableWithSortReducers,
     tableHOCPagination: TableWithPaginationReducers,
     tableHOCRow: TableRowReducers,
-    membersCompositeState: membersReducers,
     lastUpdatedComposite: lastUpdatedCompositeReducer,
     filters: filterBoxesReducer,
     facets: facetsReducer,

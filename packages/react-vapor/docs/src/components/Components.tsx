@@ -1,14 +1,12 @@
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Route, Switch} from 'react-router';
-import {HashRouter as Router} from 'react-router-dom';
+import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
 import * as _ from 'underscore';
-import {ReactVaporStore} from '../../ReactVaporStore';
+
 import {ComponentCode} from './ComponentCode';
 import {IComponent} from './ComponentsInterface';
 import {ComponentsMenu} from './ComponentsMenu';
 
-export const ComponentsApp: React.FunctionComponent = () => {
+export const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     const req = require.context('../../../src/components/', true, /Examples?\.tsx?$/i);
     const components: IComponent[] = req
         .keys()
@@ -16,7 +14,7 @@ export const ComponentsApp: React.FunctionComponent = () => {
             const component = req(path);
             const code = require('!raw-loader!../../../src/components/' + path.replace('./', '')).default;
             const name = _.keys(component)[0].replace(/Examples?/i, '');
-            const link = `/${name}`;
+            const link = `${match.url}/${name}`;
             const componentPrototype = _.values(component)[0];
             return {name, link, code, path, component: componentPrototype};
         })
@@ -36,26 +34,14 @@ export const ComponentsApp: React.FunctionComponent = () => {
     ));
 
     return (
-        <Provider store={ReactVaporStore}>
-            <Router>
-                <div className="coveo-form flex full-content">
-                    <ComponentsMenu components={components} />
-                    <div className="flex-auto mod-header-padding mt2 overflow-auto">
-                        <Switch>
-                            {routes}
-                            <Route
-                                key={'/'}
-                                component={() => (
-                                    <>
-                                        {React.createElement(components[0].component)}
-                                        <ComponentCode>{components[0].code}</ComponentCode>
-                                    </>
-                                )}
-                            />
-                        </Switch>
-                    </div>
-                </div>
-            </Router>
-        </Provider>
+        <div className="coveo-form flex full-content">
+            <ComponentsMenu components={components} />
+            <div className="flex-auto mod-header-padding overflow-auto p2">
+                <Switch>
+                    {routes}
+                    <Route path="/" component={() => <Redirect to={components[0].link} />} />
+                </Switch>
+            </div>
+        </div>
     );
 };
