@@ -1,5 +1,6 @@
 import {Diff2Html} from 'diff2html';
 import * as React from 'react';
+// @ts-ignore
 import * as unidiff from 'unidiff';
 
 import {BlankSlate} from '../blankSlate/BlankSlate';

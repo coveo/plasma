@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
-
 // @ts-ignore
 import {tomorrow as theme} from 'react-syntax-highlighter/dist/esm/styles/prism';
 

@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
 
-import {Components} from './src/components/Components';
-import {Styles} from './src/styles/Styles';
+import Components from './components';
+import Styles from './styles';
 
 function TopNav() {
     return (
@@ -20,7 +20,12 @@ function TopNav() {
 function Header() {
     return (
         <div id="header" className="header flex flex-center space-between p2" style={{minHeight: '65px'}}>
-            <h1 className="h1">React Vapor</h1>
+            <h1 className="h1">
+                React Vapor
+                {' / '}
+                <Route path="/styles" component={() => <span>Styles</span>} />
+                <Route path="/components" component={() => <span>Components</span>} />
+            </h1>
             <TopNav />
         </div>
     );

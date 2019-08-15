@@ -6,7 +6,7 @@ import {ComponentCode} from './ComponentCode';
 import {IComponent} from './ComponentsInterface';
 import {ComponentsMenu} from './ComponentsMenu';
 
-export const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
+const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     const req = require.context('../../../src/components/', true, /Examples?\.tsx?$/i);
     const components: IComponent[] = req
         .keys()
@@ -45,3 +45,5 @@ export const Components: React.FunctionComponent<RouteComponentProps> = ({match}
         </div>
     );
 };
+
+export default Components;
