@@ -16,7 +16,6 @@ git stash pop
 
 echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
 cp -R packages/react-vapor/docs "$BRANCH_FOLDER_NAME"
-cp -R packages/vapor-demo/out "$BRANCH_FOLDER_NAME/vapor"
 
 git add "$BRANCH_FOLDER_NAME"
 git commit -m "live demo at https://coveo.github.io/react-vapor/$BRANCH_FOLDER_NAME/" --no-verify

@@ -24,12 +24,8 @@ cache:
         - node_modules
 
 script:
-    - BRANCH_ROOT=""
-    - BRANCH_FOLDER_NAME=`$TRAVIS_PULL_REQUEST_BRANCH | md5sum | awk '{print $1}'`
-    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then BRANCH_ROOT="/react-vapor/$BRANCH_FOLDER_NAME/vapor"; fi' # run this line on pull request builds only
-    - echo $BRANCH_ROOT
     - lerna run build
-    - BASE_URL=$BRANCH_ROOT lerna run docs
+    - lerna run docs
     - lerna run test
     - lerna run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
 
@@ -45,11 +41,6 @@ deploy:
     - provider: surge
       project: ./packages/react-vapor/docs/
       domain: react-vapor.surge.sh
-      skip_cleanup: true
-
-    - provider: surge
-      project: ./packages/vapor-demo/out
-      domain: vapor.surge.sh
       skip_cleanup: true
 
     - provider: s3
