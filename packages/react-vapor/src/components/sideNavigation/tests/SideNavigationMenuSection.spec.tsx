@@ -3,12 +3,12 @@ import * as React from 'react';
 import {SlideY} from '../../../animations/SlideY';
 import {SideNavigationHeader} from '../SideNavigationHeader';
 import {SideNavigationLoadingHeader} from '../SideNavigationLoadingHeader';
-import {ISideNavigationSectionProps, SideNavigationMenuSection} from '../SideNavigationMenuSection';
+import {ISideNavigationSectionProps, SideNavigationSection} from '../SideNavigationMenuSection';
 
 describe('<SideNavigationMenuSection />', () => {
     it('should render without errors', () => {
         expect(() => {
-            shallow(<SideNavigationMenuSection />);
+            shallow(<SideNavigationSection />);
         }).not.toThrow();
     });
 });
@@ -18,7 +18,7 @@ describe('<SideNavigationMenuSection />', () => {
     let wrapper: ReactWrapper<ISideNavigationSectionProps, any>;
 
     beforeEach(() => {
-        wrapper = mount(<SideNavigationMenuSection />, {attachTo: document.getElementById('App')});
+        wrapper = mount(<SideNavigationSection />, {attachTo: document.getElementById('App')});
     });
 
     afterEach(() => {

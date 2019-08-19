@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {SideNavigation} from '../SideNavigation';
 import {SideNavigationItem} from '../SideNavigationItem';
 import {SideNavigationLoadingItem} from '../SideNavigationLoadingItem';
@@ -25,23 +26,56 @@ export class SideNavigationExample extends React.Component<any, any> {
                 <label className="form-control-label">Side Navigation</label>
                 <div className="flex flex-row flex-stretch">
                     <SideNavigation>
-                        <SideNavigationMenuSection header={{title: 'Section 1', svgName: 'identity-user'}}>
-                            <SideNavigationItem href="http://coveo.com" title="Link to Coveo" />
-                            <SideNavigationItem href="http://coveo.com" title="Another link to Coveo" />
+                        <SideNavigationMenuSection title="Section 1" svgName="identity-user">
+                            <SideNavigationItem isActive>
+                                <a
+                                    href="http://coveo.com"
+                                    title="Link to Coveo"
+                                    className="navigation-menu-section-item-link"
+                                >
+                                    Link to Coveo
+                                </a>
+                            </SideNavigationItem>
+                            <SideNavigationItem>
+                                <a
+                                    href="http://coveo.com"
+                                    title="Link to Coveo"
+                                    className="navigation-menu-section-item-link"
+                                >
+                                    Another link to Coveo
+                                </a>
+                            </SideNavigationItem>
                         </SideNavigationMenuSection>
-                        <SideNavigationMenuSection header={{title: 'Section 2'}}>
+                        <SideNavigationMenuSection title="Section 2">
                             <SideNavigationLoadingItem className="mod-width-30" />
                             <SideNavigationLoadingItem className="mod-width-50" />
                             <SideNavigationLoadingItem className="mod-width-40" />
                         </SideNavigationMenuSection>
                         <SideNavigationMenuSection
-                            header={{title: 'Section 3', svgName: 'menu-content'}}
+                            title="Collapsible Section"
+                            svgName="menu-content"
                             expandable
                             expanded={this.state.expanded}
                             onClick={() => this.click()}
                         >
-                            <SideNavigationItem href="http://coveo.com" target="_blank" title="Link to Coveo" />
-                            <SideNavigationItem href="http://coveo.com" title="Another link to Coveo" />
+                            <SideNavigationItem>
+                                <a
+                                    href="http://coveo.com"
+                                    title="Link to Coveo"
+                                    className="navigation-menu-section-item-link"
+                                >
+                                    Link to Coveo
+                                </a>
+                            </SideNavigationItem>
+                            <SideNavigationItem>
+                                <a
+                                    href="http://coveo.com"
+                                    title="Link to Coveo"
+                                    className="navigation-menu-section-item-link"
+                                >
+                                    Another link to Coveo
+                                </a>
+                            </SideNavigationItem>
                         </SideNavigationMenuSection>
                     </SideNavigation>
                 </div>

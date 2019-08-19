@@ -11,7 +11,8 @@
 }
 
 .navigation {
-    width: $navigation-width;
+    min-width: $navigation-width;
+    max-width: $navigation-width;
     overflow-x: auto;
     overflow-y: overlay;
     background-color: $navigation-background-color;
