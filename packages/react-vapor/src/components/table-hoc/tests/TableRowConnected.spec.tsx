@@ -94,6 +94,15 @@ describe('Table HOC', () => {
             expect(store.getActions()).toContain(expectedAction);
         });
 
+        it('should dispatch an TableHOCRowActions.deselectAll on componentWillUnmount', () => {
+            const expectedAction = TableHOCRowActions.deselectAll(defaultProps.tableId);
+
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
+            wrapper.unmount();
+
+            expect(store.getActions()).toContain(expectedAction);
+        });
+
         it('should dispatch an addActionsToActionBar on click', () => {
             const actions = [{name: 'name', enabled: false}];
             const expectedAction = addActionsToActionBar(defaultProps.tableId, actions);
