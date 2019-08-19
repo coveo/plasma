@@ -157,6 +157,10 @@
             position: relative;
             top: -1px; // Small hack to make it work in all browsers...
         }
+
+        &.coveo-checkbox-width {
+            width: 142px;
+        }
     }
 
     &.row-selected td,
