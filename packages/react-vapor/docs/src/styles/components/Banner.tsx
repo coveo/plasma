@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import Svg from '../../demo-building-blocs/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Banner = () => (
     <VaporComponent

@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import Svg from '../../demo-building-blocs/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const HeaderPanel = () => {
     const [isOpened, setOpened] = useState(false);

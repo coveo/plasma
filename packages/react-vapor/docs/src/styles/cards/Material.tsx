@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Material = () => (
     <VaporComponent key="material" id="material" title="Material" usage="A container to display content" withSource>

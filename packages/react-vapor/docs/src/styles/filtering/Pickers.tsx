@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import Svg from '../../demo-building-blocs/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const Pickers = () => (
     <VaporComponent id="pickers" title="Pickers" usage="This is the standard multiple filter pickers control.">

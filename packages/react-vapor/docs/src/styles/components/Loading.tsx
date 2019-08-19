@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const Loading = () => (
     <VaporComponent key="loading" id="loading" title="Loading" usage="Use it while fetching data" withSource>
