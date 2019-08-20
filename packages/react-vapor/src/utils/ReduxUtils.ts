@@ -33,6 +33,7 @@ export const clearState = (): Redux.Action => ({
     type: CommonActions.clearState,
 });
 
+/* @deprecated use react-redux connect instead */
 export function ReduxConnect(
     mapStateToProps?: any,
     mapDispatchToProps?: any,
