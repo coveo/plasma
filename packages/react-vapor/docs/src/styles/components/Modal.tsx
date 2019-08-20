@@ -2,7 +2,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const Modal = () => {
@@ -62,7 +62,7 @@ export const Modal = () => {
                     <header className="modal-header">
                         <h1>Basic modal</h1>
                         <span className="small-close js-modal-close" onClick={() => setShowBasic(false)}>
-                            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white" />
+                            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white" />
                         </span>
                     </header>
                     <div className="modal-body mod-header-padding mod-form-top-bottom-padding">
@@ -81,7 +81,7 @@ export const Modal = () => {
                     <header className="modal-header">
                         <h1>Mod small</h1>
                         <span className="small-close js-modal-close" onClick={() => setShowSmall(false)}>
-                            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white" />
+                            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white" />
                         </span>
                     </header>
                     <div className="modal-body mod-header-padding mod-form-top-bottom-padding">
@@ -103,7 +103,7 @@ export const Modal = () => {
                     <header className="modal-header">
                         <h1>Mod medium & mod fade in scale</h1>
                         <span className="small-close js-modal-close" onClick={() => setShowMedium(false)}>
-                            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white" />
+                            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white" />
                         </span>
                     </header>
                     <div className="modal-body mod-header-padding mod-form-top-bottom-padding">
@@ -126,7 +126,7 @@ export const Modal = () => {
                     <header className="modal-header">
                         <h1>Mod big & mod stick bottom & mod slide in bottom</h1>
                         <span className="small-close js-modal-close" onClick={() => setShowBig(false)}>
-                            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white" />
+                            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white" />
                         </span>
                     </header>
                     <div className="modal-body mod-header-padding mod-form-top-bottom-padding">
@@ -149,7 +149,7 @@ export const Modal = () => {
                     <header className="modal-header">
                         <h1>Modal with a prompt</h1>
                         <span className="small-close js-modal-close" onClick={() => setShowPromptContainer(false)}>
-                            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white" />
+                            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white" />
                         </span>
                     </header>
                     <div className="modal-body mod-header-padding mod-form-top-bottom-padding">
@@ -176,7 +176,7 @@ export const Modal = () => {
                     <header className="modal-header">
                         <h1>A prompt</h1>
                         <span className="small-close js-modal-close" onClick={() => setShowPrompt(false)}>
-                            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white" />
+                            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white" />
                         </span>
                     </header>
                     <div className="modal-body mod-header-padding mod-form-top-bottom-padding">

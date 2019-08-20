@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const TextInput = () => (
@@ -22,7 +22,7 @@ export const TextInput = () => (
                 <label>
                     Enabled invalid input
                     <span className="inline-help-tooltip" title="A simple inline help text." data-placement="right">
-                        <Svg name={VaporSVG.svg.info.name} className="inline-help-icon" />
+                        <Svg svgName={VaporSVG.svg.info.name} className="inline-help-icon" />
                     </span>
                 </label>
             </div>

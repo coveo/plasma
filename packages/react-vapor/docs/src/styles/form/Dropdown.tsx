@@ -2,7 +2,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function Dropdown() {
@@ -22,7 +22,7 @@ export default function Dropdown() {
                         <div className={`${open ? 'open' : ''} dropdown`}>
                             <button className="btn dropdown-toggle" type="button" onClick={() => setOpen(!open)}>
                                 <span className="dropdown-prepend">Option:</span>
-                                <Svg name={VaporSVG.svg.domainGoogle.name} className="value-icon" />
+                                <Svg svgName={VaporSVG.svg.domainGoogle.name} className="value-icon" />
                                 <span className="dropdown-selected-value">Option 3</span>
                                 <span className="dropdown-toggle-arrow" />
                             </button>
@@ -36,7 +36,7 @@ export default function Dropdown() {
                                 </li>
                                 <li>
                                     <span className="enabled">
-                                        <Svg name={VaporSVG.svg.domainGoogle.name} className="value-icon" />
+                                        <Svg svgName={VaporSVG.svg.domainGoogle.name} className="value-icon" />
                                         Option 3
                                     </span>
                                 </li>

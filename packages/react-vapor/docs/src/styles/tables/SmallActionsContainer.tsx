@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function SmallActionsContainer() {
@@ -18,7 +18,7 @@ export default function SmallActionsContainer() {
                     <span className="item-filter-item">item we are filtering on</span>
                     <button className="item-filter-clear">
                         <i className="icon fill-dark-blue">
-                            <Svg name={VaporSVG.svg.clear.name} />
+                            <Svg svgName={VaporSVG.svg.clear.name} />
                         </i>
                     </button>
                 </div>
@@ -27,7 +27,7 @@ export default function SmallActionsContainer() {
                         <span className="enabled action primary action">
                             <a className="inline-flex flex-center">
                                 <Svg
-                                    name={VaporSVG.svg.edit.name}
+                                    svgName={VaporSVG.svg.edit.name}
                                     svgClass="icon fill-medium-blue"
                                     className="action-icon"
                                 />
@@ -37,7 +37,7 @@ export default function SmallActionsContainer() {
                         <span className="enabled action primary-action">
                             <a className="inline-flex flex-center">
                                 <Svg
-                                    name={VaporSVG.svg.activity.name}
+                                    svgName={VaporSVG.svg.activity.name}
                                     svgClass="icon fill-medium-blue"
                                     className="action-icon"
                                 />
@@ -47,7 +47,7 @@ export default function SmallActionsContainer() {
                         <span className="enabled action primary-action">
                             <span className="enabled inline-flex flex-center">
                                 <Svg
-                                    name={VaporSVG.svg.copy.name}
+                                    svgName={VaporSVG.svg.copy.name}
                                     svgClass="icon fill-medium-blue"
                                     className="action-icon"
                                 />

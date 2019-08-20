@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const AppendPrepend = () => (
@@ -31,7 +31,7 @@ export const AppendPrepend = () => (
 
             <button type="button" className="btn mod-prepend mod-large spaced-box">
                 <span className="btn-prepend mod-icon">
-                    <Svg className="icon" style={{width: 32, height: 32}} name={VaporSVG.svg.domainGoogle.name} />
+                    <Svg className="icon" style={{width: 32, height: 32}} svgName={VaporSVG.svg.domainGoogle.name} />
                 </span>
                 Login with Google
             </button>
