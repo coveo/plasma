@@ -23,4 +23,20 @@ describe('SideNavigationItem', () => {
         item = shallow(<SideNavigationItem isActive />);
         expect(item.hasClass('state-active')).toBe(true);
     });
+
+    it('should render an anchor tag if the "href" and "title" props are specified', () => {
+        item = shallow(<SideNavigationItem href="http://www.perdu.com" title="Perdu ?" />);
+
+        expect(item.type()).toBe('a');
+    });
+
+    it('should render a div tag if the "href" and "title" props are not specified', () => {
+        item = shallow(
+            <SideNavigationItem>
+                <a href="http://www.perdu.com">Perdu ?</a>
+            </SideNavigationItem>
+        );
+
+        expect(item.type()).toBe('div');
+    });
 });
