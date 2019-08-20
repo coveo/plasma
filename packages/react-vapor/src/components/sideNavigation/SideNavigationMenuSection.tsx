@@ -73,7 +73,7 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
             headerContent={sectionHeader}
             toggleIconClassName="fill-white transparency-3"
             onToggleExpandedState={onClick}
-            expanded={expanded}
+            expanded={!!expanded}
         >
             {items}
         </Collapsible>

@@ -27,24 +27,8 @@ export class SideNavigationExample extends React.Component<any, any> {
                 <div className="flex flex-row flex-stretch">
                     <SideNavigation>
                         <SideNavigationMenuSection title="Section 1" svgName="identity-user">
-                            <SideNavigationItem isActive>
-                                <a
-                                    href="http://coveo.com"
-                                    title="Link to Coveo"
-                                    className="navigation-menu-section-item-link"
-                                >
-                                    Link to Coveo
-                                </a>
-                            </SideNavigationItem>
-                            <SideNavigationItem>
-                                <a
-                                    href="http://coveo.com"
-                                    title="Link to Coveo"
-                                    className="navigation-menu-section-item-link"
-                                >
-                                    Another link to Coveo
-                                </a>
-                            </SideNavigationItem>
+                            <SideNavigationItem isActive href="http://coveo.com" title="Link to Coveo" />
+                            <SideNavigationItem href="http://coveo.com" title="Another link to Coveo" />
                         </SideNavigationMenuSection>
                         <SideNavigationMenuSection title="Section 2">
                             <SideNavigationLoadingItem className="mod-width-30" />

@@ -78,7 +78,10 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps): I
                 dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
-        onUnmount: () => dispatch(TableHOCRowActions.remove(ownProps.id)),
+        onUnmount: () => {
+            dispatch(TableHOCRowActions.remove(ownProps.id));
+            dispatch(TableHOCRowActions.deselectAll(ownProps.tableId));
+        },
         handleClick: (isMulti: boolean, isOpened: boolean) => {
             refreshActionBarActions(isMulti);
             if (isCollapsible(ownProps)) {
