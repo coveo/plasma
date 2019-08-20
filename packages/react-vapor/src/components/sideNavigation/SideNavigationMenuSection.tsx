@@ -42,12 +42,12 @@ const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps> =
         icon = <span className="navigation-menu-section-header-icon" />;
     }
 
-    return !_.isEmpty(React.Children.map(props.children, _.identity)) ? (
+    return (
         <div className="navigation-menu-section-header text-white" onClick={props.onClick}>
             {icon}
             {props.children}
         </div>
-    ) : null;
+    );
 };
 
 export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationSectionProps> = ({
@@ -59,9 +59,10 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
     title,
     ...headerProps
 }) => {
-    const sectionHeader = (
+    const headerTitle = title || (header && header.title);
+    const sectionHeader = headerTitle && (
         <SideNavigationHeader {..._.extend({}, header, headerProps)} onClick={expandable ? _.noop : onClick}>
-            {title || (header && header.title)}
+            {headerTitle}
         </SideNavigationHeader>
     );
     const items = <div className="navigation-menu-section-items">{children}</div>;
