@@ -32,10 +32,10 @@ describe('Label', () => {
             expect(label.find('label').prop('data-invalid-message')).toBe(message);
         });
 
-        it('should set inner label data nightwatch selector when specified', () => {
+        it('should pass down any other attribute to the underlying label tag', () => {
             const expectedSelector = 'Thon';
-            const label = shallow(<Label data-nightwatch-selector={expectedSelector} />);
-            expect(label.find('label').prop('data-nightwatch-selector')).toBe(expectedSelector);
+            const label = shallow(<Label data-whatever={expectedSelector} />);
+            expect(label.find('label').prop('data-whatever')).toBe(expectedSelector);
         });
     });
 });
