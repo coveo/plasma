@@ -21,6 +21,7 @@ export const listBoxReducer = (
         return state;
     }
 
+    const {payload} = action;
     switch (action.type) {
         case ListBoxActions.add:
             const selected = _.chain(action.payload.items)
@@ -37,30 +38,28 @@ export const listBoxReducer = (
         case ListBoxActions.select:
             return {
                 ...state,
-                selected: action.payload.multi
-                    ? _.uniq([...state.selected, action.payload.value])
-                    : [action.payload.value],
-                active: action.payload.multi ? null : state.active,
+                selected: payload.multi ? _.uniq([...state.selected, payload.value]) : [payload.value],
+                active: payload.multi ? null : typeof payload.index !== undefined ? payload.index : state.active,
             };
         case AutocompleteActions.setValue:
             return {
                 ...state,
-                selected: [action.payload.value],
+                selected: [payload.value],
             };
         case ListBoxActions.unselect:
             return {
                 ...state,
-                selected: _.without(state.selected, action.payload.value),
+                selected: _.without(state.selected, payload.value),
             };
         case ListBoxActions.reorder:
             return {
                 ...state,
-                selected: action.payload.values,
+                selected: payload.values,
             };
         case ListBoxActions.setActive:
-            let active = state.active + action.payload.diff;
+            let active = state.active + payload.diff;
             if (_.isUndefined(state.active)) {
-                active = action.payload.diff === 1 ? 0 : -1;
+                active = payload.diff === 1 ? 0 : -1;
             }
 
             return {...state, active};
