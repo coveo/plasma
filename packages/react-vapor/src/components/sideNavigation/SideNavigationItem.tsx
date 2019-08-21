@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {addClassNameToChildren} from '../../utils/JSXUtils';
 
 export interface ISideNavigationItemProps {
     href: string;
@@ -26,17 +27,15 @@ export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps
         }
     }, [isActive]);
 
+    const itemClasses = classNames('navigation-menu-section-item', {'state-active': isActive});
+
     return href && title ? (
-        <a
-            className={classNames('block navigation-menu-section-item', {'state-active': isActive})}
-            href={href}
-            target={target}
-        >
+        <a className={classNames('block', itemClasses)} href={href} target={target}>
             <span className="navigation-menu-section-item-link">{title}</span>
         </a>
     ) : (
-        <div className={classNames('navigation-menu-section-item', {'state-active': isActive})} ref={ref}>
-            {children}
+        <div className={itemClasses} ref={ref}>
+            {addClassNameToChildren(children, 'navigation-menu-section-item-link')}
         </div>
     );
 };
