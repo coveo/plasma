@@ -1,7 +1,9 @@
+import {shallow} from 'enzyme';
 import * as React from 'react';
-import {getReactNodeTextContent} from './JSXUtils';
 
-describe('JSXUtils', () => {
+import {addClassNameToChildren, getReactNodeTextContent} from './JSXUtils';
+
+fdescribe('JSXUtils', () => {
     describe('getReactNodeTextContent', () => {
         it('should return an empty string when receiving falsy values as react node', () => {
             expect(getReactNodeTextContent(null)).toBe('');
@@ -23,6 +25,23 @@ describe('JSXUtils', () => {
                     </div>
                 )
             ).toBe("Hello there! Can't you see me? I can.");
+        });
+    });
+
+    describe('addClassNameToChildren', () => {
+        it('should not add any class if the children is not a react element', () => {
+            const myElement = 'a string is not a react element';
+            expect(addClassNameToChildren(myElement, 'new-class')).toContain(myElement);
+        });
+
+        it('should add the new className to existing ones if the children a react element', () => {
+            const resultingChildren = addClassNameToChildren(
+                <span className="old-class">Hello react-vapor!</span>,
+                'new-class'
+            );
+            const component = shallow(resultingChildren[0] as React.ReactElement);
+            expect(component.hasClass('old-class')).toBe(true);
+            expect(component.hasClass('new-class')).toBe(true);
         });
     });
 });

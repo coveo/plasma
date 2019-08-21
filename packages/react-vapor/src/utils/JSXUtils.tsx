@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import {renderToStaticMarkup} from 'react-dom/server';
 import * as _ from 'underscore';
@@ -14,3 +15,10 @@ export const getReactNodeTextContent = (node: React.ReactNode): string => {
         s.stripTags
     )(renderToStaticMarkup(<div>{node}</div>));
 };
+
+export const addClassNameToChildren = (children: React.ReactNode, className: string) =>
+    React.Children.map(children, (child) =>
+        React.isValidElement(child)
+            ? React.cloneElement(child, {className: classNames(child.props.className, className)})
+            : child
+    );
