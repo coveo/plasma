@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import {addClassNameToChildren, getReactNodeTextContent} from './JSXUtils';
 
-fdescribe('JSXUtils', () => {
+describe('JSXUtils', () => {
     describe('getReactNodeTextContent', () => {
         it('should return an empty string when receiving falsy values as react node', () => {
             expect(getReactNodeTextContent(null)).toBe('');
