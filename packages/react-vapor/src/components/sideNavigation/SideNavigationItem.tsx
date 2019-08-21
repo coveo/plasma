@@ -29,6 +29,7 @@ export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps
 
     const itemClasses = classNames('navigation-menu-section-item', {'state-active': isActive});
 
+    // Rendering an anchor tag from href and title support for retrocompatibility
     return href && title ? (
         <a className={classNames('block', itemClasses)} href={href} target={target} ref={ref}>
             <span className="navigation-menu-section-item-link">{title}</span>
