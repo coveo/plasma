@@ -2,7 +2,6 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 export interface ILabelProps {
-    htmlFor?: string;
     type?: string;
     classes?: string[];
     validMessage?: string;
