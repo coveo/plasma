@@ -24,39 +24,35 @@ export interface SideNavigationHeaderProps {
     onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
-const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps> = (props) => {
-    let icon: React.ReactNode = null;
-    if (props.customIcon) {
-        icon = props.customIcon;
-    } else if (props.svgName) {
-        icon = (
-            <Svg
-                svgName={props.svgName}
-                svgClass={classNames(
-                    'navigation-menu-section-header-icon icon mod-lg transparency-3 fill-white',
-                    props.svgClass
-                )}
-            />
-        );
-    } else {
-        icon = <span className="navigation-menu-section-header-icon" />;
-    }
-
-    return (
-        <div className="navigation-menu-section-header text-white" onClick={props.onClick}>
-            {icon}
-            {props.children}
-        </div>
+const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>
+    svgName ? (
+        <Svg
+            svgName={svgName}
+            svgClass={classNames('navigation-menu-section-header-icon icon mod-lg transparency-3 fill-white', svgClass)}
+        />
+    ) : (
+        <span className="navigation-menu-section-header-icon" />
     );
-};
+
+const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps> = ({
+    customIcon,
+    onClick,
+    children,
+    ...iconProps
+}) => (
+    <div className="navigation-menu-section-header text-white" onClick={onClick}>
+        {customIcon || <HeaderIcon {...iconProps} />}
+        {children}
+    </div>
+);
 
 export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationSectionProps> = ({
     expandable,
     expanded,
+    title,
     onClick,
     header,
     children,
-    title,
     ...headerProps
 }) => {
     const headerTitle = title || (header && header.title);
