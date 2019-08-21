@@ -18,7 +18,9 @@ export const getReactNodeTextContent = (node: React.ReactNode): string => {
 
 export const addClassNameToChildren = (children: React.ReactNode, className: string) =>
     React.Children.map(children, (child) =>
-        React.isValidElement(child)
-            ? React.cloneElement(child, {className: classNames(child.props.className, className)})
-            : child
+        React.isValidElement(child) ? (
+            React.cloneElement(child, {className: classNames(child.props.className, className)})
+        ) : (
+            <span className={className}>{child}</span>
+        )
     );
