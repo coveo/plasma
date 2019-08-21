@@ -29,9 +29,12 @@ describe('JSXUtils', () => {
     });
 
     describe('addClassNameToChildren', () => {
-        it('should not add any class if the children is not a react element', () => {
-            const myElement = 'a string is not a react element';
-            expect(addClassNameToChildren(myElement, 'new-class')).toContain(myElement);
+        it('should wrap the child with a span that has the classname if the children is not a react element', () => {
+            const resultingChildren = addClassNameToChildren('a string is not a react element', 'new-class');
+            const component = shallow(resultingChildren[0] as React.ReactElement);
+
+            expect(component.type()).toBe('span');
+            expect(component.hasClass('new-class')).toBe(true);
         });
 
         it('should add the new className to existing ones if the children a react element', () => {
