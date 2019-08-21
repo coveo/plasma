@@ -80,13 +80,12 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
                 }
                 return itemWithIndex;
             })
-            .map(({item, index}: IITemBoxPropsWithIndex) => {
-                let active = item.active;
-                if (!item.disabled && activeSet === false) {
-                    active = true;
+            .map((itemWithIndex: IITemBoxPropsWithIndex) => {
+                if (!itemWithIndex.item.disabled && activeSet === false) {
+                    itemWithIndex.item.active = true;
                     activeSet = true;
                 }
-                return {item: {...item, active}, index};
+                return itemWithIndex;
             })
             .map(({item, index}: IITemBoxPropsWithIndex) => {
                 return (
