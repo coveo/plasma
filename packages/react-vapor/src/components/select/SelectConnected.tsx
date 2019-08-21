@@ -13,7 +13,7 @@ import {Content} from '../content/Content';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IITemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
+import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
@@ -188,7 +188,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
         }
         let realIndex = 0;
         if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpened) {
-            const actives: IITemBoxPropsWithIndex[] = _.chain(this.props.items)
+            const actives: IItemBoxPropsWithIndex[] = _.chain(this.props.items)
                 .filter(
                     (item: IItemBoxProps) =>
                         !item.hidden &&
@@ -196,12 +196,12 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                         !item.disabled
                 )
                 .map((item: IItemBoxProps) => {
-                    return {item, index: realIndex++};
+                    return {...item, index: realIndex++};
                 })
                 .value();
             const active = actives[mod(this.props.active, actives.length)];
             if (active) {
-                this.props.onSelectValue(active.item.value, this.props.multi, active.index);
+                this.props.onSelectValue(active.value, this.props.multi, active.index);
             }
         } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode) && !this.props.isOpened) {
             this.onToggleDropdown(e);

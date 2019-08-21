@@ -6,10 +6,7 @@ import {mod} from '../../utils/DataStructuresUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
-export interface IITemBoxPropsWithIndex {
-    index?: number;
-    item: IItemBoxProps;
-}
+export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
 
 export interface IListBoxOwnProps {
     noResultItem?: IItemBoxProps;
@@ -65,7 +62,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
             .filter(shouldShow)
             .map((item: IItemBoxProps) => {
                 let active = false;
-                const itemWithIndex: IITemBoxPropsWithIndex = {item: {...item}};
+                const itemWithIndex: IItemBoxPropsWithIndex = {...item};
                 if (!item.disabled) {
                     if (this.props.active === null) {
                         active = _.contains(this.props.selected, item.value);
@@ -75,24 +72,24 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
                     activeSet = active || activeSet;
 
                     itemWithIndex.index = realIndex;
-                    itemWithIndex.item.active = active;
+                    itemWithIndex.active = active;
                     realIndex++;
                 }
                 return itemWithIndex;
             })
-            .map((itemWithIndex: IITemBoxPropsWithIndex) => {
-                if (!itemWithIndex.item.disabled && activeSet === false) {
-                    itemWithIndex.item.active = true;
+            .map((itemWithIndex: IItemBoxPropsWithIndex) => {
+                if (!itemWithIndex.disabled && activeSet === false) {
+                    itemWithIndex.active = true;
                     activeSet = true;
                 }
                 return itemWithIndex;
             })
-            .map(({item, index}: IITemBoxPropsWithIndex) => {
+            .map((item: IItemBoxPropsWithIndex) => {
                 return (
                     <ItemBox
                         key={item.value}
                         {...item}
-                        onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item, index)}
+                        onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item, item.index)}
                         selected={_.contains(this.props.selected, item.value)}
                     />
                 );
