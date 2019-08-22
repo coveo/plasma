@@ -5,6 +5,7 @@ import {IReduxAction} from '../../../utils/ReduxUtils';
 import {FilterActions} from '../../filterBox/FilterBoxActions';
 import {ListBoxActions} from '../../listBox/ListBoxActions';
 import {TableActions} from '../../tables/TableActions';
+import {TableHOCUtils} from './../../table-hoc/TableHOCUtils';
 import {PaginationActions} from './NavigationPaginationActions';
 
 export interface IPaginationState {
@@ -39,7 +40,7 @@ export const paginationReducer = (
         case FilterActions.filterThrough:
             return s.contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
         case ListBoxActions.select: {
-            const [tableId] = s.words(action.payload.id, '--');
+            const tableId = TableHOCUtils.getTableIdFromPredicateId(action.payload.id);
             return tableId && s.contains(state.id, tableId) ? {...state, pageNb: 0} : state;
         }
         default:
