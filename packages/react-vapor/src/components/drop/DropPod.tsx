@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
+
 import {Defaults} from '../../Defaults';
 import {
     DomPositionCalculator,
@@ -49,7 +50,6 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     static defaultProps: Partial<IDropPodProps> = {
         isOpen: false,
         positions: defaultDropPodPosition,
-        parentSelector: Defaults.DROP_ROOT,
         minWidth: 0,
         minHeight: 0,
         hasSameWidth: false,
@@ -140,10 +140,10 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 (this.props.buttonRef.current && this.props.buttonRef.current.getBoundingClientRect()) ||
                 this.state.offset;
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
-
-            const parentOffset = this.props.parentSelector
-                ? this.props.buttonRef.current.closest(this.props.parentSelector).getBoundingClientRect()
-                : this.props.buttonRef.current.offsetParent.getBoundingClientRect();
+            const relativeParent = this.props.parentSelector
+                ? this.props.buttonRef.current.closest(this.props.parentSelector)
+                : this.props.buttonRef.current.offsetParent;
+            const parentOffset = relativeParent.getBoundingClientRect();
             const boundingLimit: IBoundingLimit = {
                 maxY: Math.min(parentOffset.bottom, window.innerHeight),
                 minY: Math.max(parentOffset.top, 0),
@@ -197,6 +197,13 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                     width: buttonOffset.width,
                 };
             }
+
+            // Restrict the max-width to the inner width of the closest relatively positionned ancestor
+            const {paddingLeft, paddingRight} = getComputedStyle(relativeParent);
+            newDomPosition.style = {
+                ...style,
+                maxWidth: parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight)),
+            };
 
             // Don't show if no space to render the drop target inside the window
             if (dropOffset.height > window.innerHeight || dropOffset.width > window.innerWidth) {
