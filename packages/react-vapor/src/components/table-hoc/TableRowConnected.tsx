@@ -79,10 +79,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps): I
             }
         },
         onUnmount: (isSelected?: boolean) => {
-            dispatch(TableHOCRowActions.remove(ownProps.id));
-            if (isSelected) {
-                dispatch(addActionsToActionBar(ownProps.tableId, []));
-            }
+            dispatch(TableHOCRowActions.remove(ownProps.id, ownProps.tableId, isSelected));
         },
         handleClick: (isMulti: boolean, isOpened: boolean) => {
             refreshActionBarActions(isMulti);

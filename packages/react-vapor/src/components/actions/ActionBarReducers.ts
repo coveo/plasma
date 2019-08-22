@@ -47,6 +47,8 @@ export const actionBarReducer = (
                 s.contains(action.payload.id, state.id)
                 ? {...state, actions: []}
                 : state;
+        case TableHOCRowActionsType.remove:
+            return action.payload.isSelected && state.id === action.payload.tableId ? {...state, actions: []} : state;
         case LoadingActions.turnOn:
             return _.contains(action.payload.ids, state.id) ? {...state, isLoading: true} : state;
         case LoadingActions.turnOff:
@@ -64,6 +66,7 @@ export const actionBarsReducer = (
         case ActionBarActions.addActions:
         case PaginationActions.changePage:
         case TableHOCRowActionsType.deselectAll:
+        case TableHOCRowActionsType.remove:
         case PerPageActions.change:
         case ListBoxActions.select:
         case LoadingActions.turnOn:
