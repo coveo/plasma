@@ -2,6 +2,7 @@ import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from '../DropPod';
 
@@ -36,6 +37,7 @@ describe('DropPod', () => {
                     getBoundingClientRect: () => dropOffset,
                 } as any,
             });
+            spyOn(window, 'getComputedStyle').and.returnValue({paddingLeft: '10', paddingRight: '10'});
 
             buttonRef = {
                 current: {
@@ -43,6 +45,9 @@ describe('DropPod', () => {
                         getBoundingClientRect: () => parentOffset,
                     }),
                     getBoundingClientRect: () => buttonOffset,
+                    offsetParent: {
+                        getBoundingClientRect: () => parentOffset,
+                    },
                 },
             } as any;
 
@@ -412,6 +417,17 @@ describe('DropPod', () => {
                         });
 
                         expect(styleRendered.width).toBe(100);
+                    });
+
+                    it('should set the maxWidth to the inner width of the closest relatively positionned parent', () => {
+                        setupReference({
+                            width: 1000,
+                        });
+                        shallowDropPodForStyle({
+                            positions: [DropPodPosition.bottom],
+                        });
+
+                        expect(styleRendered.maxWidth).toBe(980); // 1000px width - (10px padding left + 10px padding right)
                     });
 
                     describe('DomPositionCalculator', () => {

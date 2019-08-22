@@ -201,7 +201,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             // Restrict the max-width to the inner width of the closest relatively positionned ancestor
             const {paddingLeft, paddingRight} = getComputedStyle(relativeParent);
             newDomPosition.style = {
-                ...style,
+                ...newDomPosition.style,
                 maxWidth: parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight)),
             };
 
