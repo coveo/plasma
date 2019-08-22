@@ -6,6 +6,8 @@ import {mod} from '../../utils/DataStructuresUtils';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
+export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
+
 export interface IListBoxOwnProps {
     noResultItem?: IItemBoxProps;
     classes?: string[];
@@ -23,7 +25,7 @@ export interface IListBoxStateProps {
 export interface IListBoxDispatchProps {
     onRender?: () => void;
     onDestroy?: () => void;
-    onOptionClick?: (option: IItemBoxProps) => void;
+    onOptionClick?: (option: IItemBoxProps, index?: number) => void;
 }
 
 export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
@@ -54,39 +56,44 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         const visibleLength = _.filter(this.props.items, (item: IItemBoxProps) => shouldShow(item) && !item.disabled)
             .length;
 
-        let index = 0;
+        let realIndex = 0;
         let activeSet = false;
         const items = _.chain(this.props.items)
             .filter(shouldShow)
             .map((item: IItemBoxProps) => {
                 let active = false;
+                const itemWithIndex: IItemBoxPropsWithIndex = {...item};
                 if (!item.disabled) {
                     if (this.props.active === null) {
                         active = _.contains(this.props.selected, item.value);
                     } else {
-                        active = mod(this.props.active, visibleLength) === index;
+                        active = mod(this.props.active, visibleLength) === realIndex;
                     }
                     activeSet = active || activeSet;
-                    index++;
+
+                    itemWithIndex.index = realIndex;
+                    itemWithIndex.active = active;
+                    realIndex++;
                 }
-                return {...item, active};
+                return itemWithIndex;
             })
-            .map((item: IItemBoxProps) => {
-                let active = item.active;
-                if (!item.disabled && activeSet === false) {
-                    active = true;
+            .map((itemWithIndex: IItemBoxPropsWithIndex) => {
+                if (!itemWithIndex.disabled && activeSet === false) {
+                    itemWithIndex.active = true;
                     activeSet = true;
                 }
-                return {...item, active};
+                return itemWithIndex;
             })
-            .map((item: IItemBoxProps) => (
-                <ItemBox
-                    key={item.value}
-                    {...item}
-                    onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item)}
-                    selected={_.contains(this.props.selected, item.value)}
-                />
-            ))
+            .map((item: IItemBoxPropsWithIndex) => {
+                return (
+                    <ItemBox
+                        key={item.value}
+                        {...item}
+                        onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item, item.index)}
+                        selected={_.contains(this.props.selected, item.value)}
+                    />
+                );
+            })
             .value();
 
         const emptyItem = (
@@ -107,10 +114,10 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         );
     }
 
-    private onSelectItem(item: IItemBoxProps) {
+    private onSelectItem(item: IItemBoxProps, index?: number) {
         if (!item.disabled) {
-            callIfDefined(this.props.onOptionClick, item);
-            callIfDefined(item.onOptionClick, item);
+            callIfDefined(this.props.onOptionClick, item, index);
+            callIfDefined(item.onOptionClick, item, index);
         }
     }
 }
