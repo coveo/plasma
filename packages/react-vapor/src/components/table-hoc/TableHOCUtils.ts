@@ -50,7 +50,7 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
     };
 };
 
-const getPredicateId = (tableId: string, componentId: string) => tableId + componentId;
+const getPredicateId = (tableId: string, componentId: string) => `${tableId}--${componentId}`;
 
 const getPaginationId = (tableId: string) => `pagination-${tableId}`;
 
