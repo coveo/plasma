@@ -66,7 +66,7 @@ describe('<ModalCompositeConnected />', () => {
             store
         ).dive();
 
-        modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeEvent'));
+        modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeevent') as any);
 
         expect(store.getActions()).toContain(closeModal(basicProps.id));
     });

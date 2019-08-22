@@ -94,7 +94,7 @@ export class ModalComposite extends React.PureComponent<
         callIfDefined(this.props.onDestroy);
     }
 
-    private onRequestClose = (e: MouseEvent | KeyboardEvent) => {
+    private onRequestClose = (e: React.MouseEvent | React.KeyboardEvent) => {
         e.preventDefault();
         e.stopPropagation();
 
