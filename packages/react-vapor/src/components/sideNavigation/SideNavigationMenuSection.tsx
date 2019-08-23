@@ -6,6 +6,13 @@ import {Collapsible} from '../collapsible/Collapsible';
 import {Svg} from '../svg/Svg';
 import {ISideNavigationHeaderProps} from './SideNavigationHeader';
 
+export interface SideNavigationHeaderProps {
+    title?: React.ReactNode;
+    svgName?: string;
+    svgClass?: string;
+    customIcon?: React.ReactNode;
+    onClick?: (event: React.MouseEvent) => void;
+}
 export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     /**
      * @deprecated pass those in props directly
@@ -14,14 +21,6 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     expandable?: boolean;
     expanded?: boolean;
     onClick?: () => void;
-}
-
-export interface SideNavigationHeaderProps {
-    title?: React.ReactNode;
-    svgName?: string;
-    svgClass?: string;
-    customIcon?: React.ReactNode;
-    onClick?: (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => void;
 }
 
 const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>

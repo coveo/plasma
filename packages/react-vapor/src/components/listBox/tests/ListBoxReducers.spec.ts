@@ -122,7 +122,13 @@ describe('ListBox', () => {
 
         describe('SELECT_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
-            const items = [{value: 'a'}, {value: 'b', selected: true}];
+            const items = [
+                {value: 'a'},
+                {value: 'b', selected: true},
+                {value: 'c'},
+                {value: 'd', disabled: true},
+                {value: 'e'},
+            ];
             const selected = _.chain(items)
                 .where({selected: true})
                 .pluck('value')
@@ -158,6 +164,38 @@ describe('ListBox', () => {
 
                 expect(newState[0].selected.length).toBe(2, 'length');
                 expect(newState[0].selected).toEqual([items[1].value, newValue]);
+            });
+
+            it('should activate the new item when the list box is not multi', () => {
+                const expectedValue = items[2].value;
+                const oldState: IListBoxState[] = defaultState;
+                const newState: IListBoxState[] = listBoxesReducer(
+                    oldState,
+                    selectListBoxOption(id, false, expectedValue, 2)
+                );
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+
+                expect(newState[0].selected.length).toBe(1);
+                expect(newState[0].selected[0]).toBe(expectedValue);
+                expect(newState[0].active).toBe(2);
+            });
+
+            it('should not activate the new item (and the old one) when the list box is multi', () => {
+                const newValue = items[2].value;
+                const oldState: IListBoxState[] = defaultState;
+                const newState: IListBoxState[] = listBoxesReducer(
+                    oldState,
+                    selectListBoxOption(id, true, newValue, 2)
+                );
+
+                expect(newState.length).toBe(oldState.length);
+                expect(newState[0].id).toBe(id);
+
+                expect(newState[0].selected.length).toBe(2, 'length');
+                expect(newState[0].selected).toEqual([items[1].value, newValue]);
+                expect(newState[0].active).toBe(null);
             });
 
             it('should not modify the old state', () => {
