@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const MessagePrompt = () => (
@@ -10,7 +10,7 @@ export const MessagePrompt = () => (
                 <div className="modal-content">
                     <header className="modal-header mod-confirmation">
                         <h1>Prompt confirmation</h1>
-                        <Svg name="clear" className="small-close icon fill-pure-white" />
+                        <Svg svgName="clear" className="small-close icon fill-pure-white" />
                     </header>
                     <div className="modal-body mod-header-padding">
                         <div className="prompt-message">
@@ -34,7 +34,7 @@ export const MessagePrompt = () => (
                 <div className="modal-content">
                     <header className="modal-header mod-warning">
                         <h1>Prompt warning</h1>
-                        <Svg name="clear" className="small-close icon fill-pure-white" />
+                        <Svg svgName="clear" className="small-close icon fill-pure-white" />
                     </header>
                     <div className="modal-body mod-header-padding">
                         <div className="prompt-message ">
@@ -51,7 +51,7 @@ export const MessagePrompt = () => (
                 <div className="modal-content">
                     <header className="modal-header mod-info">
                         <h1>Prompt info</h1>
-                        <Svg name="clear" className="small-close icon fill-pure-white" />
+                        <Svg svgName="clear" className="small-close icon fill-pure-white" />
                     </header>
                     <div className="modal-body mod-header-padding">
                         <div className="prompt-message ">

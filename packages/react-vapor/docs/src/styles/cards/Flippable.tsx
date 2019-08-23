@@ -2,7 +2,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Flippable = () => {
@@ -35,7 +35,7 @@ const Flippable = () => {
                         <div className="logo-card ribbon-container disabled">
                             <div className="logo-card-logo">
                                 <i className="icon mod-4x">
-                                    <Svg name={VaporSVG.svg.sourceCustom.name} />
+                                    <Svg svgName={VaporSVG.svg.sourceCustom.name} />
                                 </i>
                             </div>
                             <div className="logo-card-content">

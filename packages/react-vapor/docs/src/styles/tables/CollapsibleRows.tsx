@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function CollapsibleRows() {
@@ -28,8 +28,12 @@ export default function CollapsibleRows() {
                         <td>Data 3</td>
                         <td className="right-align">
                             <span data-collapse-state="collapsed">
-                                <Svg name={VaporSVG.svg.arrowBottom.name} className="state-collapsed" svgClass="icon" />
-                                <Svg name={VaporSVG.svg.arrowTop.name} className="state-expanded" svgClass="icon" />
+                                <Svg
+                                    svgName={VaporSVG.svg.arrowBottom.name}
+                                    className="state-collapsed"
+                                    svgClass="icon"
+                                />
+                                <Svg svgName={VaporSVG.svg.arrowTop.name} className="state-expanded" svgClass="icon" />
                             </span>
                         </td>
                     </tr>
@@ -67,8 +71,12 @@ export default function CollapsibleRows() {
                         <td>Data 3</td>
                         <td className="right-align">
                             <span data-collapse-state="expanded">
-                                <Svg name={VaporSVG.svg.arrowBottom.name} className="state-collapsed" svgClass="icon" />
-                                <Svg name={VaporSVG.svg.arrowTop.name} className="state-expanded" svgClass="icon" />
+                                <Svg
+                                    svgName={VaporSVG.svg.arrowBottom.name}
+                                    className="state-collapsed"
+                                    svgClass="icon"
+                                />
+                                <Svg svgName={VaporSVG.svg.arrowTop.name} className="state-expanded" svgClass="icon" />
                             </span>
                         </td>
                     </tr>
@@ -106,8 +114,12 @@ export default function CollapsibleRows() {
                         <td>Data 3</td>
                         <td className="right-align">
                             <span data-collapse-state="collapsed">
-                                <Svg name={VaporSVG.svg.arrowBottom.name} className="state-collapsed" svgClass="icon" />
-                                <Svg name={VaporSVG.svg.arrowTop.name} className="state-expanded" svgClass="icon" />
+                                <Svg
+                                    svgName={VaporSVG.svg.arrowBottom.name}
+                                    className="state-collapsed"
+                                    svgClass="icon"
+                                />
+                                <Svg svgName={VaporSVG.svg.arrowTop.name} className="state-expanded" svgClass="icon" />
                             </span>
                         </td>
                     </tr>

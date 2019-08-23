@@ -2,7 +2,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const ListPopup = () => {
@@ -43,7 +43,7 @@ export const ListPopup = () => {
                                     <input type="text" className="filter-box" placeholder="Filter" />
                                     <span className="hide" />
                                     <Svg
-                                        name={VaporSVG.svg.filter.name}
+                                        svgName={VaporSVG.svg.filter.name}
                                         className="filter-icon icon mod-lg fill-medium-grey"
                                     />
                                 </div>

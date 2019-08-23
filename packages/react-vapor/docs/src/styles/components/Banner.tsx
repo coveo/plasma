@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Banner = () => (
@@ -20,7 +20,7 @@ const Banner = () => (
                 </button>
             </div>
 
-            <Svg name={VaporSVG.svg.close.name} className="icon fill-pure-white mod-lg" />
+            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white mod-lg" />
         </div>
     </VaporComponent>
 );

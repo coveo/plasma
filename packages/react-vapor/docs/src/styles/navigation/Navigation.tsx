@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function Navigation() {
@@ -18,12 +18,12 @@ export default function Navigation() {
                         <li className="block navigation-menu-section">
                             <header className="navigation-menu-section-header">
                                 <Svg
-                                    name={VaporSVG.svg.menuContent.name}
+                                    svgName={VaporSVG.svg.menuContent.name}
                                     className="navigation-menu-section-header-icon icon fill-white mod-lg"
                                 />
                                 Section 1
                                 <Svg
-                                    name={VaporSVG.svg.arrowBottomRounded.name}
+                                    svgName={VaporSVG.svg.arrowBottomRounded.name}
                                     className="collapsible-arrow icon fill-white open"
                                 />
                             </header>
@@ -43,12 +43,12 @@ export default function Navigation() {
                         <li className="block navigation-menu-section">
                             <header className="navigation-menu-section-header">
                                 <Svg
-                                    name={VaporSVG.svg.menuContent.name}
+                                    svgName={VaporSVG.svg.menuContent.name}
                                     className="navigation-menu-section-header-icon icon fill-white mod-lg"
                                 />
                                 Section Collapsed
                                 <Svg
-                                    name={VaporSVG.svg.arrowTopRounded.name}
+                                    svgName={VaporSVG.svg.arrowTopRounded.name}
                                     className="collapsible-arrow icon fill-white"
                                 />
                             </header>
@@ -57,12 +57,12 @@ export default function Navigation() {
                         <li className="block navigation-menu-section">
                             <header className="navigation-menu-section-header">
                                 <Svg
-                                    name={VaporSVG.svg.menuContent.name}
+                                    svgName={VaporSVG.svg.menuContent.name}
                                     className="navigation-menu-section-header-icon icon fill-white mod-lg"
                                 />
                                 Section 3
                                 <Svg
-                                    name={VaporSVG.svg.arrowBottomRounded.name}
+                                    svgName={VaporSVG.svg.arrowBottomRounded.name}
                                     className="collapsible-arrow icon fill-white"
                                 />
                             </header>
@@ -80,7 +80,7 @@ export default function Navigation() {
                                     >
                                         Item 2
                                         <Svg
-                                            name={VaporSVG.svg.lock.name}
+                                            svgName={VaporSVG.svg.lock.name}
                                             className="navigation-menu-section-item-link-icon"
                                             svgClass="icon mod-lg fill-white"
                                         />
@@ -105,7 +105,7 @@ export default function Navigation() {
                                         Locked/Tagged
                                         <span className="navigation-tag">new</span>
                                         <Svg
-                                            name={VaporSVG.svg.lock.name}
+                                            svgName={VaporSVG.svg.lock.name}
                                             className="navigation-menu-section-item-link-icon"
                                             svgClass="icon mod-lg fill-white"
                                         />

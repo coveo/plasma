@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Facet = () => (
@@ -12,7 +12,7 @@ const Facet = () => (
                     <div className="facet-header">
                         <div className="facet-header-eraser hidden">
                             <span className="icon fill-medium-grey">
-                                <Svg name={VaporSVG.svg.clear.name} />
+                                <Svg svgName={VaporSVG.svg.clear.name} />
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet title</div>
@@ -61,7 +61,7 @@ const Facet = () => (
                                 <input type="text" className="filter-box" placeholder="Filter" />
                                 <span className="hide" />
                                 <span className="filter-icon icon mod-lg fill-medium-grey">
-                                    <Svg name={VaporSVG.svg.filter.name} />
+                                    <Svg svgName={VaporSVG.svg.filter.name} />
                                 </span>
                             </div>
                         </div>
@@ -124,7 +124,7 @@ const Facet = () => (
                     <div className="facet-header">
                         <div className="facet-header-eraser hidden">
                             <span className="icon fill-medium-grey">
-                                <Svg name={VaporSVG.svg.clear.name} />
+                                <Svg svgName={VaporSVG.svg.clear.name} />
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet title</div>
@@ -173,7 +173,7 @@ const Facet = () => (
                                 <input type="text" className="filter-box" placeholder="Filter" />
                                 <span className="hide" />
                                 <span className="filter-icon icon mod-lg fill-medium-grey">
-                                    <Svg name={VaporSVG.svg.filter.name} />
+                                    <Svg svgName={VaporSVG.svg.filter.name} />
                                 </span>
                             </div>
                         </div>
@@ -234,7 +234,7 @@ const Facet = () => (
                     <div className="facet-header">
                         <div className="facet-header-eraser">
                             <span className="icon fill-medium-grey">
-                                <Svg name={VaporSVG.svg.clear.name} />
+                                <Svg svgName={VaporSVG.svg.clear.name} />
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet title</div>
@@ -276,7 +276,7 @@ const Facet = () => (
                     <div className="facet-header">
                         <div className="facet-header-eraser">
                             <span className="icon fill-medium-grey">
-                                <Svg name={VaporSVG.svg.clear.name} />
+                                <Svg svgName={VaporSVG.svg.clear.name} />
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet title</div>
@@ -316,7 +316,7 @@ const Facet = () => (
                     <div className="facet-header">
                         <div className="facet-header-eraser">
                             <span className="icon fill-medium-grey">
-                                <Svg name={VaporSVG.svg.clear.name} />
+                                <Svg svgName={VaporSVG.svg.clear.name} />
                             </span>
                         </div>
                         <div className="facet-header-title text-medium-blue">Facet with count</div>
@@ -361,7 +361,7 @@ const Facet = () => (
                                 <input type="text" className="filter-box" placeholder="Filter" />
                                 <span className="hide" />
                                 <span className="filter-icon icon mod-lg fill-medium-grey">
-                                    <Svg name={VaporSVG.svg.filter.name} />
+                                    <Svg svgName={VaporSVG.svg.filter.name} />
                                 </span>
                             </div>
                         </div>

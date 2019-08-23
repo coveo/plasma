@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function ActionsContainer() {
@@ -17,7 +17,7 @@ export default function ActionsContainer() {
                     <span className="item-filter-label">Filter label: </span>
                     <span className="item-filter-item">item we are filtering on</span>
                     <button className="item-filter-clear">
-                        <Svg name={VaporSVG.svg.clear.name} className="icon fill-dark-blue" />
+                        <Svg svgName={VaporSVG.svg.clear.name} className="icon fill-dark-blue" />
                     </button>
                 </div>
                 <div className="coveo-table-actions">
@@ -25,7 +25,7 @@ export default function ActionsContainer() {
                         <span className="enabled action primary action">
                             <a className="inline-flex flex-center">
                                 <Svg
-                                    name={VaporSVG.svg.edit.name}
+                                    svgName={VaporSVG.svg.edit.name}
                                     className="action-icon"
                                     svgClass="icon fill-medium-blue"
                                 />
@@ -35,7 +35,7 @@ export default function ActionsContainer() {
                         <span className="enabled action primary-action">
                             <a className="inline-flex flex-center">
                                 <Svg
-                                    name={VaporSVG.svg.activity.name}
+                                    svgName={VaporSVG.svg.activity.name}
                                     className="action-icon"
                                     svgClass="icon fill-medium-blue"
                                 />
@@ -45,7 +45,7 @@ export default function ActionsContainer() {
                         <span className="enabled action primary-action">
                             <span className="enabled inline-flex flex-center">
                                 <Svg
-                                    name={VaporSVG.svg.copy.name}
+                                    svgName={VaporSVG.svg.copy.name}
                                     className="action-icon"
                                     svgClass="icon fill-medium-blue"
                                 />
@@ -55,7 +55,7 @@ export default function ActionsContainer() {
                         <span className="dropdown action primary-action open">
                             <span className="dropdown-toggle inline-flex flex-center" data-toggle="dropdown">
                                 <Svg
-                                    name={VaporSVG.svg.more.name}
+                                    svgName={VaporSVG.svg.more.name}
                                     className="action-icon"
                                     svgClass="icon fill-medium-blue"
                                 />
