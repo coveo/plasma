@@ -1,63 +1,82 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
-import {SlideY} from '../../animations/SlideY';
-import {Svg} from '../svg/Svg';
-import {ISideNavigationHeaderProps, SideNavigationHeader} from './SideNavigationHeader';
-import {SideNavigationLoadingHeader} from './SideNavigationLoadingHeader';
+import * as _ from 'underscore';
 
-export interface ISideNavigationSectionOwnProps {
+import {Collapsible} from '../collapsible/Collapsible';
+import {Svg} from '../svg/Svg';
+import {ISideNavigationHeaderProps} from './SideNavigationHeader';
+
+export interface SideNavigationHeaderProps {
+    title?: React.ReactNode;
+    svgName?: string;
+    svgClass?: string;
+    customIcon?: React.ReactNode;
+    onClick?: (event: React.MouseEvent) => void;
+}
+export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
+    /**
+     * @deprecated pass those in props directly
+     */
     header?: ISideNavigationHeaderProps;
     expandable?: boolean;
-}
-
-export interface ISideNavigationSectionStateProps {
     expanded?: boolean;
-}
-
-export interface ISideNavigationSectionDispatchProps {
     onClick?: () => void;
 }
 
-export interface ISideNavigationSectionProps
-    extends ISideNavigationSectionOwnProps,
-        ISideNavigationSectionStateProps,
-        ISideNavigationSectionDispatchProps {}
+const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>
+    svgName ? (
+        <Svg
+            svgName={svgName}
+            svgClass={classNames('navigation-menu-section-header-icon icon mod-lg transparency-3 fill-white', svgClass)}
+        />
+    ) : (
+        <span className="navigation-menu-section-header-icon" />
+    );
 
-const arrowClassName = 'collapsible-arrow icon fill-white transparency-4';
+const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps> = ({
+    customIcon,
+    onClick,
+    children,
+    ...iconProps
+}) => (
+    <div className="navigation-menu-section-header text-white" onClick={onClick}>
+        {customIcon || <HeaderIcon {...iconProps} />}
+        {children}
+    </div>
+);
 
-export class SideNavigationMenuSection extends React.Component<ISideNavigationSectionProps> {
-    private handleClick() {
-        if (this.props.onClick) {
-            this.props.onClick();
-        }
-    }
+export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationSectionProps> = ({
+    expandable,
+    expanded,
+    title,
+    onClick,
+    header,
+    children,
+    ...headerProps
+}) => {
+    const headerTitle = title || (header && header.title);
+    const sectionHeader = headerTitle && (
+        <SideNavigationHeader {..._.extend({}, header, headerProps)} onClick={expandable ? _.noop : onClick}>
+            {headerTitle}
+        </SideNavigationHeader>
+    );
+    const items = <div className="navigation-menu-section-items">{children}</div>;
 
-    render() {
-        return (
-            <div className="block navigation-menu-section">
-                {this.buildHeader()}
-                <SlideY in={!(this.props.expandable && !this.props.expanded)} timeout={350}>
-                    <div className="navigation-menu-section-items">{this.props.children}</div>
-                </SlideY>
-            </div>
-        );
-    }
-
-    private buildHeader(): JSX.Element {
-        if (this.props.header) {
-            let arrow = null;
-            if (this.props.expandable) {
-                arrow = this.props.expanded ? (
-                    <Svg svgName="arrow-top-rounded" className={arrowClassName} />
-                ) : (
-                    <Svg svgName="arrow-bottom-rounded" className={arrowClassName} />
-                );
-            }
-            return (
-                <SideNavigationHeader {...this.props.header} onClick={() => this.handleClick()}>
-                    {arrow}
-                </SideNavigationHeader>
-            );
-        }
-        return <SideNavigationLoadingHeader />;
-    }
-}
+    return expandable ? (
+        <Collapsible
+            className="navigation-menu-section"
+            id={_.uniqueId('nav-section')}
+            headerContent={sectionHeader}
+            toggleIconClassName="fill-white transparency-3"
+            onToggleExpandedState={onClick}
+            expanded={!!expanded}
+        >
+            {items}
+        </Collapsible>
+    ) : (
+        <div className="navigation-menu-section">
+            {sectionHeader}
+            {items}
+        </div>
+    );
+};
