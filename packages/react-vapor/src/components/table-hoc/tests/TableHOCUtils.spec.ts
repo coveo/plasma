@@ -4,17 +4,16 @@ describe('TableHOCUtils', () => {
     const defaultProps = {
         id: 'some-id',
         componentId: 'some-componentId',
-        PREDICATE_SEPARATOR: '--',
         tableId: 'some-tableId',
     };
+
+    const PREDICATE_SEPARATOR = '--';
 
     describe('getPredicateId', () => {
         it('should get predicate id', () => {
             const predicateId = TableHOCUtils.getPredicateId(defaultProps.tableId, defaultProps.componentId);
 
-            expect(predicateId).toEqual(
-                defaultProps.tableId + defaultProps.PREDICATE_SEPARATOR + defaultProps.componentId
-            );
+            expect(predicateId).toEqual(defaultProps.tableId + PREDICATE_SEPARATOR + defaultProps.componentId);
         });
     });
 
