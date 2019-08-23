@@ -39,7 +39,7 @@ export interface ITableRowStateProps {
 
 export interface ITableRowDispatchProps {
     onMount: () => void;
-    onUnmount: () => void;
+    onUnmount: (isSelected: boolean) => void;
     handleClick: (isMulti: boolean, isOpened: boolean) => void;
     onUpdateToCollapsibleRow: () => void;
     onActionBarActionsChanged: () => void;
@@ -78,9 +78,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps): I
                 dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id, true));
             }
         },
-        onUnmount: () => {
-            dispatch(TableHOCRowActions.remove(ownProps.id));
-            dispatch(TableHOCRowActions.deselectAll(ownProps.tableId));
+        onUnmount: (isSelected?: boolean) => {
+            dispatch(TableHOCRowActions.remove(ownProps.id, ownProps.tableId, isSelected));
         },
         handleClick: (isMulti: boolean, isOpened: boolean) => {
             refreshActionBarActions(isMulti);
@@ -119,7 +118,7 @@ class TableRowConnected extends React.PureComponent<
     }
 
     componentWillUnmount() {
-        this.props.onUnmount();
+        this.props.onUnmount(this.props.selected);
     }
 
     render() {

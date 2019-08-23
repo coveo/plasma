@@ -140,4 +140,5 @@ export interface IReduxActionsPayload {
     disabledValues?: string[];
     isOpen?: boolean;
     isDirty?: boolean;
+    isSelected?: boolean;
 }

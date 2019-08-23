@@ -13,6 +13,7 @@ import {
     actionBarsReducer,
     IActionBarState,
 } from '../ActionBarReducers';
+import {TableHOCRowActions} from './../../table-hoc/actions/TableHOCRowActions';
 
 describe('Actions', () => {
     describe('actionBars', () => {
@@ -162,6 +163,24 @@ describe('Actions', () => {
                 expect(actionBarsState.filter((actionBar) => actionBar.id !== oldState[2].id)).toEqual(
                     oldState.filter((actionBar) => actionBar.id !== oldState[2].id)
                 );
+            });
+
+            it('should remove the actions when remove row action is dispatched and selected', () => {
+                const actionBarsState = actionBarsReducer(
+                    oldState,
+                    TableHOCRowActions.remove('fieldId', oldState[2].id, true)
+                );
+
+                expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual([]);
+            });
+
+            it('should not remove the actions when remove row action is dispatched and not selected', () => {
+                const actionBarsState = actionBarsReducer(
+                    oldState,
+                    TableHOCRowActions.remove('fieldId', oldState[2].id, false)
+                );
+
+                expect(_.findWhere(actionBarsState, {id: oldState[2].id}).actions).toEqual(oldState[2].actions);
             });
 
             it('should remove the actions when a change perPage action is dispatched and contain its id', () => {
