@@ -36,7 +36,6 @@ module.exports = {
                         tsConfigFile: './tsconfig.build.json',
                         emitErrors: isTravis,
                         failOnHint: isTravis,
-                        removeCR: true,
                     },
                 },
             },
