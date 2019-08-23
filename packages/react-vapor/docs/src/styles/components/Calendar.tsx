@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Calendar = () => (
     <VaporComponent key="calendar-date-picker" id="calendar-date-picker" title="Calendar & Date Picker" withSource>
@@ -12,20 +12,20 @@ const Calendar = () => (
                     <div className="calendar-header p2">
                         <div className="options-cycle text-medium-blue mod-inline">
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
                             </button>
                             <span className="options-cycle-option">January</span>
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
                             </button>
                         </div>
                         <div className="options-cycle text-medium-blue mod-inline">
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
                             </button>
                             <span className="options-cycle-option">2017</span>
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
                             </button>
                         </div>
                     </div>
@@ -188,7 +188,7 @@ const Calendar = () => (
                         <div className="date-picker flex">
                             <input value="2017-01-30 13:26:57:238" />
                             <button title="Set to now" className="date-button">
-                                <Svg name={VaporSVG.svg.setToNow.name} className="fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.setToNow.name} className="fill-medium-blue" />
                             </button>
                         </div>
                         <span className="date-separator mod-vertical">
@@ -197,7 +197,7 @@ const Calendar = () => (
                         <div className="date-picker flex">
                             <input value="2017-01-30 13:26:57:238" />
                             <button title="Set to now" className="date-button">
-                                <Svg name={VaporSVG.svg.setToNow.name} className="fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.setToNow.name} className="fill-medium-blue" />
                             </button>
                         </div>
                     </div>
@@ -215,20 +215,20 @@ const Calendar = () => (
                     <div className="calendar-header p2">
                         <div className="options-cycle text-medium-blue mod-inline">
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
                             </button>
                             <span className="options-cycle-option">January</span>
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
                             </button>
                         </div>
                         <div className="options-cycle text-medium-blue mod-inline">
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowLeftRounded.name} className="icon fill-medium-blue" />
                             </button>
                             <span className="options-cycle-option">2017</span>
                             <button className="options-cycle-button">
-                                <Svg name={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
+                                <Svg svgName={VaporSVG.svg.arrowRightRounded.name} className="icon fill-medium-blue" />
                             </button>
                         </div>
                     </div>
@@ -422,14 +422,14 @@ const Calendar = () => (
                                 <div className="options-cycle text-medium-blue mod-inline">
                                     <button className="options-cycle-button previous-option">
                                         <Svg
-                                            name={VaporSVG.svg.arrowLeftRounded.name}
+                                            svgName={VaporSVG.svg.arrowLeftRounded.name}
                                             className="icon fill-medium-blue"
                                         />
                                     </button>
                                     <span className="options-cycle-option">February</span>
                                     <button className="options-cycle-button next-option">
                                         <Svg
-                                            name={VaporSVG.svg.arrowRightRounded.name}
+                                            svgName={VaporSVG.svg.arrowRightRounded.name}
                                             className="icon fill-medium-blue"
                                         />
                                     </button>
@@ -437,14 +437,14 @@ const Calendar = () => (
                                 <div className="options-cycle text-medium-blue mod-inline">
                                     <button className="options-cycle-button previous-option">
                                         <Svg
-                                            name={VaporSVG.svg.arrowLeftRounded.name}
+                                            svgName={VaporSVG.svg.arrowLeftRounded.name}
                                             className="icon fill-medium-blue"
                                         />
                                     </button>
                                     <span className="options-cycle-option">2017</span>
                                     <button className="options-cycle-button next-option">
                                         <Svg
-                                            name={VaporSVG.svg.arrowRightRounded.name}
+                                            svgName={VaporSVG.svg.arrowRightRounded.name}
                                             className="icon fill-medium-blue"
                                         />
                                     </button>
@@ -611,7 +611,10 @@ const Calendar = () => (
                                         <input />
                                         <span title="" data-original-title="Set to now">
                                             <button className="date-button">
-                                                <Svg name={VaporSVG.svg.setToNow.name} className="fill-medium-blue" />
+                                                <Svg
+                                                    svgName={VaporSVG.svg.setToNow.name}
+                                                    className="fill-medium-blue"
+                                                />
                                             </button>
                                         </span>
                                     </div>
@@ -622,7 +625,10 @@ const Calendar = () => (
                                         <input />
                                         <span title="" data-original-title="Set to now">
                                             <button className="date-button">
-                                                <Svg name={VaporSVG.svg.setToNow.name} className="fill-medium-blue" />
+                                                <Svg
+                                                    svgName={VaporSVG.svg.setToNow.name}
+                                                    className="fill-medium-blue"
+                                                />
                                             </button>
                                         </span>
                                     </div>

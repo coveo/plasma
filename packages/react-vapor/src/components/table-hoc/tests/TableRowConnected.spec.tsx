@@ -86,16 +86,8 @@ describe('Table HOC', () => {
         });
 
         it('should dispatch an TableHOCRowActions.remove on componentWillUnmount', () => {
-            const expectedAction = TableHOCRowActions.remove(defaultProps.id);
-
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
-            wrapper.unmount();
-
-            expect(store.getActions()).toContain(expectedAction);
-        });
-
-        it('should dispatch an TableHOCRowActions.deselectAll on componentWillUnmount', () => {
-            const expectedAction = TableHOCRowActions.deselectAll(defaultProps.tableId);
+            const expectedAction = TableHOCRowActions.remove(defaultProps.id, defaultProps.tableId, true);
+            spyOn(TableSelectors, 'getTableRow').and.returnValue({selected: true, opened: false});
 
             const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
             wrapper.unmount();

@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Limit = () => (
     <VaporComponent key="limit" id="limit" title="Limit" usage="Visually show the usage of a limit" withSource>
@@ -33,7 +33,7 @@ const Limit = () => (
                     <div className="flex space-between">
                         <label className="form-control-label">Limit with History</label>
                         <span className="icon mod-lg limit-history-button">
-                            <Svg name={VaporSVG.svg.menuAnalytics.name} className="fill-medium-blue" />
+                            <Svg svgName={VaporSVG.svg.menuAnalytics.name} className="fill-medium-blue" />
                         </span>
                     </div>
                     <div className="limit-box-numbers pt1 flex">

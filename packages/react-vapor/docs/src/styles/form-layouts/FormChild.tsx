@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const FormChild = () => (
     <VaporComponent
@@ -59,7 +59,7 @@ export const FormChild = () => (
                             data-original-title="A simple inline help text."
                         >
                             <span className="inline-help-icon">
-                                <Svg name="info" />
+                                <Svg svgName="info" />
                             </span>
                         </span>
                     </label>

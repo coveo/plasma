@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const SyncFeedback = () => (
     <VaporComponent
@@ -19,14 +19,14 @@ export const SyncFeedback = () => (
 
         <div className="sync-feedback mod-success mt2">
             <span className="sync-feedback-icon">
-                <Svg name={VaporSVG.svg.check.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.check.name} className="icon" />
             </span>
             <span className="sync-feedback-text">Changes saved</span>
         </div>
 
         <div className="sync-feedback mod-error mt2">
             <span className="sync-feedback-icon">
-                <Svg name={VaporSVG.svg.close.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.close.name} className="icon" />
             </span>
             <span className="sync-feedback-text">Changes could not be saved.</span>
         </div>

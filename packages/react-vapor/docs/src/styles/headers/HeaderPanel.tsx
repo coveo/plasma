@@ -1,8 +1,8 @@
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const HeaderPanel = () => {
     const [isOpened, setOpened] = useState(false);
@@ -22,7 +22,7 @@ export const HeaderPanel = () => {
                 <div className="js-action-bar action-bar">
                     <div className="actions-row">
                         <a className="action mod-link" href="#" title="Edit">
-                            <Svg name="edit" className="icon mod-lg" />
+                            <Svg svgName="edit" className="icon mod-lg" />
                         </a>
                         <div
                             className="action"
@@ -32,7 +32,7 @@ export const HeaderPanel = () => {
                             data-unrepeatable=""
                         >
                             <div className="trigger" title="import * as React from 'react'; export">
-                                <Svg name="import * as React from 'react'; export" className="icon mod-lg" />
+                                <Svg svgName="import * as React from 'react'; export" className="icon mod-lg" />
                             </div>
                         </div>
 
@@ -42,7 +42,7 @@ export const HeaderPanel = () => {
                             onClick={toggleOpened}
                         >
                             <span className="dropdown-toggle" id="options" data-toggle="dropdown">
-                                <Svg name="more" className="icon mod-lg" />
+                                <Svg svgName="more" className="icon mod-lg" />
                             </span>
                             <ul className="dropdown-menu mod-right">
                                 <li>

@@ -1,6 +1,7 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 
-import ComponentCode from './ComponentCode';
+import Code from './Code';
 
 interface VaporComponentProps {
     id: string;
@@ -26,11 +27,15 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
         </header>
 
         <div className="sg-component-body">
-            <div className={`sg-component-display relative ${className || ''}`} style={style || {}}>
+            <div className={classNames('sg-component-display relative', className)} style={style || {}}>
                 {children}
             </div>
             <div className="clearfix mb4" />
-            {withSource && <ComponentCode>{children}</ComponentCode>}
+            {withSource && (
+                <div className="sg-component-source">
+                    <Code language="html">{children}</Code>
+                </div>
+            )}
         </div>
     </article>
 );

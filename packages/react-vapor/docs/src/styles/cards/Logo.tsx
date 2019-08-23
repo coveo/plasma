@@ -1,15 +1,15 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Logo = () => (
     <VaporComponent key="logo" id="logo" title="Logo" usage="Logo driven way of displaying information" withSource>
         <div className="logo-card">
             <div className="logo-card-logo">
                 <i className="icon mod-4x">
-                    <Svg name={VaporSVG.svg.sourceCustom.name} />
+                    <Svg svgName={VaporSVG.svg.sourceCustom.name} />
                 </i>
             </div>
             <div className="logo-card-content">
@@ -21,7 +21,7 @@ const Logo = () => (
         <div className="logo-card ribbon-container">
             <div className="logo-card-logo">
                 <i className="icon mod-4x">
-                    <Svg name={VaporSVG.svg.sourceCustom.name} />
+                    <Svg svgName={VaporSVG.svg.sourceCustom.name} />
                 </i>
             </div>
             <div className="logo-card-content">
@@ -38,7 +38,7 @@ const Logo = () => (
         <div className="logo-card ribbon-container disabled">
             <div className="logo-card-logo">
                 <i className="icon mod-4x">
-                    <Svg name={VaporSVG.svg.sourceCustom.name} />
+                    <Svg svgName={VaporSVG.svg.sourceCustom.name} />
                 </i>
             </div>
             <div className="logo-card-content">

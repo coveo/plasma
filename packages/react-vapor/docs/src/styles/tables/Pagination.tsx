@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function Pagination() {
     return (
@@ -38,7 +38,7 @@ export default function Pagination() {
                     <div className="flat-select">
                         <a className="flat-select-option mod-link disabled" data-page="-1">
                             <Svg
-                                name={VaporSVG.svg.arrowLeftRounded.name}
+                                svgName={VaporSVG.svg.arrowLeftRounded.name}
                                 svgClass="icon icon-small mod-lg"
                                 className="pagination-icon"
                             />
@@ -68,7 +68,7 @@ export default function Pagination() {
                         <a className="flat-select-option mod-link selectable" data-page="1">
                             Next
                             <Svg
-                                name={VaporSVG.svg.arrowRightRounded.name}
+                                svgName={VaporSVG.svg.arrowRightRounded.name}
                                 svgClass="icon icon-small mod-lg"
                                 className="pagination-icon"
                             />
@@ -103,7 +103,7 @@ export default function Pagination() {
                     <div className="flat-select">
                         <a className="flat-select-option mod-link disabled" data-page="-1">
                             <Svg
-                                name={VaporSVG.svg.arrowLeftRounded.name}
+                                svgName={VaporSVG.svg.arrowLeftRounded.name}
                                 svgClass="icon icon-small mod-lg"
                                 className="pagination-icon"
                             />
@@ -133,7 +133,7 @@ export default function Pagination() {
                         <a className="flat-select-option mod-link selectable" data-page="1">
                             Next
                             <Svg
-                                name={VaporSVG.svg.arrowRightRounded.name}
+                                svgName={VaporSVG.svg.arrowRightRounded.name}
                                 svgClass="icon icon-small mod-lg"
                                 className="pagination-icon"
                             />

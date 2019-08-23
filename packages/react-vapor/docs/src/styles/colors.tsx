@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Link} from 'react-router-dom';
 
-import VaporComponent from './demo-building-blocs/VaporComponent';
+import VaporComponent from '../demo-building-blocs/VaporComponent';
 
 const Colors = () => (
     <VaporComponent

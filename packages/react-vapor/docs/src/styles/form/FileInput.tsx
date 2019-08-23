@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function FileInput() {
     return (
@@ -14,7 +14,7 @@ export default function FileInput() {
                             <input className="file-path" required placeholder="Placeholder text" type="text" />
                             <label>File input</label>
                             <span className="hidden clear-file" title="Clear file">
-                                <Svg name={VaporSVG.svg.clear.name} className="icon fill-medium-grey" />
+                                <Svg svgName={VaporSVG.svg.clear.name} className="icon fill-medium-grey" />
                             </span>
                         </div>
                         <div className="btn">
@@ -36,7 +36,7 @@ export default function FileInput() {
                             />
                             <label>File input</label>
                             <span className="clear-file" title="Clear file">
-                                <Svg name={VaporSVG.svg.clear.name} className="icon fill-medium-grey" />
+                                <Svg svgName={VaporSVG.svg.clear.name} className="icon fill-medium-grey" />
                             </span>
                         </div>
                         <div className="btn">

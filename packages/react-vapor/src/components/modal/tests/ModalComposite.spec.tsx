@@ -2,7 +2,6 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as ReactModal from 'react-modal';
 
-import {Defaults} from '../../../Defaults';
 import {ModalBody} from '../ModalBody';
 import {ModalComposite} from '../ModalComposite';
 import {ModalFooter} from '../ModalFooter';
@@ -76,18 +75,12 @@ describe('ModalComposite', () => {
     });
 
     it('should call the closeCallback prop after the modal has closed', () => {
-        jasmine.clock().install();
         const closeCallbackSpy = jasmine.createSpy('closeCallback');
         const modalComposite = shallow(<ModalComposite closeCallback={closeCallbackSpy} />);
 
-        modalComposite.setProps({isOpened: true});
-        modalComposite.setProps({isOpened: false});
-        expect(closeCallbackSpy).not.toHaveBeenCalled();
-
-        jasmine.clock().tick(Defaults.MODAL_TIMEOUT);
+        modalComposite.prop('onAfterClose')();
 
         expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
-        jasmine.clock().uninstall();
     });
 
     it('should add a "layer-x" class to the modal overlay where x equals the layer prop value', () => {

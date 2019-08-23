@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function DragAndDrop() {
     return (
@@ -14,7 +14,7 @@ export default function DragAndDrop() {
                         <th className="admin-sort">
                             Column 1
                             <div className="admin-sort-icon">
-                                <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                             </div>
                         </th>
                         <th>Column 2</th>
@@ -25,7 +25,7 @@ export default function DragAndDrop() {
                             </label>
                             <span className="cell-content">Column 3</span>
                             <div className="admin-sort-icon">
-                                <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                             </div>
                         </th>
                     </tr>
@@ -33,7 +33,7 @@ export default function DragAndDrop() {
                 <tbody>
                     <tr draggable={false}>
                         <td className="handle drag-feedback">
-                            <Svg name={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
+                            <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
                         </td>
                         <td className="drag-feedback">Data 1</td>
                         <td className="drag-feedback">Data 1</td>
@@ -47,7 +47,7 @@ export default function DragAndDrop() {
                     </tr>
                     <tr className="selected" draggable={false}>
                         <td className="handle drag-feedback">
-                            <Svg name={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
+                            <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
                         </td>
                         <td className="drag-feedback">Data 2</td>
                         <td className="drag-feedback">Data 2</td>
@@ -61,7 +61,7 @@ export default function DragAndDrop() {
                     </tr>
                     <tr draggable={false}>
                         <td className="handle drag-feedback">
-                            <Svg name={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
+                            <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
                         </td>
                         <td className="drag-feedback">Data 3</td>
                         <td className="drag-feedback">Data 3</td>
@@ -75,7 +75,7 @@ export default function DragAndDrop() {
                     </tr>
                     <tr draggable={false}>
                         <td className="handle drag-feedback">
-                            <Svg name={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
+                            <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon icon-small" />
                         </td>
                         <td className="drag-feedback">Data 4</td>
                         <td className="drag-feedback">Data 4</td>
