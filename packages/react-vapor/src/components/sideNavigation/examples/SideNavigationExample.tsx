@@ -43,20 +43,12 @@ export class SideNavigationExample extends React.Component<any, any> {
                             onClick={() => this.click()}
                         >
                             <SideNavigationItem>
-                                <a
-                                    href="http://coveo.com"
-                                    title="Link to Coveo"
-                                    className="navigation-menu-section-item-link"
-                                >
+                                <a href="http://coveo.com" title="Link to Coveo">
                                     Link to Coveo
                                 </a>
                             </SideNavigationItem>
                             <SideNavigationItem>
-                                <a
-                                    href="http://coveo.com"
-                                    title="Link to Coveo"
-                                    className="navigation-menu-section-item-link"
-                                >
+                                <a href="http://coveo.com" title="Link to Coveo">
                                     Another link to Coveo
                                 </a>
                             </SideNavigationItem>

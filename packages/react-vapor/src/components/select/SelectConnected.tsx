@@ -13,7 +13,7 @@ import {Content} from '../content/Content';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IListBoxOwnProps} from '../listBox/ListBox';
+import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
@@ -70,8 +70,8 @@ const mapDispatchToProps = (
     onRender: () => dispatch(addSelect(ownProps.id)),
     onDestroy: () => dispatch(removeSelect(ownProps.id)),
     onToggleDropdown: () => dispatch(toggleSelect(ownProps.id)),
-    onSelectValue: (value: string, isMulti: boolean) => {
-        dispatch(selectListBoxOption(ownProps.id, isMulti, value));
+    onSelectValue: (value: string, isMulti: boolean, index?: number) => {
+        dispatch(selectListBoxOption(ownProps.id, isMulti, value, index));
     },
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
@@ -186,19 +186,22 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
         if (keyCode.escape === e.keyCode && this.props.isOpened) {
             this.onToggleDropdown(e);
         }
-
+        let realIndex = 0;
         if (_.contains([keyCode.enter, keyCode.tab], e.keyCode) && this.props.isOpened) {
-            const actives = _.chain(this.props.items)
+            const actives: IItemBoxPropsWithIndex[] = _.chain(this.props.items)
                 .filter(
                     (item: IItemBoxProps) =>
                         !item.hidden &&
                         (!this.props.multi || !_.contains(this.props.selectedValues, item.value)) &&
                         !item.disabled
                 )
+                .map((item: IItemBoxProps) => {
+                    return {...item, index: realIndex++};
+                })
                 .value();
             const active = actives[mod(this.props.active, actives.length)];
             if (active) {
-                this.props.onSelectValue(active.value, this.props.multi);
+                this.props.onSelectValue(active.value, this.props.multi, active.index);
             }
         } else if (_.contains([keyCode.enter, keyCode.downArrow, keyCode.upArrow], e.keyCode) && !this.props.isOpened) {
             this.onToggleDropdown(e);

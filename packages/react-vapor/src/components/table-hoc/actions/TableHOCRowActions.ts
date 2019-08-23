@@ -10,6 +10,7 @@ export const TableHOCRowActionsType = {
 
 export interface ITableRowAddPayload extends BasePayload {
     tableId: string;
+    isSelected?: boolean;
 }
 
 const addTableRow = (id: string, tableId: string): IReduxAction<ITableRowAddPayload> => ({
@@ -17,9 +18,9 @@ const addTableRow = (id: string, tableId: string): IReduxAction<ITableRowAddPayl
     payload: {id, tableId},
 });
 
-const removeTableRow = (id: string): IReduxAction<BasePayload> => ({
+const removeTableRow = (id: string, tableId?: string, isSelected?: boolean): IReduxAction<ITableRowAddPayload> => ({
     type: TableHOCRowActionsType.remove,
-    payload: {id},
+    payload: {id, tableId, isSelected},
 });
 
 export interface ITableRowSelectPayload extends BasePayload {

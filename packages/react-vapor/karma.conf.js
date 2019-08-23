@@ -46,8 +46,6 @@ module.exports = (config) => {
 
         autoWatch: true,
         singleRun: true,
-
-        browserNoActivityTimeout: 30000,
     };
 
     if (!skipCoverageProcessing) {
