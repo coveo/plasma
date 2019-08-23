@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Card = () => (
     <VaporComponent key="card" id="card" title="Card" usage="Utils to apply style on card or container" withSource>

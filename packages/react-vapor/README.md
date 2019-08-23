@@ -8,7 +8,7 @@
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-[Vapor's CSS components](https://github.com/coveo/vapor) implemented with React.
+[Coveo Administration Console](https://platform.cloud.coveo.com/admin/)'s design system.
 
 [Have a look at `react-vapor`'s demo page!](http://react-vapor.surge.sh/)
 

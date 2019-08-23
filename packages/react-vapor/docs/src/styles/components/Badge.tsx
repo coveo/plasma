@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Badge = () => (
     <VaporComponent key="badge" id="badge" title="Badge" usage="Use to indicate a special feature or status" withSource>

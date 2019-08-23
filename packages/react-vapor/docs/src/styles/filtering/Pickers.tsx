@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const Pickers = () => (
     <VaporComponent id="pickers" title="Pickers" usage="This is the standard multiple filter pickers control.">
@@ -45,13 +45,13 @@ export const Pickers = () => (
                                         <div className="filter-actions">
                                             <a className="btn add-filter">
                                                 <Svg
-                                                    name={VaporSVG.svg.filterAdd.name}
+                                                    svgName={VaporSVG.svg.filterAdd.name}
                                                     className="icon mod-lg icon-small"
                                                 />
                                             </a>
                                             <a className="btn clear-all-filters">
                                                 <Svg
-                                                    name={VaporSVG.svg.clear.name}
+                                                    svgName={VaporSVG.svg.clear.name}
                                                     className="icon mod-lg icon-small"
                                                 />
                                             </a>
@@ -61,7 +61,7 @@ export const Pickers = () => (
                             </div>
                             <div className="add-container">
                                 <div className="add right">
-                                    <Svg name={VaporSVG.svg.add.name} />
+                                    <Svg svgName={VaporSVG.svg.add.name} />
                                 </div>
                             </div>
                         </div>

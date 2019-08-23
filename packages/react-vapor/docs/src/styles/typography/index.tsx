@@ -13,7 +13,7 @@ const Typography: React.FunctionComponent<RouteComponentProps> = ({match}) => {
             <Route path={`${match.url}/headings`} component={Headings} />
             <Route path={`${match.url}/colors`} component={Colors} />
             <Route path={`${match.url}/utilities`} component={Utilities} />
-            <Route path={`${match.url}/list`} component={Lists} />
+            <Route path={`${match.url}/lists`} component={Lists} />
             <Route path={`${match.url}/line-height`} component={LineHeight} />
             <Route exact path={`${match.url}/`} component={() => <Redirect to={`${match.url}/headings`} />} />
         </>

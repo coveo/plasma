@@ -1,8 +1,8 @@
 import * as VaporSvg from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const FieldSearch = () => (
     <VaporComponent
@@ -16,7 +16,7 @@ export const FieldSearch = () => (
             <div className="search-bar" style={{width: 500}}>
                 <input type="text" className="search-bar-input" placeholder="Search awesome things" />
                 <div className="search-bar-icon-container">
-                    <Svg name={VaporSvg.svg.search.name} />
+                    <Svg svgName={VaporSvg.svg.search.name} />
                 </div>
             </div>
         </div>
@@ -30,7 +30,7 @@ export const FieldSearch = () => (
                     disabled
                 />
                 <div className="search-bar-icon-container">
-                    <Svg name={VaporSvg.svg.search.name} />
+                    <Svg svgName={VaporSvg.svg.search.name} />
                 </div>
             </div>
         </div>

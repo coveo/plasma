@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const MessageTooltip = () => (
     <VaporComponent id="tooltip" title="Tooltip" usage="Use to display a tooltip on any element." withSource>

@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Breadcrumbs = () => (
     <VaporComponent
@@ -19,7 +19,7 @@ const Breadcrumbs = () => (
                         Pichu
                     </a>
                     <span className="breadcrumb-arrow">
-                        <Svg name={VaporSVG.svg.arrowRightRounded.name} />
+                        <Svg svgName={VaporSVG.svg.arrowRightRounded.name} />
                     </span>
                 </li>
                 <li className="breadcrumb-title">
@@ -27,7 +27,7 @@ const Breadcrumbs = () => (
                         Pikachu
                     </a>
                     <span className="breadcrumb-arrow">
-                        <Svg name={VaporSVG.svg.arrowRightRounded.name} />
+                        <Svg svgName={VaporSVG.svg.arrowRightRounded.name} />
                     </span>
                 </li>
                 <li className="breadcrumb-title">
@@ -36,7 +36,7 @@ const Breadcrumbs = () => (
                             <span>Raichu</span>
                         </h1>
                         <span>
-                            <Svg name={VaporSVG.svg.help.name} className="fill-orange icon mod-20" />
+                            <Svg svgName={VaporSVG.svg.help.name} className="fill-orange icon mod-20" />
                         </span>
                     </div>
                 </li>

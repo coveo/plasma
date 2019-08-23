@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const Member = () => (
     <VaporComponent
@@ -14,7 +14,7 @@ export const Member = () => (
     >
         <div className="member bg-medium-grey p1">
             <div className="member-icon">
-                <Svg name={VaporSVG.svg.domainGoogle.name} className="member-icon-provider icon mod-2x" />
+                <Svg svgName={VaporSVG.svg.domainGoogle.name} className="member-icon-provider icon mod-2x" />
             </div>
             <div className="member-info">
                 <div className="member-info-name">Member name</div>

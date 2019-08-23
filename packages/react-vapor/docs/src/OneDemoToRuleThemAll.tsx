@@ -1,5 +1,7 @@
+import './demo-styling/main.scss';
+
 import * as React from 'react';
-import {HashRouter as Router, Link, Redirect, Route, Switch} from 'react-router-dom';
+import {HashRouter as Router, Link, Redirect, Route} from 'react-router-dom';
 
 import Components from './components';
 import Styles from './styles';
@@ -36,11 +38,9 @@ function Demo() {
         <Router>
             <Header />
             <div className="container flex-auto overflow-auto" style={{height: 'calc(100% - 65px)'}}>
-                <Switch>
-                    <Route path="/components" component={Components} />
-                    <Route path="/styles" component={Styles} />
-                    <Route exact path="/" component={() => <Redirect to="/components" />} />
-                </Switch>
+                <Route path="/components" component={Components} />
+                <Route path="/styles" component={Styles} />
+                <Route exact path="/" component={() => <Redirect to="/components" />} />
             </div>
         </Router>
     );

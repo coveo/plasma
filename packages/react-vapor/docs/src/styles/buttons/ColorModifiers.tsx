@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const ColorModifiers = () => (
     <VaporComponent
@@ -15,44 +15,44 @@ export const ColorModifiers = () => (
         <div className="mb1">
             <button type="button" className="btn">
                 Default
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
             <button type="button" className="btn" disabled>
                 Disabled
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
         </div>
 
         <div className="mb1">
             <button type="button" className="btn mod-primary">
                 mod-primary
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
             <button type="button" className="btn mod-primary" disabled>
                 mod-primary disabled
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
         </div>
 
         <div className="mb1">
             <button type="button" className="btn mod-danger">
                 mod-danger
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
             <button type="button" className="btn mod-danger" disabled>
                 mod-danger disabled
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
         </div>
 
         <div className="mb1">
             <button type="button" className="btn mod-link">
                 mod-link
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
             <button type="button" className="btn mod-link" disabled>
                 mod-link disabled
-                <Svg name={VaporSVG.svg.arrowRight.name} className="icon" />
+                <Svg svgName={VaporSVG.svg.arrowRight.name} className="icon" />
             </button>
         </div>
     </VaporComponent>

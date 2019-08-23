@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const fills = [
     'fill-light-grey',
@@ -25,7 +25,7 @@ export const IconFillers = () => {
         <VaporComponent id="fillers" title="Icon fillers" usage="Give custom colors to icons" withSource>
             <div className="sg-icons-fill">
                 {fills.map((fill) => (
-                    <Svg key={fill} name="plus" className={`icon mod-2x ${fill}`} />
+                    <Svg key={fill} svgName="plus" className={`icon mod-2x ${fill}`} />
                 ))}
             </div>
         </VaporComponent>

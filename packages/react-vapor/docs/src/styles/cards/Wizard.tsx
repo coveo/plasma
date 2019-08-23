@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Wizard = () => (
     <VaporComponent key="wizard" id="wizard" title="Wizard" usage="Use it with configuration wizards" withSource>

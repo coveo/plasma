@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import {Svg} from '../../../../src/components/svg/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function Loading() {
     return (
@@ -26,7 +26,7 @@ export default function Loading() {
                             <th className="admin-sort">
                                 Column 1
                                 <div className="admin-sort-icon">
-                                    <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                    <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                                 </div>
                             </th>
                             <th>Column 2</th>
@@ -37,7 +37,7 @@ export default function Loading() {
                                 </label>
                                 <span className="cell-content">Column 3</span>
                                 <div className="admin-sort-icon">
-                                    <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                    <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                                 </div>
                             </th>
                         </tr>
@@ -111,7 +111,7 @@ export default function Loading() {
                             <th className="admin-sort">
                                 Column 1
                                 <div className="admin-sort-icon">
-                                    <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                    <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                                 </div>
                             </th>
                             <th>Column 2</th>
@@ -122,7 +122,7 @@ export default function Loading() {
                                 </label>
                                 <span className="cell-content">Column 3</span>
                                 <div className="admin-sort-icon">
-                                    <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                    <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                                 </div>
                             </th>
                         </tr>
@@ -155,7 +155,7 @@ export default function Loading() {
                             <th className="admin-sort">
                                 Column 1
                                 <div className="admin-sort-icon">
-                                    <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                    <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                                 </div>
                             </th>
                             <th>Column 2</th>
@@ -166,7 +166,7 @@ export default function Loading() {
                                 </label>
                                 <span className="cell-content">Column 3</span>
                                 <div className="admin-sort-icon">
-                                    <Svg name={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
+                                    <Svg svgName={VaporSVG.svg.ascDesc.name} svgClass="tables-sort icon" />
                                 </div>
                             </th>
                         </tr>
