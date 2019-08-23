@@ -12,6 +12,7 @@ import {App} from './src/OneDemoToRuleThemAll';
 
 Defaults.APP_ELEMENT = '#App';
 Defaults.MODAL_ROOT = '#Modals';
+Defaults.DROP_ROOT = '#Drops';
 
 ReactDOM.render(
     <Provider store={ReactVaporStore}>

@@ -2,9 +2,9 @@ import * as React from 'react';
 import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
 import * as _ from 'underscore';
 
-import {ComponentCode} from './ComponentCode';
+import Code from '../demo-building-blocs/Code';
 import {IComponent} from './ComponentsInterface';
-import {ComponentsMenu} from './ComponentsMenu';
+import SideMenu from './Menu';
 
 const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     const req = require.context('../../../src/components/', true, /Examples?\.tsx?$/i);
@@ -27,7 +27,9 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
             component={() => (
                 <>
                     {React.createElement(component)}
-                    <ComponentCode>{code}</ComponentCode>
+                    <div className="mt2">
+                        <Code language="tsx">{code}</Code>
+                    </div>
                 </>
             )}
         />
@@ -35,8 +37,8 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
 
     return (
         <div className="coveo-form flex full-content">
-            <ComponentsMenu components={components} />
-            <div className="flex-auto mod-header-padding overflow-auto p2">
+            <SideMenu components={components} />
+            <div className="flex-auto mod-header-padding overflow-auto p2 relative">
                 <Switch>
                     {routes}
                     <Route path="/" component={() => <Redirect to={components[0].link} />} />

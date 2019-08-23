@@ -1,5 +1,3 @@
-import './demo-styling/main.scss';
-
 import * as React from 'react';
 import {Redirect, Route, RouteComponentProps} from 'react-router-dom';
 
@@ -13,8 +11,8 @@ import FormLayout from './form-layouts';
 import GeneralGuidelines from './general-guidelines';
 import Headers from './headers';
 import Icons from './icons';
+import SideMenu from './Menu';
 import Messages from './messages';
-import DemoNavigation from './Navigation';
 import Navigation from './navigation';
 import Tables from './tables';
 import Typography from './typography';
@@ -24,7 +22,7 @@ const Styles: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     return (
         <div className="flex full-content">
             <div className="flex flex-column navigation-wrapper navigation-wrapper-opened sg-navigation">
-                <DemoNavigation />
+                <SideMenu />
             </div>
 
             <div className="page-content application-container flex flex-column">

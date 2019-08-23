@@ -1,5 +1,5 @@
 import * as React from 'react';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 export default function Hover() {
     return (
         <VaporComponent id="hover" title="Hover" usage="Utility to apply hover on element." withSource>

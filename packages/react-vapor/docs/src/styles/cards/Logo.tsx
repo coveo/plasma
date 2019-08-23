@@ -1,8 +1,8 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../demo-building-blocs/Svg';
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import Svg from '../../demo-building-blocs/Svg';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 const Logo = () => (
     <VaporComponent key="logo" id="logo" title="Logo" usage="Logo driven way of displaying information" withSource>

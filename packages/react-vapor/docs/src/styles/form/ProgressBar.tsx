@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import * as React from 'react';
 
-import VaporComponent from '../demo-building-blocs/VaporComponent';
+import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function ProgressBar() {
     const [width, setWidth] = useState(40);
