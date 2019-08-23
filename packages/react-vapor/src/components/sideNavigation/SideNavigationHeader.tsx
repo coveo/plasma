@@ -1,7 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
 import {Svg} from '../svg/Svg';
 
+/**
+ * @deprecated Use SideNavigationHeaderProps instead
+ */
 export interface ISideNavigationHeaderProps {
     title: string;
     svgName?: string;
@@ -9,6 +13,9 @@ export interface ISideNavigationHeaderProps {
     onClick?: () => void;
 }
 
+/**
+ * @deprecated Will be removed in version 5
+ */
 export class SideNavigationHeader extends React.Component<ISideNavigationHeaderProps> {
     private handleClick() {
         if (this.props.onClick) {

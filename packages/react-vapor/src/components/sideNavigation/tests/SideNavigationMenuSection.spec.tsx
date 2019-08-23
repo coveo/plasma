@@ -1,68 +1,79 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
-import {SlideY} from '../../../animations/SlideY';
-import {SideNavigationHeader} from '../SideNavigationHeader';
-import {SideNavigationLoadingHeader} from '../SideNavigationLoadingHeader';
+
+import {Collapsible} from '../../collapsible/Collapsible';
 import {ISideNavigationSectionProps, SideNavigationMenuSection} from '../SideNavigationMenuSection';
 
-describe('<SideNavigationMenuSection />', () => {
-    it('should render without errors', () => {
-        expect(() => {
-            shallow(<SideNavigationMenuSection />);
-        }).not.toThrow();
-    });
-});
-
-describe('<SideNavigationMenuSection />', () => {
-    const title = 'qwerty';
-    let wrapper: ReactWrapper<ISideNavigationSectionProps, any>;
-
-    beforeEach(() => {
-        wrapper = mount(<SideNavigationMenuSection />, {attachTo: document.getElementById('App')});
-    });
+describe('SideNavigationMenuSection', () => {
+    let section: ShallowWrapper<ISideNavigationSectionProps>;
+    const header = {
+        title: 'title is comming from the header prop',
+        svgName: 'some-name',
+        svgClass: 'some-class',
+    };
 
     afterEach(() => {
-        wrapper.detach();
+        if (section && section.exists()) {
+            section.unmount();
+        }
     });
 
-    it('should render loading header when no header is specified.', () => {
-        const header = wrapper.find(SideNavigationLoadingHeader).first();
-
-        expect(header).toBeDefined();
+    it('should render and unmount without errors', () => {
+        expect(() => {
+            section = shallow(<SideNavigationMenuSection />);
+            section.unmount();
+        }).not.toThrow();
     });
 
-    it('should render normal header when header prop is specified.', () => {
-        wrapper.setProps({header: {title}});
-        wrapper.mount();
+    it('should setup the section header using the "header" prop', () => {
+        section = shallow(<SideNavigationMenuSection header={header} />);
+        expect(section.find('SideNavigationHeader').exists()).toBe(true);
 
-        const header = wrapper.find(SideNavigationHeader).first();
+        const sectionHeader = section.find('SideNavigationHeader');
+        expect(sectionHeader.children().contains(header.title)).toBe(true);
+        expect(sectionHeader.prop('svgName')).toBe(header.svgName);
+        expect(sectionHeader.prop('svgClass')).toBe(header.svgClass);
+    });
 
-        expect(header).toBeDefined();
+    it('should setup the section header directly using the props', () => {
+        section = shallow(<SideNavigationMenuSection {...header} />);
+        expect(section.find('SideNavigationHeader').exists()).toBe(true);
+
+        const sectionHeader = section.find('SideNavigationHeader');
+        expect(sectionHeader.children().contains(header.title)).toBe(true);
+        expect(sectionHeader.prop('svgName')).toBe(header.svgName);
+        expect(sectionHeader.prop('svgClass')).toBe(header.svgClass);
     });
 
     it('should hide children when expandable prop is true and expanded prop is false.', () => {
-        wrapper.setProps({header: {title}, expandable: true});
-        wrapper.mount();
+        section = shallow(<SideNavigationMenuSection {...header} expandable />);
 
-        expect(wrapper.find(SlideY).prop('in')).toBeDefined(false);
+        expect(section.find(Collapsible).prop('expanded')).toBe(false);
     });
 
     it('should not hide children when expandable prop is true and expanded prop is true.', () => {
-        wrapper.setProps({header: {title}, expandable: true, expanded: true});
-        wrapper.mount();
+        section = shallow(<SideNavigationMenuSection {...header} expandable expanded />);
 
-        expect(wrapper.find(SlideY).prop('in')).toBeDefined(true);
+        expect(section.find(Collapsible).prop('expanded')).toBe(true);
     });
 
-    it('should call onClick prop when header clicked and onClick prop is specified', () => {
+    it('should call onClick prop when clicking on the header', () => {
         const onClickSpy = jasmine.createSpy('click');
-        wrapper.setProps({header: {title}, onClick: onClickSpy});
-        wrapper.mount();
-        wrapper
-            .find(SideNavigationHeader)
-            .first()
-            .simulate('click');
+        section = shallow(<SideNavigationMenuSection {...header} onClick={onClickSpy} />);
+        section.find('SideNavigationHeader').prop('onClick')(null);
 
         expect(onClickSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('should render the navigation items inside the .navigation-menu-section-items class', () => {
+        section = shallow(
+            <SideNavigationMenuSection {...header}>
+                <div>Item 1</div>
+                <div>Item 2</div>
+                <div>Item 3</div>
+            </SideNavigationMenuSection>
+        );
+
+        expect(section.find('.navigation-menu-section-items').children().length).toBe(3);
     });
 });
