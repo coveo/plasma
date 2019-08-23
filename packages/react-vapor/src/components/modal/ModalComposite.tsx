@@ -52,13 +52,6 @@ export class ModalComposite extends React.PureComponent<
         closeTimeout: Defaults.MODAL_TIMEOUT,
     };
 
-    private timeoutId: number;
-
-    constructor(props: IModalCompositeProps) {
-        super(props);
-        this.onRequestClose = this.onRequestClose.bind(this);
-    }
-
     render() {
         const reactModalprops: Partial<ReactModal.Props> = _.omit(this.props, modalPropsToOmit);
         return (
@@ -81,6 +74,7 @@ export class ModalComposite extends React.PureComponent<
                 closeTimeoutMS={this.props.closeTimeout}
                 contentRef={this.props.contentRef}
                 parentSelector={this.getParent}
+                onAfterClose={this.props.closeCallback}
                 {...reactModalprops}
             >
                 <div className="modal-content" id={this.props.id}>
@@ -92,26 +86,15 @@ export class ModalComposite extends React.PureComponent<
         );
     }
 
-    componentDidUpdate(prevProps: IModalCompositeProps) {
-        // Workaround for https://github.com/reactjs/react-modal/issues/745
-        if (prevProps.isOpened && !this.props.isOpened) {
-            window.clearTimeout(this.timeoutId);
-            this.timeoutId = window.setTimeout(() => {
-                callIfDefined(this.props.closeCallback);
-            }, this.props.closeTimeout);
-        }
-    }
-
     componentDidMount() {
         callIfDefined(this.props.onRender);
     }
 
     componentWillUnmount() {
         callIfDefined(this.props.onDestroy);
-        window.clearTimeout(this.timeoutId);
     }
 
-    private onRequestClose(e: MouseEvent | KeyboardEvent) {
+    private onRequestClose = (e: React.MouseEvent | React.KeyboardEvent) => {
         e.preventDefault();
         e.stopPropagation();
 
@@ -122,7 +105,7 @@ export class ModalComposite extends React.PureComponent<
         } else {
             callIfDefined(this.props.onClose);
         }
-    }
+    };
 
     private getModalHeader() {
         const basicProps: IModalHeaderProps = {

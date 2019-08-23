@@ -57,7 +57,7 @@ class ComponentWithPreventNavigateExample extends React.PureComponent<IWithDirty
     }
 }
 
-export const ComponentWithPreventNavigationHOC = modalWithPreventNavigation({id: 'modal-composite-2'})(
+const ComponentWithPreventNavigationHOC = modalWithPreventNavigation({id: 'modal-composite-2'})(
     ComponentWithPreventNavigateExample
 );
 
