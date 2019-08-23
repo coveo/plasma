@@ -3,9 +3,9 @@ import {TableHOCUtils} from '../TableHOCUtils';
 describe('TableHOCUtils', () => {
     const defaultProps = {
         id: 'some-id',
-        tableId: 'some-tableId',
         componentId: 'some-componentId',
         PREDICATE_SEPARATOR: '--',
+        tableId: 'some-tableId',
     };
 
     describe('getPredicateId', () => {
