@@ -2,7 +2,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import {useState} from 'react';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const ValuePopup = () => {
@@ -24,7 +24,7 @@ export const ValuePopup = () => {
                             <div className="popover-navigation-section">
                                 <div className="back">
                                     <Svg
-                                        name={VaporSVG.svg.arrowLeftRounded.name}
+                                        svgName={VaporSVG.svg.arrowLeftRounded.name}
                                         className="icon arrow-left-rounded mod-lg"
                                     />
                                 </div>

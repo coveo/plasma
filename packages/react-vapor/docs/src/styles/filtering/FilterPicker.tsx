@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const FilterPicker = () => (
@@ -13,7 +13,7 @@ export const FilterPicker = () => (
                         <div className="filter-actions">
                             <a className="btn add-filter">
                                 <span>
-                                    <Svg name={VaporSVG.svg.filterAdd.name} className="icon mod-lg icon-small" />
+                                    <Svg svgName={VaporSVG.svg.filterAdd.name} className="icon mod-lg icon-small" />
                                 </span>
                             </a>
                         </div>
@@ -36,7 +36,7 @@ export const FilterPicker = () => (
                         <div className="filter-actions">
                             <a className="btn clear-all-filters">
                                 <span>
-                                    <Svg name={VaporSVG.svg.clear.name} className="icon mod-lg icon-small" />
+                                    <Svg svgName={VaporSVG.svg.clear.name} className="icon mod-lg icon-small" />
                                 </span>
                             </a>
                         </div>

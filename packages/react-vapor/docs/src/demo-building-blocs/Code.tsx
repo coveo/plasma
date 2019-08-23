@@ -6,7 +6,7 @@ import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
 // @ts-ignore
 import {prism as theme} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-export const ComponentCode: React.FunctionComponent<{language: string}> = ({language, children}) => {
+export const Code: React.FunctionComponent<{language: string}> = ({language, children}) => {
     let formattedCode: React.ReactNode = children;
     if (language === 'html') {
         const HTMLString = ReactDOMServer.renderToStaticMarkup(children as React.ReactElement);
@@ -30,4 +30,4 @@ export const ComponentCode: React.FunctionComponent<{language: string}> = ({lang
         </SyntaxHighlighter>
     );
 };
-export default ComponentCode;
+export default Code;

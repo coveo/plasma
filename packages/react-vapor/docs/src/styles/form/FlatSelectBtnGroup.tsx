@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function FlatSelectModifiers() {
@@ -19,11 +19,11 @@ export default function FlatSelectModifiers() {
                 <a className="flat-select-option">Option 2</a>
                 <a className="flat-select-option selectable">Option 3</a>
                 <a className="flat-select-option selectable">
-                    <Svg name={VaporSVG.svg.clear.name} className="icon-container" svgClass="icon" />
+                    <Svg svgName={VaporSVG.svg.clear.name} className="icon-container" svgClass="icon" />
                     Option 4
                 </a>
                 <a className="flat-select-option">
-                    <Svg name={VaporSVG.svg.clear.name} className="icon-container" svgClass="icon" />
+                    <Svg svgName={VaporSVG.svg.clear.name} className="icon-container" svgClass="icon" />
                     Option 5
                 </a>
             </div>

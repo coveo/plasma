@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const ListBox = () => (
@@ -24,14 +24,14 @@ export const ListBox = () => (
             </li>
             <li className="item-box">
                 <span className="inline-flex mr1">
-                    <Svg name={VaporSVG.svg.domainGoogle.name} className="icon" />
+                    <Svg svgName={VaporSVG.svg.domainGoogle.name} className="icon" />
                 </span>
                 Option 8
             </li>
             <li className="item-box">
                 Option 9
                 <span className="inline-flex ml1">
-                    <Svg name={VaporSVG.svg.domainGoogle.name} className="icon" />
+                    <Svg svgName={VaporSVG.svg.domainGoogle.name} className="icon" />
                 </span>
             </li>
             <li className="item-box disabled">Option 10 disabled</li>

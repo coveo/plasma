@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-import Svg from '../../demo-building-blocs/Svg';
+import {Svg} from '../../../../src/components/svg/Svg';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export const IconsList = () => {
@@ -22,7 +22,7 @@ function IconItem({svgName}: {svgName: string}) {
     return (
         <li>
             <div>
-                <Svg name={svgName} />
+                <Svg svgName={svgName} />
             </div>
             <label className="icon-name">{svgName}</label>
         </li>
