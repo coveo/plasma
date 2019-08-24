@@ -20,6 +20,8 @@ export interface ITableHOCCompositeState {
     dateLimits?: [Date, Date?];
 }
 
+const PREDICATE_SEPARATOR = '--';
+
 const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
     const tableSort: ITableWithSortState = _.find(
         state.tableHOCHeader,
@@ -50,7 +52,12 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
     };
 };
 
-const getPredicateId = (tableId: string, componentId: string) => tableId + componentId;
+const getTableIdFromPredicateId = (predicateId: string) => {
+    const [tableId] = predicateId.split(PREDICATE_SEPARATOR);
+    return tableId;
+};
+
+const getPredicateId = (tableId: string, componentId: string) => `${tableId}${PREDICATE_SEPARATOR}${componentId}`;
 
 const getPaginationId = (tableId: string) => `pagination-${tableId}`;
 
@@ -69,4 +76,5 @@ export const TableHOCUtils = {
     getCompositeState,
     getPredicateId,
     getPaginationId,
+    getTableIdFromPredicateId,
 };

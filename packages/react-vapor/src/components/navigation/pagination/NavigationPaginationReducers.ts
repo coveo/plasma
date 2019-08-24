@@ -3,7 +3,9 @@ import * as s from 'underscore.string';
 import {IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {FilterActions} from '../../filterBox/FilterBoxActions';
+import {ListBoxActions} from '../../listBox/ListBoxActions';
 import {TableActions} from '../../tables/TableActions';
+import {TableHOCUtils} from './../../table-hoc/TableHOCUtils';
 import {PaginationActions} from './NavigationPaginationActions';
 
 export interface IPaginationState {
@@ -37,6 +39,10 @@ export const paginationReducer = (
                 : state;
         case FilterActions.filterThrough:
             return s.contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
+        case ListBoxActions.select: {
+            const tableId = TableHOCUtils.getTableIdFromPredicateId(action.payload.id);
+            return tableId && s.contains(state.id, tableId) ? {...state, pageNb: 0} : state;
+        }
         default:
             return state;
     }
@@ -56,6 +62,7 @@ export const paginationCompositeReducer = (
         case PaginationActions.changePage:
         case PaginationActions.reset:
         case FilterActions.filterThrough:
+        case ListBoxActions.select:
         case TableActions.modifyState:
             return state.map((pagination: IPaginationState) => paginationReducer(pagination, action));
         default:
