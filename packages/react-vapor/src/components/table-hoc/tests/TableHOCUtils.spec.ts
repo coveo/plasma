@@ -7,6 +7,7 @@ describe('TableHOCUtils', () => {
     describe('getPredicateId', () => {
         it('should get predicate id', () => {
             const predicateId = TableHOCUtils.getPredicateId(defaultProps.tableId, defaultProps.componentId);
+
             expect(predicateId).toEqual(defaultProps.tableId + PREDICATE_SEPARATOR + defaultProps.componentId);
         });
     });
@@ -15,6 +16,7 @@ describe('TableHOCUtils', () => {
         it('should parse predicated id to table id', () => {
             const predicateId = TableHOCUtils.getPredicateId(defaultProps.tableId, defaultProps.componentId);
             const tableId = TableHOCUtils.getTableIdFromPredicateId(predicateId);
+
             expect(tableId).toEqual(defaultProps.tableId);
         });
     });
@@ -23,6 +25,7 @@ describe('TableHOCUtils', () => {
         it('should get pagination id', () => {
             const paginationId = TableHOCUtils.getPaginationId(defaultProps.tableId);
             const expectedResult = `pagination-${defaultProps.tableId}`;
+
             expect(paginationId).toEqual(expectedResult);
         });
     });
@@ -47,6 +50,7 @@ describe('TableHOCUtils', () => {
                 filter: 'some-text',
                 dateLimits: [null, null] as any,
             };
+
             expect(compositeState).toEqual(expectedResult);
         });
     });
