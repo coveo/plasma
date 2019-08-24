@@ -269,6 +269,7 @@ describe('Table HOC', () => {
 
             it('should render a collapsible row custom toggle when specified using the prop renderCustomToggleCell', () => {
                 const expectedToggle = <td>Opened</td>;
+
                 wrapper.setProps({
                     collapsible: {
                         content: collapsibleContent,
