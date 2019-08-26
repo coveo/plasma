@@ -24,13 +24,6 @@ figure {
 /**
  * Basic styling
  */
-body > div {
-    display: flex;
-    flex-flow: column nowrap;
-    height: 100%;
-    overflow: hidden;
-    background-color: $background-color;
-}
 
 .application-wrapper {
     height: 0;
