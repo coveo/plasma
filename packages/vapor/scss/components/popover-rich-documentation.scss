@@ -1,0 +1,46 @@
+.markdown-documentation {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: $medium-blue;
+    }
+
+    .split-layout {
+        .txt-section {
+            h1,
+            h2,
+            h3,
+            h4,
+            h5,
+            h6,
+            p,
+            blockquote,
+            pre,
+            hr,
+            dl,
+            dd,
+            ol,
+            ul,
+            figure {
+                padding-bottom: $default-line-height;
+            }
+        }
+
+        .column + .column {
+            border: none;
+        }
+
+        .media-section {
+            img {
+                width: 100%;
+            }
+        }
+    }
+
+    .feedback-section {
+        font-size: $help-text-font-size;
+    }
+}
