@@ -1,6 +1,8 @@
 import * as _ from 'underscore';
 import {IReduxAction} from '../../../../utils/ReduxUtils';
 import {filterThrough} from '../../../filterBox/FilterBoxActions';
+import {selectListBoxOption} from '../../../listBox/ListBoxActions';
+import {TableHOCUtils} from '../../../table-hoc/TableHOCUtils';
 import {modifyState} from '../../../tables/TableActions';
 import {
     IChangePaginationActionPayload,
@@ -204,6 +206,36 @@ describe('Reducers', () => {
             };
 
             const action = filterThrough(filterId, 'new filter value');
+            expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(oldState.pageNb);
+        });
+
+        it('should set the page number at 0 for the ListBox select action if the predicate table id is in the pagination id', () => {
+            const tableId = 'some-id';
+            const oldState: IPaginationState = {
+                id: `pagination-${tableId}`,
+                pageNb: 22,
+            };
+
+            const action = selectListBoxOption(
+                TableHOCUtils.getPredicateId(tableId, 'componentId'),
+                false,
+                'new predicate value'
+            );
+            expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(0);
+        });
+
+        it('should not set the page number at 0 for the ListBox select action if the predicate table id is not in the pagination id', () => {
+            const tableId = 'some-id';
+            const oldState: IPaginationState = {
+                id: `pagination-different-table-id`,
+                pageNb: 22,
+            };
+
+            const action = selectListBoxOption(
+                TableHOCUtils.getPredicateId(tableId, 'componentId'),
+                false,
+                'new predicate value'
+            );
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(oldState.pageNb);
         });
     });
