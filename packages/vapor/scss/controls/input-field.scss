@@ -7,6 +7,8 @@
     > input,
     > textarea,
     .input-wrapper > input {
+        position: relative;
+        z-index: 10;
         width: 100%;
         height: $input-height;
         padding: $input-padding;
@@ -61,8 +63,8 @@
         top: 10px;
         left: 0;
         display: flex; // Used for inline-help-tooltip placement
-
         box-sizing: content-box;
+        height: 100%;
         color: $medium-grey;
         font-size: $input-font-size;
         transition: $input-transition;
