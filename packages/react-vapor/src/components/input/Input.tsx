@@ -23,7 +23,7 @@ export interface IInputAdditionalOwnProps {
     classes?: IClassName;
     innerInputClasses?: IClassName;
     validate?: (value: any) => boolean;
-    labelTitle?: string;
+    labelTitle?: React.ReactNode;
     labelProps?: ILabelProps;
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
@@ -151,11 +151,15 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
-        return labelTitle || this.props.validate ? (
-            <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>
-                {labelTitle}
-            </Label>
-        ) : null;
+        if (labelTitle instanceof Tooltip) {
+            return <> {labelTitle} </>;
+        } else {
+            return labelTitle || this.props.validate ? (
+                <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>
+                    {labelTitle}
+                </Label>
+            ) : null;
+        }
     }
 
     render() {
