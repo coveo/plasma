@@ -27,7 +27,8 @@
 
             @include placeholder();
 
-            & + label {
+            & + label,
+            & + span {
                 @extend .active;
             }
 
@@ -54,18 +55,17 @@
     }
 
     > label,
-    .input-wrapper > label {
+    > span,
+    &.input-wrapper > label {
         position: absolute;
         top: 10px;
         left: 0;
         display: flex; // Used for inline-help-tooltip placement
 
         box-sizing: content-box;
-        height: 100%;
         color: $medium-grey;
         font-size: $input-font-size;
         transition: $input-transition;
-        pointer-events: none;
 
         &.active {
             top: -1 * $input-margin-top;
