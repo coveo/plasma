@@ -151,14 +151,14 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
 
     private getLabel(): JSX.Element {
         const {labelProps, labelTitle} = this.props;
-        if (labelTitle instanceof Tooltip) {
-            return <> {labelTitle} </>;
-        } else {
+        if (typeof labelTitle === 'string') {
             return labelTitle || this.props.validate ? (
                 <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>
                     {labelTitle}
                 </Label>
             ) : null;
+        } else {
+            return <> {labelTitle} </>;
         }
     }
 
