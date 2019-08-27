@@ -2,25 +2,24 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 export interface ILabelProps {
-    htmlFor?: string;
     type?: string;
     classes?: string[];
     validMessage?: string;
     invalidMessage?: string;
 }
 
-export class Label extends React.Component<ILabelProps, any> {
+export class Label extends React.Component<ILabelProps & React.HTMLAttributes<HTMLLabelElement>, any> {
     render() {
         const classes = classNames(this.props.classes);
-
+        const {validMessage, invalidMessage, children, ...attributes} = this.props;
         return (
             <label
                 className={classes}
-                data-valid-message={this.props.validMessage}
-                data-invalid-message={this.props.invalidMessage}
-                htmlFor={this.props.htmlFor}
+                data-valid-message={validMessage}
+                data-invalid-message={invalidMessage}
+                {...attributes}
             >
-                {this.props.children}
+                {children}
             </label>
         );
     }
