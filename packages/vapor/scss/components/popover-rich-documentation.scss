@@ -28,8 +28,10 @@
         }
     }
 
-    .column + .column {
-        border: none;
+    .split-layout {
+        .column + .column {
+            border: none;
+        }
     }
 
     .media-section {
