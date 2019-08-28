@@ -149,7 +149,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         }
     }
 
-    private getLabel(): JSX.Element {
+    private getLabel(): React.ReactNode {
         const {labelProps, labelTitle} = this.props;
         if (typeof labelTitle === 'string') {
             return labelTitle || this.props.validate ? (
@@ -158,7 +158,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 </Label>
             ) : null;
         } else {
-            return <> {labelTitle} </>;
+            return labelTitle;
         }
     }
 
