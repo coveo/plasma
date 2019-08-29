@@ -8,7 +8,7 @@ export interface ILabelProps {
     invalidMessage?: string;
 }
 
-export class Label extends React.Component<ILabelProps & React.HTMLAttributes<HTMLLabelElement>, any> {
+export class Label extends React.Component<ILabelProps & React.HTMLProps<HTMLLabelElement>, any> {
     render() {
         const classes = classNames(this.props.classes);
         const {validMessage, invalidMessage, children, ...attributes} = this.props;
