@@ -6,6 +6,7 @@ import {Store} from 'redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IActionOptions} from '../Action';
+import {ACTION_SEPARATOR} from '../ActionConstants';
 import {ActionsDropdownConnected} from '../ActionsDropdownConnected';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';
 import {ISecondaryActionsProps, SecondaryActions} from '../SecondaryActions';
@@ -20,10 +21,7 @@ describe('Actions', () => {
             target: '_blank',
             enabled: true,
         },
-        {
-            separator: true,
-            enabled: true,
-        },
+        ACTION_SEPARATOR,
         {
             name: 'action2',
             trigger: jasmine.createSpy('triggerMethod'),
