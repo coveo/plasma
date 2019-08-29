@@ -8,24 +8,22 @@
         color: $medium-blue;
     }
 
-    .txt-section {
-        h1,
-        h2,
-        h3,
-        h4,
-        h5,
-        h6,
-        p,
-        blockquote,
-        pre,
-        hr,
-        dl,
-        dd,
-        ol,
-        ul,
-        figure {
-            padding-bottom: $default-line-height;
-        }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p,
+    blockquote,
+    pre,
+    hr,
+    dl,
+    dd,
+    ol,
+    ul,
+    figure {
+        padding-bottom: $default-line-height;
     }
 
     .split-layout {
@@ -42,5 +40,23 @@
 
     .feedback-section {
         font-size: $help-text-font-size;
+
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6,
+        p,
+        blockquote,
+        pre,
+        hr,
+        dl,
+        dd,
+        ol,
+        ul,
+        figure {
+            padding-bottom: 0;
+        }
     }
 }
