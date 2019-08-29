@@ -94,7 +94,7 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/fillers" name="Icon fillers" />
             <NavigationLink href="/list" name="Icons" />
         </NavigationSection>
-        <NavigationSection title="Messages" baseUrl="/messages" svgName="ftList">
+        <NavigationSection title="Messages" baseUrl="/messages" svgName="noteYes">
             <NavigationLink href="/popover" name="Popover" />
             <NavigationLink href="/prompt" name="Prompt" />
             <NavigationLink href="/toast" name="Toast" />
