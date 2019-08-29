@@ -10,11 +10,19 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
     componentDidMount() {
         const actions: IActionOptions[] = [
             {
+                separator: true,
+                enabled: true,
+            },
+            {
                 name: 'Link to Coveo',
                 link: 'http://coveo.com',
                 target: '_blank',
                 icon: 'edit',
                 primary: true,
+                enabled: true,
+            },
+            {
+                separator: true,
                 enabled: true,
             },
             {
@@ -34,6 +42,10 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 enabled: true,
             },
             {
+                separator: true,
+                enabled: true,
+            },
+            {
                 name: 'Action 2',
                 trigger: () => alert('Action 2 was triggered'),
                 enabled: true,
@@ -44,6 +56,15 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                         cancel: 'Cancel',
                     },
                 },
+            },
+            {
+                name: 'Action 4',
+                trigger: () => alert('Action 4 was triggered'),
+                enabled: true,
+            },
+            {
+                separator: true,
+                enabled: true,
             },
             {
                 name: 'Link to Coveo (disabled)',
@@ -61,6 +82,10 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 primary: true,
                 enabled: false,
                 hideDisabled: false,
+            },
+            {
+                separator: true,
+                enabled: true,
             },
         ];
         setTimeout(() => {

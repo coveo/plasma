@@ -26,36 +26,52 @@ export const MORE_LABEL: string = 'More';
 export class ActionsDropdown extends React.Component<IActionsDropdownProps, any> {
     render() {
         const moreLabel: string = this.props.moreLabel || MORE_LABEL;
-        const actions: JSX.Element[] = _.map(
-            this.props.actions,
-            (action: IActionOptions, index: number): JSX.Element => {
-                const actionKey: string = 'action-' + index;
-                if (action.separator) {
-                    return <li className="divider" key={actionKey}></li>;
-                }
 
-                if (action.link) {
+        let lastFilteredAction: IActionOptions = null;
+        const actions: JSX.Element[] = _.chain(this.props.actions)
+            .filter((action: IActionOptions) => action.separator || action.enabled || action.hideDisabled === false)
+            // Filter out all separator that are preceded by another separator
+            .filter((action: IActionOptions) => {
+                if (!action.separator || (action.separator && lastFilteredAction && !lastFilteredAction.separator)) {
+                    lastFilteredAction = action;
+                    return true;
+                }
+                return false;
+            })
+            // Filter out the last action if it's a separator
+            .filter((action: IActionOptions, index: number, filteredActions: IActionOptions[]) => {
+                return index < filteredActions.length - 1 || !action.separator;
+            })
+            .map(
+                (action: IActionOptions, index: number): JSX.Element => {
+                    const actionKey: string = 'action-' + index;
+                    if (action.separator) {
+                        return <li className="divider" key={actionKey}></li>;
+                    }
+
+                    if (action.link) {
+                        return (
+                            <li key={actionKey}>
+                                <LinkAction action={action} simple={true} />
+                            </li>
+                        );
+                    }
+
+                    if (this.props.withReduxState) {
+                        return (
+                            <li key={actionKey}>
+                                <TriggerActionConnected action={action} simple={true} parentId={this.props.id} />
+                            </li>
+                        );
+                    }
                     return (
                         <li key={actionKey}>
-                            <LinkAction action={action} simple={true} />
+                            <TriggerAction action={action} simple={true} />
                         </li>
                     );
                 }
-
-                if (this.props.withReduxState) {
-                    return (
-                        <li key={actionKey}>
-                            <TriggerActionConnected action={action} simple={true} parentId={this.props.id} />
-                        </li>
-                    );
-                }
-                return (
-                    <li key={actionKey}>
-                        <TriggerAction action={action} simple={true} />
-                    </li>
-                );
-            }
-        );
+            )
+            .value();
         const toggleContent: JSX.Element[] = [
             <Svg
                 key="action-dropdown-toggle-icon"

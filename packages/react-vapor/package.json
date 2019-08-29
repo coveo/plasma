@@ -29,7 +29,7 @@
         "pretest": "gulp clean:tests",
         "test": "karma start",
         "test:compile": "webpack --display-error-details --config webpack.config.test.js",
-        "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run",
+        "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run --auto-watch",
         "test:browser": "karma start --browsers Chrome --no-single-run",
         "posttest": "npm run coverage",
         "coverage": "npm run coverage:remap && npm run coverage:report",
