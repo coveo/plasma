@@ -31,7 +31,7 @@ export const MessagePopover = () => (
                 <div className="coveo-child shadow-4 p0 mod-width-70">
                     <div className="py3 px5 markdown-documentation">
                         <div className="split-layout">
-                            <div className="txt-section column p2 h3">
+                            <div className="column p2 h3">
                                 <h1>Rich Popover Title</h1>
                                 <p>
                                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
@@ -64,7 +64,7 @@ export const MessagePopover = () => (
                                     <path d="M316.27 195.73c-6.246-6.249-18.44-4.185-27.236 4.611l-31.85 31.85c-.468.467-.906.949-1.334 1.434a29.503 29.503 0 0 0-2.649-3.055l-30.712-30.711c-8.481-8.481-20.421-10.291-26.67-4.042-6.248 6.248-4.439 18.188 4.042 26.669l30.712 30.711c2.865 2.866 6.126 4.957 9.429 6.246v62.173c0 7.944 7.164 14.384 16 14.384 8.837 0 16-6.439 16-14.384v-61.14c2.729-1.363 5.397-3.248 7.812-5.66l31.848-31.848c8.793-8.794 10.856-20.989 4.608-27.238z"></path>
                                 </svg>
                             </span>
-                            <div className="feedback-txt">
+                            <div>
                                 <h3>We love to get your feedbacks!</h3>
                                 <p>
                                     Don't wait to send us your{' '}
