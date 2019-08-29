@@ -5,9 +5,7 @@ import {Dropdown} from '../dropdown/Dropdown';
 import {DropdownConnected} from '../dropdown/DropdownConnected';
 import {Svg} from '../svg/Svg';
 import {IActionOptions} from './Action';
-import {LinkAction} from './LinkAction';
-import {TriggerAction} from './TriggerAction';
-import {TriggerActionConnected} from './TriggerActionConnected';
+import {ActionDropdownItem} from './ActionDropdownItem';
 
 export interface IActionsDropdownOwnProps extends React.ClassAttributes<ActionsDropdown> {
     actions: IActionOptions[];
@@ -42,35 +40,14 @@ export class ActionsDropdown extends React.Component<IActionsDropdownProps, any>
             .filter((action: IActionOptions, index: number, filteredActions: IActionOptions[]) => {
                 return index < filteredActions.length - 1 || !action.separator;
             })
-            .map(
-                (action: IActionOptions, index: number): JSX.Element => {
-                    const actionKey: string = 'action-' + index;
-                    if (action.separator) {
-                        return <li className="divider" key={actionKey}></li>;
-                    }
-
-                    if (action.link) {
-                        return (
-                            <li key={actionKey}>
-                                <LinkAction action={action} simple={true} />
-                            </li>
-                        );
-                    }
-
-                    if (this.props.withReduxState) {
-                        return (
-                            <li key={actionKey}>
-                                <TriggerActionConnected action={action} simple={true} parentId={this.props.id} />
-                            </li>
-                        );
-                    }
-                    return (
-                        <li key={actionKey}>
-                            <TriggerAction action={action} simple={true} />
-                        </li>
-                    );
-                }
-            )
+            .map((action: IActionOptions, index: number) => (
+                <ActionDropdownItem
+                    key={`action-${action.id || index}`}
+                    action={action}
+                    parentId={this.props.id}
+                    withReduxState={this.props.withReduxState}
+                />
+            ))
             .value();
         const toggleContent: JSX.Element[] = [
             <Svg

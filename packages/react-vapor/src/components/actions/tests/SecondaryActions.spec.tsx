@@ -2,6 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {IActionOptions} from '../Action';
+import {ACTION_SEPARATOR} from '../ActionConstants';
 import {ISecondaryActionsProps, SecondaryActions} from '../SecondaryActions';
 
 describe('Actions', () => {
@@ -12,10 +13,7 @@ describe('Actions', () => {
             target: '_blank',
             enabled: true,
         },
-        {
-            separator: true,
-            enabled: true,
-        },
+        ACTION_SEPARATOR,
         {
             name: 'action2',
             trigger: jasmine.createSpy('triggerMethod'),

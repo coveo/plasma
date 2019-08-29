@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {IActionOptions} from '../Action';
 import {ActionBar} from '../ActionBar';
+import {ACTION_SEPARATOR} from '../ActionConstants';
 
 export class ActionBarExamples extends React.Component<any, any> {
     render() {
@@ -18,10 +19,7 @@ export class ActionBarExamples extends React.Component<any, any> {
                 trigger: () => alert('Action 1 was triggered'),
                 enabled: true,
             },
-            {
-                separator: true,
-                enabled: true,
-            },
+            ACTION_SEPARATOR,
             {
                 name: 'action2',
                 trigger: () => alert('Action 2 was triggered'),

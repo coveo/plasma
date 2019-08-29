@@ -7,6 +7,7 @@ import * as _ from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {triggerAlertFunction} from '../../../utils/tests/TestUtils';
+import {ACTION_SEPARATOR} from '../../actions/ActionConstants';
 import {Breadcrumb} from '../../breadcrumbs/Breadcrumb';
 import {Button} from '../../button/Button';
 import {Checkbox} from '../../checkbox/Checkbox';
@@ -629,10 +630,7 @@ export class TableExamples extends React.Component<any, any> {
                                 enabled: true,
                                 callOnDoubleClick: true,
                             },
-                            {
-                                separator: true,
-                                enabled: true,
-                            },
+                            ACTION_SEPARATOR,
                             {
                                 name: 'action3',
                                 trigger: () => alert('another action'),

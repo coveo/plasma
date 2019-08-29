@@ -3,16 +3,14 @@ import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IActionOptions} from '../Action';
 import {addActionsToActionBar} from '../ActionBarActions';
 import {ActionBarConnected} from '../ActionBarConnected';
+import {ACTION_SEPARATOR} from '../ActionConstants';
 
 const actionBarId = 'action-bar-connected';
 
 export class ActionBarConnectedExamples extends React.Component<any, any> {
     componentDidMount() {
         const actions: IActionOptions[] = [
-            {
-                separator: true,
-                enabled: true,
-            },
+            ACTION_SEPARATOR,
             {
                 name: 'Link to Coveo',
                 link: 'http://coveo.com',
@@ -21,10 +19,7 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 primary: true,
                 enabled: true,
             },
-            {
-                separator: true,
-                enabled: true,
-            },
+            ACTION_SEPARATOR,
             {
                 name: 'Action 1',
                 trigger: () => alert('Action 1 was triggered'),
@@ -37,14 +32,8 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                     },
                 },
             },
-            {
-                separator: true,
-                enabled: true,
-            },
-            {
-                separator: true,
-                enabled: true,
-            },
+            ACTION_SEPARATOR,
+            ACTION_SEPARATOR,
             {
                 name: 'Action 2',
                 trigger: () => alert('Action 2 was triggered'),
@@ -62,10 +51,7 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 trigger: () => alert('Action 4 was triggered'),
                 enabled: true,
             },
-            {
-                separator: true,
-                enabled: true,
-            },
+            ACTION_SEPARATOR,
             {
                 name: 'Link to Coveo (disabled)',
                 link: 'http://coveo.com',
@@ -83,10 +69,7 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 enabled: false,
                 hideDisabled: false,
             },
-            {
-                separator: true,
-                enabled: true,
-            },
+            ACTION_SEPARATOR,
         ];
         setTimeout(() => {
             ReactVaporStore.dispatch(addActionsToActionBar(actionBarId, actions));
