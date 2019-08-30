@@ -17,7 +17,7 @@ import {
 } from '../DatePickerDropdown';
 import {IDatePickerState} from '../DatePickerReducers';
 
-describe('Date picker', () => {
+fdescribe('Date picker', () => {
     const DATE_PICKER_DROPDOWN_BASIC_PROPS: IDatePickerDropdownProps = {
         datesSelectionBoxes: [
             {
@@ -104,14 +104,27 @@ describe('Date picker', () => {
             expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
         });
 
-        it('should only display an input if it has the readonly prop', () => {
+        it('should disable the dropdown button when readonly props is truthy', () => {
             datePickerDropdown.setProps({
                 ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
                 readonly: true,
             });
+            const expectedElement = (
+                <button className="dropdown-toggle btn inline-flex flex-center dropdown-toggle-placeholder" disabled>
+                    <span className="dropdown-selected-value">
+                        <label>Select date</label>
+                    </span>
+                    <span className="dropdown-toggle-arrow"></span>
+                </button>
+            );
 
-            expect(datePickerDropdown.find('.date-picker-dropdown').length).toBe(0);
-            expect(datePickerDropdown.find('Input').length).toBe(1);
+            expect(datePickerDropdownInstance.props.readonly).toBeTruthy();
+            expect(
+                datePickerDropdown
+                    .children()
+                    .find('button.dropdown-toggle')
+                    .matchesElement(expectedElement)
+            ).toBeTruthy();
         });
 
         it('should have the class "open" if the isOpened prop is set to true', () => {
@@ -345,16 +358,6 @@ describe('Date picker', () => {
             datePickerDropdownInstance['handleClick'].call(datePickerDropdownInstance);
 
             expect(onClickSpy).toHaveBeenCalled();
-        });
-
-        it('should not set a click listener to handleDocumentClick if it has the readonly prop', () => {
-            const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
-
-            datePickerDropdown = mount(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} readonly />, {
-                attachTo: document.getElementById('App'),
-            });
-
-            expect(addEventListenerSpy).not.toHaveBeenCalled();
         });
 
         it('should set a click listener to handleDocumentClick if it does not have the readonly prop', () => {

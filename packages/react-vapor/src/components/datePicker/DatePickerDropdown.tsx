@@ -150,16 +150,16 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                    <span className={toggleClasses} onClick={() => !disabled && this.handleClick()}>
-                        <span className={!disabled ? 'dropdown-selected-value' : 'text-medium-grey'}>
+                    <button className={toggleClasses} onClick={() => this.handleClick()} disabled={disabled}>
+                        <span className="dropdown-selected-value">
                             <label>
                                 {label}
                                 {toLabel}
                                 {labelSecondPart}
                             </label>
                         </span>
-                        {!disabled && <span className="dropdown-toggle-arrow"></span>}
-                    </span>
+                        <span className="dropdown-toggle-arrow"></span>
+                    </button>
                     <div className={menuClasses}>{this.getDatePickerBox()}</div>
                 </div>
             </div>
