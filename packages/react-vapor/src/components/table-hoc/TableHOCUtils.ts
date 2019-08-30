@@ -52,10 +52,11 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
     };
 };
 
-const getTableIdFromPredicateId = (predicateId: string) => {
-    const [tableId] = predicateId.split(PREDICATE_SEPARATOR);
-    return tableId;
-};
+/** e.g. tableId--componentId => tableId */
+const getTableIdFromPredicateId = (predicateId: string) => predicateId.split(PREDICATE_SEPARATOR)[0];
+
+/** e.g. tableId--componentId => componentId */
+const getComponentIdFromPredicateId = (predicateId: string) => predicateId.split(PREDICATE_SEPARATOR)[1];
 
 const getPredicateId = (tableId: string, componentId: string) => `${tableId}${PREDICATE_SEPARATOR}${componentId}`;
 
@@ -68,7 +69,7 @@ const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOC
             return startWithIdRegexp.test(list.id);
         })
         .filter((list: IListBoxState) => list.selected && list.selected[0] !== '')
-        .map((list: IListBoxState) => ({id: list.id.replace(tableId, ''), value: list.selected[0]}))
+        .map((list: IListBoxState) => ({id: getComponentIdFromPredicateId(list.id), value: list.selected[0]}))
         .value();
 };
 
