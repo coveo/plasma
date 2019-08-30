@@ -92,7 +92,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
     private dropdown: HTMLDivElement;
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }
@@ -116,7 +116,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         let label: string = this.props.label;
         let toLabel: JSX.Element = null;
         let labelSecondPart: string = '';
-        const disabled = this.props.readonly;
+        const disabled: boolean = this.props.readonly;
 
         if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
             label = this.formatDate(this.props.datePicker.appliedLowerLimit);
@@ -146,11 +146,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
             }
         );
-
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                    <button className={toggleClasses} onClick={() => this.handleClick()} disabled={disabled}>
+                    <button className={toggleClasses} onClick={() => this.handleClick(disabled)} disabled={disabled}>
                         <span className="dropdown-selected-value">
                             <label>
                                 {label}
@@ -166,8 +165,8 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         );
     }
 
-    private handleClick = () => {
-        if (this.props.onClick) {
+    private handleClick = (disabled: boolean) => {
+        if (this.props.onClick && !disabled) {
             this.props.onClick(this.props.datePicker);
         }
     };

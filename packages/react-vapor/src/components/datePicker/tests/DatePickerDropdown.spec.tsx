@@ -360,6 +360,15 @@ fdescribe('Date picker', () => {
             expect(onClickSpy).toHaveBeenCalled();
         });
 
+        xit('should not set a click listener to handleDocumentClick if it has the readonly prop', () => {
+            const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
+
+            datePickerDropdown = mount(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} readonly />, {
+                attachTo: document.getElementById('App'),
+            });
+            expect(addEventListenerSpy).not.toHaveBeenCalledWith('click', jasmine.anything());
+        });
+
         it('should set a click listener to handleDocumentClick if it does not have the readonly prop', () => {
             const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
 
@@ -438,7 +447,7 @@ fdescribe('Date picker', () => {
                 onRender: onRenderSpy,
             });
 
-            expect(() => datePickerDropdownInstance.componentWillMount()).not.toThrow();
+            expect(() => datePickerDropdownInstance.componentDidMount()).not.toThrow();
 
             datePickerDropdown.unmount();
             datePickerDropdown.setProps(onRenderProps);

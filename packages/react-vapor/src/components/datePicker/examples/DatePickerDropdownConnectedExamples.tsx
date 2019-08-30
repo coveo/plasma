@@ -39,7 +39,7 @@ export class DatePickerDropdownConnectedExamples extends React.Component<any, an
                         id="date-picker-dropdown"
                         datesSelectionBoxes={SELECTION_BOXES}
                         selectionRules={CALENDAR_SELECTION_RULES}
-                        readonly={true}
+                        readonly
                     />
                 </div>
                 <div className="form-group">
