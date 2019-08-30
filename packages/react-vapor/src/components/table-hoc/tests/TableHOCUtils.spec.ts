@@ -2,13 +2,12 @@ import {TableHOCUtils} from '../TableHOCUtils';
 
 describe('TableHOCUtils', () => {
     const defaultProps = {id: 'some-id', componentId: 'some-componentId', tableId: 'some-tableId'};
-    const PREDICATE_SEPARATOR = '--';
 
     describe('getPredicateId', () => {
         it('should get predicate id', () => {
             const predicateId = TableHOCUtils.getPredicateId(defaultProps.tableId, defaultProps.componentId);
 
-            expect(predicateId).toEqual(defaultProps.tableId + PREDICATE_SEPARATOR + defaultProps.componentId);
+            expect(predicateId).toEqual(defaultProps.tableId + '--' + defaultProps.componentId);
         });
     });
 
@@ -31,18 +30,20 @@ describe('TableHOCUtils', () => {
     });
 
     describe('getCompositeState', () => {
+        const predicateId = TableHOCUtils.getPredicateId(defaultProps.tableId, defaultProps.componentId);
+        const predicateValue = 'LONG_64';
         const defaultState: any = {
             tableHOCHeader: [{id: defaultProps.id, tableId: defaultProps.tableId, isAsc: true}],
             paginationComposite: [{id: `pagination-${defaultProps.tableId}`, pageNb: 2}],
             perPageComposite: [{id: defaultProps.tableId, perPage: 10}],
             filters: [{id: defaultProps.tableId, filterText: 'some-text'}],
-            listBoxes: [{id: defaultProps.tableId}],
+            listBoxes: [{id: predicateId, selected: [predicateValue]}],
         };
 
         it('should return composite state', () => {
             const compositeState = TableHOCUtils.getCompositeState(defaultProps.tableId, defaultState);
             const expectedResult = {
-                predicates: [] as any,
+                predicates: [{id: defaultProps.componentId, value: predicateValue}],
                 sortKey: defaultProps.id,
                 sortAscending: true,
                 perPage: 10,
