@@ -17,7 +17,7 @@ import {
 } from '../DatePickerDropdown';
 import {IDatePickerState} from '../DatePickerReducers';
 
-fdescribe('Date picker', () => {
+describe('Date picker', () => {
     const DATE_PICKER_DROPDOWN_BASIC_PROPS: IDatePickerDropdownProps = {
         datesSelectionBoxes: [
             {
