@@ -6,7 +6,7 @@ import {getReactNodeTextContent} from './JSXUtils';
 export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
 
 export const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-    const escapedFilterValue = escapeRegExp(filterValue);
+    const escapedFilterValue = escapeRegExp(filterValue || '');
     if (escapedFilterValue === '') {
         return true;
     }
