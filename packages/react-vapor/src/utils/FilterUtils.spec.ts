@@ -11,6 +11,12 @@ describe('FilterUtils', () => {
             expect(defaultMatchFilter('', defaultItemBox)).toBe(true);
         });
 
+        it('should not throw for falsy values', () => {
+            expect(() => defaultMatchFilter(null, defaultItemBox)).not.toThrow();
+            expect(() => defaultMatchFilter(undefined, defaultItemBox)).not.toThrow();
+            expect(() => defaultMatchFilter('', defaultItemBox)).not.toThrow();
+        });
+
         it('should not throw errors when the filterValue contains special characters', () => {
             expect(() => {
                 defaultMatchFilter('(', defaultItemBox);
