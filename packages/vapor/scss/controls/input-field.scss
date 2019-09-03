@@ -8,7 +8,7 @@
     > textarea,
     .input-wrapper > input {
         position: relative;
-        z-index: 10;
+        z-index: 1;
         width: 100%;
         height: $input-height;
         padding: $input-padding;
@@ -37,7 +37,8 @@
             &:focus:not([readonly]) {
                 border-bottom-color: $azure;
 
-                & + label {
+                & + label,
+                & + span {
                     color: $azure;
                 }
             }
@@ -58,10 +59,12 @@
 
     > label,
     > span,
-    &.input-wrapper > label {
+    &.input-wrapper > label,
+    &.input-wrapper > span {
         position: absolute;
         top: 10px;
         left: 0;
+        z-index: 0;
         display: flex; // Used for inline-help-tooltip placement
         box-sizing: content-box;
         height: 100%;
