@@ -23,7 +23,7 @@ export interface IInputAdditionalOwnProps {
     classes?: IClassName;
     innerInputClasses?: IClassName;
     validate?: (value: any) => boolean;
-    labelTitle?: string;
+    labelTitle?: React.ReactNode;
     labelProps?: ILabelProps;
     validateOnChange?: boolean;
     disabledOnMount?: boolean;
@@ -149,13 +149,17 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         }
     }
 
-    private getLabel(): JSX.Element {
+    private getLabel(): React.ReactNode {
         const {labelProps, labelTitle} = this.props;
-        return labelTitle || this.props.validate ? (
-            <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>
-                {labelTitle}
-            </Label>
-        ) : null;
+        if (typeof labelTitle === 'string') {
+            return labelTitle || this.props.validate ? (
+                <Label key={this.props.id + 'label'} htmlFor={this.props.id} {...labelProps}>
+                    {labelTitle}
+                </Label>
+            ) : null;
+        } else {
+            return labelTitle;
+        }
     }
 
     render() {
