@@ -12,7 +12,6 @@ import {
     DEFAULT_APPLY_DATE_LABEL,
     DEFAULT_CANCEL_DATE_LABEL,
     DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
-    DEFAULT_TO_LABEL,
     IDatePickerDropdownProps,
 } from '../DatePickerDropdown';
 import {IDatePickerState} from '../DatePickerReducers';
