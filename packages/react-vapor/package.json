@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "4.4.2",
+    "version": "4.5.3",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -29,7 +29,7 @@
         "pretest": "gulp clean:tests",
         "test": "karma start",
         "test:compile": "webpack --display-error-details --config webpack.config.test.js",
-        "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run",
+        "test:watch": "node --max-old-space-size=2048 node_modules/karma/bin/karma start --no-single-run --auto-watch",
         "test:browser": "karma start --browsers Chrome --no-single-run",
         "posttest": "npm run coverage",
         "coverage": "npm run coverage:remap && npm run coverage:report",
@@ -101,7 +101,7 @@
         "codecov": "3.2.0",
         "codemirror": "5.42.0",
         "concurrently": "4.1.0",
-        "coveo-styleguide": "^4.4.2",
+        "coveo-styleguide": "^4.5.2",
         "css-loader": "1.0.1",
         "d3": "3.5.17",
         "del": "4.0.0",
