@@ -49,6 +49,10 @@ form {
                 left: 0;
             }
         }
+
+        &.mod-padding-children > *:not(:first-child) {
+            margin-top: 1rem;
+        }
     }
 
     .inline-help-tooltip {

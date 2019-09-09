@@ -28,6 +28,7 @@ Make sure you have
 To install the project dependencies use:
 
 ```bash
+npm install
 lerna bootstrap
 ```
 
