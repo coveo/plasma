@@ -4,11 +4,10 @@ import * as React from 'react';
 export interface IFormGroupProps {
     title: string;
     description?: string;
-    className?: string | string[];
-    children?: React.ReactNode;
+    className?: string;
 }
 
-export const FormGroup = ({children, title, description, className}: IFormGroupProps) => (
+export const FormGroup: React.FunctionComponent<IFormGroupProps> = ({children, title, description, className}) => (
     <div className={classNames(className, 'form-group', 'mod-padding-children')}>
         <h3 className="text-medium-blue bold">{title}</h3>
         {description && <p className="description">{description}</p>}

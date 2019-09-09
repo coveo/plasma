@@ -5,13 +5,12 @@ type FormMods = 'mod-header-padding';
 
 export interface IFormProps {
     title?: string;
-    className?: string | string[];
-    children?: React.ReactNode;
+    className?: string;
     asCard?: boolean;
     mods?: FormMods | FormMods[];
 }
 
-export const Form = ({children, className, title, asCard, mods}: IFormProps) => {
+export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, asCard, mods}) => {
     return (
         <fieldset className={classNames(className, mods, 'pt2')}>
             {title && <h2 className="text-medium-blue mb2">{title}</h2>}

@@ -51,7 +51,7 @@ form {
         }
 
         &.mod-padding-children > *:not(:first-child) {
-            margin-top: 1rem;
+            margin-top: 2 * $spacing;
         }
     }
 
