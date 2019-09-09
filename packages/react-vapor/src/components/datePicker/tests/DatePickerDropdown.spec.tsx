@@ -156,20 +156,18 @@ describe('Date picker', () => {
         it('should display the dates from the date picker if the datePicker prop is set', () => {
             const formattedNow: string = DateUtils.getSimpleDate(now);
             const formattedThen: string = DateUtils.getSimpleDate(then);
-            const toLabel: string = 'à';
+
             let propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 datePicker,
             });
 
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedNow);
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedThen);
-            expect(datePickerDropdown.find('.to-label').length).toBe(0);
 
             datePickerDropdown.setProps(propsWithDatePicker);
 
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain(formattedNow);
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedThen);
-            expect(datePickerDropdown.find('.to-label').length).toBe(0);
 
             const newDatePicker = {
                 id: 'id',
@@ -191,13 +189,6 @@ describe('Date picker', () => {
 
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain(formattedNow);
             expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain(formattedThen);
-            expect(datePickerDropdown.find('.to-label').text()).toContain(DEFAULT_TO_LABEL);
-
-            propsWithDatePicker = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {datePicker: newDatePicker, toLabel});
-            datePickerDropdown.setProps(propsWithDatePicker);
-
-            expect(datePickerDropdown.find('.to-label').text()).not.toContain(DEFAULT_TO_LABEL);
-            expect(datePickerDropdown.find('.to-label').text()).toContain(toLabel);
         });
 
         it('should display the dates from the date picker if the datePicker prop is set in readonly', () => {
