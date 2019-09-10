@@ -68,7 +68,7 @@ describe('DropPod', () => {
 
             expect(() => {
                 wrapper.unmount();
-            }).not.toThrow('umount');
+            }).not.toThrow('unmount');
         });
 
         describe('once mounted', () => {

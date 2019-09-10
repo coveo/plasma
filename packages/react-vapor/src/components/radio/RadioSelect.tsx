@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
@@ -11,6 +12,7 @@ export interface IRadioSelectOnChangeCallback {
 export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
     id?: string;
     name?: string;
+    className?: string;
     value?: string;
     disabled?: boolean;
     disabledTooltip?: string;
@@ -62,7 +64,7 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
             });
         });
 
-        return <div className="form-control radio-select">{children}</div>;
+        return <div className={classNames('form-control radio-select', this.props.className)}>{children}</div>;
     }
 
     private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
