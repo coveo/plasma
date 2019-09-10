@@ -147,7 +147,7 @@
         "react-dnd-html5-backend": "2.5.1",
         "react-dnd-test-backend": "2.5.1",
         "react-dom": "16.8.2",
-        "react-markdown": "^4.2.2",
+        "react-markdown": "4.2.2",
         "react-redux": "5.1.1",
         "react-router-dom": "5.0.1",
         "react-syntax-highlighter": "11.0.2",
