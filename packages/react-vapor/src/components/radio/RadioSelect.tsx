@@ -12,7 +12,7 @@ export interface IRadioSelectOnChangeCallback {
 export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
     id?: string;
     name?: string;
-    classes?: string;
+    className?: string;
     value?: string;
     disabled?: boolean;
     disabledTooltip?: string;
@@ -64,7 +64,7 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
             });
         });
 
-        return <div className={classNames('form-control radio-select', this.props.classes)}>{children}</div>;
+        return <div className={classNames('form-control radio-select', this.props.className)}>{children}</div>;
     }
 
     private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
