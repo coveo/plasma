@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-type FormMods = 'mod-header-padding';
+type FormMods = 'mod-header-padding' | 'mod-form-top-bottom-padding';
 
 export interface IFormProps {
     title?: string;
