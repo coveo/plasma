@@ -43,7 +43,7 @@ describe('ListBox', () => {
             expect(listBoxComponent.find(ItemBox).length).toBe(defaultProps.items.length);
         });
 
-        it('should not throw on umount', () => {
+        it('should not throw on unmount', () => {
             expect(() => listBoxComponent.unmount()).not.toThrow();
         });
     });
