@@ -23,7 +23,7 @@
     ol,
     ul,
     figure {
-        padding-bottom: $default-line-height;
+        margin-bottom: $default-line-height;
     }
 
     .split-layout {
@@ -56,7 +56,15 @@
         ol,
         ul,
         figure {
-            padding-bottom: 0;
+            margin-bottom: 0;
         }
+    }
+
+    strong {
+        font-weight: bold;
+    }
+
+    em {
+        font-style: italic;
     }
 }
