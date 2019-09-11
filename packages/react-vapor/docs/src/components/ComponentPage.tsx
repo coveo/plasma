@@ -30,7 +30,7 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
 
     return (
         <>
-            <BasicHeader title={{text: name}} description={component.description} tabs={tabProps} />
+            <BasicHeader title={{text: component.title || name}} description={component.description} tabs={tabProps} />
             <PageLayout {...props} />
         </>
     );

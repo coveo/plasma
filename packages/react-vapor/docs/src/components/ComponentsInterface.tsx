@@ -12,6 +12,7 @@ export type ExampleComponent = React.ComponentType & {
     description?: string;
     firstTabLabel?: string;
     deprecated?: boolean;
+    title?: string;
 };
 
 export interface TabConfig {
