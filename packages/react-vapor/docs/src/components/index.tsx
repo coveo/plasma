@@ -6,6 +6,25 @@ import ComponentPage from './ComponentPage';
 import {IComponent, TabConfig} from './ComponentsInterface';
 import SideMenu from './Menu';
 
+const START_STOP = /\/\/ start-print\s*([\s\S]*)\/\/ stop-print/g;
+const START_END = /\/\/ start-print\s*([\s\S]*)$/g;
+const BEGIN_STOP = /^([\s\S]*)\/\/ stop-print/g;
+
+function chopDownSourceFile(wholeFile: string): string {
+    const hasStartDirective = wholeFile.indexOf('// start-print') >= 0;
+    const hasStopDirective = wholeFile.indexOf('// stop-print') >= 0;
+
+    if (hasStartDirective && hasStopDirective) {
+        return START_STOP.exec(wholeFile)[1];
+    } else if (hasStartDirective) {
+        return START_END.exec(wholeFile)[1];
+    } else if (hasStopDirective) {
+        return BEGIN_STOP.exec(wholeFile)[1];
+    } else {
+        return wholeFile;
+    }
+}
+
 const markdownFiles = require.context('../../../src/components/', true, /Examples?(\.\d+)?(\.\w+)?\.md$/i);
 const tabsDict: Record<string, TabConfig[]> = markdownFiles.keys().reduce((memo: Record<string, TabConfig[]>, path) => {
     const [, componentName, order, tabName] = /(\w+)Examples?(?:\.(\d+))?(?:\.(\w+))?\.md$/.exec(path);
@@ -26,10 +45,16 @@ const tabsDict: Record<string, TabConfig[]> = markdownFiles.keys().reduce((memo:
 const componentFiles = require.context('../../../src/components/', true, /Examples?\.tsx?$/i);
 const components = componentFiles.keys().map((path) => {
     const component = componentFiles(path);
-    const code = require('!raw-loader!../../../src/components/' + path.replace('./', '')).default;
+    const code = chopDownSourceFile(require('!raw-loader!../../../src/components/' + path.replace('./', '')).default);
     const name = _.keys(component)[0].replace(/Examples?/i, '');
     const componentPrototype = _.values(component)[0];
-    return {name, code, path, component: componentPrototype, tabs: tabsDict[name] || []};
+    return {
+        name,
+        code,
+        path,
+        component: componentPrototype,
+        tabs: tabsDict[name] || [],
+    };
 });
 
 const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
