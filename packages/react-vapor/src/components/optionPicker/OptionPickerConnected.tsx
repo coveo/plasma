@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
+
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
@@ -12,9 +12,10 @@ import {
 } from './OptionPicker';
 import {addOptionPicker, changeOptionPicker, removeOptionPicker} from './OptionPickerActions';
 import {IOptionPickerState} from './OptionPickerReducers';
+import {OptionPickerSelectors} from './OptionPickerSelectors';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IOptionPickerOwnProps): IOptionPickerStateProps => {
-    const item: IOptionPickerState = _.findWhere(state.optionPickers, {id: ownProps.id});
+    const item: IOptionPickerState = OptionPickerSelectors.getOptionPicker(state, {id: ownProps.id});
 
     return {
         activeLabel: item ? item.selectedLabel : '',

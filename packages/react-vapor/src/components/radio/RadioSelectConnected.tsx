@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {
@@ -10,9 +10,10 @@ import {
     RadioSelect,
 } from './RadioSelect';
 import {removeRadioSelect, setRadioSelect} from './RadioSelectActions';
+import {RadioSelectSelectors} from './RadioSelectSelectors';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IRadioSelectProps): IRadioSelectStateProps => {
-    const radioSelect = _.findWhere(state.radioSelects, {id: ownProps.id});
+    const radioSelect = RadioSelectSelectors.getRadioSelect(state, {id: ownProps.id});
 
     return {
         value: radioSelect && radioSelect.value,

@@ -1,12 +1,14 @@
 import {connect} from 'react-redux';
-import {findWhere} from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IInputDispatchProps, IInputOwnProps, IInputProps, IInputStateProps, Input} from './Input';
 import {addInput, changeInputValue, removeInput} from './InputActions';
+import {IInputState} from './InputReducers';
+import {InputSelectors} from './InputSelectors';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IInputStateProps => {
-    const input = findWhere(state.inputs, {id: ownProps.id});
+    const input: IInputState = InputSelectors.getInput(state, {id: ownProps.id});
     return {
         valid: input && input.valid,
         value: input && input.value,

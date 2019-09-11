@@ -41,4 +41,14 @@ describe('RadioSelectSelectors', () => {
             expect(selectedValue).toBe(expectedRadioSelect.value);
         });
     });
+
+    describe('getRadioSelect', () => {
+        it('should return RadioSelectInitialState when the radio select does not exist in the state', () => {
+            const radioSelect = RadioSelectSelectors.getRadioSelect(
+                {radioSelects: []},
+                {id: 'I-do-not-exist-in-the-state'}
+            );
+            expect(radioSelect).toEqual(radioSelectInitialState);
+        });
+    });
 });
