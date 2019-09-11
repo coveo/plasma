@@ -44,5 +44,8 @@
         "last 1 versions",
         "IE 11",
         "not dead"
-    ]
+    ],
+    "scripts": {
+        "start": "lerna run start --parallel"
+    }
 }
