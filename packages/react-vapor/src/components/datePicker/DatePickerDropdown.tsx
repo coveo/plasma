@@ -124,8 +124,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 if (formattedUpper !== label) {
                     toLabel = (
                         <span className={this.props.readonly ? 'text-medium-grey' : 'text-dark-grey'}>
-                            {' '}
-                            {this.props.toLabel}{' '}
+                            {this.props.toLabel}
                         </span>
                     );
                     labelSecondPart = formattedUpper;
