@@ -1,4 +1,6 @@
 import * as React from 'react';
+
+import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
@@ -67,7 +69,7 @@ export class Action extends React.Component<IActionProps, any> {
                 </span>
             </span>
         );
-        const placement: string = tooltipPlacement || 'right';
+        const placement: string = tooltipPlacement || TooltipPlacement.Right;
         const wholeAction: JSX.Element = tooltip ? (
             <Tooltip title={tooltip} placement={placement}>
                 {inside}
