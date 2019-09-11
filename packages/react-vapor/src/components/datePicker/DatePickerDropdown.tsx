@@ -116,7 +116,6 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         let label: string = this.props.label;
         let toLabel: JSX.Element = null;
         let labelSecondPart: string = '';
-        const disabled: boolean = this.props.readonly;
 
         if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
             label = this.formatDate(this.props.datePicker.appliedLowerLimit);
@@ -124,7 +123,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
                 if (formattedUpper !== label) {
                     toLabel = (
-                        <span className={disabled ? 'text-medium-grey' : 'text-dark-grey'}> {this.props.toLabel} </span>
+                        <span className={this.props.readonly ? 'text-medium-grey' : 'text-dark-grey'}>
+                            {' '}
+                            {this.props.toLabel}{' '}
+                        </span>
                     );
                     labelSecondPart = formattedUpper;
                 }
@@ -149,7 +151,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                    <button className={toggleClasses} onClick={() => this.handleClick(disabled)} disabled={disabled}>
+                    <button className={toggleClasses} onClick={() => this.handleClick()} disabled={this.props.readonly}>
                         <span className="dropdown-selected-value">
                             <label>
                                 {label}
@@ -165,8 +167,8 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         );
     }
 
-    private handleClick = (disabled: boolean) => {
-        if (this.props.onClick && !disabled) {
+    private handleClick = () => {
+        if (this.props.onClick && !this.props.readonly) {
             this.props.onClick(this.props.datePicker);
         }
     };

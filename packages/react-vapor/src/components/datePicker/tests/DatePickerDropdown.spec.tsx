@@ -108,22 +108,10 @@ describe('Date picker', () => {
                 ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
                 readonly: true,
             });
-            const expectedElement = (
-                <button className="dropdown-toggle btn inline-flex flex-center dropdown-toggle-placeholder" disabled>
-                    <span className="dropdown-selected-value">
-                        <label>Select date</label>
-                    </span>
-                    <span className="dropdown-toggle-arrow"></span>
-                </button>
-            );
+            const button = datePickerDropdown.children().find('button.dropdown-toggle');
 
             expect(datePickerDropdownInstance.props.readonly).toBeTruthy();
-            expect(
-                datePickerDropdown
-                    .children()
-                    .find('button.dropdown-toggle')
-                    .matchesElement(expectedElement)
-            ).toBeTruthy();
+            expect(button.props().disabled).toBeTruthy();
         });
 
         it('should have the class "open" if the isOpened prop is set to true', () => {
