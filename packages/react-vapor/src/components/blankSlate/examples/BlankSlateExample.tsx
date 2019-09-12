@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {BlankSlate} from '../BlankSlate';
 
 export class BlankSlateExample extends React.Component<any, any> {
@@ -21,6 +22,17 @@ export class BlankSlateExample extends React.Component<any, any> {
                 <div className="form-group">
                     <label className="form-control-label">BlankSlate with title and description</label>
                     <BlankSlate title="title test" description="description test" />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">BlankSlate with title and description with a link</label>
+                    <BlankSlate
+                        title="title test"
+                        description={
+                            <span>
+                                this is a description with a link to <a href="https//www.google.com">this website</a>
+                            </span>
+                        }
+                    />
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">BlankSlate to fit in a modal</label>

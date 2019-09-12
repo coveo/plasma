@@ -1,10 +1,11 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Svg} from '../../svg/Svg';
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
 
-describe('BlankSlate', () => {
+fdescribe('BlankSlate', () => {
     let blankSlateComponent: ReactWrapper<IBlankSlateProps, any>;
 
     it('should render without errors', () => {
@@ -38,7 +39,7 @@ describe('BlankSlate', () => {
     describe('<Blankslate /> with custom props', () => {
         const customProps = {
             title: 'title',
-            description: 'description test',
+            // description: 'description test',
             buttons: [
                 {
                     name: 'test',
@@ -69,9 +70,22 @@ describe('BlankSlate', () => {
         });
 
         it('should render the custom description', () => {
-            renderBlankSlate();
+            const expectedDescription = 'description test';
+            renderBlankSlate({description: expectedDescription});
             expect(blankSlateComponent.find('p').length).toBe(1);
-            expect(blankSlateComponent.find('p').text()).toEqual(customProps.description);
+            expect(blankSlateComponent.find('p').text()).toEqual(expectedDescription);
+        });
+
+        it('should render the custom description with a link', () => {
+            renderBlankSlate({
+                description: (
+                    <span>
+                        This is a description with a link to <a href="https://www.google.com"></a>this website.
+                    </span>
+                ),
+            });
+
+            expect(blankSlateComponent.find('p').text()).toEqual('This is a description with a link to this website.');
         });
 
         it('should render the button', () => {
