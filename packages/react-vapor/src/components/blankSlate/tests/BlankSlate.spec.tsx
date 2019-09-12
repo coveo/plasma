@@ -39,7 +39,7 @@ describe('BlankSlate', () => {
     describe('<Blankslate /> with custom props', () => {
         const customProps = {
             title: 'title',
-            // description: 'description test',
+            description: 'description test',
             buttons: [
                 {
                     name: 'test',
@@ -70,10 +70,9 @@ describe('BlankSlate', () => {
         });
 
         it('should render the custom description', () => {
-            const expectedDescription = 'description test';
-            renderBlankSlate({description: expectedDescription});
+            renderBlankSlate();
             expect(blankSlateComponent.find('p').length).toBe(1);
-            expect(blankSlateComponent.find('p').text()).toEqual(expectedDescription);
+            expect(blankSlateComponent.find('p').text()).toEqual(customProps.description);
         });
 
         it('should render the custom description with a link', () => {
