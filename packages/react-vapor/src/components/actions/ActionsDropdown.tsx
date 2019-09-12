@@ -56,7 +56,7 @@ export class ActionsDropdown extends React.Component<IActionsDropdownProps, any>
                 className="action-icon"
                 svgClass="icon icon-medium fill-medium-blue"
             />,
-            <span key="action-dropdown-toggle-label" className="action-label">
+            <span key="action-dropdown-toggle-label" className="action-label" data-trigger="more">
                 {moreLabel}
             </span>,
         ];
