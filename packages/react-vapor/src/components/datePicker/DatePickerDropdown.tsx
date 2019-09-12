@@ -123,7 +123,9 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
                 if (formattedUpper !== label) {
                     toLabel = (
-                        <span className={this.props.readonly ? 'text-medium-grey' : 'text-dark-grey'}>
+                        <span
+                            className={classNames('mx1', this.props.readonly ? 'text-medium-grey' : 'text-dark-grey')}
+                        >
                             {this.props.toLabel}
                         </span>
                     );
@@ -150,7 +152,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                    <button className={toggleClasses} onClick={() => this.handleClick()} disabled={this.props.readonly}>
+                    <button className={toggleClasses} onClick={this.handleClick} disabled={this.props.readonly}>
                         <span className="dropdown-selected-value">
                             <label>
                                 {label}
