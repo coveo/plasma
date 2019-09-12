@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 import {Svg} from '../../svg/Svg';
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
 
-fdescribe('BlankSlate', () => {
+describe('BlankSlate', () => {
     let blankSlateComponent: ReactWrapper<IBlankSlateProps, any>;
 
     it('should render without errors', () => {

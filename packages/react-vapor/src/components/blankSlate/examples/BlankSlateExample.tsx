@@ -1,5 +1,4 @@
 import * as React from 'react';
-
 import {BlankSlate} from '../BlankSlate';
 
 export class BlankSlateExample extends React.Component<any, any> {
