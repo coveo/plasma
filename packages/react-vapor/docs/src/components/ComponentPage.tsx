@@ -1,10 +1,12 @@
 import * as React from 'react';
+import * as Markdown from 'react-markdown';
 
 import {TabConnected} from '../../../src/components/tab/TabConnected';
 import {TabContent} from '../../../src/components/tab/TabContent';
 import {TabNavigation} from '../../../src/components/tab/TabNavigation';
 import {TabPaneConnected} from '../../../src/components/tab/TabPaneConnected';
 import Code from '../demo-building-blocs/Code';
+import {MarkdownOverrides} from '../demo-building-blocs/MarkdownOverrides';
 import {IComponent, TabConfig} from './ComponentsInterface';
 
 type ComponentPageProps = Omit<IComponent, 'path'>;
@@ -28,7 +30,7 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
                 </TabPaneConnected>
                 {props.tabs.map(({tabName, markdown}: TabConfig) => (
                     <TabPaneConnected key={getTabId(tabName)} id={getTabId(tabName)}>
-                        {markdown}
+                        <Markdown className="markdown-documentation" source={markdown} renderers={MarkdownOverrides} />
                     </TabPaneConnected>
                 ))}
             </TabContent>
