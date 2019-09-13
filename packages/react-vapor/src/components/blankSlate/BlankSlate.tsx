@@ -7,7 +7,7 @@ import {Svg} from '../svg/Svg';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     title?: string;
-    description?: string;
+    description?: React.ReactNode;
     buttons?: IBaseActionOptions[];
     withModal?: boolean;
     classes?: string[];
