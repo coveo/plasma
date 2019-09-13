@@ -1,4 +1,4 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -34,6 +34,7 @@ describe('Date picker', () => {
     });
 
     describe('<DatePickerDropdown />', () => {
+        let shallowWrapper: ShallowWrapper;
         let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps>;
         let datePickerDropdownInstance: DatePickerDropdown;
         let datePicker: IDatePickerState;
@@ -314,27 +315,13 @@ describe('Date picker', () => {
             expect(datePickerDropdown.find('.to-label').length).toBe(0);
         });
 
-        it('should call handleClick when clicking the dropdown toggle', () => {
-            const handleClickSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleClick');
-
-            datePickerDropdown.find('.dropdown-toggle').simulate('click');
-
-            expect(handleClickSpy).toHaveBeenCalled();
-        });
-
-        it('should call onClick prop if set when calling handleClick', () => {
-            const onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
-            const onClickProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                onClick: onClickSpy,
-            });
-
-            expect(() => {
-                datePickerDropdownInstance['handleClick'].call(datePickerDropdownInstance);
-            }).not.toThrow();
-
-            datePickerDropdown.setProps(onClickProps);
-            datePickerDropdownInstance['handleClick'].call(datePickerDropdownInstance);
-
+        it('should call onClick when clicking the dropdown toggle', () => {
+            const onClickSpy = jasmine.createSpy();
+            shallowWrapper = shallow(<DatePickerDropdown onClick={onClickSpy} />);
+            shallowWrapper
+                .find('.dropdown-toggle')
+                .props()
+                .onClick({} as any);
             expect(onClickSpy).toHaveBeenCalled();
         });
 
