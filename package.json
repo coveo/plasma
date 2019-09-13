@@ -45,8 +45,7 @@
         "IE 11",
         "not dead"
     ],
-    "dependencies": {
-        "coveo-styleguide": "^4.4.2",
-        "react-vapor": "^4.4.2"
+    "scripts": {
+        "start": "lerna run start --parallel"
     }
 }
