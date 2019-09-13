@@ -8,7 +8,7 @@
         "lint-staged": "8.2.1",
         "prettier": "1.18.2",
         "stylelint": "10.1.0",
-        "tsjs": "0.9.x",
+        "tsjs": "1.0.x",
         "tslint": "5.17.0",
         "underscore": "1.9.1"
     },
