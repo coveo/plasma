@@ -59,6 +59,8 @@
 
     > label,
     > span,
+    .input-wrapper > label,
+    .input-wrapper > span,
     &.input-wrapper > label,
     &.input-wrapper > span {
         position: absolute;
