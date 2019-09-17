@@ -1,15 +1,10 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {Loading} from '../../loading/Loading';
-import {ISvgProps, Svg} from '../../svg/Svg';
 import {Content, IContentProps} from '../Content';
 
 describe('Content', () => {
-    let contentComponent: ReactWrapper<IContentProps, any>;
-    const svg: ISvgProps = {
-        svgName: 'domain-google',
-        svgClass: 'icon',
-    };
+    let contentComponent: ShallowWrapper<IContentProps, any>;
 
     it('should render without errors', () => {
         expect(() => {
@@ -19,7 +14,7 @@ describe('Content', () => {
 
     describe('<BoxItem /> with custom props', () => {
         const renderContent = (props: IContentProps) => {
-            contentComponent = mount(<Content {...props} />, {attachTo: document.getElementById('App')});
+            contentComponent = shallow(<Content {...props} />);
         };
 
         it('should render with a string', () => {
@@ -27,13 +22,6 @@ describe('Content', () => {
                 content: 'test',
             });
             expect(contentComponent.find('span').text()).toBe('test');
-        });
-
-        it('should render with a function that returns <Svg/>', () => {
-            renderContent({
-                content: () => <Svg {...svg} />,
-            });
-            expect(contentComponent.find(Svg).length).toBe(1);
         });
 
         it('should render with a component <Loading/>', () => {
@@ -49,6 +37,20 @@ describe('Content', () => {
                 tag: 'div',
             });
             expect(contentComponent.find('div').text()).toBe('test');
+        });
+
+        it('should render with a ReactNode', () => {
+            renderContent({
+                content: <div>React.ion</div>,
+            });
+            expect(contentComponent.find('div').text()).toBe('React.ion');
+        });
+
+        it('should render with a number', () => {
+            renderContent({
+                content: 420,
+            });
+            expect(contentComponent.find('span').text()).toBe('420');
         });
     });
 });

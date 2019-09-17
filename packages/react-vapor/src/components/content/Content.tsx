@@ -18,10 +18,16 @@ export class Content extends React.Component<IContentProps, {}> {
         tag: 'span',
     };
 
-    private getContent(): JSX.Element | string {
-        return _.isString(this.props.content)
-            ? this.props.content
-            : React.createElement(this.props.content as React.ComponentClass, this.props.componentProps);
+    private getContent(): JSX.Element | string | React.ReactNode {
+        if (
+            _.isString(this.props.content) ||
+            _.isNumber(this.props.content) ||
+            React.isValidElement(this.props.content)
+        ) {
+            return this.props.content;
+        }
+
+        return React.createElement(this.props.content as React.ComponentClass, this.props.componentProps);
     }
 
     render() {
