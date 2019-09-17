@@ -34,6 +34,15 @@ export class DatePickerDropdownConnectedExamples extends React.Component<any, an
                     />
                 </div>
                 <div className="form-group">
+                    <label className="form-control-label">Date picker dropdown disabled</label>
+                    <DatePickerDropdownConnected
+                        id="date-picker-dropdown-disabled"
+                        datesSelectionBoxes={SELECTION_BOXES}
+                        selectionRules={CALENDAR_SELECTION_RULES}
+                        readonly
+                    />
+                </div>
+                <div className="form-group">
                     <label className="form-control-label">
                         Date picker dropdown with a range limit of 3 days Redux state
                     </label>

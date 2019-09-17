@@ -7,7 +7,6 @@ import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {DEFAULT_YEARS, ICalendarSelectionRule} from '../calendar/Calendar';
-import {Input} from '../input/Input';
 import {ModalFooter} from '../modal/ModalFooter';
 import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
 import {DatePickerDateRange} from './DatePickerConstants';
@@ -93,7 +92,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
 
     private dropdown: HTMLDivElement;
 
-    componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }
@@ -117,28 +116,22 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         let label: string = this.props.label;
         let toLabel: JSX.Element = null;
         let labelSecondPart: string = '';
+
         if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
             label = this.formatDate(this.props.datePicker.appliedLowerLimit);
             if (this.props.datePicker.isRange) {
                 const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
                 if (formattedUpper !== label) {
-                    toLabel = <span className="to-label"> {this.props.toLabel} </span>;
+                    toLabel = (
+                        <span
+                            className={classNames('mx1', this.props.readonly ? 'text-medium-grey' : 'text-dark-grey')}
+                        >
+                            {this.props.toLabel}
+                        </span>
+                    );
                     labelSecondPart = formattedUpper;
                 }
             }
-        }
-
-        if (this.props.readonly) {
-            return (
-                <Input
-                    value={`${label} ${
-                        this.props.datePicker && this.props.datePicker.isRange
-                            ? this.props.toLabel + ' ' + labelSecondPart
-                            : ''
-                    }`}
-                    readOnly
-                />
-            );
         }
 
         const dropdownClasses: string = classNames(...this.props.extraDropdownClasses, 'dropdown-wrapper', 'dropdown', {
@@ -156,11 +149,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
             }
         );
-
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                    <span className={toggleClasses} onClick={() => this.handleClick()}>
+                    <button className={toggleClasses} onClick={this.handleClick} disabled={this.props.readonly}>
                         <span className="dropdown-selected-value">
                             <label>
                                 {label}
@@ -169,7 +161,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                             </label>
                         </span>
                         <span className="dropdown-toggle-arrow"></span>
-                    </span>
+                    </button>
                     <div className={menuClasses}>{this.getDatePickerBox()}</div>
                 </div>
             </div>
@@ -177,7 +169,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     }
 
     private handleClick = () => {
-        if (this.props.onClick) {
+        if (this.props.onClick && !this.props.readonly) {
             this.props.onClick(this.props.datePicker);
         }
     };
