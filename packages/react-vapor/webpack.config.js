@@ -10,7 +10,7 @@ module.exports = {
     mode: 'development',
     output: {
         path: path.join(__dirname, '/docs/assets'),
-        publicPath: '/assets/',
+        publicPath: 'assets/',
         filename: 'bundle.js',
     },
     devtool: 'eval-source-map',
