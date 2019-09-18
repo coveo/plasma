@@ -37,7 +37,7 @@ export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTM
         return (
             <div
                 className={classNames('spinner', this.props.className, {
-                    'flex flex center-align flex-auto full-content-y': this.props.fullContent,
+                    'flex center-align flex-auto full-content-y': this.props.fullContent,
                 })}
                 {...omit(this.props, keys<ILoadingProps>())}
             >
