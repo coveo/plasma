@@ -18,7 +18,7 @@ export class Content extends React.Component<IContentProps, {}> {
         tag: 'span',
     };
 
-    private getContent(): JSX.Element | string | React.ReactNode {
+    private getContent(): React.ReactNode {
         if (
             _.isString(this.props.content) ||
             _.isNumber(this.props.content) ||
