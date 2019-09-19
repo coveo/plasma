@@ -9,7 +9,7 @@ module.exports = {
     entry: {
         main: './docs/Index.tsx',
     },
-    mode: isTravis ? 'development' : 'production',
+    mode: isTravis ? 'production' : 'development',
     output: {
         path: path.join(__dirname, '/docs/assets'),
         publicPath: 'assets/',
