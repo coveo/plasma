@@ -1,6 +1,9 @@
 import * as React from 'react';
+import {Checkbox} from '../../checkbox/Checkbox';
 import {Input} from '../../input/Input';
 import {Label} from '../../input/Label';
+import {Radio} from '../../radio/Radio';
+import {RadioSelect} from '../../radio/RadioSelect';
 import {Form} from '../Form';
 import {FormGroup} from '../FormGroup';
 
@@ -43,6 +46,21 @@ export class FormExamples extends React.Component<any, any> {
                         <Input placeholder="#2">
                             <Label>Another input</Label>
                         </Input>
+                    </FormGroup>
+                    <FormGroup title="Checkbox">
+                        <Checkbox>
+                            <Label classes={['label']}>A checkbox</Label>
+                        </Checkbox>
+                    </FormGroup>
+                    <FormGroup title="Radio">
+                        <RadioSelect>
+                            <Radio value="1">
+                                <Label>Value 1</Label>
+                            </Radio>
+                            <Radio value="2">
+                                <Label>Value 2</Label>
+                            </Radio>
+                        </RadioSelect>
                     </FormGroup>
                 </Form>
             </div>

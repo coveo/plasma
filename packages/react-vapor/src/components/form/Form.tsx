@@ -12,20 +12,18 @@ export interface IFormProps {
 
 export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, asCard, mods}) => {
     return (
-        <fieldset className={classNames(className, mods, 'pt2')}>
+        <fieldset
+            className={classNames(
+                {
+                    'material-card': asCard,
+                },
+                className,
+                mods,
+                'coveo-form mb2 mt2 mod-padding-children'
+            )}
+        >
             {title && <h2 className="text-medium-blue mb2">{title}</h2>}
-            <div
-                className={classNames(
-                    {
-                        'material-card': asCard,
-                    },
-                    'coveo-form',
-                    'mr2',
-                    'mb2'
-                )}
-            >
-                {children}
-            </div>
+            {children}
         </fieldset>
     );
 };

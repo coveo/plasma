@@ -13,6 +13,20 @@ form {
 
 // New simple form, scoped under coveo-form to prevent breaking the table-form
 .coveo-form {
+    &.mod-padding-children {
+        > .input-field {
+            margin-top: $form-group-margin + $input-margin-top;
+        }
+
+        > *:not(:first-child) {
+            margin-top: $spacing * 2;
+
+            &.input-field {
+                margin-top: $form-group-margin + $input-margin-top;
+            }
+        }
+    }
+
     .form-control-label {
         display: inline-flex; // Used for inline-help-tooltip placement
         align-items: center;
@@ -50,8 +64,17 @@ form {
             }
         }
 
-        &.mod-padding-children > *:not(:first-child) {
-            margin-top: 2 * $spacing;
+        &.mod-padding-children {
+            > .input-field {
+                margin-top: $form-group-margin + $input-margin-top;
+            }
+
+            > *:not(:first-child) {
+                margin-top: $spacing * 2;
+                &.input-field {
+                    margin-top: $form-group-margin + $input-margin-top;
+                }
+            }
         }
     }
 
