@@ -36,9 +36,15 @@ export class RadioSelectExample extends React.Component<IRadioSelectExampleProps
                 >
                     <Radio id="Option1" name="enabledOptions" value="blue">
                         <Label>Blue</Label>
+                        <div className="mod-align-with-radio-label text-lynch mt1">
+                            It is a color that symbolizes loyalty, strength, wisdom and trust.
+                        </div>
                     </Radio>
                     <Radio id="Option2" name="enabledOptions" value="green">
                         <Label>Green</Label>
+                        <div className="mod-align-with-radio-label text-lynch mt1">
+                            The color of life, renewal, nature, and energy.
+                        </div>
                     </Radio>
                 </RadioSelect>
             </div>
