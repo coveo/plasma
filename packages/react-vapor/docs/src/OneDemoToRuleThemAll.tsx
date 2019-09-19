@@ -32,7 +32,7 @@ function Header() {
     );
 }
 
-const fallback = {fallback: <Loading />};
+const fallback = {fallback: <Loading fullContent />};
 const LoadableComponents = loadable(() => import(/* webpackChunkName: "components" */ './components'), fallback);
 const LoadableStyles = loadable(() => import(/* webpackChunkName: "styles" */ './styles'), fallback);
 

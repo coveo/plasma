@@ -37,7 +37,7 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
             />
         ));
     if (components.length === 0) {
-        return <Loading />;
+        return <Loading fullContent />;
     }
 
     return (
