@@ -78,6 +78,10 @@
             }
         }
     }
+
+    .mod-align-with-radio-label {
+        padding-left: $radio-button-size + $checkbox-label-margin;
+    }
 }
 
 .radio-select {
