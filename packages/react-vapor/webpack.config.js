@@ -6,14 +6,17 @@ const isTravis = !!process.env.TRAVIS;
  * Config file for the documentation project
  */
 module.exports = {
-    entry: './docs/Index.tsx',
-    mode: 'development',
+    entry: {
+        main: './docs/Index.tsx',
+    },
+    mode: isTravis ? 'development' : 'production',
     output: {
         path: path.join(__dirname, '/docs/assets'),
         publicPath: 'assets/',
-        filename: 'bundle.js',
+        filename: '[name].bundle.js',
+        chunkFilename: '[name].bundle.js',
     },
-    devtool: 'eval-source-map',
+    devtool: isTravis ? 'source-map' : 'cheap-module-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
@@ -22,13 +25,14 @@ module.exports = {
             WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
         }),
         new webpack.HotModuleReplacementPlugin(),
+        new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
     ],
     module: {
         rules: [
             {
                 enforce: 'pre',
-                test: /\.ts(x?)$/i,
-                exclude: [/node_modules/],
+                test: /\.tsx?$/,
+                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'docs')],
                 use: {
                     loader: 'tslint-loader',
                     options: {
@@ -49,6 +53,7 @@ module.exports = {
             },
             {
                 test: /\.tsx?$/,
+                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'docs')],
                 loader: 'awesome-typescript-loader',
                 options: {
                     useCache: true,

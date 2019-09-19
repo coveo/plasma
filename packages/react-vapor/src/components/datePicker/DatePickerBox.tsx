@@ -1,4 +1,4 @@
-import classNames = require('classnames');
+import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
