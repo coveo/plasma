@@ -21,11 +21,9 @@ export const CONFIRM_LABEL: string = 'Are you sure?';
 export class TriggerAction extends React.Component<ITriggerActionProps, any> {
     private onTriggerAction() {
         const confirmData: IConfirmData = this.props.action.requiresConfirmation;
-
         if (confirmData && this.props.onTriggerConfirm) {
-            const confirmLabel: string = this.props.confirmLabel || CONFIRM_LABEL;
+            const confirmLabel: string = this.props.action.requiresConfirmation.confirmLabel || CONFIRM_LABEL;
             const icon: string = this.props.action.icon;
-
             this.props.onTriggerConfirm(
                 () => {
                     if (this.props.action.trigger) {
