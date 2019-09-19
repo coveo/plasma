@@ -23,7 +23,7 @@ function Header() {
     return (
         <div id="header" className="header flex flex-center space-between p2" style={{minHeight: '65px'}}>
             <h1 className="h1">
-                React Vapor
+                Vapor
                 {' / '}
                 <Route path="/styles" component={() => <span>Styles</span>} />
                 <Route path="/components" component={() => <span>Components</span>} />
