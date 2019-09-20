@@ -4,12 +4,20 @@ import {Loading} from './Loading';
 export class LoadingExamples extends React.Component<any, any> {
     render() {
         return (
-            <div className="mt2" style={{width: 400}}>
+            <>
                 <div className="form-group">
                     <label className="form-control-label">Loading bouncing balls</label>
-                    <Loading />
+                    <div className="mt2 mod-border" style={{width: 400, height: 200}}>
+                        <Loading />
+                    </div>
                 </div>
-            </div>
+                <div className="form-group">
+                    <label className="form-control-label">Loading bouncing balls with full content</label>
+                    <div className="mt2 mod-border" style={{width: 400, height: 400}}>
+                        <Loading fullContent />
+                    </div>
+                </div>
+            </>
         );
     }
 }

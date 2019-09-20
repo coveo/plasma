@@ -12,6 +12,7 @@ import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
+import {IDropPodProps} from '../drop/DropPod';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
@@ -31,6 +32,7 @@ export interface ISelectOwnProps extends IListBoxOwnProps {
     hasFocusableChild?: boolean;
     disabled?: boolean;
     onUpdate?: () => void;
+    dropOption?: Partial<IDropPodProps>;
 }
 
 const listBoxProps = keys<IListBoxOwnProps>();
@@ -128,6 +130,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 )}
                 minWidth={minWidth}
                 closeOnClickDrop={false}
+                {...this.props.dropOption}
             >
                 <div
                     className={classNames('select-dropdown-container bg-pure-white', this.props.dropClasses)}

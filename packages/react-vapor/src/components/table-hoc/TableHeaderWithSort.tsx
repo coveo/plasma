@@ -64,7 +64,7 @@ export class TableHeaderWithSort extends React.Component<
         });
 
         return (
-            <th className={headerCellClasses} onClick={() => this.props.onSort()}>
+            <th id={this.props.id} className={headerCellClasses} onClick={() => this.props.onSort()}>
                 {this.props.children}
                 <div className="admin-sort-icon">
                     <Svg svgName="asc-desc" className="tables-sort icon" />

@@ -39,7 +39,7 @@ describe('callIfDefined', () => {
     });
 
     it('should not throw errors when calling with undefined values', () => {
-        const someDeclaredButNotAssignedCallback: () => any = undefined;
+        const someDeclaredButNotAssignedCallback: any = undefined;
 
         expect(() => callIfDefined(undefined)).not.toThrow();
         expect(() => callIfDefined(null)).not.toThrow();

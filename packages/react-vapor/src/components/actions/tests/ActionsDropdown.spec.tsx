@@ -53,6 +53,7 @@ describe('Actions', () => {
 
         it('should display the more label', () => {
             expect(actionsDropdown.find('.action-label').length).toBe(1);
+            expect(actionsDropdown.find('.action-label').prop('data-trigger')).toBe('more');
         });
 
         it('should display separators if any', () => {

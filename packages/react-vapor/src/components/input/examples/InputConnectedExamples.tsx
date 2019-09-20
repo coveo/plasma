@@ -2,8 +2,10 @@ import * as React from 'react';
 import {findWhere} from 'underscore';
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {UUID} from '../../../utils/UUID';
+import {Tooltip} from '../../tooltip/Tooltip';
 import {setDisabledInput, validateInputValue} from '../InputActions';
 import {InputConnected} from '../InputConnected';
+import {Label} from '../Label';
 
 const validate = (value: any) => !!value;
 
@@ -83,6 +85,39 @@ export const InputConnectedExamples = (): JSX.Element => (
                 labelProps={{invalidMessage: 'not empty'}}
                 defaultValue="valid only on change"
                 validateOnChange
+            />
+        </div>
+
+        <div className="form-group">
+            <button
+                className="mb2"
+                onClick={() => {
+                    ReactVaporStore.dispatch(
+                        setDisabledInput(
+                            'super-input-5',
+                            !findWhere(ReactVaporStore.getState().inputs, {id: 'super-input-5'}).disabled
+                        )
+                    );
+                }}
+            >
+                Toggle disabled state
+            </button>
+            <InputConnected
+                id="super-input-5"
+                validate={validate}
+                labelTitle={
+                    <Tooltip title="I am a tooltip!" placement={'top'}>
+                        <Label
+                            key={'super-input-5-label'}
+                            htmlFor={'super-input-5'}
+                            invalidMessage={'Do not leave me empty'}
+                        >
+                            {'I am a disabled connected input WITH a Tooltip'}
+                        </Label>
+                    </Tooltip>
+                }
+                labelProps={{invalidMessage: 'Do not leave me empty'}}
+                defaultValue="awesome disabled feature"
             />
         </div>
     </div>

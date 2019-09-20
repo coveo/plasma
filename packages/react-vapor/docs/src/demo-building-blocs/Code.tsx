@@ -2,9 +2,13 @@ import * as html from 'prettier/parser-html';
 import * as prettier from 'prettier/standalone';
 import * as React from 'react';
 import * as ReactDOMServer from 'react-dom/server';
-import {Prism as SyntaxHighlighter} from 'react-syntax-highlighter';
+import {PrismLight as SyntaxHighlighter} from 'react-syntax-highlighter';
+// @ts-ignore
+import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 // @ts-ignore
 import {prism as theme} from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+SyntaxHighlighter.registerLanguage('tsx', tsx);
 
 export const Code: React.FunctionComponent<{language: string}> = ({language, children}) => {
     let formattedCode: React.ReactNode = children;

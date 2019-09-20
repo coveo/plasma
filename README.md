@@ -7,7 +7,7 @@
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
-React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](http://react-vapor.surge.sh/). Vapor package contains the generic style classes used across the components and react-vapor is a react implementation of multiple visual and behavioural components.
+React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://static.cloud.coveo.com/react-vapor/index.html). Vapor package contains the generic style classes used across the components and react-vapor is a react implementation of multiple visual and behavioural components.
 
 ## Usage
 
@@ -28,7 +28,6 @@ Make sure you have
 To install the project dependencies use:
 
 ```bash
-npm install
 lerna bootstrap
 ```
 

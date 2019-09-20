@@ -22,6 +22,19 @@ describe('Actions', () => {
         it('should have a defaultProp hideDisabled set to true', () => {
             expect(Action.defaultProps.hideDisabled).toBe(true);
         });
+
+        it('should add the id of the action on a data-trigger attribute', () => {
+            const expectedId = 'cut';
+            const component = shallow(<Action action={{...action, id: expectedId}} />);
+
+            expect(component.find('.action-label').prop('data-trigger')).toBe(expectedId);
+        });
+
+        it('should add the name of the action on a data-trigger attribute if the id is not defined', () => {
+            const component = shallow(<Action action={action} />);
+
+            expect(component.find('.action-label').prop('data-trigger')).toBe(action.name);
+        });
     });
 
     describe('<Action />', () => {
