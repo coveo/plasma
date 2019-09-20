@@ -1,4 +1,4 @@
-import * as faker from 'faker';
+import * as faker from 'faker/locale/en';
 import * as _ from 'underscore';
 import {TableChildComponent, TableSortingOrder} from '../TableConstants';
 import {

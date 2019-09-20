@@ -1,4 +1,4 @@
-import classNames = require('classnames');
+import * as classNames from 'classnames';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';

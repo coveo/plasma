@@ -1,6 +1,9 @@
 {
     "extends": "./tsconfig",
     "compilerOptions": {
+        "module": "esnext",
+        "moduleResolution": "Node",
+        "removeComments": false,
         "outDir": "./dist/split/",
         "sourceMap": true,
         "rootDir": "."
