@@ -10,6 +10,7 @@ import {FormGroup} from '../FormGroup';
 export class FormExamples extends React.Component<any, any> {
     render() {
         return (
+            // start-print
             <div className="mt2">
                 <h1 className="text-blue mb1 bold">Simple Forms</h1>
                 <Form title="A Simple Form">
@@ -64,6 +65,7 @@ export class FormExamples extends React.Component<any, any> {
                     </FormGroup>
                 </Form>
             </div>
+            // stop-print
         );
     }
 }
