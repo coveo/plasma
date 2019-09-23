@@ -21,7 +21,7 @@ export class FormExamples extends React.Component<any, any> {
                         <Label>Another Input Box</Label>
                     </Input>
                 </Form>
-                <Form title="A Card Form" asCard>
+                <Form title="A Card Form" mods="material-card">
                     <Input placeholder="Isn't it cool">
                         <Label>This one looks like a card</Label>
                     </Input>
