@@ -11,6 +11,7 @@ export interface IConfirmButtonLabel {
 
 export interface IConfirmData {
     confirmType: string;
+    confirmLabel?: string;
     buttonLabels?: IConfirmButtonLabel;
 }
 

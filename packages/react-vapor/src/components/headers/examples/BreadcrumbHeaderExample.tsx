@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {Button} from '../../button/Button';
+import {Svg} from '../../svg/Svg';
 import {BreadcrumbHeader} from '../BreadcrumbHeader';
 import {actions, defaultBreadcrumb, defaultBreadcrumbLongTitle, defaultTabs} from './ExamplesUtils';
 
@@ -70,6 +72,38 @@ export class BreadcrumbHeaderExample extends React.Component<any, any> {
                             description="Simple description for the title"
                             actions={actions}
                             tabs={defaultTabs}
+                        />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Breadcrumb with a node as action</label>
+                    <div className="form-control">
+                        <BreadcrumbHeader
+                            breadcrumb={defaultBreadcrumbLongTitle}
+                            description="Simple description for the title"
+                            actions={[
+                                {
+                                    content: (
+                                        <Button>
+                                            <Svg svgName={'add'} svgClass={'icon'} />
+                                        </Button>
+                                    ),
+                                },
+                            ]}
+                        />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Breadcrumb with a number as action</label>
+                    <div className="form-control">
+                        <BreadcrumbHeader
+                            breadcrumb={defaultBreadcrumbLongTitle}
+                            description="Simple description for the title"
+                            actions={[
+                                {
+                                    content: 1,
+                                },
+                            ]}
                         />
                     </div>
                 </div>

@@ -41,7 +41,7 @@ export class InlinePrompt extends React.Component<IInlinePromptProps, any> {
         const icon: JSX.Element = this.props.options.userChoice.icon ? (
             <Svg
                 svgName={this.props.options.userChoice.icon}
-                className="prompt-icon"
+                className="prompt-icon mr1"
                 svgClass="icon mod-2x fill-medium-blue"
             />
         ) : null;
