@@ -20,3 +20,12 @@ body {
     font-family: $base-font-family;
     -webkit-font-smoothing: antialiased;
 }
+
+.markdown-documentation {
+    font-size: $default-font-size;
+
+    p,
+    li {
+        line-height: 1.5em;
+    }
+}

@@ -3,3 +3,14 @@
     font-size: $default-font-size;
     line-height: $big-line-height;
 }
+
+p,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    max-width: 800px;
+}

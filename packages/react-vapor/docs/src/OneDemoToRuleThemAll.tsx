@@ -21,7 +21,7 @@ function TopNav() {
 function Header() {
     return (
         <div id="header" className="header flex flex-center space-between p2" style={{minHeight: '65px'}}>
-            <h1 className="h1">
+            <h1 className="h1 text-white">
                 Vapor
                 {' / '}
                 <Route path="/styles" component={() => <span>Styles</span>} />
