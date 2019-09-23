@@ -9,7 +9,7 @@
         "front-end",
         "web"
     ],
-    "homepage": "http://vapor.surge.sh/",
+    "homepage": "https://static.cloud.coveo.com/react-vapor/index.html",
     "author": "Coveo",
     "license": "MIT",
     "main": "dist/js/VaporSVG.js",
