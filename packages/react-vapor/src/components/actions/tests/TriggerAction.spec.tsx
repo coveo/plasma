@@ -168,5 +168,19 @@ describe('Actions', () => {
             triggerAction.setProps({action: newAction, onTriggerConfirm: onTriggerConfirm});
             expect(() => triggerActionInstance['onTriggerAction'].call(triggerActionInstance)).not.toThrow();
         });
+
+        it('should use a custom prompt description when the confirmLabel is set', () => {
+            const newAction = _.extend({requiresConfirmation: {confirmLabel: 'custom label'}}, action);
+            triggerAction.setProps({action: newAction});
+
+            triggerAction
+                .find('.enabled')
+                .props()
+                .onClick('mouseEvent' as any);
+            expect(triggerSpy).toHaveBeenCalled();
+            expect(triggerSpy.calls.first().object.requiresConfirmation.confirmLabel).toEqual(
+                newAction.requiresConfirmation.confirmLabel
+            );
+        });
     });
 });
