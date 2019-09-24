@@ -3,6 +3,7 @@ import {Svg} from '../../svg/Svg';
 import {Button} from '../Button';
 
 export class ButtonExamples extends React.Component<any, any> {
+    static description = 'Buttons communicate actions, and, when clicked, initialize those actions.';
     render() {
         return (
             <div className="mt2">
