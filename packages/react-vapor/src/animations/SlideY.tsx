@@ -29,15 +29,15 @@ export class SlideY extends React.PureComponent<SlideYProps> {
         }
     }
 
-    componentWillUpdate() {
-        this.el.style.height = this.getCurrentHeight();
-    }
+    componentDidUpdate(prevProps: SlideYProps) {
+        if (prevProps.in !== this.props.in) {
+            this.el.style.height = this.getCurrentHeight();
 
-    componentDidUpdate() {
-        if (this.props.in) {
-            this.onEntering();
-        } else {
-            this.onExiting();
+            if (this.props.in) {
+                this.onEntering();
+            } else {
+                this.onExiting();
+            }
         }
     }
 

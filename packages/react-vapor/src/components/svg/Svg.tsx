@@ -18,14 +18,9 @@ export class Svg extends React.Component<ISvgProps> {
         svgClass: '',
     };
 
-    private setSvgClass = (svgString: string, svgClass: string): string => {
-        const parser = document.createElement('div');
-        parser.innerHTML = svgString;
-
-        (parser.children[0] as SVGElement).setAttribute('class', svgClass);
-
-        return parser.innerHTML;
-    };
+    private setSvgClass(svgString: string, svgClass: string): string {
+        return svgString.replace('<svg ', `<svg class="${svgClass}" `);
+    }
 
     render() {
         const formattedSvgName: string = camelize(this.props.svgName);
