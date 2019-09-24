@@ -269,7 +269,7 @@ export class DropExamples extends React.PureComponent<any> {
                                         <Drop
                                             id={UUID.generate()}
                                             selector={'#App'}
-                                            positions={[DropPodPosition.bottom]}
+                                            positions={[DropPodPosition.top]}
                                             buttonContainerProps={{
                                                 className: 'inline-block relative',
                                             }}
