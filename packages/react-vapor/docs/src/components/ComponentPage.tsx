@@ -31,7 +31,7 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
         };
         const loadAll = () => {
             const mdFiles = require.context(
-                '!!raw-loader!../../../src/components/',
+                '!!raw-loader!../../../src/',
                 true,
                 /Examples?(\.\d+)?(\.\w+)?\.md$/i,
                 'lazy'
@@ -108,9 +108,7 @@ const DevelopmentTabContent: React.FunctionComponent<ComponentPageProps> = ({com
     const [code, setCode] = React.useState('');
     React.useEffect(() => {
         const doImport = async () => {
-            const res: {default: string} = await import(
-                '!!raw-loader!../../../src/components/' + path.replace('./', '')
-            );
+            const res: {default: string} = await import('!!raw-loader!../../../src/' + path.replace('./', ''));
             return chopDownSourceFile(res.default);
         };
         doImport().then(setCode);
