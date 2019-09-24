@@ -156,6 +156,38 @@ export class DropExamples extends React.PureComponent<any> {
                     </div>
                 </div>
                 <div className="form-group">
+                    <label className="form-control-label">Drop with an item with a long text</label>
+                    <div className="form-control flex center-align">
+                        <Drop
+                            id={UUID.generate()}
+                            parentSelector={'body'}
+                            selector={'#App'}
+                            positions={[DropPodPosition.bottom]}
+                            buttonContainerProps={{
+                                className: 'inline-block',
+                            }}
+                            renderOpenButton={(onClick: () => void) => (
+                                <Button
+                                    name={'Text'}
+                                    enabled={true}
+                                    onClick={() => onClick()}
+                                    style={{width: '300px'}}
+                                />
+                            )}
+                        >
+                            <ListBox
+                                items={[
+                                    ...defaultItems,
+                                    {
+                                        value:
+                                            'this is a long storyyyyyyyyyyyyyyyyyyyy!!!!!!!!! and more ....... more ..... more ..... more .... more ..... more',
+                                    },
+                                ]}
+                            />
+                        </Drop>
+                    </div>
+                </div>
+                <div className="form-group">
                     <label className="form-control-label">Drop inside a modal</label>
                     <div className="form-control">
                         <button className="btn" onClick={() => this.openModal(modalId)}>
@@ -237,7 +269,7 @@ export class DropExamples extends React.PureComponent<any> {
                                         <Drop
                                             id={UUID.generate()}
                                             selector={'#App'}
-                                            positions={[DropPodPosition.top]}
+                                            positions={[DropPodPosition.bottom]}
                                             buttonContainerProps={{
                                                 className: 'inline-block relative',
                                             }}
