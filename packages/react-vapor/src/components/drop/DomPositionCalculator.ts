@@ -69,7 +69,7 @@ export const DomPositionCalculator: {
             ) {
                 return {
                     style: {
-                        top: buttonOffset.top,
+                        top: buttonOffset.bottom,
                         left: buttonOffset.left + buttonOffset.width,
                     },
                     lastPosition: {
