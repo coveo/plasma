@@ -2,9 +2,10 @@ import {mount, shallow} from 'enzyme';
 import * as React from 'react';
 import {ChromePicker} from 'react-color';
 import {Provider} from 'react-redux';
-import {getStoreMock} from '../../utils/tests/TestUtils';
+import {getStoreMock, TestUtils} from '../../utils/tests/TestUtils';
 import {InputConnected} from '../input/InputConnected';
-import {ColorPicker} from './ColorPicker';
+import {InputSelectors} from '../input/InputSelectors';
+import {ColorPicker, ColorPickerConnected} from './ColorPicker';
 
 describe('ColorPicker', () => {
     it('should mount and unmount without error', () => {
@@ -37,5 +38,15 @@ describe('ColorPicker', () => {
         const picker = shallow(<ColorPicker color="#fff" />);
         expect(picker.find(ChromePicker).prop('color')).toBe('#fff');
         expect(picker.find(InputConnected).prop('defaultValue')).toBe('#fff');
+    });
+
+    it('should make the color available from state', () => {
+        const store = TestUtils.buildStore();
+        mount(
+            <Provider store={store}>
+                <ColorPickerConnected defaultColor="#47FF21" id="color-picker-test" />
+            </Provider>
+        );
+        expect(InputSelectors.getValue(store.getState(), {id: 'color-picker-test'})).toBe('#47FF21');
     });
 });
