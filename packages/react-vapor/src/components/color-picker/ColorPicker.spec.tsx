@@ -3,7 +3,7 @@ import * as React from 'react';
 import {ChromePicker} from 'react-color';
 import {Provider} from 'react-redux';
 import {getStoreMock, TestUtils} from '../../utils/tests/TestUtils';
-import {removeInput} from '../input/InputActions';
+import {addInput, removeInput} from '../input/InputActions';
 import {InputConnected} from '../input/InputConnected';
 import {InputSelectors} from '../input/InputSelectors';
 import {ColorPicker, ColorPickerConnected} from './ColorPicker';
@@ -49,6 +49,17 @@ describe('ColorPicker', () => {
             </Provider>
         );
         expect(InputSelectors.getValue(store.getState(), {id: 'color-picker-test'})).toBe('#47FF21');
+    });
+
+    it('should add state input on mount', () => {
+        const store = getStoreMock();
+        spyOn(store, 'dispatch');
+        mount(
+            <Provider store={store}>
+                <ColorPicker id="foo" />
+            </Provider>
+        );
+        expect(store.dispatch).toHaveBeenCalledWith(addInput('foo'));
     });
 
     it('should remove state input on destroy', () => {
