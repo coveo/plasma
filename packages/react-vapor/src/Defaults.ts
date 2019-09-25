@@ -6,6 +6,8 @@ export abstract class Defaults {
 
     static DROP_ROOT: string = 'body';
 
+    static TOOLTIP_ROOT: string = 'body';
+
     static set APP_ELEMENT(appElement: string | HTMLElement) {
         ReactModal.setAppElement(appElement);
     }

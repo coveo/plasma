@@ -4,7 +4,3 @@ export enum TooltipPlacement {
     Left = 'left',
     Right = 'right',
 }
-
-export enum TooltipContainer {
-    Body = 'body',
-}
