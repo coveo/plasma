@@ -85,20 +85,20 @@ const PageLayoutWithoutTabs: React.FunctionComponent<ComponentPageProps> = (prop
     </div>
 );
 
-const START_STOP = /\/\/ start-print\s*([\s\S]*)\/\/ stop-print/g;
-const START_END = /\/\/ start-print\s*([\s\S]*)$/g;
-const BEGIN_STOP = /^([\s\S]*)\/\/ stop-print/g;
+const START_STOP = /\/\/ start-print\s*([\s\S]*)\/\/ stop-print/;
+const START_END = /\/\/ start-print\s*([\s\S]*)$/;
+const BEGIN_STOP = /^([\s\S]*)\/\/ stop-print/;
 
 function chopDownSourceFile(wholeFile: string): string {
     const hasStartDirective = wholeFile.indexOf('// start-print') >= 0;
     const hasStopDirective = wholeFile.indexOf('// stop-print') >= 0;
 
     if (hasStartDirective && hasStopDirective) {
-        return START_STOP.exec(wholeFile)[1];
+        return wholeFile.match(START_STOP)[1];
     } else if (hasStartDirective) {
-        return START_END.exec(wholeFile)[1];
+        return wholeFile.match(START_END)[1];
     } else if (hasStopDirective) {
-        return BEGIN_STOP.exec(wholeFile)[1];
+        return wholeFile.match(BEGIN_STOP)[1];
     } else {
         return wholeFile;
     }
