@@ -9,7 +9,7 @@ BRANCH_FOLDER_NAME=`echo "$TRAVIS_PULL_REQUEST_BRANCH" | md5sum | awk '{print $1
 
 echo "Syncing with gh-pages from branch: $TRAVIS_PULL_REQUEST_BRANCH"
 git stash
-git pull --no-edit --strategy-option ours "$SSH_REPO" gh-pages
+git pull --no-edit --quiet --strategy-option ours "$SSH_REPO" gh-pages
 git rm "$BRANCH_FOLDER_NAME" -r
 git commit -m "Clean old build" --no-verify
 git stash pop
