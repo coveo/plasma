@@ -3,7 +3,7 @@ import {Tooltip} from '../Tooltip';
 
 export class TooltipExamples extends React.Component<{}, {}> {
     static description =
-        'Tooltips are short descriptions that appear when the user hovers an element. They are used to provide explanantions that do not require nor allow user interaction, like tips and tricks.';
+        'Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks.';
 
     render() {
         return (
