@@ -15,7 +15,7 @@ export interface IColorPickerProps extends ChromePickerProps {
 
 export interface IColorPickerDispatchProps {
     onDestroy?: () => void;
-    onRender?: (value?: string, valid?: boolean, disabled?: boolean) => void;
+    componentDidMount?: (value?: string, valid?: boolean, disabled?: boolean) => void;
     onChangeComplete?: (colorPicked: ColorResult) => void;
 }
 
@@ -27,7 +27,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IColorPickerProps) =
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IColorPickerProps): IColorPickerDispatchProps => ({
-    onRender: (value: string = '', valid = true, disabled = false) => {
+    componentDidMount: (value: string = '', valid = true, disabled = false) => {
         dispatch(addInput(ownProps.id, value, valid, disabled));
         dispatch(changeInputValue(ownProps.id, value, true));
     },
@@ -51,9 +51,9 @@ export class ColorPicker extends React.Component<IColorPickerProps & IColorPicke
         }
     }
 
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender(this.colorForInput);
+    componentDidMount() {
+        if (this.props.componentDidMount) {
+            this.props.componentDidMount(this.colorForInput);
         }
     }
 
