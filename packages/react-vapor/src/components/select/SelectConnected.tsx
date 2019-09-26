@@ -130,6 +130,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 )}
                 minWidth={minWidth}
                 closeOnClickDrop={false}
+                parentSelector={Defaults.DROP_ROOT}
                 {...this.props.dropOption}
             >
                 <div
