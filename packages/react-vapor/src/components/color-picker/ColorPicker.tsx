@@ -9,14 +9,8 @@ import {InputConnected} from '../input/InputConnected';
 import {InputSelectors} from '../input/InputSelectors';
 
 export interface IColorPickerProps extends ChromePickerProps {
-    id?: string;
+    id: string;
     defaultColor?: string;
-}
-
-export interface IColorPickerDispatchProps {
-    onDestroy?: () => void;
-    componentDidMount?: (value?: string, valid?: boolean, disabled?: boolean) => void;
-    onChangeComplete?: (colorPicked: ColorResult) => void;
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IColorPickerProps) => {
@@ -26,19 +20,22 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IColorPickerProps) =
     };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: IColorPickerProps): IColorPickerDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IColorPickerProps) => ({
     componentDidMount: (value: string = '', valid = true, disabled = false) => {
         dispatch(addInput(ownProps.id, value, valid, disabled));
         dispatch(changeInputValue(ownProps.id, value, true));
     },
     onDestroy: () => dispatch(removeInput(ownProps.id)),
-    onChangeComplete: (colorPicked: ColorResult) => dispatch(changeInputValue(ownProps.id, colorPicked.hex, true)),
+    onChangeComplete: (colorPicked: ColorResult) => {
+        ownProps.onChangeComplete && ownProps.onChangeComplete(colorPicked);
+        dispatch(changeInputValue(ownProps.id, colorPicked.hex, true));
+    },
 });
 
-export class ColorPicker extends React.Component<IColorPickerProps & IColorPickerDispatchProps> {
-    static defaultProps: Partial<IColorPickerProps & IColorPickerDispatchProps> = {
+class ColorPickerDisconnected extends React.Component<IColorPickerProps & ReturnType<typeof mapDispatchToProps>> {
+    static defaultProps: Partial<IColorPickerProps & ReturnType<typeof mapDispatchToProps>> = {
         id: uniqueId('colorpicker'),
-        onChangeComplete: noop,
+        onChangeComplete: noop as any,
     };
 
     get colorForInput() {
@@ -78,7 +75,7 @@ export class ColorPicker extends React.Component<IColorPickerProps & IColorPicke
     }
 }
 
-export const ColorPickerConnected = connect(
+export const ColorPicker = connect(
     mapStateToProps,
     mapDispatchToProps
-)(ColorPicker);
+)(ColorPickerDisconnected);
