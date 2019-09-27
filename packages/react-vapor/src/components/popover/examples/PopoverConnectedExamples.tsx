@@ -1,8 +1,9 @@
 import * as React from 'react';
 
+import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {PopoverConnected} from '../PopoverConnected';
 
-export const PopoverConnectedExamples = () => (
+const PopoverConnectedExamples = () => (
     <div className="mt2">
         <h1 className="text-blue mb1 bold">Popover Connected</h1>
         <PopoverConnected id="popover-connected-example1" attachment="top left" targetAttachment="bottom left">
