@@ -62,6 +62,7 @@ const TOOLTIP_PROPS_TO_OMIT: string[] = [
     'overlay',
     'rootClose',
     'trigger',
+    'container',
 ];
 const OVERLAY_PROPS_TO_OMIT: string[] = [
     ...PROPS_TO_OMIT,
@@ -103,6 +104,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
             <BootstrapTooltip
                 id={_.uniqueId('tooltip-')}
                 ref={this.overlay}
+                container={this.props.container || 'body'}
                 {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
                 className="react-vapor-tooltip"
             >
