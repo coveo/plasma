@@ -14,4 +14,4 @@ export const PopoverConnectedExamples = () => (
 
 export const PopoverExample: ExampleComponent = PopoverConnectedExamples;
 PopoverConnectedExamples.description =
-    'Popovers appear when users click an interactive element and allow to display various types of information under different layouts (header, footer, split layout, etc.) without leaving the page. Their design also allow users to know where to click in order to open the Popover again, as needed.';
+    'Popovers appear when users click an interactive element. Popovers allow you to display various types of information under different layouts (header, footer, split layout, etc.) without leaving the page. Their design also allows users to know where to click in order to reopen the Popover, if needed.';
