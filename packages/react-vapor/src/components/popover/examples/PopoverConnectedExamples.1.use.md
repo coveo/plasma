@@ -2,8 +2,8 @@
 
 ### Do Not
 
--   Don't add a title if it does not add value to the interaction (e.g. if a popover is triggered from an icon button without a label, you need to explain the context in the title).
--   Don't display more than one Popover at a time.
+-   Do not add a title when doing so would not add value to the interaction (e.g., if a popover is triggered from an icon button without a label, you need to explain the context in the title).
+-   Do not display more than one Popover at a time.
 
 ---
 
