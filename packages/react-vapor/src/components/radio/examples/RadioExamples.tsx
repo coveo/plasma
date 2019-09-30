@@ -6,6 +6,7 @@ import {SingleRadioExample} from './SingleRadioExample';
 import {SingleRadioWithDescriptionExample} from './SingleRadioWithDescriptionExample';
 
 export class RadioExamples extends React.Component<any, any> {
+    static description = 'Radio Buttons allow the selection of only one option inside a set.';
     render() {
         return (
             <div className="mt2">

@@ -9,6 +9,9 @@ interface SlideYExamplesState {
 }
 
 export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState> {
+    private first: string;
+    private second: string;
+
     constructor(props: any, state: SlideYExamplesState) {
         super(props, state);
 
@@ -16,6 +19,9 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
             first: false,
             second: false,
         };
+
+        this.first = loremIpsum({count: 20});
+        this.second = loremIpsum({count: 20});
     }
 
     render() {
@@ -30,7 +36,7 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
                             enabled
                         ></Button>
                         <SlideY in={this.state.first} timeout={500}>
-                            <div>{loremIpsum({count: 20})}</div>
+                            <div>{this.first}</div>
                         </SlideY>
                     </div>
                 </div>
@@ -43,7 +49,7 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
                             enabled
                         ></Button>
                         <SlideY in={this.state.second} timeout={500} duration={5000}>
-                            <div>{loremIpsum({count: 20})}</div>
+                            <div>{this.second}</div>
                         </SlideY>
                     </div>
                 </div>
