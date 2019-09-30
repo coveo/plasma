@@ -5,6 +5,7 @@ export abstract class Defaults {
     static MODAL_TIMEOUT: number = 300;
 
     static DROP_ROOT: string = 'body';
+    static DROP_PARENT_ROOT: string = 'body';
 
     static set APP_ELEMENT(appElement: string | HTMLElement) {
         ReactModal.setAppElement(appElement);
