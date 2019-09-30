@@ -8,7 +8,7 @@
 
 ![logo](vapor.gif)
 
-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation is [available here](http://vapor.surge.sh/)
+Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation is [available here](https://static.cloud.coveo.com/react-vapor/index.html)
 
 ## Usage
 

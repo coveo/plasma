@@ -41,7 +41,7 @@ describe('DomPositionCalculator', () => {
             });
         });
 
-        it('should return button offset top and left + width position if the drop can render on bottom with right orientation', () => {
+        it('should return button offset top and right - width position if the drop can render on bottom with right orientation', () => {
             expect(
                 validator(
                     {bottom: 100, left: 100, right: 110, top: 90, width: 10, height: 10} as any,
@@ -50,8 +50,8 @@ describe('DomPositionCalculator', () => {
                     defaultLastPosition
                 ).style
             ).toEqual({
-                top: 90,
-                left: 110,
+                top: 100,
+                left: 100,
             });
         });
 

@@ -21,9 +21,27 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
             },
             ACTION_SEPARATOR,
             {
+                name: 'Confirm Me',
+                trigger: () => alert('You confirmed this action !'),
+                target: '_blank',
+                icon: 'disable',
+                primary: true,
+                enabled: true,
+                requiresConfirmation: {
+                    confirmLabel: 'Want to do this action ?',
+                    confirmType: 'danger',
+                    buttonLabels: {
+                        confirm: 'sure !',
+                        cancel: 'never !',
+                    },
+                },
+            },
+            ACTION_SEPARATOR,
+            {
                 name: 'Action 1',
                 trigger: () => alert('Action 1 was triggered'),
                 enabled: true,
+                icon: 'edit',
                 requiresConfirmation: {
                     confirmType: 'danger',
                     buttonLabels: {

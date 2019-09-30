@@ -64,6 +64,7 @@
     &.state-disabled {
         color: $medium-grey;
         cursor: default;
+        pointer-events: none;
 
         .icon {
             fill: $medium-grey;

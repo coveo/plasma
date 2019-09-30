@@ -16,7 +16,7 @@ const Menu: React.FunctionComponent<IMenuProps> = ({components}) => (
                 <NavigationLink
                     key={path}
                     href={`/${name}`}
-                    name={`${name}${component.deprecated ? ' (deprecated)' : ''}`}
+                    name={`${component.title || name}${component.deprecated ? ' (deprecated)' : ''}`}
                 />
             ))}
         </NavigationSection>

@@ -1,4 +1,4 @@
-import {helpers, seed} from 'faker';
+import {helpers, seed} from 'faker/locale/en';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';

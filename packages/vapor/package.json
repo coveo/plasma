@@ -1,6 +1,6 @@
 {
     "name": "coveo-styleguide",
-    "version": "4.5.2",
+    "version": "4.6.1",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -9,7 +9,7 @@
         "front-end",
         "web"
     ],
-    "homepage": "http://vapor.surge.sh/",
+    "homepage": "https://static.cloud.coveo.com/react-vapor/index.html",
     "author": "Coveo",
     "license": "MIT",
     "main": "dist/js/VaporSVG.js",

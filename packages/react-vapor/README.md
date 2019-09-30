@@ -10,7 +10,7 @@
 
 [Coveo Administration Console](https://platform.cloud.coveo.com/admin/)'s design system.
 
-[Have a look at `react-vapor`'s demo page!](http://react-vapor.surge.sh/)
+[Have a look at `react-vapor`'s demo page!](https://static.cloud.coveo.com/react-vapor/index.html)
 
 ## Getting started
 
