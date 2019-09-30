@@ -51,3 +51,9 @@
 .space-around {
     justify-content: space-around;
 }
+
+@for $i from 0 through 10 {
+    .flex-shrink-#{$i} {
+        flex-shrink: #{$i};
+    }
+}
