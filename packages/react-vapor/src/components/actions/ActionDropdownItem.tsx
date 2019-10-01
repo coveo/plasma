@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IActionOptions} from './Action';
 import {LinkAction} from './LinkAction';
-import {TriggerAction} from './TriggerAction';
+import {TriggerAction} from './TriggerActionConnected';
 import {TriggerActionConnected} from './TriggerActionConnected';
 
 export interface IActionDropdownItemProps {

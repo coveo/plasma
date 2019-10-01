@@ -3,7 +3,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {IActionOptions} from '../Action';
-import {ITriggerActionProps, TriggerAction} from '../TriggerAction';
+import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected';
 
 describe('Actions', () => {
     let triggerSpy: jasmine.Spy;
