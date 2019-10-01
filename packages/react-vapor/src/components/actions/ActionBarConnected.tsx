@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {removePrompt} from '../inlinePrompt/InlinePromptActions';
 import {InlinePromptConnected} from '../inlinePrompt/InlinePromptConnected';
 import {IPromptState} from '../inlinePrompt/InlinePromptReducers';
 import {IActionOptions} from './Action';
@@ -57,7 +56,6 @@ const mapDispatchToProps = (
     onDestroy: () => {
         dispatch(removeActionBar(ownProps.id));
         dispatch(removeItemFilter(ownProps.id));
-        dispatch(removePrompt(ownProps.id));
     },
     clearItemFilter: () => {
         if (ownProps.onClearItemFilter) {

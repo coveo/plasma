@@ -1,5 +1,4 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -7,14 +6,14 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../../utils/tests/TestUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
-import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions';
+import {addPrompt} from '../../inlinePrompt/InlinePromptActions';
 import {IActionOptions} from '../Action';
 import {ActionBar, IActionBarProps} from '../ActionBar';
-import {addActionsToActionBar, removeActionBar} from '../ActionBarActions';
+import {addActionsToActionBar} from '../ActionBarActions';
 import {ActionBarConnected} from '../ActionBarConnected';
-import {filterItems, removeItemFilter} from '../filters/ItemFilterActions';
+import {filterItems} from '../filters/ItemFilterActions';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';
 import {SecondaryActionsConnected} from '../SecondaryActionsConnected';
 
@@ -212,38 +211,6 @@ describe('Actions', () => {
             actionBar.props().clearItemFilter();
 
             expect(_.findWhere(store.getState().itemFilters, {id: id}).item).toBe('');
-        });
-
-        describe('dispatch onDestroy', () => {
-            let RStore: ReactVaporMockStore;
-            const ownProps = {
-                id: 'id',
-            };
-
-            beforeEach(() => {
-                RStore = getStoreMock();
-            });
-
-            it('should remove the prompt onDestroy', () => {
-                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore).dive();
-                component.unmount();
-
-                expect(RStore.getActions()).toContain(removePrompt(ownProps.id));
-            });
-
-            it('should remove the item filter onDestroy', () => {
-                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore).dive();
-                component.unmount();
-
-                expect(RStore.getActions()).toContain(removeItemFilter(ownProps.id));
-            });
-
-            it('should remove the action bar onDestroy', () => {
-                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore).dive();
-                component.unmount();
-
-                expect(RStore.getActions()).toContain(removeActionBar(ownProps.id));
-            });
         });
     });
 });
