@@ -2,8 +2,7 @@ import * as React from 'react';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {IBasicActionProps} from './Action';
 import {LinkAction} from './LinkAction';
-import {TriggerAction} from './TriggerAction';
-import {TriggerActionConnected} from './TriggerActionConnected';
+import {TriggerAction, TriggerActionConnected} from './TriggerActionConnected';
 
 export interface IPrimaryActionOwnProps extends React.ClassAttributes<PrimaryAction>, IBasicActionProps {
     parentId?: string;

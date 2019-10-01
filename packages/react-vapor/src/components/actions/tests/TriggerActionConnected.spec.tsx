@@ -8,7 +8,7 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addPrompt} from '../../inlinePrompt/InlinePromptActions';
 import {IActionOptions} from '../Action';
-import {ITriggerActionProps, TriggerAction} from '../TriggerAction';
+import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected';
 import {TriggerActionConnected} from '../TriggerActionConnected';
 
 describe('Actions', () => {
