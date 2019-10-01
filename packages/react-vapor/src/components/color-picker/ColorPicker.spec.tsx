@@ -1,4 +1,4 @@
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {ChromePicker} from 'react-color';
 import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../utils/tests/TestUtils';
@@ -16,7 +16,7 @@ describe('ColorPicker', () => {
 
     it('should mount and unmount without error', () => {
         expect(() => {
-            const picker = mountWithStore(<ColorPicker />, store);
+            const picker = shallowWithStore(<ColorPicker />, store);
             picker.unmount();
         }).not.toThrow();
     });
@@ -44,17 +44,17 @@ describe('ColorPicker', () => {
 
     it('should make the color available from state', () => {
         const nonMockStore = TestUtils.buildStore();
-        mountWithStore(<ColorPicker defaultColor="#47FF21" id="color-picker-test" />, nonMockStore);
+        shallowWithStore(<ColorPicker defaultColor="#47FF21" id="color-picker-test" />, nonMockStore);
         expect(InputSelectors.getValue(nonMockStore.getState(), {id: 'color-picker-test'})).toBe('#47FF21');
     });
 
     it('should add state input on mount', () => {
-        mountWithStore(<ColorPicker id="foo" />, store);
+        shallowWithStore(<ColorPicker id="foo" />, store);
         expect(store.getActions()).toContain(addInput('foo'));
     });
 
     it('should remove state input on destroy', () => {
-        const picker = mountWithStore(<ColorPicker id="foo" />, store);
+        const picker = shallowWithStore(<ColorPicker id="foo" />, store);
         picker.unmount();
         expect(store.getActions()).toContain(removeInput('foo'));
     });

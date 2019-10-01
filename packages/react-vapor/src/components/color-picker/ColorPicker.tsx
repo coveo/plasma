@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {isString, noop, uniqueId} from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {addInput, changeInputValue, removeInput} from '../input/InputActions';
+import {changeInputValue} from '../input/InputActions';
 import {InputConnected} from '../input/InputConnected';
 import {InputSelectors} from '../input/InputSelectors';
 
@@ -21,11 +21,6 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IColorPickerProps) =
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IColorPickerProps) => ({
-    componentDidMount: (value: string = '', valid = true, disabled = false) => {
-        dispatch(addInput(ownProps.id, value, valid, disabled));
-        dispatch(changeInputValue(ownProps.id, value, true));
-    },
-    onDestroy: () => dispatch(removeInput(ownProps.id)),
     onChangeComplete: (colorPicked: ColorResult) => {
         ownProps.onChangeComplete && ownProps.onChangeComplete(colorPicked);
         dispatch(changeInputValue(ownProps.id, colorPicked.hex, true));
@@ -45,18 +40,6 @@ class ColorPickerDisconnected extends React.Component<IColorPickerProps & Return
 
         if (this.props.defaultColor) {
             return this.props.defaultColor;
-        }
-    }
-
-    componentDidMount() {
-        if (this.props.componentDidMount) {
-            this.props.componentDidMount(this.colorForInput);
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
         }
     }
 
