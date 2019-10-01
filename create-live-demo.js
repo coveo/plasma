@@ -4,7 +4,7 @@ const branchName = process.env.BRANCH_FOLDER_NAME;
 const prNumber = process.env.TRAVIS_PULL_REQUEST;
 const userpassword = process.env.GITUSRPWD;
 const APIEndpointWithAuthentication = `https://${userpassword}@api.github.com/repos/coveo/react-vapor/pulls/${prNumber}/reviews`;
-const liveDemoMessage = `[Live demo available here](https://coveo.github.io/react-vapor/${branchName}/).`;
+const liveDemoMessage = `[Live demo available here](https://coveo.github.io/react-vapor/${branchName}/index.html).`;
 
 console.log('Posting demo in GitHub Pull Request...\n');
 const handleError = (e) => {
