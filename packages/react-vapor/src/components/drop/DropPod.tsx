@@ -194,6 +194,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             if (this.props.hasSameWidth) {
                 newDomPosition.style = {
                     ...style,
+                    left: buttonOffset.left,
                     width: buttonOffset.width,
                 };
             }

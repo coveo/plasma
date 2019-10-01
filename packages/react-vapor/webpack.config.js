@@ -27,6 +27,7 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
     ],
+    stats: 'minimal',
     module: {
         rules: [
             {

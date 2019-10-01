@@ -22,11 +22,11 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
             return c;
         };
         const loadAll = () => {
-            const componentFiles = require.context('../../../src/components/', true, /Examples?\.tsx?$/i, 'lazy');
+            const componentFiles = require.context('../../../src/', true, /Examples?\.tsx?$/i, 'lazy');
             return Promise.all(componentFiles.keys().map((path) => load(path, componentFiles)));
         };
         loadAll().then((all) => setComponents(all.filter(Boolean)));
-    }, [match]);
+    }, []);
     const routes = components
         .sort((a: IComponent, b: IComponent) => a.name.localeCompare(b.name))
         .map(({path, ...rest}: IComponent) => (

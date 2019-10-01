@@ -69,8 +69,8 @@ export const DomPositionCalculator: {
             ) {
                 return {
                     style: {
-                        top: buttonOffset.top,
-                        left: buttonOffset.left + buttonOffset.width,
+                        top: buttonOffset.bottom,
+                        left: buttonOffset.right - dropOffset.width,
                     },
                     lastPosition: {
                         position: DropPodPosition.bottom,
