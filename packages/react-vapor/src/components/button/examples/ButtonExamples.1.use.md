@@ -32,8 +32,8 @@ The Button Type choice is defined by the function of the button (e.g. primary or
 
 ## Related Components
 
-[Action Bar](../#/components/ActionBar)
+[Action Bar](#/components/ActionBar)
 
-["More" Menu Button](../#/components/Menu)
+["More" Menu Button](#/components/Menu)
 
-[Tabs](../#/components/Tabs)
+[Tabs](#/components/Tabs)
