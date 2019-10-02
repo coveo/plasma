@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "4.8.0",
+    "version": "4.9.0",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -63,7 +63,6 @@
     },
     "devDependencies": {
         "@loadable/component": "5.10.2",
-        "@types/react-color": "3.0.1",
         "@types/chosen-js": "1.6.2",
         "@types/classnames": "2.2.6",
         "@types/codemirror": "0.0.62",
@@ -83,6 +82,7 @@
         "@types/react": "16.8.3",
         "@types/react-bootstrap": "0.32.15",
         "@types/react-codemirror": "1.0.2",
+        "@types/react-color": "3.0.1",
         "@types/react-dom": "16.8.1",
         "@types/react-infinite-scroll-component": "4.2.3",
         "@types/react-modal": "3.8.2",
@@ -105,7 +105,7 @@
         "codecov": "3.2.0",
         "codemirror": "5.42.0",
         "concurrently": "4.1.0",
-        "coveo-styleguide": "^4.8.0",
+        "coveo-styleguide": "^4.9.0",
         "css-loader": "1.0.1",
         "d3": "3.5.17",
         "del": "4.0.0",
