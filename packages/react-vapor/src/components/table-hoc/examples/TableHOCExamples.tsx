@@ -192,7 +192,20 @@ export class TableHOCExamples extends React.Component<TableHOCExamplesDispatchPr
                                         },
                                         {primary: false, icon: 'view', name: 'view', enabled: true},
                                         {primary: false, icon: 'copy', name: 'copy', enabled: true},
-                                        {primary: false, icon: 'delete', name: 'delete', enabled: true},
+                                        {
+                                            primary: false,
+                                            icon: 'delete',
+                                            name: 'delete',
+                                            enabled: true,
+                                            unrepeatable: true,
+                                            requiresConfirmation: {
+                                                confirmType: 'danger',
+                                                buttonLabels: {
+                                                    confirm: 'Confirm',
+                                                    cancel: 'Cancel',
+                                                },
+                                            },
+                                        },
                                     ]}
                                 >
                                     <td key="city">{data.city}</td>
@@ -243,6 +256,20 @@ export class TableHOCExamples extends React.Component<TableHOCExamplesDispatchPr
                                             callOnDoubleClick: true,
                                         },
                                         {primary: false, icon: 'view', name: 'view', enabled: true},
+                                        {
+                                            primary: false,
+                                            icon: 'delete',
+                                            name: 'delete',
+                                            enabled: true,
+                                            unrepeatable: true,
+                                            requiresConfirmation: {
+                                                confirmType: 'danger',
+                                                buttonLabels: {
+                                                    confirm: 'Confirm',
+                                                    cancel: 'Cancel',
+                                                },
+                                            },
+                                        },
                                     ]}
                                 >
                                     <td key="city">{data.city}</td>

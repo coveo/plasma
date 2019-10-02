@@ -8,8 +8,6 @@ export class InfoBoxExamples extends React.PureComponent {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Info Box</h1>
-
                 <div className="form-group">
                     <label className="form-control-label">Empty InfoBox</label>
                     <InfoBox />

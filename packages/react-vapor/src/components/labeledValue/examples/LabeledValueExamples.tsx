@@ -4,7 +4,6 @@ import {LabeledValue} from '../LabeledValue';
 
 export const LabeledValueExamples = () => (
     <div className="mt2">
-        <h1 className="text-blue mb1 bold">Labeled Value List</h1>
         <div className="form-group">
             <label className="form-control-label">Two Simple Labeled Values</label>
             <LabeledValue label="First label" value="first value" />

@@ -22,7 +22,6 @@ export class GroupableCheckboxConnectedExamples extends React.Component<any, any
         const parentId5 = 'parentId5';
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Groupable Checkboxes Connected</h1>
                 <div className="form-group">
                     <label className="form-control-label">A simple groupable checkbox uncheck by default</label>
                     <div className="form-control">

@@ -54,7 +54,6 @@ export class BreadcrumbsExamples extends React.Component<any, any> {
 
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Breadcrumbs List</h1>
                 <div className="form-group">
                     <label className="form-control-label">Default breadcrumb</label>
                     <div className="form-control">

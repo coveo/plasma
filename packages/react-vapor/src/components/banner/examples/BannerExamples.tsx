@@ -6,7 +6,6 @@ export class BannerExamples extends React.Component {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Banners</h1>
                 <div className="form-group">
                     <label className="form-control-label">Empty banner</label>
                     <div className="form-control">

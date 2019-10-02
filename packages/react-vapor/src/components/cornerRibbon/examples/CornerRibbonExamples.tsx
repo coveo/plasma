@@ -6,7 +6,6 @@ export class CornerRibbonExamples extends React.Component<any, any> {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">CornerRibbon List</h1>
                 <div className="form-group">
                     <label className="form-control-label">CornerRibbon placement (default is top right)</label>
                     <div className="form-control">

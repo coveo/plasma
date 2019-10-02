@@ -82,7 +82,6 @@ export class DropdownSearchExamples extends React.Component<DropdownSearchExampl
 
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Dropdown List DEPRECATED</h1>
                 <div className="form-group">
                     <label className="form-control-label">Multiselect Dropdown</label>
                     <div className="form-control">
