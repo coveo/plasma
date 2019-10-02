@@ -95,7 +95,7 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
                 <div ref={this.tetherToggle} onClick={() => this.toggleOpened(!isOpen)}>
                     {children[0]}
                 </div>
-                <div ref={this.tetherElement} className={classNames({hide: !isOpen})}>
+                <div ref={this.tetherElement} className={classNames({hide: !isOpen}, 'shadow-2')}>
                     {children[1]}
                 </div>
             </TetherComponent>
