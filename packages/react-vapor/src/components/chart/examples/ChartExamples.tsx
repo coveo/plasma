@@ -55,8 +55,6 @@ export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
         <div className="mt2">
-            <h1 className="text-blue mb1 bold">Charts</h1>
-
             <div className="form-group">
                 <label className="form-control-label">Basic {s.capitalize(chartType)} Chart</label>
                 <div className="form-control" style={{height: '300px'}}>

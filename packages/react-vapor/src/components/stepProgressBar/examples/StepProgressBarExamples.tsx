@@ -3,7 +3,6 @@ import {StepProgressBar} from '../StepProgressBar';
 
 export const StepProgressBarExamples = () => (
     <div className="mt2">
-        <h1 className="text-blue mb1 bold">Step Progress Bar List</h1>
         <div className="form-group">
             <label className="form-control-label">Step Progress Bar 3 steps (initial step)</label>
             <div className="form-control">

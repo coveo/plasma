@@ -6,7 +6,6 @@ export class LogoCardExamples extends React.Component<any, any> {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">LogoCard List</h1>
                 <div className="form-group">
                     <label className="form-control-label">Default LogoCard</label>
                     <div className="form-control">

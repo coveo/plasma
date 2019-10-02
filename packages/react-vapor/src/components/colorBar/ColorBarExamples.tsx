@@ -3,7 +3,6 @@ import {ColorBar} from './ColorBar';
 
 export const ColorBarExamples = () => (
     <div className="mt2">
-        <h1 className="text-blue mb1 bold">ColorBar List</h1>
         <div className="form-group">
             <label className="form-control-label">ColorBar with one color full</label>
             <div className="form-control">

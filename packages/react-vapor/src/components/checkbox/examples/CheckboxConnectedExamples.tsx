@@ -6,7 +6,6 @@ export class CheckboxConnectedExamples extends React.Component<any, any> {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Checkboxes Connected</h1>
                 <div className="form-group">
                     <CheckboxConnected id="checkbox1">
                         <Label classes={['label']}>A checkbox connected unchecked by default</Label>

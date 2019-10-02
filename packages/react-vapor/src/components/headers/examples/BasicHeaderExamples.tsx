@@ -6,7 +6,6 @@ export class BasicHeaderExamples extends React.Component<any, any> {
     render() {
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Basic header List</h1>
                 <div className="form-group">
                     <label className="form-control-label">Default basic header</label>
                     <div className="form-control">

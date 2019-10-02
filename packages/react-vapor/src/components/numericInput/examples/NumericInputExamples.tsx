@@ -3,7 +3,6 @@ import {NumericInputConnected} from '../NumericInputConnected';
 
 export const NumericInputExamples = () => (
     <div className="mt2">
-        <h1 className="text-blue mb1 bold">Numeric Input</h1>
         <div className="form-group">
             <label className="form-control-label">Numeric Input</label>
             <div className="form-control">
