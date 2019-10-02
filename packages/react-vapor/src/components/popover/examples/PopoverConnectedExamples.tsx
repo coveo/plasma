@@ -74,4 +74,4 @@ const PopoverConnectedExamples = () => (
 
 export const PopoverExample: ExampleComponent = PopoverConnectedExamples;
 PopoverConnectedExamples.description =
-    'Popovers provide additional details or interactions. They are visually attached to an interactive element and support various content and layouts.';
+    'Popovers provide additional details or interactions. They are visually attached to interactive elements and support various contents and layouts.';
