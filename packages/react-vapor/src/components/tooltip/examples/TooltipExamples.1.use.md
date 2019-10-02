@@ -2,8 +2,8 @@
 
 ### Do
 
--   Keep the **text short** and direct (3 lines maximum). For more detailed explanations, link to external documentation.
--   Make Tooltips **appear in empty areas** in the screen, or above less relevant information.
+-   Keep the **text short** and direct (ideally 3 lines maximum). For more detailed explanations a link to external documentation should be used.
+-   Have Tooltips **appear in empty areas** of the screen, or on top of less relevant information.
 -   Only show **one Tooltip at a time**.
 
 ### Do Not
@@ -16,4 +16,4 @@
 
 ## Related Components
 
-[Popover](/#/components/PopoverConnected)
+[Popover](#/components/PopoverConnected)
