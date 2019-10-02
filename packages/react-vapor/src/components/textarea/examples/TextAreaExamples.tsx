@@ -9,7 +9,6 @@ import {TextAreaLabel} from '../TextAreaLabel';
 
 export const TextAreaExamples = (): JSX.Element => (
     <div className="mt2">
-        <h1 className="text-blue mb1 bold">TextAreaConnected List</h1>
         <div className="mt2">
             <div className="form-group">
                 <TextAreaConnected

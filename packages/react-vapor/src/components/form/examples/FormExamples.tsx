@@ -12,7 +12,6 @@ export class FormExamples extends React.Component<any, any> {
         return (
             // start-print
             <div className="mt2">
-                <h1 className="text-blue mb1 bold">Simple Forms</h1>
                 <Form title="A Simple Form">
                     <Input placeholder="Just a simple input">
                         <Label>An Input Box</Label>

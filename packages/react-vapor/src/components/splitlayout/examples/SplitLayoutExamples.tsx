@@ -9,7 +9,6 @@ const exampleTextRight = `I am a right child. ${loremIpsum({count: 5, sentenceUp
 
 export const SplitLayoutExamples = () => (
     <div className="mt2">
-        <h1 className="text-blue mb1 bold">SplitLayout List</h1>
         <div className="form-group">
             <label className="form-control-label">SplitLayout with one JSX.Element on each side</label>
             <div className="form-control">
