@@ -7,33 +7,37 @@ import {InputDescription} from './InputDescription';
 
 export interface ILabeledInputProps {
     label?: string;
+    message?: React.ReactNode;
     description?: React.ReactNode;
     className?: string;
     information?: string;
-    informationPlacement?: TooltipPlacement;
 }
 
 export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
-    label,
     children,
+    label,
+    message,
     description,
     className,
     information,
-    informationPlacement,
 }) => {
-    const informationSVG = !!information ? (
-        <Tooltip title={information} placement={informationPlacement || TooltipPlacement.Top}>
-            <Svg svgName="info-14" svgClass="icon fill-medium-grey" />
-        </Tooltip>
-    ) : null;
+    const header =
+        !!label || information ? (
+            <header className={classNames('label', 'text-light-blue', className)}>
+                {!!label ? <span>{label}</span> : null}
+                {!!information ? (
+                    <Tooltip title={information} placement={TooltipPlacement.Top} className="ml1">
+                        <Svg svgName="info-14" svgClass="icon fill-medium-grey" />
+                    </Tooltip>
+                ) : null}
+            </header>
+        ) : null;
 
     return (
         <>
-            <header className={classNames('label', 'text-light-blue', className)}>
-                <span>{label}</span>
-                {informationSVG}
-            </header>
+            {header}
             {children}
+            {!!message && <InputDescription>{message}</InputDescription>}
             {!!description && <InputDescription>{description}</InputDescription>}
         </>
     );

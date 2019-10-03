@@ -21,8 +21,8 @@ export class FormExamples extends React.Component<any, any> {
                     <FormGroup title="Main button">
                         <LabeledInput
                             label="Location on screen"
-                            description="The widget button's position is fixed, which means it is positioned relative to the viewport
-                            and stays in the same place even if the page is scrolled."
+                            description="The widget button's position is fixed, which means it is positioned relative to the viewport and stays in the same place even if the page is scrolled."
+                            information="INFORMATION"
                         >
                             <RadioSelect>
                                 <Radio value="1">
@@ -41,7 +41,7 @@ export class FormExamples extends React.Component<any, any> {
                             </LabeledInput>
                             <LabeledInput description="This is the font family that will be used on the button...">
                                 <Input value="Lato, Arial, sans serif">
-                                    <Label>Font family</Label>
+                                    <Label>Font Family</Label>
                                 </Input>
                             </LabeledInput>
                         </FormGroup>
@@ -49,48 +49,43 @@ export class FormExamples extends React.Component<any, any> {
                 </Form>
                 <Form>
                     <FormGroup title="Define your products structure">
-                        <FormGroup
-                            title="Define your products"
+                        <LabeledInput
+                            label="Product Object Type"
                             description="Select the object type value that identifies a Product object"
-                            level={2}
                         >
-                            <LabeledInput label="Product Object Type">
-                                <SingleSelectConnected
-                                    id="first"
-                                    items={[
-                                        {
-                                            selected: true,
-                                            value: 'Product',
-                                        },
-                                        {
-                                            selected: false,
-                                            value: 'Variant',
-                                        },
-                                    ]}
-                                ></SingleSelectConnected>
-                            </LabeledInput>
-                        </FormGroup>
-                        <FormGroup
-                            title="Define your product unique identifier"
-                            description="The product unique identifier is often associated with a model number. It is used to link variants and products together. This field should appear in both objects."
-                            level={2}
+                            <SingleSelectConnected
+                                id="first"
+                                items={[
+                                    {
+                                        selected: true,
+                                        value: 'Product',
+                                    },
+                                    {
+                                        selected: false,
+                                        value: 'Variant',
+                                    },
+                                ]}
+                            ></SingleSelectConnected>
+                        </LabeledInput>
+                        <LabeledInput
+                            label="Product Id Field"
+                            description="The product unique identifier is often associated with a model number. It is used to link variants and products together. This field should appear in both objects"
+                            message="31 different products identified"
                         >
-                            <LabeledInput label="Product Id Field" description="31 different products identified">
-                                <SingleSelectConnected
-                                    id="second"
-                                    items={[
-                                        {
-                                            selected: true,
-                                            value: 'productid',
-                                        },
-                                        {
-                                            selected: false,
-                                            value: 'anotherfield',
-                                        },
-                                    ]}
-                                ></SingleSelectConnected>
-                            </LabeledInput>
-                        </FormGroup>
+                            <SingleSelectConnected
+                                id="second"
+                                items={[
+                                    {
+                                        selected: true,
+                                        value: 'productid',
+                                    },
+                                    {
+                                        selected: false,
+                                        value: 'anotherfield',
+                                    },
+                                ]}
+                            ></SingleSelectConnected>
+                        </LabeledInput>
                     </FormGroup>
                 </Form>
             </>
