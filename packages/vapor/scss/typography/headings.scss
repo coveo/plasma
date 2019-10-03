@@ -12,35 +12,29 @@ h6 {
 
 h1,
 .h1 {
-    margin-top: 1.2em;
     font-size: $big-font-size;
 }
 
 h2,
 .h2 {
-    margin-top: 1.3em;
     font-size: 20px;
 }
 
 h3,
 .h3 {
-    margin-top: 1.4em;
     font-size: $default-font-size;
 }
 
 h4,
 .h4 {
-    margin-top: 1.5em;
     font-size: $small-font-size;
 }
 
 h5 {
-    margin-top: 1.5em;
     font-size: $small-font-size;
 }
 
 h6 {
-    margin-top: 1.5em;
     font-size: $small-font-size;
 }
 
@@ -65,4 +59,22 @@ h6 {
 
 .mod-header-min-height {
     min-height: $header-line-height;
+}
+
+.mod-h1-margin {
+    margin-top: 1.2em;
+}
+
+.mod-h2-margin {
+    margin-top: 1.3em;
+}
+
+.mod-h3-margin {
+    margin-top: 1.4em;
+}
+
+.mod-h4-margin,
+.mod-h5-margin,
+.mod-h6-margin {
+    margin-top: 1.5em;
 }
