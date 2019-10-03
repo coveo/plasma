@@ -1,4 +1,5 @@
 .breadcrumb-title {
+    @extend h1;
     @extend .h1;
     @extend .inline-flex;
     @extend .bold;
