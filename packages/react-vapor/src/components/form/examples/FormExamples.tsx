@@ -1,9 +1,10 @@
 import * as React from 'react';
-import {Checkbox} from '../../checkbox/Checkbox';
 import {Input} from '../../input/Input';
 import {Label} from '../../input/Label';
+import {LabeledInput} from '../../input/LabeledInput';
 import {Radio} from '../../radio/Radio';
 import {RadioSelect} from '../../radio/RadioSelect';
+import {SingleSelectConnected} from '../../select/SingleSelectConnected';
 import {Form} from '../Form';
 import {FormGroup} from '../FormGroup';
 
@@ -11,59 +12,88 @@ export class FormExamples extends React.Component<any, any> {
     render() {
         return (
             // start-print
-            <div className="mt2">
-                <Form title="A Simple Form">
-                    <Input placeholder="Just a simple input">
-                        <Label>An Input Box</Label>
-                    </Input>
-                    <Input placeholder="Just another simple input">
-                        <Label>Another Input Box</Label>
-                    </Input>
-                </Form>
-                <Form title="A Card Form" mods="material-card">
-                    <Input placeholder="Isn't it cool">
-                        <Label>This one looks like a card</Label>
-                    </Input>
-                </Form>
-                <Form title="A Form With a Mod" mods="mod-header-padding">
-                    <Input placeholder="Amazing">
-                        <Label>It would now be aligned with a padded header</Label>
-                    </Input>
-                </Form>
-                <Form title="A Form With Form Groups">
-                    <FormGroup title="A form group delimits sections of a form">
-                        <Input placeholder="This is useful">
-                            <Label>Here you have only one input</Label>
-                        </Input>
-                    </FormGroup>
+            <>
+                <Form>
                     <FormGroup
-                        title="Here you have a second section"
-                        description="It has a description for more details on how to fill this section"
-                    >
-                        <Input placeholder="#1">
-                            <Label>Another input </Label>
-                        </Input>
-                        <Input placeholder="#2">
-                            <Label>Another input</Label>
-                        </Input>
-                    </FormGroup>
-                    <FormGroup title="Checkbox">
-                        <Checkbox>
-                            <Label classes={['label']}>A checkbox</Label>
-                        </Checkbox>
-                    </FormGroup>
-                    <FormGroup title="Radio">
-                        <RadioSelect>
-                            <Radio value="1">
-                                <Label>Value 1</Label>
-                            </Radio>
-                            <Radio value="2">
-                                <Label>Value 2</Label>
-                            </Radio>
-                        </RadioSelect>
+                        title="Search panel"
+                        description="Customizing the display and behavior of the interface displayed withing the search panel can be done by editing the code of your search interface directly or via the JavaScript Search Interface Editor. As for style, it can be modified by applying your own stylesheet or adding styling rules in the Advanced tab."
+                    />
+                    <FormGroup title="Main button">
+                        <LabeledInput
+                            label="Location on screen"
+                            description="The widget button's position is fixed, which means it is positioned relative to the viewport
+                            and stays in the same place even if the page is scrolled."
+                        >
+                            <RadioSelect>
+                                <Radio value="1">
+                                    <Label>Value 1</Label>
+                                </Radio>
+                                <Radio value="2">
+                                    <Label>Value 2</Label>
+                                </Radio>
+                            </RadioSelect>
+                        </LabeledInput>
+                        <FormGroup title="Content" level={2}>
+                            <LabeledInput description="The text that appears on the main widget button.">
+                                <Input value="Help">
+                                    <Label>Text</Label>
+                                </Input>
+                            </LabeledInput>
+                            <LabeledInput description="This is the font family that will be used on the button...">
+                                <Input value="Lato, Arial, sans serif">
+                                    <Label>Font family</Label>
+                                </Input>
+                            </LabeledInput>
+                        </FormGroup>
                     </FormGroup>
                 </Form>
-            </div>
+                <Form>
+                    <FormGroup title="Define your products structure">
+                        <FormGroup
+                            title="Define your products"
+                            description="Select the object type value that identifies a Product object"
+                            level={2}
+                        >
+                            <LabeledInput label="Product Object Type">
+                                <SingleSelectConnected
+                                    id="first"
+                                    items={[
+                                        {
+                                            selected: true,
+                                            value: 'Product',
+                                        },
+                                        {
+                                            selected: false,
+                                            value: 'Variant',
+                                        },
+                                    ]}
+                                ></SingleSelectConnected>
+                            </LabeledInput>
+                        </FormGroup>
+                        <FormGroup
+                            title="Define your product unique identifier"
+                            description="The product unique identifier is often associated with a model number. It is used to link variants and products together. This field should appear in both objects."
+                            level={2}
+                        >
+                            <LabeledInput label="Product Id Field" description="31 different products identified">
+                                <SingleSelectConnected
+                                    id="second"
+                                    items={[
+                                        {
+                                            selected: true,
+                                            value: 'productid',
+                                        },
+                                        {
+                                            selected: false,
+                                            value: 'anotherfield',
+                                        },
+                                    ]}
+                                ></SingleSelectConnected>
+                            </LabeledInput>
+                        </FormGroup>
+                    </FormGroup>
+                </Form>
+            </>
             // stop-print
         );
     }
