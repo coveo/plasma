@@ -1,111 +1,51 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow} from 'enzyme';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
-import * as _ from 'underscore';
-import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Button} from '../../button/Button';
-import {Content, IContentProps} from '../../content/Content';
-import {HeaderWrapper, IHeaderWrapperProps} from '../HeaderWrapper';
+
+import {HeaderWrapper} from '../HeaderWrapper';
 import {TabsHeader} from '../TabsHeader';
 
 describe('<HeaderWrapper/>', () => {
-    let headerWrapperComponent: ReactWrapper<IHeaderWrapperProps, any>;
-    let store: Store<IReactVaporState>;
-
-    beforeEach(() => {
-        store = TestUtils.buildStore();
-    });
-
-    afterEach(() => {
-        store.dispatch(clearState());
-    });
-
     it('should render without errors', () => {
         expect(() => {
-            shallow(<HeaderWrapper />);
+            const header = shallow(<HeaderWrapper />);
+            header.unmount();
         }).not.toThrow();
     });
 
-    describe('<HeaderWrapper /> with custom props', () => {
-        const customProps: IHeaderWrapperProps = {
-            description: 'description test',
-            actions: [{content: Button}, {content: Button}],
-            classes: ['class-test'],
-            tabs: [{id: '1', title: '1'}, {id: '2', title: '2'}],
-        };
+    it('should render the description when specified', () => {
+        const money = '💰';
+        const header = shallow(<HeaderWrapper description={money} />);
+        expect(header.find('h4').text()).toBe(money);
+    });
 
-        const renderComponent = (props: IHeaderWrapperProps = {}) => {
-            headerWrapperComponent = mount(
-                <Provider store={store}>
-                    <HeaderWrapper {..._.extend({}, customProps, props)} />
-                </Provider>,
-                {attachTo: document.getElementById('App')}
-            );
-        };
+    it('should render actions when specified', () => {
+        const myActions = [{content: '📗'}, {content: '📘'}, {content: '📙'}];
+        const header = shallow(<HeaderWrapper actions={myActions} />);
+        const actions = header.find('.action-bar').children();
 
-        afterEach(() => {
-            headerWrapperComponent.detach();
+        expect(actions.length).toBe(myActions.length);
+        actions.forEach((action, index) => {
+            expect(action.prop('content')).toBe(myActions[index].content);
         });
+    });
 
-        it('should render the description', () => {
-            renderComponent();
-            expect(headerWrapperComponent.find('h4').text()).toEqual(customProps.description);
-        });
+    it('should render tabs when specified', () => {
+        const myTabs = [{id: 'tomato', title: '🍅'}, {id: 'sweet-potato', title: '🍠'}];
+        const header = shallow(<HeaderWrapper tabs={myTabs} />);
 
-        it('should render actions', () => {
-            renderComponent();
-            const contents = headerWrapperComponent.find(Content);
+        expect(header.find(TabsHeader).exists()).toBe(true);
+        expect(header.find(TabsHeader).prop('tabs')).toBe(myTabs);
+    });
 
-            expect(contents.length).toEqual(2);
-            expect((contents.first().props() as IContentProps).content).toEqual(Button);
-            expect((contents.last().props() as IContentProps).content).toEqual(Button);
-        });
+    it('should not render a border on the bottom', () => {
+        const header = shallow(<HeaderWrapper hasBorderBottom={false} />);
 
-        it('should render tabs', () => {
-            renderComponent();
-            const tabs = headerWrapperComponent.find(TabsHeader);
+        expect(header.find('.panel-header').hasClass('mod-no-border-bottom')).toBe(true);
+    });
 
-            expect(tabs.length).toEqual(1);
-        });
+    it('should render without padding', () => {
+        const header = shallow(<HeaderWrapper hasPadding={false} />);
 
-        it('should render without the border bottom', () => {
-            renderComponent({
-                hasBorderBottom: false,
-            });
-            const tabs = headerWrapperComponent.find('.mod-border-bottom');
-
-            expect(tabs.length).toEqual(0);
-        });
-
-        it('should render with the border bottom', () => {
-            renderComponent({
-                hasBorderBottom: true,
-                tabs: undefined,
-            });
-            const tabs = headerWrapperComponent.find('.mod-border-bottom');
-
-            expect(tabs.length).toEqual(1);
-        });
-
-        it('should render without padding', () => {
-            renderComponent({
-                hasPadding: false,
-            });
-            const tabs = headerWrapperComponent.find('.mod-header-padding');
-
-            expect(tabs.length).toEqual(0);
-        });
-
-        it('should render with padding', () => {
-            renderComponent({
-                hasPadding: true,
-            });
-            const tabs = headerWrapperComponent.find('.mod-header-padding');
-
-            expect(tabs.length).toEqual(1);
-        });
+        expect(header.find('.panel-header').hasClass('px0')).toBe(true);
     });
 });
