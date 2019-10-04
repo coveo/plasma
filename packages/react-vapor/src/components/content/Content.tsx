@@ -12,18 +12,14 @@ export interface IContentProps {
 /**
  * @deprecated Use React.ReactNode instead.
  */
-export class Content extends React.Component<IContentProps, {}> {
+export class Content extends React.PureComponent<IContentProps> {
     static defaultProps: Partial<IContentProps> = {
         classes: [],
         tag: 'span',
     };
 
     private getContent(): React.ReactNode {
-        if (
-            _.isString(this.props.content) ||
-            _.isNumber(this.props.content) ||
-            React.isValidElement(this.props.content)
-        ) {
+        if (_.isString(this.props.content) || _.isNumber(this.props.content)) {
             return this.props.content;
         }
 
@@ -32,6 +28,8 @@ export class Content extends React.Component<IContentProps, {}> {
 
     render() {
         const className = classNames(this.props.classes);
-        return React.createElement(this.props.tag, {className}, this.getContent());
+        return React.isValidElement(this.props.content)
+            ? this.props.content
+            : React.createElement(this.props.tag, className ? {className} : null, this.getContent());
     }
 }
