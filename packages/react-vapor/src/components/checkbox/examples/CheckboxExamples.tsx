@@ -26,7 +26,7 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
 
     render() {
         return (
-            <div className="">
+            <div>
                 <p className="pb2">
                     See{' '}
                     <a href="http://coveo.github.io/vapor/controls/#checkboxes-infos" target="_blank">
