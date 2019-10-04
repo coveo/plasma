@@ -1,51 +1,57 @@
 {
-    "name": "root",
-    "private": true,
-    "devDependencies": {
-        "axios": "0.19.0",
-        "husky": "2.4.1",
-        "lerna": "3.14.1",
-        "lint-staged": "8.2.1",
-        "prettier": "1.18.2",
-        "stylelint": "10.1.0",
-        "tsjs": "1.0.x",
-        "tslint": "5.17.0",
-        "underscore": "1.9.1"
-    },
-    "husky": {
-        "hooks": {
-            "pre-commit": "lint-staged"
-        }
-    },
-    "lint-staged": {
-        "**/*.scss": [
-            "stylelint --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{ts,tsx}": [
-            "prettier --write",
-            "tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
-            "git add"
-        ],
-        "**/*.{js,jsx,json,md,yml,html}": [
-            "prettier --write",
-            "git add"
-        ]
-    },
-    "stylelint": {
-        "extends": [
-            "tsjs/stylelint-config"
-        ]
-    },
-    "prettier": "tsjs/prettier-config",
-    "browserslist": [
-        "cover 90%",
-        "last 1 versions",
-        "IE 11",
-        "not dead"
-    ],
-    "scripts": {
-        "start": "lerna run start --parallel"
+  "name": "root",
+  "private": true,
+  "devDependencies": {
+    "axios": "0.19.0",
+    "husky": "2.4.1",
+    "lerna": "3.14.1",
+    "lint-staged": "8.2.1",
+    "prettier": "1.18.2",
+    "stylelint": "10.1.0",
+    "tsjs": "1.0.x",
+    "tslint": "5.17.0",
+    "underscore": "1.9.1"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "**/*.scss": [
+      "stylelint --fix",
+      "prettier --write",
+      "git add"
+    ],
+    "**/*.{ts,tsx}": [
+      "prettier --write",
+      "tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
+      "git add"
+    ],
+    "**/*.{js,jsx,json,md,yml,html}": [
+      "prettier --write",
+      "git add"
+    ]
+  },
+  "stylelint": {
+    "extends": [
+      "tsjs/stylelint-config"
+    ]
+  },
+  "prettier": "tsjs/prettier-config",
+  "browserslist": [
+    "cover 90%",
+    "last 1 versions",
+    "IE 11",
+    "not dead"
+  ],
+  "scripts": {
+    "start": "lerna run start --parallel",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
+  },
+  "snyk": true,
+  "dependencies": {
+    "snyk": "^1.230.6"
+  }
 }
