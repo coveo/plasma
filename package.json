@@ -46,6 +46,7 @@
         "not dead"
     ],
     "scripts": {
-        "start": "lerna run start --parallel"
+        "start": "lerna run start --parallel",
+        "test": "lerna run test --parallel"
     }
 }
