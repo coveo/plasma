@@ -7,6 +7,8 @@ export interface ICheckboxWithStateState {
 }
 
 export class CheckboxExamples extends React.Component<any, ICheckboxWithStateState> {
+    static description = 'Checkboxes allow to select multiple options in a set.';
+
     constructor(props: any, state: ICheckboxWithStateState) {
         super(props, state);
         this.state = {
@@ -24,15 +26,16 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
 
     render() {
         return (
-            <div className="mt2">
-                <h1 className="text-medium-blue mb1 bold">Checkboxes</h1>
-                <p className="m2">
+            <div className="">
+                <p className="pb2">
                     See{' '}
                     <a href="http://coveo.github.io/vapor/controls/#checkboxes-infos" target="_blank">
                         Usage and guidelines
                     </a>
                 </p>
                 <div className="form-group">
+                    <label className="form-control-label">Checkbox set</label>
+                    <br />
                     <Checkbox>
                         <Label classes={['label']}>A checkbox unchecked</Label>
                     </Checkbox>
@@ -50,7 +53,7 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} indeterminate={true}>
-                        <Label classes={['label']}>A checked indeterminate</Label>
+                        <Label classes={['label']}>A checked indeterminate (partially selected)</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} checked={this.state.checked} onClick={() => this.handleClick()}>
