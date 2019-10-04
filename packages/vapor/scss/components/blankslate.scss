@@ -12,11 +12,11 @@
     h4,
     h5,
     h6 {
-        margin: $blankslate-margin 0 $blankslate-title-margin-bottom 0;
+        margin: $blankslate-margin auto $blankslate-title-margin-bottom auto;
     }
 
     p {
-        margin-bottom: $blankslate-paragraph-margin-bottom;
+        margin: 0 auto $blankslate-paragraph-margin-bottom auto;
         color: $medium-blue;
     }
 
