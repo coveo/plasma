@@ -251,7 +251,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         });
 
         const wrapperClasses: string = classNames('calendar', {
-            column: !this.props.simple,
+            'mod-width-50': !this.props.simple,
         });
 
         return (
