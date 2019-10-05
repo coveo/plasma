@@ -7,7 +7,7 @@ export interface ICheckboxWithStateState {
 }
 
 export class CheckboxExamples extends React.Component<any, ICheckboxWithStateState> {
-    static description = 'Checkboxes allow to select multiple options in a set.';
+    static description = 'Checkboxes allow users to select multiple options from a set.';
 
     constructor(props: any, state: ICheckboxWithStateState) {
         super(props, state);
@@ -37,11 +37,11 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
                     <label className="form-control-label">Checkbox set</label>
                     <br />
                     <Checkbox>
-                        <Label classes={['label']}>A checkbox unchecked</Label>
+                        <Label classes={['label']}>An unchecked checkbox</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} checked={true}>
-                        <Label classes={['label']}>A checkbox checked</Label>
+                        <Label classes={['label']}>A checked checkbox</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} disabled={true}>
@@ -53,7 +53,7 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} indeterminate={true}>
-                        <Label classes={['label']}>A checked indeterminate (partially selected)</Label>
+                        <Label classes={['label']}>A checked and indeterminate (partially selected) checkbox</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} checked={this.state.checked} onClick={() => this.handleClick()}>

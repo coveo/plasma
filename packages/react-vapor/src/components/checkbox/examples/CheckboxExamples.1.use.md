@@ -4,17 +4,17 @@
 
 ### General
 
--   Whereas checkboxes can be used to toggle on or off an option, using a [toggle switch](#/components/FlatSelect) or [radio buttons](#/components/Radio) is preferable.
+-   Whereas checkboxes can be used to toggle options on and off, using a [toggle switch](#/components/FlatSelect) or [radio buttons](#/components/Radio) is preferable.
 -   A checkbox set should always have a title.
 -   Always put the most common options at the top of the checkbox list.
--   If more than 7 options (checkboxes) are needed, it is preferable to group checkboxes logically under more than one set of options such that the set label represents to the logic underlying the grouping.
+-   If more than 7 options (checkboxes) are needed, it is preferable to group checkboxes logically under more than one set of options such that the set label represents the grouping logic.
 
 ### Label
 
 -   Try to limit labels to one short line.
--   Add instructions that indicates how many items can be selected as some users might not know the difference between checkboxes and radio buttons.
--   Consider listing options vertically as horizontal listings can make it difficult to tell which label is related to which checkbox.
--   [Partially selected state](#/components/Checkbox) should only be used when sub-options can be selected as children of a checkbox. In that case, the parent checkbox checks and unchecks all sub-options when clicked. In that case this state shows that only some sub-options are selected, not all of them.
+-   Add instructions that indicate how many items can be selected, as some users might not know the difference between checkboxes and radio buttons.
+-   Consider listing options vertically, as horizontal listings can make it difficult to tell which label is related to which checkbox.
+-   [Partially selected states](#/components/Checkbox) should only be used when sub-options can be selected as children of a checkbox. In that case, the parent checkbox toggles all sub-options when clicked. In that case this state shows that only some sub-options are selected, not all of them.
 
 ### Behavior
 
