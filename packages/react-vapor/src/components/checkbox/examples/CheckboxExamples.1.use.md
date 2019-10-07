@@ -14,7 +14,7 @@
 -   Try to limit labels to one short line.
 -   Add instructions that indicate how many items can be selected, as some users might not know the difference between checkboxes and radio buttons.
 -   Consider listing options vertically, as horizontal listings can make it difficult to tell which label is related to which checkbox.
--   [Partially selected states](#/components/Checkbox) should only be used when sub-options can be selected as children of a checkbox. In that case, the parent checkbox toggles all sub-options when clicked. In that case this state shows that only some sub-options are selected, not all of them.
+-   [Partially selected states](#/components/Checkbox) should only be used when sub-options can be selected as children of a checkbox. A parent checkbox being in the partially selected state indicates that only some of its sub-options are selected, not all of them. Toggling the parent checkbox toggles all its sub-options.
 
 ### Behavior
 
