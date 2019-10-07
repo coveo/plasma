@@ -1,56 +1,42 @@
-import {shallow, ShallowWrapper} from 'enzyme';
+import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {Loading} from '../../loading/Loading';
-import {Content, IContentProps} from '../Content';
+import {Content} from '../Content';
 
 describe('Content', () => {
-    let contentComponent: ShallowWrapper<IContentProps, any>;
-
     it('should render without errors', () => {
         expect(() => {
-            shallow(<Content content="test" />);
+            const content = shallow(<Content content="test" />);
+            content.unmount();
         }).not.toThrow();
     });
 
-    describe('<BoxItem /> with custom props', () => {
-        const renderContent = (props: IContentProps) => {
-            contentComponent = shallow(<Content {...props} />);
-        };
+    it('should render with span as default tag', () => {
+        const content = shallow(<Content content="test" />);
 
-        it('should render with a string', () => {
-            renderContent({
-                content: 'test',
-            });
-            expect(contentComponent.find('span').text()).toBe('test');
-        });
+        expect(content.type()).toBe('span');
+        expect(content.matchesElement(<span>test</span>)).toBe(true);
+    });
 
-        it('should render with a component <Loading/>', () => {
-            renderContent({
-                content: Loading,
-            });
-            expect(contentComponent.find(Loading).length).toBe(1);
-        });
+    it('should render with a component <Loading/>', () => {
+        const content = shallow(<Content content={Loading} />);
+        expect(content.find(Loading).length).toBe(1);
+    });
 
-        it('should render with an custom tag div', () => {
-            renderContent({
-                content: 'test',
-                tag: 'div',
-            });
-            expect(contentComponent.find('div').text()).toBe('test');
-        });
+    it('should render with an custom tag div', () => {
+        const content = shallow(<Content content="test" tag="div" />);
+        expect(content.find('div').text()).toBe('test');
+    });
 
-        it('should render with a ReactNode', () => {
-            renderContent({
-                content: <div>React.ion</div>,
-            });
-            expect(contentComponent.find('div').text()).toBe('React.ion');
-        });
+    it('should render the content directly without wrapping it in a span if its a valid react element', () => {
+        const myNode = <div>🎃</div>;
+        const content = shallow(<Content content={myNode} />);
+        expect(content.matchesElement(myNode)).toBe(true);
+    });
 
-        it('should render with a number', () => {
-            renderContent({
-                content: 420,
-            });
-            expect(contentComponent.find('span').text()).toBe('420');
-        });
+    it('should render with a number', () => {
+        const content = shallow(<Content content={420} />);
+        expect(content.matchesElement(<span>{420}</span>)).toBe(true);
     });
 });
