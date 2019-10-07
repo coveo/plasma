@@ -98,7 +98,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
         const inside: JSX.Element = this.props.simple ? (
             calendar
         ) : (
-            <div className="split-layout">
+            <div className="flex">
                 {calendar}
                 {this.getdatePickerRightPart()}
             </div>
@@ -114,7 +114,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     private getdatePickerRightPart(): JSX.Element {
         return (
-            <div className="date-selection column mod-small-content p2">
+            <div className="date-selection mod-width-50 mod-border-left mod-small-content p2">
                 {this.getdateSelectionBoxes()}
                 {this.getClearOptions()}
             </div>

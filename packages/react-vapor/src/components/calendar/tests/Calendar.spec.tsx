@@ -622,12 +622,12 @@ describe('Calendar', () => {
                     expect(day.isSelectable).toBe(false);
                 });
 
-                it('should not have the class column if it has the prop simple', () => {
-                    expect(calendar.find('.column').length).toBe(1);
+                it('should not have the class mod-width-50 if it has the prop simple', () => {
+                    expect(calendar.find('.mod-width-50').length).toBe(1);
 
                     calendar.setProps({simple: true});
 
-                    expect(calendar.find('.column').length).toBe(0);
+                    expect(calendar.find('.mod-width-50').length).toBe(0);
                 });
             });
         });
