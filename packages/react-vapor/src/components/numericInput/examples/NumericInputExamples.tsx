@@ -36,7 +36,7 @@ export const NumericInputExamples = () => (
                     max={300}
                     style={{width: '48px'}}
                     maxLength={3}
-                    invalidMessage="Invalid"
+                    invalidMessage="The value must be between 25 and 300."
                 />
             </div>
         </div>
