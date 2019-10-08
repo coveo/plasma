@@ -1,7 +1,5 @@
 ## Guidelines
 
-(See also: **Guidelines for All Form Controls** - _coming soon!_)
-
 ### General
 
 -   Whereas checkboxes can be used to toggle options on and off, using a [toggle switch](#/components/FlatSelect) or [radio buttons](#/components/Radio) is preferable.
