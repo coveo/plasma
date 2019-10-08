@@ -7,6 +7,9 @@ export interface IInputExampleStateProps {
 }
 
 export class InputExamples extends React.Component<any, IInputExampleStateProps> {
+    static description =
+        'Text Inputs allow to enter letters, numbers or symbols on a single line only. They are used to submit a short character strings.';
+
     private innerInput: Input;
 
     constructor(props: any, state: IInputExampleStateProps) {
