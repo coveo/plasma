@@ -9,4 +9,4 @@
 
 [Checkbox](#/components/Checkbox)
 
-[Radio Buttons](#/components/Checkbox)
+[Radio Buttons](#/components/Radio)
