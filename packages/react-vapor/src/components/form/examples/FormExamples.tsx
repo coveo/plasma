@@ -65,7 +65,7 @@ export class FormExamples extends React.Component<any, any> {
                                         value: 'Variant',
                                     },
                                 ]}
-                            ></SingleSelectConnected>
+                            />
                         </LabeledInput>
                         <LabeledInput
                             label="Product Id Field"
@@ -84,7 +84,7 @@ export class FormExamples extends React.Component<any, any> {
                                         value: 'anotherfield',
                                     },
                                 ]}
-                            ></SingleSelectConnected>
+                            />
                         </LabeledInput>
                     </FormGroup>
                 </Form>

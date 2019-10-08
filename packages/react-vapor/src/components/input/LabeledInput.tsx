@@ -9,7 +9,7 @@ export interface ILabeledInputProps {
     label?: string;
     message?: React.ReactNode;
     description?: React.ReactNode;
-    className?: string;
+    headerClassName?: string;
     information?: string;
 }
 
@@ -18,12 +18,12 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
     label,
     message,
     description,
-    className,
+    headerClassName,
     information,
 }) => {
     const header =
-        !!label || information ? (
-            <header className={classNames('label', 'text-light-blue', className)}>
+        !!label || !!information ? (
+            <header className={classNames('label', 'text-light-blue', headerClassName)}>
                 {!!label ? <span>{label}</span> : null}
                 {!!information ? (
                     <Tooltip title={information} placement={TooltipPlacement.Top} className="ml1">
