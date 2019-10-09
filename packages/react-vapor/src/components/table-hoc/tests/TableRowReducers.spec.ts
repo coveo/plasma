@@ -61,29 +61,56 @@ describe('Table HOC', () => {
             expect(headerState.selected).toBe(expectedSelected);
         });
 
-        it('should return the old state without the ITableRowState when the action is "TableHOCRowActions.removeTableRow"', () => {
+        it('should remove all rows that match the action payload id when no tableId is specified', () => {
             const oldState: ITableRowState[] = [
                 {
-                    id: 'some-table-header-1',
-                    tableId: 'not-important',
+                    id: '🥑',
+                    tableId: 'fruits',
+                    selected: true,
+                },
+                {
+                    id: '🥑',
+                    tableId: 'organic',
                     selected: false,
                 },
                 {
-                    id: 'some-table-header-2',
-                    tableId: 'not-important',
+                    id: '🥦',
+                    tableId: 'organic',
+                    selected: false,
+                },
+            ];
+            const action = TableHOCRowActions.remove('🥑');
+            const tableRowsState: ITableRowState[] = TableRowReducers(oldState, action);
+
+            expect(tableRowsState.length).toBe(1);
+            expect(_.findWhere(tableRowsState, {id: '🥑', tableId: 'fruits'})).toBeUndefined();
+            expect(_.findWhere(tableRowsState, {id: '🥑', tableId: 'organic'})).toBeUndefined();
+        });
+
+        it('should remove a table row from the state only if the rowId and the tableId match the action payload', () => {
+            const oldState: ITableRowState[] = [
+                {
+                    id: '🥑',
+                    tableId: 'fruits',
                     selected: true,
                 },
                 {
-                    id: 'some-table-header-3',
-                    tableId: 'not-important',
-                    selected: true,
+                    id: '🥑',
+                    tableId: 'organic',
+                    selected: false,
+                },
+                {
+                    id: '🥦',
+                    tableId: 'organic',
+                    selected: false,
                 },
             ];
-            const action = TableHOCRowActions.remove(oldState[1].id);
-            const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
+            const action = TableHOCRowActions.remove('🥑', 'fruits');
+            const tableRowsState: ITableRowState[] = TableRowReducers(oldState, action);
 
-            expect(tableHeadersState.length).toBe(oldState.length - 1);
-            expect(_.findWhere(tableHeadersState, {id: action.payload.id})).toBeUndefined();
+            expect(tableRowsState.length).toBe(2);
+            expect(_.findWhere(tableRowsState, {id: '🥑', tableId: 'fruits'})).toBeUndefined();
+            expect(_.findWhere(tableRowsState, {id: '🥑', tableId: 'organic'})).toBeDefined();
         });
 
         it('should set the selected on the table row when the action is "TableHOCRowActions.selectRow"', () => {
