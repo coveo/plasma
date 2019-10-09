@@ -7,6 +7,8 @@ export interface ICheckboxWithStateState {
 }
 
 export class CheckboxExamples extends React.Component<any, ICheckboxWithStateState> {
+    static description = 'Checkboxes allow users to select multiple options from a set.';
+
     constructor(props: any, state: ICheckboxWithStateState) {
         super(props, state);
         this.state = {
@@ -24,21 +26,16 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
 
     render() {
         return (
-            <div className="mt2">
-                <h1 className="text-medium-blue mb1 bold">Checkboxes</h1>
-                <p className="m2">
-                    See{' '}
-                    <a href="http://coveo.github.io/vapor/controls/#checkboxes-infos" target="_blank">
-                        Usage and guidelines
-                    </a>
-                </p>
+            <div>
                 <div className="form-group">
+                    <label className="form-control-label">Checkbox set</label>
+                    <br />
                     <Checkbox>
-                        <Label classes={['label']}>A checkbox unchecked</Label>
+                        <Label classes={['label']}>An unchecked checkbox</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} checked={true}>
-                        <Label classes={['label']}>A checkbox checked</Label>
+                        <Label classes={['label']}>A checked checkbox</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} disabled={true}>
@@ -50,7 +47,7 @@ export class CheckboxExamples extends React.Component<any, ICheckboxWithStateSta
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} indeterminate={true}>
-                        <Label classes={['label']}>A checked indeterminate</Label>
+                        <Label classes={['label']}>A checked and indeterminate (partially selected) checkbox</Label>
                     </Checkbox>
                     <br />
                     <Checkbox classes={['mt1']} checked={this.state.checked} onClick={() => this.handleClick()}>
