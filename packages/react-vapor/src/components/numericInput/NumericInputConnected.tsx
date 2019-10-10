@@ -80,7 +80,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         classes={['js-decrement mr1 p0', styles.numericInputButton]}
                         enabled={decrementEnabled}
                         onClick={this.onDecrement}
-                        type={'button'}
+                        type="button"
                     >
                         <Svg svgName="minus" svgClass="icon mod-12 fill-pure-white" />
                     </Button>
