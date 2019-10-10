@@ -30,8 +30,11 @@ const addTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITable
     ];
 };
 
-const removeTableRowReducer = (state: ITableRowState[], action: IReduxAction<BasePayload>) => {
-    return _.reject(state, (header: ITableRowState) => header.id === action.payload.id);
+const removeTableRowReducer = (state: ITableRowState[], {payload}: IReduxAction<ITableRowAddPayload>) => {
+    return _.reject(
+        state,
+        ({tableId, id}: ITableRowState) => (!payload.tableId || payload.tableId === tableId) && id === payload.id
+    );
 };
 
 const selectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
