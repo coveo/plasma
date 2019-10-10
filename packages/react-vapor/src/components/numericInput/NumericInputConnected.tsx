@@ -74,30 +74,36 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         const decrementEnabled =
             _.isUndefined(this.props.min) || _.isNaN(valueAsNumber) || valueAsNumber > this.props.min;
         return (
-            <div className="flex flex-row">
-                <Button
-                    classes={['js-decrement mr1 p0', styles.numericInputButton]}
-                    enabled={decrementEnabled}
-                    onClick={this.onDecrement}
-                >
-                    <Svg svgName="minus" svgClass="icon mod-12 fill-pure-white" />
-                </Button>
-                <div className="flex flex-column">
-                    <input
-                        {..._.omit(this.props, keys<NumericInputProps>())}
-                        className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
-                        value={this.props.value}
-                        onChange={this.onChange}
-                    />
+            <div className="flex flex-column">
+                <div className="flex flex-row">
+                    <Button
+                        classes={['js-decrement mr1 p0', styles.numericInputButton]}
+                        enabled={decrementEnabled}
+                        onClick={this.onDecrement}
+                        type="button"
+                    >
+                        <Svg svgName="minus" svgClass="icon mod-12 fill-pure-white" />
+                    </Button>
+                    <div className="flex flex-column">
+                        <input
+                            {..._.omit(this.props, keys<NumericInputProps>())}
+                            className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
+                            value={this.props.value}
+                            onChange={this.onChange}
+                        />
+                    </div>
+                    <Button
+                        classes={['js-increment ml1 p0', styles.numericInputButton]}
+                        enabled={incrementEnabled}
+                        onClick={this.onIncrement}
+                        type="button"
+                    >
+                        <Svg svgName="plus" svgClass="icon mod-12 fill-pure-white" />
+                    </Button>
+                </div>
+                <div className="flex flex-row">
                     {this.props.hasError && <span className="generic-form-error">{this.props.invalidMessage}</span>}
                 </div>
-                <Button
-                    classes={['js-increment ml1 p0', styles.numericInputButton]}
-                    enabled={incrementEnabled}
-                    onClick={this.onIncrement}
-                >
-                    <Svg svgName="plus" svgClass="icon mod-12 fill-pure-white" />
-                </Button>
             </div>
         );
     }
