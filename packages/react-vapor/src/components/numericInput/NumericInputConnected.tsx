@@ -96,7 +96,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         classes={['js-increment ml1 p0', styles.numericInputButton]}
                         enabled={incrementEnabled}
                         onClick={this.onIncrement}
-                        type={'button'}
+                        type="button"
                     >
                         <Svg svgName="plus" svgClass="icon mod-12 fill-pure-white" />
                     </Button>
