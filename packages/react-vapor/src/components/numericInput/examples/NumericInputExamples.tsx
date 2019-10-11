@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {NumericInputConnected} from '../NumericInputConnected';
 
-export const NumericInputExamples = () => (
+const NumericInputExamples = () => (
     <div className="mt2">
         <div className="form-group">
             <label className="form-control-label">Numeric Input</label>
@@ -44,6 +44,6 @@ export const NumericInputExamples = () => (
     </div>
 );
 
-export const PopoverExample: ExampleComponent = NumericInputExamples;
+export const NumericInputExample: ExampleComponent = NumericInputExamples;
 NumericInputExamples.description =
     'Numeric inputs are used to force the input of a numeric value. They can be configured to skip values in steps, when precision is not mandatory.';
