@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {NumericInputConnected} from '../NumericInputConnected';
 
 export const NumericInputExamples = () => (
@@ -42,3 +43,7 @@ export const NumericInputExamples = () => (
         </div>
     </div>
 );
+
+export const PopoverExample: ExampleComponent = NumericInputExamples;
+NumericInputExamples.description =
+    'Numeric inputs are used to require the input of a numeric value. They can be configured in discrete jumps, when precision is not mandatory (e.g., 0, 5, 10, etc.).';
