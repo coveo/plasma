@@ -1,8 +1,8 @@
 ## Guidelines
 
--   The input field should be large enough to see all the entered content in most if not all cases.
--   The field width should give a hint of the size of the content to enter.
--   Ensure that users can enter the information they need on smaller screens.
+-   The input field should be large enough to display all the user input in most cases.
+-   The input field width should suggest the expected size of the user input.
+-   Ensure that users with small screens can still enter all required information.
 
 ---
 

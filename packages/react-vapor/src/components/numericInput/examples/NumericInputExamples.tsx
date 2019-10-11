@@ -46,4 +46,4 @@ const NumericInputExamples = () => (
 
 export const NumericInputExample: ExampleComponent = NumericInputExamples;
 NumericInputExamples.description =
-    'Numeric inputs are used to force the input of a numeric value. They can be configured to skip values in steps, when precision is not mandatory.';
+    'Numeric inputs are used to require the input of a numeric value. They can be configured in discrete jumps, when precision is not mandatory (e.g., 0, 5, 10, etc.).';
