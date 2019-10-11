@@ -37,6 +37,8 @@ export interface IMultiSelectExamplesState {
 }
 
 export class MultiSelectExamples extends React.Component<{}, IMultiSelectExamplesState> {
+    static description = 'Multi-selects allow to choose one or more options from a set of items.';
+
     constructor(props: {}, state: IMultiSelectExamplesState) {
         super(props, state);
 
@@ -59,7 +61,6 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
     render() {
         return (
             <div className="mb2">
-                <h1>Multi Select</h1>
                 <div className="form-group">
                     <label className="form-control-label">A Simple Multi Select without items</label>
                     <br />
