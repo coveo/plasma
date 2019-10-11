@@ -7,7 +7,7 @@ import {LabeledInput} from '../LabeledInput';
 describe('LabeledInput', () => {
     const SOME_LABEL = '📺📽';
     const SOME_MESSAGE = '📜';
-    const SOME_DESCRIPTION = '👞👟👡';
+    const SOME_HELP_TEXT = '👞👟👡';
     const SOME_HEADER_CLASS = '🐦🐓🐤🐣';
 
     describe('<LabeledInput />', () => {
@@ -25,7 +25,7 @@ describe('LabeledInput', () => {
         });
 
         it('should configure a tooltip with information prop when specified', () => {
-            const label = shallow(<LabeledInput information={SOME_LABEL} />);
+            const label = shallow(<LabeledInput optionalInformation={SOME_LABEL} />);
             expect(label.find(Tooltip).props().title).toBe(SOME_LABEL);
         });
 
@@ -50,17 +50,17 @@ describe('LabeledInput', () => {
         });
 
         it('should output description when specified', () => {
-            const label = shallow(<LabeledInput message={SOME_DESCRIPTION} />);
+            const label = shallow(<LabeledInput message={SOME_HELP_TEXT} />);
             expect(
                 label
                     .find(InputDescription)
                     .dive()
                     .text()
-            ).toBe(SOME_DESCRIPTION);
+            ).toBe(SOME_HELP_TEXT);
         });
 
         it('should output both message and description when specified', () => {
-            const label = shallow(<LabeledInput description={SOME_DESCRIPTION} message={SOME_MESSAGE} />);
+            const label = shallow(<LabeledInput helpText={SOME_HELP_TEXT} message={SOME_MESSAGE} />);
             expect(
                 label
                     .find(InputDescription)
@@ -74,7 +74,7 @@ describe('LabeledInput', () => {
                     .last()
                     .dive()
                     .text()
-            ).toBe(SOME_DESCRIPTION);
+            ).toBe(SOME_HELP_TEXT);
         });
 
         it('should not output message and description when not specified', () => {

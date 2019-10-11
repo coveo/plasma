@@ -8,18 +8,18 @@ import {InputDescription} from './InputDescription';
 export interface ILabeledInputProps {
     label?: string;
     message?: React.ReactNode;
-    description?: React.ReactNode;
+    helpText?: React.ReactNode;
     headerClassName?: string;
-    information?: string;
+    optionalInformation?: string;
 }
 
 export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
     children,
     label,
     message,
-    description,
+    helpText: description,
     headerClassName,
-    information,
+    optionalInformation: information,
 }) => {
     const header =
         !!label || !!information ? (
