@@ -58,7 +58,6 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
     render() {
         return (
             <div className="my2">
-                <h1>Single Select</h1>
                 <div className="form-group">
                     <label className="form-control-label">A Simple Single Select with a Custom Placeholder</label>
                     <br />
