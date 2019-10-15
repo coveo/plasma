@@ -20,4 +20,5 @@ const getIsValid = createSelector(
 export const InputSelectors = {
     getValue,
     getIsValid,
+    getInput,
 };

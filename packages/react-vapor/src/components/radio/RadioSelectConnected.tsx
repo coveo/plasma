@@ -10,15 +10,12 @@ import {
     RadioSelect,
 } from './RadioSelect';
 import {removeRadioSelect, setRadioSelect} from './RadioSelectActions';
+import {RadioSelectSelectors} from './RadioSelectSelectors';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IRadioSelectProps): IRadioSelectStateProps => {
-    const radioSelect = _.findWhere(state.radioSelects, {id: ownProps.id});
-
-    return {
-        value: radioSelect && radioSelect.value,
-        disabledValues: radioSelect && radioSelect.disabledValues,
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: IRadioSelectProps): IRadioSelectStateProps => ({
+    value: RadioSelectSelectors.getValue(state, {id: ownProps.id}),
+    disabledValues: RadioSelectSelectors.getDisabledValue(state, {id: ownProps.id}),
+});
 
 const mapDispatchToProps = (dispatch: IDispatch): IRadioSelectDispatchProps => ({
     onMount: (id: string, valueOnMount: string, disabledValuesOnMount?: string[]) =>

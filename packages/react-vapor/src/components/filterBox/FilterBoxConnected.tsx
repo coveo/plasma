@@ -11,6 +11,7 @@ import {
     IFilterBoxStateProps,
 } from './FilterBox';
 import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';
+import {FilterBoxSelectors} from './FilterBoxSelectors';
 
 const FILTER_THROUGH_DEBOUNCE = 400;
 export const debouncedFilterThrough = _.debounce(
@@ -18,13 +19,9 @@ export const debouncedFilterThrough = _.debounce(
     FILTER_THROUGH_DEBOUNCE
 );
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => {
-    const filterItem = _.findWhere(state.filters, {id: ownProps.id});
-
-    return {
-        filterText: filterItem ? filterItem.filterText : '',
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => ({
+    filterText: FilterBoxSelectors.getFilterText(state, {id: ownProps.id}),
+});
 
 const mapDispatchToProps = (dispatch: IDispatch): IFilterBoxDispatchProps => ({
     onRender: (id: string) => dispatch(addFilter(id)),
