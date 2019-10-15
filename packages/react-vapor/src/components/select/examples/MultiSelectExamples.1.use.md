@@ -2,17 +2,17 @@
 
 ### General
 
--   If space allows it and there are 7 or less options in total, consider using [checkboxes](#/components/Checkbox) instead.
--   Keep option label as short as possible to limit the control's width to a minimum.
--   When an option is selected, it should be removed from the option list.
+-   If space allows, and there are no more than 7 options in total, consider using [checkboxes](#/components/Checkbox) instead.
+-   Keep option labels as short as possible in order to limit width to a minimum.
+-   When an option is selected, it should be removed from the options list.
 
 ### Options Sorting
 
--   Always put the most common items at the top of the list. If no options is to be selected more often than the others, use alphabetical or chronological order.
+-   Always put the most common items at the top of the list. If no option is more common than the others, use alphanumeric or chronological order.
 
 ### Label
 
--   In most cases, there should be a label to identify the control.
+-   In most cases, you should include a label to identify the component.
 
 ---
 
