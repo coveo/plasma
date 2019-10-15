@@ -37,9 +37,10 @@ export interface IMultiSelectExamplesState {
 }
 
 export class MultiSelectExamples extends React.Component<{}, IMultiSelectExamplesState> {
-    static description = 'Multi-selects allow to choose one or more options from a set of items.';
+    static description =
+        'Multi-selects allow to choose one or more options from a set of predefined items or add custom values, when relevant.';
 
-    constructor(props: {}, state: IMultiSelectExamplesState) {
+    constructor({props, state}: {props: {}; state: IMultiSelectExamplesState}) {
         super(props, state);
 
         const second = _.map(defaultItems, (item) => _.clone(item));
