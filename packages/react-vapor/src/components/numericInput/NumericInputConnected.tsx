@@ -18,7 +18,7 @@ export interface NumericInputOwnProps {
     min?: number;
     max?: number;
     invalidMessage?: string;
-    maxDigitWidth: 2 | 3 | 4;
+    maxDigitWidth?: 2 | 3 | 4;
 }
 
 export interface NumericInputStateProps {
