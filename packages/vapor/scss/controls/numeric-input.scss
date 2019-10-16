@@ -1,13 +1,13 @@
 .numeric-input {
     .mod-max-2-number {
-        width: 38px;
+        width: $numeric-input-2-digit-width;
     }
 
     .mod-max-3-number {
-        width: 48px;
+        width: $numeric-input-3-digit-width;
     }
 
     .mod-max-4-number {
-        width: 58px;
+        width: $numeric-input-4-digit-width;
     }
 }
