@@ -37,7 +37,7 @@ const NumericInputExamples = () => (
                     max={999}
                     maxLength={3}
                     invalidMessage="The value must be between 25 and 999."
-                    maxNumberWidth={3}
+                    maxDigitWidth={3}
                 />
             </div>
         </div>
@@ -52,7 +52,7 @@ const NumericInputExamples = () => (
                     max={99}
                     maxLength={2}
                     invalidMessage="The value must be between 0 and 99."
-                    maxNumberWidth={2}
+                    maxDigitWidth={2}
                 />
             </div>
         </div>
@@ -67,7 +67,7 @@ const NumericInputExamples = () => (
                     max={7000}
                     maxLength={4}
                     invalidMessage="The value must be between 25 and 7000."
-                    maxNumberWidth={4}
+                    maxDigitWidth={4}
                 />
             </div>
         </div>

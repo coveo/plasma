@@ -18,7 +18,7 @@ export interface NumericInputOwnProps {
     min?: number;
     max?: number;
     invalidMessage?: string;
-    maxNumberWidth: 2 | 3 | 4;
+    maxDigitWidth: 2 | 3 | 4;
 }
 
 export interface NumericInputStateProps {
@@ -91,9 +91,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                             className={classNames(
                                 'js-numeric-input',
                                 {
-                                    [`mod-max-${this.props.maxNumberWidth}-number`]: _.isNumber(
-                                        this.props.maxNumberWidth
-                                    ),
+                                    [`mod-max-${this.props.maxDigitWidth}-digit`]: _.isNumber(this.props.maxDigitWidth),
                                 },
                                 this.props.className,
                                 styles.numericInput
