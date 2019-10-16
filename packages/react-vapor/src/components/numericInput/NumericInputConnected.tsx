@@ -18,7 +18,7 @@ export interface NumericInputOwnProps {
     min?: number;
     max?: number;
     invalidMessage?: string;
-    maxDigit: 1 | 2 | 3;
+    maxNumberWidth: 2 | 3 | 4;
 }
 
 export interface NumericInputStateProps {
@@ -76,7 +76,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
             _.isUndefined(this.props.min) || _.isNaN(valueAsNumber) || valueAsNumber > this.props.min;
         return (
             <div className="numeric-input flex flex-column">
-                <div className="flex flex-row numeric-input-container">
+                <div className="flex flex-row">
                     <Button
                         classes={['js-decrement mr1 p0 mt0', styles.numericInputButton]}
                         enabled={decrementEnabled}
@@ -87,7 +87,14 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                     </Button>
                     <input
                         {..._.omit(this.props, keys<NumericInputProps>())}
-                        className={classNames('js-numeric-input', this.props.className, styles.numericInput)}
+                        className={classNames(
+                            'js-numeric-input',
+                            {
+                                [`mod-max-${this.props.maxNumberWidth}-number`]: _.isNumber(this.props.maxNumberWidth),
+                            },
+                            this.props.className,
+                            styles.numericInput
+                        )}
                         value={this.props.value}
                         onChange={this.onChange}
                     />

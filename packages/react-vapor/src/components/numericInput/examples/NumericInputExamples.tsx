@@ -31,13 +31,43 @@ const NumericInputExamples = () => (
             <div className="form-control">
                 <NumericInputConnected
                     id="numeric-4"
-                    initialValue={50}
+                    initialValue={500}
                     step={25}
                     min={25}
-                    max={300}
-                    style={{width: '48px'}}
+                    max={999}
                     maxLength={3}
-                    invalidMessage="The value must be between 25 and 300."
+                    invalidMessage="The value must be between 25 and 999."
+                    maxNumberWidth={3}
+                />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">Numeric Input with a width for only 2 digital</label>
+            <div className="form-control">
+                <NumericInputConnected
+                    id="numeric-5"
+                    initialValue={20}
+                    step={1}
+                    min={0}
+                    max={99}
+                    maxLength={2}
+                    invalidMessage="The value must be between 0 and 99."
+                    maxNumberWidth={2}
+                />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">Numeric Input with a width for only 4 digital</label>
+            <div className="form-control">
+                <NumericInputConnected
+                    id="numeric-6"
+                    initialValue={5000}
+                    step={25}
+                    min={25}
+                    max={7000}
+                    maxLength={4}
+                    invalidMessage="The value must be between 25 and 7000."
+                    maxNumberWidth={4}
                 />
             </div>
         </div>

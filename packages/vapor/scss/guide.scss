@@ -45,6 +45,7 @@
 @import 'controls/splash';
 @import 'controls/chosen';
 @import 'controls/input-field';
+@import 'controls/numeric-input';
 @import 'controls/multiline-field';
 @import 'controls/file-input';
 @import 'controls/slider';
@@ -120,10 +121,7 @@
     @import 'forms/table-form';
     @import 'forms/form-validation';
     @import 'controls/half-input';
-}
-
-// Utility
-.coveo-styleguide {
+    // Utility
     @import 'typography/utility';
     @import 'typography/lists';
     @import 'typography/font-size.scss';
