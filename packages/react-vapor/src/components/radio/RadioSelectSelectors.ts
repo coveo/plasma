@@ -13,7 +13,12 @@ const getValue = createSelector(
     (radioSelect: IRadioSelectState) => radioSelect && radioSelect.value
 );
 
+const getDisabledValue = createSelector(
+    get,
+    (radioSelect: IRadioSelectState) => radioSelect && radioSelect.disabledValues
+);
 export const RadioSelectSelectors = {
     get,
     getValue,
+    getDisabledValue,
 };
