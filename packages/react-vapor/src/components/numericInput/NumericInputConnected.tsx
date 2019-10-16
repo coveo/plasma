@@ -18,6 +18,7 @@ export interface NumericInputOwnProps {
     min?: number;
     max?: number;
     invalidMessage?: string;
+    maxDigit: 1 | 2 | 3;
 }
 
 export interface NumericInputStateProps {
@@ -74,24 +75,22 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         const decrementEnabled =
             _.isUndefined(this.props.min) || _.isNaN(valueAsNumber) || valueAsNumber > this.props.min;
         return (
-            <div className="flex flex-column">
-                <div className="flex flex-row">
+            <div className="numeric-input flex flex-column">
+                <div className="flex flex-row numeric-input-container">
                     <Button
-                        classes={['js-decrement mr1 p0', styles.numericInputButton]}
+                        classes={['js-decrement mr1 p0 mt0', styles.numericInputButton]}
                         enabled={decrementEnabled}
                         onClick={this.onDecrement}
                         type="button"
                     >
                         <Svg svgName="minus" svgClass="icon mod-12 fill-pure-white" />
                     </Button>
-                    <div className="flex flex-column">
-                        <input
-                            {..._.omit(this.props, keys<NumericInputProps>())}
-                            className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
-                            value={this.props.value}
-                            onChange={this.onChange}
-                        />
-                    </div>
+                    <input
+                        {..._.omit(this.props, keys<NumericInputProps>())}
+                        className={classNames('js-numeric-input', this.props.className, styles.numericInput)}
+                        value={this.props.value}
+                        onChange={this.onChange}
+                    />
                     <Button
                         classes={['js-increment ml1 p0', styles.numericInputButton]}
                         enabled={incrementEnabled}
