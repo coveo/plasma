@@ -35,6 +35,9 @@ export interface ISingleSelectExamplesState {
 }
 
 export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectExamplesState> {
+    static description =
+        'A Single Select component allows users to choose a single option from a list or, if relevant, to create and select their own custom option.';
+
     constructor(props: {}, state: ISingleSelectExamplesState) {
         super(props, state);
 
@@ -56,7 +59,6 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
     render() {
         return (
             <div className="my2">
-                <h1>Single Select</h1>
                 <div className="form-group">
                     <label className="form-control-label">A Simple Single Select with a Custom Placeholder</label>
                     <br />
