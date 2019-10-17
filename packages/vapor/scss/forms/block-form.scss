@@ -69,10 +69,17 @@ form {
                 margin-top: $form-group-margin + $input-margin-top;
             }
 
+            > header:not(:first-child) {
+                margin-top: $form-group-margin;
+            }
+
             > *:not(:first-child) {
                 margin-top: $spacing * 2;
                 &.input-field {
                     margin-top: $form-group-margin + $input-margin-top;
+                }
+                &.form-group {
+                    margin-top: $form-group-margin;
                 }
             }
         }
