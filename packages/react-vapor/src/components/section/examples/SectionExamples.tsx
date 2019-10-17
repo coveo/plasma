@@ -6,6 +6,7 @@ import {LabeledInput} from '../../input/LabeledInput';
 import {Radio} from '../../radio/Radio';
 import {RadioSelect} from '../../radio/RadioSelect';
 import {SingleSelectConnected} from '../../select/SingleSelectConnected';
+import {TextAreaConnected} from '../../textarea/TextArea';
 import {Section} from '../Section';
 
 export class SectionExamples extends React.Component<any, any> {
@@ -85,6 +86,19 @@ export class SectionExamples extends React.Component<any, any> {
                                     },
                                 ]}
                             />
+                        </LabeledInput>
+                        <LabeledInput
+                            label={
+                                <h1>
+                                    h1 label with a word in <span className="italic">Italic</span>
+                                </h1>
+                            }
+                            headerClassName="flex flex-center"
+                            message={<span className="text-green">My message in an other color</span>}
+                            helpText={<span className="bold">My help text in bold</span>}
+                            optionalInformation={'More information about the input below'}
+                        >
+                            <TextAreaConnected id="first" valueOnMount="something" />
                         </LabeledInput>
                     </Section>
                 </Form>

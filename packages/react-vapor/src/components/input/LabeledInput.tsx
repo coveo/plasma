@@ -6,7 +6,7 @@ import {Tooltip} from '../tooltip/Tooltip';
 import {InputDescription} from './InputDescription';
 
 export interface ILabeledInputProps {
-    label?: string;
+    label?: React.ReactNode;
     message?: React.ReactNode;
     helpText?: React.ReactNode;
     headerClassName?: string;
