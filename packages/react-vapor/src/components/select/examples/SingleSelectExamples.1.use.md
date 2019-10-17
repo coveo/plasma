@@ -2,16 +2,16 @@
 
 ### General
 
--   If space allows it and there are 7 or less options to choose from, consider using [radio buttons](#/components/Radio) instead.
--   Use the shortest strings possible as option label so as to limit the control's width to a minimum.
+-   If space allows, and there are no more than 7 options to choose from, consider using [radio buttons](#/components/Radio) instead.
+-   Keep option labels as short as possible in order to limit width to a minimum.
 
 ### Options Sorting
 
--   Always put the most common items at the top of the list. If no options is to be selected more often than the others, use alphabetical or chronological order.
+-   Always put the most common items at the top of the list. If no option is more common than the others, use alphanumeric or chronological order.
 
 ### Label
 
--   In most cases, there should be a label to identify the control.
+-   In most cases, you should include a label to identify the component.
 
 ---
 
