@@ -62,7 +62,7 @@ const NumericInputExamples = () => (
                     initialValue={5000}
                     step={25}
                     min={25}
-                    max={7000}
+                    max={9999}
                     maxLength={4}
                     invalidMessage="The value must be between 25 and 7000."
                 />
@@ -74,9 +74,9 @@ const NumericInputExamples = () => (
                 <NumericInputConnected
                     id="numeric-7"
                     initialValue={5000000000}
-                    step={25}
-                    min={25}
-                    max={7000}
+                    step={10000}
+                    min={0}
+                    max={9999999999}
                     maxLength={10}
                     invalidMessage="The value must be between 25 and 7000."
                 />
