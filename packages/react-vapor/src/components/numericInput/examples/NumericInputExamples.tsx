@@ -37,7 +37,6 @@ const NumericInputExamples = () => (
                     max={999}
                     maxLength={3}
                     invalidMessage="The value must be between 25 and 999."
-                    maxDigitWidth={3}
                 />
             </div>
         </div>
@@ -52,7 +51,6 @@ const NumericInputExamples = () => (
                     max={99}
                     maxLength={2}
                     invalidMessage="The value must be between 0 and 99."
-                    maxDigitWidth={2}
                 />
             </div>
         </div>
@@ -67,7 +65,20 @@ const NumericInputExamples = () => (
                     max={7000}
                     maxLength={4}
                     invalidMessage="The value must be between 25 and 7000."
-                    maxDigitWidth={4}
+                />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">Numeric Input with a width for only 10 digital</label>
+            <div className="form-control">
+                <NumericInputConnected
+                    id="numeric-7"
+                    initialValue={5000000000}
+                    step={25}
+                    min={25}
+                    max={7000}
+                    maxLength={10}
+                    invalidMessage="The value must be between 25 and 7000."
                 />
             </div>
         </div>

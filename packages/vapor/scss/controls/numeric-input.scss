@@ -1,13 +1,7 @@
 .numeric-input {
-    .mod-max-2-digit {
-        width: $numeric-input-2-digit-width;
-    }
-
-    .mod-max-3-digit {
-        width: $numeric-input-3-digit-width;
-    }
-
-    .mod-max-4-digit {
-        width: $numeric-input-4-digit-width;
+    @for $i from 1 through 20 {
+        .mod-max-#{$i}-digit {
+            width: $i * $numeric-input-digit-padding + $numeric-input-padding;
+        }
     }
 }
