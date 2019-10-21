@@ -3,6 +3,7 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
+import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
@@ -90,6 +91,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                             className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
                             value={this.props.value}
                             onChange={this.onChange}
+                            onKeyDown={this.onKeyDown}
                         />
                     </div>
                     <Button
@@ -107,6 +109,15 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
             </div>
         );
     }
+
+    private onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const key = e.keyCode;
+        if (key === keyCode.upArrow) {
+            this.onIncrement();
+        } else if (key === keyCode.downArrow) {
+            this.onDecrement();
+        }
+    };
 
     private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = (e.target as HTMLInputElement).value;
