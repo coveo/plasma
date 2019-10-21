@@ -1,0 +1,7 @@
+.numeric-input {
+    @for $i from 1 through 20 {
+        .mod-max-#{$i}-digit {
+            width: $i * $numeric-input-digit-padding + $numeric-input-default-padding;
+        }
+    }
+}
