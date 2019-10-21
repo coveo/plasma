@@ -64,23 +64,26 @@ form {
             }
         }
 
-        &.mod-padding-children {
+        @mixin section-mixin($level) {
+            margin-top: 0.5em;
+
+            > :not(:first-child) {
+                margin-top: $spacing * $level;
+            }
             > .input-field {
                 margin-top: $form-group-margin + $input-margin-top;
             }
+        }
 
-            > header:not(:first-child) {
-                margin-top: $form-group-margin;
+        &.mod-padding-children {
+            &.level-1 {
+                @include section-mixin(3);
             }
-
-            > *:not(:first-child) {
-                margin-top: $spacing * 2;
-                &.input-field {
-                    margin-top: $form-group-margin + $input-margin-top;
-                }
-                &.form-group {
-                    margin-top: $form-group-margin;
-                }
+            &.level-2 {
+                @include section-mixin(2);
+            }
+            &.level-3 {
+                @include section-mixin(1);
             }
         }
     }

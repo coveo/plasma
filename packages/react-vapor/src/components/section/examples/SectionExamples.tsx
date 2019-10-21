@@ -18,33 +18,34 @@ export class SectionExamples extends React.Component<any, any> {
                     <Section
                         title="Search panel"
                         description="Customizing the display and behavior of the interface displayed withing the search panel can be done by editing the code of your search interface directly or via the JavaScript Search Interface Editor. As for style, it can be modified by applying your own stylesheet or adding styling rules in the Advanced tab."
-                    />
-                    <Section title="Main button">
-                        <LabeledInput
-                            label="Location on screen"
-                            helpText="The widget button's position is fixed, which means it is positioned relative to the viewport and stays in the same place even if the page is scrolled."
-                            optionalInformation="INFORMATION"
-                        >
-                            <RadioSelect>
-                                <Radio value="1">
-                                    <Label>Value 1</Label>
-                                </Radio>
-                                <Radio value="2">
-                                    <Label>Value 2</Label>
-                                </Radio>
-                            </RadioSelect>
-                        </LabeledInput>
-                        <Section title="Content" level={2}>
-                            <LabeledInput helpText="The text that appears on the main widget button.">
-                                <Input value="Help">
-                                    <Label>Text</Label>
-                                </Input>
+                    >
+                        <Section title="Main button" level={2}>
+                            <LabeledInput
+                                label="Location on screen"
+                                helpText="The widget button's position is fixed, which means it is positioned relative to the viewport and stays in the same place even if the page is scrolled."
+                                optionalInformation="INFORMATION"
+                            >
+                                <RadioSelect>
+                                    <Radio value="1">
+                                        <Label>Value 1</Label>
+                                    </Radio>
+                                    <Radio value="2">
+                                        <Label>Value 2</Label>
+                                    </Radio>
+                                </RadioSelect>
                             </LabeledInput>
-                            <LabeledInput helpText="This is the font family that will be used on the button...">
-                                <Input value="Lato, Arial, sans serif">
-                                    <Label>Font Family</Label>
-                                </Input>
-                            </LabeledInput>
+                            <Section title="Content" level={2}>
+                                <LabeledInput helpText="The text that appears on the main widget button.">
+                                    <Input value="Help">
+                                        <Label>Text</Label>
+                                    </Input>
+                                </LabeledInput>
+                                <LabeledInput helpText="This is the font family that will be used on the button...">
+                                    <Input value="Lato, Arial, sans serif">
+                                        <Label>Font Family</Label>
+                                    </Input>
+                                </LabeledInput>
+                            </Section>
                         </Section>
                     </Section>
                 </Form>

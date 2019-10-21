@@ -25,7 +25,7 @@ export const Section: React.FunctionComponent<ISectionProps> = ({
     };
     const H = `h${(level || 1) + 1}`;
     return (
-        <fieldset className={classNames(className, mods, 'form-group mod-padding-children')}>
+        <fieldset className={classNames(className, mods, `level-${level || 1} form-group mod-padding-children`)}>
             {title && <H {...titleProps} />}
             {description && <p className="description">{description}</p>}
             {children}
