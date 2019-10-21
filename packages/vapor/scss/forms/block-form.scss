@@ -70,7 +70,7 @@ form {
             }
 
             > header:not(:first-child) {
-                margin-top: $form-group-margin;
+                margin-top: $spacing;
             }
 
             > *:not(:first-child) {
@@ -78,9 +78,14 @@ form {
                 &.input-field {
                     margin-top: $form-group-margin + $input-margin-top;
                 }
-                &.form-group {
-                    margin-top: $form-group-margin;
-                }
+            }
+
+            > *:not(:first-of-type).form-group {
+                margin-top: $form-group-margin;
+            }
+
+            > .form-group .mod-padding-children + .mod-padding-children {
+                margin-top: $spacing * 2;
             }
         }
     }

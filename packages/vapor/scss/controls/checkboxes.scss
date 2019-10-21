@@ -95,6 +95,10 @@ input[type='checkbox'].coveo-checkbox {
     }
 }
 
+.checkbox-row {
+    margin-right: 4 * $spacing;
+}
+
 .coveo-checkbox-label {
     display: inline-flex;
     align-items: center;
@@ -103,6 +107,16 @@ input[type='checkbox'].coveo-checkbox {
     vertical-align: middle; // Required to properly position checkboxes into tables
 
     .label {
+        cursor: pointer;
+    }
+
+    &.checkbox-clear {
+        display: block;
+    }
+
+    > label {
+        margin-right: 4 * $spacing;
+        margin-left: $checkbox-label-margin;
         cursor: pointer;
     }
 
