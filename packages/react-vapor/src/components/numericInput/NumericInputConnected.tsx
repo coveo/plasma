@@ -18,7 +18,7 @@ export interface NumericInputOwnProps {
     min?: number;
     max?: number;
     invalidMessage?: string;
-    maxLength: number; // we use the attribute from the input https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
+    maxLength?: number; // we use the attribute from the input https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
 }
 
 export interface NumericInputStateProps {
