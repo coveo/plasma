@@ -10,7 +10,7 @@
 
 -   Use the shortest value labels possible, ideally one word long (e.g. Low, Medium, High).
 
-### Behavior and Layout
+### Behavior
 
 -   Adjust the size and behavior of the rail so that users have access to the precision level that they need, no more, no less.
 
