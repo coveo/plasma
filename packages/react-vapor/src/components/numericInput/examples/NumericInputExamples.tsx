@@ -55,7 +55,7 @@ const NumericInputExamples = () => (
             </div>
         </div>
         <div className="form-group">
-            <label className="form-control-label">Numeric Input with a width for only 4 digital</label>
+            <label className="form-control-label">Numeric Input with a width for only 4 digits</label>
             <div className="form-control">
                 <NumericInputConnected
                     id="numeric-6"
