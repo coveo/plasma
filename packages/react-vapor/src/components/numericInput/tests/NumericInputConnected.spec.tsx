@@ -1,3 +1,4 @@
+import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
@@ -80,38 +81,32 @@ describe('Numeric Input', () => {
                 .prop('onClick')();
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
         });
-
-        it('should increment by the step prop value onClick on the increment button', () => {
+        describe('keyboard events', () => {
             const step = 10;
-            const component = shallowWithStore(
-                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
-                store
-            ).dive();
+            let input: ShallowWrapper;
 
-            component.find('.js-numeric-input').simulate('keydown', {keyCode: keyCode.upArrow});
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
-        });
+            beforeEach(() => {
+                const component = shallowWithStore(
+                    <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                    store
+                ).dive();
+                input = component.find('.js-numeric-input');
+            });
+            it('should increment by the step prop value onKeyDown on the input', () => {
+                input.simulate('keydown', {keyCode: keyCode.upArrow});
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
+            });
 
-        it('should decrement by the step prop value onClick on the increment button', () => {
-            const step = 10;
-            const component = shallowWithStore(
-                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
-                store
-            ).dive();
+            it('should decrement by the step prop value onKeyDown on the input', () => {
+                input.simulate('keydown', {keyCode: keyCode.downArrow});
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+            });
 
-            component.find('.js-numeric-input').simulate('keydown', {keyCode: keyCode.downArrow});
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
-        });
-
-        it('should not decrement by the step prop value onClick on the increment button', () => {
-            const step = 10;
-            const component = shallowWithStore(
-                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
-                store
-            ).dive();
-
-            component.find('.js-numeric-input').simulate('keydown', {keyCode: keyCode.rightArrow});
-            expect(store.getActions()).not.toContain(NumericInputActions.setValue(id, initialValue - step));
+            it('should not change by another arrow than up or down on keydown', () => {
+                store.clearActions();
+                input.simulate('keydown', {keyCode: keyCode.rightArrow});
+                expect(store.getActions()).toEqual([]);
+            });
         });
 
         it('should disable the increment button when the value is greater than the max', () => {
