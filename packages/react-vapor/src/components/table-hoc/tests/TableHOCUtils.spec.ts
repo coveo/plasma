@@ -11,6 +11,26 @@ describe('TableHOCUtils', () => {
         });
     });
 
+    describe('getPredicateIds', () => {
+        it('should get predicate all the predicate ids associated with the table id', () => {
+            const predicates = TableHOCUtils.getPredicateIds(defaultProps.tableId, {
+                listBoxes: [
+                    {
+                        id: TableHOCUtils.getPredicateId(defaultProps.tableId, '🦇'),
+                        selected: ['🎃'],
+                    },
+                    {
+                        id: TableHOCUtils.getPredicateId(defaultProps.tableId, '🌳'),
+                        selected: ['🐍'],
+                    },
+                ],
+            });
+
+            expect(predicates).toContain(`🦇`);
+            expect(predicates).toContain(`🌳`);
+        });
+    });
+
     describe('getTableIdFromPredicateId', () => {
         it('should parse predicated id to table id', () => {
             const predicateId = TableHOCUtils.getPredicateId(defaultProps.tableId, defaultProps.componentId);
@@ -53,6 +73,14 @@ describe('TableHOCUtils', () => {
             };
 
             expect(compositeState).toEqual(expectedResult);
+        });
+    });
+
+    describe('getDatePickerId', () => {
+        it('should get the table date picker id', () => {
+            const datePickerId = TableHOCUtils.getDatePickerId('🐞');
+
+            expect(datePickerId).toEqual('🐞-date-range');
         });
     });
 });
