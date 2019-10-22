@@ -1,6 +1,7 @@
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
+import {keyCode} from '../../../utils/InputUtils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
 import {NumericInputActions} from '../NumericInputActions';
@@ -78,6 +79,39 @@ describe('Numeric Input', () => {
                 .at(0)
                 .prop('onClick')();
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+        });
+
+        it('should increment by the step prop value onClick on the increment button', () => {
+            const step = 10;
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                store
+            ).dive();
+
+            component.find('.js-numeric-input').simulate('keydown', {keyCode: keyCode.upArrow});
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
+        });
+
+        it('should decrement by the step prop value onClick on the increment button', () => {
+            const step = 10;
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                store
+            ).dive();
+
+            component.find('.js-numeric-input').simulate('keydown', {keyCode: keyCode.downArrow});
+            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+        });
+
+        it('should not decrement by the step prop value onClick on the increment button', () => {
+            const step = 10;
+            const component = shallowWithStore(
+                <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                store
+            ).dive();
+
+            component.find('.js-numeric-input').simulate('keydown', {keyCode: keyCode.rightArrow});
+            expect(store.getActions()).not.toContain(NumericInputActions.setValue(id, initialValue - step));
         });
 
         it('should disable the increment button when the value is greater than the max', () => {
