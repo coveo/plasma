@@ -10,6 +10,10 @@ export interface ITableHeaderBasePayload {
     id: string;
 }
 
+export interface ITableHeaderSortPayload extends ITableHeaderBasePayload {
+    ascending: boolean;
+}
+
 export interface ITableHeaderAddPayload extends ITableHeaderBasePayload {
     tableId: string;
     isDefault: boolean;
@@ -25,9 +29,9 @@ const removeTableHeader = (id: string): IReduxAction<ITableHeaderBasePayload> =>
     payload: {id},
 });
 
-const sortTable = (id: string): IReduxAction<ITableHeaderBasePayload> => ({
+const sortTable = (id: string, ascending?: boolean): IReduxAction<ITableHeaderSortPayload> => ({
     type: TableHeaderActionTypes.sort,
-    payload: {id},
+    payload: {id, ascending},
 });
 
 export const TableHeaderActions = {
