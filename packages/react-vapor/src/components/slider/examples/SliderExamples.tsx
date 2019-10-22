@@ -3,7 +3,7 @@ import {Slider} from '../Slider';
 
 export class SliderExamples extends React.Component<any, any> {
     static description =
-        'Sliders are used to adjust contiguous values (e.g. screen brightness settings) that do not require a high level of precision or a range of related values (e.g. screen resolution settings).';
+        'Sliders are used to adjust contiguous values (e.g., screen brightness settings) that do not require a high level of precision or a range of related values (e.g., screen resolution settings).';
 
     render() {
         const style = {width: 600, margin: 25};
