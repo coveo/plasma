@@ -1,12 +1,13 @@
 import * as $ from 'jquery';
 import * as moment from 'moment';
 import * as _ from 'underscore';
+
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
 import {turnOffLoading} from '../../loading/LoadingActions';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
 import {ITableHOCCompositeState, TableHOCUtils} from '../TableHOCUtils';
-import {TableHOCServerExamples} from './TableHOCServerExamples';
+import {TableHOCServerExampleId} from './TableHOCServerExamples';
 
 export interface IExampleServerTableState {
     data: IExampleRowData[];
@@ -47,17 +48,18 @@ const setIsLoading = (isLoading: boolean): IReduxAction<ISetExampleIsLoadingPayl
 
 const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IReactVaporTestState) => {
     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
-        TableHOCServerExamples.TABLE_ID,
+        TableHOCServerExampleId,
         getState()
     );
+    const [from, to] = _.map(compositeState.dateLimits, (limit) => limit && limit.toISOString());
     const params: any = {
         _page: compositeState.pageNb + 1,
         _limit: compositeState.perPage,
         _sort: compositeState.sortKey,
         _order: compositeState.sortAscending ? 'asc' : 'desc',
         q: compositeState.filter || undefined,
-        from: compositeState.dateLimits[0].toISOString(),
-        to: compositeState.dateLimits[1].toISOString(),
+        from,
+        to,
     };
     _.each(compositeState.predicates, (predicate: {id: string; value: string}) => {
         params[predicate.id] = predicate.value;
@@ -74,8 +76,8 @@ const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IRea
                 .toDate(), // fake a year of birth
         }));
         dispatch(setData(users));
-        dispatch(turnOffLoading([TableHOCServerExamples.TABLE_ID]));
-        dispatch(TableWithPaginationActions.setCount(TableHOCServerExamples.TABLE_ID, count));
+        dispatch(turnOffLoading([TableHOCServerExampleId]));
+        dispatch(TableWithPaginationActions.setCount(TableHOCServerExampleId, count));
     });
 };
 

@@ -1,10 +1,12 @@
 import * as moment from 'moment';
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {RouteComponentProps, withRouter} from 'react-router';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {DateUtils} from '../../../utils/DateUtils';
-import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {IDispatch} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
@@ -20,10 +22,12 @@ import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
+import {tableWithUrlState} from '../TableWithUrlState';
 import {IExampleRowData, TableHOCServerActions} from './TableHOCServerExampleReducer';
 
 const ServerTable = _.compose(
     withServerSideProcessing,
+    tableWithUrlState,
     tableWithBlankSlate({title: 'No data fetched from the server'}),
     tableWithPredicate({
         id: 'address.city',
@@ -51,36 +55,25 @@ const ServerTable = _.compose(
     tableWithActions()
 )(TableHOC);
 
-interface TableHOCServerDispatchProps {
-    fetch: () => void;
-}
-
-interface TableHOCServerStateProps {
-    isLoading: boolean;
-    serverData: IExampleRowData[];
-    totalEntries: number;
-    totalPages: number;
-}
-interface TableHOCServerProps extends Partial<TableHOCServerDispatchProps>, Partial<TableHOCServerStateProps> {}
+type TableHOCServerProps = RouteComponentProps &
+    ReturnType<typeof mapStateToProps> &
+    ReturnType<typeof mapDispatchToProps>;
 
 const mapStateToProps = (state: IReactVaporTestState) => ({
     isLoading: state.tableHOCExample.isLoading,
     serverData: state.tableHOCExample.data,
 });
-const mapDispatchToProps = (dispatch: IDispatch): TableHOCServerDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch) => ({
     fetch: _.debounce(() => dispatch(TableHOCServerActions.fetchData()), 400),
 });
 
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class TableHOCServerExamples extends React.Component<TableHOCServerProps> {
-    static TABLE_ID = 'complex-example';
-
+class Example extends React.PureComponent<TableHOCServerProps> {
     render() {
         const generateRows = (allData: IExampleRowData[]) =>
             allData.map((data: IExampleRowData, i: number) => (
                 <TableRowConnected
                     id={data.username}
-                    tableId={TableHOCServerExamples.TABLE_ID}
+                    tableId={TableHOCServerExampleId}
                     key={data.username}
                     actions={[
                         {
@@ -112,12 +105,13 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
                         change in the date range.
                     </span>
                     <ServerTable
-                        id={TableHOCServerExamples.TABLE_ID}
+                        id={TableHOCServerExampleId}
                         className="table table-numbered"
                         data={this.props.serverData}
                         renderBody={generateRows}
                         tableHeader={this.renderHeader()}
                         onUpdate={this.onUpdate}
+                        onUpdateUrl={this.updateUrl}
                         isLoading={this.props.isLoading}
                     >
                         <LastUpdated time={new Date()} />
@@ -132,13 +126,13 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
             <thead>
                 <tr>
                     <TableRowNumberHeader />
-                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExamples.TABLE_ID}>
+                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId}>
                         City
                     </TableHeaderWithSort>
-                    <TableHeaderWithSort id="email" tableId={TableHOCServerExamples.TABLE_ID}>
+                    <TableHeaderWithSort id="email" tableId={TableHOCServerExampleId}>
                         Email
                     </TableHeaderWithSort>
-                    <TableHeaderWithSort id="username" tableId={TableHOCServerExamples.TABLE_ID} isDefault>
+                    <TableHeaderWithSort id="username" tableId={TableHOCServerExampleId} isDefault>
                         Username
                     </TableHeaderWithSort>
                     <th key="date-of-birth">Date of Birth</th>
@@ -150,4 +144,15 @@ export class TableHOCServerExamples extends React.Component<TableHOCServerProps>
     private onUpdate = () => {
         this.props.fetch();
     };
+
+    private updateUrl = (query: string) => {
+        this.props.history.push({search: query});
+    };
 }
+
+export const TableHOCServerExamples = connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(withRouter(Example));
+
+export const TableHOCServerExampleId = 'complex-example';
