@@ -115,7 +115,7 @@ export class ModalComposite extends React.PureComponent<
             docLink: this.props.docLink,
         };
 
-        if (!this.props.title || !this.props.modalHeaderChildren) {
+        if (!this.props.title) {
             return null;
         }
 
