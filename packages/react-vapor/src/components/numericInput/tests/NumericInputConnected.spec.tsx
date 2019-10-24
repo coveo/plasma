@@ -1,6 +1,8 @@
+import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
+import {keyCode} from '../../../utils/InputUtils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
 import {NumericInputActions} from '../NumericInputActions';
@@ -78,6 +80,33 @@ describe('Numeric Input', () => {
                 .at(0)
                 .prop('onClick')();
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+        });
+        describe('keyboard events', () => {
+            const step = 10;
+            let input: ShallowWrapper;
+
+            beforeEach(() => {
+                const component = shallowWithStore(
+                    <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
+                    store
+                ).dive();
+                input = component.find('.js-numeric-input');
+            });
+            it('should increment by the step prop value onKeyDown on the input', () => {
+                input.simulate('keydown', {keyCode: keyCode.upArrow});
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
+            });
+
+            it('should decrement by the step prop value onKeyDown on the input', () => {
+                input.simulate('keydown', {keyCode: keyCode.downArrow});
+                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+            });
+
+            it('should not change by another arrow than up or down on keydown', () => {
+                store.clearActions();
+                input.simulate('keydown', {keyCode: keyCode.rightArrow});
+                expect(store.getActions()).toEqual([]);
+            });
         });
 
         it('should disable the increment button when the value is greater than the max', () => {
