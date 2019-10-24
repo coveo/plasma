@@ -18,7 +18,7 @@ import {ModalHeaderConnected} from './ModalHeaderConnected';
 
 export interface IModalCompositeOwnProps
     extends IModalOwnProps,
-        IModalHeaderOwnProps,
+        Partial<IModalHeaderOwnProps>,
         IModalFooterProps,
         IModalBackdropOwnProps {
     modalHeaderChildren?: React.ReactNode;
@@ -115,11 +115,18 @@ export class ModalComposite extends React.PureComponent<
             docLink: this.props.docLink,
         };
 
-        return this.props.withReduxState ? (
-            <ModalHeaderConnected key="modal-header" {...basicProps}>
-                {this.props.modalHeaderChildren}
-            </ModalHeaderConnected>
-        ) : (
+        if (!this.props.title) {
+            return null;
+        }
+
+        if (this.props.withReduxState) {
+            return (
+                <ModalHeaderConnected key="modal-header" {...basicProps}>
+                    {this.props.modalHeaderChildren}
+                </ModalHeaderConnected>
+            );
+        }
+        return (
             <ModalHeader key="modal-header" {...basicProps} onClose={this.props.onClose}>
                 {this.props.modalHeaderChildren}
             </ModalHeader>
