@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
@@ -62,10 +63,7 @@ const getPredicateId = (tableId: string, componentId: string) => `${tableId}${PR
 
 const getPredicateIds = (tableId: string, state: IReactVaporState): string[] =>
     _.chain(state.listBoxes)
-        .filter((list: IListBoxState) => {
-            const startWithIdRegexp = new RegExp(`^${tableId}(.+)`);
-            return startWithIdRegexp.test(list.id);
-        })
+        .filter(filterTablePredicate.bind(null, tableId))
         .pluck('id')
         .map(getComponentIdFromPredicateId)
         .value();
@@ -74,10 +72,7 @@ const getPaginationId = (tableId: string) => `pagination-${tableId}`;
 
 const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOCPredicateValue[] => {
     return _.chain(state.listBoxes)
-        .filter((list: IListBoxState) => {
-            const startWithIdRegexp = new RegExp(`^${tableId}(.+)`);
-            return startWithIdRegexp.test(list.id);
-        })
+        .filter(filterTablePredicate.bind(null, tableId))
         .filter((list: IListBoxState) => list.selected && list.selected[0] !== '')
         .map((list: IListBoxState) => ({id: getComponentIdFromPredicateId(list.id), value: list.selected[0]}))
         .value();
@@ -93,3 +88,7 @@ export const TableHOCUtils = {
     getTableIdFromPredicateId,
     getDatePickerId,
 };
+
+function filterTablePredicate(tableId: string, {id}: IListBoxState): boolean {
+    return new RegExp(`^${tableId}(.+)`).test(id);
+}
