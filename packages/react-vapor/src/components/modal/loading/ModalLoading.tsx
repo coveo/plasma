@@ -8,7 +8,7 @@ export interface ModalLoadingProps {
     openOnMount?: boolean;
 }
 
-export const ModalLoading = (props: ModalLoadingProps) => (
+export const ModalLoading: React.FunctionComponent<ModalLoadingProps> = (props) => (
     <ModalCompositeConnected
         id={props.id}
         classes="mod-prompt"
