@@ -26,7 +26,7 @@ class ModalLoadingExamplesDisconnected extends React.PureComponent<IModalExample
                     <button className="btn" onClick={() => this.openModal(Ids.example1)}>
                         Open Modal
                     </button>
-                    <ModalLoading id={Ids.example1} title={'my loading title'} />
+                    <ModalLoading id={Ids.example1} title={'my loading title'} openOnMount={false} />
                 </div>
             </div>
             // stop-print
