@@ -1,4 +1,3 @@
-import * as QueryString from 'query-string';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
@@ -35,7 +34,7 @@ const Params = {
     filter: 'q',
 };
 
-export function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.ComponentType<P>) {
+function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.ComponentType<P>) {
     type Props = P &
         TableWithUrlStateProps &
         ReturnType<typeof mapStateToProps> &
@@ -85,26 +84,23 @@ function getQuery(state: IReactVaporState, tableId: string): string {
         order = tableState.sortAscending ? SortOrderValues.ascending : SortOrderValues.descending;
     }
 
-    return QueryString.stringify(
-        {
-            [Params.filter]: tableState.filter || undefined,
-            [Params.pageNumber]: tableState.pageNb,
-            [Params.pageSize]: tableState.perPage,
-            [Params.sortKey]: tableState.sortKey,
-            [Params.sortOrder]: order,
-            ..._.reduce(
-                tableState.predicates,
-                (memo, {id, value}: ITableHOCPredicateValue) => ({
-                    ...memo,
-                    [id]: value,
-                }),
-                {}
-            ),
-            [Params.lowerDateLimit]: from || undefined,
-            [Params.upperDateLimit]: to || undefined,
-        },
-        {sort: false}
-    );
+    return UrlUtils.toQueryString({
+        [Params.filter]: tableState.filter || undefined,
+        [Params.pageNumber]: tableState.pageNb,
+        [Params.pageSize]: tableState.perPage,
+        [Params.sortKey]: tableState.sortKey,
+        [Params.sortOrder]: order,
+        ..._.reduce(
+            tableState.predicates,
+            (memo, {id, value}: ITableHOCPredicateValue) => ({
+                ...memo,
+                [id]: value,
+            }),
+            {}
+        ),
+        [Params.lowerDateLimit]: from || undefined,
+        [Params.upperDateLimit]: to || undefined,
+    });
 }
 
 function updateTableStateFromUrl(tableId: string): IThunkAction {
@@ -164,3 +160,5 @@ function updateTableStateFromUrl(tableId: string): IThunkAction {
         }
     };
 }
+
+export {tableWithUrlState, Params as TableWithUrlStateParameters};
