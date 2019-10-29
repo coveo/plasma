@@ -11,6 +11,9 @@ import {
 } from './DatePickerExamplesCommon';
 
 export class DatePickerDropdownConnectedExamples extends React.Component<any, any> {
+    static description =
+        'Date Pickers allow users to select a date or date range, and may further allow time of day selection.';
+
     render() {
         return (
             <div className="mt2">
