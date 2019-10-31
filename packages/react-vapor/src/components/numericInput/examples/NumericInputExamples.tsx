@@ -31,13 +31,54 @@ const NumericInputExamples = () => (
             <div className="form-control">
                 <NumericInputConnected
                     id="numeric-4"
-                    initialValue={50}
+                    initialValue={500}
                     step={25}
                     min={25}
-                    max={300}
-                    style={{width: '48px'}}
+                    max={999}
                     maxLength={3}
-                    invalidMessage="The value must be between 25 and 300."
+                    invalidMessage="The value must be between 25 and 999."
+                />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">Numeric Input with a width for only 2 digits</label>
+            <div className="form-control">
+                <NumericInputConnected
+                    id="numeric-5"
+                    initialValue={20}
+                    step={1}
+                    min={0}
+                    max={99}
+                    maxLength={2}
+                    invalidMessage="The value must be between 0 and 99."
+                />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">Numeric Input with a width for only 4 digits</label>
+            <div className="form-control">
+                <NumericInputConnected
+                    id="numeric-6"
+                    initialValue={5000}
+                    step={25}
+                    min={25}
+                    max={9999}
+                    maxLength={4}
+                    invalidMessage="The value must be between 25 and 7000."
+                />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">Numeric Input with a width for only 10 digits</label>
+            <div className="form-control">
+                <NumericInputConnected
+                    id="numeric-7"
+                    initialValue={5000000000}
+                    step={10000}
+                    min={0}
+                    max={9999999999}
+                    maxLength={10}
+                    invalidMessage="The value must be between 25 and 7000."
                 />
             </div>
         </div>

@@ -82,52 +82,82 @@ describe('Table HOC', () => {
             expect(_.findWhere(tableHeadersState, {id: action.payload.id})).toBeUndefined();
         });
 
-        it('should set the sort on the table header when the action is "TableHeaderActions.sortTable"', () => {
-            const oldState: ITableWithSortState[] = [
-                {
-                    id: 'some-table-header-1',
-                    tableId: 'not-important',
-                    isAsc: undefined,
-                },
-                {
-                    id: 'some-table-header-2',
-                    tableId: 'not-important',
-                    isAsc: true,
-                },
-            ];
+        describe('when the action is "TableHeaderActions.sortTable"', () => {
+            it('should not throw on sort if the table header does not exists', () => {
+                const oldState: ITableWithSortState[] = [];
+                const action = TableHeaderActions.sortTable('To be or not to be');
 
-            const action = TableHeaderActions.sortTable(oldState[0].id);
-            const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+                expect(() => TableWithSortReducers(oldState, action)).not.toThrow();
+            });
 
-            expect(tableHeadersState.length).toBe(oldState.length);
-            expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).isAsc).toBe(true);
-            expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).isAsc).toBe(undefined);
-        });
+            it('should set the sort on the table header"', () => {
+                const oldState: ITableWithSortState[] = [
+                    {
+                        id: 'some-table-header-1',
+                        tableId: 'not-important',
+                        isAsc: undefined,
+                    },
+                    {
+                        id: 'some-table-header-2',
+                        tableId: 'not-important',
+                        isAsc: true,
+                    },
+                ];
 
-        it('should not modify the isAsc for the other tables when the action is "TableHeaderActions.sortTable"', () => {
-            const oldState: ITableWithSortState[] = [
-                {
-                    id: 'some-table-header',
-                    tableId: 'current-table',
-                    isAsc: undefined,
-                },
-                {
-                    id: 'other-table-header',
-                    tableId: 'other-table',
-                    isAsc: true,
-                },
-            ];
+                const action = TableHeaderActions.sortTable(oldState[0].id);
+                const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
 
-            const action = TableHeaderActions.sortTable(oldState[0].id);
-            const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
-            expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).isAsc).toBe(oldState[1].isAsc);
-        });
+                expect(tableHeadersState.length).toBe(oldState.length);
+                expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).isAsc).toBe(true);
+                expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).isAsc).toBe(undefined);
+            });
 
-        it('should not throw on sort if the table header does not exists', () => {
-            const oldState: ITableWithSortState[] = [];
-            const action = TableHeaderActions.sortTable('To be or not to be');
+            it('should not modify the isAsc for the other tables"', () => {
+                const oldState: ITableWithSortState[] = [
+                    {
+                        id: 'some-table-header',
+                        tableId: 'current-table',
+                        isAsc: undefined,
+                    },
+                    {
+                        id: 'other-table-header',
+                        tableId: 'other-table',
+                        isAsc: true,
+                    },
+                ];
 
-            expect(() => TableWithSortReducers(oldState, action)).not.toThrow();
+                const action = TableHeaderActions.sortTable(oldState[0].id);
+                const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+                expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).isAsc).toBe(oldState[1].isAsc);
+            });
+
+            it('should set isAsc to the value specified in the action payload', () => {
+                const oldState: ITableWithSortState[] = [
+                    {
+                        id: '🐌',
+                        tableId: '🐋',
+                        isAsc: undefined,
+                    },
+                ];
+
+                const action = TableHeaderActions.sortTable('🐌', false);
+                const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+                expect(_.findWhere(tableHeadersState, {id: '🐌'}).isAsc).toBe(false);
+            });
+
+            it('should set isAsc to the opposite value of the current one if no "ascending" value is specified in the action payload', () => {
+                const oldState: ITableWithSortState[] = [
+                    {
+                        id: '🐊',
+                        tableId: '🐋',
+                        isAsc: true,
+                    },
+                ];
+
+                const action = TableHeaderActions.sortTable('🐊');
+                const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+                expect(_.findWhere(tableHeadersState, {id: '🐊'}).isAsc).toBe(false);
+            });
         });
     });
 });

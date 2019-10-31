@@ -46,16 +46,18 @@ describe('ModalComposite', () => {
     });
 
     it('should render a ModalHeader inside the modal content', () => {
-        const modalComposite = shallow(<ModalComposite isOpened />).dive();
+        const modalComposite = shallow(<ModalComposite isOpened title={'my title'} />).dive();
         const modalContent = modalComposite.find('.modal-content');
 
-        expect(modalContent.exists()).toBe(true);
+        expect(modalContent.exists()).toBe(true, 'should exists');
         expect(modalContent.find(ModalHeader).exists()).toBe(true);
     });
 
     it('should render modal header children inside the modal header', () => {
         const modalHeaderChildren = <span>A bird in the hand is worth two in the bush.</span>;
-        const modalComposite = shallow(<ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} />).dive();
+        const modalComposite = shallow(
+            <ModalComposite isOpened modalHeaderChildren={modalHeaderChildren} title={'patate'} />
+        ).dive();
 
         expect(modalComposite.find(ModalHeader).contains(modalHeaderChildren)).toBe(true);
     });
