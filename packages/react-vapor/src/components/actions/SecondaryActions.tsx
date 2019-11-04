@@ -35,7 +35,7 @@ export class SecondaryActions extends React.Component<ISecondaryActionsProps, an
                 <ActionsDropdownConnected
                     moreLabel={this.props.moreLabel}
                     actions={this.props.actions}
-                    id={this.props.id}
+                    id={`${this.props.id}_actionsDropdown`}
                 />
             ) : (
                 <ActionsDropdown moreLabel={this.props.moreLabel} actions={this.props.actions} />
