@@ -79,7 +79,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
             const datePickerAction = (
                 <DatePickerDropdownConnected
                     {...(config as any)}
-                    id={this.props.id}
+                    id={`${this.props.id}_datePicker`}
                     key={this.props.id}
                     className={classNames('coveo-table-actions', config.className)}
                     onRight
