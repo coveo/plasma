@@ -54,7 +54,14 @@ export class ToastContainer extends React.Component<IToastContainerProps, {}> {
         });
         const toasts = this.props.toasts
             ? _.map(this.props.toasts, (toast: IToastProps) => (
-                  <Toast key={toast.id} {...toast} onClose={() => this.onCloseToast(toast.id)} />
+                  <Toast
+                      key={toast.id}
+                      {...toast}
+                      onClose={() => {
+                          this.onCloseToast(toast.id);
+                          toast.onClose();
+                      }}
+                  />
               ))
             : this.props.children;
 
