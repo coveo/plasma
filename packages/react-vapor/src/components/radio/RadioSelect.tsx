@@ -42,7 +42,7 @@ export interface IRadioSelectAllProps
         IRadioSelectStateProps {}
 
 export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
-    componentWillMount() {
+    componentDidMount() {
         callIfDefined(this.props.onMount, this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
     }
 

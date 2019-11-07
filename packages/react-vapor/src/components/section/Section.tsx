@@ -17,15 +17,15 @@ export const Section: React.FunctionComponent<ISectionProps> = ({
     description,
     className,
     mods,
-    level,
+    level = 1,
 }) => {
     const titleProps: React.HTMLProps<HTMLElement> = {
         className: 'text-medium-blue mb2',
         children: title,
     };
-    const H = `h${(level || 1) + 1}`;
+    const H = `h${level + 1}`;
     return (
-        <fieldset className={classNames(className, mods, 'form-group mod-padding-children')}>
+        <fieldset className={classNames(className, mods, `level-${level} form-group mod-padding-children`)}>
             {title && <H {...titleProps} />}
             {description && <p className="description">{description}</p>}
             {children}

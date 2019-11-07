@@ -34,11 +34,11 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
         ) : null;
 
     return (
-        <>
+        <div className="labeled-input">
             {header}
             {children}
             {!!message && <InputDescription>{message}</InputDescription>}
             {!!description && <InputDescription>{description}</InputDescription>}
-        </>
+        </div>
     );
 };
