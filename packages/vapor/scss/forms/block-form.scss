@@ -64,23 +64,39 @@ form {
             }
         }
 
-        &.mod-padding-children {
+        @mixin section-mixin($level) {
+            > :not(:first-child) {
+                margin-top: ($spacing * $level) /2;
+            }
+            > .labeled-input {
+                > .input-field {
+                    margin-top: $spacing * 2.5;
+                }
+
+                > * {
+                    margin-top: ($spacing * $level) /2;
+                }
+            }
             > .input-field {
-                margin-top: $form-group-margin + $input-margin-top;
+                margin-top: $spacing;
             }
-
-            > header:not(:first-child) {
-                margin-top: $form-group-margin;
+            > .description {
+                margin-top: 0;
             }
+            > .btn {
+                margin-top: 0;
+            }
+        }
 
-            > *:not(:first-child) {
-                margin-top: $spacing * 2;
-                &.input-field {
-                    margin-top: $form-group-margin + $input-margin-top;
-                }
-                &.form-group {
-                    margin-top: $form-group-margin;
-                }
+        &.mod-padding-children {
+            &.level-1 {
+                @include section-mixin(6);
+            }
+            &.level-2 {
+                @include section-mixin(4);
+            }
+            &.level-3 {
+                @include section-mixin(2.5);
             }
         }
     }
