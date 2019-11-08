@@ -107,18 +107,13 @@ describe('<NavigationPerPageConnected />', () => {
         expect(_.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id})).toBeUndefined();
     });
 
-    it('should turn on loading and change the per page number when clicking on a <NavigationPerPageSelect /> link', () => {
+    it('should change the per page number when clicking on a <NavigationPerPageSelect /> link', () => {
         const perPageSelected = navigationPerPage.find('a').last();
-
-        expect(_.findWhere(store.getState().loadings, {id: basicNavigationPerPageProps.loadingIds[0]}).isOn).toBe(
-            false
-        );
 
         perPageSelected.simulate('click');
         expect(
             _.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage.toString()
         ).toBe(perPageSelected.find('span').text());
-        expect(_.findWhere(store.getState().loadings, {id: basicNavigationPerPageProps.loadingIds[0]}).isOn).toBe(true);
     });
 
     it('should not update the currentPerPage prop if a selected <NavigationPerPageSelect /> is clicked', () => {
