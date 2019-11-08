@@ -89,6 +89,9 @@ form {
             }
             > .btn {
                 margin-top: 0;
+                + .input-field {
+                    margin-top: (($spacing * $level) /2) + 0.75rem;
+                }
             }
         }
 
