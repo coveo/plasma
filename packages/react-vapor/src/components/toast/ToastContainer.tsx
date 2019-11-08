@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IToastProps, Toast} from './Toast';
 import {IToastState} from './ToastReducers';
 
@@ -59,7 +60,7 @@ export class ToastContainer extends React.Component<IToastContainerProps, {}> {
                       {...toast}
                       onClose={() => {
                           this.onCloseToast(toast.id);
-                          toast.onClose ? toast.onClose() : '';
+                          callIfDefined(toast.onClose);
                       }}
                   />
               ))
