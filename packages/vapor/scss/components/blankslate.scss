@@ -34,12 +34,16 @@
         }
     }
 
+    // deprecated use .mod-error instead
     &.mod-danger {
-        background-color: rgba($red, 0.1);
+        background-color: rgba($red, $transparency-5);
         border-color: $red;
         h1,
         p {
             color: $red;
         }
+    }
+    &.mod-error {
+        background-color: rgba($orange-5, $transparency-5);
     }
 }
