@@ -100,5 +100,32 @@ describe('Toasts', () => {
             expect(onCloseToast).toHaveBeenCalledTimes(1);
             expect(onCloseToast).toHaveBeenCalledWith(newToastAttributes.toasts[0].id);
         });
+
+        it('should not throw if toast method onClose is not defined', () => {
+            const newToastAttributes = _.extend({}, basicProps, {
+                toasts: [{id: 'toast-id', title: 'some toast title'}],
+            });
+
+            component.setProps(newToastAttributes).mount();
+            expect(() =>
+                component
+                    .find(Toast)
+                    .props()
+                    .onClose()
+            ).not.toThrow();
+        });
+
+        it('should call toast method onClose when defined', () => {
+            const onCloseSpy = jasmine.createSpy('onClose');
+            const newToastAttributes = _.extend({}, basicProps, {
+                toasts: [{id: 'toast-id', title: 'some toast title', onClose: onCloseSpy}],
+            });
+            component.setProps(newToastAttributes).mount();
+            component
+                .find(Toast)
+                .props()
+                .onClose();
+            expect(onCloseSpy).toHaveBeenCalledTimes(1);
+        });
     });
 });
