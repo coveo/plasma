@@ -10,8 +10,10 @@ describe('BlankSlateWithTable Tests', () => {
         };
 
         it('should not throw on mount and unmount', () => {
-            expect(shallowWithState(<BlankSlateWithTable {...defaultProps} />, {}));
+            expect(() => {
+                const component = shallowWithState(<BlankSlateWithTable {...defaultProps} />, {});
+                component.unmount();
+            });
         });
     });
-    ù;
 });
