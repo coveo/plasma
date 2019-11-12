@@ -2,6 +2,7 @@ import {helpers, seed} from 'faker/locale/en';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {DateUtils} from '../../../utils/DateUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';

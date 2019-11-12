@@ -20,7 +20,7 @@ export const Section: React.FunctionComponent<ISectionProps> = ({
     level = 1,
 }) => {
     const titleProps: React.HTMLProps<HTMLElement> = {
-        className: 'text-medium-blue mb2',
+        className: 'text-medium-blue mb1',
         children: title,
     };
     const H = `h${level + 1}`;
