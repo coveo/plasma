@@ -32,6 +32,7 @@ import {IOptionPickerState} from './components/optionPicker/OptionPickerReducers
 import {IOptionsCycleState} from './components/optionsCycle/OptionsCycleReducers';
 import {IPopoverState} from './components/popover/Popover';
 import {IRadioSelectState} from './components/radio/RadioSelectReducers';
+import {IRefreshCallBackState} from './components/refresh/RefreshCallbackReducer';
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectWithFilterCompositeState} from './components/select/hoc/SelectWithFilterReducers';
 import {ISelectState} from './components/select/SelectReducers';
@@ -97,6 +98,7 @@ export interface IReactVaporState {
     dirtyComponents?: ComponentId[];
     multilineIds?: IStringListCompositeState;
     drop?: IDropState;
+    refreshCallback?: IRefreshCallBackState;
 }
 
 export interface IReduxActionsPayload {
