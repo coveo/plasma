@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -65,7 +64,7 @@ export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateC
     class TableWithPredicate extends React.Component<ITableWithPredicateProps> {
         componentDidUpdate(prevProps: ITableWithPredicateProps) {
             if (prevProps.predicate !== this.props.predicate) {
-                callIfDefined(this.props.onUpdate);
+                this.props.onUpdate?.();
             }
         }
 

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import * as _ from 'underscore';
-import {callIfDefined} from '../../../utils/FalsyValuesUtils';
+
 import {TooltipPlacement} from '../../../utils/TooltipUtils';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
@@ -13,7 +12,7 @@ export interface ISelectedOptionProps {
 
 export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
     handleOnRemove = () => {
-        callIfDefined(this.props.onRemoveClick, this.props.value);
+        this.props.onRemoveClick?.(this.props.value);
     };
 
     render() {
