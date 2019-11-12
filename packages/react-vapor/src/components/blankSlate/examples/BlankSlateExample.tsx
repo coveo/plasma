@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {RefreshCallbackWithButton} from '../../refresh/RefreshCallbackHOC';
 import {BlankSlate} from '../BlankSlate';
 import {BlankSlateWithError, BlankSlateWithTable, BlankSlateWithTableInError} from '../BlankSlatesHOC';
 
