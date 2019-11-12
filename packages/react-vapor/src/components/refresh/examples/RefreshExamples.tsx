@@ -5,6 +5,7 @@ import {LabeledInput} from '../../input/LabeledInput';
 import {Section} from '../../section/Section';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {RefreshCallback} from '../RefreshCallback';
+import {RefreshCallbackWithButton} from '../RefreshCallbackHOC';
 
 // start-print
 export class RefreshExamples extends React.Component<any, any> {
@@ -25,6 +26,15 @@ export class RefreshExamples extends React.Component<any, any> {
                         />
                         <div>
                             <RefreshCallback id="refresh-1" callback={() => alert('refresh end')} />
+                        </div>
+                    </LabeledInput>
+                    <LabeledInput label="Refresh counter">
+                        <div className="flex center-align flex-column">
+                            <RefreshCallbackWithButton
+                                id="refresh-2"
+                                time={20}
+                                callback={(start) => setTimeout(start, 2000)}
+                            />
                         </div>
                     </LabeledInput>
                 </Section>
