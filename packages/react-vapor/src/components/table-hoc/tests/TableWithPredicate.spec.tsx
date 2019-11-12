@@ -19,7 +19,10 @@ describe('Table HOC', () => {
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
-            data: [{value: 'a', city: 'not-test'}, {value: 'b', city: 'test'}],
+            data: [
+                {value: 'a', city: 'not-test'},
+                {value: 'b', city: 'test'},
+            ],
             renderBody: _.identity,
         };
 

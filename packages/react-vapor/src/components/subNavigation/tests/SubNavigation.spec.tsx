@@ -10,7 +10,15 @@ describe('SubNavigation', () => {
         expect(() => shallow(<SubNavigation items={[]} selected="hello" />)).not.toThrow();
         expect(() => shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="a" />)).not.toThrow();
         expect(() =>
-            shallow(<SubNavigation items={[{id: 'a', label: 'A'}, {id: 'b', label: 'B'}]} selected="b" />)
+            shallow(
+                <SubNavigation
+                    items={[
+                        {id: 'a', label: 'A'},
+                        {id: 'b', label: 'B'},
+                    ]}
+                    selected="b"
+                />
+            )
         ).not.toThrow();
         expect(() =>
             shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="not-existing-id" />)
@@ -35,7 +43,10 @@ describe('SubNavigation', () => {
     describe('<SubNavigation />', () => {
         let subNavigation: ShallowWrapper<ISubNavigationProps>;
         const basicProps: ISubNavigationProps = {
-            items: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],
+            items: [
+                {id: 'a', label: 'A'},
+                {id: 'b', label: 'B'},
+            ],
         };
 
         it('should render one navigation link per item', () => {

@@ -30,18 +30,27 @@ const TableWithActions = _.compose(tableWithActions())(TableHOC);
 const TableWithPredicate = _.compose(
     tableWithPredicate({
         id: 'city',
-        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'Marcoside', value: 'Marcoside'}],
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Marcoside', value: 'Marcoside'},
+        ],
     })
 )(TableHOC);
 
 const TableWithTwoPredicate = _.compose(
     tableWithPredicate({
         id: 'city',
-        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'Marcoside', value: 'Marcoside'}],
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Marcoside', value: 'Marcoside'},
+        ],
     }),
     tableWithPredicate({
         id: 'username',
-        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'Hubert', value: 'Hubert93'}],
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Hubert', value: 'Hubert93'},
+        ],
     })
 )(TableHOC);
 
@@ -54,9 +63,8 @@ const TableWithUsernameFilter = _.compose(
     tableWithBlankSlate({title: 'Filter caused the table to be empty'})
 )(TableHOC);
 
-const TableWithDatePicker: React.ComponentClass<
-    ITableWithDatePickerProps & React.HTMLAttributes<HTMLTableElement>
-> = _.compose(
+const TableWithDatePicker: React.ComponentClass<ITableWithDatePickerProps &
+    React.HTMLAttributes<HTMLTableElement>> = _.compose(
     tableWithDatePicker({
         datesSelectionBoxes: SELECTION_BOX,
         matchDates: (data: IExampleRowData, lowerLimit: Date) => data.dateOfBirth >= lowerLimit,

@@ -184,7 +184,10 @@ describe('Select', () => {
 
         it('should display the selectedDisplayValue if defined in the button for the selected item', () => {
             const selectedDisplayValue = 'Another selected value bites the dust';
-            mountSingleSelect([{value: 'a', selected: true, selectedDisplayValue}, {value: 'b', selected: false}]);
+            mountSingleSelect([
+                {value: 'a', selected: true, selectedDisplayValue},
+                {value: 'b', selected: false},
+            ]);
             const buttonHTML = select.find('.dropdown-toggle').html();
 
             expect(buttonHTML).toContain(selectedDisplayValue);

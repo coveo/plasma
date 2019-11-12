@@ -32,12 +32,18 @@ const ServerTable = _.compose(
     tableWithPredicate({
         id: 'address.city',
         prepend: <span className="mr1 text-medium-grey">City:</span>,
-        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'Lebsackbury', value: 'Lebsackbury'}],
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'Lebsackbury', value: 'Lebsackbury'},
+        ],
     }),
     tableWithPredicate({
         id: 'username',
         prepend: <span className="mr1 text-medium-grey">Username:</span>,
-        values: [{displayValue: 'All', value: '', selected: true}, {displayValue: 'bret', value: 'Bret'}],
+        values: [
+            {displayValue: 'All', value: '', selected: true},
+            {displayValue: 'bret', value: 'Bret'},
+        ],
     }),
     tableWithFilter(),
     tableWithDatePicker({
@@ -150,9 +156,6 @@ class Example extends React.PureComponent<TableHOCServerProps> {
     };
 }
 
-export const TableHOCServerExamples = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(withRouter(Example));
+export const TableHOCServerExamples = connect(mapStateToProps, mapDispatchToProps)(withRouter(Example));
 
 export const TableHOCServerExampleId = 'complex-example';

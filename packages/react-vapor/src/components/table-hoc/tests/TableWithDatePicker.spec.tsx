@@ -93,10 +93,7 @@ describe('Table HOC', () => {
         });
 
         describe('when server side', () => {
-            const TableWithDatePickerServer = _.compose(
-                withServerSideProcessing,
-                tableWithDatePicker()
-            )(TableHOC);
+            const TableWithDatePickerServer = _.compose(withServerSideProcessing, tableWithDatePicker())(TableHOC);
 
             it('should not filter out elements if the date picker is server side', () => {
                 const wrapper = shallowWithState(
