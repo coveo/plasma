@@ -115,30 +115,6 @@ export class BlankSlateExample extends React.Component<any, any> {
                         />
                     </table>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">BlankSlate for a table in error</label>
-                    <table className="table">
-                        <tr>
-                            <th>Firstname</th>
-                            <th>Lastname</th>
-                            <th>Age</th>
-                        </tr>
-                        <BlankSlateWithTableInError
-                            title="Unable to retrieve X"
-                            description="Super clear error message localized to ensure a good comprehension about the current error"
-                            additionalSection={
-                                <RefreshCallbackWithButton
-                                    id="refresh"
-                                    time={10}
-                                    callback={(start) => setTimeout(start, 2000)}
-                                    renderCount={(count: number) => (
-                                        <span className="text-black small-text">Auto refresh in {count} seconds</span>
-                                    )}
-                                />
-                            }
-                        />
-                    </table>
-                </div>
             </div>
         );
     }
