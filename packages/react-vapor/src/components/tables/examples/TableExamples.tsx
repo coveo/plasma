@@ -162,7 +162,10 @@ const buildNewTableStateManually = (
             totalPages: totalPages,
         };
     }, DEFAULT_TABLE_DATA);
-    return defaultTableStateModifier(tableOwnProps, _.extend({}, tableCompositeState, {data: newTableData}))({
+    return defaultTableStateModifier(
+        tableOwnProps,
+        _.extend({}, tableCompositeState, {data: newTableData})
+    )({
         ...currentState,
         data: newTableData,
     });

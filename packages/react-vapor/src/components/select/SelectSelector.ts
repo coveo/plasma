@@ -49,7 +49,10 @@ const getCustomItems: (state: IReactVaporState, ownProps: ISelectWithFilterProps
     customItemsCombiner
 );
 
-const getCustomItemsWithFilter: (state: IReactVaporState, ownProps: ISelectProps) => IItemBoxProps[] = createSelector(
+const getCustomItemsWithFilter: (
+    state: IReactVaporState,
+    ownProps: ISelectProps
+) => IItemBoxProps[] = createSelector(
     getItemsWithFilter,
     getCustomItems,
     (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems]

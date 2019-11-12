@@ -6,6 +6,7 @@ export class ColorExamples extends React.Component {
     render() {
         const VaporColors: {
             [key: string]: string;
+            // tslint:disable-next-line
         } = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
         const colors = _.map(VaporColors, (value: string, color: string) =>
             value === 'category' ? (
