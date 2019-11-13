@@ -11,9 +11,8 @@ import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../../utils/tests
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions';
 import {IActionOptions} from '../Action';
-import {ActionBar, IActionBarProps} from '../ActionBar';
+import {ActionBar, ActionBarConnected, IActionBarProps} from '../ActionBar';
 import {addActionsToActionBar, removeActionBar} from '../ActionBarActions';
-import {ActionBarConnected} from '../ActionBarConnected';
 import {filterItems, removeItemFilter} from '../filters/ItemFilterActions';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';
 import {SecondaryActionsConnected} from '../SecondaryActionsConnected';
@@ -49,8 +48,8 @@ describe('Actions', () => {
     const itemFilterLabel: string = 'Item filter';
 
     describe('<ActionBarConnected />', () => {
-        let wrapper: ReactWrapper<any, any>;
-        let actionBar: ReactWrapper<IActionBarProps, any>;
+        let wrapper: ReactWrapper;
+        let actionBar: ReactWrapper<IActionBarProps & any>;
         let store: Store<IReactVaporState>;
 
         beforeEach(() => {
