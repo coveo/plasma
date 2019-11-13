@@ -2,7 +2,7 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {ActionBarConnected} from '../actions/ActionBarConnected';
+import {ActionBarConnected} from '../actions/ActionBar';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead

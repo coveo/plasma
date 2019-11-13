@@ -1,7 +1,8 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {humanize} from 'underscore.string';
-import {ActionBarConnected} from '../../actions/ActionBarConnected';
+
+import {ActionBarConnected} from '../../actions/ActionBar';
 import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
 import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
