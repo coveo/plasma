@@ -5,6 +5,4 @@ import {blankSlateWithTable, IBlankSlateWithTableProps} from './BlankSlateWithTa
 
 export interface IBlankSlateWithTable extends IBlankSlateWithTableProps, IBlankSlateProps {}
 
-export const BlankSlateWithTable: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithTable())(
-    BlankSlate
-);
+export const BlankSlateWithTable: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithTable)(BlankSlate);

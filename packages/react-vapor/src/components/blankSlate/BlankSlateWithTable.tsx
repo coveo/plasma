@@ -7,17 +7,17 @@ export interface IBlankSlateWithTableConfig {
     numberOfColumn?: number;
 }
 
-export const blankSlateWithTable = <T, R = any>(config: IBlankSlateWithTableConfig = {}) => (
-    Component: React.ComponentClass<IBlankSlateProps>
-): React.ComponentClass<IBlankSlateWithTableProps & T, R> => {
-    class ComponentWithTable extends React.PureComponent<Partial<IBlankSlateWithTableProps> & T, R> {
+export const blankSlateWithTable = <P extends IBlankSlateProps>(Component: React.ComponentType<P>) => {
+    class ComponentWithTable extends React.PureComponent<Partial<IBlankSlateWithTableProps>> {
+        static defaultProps = {
+            numberOfColumn: 20,
+        };
         render() {
-            const numberOfColumn = config.numberOfColumn || 20;
-
+            const {numberOfColumn, ...componentProps} = this.props;
             return (
                 <tr className="no-hover">
                     <td colSpan={numberOfColumn}>
-                        <Component {...this.props}>{this.props.children}</Component>
+                        <Component {...(componentProps as P)}>{this.props.children}</Component>
                     </td>
                 </tr>
             );
