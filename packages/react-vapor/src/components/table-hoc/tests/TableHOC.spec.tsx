@@ -1,7 +1,8 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ActionBarConnected} from '../../actions/ActionBarConnected';
+
+import {ActionBarConnected} from '../../actions/ActionBar';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
 

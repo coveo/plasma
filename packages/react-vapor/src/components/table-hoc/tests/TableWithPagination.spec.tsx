@@ -112,10 +112,7 @@ describe('Table HOC', () => {
             });
 
             describe('when server side', () => {
-                const TableWithPaginationServer = _.compose(
-                    withServerSideProcessing,
-                    tableWithPagination()
-                )(TableHOC);
+                const TableWithPaginationServer = _.compose(withServerSideProcessing, tableWithPagination())(TableHOC);
 
                 it('should not slice data', () => {
                     const perPage = 3;

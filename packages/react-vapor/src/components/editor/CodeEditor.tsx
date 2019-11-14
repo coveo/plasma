@@ -13,7 +13,6 @@ import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {CodeMirrorGutters} from './EditorConstants';
 
 export interface ICodeEditorProps {
@@ -59,7 +58,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     }
 
     componentDidMount() {
-        callIfDefined(this.props.onMount, this.codemirror.current);
+        this.props.onMount?.(this.codemirror.current);
     }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
@@ -96,7 +95,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     }
 
     private handleChange(code: string) {
-        callIfDefined(this.props.onChange, code);
+        this.props.onChange?.(code);
     }
 
     private addExtraKeywords() {

@@ -7,9 +7,8 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IInlinePromptOptions, IInlinePromptProps, InlinePrompt} from '../InlinePrompt';
+import {IInlinePromptOptions, InlinePrompt, InlinePromptConnected} from '../InlinePrompt';
 import {addPrompt} from '../InlinePromptActions';
-import {InlinePromptConnected} from '../InlinePromptConnected';
 
 describe('InlinePrompt', () => {
     let id: string;
@@ -17,7 +16,7 @@ describe('InlinePrompt', () => {
 
     describe('InlinePromptView', () => {
         let wrapper: ReactWrapper<any, any>;
-        let inlinePrompt: ReactWrapper<IInlinePromptProps, any>;
+        let inlinePrompt: ReactWrapper;
         let store: Store<IReactVaporState>;
 
         beforeEach(() => {
@@ -54,31 +53,11 @@ describe('InlinePrompt', () => {
             wrapper.detach();
         });
 
-        it('should get its id as a prop', () => {
-            const idProp = inlinePrompt.props().id;
-
-            expect(idProp).toBeDefined();
-            expect(idProp).toBe(id);
-        });
-
-        it('should get its options as a prop', () => {
-            const optionsProp = inlinePrompt.props().options;
-
-            expect(optionsProp).toBeDefined();
-            expect(optionsProp).toEqual(jasmine.objectContaining(options));
-        });
-
-        it('should get what to do on cancel as a prop', () => {
-            const onCancelProp = inlinePrompt.props().onCancel;
-
-            expect(onCancelProp).toBeDefined();
-        });
-
         it('should remove the prompt from the store on cancel', () => {
             store.dispatch(addPrompt(id, options));
             expect(_.findWhere(store.getState().prompts, {id: id})).toBeDefined();
 
-            inlinePrompt.props().onCancel();
+            (inlinePrompt as any).props().onCancel();
             expect(_.findWhere(store.getState().prompts, {id: id})).not.toBeDefined();
         });
     });

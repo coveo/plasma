@@ -92,7 +92,10 @@ describe('<TableConnected />', () => {
         });
 
         it('should update action grouped in props with the selectedIds array and the rowsData from the state if rowsMultiSelect is true', () => {
-            const actions = [{id: 'action1', enabled: true}, {id: 'action2', enabled: true, grouped: true}];
+            const actions = [
+                {id: 'action1', enabled: true},
+                {id: 'action2', enabled: true, grouped: true},
+            ];
             const wrapper = mountComponentWithProps({
                 ...tablePropsMock,
                 actionBar: true,

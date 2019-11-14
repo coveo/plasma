@@ -62,10 +62,7 @@ describe('Table HOC', () => {
         });
 
         describe('when server side', () => {
-            const TableWithPredicateServer = _.compose(
-                withServerSideProcessing,
-                tableWithSort()
-            )(TableHOC);
+            const TableWithPredicateServer = _.compose(withServerSideProcessing, tableWithSort())(TableHOC);
 
             it('should not sort elements', () => {
                 const wrapper = shallowWithState(

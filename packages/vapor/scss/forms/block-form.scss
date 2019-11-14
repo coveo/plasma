@@ -70,7 +70,11 @@ form {
             }
             > .labeled-input {
                 > .input-field {
-                    margin-top: $spacing * 2.5;
+                    margin-top: (($spacing * $level) /2) + 0.75rem;
+                }
+
+                > .help-text {
+                    margin-top: 0.4rem;
                 }
 
                 > * {
@@ -78,7 +82,7 @@ form {
                 }
             }
             > .input-field {
-                margin-top: $spacing;
+                margin-top: (($spacing * $level) /2) + 0.75rem;
             }
             > .description {
                 margin-top: 0;

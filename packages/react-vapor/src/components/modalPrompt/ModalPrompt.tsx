@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {Modal} from '../modal/Modal';
 import {ModalBody} from '../modal/ModalBody';
 import {ModalFooter} from '../modal/ModalFooter';
@@ -40,11 +39,11 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
     };
 
     private confirm() {
-        callIfDefined(this.props.onConfirm, this.props.id);
+        this.props.onConfirm?.(this.props.id);
     }
 
     private cancel() {
-        callIfDefined(this.props.onCancel, this.props.id);
+        this.props.onCancel?.(this.props.id);
     }
 
     render() {

@@ -5,7 +5,6 @@ import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
@@ -64,7 +63,7 @@ export class SingleSelectConnected extends React.PureComponent<
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
         if (prevProps.selectedOption !== this.props.selectedOption) {
-            callIfDefined(this.props.onSelectOptionCallback, this.props.selectedOption);
+            this.props.onSelectOptionCallback?.(this.props.selectedOption);
         }
     }
 

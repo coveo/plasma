@@ -4,8 +4,6 @@ import {findDOMNode} from 'react-dom';
 import TetherComponent from 'react-tether';
 import * as _ from 'underscore';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
-
 export interface ITetherComponentCopiedProps {
     renderElementTag?: string;
     renderElementTo?: Element | string;
@@ -76,12 +74,12 @@ export class Popover extends React.Component<IPopoverProps, IPopoverState> {
     }
 
     componentDidMount() {
-        callIfDefined(this.props.onMount, this.props.isOpenOnMount);
+        this.props.onMount?.(this.props.isOpenOnMount);
         document.addEventListener('click', this.handleDocumentClick, true);
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onUnmount);
+        this.props.onUnmount?.();
         document.removeEventListener('click', this.handleDocumentClick, true);
     }
 

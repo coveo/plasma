@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {callIfDefined} from '../../../utils/FalsyValuesUtils';
 import {NavigationPerPageSelect} from './NavigationPerPageSelect';
 
 export interface INavigationPerPageOwnProps extends React.ClassAttributes<NavigationPerPage> {
@@ -49,11 +48,11 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps> 
         this.initialPosition = !_.isUndefined(this.props.initialPosition)
             ? this.props.initialPosition
             : Math.ceil(this.props.perPageNumbers.length / 2) - 1;
-        callIfDefined(this.props.onRender, this.props.perPageNumbers[this.initialPosition]);
+        this.props.onRender?.(this.props.perPageNumbers[this.initialPosition]);
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     render() {
