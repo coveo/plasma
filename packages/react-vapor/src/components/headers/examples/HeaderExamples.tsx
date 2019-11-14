@@ -5,7 +5,7 @@ import {Section} from '../../section/Section';
 import {Svg} from '../../svg/Svg';
 import {BasicHeader} from '../BasicHeader';
 import {BreadcrumbHeader} from '../BreadcrumbHeader';
-import {actions, defaultBreadcrumb, defaultTabs, defaultTitle} from './ExamplesUtils';
+import {actions, defaultBreadcrumb, defaultTabs, defaultTitle, link1, link2} from './ExamplesUtils';
 
 export const HeaderExamples: ExampleComponent = () => (
     <Section>
@@ -50,6 +50,13 @@ const BreadcrumbHeaders: React.FunctionComponent = () => (
         <Section level={3} title="Breadcrumb header without border bottom">
             <BreadcrumbHeader
                 breadcrumb={defaultBreadcrumb}
+                description="Simple description for the title"
+                hasBorderBottom={false}
+            />
+        </Section>
+        <Section level={3} title="Breadcrumb header with a section without link">
+            <BreadcrumbHeader
+                breadcrumb={{...defaultBreadcrumb, links: [link1, {name: 'not a link'}, link2]}}
                 description="Simple description for the title"
                 hasBorderBottom={false}
             />
