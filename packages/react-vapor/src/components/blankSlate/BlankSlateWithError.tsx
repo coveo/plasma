@@ -29,5 +29,5 @@ export const blankSlateWithError = () => (
         }
     }
 
-    return ComponentWithTable;
+    return BlankSlateWithError;
 };
