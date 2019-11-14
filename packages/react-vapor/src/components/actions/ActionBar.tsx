@@ -77,12 +77,7 @@ export class ActionBar extends React.PureComponent<
     }
 
     private get defaultClasses(): string {
-        return classNames(
-            ActionBar.defaultClasses.reduce(
-                (memo, theClass) => ({...memo, [theClass]: !this.props.removeDefaultContainerClasses}),
-                {}
-            )
-        );
+        return classNames(this.props.removeDefaultContainerClasses ? '' : ActionBar.defaultClasses);
     }
 
     private Actions: React.FunctionComponent = () => {
