@@ -103,6 +103,6 @@ describe('<NavigationConnected />', () => {
 
         expect(
             _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
-        ).toBe(10);
+        ).toBe(9);
     });
 });
