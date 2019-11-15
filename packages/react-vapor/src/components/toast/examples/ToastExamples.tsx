@@ -155,7 +155,4 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
         </>
     );
 };
-const ToastsWithReduxStore = connect(
-    null,
-    MapDispatchToProps
-)(ToastsWithReduxStoreDisconnected);
+const ToastsWithReduxStore = connect(null, MapDispatchToProps)(ToastsWithReduxStoreDisconnected);
