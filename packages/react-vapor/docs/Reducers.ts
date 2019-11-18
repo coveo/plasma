@@ -7,7 +7,7 @@ import {
 import {
     IExampleServerTableState,
     TableHOCServerExampleReducer,
-} from '../src/components/table-hoc/examples/TableHOCServerExampleReducer';
+} from '../src/components/table-hoc/examples/TableHOCServerExamples';
 import {IReactVaporState} from '../src/ReactVapor';
 import {ReactVaporReducers} from '../src/ReactVaporReducers';
 

@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 
 import createMockStore, {MockStoreEnhanced} from 'redux-mock-store';
 import {ISvgProps} from '../../components/svg/Svg';
-import {IExampleServerTableState} from '../../components/table-hoc/examples/TableHOCServerExampleReducer';
+import {IExampleServerTableState} from '../../components/table-hoc/examples/TableHOCServerExamples';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {IReactVaporState} from '../../ReactVapor';
 import {ReactVaporReducers} from '../../ReactVaporReducers';
