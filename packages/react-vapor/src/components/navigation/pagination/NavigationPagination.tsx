@@ -41,7 +41,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
 
     componentDidUpdate() {
         if (this.props.currentPage > this.props.totalPages - 1) {
-            this.props.onPageClick?.(this.props.totalPages - 1);
+            this.handlePageClick(this.props.totalPages - 1);
         }
     }
 

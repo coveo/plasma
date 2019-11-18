@@ -85,6 +85,15 @@ describe('Table HOC', () => {
             expect(table.find(NavigationConnected).prop('perPageNumbers')).toEqual(expectedPerPageNumbers);
         });
 
+        it('should always have a totalPages count of 1 or more', () => {
+            const table = shallowWithStore(
+                <TableWithPagination id="💎" renderBody={_.identity} data={[]} />,
+                store
+            ).dive();
+
+            expect(table.find(NavigationConnected).prop('totalPages')).toBe(1);
+        });
+
         describe('with store data', () => {
             const getStoreWithPage = (pageNb: number, perPage: number, count: number = 0) => {
                 return getStoreMock({
