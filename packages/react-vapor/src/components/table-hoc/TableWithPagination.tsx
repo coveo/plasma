@@ -66,7 +66,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
             pageNb,
             perPage,
             totalEntries: length,
-            totalPages: Math.ceil(length / perPage),
+            totalPages: Math.max(Math.ceil(length / perPage), 1),
             data: isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
         };
     };
