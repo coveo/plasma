@@ -67,4 +67,9 @@
     em {
         font-style: italic;
     }
+
+    p,
+    li {
+        max-width: $text-max-width;
+    }
 }
