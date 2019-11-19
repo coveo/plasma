@@ -12,9 +12,7 @@ export const BlankSlateWithTable: FunctionComponent<IBlankSlateWithTable> = _.co
 
 export const BlankSlateWithTableInError: FunctionComponent<IBlankSlateWithTable> = _.compose(
     blankSlateWithTable(),
-    blankSlateWithError()
+    blankSlateWithError
 )(BlankSlate);
 
-export const BlankSlateWithError: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithError())(
-    BlankSlate
-);
+export const BlankSlateWithError: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithError)(BlankSlate);
