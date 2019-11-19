@@ -1,4 +1,5 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
+import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Title} from '../../title/Title';
@@ -12,7 +13,7 @@ describe('<Breadcrumb/>', () => {
         },
     };
 
-    let breadcrumbComponent: ReactWrapper<IBreadcrumbProps, any>;
+    let breadcrumbComponent: ShallowWrapper<IBreadcrumbProps>;
 
     it('should render without errors', () => {
         expect(() => {
@@ -22,11 +23,7 @@ describe('<Breadcrumb/>', () => {
 
     describe('<Breadcrumb /> with default props', () => {
         beforeEach(() => {
-            breadcrumbComponent = mount(<Breadcrumb {...defaultProps} />, {attachTo: document.getElementById('App')});
-        });
-
-        afterEach(() => {
-            breadcrumbComponent.detach();
+            breadcrumbComponent = shallowWithState(<Breadcrumb {...defaultProps} />, {});
         });
 
         it('should render the default title', () => {
@@ -43,14 +40,8 @@ describe('<Breadcrumb/>', () => {
         };
 
         const renderBreadcrumb = (props: Partial<IBreadcrumbProps> = {}) => {
-            breadcrumbComponent = mount(<Breadcrumb {..._.defaults(props, defaultProps)} />, {
-                attachTo: document.getElementById('App'),
-            });
+            breadcrumbComponent = shallowWithState(<Breadcrumb {..._.defaults(props, defaultProps)} />, {});
         };
-
-        afterEach(() => {
-            breadcrumbComponent.detach();
-        });
 
         it('should not render the BreadcrumbLink if the links has no elements', () => {
             renderBreadcrumb({
