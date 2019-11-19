@@ -8,7 +8,7 @@ export interface IBlankSlateWithTableConfig {
 }
 
 export const blankSlateWithTable = <P extends IBlankSlateProps>(Component: React.ComponentType<P>) => {
-    class ComponentWithTable extends React.PureComponent<Partial<IBlankSlateWithTableProps>> {
+    class ComponentWithTable extends React.PureComponent<IBlankSlateWithTableProps> {
         static defaultProps = {
             numberOfColumn: 20,
         };

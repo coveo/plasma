@@ -15,5 +15,19 @@ describe('BlankSlateWithTable Tests', () => {
                 component.unmount();
             });
         });
+
+        describe('once mounted', () => {
+            it('should render the colSpan with 20 on td by default', () => {
+                const component = shallowWithState(<BlankSlateWithTable {...defaultProps} />, {});
+
+                expect(component.find('td').props().colSpan).toBe(20);
+            });
+
+            it('should render the colSpan set by the numberOfColumn', () => {
+                const component = shallowWithState(<BlankSlateWithTable {...defaultProps} numberOfColumn={2} />, {});
+
+                expect(component.find('td').props().colSpan).toBe(2);
+            });
+        });
     });
 });
