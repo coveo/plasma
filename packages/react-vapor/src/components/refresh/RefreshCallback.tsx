@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {Defaults} from '../../Defaults';
 import {IReactVaporState} from '../../ReactVapor';
 import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
@@ -8,9 +9,7 @@ import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
 
 export interface IRefreshCallbackOwnProps {
     id: string;
-    time?: number;
-    incremental?: number;
-    intervalInMs?: number;
+    delay?: number;
     renderCount?: (count: number) => React.ReactNode;
     callback: (start: () => void) => void;
 }
@@ -35,27 +34,41 @@ export type IRefreshCallbackProps = IRefreshCallbackOwnProps &
 
 class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackProps, IRefreshCallbackState> {
     static defaultProps: Partial<IRefreshCallbackProps> = {
-        time: 10,
-        incremental: 1,
-        intervalInMs: 1000,
+        delay: 10,
         renderCount: (count: number) => <span>Auto refresh in {count} seconds</span>,
     };
 
-    private activeInterval: NodeJS.Timeout;
+    private activeInterval: number;
 
     constructor(props: IRefreshCallbackProps) {
         super(props);
         this.state = {
-            count: this.props.time,
+            count: this.props.delay,
         };
     }
 
+    get isInProgress() {
+        return this.state.count === 0 && this.props.status === RefreshStatus.inProgress;
+    }
+
+    get isStopped() {
+        return this.props.status === RefreshStatus.stop;
+    }
+
+    get isStarted() {
+        return this.props.status === RefreshStatus.start;
+    }
+
+    private stopInterval() {
+        clearInterval(this.activeInterval);
+    }
+
     private startInterval() {
-        this.activeInterval = setInterval(() => {
+        this.activeInterval = window.setInterval(() => {
             this.setState((prevState: IRefreshCallbackState) => ({
-                count: prevState.count - this.props.incremental,
+                count: prevState.count - 1,
             }));
-        }, this.props.intervalInMs);
+        }, Defaults.REFRESH_CALLBACK_INTERVAL_MS);
         this.props.inProgress();
     }
 
@@ -64,26 +77,26 @@ class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackPr
     }
 
     componentDidUpdate(prevProps: Readonly<IRefreshCallbackProps>, prevState: Readonly<IRefreshCallbackState>) {
-        if (this.props.status === RefreshStatus.start) {
-            clearInterval(this.activeInterval);
+        if (this.isStarted) {
+            this.stopInterval();
             this.setState({
-                count: this.props.time,
+                count: this.props.delay,
             });
             this.startInterval();
-        } else if (this.props.status === RefreshStatus.stop) {
-            clearInterval(this.activeInterval);
+        } else if (this.isStopped) {
+            this.stopInterval();
         }
     }
 
     componentWillUnmount() {
-        clearInterval(this.activeInterval);
+        this.stopInterval();
     }
 
     render() {
-        if (this.state.count === 0 && this.props.status === RefreshStatus.inProgress) {
-            clearInterval(this.activeInterval);
+        if (this.isInProgress) {
+            this.stopInterval();
             this.props.stop();
-            callIfDefined(this.props.callback, this.props.start);
+            this.props.callback?.(this.props.start);
         }
 
         return this.props.renderCount(this.state.count);

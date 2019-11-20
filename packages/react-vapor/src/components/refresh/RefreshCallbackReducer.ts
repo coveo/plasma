@@ -1,6 +1,6 @@
 import {IReactVaporExampleState} from '../../../docs/Reducers';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IRefreshCallbackPayload, RefreshCallbackActionType} from './RefeshCallbackActions';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
+import {RefreshCallbackActionType} from './RefeshCallbackActions';
 
 export enum RefreshStatus {
     start = 'start',
@@ -16,7 +16,7 @@ export const refreshCallbackInitialState: IRefreshCallbackReducerState = {};
 
 export const refreshCallBackReducer = (
     state: IRefreshCallbackReducerState = refreshCallbackInitialState,
-    action: IReduxAction<IRefreshCallbackPayload>
+    action: IReduxAction<BasePayload>
 ): IRefreshCallbackReducerState => {
     switch (action.type) {
         case RefreshCallbackActionType.start:

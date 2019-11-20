@@ -6,25 +6,21 @@ export const RefreshCallbackActionType = {
     inProgress: 'IN_PROGRESS_REFRESH_CALLBACK',
 };
 
-export interface IRefreshCallbackPayload extends BasePayload {
-    expanded?: boolean;
-}
-
-const start = (id: string): IReduxAction<IRefreshCallbackPayload> => ({
+const start = (id: string): IReduxAction<BasePayload> => ({
     type: RefreshCallbackActionType.start,
     payload: {
         id,
     },
 });
 
-const stop = (id: string): IReduxAction<IRefreshCallbackPayload> => ({
+const stop = (id: string): IReduxAction<BasePayload> => ({
     type: RefreshCallbackActionType.stop,
     payload: {
         id,
     },
 });
 
-const inProgress = (id: string): IReduxAction<IRefreshCallbackPayload> => ({
+const inProgress = (id: string): IReduxAction<BasePayload> => ({
     type: RefreshCallbackActionType.inProgress,
     payload: {
         id,
