@@ -300,7 +300,10 @@ describe('ListBox', () => {
 
         describe('REORDER_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
-            const items = [{value: 'a', selected: true}, {value: 'b', selected: true}];
+            const items = [
+                {value: 'a', selected: true},
+                {value: 'b', selected: true},
+            ];
             const selected = _.chain(items)
                 .where({selected: true})
                 .pluck('value')
@@ -332,7 +335,10 @@ describe('ListBox', () => {
 
         describe('SET_ACTIVE_ITEM_LIST_BOX', () => {
             const id = 'list-box-id';
-            const items = [{value: 'a', selected: true}, {value: 'b', selected: true}];
+            const items = [
+                {value: 'a', selected: true},
+                {value: 'b', selected: true},
+            ];
             const selected = _.chain(items)
                 .where({selected: true})
                 .pluck('value')

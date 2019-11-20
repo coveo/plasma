@@ -25,7 +25,10 @@ describe('<ModalCompositeConnected />', () => {
 
     it('should have isOpened prop to true if the modal is opened in the store', () => {
         const store = getStoreMock({
-            modals: [{id: 'another-modal', isOpened: false}, {id: basicProps.id, isOpened: true}],
+            modals: [
+                {id: 'another-modal', isOpened: false},
+                {id: basicProps.id, isOpened: true},
+            ],
         });
         const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store);
 

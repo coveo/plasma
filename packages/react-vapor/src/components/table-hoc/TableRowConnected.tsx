@@ -6,7 +6,6 @@ import * as _ from 'underscore';
 import {SlideY} from '../../animations/SlideY';
 import {IReactVaporState} from '../../ReactVapor';
 import {EventUtils} from '../../utils/EventUtils';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {addActionsToActionBar} from '../actions/ActionBarActions';
@@ -84,7 +83,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableRowOwnProps): I
         handleClick: (isMulti: boolean, isOpened: boolean) => {
             refreshActionBarActions(isMulti);
             if (isCollapsible(ownProps)) {
-                callIfDefined(ownProps.collapsible.onToggleCollapsible, !isOpened);
+                ownProps.collapsible.onToggleCollapsible?.(!isOpened);
                 dispatch(TableHOCRowActions.toggleCollapsible(ownProps.id));
             }
         },
@@ -145,7 +144,7 @@ class TableRowConnected extends React.PureComponent<
 
         let collapsibleRowToggle: React.ReactNode = [];
         if (rowIsCollapsible) {
-            const customToggle = callIfDefined(this.props.collapsible.renderCustomToggleCell, this.props.opened);
+            const customToggle = this.props.collapsible.renderCustomToggleCell?.(this.props.opened);
             collapsibleRowToggle = React.isValidElement(customToggle) ? (
                 customToggle
             ) : (
@@ -185,7 +184,7 @@ class TableRowConnected extends React.PureComponent<
 
     private handleClick = (e: React.MouseEvent<HTMLTableRowElement>) => {
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
-            callIfDefined(this.props.onClick, e);
+            this.props.onClick?.(e);
             const isMulti = (e.metaKey || e.ctrlKey) && this.props.isMultiselect;
             this.props.handleClick(isMulti, this.props.opened);
         }

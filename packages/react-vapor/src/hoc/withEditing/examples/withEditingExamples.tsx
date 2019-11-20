@@ -11,7 +11,7 @@ const lorem = loremIpsum({count: 200});
 class ComponentWithEditingExample extends React.Component<IWithDirtyProps> {
     static ID = 'ComponentWithEdit';
 
-    static footerChildren = <Button primary name="Save" />;
+    static footerChildren = (<Button primary name="Save" />);
 
     render() {
         return (

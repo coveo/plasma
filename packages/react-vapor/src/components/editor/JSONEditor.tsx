@@ -3,7 +3,6 @@ import 'codemirror/mode/javascript/javascript';
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {Svg} from '../svg/Svg';
 import {CodeEditor} from './CodeEditor';
 import {CodeMirrorModes} from './EditorConstants';
@@ -73,6 +72,6 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
     }
 
     private callOnChange(json: string, inError: boolean) {
-        callIfDefined(this.props.onChange, json, inError);
+        this.props.onChange?.(json, inError);
     }
 }

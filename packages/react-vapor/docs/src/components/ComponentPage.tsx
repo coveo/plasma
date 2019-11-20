@@ -10,7 +10,7 @@ import Code from '../demo-building-blocs/Code';
 import {MarkdownOverrides} from '../demo-building-blocs/MarkdownOverrides';
 import {IComponent, TabConfig} from './ComponentsInterface';
 
-type ComponentPageProps = IComponent;
+type ComponentPageProps = IComponent & {tabs?: TabConfig[]};
 
 const buildTabIdTemplate = (componentName: string) => (tabName: string) => `${componentName}-${tabName}-tab`;
 

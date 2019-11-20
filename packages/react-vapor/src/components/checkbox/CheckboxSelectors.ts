@@ -8,10 +8,7 @@ const get = (state: IReactVaporState, {id}: {id: string}) => {
     return _.findWhere(state.checkboxes, {id});
 };
 
-const getIsSelected = createSelector(
-    get,
-    (checkbox: ICheckboxState): boolean => checkbox && checkbox.checked
-);
+const getIsSelected = createSelector(get, (checkbox: ICheckboxState): boolean => checkbox && checkbox.checked);
 
 export const CheckboxSelectors = {
     getIsSelected,

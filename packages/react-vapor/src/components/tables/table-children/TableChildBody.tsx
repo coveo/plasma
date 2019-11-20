@@ -1,8 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {getAdditionalClasses, IAdditionalClass} from '../../../utils/ClassNameUtils';
-import {callIfDefined, convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
+import {convertUndefinedAndNullToEmptyString} from '../../../utils/FalsyValuesUtils';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {IActionOptions} from '../../actions/Action';
 import {IData, ITableHeadingAttribute} from '../Table';
@@ -124,5 +125,5 @@ const handleOnClick = (
     headingAttributes: ITableHeadingAttribute,
     childBodyProps: ITableChildBodyProps
 ) => {
-    callIfDefined(headingAttributes.onClickCell, event, childBodyProps);
+    headingAttributes.onClickCell?.(event, childBodyProps);
 };

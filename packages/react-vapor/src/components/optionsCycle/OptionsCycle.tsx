@@ -1,7 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {Svg} from '../svg/Svg';
 
 export interface IOptionsCycleConnectedOwnProps {
@@ -58,11 +57,11 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
     }
 
     componentDidMount() {
-        callIfDefined(this.props.onRender);
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     render() {

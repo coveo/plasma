@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {ActionBar} from '../../ActionBar';
 
 export class ItemFilterExamples extends React.Component<any, any> {

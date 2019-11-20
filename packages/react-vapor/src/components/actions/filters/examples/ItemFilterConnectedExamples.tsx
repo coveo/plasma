@@ -1,6 +1,7 @@
 import * as React from 'react';
+
 import {ReactVaporStore} from '../../../../../docs/ReactVaporStore';
-import {ActionBarConnected} from '../../ActionBarConnected';
+import {ActionBarConnected} from '../../ActionBar';
 import {filterItems} from '../ItemFilterActions';
 
 const ACTION_BAR_ID = 'item-filter-connected-example';

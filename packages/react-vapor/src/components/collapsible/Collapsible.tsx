@@ -2,7 +2,6 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 import {SlideY} from '../../animations/SlideY';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {CollapsibleToggle} from './CollapsibleToggle';
 
 export interface CollapsibleOwnProps {
@@ -31,11 +30,11 @@ export class Collapsible extends React.Component<CollapsibleProps> {
     static TIMEOUT = 150;
 
     componentWillMount() {
-        callIfDefined(this.props.onMount);
+        this.props.onMount?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onUnmount);
+        this.props.onUnmount?.();
     }
 
     render() {
@@ -66,6 +65,6 @@ export class Collapsible extends React.Component<CollapsibleProps> {
     }
 
     private handleHeaderClick() {
-        callIfDefined(this.props.onToggleExpandedState, this.props.expanded);
+        this.props.onToggleExpandedState?.(this.props.expanded);
     }
 }

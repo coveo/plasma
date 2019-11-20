@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IClassName} from '../../utils/ClassNameUtils';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ILinkSvgProps} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
 import {Title} from '../title/Title';
@@ -46,7 +45,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
 
     close() {
         if (this.canClose) {
-            callIfDefined(this.props.onClose);
+            this.props.onClose?.();
         }
     }
 

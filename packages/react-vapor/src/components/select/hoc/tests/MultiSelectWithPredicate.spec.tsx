@@ -110,7 +110,11 @@ describe('Select', () => {
         });
 
         it('should not show items that are already hidden', () => {
-            const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
+            const items = [
+                {value: 'a', hidden: true},
+                {value: 'b', selected: true},
+                {value: 'c', selected: true},
+            ];
 
             mountMultiSelect({items});
             store.dispatch(toggleSelect(id, true));
@@ -127,7 +131,11 @@ describe('Select', () => {
         describe('Sortable', () => {
             it('should be possible to reorder items', () => {
                 const spy = spyOn(store, 'dispatch').and.callThrough();
-                const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
+                const items = [
+                    {value: 'a', hidden: true},
+                    {value: 'b', selected: true},
+                    {value: 'c', selected: true},
+                ];
 
                 mountMultiSelect({items, sortable: true});
 
@@ -141,7 +149,11 @@ describe('Select', () => {
 
             it('should be possible to delete an item', () => {
                 const spy = spyOn(store, 'dispatch').and.callThrough();
-                const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
+                const items = [
+                    {value: 'a', hidden: true},
+                    {value: 'b', selected: true},
+                    {value: 'c', selected: true},
+                ];
 
                 mountMultiSelect({items, sortable: true});
 
@@ -160,7 +172,11 @@ describe('Select', () => {
                 selectWithPredicate
             )(MultiSelectConnected);
 
-            const items = [{value: 'a', hidden: true}, {value: 'b', selected: true}, {value: 'c', selected: true}];
+            const items = [
+                {value: 'a', hidden: true},
+                {value: 'b', selected: true},
+                {value: 'c', selected: true},
+            ];
 
             it('should not filter the items based on any predicate because it is done on the server', () => {
                 const component: ShallowWrapper<ISelectWithPredicateProps> = shallowWithStore(

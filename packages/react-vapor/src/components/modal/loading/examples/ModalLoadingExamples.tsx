@@ -34,7 +34,4 @@ class ModalLoadingExamplesDisconnected extends React.PureComponent<IModalExample
     }
 }
 
-export const ModalLoadingExamples = connect(
-    null,
-    {openModal, closeModal}
-)(ModalLoadingExamplesDisconnected);
+export const ModalLoadingExamples = connect(null, {openModal, closeModal})(ModalLoadingExamplesDisconnected);

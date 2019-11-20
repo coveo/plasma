@@ -1,9 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Svg} from '../../svg/Svg';
-import {IInlinePromptOptions, IInlinePromptProps, InlinePrompt} from '../InlinePrompt';
+import {IInlinePromptOptions, InlinePrompt} from '../InlinePrompt';
 
 describe('InlinePrompt', () => {
     let options: IInlinePromptOptions;
@@ -22,7 +22,7 @@ describe('InlinePrompt', () => {
     });
 
     describe('<InlinePrompt />', () => {
-        let inlinePrompt: ReactWrapper<IInlinePromptProps, any>;
+        let inlinePrompt: ReactWrapper;
         let onClickSpy: jasmine.Spy;
 
         beforeEach(() => {
@@ -48,13 +48,6 @@ describe('InlinePrompt', () => {
 
         afterEach(() => {
             inlinePrompt.detach();
-        });
-
-        it('should get its options as a prop', () => {
-            const optionsProp = inlinePrompt.props().options;
-
-            expect(optionsProp).toBeDefined();
-            expect(optionsProp).toEqual(jasmine.objectContaining(options));
         });
 
         it('should have the className as a class if defined', () => {
@@ -120,9 +113,6 @@ describe('InlinePrompt', () => {
 
         it('should call the onCancel prop if set when clicking the cancel button', () => {
             const onCancelSpy = jasmine.createSpy('onCancel');
-            const inlinePromptInstance = inlinePrompt.instance() as InlinePrompt;
-
-            expect(() => inlinePromptInstance['onCancelClick'].call(inlinePromptInstance)).not.toThrow();
 
             inlinePrompt.setProps({options: options, onCancel: onCancelSpy});
             inlinePrompt
