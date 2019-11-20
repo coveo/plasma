@@ -8,26 +8,26 @@ describe('RefreshCallbackReducer', () => {
         it('should add the id in the state if not there"', () => {
             state = refreshCallBackReducer({}, RefreshCallBackActions.start('id'));
 
-            expect(state['id']).toBe(RefreshStatus.start);
+            expect(state['id']).toBe(RefreshStatus.started);
         });
 
         it('should set the element with the current id with the status "start"', () => {
-            state = refreshCallBackReducer({id: RefreshStatus.stop}, RefreshCallBackActions.start('id'));
+            state = refreshCallBackReducer({id: RefreshStatus.stopped}, RefreshCallBackActions.start('id'));
 
-            expect(state['id']).toBe(RefreshStatus.start);
+            expect(state['id']).toBe(RefreshStatus.started);
         });
     });
     describe('stop', () => {
         it('should add the id in the state if not there"', () => {
             state = refreshCallBackReducer({}, RefreshCallBackActions.stop('id'));
 
-            expect(state['id']).toBe(RefreshStatus.stop);
+            expect(state['id']).toBe(RefreshStatus.stopped);
         });
 
         it('should set the element with the current id with the status "stop"', () => {
             state = refreshCallBackReducer({id: RefreshStatus.inProgress}, RefreshCallBackActions.stop('id'));
 
-            expect(state['id']).toBe(RefreshStatus.stop);
+            expect(state['id']).toBe(RefreshStatus.stopped);
         });
     });
     describe('inProgress', () => {
@@ -38,7 +38,7 @@ describe('RefreshCallbackReducer', () => {
         });
 
         it('should set the element with the current id with the status "inProgress"', () => {
-            state = refreshCallBackReducer({id: RefreshStatus.start}, RefreshCallBackActions.inProgress('id'));
+            state = refreshCallBackReducer({id: RefreshStatus.started}, RefreshCallBackActions.inProgress('id'));
 
             expect(state['id']).toBe(RefreshStatus.inProgress);
         });

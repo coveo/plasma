@@ -52,11 +52,11 @@ class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackPr
     }
 
     get isStopped() {
-        return this.props.status === RefreshStatus.stop;
+        return this.props.status === RefreshStatus.stopped;
     }
 
     get isStarted() {
-        return this.props.status === RefreshStatus.start;
+        return this.props.status === RefreshStatus.started;
     }
 
     private stopInterval() {
