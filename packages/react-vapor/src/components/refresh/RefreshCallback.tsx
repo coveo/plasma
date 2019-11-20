@@ -2,7 +2,6 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {Defaults} from '../../Defaults';
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {RefreshCallBackActions} from './RefeshCallbackActions';
 import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
