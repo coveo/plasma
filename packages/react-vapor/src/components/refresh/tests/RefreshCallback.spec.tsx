@@ -1,7 +1,6 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {WithDirtyActions} from '../../../hoc/withDirty/withDirtyActions';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {IRefreshCallbackProps, IRefreshCallbackState, RefreshCallback} from '../RefreshCallback';
@@ -36,7 +35,7 @@ describe('RefreshCallback tests', () => {
 
             it('should call the callback when the timer is 0 and status inProgress', () => {
                 const spy = jasmine.createSpy('callback');
-                shallowWithState(<RefreshCallback id={'id'} callback={spy} time={1} />, {
+                shallowWithState(<RefreshCallback id={'id'} callback={spy} delay={1} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 }).dive();
                 jasmine.clock().tick(1001);
@@ -90,7 +89,7 @@ describe('RefreshCallback tests', () => {
                         refreshCallback: {id: RefreshStatus.inProgress},
                     });
                     const spy = jasmine.createSpy('callback');
-                    shallowWithStore(<RefreshCallback id={'id'} callback={spy} time={1} />, store).dive();
+                    shallowWithStore(<RefreshCallback id={'id'} callback={spy} delay={1} />, store).dive();
                     jasmine.clock().tick(1001);
 
                     expect(spy).toHaveBeenCalledTimes(1);
