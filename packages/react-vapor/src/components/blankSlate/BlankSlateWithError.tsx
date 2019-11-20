@@ -6,7 +6,7 @@ import {IBlankSlateProps} from './BlankSlate';
 export const blankSlateWithError = (
     Component: React.ComponentClass<IBlankSlateProps>
 ): React.ComponentClass<IBlankSlateProps> => {
-    class BlankSlateWithError extends React.PureComponent<IBlankSlateProps> {
+    class BlankSlateWithErrorComponent extends React.PureComponent<IBlankSlateProps> {
         render() {
             return (
                 <Component
@@ -29,5 +29,5 @@ export const blankSlateWithError = (
         }
     }
 
-    return BlankSlateWithError;
+    return BlankSlateWithErrorComponent;
 };

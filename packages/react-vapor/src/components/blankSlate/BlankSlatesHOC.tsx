@@ -9,7 +9,7 @@ export interface IBlankSlateWithTable extends IBlankSlateWithTableProps, IBlankS
 export const BlankSlateWithTable: FunctionComponent<IBlankSlateWithTable> = _.compose(blankSlateWithTable)(BlankSlate);
 
 export const BlankSlateWithTableInError: FunctionComponent<IBlankSlateWithTable> = _.compose(
-    blankSlateWithTable(),
+    blankSlateWithTable,
     blankSlateWithError
 )(BlankSlate);
 
