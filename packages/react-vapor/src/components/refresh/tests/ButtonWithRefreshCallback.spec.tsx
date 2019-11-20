@@ -2,14 +2,23 @@ import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
+import {ButtonWithRefreshCallback, IRefreshCallbackWithButtonProps} from '../ButtonWithRefreshCallback';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
-import {RefreshCallbackWithButton} from '../RefreshCallbackHOC';
 import {RefreshStatus} from '../RefreshCallbackReducer';
 
-describe('RefreshCallbackWithButton tests', () => {
-    describe('<RefreshCallbackWithButton />', () => {
+describe('ButtonWithRefreshCallback tests', () => {
+    describe('<ButtonWithRefreshCallback />', () => {
+        const defaultProps: IRefreshCallbackWithButtonProps = {
+            id: '🛶',
+            callback: () => '🏎',
+            button: {
+                name: '🥐',
+                enabled: true,
+            },
+        };
+
         it('should mount and unmount without error', () => {
-            const component = shallowWithState(<RefreshCallbackWithButton id={'id'} callback={() => ''} />, {}).dive();
+            const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} />, {}).dive();
             component.unmount();
         });
 
@@ -17,7 +26,7 @@ describe('RefreshCallbackWithButton tests', () => {
             it('should call the callback on click button', () => {
                 const spy = jasmine.createSpy('callback');
 
-                const component = shallowWithState(<RefreshCallbackWithButton id={'id'} callback={spy} />, {
+                const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} callback={spy} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 }).dive();
                 component
@@ -33,22 +42,22 @@ describe('RefreshCallbackWithButton tests', () => {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 });
 
-                const component = shallowWithStore(
-                    <RefreshCallbackWithButton id={'id'} callback={() => ''} />,
-                    store
-                ).dive();
+                const component = shallowWithStore(<ButtonWithRefreshCallback {...defaultProps} />, store).dive();
                 component
                     .find(Button)
                     .props()
                     .onClick();
 
-                expect(store.getActions()).toContain(RefreshCallBackActions.stop('id'));
+                expect(store.getActions()).toContain(RefreshCallBackActions.stop(defaultProps.id));
             });
 
             it('should disable the button if the status is "stop"', () => {
-                const component = shallowWithState(<RefreshCallbackWithButton id={'id'} callback={() => ''} />, {
-                    refreshCallback: {id: RefreshStatus.stop},
-                }).dive();
+                const component = shallowWithState(
+                    <ButtonWithRefreshCallback {...defaultProps} callback={() => ''} />,
+                    {
+                        refreshCallback: {[defaultProps.id]: RefreshStatus.stopped},
+                    }
+                ).dive();
 
                 expect(component.find(Button).props().enabled).toBe(false);
             });

@@ -3,6 +3,7 @@ import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {Button} from '../../button/Button';
 import {LabeledInput} from '../../input/LabeledInput';
 import {Section} from '../../section/Section';
+import {ButtonWithRefreshCallback} from '../ButtonWithRefreshCallback';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {RefreshCallback} from '../RefreshCallback';
 import {RefreshCallbackWithButton} from '../RefreshCallbackHOC';
@@ -28,12 +29,30 @@ export class RefreshExamples extends React.Component<any, any> {
                             <RefreshCallback id="refresh-1" callback={() => alert('refresh end')} />
                         </div>
                     </LabeledInput>
+                </Section>
+                <Section level={2} title="Component with a button to call the refreshCallback">
                     <LabeledInput label="Refresh counter">
-                        <div className="flex center-align flex-column">
-                            <RefreshCallbackWithButton
-                                id="refresh-2"
-                                time={20}
-                                callback={(start) => setTimeout(start, 2000)}
+                        <Button
+                            name="Start"
+                            className="btn mr2"
+                            onClick={() => ReactVaporStore.dispatch(RefreshCallBackActions.start('refresh-2'))}
+                        />
+                        <Button
+                            name="Stop"
+                            className="btn"
+                            onClick={() => ReactVaporStore.dispatch(RefreshCallBackActions.stop('refresh-2'))}
+                        />
+                        <div>
+                            <ButtonWithRefreshCallback
+                                id="refresh-1"
+                                callback={() => alert('refresh end')}
+                                button={{
+                                    name: 'Refresh',
+                                    enabled: true,
+                                }}
+                                buttonContainerProps={{
+                                    className: 'mb2',
+                                }}
                             />
                         </div>
                     </LabeledInput>
