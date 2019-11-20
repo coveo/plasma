@@ -1,11 +1,11 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+import {IBlankSlateProps} from '../BlankSlate';
 import {BlankSlateWithError} from '../BlankSlatesHOC';
-import {IBlankSlateWithTableProps} from '../BlankSlateWithTable';
 
 describe('BlankSlateWithError Tests', () => {
     describe('<BlankSlateWithError>', () => {
-        const defaultProps: IBlankSlateWithTableProps = {
+        const defaultProps: IBlankSlateProps = {
             title: 'test',
         };
 
