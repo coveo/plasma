@@ -89,7 +89,7 @@ const GroupableCheckboxConnectedExamples: React.FunctionComponent = () => {
                     <div>
                         <Button
                             name={'Toggle checkboxes'}
-                            enabled={true}
+                            enabled
                             onClick={() => toggleDisabledAllCheckboxes(parentId2)}
                         />
                     </div>

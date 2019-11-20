@@ -33,31 +33,29 @@ const radioSelectConnectedId = 'radioselectconnected';
 // start-print
 
 const RadioSelectExample: React.FunctionComponent = () => (
-    <>
-        <Section level={2} title="Radio select with redux store">
-            <LabeledInput label="The Label of the Radio Select">
-                <RadioSelectConnected
-                    id="radioselectconnected"
-                    disabledTooltip="you see me because of the disabledTooltip prop"
-                    disabledValuesOnMount={['blue']}
-                    valueOnMount={'brown'}
-                    onChangeCallback={() => 'insert a callBack function here'}
-                >
-                    <Radio id="Option1" name="enabledOptions" value="blue">
-                        <Label>Blue</Label>
-                    </Radio>
-                    <Radio id="Option2" name="enabledOptions" value="green">
-                        <Label>Green</Label>
-                        <div className="mod-align-with-radio-label text-lynch mt1">
-                            The green color has an optional description.
-                        </div>
-                    </Radio>
-                    <Radio id="Option3" name="enabledOptions" value="brown">
-                        <Label>Brown</Label>
-                    </Radio>
-                </RadioSelectConnected>
-            </LabeledInput>
-        </Section>
+    <Section level={2} title="Radio select with redux store">
+        <LabeledInput label="The Label of the Radio Select">
+            <RadioSelectConnected
+                id="radioselectconnected"
+                disabledTooltip="you see me because of the disabledTooltip prop"
+                disabledValuesOnMount={['blue']}
+                valueOnMount={'brown'}
+                onChangeCallback={() => 'insert a callBack function here'}
+            >
+                <Radio id="Option1" name="enabledOptions" value="blue">
+                    <Label>Blue</Label>
+                </Radio>
+                <Radio id="Option2" name="enabledOptions" value="green">
+                    <Label>Green</Label>
+                    <div className="mod-align-with-radio-label text-lynch mt1">
+                        The green color has an optional description.
+                    </div>
+                </Radio>
+                <Radio id="Option3" name="enabledOptions" value="brown">
+                    <Label>Brown</Label>
+                </Radio>
+            </RadioSelectConnected>
+        </LabeledInput>
         <Section level={3}>
             <Button
                 enabled
@@ -72,7 +70,7 @@ const RadioSelectExample: React.FunctionComponent = () => (
                 onClick={() => ReactVaporStore.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: []}))}
             />
         </Section>
-    </>
+    </Section>
 );
 
 const RadioSelectDisabledExample: React.FunctionComponent = () => (

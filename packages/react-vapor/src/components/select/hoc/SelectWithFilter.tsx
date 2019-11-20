@@ -7,7 +7,6 @@ import * as _ from 'underscore';
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
-import {callIfDefined} from '../../../utils/FalsyValuesUtils';
 import {MatchFilter} from '../../../utils/FilterUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
@@ -98,7 +97,7 @@ export const selectWithFilter = (
 
         componentDidUpdate(prevProps: ISelectWithFilterProps) {
             if (prevProps.filterValue !== this.props.filterValue) {
-                callIfDefined(this.props.onUpdate);
+                this.props.onUpdate?.();
             }
         }
 

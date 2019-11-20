@@ -42,10 +42,7 @@ describe('Table HOC', () => {
         });
 
         describe('when server side', () => {
-            const TableWithFilterServer = _.compose(
-                withServerSideProcessing,
-                tableWithFilter()
-            )(TableHOC);
+            const TableWithFilterServer = _.compose(withServerSideProcessing, tableWithFilter())(TableHOC);
 
             it('should not filter out elements if the filter is server side', () => {
                 const filterText = 'b';

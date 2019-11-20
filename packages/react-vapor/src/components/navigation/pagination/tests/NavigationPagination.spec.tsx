@@ -42,7 +42,7 @@ describe('NavigationPagination', () => {
             const renderSpy: jasmine.Spy = jasmine.createSpy('onRender');
 
             expect(() => {
-                navigationPaginationInstance.componentWillMount();
+                navigationPaginationInstance.componentDidMount();
             }).not.toThrow();
 
             navigationPagination = mount(

@@ -45,14 +45,14 @@ describe('RefreshCallback tests', () => {
 
             it('should reset the count in the state and the timer if the status change to "start"', () => {
                 component = shallowWithState(<RefreshCallback id={'id'} callback={() => ''} />, {
-                    refreshCallback: {id: RefreshStatus.stop},
+                    refreshCallback: {id: RefreshStatus.stopped},
                 }).dive();
                 jasmine.clock().tick(1001);
                 expect(component.state().count).toBe(9);
 
                 component.setProps({
                     ...component.props(),
-                    status: RefreshStatus.start,
+                    status: RefreshStatus.started,
                 });
 
                 expect(component.state().count).toBe(10);
@@ -67,7 +67,7 @@ describe('RefreshCallback tests', () => {
 
                 component.setProps({
                     ...component.props(),
-                    status: RefreshStatus.stop,
+                    status: RefreshStatus.stopped,
                 });
                 expect(component.state().count).toBe(9);
                 jasmine.clock().tick(1001);

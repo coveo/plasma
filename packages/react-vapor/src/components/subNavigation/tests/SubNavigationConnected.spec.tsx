@@ -17,7 +17,10 @@ describe('SubNavigation', () => {
     describe('<SubNavigationConnected />', () => {
         const basicProps: ISubNavigationProps = {
             id: 'sub-nav-id',
-            items: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],
+            items: [
+                {id: 'a', label: 'A'},
+                {id: 'b', label: 'B'},
+            ],
             defaultSelected: 'b',
         };
 
@@ -84,7 +87,10 @@ describe('SubNavigation', () => {
             store = TestUtils.buildStore();
             const props: ISubNavigationProps = {
                 id: 'sub-nav-id',
-                items: [{id: 'a', label: 'A'}, {id: 'b', label: 'B'}],
+                items: [
+                    {id: 'a', label: 'A'},
+                    {id: 'b', label: 'B'},
+                ],
             };
 
             wrapper = mount(

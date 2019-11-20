@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {RefreshCallbackWithButton} from '../../refresh/RefreshCallbackHOC';
 import {BlankSlate} from '../BlankSlate';
 import {BlankSlateWithError, BlankSlateWithTable, BlankSlateWithTableInError} from '../BlankSlatesHOC';
 
@@ -130,7 +129,7 @@ export class BlankSlateExample extends React.Component<any, any> {
                                 <RefreshCallbackWithButton
                                     id="refresh"
                                     time={10}
-                                    callback={(start: () => void) => setTimeout(start, 2000)}
+                                    callback={(start) => setTimeout(start, 2000)}
                                     renderCount={(count: number) => (
                                         <span className="text-black small-text">Auto refresh in {count} seconds</span>
                                     )}

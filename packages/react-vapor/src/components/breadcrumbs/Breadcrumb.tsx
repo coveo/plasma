@@ -17,7 +17,12 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, {}> {
 
     private getLinks(): JSX.Element[] {
         return _.map(this.props.links, (link: IBreadcrumbLinkProps) => (
-            <BreadcrumbLink key={link.name} {..._.extend(link, {link: `${this.props.defaultLinkPath}${link.link}`})} />
+            <BreadcrumbLink
+                key={link.name}
+                {..._.extend(link, {
+                    link: link?.link ? `${this.props.defaultLinkPath}${link.link}` : undefined,
+                })}
+            />
         ));
     }
 

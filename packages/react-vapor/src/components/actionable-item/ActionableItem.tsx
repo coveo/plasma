@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
+
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
@@ -32,7 +32,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         actionableItemContainer,
                         this.props.containerClassName
                     )}
-                    onClick={(e: React.MouseEvent<HTMLDivElement>) => callIfDefined(this.props.onItemClick, e)}
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => this.props.onItemClick?.(e)}
                 >
                     {this.props.children}
                 </div>

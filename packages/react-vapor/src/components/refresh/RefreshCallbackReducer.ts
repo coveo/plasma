@@ -1,10 +1,10 @@
 import {IReactVaporExampleState} from '../../../docs/Reducers';
-import {IReduxAction} from '../../utils/ReduxUtils';
-import {IRefreshCallbackPayload, RefreshCallbackActionType} from './RefeshCallbackActions';
+import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
+import {RefreshCallbackActionType} from './RefeshCallbackActions';
 
 export enum RefreshStatus {
-    start = 'start',
-    stop = 'stop',
+    started = 'started',
+    stopped = 'stopped',
     inProgress = 'inProgress',
 }
 
@@ -16,18 +16,18 @@ export const refreshCallbackInitialState: IRefreshCallbackReducerState = {};
 
 export const refreshCallBackReducer = (
     state: IRefreshCallbackReducerState = refreshCallbackInitialState,
-    action: IReduxAction<IRefreshCallbackPayload>
+    action: IReduxAction<BasePayload>
 ): IRefreshCallbackReducerState => {
     switch (action.type) {
         case RefreshCallbackActionType.start:
             return {
                 ...state,
-                [action.payload.id]: RefreshStatus.start,
+                [action.payload.id]: RefreshStatus.started,
             };
         case RefreshCallbackActionType.stop:
             return {
                 ...state,
-                [action.payload.id]: RefreshStatus.stop,
+                [action.payload.id]: RefreshStatus.stopped,
             };
         case RefreshCallbackActionType.inProgress:
             return {
@@ -39,8 +39,7 @@ export const refreshCallBackReducer = (
     }
 };
 
-const getRefreshStatus = (state: IReactVaporExampleState, {id}: {id: string}) =>
-    (state.refreshCallback && state.refreshCallback[id]) || undefined;
+const getRefreshStatus = (state: IReactVaporExampleState, {id}: {id: string}) => state.refreshCallback?.[id];
 
 export const RefreshStatusSelectors = {
     getRefreshStatus,

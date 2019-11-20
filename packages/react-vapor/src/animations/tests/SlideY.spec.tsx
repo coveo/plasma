@@ -146,10 +146,12 @@ describe('SlideY', () => {
             expect(wrapper.html()).toContain('slide-y-closed');
 
             expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
-            transitionToEnd(wrapper
-                .find('.slide-y')
-                .first()
-                .getDOMNode() as HTMLElement);
+            transitionToEnd(
+                wrapper
+                    .find('.slide-y')
+                    .first()
+                    .getDOMNode() as HTMLElement
+            );
 
             expect(wrapper.html()).not.toContain('slide-y-closed');
         });
@@ -160,10 +162,12 @@ describe('SlideY', () => {
             expect(wrapper.html()).not.toContain('slide-y-closed');
 
             expect(() => wrapper.setProps({in: false})).not.toThrow();
-            transitionToEnd(wrapper
-                .find('.slide-y')
-                .first()
-                .getDOMNode() as HTMLElement);
+            transitionToEnd(
+                wrapper
+                    .find('.slide-y')
+                    .first()
+                    .getDOMNode() as HTMLElement
+            );
 
             expect(wrapper.html()).toContain('slide-y-closed');
         });

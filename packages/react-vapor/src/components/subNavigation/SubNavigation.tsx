@@ -3,8 +3,6 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import {map, omit} from 'underscore';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
-
 export interface ISubNavigationOwnProps extends React.ClassAttributes<SubNavigation> {
     id?: string;
     items: ISubNavigationItem[];
@@ -36,11 +34,11 @@ const ISubNavigationPropsToOmit = keys<ISubNavigationProps>();
 
 export class SubNavigation extends React.PureComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> {
     componentWillMount() {
-        callIfDefined(this.props.onRender);
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     render() {
@@ -67,6 +65,6 @@ export class SubNavigation extends React.PureComponent<ISubNavigationProps & Rea
 
     private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
         e.preventDefault();
-        callIfDefined(this.props.onClickItem, id);
+        this.props.onClickItem?.(id);
     };
 }
