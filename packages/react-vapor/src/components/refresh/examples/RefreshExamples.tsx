@@ -6,7 +6,6 @@ import {Section} from '../../section/Section';
 import {ButtonWithRefreshCallback} from '../ButtonWithRefreshCallback';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {RefreshCallback} from '../RefreshCallback';
-import {RefreshCallbackWithButton} from '../RefreshCallbackHOC';
 
 // start-print
 export class RefreshExamples extends React.Component<any, any> {
@@ -44,8 +43,11 @@ export class RefreshExamples extends React.Component<any, any> {
                         />
                         <div>
                             <ButtonWithRefreshCallback
-                                id="refresh-1"
-                                callback={() => alert('refresh end')}
+                                id="refresh-2"
+                                callback={(start) => {
+                                    alert('refresh end');
+                                    start();
+                                }}
                                 button={{
                                     name: 'Refresh',
                                     enabled: true,
