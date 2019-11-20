@@ -53,7 +53,7 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
         {id: getTabId('development'), title: component.firstTabLabel || 'Develop'},
         ...tabs.sort((tabA: TabConfig, tabB: TabConfig) => tabA.order - tabB.order).map(mapTabConfigToProps),
     ];
-    const PageLayout: any = hasMarkdownTabs ? PageLayoutWithTabs : PageLayoutWithoutTabs;
+    const PageLayout = hasMarkdownTabs ? PageLayoutWithTabs : PageLayoutWithoutTabs;
 
     return tabs === null ? (
         <Loading fullContent />
