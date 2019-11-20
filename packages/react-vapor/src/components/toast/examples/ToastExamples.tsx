@@ -1,204 +1,158 @@
 import * as React from 'react';
-import {Toast, ToastType} from '../Toast';
+import {connect} from 'react-redux';
+import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {IDispatch} from '../../../utils/ReduxUtils';
+import {Button} from '../../button/Button';
+import {Section} from '../../section/Section';
+import {IToastProps, Toast} from '../Toast';
+import {addToast} from '../ToastActions';
 import {ToastContainer} from '../ToastContainer';
-import {ToastContentExample} from './ToastContentExample';
+import {ToastContainerConnected} from '../ToastContainerConnected';
 
-export interface IToastExamplesState {
-    Success: boolean;
-    Warning: boolean;
-    Error: boolean;
-    Timed: boolean;
-    NonDismissible: boolean;
-    BottomRight: boolean;
-    BottomLeft: boolean;
-    BottomCenter: boolean;
-    TopLeft: boolean;
-    TopRight: boolean;
-    TopCenter: boolean;
-}
+export const ToastExamples: ExampleComponent = () => (
+    <Section>
+        <ToastsWithLocalState />
+        <ToastsWithReduxStore />
+    </Section>
+);
 
-export class ToastExamples extends React.Component<{}, IToastExamplesState> {
-    constructor(props: any) {
-        super(props);
+const ToastsWithLocalState: React.FunctionComponent = () => {
+    const [state, setState] = React.useState({
+        Success: false,
+        Warning: false,
+        Error: false,
+        Timed: false,
+    });
 
-        this.state = {
-            Success: false,
-            Warning: false,
-            Error: false,
-            Timed: false,
-            NonDismissible: false,
-            TopCenter: false,
-            TopLeft: false,
-            TopRight: false,
-            BottomCenter: false,
-            BottomLeft: false,
-            BottomRight: false,
-        };
-    }
+    return (
+        <>
+            <Section level={2} title="Toasts with a local state">
+                <Button
+                    enabled
+                    className="btn"
+                    name="Top left"
+                    onClick={() => setState({...state, Success: !state.Success})}
+                />
 
-    render() {
-        return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Toasts</label>
-                    <div>
-                        <button className="btn" onClick={() => this.setState({Success: !this.state.Success})}>
-                            Success Toast
-                        </button>
-                        <button className="btn" onClick={() => this.setState({Warning: !this.state.Warning})}>
-                            Warning Toast
-                        </button>
-                        <button className="btn" onClick={() => this.setState({Error: !this.state.Error})}>
-                            Error Toast
-                        </button>
-                        <button className="btn" onClick={() => this.setState({Timed: !this.state.Timed})}>
-                            Timed Toast
-                        </button>
-                        <button
-                            className="btn"
-                            onClick={() => this.setState({NonDismissible: !this.state.NonDismissible})}
-                        >
-                            Non Dismissible Toast
-                        </button>
+                <Button
+                    enabled
+                    className="btn"
+                    name="Middle Earth"
+                    onClick={() => setState({...state, Warning: !state.Warning})}
+                />
 
-                        <ToastContainer>
-                            {this.state.Success && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Success!"
-                                    onClose={() => this.setState({Success: false})}
-                                />
-                            )}
-                            {this.state.Warning && (
-                                <Toast
-                                    key="toast-2"
-                                    id="toast-2"
-                                    title="Warning!"
-                                    type={ToastType.Warning}
-                                    onClose={() => this.setState({Warning: false})}
-                                />
-                            )}
-                            {this.state.Error && (
-                                <Toast
-                                    key="toast-3"
-                                    id="toast-3"
-                                    title="Ohno! Something went wrong."
-                                    type={ToastType.Error}
-                                    onClose={() => this.setState({Error: false})}
-                                    content={ToastContentExample}
-                                >
-                                    <a href="#">Status Page</a>
-                                </Toast>
-                            )}
-                            {this.state.Timed && (
-                                <Toast
-                                    key="toast-4"
-                                    id="toast-4"
-                                    title="Timed Success!"
-                                    dismiss={1000}
-                                    onClose={() => this.setState({Timed: false})}
-                                />
-                            )}
-                            {this.state.NonDismissible && (
-                                <Toast
-                                    key="toast-5"
-                                    id="toast-5"
-                                    title="Ohno! Something went wrong."
-                                    type={ToastType.Error}
-                                    dismissible={false}
-                                    content={ToastContentExample}
-                                />
-                            )}
-                        </ToastContainer>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Toast Placements</label>
-                    <div>
-                        <button className="btn" onClick={() => this.setState({TopCenter: !this.state.TopCenter})}>
-                            Top Center (default)
-                        </button>
-                        <button className="btn" onClick={() => this.setState({TopLeft: !this.state.TopLeft})}>
-                            Top Left
-                        </button>
-                        <button className="btn" onClick={() => this.setState({TopRight: !this.state.TopRight})}>
-                            Top Right
-                        </button>
-                        <button className="btn" onClick={() => this.setState({BottomCenter: !this.state.BottomCenter})}>
-                            Bottom Center
-                        </button>
-                        <button className="btn" onClick={() => this.setState({BottomLeft: !this.state.BottomLeft})}>
-                            Bottom Left
-                        </button>
-                        <button className="btn" onClick={() => this.setState({BottomRight: !this.state.BottomRight})}>
-                            Bottom Right
-                        </button>
-                        <ToastContainer>
-                            {this.state.TopCenter && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Top Center"
-                                    onClose={() => this.setState({TopCenter: false})}
-                                />
-                            )}
-                        </ToastContainer>
-                        <ToastContainer left>
-                            {this.state.TopLeft && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Top Left"
-                                    onClose={() => this.setState({TopLeft: false})}
-                                />
-                            )}
-                        </ToastContainer>
-                        <ToastContainer right>
-                            {this.state.TopRight && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Top Right"
-                                    onClose={() => this.setState({TopRight: false})}
-                                />
-                            )}
-                        </ToastContainer>
-                        <ToastContainer bottom>
-                            {this.state.BottomCenter && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Bottom"
-                                    onClose={() => this.setState({BottomCenter: false})}
-                                />
-                            )}
-                        </ToastContainer>
-                        <ToastContainer bottom right>
-                            {this.state.BottomRight && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Why am I in the corner?"
-                                    type={ToastType.Warning}
-                                    onClose={() => this.setState({BottomRight: false})}
-                                />
-                            )}
-                        </ToastContainer>
-                        <ToastContainer bottom left>
-                            {this.state.BottomLeft && (
-                                <Toast
-                                    key="toast-1"
-                                    id="toast-1"
-                                    title="Why am I in the corner?"
-                                    type={ToastType.Warning}
-                                    onClose={() => this.setState({BottomLeft: false})}
-                                />
-                            )}
-                        </ToastContainer>
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
+                <Button className="btn" name="Top right" onClick={() => setState({...state, Error: !state.Error})} />
+
+                <Button className="btn" name="Bottom" onClick={() => setState({...state, Timed: !state.Timed})} />
+            </Section>
+
+            <ToastContainer left>
+                {state.Success && (
+                    <Toast
+                        key="toast-1"
+                        id="toast-1"
+                        title="Timed Sucess !!"
+                        dismiss={1000}
+                        onClose={() => setState({...state, Success: false})}
+                    />
+                )}
+            </ToastContainer>
+            <ToastContainer>
+                {state.Warning && (
+                    <Toast
+                        key="toast-1"
+                        id="toast-1"
+                        title="Warning !!"
+                        type="Warning"
+                        onClose={() => setState({...state, Warning: false})}
+                    />
+                )}
+            </ToastContainer>
+            <ToastContainer right>
+                {state.Error && (
+                    <Toast
+                        key="toast-1"
+                        id="toast-1"
+                        title="Error !!"
+                        type="Error"
+                        onClose={() => setState({...state, Error: false})}
+                    />
+                )}
+            </ToastContainer>
+            <ToastContainer bottom>
+                {state.Timed && (
+                    <Toast
+                        key="toast-1"
+                        id="toast-1"
+                        title="An eternal Success !"
+                        dismissible={false}
+                        onClose={() => setState({...state, Timed: false})}
+                    />
+                )}
+            </ToastContainer>
+        </>
+    );
+};
+
+const MapDispatchToProps = (dispatch: IDispatch) => ({
+    renderToast: (containerId: string, title: string, options?: IToastProps) =>
+        dispatch(addToast(containerId, title, options)),
+});
+
+const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeof MapDispatchToProps>> = ({
+    renderToast,
+}) => {
+    const toastContent = () => (
+        <ul>
+            <li style={{marginBottom: '5px'}}>
+                <a href="#">Some Link</a>
+            </li>
+            <li>Complex React Component</li>
+        </ul>
+    );
+
+    return (
+        <>
+            <Section level={2} title="Toasts with a redux store">
+                <Button
+                    enabled
+                    className="btn"
+                    name="Success"
+                    onClick={() => renderToast('containerId', 'Success !')}
+                />
+
+                <Button
+                    enabled
+                    className="btn"
+                    name="Warning   "
+                    onClick={() => renderToast('containerId', 'Warning !', {type: 'Warning'})}
+                />
+
+                <Button
+                    className="btn"
+                    name="Error"
+                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error'})}
+                />
+
+                <Button
+                    className="btn"
+                    name="Timed Success"
+                    onClick={() => renderToast('containerId', 'Timed Success !', {dismiss: 1000})}
+                />
+
+                <Button
+                    className="btn"
+                    name="custom JSX"
+                    onClick={() => renderToast('containerId', 'Custom JSX !', {content: toastContent})}
+                />
+                <Button
+                    className="btn"
+                    name="custom String"
+                    onClick={() => renderToast('containerId', 'Timed Success!', {content: 'I am a string !'})}
+                />
+            </Section>
+            <ToastContainerConnected id="containerId" />
+        </>
+    );
+};
+const ToastsWithReduxStore = connect(null, MapDispatchToProps)(ToastsWithReduxStoreDisconnected);

@@ -1,8 +1,9 @@
 import * as React from 'react';
+
 import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {IActionOptions} from '../Action';
+import {ActionBarConnected} from '../ActionBar';
 import {addActionsToActionBar} from '../ActionBarActions';
-import {ActionBarConnected} from '../ActionBarConnected';
 import {ACTION_SEPARATOR} from '../ActionConstants';
 
 const actionBarId = 'action-bar-connected';

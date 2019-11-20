@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
@@ -67,7 +66,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
             pageNb,
             perPage,
             totalEntries: length,
-            totalPages: Math.ceil(length / perPage),
+            totalPages: Math.max(Math.ceil(length / perPage), 1),
             data: isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
         };
     };
@@ -95,7 +94,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
 
         componentDidUpdate(prevProps: ITableWithPaginationProps) {
             if (prevProps.pageNb !== this.props.pageNb || prevProps.perPage !== this.props.perPage) {
-                callIfDefined(this.props.onUpdate);
+                this.props.onUpdate?.();
             }
         }
 

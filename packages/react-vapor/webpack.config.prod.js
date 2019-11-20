@@ -50,10 +50,15 @@ const config = {
             },
             {
                 /**
-                 *  Transform let and const to var in js files below to make them ES5 compatible
+                 *  Transform IE11 non-supported code to ES5 via webpack/typescript
                  *  Target only problematic files to prevent compilation from hanging
                  */
-                include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
+                include: [
+                    path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
+                    path.resolve(__dirname, 'node_modules/query-string/index.js'),
+                    path.resolve(__dirname, 'node_modules/strict-uri-encode/index.js'),
+                    path.resolve(__dirname, 'node_modules/split-on-first/index.js'),
+                ],
                 loader: 'awesome-typescript-loader',
             },
             {

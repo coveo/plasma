@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../../ReactVapor';
-import {callIfDefined} from '../../../utils/FalsyValuesUtils';
 import {FlatSelectConnected} from '../../flatSelect/FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
@@ -33,7 +32,7 @@ export const selectWithPredicate = (
 ): React.ComponentType<ISelectWithPredicateProps> => {
     const WrappedComponent: React.FunctionComponent<ISelectWithPredicateProps> = (props) => {
         React.useEffect(() => {
-            callIfDefined(props.onUpdate);
+            props.onUpdate?.();
         }, [props.predicate, props.onUpdate]);
 
         return (

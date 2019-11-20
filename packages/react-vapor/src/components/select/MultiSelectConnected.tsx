@@ -196,6 +196,5 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
     }
 }
 
-export const MultiSelectConnected: React.ComponentClass<
-    IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>
-> = DnDUtils.TagControlContext(MultiSelect);
+export const MultiSelectConnected: React.ComponentClass<IMultiSelectProps &
+    React.ButtonHTMLAttributes<HTMLButtonElement>> = DnDUtils.TagControlContext(MultiSelect);

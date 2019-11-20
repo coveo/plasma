@@ -7,7 +7,6 @@ import * as _ from 'underscore';
 import {Defaults} from '../../Defaults';
 import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
 import {IClassName} from '../../utils/ClassNameUtils';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';
 import {IModalBackdropOwnProps} from './ModalBackdrop';
@@ -87,11 +86,11 @@ export class ModalComposite extends React.PureComponent<
     }
 
     componentDidMount() {
-        callIfDefined(this.props.onRender);
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     private onRequestClose = (e: React.MouseEvent | React.KeyboardEvent) => {
@@ -100,10 +99,10 @@ export class ModalComposite extends React.PureComponent<
 
         if (this.props.validateShouldNavigate) {
             if (this.props.validateShouldNavigate(this.props.isDirty)) {
-                callIfDefined(this.props.onClose);
+                this.props.onClose?.();
             }
         } else {
-            callIfDefined(this.props.onClose);
+            this.props.onClose?.();
         }
     };
 

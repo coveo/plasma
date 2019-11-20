@@ -91,7 +91,10 @@ describe('DropdownSearch', () => {
 
             const oldstate: IDropdownSearchState = {
                 ...defaultOldState,
-                options: [{...options[0], selected: true, hidden: true}, {...options[1], selected: true, hidden: true}],
+                options: [
+                    {...options[0], selected: true, hidden: true},
+                    {...options[1], selected: true, hidden: true},
+                ],
             };
 
             const action: IReduxAction<IOptionsDropdownSearchPayload> = {

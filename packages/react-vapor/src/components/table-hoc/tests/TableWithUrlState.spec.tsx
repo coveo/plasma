@@ -68,10 +68,7 @@ describe('Table HOC', () => {
         });
 
         describe('when table has pagination', () => {
-            const TableWithUrlState = _.compose(
-                tableWithUrlState,
-                tableWithPagination()
-            )(TableHOC);
+            const TableWithUrlState = _.compose(tableWithUrlState, tableWithPagination())(TableHOC);
 
             it('should set the current page number in the url using "page" as param name', () => {
                 spyOn(TableHOCUtils, 'getCompositeState').and.returnValue({
@@ -107,10 +104,7 @@ describe('Table HOC', () => {
         });
 
         describe('when table has sortable columns', () => {
-            const TableWithUrlState = _.compose(
-                tableWithUrlState,
-                tableWithSort()
-            )(TableHOC);
+            const TableWithUrlState = _.compose(tableWithUrlState, tableWithSort())(TableHOC);
 
             it('should set the current sorted column key in the url using "sortBy" as param name', () => {
                 spyOn(TableHOCUtils, 'getCompositeState').and.returnValue({
@@ -139,10 +133,7 @@ describe('Table HOC', () => {
         });
 
         describe('when the table is filterable', () => {
-            const TableWithUrlState = _.compose(
-                tableWithUrlState,
-                tableWithFilter()
-            )(TableHOC);
+            const TableWithUrlState = _.compose(tableWithUrlState, tableWithFilter())(TableHOC);
 
             it('should set the current filter text in the url using "q" as param name', () => {
                 const filterText = 'not so black sheep 🐑';
@@ -165,10 +156,7 @@ describe('Table HOC', () => {
         describe('when the table has a date picker', () => {
             const lowerLimit = new Date(2019, 1, 1);
             const upperLimit = new Date(2019, 1, 2);
-            const TableWithUrlState = _.compose(
-                tableWithUrlState,
-                tableWithDatePicker()
-            )(TableHOC);
+            const TableWithUrlState = _.compose(tableWithUrlState, tableWithDatePicker())(TableHOC);
 
             it('should set the current lower date limit in the url using "from" as param name', () => {
                 spyOn(TableHOCUtils, 'getCompositeState').and.returnValue({
@@ -224,7 +212,10 @@ describe('Table HOC', () => {
 
             it('should set the selected predicate values in the url using the each predicate id as param name', () => {
                 spyOn(TableHOCUtils, 'getCompositeState').and.returnValue({
-                    predicates: [{id: 'size', value: '12 inches'}, {id: 'topping', value: 'pepperoni'}],
+                    predicates: [
+                        {id: 'size', value: '12 inches'},
+                        {id: 'topping', value: 'pepperoni'},
+                    ],
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);

@@ -3,10 +3,10 @@ import * as React from 'react';
 import {Svg} from '../svg/Svg';
 import {IBlankSlateProps} from './BlankSlate';
 
-export const blankSlateWithError = () => (
+export const blankSlateWithError = (
     Component: React.ComponentClass<IBlankSlateProps>
 ): React.ComponentClass<IBlankSlateProps> => {
-    class ComponentWithTable extends React.PureComponent<IBlankSlateProps> {
+    class BlankSlateWithErrorComponent extends React.PureComponent<IBlankSlateProps> {
         render() {
             return (
                 <Component
@@ -29,5 +29,5 @@ export const blankSlateWithError = () => (
         }
     }
 
-    return ComponentWithTable;
+    return BlankSlateWithErrorComponent;
 };

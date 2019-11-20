@@ -81,7 +81,4 @@ export class TriggerAction extends React.Component<ITriggerActionProps, any> {
     }
 }
 
-export const TriggerActionConnected = connect(
-    undefined,
-    mapDispatchToProps
-)(TriggerAction);
+export const TriggerActionConnected = connect(undefined, mapDispatchToProps)(TriggerAction);

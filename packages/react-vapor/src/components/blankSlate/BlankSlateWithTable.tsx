@@ -1,28 +1,30 @@
+import {ComponentClass} from 'react';
 import * as React from 'react';
 import {IBlankSlateProps} from './BlankSlate';
 
-export interface IBlankSlateWithTableProps extends IBlankSlateWithTableConfig, IBlankSlateProps {}
-
-export interface IBlankSlateWithTableConfig {
+export interface IBlankSlateWithTableProps {
     numberOfColumn?: number;
 }
 
-export const blankSlateWithTable = <T, R = any>(config: IBlankSlateWithTableConfig = {}) => (
-    Component: React.ComponentClass<IBlankSlateProps>
-): React.ComponentClass<IBlankSlateWithTableProps & T, R> => {
-    class ComponentWithTable extends React.PureComponent<Partial<IBlankSlateWithTableProps> & T, R> {
-        render() {
-            const numberOfColumn = config.numberOfColumn || 20;
+export const blankSlateWithTable = <P extends IBlankSlateProps>(
+    Component: React.ComponentType<P>
+): ComponentClass<IBlankSlateWithTableProps & P> => {
+    class ComponentBlankSlateWithTable extends React.PureComponent<IBlankSlateWithTableProps & P> {
+        static defaultProps: Partial<IBlankSlateWithTableProps & P> = {
+            numberOfColumn: 20,
+        } as Partial<IBlankSlateWithTableProps & P>;
 
+        render() {
+            const {numberOfColumn, ...componentProps} = this.props;
             return (
                 <tr className="no-hover">
                     <td colSpan={numberOfColumn}>
-                        <Component {...this.props}>{this.props.children}</Component>
+                        <Component {...(componentProps as P)}>{this.props.children}</Component>
                     </td>
                 </tr>
             );
         }
     }
 
-    return ComponentWithTable;
+    return ComponentBlankSlateWithTable;
 };

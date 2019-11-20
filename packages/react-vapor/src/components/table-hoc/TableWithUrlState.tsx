@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IDispatch, IThunkAction} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {applyDatePicker, changeDatePickerLowerLimit, changeDatePickerUpperLimit} from '../datePicker/DatePickerActions';
@@ -62,7 +61,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
 
         private onUpdate = () => {
             this.updateUrl(this.props.query);
-            callIfDefined(this.props.onUpdate);
+            this.props.onUpdate?.();
         };
 
         private updateUrl = _.debounce(this.props.onUpdateUrl || _.noop, 100);

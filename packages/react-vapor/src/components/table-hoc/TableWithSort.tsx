@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
@@ -57,7 +56,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {
     class TableWithSort extends React.Component<ITableWithSortProps> {
         componentDidUpdate(prevProps: ITableWithSortProps) {
             if (prevProps.sortKey !== this.props.sortKey || prevProps.isAsc !== this.props.isAsc) {
-                callIfDefined(this.props.onUpdate);
+                this.props.onUpdate?.();
             }
         }
 
