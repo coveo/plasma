@@ -11,8 +11,8 @@ export interface IRefreshCallbackOwnProps {
     time?: number;
     incremental?: number;
     intervalInMs?: number;
-    callback: (start: () => void) => void;
     renderCount?: (count: number) => React.ReactNode;
+    callback: (start: () => void) => void;
 }
 
 export interface IRefreshCallbackState {
@@ -29,10 +29,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IRefreshCallbackOwnPr
     inProgress: () => dispatch(RefreshCallBackActions.inProgress(ownProps.id)),
 });
 
-export interface IRefreshCallbackProps
-    extends IRefreshCallbackOwnProps,
-        Partial<ReturnType<typeof mapStateToProps>>,
-        Partial<ReturnType<typeof mapDispatchToProps>> {}
+export type IRefreshCallbackProps = IRefreshCallbackOwnProps &
+    ReturnType<typeof mapStateToProps> &
+    ReturnType<typeof mapDispatchToProps>;
 
 class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackProps, IRefreshCallbackState> {
     static defaultProps: Partial<IRefreshCallbackProps> = {
@@ -42,7 +41,7 @@ class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackPr
         renderCount: (count: number) => <span>Auto refresh in {count} seconds</span>,
     };
 
-    private activeInterval: any;
+    private activeInterval: NodeJS.Timeout;
 
     constructor(props: IRefreshCallbackProps) {
         super(props);
@@ -91,7 +90,4 @@ class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackPr
     }
 }
 
-export const RefreshCallback = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(RefreshCallbackDisconnected);
+export const RefreshCallback = connect(mapStateToProps, mapDispatchToProps)(RefreshCallbackDisconnected);
