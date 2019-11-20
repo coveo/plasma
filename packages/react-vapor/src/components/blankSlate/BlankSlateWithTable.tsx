@@ -2,7 +2,7 @@ import {ComponentClass} from 'react';
 import * as React from 'react';
 import {IBlankSlateProps} from './BlankSlate';
 
-export interface IBlankSlateWithTableProps {
+export interface IBlankSlateWithTableProps extends IBlankSlateProps {
     numberOfColumn?: number;
 }
 
