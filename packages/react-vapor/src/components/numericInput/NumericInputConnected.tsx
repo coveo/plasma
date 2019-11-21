@@ -46,7 +46,7 @@ export const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputO
 };
 
 export const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
-    mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value)),
+    mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value, ownProps.min, ownProps.max)),
     unmount: () => dispatch(NumericInputActions.unmount(ownProps.id)),
     setValue: (value: React.ReactText) =>
         dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
