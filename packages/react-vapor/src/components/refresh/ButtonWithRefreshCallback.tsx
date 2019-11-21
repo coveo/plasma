@@ -29,11 +29,10 @@ const buttonWithRefreshCallbackDisconnected: FunctionComponent<IRefreshCallbackW
     Partial<ReturnType<typeof mapDispatchToProps>>> = ({
     button,
     buttonContainerProps,
-    callback,
     status,
     start,
     stop,
-    ...rest
+    ...refreshCallbackProps
 }) => (
     <>
         <div {...(buttonContainerProps || {})}>
@@ -41,12 +40,12 @@ const buttonWithRefreshCallbackDisconnected: FunctionComponent<IRefreshCallbackW
                 {...button}
                 onClick={() => {
                     stop();
-                    callback?.(start);
+                    refreshCallbackProps.callback?.(start);
                 }}
                 enabled={isNotStopped(status)}
             />
         </div>
-        <RefreshCallback {...rest} />
+        <RefreshCallback {...refreshCallbackProps} />
     </>
 );
 
