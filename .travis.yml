@@ -61,6 +61,9 @@ deploy:
           tags: true
           repo: coveo/react-vapor
 
+after_deploy:
+    - node invalidate-cloudfront.js
+
 notifications:
     email:
         on_success: never
