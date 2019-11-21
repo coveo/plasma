@@ -28,6 +28,7 @@ import {optionPickersReducer} from './components/optionPicker/OptionPickerReduce
 import {optionsCyclesReducer} from './components/optionsCycle/OptionsCycleReducers';
 import {popoversReducer} from './components/popover/PopoverReducers';
 import {radioSelectsReducer} from './components/radio/RadioSelectReducers';
+import {refreshCallBackReducer} from './components/refresh/RefreshCallbackReducer';
 import {searchBarsReducer} from './components/searchBar/SearchBarReducers';
 import {selectWithFilterCompositeReducer} from './components/select/hoc/SelectWithFilterReducers';
 import {selectCompositeReducer} from './components/select/SelectReducers';
@@ -95,5 +96,6 @@ export const ReactVaporReducers: ReducersMapObject = {
     dirtyComponents: withDirtyReducer,
     multilineIds: stringListCompositeReducer,
     drop: dropReducer,
+    refreshCallback: refreshCallBackReducer,
     lastAction,
 };

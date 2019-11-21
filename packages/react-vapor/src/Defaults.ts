@@ -12,4 +12,6 @@ export abstract class Defaults {
     static set APP_ELEMENT(appElement: string | HTMLElement) {
         ReactModal.setAppElement(appElement);
     }
+
+    static REFRESH_CALLBACK_INTERVAL_MS: number = 1000;
 }
