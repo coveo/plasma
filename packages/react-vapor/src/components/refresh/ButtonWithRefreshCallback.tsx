@@ -8,10 +8,7 @@ import {RefreshCallBackActions} from './RefeshCallbackActions';
 import {IRefreshCallbackOwnProps, RefreshCallback} from './RefreshCallback';
 import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
 
-export interface IRefreshCallbackWithButtonProps
-    extends IRefreshCallbackOwnProps,
-        Partial<ReturnType<typeof mapStateToProps>>,
-        Partial<ReturnType<typeof mapDispatchToProps>> {
+export interface IRefreshCallbackWithButtonProps extends IRefreshCallbackOwnProps {
     buttonContainerProps?: React.HtmlHTMLAttributes<HTMLDivElement>;
     button: IButtonProps;
 }
@@ -25,7 +22,11 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IRefreshCallbackWithB
     stop: () => dispatch(RefreshCallBackActions.stop(ownProps.id)),
 });
 
-const buttonWithRefreshCallbackDisconnected: FunctionComponent<IRefreshCallbackWithButtonProps> = ({
+const isNotStopped = (status: string) => status !== RefreshStatus.stopped;
+
+const buttonWithRefreshCallbackDisconnected: FunctionComponent<IRefreshCallbackWithButtonProps &
+    Partial<ReturnType<typeof mapStateToProps>> &
+    Partial<ReturnType<typeof mapDispatchToProps>>> = ({
     button,
     buttonContainerProps,
     callback,
@@ -42,7 +43,7 @@ const buttonWithRefreshCallbackDisconnected: FunctionComponent<IRefreshCallbackW
                     stop();
                     callback?.(start);
                 }}
-                enabled={status !== RefreshStatus.stopped}
+                enabled={isNotStopped(status)}
             />
         </div>
         <RefreshCallback {...rest} />
