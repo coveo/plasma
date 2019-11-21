@@ -39,12 +39,9 @@ class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackPr
 
     private activeInterval: number;
 
-    constructor(props: IRefreshCallbackProps) {
-        super(props);
-        this.state = {
-            count: this.props.delay,
-        };
-    }
+    state = {
+        count: this.props.delay,
+    };
 
     get isInProgress() {
         return this.state.count === 0 && this.props.status === RefreshStatus.inProgress;
