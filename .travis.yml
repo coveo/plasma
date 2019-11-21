@@ -9,6 +9,8 @@ addons:
     chrome: stable
 
 before_install:
+    - pip install --user awscli
+    - export PATH=$PATH:$HOME/.local/bin
     - eval "$(ssh-agent -s)" #start the ssh agent
     - openssl aes-256-cbc -K $encrypted_6a1e0d13907f_key -iv $encrypted_6a1e0d13907f_iv -in id_rsa.enc -out travis-deploy-key -d
     - chmod 600 travis-deploy-key # this key should have push access
@@ -62,6 +64,8 @@ deploy:
           repo: coveo/react-vapor
 
 after_deploy:
+    - aws s3 rm s3://coveo-public-content/react-vapor/src --recursive
+    - aws s3 rm s3://coveo-public-content/react-vapor --exclude "*" --include "*.ts" --include "*.tsx"
     - node invalidate-cloudfront.js
 
 notifications:
