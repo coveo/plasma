@@ -39,7 +39,7 @@ export const refreshCallBackReducer = (
     }
 };
 
-const getRefreshStatus = (state: IReactVaporExampleState, {id}: {id: string}) => state.refreshCallback?.[id];
+const getRefreshStatus = (state: IReactVaporExampleState, {id}: {id: string}): string => state.refreshCallback?.[id];
 
 export const RefreshStatusSelectors = {
     getRefreshStatus,

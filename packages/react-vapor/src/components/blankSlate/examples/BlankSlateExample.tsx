@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {ButtonWithRefreshCallback} from '../../refresh/ButtonWithRefreshCallback';
 import {BlankSlate} from '../BlankSlate';
 import {BlankSlateWithError, BlankSlateWithTable, BlankSlateWithTableInError} from '../BlankSlatesHOC';
 
@@ -111,6 +112,37 @@ export class BlankSlateExample extends React.Component<any, any> {
                         <BlankSlateWithTableInError
                             title="Unable to retrieve X"
                             description="Super clear error message localized to ensure a good comprehension about the current error"
+                        />
+                    </table>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">BlankSlate for a table in error</label>
+                    <table className="table">
+                        <tr>
+                            <th>Firstname</th>
+                            <th>Lastname</th>
+                            <th>Age</th>
+                        </tr>
+                        <BlankSlateWithTableInError
+                            title="Unable to retrieve X"
+                            description="Super clear error message localized to ensure a good comprehension about the current error"
+                            additionalSection={
+                                <ButtonWithRefreshCallback
+                                    id="refresh"
+                                    delay={10}
+                                    callback={(start) => setTimeout(start, 2000)}
+                                    renderCount={(count: number) => (
+                                        <span className="text-black small-text">Auto refresh in {count} seconds</span>
+                                    )}
+                                    button={{
+                                        name: 'Refresh',
+                                        enabled: true,
+                                    }}
+                                    buttonContainerProps={{
+                                        className: 'mb2',
+                                    }}
+                                />
+                            }
                         />
                     </table>
                 </div>
