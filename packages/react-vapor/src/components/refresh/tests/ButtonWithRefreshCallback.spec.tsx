@@ -2,13 +2,13 @@ import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
-import {ButtonWithRefreshCallback, IRefreshCallbackWithButtonProps} from '../ButtonWithRefreshCallback';
+import {ButtonWithRefreshCallback, IButtonWithRefreshCallbackProps} from '../ButtonWithRefreshCallback';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {RefreshStatus} from '../RefreshCallbackReducer';
 
 describe('ButtonWithRefreshCallback tests', () => {
     describe('<ButtonWithRefreshCallback />', () => {
-        const defaultProps: IRefreshCallbackWithButtonProps = {
+        const defaultProps: IButtonWithRefreshCallbackProps = {
             id: '🛶',
             callback: () => '🏎',
             button: {

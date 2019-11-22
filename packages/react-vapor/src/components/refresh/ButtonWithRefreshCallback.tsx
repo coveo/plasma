@@ -8,23 +8,23 @@ import {RefreshCallBackActions} from './RefeshCallbackActions';
 import {IRefreshCallbackOwnProps, RefreshCallback} from './RefreshCallback';
 import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
 
-export interface IRefreshCallbackWithButtonProps extends IRefreshCallbackOwnProps {
+export interface IButtonWithRefreshCallbackProps extends IRefreshCallbackOwnProps {
     buttonContainerProps?: React.HtmlHTMLAttributes<HTMLDivElement>;
     button: IButtonProps;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IRefreshCallbackWithButtonProps) => ({
+const mapStateToProps = (state: IReactVaporState, ownProps: IButtonWithRefreshCallbackProps) => ({
     status: RefreshStatusSelectors.getRefreshStatus(state, {id: ownProps.id}),
 });
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: IRefreshCallbackWithButtonProps) => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IButtonWithRefreshCallbackProps) => ({
     start: () => dispatch(RefreshCallBackActions.start(ownProps.id)),
     stop: () => dispatch(RefreshCallBackActions.stop(ownProps.id)),
 });
 
 const isNotStopped = (status: string) => status !== RefreshStatus.stopped;
 
-const buttonWithRefreshCallbackDisconnected: FunctionComponent<IRefreshCallbackWithButtonProps &
+const buttonWithRefreshCallbackDisconnected: FunctionComponent<IButtonWithRefreshCallbackProps &
     Partial<ReturnType<typeof mapStateToProps>> &
     Partial<ReturnType<typeof mapDispatchToProps>>> = ({
     button,
