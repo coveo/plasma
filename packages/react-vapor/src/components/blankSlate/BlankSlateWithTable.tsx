@@ -17,7 +17,7 @@ export const blankSlateWithTable = <P extends IBlankSlateProps>(
         render() {
             const {numberOfColumn, ...componentProps} = this.props;
             return (
-                <tr className="no-hover">
+                <tr className="blankslate-row no-hover">
                     <td colSpan={numberOfColumn}>
                         <Component {...(componentProps as P)}>{this.props.children}</Component>
                     </td>
