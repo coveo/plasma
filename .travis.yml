@@ -49,6 +49,7 @@ deploy:
       local-dir: packages/react-vapor/docs/dist
       upload-dir: react-vapor
       acl: public_read
+      overwrite: true
 
     - provider: s3
       skip_cleanup: true
@@ -64,8 +65,6 @@ deploy:
           repo: coveo/react-vapor
 
 after_deploy:
-    - aws s3 rm s3://coveo-public-content/react-vapor/src --recursive
-    - aws s3 rm s3://coveo-public-content/react-vapor --exclude "*" --include "*.ts" --include "*.tsx"
     - node invalidate-cloudfront.js
 
 notifications:
