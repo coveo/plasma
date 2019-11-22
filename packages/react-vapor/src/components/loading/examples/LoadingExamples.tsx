@@ -21,17 +21,17 @@ export const LoadingExamples = () => (
                 </div>
             </div>
         </Section>
-        <Section level={3} title="A table header loading">
+        <Section level={3} title="Header loading">
             <BasicHeaderLoading />
         </Section>
-        <Section level={3} title="A table header loading">
+        <Section level={3} title="Action Bar loading">
             <ActionBarLoading />
         </Section>
-        <Section level={3} title="A table with 4 column in loading">
+        <Section level={3} title="Table with 4 column in loading">
             <TableLoading numberOfColumn={4} />
         </Section>
-        <Section level={3} title="A table with 6 colomn in loading">
-            <TableLoading numberOfColumn={6} />
+        <Section level={3} title="Table with 6 column and 5 row in loading">
+            <TableLoading numberOfColumn={6} numberOfRow={5} />
         </Section>
     </Section>
 );

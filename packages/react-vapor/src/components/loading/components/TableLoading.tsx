@@ -1,7 +1,13 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-export const TableLoading = ({numberOfColumn = 4, numberOfRow = 10}: {numberOfColumn: number; numberOfRow: number}) => {
+export const TableLoading = ({
+    numberOfColumn = 4,
+    numberOfRow = 10,
+}: {
+    numberOfColumn?: number;
+    numberOfRow?: number;
+}) => {
     return (
         <>
             <table className="table big-table">
