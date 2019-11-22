@@ -1,13 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {UUID} from '../../utils/UUID';
 
 import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITitleProps {
-    id?: string;
     prefix?: string;
     text: React.ReactNode;
     withTitleTooltip?: boolean;
@@ -45,5 +43,4 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
 Title.defaultProps = {
     prefix: '',
     withTitleTooltip: false,
-    id: UUID.generate(),
 };
