@@ -1,13 +1,15 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {UUID} from '../../utils/UUID';
 
 import {ILinkSvgProps, LinkSvg} from '../svg/LinkSvg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITitleProps {
+    id?: string;
     prefix?: string;
-    text: string;
+    text: React.ReactNode;
     withTitleTooltip?: boolean;
     documentationLink?: ILinkSvgProps;
     classes?: string[];
@@ -19,8 +21,9 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
     const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
 
     const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;
+    const tooltipProps = _.isString(props.text) ? {title: props.text} : {};
     const title = props.withTitleTooltip ? (
-        <Tooltip title={props.text} placement="left">
+        <Tooltip {...tooltipProps} placement="left">
             {props.text}
         </Tooltip>
     ) : (
@@ -42,4 +45,5 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
 Title.defaultProps = {
     prefix: '',
     withTitleTooltip: false,
+    id: UUID.generate(),
 };
