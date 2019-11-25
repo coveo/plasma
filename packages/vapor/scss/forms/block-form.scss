@@ -81,6 +81,11 @@ form {
                     margin-top: $scaledSpacing;
                 }
             }
+            > .btn {
+                + .input-field {
+                    margin-top: $scaledSpacing + $inputFieldLabelSpacing;
+                }
+            }
             > .input-field {
                 margin-top: $scaledSpacing + $inputFieldLabelSpacing;
             }
@@ -102,9 +107,6 @@ form {
 
             > .btn {
                 margin-top: 0;
-                + .input-field {
-                    margin-top: (($spacing * $level) /2) + 0.75rem;
-                }
             }
 
             &.level-1 {
