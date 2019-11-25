@@ -85,6 +85,7 @@ const generateRows = (allData: IExampleRowData[]) =>
             actions={tableActions(data.username)}
             isMultiselect
             disabled={i % 3 === 0}
+            collapsible={{content: <div className="py2">👋</div>}}
         >
             <TableRowNumberColumn number={i + 1} />
             <td key="city">{data.city}</td>
@@ -108,6 +109,7 @@ const renderHeader = () => (
                 Username
             </TableHeaderWithSort>
             <th key="date-of-birth">Date of Birth</th>
+            <th>{/* Empty th for the collapsible */}</th>
         </tr>
     </thead>
 );
@@ -167,7 +169,7 @@ const TableExampleDisconnected: React.FunctionComponent<TableHOCServerProps> = (
             </span>
             <ServerTableComposed
                 id={TableHOCServerExampleId}
-                className="table table-numbered"
+                className="table table-numbered mod-collapsible-rows"
                 data={props.serverData}
                 renderBody={generateRows}
                 tableHeader={renderHeader()}
