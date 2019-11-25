@@ -49,8 +49,8 @@ export class SectionExamples extends React.Component<any, any> {
                     </Section>
                 </Form>
 
-                <Form title="Define your products structure" className="mt4">
-                    <Section title="Inputs inside a Secton of level 1">
+                <Form className="mt4">
+                    <Section title="Define your products structure" description="Inputs inside a Section of level 1">
                         <LabeledInput
                             label="Product Object Type"
                             helpText="Select the object type value that identifies a Product object"
@@ -89,7 +89,7 @@ export class SectionExamples extends React.Component<any, any> {
                             />
                         </LabeledInput>
                     </Section>
-                    <Section title="Inputs inside a Secton of level 2" level={2}>
+                    <Section title="Level 2" description="Inputs inside a Section of level 2" level={2}>
                         <LabeledInput
                             label="Product Object Type"
                             helpText="Select the object type value that identifies a Product object"
@@ -128,7 +128,7 @@ export class SectionExamples extends React.Component<any, any> {
                             />
                         </LabeledInput>
                     </Section>
-                    <Section title="Inputs inside a Section of level 3" level={3}>
+                    <Section title="Level 3" description="Inputs inside a Section of level 3" level={3}>
                         <LabeledInput
                             label="Product Object Type"
                             helpText="Select the object type value that identifies a Product object"
