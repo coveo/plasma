@@ -1,6 +1,5 @@
 .content-placeholder {
-    background-color: $light-grey;
-    border-radius: $content-placeholder-border-radius;
+    @extend .bg-grey-3, .mod-rounded-border-2;
 }
 
 .content-placeholder-animated {

@@ -6,7 +6,7 @@ export const BasicHeaderLoading = () => {
         <BasicHeader
             title={{
                 text: (
-                    <div className="btn mod-rounded-border-2 bg-grey-3 cursor-auto mod-no-border mod-small table-header-title-loading-width" />
+                    <div className="btn content-placeholder cursor-auto mod-no-border mod-small table-header-title-loading-width" />
                 ),
             }}
             actions={[

@@ -4,7 +4,7 @@
 }
 
 .table-cell-content-loading {
-    @extend .btn, .full-content-x, .mod-rounded-border-2, .bg-grey-3, .cursor-auto, .mod-no-border, .mod-small;
+    @extend .btn, .full-content-x, .content-placeholder, .cursor-auto, .mod-no-border, .mod-small;
 }
 
 .table-header-action-button-loading-width {
