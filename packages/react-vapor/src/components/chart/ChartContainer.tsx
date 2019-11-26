@@ -22,7 +22,7 @@ export const ChartContainer: React.FunctionComponent<ChartContainerProps> = (pro
     };
 
     toggleSvgs(false);
-    const {width, height} = (container.current && container.current.getBoundingClientRect()) || {width: 0, height: 0};
+    const {width, height} = container.current?.getBoundingClientRect() ?? {width: 0, height: 0};
     toggleSvgs(true);
 
     return (
