@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Section} from '../../section/Section';
 import {ActionBarLoading} from '../components/ActionBarLoading';
 import {BasicHeaderLoading} from '../components/BasicHeaderLoading';
+import {PaginationLoading} from '../components/PaginationLoading';
 import {TableLoading} from '../components/TableLoading';
 import {Loading} from '../Loading';
 
@@ -32,6 +33,9 @@ export const LoadingExamples = () => (
         </Section>
         <Section level={3} title="Table with 6 column and 5 row in loading">
             <TableLoading numberOfColumn={6} numberOfRow={5} />
+        </Section>
+        <Section level={3} title="Table pagination in loading">
+            <PaginationLoading />
         </Section>
     </Section>
 );
