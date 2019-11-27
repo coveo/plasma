@@ -52,6 +52,15 @@
     justify-content: space-around;
 }
 
+.flex-row-space-between {
+    display: flex;
+    flex-basis: auto;
+    flex-direction: row;
+    flex-grow: 1;
+    align-items: center;
+    justify-content: space-between;
+}
+
 @for $i from 0 through 10 {
     .flex-shrink-#{$i} {
         flex-shrink: #{$i};
