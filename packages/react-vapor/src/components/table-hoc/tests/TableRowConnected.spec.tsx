@@ -284,10 +284,12 @@ describe('Table HOC', () => {
                 ).toBe(true);
             });
 
-            it('should dispatch a toggleCollapsible action when clicking on a collapsible heading-row', () => {
+            it('should dispatch a toggleCollapsible action when clicking on the collapsible button', () => {
                 const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id);
 
-                wrapper.find('tr.heading-row').simulate('click', {});
+                wrapper
+                    .find(CollapsibleToggle)
+                    .simulate('click', jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']));
 
                 expect(store.getActions()).toContain(expectedAction);
             });
@@ -408,7 +410,10 @@ describe('Table HOC', () => {
                 store
             ).dive();
 
-            row.find('tr.heading-row').simulate('click', {});
+            row.find(CollapsibleToggle).simulate(
+                'click',
+                jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation'])
+            );
             expect(spy).toHaveBeenCalledWith(true);
         });
 
@@ -437,7 +442,10 @@ describe('Table HOC', () => {
                 store
             ).dive();
 
-            row.find('tr.heading-row').simulate('click', {});
+            row.find(CollapsibleToggle).simulate(
+                'click',
+                jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation'])
+            );
             expect(spy).toHaveBeenCalledWith(false);
         });
     });
