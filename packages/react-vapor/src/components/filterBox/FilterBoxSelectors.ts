@@ -1,21 +1,12 @@
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {FilterUtils} from '../../utils/FilterUtils';
-import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IFilterState} from './FilterBoxReducers';
+import {defaultListBoxMatchFilter, MatchFilter} from './FilterBoxUtils';
 
 export interface GetFilterTextProps {
     id: string;
 }
-
-export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
-
-export const defaultListBoxMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-    const valueMatchesFilter = FilterUtils.matchesString(filterValue, item.value);
-    const displayValueMatchesFilter = FilterUtils.matchesReactNode(filterValue, item.displayValue);
-    return valueMatchesFilter || displayValueMatchesFilter;
-};
 
 const getFilterText = (state: IReactVaporState, props: GetFilterTextProps): string => {
     const filter: IFilterState = _.findWhere(state.filters, {id: props.id});
