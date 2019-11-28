@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {MatchFilter} from '../../../utils/FilterUtils';
+import {MatchFilter} from '../../filterBox/FilterBoxSelectors';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
 import {ISelectWithFilterProps} from '../hoc/SelectWithFilter';
