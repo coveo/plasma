@@ -1,16 +1,28 @@
 import * as escapeRegExp from 'escape-string-regexp';
+import {ReactNode} from 'react';
 
-import {IItemBoxProps} from '../components/itemBox/ItemBox';
 import {getReactNodeTextContent} from './JSXUtils';
 
-export type MatchFilter = (filterValue: string, item: IItemBoxProps) => boolean;
+function matchesString(filterValue: string, str: string, caseSensitive = false): boolean {
+    const escapedFilterValue = escapeRegExp(filterValue ?? '');
+    return escapedFilterValue === '' || new RegExp(escapedFilterValue, caseSensitive ? 'g' : 'gi').test(str);
+}
 
-export const defaultMatchFilter = (filterValue: string, item: IItemBoxProps) => {
-    const escapedFilterValue = escapeRegExp(filterValue || '');
-    if (escapedFilterValue === '') {
-        return true;
-    }
+function matchesNumber(filterValue: string, num: number): boolean {
+    return num != null ? matchesString(filterValue, num.toString()) : false;
+}
 
-    const regex = new RegExp(escapedFilterValue, 'gi');
-    return regex.test(item.value) || !!(item.displayValue && regex.test(getReactNodeTextContent(item.displayValue)));
+function matchesArrayLength(filterValue: string, array: any[]): boolean {
+    return array ? matchesString(filterValue, array.length.toString()) : false;
+}
+
+function matchesReactNode(filterValue: string, node: ReactNode): boolean {
+    return node ? matchesString(filterValue, getReactNodeTextContent(node)) : false;
+}
+
+export const FilterUtils = {
+    matchesString,
+    matchesNumber,
+    matchesReactNode,
+    matchesArrayLength,
 };
