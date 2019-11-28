@@ -8,7 +8,7 @@ import {IReactVaporState} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {defaultListBoxMatchFilter} from '../filterBox/FilterBoxSelectors';
+import {defaultListBoxMatchFilter} from '../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {
