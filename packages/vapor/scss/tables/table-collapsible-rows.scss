@@ -21,12 +21,6 @@ table {
                 }
             }
 
-            &.heading-row {
-                &.opened:not(:hover) td {
-                    background-color: $white;
-                }
-            }
-
             &.collapsible-row {
                 height: 0;
 

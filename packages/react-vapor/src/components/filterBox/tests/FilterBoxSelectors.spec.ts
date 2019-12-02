@@ -1,8 +1,8 @@
 import {IReactVaporState} from '../../../ReactVapor';
-import {defaultMatchFilter, MatchFilter} from '../../../utils/FilterUtils';
 import {ISelectWithFilterProps} from '../../select/hoc/SelectWithFilter';
 import {IFilterState} from '../FilterBoxReducers';
 import {FilterBoxSelectors} from '../FilterBoxSelectors';
+import {defaultListBoxMatchFilter, MatchFilter} from '../FilterBoxUtils';
 
 describe('FilterBox', () => {
     describe('FilterBox Selectors', () => {
@@ -28,8 +28,10 @@ describe('FilterBox', () => {
         });
 
         describe('getMatchFilter', () => {
-            it('should return the defaultMatchFilter if the matchFilter is not defined in the ownProps', () => {
-                expect(FilterBoxSelectors.getMatchFilter(defaultState, defaultOwnProps)).toEqual(defaultMatchFilter);
+            it('should return the defaultListBoxMatchFilter if the matchFilter is not defined in the ownProps', () => {
+                expect(FilterBoxSelectors.getMatchFilter(defaultState, defaultOwnProps)).toEqual(
+                    defaultListBoxMatchFilter
+                );
             });
 
             it('should return the matchFilter if it is defined in the ownProps', () => {

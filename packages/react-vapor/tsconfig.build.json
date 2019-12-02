@@ -13,6 +13,10 @@
         "src/utils/tests/TestUtils.tsx",
         "src/components/tables/tests/TableTestCommon.tsx",
         "karma.entry.ts",
-        "Index.ts"
+        "Index.ts",
+        "node_modules",
+        "dist",
+        "coverage",
+        "*.js"
     ]
 }

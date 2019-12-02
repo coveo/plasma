@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {Section} from '../../section/Section';
+import {MiddleSlider} from '../MiddleSlider';
 import {Slider} from '../Slider';
 
 export class SliderExamples extends React.Component<any, any> {
@@ -55,7 +57,7 @@ export class SliderExamples extends React.Component<any, any> {
                     </div>
                 </div>
 
-                <div className="form-group">
+                {/* <div className="form-group">
                     <label className="form-control-label">
                         Slider with tooltip and value formatter (always showing)
                     </label>
@@ -70,7 +72,13 @@ export class SliderExamples extends React.Component<any, any> {
                             />
                         </div>
                     </div>
-                </div>
+                </div> */}
+                <Section title="Middle Slider">
+                    <MiddleSlider range={10000} id="rangeSliderId" />
+                </Section>
+                <Section title="with tooltip not working">
+                    <MiddleSlider range={500} id="another-id" hasTooltip />
+                </Section>
             </div>
         );
     }

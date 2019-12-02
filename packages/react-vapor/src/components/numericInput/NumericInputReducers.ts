@@ -17,9 +17,12 @@ export const initialNumericInputsState: INumericInputsState = {};
 export const initialNumericInputState = {value: 1, hasError: false};
 
 const mount = (state: INumericInputsState, action: IReduxAction<ISetNumericInputPayload>) => {
+    const initialValue = action.payload.value;
+    const hasError = validateValueError(initialValue, action.payload.min, action.payload.max);
+
     return {
         ...state,
-        [action.payload.id]: {value: action.payload.value},
+        [action.payload.id]: {value: initialValue, hasError},
     };
 };
 
@@ -29,18 +32,7 @@ const unmount = (state: INumericInputsState, action: IReduxAction<ISetNumericInp
 
 const set = (state: INumericInputState, action: IReduxAction<ISetNumericInputPayload>) => {
     const newValue = action.payload.value;
-    let hasError = false;
-    if (!_.isUndefined(action.payload.min) && newValue < action.payload.min) {
-        hasError = true;
-    }
-
-    if (!_.isUndefined(action.payload.max) && newValue > action.payload.max) {
-        hasError = true;
-    }
-
-    if (_.isNaN(parseFloat('' + action.payload.value))) {
-        hasError = true;
-    }
+    const hasError = validateValueError(newValue, action.payload.min, action.payload.max);
 
     return {...state, value: newValue, hasError};
 };
@@ -53,6 +45,22 @@ const NumericInputsReducers: {[key: string]: (...args: any[]) => INumericInputsS
 const NumericInputReducers: {[key: string]: (...args: any[]) => INumericInputState} = {
     [NumericInputActionTypes.set]: set,
 };
+
+function validateValueError(value: React.ReactText, min: number, max: number) {
+    let hasError = false;
+    if (!_.isUndefined(min) && value < min) {
+        hasError = true;
+    }
+
+    if (!_.isUndefined(max) && value > max) {
+        hasError = true;
+    }
+
+    if (_.isNaN(parseFloat('' + value))) {
+        hasError = true;
+    }
+    return hasError;
+}
 
 export type INumericInputPayload = {id: string} | ISetNumericInputPayload;
 

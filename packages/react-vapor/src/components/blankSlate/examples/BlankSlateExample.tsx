@@ -1,5 +1,7 @@
 import * as React from 'react';
+import {ButtonWithRefreshCallback} from '../../refresh/ButtonWithRefreshCallback';
 import {BlankSlate} from '../BlankSlate';
+import {BlankSlateWithError, BlankSlateWithTable, BlankSlateWithTableInError} from '../BlankSlatesHOC';
 
 export class BlankSlateExample extends React.Component<any, any> {
     render() {
@@ -75,6 +77,88 @@ export class BlankSlateExample extends React.Component<any, any> {
                         svgName="tips"
                         svgClass="fill-orange"
                     />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">BlankSlate in error</label>
+                    <BlankSlateWithError
+                        title="Unable to retrieve X"
+                        description="Super clear error message localized to ensure a good comprehension about the current error"
+                    />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">BlankSlate for a table row</label>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <BlankSlateWithTable
+                                title="Title test"
+                                description="description test"
+                                svgName="tips"
+                                svgClass="fill-orange"
+                            />
+                        </tbody>
+                    </table>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">BlankSlate for a table in error</label>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <BlankSlateWithTableInError
+                                title="Unable to retrieve X"
+                                description="Super clear error message localized to ensure a good comprehension about the current error"
+                            />
+                        </tbody>
+                    </table>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">BlankSlate for a table in error</label>
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th>Firstname</th>
+                                <th>Lastname</th>
+                                <th>Age</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <BlankSlateWithTableInError
+                                title="Unable to retrieve X"
+                                description="Super clear error message localized to ensure a good comprehension about the current error"
+                                additionalSection={
+                                    <ButtonWithRefreshCallback
+                                        id="refresh"
+                                        delay={10}
+                                        callback={(start) => setTimeout(start, 2000)}
+                                        renderCount={(count: number) => (
+                                            <span className="text-black small-text">
+                                                Auto refresh in {count} seconds
+                                            </span>
+                                        )}
+                                        button={{
+                                            name: 'Refresh',
+                                            enabled: true,
+                                        }}
+                                        buttonContainerProps={{
+                                            className: 'mb2',
+                                        }}
+                                    />
+                                }
+                            />
+                        </tbody>
+                    </table>
                 </div>
             </div>
         );

@@ -8,6 +8,10 @@ node_js:
 addons:
     chrome: stable
 
+env:
+    global:
+        - AWS_ACCESS_KEY_ID=AKIAJ72WQIJQMW6TCHDA
+
 before_install:
     - eval "$(ssh-agent -s)" #start the ssh agent
     - openssl aes-256-cbc -K $encrypted_6a1e0d13907f_key -iv $encrypted_6a1e0d13907f_iv -in id_rsa.enc -out travis-deploy-key -d
@@ -40,19 +44,19 @@ after_success:
 deploy:
     - provider: s3
       skip_cleanup: true
-      access_key_id: AKIAJ72WQIJQMW6TCHDA
+      access_key_id: $AWS_ACCESS_KEY_ID
       secret_access_key:
-          secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ= # https://docs.travis-ci.com/user/encryption-keys/
+          secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ=
       bucket: coveo-public-content
-      local-dir: packages/react-vapor/docs
+      local-dir: packages/react-vapor/docs/dist
       upload-dir: react-vapor
       acl: public_read
 
     - provider: s3
       skip_cleanup: true
-      access_key_id: AKIAJ72WQIJQMW6TCHDA
+      access_key_id: $AWS_ACCESS_KEY_ID
       secret_access_key:
-          secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ= # https://docs.travis-ci.com/user/encryption-keys/
+          secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ=
       bucket: coveo-public-content
       local-dir: packages/vapor/deploy
       upload-dir: styleguide
@@ -60,6 +64,9 @@ deploy:
       on:
           tags: true
           repo: coveo/react-vapor
+
+after_deploy:
+    - node invalidate-cloudfront.js
 
 notifications:
     email:

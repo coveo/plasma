@@ -15,10 +15,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: INavigationOwnProps)
     };
 };
 
-const mapDispatchToProps = () => ({});
-
 export const NavigationConnected: React.ComponentClass<INavigationProps> = connect(
     mapStateToProps,
-    mapDispatchToProps,
+    undefined,
     ReduxUtils.mergeProps
 )(Navigation);

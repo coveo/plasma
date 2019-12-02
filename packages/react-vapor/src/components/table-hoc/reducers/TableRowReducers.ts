@@ -66,7 +66,7 @@ const toggleCollasibleTableRowReducer = (
                     opened: _.isBoolean(action.payload.opened) ? action.payload.opened : !current.opened,
                 };
             }
-            return row.tableId === current.tableId ? {...row, opened: false} : row;
+            return row;
         });
     }
     return state;

@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const isTravis = !!process.env.TRAVIS;
 
@@ -11,16 +12,21 @@ module.exports = {
     },
     mode: isTravis ? 'production' : 'development',
     output: {
-        path: path.join(__dirname, '/docs/assets'),
-        publicPath: 'assets/',
+        path: path.join(__dirname, '/docs/dist'),
         filename: '[name].bundle.js',
-        chunkFilename: '[name].bundle.js',
+        chunkFilename: 'assets/[name].bundle.js',
     },
     devtool: isTravis ? 'source-map' : 'cheap-module-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Vapor Design System',
+            favicon: 'docs/favicon.ico',
+            chunks: ['main'],
+            template: 'docs/index.html',
+        }),
         new webpack.DefinePlugin({
             WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
         }),
@@ -105,7 +111,7 @@ module.exports = {
                 ],
             },
             {
-                test: /\.(ttf|eot|woff|svg|png)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                test: /\.(ttf|eot|woff|svg|png|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
                 loader: 'file-loader',
             },
 

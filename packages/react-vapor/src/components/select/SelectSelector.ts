@@ -3,9 +3,9 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
-import {MatchFilter} from '../../utils/FilterUtils';
 import {DropSelectors} from '../drop/redux/DropReducers';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
+import {MatchFilter} from '../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
 import {ISelectWithFilterProps} from './hoc/SelectWithFilter';

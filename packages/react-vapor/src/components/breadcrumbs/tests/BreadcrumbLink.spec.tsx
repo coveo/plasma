@@ -1,5 +1,7 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
+import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+import * as _ from 'underscore';
 import {BreadcrumbLink, IBreadcrumbLinkProps} from '../BreadcrumbLink';
 
 describe('<BreadcrumbLink/>', () => {
@@ -8,7 +10,7 @@ describe('<BreadcrumbLink/>', () => {
         link: '#',
     };
 
-    let breadcrumbLinkComponent: ReactWrapper<IBreadcrumbLinkProps, any>;
+    let breadcrumbLinkComponent: ShallowWrapper<IBreadcrumbLinkProps>;
 
     it('should render without errors', () => {
         expect(() => {
@@ -18,16 +20,27 @@ describe('<BreadcrumbLink/>', () => {
 
     describe('<BreadcrumbLink /> with default props', () => {
         const renderBreadcrumbLink = (props: IBreadcrumbLinkProps = defaultProps) => {
-            breadcrumbLinkComponent = mount(<BreadcrumbLink {...props} />, {attachTo: document.getElementById('App')});
+            breadcrumbLinkComponent = shallowWithState(<BreadcrumbLink {...props} />, {});
         };
-
-        afterEach(() => {
-            breadcrumbLinkComponent.detach();
-        });
 
         it('should render the default name', () => {
             renderBreadcrumbLink();
-            expect(breadcrumbLinkComponent.find('.link').text()).toEqual(defaultProps.name);
+            expect(breadcrumbLinkComponent.find('.link').text()).toEqual(defaultProps.name as any);
+        });
+
+        it('should return a <a/> tag if the link is defined', () => {
+            renderBreadcrumbLink({name: 'a', link: 'zelda'});
+            expect(breadcrumbLinkComponent.find('a').length).toBe(1);
+        });
+
+        it('should return a <span/> tag if the link is not defined', () => {
+            renderBreadcrumbLink({name: 'a', link: undefined});
+            expect(breadcrumbLinkComponent.find('span').length).toBe(1);
+        });
+
+        it('should render a link undefined for the BreadcrumbLink if not defined', () => {
+            renderBreadcrumbLink();
+            expect(breadcrumbLinkComponent.find('.link').text()).toEqual(defaultProps.name as any);
         });
 
         it('should render the default link', () => {
@@ -36,9 +49,19 @@ describe('<BreadcrumbLink/>', () => {
         });
 
         it('should trigger the onClick', () => {
-            const spy = jasmine.createSpy('onClick');
+            const event = {
+                stopPropagation: _.noop,
+                preventDefault: _.noop,
+                nativeEvent: {
+                    stopImmediatePropagation: _.noop,
+                },
+            };
+            const spy = jasmine.createSpy('onClick').and.returnValue(false);
             renderBreadcrumbLink({...defaultProps, onClick: spy});
-            breadcrumbLinkComponent.props().onClick(defaultProps);
+            breadcrumbLinkComponent
+                .find('a')
+                .props()
+                .onClick(event as any);
 
             expect(spy).toHaveBeenCalledTimes(1);
         });

@@ -65,42 +65,58 @@ form {
         }
 
         @mixin section-mixin($level) {
+            $scaledSpacing: nth([6, 4, 2.5], $level) * $spacing / 2;
+            $scaledDescriptionFontSize: nth([$default-font-size, $small-font-size, $small-font-size], $level);
+            $inputFieldLabelSpacing: 0.75rem;
+
             > :not(:first-child) {
-                margin-top: ($spacing * $level) /2;
+                margin-top: $scaledSpacing;
             }
             > .labeled-input {
                 > .input-field {
-                    margin-top: (($spacing * $level) /2) + 0.75rem;
-                }
-
-                > .help-text {
-                    margin-top: 0.4rem;
+                    margin-top: $scaledSpacing + $inputFieldLabelSpacing;
                 }
 
                 > * {
-                    margin-top: ($spacing * $level) /2;
+                    margin-top: $scaledSpacing;
+                }
+            }
+            > .btn {
+                + .input-field {
+                    margin-top: $scaledSpacing + $inputFieldLabelSpacing;
                 }
             }
             > .input-field {
-                margin-top: (($spacing * $level) /2) + 0.75rem;
+                margin-top: $scaledSpacing + $inputFieldLabelSpacing;
             }
             > .description {
-                margin-top: 0;
-            }
-            > .btn {
-                margin-top: 0;
+                font-size: $scaledDescriptionFontSize;
             }
         }
 
         &.mod-padding-children {
+            > .labeled-input {
+                > .help-text {
+                    margin-top: 0.4rem;
+                }
+            }
+
+            > .description {
+                margin-top: 0;
+            }
+
+            > .btn {
+                margin-top: 0;
+            }
+
             &.level-1 {
-                @include section-mixin(6);
+                @include section-mixin(1);
             }
             &.level-2 {
-                @include section-mixin(4);
+                @include section-mixin(2);
             }
             &.level-3 {
-                @include section-mixin(2.5);
+                @include section-mixin(3);
             }
         }
     }

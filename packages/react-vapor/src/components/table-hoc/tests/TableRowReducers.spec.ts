@@ -154,7 +154,7 @@ describe('Table HOC', () => {
 
             expect(tableHeadersState.length).toBe(oldState.length);
             expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).opened).toBe(true);
-            expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(false);
+            expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(undefined);
         });
 
         it('should toggle opened the row when the action is "TableHOCRowActions.toggleCollapsible" and no opened payload is specified', () => {
@@ -176,10 +176,10 @@ describe('Table HOC', () => {
 
             expect(tableHeadersState.length).toBe(oldState.length);
             expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).opened).toBe(true);
-            expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(false);
+            expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(undefined);
         });
 
-        it('should collapse other rows of the same table row when the action is "TableHOCRowActions.toggleCollapsible"', () => {
+        it('should not collapse other rows of the same table row when the action is "TableHOCRowActions.toggleCollapsible"', () => {
             const oldState: ITableRowState[] = [
                 {
                     id: 'some-table-header-1',
@@ -199,7 +199,7 @@ describe('Table HOC', () => {
             const tableHeadersState: ITableRowState[] = TableRowReducers(oldState, action);
 
             expect(tableHeadersState.length).toBe(oldState.length);
-            expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).opened).toBe(false);
+            expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).opened).toBe(true);
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).opened).toBe(true);
         });
 
