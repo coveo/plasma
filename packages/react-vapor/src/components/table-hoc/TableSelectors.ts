@@ -33,9 +33,13 @@ const getSort = (state: IReactVaporState, props: TableSelectorsProps): ITableWit
 const getTableRow = (state: IReactVaporState, {id}: {id: string}): ITableRowState =>
     _.findWhere(state.tableHOCRow, {id});
 
+const getSelectedRows = (state: IReactVaporState, {id}: {id: string}): ITableRowState[] =>
+    _.where(state.tableHOCRow, {tableId: id, selected: true});
+
 export const TableSelectors = {
     getIsEmpty,
     getDataCount,
     getSort,
     getTableRow,
+    getSelectedRows,
 };
