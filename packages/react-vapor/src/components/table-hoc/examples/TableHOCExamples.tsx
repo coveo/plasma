@@ -6,12 +6,8 @@ import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {DateUtils} from '../../../utils/DateUtils';
-import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
-import {Button} from '../../button/Button';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
-import {Section} from '../../section/Section';
-import {TableHOCRowActions} from '../actions/TableHOCRowActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
@@ -30,15 +26,9 @@ export interface IExampleRowData {
     id: string;
 }
 
-export type TableWithActionsType = React.FunctionComponent<
-    ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
->;
+export type TableWithActionsType = React.FunctionComponent<ReturnType<typeof mapStateToProps>>;
 
-export const TableHOCExamples: ExampleComponent = () => (
-    <Section>
-        <TableWithActionsAndDataFiltering />
-    </Section>
-);
+export const TableHOCExamples: ExampleComponent = () => <TableWithActionsAndDataFiltering />;
 
 // https://github.com/marak/Faker.js/
 export const generateDataWithFacker = (length: number) =>
@@ -158,28 +148,17 @@ const mapStateToProps = () => ({
     data: twoHundredRowsOfData,
 });
 
-const mapDispatchToProps = (dispatch: IDispatch) => ({
-    unselectActions: (tableId: string) => dispatch(TableHOCRowActions.deselectAll(tableId)),
-});
-
-const TableWithActionsAndDataFilteringDisconnected: TableWithActionsType = ({unselectActions, data}) => {
+const TableWithActionsAndDataFilteringDisconnected: TableWithActionsType = ({data}) => {
     const tableId = 'TableWithActionsAndDataFiltering';
 
     return (
-        <Section>
-            <Section level={2}>
-                <Button name="Unselect actions" onClick={() => unselectActions(tableId)} enabled />
-            </Section>
-            <Section level={2}>
-                <TableWithActionsAndDataFilteringComposed
-                    id={tableId}
-                    className="table"
-                    data={data}
-                    renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, tableId)}
-                    tableHeader={renderHeader(tableId)}
-                />
-            </Section>
-        </Section>
+        <TableWithActionsAndDataFilteringComposed
+            id={tableId}
+            className="table"
+            data={data}
+            renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, tableId)}
+            tableHeader={renderHeader(tableId)}
+        />
     );
 };
 
@@ -195,7 +174,4 @@ const TableWithActionsAndDataFilteringComposed = _.compose(
     tableWithActions()
 )(TableHOC);
 
-const TableWithActionsAndDataFiltering = connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(TableWithActionsAndDataFilteringDisconnected);
+const TableWithActionsAndDataFiltering = connect(mapStateToProps)(TableWithActionsAndDataFilteringDisconnected);
