@@ -10,7 +10,7 @@ addons:
 
 env:
     global:
-        - AWS_ACCESS_KEY_ID=AKIAJ72WQIJQMW6TCHDA
+        - AWS_ACCESS_KEY_ID=AKIAYKDJLZITTS3QHYP2
 
 before_install:
     - eval "$(ssh-agent -s)" #start the ssh agent
@@ -46,8 +46,8 @@ deploy:
       skip_cleanup: true
       access_key_id: $AWS_ACCESS_KEY_ID
       secret_access_key:
-          secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ=
-      bucket: coveo-public-content
+          secure: 'FCCwGIggMIPz/dk3nDyICAua5KCxHQ9t1gc0jvw5P6zVS/l2GYzwNUbLNz1lBfikvcDS/2NlGpl5Znd/4lBQuiGUEniIgLlbpEHmHyHCV/GPYLYAgWNweCdwUF5bHRygj32I6zIyOAp1EX5jlh39Xcci9hkaGLMWhd3i4XsPxQYYCAhvuL7hw5IljpUiQPOuwJxIU7yHc87JtJkQ/h98qRIXwvwDoNIKPMeRdI1pHTJFUXPn8+4nxavqngXWqOtzdv3+NgTBQiPl+t0k0u2+pUU7C+zXSN2oSZ+qTOb67oEJzTJ733p7VUhFBfEWBko36PpMV+4xm1VXlMzs621E+8GiSFcy07GQhFcZ3YTSl+/u5JgXQJmIuj7dcS+DUsZ28dCTh/w+BEThchpFkwvrkn2hHYUmmB/XEHRWNJ/7lc31dz//gXlspq2GTQqmnuxORfobLd2Oi+bqnDYB4BV4QTxitrZu9ou3UKg/zGevpGgKmAzhwLAQSDvkCWfJs4z/k7gg9F85/ah1Aivjmo5RypSU7KMtqkfDRv/xiL9W8RnuEELK5VQJ1oJmaMAtfcHtV8hSCQiqoV0ECXuA3DU3FcaKThPV/49LxXkx+g2M3CA1AzPW5tUjmcr9cKAcZY+YcWhKLs2aIiuBQkyATw/Uo9VHI0cBqItaWYa6Uh7DMu0='
+      bucket: coveo-prd-jsadmin
       local-dir: packages/react-vapor/docs/dist
       upload-dir: react-vapor
       acl: public_read
@@ -56,8 +56,8 @@ deploy:
       skip_cleanup: true
       access_key_id: $AWS_ACCESS_KEY_ID
       secret_access_key:
-          secure: cr5PKJaLjVdIEqtwuUXgE4a0IuE9lxQRGoAkVQix9xl3hxQpXOEROUG9FUun4hERHVFGHfpwXAvjlZ2E2n4FyLk32ELwo0l27HaY0TvKd05JGx1u9JEX1YNZjyAxVLOJD7+5tlTA1I5wh5VjXIWr4STYul9sHq72gA1bIPD6xflIQDtNinod8Iic6ApZVtOG5fxOyXd7F//f1iDLTlZAfBbmeYWm0eWIywfH3XGk95i0ZuAjZheX7HM0FMgfxm0SDFCEM4IX2Inv6ML9eLLqSSSzo86QYEx0Y4aFEWBNKkiX7eMJZ30KH2S+4IvCeawJOvaN0utohaUiiPWEURo7JAfQZyoOlerIrbNv08xMveEjFg5CyRcfAtsGDsu6Z68bTQs7SRFivHxeQ1O84D0lbYQe77pK+c01h04USbfJwDz2hI0oIpqnfpOvcpcI1NH/Qvgrv6a8pe0nR4k7JH9BQ3fZtrRGeF8b4gyhVtDsb10m99VcKh7egMdoBaPFwpxY82hDso6lHfQzrec2YqcdMmtOAuEpKLqrFDiXhwm3QtFtbEPiPR8gQATv0FPWoXgDzjVTDv/ag6nxL7lQpVfHWRJURtuq9205CWkGqOHxDcUvG4zY/dGdil2FIwWpOpfp35N8bdfLaYKoyCugjgXycYF4rE5d/xXTvaiRKuBuwIQ=
-      bucket: coveo-public-content
+          secure: 'FCCwGIggMIPz/dk3nDyICAua5KCxHQ9t1gc0jvw5P6zVS/l2GYzwNUbLNz1lBfikvcDS/2NlGpl5Znd/4lBQuiGUEniIgLlbpEHmHyHCV/GPYLYAgWNweCdwUF5bHRygj32I6zIyOAp1EX5jlh39Xcci9hkaGLMWhd3i4XsPxQYYCAhvuL7hw5IljpUiQPOuwJxIU7yHc87JtJkQ/h98qRIXwvwDoNIKPMeRdI1pHTJFUXPn8+4nxavqngXWqOtzdv3+NgTBQiPl+t0k0u2+pUU7C+zXSN2oSZ+qTOb67oEJzTJ733p7VUhFBfEWBko36PpMV+4xm1VXlMzs621E+8GiSFcy07GQhFcZ3YTSl+/u5JgXQJmIuj7dcS+DUsZ28dCTh/w+BEThchpFkwvrkn2hHYUmmB/XEHRWNJ/7lc31dz//gXlspq2GTQqmnuxORfobLd2Oi+bqnDYB4BV4QTxitrZu9ou3UKg/zGevpGgKmAzhwLAQSDvkCWfJs4z/k7gg9F85/ah1Aivjmo5RypSU7KMtqkfDRv/xiL9W8RnuEELK5VQJ1oJmaMAtfcHtV8hSCQiqoV0ECXuA3DU3FcaKThPV/49LxXkx+g2M3CA1AzPW5tUjmcr9cKAcZY+YcWhKLs2aIiuBQkyATw/Uo9VHI0cBqItaWYa6Uh7DMu0='
+      bucket: coveo-prd-jsadmin
       local-dir: packages/vapor/deploy
       upload-dir: styleguide
       acl: public_read
