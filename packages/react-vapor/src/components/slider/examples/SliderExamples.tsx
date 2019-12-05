@@ -73,11 +73,30 @@ export class SliderExamples extends React.Component<any, any> {
                         </div>
                     </div>
                 </div> */}
-                <Section title="Middle Slider">
-                    <MiddleSlider range={10000} id="rangeSliderId" />
+                <Section title="MiddleSlider with asymetric range and initial value">
+                    <MiddleSlider
+                        range={[-2000, 10000]}
+                        id="asymetricRangeId"
+                        initialValue={2000}
+                        marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
+                    />
+                </Section>
+                <Section title="MiddleSlider with marks and steps">
+                    <MiddleSlider
+                        range={[-10000, 10000]}
+                        id="rangeSliderId"
+                        marks={{
+                            0: '-100%',
+                            25: '-50%',
+                            50: '0',
+                            75: '50%',
+                            100: '100%',
+                        }}
+                        step={25}
+                    />
                 </Section>
                 <Section title="with tooltip not working">
-                    <MiddleSlider range={500} id="another-id" hasTooltip />
+                    <MiddleSlider range={[-500, 500]} id="another-id" hasTooltip />
                 </Section>
             </div>
         );
