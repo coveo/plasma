@@ -63,6 +63,17 @@ describe('Table HOC', () => {
             expect(wrapper.find('tr').hasClass('row-disabled')).toBe(true);
         });
 
+        it('should have the class "no-hover" if the row has actions prop empty', () => {
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+            expect(wrapper.find('tr').hasClass('no-hover')).toBe(true);
+        });
+
+        it('should not have the class "no-hover" if the row has actions prop', () => {
+            const actions = [{name: 'name', enabled: true}];
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" actions={actions} />, store).dive();
+            expect(wrapper.find('tr').hasClass('no-hover')).not.toBe(true);
+        });
+
         it('should not have the class selected if the row is not selected in the state', () => {
             store = getStoreMock({
                 tableHOCRow: [
