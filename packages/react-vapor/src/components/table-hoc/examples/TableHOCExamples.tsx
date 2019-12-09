@@ -158,7 +158,7 @@ const TableWithActionsAndDataFilteringDisconnected: TableWithActionsType = ({dat
             data={data}
             renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, tableId)}
             tableHeader={renderHeader(tableId)}
-            hasBorderTop
+            showBorderTop
         />
     );
 };
