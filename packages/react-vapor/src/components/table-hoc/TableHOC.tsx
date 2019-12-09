@@ -19,7 +19,7 @@ export interface ITableHOCOwnProps {
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
     containerClassName?: string;
-    hasBorderTop?: boolean;
+    showBorderTop?: boolean;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
@@ -29,6 +29,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         isLoading: false,
         hasActionButtons: false,
         actions: [],
+        showBorderTop: false,
     };
 
     render() {
@@ -59,7 +60,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                         'mod-cancel-header-padding',
                         'mod-align-header',
                         {
-                            'mod-border-top': this.props.hasBorderTop,
+                            'mod-border-top': this.props.showBorderTop,
                         }
                     ).split(' ')}
                 >

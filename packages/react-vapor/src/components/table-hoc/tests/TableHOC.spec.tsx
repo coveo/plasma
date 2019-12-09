@@ -76,7 +76,7 @@ describe('TableHOC', () => {
         });
 
         it('should render an ActionBarConnected with a top border if the "hasBorderTop" is set to true', () => {
-            const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons hasBorderTop />);
+            const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons showBorderTop />);
             expect(wrapper.find(ActionBarConnected).prop('extraContainerClasses')).toContain('mod-border-top');
         });
 
