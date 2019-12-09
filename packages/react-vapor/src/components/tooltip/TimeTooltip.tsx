@@ -10,8 +10,6 @@ interface TimeTooltipsProps {
 
 export const TimeTooltip: React.FunctionComponent<TimeTooltipsProps> = (props) => {
     let isoDate;
-    props.formating
-        ? (isoDate = moment(props.time).format(props.formating))
-        : (isoDate = moment(props.time).toISOString());
+    isoDate = moment(props.time).format(props.formating);
     return <Tooltip title={isoDate}>{props.children}</Tooltip>;
 };

@@ -61,6 +61,16 @@ export class TooltipExamples extends React.Component<{}, {}> {
                         </TimeTooltip>
                     </div>
                 </div>
+                <div className="form-group">
+                    <label className="form-control-label">Time Tooltip with custom formating example</label>
+                    <div className="form-control">
+                        <TimeTooltip time={currentDate.valueOf()} formating="ddd, hA">
+                            <button type="button" className="btn">
+                                {currentDate.calendar()}
+                            </button>
+                        </TimeTooltip>
+                    </div>
+                </div>
             </div>
         );
     }
