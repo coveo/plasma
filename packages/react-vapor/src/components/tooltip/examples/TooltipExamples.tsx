@@ -1,6 +1,9 @@
+import * as moment from 'moment';
 import * as React from 'react';
+import {TimeTooltip} from '../TimeTooltip';
 import {Tooltip} from '../Tooltip';
 
+const currentDate = moment();
 export class TooltipExamples extends React.Component<{}, {}> {
     static description =
         'Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks.';
@@ -46,6 +49,16 @@ export class TooltipExamples extends React.Component<{}, {}> {
                                 Hover me!
                             </button>
                         </Tooltip>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Time Tooltip example</label>
+                    <div className="form-control">
+                        <TimeTooltip time={currentDate.valueOf()}>
+                            <button type="button" className="btn">
+                                {currentDate.calendar()}
+                            </button>
+                        </TimeTooltip>
                     </div>
                 </div>
             </div>
