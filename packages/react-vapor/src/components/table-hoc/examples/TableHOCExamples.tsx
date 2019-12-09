@@ -158,6 +158,7 @@ const TableWithActionsAndDataFilteringDisconnected: TableWithActionsType = ({dat
             data={data}
             renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, tableId)}
             tableHeader={renderHeader(tableId)}
+            hasBorderTop
         />
     );
 };
@@ -172,6 +173,6 @@ const TableWithActionsAndDataFilteringComposed = _.compose(
     tableWithDatePicker(...(tableDatePickerConfig as any)),
     tableWithPagination({perPageNumbers: [3, 5, 10]}),
     tableWithActions()
-)(TableHOC);
+)(TableHOC) as typeof TableHOC;
 
 const TableWithActionsAndDataFiltering = connect(mapStateToProps)(TableWithActionsAndDataFilteringDisconnected);
