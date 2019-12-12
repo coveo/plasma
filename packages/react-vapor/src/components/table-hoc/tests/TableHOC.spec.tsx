@@ -75,6 +75,11 @@ describe('TableHOC', () => {
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
 
+        it('should render an ActionBarConnected with a top border if the "hasBorderTop" is set to true', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons showBorderTop />);
+            expect(wrapper.find(ActionBarConnected).prop('extraContainerClasses')).toContain('mod-border-top');
+        });
+
         it('should render an ActionBarConnected if the table prop hasActionButtons is false but the table have some actions', () => {
             const wrapper = shallow(
                 <TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />

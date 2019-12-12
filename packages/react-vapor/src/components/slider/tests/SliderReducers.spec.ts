@@ -18,14 +18,14 @@ describe('SliderReducers', () => {
         originalState = undefined;
         sliderState = SliderReducer(originalState, wrongSliderAction);
 
-        expect(sliderState).toEqual(undefined);
+        expect(sliderState).toEqual(null);
     });
 
     it('should return the default state if the action is not defined and the state is undefined for one slider', () => {
         originalState = undefined;
         sliderState = SliderReducer(originalState, undefined);
 
-        expect(sliderState).toEqual(undefined);
+        expect(sliderState).toEqual(null);
     });
 
     it('should not modify the state if no good action type is passed', () => {

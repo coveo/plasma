@@ -159,6 +159,7 @@ class TableRowConnected extends React.PureComponent<
                         opened: this.props.opened,
                         'heading-row': rowIsCollapsible,
                         'row-disabled': this.props.disabled,
+                        'no-hover': _.isEmpty(this.props.actions),
                     })}
                     onClick={this.handleClick}
                     onDoubleClick={this.handleDoubleClick}

@@ -10,7 +10,7 @@ export interface ISliderState {
     value: number;
 }
 
-export const SliderReducer = (state: ISlidersState, action: IReduxAction<ISetSliderValuePayload>) => {
+export const SliderReducer = (state: ISlidersState = null, action: IReduxAction<ISetSliderValuePayload>) => {
     if (action?.type === SliderActionTypes.setValue) {
         return {
             ...state,
