@@ -7,12 +7,11 @@ export const SliderActionTypes = {
 export interface ISetSliderValuePayload {
     id: string;
     value: number;
-    disabled: boolean;
 }
 
-const setValue = (id: string, value: number, disabled: boolean = false): IReduxAction<ISetSliderValuePayload> => ({
+const setValue = (id: string, value: number): IReduxAction<ISetSliderValuePayload> => ({
     type: SliderActionTypes.setValue,
-    payload: {id, value, disabled},
+    payload: {id, value},
 });
 
 export const SliderActions = {

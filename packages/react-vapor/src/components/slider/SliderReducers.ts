@@ -6,13 +6,19 @@ export interface ISlidersState {
 }
 
 export interface ISliderState {
+    id: string;
     value: number;
-    disabled: boolean;
 }
 
-export const SliderReducer = (state: ISlidersState = {}, action: IReduxAction<ISetSliderValuePayload>) => {
+export const SliderReducer = (state: ISlidersState, action: IReduxAction<ISetSliderValuePayload>) => {
     if (action?.type === SliderActionTypes.setValue) {
-        return {...state, [action.payload.id]: {value: action.payload.value, disabled: action.payload.disabled}};
+        return {
+            ...state,
+            [action.payload.id]: {
+                id: action.payload.id,
+                value: action.payload.value,
+            },
+        };
     }
     return state;
 };
