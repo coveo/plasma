@@ -140,9 +140,9 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 (this.props.buttonRef.current && this.props.buttonRef.current.getBoundingClientRect()) ||
                 this.state.offset;
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
-            const relativeParent =
-                this.props.buttonRef?.current.closest(this.props.parentSelector) ??
-                this.props.buttonRef?.current.parentElement;
+            const relativeParent = this.props.parentSelector
+                ? this.props.buttonRef.current.closest(this.props.parentSelector)
+                : this.props.buttonRef.current.offsetParent;
             const parentOffset = relativeParent.getBoundingClientRect();
 
             const boundingLimit: IBoundingLimit = {
@@ -209,7 +209,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
 
                 // Don't show if no space to render the drop target inside the window
-                if (dropOffset.height > window.innerHeight || dropOffset.width > window.innerWidth) {
+                if (dropOffset.height > window.innerHeight) {
                     return {};
                 }
 
