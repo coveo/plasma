@@ -130,10 +130,9 @@ export class SingleSelectConnected extends React.PureComponent<
         );
     }
 
-    private handleDeselect = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+    private handleDeselect = () => {
         if (!this.props.disabled) {
             this.props.deselect();
-            e.stopPropagation();
         }
     };
 }
