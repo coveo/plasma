@@ -11,6 +11,7 @@ import {actionableItemContainer, actionableItemContent, actionableItemDots} from
 
 export interface IActionableItemProps {
     id: string;
+    dataId?: string;
     onItemClick?: (e?: React.MouseEvent<HTMLDivElement>) => any;
     actions?: IItemBoxProps[];
     containerClassName?: string;
@@ -42,6 +43,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         positions={[DropPodPosition.bottom, DropPodPosition.top]}
                         buttonContainerProps={{className: 'inline-block'}}
                         parentSelector={'body'}
+                        listContainerProps={{id: this.props.dataId}}
                         renderOpenButton={(onClick: () => void) => (
                             <div
                                 onClick={onClick}
