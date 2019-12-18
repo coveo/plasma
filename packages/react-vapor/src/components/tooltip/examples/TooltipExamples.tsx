@@ -55,7 +55,7 @@ export class TooltipExamples extends React.Component<{}, {}> {
                     <div className="form-control">
                         <button type="button" className="btn">
                             <DateTooltip
-                                date={moment()}
+                                date={moment('2019-12-16')}
                                 format={(currentDate: moment.Moment) => currentDate.calendar()}
                             />
                         </button>

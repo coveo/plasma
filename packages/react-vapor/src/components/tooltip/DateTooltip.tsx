@@ -3,28 +3,22 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {Tooltip} from './Tooltip';
 
+export type DateTooltips = moment.Moment | string;
+
 export interface DateTooltipsProps {
-    date: moment.Moment | string;
+    date: DateTooltips;
     format?: ((date: moment.Moment) => string) | string;
     tooltipFormat?: string;
 }
 
-export const DateTooltip: React.FunctionComponent<DateTooltipsProps> = (props) => {
-    let content: moment.Moment | string;
-    const title = props.tooltipFormat ? moment(props.date).format(props.tooltipFormat) : moment(props.date).format();
-    if (_.isString(props.date)) {
-        content = props.date;
-        if (_.isString(props.format)) {
-            content = moment(props.date).format(props.format);
-        }
-    } else if (moment.isMoment(props.date)) {
-        if (_.isFunction(props.format)) {
-            content = props.format(props.date);
-        } else if (_.isString(props.format)) {
-            content = props.date.format(props.format);
-        } else {
-            content = props.date.format();
-        }
+export const DateTooltip: React.FunctionComponent<DateTooltipsProps> = ({date, format, tooltipFormat}) => {
+    let content: string;
+    const title = tooltipFormat ? moment(date).format(tooltipFormat) : moment(date).format('LLL');
+    const momentDate = _.isString(date) ? moment(date) : date;
+    if (format) {
+        content = _.isFunction(format) ? format(momentDate) : momentDate.format(format);
+    } else {
+        content = momentDate.format();
     }
     return <Tooltip title={title}>{content}</Tooltip>;
 };
