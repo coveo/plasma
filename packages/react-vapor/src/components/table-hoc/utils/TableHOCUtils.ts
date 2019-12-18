@@ -1,10 +1,17 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
-import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
-import {IFilterState} from '../filterBox/FilterBoxReducers';
-import {IListBoxState} from '../listBox/ListBoxReducers';
-import {ITableWithSortState} from './reducers/TableWithSortReducers';
+import {IReactVaporState} from '../../../ReactVapor';
+import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors';
+import {IFilterState} from '../../filterBox/FilterBoxReducers';
+import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
+import {IListBoxState} from '../../listBox/ListBoxReducers';
+import {PER_PAGE_NUMBERS} from '../../navigation/perPage/NavigationPerPage';
+import {PaginationUtils} from '../../pagination/PaginationUtils';
+import {ITableWithSortState} from '../reducers/TableWithSortReducers';
+
+export interface ITableLoading {
+    isLoading?: boolean;
+}
 
 export interface ITableHOCPredicateValue {
     id: string;
@@ -28,8 +35,15 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
         state.tableHOCHeader,
         (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc)
     );
-    const paginationState = _.findWhere(state.paginationComposite, {id: getPaginationId(id)});
-    const perPageState = _.findWhere(state.perPageComposite, {id});
+
+    const perPage =
+        parseInt(
+            FlatSelectSelectors.getSelectedOptionId(state, {
+                id: PaginationUtils.getPaginationPerPageId(id),
+            }),
+            10
+        ) || PER_PAGE_NUMBERS[1];
+
     const filter: IFilterState = _.findWhere(state.filters, {id});
     const predicates = getTablePredicates(id, state);
 
@@ -42,8 +56,8 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
         sortAscending: (tableSort && tableSort.isAsc) || null,
 
         // pagination
-        perPage: perPageState && perPageState.perPage,
-        pageNb: paginationState && paginationState.pageNb,
+        perPage,
+        pageNb: _.findWhere(state.paginationComposite, {id: getPaginationId(id)})?.pageNb,
 
         // filter
         filter: filter && filter.filterText,

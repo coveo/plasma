@@ -16,13 +16,13 @@ import {changePage} from '../../navigation/pagination/NavigationPaginationAction
 import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
 import {TableHeaderActions} from '../actions/TableHeaderActions';
 import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
-import {TableHOCUtils} from '../TableHOCUtils';
 import {tableWithDatePicker} from '../TableWithDatePicker';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
 import {tableWithUrlState} from '../TableWithUrlState';
+import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('Table HOC', () => {
     describe('tableWithUrlState', () => {
