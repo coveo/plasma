@@ -9,10 +9,6 @@ import {PER_PAGE_NUMBERS} from '../../navigation/perPage/NavigationPerPage';
 import {PaginationUtils} from '../../pagination/PaginationUtils';
 import {ITableWithSortState} from '../reducers/TableWithSortReducers';
 
-export interface ITableLoading {
-    isLoading?: boolean;
-}
-
 export interface ITableHOCPredicateValue {
     id: string;
     value: string;
