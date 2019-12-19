@@ -3,6 +3,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+import {IComponentBehaviour} from '../../../docs/src/components/ComponentsInterface';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
@@ -16,7 +17,7 @@ import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from
 import {SelectSelector} from './SelectSelector';
 import * as styles from './styles/SingleSelect.scss';
 
-export interface ISingleSelectOwnProps extends ISelectProps {
+export interface ISingleSelectOwnProps extends ISelectProps, IComponentBehaviour {
     placeholder?: string;
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
@@ -69,7 +70,11 @@ export class SingleSelectConnected extends React.PureComponent<
 
     render() {
         return (
-            <SelectConnected {..._.pick(this.props, selectPropsKeys)} button={this.getButton}>
+            <SelectConnected
+                {..._.pick(this.props, selectPropsKeys)}
+                button={this.getButton}
+                isLoading={this.props.isLoading}
+            >
                 {this.props.children}
             </SelectConnected>
         );

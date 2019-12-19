@@ -4,6 +4,7 @@ import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {keys} from 'ts-transformer-keys';
+import {IComponentBehaviour} from '../../../docs/src/components/ComponentsInterface';
 import {Defaults} from '../../Defaults';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
@@ -19,12 +20,13 @@ import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxAct
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
+import * as styles from './styles/SingleSelect.scss';
 
 export interface ISelectSpecificProps {
     button: React.ReactNode;
 }
 
-export interface ISelectOwnProps extends IListBoxOwnProps {
+export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
     id: string;
     placeholder?: string;
     selectClasses?: string;
@@ -101,6 +103,17 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     render() {
+        if (this.props.isLoading && !this.props.selectedValues) {
+            return (
+                <div
+                    className={classNames(
+                        'btn dropdown-toggle mod-rounded-border-2 bg-pure-white cursor-auto mod-no-border',
+                        styles.singleSelectFixedWidth
+                    )}
+                />
+            );
+        }
+
         const pickerClasses = classNames('select-dropdown dropdown', this.props.selectClasses, {
             open: this.props.isOpened,
             'mod-multi': this.props.multi,
