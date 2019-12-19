@@ -143,6 +143,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             const relativeParent =
                 this.props.buttonRef?.current.closest(this.props.parentSelector) ??
                 this.props.buttonRef?.current.parentElement;
+
             const parentOffset = relativeParent.getBoundingClientRect();
 
             const boundingLimit: IBoundingLimit = {
@@ -200,7 +201,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
             }
 
-            // Restrict the max-width to the inner width of the closest relatively positionned ancestor
+            // Restrict the max-width to the inner width of the closest relatively positioned ancestor
             if (relativeParent) {
                 const {paddingLeft, paddingRight} = getComputedStyle(relativeParent) ?? {};
                 newDomPosition.style = {
@@ -209,7 +210,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
 
                 // Don't show if no space to render the drop target inside the window
-                if (dropOffset.height > window.innerHeight || dropOffset.width > window.innerWidth) {
+                if (dropOffset.height > window.innerHeight) {
                     return {};
                 }
 

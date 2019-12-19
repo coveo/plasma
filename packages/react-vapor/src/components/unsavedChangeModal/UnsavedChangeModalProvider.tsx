@@ -31,7 +31,10 @@ export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChange
     const promptBefore = (callbackOnDiscard: () => any): boolean => {
         if (isDirty) {
             setIsOpen(true);
-            setConfirm(() => () => callbackOnDiscard());
+            setConfirm(() => () => {
+                callbackOnDiscard();
+                close();
+            });
             return false;
         }
         return true;
@@ -52,12 +55,12 @@ export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChange
                 modalBodyChildren={<div>{unsavedChangesDescription}</div>}
                 modalFooterChildren={
                     <>
-                        <Button name={confirmButtonText} onClick={() => confirm() && close()} primary />
-                        <Button name="Cancel" onClick={() => close()} />
+                        <Button small name={confirmButtonText} onClick={confirm} primary />
+                        <Button small autoFocus name="Cancel" onClick={close} />
                     </>
                 }
                 isOpen={isOpen}
-                onClose={() => close()}
+                onClose={close}
             />
         </>
     );
