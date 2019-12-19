@@ -5,7 +5,8 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
-import {BlankSlate, IBlankSlateProps} from '../blankSlate/BlankSlate';
+import {IBlankSlateProps} from '../blankSlate/BlankSlate';
+import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 
@@ -27,7 +28,6 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateProps> =
         const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,
-            data: isEmpty ? null : ownProps.data,
         };
     };
 
@@ -36,13 +36,13 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateProps> =
         render() {
             const newProps = {
                 ..._.omit(this.props, [...TableWithBlankSlatePropsToOmit]),
-                renderBody: this.props.isEmpty ? (): any => null : this.props.renderBody,
             };
-            return (
-                <Component {...newProps}>
-                    {this.props.isEmpty ? <BlankSlate {...HocUtils.supplyConfig(supplier)} /> : this.props.children}
-                </Component>
-            );
+
+            if (_.isNull(this.props.data)) {
+                newProps.renderBody = () => <BlankSlateWithTable {...HocUtils.supplyConfig(supplier)} />;
+            }
+
+            return <Component {...newProps}>{this.props.children}</Component>;
         }
     }
 

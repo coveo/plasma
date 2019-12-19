@@ -10,6 +10,7 @@ import {ITableWithSortState} from './reducers/TableWithSortReducers';
 export interface ITableHeaderWithSortOwnProps {
     id: string;
     tableId: string;
+    isLoading?: boolean;
     isDefault?: boolean;
 }
 
@@ -62,6 +63,14 @@ export class TableHeaderWithSort extends React.Component<
             'admin-sort-ascending': this.props.sorted === true,
             'admin-sort-descending': this.props.sorted === false,
         });
+
+        if (this.props.isLoading) {
+            return (
+                <th id={this.props.id}>
+                    <div className="text-content-placeholder mod-small" />
+                </th>
+            );
+        }
 
         return (
             <th id={this.props.id} className={headerCellClasses} onClick={() => this.props.onSort()}>

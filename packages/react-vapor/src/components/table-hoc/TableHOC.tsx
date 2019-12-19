@@ -1,8 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ActionBarConnected} from '../actions/ActionBar';
+import {TableBodyLoading} from '../loading/components/TableLoading';
+import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead
@@ -19,6 +22,7 @@ export interface ITableHOCOwnProps {
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
     containerClassName?: string;
+    numberOfColumn?: number;
     showBorderTop?: boolean;
 }
 
@@ -33,17 +37,24 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
     };
 
     render() {
-        return (
-            <div
-                className={classNames('table-container', this.props.containerClassName, {
-                    'loading-component': this.props.isLoading,
-                })}
-            >
-                {this.renderActions()}
-                <table className={classNames(this.props.className)}>
-                    {this.props.tableHeader}
+        const table = (
+            <table className={classNames(this.props.className)}>
+                {this.props.tableHeader}
+                {this.props.isLoading ? (
+                    <TableBodyLoading
+                        numberOfRow={_.size(this.props.data) || PER_PAGE_NUMBERS[0]}
+                        numberOfColumn={this.props.numberOfColumn}
+                    />
+                ) : (
                     <tbody>{this.props.renderBody(this.props.data || [])}</tbody>
-                </table>
+                )}
+            </table>
+        );
+
+        return (
+            <div className={classNames('table-container', this.props.containerClassName)}>
+                {this.renderActions()}
+                {table}
                 {this.props.children}
             </div>
         );

@@ -7,10 +7,12 @@ import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/
 import {IReactVaporState} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
+import {UrlUtils} from '../../utils/UrlUtils';
 import {IDatePickerDropdownChildrenProps, IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
 import {DatePickerDropdownConnected} from '../datePicker/DatePickerDropdownConnected';
 import {DatePickerSelectors} from '../datePicker/DatePickerSelectors';
 import {ITableHOCOwnProps} from './TableHOC';
+import {Params} from './TableWithUrlState';
 
 export interface ITableWithDatePickerConfig
     extends WithServerSideProcessingProps,
@@ -55,9 +57,13 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
             lowerLimit
                 ? _.filter(ownProps.data, (datum: any) => matchDates(datum, lowerLimit, upperLimit))
                 : ownProps.data;
+
+        const urlParams = UrlUtils.getSearchParams();
+        const lowerDateLimitFromUrl = urlParams[Params.lowerDateLimit] && new Date(urlParams[Params.lowerDateLimit]);
+        const upperDateLimitFromUrl = urlParams[Params.upperDateLimit] && new Date(urlParams[Params.upperDateLimit]);
         return {
-            lowerLimit,
-            upperLimit,
+            lowerLimit: lowerLimit || lowerDateLimitFromUrl || config.initialDateRange?.[0],
+            upperLimit: upperLimit || upperDateLimitFromUrl || config.initialDateRange?.[1],
             data: config.isServer || ownProps.isServer ? ownProps.data : ownProps.data && filterData(),
         };
     };
@@ -69,7 +75,10 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
         };
 
         componentDidUpdate(prevProps: ITableWithDatePickerProps) {
-            if (prevProps.lowerLimit !== this.props.lowerLimit || prevProps.upperLimit !== this.props.upperLimit) {
+            if (
+                prevProps.lowerLimit.valueOf() !== this.props.lowerLimit.valueOf() ||
+                prevProps.upperLimit.valueOf() !== this.props.upperLimit.valueOf()
+            ) {
                 this.props.onUpdate?.();
             }
         }
@@ -78,10 +87,12 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
             const datePickerAction = (
                 <DatePickerDropdownConnected
                     {...(config as any)}
+                    initialDateRange={[this.props.lowerLimit, this.props.upperLimit]}
                     id={this.props.id}
                     key={this.props.id}
                     className={classNames('coveo-table-actions', config.className)}
                     onRight
+                    isLoading={this.props.isLoading}
                 />
             );
             const newActions = [...this.props.actions, datePickerAction];
