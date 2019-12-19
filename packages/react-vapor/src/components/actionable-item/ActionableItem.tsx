@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop} from '../drop/Drop';
+import {Drop, IDropOwnProps} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
@@ -11,10 +11,10 @@ import {actionableItemContainer, actionableItemContent, actionableItemDots} from
 
 export interface IActionableItemProps {
     id: string;
-    listContainerProps?: string;
     onItemClick?: (e?: React.MouseEvent<HTMLDivElement>) => any;
     actions?: IItemBoxProps[];
     containerClassName?: string;
+    dropProps?: Partial<IDropOwnProps>;
 }
 
 export class ActionableItem extends React.Component<IActionableItemProps & React.HTMLAttributes<HTMLDivElement>> {
@@ -43,7 +43,6 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         positions={[DropPodPosition.bottom, DropPodPosition.top]}
                         buttonContainerProps={{className: 'inline-block'}}
                         parentSelector={'body'}
-                        listContainerProps={{id: this.props.listContainerProps}}
                         renderOpenButton={(onClick: () => void) => (
                             <div
                                 onClick={onClick}
@@ -56,6 +55,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                                 <Svg svgName="more-append" svgClass="icon mod-12 fill-medium-blue" />
                             </div>
                         )}
+                        {...(this.props.dropProps || {})}
                     >
                         <ListBox items={this.props.actions} />
                     </Drop>
