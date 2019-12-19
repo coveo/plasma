@@ -1,6 +1,8 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 
 export interface INavigationPaginationSelectProps extends React.ClassAttributes<NavigationPaginationSelect> {
+    disabled?: boolean;
     selected: boolean;
     pageNb: number;
     onPageClick: (pageNb: number) => void;
@@ -8,7 +10,10 @@ export interface INavigationPaginationSelectProps extends React.ClassAttributes<
 
 export class NavigationPaginationSelect extends React.Component<INavigationPaginationSelectProps, any> {
     render() {
-        const linkClasses: string = 'flat-select-option' + (this.props.selected ? '' : ' selectable');
+        const linkClasses: string = classNames('flat-select-option', {
+            selectable: !this.props.selected,
+            disabled: this.props.disabled,
+        });
 
         return (
             <a

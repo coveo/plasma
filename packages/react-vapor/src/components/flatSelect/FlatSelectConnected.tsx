@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {

@@ -6,6 +6,11 @@ export interface IComponent {
     component: ExampleComponent;
 }
 
+export interface IComponentBehaviour {
+    isLoading?: boolean;
+    disabled?: boolean;
+}
+
 export type ExampleComponent = React.ComponentType & {
     description?: string;
     firstTabLabel?: string;

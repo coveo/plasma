@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../../../utils/ReduxUtils';
 import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {selectListBoxOption} from '../../../listBox/ListBoxActions';
-import {TableHOCUtils} from '../../../table-hoc/TableHOCUtils';
+import {TableHOCUtils} from '../../../table-hoc/utils/TableHOCUtils';
 import {modifyState} from '../../../tables/TableActions';
 import {
     IChangePaginationActionPayload,
