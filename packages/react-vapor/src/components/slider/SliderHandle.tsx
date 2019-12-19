@@ -23,7 +23,7 @@ const SliderHandle: React.FunctionComponent<{handleProps: HandleProps; handleCus
 }) => (
     <Tooltip
         prefixCls="rc-slider-tooltip"
-        overlay={handleCustomProps.customTooltip ? handleCustomProps.customTooltip : handleCustomProps.rangeOutput}
+        overlay={handleCustomProps.customTooltip ?? handleCustomProps.rangeOutput}
         visible={handleCustomProps.hasTooltip ? handleProps.dragging : false}
         placement="top"
     >

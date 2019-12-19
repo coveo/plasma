@@ -9,6 +9,5 @@ const getSlider = (state: IReactVaporState, props: {id: string}): ISliderState =
 const getSliderValue = createSelector(getSlider, (slider: ISliderState): number => slider?.value);
 
 export const SliderSelectors = {
-    getSlider,
     getSliderValue,
 };

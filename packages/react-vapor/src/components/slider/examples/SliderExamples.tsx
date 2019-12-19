@@ -7,7 +7,10 @@ import {Slider} from '../Slider';
 export const SliderExample: ExampleComponent = () => (
     <Section title="Slider Examples">
         <SimpleSliderExample />
-        <MiddleSliderExample />
+        <Section level={2} title="Middle Slider">
+            <MiddleSliderExample />
+            <MiddleSliderAsymetric />
+        </Section>
     </Section>
 );
 
@@ -32,38 +35,45 @@ const SimpleSliderExample: React.FunctionComponent = () => (
 );
 
 const MiddleSliderExample: React.FunctionComponent = () => {
+    return (
+        <Section level={3} key="two" title="MiddleSlider with asymetric range and initial value">
+            <MiddleSlider
+                key="patate"
+                min={-2000}
+                max={10000}
+                id="asymetricRangeId"
+                initialValue={2000}
+                marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
+                hasTooltip
+            />
+        </Section>
+    );
+};
+
+const MiddleSliderAsymetric: React.FunctionComponent = () => {
     const [value, setValue] = React.useState(null);
 
     return (
-        <Section level={2} title="Middle Slider">
-            <Section level={3} title="MiddleSlider with asymetric range and initial value">
-                <MiddleSlider
-                    range={[-2000, 10000]}
-                    id="asymetricRangeId"
-                    initialValue={2000}
-                    marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
-                    hasTooltip
-                />
-            </Section>
-            <Section level={3} title={`MiddleSlider with marks and steps. Its current value is ${value}`}>
-                <MiddleSlider
-                    range={[-10000, 10000]}
-                    id="rangeSliderId"
-                    marks={{
-                        0: '-100%',
-                        25: '-50%',
-                        50: '0',
-                        75: '50%',
-                        100: '100%',
-                    }}
-                    step={25}
-                    onChange={(currentValue) => {
-                        setValue(currentValue);
-                    }}
-                    hasTooltip
-                    customTooltip={() => <span>this custom tooltip shows the slider current value of {value}</span>}
-                />
-            </Section>
+        <Section key="one" level={3} title={`MiddleSlider with marks and steps. Its current value is ${value}`}>
+            <MiddleSlider
+                key="pwel"
+                min={-10000}
+                max={10000}
+                id="rangeSliderId"
+                marks={{
+                    0: '-100%',
+                    25: '-50%',
+                    50: '0',
+                    75: '50%',
+                    100: '100%',
+                }}
+                step={25}
+                onChange={(currentValue) => {
+                    setValue(currentValue);
+                }}
+                hasTooltip
+                customTooltip={() => <span>this custom tooltip shows the slider current value of {value}</span>}
+            />
         </Section>
     );
 };

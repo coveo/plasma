@@ -23,7 +23,8 @@ export interface MiddleSliderOwnProps extends SliderProps {
     hasTooltip?: boolean;
     initialValue?: number;
     marks?: {[key: number]: string};
-    range: [number, number];
+    min?: number;
+    max: number;
     step?: number;
     tabIndex?: number[];
     onChange?: (rangeOutputValue: number) => any;
@@ -36,36 +37,39 @@ export const mapDispatchToProps = (dispatch: IDispatch, ownProps: MiddleSliderOw
 
 const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
     ReturnType<typeof mapDispatchToProps>> = ({
+    id,
     enabled = true,
     customTooltip,
     hasTooltip,
     initialValue,
     marks,
-    range,
+    min = 0,
+    max,
     setOutputValue,
     step,
     onChange,
 }) => {
-    const crossingPoint = getCrossingPoint(range);
+    const crossingPoint = getCrossingPoint(min, max);
     const [highRange, setHighRange] = React.useState(crossingPoint);
     const [lowRange, setLowRange] = React.useState(crossingPoint);
-    const rangeOutputValue = getComputedRangeValue(lowRange, highRange, range, crossingPoint);
 
-    if (onChange) {
-        onChange(rangeOutputValue);
-    }
+    const rangeOutputValue = getComputedRangeValue(lowRange, highRange, min, max, crossingPoint);
 
     React.useEffect(() => {
-        propsValidator(range, initialValue);
+        onChange?.(rangeOutputValue);
+    }, [onChange, rangeOutputValue]);
+
+    React.useEffect(() => {
+        propsValidator(min, max, initialValue);
         if (initialValue) {
-            const initialRangeValue: number = convertInitialValuetoRangeValue(range, initialValue);
+            const initialRangeValue: number = convertInitialValuetoRangeValue(min, max, initialValue);
             setHandlePosition([initialRangeValue, initialRangeValue]);
         }
-    }, []);
+    }, [min, max, initialValue]);
 
     React.useEffect(() => {
         setOutputValue(rangeOutputValue);
-    }, [rangeOutputValue]);
+    }, [setOutputValue, rangeOutputValue]);
 
     const setHandlePosition = (value: number[]) => {
         const valuesPosition = getValuesPositionOnRange(value, crossingPoint);
@@ -119,6 +123,7 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
 
     return (
         <Range
+            key={id}
             value={[lowRange, highRange]}
             onChange={setHandlePosition}
             handle={renderHandle}

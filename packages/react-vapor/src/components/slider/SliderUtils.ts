@@ -15,11 +15,10 @@ export const getValuesPositionOnRange = (value: number[], crossingPoint: number)
     return null;
 };
 
-export const getCrossingPoint = (range: [number, number]): number =>
-    Math.round(((0 - range[0]) / (range[1] - range[0])) * 100);
+export const getCrossingPoint = (min: number, max: number): number => Math.round(((0 - min) / (max - min)) * 100);
 
-export const convertInitialValuetoRangeValue = (range: [number, number], initialValue: number): number =>
-    Math.round(((initialValue - range[0]) / (range[1] - range[0])) * 100);
+export const convertInitialValuetoRangeValue = (min: number, max: number, initialValue: number): number =>
+    Math.round(((initialValue - min) / (max - min)) * 100);
 
 export const handleIsAtCrossingPoint = (
     lowRange: number,
@@ -33,30 +32,31 @@ export const handleIsAtCrossingPoint = (
 export const getComputedRangeValue = (
     lowRange: number,
     highRange: number,
-    range: [number, number],
+    min: number,
+    max: number,
     crossingPoint: number
 ): number => {
     if (lowRange < crossingPoint) {
-        return Math.round(((crossingPoint - lowRange) * range[0]) / crossingPoint);
+        return Math.round(((crossingPoint - lowRange) * min) / crossingPoint);
     } else if (highRange > crossingPoint) {
-        return Math.round(((highRange - crossingPoint) * range[1]) / (100 - crossingPoint));
+        return Math.round(((highRange - crossingPoint) * max) / (100 - crossingPoint));
     }
     return 0;
 };
 
-export const propsValidator = (range: [number, number], initialValue: number) => {
-    if (range[0] > 0) {
+export const propsValidator = (min: number, max: number, initialValue: number) => {
+    if (min > 0) {
         throw new Error(
-            `${range[0]} is not a valid minimum MiddleSlider range value. Minimum MiddleSlider range value should be under 0`
+            `${min} is not a valid minimum MiddleSlider range value. Minimum MiddleSlider range value should be under 0`
         );
-    } else if (range[1] < 0) {
+    } else if (max < 0) {
         throw new Error(
-            `${range[1]} is not a valid maximum MiddleSlider range value. Maximum MiddleSlider range value should be over 0`
+            `${max} is not a valid maximum MiddleSlider range value. Maximum MiddleSlider range value should be over 0`
         );
     }
-    if (initialValue < range[0] || initialValue > range[1]) {
+    if (initialValue < min || initialValue > max) {
         throw new Error(
-            `MiddleSlider initial value is not within defined range. initialValue:${initialValue} should be set between ${range[0]} and ${range[1]}`
+            `MiddleSlider initial value is not within defined range. initialValue:${initialValue} should be set between ${min} and ${max}`
         );
     }
 };

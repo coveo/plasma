@@ -12,7 +12,8 @@ describe('<MiddleSlider/>', () => {
     let store: ReactVaporMockStore;
     const middleSliderRequiredProps = {
         id: 'SOME-ID',
-        range: [-100, 100] as [number, number],
+        max: 100,
+        min: -100,
     };
 
     beforeEach(() => {
@@ -147,7 +148,6 @@ describe('<MiddleSlider/>', () => {
 
     describe('state change', () => {
         it('should set de default value to [50, 50] and should update the MiddleSlider Range value on change', () => {
-            const expectedDefaultValue = [50, 50];
             const expectedSliderValueInLowRange = [20, 50];
             const expectedSliderValueInHighRange = [50, 80];
 
@@ -158,8 +158,6 @@ describe('<MiddleSlider/>', () => {
                     </Provider>
                 );
             });
-            mountedSlider.update();
-            expect(mountedSlider.find(Range).prop('value')).toEqual(expectedDefaultValue);
 
             mountedSlider.find(Range).prop('onChange')(expectedSliderValueInLowRange);
             mountedSlider.update();
@@ -209,7 +207,7 @@ describe('<MiddleSlider/>', () => {
             });
             mountedSlider.find(Range).prop('onChange')([40, 50]);
             mountedSlider.update();
-            expect(callBackSpy).toHaveBeenCalledTimes(3);
+            expect(callBackSpy).toHaveBeenCalledTimes(2);
         });
     });
 });
