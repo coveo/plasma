@@ -42,6 +42,7 @@ const SimpleInputDisconnected: React.FunctionComponent = () => {
     return (
         <Section level={3} title="A simple input with a local state">
             <Input
+                id="local-state-input"
                 innerInputClasses={inputClasses}
                 placeholder="Please, do not leave me empty!"
                 ref={(input: Input) => setInputValue(input)}
@@ -115,6 +116,7 @@ const MultilineInputExample: React.FunctionComponent = () => {
     return (
         <Section level={3} title="A multiline input with local state">
             <MultilineInput
+                id="multiline-input"
                 title="A Multiline Input label"
                 placeholder="Enter a value"
                 values={inputValues}
@@ -148,10 +150,12 @@ const SplitMultilineInputExamples: React.FunctionComponent = () => {
         {
             '1': 'first value',
             '2': 'other first value',
+            '3': 'other other first value',
         },
         {
             '1': 'second value',
             '2': 'other second value',
+            '3': 'other other second value',
         },
     ];
 
