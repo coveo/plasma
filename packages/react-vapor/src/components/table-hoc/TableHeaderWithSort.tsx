@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {TextLoadingPlaceholder} from '../loading/components/TextLoadingPlaceholder';
 import {Svg} from '../svg/Svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
@@ -67,7 +68,7 @@ export class TableHeaderWithSort extends React.Component<
         if (this.props.isLoading) {
             return (
                 <th id={this.props.id}>
-                    <div className="text-content-placeholder mod-small" />
+                    <TextLoadingPlaceholder small />
                 </th>
             );
         }
