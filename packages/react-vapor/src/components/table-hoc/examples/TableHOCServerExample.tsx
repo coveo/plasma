@@ -126,6 +126,7 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                     value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
                 >
                     <ServerTableComposed
+                        id={TableHOCServerExampleId}
                         className="table table-numbered mod-collapsible-rows"
                         data={this.state.data?.users ?? []}
                         renderBody={TableHOCExampleUtils.generateRows}
