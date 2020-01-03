@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ActionBarConnected} from '../actions/ActionBar';
-import {TableBodyLoading} from '../loading/components/TableLoading';
+import {TableLoading} from '../loading/components/TableLoading';
 import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 
 /**
@@ -41,7 +41,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
             <table className={classNames(this.props.className)}>
                 {this.props.tableHeader}
                 {this.props.isLoading ? (
-                    <TableBodyLoading
+                    <TableLoading.Body
                         numberOfRow={_.size(this.props.data) || PER_PAGE_NUMBERS[0]}
                         numberOfColumns={this.props.numberOfColumns}
                     />

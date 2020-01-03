@@ -4,7 +4,15 @@
 }
 
 .table-cell-content-loading {
-    @extend .btn, .full-content-x, .content-placeholder, .cursor-auto, .mod-no-border, .mod-small;
+    @extend .btn, .content-placeholder, .cursor-auto, .mod-no-border, .mod-small;
+
+    width: 90%;
+    min-width: 90%;
+
+    &.mod-half {
+        width: 60%;
+        min-width: 60%;
+    }
 }
 
 .table-header-action-button-loading-width {
