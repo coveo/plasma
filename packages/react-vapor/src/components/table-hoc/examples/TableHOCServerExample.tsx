@@ -24,7 +24,7 @@ import {tableWithNewPagination} from '../TableWithNewPagination';
 import {tableWithPredicate} from '../TableWithPredicate';
 import {tableWithSort} from '../TableWithSort';
 import {tableWithUrlState} from '../TableWithUrlState';
-import {TableHOCExampleUtils} from '../utils/TableHOCExampleUtils';
+import {TableHOCExampleUtils, TableHOCServerExampleContext} from '../utils/TableHOCExampleUtils';
 import {ITableHOCCompositeState, TableHOCUtils} from '../utils/TableHOCUtils';
 
 type TableHOCServerProps = RouteComponentProps & ReturnType<typeof mapDispatchToProps>;
@@ -54,23 +54,32 @@ TableHOCServerExample.title = 'TableHOC server';
 // start-print
 export const TableHOCServerExampleId = 'complex-example';
 
-const renderHeader = (isLoading: boolean) => (
-    <thead>
-        <tr>
-            <TableRowNumberHeader isLoading={isLoading} />
-            <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
-                City
-            </TableHeaderWithSort>
-            <TableHeaderWithSort id="email" tableId={TableHOCServerExampleId} isLoading={isLoading}>
-                Email
-            </TableHeaderWithSort>
-            <TableHeaderWithSort id="username" tableId={TableHOCServerExampleId} isLoading={isLoading} isDefault>
-                Username
-            </TableHeaderWithSort>
-            <TableRowHeader isLoading={isLoading}>Date of Birth</TableRowHeader>
-            <TableRowHeader isLoading={isLoading} />
-        </tr>
-    </thead>
+const renderHeader = () => (
+    <TableHOCServerExampleContext.Consumer>
+        {({isLoading}) => (
+            <thead>
+                <tr>
+                    <TableRowNumberHeader isLoading={isLoading} />
+                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
+                        City
+                    </TableHeaderWithSort>
+                    <TableHeaderWithSort id="email" tableId={TableHOCServerExampleId} isLoading={isLoading}>
+                        Email
+                    </TableHeaderWithSort>
+                    <TableHeaderWithSort
+                        id="username"
+                        tableId={TableHOCServerExampleId}
+                        isLoading={isLoading}
+                        isDefault
+                    >
+                        Username
+                    </TableHeaderWithSort>
+                    <TableRowHeader isLoading={isLoading}>Date of Birth</TableRowHeader>
+                    <TableRowHeader isLoading={isLoading} />
+                </tr>
+            </thead>
+        )}
+    </TableHOCServerExampleContext.Consumer>
 );
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
@@ -113,19 +122,22 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                     Please note that the backend service doesn't support dates but we still make a request for every
                     change in the date range.
                 </span>
-                <ServerTableComposed
-                    id={TableHOCServerExampleId}
-                    className="table table-numbered mod-collapsible-rows"
-                    data={this.state.data?.users ?? []}
-                    renderBody={TableHOCExampleUtils.generateRows}
-                    tableHeader={renderHeader(this.state.isLoading)}
-                    onUpdate={this.onUpdate}
-                    onUpdateUrl={this.updateUrl}
-                    isLoading={this.state.isLoading}
-                    numberOfColumn={6}
+                <TableHOCServerExampleContext.Provider
+                    value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
                 >
-                    <LastUpdated time={new Date()} />
-                </ServerTableComposed>
+                    <ServerTableComposed
+                        className="table table-numbered mod-collapsible-rows"
+                        data={this.state.data?.users ?? []}
+                        renderBody={TableHOCExampleUtils.generateRows}
+                        tableHeader={renderHeader(this.state.isLoading)}
+                        onUpdate={this.onUpdate}
+                        onUpdateUrl={this.updateUrl}
+                        isLoading={this.state.isLoading}
+                        numberOfColumn={6}
+                    >
+                        <LastUpdated time={new Date()} />
+                    </ServerTableComposed>
+                </TableHOCServerExampleContext.Provider>
             </Section>
         );
     }

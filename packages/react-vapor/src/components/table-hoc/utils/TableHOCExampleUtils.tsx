@@ -6,6 +6,16 @@ import {IExampleRowData, TableHOCServerExampleId} from '../examples/TableHOCServ
 import {TableRowConnected} from '../TableRowConnected';
 import {TableRowNumberColumn} from '../TableRowNumberColumn';
 
+export interface ITableHOCServerExampleContext {
+    isLoading: boolean;
+    id: string;
+}
+
+export const TableHOCServerExampleContext = React.createContext<ITableHOCServerExampleContext>({
+    isLoading: true,
+    id: undefined,
+});
+
 const generateRows = (allData: IExampleRowData[]) =>
     allData.map((data: IExampleRowData, i: number) => (
         <TableRowConnected
