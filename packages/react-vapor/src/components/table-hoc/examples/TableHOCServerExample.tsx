@@ -32,7 +32,6 @@ type TableHOCServerProps = RouteComponentProps & ReturnType<typeof mapDispatchTo
 export interface IExampleRowData {
     city: string;
     email: string;
-
     username: string;
     dateOfBirth: Date;
     id: string;
