@@ -129,11 +129,11 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                         className="table table-numbered mod-collapsible-rows"
                         data={this.state.data?.users ?? []}
                         renderBody={TableHOCExampleUtils.generateRows}
-                        tableHeader={renderHeader(this.state.isLoading)}
+                        tableHeader={renderHeader()}
                         onUpdate={this.onUpdate}
                         onUpdateUrl={this.updateUrl}
                         isLoading={this.state.isLoading}
-                        numberOfColumn={6}
+                        numberOfColumns={6}
                     >
                         <LastUpdated time={new Date()} />
                     </ServerTableComposed>

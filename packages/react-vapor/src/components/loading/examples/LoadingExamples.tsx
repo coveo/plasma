@@ -29,10 +29,10 @@ export const LoadingExamples = () => (
             <ActionBarLoading />
         </Section>
         <Section level={3} title="Table with 4 column in loading">
-            <TableLoading numberOfColumn={4} />
+            <TableLoading numberOfColumns={4} />
         </Section>
         <Section level={3} title="Table with 6 column and 5 row in loading">
-            <TableLoading numberOfColumn={6} numberOfRow={5} />
+            <TableLoading numberOfColumns={6} numberOfRow={5} />
         </Section>
         <Section level={3} title="Table pagination in loading">
             <PaginationLoading />

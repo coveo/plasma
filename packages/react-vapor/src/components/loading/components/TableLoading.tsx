@@ -2,32 +2,32 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 export const TableLoading = ({
-    numberOfColumn = 4,
+    numberOfColumns = 4,
     numberOfRow = 10,
 }: {
-    numberOfColumn?: number;
+    numberOfColumns?: number;
     numberOfRow?: number;
 }) => {
     return (
         <>
             <table className="table big-table">
-                <TableBodyLoading numberOfColumn={numberOfColumn} numberOfRow={numberOfRow} />
+                <TableBodyLoading numberOfColumns={numberOfColumns} numberOfRow={numberOfRow} />
             </table>
         </>
     );
 };
 
 export const TableBodyLoading = ({
-    numberOfColumn = 4,
+    numberOfColumns = 4,
     numberOfRow = 10,
 }: {
-    numberOfColumn?: number;
+    numberOfColumns?: number;
     numberOfRow?: number;
 }) => (
     <tbody>
         {_.times(numberOfRow, (nColumn: number) => (
             <tr key={`table-row-loading-${nColumn}`} className="mod-border-bottom no-hover">
-                {_.times(numberOfColumn, (nRow: number) => (
+                {_.times(numberOfColumns, (nRow: number) => (
                     <TableRowLoading key={`table-row-loading-${nRow}`} />
                 ))}
             </tr>

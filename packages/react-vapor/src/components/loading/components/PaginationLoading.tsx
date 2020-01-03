@@ -1,41 +1,46 @@
 import * as React from 'react';
+import {ContentLoadingPlaceholder} from './ContentLoadingPlaceholder';
+import {TextLoadingPlaceholder} from './TextLoadingPlaceholder';
 
 export const PaginationLoading = () => (
     <div className="pagination-container">
         <div className="items-per-page prepended-flat-select">
             <div className="flat-select center-align">
-                <div className="text-content-placeholder mod-small mr2" />
-                <div className="flat-select-option content-placeholder mod-no-border">
+                <TextLoadingPlaceholder small className={'mr2'} />
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="flat-select-option content-placeholder mod-no-border">
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="flat-select-option content-placeholder mod-no-border">
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
+                    <span />
+                </ContentLoadingPlaceholder>
             </div>
         </div>
         <div className="flex-auto" />
         <div className="pagination">
             <div className="flat-select center-align">
-                <div className="text-content-placeholder mod-word mr2" />
-                <div className="flat-select-option content-placeholder mod-no-border">
+                <TextLoadingPlaceholder word className={'mr2'} />
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="flat-select-option content-placeholder mod-no-border">
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="flat-select-option content-placeholder mod-no-border">
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="flat-select-option content-placeholder mod-no-border">
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="flat-select-option content-placeholder mod-no-border">
+                </ContentLoadingPlaceholder>
+                <ContentLoadingPlaceholder className={'flat-select-option mod-no-border'}>
                     <span />
-                </div>
-                <div className="text-content-placeholder mod-word ml2" />
+                </ContentLoadingPlaceholder>
+                <TextLoadingPlaceholder word className={'mr2'} />
             </div>
         </div>
     </div>
