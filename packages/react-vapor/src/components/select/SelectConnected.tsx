@@ -4,9 +4,9 @@ import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {keys} from 'ts-transformer-keys';
-import {IComponentBehaviour} from '../../../docs/src/components/ComponentsInterface';
 import {Defaults} from '../../Defaults';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';

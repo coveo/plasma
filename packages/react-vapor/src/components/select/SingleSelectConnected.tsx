@@ -3,9 +3,9 @@ import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
-import {IComponentBehaviour} from '../../../docs/src/components/ComponentsInterface';
 
 import {IReactVaporState} from '../../ReactVapor';
+import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
