@@ -1,4 +1,6 @@
+import * as moment from 'moment';
 import * as React from 'react';
+import {DateTooltip} from '../DateTooltip';
 import {Tooltip} from '../Tooltip';
 
 export class TooltipExamples extends React.Component<{}, {}> {
@@ -46,6 +48,25 @@ export class TooltipExamples extends React.Component<{}, {}> {
                                 Hover me!
                             </button>
                         </Tooltip>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Time Tooltip example</label>
+                    <div className="form-control">
+                        <button type="button" className="btn">
+                            <DateTooltip
+                                date={moment('2019-12-16')}
+                                format={(currentDate: moment.Moment) => currentDate.calendar()}
+                            />
+                        </button>
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Time Tooltip with custom formating example</label>
+                    <div className="form-control">
+                        <button type="button" className="btn">
+                            <DateTooltip date={moment()} format="LLL" tooltipFormat="ddd, hA" />
+                        </button>
                     </div>
                 </div>
             </div>
