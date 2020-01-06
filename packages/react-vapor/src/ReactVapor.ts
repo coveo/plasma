@@ -38,7 +38,7 @@ import {ISelectWithFilterCompositeState} from './components/select/hoc/SelectWit
 import {ISelectState} from './components/select/SelectReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
-import {ITableRowState as HOCTableRowState} from './components/table-hoc/reducers/TableRowReducers';
+import {HOCTableRowState} from './components/table-hoc/reducers/TableRowReducers';
 import {ITableWithPaginationState} from './components/table-hoc/reducers/TableWithPaginationReducers';
 import {ITableWithSortState} from './components/table-hoc/reducers/TableWithSortReducers';
 import {ITablePredicate} from './components/tables/Table';

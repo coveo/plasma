@@ -24,13 +24,13 @@ export interface ITableWithDatePickerStateProps {
     upperLimit: Date;
 }
 
-export interface ITableWithFilterDispatchProps {
+export interface ITableWithDatePickerDispatchProps {
     onRender: () => void;
 }
 
 export interface ITableWithDatePickerProps
     extends Partial<ITableWithDatePickerStateProps>,
-        Partial<ITableWithFilterDispatchProps>,
+        Partial<ITableWithDatePickerDispatchProps>,
         ITableHOCOwnProps,
         WithServerSideProcessingProps {}
 

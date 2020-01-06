@@ -11,14 +11,14 @@ import {
 } from '../actions/TableHOCRowActions';
 import {TableHOCUtils} from '../TableHOCUtils';
 
-export interface ITableRowState {
+export interface HOCTableRowState {
     id: string;
     tableId: string;
     selected: boolean;
     opened?: boolean;
 }
 
-const addTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowAddPayload>) => {
+const addTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowAddPayload>) => {
     return [
         ...state,
         {
@@ -30,17 +30,17 @@ const addTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITable
     ];
 };
 
-const removeTableRowReducer = (state: ITableRowState[], {payload}: IReduxAction<ITableRowAddPayload>) => {
+const removeTableRowReducer = (state: HOCTableRowState[], {payload}: IReduxAction<ITableRowAddPayload>) => {
     return _.reject(
         state,
-        ({tableId, id}: ITableRowState) => (!payload.tableId || payload.tableId === tableId) && id === payload.id
+        ({tableId, id}: HOCTableRowState) => (!payload.tableId || payload.tableId === tableId) && id === payload.id
     );
 };
 
-const selectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
+const selectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
-        return _.map(state, (row: ITableRowState) => {
+        return _.map(state, (row: HOCTableRowState) => {
             if (row.id === current.id) {
                 return {
                     ...row,
@@ -54,12 +54,12 @@ const selectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITa
 };
 
 const toggleCollasibleTableRowReducer = (
-    state: ITableRowState[],
+    state: HOCTableRowState[],
     action: IReduxAction<ITableRowToggleCollapsiblePayload>
 ) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
-        return _.map(state, (row: ITableRowState) => {
+        return _.map(state, (row: HOCTableRowState) => {
             if (row.id === current.id) {
                 return {
                     ...row,
@@ -72,8 +72,8 @@ const toggleCollasibleTableRowReducer = (
     return state;
 };
 
-const deselectTableRowReducer = (state: ITableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
-    return _.map(state, (row: ITableRowState) => {
+const deselectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
+    return _.map(state, (row: HOCTableRowState) => {
         return row.tableId === action.payload.id || TableHOCUtils.getPaginationId(row.tableId) === action.payload.id
             ? {...row, selected: false}
             : row;
@@ -91,7 +91,7 @@ const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
 };
 
 type ITableRowPayload = BasePayload | ITableRowAddPayload | ITableRowSelectPayload;
-export const TableRowReducers = (state: ITableRowState[] = [], action: IReduxAction<ITableRowPayload>) => {
+export const TableRowReducers = (state: HOCTableRowState[] = [], action: IReduxAction<ITableRowPayload>) => {
     if (!_.isUndefined(TableRowActionReducers[action.type])) {
         return TableRowActionReducers[action.type](state, action);
     }
