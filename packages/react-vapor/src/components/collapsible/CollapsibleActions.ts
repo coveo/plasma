@@ -10,11 +10,6 @@ export interface CollapsiblePayload extends BasePayload {
     expanded?: boolean;
 }
 
-/**
- * @deprecated use CollapsiblePayload interface instead
- */
-export interface ILoadingActionPayload extends CollapsiblePayload {}
-
 export const addCollapsible = (id: string, expanded: boolean): IReduxAction<CollapsiblePayload> => ({
     type: CollapsibleActions.add,
     payload: {id, expanded},

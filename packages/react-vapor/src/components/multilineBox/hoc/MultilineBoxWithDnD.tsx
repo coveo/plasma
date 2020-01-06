@@ -27,7 +27,7 @@ export interface IMultilineBoxWithDnDDispatchProps {
     onReorder?: (list: string[]) => void;
 }
 
-export interface IMultilineBoxWithRemoveButtonProps<T>
+export interface IMultilineBoxWithDnDProps<T>
     extends IMultilineBoxWithDnDSupplierProps,
         IMultilineBoxStateProps,
         IDraggableContainerOwnProps,
@@ -58,7 +58,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
         connectDropTarget: connect.dropTarget(),
     }))
     @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-    class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithRemoveButtonProps<T>> {
+    class MultilineBoxWithDnD<T> extends React.PureComponent<IMultilineBoxWithDnDProps<T>> {
         static defaultProps = {
             renderBody: () => <div />,
         };

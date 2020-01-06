@@ -8,7 +8,7 @@ const isTravis = process.env.TRAVIS;
  */
 const config = {
     entry: {
-        'react-vapor': ['./Index.ts'],
+        'react-vapor': ['./src/Entry.ts'],
         'react-vapor.dependencies': [
             'jquery',
             'underscore',
