@@ -18,7 +18,7 @@ const Slider: React.SFC<ISliderProps> = ({hasTooltip, slider, classes}) => {
         };
     }
 
-    return <HtmlTag className={classNames('vapor-slider', classes)} {...slider} />;
+    return <HtmlTag className={classNames('vapor-slider input-wrapper input-field', classes)} {...slider} />;
 };
 
 Slider.defaultProps = {
