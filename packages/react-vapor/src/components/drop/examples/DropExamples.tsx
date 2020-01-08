@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {ChildForm} from '../../childForm/ChildForm';

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {LoadingActions, turnOffLoading} from '../../loading/LoadingActions';
 import {INavigationOwnProps} from '../Navigation';
 import {NavigationConnected} from '../NavigationConnected';

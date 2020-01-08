@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {IActionOptions} from '../Action';
 import {ActionBarConnected} from '../ActionBar';
 import {addActionsToActionBar} from '../ActionBarActions';

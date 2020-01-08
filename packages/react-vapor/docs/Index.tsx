@@ -7,8 +7,8 @@ import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {Defaults} from '../src/Defaults';
-import {ExamplesStore} from './ReactVaporStore';
 import {App} from './src/OneDemoToRuleThemAll';
+import {ExamplesStore} from './Store';
 
 Defaults.APP_ELEMENT = '#App';
 Defaults.MODAL_ROOT = '#Modals';

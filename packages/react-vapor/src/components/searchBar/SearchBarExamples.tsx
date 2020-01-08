@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
-import {ExamplesStore} from '../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../docs/Store';
 import {ISearchBarProps, ISearchBarStateProps, SearchBar} from './SearchBar';
 import {toggleSearchBarDisabled, toggleSearching} from './SearchBarActions';
 import {SearchBarConnected} from './SearchBarConnected';

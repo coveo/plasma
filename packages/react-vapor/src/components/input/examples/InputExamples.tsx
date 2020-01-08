@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
 import {IMultilineInputValue, MultilineInput} from '../../multilineInput/MultilineInput';
 import {ISplitInput, ISplitValue, SplitMultilineInput} from '../../multilineInput/SplitMultilineInput';

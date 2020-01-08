@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ColorResult} from 'react-color';
 import {debounce} from 'underscore';
-import {ExamplesStore} from '../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../docs/Store';
 import {Button} from '../button/Button';
 import {InputSelectors} from '../input/InputSelectors';
 import {ColorPicker} from './ColorPicker';
