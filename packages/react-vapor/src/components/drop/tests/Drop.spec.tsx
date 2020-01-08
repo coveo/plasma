@@ -7,6 +7,7 @@ import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils'
 import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
+import {DropSelectors} from '../redux/DropReducers';
 
 describe('Drop', () => {
     describe('<Drop />', () => {
@@ -175,6 +176,13 @@ describe('Drop', () => {
 
                 expect(store.getActions()).toContain(DropActions.toggle(id, DefaultGroupIds.default, true));
             });
+
+            /*it('should add class open if the drop is open', () => {
+                // const store = getStoreMock(defaultStore(true));
+                const spy = spyOn(DropSelectors, 'isOpen').and.returnValue(true);
+                let wrapper: ShallowWrapper;
+                wrapper = shallowWithState(<Drop id={id} renderOpenButton={() => defaultButton} />, {});
+            });*/
 
             describe('events', () => {
                 it('should add the event on click if the drop is opening', () => {
