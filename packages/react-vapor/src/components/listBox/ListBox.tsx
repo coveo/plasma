@@ -14,6 +14,7 @@ export interface IListBoxOwnProps {
     multi?: boolean;
     items?: IItemBoxProps[];
     wrapItems?: (items: React.ReactNode) => React.ReactNode;
+    footer?: React.ReactNode;
 }
 
 export interface IListBoxStateProps {
@@ -107,9 +108,12 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
 
     render() {
         return (
-            <ul className={this.getClasses()} id={this.props.id}>
-                {this.props.wrapItems(this.getItems())}
-            </ul>
+            <>
+                <ul className={this.getClasses()} id={this.props.id}>
+                    {this.props.wrapItems(this.getItems())}
+                </ul>
+                {this.props.footer}
+            </>
         );
     }
 

@@ -143,7 +143,7 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">
-                        A Single Select With Filter and Predicates And Lots Of Values
+                        A single select with a filter, predicates, a lots of values and a footer
                     </label>
                     <br />
                     <SingleSelectWithPredicateAndFilter
@@ -152,6 +152,7 @@ export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectE
                         options={defaultFlatSelectOptions}
                         matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
                         dropClasses="drop-this"
+                        footer={<div className="select-footer">The single select footer</div>}
                     />
                 </div>
             </div>

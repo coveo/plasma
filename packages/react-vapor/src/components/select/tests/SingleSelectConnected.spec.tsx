@@ -254,5 +254,19 @@ describe('Select', () => {
                 expect(getIsOpen()).toBe(false, 3);
             });
         });
+
+        describe('footer props', () => {
+            it('should pass the footer prop to <SelectConnected/>', () => {
+                const footer: React.ReactElement = <span id="some-footer"> 👢 </span>;
+                const mountedSingleSelect = mount(
+                    <SingleSelectConnected id={id} items={[{value: 'a', selected: false}]} footer={footer} />,
+                    {
+                        attachTo: document.getElementById('App'),
+                        context: {store},
+                    }
+                );
+                expect(mountedSingleSelect.find('#some-footer').matchesElement(footer)).toBeTruthy();
+            });
+        });
     });
 });
