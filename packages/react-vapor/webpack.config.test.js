@@ -39,7 +39,7 @@ module.exports = function(options) {
                     test: /\.tsx?$/,
                     loader: 'ts-loader',
                     options: {
-                        configFileName: 'tsconfig.test.json',
+                        configFile: 'tsconfig.test.json',
                         compiler: 'ttypescript',
                     },
                 },
