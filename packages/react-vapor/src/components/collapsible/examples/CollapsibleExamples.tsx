@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
 import {Section} from '../../section/Section';
 import {setExpandedCollapsibleContainer} from '../CollapsibleActions';

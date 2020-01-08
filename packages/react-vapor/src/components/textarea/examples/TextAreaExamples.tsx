@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
 
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Label} from '../../input/Label';
 import {TextAreaConnected} from '../TextArea';
 import {setDisabledTextArea} from '../TextAreaActions';

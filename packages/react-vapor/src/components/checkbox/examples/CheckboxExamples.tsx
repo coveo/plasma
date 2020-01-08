@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import {ExamplesStore} from '../../../../docs/ReactVaporStore';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
 import {Label} from '../../input/Label';
 import {LabeledInput} from '../../input/LabeledInput';
