@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
+import {Label} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
 
 /**
@@ -31,6 +32,8 @@ export interface ITextAreaOwnProps {
     isAutosize?: boolean;
 
     onChangeCallback?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    validate?: (value: any) => boolean;
+    validationMessage?: string;
 }
 
 export interface ITextAreaStateProps {
@@ -75,17 +78,25 @@ export class TextArea extends React.Component<ITextAreaProps, {}> {
         }
     }
 
+    private getValidationLabel = (isValid: boolean) => {
+        return !isValid && <Label> {this.props.validationMessage} </Label>;
+    };
+
     render() {
         const TextareaTagName: any = this.props.isAutosize ? TextareaAutosize : 'textarea';
+        const isValid: boolean = !!this.props.validate && this.props.validate(this.props.value);
         return (
-            <TextareaTagName
-                {...this.props.additionalAttributes}
-                id={this.props.id}
-                disabled={this.props.disabled}
-                className={this.props.className}
-                value={this.props.value}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.handleOnChange(e)}
-            />
+            <>
+                <TextareaTagName
+                    {...this.props.additionalAttributes}
+                    id={this.props.id}
+                    disabled={this.props.disabled}
+                    className={this.props.className}
+                    value={this.props.value}
+                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.handleOnChange(e)}
+                />
+                {this.getValidationLabel(isValid)}
+            </>
         );
     }
 
