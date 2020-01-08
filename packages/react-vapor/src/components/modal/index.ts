@@ -10,3 +10,4 @@ export * from './ModalFooter';
 export * from './ModalHeader';
 export * from './ModalHeaderConnected';
 export * from './ModalReducers';
+export * from './loading/ModalLoading';
