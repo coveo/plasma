@@ -7,7 +7,7 @@ import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
 
 import {Defaults} from '../src/Defaults';
-import {ReactVaporStore} from './ReactVaporStore';
+import {ExamplesStore} from './ReactVaporStore';
 import {App} from './src/OneDemoToRuleThemAll';
 
 Defaults.APP_ELEMENT = '#App';
@@ -15,7 +15,7 @@ Defaults.MODAL_ROOT = '#Modals';
 Defaults.DROP_ROOT = '#Drops';
 
 ReactDOM.render(
-    <Provider store={ReactVaporStore}>
+    <Provider store={ExamplesStore}>
         <App />
     </Provider>,
     document.getElementById('App')
