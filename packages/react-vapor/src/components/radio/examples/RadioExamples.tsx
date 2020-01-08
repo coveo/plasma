@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/ReactVaporStore';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {Button} from '../../button/Button';
 import {Label} from '../../input/Label';
@@ -61,13 +61,13 @@ const RadioSelectExample: React.FunctionComponent = () => (
                 enabled
                 name="disable blue option"
                 onClick={() =>
-                    ReactVaporStore.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: ['blue']}))
+                    ExamplesStore.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: ['blue']}))
                 }
             />
             <Button
                 enabled
                 name="enable blue option"
-                onClick={() => ReactVaporStore.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: []}))}
+                onClick={() => ExamplesStore.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: []}))}
             />
         </Section>
     </Section>

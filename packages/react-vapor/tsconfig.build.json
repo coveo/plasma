@@ -5,7 +5,6 @@
         "moduleResolution": "Node",
         "removeComments": false,
         "sourceMap": true,
-        "rootDir": ".",
         "declaration": true,
         "declarationDir": "dist/definitions"
     },

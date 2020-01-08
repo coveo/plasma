@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
-import {ReactVaporStore} from '../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../docs/ReactVaporStore';
 import {ISearchBarProps, ISearchBarStateProps, SearchBar} from './SearchBar';
 import {toggleSearchBarDisabled, toggleSearching} from './SearchBarActions';
 import {SearchBarConnected} from './SearchBarConnected';
@@ -76,9 +76,9 @@ export class SearchBarExamples extends React.Component<any, any> {
                             id="search-bar-4"
                             placeholder="Type something and press enter, or click the loupe"
                             onSearch={(filterText: string) => {
-                                ReactVaporStore.dispatch(toggleSearching('search-bar-4', true));
+                                ExamplesStore.dispatch(toggleSearching('search-bar-4', true));
                                 setTimeout(() => {
-                                    ReactVaporStore.dispatch(toggleSearching('search-bar-4', false));
+                                    ExamplesStore.dispatch(toggleSearching('search-bar-4', false));
                                     (document.querySelector('#search-bar-4') as HTMLElement).focus();
                                 }, 800);
                             }}
@@ -86,10 +86,10 @@ export class SearchBarExamples extends React.Component<any, any> {
                         <button
                             type="button"
                             onClick={() => {
-                                const searchBar = findWhere(ReactVaporStore.getState().searchBars, {
+                                const searchBar = findWhere(ExamplesStore.getState().searchBars, {
                                     id: 'search-bar-4',
                                 });
-                                ReactVaporStore.dispatch(toggleSearchBarDisabled('search-bar-4', !searchBar.disabled));
+                                ExamplesStore.dispatch(toggleSearchBarDisabled('search-bar-4', !searchBar.disabled));
                             }}
                         >
                             Toggle disabled state

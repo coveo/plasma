@@ -16,7 +16,7 @@ export interface IReactVaporExampleState extends IReactVaporState {
     tableHOCExample?: IExampleServerTableState;
 }
 
-export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
+export const ExamplesReducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
     ...ReactVaporReducers,
     listBoxExampleState: listBoxExampleReducer,
     tableHOCExample: TableHOCServerExampleReducer,
