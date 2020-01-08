@@ -5,7 +5,6 @@ import {ExamplesStore} from '../../../../docs/Store';
 import {Label} from '../../input/Label';
 import {TextAreaConnected} from '../TextArea';
 import {setDisabledTextArea} from '../TextAreaActions';
-import {TextAreaLabel} from '../TextAreaLabel';
 
 export const TextAreaExamples = (): JSX.Element => (
     <div className="mt2">
@@ -20,13 +19,19 @@ export const TextAreaExamples = (): JSX.Element => (
                 />
             </div>
             <div className="form-group">
+                <div>
+                    <label className="form-control-label">Textarea with validation</label>
+                </div>
                 <TextAreaConnected
                     id="awesome-textarea-2"
                     className="admin-invisible-textbox mod-border"
                     additionalAttributes={{
-                        placeholder: 'I am a simple text area',
+                        placeholder: 'I am a simple text area with validation!',
                     }}
-                    valueOnMount="I have a non empty value on mount"
+                    valueOnMount="I have a non empty value on mount and should not be empty!"
+                    validate={(value: string) => value !== ''}
+                    validationMessage={'TextArea should not be empty!'}
+                    isAutosize
                 />
             </div>
             <div className="form-group">
@@ -53,10 +58,14 @@ export const TextAreaExamples = (): JSX.Element => (
                     Toggle TextArea disabled state
                 </button>
             </div>
-            <div className="form-group">
-                <TextAreaLabel label="simple text area with label">
-                    <TextAreaConnected id="super-textarea-4" />
-                </TextAreaLabel>
+            <div className="form-group input-field">
+                <TextAreaConnected
+                    id="super-textarea-4"
+                    validate={(value: string) => value !== ''}
+                    validationMessage={'TextArea should not be empty!'}
+                >
+                    <Label htmlFor="super-textarea-4"> Simple text area with label </Label>
+                </TextAreaConnected>
             </div>
             <div className="form-group">
                 <label className="form-control-label">Default textarea autosize empty</label>
@@ -87,8 +96,9 @@ export const TextAreaExamples = (): JSX.Element => (
                     additionalAttributes={{
                         required: true,
                     }}
-                />
-                <Label htmlFor="super-textarea-8">Beautiful Textarea</Label>
+                >
+                    <Label htmlFor="super-textarea-8">Beautiful Textarea</Label>
+                </TextAreaConnected>
             </div>
         </div>
     </div>
