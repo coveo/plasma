@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {IActionOptions} from '../Action';
 import {ActionBarConnected} from '../ActionBar';
 import {addActionsToActionBar} from '../ActionBarActions';
@@ -91,7 +91,7 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
             ACTION_SEPARATOR,
         ];
         setTimeout(() => {
-            ReactVaporStore.dispatch(addActionsToActionBar(actionBarId, actions));
+            ExamplesStore.dispatch(addActionsToActionBar(actionBarId, actions));
         }, 4000);
     }
 

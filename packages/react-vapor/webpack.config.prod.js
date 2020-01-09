@@ -8,7 +8,7 @@ const isTravis = process.env.TRAVIS;
  */
 const config = {
     entry: {
-        'react-vapor': ['./Index.ts'],
+        'react-vapor': ['./src/Entry.ts'],
         'react-vapor.dependencies': [
             'jquery',
             'underscore',
@@ -59,14 +59,14 @@ const config = {
                     path.resolve(__dirname, 'node_modules/strict-uri-encode/index.js'),
                     path.resolve(__dirname, 'node_modules/split-on-first/index.js'),
                 ],
-                loader: 'awesome-typescript-loader',
+                loader: 'ts-loader',
             },
             {
                 test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader',
+                loader: 'ts-loader',
                 options: {
                     compiler: 'ttypescript',
-                    configFileName: 'tsconfig.build.json',
+                    configFile: 'tsconfig.build.json',
                 },
             },
             {

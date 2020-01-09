@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {ChildForm} from '../../childForm/ChildForm';
@@ -16,7 +16,7 @@ const modalId2: string = 'ModalIDDrop2';
 
 export class DropExamples extends React.PureComponent<any> {
     openModal(id: string) {
-        ReactVaporStore.dispatch(openModal(id));
+        ExamplesStore.dispatch(openModal(id));
     }
     render() {
         const triggerAlertFunction = () => {

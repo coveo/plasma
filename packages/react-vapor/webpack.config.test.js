@@ -33,15 +33,13 @@ module.exports = function(options) {
                      *  Target only problematic files to prevent compilation from hanging
                      */
                     include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
-                    loader: 'awesome-typescript-loader',
+                    loader: 'ts-loader',
                 },
                 {
                     test: /\.tsx?$/,
-                    loader: 'awesome-typescript-loader',
+                    loader: 'ts-loader',
                     options: {
-                        useCache: true,
-                        cacheDirectory: '.awcache',
-                        configFileName: 'tsconfig.test.json',
+                        configFile: 'tsconfig.test.json',
                         compiler: 'ttypescript',
                     },
                 },

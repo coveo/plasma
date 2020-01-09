@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
 import {IMultilineInputValue, MultilineInput} from '../../multilineInput/MultilineInput';
 import {ISplitInput, ISplitValue, SplitMultilineInput} from '../../multilineInput/SplitMultilineInput';
@@ -88,10 +88,10 @@ const InputsConnected: React.FunctionComponent = () => {
                         name={'Toggle input'}
                         enabled
                         onClick={() => {
-                            ReactVaporStore.dispatch(
+                            ExamplesStore.dispatch(
                                 setDisabledInput(
                                     'super-input-3',
-                                    !_.findWhere(ReactVaporStore.getState().inputs, {id: 'super-input-3'}).disabled
+                                    !_.findWhere(ExamplesStore.getState().inputs, {id: 'super-input-3'}).disabled
                                 )
                             );
                         }}

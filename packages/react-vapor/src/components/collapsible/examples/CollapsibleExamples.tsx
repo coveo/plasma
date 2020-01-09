@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
 import {Section} from '../../section/Section';
 import {setExpandedCollapsibleContainer} from '../CollapsibleActions';
@@ -90,10 +90,10 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                     small={true}
                     name="Toggle Container"
                     onClick={() => {
-                        const collapsibleState = _.findWhere(ReactVaporStore.getState().collapsibles, {
+                        const collapsibleState = _.findWhere(ExamplesStore.getState().collapsibles, {
                             id: 'collapsible-container-example-3',
                         });
-                        ReactVaporStore.dispatch(
+                        ExamplesStore.dispatch(
                             setExpandedCollapsibleContainer(
                                 'collapsible-container-example-3',
                                 !collapsibleState.expanded
