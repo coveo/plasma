@@ -7,7 +7,8 @@ import {Tooltip} from '../Tooltip';
 
 describe('Tooltip', () => {
     let tooltipWrapper: ShallowWrapper<DateTooltipsProps>;
-    const defaultFormat = moment().format('LLL');
+    const defaultDate = '1995-12-25';
+    const defaultFormat = moment(defaultDate).format('LLL');
     const stringFormat = 'ddd, hA';
 
     describe('<DateTooltip />', () => {
@@ -17,17 +18,17 @@ describe('Tooltip', () => {
         });
 
         it('should display content in LLL if no format is given on moment date', () => {
-            tooltipWrapper = shallow(<DateTooltip date={moment()} />);
+            tooltipWrapper = shallow(<DateTooltip date={moment(defaultDate)} />);
             expect(tooltipWrapper.find(Tooltip).props().title).toEqual(defaultFormat);
         });
 
         it('should display the tooltip in the given tooltipformat', () => {
-            tooltipWrapper = shallow(<DateTooltip date={moment()} tooltipFormat={stringFormat} />);
+            tooltipWrapper = shallow(<DateTooltip date={moment(defaultDate)} tooltipFormat={stringFormat} />);
             expect(tooltipWrapper.find(Tooltip).props().title).toEqual(moment(defaultFormat).format(stringFormat));
         });
 
         it('should display the children of the tooltip in the given format', () => {
-            tooltipWrapper = shallow(<DateTooltip date={moment()} format={stringFormat} />);
+            tooltipWrapper = shallow(<DateTooltip date={moment(defaultDate)} format={stringFormat} />);
             expect(tooltipWrapper.find(Tooltip).props().children).toEqual(moment(defaultFormat).format(stringFormat));
         });
     });
