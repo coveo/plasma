@@ -89,3 +89,14 @@ export const updateTableDataEntry = (id: string, data: IData): IReduxAction<ITab
     type: TableActions.updateTableDataEntry,
     payload: {id, data},
 });
+
+export const TableReduxActions = {
+    addTable,
+    removeTable,
+    setIsInError,
+    modifyState,
+    updateSelectedRows,
+    deleteTableDataEntry,
+    addTableDataEntry,
+    updateTableDataEntry,
+};
