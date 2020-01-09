@@ -35,3 +35,9 @@ export const filterThrough = (id: string, filterText: string): IReduxAction<ICha
         filterText,
     },
 });
+
+export const FilterBoxActions = {
+    addFilter,
+    removeFilter,
+    filterThrough,
+};
