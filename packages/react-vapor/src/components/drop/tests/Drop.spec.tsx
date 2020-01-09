@@ -7,7 +7,6 @@ import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils'
 import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
-import {DropSelectors} from '../redux/DropReducers';
 
 describe('Drop', () => {
     describe('<Drop />', () => {
@@ -49,7 +48,7 @@ describe('Drop', () => {
             beforeEach(() => RTestUtils.addHTMLElementWithId());
 
             afterEach(() => {
-                if (wrapper.length) {
+                if (wrapper?.length) {
                     wrapper.unmount();
                 }
                 RTestUtils.removeHTMLElementWithId();
@@ -177,12 +176,37 @@ describe('Drop', () => {
                 expect(store.getActions()).toContain(DropActions.toggle(id, DefaultGroupIds.default, true));
             });
 
-            /*it('should add class open if the drop is open', () => {
-                // const store = getStoreMock(defaultStore(true));
-                const spy = spyOn(DropSelectors, 'isOpen').and.returnValue(true);
-                let wrapper: ShallowWrapper;
-                wrapper = shallowWithState(<Drop id={id} renderOpenButton={() => defaultButton} />, {});
-            });*/
+            it('should not add data-open attribute to open if the drop is closed', () => {
+                const shallowWrapperDrop: ShallowWrapper<IDropProps> = shallowWithState(
+                    <Drop id={id} renderOpenButton={() => defaultButton} />,
+                    {}
+                ).dive();
+                const shallowWrapperDropPod: ShallowWrapper = shallowWithState(
+                    shallowWrapperDrop
+                        .find(DropPod)
+                        .props()
+                        .renderDrop({} as any, {} as any, {} as any) as any,
+                    {}
+                );
+                expect(shallowWrapperDropPod.prop('data-open')).toBe(false);
+            });
+
+            it('should add data-open attribute to open if the drop is open', () => {
+                const shallowWrapperDrop: ShallowWrapper<IDropProps> = shallowWithState(
+                    <Drop id={id} renderOpenButton={() => defaultButton} />,
+                    {
+                        drop: {[DefaultGroupIds.default]: {id: id, isOpen: true}},
+                    }
+                ).dive();
+                const shallowWrapperDropPod: ShallowWrapper = shallowWithState(
+                    shallowWrapperDrop
+                        .find(DropPod)
+                        .props()
+                        .renderDrop({} as any, {} as any, {} as any) as any,
+                    {}
+                );
+                expect(shallowWrapperDropPod.prop('data-open')).toBe(true);
+            });
 
             describe('events', () => {
                 it('should add the event on click if the drop is opening', () => {
