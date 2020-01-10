@@ -30,7 +30,7 @@ gulp.task('clean:tests', (done) => {
 
 gulp.task('clean:others', (done) => {
     if (cleanAll) {
-        clean(['**/*.orig', '**/*.rej', 'node_modules'], done);
+        clean(['**/*.orig', '**/*.rej', 'node_modules', '.awcache'], done);
     } else {
         done();
     }
