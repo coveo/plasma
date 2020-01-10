@@ -48,7 +48,7 @@ describe('Drop', () => {
             beforeEach(() => RTestUtils.addHTMLElementWithId());
 
             afterEach(() => {
-                if (wrapper?.length) {
+                if (wrapper.length) {
                     wrapper.unmount();
                 }
                 RTestUtils.removeHTMLElementWithId();
@@ -177,12 +177,10 @@ describe('Drop', () => {
             });
 
             it('should not add data-open attribute to open if the drop is closed', () => {
-                const shallowWrapperDrop: ShallowWrapper<IDropProps> = shallowWithState(
-                    <Drop id={id} renderOpenButton={() => defaultButton} />,
-                    {}
-                ).dive();
+                const store = getStoreMock(defaultStore(false));
+                mountDropWithStore({}, store);
                 const shallowWrapperDropPod: ShallowWrapper = shallowWithState(
-                    shallowWrapperDrop
+                    wrapper
                         .find(DropPod)
                         .props()
                         .renderDrop({} as any, {} as any, {} as any) as any,
@@ -192,14 +190,10 @@ describe('Drop', () => {
             });
 
             it('should add data-open attribute to open if the drop is open', () => {
-                const shallowWrapperDrop: ShallowWrapper<IDropProps> = shallowWithState(
-                    <Drop id={id} renderOpenButton={() => defaultButton} />,
-                    {
-                        drop: {[DefaultGroupIds.default]: {id: id, isOpen: true}},
-                    }
-                ).dive();
+                const store = getStoreMock(defaultStore(true));
+                mountDropWithStore({}, store);
                 const shallowWrapperDropPod: ShallowWrapper = shallowWithState(
-                    shallowWrapperDrop
+                    wrapper
                         .find(DropPod)
                         .props()
                         .renderDrop({} as any, {} as any, {} as any) as any,
