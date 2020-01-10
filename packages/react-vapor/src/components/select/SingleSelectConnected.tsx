@@ -25,6 +25,7 @@ export interface ISingleSelectOwnProps extends ISelectProps {
     noFixedWidth?: boolean;
     canClear?: boolean;
     deselectTooltipText?: string;
+    footer?: React.ReactNode;
 }
 
 const selectPropsKeys = keys<ISelectOwnProps>();

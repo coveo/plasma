@@ -59,3 +59,15 @@
         cursor: default;
     }
 }
+
+.select-footer {
+    padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
+    overflow: hidden;
+    color: $dark-grey;
+    font-size: $small-font-size;
+    line-height: $default-line-height;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    list-style: none;
+    border-top: $default-border;
+}

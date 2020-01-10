@@ -149,8 +149,12 @@ describe('ListBox', () => {
         it('should wrap the items using the result from the "wrapItems" prop', () => {
             const wrapItems = (items: React.ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
-
-            expect(list.children().hasClass('wrapping-those-items-real-hard')).toBe(true);
+            expect(
+                list
+                    .childAt(0)
+                    .childAt(0)
+                    .hasClass('wrapping-those-items-real-hard')
+            ).toBe(true);
         });
     });
 });
