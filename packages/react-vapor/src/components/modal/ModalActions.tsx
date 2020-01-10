@@ -48,3 +48,11 @@ export const closeModals = (ids: string[]): IReduxAction<IModalActionPayload> =>
         ids,
     },
 });
+
+export const ModalActions = {
+    closeModal,
+    openModal,
+    addModal,
+    removeModal,
+    closeModals,
+};

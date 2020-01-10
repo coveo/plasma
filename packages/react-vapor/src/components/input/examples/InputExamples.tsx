@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import {AutocompleteConnected, IItemBoxProps} from '../..';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
@@ -27,6 +28,17 @@ export const MultilineInputComponents: React.FunctionComponent = () => (
         <SplitMultilineInputExamples />
     </Section>
 );
+
+const autoCompleteItems: IItemBoxProps[] = [
+    {displayValue: 'Test', value: '0'},
+    {displayValue: 'Test One', value: '1'},
+    {displayValue: 'Disabled', value: 'disabled', disabled: true},
+    {displayValue: 'Three', value: '3'},
+    {displayValue: 'Four', value: '4'},
+    {displayValue: 'Five', value: '5'},
+    {displayValue: 'Six', value: '6'},
+    {displayValue: 'Seven', value: '7'},
+];
 
 // start-print
 
@@ -104,6 +116,11 @@ const InputsConnected: React.FunctionComponent = () => {
                         defaultValue="Awesome connected feature"
                         validateOnChange
                     />
+                </Section>
+                <Section level={3} title="An input with autoCompletion">
+                    <AutocompleteConnected id="autocomplete-input" items={autoCompleteItems}>
+                        <Label>An autocomplete</Label>
+                    </AutocompleteConnected>
                 </Section>
             </Section>
         </Section>

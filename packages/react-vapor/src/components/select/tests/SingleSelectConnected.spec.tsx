@@ -266,6 +266,7 @@ describe('Select', () => {
                     }
                 );
                 expect(mountedSingleSelect.find('#some-footer').matchesElement(footer)).toBeTruthy();
+                mountedSingleSelect.unmount();
             });
         });
     });
