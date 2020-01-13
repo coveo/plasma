@@ -176,6 +176,32 @@ describe('Drop', () => {
                 expect(store.getActions()).toContain(DropActions.toggle(id, DefaultGroupIds.default, true));
             });
 
+            it('should not add data-open attribute to open if the drop is closed', () => {
+                const store = getStoreMock(defaultStore(false));
+                mountDropWithStore({}, store);
+                const shallowWrapperDropPod: ShallowWrapper = shallowWithState(
+                    wrapper
+                        .find(DropPod)
+                        .props()
+                        .renderDrop({} as any, {} as any, {} as any) as any,
+                    {}
+                );
+                expect(shallowWrapperDropPod.prop('data-open')).toBe(false);
+            });
+
+            it('should add data-open attribute to open if the drop is open', () => {
+                const store = getStoreMock(defaultStore(true));
+                mountDropWithStore({}, store);
+                const shallowWrapperDropPod: ShallowWrapper = shallowWithState(
+                    wrapper
+                        .find(DropPod)
+                        .props()
+                        .renderDrop({} as any, {} as any, {} as any) as any,
+                    {}
+                );
+                expect(shallowWrapperDropPod.prop('data-open')).toBe(true);
+            });
+
             describe('events', () => {
                 it('should add the event on click if the drop is opening', () => {
                     const spy = spyOn(document, 'addEventListener');

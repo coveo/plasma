@@ -24,7 +24,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
 
     render() {
         return (
-            <div {..._.omit(this.props, 'actions', 'onItemClick')}>
+            <div {..._.omit(this.props, 'actions', 'onItemClick', 'dropProps')}>
                 <div
                     className={classNames(
                         {'cursor-pointer': !!this.props.onItemClick},
