@@ -30,7 +30,10 @@ describe('<HeaderWrapper/>', () => {
     });
 
     it('should render tabs when specified', () => {
-        const myTabs = [{id: 'tomato', title: '🍅'}, {id: 'sweet-potato', title: '🍠'}];
+        const myTabs = [
+            {id: 'tomato', title: '🍅'},
+            {id: 'sweet-potato', title: '🍠'},
+        ];
         const header = shallow(<HeaderWrapper tabs={myTabs} />);
 
         expect(header.find(TabsHeader).exists()).toBe(true);

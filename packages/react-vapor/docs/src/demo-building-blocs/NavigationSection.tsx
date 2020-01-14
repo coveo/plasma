@@ -6,7 +6,6 @@ import {
     ISideNavigationSectionProps,
     SideNavigationMenuSection,
 } from '../../../src/components/sideNavigation/SideNavigationMenuSection';
-import {callIfDefined} from '../../../src/utils/FalsyValuesUtils';
 
 type NavSectionControlledProps = Omit<ISideNavigationSectionProps, 'expanded' | 'expandable'>;
 
@@ -31,7 +30,7 @@ const Section: React.FunctionComponent<NavSectionProps> = ({
         if (hasMoreThanOneSection) {
             toggleOpened(!isOpened);
         }
-        callIfDefined(onClick);
+        onClick?.();
     };
 
     return (

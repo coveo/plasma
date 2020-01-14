@@ -184,7 +184,10 @@ describe('Select', () => {
 
         it('should display the selectedDisplayValue if defined in the button for the selected item', () => {
             const selectedDisplayValue = 'Another selected value bites the dust';
-            mountSingleSelect([{value: 'a', selected: true, selectedDisplayValue}, {value: 'b', selected: false}]);
+            mountSingleSelect([
+                {value: 'a', selected: true, selectedDisplayValue},
+                {value: 'b', selected: false},
+            ]);
             const buttonHTML = select.find('.dropdown-toggle').html();
 
             expect(buttonHTML).toContain(selectedDisplayValue);
@@ -249,6 +252,21 @@ describe('Select', () => {
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
                 expect(getIsOpen()).toBe(false, 3);
+            });
+        });
+
+        describe('footer props', () => {
+            it('should pass the footer prop to <SelectConnected/>', () => {
+                const footer: React.ReactElement = <span id="some-footer"> 👢 </span>;
+                const mountedSingleSelect = mount(
+                    <SingleSelectConnected id={id} items={[{value: 'a', selected: false}]} footer={footer} />,
+                    {
+                        attachTo: document.getElementById('App'),
+                        context: {store},
+                    }
+                );
+                expect(mountedSingleSelect.find('#some-footer').matchesElement(footer)).toBeTruthy();
+                mountedSingleSelect.unmount();
             });
         });
     });

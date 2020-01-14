@@ -1,8 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import * as _ from 'underscore';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
 
@@ -44,16 +42,16 @@ export class Tab extends React.Component<ITabProps, any> {
     }
 
     componentDidMount() {
-        callIfDefined(this.props.onRender);
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     private handleSelect = (e: React.MouseEvent) => {
         if (!this.props.disabled) {
-            callIfDefined(this.props.onSelect, e);
+            this.props.onSelect?.(e);
         }
     };
 }

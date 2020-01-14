@@ -8,7 +8,7 @@ const isTravis = process.env.TRAVIS;
  */
 const config = {
     entry: {
-        'react-vapor': ['./Index.ts'],
+        'react-vapor': ['./src/Entry.ts'],
         'react-vapor.dependencies': [
             'jquery',
             'underscore',
@@ -50,18 +50,23 @@ const config = {
             },
             {
                 /**
-                 *  Transform let and const to var in js files below to make them ES5 compatible
+                 *  Transform IE11 non-supported code to ES5 via webpack/typescript
                  *  Target only problematic files to prevent compilation from hanging
                  */
-                include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
-                loader: 'awesome-typescript-loader',
+                include: [
+                    path.resolve(__dirname, 'node_modules/unidiff/hunk.js'),
+                    path.resolve(__dirname, 'node_modules/query-string/index.js'),
+                    path.resolve(__dirname, 'node_modules/strict-uri-encode/index.js'),
+                    path.resolve(__dirname, 'node_modules/split-on-first/index.js'),
+                ],
+                loader: 'ts-loader',
             },
             {
                 test: /\.tsx?$/,
-                loader: 'awesome-typescript-loader',
+                loader: 'ts-loader',
                 options: {
                     compiler: 'ttypescript',
-                    configFileName: 'tsconfig.build.json',
+                    configFile: 'tsconfig.build.json',
                 },
             },
             {

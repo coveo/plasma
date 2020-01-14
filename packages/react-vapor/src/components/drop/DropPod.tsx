@@ -122,9 +122,9 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     private updateOffset() {
-        if (this.props.buttonRef && this.props.buttonRef.current) {
+        if (this.props.buttonRef?.current) {
             this.setState({
-                offset: this.props.buttonRef.current.getBoundingClientRect(),
+                offset: this.props.buttonRef?.current?.getBoundingClientRect(),
             });
         }
     }
@@ -140,15 +140,17 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 (this.props.buttonRef.current && this.props.buttonRef.current.getBoundingClientRect()) ||
                 this.state.offset;
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
-            const relativeParent = this.props.parentSelector
-                ? this.props.buttonRef.current.closest(this.props.parentSelector)
-                : this.props.buttonRef.current.offsetParent;
+            const relativeParent =
+                this.props.buttonRef?.current.closest(this.props.parentSelector) ??
+                this.props.buttonRef?.current.parentElement;
+
             const parentOffset = relativeParent.getBoundingClientRect();
+
             const boundingLimit: IBoundingLimit = {
-                maxY: Math.min(parentOffset.bottom, window.innerHeight),
-                minY: Math.max(parentOffset.top, 0),
-                maxX: Math.min(parentOffset.right, window.innerWidth),
-                minX: Math.max(parentOffset.left, 0),
+                maxY: Math.min(parentOffset?.bottom, window.innerHeight),
+                minY: Math.max(parentOffset?.top, 0),
+                maxX: Math.min(parentOffset?.right, window.innerWidth),
+                minX: Math.max(parentOffset?.left, 0),
             };
 
             // Calculate the projection of the next drop position or the last one if no position available
@@ -199,20 +201,22 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 };
             }
 
-            // Restrict the max-width to the inner width of the closest relatively positionned ancestor
-            const {paddingLeft, paddingRight} = getComputedStyle(relativeParent);
-            newDomPosition.style = {
-                ...newDomPosition.style,
-                maxWidth: parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight)),
-            };
+            // Restrict the max-width to the inner width of the closest relatively positioned ancestor
+            if (relativeParent) {
+                const {paddingLeft, paddingRight} = getComputedStyle(relativeParent) ?? {};
+                newDomPosition.style = {
+                    ...newDomPosition.style,
+                    maxWidth: parentOffset.width - (parseFloat(paddingLeft) + parseFloat(paddingRight)),
+                };
 
-            // Don't show if no space to render the drop target inside the window
-            if (dropOffset.height > window.innerHeight || dropOffset.width > window.innerWidth) {
-                return {};
+                // Don't show if no space to render the drop target inside the window
+                if (dropOffset.height > window.innerHeight) {
+                    return {};
+                }
+
+                this.lastPosition = newDomPosition.lastPosition;
+                return newDomPosition.style;
             }
-
-            this.lastPosition = newDomPosition.lastPosition;
-            return newDomPosition.style;
         }
     }
 
@@ -235,8 +239,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 }
 
-export const DropPod: React.ForwardRefExoticComponent<
-    IDropPodProps & React.RefAttributes<HTMLElement>
-> = React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) => (
+export const DropPod: React.ForwardRefExoticComponent<IDropPodProps &
+    React.RefAttributes<HTMLElement>> = React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) => (
     <RDropPod {...props} buttonRef={ref} />
 ));

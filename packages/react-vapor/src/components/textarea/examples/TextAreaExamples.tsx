@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {findWhere} from 'underscore';
 
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Label} from '../../input/Label';
 import {TextAreaConnected} from '../TextArea';
 import {setDisabledTextArea} from '../TextAreaActions';
@@ -42,10 +42,10 @@ export const TextAreaExamples = (): JSX.Element => (
                 <button
                     className="mb2 block"
                     onClick={() => {
-                        ReactVaporStore.dispatch(
+                        ExamplesStore.dispatch(
                             setDisabledTextArea(
                                 'super-textarea-3',
-                                !findWhere(ReactVaporStore.getState().textAreas, {id: 'super-textarea-3'}).disabled
+                                !findWhere(ExamplesStore.getState().textAreas, {id: 'super-textarea-3'}).disabled
                             )
                         );
                     }}

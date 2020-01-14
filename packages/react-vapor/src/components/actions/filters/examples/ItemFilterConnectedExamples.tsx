@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {ReactVaporStore} from '../../../../../docs/ReactVaporStore';
-import {ActionBarConnected} from '../../ActionBarConnected';
+
+import {ExamplesStore} from '../../../../../docs/Store';
+import {ActionBarConnected} from '../../ActionBar';
 import {filterItems} from '../ItemFilterActions';
 
 const ACTION_BAR_ID = 'item-filter-connected-example';
@@ -8,9 +9,9 @@ const ITEM_FILTER_LABEL = 'Item filter';
 
 export class ItemFilterConnectedExamples extends React.Component<any, any> {
     componentDidMount() {
-        ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID, 'Item'));
-        ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID + '1', 'Very looooooooooooong item'));
-        ReactVaporStore.dispatch(filterItems(ACTION_BAR_ID + '2', 'Very looooooooooooong item'));
+        ExamplesStore.dispatch(filterItems(ACTION_BAR_ID, 'Item'));
+        ExamplesStore.dispatch(filterItems(ACTION_BAR_ID + '1', 'Very looooooooooooong item'));
+        ExamplesStore.dispatch(filterItems(ACTION_BAR_ID + '2', 'Very looooooooooooong item'));
     }
 
     render() {

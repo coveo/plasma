@@ -1,7 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
+
 import {ToggleForm} from '../childForm/ToggleForm';
 import {Radio} from './Radio';
 
@@ -42,12 +42,12 @@ export interface IRadioSelectAllProps
         IRadioSelectStateProps {}
 
 export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
-    componentWillMount() {
-        callIfDefined(this.props.onMount, this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
+    componentDidMount() {
+        this.props.onMount?.(this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onUnmount, this.props.id);
+        this.props.onUnmount?.(this.props.id);
     }
 
     render() {
@@ -68,8 +68,8 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     }
 
     private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
-        callIfDefined(this.props.onChange, value, this.props.id, e);
-        callIfDefined(this.props.onChangeCallback, value, this.props.id, e);
+        this.props.onChange?.(value, this.props.id, e);
+        this.props.onChangeCallback?.(value, this.props.id, e);
     }
 
     private isValueDisabled(childValue: string): boolean {

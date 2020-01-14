@@ -4,7 +4,6 @@ import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
@@ -479,7 +478,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
         if (this.props.customFiltering) {
             this.props.customFiltering(filterText);
         } else {
-            callIfDefined(this.props.onFilterTextChange, filterText);
+            this.props.onFilterTextChange?.(filterText);
         }
     }
 

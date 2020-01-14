@@ -40,13 +40,7 @@ export function ReduxConnect(
     mergeProps?: any,
     options?: any
 ): (target: any) => any {
-    return (target) =>
-        connect(
-            mapStateToProps,
-            mapDispatchToProps,
-            mergeProps,
-            options
-        )(target) as any;
+    return (target) => connect(mapStateToProps, mapDispatchToProps, mergeProps, options)(target) as any;
 }
 
 export interface BasePayload {

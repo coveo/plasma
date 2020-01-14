@@ -1,24 +1,27 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+
+import {IReactVaporState} from '../../ReactVapor';
+import {IDispatch} from '../../utils/ReduxUtils';
 import {Content, IContentProps} from '../content/Content';
+import {InlinePromptConnected} from '../inlinePrompt/InlinePrompt';
+import {removePrompt} from '../inlinePrompt/InlinePromptActions';
+import {IPromptState} from '../inlinePrompt/InlinePromptReducers';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {IActionOptions} from './Action';
+import {addActionBar, removeActionBar} from './ActionBarActions';
+import {IActionBarState} from './ActionBarReducers';
 import {ItemFilter} from './filters/ItemFilter';
+import {addItemFilter, filterItems, removeItemFilter} from './filters/ItemFilterActions';
+import {IItemFilterState} from './filters/ItemFilterReducers';
 import {PrimaryAction} from './PrimaryAction';
 import {PrimaryActionConnected} from './PrimaryActionConnected';
 import {SecondaryActions} from './SecondaryActions';
 import {SecondaryActionsConnected} from './SecondaryActionsConnected';
 
-export const DEFAULT_ACTIONS_CONTAINER_CLASSES = [
-    'coveo-table-actions-container',
-    'mod-cancel-header-padding',
-    'mod-border-bottom',
-    'mod-align-header',
-];
-
-export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
+export interface IActionBarProps {
     id?: string;
     itemFilterLabel?: string;
     itemTooltipProps?: ITooltipProps;
@@ -28,97 +31,76 @@ export interface IActionBarOwnProps extends React.ClassAttributes<ActionBar> {
     withSmallActions?: boolean;
     prefixContent?: IContentProps;
     width?: number;
-}
-
-export interface IActionBarStateProps extends IReduxStatePossibleProps {
-    actions?: IActionOptions[];
-    prompt?: JSX.Element;
-    itemFilter?: string;
-    isLoading?: boolean;
-}
-
-export interface IActionBarDispatchProps {
-    onRender?: () => void;
-    onDestroy?: () => void;
-    clearItemFilter?: () => void;
-}
-
-export interface IActionBarChildrenProps {
     moreLabel?: string;
     itemFilterCropLength?: number;
 }
 
-export interface IActionBarProps
-    extends IActionBarOwnProps,
-        IActionBarStateProps,
-        IActionBarDispatchProps,
-        IActionBarChildrenProps {}
-
-export class ActionBar extends React.Component<IActionBarProps, any> {
-    static defaultProps: Partial<IActionBarOwnProps> = {
+export class ActionBar extends React.PureComponent<
+    IActionBarProps & Partial<ReturnType<typeof mapStateToProps>> & Partial<ReturnType<typeof mapDispatchToProps>>
+> {
+    static defaultProps: Partial<IActionBarProps> = {
         extraContainerClasses: [],
         withSmallActions: false,
     };
 
-    private handleClear() {
-        if (this.props.clearItemFilter) {
-            this.props.clearItemFilter();
-        }
-    }
+    static defaultClasses = [
+        'coveo-table-actions-container',
+        'mod-cancel-header-padding',
+        'mod-border-bottom',
+        'mod-align-header',
+    ];
 
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
+    componentDidMount() {
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
+        this.props.onDestroy?.();
     }
 
     render() {
-        const itemFilter: JSX.Element = this.props.itemFilter ? (
-            <ItemFilter
-                label={this.props.itemFilterLabel}
-                item={this.props.itemFilter}
-                itemTooltipProps={this.props.itemTooltipProps}
-                onClear={() => this.handleClear()}
-                crop={this.props.itemFilterCropLength}
-            />
-        ) : null;
+        const containerClasses = classNames(this.defaultClasses, this.props.extraContainerClasses, {
+            'mod-deactivate-pointer': !!this.props.isLoading,
+            'small-actions-container': this.props.withSmallActions,
+        });
 
-        const primaryActions: JSX.Element[] =
-            !this.props.prompt &&
-            _.map(
-                this.props.actions,
-                (action: IActionOptions, index: number): JSX.Element => {
-                    if (action.primary) {
-                        const primaryAction = this.props.withReduxState ? (
-                            <PrimaryActionConnected action={action} parentId={this.props.id} />
-                        ) : (
-                            <PrimaryAction action={action} />
-                        );
-                        return (
-                            <div className="action primary-action" key={'primary-' + index}>
-                                {primaryAction}
-                            </div>
-                        );
-                    }
-                }
-            );
+        const prefixContentElement = this.props.prefixContent ? <Content {...this.props.prefixContent} /> : null;
 
-        const secondaryActions: IActionOptions[] =
-            !this.props.prompt &&
-            _.map(this.props.actions, (action: IActionOptions) => {
-                if (!action.primary) {
-                    return action;
-                }
-            }).filter(Boolean);
+        return (
+            <div className={containerClasses} style={this.props.width ? {width: this.props.width} : null}>
+                {prefixContentElement}
+                <this.Filter />
+                <this.Actions />
+                {this.props.children}
+            </div>
+        );
+    }
+
+    private get defaultClasses(): string {
+        return classNames(this.props.removeDefaultContainerClasses ? '' : ActionBar.defaultClasses);
+    }
+
+    private Actions: React.FunctionComponent = () => {
+        const primaryActions =
+            this.props.actions
+                ?.filter(({primary}) => !!primary)
+                .map((action: IActionOptions, index: number) => {
+                    const primaryAction = this.props.withReduxState ? (
+                        <PrimaryActionConnected action={action} parentId={this.props.id} />
+                    ) : (
+                        <PrimaryAction action={action} />
+                    );
+                    return (
+                        <div className="action primary-action" key={`primary-${index}`}>
+                            {primaryAction}
+                        </div>
+                    );
+                }) ?? [];
+
+        const secondaryActions: IActionOptions[] = this.props.actions?.filter(({primary}) => !primary) ?? [];
 
         let secondaryActionsView: JSX.Element = null;
-        if (secondaryActions.length) {
+        if (!_.isEmpty(secondaryActions)) {
             secondaryActionsView = this.props.withReduxState ? (
                 <SecondaryActionsConnected
                     moreLabel={this.props.moreLabel}
@@ -130,42 +112,69 @@ export class ActionBar extends React.Component<IActionBarProps, any> {
             );
         }
 
-        const actions =
-            primaryActions.length || secondaryActionsView || this.props.prompt ? (
-                <div className="coveo-table-actions">
-                    {primaryActions}
-                    {secondaryActionsView}
-                    {this.props.prompt}
-                </div>
-            ) : null;
+        const actions = this.props.prompt ? (
+            <this.Prompt />
+        ) : (
+            <>
+                {primaryActions}
+                {secondaryActionsView}
+            </>
+        );
 
-        const defaultContainerClasses = !this.props.removeDefaultContainerClasses
-            ? DEFAULT_ACTIONS_CONTAINER_CLASSES
-            : [];
+        return primaryActions.length || secondaryActionsView || this.props.prompt ? (
+            <div className="coveo-table-actions">{actions}</div>
+        ) : null;
+    };
 
-        const containerClasses = classNames(defaultContainerClasses, this.props.extraContainerClasses, {
-            'mod-deactivate-pointer': !!this.props.isLoading,
-            'small-actions-container': this.props.withSmallActions,
-        });
-
-        const prefixContentElement: JSX.Element = this.props.prefixContent ? (
-            <Content {...this.props.prefixContent} />
+    private Prompt: React.FunctionComponent = () =>
+        this.props.prompt?.options ? (
+            <div className="prompt">
+                <InlinePromptConnected {...this.props.prompt} />
+            </div>
         ) : null;
 
-        const divProps: React.HTMLProps<HTMLDivElement> = {
-            className: containerClasses,
-        };
-        if (this.props.width) {
-            divProps.style = {width: this.props.width};
-        }
-
-        return (
-            <div {...divProps}>
-                {prefixContentElement}
-                {itemFilter}
-                {actions}
-                {this.props.children}
-            </div>
-        );
-    }
+    private Filter: React.FunctionComponent = () =>
+        this.props.itemFilter ? (
+            <ItemFilter
+                label={this.props.itemFilterLabel}
+                item={this.props.itemFilter}
+                itemTooltipProps={this.props.itemTooltipProps}
+                onClear={this.props.clearItemFilter}
+                crop={this.props.itemFilterCropLength}
+            />
+        ) : null;
 }
+
+const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarProps) => {
+    const actionBar: IActionBarState = _.findWhere(state.actionBars, {id: ownProps.id});
+    const prompt: IPromptState = _.find(state.prompts, ({id}) => id.indexOf(ownProps.id) >= 0);
+    const itemFilter: IItemFilterState = _.findWhere(state.itemFilters, {id: ownProps.id});
+
+    return {
+        withReduxState: true,
+        actions: actionBar?.actions.filter(({enabled, hideDisabled}) => enabled || hideDisabled === false) ?? [],
+        isLoading: actionBar?.isLoading ?? false,
+        prompt,
+        itemFilter: itemFilter?.item ?? '',
+    };
+};
+
+const mapDispatchToProps = (dispatch: IDispatch<IReactVaporState>, ownProps: IActionBarProps) => ({
+    onRender: () => {
+        dispatch(addActionBar(ownProps.id));
+        if (ownProps.itemFilterLabel) {
+            dispatch(addItemFilter(ownProps.id));
+        }
+    },
+    onDestroy: () => {
+        dispatch(removeActionBar(ownProps.id));
+        dispatch(removeItemFilter(ownProps.id));
+        dispatch(removePrompt(ownProps.id));
+    },
+    clearItemFilter: () => {
+        ownProps.onClearItemFilter?.();
+        dispatch(filterItems(ownProps.id, ''));
+    },
+});
+
+export const ActionBarConnected = connect(mapStateToProps, mapDispatchToProps)(ActionBar);

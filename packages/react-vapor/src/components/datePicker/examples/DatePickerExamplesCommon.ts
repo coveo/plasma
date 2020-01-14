@@ -3,7 +3,7 @@ import {DATES_SEPARATOR} from '../../../utils/DateUtils';
 import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';
 import {DatePickerColors} from '../DatePicker';
 import {IDatesSelectionBox} from '../DatePickerBox';
-import {DatePickerDateRange} from './../DatePickerConstants';
+import {DatePickerDateRange} from '../DatePickerConstants';
 
 export const SELECTION_BOXES: IDatesSelectionBox[] = [
     {

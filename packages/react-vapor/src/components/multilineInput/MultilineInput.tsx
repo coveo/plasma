@@ -93,6 +93,7 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
             <div className="input-field multiline-field form-group">
                 <ul>{deletableInputs}</ul>
                 <AddInput
+                    id={this.props.id}
                     placeholder={this.props.placeholder}
                     value=""
                     onBlur={(newValue: string) => this.handleAddInputChange(newValue)}

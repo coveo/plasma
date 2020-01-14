@@ -76,6 +76,8 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                     return (
                         <Input
                             validateOnChange
+                            labelTitle={input.label}
+                            labelProps={{invalidMessage: input.validationMessage}}
                             ref={(ref: Input) => (inputRef = ref)}
                             classes={styles.input}
                             value={values[labelId]}
@@ -86,7 +88,6 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                                 this.changeValue(value, valid, index, labelId, inputRef)
                             }
                         >
-                            <Label invalidMessage={input.validationMessage}>{index === 0 ? input.label : ''}</Label>
                             {deleteButton}
                         </Input>
                     );

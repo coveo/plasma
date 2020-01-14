@@ -162,17 +162,6 @@ describe('<NavigationPaginationConnected />', () => {
         expect(wrapper.findWhere((select) => select.prop('pageNb') === lastPage).length).toBe(1);
     });
 
-    it('should add loading on page click', () => {
-        expect(_.findWhere(store.getState().loadings, {id: loadingId}).isOn).toBe(false);
-
-        navigationPagination
-            .find('.flat-select-option')
-            .last()
-            .simulate('click');
-
-        expect(_.findWhere(store.getState().loadings, {id: loadingId}).isOn).toBe(true);
-    });
-
     it('should change the current page on page click', () => {
         expect(_.findWhere(store.getState().paginationComposite, {id: basicNavigationPaginationProps.id}).pageNb).toBe(
             0

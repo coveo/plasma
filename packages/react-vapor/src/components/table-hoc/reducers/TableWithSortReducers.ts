@@ -1,6 +1,12 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../../utils/ReduxUtils';
-import {ITableHeaderAddPayload, ITableHeaderBasePayload, TableHeaderActionTypes} from '../actions/TableHeaderActions';
+import {
+    ITableHeaderAddPayload,
+    ITableHeaderBasePayload,
+    ITableHeaderSortPayload,
+    TableHeaderActionTypes,
+} from '../actions/TableHeaderActions';
 
 export interface ITableWithSortState {
     id: string;
@@ -23,14 +29,14 @@ const removeTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAc
     return _.reject(state, (header: ITableWithSortState) => header.id === action.payload.id);
 };
 
-const sortTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderBasePayload>) => {
+const sortTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderSortPayload>) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
         return _.map(state, (header: ITableWithSortState) => {
             if (header.id === current.id) {
                 return {
                     ...header,
-                    isAsc: !header.isAsc,
+                    isAsc: _.isBoolean(action.payload.ascending) ? action.payload.ascending : !header.isAsc,
                 };
             }
             return header.tableId === current.tableId ? {...header, isAsc: undefined} : header;

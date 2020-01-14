@@ -52,7 +52,6 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
             </React.Fragment>
         );
     });
-
     return (
         <g className="chart-tooltip-zones">
             {!!position.position && (

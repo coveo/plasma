@@ -215,3 +215,13 @@ export const defaultTableStateModifierThunk = (
         dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
     };
 };
+
+export const TableDataModifier = {
+    dispatchPreTableStateModification,
+    dispatchPostTableStateModification,
+    applyPredicatesOnDisplayedIds,
+    applyFilterOnDisplayedIds,
+    applyDatePickerOnDisplayedIds,
+    defaultTableStateModifier,
+    defaultTableStateModifierThunk,
+};

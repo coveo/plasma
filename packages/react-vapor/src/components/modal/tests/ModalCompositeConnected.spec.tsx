@@ -1,11 +1,13 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
+import * as ReactModal from 'react-modal';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addModal, closeModal, removeModal} from '../ModalActions';
 import {IModalCompositeProps} from '../ModalComposite';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
+import {ModalHeader} from '../ModalHeader';
 import {ModalHeaderConnected} from '../ModalHeaderConnected';
 
 // tslint:disable-next-line:no-unused-variable
@@ -23,7 +25,10 @@ describe('<ModalCompositeConnected />', () => {
 
     it('should have isOpened prop to true if the modal is opened in the store', () => {
         const store = getStoreMock({
-            modals: [{id: 'another-modal', isOpened: false}, {id: basicProps.id, isOpened: true}],
+            modals: [
+                {id: 'another-modal', isOpened: false},
+                {id: basicProps.id, isOpened: true},
+            ],
         });
         const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store);
 
@@ -69,5 +74,15 @@ describe('<ModalCompositeConnected />', () => {
         modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeevent') as any);
 
         expect(store.getActions()).toContain(closeModal(basicProps.id));
+    });
+
+    it('should not render a <ModalHeader /> or <ModalHeaderConnected /> if the title is not defined', () => {
+        const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithState(
+            <ModalCompositeConnected id="id" isOpened />,
+            {}
+        ).dive();
+
+        expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(0, 'has modalHeaderConnected');
+        expect(modalCompositeConnected.find(ModalHeader).length).toBe(0, 'has modalHeader');
     });
 });

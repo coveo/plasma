@@ -4,15 +4,9 @@
         "module": "esnext",
         "moduleResolution": "Node",
         "removeComments": false,
-        "outDir": "./dist/split/",
         "sourceMap": true,
-        "rootDir": "."
+        "declaration": true,
+        "declarationDir": "dist/definitions"
     },
-    "exclude": [
-        "src/**/*.spec.*",
-        "src/utils/tests/TestUtils.tsx",
-        "src/components/tables/tests/TableTestCommon.tsx",
-        "karma.entry.ts",
-        "Index.ts"
-    ]
+    "include": ["src/Entry.ts", "types/**/*.d.ts"]
 }

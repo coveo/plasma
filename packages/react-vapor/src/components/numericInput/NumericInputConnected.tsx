@@ -3,6 +3,7 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
+import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
@@ -18,6 +19,7 @@ export interface NumericInputOwnProps {
     min?: number;
     max?: number;
     invalidMessage?: string;
+    maxLength?: number; // we use the attribute from the input https://developer.mozilla.org/en-US/docs/Web/HTML/Element/input/text
 }
 
 export interface NumericInputStateProps {
@@ -36,15 +38,15 @@ export interface NumericInputProps
         Partial<NumericInputStateProps>,
         Partial<NumericInputDispatchProps> {}
 
-export const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => {
+const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => {
     return {
         value: NumericInputSelectors.getValue(state, ownProps),
         hasError: NumericInputSelectors.getHasError(state, ownProps),
     };
 };
 
-export const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
-    mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value)),
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
+    mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value, ownProps.min, ownProps.max)),
     unmount: () => dispatch(NumericInputActions.unmount(ownProps.id)),
     setValue: (value: React.ReactText) =>
         dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
@@ -74,7 +76,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         const decrementEnabled =
             _.isUndefined(this.props.min) || _.isNaN(valueAsNumber) || valueAsNumber > this.props.min;
         return (
-            <div className="flex flex-column">
+            <div className="numeric-input flex flex-column">
                 <div className="flex flex-row">
                     <Button
                         classes={['js-decrement mr1 p0', styles.numericInputButton]}
@@ -87,9 +89,18 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                     <div className="flex flex-column">
                         <input
                             {..._.omit(this.props, keys<NumericInputProps>())}
-                            className={classNames('js-numeric-input mb1', this.props.className, styles.numericInput)}
+                            className={classNames(
+                                'js-numeric-input',
+                                {
+                                    [`mod-max-${this.props.maxLength}-digit`]:
+                                        _.isNumber(this.props.maxLength) && this.props.maxLength > 0,
+                                },
+                                this.props.className,
+                                styles.numericInput
+                            )}
                             value={this.props.value}
                             onChange={this.onChange}
+                            onKeyDown={this.onKeyDown}
                         />
                     </div>
                     <Button
@@ -102,11 +113,20 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                     </Button>
                 </div>
                 <div className="flex flex-row">
-                    {this.props.hasError && <span className="generic-form-error">{this.props.invalidMessage}</span>}
+                    {this.props.hasError && <span className="generic-form-error my1">{this.props.invalidMessage}</span>}
                 </div>
             </div>
         );
     }
+
+    private onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+        const key = e.keyCode;
+        if (key === keyCode.upArrow) {
+            this.onIncrement();
+        } else if (key === keyCode.downArrow) {
+            this.onDecrement();
+        }
+    };
 
     private onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = (e.target as HTMLInputElement).value;

@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
@@ -62,7 +61,7 @@ export const tableWithFilter = (supplier: ConfigSupplier<ITableWithFilterConfig>
     class TableWithFilter extends React.Component<ITableWithFilterProps> {
         componentDidUpdate(prevProps: ITableWithFilterProps) {
             if (prevProps.filter !== this.props.filter) {
-                callIfDefined(this.props.onUpdate);
+                this.props.onUpdate?.();
             }
         }
 

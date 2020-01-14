@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../../utils/ReduxUtils';
-import {turnOnLoading} from '../../loading/LoadingActions';
 import {changePage} from '../pagination/NavigationPaginationActions';
 import {IPaginationState} from '../pagination/NavigationPaginationReducers';
 import {
@@ -43,7 +42,6 @@ const mapDispatchToProps = (
     onRender: (perPageNb: number) => dispatch(addPerPage(ownProps.id, perPageNb)),
     onDestroy: () => dispatch(removePerPage(ownProps.id)),
     onPerPageClick: (perPageNb: number, oldPerPageNb: number, currentPage: number) => {
-        dispatch(turnOnLoading(ownProps.loadingIds));
         dispatch(changePerPage(ownProps.id, perPageNb));
         dispatch(changePage(`pagination-${ownProps.id}`, Math.floor((currentPage * oldPerPageNb) / perPageNb)));
     },
