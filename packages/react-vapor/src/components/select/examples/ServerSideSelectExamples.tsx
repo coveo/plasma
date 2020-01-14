@@ -9,57 +9,9 @@ import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {selectWithFilter} from '../hoc/SelectWithFilter';
 import {selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '../hoc/SelectWithInfiniteScroll';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {PhotoItem, PhotoProps, usePhotosAPIMock} from './ServerSideSelectExampleUtils';
 
 const PER_PAGE = 10;
-const IMG_SIZE = 50;
-
-interface PhotoProps {
-    albumId: string;
-    id: string;
-    title: string;
-    url: string;
-    thumbnailUrl: string;
-}
-
-const clean = <T extends object>(o: T) => _(o).pick(_.identity);
-
-function usePhotosAPIMock(): [any[], number, (params?: any, overwrite?: boolean) => void] {
-    const [photos, setPhotos] = React.useState([]);
-    const [totalEntries, setTotalEntries] = React.useState(0);
-
-    function fetchPhotos(params?: any, overwrite = true) {
-        const cleanParams = clean(params);
-        const queryString = !_.isEmpty(cleanParams)
-            ? `?${new URLSearchParams(Object.entries(cleanParams)).toString()}`
-            : '';
-
-        return fetch(`https://jsonplaceholder.typicode.com/photos${queryString}`)
-            .then((response) => {
-                setTotalEntries(parseInt(response.headers.get('x-total-count'), 10));
-                return response.json();
-            })
-            .then((newPhotos) => {
-                if (overwrite) {
-                    setPhotos(newPhotos);
-                } else {
-                    setPhotos([...photos, ...newPhotos]);
-                }
-            });
-    }
-
-    return [photos, totalEntries, fetchPhotos];
-}
-
-const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => {
-    return (
-        <div className="flex flex-center">
-            <a href={url} target="__blank" className="mr2">
-                <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />
-            </a>
-            <span>{title}</span>
-        </div>
-    );
-};
 
 const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) => ({
     filterValue: FilterBoxSelectors.getFilterText(state, props),
@@ -71,10 +23,9 @@ const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & Select
     selectWithInfiniteScroll
 )(SingleSelectConnected);
 
-function ServerSideSingleSelectExampleDisconnected({
-    filterValue,
-    id,
-}: {id: string} & ReturnType<typeof mapStateToProps>) {
+const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<{id: string} & ReturnType<
+    typeof mapStateToProps
+>> = ({filterValue, id}) => {
     const [photos, totalEntries, fetchPhotos] = usePhotosAPIMock();
     const [pageNbr, setPage] = React.useState(1);
 
@@ -114,7 +65,7 @@ function ServerSideSingleSelectExampleDisconnected({
             </div>
         </div>
     );
-}
+};
 
 const ServerSideSingleSelectExample = connect(mapStateToProps)(ServerSideSingleSelectExampleDisconnected);
 

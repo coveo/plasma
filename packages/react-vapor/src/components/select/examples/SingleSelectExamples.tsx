@@ -1,15 +1,33 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
+import {selectWithFilter, selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '..';
+import {FilterBoxSelectors} from '../..';
+import {IReactVaporExampleState} from '../../../../docs/Reducers';
+import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {withServerSideProcessing} from '../../../hoc';
 import {UUID} from '../../../utils/UUID';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {Section} from '../../section';
 import {
     SingleSelectWithFilter,
     SingleSelectWithPredicate,
     SingleSelectWithPredicateAndFilter,
 } from '../hoc/SelectComponents';
-import {SingleSelectConnected} from '../SingleSelectConnected';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {PhotoItem, PhotoProps, usePhotosAPIMock} from './ServerSideSelectExampleUtils';
+
+export const SingleSelectExample: ExampleComponent = () => (
+    <Section>
+        <SingleSelectConnectedExamples />
+        <ServerSideSingleSelectExample id="ServerSideSingleSelect" />
+    </Section>
+);
+
+SingleSelectExample.description =
+    'A Single Select component allows users to choose a single option from a list or, if relevant, to create and select their own custom option.';
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
@@ -22,153 +40,125 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
 ];
 
+const itemsWithAppendedValue = _.map(defaultItems, (item) =>
+    _.extend({}, item, {append: {content: () => <span className="text-red ml3">{item.value}</span>}})
+);
+
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
     {id: UUID.generate(), option: {content: 'All'}, selected: true},
     {id: UUID.generate(), option: {content: 'even'}},
     {id: UUID.generate(), option: {content: 'odd'}},
 ];
 
-export interface ISingleSelectExamplesState {
-    first: IItemBoxProps[];
-    second: IItemBoxProps[];
-    hoc: IItemBoxProps[];
-}
+const matchPredicate = (predicate: string, item: IItemBoxProps) => {
+    const value = parseInt(item.value, 10);
+    if (predicate === defaultFlatSelectOptions[0].id) {
+        return true;
+    } else if (predicate === defaultFlatSelectOptions[1].id) {
+        return value % 2 === 0;
+    } else if (predicate === defaultFlatSelectOptions[2].id) {
+        return value % 2 === 1;
+    } else {
+        return true;
+    }
+};
 
-export class SingleSelectExamples extends React.PureComponent<{}, ISingleSelectExamplesState> {
-    static description =
-        'A Single Select component allows users to choose a single option from a list or, if relevant, to create and select their own custom option.';
+const SingleSelectConnectedExamples: React.ComponentType = () => (
+    <Section level={2} title="Single selects connected to store">
+        <Section level={3} className="form-group" title="A single select with some implementation props">
+            <SingleSelectConnected
+                id={UUID.generate()}
+                items={defaultItems}
+                placeholder="Select something"
+                canClear
+                buttonPrepend={<span>👉 </span>}
+            />
+        </Section>
+        <Section level={3} title="A single select with predicates">
+            <SingleSelectWithPredicate
+                id={UUID.generate()}
+                items={itemsWithAppendedValue}
+                options={defaultFlatSelectOptions}
+                matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
+            />
+        </Section>
+        <Section level={3} title="A single select with filter">
+            <SingleSelectWithFilter id={UUID.generate()} items={itemsWithAppendedValue} />
+        </Section>
+        <Section level={3} title="A single select with a custom match filter that matches the exact value">
+            <SingleSelectWithFilter
+                id={UUID.generate()}
+                items={itemsWithAppendedValue}
+                matchFilter={(filter: string, item: IItemBoxProps) =>
+                    _.isString(item.displayValue) ? item.displayValue.indexOf(filter) !== -1 : false
+                }
+            />
+        </Section>
+        <Section level={3} title="A single select with a filter, predicates, a lots of values and a footer">
+            <SingleSelectWithPredicateAndFilter
+                id={UUID.generate()}
+                items={itemsWithAppendedValue}
+                options={defaultFlatSelectOptions}
+                matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
+                dropClasses="drop-this"
+                customValues
+                footer={<div className="select-footer">The single select footer</div>}
+            />
+        </Section>
+    </Section>
+);
 
-    constructor(props: {}, state: ISingleSelectExamplesState) {
-        super(props, state);
+const PER_PAGE = 10;
 
-        const second = _.map(defaultItems, (item) => _.clone(item));
-        second[0].selected = true;
+const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) => ({
+    filterValue: FilterBoxSelectors.getFilterText(state, props),
+});
 
-        const hoc = _.map(defaultItems, (item) =>
-            _.extend({}, item, {append: {content: () => <span className="text-medium-grey ml1">{item.value}</span>}})
-        );
-        hoc[0].selected = true;
+const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<{id: string} & ReturnType<
+    typeof mapStateToProps
+>> = ({filterValue, id}) => {
+    const [photos, totalEntries, fetchPhotos] = usePhotosAPIMock();
+    const [pageNbr, setPage] = React.useState(1);
 
-        this.state = {
-            first: _.clone(defaultItems),
-            second,
-            hoc,
-        };
+    React.useEffect(() => {
+        fetchPhotos({_page: 1, _limit: PER_PAGE});
+    }, [PER_PAGE]);
+
+    function fetchNextPage() {
+        fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue}, false);
+        setPage(pageNbr + 1);
     }
 
-    render() {
-        return (
-            <div className="my2">
-                <div className="form-group">
-                    <label className="form-control-label">A Simple Single Select with a Custom Placeholder</label>
-                    <br />
-                    <SingleSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.first}
-                        placeholder="Select something"
-                    />
-                </div>
-
-                <div className="form-group">
-                    <label className="form-control-label">A Simple Single Select with a Clear Button</label>
-                    <br />
-                    <SingleSelectConnected id={UUID.generate()} items={this.state.first} canClear />
-                </div>
-
-                <div className="form-group">
-                    <label className="form-control-label">Disabled Simple Single Select</label>
-                    <br />
-                    <SingleSelectConnected id={UUID.generate()} items={this.state.hoc} disabled />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Single Select with prepended text</label>
-                    <br />
-                    <SingleSelectConnected id={UUID.generate()} items={this.state.hoc} disabled />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Single Select With Filter</label>
-                    <br />
-                    <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Single Select With Filter and a custom value</label>
-                    <br />
-                    <SingleSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Single Select With Filter that only match display value
-                    </label>
-                    <br />
-                    <SingleSelectWithFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        matchFilter={(filter: string, item: IItemBoxProps) =>
-                            _.isString(item.displayValue) ? item.displayValue.indexOf(filter) !== -1 : false
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Single Select With Predicates</label>
-                    <br />
-                    <SingleSelectWithPredicate
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Single Select With Filter and Predicates</label>
-                    <br />
-                    <SingleSelectWithPredicateAndFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Single Select With Filter, Predicates and a custom value
-                    </label>
-                    <br />
-                    <SingleSelectWithPredicateAndFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                        customValues
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A single select with a filter, predicates, a lots of values and a footer
-                    </label>
-                    <br />
-                    <SingleSelectWithPredicateAndFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                        dropClasses="drop-this"
-                        footer={<div className="select-footer">The single select footer</div>}
-                    />
-                </div>
-            </div>
-        );
+    function applyFilter() {
+        fetchPhotos({_page: 1, _limit: PER_PAGE, q: filterValue});
+        setPage(1);
     }
 
-    private matchPredicate(predicate: string, item: IItemBoxProps) {
-        const value = parseInt(item.value, 10);
-        if (predicate === defaultFlatSelectOptions[0].id) {
-            return true;
-        } else if (predicate === defaultFlatSelectOptions[1].id) {
-            return value % 2 === 0;
-        } else if (predicate === defaultFlatSelectOptions[2].id) {
-            return value % 2 === 1;
-        } else {
-            return true;
-        }
-    }
-}
+    return (
+        <Section level={2} title="Server side single select">
+            <Section level={3} title="A single select using server-side filtering and pagination with infinite scroll">
+                <ServerSideSingleSelect
+                    id={id}
+                    items={photos.map(
+                        (photo: PhotoProps): IItemBoxProps => ({
+                            value: photo.id,
+                            displayValue: <PhotoItem {...photo} />,
+                        })
+                    )}
+                    totalEntries={totalEntries}
+                    next={fetchNextPage}
+                    onUpdate={applyFilter}
+                    canClear
+                />
+            </Section>
+        </Section>
+    );
+};
+
+const ServerSideSingleSelect: React.ComponentType<ISingleSelectOwnProps & SelectWithInfiniteScrollProps> = _.compose(
+    withServerSideProcessing,
+    selectWithFilter,
+    selectWithInfiniteScroll
+)(SingleSelectConnected);
+
+const ServerSideSingleSelectExample = connect(mapStateToProps)(ServerSideSingleSelectExampleDisconnected);
