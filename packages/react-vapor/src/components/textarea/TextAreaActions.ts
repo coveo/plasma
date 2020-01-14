@@ -32,3 +32,10 @@ export const setDisabledTextArea = (id: string, disabled = false): IReduxAction<
     type: TextAreaActions.setDisabled,
     payload: {id, disabled},
 });
+
+export const TextAreaReduxActions = {
+    addTextArea,
+    removeTextArea,
+    changeTextAreaValue,
+    setDisabledTextArea,
+};

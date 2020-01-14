@@ -39,3 +39,11 @@ export const setSearchBarValue = (id: string, value = '') => ({
     type: SearchBarActions.setValue,
     payload: {id, value},
 });
+
+export const SearchBarReduxActions = {
+    addSearchBar,
+    removeSearchBar,
+    toggleSearching,
+    toggleSearchBarDisabled,
+    setSearchBarValue,
+};
