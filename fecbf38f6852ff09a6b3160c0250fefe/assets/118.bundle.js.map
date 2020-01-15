@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/components/actions/ActionConstants.tsx"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/118.bundle.js","sourcesContent":["export default \"import {IActionOptions} from './Action';\\r\\n\\r\\nexport const ACTION_SEPARATOR: IActionOptions = {\\r\\n    separator: true,\\r\\n    enabled: true,\\r\\n};\\r\\n\""],"sourceRoot":""}

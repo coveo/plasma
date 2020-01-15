@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/components/syncFeedback/index.ts"],"names":[],"mappings":"4FAAA,OAAe","file":"assets/78.bundle.js","sourcesContent":["export default \"export * from './SyncFeedback';\\n\""],"sourceRoot":""}

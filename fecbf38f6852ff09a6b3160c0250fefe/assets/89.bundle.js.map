@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/components/userFeedback/index.ts"],"names":[],"mappings":"4FAAA,OAAe","file":"assets/89.bundle.js","sourcesContent":["export default \"export * from './UserFeedback';\\n\""],"sourceRoot":""}

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/utils/CloneUtils.ts"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/921.bundle.js","sourcesContent":["export default \"export function deepClone(object: any) {\\r\\n    return JSON.parse(JSON.stringify(object));\\r\\n}\\r\\n\""],"sourceRoot":""}

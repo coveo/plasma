@@ -1,2 +1,0 @@
-(window.webpackJsonp=window.webpackJsonp||[]).push([[169],{1188:function(n,e,o){"use strict";o.r(e),e.default="## Guidelines\n\nUse blankSlate to show information and some actions after an event.\n\n---\n"}}]);
-//# sourceMappingURL=169.bundle.js.map

@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/components/infoBox/InfoBox.scss.d.ts"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/429.bundle.js","sourcesContent":["export default \"export const infoBox: string;\\nexport const infoBoxFooter: string;\\n\""],"sourceRoot":""}

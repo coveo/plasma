@@ -1,1 +1,0 @@
-{"version":3,"sources":["webpack:///./src/components/collapsible/styles/CollapsibleInfoBox.scss.d.ts"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/255.bundle.js","sourcesContent":["export default \"export const container: string;\\nexport const alignWithIcon: string;\\n\""],"sourceRoot":""}
