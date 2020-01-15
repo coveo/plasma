@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {TextLoadingPlaceholder} from '../loading/components/TextLoadingPlaceholder';
 import {Svg} from '../svg/Svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
@@ -10,6 +11,7 @@ import {ITableWithSortState} from './reducers/TableWithSortReducers';
 export interface ITableHeaderWithSortOwnProps {
     id: string;
     tableId: string;
+    isLoading?: boolean;
     isDefault?: boolean;
 }
 
@@ -62,6 +64,14 @@ export class TableHeaderWithSort extends React.Component<
             'admin-sort-ascending': this.props.sorted === true,
             'admin-sort-descending': this.props.sorted === false,
         });
+
+        if (this.props.isLoading) {
+            return (
+                <th id={this.props.id}>
+                    <TextLoadingPlaceholder small />
+                </th>
+            );
+        }
 
         return (
             <th id={this.props.id} className={headerCellClasses} onClick={() => this.props.onSort()}>

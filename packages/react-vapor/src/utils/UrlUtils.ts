@@ -21,7 +21,7 @@ function toQueryString(obj: object): string {
     return QueryString.stringify(obj, {sort: false});
 }
 
-function getSearchParams() {
+function getSearchParams(): {[key: string]: any} {
     return UrlUtils.toObject(UrlUtils.getQuery());
 }
 
