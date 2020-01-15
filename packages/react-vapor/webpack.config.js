@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const isTravis = !!process.env.TRAVIS;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 /**
  * Config file for the documentation project
@@ -16,7 +17,7 @@ module.exports = {
         filename: '[name].bundle.js',
         chunkFilename: 'assets/[name].bundle.js',
     },
-    devtool: isTravis ? 'source-map' : 'cheap-module-source-map',
+    devtool: isTravis ? 'source-map' : 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
@@ -32,40 +33,44 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
+        new ForkTsCheckerWebpackPlugin({
+            tsconfig: path.resolve('./tsconfig.build.json'),
+            tslint: path.resolve('../../tslint.json'),
+            tslintAutoFix: true,
+            async: false,
+        }),
     ],
     stats: 'minimal',
     module: {
         rules: [
-            {
-                enforce: 'pre',
-                test: /\.tsx?$/,
-                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'docs')],
-                use: {
-                    loader: 'tslint-loader',
-                    options: {
-                        configFile: '../../tslint.json',
-                        tsConfigFile: './tsconfig.build.json',
-                        emitErrors: isTravis,
-                        failOnHint: isTravis,
-                    },
-                },
-            },
             {
                 /**
                  *  Transform let and const to var in js files below to make them ES5 compatible
                  *  Target only problematic files to prevent compilation from hanging
                  */
                 include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
-                use: [{loader: 'ts-loader'}],
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                            configFile: 'tsconfig.build.json',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,
-                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'docs')],
-                loader: 'ts-loader',
-                options: {
-                    compiler: 'ttypescript',
-                    configFile: 'tsconfig.build.json',
-                },
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            compiler: 'ttypescript',
+                            configFile: 'tsconfig.build.json',
+                            transpileOnly: true,
+                        },
+                    },
+                ],
             },
             {
                 test: /\.scss$/,
@@ -128,5 +133,6 @@ module.exports = {
         compress: true,
         hot: true,
         inline: true,
+        progress: true,
     },
 };
