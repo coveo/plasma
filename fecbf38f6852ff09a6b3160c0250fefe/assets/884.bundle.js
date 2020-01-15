@@ -1,0 +1,2 @@
+(window.webpackJsonp=window.webpackJsonp||[]).push([[884],{1972:function(n,r,e){"use strict";e.r(r),r.default="import * as React from 'react';\r\n\r\nexport class ToastContentExample extends React.Component {\r\n    render() {\r\n        return (\r\n            <ul>\r\n                <li style={{marginBottom: '5px'}}>\r\n                    <a href=\"#\">Some Link</a>\r\n                </li>\r\n                <li>Complex React Component</li>\r\n            </ul>\r\n        );\r\n    }\r\n}\r\n"}}]);
+//# sourceMappingURL=884.bundle.js.map
