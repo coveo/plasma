@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 const isTravis = process.env.TRAVIS;
+const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 
 /**
  * Config file for the packaged library
@@ -21,11 +22,11 @@ const config = {
             'd3',
         ],
     },
-    mode: 'development',
+    mode: 'production',
     devtool: 'source-map',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: '[name].js',
+        filename: '[name].min.js',
         library: ['ReactVapor'],
         libraryTarget: 'umd',
     },
@@ -59,7 +60,14 @@ const config = {
                     path.resolve(__dirname, 'node_modules/strict-uri-encode/index.js'),
                     path.resolve(__dirname, 'node_modules/split-on-first/index.js'),
                 ],
-                loader: 'ts-loader',
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            configFile: 'tsconfig.build.json',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,
@@ -119,6 +127,7 @@ const config = {
             WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
+        new UnminifiedWebpackPlugin(),
         // new BundleAnalyzerPlugin(),
     ],
     externals: {
