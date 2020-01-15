@@ -1,7 +1,0 @@
-# Ignore compiled files
-dist
-coverage
-docs/assets/
-
-# awesome-typescript-loader
-.awcache

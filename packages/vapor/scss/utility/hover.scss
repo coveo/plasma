@@ -1,5 +1,0 @@
-@each $color, $value in $palette {
-    .hover-color-#{$color}:hover {
-        background-color: $value;
-    }
-}

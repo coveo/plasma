@@ -1,5 +1,0 @@
-@for $i from 1 through length($transparencies) {
-    .transparency-#{$i} {
-        opacity: nth($transparencies, $i);
-    }
-}
