@@ -20,12 +20,10 @@
         "url": "git+https://github.com/coveo/react-vapor.git"
     },
     "scripts": {
-        "start": "webpack-dev-server --progress",
+        "start": "webpack-dev-server",
         "docs": "webpack",
         "compileTs": "webpack --config webpack.config.prod.js",
-        "minify": "webpack --config webpack.config.prod.minify.js",
-        "build": "gulp clean && concurrently \"npm run compileTs\" \"npm run minify\"",
-        "build:dev": "gulp clean && npm run compileTs",
+        "build": "gulp clean && webpack --config webpack.config.prod.js",
         "pretest": "gulp clean:tests",
         "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
         "test:compile": "tslint --project ./tsconfig.test.json -c ../../tslint.json",
@@ -122,6 +120,7 @@
         "faker": "4.1.0",
         "fancy-log": "1.3.3",
         "file-loader": "3.0.1",
+        "fork-ts-checker-webpack-plugin": "3.1.1",
         "gulp": "4.0.0",
         "html-webpack-plugin": "3.2.0",
         "imports-loader": "0.8.0",
@@ -173,16 +172,13 @@
         "typings-for-css-modules-loader": "1.7.0",
         "underscore": "1.9.1",
         "underscore.string": "3.3.5",
+        "unminified-webpack-plugin": "2.0.0",
         "webpack": "4.40.2",
         "webpack-bundle-analyzer": "3.0.3",
         "webpack-cli": "3.2.0",
         "webpack-dev-server": "3.1.11"
     },
     "files": [
-        "dist",
-        "src",
-        "gulpfile.js",
-        "webpack.prod.config.js",
-        "LICENSE"
+        "dist"
     ]
 }
