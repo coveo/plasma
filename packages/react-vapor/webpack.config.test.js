@@ -7,7 +7,7 @@ module.exports = function(options) {
     const config = {
         mode: 'development',
         entry: './karma.entry.ts',
-        devtool: 'cheap-source-map',
+        devtool: 'inline-source-map',
         resolve: {
             extensions: ['.ts', '.tsx', '.js'],
         },
@@ -33,7 +33,15 @@ module.exports = function(options) {
                      *  Target only problematic files to prevent compilation from hanging
                      */
                     include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
-                    loader: 'ts-loader',
+                    use: [
+                        {
+                            loader: 'ts-loader',
+                            options: {
+                                transpileOnly: true,
+                                configFile: 'tsconfig.test.json',
+                            },
+                        },
+                    ],
                 },
                 {
                     test: /\.tsx?$/,
