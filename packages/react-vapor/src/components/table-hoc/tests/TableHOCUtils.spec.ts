@@ -1,4 +1,4 @@
-import {TableHOCUtils} from '../TableHOCUtils';
+import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('TableHOCUtils', () => {
     const defaultProps = {id: 'some-id', componentId: 'some-componentId', tableId: 'some-tableId'};
