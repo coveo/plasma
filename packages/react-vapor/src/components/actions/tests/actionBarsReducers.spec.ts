@@ -4,7 +4,7 @@ import {selectListBoxOption} from '../../listBox/ListBoxActions';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
 import {changePage} from '../../navigation/pagination/NavigationPaginationActions';
 import {changePerPage} from '../../navigation/perPage/NavigationPerPageActions';
-import {TableHOCUtils} from '../../table-hoc/TableHOCUtils';
+import {TableHOCUtils} from '../../table-hoc/utils/TableHOCUtils';
 import {ActionBarActions, IActionBarPayload, IChangeActionBarActionsPayload} from '../ActionBarActions';
 import {
     actionBarInitialState,
