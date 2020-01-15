@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/collapsible/styles/CollapsibleContainer.scss.d.ts"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/254.bundle.js","sourcesContent":["export default \"export const collapsible: string;\\nexport const header: string;\\nexport const content: string;\\n\""],"sourceRoot":""}

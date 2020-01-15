@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/refresh/examples/RefreshExample.1.use.md"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/647.bundle.js","sourcesContent":["export default \"## Guidelines\\n\\nUse refresh component to trigger a callback after a number of X seconds.\\n\\n---\\n\""],"sourceRoot":""}

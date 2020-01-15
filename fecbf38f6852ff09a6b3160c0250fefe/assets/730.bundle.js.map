@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/stickyFooter/StickyFooter.scss.d.ts"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/730.bundle.js","sourcesContent":["export default \"export const stickyFooter: string;\\nexport const stickyFooterOpened: string;\\n\""],"sourceRoot":""}

@@ -1,0 +1,1 @@
+{"version":3,"sources":["webpack:///./src/components/blankSlate/examples/BlankSlateExample.1.use.md"],"names":[],"mappings":"6FAAA,OAAe","file":"assets/169.bundle.js","sourcesContent":["export default \"## Guidelines\\n\\nUse blankSlate to show information and some actions after an event.\\n\\n---\\n\""],"sourceRoot":""}
