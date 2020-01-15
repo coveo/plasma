@@ -135,7 +135,7 @@ describe('<TableChildBlankSlate />', () => {
         describe('render content', () => {
             it('should render the default blankslate if no results without actions and without table being in error', () => {
                 expect(mountComponentWithProps(tablePropsMock).text()).toContain(
-                    tablePropsMock.blankSlateDefault.title
+                    tablePropsMock.blankSlateDefault.title as string
                 );
             });
 
@@ -212,7 +212,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         tableCompositeState: {filter: 'non empty'},
                     } as any).text()
-                ).toContain(tablePropsMock.blankSlateDefault.title);
+                ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
             it('should render blankSlateDefault if the table has no blankslate on action and from (datePicker) is non empty', () => {
@@ -221,7 +221,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         tableCompositeState: {from: Date.now()},
                     } as any).text()
-                ).toContain(tablePropsMock.blankSlateDefault.title);
+                ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
             it('should render blankSlateDefault if the table has no blankslate on action and to (datePicker) is non empty', () => {
@@ -230,7 +230,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         tableCompositeState: {to: Date.now()},
                     } as any).text()
-                ).toContain(tablePropsMock.blankSlateDefault.title);
+                ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
             it('should render blankSlateDefault if the table has no blankslate on action and some predicates have a non default value', () => {
@@ -239,7 +239,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         tableCompositeState: {predicates: [{attribute1: 'non default value'}]},
                     } as any).text()
-                ).toContain(tablePropsMock.blankSlateDefault.title);
+                ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
 
             it('should render blankslateOnError if the table is in error and has a blankslateOnError', () => {
@@ -259,7 +259,7 @@ describe('<TableChildBlankSlate />', () => {
                         ...tablePropsMock,
                         tableCompositeState: {isInError: true},
                     } as any).text()
-                ).toContain(tablePropsMock.blankSlateDefault.title);
+                ).toContain(tablePropsMock.blankSlateDefault.title as string);
             });
         });
     });

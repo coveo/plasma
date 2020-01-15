@@ -3,7 +3,6 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {mod} from '../../utils/DataStructuresUtils';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
 
 export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
@@ -15,6 +14,7 @@ export interface IListBoxOwnProps {
     multi?: boolean;
     items?: IItemBoxProps[];
     wrapItems?: (items: React.ReactNode) => React.ReactNode;
+    footer?: React.ReactNode;
 }
 
 export interface IListBoxStateProps {
@@ -39,11 +39,11 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
     };
 
     componentWillMount() {
-        callIfDefined(this.props.onRender);
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     private getClasses(): string {
@@ -108,16 +108,19 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
 
     render() {
         return (
-            <ul className={this.getClasses()} id={this.props.id}>
-                {this.props.wrapItems(this.getItems())}
-            </ul>
+            <>
+                <ul className={this.getClasses()} id={this.props.id}>
+                    {this.props.wrapItems(this.getItems())}
+                </ul>
+                {this.props.footer}
+            </>
         );
     }
 
     private onSelectItem(item: IItemBoxProps, index?: number) {
         if (!item.disabled) {
-            callIfDefined(this.props.onOptionClick, item, index);
-            callIfDefined(item.onOptionClick, item, index);
+            this.props.onOptionClick?.(item, index);
+            item.onOptionClick?.(item, index);
         }
     }
 }

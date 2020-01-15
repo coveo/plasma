@@ -8,9 +8,14 @@ export const NumericInputActionTypes = {
     increment: 'INCREMENT_NUMERIC_INPUT',
 };
 
-const mount = (id: string, initialValue: number): IReduxAction<ISetNumericInputPayload> => ({
+const mount = (
+    id: string,
+    initialValue: number,
+    min?: number,
+    max?: number
+): IReduxAction<ISetNumericInputPayload> => ({
     type: NumericInputActionTypes.mount,
-    payload: {id, value: initialValue},
+    payload: {id, value: initialValue, min, max},
 });
 
 const unmount = (id: string): IReduxAction<{id: string}> => ({

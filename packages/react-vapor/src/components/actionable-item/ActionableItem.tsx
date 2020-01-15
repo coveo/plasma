@@ -1,9 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
+
 import {DropPodPosition} from '../drop/DomPositionCalculator';
-import {Drop} from '../drop/Drop';
+import {Drop, IDropOwnProps} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
@@ -14,6 +14,7 @@ export interface IActionableItemProps {
     onItemClick?: (e?: React.MouseEvent<HTMLDivElement>) => any;
     actions?: IItemBoxProps[];
     containerClassName?: string;
+    dropProps?: Partial<IDropOwnProps>;
 }
 
 export class ActionableItem extends React.Component<IActionableItemProps & React.HTMLAttributes<HTMLDivElement>> {
@@ -23,7 +24,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
 
     render() {
         return (
-            <div {..._.omit(this.props, 'actions', 'onItemClick')}>
+            <div {..._.omit(this.props, 'actions', 'onItemClick', 'dropProps')}>
                 <div
                     className={classNames(
                         {'cursor-pointer': !!this.props.onItemClick},
@@ -32,7 +33,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         actionableItemContainer,
                         this.props.containerClassName
                     )}
-                    onClick={(e: React.MouseEvent<HTMLDivElement>) => callIfDefined(this.props.onItemClick, e)}
+                    onClick={(e: React.MouseEvent<HTMLDivElement>) => this.props.onItemClick?.(e)}
                 >
                     {this.props.children}
                 </div>
@@ -54,6 +55,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                                 <Svg svgName="more-append" svgClass="icon mod-12 fill-medium-blue" />
                             </div>
                         )}
+                        {...(this.props.dropProps || {})}
                     >
                         <ListBox items={this.props.actions} />
                     </Drop>

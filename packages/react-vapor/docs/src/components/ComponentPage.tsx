@@ -2,6 +2,7 @@ import * as React from 'react';
 import * as Markdown from 'react-markdown';
 
 import {BasicHeader} from '../../../src/components/headers/BasicHeader';
+import {Loading} from '../../../src/components/loading/Loading';
 import {ITabProps} from '../../../src/components/tab/Tab';
 import {TabContent} from '../../../src/components/tab/TabContent';
 import {TabPaneConnected} from '../../../src/components/tab/TabPaneConnected';
@@ -9,13 +10,13 @@ import Code from '../demo-building-blocs/Code';
 import {MarkdownOverrides} from '../demo-building-blocs/MarkdownOverrides';
 import {IComponent, TabConfig} from './ComponentsInterface';
 
-type ComponentPageProps = IComponent;
+type ComponentPageProps = IComponent & {tabs?: TabConfig[]};
 
 const buildTabIdTemplate = (componentName: string) => (tabName: string) => `${componentName}-${tabName}-tab`;
 
 const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
     const componentRootPath = props.path.substring(0, props.path.lastIndexOf('.'));
-    const [tabs, setTabs] = React.useState([]);
+    const [tabs, setTabs] = React.useState(null);
     React.useEffect(() => {
         const load = async (path: string, ctx: any) => {
             if (path.includes(componentRootPath)) {
@@ -41,7 +42,7 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
         loadAll().then((all) => setTabs(all.filter(Boolean)));
     }, [componentRootPath]);
     const {name, component} = props;
-    const hasMarkdownTabs = tabs.length > 0;
+    const hasMarkdownTabs = tabs && tabs.length > 0;
     const getTabId = buildTabIdTemplate(name);
     const mapTabConfigToProps = ({tabName}: TabConfig): ITabProps => ({
         id: getTabId(tabName),
@@ -50,11 +51,13 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
 
     const tabProps: ITabProps[] = hasMarkdownTabs && [
         {id: getTabId('development'), title: component.firstTabLabel || 'Develop'},
-        ...tabs.sort((tabA, tabB) => tabA.order - tabB.order).map(mapTabConfigToProps),
+        ...tabs.sort((tabA: TabConfig, tabB: TabConfig) => tabA.order - tabB.order).map(mapTabConfigToProps),
     ];
     const PageLayout = hasMarkdownTabs ? PageLayoutWithTabs : PageLayoutWithoutTabs;
 
-    return (
+    return tabs === null ? (
+        <Loading fullContent />
+    ) : (
         <>
             <BasicHeader title={{text: component.title || name}} description={component.description} tabs={tabProps} />
             <PageLayout {...props} tabs={tabs} />

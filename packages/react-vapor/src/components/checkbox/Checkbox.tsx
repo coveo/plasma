@@ -5,6 +5,7 @@ import {IInputProps, Input} from '../input/Input';
 
 export interface ICheckboxOwnProps {
     handleOnClick?: (isChecked: boolean) => void;
+    clearSides?: boolean;
 }
 
 export interface ICheckboxStateProps {
@@ -45,7 +46,7 @@ export class Checkbox extends React.Component<ICheckboxProps> {
     render() {
         const classes: string = classNames(
             'coveo-checkbox-label',
-            {disabled: !!this.props.disabled},
+            {disabled: !!this.props.disabled, 'checkbox-clear': this.props.clearSides},
             this.props.classes
         );
         const innerInputClasses: string = classNames(

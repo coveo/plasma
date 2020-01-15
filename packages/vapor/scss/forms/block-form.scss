@@ -64,23 +64,64 @@ form {
             }
         }
 
-        &.mod-padding-children {
+        @mixin section-mixin($level) {
+            $scaledSpacing: nth([6, 4, 2.5], $level) * $spacing / 2;
+            $scaledDescriptionFontSize: nth([$default-font-size, $small-font-size, $small-font-size], $level);
+            $inputFieldLabelSpacing: 0.75rem;
+            $reactVaporSliderTopSpacing: 1.75rem;
+
+            > :not(:first-child) {
+                margin-top: $scaledSpacing;
+            }
+            > .labeled-input {
+                > .input-field {
+                    margin-top: $scaledSpacing + $inputFieldLabelSpacing;
+                }
+
+                > * {
+                    margin-top: $scaledSpacing;
+                }
+            }
+            > .btn {
+                + .input-field {
+                    margin-top: $scaledSpacing + $inputFieldLabelSpacing;
+                }
+            }
+            > .vapor-slider.input-field {
+                margin-top: $scaledSpacing + $reactVaporSliderTopSpacing;
+                margin-bottom: 0.75rem;
+            }
             > .input-field {
-                margin-top: $form-group-margin + $input-margin-top;
+                margin-top: $scaledSpacing + $inputFieldLabelSpacing;
+            }
+            > .description {
+                font-size: $scaledDescriptionFontSize;
+            }
+        }
+
+        &.mod-padding-children {
+            > .labeled-input {
+                > .help-text {
+                    margin-top: 0.4rem;
+                }
             }
 
-            > header:not(:first-child) {
-                margin-top: $form-group-margin;
+            > .description {
+                margin-top: 0;
             }
 
-            > *:not(:first-child) {
-                margin-top: $spacing * 2;
-                &.input-field {
-                    margin-top: $form-group-margin + $input-margin-top;
-                }
-                &.form-group {
-                    margin-top: $form-group-margin;
-                }
+            > .btn {
+                margin-top: 0;
+            }
+
+            &.level-1 {
+                @include section-mixin(1);
+            }
+            &.level-2 {
+                @include section-mixin(2);
+            }
+            &.level-3 {
+                @include section-mixin(3);
             }
         }
     }

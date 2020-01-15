@@ -35,9 +35,8 @@ const mapDispatchToProps = (
     onClickItem: (itemId) => dispatch(selectSubNavigation(ownProps.id, itemId)),
 });
 
-export const SubNavigationConnected: React.ComponentClass<
-    ISubNavigationProps & React.HTMLAttributes<HTMLElement>
-> = connect(
+export const SubNavigationConnected: React.ComponentClass<ISubNavigationProps &
+    React.HTMLAttributes<HTMLElement>> = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

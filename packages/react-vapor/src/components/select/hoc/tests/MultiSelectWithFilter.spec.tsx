@@ -78,7 +78,10 @@ describe('Select', () => {
             const noItemsText = 'not an item text';
 
             mountMultiSelect({
-                items: [{value: 'a', selected: true}, {value: 'b', selected: true}],
+                items: [
+                    {value: 'a', selected: true},
+                    {value: 'b', selected: true},
+                ],
                 noItemsText,
                 customValues: true,
             });

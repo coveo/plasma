@@ -1,5 +1,6 @@
 // tslint:disable
 export class UUID {
+    // TODO: replace for https://www.npmjs.com/package/uuid
     static generate() {
         // Source: https://stackoverflow.com/questions/105034/create-guid-uuid-in-javascript
         let d = Date.now();

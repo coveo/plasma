@@ -7,6 +7,10 @@ table.mod-align-header {
         padding-left: $header-padding;
     }
 
+    tbody tr.blankslate-row td:first-child {
+        padding-left: $table-blankslate-row-width;
+    }
+
     &.mod-collapsible-rows tbody tr.collapsible-row td:first-child {
         padding-left: $header-padding;
 

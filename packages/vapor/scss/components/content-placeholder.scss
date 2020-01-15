@@ -1,6 +1,23 @@
 .content-placeholder {
-    background-color: $light-grey;
-    border-radius: $content-placeholder-border-radius;
+    @extend .bg-grey-3, .mod-rounded-border-2;
+}
+
+.text-content-placeholder {
+    @extend .bg-grey-1, .mod-rounded-border-2;
+    width: $text-content-placeholder-medium-width;
+    height: $text-content-placeholder-height;
+
+    &.mod-word {
+        width: $text-content-placeholder-word-width;
+    }
+
+    &.mod-small {
+        width: $text-content-placeholder-small-width;
+    }
+
+    &.mod-large {
+        width: $text-content-placeholder-large-width;
+    }
 }
 
 .content-placeholder-animated {

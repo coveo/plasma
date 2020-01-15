@@ -15,7 +15,7 @@ git commit --quiet -m "Clean old build" --no-verify
 git stash pop
 
 echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
-cp -R packages/react-vapor/docs "$BRANCH_FOLDER_NAME"
+cp -R packages/react-vapor/docs/dist "$BRANCH_FOLDER_NAME"
 
 git add "$BRANCH_FOLDER_NAME"
 git commit --quiet -m "live demo at https://coveo.github.io/react-vapor/$BRANCH_FOLDER_NAME/" --no-verify

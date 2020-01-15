@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IToastProps, Toast} from './Toast';
 import {IToastState} from './ToastReducers';
 
@@ -54,7 +55,14 @@ export class ToastContainer extends React.Component<IToastContainerProps, {}> {
         });
         const toasts = this.props.toasts
             ? _.map(this.props.toasts, (toast: IToastProps) => (
-                  <Toast key={toast.id} {...toast} onClose={() => this.onCloseToast(toast.id)} />
+                  <Toast
+                      key={toast.id}
+                      {...toast}
+                      onClose={() => {
+                          this.onCloseToast(toast.id);
+                          toast.onClose?.();
+                      }}
+                  />
               ))
             : this.props.children;
 

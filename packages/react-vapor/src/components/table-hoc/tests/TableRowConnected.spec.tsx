@@ -63,6 +63,17 @@ describe('Table HOC', () => {
             expect(wrapper.find('tr').hasClass('row-disabled')).toBe(true);
         });
 
+        it('should have the class "no-hover" if the row has actions prop empty', () => {
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+            expect(wrapper.find('tr').hasClass('no-hover')).toBe(true);
+        });
+
+        it('should not have the class "no-hover" if the row has actions prop', () => {
+            const actions = [{name: 'name', enabled: true}];
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" actions={actions} />, store).dive();
+            expect(wrapper.find('tr').hasClass('no-hover')).not.toBe(true);
+        });
+
         it('should not have the class selected if the row is not selected in the state', () => {
             store = getStoreMock({
                 tableHOCRow: [
@@ -284,10 +295,12 @@ describe('Table HOC', () => {
                 ).toBe(true);
             });
 
-            it('should dispatch a toggleCollapsible action when clicking on a collapsible heading-row', () => {
+            it('should dispatch a toggleCollapsible action when clicking on the collapsible button', () => {
                 const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id);
 
-                wrapper.find('tr.heading-row').simulate('click', {});
+                wrapper
+                    .find(CollapsibleToggle)
+                    .simulate('click', jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']));
 
                 expect(store.getActions()).toContain(expectedAction);
             });
@@ -408,7 +421,10 @@ describe('Table HOC', () => {
                 store
             ).dive();
 
-            row.find('tr.heading-row').simulate('click', {});
+            row.find(CollapsibleToggle).simulate(
+                'click',
+                jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation'])
+            );
             expect(spy).toHaveBeenCalledWith(true);
         });
 
@@ -437,7 +453,10 @@ describe('Table HOC', () => {
                 store
             ).dive();
 
-            row.find('tr.heading-row').simulate('click', {});
+            row.find(CollapsibleToggle).simulate(
+                'click',
+                jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation'])
+            );
             expect(spy).toHaveBeenCalledWith(false);
         });
     });

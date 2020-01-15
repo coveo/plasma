@@ -6,23 +6,28 @@ import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
-    title?: string;
+    title?: React.ReactNode;
     description?: React.ReactNode;
+    additionalSection?: React.ReactNode;
     buttons?: IBaseActionOptions[];
     withModal?: boolean;
     classes?: string[];
     containerClasses?: string[];
+    descriptionClassName?: string;
     svgName?: string;
     svgClass?: string;
 }
 
 export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
     static defaultProps: Partial<IBlankSlateProps> = {
-        title: '',
+        title: null,
+        description: null,
+        additionalSection: null,
         buttons: [],
         withModal: false,
         classes: [],
         containerClasses: [],
+        descriptionClassName: '',
         svgName: '',
         svgClass: '',
     };
@@ -34,7 +39,9 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
     }
 
     private getDescriptionTemplate(): JSX.Element {
-        return this.props.description ? <p>{this.props.description}</p> : null;
+        return this.props.description ? (
+            <p className={this.props.descriptionClassName}>{this.props.description}</p>
+        ) : null;
     }
 
     private getButtonsTemplate(): JSX.Element[] {
@@ -58,6 +65,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
                     <h1>{this.props.title}</h1>
                     {this.getDescriptionTemplate()}
                     {this.getButtonsTemplate()}
+                    {this.props.additionalSection}
                 </div>
             </div>
         );

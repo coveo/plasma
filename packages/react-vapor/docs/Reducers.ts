@@ -7,7 +7,7 @@ import {
 import {
     IExampleServerTableState,
     TableHOCServerExampleReducer,
-} from '../src/components/table-hoc/examples/TableHOCServerExampleReducer';
+} from '../src/components/table-hoc/examples/TableHOCServerExamples';
 import {IReactVaporState} from '../src/ReactVapor';
 import {ReactVaporReducers} from '../src/ReactVaporReducers';
 
@@ -16,7 +16,7 @@ export interface IReactVaporExampleState extends IReactVaporState {
     tableHOCExample?: IExampleServerTableState;
 }
 
-export const Reducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
+export const ExamplesReducers: Redux.Reducer<IReactVaporExampleState> = Redux.combineReducers<IReactVaporExampleState>({
     ...ReactVaporReducers,
     listBoxExampleState: listBoxExampleReducer,
     tableHOCExample: TableHOCServerExampleReducer,

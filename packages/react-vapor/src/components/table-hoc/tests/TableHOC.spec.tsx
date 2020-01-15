@@ -1,7 +1,8 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ActionBarConnected} from '../../actions/ActionBarConnected';
+
+import {ActionBarConnected} from '../../actions/ActionBar';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
 
@@ -72,6 +73,11 @@ describe('TableHOC', () => {
         it('should render an ActionBarConnected if the table prop hasActionButtons is true', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons />);
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
+        });
+
+        it('should render an ActionBarConnected with a top border if the "hasBorderTop" is set to true', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons showBorderTop />);
+            expect(wrapper.find(ActionBarConnected).prop('extraContainerClasses')).toContain('mod-border-top');
         });
 
         it('should render an ActionBarConnected if the table prop hasActionButtons is false but the table have some actions', () => {

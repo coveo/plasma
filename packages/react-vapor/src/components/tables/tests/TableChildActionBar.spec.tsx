@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ActionBarConnected} from '../../actions/ActionBarConnected';
+import {ActionBarConnected} from '../../actions/ActionBar';
 import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
 import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';

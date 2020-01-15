@@ -126,7 +126,10 @@ describe('ListBox', () => {
 
         it('should show the no result <BoxItem/> if all items are hidden', () => {
             renderListBox({
-                items: [{value: 'test', hidden: true}, {value: 'test 1', hidden: true}],
+                items: [
+                    {value: 'test', hidden: true},
+                    {value: 'test 1', hidden: true},
+                ],
             });
 
             expect(listBoxComponent.find(ItemBox).props().value).toBe(ListBox.defaultProps.noResultItem.value);
@@ -134,7 +137,10 @@ describe('ListBox', () => {
 
         it('should not show the no result <BoxItem/> if one item is not hidden', () => {
             renderListBox({
-                items: [{value: 'test', hidden: false}, {value: 'test 1', hidden: true}],
+                items: [
+                    {value: 'test', hidden: false},
+                    {value: 'test 1', hidden: true},
+                ],
             });
 
             expect(listBoxComponent.find(ItemBox).props().value).not.toBe(ListBox.defaultProps.noResultItem.value);
@@ -143,8 +149,12 @@ describe('ListBox', () => {
         it('should wrap the items using the result from the "wrapItems" prop', () => {
             const wrapItems = (items: React.ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
-
-            expect(list.children().hasClass('wrapping-those-items-real-hard')).toBe(true);
+            expect(
+                list
+                    .childAt(0)
+                    .childAt(0)
+                    .hasClass('wrapping-those-items-real-hard')
+            ).toBe(true);
         });
     });
 });

@@ -141,6 +141,20 @@ describe('Numeric Input', () => {
                 expect(newState[id].value).toBe(expectedValue);
             });
 
+            it('should set the input in error but still update the initial value if the value is lower than the min', () => {
+                const expectedValue = 200;
+                const min = expectedValue + 1;
+
+                const oldState: INumericInputsState = {[id]: initialNumericInputState};
+                const newState: INumericInputsState = numericInputReducer(
+                    oldState,
+                    NumericInputActions.mount(id, expectedValue, min)
+                );
+
+                expect(newState[id].hasError).toBe(true);
+                expect(newState[id].value).toBe(expectedValue);
+            });
+
             it('should set the input in error but still update the value if the value is greater than the max', () => {
                 const expectedValue = 200;
                 const max = expectedValue - 1;
@@ -149,6 +163,20 @@ describe('Numeric Input', () => {
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
                     NumericInputActions.setValue(id, expectedValue, undefined, max)
+                );
+
+                expect(newState[id].hasError).toBe(true);
+                expect(newState[id].value).toBe(expectedValue);
+            });
+
+            it('should set the input in error but still update the value if the initial value is greater than the max', () => {
+                const expectedValue = 200;
+                const max = expectedValue - 1;
+
+                const oldState: INumericInputsState = {[id]: initialNumericInputState};
+                const newState: INumericInputsState = numericInputReducer(
+                    oldState,
+                    NumericInputActions.mount(id, expectedValue, undefined, max)
                 );
 
                 expect(newState[id].hasError).toBe(true);
@@ -169,6 +197,20 @@ describe('Numeric Input', () => {
                 expect(newState[id].value).toBe(expectedValue);
             });
 
+            it('should not set the input in error if the initial value is not lower than the min', () => {
+                const expectedValue = 200;
+                const min = 100;
+
+                const oldState: INumericInputsState = {[id]: initialNumericInputState};
+                const newState: INumericInputsState = numericInputReducer(
+                    oldState,
+                    NumericInputActions.mount(id, expectedValue, min)
+                );
+
+                expect(newState[id].hasError).toBe(false);
+                expect(newState[id].value).toBe(expectedValue);
+            });
+
             it('should not set the input in error if the value is not greater than the max', () => {
                 const expectedValue = 200;
                 const max = 9001;
@@ -177,6 +219,20 @@ describe('Numeric Input', () => {
                 const newState: INumericInputsState = numericInputReducer(
                     oldState,
                     NumericInputActions.setValue(id, expectedValue, undefined, max)
+                );
+
+                expect(newState[id].hasError).toBe(false);
+                expect(newState[id].value).toBe(expectedValue);
+            });
+
+            it('should not set the input in error if the initial value is not greater than the max', () => {
+                const expectedValue = 200;
+                const max = 9001;
+
+                const oldState: INumericInputsState = {[id]: initialNumericInputState};
+                const newState: INumericInputsState = numericInputReducer(
+                    oldState,
+                    NumericInputActions.mount(id, expectedValue, undefined, max)
                 );
 
                 expect(newState[id].hasError).toBe(false);

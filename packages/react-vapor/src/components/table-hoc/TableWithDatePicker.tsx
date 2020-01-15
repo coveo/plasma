@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {IDatePickerDropdownChildrenProps, IDatePickerDropdownOwnProps} from '../datePicker/DatePickerDropdown';
@@ -25,13 +24,13 @@ export interface ITableWithDatePickerStateProps {
     upperLimit: Date;
 }
 
-export interface ITableWithFilterDispatchProps {
+export interface ITableWithDatePickerDispatchProps {
     onRender: () => void;
 }
 
 export interface ITableWithDatePickerProps
     extends Partial<ITableWithDatePickerStateProps>,
-        Partial<ITableWithFilterDispatchProps>,
+        Partial<ITableWithDatePickerDispatchProps>,
         ITableHOCOwnProps,
         WithServerSideProcessingProps {}
 
@@ -71,7 +70,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
 
         componentDidUpdate(prevProps: ITableWithDatePickerProps) {
             if (prevProps.lowerLimit !== this.props.lowerLimit || prevProps.upperLimit !== this.props.upperLimit) {
-                callIfDefined(this.props.onUpdate);
+                this.props.onUpdate?.();
             }
         }
 

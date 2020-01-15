@@ -3,7 +3,6 @@ import * as React from 'react';
 
 import {Defaults} from '../../Defaults';
 import {IClassName} from '../../utils/ClassNameUtils';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 
 export interface IModalOwnProps {
     id?: string;
@@ -61,7 +60,7 @@ export class Modal extends React.Component<IModalProps, {}> {
     private handleCloseCallback() {
         window.clearTimeout(this.timeoutId);
         this.timeoutId = window.setTimeout(() => {
-            callIfDefined(this.props.closeCallback);
+            this.props.closeCallback?.();
         }, this.props.closeTimeout);
     }
 

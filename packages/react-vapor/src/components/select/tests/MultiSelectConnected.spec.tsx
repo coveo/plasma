@@ -121,13 +121,19 @@ describe('Select', () => {
         });
 
         it('should not disable the dropdown if one of the options is not is selected', () => {
-            mountMultiSelect([{value: 'a', selected: false}, {value: 'b', selected: true}]);
+            mountMultiSelect([
+                {value: 'a', selected: false},
+                {value: 'b', selected: true},
+            ]);
 
             expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeUndefined();
         });
 
         it('should disable the dropdown when every option is selected', () => {
-            mountMultiSelect([{value: 'a', selected: true}, {value: 'b', selected: true}]);
+            mountMultiSelect([
+                {value: 'a', selected: true},
+                {value: 'b', selected: true},
+            ]);
 
             expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
         });

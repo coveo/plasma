@@ -2,7 +2,6 @@ import * as classNames from 'classnames';
 import * as React from 'react';
 
 import {EventUtils} from '../../utils/EventUtils';
-import {callIfDefined} from '../../utils/FalsyValuesUtils';
 import {TableCollapsibleRowToggle} from './TableCollapsibleRowToggle';
 
 export interface ITableHeadingRowOwnProps extends React.ClassAttributes<TableHeadingRow> {
@@ -36,11 +35,11 @@ export interface ITableHeadingRowProps
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
     componentWillMount() {
-        callIfDefined(this.props.onRender);
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        callIfDefined(this.props.onDestroy);
+        this.props.onDestroy?.();
     }
 
     render() {
@@ -74,12 +73,12 @@ export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any>
         if (!EventUtils.isClickingInsideElementWithClassname(e, 'dropdown')) {
             const hasMultipleSelectedRow = (e.metaKey || e.ctrlKey) && this.props.isMultiSelect;
 
-            callIfDefined(this.props.onClick, hasMultipleSelectedRow);
-            callIfDefined(this.props.onClickCallback);
+            this.props.onClick?.(hasMultipleSelectedRow);
+            this.props.onClickCallback?.();
         }
     }
 
     private handleDoubleClick() {
-        callIfDefined(this.props.onDoubleClick);
+        this.props.onDoubleClick?.();
     }
 }

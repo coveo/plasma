@@ -27,15 +27,23 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
         };
         loadAll().then((all) => setComponents(all.filter(Boolean)));
     }, []);
-    const routes = components
-        .sort((a: IComponent, b: IComponent) => a.name.localeCompare(b.name))
-        .map(({path, ...rest}: IComponent) => (
-            <Route
-                key={path}
-                path={`${match.url}/${rest.name}`}
-                component={() => <ComponentPage path={path} {...rest} />}
-            />
-        ));
+
+    const routes = React.useMemo(
+        () =>
+            components
+                .sort((a: IComponent, b: IComponent) => a.name.localeCompare(b.name))
+                .map(({path, ...rest}: IComponent) => {
+                    return (
+                        <Route
+                            key={rest.name}
+                            path={`${match.url}/${rest.name}`}
+                            component={() => <ComponentPage path={path} {...rest} />}
+                        />
+                    );
+                }),
+        [components]
+    );
+
     if (components.length === 0) {
         return <Loading fullContent />;
     }

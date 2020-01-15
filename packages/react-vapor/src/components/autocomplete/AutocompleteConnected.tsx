@@ -6,9 +6,9 @@ import * as _ from 'underscore';
 import {SlideY} from '../../animations/SlideY';
 import {IReactVaporState} from '../../ReactVapor';
 import {mod} from '../../utils/DataStructuresUtils';
-import {defaultMatchFilter} from '../../utils/FilterUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {defaultListBoxMatchFilter} from '../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {
@@ -59,7 +59,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProp
         (item: IItemBoxProps): IItemBoxProps => {
             const visible = _.isFunction(ownProps.matchFilter)
                 ? ownProps.matchFilter(value, item)
-                : defaultMatchFilter(value, item);
+                : defaultListBoxMatchFilter(value, item);
 
             return {...item, hidden: !visible || !!item.hidden};
         }

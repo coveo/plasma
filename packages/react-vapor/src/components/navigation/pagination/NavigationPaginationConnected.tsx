@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
-import {turnOnLoading} from '../../loading/LoadingActions';
 import {
     INavigationPaginationDispatchProps,
     INavigationPaginationOwnProps,
@@ -31,10 +30,7 @@ const mapDispatchToProps = (
 ): INavigationPaginationDispatchProps => ({
     onRender: () => dispatch(addPagination(ownProps.id)),
     onDestroy: () => dispatch(removePagination(ownProps.id)),
-    onPageClick: (pageNb: number) => {
-        dispatch(turnOnLoading(ownProps.loadingIds));
-        dispatch(changePage(ownProps.id, pageNb));
-    },
+    onPageClick: (pageNb: number) => dispatch(changePage(ownProps.id, pageNb)),
 });
 
 export const NavigationPaginationConnected: React.ComponentClass<INavigationPaginationProps> = connect(

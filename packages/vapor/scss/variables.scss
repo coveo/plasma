@@ -299,6 +299,11 @@ $table-small-svg-width: 20px;
 $table-action-margin-left: 10px;
 $table-shadow: 0 2px 8px 1px $medium-grey;
 $table-state-icon-size: 25px;
+$table-blankslate-row-width: 20px;
+$table-cell-border-bottom-color-loading: 3px;
+$table-header-action-button-loading-width: 100px;
+$table-header-title-loading-width: 300px;
+$table-header-action-bar-button: 300px;
 
 // Table actions
 $table-actions-container-height: 52px;
@@ -554,6 +559,11 @@ $material-card-colored-border-height: 5px;
 $content-placeholder-border-radius: 4px;
 $content-placeholder-opacity-full: 1;
 $content-placeholder-opacity-see-through: 0.6;
+$text-content-placeholder-height: $button-height/2;
+$text-content-placeholder-word-width: 30px;
+$text-content-placeholder-small-width: 100px;
+$text-content-placeholder-medium-width: 200px;
+$text-content-placeholder-large-width: 300px;
 
 // Search bar
 $search-bar-min-width: 200px;

@@ -39,7 +39,7 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
 
         // sort
         sortKey: tableSort && tableSort.id,
-        sortAscending: tableSort && tableSort.isAsc,
+        sortAscending: (tableSort && tableSort.isAsc) || null,
 
         // pagination
         perPage: perPageState && perPageState.perPage,
