@@ -1,7 +1,7 @@
 import * as React from 'react';
 
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
-import {ExampleComponentType} from '../../../utils/TypescriptUtils';
+import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {ExamplesStore} from '../../../../docs/Store';
 import {Button} from '../../button/Button';
 import {Label} from '../../input/Label';
 import {LabeledInput} from '../../input/LabeledInput';
@@ -11,7 +11,7 @@ import {CheckboxConnected} from '../CheckboxConnected';
 import {toggleDisabledAllGroupedCheckbox} from '../GroupableCheckboxActions';
 import {GroupableCheckboxConnected} from '../GroupableCheckboxConnected';
 
-export const CheckboxExamples: ExampleComponentType = () => (
+export const CheckboxExamples: ExampleComponent = () => (
     <Section>
         <Checkboxset />
         <GroupableCheckboxConnectedExamples />
@@ -57,7 +57,7 @@ const Checkboxset: React.FunctionComponent = () => {
 
 const GroupableCheckboxConnectedExamples: React.FunctionComponent = () => {
     const toggleDisabledAllCheckboxes = (id: string, disabled?: boolean) => {
-        ReactVaporStore.dispatch(toggleDisabledAllGroupedCheckbox(id, undefined, disabled));
+        ExamplesStore.dispatch(toggleDisabledAllGroupedCheckbox(id, undefined, disabled));
     };
     const parentId1 = 'parentId1';
     const parentId2 = 'parentId2';

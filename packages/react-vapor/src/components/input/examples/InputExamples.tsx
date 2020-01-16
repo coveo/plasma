@@ -1,7 +1,10 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {AutocompleteConnected, IItemBoxProps} from '../..';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {ExamplesStore} from '../../../../docs/Store';
+import {IWithDirtyProps, withDirty} from '../../../hoc/withDirty/withDirty';
+import {withEditing} from '../../../hoc/withEditing/withEditing';
 import {Button} from '../../button/Button';
 import {IMultilineInputValue, MultilineInput} from '../../multilineInput/MultilineInput';
 import {ISplitInput, ISplitValue, SplitMultilineInput} from '../../multilineInput/SplitMultilineInput';
@@ -16,6 +19,7 @@ export const InputExamples: ExampleComponent = () => (
         <SimpleInputDisconnected />
         <InputsConnected />
         <MultilineInputComponents />
+        <InputsWithDirtyManagement />
     </Section>
 );
 InputExamples.description =
@@ -27,6 +31,17 @@ export const MultilineInputComponents: React.FunctionComponent = () => (
         <SplitMultilineInputExamples />
     </Section>
 );
+
+const autoCompleteItems: IItemBoxProps[] = [
+    {displayValue: 'Test', value: '0'},
+    {displayValue: 'Test One', value: '1'},
+    {displayValue: 'Disabled', value: 'disabled', disabled: true},
+    {displayValue: 'Three', value: '3'},
+    {displayValue: 'Four', value: '4'},
+    {displayValue: 'Five', value: '5'},
+    {displayValue: 'Six', value: '6'},
+    {displayValue: 'Seven', value: '7'},
+];
 
 // start-print
 
@@ -42,6 +57,7 @@ const SimpleInputDisconnected: React.FunctionComponent = () => {
     return (
         <Section level={3} title="A simple input with a local state">
             <Input
+                id="local-state-input"
                 innerInputClasses={inputClasses}
                 placeholder="Please, do not leave me empty!"
                 ref={(input: Input) => setInputValue(input)}
@@ -87,10 +103,10 @@ const InputsConnected: React.FunctionComponent = () => {
                         name={'Toggle input'}
                         enabled
                         onClick={() => {
-                            ReactVaporStore.dispatch(
+                            ExamplesStore.dispatch(
                                 setDisabledInput(
                                     'super-input-3',
-                                    !_.findWhere(ReactVaporStore.getState().inputs, {id: 'super-input-3'}).disabled
+                                    !_.findWhere(ExamplesStore.getState().inputs, {id: 'super-input-3'}).disabled
                                 )
                             );
                         }}
@@ -104,6 +120,11 @@ const InputsConnected: React.FunctionComponent = () => {
                         validateOnChange
                     />
                 </Section>
+                <Section level={3} title="An input with autoCompletion">
+                    <AutocompleteConnected id="autocomplete-input" items={autoCompleteItems}>
+                        <Label>An autocomplete</Label>
+                    </AutocompleteConnected>
+                </Section>
             </Section>
         </Section>
     );
@@ -115,6 +136,7 @@ const MultilineInputExample: React.FunctionComponent = () => {
     return (
         <Section level={3} title="A multiline input with local state">
             <MultilineInput
+                id="multiline-input"
                 title="A Multiline Input label"
                 placeholder="Enter a value"
                 values={inputValues}
@@ -125,8 +147,6 @@ const MultilineInputExample: React.FunctionComponent = () => {
         </Section>
     );
 };
-
-// stop-print
 
 const SplitMultilineInputExamples: React.FunctionComponent = () => {
     const inputs: ISplitInput[] = [
@@ -148,10 +168,12 @@ const SplitMultilineInputExamples: React.FunctionComponent = () => {
         {
             '1': 'first value',
             '2': 'other first value',
+            '3': 'other other first value',
         },
         {
             '1': 'second value',
             '2': 'other second value',
+            '3': 'other other second value',
         },
     ];
 
@@ -169,3 +191,52 @@ const SplitMultilineInputExamples: React.FunctionComponent = () => {
         </>
     );
 };
+
+const InputsWithDirtyManagement: React.FunctionComponent = () => (
+    <Section level={2} title="Inputs with dirty management functionnalities">
+        <InputWithSimpleDirtyManagement />
+        <InputWithEditingDirtyManagement />
+    </Section>
+);
+
+const InputBeforeSimpleDirtyManagement: React.FunctionComponent<IWithDirtyProps> & {id: string} = (props) => (
+    <Section level={3} title="An input with a simple dirty handling">
+        <Input
+            id="super-input-4"
+            labelTitle="Dirty handling"
+            onChange={(value) => props.toggleIsDirty(_.isEmpty(value) ? false : true)}
+        />
+    </Section>
+);
+
+InputBeforeSimpleDirtyManagement.id = 'inputWithDirty';
+export const InputWithSimpleDirtyManagement = withDirty({
+    id: InputBeforeSimpleDirtyManagement.id,
+    showDirty: (isDirty: boolean) => isDirty && <div className="mt2">This Component is now dirty</div>,
+})(InputBeforeSimpleDirtyManagement);
+
+const InputBeforeEditingDirtyManagement: React.FunctionComponent<IWithDirtyProps> & {
+    id: string;
+    footerChildren: React.ReactNode;
+} = (props) => (
+    <Section level={3} title="An input with an editing dirty handling">
+        <Input
+            id="super-input-5"
+            labelTitle="Dirty handling with edition"
+            onChange={(value) => props.toggleIsDirty(_.isEmpty(value) ? false : true)}
+        />
+    </Section>
+);
+
+InputBeforeEditingDirtyManagement.id = 'inputWithEditingDirty';
+InputBeforeEditingDirtyManagement.footerChildren = (
+    <Button primary name="Save" onClick={() => alert('You Saved the input')} />
+);
+
+export const InputWithEditingDirtyManagement = withEditing({
+    id: InputBeforeEditingDirtyManagement.id,
+    footerChildren: InputBeforeEditingDirtyManagement.footerChildren,
+    footerClassName: 'sticky-footer-mod-header',
+})(InputBeforeEditingDirtyManagement);
+
+// stop-print

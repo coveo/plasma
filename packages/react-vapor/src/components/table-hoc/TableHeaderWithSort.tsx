@@ -15,7 +15,7 @@ export interface ITableHeaderWithSortOwnProps {
     isDefault?: boolean;
 }
 
-export interface ITableHeaderStateProps {
+export interface HOCTableHeaderStateProps {
     sorted: boolean;
 }
 
@@ -27,7 +27,7 @@ export interface ITableHeaderWithSortDispatchProps {
 
 export interface ITableHeaderWithSortProps
     extends ITableHeaderWithSortOwnProps,
-        Partial<ITableHeaderStateProps>,
+        Partial<HOCTableHeaderStateProps>,
         Partial<ITableHeaderWithSortDispatchProps> {}
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderWithSortOwnProps) => {
