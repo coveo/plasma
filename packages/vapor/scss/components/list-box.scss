@@ -71,3 +71,18 @@
     list-style: none;
     border-top: $default-border;
 }
+
+.create-test-org-container {
+    height: 100%;
+    line-height: 100%;
+}
+
+span.create-test-org-info {
+    display: inline-flex;
+    align-items: center;
+    font-size: $default-font-size;
+}
+
+.icon.mod-20 {
+    float: right;
+}
