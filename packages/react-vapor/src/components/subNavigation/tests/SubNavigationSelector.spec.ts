@@ -13,33 +13,33 @@ describe('SubNavigationSelector', () => {
 
     describe('getItem', () => {
         it('should return falsy if the SubNavigation is not in the state', () => {
-            expect(SubNavigationSelector.getItem(defaultState, '🌼')).toBeFalsy();
+            expect(SubNavigationSelector.getSubNavigation(defaultState, '🌼')).toBeFalsy();
         });
 
         it('should return falsy if the id is empty', () => {
-            expect(SubNavigationSelector.getItem(defaultState, '')).toBeFalsy();
+            expect(SubNavigationSelector.getSubNavigation(defaultState, '')).toBeFalsy();
         });
 
         it('should return the current state if the SubNavigation is in the state', () => {
             const subNavigation = defaultState.subNavigations[0];
 
-            expect(SubNavigationSelector.getItem(defaultState, '🌻')).toEqual(subNavigation);
+            expect(SubNavigationSelector.getSubNavigation(defaultState, '🌻')).toEqual(subNavigation);
         });
     });
 
     describe('getItemSelected', () => {
-        it('should return falsy if the SubNavigation is not in the state', () => {
-            expect(SubNavigationSelector.getItemSelected(defaultState, '🌼')).toBeFalsy();
+        it('should return an empty string if the SubNavigation is not in the state', () => {
+            expect(SubNavigationSelector.getSelectedItem(defaultState, '🌼')).toEqual('');
         });
 
-        it('should return falsy if the id is empty', () => {
-            expect(SubNavigationSelector.getItemSelected(defaultState, '')).toBeFalsy();
+        it('should return an empty string if the id is empty', () => {
+            expect(SubNavigationSelector.getSelectedItem(defaultState, '')).toEqual('');
         });
 
         it('should return the selected item if the SubNavigation is in the state', () => {
             const selectedItem = defaultState.subNavigations[0].selected;
 
-            expect(SubNavigationSelector.getItemSelected(defaultState, '🌻')).toEqual(selectedItem);
+            expect(SubNavigationSelector.getSelectedItem(defaultState, '🌻')).toEqual(selectedItem);
         });
     });
 });

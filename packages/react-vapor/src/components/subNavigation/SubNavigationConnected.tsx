@@ -14,7 +14,7 @@ import {addSubNavigation, removeSubNavigation, selectSubNavigation} from './SubN
 import {SubNavigationSelector} from './SubNavigationSelector';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISubNavigationOwnProps): ISubNavigationStateProps => ({
-    selected: SubNavigationSelector.getItemSelected(state, ownProps.id) || '',
+    selected: SubNavigationSelector.getSelectedItem(state, ownProps.id),
 });
 
 const mapDispatchToProps = (
