@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const isTravis = !!process.env.TRAVIS;
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const keysTransformer = require('ts-transformer-keys/transformer').default;
 
 /**
  * Config file for the documentation project
@@ -33,16 +33,24 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
-        new ForkTsCheckerWebpackPlugin({
-            tsconfig: path.resolve('./tsconfig.build.json'),
-            tslint: path.resolve('../../tslint.json'),
-            tslintAutoFix: true,
-            async: false,
-        }),
     ],
     stats: 'minimal',
     module: {
         rules: [
+            {
+                enforce: 'pre',
+                test: /\.tsx?$/i,
+                exclude: [/node_modules/],
+                use: {
+                    loader: 'tslint-loader',
+                    options: {
+                        configFile: '../../tslint.json',
+                        tsConfigFile: './tsconfig.demo.json',
+                        emitErrors: true,
+                        failOnHint: isTravis,
+                    },
+                },
+            },
             {
                 /**
                  *  Transform let and const to var in js files below to make them ES5 compatible
@@ -54,7 +62,7 @@ module.exports = {
                         loader: 'ts-loader',
                         options: {
                             transpileOnly: true,
-                            configFile: 'tsconfig.build.json',
+                            configFile: 'tsconfig.demo.json',
                         },
                     },
                 ],
@@ -65,9 +73,10 @@ module.exports = {
                     {
                         loader: 'ts-loader',
                         options: {
-                            compiler: 'ttypescript',
-                            configFile: 'tsconfig.build.json',
-                            transpileOnly: true,
+                            getCustomTransformers: (program) => ({
+                                before: [keysTransformer(program)],
+                            }),
+                            configFile: 'tsconfig.demo.json',
                         },
                     },
                 ],
