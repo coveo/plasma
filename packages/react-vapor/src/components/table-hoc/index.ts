@@ -1,5 +1,5 @@
 export * from './TableHOC';
-export * from './TableHOCUtils';
+export * from './utils/TableHOCUtils';
 export * from './TableHeaderWithSort';
 export * from './TableRowConnected';
 export * from './TableRowNumberColumn';
