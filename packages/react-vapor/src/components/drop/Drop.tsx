@@ -103,6 +103,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                         ref={(this.dropRef = dropRef)}
                         className={classNames('drop', this.props.listContainerProps.className)}
                         {...this.props.listContainerProps}
+                        data-open={this.props.isOpen}
                     >
                         {this.props.children}
                     </div>

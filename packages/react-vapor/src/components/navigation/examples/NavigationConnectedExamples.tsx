@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ReactVaporStore} from '../../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../../docs/Store';
 import {LoadingActions, turnOffLoading} from '../../loading/LoadingActions';
 import {INavigationOwnProps} from '../Navigation';
 import {NavigationConnected} from '../NavigationConnected';
@@ -11,10 +11,10 @@ const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedEx
 export class NavigationConnectedExamples extends React.Component<any, any> {
     // Remove loading after a few seconds
     componentWillMount() {
-        ReactVaporStore.subscribe(() => {
-            if (_.contains([LoadingActions.turnOn, LoadingActions.add], ReactVaporStore.getState().lastAction.type)) {
+        ExamplesStore.subscribe(() => {
+            if (_.contains([LoadingActions.turnOn, LoadingActions.add], ExamplesStore.getState().lastAction.type)) {
                 setTimeout(() => {
-                    ReactVaporStore.dispatch(turnOffLoading(navigationConnectedExampleLoadingIds));
+                    ExamplesStore.dispatch(turnOffLoading(navigationConnectedExampleLoadingIds));
                 }, 2000);
             }
         });

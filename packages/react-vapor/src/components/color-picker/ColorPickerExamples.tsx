@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {ColorResult} from 'react-color';
 import {debounce} from 'underscore';
-import {ReactVaporStore} from '../../../docs/ReactVaporStore';
+import {ExamplesStore} from '../../../docs/Store';
 import {Button} from '../button/Button';
 import {InputSelectors} from '../input/InputSelectors';
 import {ColorPicker} from './ColorPicker';
@@ -38,7 +38,7 @@ export const ColorPickerExamples = () => (
                     name="Click me to get color from state"
                     onClick={() =>
                         alert(
-                            InputSelectors.getValue(ReactVaporStore.getState(), {
+                            InputSelectors.getValue(ExamplesStore.getState(), {
                                 id: 'color-picker-example-3',
                             })
                         )

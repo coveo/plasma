@@ -60,3 +60,13 @@ export const clearListBoxOption = (id: string): IReduxAction<IListBoxPayload> =>
     type: ListBoxActions.clear,
     payload: {id},
 });
+
+export const ListBoxReduxActions = {
+    addListBox,
+    removeListBox,
+    selectListBoxOption,
+    unselectListBoxOption,
+    reorderListBoxOption,
+    setActiveListBoxOption,
+    clearListBoxOption,
+};

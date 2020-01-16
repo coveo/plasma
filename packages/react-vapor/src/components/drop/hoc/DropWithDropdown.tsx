@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 import {SlideY} from '../../../animations/SlideY';
 import {IReactVaporState} from '../../../ReactVapor';
-import {PropsToOmitUtils} from '../../../utils/react/PropsToOmitUtils';
+import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {DropPodPosition} from '../DomPositionCalculator';
 import {Drop, IDropOwnProps, IDropProps, IDropStateProps} from '../Drop';

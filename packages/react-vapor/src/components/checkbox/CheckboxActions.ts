@@ -34,3 +34,9 @@ export const removeCheckbox = (id: string): IReduxAction<ICheckboxActionPayload>
         id,
     },
 });
+
+export const CheckboxReduxActions = {
+    toggleCheckbox,
+    addCheckbox,
+    removeCheckbox,
+};

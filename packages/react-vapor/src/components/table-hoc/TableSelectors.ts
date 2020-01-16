@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {ITableRowState} from './reducers/TableRowReducers';
+import {HOCTableRowState} from './reducers/TableRowReducers';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 
 export interface TableSelectorsProps {
@@ -30,10 +30,10 @@ const getSort = (state: IReactVaporState, props: TableSelectorsProps): ITableWit
     _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === props.id && _.isBoolean(v.isAsc)) ||
     initialTableSort;
 
-const getTableRow = (state: IReactVaporState, {id}: {id: string}): ITableRowState =>
+const getTableRow = (state: IReactVaporState, {id}: {id: string}): HOCTableRowState =>
     _.findWhere(state.tableHOCRow, {id});
 
-const getSelectedRows = (state: IReactVaporState, {id}: {id: string}): ITableRowState[] =>
+const getSelectedRows = (state: IReactVaporState, {id}: {id: string}): HOCTableRowState[] =>
     _.where(state.tableHOCRow, {tableId: id, selected: true});
 
 export const TableSelectors = {

@@ -1,12 +1,11 @@
 import * as React from 'react';
-import {IReduxAction, ReduxConnect} from '../../../utils/ReduxUtils';
+import {ExamplesStore} from '../../../../docs/Store';
 import {UUID} from '../../../utils/UUID';
 import {Button} from '../../button/Button';
 import {ChildForm} from '../../childForm/ChildForm';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {ListBox} from '../../listBox/ListBox';
-import {IModalExamplesProps} from '../../modal/examples/ModalCompositeConnectedExamples';
-import {IModalActionPayload, openModal} from '../../modal/ModalActions';
+import {openModal} from '../../modal/ModalActions';
 import {ModalCompositeConnected} from '../../modal/ModalCompositeConnected';
 import {SingleSelectWithFilter} from '../../select/hoc/SelectComponents';
 import {DropPodPosition} from '../DomPositionCalculator';
@@ -15,16 +14,10 @@ import {Drop} from '../Drop';
 const modalId: string = 'ModalIDDrop';
 const modalId2: string = 'ModalIDDrop2';
 
-const mapDispatchToProps = (dispatch: (action: IReduxAction<IModalActionPayload>) => void): IModalExamplesProps => ({
-    openModal: (id: string) => dispatch(openModal(id)),
-});
-
-@ReduxConnect(null, mapDispatchToProps)
 export class DropExamples extends React.PureComponent<any> {
     openModal(id: string) {
-        this.props.openModal(id);
+        ExamplesStore.dispatch(openModal(id));
     }
-
     render() {
         const triggerAlertFunction = () => {
             alert(`Alert function triggered`);
