@@ -165,7 +165,7 @@
         "sass-variable-loader": "0.1.2",
         "style-loader": "0.23.1",
         "ts-loader": "6.2.1",
-        "ts-transformer-keys": "0.4.0",
+        "ts-transformer-keys": "0.4.1",
         "tslint-loader": "3.5.4",
         "ttypescript": "1.5.8",
         "typescript": "3.7.2",
