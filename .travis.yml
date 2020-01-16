@@ -8,6 +8,10 @@ node_js:
 addons:
     chrome: stable
 
+branches:
+    only:
+        - master
+
 env:
     global:
         - AWS_ACCESS_KEY_ID=AKIAYKDJLZITTS3QHYP2

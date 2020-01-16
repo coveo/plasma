@@ -37,7 +37,7 @@ const config = {
         rules: [
             {
                 enforce: 'pre',
-                test: /\.ts(x?)$/i,
+                test: /\.tsx?$/i,
                 exclude: [/node_modules/],
                 use: {
                     loader: 'tslint-loader',
