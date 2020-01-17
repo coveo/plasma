@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const isTravis = !!process.env.TRAVIS;
+const keysTransformer = require('ts-transformer-keys/transformer').default;
 
 /**
  * Config file for the documentation project
@@ -16,7 +17,7 @@ module.exports = {
         filename: '[name].bundle.js',
         chunkFilename: 'assets/[name].bundle.js',
     },
-    devtool: isTravis ? 'source-map' : 'cheap-module-source-map',
+    devtool: isTravis ? 'source-map' : 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
@@ -38,14 +39,14 @@ module.exports = {
         rules: [
             {
                 enforce: 'pre',
-                test: /\.tsx?$/,
-                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'docs')],
+                test: /\.tsx?$/i,
+                exclude: [/node_modules/],
                 use: {
                     loader: 'tslint-loader',
                     options: {
                         configFile: '../../tslint.json',
-                        tsConfigFile: './tsconfig.build.json',
-                        emitErrors: isTravis,
+                        tsConfigFile: './tsconfig.demo.json',
+                        emitErrors: true,
                         failOnHint: isTravis,
                     },
                 },
@@ -56,16 +57,29 @@ module.exports = {
                  *  Target only problematic files to prevent compilation from hanging
                  */
                 include: [path.resolve(__dirname, 'node_modules/unidiff/hunk.js')],
-                use: [{loader: 'ts-loader'}],
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            transpileOnly: true,
+                            configFile: 'tsconfig.demo.json',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.tsx?$/,
-                include: [path.resolve(__dirname, 'src'), path.resolve(__dirname, 'docs')],
-                loader: 'ts-loader',
-                options: {
-                    compiler: 'ttypescript',
-                    configFile: 'tsconfig.build.json',
-                },
+                use: [
+                    {
+                        loader: 'ts-loader',
+                        options: {
+                            getCustomTransformers: (program) => ({
+                                before: [keysTransformer(program)],
+                            }),
+                            configFile: 'tsconfig.demo.json',
+                        },
+                    },
+                ],
             },
             {
                 test: /\.scss$/,
@@ -128,5 +142,6 @@ module.exports = {
         compress: true,
         hot: true,
         inline: true,
+        progress: true,
     },
 };

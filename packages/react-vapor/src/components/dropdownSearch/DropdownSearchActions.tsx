@@ -210,3 +210,22 @@ export const selectOrSetNextActiveOption = (id: string, keyCode: number, activeO
     isSelectingOption(keyCode, activeOption)
         ? selectOptionDropdownSearch(id, activeOption, true)
         : updateActiveOptionDropdownSearch(id, keyCode, activeOption);
+
+export const DropdownSearchReduxActions = {
+    applyFilterDropdownSearch,
+    updateOptionsDropdownSearch,
+    toggleDropdownSearch,
+    openDropdownSearch,
+    closeDropdownSearch,
+    addDropdownSearch,
+    addMultiSelectDropdownSearch,
+    removeDropdownSearch,
+    selectOptionDropdownSearch,
+    multiSelectOptionDropdownSearch,
+    addCustomSelectedOption,
+    deselectOptionDropdownSearch,
+    deselectAllOptionsMultiselectDropdownSearch,
+    updateActiveOptionDropdownSearch,
+    keyDownMultiselectDropdownSearch,
+    selectOrSetNextActiveOption,
+};

@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "4.18.6",
+    "version": "4.18.9",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -20,12 +20,10 @@
         "url": "git+https://github.com/coveo/react-vapor.git"
     },
     "scripts": {
-        "start": "webpack-dev-server --progress",
+        "start": "webpack-dev-server",
         "docs": "webpack",
         "compileTs": "webpack --config webpack.config.prod.js",
-        "minify": "webpack --config webpack.config.prod.minify.js",
-        "build": "gulp clean && concurrently \"npm run compileTs\" \"npm run minify\"",
-        "build:dev": "gulp clean && npm run compileTs",
+        "build": "gulp clean && webpack --config webpack.config.prod.js",
         "pretest": "gulp clean:tests",
         "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
         "test:compile": "tslint --project ./tsconfig.test.json -c ../../tslint.json",
@@ -105,7 +103,7 @@
         "codecov": "3.2.0",
         "codemirror": "5.42.0",
         "concurrently": "4.1.0",
-        "coveo-styleguide": "^4.18.5",
+        "coveo-styleguide": "^4.18.8",
         "css-loader": "1.0.1",
         "d3": "3.5.17",
         "del": "4.0.0",
@@ -166,23 +164,20 @@
         "sass-variable-loader": "0.1.2",
         "style-loader": "0.23.1",
         "ts-loader": "6.2.1",
-        "ts-transformer-keys": "0.4.0",
+        "ts-transformer-keys": "0.4.1",
         "tslint-loader": "3.5.4",
         "ttypescript": "1.5.8",
         "typescript": "3.7.2",
         "typings-for-css-modules-loader": "1.7.0",
         "underscore": "1.9.1",
         "underscore.string": "3.3.5",
+        "unminified-webpack-plugin": "2.0.0",
         "webpack": "4.40.2",
         "webpack-bundle-analyzer": "3.0.3",
         "webpack-cli": "3.2.0",
         "webpack-dev-server": "3.1.11"
     },
     "files": [
-        "dist",
-        "src",
-        "gulpfile.js",
-        "webpack.prod.config.js",
-        "LICENSE"
+        "dist"
     ]
 }

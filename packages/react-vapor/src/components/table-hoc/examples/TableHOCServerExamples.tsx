@@ -9,7 +9,6 @@ import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterf
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {DateUtils} from '../../../utils/DateUtils';
 import {IDispatch, IReduxAction, IThunkAction} from '../../../utils/ReduxUtils';
-import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
 import {turnOffLoading} from '../../loading/LoadingActions';
@@ -144,7 +143,7 @@ const tableDatePickerConfig = {
     ],
 };
 
-const mapStateToProps = (state: IReactVaporTestState) => ({
+const mapStateToProps = (state: any) => ({
     isLoading: state.tableHOCExample.isLoading,
     serverData: state.tableHOCExample.data,
 });
@@ -220,7 +219,7 @@ const setIsLoading = (isLoading: boolean): IReduxAction<ISetExampleIsLoadingPayl
     payload: {isLoading},
 });
 
-const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IReactVaporTestState) => {
+const fetchData = (): IThunkAction => (dispatch: IDispatch, getState) => {
     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
         TableHOCServerExampleId,
         getState()
