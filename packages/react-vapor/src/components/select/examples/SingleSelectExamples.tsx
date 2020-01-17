@@ -149,6 +149,7 @@ const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<{id: st
                     next={fetchNextPage}
                     onUpdate={applyFilter}
                     canClear
+                    noFixedWidth
                 />
             </Section>
         </Section>

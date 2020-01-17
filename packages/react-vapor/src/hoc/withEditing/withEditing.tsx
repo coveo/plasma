@@ -11,7 +11,7 @@ export interface IWithEditing {
 }
 
 export const withEditing = <T, R = any>(config: IWithEditing) => (
-    Component: React.ComponentClass<T, R>
+    Component: React.ComponentType<T>
 ): React.ComponentClass<T, R> => {
     return withDirty<T, R>({
         id: config.id,
