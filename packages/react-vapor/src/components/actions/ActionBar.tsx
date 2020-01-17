@@ -19,7 +19,6 @@ import {IItemFilterState} from './filters/ItemFilterReducers';
 import {PrimaryAction} from './PrimaryAction';
 import {PrimaryActionConnected} from './PrimaryActionConnected';
 import {SecondaryActions} from './SecondaryActions';
-import {SecondaryActionsConnected} from './SecondaryActionsConnected';
 
 export interface IActionBarProps {
     id?: string;
@@ -101,14 +100,8 @@ export class ActionBar extends React.PureComponent<
 
         let secondaryActionsView: JSX.Element = null;
         if (!_.isEmpty(secondaryActions)) {
-            secondaryActionsView = this.props.withReduxState ? (
-                <SecondaryActionsConnected
-                    moreLabel={this.props.moreLabel}
-                    actions={secondaryActions}
-                    id={this.props.id}
-                />
-            ) : (
-                <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />
+            secondaryActionsView = (
+                <SecondaryActions id={this.props.id} moreLabel={this.props.moreLabel} actions={secondaryActions} />
             );
         }
 
