@@ -5,7 +5,6 @@ import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {PER_PAGE_NUMBERS} from '../../navigation/perPage/NavigationPerPage';
 import {PaginationUtils} from '../../pagination/PaginationUtils';
 import {ITableWithSortState} from '../reducers/TableWithSortReducers';
 
@@ -38,7 +37,7 @@ const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompos
                 id: PaginationUtils.getPaginationPerPageId(id),
             }),
             10
-        ) || PER_PAGE_NUMBERS[1];
+        ) || undefined;
 
     const filter: IFilterState = _.findWhere(state.filters, {id});
     const predicates = getTablePredicates(id, state);

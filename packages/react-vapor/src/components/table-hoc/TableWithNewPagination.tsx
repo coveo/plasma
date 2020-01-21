@@ -3,12 +3,10 @@ import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';
-import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationSelectors} from '../navigation/NavigationSelectors';
 import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 import {PaginationUtils} from '../pagination/PaginationUtils';
@@ -16,30 +14,13 @@ import {TablePagination} from '../pagination/TablePagination';
 import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
+import {
+    ITableWithPaginationConfig,
+    ITableWithPaginationDispatchProps,
+    ITableWithPaginationProps,
+    ITableWithPaginationStateProps,
+} from './TableWithPagination';
 import {TableHOCUtils} from './utils/TableHOCUtils';
-
-export interface ITableWithPaginationConfig
-    extends WithServerSideProcessingProps,
-        Partial<INavigationOwnProps>,
-        Partial<INavigationChildrenProps> {}
-
-export interface ITableWithPaginationStateProps {
-    totalEntries: number;
-    totalPages: number;
-    pageNb: number;
-    perPage: number;
-}
-
-export interface ITableWithPaginationDispatchProps {
-    onMount: () => void;
-    onUnmount: () => void;
-}
-
-export interface ITableWithPaginationProps
-    extends Partial<ITableWithPaginationStateProps>,
-        Partial<ITableWithPaginationDispatchProps>,
-        ITableHOCOwnProps,
-        WithServerSideProcessingProps {}
 
 const TableWithPaginationProps = keys<ITableWithPaginationStateProps>();
 
