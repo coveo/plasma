@@ -117,8 +117,8 @@ export const tableWithNewPagination = (
                         totalPages={this.props.totalPages}
                         defaultPerPageSelected={
                             config?.perPageNumbers?.length > 1
-                                ? config.perPageNumbers[1]
-                                : config.perPageNumbers[0] ?? PER_PAGE_NUMBERS[1]
+                                ? config?.perPageNumbers[1]
+                                : config?.perPageNumbers[0] ?? PER_PAGE_NUMBERS[1]
                         }
                         totalEntries={this.props.totalEntries}
                         perPageNumbers={config.perPageNumbers}
