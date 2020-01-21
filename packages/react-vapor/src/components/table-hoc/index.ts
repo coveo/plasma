@@ -10,6 +10,7 @@ export * from './TableWithBlankSlate';
 export * from './TableWithDatePicker';
 export * from './TableWithFilter';
 export * from './TableWithPagination';
+export * from './TableWithNewPagination';
 export * from './TableWithPredicate';
 export * from './TableWithSort';
 export * from './TableWithUrlState';

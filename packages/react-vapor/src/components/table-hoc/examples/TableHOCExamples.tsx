@@ -4,14 +4,17 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
+import {IDispatch} from '../../../utils';
 import {DateUtils} from '../../../utils/DateUtils';
 import {UUID} from '../../../utils/UUID';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
+import {filterThrough} from '../../filterBox';
+import {Section} from '../../section';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 import {TableHOC} from '../TableHOC';
 import {TableRowConnected} from '../TableRowConnected';
 import {tableWithActions} from '../TableWithActions';
+import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithDatePicker} from '../TableWithDatePicker';
 import {tableWithFilter} from '../TableWithFilter';
 import {tableWithPagination} from '../TableWithPagination';
@@ -26,9 +29,16 @@ export interface IExampleRowData {
     id: string;
 }
 
-export type TableWithActionsType = React.FunctionComponent<ReturnType<typeof mapStateToProps>>;
-
-export const TableHOCExamples: ExampleComponent = () => <TableWithActionsAndDataFiltering />;
+export const TableHOCExamples = () => (
+    <Section title="Table HOC">
+        <Section level={2} title="Table with Data">
+            <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />
+        </Section>
+        <Section level={2} title="Table without data">
+            <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering2" data={[]} />
+        </Section>
+    </Section>
+);
 
 // https://github.com/marak/Faker.js/
 export const generateDataWithFacker = (length: number) =>
@@ -144,35 +154,55 @@ const predicateSetup = {
     ],
 };
 
-const mapStateToProps = () => ({
-    data: twoHundredRowsOfData,
+const mapDispatchToProps = (dispatch: IDispatch) => ({
+    resetFilter: (id: string) => dispatch(filterThrough(id, '')),
 });
 
-const TableWithActionsAndDataFilteringDisconnected: TableWithActionsType = ({data}) => {
-    const tableId = 'TableWithActionsAndDataFiltering';
+type TableWithActionsAndDataFilteringProps = ReturnType<typeof mapDispatchToProps>;
+
+const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<{
+    data: any[];
+    id: string;
+} & TableWithActionsAndDataFilteringProps> = ({id, data, resetFilter}) => {
+    const TableWithActionsAndDataFilteringComposed = _.compose(
+        tableWithBlankSlate({
+            title: 'No data',
+        }),
+        tableWithPredicate({
+            ...predicateSetup,
+            matchPredicate,
+        }),
+        tableWithFilter(), // using the default matchfilter
+        tableWithBlankSlate({
+            title: 'No results',
+            description: 'Try reviewing the specified filters above or clearing all filters.',
+            buttons: [
+                {
+                    name: 'Clear filter',
+                    enabled: true,
+                    onClick: () => resetFilter(id),
+                },
+            ],
+        }),
+        tableWithSort({sort}),
+        tableWithDatePicker(...(tableDatePickerConfig as any)),
+        tableWithPagination({perPageNumbers: [3, 5, 10]}),
+        tableWithActions()
+    )(TableHOC);
 
     return (
         <TableWithActionsAndDataFilteringComposed
-            id={tableId}
+            id={id}
             className="table"
             data={data}
-            renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, tableId)}
-            tableHeader={renderHeader(tableId)}
+            renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, id)}
+            tableHeader={renderHeader(id)}
             showBorderTop
         />
     );
 };
 
-const TableWithActionsAndDataFilteringComposed = _.compose(
-    tableWithPredicate({
-        ...predicateSetup,
-        matchPredicate,
-    }),
-    tableWithFilter(), // using the default matchfilter
-    tableWithSort({sort}),
-    tableWithDatePicker(...(tableDatePickerConfig as any)),
-    tableWithPagination({perPageNumbers: [3, 5, 10]}),
-    tableWithActions()
-)(TableHOC) as typeof TableHOC;
-
-const TableWithActionsAndDataFiltering = connect(mapStateToProps)(TableWithActionsAndDataFilteringDisconnected);
+const TableWithActionsAndDataFiltering = connect(
+    undefined,
+    mapDispatchToProps
+)(TableWithActionsAndDataFilteringDisconnected);

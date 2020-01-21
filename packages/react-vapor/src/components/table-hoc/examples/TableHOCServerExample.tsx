@@ -5,10 +5,10 @@ import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';
 import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IDispatch, IThunkAction} from '../../../utils/ReduxUtils';
 import {IReactVaporTestState} from '../../../utils/tests/TestUtils';
+import {filterThrough} from '../../filterBox';
 import {LastUpdated} from '../../lastUpdated/LastUpdated';
 import {Section} from '../../section/Section';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
@@ -47,7 +47,7 @@ interface TableHOCServerExamplesState {
     isLoading: boolean;
 }
 
-export const TableHOCServerExample: ExampleComponent = () => <TableHOCServer />;
+export const TableHOCServerExample = () => <TableHOCServer />;
 
 TableHOCServerExample.title = 'TableHOC server';
 
@@ -84,6 +84,7 @@ const renderHeader = () => (
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
     fetch: () => dispatch(TableHOCServerActions.fetchData()),
+    resetFilter: () => dispatch(filterThrough(TableHOCServerExampleId, '')),
 });
 
 class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, TableHOCServerExamplesState> {
@@ -91,6 +92,34 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
         data: null,
         isLoading: true,
     };
+
+    private ServerTableComposed = _.compose(
+        withServerSideProcessing,
+        tableWithUrlState,
+        tableWithBlankSlate({
+            title: 'No data fetched from the server',
+            description: 'Try reviewing the specified filters above or clearing all filters.',
+            buttons: [
+                {
+                    name: 'Clear filter',
+                    enabled: true,
+                    onClick: () => this.props.resetFilter(),
+                },
+            ],
+        }),
+        tableWithPredicate(TableHOCExampleUtils.tablePredicates[0]),
+        tableWithPredicate(TableHOCExampleUtils.tablePredicates[1]),
+        tableWithFilter({
+            placeholder: 'Filter all',
+            blankSlate: {
+                title: 'No results found',
+            },
+        }),
+        tableWithSort(),
+        tableWithDatePicker({...(TableHOCExampleUtils.tableDatePickerConfig as any)}),
+        tableWithNewPagination({perPageNumbers: [3, 5, 10]}),
+        tableWithActions()
+    )(TableHOC);
 
     private fetch = _.debounce(() => {
         this.setState({...this.state, isLoading: true});
@@ -125,7 +154,7 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                 <TableHOCServerExampleContext.Provider
                     value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
                 >
-                    <ServerTableComposed
+                    <this.ServerTableComposed
                         id={TableHOCServerExampleId}
                         className="table table-numbered mod-collapsible-rows"
                         data={this.state.data?.users ?? []}
@@ -134,33 +163,15 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                         onUpdate={this.onUpdate}
                         onUpdateUrl={this.updateUrl}
                         isLoading={this.state.isLoading}
-                        numberOfColumns={6}
+                        loading={{numberOfColumns: 6}}
                     >
                         <LastUpdated time={new Date()} />
-                    </ServerTableComposed>
+                    </this.ServerTableComposed>
                 </TableHOCServerExampleContext.Provider>
             </Section>
         );
     }
 }
-
-const ServerTableComposed = _.compose(
-    withServerSideProcessing,
-    tableWithUrlState,
-    tableWithBlankSlate({title: 'No data fetched from the server'}),
-    tableWithPredicate(TableHOCExampleUtils.tablePredicates[0]),
-    tableWithPredicate(TableHOCExampleUtils.tablePredicates[1]),
-    tableWithFilter({
-        placeholder: 'Filter all',
-        blankSlate: {
-            title: 'No results found',
-        },
-    }),
-    tableWithSort(),
-    tableWithDatePicker({...(TableHOCExampleUtils.tableDatePickerConfig as any)}),
-    tableWithNewPagination({perPageNumbers: [3, 5, 10]}),
-    tableWithActions()
-)(TableHOC);
 
 const TableHOCServer = connect(undefined, mapDispatchToProps)(withRouter(TableExampleDisconnected));
 

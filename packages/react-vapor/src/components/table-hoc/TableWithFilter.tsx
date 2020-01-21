@@ -5,11 +5,9 @@ import * as _ from 'underscore';
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {ReduxConnect} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {IBlankSlateProps} from '../blankSlate/BlankSlate';
-import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
-import {filterThrough} from '../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {ITableHOCOwnProps} from './TableHOC';
@@ -27,7 +25,6 @@ export interface ITableWithFilterStateProps {
 }
 
 export interface ITableWithFilterDispatchProps {
-    resetFilter: () => void;
     addFilter: (filterText: string) => void;
     onRender: () => void;
 }
@@ -46,7 +43,7 @@ const defaultMatchFilter = (filter: string, datum: any) =>
 
 export const tableWithFilter = (
     supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}}
-) => (Component: React.ComponentClass<ITableWithFilterProps & ReturnType<typeof mapDispatchToProps>>) => {
+) => (Component: React.ComponentClass<ITableWithFilterProps>) => {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapStateToProps = (
@@ -63,14 +60,10 @@ export const tableWithFilter = (
             filter: filterText,
             urlFilter: urlParams[Params.filter],
             data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
-        };
+        } as any;
     };
 
-    const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHOCOwnProps) => ({
-        resetFilter: () => dispatch(filterThrough(ownProps.id, '')),
-    });
-
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
+    @ReduxConnect(mapStateToProps)
     class TableWithFilter extends React.Component<ITableWithFilterProps> {
         componentDidUpdate(prevProps: ITableWithFilterProps) {
             if (prevProps.filter !== this.props.filter && this.props.filter !== this.props.urlFilter) {
@@ -93,24 +86,8 @@ export const tableWithFilter = (
                 ..._.omit(this.props, [...TableWithFilterPropsToOmit]),
             };
 
-            if (!this.props.data?.length) {
-                newProps.renderBody = () => (
-                    <BlankSlateWithTable
-                        description="Try reviewing the specified filters above or clearing all filters."
-                        buttons={[
-                            {
-                                name: 'Clear filter',
-                                enabled: true,
-                                onClick: () => this.props.resetFilter(),
-                            },
-                        ]}
-                        {...HocUtils.supplyConfig(supplier).blankSlate}
-                    />
-                );
-            }
-
             return (
-                <Component {...newProps} actions={newActions}>
+                <Component {...newProps} actions={newActions} withFilter>
                     {this.props.children}
                 </Component>
             );
