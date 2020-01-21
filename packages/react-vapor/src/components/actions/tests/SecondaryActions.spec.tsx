@@ -1,69 +1,143 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
+import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {IActionOptions} from '../Action';
 import {ACTION_SEPARATOR} from '../ActionConstants';
-import {ISecondaryActionsProps, SecondaryActions} from '../SecondaryActions';
+import {ActionsDropdown} from '../ActionsDropdown';
+import {PrimaryActionConnected} from '../PrimaryActionConnected';
+import {SecondaryActions} from '../SecondaryActions';
 
 describe('Actions', () => {
-    const actions: IActionOptions[] = [
-        {
-            name: 'action',
-            link: 'http://coveo.com',
-            target: '_blank',
-            enabled: true,
-        },
-        ACTION_SEPARATOR,
-        {
-            name: 'action2',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: true,
-        },
-    ];
+    const linkAction: IActionOptions = {
+        name: 'action',
+        link: 'http://coveo.com',
+        target: '_blank',
+        enabled: true,
+    };
+    const triggerAction: IActionOptions = {
+        name: 'action2',
+        trigger: jasmine.createSpy('methodTrigger'),
+        enabled: true,
+    };
+    const actions: IActionOptions[] = [linkAction, ACTION_SEPARATOR, triggerAction];
 
-    describe('<SecondaryActions />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<SecondaryActions actions={actions} />);
-            }).not.toThrow();
-        });
+    it('should render and unmount without throwing errors', () => {
+        expect(() => {
+            const component = shallow(<SecondaryActions actions={[]} />);
+            component.unmount();
+        }).not.toThrow();
     });
 
-    describe('SecondaryActions', () => {
-        let secondaryActions: ReactWrapper<ISecondaryActionsProps, any>;
+    it('should render nothing if there are no actions to render', () => {
+        expect(shallow(<SecondaryActions actions={[]} />).isEmptyRender()).toBe(true);
+    });
 
-        beforeEach(() => {
-            secondaryActions = mount(<SecondaryActions actions={actions} />, {
-                attachTo: document.getElementById('App'),
-            });
+    it('should display a <ActionsDropdown /> if there is more than one action', () => {
+        expect(
+            shallow(<SecondaryActions actions={actions} />)
+                .children()
+                .type()
+        ).toBe(ActionsDropdown);
+    });
+
+    it('should display a <PrimaryAction /> if there is only one action', () => {
+        expect(
+            shallow(<SecondaryActions actions={[linkAction]} />)
+                .children()
+                .type()
+        ).toBe(PrimaryActionConnected);
+    });
+
+    describe('separators', () => {
+        const shallowAndGetActions = (actionsList: IActionOptions[]) => {
+            return shallow(<SecondaryActions actions={actionsList} />)
+                .children()
+                .prop('actions');
+        };
+
+        it('should remove a separator if followed by another separator', () => {
+            expect(shallowAndGetActions([linkAction, ACTION_SEPARATOR, ACTION_SEPARATOR, triggerAction])).toEqual([
+                linkAction,
+                ACTION_SEPARATOR,
+                triggerAction,
+            ]);
         });
 
-        afterEach(() => {
-            secondaryActions.detach();
+        it('should remove the separator if it is the last action', () => {
+            expect(shallowAndGetActions([linkAction, triggerAction, ACTION_SEPARATOR])).toEqual([
+                linkAction,
+                triggerAction,
+            ]);
         });
 
-        it('should get the actions as a prop', () => {
-            const actionsProp = secondaryActions.props().actions;
-
-            expect(actionsProp).toBeDefined();
-            expect(actionsProp.length).toBe(actions.length);
-            expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
+        it('should remove the separator if it is the first action', () => {
+            expect(shallowAndGetActions([ACTION_SEPARATOR, linkAction, triggerAction])).toEqual([
+                linkAction,
+                triggerAction,
+            ]);
         });
 
-        it('should display a <ActionsDropdown /> if there is more than one action', () => {
-            expect(secondaryActions.find('ActionsDropdown').length).toBe(1);
-
-            secondaryActions.setProps({actions: [actions[0]]});
-
-            expect(secondaryActions.find('ActionsDropdown').length).toBe(0);
+        it('should remove the useless separators', () => {
+            expect(
+                shallowAndGetActions([
+                    ACTION_SEPARATOR,
+                    ACTION_SEPARATOR,
+                    linkAction,
+                    ACTION_SEPARATOR,
+                    ACTION_SEPARATOR,
+                    triggerAction,
+                    ACTION_SEPARATOR,
+                    ACTION_SEPARATOR,
+                ])
+            ).toEqual([linkAction, ACTION_SEPARATOR, triggerAction]);
         });
 
-        it('should display a <PrimaryAction /> if there is only one action', () => {
-            expect(secondaryActions.find('PrimaryAction').length).toBe(0);
+        it('should remove the separator if it is between disabled actions', () => {
+            expect(
+                shallow(
+                    <SecondaryActions
+                        actions={[
+                            {...linkAction, enabled: false},
+                            ACTION_SEPARATOR,
+                            {...triggerAction, enabled: false},
+                        ]}
+                    />
+                ).isEmptyRender()
+            ).toBe(true);
+        });
 
-            secondaryActions.setProps({actions: [actions[0]]});
+        it('should not remove the separator if it is between disabled actions but they are still shown', () => {
+            expect(
+                shallowAndGetActions([
+                    {...linkAction, enabled: false, hideDisabled: false},
+                    ACTION_SEPARATOR,
+                    {...triggerAction, enabled: false, hideDisabled: false},
+                ])
+            ).toEqual([
+                {...linkAction, enabled: false, hideDisabled: false},
+                ACTION_SEPARATOR,
+                {...triggerAction, enabled: false, hideDisabled: false},
+            ]);
+        });
 
-            expect(secondaryActions.find('PrimaryAction').length).toBe(1);
+        it('should not remove the separator if it is between disabled actions but there are other actions around', () => {
+            expect(
+                shallowAndGetActions([
+                    linkAction,
+                    {...linkAction, enabled: false},
+                    ACTION_SEPARATOR,
+                    {...triggerAction, enabled: false},
+                    triggerAction,
+                ])
+            ).toEqual([linkAction, ACTION_SEPARATOR, triggerAction]);
+        });
+
+        it('should render a primary action if thre is only one action remaining after removing disabled actions and separators', () => {
+            const rendered = shallow(
+                <SecondaryActions actions={[linkAction, ACTION_SEPARATOR, {...triggerAction, enabled: false}]} />
+            ).children();
+            expect(rendered.type()).toBe(PrimaryActionConnected);
+            expect(rendered.prop('action')).toEqual(linkAction);
         });
     });
 });
