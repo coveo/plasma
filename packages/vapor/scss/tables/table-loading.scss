@@ -27,3 +27,10 @@
     align-self: center;
     width: $table-header-action-bar-button;
 }
+
+table.big-table {
+    td.table-cell-loading div.table-cell-content-loading {
+        margin-top: 7.5px;
+        margin-bottom: 7.5px;
+    }
+}
