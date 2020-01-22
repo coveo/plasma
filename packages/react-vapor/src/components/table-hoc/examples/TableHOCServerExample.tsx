@@ -211,6 +211,6 @@ const fetchData = (): IThunkAction => (dispatch: IDispatch, getState: () => IRea
     });
 };
 
-export const TableHOCServerActions = {
+const TableHOCServerActions = {
     fetchData,
 };
