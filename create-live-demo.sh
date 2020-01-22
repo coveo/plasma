@@ -20,7 +20,7 @@ echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
 cp -R $BASE_PATH/packages/react-vapor/docs/dist "$BRANCH_FOLDER_NAME"
 
 git add "$BRANCH_FOLDER_NAME"
-git commit --quiet -m "Demo for branch: $TRAVIS_PULL_REQUEST_BRANCH" --no-verify
+git commit --quiet -m "ci(demo): demo for branch: $TRAVIS_PULL_REQUEST_BRANCH" --no-verify
 
 SHA=`git rev-parse --verify HEAD`
 
