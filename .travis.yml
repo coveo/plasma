@@ -22,19 +22,14 @@ before_install:
     - chmod 600 travis-deploy-key # this key should have push access
     - ssh-add travis-deploy-key
 
-install:
-    - npm install -g lerna
-    - lerna bootstrap --no-ci
-    - npm install
-
 cache:
     directories:
         - node_modules
 
 script:
-    - lerna run build
+    - npm run build
     - lerna run docs
-    - lerna run test
+    - npm test
     - lerna run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
 
 after_script:
@@ -68,6 +63,13 @@ deploy:
       on:
           tags: true
           repo: coveo/react-vapor
+
+    - provider: script
+      script: 'npx lerna publish --yes'
+      skip_cleanup: true
+      keep_history: true
+      on:
+          branch: master
 
 after_deploy:
     - node invalidate-cloudfront.js
