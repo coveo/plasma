@@ -65,7 +65,7 @@ deploy:
           repo: coveo/react-vapor
 
     - provider: script
-      script: 'npx lerna publish --yes'
+      script: 'bash ./publish.sh'
       skip_cleanup: true
       keep_history: true
       on:
