@@ -7,4 +7,4 @@ npm config set "//registry.npmjs.org/:_authToken=$NPM_TOKEN"
 
 git remote add -t master -f pub git@github.com:$TRAVIS_REPO_SLUG.git
 git checkout master
-npx lerna publish --yes --amend --git-remote pub 
+npx lerna publish --yes --amend --create-release github --git-remote pub
