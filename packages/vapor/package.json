@@ -16,7 +16,6 @@
     "scripts": {
         "build": "gulp clean && gulp && webpack",
         "start": "gulp clean && gulp && concurrently \"gulp watch\" \"webpack --watch\"",
-        "version": "npm run build",
         "reconstruct": "gulp clean --all && npm install && gulp"
     },
     "repository": {
