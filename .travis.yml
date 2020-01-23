@@ -51,6 +51,7 @@ deploy:
       local-dir: packages/react-vapor/docs/dist
       upload-dir: react-vapor
       acl: public_read
+      verbose: false
 
     - provider: s3
       skip_cleanup: true
@@ -61,6 +62,7 @@ deploy:
       local-dir: packages/vapor/deploy
       upload-dir: styleguide
       acl: public_read
+      verbose: false
       on:
           tags: true
           repo: coveo/react-vapor
