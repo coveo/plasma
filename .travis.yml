@@ -33,9 +33,6 @@ script:
     - npm test
     - lerna run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
 
-after_script:
-    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
-
 after_success:
     - lerna run report-coverage
     - mkdir -p "packages/vapor/deploy/$TRAVIS_TAG"
@@ -72,8 +69,9 @@ deploy:
       on:
           branch: master
 
-after_deploy:
-    - node invalidate-cloudfront.js
+after_script:
+    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
+    - 'if [ "$TRAVIS_BRANCH" = "master" ]; then node ./invalidate-cloudfront.js; fi'
 
 notifications:
     email:
