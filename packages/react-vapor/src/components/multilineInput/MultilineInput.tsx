@@ -14,6 +14,7 @@ export interface IMultilineInputOwnProps {
     id?: string;
     placeholder?: string;
     title?: string;
+    invalidMessage?: string;
 }
 
 export interface IMultilineInputStateProps {
@@ -97,6 +98,7 @@ export class MultilineInput extends React.Component<IMultilineInputProps, any> {
                     placeholder={this.props.placeholder}
                     value=""
                     onBlur={(newValue: string) => this.handleAddInputChange(newValue)}
+                    labelProps={{invalidMessage: this.props.invalidMessage}}
                 >
                     <Label classes={this.props.values && this.props.values.length === 0 ? ['first-label'] : []}>
                         {this.props.title}
