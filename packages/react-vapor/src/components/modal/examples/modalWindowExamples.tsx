@@ -13,10 +13,10 @@ import {Input} from '../../input/Input';
 import {Section} from '../../section/Section';
 import {Svg} from '../../svg/Svg';
 import {Tooltip} from '../../tooltip/Tooltip';
-import {UnsavedChangesModalProvider} from '../../unsavedChangeModal/UnsavedChangeModalProvider';
 import {ModalLoading} from '../loading/ModalLoading';
 import {closeModal, openModal} from '../ModalActions';
 import {ModalCompositeConnected} from '../ModalCompositeConnected';
+import {UnsavedChangesModalProvider} from '../UnsavedChangeModalProvider';
 
 export interface ModalConnectedExampleProps {
     id?: string;

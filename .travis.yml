@@ -21,24 +21,17 @@ before_install:
     - openssl aes-256-cbc -K $encrypted_6a1e0d13907f_key -iv $encrypted_6a1e0d13907f_iv -in id_rsa.enc -out travis-deploy-key -d
     - chmod 600 travis-deploy-key # this key should have push access
     - ssh-add travis-deploy-key
-
-install:
-    - npm install -g lerna
-    - lerna bootstrap --no-ci
-    - npm install
+    - npm config set package-lock false
 
 cache:
     directories:
         - node_modules
 
 script:
-    - lerna run build
+    - npm run build
     - lerna run docs
-    - lerna run test
+    - npm test
     - lerna run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
-
-after_script:
-    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
 
 after_success:
     - lerna run report-coverage
@@ -69,8 +62,16 @@ deploy:
           tags: true
           repo: coveo/react-vapor
 
-after_deploy:
-    - node invalidate-cloudfront.js
+    - provider: script
+      script: 'bash ./publish.sh'
+      skip_cleanup: true
+      keep_history: true
+      on:
+          branch: master
+
+after_script:
+    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
+    - 'if [ "$TRAVIS_BRANCH" = "master" ]; then node ./invalidate-cloudfront.js; fi'
 
 notifications:
     email:

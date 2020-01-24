@@ -1,6 +1,6 @@
 {
     "name": "coveo-styleguide",
-    "version": "4.18.8",
+    "version": "4.19.0",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -16,7 +16,6 @@
     "scripts": {
         "build": "gulp clean && gulp && webpack",
         "start": "gulp clean && gulp && concurrently \"gulp watch\" \"webpack --watch\"",
-        "version": "npm run build",
         "reconstruct": "gulp clean --all && npm install && gulp"
     },
     "repository": {
