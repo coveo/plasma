@@ -6,7 +6,6 @@ import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
-import {PaginationLoading} from '../loading/components/PaginationLoading';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationConnected} from '../navigation/NavigationConnected';
@@ -101,16 +100,6 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
 
         render() {
             const newProps = _.omit(this.props, [...TableWithPaginationProps]);
-
-            if (this.props.isLoading && _.isEmpty(this.props.data)) {
-                return (
-                    <Component {...newProps}>
-                        <PaginationLoading />
-                        {this.props.children}
-                    </Component>
-                );
-            }
-
             return (
                 <Component {...newProps}>
                     <NavigationConnected
