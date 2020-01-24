@@ -37,9 +37,9 @@ export interface IPaginationPagesNumberProps
         ReturnType<typeof mapDispatchToProps>,
         ReturnType<typeof mapStateToProps> {}
 
-export const NUMBER_OF_PAGES_SHOWING: number = 7;
-export const PREVIOUS_LABEL: string = 'Previous';
-export const NEXT_LABEL: string = 'Next';
+const NUMBER_OF_PAGES_SHOWING: number = 7;
+const PREVIOUS_LABEL: string = 'Previous';
+const NEXT_LABEL: string = 'Next';
 
 class PaginationPagesNumberDisconnected extends React.Component<IPaginationPagesNumberProps, any> {
     private handlePageClick = (pageNb: number) => {
