@@ -1,7 +1,8 @@
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {TextLoadingPlaceholder} from '../../loading';
 import {TableHeaderActions} from '../actions/TableHeaderActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 
@@ -72,6 +73,12 @@ describe('Table HOC', () => {
             wrapper.find('th').simulate('click');
 
             expect(store.getActions()).toContain(expectedAction);
+        });
+
+        it('should render a <TextLoadingPlaceholder /> if the prop isLoading is set to true', () => {
+            const wrapper = shallowWithState(<TableHeaderWithSort {...defaultProps} isLoading />, store).dive();
+
+            expect(wrapper.find(TextLoadingPlaceholder).length).toBe(1);
         });
     });
 });

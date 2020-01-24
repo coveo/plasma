@@ -44,3 +44,10 @@ export const resetPaging = (id: string): IReduxAction<IChangePaginationActionPay
         pageNb: 0,
     },
 });
+
+export const PaginationReduxActions = {
+    addPagination,
+    removePagination,
+    changePage,
+    resetPaging,
+};

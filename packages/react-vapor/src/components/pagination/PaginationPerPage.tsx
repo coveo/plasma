@@ -24,17 +24,15 @@ export const PaginationPerPage = ({
     disabled,
     hidden,
 }: IPaginationPerPageProps) => (
-    <>
-        <FlatSelectWithPrepend
-            id={PaginationUtils.getPaginationPerPageId(id)}
-            options={_.map(perPage, (nb: number) => ({
-                id: nb?.toString(),
-                option: {content: nb},
-            }))}
-            defaultSelectedOptionId={defaultPerPageSelected?.toString()}
-            prependClassName={classNames('items-per-page', {hidden: hidden})}
-            prepend={label}
-            disabled={disabled}
-        />
-    </>
+    <FlatSelectWithPrepend
+        id={PaginationUtils.getPaginationPerPageId(id)}
+        options={_.map(perPage, (nb: number) => ({
+            id: nb?.toString(),
+            option: {content: nb},
+        }))}
+        defaultSelectedOptionId={defaultPerPageSelected?.toString()}
+        prependClassName={classNames('items-per-page', {hidden: hidden})}
+        prepend={label}
+        disabled={disabled}
+    />
 );
