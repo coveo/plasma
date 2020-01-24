@@ -31,6 +31,29 @@
     .spinner {
         display: none;
     }
+
+    .change-page-link {
+        padding: 0;
+        color: $medium-blue;
+        font-size: $default-font-size;
+        background-color: $pure-white;
+        border: none;
+        cursor: pointer;
+
+        .icon {
+            fill: $medium-blue;
+        }
+
+        &.disabled {
+            color: $medium-grey;
+            cursor: default;
+            pointer-events: none;
+
+            .icon {
+                fill: $medium-grey;
+            }
+        }
+    }
 }
 
 .modal,
