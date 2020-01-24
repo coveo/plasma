@@ -2,11 +2,9 @@
 
 [![Build Status](https://img.shields.io/travis/coveo/react-vapor/master.svg?style=flat-square)](https://travis-ci.org/coveo/react-vapor)
 [![codecov](https://img.shields.io/codecov/c/github/coveo/react-vapor/master.svg?style=flat-square)](https://codecov.io/gh/coveo/react-vapor)
-[![Greenkeeper badge](https://badges.greenkeeper.io/coveo/react-vapor.svg?style=flat-square)](https://greenkeeper.io/)
 [![Npm total downloads badge](https://img.shields.io/npm/dt/react-vapor.svg?style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![npm](https://img.shields.io/npm/v/react-vapor.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/react-vapor)
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](LICENSE)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 [Coveo Administration Console](https://platform.cloud.coveo.com/admin/)'s design system.
 

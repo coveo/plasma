@@ -75,6 +75,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                     let inputRef: Input;
                     return (
                         <Input
+                            id={`${input.id}-${index}`}
                             validateOnChange
                             labelTitle={input.label}
                             labelProps={{invalidMessage: input.validationMessage}}
@@ -84,9 +85,10 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                             placeholder={input.placeholder}
                             validate={input.validation ? (value: any) => input.validation(value) : undefined}
                             key={labelId + inputIndex}
-                            onChange={(value?: string, valid?: boolean) =>
-                                this.changeValue(value, valid, index, labelId, inputRef)
-                            }
+                            onChange={(value?: string, valid?: boolean) => {
+                                this.changeValue(value, valid, index, labelId, inputRef);
+                                inputRef.validate();
+                            }}
                         >
                             {deleteButton}
                         </Input>
@@ -106,11 +108,14 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
         const inputRefs: Input[] = [];
         const inputs: JSX.Element[] = _.map(this.props.inputs, (input: ISplitInput, inputIndex: number) => (
             <Input
+                id={`add-${input.id}-${inputIndex}`}
                 ref={(ref: Input) => inputRefs.push(ref)}
                 key={`add-${inputIndex}`}
                 classes={styles.input}
                 placeholder={input.placeholder}
                 validate={input.validation ? (value: any) => input.validation(value) : undefined}
+                labelTitle={false}
+                onChange={() => inputRefs[inputIndex].validate()}
             >
                 <Label invalidMessage={input.validationMessage}>{!this.state.values.length ? input.label : ''}</Label>
                 {inputIndex + 1 === this.props.inputs.length ? (
