@@ -11,7 +11,7 @@ export interface IFormProps {
 
 export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, mods}) => {
     return (
-        <fieldset className={classNames(className, mods, 'coveo-form mb2 mt2 mod-padding-children')}>
+        <fieldset className={classNames('coveo-form mb2 mt2 mod-padding-children', mods, className)}>
             {title && <h2 className="text-medium-blue mb2">{title}</h2>}
             {children}
         </fieldset>
