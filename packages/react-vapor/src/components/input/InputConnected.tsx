@@ -1,4 +1,5 @@
 import {connect} from 'react-redux';
+import {WithDirtyActions} from '../../hoc/withDirty/withDirtyActions';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IInputDispatchProps, IInputOwnProps, IInputProps, IInputStateProps, Input} from './Input';
@@ -18,7 +19,10 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputOwnProps): IInp
     onRender: (value: string = '', valid = true, disabled = false) =>
         dispatch(addInput(ownProps.id, value, valid, disabled)),
     onDestroy: () => dispatch(removeInput(ownProps.id)),
-    onChange: (value: string, valid = true) => dispatch(changeInputValue(ownProps.id, value, valid)),
+    onChange: (value: string, valid = true) => {
+        dispatch(changeInputValue(ownProps.id, value, valid));
+        dispatch(WithDirtyActions.toggle(ownProps.id, !!valid));
+    },
 });
 
 export const InputConnected: React.ComponentClass<IInputProps> = connect(
