@@ -8,5 +8,6 @@
         "declaration": true,
         "declarationDir": "dist/definitions"
     },
-    "include": ["src/Entry.ts", "types/**/*.d.ts"]
+    "include": ["types/**/*.d.ts"],
+    "files": ["src/Entry.ts"]
 }

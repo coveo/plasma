@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Button} from '../button/Button';
-import {ModalComposite} from '../modal/ModalComposite';
+import {ModalComposite} from './ModalComposite';
 
 const defaultModalTitle = 'Unsaved Changes';
 const defaultModalClasses = ['mod-prompt', 'mod-fade-in-scale'];

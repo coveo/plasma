@@ -11,14 +11,11 @@ import {
     SubNavigation,
 } from './SubNavigation';
 import {addSubNavigation, removeSubNavigation, selectSubNavigation} from './SubNavigationActions';
-import {ISubNavigationState} from './SubNavigationReducers';
+import {SubNavigationSelector} from './SubNavigationSelector';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ISubNavigationOwnProps): ISubNavigationStateProps => {
-    const item: ISubNavigationState = _.findWhere(state.subNavigations, {id: ownProps.id});
-    return {
-        selected: item ? item.selected : '',
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: ISubNavigationOwnProps): ISubNavigationStateProps => ({
+    selected: SubNavigationSelector.getSelectedItem(state, ownProps.id),
+});
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,

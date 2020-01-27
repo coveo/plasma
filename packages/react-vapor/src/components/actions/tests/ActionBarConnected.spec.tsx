@@ -15,7 +15,7 @@ import {ActionBar, ActionBarConnected, IActionBarProps} from '../ActionBar';
 import {addActionsToActionBar, removeActionBar} from '../ActionBarActions';
 import {filterItems, removeItemFilter} from '../filters/ItemFilterActions';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';
-import {SecondaryActionsConnected} from '../SecondaryActionsConnected';
+import {SecondaryActions} from '../SecondaryActions';
 
 describe('Actions', () => {
     const id: string = 'secondary-actions';
@@ -160,7 +160,7 @@ describe('Actions', () => {
         });
 
         it('should display a <SecondaryActionsConnected /> component if there are secondary actions', () => {
-            expect(actionBar.find(SecondaryActionsConnected).length).toBe(1);
+            expect(actionBar.find(SecondaryActions).length).toBe(1);
         });
 
         it('should get the <InlinePrompt /> as a prop', () => {

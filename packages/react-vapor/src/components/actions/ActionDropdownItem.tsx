@@ -1,20 +1,15 @@
 import * as React from 'react';
+
 import {IActionOptions} from './Action';
 import {LinkAction} from './LinkAction';
-import {TriggerAction} from './TriggerActionConnected';
 import {TriggerActionConnected} from './TriggerActionConnected';
 
 export interface IActionDropdownItemProps {
     action: IActionOptions;
-    withReduxState: boolean;
     parentId?: string;
 }
 
-export const ActionDropdownItem: React.FunctionComponent<IActionDropdownItemProps> = ({
-    parentId,
-    action,
-    withReduxState,
-}) => {
+export const ActionDropdownItem: React.FunctionComponent<IActionDropdownItemProps> = ({parentId, action}) => {
     if (action.separator) {
         return <li className="divider" />;
     }
@@ -27,16 +22,9 @@ export const ActionDropdownItem: React.FunctionComponent<IActionDropdownItemProp
         );
     }
 
-    if (withReduxState) {
-        return (
-            <li>
-                <TriggerActionConnected action={action} simple={true} parentId={parentId} />
-            </li>
-        );
-    }
     return (
         <li>
-            <TriggerAction action={action} simple={true} />
+            <TriggerActionConnected action={action} simple={true} parentId={parentId} />
         </li>
     );
 };
