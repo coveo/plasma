@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.19.1](https://github.com/coveo/react-vapor/compare/v4.19.0...v4.19.1) (2020-01-27)
+
+
+### Bug Fixes
+
+* **form:** changed the classname order to allow overrides ([c77bdf7](https://github.com/coveo/react-vapor/commit/c77bdf793e84a70be835437bd9301cf92a956823))
+
+
+
+
+
 # [4.19.0](https://github.com/coveo/react-vapor/compare/v4.18.10...v4.19.0) (2020-01-23)
 
 
