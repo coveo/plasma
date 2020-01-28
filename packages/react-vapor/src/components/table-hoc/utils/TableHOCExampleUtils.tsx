@@ -2,7 +2,7 @@ import * as moment from 'moment';
 import * as React from 'react';
 import {DateUtils} from '../../../utils/DateUtils';
 import {SELECTION_BOXES_LONG} from '../../datePicker/examples/DatePickerExamplesCommon';
-import {IExampleRowData, TableHOCServerExampleId} from '../examples/TableHOCServerExample';
+import {IExampleRowData, TableHOCServerExampleId} from '../examples/TableHOCServerExamples';
 import {TableRowConnected} from '../TableRowConnected';
 import {TableRowNumberColumn} from '../TableRowNumberColumn';
 

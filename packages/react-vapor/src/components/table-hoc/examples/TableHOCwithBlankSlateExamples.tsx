@@ -7,12 +7,12 @@ import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithFilter} from '../TableWithFilter';
 import {generateDataWithFacker, generateTableRow} from './TableHOCExamples';
 
-export const TableHocWithBlankSlateExample: ExampleComponent = () => (
+export const TableHOCwithBlankSlateExamples: ExampleComponent = () => (
     <Section>
         <TableWithBlankSlateExample />
     </Section>
 );
-TableHocWithBlankSlateExample.title = 'TableHOC blankSlate';
+TableHOCwithBlankSlateExamples.title = 'TableHOC blankSlate';
 
 export interface IExampleRowData {
     city: string;

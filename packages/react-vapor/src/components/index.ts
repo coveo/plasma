@@ -76,3 +76,4 @@ export * from './title';
 export * from './toast';
 export * from './tooltip';
 export * from './userFeedback';
+export * from './pagination';

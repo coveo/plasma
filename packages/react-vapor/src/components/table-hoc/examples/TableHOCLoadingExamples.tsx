@@ -15,6 +15,9 @@ export const TableHocLoadingExamples: ExampleComponent = () => (
         <Section level={2} title="Table loading with the number of row equal to the number of data">
             <TableLoadingExamplesWithData />
         </Section>
+        <Section level={2} title="Big table loading">
+            <BigTableLoadingExample />
+        </Section>
     </Section>
 );
 TableHocLoadingExamples.title = 'TableHOC loading';
@@ -48,6 +51,23 @@ const TableLoadingExamplesWithData: React.FunctionComponent = () => {
                 <TableLoadingComposed
                     id={tableId}
                     className="table"
+                    data={fiveDataRows}
+                    renderBody={generateTableRow}
+                    isLoading
+                />
+            </div>
+        </Section>
+    );
+};
+
+const BigTableLoadingExample: React.FunctionComponent = () => {
+    const tableId = 'TableLoadingExamples';
+    return (
+        <Section>
+            <div>
+                <TableLoadingComposed
+                    id={tableId}
+                    className="table big-table"
                     data={fiveDataRows}
                     renderBody={generateTableRow}
                     isLoading

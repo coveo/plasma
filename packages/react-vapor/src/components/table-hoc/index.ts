@@ -1,5 +1,5 @@
 export * from './TableHOC';
-export * from './TableHOCUtils';
+export * from './utils/TableHOCUtils';
 export * from './TableHeaderWithSort';
 export * from './TableRowConnected';
 export * from './TableRowNumberColumn';
@@ -10,6 +10,7 @@ export * from './TableWithBlankSlate';
 export * from './TableWithDatePicker';
 export * from './TableWithFilter';
 export * from './TableWithPagination';
+export * from './TableWithNewPagination';
 export * from './TableWithPredicate';
 export * from './TableWithSort';
 export * from './TableWithUrlState';

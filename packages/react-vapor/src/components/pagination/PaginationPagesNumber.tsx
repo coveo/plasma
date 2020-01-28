@@ -4,57 +4,44 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {
-    INavigationPaginationDispatchProps,
-    INavigationPaginationOwnProps,
-    INavigationPaginationStateProps,
-} from '../navigation/pagination/NavigationPagination';
-import {addPagination, changePage, removePagination} from '../navigation/pagination/NavigationPaginationActions';
-import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers';
-import {NavigationPaginationSelect} from '../navigation/pagination/NavigationPaginationSelect';
+import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
 import {Svg} from '../svg/Svg';
+import {PaginationSelect} from './PaginationSelect';
+import {PaginationSelectors} from './PaginationSelectors';
 
 export interface IPaginationPagesNumberOwnProps {
-    id?: string;
+    id: string;
     totalPages: number;
     numberOfPagesToShow?: number;
     previousLabel?: string;
     nextLabel?: string;
-    loadingIds?: string[];
     hidden?: boolean;
     disabled?: boolean;
 }
 
-const mapStateToProps = (
-    state: IReactVaporState,
-    ownProps: INavigationPaginationOwnProps
-): INavigationPaginationStateProps => {
-    const item: IPaginationState = _.findWhere(state.paginationComposite, {id: ownProps.id});
-
-    return {
-        currentPage: item ? item.pageNb : 0,
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: IPaginationPagesNumberOwnProps) => ({
+    currentPage: PaginationSelectors.getPaginationPageNumber(state, {id: ownProps.id}),
+});
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: INavigationPaginationOwnProps
-): INavigationPaginationDispatchProps => ({
-    onRender: () => dispatch(addPagination(ownProps.id)),
-    onDestroy: () => dispatch(removePagination(ownProps.id)),
-    onPageClick: (pageNb: number) => dispatch(changePage(ownProps.id, pageNb)),
+    ownProps: IPaginationPagesNumberOwnProps
+) => ({
+    onRender: () => dispatch(PaginationReduxActions.addPagination(ownProps.id)),
+    onDestroy: () => dispatch(PaginationReduxActions.removePagination(ownProps.id)),
+    onPageClick: (pageNb: number) => dispatch(PaginationReduxActions.changePage(ownProps.id, pageNb)),
 });
 
-export interface INavigationPaginationProps
+export interface IPaginationPagesNumberProps
     extends IPaginationPagesNumberOwnProps,
         ReturnType<typeof mapDispatchToProps>,
         ReturnType<typeof mapStateToProps> {}
 
-export const NUMBER_OF_PAGES_SHOWING: number = 7;
-export const PREVIOUS_LABEL: string = 'Previous';
-export const NEXT_LABEL: string = 'Next';
+const NUMBER_OF_PAGES_SHOWING: number = 7;
+const PREVIOUS_LABEL: string = 'Previous';
+const NEXT_LABEL: string = 'Next';
 
-class PaginationPagesNumberDisconnected extends React.Component<INavigationPaginationProps, any> {
+class PaginationPagesNumberDisconnected extends React.Component<IPaginationPagesNumberProps, any> {
     private handlePageClick = (pageNb: number) => {
         if (pageNb >= 0 && this.props.currentPage !== pageNb) {
             this.props.onPageClick?.(pageNb);
@@ -108,7 +95,7 @@ class PaginationPagesNumberDisconnected extends React.Component<INavigationPagin
 
             _.each(_.range(start, end + 1), (nbr: number): void => {
                 pageSelects.push(
-                    <NavigationPaginationSelect
+                    <PaginationSelect
                         key={'page-' + nbr}
                         onPageClick={this.handlePageClick}
                         pageNb={nbr}

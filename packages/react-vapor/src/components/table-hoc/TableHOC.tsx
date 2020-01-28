@@ -22,8 +22,11 @@ export interface ITableHOCOwnProps {
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
     containerClassName?: string;
-    numberOfColumns?: number;
     showBorderTop?: boolean;
+    loading?: {
+        numberOfColumns?: number;
+        defaultLoadingRow?: number;
+    };
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
@@ -34,6 +37,10 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         hasActionButtons: false,
         actions: [],
         showBorderTop: false,
+        loading: {
+            numberOfColumns: 5,
+            defaultLoadingRow: PER_PAGE_NUMBERS[1],
+        },
     };
 
     render() {
@@ -42,8 +49,10 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                 {this.props.tableHeader}
                 {this.props.isLoading ? (
                     <TableLoading.Body
-                        numberOfRow={_.size(this.props.data) || PER_PAGE_NUMBERS[0]}
-                        numberOfColumns={this.props.numberOfColumns}
+                        numberOfRow={
+                            _.size(this.props.data) || (this.props?.loading?.defaultLoadingRow ?? PER_PAGE_NUMBERS[1])
+                        }
+                        numberOfColumns={this.props?.loading?.numberOfColumns ?? 5}
                     />
                 ) : (
                     <tbody>{this.props.renderBody(this.props.data || [])}</tbody>
