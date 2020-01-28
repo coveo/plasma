@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [4.20.0](https://github.com/coveo/react-vapor/compare/v4.19.1...v4.20.0) (2020-01-28)
+
+
+### Features
+
+* **table:** add uts for table loading ([3d50908](https://github.com/coveo/react-vapor/commit/3d50908487394e591f5cd51153cd21a3d53dbea5))
+* **table:** add uts for the table loading ([e5b750e](https://github.com/coveo/react-vapor/commit/e5b750ead25dd80a98da1991c059835b66158ce5))
+
+
+
+
+
 ## [4.19.1](https://github.com/coveo/react-vapor/compare/v4.19.0...v4.19.1) (2020-01-27)
 
 
