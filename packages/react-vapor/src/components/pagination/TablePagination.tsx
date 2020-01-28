@@ -1,3 +1,4 @@
+import {FunctionComponent} from 'react';
 import * as React from 'react';
 import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils';
 import {PaginationPagesNumber} from './PaginationPagesNumber';
@@ -12,14 +13,14 @@ export interface ITablePaginationProps {
     disabled?: boolean;
 }
 
-export const TablePagination = ({
+export const TablePagination: FunctionComponent<ITablePaginationProps> = ({
     id,
     disabled = false,
     totalPages,
     perPageNumbers,
     defaultPerPageSelected,
     totalEntries,
-}: ITablePaginationProps) => (
+}) => (
     <div className="pagination-container">
         <PaginationPerPage
             id={id}

@@ -63,8 +63,7 @@ class PaginationPagesNumberDisconnected extends React.Component<IPaginationPages
     }
 
     render() {
-        const currentPage: number = this.props.currentPage || 0;
-
+        const {currentPage} = this.props;
         const showXPages: number = Math.abs((this.props.numberOfPagesToShow || NUMBER_OF_PAGES_SHOWING) - 1);
         const previousLabel: string = this.props.previousLabel || PREVIOUS_LABEL;
         const nextLabel: string = this.props.nextLabel || NEXT_LABEL;

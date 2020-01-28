@@ -30,15 +30,7 @@ const TableLoadingExamplesWithDataNull: React.FunctionComponent = () => {
     const tableId = 'TableLoadingExamples';
     return (
         <Section>
-            <div>
-                <TableLoadingComposed
-                    id={tableId}
-                    className="table"
-                    data={null}
-                    renderBody={generateTableRow}
-                    isLoading
-                />
-            </div>
+            <TableLoadingComposed id={tableId} className="table" data={null} renderBody={generateTableRow} isLoading />
         </Section>
     );
 };
@@ -47,15 +39,13 @@ const TableLoadingExamplesWithData: React.FunctionComponent = () => {
     const tableId = 'TableLoadingExamples';
     return (
         <Section>
-            <div>
-                <TableLoadingComposed
-                    id={tableId}
-                    className="table"
-                    data={fiveDataRows}
-                    renderBody={generateTableRow}
-                    isLoading
-                />
-            </div>
+            <TableLoadingComposed
+                id={tableId}
+                className="table"
+                data={fiveDataRows}
+                renderBody={generateTableRow}
+                isLoading
+            />
         </Section>
     );
 };
@@ -64,15 +54,13 @@ const BigTableLoadingExample: React.FunctionComponent = () => {
     const tableId = 'TableLoadingExamples';
     return (
         <Section>
-            <div>
-                <TableLoadingComposed
-                    id={tableId}
-                    className="table big-table"
-                    data={fiveDataRows}
-                    renderBody={generateTableRow}
-                    isLoading
-                />
-            </div>
+            <TableLoadingComposed
+                id={tableId}
+                className="table big-table"
+                data={fiveDataRows}
+                renderBody={generateTableRow}
+                isLoading
+            />
         </Section>
     );
 };

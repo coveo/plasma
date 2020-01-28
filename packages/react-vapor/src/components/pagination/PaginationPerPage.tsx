@@ -1,4 +1,5 @@
 import * as classNames from 'classnames';
+import {FunctionComponent} from 'react';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {UrlUtils} from '../../utils/UrlUtils';
@@ -16,14 +17,14 @@ export interface IPaginationPerPageProps {
     hidden?: boolean;
 }
 
-export const PaginationPerPage = ({
+export const PaginationPerPage: FunctionComponent<IPaginationPerPageProps> = ({
     id,
     perPage = TablePaginationDefaultValue.PerPage,
     defaultPerPageSelected = UrlUtils.getSearchParams?.()?.[Params.pageSize],
     label = TablePaginationDefaultValue.perPageLabel,
     disabled,
     hidden,
-}: IPaginationPerPageProps) => (
+}) => (
     <FlatSelectWithPrepend
         id={PaginationUtils.getPaginationPerPageId(id)}
         options={_.map(perPage, (nb: number) => ({
