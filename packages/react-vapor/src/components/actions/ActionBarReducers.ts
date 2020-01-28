@@ -7,7 +7,7 @@ import {LoadingActions} from '../loading/LoadingActions';
 import {PaginationActions} from '../navigation/pagination/NavigationPaginationActions';
 import {PerPageActions} from '../navigation/perPage/NavigationPerPageActions';
 import {TableHOCRowActionsType} from '../table-hoc/actions/TableHOCRowActions';
-import {TableHOCUtils} from '../table-hoc/TableHOCUtils';
+import {TableHOCUtils} from '../table-hoc/utils/TableHOCUtils';
 import {IActionOptions} from './Action';
 import {ActionBarActions} from './ActionBarActions';
 

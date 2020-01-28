@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {Section} from '../../section/Section';
@@ -8,12 +7,12 @@ import {tableWithBlankSlate} from '../TableWithBlankSlate';
 import {tableWithFilter} from '../TableWithFilter';
 import {generateDataWithFacker, generateTableRow} from './TableHOCExamples';
 
-export const TableHocWithBlankSlateExample: ExampleComponent = () => (
+export const TableHOCwithBlankSlateExamples: ExampleComponent = () => (
     <Section>
         <TableWithBlankSlateExample />
     </Section>
 );
-TableHocWithBlankSlateExample.title = 'TableHOC blankSlate';
+TableHOCwithBlankSlateExamples.title = 'TableHOC blankSlate';
 
 export interface IExampleRowData {
     city: string;
@@ -24,25 +23,17 @@ export interface IExampleRowData {
 }
 
 // start-print
-const mapStateToProps = () => ({
-    data: generateDataWithFacker(0),
-});
 
-const TableWithBlankSlateExampleDisconnected: React.FunctionComponent = () => {
-    const tableId = 'tableWithBlankSlate';
-
-    return (
-        <Section>
-            <TableWithBlankSlateComposed
-                id={tableId}
-                className="table"
-                data={generateDataWithFacker(0)}
-                renderBody={generateTableRow}
-            />
-        </Section>
-    );
-};
-const TableWithBlankSlateExample = connect(mapStateToProps)(TableWithBlankSlateExampleDisconnected);
+const TableWithBlankSlateExample: React.FunctionComponent = () => (
+    <Section>
+        <TableWithBlankSlateComposed
+            id={'tableWithBlankSlate'}
+            className="table"
+            data={generateDataWithFacker(0)}
+            renderBody={generateTableRow}
+        />
+    </Section>
+);
 
 const TableWithBlankSlateComposed = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),

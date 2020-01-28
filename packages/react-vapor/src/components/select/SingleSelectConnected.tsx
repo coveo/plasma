@@ -5,6 +5,7 @@ import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
+import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
@@ -16,7 +17,7 @@ import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from
 import {SelectSelector} from './SelectSelector';
 import * as styles from './styles/SingleSelect.scss';
 
-export interface ISingleSelectOwnProps extends ISelectProps {
+export interface ISingleSelectOwnProps extends ISelectProps, IComponentBehaviour {
     placeholder?: string;
     toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
@@ -70,7 +71,11 @@ export class SingleSelectConnected extends React.PureComponent<
 
     render() {
         return (
-            <SelectConnected {..._.pick(this.props, selectPropsKeys)} button={this.getButton}>
+            <SelectConnected
+                {..._.pick(this.props, selectPropsKeys)}
+                button={this.getButton}
+                isLoading={this.props.isLoading}
+            >
                 {this.props.children}
             </SelectConnected>
         );

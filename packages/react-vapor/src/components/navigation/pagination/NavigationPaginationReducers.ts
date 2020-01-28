@@ -4,8 +4,8 @@ import {IReduxActionsPayload} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {FilterActions} from '../../filterBox/FilterBoxActions';
 import {ListBoxActions} from '../../listBox/ListBoxActions';
+import {TableHOCUtils} from '../../table-hoc/utils/TableHOCUtils';
 import {TableActions} from '../../tables/TableActions';
-import {TableHOCUtils} from './../../table-hoc/TableHOCUtils';
 import {PaginationActions} from './NavigationPaginationActions';
 
 export interface IPaginationState {

@@ -12,6 +12,7 @@ export interface IFlatSelectOptionProps {
     tooltip?: ITooltipProps;
     selected?: boolean;
     onClick?: (option: IFlatSelectOptionProps) => void;
+    disabled?: boolean;
 }
 
 export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, any> {
@@ -30,6 +31,7 @@ export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, an
             'flat-select-option',
             {
                 selectable: !this.props.selected,
+                disabled: this.props.disabled,
             },
             this.props.classes
         );
