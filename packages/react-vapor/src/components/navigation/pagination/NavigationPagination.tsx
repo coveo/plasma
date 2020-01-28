@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+import {PaginationSelect} from '../../pagination';
 import {Svg} from '../../svg/Svg';
-import {NavigationPaginationSelect} from './NavigationPaginationSelect';
 
 export interface INavigationPaginationOwnProps extends React.ClassAttributes<NavigationPagination> {
     id?: string;
@@ -78,7 +78,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
 
             _.each(_.range(start, end + 1), (p: number): void => {
                 pageSelects.push(
-                    <NavigationPaginationSelect
+                    <PaginationSelect
                         key={'page-' + p}
                         onPageClick={this.handlePageClick}
                         pageNb={p}

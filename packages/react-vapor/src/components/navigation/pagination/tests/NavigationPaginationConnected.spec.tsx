@@ -8,10 +8,10 @@ import {IReactVaporState} from '../../../../ReactVapor';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
+import {PaginationSelect} from '../../../pagination';
 import {INavigationPaginationProps, NavigationPagination} from '../NavigationPagination';
 import {changePage, resetPaging} from '../NavigationPaginationActions';
 import {NavigationPaginationConnected} from '../NavigationPaginationConnected';
-import {NavigationPaginationSelect} from '../NavigationPaginationSelect';
 
 describe('<NavigationPaginationConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
@@ -78,18 +78,18 @@ describe('<NavigationPaginationConnected />', () => {
         expect(onPageClickProp).toBeDefined();
     });
 
-    it('should render no more <NavigationPaginationSelect /> than the total number of pages', () => {
-        expect(navigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(
+    it('should render no more <PaginationSelect /> than the total number of pages', () => {
+        expect(navigationPagination.find(PaginationSelect).length).toBeLessThan(
             basicNavigationPaginationProps.totalPages + 1
         );
-        expect(fewPagesNavigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(
+        expect(fewPagesNavigationPagination.find(PaginationSelect).length).toBeLessThan(
             basicNavigationPaginationProps.totalPages + 1
         );
     });
 
-    it('should render no more <NavigationPaginationSelect /> than the maximum of pages shown (7)', () => {
-        expect(navigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(8);
-        expect(fewPagesNavigationPagination.find(NavigationPaginationSelect).length).toBeLessThan(8);
+    it('should render no more <PaginationSelect /> than the maximum of pages shown (7)', () => {
+        expect(navigationPagination.find(PaginationSelect).length).toBeLessThan(8);
+        expect(fewPagesNavigationPagination.find(PaginationSelect).length).toBeLessThan(8);
     });
 
     it('should set the previous arrow to disabled if on first page', () => {
