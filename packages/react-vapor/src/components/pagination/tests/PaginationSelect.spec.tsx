@@ -1,5 +1,4 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -23,7 +22,7 @@ describe('paginationSelectWrapper', () => {
     describe('<paginationSelectWrapper />', () => {
         let wrapper: ShallowWrapper<IPaginationSelectProps>;
         const shallowPaginationSelect = (props?: Partial<IPaginationSelectProps>) =>
-            shallowWithState(<PaginationSelect {...basicPaginationSelectProps} {...props} />, {});
+            shallow(<PaginationSelect {...basicPaginationSelectProps} {...props} />, {});
 
         it('should add the class disabled', () => {
             wrapper = shallowPaginationSelect({disabled: true});

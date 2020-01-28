@@ -1,11 +1,12 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationConnected} from '../navigation/NavigationConnected';
@@ -82,7 +83,6 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         onUnmount: () => dispatch(TableWithPaginationActions.remove(ownProps.id)),
     });
 
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class TableWithPagination extends React.Component<ITableHOCOwnProps & ITableWithPaginationProps> {
         componentDidMount() {
             this.props.onMount();
@@ -114,5 +114,5 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         }
     }
 
-    return TableWithPagination;
+    return connect(mapStateToProps, mapDispatchToProps)(TableWithPagination);
 };

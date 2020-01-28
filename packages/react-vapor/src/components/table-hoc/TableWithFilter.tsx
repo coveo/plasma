@@ -1,11 +1,11 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {ReduxConnect} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {IBlankSlateProps} from '../blankSlate/BlankSlate';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
@@ -60,10 +60,9 @@ export const tableWithFilter = (
             filter: filterText,
             urlFilter: urlParams[Params.filter],
             data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
-        } as any;
+        };
     };
 
-    @ReduxConnect(mapStateToProps)
     class TableWithFilter extends React.Component<ITableWithFilterProps> {
         componentDidUpdate(prevProps: ITableWithFilterProps) {
             if (prevProps.filter !== this.props.filter && this.props.filter !== this.props.urlFilter) {
@@ -94,5 +93,5 @@ export const tableWithFilter = (
         }
     }
 
-    return TableWithFilter;
+    return connect(mapStateToProps)(TableWithFilter);
 };

@@ -7,7 +7,7 @@ import {IReduxAction} from '../../utils/ReduxUtils';
 import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
 import {Svg} from '../svg/Svg';
 import {PaginationSelect} from './PaginationSelect';
-import {PaginationSelectors} from './PaginationUtils';
+import {PaginationSelectors} from './PaginationSelectors';
 
 export interface IPaginationPagesNumberOwnProps {
     id: string;
