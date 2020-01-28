@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.20.1](https://github.com/coveo/react-vapor/compare/v4.20.0...v4.20.1) (2020-01-28)
+
+
+### Bug Fixes
+
+* **types:** improve types in table ([e26778b](https://github.com/coveo/react-vapor/commit/e26778b353caf795d01090c77fc0aa99fce79b0c))
+
+
+
+
+
 # [4.20.0](https://github.com/coveo/react-vapor/compare/v4.19.1...v4.20.0) (2020-01-28)
 
 
