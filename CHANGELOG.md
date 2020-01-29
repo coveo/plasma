@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.0.0](https://github.com/coveo/react-vapor/compare/v4.20.3...v5.0.0) (2020-01-29)
+
+
+### Code Refactoring
+
+* **clean navigation/pagination:** remove NavigationPaginationSelect ([da2c0eb](https://github.com/coveo/react-vapor/commit/da2c0eb8295ea1a98c242800853367f2a7c60a3e))
+
+
+### BREAKING CHANGES
+
+* **clean navigation/pagination:** NavigationPaginationSelect no long exist
+
+
+
+
+
 ## [4.20.3](https://github.com/coveo/react-vapor/compare/v4.20.2...v4.20.3) (2020-01-29)
 
 
