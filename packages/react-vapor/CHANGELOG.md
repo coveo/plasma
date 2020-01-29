@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.0.1](https://github.com/coveo/react-vapor/compare/v5.0.0...v5.0.1) (2020-01-29)
+
+
+### Bug Fixes
+
+* **table:** missing type caused d.ts for tableWithFilter to be missing ([84dbe98](https://github.com/coveo/react-vapor/commit/84dbe98761b5914e5ba2b9529fefc56d7b56156b))
+
+
+
+
+
 # [5.0.0](https://github.com/coveo/react-vapor/compare/v4.20.3...v5.0.0) (2020-01-29)
 
 
