@@ -175,7 +175,7 @@ describe('<InputConnected />', () => {
             expect(validate(newInputState.value)).toBe(false);
             expect(newInputState.valid).toBe(validate(newInputState.value));
         });
-        it('should call changeToDirty is set as props', () => {
+        it('should call changeToDirty if set as props', () => {
             const changeDirtyStateSpy = jasmine.createSpy();
             const wrapperInputConnected = shallowWithState(<InputConnected />, {});
 
