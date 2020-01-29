@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [4.20.3](https://github.com/coveo/react-vapor/compare/v4.20.2...v4.20.3) (2020-01-29)
+
+
+### Bug Fixes
+
+* **multilineInput:** add invalidmessage prop ([#1414](https://github.com/coveo/react-vapor/issues/1414)) ([5605adf](https://github.com/coveo/react-vapor/commit/5605adf88fa4dda9ced0c2849a02deb77796c155))
+
+
+
+
+
 ## [4.20.2](https://github.com/coveo/react-vapor/compare/v4.20.1...v4.20.2) (2020-01-28)
 
 **Note:** Version bump only for package react-vapor
