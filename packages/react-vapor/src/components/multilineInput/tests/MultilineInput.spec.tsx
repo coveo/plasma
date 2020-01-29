@@ -1,6 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import {Store} from 'redux';
+
+import {IReactVaporState} from '../../../ReactVapor';
+import {TestUtils} from '../../../utils/tests/TestUtils';
+import {ILabelProps} from '../../input';
+import {validateInputValue} from '../../input/InputActions';
 import {AddInput} from '../AddInput';
 import {DeletableInput} from '../DeletableInput';
 import {IMultilineInputProps, IMultilineInputValue, MultilineInput} from '../MultilineInput';
@@ -15,6 +21,8 @@ describe('MultilineInput', () => {
     });
 
     describe('<MultilineInput />', () => {
+        let store: Store<IReactVaporState>;
+
         let multilineInput: ReactWrapper<IMultilineInputProps, any>;
         const valueId = 'an-id';
         const valueValue = 'a-value';
@@ -25,6 +33,7 @@ describe('MultilineInput', () => {
         const aNewValue = 'a-new-value';
 
         beforeEach(() => {
+            store = TestUtils.buildStore();
             multilineInput = mount(<MultilineInput />, {attachTo: document.getElementById('App')});
         });
 
@@ -38,7 +47,18 @@ describe('MultilineInput', () => {
             expect(innerAddInput.length).toBe(1);
         });
 
-        it('should render no DeletableInput when no values are specifie.', () => {
+        it('should be able to render an invalid message if the input is not valid', () => {
+            store.dispatch(validateInputValue(valueId, false));
+
+            const invalidMessage = '📦';
+            const inputLabel = shallow(<MultilineInput invalidMessage={invalidMessage} />)
+                .find('AddInput')
+                .prop('labelProps') as ILabelProps;
+
+            expect(inputLabel.invalidMessage).toBe(invalidMessage);
+        });
+
+        it('should render no DeletableInput when no values are specified.', () => {
             const innerDeleteInput = multilineInput.find(DeletableInput);
 
             expect(innerDeleteInput.length).toBe(0);
