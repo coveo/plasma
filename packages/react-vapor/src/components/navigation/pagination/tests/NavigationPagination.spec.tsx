@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {PaginationSelect} from '../../../pagination';
 
 import {
     INavigationPaginationProps,
@@ -153,10 +154,10 @@ describe('NavigationPagination', () => {
                 {numberOfPagesToShow: 2}
             );
 
-            expect(navigationPagination.find('NavigationPaginationSelect').length).toBe(NUMBER_OF_PAGES_SHOWING);
+            expect(navigationPagination.find(PaginationSelect).length).toBe(NUMBER_OF_PAGES_SHOWING);
 
             navigationPagination.setProps(newNavigationPaginationProps);
-            expect(navigationPagination.find('NavigationPaginationSelect').length).toBe(expectedNbOfPagesToShow);
+            expect(navigationPagination.find(PaginationSelect).length).toBe(expectedNbOfPagesToShow);
         });
 
         it('should not show any page number if the prop hidePages is set to true', () => {
@@ -166,11 +167,11 @@ describe('NavigationPagination', () => {
                 {hidePages: true}
             );
 
-            expect(navigationPagination.find('NavigationPaginationSelect').length).toBeGreaterThan(0);
+            expect(navigationPagination.find(PaginationSelect).length).toBeGreaterThan(0);
 
             navigationPagination.setProps(newNavigationPaginationProps);
 
-            expect(navigationPagination.find('NavigationPaginationSelect').length).toBe(0);
+            expect(navigationPagination.find(PaginationSelect).length).toBe(0);
 
             expect(navigationPagination.find('.flat-select-option.mod-link').length).toBe(2); // Next and previous buttons
         });
