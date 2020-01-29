@@ -3,13 +3,11 @@ import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
-import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {UrlUtils} from '../../utils/UrlUtils';
-import {IBlankSlateProps} from '../blankSlate/BlankSlate';
-import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
-import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
+import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
+import {IBlankSlateProps} from '../blankSlate';
+import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
 import {ITableHOCOwnProps} from './TableHOC';
 import {Params} from './TableWithUrlState';
 
@@ -43,7 +41,9 @@ const defaultMatchFilter = (filter: string, datum: any) =>
 
 export const tableWithFilter = (
     supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}}
-) => (Component: React.ComponentClass<ITableWithFilterProps>) => {
+) => (
+    Component: React.ComponentClass<ITableWithFilterProps>
+): React.ComponentClass<ITableWithFilterProps & React.HTMLAttributes<HTMLTableElement>> => {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapStateToProps = (
