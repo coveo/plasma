@@ -176,17 +176,17 @@ describe('<InputConnected />', () => {
             expect(newInputState.valid).toBe(validate(newInputState.value));
         });
         it('should call changeToDirty is set as props', () => {
-            const changeToDirtySpy = jasmine.createSpy();
+            const changeDirtyStateSpy = jasmine.createSpy();
             const wrapperInputConnected = shallowWithState(<InputConnected />, {});
 
             wrapperInputConnected.props().onChange();
 
-            expect(changeToDirtySpy).toHaveBeenCalledTimes(0);
+            expect(changeDirtyStateSpy).toHaveBeenCalledTimes(0);
 
-            wrapperInputConnected.setProps({changeToDirty: changeToDirtySpy});
+            wrapperInputConnected.setProps({changeToDirty: changeDirtyStateSpy});
             wrapperInputConnected.props().onChange();
 
-            expect(changeToDirtySpy).toHaveBeenCalledTimes(1);
+            expect(changeDirtyStateSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

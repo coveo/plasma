@@ -20,7 +20,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputProps): IInputD
     onDestroy: () => dispatch(removeInput(ownProps.id)),
     onChange: (value: string, valid = true) => {
         dispatch(changeInputValue(ownProps.id, value, valid));
-        ownProps.changeToDirty?.(value);
+        ownProps.changeDirtyState?.(value);
     },
 });
 
