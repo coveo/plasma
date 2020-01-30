@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.1.0](https://github.com/coveo/react-vapor/compare/v5.0.1...v5.1.0) (2020-01-30)
+
+
+### Features
+
+* **demo:** added a multiline input made with the multilinebox for ADUI-4988 ([584c71c](https://github.com/coveo/react-vapor/commit/584c71cb5c0233ed4c2f2a5fff4c76d1ff35dfa9))
+* **demo:** removed the tables panel in the style section ([7ae7bd1](https://github.com/coveo/react-vapor/commit/7ae7bd1b01555dd9deb24a1898964b5b9abee967))
+
+
+
+
+
 ## [5.0.1](https://github.com/coveo/react-vapor/compare/v5.0.0...v5.0.1) (2020-01-29)
 
 
