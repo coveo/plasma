@@ -1,13 +1,22 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {AutocompleteConnected, IItemBoxProps} from '../..';
+
+import {
+    AutocompleteConnected,
+    IItemBoxProps,
+    IMultilineSingleBoxProps,
+    MultilineBox,
+    multilineBoxContainer,
+    multilineBoxWithDnD,
+    multilineBoxWithRemoveButton,
+} from '../..';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {ExamplesStore} from '../../../../docs/Store';
 import {IWithDirtyProps, withDirty} from '../../../hoc/withDirty/withDirty';
 import {withEditing} from '../../../hoc/withEditing/withEditing';
 import {Button} from '../../button/Button';
 import {IMultilineInputValue, MultilineInput} from '../../multilineInput/MultilineInput';
-import {ISplitInput, ISplitValue, SplitMultilineInput} from '../../multilineInput/SplitMultilineInput';
+import {ISplitInput, SplitMultilineInput} from '../../multilineInput/SplitMultilineInput';
 import {Section} from '../../section/Section';
 import {Input} from '../Input';
 import {setDisabledInput} from '../InputActions';
@@ -18,19 +27,28 @@ export const InputExamples: ExampleComponent = () => (
     <Section title="Inputs Examples">
         <SimpleInputDisconnected />
         <InputsConnected />
-        <MultilineInputComponents />
         <InputsWithDirtyManagement />
+        <MultilineInputComponents />
+        <MultilineBoxExamples />
     </Section>
 );
 InputExamples.description =
     'Text Inputs allow users to enter a single line of letters, numbers, or symbols. They are used to submit short character strings.';
 
 export const MultilineInputComponents: React.FunctionComponent = () => (
-    <Section level={2} title="Multiline Input example">
+    <Section level={2} title="Multiline Input Examples">
         <MultilineInputExample />
         <SplitMultilineInputExamples />
     </Section>
 );
+
+interface IMultilineInputWithMultilineBox {
+    [1]: string;
+    [2]: string;
+    [3]?: string;
+}
+
+type IMultilineInputWithMultilineBoxData = Array<IMultilineSingleBoxProps<IMultilineInputWithMultilineBox>>;
 
 const autoCompleteItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
@@ -130,68 +148,6 @@ const InputsConnected: React.FunctionComponent = () => {
     );
 };
 
-const MultilineInputExample: React.FunctionComponent = () => {
-    const [inputValues, setInputValues] = React.useState([]);
-
-    return (
-        <Section level={3} title="A multiline input with local state">
-            <MultilineInput
-                id="multiline-input"
-                title="A Multiline Input label"
-                placeholder="Enter a value"
-                values={inputValues}
-                onChange={(inputValuesWithNewValue: IMultilineInputValue[]) =>
-                    setInputValues(inputValuesWithNewValue.map((value) => value))
-                }
-            />
-        </Section>
-    );
-};
-
-const SplitMultilineInputExamples: React.FunctionComponent = () => {
-    const inputs: ISplitInput[] = [
-        {
-            id: '1',
-            label: 'First input',
-            placeholder: 'enter a value',
-            validation: (value: string) => !!value,
-            validationMessage: 'This cannot be empty',
-        },
-        {
-            id: '2',
-            label: 'Second input',
-            placeholder: 'enter another value',
-        },
-    ];
-
-    const InitialValues: ISplitValue[] = [
-        {
-            '1': 'first value',
-            '2': 'other first value',
-            '3': 'other other first value',
-        },
-        {
-            '1': 'second value',
-            '2': 'other second value',
-            '3': 'other other second value',
-        },
-    ];
-
-    return (
-        <>
-            <Section level={3} title="A split multiline input with default values">
-                <SplitMultilineInput inputs={inputs} defaultValues={InitialValues} />
-            </Section>
-            <Section level={3} title="A split multiline input with 3 inputs">
-                <SplitMultilineInput
-                    inputs={[...inputs, {id: '3', label: 'Third input', placeholder: 'enter yet another value'}]}
-                    defaultValues={[...InitialValues, {'1': 'One', '2': 'Two', '3': 'three'}]}
-                />
-            </Section>
-        </>
-    );
-};
-
 const InputsWithDirtyManagement: React.FunctionComponent = () => (
     <Section level={2} title="Inputs with dirty management functionnalities">
         <InputWithSimpleDirtyManagement />
@@ -238,5 +194,166 @@ export const InputWithEditingDirtyManagement = withEditing({
     footerChildren: InputBeforeEditingDirtyManagement.footerChildren,
     footerClassName: 'sticky-footer-mod-header',
 })(InputBeforeEditingDirtyManagement);
+
+const MultilineInputExample: React.FunctionComponent = () => {
+    const [inputValues, setInputValues] = React.useState([]);
+
+    return (
+        <Section level={3} title="A multiline input with local state">
+            <MultilineInput
+                id="multiline-input"
+                title="A Multiline Input label"
+                placeholder="Enter a value"
+                values={inputValues}
+                onChange={(inputValuesWithNewValue: IMultilineInputValue[]) =>
+                    setInputValues(inputValuesWithNewValue.map((value) => value))
+                }
+            />
+        </Section>
+    );
+};
+
+const inputs: ISplitInput[] = [
+    {
+        id: '1',
+        label: 'First input',
+        placeholder: 'enter a value',
+        validation: (value: string) => !!value,
+        validationMessage: 'This cannot be empty',
+    },
+    {
+        id: '2',
+        label: 'Second input',
+        placeholder: 'enter another value',
+    },
+];
+
+const InitialValues = [
+    {
+        '1': 'First Multiline Input: first value',
+        '2': 'First Multiline Input: second value',
+        '3': 'First Multiline Input: third value',
+    },
+    {
+        '1': 'Second Multiline Input: first value',
+        '2': 'Second Multiline Input: second value',
+        '3': 'Second Multiline Input: third value',
+    },
+];
+
+const SplitMultilineInputExamples: React.FunctionComponent = () => {
+    return (
+        <>
+            <Section level={3} title="A split multiline input with default values">
+                <SplitMultilineInput inputs={inputs} defaultValues={InitialValues} />
+            </Section>
+            <Section level={3} title="A split multiline input with 3 inputs">
+                <SplitMultilineInput
+                    inputs={[...inputs, {id: '3', label: 'Third input', placeholder: 'enter yet another value'}]}
+                    defaultValues={[...InitialValues, {'1': 'One', '2': 'Two', '3': 'three'}]}
+                />
+            </Section>
+        </>
+    );
+};
+
+const MultilineBoxWithFunctionnalities = _.compose(
+    multilineBoxContainer(),
+    multilineBoxWithRemoveButton(),
+    multilineBoxWithDnD()
+)(MultilineBox);
+
+const MultilineBoxWithCustomization = _.compose(
+    multilineBoxContainer({
+        containerNode: (child: React.ReactNode, data: any[], index: number) => (
+            <div key={`${data[index].id}Container`} className={'p2 bg-light-grey'}>
+                {child}
+            </div>
+        ),
+    })
+)(MultilineBox);
+
+const MultilineBoxExamples: React.FunctionComponent = () => {
+    return (
+        <Section level={2} title="Examples of Multiline Inputs built with the MultilineBox Component">
+            <Section
+                className="mb0"
+                level={3}
+                title="A multiline box of inputs with a default container, default props, a drag and drop and a remove button. It will add a new box on change of the last input"
+            >
+                <MultilineBoxWithFunctionnalities<IMultilineInputWithMultilineBox>
+                    id="FirstMultilineBoxExample"
+                    data={InitialValues}
+                    className="my2"
+                    renderBody={(data: IMultilineInputWithMultilineBoxData, parentProps: {addNewBox: () => void}) =>
+                        _.map(data, (cData) => (
+                            <div key={cData.id}>
+                                <InputConnected
+                                    id={`${cData.id}1`}
+                                    classes="mt1 inline-block mx1"
+                                    defaultValue={cData.props['1']}
+                                    validate={(value: string) => cData.props['1'] === value}
+                                    validateOnChange
+                                />
+                                <InputConnected
+                                    id={`${cData.id}2`}
+                                    classes="mt1 inline-block mx1"
+                                    defaultValue={cData.props['2']}
+                                />
+                                <InputConnected
+                                    classes="mt2 mx1"
+                                    id={`${cData.id}3`}
+                                    defaultValue={cData.props['3']}
+                                    onChange={(value: string) => {
+                                        if (value !== '' && cData.isLast) {
+                                            parentProps.addNewBox();
+                                        }
+                                    }}
+                                />
+                            </div>
+                        ))
+                    }
+                    defaultProps={{
+                        '1': 'default',
+                        '2': 'props',
+                        '3': 'Will add a new box if you change this.',
+                    }}
+                />
+            </Section>
+            <Section
+                level={3}
+                title="A multiline box of inputs with a custom container. Will validate only when the value is the expected one"
+            >
+                <MultilineBoxWithCustomization<IMultilineInputWithMultilineBox>
+                    id="secondMultilineBoxExample"
+                    data={InitialValues}
+                    renderBody={(data: IMultilineInputWithMultilineBoxData, parentProps: {addNewBox: () => void}) =>
+                        _.map(data, (cData: IMultilineSingleBoxProps<IMultilineInputWithMultilineBox>) => (
+                            <div key={cData.id}>
+                                <InputConnected
+                                    id={`${cData.id}1`}
+                                    classes="mt1 mx1"
+                                    defaultValue={cData.props['1']}
+                                    onChange={(value: string) => {
+                                        if (value === 'next' && cData.isLast) {
+                                            parentProps.addNewBox();
+                                            return true;
+                                        }
+                                        return false;
+                                    }}
+                                />
+                                <InputConnected id={`${cData.id}2`} classes="mt1 mx1" defaultValue={cData.props['2']} />
+                            </div>
+                        ))
+                    }
+                    defaultProps={{
+                        '1': "Will create another box if you type 'next' here.",
+                        '2': 'But not here.',
+                    }}
+                />
+            </Section>
+        </Section>
+    );
+};
 
 // stop-print
