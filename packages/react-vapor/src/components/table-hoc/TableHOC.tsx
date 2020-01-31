@@ -47,16 +47,17 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         const table = (
             <table className={classNames(this.props.className)}>
                 {this.props.tableHeader}
-                {this.props.isLoading ? (
+                {this.props.isLoading && (
                     <TableLoading.Body
                         numberOfRow={
                             _.size(this.props.data) || (this.props?.loading?.defaultLoadingRow ?? PER_PAGE_NUMBERS[1])
                         }
                         numberOfColumns={this.props?.loading?.numberOfColumns ?? 5}
                     />
-                ) : (
-                    <tbody>{this.props.renderBody(this.props.data || [])}</tbody>
                 )}
+                <tbody className={classNames({hidden: this.props.isLoading})}>
+                    {this.props.renderBody(this.props.data || [])}
+                </tbody>
             </table>
         );
 
