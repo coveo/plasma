@@ -71,6 +71,35 @@ export class ActionBarExamples extends React.Component<any, any> {
                 <Section level={2} title="Action bar disabled">
                     <ActionBar actions={actions} disabled />
                 </Section>
+                <Section level={2} title="Action bar disabled with a secondary action converted to a primary action">
+                    <ActionBar
+                        actions={[
+                            {
+                                name: 'Link to Coveo (disabled)',
+                                link: 'http://coveo.com',
+                                target: '_blank',
+                                icon: 'exit',
+                                primary: true,
+                                enabled: false,
+                                hideDisabled: false,
+                                tooltip: "You cannot access Coveo's website at the moment.",
+                                tooltipPlacement: 'bottom',
+                            },
+                            {
+                                name: 'visibly disabled',
+                                trigger: () => alert('I will never be triggered'),
+                                target: '_blank',
+                                icon: 'open',
+                                primary: false,
+                                enabled: false,
+                                hideDisabled: false,
+                                tooltip: 'You cannot trigger me.',
+                                tooltipPlacement: 'bottom',
+                            },
+                        ]}
+                        disabled
+                    />
+                </Section>
             </Section>
         );
     }

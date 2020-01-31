@@ -99,5 +99,17 @@ describe('TableHOC', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
             expect(wrapper.find('tbody').hasClass('hidden')).toBe(true);
         });
+
+        it('should disabled actions on loading', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading />);
+            expect(wrapper.find(ActionBarConnected).props().disabled).toBe(true);
+        });
+
+        it('should not disabled actions on loading is off', () => {
+            const wrapper = shallow(
+                <TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading={false} />
+            );
+            expect(wrapper.find(ActionBarConnected).props().disabled).toBe(false);
+        });
     });
 });
