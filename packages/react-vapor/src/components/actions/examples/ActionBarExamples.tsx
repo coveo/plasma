@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {Section} from '../../section';
 import {IActionOptions} from '../Action';
 import {ActionBar} from '../ActionBar';
 import {ACTION_SEPARATOR} from '../ActionConstants';
@@ -51,27 +50,30 @@ export class ActionBarExamples extends React.Component<any, any> {
         ];
 
         return (
-            <Section level={1} title="ActionBar examples">
-                <Section level={2} title="Action bar without actions">
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">Action bar without actions</label>
                     <ActionBar />
-                </Section>
-                <Section level={2} title="Action bar with actions">
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Action bar with actions</label>
                     <ActionBar actions={actions} />
-                </Section>
-                <Section level={2} title="Action bar with default classes turned off and extra classes">
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        Action bar with default classes turned off and extra classes
+                    </label>
                     <ActionBar
                         actions={actions}
                         removeDefaultContainerClasses
                         extraContainerClasses={['coveo-table-actions-container', 'p2']}
                     />
-                </Section>
-                <Section level={2} title="Action bar with small actions">
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Action bar with small actions</label>
                     <ActionBar actions={actions} withSmallActions />
-                </Section>
-                <Section level={2} title="Action bar disabled">
-                    <ActionBar actions={actions} disabled />
-                </Section>
-            </Section>
+                </div>
+            </div>
         );
     }
 }

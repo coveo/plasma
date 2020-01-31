@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import {ExamplesStore} from '../../../../docs/Store';
-import {Section} from '../../section';
 import {IActionOptions} from '../Action';
 import {ActionBarConnected} from '../ActionBar';
 import {addActionsToActionBar} from '../ActionBarActions';
@@ -98,14 +97,14 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
 
     render() {
         return (
-            <Section title="Action bar examples">
-                <Section
-                    level={2}
-                    title="Action bar with Redux state and inline prompt (actions appear after 4 seconds)"
-                >
+            <div className="mt2">
+                <div className="form-group">
+                    <label className="form-control-label">
+                        Action bar with Redux state and inline prompt (actions appear after 4 seconds)
+                    </label>
                     <ActionBarConnected id={actionBarId} />
-                </Section>
-            </Section>
+                </div>
+            </div>
         );
     }
 }

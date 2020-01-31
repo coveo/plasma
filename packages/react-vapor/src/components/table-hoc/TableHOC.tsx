@@ -84,7 +84,6 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                             'mod-border-top': this.props.showBorderTop,
                         }
                     ).split(' ')}
-                    disabled={this.props.isLoading}
                 >
                     {this.props.actions}
                 </ActionBarConnected>

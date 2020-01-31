@@ -7,7 +7,6 @@ export interface IDropdownOwnProps extends React.ClassAttributes<Dropdown> {
     toggleContent: JSX.Element[];
     dropdownItems: JSX.Element[];
     className?: string;
-    disabled?: boolean;
 }
 
 export interface IDropdownStateProps {
@@ -27,7 +26,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     private dropdown: HTMLDivElement;
 
     private handleClick = () => {
-        if (this.props.onClick && !this.props.disabled) {
+        if (this.props.onClick) {
             this.props.onClick();
         }
     };
@@ -63,23 +62,11 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     }
 
     render() {
-        const dropdownClasses = classNames(
-            'dropdown',
-            {
-                open: this.props.isOpened,
-                'cursor-default': this.props.disabled,
-            },
-            this.props.className
-        );
+        const dropdownClasses = classNames('dropdown', {open: this.props.isOpened}, this.props.className);
 
         return (
             <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                <span
-                    className={classNames('dropdown-toggle inline-flex flex-center', {
-                        'disabled transparency-4 cursor-default': this.props.disabled,
-                    })}
-                    onClick={() => this.handleClick()}
-                >
+                <span className="dropdown-toggle inline-flex flex-center" onClick={() => this.handleClick()}>
                     {this.props.toggleContent}
                 </span>
                 <ul className="dropdown-menu normal-height">{this.props.dropdownItems}</ul>
