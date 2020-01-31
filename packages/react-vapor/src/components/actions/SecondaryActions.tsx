@@ -9,9 +9,15 @@ export interface ISecondaryActionsProps {
     actions: IActionOptions[];
     id?: string;
     moreLabel?: string;
+    disabled?: boolean;
 }
 
-export const SecondaryActions: React.FunctionComponent<ISecondaryActionsProps> = ({actions, id, moreLabel}) => {
+export const SecondaryActions: React.FunctionComponent<ISecondaryActionsProps> = ({
+    actions,
+    id,
+    moreLabel,
+    disabled = false,
+}) => {
     let lastFilteredAction: IActionOptions = null;
     const filteredActions = actions
         // filter out disabled actions
@@ -36,9 +42,18 @@ export const SecondaryActions: React.FunctionComponent<ISecondaryActionsProps> =
             filteredActions?.length === 1 ? (
                 <PrimaryActionConnected action={filteredActions[0]} parentId={id} />
             ) : (
-                <ActionsDropdown moreLabel={moreLabel} actions={filteredActions} id={`${id}_actionsDropdown`} />
+                <ActionsDropdown
+                    moreLabel={moreLabel}
+                    actions={filteredActions}
+                    id={`${id}_actionsDropdown`}
+                    disabled={disabled}
+                />
             );
-        return <div className="dropdown action primary-action">{actionsItems}</div>;
+        return (
+            <div className="dropdown action primary-action" style={{cursor: disabled ? 'default' : 'pointer'}}>
+                {actionsItems}
+            </div>
+        );
     }
 };
 

@@ -32,6 +32,7 @@ export interface IActionBarProps {
     width?: number;
     moreLabel?: string;
     itemFilterCropLength?: number;
+    disabled?: boolean;
 }
 
 export class ActionBar extends React.PureComponent<
@@ -85,9 +86,12 @@ export class ActionBar extends React.PureComponent<
                 ?.filter(({primary}) => !!primary)
                 .map((action: IActionOptions, index: number) => {
                     const primaryAction = this.props.withReduxState ? (
-                        <PrimaryActionConnected action={action} parentId={this.props.id} />
+                        <PrimaryActionConnected
+                            action={{...action, enabled: !this.props.disabled}}
+                            parentId={this.props.id}
+                        />
                     ) : (
-                        <PrimaryAction action={action} />
+                        <PrimaryAction action={{...action, enabled: !this.props.disabled}} />
                     );
                     return (
                         <div className="action primary-action" key={`primary-${index}`}>
@@ -100,8 +104,14 @@ export class ActionBar extends React.PureComponent<
 
         let secondaryActionsView: JSX.Element = null;
         if (!_.isEmpty(secondaryActions)) {
+            secondaryActions.forEach((action: IActionOptions) => ({...action, enabled: !this.props.disabled}));
             secondaryActionsView = (
-                <SecondaryActions id={this.props.id} moreLabel={this.props.moreLabel} actions={secondaryActions} />
+                <SecondaryActions
+                    id={this.props.id}
+                    moreLabel={this.props.moreLabel}
+                    actions={secondaryActions}
+                    disabled={this.props.disabled}
+                />
             );
         }
 
