@@ -8,5 +8,5 @@ export const CodeMirrorModes = {
     JSON: 'application/json',
     XML: 'xml',
     Python: 'python',
-    Text: 'text/javascript',
+    Text: 'text/plain',
 };
