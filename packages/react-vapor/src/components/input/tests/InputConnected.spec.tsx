@@ -21,10 +21,8 @@ describe('<InputConnected />', () => {
     });
 
     afterEach(() => {
-        if (wrapper) {
-            store.dispatch(clearState());
-            wrapper.detach();
-        }
+        store.dispatch(clearState());
+        wrapper?.detach();
     });
 
     const mountComponentWithProps = (props: IInputProps = {}) => {
@@ -175,7 +173,7 @@ describe('<InputConnected />', () => {
             expect(validate(newInputState.value)).toBe(false);
             expect(newInputState.valid).toBe(validate(newInputState.value));
         });
-        it('should call changeToDirty if set as props', () => {
+        it('should call changeDirtyState if set as props', () => {
             const changeDirtyStateSpy = jasmine.createSpy();
             const wrapperInputConnected = shallowWithState(<InputConnected />, {});
 
@@ -183,7 +181,7 @@ describe('<InputConnected />', () => {
 
             expect(changeDirtyStateSpy).toHaveBeenCalledTimes(0);
 
-            wrapperInputConnected.setProps({changeToDirty: changeDirtyStateSpy});
+            wrapperInputConnected.setProps({changeDirtyState: changeDirtyStateSpy});
             wrapperInputConnected.props().onChange();
 
             expect(changeDirtyStateSpy).toHaveBeenCalledTimes(1);
