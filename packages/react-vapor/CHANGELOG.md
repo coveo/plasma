@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.2.0](https://github.com/coveo/react-vapor/compare/v5.1.0...v5.2.0) (2020-02-03)
+
+
+### Features
+
+* **editor:** add text mode to code mirror modes ([#1422](https://github.com/coveo/react-vapor/issues/1422)) ([5830776](https://github.com/coveo/react-vapor/commit/5830776d7c1a11327dd45f83e108bdea0b82af1c))
+
+
+
+
+
 # [5.1.0](https://github.com/coveo/react-vapor/compare/v5.0.1...v5.1.0) (2020-01-30)
 
 
