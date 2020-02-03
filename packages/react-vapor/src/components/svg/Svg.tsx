@@ -19,7 +19,7 @@ export class Svg extends React.Component<ISvgProps> {
     };
 
     private setSvgClass(svgString: string, svgClass: string): string {
-        return svgString.replace('<svg ', `<svg class="${svgClass}" `);
+        return svgString.replace('<svg ', `<svg class="${svgClass}" `).replace('<svg>', `<svg class="${svgClass}">`);
     }
 
     render() {
