@@ -89,5 +89,15 @@ describe('TableHOC', () => {
             );
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
+
+        it('should keep the tbody with rows data during the loading', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+            expect(wrapper.find('tbody').length).toBe(1);
+        });
+
+        it('should set the tbody rows data hidden during the loading', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+            expect(wrapper.find('tbody').hasClass('hidden')).toBe(true);
+        });
     });
 });
