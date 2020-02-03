@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.2.1](https://github.com/coveo/react-vapor/compare/v5.2.0...v5.2.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* **select row:** keep selected row table ([84f6c12](https://github.com/coveo/react-vapor/commit/84f6c12dc59bc85e4e1695e995a6bc2d671ee91e))
+
+
+
+
+
 # [5.2.0](https://github.com/coveo/react-vapor/compare/v5.1.0...v5.2.0) (2020-02-03)
 
 
