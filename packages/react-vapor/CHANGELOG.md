@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.2](https://github.com/coveo/react-vapor/compare/v5.3.1...v5.3.2) (2020-02-03)
+
+
+### Bug Fixes
+
+* **subnavigation:** add selector export to index ([#1426](https://github.com/coveo/react-vapor/issues/1426)) ([d76a7ff](https://github.com/coveo/react-vapor/commit/d76a7fff4bb813c663018121bb84e130412cc66a))
+
+
+
+
+
 ## [5.3.1](https://github.com/coveo/react-vapor/compare/v5.3.0...v5.3.1) (2020-02-03)
 
 
