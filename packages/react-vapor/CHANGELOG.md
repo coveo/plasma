@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.3.1](https://github.com/coveo/react-vapor/compare/v5.3.0...v5.3.1) (2020-02-03)
+
+
+### Bug Fixes
+
+* **svg:** set class name on basic svg tags ([baa3823](https://github.com/coveo/react-vapor/commit/baa3823935e76de2364a57eccc3632daa216292d))
+
+
+
+
+
 # [5.3.0](https://github.com/coveo/react-vapor/compare/v5.2.1...v5.3.0) (2020-02-03)
 
 
