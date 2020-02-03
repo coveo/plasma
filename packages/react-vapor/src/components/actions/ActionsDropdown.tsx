@@ -9,11 +9,17 @@ export interface IActionsDropdownProps {
     actions: IActionOptions[];
     id?: string;
     moreLabel?: string;
+    disabled?: boolean;
 }
 
 export const MORE_LABEL: string = 'More';
 
-export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = ({actions, moreLabel, id}) => {
+export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = ({
+    actions,
+    moreLabel,
+    id,
+    disabled = false,
+}) => {
     const actionItems = actions?.map((action: IActionOptions, index: number) => (
         <ActionDropdownItem key={`action-${action.id ?? index}`} action={action} parentId={id} />
     ));
@@ -30,7 +36,7 @@ export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = (
         </span>,
     ];
 
-    return <DropdownConnected toggleContent={toggleContent} dropdownItems={actionItems} id={id} />;
+    return <DropdownConnected toggleContent={toggleContent} dropdownItems={actionItems} id={id} disabled={disabled} />;
 };
 
 /**

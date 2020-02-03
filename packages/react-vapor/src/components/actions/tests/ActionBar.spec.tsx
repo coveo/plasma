@@ -6,6 +6,7 @@ import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions, InlinePrompt} from '../../inlinePrompt/InlinePrompt';
 import {ActionBar} from '../ActionBar';
 import {PrimaryAction} from '../PrimaryAction';
+import {PrimaryActionConnected} from '../PrimaryActionConnected';
 import {SecondaryActions} from '../SecondaryActions';
 
 describe('ActionsBar', () => {
@@ -44,6 +45,27 @@ describe('ActionsBar', () => {
                 .dive()
                 .find(PrimaryAction).length
         ).toBe(0);
+    });
+
+    it('should return PrimaryAction enabled by default', () => {
+        const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} />)
+            .childAt(1)
+            .dive();
+        expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(true);
+    });
+
+    it('should return PrimaryAction disabled', () => {
+        const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} disabled />)
+            .childAt(1)
+            .dive();
+        expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(false);
+    });
+
+    it('should return PrimaryActionConnected disabled', () => {
+        const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} withReduxState disabled />)
+            .childAt(1)
+            .dive();
+        expect(wrapper.find(PrimaryActionConnected).props().action.enabled).toBe(false);
     });
 
     it('should display a <SecondaryActions /> component if there are secondary actions', () => {

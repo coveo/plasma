@@ -48,6 +48,44 @@ describe('Actions', () => {
         ).toBe(PrimaryActionConnected);
     });
 
+    it('should not set disabled on ActionsDropdown if more than 1 secondary action by default', () => {
+        const wrapper = shallow(
+            <SecondaryActions
+                actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
+            />
+        );
+        expect(wrapper.find(ActionsDropdown).props().disabled).toBe(false);
+    });
+
+    it('should set disabled on ActionsDropdown if more than 1 secondary action', () => {
+        const wrapper = shallow(
+            <SecondaryActions
+                actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
+                disabled
+            />
+        );
+        expect(wrapper.find(ActionsDropdown).props().disabled).toBe(true);
+    });
+
+    it('should add the style cursor pointer if the component is enabled', () => {
+        const wrapper = shallow(
+            <SecondaryActions
+                actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
+            />
+        );
+        expect(wrapper.find('div.dropdown').props().style.cursor).toBe('pointer');
+    });
+
+    it('should add the style cursor default if the component is disabled', () => {
+        const wrapper = shallow(
+            <SecondaryActions
+                actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
+                disabled
+            />
+        );
+        expect(wrapper.find('div.dropdown').props().style.cursor).toBe('default');
+    });
+
     describe('separators', () => {
         const shallowAndGetActions = (actionsList: IActionOptions[]) => {
             return shallow(<SecondaryActions actions={actionsList} />)

@@ -131,4 +131,49 @@ describe('Dropdown', () => {
             expect(onDocumentClickSpy).toHaveBeenCalled();
         });
     });
+
+    describe('once mounted', () => {
+        it('should not add the class to set the cursor to default by default ', () => {
+            const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} />);
+            expect(wrapper.find('.dropdown').hasClass('cursor-default')).toBe(false);
+        });
+
+        it('should add the class to set the cursor to default if the component is disabled', () => {
+            const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+            expect(wrapper.find('.dropdown').hasClass('cursor-default')).toBe(true);
+        });
+
+        it('should trigger the onClick by default', () => {
+            const spy = jasmine.createSpy('onClick');
+            const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} onClick={spy} />);
+            wrapper.find('.dropdown-toggle').simulate('click');
+
+            expect(spy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not trigger the onClick if disabled', () => {
+            const spy = jasmine.createSpy('onClick');
+            const wrapper = shallow(
+                <Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} onClick={spy} disabled />
+            );
+            wrapper.find('.dropdown-toggle').simulate('click');
+
+            expect(spy).toHaveBeenCalledTimes(0);
+        });
+
+        it('should add the class disabled on dropdown-toggle if disabled', () => {
+            const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+            expect(wrapper.find('.dropdown-toggle').hasClass('disabled')).toBe(true);
+        });
+
+        it('should add the class transparency-4 on dropdown-toggle if disabled', () => {
+            const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+            expect(wrapper.find('.dropdown-toggle').hasClass('transparency-4')).toBe(true);
+        });
+
+        it('should add the class cursor-default on dropdown-toggle if disabled', () => {
+            const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+            expect(wrapper.find('.dropdown-toggle').hasClass('cursor-default')).toBe(true);
+        });
+    });
 });
