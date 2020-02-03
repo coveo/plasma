@@ -27,8 +27,8 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
     private dropdown: HTMLDivElement;
 
     private handleClick = () => {
-        if (this.props.onClick && !this.props.disabled) {
-            this.props.onClick();
+        if (!this.props.disabled) {
+            this.props.onClick?.();
         }
     };
 
