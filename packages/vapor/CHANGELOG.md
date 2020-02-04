@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.4.0](https://github.com/coveo/react-vapor/compare/v5.3.1...v5.4.0) (2020-02-04)
+
+
+### Bug Fixes
+
+* **navigation:** remove margin-top on .navigation-menu ([6c92808](https://github.com/coveo/react-vapor/commit/6c92808ecbbfc67a1297e60a63b6e92d7d82ee39))
+
+
+
+
+
 # [5.0.0](https://github.com/coveo/react-vapor/compare/v4.20.3...v5.0.0) (2020-01-29)
 
 **Note:** Version bump only for package coveo-styleguide
