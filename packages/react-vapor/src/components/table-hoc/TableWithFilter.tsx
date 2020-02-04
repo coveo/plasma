@@ -84,7 +84,7 @@ export const tableWithFilter = (
             const newProps = {
                 ..._.omit(this.props, [...TableWithFilterPropsToOmit]),
                 renderBody:
-                    _.isEmpty(this.props.data) && this.props.filter !== ''
+                    _.isEmpty(this.props.data) && this.props.filter !== '' && config.blankSlate
                         ? () => <BlankSlateWithTable {...HocUtils.supplyConfig(config.blankSlate)} />
                         : this.props.renderBody,
             };
