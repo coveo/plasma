@@ -1,8 +1,10 @@
+import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {IBlankSlateProps} from '../../blankSlate';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithFilter} from '../TableWithFilter';
 
@@ -88,6 +90,23 @@ describe('Table HOC', () => {
                 wrapper.update();
 
                 expect(updateSpy).not.toHaveBeenCalled();
+            });
+
+            it('should render a blankSlate as renderBody if the data is empty and the filter is not empty', () => {
+                const wrapper = shallowWithState(
+                    <TableWithFilterServer {...defaultProps} data={null} />,
+                    getStateWithFilter('filterText')
+                );
+
+                const wrapperRenderBody: ShallowWrapper<IBlankSlateProps> = shallow(
+                    (wrapper as any)
+                        .dive()
+                        .dive()
+                        .props()
+                        .renderBody()
+                );
+
+                expect((wrapperRenderBody.instance().props as IBlankSlateProps).title).toBeDefined();
             });
         });
     });

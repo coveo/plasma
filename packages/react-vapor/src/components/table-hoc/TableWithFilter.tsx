@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
-import {IBlankSlateProps} from '../blankSlate';
+import {BlankSlateWithTable, IBlankSlateProps} from '../blankSlate';
 import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
 import {ITableHOCOwnProps} from './TableHOC';
 import {Params} from './TableWithUrlState';
@@ -83,6 +83,10 @@ export const tableWithFilter = (
             const newActions = [...(this.props.actions || []), filterAction];
             const newProps = {
                 ..._.omit(this.props, [...TableWithFilterPropsToOmit]),
+                renderBody:
+                    _.isEmpty(this.props.data) && this.props.filter !== ''
+                        ? () => <BlankSlateWithTable {...HocUtils.supplyConfig(config.blankSlate)} />
+                        : this.props.renderBody,
             };
 
             return (
