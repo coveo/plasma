@@ -112,6 +112,7 @@ export const tableWithNewPagination = (
                         totalEntries={this.props.totalEntries}
                         perPageNumbers={config.perPageNumbers}
                     />
+                    {this.props.children}
                 </Component>
             );
         }
