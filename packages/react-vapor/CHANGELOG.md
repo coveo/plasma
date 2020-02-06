@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.5.0](https://github.com/coveo/react-vapor/compare/v5.3.1...v5.5.0) (2020-02-06)
+
+
+### Bug Fixes
+
+* **subnavigation:** add selector export to index ([#1426](https://github.com/coveo/react-vapor/issues/1426)) ([d76a7ff](https://github.com/coveo/react-vapor/commit/d76a7fff4bb813c663018121bb84e130412cc66a))
+* **table-loading:** client-side table ([3b10d50](https://github.com/coveo/react-vapor/commit/3b10d50513faa78998f1b03eccac20b7fe890b98))
+* **table-loading:** table loading improvement ([d08e669](https://github.com/coveo/react-vapor/commit/d08e669429fb932ed964fde56f5e903caa7c97d7))
+* **table-loading:** table pagination ([a17d0bc](https://github.com/coveo/react-vapor/commit/a17d0bc42457eb8fb924b867589e152908d47c57))
+
+
+### Features
+
+* **table-hoc:** blankslate table with filter ([2ce24db](https://github.com/coveo/react-vapor/commit/2ce24db48aa802ded37c82b916339a653797c2c3))
+
+
+
+
+
 # [5.4.0](https://github.com/coveo/react-vapor/compare/v5.3.1...v5.4.0) (2020-02-04)
 
 
