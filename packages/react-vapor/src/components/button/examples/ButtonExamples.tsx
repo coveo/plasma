@@ -24,19 +24,15 @@ export class ButtonExamples extends React.Component<any, any> {
                             title="Color modifiers"
                             description="Change the color of the buttons (with primary, you can either add 'mod-primary' class or set the 'primary' prop to true)."
                         >
-                            <div className="form-group">
-                                <Button enabled={true} name="Default" />
-                                <Button enabled={true} primary={true} name="Primary Button" />
-                                <Button enabled={true} classes={['mod-danger']} name="Danger Button" />
-                                <Button enabled={true} classes={['mod-link']} name="Borderless Button" />
-                            </div>
+                            <Button enabled={true} name="Default" />
+                            <Button enabled={true} primary={true} name="Primary Button" />
+                            <Button enabled={true} classes={['mod-danger']} name="Danger Button" />
+                            <Button enabled={true} classes={['mod-link']} name="Borderless Button" />
                         </Section>
                         <Section title="Size modifiers" level={3} description="Change the size of the buttons.">
-                            <div className="form-group">
-                                <Button enabled={true} classes={['mod-small']} name="Small" />
-                                <Button enabled={true} name="Default" />
-                                <Button enabled={true} classes={['mod-large']} name="Large" />
-                            </div>
+                            <Button enabled={true} classes={['mod-small']} name="Small" />
+                            <Button enabled={true} name="Default" />
+                            <Button enabled={true} classes={['mod-large']} name="Large" />
                         </Section>
                     </Section>
                     <Section
@@ -44,32 +40,30 @@ export class ButtonExamples extends React.Component<any, any> {
                         level={2}
                         description="Add text or icons before and after any button."
                     >
-                        <div className="form-group">
-                            <Button enabled={true} classes={['mod-prepend']}>
-                                <span className="btn-prepend">P</span>
-                                Prepend Button
-                            </Button>
-                            <Button enabled={true} classes={['mod-append']} name="Button Append">
-                                <span className="btn-append">A</span>
-                            </Button>
-                            <Button enabled={true} classes={['mod-prepend', 'mod-large']}>
-                                <span className="btn-prepend mod-icon">
-                                    <Svg
-                                        className="icon"
-                                        style={{width: 32, height: 32}}
-                                        svgName={VaporSVG.svg.domainGoogle.name}
-                                    />
-                                </span>
-                                Log in with Google
-                            </Button>
-                            <Button
-                                enabled={true}
-                                classes={['mod-append', 'mod-on-hover', 'spaced-box']}
-                                name="Append on Hover"
-                            >
-                                <span className="btn-append">A</span>
-                            </Button>
-                        </div>
+                        <Button enabled={true} classes={['mod-prepend']}>
+                            <span className="btn-prepend">P</span>
+                            Prepend Button
+                        </Button>
+                        <Button enabled={true} classes={['mod-append']} name="Button Append">
+                            <span className="btn-append">A</span>
+                        </Button>
+                        <Button enabled={true} classes={['mod-prepend', 'mod-large']}>
+                            <span className="btn-prepend mod-icon">
+                                <Svg
+                                    className="icon"
+                                    style={{width: 32, height: 32}}
+                                    svgName={VaporSVG.svg.domainGoogle.name}
+                                />
+                            </span>
+                            Log in with Google
+                        </Button>
+                        <Button
+                            enabled={true}
+                            classes={['mod-append', 'mod-on-hover', 'spaced-box']}
+                            name="Append on Hover"
+                        >
+                            <span className="btn-append">A</span>
+                        </Button>
                     </Section>
                     <Section title="Actions" level={2} description="Add actions associated with buttons">
                         <Section level={3} title="Link" description="Add a hyperlink to a button">
