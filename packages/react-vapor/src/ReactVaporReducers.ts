@@ -43,6 +43,7 @@ import {tablesReducer} from './components/tables/TableReducers';
 import {tableRowsReducer} from './components/tables/TableRowReducers';
 import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
+import {validationReducer} from './components/validation/ValidationReducer';
 import {withDirtyReducer} from './hoc/withDirty/withDirtyReducers';
 import {IReactVaporState} from './ReactVapor';
 import {stringListCompositeReducer} from './reusableState/customList/StringListReducers';
@@ -100,4 +101,5 @@ export const ReactVaporReducers: ReducersMapObject = {
     tabs: tabGroupsReducer,
     textAreas: textAreasReducer,
     toastContainers: toastsContainerReducer,
+    validation: validationReducer,
 };

@@ -1,4 +1,6 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {
@@ -12,12 +14,12 @@ import {
 } from '../..';
 import {ExampleComponent} from '../../../../docs/src/components/ComponentsInterface';
 import {ExamplesStore} from '../../../../docs/Store';
-import {IWithDirtyProps, withDirty} from '../../../hoc/withDirty/withDirty';
-import {withEditing} from '../../../hoc/withEditing/withEditing';
 import {Button} from '../../button/Button';
 import {IMultilineInputValue, MultilineInput} from '../../multilineInput/MultilineInput';
 import {ISplitInput, SplitMultilineInput} from '../../multilineInput/SplitMultilineInput';
 import {Section} from '../../section/Section';
+import {withDirtyInputHOC} from '../../validation/hoc/WithDirtyInputHOC';
+import {ValidationSelectors} from '../../validation/ValidationSelectors';
 import {Input} from '../Input';
 import {setDisabledInput} from '../InputActions';
 import {InputConnected} from '../InputConnected';
@@ -150,50 +152,18 @@ const InputsConnected: React.FunctionComponent = () => {
 
 const InputsWithDirtyManagement: React.FunctionComponent = () => (
     <Section level={2} title="Inputs with dirty management functionnalities">
-        <InputWithSimpleDirtyManagement />
-        <InputWithEditingDirtyManagement />
+        <InputWithDirty id="dirtyinput" />
+        <MessageWhenInputIsDirty />
     </Section>
 );
 
-const InputBeforeSimpleDirtyManagement: React.FunctionComponent<IWithDirtyProps> & {id: string} = (props) => (
-    <Section level={3} title="An input with a simple dirty handling">
-        <Input
-            id="super-input-4"
-            labelTitle="Dirty handling"
-            onChange={(value) => props.toggleIsDirty(_.isEmpty(value) ? false : true)}
-        />
-    </Section>
-);
+const MessageWhenInputIsDirty = connect(
+    createStructuredSelector({
+        isDirty: ValidationSelectors.isDirty(['dirtyinput']),
+    })
+)(({isDirty}) => isDirty && <div>I am now dirty!</div>);
 
-InputBeforeSimpleDirtyManagement.id = 'inputWithDirty';
-export const InputWithSimpleDirtyManagement = withDirty({
-    id: InputBeforeSimpleDirtyManagement.id,
-    showDirty: (isDirty: boolean) => isDirty && <div className="mt2">This Component is now dirty</div>,
-})(InputBeforeSimpleDirtyManagement);
-
-const InputBeforeEditingDirtyManagement: React.FunctionComponent<IWithDirtyProps> & {
-    id: string;
-    footerChildren: React.ReactNode;
-} = (props) => (
-    <Section level={3} title="An input with an editing dirty handling">
-        <Input
-            id="super-input-5"
-            labelTitle="Dirty handling with edition"
-            onChange={(value) => props.toggleIsDirty(_.isEmpty(value) ? false : true)}
-        />
-    </Section>
-);
-
-InputBeforeEditingDirtyManagement.id = 'inputWithEditingDirty';
-InputBeforeEditingDirtyManagement.footerChildren = (
-    <Button primary name="Save" onClick={() => alert('You Saved the input')} />
-);
-
-export const InputWithEditingDirtyManagement = withEditing({
-    id: InputBeforeEditingDirtyManagement.id,
-    footerChildren: InputBeforeEditingDirtyManagement.footerChildren,
-    footerClassName: 'sticky-footer-mod-header',
-})(InputBeforeEditingDirtyManagement);
+const InputWithDirty = withDirtyInputHOC(InputConnected);
 
 const MultilineInputExample: React.FunctionComponent = () => {
     const [inputValues, setInputValues] = React.useState([]);
