@@ -35,9 +35,10 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
             <Component
                 {...(props as T)}
                 validate={(value: string) => {
-                    setIsDirty(props.id, value !== props.defaultValue);
+                    setIsDirty(props.id, value !== (props.defaultValue || ''));
                     return validate ? validate(value) : true;
                 }}
+                validateOnChange
             />
         );
     };

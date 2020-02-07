@@ -1,7 +1,12 @@
+export type ISingleValidation<T> = {
+    validationType: string;
+    value: T;
+};
+
 export type ValidationState = {
-    isDirty: Array<{validationType: string; value: boolean}>;
-    error: Array<{validationType: string; value: string}>;
-    warning: Array<{validationType: string; value: string}>;
+    isDirty: Array<ISingleValidation<boolean>>;
+    error: Array<ISingleValidation<string>>;
+    warning: Array<ISingleValidation<string>>;
 };
 
 export type ValidationsState = Record<string, ValidationState>;

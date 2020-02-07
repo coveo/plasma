@@ -20,6 +20,10 @@ const getAnyDirty = (ids: string[]) => (state: IReactVaporState) =>
         .reduce((all, id) => all.concat(getIsDirty(id)(state)), [] as ValidationState['isDirty'])
         .filter((dirty) => dirty.value);
 
+const isInError = (ids: string[]) => (state: IReactVaporState) => getAnyError(ids)(state).length > 0;
+const isInWarning = (ids: string[]) => (state: IReactVaporState) => getAnyWarning(ids)(state).length > 0;
+const isDirty = (ids: string[]) => (state: IReactVaporState) => getAnyDirty(ids)(state).length > 0;
+
 export const ValidationSelectors = {
     getErrors,
     getWarnings,
@@ -27,4 +31,7 @@ export const ValidationSelectors = {
     getAnyError,
     getAnyWarning,
     getAnyDirty,
+    isInError,
+    isInWarning,
+    isDirty,
 };

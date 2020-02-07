@@ -31,9 +31,9 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
         ...props
     }) => {
         React.useEffect(() => {
-            setError(props.id, '');
+            clearError(props.id);
             return () => {
-                resetErrorOnUnmount && clearError(props.id!);
+                resetErrorOnUnmount && clearError(props.id);
             };
         }, []);
 
