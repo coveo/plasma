@@ -105,18 +105,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/sub-navigation" name="Sub Navigation" />
             <NavigationLink href="/navigation-loading" name="Navigation Loading" />
         </NavigationSection>
-        <NavigationSection title="Tables" baseUrl="/tables" svgName="filterFacet">
-            <NavigationLink href="/base" name="Base" />
-            <NavigationLink href="/drag-and-drop" name="Drag and drop" />
-            <NavigationLink href="/fixed-header" name="Fixed header" />
-            <NavigationLink href="/actions-container" name="Actions container" />
-            <NavigationLink href="/small-actions-container" name="Small actions container" />
-            <NavigationLink href="/collapsible-rows" name="Collapsible rows" />
-            <NavigationLink href="/alternating-color-rows" name="Alternating color rows" />
-            <NavigationLink href="/pagination" name="Pagination" />
-            <NavigationLink href="/smaller-rows" name="Smaller rows" />
-            <NavigationLink href="/loading" name="Loading" />
-        </NavigationSection>
         <NavigationSection
             title="Typography"
             baseUrl="/typography"
