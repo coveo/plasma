@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.7.0](https://github.com/coveo/react-vapor/compare/v5.6.0...v5.7.0) (2020-02-10)
+
+
+### Features
+
+* **in-app-teaser.svg:** add new svg for In App ([89ac731](https://github.com/coveo/react-vapor/commit/89ac731c726d89ff4bd54040cb292be84aa2b87c))
+
+
+
+
+
 # [5.5.0](https://github.com/coveo/react-vapor/compare/v5.3.1...v5.5.0) (2020-02-06)
 
 
