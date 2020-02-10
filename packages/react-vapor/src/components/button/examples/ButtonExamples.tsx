@@ -1,8 +1,19 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {IDispatch} from '../../../utils';
+import {CheckboxConnected} from '../../checkbox';
+import {Label} from '../../input/Label';
+import {LabeledInput} from '../../input/LabeledInput';
 import {Section} from '../../section/Section';
 import {Svg} from '../../svg/Svg';
+import {withDirtySaveButtonHOC} from '../../validation/hoc/WithDirtySaveButtonHOC';
+import {ValidationActions} from '../../validation/ValidationActions';
 import {Button} from '../Button';
+
+// start-print
+
+const SaveButton = withDirtySaveButtonHOC(Button);
 
 export class ButtonExamples extends React.Component<any, any> {
     static description = 'Buttons communicate actions, and, when clicked, initialize those actions.';
@@ -91,7 +102,51 @@ export class ButtonExamples extends React.Component<any, any> {
                         <Svg svgName={'add'} className="ml1 icon mod-2x" />
                     </Button>
                 </Section>
+                <Section level={2} title="Save button with validation">
+                    <DirtyCheckboxesForSaveButton />
+                    <SaveButton
+                        enabled
+                        name="Save Button"
+                        validationIds={['inputId']}
+                        onClick={() => alert('Saving!')}
+                    />
+                </Section>
             </>
         );
     }
 }
+
+// stop-print
+
+const StatefulCheckboxesForSaveButtonDisconnect: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = ({
+    setDirty,
+    setWarning,
+    setError,
+}) => (
+    <LabeledInput label="Toggles to test the Save Button">
+        <CheckboxConnected id="saveCheckboxDirty" handleOnClick={(checked) => setDirty(!checked)} clearSides>
+            <Label>Click on me to set the component as dirty</Label>
+        </CheckboxConnected>
+        <CheckboxConnected
+            id="saveCheckboxWarning"
+            handleOnClick={(checked) => setWarning(!checked ? 'WARNING' : '')}
+            clearSides
+        >
+            <Label>Click on me to set a warning</Label>
+        </CheckboxConnected>
+        <CheckboxConnected
+            id="saveCheckboxError"
+            handleOnClick={(checked) => setError(!checked ? 'ERROR' : '')}
+            clearSides
+        >
+            <Label>Click on me to set an error</Label>
+        </CheckboxConnected>
+    </LabeledInput>
+);
+
+const mapDispatchToProps = (dispatch: IDispatch) => ({
+    setDirty: (value: boolean) => dispatch(ValidationActions.setDirty('inputId', value)),
+    setWarning: (value: string) => dispatch(ValidationActions.setWarning('inputId', value)),
+    setError: (value: string) => dispatch(ValidationActions.setError('inputId', value)),
+});
+const DirtyCheckboxesForSaveButton = connect(null, mapDispatchToProps)(StatefulCheckboxesForSaveButtonDisconnect);
