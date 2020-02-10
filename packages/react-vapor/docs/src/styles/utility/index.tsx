@@ -5,6 +5,7 @@ import Borders from './Borders';
 import ColorDots from './ColorDot';
 import Cursor from './Cursor';
 import Hover from './Hover';
+import LineHeight from './LineHeight';
 import Shadows from './Shadow';
 import SpacedBoxes from './SpacedBoxes';
 import Transparency from './Transparency';
@@ -12,6 +13,7 @@ import Whitespace from './Whitespace';
 
 const Utility: React.FunctionComponent<RouteComponentProps> = ({match}) => (
     <>
+        <Route path={`${match.url}/line-height`} component={LineHeight} />
         <Route path={`${match.url}/whitespace`} component={Whitespace} />
         <Route path={`${match.url}/spaced-box`} component={SpacedBoxes} />
         <Route path={`${match.url}/cursor`} component={Cursor} />

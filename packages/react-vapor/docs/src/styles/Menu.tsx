@@ -126,9 +126,9 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/colors" name="Colors" />
             <NavigationLink href="/utilities" name="Utilities" />
             <NavigationLink href="/lists" name="Lists" />
-            <NavigationLink href="/line-height" name="Line-height" />
         </NavigationSection>
         <NavigationSection baseUrl="/utility" title="Utility" svgName="maintenance">
+            <NavigationLink href="/line-height" name="Text Size" />
             <NavigationLink href="/whitespace" name="Whitespace" />
             <NavigationLink href="/spaced-box" name="Spaced box" />
             <NavigationLink href="/cursor" name="Cursor" />
