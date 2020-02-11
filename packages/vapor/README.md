@@ -15,12 +15,6 @@ Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Cons
 npm install coveo-styleguide
 ```
 
-Also available on our cdn :
-
-```txt
-static.cloud.coveo.com/styleguide/v1.x.y/css/CoveoStyleGuide.css
-```
-
 ## Contributing
 
 ### Build
