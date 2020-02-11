@@ -4,13 +4,9 @@ import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {Label} from '../input';
+import {IDispatch, ReduxUtils} from '../../utils';
+import {ILabelProps, Label} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
-
-/**
- * TODO: autoresize is not yet implemented on TextArea
- */
 
 export interface ITextAreaOwnProps {
     id: string;
@@ -32,8 +28,10 @@ export interface ITextAreaOwnProps {
     isAutosize?: boolean;
 
     onChangeCallback?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
-    validate?: (value: any) => boolean;
+    validate?: (value: string) => boolean;
     validationMessage?: string;
+    validationLabelProps?: ILabelProps;
+    children?: any;
 }
 
 export interface ITextAreaStateProps {
@@ -60,51 +58,56 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
     onUnmount: () => dispatch(removeTextArea(ownProps.id)),
 });
 
-export class TextArea extends React.Component<ITextAreaProps, {}> {
-    static defaultProps: Partial<ITextAreaOwnProps> = {
-        additionalAttributes: {},
-        className: '',
-    };
+export const TextArea = (props: ITextAreaProps) => {
+    const [isValid, setIsValid] = React.useState(true);
 
-    componentWillMount() {
-        if (this.props.onMount) {
-            this.props.onMount();
+    React.useEffect(() => {
+        setIsValid(!!props.validate && props.validate(props.value));
+    }, [props.value]);
+
+    React.useEffect(() => {
+        if (props.onMount) {
+            props.onMount();
         }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onUnmount) {
-            this.props.onUnmount();
+        setIsValid(true);
+        if (props.onUnmount) {
+            return () => props.onUnmount();
         }
-    }
+    }, []);
 
-    private getValidationLabel = (isValid: boolean) => {
-        return !isValid && <Label> {this.props.validationMessage} </Label>;
-    };
-
-    render() {
-        const TextareaTagName: any = this.props.isAutosize ? TextareaAutosize : 'textarea';
-        const isValid: boolean = !!this.props.validate && this.props.validate(this.props.value);
+    const getValidationLabel = () => {
         return (
-            <>
-                <TextareaTagName
-                    {...this.props.additionalAttributes}
-                    id={this.props.id}
-                    disabled={this.props.disabled}
-                    className={this.props.className}
-                    value={this.props.value}
-                    onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.handleOnChange(e)}
-                />
-                {this.getValidationLabel(isValid)}
-            </>
+            !isValid && (
+                <div>
+                    <Label id={'textarea-validation-label'} className={'text-red'} {...props.validationLabelProps}>
+                        {props.validationMessage}
+                    </Label>
+                </div>
+            )
         );
-    }
+    };
 
-    private handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
-        this.props.onChange?.(e);
-        this.props.onChangeCallback?.(e);
-    }
-}
+    const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        props.onChange?.(e);
+        props.onChangeCallback?.(e);
+    };
+
+    const TextareaTagName: any = props.isAutosize ? TextareaAutosize : 'textarea';
+
+    return (
+        <>
+            <TextareaTagName
+                {...props.additionalAttributes}
+                disabled={props.disabled}
+                className={props.className}
+                value={props.value}
+                onChange={handleOnChange}
+            />
+            {props.children}
+            {getValidationLabel()}
+        </>
+    );
+};
 
 export const TextAreaConnected: React.ComponentClass<ITextAreaProps> = connect(
     mapStateToProps,
