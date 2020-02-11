@@ -21,7 +21,7 @@ Also available on our cdn :
 verison 4.17.x and greater
 static.cloud.coveo.com/styleguide/v4.x.y/dist/css/CoveoStyleGuide.css
 
-Version 4.16.x and under
+Version 4.16.x and less
 static.cloud.coveo.com/styleguide/v4.x.y/css/CoveoStyleGuide.css
 ```
 
