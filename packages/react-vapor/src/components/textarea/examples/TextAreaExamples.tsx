@@ -96,8 +96,6 @@ export const TextAreaExamples = (): JSX.Element => (
                     additionalAttributes={{
                         required: true,
                     }}
-                    validate={(value: string) => value !== ''}
-                    validationMessage={'TextArea should not be empty!'}
                 >
                     <Label htmlFor="super-textarea-8">Beautiful Textarea</Label>
                 </TextAreaConnected>
