@@ -210,7 +210,6 @@ describe('TextArea', () => {
             describe('onMount', () => {
                 it('should add a textArea in the store with default values', () => {
                     const add = spyOn(TextAreaActions, 'add');
-
                     hookWrapper = mountWithStore(<TextAreaConnected id={'textarea-id'} onMount={add} />, store);
                     act(() => {
                         hookWrapper.update();
