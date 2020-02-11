@@ -1,7 +1,8 @@
 import * as React from 'react';
 import {INavigationProps, Navigation} from '../Navigation';
 
-export class NavigationExamples extends React.Component<any, any> {
+export class PaginationExamples extends React.Component<any, any> {
+    static title: string = 'Pagination';
     render() {
         const navigationProps: INavigationProps = {
             totalPages: 10,
@@ -13,15 +14,15 @@ export class NavigationExamples extends React.Component<any, any> {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Navigation</label>
+                    <label className="form-control-label">Pagination</label>
                     <Navigation {...navigationProps} />
                 </div>
                 <div className="form-group">
-                    <label className="form-control-label">Navigation with loading</label>
+                    <label className="form-control-label">Pagination with loading</label>
                     <Navigation {...navigationProps} isLoading={true} />
                 </div>
                 <div className="form-group">
-                    <label className="form-control-label">Navigation with custom values</label>
+                    <label className="form-control-label">Pagination with custom values</label>
                     <Navigation
                         {...navigationProps}
                         previousLabel="Précédente"
