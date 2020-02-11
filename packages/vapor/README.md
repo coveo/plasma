@@ -18,7 +18,11 @@ npm install coveo-styleguide
 Also available on our cdn :
 
 ```txt
-static.cloud.coveo.com/styleguide/v1.x.y/css/CoveoStyleGuide.css
+verison 4.17.x and greater
+static.cloud.coveo.com/styleguide/v4.x.y/dist/css/CoveoStyleGuide.css
+
+Version 4.16.x and under
+static.cloud.coveo.com/styleguide/v4.x.y/css/CoveoStyleGuide.css
 ```
 
 ## Contributing
