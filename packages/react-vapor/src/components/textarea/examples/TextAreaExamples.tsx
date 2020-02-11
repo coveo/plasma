@@ -19,6 +19,9 @@ export const TextAreaExamples = (): JSX.Element => (
                 />
             </div>
             <div className="form-group">
+                <div>
+                    <label className="form-control-label">Textarea with validation</label>
+                </div>
                 <TextAreaConnected
                     id="awesome-textarea-2"
                     className="admin-invisible-textbox mod-border"
@@ -93,8 +96,6 @@ export const TextAreaExamples = (): JSX.Element => (
                     additionalAttributes={{
                         required: true,
                     }}
-                    validate={(value: string) => value !== ''}
-                    validationMessage={'TextArea should not be empty!'}
                 >
                     <Label htmlFor="super-textarea-8">Beautiful Textarea</Label>
                 </TextAreaConnected>
