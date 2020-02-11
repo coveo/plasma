@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.1](https://github.com/coveo/react-vapor/compare/v5.7.0...v5.7.1) (2020-02-11)
+
+
+### Bug Fixes
+
+* **readme:** update readme ([7356e67](https://github.com/coveo/react-vapor/commit/7356e6720c25b6e959c589a8ce274a623974ac63))
+* **readme:** update readme ([2a00c02](https://github.com/coveo/react-vapor/commit/2a00c028fc984138f28797526f07f026161bab3a))
+* **readme:** vapor readme ([2ee49a6](https://github.com/coveo/react-vapor/commit/2ee49a6a4b6adca64e53b3a092d1c9913e2182e9))
+* **readme:** vapor readme ([efaef5f](https://github.com/coveo/react-vapor/commit/efaef5fec3c0087c4fcedba926bca3ab6f93781c))
+
+
+
+
+
 # [5.7.0](https://github.com/coveo/react-vapor/compare/v5.6.0...v5.7.0) (2020-02-10)
 
 
