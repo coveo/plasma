@@ -90,8 +90,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
         <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">
-            <NavigationLink href="/modifiers" name="Icon modifiers" />
-            <NavigationLink href="/fillers" name="Icon fillers" />
             <NavigationLink href="/list" name="Icons" />
         </NavigationSection>
         <NavigationSection title="Messages" baseUrl="/messages" svgName="noteYes">
