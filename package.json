@@ -57,7 +57,8 @@
         "test": "lerna run test --parallel",
         "build": "lerna run build --parallel",
         "lintfix": "stylelint --fix \"**/*.scss\" && prettier --write \"**/*.{scss,json,js,jsx,ts,tsx,md}\" && tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
-        "commit-cli": "git-cz"
+        "commit-cli": "git-cz",
+        "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm i && echo done"
     },
     "config": {
         "commitizen": {
