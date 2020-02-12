@@ -1,4 +1,3 @@
-import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
 import {SideNavigation} from '../../../src/components/sideNavigation/SideNavigation';
@@ -9,14 +8,6 @@ const Navigation: React.FunctionComponent = () => (
     <SideNavigation>
         <NavigationSection>
             <NavigationLink key="general-guidelines" href="/general-guidelines" name="General Guidelines" />
-        </NavigationSection>
-        <NavigationSection svgName={VaporSVG.svg.open.name} baseUrl="/buttons" title="Buttons">
-            <NavigationLink href="/overview" name="Overview" />
-            <NavigationLink href="/base" name="Base" />
-            <NavigationLink href="/color-modifiers" name="Color modifiers" />
-            <NavigationLink href="/size-modifiers" name="Size modifiers" />
-            <NavigationLink href="/append-prepend" name="Append and Prepend" />
-            <NavigationLink href="/alignment" name="Alignment" />
         </NavigationSection>
         <NavigationSection title="Cards" baseUrl="/cards" svgName="rectangle">
             <NavigationLink href="/flippable" name="Flippable" />

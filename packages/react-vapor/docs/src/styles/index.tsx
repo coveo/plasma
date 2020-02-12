@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Redirect, Route, RouteComponentProps} from 'react-router-dom';
 
-import Buttons from './buttons';
 import Cards from './cards';
 import Colors from './colors';
 import Components from './components';
@@ -27,7 +26,6 @@ const Styles: React.FunctionComponent<RouteComponentProps> = ({match}) => {
             <div className="page-content application-container flex flex-column">
                 <div className="wrapper application-main-content m0 flex-auto">
                     <Route path={`${match.url}/general-guidelines`} component={GeneralGuidelines} />
-                    <Route path={`${match.url}/buttons`} component={Buttons} />
                     <Route path={`${match.url}/cards`} component={Cards} />
                     <Route path={`${match.url}/colors`} component={Colors} />
                     <Route path={`${match.url}/components`} component={Components} />
