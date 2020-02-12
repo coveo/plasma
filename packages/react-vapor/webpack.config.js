@@ -142,6 +142,6 @@ module.exports = {
         compress: true,
         hot: true,
         inline: true,
-        progress: true,
+        progress: false,
     },
 };
