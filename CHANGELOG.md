@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.2](https://github.com/coveo/react-vapor/compare/v5.7.1...v5.7.2) (2020-02-12)
+
+
+### Bug Fixes
+
+* **propstoomitutils.ts:** added changeDirtyState as props to omit ([c075985](https://github.com/coveo/react-vapor/commit/c075985e3c157f46388c07c6acb96efeae31645c))
+
+
+
+
+
 ## [5.7.1](https://github.com/coveo/react-vapor/compare/v5.7.0...v5.7.1) (2020-02-11)
 
 
