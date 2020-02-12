@@ -8,11 +8,11 @@ export class SvgExamples extends React.Component<any, any> {
         return (
             <Form>
                 <Section
-                    level={2}
+                    level={1}
                     title="Style modifiers"
                     description="Add the specific class to change the style of the icons from vapor"
                 >
-                    <Section level={3} title="Color modifiers" description="Give custom colors to icons">
+                    <Section level={2} title="Color modifiers" description="Give custom colors to icons">
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-light-grey" />
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-medium-grey" />
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-dark-grey" />
@@ -28,7 +28,7 @@ export class SvgExamples extends React.Component<any, any> {
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-white bg-light-blue" />
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-yellow bg-red" />
                     </Section>
-                    <Section level={3} title="Size modifiers" description="Change the size of the icons">
+                    <Section level={2} title="Size modifiers" description="Change the size of the icons">
                         <Svg svgName="clear" className="icon" />
                         <Svg svgName="clear" className="icon mod-16" />
                         <Svg svgName="clear" className="icon mod-lg" />
@@ -38,7 +38,6 @@ export class SvgExamples extends React.Component<any, any> {
                         <Svg svgName="clear" className="icon mod-5x" />
                     </Section>
                 </Section>
-                <Section level={2}></Section>
             </Form>
         );
     }
