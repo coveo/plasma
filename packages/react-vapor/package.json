@@ -22,7 +22,6 @@
     "scripts": {
         "start": "webpack-dev-server",
         "docs": "webpack",
-        "compileTs": "webpack --config webpack.config.prod.js",
         "build": "gulp clean && webpack --config webpack.config.prod.js",
         "pretest": "gulp clean:tests",
         "test": "node --max-old-space-size=2048 node_modules/karma/bin/karma start",
