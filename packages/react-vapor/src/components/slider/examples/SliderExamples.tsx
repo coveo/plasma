@@ -4,7 +4,7 @@ import {Section} from '../../section/Section';
 import {MiddleSlider} from '../MiddleSlider';
 import {Slider} from '../Slider';
 
-export const SliderExample: ExampleComponent = () => (
+export const InputSliderExample: ExampleComponent = () => (
     <Section title="Slider Examples">
         <SimpleSliderExample />
         <Section level={2} title="Middle Slider">

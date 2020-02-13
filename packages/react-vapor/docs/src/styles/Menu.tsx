@@ -50,24 +50,12 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/value-popup" name="Value Popup" />
         </NavigationSection>
         <NavigationSection title="Form Controls" baseUrl="/form-controls" svgName="menuOrganization">
-            <NavigationLink href="/text-input" name="Text input" />
-            <NavigationLink href="/numeric-spinner" name="Numeric spinner" />
-            <NavigationLink href="/checkboxes-infos" name="Checkboxes / Infos" />
-            <NavigationLink href="/checkboxes" name="Checkboxes" />
-            <NavigationLink href="/radio-buttons" name="Radio buttons" />
             <NavigationLink href="/slide-toggle" name="Slide toggle" />
             <NavigationLink href="/slide-toggle-modifiers" name="Slide toggle modifiers" />
             <NavigationLink href="/slide-toggle-double" name="Slide toggle double" />
-            <NavigationLink href="/filter-box" name="Filter box" />
-            <NavigationLink href="/input-slider" name="Input slider" />
-            <NavigationLink href="/dropdown" name="Dropdown" />
             <NavigationLink href="/dropdown-modifiers" name="Dropdown modifiers" />
-            <NavigationLink href="/flat-select" name="Flat select" />
             <NavigationLink href="/flat-select-prepend" name="Prepended flat select" />
-            <NavigationLink href="/flat-select-modifiers" name="Flat select modifiers" />
-            <NavigationLink href="/multiline-input" name="Multiline input" />
             <NavigationLink href="/progress-bar" name="Progress bar" />
-            <NavigationLink href="/step-progress-bar" name="Step progress bar" />
             <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
         <NavigationSection title="Form Layout" baseUrl="/form-layout" svgName="dashboard">
