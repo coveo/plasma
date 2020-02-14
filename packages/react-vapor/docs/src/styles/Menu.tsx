@@ -44,9 +44,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/tabs" name="Tabs" />
         </NavigationSection>
         <NavigationSection title="Filtering Controls" baseUrl="/filtering" svgName="filter">
-            <NavigationLink href="/picker" name="Picker" />
-            <NavigationLink href="/pickers" name="Pickers" />
-            <NavigationLink href="/list-popup" name="List Popup" />
             <NavigationLink href="/value-popup" name="Value Popup" />
         </NavigationSection>
         <NavigationSection title="Form Controls" baseUrl="/form-controls" svgName="menuOrganization">
