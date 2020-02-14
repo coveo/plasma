@@ -71,9 +71,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
         <NavigationSection title="Form Layout" baseUrl="/form-layout" svgName="dashboard">
-            <NavigationLink href="/groups" name="Groups" />
-            <NavigationLink href="/child-element" name="Child element" />
-            <NavigationLink href="/split-layout" name="Split layout" />
             <NavigationLink href="/child-section-element" name="Child section element" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers" svgName="explorer">
