@@ -24,24 +24,10 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/colors" name="Palette" />
         </NavigationSection>
         <NavigationSection title="Other Components" baseUrl="/components" svgName="more">
-            <NavigationLink href="/badge" name="Badge" />
             <NavigationLink href="/banner" name="Banner" />
-            <NavigationLink href="/blank-slate" name="Blank Slate" />
-            <NavigationLink href="/breadcrumbs" name="Breadcrumbs" />
-            <NavigationLink href="/calendar-date-picker" name="Calendar & Date Picker" />
-            <NavigationLink href="/collapsible" name="Collapsible" />
-            <NavigationLink href="/content-placeholder" name="Content placeholder" />
-            <NavigationLink href="/corner-ribbon" name="Corner ribbon" />
-            <NavigationLink href="/facet" name="Facet" />
-            <NavigationLink href="/card" name="Card" />
-            <NavigationLink href="/search-field" name="Search Field" />
             <NavigationLink href="/list-box" name="List Box" />
-            <NavigationLink href="/loading" name="Loading" />
             <NavigationLink href="/member" name="Member" />
             <NavigationLink href="/modal" name="Modal" />
-            <NavigationLink href="/multi-step-bar" name="Multi step bar" />
-            <NavigationLink href="/sync-feedback" name="Sync Feedback" />
-            <NavigationLink href="/tabs" name="Tabs" />
         </NavigationSection>
         <NavigationSection title="Filtering Controls" baseUrl="/filtering" svgName="filter">
             <NavigationLink href="/picker" name="Picker" />
