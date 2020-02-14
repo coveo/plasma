@@ -77,7 +77,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/child-section-element" name="Child section element" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers" svgName="explorer">
-            <NavigationLink href="/panel" name="Panel" />
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
         <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">
