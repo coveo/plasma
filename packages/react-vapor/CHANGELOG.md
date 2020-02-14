@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.7.5](https://github.com/coveo/react-vapor/compare/v5.7.4...v5.7.5) (2020-02-14)
+
+
+### Bug Fixes
+
+* **actionbar:** make disabled actions stay that way ([bfb146d](https://github.com/coveo/react-vapor/commit/bfb146d606a9c3be8174712432c726c507756935))
+* **drop:** fallback on Defaults for selector and parentSelector props ([29f1535](https://github.com/coveo/react-vapor/commit/29f153594db200ac31751d8030fc0c64b090ce27))
+
+
+
+
+
 ## [5.7.4](https://github.com/coveo/react-vapor/compare/v5.7.3...v5.7.4) (2020-02-12)
 
 **Note:** Version bump only for package react-vapor
