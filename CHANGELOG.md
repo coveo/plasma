@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.8.0](https://github.com/coveo/react-vapor/compare/v5.7.5...v5.8.0) (2020-02-14)
+
+
+### Features
+
+* **validation:** add withdirtysavebutton hoc ([790df9f](https://github.com/coveo/react-vapor/commit/790df9f3ab02602b9b5815d85c74fb16601f90f9))
+
+
+
+
+
 ## [5.7.5](https://github.com/coveo/react-vapor/compare/v5.7.4...v5.7.5) (2020-02-14)
 
 
