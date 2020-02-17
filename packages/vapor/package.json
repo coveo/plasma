@@ -13,10 +13,12 @@
     "author": "Coveo",
     "license": "MIT",
     "main": "dist/js/VaporSVG.js",
+    "types": "index.d.ts",
     "scripts": {
         "build": "gulp clean && gulp && webpack",
         "start": "gulp clean && gulp && concurrently \"gulp watch\" \"webpack --watch\"",
-        "reconstruct": "gulp clean --all && npm install && gulp"
+        "reconstruct": "gulp clean --all && npm install && gulp",
+        "precommit": "lint-staged"
     },
     "repository": {
         "type": "git",
@@ -48,6 +50,7 @@
         "gulp-rename": "1.2.2",
         "gulp-svgmin": "1.2.4",
         "gulp-uglify": "3.0.0",
+        "lint-staged": "9.4.2",
         "materialize-css": "0.98.2",
         "merge-stream": "1.0.1",
         "mini-css-extract-plugin": "0.7.0",
@@ -76,5 +79,16 @@
         "last 1 versions",
         "IE 11",
         "not dead"
-    ]
+    ],
+    "lint-staged": {
+        "**/*.scss": [
+            "stylelint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{js,jsx,json,md,yml,html}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
 }

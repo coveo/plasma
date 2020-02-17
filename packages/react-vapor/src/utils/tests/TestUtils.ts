@@ -58,7 +58,7 @@ export class TestUtils {
         // tslint:enable
     }
 
-    static wrapComponentInDnDContext(WrappedComponent: any) {
+    static wrapComponentInDnDContext(WrappedComponent: any): React.ComponentType<any> {
         @DragDropContext(TestBackend)
         class TestContextContainer extends React.Component {
             render() {

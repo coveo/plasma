@@ -33,7 +33,8 @@
         "coverage:remap": "remap-istanbul -i coverage/coverage.json -o coverage/coverage.json -t json -e node_modules,karma.entry.ts",
         "coverage:report": "istanbul report",
         "report-coverage": "codecov -f coverage/coverage.json",
-        "reconstruct": "gulp clean --all && npm install && npm run docs"
+        "reconstruct": "gulp clean --all && npm install && npm run docs",
+        "precommit": "lint-staged"
     },
     "dependencies": {
         "diff2html": "2.5.0",
@@ -133,6 +134,7 @@
         "karma-source-map-support": "1.3.0",
         "karma-sourcemap-loader": "0.3.7",
         "karma-webpack": "4.0.2",
+        "lint-staged": "9.4.2",
         "lorem-ipsum": "1.0.6",
         "merge-stream": "1.0.1",
         "minimist": "1.2.0",
@@ -177,5 +179,21 @@
     },
     "files": [
         "dist"
-    ]
+    ],
+    "lint-staged": {
+        "**/*.scss": [
+            "stylelint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{ts,tsx}": [
+            "prettier --write",
+            "tslint -c ../../tslint.json -p ./tsconfig.json --fix",
+            "git add"
+        ],
+        "**/*.{js,jsx,json,md,yml,html}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
 }

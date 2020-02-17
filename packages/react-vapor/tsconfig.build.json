@@ -1,13 +1,14 @@
 {
     "extends": "./tsconfig",
     "compilerOptions": {
-        "module": "esnext",
-        "moduleResolution": "Node",
         "removeComments": false,
         "sourceMap": true,
         "declaration": true,
-        "declarationDir": "dist/definitions"
+        "declarationDir": "dist/definitions",
+        "outDir": "dist",
+        "composite": true
     },
-    "include": ["types/**/*.d.ts"],
-    "files": ["src/Entry.ts"]
+    "typeRoots": ["types", "node_modules/@types", "../../node_modules/@types"],
+    "include": ["src", "docs/*.ts", "docs/src/components/ComponentsInterface.ts", "types/react-dnd/index.d.ts"],
+    "exclude": ["**/*.spec.ts?"]
 }
