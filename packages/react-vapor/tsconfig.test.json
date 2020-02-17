@@ -1,7 +1,25 @@
 {
-    "extends": "./tsconfig",
     "compilerOptions": {
         "inlineSourceMap": true,
-        "sourceMap": false
-    }
+        "sourceMap": false,
+        "jsx": "react",
+        "module": "commonjs",
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "downlevelIteration": true,
+        "allowJs": true,
+        "noImplicitAny": true,
+        "noImplicitThis": true,
+        "removeComments": true,
+        "noUnusedLocals": true,
+        "lib": ["es2015", "dom"],
+        "skipLibCheck": true,
+        "target": "ES5",
+        "plugins": [
+            {
+                "transform": "ts-transformer-keys/transformer"
+            }
+        ]
+    },
+    "exclude": ["node_modules", "dist", "coverage", "*.js"]
 }

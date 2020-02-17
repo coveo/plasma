@@ -10,7 +10,6 @@
         "cz-conventional-changelog": "3.0.2",
         "husky": "3.0.9",
         "lerna": "3.18.4",
-        "lint-staged": "9.4.2",
         "prettier": "1.19.1",
         "stylelint": "11.1.1",
         "tsjs": "1.0.x",
@@ -19,25 +18,9 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged",
+            "pre-commit": "lerna run --concurrency 1 --stream precommit",
             "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
-    },
-    "lint-staged": {
-        "**/*.scss": [
-            "stylelint --fix",
-            "prettier --write",
-            "git add"
-        ],
-        "**/*.{ts,tsx}": [
-            "prettier --write",
-            "tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
-            "git add"
-        ],
-        "**/*.{js,jsx,json,md,yml,html}": [
-            "prettier --write",
-            "git add"
-        ]
     },
     "stylelint": {
         "extends": [
@@ -53,9 +36,9 @@
     ],
     "scripts": {
         "postinstall": "lerna bootstrap --no-ci",
-        "start": "lerna run start --parallel",
+        "start": "lerna run start --parallel --scope=\"react-vapor\" --scope=\"coveo-styleguide\"",
         "test": "lerna run test --parallel",
-        "build": "lerna run build --parallel",
+        "build": "lerna run build --stream --scope=\"react-vapor\" --scope=\"coveo-styleguide\"",
         "lintfix": "stylelint --fix \"**/*.scss\" && prettier --write \"**/*.{scss,json,js,jsx,ts,tsx,md}\" && tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
         "commit-cli": "git-cz",
         "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm i && echo done"
