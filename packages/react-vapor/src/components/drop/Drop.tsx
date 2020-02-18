@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
@@ -91,10 +92,10 @@ export class Drop extends React.PureComponent<IDropProps> {
                 ref={this.button}
                 isOpen={this.props.isOpen}
                 positions={this.props.positions || []}
-                selector={this.props.selector}
                 minHeight={this.props.minHeight}
                 minWidth={this.props.minWidth}
                 hasSameWidth={this.props.hasSameWidth}
+                selector={this.props.selector}
                 parentSelector={this.props.parentSelector}
                 renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
@@ -103,6 +104,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                         ref={(this.dropRef = dropRef)}
                         className={classNames('drop', this.props.listContainerProps.className)}
                         {...this.props.listContainerProps}
+                        data-open={this.props.isOpen}
                     >
                         {this.props.children}
                     </div>

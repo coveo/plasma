@@ -19,7 +19,6 @@ import {IItemFilterState} from './filters/ItemFilterReducers';
 import {PrimaryAction} from './PrimaryAction';
 import {PrimaryActionConnected} from './PrimaryActionConnected';
 import {SecondaryActions} from './SecondaryActions';
-import {SecondaryActionsConnected} from './SecondaryActionsConnected';
 
 export interface IActionBarProps {
     id?: string;
@@ -33,6 +32,7 @@ export interface IActionBarProps {
     width?: number;
     moreLabel?: string;
     itemFilterCropLength?: number;
+    disabled?: boolean;
 }
 
 export class ActionBar extends React.PureComponent<
@@ -86,9 +86,12 @@ export class ActionBar extends React.PureComponent<
                 ?.filter(({primary}) => !!primary)
                 .map((action: IActionOptions, index: number) => {
                     const primaryAction = this.props.withReduxState ? (
-                        <PrimaryActionConnected action={action} parentId={this.props.id} />
+                        <PrimaryActionConnected
+                            action={{...action, enabled: action.enabled && !this.props.disabled}}
+                            parentId={this.props.id}
+                        />
                     ) : (
-                        <PrimaryAction action={action} />
+                        <PrimaryAction action={{...action, enabled: action.enabled && !this.props.disabled}} />
                     );
                     return (
                         <div className="action primary-action" key={`primary-${index}`}>
@@ -97,18 +100,23 @@ export class ActionBar extends React.PureComponent<
                     );
                 }) ?? [];
 
-        const secondaryActions: IActionOptions[] = this.props.actions?.filter(({primary}) => !primary) ?? [];
+        const secondaryActions: IActionOptions[] =
+            this.props.actions
+                ?.filter(({primary}) => !primary)
+                .map((action: IActionOptions) => ({
+                    ...action,
+                    enabled: action.enabled && !this.props.disabled,
+                })) ?? [];
 
         let secondaryActionsView: JSX.Element = null;
         if (!_.isEmpty(secondaryActions)) {
-            secondaryActionsView = this.props.withReduxState ? (
-                <SecondaryActionsConnected
+            secondaryActionsView = (
+                <SecondaryActions
+                    id={this.props.id}
                     moreLabel={this.props.moreLabel}
                     actions={secondaryActions}
-                    id={this.props.id}
+                    disabled={this.props.disabled}
                 />
-            ) : (
-                <SecondaryActions moreLabel={this.props.moreLabel} actions={secondaryActions} />
             );
         }
 

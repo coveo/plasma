@@ -52,6 +52,7 @@ export interface IInputDispatchProps {
     onRender?: (value?: string, valid?: boolean, disabled?: boolean) => void;
     onChange?: (value?: string, valid?: boolean) => void;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
+    changeDirtyState?: (value?: string, valid?: boolean) => void;
 }
 
 const inputPropsToOmit = keys<IInputAdditionalOwnProps & IInputAdditionalStateProps & IInputDispatchProps>();

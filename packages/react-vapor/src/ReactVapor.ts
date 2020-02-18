@@ -49,6 +49,7 @@ import {ITableData, ITablesState} from './components/tables/TableReducers';
 import {ITableRowState} from './components/tables/TableRowReducers';
 import {ITextAreaState} from './components/textarea/TextAreaReducers';
 import {IToastsState} from './components/toast/ToastReducers';
+import {ValidationsState} from './components/validation/ValidationState';
 import {IStringListCompositeState} from './reusableState/customList/StringListReducers';
 import {ComponentId} from './utils/ComponentUtils';
 
@@ -101,6 +102,7 @@ export interface IReactVaporState {
     tableHOCPagination?: ITableWithPaginationState[];
     tableHOCRow?: HOCTableRowState[];
     textAreas?: ITextAreaState[];
+    validation?: ValidationsState;
 }
 
 export interface IReduxActionsPayload {

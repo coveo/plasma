@@ -1,4 +1,18 @@
 {
-    "packages": ["packages/*"],
-    "version": "4.18.3"
+    "packages": [
+        "packages/*"
+    ],
+    "version": "5.8.0",
+    "command": {
+        "publish": {
+            "conventionalCommits": true,
+            "allowBranch": [
+                "master"
+            ]
+        },
+        "version": {
+            "conventionalCommits": true,
+            "message": "chore(release): publish %s [skip travis]"
+        }
+    }
 }

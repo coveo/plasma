@@ -8,10 +8,10 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {LoadingConnected} from '../../loading/LoadingConnected';
+import {PaginationSelect} from '../../pagination';
 import {INavigationProps, Navigation} from '../Navigation';
 import {NavigationConnected} from '../NavigationConnected';
 import {NavigationPaginationConnected} from '../pagination/NavigationPaginationConnected';
-import {NavigationPaginationSelect} from '../pagination/NavigationPaginationSelect';
 import {NavigationPerPageConnected} from '../perPage/NavigationPerPageConnected';
 import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';
 
@@ -74,7 +74,7 @@ describe('<NavigationConnected />', () => {
 
     it('should adjust page selected to appropriate one if a perPageSelect is clicked', () => {
         wrapper
-            .find(NavigationPaginationSelect)
+            .find(PaginationSelect)
             .last()
             .simulate('click');
 
@@ -93,7 +93,7 @@ describe('<NavigationConnected />', () => {
         ).toBe(0);
 
         wrapper
-            .find(NavigationPaginationSelect)
+            .find(PaginationSelect)
             .at(1)
             .simulate('click');
         wrapper

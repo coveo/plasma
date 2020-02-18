@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Section} from '../../section';
 import {IActionOptions} from '../Action';
 import {ActionBar} from '../ActionBar';
 import {ACTION_SEPARATOR} from '../ActionConstants';
@@ -50,30 +51,56 @@ export class ActionBarExamples extends React.Component<any, any> {
         ];
 
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Action bar without actions</label>
+            <Section level={1} title="ActionBar examples">
+                <Section level={2} title="Action bar without actions">
                     <ActionBar />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Action bar with actions</label>
+                </Section>
+                <Section level={2} title="Action bar with actions">
                     <ActionBar actions={actions} />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        Action bar with default classes turned off and extra classes
-                    </label>
+                </Section>
+                <Section level={2} title="Action bar with default classes turned off and extra classes">
                     <ActionBar
                         actions={actions}
                         removeDefaultContainerClasses
                         extraContainerClasses={['coveo-table-actions-container', 'p2']}
                     />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Action bar with small actions</label>
+                </Section>
+                <Section level={2} title="Action bar with small actions">
                     <ActionBar actions={actions} withSmallActions />
-                </div>
-            </div>
+                </Section>
+                <Section level={2} title="Action bar disabled">
+                    <ActionBar actions={actions} disabled />
+                </Section>
+                <Section level={2} title="Action bar disabled with a secondary action converted to a primary action">
+                    <ActionBar
+                        actions={[
+                            {
+                                name: 'Link to Coveo (disabled)',
+                                link: 'http://coveo.com',
+                                target: '_blank',
+                                icon: 'exit',
+                                primary: true,
+                                enabled: false,
+                                hideDisabled: false,
+                                tooltip: "You cannot access Coveo's website at the moment.",
+                                tooltipPlacement: 'bottom',
+                            },
+                            {
+                                name: 'visibly disabled',
+                                trigger: () => alert('I will never be triggered'),
+                                target: '_blank',
+                                icon: 'open',
+                                primary: false,
+                                enabled: false,
+                                hideDisabled: false,
+                                tooltip: 'You cannot trigger me.',
+                                tooltipPlacement: 'bottom',
+                            },
+                        ]}
+                        disabled
+                    />
+                </Section>
+            </Section>
         );
     }
 }

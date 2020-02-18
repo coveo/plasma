@@ -8,8 +8,8 @@ import {turnOffLoading} from '../../loading/LoadingActions';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {TableHOCUtils} from '../TableHOCUtils';
 import {ITableWithPaginationProps, tableWithPagination} from '../TableWithPagination';
+import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('Table HOC', () => {
     describe('TableWithPagination', () => {

@@ -1,19 +1,20 @@
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
+import {IReduxAction} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation/Navigation';
 import {NavigationConnected} from '../navigation/NavigationConnected';
 import {NavigationSelectors} from '../navigation/NavigationSelectors';
 import {TableWithPaginationActions} from './actions/TableWithPaginationActions';
 import {ITableHOCOwnProps} from './TableHOC';
-import {TableHOCUtils} from './TableHOCUtils';
 import {TableSelectors} from './TableSelectors';
+import {TableHOCUtils} from './utils/TableHOCUtils';
 
 export interface ITableWithPaginationConfig
     extends WithServerSideProcessingProps,
@@ -27,16 +28,22 @@ export interface ITableWithPaginationStateProps {
     perPage: number;
 }
 
-export interface ITableWithPaginationDispatchProps {
-    onMount: () => void;
-    onUnmount: () => void;
-}
+const mapDispatchToProps = (
+    dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
+    ownProps: ITableWithPaginationProps
+) => ({
+    onMount: () => {
+        dispatch(turnOffLoading([`loading-${ownProps.id}`]));
+        dispatch(TableWithPaginationActions.add(ownProps.id));
+    },
+    onUnmount: () => dispatch(TableWithPaginationActions.remove(ownProps.id)),
+});
 
 export interface ITableWithPaginationProps
-    extends Partial<ITableWithPaginationStateProps>,
-        Partial<ITableWithPaginationDispatchProps>,
-        ITableHOCOwnProps,
-        WithServerSideProcessingProps {}
+    extends ITableHOCOwnProps,
+        WithServerSideProcessingProps,
+        Partial<ITableWithPaginationStateProps>,
+        Partial<ReturnType<typeof mapDispatchToProps>> {}
 
 const TableWithPaginationProps = keys<ITableWithPaginationStateProps>();
 
@@ -71,18 +78,6 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         };
     };
 
-    const mapDispatchToProps = (
-        dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-        ownProps: ITableHOCOwnProps
-    ): ITableWithPaginationDispatchProps => ({
-        onMount: () => {
-            dispatch(turnOffLoading([`loading-${ownProps.id}`]));
-            dispatch(TableWithPaginationActions.add(ownProps.id));
-        },
-        onUnmount: () => dispatch(TableWithPaginationActions.remove(ownProps.id)),
-    });
-
-    @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class TableWithPagination extends React.Component<ITableHOCOwnProps & ITableWithPaginationProps> {
         componentDidMount() {
             this.props.onMount();
@@ -114,5 +109,5 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         }
     }
 
-    return TableWithPagination;
+    return connect(mapStateToProps, mapDispatchToProps)(TableWithPagination);
 };

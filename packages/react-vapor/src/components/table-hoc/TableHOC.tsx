@@ -1,8 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ActionBarConnected} from '../actions/ActionBar';
+import {TableLoading} from '../loading/components/TableLoading';
+import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead
@@ -20,6 +23,10 @@ export interface ITableHOCOwnProps {
     onUpdate?: () => void;
     containerClassName?: string;
     showBorderTop?: boolean;
+    loading?: {
+        numberOfColumns?: number;
+        defaultLoadingRow?: number;
+    };
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
@@ -30,20 +37,35 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         hasActionButtons: false,
         actions: [],
         showBorderTop: false,
+        loading: {
+            numberOfColumns: 5,
+            defaultLoadingRow: PER_PAGE_NUMBERS[1],
+        },
     };
 
     render() {
+        const table = (
+            <table className={classNames(this.props.className)}>
+                {this.props.tableHeader}
+                <tbody key={`table-body-${this.props.id}`} className={classNames({hidden: this.props.isLoading})}>
+                    {this.props.renderBody(this.props.data || [])}
+                </tbody>
+                {this.props.isLoading && (
+                    <TableLoading.Body
+                        key={`table-loading-${this.props.id}`}
+                        numberOfRow={
+                            _.size(this.props.data) || (this.props?.loading?.defaultLoadingRow ?? PER_PAGE_NUMBERS[1])
+                        }
+                        numberOfColumns={this.props?.loading?.numberOfColumns ?? 5}
+                    />
+                )}
+            </table>
+        );
+
         return (
-            <div
-                className={classNames('table-container', this.props.containerClassName, {
-                    'loading-component': this.props.isLoading,
-                })}
-            >
+            <div className={classNames('table-container', this.props.containerClassName)}>
                 {this.renderActions()}
-                <table className={classNames(this.props.className)}>
-                    {this.props.tableHeader}
-                    <tbody>{this.props.renderBody(this.props.data || [])}</tbody>
-                </table>
+                {table}
                 {this.props.children}
             </div>
         );
@@ -63,6 +85,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                             'mod-border-top': this.props.showBorderTop,
                         }
                     ).split(' ')}
+                    disabled={this.props.isLoading}
                 >
                     {this.props.actions}
                 </ActionBarConnected>

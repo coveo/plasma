@@ -9,7 +9,7 @@ import {
     ITableRowToggleCollapsiblePayload,
     TableHOCRowActionsType,
 } from '../actions/TableHOCRowActions';
-import {TableHOCUtils} from '../TableHOCUtils';
+import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 export interface HOCTableRowState {
     id: string;

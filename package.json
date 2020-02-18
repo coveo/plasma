@@ -2,8 +2,12 @@
     "name": "root",
     "private": true,
     "devDependencies": {
-        "axios": "0.19.0",
+        "@commitlint/cli": "8.3.5",
+        "@commitlint/config-conventional": "8.3.4",
+        "@commitlint/travis-cli": "8.3.5",
         "aws-sdk": "2.576.0",
+        "axios": "0.19.0",
+        "cz-conventional-changelog": "3.0.2",
         "husky": "3.0.9",
         "lerna": "3.18.4",
         "lint-staged": "9.4.2",
@@ -15,7 +19,8 @@
     },
     "husky": {
         "hooks": {
-            "pre-commit": "lint-staged"
+            "pre-commit": "lint-staged",
+            "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
         }
     },
     "lint-staged": {
@@ -47,8 +52,22 @@
         "not dead"
     ],
     "scripts": {
+        "postinstall": "lerna bootstrap --no-ci",
         "start": "lerna run start --parallel",
         "test": "lerna run test --parallel",
-        "lintfix": "stylelint --fix \"**/*.scss\" && prettier --write \"**/*.{scss,json,js,jsx,ts,tsx,md}\" && tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix"
+        "build": "lerna run build --parallel",
+        "lintfix": "stylelint --fix \"**/*.scss\" && prettier --write \"**/*.{scss,json,js,jsx,ts,tsx,md}\" && tslint -c ./tslint.json -p ./packages/react-vapor/tsconfig.json --fix",
+        "commit-cli": "git-cz",
+        "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm i && echo done"
+    },
+    "config": {
+        "commitizen": {
+            "path": "./node_modules/cz-conventional-changelog"
+        }
+    },
+    "commitlint": {
+        "extends": [
+            "@commitlint/config-conventional"
+        ]
     }
 }

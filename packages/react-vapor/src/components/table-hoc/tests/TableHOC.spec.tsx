@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 
 import {ActionBarConnected} from '../../actions/ActionBar';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
+import {TableLoading} from '../../loading/components/TableLoading';
 import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
 
 describe('TableHOC', () => {
@@ -55,14 +56,16 @@ describe('TableHOC', () => {
             expect(wrapper.find('.table-container').hasClass(expectedClass)).toBe(true);
         });
 
-        it('should add the loading-component class on the table if isLoading is true', () => {
-            const wrapper = shallow(<TableHOC {...defaultProps} />);
-            expect(wrapper.find('.table-container').hasClass('loading-component')).toBe(false);
+        it('should add the TableLoading.Body Component instead of the tbody if isLoading is true', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
 
-            wrapper.setProps({isLoading: true});
-            wrapper.update();
+            expect(wrapper.find(TableLoading.Body).length).toBe(1);
+        });
 
-            expect(wrapper.find('.table-container').hasClass('loading-component')).toBe(true);
+        it('should not render the  TableLoading.Body Component if isLoading is false', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} isLoading={false} />);
+
+            expect(wrapper.find(TableLoading.Body).length).toBe(0);
         });
 
         it('should not render an ActionBarConnected if the table prop hasActionButtons is false and the table have no actions', () => {
@@ -85,6 +88,28 @@ describe('TableHOC', () => {
                 <TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />
             );
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
+        });
+
+        it('should keep the tbody with rows data during the loading', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+            expect(wrapper.find('tbody').length).toBe(1);
+        });
+
+        it('should set the tbody rows data hidden during the loading', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+            expect(wrapper.find('tbody').hasClass('hidden')).toBe(true);
+        });
+
+        it('should disabled actions on loading', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading />);
+            expect(wrapper.find(ActionBarConnected).props().disabled).toBe(true);
+        });
+
+        it('should not disabled actions on loading is off', () => {
+            const wrapper = shallow(
+                <TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading={false} />
+            );
+            expect(wrapper.find(ActionBarConnected).props().disabled).toBe(false);
         });
     });
 });

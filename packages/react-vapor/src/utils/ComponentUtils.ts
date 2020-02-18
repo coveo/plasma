@@ -16,6 +16,11 @@ export const DisplayClass = {
     TABLE_CELL: 'table-cell',
 };
 
+export interface IComponentBehaviour {
+    isLoading?: boolean;
+    disabled?: boolean;
+}
+
 export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => {
     return {
         url,

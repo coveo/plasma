@@ -4,6 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
+import {shallowWithState} from 'enzyme-redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -21,7 +22,7 @@ describe('<InputConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.detach();
+        wrapper?.detach();
     });
 
     const mountComponentWithProps = (props: IInputProps = {}) => {
@@ -171,6 +172,19 @@ describe('<InputConnected />', () => {
             newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
             expect(validate(newInputState.value)).toBe(false);
             expect(newInputState.valid).toBe(validate(newInputState.value));
+        });
+        it('should call changeDirtyState if set as props', () => {
+            const changeDirtyStateSpy = jasmine.createSpy();
+            const wrapperInputConnected = shallowWithState(<InputConnected />, {});
+
+            wrapperInputConnected.props().onChange();
+
+            expect(changeDirtyStateSpy).toHaveBeenCalledTimes(0);
+
+            wrapperInputConnected.setProps({changeDirtyState: changeDirtyStateSpy});
+            wrapperInputConnected.props().onChange();
+
+            expect(changeDirtyStateSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

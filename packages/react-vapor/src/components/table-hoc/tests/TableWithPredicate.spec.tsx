@@ -4,8 +4,8 @@ import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {TableHOCUtils} from '../TableHOCUtils';
 import {tableWithPredicate} from '../TableWithPredicate';
+import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('Table HOC', () => {
     describe('TableWithPredicate', () => {

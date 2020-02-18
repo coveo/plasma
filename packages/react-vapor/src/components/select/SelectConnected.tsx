@@ -1,11 +1,11 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {keys} from 'ts-transformer-keys';
-import {Defaults} from '../../Defaults';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IReduxAction, ReduxConnect} from '../../utils/ReduxUtils';
@@ -19,12 +19,13 @@ import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxAct
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
+import * as styles from './styles/SingleSelect.scss';
 
 export interface ISelectSpecificProps {
     button: React.ReactNode;
 }
 
-export interface ISelectOwnProps extends IListBoxOwnProps {
+export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
     id: string;
     placeholder?: string;
     selectClasses?: string;
@@ -101,6 +102,17 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
     }
 
     render() {
+        if (this.props.isLoading && !this.props.selectedValues) {
+            return (
+                <div
+                    className={classNames(
+                        'btn dropdown-toggle mod-rounded-border-2 bg-pure-white cursor-auto mod-no-border',
+                        styles.singleSelectFixedWidth
+                    )}
+                />
+            );
+        }
+
         const pickerClasses = classNames('select-dropdown dropdown', this.props.selectClasses, {
             open: this.props.isOpened,
             'mod-multi': this.props.multi,
@@ -110,7 +122,6 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
             <Drop
                 id={this.props.id}
                 groupId={SelectConnected.DropGroup}
-                selector={Defaults.DROP_ROOT}
                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                 buttonContainerProps={{className: pickerClasses}}
                 renderOpenButton={(onClick: () => void) => (
@@ -130,7 +141,6 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 )}
                 minWidth={minWidth}
                 closeOnClickDrop={false}
-                parentSelector={Defaults.DROP_PARENT_ROOT}
                 {...this.props.dropOption}
             >
                 <div

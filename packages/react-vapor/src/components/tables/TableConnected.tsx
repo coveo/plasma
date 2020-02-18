@@ -146,3 +146,12 @@ export const TableConnected: React.ComponentClass<ITableProps> = connect(
     mapDispatchToProps,
     ReduxUtils.mergeProps
 )(Table);
+
+export const TableConnectedUtils = {
+    getTableCompositeState,
+    getDataById,
+    getSelectedIds,
+    getMultiSelect,
+    getGetActionsMethod,
+    getFinalActions,
+};

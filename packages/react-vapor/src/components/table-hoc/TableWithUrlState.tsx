@@ -12,7 +12,7 @@ import {changePage} from '../navigation/pagination/NavigationPaginationActions';
 import {changePerPage} from '../navigation/perPage/NavigationPerPageActions';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableHOCOwnProps} from './TableHOC';
-import {ITableHOCPredicateValue, TableHOCUtils} from './TableHOCUtils';
+import {ITableHOCPredicateValue, TableHOCUtils} from './utils/TableHOCUtils';
 
 export interface TableWithUrlStateProps {
     onUpdateUrl: (queryString: string) => void;
@@ -23,7 +23,7 @@ enum SortOrderValues {
     descending = 'desc',
 }
 
-const Params = {
+export const Params = {
     pageNumber: 'page',
     pageSize: 'pageSize',
     sortKey: 'sortBy',
@@ -110,16 +110,14 @@ function updateTableStateFromUrl(tableId: string): IThunkAction {
         Object.keys(urlParams)
             .filter((key) => possiblePredicates.includes(key))
             .forEach((key) =>
-                dispatch(
-                    selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key] as string)
-                )
+                dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key]))
             );
 
         if (urlParams.hasOwnProperty(Params.lowerDateLimit)) {
             dispatch(
                 changeDatePickerLowerLimit(
                     TableHOCUtils.getDatePickerId(tableId),
-                    new Date(urlParams[Params.lowerDateLimit] as string)
+                    new Date(urlParams[Params.lowerDateLimit])
                 )
             );
         }
@@ -128,7 +126,7 @@ function updateTableStateFromUrl(tableId: string): IThunkAction {
             dispatch(
                 changeDatePickerUpperLimit(
                     TableHOCUtils.getDatePickerId(tableId),
-                    new Date(urlParams[Params.upperDateLimit] as string)
+                    new Date(urlParams[Params.upperDateLimit])
                 )
             );
         }
@@ -138,24 +136,24 @@ function updateTableStateFromUrl(tableId: string): IThunkAction {
         }
 
         if (urlParams.hasOwnProperty(Params.filter)) {
-            dispatch(filterThrough(tableId, urlParams[Params.filter] as string));
+            dispatch(filterThrough(tableId, urlParams[Params.filter]));
         }
 
         if (urlParams.hasOwnProperty(Params.sortKey) && urlParams.hasOwnProperty(Params.sortOrder)) {
             dispatch(
                 TableHeaderActions.sortTable(
-                    urlParams[Params.sortKey] as string,
+                    urlParams[Params.sortKey],
                     urlParams[Params.sortOrder] === SortOrderValues.ascending
                 )
             );
         }
 
         if (urlParams.hasOwnProperty(Params.pageSize)) {
-            dispatch(changePerPage(tableId, urlParams[Params.pageSize] as number));
+            dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
         }
 
         if (urlParams.hasOwnProperty(Params.pageNumber)) {
-            dispatch(changePage(TableHOCUtils.getPaginationId(tableId), urlParams[Params.pageNumber] as number));
+            dispatch(changePage(TableHOCUtils.getPaginationId(tableId), urlParams[Params.pageNumber]));
         }
     };
 }

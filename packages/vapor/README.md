@@ -4,7 +4,6 @@
 [![Npm total downloads badge](https://img.shields.io/npm/dt/coveo-styleguide.svg?style=flat-square)](https://www.npmjs.com/package/coveo-styleguide)
 [![npm](https://img.shields.io/npm/v/coveo-styleguide.svg?maxAge=2592000&style=flat-square)](https://www.npmjs.com/package/coveo-styleguide)
 [![license](https://img.shields.io/hexpm/l/plug.svg?style=flat-square)](../../LICENSE)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 
 ![logo](vapor.gif)
 
@@ -14,12 +13,6 @@ Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Cons
 
 ```bash
 npm install coveo-styleguide
-```
-
-Also available on our cdn :
-
-```txt
-static.cloud.coveo.com/styleguide/v1.x.y/css/CoveoStyleGuide.css
 ```
 
 ## Contributing

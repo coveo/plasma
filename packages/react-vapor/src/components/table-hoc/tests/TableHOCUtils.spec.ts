@@ -1,4 +1,5 @@
-import {TableHOCUtils} from '../TableHOCUtils';
+import {PaginationUtils} from '../../pagination/PaginationUtils';
+import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('TableHOCUtils', () => {
     const defaultProps = {id: 'some-id', componentId: 'some-componentId', tableId: 'some-tableId'};
@@ -55,9 +56,9 @@ describe('TableHOCUtils', () => {
         const defaultState: any = {
             tableHOCHeader: [{id: defaultProps.id, tableId: defaultProps.tableId, isAsc: true}],
             paginationComposite: [{id: `pagination-${defaultProps.tableId}`, pageNb: 2}],
-            perPageComposite: [{id: defaultProps.tableId, perPage: 10}],
             filters: [{id: defaultProps.tableId, filterText: 'some-text'}],
             listBoxes: [{id: predicateId, selected: [predicateValue]}],
+            flatSelect: [{id: PaginationUtils.getPaginationPerPageId(defaultProps.tableId), selectedOptionId: '10'}],
         };
 
         it('should return composite state', () => {

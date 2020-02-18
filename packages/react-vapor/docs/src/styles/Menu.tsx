@@ -1,4 +1,3 @@
-import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
 import {SideNavigation} from '../../../src/components/sideNavigation/SideNavigation';
@@ -9,14 +8,6 @@ const Navigation: React.FunctionComponent = () => (
     <SideNavigation>
         <NavigationSection>
             <NavigationLink key="general-guidelines" href="/general-guidelines" name="General Guidelines" />
-        </NavigationSection>
-        <NavigationSection svgName={VaporSVG.svg.open.name} baseUrl="/buttons" title="Buttons">
-            <NavigationLink href="/overview" name="Overview" />
-            <NavigationLink href="/base" name="Base" />
-            <NavigationLink href="/color-modifiers" name="Color modifiers" />
-            <NavigationLink href="/size-modifiers" name="Size modifiers" />
-            <NavigationLink href="/append-prepend" name="Append and Prepend" />
-            <NavigationLink href="/alignment" name="Alignment" />
         </NavigationSection>
         <NavigationSection title="Cards" baseUrl="/cards" svgName="rectangle">
             <NavigationLink href="/flippable" name="Flippable" />
@@ -90,8 +81,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
         <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">
-            <NavigationLink href="/modifiers" name="Icon modifiers" />
-            <NavigationLink href="/fillers" name="Icon fillers" />
             <NavigationLink href="/list" name="Icons" />
         </NavigationSection>
         <NavigationSection title="Messages" baseUrl="/messages" svgName="noteYes">
@@ -105,18 +94,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/sub-navigation" name="Sub Navigation" />
             <NavigationLink href="/navigation-loading" name="Navigation Loading" />
         </NavigationSection>
-        <NavigationSection title="Tables" baseUrl="/tables" svgName="filterFacet">
-            <NavigationLink href="/base" name="Base" />
-            <NavigationLink href="/drag-and-drop" name="Drag and drop" />
-            <NavigationLink href="/fixed-header" name="Fixed header" />
-            <NavigationLink href="/actions-container" name="Actions container" />
-            <NavigationLink href="/small-actions-container" name="Small actions container" />
-            <NavigationLink href="/collapsible-rows" name="Collapsible rows" />
-            <NavigationLink href="/alternating-color-rows" name="Alternating color rows" />
-            <NavigationLink href="/pagination" name="Pagination" />
-            <NavigationLink href="/smaller-rows" name="Smaller rows" />
-            <NavigationLink href="/loading" name="Loading" />
-        </NavigationSection>
         <NavigationSection
             title="Typography"
             baseUrl="/typography"
@@ -126,9 +103,9 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/colors" name="Colors" />
             <NavigationLink href="/utilities" name="Utilities" />
             <NavigationLink href="/lists" name="Lists" />
-            <NavigationLink href="/line-height" name="Line-height" />
         </NavigationSection>
         <NavigationSection baseUrl="/utility" title="Utility" svgName="maintenance">
+            <NavigationLink href="/line-height" name="Text Size" />
             <NavigationLink href="/whitespace" name="Whitespace" />
             <NavigationLink href="/spaced-box" name="Spaced box" />
             <NavigationLink href="/cursor" name="Cursor" />

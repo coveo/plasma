@@ -67,8 +67,15 @@ describe('Svg', () => {
                 expect(svgDomNode.hasChildNodes()).toBe(true);
             });
 
-            it('should render the svgClass if specified as props on the svg tag', () => {
+            it('should render the svgClass on the svg tag if specified', () => {
                 expect(svgDomNode.classList.toString()).toBe(BASIC_SVG.svgClass);
+
+                expect(
+                    mount(<Svg svgName="home" svgClass="icon" />)
+                        .getDOMNode()
+                        .querySelector('svg')
+                        .classList.toString()
+                ).toBe('icon');
             });
         });
 

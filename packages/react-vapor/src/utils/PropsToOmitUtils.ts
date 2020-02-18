@@ -10,6 +10,7 @@ const inputTagPropsToOmit: string[] = [
     'onBlur',
     'value',
     'valid',
+    'changeDirtyState',
 ];
 
 export const PropsToOmitUtils = {

@@ -14,6 +14,9 @@ const containerId = 'some-id';
 
 @ReduxConnect(null, {addToast})
 export class ToastConnectedExamples extends React.Component<IToastConnectedExamplesProps, {}> {
+    static description =
+        'Toasts display non-critical confirmation information related to user-performed operations (e.g., form submission).';
+
     render() {
         return (
             <div className="mt2">
