@@ -53,8 +53,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/slide-toggle" name="Slide toggle" />
             <NavigationLink href="/slide-toggle-modifiers" name="Slide toggle modifiers" />
             <NavigationLink href="/slide-toggle-double" name="Slide toggle double" />
-            <NavigationLink href="/dropdown-modifiers" name="Dropdown modifiers" />
-            <NavigationLink href="/flat-select-prepend" name="Prepended flat select" />
             <NavigationLink href="/progress-bar" name="Progress bar" />
             <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
