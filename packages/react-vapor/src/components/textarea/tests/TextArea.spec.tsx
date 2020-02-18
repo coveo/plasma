@@ -100,16 +100,20 @@ describe('TextArea', () => {
             const validation = (value: string) => value !== '';
             const validationMessage = 'invalid value';
             const invalidValue = '';
+            jasmine.clock().install();
 
             wrapper.setProps({validate: validation, validationMessage: validationMessage, value: invalidValue});
             act(() => {
                 wrapper.update();
             });
+            expect(wrapper.contains(validationMessage)).toBeFalsy();
+
             wrapper.setProps({value: invalidValue});
             act(() => {
                 wrapper.update();
             });
 
+            jasmine.clock().tick(301);
             expect(wrapper.contains(validationMessage)).toBeTruthy();
         });
 

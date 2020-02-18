@@ -31,7 +31,6 @@ export interface ITextAreaOwnProps {
     validate?: (value: string) => boolean;
     validationMessage?: string;
     validationLabelProps?: ILabelProps;
-    children?: any;
 }
 
 export interface ITextAreaStateProps {
@@ -58,27 +57,32 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
     onUnmount: () => dispatch(removeTextArea(ownProps.id)),
 });
 
-export const TextArea = (props: ITextAreaProps) => {
+export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
+    const [debouncedValue, setDebouncedValue] = React.useState(props.value);
     const [isValid, setIsValid] = React.useState(true);
 
     React.useEffect(() => {
-        setIsValid(!!props.validate && props.validate(props.value));
+        setTimeout(() => {
+            setDebouncedValue(props.value);
+        }, 300);
     }, [props.value]);
 
     React.useEffect(() => {
-        if (props.onMount) {
-            props.onMount();
-        }
+        setIsValid(props.validate?.(debouncedValue));
+    }, [debouncedValue]);
+
+    React.useEffect(() => {
+        props.onMount?.();
         setIsValid(true);
         if (props.onUnmount) {
-            return () => props.onUnmount();
+            return props.onUnmount;
         }
     }, []);
 
     const getValidationLabel = () => {
         return (
             !isValid && (
-                <div>
+                <div className={'pt1'}>
                     <Label id={'textarea-validation-label'} className={'text-red'} {...props.validationLabelProps}>
                         {props.validationMessage}
                     </Label>
