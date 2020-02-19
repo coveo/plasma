@@ -89,11 +89,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/toast" name="Toast" />
             <NavigationLink href="/tooltip" name="Tooltip" />
         </NavigationSection>
-        <NavigationSection title="Navigation" baseUrl="/navigation" svgName="invert">
-            <NavigationLink href="/navigation" name="Navigation" />
-            <NavigationLink href="/sub-navigation" name="Sub Navigation" />
-            <NavigationLink href="/navigation-loading" name="Navigation Loading" />
-        </NavigationSection>
         <NavigationSection
             title="Typography"
             baseUrl="/typography"

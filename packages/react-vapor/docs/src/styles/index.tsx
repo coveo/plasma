@@ -12,7 +12,6 @@ import Headers from './headers';
 import Icons from './icons';
 import SideMenu from './Menu';
 import Messages from './messages';
-import Navigation from './navigation';
 import Typography from './typography';
 import Utility from './utility';
 
@@ -35,7 +34,6 @@ const Styles: React.FunctionComponent<RouteComponentProps> = ({match}) => {
                     <Route path={`${match.url}/headers`} component={Headers} />
                     <Route path={`${match.url}/icons`} component={Icons} />
                     <Route path={`${match.url}/messages`} component={Messages} />
-                    <Route path={`${match.url}/navigation`} component={Navigation} />
                     <Route path={`${match.url}/typography`} component={Typography} />
                     <Route path={`${match.url}/utility`} component={Utility} />
                     <Route

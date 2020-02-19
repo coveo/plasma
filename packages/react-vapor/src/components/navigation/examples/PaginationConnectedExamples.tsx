@@ -8,7 +8,8 @@ import {NavigationConnected} from '../NavigationConnected';
 const navigationConnectedExampleId = 'navigation-connected';
 const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedExampleId];
 
-export class NavigationConnectedExamples extends React.Component<any, any> {
+export class PaginationConnectedExamples extends React.PureComponent {
+    static title: string = 'PaginationConnected';
     // Remove loading after a few seconds
     componentWillMount() {
         ExamplesStore.subscribe(() => {
@@ -30,7 +31,7 @@ export class NavigationConnectedExamples extends React.Component<any, any> {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Navigation with Redux state and loading</label>
+                    <label className="form-control-label">Pagination with Redux state and loading</label>
                     <NavigationConnected {...navigationProps} />
                 </div>
             </div>

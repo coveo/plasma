@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {SideNavigation} from '../SideNavigation';
+import {SideNavigationLoadingHeader} from '../SideNavigationLoadingHeader';
 import {SideNavigationLoadingItem} from '../SideNavigationLoadingItem';
 import {SideNavigationMenuSection} from '../SideNavigationMenuSection';
 
@@ -11,6 +12,7 @@ export class SideNavigationLoadingExample extends React.Component<any, any> {
                 <div className="flex flex-row flex-stretch">
                     <SideNavigation>
                         <SideNavigationMenuSection>
+                            <SideNavigationLoadingHeader />
                             <SideNavigationLoadingItem className="mod-width-30" />
                             <SideNavigationLoadingItem className="mod-width-50" />
                             <SideNavigationLoadingItem className="mod-width-40" />
@@ -18,12 +20,14 @@ export class SideNavigationLoadingExample extends React.Component<any, any> {
                             <SideNavigationLoadingItem className="mod-width-50" />
                         </SideNavigationMenuSection>
                         <SideNavigationMenuSection>
+                            <SideNavigationLoadingHeader />
                             <SideNavigationLoadingItem className="mod-width-30" />
                             <SideNavigationLoadingItem className="mod-width-50" />
                             <SideNavigationLoadingItem className="mod-width-60" />
                             <SideNavigationLoadingItem className="mod-width-30" />
                         </SideNavigationMenuSection>
                         <SideNavigationMenuSection>
+                            <SideNavigationLoadingHeader />
                             <SideNavigationLoadingItem className="mod-width-30" />
                             <SideNavigationLoadingItem className="mod-width-40" />
                             <SideNavigationLoadingItem className="mod-width-50" />
