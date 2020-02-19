@@ -2,16 +2,28 @@ import * as React from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
+import createMockStore, {MockStoreEnhanced} from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as _ from 'underscore';
 
-import createMockStore, {MockStoreEnhanced} from 'redux-mock-store';
 import {ISvgProps} from '../../components/svg/Svg';
-import {IExampleServerTableState} from '../../components/table-hoc/examples/TableHOCServerExamples';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {IReactVaporState} from '../../ReactVapor';
 import {ReactVaporReducers} from '../../ReactVaporReducers';
 import {CommonActions, IDispatch} from '../ReduxUtils';
+
+export interface IExampleRowData {
+    city: string;
+    email: string;
+    username: string;
+    dateOfBirth: Date;
+    id: string;
+}
+
+export interface IExampleServerTableState {
+    data: IExampleRowData[];
+    isLoading: boolean;
+}
 
 export interface IReactVaporTestState extends IReactVaporState {
     lastAction?: Redux.Action;

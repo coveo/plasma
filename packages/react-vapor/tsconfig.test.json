@@ -14,12 +14,7 @@
         "noUnusedLocals": true,
         "lib": ["es2015", "dom"],
         "skipLibCheck": true,
-        "target": "ES5",
-        "plugins": [
-            {
-                "transform": "ts-transformer-keys/transformer"
-            }
-        ]
+        "target": "ES5"
     },
     "exclude": ["node_modules", "dist", "coverage", "*.js"]
 }

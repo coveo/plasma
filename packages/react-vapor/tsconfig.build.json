@@ -5,10 +5,11 @@
         "sourceMap": true,
         "declaration": true,
         "declarationDir": "dist/definitions",
-        "outDir": "dist",
-        "composite": true
+        "baseUrl": "./",
+        "paths": {
+            "*": ["types/*", "*"]
+        }
     },
-    "typeRoots": ["types", "node_modules/@types", "../../node_modules/@types"],
-    "include": ["src", "docs/*.ts", "docs/src/components/ComponentsInterface.ts", "types/react-dnd/index.d.ts"],
-    "exclude": ["**/*.spec.ts?"]
+    "exclude": ["node_modules", "dist", "coverage", "*.js", "./src/**/*.spec.*"],
+    "include": ["src"]
 }

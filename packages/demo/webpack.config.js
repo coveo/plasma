@@ -1,7 +1,9 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
+const keysTransformer = require('ts-transformer-keys/transformer').default;
 const isTravis = !!process.env.TRAVIS;
+const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 /**
  * Config file for the documentation project
@@ -29,6 +31,10 @@ module.exports = {
         }),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
+        new ForkTsCheckerWebpackPlugin({
+            tslint: '../../tslint.json',
+            tslintAutoFix: true,
+        }),
     ],
     stats: 'minimal',
     module: {
@@ -42,6 +48,9 @@ module.exports = {
                             projectReferences: true,
                             transpileOnly: true,
                             experimentalWatchApi: true,
+                            getCustomTransformers: (program) => ({
+                                before: [keysTransformer(program)],
+                            }),
                         },
                     },
                 ],
@@ -73,7 +82,6 @@ module.exports = {
         disableHostCheck: true,
         compress: true,
         hot: true,
-        inline: true,
         progress: false,
         open: true,
     },

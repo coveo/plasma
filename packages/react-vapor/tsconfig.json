@@ -9,12 +9,7 @@
         "noImplicitThis": true,
         "removeComments": true,
         "noUnusedLocals": true,
-        "plugins": [
-            {
-                "transform": "ts-transformer-keys/transformer"
-            }
-        ],
         "lib": ["es2015", "dom"]
     },
-    "exclude": ["node_modules", "dist", "docs/dist", "coverage", "*.js"]
+    "exclude": ["node_modules", "dist", "coverage", "*.js"]
 }

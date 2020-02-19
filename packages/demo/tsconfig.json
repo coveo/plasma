@@ -1,13 +1,11 @@
 {
     "extends": "../tsconfig-base",
-    "references": [{"path": "../react-vapor/tsconfig.build.json"}],
     "compilerOptions": {
         "removeComments": false,
         "sourceMap": true,
-        "strict": true,
-        "outDir": "dist",
-        "rootDir": "src"
+        "experimentalDecorators": true,
+        "downlevelIteration": true
     },
-    "include": ["src"],
-    "exclude": ["**/node_modules", "dist", "*.js"]
+    "exclude": ["node_modules", "dist", "*.js"],
+    "include": ["src"]
 }
