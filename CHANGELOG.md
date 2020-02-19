@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.10.0](https://github.com/coveo/react-vapor/compare/v5.9.0...v5.10.0) (2020-02-19)
+
+
+### Features
+
+* readded setto ([dbfcdd2](https://github.com/coveo/react-vapor/commit/dbfcdd273702e8cea98b2773f454cedb32e45b5b))
+
+
+
+
+
 # [5.9.0](https://github.com/coveo/react-vapor/compare/v5.8.0...v5.9.0) (2020-02-19)
 
 ### Features
