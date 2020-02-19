@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {INavigationProps, Navigation} from '../Navigation';
 
-export class PaginationExamples extends React.Component<any, any> {
+export class PaginationExamples extends React.PureComponent {
     static title: string = 'Pagination';
     render() {
         const navigationProps: INavigationProps = {
