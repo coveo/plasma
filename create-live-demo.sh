@@ -17,7 +17,7 @@ git remote add -t gh-pages -f origin git@github.com:$TRAVIS_REPO_SLUG.git
 git checkout gh-pages
 
 echo "Creating live demo for branch: $TRAVIS_PULL_REQUEST_BRANCH";
-cp -R $BASE_PATH/packages/react-vapor/docs/dist "$BRANCH_FOLDER_NAME"
+cp -R $BASE_PATH/packages/demo/dist "$BRANCH_FOLDER_NAME"
 
 git add "$BRANCH_FOLDER_NAME"
 git commit --quiet -m "ci(demo): demo for branch: $TRAVIS_PULL_REQUEST_BRANCH" --no-verify

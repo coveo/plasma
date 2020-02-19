@@ -1,13 +1,18 @@
-import 'coveo-styleguide/dist/css/CoveoStyleGuide.css';
-import './style.scss';
-
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {Button} from 'react-vapor';
+import {Provider} from 'react-redux';
+import {Defaults} from 'react-vapor';
+
+import {App} from './OneDemoToRuleThemAll';
+import {Store} from './Store';
+
+Defaults.APP_ELEMENT = '#App';
+Defaults.MODAL_ROOT = '#Modals';
+Defaults.DROP_ROOT = '#Drops';
 
 ReactDOM.render(
-    <div>
-        <Button primary>This is a test</Button>
-    </div>,
+    <Provider store={Store}>
+        <App />
+    </Provider>,
     document.getElementById('App')
 );

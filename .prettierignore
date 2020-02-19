@@ -5,3 +5,4 @@ packages/vapor/docs
 .github
 **/sprites.scss
 **/coverage
+**/CHANGELOG.md

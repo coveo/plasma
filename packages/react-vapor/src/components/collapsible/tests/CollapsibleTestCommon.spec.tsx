@@ -1,4 +1,4 @@
-import * as loremIpsum from 'lorem-ipsum';
+import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
 

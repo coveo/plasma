@@ -29,7 +29,6 @@ cache:
 
 script:
     - npm run build
-    - lerna run docs
     - npm test
     - lerna run test:compile # to catch any lint or compile errors, compile tests through webpack prior to running test suites with karma (karma always exit its process with 0)
 
@@ -45,7 +44,7 @@ deploy:
       secret_access_key:
           secure: 'FCCwGIggMIPz/dk3nDyICAua5KCxHQ9t1gc0jvw5P6zVS/l2GYzwNUbLNz1lBfikvcDS/2NlGpl5Znd/4lBQuiGUEniIgLlbpEHmHyHCV/GPYLYAgWNweCdwUF5bHRygj32I6zIyOAp1EX5jlh39Xcci9hkaGLMWhd3i4XsPxQYYCAhvuL7hw5IljpUiQPOuwJxIU7yHc87JtJkQ/h98qRIXwvwDoNIKPMeRdI1pHTJFUXPn8+4nxavqngXWqOtzdv3+NgTBQiPl+t0k0u2+pUU7C+zXSN2oSZ+qTOb67oEJzTJ733p7VUhFBfEWBko36PpMV+4xm1VXlMzs621E+8GiSFcy07GQhFcZ3YTSl+/u5JgXQJmIuj7dcS+DUsZ28dCTh/w+BEThchpFkwvrkn2hHYUmmB/XEHRWNJ/7lc31dz//gXlspq2GTQqmnuxORfobLd2Oi+bqnDYB4BV4QTxitrZu9ou3UKg/zGevpGgKmAzhwLAQSDvkCWfJs4z/k7gg9F85/ah1Aivjmo5RypSU7KMtqkfDRv/xiL9W8RnuEELK5VQJ1oJmaMAtfcHtV8hSCQiqoV0ECXuA3DU3FcaKThPV/49LxXkx+g2M3CA1AzPW5tUjmcr9cKAcZY+YcWhKLs2aIiuBQkyATw/Uo9VHI0cBqItaWYa6Uh7DMu0='
       bucket: coveo-prd-jsadmin
-      local-dir: packages/react-vapor/docs/dist
+      local-dir: packages/demo/dist
       upload-dir: react-vapor
       acl: public_read
 
