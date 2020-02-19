@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.9.0](https://github.com/coveo/react-vapor/compare/v5.8.0...v5.9.0) (2020-02-19)
+
+
+### Features
+
+* **tablehoc:** add tbodyclassname props ([#1447](https://github.com/coveo/react-vapor/issues/1447)) ([2e00929](https://github.com/coveo/react-vapor/commit/2e0092964d5bc9f4663152914f1fc42eb204ff74))
+
+
+
+
+
 # [5.8.0](https://github.com/coveo/react-vapor/compare/v5.7.5...v5.8.0) (2020-02-14)
 
 
