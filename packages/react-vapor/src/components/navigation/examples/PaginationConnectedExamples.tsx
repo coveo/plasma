@@ -8,7 +8,7 @@ import {NavigationConnected} from '../NavigationConnected';
 const navigationConnectedExampleId = 'navigation-connected';
 const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedExampleId];
 
-export class PaginationConnectedExamples extends React.Component<any, any> {
+export class PaginationConnectedExamples extends React.PureComponent {
     static title: string = 'PaginationConnected';
     // Remove loading after a few seconds
     componentWillMount() {
