@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.12.1](https://github.com/coveo/react-vapor/compare/v5.12.0...v5.12.1) (2020-02-20)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
 # [5.12.0](https://github.com/coveo/react-vapor/compare/v5.11.0...v5.12.0) (2020-02-20)
 
 
