@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.11.0](https://github.com/coveo/react-vapor/compare/v5.10.1...v5.11.0) (2020-02-20)
+
+
+### Features
+
+* **blankslate:** add classname props ([#1449](https://github.com/coveo/react-vapor/issues/1449)) ([b1f40e9](https://github.com/coveo/react-vapor/commit/b1f40e9b04bb2ddc55cbc20adfcc4cd3e8ae0c66))
+
+
+
+
+
 ## [5.10.1](https://github.com/coveo/react-vapor/compare/v5.10.0...v5.10.1) (2020-02-20)
 
 **Note:** Version bump only for package react-vapor
