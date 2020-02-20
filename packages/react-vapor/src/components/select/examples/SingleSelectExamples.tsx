@@ -74,6 +74,15 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
                 buttonPrepend={<span>👉 </span>}
             />
         </Section>
+        <Section level={3} title="A single select with some implementation props">
+            <SingleSelectConnected
+                id={UUID.generate()}
+                items={defaultItems}
+                toggleClasses="mod-right"
+                placeholder="Select something"
+                canClear
+            />
+        </Section>
         <Section level={3} title="A single select with predicates">
             <SingleSelectWithPredicate
                 id={UUID.generate()}

@@ -25,7 +25,7 @@ import {setDisabledInput} from '../InputActions';
 import {InputConnected} from '../InputConnected';
 import {Label} from '../Label';
 
-export const InputExamples: ExampleComponent = () => (
+export const TextInputExamples: ExampleComponent = () => (
     <Section title="Inputs Examples">
         <SimpleInputDisconnected />
         <InputsConnected />
@@ -34,7 +34,7 @@ export const InputExamples: ExampleComponent = () => (
         <MultilineBoxExamples />
     </Section>
 );
-InputExamples.description =
+TextInputExamples.description =
     'Text Inputs allow users to enter a single line of letters, numbers, or symbols. They are used to submit short character strings.';
 
 export const MultilineInputComponents: React.FunctionComponent = () => (

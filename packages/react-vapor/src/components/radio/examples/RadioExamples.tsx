@@ -19,14 +19,14 @@ export interface IRadioSelectExampleState {
     value: string;
 }
 
-export const RadioExamples: ExampleComponent = () => (
+export const RadioButtonExamples: ExampleComponent = () => (
     <Section title="Radio set">
         <RadioSelectExample />
         <RadioSelectDisabledExample />
     </Section>
 );
 
-RadioExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
+RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
 
 const radioSelectConnectedId = 'radioselectconnected';
 

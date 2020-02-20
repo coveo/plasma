@@ -1,7 +1,9 @@
 import * as React from 'react';
 import {UUID} from '../../../utils/UUID';
 import {IContentProps} from '../../content/Content';
+import {Form} from '../../form/Form';
 import {Loading} from '../../loading/Loading';
+import {Section} from '../../section/Section';
 import {ISvgProps, Svg} from '../../svg/Svg';
 import {FlatSelectConnected} from '../FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../FlatSelectOption';
@@ -31,23 +33,17 @@ export class FlatSelectExamples extends React.Component {
         const append: IContentProps = {content: () => <Svg {...svg} />, classes: ['ml1']};
 
         return (
-            <div className="mt2">
-                <h1 className="text-blue mb1">Flat Select List</h1>
-
-                <div className="form-group">
-                    <label className="form-control-label">Default Flat Select</label>
-                    <div className="form-control">
+            <Form>
+                <Section title="Flat Select List">
+                    <Section level={2} title="Default Flat Select">
                         <FlatSelectConnected
                             {...{
                                 id: UUID.generate(),
                                 options: defaultFlatSelectOption,
                             }}
                         />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select mod group</label>
-                    <div className="form-control">
+                    </Section>
+                    <Section level={2} title="Flat Select mod group">
                         <FlatSelectConnected
                             {...{
                                 id: UUID.generate(),
@@ -55,11 +51,8 @@ export class FlatSelectExamples extends React.Component {
                                 group: true,
                             }}
                         />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select mod option picker</label>
-                    <div className="form-control">
+                    </Section>
+                    <Section level={2} title="Flat Select mod option picker">
                         <FlatSelectConnected
                             {...{
                                 id: UUID.generate(),
@@ -67,11 +60,8 @@ export class FlatSelectExamples extends React.Component {
                                 optionPicker: true,
                             }}
                         />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select with option tooltip</label>
-                    <div className="form-control">
+                    </Section>
+                    <Section level={2} title="Flat Select with option tooltip">
                         <FlatSelectConnected
                             {...{
                                 id: UUID.generate(),
@@ -89,34 +79,8 @@ export class FlatSelectExamples extends React.Component {
                                 ],
                             }}
                         />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select mod group with option tooltip</label>
-                    <div className="form-control">
-                        <FlatSelectConnected
-                            {...{
-                                id: UUID.generate(),
-                                options: [
-                                    {
-                                        id: UUID.generate(),
-                                        option: {content: 'Option 1'},
-                                        tooltip: {title: 'Option 1 tooltip', container: 'body', placement: 'bottom'},
-                                    },
-                                    {
-                                        id: UUID.generate(),
-                                        option: {content: 'Option 2'},
-                                        tooltip: {title: 'Option 2 tooltip', container: 'body', placement: 'bottom'},
-                                    },
-                                ],
-                                group: true,
-                            }}
-                        />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select with option prepend</label>
-                    <div className="form-control">
+                    </Section>
+                    <Section level={2} title="Flat Select with option append and prepend">
                         <FlatSelectConnected
                             {...{
                                 id: UUID.generate(),
@@ -129,38 +93,13 @@ export class FlatSelectExamples extends React.Component {
                                     {
                                         id: UUID.generate(),
                                         option: {content: 'Option 2'},
-                                        prepend: prepend,
-                                    },
-                                ],
-                            }}
-                        />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select with option append</label>
-                    <div className="form-control">
-                        <FlatSelectConnected
-                            {...{
-                                id: UUID.generate(),
-                                options: [
-                                    {
-                                        id: UUID.generate(),
-                                        option: {content: 'Option 1'},
-                                        append: append,
-                                    },
-                                    {
-                                        id: UUID.generate(),
-                                        option: {content: 'Option 2'},
                                         append: append,
                                     },
                                 ],
                             }}
                         />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Flat Select with option component</label>
-                    <div className="form-control">
+                    </Section>
+                    <Section level={2} title="Flat Select with option component">
                         <FlatSelectConnected
                             {...{
                                 id: UUID.generate(),
@@ -176,9 +115,9 @@ export class FlatSelectExamples extends React.Component {
                                 ],
                             }}
                         />
-                    </div>
-                </div>
-            </div>
+                    </Section>
+                </Section>
+            </Form>
         );
     }
 }
