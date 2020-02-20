@@ -239,3 +239,34 @@ $row-style: (
         fill: $dark-medium-grey;
     }
 }
+
+.blacklistCardContainer {
+    flex-wrap: wrap;
+
+    .blacklistCard {
+        width: calc(50% - #{$status-card-margin} * 2);
+        height: unset !important;
+        margin: $status-card-margin;
+
+        & td {
+            padding: $status-card-padding;
+
+            &:hover {
+                background-color: $grey-2;
+            }
+
+            &:focus {
+                background-color: $grey-1;
+                border-left: $status-card-border-width solid $orange;
+            }
+
+            & span {
+                color: $dark-grey;
+            }
+        }
+    }
+
+    td {
+        border-bottom: none !important;
+    }
+}
