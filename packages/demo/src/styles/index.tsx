@@ -6,7 +6,6 @@ import Colors from './colors';
 import Components from './components';
 import Filtering from './filtering';
 import FormControls from './form';
-import FormLayout from './form-layouts';
 import GeneralGuidelines from './general-guidelines';
 import Headers from './headers';
 import Icons from './icons';
@@ -30,7 +29,6 @@ const Styles: React.FunctionComponent<RouteComponentProps> = ({match}) => {
                     <Route path={`${match.url}/components`} component={Components} />
                     <Route path={`${match.url}/filtering`} component={Filtering} />
                     <Route path={`${match.url}/form-controls`} component={FormControls} />
-                    <Route path={`${match.url}/form-layout`} component={FormLayout} />
                     <Route path={`${match.url}/headers`} component={Headers} />
                     <Route path={`${match.url}/icons`} component={Icons} />
                     <Route path={`${match.url}/messages`} component={Messages} />
