@@ -2,10 +2,84 @@ import {date, internet} from 'faker/locale/en';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+
+import {DATES_SEPARATOR} from '../../../utils';
 import {IActionOptions} from '../../actions/Action';
-import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
+import {DatePickerColors, IDatesSelectionBox} from '../../datePicker';
 import {IData, ITableProps} from '../Table';
 import {DEFAULT_TABLE_DATA} from '../TableConstants';
+
+export const SELECTION_BOXES: IDatesSelectionBox[] = [
+    {
+        title: 'Date range',
+        quickOptions: [
+            {
+                label: 'Last 10 seconds',
+                value: () =>
+                    moment()
+                        .subtract(10, 'seconds')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
+            },
+            {
+                label: 'Last minute',
+                value: () =>
+                    moment()
+                        .subtract(1, 'minute')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
+            },
+            {
+                label: 'Last 5 minutes',
+                value: () =>
+                    moment()
+                        .subtract(5, 'minutes')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
+            },
+            {
+                label: 'Last 30 minutes',
+                value: () =>
+                    moment()
+                        .subtract(30, 'minutes')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
+            },
+            {
+                label: 'Last hour',
+                value: () =>
+                    moment()
+                        .subtract(1, 'hour')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
+            },
+            {
+                label: 'Last day',
+                value: () =>
+                    moment()
+                        .subtract(1, 'day')
+                        .toDate()
+                        .toString() +
+                    DATES_SEPARATOR +
+                    new Date().toString(),
+            },
+        ],
+        isRange: true,
+        withTime: true,
+        hasSetToNowButton: true,
+        color: DatePickerColors.blue,
+    },
+];
 
 export const tableOwnPropsMock: ITableProps = {
     id: 'super-table',

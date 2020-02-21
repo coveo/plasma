@@ -27,7 +27,9 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IColorPickerProps) =>
     },
 });
 
-class ColorPickerDisconnected extends React.Component<IColorPickerProps & ReturnType<typeof mapDispatchToProps>> {
+class ColorPickerDisconnected extends React.Component<
+    IColorPickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
+> {
     static defaultProps: Partial<IColorPickerProps & ReturnType<typeof mapDispatchToProps>> = {
         id: uniqueId('colorpicker'),
         onChangeComplete: noop as any,

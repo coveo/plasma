@@ -28,15 +28,11 @@ npm install
 
 ### Running the demo pages locally
 
-See the README inside [Vapor](packages/vapor) and [React-Vapor](packages/react-vapor) for package specific instructions.
-
 ```bash
 npm start
 ```
 
-### Testing your changes locally directly in your project
-
-Since the projects are in the same repository and we use Lerna, we don't have to link them together.
+Changes made to any source files in any package will make the demo rebuild and refresh. Since the projects are in the same repository and we use Lerna, we don't have to link them together.
 
 ### Commiting your changes
 

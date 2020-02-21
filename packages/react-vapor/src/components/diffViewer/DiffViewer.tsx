@@ -1,4 +1,4 @@
-import {Diff2Html} from 'diff2html';
+import * as Diff2Html from 'diff2html';
 import * as React from 'react';
 // @ts-ignore
 import * as unidiff from 'unidiff';
@@ -21,27 +21,25 @@ export class DiffViewer extends React.Component<DiffViewerProps> {
     static OutputFormat = {
         Side: 'side-by-side',
         Line: 'line-by-line',
-    };
+    } as const;
 
     static InputFormat = {
         Diff: 'diff',
         JSON: 'json',
-    };
+    } as const;
 
     static Matching = {
         Lines: 'lines',
         Words: 'words',
         None: 'none',
-    };
+    } as const;
 
     static EmptyHtmlRegex = new RegExp(/<div class="d2h-wrapper"\>\s*<\/div>/);
 
     render() {
         const diff = unidiff.diffLines(this.props.first, this.props.second);
         const formattedDiff = unidiff.formatLines(diff, {context: 3});
-        const html = Diff2Html.getPrettyHtml(formattedDiff, {
-            inputFormat: DiffViewer.InputFormat.Diff,
-            showFiles: false,
+        const html = Diff2Html.html(formattedDiff, {
             matching: DiffViewer.Matching.Words,
             outputFormat: DiffViewer.OutputFormat.Line,
         });

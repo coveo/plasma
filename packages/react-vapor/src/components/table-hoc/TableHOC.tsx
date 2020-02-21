@@ -22,6 +22,7 @@ export interface ITableHOCOwnProps {
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
     containerClassName?: string;
+    tbodyClassName?: string;
     showBorderTop?: boolean;
     loading?: {
         numberOfColumns?: number;
@@ -47,7 +48,10 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         const table = (
             <table className={classNames(this.props.className)}>
                 {this.props.tableHeader}
-                <tbody key={`table-body-${this.props.id}`} className={classNames({hidden: this.props.isLoading})}>
+                <tbody
+                    key={`table-body-${this.props.id}`}
+                    className={classNames({hidden: this.props.isLoading}, this.props.tbodyClassName)}
+                >
                     {this.props.renderBody(this.props.data || [])}
                 </tbody>
                 {this.props.isLoading && (
