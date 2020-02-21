@@ -1,10 +1,9 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
+import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {keys} from 'ts-transformer-keys';
-import {Defaults} from '../../Defaults';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {mod} from '../../utils/DataStructuresUtils';
@@ -123,7 +122,6 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
             <Drop
                 id={this.props.id}
                 groupId={SelectConnected.DropGroup}
-                selector={Defaults.DROP_ROOT}
                 positions={[DropPodPosition.bottom, DropPodPosition.top]}
                 buttonContainerProps={{className: pickerClasses}}
                 renderOpenButton={(onClick: () => void) => (
@@ -143,7 +141,6 @@ export class SelectConnected extends React.PureComponent<ISelectProps & ISelectS
                 )}
                 minWidth={minWidth}
                 closeOnClickDrop={false}
-                parentSelector={Defaults.DROP_PARENT_ROOT}
                 {...this.props.dropOption}
             >
                 <div

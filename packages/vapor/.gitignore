@@ -1,9 +1,0 @@
-# Ignore compiled files
-dist
-tmp
-out
-
-# Ignore docs files
-.sass-cache
-_gh_pages
-.next

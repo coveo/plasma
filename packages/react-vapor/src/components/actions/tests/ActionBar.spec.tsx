@@ -54,6 +54,13 @@ describe('ActionsBar', () => {
         expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(true);
     });
 
+    it('should not enable a PrimaryAction that is set as disabled', () => {
+        const wrapper = shallow(<ActionBar actions={[{enabled: false, primary: true}]} />)
+            .childAt(1)
+            .dive();
+        expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(false);
+    });
+
     it('should return PrimaryAction disabled', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} disabled />)
             .childAt(1)
@@ -63,6 +70,13 @@ describe('ActionsBar', () => {
 
     it('should return PrimaryActionConnected disabled', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} withReduxState disabled />)
+            .childAt(1)
+            .dive();
+        expect(wrapper.find(PrimaryActionConnected).props().action.enabled).toBe(false);
+    });
+
+    it('should not enable a PrimaryActionConnected that is set as disabled', () => {
+        const wrapper = shallow(<ActionBar actions={[{enabled: false, primary: true}]} withReduxState />)
             .childAt(1)
             .dive();
         expect(wrapper.find(PrimaryActionConnected).props().action.enabled).toBe(false);

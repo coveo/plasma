@@ -87,11 +87,11 @@ export class ActionBar extends React.PureComponent<
                 .map((action: IActionOptions, index: number) => {
                     const primaryAction = this.props.withReduxState ? (
                         <PrimaryActionConnected
-                            action={{...action, enabled: !this.props.disabled}}
+                            action={{...action, enabled: action.enabled && !this.props.disabled}}
                             parentId={this.props.id}
                         />
                     ) : (
-                        <PrimaryAction action={{...action, enabled: !this.props.disabled}} />
+                        <PrimaryAction action={{...action, enabled: action.enabled && !this.props.disabled}} />
                     );
                     return (
                         <div className="action primary-action" key={`primary-${index}`}>
@@ -100,11 +100,16 @@ export class ActionBar extends React.PureComponent<
                     );
                 }) ?? [];
 
-        const secondaryActions: IActionOptions[] = this.props.actions?.filter(({primary}) => !primary) ?? [];
+        const secondaryActions: IActionOptions[] =
+            this.props.actions
+                ?.filter(({primary}) => !primary)
+                .map((action: IActionOptions) => ({
+                    ...action,
+                    enabled: action.enabled && !this.props.disabled,
+                })) ?? [];
 
         let secondaryActionsView: JSX.Element = null;
         if (!_.isEmpty(secondaryActions)) {
-            secondaryActions.forEach((action: IActionOptions) => ({...action, enabled: !this.props.disabled}));
             secondaryActionsView = (
                 <SecondaryActions
                     id={this.props.id}

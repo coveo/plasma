@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+        "module": "esnext",
+        "moduleResolution": "Node",
+        "target": "es5",
+        "jsx": "react",
+        "skipLibCheck": true
+    }
+}

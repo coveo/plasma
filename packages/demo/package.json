@@ -1,0 +1,95 @@
+{
+    "name": "react-vapor-demo",
+    "version": "5.13.0",
+    "private": true,
+    "description": "Vapor Design System",
+    "main": "src/Index.ts",
+    "scripts": {
+        "start": "webpack-dev-server",
+        "build": "webpack",
+        "precommit": "lint-staged"
+    },
+    "author": "Coveo",
+    "license": "Apache-2.0",
+    "homepage": "https://react-vapor.prod.cloud.coveo.com/",
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/coveo/react-vapor.git"
+    },
+    "dependencies": {
+        "classnames": "2.2.6",
+        "codemirror": "5.52.0",
+        "coveo-styleguide": "^5.13.0",
+        "d3": "3.5.17",
+        "diff2html": "3.1.2",
+        "faker": "4.1.0",
+        "jquery": "3.3.1",
+        "lorem-ipsum": "2.0.3",
+        "moment": "2.24.0",
+        "react": "16.12.0",
+        "react-dom": "16.12.0",
+        "react-markdown": "4.3.1",
+        "react-redux": "5.1.2",
+        "react-router-dom": "5.0.1",
+        "react-syntax-highlighter": "12.2.1",
+        "react-vapor": "^5.13.0",
+        "redux": "4.0.0",
+        "redux-devtools-extension": "2.13.8",
+        "redux-promise-middleware": "6.1.2",
+        "redux-thunk": "2.3.0",
+        "reselect": "4.0.0",
+        "underscore": "1.9.2",
+        "underscore.string": "3.3.5"
+    },
+    "devDependencies": {
+        "@loadable/component": "5.10.2",
+        "@types/classnames": "2.2.9",
+        "@types/faker": "4.1.9",
+        "@types/loadable__component": "5.10.0",
+        "@types/lorem-ipsum": "2.0.0",
+        "@types/prettier": "1.19.0",
+        "@types/react": "16.9.19",
+        "@types/react-dom": "16.9.5",
+        "@types/react-redux": "6.0.10",
+        "@types/react-router-dom": "4.3.4",
+        "@types/react-syntax-highlighter": "11.0.4",
+        "@types/redux-promise-middleware": "6.0.0",
+        "@types/underscore": "1.8.10",
+        "@types/webpack-env": "1.15.1",
+        "css-loader": "3.4.2",
+        "fibers": "4.0.2",
+        "file-loader": "5.1.0",
+        "fork-ts-checker-webpack-plugin": "3.1.1",
+        "html-webpack-plugin": "3.2.0",
+        "lint-staged": "9.4.2",
+        "node-sass": "4.13.1",
+        "postcss-loader": "3.0.0",
+        "raw-loader": "4.0.0",
+        "sass": "1.25.0",
+        "sass-loader": "8.0.2",
+        "sass-variable-loader": "0.1.2",
+        "style-loader": "1.1.3",
+        "ts-loader": "6.2.1",
+        "ts-transformer-keys": "0.4.1",
+        "typescript": "3.7.5",
+        "webpack": "4.41.6",
+        "webpack-cli": "3.3.11",
+        "webpack-dev-server": "3.10.3"
+    },
+    "lint-staged": {
+        "**/*.scss": [
+            "stylelint --fix",
+            "prettier --write",
+            "git add"
+        ],
+        "**/*.{ts,tsx}": [
+            "prettier --write",
+            "tslint -c ../../tslint.json -p ./tsconfig.json --fix",
+            "git add"
+        ],
+        "**/*.{js,jsx,json,md,yml,html}": [
+            "prettier --write",
+            "git add"
+        ]
+    }
+}
