@@ -7,17 +7,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package react-vapor-demo
 
-<<<<<<< HEAD
-
-### Features
-
-=======
-
 # [5.13.0](https://github.com/coveo/react-vapor/compare/v5.12.1...v5.13.0) (2020-02-21)
 
 ### Features
-
-> > > > > > > master
 
 -   **demo:** move all example files into the demo package ([ec3b532](https://github.com/coveo/react-vapor/commit/ec3b532f85e8586f32f4e44f52aa25d33c1a14ce))
 
