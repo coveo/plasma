@@ -178,15 +178,15 @@
     }
 
     .mod-card-list {
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
 
         .mod-card {
-            width: calc(50% - #{$status-card-margin} * 2);
             height: unset !important;
-            margin: $status-card-margin;
 
             & td {
                 padding: $status-card-padding;
+                border-radius: $big-border-radius;
 
                 &:hover {
                     background-color: $grey-2;
