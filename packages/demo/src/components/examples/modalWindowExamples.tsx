@@ -7,6 +7,7 @@ import {
     IDispatch,
     Input,
     IReactVaporState,
+    ModalComposite,
     ModalCompositeConnected,
     ModalLoading,
     openModal,
@@ -58,10 +59,87 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
         close(id);
         toggleIsDirty(id, false);
     };
-
+    const modalConfirmationId = 'Modal-Confirmation-Connected';
+    const modalWarningId = 'Modal-Warning-Connected';
+    const modalInfoId = 'Modal-Info-Connected';
     const modalId = 'Modal-Connected-#1';
     return (
         <Section level={2} title="Modals connected to the redux store">
+            <Section level={3} title="Confirmation, warning and info prompts">
+                <Button
+                    className="btn"
+                    onClick={() => {
+                        return open(modalConfirmationId);
+                    }}
+                >
+                    Prompt confirmation
+                </Button>
+
+                <ModalCompositeConnected
+                    id={modalConfirmationId}
+                    title="Prompt confirmation"
+                    isPrompt
+                    classes={'mod-prompt'}
+                    modalHeaderClasses={['mod-confirmation']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <>
+                            <Button className="btn mod-primary" onClick={() => handleClose(modalConfirmationId)}>
+                                Confirm
+                            </Button>
+                            <Button className="btn" onClick={() => handleClose(modalConfirmationId)}>
+                                Close
+                            </Button>
+                        </>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+                <Button
+                    className="btn"
+                    onClick={() => {
+                        return open(modalWarningId);
+                    }}
+                >
+                    Prompt warning
+                </Button>
+
+                <ModalCompositeConnected
+                    id={modalWarningId}
+                    title="Prompt warning"
+                    isPrompt
+                    classes={'mod-prompt'}
+                    modalHeaderClasses={['mod-warning']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <Button className="btn" onClick={() => handleClose(modalWarningId)}>
+                            Close
+                        </Button>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+                <Button
+                    className="btn"
+                    onClick={() => {
+                        return open(modalInfoId);
+                    }}
+                >
+                    Prompt info
+                </Button>
+                <ModalCompositeConnected
+                    id={modalInfoId}
+                    title="Prompt info"
+                    isPrompt
+                    classes={'mod-prompt'}
+                    modalHeaderClasses={['mod-info']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <Button className="btn" onClick={() => handleClose(modalInfoId)}>
+                            Close
+                        </Button>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+            </Section>
             <Section level={3} title="A simple modal window connected">
                 <Button
                     className="btn"
@@ -135,7 +213,7 @@ const ModalWithDirtyChangeDiscardPreventionDisconnected: React.FunctionComponent
     };
 
     return (
-        <Section level={3} title="A modal implemented with the <UnsavedChangesModalProvider/>">
+        <Section level={3} title="A modal implemented with the <UnsavedChangesModalProvider/> and confirmation prompt">
             <Button className="btn" onClick={() => open(id)}>
                 Open Modal
             </Button>
