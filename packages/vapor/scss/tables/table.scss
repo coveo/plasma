@@ -176,6 +176,37 @@
     &.mod-deleting tbody tr.selected td {
         background-color: rgba($red, 0.1);
     }
+
+    .mod-card-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+
+        .mod-card {
+            height: unset !important;
+
+            & td {
+                padding: $status-card-padding;
+                border-radius: $big-border-radius;
+
+                &:hover {
+                    background-color: $grey-2;
+                }
+
+                &:focus {
+                    background-color: $grey-1;
+                    border-left: $status-card-border-width solid $orange;
+                }
+
+                & span {
+                    color: $dark-grey;
+                }
+            }
+        }
+
+        td {
+            border-bottom: none !important;
+        }
+    }
 }
 
 .table-layout-fixed {
