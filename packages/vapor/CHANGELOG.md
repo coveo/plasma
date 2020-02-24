@@ -5,44 +5,25 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [5.13.0](https://github.com/coveo/react-vapor/compare/v5.12.1...v5.13.0) (2020-02-21)
 
-
 ### Features
 
-* **demo:** move all example files into the demo package ([ec3b532](https://github.com/coveo/react-vapor/commit/ec3b532f85e8586f32f4e44f52aa25d33c1a14ce))
-
-
-
-
+-   **demo:** move all example files into the demo package ([ec3b532](https://github.com/coveo/react-vapor/commit/ec3b532f85e8586f32f4e44f52aa25d33c1a14ce))
 
 ## [5.12.1](https://github.com/coveo/react-vapor/compare/v5.12.0...v5.12.1) (2020-02-20)
 
 **Note:** Version bump only for package coveo-styleguide
 
-
-
-
-
 # [5.12.0](https://github.com/coveo/react-vapor/compare/v5.11.0...v5.12.0) (2020-02-20)
-
 
 ### Features
 
-* **demo:** create the new package with a minimalistic demo ([617f29d](https://github.com/coveo/react-vapor/commit/617f29d6ce835b7f7d22e805a82251f3f320bbcc))
-
-
-
-
+-   **demo:** create the new package with a minimalistic demo ([617f29d](https://github.com/coveo/react-vapor/commit/617f29d6ce835b7f7d22e805a82251f3f320bbcc))
 
 # [5.10.0](https://github.com/coveo/react-vapor/compare/v5.9.0...v5.10.0) (2020-02-19)
 
-
 ### Features
 
-* readded setto ([dbfcdd2](https://github.com/coveo/react-vapor/commit/dbfcdd273702e8cea98b2773f454cedb32e45b5b))
-
-
-
-
+-   readded setto ([dbfcdd2](https://github.com/coveo/react-vapor/commit/dbfcdd273702e8cea98b2773f454cedb32e45b5b))
 
 ## [5.7.1](https://github.com/coveo/react-vapor/compare/v5.7.0...v5.7.1) (2020-02-11)
 

@@ -5,60 +5,33 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [5.13.0](https://github.com/coveo/react-vapor/compare/v5.12.1...v5.13.0) (2020-02-21)
 
-
 ### Features
 
-* **demo:** move all example files into the demo package ([ec3b532](https://github.com/coveo/react-vapor/commit/ec3b532f85e8586f32f4e44f52aa25d33c1a14ce))
-
-
-
-
+-   **demo:** move all example files into the demo package ([ec3b532](https://github.com/coveo/react-vapor/commit/ec3b532f85e8586f32f4e44f52aa25d33c1a14ce))
 
 ## [5.12.1](https://github.com/coveo/react-vapor/compare/v5.12.0...v5.12.1) (2020-02-20)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 # [5.12.0](https://github.com/coveo/react-vapor/compare/v5.11.0...v5.12.0) (2020-02-20)
-
 
 ### Features
 
-* **demo:** create the new package with a minimalistic demo ([617f29d](https://github.com/coveo/react-vapor/commit/617f29d6ce835b7f7d22e805a82251f3f320bbcc))
-
-
-
-
+-   **demo:** create the new package with a minimalistic demo ([617f29d](https://github.com/coveo/react-vapor/commit/617f29d6ce835b7f7d22e805a82251f3f320bbcc))
 
 # [5.11.0](https://github.com/coveo/react-vapor/compare/v5.10.1...v5.11.0) (2020-02-20)
 
-
 ### Features
 
-* **blankslate:** add classname props ([#1449](https://github.com/coveo/react-vapor/issues/1449)) ([b1f40e9](https://github.com/coveo/react-vapor/commit/b1f40e9b04bb2ddc55cbc20adfcc4cd3e8ae0c66))
-
-
-
-
+-   **blankslate:** add classname props ([#1449](https://github.com/coveo/react-vapor/issues/1449)) ([b1f40e9](https://github.com/coveo/react-vapor/commit/b1f40e9b04bb2ddc55cbc20adfcc4cd3e8ae0c66))
 
 ## [5.10.1](https://github.com/coveo/react-vapor/compare/v5.10.0...v5.10.1) (2020-02-20)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 # [5.10.0](https://github.com/coveo/react-vapor/compare/v5.9.0...v5.10.0) (2020-02-19)
 
 **Note:** Version bump only for package react-vapor
-
-
-
-
 
 # [5.9.0](https://github.com/coveo/react-vapor/compare/v5.8.0...v5.9.0) (2020-02-19)
 
