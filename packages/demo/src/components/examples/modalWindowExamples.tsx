@@ -66,12 +66,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
     return (
         <Section level={2} title="Modals connected to the redux store">
             <Section level={3} title="Confirmation, warning and info prompts">
-                <Button
-                    className="btn"
-                    onClick={() => {
-                        return open(modalConfirmationId);
-                    }}
-                >
+                <Button className="btn" onClick={() => open(modalConfirmationId)}>
                     Prompt confirmation
                 </Button>
 
@@ -94,12 +89,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     }
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 />
-                <Button
-                    className="btn"
-                    onClick={() => {
-                        return open(modalWarningId);
-                    }}
-                >
+                <Button className="btn" onClick={() => open(modalWarningId)}>
                     Prompt warning
                 </Button>
 
@@ -117,12 +107,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     }
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 />
-                <Button
-                    className="btn"
-                    onClick={() => {
-                        return open(modalInfoId);
-                    }}
-                >
+                <Button className="btn" onClick={() => open(modalInfoId)}>
                     Prompt info
                 </Button>
                 <ModalCompositeConnected
@@ -141,12 +126,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                 />
             </Section>
             <Section level={3} title="A simple modal window connected">
-                <Button
-                    className="btn"
-                    onClick={() => {
-                        return open(modalId);
-                    }}
-                >
+                <Button className="btn" onClick={() => open(modalId)}>
                     Open Modal
                 </Button>
 
