@@ -58,19 +58,65 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
         close(id);
         toggleIsDirty(id, false);
     };
-
+    const modalConfirmationId = 'Modal-Confirmation-Connected';
+    const modalWarningId = 'Modal-Warning-Connected';
+    const modalInfoId = 'Modal-Info-Connected';
     const modalId = 'Modal-Connected-#1';
     return (
         <Section level={2} title="Modals connected to the redux store">
+            <Section level={3} title="Confirmation, warning and info prompts">
+                <Button onClick={() => open(modalConfirmationId)}>Prompt confirmation</Button>
+
+                <ModalCompositeConnected
+                    id={modalConfirmationId}
+                    title="Prompt confirmation"
+                    classes={'mod-prompt'}
+                    modalHeaderClasses={['mod-confirmation']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <>
+                            <Button primary small onClick={() => handleClose(modalConfirmationId)}>
+                                Confirm
+                            </Button>
+                            <Button small onClick={() => handleClose(modalConfirmationId)}>
+                                Close
+                            </Button>
+                        </>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+                <Button onClick={() => open(modalWarningId)}>Prompt warning</Button>
+
+                <ModalCompositeConnected
+                    id={modalWarningId}
+                    title="Prompt warning"
+                    classes={'mod-prompt'}
+                    modalHeaderClasses={['mod-warning']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <Button small onClick={() => handleClose(modalWarningId)}>
+                            Close
+                        </Button>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+                <Button onClick={() => open(modalInfoId)}>Prompt info</Button>
+                <ModalCompositeConnected
+                    id={modalInfoId}
+                    title="Prompt info"
+                    classes={'mod-prompt'}
+                    modalHeaderClasses={['mod-info']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <Button small onClick={() => handleClose(modalInfoId)}>
+                            Close
+                        </Button>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+            </Section>
             <Section level={3} title="A simple modal window connected">
-                <Button
-                    className="btn"
-                    onClick={() => {
-                        return open(modalId);
-                    }}
-                >
-                    Open Modal
-                </Button>
+                <Button onClick={() => open(modalId)}>Open Modal</Button>
 
                 <ModalCompositeConnected
                     id={modalId}
@@ -81,29 +127,19 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                         </Tooltip>
                     }
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 10})}</div>}
-                    modalFooterChildren={
-                        <Button className="btn" onClick={() => handleClose(modalId)}>
-                            Close
-                        </Button>
-                    }
+                    modalFooterChildren={<Button onClick={() => handleClose(modalId)}>Close</Button>}
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 />
             </Section>
 
             <Section level={3} title="A modal with additionnal configuration props">
-                <Button className="btn" onClick={() => open('example-4')}>
-                    Open Modal
-                </Button>
+                <Button onClick={() => open('example-4')}>Open Modal</Button>
                 <ModalCompositeConnected
                     id="example-4"
                     title="Modal with addtional ReactModal props"
                     classes={['mod-fade-in-scale']}
                     modalBodyChildren="This modal only closes by using the close button or the X."
-                    modalFooterChildren={
-                        <Button className="btn" onClick={() => handleClose('example-4')}>
-                            Close
-                        </Button>
-                    }
+                    modalFooterChildren={<Button onClick={() => handleClose('example-4')}>Close</Button>}
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                     docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
                     shouldCloseOnEsc={false}
@@ -135,10 +171,8 @@ const ModalWithDirtyChangeDiscardPreventionDisconnected: React.FunctionComponent
     };
 
     return (
-        <Section level={3} title="A modal implemented with the <UnsavedChangesModalProvider/>">
-            <Button className="btn" onClick={() => open(id)}>
-                Open Modal
-            </Button>
+        <Section level={3} title="A modal implemented with the <UnsavedChangesModalProvider/> and confirmation prompt">
+            <Button onClick={() => open(id)}>Open Modal</Button>
             <UnsavedChangesModalProvider isDirty={isDirty}>
                 {({promptBefore}) => (
                     <ModalCompositeConnected
@@ -158,9 +192,7 @@ const ModalWithDirtyChangeDiscardPreventionDisconnected: React.FunctionComponent
                             </div>
                         }
                         modalFooterChildren={
-                            <Button className="btn" onClick={() => promptBefore(() => handleClose()) && handleClose()}>
-                                Close
-                            </Button>
+                            <Button onClick={() => promptBefore(() => handleClose()) && handleClose()}>Close</Button>
                         }
                         validateShouldNavigate={() => promptBefore(() => handleClose())}
                         modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
@@ -181,9 +213,7 @@ const ModalLoadingExampleDisconnected: React.FunctionComponent<{open: (id: strin
     const loadingModalExampleId = 'Loading-modal-example';
     return (
         <Section level={3} title="A loading modal">
-            <Button className="btn" onClick={() => open(loadingModalExampleId)}>
-                Open Modal
-            </Button>
+            <Button onClick={() => open(loadingModalExampleId)}>Open Modal</Button>
             <ModalLoading id={loadingModalExampleId} title={'my loading title'} openOnMount={false} />
         </Section>
     );
