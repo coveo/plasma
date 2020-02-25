@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../../demo-building-blocs/VaporComponent';
+import VaporComponent from '../demo-building-blocs/VaporComponent';
 
 export default function Borders() {
     return (

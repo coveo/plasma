@@ -60,8 +60,11 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/panel" name="Panel" />
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
-        <NavigationSection>
-            <NavigationLink href="/icons" name="Icons" />
+        <NavigationSection title="Icons" baseUrl="/icons">
+            <NavigationLink href="/list" name="Icons" />
+        </NavigationSection>
+        <NavigationSection title="Layout" baseUrl="/layout">
+            <NavigationLink href="/spaced-box" name="Spaced box" />
         </NavigationSection>
         <NavigationSection title="Messages" baseUrl="/messages">
             <NavigationLink href="/popover" name="Popover" />
@@ -84,7 +87,6 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection baseUrl="/utility" title="Utility">
             <NavigationLink href="/line-height" name="Text Size" />
             <NavigationLink href="/whitespace" name="Whitespace" />
-            <NavigationLink href="/spaced-box" name="Spaced box" />
             <NavigationLink href="/cursor" name="Cursor" />
             <NavigationLink href="/color-dots" name="Color dots" />
             <NavigationLink href="/hover" name="Hover" />
