@@ -8,7 +8,6 @@ import Hover from './Hover';
 import LineHeight from './LineHeight';
 import Shadows from './Shadow';
 import SpacedBoxes from './SpacedBoxes';
-import Transparency from './Transparency';
 import Whitespace from './Whitespace';
 
 const Utility: React.FunctionComponent<RouteComponentProps> = ({match}) => (
@@ -19,7 +18,6 @@ const Utility: React.FunctionComponent<RouteComponentProps> = ({match}) => (
         <Route path={`${match.url}/cursor`} component={Cursor} />
         <Route path={`${match.url}/color-dots`} component={ColorDots} />
         <Route path={`${match.url}/borders`} component={Borders} />
-        <Route path={`${match.url}/transparency`} component={Transparency} />
         <Route path={`${match.url}/hover`} component={Hover} />
         <Route path={`${match.url}/shadow`} component={Shadows} />
         <Route exact path={`${match.url}/`} component={() => <Redirect to={`${match.url}/whitespace`} />} />

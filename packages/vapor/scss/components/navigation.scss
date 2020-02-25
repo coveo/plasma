@@ -74,6 +74,11 @@
                         height: $navigation-section-icon-size;
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
                     }
+                    .navigation-menu-section-header-no-icon {
+                        height: $navigation-menu-section-height;
+                        margin-right: $navigation-right-margin;
+                        padding-left: $navigation-section-icon-margin-left;
+                    }
                 }
 
                 .navigation-menu-section-items {

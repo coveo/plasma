@@ -9,7 +9,10 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection>
             <NavigationLink key="general-guidelines" href="/general-guidelines" name="General Guidelines" />
         </NavigationSection>
-        <NavigationSection title="Cards" baseUrl="/cards" svgName="rectangle">
+        <NavigationSection>
+            <NavigationLink name="Borders" href="/borders"></NavigationLink>
+        </NavigationSection>
+        <NavigationSection title="Cards" baseUrl="/cards">
             <NavigationLink href="/flippable" name="Flippable" />
             <NavigationLink href="/home" name="Home" />
             <NavigationLink href="/logo" name="Logo" />
@@ -17,13 +20,10 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/material" name="Material" />
             <NavigationLink href="/wizard" name="Wizard" />
         </NavigationSection>
-        <NavigationSection
-            title="Colors"
-            customIcon={<span className="smaller bold navigation-menu-section-header-icon transparency-3">rgb</span>}
-        >
+        <NavigationSection title="Colors">
             <NavigationLink href="/colors" name="Palette" />
         </NavigationSection>
-        <NavigationSection title="Other Components" baseUrl="/components" svgName="more">
+        <NavigationSection title="Other Components" baseUrl="/components">
             <NavigationLink href="/badge" name="Badge" />
             <NavigationLink href="/banner" name="Banner" />
             <NavigationLink href="/blank-slate" name="Blank Slate" />
@@ -43,52 +43,51 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/sync-feedback" name="Sync Feedback" />
             <NavigationLink href="/tabs" name="Tabs" />
         </NavigationSection>
-        <NavigationSection title="Filtering Controls" baseUrl="/filtering" svgName="filter">
+        <NavigationSection title="Filtering Controls" baseUrl="/filtering">
             <NavigationLink href="/picker" name="Picker" />
             <NavigationLink href="/pickers" name="Pickers" />
             <NavigationLink href="/list-popup" name="List Popup" />
             <NavigationLink href="/value-popup" name="Value Popup" />
         </NavigationSection>
-        <NavigationSection title="Form Controls" baseUrl="/form-controls" svgName="menuOrganization">
+        <NavigationSection title="Form Controls" baseUrl="/form-controls">
             <NavigationLink href="/slide-toggle" name="Slide toggle" />
             <NavigationLink href="/slide-toggle-modifiers" name="Slide toggle modifiers" />
             <NavigationLink href="/slide-toggle-double" name="Slide toggle double" />
             <NavigationLink href="/progress-bar" name="Progress bar" />
             <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
-        <NavigationSection title="Headers" baseUrl="/headers" svgName="explorer">
+        <NavigationSection title="Headers" baseUrl="/headers">
             <NavigationLink href="/panel" name="Panel" />
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
-        <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">
-            <NavigationLink href="/list" name="Icons" />
+        <NavigationSection>
+            <NavigationLink href="/icons" name="Icons" />
         </NavigationSection>
-        <NavigationSection title="Messages" baseUrl="/messages" svgName="noteYes">
+        <NavigationSection title="Messages" baseUrl="/messages">
             <NavigationLink href="/popover" name="Popover" />
             <NavigationLink href="/prompt" name="Prompt" />
             <NavigationLink href="/toast" name="Toast" />
             <NavigationLink href="/tooltip" name="Tooltip" />
         </NavigationSection>
-        <NavigationSection
-            title="Typography"
-            baseUrl="/typography"
-            customIcon={<span className="smaller bold navigation-menu-section-header-icon transparency-3">abc</span>}
-        >
+        <NavigationSection>
+            <NavigationLink name="Shadow" href="/shadow"></NavigationLink>
+        </NavigationSection>
+        <NavigationSection>
+            <NavigationLink name="Transparency" href="/transparency"></NavigationLink>
+        </NavigationSection>
+        <NavigationSection title="Typography" baseUrl="/typography">
             <NavigationLink href="/headings" name="Headings" />
             <NavigationLink href="/colors" name="Colors" />
             <NavigationLink href="/utilities" name="Utilities" />
             <NavigationLink href="/lists" name="Lists" />
         </NavigationSection>
-        <NavigationSection baseUrl="/utility" title="Utility" svgName="maintenance">
+        <NavigationSection baseUrl="/utility" title="Utility">
             <NavigationLink href="/line-height" name="Text Size" />
             <NavigationLink href="/whitespace" name="Whitespace" />
             <NavigationLink href="/spaced-box" name="Spaced box" />
             <NavigationLink href="/cursor" name="Cursor" />
             <NavigationLink href="/color-dots" name="Color dots" />
-            <NavigationLink href="/borders" name="Borders" />
-            <NavigationLink href="/transparency" name="Transparency" />
             <NavigationLink href="/hover" name="Hover" />
-            <NavigationLink href="/shadow" name="Shadow" />
         </NavigationSection>
     </SideNavigation>
 );

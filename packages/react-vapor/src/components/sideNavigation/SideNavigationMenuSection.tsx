@@ -30,7 +30,7 @@ const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName
             svgClass={classNames('navigation-menu-section-header-icon icon mod-lg transparency-3 fill-white', svgClass)}
         />
     ) : (
-        <span className="navigation-menu-section-header-icon" />
+        <span className="navigation-menu-section-header-no-icon" />
     );
 
 const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps> = ({
