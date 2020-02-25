@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.3](https://github.com/coveo/react-vapor/compare/v5.13.2...v5.13.3) (2020-02-25)
+
+
+### Bug Fixes
+
+* **rc-slider:** fix style rc-slider ([df10019](https://github.com/coveo/react-vapor/commit/df1001916a887da21ddb0bfe5c574ec58a26a6a0))
+
+
+
+
+
 ## [5.13.2](https://github.com/coveo/react-vapor/compare/v5.13.1...v5.13.2) (2020-02-24)
 
 **Note:** Version bump only for package root
