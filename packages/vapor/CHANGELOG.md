@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
+
+
+### Bug Fixes
+
+* remove the extension from the import to fix style in the admin ([34a9a0f](https://github.com/coveo/react-vapor/commit/34a9a0feda822a6866f387bdf490e495eab76c19))
+
+
+
+
+
 ## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
 
 
