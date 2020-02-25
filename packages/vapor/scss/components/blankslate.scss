@@ -16,6 +16,7 @@
     }
 
     p {
+        max-width: $blankslate-description-width;
         margin: 0 auto $blankslate-paragraph-margin-bottom auto;
         color: $medium-blue;
     }
