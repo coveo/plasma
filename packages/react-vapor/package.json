@@ -44,7 +44,8 @@
         "react-modal": "3.10.1",
         "react-tether": "1.0.4",
         "react-textarea-autosize": "7.1.0",
-        "unidiff": "0.0.4"
+        "unidiff": "0.0.4",
+        "rc-slider": "8.7.1"
     },
     "peerDependencies": {
         "codemirror": "^5.39.2",
@@ -127,7 +128,6 @@
         "moment": "2.24.0",
         "node-sass": "4.13.1",
         "postcss-loader": "3.0.0",
-        "rc-slider": "8.7.1",
         "react": "16.12.0",
         "react-dnd": "2.5.1",
         "react-dnd-html5-backend": "2.5.1",
