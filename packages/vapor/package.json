@@ -64,6 +64,9 @@
         "webpack": "4.41.6",
         "webpack-cli": "3.3.11"
     },
+    "dependencies": {
+        "rc-slider": "8.7.1"
+    },
     "files": [
         "dist",
         "gulpTasks",
