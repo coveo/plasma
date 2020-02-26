@@ -1,5 +1,5 @@
 # Node files
-node_modules
+**/node_modules
 npm-debug.log.*
 
 # OS/editor
@@ -23,3 +23,10 @@ package-lock.json
 
 # travis
 travis-deploy-key
+
+# distribution
+**/dist
+
+# temporary files
+**/coverage
+**/tmp

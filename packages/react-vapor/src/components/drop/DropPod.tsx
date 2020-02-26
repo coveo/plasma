@@ -53,6 +53,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         minWidth: 0,
         minHeight: 0,
         hasSameWidth: false,
+        selector: Defaults.DROP_ROOT,
+        parentSelector: Defaults.DROP_PARENT_ROOT,
     };
     private parentMutationObserver: MutationObserver;
 
@@ -137,12 +139,11 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         let newDomPosition: IDomPositionCalculatorReturn = {};
         if (this.canRenderDrop()) {
             const buttonOffset: ClientRect | DOMRect =
-                (this.props.buttonRef.current && this.props.buttonRef.current.getBoundingClientRect()) ||
-                this.state.offset;
+                this.props.buttonRef.current?.getBoundingClientRect() ?? this.state.offset;
             const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
             const relativeParent =
-                this.props.buttonRef?.current.closest(this.props.parentSelector) ??
-                this.props.buttonRef?.current.parentElement;
+                this.props.buttonRef.current?.closest(this.props.parentSelector) ??
+                this.props.buttonRef.current?.parentElement;
 
             const parentOffset = relativeParent.getBoundingClientRect();
 
@@ -221,7 +222,6 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     render() {
-        const selector: any = this.props.selector || Defaults.DROP_ROOT;
         const drop: React.ReactNode = this.props.renderDrop(
             {
                 position: 'absolute',
@@ -235,7 +235,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             this.lastPosition
         );
 
-        return ReactDOM.createPortal(drop, document.querySelector(selector));
+        return ReactDOM.createPortal(drop, document.querySelector(this.props.selector));
     }
 }
 

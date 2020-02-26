@@ -6,13 +6,13 @@ import * as _ from 'underscore';
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVapor';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
-import {BlankSlateWithTable, IBlankSlateProps} from '../blankSlate';
+import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
 import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
 import {ITableHOCOwnProps} from './TableHOC';
 import {Params} from './TableWithUrlState';
 
 export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
-    blankSlate?: IBlankSlateProps;
+    blankSlate?: IBlankSlateWithTableProps;
     matchFilter?: (filterValue: string, datum: any) => boolean;
     placeholder?: string;
 }
