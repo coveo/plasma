@@ -9,14 +9,13 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ActionBarConnected} from '../../actions/ActionBar';
 import {DatePickerDropdownConnected} from '../../datePicker/DatePickerDropdownConnected';
-import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {Loading} from '../../loading/Loading';
 import {ITableProps} from '../Table';
 import {TableChildActionBar} from '../table-children/TableChildActionBar';
 import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
-import {tablePropsMock} from './TableTestCommon';
+import {SELECTION_BOXES, tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildActionBar />', () => {
     let store: Store<IReactVaporState>;

@@ -1,6 +1,5 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
-import {Defaults} from '../../Defaults';
 
 import {VaporColors} from '../color/Color';
 import {DropPodPosition, IDropUIPosition} from '../drop/DomPositionCalculator';
@@ -69,7 +68,6 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                 ref={dropRoot}
                 isOpen={!!position.position}
                 positions={[position.position, DropPodPosition.left, DropPodPosition.right]}
-                parentSelector={Defaults.DROP_ROOT}
                 renderDrop={(
                     style: React.CSSProperties,
                     dropRef: React.RefObject<HTMLDivElement>,
