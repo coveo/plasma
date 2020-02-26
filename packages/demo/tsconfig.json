@@ -1,0 +1,11 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+        "removeComments": false,
+        "sourceMap": true,
+        "experimentalDecorators": true,
+        "downlevelIteration": true
+    },
+    "exclude": ["node_modules", "dist", "*.js"],
+    "include": ["src"]
+}

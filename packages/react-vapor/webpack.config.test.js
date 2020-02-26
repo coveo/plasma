@@ -2,6 +2,7 @@ const path = require('path');
 const webpack = require('webpack');
 const isTravis = process.env.TRAVIS;
 const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
+const keysTransformer = require('ts-transformer-keys/transformer').default;
 
 module.exports = function(options) {
     const config = {
@@ -48,35 +49,23 @@ module.exports = function(options) {
                     loader: 'ts-loader',
                     options: {
                         configFile: 'tsconfig.test.json',
-                        compiler: 'ttypescript',
+                        getCustomTransformers: (program) => ({
+                            before: [keysTransformer(program)],
+                        }),
                     },
                 },
                 {
-                    test: /\.css$/,
-                    exclude: path.join(__dirname, 'src/components'),
+                    test: /\.s?css$/,
                     use: [
                         {
                             loader: 'style-loader',
                         },
                         {
                             loader: 'css-loader',
-                        },
-                    ],
-                },
-                {
-                    test: /\.scss$/,
-                    include: path.join(__dirname, 'src/components'),
-                    use: [
-                        {
-                            loader: 'style-loader',
-                        },
-                        {
-                            loader: 'typings-for-css-modules-loader',
                             options: {
-                                modules: true,
-                                scss: true,
-                                namedExport: true,
-                                localIdentName: '[name]-[local]-[hash:base64]',
+                                modules: {
+                                    localIdentName: '[name]-[local]-[hash:base64]',
+                                },
                             },
                         },
                         {

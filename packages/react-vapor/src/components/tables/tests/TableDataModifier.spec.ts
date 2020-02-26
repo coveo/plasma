@@ -1,8 +1,8 @@
 import * as moment from 'moment';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
+
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
-import {SELECTION_BOXES} from '../../datePicker/examples/DatePickerExamplesCommon';
 import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
 import {turnOffLoading, turnOnLoading} from '../../loading/LoadingActions';
 import {IData, ITableProps} from '../Table';
@@ -21,7 +21,7 @@ import {
 } from '../TableDataModifier';
 import {unselectAllRows} from '../TableRowActions';
 import {getTableChildComponentId, getTableLoadingIds} from '../TableUtils';
-import {predictableData, tableOwnPropsMock, tablePropsMockWithData} from './TableTestCommon';
+import {predictableData, SELECTION_BOXES, tableOwnPropsMock, tablePropsMockWithData} from './TableTestCommon';
 
 describe('TableDataModifier', () => {
     describe('dispatchPreTableStateModification', () => {
