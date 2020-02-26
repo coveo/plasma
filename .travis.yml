@@ -23,6 +23,9 @@ before_install:
     - ssh-add travis-deploy-key
     - npm config set package-lock false
 
+install:
+    - npm run setup
+
 cache:
     directories:
         - node_modules
