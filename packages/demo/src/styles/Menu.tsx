@@ -63,12 +63,6 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">
             <NavigationLink href="/list" name="Icons" />
         </NavigationSection>
-        <NavigationSection title="Messages" baseUrl="/messages" svgName="noteYes">
-            <NavigationLink href="/popover" name="Popover" />
-            <NavigationLink href="/prompt" name="Prompt" />
-            <NavigationLink href="/toast" name="Toast" />
-            <NavigationLink href="/tooltip" name="Tooltip" />
-        </NavigationSection>
         <NavigationSection
             title="Typography"
             baseUrl="/typography"
