@@ -20,10 +20,14 @@ Make sure you have
 -   [Node.js](https://nodejs.org/)'s LTS version
 -   [NPM](https://www.npmjs.com/package/npm)'s LTS version
 
-To install the project dependencies use:
+## Setup
+
+All the commands in the instructions must be run at the root of the project.
+
+First you need to install the project's dependencies and link the projects together.
 
 ```bash
-npm install
+npm run setup
 ```
 
 ### Running the demo pages locally

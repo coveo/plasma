@@ -3,13 +3,49 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
+## [5.14.1](https://github.com/coveo/react-vapor/compare/v5.14.0...v5.14.1) (2020-02-27)
 
 **Note:** Version bump only for package react-vapor
+
+<<<<<<< HEAD
 
 ## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
 
 **Note:** Version bump only for package react-vapor
+
+## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
+
+### Bug Fixes
+
+-   # **dependencies:** add rc-slider as dependency ([07e03ae](https://github.com/coveo/react-vapor/commit/07e03aecfdc7f185ccdf9603ab3473f47efd35e2))
+
+# [5.14.0](https://github.com/coveo/react-vapor/compare/v5.13.6...v5.14.0) (2020-02-27)
+
+### Bug Fixes
+
+-   **numeric input:** scope the classes inside coveo-styleguide ([a1b942e](https://github.com/coveo/react-vapor/commit/a1b942e7e7a7b5c06e9a49a66e6ba783186e46c0))
+
+### Features
+
+-   **blankslate:** add props and max-width ([#1460](https://github.com/coveo/react-vapor/issues/1460)) ([f549f17](https://github.com/coveo/react-vapor/commit/f549f171a7c1e605a2be180625497ff9c4319eee))
+
+## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
+
+**Note:** Version bump only for package react-vapor
+
+> > > > > > > master
+
+## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
+
+**Note:** Version bump only for package react-vapor
+
+<<<<<<< HEAD
+
+## [5.13.2](https://github.com/coveo/react-vapor/compare/v5.13.1...v5.13.2) (2020-02-24)
+
+**Note:** Version bump only for package react-vapor
+
+=======
 
 ## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
 
@@ -24,6 +60,8 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [5.13.2](https://github.com/coveo/react-vapor/compare/v5.13.1...v5.13.2) (2020-02-24)
 
 **Note:** Version bump only for package react-vapor
+
+> > > > > > > master
 
 ## [5.13.1](https://github.com/coveo/react-vapor/compare/v5.13.0...v5.13.1) (2020-02-24)
 
