@@ -25,14 +25,9 @@ const Navigation: React.FunctionComponent = () => (
         </NavigationSection>
         <NavigationSection title="Other Components" baseUrl="/components" svgName="more">
             <NavigationLink href="/banner" name="Banner" />
-            <NavigationLink href="/list-box" name="List Box" />
             <NavigationLink href="/member" name="Member" />
-            <NavigationLink href="/modal" name="Modal" />
         </NavigationSection>
         <NavigationSection title="Filtering Controls" baseUrl="/filtering" svgName="filter">
-            <NavigationLink href="/picker" name="Picker" />
-            <NavigationLink href="/pickers" name="Pickers" />
-            <NavigationLink href="/list-popup" name="List Popup" />
             <NavigationLink href="/value-popup" name="Value Popup" />
         </NavigationSection>
         <NavigationSection title="Form Controls" baseUrl="/form-controls" svgName="menuOrganization">
@@ -43,7 +38,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers" svgName="explorer">
-            <NavigationLink href="/panel" name="Panel" />
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
         <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">

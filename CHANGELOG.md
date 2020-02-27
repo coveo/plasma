@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.14.3](https://github.com/coveo/react-vapor/compare/v5.14.2...v5.14.3) (2020-02-27)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.14.2](https://github.com/coveo/react-vapor/compare/v5.14.1...v5.14.2) (2020-02-27)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.14.1](https://github.com/coveo/react-vapor/compare/v5.14.0...v5.14.1) (2020-02-27)
+
+
+### Bug Fixes
+
+* **navigation:** items are now wrapping when they are too large ([0f25def](https://github.com/coveo/react-vapor/commit/0f25def38b42013e72561a07708d0a96aa32c2a9))
+
+
+
+
+
+# [5.14.0](https://github.com/coveo/react-vapor/compare/v5.13.6...v5.14.0) (2020-02-27)
+
+
+### Bug Fixes
+
+* **numeric input:** scope the classes inside coveo-styleguide ([22da7e3](https://github.com/coveo/react-vapor/commit/22da7e3b02b899fe46f5b68a15a09d34a8076376))
+* **numeric input:** scope the classes inside coveo-styleguide ([a1b942e](https://github.com/coveo/react-vapor/commit/a1b942e7e7a7b5c06e9a49a66e6ba783186e46c0))
+
+
+### Features
+
+* **blankslate:** add props and max-width ([#1460](https://github.com/coveo/react-vapor/issues/1460)) ([f549f17](https://github.com/coveo/react-vapor/commit/f549f171a7c1e605a2be180625497ff9c4319eee))
+
+
+
+
+
 ## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
 
 **Note:** Version bump only for package root
