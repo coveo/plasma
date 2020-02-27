@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.14.0](https://github.com/coveo/react-vapor/compare/v5.13.6...v5.14.0) (2020-02-27)
+
+
+### Features
+
+* **blankslate:** add props and max-width ([#1460](https://github.com/coveo/react-vapor/issues/1460)) ([f549f17](https://github.com/coveo/react-vapor/commit/f549f171a7c1e605a2be180625497ff9c4319eee))
+
+
+
+
+
 ## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
 
 **Note:** Version bump only for package coveo-styleguide
