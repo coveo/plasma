@@ -1,5 +1,7 @@
-import {shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import * as React from 'react';
+import {connect, Provider} from 'react-redux';
+import createMockStore from 'redux-mock-store';
 
 import {PartialStringMatch} from './PartialStringMatch';
 
@@ -102,6 +104,21 @@ describe('PartialStringMatch', () => {
             <PartialStringMatch partialMatch={matcher}>
                 <Porkchop />
             </PartialStringMatch>
+        );
+
+        expect(component.find('Highlight').length).toBe(2);
+    });
+
+    it('should highlight all matches rendered throught a connected component', () => {
+        const Porkchop: React.FunctionComponent = () => <span>a porkchop is a chop of the pork</span>;
+        const ConnectedPorkchop = connect((state: any) => ({a: state.a}))(Porkchop);
+        const matcher = 'chop';
+        const component = mount(
+            <Provider store={createMockStore()()}>
+                <PartialStringMatch partialMatch={matcher}>
+                    <ConnectedPorkchop />
+                </PartialStringMatch>
+            </Provider>
         );
 
         expect(component.find('Highlight').length).toBe(2);
