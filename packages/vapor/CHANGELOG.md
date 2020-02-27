@@ -3,18 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-
-## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
-
-**Note:** Version bump only for package coveo-styleguide
-
-## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
-
-### Bug Fixes
-
--   # remove the extension from the import to fix style in the admin ([34a9a0f](https://github.com/coveo/react-vapor/commit/34a9a0feda822a6866f387bdf490e495eab76c19))
-
 ## [5.14.1](https://github.com/coveo/react-vapor/compare/v5.14.0...v5.14.1) (2020-02-27)
 
 ### Bug Fixes
@@ -26,13 +14,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Features
 
 -   **blankslate:** add props and max-width ([#1460](https://github.com/coveo/react-vapor/issues/1460)) ([f549f17](https://github.com/coveo/react-vapor/commit/f549f171a7c1e605a2be180625497ff9c4319eee))
-    > > > > > > > master
-
-<<<<<<< HEAD
-
-### Bug Fixes
-
--   # **dependencies:** add rc-slider as dependency ([07e03ae](https://github.com/coveo/react-vapor/commit/07e03aecfdc7f185ccdf9603ab3473f47efd35e2))
 
 ## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
 
@@ -42,15 +23,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-> > > > > > > master
-
 -   remove the extension from the import to fix style in the admin ([34a9a0f](https://github.com/coveo/react-vapor/commit/34a9a0feda822a6866f387bdf490e495eab76c19))
-
-<<<<<<< HEAD
-
-### Bug Fixes
-
-=======
 
 ## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
 
@@ -61,8 +34,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [5.13.3](https://github.com/coveo/react-vapor/compare/v5.13.2...v5.13.3) (2020-02-25)
 
 ### Bug Fixes
-
-> > > > > > > master
 
 -   **rc-slider:** fix style rc-slider ([df10019](https://github.com/coveo/react-vapor/commit/df1001916a887da21ddb0bfe5c574ec58a26a6a0))
 

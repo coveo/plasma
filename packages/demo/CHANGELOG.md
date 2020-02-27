@@ -5,18 +5,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [5.14.1](https://github.com/coveo/react-vapor/compare/v5.14.0...v5.14.1) (2020-02-27)
 
-<<<<<<< HEAD
-
-## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
-
-**Note:** Version bump only for package react-vapor-demo
-
-## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
-
-**Note:** Version bump only for package react-vapor-demo
-
-=======
-
 ### Bug Fixes
 
 -   **navigation:** items are now wrapping when they are too large ([0f25def](https://github.com/coveo/react-vapor/commit/0f25def38b42013e72561a07708d0a96aa32c2a9))
@@ -36,8 +24,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
 
 **Note:** Version bump only for package react-vapor-demo
-
-> > > > > > > master
 
 ## [5.13.3](https://github.com/coveo/react-vapor/compare/v5.13.2...v5.13.3) (2020-02-25)
 
