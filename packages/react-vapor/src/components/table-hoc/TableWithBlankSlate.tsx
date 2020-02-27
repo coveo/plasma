@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {ReduxConnect} from '../../utils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
-import {IBlankSlateProps} from '../blankSlate/BlankSlate';
+import {IBlankSlateWithTableProps} from '../blankSlate';
 import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
@@ -17,7 +18,7 @@ export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateS
 
 const TableWithBlankSlatePropsToOmit = keys<ITableWithBlankSlateStateProps>();
 
-export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateProps> = {}) => (
+export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) => (
     Component: React.ComponentClass<ITableHOCOwnProps>
 ): React.ComponentClass<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>> => {
     const mapStateToProps = (
