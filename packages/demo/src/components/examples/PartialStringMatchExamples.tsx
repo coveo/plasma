@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {InfoBox, InfoBoxLink, PartialStringMatch} from 'react-vapor';
+import {CheckboxConnected, InfoBox, InfoBoxLink, Label, PartialStringMatch} from 'react-vapor';
 
 export class PartialStringMatchExamples extends React.Component<any, any> {
     render() {
@@ -74,6 +74,11 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                                 </div>
                                 <InfoBox>
                                     What about custom components? <InfoBoxLink>Can they contain hello?</InfoBoxLink>
+                                    <div>
+                                        <CheckboxConnected label="boom">
+                                            <Label>Hello connected components too</Label>
+                                        </CheckboxConnected>
+                                    </div>
                                 </InfoBox>
                             </div>
                         </PartialStringMatch>
