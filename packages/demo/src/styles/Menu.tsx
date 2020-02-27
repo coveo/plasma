@@ -57,7 +57,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers" svgName="explorer">
-            <NavigationLink href="/panel" name="Panel" />
             <NavigationLink href="/site" name="Site" />
         </NavigationSection>
         <NavigationSection title="Icons" baseUrl="/icons" svgName="noContent">

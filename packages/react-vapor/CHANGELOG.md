@@ -31,44 +31,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
-
 
 ### Bug Fixes
 
-* **dependencies:** add rc-slider as dependency ([07e03ae](https://github.com/coveo/react-vapor/commit/07e03aecfdc7f185ccdf9603ab3473f47efd35e2))
-
-
-
-
+-   **dependencies:** add rc-slider as dependency ([07e03ae](https://github.com/coveo/react-vapor/commit/07e03aecfdc7f185ccdf9603ab3473f47efd35e2))
 
 ## [5.13.3](https://github.com/coveo/react-vapor/compare/v5.13.2...v5.13.3) (2020-02-25)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.13.2](https://github.com/coveo/react-vapor/compare/v5.13.1...v5.13.2) (2020-02-24)
 
 **Note:** Version bump only for package react-vapor
-
-
-
-
 
 ## [5.13.1](https://github.com/coveo/react-vapor/compare/v5.13.0...v5.13.1) (2020-02-24)
 
