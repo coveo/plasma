@@ -38,6 +38,10 @@ export interface IInputNativeTagStateProps {
     value?: string;
     checked?: boolean;
     disabled?: boolean;
+    readOnly?: boolean;
+    placeholder?: string;
+    autofocus?: boolean;
+    name?: string;
 }
 
 export interface IInputAdditionalStateProps {
