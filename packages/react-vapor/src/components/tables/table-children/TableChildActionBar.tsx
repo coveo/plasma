@@ -8,7 +8,7 @@ import {IDropdownOption} from '../../dropdownSearch/DropdownSearch';
 import {DropdownSearchConnected} from '../../dropdownSearch/DropdownSearchConnected';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {ITablePredicate, ITableProps} from '../Table';
-import {TABLE_PREDICATE_DEFAULT_VALUE, TableChildComponent} from '../TableConstants';
+import {TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {getTableChildComponentId} from '../TableUtils';
 
 export const TableChildActionBar = (props: ITableProps): JSX.Element => {
