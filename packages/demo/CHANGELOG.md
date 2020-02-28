@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.14.4](https://github.com/coveo/react-vapor/compare/v5.14.3...v5.14.4) (2020-02-28)
+
+
+### Bug Fixes
+
+* **partialstringmatch:** allow rendering connected component as children ([a8bf221](https://github.com/coveo/react-vapor/commit/a8bf221efcc3367dc4a4c6ddbc823a2d50bc1e0c))
+
+
+
+
+
 ## [5.14.3](https://github.com/coveo/react-vapor/compare/v5.14.2...v5.14.3) (2020-02-27)
 
 **Note:** Version bump only for package react-vapor-demo
