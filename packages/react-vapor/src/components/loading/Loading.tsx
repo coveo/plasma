@@ -21,16 +21,12 @@ export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTM
         fullContent: false,
     };
 
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
+    componentDidMount() {
+        this.props.onRender?.();
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
+        this.props.onDestroy?.();
     }
 
     render() {
