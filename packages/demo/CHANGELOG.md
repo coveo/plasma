@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.15.0](https://github.com/coveo/react-vapor/compare/v5.14.5...v5.15.0) (2020-02-28)
+
+
+### Bug Fixes
+
+* **partialstringmatch:** allow class components without children ([6dcbff2](https://github.com/coveo/react-vapor/commit/6dcbff23906c1d42dd1cfb8d1a87eeef0461f968))
+
+
+
+
+
 ## [5.14.5](https://github.com/coveo/react-vapor/compare/v5.14.4...v5.14.5) (2020-02-28)
 
 **Note:** Version bump only for package react-vapor-demo
