@@ -10,9 +10,7 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink key="general-guidelines" href="/general-guidelines" name="General Guidelines" />
         </NavigationSection>
         <NavigationSection title="Cards" baseUrl="/cards" svgName="rectangle">
-            <NavigationLink href="/flippable" name="Flippable" />
             <NavigationLink href="/home" name="Home" />
-            <NavigationLink href="/logo" name="Logo" />
             <NavigationLink href="/limit" name="Limit" />
             <NavigationLink href="/material" name="Material" />
             <NavigationLink href="/wizard" name="Wizard" />
