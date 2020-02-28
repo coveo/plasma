@@ -40,7 +40,7 @@ export interface IInputNativeTagStateProps {
     disabled?: boolean;
     readOnly?: boolean;
     placeholder?: string;
-    autofocus?: boolean;
+    autoFocus?: boolean;
     name?: string;
 }
 
