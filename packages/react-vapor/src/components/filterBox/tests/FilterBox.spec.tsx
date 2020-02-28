@@ -1,7 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
-import {FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps} from '../FilterBox';
+import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox';
 
 describe('FilterBox', () => {
     const id: string = 'filter-box';

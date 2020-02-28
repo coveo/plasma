@@ -1,14 +1,10 @@
 {
-    "packages": [
-        "packages/*"
-    ],
+    "packages": ["packages/*"],
     "version": "5.14.3",
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "allowBranch": [
-                "master"
-            ]
+            "allowBranch": ["master"]
         },
         "version": {
             "conventionalCommits": true,
