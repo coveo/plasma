@@ -18,17 +18,9 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.14.2](https://github.com/coveo/react-vapor/compare/v5.14.1...v5.14.2) (2020-02-27)
 
 **Note:** Version bump only for package react-vapor
-
-
-
-
 
 ## [5.14.1](https://github.com/coveo/react-vapor/compare/v5.14.0...v5.14.1) (2020-02-27)
 
