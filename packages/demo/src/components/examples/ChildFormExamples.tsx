@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Checkbox, ChildForm, Input, Label, Radio, RadioSelect, Section, ToggleForm} from 'react-vapor';
+import {Checkbox, ChildForm, Input, InputConnected, Label, Radio, RadioSelect, Section, ToggleForm} from 'react-vapor';
 
 import {ExampleComponent} from '../ComponentsInterface';
 
@@ -19,7 +19,7 @@ const childFormRadioValue = 'child-form-radio-value';
 const otherRadioValue = 'other-radio-value';
 
 const SimpleChildFormExample: React.FunctionComponent = () => {
-    const [firstState, setFirstState] = React.useState(false);
+    const [firstState, setFirstState] = React.useState(true);
     const [secondState, setSecondState] = React.useState(false);
 
     return (
@@ -30,9 +30,15 @@ const SimpleChildFormExample: React.FunctionComponent = () => {
                         <Label classes={['label']}>Edit properties</Label>
                     </Checkbox>
                     <ChildForm disabled={!firstState}>
-                        <Input id="input-A" value="Some value" classes={['input-field', 'form-group']}>
-                            <Label>Child form input</Label>
-                        </Input>
+                        <InputConnected
+                            id="input-A"
+                            placeholder="placeholder"
+                            classes={['input-field', 'form-group']}
+                            labelTitle="Child form input"
+                            labelProps={{invalidMessage: 'This is not correct :soempty:'}}
+                            validateOnChange
+                            validate={(value: string) => !!value}
+                        ></InputConnected>
                     </ChildForm>
                 </ToggleForm>
             </Section>

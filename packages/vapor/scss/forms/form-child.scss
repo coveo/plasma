@@ -52,6 +52,51 @@ $child-arrow-height: 10px;
             border-bottom-color: $pure-white;
         }
     }
+
+    .input-field {
+        > input,
+        .input-wrapper > input {
+            border-bottom-color: $lynch;
+
+            & + label,
+            & + span {
+                color: $lynch;
+            }
+
+            &:focus:not([readonly]),
+            &:valid {
+                border-bottom-color: $lynch;
+
+                @include placeholder($lynch);
+
+                & + label,
+                & + span {
+                    color: $lynch;
+                }
+            }
+        }
+
+        &.validate > input,
+        &.validate .input-wrapper > input,
+        .validate > input,
+        &.validate .input {
+            &.valid {
+                border-bottom-color: $green;
+
+                & + label:after {
+                    color: $green;
+                }
+            }
+
+            &.invalid {
+                border-bottom-color: $red;
+
+                & + label:after {
+                    color: $red;
+                }
+            }
+        }
+    }
 }
 
 .child-section {
