@@ -10,6 +10,7 @@ describe('PartialStringMatch', () => {
 
     it('should not throw when there is no children', () => {
         expect(() => shallow(<PartialStringMatch partialMatch="a" />)).not.toThrow();
+        expect(() => shallow(<PartialStringMatch></PartialStringMatch>)).not.toThrow();
     });
 
     it('should render an empty string if the wholeString is a falsy value', () => {
@@ -122,5 +123,20 @@ describe('PartialStringMatch', () => {
         );
 
         expect(component.find('Highlight').length).toBe(2);
+    });
+
+    it('should render class Components that has no children without throwing', () => {
+        class ClassComponent extends React.Component {
+            render() {
+                return <span>aa</span>;
+            }
+        }
+        expect(() => {
+            shallow(
+                <PartialStringMatch partialMatch="a">
+                    <ClassComponent />
+                </PartialStringMatch>
+            );
+        }).not.toThrow();
     });
 });
