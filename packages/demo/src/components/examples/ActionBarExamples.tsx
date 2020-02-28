@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ActionBar, ACTION_SEPARATOR, IActionOptions, Section} from 'react-vapor';
+import {ACTION_SEPARATOR, ActionBar, IActionOptions, Section} from 'react-vapor';
 
 export class ActionBarExamples extends React.Component<any, any> {
     render() {

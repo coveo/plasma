@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {ActionBarConnected, ACTION_SEPARATOR, addActionsToActionBar, IActionOptions, Section} from 'react-vapor';
+import {ACTION_SEPARATOR, ActionBarConnected, addActionsToActionBar, IActionOptions, Section} from 'react-vapor';
 
 import {Store} from '../../Store';
 
