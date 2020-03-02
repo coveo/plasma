@@ -29,7 +29,7 @@ describe('FilterBox', () => {
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jasmine.createSpy('onRender');
 
-            expect(() => filterBoxInstance.componentWillMount()).not.toThrow();
+            expect(() => filterBoxInstance.componentDidMount()).not.toThrow();
 
             filterBox.setProps({id: id, onRender: renderSpy});
             filterBox.unmount();
@@ -40,7 +40,7 @@ describe('FilterBox', () => {
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy = jasmine.createSpy('onDestroy');
 
-            expect(() => filterBoxInstance.componentWillUnmount()).not.toThrow();
+            expect(() => filterBoxInstance.componentDidMount()).not.toThrow();
 
             filterBox.setProps({id: id, onDestroy: destroySpy});
             filterBox.mount();
