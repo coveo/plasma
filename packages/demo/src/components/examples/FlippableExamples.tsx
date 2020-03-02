@@ -3,6 +3,7 @@ import {Flippable, FlippableConnected} from 'react-vapor';
 
 export class FlippableExamples extends React.Component<any, any> {
     private scope: HTMLDivElement;
+    static deprecated = true;
 
     render() {
         return (
