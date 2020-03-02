@@ -10,9 +10,9 @@ import {ITableHeadingAttribute, ITableOwnProps, ITableRowData} from './Table';
 import {ITableStateModifier, modifyState} from './TableActions';
 import {
     DEFAULT_TABLE_PER_PAGE,
-    TABLE_PREDICATE_DEFAULT_VALUE,
     TableChildComponent,
     TableSortingOrder,
+    TABLE_PREDICATE_DEFAULT_VALUE,
 } from './TableConstants';
 import {ITableCompositeState, ITableState} from './TableReducers';
 import {unselectAllRows} from './TableRowActions';
