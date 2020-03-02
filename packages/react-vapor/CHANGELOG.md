@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.1](https://github.com/coveo/react-vapor/compare/v5.15.0...v5.15.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* **input intefaces:** required props was autoFocus. not autofocus ([58ad08c](https://github.com/coveo/react-vapor/commit/58ad08c851edf2610ee1611d5bbef3cd983005cf))
+
+
+
+
+
 # [5.15.0](https://github.com/coveo/react-vapor/compare/v5.14.5...v5.15.0) (2020-02-28)
 
 
