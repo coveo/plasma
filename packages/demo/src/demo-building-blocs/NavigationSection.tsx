@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {RouteComponentProps, withRouter} from 'react-router';
+import {Route, RouteComponentProps, withRouter} from 'react-router';
+import {Link} from 'react-router-dom';
 import {ISideNavigationSectionProps, SideNavigationMenuSection} from 'react-vapor';
 import * as _ from 'underscore';
 
@@ -19,23 +20,14 @@ const Section: React.FunctionComponent<NavSectionProps> = ({
     baseUrl,
     ...rest
 }) => {
-    const [isOpened, toggleOpened] = React.useState(hasItemSelected || false);
-    const hasMoreThanOneSection = _.size<React.ReactNode>(React.Children.map(children, _.identity)) > 1;
-
-    const handleClick = () => {
-        if (hasMoreThanOneSection) {
-            toggleOpened(!isOpened);
-        }
-        onClick?.();
-    };
-
-    return (
-        <SideNavigationMenuSection
-            {...rest}
-            expandable={!notExpandable && hasMoreThanOneSection}
-            expanded={isOpened}
-            onClick={handleClick}
-        >
+    return rest.isLink ? (
+        <Route path={baseUrl}>
+            <Link to={baseUrl}>
+                <SideNavigationMenuSection {...rest}></SideNavigationMenuSection>
+            </Link>
+        </Route>
+    ) : (
+        <SideNavigationMenuSection {...rest} expandable={false}>
             {React.Children.map(children, (c) => {
                 return React.cloneElement(c as React.ReactElement, {baseUrl});
             })}

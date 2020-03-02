@@ -6,12 +6,8 @@ import NavigationSection from '../demo-building-blocs/NavigationSection';
 
 const Navigation: React.FunctionComponent = () => (
     <SideNavigation>
-        <NavigationSection>
-            <NavigationLink key="general-guidelines" href="/general-guidelines" name="General Guidelines" />
-        </NavigationSection>
-        <NavigationSection>
-            <NavigationLink name="Borders" href="/borders"></NavigationLink>
-        </NavigationSection>
+        <NavigationSection title="General Guidelines" baseUrl="/general-guidelines" isLink />
+        <NavigationSection title="Borders" baseUrl="/borders" isLink />
         <NavigationSection title="Cards" baseUrl="/cards">
             <NavigationLink href="/flippable" name="Flippable" />
             <NavigationLink href="/home" name="Home" />
@@ -72,12 +68,8 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/toast" name="Toast" />
             <NavigationLink href="/tooltip" name="Tooltip" />
         </NavigationSection>
-        <NavigationSection>
-            <NavigationLink name="Shadow" href="/shadow"></NavigationLink>
-        </NavigationSection>
-        <NavigationSection>
-            <NavigationLink name="Transparency" href="/transparency"></NavigationLink>
-        </NavigationSection>
+        <NavigationSection title="Shadow" baseUrl="/shadow" isLink />
+        <NavigationSection title="Transparency" baseUrl="/transparency" isLink />
         <NavigationSection title="Typography" baseUrl="/typography">
             <NavigationLink href="/headings" name="Headings" />
             <NavigationLink href="/colors" name="Colors" />

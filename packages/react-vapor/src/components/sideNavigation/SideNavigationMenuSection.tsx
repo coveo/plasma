@@ -12,6 +12,7 @@ export interface SideNavigationHeaderProps {
     svgClass?: string;
     customIcon?: React.ReactNode;
     onClick?: (event: React.MouseEvent) => void;
+    isLink?: boolean;
 }
 export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     /**
@@ -60,7 +61,7 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
             {headerTitle}
         </SideNavigationHeader>
     );
-    const items = <div className="navigation-menu-section-items">{children}</div>;
+    const items = children ? <div className="navigation-menu-section-items">{children}</div> : null;
 
     return expandable ? (
         <Collapsible
