@@ -1,5 +1,7 @@
 import * as React from 'react';
+import {Provider} from 'react-redux';
 import {CheckboxConnected, InfoBox, InfoBoxLink, Label, Loading, PartialStringMatch} from 'react-vapor';
+import {Store} from '../../Store';
 
 export class PartialStringMatchExamples extends React.Component<any, any> {
     render() {
@@ -65,23 +67,25 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                             <div>World</div>
                         </PartialStringMatch>
                         <PartialStringMatch key="b" caseInsensitive partialMatch={'hello'}>
-                            <div className="py2">
-                                <div className="my2">
-                                    Hello{' '}
-                                    <span>
-                                        is this working with deep structure? <span>(hello, still reading?)</span>
-                                    </span>
-                                </div>
-                                <Loading />
-                                <InfoBox>
-                                    What about custom components? <InfoBoxLink>Can they contain hello?</InfoBoxLink>
-                                    <div>
-                                        <CheckboxConnected label="boom">
-                                            <Label>Hello connected components too</Label>
-                                        </CheckboxConnected>
+                            <Provider store={Store}>
+                                <div className="py2">
+                                    <div className="my2">
+                                        Hello{' '}
+                                        <span>
+                                            is this working with deep structure? <span>(hello, still reading?)</span>
+                                        </span>
                                     </div>
-                                </InfoBox>
-                            </div>
+                                    <Loading />
+                                    <InfoBox>
+                                        What about custom components? <InfoBoxLink>Can they contain hello?</InfoBoxLink>
+                                        <div>
+                                            <CheckboxConnected label="boom">
+                                                <Label>Hello connected components too</Label>
+                                            </CheckboxConnected>
+                                        </div>
+                                    </InfoBox>
+                                </div>
+                            </Provider>
                         </PartialStringMatch>
                     </div>
                 </div>

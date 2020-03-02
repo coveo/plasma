@@ -7,19 +7,11 @@ import * as _ from 'underscore';
 type NavSectionControlledProps = Omit<ISideNavigationSectionProps, 'expanded' | 'expandable'>;
 
 export interface NavSectionProps extends NavSectionControlledProps {
-    hasItemSelected?: boolean;
     baseUrl?: string;
     notExpandable?: boolean;
 }
 
-const Section: React.FunctionComponent<NavSectionProps> = ({
-    hasItemSelected,
-    children,
-    onClick,
-    notExpandable,
-    baseUrl,
-    ...rest
-}) => {
+const Section: React.FunctionComponent<NavSectionProps> = ({children, onClick, notExpandable, baseUrl, ...rest}) => {
     return rest.isLink ? (
         <Route path={baseUrl}>
             <Link to={baseUrl}>
@@ -42,9 +34,8 @@ const NavSection: React.FunctionComponent<{baseUrl?: string} & RouteComponentPro
     ...rest
 }) => {
     const path = `${match.url}${baseUrl}`;
-    const baseUrlMatcher = new RegExp(`^${path}`);
 
-    return <Section hasItemSelected={baseUrlMatcher.test(location.pathname)} baseUrl={path} {...rest} />;
+    return <Section baseUrl={path} {...rest} />;
 };
 
 export default withRouter(NavSection);

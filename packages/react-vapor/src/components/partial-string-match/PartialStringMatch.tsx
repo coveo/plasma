@@ -25,17 +25,19 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
         return this.lookupChildren(toRender);
     }
 
-    private lookupChildren(component: React.ReactNode): React.ReactNode[] {
+    private lookupChildren(component: React.ReactNode): React.ReactNode {
         const iterator = this.deepReplaceStrings(component);
 
         const children: React.ReactNode[] = [];
         let result: IteratorResult<React.ReactNode>;
         do {
             result = iterator.next();
-            children.push(result.value);
+            if (result.value) {
+                children.push(result.value);
+            }
         } while (!result.done);
 
-        return children;
+        return children.length === 1 ? children[0] : children;
     }
 
     private *deepReplaceStrings(component: React.ReactNode): IterableIterator<React.ReactNode> {

@@ -3,6 +3,12 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
+
+### Bug Fixes
+
+-   **partialstringmatch:** allow rendering redux Provider inside it ([a51b518](https://github.com/coveo/react-vapor/commit/a51b518fc16ab9bf96056ea83ad0b5d790238eda))
+
 ## [5.15.3](https://github.com/coveo/react-vapor/compare/v5.15.2...v5.15.3) (2020-03-02)
 
 ### Bug Fixes
