@@ -1,8 +1,8 @@
 import {mount, shallow} from 'enzyme';
 import * as React from 'react';
 import {connect, Provider} from 'react-redux';
-import createMockStore from 'redux-mock-store';
 
+import {getStoreMock} from '../../utils/tests/TestUtils';
 import {PartialStringMatch} from './PartialStringMatch';
 
 describe('PartialStringMatch', () => {
@@ -115,7 +115,7 @@ describe('PartialStringMatch', () => {
         const ConnectedPorkchop = connect((state: any) => ({a: state.a}))(Porkchop);
         const matcher = 'chop';
         const component = mount(
-            <Provider store={createMockStore()()}>
+            <Provider store={getStoreMock()}>
                 <PartialStringMatch partialMatch={matcher}>
                     <ConnectedPorkchop />
                 </PartialStringMatch>
@@ -135,6 +135,18 @@ describe('PartialStringMatch', () => {
             shallow(
                 <PartialStringMatch partialMatch="a">
                     <ClassComponent />
+                </PartialStringMatch>
+            );
+        }).not.toThrow();
+    });
+
+    it('should not throw errors when rendering a Provider inside the PartialStringMatch', () => {
+        expect(() => {
+            mount(
+                <PartialStringMatch partialMatch="here">
+                    <Provider store={getStoreMock()}>
+                        <div>Something here</div>
+                    </Provider>
                 </PartialStringMatch>
             );
         }).not.toThrow();
