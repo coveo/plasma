@@ -57,8 +57,9 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
                 children: this.lookupChildren(element.props.children),
             });
         } else if (/^Connect\(.+\)$/.test(element.type.displayName)) {
-            // The node is Connected component, we dive into its wrapped component
-            yield this.lookupChildren(element.type.WrappedComponent(element.props));
+            // The node is Connected component, we render it as is
+            // TODO: find a way to yield WrappedComponent properly
+            yield component;
         } else if (
             typeof element.type === 'function' &&
             !(
