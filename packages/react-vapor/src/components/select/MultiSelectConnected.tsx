@@ -21,6 +21,7 @@ import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from
 import {SelectSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
+    toggleClasses?: string;
     placeholder?: string;
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
@@ -161,6 +162,10 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
             !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length
                 ? {disabled: true}
                 : {disabled: this.props.disabled};
+        const buttonClasses = classNames(
+            'btn dropdown-toggle multiselect-add dropdown-toggle-placeholder',
+            this.props.toggleClasses
+        );
         return (
             <div className={classes} style={this.props.multiSelectStyle}>
                 {this.props.connectDropTarget(
@@ -170,7 +175,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
                     </div>
                 )}
                 <button
-                    className="btn dropdown-toggle multiselect-add dropdown-toggle-placeholder"
+                    className={buttonClasses}
                     type="button"
                     onKeyDown={props.onKeyDown}
                     onKeyUp={props.onKeyUp}
