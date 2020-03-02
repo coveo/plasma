@@ -25,9 +25,9 @@
         &:valid,
         &:disabled {
             color: $dark-grey;
-            border-bottom: 1px solid $medium-blue;
+            border-bottom: 1px solid $lynch;
 
-            @include placeholder();
+            @include placeholder($lynch);
 
             & + label,
             & + span {
@@ -35,6 +35,7 @@
             }
 
             &:focus:not([readonly]) {
+                color: $lynch;
                 border-bottom-color: $azure;
 
                 & + label,
@@ -46,13 +47,15 @@
 
         &:disabled,
         &[readonly='readonly'] {
-            color: $medium-grey;
-            border-bottom-color: $medium-grey;
+            color: $dark-grey;
+            border-bottom-color: transparent;
 
-            -webkit-text-fill-color: $medium-grey;
+            @include placeholder($dark-grey);
+
+            -webkit-text-fill-color: $dark-grey;
 
             & + label {
-                color: $medium-grey;
+                color: $lynch;
             }
         }
     }
@@ -70,14 +73,14 @@
         display: flex; // Used for inline-help-tooltip placement
         box-sizing: content-box;
         height: 100%;
-        color: $medium-grey;
+        color: $lynch;
         font-size: $input-font-size;
         transition: $input-transition;
 
         &.active {
             top: -1 * $input-margin-top;
             padding-bottom: $input-margin-top;
-            color: $medium-blue;
+            color: $lynch;
             font-size: $form-control-label-font-size;
         }
     }
