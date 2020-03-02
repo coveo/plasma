@@ -43,9 +43,12 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
 ];
 
-const itemsWithAppendedValue = _.map(defaultItems, (item) =>
-    _.extend({}, item, {append: {content: () => <span className="text-red ml3">{item.value}</span>}})
-);
+const itemsWithAppendedValue = _.map(defaultItems, (item) => ({
+    ...item,
+    append: {content: () => <span className="text-red ml3">{item.value}</span>},
+}));
+
+const ids = [UUID.generate(), UUID.generate(), UUID.generate(), UUID.generate(), UUID.generate(), UUID.generate()];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
     {id: UUID.generate(), option: {content: 'All'}, selected: true},
@@ -70,7 +73,7 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
     <Section level={2} title="Single selects connected to store">
         <Section level={3} className="form-group" title="A single select with some implementation props">
             <SingleSelectConnected
-                id={UUID.generate()}
+                id={ids[0]}
                 items={defaultItems}
                 placeholder="Select something"
                 canClear
@@ -79,7 +82,7 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
         </Section>
         <Section level={3} title="A single select with some implementation props">
             <SingleSelectConnected
-                id={UUID.generate()}
+                id={ids[1]}
                 items={defaultItems}
                 toggleClasses="mod-right"
                 placeholder="Select something"
@@ -88,18 +91,18 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
         </Section>
         <Section level={3} title="A single select with predicates">
             <SingleSelectWithPredicate
-                id={UUID.generate()}
+                id={ids[2]}
                 items={itemsWithAppendedValue}
                 options={defaultFlatSelectOptions}
                 matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
             />
         </Section>
         <Section level={3} title="A single select with filter">
-            <SingleSelectWithFilter id={UUID.generate()} items={itemsWithAppendedValue} />
+            <SingleSelectWithFilter id={ids[3]} items={itemsWithAppendedValue} />
         </Section>
         <Section level={3} title="A single select with a custom match filter that matches the exact value">
             <SingleSelectWithFilter
-                id={UUID.generate()}
+                id={ids[4]}
                 items={itemsWithAppendedValue}
                 matchFilter={(filter: string, item: IItemBoxProps) =>
                     _.isString(item.displayValue) ? item.displayValue.indexOf(filter) !== -1 : false
@@ -108,7 +111,7 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
         </Section>
         <Section level={3} title="A single select with a filter, predicates, a lots of values and a footer">
             <SingleSelectWithPredicateAndFilter
-                id={UUID.generate()}
+                id={ids[5]}
                 items={itemsWithAppendedValue}
                 options={defaultFlatSelectOptions}
                 matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
