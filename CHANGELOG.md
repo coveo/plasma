@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.3](https://github.com/coveo/react-vapor/compare/v5.15.2...v5.15.3) (2020-03-02)
+
+
+### Bug Fixes
+
+* **codemirror:** add missing import of codemirror style files ([a190966](https://github.com/coveo/react-vapor/commit/a1909664609ddbe8100712191bf815dc0d43960a))
+
+
+
+
+
 ## [5.15.2](https://github.com/coveo/react-vapor/compare/v5.15.1...v5.15.2) (2020-03-02)
 
 **Note:** Version bump only for package root
