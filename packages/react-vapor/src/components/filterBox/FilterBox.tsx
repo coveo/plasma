@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+
 import {Svg} from '../svg/Svg';
 
 export interface IFilterBoxOwnProps extends React.ClassAttributes<FilterBox> {
@@ -34,10 +35,6 @@ export const FILTER_PLACEHOLDER: string = 'Filter';
 export class FilterBox extends React.Component<IFilterBoxProps, any> {
     filterInput: HTMLInputElement;
 
-    constructor(props: IFilterBoxProps) {
-        super(props);
-    }
-
     static defaultProps: Partial<IFilterBoxProps> = {
         isAutoFocus: false,
     };
@@ -46,32 +43,9 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         this.filterInput.value = nextInputValue;
         this.filterInput.nextElementSibling.setAttribute('class', this.filterInput.value.length ? '' : 'hidden');
 
-        if (this.props.onFilterCallback) {
-            this.props.onFilterCallback(this.props.id, this.filterInput.value);
-        }
-
-        if (this.props.onFilter) {
-            this.props.onFilter(this.props.id, this.filterInput.value);
-        }
+        this.props.onFilterCallback?.(this.props.id, this.filterInput.value);
+        this.props.onFilter?.(this.props.id, this.filterInput.value);
     };
-
-    private handleOnBlur() {
-        if (this.props.onBlur) {
-            this.props.onBlur();
-        }
-    }
-
-    private handleOnKeyDown(e: React.KeyboardEvent<HTMLInputElement>) {
-        if (this.props.onKeyDown) {
-            this.props.onKeyDown(e);
-        }
-    }
-
-    private handleOnKeyUp(e: React.KeyboardEvent<HTMLInputElement>) {
-        if (this.props.onKeyUp) {
-            this.props.onKeyUp(e);
-        }
-    }
 
     private clearValue = () => {
         this.filterInput.focus();
@@ -85,21 +59,17 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
         input.value = temp;
     }
 
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender(this.props.id);
-        }
+    componentDidMount() {
+        this.props.onRender?.(this.props.id);
     }
 
     componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy(this.props.id);
-        }
+        this.props.onDestroy?.(this.props.id);
     }
 
-    componentWillReceiveProps(nextProps: IFilterBoxProps) {
-        if (this.props.filterText !== nextProps.filterText && this.filterInput.value !== nextProps.filterText) {
-            this.handleChange(nextProps.filterText);
+    componentDidUpdate(prevProps: IFilterBoxProps) {
+        if (this.props.filterText !== prevProps.filterText && this.filterInput?.value !== prevProps.filterText) {
+            this.handleChange(this.props.filterText);
         }
     }
 
@@ -124,12 +94,12 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                         className={filterInputClasses}
                         placeholder={filterPlaceholder}
                         onChange={(e: React.FormEvent<HTMLInputElement>) => this.handleChange(e.currentTarget.value)}
-                        onBlur={() => this.handleOnBlur()}
                         onFocus={(e: React.FocusEvent<HTMLInputElement>) => {
                             this.placeCursorAtEndOfInputValue(e);
                         }}
-                        onKeyDown={(e) => this.handleOnKeyDown(e)}
-                        onKeyUp={(e) => this.handleOnKeyUp(e)}
+                        onBlur={this.props.onBlur}
+                        onKeyDown={this.props.onKeyDown}
+                        onKeyUp={this.props.onKeyUp}
                         style={inputMaxWidth}
                         autoFocus={this.props.isAutoFocus}
                     />
