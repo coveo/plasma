@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.16.1](https://github.com/coveo/react-vapor/compare/v5.16.0...v5.16.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* **partialstringmatch:** remove highlight for connected components ([a605cd7](https://github.com/coveo/react-vapor/commit/a605cd76df53c67e6249a45e49173343abcbf77b))
+
+
+
+
+
 ## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
 
 
