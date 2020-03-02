@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.16.0](https://github.com/coveo/react-vapor/compare/v5.15.4...v5.16.0) (2020-03-02)
+
+
+### Features
+
+* **style/cards:** refactor and navigationSection modification ([24adf8f](https://github.com/coveo/react-vapor/commit/24adf8f76893144fe39f3107141a482bb611b19b))
+
+
+
+
+
 ## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
 
 
