@@ -3,6 +3,165 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.15.3](https://github.com/coveo/react-vapor/compare/v5.15.2...v5.15.3) (2020-03-02)
+
+
+### Bug Fixes
+
+* **codemirror:** add missing import of codemirror style files ([a190966](https://github.com/coveo/react-vapor/commit/a1909664609ddbe8100712191bf815dc0d43960a))
+
+
+
+
+
+## [5.15.2](https://github.com/coveo/react-vapor/compare/v5.15.1...v5.15.2) (2020-03-02)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.15.1](https://github.com/coveo/react-vapor/compare/v5.15.0...v5.15.1) (2020-03-02)
+
+
+### Bug Fixes
+
+* **input intefaces:** required props was autoFocus. not autofocus ([58ad08c](https://github.com/coveo/react-vapor/commit/58ad08c851edf2610ee1611d5bbef3cd983005cf))
+
+
+
+
+
+# [5.15.0](https://github.com/coveo/react-vapor/compare/v5.14.5...v5.15.0) (2020-02-28)
+
+
+### Bug Fixes
+
+* **input:** added native html prop types for retro compatibility ([2690237](https://github.com/coveo/react-vapor/commit/26902371ed4b9b9bd57a4a9a0635371850075e6e))
+* **partialstringmatch:** allow class components without children ([6dcbff2](https://github.com/coveo/react-vapor/commit/6dcbff23906c1d42dd1cfb8d1a87eeef0461f968))
+
+
+### Features
+
+* **variables:** add big panel header height and mod card list paddings ([#1474](https://github.com/coveo/react-vapor/issues/1474)) ([4a56a83](https://github.com/coveo/react-vapor/commit/4a56a83bde0075f5f05892dbd8c338b92198bb23))
+
+
+
+
+
+## [5.14.5](https://github.com/coveo/react-vapor/compare/v5.14.4...v5.14.5) (2020-02-28)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.14.4](https://github.com/coveo/react-vapor/compare/v5.14.3...v5.14.4) (2020-02-28)
+
+
+### Bug Fixes
+
+* **partialstringmatch:** allow rendering connected component as children ([a8bf221](https://github.com/coveo/react-vapor/commit/a8bf221efcc3367dc4a4c6ddbc823a2d50bc1e0c))
+
+
+
+
+
+## [5.14.3](https://github.com/coveo/react-vapor/compare/v5.14.2...v5.14.3) (2020-02-27)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.14.2](https://github.com/coveo/react-vapor/compare/v5.14.1...v5.14.2) (2020-02-27)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.14.1](https://github.com/coveo/react-vapor/compare/v5.14.0...v5.14.1) (2020-02-27)
+
+
+### Bug Fixes
+
+* **navigation:** items are now wrapping when they are too large ([0f25def](https://github.com/coveo/react-vapor/commit/0f25def38b42013e72561a07708d0a96aa32c2a9))
+
+
+
+
+
+# [5.14.0](https://github.com/coveo/react-vapor/compare/v5.13.6...v5.14.0) (2020-02-27)
+
+
+### Bug Fixes
+
+* **numeric input:** scope the classes inside coveo-styleguide ([22da7e3](https://github.com/coveo/react-vapor/commit/22da7e3b02b899fe46f5b68a15a09d34a8076376))
+* **numeric input:** scope the classes inside coveo-styleguide ([a1b942e](https://github.com/coveo/react-vapor/commit/a1b942e7e7a7b5c06e9a49a66e6ba783186e46c0))
+
+
+### Features
+
+* **blankslate:** add props and max-width ([#1460](https://github.com/coveo/react-vapor/issues/1460)) ([f549f17](https://github.com/coveo/react-vapor/commit/f549f171a7c1e605a2be180625497ff9c4319eee))
+
+
+
+
+
+## [5.13.6](https://github.com/coveo/react-vapor/compare/v5.13.5...v5.13.6) (2020-02-25)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [5.13.5](https://github.com/coveo/react-vapor/compare/v5.13.4...v5.13.5) (2020-02-25)
+
+
+### Bug Fixes
+
+* remove the extension from the import to fix style in the admin ([34a9a0f](https://github.com/coveo/react-vapor/commit/34a9a0feda822a6866f387bdf490e495eab76c19))
+
+
+
+
+
+## [5.13.4](https://github.com/coveo/react-vapor/compare/v5.13.3...v5.13.4) (2020-02-25)
+
+
+### Bug Fixes
+
+* **dependencies:** add rc-slider as dependency ([07e03ae](https://github.com/coveo/react-vapor/commit/07e03aecfdc7f185ccdf9603ab3473f47efd35e2))
+
+
+
+
+
+## [5.13.3](https://github.com/coveo/react-vapor/compare/v5.13.2...v5.13.3) (2020-02-25)
+
+
+### Bug Fixes
+
+* **rc-slider:** fix style rc-slider ([df10019](https://github.com/coveo/react-vapor/commit/df1001916a887da21ddb0bfe5c574ec58a26a6a0))
+
+
+
+
+
+## [5.13.2](https://github.com/coveo/react-vapor/compare/v5.13.1...v5.13.2) (2020-02-24)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [5.13.1](https://github.com/coveo/react-vapor/compare/v5.13.0...v5.13.1) (2020-02-24)
 
 **Note:** Version bump only for package root

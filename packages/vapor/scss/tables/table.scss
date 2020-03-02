@@ -180,6 +180,7 @@
     .mod-card-list {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+        padding: $mod-card-list-vertical-padding $mod-card-list-horizontal-padding;
 
         .mod-card {
             height: unset !important;
@@ -205,6 +206,10 @@
 
         td {
             border-bottom: none !important;
+        }
+
+        .blankslate-row td.p0 {
+            padding: 0;
         }
     }
 }

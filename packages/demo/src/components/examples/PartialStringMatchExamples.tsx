@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {InfoBox, InfoBoxLink, PartialStringMatch} from 'react-vapor';
+import {CheckboxConnected, InfoBox, InfoBoxLink, Label, Loading, PartialStringMatch} from 'react-vapor';
 
 export class PartialStringMatchExamples extends React.Component<any, any> {
     render() {
@@ -72,8 +72,14 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                                         is this working with deep structure? <span>(hello, still reading?)</span>
                                     </span>
                                 </div>
+                                <Loading />
                                 <InfoBox>
                                     What about custom components? <InfoBoxLink>Can they contain hello?</InfoBoxLink>
+                                    <div>
+                                        <CheckboxConnected label="boom">
+                                            <Label>Hello connected components too</Label>
+                                        </CheckboxConnected>
+                                    </div>
                                 </InfoBox>
                             </div>
                         </PartialStringMatch>

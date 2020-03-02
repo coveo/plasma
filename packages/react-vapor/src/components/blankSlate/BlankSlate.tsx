@@ -1,6 +1,7 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IBaseActionOptions} from '../actions/Action';
 import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
@@ -14,6 +15,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     classes?: string[];
     containerClasses?: string[];
     descriptionClassName?: string;
+    buttonClasses?: string[];
     svgName?: string;
     svgClass?: string;
 }
@@ -46,7 +48,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
 
     private getButtonsTemplate(): JSX.Element[] {
         return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => {
-            return <Button key={buttonProps.name} {...buttonProps} />;
+            return <Button key={buttonProps.name} {...buttonProps} classes={this.props.buttonClasses} />;
         });
     }
 
