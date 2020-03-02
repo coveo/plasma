@@ -35,6 +35,7 @@ export interface IInputAdditionalOwnProps {
 }
 
 export interface IInputNativeTagStateProps {
+    autoComplete?: string;
     value?: string;
     checked?: boolean;
     disabled?: boolean;
