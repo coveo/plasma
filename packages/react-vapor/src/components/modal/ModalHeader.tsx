@@ -12,6 +12,7 @@ export interface IModalHeaderOwnProps {
     title: string;
     classes?: IClassName;
     docLink?: ILinkSvgProps;
+    redirectOnClose?: () => void;
 }
 
 export interface IModalHeaderStateProps {
@@ -46,6 +47,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
     close() {
         if (this.canClose) {
             this.props.onClose?.();
+            this.props.redirectOnClose?.();
         }
     }
 
