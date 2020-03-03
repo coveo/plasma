@@ -120,6 +120,14 @@ describe('Select', () => {
             expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
         });
 
+        it('should set the toggleClasses prop if any on the dropdown-toggle', () => {
+            mountMultiSelect([], {
+                toggleClasses: 'tuna-can',
+            });
+
+            expect(multiSelect.find('.dropdown-toggle').hasClass('tuna-can')).toBe(true);
+        });
+
         it('should not disable the dropdown if one of the options is not is selected', () => {
             mountMultiSelect([
                 {value: 'a', selected: false},
