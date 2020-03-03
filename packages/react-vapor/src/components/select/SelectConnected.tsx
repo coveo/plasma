@@ -53,7 +53,9 @@ export interface ISelectButtonProps {
     placeholder?: string;
 }
 
-export interface ISelectProps extends ISelectOwnProps, Partial<ISelectStateProps>, Partial<ISelectDispatchProps> {}
+export interface ISelectProps extends ISelectOwnProps, Partial<ISelectStateProps>, Partial<ISelectDispatchProps> {
+    toggleClasses?: string;
+}
 
 const makeMapStateToProps = () => {
     const statePropsSelector = createStructuredSelector({

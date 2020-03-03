@@ -21,7 +21,6 @@ import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from
 import {SelectSelector} from './SelectSelector';
 
 export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
-    toggleClasses?: string;
     placeholder?: string;
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
