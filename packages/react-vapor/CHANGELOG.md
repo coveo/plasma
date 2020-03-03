@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
+
+
+### Bug Fixes
+
+* **versions:** bump redux version to match admin's ([4892be3](https://github.com/coveo/react-vapor/commit/4892be39ed3f12e0c7788d2e83d193ab15cab81a))
+
+
+
+
+
 # [5.17.0](https://github.com/coveo/react-vapor/compare/v5.16.1...v5.17.0) (2020-03-03)
 
 
