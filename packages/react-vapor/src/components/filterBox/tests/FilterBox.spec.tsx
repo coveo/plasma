@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import {FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps} from '../FilterBox';
+import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox';
 
 describe('FilterBox', () => {
     const id: string = 'filter-box';

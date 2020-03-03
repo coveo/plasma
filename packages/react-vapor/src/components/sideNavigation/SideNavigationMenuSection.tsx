@@ -21,6 +21,7 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     header?: ISideNavigationHeaderProps;
     expandable?: boolean;
     expanded?: boolean;
+    isActive?: boolean;
     onClick?: () => void;
 }
 
@@ -53,8 +54,19 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
     onClick,
     header,
     children,
+    isActive,
+    isLink,
     ...headerProps
 }) => {
+    const ref = React.useRef(null);
+
+    React.useEffect(() => {
+        if (isActive && ref.current) {
+            ref.current.scrollIntoView({behavior: 'instant', block: 'nearest'});
+        }
+    }, [isActive]);
+
+    const sectionClasses = classNames('navigation-menu-section-link', {'state-active': isActive});
     const headerTitle = title || (header && header.title);
     const sectionHeader = headerTitle && (
         <SideNavigationHeader {..._.extend({}, header, headerProps)} onClick={expandable ? _.noop : onClick}>
@@ -74,10 +86,14 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
         >
             {items}
         </Collapsible>
-    ) : (
-        <div className="navigation-menu-section">
+    ) : !isLink ? (
+        <div className={'navigation-menu-section'}>
             {sectionHeader}
             {items}
+        </div>
+    ) : (
+        <div className={sectionClasses} ref={ref}>
+            {sectionHeader}
         </div>
     );
 };

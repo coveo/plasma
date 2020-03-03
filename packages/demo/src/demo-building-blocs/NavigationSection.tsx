@@ -1,5 +1,6 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
-import {Route, RouteComponentProps, withRouter} from 'react-router';
+import {Route, RouteChildrenProps, RouteComponentProps, withRouter} from 'react-router';
 import {Link} from 'react-router-dom';
 import {ISideNavigationSectionProps, SideNavigationMenuSection} from 'react-vapor';
 import * as _ from 'underscore';
@@ -9,15 +10,34 @@ type NavSectionControlledProps = Omit<ISideNavigationSectionProps, 'expanded' | 
 export interface NavSectionProps extends NavSectionControlledProps {
     baseUrl?: string;
     notExpandable?: boolean;
+    isLink?: boolean;
+    isActive?: boolean;
 }
 
-const Section: React.FunctionComponent<NavSectionProps> = ({children, onClick, notExpandable, baseUrl, ...rest}) => {
-    return rest.isLink ? (
-        <Route path={baseUrl}>
-            <Link to={baseUrl}>
-                <SideNavigationMenuSection {...rest}></SideNavigationMenuSection>
-            </Link>
-        </Route>
+const Section: React.FunctionComponent<NavSectionProps> = ({
+    children,
+    onClick,
+    notExpandable,
+    baseUrl,
+    isActive,
+    isLink,
+    ...rest
+}) => {
+    return isLink ? (
+        <Route
+            path={baseUrl}
+            children={(routeProps: RouteChildrenProps) => (
+                <div className={'navigation-menu-section'}>
+                    <Link to={baseUrl}>
+                        <SideNavigationMenuSection
+                            isActive={!!routeProps.match}
+                            isLink
+                            {...rest}
+                        ></SideNavigationMenuSection>
+                    </Link>
+                </div>
+            )}
+        />
     ) : (
         <SideNavigationMenuSection {...rest} expandable={false}>
             {React.Children.map(children, (c) => {

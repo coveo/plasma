@@ -59,6 +59,14 @@
 
         .navigation-menu-sections {
             .navigation-menu-section {
+                .navigation-menu-section-link {
+                    border-left: $navigation-active-border-width solid transparent;
+                    &.state-active {
+                        background-color: $navigation-active-background-color;
+                        border-left-color: $orange;
+                        opacity: 1;
+                    }
+                }
                 .navigation-menu-section-header {
                     position: relative;
                     display: flex;

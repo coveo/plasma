@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {Tooltip} from '../../tooltip/Tooltip';
-import {ISetToNowProps, SET_TO_NOW_DEFAULT_TOOLTIP, SetToNowButton} from '../SetToNowButton';
+import {ISetToNowProps, SetToNowButton, SET_TO_NOW_DEFAULT_TOOLTIP} from '../SetToNowButton';
 
 describe('Date picker', () => {
     const BUTTON_BASIC_PROPS: ISetToNowProps = {
