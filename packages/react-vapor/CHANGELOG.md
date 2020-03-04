@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.17.2](https://github.com/coveo/react-vapor/compare/v5.17.1...v5.17.2) (2020-03-04)
+
+
+### Bug Fixes
+
+* **drop pod:** the Defaults.DROP_ROOT was not properly set ([e4e0393](https://github.com/coveo/react-vapor/commit/e4e0393989b7133ea7a1e0cf9259a1ac1e419ae3))
+* **input component:** added autoComplete to the native props interface ([14b1f78](https://github.com/coveo/react-vapor/commit/14b1f78e845aab5cc16a5a51e95c02d0ade73bdf))
+
+
+
+
+
 ## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
 
 
