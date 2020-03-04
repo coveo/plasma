@@ -3,6 +3,8 @@ import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import * as ReactDOM from 'react-dom';
+import {Defaults} from '../../../Defaults';
 import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from '../DropPod';
 
@@ -129,6 +131,34 @@ describe('DropPod', () => {
                     }).dive();
 
                     expect(styleRendered.visibility).toBe('hidden');
+                });
+
+                describe('portal creation selector', () => {
+                    afterEach(() => {
+                        Defaults.DROP_ROOT = 'body';
+                    });
+
+                    it('should create a portal with the Defaults.DROP_ROOT if no selector is passed in props', () => {
+                        const expectedElement = document.querySelector('head');
+                        Defaults.DROP_ROOT = 'head';
+
+                        spyOn(document, 'querySelector').and.callThrough();
+                        const portalSpy: jasmine.Spy = spyOn(ReactDOM, 'createPortal');
+                        shallow(<DropPod renderDrop={() => '🍟'} ref={buttonRef} />, {}).dive();
+
+                        expect(portalSpy).toHaveBeenCalledWith('🍟', expectedElement);
+                    });
+
+                    it('should create a portal with the selector prop if passed to the dropPod', () => {
+                        const expectedElement = document.querySelector('head');
+                        Defaults.DROP_ROOT = '#🥔';
+
+                        spyOn(document, 'querySelector').and.callThrough();
+                        const portalSpy: jasmine.Spy = spyOn(ReactDOM, 'createPortal');
+                        shallow(<DropPod renderDrop={() => '🍟'} selector="head" ref={buttonRef} />, {}).dive();
+
+                        expect(portalSpy).toHaveBeenCalledWith('🍟', expectedElement);
+                    });
                 });
 
                 describe('calculate style position for the dropPod', () => {
