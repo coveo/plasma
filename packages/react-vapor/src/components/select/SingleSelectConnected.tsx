@@ -19,7 +19,6 @@ import * as styles from './styles/SingleSelect.scss';
 
 export interface ISingleSelectOwnProps extends ISelectProps, IComponentBehaviour {
     placeholder?: string;
-    toggleClasses?: string;
     onSelectOptionCallback?: (option: string) => void;
     items?: IItemBoxProps[];
     buttonPrepend?: React.ReactNode;

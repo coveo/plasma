@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
+
+**Note:** Version bump only for package react-vapor-demo
+
+# [5.17.0](https://github.com/coveo/react-vapor/compare/v5.16.1...v5.17.0) (2020-03-03)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.16.1](https://github.com/coveo/react-vapor/compare/v5.16.0...v5.16.1) (2020-03-02)
+
+### Bug Fixes
+
+-   **singleselect:** make item selection work ([6e12aed](https://github.com/coveo/react-vapor/commit/6e12aedfe97149c3f616a0be91c77dbc1445208a))
+
+# [5.16.0](https://github.com/coveo/react-vapor/compare/v5.15.4...v5.16.0) (2020-03-02)
+
+### Features
+
+-   **style/cards:** refactor and navigationSection modification ([24adf8f](https://github.com/coveo/react-vapor/commit/24adf8f76893144fe39f3107141a482bb611b19b))
+
 ## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
 
 ### Bug Fixes

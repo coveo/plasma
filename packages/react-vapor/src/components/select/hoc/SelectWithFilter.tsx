@@ -91,7 +91,7 @@ export const selectWithFilter = (
 
         private dividerId: string = UUID.generate();
 
-        componentWillMount() {
+        componentDidMount() {
             this.props.onRenderFilter(this.props.defaultCustomValues);
         }
 

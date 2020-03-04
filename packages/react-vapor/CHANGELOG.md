@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
+
+### Bug Fixes
+
+-   **versions:** bump redux version to match admin's ([4892be3](https://github.com/coveo/react-vapor/commit/4892be39ed3f12e0c7788d2e83d193ab15cab81a))
+
+# [5.17.0](https://github.com/coveo/react-vapor/compare/v5.16.1...v5.17.0) (2020-03-03)
+
+### Features
+
+-   **multiselectconnected.tsx:** +toggleClasses prop ([d75051b](https://github.com/coveo/react-vapor/commit/d75051b4945b7e5d70ecd80e76cc8e72d4e12ca5))
+-   **selectconnected.tsx:** +toggleClasses in selectConnexted.tsx ([de96edd](https://github.com/coveo/react-vapor/commit/de96edd9c56d419a9999fcbbfcbfed723dde24a9))
+
+## [5.16.1](https://github.com/coveo/react-vapor/compare/v5.16.0...v5.16.1) (2020-03-02)
+
+### Bug Fixes
+
+-   **partialstringmatch:** remove highlight for connected components ([a605cd7](https://github.com/coveo/react-vapor/commit/a605cd76df53c67e6249a45e49173343abcbf77b))
+
 ## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
 
 ### Bug Fixes

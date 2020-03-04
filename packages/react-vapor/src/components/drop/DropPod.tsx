@@ -67,13 +67,6 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         };
 
         this.updateOffset = this.updateOffset.bind(this);
-    }
-
-    componentWillMount() {
-        if (this.props.isOpen) {
-            this.setEventsOnDocument();
-        }
-
         if (
             this.props.positions &&
             !!this.props.positions.length &&
@@ -88,6 +81,12 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                 position: DropPodPosition.bottom,
                 orientation: DropPodPosition.left,
             };
+        }
+    }
+
+    componentDidMount() {
+        if (this.props.isOpen) {
+            this.setEventsOnDocument();
         }
     }
 

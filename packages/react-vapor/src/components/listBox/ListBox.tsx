@@ -38,7 +38,7 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         wrapItems: _.identity,
     };
 
-    componentWillMount() {
+    componentDidMount() {
         this.props.onRender?.();
     }
 

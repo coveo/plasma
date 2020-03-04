@@ -110,7 +110,7 @@ describe('PartialStringMatch', () => {
         expect(component.find('Highlight').length).toBe(2);
     });
 
-    it('should highlight all matches rendered throught a connected component', () => {
+    it('should render connected components without highlighting the matches', () => {
         const Porkchop: React.FunctionComponent = () => <span>a porkchop is a chop of the pork</span>;
         const ConnectedPorkchop = connect((state: any) => ({a: state.a}))(Porkchop);
         const matcher = 'chop';
@@ -122,7 +122,7 @@ describe('PartialStringMatch', () => {
             </Provider>
         );
 
-        expect(component.find('Highlight').length).toBe(2);
+        expect(component.find('Highlight').length).toBe(0);
     });
 
     it('should render class Components that has no children without throwing', () => {

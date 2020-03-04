@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "5.15.4",
+    "version": "5.17.1",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -54,7 +54,7 @@
         "react": "^16.8.0",
         "react-dom": "^16.8.0",
         "react-redux": "^5.0.5",
-        "redux": "^3.7.2",
+        "redux": "^4.0.1",
         "underscore": "^1.8.3",
         "underscore.string": "^3.3.5"
     },
@@ -136,7 +136,7 @@
         "react-redux": "5.1.2",
         "react-test-renderer": "16.8.2",
         "react-transition-group": "2.5.1",
-        "redux": "4.0.0",
+        "redux": "4.0.1",
         "redux-logger": "3.0.6",
         "redux-mock-store": "1.5.3",
         "redux-thunk": "2.3.0",
