@@ -62,9 +62,10 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
     const [isValid, setIsValid] = React.useState(true);
 
     React.useEffect(() => {
-        setTimeout(() => {
+        const timeout = setTimeout(() => {
             setDebouncedValue(props.value);
         }, 300);
+        return () => clearTimeout(timeout);
     }, [props.value]);
 
     React.useEffect(() => {
@@ -74,9 +75,7 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
     React.useEffect(() => {
         props.onMount?.();
         setIsValid(true);
-        if (props.onUnmount) {
-            return props.onUnmount;
-        }
+        return props.onUnmount;
     }, []);
 
     const getValidationLabel = () => {
