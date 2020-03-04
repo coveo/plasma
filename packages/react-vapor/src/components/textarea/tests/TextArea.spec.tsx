@@ -96,25 +96,32 @@ describe('TextArea', () => {
             expect(onChangeCallback).toHaveBeenCalledTimes(1);
         });
 
-        it('should contains validation message if changed value is invalid', () => {
-            const validation = (value: string) => value !== '';
-            const validationMessage = 'invalid value';
-            const invalidValue = '';
+        it('should contains validation message if debounced value is invalid', () => {
             jasmine.clock().install();
+            const invalidValue = '';
+            const validation = (value: string) => value !== invalidValue;
+            const validationMessage = 'invalid value';
 
-            wrapper.setProps({validate: validation, validationMessage: validationMessage, value: invalidValue});
+            wrapper.setProps({validate: validation, validationMessage: validationMessage, value: 'anyValue'});
             act(() => {
-                wrapper.update();
+                wrapper.mount();
             });
-            expect(wrapper.contains(validationMessage)).toBeFalsy();
+            expect(wrapper.contains(validationMessage)).toBeFalsy(); // initial mount is not validated
 
             wrapper.setProps({value: invalidValue});
             act(() => {
-                wrapper.update();
+                wrapper.update(); // set value to invalid value
+            });
+            jasmine.clock().tick(400);
+            act(() => {
+                wrapper.update(); // setTimeout call back set the debouncedValue
+            });
+            act(() => {
+                wrapper.update(); // validation of the debouncedValue
             });
 
-            jasmine.clock().tick(301);
             expect(wrapper.contains(validationMessage)).toBeTruthy();
+            jasmine.clock().uninstall();
         });
 
         it('should call prop validate on value change', () => {
