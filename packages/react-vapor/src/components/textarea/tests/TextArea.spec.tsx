@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
+import * as _ from 'underscore';
 
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
