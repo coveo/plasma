@@ -520,10 +520,12 @@ $step-progress-bar-doing-color: $caribbean-green;
 $step-progress-bar-to-do-color: #d8d8d8;
 
 // Badge
-$badge-font-size: 0.8em;
-$badge-height: 2em;
-$badge-padding: 0 1em;
+$badge-font-size: 0.77em;
+$badge-height: 2.77em;
+$badge-line-height: 2em;
+$badge-padding: 0.5em 1em;
 $badge-margin: 4px;
+$badge-border-radius: 2px;
 
 // Corner ribbon
 $ribbon-width: 10rem;

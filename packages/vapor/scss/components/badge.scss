@@ -6,7 +6,8 @@
     padding: $badge-padding;
     color: $pure-white;
     font-size: $badge-font-size;
-    line-height: $badge-height;
+    line-height: $badge-line-height;
+    text-transform: uppercase;
     background-color: $orange;
 
     &:last-child {
