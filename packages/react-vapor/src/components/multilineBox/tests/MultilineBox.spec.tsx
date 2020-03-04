@@ -242,6 +242,31 @@ describe('MultilineBox', () => {
 
                     expect(dataToBody[0].props).toEqual(theInitialProps);
                 });
+
+                it('should allow empty string as the default props', () => {
+                    const testId = 'cream';
+                    RTestUtils.mockUUID(testId);
+                    shallowWithState(
+                        <MultilineBox
+                            {...propsWithData}
+                            defaultProps=""
+                            renderBody={(data: IMultilineSingleBoxProps[]) => {
+                                dataToBody = data;
+                                return <div />;
+                            }}
+                        />,
+                        {
+                            multilineIds: {
+                                [id]: {
+                                    id: id,
+                                    list: ['uniqueID'],
+                                },
+                            },
+                        }
+                    ).dive();
+
+                    expect(dataToBody[0].props).toBe('');
+                });
             });
 
             describe('on component did update', () => {
