@@ -13,4 +13,8 @@
     &:last-child {
         margin-right: 0;
     }
+
+    &.mod-small {
+        font-size: $badge-mod-small-font-size;
+    }
 }
