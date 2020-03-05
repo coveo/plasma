@@ -32,6 +32,9 @@ export interface IMultilineInputProps
         IMultilineInputStateProps,
         IMultilineInputDispatchProps {}
 
+/**
+ * @deprecated use MultiValuesInput instead
+ */
 export class MultilineInput extends React.Component<IMultilineInputProps, any> {
     private handleChange(newValues: IMultilineInputValue[]) {
         if (this.props.onChange) {

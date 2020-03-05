@@ -47,6 +47,7 @@ export * from './modalPrompt';
 export * from './multiStepBar';
 export * from './multilineBox';
 export * from './multilineInput';
+export * from './multiValueInputs';
 export * from './navigation';
 export * from './numericInput';
 export * from './optionPicker';

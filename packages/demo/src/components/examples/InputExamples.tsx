@@ -4,7 +4,6 @@ import {
     AutocompleteConnected,
     Button,
     IItemBoxProps,
-    IMultilineInputValue,
     IMultilineSingleBoxProps,
     Input,
     InputConnected,
@@ -14,7 +13,8 @@ import {
     multilineBoxContainer,
     multilineBoxWithDnD,
     multilineBoxWithRemoveButton,
-    MultilineInput,
+    MultiValuesInput,
+    MultiValuesInputSelectors,
     Section,
     setDisabledInput,
     SplitMultilineInput,
@@ -167,23 +167,19 @@ const MessageWhenInputIsDirty = connect(
 
 const InputWithDirty = withDirtyInputHOC(InputConnected);
 
-const MultilineInputExample: React.FunctionComponent = () => {
-    const [inputValues, setInputValues] = React.useState([]);
-
+const MultiValuesInputId = 'multivalue-id';
+const mapStateToProps = (state) => ({
+    values: MultiValuesInputSelectors.getValues(state, MultiValuesInputId),
+});
+const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => {
     return (
-        <Section level={3} title="A multiline input with local state">
-            <MultilineInput
-                id="multiline-input"
-                title="A Multiline Input label"
-                placeholder="Enter a value"
-                values={inputValues}
-                onChange={(inputValuesWithNewValue: IMultilineInputValue[]) =>
-                    setInputValues(inputValuesWithNewValue.map((value) => value))
-                }
-            />
+        <Section level={3} title="Multi-value inputs">
+            <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
+            <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
         </Section>
     );
 };
+const MultilineInputExample = connect(mapStateToProps)(MultilineInputExampleDisconnected);
 
 const inputs: ISplitInput[] = [
     {
