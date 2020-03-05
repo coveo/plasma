@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.18.0](https://github.com/coveo/react-vapor/compare/v5.17.3...v5.18.0) (2020-03-05)
+
+
+### Features
+
+* **tablewithfilter:** allow specifying config through props ([aba7b13](https://github.com/coveo/react-vapor/commit/aba7b134d674ea72fc871f43f60d122e391d61a8))
+
+
+
+
+
 ## [5.17.3](https://github.com/coveo/react-vapor/compare/v5.17.2...v5.17.3) (2020-03-05)
 
 
