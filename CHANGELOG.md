@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.17.3](https://github.com/coveo/react-vapor/compare/v5.17.2...v5.17.3) (2020-03-05)
+
+
+### Bug Fixes
+
+* **multilinebox:** allow usage of empty string as defaultProps ([a97f82a](https://github.com/coveo/react-vapor/commit/a97f82ac3071d26f6c7989e99ee131114e2ffe90))
+
+
+
+
+
 ## [5.17.2](https://github.com/coveo/react-vapor/compare/v5.17.1...v5.17.2) (2020-03-04)
 
 
