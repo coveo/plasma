@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.19.0](https://github.com/coveo/react-vapor/compare/v5.18.0...v5.19.0) (2020-03-06)
+
+
+### Features
+
+* added Khoros icon ([05b58cc](https://github.com/coveo/react-vapor/commit/05b58cc25602645474368295594d9700047a1690))
+
+
+
+
+
 # [5.18.0](https://github.com/coveo/react-vapor/compare/v5.17.3...v5.18.0) (2020-03-05)
 
 
