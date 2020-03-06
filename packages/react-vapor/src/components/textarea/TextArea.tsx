@@ -82,7 +82,7 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
         return (
             !isValid && (
                 <div className={'pt1'}>
-                    <Label id={'textarea-validation-label'} className={'text-red'} {...props.validationLabelProps}>
+                    <Label id={props.id} className="text-red" {...props.validationLabelProps}>
                         {props.validationMessage}
                     </Label>
                 </div>
