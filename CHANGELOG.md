@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.19.1](https://github.com/coveo/react-vapor/compare/v5.19.0...v5.19.1) (2020-03-09)
+
+
+### Bug Fixes
+
+* **filterbox:** remove input text when reset filter value ([88ba0e5](https://github.com/coveo/react-vapor/commit/88ba0e575d1ec49344771d52a23ad09a95ac8e11))
+
+
+
+
+
 # [5.19.0](https://github.com/coveo/react-vapor/compare/v5.18.0...v5.19.0) (2020-03-06)
 
 
