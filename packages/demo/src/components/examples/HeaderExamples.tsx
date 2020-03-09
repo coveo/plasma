@@ -56,7 +56,9 @@ const BreadcrumbHeaders: React.FunctionComponent = () => (
                 breadcrumb={{...defaultBreadcrumb, links: [link1, {name: 'not a link'}, link2]}}
                 description="Simple description for the title"
                 hasBorderBottom={false}
-            />
+            >
+                <Svg svgName="brain" svgClass="icon mod-20 fill-dodger-blue ml1" />
+            </BreadcrumbHeader>
         </Section>
     </Section>
 );

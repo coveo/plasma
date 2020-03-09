@@ -32,7 +32,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps, {}> {
                 <ul className="flex">
                     {this.getLinks()}
                     <li className="breadcrumb-title truncate">
-                        <Title {...this.props.title} />
+                        <Title {...this.props.title}>{this.props.children}</Title>
                     </li>
                 </ul>
             </nav>
