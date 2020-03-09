@@ -61,6 +61,10 @@
             .navigation-menu-section {
                 .navigation-menu-section-link {
                     border-left: $navigation-active-border-width solid transparent;
+                    &:hover {
+                        background-color: $navigation-active-background-color;
+                        opacity: 1;
+                    }
                     &.state-active {
                         background-color: $navigation-active-background-color;
                         border-left-color: $orange;
@@ -76,6 +80,9 @@
 
                     font-size: $navigation-section-font-size;
                     cursor: pointer;
+                    &.no-collapse {
+                        cursor: default;
+                    }
 
                     .navigation-menu-section-header-icon {
                         width: $navigation-section-icon-size;
