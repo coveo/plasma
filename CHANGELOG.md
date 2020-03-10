@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.21.0](https://github.com/coveo/react-vapor/compare/v5.20.1...v5.21.0) (2020-03-10)
+
+
+### Features
+
+* **badgeexamples.tsx:** added mod-small example on badge ([05fafeb](https://github.com/coveo/react-vapor/commit/05fafebf7facfd7ddd7b1ce51cbb95fc9b9c0ba2))
+
+
+
+
+
 ## [5.20.1](https://github.com/coveo/react-vapor/compare/v5.20.0...v5.20.1) (2020-03-10)
 
 
