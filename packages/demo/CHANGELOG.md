@@ -3,6 +3,40 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.20.1](https://github.com/coveo/react-vapor/compare/v5.20.0...v5.20.1) (2020-03-10)
+
+### Bug Fixes
+
+-   **breadcrumbheader:** pass down children prop ([e9636b8](https://github.com/coveo/react-vapor/commit/e9636b8f8291648d7e2d49b85bef33bf1ecc766f))
+
+# [5.20.0](https://github.com/coveo/react-vapor/compare/v5.19.1...v5.20.0) (2020-03-10)
+
+### Features
+
+-   **input:** add multi values input to replace multiline input ([37d2cd2](https://github.com/coveo/react-vapor/commit/37d2cd26a87b91064726e1f9687fc4ee60bf46d0))
+
+## [5.19.1](https://github.com/coveo/react-vapor/compare/v5.19.0...v5.19.1) (2020-03-09)
+
+**Note:** Version bump only for package react-vapor-demo
+
+# [5.19.0](https://github.com/coveo/react-vapor/compare/v5.18.0...v5.19.0) (2020-03-06)
+
+**Note:** Version bump only for package react-vapor-demo
+
+# [5.18.0](https://github.com/coveo/react-vapor/compare/v5.17.3...v5.18.0) (2020-03-05)
+
+### Features
+
+-   **tablewithfilter:** allow specifying config through props ([aba7b13](https://github.com/coveo/react-vapor/commit/aba7b134d674ea72fc871f43f60d122e391d61a8))
+
+## [5.17.3](https://github.com/coveo/react-vapor/compare/v5.17.2...v5.17.3) (2020-03-05)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.17.2](https://github.com/coveo/react-vapor/compare/v5.17.1...v5.17.2) (2020-03-04)
+
+**Note:** Version bump only for package react-vapor-demo
+
 ## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
 
 **Note:** Version bump only for package react-vapor-demo

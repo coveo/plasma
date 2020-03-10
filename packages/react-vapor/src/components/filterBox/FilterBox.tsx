@@ -68,7 +68,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
     }
 
     componentDidUpdate(prevProps: IFilterBoxProps) {
-        if (this.props.filterText !== prevProps.filterText && this.filterInput?.value !== prevProps.filterText) {
+        if (this.props.filterText !== prevProps.filterText && this.filterInput?.value !== this.props.filterText) {
             this.handleChange(this.props.filterText);
         }
     }

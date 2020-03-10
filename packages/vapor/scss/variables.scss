@@ -237,7 +237,7 @@ $navigation-horizontal-space: $navigation-section-icon-size + $navigation-sectio
     $navigation-active-border-width;
 $navigation-right-margin: $navigation-section-arrow-margin;
 $navigation-locked-color: $medium-grey;
-$navigation-tag-font-size: 9px;
+$navigation-tag-font-size: 10px;
 $navigation-tag-padding: 2px 5px;
 $navigation-menu-section-height: 35px;
 $navigation-loading-height: 12px;
@@ -520,10 +520,13 @@ $step-progress-bar-doing-color: $caribbean-green;
 $step-progress-bar-to-do-color: #d8d8d8;
 
 // Badge
-$badge-font-size: 0.8em;
+$badge-font-size: 0.77em;
+$badge-mod-small-font-size: 9px;
 $badge-height: 2em;
-$badge-padding: 0 1em;
+$badge-line-height: 1em;
+$badge-padding: 0.5em 1em;
 $badge-margin: 4px;
+$badge-border-radius: 2px;
 
 // Corner ribbon
 $ribbon-width: 10rem;

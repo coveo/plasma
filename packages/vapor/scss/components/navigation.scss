@@ -106,8 +106,6 @@
 
                         cursor: pointer;
 
-                        opacity: 0.8;
-
                         .navigation-menu-section-item-link {
                             display: flex;
                             align-items: center;
@@ -121,6 +119,10 @@
 
                             &.state-locked {
                                 color: $navigation-locked-color;
+                            }
+                            .navigation-menu-section-item-link-name,
+                            .navigation-menu-section-item-link-icon {
+                                opacity: 0.8;
                             }
                         }
 
@@ -148,12 +150,18 @@
                         &.state-active {
                             background-color: $navigation-active-background-color;
                             border-left-color: $orange;
-                            opacity: 1;
+                            .navigation-menu-section-item-link-name,
+                            .navigation-menu-section-item-link-icon {
+                                opacity: 1;
+                            }
                         }
 
                         &:hover {
                             background-color: $navigation-active-background-color;
-                            opacity: 1;
+                            .navigation-menu-section-item-link-name,
+                            .navigation-menu-section-item-link-icon {
+                                opacity: 1;
+                            }
                         }
                     }
                 }
@@ -174,8 +182,6 @@
     font-size: $navigation-tag-font-size;
     text-transform: none;
     word-break: keep-all;
-    border: $default-border;
-    border-color: $orange;
     border-radius: $border-radius;
 }
 

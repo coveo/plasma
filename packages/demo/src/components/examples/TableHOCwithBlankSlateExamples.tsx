@@ -25,19 +25,19 @@ export interface IExampleRowData {
 const TableWithBlankSlateExample: React.FunctionComponent = () => (
     <Section>
         <TableWithBlankSlateComposed
-            id={'tableWithBlankSlate'}
+            id="tableWithBlankSlate"
             className="table"
             data={generateDataWithFacker(0)}
-            renderBody={generateTableRow}
+            renderBody={(data) => generateTableRow(data, 'tableWithBlankSlate')}
+            filterMatcher={(filter: string, data: IExampleRowData) =>
+                data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1
+            }
         />
     </Section>
 );
 
 const TableWithBlankSlateComposed = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
-    tableWithFilter({
-        matchFilter: (filter: string, data: IExampleRowData) =>
-            data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1,
-    }),
+    tableWithFilter(),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'})
-)(TableHOC);
+)(TableHOC) as ReturnType<ReturnType<typeof tableWithFilter>>;

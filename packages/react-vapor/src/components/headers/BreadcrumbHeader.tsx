@@ -23,7 +23,7 @@ export class BreadcrumbHeader extends React.Component<IBreadcrumbHeaderProps, {}
     render() {
         return (
             <HeaderWrapper {..._.omit(this.props, 'breadcrumb')}>
-                <Breadcrumb {...this.props.breadcrumb} />
+                <Breadcrumb {...this.props.breadcrumb}>{this.props.children}</Breadcrumb>
             </HeaderWrapper>
         );
     }
