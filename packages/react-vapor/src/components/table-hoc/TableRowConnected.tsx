@@ -17,6 +17,7 @@ import {TableSelectors} from './TableSelectors';
 export interface CollapsibleRowProps {
     content?: React.ReactNode;
     className?: string;
+    toggleClassName?: string;
     expandOnMount?: boolean;
     renderCustomToggleCell?: (opened: boolean) => React.ReactNode;
     onToggleCollapsible?: (open: boolean) => void;
@@ -143,7 +144,7 @@ class TableRowConnected extends React.PureComponent<
                         onClick={this.onToggleCollapsible}
                         expanded={this.props.opened}
                         svgClassName="mod-12"
-                        className="btn mod-no-border right px1"
+                        className={classNames('btn mod-no-border right px1', this.props.collapsible.toggleClassName)}
                     />
                 </td>
             );
