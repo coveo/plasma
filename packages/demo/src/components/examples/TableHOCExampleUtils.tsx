@@ -25,7 +25,7 @@ const generateRows = (allData: IExampleRowData[]) =>
             actions={tableActions(data.username)}
             isMultiselect
             disabled={i % 3 === 0}
-            collapsible={{content: <div className="py2">👋</div>}}
+            collapsible={{content: i % 2 ? <div className="py2">👋</div> : null}}
         >
             <TableRowNumberColumn number={i + 1} />
             <td key="city">{data.city}</td>
