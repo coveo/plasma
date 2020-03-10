@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.22.0](https://github.com/coveo/react-vapor/compare/v5.21.0...v5.22.0) (2020-03-10)
+
+
+### Features
+
+* **navigationsection.tsx:** added isLink prop and clean utility section ([9b8ca63](https://github.com/coveo/react-vapor/commit/9b8ca63bf005b327c66abe546bd474ebe18bd879))
+* **sidenavigation:** added style on sidenavigation link section ([8cec10c](https://github.com/coveo/react-vapor/commit/8cec10c0f3814f1f97a11f3ca2aef2bdacc1a8f0))
+
+
+
+
+
 # [5.21.0](https://github.com/coveo/react-vapor/compare/v5.20.1...v5.21.0) (2020-03-10)
 
 
