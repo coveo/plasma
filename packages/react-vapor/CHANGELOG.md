@@ -13,184 +13,102 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [5.20.1](https://github.com/coveo/react-vapor/compare/v5.20.0...v5.20.1) (2020-03-10)
 
-
 ### Bug Fixes
 
-* **breadcrumbheader:** pass down children prop ([e9636b8](https://github.com/coveo/react-vapor/commit/e9636b8f8291648d7e2d49b85bef33bf1ecc766f))
-
-
-
-
+-   **breadcrumbheader:** pass down children prop ([e9636b8](https://github.com/coveo/react-vapor/commit/e9636b8f8291648d7e2d49b85bef33bf1ecc766f))
 
 # [5.20.0](https://github.com/coveo/react-vapor/compare/v5.19.1...v5.20.0) (2020-03-10)
 
-
 ### Features
 
-* **input:** add multi values input to replace multiline input ([37d2cd2](https://github.com/coveo/react-vapor/commit/37d2cd26a87b91064726e1f9687fc4ee60bf46d0))
-
-
-
-
+-   **input:** add multi values input to replace multiline input ([37d2cd2](https://github.com/coveo/react-vapor/commit/37d2cd26a87b91064726e1f9687fc4ee60bf46d0))
 
 ## [5.19.1](https://github.com/coveo/react-vapor/compare/v5.19.0...v5.19.1) (2020-03-09)
 
-
 ### Bug Fixes
 
-* **filterbox:** remove input text when reset filter value ([88ba0e5](https://github.com/coveo/react-vapor/commit/88ba0e575d1ec49344771d52a23ad09a95ac8e11))
-
-
-
-
+-   **filterbox:** remove input text when reset filter value ([88ba0e5](https://github.com/coveo/react-vapor/commit/88ba0e575d1ec49344771d52a23ad09a95ac8e11))
 
 # [5.19.0](https://github.com/coveo/react-vapor/compare/v5.18.0...v5.19.0) (2020-03-06)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 # [5.18.0](https://github.com/coveo/react-vapor/compare/v5.17.3...v5.18.0) (2020-03-05)
-
 
 ### Features
 
-* **tablewithfilter:** allow specifying config through props ([aba7b13](https://github.com/coveo/react-vapor/commit/aba7b134d674ea72fc871f43f60d122e391d61a8))
-
-
-
-
+-   **tablewithfilter:** allow specifying config through props ([aba7b13](https://github.com/coveo/react-vapor/commit/aba7b134d674ea72fc871f43f60d122e391d61a8))
 
 ## [5.17.3](https://github.com/coveo/react-vapor/compare/v5.17.2...v5.17.3) (2020-03-05)
 
-
 ### Bug Fixes
 
-* **multilinebox:** allow usage of empty string as defaultProps ([a97f82a](https://github.com/coveo/react-vapor/commit/a97f82ac3071d26f6c7989e99ee131114e2ffe90))
-
-
-
-
+-   **multilinebox:** allow usage of empty string as defaultProps ([a97f82a](https://github.com/coveo/react-vapor/commit/a97f82ac3071d26f6c7989e99ee131114e2ffe90))
 
 ## [5.17.2](https://github.com/coveo/react-vapor/compare/v5.17.1...v5.17.2) (2020-03-04)
 
-
 ### Bug Fixes
 
-* **drop pod:** the Defaults.DROP_ROOT was not properly set ([e4e0393](https://github.com/coveo/react-vapor/commit/e4e0393989b7133ea7a1e0cf9259a1ac1e419ae3))
-* **input component:** added autoComplete to the native props interface ([14b1f78](https://github.com/coveo/react-vapor/commit/14b1f78e845aab5cc16a5a51e95c02d0ade73bdf))
-
-
-
-
+-   **drop pod:** the Defaults.DROP_ROOT was not properly set ([e4e0393](https://github.com/coveo/react-vapor/commit/e4e0393989b7133ea7a1e0cf9259a1ac1e419ae3))
+-   **input component:** added autoComplete to the native props interface ([14b1f78](https://github.com/coveo/react-vapor/commit/14b1f78e845aab5cc16a5a51e95c02d0ade73bdf))
 
 ## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
 
-
 ### Bug Fixes
 
-* **versions:** bump redux version to match admin's ([4892be3](https://github.com/coveo/react-vapor/commit/4892be39ed3f12e0c7788d2e83d193ab15cab81a))
-
-
-
-
+-   **versions:** bump redux version to match admin's ([4892be3](https://github.com/coveo/react-vapor/commit/4892be39ed3f12e0c7788d2e83d193ab15cab81a))
 
 # [5.17.0](https://github.com/coveo/react-vapor/compare/v5.16.1...v5.17.0) (2020-03-03)
 
-
 ### Features
 
-* **multiselectconnected.tsx:** +toggleClasses prop ([d75051b](https://github.com/coveo/react-vapor/commit/d75051b4945b7e5d70ecd80e76cc8e72d4e12ca5))
-* **selectconnected.tsx:** +toggleClasses in selectConnexted.tsx ([de96edd](https://github.com/coveo/react-vapor/commit/de96edd9c56d419a9999fcbbfcbfed723dde24a9))
-
-
-
-
+-   **multiselectconnected.tsx:** +toggleClasses prop ([d75051b](https://github.com/coveo/react-vapor/commit/d75051b4945b7e5d70ecd80e76cc8e72d4e12ca5))
+-   **selectconnected.tsx:** +toggleClasses in selectConnexted.tsx ([de96edd](https://github.com/coveo/react-vapor/commit/de96edd9c56d419a9999fcbbfcbfed723dde24a9))
 
 ## [5.16.1](https://github.com/coveo/react-vapor/compare/v5.16.0...v5.16.1) (2020-03-02)
 
-
 ### Bug Fixes
 
-* **partialstringmatch:** remove highlight for connected components ([a605cd7](https://github.com/coveo/react-vapor/commit/a605cd76df53c67e6249a45e49173343abcbf77b))
-
-
-
-
+-   **partialstringmatch:** remove highlight for connected components ([a605cd7](https://github.com/coveo/react-vapor/commit/a605cd76df53c67e6249a45e49173343abcbf77b))
 
 ## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
 
-
 ### Bug Fixes
 
-* **partialstringmatch:** allow rendering redux Provider inside it ([a51b518](https://github.com/coveo/react-vapor/commit/a51b518fc16ab9bf96056ea83ad0b5d790238eda))
-
-
-
-
+-   **partialstringmatch:** allow rendering redux Provider inside it ([a51b518](https://github.com/coveo/react-vapor/commit/a51b518fc16ab9bf96056ea83ad0b5d790238eda))
 
 ## [5.15.3](https://github.com/coveo/react-vapor/compare/v5.15.2...v5.15.3) (2020-03-02)
 
-
 ### Bug Fixes
 
-* **codemirror:** add missing import of codemirror style files ([a190966](https://github.com/coveo/react-vapor/commit/a1909664609ddbe8100712191bf815dc0d43960a))
-
-
-
-
+-   **codemirror:** add missing import of codemirror style files ([a190966](https://github.com/coveo/react-vapor/commit/a1909664609ddbe8100712191bf815dc0d43960a))
 
 ## [5.15.2](https://github.com/coveo/react-vapor/compare/v5.15.1...v5.15.2) (2020-03-02)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.15.1](https://github.com/coveo/react-vapor/compare/v5.15.0...v5.15.1) (2020-03-02)
-
 
 ### Bug Fixes
 
-* **input intefaces:** required props was autoFocus. not autofocus ([58ad08c](https://github.com/coveo/react-vapor/commit/58ad08c851edf2610ee1611d5bbef3cd983005cf))
-
-
-
-
+-   **input intefaces:** required props was autoFocus. not autofocus ([58ad08c](https://github.com/coveo/react-vapor/commit/58ad08c851edf2610ee1611d5bbef3cd983005cf))
 
 # [5.15.0](https://github.com/coveo/react-vapor/compare/v5.14.5...v5.15.0) (2020-02-28)
 
-
 ### Bug Fixes
 
-* **input:** added native html prop types for retro compatibility ([2690237](https://github.com/coveo/react-vapor/commit/26902371ed4b9b9bd57a4a9a0635371850075e6e))
-* **partialstringmatch:** allow class components without children ([6dcbff2](https://github.com/coveo/react-vapor/commit/6dcbff23906c1d42dd1cfb8d1a87eeef0461f968))
-
-
-
-
+-   **input:** added native html prop types for retro compatibility ([2690237](https://github.com/coveo/react-vapor/commit/26902371ed4b9b9bd57a4a9a0635371850075e6e))
+-   **partialstringmatch:** allow class components without children ([6dcbff2](https://github.com/coveo/react-vapor/commit/6dcbff23906c1d42dd1cfb8d1a87eeef0461f968))
 
 ## [5.14.5](https://github.com/coveo/react-vapor/compare/v5.14.4...v5.14.5) (2020-02-28)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.14.4](https://github.com/coveo/react-vapor/compare/v5.14.3...v5.14.4) (2020-02-28)
-
 
 ### Bug Fixes
 
-* **partialstringmatch:** allow rendering connected component as children ([a8bf221](https://github.com/coveo/react-vapor/commit/a8bf221efcc3367dc4a4c6ddbc823a2d50bc1e0c))
-
-
-
-
+-   **partialstringmatch:** allow rendering connected component as children ([a8bf221](https://github.com/coveo/react-vapor/commit/a8bf221efcc3367dc4a4c6ddbc823a2d50bc1e0c))
 
 ## [5.14.3](https://github.com/coveo/react-vapor/compare/v5.14.2...v5.14.3) (2020-02-27)
 

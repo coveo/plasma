@@ -12,6 +12,7 @@ export interface SideNavigationHeaderProps {
     svgClass?: string;
     customIcon?: React.ReactNode;
     onClick?: (event: React.MouseEvent) => void;
+    isLink?: boolean;
 }
 export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     /**
@@ -20,6 +21,7 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     header?: ISideNavigationHeaderProps;
     expandable?: boolean;
     expanded?: boolean;
+    isActive?: boolean;
     onClick?: () => void;
 }
 
@@ -30,20 +32,28 @@ const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName
             svgClass={classNames('navigation-menu-section-header-icon icon mod-lg transparency-3 fill-white', svgClass)}
         />
     ) : (
-        <span className="navigation-menu-section-header-icon" />
+        <span className="navigation-menu-section-header-no-icon" />
     );
 
-const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps> = ({
+const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps &
+    Pick<ISideNavigationSectionProps, 'expandable'>> = ({
     customIcon,
     onClick,
     children,
+    expandable,
+    isLink,
     ...iconProps
-}) => (
-    <div className="navigation-menu-section-header text-white" onClick={onClick}>
-        {customIcon || <HeaderIcon {...iconProps} />}
-        {children}
-    </div>
-);
+}) => {
+    const headerClass =
+        expandable || isLink ? 'navigation-menu-section-header' : 'navigation-menu-section-header no-collapse';
+
+    return (
+        <div className={`${headerClass} text-white`} onClick={onClick}>
+            {customIcon || <HeaderIcon {...iconProps} />}
+            {children}
+        </div>
+    );
+};
 
 export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationSectionProps> = ({
     expandable,
@@ -52,15 +62,42 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
     onClick,
     header,
     children,
+    isActive,
+    isLink,
     ...headerProps
 }) => {
+    const ref = React.useRef(null);
+
+    React.useEffect(() => {
+        if (isActive && ref.current) {
+            ref.current.scrollIntoView({behavior: 'instant', block: 'nearest'});
+        }
+    }, [isActive]);
+
+    const sectionClasses = classNames('navigation-menu-section-link', {'state-active': isActive});
     const headerTitle = title || (header && header.title);
     const sectionHeader = headerTitle && (
-        <SideNavigationHeader {..._.extend({}, header, headerProps)} onClick={expandable ? _.noop : onClick}>
+        <SideNavigationHeader
+            {..._.extend({}, header, headerProps)}
+            expandable={expandable}
+            isLink={isLink}
+            onClick={expandable ? _.noop : onClick}
+        >
             {headerTitle}
         </SideNavigationHeader>
     );
-    const items = <div className="navigation-menu-section-items">{children}</div>;
+
+    const items = children ? <div className="navigation-menu-section-items">{children}</div> : null;
+    const sectionLink = isLink ? (
+        <div className={sectionClasses} ref={ref}>
+            {sectionHeader}
+        </div>
+    ) : (
+        <div className={'navigation-menu-section'}>
+            {sectionHeader}
+            {items}
+        </div>
+    );
 
     return expandable ? (
         <Collapsible
@@ -74,9 +111,6 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
             {items}
         </Collapsible>
     ) : (
-        <div className="navigation-menu-section">
-            {sectionHeader}
-            {items}
-        </div>
+        sectionLink
     );
 };

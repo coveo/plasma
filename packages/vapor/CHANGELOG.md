@@ -13,52 +13,29 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [5.19.0](https://github.com/coveo/react-vapor/compare/v5.18.0...v5.19.0) (2020-03-06)
 
-
 ### Features
 
-* added Khoros icon ([05b58cc](https://github.com/coveo/react-vapor/commit/05b58cc25602645474368295594d9700047a1690))
-
-
-
-
+-   added Khoros icon ([05b58cc](https://github.com/coveo/react-vapor/commit/05b58cc25602645474368295594d9700047a1690))
 
 ## [5.15.3](https://github.com/coveo/react-vapor/compare/v5.15.2...v5.15.3) (2020-03-02)
 
-
 ### Bug Fixes
 
-* **codemirror:** add missing import of codemirror style files ([a190966](https://github.com/coveo/react-vapor/commit/a1909664609ddbe8100712191bf815dc0d43960a))
-
-
-
-
+-   **codemirror:** add missing import of codemirror style files ([a190966](https://github.com/coveo/react-vapor/commit/a1909664609ddbe8100712191bf815dc0d43960a))
 
 ## [5.15.2](https://github.com/coveo/react-vapor/compare/v5.15.1...v5.15.2) (2020-03-02)
 
 **Note:** Version bump only for package coveo-styleguide
 
-
-
-
-
 # [5.15.0](https://github.com/coveo/react-vapor/compare/v5.14.5...v5.15.0) (2020-02-28)
-
 
 ### Features
 
-* **variables:** add big panel header height and mod card list paddings ([#1474](https://github.com/coveo/react-vapor/issues/1474)) ([4a56a83](https://github.com/coveo/react-vapor/commit/4a56a83bde0075f5f05892dbd8c338b92198bb23))
-
-
-
-
+-   **variables:** add big panel header height and mod card list paddings ([#1474](https://github.com/coveo/react-vapor/issues/1474)) ([4a56a83](https://github.com/coveo/react-vapor/commit/4a56a83bde0075f5f05892dbd8c338b92198bb23))
 
 ## [5.14.5](https://github.com/coveo/react-vapor/compare/v5.14.4...v5.14.5) (2020-02-28)
 
 **Note:** Version bump only for package coveo-styleguide
-
-
-
-
 
 ## [5.14.3](https://github.com/coveo/react-vapor/compare/v5.14.2...v5.14.3) (2020-02-27)
 

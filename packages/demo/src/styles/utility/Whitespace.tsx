@@ -1,5 +1,6 @@
 import * as React from 'react';
 
+import {Section} from 'react-vapor';
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function Whitespace() {
@@ -18,7 +19,7 @@ export default function Whitespace() {
             }
             withSource
         >
-            <div className="text-white">
+            <Section level={2} title="Paddings" description="Give custom padding to your element">
                 <div className="p2 bg-red">Use p0[..n] to add a uniform padding around the box.</div>
                 <br />
 
@@ -27,7 +28,8 @@ export default function Whitespace() {
 
                 <div className="py1 bg-yellow">Use py1[..n] to add padding top and bottom (y axis).</div>
                 <br />
-
+            </Section>
+            <Section level={2} title="Margins" description="Give custom margin to your element">
                 <div className="m2 bg-green">Use m0[..n] to add a uniform margin around the box.</div>
 
                 <div className="mt2 bg-blue">
@@ -44,7 +46,7 @@ export default function Whitespace() {
                 <div className="mx-auto" style={{width: 200, backgroundColor: 'darkmagenta'}}>
                     Use mx-auto to have a auto margin-left and margin-right.
                 </div>
-            </div>
+            </Section>
         </VaporComponent>
     );
 }

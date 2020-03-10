@@ -16,171 +16,91 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ## [5.20.1](https://github.com/coveo/react-vapor/compare/v5.20.0...v5.20.1) (2020-03-10)
 
-
 ### Bug Fixes
 
-* **breadcrumbheader:** pass down children prop ([e9636b8](https://github.com/coveo/react-vapor/commit/e9636b8f8291648d7e2d49b85bef33bf1ecc766f))
-
-
-
-
+-   **breadcrumbheader:** pass down children prop ([e9636b8](https://github.com/coveo/react-vapor/commit/e9636b8f8291648d7e2d49b85bef33bf1ecc766f))
 
 # [5.20.0](https://github.com/coveo/react-vapor/compare/v5.19.1...v5.20.0) (2020-03-10)
 
-
 ### Features
 
-* **input:** add multi values input to replace multiline input ([37d2cd2](https://github.com/coveo/react-vapor/commit/37d2cd26a87b91064726e1f9687fc4ee60bf46d0))
-
-
-
-
+-   **input:** add multi values input to replace multiline input ([37d2cd2](https://github.com/coveo/react-vapor/commit/37d2cd26a87b91064726e1f9687fc4ee60bf46d0))
 
 ## [5.19.1](https://github.com/coveo/react-vapor/compare/v5.19.0...v5.19.1) (2020-03-09)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 # [5.19.0](https://github.com/coveo/react-vapor/compare/v5.18.0...v5.19.0) (2020-03-06)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 # [5.18.0](https://github.com/coveo/react-vapor/compare/v5.17.3...v5.18.0) (2020-03-05)
-
 
 ### Features
 
-* **tablewithfilter:** allow specifying config through props ([aba7b13](https://github.com/coveo/react-vapor/commit/aba7b134d674ea72fc871f43f60d122e391d61a8))
-
-
-
-
+-   **tablewithfilter:** allow specifying config through props ([aba7b13](https://github.com/coveo/react-vapor/commit/aba7b134d674ea72fc871f43f60d122e391d61a8))
 
 ## [5.17.3](https://github.com/coveo/react-vapor/compare/v5.17.2...v5.17.3) (2020-03-05)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 ## [5.17.2](https://github.com/coveo/react-vapor/compare/v5.17.1...v5.17.2) (2020-03-04)
 
 **Note:** Version bump only for package react-vapor-demo
-
-
-
-
 
 ## [5.17.1](https://github.com/coveo/react-vapor/compare/v5.17.0...v5.17.1) (2020-03-03)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 # [5.17.0](https://github.com/coveo/react-vapor/compare/v5.16.1...v5.17.0) (2020-03-03)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 ## [5.16.1](https://github.com/coveo/react-vapor/compare/v5.16.0...v5.16.1) (2020-03-02)
-
 
 ### Bug Fixes
 
-* **singleselect:** make item selection work ([6e12aed](https://github.com/coveo/react-vapor/commit/6e12aedfe97149c3f616a0be91c77dbc1445208a))
-
-
-
-
+-   **singleselect:** make item selection work ([6e12aed](https://github.com/coveo/react-vapor/commit/6e12aedfe97149c3f616a0be91c77dbc1445208a))
 
 # [5.16.0](https://github.com/coveo/react-vapor/compare/v5.15.4...v5.16.0) (2020-03-02)
 
-
 ### Features
 
-* **style/cards:** refactor and navigationSection modification ([24adf8f](https://github.com/coveo/react-vapor/commit/24adf8f76893144fe39f3107141a482bb611b19b))
-
-
-
-
+-   **style/cards:** refactor and navigationSection modification ([24adf8f](https://github.com/coveo/react-vapor/commit/24adf8f76893144fe39f3107141a482bb611b19b))
 
 ## [5.15.4](https://github.com/coveo/react-vapor/compare/v5.15.3...v5.15.4) (2020-03-02)
 
-
 ### Bug Fixes
 
-* **partialstringmatch:** allow rendering redux Provider inside it ([a51b518](https://github.com/coveo/react-vapor/commit/a51b518fc16ab9bf96056ea83ad0b5d790238eda))
-
-
-
-
+-   **partialstringmatch:** allow rendering redux Provider inside it ([a51b518](https://github.com/coveo/react-vapor/commit/a51b518fc16ab9bf96056ea83ad0b5d790238eda))
 
 ## [5.15.3](https://github.com/coveo/react-vapor/compare/v5.15.2...v5.15.3) (2020-03-02)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 ## [5.15.2](https://github.com/coveo/react-vapor/compare/v5.15.1...v5.15.2) (2020-03-02)
 
 **Note:** Version bump only for package react-vapor-demo
-
-
-
-
 
 ## [5.15.1](https://github.com/coveo/react-vapor/compare/v5.15.0...v5.15.1) (2020-03-02)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 # [5.15.0](https://github.com/coveo/react-vapor/compare/v5.14.5...v5.15.0) (2020-02-28)
-
 
 ### Bug Fixes
 
-* **partialstringmatch:** allow class components without children ([6dcbff2](https://github.com/coveo/react-vapor/commit/6dcbff23906c1d42dd1cfb8d1a87eeef0461f968))
-
-
-
-
+-   **partialstringmatch:** allow class components without children ([6dcbff2](https://github.com/coveo/react-vapor/commit/6dcbff23906c1d42dd1cfb8d1a87eeef0461f968))
 
 ## [5.14.5](https://github.com/coveo/react-vapor/compare/v5.14.4...v5.14.5) (2020-02-28)
 
 **Note:** Version bump only for package react-vapor-demo
 
-
-
-
-
 ## [5.14.4](https://github.com/coveo/react-vapor/compare/v5.14.3...v5.14.4) (2020-02-28)
-
 
 ### Bug Fixes
 
-* **partialstringmatch:** allow rendering connected component as children ([a8bf221](https://github.com/coveo/react-vapor/commit/a8bf221efcc3367dc4a4c6ddbc823a2d50bc1e0c))
-
-
-
-
+-   **partialstringmatch:** allow rendering connected component as children ([a8bf221](https://github.com/coveo/react-vapor/commit/a8bf221efcc3367dc4a4c6ddbc823a2d50bc1e0c))
 
 ## [5.14.3](https://github.com/coveo/react-vapor/compare/v5.14.2...v5.14.3) (2020-02-27)
 

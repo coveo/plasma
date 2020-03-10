@@ -59,6 +59,18 @@
 
         .navigation-menu-sections {
             .navigation-menu-section {
+                .navigation-menu-section-link {
+                    border-left: $navigation-active-border-width solid transparent;
+                    &:hover {
+                        background-color: $navigation-active-background-color;
+                        opacity: 1;
+                    }
+                    &.state-active {
+                        background-color: $navigation-active-background-color;
+                        border-left-color: $orange;
+                        opacity: 1;
+                    }
+                }
                 .navigation-menu-section-header {
                     position: relative;
                     display: flex;
@@ -68,11 +80,19 @@
 
                     font-size: $navigation-section-font-size;
                     cursor: pointer;
+                    &.no-collapse {
+                        cursor: default;
+                    }
 
                     .navigation-menu-section-header-icon {
                         width: $navigation-section-icon-size;
                         height: $navigation-section-icon-size;
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
+                    }
+                    .navigation-menu-section-header-no-icon {
+                        height: $navigation-menu-section-height;
+                        margin-right: $navigation-right-margin;
+                        padding-left: $navigation-section-icon-margin-left;
                     }
                 }
 
