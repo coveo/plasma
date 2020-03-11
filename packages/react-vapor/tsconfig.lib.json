@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "rootDir": "./",
+        "declaration": false,
+        "module": "CommonJS",
+        "allowJs": true,
+        "removeComments": false,
+        "target": "ES5",
+        "types": []
+    }
+}

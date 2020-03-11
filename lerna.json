@@ -13,6 +13,15 @@
         "version": {
             "conventionalCommits": true,
             "message": "chore(release): publish %s [skip travis]"
+        },
+        "bootstrap": {
+            "hoist": true,
+            "nohoist": [
+                "unidiff",
+                "query-string",
+                "strict-uri-encode",
+                "split-on-first"
+            ]
         }
     }
 }

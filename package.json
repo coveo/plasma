@@ -35,7 +35,7 @@
         "not dead"
     ],
     "scripts": {
-        "setup": "npx lerna bootstrap --no-ci --hoist",
+        "setup": "npx lerna bootstrap --no-ci",
         "start": "npm run build && lerna run start --parallel",
         "test": "lerna run test --parallel",
         "build": "lerna run build --stream",
