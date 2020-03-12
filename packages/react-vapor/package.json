@@ -14,7 +14,7 @@
     "author": "Coveo",
     "license": "Apache-2.0",
     "main": "dist/react-vapor.js",
-    "types": "dist/definitions/Entry.d.ts",
+    "types": "dist/definitions/src/Entry.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/react-vapor.git"
