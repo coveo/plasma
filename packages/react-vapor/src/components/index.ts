@@ -79,3 +79,4 @@ export * from './tooltip';
 export * from './userFeedback';
 export * from './pagination';
 export * from './validation';
+export * from './filepicker';
