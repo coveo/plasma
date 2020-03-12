@@ -93,4 +93,5 @@ export const TableLoading = {
     Table,
     Body,
     Row,
+    CardSubRow,
 };
