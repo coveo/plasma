@@ -29,6 +29,9 @@ export const LoadingExamples = () => (
         <Section level={3} title="Table with 6 column and 5 row in loading">
             <TableLoading.Table numberOfColumns={6} numberOfRow={5} />
         </Section>
+        <Section level={3} title="Table of cards with 4 column in loading">
+            <TableLoading.Table isCard numberOfColumns={2} numberOfRow={2} numberOfSubRow={4} />
+        </Section>
         <Section level={3} title="Table pagination in loading">
             <PaginationLoading />
         </Section>

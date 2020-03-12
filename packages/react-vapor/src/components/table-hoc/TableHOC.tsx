@@ -25,6 +25,7 @@ export interface ITableHOCOwnProps {
     tbodyClassName?: string;
     showBorderTop?: boolean;
     loading?: {
+        isCard?: boolean;
         numberOfColumns?: number;
         defaultLoadingRow?: number;
     };
@@ -39,6 +40,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         actions: [],
         showBorderTop: false,
         loading: {
+            isCard: false,
             numberOfColumns: 5,
             defaultLoadingRow: PER_PAGE_NUMBERS[1],
         },

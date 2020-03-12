@@ -15,6 +15,43 @@
     }
 }
 
+td.table-card-loading {
+    border: none;
+
+    .table-card-cell-loading {
+        padding: 16px;
+        border-color: $grey-3;
+        border-style: solid;
+        border-width: 2px;
+        border-radius: 3px;
+
+        & p:first-child .card-cell-content-loading {
+            width: 55%;
+            min-width: 55%;
+        }
+
+        & p:not(:first-child) .card-cell-content-loading {
+            @extend .bg-grey-1;
+        }
+    }
+}
+
+.card-cell-row-loading {
+    @extend .table-cell-loading;
+    width: 100%;
+
+    .card-cell-content-loading {
+        @extend .table-cell-content-loading;
+
+        width: 60%;
+        min-width: 60%;
+        &.mod-half {
+            width: 48%;
+            min-width: 48%;
+        }
+    }
+}
+
 .table-header-action-button-loading-width {
     width: $table-header-action-button-loading-width;
 }
