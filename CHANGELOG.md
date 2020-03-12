@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.22.2](https://github.com/coveo/react-vapor/compare/v5.22.1...v5.22.2) (2020-03-12)
+
+
+### Bug Fixes
+
+* **es6-lib:** es6 library ([0a2c2fe](https://github.com/coveo/react-vapor/commit/0a2c2febd0323c5d195e6db5e6f04eb7b97e3cd7))
+
+
+
+
+
 ## [5.22.1](https://github.com/coveo/react-vapor/compare/v5.22.0...v5.22.1) (2020-03-12)
 
 

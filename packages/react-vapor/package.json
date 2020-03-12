@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "5.22.1",
+    "version": "5.22.2",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -45,9 +45,9 @@
         "react-modal": "3.10.1",
         "react-tether": "1.0.4",
         "react-textarea-autosize": "7.1.0",
-        "unidiff": "0.0.4",
         "split-on-first": "1.x.x",
-        "strict-uri-encode": "2.x.x"
+        "strict-uri-encode": "2.x.x",
+        "unidiff": "0.0.4"
     },
     "peerDependencies": {
         "codemirror": "^5.39.2",
