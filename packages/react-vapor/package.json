@@ -45,7 +45,9 @@
         "react-modal": "3.10.1",
         "react-tether": "1.0.4",
         "react-textarea-autosize": "7.1.0",
-        "unidiff": "0.0.4"
+        "unidiff": "0.0.4",
+        "split-on-first": "1.x.x",
+        "strict-uri-encode": "2.x.x"
     },
     "peerDependencies": {
         "codemirror": "^5.39.2",
