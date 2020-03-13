@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.24.1](https://github.com/coveo/react-vapor/compare/v5.24.0...v5.24.1) (2020-03-13)
+
+
+### Bug Fixes
+
+* **ie-11-drop:** ie 11 drop ([455ac92](https://github.com/coveo/react-vapor/commit/455ac9296ddc4bdcb5f27f613fb69ff80cc65813))
+
+
+
+
+
 # [5.24.0](https://github.com/coveo/react-vapor/compare/v5.23.0...v5.24.0) (2020-03-13)
 
 
