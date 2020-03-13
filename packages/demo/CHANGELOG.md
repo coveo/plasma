@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.24.0](https://github.com/coveo/react-vapor/compare/v5.23.0...v5.24.0) (2020-03-13)
+
+
+### Bug Fixes
+
+* **textarea:** fix textarea examples ([e8f9efa](https://github.com/coveo/react-vapor/commit/e8f9efa91afe0b292872eca4df0730e822a957c3))
+
+
+### Features
+
+* **textarea:** add validation to textarea + refactoring with hooks ([721b0c4](https://github.com/coveo/react-vapor/commit/721b0c48ae546f33292435809f33843f39c3eef7))
+
+
+
+
+
 # [5.23.0](https://github.com/coveo/react-vapor/compare/v5.22.2...v5.23.0) (2020-03-13)
 
 
