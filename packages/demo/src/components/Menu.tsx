@@ -10,7 +10,7 @@ export interface IMenuProps {
 }
 
 const Menu: React.FunctionComponent<IMenuProps> = ({components}) => (
-    <SideNavigation>
+    <SideNavigation className="demo-side-nav">
         <NavigationSection notExpandable>
             {components.map(({path, name, component}) => (
                 <NavigationLink

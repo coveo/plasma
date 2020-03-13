@@ -1,9 +1,7 @@
-import * as classNames from 'classnames';
 import * as React from 'react';
 import {Route, RouteChildrenProps, RouteComponentProps, withRouter} from 'react-router';
 import {Link} from 'react-router-dom';
 import {ISideNavigationSectionProps, SideNavigationMenuSection} from 'react-vapor';
-import * as _ from 'underscore';
 
 type NavSectionControlledProps = Omit<ISideNavigationSectionProps, 'expanded' | 'expandable'>;
 
@@ -29,11 +27,7 @@ const Section: React.FunctionComponent<NavSectionProps> = ({
             children={(routeProps: RouteChildrenProps) => (
                 <div className={'navigation-menu-section'}>
                     <Link to={baseUrl}>
-                        <SideNavigationMenuSection
-                            isActive={!!routeProps.match}
-                            isLink
-                            {...rest}
-                        ></SideNavigationMenuSection>
+                        <SideNavigationMenuSection isActive={!!routeProps.match} isLink {...rest} />
                     </Link>
                 </div>
             )}

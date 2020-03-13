@@ -3,31 +3,25 @@ import './demo-styling/main.scss';
 
 import loadable from '@loadable/component';
 import * as React from 'react';
-import {HashRouter as Router, Link, Redirect, Route} from 'react-router-dom';
-import {Loading} from 'react-vapor';
+import {HashRouter as Router, Redirect, Route} from 'react-router-dom';
+import {Loading, TabNavigation} from 'react-vapor';
+
+import logo from '../resources/vapor_logo.svg';
+import TopNavLink from './demo-building-blocs/TopNavLink';
 
 function TopNav() {
     return (
-        <div>
-            <Link to="/styles" className="btn">
-                Styles
-            </Link>
-            <Link to="/components" className="btn">
-                Components
-            </Link>
-        </div>
+        <TabNavigation className="mod-no-border top-navigation">
+            <TopNavLink name="Styles" href="/styles" />
+            <TopNavLink name="Components" href="/components" />
+        </TabNavigation>
     );
 }
 
 function Header() {
     return (
-        <div id="header" className="header flex flex-center space-between p2" style={{minHeight: '65px'}}>
-            <h1 className="h1">
-                Vapor
-                {' / '}
-                <Route path="/styles" component={() => <span>Styles</span>} />
-                <Route path="/components" component={() => <span>Components</span>} />
-            </h1>
+        <div id="header" className="flex flex-center space-between p2" style={{minHeight: '90px'}}>
+            <img src={logo} className="header-title" />
             <TopNav />
         </div>
     );
@@ -41,7 +35,7 @@ function Demo() {
     return (
         <Router>
             <Header />
-            <div className="container flex-auto overflow-auto" style={{height: 'calc(100% - 65px)'}}>
+            <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
                 <Route path="/components" component={LoadableComponents} />
                 <Route path="/styles" component={LoadableStyles} />
                 <Route exact path="/" component={() => <Redirect to="/components" />} />

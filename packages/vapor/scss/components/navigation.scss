@@ -25,11 +25,6 @@
         height: $slim-scroll-bar-width + $navigation-border-for-scroll-bar * 2;
     }
 
-    &::-webkit-scrollbar-thumb,
-    ::-webkit-scrollbar-thumb {
-        border: $navigation-border-for-scroll-bar solid $purple-blue;
-    }
-
     *,
     *:before,
     *:after {
@@ -76,6 +71,7 @@
                     display: flex;
                     align-items: center;
                     height: 55px;
+                    color: $white;
                     font-weight: $navigation-menu-header-font-weight;
 
                     font-size: $navigation-section-font-size;

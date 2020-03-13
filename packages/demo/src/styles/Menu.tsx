@@ -5,7 +5,7 @@ import NavigationLink from '../demo-building-blocs/NavigationLink';
 import NavigationSection from '../demo-building-blocs/NavigationSection';
 
 const Navigation: React.FunctionComponent = () => (
-    <SideNavigation>
+    <SideNavigation className="demo-side-nav">
         <NavigationSection title="General Guidelines" baseUrl="/general-guidelines" isLink />
         <NavigationSection title="Borders" baseUrl="/borders" isLink />
         <NavigationSection title="Cards" baseUrl="/cards">

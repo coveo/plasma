@@ -13,6 +13,7 @@ export interface SideNavigationHeaderProps {
     customIcon?: React.ReactNode;
     onClick?: (event: React.MouseEvent) => void;
     isLink?: boolean;
+    className?: string;
 }
 export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     /**
@@ -42,13 +43,20 @@ const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps &
     children,
     expandable,
     isLink,
+    className,
     ...iconProps
 }) => {
-    const headerClass =
-        expandable || isLink ? 'navigation-menu-section-header' : 'navigation-menu-section-header no-collapse';
-
     return (
-        <div className={`${headerClass} text-white`} onClick={onClick}>
+        <div
+            className={classNames(
+                'navigation-menu-section-header',
+                {
+                    'no-collapse': !expandable && !isLink,
+                },
+                className
+            )}
+            onClick={onClick}
+        >
             {customIcon || <HeaderIcon {...iconProps} />}
             {children}
         </div>
