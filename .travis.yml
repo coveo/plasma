@@ -72,8 +72,8 @@ deploy:
           branch: master
 
 after_script:
-    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then ./create-live-demo.sh; fi' # run this line on pull request builds only
-    - 'if [ "$TRAVIS_BRANCH" = "master" ] && [ "$TRAVIS_PULL_REQUEST" = "" ]; then node ./invalidate-cloudfront.js; fi'
+    - 'if [ "$TRAVIS_PULL_REQUEST" != "false" ]; then node ./create-live-demo.js; fi' # run this line on pull request builds only
+    - 'node ./invalidate-cloudfront.js'
 
 notifications:
     email:
