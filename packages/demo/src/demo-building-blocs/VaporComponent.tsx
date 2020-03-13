@@ -1,12 +1,12 @@
-import * as classNames from 'classnames';
 import * as React from 'react';
+import {BasicHeader, Form} from 'react-vapor';
 
 import Code from './Code';
 
 interface VaporComponentProps {
     id: string;
     title: string;
-    usage?: React.ReactNode;
+    usage?: string;
     stylesheet?: string;
     withSource?: boolean;
 }
@@ -15,29 +15,20 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     id,
     title,
     usage,
-    className,
     children,
-    style,
     withSource,
 }) => (
-    <article className="sg-component" id={id}>
-        <header className="sg-component-header">
-            <h1 className="text-medium-blue">{title}</h1>
-            {usage && <p className="sg-component-description">{usage}</p>}
-        </header>
-
-        <div className="sg-component-body">
-            <div className={classNames('sg-component-display relative', className)} style={style || {}}>
-                {children}
-            </div>
-            <div className="clearfix mb4" />
+    <div id={id}>
+        <BasicHeader title={{text: title}} description={usage} />
+        <Form className="mod-header-padding mod-form-top-bottom-padding">
+            {children}
             {withSource && (
-                <div className="sg-component-source">
+                <div className="mt2">
                     <Code language="html">{children}</Code>
                 </div>
             )}
-        </div>
-    </article>
+        </Form>
+    </div>
 );
 
 export default VaporComponent;

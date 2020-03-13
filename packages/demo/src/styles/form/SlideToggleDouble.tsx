@@ -10,20 +10,22 @@ export default function SlideToggleDouble() {
             usage="A slide toggle with two options"
             withSource
         >
-            <label className="coveo-slide-toggle-double first" htmlFor="choice">
-                Choice 1
-            </label>
-            <input
-                type="checkbox"
-                className="coveo-slide-toggle-double"
-                name="choice"
-                id="choice"
-                defaultChecked={false}
-            />
-            <span />
-            <label className="coveo-slide-toggle-double second" htmlFor="choice">
-                Choice 2
-            </label>
+            <div className="coveo-slide-toggle-double-container">
+                <label className="coveo-slide-toggle-double first" htmlFor="choice">
+                    Choice 1
+                </label>
+                <input
+                    type="checkbox"
+                    className="coveo-slide-toggle-double"
+                    name="choice"
+                    id="choice"
+                    defaultChecked={false}
+                />
+                <span />
+                <label className="coveo-slide-toggle-double second" htmlFor="choice">
+                    Choice 2
+                </label>
+            </div>
         </VaporComponent>
     );
 }

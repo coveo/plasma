@@ -5,20 +5,7 @@ import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
 export default function Whitespace() {
     return (
-        <VaporComponent
-            id="whitespace"
-            title="Whitespace"
-            usage={
-                <>
-                    Immutable margin and padding utilities are based on a multiple of a basic spacing unit.
-                    <br />
-                    flexibility and quicker iteration when designing in the browser.
-                    <br />
-                    Those classes are available from p0 to p2 and m0 to m2.
-                </>
-            }
-            withSource
-        >
+        <VaporComponent id="whitespace" title="Whitespace" withSource>
             <Section level={2} title="Paddings" description="Give custom padding to your element">
                 <div className="p2 bg-red">Use p0[..n] to add a uniform padding around the box.</div>
                 <br />

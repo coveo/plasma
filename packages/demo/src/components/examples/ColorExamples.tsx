@@ -26,17 +26,18 @@ export class ColorExamples extends React.Component {
             )
         );
         return (
-            <div className="my2">
-                <h1 className="text-medium-blue mb1 bold">Colors</h1>
-                <table className="table mod-width-50 mod-border">
-                    <thead className="">
+            <table className="table">
+                <thead>
+                    <tr>
                         <th>Sample</th>
                         <th>Name</th>
                         <th>Value</th>
-                    </thead>
-                    <tbody>{colors}</tbody>
-                </table>
-            </div>
+                    </tr>
+                </thead>
+                <tbody>{colors}</tbody>
+            </table>
         );
     }
 }
+
+// start-print

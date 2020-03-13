@@ -7,5 +7,5 @@
         "downlevelIteration": true
     },
     "exclude": ["node_modules", "dist", "*.js"],
-    "include": ["src"]
+    "include": ["src", "types"]
 }
