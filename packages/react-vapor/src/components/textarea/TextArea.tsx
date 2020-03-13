@@ -4,12 +4,9 @@ import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
+import {IDispatch, ReduxUtils} from '../../utils';
+import {ILabelProps} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
-
-/**
- * TODO: autoresize is not yet implemented on TextArea
- */
 
 export interface ITextAreaOwnProps {
     id: string;
@@ -31,6 +28,9 @@ export interface ITextAreaOwnProps {
     isAutosize?: boolean;
 
     onChangeCallback?: (event: React.ChangeEvent<HTMLTextAreaElement>) => void;
+    validate?: (value: string) => boolean;
+    validationMessage?: string;
+    validationLabelProps?: ILabelProps;
 }
 
 export interface ITextAreaStateProps {
@@ -57,43 +57,52 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
     onUnmount: () => dispatch(removeTextArea(ownProps.id)),
 });
 
-export class TextArea extends React.Component<ITextAreaProps, {}> {
-    static defaultProps: Partial<ITextAreaOwnProps> = {
-        additionalAttributes: {},
-        className: '',
+export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
+    const [debouncedValue, setDebouncedValue] = React.useState(props.value);
+    const [isValid, setIsValid] = React.useState(true);
+
+    React.useEffect(() => {
+        const timeout = setTimeout(() => {
+            setDebouncedValue(props.value);
+        }, 300);
+        return () => clearTimeout(timeout);
+    }, [props.value]);
+
+    React.useEffect(() => {
+        setIsValid(props.validate?.(debouncedValue));
+    }, [debouncedValue]);
+
+    React.useEffect(() => {
+        props.onMount?.();
+        setIsValid(true);
+        return props.onUnmount;
+    }, []);
+
+    const getValidationLabel = () => {
+        return !isValid && <div className="full-content-x generic-form-error my1">{props.validationMessage}</div>;
     };
 
-    componentWillMount() {
-        if (this.props.onMount) {
-            this.props.onMount();
-        }
-    }
+    const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+        props.onChange?.(e);
+        props.onChangeCallback?.(e);
+    };
 
-    componentWillUnmount() {
-        if (this.props.onUnmount) {
-            this.props.onUnmount();
-        }
-    }
+    const TextareaTagName: any = props.isAutosize ? TextareaAutosize : 'textarea';
 
-    render() {
-        const TextareaTagName: any = this.props.isAutosize ? TextareaAutosize : 'textarea';
-        return (
+    return (
+        <>
             <TextareaTagName
-                {...this.props.additionalAttributes}
-                id={this.props.id}
-                disabled={this.props.disabled}
-                className={this.props.className}
-                value={this.props.value}
-                onChange={(e: React.ChangeEvent<HTMLTextAreaElement>) => this.handleOnChange(e)}
+                {...props.additionalAttributes}
+                disabled={props.disabled}
+                className={props.className}
+                value={props.value}
+                onChange={handleOnChange}
             />
-        );
-    }
-
-    private handleOnChange(e: React.ChangeEvent<HTMLTextAreaElement>) {
-        this.props.onChange?.(e);
-        this.props.onChangeCallback?.(e);
-    }
-}
+            {props.children}
+            {getValidationLabel()}
+        </>
+    );
+};
 
 export const TextAreaConnected: React.ComponentClass<ITextAreaProps> = connect(
     mapStateToProps,
