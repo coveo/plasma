@@ -24,7 +24,7 @@ export const TextAreaExamples = (): JSX.Element => (
                         placeholder: 'I am a simple text area with validation!',
                     }}
                     valueOnMount="I have a non empty value on mount and should not be empty!"
-                    validate={(value: string) => value !== ''}
+                    validate={(value: string) => !!value}
                     validationMessage="TextArea should not be empty!"
                     isAutosize
                 />
@@ -56,7 +56,7 @@ export const TextAreaExamples = (): JSX.Element => (
             <div className="form-group input-field">
                 <TextAreaConnected
                     id="super-textarea-4"
-                    validate={(value: string) => value !== ''}
+                    validate={(value: string) => !!value}
                     validationMessage="TextArea should not be empty!"
                 >
                     <Label htmlFor="super-textarea-4"> Simple text area with label </Label>

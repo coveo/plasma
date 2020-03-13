@@ -5,7 +5,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxUtils} from '../../utils';
-import {ILabelProps, Label} from '../input';
+import {ILabelProps} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
 
 export interface ITextAreaOwnProps {
@@ -79,15 +79,7 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
     }, []);
 
     const getValidationLabel = () => {
-        return (
-            !isValid && (
-                <div className={'pt1'}>
-                    <Label id={props.id} className="text-red" {...props.validationLabelProps}>
-                        {props.validationMessage}
-                    </Label>
-                </div>
-            )
-        );
+        return !isValid && <div className="full-content-x generic-form-error my1">{props.validationMessage}</div>;
     };
 
     const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
