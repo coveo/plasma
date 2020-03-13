@@ -3,6 +3,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
+import {BrowserUtils} from '../../utils/BrowserUtils';
 import {
     DomPositionCalculator,
     DropPodPosition,
@@ -224,18 +225,20 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     render() {
-        const drop: React.ReactNode = this.props.renderDrop(
-            {
-                position: 'absolute',
-                display: 'inline-block',
-                ...{
-                    ...this.calculateStyleOffset(),
-                    visibility: this.canRenderDrop() ? 'visible' : 'hidden',
-                },
-            },
-            this.dropRef,
-            this.lastPosition
-        );
+        const style: React.CSSProperties = {
+            display: 'inline-block',
+            position: 'absolute',
+            visibility: this.canRenderDrop() ? 'visible' : 'hidden',
+            ...this.calculateStyleOffset(),
+        };
+
+        // set the display none for ei 11
+        // this browser dont handle position absolute and visibility hidden like other browser
+        if (!this.canRenderDrop() && BrowserUtils.isIE()) {
+            style.display = 'none';
+        }
+
+        const drop: React.ReactNode = this.props.renderDrop(style, this.dropRef, this.lastPosition);
 
         return ReactDOM.createPortal(drop, document.querySelector(this.props.selector ?? Defaults.DROP_ROOT));
     }
