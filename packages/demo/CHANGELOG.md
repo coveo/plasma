@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.23.0](https://github.com/coveo/react-vapor/compare/v5.22.2...v5.23.0) (2020-03-13)
+
+
+### Features
+
+* **file-input:** implement a FileInput component ([c25bc1b](https://github.com/coveo/react-vapor/commit/c25bc1bb612367c38dc222271cfc15d1b8af358b))
+
+
+
+
+
 ## [5.22.2](https://github.com/coveo/react-vapor/compare/v5.22.1...v5.22.2) (2020-03-12)
 
 **Note:** Version bump only for package react-vapor-demo
