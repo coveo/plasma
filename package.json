@@ -10,11 +10,13 @@
         "cz-conventional-changelog": "3.0.2",
         "husky": "3.0.9",
         "lerna": "3.18.4",
+        "mime-types": "2.1.26",
         "prettier": "1.19.1",
         "stylelint": "11.1.1",
         "tsjs": "1.0.x",
         "tslint": "6.0.0",
-        "underscore": "1.9.2"
+        "underscore": "1.9.2",
+        "walkdir": "0.4.1"
     },
     "husky": {
         "hooks": {
