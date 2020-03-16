@@ -25,8 +25,10 @@ export interface ITableHOCOwnProps {
     tbodyClassName?: string;
     showBorderTop?: boolean;
     loading?: {
+        isCard?: boolean;
         numberOfColumns?: number;
         defaultLoadingRow?: number;
+        numberOfSubRow?: number;
     };
 }
 
@@ -39,8 +41,10 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         actions: [],
         showBorderTop: false,
         loading: {
+            isCard: false,
             numberOfColumns: 5,
             defaultLoadingRow: PER_PAGE_NUMBERS[1],
+            numberOfSubRow: 3,
         },
     };
 
@@ -57,10 +61,9 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                 {this.props.isLoading && (
                     <TableLoading.Body
                         key={`table-loading-${this.props.id}`}
-                        numberOfRow={
-                            _.size(this.props.data) || (this.props?.loading?.defaultLoadingRow ?? PER_PAGE_NUMBERS[1])
-                        }
-                        numberOfColumns={this.props?.loading?.numberOfColumns ?? 5}
+                        numberOfRow={_.size(this.props.data) || this.props?.loading?.defaultLoadingRow}
+                        numberOfColumns={this.props?.loading?.numberOfColumns}
+                        numberOfSubRow={this.props?.loading?.numberOfSubRow}
                     />
                 )}
             </table>
