@@ -214,7 +214,7 @@ describe('Table HOC', () => {
             let wrapper: ShallowWrapper<ITableRowConnectedProps>;
             const collapsibleContent = <div>Collapsible content</div>;
 
-            beforeEach(() => {
+            const shallowComponent = (props: Partial<ITableRowConnectedProps> = {}) => {
                 store = getStoreMock({
                     tableHOCRow: [
                         {
@@ -233,6 +233,7 @@ describe('Table HOC', () => {
                         collapsible={{
                             content: collapsibleContent,
                         }}
+                        {...props}
                     >
                         <td>Column 1</td>
                         <td>Column 2</td>
@@ -243,9 +244,10 @@ describe('Table HOC', () => {
                     </TableRowConnected>,
                     store
                 ).dive();
-            });
+            };
 
             it('should render an additional row for the collapsible content', () => {
+                shallowComponent();
                 expect(wrapper.find('tr').length).toBe(2);
                 expect(
                     wrapper
@@ -262,23 +264,28 @@ describe('Table HOC', () => {
             });
 
             it('should render a single cell in the collapsible row that spans accross all the columns +1 for the toggle', () => {
+                shallowComponent();
                 expect(wrapper.find('tr.collapsible-row td').props().colSpan).toBe(3 + 1);
             });
 
             it('should render the collapsible content node inside the collapsible row', () => {
+                shallowComponent();
                 expect(wrapper.find('tr.collapsible-row td').contains(collapsibleContent)).toBe(true);
             });
 
             it('should have the class opened if the row is opened in the state', () => {
+                shallowComponent();
                 expect(wrapper.find('tr.heading-row').hasClass('opened')).toBe(true);
             });
 
             it('should render a CollapsibleToggle as collapsed state indicator if no customToggle is specified', () => {
+                shallowComponent();
                 expect(wrapper.find(CollapsibleToggle).exists()).toBe(true);
                 expect(wrapper.find(CollapsibleToggle).props().expanded).toBe(true);
             });
 
             it('should render a collapsible row custom toggle when specified using the prop renderCustomToggleCell', () => {
+                shallowComponent();
                 const expectedToggle = <td>Opened</td>;
                 wrapper.setProps({
                     collapsible: {
@@ -296,6 +303,7 @@ describe('Table HOC', () => {
             });
 
             it('should dispatch a toggleCollapsible action when clicking on the collapsible button', () => {
+                shallowComponent();
                 const expectedAction = TableHOCRowActions.toggleCollapsible(defaultProps.id);
 
                 wrapper
@@ -303,6 +311,11 @@ describe('Table HOC', () => {
                     .simulate('click', jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']));
 
                 expect(store.getActions()).toContain(expectedAction);
+            });
+
+            it('should set the collapsibleToggle null if the content is null', () => {
+                shallowComponent({collapsible: {content: null}});
+                expect(wrapper.find(CollapsibleToggle).length).toBe(0);
             });
         });
 

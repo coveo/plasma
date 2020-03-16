@@ -42,7 +42,10 @@ export interface ITableRowConnectedProps
 const TableRowPropsToOmit = keys<ITableRowConnectedProps>();
 
 const isCollapsible = (props: ITableRowOwnProps): boolean =>
-    props.collapsible && (React.isValidElement(props.collapsible.content) || _.isString(props.collapsible.content));
+    props.collapsible &&
+    (React.isValidElement(props.collapsible.content) ||
+        _.isString(props.collapsible.content) ||
+        _.isNull(props.collapsible.content));
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) => {
     const {selected, opened} = TableSelectors.getTableRow(state, {id: ownProps.id}) || {selected: false, opened: false};
@@ -112,41 +115,46 @@ class TableRowConnected extends React.PureComponent<
 
     render() {
         const rowIsCollapsible = isCollapsible(this.props);
-        const collapsibleContentRow = rowIsCollapsible && (
-            <tr
-                key={`${this.props.tableId}-${this.props.id}-collapsible`}
-                className={classNames('collapsible-row', this.props.collapsible.className, {
-                    in: this.props.opened,
-                })}
-            >
-                <td colSpan={this.columnCount + 1}>
-                    <SlideY
-                        id={`${this.props.tableId}-${this.props.id}-collapsible`}
-                        in={this.props.opened}
-                        timeout={Collapsible.TIMEOUT}
-                        duration={Collapsible.TIMEOUT}
-                    >
-                        {this.props.collapsible.content}
-                    </SlideY>
-                </td>
-            </tr>
-        );
-
-        let collapsibleRowToggle: React.ReactNode = [];
+        let collapsibleContentRow = null;
+        let collapsibleRowToggle: React.ReactNode = null;
         if (rowIsCollapsible) {
-            const customToggle = this.props.collapsible.renderCustomToggleCell?.(this.props.opened);
-            collapsibleRowToggle = React.isValidElement(customToggle) ? (
-                customToggle
-            ) : (
-                <td>
-                    <CollapsibleToggle
-                        onClick={this.onToggleCollapsible}
-                        expanded={this.props.opened}
-                        svgClassName="mod-12"
-                        className="btn mod-no-border right px1"
-                    />
-                </td>
-            );
+            if (_.isNull(this.props.collapsible.content)) {
+                collapsibleRowToggle = <td />;
+            } else {
+                collapsibleContentRow = (
+                    <tr
+                        key={`${this.props.tableId}-${this.props.id}-collapsible`}
+                        className={classNames('collapsible-row', this.props.collapsible.className, {
+                            in: this.props.opened,
+                        })}
+                    >
+                        <td colSpan={this.columnCount + 1}>
+                            <SlideY
+                                id={`${this.props.tableId}-${this.props.id}-collapsible`}
+                                in={this.props.opened}
+                                timeout={Collapsible.TIMEOUT}
+                                duration={Collapsible.TIMEOUT}
+                            >
+                                {this.props.collapsible.content}
+                            </SlideY>
+                        </td>
+                    </tr>
+                );
+
+                const customToggle = this.props.collapsible.renderCustomToggleCell?.(this.props.opened);
+                collapsibleRowToggle = React.isValidElement(customToggle) ? (
+                    customToggle
+                ) : (
+                    <td>
+                        <CollapsibleToggle
+                            onClick={this.onToggleCollapsible}
+                            expanded={this.props.opened}
+                            svgClassName="mod-12"
+                            className={'btn mod-no-border right px1'}
+                        />
+                    </td>
+                );
+            }
         }
 
         return (
