@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.26.0](https://github.com/coveo/react-vapor/compare/v5.25.0...v5.26.0) (2020-03-16)
+
+
+### Features
+
+* **tableloading:** added table of loading cards ([541ffa7](https://github.com/coveo/react-vapor/commit/541ffa78bcd0ffd79a79e6c0538b45792f132d84))
+* **tableloading:** apply review and changed test accordingly ([f32e7c1](https://github.com/coveo/react-vapor/commit/f32e7c146c683064308d73d4d7710f989684e049))
+
+
+
+
+
 # [5.25.0](https://github.com/coveo/react-vapor/compare/v5.24.2...v5.25.0) (2020-03-16)
 
 
