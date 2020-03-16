@@ -40,43 +40,43 @@ const Body = ({
 }) => {
     return (
         <tbody>
-            {isCard
-                ? _.times(numberOfRow, (nColumn: number) => (
-                      <tr key={`table-card-row-loading-${nColumn}`} className="no-hover">
-                          {_.times(numberOfColumns, (nRow: number) => (
-                              <Row
-                                  isCard={isCard}
-                                  key={`table-card-row-loading-${nRow}`}
-                                  num={nColumn}
-                                  numberOfSubRow={numberOfSubRow}
-                              />
-                          ))}
-                      </tr>
-                  ))
-                : _.times(numberOfRow, (nColumn: number) => (
-                      <tr key={`table-row-loading-${nColumn}`} className="mod-border-bottom no-hover">
-                          {_.times(numberOfColumns, (nRow: number) => (
-                              <Row key={`table-row-loading-${nRow}`} num={nColumn} />
-                          ))}
-                      </tr>
-                  ))}
+            {_.times(numberOfRow, (nColumn: number) =>
+                isCard ? (
+                    <CardRow
+                        key={`table-card-row-loading-${nColumn}`}
+                        numberOfColumns={numberOfColumns}
+                        numberOfSubRow={numberOfSubRow}
+                    />
+                ) : (
+                    <TableRow
+                        key={`table-row-loading-${nColumn}`}
+                        numberOfColumns={numberOfColumns}
+                        nColumn={nColumn}
+                    />
+                )
+            )}
         </tbody>
     );
 };
 
-const Row = ({isCard = false, num, numberOfSubRow}: {isCard?: boolean; num: number; numberOfSubRow?: number}) => {
-    const rowClassName = isCard ? 'table-card-loading' : 'table-cell-loading';
+const CardRow = ({numberOfColumns, numberOfSubRow}: {numberOfColumns?: number; numberOfSubRow?: number}) => {
     return (
-        <td className={rowClassName}>
-            {isCard ? (
-                <div className={'table-card-cell-loading'}>
-                    {_.times(numberOfSubRow, (nSubRow: number) => (
-                        <CardSubRow key={`card-sub-row-loading-${nSubRow}`} num={nSubRow} />
-                    ))}
-                </div>
-            ) : (
-                <div className={classNames('table-cell-content-loading', {'mod-half': num % 2})} />
-            )}
+        <tr className="no-hover">
+            {_.times(numberOfColumns, (nRow: number) => (
+                <CardLoading numberOfSubRow={numberOfSubRow} />
+            ))}
+        </tr>
+    );
+};
+
+const CardLoading = ({numberOfSubRow}: {numberOfSubRow?: number}) => {
+    return (
+        <td className="table-card-loading">
+            <div className={'table-card-cell-loading'}>
+                {_.times(numberOfSubRow, (nSubRow: number) => (
+                    <CardSubRow key={`card-sub-row-loading-${nSubRow}`} num={nSubRow} />
+                ))}
+            </div>
         </td>
     );
 };
@@ -89,9 +89,30 @@ const CardSubRow = ({num}: {num: number}) => {
     );
 };
 
+const TableRow = ({numberOfColumns, nColumn}: {numberOfColumns?: number; nColumn: number}) => {
+    return (
+        <tr className="mod-border-bottom no-hover">
+            {_.times(numberOfColumns, (nRow: number) => (
+                <Row key={`table-row-loading-${nRow}`} num={nColumn} />
+            ))}
+        </tr>
+    );
+};
+
+const Row = ({num}: {num: number}) => {
+    return (
+        <td className="table-cell-loading">
+            <div className={classNames('table-cell-content-loading', {'mod-half': num % 2})} />
+        </td>
+    );
+};
+
 export const TableLoading = {
     Table,
     Body,
-    Row,
+    CardRow,
+    TableRow,
+    CardLoading,
     CardSubRow,
+    Row,
 };
