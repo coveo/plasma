@@ -4,4 +4,6 @@
 .separator {
     width: $vertical-line-width;
     height: $vertical-line-height;
+    border-left: $vertical-line-border-left;
+    content: '';
 }
