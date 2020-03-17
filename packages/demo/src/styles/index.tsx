@@ -21,7 +21,7 @@ const Styles: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     return (
         <>
             <SideMenu />
-            <div className="coveo-form flex-auto relative bg-pure-white shadow-3 ml4 overflow-auto demo-content">
+            <div className="coveo-form flex-auto relative bg-pure-white shadow-2 ml4 overflow-auto demo-content">
                 <Route path={`${match.url}/general-guidelines`} component={GeneralGuidelines} />
                 <Route path={`${match.url}/borders`} component={Borders} />
                 <Route path={`${match.url}/cards`} component={Cards} />
