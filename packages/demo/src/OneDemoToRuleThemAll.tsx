@@ -5,6 +5,7 @@ import loadable from '@loadable/component';
 import * as React from 'react';
 import {HashRouter as Router, Redirect, Route} from 'react-router-dom';
 import {Loading, TabNavigation} from 'react-vapor';
+import ScrollToTop from './demo-building-blocs/ScrollTop';
 
 import logo from '../resources/vapor_logo.svg';
 import TopNavLink from './demo-building-blocs/TopNavLink';
@@ -34,6 +35,7 @@ const LoadableStyles = loadable(() => import(/* webpackChunkName: "styles" */ '.
 function Demo() {
     return (
         <Router>
+            <ScrollToTop />
             <Header />
             <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
                 <Route path="/components" component={LoadableComponents} />
