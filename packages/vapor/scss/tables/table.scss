@@ -102,10 +102,10 @@
         }
 
         &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
+            background-color: $light-grey;
             td {
                 background-color: $light-grey;
             }
-            background-color: $light-grey;
         }
 
         &.empty td {
