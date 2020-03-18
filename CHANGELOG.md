@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.26.2](https://github.com/coveo/react-vapor/compare/v5.26.1...v5.26.2) (2020-03-18)
+
+
+### Bug Fixes
+
+* **style:** style ([02a5c83](https://github.com/coveo/react-vapor/commit/02a5c83f10f8814d413df09a406e9bfe0b62a700))
+* **table-tr-style:** style tr style ([ba5bbf9](https://github.com/coveo/react-vapor/commit/ba5bbf9148ff6bb93b4bdeb56b00c529ee85c15a))
+
+
+
+
+
 ## [5.26.1](https://github.com/coveo/react-vapor/compare/v5.26.0...v5.26.1) (2020-03-17)
 
 **Note:** Version bump only for package root
