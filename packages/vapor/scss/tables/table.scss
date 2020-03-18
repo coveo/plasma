@@ -101,8 +101,11 @@
             opacity: 0.4;
         }
 
-        &:not(.no-hover):not(.collapsible-row):not(.empty):hover td {
+        &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
             background-color: $light-grey;
+            td {
+                background-color: $light-grey;
+            }
         }
 
         &.empty td {
@@ -111,8 +114,11 @@
         }
 
         &.selected {
-            &:not(:hover) td {
+            &:not(:hover) {
                 background-color: $white;
+                td {
+                    background-color: $white;
+                }
             }
 
             td:first-child::before {
@@ -120,8 +126,11 @@
             }
         }
 
-        &.blankslate-rows:hover td {
+        &.blankslate-rows:hover {
             background-color: $pure-white;
+            td {
+                background-color: $pure-white;
+            }
         }
     }
 
