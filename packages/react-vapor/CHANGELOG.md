@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.27.0](https://github.com/coveo/react-vapor/compare/v5.26.2...v5.27.0) (2020-03-19)
+
+
+### Features
+
+* **vertical line:** new vertical line component ([498f5fd](https://github.com/coveo/react-vapor/commit/498f5fdba53aa2e6db3a37582777fc9be0d0b433))
+
+
+
+
+
 ## [5.26.2](https://github.com/coveo/react-vapor/compare/v5.26.1...v5.26.2) (2020-03-18)
 
 **Note:** Version bump only for package react-vapor
