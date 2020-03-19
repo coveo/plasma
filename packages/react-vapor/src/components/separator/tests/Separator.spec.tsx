@@ -1,28 +1,28 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import {VerticalLine} from '../VerticalLine';
+import {Separator} from '../Separator';
 
-describe('VerticalLine', () => {
+describe('Separator', () => {
     it('should render without error in various scenarios', () => {
-        expect(() => shallow(<VerticalLine />)).not.toThrow();
-        expect(() => shallow(<VerticalLine className="testClass" />)).not.toThrow();
+        expect(() => shallow(<Separator />)).not.toThrow();
+        expect(() => shallow(<Separator className="testClass" />)).not.toThrow();
     });
 
     it('should render with default classes by default', () => {
         expect(
-            shallow(<VerticalLine />)
+            shallow(<Separator />)
                 .find('span')
                 .prop('className')
-        ).toBe(VerticalLine.defaultClassName);
+        ).toBe(Separator.defaultClassName);
     });
 
     it('should add className to default className if some are passed', () => {
         const testClasses = 'we are five custom classes';
-        const className = shallow(<VerticalLine className={testClasses} />)
+        const className = shallow(<Separator className={testClasses} />)
             .find('span')
             .prop('className');
 
         expect(className).toContain(testClasses);
-        expect(className).toContain(VerticalLine.defaultClassName);
+        expect(className).toContain(Separator.defaultClassName);
     });
 });

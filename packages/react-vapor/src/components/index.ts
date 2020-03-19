@@ -80,4 +80,4 @@ export * from './userFeedback';
 export * from './pagination';
 export * from './validation';
 export * from './filepicker';
-export * from './verticalLine';
+export * from './separator';
