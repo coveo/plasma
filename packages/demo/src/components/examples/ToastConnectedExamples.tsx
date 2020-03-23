@@ -19,9 +19,9 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
             <div className="mt2">
                 <div className="form-group">
                     <label className="form-control-label">Toasts</label>
-                    <div>
+                    <div className="flex flex-wrap">
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Success!');
                             }}
@@ -30,7 +30,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         </button>
 
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Warning!', {type: ToastType.Warning});
                             }}
@@ -39,7 +39,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         </button>
 
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Error!', {type: ToastType.Error});
                             }}
@@ -48,7 +48,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         </button>
 
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Timed Success!', {dismiss: 1000});
                             }}
@@ -57,7 +57,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         </button>
 
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Success!', {content: 'String content'});
                             }}
@@ -66,7 +66,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         </button>
 
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Success!', {
                                     content: () => <a href="#">JSX Element</a>,
@@ -77,7 +77,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         </button>
 
                         <button
-                            className="btn"
+                            className="btn m0 mr1 mb1"
                             onClick={() => {
                                 this.props.addToast(containerId, 'Success!', {content: ToastContentExample});
                             }}

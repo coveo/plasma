@@ -15,7 +15,7 @@ export default function Borders() {
                 <div style={{width: 100, height: 50}} className="m2 mod-border-top mod-border-bottom" />
                 <div style={{width: 100, height: 50}} className="m2 mod-border-left mod-border-right" />
             </div>
-            <div className="flex">
+            <div className="flex flex-wrap">
                 <div style={{width: 100, height: 50}} className="m2 p2 mod-border mod-rounded-border-1">
                     1
                 </div>

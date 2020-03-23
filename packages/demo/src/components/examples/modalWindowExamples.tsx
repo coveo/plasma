@@ -64,8 +64,10 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
     const modalId = 'Modal-Connected-#1';
     return (
         <Section level={2} title="Modals connected to the redux store">
-            <Section level={3} title="Confirmation, warning and info prompts">
-                <Button onClick={() => open(modalConfirmationId)}>Prompt confirmation</Button>
+            <Section level={3} title="Confirmation, warning and info prompts" className="flex">
+                <Button className="btn m0 mr1" onClick={() => open(modalConfirmationId)}>
+                    Prompt confirmation
+                </Button>
 
                 <ModalCompositeConnected
                     id={modalConfirmationId}
@@ -85,7 +87,9 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     }
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 />
-                <Button onClick={() => open(modalWarningId)}>Prompt warning</Button>
+                <Button className="btn m0 mr1" onClick={() => open(modalWarningId)}>
+                    Prompt warning
+                </Button>
 
                 <ModalCompositeConnected
                     id={modalWarningId}
@@ -100,7 +104,9 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     }
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 />
-                <Button onClick={() => open(modalInfoId)}>Prompt info</Button>
+                <Button className="btn m0 mr1" onClick={() => open(modalInfoId)}>
+                    Prompt info
+                </Button>
                 <ModalCompositeConnected
                     id={modalInfoId}
                     title="Prompt info"

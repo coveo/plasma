@@ -11,6 +11,10 @@
         height: 27px;
     }
 
+    .header-height {
+        height: auto;
+    }
+
     .demo-side-nav {
         @include slim-scroll($grey-2, $grey-4);
 
@@ -59,6 +63,26 @@
 
         &.active {
             font-weight: bold;
+        }
+    }
+
+    @media (max-width: $breakpoint-desktop-small) {
+        .demo-content {
+            margin-left: 0;
+        }
+    }
+
+    @for $i from 7 through 10 {
+        $size: $i * 10;
+        @media (max-width: $breakpoint-desktop-large) {
+            &.mod-width-#{$size} {
+                width: 95%;
+            }
+        }
+        @media (max-width: $breakpoint-desktop-small) {
+            &.mod-width-#{$size} {
+                width: 99%;
+            }
         }
     }
 }

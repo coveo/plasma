@@ -90,6 +90,7 @@ export class SearchBarExamples extends React.Component<any, any> {
                             }}
                         />
                         <button
+                            className="btn mt1"
                             type="button"
                             onClick={() => {
                                 const searchBar = findWhere(Store.getState().searchBars, {
