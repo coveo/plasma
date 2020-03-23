@@ -86,16 +86,6 @@
     .ml#{$i} {
         margin-left: $i * $spacing;
     }
-
-    @media (max-width: $breakpoint-desktop-small) {
-        .mr#{$i} {
-            margin-right: $i / 2 * $spacing;
-        }
-
-        .ml#{$i} {
-            margin-left: $i / 2 * $spacing;
-        }
-    }
 }
 
 .mod-header-padding {

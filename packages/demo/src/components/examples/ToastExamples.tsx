@@ -30,24 +30,32 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
 
     return (
         <>
-            <Section level={2} title="Toasts with a local state">
+            <Section level={2} title="Toasts with a local state" className="flex">
                 <Button
                     enabled
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="Top left"
                     onClick={() => setState({...state, Success: !state.Success})}
                 />
 
                 <Button
                     enabled
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="Middle Earth"
                     onClick={() => setState({...state, Warning: !state.Warning})}
                 />
 
-                <Button className="btn" name="Top right" onClick={() => setState({...state, Error: !state.Error})} />
+                <Button
+                    className="btn m0 mr1 mb1"
+                    name="Top right"
+                    onClick={() => setState({...state, Error: !state.Error})}
+                />
 
-                <Button className="btn" name="Bottom" onClick={() => setState({...state, Timed: !state.Timed})} />
+                <Button
+                    className="btn m0 mr1 mb1"
+                    name="Bottom"
+                    onClick={() => setState({...state, Timed: !state.Timed})}
+                />
             </Section>
 
             <ToastContainer left>
@@ -117,40 +125,40 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
 
     return (
         <>
-            <Section level={2} title="Toasts with a redux store">
+            <Section level={2} title="Toasts with a redux store" className="flex">
                 <Button
                     enabled
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="Success"
                     onClick={() => renderToast('containerId', 'Success !')}
                 />
 
                 <Button
                     enabled
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="Warning   "
                     onClick={() => renderToast('containerId', 'Warning !', {type: 'Warning'})}
                 />
 
                 <Button
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="Error"
                     onClick={() => renderToast('containerId', 'Error !', {type: 'Error'})}
                 />
 
                 <Button
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="Timed Success"
                     onClick={() => renderToast('containerId', 'Timed Success !', {dismiss: 1000})}
                 />
 
                 <Button
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="custom JSX"
                     onClick={() => renderToast('containerId', 'Custom JSX !', {content: toastContent})}
                 />
                 <Button
-                    className="btn"
+                    className="btn m0 mr1 mb1"
                     name="custom String"
                     onClick={() => renderToast('containerId', 'Timed Success!', {content: 'I am a string !'})}
                 />
