@@ -77,6 +77,20 @@
     .mod-width-#{$size} {
         width: $size * 1%;
     }
+
+    // .mod-width-#{ < 70 } used in SideNavigation and Calendar components
+    @if $size >= 70 {
+        @media (max-width: $breakpoint-desktop-large) {
+            .mod-width-#{$size} {
+                width: 95%;
+            }
+        }
+        @media (max-width: $breakpoint-desktop-small) {
+            .mod-width-#{$size} {
+                width: 99%;
+            }
+        }
+    }
 }
 
 .hidden {
