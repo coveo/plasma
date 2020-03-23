@@ -191,7 +191,7 @@
         grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         padding: $mod-card-list-vertical-padding $mod-card-list-horizontal-padding;
 
-        &:hidden {
+        &.hidden {
             display: none;
         }
 
