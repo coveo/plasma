@@ -3,16 +3,16 @@
     align-items: center;
 
     .member-icon {
-        width: 42px;
-        height: 42px;
+        width: 24px;
+        height: 24px;
         overflow: hidden;
         background-color: $white;
         border-radius: 100%;
 
         .member-icon-provider {
             display: block;
-            max-width: 26px;
-            height: 42px;
+            max-width: 16px;
+            height: 24px;
             margin: auto;
         }
 
