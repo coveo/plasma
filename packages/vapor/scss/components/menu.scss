@@ -1,4 +1,13 @@
 .dropdown.mod-menu {
+    &.header-section {
+        &:hover {
+            background-color: $navigation-active-background-color;
+        }
+
+        &.open {
+            background-color: $navigation-active-background-color;
+        }
+    }
     .dropdown-toggle {
         height: auto;
         min-height: $button-height;
