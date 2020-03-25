@@ -2,12 +2,12 @@ import * as React from 'react';
 import {ILinkSvgProps, ISvgProps, ITooltipProps, LinkSvg} from 'react-vapor';
 import * as _ from 'underscore';
 
-export const defaultSvgProps: ISvgProps = {
+const defaultSvgProps: ISvgProps = {
     svgName: 'domain-google',
     svgClass: 'icon mod-2x',
 };
 
-export const defaultTooltipProps: ITooltipProps = {
+const defaultTooltipProps: ITooltipProps = {
     title: 'default tooltip description',
     placement: 'bottom',
     container: 'body',
