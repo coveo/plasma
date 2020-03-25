@@ -29,7 +29,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/slide-toggle-modifiers" name="Slide toggle modifiers" />
             <NavigationLink href="/slide-toggle-double" name="Slide toggle double" />
             <NavigationLink href="/progress-bar" name="Progress bar" />
-            <NavigationLink href="/file-input" name="File input" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers">
             <NavigationLink href="/site" name="Site" />
