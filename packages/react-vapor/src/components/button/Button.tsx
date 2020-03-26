@@ -8,7 +8,7 @@ import {Tooltip} from '../tooltip/Tooltip';
 
 export interface IButtonProps extends IBaseActionOptions {
     small?: boolean;
-    classes?: string[];
+    classes?: string[] | string;
 }
 
 const ButtonPropsToOmit = keys<IButtonProps>();

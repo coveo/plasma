@@ -7,6 +7,8 @@ import {
     IDispatch,
     Label,
     LabeledInput,
+    ListBox,
+    MenuConnected,
     Section,
     Svg,
     ValidationActions,
@@ -110,6 +112,86 @@ export class ButtonExamples extends React.Component<any, any> {
                         validationIds={['inputId']}
                         onClick={() => alert('Saving!')}
                     />
+                </Section>
+                <Section level={2} title="Menu">
+                    <Section level={3} title="Default Menu">
+                        <div className="form-control">
+                            <MenuConnected
+                                id="example-1"
+                                buttonSvg={
+                                    <>
+                                        menu
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-orange'} />
+                                    </>
+                                }
+                            >
+                                <div>Elements...</div>
+                            </MenuConnected>
+                        </div>
+                    </Section>
+                    <Section level={3} title="Menu disabled">
+                        <div className="form-control">
+                            <MenuConnected
+                                id="example-2"
+                                buttonSvg={
+                                    <>
+                                        menu
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-pure-white'} />
+                                    </>
+                                }
+                                buttonProps={{
+                                    primary: true,
+                                    enabled: false,
+                                    tooltip: 'not available right now',
+                                }}
+                            >
+                                <ListBox items={[{value: 'option 1'}, {value: 'option 2'}]} />
+                            </MenuConnected>
+                        </div>
+                    </Section>
+                    <Section level={3} title="Menu with options">
+                        <div className="form-control">
+                            <MenuConnected
+                                id="example-3"
+                                buttonSvg={
+                                    <>
+                                        menu
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-pure-white'} />
+                                    </>
+                                }
+                                buttonProps={{
+                                    primary: true,
+                                }}
+                            >
+                                <ListBox items={[{value: 'option 1'}, {value: 'option 2'}]} />
+                            </MenuConnected>
+                        </div>
+                    </Section>
+                    <Section level={3} title="Menu with option started from the right">
+                        <div className="form-control right">
+                            <MenuConnected
+                                id="example-4"
+                                positionRight
+                                buttonSvg={
+                                    <>
+                                        menu
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-pure-white'} />
+                                    </>
+                                }
+                                buttonProps={{
+                                    primary: true,
+                                }}
+                            >
+                                <ListBox
+                                    items={[
+                                        {value: 'option 1'},
+                                        {value: 'option 2'},
+                                        {value: 'option with very long value 3'},
+                                    ]}
+                                />
+                            </MenuConnected>
+                        </div>
+                    </Section>
                 </Section>
             </Section>
         );

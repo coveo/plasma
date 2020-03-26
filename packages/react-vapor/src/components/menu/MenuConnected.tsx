@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {Button, IButtonProps} from '../button/Button';
 import {Svg} from '../svg/Svg';
 import {addMenu, removeMenu, toggleMenu} from './MenuActions';
 import {IMenuState} from './MenuReducers';
@@ -16,6 +17,8 @@ export interface IMenuOwnProps {
     closeOnSelectItem?: boolean;
     buttonSvg?: React.ReactNode;
     customOffset?: number;
+    buttonProps?: Partial<IButtonProps>;
+    disabled?: boolean;
 }
 
 export interface IMenuStateProps {
@@ -49,12 +52,13 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMenuOwnProps): IMenu
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class MenuConnected extends React.Component<IMenuProps, {}> {
     private list: HTMLDivElement;
-    private button: HTMLButtonElement;
+    private button: HTMLDivElement;
 
     static defaultProps: Partial<IMenuProps> = {
         positionRight: false,
         closeOnSelectItem: true,
         customOffset: 0,
+        disabled: false,
     };
 
     componentWillMount() {
@@ -78,18 +82,20 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
                 hidden: !this.props.isOpen,
             }
         );
+
         return (
             <div className={pickerClasses}>
-                <button
-                    className={classNames('btn menu-toggle', this.props.toggleClassName, {
-                        'bg-light-grey': this.props.isOpen,
-                    })}
-                    type="button"
-                    onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
-                    ref={(ref: HTMLButtonElement) => (this.button = ref)}
-                >
-                    {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
-                </button>
+                <div ref={(ref: HTMLDivElement) => (this.button = ref)}>
+                    <Button
+                        classes={classNames('btn menu-toggle', this.props.toggleClassName, {
+                            'bg-light-grey': this.props.isOpen,
+                        })}
+                        onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
+                        {...this.props.buttonProps}
+                    >
+                        {this.props.buttonSvg ? this.props.buttonSvg : this.getDefaultSvg()}
+                    </Button>
+                </div>
                 <div
                     className={dropdownClasses}
                     ref={(ref: HTMLDivElement) => (this.list = ref)}
