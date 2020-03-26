@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.28.0](https://github.com/coveo/react-vapor/compare/v5.27.3...v5.28.0) (2020-03-26)
+
+
+### Features
+
+* **menu:** add menu exemple ([f73df31](https://github.com/coveo/react-vapor/commit/f73df310079ac3caa30d6a4e77397cf8a9ab18f4))
+
+
+
+
+
 ## [5.27.2](https://github.com/coveo/react-vapor/compare/v5.27.1...v5.27.2) (2020-03-24)
 
 **Note:** Version bump only for package react-vapor
