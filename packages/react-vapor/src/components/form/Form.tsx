@@ -7,11 +7,12 @@ export interface IFormProps {
     title?: string;
     className?: string;
     mods?: FormMods | FormMods[];
+    noMargin?: boolean;
 }
 
-export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, mods}) => {
+export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin}) => {
     return (
-        <fieldset className={classNames('coveo-form mb2 mt2 mod-padding-children', mods, className)}>
+        <fieldset className={classNames('coveo-form mod-padding-children', {my2: !noMargin}, mods, className)}>
             {title && <h2 className="text-medium-blue mb2">{title}</h2>}
             {children}
         </fieldset>
