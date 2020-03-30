@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import {FunctionComponent} from 'react';
 import * as React from 'react';
 
