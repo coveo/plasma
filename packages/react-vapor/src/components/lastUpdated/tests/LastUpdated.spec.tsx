@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
-import * as moment from 'moment';
+import moment from 'moment';
 import * as React from 'react';
 import * as s from 'underscore.string';
 import {TestUtils} from '../../../utils/tests/TestUtils';

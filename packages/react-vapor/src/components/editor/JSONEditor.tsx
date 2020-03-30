@@ -1,6 +1,6 @@
 import 'codemirror/mode/javascript/javascript';
 
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 import {Svg} from '../svg/Svg';

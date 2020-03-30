@@ -1,4 +1,4 @@
-import * as $ from 'jquery';
+import $ from 'jquery';
 import * as React from 'react';
 import {DateUtils} from '../../utils/DateUtils';
 import {CalendarDay} from '../calendar/CalendarDay';
