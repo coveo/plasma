@@ -7,6 +7,7 @@ import {Provider} from 'react-redux';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {MiddleSlider} from '../MiddleSlider';
+import {computeStep} from '../SliderUtils';
 
 describe('<MiddleSlider/>', () => {
     let store: ReactVaporMockStore;
@@ -15,6 +16,7 @@ describe('<MiddleSlider/>', () => {
         max: 100,
         min: -100,
     };
+    const step = 50;
 
     beforeEach(() => {
         store = getStoreMock({
@@ -38,7 +40,7 @@ describe('<MiddleSlider/>', () => {
                 customTooltip={() => <span>customTooltip</span>}
                 hasTooltip
                 marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
-                step={5}
+                step={step}
                 initialValue={20}
                 enabled
             />,
@@ -77,13 +79,14 @@ describe('<MiddleSlider/>', () => {
             expect(marks).toEqual({0: '-2000', 33: '2000', 17: '0', 100: '10,000'});
         });
 
-        it('should apply the step prop', () => {
+        it('should apply the computed step prop to the range slider', () => {
             middleSlider = shallowedMiddleSlider()
                 .dive()
                 .dive();
             const children: any = middleSlider.prop('children');
-            const step = children[2].props.step;
-            expect(step).toEqual(5);
+            const computedStep = computeStep(step, middleSliderRequiredProps.min, middleSliderRequiredProps.max);
+            const middleSliderStep = children[2].props.step;
+            expect(middleSliderStep).toEqual(computedStep);
         });
 
         it('should set the handle hasTooltip prop to true when slider hasTooltip his passed', () => {

@@ -8,6 +8,7 @@ import {IDispatch} from '../../utils/ReduxUtils';
 import {SliderActions} from './SliderActions';
 import SliderHandle from './SliderHandle';
 import {
+    computeStep,
     convertInitialValuetoRangeValue,
     getComputedRangeValue,
     getCrossingPoint,
@@ -121,6 +122,8 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
         return null;
     };
 
+    const computedStep = computeStep(step, min, max);
+
     return (
         <Range
             key={id}
@@ -129,7 +132,7 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
             handle={renderHandle}
             className="vapor-slider input-wrapper input-field"
             marks={marks}
-            step={step}
+            step={computedStep}
             disabled={!enabled}
         />
     );
