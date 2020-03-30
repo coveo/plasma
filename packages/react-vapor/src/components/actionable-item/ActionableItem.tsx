@@ -7,7 +7,7 @@ import {Drop, IDropOwnProps} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
 import {Svg} from '../svg/Svg';
-import {actionableItemContainer, actionableItemContent, actionableItemDots} from './styles/ActionableItem.scss';
+import * as styles from './styles/ActionableItem.scss';
 
 export interface IActionableItemProps {
     id: string;
@@ -29,8 +29,8 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                     className={classNames(
                         {'cursor-pointer': !!this.props.onItemClick},
                         'actionable-item-content inline-block text-medium-blue border-color-medium-grey mod-border bg-pure-white',
-                        actionableItemContent,
-                        actionableItemContainer,
+                        styles.actionableItemContent,
+                        styles.actionableItemContainer,
                         this.props.containerClassName
                     )}
                     onClick={(e: React.MouseEvent<HTMLDivElement>) => this.props.onItemClick?.(e)}
@@ -47,8 +47,8 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                                 onClick={onClick}
                                 className={classNames(
                                     'actionable-item-dots cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom bg-pure-white',
-                                    actionableItemDots,
-                                    actionableItemContainer
+                                    styles.actionableItemDots,
+                                    styles.actionableItemContainer
                                 )}
                             >
                                 <Svg svgName="more-append" svgClass="icon mod-12 fill-medium-blue" />
