@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.30.0](https://github.com/coveo/react-vapor/compare/v5.29.0...v5.30.0) (2020-03-30)
+
+
+### Features
+
+* **optionscycle:** add option change callback ([1f1b502](https://github.com/coveo/react-vapor/commit/1f1b502c6a1803561d8771ce8e6d487eb2aada40))
+
+
+
+
+
 # [5.29.0](https://github.com/coveo/react-vapor/compare/v5.28.2...v5.29.0) (2020-03-30)
 
 
