@@ -16,6 +16,7 @@ export interface IOptionsCycleOwnProps {
     previousClassName?: string;
     nextClassName?: string;
     buttonClassName?: string;
+    onChangeOption?: (index: number) => void;
 }
 
 export interface IOptionsCycleStateProps {
@@ -40,20 +41,16 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
     };
 
     private goToPreviousOption() {
-        if (this.props.onChange) {
-            const newOptionIndex = this.props.currentOption
-                ? this.props.currentOption - 1
-                : this.props.options.length - 1;
-            this.props.onChange(newOptionIndex);
-        }
+        const newOptionIndex = this.props.currentOption ? this.props.currentOption - 1 : this.props.options.length - 1;
+        this.props.onChange?.(newOptionIndex);
+        this.props.onChangeOption?.(newOptionIndex);
     }
 
     private goToNextOption() {
-        if (this.props.onChange) {
-            const newOptionIndex =
-                this.props.currentOption === this.props.options.length - 1 ? 0 : this.props.currentOption + 1;
-            this.props.onChange(newOptionIndex);
-        }
+        const newOptionIndex =
+            this.props.currentOption === this.props.options.length - 1 ? 0 : this.props.currentOption + 1;
+        this.props.onChange?.(newOptionIndex);
+        this.props.onChangeOption?.(newOptionIndex);
     }
 
     componentDidMount() {
