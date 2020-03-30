@@ -1,4 +1,4 @@
-import * as escapeRegExp from 'escape-string-regexp';
+import escapeRegExp from 'escape-string-regexp';
 import {ReactNode} from 'react';
 
 import {getReactNodeTextContent} from './JSXUtils';

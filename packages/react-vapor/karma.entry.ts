@@ -1,6 +1,6 @@
 import * as Enzyme from 'enzyme';
 import * as Adapter from 'enzyme-adapter-react-16';
-import * as $ from 'jquery';
+import $ from 'jquery';
 import * as s from 'underscore.string';
 import {Defaults} from './src/Defaults';
 

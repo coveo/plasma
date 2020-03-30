@@ -9,7 +9,8 @@
         "noImplicitThis": true,
         "removeComments": true,
         "noUnusedLocals": true,
-        "lib": ["es2015", "dom"]
+        "lib": ["es2015", "dom"],
+        "allowSyntheticDefaultImports": true
     },
     "exclude": ["**/node_modules", "**/dist", "**/coverage", "*.js", "**/target"]
 }
