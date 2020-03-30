@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import RCSlider, {createSliderWithTooltip, SliderProps, WithTooltipProps} from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import * as React from 'react';

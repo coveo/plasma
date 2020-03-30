@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Tooltip} from './Tooltip';

@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
