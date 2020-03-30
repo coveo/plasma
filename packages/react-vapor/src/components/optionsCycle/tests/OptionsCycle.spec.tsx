@@ -1,10 +1,17 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
+import {shallowWithState} from 'enzyme-redux';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import * as _ from 'underscore';
 import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
 
 describe('Options cycle', () => {
-    const OPTIONS = ['option 1', 'option 2', 'option 3', 'option 4'];
+    const OPTIONS = [
+        <div className="option1">'option 1'</div>,
+        <div className="option2">'option 2'</div>,
+        'option 3',
+        'option 4',
+    ];
 
     describe('<OptionsCycle />', () => {
         it('should render without errors', () => {
@@ -15,53 +22,33 @@ describe('Options cycle', () => {
     });
 
     describe('<OptionsCycle />', () => {
-        let optionsCycle: ReactWrapper<IOptionsCycleProps, any>;
-        let optionsCycleInstance: OptionsCycle;
+        let optionsCycleWrapper: ShallowWrapper<IOptionsCycleProps, any>;
 
-        beforeEach(() => {
-            optionsCycle = mount(<OptionsCycle options={OPTIONS} />, {attachTo: document.getElementById('App')});
-            optionsCycleInstance = optionsCycle.instance() as OptionsCycle;
-        });
-
-        afterEach(() => {
-            optionsCycle.detach();
-        });
-
-        it('should get the options as a prop', () => {
-            const optionsProp = optionsCycle.props().options;
-
-            expect(optionsProp).toBeDefined();
-            expect(optionsProp).toEqual(OPTIONS);
-        });
+        const mountComponent = (props: Partial<IOptionsCycleProps> = {}) => {
+            optionsCycleWrapper = shallowWithState(<OptionsCycle options={OPTIONS} {...props} />, {});
+        };
 
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jasmine.createSpy('onRender');
-
-            expect(() => optionsCycleInstance.componentDidMount()).not.toThrow();
-
-            optionsCycle.setProps({options: OPTIONS, onRender: renderSpy});
-            optionsCycle.unmount();
-            optionsCycle.mount();
+            mountComponent({onRender: renderSpy});
             expect(renderSpy.calls.count()).toBe(1);
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy = jasmine.createSpy('onDestroy');
+            mountComponent({onDestroy: destroySpy});
 
-            expect(() => optionsCycleInstance.componentWillUnmount()).not.toThrow();
-
-            optionsCycle.setProps({options: OPTIONS, onDestroy: destroySpy});
-            optionsCycle.mount();
-            optionsCycle.unmount();
+            optionsCycleWrapper.unmount();
             expect(destroySpy.calls.count()).toBe(1);
         });
 
         it('should display the selected option', () => {
-            expect(optionsCycle.html()).toContain(OPTIONS[0]);
+            mountComponent();
+            expect(optionsCycleWrapper.find('div.option1').length).toBe(1, 'option 1');
 
-            optionsCycle.setProps({options: OPTIONS, currentOption: 2});
+            optionsCycleWrapper.setProps({options: OPTIONS, currentOption: 1});
 
-            expect(optionsCycle.html()).toContain(OPTIONS[2]);
+            expect(optionsCycleWrapper.find('div.option2').length).toBe(1, 'option 2');
         });
 
         it('should display the selected option even if it is not a string', () => {
@@ -71,9 +58,9 @@ describe('Options cycle', () => {
                 <span className={className} />,
                 <span className="something-else" />,
             ];
-            optionsCycle.setProps({options, currentOption: 1});
+            mountComponent({options, className, currentOption: 1});
 
-            expect(optionsCycle.find(`.${className}`).exists()).toBe(true);
+            expect(optionsCycleWrapper.find(`.${className}`).exists()).toBe(true);
         });
 
         it('should allow custom classes', () => {
@@ -81,108 +68,90 @@ describe('Options cycle', () => {
             const previousClassName = 'where-is';
             const nextClassName = 'the-closest';
             const buttonClassName = 'wonder-there-is';
+            mountComponent({className, previousClassName, nextClassName, buttonClassName});
 
-            optionsCycle.setProps({className, previousClassName, nextClassName, buttonClassName});
-
-            expect(optionsCycle.find(`.${className}`).exists()).toBe(true);
-            expect(optionsCycle.find(`.${previousClassName}`).exists()).toBe(true);
-            expect(optionsCycle.find(`.${nextClassName}`).exists()).toBe(true);
-            expect(optionsCycle.find(`.${buttonClassName}`).exists()).toBe(true);
+            expect(optionsCycleWrapper.find(`.${className}`).exists()).toBe(true);
+            expect(optionsCycleWrapper.find(`.${previousClassName}`).exists()).toBe(true);
+            expect(optionsCycleWrapper.find(`.${nextClassName}`).exists()).toBe(true);
+            expect(optionsCycleWrapper.find(`.${buttonClassName}`).exists()).toBe(true);
         });
 
-        it('should not throw on goToPreviousOption or goToNextOption when onChange prop is not defined', () => {
-            expect(() => {
-                optionsCycleInstance['goToPreviousOption'].call(optionsCycleInstance);
-            }).not.toThrow();
+        it('should call onChange when clicking the previous arrow', () => {
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            expect(() => {
-                optionsCycleInstance['goToNextOption'].call(optionsCycleInstance);
-            }).not.toThrow();
+            mountComponent({onChange: spyOnChange});
+
+            optionsCycleWrapper.find('.previous-option').simulate('click');
+            expect(spyOnChange.calls.count()).toBe(1);
         });
 
-        it('should call goToPreviousOption when clicking the previous arrow', () => {
-            const goToPreviousOptionSpy = spyOn<any>(optionsCycleInstance, 'goToPreviousOption');
+        it('should call onChange when clicking the next arrow', () => {
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            optionsCycle.find('.previous-option').simulate('click');
-            expect(goToPreviousOptionSpy.calls.count()).toBe(1);
+            mountComponent({onChange: spyOnChange});
+
+            optionsCycleWrapper.find('.next-option').simulate('click');
+            expect(spyOnChange.calls.count()).toBe(1);
         });
 
-        it('should call goToNextOption when clicking the previous arrow', () => {
-            const goToNextOptionSpy = spyOn<any>(optionsCycleInstance, 'goToNextOption');
+        it('should call onChangeOption when clicking the previous arrow', () => {
+            const spyOnChangeOption = jasmine.createSpy('onChangeOption');
 
-            optionsCycle.find('.next-option').simulate('click');
-            expect(goToNextOptionSpy.calls.count()).toBe(1);
+            mountComponent({onChangeOption: spyOnChangeOption, onChange: _.noop});
+
+            optionsCycleWrapper.find('.previous-option').simulate('click');
+            expect(spyOnChangeOption.calls.count()).toBe(1);
         });
 
-        it('should call onChange when clicking the previous or next arrow if the prop is defined', () => {
-            const onChangeSpy = jasmine.createSpy('onChange');
+        it('should call onChangeOption when clicking the next arrow', () => {
+            const spyOnChangeOption = jasmine.createSpy('onChangeOption');
 
-            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy});
+            mountComponent({onChange: spyOnChangeOption});
 
-            optionsCycle.find('.previous-option').simulate('click');
-
-            expect(onChangeSpy.calls.count()).toBe(1);
-
-            optionsCycle.find('.next-option').simulate('click');
-
-            expect(onChangeSpy.calls.count()).toBe(2);
+            optionsCycleWrapper.find('.next-option').simulate('click');
+            expect(spyOnChangeOption.calls.count()).toBe(1);
         });
 
         it('should call onChange with the last option when clicking on the previous arrow if the current option is the first one', () => {
-            const onChangeSpy = jasmine.createSpy('onChange');
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: 0});
-            optionsCycle.find('.previous-option').simulate('click');
+            mountComponent({onChange: spyOnChange, currentOption: 0});
+            optionsCycleWrapper.find('.previous-option').simulate('click');
 
-            expect(onChangeSpy).toHaveBeenCalledWith(OPTIONS.length - 1);
+            expect(spyOnChange).toHaveBeenCalledWith(OPTIONS.length - 1);
         });
 
         it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one', () => {
-            const onChangeSpy = jasmine.createSpy('onChange');
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: 2});
-            optionsCycle.find('.previous-option').simulate('click');
+            mountComponent({onChange: spyOnChange, currentOption: 2});
+            optionsCycleWrapper.find('.previous-option').simulate('click');
 
-            expect(onChangeSpy).toHaveBeenCalledWith(1);
+            expect(spyOnChange).toHaveBeenCalledWith(1);
         });
 
         it('should call onChange with the first option when clicking on the next arrow if the current option is the last one', () => {
-            const onChangeSpy = jasmine.createSpy('onChange');
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: OPTIONS.length - 1});
-            optionsCycle.find('.next-option').simulate('click');
+            mountComponent({onChange: spyOnChange, currentOption: OPTIONS.length - 1});
+            optionsCycleWrapper.find('.next-option').simulate('click');
 
-            expect(onChangeSpy).toHaveBeenCalledWith(0);
+            expect(spyOnChange).toHaveBeenCalledWith(0);
         });
 
         it('should call onChange with the previous option when clicking on the next arrow if the current option is not the last one', () => {
-            const onChangeSpy = jasmine.createSpy('onChange');
+            const spyOnChange = jasmine.createSpy('onChange');
 
-            optionsCycle.setProps({options: OPTIONS, onChange: onChangeSpy, currentOption: 2});
-            optionsCycle.find('.next-option').simulate('click');
+            mountComponent({onChange: spyOnChange, currentOption: 2});
+            optionsCycleWrapper.find('.next-option').simulate('click');
 
-            expect(onChangeSpy).toHaveBeenCalledWith(3);
+            expect(spyOnChange).toHaveBeenCalledWith(3);
         });
 
         it('should have the class "mod-inline" if isInline prop is set to true', () => {
-            expect(optionsCycle.find('.mod-inline').length).toBe(0);
+            mountComponent({isInline: true});
 
-            optionsCycle.setProps({options: OPTIONS, isInline: true});
-
-            expect(optionsCycle.find('.mod-inline').length).toBe(1);
-        });
-
-        it('should show the option which is at index startAt if it is defined as a prop on mount or just show the first one', () => {
-            const startAt: number = 3;
-
-            expect(optionsCycle.html()).toContain(OPTIONS[0]);
-
-            optionsCycle.unmount();
-            optionsCycle = mount(<OptionsCycle options={OPTIONS} currentOption={startAt} />, {
-                attachTo: document.getElementById('App'),
-            });
-
-            expect(optionsCycle.html()).toContain(OPTIONS[startAt]);
+            expect(optionsCycleWrapper.find('.mod-inline').length).toBe(1);
         });
     });
 });
