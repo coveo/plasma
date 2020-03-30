@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import {ComponentClass} from 'react';
 import * as React from 'react';
 import {IBlankSlateProps} from './BlankSlate';
