@@ -66,7 +66,7 @@ const MiddleSliderAsymetric: React.FunctionComponent = () => {
                     75: '50%',
                     100: '100%',
                 }}
-                step={25}
+                step={5000}
                 onChange={(currentValue) => {
                     setValue(currentValue);
                 }}

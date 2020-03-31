@@ -44,6 +44,13 @@ export const getComputedRangeValue = (
     return 0;
 };
 
+export const computeStep = (step: number, min: number, max: number) => {
+    if (!step) {
+        return undefined;
+    }
+    return (step * 100) / (max - min);
+};
+
 export const propsValidator = (min: number, max: number, initialValue: number) => {
     if (min > 0) {
         throw new Error(
