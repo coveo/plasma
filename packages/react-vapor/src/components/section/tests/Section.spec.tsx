@@ -27,6 +27,12 @@ describe('Section', () => {
             expect(section.find('h3').text()).toBe(SOME_TITLE);
         });
 
+        it('should render the title node in a h2 tag', () => {
+            const section = shallow(<Section title={<div className="title-test">test</div>} level={2} />);
+
+            expect(section.find('div.title-test').length).toBe(1);
+        });
+
         it('should render the title in a h4 tag with level 3', () => {
             const section = shallow(<Section title={SOME_TITLE} level={3} />);
 
