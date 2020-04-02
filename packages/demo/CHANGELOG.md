@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.30.1](https://github.com/coveo/react-vapor/compare/v5.30.0...v5.30.1) (2020-04-02)
+
+
+### Bug Fixes
+
+* **middleslider:** adapted the step to the range of the slider ([bf1dadd](https://github.com/coveo/react-vapor/commit/bf1dadd0ac99339785103d7d2b519d386a2e776c))
+
+
+
+
+
 # [5.30.0](https://github.com/coveo/react-vapor/compare/v5.29.0...v5.30.0) (2020-03-30)
 
 **Note:** Version bump only for package react-vapor-demo
