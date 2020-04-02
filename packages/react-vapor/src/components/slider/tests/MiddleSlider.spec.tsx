@@ -62,7 +62,7 @@ describe('<MiddleSlider/>', () => {
                 onChange: jasmine.any(Function),
                 hasTooltip: true,
                 marks: {0: '-2000', 33: '2000', 17: '0', 100: '10,000'},
-                step: 5,
+                step,
                 enabled: true,
                 initialValue: 20,
             };
