@@ -4,7 +4,7 @@ import * as React from 'react';
 type SectionMods = 'mod-header-padding' | 'mod-form-top-bottom-padding' | 'material-card';
 
 export interface ISectionProps {
-    title?: string;
+    title?: React.ReactNode;
     description?: React.ReactNode;
     className?: string;
     mods?: SectionMods | SectionMods[];
