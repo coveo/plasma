@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.31.0](https://github.com/coveo/react-vapor/compare/v5.30.1...v5.31.0) (2020-04-02)
+
+
+### Bug Fixes
+
+* **split-layout:** remove border ([7d81ec5](https://github.com/coveo/react-vapor/commit/7d81ec50d74566d50aca197932806ad7eb9e0fa8))
+
+
+
+
+
 ## [5.28.1](https://github.com/coveo/react-vapor/compare/v5.28.0...v5.28.1) (2020-03-26)
 
 **Note:** Version bump only for package coveo-styleguide
