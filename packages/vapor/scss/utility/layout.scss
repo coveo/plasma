@@ -113,6 +113,12 @@
         border-left: $default-border;
     }
 
+    &.no-border {
+        .column + .column {
+            border-left: none;
+        }
+    }
+
     @media (max-width: $breakpoint-desktop-small) {
         .column {
             min-width: 100%;

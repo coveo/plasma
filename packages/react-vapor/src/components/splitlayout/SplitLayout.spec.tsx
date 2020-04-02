@@ -2,7 +2,7 @@ import {shallow} from 'enzyme';
 import * as React from 'react';
 import {range} from 'underscore';
 import {JSXRenderable} from '../../utils/JSXUtils';
-import {ISplitLayoutProps, SplitLayout} from './SplitLayout';
+import {ISplitLayoutProps, SplitLayout, SplitLayoutMods} from './SplitLayout';
 
 describe('SplitLayout', () => {
     const testClassesString = 'some classes';
@@ -65,6 +65,12 @@ describe('SplitLayout', () => {
                     .last()
                     .find('.right').length
             ).toBe(1);
+        });
+
+        it('should render with a left child in first column and a right child in right column', () => {
+            const splitLayout = shallow(<SplitLayout {...basicProps} mods={SplitLayoutMods.noBorder} />);
+
+            expect(splitLayout.hasClass('no-border')).toBe(true);
         });
 
         it('should render with left children in first column and right children in right column with multiple children', () => {
