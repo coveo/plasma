@@ -71,6 +71,7 @@ const MiddleSliderAsymetric: React.FunctionComponent = () => {
                     setValue(currentValue);
                 }}
                 hasTooltip
+                appendValue
                 customTooltip={() => <span>this custom tooltip shows the slider current value of {value}</span>}
             />
         </Section>
