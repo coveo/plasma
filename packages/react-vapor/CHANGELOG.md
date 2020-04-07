@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.33.0](https://github.com/coveo/react-vapor/compare/v5.32.0...v5.33.0) (2020-04-07)
+
+
+### Features
+
+* **test-utilities:** table and state ([df459ad](https://github.com/coveo/react-vapor/commit/df459ad0a68d7e71b807c9aadbeb997131e56909))
+
+
+
+
+
 # [5.32.0](https://github.com/coveo/react-vapor/compare/v5.31.1...v5.32.0) (2020-04-03)
 
 
