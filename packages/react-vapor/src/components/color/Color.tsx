@@ -1,17 +1,13 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {webpackVaporColors} from './VaporColors';
 
 export interface ColorProps {
     color: string;
 }
 
-// tslint:disable
-export const VaporColors: Record<
-    string,
-    string
-> = require('!sass-variable-loader?preserveVariableNames!coveo-styleguide/scss/common/palette.scss');
-// tslint:enable
+export const VaporColors: Record<string, string> = webpackVaporColors;
 
 export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
