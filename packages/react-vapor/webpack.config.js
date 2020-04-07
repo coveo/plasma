@@ -114,7 +114,7 @@ const config = {
     },
     plugins: [
         new webpack.DefinePlugin({
-            WEBPACK_DEFINED_VERSION: JSON.stringify(require('./package.json').version),
+            'process.env.REACT_VAPOR_VERSION': JSON.stringify(require('./package.json').version),
             'process.env.NODE_ENV': JSON.stringify('production'),
         }),
         new UnminifiedWebpackPlugin(),
