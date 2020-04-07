@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 import {connect} from 'react-redux';
 
 import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
