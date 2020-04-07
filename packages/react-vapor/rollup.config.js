@@ -61,6 +61,5 @@ function replacePlugin() {
     return replace({
         'process.env.NODE_ENV': 'production',
         'process.env.REACT_VAPOR_VERSION': JSON.stringify(require('./package.json').version),
-        // version: '5.28.1'
     });
 }
