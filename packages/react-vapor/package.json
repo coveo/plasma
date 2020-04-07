@@ -14,6 +14,7 @@
     "author": "Coveo",
     "license": "Apache-2.0",
     "main": "dist/react-vapor.js",
+    "module": "dist/react-vapor.esm.js",
     "types": "dist/definitions/src/Entry.d.ts",
     "repository": {
         "type": "git",
@@ -61,6 +62,9 @@
         "underscore.string": "^3.3.5"
     },
     "devDependencies": {
+        "@rollup/plugin-commonjs": "^11.0.2",
+        "@rollup/plugin-node-resolve": "^7.1.1",
+        "@rollup/plugin-replace": "^2.3.1",
         "@types/chosen-js": "1.6.2",
         "@types/classnames": "2.2.9",
         "@types/codemirror": "0.0.62",
@@ -144,6 +148,10 @@
         "redux-thunk": "2.3.0",
         "remap-istanbul": "0.13.0",
         "reselect": "4.0.0",
+        "rollup": "^2.3.3",
+        "rollup-plugin-postcss": "^2.5.0",
+        "rollup-plugin-sass-variables": "^0.1.1",
+        "rollup-plugin-typescript2": "^0.27.0",
         "sass-loader": "8.0.2",
         "sass-variable-loader": "0.1.2",
         "style-loader": "1.1.3",
