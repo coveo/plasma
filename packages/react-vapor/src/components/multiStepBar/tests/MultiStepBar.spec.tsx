@@ -1,4 +1,4 @@
-import {shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {IMultiStepBarProps, IStep, MultiStepBar, MultiStepState} from '../MultiStepBar';
 
@@ -47,7 +47,10 @@ describe('<MultiStepBar />', () => {
 
     describe('MultiStepBar Content', () => {
         describe('with simple states', () => {
-            const multiStepBar = shallow(<MultiStepBar {...testProps} />);
+            let multiStepBar: ShallowWrapper<IMultiStepBarProps>;
+            beforeEach(() => {
+                multiStepBar = shallow(<MultiStepBar {...testProps} />);
+            });
 
             it('should render one step per state in the backdrop', () => {
                 eachPossibleStepSelectors.forEach((state) => {
@@ -78,9 +81,8 @@ describe('<MultiStepBar />', () => {
         });
 
         describe('with states with the text attribute', () => {
-            const multiStepBar = shallow(<MultiStepBar {...testProps} steps={stepsWithText} />);
-
             it('should render one step per state in the backdrop and in the content container', () => {
+                const multiStepBar = shallow(<MultiStepBar {...testProps} steps={stepsWithText} />);
                 eachPossibleStepSelectors.forEach((state) => {
                     expect(
                         multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`)
