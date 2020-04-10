@@ -53,6 +53,7 @@
             height: $calendar-cell-dimensions;
             padding: 0;
             text-align: center;
+            vertical-align: middle;
         }
 
         th {
@@ -177,11 +178,11 @@
 
     .options-cycle-option {
         display: inline-block;
+        text-align: center;
     }
 
-    & span.options-cycle-option {
+    &.mod-month .options-cycle-option {
         min-width: 120px;
-        text-align: center;
     }
 }
 

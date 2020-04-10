@@ -1,7 +1,6 @@
-import {ReactWrapper} from 'enzyme';
-import {mountWithStore} from 'enzyme-redux';
+import {ShallowWrapper} from 'enzyme';
+import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import * as ReactModal from 'react-modal';
 
 import {closeModal} from '../../../components/modal/ModalActions';
 import {ModalCompositeConnected} from '../../../components/modal/ModalCompositeConnected';
@@ -16,7 +15,7 @@ import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventN
 
 describe('Modal with Prevent Navigation', () => {
     let store: ReactVaporMockStore;
-    let component: ReactWrapper<any, any>;
+    let component: ShallowWrapper<any, any>;
 
     class SomeModal extends React.Component<IWithPreventNavigationInjectedProps> {
         static ID = 'SomeModalId';
@@ -33,17 +32,18 @@ describe('Modal with Prevent Navigation', () => {
         }
     }
 
-    const mountComponentWithProps = (config?: Partial<IWithPreventNavigationConfig>, isDirty = false) => {
+    const shallowWithProps = (config?: Partial<IWithPreventNavigationConfig>, isDirty = false) => {
         store = getStoreMock({
             dirtyComponents: [isDirty ? SomeModal.ID : ''],
             modals: [{id: SomeModal.ID, isOpened: true}],
         });
 
         const SomeModalWithPreventNaviationHOC = modalWithPreventNavigation({id: SomeModal.ID, ...config})(SomeModal);
-        component = mountWithStore(<SomeModalWithPreventNaviationHOC />, store);
+        component = shallowWithStore(<SomeModalWithPreventNaviationHOC />, store)
+            .dive()
+            .dive()
+            .dive();
     };
-
-    const fakeEvent = jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation']);
 
     afterEach(() => {
         if (component && component.exists()) {
@@ -53,59 +53,47 @@ describe('Modal with Prevent Navigation', () => {
 
     it('should mount and unmount without error', () => {
         expect(() => {
-            mountComponentWithProps();
+            shallowWithProps();
             component.unmount();
         }).not.toThrow();
     });
 
     it('should not add the prevent modal if the view is not dirty', () => {
-        mountComponentWithProps();
+        shallowWithProps();
 
         expect(component.find({id: `prevent-navigation-${SomeModal.ID}`}).exists()).toBe(false);
     });
 
     it('should add the prevent modal if the view is dirty', () => {
-        mountComponentWithProps({}, true);
+        shallowWithProps({}, true);
 
         expect(component.find({id: `prevent-navigation-${SomeModal.ID}`}).exists()).toBe(true);
     });
 
-    it('should not open set the showPrevent state to true if the view is not dirty and the user tries to close the modal', () => {
-        mountComponentWithProps({}, false);
+    it('should set the isDirty prop on the modal', () => {
+        shallowWithProps({}, false);
 
-        // First because the prevent navigate modal is added after in the DOM
-        component
-            .find(ReactModal)
-            .first()
-            .props()
-            .onRequestClose(fakeEvent);
-        expect(component.find('ModalWithPreventNavigation').state().showPrevent).toBe(false);
+        expect(component.find(SomeModal).prop('isDirty')).toBe(false);
     });
 
     it('should set the showPrevent state to true if the view is dirty and the user tries to close it', () => {
-        mountComponentWithProps({}, true);
+        shallowWithProps({}, true);
 
-        // First because the prevent navigate modal is added after in the DOM
-        component
-            .find(ReactModal)
-            .first()
-            .props()
-            .onRequestClose(fakeEvent);
-        expect(component.find('ModalWithPreventNavigation').state().showPrevent).toBe(true);
+        expect(component.find(SomeModal).prop('isDirty')).toBe(true);
     });
 
     it('should not have a PreventNavigationPrompt when isDirty is false', () => {
-        mountComponentWithProps({}, false);
+        shallowWithProps({}, false);
         expect(component.find(PreventNavigationPrompt).exists()).toBe(false);
     });
 
     it('should have a PreventNavigationPrompt when isDirty is true', () => {
-        mountComponentWithProps({}, true);
+        shallowWithProps({}, true);
         expect(component.find(PreventNavigationPrompt).exists()).toBe(true);
     });
 
     it('should display a PreventNavigationPrompt with the default config', () => {
-        mountComponentWithProps({}, true);
+        shallowWithProps({}, true);
 
         const props: PreventNavigationPromptProps = component.find(PreventNavigationPrompt).props();
         expect(props.id).toBe(`prevent-navigation-${SomeModal.ID}`);
@@ -126,7 +114,7 @@ describe('Modal with Prevent Navigation', () => {
             exit: 'Yeah',
             stay: 'No',
         };
-        mountComponentWithProps(customConfig, true);
+        shallowWithProps(customConfig, true);
 
         const props: PreventNavigationPromptProps = component.find(PreventNavigationPrompt).props();
         expect(props.id).toBe(`prevent-navigation-${SomeModal.ID}`);
@@ -137,14 +125,14 @@ describe('Modal with Prevent Navigation', () => {
     });
 
     it('should dispatch a close modal when the prevent navigation onClose is called', () => {
-        mountComponentWithProps({}, true);
+        shallowWithProps({}, true);
         component.find(PreventNavigationPrompt).prop('onClose')();
 
         expect(store.getActions()).toContain(closeModal(SomeModal.ID));
     });
 
     it('should not dispatch a close modal when the prevent navigation onStay is called', () => {
-        mountComponentWithProps({}, true);
+        shallowWithProps({}, true);
         component.find(PreventNavigationPrompt).prop('onStay')();
 
         expect(store.getActions()).not.toContain(closeModal(SomeModal.ID));
