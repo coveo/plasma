@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.34.0](https://github.com/coveo/react-vapor/compare/v5.33.1...v5.34.0) (2020-04-10)
+
+
+### Bug Fixes
+
+* svg cleanup removed some of the drawing ([c9d8332](https://github.com/coveo/react-vapor/commit/c9d8332a8955c26936b68a62c1e16e729e0b7f6d))
+
+
+### Features
+
+* **variant.svg:** added a new icon for variant object type ([805a370](https://github.com/coveo/react-vapor/commit/805a370f6c4862a5e9562dbe46782c8d75259aff))
+
+
+
+
+
 ## [5.33.1](https://github.com/coveo/react-vapor/compare/v5.33.0...v5.33.1) (2020-04-10)
 
 
