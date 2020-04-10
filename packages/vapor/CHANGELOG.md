@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.33.1](https://github.com/coveo/react-vapor/compare/v5.33.0...v5.33.1) (2020-04-10)
+
+
+### Bug Fixes
+
+* **datepicker:** only change the state on focus instead of click ([0322514](https://github.com/coveo/react-vapor/commit/0322514216325c95a6d9dee8dde4e104772e94ae))
+
+
+
+
+
 # [5.32.0](https://github.com/coveo/react-vapor/compare/v5.31.1...v5.32.0) (2020-04-03)
 
 

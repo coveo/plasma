@@ -1,4 +1,4 @@
-import {shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {IStepProgressBarProps, StepProgressBar} from '../StepProgressBar';
 
@@ -30,7 +30,11 @@ describe('StepProgressBar', () => {
     });
 
     describe('StepProgressBar Content', () => {
-        const stepProgressBar = shallow(<StepProgressBar {...testProps} />);
+        let stepProgressBar: ShallowWrapper<IStepProgressBarProps>;
+
+        beforeEach(() => {
+            stepProgressBar = shallow(<StepProgressBar {...testProps} />);
+        });
 
         it('should render with steps done below the current step', () => {
             expect(stepProgressBar.find(stepProgressBarDoneSelector).length).toBe(testProps.currentStep);

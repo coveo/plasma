@@ -190,6 +190,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         const monthPickerProps: IOptionsCycleProps = {
             options: this.props.months,
             isInline: true,
+            className: 'mod-month',
         };
 
         const startingYearIndex: number = this.props.years.indexOf(DateUtils.currentYear.toString());
