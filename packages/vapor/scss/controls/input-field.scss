@@ -99,7 +99,7 @@
 
     > textarea {
         min-height: $input-height;
-        padding: 10px 0 24px 0;
+        padding: 5px 0 2px;
 
         -ms-overflow-y: hidden !important;
         overflow-y: hidden; // ie
@@ -109,7 +109,6 @@
     }
 
     &.mod-resizeable textarea {
-        padding: 5px 0 2px; // Tweak to make it look like a normal input-field
         resize: vertical;
     }
 
