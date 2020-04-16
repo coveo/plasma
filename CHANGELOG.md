@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.34.1](https://github.com/coveo/react-vapor/compare/v5.34.0...v5.34.1) (2020-04-16)
+
+
+### Bug Fixes
+
+* **textarea:** fix padding in textarea ([#1528](https://github.com/coveo/react-vapor/issues/1528)) ([ab05040](https://github.com/coveo/react-vapor/commit/ab050405ae45bb84ac2a9e7530dc3d878a0377e1))
+
+
+
+
+
 # [5.34.0](https://github.com/coveo/react-vapor/compare/v5.33.1...v5.34.0) (2020-04-10)
 
 
