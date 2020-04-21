@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.34.2](https://github.com/coveo/react-vapor/compare/v5.34.1...v5.34.2) (2020-04-21)
+
+
+### Bug Fixes
+
+* packages/demo/package.json to reduce vulnerabilities ([4c93aea](https://github.com/coveo/react-vapor/commit/4c93aead0aff162461400132b5fbd2fead8fffc8))
+
+
+
+
+
 ## [5.34.1](https://github.com/coveo/react-vapor/compare/v5.34.0...v5.34.1) (2020-04-16)
 
 
