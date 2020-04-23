@@ -1,7 +1,7 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addModal, closeModal, removeModal} from '../ModalActions';

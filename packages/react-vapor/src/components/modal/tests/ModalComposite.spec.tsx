@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 
 import {ModalBody} from '../ModalBody';
 import {ModalComposite} from '../ModalComposite';
