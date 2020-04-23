@@ -3,181 +3,160 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.34.1](https://github.com/coveo/react-vapor/compare/v5.34.0...v5.34.1) (2020-04-16)
+
+**Note:** Version bump only for package react-vapor
+
+# [5.34.0](https://github.com/coveo/react-vapor/compare/v5.33.1...v5.34.0) (2020-04-10)
+
+**Note:** Version bump only for package react-vapor
+
+## [5.33.1](https://github.com/coveo/react-vapor/compare/v5.33.0...v5.33.1) (2020-04-10)
+
+### Bug Fixes
+
+-   **datepicker:** only change the state on focus instead of click ([0322514](https://github.com/coveo/react-vapor/commit/0322514216325c95a6d9dee8dde4e104772e94ae))
+
+# [5.33.0](https://github.com/coveo/react-vapor/compare/v5.32.0...v5.33.0) (2020-04-07)
+
+### Features
+
+-   **test-utilities:** table and state ([df459ad](https://github.com/coveo/react-vapor/commit/df459ad0a68d7e71b807c9aadbeb997131e56909))
+
+# [5.32.0](https://github.com/coveo/react-vapor/compare/v5.31.1...v5.32.0) (2020-04-03)
+
+### Features
+
+-   **middle slider:** add prop to append slider value ([cbbcb68](https://github.com/coveo/react-vapor/commit/cbbcb68df91ef19591156dc4b8909cee2b414933))
+
+## [5.31.1](https://github.com/coveo/react-vapor/compare/v5.31.0...v5.31.1) (2020-04-03)
+
+**Note:** Version bump only for package react-vapor
+
+# [5.31.0](https://github.com/coveo/react-vapor/compare/v5.30.1...v5.31.0) (2020-04-02)
+
+### Bug Fixes
+
+-   **split-layout:** remove border ([7d81ec5](https://github.com/coveo/react-vapor/commit/7d81ec50d74566d50aca197932806ad7eb9e0fa8))
+
+### Features
+
+-   **section:** update section title ([7161e92](https://github.com/coveo/react-vapor/commit/7161e92f6f42a3682ab267b43f5b295f900dfd7e))
+
+## [5.30.1](https://github.com/coveo/react-vapor/compare/v5.30.0...v5.30.1) (2020-04-02)
+
+### Bug Fixes
+
+-   **middleslider:** adapted the step to the range of the slider ([bf1dadd](https://github.com/coveo/react-vapor/commit/bf1dadd0ac99339785103d7d2b519d386a2e776c))
+-   **uts:** fix-uts ([7110f63](https://github.com/coveo/react-vapor/commit/7110f63d33ba56981cc896ce290e66ce30b424ba))
+
+# [5.30.0](https://github.com/coveo/react-vapor/compare/v5.29.0...v5.30.0) (2020-03-30)
+
+### Features
+
+-   **optionscycle:** add option change callback ([1f1b502](https://github.com/coveo/react-vapor/commit/1f1b502c6a1803561d8771ce8e6d487eb2aada40))
+
+# [5.29.0](https://github.com/coveo/react-vapor/compare/v5.28.2...v5.29.0) (2020-03-30)
+
+### Features
+
+-   **form:** add noMargin prop ([6584484](https://github.com/coveo/react-vapor/commit/65844848801850f7247abdde939f8ae259aa0eb6))
+
 ## [5.28.1](https://github.com/coveo/react-vapor/compare/v5.28.0...v5.28.1) (2020-03-26)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 # [5.28.0](https://github.com/coveo/react-vapor/compare/v5.27.3...v5.28.0) (2020-03-26)
-
 
 ### Features
 
-* **menu:** add menu exemple ([f73df31](https://github.com/coveo/react-vapor/commit/f73df310079ac3caa30d6a4e77397cf8a9ab18f4))
-
-
-
-
+-   **menu:** add menu exemple ([f73df31](https://github.com/coveo/react-vapor/commit/f73df310079ac3caa30d6a4e77397cf8a9ab18f4))
 
 ## [5.27.2](https://github.com/coveo/react-vapor/compare/v5.27.1...v5.27.2) (2020-03-24)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.27.1](https://github.com/coveo/react-vapor/compare/v5.27.0...v5.27.1) (2020-03-19)
-
 
 ### Bug Fixes
 
-* **tablehoc:** added isCard in tableLoading.body ([c555bd0](https://github.com/coveo/react-vapor/commit/c555bd01befda9befda05bc60ac87a9f6f94b091))
-
-
-
-
+-   **tablehoc:** added isCard in tableLoading.body ([c555bd0](https://github.com/coveo/react-vapor/commit/c555bd01befda9befda05bc60ac87a9f6f94b091))
 
 # [5.27.0](https://github.com/coveo/react-vapor/compare/v5.26.2...v5.27.0) (2020-03-19)
 
-
 ### Features
 
-* **vertical line:** new vertical line component ([498f5fd](https://github.com/coveo/react-vapor/commit/498f5fdba53aa2e6db3a37582777fc9be0d0b433))
-
-
-
-
+-   **vertical line:** new vertical line component ([498f5fd](https://github.com/coveo/react-vapor/commit/498f5fdba53aa2e6db3a37582777fc9be0d0b433))
 
 ## [5.26.2](https://github.com/coveo/react-vapor/compare/v5.26.1...v5.26.2) (2020-03-18)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.26.1](https://github.com/coveo/react-vapor/compare/v5.26.0...v5.26.1) (2020-03-17)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 # [5.26.0](https://github.com/coveo/react-vapor/compare/v5.25.0...v5.26.0) (2020-03-16)
-
 
 ### Features
 
-* **tableloading:** added table of loading cards ([541ffa7](https://github.com/coveo/react-vapor/commit/541ffa78bcd0ffd79a79e6c0538b45792f132d84))
-* **tableloading:** apply review and changed test accordingly ([f32e7c1](https://github.com/coveo/react-vapor/commit/f32e7c146c683064308d73d4d7710f989684e049))
-
-
-
-
+-   **tableloading:** added table of loading cards ([541ffa7](https://github.com/coveo/react-vapor/commit/541ffa78bcd0ffd79a79e6c0538b45792f132d84))
+-   **tableloading:** apply review and changed test accordingly ([f32e7c1](https://github.com/coveo/react-vapor/commit/f32e7c146c683064308d73d4d7710f989684e049))
 
 # [5.25.0](https://github.com/coveo/react-vapor/compare/v5.24.2...v5.25.0) (2020-03-16)
 
-
 ### Features
 
-* **invisible-collapsible:** invisible collapsible ([706516b](https://github.com/coveo/react-vapor/commit/706516b2626daa5685512a6063492feb5b3d7a65))
-
-
-
-
+-   **invisible-collapsible:** invisible collapsible ([706516b](https://github.com/coveo/react-vapor/commit/706516b2626daa5685512a6063492feb5b3d7a65))
 
 ## [5.24.2](https://github.com/coveo/react-vapor/compare/v5.24.1...v5.24.2) (2020-03-13)
 
 **Note:** Version bump only for package react-vapor
 
-
-
-
-
 ## [5.24.1](https://github.com/coveo/react-vapor/compare/v5.24.0...v5.24.1) (2020-03-13)
-
 
 ### Bug Fixes
 
-* **ie-11-drop:** ie 11 drop ([455ac92](https://github.com/coveo/react-vapor/commit/455ac9296ddc4bdcb5f27f613fb69ff80cc65813))
-
-
-
-
+-   **ie-11-drop:** ie 11 drop ([455ac92](https://github.com/coveo/react-vapor/commit/455ac9296ddc4bdcb5f27f613fb69ff80cc65813))
 
 # [5.24.0](https://github.com/coveo/react-vapor/compare/v5.23.0...v5.24.0) (2020-03-13)
 
-
 ### Bug Fixes
 
-* **textarea:** code review ([e509199](https://github.com/coveo/react-vapor/commit/e5091999effbd202ea90ffdac8a7e774c30c2b2e))
-
+-   **textarea:** code review ([e509199](https://github.com/coveo/react-vapor/commit/e5091999effbd202ea90ffdac8a7e774c30c2b2e))
 
 ### Features
 
-* **textarea:** add validation to textarea + refactoring with hooks ([721b0c4](https://github.com/coveo/react-vapor/commit/721b0c48ae546f33292435809f33843f39c3eef7))
-
-
-
-
+-   **textarea:** add validation to textarea + refactoring with hooks ([721b0c4](https://github.com/coveo/react-vapor/commit/721b0c48ae546f33292435809f33843f39c3eef7))
 
 # [5.23.0](https://github.com/coveo/react-vapor/compare/v5.22.2...v5.23.0) (2020-03-13)
 
-
 ### Features
 
-* **file-input:** implement a FileInput component ([c25bc1b](https://github.com/coveo/react-vapor/commit/c25bc1bb612367c38dc222271cfc15d1b8af358b))
-
-
-
-
+-   **file-input:** implement a FileInput component ([c25bc1b](https://github.com/coveo/react-vapor/commit/c25bc1bb612367c38dc222271cfc15d1b8af358b))
 
 ## [5.22.2](https://github.com/coveo/react-vapor/compare/v5.22.1...v5.22.2) (2020-03-12)
 
-
 ### Bug Fixes
 
-* **es6-lib:** es6 library ([0a2c2fe](https://github.com/coveo/react-vapor/commit/0a2c2febd0323c5d195e6db5e6f04eb7b97e3cd7))
-
-
-
-
+-   **es6-lib:** es6 library ([0a2c2fe](https://github.com/coveo/react-vapor/commit/0a2c2febd0323c5d195e6db5e6f04eb7b97e3cd7))
 
 ## [5.22.1](https://github.com/coveo/react-vapor/compare/v5.22.0...v5.22.1) (2020-03-12)
 
-
 ### Bug Fixes
 
-* **convert-es5-lib:** convert lib in es5 ([f1bae06](https://github.com/coveo/react-vapor/commit/f1bae066e948e636063db6a9d223442e4b67110f))
-
-
-
-
+-   **convert-es5-lib:** convert lib in es5 ([f1bae06](https://github.com/coveo/react-vapor/commit/f1bae066e948e636063db6a9d223442e4b67110f))
 
 # [5.22.0](https://github.com/coveo/react-vapor/compare/v5.21.0...v5.22.0) (2020-03-10)
 
-
 ### Features
 
-* **navigationsection.tsx:** added isLink prop and clean utility section ([9b8ca63](https://github.com/coveo/react-vapor/commit/9b8ca63bf005b327c66abe546bd474ebe18bd879))
-* **sidenavigation:** added style on sidenavigation link section ([8cec10c](https://github.com/coveo/react-vapor/commit/8cec10c0f3814f1f97a11f3ca2aef2bdacc1a8f0))
-
-
-
-
+-   **navigationsection.tsx:** added isLink prop and clean utility section ([9b8ca63](https://github.com/coveo/react-vapor/commit/9b8ca63bf005b327c66abe546bd474ebe18bd879))
+-   **sidenavigation:** added style on sidenavigation link section ([8cec10c](https://github.com/coveo/react-vapor/commit/8cec10c0f3814f1f97a11f3ca2aef2bdacc1a8f0))
 
 # [5.21.0](https://github.com/coveo/react-vapor/compare/v5.20.1...v5.21.0) (2020-03-10)
 
 **Note:** Version bump only for package react-vapor
-
-
-
-
 
 ## [5.20.1](https://github.com/coveo/react-vapor/compare/v5.20.0...v5.20.1) (2020-03-10)
 

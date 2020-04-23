@@ -325,21 +325,27 @@ describe('Date picker', () => {
             expect(onClickSpy).toHaveBeenCalled();
         });
 
-        xit('should not set a click listener to handleDocumentClick if it has the readonly prop', () => {
+        it('should not set a click listener to handleDocumentClick if it has the readonly prop', () => {
             const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
+            shallow(
+                <DatePickerDropdown
+                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
+                    onDocumentClick={jasmine.createSpy('click')}
+                    readonly
+                />
+            );
 
-            datePickerDropdown = mount(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} readonly />, {
-                attachTo: document.getElementById('App'),
-            });
-            expect(addEventListenerSpy).not.toHaveBeenCalledWith('click', jasmine.anything());
+            expect(addEventListenerSpy).not.toHaveBeenCalled();
         });
 
         it('should set a click listener to handleDocumentClick if it does not have the readonly prop', () => {
             const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
-
-            datePickerDropdown = mount(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />, {
-                attachTo: document.getElementById('App'),
-            });
+            shallow(
+                <DatePickerDropdown
+                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
+                    onDocumentClick={jasmine.createSpy('click')}
+                />
+            );
 
             expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
         });

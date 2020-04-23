@@ -18,7 +18,6 @@ export interface IMenuOwnProps {
     buttonSvg?: React.ReactNode;
     customOffset?: number;
     buttonProps?: Partial<IButtonProps>;
-    disabled?: boolean;
 }
 
 export interface IMenuStateProps {
@@ -58,7 +57,6 @@ export class MenuConnected extends React.Component<IMenuProps, {}> {
         positionRight: false,
         closeOnSelectItem: true,
         customOffset: 0,
-        disabled: false,
     };
 
     componentWillMount() {

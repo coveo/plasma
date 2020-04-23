@@ -1,6 +1,18 @@
 @import '../common/palette';
 @import '../variables';
 
+div.slider-container {
+    div.appended-value.vapor-slider.rc-slider {
+        flex: 15;
+    }
+    div.slider-value {
+        flex: 2;
+
+        justify-content: center;
+        padding-top: 1.2em;
+    }
+}
+
 .vapor-slider.rc-slider {
     .rc-slider-rail {
         height: $slider-rail-height;

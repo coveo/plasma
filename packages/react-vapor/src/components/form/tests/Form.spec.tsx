@@ -43,5 +43,19 @@ describe('Form', () => {
 
             expect(form.find(SomeComponent)).toBeDefined();
         });
+
+        it('should set margin top and bottom if "noMargin" prop is set to false', () => {
+            const form = shallow(<Form>Whatever</Form>);
+
+            expect(form.hasClass('my2')).toBe(true);
+        });
+
+        it('should not set margin top and bottom if "noMargin" prop is set to true', () => {
+            const form = shallow(<Form noMargin>Whatever</Form>);
+
+            expect(form.hasClass('my2')).toBe(false);
+            expect(form.hasClass('mt2')).toBe(false);
+            expect(form.hasClass('mb2')).toBe(false);
+        });
     });
 });

@@ -1,5 +1,16 @@
 import * as React from 'react';
-import {Form, Input, Label, LabeledInput, Radio, RadioSelect, Section, SingleSelectConnected} from 'react-vapor';
+import {
+    Form,
+    Input,
+    Label,
+    LabeledInput,
+    Radio,
+    RadioSelect,
+    Section,
+    SingleSelectConnected,
+    Svg,
+    Tooltip,
+} from 'react-vapor';
 
 export class SectionExamples extends React.Component<any, any> {
     render() {
@@ -39,6 +50,25 @@ export class SectionExamples extends React.Component<any, any> {
                                 </LabeledInput>
                             </Section>
                         </Section>
+                    </Section>
+                </Form>
+
+                <Form>
+                    <Section
+                        title={
+                            <div className="flex">
+                                Custom title with a Svg and Tooltip
+                                <Tooltip title="info title">
+                                    <Svg
+                                        svgName="info"
+                                        className="ml1 icon mod-align-with-text"
+                                        svgClass="fill-light-grey"
+                                    />
+                                </Tooltip>
+                            </div>
+                        }
+                    >
+                        content
                     </Section>
                 </Form>
 

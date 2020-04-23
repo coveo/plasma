@@ -1,5 +1,6 @@
 import 'rc-slider/assets/index.css';
 
+import * as classNames from 'classnames';
 import {Range, SliderProps} from 'rc-slider';
 import * as React from 'react';
 import {connect} from 'react-redux';
@@ -8,6 +9,7 @@ import {IDispatch} from '../../utils/ReduxUtils';
 import {SliderActions} from './SliderActions';
 import SliderHandle from './SliderHandle';
 import {
+    computeStep,
     convertInitialValuetoRangeValue,
     getComputedRangeValue,
     getCrossingPoint,
@@ -29,6 +31,7 @@ export interface MiddleSliderOwnProps extends SliderProps {
     tabIndex?: number[];
     onChange?: (rangeOutputValue: number) => any;
     customTooltip?: (value: any) => JSX.Element;
+    appendValue?: boolean;
 }
 
 export const mapDispatchToProps = (dispatch: IDispatch, ownProps: MiddleSliderOwnProps) => ({
@@ -48,6 +51,7 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
     setOutputValue,
     step,
     onChange,
+    appendValue,
 }) => {
     const crossingPoint = getCrossingPoint(min, max);
     const [highRange, setHighRange] = React.useState(crossingPoint);
@@ -121,17 +125,24 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
         return null;
     };
 
+    const computedStep = computeStep(step, min, max);
+
     return (
-        <Range
-            key={id}
-            value={[lowRange, highRange]}
-            onChange={setHandlePosition}
-            handle={renderHandle}
-            className="vapor-slider input-wrapper input-field"
-            marks={marks}
-            step={step}
-            disabled={!enabled}
-        />
+        <div className="flex full-content-x slider-container">
+            <Range
+                key={id}
+                value={[lowRange, highRange]}
+                onChange={setHandlePosition}
+                handle={renderHandle}
+                className={classNames('vapor-slider input-wrapper input-field', {'appended-value': appendValue})}
+                marks={marks}
+                step={computedStep}
+                disabled={!enabled}
+            />
+            <div className={classNames('slider-value flex', {hidden: !appendValue})}>
+                <span>{rangeOutputValue}</span>
+            </div>
+        </div>
     );
 };
 

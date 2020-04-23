@@ -1,7 +1,6 @@
-import $ from 'jquery';
+import classNames from 'classnames';
 import * as React from 'react';
 import {DateUtils} from '../../utils/DateUtils';
-import {CalendarDay} from '../calendar/CalendarDay';
 import {DateLimits} from './DatePickerActions';
 import {SetToNowButton} from './SetToNowButton';
 
@@ -28,13 +27,13 @@ export const DatePickerColors = {
 
 export const DEFAULT_DATE_PICKER_COLOR: string = DatePickerColors.blue;
 
-export class DatePicker extends React.Component<IDatePickerProps, any> {
+export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelected: boolean}> {
     static defaultProps: Partial<IDatePickerProps> = {
         color: DEFAULT_DATE_PICKER_COLOR,
     };
 
     private dateInput: HTMLInputElement;
-    private isPicked: boolean;
+    state = {isSelected: false};
 
     private getDateFromString(dateValue: string): Date {
         return this.props.withTime
@@ -46,35 +45,23 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
         return this.props.withTime ? DateUtils.getDateWithTimeString(date) : DateUtils.getSimpleDate(date);
     }
 
-    private setToToday() {
+    private setToToday = () => {
         const date = new Date();
         this.dateInput.value = this.getStringFromDate(date);
         this.handleChangeDate();
-    }
+    };
 
-    private handleChangeDate() {
+    private handleChangeDate = () => {
         const date: Date = this.getDateFromString(this.dateInput.value);
 
         if (date.getDate()) {
             this.props.onBlur(date, this.props.upperLimit);
         }
-    }
-
-    handleDocumentClick = (e: MouseEvent) => {
-        const target = $(e.target);
-        if (
-            this.isPicked &&
-            !target.closest('.date-picker').length &&
-            !target.closest(`.${CalendarDay.DEFAULT_DATE_CLASS}`).length &&
-            !target.closest('.date-picker-dropdown').length
-        ) {
-            this.handleChangeDate();
-        }
     };
 
-    componentDidMount() {
-        document.addEventListener('click', this.handleDocumentClick);
-    }
+    private handleClick = () => {
+        this.props.onClick(this.props.upperLimit);
+    };
 
     componentWillReceiveProps(nextProps: IDatePickerProps) {
         if (nextProps.date) {
@@ -86,34 +73,30 @@ export class DatePicker extends React.Component<IDatePickerProps, any> {
         } else {
             this.dateInput.value = '';
         }
-        this.isPicked =
+        const isSelected =
             (nextProps.isSelecting === DateLimits.upper && nextProps.upperLimit) ||
             (nextProps.isSelecting === DateLimits.lower && !nextProps.upperLimit);
-    }
-
-    componentWillUnmount() {
-        document.removeEventListener('click', this.handleDocumentClick);
+        this.setState({isSelected});
     }
 
     render() {
         const nowButton: JSX.Element = this.props.hasSetToNowButton ? (
-            <SetToNowButton onClick={() => this.setToToday()} tooltip={this.props.setToNowTooltip} />
+            <SetToNowButton onClick={this.setToToday} tooltip={this.props.setToNowTooltip} />
         ) : null;
 
-        const inputClasses: string[] = [`border-${this.props.color}`];
-        if (this.isPicked) {
-            inputClasses.push('picking-date');
-        } else if (this.dateInput && this.dateInput.value) {
-            inputClasses.push('date-picked', `bg-${this.props.color}`);
-        }
+        const inputClasses = classNames(`border-${this.props.color}`, {
+            'picking-date': this.state.isSelected,
+            'date-picked': !this.state.isSelected && this.dateInput?.value,
+            [`bg-${this.props.color}`]: !this.state.isSelected && this.dateInput?.value,
+        });
 
         return (
             <div className="date-picker flex">
                 <input
-                    className={inputClasses.join(' ')}
+                    className={inputClasses}
                     ref={(dateInput: HTMLInputElement) => (this.dateInput = dateInput)}
-                    onBlur={() => this.handleChangeDate()}
-                    onClick={() => this.props.onClick(this.props.upperLimit)}
+                    onBlur={this.handleChangeDate}
+                    onFocus={this.handleClick}
                     placeholder={this.props.placeholder}
                     required
                 />

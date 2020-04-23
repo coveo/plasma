@@ -21,11 +21,7 @@ module.exports = (config) => {
             noInfo: true,
         },
 
-        reporters: ['nyan'],
-
-        nyanReporter: {
-            renderOnRunCompleteOnly: !!process.env.TRAVIS,
-        },
+        reporters: ['mocha'],
 
         client: {
             jasmine: {
@@ -37,22 +33,26 @@ module.exports = (config) => {
         colors: true,
 
         browsers: ['ChromeHeadless'],
-        customLaunchers: {
-            ChromeHeadlessNoSandbox: {
-                base: 'ChromeHeadless',
-                flags: ['--no-sandbox'],
-            },
-        },
 
-        autoWatch: true,
+        autoWatch: false,
+        autoWatchBatchDelay: 5000,
         singleRun: true,
+
+        browserNoActivityTimeout: 500000,
+        browserDisconnectTolerance: 5,
+        browserConsoleLogOptions: {level: 'log', terminal: false},
     };
 
     if (!skipCoverageProcessing) {
-        configuration.reporters.push('coverage');
-        configuration.coverageReporter = {
-            dir: 'coverage',
-            reporters: [{type: 'json', subdir: '.', file: 'coverage.json'}, {type: 'text-summary'}],
+        configuration.reporters = ['mocha', 'coverage-istanbul'];
+
+        configuration.coverageIstanbulReporter = {
+            reports: ['lcov', 'text-summary'],
+            fixWebpackSourcePaths: true,
+        };
+        configuration.browserConsoleLogOptions = {level: 'log', terminal: true};
+        configuration.mochaReporter = {
+            ignoreSkipped: true,
         };
     }
 

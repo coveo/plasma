@@ -5,7 +5,7 @@ const branchName = process.env.TRAVIS_PULL_REQUEST_BRANCH;
 const prNumber = process.env.TRAVIS_PULL_REQUEST;
 
 const cloudfront = new AWS.CloudFront();
-const pathToInvalidate = prNumber !== "false" ? `react-vapor/${branchName}/*` : "react-vapor/*";
+const pathToInvalidate = prNumber !== 'false' ? `react-vapor/${branchName}/*` : 'react-vapor/*';
 console.log(pathToInvalidate);
 
 const shouldDoInvalidation = () => !!process.env.TRAVIS;
