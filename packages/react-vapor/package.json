@@ -22,7 +22,7 @@
     },
     "scripts": {
         "start": "webpack --watch",
-        "build": "gulp clean && webpack && npm run build:esm",
+        "build": "gulp clean && concurrently \"webpack\" \"npm run build:esm\"",
         "build:esm": "npx rollup -c",
         "pretest": "gulp clean:tests",
         "test": "karma start",
