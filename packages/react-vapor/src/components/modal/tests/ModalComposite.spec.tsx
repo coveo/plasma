@@ -98,4 +98,10 @@ describe('ModalComposite', () => {
 
         expect(overlayClasses.base).not.toContain('layer-0');
     });
+
+    it('should add the mod-prompt class to the modal if the isPrompt prop is true', () => {
+        const modalComposite = shallow(<ModalComposite isOpened isPrompt />);
+
+        expect((modalComposite.find(ReactModal).prop('className') as ReactModal.Classes).base).toContain('mod-prompt');
+    });
 });

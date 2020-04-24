@@ -5,8 +5,7 @@ import * as ReactModal from 'react-modal';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {addModal, closeModal, removeModal} from '../ModalActions';
-import {IModalCompositeProps} from '../ModalComposite';
-import {ModalCompositeConnected} from '../ModalCompositeConnected';
+import {IModalCompositeProps, ModalCompositeConnected} from '../ModalComposite';
 import {ModalHeader} from '../ModalHeader';
 import {ModalHeaderConnected} from '../ModalHeaderConnected';
 

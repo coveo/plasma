@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {ModalCompositeConnected} from '../ModalCompositeConnected';
+import {ModalCompositeConnected} from '../ModalComposite';
 import {UnsavedChangesModalProvider} from '../UnsavedChangeModalProvider';
 
 describe('<UnsavedChangeModalProvider/>', () => {
