@@ -5,6 +5,7 @@ import resolve from '@rollup/plugin-node-resolve';
 import keysTransformer from 'ts-transformer-keys/transformer';
 import scssVariable from 'rollup-plugin-sass-variables';
 import replace from '@rollup/plugin-replace';
+import inject from '@rollup/plugin-inject';
 
 export default {
     input: 'src/Entry.ts',
@@ -26,6 +27,9 @@ export default {
         'underscore.string',
     ],
     plugins: [
+        inject({
+            jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
+        }),
         replacePlugin(),
         postcss({
             extract: false,
