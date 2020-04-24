@@ -59,7 +59,7 @@ function tsPlugin() {
 
 function replacePlugin() {
     return replace({
-        'process.env.NODE_ENV': 'production',
+        'process.env.NODE_ENV': JSON.stringify('production'),
         'process.env.REACT_VAPOR_VERSION': JSON.stringify(require('./package.json').version),
     });
 }
