@@ -24,7 +24,6 @@ export default {
         'underscore',
         'coveo-styleguide',
         'underscore.string',
-        'react-dnd',
     ],
     plugins: [
         replacePlugin(),
@@ -40,6 +39,7 @@ export default {
             namedExports: {
                 'hogan.js': ['Template', 'compile'],
                 'react-modal': ['setAppElement'],
+                'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
             },
         }),
         tsPlugin(),
