@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import {
     DropdownSearchInfiniteScrollOptions,

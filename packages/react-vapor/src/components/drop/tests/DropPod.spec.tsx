@@ -1,9 +1,9 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
-import * as React from 'react';
+import React from 'react';
 import * as _ from 'underscore';
 
-import * as ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import {Defaults} from '../../../Defaults';
 import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from '../DropPod';

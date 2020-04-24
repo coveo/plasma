@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import React from 'react';
 import * as _ from 'underscore';
 
 import {Color} from '../color/Color';

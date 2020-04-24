@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import {OverlayTrigger} from 'react-bootstrap';
-import * as ReactDOM from 'react-dom';
+import ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {ITooltipProps, Tooltip} from '../Tooltip';
 
