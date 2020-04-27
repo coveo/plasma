@@ -101,7 +101,7 @@
             opacity: 0.4;
         }
 
-        &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
+        &:not(.no-hover):not(.collapsible-row):not(.empty):not(.mod-card):hover {
             background-color: $light-grey;
             td {
                 background-color: $light-grey;
@@ -137,7 +137,10 @@
     td {
         padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
         text-align: left;
-        border-bottom: $table-border;
+
+        &:not(.no-border-bottom) {
+            border-bottom: $table-border;
+        }
 
         .mod-max-width {
             max-width: 300px;
