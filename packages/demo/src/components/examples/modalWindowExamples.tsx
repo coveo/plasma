@@ -72,7 +72,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                 <ModalCompositeConnected
                     id={modalConfirmationId}
                     title="Prompt confirmation"
-                    classes={'mod-prompt'}
+                    isPrompt
                     modalHeaderClasses={['mod-confirmation']}
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
                     modalFooterChildren={
@@ -94,7 +94,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                 <ModalCompositeConnected
                     id={modalWarningId}
                     title="Prompt warning"
-                    classes={'mod-prompt'}
+                    isPrompt
                     modalHeaderClasses={['mod-warning']}
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
                     modalFooterChildren={
@@ -110,7 +110,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                 <ModalCompositeConnected
                     id={modalInfoId}
                     title="Prompt info"
-                    classes={'mod-prompt'}
+                    isPrompt
                     modalHeaderClasses={['mod-info']}
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
                     modalFooterChildren={

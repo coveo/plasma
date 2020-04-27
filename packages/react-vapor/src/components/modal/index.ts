@@ -4,7 +4,6 @@ export * from './ModalBackdrop';
 export * from './ModalBackdropConnected';
 export * from './ModalBody';
 export * from './ModalComposite';
-export * from './ModalCompositeConnected';
 export * from './ModalConnected';
 export * from './ModalFooter';
 export * from './ModalHeader';

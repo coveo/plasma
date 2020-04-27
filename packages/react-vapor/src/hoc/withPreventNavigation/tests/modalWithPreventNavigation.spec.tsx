@@ -3,7 +3,7 @@ import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
 import {closeModal} from '../../../components/modal/ModalActions';
-import {ModalCompositeConnected} from '../../../components/modal/ModalCompositeConnected';
+import {ModalCompositeConnected} from '../../../components/modal/ModalComposite';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {
     IWithPreventNavigationConfig,
