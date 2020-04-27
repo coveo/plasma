@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.34.3](https://github.com/coveo/react-vapor/compare/v5.34.2...v5.34.3) (2020-04-27)
+
+
+### Bug Fixes
+
+* **modalcomposite:** isPrompt adds mod-prompt css class ([5b571c3](https://github.com/coveo/react-vapor/commit/5b571c3762a2047c343212e20b8a2878ef67320a))
+
+
+
+
+
 ## [5.34.1](https://github.com/coveo/react-vapor/compare/v5.34.0...v5.34.1) (2020-04-16)
 
 **Note:** Version bump only for package react-vapor
