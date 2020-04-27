@@ -12,7 +12,7 @@ import {
 } from './ToastContainer';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IToastContainerOwnProps): IToastContainerStateProps => {
-    const container = _.findWhere(state.toastContainers, {id: ownProps.id}) || {id: null, toasts: []};
+    const container = _.where(state.toastContainers, {id: ownProps.id}) || {id: null, toasts: []};
     return {
         toasts: container.toasts,
     };
