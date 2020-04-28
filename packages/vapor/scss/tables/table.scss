@@ -138,7 +138,7 @@
         padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
         text-align: left;
 
-        &:not(.no-border-bottom) {
+        &:not(.mod-no-border-bottom) {
             border-bottom: $table-border;
         }
 
