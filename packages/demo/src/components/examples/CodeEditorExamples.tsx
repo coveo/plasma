@@ -6,8 +6,8 @@ export class CodeEditorExamples extends React.Component<{}, {}> {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Code Editor using codemirror</label>
-                    <CodeEditor value="" mode={CodeMirrorModes.Python} />
+                    <label className="form-control-label">Code Editor using codemirror with line wrapping</label>
+                    <CodeEditor value="" mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
                 </div>
 
                 <div className="form-group">

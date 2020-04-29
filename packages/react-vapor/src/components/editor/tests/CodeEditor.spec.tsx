@@ -91,10 +91,6 @@ describe('CodeEditor', () => {
             expect(onChangeSpy).toHaveBeenCalledWith(expectedValue);
         });
 
-        it('should not throw on change if the onChange prop is undefined', () => {
-            expect(() => (codeEditorInstance as any).handleChange('expectedValue')).not.toThrow();
-        });
-
         it(`should clear codemirror's history if we set a new value`, () => {
             const clearHistorySpy: jasmine.Spy = spyOn((codeEditorInstance as any).editor.getDoc(), 'clearHistory');
 
