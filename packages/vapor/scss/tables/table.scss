@@ -101,7 +101,7 @@
             opacity: 0.4;
         }
 
-        &:not(.no-hover):not(.collapsible-row):not(.empty):not(.mod-card):hover {
+        &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
             background-color: $light-grey;
             td {
                 background-color: $light-grey;
@@ -113,7 +113,7 @@
             text-align: center;
         }
 
-        &.selected {
+        &.selected:not(.no-selection-indicator) {
             &:not(:hover) {
                 background-color: $white;
                 td {
@@ -194,39 +194,48 @@
         grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
         padding: $mod-card-list-vertical-padding $mod-card-list-horizontal-padding;
 
-        &.hidden {
-            display: none;
-        }
+        & tr {
+            height: unset;
 
-        .mod-card {
-            height: unset !important;
-
-            & td {
+            &.mod-card {
                 padding: $status-card-padding;
-                border-radius: $big-border-radius;
-
-                &:hover {
-                    background-color: $grey-2;
-                }
-
-                &:focus {
-                    background-color: $grey-1;
-                    border-left: $status-card-border-width solid $orange;
-                }
-
-                & span {
-                    color: $dark-grey;
-                }
             }
         }
 
-        td {
-            border-bottom: none !important;
+        &.hidden {
+            display: none;
         }
 
         .blankslate-row td.p0 {
             padding: 0;
         }
+    }
+
+    .mod-card-row .mod-card {
+        min-height: $mod-card-row-min-height;
+        border-left: $status-card-border-width solid $transparent;
+
+        & .mod-card-header {
+            color: $medium-blue;
+            font-weight: bold;
+            font-size: $medium-title-font-size;
+            border-bottom: 2px solid $light-grey;
+        }
+    }
+
+    .mod-card {
+        border-radius: $big-border-radius;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        cursor: pointer;
+
+        &:hover {
+            background-color: $grey-2;
+        }
+    }
+
+    tr.selected .mod-card {
+        background-color: $grey-1;
+        border-left: $status-card-border-width solid $orange;
     }
 }
 
