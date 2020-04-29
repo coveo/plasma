@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.35.1](https://github.com/coveo/react-vapor/compare/v5.35.0...v5.35.1) (2020-04-29)
+
+
+### Bug Fixes
+
+* **modcard:** update rules to make it reusable ([#1533](https://github.com/coveo/react-vapor/issues/1533)) ([cf23c27](https://github.com/coveo/react-vapor/commit/cf23c27625975ac1b9249a602b7dcedbca38bc48))
+
+
+
+
+
 # [5.35.0](https://github.com/coveo/react-vapor/compare/v5.34.4...v5.35.0) (2020-04-29)
 
 
