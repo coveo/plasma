@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.35.0](https://github.com/coveo/react-vapor/compare/v5.34.4...v5.35.0) (2020-04-29)
+
+
+### Features
+
+* **svg:** add icons for source visibility ([#1534](https://github.com/coveo/react-vapor/issues/1534)) ([9847f4f](https://github.com/coveo/react-vapor/commit/9847f4f6eda1ebe7148621c7d0e776c4be33d564))
+
+
+
+
+
 ## [5.34.4](https://github.com/coveo/react-vapor/compare/v5.34.3...v5.34.4) (2020-04-28)
 
 **Note:** Version bump only for package coveo-styleguide
