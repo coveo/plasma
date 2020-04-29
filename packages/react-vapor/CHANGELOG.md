@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.35.2](https://github.com/coveo/react-vapor/compare/v5.35.1...v5.35.2) (2020-04-29)
+
+
+### Bug Fixes
+
+* **codeeditor:** front all codemirror options on code editor ([797c241](https://github.com/coveo/react-vapor/commit/797c2411546ef0b59dfe49e7671a604543dd9442))
+
+
+
+
+
 ## [5.35.1](https://github.com/coveo/react-vapor/compare/v5.35.0...v5.35.1) (2020-04-29)
 
 **Note:** Version bump only for package react-vapor
