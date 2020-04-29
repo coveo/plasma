@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.35.3](https://github.com/coveo/react-vapor/compare/v5.35.2...v5.35.3) (2020-04-29)
+
+
+### Bug Fixes
+
+* **toast:** interface ([f0dad0b](https://github.com/coveo/react-vapor/commit/f0dad0b97519f6eb8eabe84507b8f8aa2ba4940b))
+
+
+
+
+
 ## [5.35.2](https://github.com/coveo/react-vapor/compare/v5.35.1...v5.35.2) (2020-04-29)
 
 
