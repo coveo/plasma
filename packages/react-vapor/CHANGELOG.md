@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.36.1](https://github.com/coveo/react-vapor/compare/v5.36.0...v5.36.1) (2020-04-30)
+
+
+### Bug Fixes
+
+* **slider:** custom tooltip props ([a3b4698](https://github.com/coveo/react-vapor/commit/a3b46984e2c6fbad8c905bb87d022fbdb338dec2))
+
+
+
+
+
 # [5.36.0](https://github.com/coveo/react-vapor/compare/v5.35.3...v5.36.0) (2020-04-30)
 
 **Note:** Version bump only for package react-vapor
