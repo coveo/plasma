@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.36.0](https://github.com/coveo/react-vapor/compare/v5.35.3...v5.36.0) (2020-04-30)
+
+
+### Features
+
+* **flex:** add align-start rule ([#1536](https://github.com/coveo/react-vapor/issues/1536)) ([9d45040](https://github.com/coveo/react-vapor/commit/9d45040cb013b214a7f8223fdbbece4cbb137459))
+
+
+
+
+
 ## [5.35.3](https://github.com/coveo/react-vapor/compare/v5.35.2...v5.35.3) (2020-04-29)
 
 
