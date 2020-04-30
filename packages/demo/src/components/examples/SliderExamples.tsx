@@ -70,9 +70,11 @@ const MiddleSliderAsymetric: React.FunctionComponent = () => {
                     100: '100%',
                 }}
                 step={5000}
+                initialValue={5000}
                 onChange={(currentValue) => {
                     setValue(currentValue);
                 }}
+                appendValueFormatter={(num: number) => (num > 0 ? `+${num}` : num)}
                 hasTooltip
                 appendValue
                 customTooltip={() => <span>this custom tooltip shows the slider current value of {value}</span>}
