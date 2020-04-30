@@ -44,6 +44,9 @@ const MiddleSliderExample: React.FunctionComponent = () => {
                 initialValue={2000}
                 marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
                 hasTooltip
+                tooltipStyle={{
+                    overlayClassName: 'vapor-slider-overlay',
+                }}
             />
         </Section>
     );
