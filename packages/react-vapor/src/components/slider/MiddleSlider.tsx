@@ -2,6 +2,7 @@ import 'rc-slider/assets/index.css';
 
 import * as classNames from 'classnames';
 import {Range, SliderProps} from 'rc-slider';
+import {RCTooltip} from 'rc-tooltip';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
@@ -32,6 +33,7 @@ export interface MiddleSliderOwnProps extends SliderProps {
     onChange?: (rangeOutputValue: number) => any;
     customTooltip?: (value: any) => JSX.Element;
     appendValue?: boolean;
+    tooltipStyle?: Partial<RCTooltip.Props>;
 }
 
 export const mapDispatchToProps = (dispatch: IDispatch, ownProps: MiddleSliderOwnProps) => ({
@@ -52,6 +54,7 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
     step,
     onChange,
     appendValue,
+    tooltipStyle,
 }) => {
     const crossingPoint = getCrossingPoint(min, max);
     const [highRange, setHighRange] = React.useState(crossingPoint);
@@ -120,7 +123,14 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
             rangeOutput: rangeOutputValue,
         };
         if (!handleIsAtCrossingPoint(lowRange, highRange, handleProps.index, crossingPoint)) {
-            return <SliderHandle key={handleProps.index} handleProps={handleProps} handleCustomProps={customProps} />;
+            return (
+                <SliderHandle
+                    key={handleProps.index}
+                    handleProps={handleProps}
+                    handleCustomProps={customProps}
+                    tooltipProps={tooltipStyle}
+                />
+            );
         }
         return null;
     };
