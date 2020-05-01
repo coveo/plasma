@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.36.2](https://github.com/coveo/react-vapor/compare/v5.36.1...v5.36.2) (2020-05-01)
+
+
+### Bug Fixes
+
+* **slider:** custom append value ([1421d66](https://github.com/coveo/react-vapor/commit/1421d669871c97bd47dc230bf0ff90caeb704f52))
+
+
+
+
+
 ## [5.36.1](https://github.com/coveo/react-vapor/compare/v5.36.0...v5.36.1) (2020-04-30)
 
 
