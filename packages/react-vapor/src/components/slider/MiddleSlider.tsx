@@ -33,6 +33,7 @@ export interface MiddleSliderOwnProps extends SliderProps {
     onChange?: (rangeOutputValue: number) => any;
     customTooltip?: (value: any) => JSX.Element;
     appendValue?: boolean;
+    appendValueFormatter?: (value: number) => React.ReactNode;
     tooltipStyle?: Partial<RCTooltip.Props>;
 }
 
@@ -55,6 +56,7 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
     onChange,
     appendValue,
     tooltipStyle,
+    appendValueFormatter = (value) => value,
 }) => {
     const crossingPoint = getCrossingPoint(min, max);
     const [highRange, setHighRange] = React.useState(crossingPoint);
@@ -150,7 +152,7 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
                 disabled={!enabled}
             />
             <div className={classNames('slider-value flex', {hidden: !appendValue})}>
-                <span>{rangeOutputValue}</span>
+                <span>{appendValueFormatter(rangeOutputValue)}</span>
             </div>
         </div>
     );

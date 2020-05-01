@@ -32,7 +32,7 @@ describe('<MiddleSlider/>', () => {
     let middleSlider: ShallowWrapper;
     let mountedSlider: ReactWrapper;
 
-    const shallowedMiddleSlider = () =>
+    const shallowedMiddleSlider = (props = {}) =>
         shallowWithStore(
             <MiddleSlider
                 {...middleSliderRequiredProps}
@@ -43,6 +43,7 @@ describe('<MiddleSlider/>', () => {
                 step={step}
                 initialValue={20}
                 enabled
+                {...props}
             />,
             store
         );
@@ -68,6 +69,14 @@ describe('<MiddleSlider/>', () => {
             };
             middleSlider = shallowedMiddleSlider();
             expect(middleSlider.props()).toEqual(expectedProps);
+        });
+
+        it('should show the append value formatted if appendValueFormatter is defined', () => {
+            middleSlider = shallowedMiddleSlider({
+                appendValueFormatter: (value: number) => `+${value}`,
+                appendValue: true,
+            }).dive();
+            expect(middleSlider.find('.slider-value').text()).toBe('+0');
         });
 
         it('should render a track it with its marks', () => {
