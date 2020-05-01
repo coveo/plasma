@@ -1,5 +1,5 @@
 import * as VaporSVG from 'coveo-styleguide';
-import React from 'react';
+import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import {extend, omit} from 'underscore';
 import {camelize} from 'underscore.string';
