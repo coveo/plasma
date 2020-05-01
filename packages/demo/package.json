@@ -7,7 +7,9 @@
     "scripts": {
         "start": "webpack-dev-server",
         "build": "webpack",
-        "precommit": "lint-staged"
+        "precommit": "lint-staged",
+        "snyk-protect": "snyk protect",
+        "prepublish": "npm run snyk-protect"
     },
     "author": "Coveo",
     "license": "Apache-2.0",
@@ -39,7 +41,8 @@
         "redux-thunk": "2.3.0",
         "reselect": "4.0.0",
         "underscore": "1.9.2",
-        "underscore.string": "3.3.5"
+        "underscore.string": "3.3.5",
+        "snyk": "^1.316.1"
     },
     "devDependencies": {
         "@loadable/component": "5.10.2",
@@ -91,5 +94,6 @@
             "prettier --write",
             "git add"
         ]
-    }
+    },
+    "snyk": true
 }
