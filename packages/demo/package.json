@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "5.36.2",
+    "version": "5.36.3",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
@@ -40,9 +40,9 @@
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.3.0",
         "reselect": "4.0.0",
+        "snyk": "^1.316.1",
         "underscore": "1.9.2",
-        "underscore.string": "3.3.5",
-        "snyk": "^1.316.1"
+        "underscore.string": "3.3.5"
     },
     "devDependencies": {
         "@loadable/component": "5.10.2",

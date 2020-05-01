@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.36.3](https://github.com/coveo/react-vapor/compare/v5.36.2...v5.36.3) (2020-05-01)
+
+
+### Bug Fixes
+
+* snyk config to reduce vulnerabilities ([68972c7](https://github.com/coveo/react-vapor/commit/68972c79f8ad7111668af56b2035a8556df52cbe))
+
+
+
+
+
 ## [5.36.2](https://github.com/coveo/react-vapor/compare/v5.36.1...v5.36.2) (2020-05-01)
 
 
