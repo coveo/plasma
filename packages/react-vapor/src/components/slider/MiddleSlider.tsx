@@ -5,6 +5,7 @@ import {Range, SliderProps} from 'rc-slider';
 import {RCTooltip} from 'rc-tooltip';
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {isBoolean} from 'underscore';
 
 import {IDispatch} from '../../utils/ReduxUtils';
 import {SliderActions} from './SliderActions';
@@ -20,6 +21,12 @@ import {
     valuesPositionOnRange,
 } from './SliderUtils';
 
+export enum AppendedValueSide {
+    left = 'LEFT',
+    right = 'RIGHT',
+    both = 'BOTH',
+}
+
 export interface MiddleSliderOwnProps extends SliderProps {
     id: string;
     enabled?: boolean;
@@ -32,8 +39,11 @@ export interface MiddleSliderOwnProps extends SliderProps {
     tabIndex?: number[];
     onChange?: (rangeOutputValue: number) => any;
     customTooltip?: (value: any) => JSX.Element;
-    appendValue?: boolean;
-    appendValueFormatter?: (value: number) => React.ReactNode;
+    appendValue?: boolean | AppendedValueSide;
+    appendValueFormatter?: (
+        value: number,
+        side?: Exclude<AppendedValueSide, AppendedValueSide.both>
+    ) => React.ReactNode;
     tooltipStyle?: Partial<RCTooltip.Props>;
 }
 
@@ -138,9 +148,21 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
     };
 
     const computedStep = computeStep(step, min, max);
+    const isAppendedLeft = appendValue === AppendedValueSide.both || appendValue === AppendedValueSide.left;
+    const isAppendedRight =
+        (isBoolean(appendValue) && appendValue) ||
+        appendValue === AppendedValueSide.right ||
+        appendValue === AppendedValueSide.both;
 
     return (
         <div className="flex full-content-x slider-container">
+            <div
+                className={classNames('slider-value flex', {
+                    hidden: !isAppendedLeft,
+                })}
+            >
+                {appendValueFormatter(rangeOutputValue, AppendedValueSide.left)}
+            </div>
             <Range
                 key={id}
                 value={[lowRange, highRange]}
@@ -151,8 +173,12 @@ const MiddleSliderDisconnected: React.FunctionComponent<MiddleSliderOwnProps &
                 step={computedStep}
                 disabled={!enabled}
             />
-            <div className={classNames('slider-value flex', {hidden: !appendValue})}>
-                <span>{appendValueFormatter(rangeOutputValue)}</span>
+            <div
+                className={classNames('slider-value flex', {
+                    hidden: !isAppendedRight,
+                })}
+            >
+                {appendValueFormatter(rangeOutputValue, AppendedValueSide.right)}
             </div>
         </div>
     );

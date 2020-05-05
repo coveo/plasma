@@ -6,7 +6,7 @@ import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
-import {MiddleSlider} from '../MiddleSlider';
+import {AppendedValueSide, MiddleSlider} from '../MiddleSlider';
 import {computeStep} from '../SliderUtils';
 
 describe('<MiddleSlider/>', () => {
@@ -76,13 +76,24 @@ describe('<MiddleSlider/>', () => {
                 appendValueFormatter: (value: number) => `+${value}`,
                 appendValue: true,
             }).dive();
-            expect(middleSlider.find('.slider-value').text()).toBe('+0');
+            expect(
+                middleSlider
+                    .find('.slider-value')
+                    .first()
+                    .text()
+            ).toBe('+0');
+            expect(
+                middleSlider
+                    .find('.slider-value')
+                    .first()
+                    .text()
+            ).toBe('+0');
         });
 
         it('should render a track it with its marks', () => {
             middleSlider = shallowedMiddleSlider()
                 .dive()
-                .childAt(0)
+                .childAt(1)
                 .dive();
             const children: any = middleSlider.prop('children');
             const marks = children[2].props.marks;
@@ -92,7 +103,7 @@ describe('<MiddleSlider/>', () => {
         it('should apply the computed step prop to the range slider', () => {
             middleSlider = shallowedMiddleSlider()
                 .dive()
-                .childAt(0)
+                .childAt(1)
                 .dive();
             const children: any = middleSlider.prop('children');
             const computedStep = computeStep(step, middleSliderRequiredProps.min, middleSliderRequiredProps.max);
@@ -103,7 +114,7 @@ describe('<MiddleSlider/>', () => {
         it('should set the handle hasTooltip prop to true when slider hasTooltip his passed', () => {
             middleSlider = shallowedMiddleSlider()
                 .dive()
-                .childAt(0)
+                .childAt(1)
                 .dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
@@ -124,7 +135,7 @@ describe('<MiddleSlider/>', () => {
                 store
             )
                 .dive()
-                .childAt(0)
+                .childAt(1)
                 .dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
@@ -134,7 +145,7 @@ describe('<MiddleSlider/>', () => {
         it('should not pass the disabled props to the handle if the enable prop is set to true', () => {
             middleSlider = shallowedMiddleSlider()
                 .dive()
-                .childAt(0)
+                .childAt(1)
                 .dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
@@ -155,7 +166,7 @@ describe('<MiddleSlider/>', () => {
                 store
             )
                 .dive()
-                .childAt(0)
+                .childAt(1)
                 .dive();
 
             const children: any = middleSlider.prop('children');
@@ -163,7 +174,67 @@ describe('<MiddleSlider/>', () => {
             expect(firstHandle.props.handleProps.disabled).toBeTruthy();
         });
 
-        it('should append the computed  value if the appendedValue prop is passed', () => {
+        it('should append the computed to the right value if the appendedValue prop is passed with a AppendedValueSide at right', () => {
+            middleSlider = shallowWithStore(
+                <MiddleSlider
+                    {...middleSliderRequiredProps}
+                    onChange={(value) => value}
+                    initialValue={20}
+                    customTooltip={() => <span>customTooltip</span>}
+                    marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
+                    step={5}
+                    enabled={false}
+                    appendValue={AppendedValueSide.right}
+                />,
+                store
+            ).dive();
+
+            expect(middleSlider.childAt(1).prop('className')).toContain('appended-value');
+            expect(middleSlider.childAt(0).prop('className')).toContain('hidden');
+            expect(middleSlider.childAt(2).prop('className')).not.toContain('hidden');
+        });
+
+        it('should append the computed to the left value if the appendedValue prop is passed with a AppendedValueSide at left', () => {
+            middleSlider = shallowWithStore(
+                <MiddleSlider
+                    {...middleSliderRequiredProps}
+                    onChange={(value) => value}
+                    initialValue={20}
+                    customTooltip={() => <span>customTooltip</span>}
+                    marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
+                    step={5}
+                    enabled={false}
+                    appendValue={AppendedValueSide.left}
+                />,
+                store
+            ).dive();
+
+            expect(middleSlider.childAt(1).prop('className')).toContain('appended-value');
+            expect(middleSlider.childAt(0).prop('className')).not.toContain('hidden');
+            expect(middleSlider.childAt(2).prop('className')).toContain('hidden');
+        });
+
+        it('should append the computed on both sides value if the appendedValue prop is passed with a AppendedValueSide at both', () => {
+            middleSlider = shallowWithStore(
+                <MiddleSlider
+                    {...middleSliderRequiredProps}
+                    onChange={(value) => value}
+                    initialValue={20}
+                    customTooltip={() => <span>customTooltip</span>}
+                    marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
+                    step={5}
+                    enabled={false}
+                    appendValue={AppendedValueSide.both}
+                />,
+                store
+            ).dive();
+
+            expect(middleSlider.childAt(1).prop('className')).toContain('appended-value');
+            expect(middleSlider.childAt(0).prop('className')).not.toContain('hidden');
+            expect(middleSlider.childAt(2).prop('className')).not.toContain('hidden');
+        });
+
+        it('should append the computed to the right value if the appendedValue prop is passed with a TRUE value', () => {
             middleSlider = shallowWithStore(
                 <MiddleSlider
                     {...middleSliderRequiredProps}
@@ -178,8 +249,9 @@ describe('<MiddleSlider/>', () => {
                 store
             ).dive();
 
-            expect(middleSlider.childAt(0).prop('className')).toContain('appended-value');
-            expect(middleSlider.childAt(1).prop('className')).not.toContain('hidden');
+            expect(middleSlider.childAt(1).prop('className')).toContain('appended-value');
+            expect(middleSlider.childAt(0).prop('className')).toContain('hidden');
+            expect(middleSlider.childAt(2).prop('className')).not.toContain('hidden');
         });
         it('should NOT append the computed  value if the appendedValue prop is passed', () => {
             middleSlider = shallowWithStore(
@@ -194,9 +266,9 @@ describe('<MiddleSlider/>', () => {
                 />,
                 store
             ).dive();
-
-            expect(middleSlider.childAt(0).prop('className')).not.toContain('appended-value');
-            expect(middleSlider.childAt(1).prop('className')).toContain('hidden');
+            expect(middleSlider.childAt(0).prop('className')).toContain('hidden');
+            expect(middleSlider.childAt(1).prop('className')).not.toContain('appended-value');
+            expect(middleSlider.childAt(2).prop('className')).toContain('hidden');
         });
     });
 
