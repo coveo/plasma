@@ -7,6 +7,7 @@ import {
     Section,
 } from 'react-vapor';
 import * as _ from 'underscore';
+import {ChildForm} from '../../../../react-vapor/src/components/childForm/ChildForm';
 
 import {ExampleComponent} from '../ComponentsInterface';
 import {
@@ -72,6 +73,23 @@ const DatePickerComponents: React.FunctionComponent = () => (
                     isClearable
                     initiallyUnselected
                 />
+            </Section>
+
+            <Section level={3} title="Date picker dropdown with drop and a child form">
+                <ChildForm>
+                    <Section level={2} title="My date picker label">
+                        <DatePickerDropdownConnected
+                            id="date-picker-dropdown-4"
+                            datesSelectionBoxes={[{...FOUR_SELECTION_BOXES[0], isRange: false}]}
+                            selectionRules={[]}
+                            isClearable
+                            initiallyUnselected
+                            dropOptions={{
+                                parentSelector: 'body',
+                            }}
+                        />
+                    </Section>
+                </ChildForm>
             </Section>
         </Section>
     </Section>
