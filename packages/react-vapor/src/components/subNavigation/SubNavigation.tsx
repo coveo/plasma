@@ -22,6 +22,7 @@ export interface ISubNavigationDispatchProps {
 export interface ISubNavigationItem {
     id: string;
     label: React.ReactNode;
+    disabled?: boolean;
     link?: string;
 }
 
@@ -44,11 +45,11 @@ export class SubNavigation extends React.PureComponent<ISubNavigationProps & Rea
     render() {
         const selected = this.props.selected || this.props.defaultSelected;
         const navProps = omit(this.props, ISubNavigationPropsToOmit);
-        const items = map(this.props.items, ({id, link, label}: ISubNavigationItem) => (
+        const items = map(this.props.items, ({id, link, label, disabled}: ISubNavigationItem) => (
             <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selected})}>
                 <a
                     href={link || '#'}
-                    className="sub-navigation-item-link"
+                    className={classNames('sub-navigation-item-link', {disabled: disabled})}
                     onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleItemClick(e, id)}
                 >
                     {label}
