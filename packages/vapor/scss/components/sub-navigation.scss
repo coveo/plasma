@@ -17,6 +17,11 @@
                 padding: $sub-navigation-item-padding;
                 color: $medium-blue;
                 line-height: $sub-navigation-line-height;
+
+                &.disabled {
+                    color: $medium-grey;
+                    cursor: default;
+                }
             }
 
             &.mod-selected {

@@ -27,7 +27,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                 <SubNavigationConnected id="second-sub-nav" items={exampleItems} defaultSelected="star-wars" />
             </div>
         </Section>
-        <Section level={2} title="Sub-navigation with custom JSX labels">
+        <Section level={2} title="Sub-navigation with custom JSX labels and disabled item">
             <div className="flex" style={{width: '250px', height: '200px'}}>
                 <SubNavigationConnected
                     id="third-sub-nav"
@@ -40,6 +40,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                                 </span>
                             ),
                             id: 'avatar',
+                            disabled: true,
                         },
                         {
                             label: (
@@ -78,6 +79,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                             id: 'the-avengers',
                         },
                     ]}
+                    defaultSelected="titanic"
                 />
             </div>
         </Section>
