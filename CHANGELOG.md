@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.37.0](https://github.com/coveo/react-vapor/compare/v5.36.4...v5.37.0) (2020-05-07)
+
+
+### Features
+
+* **subnavigation.tsx:** disabled: disabled -> disabled ([85519bb](https://github.com/coveo/react-vapor/commit/85519bb23d87d87992f55ef609919db96a2137f5))
+
+
+
+
+
 ## [5.36.4](https://github.com/coveo/react-vapor/compare/v5.36.3...v5.36.4) (2020-05-01)
 
 **Note:** Version bump only for package root
