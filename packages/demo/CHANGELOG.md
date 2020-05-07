@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.38.0](https://github.com/coveo/react-vapor/compare/v5.37.0...v5.38.0) (2020-05-07)
+
+
+### Features
+
+* **datepicker:** use drop ([508ef74](https://github.com/coveo/react-vapor/commit/508ef74b6412da27ffa0310c7238db98a6bae2fe))
+
+
+
+
+
 # [5.37.0](https://github.com/coveo/react-vapor/compare/v5.36.4...v5.37.0) (2020-05-07)
 
 **Note:** Version bump only for package react-vapor-demo
