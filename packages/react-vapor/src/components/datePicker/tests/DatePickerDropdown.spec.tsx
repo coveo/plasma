@@ -1,12 +1,11 @@
-import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithState} from 'enzyme-redux';
+import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
 import * as moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {DateUtils} from '../../../utils/DateUtils';
 import {Button} from '../../button/Button';
-import {Drop} from '../../drop/Drop';
+import {ModalFooter} from '../../modal/ModalFooter';
 import {DatePickerBox} from '../DatePickerBox';
 import {
     DatePickerDropdown,
@@ -27,16 +26,16 @@ describe('Date picker', () => {
     };
 
     describe('<DatePickerDropdown />', () => {
-        it('should mount and unmount without errors', () => {
+        it('should render without errors', () => {
             expect(() => {
-                const wrapper = shallow(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />);
-                wrapper.unmount();
+                shallow(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />);
             }).not.toThrow();
         });
     });
 
     describe('<DatePickerDropdown />', () => {
-        let datePickerDropdown: ShallowWrapper<IDatePickerDropdownProps>;
+        let shallowWrapper: ShallowWrapper;
+        let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps>;
         let datePickerDropdownInstance: DatePickerDropdown;
         let datePicker: IDatePickerState;
 
@@ -44,6 +43,10 @@ describe('Date picker', () => {
         const then: Date = new Date(new Date().setDate(new Date().getDate() + 1));
 
         beforeEach(() => {
+            datePickerDropdown = mount(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />, {
+                attachTo: document.getElementById('App'),
+            });
+            datePickerDropdownInstance = datePickerDropdown.instance() as DatePickerDropdown;
             datePicker = {
                 id: 'id',
                 calendarId: 'calendarId',
@@ -61,17 +64,12 @@ describe('Date picker', () => {
             };
         });
 
-        const shallowComponent = (props?: Partial<IDatePickerDropdownProps>) => {
-            datePickerDropdown = shallowWithState(
-                <DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} {...props} />,
-                {}
-            );
-            datePickerDropdownInstance = datePickerDropdown.instance() as DatePickerDropdown;
-        };
+        afterEach(() => {
+            datePickerDropdown.detach();
+        });
 
         it('should get the dates selection boxes as a prop', () => {
-            shallowComponent();
-            const datesSelectionBoxesProps = datePickerDropdownInstance.props.datesSelectionBoxes;
+            const datesSelectionBoxesProps = datePickerDropdown.props().datesSelectionBoxes;
 
             expect(datesSelectionBoxesProps).toBeDefined();
             expect(datesSelectionBoxesProps).toEqual(DATE_PICKER_DROPDOWN_BASIC_PROPS.datesSelectionBoxes);
@@ -81,7 +79,7 @@ describe('Date picker', () => {
             const props: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 renderDatePickerWhenClosed: false,
             });
-            shallowComponent(props);
+            datePickerDropdown.setProps(props);
 
             expect(datePickerDropdown.find('DatePickerBox').length).toBe(0);
         });
@@ -91,7 +89,7 @@ describe('Date picker', () => {
                 open: false,
                 renderDatePickerWhenClosed: true,
             });
-            shallowComponent(props);
+            datePickerDropdown.setProps(props);
 
             expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
         });
@@ -101,89 +99,64 @@ describe('Date picker', () => {
                 isOpened: true,
                 renderDatePickerWhenClosed: false,
             });
-            shallowComponent(props);
+            datePickerDropdown.setProps(props);
 
             expect(datePickerDropdown.find('DatePickerBox').length).toBe(1);
         });
 
         it('should disable the dropdown button when readonly props is truthy', () => {
-            shallowComponent({
+            datePickerDropdown.setProps({
                 ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
                 readonly: true,
             });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-            const button = dropContentWrapper.find('button.dropdown-toggle');
+            const button = datePickerDropdown.children().find('button.dropdown-toggle');
 
             expect(datePickerDropdownInstance.props.readonly).toBeTruthy();
             expect(button.props().disabled).toBeTruthy();
         });
 
         it('should have the class "open" if the isOpened prop is set to true', () => {
-            shallowComponent({
+            const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
             });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
 
-            expect(dropContentWrapper.find('.dropdown-wrapper').hasClass('open')).toBe(true);
-        });
+            expect(datePickerDropdown.find('.dropdown-wrapper').hasClass('open')).toBe(false);
 
-        it('should not have the class "open" if the isOpened prop is set to false', () => {
-            shallowComponent({
-                isOpened: false,
-            });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            datePickerDropdown.setProps(propsIsOpened);
 
-            expect(dropContentWrapper.find('.dropdown-wrapper').hasClass('open')).toBe(false);
+            expect(datePickerDropdown.find('.dropdown-wrapper').hasClass('open')).toBe(true);
         });
 
         it('should display the label passed as a prop or use the default one', () => {
             const expectedLabel: string = 'This is the date picker dropdown label';
-            shallowComponent({label: expectedLabel});
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            const propsWithLabel: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                label: expectedLabel,
+            });
 
-            expect(dropContentWrapper.contains(expectedLabel)).toBe(true);
-        });
+            expect(datePickerDropdown.html()).toContain(DEFAULT_DATE_PICKER_DROPDOWN_LABEL);
 
-        it('should display the default label', () => {
-            shallowComponent({});
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            datePickerDropdown.setProps(propsWithLabel);
 
-            expect(dropContentWrapper.contains(DEFAULT_DATE_PICKER_DROPDOWN_LABEL)).toBe(true);
+            expect(datePickerDropdown.html()).not.toContain(DEFAULT_DATE_PICKER_DROPDOWN_LABEL);
+            expect(datePickerDropdown.html()).toContain(expectedLabel);
         });
 
         it('should display the dates from the date picker if the datePicker prop is set', () => {
             const formattedNow: string = DateUtils.getSimpleDate(now);
             const formattedThen: string = DateUtils.getSimpleDate(then);
+
+            let propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                datePicker,
+            });
+
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedNow);
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedThen);
+
+            datePickerDropdown.setProps(propsWithDatePicker);
+
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain(formattedNow);
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).not.toContain(formattedThen);
+
             const newDatePicker = {
                 id: 'id',
                 calendarId: 'calendarId',
@@ -199,28 +172,31 @@ describe('Date picker', () => {
                 inputUpperLimit: then,
                 simple: false,
             };
+            propsWithDatePicker = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {datePicker: newDatePicker});
+            datePickerDropdown.setProps(propsWithDatePicker);
 
-            const propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                datePicker: newDatePicker,
-            });
-
-            shallowComponent(propsWithDatePicker);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain(formattedNow);
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain(formattedThen);
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain(formattedNow);
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain(formattedThen);
         });
 
         it('should display the dates from the date picker if the datePicker prop is set in readonly', () => {
             const formattedNow: string = DateUtils.getSimpleDate(now);
             const formattedThen: string = DateUtils.getSimpleDate(then);
             const toLabel: string = 'à';
+
+            let propsWithDatePicker: IDatePickerDropdownProps = {
+                datePicker,
+                toLabel,
+                ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
+                readonly: true,
+            };
+
+            datePickerDropdown.setProps(propsWithDatePicker).mount();
+
+            expect(datePickerDropdown.html()).toContain(formattedNow);
+            expect(datePickerDropdown.html()).not.toContain(formattedThen);
+            expect(datePickerDropdown.html()).not.toContain(toLabel);
+
             const newDatePicker = {
                 id: 'id',
                 calendarId: 'calendarId',
@@ -236,26 +212,17 @@ describe('Date picker', () => {
                 inputUpperLimit: then,
                 simple: false,
             };
-
-            const propsWithDatePicker: IDatePickerDropdownProps = {
-                datePicker: newDatePicker,
+            propsWithDatePicker = {
                 toLabel,
                 ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
                 readonly: true,
+                datePicker: newDatePicker,
             };
+            datePickerDropdown.setProps(propsWithDatePicker);
 
-            shallowComponent(propsWithDatePicker);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-
-            expect(dropContentWrapper.html()).toContain(formattedNow);
-            expect(dropContentWrapper.html()).toContain(formattedThen);
-            expect(dropContentWrapper.html()).toContain(toLabel);
+            expect(datePickerDropdown.html()).toContain(formattedNow);
+            expect(datePickerDropdown.html()).toContain(formattedThen);
+            expect(datePickerDropdown.html()).toContain(toLabel);
         });
 
         it('should display the date from the date picker with time on the label if the first dateSelectionBox is with time', () => {
@@ -284,16 +251,9 @@ describe('Date picker', () => {
                 },
             };
 
-            shallowComponent(newProps);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            datePickerDropdown.setProps(newProps);
 
-            expect(dropContentWrapper.find('.dropdown-selected-value').html()).toContain(
+            expect(datePickerDropdown.find('.dropdown-selected-value').html()).toContain(
                 DateUtils.getDateWithTimeString(rightNow)
             );
         });
@@ -319,15 +279,8 @@ describe('Date picker', () => {
                 label: 'EMPTY_LABEL',
                 isClearable: true,
             });
-            shallowComponent(newProps);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain('EMPTY_LABEL');
+            datePickerDropdown.setProps(newProps);
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).toContain('EMPTY_LABEL');
         });
 
         it('should not display the to-label and the upperlimit if it is equal to the lower limit', () => {
@@ -356,32 +309,16 @@ describe('Date picker', () => {
             const propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 datePicker,
             });
-            shallowComponent(propsWithDatePicker);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            datePickerDropdown.setProps(propsWithDatePicker);
 
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toBe(formattedNow);
-            expect(dropContentWrapper.find('.to-label').length).toBe(0);
+            expect(datePickerDropdown.find('.dropdown-selected-value').text()).toBe(formattedNow);
+            expect(datePickerDropdown.find('.to-label').length).toBe(0);
         });
 
         it('should call onClick when clicking the dropdown toggle', () => {
             const onClickSpy = jasmine.createSpy();
-            shallowComponent({
-                onClick: onClickSpy,
-            });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-            dropContentWrapper
+            shallowWrapper = shallow(<DatePickerDropdown onClick={onClickSpy} />);
+            shallowWrapper
                 .find('.dropdown-toggle')
                 .props()
                 .onClick({} as any);
@@ -413,14 +350,91 @@ describe('Date picker', () => {
             expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
         });
 
+        it('should trigger onDocumentClick dispatch on mount and remove it on unmount if prop onDocumentClick is set and isOpened is true', () => {
+            const onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+            const newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onDocumentClick: onDocumentClickSpy,
+                isOpened: true,
+            });
+
+            datePickerDropdown.mount();
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+            datePickerDropdown.unmount();
+            datePickerDropdown.setProps(newDropdownProps);
+            datePickerDropdown.mount();
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
+
+            datePickerDropdown.unmount();
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
+        });
+
+        it('should not trigger onDocumentClick dispatch on mount if prop onDocumentClick is set and isOpened is false', () => {
+            const onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+            const newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onDocumentClick: onDocumentClickSpy,
+                isOpened: false,
+            });
+
+            datePickerDropdown.mount();
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+            datePickerDropdown.unmount();
+            datePickerDropdown.setProps(newDropdownProps);
+            datePickerDropdown.mount();
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+            datePickerDropdown.unmount();
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).not.toHaveBeenCalled();
+        });
+
+        it('should not call onDocumentClick when prop is set and clicking on the dropdown', () => {
+            const onDocumentClickSpy = jasmine.createSpy('onDocumentClick');
+            const newDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onDocumentClick: onDocumentClickSpy,
+                isOpened: true,
+            });
+
+            datePickerDropdown = mount(<DatePickerDropdown {...newDropdownProps} />, {
+                attachTo: document.getElementById('App'),
+            });
+
+            (document.getElementsByClassName('dropdown-wrapper')[0] as HTMLDivElement).click();
+            expect(onDocumentClickSpy).not.toHaveBeenCalled();
+
+            document.getElementById('App').click();
+            expect(onDocumentClickSpy).toHaveBeenCalled();
+        });
+
+        it('should call onRender prop if set when mounting', () => {
+            const onRenderSpy: jasmine.Spy = jasmine.createSpy('onRender');
+            const onRenderProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onRender: onRenderSpy,
+            });
+
+            expect(() => datePickerDropdownInstance.componentDidMount()).not.toThrow();
+
+            datePickerDropdown.unmount();
+            datePickerDropdown.setProps(onRenderProps);
+            datePickerDropdown.mount();
+            expect(onRenderSpy).toHaveBeenCalled();
+        });
+
         it('should call onDestroy prop if set when will unmount', () => {
             const onDestroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
             const onDestroyProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 onDestroy: onDestroySpy,
             });
 
-            shallowComponent(onDestroyProps);
+            expect(() => datePickerDropdownInstance.componentWillUnmount()).not.toThrow();
 
+            datePickerDropdown.setProps(onDestroyProps);
             datePickerDropdown.unmount();
             expect(onDestroySpy).toHaveBeenCalled();
         });
@@ -429,132 +443,162 @@ describe('Date picker', () => {
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
             });
-            shallowComponent(propsIsOpened);
+            datePickerDropdown.setProps(propsIsOpened);
 
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-            expect(datePickerBoxWrapper.find(Button).length).toBe(2);
+            expect(datePickerDropdown.find(ModalFooter).length).toBe(1);
+            expect(datePickerDropdown.find(ModalFooter).find(Button).length).toBe(2);
         });
 
-        it('should display the default label on apply if the dropdown is opened', () => {
+        it('should display the apply label passed as a prop or use the default one if the dropdown is opened', () => {
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
             });
-            const newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened);
-            shallowComponent(newProps);
+            datePickerDropdown.setProps(propsIsOpened);
 
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+            const applyLabel: string = 'appliquer';
+            const newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, {applyLabel});
+
             expect(
-                datePickerBoxWrapper
+                datePickerDropdown
+                    .find(ModalFooter)
                     .find(Button)
                     .first()
                     .props().name
             ).toContain(DEFAULT_APPLY_DATE_LABEL);
-        });
 
-        it('should display the apply label passed as a prop if the dropdown is opened', () => {
-            const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                isOpened: true,
-            });
-            const applyLabel: string = 'appliquer';
-            const newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, {applyLabel});
-            shallowComponent(newProps);
-
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+            datePickerDropdown.setProps(newProps);
 
             expect(
-                datePickerBoxWrapper
+                datePickerDropdown
+                    .find(ModalFooter)
+                    .find(Button)
+                    .first()
+                    .props().name
+            ).not.toContain(DEFAULT_APPLY_DATE_LABEL);
+            expect(
+                datePickerDropdown
+                    .find(ModalFooter)
                     .find(Button)
                     .first()
                     .props().name
             ).toContain(applyLabel);
         });
 
-        it('should display the cancel default label if the dropdown is opened', () => {
+        it('should display the cancel label passed as a prop or use the default one if the dropdown is opened', () => {
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
             });
-            const newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened);
-            shallowComponent(newProps);
+            datePickerDropdown.setProps(propsIsOpened);
 
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+            const cancelLabel: string = 'annuler';
+            const newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, {cancelLabel});
+
             expect(
-                datePickerBoxWrapper
+                datePickerDropdown
+                    .find(ModalFooter)
                     .find(Button)
                     .last()
                     .props().name
             ).toContain(DEFAULT_CANCEL_DATE_LABEL);
-        });
 
-        it('should display the cancel label passed as a prop if the dropdown is opened', () => {
-            const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                isOpened: true,
-            });
-            const cancelLabel: string = 'annuler';
-            const newProps: IDatePickerDropdownProps = _.extend({}, propsIsOpened, {cancelLabel});
-            shallowComponent(newProps);
+            datePickerDropdown.setProps(newProps);
 
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
             expect(
-                datePickerBoxWrapper
+                datePickerDropdown
+                    .find(ModalFooter)
+                    .find(Button)
+                    .last()
+                    .props().name
+            ).not.toContain(DEFAULT_CANCEL_DATE_LABEL);
+            expect(
+                datePickerDropdown
+                    .find(ModalFooter)
                     .find(Button)
                     .last()
                     .props().name
             ).toContain(cancelLabel);
         });
 
-        it('should call onApply when clicking on the apply button', () => {
-            const handleApplySpy: jasmine.Spy = jasmine.createSpy('onApply');
+        it('should call handleApply when clicking on the apply button', () => {
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
-                onApply: handleApplySpy,
             });
-            shallowComponent(propsIsOpened);
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+            datePickerDropdown.setProps(propsIsOpened);
 
-            datePickerBoxWrapper
-                .find(Button)
+            const handleApplySpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleApply');
+
+            datePickerDropdown
+                .find(ModalFooter)
+                .find('button')
                 .first()
-                .props()
-                .onClick();
+                .simulate('click');
 
             expect(handleApplySpy).toHaveBeenCalled();
         });
 
-        it('should call onBeforeApply when clicking on the apply button', () => {
-            const handleApplySpy: jasmine.Spy = jasmine.createSpy('onBeforeApply');
+        it('should call handleCancel when clicking on the cancel button', () => {
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
-                onBeforeApply: handleApplySpy,
             });
-            shallowComponent(propsIsOpened);
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+            datePickerDropdown.setProps(propsIsOpened);
 
-            datePickerBoxWrapper
-                .find(Button)
-                .first()
-                .props()
-                .onClick();
+            const handleCancelSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleCancel');
 
-            expect(handleApplySpy).toHaveBeenCalled();
-        });
-
-        it('should call onCancel when clicking on the cancel button', () => {
-            const handleCancelSpy: jasmine.Spy = jasmine.createSpy('handleCancel');
-            const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                isOpened: true,
-                onCancel: handleCancelSpy,
-            });
-
-            shallowComponent(propsIsOpened);
-            const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-
-            datePickerBoxWrapper
-                .find(Button)
+            datePickerDropdown
+                .find(ModalFooter)
+                .find('button')
                 .last()
-                .props()
-                .onClick();
+                .simulate('click');
 
             expect(handleCancelSpy).toHaveBeenCalled();
+        });
+
+        it('should call onApply prop if set when calling handleApply', () => {
+            const onBeforeApplySpy: jasmine.Spy = jasmine.createSpy('onBeforeApply');
+            const onBeforeApplyProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onBeforeApply: onBeforeApplySpy,
+            });
+
+            expect(() => {
+                datePickerDropdownInstance['handleApply'].call(datePickerDropdownInstance);
+            }).not.toThrow();
+
+            datePickerDropdown.setProps(onBeforeApplyProps);
+            datePickerDropdownInstance['handleApply'].call(datePickerDropdownInstance);
+
+            expect(onBeforeApplySpy).toHaveBeenCalled();
+        });
+
+        it('should call onApply prop if set when calling handleApply', () => {
+            const onApplySpy: jasmine.Spy = jasmine.createSpy('onApply');
+            const onApplyProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onApply: onApplySpy,
+            });
+
+            expect(() => {
+                datePickerDropdownInstance['handleApply'].call(datePickerDropdownInstance);
+            }).not.toThrow();
+
+            datePickerDropdown.setProps(onApplyProps);
+            datePickerDropdownInstance['handleApply'].call(datePickerDropdownInstance);
+
+            expect(onApplySpy).toHaveBeenCalled();
+        });
+
+        it('should call onCancel prop if set when calling handleCancel', () => {
+            const onCancelSpy: jasmine.Spy = jasmine.createSpy('onCancel');
+            const onCancelProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onCancel: onCancelSpy,
+            });
+
+            expect(() => {
+                datePickerDropdownInstance['handleCancel'].call(datePickerDropdownInstance);
+            }).not.toThrow();
+
+            datePickerDropdown.setProps(onCancelProps);
+            datePickerDropdownInstance['handleCancel'].call(datePickerDropdownInstance);
+
+            expect(onCancelSpy).toHaveBeenCalled();
         });
 
         it(
@@ -569,35 +613,52 @@ describe('Date picker', () => {
                     years: [DateUtils.currentYear.toString()],
                     isOpened: true,
                 };
-                shallowComponent(newProps);
-                const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-                datePickerBoxWrapper
-                    .find(Button)
-                    .last()
-                    .props()
-                    .onClick();
+                datePickerDropdown.setProps(_.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {...newProps}));
+
+                datePickerDropdownInstance['handleCancel'].call(datePickerDropdownInstance);
 
                 expect(onCancelSpy).toHaveBeenCalledWith(DateUtils.currentMonth, 0, true);
             }
         );
+
+        it('should call handleClear when calling the onClear prop of the date picker box', () => {
+            const handleClearSpy: jasmine.Spy = spyOn<any>(datePickerDropdownInstance, 'handleClear');
+
+            datePickerDropdown
+                .find(DatePickerBox)
+                .props()
+                .onClear();
+
+            expect(handleClearSpy).toHaveBeenCalledTimes(1);
+        });
 
         it('should call onClear prop if set when calling handleClear', () => {
             const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
             const onClearProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 onClear: onClearSpy,
             });
-            shallowComponent(onClearProps);
-            datePickerDropdown
-                .find(DatePickerBox)
-                .props()
-                .onClear();
+
+            expect(() => {
+                datePickerDropdownInstance['handleClear'].call(datePickerDropdownInstance);
+            }).not.toThrow();
+
+            datePickerDropdown.setProps(onClearProps);
+            datePickerDropdownInstance['handleClear'].call(datePickerDropdownInstance);
 
             expect(onClearSpy).toHaveBeenCalled();
         });
 
-        it('should render a Drop', () => {
-            const wrapper = shallowWithState(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />, {});
-            expect(wrapper.find(Drop).length).toBe(1);
+        it('should have class "on-right" on menu if onRight prop is set to true', () => {
+            const expectedClass: string = 'on-right';
+            const onRightProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
+                onRight: true,
+            });
+
+            expect(datePickerDropdown.find('.dropdown-menu').hasClass(expectedClass)).toBe(false);
+
+            datePickerDropdown.setProps(onRightProps);
+
+            expect(datePickerDropdown.find('.dropdown-menu').hasClass(expectedClass)).toBe(true);
         });
 
         describe('with a range limit defined in the <DatePicker/>', () => {
@@ -620,6 +681,9 @@ describe('Date picker', () => {
                         newState
                     ),
                 });
+
+                datePickerDropdown.setProps(datePickerDropdownWithRangeLimit);
+                datePickerDropdown = datePickerDropdown.update();
             };
 
             it('should disabled the primary button if the the inputLowerLimit has exceeded the range limit with the inputUpperLimit', () => {
@@ -630,17 +694,16 @@ describe('Date picker', () => {
                     inputUpperLimit: date,
                 });
 
-                shallowComponent(datePickerDropdownWithRangeLimit);
-                const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-
                 expect(
-                    datePickerBoxWrapper
+                    datePickerDropdown
+                        .find(ModalFooter)
                         .find(Button)
                         .first()
                         .props().enabled
                 ).toBe(false);
                 expect(
-                    datePickerBoxWrapper
+                    datePickerDropdown
+                        .find(ModalFooter)
                         .find(Button)
                         .first()
                         .props().tooltip
@@ -654,11 +717,10 @@ describe('Date picker', () => {
                     inputLowerLimit: new Date(),
                     inputUpperLimit: date,
                 });
-                shallowComponent(datePickerDropdownWithRangeLimit);
-                const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
                 expect(
-                    datePickerBoxWrapper
+                    datePickerDropdown
+                        .find(ModalFooter)
                         .find(Button)
                         .first()
                         .props().enabled

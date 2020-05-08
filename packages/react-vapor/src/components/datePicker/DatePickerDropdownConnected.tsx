@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar';
-import {DefaultGroupIds, DropActions} from '../drop/redux/DropActions';
 import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from '../dropdown/DropdownActions';
 import {IDropdownState} from '../dropdown/DropdownReducers';
 import {resetOptionPickers} from '../optionPicker/OptionPickerActions';
@@ -49,7 +48,6 @@ const mapDispatchToProps = (
     onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
     onApply: () => {
         dispatch(closeDropdown(ownProps.id));
-        dispatch(DropActions.toggle(ownProps.id, ownProps?.dropOptions?.groupId ?? DefaultGroupIds.default, false));
         dispatch(applyDatePicker(ownProps.id));
         dispatch(resetDatePickers(ownProps.id));
     },
@@ -60,7 +58,6 @@ const mapDispatchToProps = (
             dispatch(resetDatePickers(ownProps.id));
             dispatch(resetOptionPickers(ownProps.id));
             dispatch(closeDropdown(ownProps.id));
-            dispatch(DropActions.toggle(ownProps.id, ownProps?.dropOptions?.groupId ?? DefaultGroupIds.default, false));
         }
     },
     onClear: () => {
