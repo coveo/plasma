@@ -7,6 +7,8 @@ import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {DEFAULT_YEARS, ICalendarSelectionRule} from '../calendar/Calendar';
+import {DropPodPosition} from '../drop/DomPositionCalculator';
+import {Drop, IDropOwnProps} from '../drop/Drop';
 import {ModalFooter} from '../modal/ModalFooter';
 import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
 import {DatePickerDateRange} from './DatePickerConstants';
@@ -28,6 +30,8 @@ export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DateP
     isClearable?: boolean;
     attributeName?: string;
     readonly?: boolean;
+    dropOptions?: Partial<IDropOwnProps>;
+    withDrop?: boolean;
 }
 
 export interface IDatePickerDropdownChildrenProps extends IDatePickerBoxChildrenProps {
@@ -88,6 +92,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
         extraDropdownToggleClasses: DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
         renderDatePickerWhenClosed: DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED,
         isClearable: false,
+        withDrop: false,
     };
 
     private dropdown: HTMLDivElement;
@@ -149,6 +154,47 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
             }
         );
+
+        if (this.props.withDrop) {
+            return (
+                <Drop
+                    id={this.props.id}
+                    positions={[DropPodPosition.bottom, DropPodPosition.top]}
+                    buttonContainerProps={{className: 'inline-block'}}
+                    renderOpenButton={(onClick: () => void) => (
+                        <div
+                            className={classNames('date-picker-dropdown', this.props.className)}
+                            ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}
+                        >
+                            <div className={dropdownClasses}>
+                                <button
+                                    className={toggleClasses}
+                                    onClick={() => {
+                                        this.handleClick();
+                                        onClick();
+                                    }}
+                                    disabled={this.props.readonly}
+                                >
+                                    <span className="dropdown-selected-value">
+                                        <label>
+                                            {label}
+                                            {toLabel}
+                                            {labelSecondPart}
+                                        </label>
+                                    </span>
+                                    <span className="dropdown-toggle-arrow"></span>
+                                </button>
+                            </div>
+                        </div>
+                    )}
+                    closeOnClickDrop={false}
+                    {...this.props.dropOptions}
+                >
+                    {this.getDatePickerBox()}
+                </Drop>
+            );
+        }
+
         return (
             <div className={classNames('date-picker-dropdown', this.props.className)}>
                 <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
