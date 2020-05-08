@@ -2,11 +2,15 @@
 @import '../variables';
 
 div.slider-container {
+    display: flex;
+    align-items: flex-end;
+
     div.appended-value.vapor-slider.rc-slider {
         flex: 15;
     }
     div.slider-value {
         flex: 2;
+        align-items: flex-end;
 
         justify-content: center;
         padding-top: 1.2em;

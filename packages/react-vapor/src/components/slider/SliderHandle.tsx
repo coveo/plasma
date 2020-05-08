@@ -20,7 +20,7 @@ export interface HandleProps {
 const SliderHandle: React.FunctionComponent<{
     handleProps: HandleProps;
     handleCustomProps: CustomHandleProps;
-    tooltipProps: Partial<RCTooltip.Props>;
+    tooltipProps?: Partial<RCTooltip.Props>;
 }> = ({handleProps, handleCustomProps, tooltipProps = {}}) => (
     <Tooltip
         prefixCls="rc-slider-tooltip"

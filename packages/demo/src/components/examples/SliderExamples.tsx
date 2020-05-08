@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {MiddleSlider, Section, Slider} from 'react-vapor';
+import {AppendedValueSide, MiddleSlider, Section, Slider} from 'react-vapor';
 
 import {ExampleComponent} from '../ComponentsInterface';
 
@@ -9,6 +9,7 @@ export const InputSliderExample: ExampleComponent = () => (
         <Section level={2} title="Middle Slider">
             <MiddleSliderExample />
             <MiddleSliderAsymetric />
+            <MiddleSliderWithPercent />
         </Section>
     </Section>
 );
@@ -78,6 +79,42 @@ const MiddleSliderAsymetric: React.FunctionComponent = () => {
                 hasTooltip
                 appendValue
                 customTooltip={() => <span>this custom tooltip shows the slider current value of {value}</span>}
+            />
+        </Section>
+    );
+};
+
+const ValueHolder: React.FunctionComponent<{value: string; label: string}> = ({value, label}) => (
+    <div style={{textAlign: 'center'}}>
+        <label style={{display: 'block', marginBottom: '10px', textAlign: 'center'}}>{label}</label>
+        <span style={{margin: '0 auto'}}>{value}</span>
+    </div>
+);
+
+const MiddleSliderWithPercent: React.FunctionComponent = () => {
+    const appendValueFormatter = (value: number, side: string) => {
+        let formattedValue: string;
+        let valueLabel: string;
+        if (side === AppendedValueSide.right) {
+            formattedValue = value === 0 ? `${value + 50}%` : `${50 + value}%`;
+            valueLabel = 'Right Label';
+        } else if (side === AppendedValueSide.left) {
+            formattedValue = value === 0 ? `${value + 50}%` : `${50 - value}%`;
+            valueLabel = 'Left Label';
+        }
+        return <ValueHolder value={formattedValue} label={valueLabel} />;
+    };
+
+    return (
+        <Section key="one" level={3} title={`MiddleSlider showing the percent allocated to each side`}>
+            <MiddleSlider
+                key="gnagnagna"
+                min={-50}
+                max={50}
+                marks={{0: '', 50: '', 100: ''}}
+                id="percentSliderId"
+                appendValueFormatter={appendValueFormatter}
+                appendValue={AppendedValueSide.both}
             />
         </Section>
     );
