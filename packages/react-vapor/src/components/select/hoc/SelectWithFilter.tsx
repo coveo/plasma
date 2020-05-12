@@ -1,5 +1,6 @@
 import * as classNames from 'classnames';
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
@@ -7,7 +8,7 @@ import * as _ from 'underscore';
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
-import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
 import {Button, IButtonProps} from '../../button/Button';
 import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
@@ -16,7 +17,7 @@ import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
 import {MatchFilter} from '../../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {Svg} from '../../svg/Svg';
-import {ISelectOwnProps, ISelectSpecificProps} from '../SelectConnected';
+import {ISelectOwnProps} from '../SelectConnected';
 import {SelectSelector} from '../SelectSelector';
 
 export interface ISelectWithFilterOwnProps {
@@ -31,31 +32,15 @@ export interface ISelectWithFilterOwnProps {
     filter?: IFilterBoxOwnProps;
 }
 
-export interface ISelectWithFilterStateProps {
-    filterValue: string;
-    selected: string[];
-    items: IItemBoxProps[];
-}
-
-export interface ISelectWithFilterDispatchProps {
-    onRenderFilter: (items: string[]) => void;
-    onDestroyFilter: () => void;
-    onSelectCustomValue: (filterValue: string) => void;
-}
-
 const SelectWithFilterPropsToOmit = keys<ISelectWithFilterOwnProps>();
 
-export interface ISelectWithFilterProps
-    extends ISelectWithFilterOwnProps,
-        Partial<ISelectWithFilterStateProps>,
-        Partial<ISelectWithFilterDispatchProps>,
-        WithServerSideProcessingProps,
-        ISelectOwnProps {}
+export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
+    Component: React.ComponentType<P>
+): React.ComponentClass<P & ISelectWithFilterOwnProps> {
+    type OwnProps = P & ISelectWithFilterOwnProps;
+    type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
 
-export const selectWithFilter = (
-    Component: React.ComponentType<ISelectWithFilterProps>
-): React.ComponentType<ISelectWithFilterProps> => {
-    const makeMapStateToProps = (initialState: IReactVaporState, initialOwnProps: ISelectWithFilterProps) =>
+    const makeMapStateToProps = (initialState: IReactVaporState, initialOwnProps: OwnProps) =>
         createStructuredSelector({
             filterValue: FilterBoxSelectors.getFilterText,
             items: initialOwnProps.isServer
@@ -64,19 +49,15 @@ export const selectWithFilter = (
             selected: SelectSelector.getListBoxSelected,
         });
 
-    const mapDispatchToProps = (
-        dispatch: IDispatch,
-        ownProps: ISelectOwnProps & ISelectSpecificProps
-    ): ISelectWithFilterDispatchProps => ({
+    const mapDispatchToProps = (dispatch: IDispatch, ownProps: OwnProps) => ({
         onRenderFilter: (items: string[]) => dispatch(addStringList(ownProps.id, items)),
         onDestroyFilter: () => dispatch(removeStringList(ownProps.id)),
         onSelectCustomValue: (filterValue: string) => dispatch(addValueStringList(ownProps.id, filterValue)),
     });
 
-    @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
-    class WrappedComponent extends React.Component<ISelectWithFilterProps> {
+    class WrappedComponent extends React.Component<Props> {
         static displayName = `withFilter(${Component.displayName})`;
-        static defaultProps: Partial<ISelectWithFilterProps> = {
+        static defaultProps: Partial<ISelectWithFilterOwnProps> = {
             duplicateText: 'Cannot add a duplicate value',
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
             noItemsText: 'No items, enter a new value',
@@ -95,7 +76,7 @@ export const selectWithFilter = (
             this.props.onRenderFilter(this.props.defaultCustomValues);
         }
 
-        componentDidUpdate(prevProps: ISelectWithFilterProps) {
+        componentDidUpdate(prevProps: Props) {
             if (prevProps.filterValue !== this.props.filterValue) {
                 this.props.onUpdate?.();
             }
@@ -222,5 +203,6 @@ export const selectWithFilter = (
         }
     }
 
-    return WrappedComponent;
-};
+    // @ts-ignore
+    return connect(makeMapStateToProps, mapDispatchToProps)(WrappedComponent);
+}

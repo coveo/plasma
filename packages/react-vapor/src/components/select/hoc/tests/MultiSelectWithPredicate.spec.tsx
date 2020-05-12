@@ -16,16 +16,16 @@ import {selectFlatSelect} from '../../../flatSelect/FlatSelectActions';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
 import {reorderListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
-import {IMultiSelectOwnProps, IMultiSelectProps, MultiSelectConnected} from '../../MultiSelectConnected';
+import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected';
 import {toggleSelect} from '../../SelectActions';
-import {SelectConnected} from '../../SelectConnected';
+import {ISelectOwnProps, SelectConnected} from '../../SelectConnected';
 import {MultiSelectWithPredicate} from '../SelectComponents';
-import {ISelectWithPredicateProps, selectWithPredicate} from '../SelectWithPredicate';
+import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
         let wrapper: ReactWrapper<any, any>;
-        let multiSelect: ReactWrapper<IMultiSelectProps, void>;
+        let multiSelect: ReactWrapper<ISelectOwnProps, void>;
         let store: Store<IReactVaporState>;
 
         const id: string = 'multi-select-with-predicate';
@@ -37,14 +37,14 @@ describe('Select', () => {
             return predicate === defaultFlatSelectOptions[0].id;
         };
 
-        const basicProps: ISelectWithPredicateProps & IMultiSelectOwnProps = {
+        const basicProps: ISelectWithPredicateOwnProps & IMultiSelectOwnProps = {
             id,
             items: [],
             options: defaultFlatSelectOptions,
             matchPredicate,
         };
 
-        const mountMultiSelect = (props?: Partial<ISelectWithPredicateProps & IMultiSelectOwnProps>) => {
+        const mountMultiSelect = (props?: Partial<ISelectWithPredicateOwnProps & IMultiSelectOwnProps>) => {
             wrapper = mount(
                 <Provider store={store}>
                     <MultiSelectWithPredicate {...basicProps} {...props} />
@@ -179,7 +179,7 @@ describe('Select', () => {
             ];
 
             it('should not filter the items based on any predicate because it is done on the server', () => {
-                const component: ShallowWrapper<ISelectWithPredicateProps> = shallowWithStore(
+                const component: ShallowWrapper<ISelectOwnProps & ISelectWithPredicateOwnProps> = shallowWithStore(
                     <ServerSideMultiSelectWithPredicates
                         {...basicProps}
                         items={items}

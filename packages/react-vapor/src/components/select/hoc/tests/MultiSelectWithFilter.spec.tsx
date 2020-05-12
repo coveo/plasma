@@ -9,9 +9,9 @@ import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {ItemBox} from '../../../itemBox/ItemBox';
 import {toggleSelect} from '../../SelectActions';
-import {SelectConnected} from '../../SelectConnected';
+import {ISelectOwnProps, SelectConnected} from '../../SelectConnected';
 import {MultiSelectWithFilter} from '../SelectComponents';
-import {ISelectWithFilterProps} from '../SelectWithFilter';
+import {ISelectWithFilterOwnProps} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('MultiSelectWithFilter', () => {
@@ -20,7 +20,7 @@ describe('Select', () => {
 
         const id: string = 'multi-select-with-filter';
 
-        const mountMultiSelect = (props: Partial<ISelectWithFilterProps> = {items: []}) => {
+        const mountMultiSelect = (props: Partial<ISelectOwnProps & ISelectWithFilterOwnProps> = {items: []}) => {
             wrapper = mount(
                 <Provider store={store}>
                     <MultiSelectWithFilter id={id} {...props} />

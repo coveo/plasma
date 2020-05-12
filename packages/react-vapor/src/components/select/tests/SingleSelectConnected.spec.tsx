@@ -9,14 +9,14 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {clearListBoxOption} from '../../listBox/ListBoxActions';
-import {ISelectProps, ISelectSpecificProps, SelectConnected} from '../SelectConnected';
+import {SelectConnected} from '../SelectConnected';
 import {SelectSelector} from '../SelectSelector';
-import {ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {ISingleSelectOwnProps, ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
 
 describe('Select', () => {
     describe('<SingleSelectConnected />', () => {
         let singleSelect: ReactWrapper<ISingleSelectProps>;
-        let select: ReactWrapper<ISelectProps & ISelectSpecificProps>;
+        let select: ReactWrapper<ISingleSelectOwnProps>;
         let store: Store<IReactVaporState>;
 
         const id: string = 'list-box-connected';

@@ -1,26 +1,24 @@
 import * as classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
+import {IDispatch} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 import * as styles from './styles/SingleSelect.scss';
 
-export interface ISingleSelectOwnProps extends ISelectProps, IComponentBehaviour {
-    placeholder?: string;
+export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button'> {
     onSelectOptionCallback?: (option: string) => void;
-    items?: IItemBoxProps[];
     buttonPrepend?: React.ReactNode;
     noFixedWidth?: boolean;
     canClear?: boolean;
@@ -30,21 +28,12 @@ export interface ISingleSelectOwnProps extends ISelectProps, IComponentBehaviour
 
 const selectPropsKeys = keys<ISelectOwnProps>();
 
-export interface ISingleSelectStateProps {
-    selectedOption: string;
-}
+export type ISingleSelectProps = ISingleSelectOwnProps &
+    ReturnType<typeof mapDispatchToProps> &
+    ReturnType<typeof mapStateToProps>;
 
-export interface ISingleSelectDispatchProps {
-    deselect: () => void;
-}
-
-export interface ISingleSelectProps
-    extends ISingleSelectOwnProps,
-        Partial<ISingleSelectStateProps>,
-        Partial<ISingleSelectDispatchProps> {}
-
-const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps): ISingleSelectStateProps => {
-    const customSelected: string[] = SelectSelector.getListState(state, ownProps);
+const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps) => {
+    const customSelected = SelectSelector.getListState(state, ownProps);
     return {
         selectedOption: customSelected.length
             ? customSelected[customSelected.length - 1]
@@ -52,15 +41,15 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProp
     };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISingleSelectOwnProps): ISingleSelectDispatchProps => ({
-    deselect: () => dispatch(clearListBoxOption(ownProps.id)),
+const mapDispatchToProps = (dispatch: IDispatch, {id}: ISingleSelectOwnProps) => ({
+    deselect: () => dispatch(clearListBoxOption(id)),
 });
 
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class SingleSelectConnected extends React.PureComponent<
-    ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>
-> {
-    static defaultProps: Partial<ISingleSelectOwnProps>;
+class SingleSelect extends React.PureComponent<ISingleSelectProps> {
+    static defaultProps = {
+        placeholder: 'Select an option',
+        deselectTooltipText: 'Deselect',
+    };
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
         if (prevProps.selectedOption !== this.props.selectedOption) {
@@ -80,7 +69,7 @@ export class SingleSelectConnected extends React.PureComponent<
         );
     }
 
-    private getButton = (props: ISelectButtonProps): JSX.Element => {
+    private getButton = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps) => {
         const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
         const showClear = !!option && this.props.canClear && !this.props.disabled;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
@@ -93,9 +82,9 @@ export class SingleSelectConnected extends React.PureComponent<
             <button
                 className={buttonClasses}
                 type="button"
-                onClick={props.onClick}
-                onKeyDown={props.onKeyDown}
-                onKeyUp={props.onKeyUp}
+                onClick={onClick}
+                onKeyDown={onKeyDown}
+                onKeyUp={onKeyUp}
                 disabled={this.props.disabled}
             >
                 {this.props.buttonPrepend}
@@ -142,7 +131,4 @@ export class SingleSelectConnected extends React.PureComponent<
     };
 }
 
-SingleSelectConnected.defaultProps = {
-    placeholder: 'Select an option',
-    deselectTooltipText: 'Deselect',
-};
+export const SingleSelectConnected = connect(mapStateToProps, mapDispatchToProps)(SingleSelect);

@@ -4,8 +4,8 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {MatchFilter} from '../../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
-import {ISelectWithFilterProps} from '../hoc/SelectWithFilter';
 import {SelectCombiners, SelectSelector} from '../SelectSelector';
+import {ISingleSelectOwnProps} from '../SingleSelectConnected';
 
 describe('Select', () => {
     describe('Select Selector', () => {
@@ -15,7 +15,7 @@ describe('Select', () => {
             selectWithFilter: {},
             listBoxes: [],
         };
-        const defaultOwnProps: ISelectWithFilterProps = {id};
+        const defaultOwnProps: ISingleSelectOwnProps = {id};
         const list: string[] = ['a', 'b'];
 
         describe('getListState', () => {

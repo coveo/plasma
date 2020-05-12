@@ -3,22 +3,23 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
+import {CherryPick} from '../../utils';
 import {DropSelectors} from '../drop/redux/DropReducers';
 import {FilterBoxSelectors} from '../filterBox/FilterBoxSelectors';
 import {MatchFilter} from '../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxState} from '../listBox/ListBoxReducers';
-import {ISelectWithFilterProps} from './hoc/SelectWithFilter';
-import {IMultiSelectProps} from './MultiSelectConnected';
-import {ISelectProps, SelectConnected} from './SelectConnected';
+import {ISelectWithFilterOwnProps} from './hoc/SelectWithFilter';
+import {ISelectOwnProps, SelectConnected} from './SelectConnected';
 
-const getListState = (state: IReactVaporState, ownProps: ISelectProps): string[] =>
-    state.selectWithFilter && state.selectWithFilter[ownProps.id] ? state.selectWithFilter[ownProps.id].list : [];
+const getListState = (state: IReactVaporState, {id}: CherryPick<ISelectOwnProps, 'id'>): string[] =>
+    state?.selectWithFilter?.[id]?.list ?? [];
 
-const getListBox = (state: IReactVaporState, ownProps: ISelectProps): Partial<IListBoxState> =>
-    _.findWhere(state.listBoxes, {id: ownProps.id}) || {};
+const getListBox = (state: IReactVaporState, {id}: CherryPick<ISelectOwnProps, 'id'>): Partial<IListBoxState> =>
+    _.findWhere(state.listBoxes, {id}) || {};
 
-const getItems = (state: IReactVaporState, ownProps: ISelectProps): IItemBoxProps[] => ownProps.items || [];
+const getItems = (state: IReactVaporState, {items}: CherryPick<ISelectOwnProps, 'items'>): IItemBoxProps[] =>
+    items || [];
 
 const itemsWithFilterCombiner = (
     items: IItemBoxProps[],
@@ -27,15 +28,11 @@ const itemsWithFilterCombiner = (
 ): IItemBoxProps[] =>
     _.map(items, (item: IItemBoxProps) => ({...item, hidden: !matchFilter(filterText, item) || !!item.hidden}));
 
-const getItemsWithFilter: (
-    state: IReactVaporState,
-    ownProps: ISelectWithFilterProps
-) => IItemBoxProps[] = createSelector(
+const getItemsWithFilter = createSelector(
     getItems,
-    (state: IReactVaporState, ownProps: ISelectWithFilterProps) =>
-        FilterBoxSelectors.getFilterText(state, {id: ownProps.id}),
-    (state: IReactVaporState, ownProps: ISelectWithFilterProps) =>
-        FilterBoxSelectors.getMatchFilter(state, {matchFilter: ownProps.matchFilter}),
+    (state: IReactVaporState, {id}: CherryPick<ISelectOwnProps, 'id'>) => FilterBoxSelectors.getFilterText(state, {id}),
+    (state: IReactVaporState, {matchFilter}: Pick<ISelectWithFilterOwnProps, 'matchFilter'>) =>
+        FilterBoxSelectors.getMatchFilter(state, {matchFilter}),
     itemsWithFilterCombiner
 );
 
@@ -44,15 +41,9 @@ const customItemsCombiner = (items: IItemBoxProps[], listState: string[]): IItem
     return convertStringListToItemsBox(_.difference(listState, valueToRemove), {hidden: true, selected: true});
 };
 
-const getCustomItems: (state: IReactVaporState, ownProps: ISelectWithFilterProps) => IItemBoxProps[] = createSelector(
-    [getItems, getListState],
-    customItemsCombiner
-);
+const getCustomItems = createSelector([getItems, getListState], customItemsCombiner);
 
-const getCustomItemsWithFilter: (
-    state: IReactVaporState,
-    ownProps: ISelectProps
-) => IItemBoxProps[] = createSelector(
+const getCustomItemsWithFilter = createSelector(
     getItemsWithFilter,
     getCustomItems,
     (filteredItems: IItemBoxProps[], customItems: IItemBoxProps[]) => [...filteredItems, ...customItems]
@@ -64,26 +55,19 @@ const getServerFilteredItems = createSelector(
     (serverSideProcessedItems, customValuesFiltered) => [...serverSideProcessedItems, ...customValuesFiltered]
 );
 
-const listBoxSelectedCombiner = (listBox: IListBoxState): string[] =>
-    listBox && listBox.selected ? listBox.selected : [];
+const listBoxSelectedCombiner = (listBox: IListBoxState): string[] => listBox?.selected ?? [];
 
-const getListBoxSelected: (state: IReactVaporState, ownProps: ISelectProps) => string[] = createSelector(
-    getListBox,
-    listBoxSelectedCombiner
-);
+const getListBoxSelected = createSelector(getListBox, listBoxSelectedCombiner);
 
-const getListBoxActive: (state: IReactVaporState, ownProps: ISelectProps) => number = createSelector(
-    getListBox,
-    (listBox: IListBoxState) => listBox.active
-);
+const getListBoxActive = createSelector(getListBox, (listBox: IListBoxState) => listBox.active);
 
-const getSelectOpened = (state: IReactVaporState, ownProps: ISelectProps) =>
-    DropSelectors.isOpen(state, {id: ownProps.id, groupId: SelectConnected.DropGroup});
+const getSelectOpened = (state: IReactVaporState, {id}: CherryPick<ISelectOwnProps, 'id'>): boolean =>
+    DropSelectors.isOpen(state, {id, groupId: SelectConnected.DropGroup});
 
 const multiSelectSelectedValuesCombiner = (listBoxSelected: string[], listState: string[]): string[] =>
     _.uniq([...listBoxSelected, ...listState]);
 
-const getMultiSelectSelectedValues: (state: IReactVaporState, ownProps: IMultiSelectProps) => string[] = createSelector(
+const getMultiSelectSelectedValues = createSelector(
     getListBoxSelected,
     getListState,
     multiSelectSelectedValuesCombiner

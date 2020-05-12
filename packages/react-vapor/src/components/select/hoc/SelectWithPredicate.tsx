@@ -9,28 +9,38 @@ import {FlatSelectConnected} from '../../flatSelect/FlatSelectConnected';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {ISelectProps} from '../SelectConnected';
+import {ISelectOwnProps} from '../SelectConnected';
 
 export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
     matchPredicate: (predicate: string, item: IItemBoxProps) => boolean;
 }
 const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
-interface SelectWithPredicateStateProps {
-    predicate: string;
-    items: IItemBoxProps[];
-}
 
-export interface ISelectWithPredicateProps
-    extends ISelectWithPredicateOwnProps,
-        ISelectProps,
-        Partial<SelectWithPredicateStateProps>,
-        WithServerSideProcessingProps {}
+export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
+    Component: React.ComponentType<P>
+): React.FunctionComponent<P & ISelectWithPredicateOwnProps> => {
+    type OwnProps = P & ISelectWithPredicateOwnProps;
+    type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
-export const selectWithPredicate = (
-    Component: React.ComponentType<ISelectProps>
-): React.ComponentType<ISelectWithPredicateProps> => {
-    const WrappedComponent: React.FunctionComponent<ISelectWithPredicateProps> = (props) => {
+    function mapStateToProps(state: IReactVaporState, ownProps: OwnProps) {
+        const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id}) || ownProps.options[0].id;
+
+        const items = ownProps.isServer
+            ? ownProps.items
+            : _.map(ownProps.items, (item: IItemBoxProps) => {
+                  const visible = ownProps.matchPredicate(predicate, item);
+
+                  return {...item, hidden: !visible || item.hidden};
+              });
+
+        return {
+            items,
+            predicate,
+        };
+    }
+
+    const WrappedComponent: React.FunctionComponent<Props> = (props) => {
         React.useEffect(() => {
             props.onUpdate?.();
         }, [props.predicate, props.onUpdate]);
@@ -51,22 +61,6 @@ export const selectWithPredicate = (
 
     WrappedComponent.displayName = `withPredicate(${Component.displayName})`;
 
+    // @ts-ignore
     return connect(mapStateToProps)(WrappedComponent);
 };
-
-function mapStateToProps(state: IReactVaporState, ownProps: ISelectWithPredicateProps): SelectWithPredicateStateProps {
-    const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id}) || ownProps.options[0].id;
-
-    const items = ownProps.isServer
-        ? ownProps.items
-        : _.map(ownProps.items, (item: IItemBoxProps) => {
-              const visible = ownProps.matchPredicate(predicate, item);
-
-              return {...item, hidden: !visible || item.hidden};
-          });
-
-    return {
-        items,
-        predicate,
-    };
-}
