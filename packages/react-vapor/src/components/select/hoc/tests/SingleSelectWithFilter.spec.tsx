@@ -11,29 +11,29 @@ import {keyCode} from '../../../../utils/InputUtils';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {Button} from '../../../button/Button';
+import {FilterBoxSelectors} from '../../../filterBox';
 import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
 import {IItemBoxProps, ItemBox} from '../../../itemBox/ItemBox';
 import {selectListBoxOption, setActiveListBoxOption} from '../../../listBox/ListBoxActions';
-import {IMultiSelectProps} from '../../MultiSelectConnected';
 import {toggleSelect} from '../../SelectActions';
 import {SelectConnected} from '../../SelectConnected';
-import {SingleSelectConnected} from '../../SingleSelectConnected';
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
 import {SingleSelectWithFilter} from '../SelectComponents';
-import {ISelectWithFilterProps, selectWithFilter} from '../SelectWithFilter';
+import {ISelectWithFilterOwnProps, selectWithFilter} from '../SelectWithFilter';
 
 describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
         let wrapper: ReactWrapper<any, any>;
-        let singleSelect: ReactWrapper<IMultiSelectProps, void>;
+        let singleSelect: ReactWrapper<ISingleSelectOwnProps, void>;
         let store: Store<IReactVaporState>;
 
         const id: string = 'single-select-with-filter';
-        const basicProps: ISelectWithFilterProps = {
+        const basicProps: ISelectWithFilterOwnProps & ISingleSelectOwnProps = {
             id,
         };
 
-        const mountSingleSelect = (props?: Partial<ISelectWithFilterProps>) => {
+        const mountSingleSelect = (props?: Partial<ISelectWithFilterOwnProps & ISingleSelectOwnProps>) => {
             wrapper = mount(
                 <Provider store={store}>
                     <SingleSelectWithFilter {...basicProps} {...props} />
@@ -235,7 +235,9 @@ describe('Select', () => {
         describe('With CustomValue Props', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
-            const mountSingleSelectCustomValues = (props: Partial<ISelectWithFilterProps> = {}) => {
+            const mountSingleSelectCustomValues = (
+                props: Partial<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = {}
+            ) => {
                 wrapper = mount(
                     <Provider store={store}>
                         <SingleSelectWithFilter {...basicProps} {...props} customValues />
@@ -343,16 +345,15 @@ describe('Select', () => {
         });
 
         describe('when filter is processed on the server side', () => {
-            const ServerSideMultiSingleSelectWithFilter: React.ComponentType<ISelectWithFilterProps> = _.compose(
-                withServerSideProcessing,
-                selectWithFilter
-            )(SingleSelectConnected);
+            const ServerSideMultiSingleSelectWithFilter: React.ComponentType<ISelectWithFilterOwnProps &
+                ISingleSelectOwnProps> = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
 
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
             it('should not filter the items because it is done on the server', () => {
-                const component: ShallowWrapper<ISelectWithFilterProps> = shallowWithStore(
-                    <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} filterValue="a" />,
+                spyOn(FilterBoxSelectors, 'getFilterText').and.returnValue('a');
+                const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
+                    <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} />,
                     store
                 ).dive();
 
@@ -361,13 +362,9 @@ describe('Select', () => {
 
             it('should trigger the onUpdate prop when the selected predicate changes', () => {
                 const onUpdateSpy = jasmine.createSpy('onUpdate');
-                const component: ShallowWrapper<ISelectWithFilterProps> = shallowWithStore(
-                    <ServerSideMultiSingleSelectWithFilter
-                        {...basicProps}
-                        items={items}
-                        filterValue="current-filter-value"
-                        onUpdate={onUpdateSpy}
-                    />,
+                spyOn(FilterBoxSelectors, 'getFilterText').and.returnValue('current-filter-value');
+                const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
+                    <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} onUpdate={onUpdateSpy} />,
                     store
                 )
                     .dive()
@@ -375,7 +372,7 @@ describe('Select', () => {
 
                 expect(onUpdateSpy).not.toHaveBeenCalled();
 
-                component.setProps({filterValue: 'some-new-filter-value'});
+                component.setProps({filterValue: 'some-new-filter-value'} as any);
 
                 expect(onUpdateSpy).toHaveBeenCalledTimes(1);
             });

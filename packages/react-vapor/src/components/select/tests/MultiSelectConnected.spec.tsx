@@ -10,12 +10,12 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {SelectedOption} from '../../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
-import {SelectConnected} from '../SelectConnected';
+import {ISelectOwnProps, SelectConnected} from '../SelectConnected';
 
 describe('Select', () => {
     describe('<MultiSelectConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
-        let multiSelect: ReactWrapper<IMultiSelectProps, void>;
+        let multiSelect: ReactWrapper<ISelectOwnProps, void>;
         let store: Store<IReactVaporState>;
 
         const id: string = 'list-box-connected';

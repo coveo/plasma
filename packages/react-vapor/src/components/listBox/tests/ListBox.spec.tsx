@@ -10,6 +10,7 @@ describe('ListBox', () => {
     const spyOnOptionClick = jasmine.createSpy('onOptionClick');
 
     const defaultProps: IListBoxProps = {
+        id: '🍄',
         items: [
             {value: 'test'},
             {value: 'test1', onOptionClick: spyOnOptionClick},

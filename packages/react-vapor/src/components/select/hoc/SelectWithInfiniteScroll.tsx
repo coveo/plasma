@@ -10,7 +10,7 @@ export interface SelectWithInfiniteScrollProps {
     next: () => void;
 }
 
-export function selectWithInfiniteScroll<P extends ISelectOwnProps>(
+export function selectWithInfiniteScroll<P extends Omit<ISelectOwnProps, 'button'>>(
     Component: React.ComponentType<P>
 ): React.ComponentType<P & SelectWithInfiniteScrollProps> {
     const ComponentWithInfiniteScroll: React.FunctionComponent<P & SelectWithInfiniteScrollProps> = (props) => {

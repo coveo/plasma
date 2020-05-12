@@ -5,7 +5,6 @@ import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DnDUtils} from '../dragAndDrop/DnDUtils';
 import {
@@ -17,11 +16,10 @@ import {IItemBoxProps} from '../itemBox/ItemBox';
 import {clearListBoxOption, reorderListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
-import {ISelectButtonProps, ISelectOwnProps, ISelectProps, SelectConnected} from './SelectConnected';
+import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
 
-export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
-    placeholder?: string;
+export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button'>, IDropTargetProps {
     emptyPlaceholder?: string;
     deselectAllTooltipText?: string;
     sortable?: boolean;
@@ -29,30 +27,19 @@ export interface IMultiSelectOwnProps extends ISelectProps, IDropTargetProps {
     multiSelectStyle?: React.CSSProperties;
 }
 
-export interface IMultiSelectStateProps {
-    selected?: string[];
-}
-
-export interface IMultiSelectDispatchProps {
-    onRemoveClick?: (item: IItemBoxProps) => void;
-    onRemoveAll?: () => void;
-    onReorder?: (values: string[]) => void;
-}
-
-export interface IMultiSelectProps extends IMultiSelectOwnProps, IMultiSelectStateProps, IMultiSelectDispatchProps {}
+export interface IMultiSelectProps
+    extends IMultiSelectOwnProps,
+        ReturnType<ReturnType<typeof makeMapStateToProps>>,
+        ReturnType<typeof mapDispatchToProps> {}
 
 const selectPropsKeys = keys<ISelectOwnProps>();
 
-const makeMapStateToProps = () => {
-    const getStateProps = createStructuredSelector({
+const makeMapStateToProps = () =>
+    createStructuredSelector({
         selected: SelectSelector.getMultiSelectSelectedValues,
     });
 
-    return (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultiSelectStateProps =>
-        getStateProps(state, ownProps);
-};
-
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps): IMultiSelectDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultiSelectOwnProps) => ({
     onRemoveClick: (item: IItemBoxProps) => dispatch(unselectListBoxOption(ownProps.id, item.value)),
     onRemoveAll: () => dispatch(clearListBoxOption(ownProps.id)),
     onReorder: (values: string[]) => dispatch(reorderListBoxOption(ownProps.id, values)),
@@ -68,7 +55,7 @@ const parentDropTarget = {
 @DropTarget(DraggableSelectedOptionType, parentDropTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),
 }))
-class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
+class MultiSelect extends React.PureComponent<IMultiSelectProps> {
     static defaultProps: Partial<IMultiSelectProps> = {
         placeholder: 'Select an option',
         emptyPlaceholder: 'No selected option',
@@ -155,7 +142,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
         ) : null;
     }
 
-    private getButton = (props: ISelectButtonProps): JSX.Element => {
+    private getButton = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps): JSX.Element => {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
         const buttonAttrs =
             !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length
@@ -176,9 +163,9 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
                 <button
                     className={buttonClasses}
                     type="button"
-                    onKeyDown={props.onKeyDown}
-                    onKeyUp={props.onKeyUp}
-                    onClick={props.onClick}
+                    onKeyDown={onKeyDown}
+                    onKeyUp={onKeyUp}
+                    onClick={onClick}
                     {...buttonAttrs}
                 >
                     <span className="dropdown-no-value">{this.props.placeholder}</span>
@@ -200,5 +187,4 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps & React.ButtonHT
     }
 }
 
-export const MultiSelectConnected: React.ComponentClass<IMultiSelectProps &
-    React.ButtonHTMLAttributes<HTMLButtonElement>> = DnDUtils.TagControlContext(MultiSelect);
+export const MultiSelectConnected: React.ComponentClass<IMultiSelectOwnProps> = DnDUtils.TagControlContext(MultiSelect);

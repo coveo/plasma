@@ -1,5 +1,5 @@
 import {IReactVaporState} from '../../../ReactVapor';
-import {ISelectWithFilterProps} from '../../select/hoc/SelectWithFilter';
+import {ISelectWithFilterOwnProps, ISingleSelectOwnProps} from '../../select';
 import {IFilterState} from '../FilterBoxReducers';
 import {FilterBoxSelectors} from '../FilterBoxSelectors';
 import {defaultListBoxMatchFilter, MatchFilter} from '../FilterBoxUtils';
@@ -12,7 +12,7 @@ describe('FilterBox', () => {
             selectWithFilter: {},
             listBoxes: [],
         };
-        const defaultOwnProps: ISelectWithFilterProps = {id};
+        const defaultOwnProps: ISelectWithFilterOwnProps & ISingleSelectOwnProps = {id};
 
         describe('getFilterText', () => {
             it('should return an empty filterText if it is not in the state', () => {
