@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.40.0](https://github.com/coveo/react-vapor/compare/v5.39.3...v5.40.0) (2020-05-13)
+
+
+### Bug Fixes
+
+* **selects:** cleanup the selects type declarations ([6cdf26a](https://github.com/coveo/react-vapor/commit/6cdf26a6f49759b6aa46e38bc33af52a19ac4d5f))
+
+
+### Features
+
+* **collapsible:** add selectors ([9a01a13](https://github.com/coveo/react-vapor/commit/9a01a1319a20e7c7c55481fb91b758e16852121e))
+
+
+
+
+
 ## [5.39.3](https://github.com/coveo/react-vapor/compare/v5.39.2...v5.39.3) (2020-05-12)
 
 **Note:** Version bump only for package root
