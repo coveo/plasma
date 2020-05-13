@@ -5,7 +5,7 @@ import {ITextAreaState} from './TextAreaReducers';
 
 const getValue = (state: IReactVaporState, id: string): string => {
     const textArea: ITextAreaState = _.findWhere(state.textAreas, {id});
-    return textArea?.value || '';
+    return textArea?.value ?? '';
 };
 
 const isDisabled = (state: IReactVaporState, id: string): boolean => {
