@@ -1,14 +1,17 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import ReactModal from 'react-modal';
+import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
 import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
+import {IReactVaporState} from '../../ReactVapor';
 import {IClassName} from '../../utils/ClassNameUtils';
-import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
+import {IDispatch, IReduxStatePossibleProps, ReduxUtils} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';
+import {addModal, closeModal, removeModal} from './ModalActions';
 import {IModalBackdropOwnProps} from './ModalBackdrop';
 import {ModalBody} from './ModalBody';
 import {IModalFooterProps, ModalFooter} from './ModalFooter';
@@ -58,7 +61,9 @@ export class ModalComposite extends React.PureComponent<
                 key={this.props.id}
                 isOpen={this.props.isOpened}
                 className={{
-                    base: classNames('modal-container --react-modal', this.props.classes),
+                    base: classNames('modal-container --react-modal', this.props.classes, {
+                        'mod-prompt': this.props.isPrompt,
+                    }),
                     afterOpen: 'opened',
                     beforeClose: 'closed',
                 }}
@@ -148,3 +153,21 @@ export class ModalComposite extends React.PureComponent<
 
     private getParent = (): HTMLElement => document.querySelector(Defaults.MODAL_ROOT);
 }
+
+const mapStateToProps = (state: IReactVaporState, ownProps: IModalCompositeOwnProps): IModalCompositeStateProps => ({
+    withReduxState: true,
+    isOpened: state.modals && state.modals.some((modal) => modal.id === ownProps.id && modal.isOpened),
+    layer: state.openModals ? state.openModals.indexOf(ownProps.id) + 1 : 0,
+});
+
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalCompositeOwnProps): IModalCompositeDispatchProps => ({
+    onRender: () => dispatch(addModal(ownProps.id, ownProps.openOnMount)),
+    onDestroy: () => dispatch(removeModal(ownProps.id)),
+    onClose: () => dispatch(closeModal(ownProps.id)),
+});
+
+export const ModalCompositeConnected = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ModalComposite);

@@ -3,6 +3,42 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.39.3](https://github.com/coveo/react-vapor/compare/v5.39.2...v5.39.3) (2020-05-12)
+
+**Note:** Version bump only for package coveo-styleguide
+
+# [5.39.0](https://github.com/coveo/react-vapor/compare/v5.38.0...v5.39.0) (2020-05-08)
+
+### Features
+
+-   **middle slider:** can append a value on both side ([009b535](https://github.com/coveo/react-vapor/commit/009b53569c5372ced2192b55501424237eae9cd6))
+
+# [5.37.0](https://github.com/coveo/react-vapor/compare/v5.36.4...v5.37.0) (2020-05-07)
+
+**Note:** Version bump only for package coveo-styleguide
+
+# [5.36.0](https://github.com/coveo/react-vapor/compare/v5.35.3...v5.36.0) (2020-04-30)
+
+### Features
+
+-   **flex:** add align-start rule ([#1536](https://github.com/coveo/react-vapor/issues/1536)) ([9d45040](https://github.com/coveo/react-vapor/commit/9d45040cb013b214a7f8223fdbbece4cbb137459))
+
+## [5.35.1](https://github.com/coveo/react-vapor/compare/v5.35.0...v5.35.1) (2020-04-29)
+
+### Bug Fixes
+
+-   **modcard:** update rules to make it reusable ([#1533](https://github.com/coveo/react-vapor/issues/1533)) ([cf23c27](https://github.com/coveo/react-vapor/commit/cf23c27625975ac1b9249a602b7dcedbca38bc48))
+
+# [5.35.0](https://github.com/coveo/react-vapor/compare/v5.34.4...v5.35.0) (2020-04-29)
+
+### Features
+
+-   **svg:** add icons for source visibility ([#1534](https://github.com/coveo/react-vapor/issues/1534)) ([9847f4f](https://github.com/coveo/react-vapor/commit/9847f4f6eda1ebe7148621c7d0e776c4be33d564))
+
+## [5.34.4](https://github.com/coveo/react-vapor/compare/v5.34.3...v5.34.4) (2020-04-28)
+
+**Note:** Version bump only for package coveo-styleguide
+
 ## [5.34.1](https://github.com/coveo/react-vapor/compare/v5.34.0...v5.34.1) (2020-04-16)
 
 ### Bug Fixes

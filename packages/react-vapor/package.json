@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "5.34.1",
+    "version": "5.39.3",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -30,7 +30,9 @@
         "test:watch": "karma start --no-single-run --auto-watch",
         "test:browser": "karma start --browsers Chrome --no-single-run",
         "report-coverage": "codecov -f coverage/lcov.info",
-        "precommit": "lint-staged"
+        "precommit": "lint-staged",
+        "snyk-protect": "snyk protect",
+        "prepublish": "npm run snyk-protect"
     },
     "dependencies": {
         "diff2html": "3.1.2",
@@ -43,6 +45,7 @@
         "react-modal": "3.10.1",
         "react-tether": "1.0.4",
         "react-textarea-autosize": "7.1.0",
+        "snyk": "^1.316.1",
         "split-on-first": "1.x.x",
         "strict-uri-encode": "2.x.x",
         "unidiff": "0.0.4"
@@ -100,7 +103,7 @@
         "codecov": "3.2.0",
         "codemirror": "5.52.0",
         "concurrently": "5.1.0",
-        "coveo-styleguide": "^5.34.1",
+        "coveo-styleguide": "^5.39.3",
         "css-loader": "3.4.2",
         "d3": "3.5.17",
         "del": "5.1.0",
@@ -181,5 +184,6 @@
             "prettier --write",
             "git add"
         ]
-    }
+    },
+    "snyk": true
 }

@@ -68,6 +68,14 @@ describe('SubNavigation', () => {
             ).toBe(true);
         });
 
+        it('should have the "disabled" class on the disabled item', () => {
+            const disabledItem: ISubNavigationProps = {
+                items: [{id: 'a', label: 'A', disabled: true}],
+            };
+            subNavigation = shallow(<SubNavigation {...disabledItem} />);
+            expect(subNavigation.find('a').hasClass('disabled')).toBe(true);
+        });
+
         it('should call the onClickItem prop when clicking on an item', () => {
             const clickedItem = 'b';
             const spy = jasmine.createSpy('onClickItem');

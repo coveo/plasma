@@ -85,6 +85,15 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                             React Component Content
                         </button>
 
+                        <button
+                            className="btn m0 mr1 mb1"
+                            onClick={() => {
+                                this.props.addToast(containerId, 'Success!', {children: <ToastContentExample />});
+                            }}
+                        >
+                            React Component Content with children
+                        </button>
+
                         <ToastContainerConnected id={containerId} />
                     </div>
                 </div>

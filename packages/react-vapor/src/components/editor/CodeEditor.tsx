@@ -9,19 +9,19 @@ import 'codemirror/mode/python/python';
 import * as CodeMirror from 'codemirror';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
-import * as _ from 'underscore';
 
 import {CodeMirrorGutters} from './EditorConstants';
 
 export interface ICodeEditorProps {
     value: string;
+    mode: any;
     readOnly?: boolean;
     onChange?: (code: string) => void;
     onMount?: (codemirror: ReactCodeMirror.Controlled) => void;
     errorMessage?: string;
-    mode: any; // string or object ex.: {name: "javascript", json: true}
     extraKeywords?: string[];
     className?: string;
+    options?: CodeMirror.EditorConfiguration;
 }
 
 export interface CodeEditorState {
@@ -33,7 +33,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
         className: 'mod-border',
     };
 
-    static Options: CodeMirror.EditorConfiguration = {
+    static defaultOptions: CodeMirror.EditorConfiguration = {
         lineNumbers: true,
         foldGutter: true,
         lint: true,
@@ -78,11 +78,13 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                     this.setState({value});
                 }}
                 value={this.state.value}
-                onChange={(editor, data, value: string) => this.handleChange(value)}
-                options={_.extend({}, CodeEditor.Options, {
+                onChange={(editor, data, value: string) => this.props.onChange?.(value)}
+                options={{
+                    ...CodeEditor.defaultOptions,
                     readOnly: this.removeCursorWhenEditorIsReadOnly(),
                     mode: this.props.mode,
-                })}
+                    ...this.props.options,
+                }}
                 className={this.props.className}
             />
         );
@@ -90,10 +92,6 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
 
     private removeCursorWhenEditorIsReadOnly() {
         return this.props.readOnly ? 'nocursor' : this.props.readOnly;
-    }
-
-    private handleChange(code: string) {
-        this.props.onChange?.(code);
     }
 
     private addExtraKeywords() {

@@ -3,6 +3,94 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.39.3](https://github.com/coveo/react-vapor/compare/v5.39.2...v5.39.3) (2020-05-12)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.39.2](https://github.com/coveo/react-vapor/compare/v5.39.1...v5.39.2) (2020-05-08)
+
+### Bug Fixes
+
+-   **datepicker:** drop ([3b5ca32](https://github.com/coveo/react-vapor/commit/3b5ca321c9bbdc83a95247a8c08e66ba0a02fef9))
+
+## [5.39.1](https://github.com/coveo/react-vapor/compare/v5.39.0...v5.39.1) (2020-05-08)
+
+### Reverts
+
+-   **datepicker:** use drop ([b9445bb](https://github.com/coveo/react-vapor/commit/b9445bb8bbe00de4ae7ebb1c5422699d277b18be))
+
+# [5.39.0](https://github.com/coveo/react-vapor/compare/v5.38.0...v5.39.0) (2020-05-08)
+
+### Features
+
+-   **middle slider:** can append a value on both side ([009b535](https://github.com/coveo/react-vapor/commit/009b53569c5372ced2192b55501424237eae9cd6))
+
+# [5.38.0](https://github.com/coveo/react-vapor/compare/v5.37.0...v5.38.0) (2020-05-07)
+
+### Features
+
+-   **datepicker:** use drop ([508ef74](https://github.com/coveo/react-vapor/commit/508ef74b6412da27ffa0310c7238db98a6bae2fe))
+
+# [5.37.0](https://github.com/coveo/react-vapor/compare/v5.36.4...v5.37.0) (2020-05-07)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.36.4](https://github.com/coveo/react-vapor/compare/v5.36.3...v5.36.4) (2020-05-01)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.36.3](https://github.com/coveo/react-vapor/compare/v5.36.2...v5.36.3) (2020-05-01)
+
+### Bug Fixes
+
+-   snyk config to reduce vulnerabilities ([68972c7](https://github.com/coveo/react-vapor/commit/68972c79f8ad7111668af56b2035a8556df52cbe))
+
+## [5.36.2](https://github.com/coveo/react-vapor/compare/v5.36.1...v5.36.2) (2020-05-01)
+
+### Bug Fixes
+
+-   **slider:** custom append value ([1421d66](https://github.com/coveo/react-vapor/commit/1421d669871c97bd47dc230bf0ff90caeb704f52))
+
+## [5.36.1](https://github.com/coveo/react-vapor/compare/v5.36.0...v5.36.1) (2020-04-30)
+
+### Bug Fixes
+
+-   **slider:** custom tooltip props ([a3b4698](https://github.com/coveo/react-vapor/commit/a3b46984e2c6fbad8c905bb87d022fbdb338dec2))
+
+# [5.36.0](https://github.com/coveo/react-vapor/compare/v5.35.3...v5.36.0) (2020-04-30)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.35.3](https://github.com/coveo/react-vapor/compare/v5.35.2...v5.35.3) (2020-04-29)
+
+### Bug Fixes
+
+-   **toast:** interface ([f0dad0b](https://github.com/coveo/react-vapor/commit/f0dad0b97519f6eb8eabe84507b8f8aa2ba4940b))
+
+## [5.35.2](https://github.com/coveo/react-vapor/compare/v5.35.1...v5.35.2) (2020-04-29)
+
+### Bug Fixes
+
+-   **codeeditor:** front all codemirror options on code editor ([797c241](https://github.com/coveo/react-vapor/commit/797c2411546ef0b59dfe49e7671a604543dd9442))
+
+## [5.35.1](https://github.com/coveo/react-vapor/compare/v5.35.0...v5.35.1) (2020-04-29)
+
+**Note:** Version bump only for package react-vapor-demo
+
+# [5.35.0](https://github.com/coveo/react-vapor/compare/v5.34.4...v5.35.0) (2020-04-29)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.34.4](https://github.com/coveo/react-vapor/compare/v5.34.3...v5.34.4) (2020-04-28)
+
+**Note:** Version bump only for package react-vapor-demo
+
+## [5.34.3](https://github.com/coveo/react-vapor/compare/v5.34.2...v5.34.3) (2020-04-27)
+
+### Bug Fixes
+
+-   **modalcomposite:** isPrompt adds mod-prompt css class ([5b571c3](https://github.com/coveo/react-vapor/commit/5b571c3762a2047c343212e20b8a2878ef67320a))
+
 ## [5.34.2](https://github.com/coveo/react-vapor/compare/v5.34.1...v5.34.2) (2020-04-21)
 
 ### Bug Fixes
