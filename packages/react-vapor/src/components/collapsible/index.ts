@@ -6,3 +6,4 @@ export * from './CollapsibleContainerConnected';
 export * from './CollapsibleInfoBox';
 export * from './CollapsibleReducers';
 export * from './CollapsibleToggle';
+export * from './CollapsibleSelectors';
