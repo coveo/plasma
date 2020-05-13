@@ -5,6 +5,7 @@ import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar';
 import {DefaultGroupIds, DropActions} from '../drop/redux/DropActions';
+import {DropSelectors} from '../drop/redux/DropReducers';
 import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from '../dropdown/DropdownActions';
 import {IDropdownState} from '../dropdown/DropdownReducers';
 import {resetOptionPickers} from '../optionPicker/OptionPickerActions';
@@ -26,8 +27,16 @@ const mapStateToProps = (
 ): IDatePickerDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});
 
+    let isOpened = item?.opened;
+    if (ownProps.withDrop) {
+        isOpened = DropSelectors.isOpen(state, {
+            id: ownProps.id,
+            groupId: ownProps?.dropOptions?.groupId ?? DefaultGroupIds.default,
+        });
+    }
+
     return {
-        isOpened: item && item.opened,
+        isOpened,
         datePicker: DatePickerSelectors.getDatePicker(state, {id: ownProps.id}),
         withReduxState: true,
     };
