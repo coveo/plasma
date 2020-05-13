@@ -5,7 +5,7 @@ import {CollapsibleState} from './CollapsibleReducers';
 
 const isExpanded = (state: IReactVaporState, id: string): boolean => {
     const collapsible: CollapsibleState = _.findWhere(state.collapsibles, {id});
-    return collapsible?.expanded;
+    return !!collapsible?.expanded;
 };
 
 export const CollapsibleSelectors = {

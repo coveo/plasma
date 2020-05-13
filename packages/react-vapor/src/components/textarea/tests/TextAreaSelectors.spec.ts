@@ -21,10 +21,10 @@ describe('TextAreaSelectors', () => {
     });
 
     describe('isDisabled', () => {
-        it('should not throw and return undefined when passing a falsy id', () => {
-            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, undefined)).toBeUndefined();
-            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, null)).toBeUndefined();
-            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, '')).toBeUndefined();
+        it('should not throw and return false when passing a falsy id', () => {
+            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, undefined)).toBe(false);
+            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, null)).toBe(false);
+            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, '')).toBe(false);
         });
 
         it('should return the textarea disabled status at the specified id', () => {
