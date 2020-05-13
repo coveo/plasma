@@ -1,11 +1,11 @@
 .dropdown.mod-menu {
     &.header-section {
         &:hover {
-            background-color: $navigation-active-background-color;
+            background-color: $blue-navigator;
         }
 
         &.open {
-            background-color: $navigation-active-background-color;
+            background-color: $blue-navigator;
         }
     }
     .dropdown-toggle {
