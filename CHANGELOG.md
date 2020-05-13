@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.40.1](https://github.com/coveo/react-vapor/compare/v5.40.0...v5.40.1) (2020-05-13)
+
+
+### Bug Fixes
+
+* **datepicker:** fix drop ([a50c856](https://github.com/coveo/react-vapor/commit/a50c856cb45261fc9216ff5006d9dfe02228cea6))
+
+
+
+
+
 # [5.40.0](https://github.com/coveo/react-vapor/compare/v5.39.3...v5.40.0) (2020-05-13)
 
 
