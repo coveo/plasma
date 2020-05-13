@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {OverlayTrigger, Tooltip as BootstrapTooltip} from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import * as _ from 'underscore';
