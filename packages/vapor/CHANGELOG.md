@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.41.0](https://github.com/coveo/react-vapor/compare/v5.40.1...v5.41.0) (2020-05-14)
+
+
+### Bug Fixes
+
+* **colors:** adjust the blue-purple-2 color ([b796f18](https://github.com/coveo/react-vapor/commit/b796f18d3266f47e9a5f3e1fa1ca8727ed8915ba))
+
+
+### Features
+
+* **icons:** add flag-us and flag-eu SVGs ([f4c101c](https://github.com/coveo/react-vapor/commit/f4c101c332745593728dc3b5dd5729b1d9bd0a5f))
+
+
+
+
+
 ## [5.39.3](https://github.com/coveo/react-vapor/compare/v5.39.2...v5.39.3) (2020-05-12)
 
 **Note:** Version bump only for package coveo-styleguide
