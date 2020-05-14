@@ -8,7 +8,6 @@ import {IComponentBehaviour} from '../../utils/ComponentUtils';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {Content} from '../content/Content';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop} from '../drop/Drop';
 import {IDropPodProps} from '../drop/DropPod';
@@ -22,7 +21,7 @@ import * as styles from './styles/SingleSelect.scss';
 
 export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
     id: string;
-    button: React.ReactNode;
+    button: React.ComponentType<ISelectButtonProps>;
     placeholder?: string;
     selectClasses?: string;
     dropClasses?: string;
@@ -39,6 +38,7 @@ export interface ISelectButtonProps {
     onClick: (e: React.MouseEvent) => void;
     onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => void;
     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
+    selectedOptions: IItemBoxProps[];
     placeholder?: string;
 }
 
@@ -124,18 +124,18 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         );
     }
 
+    private get selectedOptions(): IItemBoxProps[] {
+        return this.props.items.filter((option: IItemBoxProps) => _.contains(this.props.selectedValues, option.value));
+    }
+
     private renderToggle = (openDropdown: () => void) => (
         <div className="js-drop-button-container" ref={this.dropdown}>
-            <Content
-                content={this.props.button}
-                classes={['select-dropdown-button']}
-                componentProps={{
-                    onClick: openDropdown,
-                    onKeyUp: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e),
-                    onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e),
-                    placeholder: this.props.placeholder,
-                }}
-                key={`${this.props.id}-button`}
+            <this.props.button
+                onClick={openDropdown}
+                onKeyDown={(e: React.KeyboardEvent<HTMLElement>) => this.onKeyDown(e)}
+                onKeyUp={(e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e)}
+                placeholder={this.props.placeholder}
+                selectedOptions={this.selectedOptions}
             />
         </div>
     );

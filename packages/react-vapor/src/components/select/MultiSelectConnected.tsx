@@ -71,7 +71,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                 id={this.props.id}
                 key={this.props.id}
                 {..._.pick(this.props, selectPropsKeys)}
-                button={this.getButton}
+                button={this.Toggle}
                 multi
             >
                 {this.props.children}
@@ -142,7 +142,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
         ) : null;
     }
 
-    private getButton = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps): JSX.Element => {
+    private Toggle = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps): JSX.Element => {
         const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
         const buttonAttrs =
             !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length
