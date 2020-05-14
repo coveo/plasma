@@ -24,6 +24,7 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button'> {
     canClear?: boolean;
     deselectTooltipText?: string;
     footer?: React.ReactNode;
+    customButton?: React.ComponentType<ISelectButtonProps>;
 }
 
 const selectPropsKeys = keys<ISelectOwnProps>();
@@ -61,7 +62,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         return (
             <SelectConnected
                 {..._.pick(this.props, selectPropsKeys)}
-                button={this.getButton}
+                button={this.props.customButton ?? this.Toggle}
                 isLoading={this.props.isLoading}
             >
                 {this.props.children}
@@ -69,8 +70,8 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         );
     }
 
-    private getButton = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps) => {
-        const option = _.findWhere(this.props.items, {value: this.props.selectedOption});
+    private Toggle: React.FunctionComponent<ISelectButtonProps> = ({onClick, onKeyDown, onKeyUp, selectedOptions}) => {
+        const option = selectedOptions[0];
         const showClear = !!option && this.props.canClear && !this.props.disabled;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
@@ -88,9 +89,9 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
                 disabled={this.props.disabled}
             >
                 {this.props.buttonPrepend}
-                {option && option.prepend ? <Content {...option.prepend} /> : null}
+                {option?.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
-                {option && option.append ? <Content {...option.append} /> : null}
+                {option?.append ? <Content {...option.append} /> : null}
                 <span className="dropdown-toggle-arrow" />
                 {showClear && this.getDeselectOptionButton()}
             </button>

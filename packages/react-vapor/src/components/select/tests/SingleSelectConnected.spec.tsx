@@ -1,4 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
+import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import {Store} from 'redux';
 import * as _ from 'underscore';
@@ -268,6 +269,15 @@ describe('Select', () => {
                 expect(mountedSingleSelect.find('#some-footer').matchesElement(footer)).toBeTruthy();
                 mountedSingleSelect.unmount();
             });
+        });
+
+        it('should render the custom button prop content as toggle if it is specified', () => {
+            const CustomButton = () => <span>🍄🍄🍄🍄🍄🍄</span>;
+            const component = shallowWithState(
+                <SingleSelectConnected id={id} items={[{value: 'a', selected: false}]} customButton={CustomButton} />,
+                {}
+            ).dive();
+            expect(component.prop('button')).toBe(CustomButton);
         });
     });
 });

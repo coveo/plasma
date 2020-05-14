@@ -4,6 +4,7 @@ import {
     FilterBoxSelectors,
     IFlatSelectOptionProps,
     IItemBoxProps,
+    ISelectButtonProps,
     ISingleSelectOwnProps,
     Section,
     selectWithFilter,
@@ -48,7 +49,15 @@ const itemsWithAppendedValue = _.map(defaultItems, (item) => ({
     append: {content: () => <span className="text-red ml3">{item.value}</span>},
 }));
 
-const ids = [UUID.generate(), UUID.generate(), UUID.generate(), UUID.generate(), UUID.generate(), UUID.generate()];
+const ids = [
+    UUID.generate(),
+    UUID.generate(),
+    UUID.generate(),
+    UUID.generate(),
+    UUID.generate(),
+    UUID.generate(),
+    UUID.generate(),
+];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
     {id: UUID.generate(), option: {content: 'All'}, selected: true},
@@ -120,8 +129,20 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
                 footer={<div className="select-footer">The single select footer</div>}
             />
         </Section>
+        <Section level={3} title="A single select with a custom button">
+            <SingleSelectConnected id={ids[6]} items={defaultItems} customButton={MyCustomButton} />
+        </Section>
     </Section>
 );
+
+const MyCustomButton: React.FunctionComponent<ISelectButtonProps> = ({onClick, selectedOptions}) => {
+    const option = selectedOptions[0];
+    return (
+        <div onClick={onClick} className="btn">
+            {option ? option.displayValue : 'Click me!'}
+        </div>
+    );
+};
 
 const PER_PAGE = 10;
 
