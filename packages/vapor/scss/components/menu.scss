@@ -1,11 +1,11 @@
 .dropdown.mod-menu {
     &.header-section {
         &:hover {
-            background-color: $navigation-active-background-color;
+            background-color: $blue-purple-2;
         }
 
         &.open {
-            background-color: $navigation-active-background-color;
+            background-color: $blue-purple-2;
         }
     }
     .dropdown-toggle {
@@ -22,7 +22,7 @@
         }
     }
 
-    &.open > .dropdown-toggle .dropdown-toggle-arrow {
+    &.open .dropdown-toggle .dropdown-toggle-arrow {
         @include arrow-up-icon($pure-white);
     }
 

@@ -57,11 +57,11 @@
                 .navigation-menu-section-link {
                     border-left: $navigation-active-border-width solid transparent;
                     &:hover {
-                        background-color: $navigation-active-background-color;
+                        background-color: $blue-purple-2;
                         opacity: 1;
                     }
                     &.state-active {
-                        background-color: $navigation-active-background-color;
+                        background-color: $blue-purple-2;
                         border-left-color: $orange;
                         opacity: 1;
                     }
@@ -144,7 +144,7 @@
                         }
 
                         &.state-active {
-                            background-color: $navigation-active-background-color;
+                            background-color: $blue-purple-2;
                             border-left-color: $orange;
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
@@ -153,7 +153,7 @@
                         }
 
                         &:hover {
-                            background-color: $navigation-active-background-color;
+                            background-color: $blue-purple-2;
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;
