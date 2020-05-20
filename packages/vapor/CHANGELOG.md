@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.42.0](https://github.com/coveo/react-vapor/compare/v5.41.0...v5.42.0) (2020-05-20)
+
+
+### Features
+
+* **svg:** update copy svg ([#1553](https://github.com/coveo/react-vapor/issues/1553)) ([f36fa3c](https://github.com/coveo/react-vapor/commit/f36fa3ceab43ae4c1ffa77cf74a81b379727f66e))
+
+
+
+
+
 # [5.41.0](https://github.com/coveo/react-vapor/compare/v5.40.1...v5.41.0) (2020-05-14)
 
 
