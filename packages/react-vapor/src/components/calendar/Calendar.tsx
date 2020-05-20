@@ -36,6 +36,7 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
     selectionRules?: ICalendarSelectionRule[];
     isLinkedToDateRange?: boolean;
     simple?: boolean;
+    wrapperClassNames?: string;
 }
 
 export interface ICalendarStateProps extends IReduxStatePossibleProps {
@@ -251,9 +252,13 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             selecting: !!this.getSelectedDatePicker(),
         });
 
-        const wrapperClasses: string = classNames('calendar', {
-            'mod-width-50': !this.props.simple,
-        });
+        const wrapperClasses: string = classNames(
+            'calendar',
+            {
+                'mod-width-50': !this.props.simple,
+            },
+            this.props.wrapperClassNames
+        );
 
         return (
             <div className={wrapperClasses}>

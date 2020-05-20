@@ -301,6 +301,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 clearLabel: this.props.clearLabel,
                 simple: this.props.simple,
                 initialDateRange: this.props.initialDateRange,
+                withoutBoxResize: true,
                 onClear: () => this.handleClear(),
                 footer: (
                     <ModalFooter classes={['mod-small']}>

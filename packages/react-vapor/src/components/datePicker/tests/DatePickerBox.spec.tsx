@@ -169,7 +169,7 @@ describe('Date picker', () => {
         beforeEach(() => {
             wrapper = mount(
                 <Provider store={TestUtils.buildStore()}>
-                    <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} withReduxState />
+                    <DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} withReduxState withoutBoxResize />
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
@@ -197,6 +197,10 @@ describe('Date picker', () => {
 
         it('should display an <OptionPickerConnected />', () => {
             expect(datePickerBox.find(OptionPickerConnected).length).toBe(1);
+        });
+
+        it('should add the class calendar-max-height if withoutBoxResize is set to true', () => {
+            expect(datePickerBox.find(CalendarConnected).props().wrapperClassNames).toBe('calendar-max-height');
         });
     });
 });
