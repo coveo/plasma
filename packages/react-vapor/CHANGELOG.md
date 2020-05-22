@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.43.0](https://github.com/coveo/react-vapor/compare/v5.42.0...v5.43.0) (2020-05-22)
+
+
+### Features
+
+* **calendar:** height fix ([83e199a](https://github.com/coveo/react-vapor/commit/83e199a4cdf7f36dfe2e8b81e6816d2aa98c172f))
+
+
+
+
+
 # [5.42.0](https://github.com/coveo/react-vapor/compare/v5.41.0...v5.42.0) (2020-05-20)
 
 **Note:** Version bump only for package react-vapor
