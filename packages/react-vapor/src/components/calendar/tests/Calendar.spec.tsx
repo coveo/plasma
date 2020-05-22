@@ -556,6 +556,11 @@ describe('Calendar', () => {
                 expect(day.isSelectable).toBe(false);
             });
 
+            it('should add the custom class to the wrapper set by the prop wrapperClassNames', () => {
+                const wrapper = shallow(<Calendar wrapperClassNames="new-class" />, {});
+                expect(wrapper.find('.new-class').length).toBe(1);
+            });
+
             describe('saturday and sunday rule', () => {
                 const notSaturdayOrSunday: moment.Moment =
                     moment().isoWeekday() >= 5 ? moment().add(4, 'days') : moment().add(1, 'days');

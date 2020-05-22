@@ -33,6 +33,7 @@ export interface IDatePickerBoxOwnProps extends React.ClassAttributes<DatePicker
     simple?: boolean;
     footer?: JSX.Element;
     onClear?: () => void;
+    withoutBoxResize?: boolean;
 }
 
 export interface IDatePickerBoxStateProps extends IReduxStatePossibleProps {}
@@ -83,6 +84,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
             selectionRules: this.props.selectionRules,
             isLinkedToDateRange: this.props.isLinkedToDateRange,
             simple: this.props.simple,
+            wrapperClassNames: this.props.withoutBoxResize && 'calendar-max-height',
         };
 
         const calendar: JSX.Element = this.props.withReduxState ? (
@@ -98,7 +100,11 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
         const inside: JSX.Element = this.props.simple ? (
             calendar
         ) : (
-            <div className="flex">
+            <div
+                className={classNames('flex', {
+                    'calendar-max-height': this.props.withoutBoxResize,
+                })}
+            >
                 {calendar}
                 {this.getdatePickerRightPart()}
             </div>
