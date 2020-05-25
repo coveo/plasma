@@ -9,6 +9,7 @@ import {Svg} from '../Svg';
 describe('<LinkSvg>', () => {
     let linkSvgComponent: ReactWrapper<ILinkSvgProps, any>;
     let linkSvgProps: ILinkSvgProps;
+    const linkSvgLabel = '🍦';
 
     beforeEach(() => {
         linkSvgProps = {
@@ -37,7 +38,7 @@ describe('<LinkSvg>', () => {
         });
 
         const renderLinkSvg = (props: Partial<ILinkSvgProps> = {}) => {
-            linkSvgComponent = mount(<LinkSvg {..._.extend(linkSvgProps, props)} />, {
+            linkSvgComponent = mount(<LinkSvg {..._.extend(linkSvgProps, props)}>{linkSvgLabel}</LinkSvg>, {
                 attachTo: document.getElementById('App'),
             });
         };
@@ -84,6 +85,12 @@ describe('<LinkSvg>', () => {
             });
 
             expect(linkSvgComponent.find('a').props().href).toBeUndefined();
+        });
+
+        it('should render a custom label as child', () => {
+            renderLinkSvg();
+
+            expect(linkSvgComponent.html()).toContain(linkSvgLabel);
         });
     });
 });
