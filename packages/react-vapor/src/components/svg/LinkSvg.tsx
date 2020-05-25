@@ -23,6 +23,7 @@ export class LinkSvg extends React.Component<ILinkSvgProps, {}> {
         const href = this.props.url ? {href: this.props.url} : null;
         return (
             <a {...href} target={this.props.target} className={classes}>
+                {this.props.children}
                 <Tooltip {...this.props.tooltip}>
                     <Svg {...this.props.svg} />
                 </Tooltip>

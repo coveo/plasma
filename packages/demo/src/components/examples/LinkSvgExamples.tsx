@@ -46,6 +46,18 @@ export class LinkSvgExamples extends React.Component<any, any> {
                         <LinkSvg tooltip={defaultTooltipProps} svg={defaultSvgProps} />
                     </div>
                 </div>
+                <div className="form-group">
+                    <label className="form-control-label">LinkSvg with a custom label</label>
+                    <div className="form-control">
+                        <LinkSvg
+                            url={defaultProps.url}
+                            svg={{svgName: 'external', svgClass: 'icon mod-16 fill-blue ml1'}}
+                            linkClasses={['bold', 'caps']}
+                        >
+                            Learn more on Google
+                        </LinkSvg>
+                    </div>
+                </div>
             </div>
         );
     }
