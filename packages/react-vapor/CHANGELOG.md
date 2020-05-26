@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.44.1](https://github.com/coveo/react-vapor/compare/v5.44.0...v5.44.1) (2020-05-26)
+
+
+### Bug Fixes
+
+* **selectwithpredicate:** make matchPredicate prop optional ([2d1f487](https://github.com/coveo/react-vapor/commit/2d1f487b83ad22b053867e0537ed379b50a90fcf))
+
+
+
+
+
 # [5.44.0](https://github.com/coveo/react-vapor/compare/v5.43.0...v5.44.0) (2020-05-25)
 
 
