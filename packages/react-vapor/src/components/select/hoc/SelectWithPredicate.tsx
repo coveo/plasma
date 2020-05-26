@@ -1,3 +1,4 @@
+import * as classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
@@ -13,7 +14,7 @@ import {ISelectOwnProps} from '../SelectConnected';
 
 export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
-    matchPredicate: (predicate: string, item: IItemBoxProps) => boolean;
+    matchPredicate?: (predicate: string, item: IItemBoxProps) => boolean;
 }
 const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
 
@@ -49,7 +50,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
             <Component {..._.omit(props, SelectWithPredicatePropsToOmit)}>
                 <FlatSelectConnected
                     id={props.id}
-                    classes={['full-content-x']}
+                    classes={[classNames('full-content-x', {mb2: !!props.children})]}
                     options={props.options}
                     group
                     optionPicker
