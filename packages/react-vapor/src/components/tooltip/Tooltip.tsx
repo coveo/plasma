@@ -4,6 +4,10 @@ import ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 import {Defaults} from '../../Defaults';
 
+export function tooltipReactInstance() {
+    return React;
+}
+
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
 export interface IOverlayTriggerProps {
     animation?: any;
