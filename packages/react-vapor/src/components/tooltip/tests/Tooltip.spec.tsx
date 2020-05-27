@@ -3,7 +3,7 @@ import React from 'react';
 import {OverlayTrigger} from 'react-bootstrap';
 import ReactDOM from 'react-dom';
 import * as _ from 'underscore';
-import {ITooltipProps, Tooltip} from '../Tooltip';
+import {ITooltipProps, Tooltip, tooltipReactInstance} from '../Tooltip';
 
 describe('Tooltip', () => {
     let tooltipWrapper: ShallowWrapper<ITooltipProps>;
@@ -110,7 +110,7 @@ describe('Tooltip', () => {
             el = document.createElement('div');
             customRef = React.createRef();
 
-            spyOn(React, 'createRef').and.returnValue(customRef);
+            spyOn(tooltipReactInstance(), 'createRef').and.returnValue(customRef);
             findDOMNodeSpy = spyOn(ReactDOM, 'findDOMNode').and.returnValue(el);
             containsSpy = spyOn(document.body, 'contains').and.returnValue(false);
             appendChildSpy = spyOn(document.body, 'appendChild');
