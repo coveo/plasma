@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 
 export const DEFAULT_CORNER_RIBBON_CLASSNAME = 'corner-ribbon';

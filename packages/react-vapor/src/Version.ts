@@ -1,4 +1,3 @@
-// WEBPACK_DEFINED_VERSION is a variable defined in the webpack.config.js file
+// process.env.REACT_VAPOR_VERSION is a variable defined in bundler files: webpack.config.js, rollup.config.js
 // The version is loaded from the package.json and exported
-declare const WEBPACK_DEFINED_VERSION: string;
-export const version = WEBPACK_DEFINED_VERSION;
+export const version = process.env.REACT_VAPOR_VERSION;

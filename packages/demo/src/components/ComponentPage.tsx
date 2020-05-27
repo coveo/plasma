@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as Markdown from 'react-markdown';
+import Markdown from 'react-markdown';
 import {BasicHeader, ITabProps, Loading, TabContent, TabPaneConnected} from 'react-vapor';
 
 import Code from '../demo-building-blocs/Code';

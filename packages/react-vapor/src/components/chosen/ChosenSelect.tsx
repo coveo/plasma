@@ -1,5 +1,5 @@
 import 'chosen-js'; // Clean way to make Webpack import something that is not a module
-import * as $ from 'jquery';
+import $ from 'jquery';
 import * as React from 'react';
 import * as _ from 'underscore';
 

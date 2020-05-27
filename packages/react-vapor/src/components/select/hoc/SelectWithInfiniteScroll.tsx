@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 
 import {Loading} from '../../loading/Loading';

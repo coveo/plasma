@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 import {DropPodPosition} from '../../drop/DomPositionCalculator';
 
 import {DropPod} from '../../drop/DropPod';

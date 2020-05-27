@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as moment from 'moment';
+import moment from 'moment';
 import * as React from 'react';
 
 export interface ILastUpdatedOwnProps extends React.ClassAttributes<LastUpdated> {

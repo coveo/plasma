@@ -1,4 +1,4 @@
-import * as moment from 'moment';
+import moment from 'moment';
 import * as _ from 'underscore';
 import {IDay} from '../components/calendar/CalendarDay';
 

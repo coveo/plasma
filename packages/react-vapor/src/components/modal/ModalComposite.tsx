@@ -1,6 +1,6 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 import {connect} from 'react-redux';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';

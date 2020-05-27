@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import {JSXRenderable} from '../../../utils/JSXUtils';
 import {ITableHeadingAttribute, ITableProps} from '../Table';

@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 import {ISvgProps, Svg} from './Svg';

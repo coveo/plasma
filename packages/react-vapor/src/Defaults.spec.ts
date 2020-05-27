@@ -1,4 +1,4 @@
-import * as ReactModal from 'react-modal';
+import ReactModal from 'react-modal';
 
 import {Defaults} from './Defaults';
 

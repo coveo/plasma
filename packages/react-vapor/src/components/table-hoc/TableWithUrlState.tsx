@@ -1,6 +1,6 @@
-import * as React from 'react';
+import React from 'react';
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
+import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, IThunkAction} from '../../utils/ReduxUtils';
@@ -51,7 +51,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
         static displayName = `withUrlState(${Component.displayName})`;
 
         render() {
-            const wrappedProps = _.omit(this.props, 'onUpdate', 'onUpdateUrl', 'query', 'initializeFromUrl');
+            const wrappedProps = omit(this.props, 'onUpdate', 'onUpdateUrl', 'query', 'initializeFromUrl');
             return <Component {...(wrappedProps as P)} onUpdate={this.onUpdate} />;
         }
 
@@ -64,7 +64,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
             this.props.onUpdate?.();
         };
 
-        private updateUrl = _.debounce(this.props.onUpdateUrl || _.noop, 100);
+        private updateUrl = debounce(this.props.onUpdateUrl || noop, 100);
     }
 
     return connect(
@@ -77,9 +77,9 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
 function getQuery(state: IReactVaporState, tableId: string): string {
     let order: SortOrderValues.ascending | SortOrderValues.descending;
     const tableState = TableHOCUtils.getCompositeState(tableId, state);
-    const [from, to] = _.map(tableState.dateLimits, (limit) => limit && limit.toISOString());
+    const [from, to] = map(tableState.dateLimits, (limit) => limit && limit.toISOString());
 
-    if (_.isBoolean(tableState.sortAscending)) {
+    if (isBoolean(tableState.sortAscending)) {
         order = tableState.sortAscending ? SortOrderValues.ascending : SortOrderValues.descending;
     }
 
@@ -89,7 +89,7 @@ function getQuery(state: IReactVaporState, tableId: string): string {
         [Params.pageSize]: tableState.perPage,
         [Params.sortKey]: tableState.sortKey,
         [Params.sortOrder]: order,
-        ..._.reduce(
+        ...reduce(
             tableState.predicates,
             (memo, {id, value}: ITableHOCPredicateValue) => ({
                 ...memo,

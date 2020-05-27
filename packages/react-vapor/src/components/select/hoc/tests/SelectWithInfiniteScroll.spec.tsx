@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import * as InfiniteScroll from 'react-infinite-scroll-component';
+import InfiniteScroll from 'react-infinite-scroll-component';
 
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';

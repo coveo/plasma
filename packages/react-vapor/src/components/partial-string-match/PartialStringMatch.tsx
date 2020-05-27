@@ -1,4 +1,4 @@
-import * as escapeRegExp from 'escape-string-regexp';
+import escapeRegExp from 'escape-string-regexp';
 import * as React from 'react';
 
 export interface PartialStringMatchProps {

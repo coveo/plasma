@@ -1,7 +1,7 @@
-import * as classNames from 'classnames';
-import * as React from 'react';
+import classNames from 'classnames';
+import React from 'react';
 import {keys} from 'ts-transformer-keys';
-import * as _ from 'underscore';
+import {defer, omit} from 'underscore';
 
 import {keyCode} from '../../utils/InputUtils';
 
@@ -47,7 +47,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
     // the last opened modal after the last one was closed on escape
     componentDidUpdate() {
         this.canClose = false;
-        _.defer(() => (this.canClose = this.props.lastOpened));
+        defer(() => (this.canClose = this.props.lastOpened));
     }
 
     componentWillUnmount() {
@@ -68,7 +68,7 @@ export class ModalBackdrop extends React.Component<IModalBackdropAllProps> {
 
         return (
             <div
-                {..._.omit(this.props, ModalBackdropPropsToOmit)}
+                {...omit(this.props, ModalBackdropPropsToOmit)}
                 className={classNames(this.props.className, classes)}
                 onClick={() => this.handleClick()}
             >

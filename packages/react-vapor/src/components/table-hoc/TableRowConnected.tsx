@@ -1,4 +1,4 @@
-import * as classNames from 'classnames';
+import classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
@@ -195,7 +195,7 @@ class TableRowConnected extends React.PureComponent<
     };
 
     private handleDoubleClick = () => {
-        _(this.props.actions)
+        _.chain(this.props.actions)
             .filter((action: IActionOptions) => action.callOnDoubleClick)
             .forEach((action: IActionOptions) => {
                 if (action.link) {

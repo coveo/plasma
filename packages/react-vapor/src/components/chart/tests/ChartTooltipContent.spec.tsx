@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import * as React from 'react';
+import React from 'react';
 
 import {ChartTooltipContent} from '../ChartTooltipContent';
 import {XYChartContextMock} from './XYChartContextMock';
