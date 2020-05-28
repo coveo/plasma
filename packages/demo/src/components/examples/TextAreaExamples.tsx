@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Label, setDisabledTextArea, TextAreaConnected, TextAreaLabel} from 'react-vapor';
+import {Label, setDisabledTextArea, TextAreaConnected} from 'react-vapor';
 import {findWhere} from 'underscore';
 
 import {Store} from '../../Store';
