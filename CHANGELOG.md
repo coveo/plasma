@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.45.1](https://github.com/coveo/react-vapor/compare/v5.45.0...v5.45.1) (2020-05-28)
+
+
+### Bug Fixes
+
+* **tooltip:** import * as React from react ([366e103](https://github.com/coveo/react-vapor/commit/366e10316c83ca35bd7ea0e18855a2c7ce1dcd84))
+
+
+
+
+
 # [5.45.0](https://github.com/coveo/react-vapor/compare/v5.44.2...v5.45.0) (2020-05-28)
 
 
