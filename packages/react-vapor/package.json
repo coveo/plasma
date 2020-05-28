@@ -15,14 +15,15 @@
     "license": "Apache-2.0",
     "main": "dist/react-vapor.js",
     "module": "dist/react-vapor.esm.js",
-    "types": "dist/definitions/src/Entry.d.ts",
+    "types": "dist/definitions/Entry.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/react-vapor.git"
     },
     "scripts": {
-        "start": "webpack --watch",
-        "build": "gulp clean && concurrently \"webpack\" \"npm run build:esm\"",
+        "start": "npx rollup -cw",
+        "build": "gulp clean && concurrently \"npm run build:umd\" \"npm run build:esm\"",
+        "build:umd": "webpack",
         "build:esm": "npx rollup -c",
         "pretest": "gulp clean:tests",
         "test": "karma start",

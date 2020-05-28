@@ -75,6 +75,7 @@ const config = {
                 test: /\.tsx?$/,
                 loader: 'ts-loader',
                 options: {
+                    transpileOnly: true,
                     configFile: 'tsconfig.build.json',
                     getCustomTransformers: (program) => ({
                         before: [keysTransformer(program)],

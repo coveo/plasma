@@ -1,11 +1,11 @@
-import typescript from 'rollup-plugin-typescript2';
-import postcss from 'rollup-plugin-postcss';
 import commonjs from '@rollup/plugin-commonjs';
-import resolve from '@rollup/plugin-node-resolve';
-import keysTransformer from 'ts-transformer-keys/transformer';
-import scssVariable from 'rollup-plugin-sass-variables';
-import replace from '@rollup/plugin-replace';
 import inject from '@rollup/plugin-inject';
+import resolve from '@rollup/plugin-node-resolve';
+import replace from '@rollup/plugin-replace';
+import postcss from 'rollup-plugin-postcss';
+import scssVariable from 'rollup-plugin-sass-variables';
+import typescript from 'rollup-plugin-typescript2';
+import keysTransformer from 'ts-transformer-keys/transformer';
 
 export default {
     input: 'src/Entry.ts',
@@ -58,6 +58,8 @@ function tsPlugin() {
                 after: [],
             }),
         ],
+        tsconfig: 'tsconfig.build.json',
+        useTsconfigDeclarationDir: true,
     });
 }
 
