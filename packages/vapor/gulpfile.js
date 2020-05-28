@@ -142,7 +142,7 @@ function Dictionary(from) {
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
             const svgString = JSON.stringify(that.json[key]);
-            const unformattedKey = key.startsWith('ft-') ? key.slice(3) : key;
+            const unformattedKey = key.startsWith('ft-') ? key.replace('ft-', 'coveo-search-ui-filetypes/') : key;
 
             code += svgTemplate(camelizedKey, svgString, unformattedKey);
         });
