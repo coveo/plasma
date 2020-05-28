@@ -121,9 +121,10 @@ gulp.task('sprites', () => {
         .pipe(gulp.dest('scss'));
 });
 
-const svgTemplate = (key, svgString) => `
+const svgTemplate = (key, svgString, unformattedKey) => `
     ${key}: {
         name: "${key}",
+        fileName: "${unformattedKey}.svg",
         svgString: ${svgString},
         render: function(svgClass, spanClass, title, attr){ return svgWrapper(svg.${key}.svgString, svgClass, spanClass, title, attr)},
     },`;
@@ -141,7 +142,9 @@ function Dictionary(from) {
         _.each(_.keys(this.json), (key) => {
             const camelizedKey = s.camelize(key);
             const svgString = JSON.stringify(that.json[key]);
-            code += svgTemplate(camelizedKey, svgString);
+            const unformattedKey = key.startsWith('ft-') ? key.slice(3) : key;
+
+            code += svgTemplate(camelizedKey, svgString, unformattedKey);
         });
         code += '\n};';
 
