@@ -46,6 +46,12 @@ export class ListBoxExamples extends React.Component {
                     </div>
                 </div>
                 <div className="form-group">
+                    <label className="form-control-label">Loading List Box</label>
+                    <div className="form-control">
+                        <ListBox items={defaultItems} isLoading />
+                    </div>
+                </div>
+                <div className="form-group">
                     <label className="form-control-label">List Box with no items</label>
                     <div className="form-control">
                         <ListBox items={[]} noResultItem={{value: 'no items'}} />

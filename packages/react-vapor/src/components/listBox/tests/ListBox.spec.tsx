@@ -2,6 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {ItemBox} from '../../itemBox/ItemBox';
+import {ItemBoxLoading} from '../../loading/components/ItemBoxLoading';
 import {IListBoxProps, ListBox} from '../ListBox';
 
 describe('ListBox', () => {
@@ -156,6 +157,16 @@ describe('ListBox', () => {
                     .childAt(0)
                     .hasClass('wrapping-those-items-real-hard')
             ).toBe(true);
+        });
+
+        it('should render 7 ItemBoxLoading components when isLoading prop is true', () => {
+            const listItems = shallow(<ListBox {...defaultProps} isLoading />)
+                .find('ul.list-box')
+                .children();
+            expect(listItems.length).toBe(7);
+            listItems.forEach((item) => {
+                expect(item.type()).toBe(ItemBoxLoading);
+            });
         });
     });
 });

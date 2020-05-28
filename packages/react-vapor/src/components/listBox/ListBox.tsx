@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 
 import {mod} from '../../utils/DataStructuresUtils';
 import {IItemBoxProps, ItemBox} from '../itemBox/ItemBox';
+import {ItemBoxLoading} from '../loading/components/ItemBoxLoading';
 
 export type IItemBoxPropsWithIndex = {index?: number} & IItemBoxProps;
 
@@ -15,6 +16,7 @@ export interface IListBoxOwnProps {
     items?: IItemBoxProps[];
     wrapItems?: (items: React.ReactNode) => React.ReactNode;
     footer?: React.ReactNode;
+    isLoading?: boolean;
 }
 
 export interface IListBoxStateProps {
@@ -106,11 +108,26 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
         return _.isEmpty(items) ? emptyItem : items;
     }
 
+    private getLoadingItems(): React.ReactNode {
+        return (
+            <>
+                <ItemBoxLoading />
+                <ItemBoxLoading />
+                <ItemBoxLoading />
+                <ItemBoxLoading />
+                <ItemBoxLoading />
+                <ItemBoxLoading />
+                <ItemBoxLoading />
+            </>
+        );
+    }
+
     render() {
+        const items = this.props.isLoading ? this.getLoadingItems() : this.getItems();
         return (
             <>
                 <ul className={this.getClasses()} id={this.props.id}>
-                    {this.props.wrapItems(this.getItems())}
+                    {this.props.wrapItems(items)}
                 </ul>
                 {this.props.footer}
             </>

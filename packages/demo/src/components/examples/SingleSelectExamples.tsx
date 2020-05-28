@@ -57,6 +57,7 @@ const ids = [
     UUID.generate(),
     UUID.generate(),
     UUID.generate(),
+    UUID.generate(),
 ];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
@@ -131,6 +132,14 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
         </Section>
         <Section level={3} title="A single select with a custom button">
             <SingleSelectConnected id={ids[6]} items={defaultItems} customButton={MyCustomButton} />
+        </Section>
+        <Section level={3} title="A single select with items loading">
+            <SingleSelectWithPredicateAndFilter
+                id={ids[7]}
+                isLoading
+                matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
+                options={defaultFlatSelectOptions}
+            />
         </Section>
     </Section>
 );
