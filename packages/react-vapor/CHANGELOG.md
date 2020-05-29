@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.45.3](https://github.com/coveo/react-vapor/compare/v5.45.2...v5.45.3) (2020-05-29)
+
+
+### Bug Fixes
+
+* **commonjs:** remove transpileOnly option in webpack build ([6975562](https://github.com/coveo/react-vapor/commit/6975562c3106a06034b34482d9f706972b763137))
+
+
+
+
+
 ## [5.45.2](https://github.com/coveo/react-vapor/compare/v5.45.1...v5.45.2) (2020-05-29)
 
 **Note:** Version bump only for package react-vapor
