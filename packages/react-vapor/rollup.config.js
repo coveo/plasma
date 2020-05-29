@@ -58,8 +58,14 @@ function tsPlugin() {
                 after: [],
             }),
         ],
-        tsconfig: 'tsconfig.build.json',
         useTsconfigDeclarationDir: true,
+        tsconfig: 'tsconfig.build.json',
+        tsconfigOverride: {
+            compilerOptions: {
+                declaration: true,
+                declarationDir: 'dist/definitions',
+            },
+        },
     });
 }
 
