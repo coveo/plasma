@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.47.0](https://github.com/coveo/react-vapor/compare/v5.46.0...v5.47.0) (2020-06-01)
+
+
+### Features
+
+* **randomutils:** implement random utils ([070d74f](https://github.com/coveo/react-vapor/commit/070d74f5f03b6a12d5a6c92865db5000fdb33037))
+
+
+
+
+
 # [5.46.0](https://github.com/coveo/react-vapor/compare/v5.45.3...v5.46.0) (2020-06-01)
 
 **Note:** Version bump only for package react-vapor
