@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.49.0](https://github.com/coveo/react-vapor/compare/v5.48.0...v5.49.0) (2020-06-01)
+
+
+### Features
+
+* **single-select-loading:** implement a selectWithLoading HOC ([6f39100](https://github.com/coveo/react-vapor/commit/6f39100f8367630221d01b2267a01d9b43537bb0))
+
+
+
+
+
 # [5.48.0](https://github.com/coveo/react-vapor/compare/v5.47.0...v5.48.0) (2020-06-01)
 
 **Note:** Version bump only for package react-vapor
