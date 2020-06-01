@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.46.0](https://github.com/coveo/react-vapor/compare/v5.45.3...v5.46.0) (2020-06-01)
+
+
+### Features
+
+* **iconslist:** add link to icons ([#1560](https://github.com/coveo/react-vapor/issues/1560)) ([c708381](https://github.com/coveo/react-vapor/commit/c7083817ef71c692e60eee9b174df8c69eae3b82))
+
+
+
+
+
 ## [5.45.3](https://github.com/coveo/react-vapor/compare/v5.45.2...v5.45.3) (2020-05-29)
 
 
