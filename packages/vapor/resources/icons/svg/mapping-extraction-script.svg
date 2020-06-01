@@ -1,13 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="16px" height="16px" fill="#82617F" viewBox="0 0 16 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
-    <rect x="0" y="0" width="16" height="16" rx="3"></rect>
-    <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g sketch:type="MSArtboardGroup" transform="translate(-16.000000, -16.000000)">
-            <g sketch:type="MSLayerGroup" transform="translate(16.000000, 16.000000)">
-                <path d="M8.116,11.629 L8.116,10.247 L11.544,8.899 L8.116,7.566 L8.116,6.194 L13.028,8.318 L13.028,9.49 L8.116,11.629 L8.116,11.629 Z" fill="#FFFFFF" sketch:type="MSShapeGroup" ></path>
-                <path d="M2.734,12.156 L6.437,3.875 L7.718,3.875 L4.03,12.156 L2.734,12.156 L2.734,12.156 Z" fill="#FFFFFF" sketch:type="MSShapeGroup"></path>
-                <path d="M14.1401539,0.00607362886 C13.7051138,0.594896471 6.02995703,12.4642215 4,15.6867567 L13.0606573,15.6867567 C14.7187216,15.6867567 16.0628483,14.3501256 16.0628483,12.6772791 L16.0628483,2.69623431 C16.0628483,1.03414572 14.737967,-0.0932098761 14.1401539,0.00607362886 L14.1401539,0.00607362886 Z" opacity="0.160000011" fill="#000000" sketch:type="MSShapeGroup" ></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg fill="#82617f" height="16" viewBox="0 0 16 16" width="16" xmlns="http://www.w3.org/2000/svg"><rect height="16" rx="3" width="16"/><g fill="none" fill-rule="evenodd"><path d="m8.116 11.629v-1.382l3.428-1.348-3.428-1.333v-1.372l4.912 2.124v1.172z" fill="#fff"/><path d="m2.734 12.156 3.703-8.281h1.281l-3.688 8.281z" fill="#fff"/><path d="m14.1401539.00607363c-.4350401.58882284-8.11019687 12.45814787-10.1401539 15.68068307h9.0606573c1.6580643 0 3.002191-1.3366311 3.002191-3.0094776v-9.98104479c0-1.66208859-1.3248813-2.78944419-1.9226944-2.69016068z" fill="#000" opacity=".16"/></g></svg>
