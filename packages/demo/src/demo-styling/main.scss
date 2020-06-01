@@ -99,6 +99,7 @@
     flex-wrap: wrap;
     justify-content: center;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+
     li {
         display: inline-block;
         width: 100px;
@@ -109,9 +110,14 @@
             background-color: $grey-3;
         }
 
-        div {
-            margin-top: 20px;
+        a {
+            display: flex;
+            flex-direction: column-reverse;
+            justify-content: flex-end;
+            height: 100%;
+            padding-top: 20px;
             text-align: center;
+
             svg {
                 width: 45px;
                 height: 45px;
