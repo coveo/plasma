@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../../ReactVapor';
-import {FlatSelectConnected} from '../../flatSelect/FlatSelectConnected';
+import {FlatSelectConnected} from '../../flatSelect';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -15,6 +15,7 @@ import {ISelectOwnProps} from '../SelectConnected';
 export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
     matchPredicate?: (predicate: string, item: IItemBoxProps) => boolean;
+    initiallySelectedPredicateId?: string;
 }
 const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
 
@@ -25,7 +26,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
     function mapStateToProps(state: IReactVaporState, ownProps: OwnProps) {
-        const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id}) || ownProps.options[0].id;
+        const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id});
 
         const items = ownProps.isServer
             ? ownProps.items
@@ -54,6 +55,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
                     options={props.options}
                     group
                     optionPicker
+                    defaultSelectedOptionId={props.initiallySelectedPredicateId}
                 />
                 {props.children}
             </Component>

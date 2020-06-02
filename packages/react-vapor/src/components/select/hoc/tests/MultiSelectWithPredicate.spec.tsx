@@ -202,14 +202,14 @@ describe('Select', () => {
                     {attachTo: document.getElementById('App')}
                 );
 
-                expect(onUpdateSpy).toHaveBeenCalledTimes(1);
+                onUpdateSpy.calls.reset();
 
-                store.dispatch(toggleSelect(id, true));
                 act(() => {
+                    store.dispatch(toggleSelect(id, true));
                     store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
                 });
 
-                expect(onUpdateSpy).toHaveBeenCalledTimes(2);
+                expect(onUpdateSpy).toHaveBeenCalledTimes(1);
             });
         });
     });

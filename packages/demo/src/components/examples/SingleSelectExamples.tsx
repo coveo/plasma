@@ -105,6 +105,7 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
                 items={itemsWithAppendedValue}
                 options={defaultFlatSelectOptions}
                 matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
+                initiallySelectedPredicateId={defaultFlatSelectOptions[1].id}
             />
         </Section>
         <Section level={3} title="A single select with filter">
