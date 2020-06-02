@@ -1,7 +1,13 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
+
+import {IDispatch} from '../../utils';
+import {addFlatSelect, removeFlatSelect, selectFlatSelect} from './FlatSelectActions';
 import {FlatSelectOption, IFlatSelectOptionProps} from './FlatSelectOption';
+import {FlatSelectSelectors} from './FlatSelectSelectors';
 
 export interface IFlatSelectOwnProps {
     id: string;
@@ -15,62 +21,68 @@ export interface IFlatSelectOwnProps {
     classes?: string[] /* @deprecated use className instead */;
 }
 
-export interface IFlatSelectStateProps {
-    selectedOptionId?: string;
-}
+export type IFlatSelectProps = IFlatSelectOwnProps &
+    ReturnType<typeof mapStateToProps> &
+    ReturnType<typeof mapDispatchToProps>;
 
-export interface IFlatSelectDispatchProps {
-    onRender?: () => void;
-    onDestroy?: () => void;
-    onOptionClick?: (option: IFlatSelectOptionProps) => void;
-}
+export const FlatSelect: React.FunctionComponent<IFlatSelectProps> = ({
+    onDestroy,
+    onRender,
+    onOptionClick,
+    onClick,
+    options,
+    disabled,
+    selectedOptionId,
+    group,
+    optionPicker,
+    classes,
+    className,
+}) => {
+    React.useEffect(() => {
+        onRender?.();
+        return onDestroy;
+    }, []);
 
-export interface IFlatSelectProps extends IFlatSelectOwnProps, IFlatSelectStateProps, IFlatSelectDispatchProps {}
+    const handleClick = (option: IFlatSelectOptionProps) => {
+        onOptionClick?.(option);
+        onClick?.(option);
+    };
 
-export class FlatSelect extends React.Component<IFlatSelectProps> {
-    componentWillMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
-    }
+    const choices = _.map(options, (flatSelectOption: IFlatSelectOptionProps) => (
+        <FlatSelectOption
+            key={flatSelectOption.id}
+            {...flatSelectOption}
+            onClick={handleClick}
+            disabled={disabled}
+            selected={selectedOptionId === flatSelectOption.id}
+        />
+    ));
 
-    componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
-    }
+    return (
+        <div
+            className={classNames(
+                'flat-select',
+                {
+                    'mod-btn-group': group,
+                    'mod-option-picker': optionPicker,
+                },
+                classes,
+                className
+            )}
+        >
+            {choices}
+        </div>
+    );
+};
 
-    private handleOnOptionClick(option: IFlatSelectOptionProps) {
-        if (this.props.onOptionClick) {
-            this.props.onOptionClick(option);
-        }
+const mapStateToProps = createStructuredSelector({
+    selectedOptionId: FlatSelectSelectors.getSelectedOptionId,
+});
 
-        if (this.props.onClick) {
-            this.props.onClick(option);
-        }
-    }
+const mapDispatchToProps = (dispatch: IDispatch, {id, options, defaultSelectedOptionId}: IFlatSelectOwnProps) => ({
+    onRender: () => dispatch(addFlatSelect(id, defaultSelectedOptionId || options?.[0].id)),
+    onDestroy: () => dispatch(removeFlatSelect(id)),
+    onOptionClick: (selectedOption: IFlatSelectOptionProps) => dispatch(selectFlatSelect(id, selectedOption.id)),
+});
 
-    private getOptions(): JSX.Element[] {
-        return _.map(this.props.options, (flatSelectOption: IFlatSelectOptionProps, index: number) => {
-            flatSelectOption.selected =
-                this.props.selectedOptionId && this.props.selectedOptionId === flatSelectOption.id;
-            flatSelectOption.onClick = (option: IFlatSelectOptionProps) => this.handleOnOptionClick(option);
-
-            return <FlatSelectOption key={index} {...flatSelectOption} disabled={this.props.disabled} />;
-        });
-    }
-
-    render() {
-        const classes: string = classNames(
-            'flat-select',
-            {
-                'mod-btn-group': this.props.group,
-                'mod-option-picker': this.props.optionPicker,
-            },
-            this.props.classes,
-            this.props.className
-        );
-
-        return <div className={classes}>{this.getOptions()}</div>;
-    }
-}
+export const FlatSelectConnected = connect(mapStateToProps, mapDispatchToProps)(FlatSelect);
