@@ -14,7 +14,7 @@ export interface IWithNonEmptyValueInputValidationProps {
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
     setError: (id: string, error: string) => dispatch(ValidationActions.setError(id, error, ValidationTypes.nonEmpty)),
-    clearError: (id: string) => dispatch(ValidationActions.clearError(id)),
+    clearError: (id: string) => dispatch(ValidationActions.clearError(id, ValidationTypes.nonEmpty)),
 });
 
 export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
