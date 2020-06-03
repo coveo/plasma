@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.49.1](https://github.com/coveo/react-vapor/compare/v5.49.0...v5.49.1) (2020-06-03)
+
+
+### Bug Fixes
+
+* **nonemptyhoc:** clearError not clearing the right id ([#1568](https://github.com/coveo/react-vapor/issues/1568)) ([9b1b812](https://github.com/coveo/react-vapor/commit/9b1b8125a6e286c815a0b79a47e11341ca6423e7))
+
+
+
+
+
 # [5.49.0](https://github.com/coveo/react-vapor/compare/v5.48.0...v5.49.0) (2020-06-01)
 
 
