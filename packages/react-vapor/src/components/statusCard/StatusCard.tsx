@@ -6,6 +6,7 @@ import {Svg} from '../svg/Svg';
 import * as styles from './styles/StatusCard.scss';
 
 export interface StatusCardProps {
+    className?: string;
     color: string;
     title: string;
     icon?: string;
@@ -15,7 +16,7 @@ export interface StatusCardProps {
 
 export class StatusCard extends React.Component<StatusCardProps> {
     render() {
-        const cardClasses: string = classNames(styles.statusCard, 'flex', {
+        const cardClasses: string = classNames(this.props.className, styles.statusCard, 'flex', {
             simple: this.props.simple,
             [`border-left-color-${this.props.color}`]: !this.props.loading,
         });
