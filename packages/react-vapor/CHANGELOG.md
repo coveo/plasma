@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.50.0](https://github.com/coveo/react-vapor/compare/v5.49.1...v5.50.0) (2020-06-03)
+
+
+### Features
+
+* **multiselect:** implement dirty hoc ([#1569](https://github.com/coveo/react-vapor/issues/1569)) ([8f9bdb5](https://github.com/coveo/react-vapor/commit/8f9bdb5e7490d4953486bef84037e241199ef479))
+* **status card:** added classname prop to the component ([c03d743](https://github.com/coveo/react-vapor/commit/c03d7430db5e39bb0ca0c3095750d80d8bf4b8aa))
+
+
+
+
+
 ## [5.49.1](https://github.com/coveo/react-vapor/compare/v5.49.0...v5.49.1) (2020-06-03)
 
 
