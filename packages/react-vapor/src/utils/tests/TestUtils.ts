@@ -101,3 +101,6 @@ export const triggerAlertFunction = () => {
 
 export type ReactVaporMockStore = MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
 export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch<IReactVaporState>>([thunk]);
+export const composeMockStore = (
+    ...functions: Array<(state: Partial<IReactVaporState>) => Partial<IReactVaporState>>
+) => getStoreMock(_.compose(...functions) as IReactVaporState);
