@@ -8,8 +8,7 @@
         "start": "webpack-dev-server",
         "build": "webpack",
         "precommit": "lint-staged",
-        "snyk-protect": "snyk protect",
-        "prepublish": "npm run snyk-protect"
+        "snyk-protect": "snyk protect"
     },
     "author": "Coveo",
     "license": "Apache-2.0",
