@@ -17,7 +17,7 @@ export function selectWithInfiniteScroll<P extends Omit<ISelectOwnProps, 'button
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;
 
-        function itemsWrapper(items: React.ReactNode): React.ReactNode {
+        function itemsWrapper(items: React.ReactNode[]): React.ReactNode {
             return (
                 <InfiniteScroll
                     dataLength={dataLength}
@@ -27,6 +27,7 @@ export function selectWithInfiniteScroll<P extends Omit<ISelectOwnProps, 'button
                     scrollableTarget={props.id}
                     scrollThreshold={1}
                     style={{overflow: 'initial'}}
+                    hasChildren={items.length > 0 || props.isLoading}
                 >
                     {items}
                 </InfiniteScroll>
