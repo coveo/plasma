@@ -35,7 +35,7 @@
         "react-router-dom": "5.0.1",
         "react-syntax-highlighter": "12.2.1",
         "react-vapor": "^5.50.1",
-        "redux": "4.0.1",
+        "redux": "4.0.5",
         "redux-devtools-extension": "2.13.8",
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.3.0",
