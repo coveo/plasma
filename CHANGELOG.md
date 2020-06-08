@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.51.0](https://github.com/coveo/react-vapor/compare/v5.50.1...v5.51.0) (2020-06-08)
+
+
+### Features
+
+* **icons/svg:** added star.svg for abTest overview ([72304e8](https://github.com/coveo/react-vapor/commit/72304e85c3e2d4df30227f5c15a3e594df904cd8))
+
+
+
+
+
 ## [5.50.1](https://github.com/coveo/react-vapor/compare/v5.50.0...v5.50.1) (2020-06-04)
 
 **Note:** Version bump only for package root
