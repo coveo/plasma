@@ -5,6 +5,7 @@ import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
+import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DnDUtils} from '../dragAndDrop/DnDUtils';
 import {
@@ -183,7 +184,15 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                 .value();
         }
 
-        return this.props.items.filter((option: IItemBoxProps) => _.contains(this.props.selected, option.value));
+        const selectedItemsWithoutCustom: IItemBoxProps[] = this.props.items.filter((option: IItemBoxProps) =>
+            _.contains(this.props.selected, option.value)
+        );
+        const selectedItemsWithoutCustomItems: string[] = convertItemsBoxToStringList(selectedItemsWithoutCustom);
+        const customItemsValues: string[] = _.difference(this.props.selected, selectedItemsWithoutCustomItems);
+        const customItems: IItemBoxProps[] = convertStringListToItemsBox(customItemsValues);
+        const selectedItems: IItemBoxProps[] = selectedItemsWithoutCustom.concat(customItems);
+
+        return selectedItems;
     }
 }
 
