@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.51.1](https://github.com/coveo/react-vapor/compare/v5.51.0...v5.51.1) (2020-06-08)
+
+
+### Bug Fixes
+
+* **select:** remove dotted loading from select infinite scroll ([0bc9592](https://github.com/coveo/react-vapor/commit/0bc9592314da820e92011eb01e5e187e9dfb7484))
+
+
+
+
+
 # [5.51.0](https://github.com/coveo/react-vapor/compare/v5.50.1...v5.51.0) (2020-06-08)
 
 
