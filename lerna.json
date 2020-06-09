@@ -1,6 +1,9 @@
 {
-    "packages": ["packages/*"],
-    "version": "5.50.1",
+    "packages": [
+        "packages/*"
+    ],
+    "version": "5.51.1",
+  
     "command": {
         "publish": {
             "conventionalCommits": true,
