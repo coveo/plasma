@@ -23,7 +23,7 @@
         "codemirror": "5.52.0",
         "coveo-styleguide": "^5.51.0",
         "d3": "3.5.17",
-        "diff2html": "3.1.2",
+        "diff2html": "3.1.7",
         "faker": "4.1.0",
         "jquery": "3.5.0",
         "lorem-ipsum": "2.0.3",
