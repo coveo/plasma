@@ -11,6 +11,7 @@ import {SelectedOption} from '../../dropdownSearch/MultiSelectDropdownSearch/Sel
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
 import {ISelectOwnProps, SelectConnected} from '../SelectConnected';
+import {SelectSelector} from '../SelectSelector';
 
 describe('Select', () => {
     describe('<MultiSelectConnected />', () => {
@@ -112,6 +113,41 @@ describe('Select', () => {
                     .at(1)
                     .props().value
             ).toBe(secondSelected);
+        });
+
+        it('should contains a SelectedOption for a selected custom value', () => {
+            const customValue = 'b';
+            spyOn(SelectSelector, 'getMultiSelectSelectedValues').and.returnValue(['a', customValue]);
+            mountMultiSelect([]);
+
+            expect(
+                multiSelect
+                    .find(SelectedOption)
+                    .at(1)
+                    .props().value
+            ).toBe(customValue);
+        });
+
+        it('should contains SelectedOptions for selected custom values and selected listBox items', () => {
+            const itemSelected = 'dis 1';
+            const customValue: string = 'c';
+
+            spyOn(SelectSelector, 'getMultiSelectSelectedValues').and.returnValue([itemSelected, customValue]);
+            mountMultiSelect([{value: 'b'}, {value: itemSelected, selected: true}]);
+
+            expect(multiSelect.find(SelectedOption).length).toBe(2);
+            expect(
+                multiSelect
+                    .find(SelectedOption)
+                    .at(0)
+                    .props().value
+            ).toBe(itemSelected);
+            expect(
+                multiSelect
+                    .find(SelectedOption)
+                    .at(1)
+                    .props().value
+            ).toBe(customValue);
         });
 
         it('should disable the dropdown if there is no options', () => {
