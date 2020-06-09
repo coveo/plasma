@@ -249,51 +249,6 @@ describe('Select', () => {
                 wrapper.update();
             };
 
-            it('should not add a button with the filter if customValue is false', () => {
-                mountSingleSelect({items, matchFilter: () => false});
-
-                expect(wrapper.find(Button).length).toBe(0);
-            });
-
-            it('should add a button with the filter', () => {
-                mountSingleSelectCustomValues({items, matchFilter: () => false});
-
-                expect(wrapper.find(Button).length).toBe(1);
-            });
-
-            it('should not add the value in the store list on click button if the filter value is empty', () => {
-                mountSingleSelectCustomValues({items, matchFilter: () => false});
-
-                expect(store.getState().selectWithFilter[id].list.length).toBe(0);
-                store.dispatch(filterThrough(id, ''));
-
-                wrapper
-                    .find(SelectConnected)
-                    .find(Button)
-                    .find('button')
-                    .simulate('click');
-
-                expect(store.getState().selectWithFilter[id].list.length).toBe(0);
-            });
-
-            it('should add the value in the store list on click button if the filterValue is not empty', () => {
-                const filterValue: string = 'wontmatchanything';
-
-                mountSingleSelectCustomValues({items, matchFilter: () => false});
-
-                expect(store.getState().selectWithFilter[id].list.length).toBe(0);
-                store.dispatch(filterThrough(id, filterValue));
-
-                wrapper
-                    .find(SelectConnected)
-                    .find(Button)
-                    .find('button')
-                    .simulate('click');
-
-                expect(store.getState().selectWithFilter[id].list.length).toBe(1);
-                expect(store.getState().selectWithFilter[id].list[0]).toBe(filterValue);
-            });
-
             it('should add an itemBox with the filter value in the list if it is not already in the initial list', () => {
                 const complexItems: IItemBoxProps[] = [{value: 'abc'}, {value: 'afg'}];
                 const filterValue: string = 'a';
