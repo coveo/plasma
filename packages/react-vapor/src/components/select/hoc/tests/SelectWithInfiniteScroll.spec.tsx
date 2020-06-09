@@ -32,7 +32,7 @@ describe('SelectWithInfiniteScroll', () => {
             getStoreMock()
         ).dive();
 
-        return shallow(<div>{component.prop('wrapItems')(items)}</div>);
+        return shallow(<div>{component.prop('wrapItems')(props.items)}</div>);
     };
 
     it('should not throw when rendering and unmounting', () => {
@@ -57,6 +57,25 @@ describe('SelectWithInfiniteScroll', () => {
 
         expect(wrappedItems.find(InfiniteScroll).exists()).toBe(true);
         expect(wrappedItems.find(InfiniteScroll).contains(items)).toBe(true);
+    });
+
+    it('should set the hasChildren prop to true if there is at least one item', () => {
+        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: itemsProps});
+
+        expect(wrappedItems.find(InfiniteScroll).prop('hasChildren')).toBe(true);
+    });
+
+    it('should set the hasChildren prop to true if the select is loading', () => {
+        // this is because the skeleton loading is shown while loading
+        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: [], isLoading: true});
+
+        expect(wrappedItems.find(InfiniteScroll).prop('hasChildren')).toBe(true);
+    });
+
+    it('should set the hasChildren prop to false if the select is not loading and it has no items', () => {
+        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: [], isLoading: false});
+
+        expect(wrappedItems.find(InfiniteScroll).prop('hasChildren')).toBe(false);
     });
 
     it('should set hasMore prop to false on the infinite scroll component when the total number of items is less than the totalEntries prop', () => {
