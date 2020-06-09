@@ -10,7 +10,6 @@ import {IReactVaporState} from '../../../../ReactVapor';
 import {keyCode} from '../../../../utils/InputUtils';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {Button} from '../../../button/Button';
 import {FilterBoxSelectors} from '../../../filterBox';
 import {filterThrough} from '../../../filterBox/FilterBoxActions';
 import {FilterBoxConnected} from '../../../filterBox/FilterBoxConnected';
