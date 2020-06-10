@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.52.2](https://github.com/coveo/react-vapor/compare/v5.52.1...v5.52.2) (2020-06-10)
+
+
+### Bug Fixes
+
+* added charset utf8 ([923e4b0](https://github.com/coveo/react-vapor/commit/923e4b0b9334ecf02269bb0157a7042370483127))
+
+
+
+
+
 ## [5.52.1](https://github.com/coveo/react-vapor/compare/v5.52.0...v5.52.1) (2020-06-10)
 
 
