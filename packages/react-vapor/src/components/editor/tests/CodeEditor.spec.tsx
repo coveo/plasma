@@ -96,7 +96,7 @@ describe('CodeEditor', () => {
 
             codeEditor.setProps({value: 'a new value'});
 
-            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
+            expect(clearHistorySpy).toHaveBeenCalledTimes(2);
         });
 
         it('should add any extra keywords for the autocompletion if there are some in the props', () => {
