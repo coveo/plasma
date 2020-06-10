@@ -78,7 +78,7 @@ form {
                     margin-top: $scaledSpacing + $inputFieldLabelSpacing;
                 }
 
-                > * {
+                > *:not(:first-child) {
                     margin-top: $scaledSpacing;
                 }
             }
