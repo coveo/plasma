@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.52.3](https://github.com/coveo/react-vapor/compare/v5.52.2...v5.52.3) (2020-06-10)
+
+
+### Bug Fixes
+
+* upgrade moment from 2.24.0 to 2.25.3 ([1b723ef](https://github.com/coveo/react-vapor/commit/1b723ef893f6be87005ff1d76f03332bcb871bf3))
+* upgrade underscore from 1.9.2 to 1.10.2 ([47f4e0d](https://github.com/coveo/react-vapor/commit/47f4e0d4f92cbb6c63cb113d2f705caad36c4cda))
+
+
+
+
+
 ## [5.52.2](https://github.com/coveo/react-vapor/compare/v5.52.1...v5.52.2) (2020-06-10)
 
 
