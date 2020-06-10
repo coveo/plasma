@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.52.4](https://github.com/coveo/react-vapor/compare/v5.52.3...v5.52.4) (2020-06-10)
+
+
+### Bug Fixes
+
+* upgrade react-router-dom from 5.0.1 to 5.2.0 ([340d966](https://github.com/coveo/react-vapor/commit/340d9667912e5090a36c02dd9def9ea6c4fea8ed))
+
+
+
+
+
 ## [5.52.3](https://github.com/coveo/react-vapor/compare/v5.52.2...v5.52.3) (2020-06-10)
 
 
