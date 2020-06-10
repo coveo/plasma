@@ -10,13 +10,11 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
-import {Button, IButtonProps} from '../../button/Button';
 import {IFilterBoxOwnProps} from '../../filterBox/FilterBox';
 import {FilterBoxConnected} from '../../filterBox/FilterBoxConnected';
 import {FilterBoxSelectors} from '../../filterBox/FilterBoxSelectors';
 import {MatchFilter} from '../../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {Svg} from '../../svg/Svg';
 import {ISelectOwnProps} from '../SelectConnected';
 import {SelectSelector} from '../SelectSelector';
 
@@ -28,7 +26,6 @@ export interface ISelectWithFilterOwnProps {
     duplicateText?: string;
     noResultFilterText?: (filterText: string) => string;
     noItemsText?: string;
-    filterButton?: IButtonProps;
     filter?: IFilterBoxOwnProps;
 }
 
@@ -62,11 +59,6 @@ export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & Wit
             noResultFilterText: (filterText: string) => `No results match "${filterText}"`,
             noItemsText: 'No items, enter a new value',
             addValueText: (filterText: string) => `Add "${filterText}"`,
-            filterButton: {
-                enabled: true,
-                tooltip: 'Add',
-                tooltipPlacement: 'top',
-            },
             defaultCustomValues: [],
         };
 
@@ -117,24 +109,6 @@ export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & Wit
                 value: this.props.noItemsText,
                 disabled: true,
             };
-        }
-
-        private handleOnClick = () => {
-            if (!_.isEmpty(this.props.filterValue)) {
-                this.props.onSelectCustomValue(this.props.filterValue);
-            }
-        };
-
-        private getAddValueButton(): React.ReactNode {
-            return (
-                this.props.customValues && (
-                    <div className="ml1">
-                        <Button classes={['p1']} onClick={this.handleOnClick} {...this.props.filterButton}>
-                            <Svg svgName={'add'} className="icon mod-lg mod-align-with-text" />
-                        </Button>
-                    </div>
-                )
-            );
         }
 
         private isDuplicateValue(): boolean {
@@ -194,9 +168,7 @@ export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & Wit
                         onKeyUp={(this.props as any).onKeyUp}
                         className={filterBoxClassNames}
                         isAutoFocus
-                    >
-                        {this.getAddValueButton()}
-                    </FilterBoxConnected>
+                    ></FilterBoxConnected>
                     {this.props.children}
                 </Component>
             );
