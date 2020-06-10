@@ -10,7 +10,7 @@
         "axios": "0.19.0",
         "cz-conventional-changelog": "3.0.2",
         "husky": "3.0.9",
-        "lerna": "3.18.4",
+        "lerna": "^3.18.4",
         "mime-types": "2.1.26",
         "prettier": "1.19.1",
         "stylelint": "11.1.1",
@@ -55,5 +55,9 @@
         "extends": [
             "@commitlint/config-conventional"
         ]
+    },
+    "dependencies": {
+        "coveo-styleguide": "^5.48.0",
+        "react-vapor": "^5.49.0"
     }
 }
