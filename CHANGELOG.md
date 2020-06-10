@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.52.0](https://github.com/coveo/react-vapor/compare/v5.51.2...v5.52.0) (2020-06-10)
+
+
+### Features
+
+* **stickyfooter:** add validation hoc ([db68998](https://github.com/coveo/react-vapor/commit/db68998f801b576beb226ec2be674a31fdab5ce3))
+
+
+
+
+
+## [5.51.2](https://github.com/coveo/react-vapor/compare/v5.51.1...v5.51.2) (2020-06-09)
+
+
+### Bug Fixes
+
+* upgrade diff2html from 3.1.2 to 3.1.7 ([666f136](https://github.com/coveo/react-vapor/commit/666f1368aa78a955141dfc8f34392607d24cef50))
+
+
+
+
+
 ## [5.51.1](https://github.com/coveo/react-vapor/compare/v5.51.0...v5.51.1) (2020-06-08)
 
 
