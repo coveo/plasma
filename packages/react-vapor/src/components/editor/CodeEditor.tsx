@@ -45,7 +45,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     };
 
     private codemirror = React.createRef<ReactCodeMirror.Controlled>();
-    private editor: ReactCodeMirror.IInstance;
+    private editor: CodeMirror.Editor;
 
     constructor(props: ICodeEditorProps, state: CodeEditorState) {
         super(props, state);
@@ -70,7 +70,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
         return (
             <ReactCodeMirror.Controlled
                 ref={this.codemirror}
-                editorDidMount={(editor: ReactCodeMirror.IInstance) => {
+                editorDidMount={(editor: CodeMirror.Editor) => {
                     this.editor = editor;
                     this.addExtraKeywords();
                 }}
