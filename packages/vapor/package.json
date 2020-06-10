@@ -1,6 +1,6 @@
 {
     "name": "coveo-styleguide",
-    "version": "5.51.0",
+    "version": "5.52.2",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -65,7 +65,7 @@
         "webpack-cli": "3.3.11"
     },
     "dependencies": {
-        "codemirror": "5.52.0",
+        "codemirror": "5.54.0",
         "rc-slider": "8.7.1"
     },
     "files": [
