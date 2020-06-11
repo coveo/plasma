@@ -10,14 +10,23 @@ div.slider-container {
     }
     div.slider-value {
         flex: 2;
-        align-items: flex-end;
+        margin: auto;
 
-        justify-content: center;
-        padding-top: 1.2em;
+        &:first-child {
+            justify-content: flex-start;
+            padding-left: 1rem;
+        }
+
+        &:last-child {
+            justify-content: flex-end;
+            padding-right: 1rem;
+        }
     }
 }
 
 .vapor-slider.rc-slider {
+    margin: 1.5rem $slider-handle-width / 2;
+
     .rc-slider-rail {
         height: $slider-rail-height;
         margin-top: $slider-rail-margin-top;
