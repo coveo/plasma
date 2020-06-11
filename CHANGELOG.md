@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.52.7](https://github.com/coveo/react-vapor/compare/v5.52.6...v5.52.7) (2020-06-11)
+
+
+### Bug Fixes
+
+* **slider:** make the sliders fit into their parent container ([84ad4f7](https://github.com/coveo/react-vapor/commit/84ad4f7dbc98e2fd1a45a022048936e862dac8b4))
+
+
+
+
+
 ## [5.52.6](https://github.com/coveo/react-vapor/compare/v5.52.5...v5.52.6) (2020-06-11)
 
 
