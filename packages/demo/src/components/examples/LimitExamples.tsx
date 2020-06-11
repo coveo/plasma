@@ -3,20 +3,20 @@ import {Limit} from 'react-vapor';
 
 export class LimitExamples extends React.Component {
     render() {
-        const title: string = 'Limit example';
-        const usageNumber: number = 42;
-        const usageNumberNearLimit: number = 80;
-        const usageNumberEqualToLimit: number = Limit.defaultProps.limitNumber;
-        const customLimitNumber: number = 130;
-        const customLimitTitle: string = 'Throttling limit';
-        const isLimitCanBeChanged: boolean = true;
-        const isLimitIsTheGoalToReach: boolean = true;
-        const isHistoryIsIncluded: boolean = true;
+        const title = 'Limit example';
+        const usageNumber = 42;
+        const usageNumberNearLimit = 80;
+        const usageNumberEqualToLimit = Limit.defaultProps.limitNumber;
+        const customLimitNumber = 130;
+        const customLimitTitle = 'Throttling limit';
+        const isLimitCanBeChanged = true;
+        const isLimitIsTheGoalToReach = true;
+        const isHistoryIsIncluded = true;
 
         return (
             <div className="coveo-form">
                 <div className="form-group">
-                    <label className="form-control-label"> A limit with an usage value</label>
+                    <label className="form-control-label">A limit with an usage value</label>
                     <div className="form-control">
                         <Limit title={title} usageNumber={usageNumber} />
                     </div>
@@ -33,7 +33,6 @@ export class LimitExamples extends React.Component {
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">
-                        {' '}
                         A limit with an usage value that reached the limit value
                     </label>
                     <div className="form-control">
@@ -66,13 +65,13 @@ export class LimitExamples extends React.Component {
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="form-control-label"> A limit with a modifiable limit value </label>
+                    <label className="form-control-label">A limit with a modifiable limit value</label>
                     <div className="form-control">
                         <Limit title={title} usageNumber={usageNumber} isLimitModifiable={isLimitCanBeChanged} />
                     </div>
                 </div>
                 <div className="form-group">
-                    <label className="form-control-label"> A limit without an usage value</label>
+                    <label className="form-control-label">A limit without an usage value</label>
                     <div className="form-control">
                         <Limit title={title} isLimitModifiable={isLimitCanBeChanged} />
                     </div>

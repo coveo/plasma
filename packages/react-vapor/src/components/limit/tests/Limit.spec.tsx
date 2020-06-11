@@ -1,12 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
-import {ILimitProps, Limit} from '../Limit';
+import {Limit, LimitProps} from '../Limit';
 
 describe('Limit', () => {
-    let limit: ReactWrapper<ILimitProps, any>;
+    let limit: ReactWrapper<LimitProps, any>;
 
-    const defaultProps: ILimitProps = {
+    const defaultProps: LimitProps = {
         title: 'test limit',
     };
 
@@ -113,7 +113,7 @@ describe('Limit', () => {
             expect(
                 limit
                     .find('.limit-box-limit')
-                    .find('input')
+                    .find('input') // Input
                     .props().type
             ).toBe(expectedInputType);
 
