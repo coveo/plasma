@@ -1,6 +1,7 @@
+import 'rc-slider/assets/index.css';
+
 import classNames from 'classnames';
 import RCSlider, {createSliderWithTooltip, SliderProps, WithTooltipProps} from 'rc-slider';
-import 'rc-slider/assets/index.css';
 import * as React from 'react';
 
 export interface ISliderProps {
@@ -18,7 +19,11 @@ const Slider: React.SFC<ISliderProps> = ({hasTooltip, slider, classes}) => {
         };
     }
 
-    return <HtmlTag className={classNames('vapor-slider input-wrapper input-field', classes)} {...slider} />;
+    return (
+        <div className="flex">
+            <HtmlTag className={classNames('vapor-slider input-wrapper input-field', classes)} {...slider} />
+        </div>
+    );
 };
 
 Slider.defaultProps = {
