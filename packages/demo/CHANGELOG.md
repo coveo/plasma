@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [5.52.8](https://github.com/coveo/react-vapor/compare/v5.52.7...v5.52.8) (2020-06-12)
+
+
+### Bug Fixes
+
+* upgrade jquery from 3.5.0 to 3.5.1 ([ef02eb2](https://github.com/coveo/react-vapor/commit/ef02eb2424ca3f64851c0be3858f308008e39d89))
+* upgrade moment from 2.25.3 to 2.26.0 ([03949ce](https://github.com/coveo/react-vapor/commit/03949cef7a938a5f84ab1834d7003482dbfa178d))
+
+
+
+
+
 ## [5.52.7](https://github.com/coveo/react-vapor/compare/v5.52.6...v5.52.7) (2020-06-11)
 
 **Note:** Version bump only for package react-vapor-demo
