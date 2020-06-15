@@ -55,9 +55,5 @@
         "extends": [
             "@commitlint/config-conventional"
         ]
-    },
-    "dependencies": {
-        "coveo-styleguide": "5.48.0",
-        "react-vapor": "5.49.0"
     }
 }
