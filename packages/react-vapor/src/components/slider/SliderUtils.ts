@@ -18,7 +18,7 @@ export const getValuesPositionOnRange = (value: number[], crossingPoint: number)
 export const getCrossingPoint = (min: number, max: number): number => Math.round(((0 - min) / (max - min)) * 100);
 
 export const convertInitialValuetoRangeValue = (min: number, max: number, initialValue: number): number =>
-    Math.round(((initialValue - min) / (max - min)) * 100);
+    ((initialValue - min) / (max - min)) * 100;
 
 export const handleIsAtCrossingPoint = (
     lowRange: number,
