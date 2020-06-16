@@ -3,11 +3,15 @@ import {
     getReactNodeTextContent,
     IFlatSelectOptionProps,
     IItemBoxProps,
+    LabeledInput,
     MultiSelectConnected,
     MultiSelectWithFilter,
     MultiSelectWithPredicate,
     MultiSelectWithPredicateAndFilter,
+    Section,
     UUID,
+    ValidationMessage,
+    withInitialValuesMultiSelectHOC,
 } from 'react-vapor';
 import * as _ from 'underscore';
 
@@ -34,6 +38,28 @@ export interface IMultiSelectExamplesState {
     second: IItemBoxProps[];
     hoc: IItemBoxProps[];
 }
+
+const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
+const MultiSelectWithInitialValuesExample = () => {
+    return (
+        <Section level={3}>
+            <LabeledInput
+                label="A Multi Select with initial values"
+                message={
+                    <div>
+                        <ValidationMessage id="multi-select-initial-values" />
+                    </div>
+                }
+            >
+                <MultiSelectWithInitialValues
+                    initialValues={[defaultItems[0].value, 'INVALID ONE']}
+                    id="multi-select-initial-values"
+                    items={defaultItems}
+                />
+            </LabeledInput>
+        </Section>
+    );
+};
 
 export class MultiSelectExamples extends React.Component<{}, IMultiSelectExamplesState> {
     static description =
@@ -224,6 +250,7 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                         customValues
                     />
                 </div>
+                <MultiSelectWithInitialValuesExample />
             </div>
         );
     }
