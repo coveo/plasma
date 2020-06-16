@@ -99,6 +99,22 @@ export const triggerAlertFunction = () => {
     alert(`Alert function triggered`);
 };
 
+export const withSelectedValues = (id: string, ...values: string[]) => {
+    return (state: IReactVaporState) => ({
+        ...state,
+        listBoxes: [
+            ...(state.listBoxes || []),
+            {
+                active: 0,
+                ...{
+                    id: id,
+                    selected: values,
+                },
+            },
+        ],
+    });
+};
+
 export type ReactVaporMockStore = MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
 export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch<IReactVaporState>>([thunk]);
 export const composeMockStore = (

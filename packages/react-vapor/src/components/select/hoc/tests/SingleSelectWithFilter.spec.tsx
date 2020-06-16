@@ -232,8 +232,6 @@ describe('Select', () => {
         });
 
         describe('With CustomValue Props', () => {
-            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
-
             const mountSingleSelectCustomValues = (
                 props: Partial<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = {}
             ) => {

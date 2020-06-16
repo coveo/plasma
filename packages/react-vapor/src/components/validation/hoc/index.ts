@@ -4,3 +4,4 @@ export * from './WithDirtySaveButtonHOC';
 export * from './WithDirtyStickyFooter';
 export * from './WithNonEmptyValueInputValidationHOC';
 export * from './WithValidationMessageHOC';
+export * from './WithNonEmptyValueMultiSelectValidationHOC';
