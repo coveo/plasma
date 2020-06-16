@@ -192,10 +192,10 @@ const ProgressBar = ({
     );
 };
 
-function getProgressBarClass({usageValue, limitValue}: {usageValue: number; limitValue: number}): string {
+const getProgressBarClass = ({usageValue, limitValue}: {usageValue: number; limitValue: number}): string => {
     const progress: number = Math.round((usageValue / limitValue) * 100);
     return progress <= 100 ? `progress-${progress.toString()}` : `progress-100`;
-}
+};
 
 export const Limit = connect(mapStateToProps, mapDispatchToProps)(LimitDisconnect);
 
