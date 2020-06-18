@@ -56,7 +56,7 @@ export class TestUtils {
         // tslint:disable
         spyOn(_, 'debounce').and.callFake(function(func: () => void) {
             return function(this: any) {
-                func.apply(this, arguments);
+                func.apply(this, arguments as any);
             };
         });
         // tslint:enable
@@ -65,7 +65,7 @@ export class TestUtils {
     static makeDeferSync() {
         // tslint:disable
         spyOn(_, 'defer').and.callFake(function(this: any, func: () => void) {
-            func.apply(this, arguments);
+            func.apply(this, arguments as any);
         });
         // tslint:enable
     }
