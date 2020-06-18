@@ -1,8 +1,7 @@
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
-import {IReactVaporState} from '../../../../ReactVapor';
-import {composeMockStore} from '../../../../utils/tests/TestUtils';
+import {composeMockStore, withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
 import {ValidationActions} from '../../ValidationActions';
 import {withDirtyMultiSelectHOC} from '../WithDirtyMultiSelectHOC';
@@ -18,22 +17,8 @@ describe('MultiSelectWithDirty', () => {
     const ONE_VALUE = '🐟';
     const ANOTHER_VALUE = '🐠';
 
-    const withSelectedValues = (...values: string[]) => (state: IReactVaporState) => ({
-        ...state,
-        listBoxes: [
-            ...(state.listBoxes || []),
-            {
-                active: 0,
-                ...{
-                    id: defaultProps.id,
-                    selected: values,
-                },
-            },
-        ],
-    });
-
     it('should trigger the dirty state when the user selects a new value', () => {
-        const store = composeMockStore(withSelectedValues(ONE_VALUE));
+        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
 
         const component = mountWithStore(<MultiSelectWithDirty {...defaultProps} initialValues={[]} />, store);
 
@@ -45,7 +30,7 @@ describe('MultiSelectWithDirty', () => {
     });
 
     it('should trigger the dirty state when the user removes a value', () => {
-        const store = composeMockStore(withSelectedValues(ONE_VALUE));
+        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
 
         const component = mountWithStore(
             <MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE, ANOTHER_VALUE]} />,
@@ -60,7 +45,7 @@ describe('MultiSelectWithDirty', () => {
     });
 
     it('should not trigger the dirty state when the initial values are the same as the selected ones', () => {
-        const store = composeMockStore(withSelectedValues(ONE_VALUE));
+        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
 
         const component = mountWithStore(<MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE]} />, store);
 
@@ -72,7 +57,7 @@ describe('MultiSelectWithDirty', () => {
     });
 
     it('should not trigger the dirty state when there is no initial value and selected value', () => {
-        const store = composeMockStore(withSelectedValues());
+        const store = composeMockStore(withSelectedValues(defaultProps.id));
 
         const component = mountWithStore(<MultiSelectWithDirty {...defaultProps} initialValues={[]} />, store);
 

@@ -3,11 +3,14 @@ import {
     getReactNodeTextContent,
     IFlatSelectOptionProps,
     IItemBoxProps,
+    LabeledInput,
     MultiSelectConnected,
     MultiSelectWithFilter,
     MultiSelectWithPredicate,
     MultiSelectWithPredicateAndFilter,
     UUID,
+    ValidationMessage,
+    withNonEmptyMultiSelectHOC,
 } from 'react-vapor';
 import * as _ from 'underscore';
 
@@ -27,6 +30,24 @@ const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
     {id: UUID.generate(), option: {content: 'even'}},
     {id: UUID.generate(), option: {content: 'odd'}},
 ];
+
+const WithNonEmptyMultiSelect = withNonEmptyMultiSelectHOC(MultiSelectConnected);
+
+const WithNonEmptyMultiSelectExample = () => {
+    return (
+        <LabeledInput
+            label="A Multi Select with Non Empty Validation"
+            message={
+                <div>
+                    <ValidationMessage id="multi-select-non-empty" />
+                </div>
+            }
+        >
+            <br />
+            <WithNonEmptyMultiSelect id="multi-select-non-empty" items={defaultItems} />
+        </LabeledInput>
+    );
+};
 
 export interface IMultiSelectExamplesState {
     first: IItemBoxProps[];
@@ -223,6 +244,9 @@ export class MultiSelectExamples extends React.Component<{}, IMultiSelectExample
                         items={[{value: 'a'.repeat(100)}]}
                         customValues
                     />
+                </div>
+                <div className="form-group">
+                    <WithNonEmptyMultiSelectExample />
                 </div>
             </div>
         );
