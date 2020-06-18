@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.53.0](https://github.com/coveo/react-vapor/compare/v5.52.8...v5.53.0) (2020-06-18)
+
+
+### Features
+
+* **multiselect:** validate initial values hoc ([#1595](https://github.com/coveo/react-vapor/issues/1595)) ([86cbfc1](https://github.com/coveo/react-vapor/commit/86cbfc14d2fed991ebd03194741e1253fdd93b76))
+* **validation:** create a non empty validation hoc for multiselect ([#1594](https://github.com/coveo/react-vapor/issues/1594)) ([cdaf2cf](https://github.com/coveo/react-vapor/commit/cdaf2cf1a02f15c887d29215d0e7f69e9d5df113))
+
+
+
+
+
 ## [5.52.8](https://github.com/coveo/react-vapor/compare/v5.52.7...v5.52.8) (2020-06-12)
 
 
