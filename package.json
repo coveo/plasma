@@ -1,5 +1,5 @@
 {
-    "name": "root",
+    "name": "one-snyk-to-rule-them-all-and-in-the-darkness-bind-them",
     "private": true,
     "devDependencies": {
         "@commitlint/cli": "8.3.5",
