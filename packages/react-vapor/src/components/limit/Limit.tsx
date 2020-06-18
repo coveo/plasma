@@ -19,17 +19,17 @@ export interface LimitOwnProps {
     isHistoryIncluded?: boolean;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: LimitOwnProps) => {
-    const ownLimit: string = ownProps.limit.toString() || Limit.defaultProps.limit.toString();
-    const currentLimit: string = InputSelectors.getValue(state, {id: ownProps.id}) || ownLimit;
+const mapStateToProps = (state: IReactVaporState, {id, limit}: LimitOwnProps) => {
+    const ownLimit: number = limit ?? Limit.defaultProps.limit;
+    const currentLimit: number = +InputSelectors.getValue(state, {id: id}) || ownLimit;
     return {
         currentLimit,
     };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: LimitOwnProps) => ({
+const mapDispatchToProps = (dispatch: IDispatch, {id}: LimitOwnProps) => ({
     onChangeLimit: (limitValue: string) => {
-        dispatch(changeInputValue(ownProps.id, limitValue, true));
+        dispatch(changeInputValue(id, limitValue, true));
     },
 });
 
@@ -38,7 +38,17 @@ export interface LimitProps
         ReturnType<typeof mapDispatchToProps>,
         ReturnType<typeof mapStateToProps> {}
 
-export const LimitDisconnect: React.FunctionComponent<LimitProps> = ({
+type ContentProps = Pick<LimitProps, 'id' | 'usage' | 'limit' | 'isLimitEditable' | 'limitLabel' | 'onChangeLimit'>;
+type UsageContentProps = Pick<ContentProps, 'usage'>;
+type LimitContentProps = Pick<
+    ContentProps,
+    'id' | 'limit' | 'usage' | 'isLimitEditable' | 'limitLabel' | 'onChangeLimit'
+>;
+type HeaderProps = Pick<LimitProps, 'limitLabel' | 'isHistoryIncluded'>;
+type HistoryIconProps = Pick<HeaderProps, 'isHistoryIncluded'>;
+type ProgressBarProps = Pick<LimitProps, 'usage' | 'isLimitTheGoalToReach' | 'limit'>;
+
+const LimitDisconnect: React.FunctionComponent<LimitProps> = ({
     id,
     title,
     limitLabel,
@@ -48,139 +58,104 @@ export const LimitDisconnect: React.FunctionComponent<LimitProps> = ({
     isLimitEditable,
     isLimitTheGoalToReach,
     isHistoryIncluded,
-    onChangeLimit: onChangeLimit,
-}) => {
-    return (
-        <div className="limit-box mb2">
-            <div className="limit-box-main p2 pb1">
-                <HeaderDivision limitTitle={title} isHistory={isHistoryIncluded} />
-                <ContentDivision
-                    id={id}
-                    usageValue={usage}
-                    limitValue={limit}
-                    isEditable={isLimitEditable}
-                    limitTitle={limitLabel}
-                    onChangeLimit={onChangeLimit}
-                />
-            </div>
-            <ProgressBar usageValue={usage} isLimitTheGoal={isLimitTheGoalToReach} limitValue={+currentLimit} />
-        </div>
-    );
-};
-
-const HeaderDivision = ({limitTitle, isHistory}: {limitTitle: string; isHistory: boolean}) => {
-    return (
-        <div className="flex space-between">
-            <label className="form-control-label"> {limitTitle}</label>
-            <HistoryIcon isHistory={isHistory} />
-        </div>
-    );
-};
-
-const HistoryIcon = ({isHistory}: {isHistory: boolean}) => {
-    return (
-        isHistory && (
-            <span className="icon mod-lg limit-history-button">
-                <Svg svgName={VaporSVG.svg.menuAnalytics.name} className="fill-medium-blue" />
-            </span>
-        )
-    );
-};
-
-const ContentDivision = ({
-    id,
-    usageValue,
-    limitValue,
-    isEditable,
-    limitTitle,
     onChangeLimit,
-}: {
-    id: string;
-    usageValue: number;
-    limitValue: number;
-    isEditable: boolean;
-    limitTitle: string;
-    onChangeLimit: (limit: string) => void;
-}) => {
-    return (
-        <div className="limit-box-numbers pt1 flex">
-            <UsageDivision usageValue={usageValue} />
-            <LimitDivision
+}) => (
+    <div className="limit-box mb2">
+        <div className="limit-box-main p2 pb1">
+            <HeaderDivision limitLabel={title} isHistoryIncluded={isHistoryIncluded} />
+            <ContentDivision
                 id={id}
+                usage={usage}
+                limit={limit}
+                isLimitEditable={isLimitEditable}
+                limitLabel={limitLabel}
                 onChangeLimit={onChangeLimit}
-                usageValue={usageValue}
-                limitValue={limitValue}
-                isEditable={isEditable}
-                limitTitle={limitTitle}
             />
         </div>
-    );
-};
+        <ProgressBar usage={usage} isLimitTheGoalToReach={isLimitTheGoalToReach} limit={currentLimit} />
+    </div>
+);
 
-const UsageDivision = ({usageValue}: {usageValue: number}) => {
-    const isUsageRequired: boolean = !!usageValue;
+const HeaderDivision: React.FunctionComponent<HeaderProps> = ({limitLabel, isHistoryIncluded}) => (
+    <div className="flex space-between">
+        <label className="form-control-label"> {limitLabel}</label>
+        <HistoryIcon isHistoryIncluded={isHistoryIncluded} />
+    </div>
+);
+
+const HistoryIcon: React.FunctionComponent<HistoryIconProps> = ({isHistoryIncluded}) =>
+    isHistoryIncluded && (
+        <span className="icon mod-lg limit-history-button">
+            <Svg svgName={VaporSVG.svg.menuAnalytics.name} className="fill-medium-blue" />
+        </span>
+    );
+
+const ContentDivision: React.FunctionComponent<ContentProps> = ({
+    id,
+    usage,
+    limit,
+    isLimitEditable,
+    limitLabel,
+    onChangeLimit,
+}) => (
+    <div className="limit-box-numbers pt1 flex">
+        <UsageDivision usage={usage} />
+        <LimitDivision
+            id={id}
+            onChangeLimit={onChangeLimit}
+            usage={usage}
+            limit={limit}
+            isLimitEditable={isLimitEditable}
+            limitLabel={limitLabel}
+        />
+    </div>
+);
+
+const UsageDivision: React.FunctionComponent<UsageContentProps> = ({usage}) => {
+    const isUsageRequired: boolean = !!usage;
     return (
         isUsageRequired && (
             <div className="limit-box-usage">
                 <label className="form-control-label">Usage</label>
-                <span className="limit-box-usage-value">{usageValue}</span>
+                <span className="limit-box-usage-value">{usage}</span>
             </div>
         )
     );
 };
 
-const LimitDivision = ({
+const LimitDivision: React.FunctionComponent<LimitContentProps> = ({
     id,
-    limitValue,
-    usageValue,
-    isEditable,
-    limitTitle,
+    limit,
+    usage,
+    isLimitEditable,
+    limitLabel,
     onChangeLimit,
-}: {
-    id: string;
-    limitValue: number;
-    usageValue: number;
-    isEditable: boolean;
-    limitTitle: string;
-    onChangeLimit: (limit: string) => void;
 }) => {
-    const limitValueString: string = limitValue.toString();
-    const minLimitValue: number = usageValue || 0;
-    if (isEditable) {
-        return (
-            <InputConnected
-                id={id}
-                type="number"
-                labelTitle={limitTitle}
-                defaultValue={limitValueString}
-                min={minLimitValue}
-                classes="limit-box-limit form-group input-field validate"
-                onChange={(limit) => onChangeLimit(limit)}
-            ></InputConnected>
-        );
-    } else {
-        return (
-            <div className="limit-box-limit">
-                <label className="form-control-label">{limitTitle}</label>
-                <span className="limit-box-limit-value">{limitValue}</span>
-            </div>
-        );
-    }
+    const limitValueString: string = limit.toString();
+    const minLimitValue: number = usage ?? 0;
+    return isLimitEditable ? (
+        <InputConnected
+            id={id}
+            type="number"
+            labelTitle={limitLabel}
+            defaultValue={limitValueString}
+            min={minLimitValue}
+            classes="limit-box-limit form-group input-field validate"
+            onChange={(limitValue) => onChangeLimit(limitValue)}
+        ></InputConnected>
+    ) : (
+        <div className="limit-box-limit">
+            <label className="form-control-label">{limitLabel}</label>
+            <span className="limit-box-limit-value">{limit}</span>
+        </div>
+    );
 };
 
-const ProgressBar = ({
-    usageValue,
-    isLimitTheGoal,
-    limitValue,
-}: {
-    usageValue: number;
-    isLimitTheGoal: boolean;
-    limitValue: number;
-}) => {
-    const isUsageRequired: boolean = !!usageValue;
-    const progressClass: string = getProgressBarClass({usageValue, limitValue});
+const ProgressBar: React.FunctionComponent<ProgressBarProps> = ({usage, isLimitTheGoalToReach, limit}) => {
+    const isUsageRequired: boolean = !!usage;
+    const progressClass: string = getProgressBarClass(usage, limit);
     const progressClasses = classNames('limit-box-bar', progressClass, {
-        'mod-green': isLimitTheGoal,
+        'mod-green': isLimitTheGoalToReach,
     });
 
     return (
@@ -192,19 +167,17 @@ const ProgressBar = ({
     );
 };
 
-const getProgressBarClass = ({usageValue, limitValue}: {usageValue: number; limitValue: number}): string => {
+const getProgressBarClass = (usageValue: number, limitValue: number): string => {
     const progress: number = Math.round((usageValue / limitValue) * 100);
     return progress <= 100 ? `progress-${progress.toString()}` : `progress-100`;
 };
 
 export const Limit = connect(mapStateToProps, mapDispatchToProps)(LimitDisconnect);
 
-LimitDisconnect.defaultProps = {
+Limit.defaultProps = {
     limitLabel: 'Limit',
     limit: 100,
     isLimitEditable: false,
     isLimitTheGoalToReach: false,
     isHistoryIncluded: false,
 };
-
-Limit.defaultProps = {...LimitDisconnect.defaultProps};
