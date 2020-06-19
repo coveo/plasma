@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [5.54.0](https://github.com/coveo/react-vapor/compare/v5.53.0...v5.54.0) (2020-06-19)
+
+
+### Features
+
+* **labeled value:** accept react node to insert html elements ([4f7a159](https://github.com/coveo/react-vapor/commit/4f7a1598e1f8402fa971caa2b1cb49f21192769f))
+
+
+
+
+
 # [5.53.0](https://github.com/coveo/react-vapor/compare/v5.52.8...v5.53.0) (2020-06-18)
 
 
