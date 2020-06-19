@@ -8,7 +8,7 @@ export interface ILabeledValueProps {
     label: string;
     value: React.ReactNode;
     fullRow?: boolean;
-    information?: string;
+    information?: React.ReactNode;
     informationPlacement?: TooltipPlacement;
     padding?: boolean;
     singleLine?: boolean;
