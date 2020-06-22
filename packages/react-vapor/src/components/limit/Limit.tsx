@@ -21,7 +21,7 @@ export interface LimitOwnProps {
 
 const mapStateToProps = (state: IReactVaporState, {id, limit}: LimitOwnProps) => {
     const ownLimit: number = limit ?? Limit.defaultProps.limit;
-    const currentLimit: number = +InputSelectors.getValue(state, {id: id}) || ownLimit;
+    const currentLimit: number = +InputSelectors.getValue(state, {id}) || ownLimit;
     return {
         currentLimit,
     };
@@ -142,7 +142,7 @@ const LimitDivision: React.FunctionComponent<LimitContentProps> = ({
             min={minLimitValue}
             classes="limit-box-limit form-group input-field validate"
             onChange={(limitValue) => onChangeLimit(limitValue)}
-        ></InputConnected>
+        />
     ) : (
         <div className="limit-box-limit">
             <label className="form-control-label">{limitLabel}</label>
