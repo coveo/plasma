@@ -1,16 +1,14 @@
 import * as React from 'react';
-import {AppendedValueSide, MiddleSlider, Section, Slider} from 'react-vapor';
+import {AppendedValueSide, Section, Slider} from 'react-vapor';
 
 import {ExampleComponent} from '../ComponentsInterface';
 
-export const InputSliderExample: ExampleComponent = () => (
+export const SliderExamples: ExampleComponent = () => (
     <Section title="Slider Examples">
         <SimpleSliderExample />
-        <Section level={2} title="Middle Slider">
-            <MiddleSliderExample />
-            <MiddleSliderAsymetric />
-            <MiddleSliderWithPercent />
-        </Section>
+        <SliderExample />
+        <SliderAsymetric />
+        <SliderWithPercent />
     </Section>
 );
 
@@ -18,60 +16,69 @@ const SimpleSliderExample: React.FunctionComponent = () => (
     <Section level={2} title="Simple Slider">
         <Section level={3} title="A simple slider with marks, step, a formated tooltip and an initial value">
             <Slider
+                id="🍄"
                 hasTooltip
-                slider={{
-                    step: 25,
-                    marks: {
-                        0: 'Lower',
-                        50: 'Middle',
-                        100: 'Higher',
-                    },
-                    defaultValue: 50,
-                    tipFormatter: (value: number) => `${value}$`,
+                step={25}
+                marks={{
+                    0: 'Lower',
+                    50: 'Middle',
+                    100: 'Higher',
                 }}
+                initialValue={50}
+                appendValueFormatter={(value: number) => `${value}$`}
             />
         </Section>
     </Section>
 );
 
-const MiddleSliderExample: React.FunctionComponent = () => {
+const SliderExample: React.FunctionComponent = () => {
     return (
-        <Section level={3} key="two" title="MiddleSlider with asymetric range and initial value">
-            <MiddleSlider
+        <Section level={3} key="two" title="Slider with asymetric range and initial value">
+            <Slider
                 key="patate"
                 min={-2000}
                 max={10000}
                 id="asymetricRangeId"
                 initialValue={2000}
-                marks={{0: '-2000', 33: '2000', 17: '0', 100: '10,000'}}
+                marks={{'-2000': '-2000', 2000: '2000', 0: '0', 10000: '10,000'}}
                 hasTooltip
-                tooltipStyle={{
-                    overlayClassName: 'vapor-slider-overlay',
-                }}
+                appendValue
+            />
+            <Slider
+                key="patatos-2"
+                min={5}
+                max={100}
+                id="asymetricRangeId-2"
+                initialValue={30}
+                crossingPoint={50}
+                step={5}
+                marks={{5: '5', 50: 'Recommended', 100: '100'}}
+                hasTooltip
+                appendValue
             />
         </Section>
     );
 };
 
-const MiddleSliderAsymetric: React.FunctionComponent = () => {
+const SliderAsymetric: React.FunctionComponent = () => {
     const [value, setValue] = React.useState(null);
 
     return (
-        <Section key="one" level={3} title={`MiddleSlider with marks and steps. Its current value is ${value}`}>
-            <MiddleSlider
+        <Section key="one" level={3} title={`Slider with marks and steps. Its current value is ${value}`}>
+            <Slider
                 key="pwel"
-                min={-10000}
-                max={10000}
+                min={-100}
+                max={100}
                 id="rangeSliderId"
                 marks={{
-                    0: '-100%',
-                    25: '-50%',
-                    50: '0',
-                    75: '50%',
+                    '-100': '-100%',
+                    '-50': '-50%',
+                    0: '0',
+                    50: '50%',
                     100: '100%',
                 }}
-                step={5000}
-                initialValue={5000}
+                step={5}
+                initialValue={0}
                 onChange={(currentValue) => {
                     setValue(currentValue);
                 }}
@@ -91,7 +98,7 @@ const ValueHolder: React.FunctionComponent<{value: string; label: string}> = ({v
     </div>
 );
 
-const MiddleSliderWithPercent: React.FunctionComponent = () => {
+const SliderWithPercent: React.FunctionComponent = () => {
     const appendValueFormatter = (value: number, side: string) => {
         let formattedValue: string;
         let valueLabel: string;
@@ -106,12 +113,12 @@ const MiddleSliderWithPercent: React.FunctionComponent = () => {
     };
 
     return (
-        <Section key="one" level={3} title={`MiddleSlider showing the percent allocated to each side`}>
-            <MiddleSlider
+        <Section key="one" level={3} title={`Slider showing the percent allocated to each side`}>
+            <Slider
                 key="gnagnagna"
                 min={-50}
                 max={50}
-                marks={{0: '', 50: '', 100: ''}}
+                marks={{'-50': '', 0: '', 50: ''}}
                 id="percentSliderId"
                 appendValueFormatter={appendValueFormatter}
                 appendValue={AppendedValueSide.both}

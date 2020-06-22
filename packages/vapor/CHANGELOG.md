@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.0.0](https://github.com/coveo/react-vapor/compare/v5.54.0...v6.0.0) (2020-06-19)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [5.53.0](https://github.com/coveo/react-vapor/compare/v5.52.8...v5.53.0) (2020-06-18)
+
+
+### Features
+
+* **icon:** add and icon for catalog ([#1598](https://github.com/coveo/react-vapor/issues/1598)) ([b608b7a](https://github.com/coveo/react-vapor/commit/b608b7ab84529b86058230bf46df08e3fcc62271))
+
+
+
+
+
 ## [5.52.7](https://github.com/coveo/react-vapor/compare/v5.52.6...v5.52.7) (2020-06-11)
 
 

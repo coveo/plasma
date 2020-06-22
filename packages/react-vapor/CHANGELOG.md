@@ -3,6 +3,59 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.0.1](https://github.com/coveo/react-vapor/compare/v6.0.0...v6.0.1) (2020-06-19)
+
+
+### Bug Fixes
+
+* **sliders:** add SliderActions to the Entry ([05ada9e](https://github.com/coveo/react-vapor/commit/05ada9ebf760aafe24fdb695b32da5dde87fa050))
+
+
+
+
+
+# [6.0.0](https://github.com/coveo/react-vapor/compare/v5.54.0...v6.0.0) (2020-06-19)
+
+
+### Bug Fixes
+
+* **middleslider:** accept min greater than 0 + use more intuitive marks ([daa88ce](https://github.com/coveo/react-vapor/commit/daa88ce8eb0ab23f49c34fc9222f7934535f28db))
+
+
+### BREAKING CHANGES
+
+* **middleslider:** Marks keys must now be actual values instead of ranging from 0 to 100.
+`enabled` was removed in favor of `disabled`.
+The tooltip overlay style was added by default to all handles with tooltips.
+`MiddleSlider` was renamed to `Slider` and the old `Slider` was removed.
+
+
+
+
+
+# [5.54.0](https://github.com/coveo/react-vapor/compare/v5.53.0...v5.54.0) (2020-06-19)
+
+
+### Features
+
+* **labeled value:** accept react node to insert html elements ([4f7a159](https://github.com/coveo/react-vapor/commit/4f7a1598e1f8402fa971caa2b1cb49f21192769f))
+
+
+
+
+
+# [5.53.0](https://github.com/coveo/react-vapor/compare/v5.52.8...v5.53.0) (2020-06-18)
+
+
+### Features
+
+* **multiselect:** validate initial values hoc ([#1595](https://github.com/coveo/react-vapor/issues/1595)) ([86cbfc1](https://github.com/coveo/react-vapor/commit/86cbfc14d2fed991ebd03194741e1253fdd93b76))
+* **validation:** create a non empty validation hoc for multiselect ([#1594](https://github.com/coveo/react-vapor/issues/1594)) ([cdaf2cf](https://github.com/coveo/react-vapor/commit/cdaf2cf1a02f15c887d29215d0e7f69e9d5df113))
+
+
+
+
+
 ## [5.52.7](https://github.com/coveo/react-vapor/compare/v5.52.6...v5.52.7) (2020-06-11)
 
 
