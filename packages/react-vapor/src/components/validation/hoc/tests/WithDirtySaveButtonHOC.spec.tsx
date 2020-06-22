@@ -47,6 +47,18 @@ describe('WithDirtySaveButtonHOC', () => {
                 },
             },
         });
+        const storeWithMultipleErrorsAndDirty: ReturnType<typeof getStoreMock> = getStoreMock({
+            validation: {
+                [buttonValidationId]: {
+                    error: [
+                        {validationType: 'something', value: 'bad'},
+                        {validationType: 'somethingElse', value: 'veryBad'},
+                    ],
+                    warning: [],
+                    isDirty: [{validationType: 'something', value: true}],
+                },
+            },
+        });
         const storeWithWarningsAndDirty: ReturnType<typeof getStoreMock> = getStoreMock({
             validation: {
                 [buttonValidationId]: {
@@ -127,9 +139,10 @@ describe('WithDirtySaveButtonHOC', () => {
         describe('button tooltip prop', () => {
             it('should change the tooltip to the error message formatter', () => {
                 const message = 'this is bad';
+                const messageMultipleError = 'this is really bad';
                 const buttonWrapper = shallowButton(
                     {
-                        errorMessage: () => message,
+                        errorMessage: (e) => (e?.length > 1 ? messageMultipleError : message),
                     },
                     storeWithErrorsAndDirty
                 );
@@ -137,6 +150,21 @@ describe('WithDirtySaveButtonHOC', () => {
                 const tooltip = buttonWrapper.find(Button).prop('tooltip');
 
                 expect(tooltip).toEqual(message);
+            });
+
+            it('should change the tooltip to the error message formatter for multiple errors', () => {
+                const message = 'this is bad';
+                const messageMultipleErrors = 'this is really bad';
+                const buttonWrapper = shallowButton(
+                    {
+                        errorMessage: (e) => (e?.length > 1 ? messageMultipleErrors : message),
+                    },
+                    storeWithMultipleErrorsAndDirty
+                );
+
+                const tooltip = buttonWrapper.find(Button).prop('tooltip');
+
+                expect(tooltip).toEqual(messageMultipleErrors);
             });
 
             it('should change the tooltip to the warning message formatter', () => {
