@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/coveo/react-vapor/compare/v6.0.2...v6.1.0) (2020-06-23)
+
+
+### Features
+
+* **searchbar:** add selector ([#1597](https://github.com/coveo/react-vapor/issues/1597)) ([211f788](https://github.com/coveo/react-vapor/commit/211f78807e62b093da80ca550814d5d705b60baa))
+
+
+
+
+
 ## [6.0.2](https://github.com/coveo/react-vapor/compare/v6.0.1...v6.0.2) (2020-06-23)
 
 **Note:** Version bump only for package root
