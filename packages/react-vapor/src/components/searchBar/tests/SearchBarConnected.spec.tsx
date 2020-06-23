@@ -3,11 +3,11 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {clearState} from '../../utils/ReduxUtils';
-import {TestUtils} from '../../utils/tests/TestUtils';
-import {Svg} from '../svg/Svg';
-import {toggleSearchBarDisabled, toggleSearching} from './SearchBarActions';
-import {SearchBarConnected} from './SearchBarConnected';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
+import {Svg} from '../../svg/Svg';
+import {toggleSearchBarDisabled, toggleSearching} from '../SearchBarActions';
+import {SearchBarConnected} from '../SearchBarConnected';
 import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.spec';
 
 describe('SearchBarConnected', () => {

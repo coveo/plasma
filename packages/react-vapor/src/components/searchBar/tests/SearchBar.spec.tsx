@@ -1,8 +1,8 @@
 import {mount, shallow} from 'enzyme';
 import * as React from 'react';
-import {keyCode} from '../../utils/InputUtils';
-import {Svg} from '../svg/Svg';
-import {SearchBar} from './SearchBar';
+import {keyCode} from '../../../utils/InputUtils';
+import {Svg} from '../../svg/Svg';
+import {SearchBar} from '../SearchBar';
 import {searchBarPropsScenarios} from './SearchBarPropsScenarios.spec';
 
 describe('SearchBar', () => {
