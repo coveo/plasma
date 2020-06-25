@@ -3,6 +3,66 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.1.0](https://github.com/coveo/react-vapor/compare/v6.0.2...v6.1.0) (2020-06-23)
+
+
+### Features
+
+* **searchbar:** add selector ([#1597](https://github.com/coveo/react-vapor/issues/1597)) ([211f788](https://github.com/coveo/react-vapor/commit/211f78807e62b093da80ca550814d5d705b60baa))
+
+
+
+
+
+## [6.0.2](https://github.com/coveo/react-vapor/compare/v6.0.1...v6.0.2) (2020-06-23)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [6.0.1](https://github.com/coveo/react-vapor/compare/v6.0.0...v6.0.1) (2020-06-19)
+
+
+### Bug Fixes
+
+* **sliders:** add SliderActions to the Entry ([05ada9e](https://github.com/coveo/react-vapor/commit/05ada9ebf760aafe24fdb695b32da5dde87fa050))
+
+
+
+
+
+# [6.0.0](https://github.com/coveo/react-vapor/compare/v5.54.0...v6.0.0) (2020-06-19)
+
+
+### Bug Fixes
+
+* **middleslider:** accept min greater than 0 + use more intuitive marks ([daa88ce](https://github.com/coveo/react-vapor/commit/daa88ce8eb0ab23f49c34fc9222f7934535f28db))
+
+
+### BREAKING CHANGES
+
+* **middleslider:** Marks keys must now be actual values instead of ranging from 0 to 100.
+`enabled` was removed in favor of `disabled`.
+The tooltip overlay style was added by default to all handles with tooltips.
+`MiddleSlider` was renamed to `Slider` and the old `Slider` was removed.
+
+
+
+
+
+# [5.54.0](https://github.com/coveo/react-vapor/compare/v5.53.0...v5.54.0) (2020-06-19)
+
+
+### Features
+
+* **labeled value:** accept react node to insert html elements ([4f7a159](https://github.com/coveo/react-vapor/commit/4f7a1598e1f8402fa971caa2b1cb49f21192769f))
+
+
+
+
+
 # [5.53.0](https://github.com/coveo/react-vapor/compare/v5.52.8...v5.53.0) (2020-06-18)
 
 

@@ -27,7 +27,10 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: React.
         warnings,
         validationIds,
         skipDirty,
-        errorMessage = (e) => `Cannot save because of the following errors: ${e.join('\n')}`,
+        errorMessage = (e) =>
+            e?.length > 1
+                ? `Some required fields are missing. Please complete them.`
+                : `Cannot save because of the following error: ${e}`,
         warningMessage = (w) => `Can save but with warnings: ${w.join('\n')}`,
         dirtyMessage = (d) => d.length === 0 && `Cannot save when there are no changes`,
         enabled,

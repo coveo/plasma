@@ -2,13 +2,11 @@
     "packages": [
         "packages/*"
     ],
-    "version": "5.53.0",
+    "version": "6.1.0",
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "allowBranch": [
-                "master"
-            ]
+            "allowBranch": ["master"]
         },
         "version": {
             "conventionalCommits": true,
@@ -16,12 +14,7 @@
         },
         "bootstrap": {
             "hoist": true,
-            "nohoist": [
-                "unidiff",
-                "query-string",
-                "strict-uri-encode",
-                "split-on-first"
-            ]
+            "nohoist": ["unidiff", "query-string", "strict-uri-encode", "split-on-first"]
         }
     }
 }

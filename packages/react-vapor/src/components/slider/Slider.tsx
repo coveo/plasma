@@ -1,34 +1,169 @@
 import 'rc-slider/assets/index.css';
 
 import classNames from 'classnames';
-import RCSlider, {createSliderWithTooltip, SliderProps, WithTooltipProps} from 'rc-slider';
+import {Range, SliderProps} from 'rc-slider';
+import {RCTooltip} from 'rc-tooltip';
 import * as React from 'react';
+import {connect} from 'react-redux';
+import {isBoolean} from 'underscore';
 
-export interface ISliderProps {
-    slider?: WithTooltipProps & SliderProps;
-    classes?: string[];
+import {IDispatch} from '../../utils/ReduxUtils';
+import {SliderActions} from './SliderActions';
+import SliderHandle from './SliderHandle';
+import {
+    getOutputValue,
+    getValuesPositionOnRange,
+    handleIsAtCrossingPoint,
+    propsValidator,
+    valuesPositionOnRange,
+} from './SliderUtils';
+
+export enum AppendedValueSide {
+    left = 'LEFT',
+    right = 'RIGHT',
+    both = 'BOTH',
+}
+
+export interface SliderOwnProps extends SliderProps {
+    id: string;
+    initialValue?: number;
+    crossingPoint?: number;
+    tabIndex?: number[];
+    onChange?: (rangeOutputValue: number) => any;
+    customTooltip?: (value: any) => JSX.Element;
+    appendValue?: boolean | AppendedValueSide;
+    appendValueFormatter?: (
+        value: number,
+        side?: Exclude<AppendedValueSide, AppendedValueSide.both>
+    ) => React.ReactNode;
+    tooltipStyle?: Partial<RCTooltip.Props>;
     hasTooltip?: boolean;
 }
 
-const Slider: React.SFC<ISliderProps> = ({hasTooltip, slider, classes}) => {
-    const HtmlTag = hasTooltip ? createSliderWithTooltip(RCSlider) : RCSlider;
-    if (hasTooltip) {
-        (slider as any).tipProps = {
-            overlayClassName: 'vapor-slider-overlay',
-            ...slider.tipProps,
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: SliderOwnProps) => ({
+    setOutputValue: (value: number) => dispatch(SliderActions.setValue(ownProps.id, value)),
+});
+
+const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<typeof mapDispatchToProps>> = (props) => {
+    propsValidator(props);
+    const crossingPoint = props.crossingPoint ?? (props.min > 0 ? props.min : 0);
+    const [rightHandlePosition, setRightHandlePosition] = React.useState(crossingPoint);
+    const [leftHandlePosition, setLeftHandlePosition] = React.useState(crossingPoint);
+    const outputValue = getOutputValue(leftHandlePosition, rightHandlePosition, crossingPoint);
+
+    React.useEffect(() => {
+        props.onChange?.(outputValue);
+    }, [props.onChange, outputValue]);
+
+    React.useEffect(() => {
+        setHandlePosition([props.initialValue, props.initialValue]);
+    }, [props.initialValue]);
+
+    React.useEffect(() => {
+        props.setOutputValue(outputValue);
+    }, [outputValue]);
+
+    const setHandlePosition = (handlePositions: number[]) => {
+        const valuesPosition = getValuesPositionOnRange(handlePositions, crossingPoint);
+        switch (valuesPosition) {
+            case valuesPositionOnRange.lower:
+                computeNewLeftHandlePosition(handlePositions);
+                break;
+            case valuesPositionOnRange.higher:
+                computeNewRightHandlePosition(handlePositions);
+                break;
+            case valuesPositionOnRange.both:
+                leftHandlePosition === crossingPoint
+                    ? jumpValueFromHighToLowRange(handlePositions)
+                    : jumpValueFromLowToHighRange(handlePositions);
+                break;
+            default:
+                setLeftHandlePosition(handlePositions[0]);
+                setRightHandlePosition(handlePositions[1]);
+        }
+    };
+
+    const jumpValueFromHighToLowRange = (handlePositions: number[]) => {
+        setRightHandlePosition(crossingPoint);
+        setLeftHandlePosition(handlePositions[0]);
+    };
+
+    const jumpValueFromLowToHighRange = (handlePositions: number[]) => {
+        setLeftHandlePosition(crossingPoint);
+        setRightHandlePosition(handlePositions[1]);
+    };
+
+    const computeNewLeftHandlePosition = ([handleA, handleb]: number[]) => {
+        const newPosition = handleb < crossingPoint ? handleb : handleA;
+        setLeftHandlePosition(newPosition);
+    };
+
+    const computeNewRightHandlePosition = ([handleA, handleB]: number[]) => {
+        const newPosition = handleA > crossingPoint ? handleA : handleB;
+        setRightHandlePosition(newPosition);
+    };
+
+    const renderHandle = (handleProps: any) => {
+        const customProps = {
+            hasTooltip: props.hasTooltip,
+            customTooltip: props.customTooltip,
+            rangeOutput: outputValue,
         };
-    }
+        if (!handleIsAtCrossingPoint(leftHandlePosition, rightHandlePosition, handleProps.index, crossingPoint)) {
+            return (
+                <SliderHandle
+                    key={handleProps.index}
+                    handleProps={handleProps}
+                    handleCustomProps={customProps}
+                    tooltipProps={
+                        props.tooltipStyle ?? {
+                            overlayClassName: 'vapor-slider-overlay',
+                        }
+                    }
+                />
+            );
+        }
+        return null;
+    };
+
+    const valueFormatter = props.appendValueFormatter ?? ((value: number) => value);
+
+    const isAppendedLeft = props.appendValue === AppendedValueSide.both || props.appendValue === AppendedValueSide.left;
+    const isAppendedRight =
+        (isBoolean(props.appendValue) && props.appendValue) ||
+        props.appendValue === AppendedValueSide.right ||
+        props.appendValue === AppendedValueSide.both;
 
     return (
-        <div className="flex">
-            <HtmlTag className={classNames('vapor-slider input-wrapper input-field', classes)} {...slider} />
+        <div className="flex full-content-x slider-container">
+            <div
+                className={classNames('slider-value flex', {
+                    hidden: !isAppendedLeft,
+                })}
+            >
+                {valueFormatter(outputValue, AppendedValueSide.left)}
+            </div>
+            <Range
+                key={props.id}
+                value={[leftHandlePosition, rightHandlePosition]}
+                onChange={setHandlePosition}
+                handle={renderHandle}
+                className={classNames('vapor-slider input-wrapper input-field', {'appended-value': props.appendValue})}
+                marks={props.marks}
+                step={props.step}
+                disabled={props.disabled}
+                min={props.min}
+                max={props.max}
+            />
+            <div
+                className={classNames('slider-value flex', {
+                    hidden: !isAppendedRight,
+                })}
+            >
+                {valueFormatter(outputValue, AppendedValueSide.right)}
+            </div>
         </div>
     );
 };
 
-Slider.defaultProps = {
-    slider: {},
-    hasTooltip: false,
-};
-
-export {Slider};
+export const Slider = connect(null, mapDispatchToProps)(SliderDisconnected);

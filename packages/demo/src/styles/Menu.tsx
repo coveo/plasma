@@ -10,7 +10,6 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="Borders" baseUrl="/borders" isLink />
         <NavigationSection title="Cards" baseUrl="/cards">
             <NavigationLink href="/home" name="Home" />
-            <NavigationLink href="/limit" name="Limit" />
             <NavigationLink href="/material" name="Material" />
             <NavigationLink href="/wizard" name="Wizard" />
         </NavigationSection>
