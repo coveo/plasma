@@ -9,7 +9,7 @@ import {EventUtils} from '../../utils/EventUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
 import {addActionsToActionBar} from '../actions/ActionBarActions';
-import {Collapsible} from '../collapsible/Collapsible';
+import {COLLAPSIBLE_EFFECT_DURATION} from '../collapsible/CollapsibleConnected';
 import {CollapsibleToggle} from '../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {TableSelectors} from './TableSelectors';
@@ -132,8 +132,8 @@ class TableRowConnected extends React.PureComponent<
                             <SlideY
                                 id={`${this.props.tableId}-${this.props.id}-collapsible`}
                                 in={this.props.opened}
-                                timeout={Collapsible.TIMEOUT}
-                                duration={Collapsible.TIMEOUT}
+                                timeout={COLLAPSIBLE_EFFECT_DURATION}
+                                duration={COLLAPSIBLE_EFFECT_DURATION}
                             >
                                 {this.props.collapsible.content}
                             </SlideY>
