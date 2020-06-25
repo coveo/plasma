@@ -1,3 +1,4 @@
+import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {
     Button,
@@ -6,6 +7,7 @@ import {
     CollapsibleInfoBox,
     Section,
     setExpandedCollapsibleContainer,
+    Svg,
 } from 'react-vapor';
 import * as _ from 'underscore';
 
@@ -74,9 +76,43 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                     I am expanded on mount!
                 </CollapsibleContainerConnected>
             </Section>
-            <Section level={3} title="Collapsible Container not expanded on mount">
+            <Section level={3} title="Collapsible Container with customIcon">
                 <CollapsibleContainerConnected
                     id="collapsible-container-example-2"
+                    title="CollapsibleContainer with custom icon"
+                    informationUrl="http://coveo.github.io/vapor/"
+                    informationTooltip={{
+                        title:
+                            "I display information and if you click me you'll be led to a url that was provided to me.",
+                        placement: 'top',
+                    }}
+                    collapsibleToggleIcon={
+                        <span className="flex space-between center-align">
+                            <Svg svgName={VaporSVG.svg.add.name} svgClass="icon" />
+                        </span>
+                    }
+                >
+                    something!
+                </CollapsibleContainerConnected>
+            </Section>
+            <Section level={3} title="Collapsible Container disabled">
+                <CollapsibleContainerConnected
+                    id="collapsible-container-example-3"
+                    title="CollapsibleContainer disabled"
+                    informationUrl="http://coveo.github.io/vapor/"
+                    informationTooltip={{
+                        title:
+                            "I display information and if you click me you'll be led to a url that was provided to me.",
+                        placement: 'top',
+                    }}
+                    disabled
+                >
+                    something!
+                </CollapsibleContainerConnected>
+            </Section>
+            <Section level={3} title="Collapsible Container not expanded on mount">
+                <CollapsibleContainerConnected
+                    id="collapsible-container-example-4"
                     title="CollapsibleContainer not expanded on mount"
                     informationTooltip={{
                         title: 'I display information only since no url was given to me.',
@@ -93,17 +129,17 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                     name="Toggle Container"
                     onClick={() => {
                         const collapsibleState = _.findWhere(Store.getState().collapsibles, {
-                            id: 'collapsible-container-example-3',
+                            id: 'collapsible-container-example-5',
                         });
                         Store.dispatch(
                             setExpandedCollapsibleContainer(
-                                'collapsible-container-example-3',
+                                'collapsible-container-example-5',
                                 !collapsibleState.expanded
                             )
                         );
                     }}
                 />
-                <CollapsibleContainerConnected id="collapsible-container-example-3" title="CollapsibleContainer">
+                <CollapsibleContainerConnected id="collapsible-container-example-5" title="CollapsibleContainer">
                     You just expanded me with a button!
                 </CollapsibleContainerConnected>
             </Section>

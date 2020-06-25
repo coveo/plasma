@@ -60,6 +60,10 @@
         height: 5em;
         vertical-align: -2em;
     }
+    &.disabled {
+        opacity: $transparency-4;
+        fill: $light-grey;
+    }
 }
 
 .icon-container {

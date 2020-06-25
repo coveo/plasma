@@ -7,6 +7,7 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {setCollapsibleExpanded} from '../CollapsibleActions';
 import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected';
+import {CollapsibleToggle} from '../CollapsibleToggle';
 import {collapsiblePossibleProps} from './CollapsibleTestCommon.spec';
 
 describe('<CollapsibleConnected />', () => {
@@ -72,6 +73,24 @@ describe('<CollapsibleConnected />', () => {
             it('should render header content', () => {
                 mountComponentWithProps({headerContent: <div className="test">test</div>});
                 expect(wrapper.find('.test').length).toBe(1);
+            });
+
+            it('should render the CollapsibleToggle if no custom collapsible icon defined', () => {
+                mountComponentWithProps();
+
+                expect(wrapper.find(CollapsibleToggle).length).toBe(1);
+            });
+
+            it('should not render the CollapsibleToggle if a custom collapsible icon is defined', () => {
+                mountComponentWithProps({collapsibleToggleIcon: <div className="test">test</div>});
+
+                expect(wrapper.find(CollapsibleToggle).length).toBe(0);
+            });
+
+            it('should set the class disabled on collapsible if disabled', () => {
+                mountComponentWithProps({disabled: true});
+
+                expect(wrapper.find(CollapsibleToggle).props().svgClassName).toContain('disabled');
             });
         });
     });
