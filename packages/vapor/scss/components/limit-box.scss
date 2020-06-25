@@ -17,7 +17,8 @@
     width: 50%;
 }
 
-.limit-box-usage-value {
+.limit-box-usage-value,
+.limit-box-limit-value {
     display: block;
     width: 100%;
     height: $input-height;
