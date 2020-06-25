@@ -3,7 +3,7 @@ import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {any} from 'underscore';
-import _ from 'underscore';
+import * as _ from 'underscore';
 import {clearState} from '../../../utils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {InputConnected} from '../../input';
