@@ -2,11 +2,11 @@ import {mount, ReactWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {InputConnected} from 'react-vapor';
 import {any} from 'underscore';
 import _ from 'underscore';
 import {clearState} from '../../../utils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {InputConnected} from '../../input';
 import {Limit, LimitProps} from '../Limit';
 
 describe('Limit', () => {
