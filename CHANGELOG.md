@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.1](https://github.com/coveo/react-vapor/compare/v6.1.0...v6.1.1) (2020-06-26)
+
+
+### Bug Fixes
+
+* upgrade diff2html from 3.1.2 to 3.1.7 ([0b74a06](https://github.com/coveo/react-vapor/commit/0b74a06e7e7426e4984118ee18683b116fe89509))
+* upgrade query-string from 6.8.3 to 6.12.1 ([fcaa2b6](https://github.com/coveo/react-vapor/commit/fcaa2b64066dd1f865011b68deb88aa133da21a2))
+* upgrade react-infinite-scroll-component from 4.2.0 to 4.5.3 ([209d2ee](https://github.com/coveo/react-vapor/commit/209d2ee1897cac9e3a2c58ef72c386f802c2e21f))
+
+
+
+
+
 # [6.1.0](https://github.com/coveo/react-vapor/compare/v6.0.2...v6.1.0) (2020-06-23)
 
 
