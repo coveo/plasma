@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.1.2](https://github.com/coveo/react-vapor/compare/v6.1.1...v6.1.2) (2020-06-29)
+
+
+### Bug Fixes
+
+* upgrade react-bootstrap from 0.32.4 to 0.33.1 ([f0ba951](https://github.com/coveo/react-vapor/commit/f0ba951cf9a109eafa9627ebd21cab4f2401ebef))
+* upgrade react-modal from 3.10.1 to 3.11.2 ([725b71a](https://github.com/coveo/react-vapor/commit/725b71a8583e9c890ce8e6a31da30dd058a922aa))
+
+
+
+
+
 ## [6.1.1](https://github.com/coveo/react-vapor/compare/v6.1.0...v6.1.1) (2020-06-26)
 
 
