@@ -30,30 +30,10 @@ export const RadioButtonExamples: ExampleComponent = () => (
     </Section>
 );
 
-const generateRadioDivision = (id: string, value: string, label: string, description: string) => {
-    const radioProps = {
-        id: id,
-        name: 'rankingResult',
-        value: value,
-        outerContainerClass: 'modal-radio-button',
-        outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
-    };
-    const paragraphStyle = {
-        marginLeft: 36,
-        marginTop: 10,
-        marginRight: 36,
-    };
-
-    return (
-        <Radio {...radioProps}>
-            <Label>
-                <span style={{fontWeight: 'bold'}}>{label}</span>
-            </Label>
-            <InputDescription>
-                <div style={{...paragraphStyle}}>{description}</div>
-            </InputDescription>
-        </Radio>
-    );
+const paragraphStyle = {
+    marginLeft: 36,
+    marginTop: 10,
+    marginRight: 36,
 };
 
 RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
@@ -61,6 +41,22 @@ RadioButtonExamples.description = 'Radio Buttons allow for the selection o
 const radioSelectConnectedId = 'radioselectconnected';
 
 // start-print
+
+const blueRadioButtonProps = {
+    id: 'blue',
+    name: 'rankingResult',
+    value: 'blue',
+    outerContainerClass: 'modal-radio-button',
+    outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
+};
+
+const redRadioButtonProps = {
+    id: 'red',
+    name: 'rankingResult',
+    value: 'red',
+    outerContainerClass: 'modal-radio-button',
+    outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
+};
 
 const RadioSelectExample: React.FunctionComponent = () => (
     <Section level={2} title="Radio select with redux store">
@@ -124,8 +120,22 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
 const RadioSelectWithDivWrapAroundRadioButtonExample: React.FunctionComponent = () => (
     <Section level={3} title="A radio select with radio button that has a container.">
         <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
-            {generateRadioDivision('blue', 'blue', 'Blue color', 'The color I like the most is blue.')}
-            {generateRadioDivision('red', 'red', 'Red color', 'The color I like the most is red.')}
+            <Radio {...blueRadioButtonProps}>
+                <Label>
+                    <span style={{fontWeight: 'bold'}}>{'Blue color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
+                </InputDescription>
+            </Radio>
+            <Radio {...redRadioButtonProps}>
+                <Label>
+                    <span style={{fontWeight: 'bold'}}>{'Red color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                </InputDescription>
+            </Radio>
         </RadioSelectConnected>
     </Section>
 );
