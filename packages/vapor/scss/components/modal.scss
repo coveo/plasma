@@ -247,3 +247,10 @@ $icon-size: (4em / 3);
         padding: $modal-footer-small-padding;
     }
 }
+
+.modal-radio-button {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-bottom: 21px;
+}

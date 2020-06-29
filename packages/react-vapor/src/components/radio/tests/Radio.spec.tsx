@@ -1,8 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
-import {IInputProps} from '../../input/Input';
-import {Radio} from '../Radio';
+import {Radio, RadioProps} from '../Radio';
 
 describe('Radio', () => {
     const anId = 'patate';
@@ -16,7 +15,7 @@ describe('Radio', () => {
     });
 
     describe('<Radio />', () => {
-        let radio: ReactWrapper<IInputProps, any>;
+        let radio: ReactWrapper<RadioProps, any>;
 
         beforeEach(() => {
             radio = mount(<Radio id={anId} />, {attachTo: document.getElementById('App')});
@@ -98,6 +97,51 @@ describe('Radio', () => {
                 .mount()
                 .update();
             expect(radio.find('div').hasClass(innerClass)).toBe(true);
+        });
+
+        it('should set outerClasses when specified', () => {
+            const outerContainerClass = 'salut-externe';
+            expect(
+                radio
+                    .find('div')
+                    .first()
+                    .hasClass(outerContainerClass)
+            ).toBe(false);
+
+            radio
+                .setProps({outerContainerClass})
+                .mount()
+                .update();
+            expect(
+                radio
+                    .find('div')
+                    .first()
+                    .hasClass(outerContainerClass)
+            ).toBe(true);
+        });
+
+        it('should set two div tags when the outerContainerClass is set', () => {
+            const outerContainerClass = 'salut-externe';
+            radio
+                .setProps({outerContainerClass})
+                .mount()
+                .update();
+            expect(radio.find('div').length).toBe(2);
+        });
+
+        it('should set only one div tag when the outerContainerClass is not set', () => {
+            radio.mount().update();
+            expect(radio.find('div').length).toBe(1);
+        });
+
+        it('should includes the element set in the outerElementInContainer props if its set', () => {
+            const outerElementInContainer = <img src="https://via.placeholder.com/150x100" />;
+            expect(radio.find('img').length).toBe(0);
+            radio
+                .setProps({outerElementInContainer})
+                .mount()
+                .update();
+            expect(radio.find('img').length).toBe(1);
         });
 
         it('should call prop onChange when specified on click', () => {

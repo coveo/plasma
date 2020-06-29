@@ -57,6 +57,8 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
                 checked: this.props.value === child.props.value,
                 disabled: this.isValueDisabled(child.props.value),
                 disabledTooltip: this.props.disabledTooltip,
+                outerContainerClass: child.props.outerContainerClass,
+                outerElementInContainer: child.props.outerElementInContainer,
                 onClick: (e: React.MouseEvent<HTMLElement>) => {
                     child.props.onClick && child.props.onClick(e);
                     this.handleToggle(child.props.value, e);

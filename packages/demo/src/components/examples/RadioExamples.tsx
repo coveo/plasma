@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
     Button,
+    InputDescription,
     IRadioSelectProps,
     Label,
     LabeledInput,
@@ -25,8 +26,35 @@ export const RadioButtonExamples: ExampleComponent = () => (
     <Section title="Radio set">
         <RadioSelectExample />
         <RadioSelectDisabledExample />
+        <RadioSelectWithDivWrapAroundRadioButtonExample />
     </Section>
 );
+
+const generateRadioDivision = (id: string, value: string, label: string, description: string) => {
+    const radioProps = {
+        id: id,
+        name: 'rankingResult',
+        value: value,
+        outerContainerClass: 'modal-radio-button',
+        outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
+    };
+    const paragraphStyle = {
+        marginLeft: 36,
+        marginTop: 10,
+        marginRight: 36,
+    };
+
+    return (
+        <Radio {...radioProps}>
+            <Label>
+                <span style={{fontWeight: 'bold'}}>{label}</span>
+            </Label>
+            <InputDescription>
+                <div style={{...paragraphStyle}}>{description}</div>
+            </InputDescription>
+        </Radio>
+    );
+};
 
 RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
 
@@ -90,5 +118,14 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
                 </Radio>
             </RadioSelectConnected>
         </LabeledInput>
+    </Section>
+);
+
+const RadioSelectWithDivWrapAroundRadioButtonExample: React.FunctionComponent = () => (
+    <Section level={3} title="A radio select with radio button that has a container.">
+        <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
+            {generateRadioDivision('blue', 'blue', 'Blue color', 'The color I like the most is blue.')}
+            {generateRadioDivision('red', 'red', 'Red color', 'The color I like the most is red.')}
+        </RadioSelectConnected>
     </Section>
 );
