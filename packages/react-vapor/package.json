@@ -44,7 +44,7 @@
         "react-color": "2.17.3",
         "react-infinite-scroll-component": "4.5.3",
         "react-modal": "3.11.2",
-        "react-tether": "1.0.4",
+        "react-tether": "1.0.5",
         "react-textarea-autosize": "7.1.0",
         "snyk": "^1.316.1",
         "split-on-first": "1.x.x",
