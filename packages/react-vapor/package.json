@@ -37,7 +37,7 @@
     },
     "dependencies": {
         "diff2html": "3.1.7",
-        "query-string": "6.12.1",
+        "query-string": "6.13.0",
         "rc-slider": "8.7.1",
         "react-bootstrap": "0.33.1",
         "react-codemirror2": "7.2.0",
