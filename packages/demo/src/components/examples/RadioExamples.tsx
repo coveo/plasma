@@ -118,7 +118,7 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
 );
 
 const RadioSelectWithDivWrapAroundRadioButtonExample: React.FunctionComponent = () => (
-    <Section level={3} title="A radio select with radio button that has a container.">
+    <Section level={3} title="A radio select with a wrapped radio button.">
         <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
             <Radio {...blueRadioButtonProps}>
                 <Label>
