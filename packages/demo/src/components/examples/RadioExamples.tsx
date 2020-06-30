@@ -42,20 +42,22 @@ const radioSelectConnectedId = 'radioselectconnected';
 
 // start-print
 
-const blueRadioButtonProps = {
-    id: 'blue',
+const radioButtonProps = {
     name: 'rankingResult',
-    value: 'blue',
     outerContainerClass: 'modal-radio-button',
     outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
 };
 
+const blueRadioButtonProps = {
+    id: 'blue',
+    value: 'blue',
+    ...radioButtonProps,
+};
+
 const redRadioButtonProps = {
     id: 'red',
-    name: 'rankingResult',
     value: 'red',
-    outerContainerClass: 'modal-radio-button',
-    outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
+    ...radioButtonProps,
 };
 
 const RadioSelectExample: React.FunctionComponent = () => (
@@ -122,7 +124,7 @@ const RadioSelectWithDivWrapAroundRadioButtonExample: React.FunctionComponent = 
         <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
             <Radio {...blueRadioButtonProps}>
                 <Label>
-                    <span style={{fontWeight: 'bold'}}>{'Blue color'}</span>
+                    <span className="bold">{'Blue color'}</span>
                 </Label>
                 <InputDescription>
                     <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
@@ -130,7 +132,7 @@ const RadioSelectWithDivWrapAroundRadioButtonExample: React.FunctionComponent = 
             </Radio>
             <Radio {...redRadioButtonProps}>
                 <Label>
-                    <span style={{fontWeight: 'bold'}}>{'Red color'}</span>
+                    <span className="bold">{'Red color'}</span>
                 </Label>
                 <InputDescription>
                     <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
