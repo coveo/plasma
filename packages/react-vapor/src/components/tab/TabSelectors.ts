@@ -1,11 +1,10 @@
 import _ from 'underscore';
 
-import {DEFAULT_GROUP_ID, ITabGroupState, ITabPaneOwnProps} from '.';
+import {DEFAULT_GROUP_ID, ITabPaneOwnProps} from '.';
 import {IReactVaporState} from '../../ReactVapor';
 
 const getTabGroup = (state: IReactVaporState, ownProps: ITabPaneOwnProps) => {
-    const id = ownProps.groupId ?? DEFAULT_GROUP_ID;
-    return _.find(state.tabs, (currentTabGroup: ITabGroupState) => currentTabGroup.id === id);
+    return _.findWhere(state.tabs, {id: ownProps.groupId ?? DEFAULT_GROUP_ID});
 };
 
 export const TabSelectors = {
