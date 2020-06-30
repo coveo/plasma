@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.2.0](https://github.com/coveo/react-vapor/compare/v6.1.2...v6.2.0) (2020-06-30)
+
+
+### Features
+
+* **tab component:** +tab selector for tabconnected component + UTs ([9ccdaa0](https://github.com/coveo/react-vapor/commit/9ccdaa06cdb5c072c8fd8e3691d766d91f57878c))
+* **tabselectors.ts:** use findWhere instead of find from underscore ([5bd0b48](https://github.com/coveo/react-vapor/commit/5bd0b48f60909a2929f6673ce7f37e54decc9163))
+
+
+
+
+
 ## [6.1.2](https://github.com/coveo/react-vapor/compare/v6.1.1...v6.1.2) (2020-06-29)
 
 
