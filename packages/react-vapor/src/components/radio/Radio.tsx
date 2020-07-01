@@ -9,32 +9,28 @@ export interface RadioOwnProps {
 
 export interface RadioProps extends RadioOwnProps, IInputProps {}
 
-export class Radio extends React.PureComponent<RadioProps> {
-    static defaultProps: Partial<RadioProps> = {
-        ...Input.defaultProps,
-        checked: false,
-        disabled: false,
-    };
+export const Radio: React.FunctionComponent<RadioProps> = (props) => {
+    const outerContainerClasses: string =
+        !!props.outerContainerClass && classNames('radio-option', props.outerContainerClass);
+    const classes: string = classNames('radio-option', props.classes);
+    return outerContainerClasses ? (
+        <div className={outerContainerClasses}>
+            <RadioInputContent props={props} classes={classes} />
+        </div>
+    ) : (
+        <RadioInputContent props={props} classes={classes} />
+    );
+};
 
-    private getRadioInputContent = (props: RadioProps, classes: string): React.ReactNode => {
-        type InputProps = Omit<RadioProps, 'elementOuterContainer | outerContainerClasses'>;
-        const inputProps: InputProps = {...props};
-        return (
-            <>
-                <Input {...inputProps} classes={[classes]} type="radio" />
-                {props.outerElementInContainer}
-            </>
-        );
-    };
+const RadioInputContent: React.FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => (
+    <>
+        <Input {...props} classes={[classes]} type="radio" />
+        {props.outerElementInContainer}
+    </>
+);
 
-    render() {
-        const outerContainerClasses: string =
-            !!this.props.outerContainerClass && classNames('radio-option', this.props.outerContainerClass);
-        const classes: string = classNames('radio-option', this.props.classes);
-        return outerContainerClasses ? (
-            <div className={outerContainerClasses}>{this.getRadioInputContent({...this.props}, classes)}</div>
-        ) : (
-            <>{this.getRadioInputContent({...this.props}, classes)}</>
-        );
-    }
-}
+Radio.defaultProps = {
+    ...Input.defaultProps,
+    checked: false,
+    disabled: false,
+};
