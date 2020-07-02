@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.3.1](https://github.com/coveo/react-vapor/compare/v6.3.0...v6.3.1) (2020-07-02)
+
+
+### Bug Fixes
+
+* **index.ts:** added tabselectors in index.ts so i can use it in admin ([3ad859f](https://github.com/coveo/react-vapor/commit/3ad859ff7aa333e373df5a206b48a8a8afe5e1d4))
+
+
+
+
+
 # [6.3.0](https://github.com/coveo/react-vapor/compare/v6.2.1...v6.3.0) (2020-07-02)
 
 
