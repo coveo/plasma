@@ -26,7 +26,7 @@ export const RadioButtonExamples: ExampleComponent = () => (
     <Section title="Radio set">
         <RadioSelectExample />
         <RadioSelectDisabledExample />
-        <RadioSelectWithDivWrapAroundRadioButtonExample />
+        <RadioSelectWrappedExample />
     </Section>
 );
 
@@ -119,7 +119,7 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
     </Section>
 );
 
-const RadioSelectWithDivWrapAroundRadioButtonExample: React.FunctionComponent = () => (
+const RadioSelectWrappedExample: React.FunctionComponent = () => (
     <Section level={3} title="A radio select with a wrapped radio button.">
         <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
             <Radio {...blueRadioButtonProps}>
