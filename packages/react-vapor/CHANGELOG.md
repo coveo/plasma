@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.2.1](https://github.com/coveo/react-vapor/compare/v6.2.0...v6.2.1) (2020-07-02)
+
+
+### Bug Fixes
+
+* **sub navigation:** fixed the link prop and small refactor ([37bd8b4](https://github.com/coveo/react-vapor/commit/37bd8b4e43a0a9a6d4a082913a22d233e8f6e31a))
+
+
+
+
+
 # [6.2.0](https://github.com/coveo/react-vapor/compare/v6.1.2...v6.2.0) (2020-06-30)
 
 
