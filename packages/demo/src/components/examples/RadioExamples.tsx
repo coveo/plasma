@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {
     Button,
+    InputDescription,
     IRadioSelectProps,
     Label,
     LabeledInput,
@@ -25,14 +26,39 @@ export const RadioButtonExamples: ExampleComponent = () => (
     <Section title="Radio set">
         <RadioSelectExample />
         <RadioSelectDisabledExample />
+        <RadioSelectWrappedExample />
     </Section>
 );
+
+const paragraphStyle = {
+    marginLeft: 36,
+    marginTop: 10,
+    marginRight: 36,
+};
 
 RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
 
 const radioSelectConnectedId = 'radioselectconnected';
 
 // start-print
+
+const radioButtonProps = {
+    name: 'rankingResult',
+    outerContainerClass: 'modal-radio-button',
+    outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
+};
+
+const blueRadioButtonProps = {
+    id: 'blue',
+    value: 'blue',
+    ...radioButtonProps,
+};
+
+const redRadioButtonProps = {
+    id: 'red',
+    value: 'red',
+    ...radioButtonProps,
+};
 
 const RadioSelectExample: React.FunctionComponent = () => (
     <Section level={2} title="Radio select with redux store">
@@ -90,5 +116,28 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
                 </Radio>
             </RadioSelectConnected>
         </LabeledInput>
+    </Section>
+);
+
+const RadioSelectWrappedExample: React.FunctionComponent = () => (
+    <Section level={3} title="A radio select with a wrapped radio button.">
+        <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
+            <Radio {...blueRadioButtonProps}>
+                <Label>
+                    <span className="bold">{'Blue color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
+                </InputDescription>
+            </Radio>
+            <Radio {...redRadioButtonProps}>
+                <Label>
+                    <span className="bold">{'Red color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                </InputDescription>
+            </Radio>
+        </RadioSelectConnected>
     </Section>
 );

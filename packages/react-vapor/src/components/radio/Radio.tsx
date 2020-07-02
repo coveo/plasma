@@ -2,15 +2,35 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {IInputProps, Input} from '../input/Input';
 
-export class Radio extends Input {
-    static defaultProps: Partial<IInputProps> = {
-        ...Input.defaultProps,
-        checked: false,
-        disabled: false,
-    };
-
-    render() {
-        const classes: string = classNames('radio-option', this.props.classes);
-        return <Input {...this.props} classes={[classes]} type="radio" />;
-    }
+export interface RadioOwnProps {
+    outerContainerClass?: string;
+    outerElementInContainer?: React.ReactNode;
 }
+
+export interface RadioProps extends RadioOwnProps, IInputProps {}
+
+export const Radio: React.FunctionComponent<RadioProps> = (props) => {
+    const outerContainerClasses: string =
+        !!props.outerContainerClass && classNames('radio-option', props.outerContainerClass);
+    const classes: string = classNames('radio-option', props.classes);
+    return outerContainerClasses ? (
+        <div className={outerContainerClasses}>
+            <RadioInputContent props={props} classes={classes} />
+        </div>
+    ) : (
+        <RadioInputContent props={props} classes={classes} />
+    );
+};
+
+const RadioInputContent: React.FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => (
+    <>
+        <Input {...props} classes={[classes]} type="radio" />
+        {props.outerElementInContainer}
+    </>
+);
+
+Radio.defaultProps = {
+    ...Input.defaultProps,
+    checked: false,
+    disabled: false,
+};
