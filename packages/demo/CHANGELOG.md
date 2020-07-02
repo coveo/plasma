@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.3.0](https://github.com/coveo/react-vapor/compare/v6.2.1...v6.3.0) (2020-07-02)
+
+
+### Features
+
+* **radio-button:** add a optional wrapper for the radio button ([ad21be5](https://github.com/coveo/react-vapor/commit/ad21be584cd95e9fd4eb8693f6ff1298685ec3e1))
+
+
+
+
+
 ## [6.2.1](https://github.com/coveo/react-vapor/compare/v6.2.0...v6.2.1) (2020-07-02)
 
 **Note:** Version bump only for package react-vapor-demo
