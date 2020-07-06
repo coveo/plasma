@@ -47,6 +47,8 @@ describe('TabSelector', () => {
             const expectedTabGroup = tabGroupState.tabs[0];
             expect(tabGroup).toEqual(expectedTabGroup);
         });
+    });
+    describe('getTabSelected', () => {
         it('should return true if a tab is selected, false if not', () => {
             const tabGroupState = {
                 id: DEFAULT_GROUP_ID,
