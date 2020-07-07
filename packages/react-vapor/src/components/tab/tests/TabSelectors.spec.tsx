@@ -48,4 +48,28 @@ describe('TabSelector', () => {
             expect(tabGroup).toEqual(expectedTabGroup);
         });
     });
+    describe('getTabSelected', () => {
+        it('should return true if a tab is selected, false if not', () => {
+            const tabGroupState = {
+                id: DEFAULT_GROUP_ID,
+                tabs: [
+                    {id: 'coulili-zazou', isSelected: true},
+                    {id: 'gros-boudesse', isSelected: false},
+                ],
+            };
+            expect(TabSelectors.getTabSelected('coulili-zazou').resultFunc(tabGroupState)).toBe(true);
+            expect(TabSelectors.getTabSelected('gros-boudesse').resultFunc(tabGroupState)).toBe(false);
+        });
+
+        it('should return false if the tab does not exist in the state', () => {
+            const tabGroupState = {
+                id: DEFAULT_GROUP_ID,
+                tabs: [
+                    {id: 'coulili-zazou', isSelected: true},
+                    {id: 'gros-boudesse', isSelected: false},
+                ],
+            };
+            expect(TabSelectors.getTabSelected('who-am-i').resultFunc(tabGroupState)).toBe(false);
+        });
+    });
 });
