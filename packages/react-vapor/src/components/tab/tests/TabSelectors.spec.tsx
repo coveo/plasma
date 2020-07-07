@@ -69,7 +69,7 @@ describe('TabSelector', () => {
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
-            expect(TabSelectors.getTabSelected('who-am-i').resultFunc(tabGroupState)).toBe(undefined);
+            expect(TabSelectors.getTabSelected('who-am-i').resultFunc(tabGroupState)).toBe(false);
         });
     });
 });
