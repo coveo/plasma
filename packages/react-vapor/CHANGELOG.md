@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/coveo/react-vapor/compare/v6.3.1...v6.4.0) (2020-07-07)
+
+
+### Features
+
+* **tabselector.ts:** added a selector for selected tab ([240605b](https://github.com/coveo/react-vapor/commit/240605b984d7e96ae464385094242281a77c256a))
+
+
+
+
+
 ## [6.3.1](https://github.com/coveo/react-vapor/compare/v6.3.0...v6.3.1) (2020-07-02)
 
 
