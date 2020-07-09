@@ -3,7 +3,7 @@ import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import {map, omit} from 'underscore';
 
-export interface ISubNavigationOwnProps extends React.ClassAttributes<SubNavigation> {
+export interface ISubNavigationOwnProps {
     id?: string;
     items: ISubNavigationItem[];
     defaultSelected?: string;
@@ -33,39 +33,45 @@ export interface ISubNavigationProps
 
 const ISubNavigationPropsToOmit = keys<ISubNavigationProps>();
 
-export class SubNavigation extends React.PureComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> {
-    componentWillMount() {
-        this.props.onRender?.();
-    }
+export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> = ({
+    onDestroy,
+    onRender,
+    selected,
+    defaultSelected,
+    onClickItem,
+    items,
+    className,
+    ...props
+}) => {
+    React.useEffect(() => {
+        onRender?.();
+        return () => onDestroy?.();
+    }, []);
+    const navProps = omit(props, ISubNavigationPropsToOmit);
 
-    componentWillUnmount() {
-        this.props.onDestroy?.();
-    }
-
-    render() {
-        const selected = this.props.selected || this.props.defaultSelected;
-        const navProps = omit(this.props, ISubNavigationPropsToOmit);
-        const items = map(this.props.items, ({id, link, label, disabled}: ISubNavigationItem) => (
-            <li key={id} className={classNames('sub-navigation-item', {'mod-selected': id === selected})}>
-                <a
-                    href={link || '#'}
-                    className={classNames('sub-navigation-item-link', {disabled})}
-                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => this.handleItemClick(e, id)}
-                >
-                    {label}
-                </a>
-            </li>
-        ));
-
-        return (
-            <nav {...navProps} className={classNames('sub-navigation', navProps.className)}>
-                <ul className="sub-navigation-items">{items}</ul>
-            </nav>
-        );
-    }
-
-    private handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
-        e.preventDefault();
-        this.props.onClickItem?.(id);
+    const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+        onClickItem?.(id);
+        return true;
     };
-}
+
+    const navItems = map(items, ({id, link, label, disabled}: ISubNavigationItem) => (
+        <li
+            key={id}
+            className={classNames('sub-navigation-item', {'mod-selected': id === selected || id === defaultSelected})}
+        >
+            <a
+                href={link}
+                className={classNames('sub-navigation-item-link', {disabled})}
+                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+            >
+                {label}
+            </a>
+        </li>
+    ));
+
+    return (
+        <nav {...navProps} className={classNames('sub-navigation', className)}>
+            <ul className="sub-navigation-items">{navItems}</ul>
+        </nav>
+    );
+};

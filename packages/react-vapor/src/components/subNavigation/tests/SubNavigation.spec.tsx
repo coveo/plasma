@@ -1,7 +1,8 @@
-import {shallow, ShallowWrapper} from 'enzyme';
+import {mount, shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {noop} from 'underscore';
 
+import {act} from 'react-dom/test-utils';
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
 
 describe('SubNavigation', () => {
@@ -27,14 +28,17 @@ describe('SubNavigation', () => {
 
     it('should call onRender when the element is created', () => {
         const spy = jasmine.createSpy('onRender');
-        shallow(<SubNavigation items={[]} defaultSelected="" onRender={spy} />);
+        const wrapper = mount(<SubNavigation items={[]} defaultSelected="" onRender={spy} />);
+        act(() => {
+            wrapper.update();
+        });
 
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
     it('should call onDestroy when the element is created', () => {
         const spy = jasmine.createSpy('onDestroy');
-        const subNav = shallow(<SubNavigation items={[]} defaultSelected="" onDestroy={spy} />);
+        const subNav = mount(<SubNavigation items={[]} defaultSelected="" onDestroy={spy} />);
         subNav.unmount();
 
         expect(spy).toHaveBeenCalledTimes(1);

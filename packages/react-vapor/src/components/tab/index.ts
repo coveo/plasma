@@ -6,3 +6,4 @@ export * from './TabNavigation';
 export * from './TabPane';
 export * from './TabPaneConnected';
 export * from './TabReducers';
+export * from './TabSelectors';

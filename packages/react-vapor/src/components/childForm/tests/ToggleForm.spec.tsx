@@ -60,7 +60,7 @@ describe('ToggleForm', () => {
                 .update();
             expect(
                 toggleForm
-                    .find('Radio')
+                    .find(Radio)
                     .first()
                     .prop('checked')
             ).toBe(false);
@@ -71,7 +71,7 @@ describe('ToggleForm', () => {
                 .update();
             expect(
                 toggleForm
-                    .find('Radio')
+                    .find(Radio)
                     .first()
                     .prop('checked')
             ).toBe(true);
