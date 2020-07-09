@@ -3,6 +3,21 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.1](https://github.com/coveo/react-vapor/compare/v6.4.0...v6.4.1) (2020-07-09)
+
+
+### Bug Fixes
+
+* upgrade diff2html from 3.1.7 to 3.1.8 ([0ae443c](https://github.com/coveo/react-vapor/commit/0ae443ce4b4280642ba9c0759d7510e124cfb430))
+* upgrade query-string from 6.12.1 to 6.13.0 ([ac7bfa8](https://github.com/coveo/react-vapor/commit/ac7bfa8911bb5784b40a0cb50e28b781aeee0c65))
+* upgrade react-codemirror2 from 7.2.0 to 7.2.1 ([c7c14a8](https://github.com/coveo/react-vapor/commit/c7c14a814cfd10a53965abe5cd519397796fed96))
+* upgrade react-tether from 1.0.4 to 1.0.5 ([a69cb32](https://github.com/coveo/react-vapor/commit/a69cb3279ff0b74e51e3ff8bccc07eb0cd9af6c3))
+* upgrade react-textarea-autosize from 7.1.0 to 7.1.2 ([7c05eda](https://github.com/coveo/react-vapor/commit/7c05eda041bfdf19a3c57a43117dcba1ba4fa1ef))
+
+
+
+
+
 # [6.4.0](https://github.com/coveo/react-vapor/compare/v6.3.1...v6.4.0) (2020-07-07)
 
 
