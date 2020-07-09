@@ -1,6 +1,7 @@
 import {mount, ReactWrapper} from 'enzyme';
 // tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
@@ -33,6 +34,9 @@ describe('SubNavigation', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
+            act(() => {
+                wrapper.update();
+            });
             subNavigation = wrapper.find(SubNavigation);
         });
 
@@ -99,6 +103,9 @@ describe('SubNavigation', () => {
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
+            act(() => {
+                wrapper.update();
+            });
 
             expect(findWhere(store.getState().subNavigations, {id: props.id}).selected).toBe(props.items[0].id);
             wrapper.unmount();

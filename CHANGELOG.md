@@ -3,6 +3,62 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.4.0](https://github.com/coveo/react-vapor/compare/v6.3.1...v6.4.0) (2020-07-07)
+
+
+### Features
+
+* **tabselector.ts:** added a selector for selected tab ([240605b](https://github.com/coveo/react-vapor/commit/240605b984d7e96ae464385094242281a77c256a))
+
+
+
+
+
+## [6.3.1](https://github.com/coveo/react-vapor/compare/v6.3.0...v6.3.1) (2020-07-02)
+
+
+### Bug Fixes
+
+* **index.ts:** added tabselectors in index.ts so i can use it in admin ([3ad859f](https://github.com/coveo/react-vapor/commit/3ad859ff7aa333e373df5a206b48a8a8afe5e1d4))
+
+
+
+
+
+# [6.3.0](https://github.com/coveo/react-vapor/compare/v6.2.1...v6.3.0) (2020-07-02)
+
+
+### Features
+
+* **radio-button:** add a optional wrapper for the radio button ([ad21be5](https://github.com/coveo/react-vapor/commit/ad21be584cd95e9fd4eb8693f6ff1298685ec3e1))
+
+
+
+
+
+## [6.2.1](https://github.com/coveo/react-vapor/compare/v6.2.0...v6.2.1) (2020-07-02)
+
+
+### Bug Fixes
+
+* **sub navigation:** fixed the link prop and small refactor ([37bd8b4](https://github.com/coveo/react-vapor/commit/37bd8b4e43a0a9a6d4a082913a22d233e8f6e31a))
+
+
+
+
+
+# [6.2.0](https://github.com/coveo/react-vapor/compare/v6.1.2...v6.2.0) (2020-06-30)
+
+
+### Features
+
+* **tab component:** +tab selector for tabconnected component + UTs ([9ccdaa0](https://github.com/coveo/react-vapor/commit/9ccdaa06cdb5c072c8fd8e3691d766d91f57878c))
+* **tabselectors.ts:** use findWhere instead of find from underscore ([5bd0b48](https://github.com/coveo/react-vapor/commit/5bd0b48f60909a2929f6673ce7f37e54decc9163))
+
+
+
+
+
 ## [6.1.2](https://github.com/coveo/react-vapor/compare/v6.1.1...v6.1.2) (2020-06-29)
 
 
