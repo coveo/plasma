@@ -1,132 +1,76 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {CodeEditor} from '../CodeEditor';
-import {IJSONEditorProps, IJSONEditorState, JSONEditor} from '../JSONEditor';
+import {CodeMirrorModes} from '../EditorConstants';
+import {IJSONEditorProps, JSONEditor} from '../JSONEditor';
+import {JSONEditorUtils} from '../JSONEditorUtils';
 
-describe('JSONEditor', () => {
+describe('<JSONEditor />', () => {
+    let component: ShallowWrapper;
     const basicProps: IJSONEditorProps = {
-        value: 'any string',
+        id: '💝',
+        value: '{"value": "heart with ribbon"}',
     };
 
-    it('should render without errors', () => {
+    const shallowComponent = (options?: Partial<IJSONEditorProps>) =>
+        (component = shallow(<JSONEditor {...basicProps} {...options} />));
+
+    it('should mount and unmount without errors', () => {
         expect(() => {
-            shallow(<JSONEditor {...basicProps} />);
+            shallowComponent();
+            component.unmount();
         }).not.toThrow();
     });
 
-    describe('<JSONEditor />', () => {
-        let jsonEditor: ReactWrapper<IJSONEditorProps, IJSONEditorState>;
-        let jsonEditorInstance: JSONEditor;
+    it('should render a <CodeEditor /> component with CodeMirrorModes JSON', () => {
+        shallowComponent();
 
-        const mountWithProps = (props: Partial<IJSONEditorProps> = {}) => {
-            jsonEditor = mount(<JSONEditor {..._.defaults(props, basicProps)} />, {
-                attachTo: document.getElementById('App'),
-            });
-            jsonEditorInstance = jsonEditor.instance() as any;
-        };
+        expect(component.find(CodeEditor).length).toBe(1);
+        expect(component.find(CodeEditor).prop('mode')).toEqual(CodeMirrorModes.JSON);
+    });
 
-        beforeEach(() => {
-            mountWithProps();
-        });
+    it('should display the value prop', () => {
+        shallowComponent();
 
-        it('should get the value as a prop', () => {
-            const valueProp: string = jsonEditor.props().value;
+        expect(component.find(CodeEditor).prop('value')).toBe(basicProps.value);
+    });
 
-            expect(valueProp).toBe(basicProps.value);
-        });
+    it('should pass the readOnly prop', () => {
+        shallowComponent({readOnly: true});
 
-        it('should get the readonly state as a prop', () => {
-            let readOnlyProp: boolean = jsonEditor.props().readOnly;
+        expect(component.find(CodeEditor).prop('readOnly')).toBe(true);
+    });
 
-            expect(readOnlyProp).toBeUndefined();
+    it('should pass the lineWrapping prop', () => {
+        shallowComponent({lineWrapping: true});
 
-            mountWithProps({readOnly: true});
+        expect(component.find(CodeEditor).prop('lineWrapping')).toBe(true);
+    });
 
-            readOnlyProp = jsonEditor.props().readOnly;
+    it('should validate value when editing json', () => {
+        const expectedValue = '{}';
+        const validateSpy = spyOn(JSONEditorUtils, 'validateValue');
 
-            expect(readOnlyProp).toBe(true);
-        });
+        shallowComponent();
+        component.find(CodeEditor).prop('onChange')(expectedValue);
 
-        it('should get the linewrapping state as a prop', () => {
-            let lineWrapping: boolean = jsonEditor.props().lineWrapping;
+        expect(validateSpy).toHaveBeenCalledTimes(1);
+    });
 
-            expect(lineWrapping).toBeUndefined();
+    it('should call the onChange prop if set when editing json', () => {
+        const expectedValue = '';
+        const onChangeSpy = jasmine.createSpy('onChange');
 
-            mountWithProps({lineWrapping: true});
+        shallowComponent({onChange: onChangeSpy});
+        component.find(CodeEditor).prop('onChange')(expectedValue);
 
-            lineWrapping = jsonEditor.props().lineWrapping;
+        expect(onChangeSpy).toHaveBeenCalledTimes(1);
+        expect(onChangeSpy).toHaveBeenCalledWith(expectedValue, true);
+    });
 
-            expect(lineWrapping).toBe(true);
-        });
-
-        it('should get what to do on change state as a prop if set', () => {
-            let onChangeProp: (json: string, inError: boolean) => void = jsonEditor.props().onChange;
-
-            expect(onChangeProp).toBeUndefined();
-
-            mountWithProps({onChange: jasmine.createSpy('onChange')});
-
-            onChangeProp = jsonEditor.props().onChange;
-
-            expect(onChangeProp).toBeDefined();
-        });
-
-        it('should display a <CodeEditor /> component', () => {
-            expect(jsonEditor.find(CodeEditor).length).toBe(1);
-        });
-
-        it('should call handleChange when the CodeMirror onChange prop is called', () => {
-            const handleChangeSpy: jasmine.Spy = spyOn<any>(JSONEditor.prototype, 'handleChange');
-            const expectedValue: string = 'anything at all really';
-
-            jsonEditor
-                .find(CodeEditor)
-                .props()
-                .onChange(expectedValue);
-
-            expect(handleChangeSpy).toHaveBeenCalledTimes(1);
-            expect(handleChangeSpy).toHaveBeenCalledWith(expectedValue);
-        });
-
-        it('should call the onChange prop if set when calling handleChange', () => {
-            const onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
-            const expectedValue: string = 'the expected value';
-
-            mountWithProps({onChange: onChangeSpy});
-
-            (jsonEditorInstance as any).handleChange(expectedValue);
-
-            expect(onChangeSpy).toHaveBeenCalledTimes(1);
-            expect(onChangeSpy).toHaveBeenCalledWith(expectedValue, true);
-        });
-
-        it('should call onChange prop when the value prop changes', () => {
-            const onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
-            const expectedValue: string = 'the expected value';
-
-            mountWithProps({onChange: onChangeSpy});
-            jsonEditor.setProps({value: expectedValue});
-
-            expect(onChangeSpy).toHaveBeenCalledTimes(1);
-            expect(onChangeSpy).toHaveBeenCalledWith(expectedValue, true);
-        });
-
-        it('should set the isInError to true when calling handleChange if the JSON cannot be parsed', () => {
-            (jsonEditorInstance as any).handleChange('this is not a JSON');
-
-            expect(jsonEditor.state().isInError).toBe(true);
-        });
-
-        it('should set the isInError to false when calling handleChange if the JSON can be parsed', () => {
-            (jsonEditorInstance as any).handleChange('{ "JSON": true }');
-
-            expect(jsonEditor.state().isInError).toBe(false);
-        });
-
-        it('should not throw on change if the onChange prop is undefined', () => {
-            expect(() => (jsonEditorInstance as any).handleChange('expectedValue')).not.toThrow();
-        });
+    it('should not throw on change if the onChange prop is undefined', () => {
+        expect(() => shallowComponent({onChange: undefined})).not.toThrow();
     });
 });

@@ -5,75 +5,79 @@ import * as React from 'react';
 
 import {Svg} from '../svg/Svg';
 import {CodeEditor} from './CodeEditor';
-import {CodeMirrorModes} from './EditorConstants';
+import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
+import {JSONEditorUtils} from './JSONEditorUtils';
 
 export interface IJSONEditorProps {
+    id?: string;
     value: string;
     lineWrapping?: boolean;
     readOnly?: boolean;
     onChange?: (json: string, inError: boolean) => void;
     errorMessage?: string;
+    containerClasses?: string[];
+    className?: string;
+    ref?: React.Ref<any>;
 }
 
-export interface IJSONEditorState {
-    isInError: boolean;
+export interface IJSONEditorStateProps {
+    value: string;
 }
 
-export const DEFAULT_JSON_ERROR_MESSAGE: string = 'The JSON configuration is syntactically invalid.';
+export interface IJSONEditorDispatchProps {
+    onMount?: () => void;
+    onChange?: (json: string, inError: boolean) => void;
+    onUnmount?: () => void;
+}
 
-export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorState> {
-    static defaultProps: Partial<IJSONEditorProps> = {
-        errorMessage: DEFAULT_JSON_ERROR_MESSAGE,
+export const JSONEditor: React.FunctionComponent<IJSONEditorProps &
+    IJSONEditorStateProps &
+    IJSONEditorDispatchProps> = ({
+    value,
+    lineWrapping,
+    readOnly,
+    onChange,
+    errorMessage,
+    containerClasses,
+    className,
+    onMount,
+    onUnmount,
+    ref,
+}) => {
+    const [isInError, setIsInError] = React.useState(false);
+
+    React.useEffect(() => {
+        onMount?.();
+
+        return onUnmount;
+    }, []);
+
+    const handleChange = (json: string) => {
+        const hasError = !JSONEditorUtils.validateValue(json);
+
+        setIsInError(hasError);
+        onChange?.(json, hasError);
     };
 
-    constructor(props: IJSONEditorProps, state: IJSONEditorState) {
-        super(props, state);
-        this.state = {
-            isInError: false,
-        };
-    }
+    return (
+        <div className={classNames('form-group', {'input-validation-error': isInError}, containerClasses)}>
+            <CodeEditor
+                value={value}
+                onChange={handleChange}
+                mode={CodeMirrorModes.JSON}
+                lineWrapping={lineWrapping}
+                readOnly={readOnly}
+                className={className}
+                ref={ref}
+            />
+            {isInError && <ValidationDetails errorMessage={errorMessage} />}
+        </div>
+    );
+};
 
-    render() {
-        const classes: string = classNames('form-group', {
-            'input-validation-error': this.state.isInError,
-        });
-        return (
-            <div className={classes}>
-                <CodeEditor
-                    value={this.props.value}
-                    onChange={(json: string) => this.handleChange(json)}
-                    mode={CodeMirrorModes.JSON}
-                    lineWrapping={this.props.lineWrapping}
-                    readOnly={this.props.readOnly}
-                />
-                {this.getValidationDetails()}
-            </div>
-        );
-    }
-
-    private getValidationDetails(): JSX.Element {
-        return this.state.isInError ? (
-            <div className="input-validation-error-details">
-                <Svg className="input-validation-error-icon" svgName="message-alert" svgClass="icon fill-white" />
-                <span className="input-validation-error-message">{this.props.errorMessage}</span>
-            </div>
-        ) : null;
-    }
-
-    private handleChange(json: string) {
-        let inError: boolean = false;
-        try {
-            JSON.parse(json);
-        } catch (error) {
-            inError = true;
-        }
-        this.setState({
-            isInError: inError,
-        });
-        this.callOnChange(json, inError);
-    }
-
-    private callOnChange(json: string, inError: boolean) {
-        this.props.onChange?.(json, inError);
-    }
-}
+const ValidationDetails: React.FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
+    <div className="input-validation-error-details">
+        <Svg className="input-validation-error-icon" svgName="message-alert" svgClass="icon fill-white" />
+        <span className="input-validation-error-message">{errorMessage ?? DEFAULT_JSON_ERROR_MESSAGE}</span>
+    </div>
+);
