@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.3](https://github.com/coveo/react-vapor/compare/v6.4.2...v6.4.3) (2020-07-13)
+
+
+### Bug Fixes
+
+* **sub-nav:** make sure only one item is seleted at once ([37e48f7](https://github.com/coveo/react-vapor/commit/37e48f7b498c86bb8593d2a313be06d08eebc412))
+
+
+
+
+
 ## [6.4.2](https://github.com/coveo/react-vapor/compare/v6.4.1...v6.4.2) (2020-07-13)
 
 **Note:** Version bump only for package react-vapor
