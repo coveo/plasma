@@ -11,4 +11,4 @@ export const CodeMirrorModes = {
     Text: 'text/plain',
 };
 
-export const DEFAULT_JSON_ERROR_MESSAGE: string = 'The JSON configuration is syntactically invalid.';
+export const DEFAULT_JSON_ERROR_MESSAGE = 'The JSON configuration is syntactically invalid.';
