@@ -9,9 +9,9 @@ const getTabGroup = (state: IReactVaporState, ownProps: ITabPaneOwnProps) => {
     return _.findWhere(state.tabs, {id: ownProps.groupId ?? DEFAULT_GROUP_ID});
 };
 
-const getTabSelected = () =>
-    createSelector(getTabGroup, (tabGroup: ITabGroupState) => _.findWhere(tabGroup.tabs, {isSelected: true}) ?? false);
+const getSelectedTab = () =>
+    createSelector(getTabGroup, (tabGroup: ITabGroupState) => _.findWhere(tabGroup.tabs, {isSelected: true}));
 export const TabSelectors = {
     getTabGroup,
-    getTabSelected,
+    getSelectedTab,
 };
