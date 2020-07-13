@@ -53,21 +53,26 @@ export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.
         onClickItem?.(id);
         return true;
     };
+    const selectedItem = selected || defaultSelected;
 
-    const navItems = map(items, ({id, link, label, disabled}: ISubNavigationItem) => (
-        <li
-            key={id}
-            className={classNames('sub-navigation-item', {'mod-selected': id === selected || id === defaultSelected})}
-        >
-            <a
-                href={link}
-                className={classNames('sub-navigation-item-link', {disabled})}
-                onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+    const navItems = map(items, ({id, link, label, disabled}: ISubNavigationItem) => {
+        return (
+            <li
+                key={id}
+                className={classNames('sub-navigation-item', {
+                    'mod-selected': id === selectedItem,
+                })}
             >
-                {label}
-            </a>
-        </li>
-    ));
+                <a
+                    href={link}
+                    className={classNames('sub-navigation-item-link', {disabled})}
+                    onClick={(e: React.MouseEvent<HTMLAnchorElement>) => handleItemClick(e, id)}
+                >
+                    {label}
+                </a>
+            </li>
+        );
+    });
 
     return (
         <nav {...navProps} className={classNames('sub-navigation', className)}>

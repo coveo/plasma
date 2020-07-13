@@ -1,8 +1,7 @@
 import {mount, shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
-import {noop} from 'underscore';
-
 import {act} from 'react-dom/test-utils';
+import {noop} from 'underscore';
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
 
 describe('SubNavigation', () => {
@@ -70,6 +69,15 @@ describe('SubNavigation', () => {
                     .findWhere((node) => node.key() === selectedItem)
                     .hasClass('mod-selected')
             ).toBe(true);
+        });
+
+        it('should not have the mod-selected class on the default item if another item was selected', () => {
+            const selectedItem = shallow(<SubNavigation {...basicProps} defaultSelected={'a'} selected={'b'} />)
+                .find('li')
+                .find('.mod-selected');
+
+            expect(selectedItem.length).toBe(1);
+            expect(selectedItem.getElement().key).toBe('b');
         });
 
         it('should have the "disabled" class on the disabled item', () => {
