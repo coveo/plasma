@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.4](https://github.com/coveo/react-vapor/compare/v6.4.3...v6.4.4) (2020-07-13)
+
+
+### Bug Fixes
+
+* **tabselector:** fix the selector ([de3e5b2](https://github.com/coveo/react-vapor/commit/de3e5b27a37e55109f261acb77bc1374be27a89f))
+
+
+
+
+
 ## [6.4.3](https://github.com/coveo/react-vapor/compare/v6.4.2...v6.4.3) (2020-07-13)
 
 
