@@ -57,7 +57,7 @@ describe('TabSelector', () => {
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
-            expect(TabSelectors.getSelectedTab().resultFunc(tabGroupState)).toEqual({
+            expect(TabSelectors.getSelectedTab.resultFunc(tabGroupState)).toEqual({
                 id: 'coulili-zazou',
                 isSelected: true,
             });
@@ -71,7 +71,7 @@ describe('TabSelector', () => {
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
-            expect(TabSelectors.getSelectedTab().resultFunc(tabGroupState)).toBe(undefined);
+            expect(TabSelectors.getSelectedTab.resultFunc(tabGroupState)).toBe(undefined);
         });
     });
 });
