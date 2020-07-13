@@ -49,7 +49,7 @@ describe('TabSelector', () => {
         });
     });
     describe('getTabSelected', () => {
-        it('should return true if a tab is selected, false if not', () => {
+        it('should return the selected tab', () => {
             const tabGroupState = {
                 id: DEFAULT_GROUP_ID,
                 tabs: [
@@ -57,19 +57,21 @@ describe('TabSelector', () => {
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
-            expect(TabSelectors.getTabSelected('coulili-zazou').resultFunc(tabGroupState)).toBe(true);
-            expect(TabSelectors.getTabSelected('gros-boudesse').resultFunc(tabGroupState)).toBe(false);
+            expect(TabSelectors.getSelectedTab().resultFunc(tabGroupState)).toEqual({
+                id: 'coulili-zazou',
+                isSelected: true,
+            });
         });
 
-        it('should return false if the tab does not exist in the state', () => {
+        it('should return false if no tabs are selected', () => {
             const tabGroupState = {
                 id: DEFAULT_GROUP_ID,
                 tabs: [
-                    {id: 'coulili-zazou', isSelected: true},
+                    {id: 'coulili-zazou', isSelected: false},
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
-            expect(TabSelectors.getTabSelected('who-am-i').resultFunc(tabGroupState)).toBe(false);
+            expect(TabSelectors.getSelectedTab().resultFunc(tabGroupState)).toBe(undefined);
         });
     });
 });
