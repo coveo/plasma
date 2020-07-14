@@ -4,6 +4,7 @@ import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ActionBarConnected} from '../actions/ActionBar';
+import {IBlankSlateProps} from '../blankSlate';
 import {TableLoading} from '../loading/components/TableLoading';
 import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
 
@@ -24,6 +25,7 @@ export interface ITableHOCOwnProps {
     containerClassName?: string;
     tbodyClassName?: string;
     showBorderTop?: boolean;
+    filterBlankslate: IBlankSlateProps;
     loading?: {
         isCard?: boolean;
         numberOfColumns?: number;
