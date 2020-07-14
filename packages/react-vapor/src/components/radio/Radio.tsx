@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {omit} from 'underscore';
 import {IInputProps, Input} from '../input/Input';
 
 export interface RadioOwnProps {
@@ -22,12 +23,15 @@ export const Radio: React.FunctionComponent<RadioProps> = (props) => {
     );
 };
 
-const RadioInputContent: React.FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => (
-    <>
-        <Input {...props} classes={[classes]} type="radio" />
-        {props.outerElementInContainer}
-    </>
-);
+const RadioInputContent: React.FunctionComponent<{props: RadioProps; classes: string}> = ({props, classes}) => {
+    const inputProps = omit(props, 'outerContainerClass', 'outerElementInContainer');
+    return (
+        <>
+            <Input {...inputProps} classes={[classes]} type="radio" />
+            {props.outerElementInContainer}
+        </>
+    );
+};
 
 Radio.defaultProps = {
     ...Input.defaultProps,
