@@ -4,17 +4,17 @@ import * as _ from 'underscore';
 
 import {CodeEditor} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
-import {IJSONEditorProps, JSONEditor} from '../JSONEditor';
+import {JSONEditorProps, JSONEditor} from '../JSONEditor';
 import {JSONEditorUtils} from '../JSONEditorUtils';
 
 describe('<JSONEditor />', () => {
     let component: ShallowWrapper;
-    const basicProps: IJSONEditorProps = {
+    const basicProps: JSONEditorProps = {
         id: '💝',
         value: '{"value": "heart with ribbon"}',
     };
 
-    const shallowComponent = (options?: Partial<IJSONEditorProps>) =>
+    const shallowComponent = (options?: Partial<JSONEditorProps>) =>
         (component = shallow(<JSONEditor {...basicProps} {...options} />));
 
     it('should mount and unmount without errors', () => {

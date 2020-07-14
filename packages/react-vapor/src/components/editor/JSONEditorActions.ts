@@ -6,22 +6,22 @@ export const JSONEditorActionTypes = {
     update: 'UPDATE_JSON_EDITOR',
 };
 
-export interface IJSONEditorActionPayload {
+export interface JSONEditorActionPayload {
     id: string;
     value?: string;
 }
 
-const addJSONEditor = (id: string, value = ''): IReduxAction<IJSONEditorActionPayload> => ({
+const addJSONEditor = (id: string, value = ''): IReduxAction<JSONEditorActionPayload> => ({
     type: JSONEditorActionTypes.add,
     payload: {id, value},
 });
 
-const removeJSONEditor = (id: string): IReduxAction<IJSONEditorActionPayload> => ({
+const removeJSONEditor = (id: string): IReduxAction<JSONEditorActionPayload> => ({
     type: JSONEditorActionTypes.remove,
     payload: {id},
 });
 
-const updateJSONEditorValue = (id: string, value = ''): IReduxAction<IJSONEditorActionPayload> => ({
+const updateJSONEditorValue = (id: string, value = ''): IReduxAction<JSONEditorActionPayload> => ({
     type: JSONEditorActionTypes.update,
     payload: {id, value},
 });

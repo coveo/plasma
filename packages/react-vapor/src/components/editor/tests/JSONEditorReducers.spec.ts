@@ -1,7 +1,7 @@
 import {IReduxAction} from '../../../utils';
-import {IJSONEditorActionPayload, JSONEditorActions} from '../JSONEditorActions';
+import {JSONEditorActionPayload, JSONEditorActions} from '../JSONEditorActions';
 import {
-    IJSONEditorState,
+    JSONEditorState,
     jsonEditorInitialState,
     jsonEditorsInitialState,
     jsonEditorsReducer,
@@ -9,7 +9,7 @@ import {
 import {JSONEditorUtils} from '../JSONEditorUtils';
 
 describe('JSONEditorReducers', () => {
-    let oldState: IJSONEditorState[];
+    let oldState: JSONEditorState[];
 
     beforeEach(() => {
         oldState = [
@@ -19,7 +19,7 @@ describe('JSONEditorReducers', () => {
         ];
     });
 
-    const unrelatedAction: IReduxAction<IJSONEditorActionPayload> = {
+    const unrelatedAction: IReduxAction<JSONEditorActionPayload> = {
         type: 'DO_SOMETHING',
         payload: {id: ''},
     };
@@ -29,16 +29,16 @@ describe('JSONEditorReducers', () => {
     });
 
     it('should return the old state when the action is unrelated to jsonEditor containers', () => {
-        const newState: IJSONEditorState[] = jsonEditorsReducer(oldState, unrelatedAction);
+        const newState: JSONEditorState[] = jsonEditorsReducer(oldState, unrelatedAction);
 
         expect(oldState).toEqual(newState);
     });
 
     describe('addJSONEditor', () => {
         const getNewJSONEditor = (
-            state: IJSONEditorState[],
-            action: IReduxAction<IJSONEditorActionPayload>
-        ): IJSONEditorState[] => state.filter((jsonEditor) => jsonEditor.id === action.payload.id);
+            state: JSONEditorState[],
+            action: IReduxAction<JSONEditorActionPayload>
+        ): JSONEditorState[] => state.filter((jsonEditor) => jsonEditor.id === action.payload.id);
 
         it('should return the old state with one more jsonEditor', () => {
             const action = JSONEditorActions.addJSONEditor('new-json-editor');
@@ -51,7 +51,7 @@ describe('JSONEditorReducers', () => {
         it('should return a jsonEditor with the default value, valid prop if not passed', () => {
             const action = JSONEditorActions.addJSONEditor('new-json-editor');
             const newState = jsonEditorsReducer(oldState, action);
-            const newJSONEditor: IJSONEditorState = getNewJSONEditor(newState, action)[0];
+            const newJSONEditor: JSONEditorState = getNewJSONEditor(newState, action)[0];
 
             expect(newJSONEditor).toEqual(jasmine.objectContaining(action.payload));
         });

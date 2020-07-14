@@ -2,15 +2,15 @@ import {connect} from 'react-redux';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch} from '../../utils';
-import {IJSONEditorDispatchProps, IJSONEditorProps, IJSONEditorStateProps, JSONEditor} from './JSONEditor';
+import {JSONEditor, JSONEditorDispatchProps, JSONEditorProps, JSONEditorStateProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';
 import {JSONEditorSelectors} from './JSONEditorSelectors';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IJSONEditorProps): IJSONEditorStateProps => ({
+const mapStateToProps = (state: IReactVaporState, ownProps: JSONEditorProps): JSONEditorStateProps => ({
     value: JSONEditorSelectors.getValue(state, ownProps.id),
 });
 
-const mapDispatchToProps = (dispatch: IDispatch, ownProps: IJSONEditorProps): IJSONEditorDispatchProps => ({
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: JSONEditorProps): JSONEditorDispatchProps => ({
     onMount: () => dispatch(JSONEditorActions.addJSONEditor(ownProps.id, ownProps.value)),
     onUnmount: () => dispatch(JSONEditorActions.removeJSONEditor(ownProps.id)),
     onChange: (value: string, inError: boolean) => {

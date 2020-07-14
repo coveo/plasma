@@ -8,7 +8,7 @@ import {CodeEditor} from './CodeEditor';
 import {CodeMirrorModes, DEFAULT_JSON_ERROR_MESSAGE} from './EditorConstants';
 import {JSONEditorUtils} from './JSONEditorUtils';
 
-export interface IJSONEditorProps {
+export interface JSONEditorProps {
     id?: string;
     value: string;
     lineWrapping?: boolean;
@@ -20,19 +20,17 @@ export interface IJSONEditorProps {
     ref?: React.Ref<any>;
 }
 
-export interface IJSONEditorStateProps {
+export interface JSONEditorStateProps {
     value: string;
 }
 
-export interface IJSONEditorDispatchProps {
+export interface JSONEditorDispatchProps {
     onMount?: () => void;
     onChange?: (json: string, inError: boolean) => void;
     onUnmount?: () => void;
 }
 
-export const JSONEditor: React.FunctionComponent<IJSONEditorProps &
-    IJSONEditorStateProps &
-    IJSONEditorDispatchProps> = ({
+export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorStateProps & JSONEditorDispatchProps> = ({
     value,
     lineWrapping,
     readOnly,

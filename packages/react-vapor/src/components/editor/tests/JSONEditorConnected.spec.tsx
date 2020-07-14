@@ -9,7 +9,7 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {IDispatch} from '../../../utils';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {CodeEditor} from '../CodeEditor';
-import {IJSONEditorProps, JSONEditor} from '../JSONEditor';
+import {JSONEditorProps, JSONEditor} from '../JSONEditor';
 import {JSONEditorActions} from '../JSONEditorActions';
 import {JSONEditorConnected} from '../JSONEditorConnected';
 import {JSONEditorUtils} from '../JSONEditorUtils';
@@ -17,7 +17,7 @@ import {JSONEditorUtils} from '../JSONEditorUtils';
 describe('<JSONEditorConnected />', () => {
     let store: MockStoreEnhanced<Partial<IReactVaporState>, IDispatch<IReactVaporState>>;
     let wrapper: ReactWrapper;
-    const basicProps: IJSONEditorProps = {
+    const basicProps: JSONEditorProps = {
         id: '💙',
         value: '{}',
     };
