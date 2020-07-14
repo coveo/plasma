@@ -1,10 +1,10 @@
 import {IReduxAction} from '../../../utils';
 import {JSONEditorActionPayload, JSONEditorActions} from '../JSONEditorActions';
 import {
-    JSONEditorState,
     jsonEditorInitialState,
     jsonEditorsInitialState,
     jsonEditorsReducer,
+    JSONEditorState,
 } from '../JSONEditorReducers';
 import {JSONEditorUtils} from '../JSONEditorUtils';
 

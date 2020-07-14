@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 
 import {CodeEditor} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
-import {JSONEditorProps, JSONEditor} from '../JSONEditor';
+import {JSONEditor, JSONEditorProps} from '../JSONEditor';
 import {JSONEditorUtils} from '../JSONEditorUtils';
 
 describe('<JSONEditor />', () => {

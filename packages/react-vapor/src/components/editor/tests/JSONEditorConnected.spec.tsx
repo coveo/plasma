@@ -9,7 +9,7 @@ import {IReactVaporState} from '../../../ReactVapor';
 import {IDispatch} from '../../../utils';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {CodeEditor} from '../CodeEditor';
-import {JSONEditorProps, JSONEditor} from '../JSONEditor';
+import {JSONEditor, JSONEditorProps} from '../JSONEditor';
 import {JSONEditorActions} from '../JSONEditorActions';
 import {JSONEditorConnected} from '../JSONEditorConnected';
 import {JSONEditorUtils} from '../JSONEditorUtils';
