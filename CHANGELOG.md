@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.4.5](https://github.com/coveo/react-vapor/compare/v6.4.4...v6.4.5) (2020-07-15)
+
+
+### Bug Fixes
+
+* **tabselectors.ts:** added the safe operator ([a708fcb](https://github.com/coveo/react-vapor/commit/a708fcb71d98447823a0b99b51a008aa425f791a))
+
+
+
+
+
 ## [6.4.4](https://github.com/coveo/react-vapor/compare/v6.4.3...v6.4.4) (2020-07-13)
 
 
