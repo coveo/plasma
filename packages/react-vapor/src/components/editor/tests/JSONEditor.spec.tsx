@@ -49,6 +49,18 @@ describe('JSONEditor', () => {
             expect(readOnlyProp).toBe(true);
         });
 
+        it('should get the linewrapping state as a prop', () => {
+            let lineWrapping: boolean = jsonEditor.props().lineWrapping;
+
+            expect(lineWrapping).toBeUndefined();
+
+            mountWithProps({lineWrapping: true});
+
+            lineWrapping = jsonEditor.props().lineWrapping;
+
+            expect(lineWrapping).toBe(true);
+        });
+
         it('should get what to do on change state as a prop if set', () => {
             let onChangeProp: (json: string, inError: boolean) => void = jsonEditor.props().onChange;
 
