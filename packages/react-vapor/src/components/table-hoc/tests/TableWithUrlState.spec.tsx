@@ -49,17 +49,32 @@ describe('Table HOC', () => {
         });
 
         it('should not throw when rendering the HOC component', () => {
+            const onUpdateUrlSpy = jasmine.createSpy('onUpdateUrl');
+            const renderBodySpy = jasmine.createSpy('renderBody');
+
             expect(() => {
                 const TableWithUrlState = tableWithUrlState(TableHOC);
-                table = shallowWithStore(<TableWithUrlState />, store).dive();
+                table = shallowWithStore(
+                    <TableWithUrlState
+                        id={'table'}
+                        data={[]}
+                        onUpdateUrl={onUpdateUrlSpy}
+                        renderBody={renderBodySpy}
+                    />,
+                    store
+                ).dive();
                 table.unmount();
             }).not.toThrow();
         });
 
         it('should call the "onUpdateUrl" prop with the query string representing the current state when the table needs to update', () => {
             const onUpdateUrlSpy = jasmine.createSpy('onUpdateUrl');
+            const renderBodySpy = jasmine.createSpy('renderBody');
             const TableWithUrlState = tableWithUrlState(TableHOC);
-            table = shallowWithStore(<TableWithUrlState onUpdateUrl={onUpdateUrlSpy} />, store).dive();
+            table = shallowWithStore(
+                <TableWithUrlState id={'table'} data={[]} onUpdateUrl={onUpdateUrlSpy} renderBody={renderBodySpy} />,
+                store
+            ).dive();
 
             expect(onUpdateUrlSpy).not.toHaveBeenCalled();
             table.prop('onUpdate')();
