@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.5.0](https://github.com/coveo/react-vapor/compare/v6.4.6...v6.5.0) (2020-07-15)
+
+
+### Features
+
+* **jsoneditor:** create jsoneditorconnected component ([#1625](https://github.com/coveo/react-vapor/issues/1625)) ([da99900](https://github.com/coveo/react-vapor/commit/da99900e14540ea4ab3f6b0c3070e2f89302d2de))
+
+
+
+
+
 ## [6.4.6](https://github.com/coveo/react-vapor/compare/v6.4.5...v6.4.6) (2020-07-15)
 
 
