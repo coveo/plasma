@@ -9,6 +9,7 @@ import {CodeMirrorModes} from './EditorConstants';
 
 export interface IJSONEditorProps {
     value: string;
+    lineWrapping?: boolean;
     readOnly?: boolean;
     onChange?: (json: string, inError: boolean) => void;
     errorMessage?: string;
@@ -42,6 +43,7 @@ export class JSONEditor extends React.Component<IJSONEditorProps, IJSONEditorSta
                     value={this.props.value}
                     onChange={(json: string) => this.handleChange(json)}
                     mode={CodeMirrorModes.JSON}
+                    lineWrapping={this.props.lineWrapping}
                     readOnly={this.props.readOnly}
                 />
                 {this.getValidationDetails()}

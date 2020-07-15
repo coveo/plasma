@@ -15,6 +15,7 @@ import {CodeMirrorGutters} from './EditorConstants';
 export interface ICodeEditorProps {
     value: string;
     mode: any;
+    lineWrapping?: boolean;
     readOnly?: boolean;
     onChange?: (code: string) => void;
     onMount?: (codemirror: ReactCodeMirror.Controlled) => void;
@@ -81,6 +82,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                 onChange={(editor, data, value: string) => this.props.onChange?.(value)}
                 options={{
                     ...CodeEditor.defaultOptions,
+                    lineWrapping: this.props.lineWrapping,
                     readOnly: this.removeCursorWhenEditorIsReadOnly(),
                     mode: this.props.mode,
                     ...this.props.options,
