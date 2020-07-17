@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.6.0](https://github.com/coveo/react-vapor/compare/v6.5.0...v6.6.0) (2020-07-17)
+
+
+### Features
+
+* **icons:** added headset icon to vapor ([77a18b6](https://github.com/coveo/react-vapor/commit/77a18b6c0cd9ac1f6822f649f15e8fddf5f07c0d))
+
+
+
+
+
 # [6.5.0](https://github.com/coveo/react-vapor/compare/v6.4.6...v6.5.0) (2020-07-15)
 
 
