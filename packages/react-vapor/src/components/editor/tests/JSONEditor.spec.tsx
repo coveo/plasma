@@ -43,12 +43,6 @@ describe('<JSONEditor />', () => {
         expect(component.find(CodeEditor).prop('readOnly')).toBe(true);
     });
 
-    it('should pass the lineWrapping prop', () => {
-        shallowComponent({lineWrapping: true});
-
-        expect(component.find(CodeEditor).prop('lineWrapping')).toBe(true);
-    });
-
     it('should validate value when editing json', () => {
         const expectedValue = '{}';
         const validateSpy = spyOn(JSONEditorUtils, 'validateValue');
