@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.7.0](https://github.com/coveo/react-vapor/compare/v6.6.0...v6.7.0) (2020-07-21)
+
+
+### Features
+
+* **package:** bump typescript version ([#1634](https://github.com/coveo/react-vapor/issues/1634)) ([a410c1b](https://github.com/coveo/react-vapor/commit/a410c1ba27810705f1b18673b08528984ea12c43))
+
+
+
+
+
 # [6.6.0](https://github.com/coveo/react-vapor/compare/v6.5.0...v6.6.0) (2020-07-17)
 
 **Note:** Version bump only for package react-vapor
