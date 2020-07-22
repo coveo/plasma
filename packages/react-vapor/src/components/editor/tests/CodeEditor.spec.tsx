@@ -52,18 +52,6 @@ describe('CodeEditor', () => {
             expect(readOnlyProp).toBe(true);
         });
 
-        it('should get the linewrapping state as a prop', () => {
-            let lineWrapping: boolean = codeEditor.props().lineWrapping;
-
-            expect(lineWrapping).toBeUndefined();
-
-            mountWithProps({lineWrapping: true});
-
-            lineWrapping = codeEditor.props().lineWrapping;
-
-            expect(lineWrapping).toBe(true);
-        });
-
         it('should set readOnly to `nocursor` when receiving true from props, else keep props', () => {
             mountWithProps({readOnly: true});
             expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(

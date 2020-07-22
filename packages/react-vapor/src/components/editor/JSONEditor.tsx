@@ -11,12 +11,12 @@ import {JSONEditorUtils} from './JSONEditorUtils';
 export interface JSONEditorProps {
     id?: string;
     value: string;
-    lineWrapping?: boolean;
     readOnly?: boolean;
     onChange?: (json: string, inError: boolean) => void;
     errorMessage?: string;
     containerClasses?: string[];
     className?: string;
+    options?: CodeMirror.EditorConfiguration;
     ref?: React.Ref<any>;
 }
 
@@ -32,12 +32,12 @@ export interface JSONEditorDispatchProps {
 
 export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorStateProps & JSONEditorDispatchProps> = ({
     value,
-    lineWrapping,
     readOnly,
     onChange,
     errorMessage,
     containerClasses,
     className,
+    options,
     onMount,
     onUnmount,
     ref,
@@ -63,9 +63,9 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
                 value={value}
                 onChange={handleChange}
                 mode={CodeMirrorModes.JSON}
-                lineWrapping={lineWrapping}
                 readOnly={readOnly}
                 className={className}
+                options={options}
                 ref={ref}
             />
             {isInError && <ValidationDetails errorMessage={errorMessage} />}
