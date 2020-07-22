@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.7.1](https://github.com/coveo/react-vapor/compare/v6.7.0...v6.7.1) (2020-07-22)
+
+
+### Bug Fixes
+
+* exposed the options parameter ([#1636](https://github.com/coveo/react-vapor/issues/1636)) ([e350aa8](https://github.com/coveo/react-vapor/commit/e350aa8f54e3e01fa380cdfb0eb026d5c2b20f7f))
+
+
+
+
+
 # [6.7.0](https://github.com/coveo/react-vapor/compare/v6.6.0...v6.7.0) (2020-07-21)
 
 
