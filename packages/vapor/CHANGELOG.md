@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.8.0](https://github.com/coveo/react-vapor/compare/v6.7.1...v6.8.0) (2020-07-24)
+
+
+### Features
+
+* **vapor-icon:** add both result ranking's icons for the new modal ([195af02](https://github.com/coveo/react-vapor/commit/195af025977485fa2021385d421e2c57837b7def))
+
+
+
+
+
 # [6.6.0](https://github.com/coveo/react-vapor/compare/v6.5.0...v6.6.0) (2020-07-17)
 
 
