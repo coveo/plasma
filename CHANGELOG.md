@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.9.0](https://github.com/coveo/react-vapor/compare/v6.8.0...v6.9.0) (2020-07-26)
+
+
+### Features
+
+* **collapsible:** functional component ([55de2a2](https://github.com/coveo/react-vapor/commit/55de2a2bc7f6ee1e81c2f715a8f0f22df61de841))
+
+
+
+
+
 # [6.8.0](https://github.com/coveo/react-vapor/compare/v6.7.1...v6.8.0) (2020-07-24)
 
 
