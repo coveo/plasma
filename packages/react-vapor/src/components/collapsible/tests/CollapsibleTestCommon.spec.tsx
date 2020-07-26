@@ -1,9 +1,8 @@
 import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
 import * as _ from 'underscore';
-
-import {CollapsibleOwnProps} from '../Collapsible';
-import {ICollapsibleContainerOwnProps} from '../CollapsibleContainer';
+import {CollapsibleOwnProps} from '../CollapsibleConnected';
+import {ICollapsibleContainerOwnProps} from '../CollapsibleContainerConnected';
 
 export const collapsibleContainerPossibleProps: ICollapsibleContainerOwnProps[] = [
     {
