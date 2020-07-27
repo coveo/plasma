@@ -36,7 +36,6 @@ export const Code: React.FunctionComponent<{language: string}> = ({language, chi
             style={theme}
             showLineNumbers
             customStyle={{fontFamily: 'source_code_pro_regular, monospace', fontSize: '16px', lineHeight: '1.2'}}
-            lineNumberContainerStyle={{paddingRight: '2rem', float: 'left'}}
         >
             {formattedCode}
         </SyntaxHighlighter>
