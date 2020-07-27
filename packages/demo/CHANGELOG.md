@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.9.1](https://github.com/coveo/react-vapor/compare/v6.9.0...v6.9.1) (2020-07-27)
+
+
+### Bug Fixes
+
+* **radioselectconnected:** invalid HTML props ([449be87](https://github.com/coveo/react-vapor/commit/449be8755fd07af0948fab9627b50872d2f4d952))
+
+
+
+
+
 # [6.9.0](https://github.com/coveo/react-vapor/compare/v6.8.0...v6.9.0) (2020-07-26)
 
 **Note:** Version bump only for package react-vapor-demo
