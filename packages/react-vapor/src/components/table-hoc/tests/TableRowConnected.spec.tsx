@@ -249,18 +249,8 @@ describe('Table HOC', () => {
             it('should render an additional row for the collapsible content', () => {
                 shallowComponent();
                 expect(wrapper.find('tr').length).toBe(2);
-                expect(
-                    wrapper
-                        .find('tr')
-                        .at(0)
-                        .hasClass('heading-row')
-                ).toBe(true);
-                expect(
-                    wrapper
-                        .find('tr')
-                        .at(1)
-                        .hasClass('collapsible-row')
-                ).toBe(true);
+                expect(wrapper.find('tr').at(0).hasClass('heading-row')).toBe(true);
+                expect(wrapper.find('tr').at(1).hasClass('collapsible-row')).toBe(true);
             });
 
             it('should render a single cell in the collapsible row that spans accross all the columns +1 for the toggle', () => {
@@ -294,12 +284,7 @@ describe('Table HOC', () => {
                     },
                 });
 
-                expect(
-                    wrapper
-                        .find('tr.heading-row td')
-                        .last()
-                        .equals(expectedToggle)
-                ).toBe(true);
+                expect(wrapper.find('tr.heading-row td').last().equals(expectedToggle)).toBe(true);
             });
 
             it('should dispatch a toggleCollapsible action when clicking on the collapsible button', () => {

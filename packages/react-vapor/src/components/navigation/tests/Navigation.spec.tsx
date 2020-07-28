@@ -54,39 +54,19 @@ describe(' navigation', () => {
         it('should render a <NavigationPagination /> component if totalPages is higher than 1', () => {
             const newNavigationProps = _.extend({}, basicNavigationProps, {totalPages: 1});
 
-            expect(
-                navigation
-                    .find(NavigationPagination)
-                    .closest('div')
-                    .hasClass('hidden')
-            ).toBe(false);
+            expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(false);
 
             navigation.setProps(newNavigationProps);
-            expect(
-                navigation
-                    .find(NavigationPagination)
-                    .closest('div')
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(true);
         });
 
         it('should render a <NavigationPerPage /> component if totalEntries is higher than the first perPageNumber', () => {
             const newNavigationProps = _.extend({}, basicNavigationProps, {totalEntries: PER_PAGE_NUMBERS[0]});
 
-            expect(
-                navigation
-                    .find(NavigationPerPage)
-                    .closest('div')
-                    .hasClass('hidden')
-            ).toBe(false);
+            expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(false);
 
             navigation.setProps(newNavigationProps);
-            expect(
-                navigation
-                    .find(NavigationPerPage)
-                    .closest('div')
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(true);
         });
 
         it('should pass on the currentPerPage prop if it is set (used without Redux)', () => {
@@ -112,12 +92,7 @@ describe(' navigation', () => {
                 perPageNumbers,
                 onPerPageClick,
             });
-            navigation
-                .setProps(newNavigationProps)
-                .update()
-                .find(NavigationPerPageSelect)
-                .last()
-                .simulate('click');
+            navigation.setProps(newNavigationProps).update().find(NavigationPerPageSelect).last().simulate('click');
             expect(onPerPageClick).toHaveBeenCalledWith(expectedPerPage, currentPerPage, undefined); // newPerPage, currentPerPage, currentPage (currentPerPage and currentPage are undefined unless passed as props)
         });
     });

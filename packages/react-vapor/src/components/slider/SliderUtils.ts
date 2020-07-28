@@ -57,8 +57,9 @@ export const propsValidator = ({id, max = 100, min = 0, initialValue, step}: Sli
     }
     if (!!step && (max - min) % step !== 0) {
         throw new Error(
-            `Slider with id "${id}"'s step value (${step}) is invalid: the total range (${max -
-                min}) must be evenly divisible the step.`
+            `Slider with id "${id}"'s step value (${step}) is invalid: the total range (${
+                max - min
+            }) must be evenly divisible the step.`
         );
     }
 };

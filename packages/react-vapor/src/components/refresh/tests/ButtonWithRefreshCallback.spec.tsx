@@ -29,10 +29,7 @@ describe('ButtonWithRefreshCallback tests', () => {
                 const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} callback={spy} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 }).dive();
-                component
-                    .find(Button)
-                    .props()
-                    .onClick();
+                component.find(Button).props().onClick();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
@@ -43,10 +40,7 @@ describe('ButtonWithRefreshCallback tests', () => {
                 });
 
                 const component = shallowWithStore(<ButtonWithRefreshCallback {...defaultProps} />, store).dive();
-                component
-                    .find(Button)
-                    .props()
-                    .onClick();
+                component.find(Button).props().onClick();
 
                 expect(store.getActions()).toContain(RefreshCallBackActions.stop(defaultProps.id));
             });

@@ -26,21 +26,11 @@ describe('ModalBody', () => {
         it('should set class when the class is specified', () => {
             const containerClass = 'mod-header-padding';
             const classes = [containerClass];
-            expect(
-                modalBody
-                    .find('div')
-                    .first()
-                    .html()
-            ).not.toContain(containerClass);
+            expect(modalBody.find('div').first().html()).not.toContain(containerClass);
 
             modalBody.setProps({classes});
             modalBody.mount();
-            expect(
-                modalBody
-                    .find('div')
-                    .first()
-                    .html()
-            ).toContain(containerClass);
+            expect(modalBody.find('div').first().html()).toContain(containerClass);
         });
     });
 });

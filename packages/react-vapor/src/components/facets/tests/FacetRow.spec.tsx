@@ -188,10 +188,7 @@ describe('Facets', () => {
         });
 
         it('should call onToggle with good attribute when exclude behavior is enabled', () => {
-            facetRowExcludeView
-                .find('.facet-exclude-button')
-                .first()
-                .simulate('click');
+            facetRowExcludeView.find('.facet-exclude-button').first().simulate('click');
             const facet: IFacet = {
                 ...facetRowExcludeView.props().facetRow,
                 exclude: true,

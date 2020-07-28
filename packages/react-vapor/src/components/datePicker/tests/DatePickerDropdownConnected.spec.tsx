@@ -52,11 +52,7 @@ describe('Date picker', () => {
 
                 wrapper = mountComponent();
                 const wrapperFooter = shallow(wrapper.find(DatePickerBox).props().footer);
-                wrapperFooter
-                    .find(Button)
-                    .last()
-                    .props()
-                    .onClick();
+                wrapperFooter.find(Button).last().props().onClick();
 
                 expect(store.getActions()).toContain(
                     DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false)
@@ -68,11 +64,7 @@ describe('Date picker', () => {
 
                 wrapper = mountComponent();
                 const wrapperFooter = shallow(wrapper.find(DatePickerBox).props().footer);
-                wrapperFooter
-                    .find(Button)
-                    .first()
-                    .props()
-                    .onClick();
+                wrapperFooter.find(Button).first().props().onClick();
 
                 expect(store.getActions()).toContain(
                     DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false)
@@ -377,11 +369,7 @@ describe('Date picker', () => {
 
                 store.dispatch(toggleDropdown(DATE_PICKER_DROPDOWN_BASIC_PROPS.id));
 
-                datePickerDropdown
-                    .find(ModalFooter)
-                    .find(Button)
-                    .last()
-                    .simulate('click');
+                datePickerDropdown.find(ModalFooter).find(Button).last().simulate('click');
 
                 expect(_.findWhere(store.getState().optionsCycles, {id: monthCycleId}).currentOption).toBe(
                     newLowerLimit.getMonth()

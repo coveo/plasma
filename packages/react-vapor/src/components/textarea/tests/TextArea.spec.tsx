@@ -184,26 +184,20 @@ describe('TextArea', () => {
 
             describe('dispatch props', () => {
                 it('should not throw when calling onMount with basic props', () => {
-                    expect(() =>
-                        mountComponentWithProps(textAreaProps)
-                            .find(TextArea)
-                            .prop('onMount')()
-                    ).not.toThrow();
+                    expect(() => mountComponentWithProps(textAreaProps).find(TextArea).prop('onMount')()).not.toThrow();
                 });
 
                 it('should not throw when calling onUnmount', () => {
                     expect(() =>
-                        mountComponentWithProps(textAreaProps)
-                            .find(TextArea)
-                            .prop('onUnmount')()
+                        mountComponentWithProps(textAreaProps).find(TextArea).prop('onUnmount')()
                     ).not.toThrow();
                 });
 
                 it('should not throw when calling onChange', () => {
                     expect(() =>
-                        mountComponentWithProps(textAreaProps)
-                            .find(TextArea)
-                            .prop('onChange')({target: {value: 'some value'}} as any)
+                        mountComponentWithProps(textAreaProps).find(TextArea).prop('onChange')({
+                            target: {value: 'some value'},
+                        } as any)
                     ).not.toThrow();
                 });
             });

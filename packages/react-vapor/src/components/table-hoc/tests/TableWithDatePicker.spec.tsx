@@ -13,11 +13,7 @@ describe('Table HOC', () => {
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
-            data: _.map(_.range(10), (i) =>
-                moment()
-                    .subtract(i, 'm')
-                    .toDate()
-            ),
+            data: _.map(_.range(10), (i) => moment().subtract(i, 'm').toDate()),
             renderBody: _.identity,
         };
 
@@ -59,9 +55,7 @@ describe('Table HOC', () => {
             });
 
             it('should filter call the matchDates function for every rows', () => {
-                const lowerLimit = moment()
-                    .subtract(10, 'm')
-                    .toDate();
+                const lowerLimit = moment().subtract(10, 'm').toDate();
 
                 shallowWithState(
                     <TableWithDatePickerAndMatch {...defaultProps} />,
@@ -74,12 +68,8 @@ describe('Table HOC', () => {
             });
 
             it('should filter call the matchDates function with lower & upper for every rows', () => {
-                const lowerLimit = moment()
-                    .subtract(10, 'm')
-                    .toDate();
-                const upperLimit = moment()
-                    .subtract(5, 'm')
-                    .toDate();
+                const lowerLimit = moment().subtract(10, 'm').toDate();
+                const upperLimit = moment().subtract(5, 'm').toDate();
 
                 shallowWithState(
                     <TableWithDatePickerAndMatch {...defaultProps} />,
@@ -110,9 +100,7 @@ describe('Table HOC', () => {
 
             it('should call onUpdate when the lowerLimit changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const lowerLimit = moment()
-                    .subtract(5, 'm')
-                    .toDate();
+                const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithDatePicker(lowerLimit)
@@ -128,12 +116,8 @@ describe('Table HOC', () => {
 
             it('should call onUpdate when the upperLimit changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const lowerLimit = moment()
-                    .subtract(15, 'm')
-                    .toDate();
-                const upperLimit = moment()
-                    .subtract(5, 'm')
-                    .toDate();
+                const lowerLimit = moment().subtract(15, 'm').toDate();
+                const upperLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithDatePicker(lowerLimit, upperLimit)
@@ -149,9 +133,7 @@ describe('Table HOC', () => {
 
             it('should not call onUpdate when the date picker does not changes', () => {
                 const updateSpy = jasmine.createSpy('update');
-                const lowerLimit = moment()
-                    .subtract(5, 'm')
-                    .toDate();
+                const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithDatePicker(lowerLimit, new Date())

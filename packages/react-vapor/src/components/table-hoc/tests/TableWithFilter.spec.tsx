@@ -99,11 +99,7 @@ describe('Table HOC', () => {
                 );
 
                 const wrapperRenderBody: ShallowWrapper<IBlankSlateProps> = shallow(
-                    (wrapper as any)
-                        .dive()
-                        .dive()
-                        .props()
-                        .renderBody()
+                    (wrapper as any).dive().dive().props().renderBody()
                 );
 
                 expect((wrapperRenderBody.instance().props as IBlankSlateProps).title).toBeDefined();

@@ -141,11 +141,7 @@ describe('Multiline box with remove button', () => {
                     store
                 );
 
-                wrapper
-                    .find(Button)
-                    .first()
-                    .props()
-                    .onClick();
+                wrapper.find(Button).first().props().onClick();
 
                 expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.removeValue);
             });

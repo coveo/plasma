@@ -94,10 +94,7 @@ describe('FlatSelect', () => {
     it('should call "onClick" prop when changing selection', () => {
         const onClickSpy = jasmine.createSpy('onClick');
         const component = shallowWithState(<FlatSelectConnected {...props} onClick={onClickSpy} />, {}).dive();
-        component
-            .children()
-            .first()
-            .prop('onClick')('new-option');
+        component.children().first().prop('onClick')('new-option');
         expect(onClickSpy).toHaveBeenCalledTimes(1);
         expect(onClickSpy).toHaveBeenCalledWith('new-option');
     });
@@ -105,10 +102,7 @@ describe('FlatSelect', () => {
     it('should dispatch selectFlatSelect action when changing selection', () => {
         const store = getStoreMock();
         const component = shallowWithStore(<FlatSelectConnected {...props} />, store).dive();
-        component
-            .children()
-            .first()
-            .prop('onClick')({id: 'new-option'});
+        component.children().first().prop('onClick')({id: 'new-option'});
         expect(store.getActions()).toContain(selectFlatSelect(props.id, 'new-option'));
     });
 });

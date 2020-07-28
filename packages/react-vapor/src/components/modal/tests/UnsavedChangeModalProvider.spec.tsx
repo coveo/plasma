@@ -96,10 +96,7 @@ describe('<UnsavedChangeModalProvider/>', () => {
         describe('PromptBefore function', () => {
             it('should return false', () => {
                 unsavedChangesModalProvider = shallowMountUnsavedModalProvider(true);
-                unsavedChangesModalProvider
-                    .childAt(0)
-                    .props()
-                    .modalFooterChildren.props.onClick();
+                unsavedChangesModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
                 expect(regularClickActionSpy).not.toHaveBeenCalled();
             });
         });
@@ -109,10 +106,7 @@ describe('<UnsavedChangeModalProvider/>', () => {
             const modal: any = heavyUnsavedChangesModalProvider.find(ModalCompositeConnected);
             modal.props().modalFooterChildren.props.onClick();
             heavyUnsavedChangesModalProvider.update();
-            const exitWithoutSavingButton: any = heavyUnsavedChangesModalProvider
-                .childAt(1)
-                .find('Button')
-                .first();
+            const exitWithoutSavingButton: any = heavyUnsavedChangesModalProvider.childAt(1).find('Button').first();
             exitWithoutSavingButton.prop('onClick')();
 
             expect(promptBeforeClickActionSpy).toHaveBeenCalled();
@@ -123,10 +117,7 @@ describe('<UnsavedChangeModalProvider/>', () => {
             const modal: any = heavyUnsavedChangesModalProvider.find(ModalCompositeConnected);
             modal.props().modalFooterChildren.props.onClick();
             heavyUnsavedChangesModalProvider.update();
-            const exitWithoutSavingButton: any = heavyUnsavedChangesModalProvider
-                .childAt(1)
-                .find('Button')
-                .last();
+            const exitWithoutSavingButton: any = heavyUnsavedChangesModalProvider.childAt(1).find('Button').last();
             exitWithoutSavingButton.prop('onClick')();
 
             expect(promptBeforeClickActionSpy).not.toHaveBeenCalled();
@@ -145,10 +136,7 @@ describe('<UnsavedChangeModalProvider/>', () => {
         });
         it('promptBefore function should return true', () => {
             unsavedChangesModalProvider = shallowMountUnsavedModalProvider();
-            unsavedChangesModalProvider
-                .childAt(0)
-                .props()
-                .modalFooterChildren.props.onClick();
+            unsavedChangesModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
             expect(regularClickActionSpy).toHaveBeenCalled();
         });
     });

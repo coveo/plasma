@@ -89,10 +89,7 @@ describe('ListBox', () => {
 
         it('should get the selected as a prop', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
-            const expected = _.chain(items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const expected = _.chain(items).where({selected: true}).pluck('value').value();
             mountListBox(items);
 
             const selected = listBox.props().selected;
@@ -106,11 +103,7 @@ describe('ListBox', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
             mountListBox(items);
 
-            listBox
-                .find(ItemBox)
-                .first()
-                .find('li')
-                .simulate('click');
+            listBox.find(ItemBox).first().find('li').simulate('click');
             const state = _.findWhere(store.getState().listBoxes, {id});
             expect(state.selected).toEqual([items[0].value]);
         });

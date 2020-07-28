@@ -75,37 +75,19 @@ describe('Tables', () => {
         it('should change the sorted attribute to ASCENDING after one click', () => {
             tableHeaderCell.simulate('click');
             wrapper.update();
-            expect(
-                wrapper
-                    .find(TableHeaderCell)
-                    .first()
-                    .props().sorted
-            ).toBe(TableSortingOrder.ASCENDING);
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.ASCENDING);
         });
 
         it('should change the sorted attribute to DESCENDING after two clicks', () => {
             tableHeaderCell.simulate('click').simulate('click');
             wrapper.update();
-            expect(
-                wrapper
-                    .find(TableHeaderCell)
-                    .first()
-                    .props().sorted
-            ).toBe(TableSortingOrder.DESCENDING);
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.DESCENDING);
         });
 
         it('should change the sorted attribute to ASCENDING after three clicks', () => {
-            tableHeaderCell
-                .simulate('click')
-                .simulate('click')
-                .simulate('click');
+            tableHeaderCell.simulate('click').simulate('click').simulate('click');
             wrapper.update();
-            expect(
-                wrapper
-                    .find(TableHeaderCell)
-                    .first()
-                    .props().sorted
-            ).toBe(TableSortingOrder.ASCENDING);
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.ASCENDING);
         });
 
         it('should sort the clicked header cell and unsort the others with the same tableId', () => {
@@ -113,26 +95,11 @@ describe('Tables', () => {
 
             tableHeaderCell.simulate('click');
             wrapper.update();
-            expect(
-                wrapper
-                    .find(TableHeaderCell)
-                    .first()
-                    .props().sorted
-            ).toBe(TableSortingOrder.ASCENDING);
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.ASCENDING);
 
             tableHeaderCell2.simulate('click');
-            expect(
-                wrapper
-                    .find(TableHeaderCell)
-                    .first()
-                    .props().sorted
-            ).toBe(TableSortingOrder.UNSORTED);
-            expect(
-                wrapper
-                    .find(TableHeaderCell)
-                    .last()
-                    .props().sorted
-            ).toBe(TableSortingOrder.ASCENDING);
+            expect(wrapper.find(TableHeaderCell).first().props().sorted).toBe(TableSortingOrder.UNSORTED);
+            expect(wrapper.find(TableHeaderCell).last().props().sorted).toBe(TableSortingOrder.ASCENDING);
         });
     });
 });

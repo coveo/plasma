@@ -91,11 +91,7 @@ describe('Date picker', () => {
                 const expectedIsUpperLimit: boolean = true;
                 const onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
 
-                datesSelection
-                    .find(DatePicker)
-                    .first()
-                    .props()
-                    .onBlur(expectedDate, expectedIsUpperLimit);
+                datesSelection.find(DatePicker).first().props().onBlur(expectedDate, expectedIsUpperLimit);
 
                 expect(onDateChangeSpy).toHaveBeenCalledWith(expectedDate, expectedIsUpperLimit);
             }
@@ -108,11 +104,7 @@ describe('Date picker', () => {
                 const expectedIsUpperLimit: boolean = true;
                 const onDateClickSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateClick');
 
-                datesSelection
-                    .find(DatePicker)
-                    .first()
-                    .props()
-                    .onClick(expectedIsUpperLimit);
+                datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
 
                 expect(onDateClickSpy).toHaveBeenCalledWith(expectedIsUpperLimit);
             }
@@ -218,18 +210,12 @@ describe('Date picker', () => {
             const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
 
             expect(() => {
-                datesSelection
-                    .find(DatePicker)
-                    .props()
-                    .onBlur(new Date(), false);
+                datesSelection.find(DatePicker).props().onBlur(new Date(), false);
             }).not.toThrow();
 
             datesSelection.setProps({onBlur: onBlurSpy}).update();
             (datesSelection.find('input').instance() as any).value = DateUtils.getDateWithTimeString(new Date());
-            datesSelection
-                .find(DatePicker)
-                .props()
-                .onBlur(new Date(), false);
+            datesSelection.find(DatePicker).props().onBlur(new Date(), false);
 
             expect(onBlurSpy).toHaveBeenCalledTimes(1);
         });

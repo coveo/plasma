@@ -11,7 +11,7 @@
 if (typeof jQuery === 'undefined') {
     throw new Error("Bootstrap's JavaScript requires jQuery");
 }
-+(function($) {
++(function ($) {
     'use strict';
     var version = $.fn.jquery.split(' ')[0].split('.');
     if (
@@ -32,13 +32,13 @@ if (typeof jQuery === 'undefined') {
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
-+(function($) {
++(function ($) {
     'use strict';
 
     // TOOLTIP PUBLIC CLASS DEFINITION
     // ===============================
 
-    var Tooltip = function(element, options) {
+    var Tooltip = function (element, options) {
         this.type = null;
         this.options = null;
         this.enabled = null;
@@ -71,7 +71,7 @@ if (typeof jQuery === 'undefined') {
         },
     };
 
-    Tooltip.prototype.init = function(type, element, options) {
+    Tooltip.prototype.init = function (type, element, options) {
         this.enabled = true;
         this.type = type;
         this.$element = $(element);
@@ -112,11 +112,11 @@ if (typeof jQuery === 'undefined') {
             : this.fixTitle();
     };
 
-    Tooltip.prototype.getDefaults = function() {
+    Tooltip.prototype.getDefaults = function () {
         return Tooltip.DEFAULTS;
     };
 
-    Tooltip.prototype.getOptions = function(options) {
+    Tooltip.prototype.getOptions = function (options) {
         options = $.extend({}, this.getDefaults(), this.$element.data(), options);
 
         if (options.delay && typeof options.delay == 'number') {
@@ -129,19 +129,19 @@ if (typeof jQuery === 'undefined') {
         return options;
     };
 
-    Tooltip.prototype.getDelegateOptions = function() {
+    Tooltip.prototype.getDelegateOptions = function () {
         var options = {};
         var defaults = this.getDefaults();
 
         this._options &&
-            $.each(this._options, function(key, value) {
+            $.each(this._options, function (key, value) {
                 if (defaults[key] != value) options[key] = value;
             });
 
         return options;
     };
 
-    Tooltip.prototype.enter = function(obj) {
+    Tooltip.prototype.enter = function (obj) {
         var self = obj instanceof this.constructor ? obj : $(obj.currentTarget).data('bs.' + this.type);
 
         if (!self) {
@@ -164,12 +164,12 @@ if (typeof jQuery === 'undefined') {
 
         if (!self.options.delay || !self.options.delay.show) return self.show();
 
-        self.timeout = setTimeout(function() {
+        self.timeout = setTimeout(function () {
             if (self.hoverState == 'in') self.show();
         }, self.options.delay.show);
     };
 
-    Tooltip.prototype.isInStateTrue = function() {
+    Tooltip.prototype.isInStateTrue = function () {
         for (var key in this.inState) {
             if (this.inState[key]) return true;
         }
@@ -177,7 +177,7 @@ if (typeof jQuery === 'undefined') {
         return false;
     };
 
-    Tooltip.prototype.leave = function(obj) {
+    Tooltip.prototype.leave = function (obj) {
         var self = obj instanceof this.constructor ? obj : $(obj.currentTarget).data('bs.' + this.type);
 
         if (!self) {
@@ -197,12 +197,12 @@ if (typeof jQuery === 'undefined') {
 
         if (!self.options.delay || !self.options.delay.hide) return self.hide();
 
-        self.timeout = setTimeout(function() {
+        self.timeout = setTimeout(function () {
             if (self.hoverState == 'out') self.hide();
         }, self.options.delay.hide);
     };
 
-    Tooltip.prototype.show = function() {
+    Tooltip.prototype.show = function () {
         var e = $.Event('show.bs.' + this.type);
 
         if (this.hasContent() && this.enabled) {
@@ -265,7 +265,7 @@ if (typeof jQuery === 'undefined') {
 
             this.applyPlacement(calculatedOffset, placement);
 
-            var complete = function() {
+            var complete = function () {
                 var prevHoverState = that.hoverState;
                 that.$element.trigger('shown.bs.' + that.type);
                 that.hoverState = null;
@@ -279,7 +279,7 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    Tooltip.prototype.applyPlacement = function(offset, placement) {
+    Tooltip.prototype.applyPlacement = function (offset, placement) {
         var $tip = this.tip();
         var width = $tip[0].offsetWidth;
         var height = $tip[0].offsetHeight;
@@ -301,7 +301,7 @@ if (typeof jQuery === 'undefined') {
             $tip[0],
             $.extend(
                 {
-                    using: function(props) {
+                    using: function (props) {
                         $tip.css({
                             top: Math.round(props.top),
                             left: Math.round(props.left),
@@ -336,13 +336,13 @@ if (typeof jQuery === 'undefined') {
         this.replaceArrow(arrowDelta, $tip[0][arrowOffsetPosition], isVertical);
     };
 
-    Tooltip.prototype.replaceArrow = function(delta, dimension, isVertical) {
+    Tooltip.prototype.replaceArrow = function (delta, dimension, isVertical) {
         this.arrow()
             .css(isVertical ? 'left' : 'top', 50 * (1 - delta / dimension) + '%')
             .css(isVertical ? 'top' : 'left', '');
     };
 
-    Tooltip.prototype.setContent = function() {
+    Tooltip.prototype.setContent = function () {
         var $tip = this.tip();
         var title = this.getTitle();
 
@@ -350,7 +350,7 @@ if (typeof jQuery === 'undefined') {
         $tip.removeClass('fade in top bottom left right');
     };
 
-    Tooltip.prototype.hide = function(callback) {
+    Tooltip.prototype.hide = function (callback) {
         var that = this;
         var $tip = $(this.$tip);
         var e = $.Event('hide.bs.' + this.type);
@@ -376,18 +376,18 @@ if (typeof jQuery === 'undefined') {
         return this;
     };
 
-    Tooltip.prototype.fixTitle = function() {
+    Tooltip.prototype.fixTitle = function () {
         var $e = this.$element;
         if ($e.attr('title') || typeof $e.attr('data-original-title') != 'string') {
             $e.attr('data-original-title', $e.attr('title') || '').attr('title', '');
         }
     };
 
-    Tooltip.prototype.hasContent = function() {
+    Tooltip.prototype.hasContent = function () {
         return this.getTitle();
     };
 
-    Tooltip.prototype.getPosition = function($element) {
+    Tooltip.prototype.getPosition = function ($element) {
         $element = $element || this.$element;
 
         var el = $element[0];
@@ -407,7 +407,7 @@ if (typeof jQuery === 'undefined') {
         return $.extend({}, elRect, scroll, outerDims, elOffset);
     };
 
-    Tooltip.prototype.getCalculatedOffset = function(placement, pos, actualWidth, actualHeight) {
+    Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
         return placement == 'bottom'
             ? {top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2}
             : placement == 'top'
@@ -417,7 +417,7 @@ if (typeof jQuery === 'undefined') {
             : /* placement == 'right' */ {top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left + pos.width};
     };
 
-    Tooltip.prototype.getViewportAdjustedDelta = function(placement, pos, actualWidth, actualHeight) {
+    Tooltip.prototype.getViewportAdjustedDelta = function (placement, pos, actualWidth, actualHeight) {
         var delta = {top: 0, left: 0};
         if (!this.$viewport) return delta;
 
@@ -449,7 +449,7 @@ if (typeof jQuery === 'undefined') {
         return delta;
     };
 
-    Tooltip.prototype.getTitle = function() {
+    Tooltip.prototype.getTitle = function () {
         var title;
         var $e = this.$element;
         var o = this.options;
@@ -459,13 +459,13 @@ if (typeof jQuery === 'undefined') {
         return title;
     };
 
-    Tooltip.prototype.getUID = function(prefix) {
+    Tooltip.prototype.getUID = function (prefix) {
         do prefix += ~~(Math.random() * 1000000);
         while (document.getElementById(prefix));
         return prefix;
     };
 
-    Tooltip.prototype.tip = function() {
+    Tooltip.prototype.tip = function () {
         if (!this.$tip) {
             this.$tip = $(this.options.template);
             if (this.$tip.length != 1) {
@@ -475,23 +475,23 @@ if (typeof jQuery === 'undefined') {
         return this.$tip;
     };
 
-    Tooltip.prototype.arrow = function() {
+    Tooltip.prototype.arrow = function () {
         return (this.$arrow = this.$arrow || this.tip().find('.tooltip-arrow'));
     };
 
-    Tooltip.prototype.enable = function() {
+    Tooltip.prototype.enable = function () {
         this.enabled = true;
     };
 
-    Tooltip.prototype.disable = function() {
+    Tooltip.prototype.disable = function () {
         this.enabled = false;
     };
 
-    Tooltip.prototype.toggleEnabled = function() {
+    Tooltip.prototype.toggleEnabled = function () {
         this.enabled = !this.enabled;
     };
 
-    Tooltip.prototype.toggle = function(e) {
+    Tooltip.prototype.toggle = function (e) {
         var self = this;
         if (e) {
             self = $(e.currentTarget).data('bs.' + this.type);
@@ -510,10 +510,10 @@ if (typeof jQuery === 'undefined') {
         }
     };
 
-    Tooltip.prototype.destroy = function() {
+    Tooltip.prototype.destroy = function () {
         var that = this;
         clearTimeout(this.timeout);
-        this.hide(function() {
+        this.hide(function () {
             that.$element.off('.' + that.type).removeData('bs.' + that.type);
             if (that.$tip) {
                 that.$tip.detach();
@@ -528,7 +528,7 @@ if (typeof jQuery === 'undefined') {
     // =========================
 
     function Plugin(option) {
-        return this.each(function() {
+        return this.each(function () {
             var $this = $(this);
             var data = $this.data('bs.tooltip');
             var options = typeof option == 'object' && option;
@@ -547,7 +547,7 @@ if (typeof jQuery === 'undefined') {
     // TOOLTIP NO CONFLICT
     // ===================
 
-    $.fn.tooltip.noConflict = function() {
+    $.fn.tooltip.noConflict = function () {
         $.fn.tooltip = old;
         return this;
     };

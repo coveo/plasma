@@ -182,10 +182,7 @@ describe('Autocomplete', () => {
                 mountAutocomplete([{value: 'a'}, {value: 'b'}, {value: 'c'}]);
 
                 expect(autocomplete.prop('active')).toBeUndefined();
-                autocomplete
-                    .find('input')
-                    .simulate('focus')
-                    .simulate('keyup', {keyCode: keyCode.enter});
+                autocomplete.find('input').simulate('focus').simulate('keyup', {keyCode: keyCode.enter});
 
                 expect(autocomplete.prop('active')).toBeUndefined();
                 expect(store.getState().autocompletes[0].value).toBe('');

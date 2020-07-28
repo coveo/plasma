@@ -64,12 +64,7 @@ describe('Facets', () => {
             store.dispatch(toggleMoreFacetRows(facet));
             wrapper.update();
 
-            expect(
-                wrapper
-                    .find(FacetMoreToggle)
-                    .find('li')
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(wrapper.find(FacetMoreToggle).find('li').hasClass('hidden')).toBe(true);
         });
     });
 });

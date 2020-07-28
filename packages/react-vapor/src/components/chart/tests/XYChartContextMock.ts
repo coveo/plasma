@@ -34,14 +34,8 @@ export const XYChartContextMock: XYChartContextProps = {
     ],
     colorPattern: ['blue', 'green', 'yellow'],
     color: (serie: number, pattern: string[]) => pattern[serie],
-    xScale: d3.scale
-        .ordinal<number, number>()
-        .domain([20, 30, 40, 50, 60])
-        .range([0, 10]),
-    yScale: d3.scale
-        .linear()
-        .domain([100, 0])
-        .range([50, 0]),
+    xScale: d3.scale.ordinal<number, number>().domain([20, 30, 40, 50, 60]).range([0, 10]),
+    yScale: d3.scale.linear().domain([100, 0]).range([50, 0]),
     xFormat: _.identity,
     yFormat: _.identity,
     xTicksCount: 2,
@@ -58,12 +52,6 @@ export const XYChartOnePointContextMock = {
     xTicksCount: 0.5,
     yTicksCount: 0.5,
     color: (serie: number, pattern: string[]) => pattern[serie],
-    xScale: d3.scale
-        .ordinal<number, number>()
-        .domain([1559880000])
-        .range([0, 10]),
-    yScale: d3.scale
-        .linear()
-        .domain([500])
-        .range([50, 0]),
+    xScale: d3.scale.ordinal<number, number>().domain([1559880000]).range([0, 10]),
+    yScale: d3.scale.linear().domain([500]).range([50, 0]),
 };

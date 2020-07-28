@@ -36,16 +36,9 @@ const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName
         <span className="navigation-menu-section-header-no-icon" />
     );
 
-const SideNavigationHeader: React.FunctionComponent<SideNavigationHeaderProps &
-    Pick<ISideNavigationSectionProps, 'expandable'>> = ({
-    customIcon,
-    onClick,
-    children,
-    expandable,
-    isLink,
-    className,
-    ...iconProps
-}) => {
+const SideNavigationHeader: React.FunctionComponent<
+    SideNavigationHeaderProps & Pick<ISideNavigationSectionProps, 'expandable'>
+> = ({customIcon, onClick, children, expandable, isLink, className, ...iconProps}) => {
     return (
         <div
             className={classNames(

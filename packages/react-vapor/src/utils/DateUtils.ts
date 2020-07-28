@@ -32,9 +32,7 @@ export class DateUtils {
     static getMonthWeeks(firstDay: Date, startingDay: number): IDay[][] {
         const weeks: IDay[][] = [];
         let done = false;
-        let date = moment(firstDay)
-            .startOf('week')
-            .add(startingDay, 'day');
+        let date = moment(firstDay).startOf('week').add(startingDay, 'day');
         let monthIndex = date.month();
         let count = 0;
 

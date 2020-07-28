@@ -31,8 +31,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ICollapsibleContaine
     return {expanded: collapsibleState && collapsibleState.expanded};
 };
 
-export const CollapsibleContainerDisconnected: React.FunctionComponent<ICollapsibleContainerOwnProps &
-    ReturnType<typeof mapStateToProps>> = ({
+export const CollapsibleContainerDisconnected: React.FunctionComponent<
+    ICollapsibleContainerOwnProps & ReturnType<typeof mapStateToProps>
+> = ({
     children,
     id,
     className,

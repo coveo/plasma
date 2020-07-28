@@ -76,24 +76,14 @@ describe('Limit', () => {
         it('should display the custom limit label if the limitLabel prop is specified', () => {
             limit = mountLimitWithStore(customTitleProps);
 
-            expect(
-                limit
-                    .find('.limit-box-limit')
-                    .find('label')
-                    .text()
-            ).toBe(customLimitLabel);
+            expect(limit.find('.limit-box-limit').find('label').text()).toBe(customLimitLabel);
         });
 
         it('should display the default limit label if the limitLabel prop is not specified', () => {
             const expectedDefaultLimitTitle: string = Limit.defaultProps.limitLabel;
             limit = mountLimitWithStore(defaultProps);
 
-            expect(
-                limit
-                    .find('.limit-box-limit')
-                    .find('label')
-                    .text()
-            ).toBe(expectedDefaultLimitTitle);
+            expect(limit.find('.limit-box-limit').find('label').text()).toBe(expectedDefaultLimitTitle);
         });
 
         it('should display the <div class="limit-box-usage"> if the usage prop is specified', () => {

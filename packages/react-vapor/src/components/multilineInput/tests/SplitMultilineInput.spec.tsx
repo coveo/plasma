@@ -119,11 +119,7 @@ describe('SplitMultilineInput', () => {
             const expectedValue: string = 'a new value';
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
-            splitMultilineInput
-                .find(Input)
-                .first()
-                .props()
-                .onChange(expectedValue, true);
+            splitMultilineInput.find(Input).first().props().onChange(expectedValue, true);
 
             expect(changeValueSpy).toHaveBeenCalledTimes(1);
             expect(changeValueSpy).toHaveBeenCalledWith(
@@ -161,38 +157,14 @@ describe('SplitMultilineInput', () => {
             });
             splitMultilineInput.setProps(newProps);
 
-            expect(
-                splitMultilineInput
-                    .find(Input)
-                    .first()
-                    .props()
-                    .validate('anything')
-            ).toBe(true);
-            expect(
-                splitMultilineInput
-                    .find(Input)
-                    .last()
-                    .props()
-                    .validate('anything')
-            ).toBe(true);
+            expect(splitMultilineInput.find(Input).first().props().validate('anything')).toBe(true);
+            expect(splitMultilineInput.find(Input).last().props().validate('anything')).toBe(true);
 
             newProps.inputs[0].validation = (value: any) => false;
             splitMultilineInput.setProps(newProps);
 
-            expect(
-                splitMultilineInput
-                    .find(Input)
-                    .first()
-                    .props()
-                    .validate('anything')
-            ).toBe(false);
-            expect(
-                splitMultilineInput
-                    .find(Input)
-                    .last()
-                    .props()
-                    .validate('anything')
-            ).toBe(false);
+            expect(splitMultilineInput.find(Input).first().props().validate('anything')).toBe(false);
+            expect(splitMultilineInput.find(Input).last().props().validate('anything')).toBe(false);
         });
 
         it('should remove the split value from the state when calling removeLine with the index of the value', () => {

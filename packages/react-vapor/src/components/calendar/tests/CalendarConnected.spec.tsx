@@ -218,12 +218,8 @@ describe('Calendar', () => {
         });
 
         it('should change the upper limit to the end of the day selected if the onClick was called on an upper limit', () => {
-            const currentUpperLimit: Date = moment(new Date())
-                .add(10, 'day')
-                .toDate();
-            const newLimit: Date = moment(new Date())
-                .add(5, 'day')
-                .toDate();
+            const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+            const newLimit: Date = moment(new Date()).add(5, 'day').toDate();
 
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
             store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));
@@ -233,19 +229,13 @@ describe('Calendar', () => {
             calendar.props().onClick(PICKER_ID, true, newLimit);
 
             expect(_.findWhere(store.getState().datePickers, {id: PICKER_ID}).upperLimit).toEqual(
-                moment(newLimit)
-                    .endOf('day')
-                    .toDate()
+                moment(newLimit).endOf('day').toDate()
             );
         });
 
         it('should change the lower limit if the onClick was called on a lower limit', () => {
-            const currentLowerLimit: Date = moment(new Date())
-                .add(10, 'day')
-                .toDate();
-            const newLimit: Date = moment(new Date())
-                .subtract(5, 'day')
-                .toDate();
+            const currentLowerLimit: Date = moment(new Date()).add(10, 'day').toDate();
+            const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
             store.dispatch(changeDatePickerLowerLimit(PICKER_ID, currentLowerLimit));
@@ -258,12 +248,8 @@ describe('Calendar', () => {
         });
 
         it('should change the upper limit if the onClick was called on a lower limit and isLinkedToDateRange prop is false', () => {
-            const currentUpperLimit: Date = moment(new Date())
-                .add(10, 'day')
-                .toDate();
-            const newLimit: Date = moment(new Date())
-                .subtract(5, 'day')
-                .toDate();
+            const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+            const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
             mountComponent({isLinkedToDateRange: false});
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
@@ -277,12 +263,8 @@ describe('Calendar', () => {
         });
 
         it('should not change the upper limit if onClick was called on a lower limit and isLinkedToDateRange prop is undefined', () => {
-            const currentUpperLimit: Date = moment(new Date())
-                .add(10, 'day')
-                .toDate();
-            const newLimit: Date = moment(new Date())
-                .subtract(5, 'day')
-                .toDate();
+            const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+            const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
             mountComponent({isLinkedToDateRange: undefined});
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
@@ -296,12 +278,8 @@ describe('Calendar', () => {
         });
 
         it('should not change the upper limit if onClick was called on a lower limit and isLinkedToDateRange prop is true', () => {
-            const currentUpperLimit: Date = moment(new Date())
-                .add(10, 'day')
-                .toDate();
-            const newLimit: Date = moment(new Date())
-                .subtract(5, 'day')
-                .toDate();
+            const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
+            const newLimit: Date = moment(new Date()).subtract(5, 'day').toDate();
 
             mountComponent({isLinkedToDateRange: true});
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
@@ -323,14 +301,7 @@ describe('Calendar', () => {
             store.dispatch(changeOptionsCycle(yearId, secondYear));
 
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
-            store.dispatch(
-                changeDatePickerLowerLimit(
-                    PICKER_ID,
-                    moment()
-                        .endOf('hour')
-                        .toDate()
-                )
-            );
+            store.dispatch(changeDatePickerLowerLimit(PICKER_ID, moment().endOf('hour').toDate()));
 
             expect(_.findWhere(store.getState().optionsCycles, {id: monthId}).currentOption).toBe(
                 DateUtils.currentMonth
@@ -341,14 +312,7 @@ describe('Calendar', () => {
             store.dispatch(changeOptionsCycle(yearId, secondYear));
 
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
-            store.dispatch(
-                changeDatePickerUpperLimit(
-                    PICKER_ID,
-                    moment()
-                        .endOf('year')
-                        .toDate()
-                )
-            );
+            store.dispatch(changeDatePickerUpperLimit(PICKER_ID, moment().endOf('year').toDate()));
 
             expect(_.findWhere(store.getState().optionsCycles, {id: monthId}).currentOption).toBe(11);
             expect(_.findWhere(store.getState().optionsCycles, {id: yearId}).currentOption).not.toBe(secondYear);
@@ -358,9 +322,7 @@ describe('Calendar', () => {
             // this can legitimately happen only under the following conditions: when a rule for range length is set, a both limits are set
             // then a new lower limit that exceeds the range length is being set
 
-            const currentUpperLimit: Date = moment(new Date())
-                .add(10, 'day')
-                .toDate();
+            const currentUpperLimit: Date = moment(new Date()).add(10, 'day').toDate();
 
             store.dispatch(DEFAULT_ADD_DATE_PICKER_WITH_RANGE);
             store.dispatch(changeDatePickerUpperLimit(PICKER_ID, currentUpperLimit));

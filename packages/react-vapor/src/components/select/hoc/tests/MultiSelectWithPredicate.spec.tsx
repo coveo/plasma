@@ -140,10 +140,7 @@ describe('Select', () => {
                 mountMultiSelect({items, sortable: true});
 
                 // Move b from 0 to 1
-                multiSelect
-                    .find(DraggableSelectedOption)
-                    .first()
-                    .prop('move')(0, 1);
+                multiSelect.find(DraggableSelectedOption).first().prop('move')(0, 1);
                 expect(spy).toHaveBeenCalledWith(reorderListBoxOption(id, [items[2].value, items[1].value]));
             });
 
@@ -158,10 +155,7 @@ describe('Select', () => {
                 mountMultiSelect({items, sortable: true});
 
                 // Move b from 0 to 1
-                multiSelect
-                    .find(DraggableSelectedOption)
-                    .first()
-                    .prop('onRemoveClick')();
+                multiSelect.find(DraggableSelectedOption).first().prop('onRemoveClick')();
                 expect(spy).toHaveBeenCalledWith(unselectListBoxOption(id, items[1].value));
             });
         });

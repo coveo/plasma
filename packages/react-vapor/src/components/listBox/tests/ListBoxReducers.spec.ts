@@ -64,10 +64,7 @@ describe('ListBox', () => {
         describe('ADD_LIST_BOX', () => {
             const id = 'added-list-box';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
 
             it('should return the old state with one more list box', () => {
                 const oldState: IListBoxState[] = [listBoxInitialState];
@@ -129,10 +126,7 @@ describe('ListBox', () => {
                 {value: 'd', disabled: true},
                 {value: 'e'},
             ];
-            const selected = _.chain(items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -209,10 +203,7 @@ describe('ListBox', () => {
         describe('SET_VALUE_AUTOCOMPLETE', () => {
             const id = 'list-box-id';
             const items = [{value: 'a'}, {value: 'b', selected: true}];
-            const selected = _.chain(items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -249,10 +240,7 @@ describe('ListBox', () => {
             let selected: any[];
 
             beforeEach(() => {
-                selected = _.chain(items)
-                    .where({selected: true})
-                    .pluck('value')
-                    .value();
+                selected = _.chain(items).where({selected: true}).pluck('value').value();
                 defaultState = [_.extend({}, listBoxInitialState, {id, selected}), listBoxInitialState];
             });
 
@@ -304,10 +292,7 @@ describe('ListBox', () => {
                 {value: 'a', selected: true},
                 {value: 'b', selected: true},
             ];
-            const selected = _.chain(items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {
@@ -339,10 +324,7 @@ describe('ListBox', () => {
                 {value: 'a', selected: true},
                 {value: 'b', selected: true},
             ];
-            const selected = _.chain(items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const selected = _.chain(items).where({selected: true}).pluck('value').value();
             let defaultState: IListBoxState[];
 
             beforeEach(() => {

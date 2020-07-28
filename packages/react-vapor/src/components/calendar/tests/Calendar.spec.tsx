@@ -78,41 +78,21 @@ describe('Calendar', () => {
                 'décembre',
             ];
 
-            expect(
-                calendar
-                    .find(OptionsCycle)
-                    .first()
-                    .props().options
-            ).toEqual(DEFAULT_MONTHS);
+            expect(calendar.find(OptionsCycle).first().props().options).toEqual(DEFAULT_MONTHS);
 
             calendar.setProps({months}).update();
 
-            expect(
-                calendar
-                    .find(OptionsCycle)
-                    .first()
-                    .props().options
-            ).toEqual(months);
+            expect(calendar.find(OptionsCycle).first().props().options).toEqual(months);
         });
 
         it('should send the years sent as props or the default ones to the year picker <OptionsCycle />', () => {
             const years: string[] = ['2015', '2016', '2017'];
 
-            expect(
-                calendar
-                    .find(OptionsCycle)
-                    .last()
-                    .props().options
-            ).toEqual(DEFAULT_YEARS);
+            expect(calendar.find(OptionsCycle).last().props().options).toEqual(DEFAULT_YEARS);
 
             calendar.setProps({years}).update();
 
-            expect(
-                calendar
-                    .find(OptionsCycle)
-                    .last()
-                    .props().options
-            ).toEqual(years);
+            expect(calendar.find(OptionsCycle).last().props().options).toEqual(years);
         });
 
         it('should use the startingMonth prop to set the month picker at the desired month or use the current one', () => {
@@ -140,42 +120,17 @@ describe('Calendar', () => {
         it('should start the week on the startingDay sent as prop or simply use the first one (assumed to be Sunday)', () => {
             const startingDay: number = 3;
             let firstDayOfSecondWeek: number = parseInt(
-                calendar
-                    .find('tbody')
-                    .find('tr')
-                    .at(1)
-                    .find('td')
-                    .first()
-                    .text(),
+                calendar.find('tbody').find('tr').at(1).find('td').first().text(),
                 10
             );
 
-            expect(
-                calendar
-                    .find('th')
-                    .first()
-                    .html()
-            ).toContain(DEFAULT_DAYS[0]);
+            expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[0]);
             expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(0);
 
             calendar.setProps({startingDay});
-            firstDayOfSecondWeek = parseInt(
-                calendar
-                    .find('tbody')
-                    .find('tr')
-                    .at(1)
-                    .find('td')
-                    .first()
-                    .text(),
-                10
-            );
+            firstDayOfSecondWeek = parseInt(calendar.find('tbody').find('tr').at(1).find('td').first().text(), 10);
 
-            expect(
-                calendar
-                    .find('th')
-                    .first()
-                    .html()
-            ).toContain(DEFAULT_DAYS[startingDay]);
+            expect(calendar.find('th').first().html()).toContain(DEFAULT_DAYS[startingDay]);
             expect(new Date(DateUtils.currentYear, DateUtils.currentMonth, firstDayOfSecondWeek).getDay()).toBe(
                 startingDay
             );
@@ -368,12 +323,8 @@ describe('Calendar', () => {
                 id: 'id',
                 calendarId: 'any',
                 color: 'any',
-                lowerLimit: moment()
-                    .subtract(1, 'day')
-                    .toDate(),
-                upperLimit: moment()
-                    .add(1, 'day')
-                    .toDate(),
+                lowerLimit: moment().subtract(1, 'day').toDate(),
+                upperLimit: moment().add(1, 'day').toDate(),
                 isRange: true,
                 isClearable: false,
                 selected: undefined,
@@ -480,12 +431,8 @@ describe('Calendar', () => {
                     lowerLimit: CALENDAR_SELECTION.upperLimit,
                 });
                 const selectionNone: IDatePickerState = _.extend({}, CALENDAR_SELECTION, {
-                    lowerLimit: moment(now)
-                        .subtract(20, 'day')
-                        .toDate(),
-                    upperLimit: moment(now)
-                        .subtract(10, 'day')
-                        .toDate(),
+                    lowerLimit: moment(now).subtract(20, 'day').toDate(),
+                    upperLimit: moment(now).subtract(10, 'day').toDate(),
                     color: 'not any',
                 });
 
@@ -597,9 +544,7 @@ describe('Calendar', () => {
                 it('should return day isSelectable if the day is not a Sunday and selecting upper limit', () => {
                     const otherDay: IDay = _.extend({}, DAY, {date: notSaturdayOrSunday});
                     const sunday: IDay = _.extend({}, DAY, {
-                        date: moment()
-                            .endOf('week')
-                            .add(1, 'week'),
+                        date: moment().endOf('week').add(1, 'week'),
                     });
                     const selectionUpperLimit: IDatePickerState = _.extend({}, CALENDAR_SELECTION, {
                         selected: DateLimits.upper,

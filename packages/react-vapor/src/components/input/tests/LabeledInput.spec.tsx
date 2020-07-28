@@ -41,40 +41,18 @@ describe('LabeledInput', () => {
 
         it('should output message when specified', () => {
             const label = shallow(<LabeledInput message={SOME_MESSAGE} />);
-            expect(
-                label
-                    .find(InputDescription)
-                    .dive()
-                    .text()
-            ).toBe(SOME_MESSAGE);
+            expect(label.find(InputDescription).dive().text()).toBe(SOME_MESSAGE);
         });
 
         it('should output description when specified', () => {
             const label = shallow(<LabeledInput message={SOME_HELP_TEXT} />);
-            expect(
-                label
-                    .find(InputDescription)
-                    .dive()
-                    .text()
-            ).toBe(SOME_HELP_TEXT);
+            expect(label.find(InputDescription).dive().text()).toBe(SOME_HELP_TEXT);
         });
 
         it('should output both message and description when specified', () => {
             const label = shallow(<LabeledInput helpText={SOME_HELP_TEXT} message={SOME_MESSAGE} />);
-            expect(
-                label
-                    .find(InputDescription)
-                    .first()
-                    .dive()
-                    .text()
-            ).toBe(SOME_MESSAGE);
-            expect(
-                label
-                    .find(InputDescription)
-                    .last()
-                    .dive()
-                    .text()
-            ).toBe(SOME_HELP_TEXT);
+            expect(label.find(InputDescription).first().dive().text()).toBe(SOME_MESSAGE);
+            expect(label.find(InputDescription).last().dive().text()).toBe(SOME_HELP_TEXT);
         });
 
         it('should not output message and description when not specified', () => {

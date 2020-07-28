@@ -122,13 +122,7 @@ describe('Select', () => {
             const expectedPrepend = <span>{'some prepended text'}</span>;
             mountSingleSelect([], {buttonPrepend: expectedPrepend});
 
-            expect(
-                select
-                    .find('.dropdown-toggle')
-                    .children()
-                    .first()
-                    .equals(expectedPrepend)
-            ).toBe(true);
+            expect(select.find('.dropdown-toggle').children().first().equals(expectedPrepend)).toBe(true);
         });
 
         it('should contain the prepend and append in the button when selected', () => {
@@ -176,10 +170,7 @@ describe('Select', () => {
             const spy = spyOn(store, 'dispatch').and.callThrough();
             mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
 
-            select
-                .find('.btn-append')
-                .first()
-                .simulate('click');
+            select.find('.btn-append').first().simulate('click');
             expect(spy).toHaveBeenCalledWith(clearListBoxOption(id));
         });
 
@@ -214,10 +205,7 @@ describe('Select', () => {
             mountSingleSelect([{value: 'a'}, {value: 'b'}], {onSelectOptionCallback: onSelectOptionCallbackSpy});
 
             select.find('.dropdown-toggle').simulate('click');
-            select
-                .find('.item-box')
-                .first()
-                .simulate('click');
+            select.find('.item-box').first().simulate('click');
 
             expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('a');
         });

@@ -180,7 +180,7 @@ gulp.task('svg:concat', () => {
         .pipe(
             cheerio(($) => {
                 // tslint:disable-next-line
-                $('svg').each(function() {
+                $('svg').each(function () {
                     const svg = $(this);
                     if (svg) {
                         const attrs = svg[0].attribs;

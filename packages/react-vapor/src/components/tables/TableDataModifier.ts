@@ -69,9 +69,7 @@ export const applyFilterOnDisplayedIds = (
                         ? attributeFormatter(attributeValue, attributeName, tableDataById[dataId])
                         : attributeValueToUse;
                 return contains(
-                    convertUndefinedAndNullToEmptyString(attributeValueToUse)
-                        .toString()
-                        .toLowerCase(),
+                    convertUndefinedAndNullToEmptyString(attributeValueToUse).toString().toLowerCase(),
                     tableCompositeState.filter.toLowerCase()
                 );
             });

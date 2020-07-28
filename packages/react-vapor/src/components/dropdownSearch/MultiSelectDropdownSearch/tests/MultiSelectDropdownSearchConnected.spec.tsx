@@ -149,10 +149,7 @@ describe('MultiSelectDropdownSearch', () => {
                 store.dispatch(closeDropdownSearch(id, []));
                 wrapper.update();
 
-                wrapper
-                    .find(MultiSelectDropdownSearch)
-                    .props()
-                    .onFocus();
+                wrapper.find(MultiSelectDropdownSearch).props().onFocus();
                 wrapper.update();
 
                 expect(wrapper.find('.open').length).toBe(1);
@@ -162,10 +159,7 @@ describe('MultiSelectDropdownSearch', () => {
                 store.dispatch(updateOptionsDropdownSearch(id, [{value: 'test 1'}, {value: 'test 2'}]));
                 store.dispatch(openDropdownSearch(id));
 
-                wrapper
-                    .find('li span')
-                    .first()
-                    .simulate('mouseDown');
+                wrapper.find('li span').first().simulate('mouseDown');
 
                 const selectedOption = store.getState().dropdownSearch[0].options[0];
                 expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);

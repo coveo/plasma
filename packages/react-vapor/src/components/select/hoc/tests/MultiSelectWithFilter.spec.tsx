@@ -53,10 +53,7 @@ describe('Select', () => {
             store.dispatch(filterThrough(id, filterValue));
 
             wrapper.update();
-            const itemBox = wrapper
-                .find(SelectConnected)
-                .find(ItemBox)
-                .first();
+            const itemBox = wrapper.find(SelectConnected).find(ItemBox).first();
 
             expect(itemBox.props().value).toBe(duplicateText);
         });
@@ -66,10 +63,7 @@ describe('Select', () => {
 
             mountMultiSelect({items: [], noItemsText, customValues: true});
 
-            const itemBox = wrapper
-                .find(SelectConnected)
-                .find(ItemBox)
-                .first();
+            const itemBox = wrapper.find(SelectConnected).find(ItemBox).first();
 
             expect(itemBox.props().value).toBe(noItemsText);
         });
@@ -86,10 +80,7 @@ describe('Select', () => {
                 customValues: true,
             });
 
-            const itemBox = wrapper
-                .find(SelectConnected)
-                .find(ItemBox)
-                .first();
+            const itemBox = wrapper.find(SelectConnected).find(ItemBox).first();
 
             expect(itemBox.props().value).toBe(noItemsText);
         });

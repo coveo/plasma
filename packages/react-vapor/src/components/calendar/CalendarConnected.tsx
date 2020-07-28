@@ -42,14 +42,7 @@ const mapDispatchToProps = (
     onClick: (pickerId: string, isUpperLimit: boolean, value: Date) => {
         dispatch(resetOptionPickers(pickerId));
         if (value && isUpperLimit) {
-            dispatch(
-                changeDatePickerUpperLimit(
-                    pickerId,
-                    moment(value)
-                        .endOf('day')
-                        .toDate()
-                )
-            );
+            dispatch(changeDatePickerUpperLimit(pickerId, moment(value).endOf('day').toDate()));
         } else if (value) {
             dispatch(changeDatePickerLowerLimit(pickerId, value));
 
