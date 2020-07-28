@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
@@ -11,6 +12,7 @@ export interface ILabeledInputProps {
     helpText?: React.ReactNode;
     headerClassName?: string;
     optionalInformation?: string;
+    informationPlacement?: TooltipPlacement;
 }
 
 export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
@@ -20,13 +22,18 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
     helpText: description,
     headerClassName,
     optionalInformation: information,
+    informationPlacement,
 }) => {
     const header =
         !!label || !!information ? (
             <header className={classNames('label', 'text-light-blue', headerClassName)}>
                 {!!label ? <span>{label}</span> : null}
                 {!!information ? (
-                    <Tooltip title={information} placement={TooltipPlacement.Top} className="ml1">
+                    <Tooltip
+                        title={information}
+                        placement={informationPlacement || TooltipPlacement.Top}
+                        className="ml1"
+                    >
                         <Svg svgName="info-14" svgClass="icon fill-medium-grey" />
                     </Tooltip>
                 ) : null}
