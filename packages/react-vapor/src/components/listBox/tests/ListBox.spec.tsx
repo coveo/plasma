@@ -87,10 +87,7 @@ describe('ListBox', () => {
         it('should render items with events on onOptionClick on the item', () => {
             renderListBox();
 
-            (listBoxComponent
-                .find(ItemBox)
-                .at(1)
-                .instance() as any).handleOnOptionClick({target: 'target'});
+            (listBoxComponent.find(ItemBox).at(1).instance() as any).handleOnOptionClick({target: 'target'});
             expect(spyOnOptionClick).toHaveBeenCalled();
         });
 
@@ -100,10 +97,7 @@ describe('ListBox', () => {
                 onOptionClick,
             });
 
-            (listBoxComponent
-                .find(ItemBox)
-                .first()
-                .instance() as any).handleOnOptionClick({target: 'target'});
+            (listBoxComponent.find(ItemBox).first().instance() as any).handleOnOptionClick({target: 'target'});
             expect(onOptionClick).toHaveBeenCalled();
         });
 
@@ -151,12 +145,7 @@ describe('ListBox', () => {
         it('should wrap the items using the result from the "wrapItems" prop', () => {
             const wrapItems = (items: React.ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
-            expect(
-                list
-                    .childAt(0)
-                    .childAt(0)
-                    .hasClass('wrapping-those-items-real-hard')
-            ).toBe(true);
+            expect(list.childAt(0).childAt(0).hasClass('wrapping-those-items-real-hard')).toBe(true);
         });
 
         it('should render 7 ItemBoxLoading components when isLoading prop is true', () => {

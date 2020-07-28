@@ -84,19 +84,13 @@ describe('Toasts', () => {
 
             component.setProps(newToastAttributes).mount();
 
-            component
-                .find(Toast)
-                .props()
-                .onClose();
+            component.find(Toast).props().onClose();
             expect(onCloseToast).toHaveBeenCalledTimes(0);
 
             newToastAttributes = _.extend({}, newToastAttributes, {onCloseToast});
             component.setProps(newToastAttributes).mount();
 
-            component
-                .find(Toast)
-                .props()
-                .onClose();
+            component.find(Toast).props().onClose();
             expect(onCloseToast).toHaveBeenCalledTimes(1);
             expect(onCloseToast).toHaveBeenCalledWith(newToastAttributes.toasts[0].id);
         });
@@ -107,12 +101,7 @@ describe('Toasts', () => {
             });
 
             component.setProps(newToastAttributes).mount();
-            expect(() =>
-                component
-                    .find(Toast)
-                    .props()
-                    .onClose()
-            ).not.toThrow();
+            expect(() => component.find(Toast).props().onClose()).not.toThrow();
         });
 
         it('should call toast method onClose when defined', () => {
@@ -121,10 +110,7 @@ describe('Toasts', () => {
                 toasts: [{id: 'toast-id', title: 'some toast title', onClose: onCloseSpy}],
             });
             component.setProps(newToastAttributes).mount();
-            component
-                .find(Toast)
-                .props()
-                .onClose();
+            component.find(Toast).props().onClose();
             expect(onCloseSpy).toHaveBeenCalledTimes(1);
         });
     });

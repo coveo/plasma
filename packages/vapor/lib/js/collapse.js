@@ -8,13 +8,13 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  * ======================================================================== */
 
-+(function($) {
++(function ($) {
     'use strict';
 
     // COLLAPSE PUBLIC CLASS DEFINITION
     // ================================
 
-    var Collapse = function(element, options) {
+    var Collapse = function (element, options) {
         this.$element = $(element);
         this.options = $.extend({}, Collapse.DEFAULTS, options);
         this.$trigger = $(
@@ -44,12 +44,12 @@
         toggle: true,
     };
 
-    Collapse.prototype.dimension = function() {
+    Collapse.prototype.dimension = function () {
         var hasWidth = this.$element.hasClass('width');
         return hasWidth ? 'width' : 'height';
     };
 
-    Collapse.prototype.show = function() {
+    Collapse.prototype.show = function () {
         if (this.transitioning || this.$element.hasClass('in')) return;
 
         var activesData;
@@ -71,21 +71,14 @@
 
         var dimension = this.dimension();
 
-        this.$element
-            .removeClass('collapse')
-            .addClass('collapsing')
-            [dimension](0)
-            .attr('aria-expanded', true);
+        this.$element.removeClass('collapse').addClass('collapsing')[dimension](0).attr('aria-expanded', true);
 
         this.$trigger.removeClass('collapsed').attr('aria-expanded', true);
 
         this.transitioning = 1;
 
-        var complete = function() {
-            this.$element
-                .removeClass('collapsing')
-                .addClass('collapse in')
-                [dimension]('');
+        var complete = function () {
+            this.$element.removeClass('collapsing').addClass('collapse in')[dimension]('');
             this.transitioning = 0;
             this.$element.trigger('shown.bs.collapse');
         };
@@ -100,7 +93,7 @@
             [dimension](this.$element[0][scrollSize]);
     };
 
-    Collapse.prototype.hide = function() {
+    Collapse.prototype.hide = function () {
         if (this.transitioning || !this.$element.hasClass('in')) return;
 
         var startEvent = $.Event('hide.bs.collapse');
@@ -111,21 +104,15 @@
 
         this.$element[dimension](this.$element[dimension]())[0].offsetHeight;
 
-        this.$element
-            .addClass('collapsing')
-            .removeClass('collapse in')
-            .attr('aria-expanded', false);
+        this.$element.addClass('collapsing').removeClass('collapse in').attr('aria-expanded', false);
 
         this.$trigger.addClass('collapsed').attr('aria-expanded', false);
 
         this.transitioning = 1;
 
-        var complete = function() {
+        var complete = function () {
             this.transitioning = 0;
-            this.$element
-                .removeClass('collapsing')
-                .addClass('collapse')
-                .trigger('hidden.bs.collapse');
+            this.$element.removeClass('collapsing').addClass('collapse').trigger('hidden.bs.collapse');
         };
 
         if (!$.support.transition) return complete.call(this);
@@ -135,15 +122,15 @@
             .emulateTransitionEnd(Collapse.TRANSITION_DURATION);
     };
 
-    Collapse.prototype.toggle = function() {
+    Collapse.prototype.toggle = function () {
         this[this.$element.hasClass('in') ? 'hide' : 'show']();
     };
 
-    Collapse.prototype.getParent = function() {
+    Collapse.prototype.getParent = function () {
         return $(this.options.parent)
             .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
             .each(
-                $.proxy(function(i, element) {
+                $.proxy(function (i, element) {
                     var $element = $(element);
                     this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element);
                 }, this)
@@ -151,7 +138,7 @@
             .end();
     };
 
-    Collapse.prototype.addAriaAndCollapsedClass = function($element, $trigger) {
+    Collapse.prototype.addAriaAndCollapsedClass = function ($element, $trigger) {
         var isOpen = $element.hasClass('in');
 
         $element.attr('aria-expanded', isOpen);
@@ -170,7 +157,7 @@
     // ==========================
 
     function Plugin(option) {
-        return this.each(function() {
+        return this.each(function () {
             var $this = $(this);
             var data = $this.data('bs.collapse');
             var options = $.extend({}, Collapse.DEFAULTS, $this.data(), typeof option == 'object' && option);
@@ -189,7 +176,7 @@
     // COLLAPSE NO CONFLICT
     // ====================
 
-    $.fn.collapse.noConflict = function() {
+    $.fn.collapse.noConflict = function () {
         $.fn.collapse = old;
         return this;
     };
@@ -197,7 +184,7 @@
     // COLLAPSE DATA-API
     // =================
 
-    $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function(e) {
+    $(document).on('click.bs.collapse.data-api', '[data-toggle="collapse"]', function (e) {
         var $this = $(this);
 
         if (!$this.attr('data-target')) e.preventDefault();

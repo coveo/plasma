@@ -45,24 +45,12 @@ describe('SearchBar', () => {
 
     it('should have an input inside the div container with the search-bar-input class by default', () => {
         const component = shallow(<SearchBar {...requiredProps} />);
-        expect(
-            component
-                .find('div')
-                .first()
-                .find('input')
-                .prop('className')
-        ).toBe('search-bar-input');
+        expect(component.find('div').first().find('input').prop('className')).toBe('search-bar-input');
     });
 
     it('should have an input inside the div container with extra classes if passed as props', () => {
         const component = shallow(<SearchBar {...requiredProps} inputClassNames="extra-class" />);
-        expect(
-            component
-                .find('div')
-                .first()
-                .find('input')
-                .prop('className')
-        ).toContain('extra-class');
+        expect(component.find('div').first().find('input').prop('className')).toContain('extra-class');
     });
 
     it('should have a clickable span containing an svg by default, which when clicked, the search method is called', () => {

@@ -107,23 +107,13 @@ describe('SearchBarConnected', () => {
             store.dispatch(toggleSearching(requiredProps.id, true));
             component.update();
 
-            expect(
-                component
-                    .find('div')
-                    .first()
-                    .hasClass('search-bar-loading')
-            ).toBe(true);
+            expect(component.find('div').first().hasClass('search-bar-loading')).toBe(true);
             expect(component.find('input').prop('disabled')).toBe(true);
 
             store.dispatch(toggleSearching(requiredProps.id, false));
             component.update();
 
-            expect(
-                component
-                    .find('div')
-                    .first()
-                    .hasClass('search-bar-loading')
-            ).toBe(false);
+            expect(component.find('div').first().hasClass('search-bar-loading')).toBe(false);
             expect(component.find('input').prop('disabled')).toBe(false);
         });
     });

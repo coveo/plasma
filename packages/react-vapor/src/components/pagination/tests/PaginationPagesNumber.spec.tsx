@@ -27,22 +27,12 @@ describe('PaginationPagesNumber tests', () => {
             describe('previous arrow', () => {
                 it('should be disabled if the current page is equal to 0', () => {
                     wrapper = shallowPaginationPagesNumber({}).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(0)
-                            .hasClass('disabled')
-                    ).toBe(true);
+                    expect(wrapper.find('a.flat-select-option').at(0).hasClass('disabled')).toBe(true);
                 });
 
                 it('should be selectable if the current page is not equal to 0', () => {
                     wrapper = shallowPaginationPagesNumber({}, {paginationComposite: [{id, pageNb: 1}]}).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(0)
-                            .hasClass('selectable')
-                    ).toBe(true);
+                    expect(wrapper.find('a.flat-select-option').at(0).hasClass('selectable')).toBe(true);
                 });
 
                 it('should be hidden if the component is hidden', () => {
@@ -50,12 +40,7 @@ describe('PaginationPagesNumber tests', () => {
                         {hidden: true},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(0)
-                            .hasClass('hidden')
-                    ).toBe(true);
+                    expect(wrapper.find('a.flat-select-option').at(0).hasClass('hidden')).toBe(true);
                 });
 
                 it('should use the previous label set as prop if defined', () => {
@@ -64,22 +49,12 @@ describe('PaginationPagesNumber tests', () => {
                         {previousLabel: label},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(0)
-                            .text()
-                    ).toContain(label);
+                    expect(wrapper.find('a.flat-select-option').at(0).text()).toContain(label);
                 });
 
                 it('should have a <Svg />', () => {
                     wrapper = shallowPaginationPagesNumber().dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(0)
-                            .find(Svg).length
-                    ).toBe(1);
+                    expect(wrapper.find('a.flat-select-option').at(0).find(Svg).length).toBe(1);
                 });
             });
 
@@ -89,22 +64,12 @@ describe('PaginationPagesNumber tests', () => {
                         {totalPages: 11},
                         {paginationComposite: [{id, pageNb: 10}]}
                     ).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(1)
-                            .hasClass('disabled')
-                    ).toBe(true);
+                    expect(wrapper.find('a.flat-select-option').at(1).hasClass('disabled')).toBe(true);
                 });
 
                 it('should be selectable if the current page is not equal to the last page', () => {
                     wrapper = shallowPaginationPagesNumber({}, {paginationComposite: [{id, pageNb: 5}]}).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(1)
-                            .hasClass('selectable')
-                    ).toBe(true);
+                    expect(wrapper.find('a.flat-select-option').at(1).hasClass('selectable')).toBe(true);
                 });
 
                 it('should be hidden if the component is hidden', () => {
@@ -112,12 +77,7 @@ describe('PaginationPagesNumber tests', () => {
                         {hidden: true},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(1)
-                            .hasClass('hidden')
-                    ).toBe(true);
+                    expect(wrapper.find('a.flat-select-option').at(1).hasClass('hidden')).toBe(true);
                 });
 
                 it('should use the previous label set as prop if defined', () => {
@@ -126,22 +86,12 @@ describe('PaginationPagesNumber tests', () => {
                         {nextLabel: label},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(1)
-                            .text()
-                    ).toContain(label);
+                    expect(wrapper.find('a.flat-select-option').at(1).text()).toContain(label);
                 });
 
                 it('should have a <Svg />', () => {
                     wrapper = shallowPaginationPagesNumber().dive();
-                    expect(
-                        wrapper
-                            .find('a.flat-select-option')
-                            .at(1)
-                            .find(Svg).length
-                    ).toBe(1);
+                    expect(wrapper.find('a.flat-select-option').at(1).find(Svg).length).toBe(1);
                 });
             });
 
@@ -192,11 +142,7 @@ describe('PaginationPagesNumber tests', () => {
                 it('should dispatch a changePage on click on a <PaginationSelect />', () => {
                     store = getStoreMock();
                     wrapper = shallowWithStore(<PaginationPagesNumber id={id} totalPages={10} />, store).dive();
-                    wrapper
-                        .find(PaginationSelect)
-                        .at(0)
-                        .props()
-                        .onPageClick(2);
+                    wrapper.find(PaginationSelect).at(0).props().onPageClick(2);
 
                     expect(store.getActions()).toContain(PaginationReduxActions.changePage(id, 2));
                 });

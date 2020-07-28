@@ -85,16 +85,10 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
         it('should update activeOptions and respect the paging when loading additional options', () => {
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options.slice(0, optionsPerPage));
 
-            autoInfiniteScroll
-                .find(DropdownSearchInfiniteScrollOptions)
-                .props()
-                .infiniteScroll.next();
+            autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.next();
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options.slice(0, optionsPerPage * 2));
 
-            autoInfiniteScroll
-                .find(DropdownSearchInfiniteScrollOptions)
-                .props()
-                .infiniteScroll.next();
+            autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.next();
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options);
         });
 

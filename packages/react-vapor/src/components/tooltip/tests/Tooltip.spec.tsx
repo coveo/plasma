@@ -73,12 +73,7 @@ describe('Tooltip', () => {
             const content = <li>test</li>;
             tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>{content}</Tooltip>);
 
-            expect(
-                tooltipWrapper
-                    .find('li')
-                    .parent()
-                    .type()
-            ).toBe('span');
+            expect(tooltipWrapper.find('li').parent().type()).toBe('span');
         });
 
         it('should not render with a span wrapper if noSpanWrapper prop is passed', () => {
@@ -89,12 +84,7 @@ describe('Tooltip', () => {
                 </Tooltip>
             );
 
-            expect(
-                tooltipWrapper
-                    .find('li')
-                    .parent()
-                    .type()
-            ).not.toBe('span');
+            expect(tooltipWrapper.find('li').parent().type()).not.toBe('span');
         });
     });
 

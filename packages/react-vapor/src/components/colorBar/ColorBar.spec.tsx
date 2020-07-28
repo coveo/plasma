@@ -119,19 +119,8 @@ describe('ColorBar', () => {
         const colorBar = shallow(<ColorBar {...{widthPerColor, tooltipPerColor}} className="extra-class" />);
 
         _.keys(widthPerColor).map((color: string, index: number) => {
-            expect(
-                colorBar
-                    .find(Tooltip)
-                    .at(index)
-                    .props()
-            ).toEqual(jasmine.objectContaining(tooltipPerColor[color]));
-            expect(
-                colorBar
-                    .find(Tooltip)
-                    .at(index)
-                    .find('.color-bar-color')
-                    .html()
-            ).toContain(color);
+            expect(colorBar.find(Tooltip).at(index).props()).toEqual(jasmine.objectContaining(tooltipPerColor[color]));
+            expect(colorBar.find(Tooltip).at(index).find('.color-bar-color').html()).toContain(color);
         });
     });
 });

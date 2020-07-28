@@ -169,12 +169,7 @@ describe('NavigationPerPage', () => {
                 {attachTo: document.getElementById('App')}
             );
 
-            expect(
-                navigationPerPage
-                    .find(NavigationPerPageSelect)
-                    .at(expectedSelected)
-                    .props().selected
-            ).toBe(true);
+            expect(navigationPerPage.find(NavigationPerPageSelect).at(expectedSelected).props().selected).toBe(true);
         });
 
         it('should select the middle option if initialPosition prop is not defined on first render', () => {
@@ -183,24 +178,14 @@ describe('NavigationPerPage', () => {
                 {attachTo: document.getElementById('App')}
             );
 
-            expect(
-                navigationPerPage
-                    .find(NavigationPerPageSelect)
-                    .at(2)
-                    .props().selected
-            ).toBe(true);
+            expect(navigationPerPage.find(NavigationPerPageSelect).at(2).props().selected).toBe(true);
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} perPageNumbers={[1, 2]} />,
                 {attachTo: document.getElementById('App')}
             );
 
-            expect(
-                navigationPerPage
-                    .find(NavigationPerPageSelect)
-                    .at(0)
-                    .props().selected
-            ).toBe(true);
+            expect(navigationPerPage.find(NavigationPerPageSelect).at(0).props().selected).toBe(true);
         });
     });
 });

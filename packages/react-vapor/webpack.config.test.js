@@ -4,7 +4,7 @@ const isTravis = process.env.TRAVIS;
 const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 const keysTransformer = require('ts-transformer-keys/transformer').default;
 
-module.exports = function(options) {
+module.exports = function (options) {
     const config = {
         mode: 'development',
         entry: './karma.entry.ts',

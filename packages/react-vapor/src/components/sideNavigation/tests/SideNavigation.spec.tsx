@@ -21,16 +21,8 @@ describe('<SideNavigation />', () => {
 
     it('should render a <SideNavigation /> with classes prop', () => {
         const className = 'foo';
-        wrapper
-            .setProps({className})
-            .mount()
-            .update();
-        expect(
-            wrapper
-                .find('nav')
-                .first()
-                .hasClass(className)
-        ).toBe(true);
+        wrapper.setProps({className}).mount().update();
+        expect(wrapper.find('nav').first().hasClass(className)).toBe(true);
     });
 
     it('should not have class navigation-opened if opened prop is true and withReduxState prop is false.', () => {

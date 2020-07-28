@@ -89,31 +89,19 @@ describe('NavigationPagination', () => {
                 expect(clickSpy).not.toHaveBeenCalled();
 
                 // Previous button (does not call spy since current page is zero)
-                navigationPagination
-                    .find('.mod-link')
-                    .first()
-                    .simulate('click');
+                navigationPagination.find('.mod-link').first().simulate('click');
                 expect(clickSpy).not.toHaveBeenCalled();
 
                 // Number button
-                navigationPagination
-                    .find('.selectable')
-                    .first()
-                    .simulate('click');
+                navigationPagination.find('.selectable').first().simulate('click');
                 expect(clickSpy).toHaveBeenCalledTimes(1);
 
                 // Number button (does not call again since already on this page)
-                navigationPagination
-                    .find('.flat-select-option')
-                    .first()
-                    .simulate('click');
+                navigationPagination.find('.flat-select-option').first().simulate('click');
                 expect(clickSpy).toHaveBeenCalledTimes(1);
 
                 // Next button
-                navigationPagination
-                    .find('.mod-link')
-                    .last()
-                    .simulate('click');
+                navigationPagination.find('.mod-link').last().simulate('click');
                 expect(clickSpy).toHaveBeenCalledTimes(2);
             }
         );

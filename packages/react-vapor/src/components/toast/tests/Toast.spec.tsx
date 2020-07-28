@@ -147,12 +147,7 @@ describe('Toasts', () => {
             });
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
-            expect(
-                toastComponent
-                    .find(descriptionContainer)
-                    .children()
-                    .equals(expectedChildren)
-            ).toBe(true);
+            expect(toastComponent.find(descriptionContainer).children().equals(expectedChildren)).toBe(true);
         });
 
         it('should contain a toast-close when the prop is undefined or true', () => {

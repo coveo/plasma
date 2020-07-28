@@ -254,10 +254,7 @@ describe('Select', () => {
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
-                const itemsBox = wrapper
-                    .find(SelectConnected)
-                    .find(ItemBox)
-                    .first();
+                const itemsBox = wrapper.find(SelectConnected).find(ItemBox).first();
 
                 expect(itemsBox.props().value).toBe(filterValue);
             });
@@ -270,10 +267,7 @@ describe('Select', () => {
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
-                const itemsBox = wrapper
-                    .find(SelectConnected)
-                    .find(ItemBox)
-                    .get(1);
+                const itemsBox = wrapper.find(SelectConnected).find(ItemBox).get(1);
 
                 expect(itemsBox.props.divider).toBe(true);
             });
@@ -285,11 +279,7 @@ describe('Select', () => {
                 store.dispatch(filterThrough(id, filterValue));
 
                 wrapper.update();
-                wrapper
-                    .find(SelectConnected)
-                    .find(ItemBox)
-                    .find('li')
-                    .simulate('click');
+                wrapper.find(SelectConnected).find(ItemBox).find('li').simulate('click');
 
                 expect(store.getState().selectWithFilter[id].list.length).toBe(1);
                 expect(store.getState().selectWithFilter[id].list[0]).toBe(filterValue);
@@ -297,8 +287,9 @@ describe('Select', () => {
         });
 
         describe('when filter is processed on the server side', () => {
-            const ServerSideMultiSingleSelectWithFilter: React.ComponentType<ISelectWithFilterOwnProps &
-                ISingleSelectOwnProps> = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
+            const ServerSideMultiSingleSelectWithFilter: React.ComponentType<
+                ISelectWithFilterOwnProps & ISingleSelectOwnProps
+            > = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
 
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 

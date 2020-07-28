@@ -100,15 +100,9 @@ export const XYChart: React.FunctionComponent<XYChartProps> = ({
     width = width - chartPadding.left - chartPadding.right;
     height = height - chartPadding.top - chartPadding.bottom;
 
-    const xScale = d3.scale
-        .ordinal<number, number>()
-        .domain(xValues)
-        .rangePoints([0, width]);
+    const xScale = d3.scale.ordinal<number, number>().domain(xValues).rangePoints([0, width]);
 
-    const yScale = d3.scale
-        .linear<number, number>()
-        .domain(yDomain)
-        .range([height, 0]);
+    const yScale = d3.scale.linear<number, number>().domain(yDomain).range([height, 0]);
 
     return (
         <XYChartContext.Provider

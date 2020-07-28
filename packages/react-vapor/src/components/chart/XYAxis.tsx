@@ -63,10 +63,7 @@ export const XYAxis: React.FunctionComponent<XYAxisProps> = ({x, y, children}) =
             </g>
         ));
 
-    const xLinearScale = d3.scale
-        .linear()
-        .range(newXScale.range())
-        .domain(xDomain);
+    const xLinearScale = d3.scale.linear().range(newXScale.range()).domain(xDomain);
     const xNumberOfTicks = xLinearScale.ticks(
         xAxis.tickTextSize === 0 ? xTicksCount : Math.floor(newWidth / xAxis.tickTextSize)
     ).length;

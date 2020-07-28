@@ -206,10 +206,7 @@ describe('DropdownSearch', () => {
             it('should close the dropdown on calling onClose', () => {
                 wrapper.find('.dropdown-toggle').simulate('click');
                 expect(wrapper.find('.open').length).toBe(1);
-                wrapper
-                    .find(DropdownSearch)
-                    .props()
-                    .onClose();
+                wrapper.find(DropdownSearch).props().onClose();
                 wrapper.update();
                 expect(wrapper.find('.dropdown').find('.open').length).toBe(0);
             });
@@ -229,10 +226,7 @@ describe('DropdownSearch', () => {
                 store.dispatch(toggleDropdownSearch(id));
                 wrapper.update();
 
-                wrapper
-                    .find('li span')
-                    .first()
-                    .simulate('mouseDown');
+                wrapper.find('li span').first().simulate('mouseDown');
 
                 const selectedOption = store.getState().dropdownSearch[0].options[0];
                 expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);

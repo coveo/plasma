@@ -56,43 +56,24 @@ describe('<Slider/>', () => {
                 appendValueFormatter: (value: number) => `+${value}`,
                 appendValue: true,
             }).dive();
-            expect(
-                middleSlider
-                    .find('.slider-value')
-                    .first()
-                    .text()
-            ).toBe('+0');
-            expect(
-                middleSlider
-                    .find('.slider-value')
-                    .first()
-                    .text()
-            ).toBe('+0');
+            expect(middleSlider.find('.slider-value').first().text()).toBe('+0');
+            expect(middleSlider.find('.slider-value').first().text()).toBe('+0');
         });
 
         it('should render a track it with its marks', () => {
-            middleSlider = shallowedSlider()
-                .dive()
-                .childAt(1)
-                .dive();
+            middleSlider = shallowedSlider().dive().childAt(1).dive();
             const children: any = middleSlider.prop('children');
             const marks = children[2].props.marks;
             expect(marks).toEqual({0: '-2000', 33: '2000', 17: '0', 100: '10,000'});
         });
 
         it('should apply step prop to the range slider', () => {
-            middleSlider = shallowedSlider()
-                .dive()
-                .childAt(1)
-                .dive();
+            middleSlider = shallowedSlider().dive().childAt(1).dive();
             expect((middleSlider.prop('children') as any)[2].props.step).toEqual(step);
         });
 
         it('should set the handle hasTooltip prop to true when slider hasTooltip his passed', () => {
-            middleSlider = shallowedSlider()
-                .dive()
-                .childAt(1)
-                .dive();
+            middleSlider = shallowedSlider().dive().childAt(1).dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
             expect(firstHandle.props.handleCustomProps.hasTooltip).toBeTruthy();
@@ -119,10 +100,7 @@ describe('<Slider/>', () => {
         });
 
         it('should not pass the disabled props to the handle if the enable prop is set to true', () => {
-            middleSlider = shallowedSlider()
-                .dive()
-                .childAt(1)
-                .dive();
+            middleSlider = shallowedSlider().dive().childAt(1).dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
             expect(firstHandle.props.handleProps.disabled).toBeFalsy();

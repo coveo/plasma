@@ -222,10 +222,7 @@ describe('Facets', () => {
         });
 
         it('should call onToggleFacet when buildCategoryFacet is called', () => {
-            const facetRowLabel = facetComponent
-                .find(FacetRow)
-                .first()
-                .find('label');
+            const facetRowLabel = facetComponent.find(FacetRow).first().find('label');
 
             expect(onToggleFacet).not.toHaveBeenCalled();
 

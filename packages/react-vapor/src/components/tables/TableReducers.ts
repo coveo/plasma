@@ -229,10 +229,7 @@ export const tablesReducer = (tablesState = tablesInitialState, action: IReduxAc
             return _.omit(tablesState, action.payload.id);
         default:
             const currentTableId = _.contains([LoadingActions.turnOn, LoadingActions.turnOff], action.type)
-                ? _.chain(action.payload.ids)
-                      .intersection(_.keys(tablesState))
-                      .first()
-                      .value()
+                ? _.chain(action.payload.ids).intersection(_.keys(tablesState)).first().value()
                 : _.findKey(tablesState, (tableState, tableId: string) =>
                       contains(action.payload && action.payload.id, tableId)
                   );

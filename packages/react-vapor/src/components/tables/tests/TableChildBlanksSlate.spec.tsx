@@ -140,11 +140,9 @@ describe('<TableChildBlankSlate />', () => {
             });
 
             it('should render the default blanslate that spans accross all table columns', () => {
-                expect(
-                    mountComponentWithProps(tablePropsMock)
-                        .find('td')
-                        .prop('colSpan')
-                ).toBe(tablePropsMock.headingAttributes.length);
+                expect(mountComponentWithProps(tablePropsMock).find('td').prop('colSpan')).toBe(
+                    tablePropsMock.headingAttributes.length
+                );
             });
 
             it(

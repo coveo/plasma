@@ -105,24 +105,12 @@ describe('Date picker', () => {
                 const clearLabel: string = 'CLEAR_LABEL';
                 const newProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), {clearLabel});
 
-                expect(
-                    getClearButton()
-                        .first()
-                        .text()
-                ).toContain(DEFAULT_CLEAR_DATE_LABEL);
+                expect(getClearButton().first().text()).toContain(DEFAULT_CLEAR_DATE_LABEL);
 
                 datePickerBox.setProps(newProps);
 
-                expect(
-                    getClearButton()
-                        .first()
-                        .text()
-                ).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
-                expect(
-                    getClearButton()
-                        .first()
-                        .text()
-                ).toContain(clearLabel);
+                expect(getClearButton().first().text()).not.toContain(DEFAULT_CLEAR_DATE_LABEL);
+                expect(getClearButton().first().text()).toContain(clearLabel);
             });
 
             it('should call onClear prop when clicking on the clear button', () => {
@@ -130,9 +118,7 @@ describe('Date picker', () => {
                 const onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), {onClear: onClearSpy});
 
                 datePickerBox.setProps(onClearProps);
-                getClearButton()
-                    .first()
-                    .simulate('click');
+                getClearButton().first().simulate('click');
 
                 expect(onClearSpy).toHaveBeenCalled();
             });

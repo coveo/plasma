@@ -62,10 +62,7 @@ describe('Multiline box with drag & drop', () => {
                     data: [],
                 });
 
-                component.wrapper
-                    .find(MultilineBox)
-                    .props()
-                    .onReorder(['a']);
+                component.wrapper.find(MultilineBox).props().onReorder(['a']);
 
                 expect(component.store.getState().multilineIds[id].list).toEqual(['a']);
             });
@@ -78,10 +75,7 @@ describe('Multiline box with drag & drop', () => {
                     data: [],
                 });
 
-                component.wrapper
-                    .find(DnDContainer)
-                    .props()
-                    .move();
+                component.wrapper.find(DnDContainer).props().move();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });

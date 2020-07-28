@@ -90,12 +90,7 @@ describe('PartialStringMatch', () => {
         const component = shallow(
             <PartialStringMatch partialMatch={matcher}>bacon is my favorite vegetable</PartialStringMatch>
         );
-        expect(
-            component
-                .find('Highlight')
-                .dive()
-                .hasClass('bold')
-        ).toBe(true);
+        expect(component.find('Highlight').dive().hasClass('bold')).toBe(true);
     });
 
     it('should highlight all matches rendered throught a function component', () => {

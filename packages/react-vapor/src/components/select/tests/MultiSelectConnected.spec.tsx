@@ -101,18 +101,8 @@ describe('Select', () => {
             ]);
 
             expect(multiSelect.find(SelectedOption).length).toBe(2);
-            expect(
-                multiSelect
-                    .find(SelectedOption)
-                    .at(0)
-                    .props().value
-            ).toBe(firstSelected);
-            expect(
-                multiSelect
-                    .find(SelectedOption)
-                    .at(1)
-                    .props().value
-            ).toBe(secondSelected);
+            expect(multiSelect.find(SelectedOption).at(0).props().value).toBe(firstSelected);
+            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(secondSelected);
         });
 
         it('should contains a SelectedOption for a selected custom value', () => {
@@ -120,12 +110,7 @@ describe('Select', () => {
             spyOn(SelectSelector, 'getMultiSelectSelectedValues').and.returnValue(['a', customValue]);
             mountMultiSelect([]);
 
-            expect(
-                multiSelect
-                    .find(SelectedOption)
-                    .at(1)
-                    .props().value
-            ).toBe(customValue);
+            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(customValue);
         });
 
         it('should contains SelectedOptions for selected custom values and selected listBox items', () => {
@@ -136,18 +121,8 @@ describe('Select', () => {
             mountMultiSelect([{value: 'b'}, {value: itemSelected, selected: true}]);
 
             expect(multiSelect.find(SelectedOption).length).toBe(2);
-            expect(
-                multiSelect
-                    .find(SelectedOption)
-                    .at(0)
-                    .props().value
-            ).toBe(itemSelected);
-            expect(
-                multiSelect
-                    .find(SelectedOption)
-                    .at(1)
-                    .props().value
-            ).toBe(customValue);
+            expect(multiSelect.find(SelectedOption).at(0).props().value).toBe(itemSelected);
+            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(customValue);
         });
 
         it('should disable the dropdown if there is no options', () => {
@@ -195,11 +170,7 @@ describe('Select', () => {
             let state = _.findWhere(store.getState().listBoxes, {id});
             expect(state.selected).toEqual([firstSelected, secondSelected]);
 
-            multiSelect
-                .find(SelectedOption)
-                .at(0)
-                .find('.remove-option')
-                .simulate('click');
+            multiSelect.find(SelectedOption).at(0).find('.remove-option').simulate('click');
 
             state = _.findWhere(store.getState().listBoxes, {id});
             expect(state.selected).toEqual([secondSelected]);

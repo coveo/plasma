@@ -41,12 +41,7 @@ describe('SlideY', () => {
         );
 
         expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
-        expect(
-            wrapper
-                .find(SlideY)
-                .first()
-                .props().in
-        ).toBe(true);
+        expect(wrapper.find(SlideY).first().props().in).toBe(true);
     });
 
     it('should stay opened when updating props but still in', () => {
@@ -112,10 +107,7 @@ describe('SlideY', () => {
             mountAndWrap(false);
             expect(() => wrapper.setProps({in: true})).not.toThrow();
 
-            const el = component
-                .find('.slide-y')
-                .first()
-                .getDOMNode() as HTMLElement;
+            const el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
             expect(el.style.height).toBe('auto');
         });
 
@@ -123,10 +115,7 @@ describe('SlideY', () => {
             mountAndWrap(true);
             expect(() => wrapper.setProps({in: false})).not.toThrow();
 
-            const el = wrapper
-                .find('.slide-y')
-                .first()
-                .getDOMNode() as HTMLElement;
+            const el = wrapper.find('.slide-y').first().getDOMNode() as HTMLElement;
             expect(el.style.height).toBe('0px');
         });
 
@@ -146,12 +135,7 @@ describe('SlideY', () => {
             expect(wrapper.html()).toContain('slide-y-closed');
 
             expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
-            transitionToEnd(
-                wrapper
-                    .find('.slide-y')
-                    .first()
-                    .getDOMNode() as HTMLElement
-            );
+            transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
 
             expect(wrapper.html()).not.toContain('slide-y-closed');
         });
@@ -162,12 +146,7 @@ describe('SlideY', () => {
             expect(wrapper.html()).not.toContain('slide-y-closed');
 
             expect(() => wrapper.setProps({in: false})).not.toThrow();
-            transitionToEnd(
-                wrapper
-                    .find('.slide-y')
-                    .first()
-                    .getDOMNode() as HTMLElement
-            );
+            transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
 
             expect(wrapper.html()).toContain('slide-y-closed');
         });
@@ -176,12 +155,9 @@ describe('SlideY', () => {
             const expectedDuration = 1000;
             mountAndWrap(false, expectedDuration);
 
-            expect(
-                wrapper
-                    .find('.slide-y')
-                    .first()
-                    .prop('style').transitionDuration
-            ).toContain(expectedDuration.toString());
+            expect(wrapper.find('.slide-y').first().prop('style').transitionDuration).toContain(
+                expectedDuration.toString()
+            );
         });
     });
 });

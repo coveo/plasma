@@ -86,63 +86,33 @@ describe('FilterBox', () => {
         });
 
         it('should toggle the hidden class of the clear icon if there is a value or not in the filter input', () => {
-            expect(
-                filterBox
-                    .find('span')
-                    .first()
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
 
             filterBoxInstance.filterInput.value = 'something';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
-            expect(
-                filterBox
-                    .find('span')
-                    .first()
-                    .hasClass('hidden')
-            ).toBe(false);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
 
             filterBoxInstance.filterInput.value = '';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
-            expect(
-                filterBox
-                    .find('span')
-                    .first()
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
         });
 
         it('should remove the hidden class of the clear icon if there is a value in the input without a change event', () => {
-            expect(
-                filterBox
-                    .find('span')
-                    .first()
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
 
             (filterBox.instance() as FilterBox).filterInput.value = 'non empty';
             filterBox.mount().update();
 
-            expect(
-                filterBox
-                    .find('span')
-                    .first()
-                    .hasClass('hidden')
-            ).toBe(false);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
         });
 
         it('should leave the hidden class of the clear icon if there is an empty value in the input without a change event', () => {
             filterBoxInstance.filterInput.value = '';
             filterBox.update();
 
-            expect(
-                filterBox
-                    .find('span')
-                    .first()
-                    .hasClass('hidden')
-            ).toBe(true);
+            expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
         });
 
         it('should clear the filter input when clicking the clear icon', () => {
@@ -166,20 +136,10 @@ describe('FilterBox', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
-            expect(
-                filterBox
-                    .find('.filter-container')
-                    .first()
-                    .hasClass(containerClass)
-            ).toBe(false);
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(false);
 
             filterBox.setProps({id: id, containerClasses}).update();
-            expect(
-                filterBox
-                    .find('.filter-container')
-                    .first()
-                    .hasClass(containerClass)
-            ).toBe(true);
+            expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true);
         });
 
         it('should call onBlur when the input loose focus', () => {

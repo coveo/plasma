@@ -61,10 +61,7 @@ const dateData = [
     {
         label: 'First',
         data: _.range(25).map((i: number) => ({
-            x: moment()
-                .startOf('day')
-                .subtract(i, 'day')
-                .unix(),
+            x: moment().startOf('day').subtract(i, 'day').unix(),
             y: i + 1,
         })),
     },
@@ -204,9 +201,7 @@ export const ChartExamples: React.FunctionComponent = () => {
                                         label: 'First',
                                         data: [
                                             {
-                                                x: moment()
-                                                    .startOf('day')
-                                                    .unix(),
+                                                x: moment().startOf('day').unix(),
                                                 y: 500,
                                             },
                                         ],

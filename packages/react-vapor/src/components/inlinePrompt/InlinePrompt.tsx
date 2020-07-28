@@ -27,8 +27,9 @@ export interface IInlinePromptProps {
     options: IInlinePromptOptions;
 }
 
-export const InlinePrompt: React.FunctionComponent<IInlinePromptProps &
-    Partial<ReturnType<typeof mapDispatchToProps>>> = ({options, onCancel}) => {
+export const InlinePrompt: React.FunctionComponent<
+    IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>
+> = ({options, onCancel}) => {
     const icon: JSX.Element = options.userChoice.icon ? (
         <Svg svgName={options.userChoice.icon} className="prompt-icon mr1" svgClass="icon mod-2x fill-medium-blue" />
     ) : null;

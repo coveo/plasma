@@ -244,7 +244,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 }
 
-export const DropPod: React.ForwardRefExoticComponent<IDropPodProps &
-    React.RefAttributes<HTMLElement>> = React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) => (
+export const DropPod: React.ForwardRefExoticComponent<
+    IDropPodProps & React.RefAttributes<HTMLElement>
+> = React.forwardRef((props: IDropPodProps, ref: React.RefObject<HTMLElement>) => (
     <RDropPod {...props} buttonRef={ref} />
 ));

@@ -152,9 +152,7 @@ describe('<TableChildBody />', () => {
 
         it('should call onRowClick with getActions result if it is defined on click of a heading row', () => {
             spyOnRowClick.calls.reset();
-            mountComponentWithProps()
-                .find(TableHeadingRow)
-                .simulate('click');
+            mountComponentWithProps().find(TableHeadingRow).simulate('click');
 
             expect(spyOnRowClick).toHaveBeenCalledTimes(1);
             expect(tableChildBodyProps.getActions).toHaveBeenCalled();
@@ -165,9 +163,7 @@ describe('<TableChildBody />', () => {
 
         it('should call handleOnRowClick if it is defined on click of a heading row', () => {
             spyHandleOnRowClick.calls.reset();
-            mountComponentWithProps()
-                .find(TableHeadingRow)
-                .simulate('click');
+            mountComponentWithProps().find(TableHeadingRow).simulate('click');
 
             expect(spyHandleOnRowClick).toHaveBeenCalledTimes(1);
 
@@ -194,9 +190,7 @@ describe('<TableChildBody />', () => {
             const getActionsSpy: jasmine.Spy = jasmine.createSpy('getActions').and.returnValue(twoActions);
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {getActions: getActionsSpy});
 
-            mountComponentWithProps(newProps)
-                .find(TableHeadingRow)
-                .simulate('dblclick');
+            mountComponentWithProps(newProps).find(TableHeadingRow).simulate('dblclick');
 
             expect(getActionsSpy).toHaveBeenCalled();
             expect(actionSpy).toHaveBeenCalledTimes(1);
@@ -228,11 +222,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should set the selectionDisabled prop to false on the <TableHeadingRow /> if there are actions defined for the row', () => {
-            expect(
-                mountComponentWithProps()
-                    .find(TableHeadingRow)
-                    .props().selectionDisabled
-            ).toBe(false);
+            expect(mountComponentWithProps().find(TableHeadingRow).props().selectionDisabled).toBe(false);
         });
 
         it('should set the selectionDisabled prop to true on the <TableHeadingRow /> if there are no actions defined for the row', () => {
@@ -240,11 +230,7 @@ describe('<TableChildBody />', () => {
                 getActions: jasmine.createSpy('getActions').and.returnValue([]),
             });
 
-            expect(
-                mountComponentWithProps(newProps)
-                    .find(TableHeadingRow)
-                    .props().selectionDisabled
-            ).toBe(true);
+            expect(mountComponentWithProps(newProps).find(TableHeadingRow).props().selectionDisabled).toBe(true);
         });
     });
 });

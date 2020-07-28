@@ -101,10 +101,7 @@ describe('Flippable', () => {
 
             expect(wrapper.find(Flippable).props().isFlipped).toBe(true);
 
-            wrapper
-                .find(Flippable)
-                .props()
-                .onUnflip();
+            wrapper.find(Flippable).props().onUnflip();
             wrapper.update();
 
             expect(wrapper.find(Flippable).props().isFlipped).toBe(false);

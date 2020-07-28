@@ -196,10 +196,7 @@ describe('<TableChildActionBar />', () => {
                 });
 
                 expect(
-                    tableActionBar
-                        .find(ActionBarConnected)
-                        .find(DropdownSearchConnected)
-                        .prop('defaultSelectedOption')
+                    tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).prop('defaultSelectedOption')
                 ).toEqual({value: TABLE_PREDICATE_DEFAULT_VALUE});
             });
 
@@ -218,10 +215,7 @@ describe('<TableChildActionBar />', () => {
                 });
 
                 expect(
-                    tableActionBar
-                        .find(ActionBarConnected)
-                        .find(DropdownSearchConnected)
-                        .prop('defaultSelectedOption')
+                    tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).prop('defaultSelectedOption')
                 ).toEqual({value: customDefaultValue});
             });
         });

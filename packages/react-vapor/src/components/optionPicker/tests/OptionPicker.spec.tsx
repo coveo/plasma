@@ -114,11 +114,7 @@ describe('Option picker', () => {
         it('should call handleClick when clicking an option', () => {
             const handleClickSpy: jasmine.Spy = spyOn<any>(optionPickerInstance, 'handleClick');
 
-            optionPicker
-                .find('Option')
-                .first()
-                .find('button')
-                .simulate('click');
+            optionPicker.find('Option').first().find('button').simulate('click');
 
             expect(handleClickSpy).toHaveBeenCalledWith(
                 OPTION_PICKER_BASIC_PROPS.options[0].value(),

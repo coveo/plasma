@@ -104,10 +104,7 @@ describe('InlinePrompt', () => {
         });
 
         it('should call the onClick prop when choice is clicked', () => {
-            inlinePrompt
-                .find('.prompt-action')
-                .first()
-                .simulate('click');
+            inlinePrompt.find('.prompt-action').first().simulate('click');
             expect(onClickSpy.calls.count()).toBe(1);
         });
 
@@ -115,10 +112,7 @@ describe('InlinePrompt', () => {
             const onCancelSpy = jasmine.createSpy('onCancel');
 
             inlinePrompt.setProps({options: options, onCancel: onCancelSpy});
-            inlinePrompt
-                .find('.cancel')
-                .first()
-                .simulate('click');
+            inlinePrompt.find('.cancel').first().simulate('click');
             expect(onCancelSpy.calls.count()).toBe(1);
         });
     });

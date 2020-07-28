@@ -9,15 +9,17 @@ import {ISelectWithPredicateOwnProps, selectWithPredicate} from './SelectWithPre
 // Single Select
 export const SingleSelectWithFilter = selectWithFilter(SingleSelectConnected);
 export const SingleSelectWithPredicate = selectWithPredicate(SingleSelectConnected);
-export const SingleSelectWithPredicateAndFilter: React.ComponentType<ISingleSelectOwnProps &
-    ISelectWithFilterOwnProps &
-    ISelectWithPredicateOwnProps> = _.compose(selectWithPredicate, selectWithFilter)(SingleSelectConnected);
+export const SingleSelectWithPredicateAndFilter: React.ComponentType<
+    ISingleSelectOwnProps & ISelectWithFilterOwnProps & ISelectWithPredicateOwnProps
+> = _.compose(selectWithPredicate, selectWithFilter)(SingleSelectConnected);
 
 // Multi Select
-export const MultiSelectWithFilter: React.ComponentType<ISelectWithFilterOwnProps &
-    IMultiSelectOwnProps> = selectWithFilter(MultiSelectConnected);
-export const MultiSelectWithPredicate: React.ComponentType<IMultiSelectOwnProps &
-    ISelectWithPredicateOwnProps> = selectWithPredicate(MultiSelectConnected);
-export const MultiSelectWithPredicateAndFilter: React.ComponentType<IMultiSelectOwnProps &
-    ISelectWithFilterOwnProps &
-    ISelectWithPredicateOwnProps> = _.compose(selectWithPredicate, selectWithFilter)(MultiSelectConnected);
+export const MultiSelectWithFilter: React.ComponentType<
+    ISelectWithFilterOwnProps & IMultiSelectOwnProps
+> = selectWithFilter(MultiSelectConnected);
+export const MultiSelectWithPredicate: React.ComponentType<
+    IMultiSelectOwnProps & ISelectWithPredicateOwnProps
+> = selectWithPredicate(MultiSelectConnected);
+export const MultiSelectWithPredicateAndFilter: React.ComponentType<
+    IMultiSelectOwnProps & ISelectWithFilterOwnProps & ISelectWithPredicateOwnProps
+> = _.compose(selectWithPredicate, selectWithFilter)(MultiSelectConnected);

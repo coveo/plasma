@@ -10,11 +10,7 @@ describe('DateUtils', () => {
 
         it('should return the date from now if YYYY-MM-DD HH:mm and YYYY-MM-DD H:mm date format is invalid', () => {
             const date = 'not a date';
-            expect(DateUtils.getValidDate(date).toString()).toBe(
-                moment()
-                    .toDate()
-                    .toString()
-            );
+            expect(DateUtils.getValidDate(date).toString()).toBe(moment().toDate().toString());
         });
     });
 
@@ -38,9 +34,7 @@ describe('DateUtils', () => {
         });
 
         it('should return false when passing similar moments for the given granularity', () => {
-            const current = moment()
-                .startOf('minute')
-                .add(10, 'seconds'); // This makes sure that subtracting a second won't change the minute
+            const current = moment().startOf('minute').add(10, 'seconds'); // This makes sure that subtracting a second won't change the minute
             expect(DateUtils.isDifferent(moment(current).subtract(1, 'second'), current, 'minute')).toBe(
                 false,
                 'subtracting a second'

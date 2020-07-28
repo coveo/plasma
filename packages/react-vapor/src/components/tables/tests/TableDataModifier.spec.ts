@@ -347,12 +347,8 @@ describe('TableDataModifier', () => {
         });
 
         it('should only return the ids containing the dates inside the from/to if datepicker is defined', () => {
-            const from = moment()
-                .add(1, 'day')
-                .toDate();
-            const to = moment()
-                .add(3, 'day')
-                .toDate();
+            const from = moment().add(1, 'day').toDate();
+            const to = moment().add(3, 'day').toDate();
 
             expect(
                 applyDatePickerOnDisplayedIds(

@@ -122,10 +122,7 @@ export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & Wit
         }
 
         private allValuesAreSelected(): boolean {
-            return !_.chain(this.props.items)
-                .pluck('value')
-                .contains(this.props.selected)
-                .value();
+            return !_.chain(this.props.items).pluck('value').contains(this.props.selected).value();
         }
 
         render() {

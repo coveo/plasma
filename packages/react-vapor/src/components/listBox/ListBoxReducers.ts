@@ -24,10 +24,7 @@ export const listBoxReducer = (
     const {payload} = action;
     switch (action.type) {
         case ListBoxActions.add:
-            const selected = _.chain(action.payload.items)
-                .where({selected: true})
-                .pluck('value')
-                .value();
+            const selected = _.chain(action.payload.items).where({selected: true}).pluck('value').value();
             let selectedIndex = _.findIndex(action.payload.items, (e) => e.selected);
             selectedIndex = selectedIndex === -1 || action.payload.multi ? 0 : selectedIndex;
             return {

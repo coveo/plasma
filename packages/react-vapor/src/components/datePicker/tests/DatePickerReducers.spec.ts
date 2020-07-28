@@ -98,12 +98,7 @@ describe('Date picker', () => {
             });
 
             it('should return the old state with initialDateRange set properly in the state if passed', () => {
-                const testDateRange = [
-                    moment().toDate(),
-                    moment()
-                        .add(2, 'day')
-                        .toString(),
-                ];
+                const testDateRange = [moment().toDate(), moment().add(2, 'day').toString()];
                 const actionWithinitialDateRange = {
                     ...action,
                     payload: {...action.payload, initialDateRange: testDateRange},
@@ -476,20 +471,14 @@ describe('Date picker', () => {
             'should return the state with a null upper limit when the datepicker state isRange, ' +
                 'the action is "CHANGE_LOWER_LIMIT" and the new lower limit is after the current upper limit',
             () => {
-                const newLowerLimit: Date = moment()
-                    .add(2, 'day')
-                    .toDate();
+                const newLowerLimit: Date = moment().add(2, 'day').toDate();
                 const oldDatePicker: IDatePickerState = _.extend({}, BASE_DATE_PICKER_STATE, {
                     id: 'some-date-picker',
                     isRange: true,
                     lowerLimit: new Date(),
                     inputLowerLimit: new Date(),
-                    upperLimit: moment()
-                        .add(1, 'day')
-                        .toDate(),
-                    inputUpperLimit: moment()
-                        .add(1, 'day')
-                        .toDate(),
+                    upperLimit: moment().add(1, 'day').toDate(),
+                    inputUpperLimit: moment().add(1, 'day').toDate(),
                 });
                 const action: IReduxAction<IChangeDatePickerPayload> = {
                     type: DatePickerActions.changeLowerLimit,

@@ -40,25 +40,26 @@ describe('RadioSelectConnected', () => {
     describe('dispatch props', () => {
         it('should not throw when calling onRender with basic props', () => {
             expect(() =>
-                mountComponentWithProps(radioSelectProps)
-                    .find(RadioSelect)
-                    .prop('onMount')(radioSelectProps.id, 'somevalue', [])
+                mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onMount')(
+                    radioSelectProps.id,
+                    'somevalue',
+                    []
+                )
             ).not.toThrow();
         });
 
         it('should not throw when calling onUnmount', () => {
             expect(() =>
-                mountComponentWithProps(radioSelectProps)
-                    .find(RadioSelect)
-                    .prop('onUnmount')(radioSelectProps.id)
+                mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onUnmount')(radioSelectProps.id)
             ).not.toThrow();
         });
 
         it('should not throw when calling onChange with basic props', () => {
             expect(() =>
-                mountComponentWithProps(radioSelectProps)
-                    .find(RadioSelect)
-                    .prop('onChange')('somevalue', radioSelectProps.id)
+                mountComponentWithProps(radioSelectProps).find(RadioSelect).prop('onChange')(
+                    'somevalue',
+                    radioSelectProps.id
+                )
             ).not.toThrow();
         });
     });

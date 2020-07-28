@@ -63,9 +63,7 @@ describe('Table HOC', () => {
             });
 
             it('should not render a BlankSlate when the data is null', () => {
-                shallowWithProps({data: null, renderBody: renderSpy})
-                    .dive()
-                    .dive();
+                shallowWithProps({data: null, renderBody: renderSpy}).dive().dive();
                 expect(renderSpy).toHaveBeenCalledTimes(1);
             });
 

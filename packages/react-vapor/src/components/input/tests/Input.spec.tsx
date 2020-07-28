@@ -32,12 +32,7 @@ describe('<Input />', () => {
                 innerInputClasses,
             });
 
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .find(`.${innerInputClasses[0]}`).length
-            ).toBe(1);
+            expect(input.find('input').first().find(`.${innerInputClasses[0]}`).length).toBe(1);
         });
 
         it('should set inner input id when specified', () => {
@@ -45,12 +40,7 @@ describe('<Input />', () => {
             shallowInput({
                 id,
             });
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .props().id
-            ).toBe(id);
+            expect(input.find('input').first().props().id).toBe(id);
         });
 
         it('should set inner input name when specified', () => {
@@ -58,12 +48,7 @@ describe('<Input />', () => {
             shallowInput({
                 name,
             });
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .props().name
-            ).toBe(name);
+            expect(input.find('input').first().props().name).toBe(name);
         });
 
         it('should set checked prop when specified', () => {
@@ -71,36 +56,21 @@ describe('<Input />', () => {
             shallowInput({
                 name,
             });
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .props().name
-            ).toBe(name);
+            expect(input.find('input').first().props().name).toBe(name);
         });
 
         it('should set disabled prop when specified', () => {
             shallowInput({
                 disabled: true,
             });
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .props().disabled
-            ).toBe(true);
+            expect(input.find('input').first().props().disabled).toBe(true);
         });
 
         it('should set readonly prop when specified', () => {
             shallowInput({
                 readOnly: true,
             });
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .props().readOnly
-            ).toBe(true);
+            expect(input.find('input').first().props().readOnly).toBe(true);
         });
 
         it('should set inner input type when specified', () => {
@@ -108,12 +78,7 @@ describe('<Input />', () => {
             shallowInput({
                 type,
             });
-            expect(
-                input
-                    .find('input')
-                    .first()
-                    .props().type
-            ).toBe(type);
+            expect(input.find('input').first().props().type).toBe(type);
         });
 
         it('should call prop onBlur on inner input blur', () => {
@@ -140,10 +105,7 @@ describe('<Input />', () => {
                 onChange: spyOnChange,
             });
 
-            input
-                .find('input')
-                .first()
-                .simulate('change');
+            input.find('input').first().simulate('change');
 
             expect(spyOnChange).toHaveBeenCalledTimes(1);
         });
@@ -157,10 +119,7 @@ describe('<Input />', () => {
                 disabledTooltip: 'biscuit aux fromages',
                 onClick: spyOnClick,
             });
-            input
-                .find('.banane')
-                .first()
-                .simulate('click');
+            input.find('.banane').first().simulate('click');
 
             expect(spyOnClick).toHaveBeenCalledTimes(1);
         });
@@ -172,10 +131,7 @@ describe('<Input />', () => {
                 onKeyUp: spyOnKeyUp,
             });
 
-            input
-                .find('input')
-                .first()
-                .simulate('keyUp');
+            input.find('input').first().simulate('keyUp');
 
             expect(spyOnKeyUp).toHaveBeenCalledTimes(1);
         });
@@ -201,12 +157,7 @@ describe('<Input />', () => {
                     type: 'text',
                 });
 
-                expect(
-                    input
-                        .find('div')
-                        .first()
-                        .hasClass('input-field')
-                ).toBe(true);
+                expect(input.find('div').first().hasClass('input-field')).toBe(true);
             });
 
             it('should set the input-field class on the container if the input is of type number', () => {
@@ -214,12 +165,7 @@ describe('<Input />', () => {
                     type: 'number',
                 });
 
-                expect(
-                    input
-                        .find('div')
-                        .first()
-                        .hasClass('input-field')
-                ).toBe(true);
+                expect(input.find('div').first().hasClass('input-field')).toBe(true);
             });
 
             it('should set the input-field class on the container if the input is of type password', () => {
@@ -227,12 +173,7 @@ describe('<Input />', () => {
                     type: 'password',
                 });
 
-                expect(
-                    input
-                        .find('div')
-                        .first()
-                        .hasClass('input-field')
-                ).toBe(true);
+                expect(input.find('div').first().hasClass('input-field')).toBe(true);
             });
 
             it('should not set the input-field class on the container if the input is of type checkbox', () => {
@@ -240,12 +181,7 @@ describe('<Input />', () => {
                     type: 'checkbox',
                 });
 
-                expect(
-                    input
-                        .find('div')
-                        .first()
-                        .hasClass('input-field')
-                ).toBe(false);
+                expect(input.find('div').first().hasClass('input-field')).toBe(false);
             });
 
             it('should set the invalid class on the input if valid prop is false and input type text', () => {

@@ -73,33 +73,21 @@ describe('<NavigationConnected />', () => {
     });
 
     it('should adjust page selected to appropriate one if a perPageSelect is clicked', () => {
-        wrapper
-            .find(PaginationSelect)
-            .last()
-            .simulate('click');
+        wrapper.find(PaginationSelect).last().simulate('click');
 
         expect(
             _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
         ).toBe(6);
 
-        navigation
-            .find(NavigationPerPageSelect)
-            .last()
-            .simulate('click');
+        navigation.find(NavigationPerPageSelect).last().simulate('click');
         wrapper.update();
 
         expect(
             _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb
         ).toBe(0);
 
-        wrapper
-            .find(PaginationSelect)
-            .at(1)
-            .simulate('click');
-        wrapper
-            .find(NavigationPerPageSelect)
-            .first()
-            .simulate('click');
+        wrapper.find(PaginationSelect).at(1).simulate('click');
+        wrapper.find(NavigationPerPageSelect).first().simulate('click');
 
         expect(
             _.findWhere(store.getState().paginationComposite, {id: `pagination-${basicNavigationProps.id}`}).pageNb

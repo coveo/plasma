@@ -226,22 +226,14 @@ describe('<Table />', () => {
 
         it('should call onRowClick when a <TableChildBody /> calls its onRowClick function', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
-            table
-                .find(TableChildBody)
-                .first()
-                .props()
-                .onRowClick([]);
+            table.find(TableChildBody).first().props().onRowClick([]);
 
             expect(tablePropsMockWithData.onRowClick).toHaveBeenCalledTimes(1);
         });
 
         it('should call getActions when a <TableChildBody /> calls its getActions function', () => {
             const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
-            table
-                .find(TableChildBody)
-                .first()
-                .props()
-                .getActions({id: 'any'});
+            table.find(TableChildBody).first().props().getActions({id: 'any'});
 
             expect(tablePropsMockWithData.getActions).toHaveBeenCalled();
         });

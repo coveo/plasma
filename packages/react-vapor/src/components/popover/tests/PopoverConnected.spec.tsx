@@ -36,30 +36,15 @@ describe('<PopoverConnected />', () => {
     };
 
     it('should not throw when calling onMount', () => {
-        expect(() =>
-            mountComponentWithProps(basicPopoverProps)
-                .find(Popover)
-                .props()
-                .onMount(true)
-        ).not.toThrow();
+        expect(() => mountComponentWithProps(basicPopoverProps).find(Popover).props().onMount(true)).not.toThrow();
     });
 
     it('should not throw when calling onUnmount', () => {
-        expect(() =>
-            mountComponentWithProps(basicPopoverProps)
-                .find(Popover)
-                .props()
-                .onUnmount()
-        ).not.toThrow();
+        expect(() => mountComponentWithProps(basicPopoverProps).find(Popover).props().onUnmount()).not.toThrow();
     });
 
     it('should not throw when calling onToggle', () => {
-        expect(() =>
-            mountComponentWithProps(basicPopoverProps)
-                .find(Popover)
-                .props()
-                .onToggle(true)
-        ).not.toThrow();
+        expect(() => mountComponentWithProps(basicPopoverProps).find(Popover).props().onToggle(true)).not.toThrow();
     });
 
     describe('render', () => {

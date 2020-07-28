@@ -332,12 +332,8 @@ describe('Date picker', () => {
         });
 
         it('should not display the to-label and the upperlimit if it is equal to the lower limit', () => {
-            const start = moment()
-                .startOf('day')
-                .toDate();
-            const end = moment()
-                .endOf('day')
-                .toDate();
+            const start = moment().startOf('day').toDate();
+            const end = moment().endOf('day').toDate();
             const formattedNow: string = DateUtils.getSimpleDate(start);
             datePicker = {
                 id: 'id',
@@ -444,12 +440,7 @@ describe('Date picker', () => {
             shallowComponent(newProps);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-            expect(
-                datePickerBoxWrapper
-                    .find(Button)
-                    .first()
-                    .props().name
-            ).toContain(DEFAULT_APPLY_DATE_LABEL);
+            expect(datePickerBoxWrapper.find(Button).first().props().name).toContain(DEFAULT_APPLY_DATE_LABEL);
         });
 
         it('should display the apply label passed as a prop if the dropdown is opened', () => {
@@ -462,12 +453,7 @@ describe('Date picker', () => {
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
-            expect(
-                datePickerBoxWrapper
-                    .find(Button)
-                    .first()
-                    .props().name
-            ).toContain(applyLabel);
+            expect(datePickerBoxWrapper.find(Button).first().props().name).toContain(applyLabel);
         });
 
         it('should display the cancel default label if the dropdown is opened', () => {
@@ -478,12 +464,7 @@ describe('Date picker', () => {
             shallowComponent(newProps);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-            expect(
-                datePickerBoxWrapper
-                    .find(Button)
-                    .last()
-                    .props().name
-            ).toContain(DEFAULT_CANCEL_DATE_LABEL);
+            expect(datePickerBoxWrapper.find(Button).last().props().name).toContain(DEFAULT_CANCEL_DATE_LABEL);
         });
 
         it('should display the cancel label passed as a prop if the dropdown is opened', () => {
@@ -495,12 +476,7 @@ describe('Date picker', () => {
             shallowComponent(newProps);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-            expect(
-                datePickerBoxWrapper
-                    .find(Button)
-                    .last()
-                    .props().name
-            ).toContain(cancelLabel);
+            expect(datePickerBoxWrapper.find(Button).last().props().name).toContain(cancelLabel);
         });
 
         it('should call onApply when clicking on the apply button', () => {
@@ -512,11 +488,7 @@ describe('Date picker', () => {
             shallowComponent(propsIsOpened);
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
-            datePickerBoxWrapper
-                .find(Button)
-                .first()
-                .props()
-                .onClick();
+            datePickerBoxWrapper.find(Button).first().props().onClick();
 
             expect(handleApplySpy).toHaveBeenCalled();
         });
@@ -530,11 +502,7 @@ describe('Date picker', () => {
             shallowComponent(propsIsOpened);
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
-            datePickerBoxWrapper
-                .find(Button)
-                .first()
-                .props()
-                .onClick();
+            datePickerBoxWrapper.find(Button).first().props().onClick();
 
             expect(handleApplySpy).toHaveBeenCalled();
         });
@@ -549,11 +517,7 @@ describe('Date picker', () => {
             shallowComponent(propsIsOpened);
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
-            datePickerBoxWrapper
-                .find(Button)
-                .last()
-                .props()
-                .onClick();
+            datePickerBoxWrapper.find(Button).last().props().onClick();
 
             expect(handleCancelSpy).toHaveBeenCalled();
         });
@@ -572,11 +536,7 @@ describe('Date picker', () => {
                 };
                 shallowComponent(newProps);
                 const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
-                datePickerBoxWrapper
-                    .find(Button)
-                    .last()
-                    .props()
-                    .onClick();
+                datePickerBoxWrapper.find(Button).last().props().onClick();
 
                 expect(onCancelSpy).toHaveBeenCalledWith(DateUtils.currentMonth, 0, true);
             }
@@ -588,10 +548,7 @@ describe('Date picker', () => {
                 onClear: onClearSpy,
             });
             shallowComponent(onClearProps);
-            datePickerDropdown
-                .find(DatePickerBox)
-                .props()
-                .onClear();
+            datePickerDropdown.find(DatePickerBox).props().onClear();
 
             expect(onClearSpy).toHaveBeenCalled();
         });
@@ -634,18 +591,8 @@ describe('Date picker', () => {
                 shallowComponent(datePickerDropdownWithRangeLimit);
                 const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
-                expect(
-                    datePickerBoxWrapper
-                        .find(Button)
-                        .first()
-                        .props().enabled
-                ).toBe(false);
-                expect(
-                    datePickerBoxWrapper
-                        .find(Button)
-                        .first()
-                        .props().tooltip
-                ).toBe('test');
+                expect(datePickerBoxWrapper.find(Button).first().props().enabled).toBe(false);
+                expect(datePickerBoxWrapper.find(Button).first().props().tooltip).toBe('test');
             });
 
             it('should enabled the primary button if the the inputLowerLimit does not exceeded the range limit with the inputUpperLimit', () => {
@@ -658,12 +605,7 @@ describe('Date picker', () => {
                 shallowComponent(datePickerDropdownWithRangeLimit);
                 const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
 
-                expect(
-                    datePickerBoxWrapper
-                        .find(Button)
-                        .first()
-                        .props().enabled
-                ).toBe(true);
+                expect(datePickerBoxWrapper.find(Button).first().props().enabled).toBe(true);
             });
         });
     });

@@ -62,12 +62,7 @@ describe('ValidationMessage', () => {
         ).dive();
 
         expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(2);
-        expect(
-            result
-                .find(`.${ValidationMessageClasses.error}`)
-                .first()
-                .text()
-        ).toContain(nonEmptyMessage);
+        expect(result.find(`.${ValidationMessageClasses.error}`).first().text()).toContain(nonEmptyMessage);
     });
 
     it('should render warnings when there are warnings', () => {
@@ -88,12 +83,7 @@ describe('ValidationMessage', () => {
         ).dive();
 
         expect(result.find(`.${ValidationMessageClasses.warning}`).length).toBe(2);
-        expect(
-            result
-                .find(`.${ValidationMessageClasses.warning}`)
-                .first()
-                .text()
-        ).toContain(nonEmptyMessage);
+        expect(result.find(`.${ValidationMessageClasses.warning}`).first().text()).toContain(nonEmptyMessage);
     });
 
     it('should render not render warnings if there are already errors', () => {

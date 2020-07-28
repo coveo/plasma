@@ -19,7 +19,7 @@ function renderSvg(svgString, svgClass, attr) {
     if (svgString && isSvgStringValid(svgString)) {
         var svgHTML = $($.parseHTML(svgString));
         svgHTML[0].setAttribute('class', svgClass);
-        _.mapObject(attr, function(value, key) {
+        _.mapObject(attr, function (value, key) {
             svgHTML[0].setAttribute(key, value);
         });
         return svgHTML.prop('outerHTML');

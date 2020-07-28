@@ -27,10 +27,7 @@ describe('AddInputAction', () => {
             const title = 'a title';
             expect(addInput.find(`[title="${title}"]`).length).toBe(0);
 
-            addInput
-                .setProps({title})
-                .mount()
-                .update();
+            addInput.setProps({title}).mount().update();
             expect(addInput.find(`[title="${title}"]`).length).toBeGreaterThanOrEqual(1);
         });
 

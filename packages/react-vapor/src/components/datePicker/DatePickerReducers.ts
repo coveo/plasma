@@ -29,25 +29,13 @@ export const datePickerInitialState: IDatePickerState = {
     isRange: false,
     isClearable: false,
     simple: false,
-    lowerLimit: moment()
-        .startOf('day')
-        .toDate(),
-    upperLimit: moment()
-        .endOf('day')
-        .toDate(),
+    lowerLimit: moment().startOf('day').toDate(),
+    upperLimit: moment().endOf('day').toDate(),
     selected: '',
-    inputLowerLimit: moment()
-        .startOf('day')
-        .toDate(),
-    inputUpperLimit: moment()
-        .endOf('day')
-        .toDate(),
-    appliedLowerLimit: moment()
-        .startOf('day')
-        .toDate(),
-    appliedUpperLimit: moment()
-        .endOf('day')
-        .toDate(),
+    inputLowerLimit: moment().startOf('day').toDate(),
+    inputUpperLimit: moment().endOf('day').toDate(),
+    appliedLowerLimit: moment().startOf('day').toDate(),
+    appliedUpperLimit: moment().endOf('day').toDate(),
 };
 export const datePickersInitialState: IDatePickerState[] = [];
 

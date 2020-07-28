@@ -34,10 +34,7 @@ describe('Radio', () => {
             const name = 'salut';
             expect(radio.find('input').prop('name')).toBe(undefined);
 
-            radio
-                .setProps({name})
-                .mount()
-                .update();
+            radio.setProps({name}).mount().update();
             expect(radio.find('input').prop('name')).toBe(name);
         });
 
@@ -60,30 +57,18 @@ describe('Radio', () => {
         });
 
         it('should set disabled prop when specified', () => {
-            radio
-                .setProps({disabled: false})
-                .mount()
-                .update();
+            radio.setProps({disabled: false}).mount().update();
             expect(radio.find('input').prop('disabled')).toBe(false);
 
-            radio
-                .setProps({disabled: true})
-                .mount()
-                .update();
+            radio.setProps({disabled: true}).mount().update();
             expect(radio.find('input').prop('disabled')).toBe(true);
         });
 
         it('should set checked prop when specified', () => {
-            radio
-                .setProps({checked: false})
-                .mount()
-                .update();
+            radio.setProps({checked: false}).mount().update();
             expect(radio.find('input').prop('checked')).toBe(false);
 
-            radio
-                .setProps({checked: true})
-                .mount()
-                .update();
+            radio.setProps({checked: true}).mount().update();
             expect(radio.find('input').prop('checked')).toBe(true);
         });
 
@@ -92,40 +77,21 @@ describe('Radio', () => {
             const classes = [innerClass];
             expect(radio.find('div').hasClass(innerClass)).toBe(false);
 
-            radio
-                .setProps({classes})
-                .mount()
-                .update();
+            radio.setProps({classes}).mount().update();
             expect(radio.find('div').hasClass(innerClass)).toBe(true);
         });
 
         it('should set outerClasses when specified', () => {
             const outerContainerClass = 'salut-externe';
-            expect(
-                radio
-                    .find('div')
-                    .first()
-                    .hasClass(outerContainerClass)
-            ).toBe(false);
+            expect(radio.find('div').first().hasClass(outerContainerClass)).toBe(false);
 
-            radio
-                .setProps({outerContainerClass})
-                .mount()
-                .update();
-            expect(
-                radio
-                    .find('div')
-                    .first()
-                    .hasClass(outerContainerClass)
-            ).toBe(true);
+            radio.setProps({outerContainerClass}).mount().update();
+            expect(radio.find('div').first().hasClass(outerContainerClass)).toBe(true);
         });
 
         it('should set two div tags when the outerContainerClass is set', () => {
             const outerContainerClass = 'salut-externe';
-            radio
-                .setProps({outerContainerClass})
-                .mount()
-                .update();
+            radio.setProps({outerContainerClass}).mount().update();
             expect(radio.find('div').length).toBe(2);
         });
 
@@ -137,10 +103,7 @@ describe('Radio', () => {
         it('should includes the element set in the outerElementInContainer props if its set', () => {
             const outerElementInContainer = <img src="https://via.placeholder.com/150x100" />;
             expect(radio.find('img').length).toBe(0);
-            radio
-                .setProps({outerElementInContainer})
-                .mount()
-                .update();
+            radio.setProps({outerElementInContainer}).mount().update();
             expect(radio.find('img').length).toBe(1);
         });
 

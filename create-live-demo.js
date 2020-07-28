@@ -67,10 +67,7 @@ uploadDir('packages/demo/dist/', `coveo-prd-jsadmin/react-vapor/${branchName}`)
         axios
             .get(APIEndpointWithAuthentication)
             .then((response) =>
-                _.chain(response.data)
-                    .pluck('body')
-                    .contains(liveDemoMessage)
-                    .value()
+                _.chain(response.data).pluck('body').contains(liveDemoMessage).value()
                     ? exitSinceDemoIsAlreadyPosted()
                     : axios
                           .post(APIEndpointWithAuthentication, {event: 'COMMENT', body: liveDemoMessage})

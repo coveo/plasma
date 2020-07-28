@@ -18,8 +18,9 @@ export const ValidationMessageClasses = {
     warning: 'text-yellow',
 };
 
-export const ValidationMessageDisconnect: React.FunctionComponent<IValidationMessageProps &
-    ReturnType<typeof mapStateToProps>> = ({errors, warnings}) => {
+export const ValidationMessageDisconnect: React.FunctionComponent<
+    IValidationMessageProps & ReturnType<typeof mapStateToProps>
+> = ({errors, warnings}) => {
     const hasErrors = errors.length > 0;
     const hasWarnings = warnings.length > 0;
     const eitherErrorsOrWarnings = hasErrors ? errors : warnings;

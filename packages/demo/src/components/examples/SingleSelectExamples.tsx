@@ -160,9 +160,9 @@ const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) =>
     filterValue: FilterBoxSelectors.getFilterText(state, props),
 });
 
-const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<{id: string} & ReturnType<
-    typeof mapStateToProps
->> = ({filterValue, id}) => {
+const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<
+    {id: string} & ReturnType<typeof mapStateToProps>
+> = ({filterValue, id}) => {
     const [photos, totalEntries, fetchPhotos] = usePhotosAPIMock();
     const [pageNbr, setPage] = React.useState(1);
 
