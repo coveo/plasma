@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
@@ -26,7 +27,7 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
             <header className={classNames('label', 'text-light-blue', headerClassName)}>
                 {!!label ? <span>{label}</span> : null}
                 {!!information ? (
-                    <Tooltip title={information} placement={TooltipPlacement.Top} className="ml1">
+                    <Tooltip title={information} placement={TooltipPlacement.Right} className="ml1">
                         <Svg svgName="info-14" svgClass="icon fill-medium-grey" />
                     </Tooltip>
                 ) : null}
