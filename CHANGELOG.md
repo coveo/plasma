@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.10.0](https://github.com/coveo/react-vapor/compare/v6.9.1...v6.10.0) (2020-07-29)
+
+
+### Features
+
+* **labeledinput:** change default tooltip placement ([#1639](https://github.com/coveo/react-vapor/issues/1639)) ([8bb3efc](https://github.com/coveo/react-vapor/commit/8bb3efca4d65b38ce0144a8b03e778e808b49864))
+
+
+
+
+
 ## [6.9.1](https://github.com/coveo/react-vapor/compare/v6.9.0...v6.9.1) (2020-07-27)
 
 
