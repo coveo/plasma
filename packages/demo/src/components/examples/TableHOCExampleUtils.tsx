@@ -68,7 +68,12 @@ const tablePredicates = [
 const tableDatePickerConfig = {
     datesSelectionBoxes: SELECTION_BOXES_LONG,
     years: [...DateUtils.getPreviousYears(25), DateUtils.currentYear.toString()],
-    initialDateRange: [moment().subtract(25, 'years').toDate(), moment().toDate()],
+    initialDateRange: [
+        moment()
+            .subtract(25, 'years')
+            .toDate(),
+        moment().toDate(),
+    ],
 };
 
 export const TableHOCExampleUtils = {

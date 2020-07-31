@@ -119,7 +119,12 @@ const tableDatePickerConfig = () => ({
     matchDates: (data: IExampleRowData, lowerLimit: Date, upperLimit?: Date) =>
         _.isUndefined(upperLimit) || (lowerLimit <= data.dateOfBirth && data.dateOfBirth <= upperLimit),
     years: [...DateUtils.getPreviousYears(100), DateUtils.currentYear.toString()],
-    initialDateRange: [moment().subtract(75, 'years').toDate(), moment().toDate()],
+    initialDateRange: [
+        moment()
+            .subtract(75, 'years')
+            .toDate(),
+        moment().toDate(),
+    ],
 });
 
 const matchPredicate = (predicate: string, rowData: IExampleRowData) => {
@@ -157,12 +162,10 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 
 type TableWithActionsAndDataFilteringProps = ReturnType<typeof mapDispatchToProps>;
 
-const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<
-    {
-        data: any[];
-        id: string;
-    } & TableWithActionsAndDataFilteringProps
-> = ({id, data, resetFilter}) => {
+const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<{
+    data: any[];
+    id: string;
+} & TableWithActionsAndDataFilteringProps> = ({id, data, resetFilter}) => {
     const TableWithActionsAndDataFilteringComposed = _.compose(
         tableWithBlankSlate({
             title: 'No data',

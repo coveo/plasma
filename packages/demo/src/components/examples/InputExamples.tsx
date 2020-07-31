@@ -177,12 +177,25 @@ const MultiValuesInputId = 'multivalue-id';
 const mapStateToProps = (state) => ({
     values: MultiValuesInputSelectors.getValues(state, MultiValuesInputId),
 });
-const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => (
-    <Section level={3} title="Multi-value inputs">
-        <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
-        <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
-    </Section>
-);
+const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => {
+    return (
+        <>
+            <Section level={3} title="Multi-value inputs">
+                <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
+                <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
+            </Section>
+            <Section level={3} title="Multi-value inputs with a data limit">
+                <MultiValuesInput
+                    id="test"
+                    data={['enabled', 'disabled']}
+                    dataLimit={1}
+                    placeholder={'this is a placeholder'}
+                    reachedLimitPlaceholder={"this is a placeholder when you've reached the limit"}
+                />
+            </Section>
+        </>
+    );
+};
 const MultilineInputExample = connect(mapStateToProps)(MultilineInputExampleDisconnected);
 
 const inputs: ISplitInput[] = [

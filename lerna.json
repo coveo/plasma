@@ -6,9 +6,7 @@
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "allowBranch": [
-                "master"
-            ]
+            "allowBranch": ["master"]
         },
         "version": {
             "conventionalCommits": true,
@@ -16,12 +14,7 @@
         },
         "bootstrap": {
             "hoist": true,
-            "nohoist": [
-                "unidiff",
-                "query-string",
-                "strict-uri-encode",
-                "split-on-first"
-            ]
+            "nohoist": ["unidiff", "query-string", "strict-uri-encode", "split-on-first"]
         }
     }
 }
