@@ -51,10 +51,7 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
             {}
         );
-        const lastInputConnectedProps = body
-            .find(InputConnected)
-            .last()
-            .props();
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
         expect(lastInputConnectedProps.disabled).toBe(true);
     });
 
@@ -68,10 +65,7 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
             {}
         );
-        const lastInputConnectedProps = body
-            .find(InputConnected)
-            .last()
-            .props();
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
         expect(lastInputConnectedProps.defaultValue).toBe('⌚');
     });
 
@@ -85,10 +79,7 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
             {}
         );
-        const lastInputConnectedProps = body
-            .find(InputConnected)
-            .last()
-            .props();
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
         expect(lastInputConnectedProps.disabled).toBe(true);
     });
 
@@ -119,10 +110,7 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
             {}
         );
-        const lastInputConnectedProps = body
-            .find(InputConnected)
-            .last()
-            .props();
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
         expect(lastInputConnectedProps.disabledTooltip).toBe("this input can't be edited.");
     });
 
@@ -170,10 +158,7 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
             {}
         );
-        const oneInputConnectedBeforelastProps = body
-            .find(InputConnected)
-            .last()
-            .props();
+        const oneInputConnectedBeforelastProps = body.find(InputConnected).last().props();
         expect(oneInputConnectedBeforelastProps.placeholder).toBe(defaultProps.reachedLimitPlaceholder);
     });
 });
