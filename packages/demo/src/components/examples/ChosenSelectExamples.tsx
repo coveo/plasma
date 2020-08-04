@@ -26,9 +26,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
                             placeholderTextSingle="Choose a country"
                             value="France"
                             width="400px"
-                            onChosenChange={(event: any, args: any) => {
-                                /* tslint:disable */ console.log('Changed: ', args); /* tslint:enable */
-                            }}
+                            onChosenChange={(event: any, args: any) => null}
                         >
                             <option value="Canada">Canada</option>
                             <option value="France">France</option>
@@ -44,9 +42,7 @@ export class ChosenSelectExamples extends React.Component<any, any> {
                             defaultValue={['Canada']}
                             multiple
                             width="400px"
-                            onChosenChange={(event: any, args: any) => {
-                                /* tslint:disable */ console.log('Changed: ', args); /* tslint:enable */
-                            }}
+                            onChosenChange={(event: any, args: any) => null}
                         >
                             <option value="Canada">Canada</option>
                             <option value="France">France</option>

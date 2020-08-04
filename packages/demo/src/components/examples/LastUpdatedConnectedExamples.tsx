@@ -5,19 +5,15 @@ export interface ILastUpdateConnectedExamplesProps {
     onRefresh?: () => void;
 }
 
-const mapStateToProps = () => {
-    return {};
-};
+const mapStateToProps = () => ({});
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<ILastUpdatedPayload>) => void
-): ILastUpdateConnectedExamplesProps => {
-    return {
-        onRefresh: () => {
-            dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));
-        },
-    };
-};
+): ILastUpdateConnectedExamplesProps => ({
+    onRefresh: () => {
+        dispatch(changeLastUpdated('LastUpdatedConnectedExampleComponent'));
+    },
+});
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateConnectedExamplesProps, any> {

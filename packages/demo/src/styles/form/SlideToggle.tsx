@@ -3,7 +3,7 @@ import * as React from 'react';
 
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
-export default function SlideToggle() {
+export default () => {
     const [first, setFirst] = useState(false);
     const [second, setSecond] = useState(false);
     const [third, setThird] = useState(false);
@@ -36,4 +36,4 @@ export default function SlideToggle() {
             <button type="button" className="mt1" onClick={() => setThird(!third)} />
         </VaporComponent>
     );
-}
+};

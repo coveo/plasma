@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {CodeEditor, CodeMirrorModes} from 'react-vapor';
 
-export class CodeEditorExamples extends React.Component<{}, {}> {
+export class CodeEditorExamples extends React.Component {
     render() {
         return (
             <div className="mt2">

@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {
-    ISearchBarProps,
     ISearchBarStateProps,
     SearchBar,
     SearchBarConnected,
@@ -11,16 +10,12 @@ import {findWhere} from 'underscore';
 
 import {Store} from '../../Store';
 
-class SearchBarExample extends React.Component<{}, ISearchBarStateProps> {
-    constructor(props: ISearchBarProps) {
-        super(props);
-
-        this.state = {
-            value: '',
-            disabled: false,
-            searching: false,
-        };
-    }
+class SearchBarExample extends React.Component<React.Attributes, ISearchBarStateProps> {
+    state = {
+        value: '',
+        disabled: false,
+        searching: false,
+    };
 
     render() {
         return (

@@ -3,7 +3,7 @@ import {JSONEditor} from 'react-vapor';
 
 import {fakeJSON, JSONToString} from './DiffViewerExmaplesCommon';
 
-export class JSONEditorExamples extends React.Component<{}, {}> {
+export class JSONEditorExamples extends React.Component {
     render() {
         return (
             <div className="mt2">

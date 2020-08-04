@@ -28,9 +28,7 @@ interface IListBoxExamplesProps extends Partial<IListBoxExamplesDispatchProps>, 
     multi?: boolean;
 }
 
-const randomValue1To100 = () => {
-    return Math.floor(Math.random() * 100 + 1);
-};
+const randomValue1To100 = () => Math.floor(Math.random() * 100 + 1);
 
 const mapStateToProps = (
     state: IReactVaporExampleState,

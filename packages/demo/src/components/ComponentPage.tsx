@@ -83,7 +83,7 @@ const START_STOP = /\/\/ start-print\s*([\s\S]*)\/\/ stop-print/;
 const START_END = /\/\/ start-print\s*([\s\S]*)$/;
 const BEGIN_STOP = /^([\s\S]*)\/\/ stop-print/;
 
-function chopDownSourceFile(wholeFile: string): string {
+const chopDownSourceFile = (wholeFile: string): string => {
     const hasStartDirective = wholeFile.indexOf('// start-print') >= 0;
     const hasStopDirective = wholeFile.indexOf('// stop-print') >= 0;
 
@@ -96,7 +96,7 @@ function chopDownSourceFile(wholeFile: string): string {
     } else {
         return wholeFile;
     }
-}
+};
 
 const DevelopmentTabContent: React.FunctionComponent<ComponentPageProps> = ({component, path}) => {
     const [code, setCode] = React.useState('');

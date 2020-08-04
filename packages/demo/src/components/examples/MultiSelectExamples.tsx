@@ -35,21 +35,19 @@ const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
 
 const WithNonEmptyMultiSelect = withNonEmptyMultiSelectHOC(MultiSelectConnected);
 
-const WithNonEmptyMultiSelectExample = () => {
-    return (
-        <LabeledInput
-            label="A Multi Select with Non Empty Validation"
-            message={
-                <div>
-                    <ValidationMessage id="multi-select-non-empty" />
-                </div>
-            }
-        >
-            <br />
-            <WithNonEmptyMultiSelect id="multi-select-non-empty" items={defaultItems} />
-        </LabeledInput>
-    );
-};
+const WithNonEmptyMultiSelectExample = () => (
+    <LabeledInput
+        label="A Multi Select with Non Empty Validation"
+        message={
+            <div>
+                <ValidationMessage id="multi-select-non-empty" />
+            </div>
+        }
+    >
+        <br />
+        <WithNonEmptyMultiSelect id="multi-select-non-empty" items={defaultItems} />
+    </LabeledInput>
+);
 
 export interface IMultiSelectExamplesState {
     first: IItemBoxProps[];
@@ -59,32 +57,30 @@ export interface IMultiSelectExamplesState {
 }
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
-const MultiSelectWithInitialValuesExample = () => {
-    return (
-        <Section level={3}>
-            <LabeledInput
-                label="A Multi Select with initial values"
-                message={
-                    <div>
-                        <ValidationMessage id="multi-select-initial-values" />
-                    </div>
-                }
-            >
-                <MultiSelectWithInitialValues
-                    initialValues={[defaultItems[0].value, 'INVALID ONE']}
-                    id="multi-select-initial-values"
-                    items={defaultItems}
-                />
-            </LabeledInput>
-        </Section>
-    );
-};
+const MultiSelectWithInitialValuesExample = () => (
+    <Section level={3}>
+        <LabeledInput
+            label="A Multi Select with initial values"
+            message={
+                <div>
+                    <ValidationMessage id="multi-select-initial-values" />
+                </div>
+            }
+        >
+            <MultiSelectWithInitialValues
+                initialValues={[defaultItems[0].value, 'INVALID ONE']}
+                id="multi-select-initial-values"
+                items={defaultItems}
+            />
+        </LabeledInput>
+    </Section>
+);
 
-export class MultiSelectExamples extends React.Component<{}, IMultiSelectExamplesState> {
+export class MultiSelectExamples extends React.Component<null, IMultiSelectExamplesState> {
     static description =
         'A multi-select component allows users to select one or more options from a set of predefined options, or, if relevant, to add custom options.';
 
-    constructor({props, state}: {props: {}; state: IMultiSelectExamplesState}) {
+    constructor({props, state}: {props: null; state: IMultiSelectExamplesState}) {
         super(props, state);
 
         const second = _.map(defaultItems, (item) => _.clone(item));

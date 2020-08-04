@@ -11,13 +11,13 @@ export interface PhotoProps {
 
 const IMG_SIZE = 50;
 
-const clean = <T extends object>(object: T) => _.pick(object, _.identity);
+const clean = <T extends Record<string, unknown>>(object: T) => _.pick(object, _.identity);
 
-export function usePhotosAPIMock(): [any[], number, (params?: any, overwrite?: boolean) => void] {
+export const usePhotosAPIMock = (): [any[], number, (params?: any, overwrite?: boolean) => void] => {
     const [photos, setPhotos] = React.useState([]);
     const [totalEntries, setTotalEntries] = React.useState(0);
 
-    function fetchPhotos(params?: any, overwrite = true) {
+    const fetchPhotos = (params?: any, overwrite = true) => {
         const cleanParams = clean(params);
         const queryString = !_.isEmpty(cleanParams)
             ? `?${new URLSearchParams(Object.entries(cleanParams)).toString()}`
@@ -35,18 +35,16 @@ export function usePhotosAPIMock(): [any[], number, (params?: any, overwrite?: b
                     setPhotos([...photos, ...newPhotos]);
                 }
             });
-    }
+    };
 
     return [photos, totalEntries, fetchPhotos];
-}
-
-export const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => {
-    return (
-        <div className="flex flex-center">
-            <a href={url} target="__blank" className="mr2">
-                <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />
-            </a>
-            <span>{title}</span>
-        </div>
-    );
 };
+
+export const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
+    <div className="flex flex-center">
+        <a href={url} target="__blank" className="mr2">
+            <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />
+        </a>
+        <span>{title}</span>
+    </div>
+);
