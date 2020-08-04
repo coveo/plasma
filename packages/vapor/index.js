@@ -1,10 +1,11 @@
 import './scss/guide.scss';
-import {svg as svgEnum} from './tmp/svg.js';
+
 import {svgWrapper} from './svgWrapper';
+import {svg as svgEnum} from './tmp/svg.js';
 
 export const SVG = svgWrapper;
 
-export function svgFromName(svgName, svgClass, spanClass, title) {
+export const svgFromName = (svgName, svgClass, spanClass, title) => {
     svgClass = svgClass || '';
     spanClass = spanClass || '';
     title = title || '';
@@ -13,7 +14,7 @@ export function svgFromName(svgName, svgClass, spanClass, title) {
         return svgEnum[svgName].render(svgClass, spanClass, title);
     }
     return '';
-}
+};
 
 export const svg = svgEnum;
 
