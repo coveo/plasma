@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {
     AutocompleteConnected,
     Button,
+    IInputOwnProps,
     IItemBoxProps,
     IMultilineSingleBoxProps,
     Input,
@@ -178,6 +179,15 @@ const mapStateToProps = (state) => ({
     values: MultiValuesInputSelectors.getValues(state, MultiValuesInputId),
 });
 const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => {
+    const validate = (value: any) => !!value;
+    const validateInputProps: Partial<IInputOwnProps> = {
+        validate,
+        labelProps: {invalidMessage: 'Do not leave me empty'},
+        validateOnChange: true,
+    };
+    const limitInputProps: Partial<IInputOwnProps> = {
+        placeholder: 'this is a placeholder',
+    };
     return (
         <>
             <Section level={3} title="Multi-value inputs">
@@ -186,11 +196,19 @@ const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<type
             </Section>
             <Section level={3} title="Multi-value inputs with a data limit">
                 <MultiValuesInput
-                    id="test"
+                    id="multi-data"
                     data={['enabled', 'disabled']}
                     dataLimit={1}
-                    placeholder={'this is a placeholder'}
+                    inputProps={limitInputProps}
                     reachedLimitPlaceholder={"this is a placeholder when you've reached the limit"}
+                    disabledTooltipTitle="this input can't edited"
+                />
+            </Section>
+            <Section level={3} title="Multi-value inputs with a validation">
+                <MultiValuesInput
+                    id="multi-validate"
+                    data={['Erase me to see the error']}
+                    inputProps={validateInputProps}
                 />
             </Section>
         </>

@@ -20,11 +20,18 @@ describe('MultiValuesInput', () => {
         {id: 'test3', isLast: false, props: '🚒'},
         {id: 'test4', isLast: false, props: '⌚'},
     ];
+
+    const testInputProps = {
+        placeholder: 'a placeholder',
+        labelTitle: 'a title',
+    };
+
     const defaultProps = {
         id: '🚗',
         dataLimit: 3,
-        placeholder: 'a placeholder',
+        inputProps: testInputProps,
         reachedLimitPlaceholder: 'a reached placeholder',
+        disabledTooltipTitle: "this input can't edited",
     };
 
     it('should render and unmount without throwing errors', () => {
@@ -100,7 +107,7 @@ describe('MultiValuesInput', () => {
         expect(oneInputConnectedBeforelastProps.disabled).toBe(false);
     });
 
-    it("should include a Tooltip to all data in which it's index are above or equal the dataLimit", () => {
+    it("should include a Tooltip if set to all data in which it's index are above or equal the dataLimit", () => {
         const component = shallowWithState(
             <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
             {}
@@ -111,10 +118,10 @@ describe('MultiValuesInput', () => {
             {}
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
-        expect(lastInputConnectedProps.disabledTooltip).toBe("this input can't be edited.");
+        expect(lastInputConnectedProps.disabledTooltip).toBe(defaultProps.disabledTooltipTitle);
     });
 
-    it("should NOT includes a Tooltip to all data in which it's index are below the dataLimit", () => {
+    it("should NOT includes a Tooltip if set to all data in which it's index are below the dataLimit", () => {
         const component = shallowWithState(
             <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
             {}
@@ -128,7 +135,7 @@ describe('MultiValuesInput', () => {
             .find(InputConnected)
             .at(arrayOfMultilineSingleBoxAboveDataLimitProps.length - 2)
             .props();
-        expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe(undefined);
+        expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe('');
     });
 
     it("should set the placeholder value with the placeholder props to all data in which it's index below the dataLimit", () => {
@@ -145,7 +152,7 @@ describe('MultiValuesInput', () => {
             .find(InputConnected)
             .at(arrayOfMultilineSingleBoxAboveDataLimitProps.length - 2)
             .props();
-        expect(oneInputConnectedBeforelastProps.placeholder).toBe(defaultProps.placeholder);
+        expect(oneInputConnectedBeforelastProps.placeholder).toBe(testInputProps.placeholder);
     });
 
     it("should set the placeholder value with the reachedLimitPlaceholder props to all data in which it's index above or equal the dataLimit", () => {
@@ -158,7 +165,27 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
             {}
         );
-        const oneInputConnectedBeforelastProps = body.find(InputConnected).last().props();
-        expect(oneInputConnectedBeforelastProps.placeholder).toBe(defaultProps.reachedLimitPlaceholder);
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
+        expect(lastInputConnectedProps.placeholder).toBe(defaultProps.reachedLimitPlaceholder);
+    });
+
+    it('should display the labelTitle only on the first input', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const firstInputConnectedProps = body.find(InputConnected).first().props();
+        const oneInputConnectedBeforelastProps = body
+            .find(InputConnected)
+            .at(arrayOfMultilineSingleBoxAboveDataLimitProps.length - 2)
+            .props();
+
+        expect(firstInputConnectedProps.labelTitle).toBe(testInputProps.labelTitle);
+        expect(oneInputConnectedBeforelastProps.labelTitle).toBe('');
     });
 });

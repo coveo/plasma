@@ -30,8 +30,8 @@ export interface MultiValuesInputProps {
     data: string[];
     inputProps?: Omit<Partial<IInputOwnProps>, 'id'>;
     dataLimit?: number;
-    placeholder?: string;
     reachedLimitPlaceholder?: string;
+    disabledTooltipTitle?: string;
 }
 
 export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = ({
@@ -39,12 +39,10 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
     data,
     inputProps,
     dataLimit,
-    placeholder,
     reachedLimitPlaceholder,
+    disabledTooltipTitle,
 }) => {
     const limit = !!dataLimit ? dataLimit : Infinity;
-    placeholder = !!placeholder ? placeholder : '';
-    reachedLimitPlaceholder = !!reachedLimitPlaceholder ? reachedLimitPlaceholder : '';
     return (
         <MultilineBoxWithRemoveButton
             id={id}
@@ -69,10 +67,12 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                                 parentProps.removeBox(cData.id);
                             }
                         }}
-                        placeholder={index >= limit ? reachedLimitPlaceholder : placeholder}
+                        placeholder={index >= limit ? reachedLimitPlaceholder : inputProps?.placeholder}
                         disabled={index >= limit}
+                        classes={index >= limit && 'mt0 mb0 ml-1'}
                         innerInputClasses={index >= limit && 'mod-no-border py1 input-wider-text-box'}
-                        disabledTooltip={index >= limit ? "this input can't be edited." : undefined}
+                        disabledTooltip={index >= limit && disabledTooltipTitle ? disabledTooltipTitle : ''}
+                        labelTitle={index === 0 ? inputProps?.labelTitle : ''}
                     />
                 ))
             }
