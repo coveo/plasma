@@ -15,42 +15,45 @@ import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {TableHeadingRow} from '../TableHeadingRow';
 
 describe('<TableChildBody />', () => {
-    const spyOnRowClick: jasmine.Spy = jasmine.createSpy('onRowClick');
-    const spyHandleOnRowClick: jasmine.Spy = jasmine.createSpy('handleOnRowClick');
-    const someActions: IActionOptions[] = [
-        {
-            name: 'some-action',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: true,
-        },
-    ];
-    const tableChildBodyProps: ITableChildBodyProps = {
-        tableId: 'best-table',
-        rowData: {
-            id: 'random-row',
-            email: 'someone@somewhere.com',
-            url: 'www.somewher.com',
-            aProperty: false,
-        },
-        isLoading: false,
-        onRowClick: spyOnRowClick,
-        handleOnRowClick: spyHandleOnRowClick,
-        getActions: jasmine.createSpy('getActions').and.returnValue(someActions),
-        headingAttributes: [
-            {
-                attributeName: 'email',
-                titleFormatter: _.identity,
-                attributeFormatter: _.escape,
-                filterFormatter: _.identity,
-            },
-        ],
-        isMultiSelect: false,
-    };
-
+    let spyOnRowClick: jasmine.Spy;
+    let spyHandleOnRowClick: jasmine.Spy;
+    let someActions: IActionOptions[];
+    let tableChildBodyProps: ITableChildBodyProps;
     let store: Store<IReactVaporState>;
 
     beforeAll(() => {
         document.body.innerHTML += '<div id="App"></div>';
+        spyOnRowClick = jasmine.createSpy('onRowClick');
+        spyHandleOnRowClick = jasmine.createSpy('handleOnRowClick');
+        someActions = [
+            {
+                name: 'some-action',
+                trigger: jasmine.createSpy('triggerMethod'),
+                enabled: true,
+            },
+        ];
+        tableChildBodyProps = {
+            tableId: 'best-table',
+            rowData: {
+                id: 'random-row',
+                email: 'someone@somewhere.com',
+                url: 'www.somewher.com',
+                aProperty: false,
+            },
+            isLoading: false,
+            onRowClick: spyOnRowClick,
+            handleOnRowClick: spyHandleOnRowClick,
+            getActions: jasmine.createSpy('getActions').and.returnValue(someActions),
+            headingAttributes: [
+                {
+                    attributeName: 'email',
+                    titleFormatter: _.identity,
+                    attributeFormatter: _.escape,
+                    filterFormatter: _.identity,
+                },
+            ],
+            isMultiSelect: false,
+        };
     });
 
     beforeEach(() => {
@@ -97,6 +100,7 @@ describe('<TableChildBody />', () => {
                     },
                 ],
             });
+
             expect(component.find('td.new-class')).toBeDefined();
         });
 
@@ -114,6 +118,7 @@ describe('<TableChildBody />', () => {
             });
 
             component.find('td').simulate('click');
+
             expect(spy).toHaveBeenCalled();
         });
 
@@ -143,6 +148,7 @@ describe('<TableChildBody />', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
                 collapsibleFormatter: (rowData: IData) => rowData.url,
             });
+
             expect(mountComponentWithProps(newProps).find(TableCollapsibleRow).length).toBe(1);
         });
 
@@ -204,6 +210,7 @@ describe('<TableChildBody />', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
                 rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: true}),
             });
+
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBe(0);
         });
 
@@ -211,6 +218,7 @@ describe('<TableChildBody />', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
                 rowData: _.extend({}, tableChildBodyProps.rowData, {enabled: false}),
             });
+
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBeGreaterThanOrEqual(1);
         });
 
@@ -218,6 +226,7 @@ describe('<TableChildBody />', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
                 rowData: _.extend({}, tableChildBodyProps.rowData, {disabled: true}),
             });
+
             expect(mountComponentWithProps(newProps).find('.disabled').length).toBeGreaterThanOrEqual(1);
         });
 

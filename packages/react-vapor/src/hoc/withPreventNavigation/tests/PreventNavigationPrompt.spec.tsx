@@ -35,6 +35,7 @@ describe('Modal with Prevent Navigation', () => {
         shallowWithProps({onStay: spy});
 
         component.find(ModalComposite).prop('onClose')();
+
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
@@ -46,6 +47,7 @@ describe('Modal with Prevent Navigation', () => {
             <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>
         );
         footer.find('.js-stay').simulate('click');
+
         expect(spy).toHaveBeenCalledTimes(1);
     });
 
@@ -57,6 +59,7 @@ describe('Modal with Prevent Navigation', () => {
             <div>{component.find(ModalComposite).prop<React.ReactElement>('modalFooterChildren')}</div>
         );
         footer.find('.js-exit').simulate('click');
+
         expect(spy).toHaveBeenCalledTimes(1);
     });
 });

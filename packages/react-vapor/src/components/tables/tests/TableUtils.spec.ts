@@ -65,6 +65,7 @@ describe('TableUtils', () => {
     describe('getTableLoadingIds', () => {
         it('should return an array of all the loading ids to be toggled', () => {
             const tableId = 'tableId';
+
             expect(getTableLoadingIds(tableId)).toEqual([
                 tableId,
                 getTableChildComponentId(tableId, TableChildComponent.ACTION_BAR),

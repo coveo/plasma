@@ -180,14 +180,17 @@ describe('Date picker', () => {
             const newDatePickers: IDatePickerState[] = datePickersReducer(oldDatePickers, action);
 
             const datePicker: IDatePickerState = _.findWhere(newDatePickers, {id: 'some-date-picker'});
+
             expect(datePicker.lowerLimit).toBe(datePicker.appliedLowerLimit);
             expect(datePicker.upperLimit).toBe(datePicker.appliedUpperLimit);
 
             const datePicker2: IDatePickerState = _.findWhere(newDatePickers, {id: 'some-date-picker2'});
+
             expect(datePicker2.lowerLimit).toBe(datePicker2.appliedLowerLimit);
             expect(datePicker2.upperLimit).toBe(datePicker2.appliedUpperLimit);
 
             const otherDatePicker: IDatePickerState = _.findWhere(newDatePickers, {id: 'other-id'});
+
             expect(otherDatePicker.lowerLimit).not.toBe(otherDatePicker.appliedLowerLimit);
             expect(otherDatePicker.upperLimit).not.toBe(otherDatePicker.appliedUpperLimit);
         });
@@ -207,14 +210,17 @@ describe('Date picker', () => {
             const newDatePickers: IDatePickerState[] = datePickersReducer(oldDatePickers, action);
 
             const datePicker: IDatePickerState = _.findWhere(newDatePickers, {id: 'some-date-picker'});
+
             expect(datePicker.appliedLowerLimit).toBe(datePicker.lowerLimit);
             expect(datePicker.appliedUpperLimit).toBe(datePicker.upperLimit);
 
             const datePicker2: IDatePickerState = _.findWhere(newDatePickers, {id: 'some-date-picker2'});
+
             expect(datePicker2.appliedLowerLimit).toBe(datePicker2.lowerLimit);
             expect(datePicker2.appliedUpperLimit).toBe(datePicker2.upperLimit);
 
             const otherDatePicker: IDatePickerState = _.findWhere(newDatePickers, {id: 'other-id'});
+
             expect(otherDatePicker.appliedLowerLimit).not.toBe(otherDatePicker.lowerLimit);
             expect(otherDatePicker.appliedUpperLimit).not.toBe(otherDatePicker.upperLimit);
         });
@@ -234,9 +240,11 @@ describe('Date picker', () => {
             const newDatePickers: IDatePickerState[] = datePickersReducer(oldDatePickers, action);
 
             const datePicker: IDatePickerState = _.findWhere(newDatePickers, {id: 'some-date-picker'});
+
             expect(datePicker).toBe(_.findWhere(oldDatePickers, {id: 'some-date-picker'}));
 
             const datePicker2: IDatePickerState = _.findWhere(newDatePickers, {id: 'some-date-picker2'});
+
             expect(datePicker2.selected).toBe(DateLimits.lower);
             expect(datePicker2.lowerLimit).toBeNull();
             expect(datePicker2.upperLimit).toBeNull();
@@ -244,6 +252,7 @@ describe('Date picker', () => {
             expect(datePicker2.inputUpperLimit).toBeNull();
 
             const otherDatePicker: IDatePickerState = _.findWhere(newDatePickers, {id: 'other-id'});
+
             expect(otherDatePicker).toBe(_.findWhere(oldDatePickers, {id: 'other-id'}));
         });
 
@@ -291,6 +300,7 @@ describe('Date picker', () => {
                 const newDatePicker: IDatePickerState = _.findWhere(datePickersReducer(oldDatePickers, action), {
                     id: action.payload.id,
                 });
+
                 expect(newDatePicker.upperLimit).toBe(action.payload.date);
                 expect(newDatePicker.selected).toBe('');
             }

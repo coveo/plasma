@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 import {ISvgProps, Svg} from './Svg';
 
@@ -11,7 +12,7 @@ export interface ILinkSvgProps extends React.ClassAttributes<LinkSvg> {
     tooltip?: ITooltipProps;
 }
 
-export class LinkSvg extends React.Component<ILinkSvgProps, {}> {
+export class LinkSvg extends React.Component<ILinkSvgProps> {
     static defaultProps: Partial<ILinkSvgProps> = {
         target: '_blank',
         linkClasses: [],

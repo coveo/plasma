@@ -8,7 +8,11 @@ import {IListBoxProps, ListBox} from '../ListBox';
 describe('ListBox', () => {
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;
 
-    const spyOnOptionClick = jasmine.createSpy('onOptionClick');
+    let spyOnOptionClick: jasmine.Spy;
+
+    beforeAll(() => {
+        spyOnOptionClick = jasmine.createSpy('onOptionClick');
+    });
 
     const defaultProps: IListBoxProps = {
         id: '🍄',
@@ -72,7 +76,7 @@ describe('ListBox', () => {
             expect(onRenderSpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should call onRender on mount', () => {
+        it('should call onDestroy on unmount', () => {
             const onDestroySpy = jasmine.createSpy('onDestroy');
             renderListBox({
                 onDestroy: onDestroySpy,
@@ -81,6 +85,7 @@ describe('ListBox', () => {
             expect(onDestroySpy).not.toHaveBeenCalled();
 
             listBoxComponent.unmount();
+
             expect(onDestroySpy).toHaveBeenCalledTimes(1);
         });
 
@@ -88,6 +93,7 @@ describe('ListBox', () => {
             renderListBox();
 
             (listBoxComponent.find(ItemBox).at(1).instance() as any).handleOnOptionClick({target: 'target'});
+
             expect(spyOnOptionClick).toHaveBeenCalled();
         });
 
@@ -98,6 +104,7 @@ describe('ListBox', () => {
             });
 
             (listBoxComponent.find(ItemBox).first().instance() as any).handleOnOptionClick({target: 'target'});
+
             expect(onOptionClick).toHaveBeenCalled();
         });
 
@@ -109,6 +116,7 @@ describe('ListBox', () => {
             });
 
             (listBoxComponent.find(ItemBox).instance() as any).handleOnOptionClick({target: 'target'});
+
             expect(onOptionClick).not.toHaveBeenCalled();
         });
 
@@ -145,6 +153,7 @@ describe('ListBox', () => {
         it('should wrap the items using the result from the "wrapItems" prop', () => {
             const wrapItems = (items: React.ReactNode) => <div className="wrapping-those-items-real-hard">{items}</div>;
             const list = shallow(<ListBox {...defaultProps} wrapItems={wrapItems} />);
+
             expect(list.childAt(0).childAt(0).hasClass('wrapping-those-items-real-hard')).toBe(true);
         });
 
@@ -152,6 +161,7 @@ describe('ListBox', () => {
             const listItems = shallow(<ListBox {...defaultProps} isLoading />)
                 .find('ul.list-box')
                 .children();
+
             expect(listItems.length).toBe(7);
             listItems.forEach((item) => {
                 expect(item.type()).toBe(ItemBoxLoading);

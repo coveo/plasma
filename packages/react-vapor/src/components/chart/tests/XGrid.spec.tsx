@@ -27,6 +27,7 @@ describe('<XGrid />', () => {
         spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
 
         const component = shallow(<XGrid />);
+
         expect(component.find('line').exists()).toBe(true);
     });
 });

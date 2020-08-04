@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {BasicHeaderLoading} from '../BasicHeaderLoading';
 
 describe('BasicHeaderLoading tests', () => {
@@ -8,7 +9,7 @@ describe('BasicHeaderLoading tests', () => {
             expect(() => {
                 const wrapper = shallow(<BasicHeaderLoading />, {});
                 wrapper.unmount();
-            });
+            }).not.toThrow();
         });
     });
 });

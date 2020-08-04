@@ -1,6 +1,6 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {IDropdownOption} from '../../DropdownSearch';
 import {IMultiselectInputProps, MultiselectInput} from '../MultiSelectInput';
 

@@ -55,9 +55,11 @@ describe('DropdownSearch', () => {
             it('should call onMount prop when mounted', () => {
                 wrapper.unmount();
                 store.dispatch(clearState());
+
                 expect(store.getState().dropdownSearch.length).toBe(0);
 
                 wrapper.mount();
+
                 expect(store.getState().dropdownSearch.length).toBe(1);
             });
 
@@ -82,6 +84,7 @@ describe('DropdownSearch', () => {
 
             it('should call onDestroy prop when will unmount', () => {
                 wrapper.unmount();
+
                 expect(store.getState().dropdownSearch.length).toBe(0);
             });
         });
@@ -161,6 +164,7 @@ describe('DropdownSearch', () => {
 
                 expect(onBlurProp).toBeDefined();
             });
+
             it('should get what to do on onOptionClick as a prop', () => {
                 const onOptionClickProp = dropdownSearch.props().onOptionClick;
 
@@ -200,14 +204,17 @@ describe('DropdownSearch', () => {
             it('should toggle the dropdown class to open and close on click on the dropdown button', () => {
                 expect(wrapper.find('.dropdown').find('.open').length).toBe(0, 'start closed');
                 wrapper.find('.dropdown-toggle').simulate('click');
+
                 expect(wrapper.find('.dropdown').find('.open').length).toBe(1, 'open on first click');
             });
 
             it('should close the dropdown on calling onClose', () => {
                 wrapper.find('.dropdown-toggle').simulate('click');
+
                 expect(wrapper.find('.open').length).toBe(1);
                 wrapper.find(DropdownSearch).props().onClose();
                 wrapper.update();
+
                 expect(wrapper.find('.dropdown').find('.open').length).toBe(0);
             });
 
@@ -229,15 +236,18 @@ describe('DropdownSearch', () => {
                 wrapper.find('li span').first().simulate('mouseDown');
 
                 const selectedOption = store.getState().dropdownSearch[0].options[0];
+
                 expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);
                 expect(selectedOption.value).toBe('test 1');
             });
 
             it('should add the filterText in the state on onFilterTextChange', () => {
                 const filter: string = 't';
+
                 expect(store.getState().dropdownSearch[0].filterText).toBe('');
 
                 dropdownSearch.props().onFilterTextChange(filter);
+
                 expect(store.getState().dropdownSearch[0].filterText).toBe(filter);
             });
 
@@ -319,15 +329,6 @@ describe('DropdownSearch', () => {
 
                 expect(wrapper.find(DropdownSearch).props().activeOption).toBeDefined();
                 expect(wrapper.find(DropdownSearch).props().setFocusOnDropdownButton).toBe(false);
-            });
-
-            it('should update the activeOption on "downArrow" for the first element if not defined', () => {
-                expect(dropdownSearch.props().activeOption).toBeUndefined();
-
-                dropdownSearch.props().onKeyDownDropdownButton(keyCode.downArrow);
-                wrapper.update();
-
-                expect(wrapper.find(DropdownSearch).props().activeOption).toEqual(defaultOptions[0]);
             });
 
             it('should update the activeOption on "downArrow" for the first element if not defined', () => {

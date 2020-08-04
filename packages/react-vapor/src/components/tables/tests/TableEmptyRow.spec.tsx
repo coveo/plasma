@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {ITableEmptyRowProps, TableEmptyRow} from '../TableEmptyRow';
 
 describe('Tables', () => {
@@ -9,12 +9,10 @@ describe('Tables', () => {
         nbColumns: 2,
     };
 
-    describe('<TableEmptyRow />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<TableEmptyRow {...tableEmptyRowBasicProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<TableEmptyRow {...tableEmptyRowBasicProps} />);
+        }).not.toThrow();
     });
 
     describe('<TableEmptyRow />', () => {

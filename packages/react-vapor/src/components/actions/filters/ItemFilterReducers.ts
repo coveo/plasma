@@ -49,9 +49,7 @@ export const itemFiltersReducer = (
         case ItemFilterActions.filter:
             return state.map((itemFilter: IItemFilterState) => itemFilterReducer(itemFilter, action));
         case ItemFilterActions.remove:
-            return _.reject(state, (itemFilter: IItemFilterState) => {
-                return action.payload.id === itemFilter.id;
-            });
+            return _.reject(state, (itemFilter: IItemFilterState) => action.payload.id === itemFilter.id);
         default:
             return state;
     }

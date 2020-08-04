@@ -69,6 +69,7 @@ describe('RadioSelectConnected', () => {
             mountComponentWithProps(fullRadioSelectProps);
 
             const radioSelect = _.findWhere(store.getState().radioSelects, {id: fullRadioSelectProps.id});
+
             expect(radioSelect).toBeDefined();
             expect(_.values(radioSelect)).toEqual(_.values(fullRadioSelectProps));
         });
@@ -77,9 +78,11 @@ describe('RadioSelectConnected', () => {
     describe('onUnmount', () => {
         it('should remove the radioSelect from the store', () => {
             const radioSelect = mountComponentWithProps(fullRadioSelectProps);
+
             expect(_.findWhere(store.getState().radioSelects, {id: fullRadioSelectProps.id})).toBeDefined();
 
             radioSelect.unmount();
+
             expect(_.findWhere(store.getState().radioSelects, {id: fullRadioSelectProps.id})).toBeUndefined();
         });
     });
@@ -88,11 +91,13 @@ describe('RadioSelectConnected', () => {
         it('should change the value in the store to the new value', () => {
             const radioSelect = mountComponentWithProps(fullRadioSelectProps);
             const oldRadioSelectState = _.findWhere(store.getState().radioSelects, {id: fullRadioSelectProps.id});
+
             expect(oldRadioSelectState.value).toBe(fullRadioSelectProps.valueOnMount);
 
             radioSelect.find(RadioSelect).prop('onChange')('new value', radioSelectProps.id);
 
             const newRadioSelectState = _.findWhere(store.getState().radioSelects, {id: fullRadioSelectProps.id});
+
             expect(newRadioSelectState.value).toBe('new value');
         });
     });

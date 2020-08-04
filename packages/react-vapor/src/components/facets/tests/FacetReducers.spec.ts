@@ -322,6 +322,7 @@ describe('Facets', () => {
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(
                 selectedRows.length + 1
             );
+
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected[0].name).toBe(newRow.name);
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
                 selectedRows.length
@@ -335,9 +336,11 @@ describe('Facets', () => {
                 },
             };
             facetsState = facetsReducer(facetsState, action);
+
             expect(facetsState.filter((f) => f.facet === action.payload.facet)[0].selected.length).toBe(
                 selectedRows.length
             );
+
             expect(facetsState.filter((f) => f.facet !== action.payload.facet)[0].selected.length).toBe(
                 selectedRows.length
             );

@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import React from 'react';
-import {DropPodPosition} from '../../drop/DomPositionCalculator';
 
+import {DropPodPosition} from '../../drop/DomPositionCalculator';
 import {DropPod} from '../../drop/DropPod';
 import {ChartTooltip} from '../ChartTooltip';
 import {ChartTooltipContent} from '../ChartTooltipContent';
@@ -23,11 +23,13 @@ describe('<ChartTooltip />', () => {
 
     it('should render two rectangles per data', () => {
         const component = shallow(<ChartTooltip />);
+
         expect(component.find('rect').length).toBe(ChartUtils.getXValues(XYChartContextMock.series).length * 2);
     });
 
     it('should render a DropPod', () => {
         const component = shallow(<ChartTooltip />);
+
         expect(component.find(DropPod).exists()).toBe(true);
     });
 
@@ -39,10 +41,11 @@ describe('<ChartTooltip />', () => {
                 orientation: '',
             }) as React.ReactElement
         );
+
         expect(content.find(ChartTooltipContent).exists()).toBe(true);
     });
 
-    it('should render a line when the user hover a serie point', () => {
+    it('should render a line on the right when the user hover a serie point', () => {
         const getAttributeSpy = jasmine.createSpy('getAttribute').and.returnValues(DropPodPosition.right, '10', '0');
         const component = shallow(<ChartTooltip />);
         const rect = component.find('rect').first();
@@ -56,7 +59,7 @@ describe('<ChartTooltip />', () => {
         expect(component.find(DropPod).exists()).toBe(true);
     });
 
-    it('should render a line when the user hover a serie point', () => {
+    it('should render a line on the left when the user hover a serie point', () => {
         const getAttributeSpy = jasmine.createSpy('getAttribute').and.returnValues(DropPodPosition.left, '10', '0');
         const component = shallow(<ChartTooltip />);
         const rect = component.find('rect').first();

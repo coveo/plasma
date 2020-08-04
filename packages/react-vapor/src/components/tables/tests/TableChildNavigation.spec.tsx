@@ -23,14 +23,13 @@ describe('<TableChildNavigation />', () => {
     });
 
     describe('render', () => {
-        const mountComponentWithProps = (props: ITableProps) => {
-            return mount(
+        const mountComponentWithProps = (props: ITableProps) =>
+            mount(
                 <Provider store={store}>
                     <TableChildNavigation {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
-        };
 
         it('should render without error if basic props are passed', () => {
             expect(() => {

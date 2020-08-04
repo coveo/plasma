@@ -19,12 +19,10 @@ import {
 import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay';
 
 describe('Calendar', () => {
-    describe('<Calendar />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<Calendar />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Calendar />);
+        }).not.toThrow();
     });
 
     describe('<Calendar />', () => {
@@ -314,6 +312,7 @@ describe('Calendar', () => {
         describe('fillInDayInfos', () => {
             const now: Date = new Date();
             const DAY: IDay = {
+                // eslint-disable-next-line id-blacklist
                 number: 2,
                 isCurrentMonth: true,
                 isToday: false,
@@ -505,6 +504,7 @@ describe('Calendar', () => {
 
             it('should add the custom class to the wrapper set by the prop wrapperClassNames', () => {
                 const wrapper = shallow(<Calendar wrapperClassNames="new-class" />, {});
+
                 expect(wrapper.find('.new-class').length).toBe(1);
             });
 

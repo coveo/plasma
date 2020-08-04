@@ -14,20 +14,17 @@ export interface ITableWithSortState {
     isAsc: boolean;
 }
 
-const addTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderAddPayload>) => {
-    return [
-        ...state,
-        {
-            id: action.payload.id,
-            tableId: action.payload.tableId,
-            isAsc: action.payload.isDefault === true ? true : undefined,
-        },
-    ];
-};
+const addTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderAddPayload>) => [
+    ...state,
+    {
+        id: action.payload.id,
+        tableId: action.payload.tableId,
+        isAsc: action.payload.isDefault === true ? true : undefined,
+    },
+];
 
-const removeTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderBasePayload>) => {
-    return _.reject(state, (header: ITableWithSortState) => header.id === action.payload.id);
-};
+const removeTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderBasePayload>) =>
+    _.reject(state, (header: ITableWithSortState) => header.id === action.payload.id);
 
 const sortTableHeaderReducer = (state: ITableWithSortState[], action: IReduxAction<ITableHeaderSortPayload>) => {
     const current = _.findWhere(state, {id: action.payload.id});

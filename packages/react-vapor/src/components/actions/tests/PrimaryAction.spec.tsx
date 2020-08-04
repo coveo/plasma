@@ -1,30 +1,32 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {IActionOptions} from '../Action';
 import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction';
 
 describe('Actions', () => {
-    const actions: IActionOptions[] = [
-        {
-            name: 'action',
-            link: 'http://google.com',
-            target: '_blank',
-            enabled: true,
-        },
-        {
-            name: 'action2',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: true,
-        },
-    ];
+    let actions: IActionOptions[];
 
-    describe('<PrimaryAction />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<PrimaryAction action={actions[0]} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        actions = [
+            {
+                name: 'action',
+                link: 'http://google.com',
+                target: '_blank',
+                enabled: true,
+            },
+            {
+                name: 'action2',
+                trigger: jasmine.createSpy('triggerMethod'),
+                enabled: true,
+            },
+        ];
+    });
+
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<PrimaryAction action={actions[0]} />);
+        }).not.toThrow();
     });
 
     describe('<PrimaryAction />', () => {

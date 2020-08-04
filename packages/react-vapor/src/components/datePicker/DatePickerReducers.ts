@@ -79,19 +79,17 @@ const changeLowerLimit = (state: IDatePickerState, action: IReduxAction<IReduxAc
           });
 };
 
-const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    return state.id !== action.payload.id
+const changeUpperLimit = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState =>
+    state.id !== action.payload.id
         ? state
         : _.extend({}, state, {
               upperLimit: action.payload.date,
               inputUpperLimit: action.payload.date,
               selected: '',
           });
-};
 
-const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    return state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
-};
+const selectDate = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState =>
+    state.id !== action.payload.id ? state : _.extend({}, state, {selected: action.payload.limit});
 
 const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
     const lowerLimit: Date =
@@ -114,18 +112,17 @@ const applyDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsP
           });
 };
 
-const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    return state.id.indexOf(action.payload.id) !== 0
+const resetDates = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState =>
+    state.id.indexOf(action.payload.id) !== 0
         ? state
         : _.extend({}, state, {
               selected: '',
               lowerLimit: state.appliedLowerLimit,
               upperLimit: state.appliedUpperLimit,
           });
-};
 
-const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState => {
-    return state.id.indexOf(action.payload.id) !== 0 || !state.isClearable
+const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActionsPayload>): IDatePickerState =>
+    state.id.indexOf(action.payload.id) !== 0 || !state.isClearable
         ? state
         : _.extend({}, state, {
               selected: DateLimits.lower,
@@ -134,7 +131,6 @@ const clearSelection = (state: IDatePickerState, action: IReduxAction<IReduxActi
               inputLowerLimit: null,
               inputUpperLimit: null,
           });
-};
 
 export const datePickerReducer = (
     state: IDatePickerState = datePickerInitialState,
@@ -168,9 +164,7 @@ export const datePickersReducer = (
         case DatePickerActions.add:
             return [...state, datePickerReducer(undefined, action)];
         case DatePickerActions.remove:
-            return _.reject(state, (datePicker: IDatePickerState) => {
-                return action.payload.id === datePicker.id;
-            });
+            return _.reject(state, (datePicker: IDatePickerState) => action.payload.id === datePicker.id);
         case DatePickerActions.changeLowerLimit:
         case DatePickerActions.changeUpperLimit:
         case DatePickerActions.select:

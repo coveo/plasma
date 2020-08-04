@@ -1,36 +1,35 @@
-// tslint:disable-next-line:no-unused-variable
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Toast} from '../Toast';
 import {IToastContainerProps, ToastContainer} from '../ToastContainer';
 
 describe('Toasts', () => {
-    let component: ReactWrapper<IToastContainerProps, {}>;
+    let component: ReactWrapper<IToastContainerProps>;
     let basicProps: IToastContainerProps;
     let instance: ToastContainer;
 
-    describe('<ToastContainer />', () => {
-        it('should render without errors', () => {
-            expect(() => shallow(<ToastContainer />)).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => shallow(<ToastContainer />)).not.toThrow();
+    });
 
-        it('should render without errors with children', () => {
-            expect(() =>
-                shallow(
-                    <ToastContainer>
-                        <a href="#">Hello</a>
-                    </ToastContainer>
-                )
-            ).not.toThrow();
-            expect(() =>
-                shallow(
-                    <ToastContainer>
-                        <Toast title="test" />
-                    </ToastContainer>
-                )
-            ).not.toThrow();
-        });
+    it('should render without errors with children', () => {
+        expect(() =>
+            shallow(
+                <ToastContainer>
+                    <a href="#">Hello</a>
+                </ToastContainer>
+            )
+        ).not.toThrow();
+
+        expect(() =>
+            shallow(
+                <ToastContainer>
+                    <Toast title="test" />
+                </ToastContainer>
+            )
+        ).not.toThrow();
     });
 
     describe('<ToastContainer />', () => {
@@ -52,6 +51,7 @@ describe('Toasts', () => {
 
             component.unmount();
             component.setProps(newToastAttributes).mount();
+
             expect(renderSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -64,6 +64,7 @@ describe('Toasts', () => {
             component.setProps(newToastAttributes).mount();
 
             component.unmount();
+
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
@@ -85,12 +86,14 @@ describe('Toasts', () => {
             component.setProps(newToastAttributes).mount();
 
             component.find(Toast).props().onClose();
+
             expect(onCloseToast).toHaveBeenCalledTimes(0);
 
             newToastAttributes = _.extend({}, newToastAttributes, {onCloseToast});
             component.setProps(newToastAttributes).mount();
 
             component.find(Toast).props().onClose();
+
             expect(onCloseToast).toHaveBeenCalledTimes(1);
             expect(onCloseToast).toHaveBeenCalledWith(newToastAttributes.toasts[0].id);
         });
@@ -101,6 +104,7 @@ describe('Toasts', () => {
             });
 
             component.setProps(newToastAttributes).mount();
+
             expect(() => component.find(Toast).props().onClose()).not.toThrow();
         });
 
@@ -111,6 +115,7 @@ describe('Toasts', () => {
             });
             component.setProps(newToastAttributes).mount();
             component.find(Toast).props().onClose();
+
             expect(onCloseSpy).toHaveBeenCalledTimes(1);
         });
     });

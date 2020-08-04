@@ -25,6 +25,7 @@ describe('<XYAxis />', () => {
         const component = shallow(<XYAxis />);
 
         const provider = component.find(XYChartContext.Provider);
+
         expect(provider.exists()).toBe(true);
     });
 
@@ -32,6 +33,7 @@ describe('<XYAxis />', () => {
         const component = shallow(<XYAxis />);
 
         const context = component.find(XYChartContext.Provider).prop('value');
+
         expect(context.width).toBeLessThan(XYChartContextMock.width);
         expect(context.height).toBeLessThan(XYChartContextMock.height);
     });

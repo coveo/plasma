@@ -26,9 +26,8 @@ export interface IMultiStepBarProps {
     barAnimation?: '' | 'flare';
 }
 
-const getStepContent = (step: IStep): JSX.Element => {
-    return step.text ? <div className="multi-step-bar-text">{step.text}</div> : null;
-};
+const getStepContent = (step: IStep): JSX.Element =>
+    step.text ? <div className="multi-step-bar-text">{step.text}</div> : null;
 
 export const MultiStepBar = (props: IMultiStepBarProps) => {
     const {className, small, inProgressAnimation, barAnimation, separator, steps} = props;

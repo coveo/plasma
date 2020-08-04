@@ -40,6 +40,7 @@ describe('Table HOC', () => {
             const tableHeadersState: HOCTableRowState[] = TableRowReducers(oldState, action);
 
             const newState = _.map(oldState, (item: any) => ({...item, selected: false}));
+
             expect(tableHeadersState).toEqual(newState);
         });
 
@@ -264,6 +265,7 @@ describe('Table HOC', () => {
 
             const action = TableHOCRowActions.select(oldState[0].id);
             const tableHeadersState: HOCTableRowState[] = TableRowReducers(oldState, action);
+
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(oldState[1].selected);
         });
 
@@ -296,6 +298,7 @@ describe('Table HOC', () => {
             ];
             const action = changePage(oldState[0].tableId, 2);
             const tableHeadersState: HOCTableRowState[] = TableRowReducers(oldState, action);
+
             expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).selected).toBe(false);
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(oldState[1].selected);
         });
@@ -315,6 +318,7 @@ describe('Table HOC', () => {
             ];
             const action = changePerPage(oldState[0].tableId, 2);
             const tableHeadersState: HOCTableRowState[] = TableRowReducers(oldState, action);
+
             expect(_.findWhere(tableHeadersState, {id: oldState[0].id}).selected).toBe(false);
             expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).selected).toBe(oldState[1].selected);
         });

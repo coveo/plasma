@@ -15,6 +15,7 @@ describe('<BarSeries />', () => {
 
     it('should render a <g>', () => {
         const component = shallow(<BarSeries />);
+
         expect(component.find('g').exists()).toBe(true);
     });
 

@@ -33,6 +33,7 @@ export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCo
     id?: string;
     /**
      * Optionnal, use it to specify the isOpen state of the Popover.
+     *
      * @default: false
      */
     isOpen?: boolean;
@@ -46,6 +47,7 @@ export interface IPopoverProps extends IPopoverDispatchProps, ITetherComponentCo
 
     /**
      * Optionnal, use it to prevent default when the Popover isOpen and the user clicks outside.
+     *
      * @default: false
      */
     isModal?: boolean;

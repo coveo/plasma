@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
+
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {CalendarConnected} from '../../calendar/CalendarConnected';
 import {OptionPickerConnected} from '../../optionPicker/OptionPickerConnected';
@@ -18,15 +18,13 @@ describe('Date picker', () => {
         ],
     };
 
-    describe('<DatePickerBox />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<DatePickerBox {...DATE_PICKER_BOX_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
-    describe('<DatePicker />', () => {
+    describe('<DatePickerBox />', () => {
         let datePickerBox: ReactWrapper<IDatePickerBoxProps, any>;
 
         beforeEach(() => {

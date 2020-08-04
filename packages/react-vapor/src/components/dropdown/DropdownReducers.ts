@@ -55,9 +55,7 @@ export const dropdownsReducer = (
         case DropdownActions.add:
             return [...state, dropdownReducer(undefined, action)];
         case DropdownActions.remove:
-            return _.reject(state, (dropdown: IDropdownState) => {
-                return action.payload.id === dropdown.id;
-            });
+            return _.reject(state, (dropdown: IDropdownState) => action.payload.id === dropdown.id);
         default:
             return state;
     }

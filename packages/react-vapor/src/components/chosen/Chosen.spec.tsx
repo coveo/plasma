@@ -5,10 +5,12 @@ import {ChosenSelect, IChosenSelectProps} from './ChosenSelect';
 
 describe('<ChosenSelect>', () => {
     let chosenSelectWrapper: ReactWrapper<IChosenSelectProps, any>;
-
     let chosenSelectProps: IChosenSelectProps;
+    let onChosenChangeSpy: jasmine.Spy;
 
-    const onChosenChangeSpy: jasmine.Spy = jasmine.createSpy('OnChosenChange');
+    beforeAll(() => {
+        onChosenChangeSpy = jasmine.createSpy('OnChosenChange');
+    });
 
     beforeEach(() => {
         chosenSelectProps = {

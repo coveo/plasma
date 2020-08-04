@@ -2,8 +2,8 @@ import {mount, ReactWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
-import {any} from 'underscore';
 import * as _ from 'underscore';
+
 import {clearState} from '../../../utils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {InputConnected} from '../../input';
@@ -14,7 +14,7 @@ describe('Limit', () => {
     let store: ReactVaporMockStore;
 
     const anyCurrentLimit = 100;
-    const bufferFunction = () => any;
+    const bufferFunction = () => _.any;
     const anyId = 'limit1';
     const anyTitle = 'test limit';
     const anyUsage = 33;
@@ -38,14 +38,13 @@ describe('Limit', () => {
     const limitIsTheGoalProps: LimitProps = {...defaultProps, usage: anyUsage, isLimitTheGoalToReach: true};
     const limitPropsWithHistory: LimitProps = {...defaultProps, isHistoryIncluded: true};
 
-    const mountLimitWithStore = (props: LimitProps) => {
-        return mount(
+    const mountLimitWithStore = (props: LimitProps) =>
+        mount(
             <Provider store={store}>
                 <Limit {...props} />
             </Provider>,
             {attachTo: document.getElementById('App')}
         );
-    };
 
     beforeEach(() => {
         store = getStoreMock();
@@ -63,6 +62,7 @@ describe('Limit', () => {
 
     it('should unMount without errors when connected', () => {
         const wrapper = shallowWithStore(<Limit {...defaultProps} />, store).dive();
+
         expect(() => {
             wrapper.unmount();
         }).not.toThrow();
@@ -167,6 +167,7 @@ describe('Limit', () => {
             expect(limit.exists('.limit-history-button')).toBe(false);
         });
     });
+
     describe('once mounted and connected', () => {
         afterEach(() => {
             limit.detach();

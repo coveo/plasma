@@ -14,6 +14,7 @@ describe('<Input />', () => {
 
     it('should unMount without errors', () => {
         const wrapper = shallow(<Input />);
+
         expect(() => {
             wrapper.unmount();
         }).not.toThrow();
@@ -40,6 +41,7 @@ describe('<Input />', () => {
             shallowInput({
                 id,
             });
+
             expect(input.find('input').first().props().id).toBe(id);
         });
 
@@ -48,6 +50,7 @@ describe('<Input />', () => {
             shallowInput({
                 name,
             });
+
             expect(input.find('input').first().props().name).toBe(name);
         });
 
@@ -56,6 +59,7 @@ describe('<Input />', () => {
             shallowInput({
                 name,
             });
+
             expect(input.find('input').first().props().name).toBe(name);
         });
 
@@ -63,6 +67,7 @@ describe('<Input />', () => {
             shallowInput({
                 disabled: true,
             });
+
             expect(input.find('input').first().props().disabled).toBe(true);
         });
 
@@ -70,6 +75,7 @@ describe('<Input />', () => {
             shallowInput({
                 readOnly: true,
             });
+
             expect(input.find('input').first().props().readOnly).toBe(true);
         });
 
@@ -78,6 +84,7 @@ describe('<Input />', () => {
             shallowInput({
                 type,
             });
+
             expect(input.find('input').first().props().type).toBe(type);
         });
 
@@ -138,6 +145,7 @@ describe('<Input />', () => {
 
         it('should render the label even if the labelTitle is undefined when validate prop exists', () => {
             shallowInput({validate: () => false});
+
             expect(input.find(Label).length).toBe(1);
         });
 
@@ -148,6 +156,7 @@ describe('<Input />', () => {
                 labelProps,
                 labelTitle: 'potatos',
             });
+
             expect(input.find(Label).props()).toEqual(jasmine.objectContaining(labelProps));
         });
 

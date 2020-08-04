@@ -176,6 +176,7 @@ describe('Autocomplete', () => {
                     oldState,
                     setAutocompleteValue(id, expectedValue, false)
                 );
+
                 expect(newerState.length).toBe(oldState.length);
                 expect(newerState[0].id).toBe(id);
                 expect(newerState[0].open).toBe(false);
@@ -274,6 +275,7 @@ describe('Autocomplete', () => {
 
                 const oldState: IAutocompleteState[] = state;
                 let newState: IAutocompleteState[] = [];
+
                 expect(
                     () => (newState = autocompletesReducer(oldState, selectListBoxOption(id, false, 'value')))
                 ).not.toThrow();

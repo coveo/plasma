@@ -2,6 +2,7 @@ import {Moment} from 'moment';
 import * as React from 'react';
 
 export interface IDay {
+    // eslint-disable-next-line id-blacklist
     number: number;
     isCurrentMonth: boolean;
     isToday: boolean;
@@ -19,7 +20,7 @@ export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
     onSelectUnselectable: () => void;
 }
 
-export class CalendarDay extends React.Component<ICalendarDayProps, {}> {
+export class CalendarDay extends React.Component<ICalendarDayProps> {
     static DEFAULT_DATE_CLASS: string = 'calendar-day';
 
     private handleClick() {

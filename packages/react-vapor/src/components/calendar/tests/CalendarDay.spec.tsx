@@ -1,14 +1,15 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import moment from 'moment';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {DateUtils} from '../../../utils/DateUtils';
 import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay';
 
 describe('Calendar day', () => {
     const newMonth = DateUtils.currentMonth < 11 ? DateUtils.currentMonth + 1 : 0;
     const DAY: IDay = {
+        // eslint-disable-next-line id-blacklist
         number: 2,
         isCurrentMonth: true,
         isToday: false,
@@ -16,18 +17,20 @@ describe('Calendar day', () => {
         isSelectable: true,
     };
 
-    const BASIC_CALENDAR_DAY_PROPS: ICalendarDayProps = {
-        day: DAY,
-        onClick: jasmine.createSpy('onClick'),
-        onSelectUnselectable: jasmine.createSpy('onSelectUnselectable'),
-    };
+    let BASIC_CALENDAR_DAY_PROPS: ICalendarDayProps;
 
-    describe('<CalendarDay />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        BASIC_CALENDAR_DAY_PROPS = {
+            day: DAY,
+            onClick: jasmine.createSpy('onClick'),
+            onSelectUnselectable: jasmine.createSpy('onSelectUnselectable'),
+        };
+    });
+
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<CalendarDay />', () => {
@@ -57,7 +60,7 @@ describe('Calendar day', () => {
         it('should get what to do onClick as a prop', () => {
             const onClickProp = calendarDay.props().onClick;
 
-            expect(onClickProp).toBeDefined;
+            expect(onClickProp).toBeDefined();
         });
 
         it('should display the number of the day', () => {

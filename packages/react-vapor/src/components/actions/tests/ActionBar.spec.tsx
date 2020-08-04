@@ -20,6 +20,7 @@ describe('ActionsBar', () => {
     it('should call onRender prop if set when mounting', () => {
         const onRenderSpy = jasmine.createSpy('onRender');
         shallow(<ActionBar onRender={onRenderSpy} />);
+
         expect(onRenderSpy).toHaveBeenCalled();
     });
 
@@ -28,6 +29,7 @@ describe('ActionsBar', () => {
 
         const actionBar = shallow(<ActionBar onDestroy={onDestroySpy} />);
         actionBar.unmount();
+
         expect(onDestroySpy).toHaveBeenCalled();
     });
 
@@ -51,6 +53,7 @@ describe('ActionsBar', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} />)
             .childAt(1)
             .dive();
+
         expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(true);
     });
 
@@ -58,6 +61,7 @@ describe('ActionsBar', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: false, primary: true}]} />)
             .childAt(1)
             .dive();
+
         expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(false);
     });
 
@@ -65,6 +69,7 @@ describe('ActionsBar', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} disabled />)
             .childAt(1)
             .dive();
+
         expect(wrapper.find(PrimaryAction).props().action.enabled).toBe(false);
     });
 
@@ -72,6 +77,7 @@ describe('ActionsBar', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: true, primary: true}]} withReduxState disabled />)
             .childAt(1)
             .dive();
+
         expect(wrapper.find(PrimaryActionConnected).props().action.enabled).toBe(false);
     });
 
@@ -79,6 +85,7 @@ describe('ActionsBar', () => {
         const wrapper = shallow(<ActionBar actions={[{enabled: false, primary: true}]} withReduxState />)
             .childAt(1)
             .dive();
+
         expect(wrapper.find(PrimaryActionConnected).props().action.enabled).toBe(false);
     });
 

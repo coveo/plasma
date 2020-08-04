@@ -1,8 +1,8 @@
-// tslint:disable-next-line:no-unused-variable
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Toast, ToastType} from '../Toast';
@@ -35,21 +35,25 @@ describe('Toasts', () => {
 
         it('should get the toasts as a prop', () => {
             const toastsProp = component.props().toasts;
+
             expect(toastsProp).toBeDefined();
         });
 
         it('should get onRender as a prop', () => {
             const onRenderProp = component.props().onRender;
+
             expect(onRenderProp).toBeDefined();
         });
 
         it('should get onDestroy as a prop', () => {
             const onDestroyProp = component.props().onDestroy;
+
             expect(onDestroyProp).toBeDefined();
         });
 
         it('should get onCloseToast as a prop', () => {
             const onCloseToastProp = component.props().onCloseToast;
+
             expect(onCloseToastProp).toBeDefined();
         });
 

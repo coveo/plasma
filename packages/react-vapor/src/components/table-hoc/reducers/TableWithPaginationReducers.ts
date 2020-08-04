@@ -14,22 +14,18 @@ export interface ITableWithPaginationState {
 const addTableWithPaginationReducer = (
     state: ITableWithPaginationState[],
     action: IReduxAction<ITableWithPaginationBasePayload>
-) => {
-    return [
-        ...state,
-        {
-            id: action.payload.id,
-            count: 0,
-        },
-    ];
-};
+) => [
+    ...state,
+    {
+        id: action.payload.id,
+        count: 0,
+    },
+];
 
 const removeTableWithPaginationReducer = (
     state: ITableWithPaginationState[],
     action: IReduxAction<ITableWithPaginationBasePayload>
-) => {
-    return _.reject(state, (header: ITableWithPaginationState) => header.id === action.payload.id);
-};
+) => _.reject(state, (header: ITableWithPaginationState) => header.id === action.payload.id);
 
 const setTableWithPaginationCountReducer = (
     state: ITableWithPaginationState[],
@@ -37,9 +33,9 @@ const setTableWithPaginationCountReducer = (
 ) => {
     const current = _.findWhere(state, {id: action.payload.id});
     if (current) {
-        return _.map(state, (pagination: ITableWithPaginationState) => {
-            return pagination.id === current.id ? {...pagination, count: action.payload.count} : pagination;
-        });
+        return _.map(state, (pagination: ITableWithPaginationState) =>
+            pagination.id === current.id ? {...pagination, count: action.payload.count} : pagination
+        );
     }
     return state;
 };

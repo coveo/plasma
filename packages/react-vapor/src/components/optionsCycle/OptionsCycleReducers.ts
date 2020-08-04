@@ -45,9 +45,7 @@ export const optionsCyclesReducer = (
         case OptionsCycleActions.add:
             return [...state, optionsCycleReducer(undefined, action)];
         case OptionsCycleActions.remove:
-            return _.reject(state, (optionsCycle: IOptionsCycleState) => {
-                return action.payload.id === optionsCycle.id;
-            });
+            return _.reject(state, (optionsCycle: IOptionsCycleState) => action.payload.id === optionsCycle.id);
         default:
             return state;
     }

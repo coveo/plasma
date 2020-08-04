@@ -1,26 +1,23 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
+
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableHeaderProps, TableHeader} from '../TableHeader';
-import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
-import {ITableHeaderCellOwnProps} from '../TableHeaderCell';
+import {ITableHeaderCellOwnProps, ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
 import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
 
 describe('Tables', () => {
     let columns: ITableHeaderCellProps[];
     let headerClass: string;
 
-    describe('<TableHeader />', () => {
-        it('should render without errors', () => {
-            columns = [];
+    it('should render without errors', () => {
+        columns = [];
 
-            expect(() => {
-                shallow(<TableHeader columns={columns} />);
-            }).not.toThrow();
-        });
+        expect(() => {
+            shallow(<TableHeader columns={columns} />);
+        }).not.toThrow();
     });
 
     describe('<TableHeader />', () => {
@@ -101,6 +98,7 @@ describe('Tables', () => {
                 expect(tableHeader.find(TableHeaderCellConnected).first().text()).toBe(
                     currentColumns.cellWithAttributeToSort.title as string
                 );
+
                 expect(tableHeader.find(TableHeaderCell).last().text()).toBe(
                     currentColumns.cellWithoutAttributeToSort.title as string
                 );
@@ -119,6 +117,7 @@ describe('Tables', () => {
                 expect(tableHeader.find(TableHeaderCell).first().text()).toBe(
                     currentColumns.cellWithAttributeToSort.title as string
                 );
+
                 expect(tableHeader.find(TableHeaderCell).last().text()).toBe(
                     currentColumns.cellWithoutAttributeToSort.title as string
                 );

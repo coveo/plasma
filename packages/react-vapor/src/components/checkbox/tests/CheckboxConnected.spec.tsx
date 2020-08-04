@@ -1,8 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -73,6 +73,7 @@ describe('Checkbox', () => {
             );
 
             store.dispatch(toggleCheckbox(id));
+
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
                 true
             );
@@ -85,6 +86,7 @@ describe('Checkbox', () => {
             );
 
             checkbox.props().onClick(null);
+
             expect(store.getState().checkboxes.filter((currentCheckbox) => currentCheckbox.id === id)[0].checked).toBe(
                 true
             );
@@ -92,6 +94,7 @@ describe('Checkbox', () => {
 
         it('should remove the checkbox in the store on destroy', () => {
             wrapper.unmount();
+
             expect(store.getState().checkboxes.filter((checkboxs) => checkboxs.id === id).length).toBe(0);
         });
     });

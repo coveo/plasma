@@ -142,6 +142,7 @@ describe('Actions', () => {
                 expect(
                     actionBarsState.filter((actionBar) => actionBar.id === action.payload.id)[0].actions
                 ).toBeDefined();
+
                 expect(
                     actionBarsState.filter((actionBar) => actionBar.id !== action.payload.id)[0].actions
                 ).toBeUndefined();

@@ -1,8 +1,8 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IOptionsCycleProps, OptionsCycle} from '../OptionsCycle';
 
 describe('Options cycle', () => {
@@ -13,12 +13,10 @@ describe('Options cycle', () => {
         'option 4',
     ];
 
-    describe('<OptionsCycle />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<OptionsCycle options={OPTIONS} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<OptionsCycle options={OPTIONS} />);
+        }).not.toThrow();
     });
 
     describe('<OptionsCycle />', () => {
@@ -31,6 +29,7 @@ describe('Options cycle', () => {
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jasmine.createSpy('onRender');
             mountComponent({onRender: renderSpy});
+
             expect(renderSpy.calls.count()).toBe(1);
         });
 
@@ -39,11 +38,13 @@ describe('Options cycle', () => {
             mountComponent({onDestroy: destroySpy});
 
             optionsCycleWrapper.unmount();
+
             expect(destroySpy.calls.count()).toBe(1);
         });
 
         it('should display the selected option', () => {
             mountComponent();
+
             expect(optionsCycleWrapper.find('div.option1').length).toBe(1, 'option 1');
 
             optionsCycleWrapper.setProps({options: OPTIONS, currentOption: 1});
@@ -82,6 +83,7 @@ describe('Options cycle', () => {
             mountComponent({onChange: spyOnChange});
 
             optionsCycleWrapper.find('.previous-option').simulate('click');
+
             expect(spyOnChange.calls.count()).toBe(1);
         });
 
@@ -91,6 +93,7 @@ describe('Options cycle', () => {
             mountComponent({onChange: spyOnChange});
 
             optionsCycleWrapper.find('.next-option').simulate('click');
+
             expect(spyOnChange.calls.count()).toBe(1);
         });
 
@@ -100,6 +103,7 @@ describe('Options cycle', () => {
             mountComponent({onChangeOption: spyOnChangeOption, onChange: _.noop});
 
             optionsCycleWrapper.find('.previous-option').simulate('click');
+
             expect(spyOnChangeOption.calls.count()).toBe(1);
         });
 
@@ -109,6 +113,7 @@ describe('Options cycle', () => {
             mountComponent({onChange: spyOnChangeOption});
 
             optionsCycleWrapper.find('.next-option').simulate('click');
+
             expect(spyOnChangeOption.calls.count()).toBe(1);
         });
 

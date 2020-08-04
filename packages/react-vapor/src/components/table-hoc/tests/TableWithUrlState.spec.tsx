@@ -78,6 +78,7 @@ describe('Table HOC', () => {
 
             expect(onUpdateUrlSpy).not.toHaveBeenCalled();
             table.prop('onUpdate')();
+
             expect(onUpdateUrlSpy).toHaveBeenCalledTimes(1);
             expect(onUpdateUrlSpy).toHaveBeenCalledWith('');
         });
@@ -91,6 +92,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain('page=2');
             });
 
@@ -100,6 +102,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain('pageSize=5');
             });
 
@@ -127,6 +130,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain('sortBy=bacon');
             });
 
@@ -136,6 +140,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain('order=asc');
             });
 
@@ -157,6 +162,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain(`q=${encodeURIComponent(filterText)}`);
             });
 
@@ -179,6 +185,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain(`from=${encodeURIComponent(lowerLimit.toISOString())}`);
             });
 
@@ -188,6 +195,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain(`to=${encodeURIComponent(upperLimit.toISOString())}`);
             });
 
@@ -198,6 +206,7 @@ describe('Table HOC', () => {
                 expect(store.getActions()).toContain(
                     changeDatePickerLowerLimit(TableHOCUtils.getDatePickerId('🏦'), lowerLimit)
                 );
+
                 expect(store.getActions()).toContain(applyDatePicker('🏦'));
             });
 
@@ -208,6 +217,7 @@ describe('Table HOC', () => {
                 expect(store.getActions()).toContain(
                     changeDatePickerUpperLimit(TableHOCUtils.getDatePickerId('🏥'), upperLimit)
                 );
+
                 expect(store.getActions()).toContain(applyDatePicker('🏥'));
             });
         });
@@ -234,6 +244,7 @@ describe('Table HOC', () => {
                 });
 
                 table = shallowWithStore(<TableWithUrlState />, store);
+
                 expect(table.prop('query')).toContain(`size=${encodeURIComponent('12 inches')}`);
                 expect(table.prop('query')).toContain('topping=pepperoni');
             });
@@ -246,6 +257,7 @@ describe('Table HOC', () => {
                 expect(store.getActions()).toContain(
                     selectListBoxOption(TableHOCUtils.getPredicateId('🍕', 'size'), false, '12 inches')
                 );
+
                 expect(store.getActions()).toContain(
                     selectListBoxOption(TableHOCUtils.getPredicateId('🍕', 'topping'), false, 'pepperoni')
                 );

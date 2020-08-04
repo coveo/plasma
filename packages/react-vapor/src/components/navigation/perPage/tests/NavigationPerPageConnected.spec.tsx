@@ -104,6 +104,7 @@ describe('<NavigationPerPageConnected />', () => {
 
     it('should remove itself to the store when unmouting', () => {
         wrapper.unmount();
+
         expect(_.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id})).toBeUndefined();
     });
 
@@ -111,6 +112,7 @@ describe('<NavigationPerPageConnected />', () => {
         const perPageSelected = navigationPerPage.find('a').last();
 
         perPageSelected.simulate('click');
+
         expect(
             _.findWhere(store.getState().perPageComposite, {id: basicNavigationPerPageProps.id}).perPage.toString()
         ).toBe(perPageSelected.find('span').text());
@@ -156,9 +158,11 @@ describe('<NavigationPerPageConnected />', () => {
             store.dispatch(changePage(paginationId, 4));
 
             secondPerPage.find('a').simulate('click');
+
             expect(_.findWhere(store.getState().paginationComposite, {id: paginationId}).pageNb).toBe(expectedPage);
 
             firstPerPage.find('a').simulate('click');
+
             expect(_.findWhere(store.getState().paginationComposite, {id: paginationId}).pageNb).toBe(startingPage);
         }
     );

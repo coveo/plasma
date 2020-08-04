@@ -1,17 +1,15 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {Radio} from '../../radio/Radio';
 import {ChildForm} from '../ChildForm';
 import {IToggleFormProps, ToggleForm} from '../ToggleForm';
 
 describe('ToggleForm', () => {
-    describe('<ToggleForm />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<ToggleForm />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<ToggleForm />);
+        }).not.toThrow();
     });
 
     describe('<ToggleForm />', () => {
@@ -34,17 +32,21 @@ describe('ToggleForm', () => {
         it('should set classes when specified', () => {
             const innerClass = 'salut';
             const classes = [innerClass];
+
             expect(toggleForm.find('div').first().hasClass(innerClass)).toBe(false);
 
             toggleForm.setProps({classes}).mount().update();
+
             expect(toggleForm.find('div').first().hasClass(innerClass)).toBe(true);
         });
 
         it('should check inner radio control when checked property is true', () => {
             toggleForm.setProps({checked: false}).mount().update();
+
             expect(toggleForm.find(Radio).first().prop('checked')).toBe(false);
 
             toggleForm.setProps({checked: true}).mount().update();
+
             expect(toggleForm.find(Radio).first().prop('checked')).toBe(true);
         });
 
@@ -52,6 +54,7 @@ describe('ToggleForm', () => {
             const parentControlInnerInput = toggleForm.find('.radio-option').first();
 
             toggleForm.mount();
+
             expect(() => parentControlInnerInput.simulate('click')).not.toThrow();
         });
 
@@ -70,9 +73,11 @@ describe('ToggleForm', () => {
             expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(true);
 
             toggleForm.setProps({checked: false}).mount().update();
+
             expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(true);
 
             toggleForm.setProps({checked: true}).mount().update();
+
             expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(false);
         });
     });

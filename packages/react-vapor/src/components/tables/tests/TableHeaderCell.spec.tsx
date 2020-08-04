@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Svg} from '../../svg/Svg';
 import {TableSortingOrder} from '../TableConstants';
 import {ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
@@ -10,14 +10,12 @@ describe('Tables', () => {
     let title: string;
     let className: string;
 
-    describe('<TableHeaderCell />', () => {
-        it('should render without errors', () => {
-            title = 'Header 1';
+    it('should render without errors', () => {
+        title = 'Header 1';
 
-            expect(() => {
-                shallow(<TableHeaderCell title={title} />);
-            }).not.toThrow();
-        });
+        expect(() => {
+            shallow(<TableHeaderCell title={title} />);
+        }).not.toThrow();
     });
 
     describe('<TableHeaderCell />', () => {
@@ -138,6 +136,7 @@ describe('Tables', () => {
                 tableHeaderCell.setProps({sorted: TableSortingOrder.UNSORTED, attributeToSort: 'anyWouldDo'}).update();
 
                 throwIfSvgNotPresent();
+
                 expect(tableHeaderCell.find(`.${sortDefaultClass}`).length).toBe(1);
                 expect(tableHeaderCell.find(`.${sortAscendingClass}`).length).toBe(0);
                 expect(tableHeaderCell.find(`.${sortDescendingClass}`).length).toBe(0);
@@ -147,6 +146,7 @@ describe('Tables', () => {
                 tableHeaderCell.setProps({sorted: TableSortingOrder.ASCENDING, attributeToSort: 'anyWouldDo'}).update();
 
                 throwIfSvgNotPresent();
+
                 expect(tableHeaderCell.find(`.${sortDefaultClass}`).length).toBe(1);
                 expect(tableHeaderCell.find(`.${sortAscendingClass}`).length).toBe(1);
                 expect(tableHeaderCell.find(`.${sortDescendingClass}`).length).toBe(0);
@@ -158,6 +158,7 @@ describe('Tables', () => {
                     .update();
 
                 throwIfSvgNotPresent();
+
                 expect(tableHeaderCell.find(`.${sortDefaultClass}`).length).toBe(1);
                 expect(tableHeaderCell.find(`.${sortAscendingClass}`).length).toBe(0);
                 expect(tableHeaderCell.find(`.${sortDescendingClass}`).length).toBe(1);

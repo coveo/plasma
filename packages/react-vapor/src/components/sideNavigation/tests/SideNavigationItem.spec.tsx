@@ -21,6 +21,7 @@ describe('SideNavigationItem', () => {
 
     it('should have the .state-active class when "isActive" prop is set to true', () => {
         item = shallow(<SideNavigationItem isActive />);
+
         expect(item.hasClass('state-active')).toBe(true);
     });
 

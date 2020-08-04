@@ -1,6 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import {range} from 'underscore';
+
 import {JSXRenderable} from '../../utils/JSXUtils';
 import {ISplitLayoutProps, SplitLayout, SplitLayoutMods} from './SplitLayout';
 
@@ -20,6 +21,7 @@ describe('SplitLayout', () => {
     it('should render without error with basic props and multiple children on each side', () => {
         const leftChildren = range(2).map(() => basicProps.leftChildren) as JSXRenderable;
         const rightChildren = range(2).map(() => basicProps.rightChildren) as JSXRenderable;
+
         expect(() => shallow(<SplitLayout leftChildren={leftChildren} rightChildren={rightChildren} />)).not.toThrow();
     });
 
@@ -57,7 +59,7 @@ describe('SplitLayout', () => {
             expect(splitLayout.find('.column').last().find('.right').length).toBe(1);
         });
 
-        it('should render with a left child in first column and a right child in right column', () => {
+        it('should have no border if the "noBorder" mod is activated', () => {
             const splitLayout = shallow(<SplitLayout {...basicProps} mods={SplitLayoutMods.noBorder} />);
 
             expect(splitLayout.hasClass('no-border')).toBe(true);

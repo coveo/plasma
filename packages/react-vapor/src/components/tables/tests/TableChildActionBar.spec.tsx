@@ -29,14 +29,13 @@ describe('<TableChildActionBar />', () => {
     });
 
     describe('render', () => {
-        const mountComponentWithProps = (props: ITableProps) => {
-            return mount(
+        const mountComponentWithProps = (props: ITableProps) =>
+            mount(
                 <Provider store={store}>
                     <TableChildActionBar {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')}
             );
-        };
 
         describe('render without error', () => {
             it('should render without error if basic props are passed', () => {
@@ -121,6 +120,7 @@ describe('<TableChildActionBar />', () => {
 
             it('should render with an action bar and a filter inside it if there is an actionBar prop and a filter prop', () => {
                 const tableActionBar = mountComponentWithProps({...tablePropsMock, actionBar: true, filter: true});
+
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(FilterBoxConnected).length).toBe(1);
             });
@@ -131,6 +131,7 @@ describe('<TableChildActionBar />', () => {
                     actionBar: true,
                     datePicker: {datesSelectionBoxes: SELECTION_BOXES, attributeName: 'date'},
                 });
+
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(DatePickerDropdownConnected).length).toBe(1);
             });
@@ -141,6 +142,7 @@ describe('<TableChildActionBar />', () => {
                     actionBar: true,
                     predicates: [{attributeName: 'email', attributeNameFormatter: _.identity, props: {}}],
                 });
+
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).length).toBe(1);
             });
@@ -154,6 +156,7 @@ describe('<TableChildActionBar />', () => {
                         {attributeName: 'userName', attributeNameFormatter: _.identity, props: {}},
                     ],
                 });
+
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(DropdownSearchConnected).length).toBe(2);
             });
@@ -166,6 +169,7 @@ describe('<TableChildActionBar />', () => {
                         content: Loading,
                     },
                 });
+
                 expect(tableActionBar.find(ActionBarConnected).length).toBe(1);
                 expect(tableActionBar.find(ActionBarConnected).find(Loading).length).toBe(1);
             });

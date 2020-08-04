@@ -18,11 +18,13 @@ describe('<ChartTooltipContent />', () => {
 
     it('should render a div for the title', () => {
         const component = shallow(<ChartTooltipContent x={0} sort={true} />);
+
         expect(component.find('.tooltip-serie-title').exists()).toBe(true);
     });
 
     it('should render a div for every serie', () => {
         const component = shallow(<ChartTooltipContent x={0} sort={true} />);
+
         expect(component.find('.tooltip-serie-row').length).toBe(XYChartContextMock.series.length);
     });
 });

@@ -11,11 +11,10 @@ export class ChildForm extends React.Component<IChildFormProps> {
     render() {
         const children = ValidComponentChildren.map(
             this.props.children,
-            (child: React.ReactElement<any>) => {
-                return React.cloneElement(child, {
+            (child: React.ReactElement<any>) =>
+                React.cloneElement(child, {
                     disabled: !!this.props.disabled,
-                });
-            },
+                }),
             null
         );
 

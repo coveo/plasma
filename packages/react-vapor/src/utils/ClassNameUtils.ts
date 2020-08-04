@@ -12,12 +12,11 @@ export interface IAdditionalClass {
     condition?: (data: any) => boolean;
 }
 
-export const getAdditionalClasses = (additionalClasses: IAdditionalClass[], dataToUse: any): IClassName => {
-    return _.map(additionalClasses, (additionalClass: IAdditionalClass) =>
+export const getAdditionalClasses = (additionalClasses: IAdditionalClass[], dataToUse: any): IClassName =>
+    _.map(additionalClasses, (additionalClass: IAdditionalClass) =>
         additionalClass.condition
             ? {
                   [additionalClass.className]: additionalClass.condition(dataToUse),
               }
             : additionalClass.className
     );
-};

@@ -50,58 +50,81 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
     const [rightHandlePosition, setRightHandlePosition] = React.useState(crossingPoint);
     const [leftHandlePosition, setLeftHandlePosition] = React.useState(crossingPoint);
     const outputValue = getOutputValue(leftHandlePosition, rightHandlePosition, crossingPoint);
+    const {onChange, setOutputValue} = props;
 
     React.useEffect(() => {
-        props.onChange?.(outputValue);
-    }, [props.onChange, outputValue]);
+        onChange?.(outputValue);
+    }, [onChange, outputValue]);
+
+    React.useEffect(() => {
+        setOutputValue(outputValue);
+    }, [outputValue, setOutputValue]);
+
+    const jumpValueFromHighToLowRange = React.useCallback(
+        (handlePositions: number[]) => {
+            setRightHandlePosition(crossingPoint);
+            setLeftHandlePosition(handlePositions[0]);
+        },
+        [crossingPoint]
+    );
+
+    const jumpValueFromLowToHighRange = React.useCallback(
+        (handlePositions: number[]) => {
+            setLeftHandlePosition(crossingPoint);
+            setRightHandlePosition(handlePositions[1]);
+        },
+        [crossingPoint]
+    );
+
+    const computeNewLeftHandlePosition = React.useCallback(
+        ([handleA, handleb]: number[]) => {
+            const newPosition = handleb < crossingPoint ? handleb : handleA;
+            setLeftHandlePosition(newPosition);
+        },
+        [crossingPoint]
+    );
+
+    const computeNewRightHandlePosition = React.useCallback(
+        ([handleA, handleB]: number[]) => {
+            const newPosition = handleA > crossingPoint ? handleA : handleB;
+            setRightHandlePosition(newPosition);
+        },
+        [crossingPoint]
+    );
+
+    const setHandlePosition = React.useCallback(
+        (handlePositions: number[]) => {
+            const valuesPosition = getValuesPositionOnRange(handlePositions, crossingPoint);
+            switch (valuesPosition) {
+                case valuesPositionOnRange.lower:
+                    computeNewLeftHandlePosition(handlePositions);
+                    break;
+                case valuesPositionOnRange.higher:
+                    computeNewRightHandlePosition(handlePositions);
+                    break;
+                case valuesPositionOnRange.both:
+                    leftHandlePosition === crossingPoint
+                        ? jumpValueFromHighToLowRange(handlePositions)
+                        : jumpValueFromLowToHighRange(handlePositions);
+                    break;
+                default:
+                    setLeftHandlePosition(handlePositions[0]);
+                    setRightHandlePosition(handlePositions[1]);
+            }
+        },
+        [
+            computeNewLeftHandlePosition,
+            crossingPoint,
+            computeNewRightHandlePosition,
+            jumpValueFromHighToLowRange,
+            jumpValueFromLowToHighRange,
+            leftHandlePosition,
+        ]
+    );
 
     React.useEffect(() => {
         setHandlePosition([props.initialValue, props.initialValue]);
-    }, [props.initialValue]);
-
-    React.useEffect(() => {
-        props.setOutputValue(outputValue);
-    }, [outputValue]);
-
-    const setHandlePosition = (handlePositions: number[]) => {
-        const valuesPosition = getValuesPositionOnRange(handlePositions, crossingPoint);
-        switch (valuesPosition) {
-            case valuesPositionOnRange.lower:
-                computeNewLeftHandlePosition(handlePositions);
-                break;
-            case valuesPositionOnRange.higher:
-                computeNewRightHandlePosition(handlePositions);
-                break;
-            case valuesPositionOnRange.both:
-                leftHandlePosition === crossingPoint
-                    ? jumpValueFromHighToLowRange(handlePositions)
-                    : jumpValueFromLowToHighRange(handlePositions);
-                break;
-            default:
-                setLeftHandlePosition(handlePositions[0]);
-                setRightHandlePosition(handlePositions[1]);
-        }
-    };
-
-    const jumpValueFromHighToLowRange = (handlePositions: number[]) => {
-        setRightHandlePosition(crossingPoint);
-        setLeftHandlePosition(handlePositions[0]);
-    };
-
-    const jumpValueFromLowToHighRange = (handlePositions: number[]) => {
-        setLeftHandlePosition(crossingPoint);
-        setRightHandlePosition(handlePositions[1]);
-    };
-
-    const computeNewLeftHandlePosition = ([handleA, handleb]: number[]) => {
-        const newPosition = handleb < crossingPoint ? handleb : handleA;
-        setLeftHandlePosition(newPosition);
-    };
-
-    const computeNewRightHandlePosition = ([handleA, handleB]: number[]) => {
-        const newPosition = handleA > crossingPoint ? handleA : handleB;
-        setRightHandlePosition(newPosition);
-    };
+    }, [props.initialValue, setHandlePosition]);
 
     const renderHandle = (handleProps: any) => {
         const customProps = {

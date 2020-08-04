@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {PaginationSelect} from '../../../pagination';
 
+import {PaginationSelect} from '../../../pagination';
 import {
     INavigationPaginationProps,
     NavigationPagination,
@@ -16,12 +16,10 @@ describe('NavigationPagination', () => {
         totalPages: 22,
     };
 
-    describe('<NavigationPagination />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<NavigationPagination />', () => {
@@ -50,6 +48,7 @@ describe('NavigationPagination', () => {
                 <NavigationPagination {...NAVIGATION_PAGINATION_BASIC_PROPS} onRender={renderSpy} />,
                 {attachTo: document.getElementById('App')}
             );
+
             expect(renderSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -65,6 +64,7 @@ describe('NavigationPagination', () => {
                 {attachTo: document.getElementById('App')}
             );
             navigationPagination.unmount();
+
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
@@ -86,22 +86,27 @@ describe('NavigationPagination', () => {
                 navigationPagination.setProps(newNavigationPaginationProps);
 
                 navigationPaginationInstance['handlePageClick'].call(navigationPaginationInstance, -2);
+
                 expect(clickSpy).not.toHaveBeenCalled();
 
                 // Previous button (does not call spy since current page is zero)
                 navigationPagination.find('.mod-link').first().simulate('click');
+
                 expect(clickSpy).not.toHaveBeenCalled();
 
                 // Number button
                 navigationPagination.find('.selectable').first().simulate('click');
+
                 expect(clickSpy).toHaveBeenCalledTimes(1);
 
                 // Number button (does not call again since already on this page)
                 navigationPagination.find('.flat-select-option').first().simulate('click');
+
                 expect(clickSpy).toHaveBeenCalledTimes(1);
 
                 // Next button
                 navigationPagination.find('.mod-link').last().simulate('click');
+
                 expect(clickSpy).toHaveBeenCalledTimes(2);
             }
         );
@@ -117,6 +122,7 @@ describe('NavigationPagination', () => {
             expect(navigationPagination.html()).toContain(PREVIOUS_LABEL);
 
             navigationPagination.setProps(newNavigationPaginationProps);
+
             expect(navigationPagination.html()).toContain(expectedLabel);
         });
 
@@ -131,6 +137,7 @@ describe('NavigationPagination', () => {
             expect(navigationPagination.html()).toContain(NEXT_LABEL);
 
             navigationPagination.setProps(newNavigationPaginationProps);
+
             expect(navigationPagination.html()).toContain(expectedLabel);
         });
 
@@ -145,6 +152,7 @@ describe('NavigationPagination', () => {
             expect(navigationPagination.find(PaginationSelect).length).toBe(NUMBER_OF_PAGES_SHOWING);
 
             navigationPagination.setProps(newNavigationPaginationProps);
+
             expect(navigationPagination.find(PaginationSelect).length).toBe(expectedNbOfPagesToShow);
         });
 

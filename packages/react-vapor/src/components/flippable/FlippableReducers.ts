@@ -38,9 +38,7 @@ export const flippablesReducer = (
         case FlippableAction.add:
             return [...state, flippableReducer(undefined, action)];
         case FlippableAction.remove:
-            return _.reject(state, (flippable: IFlippableState) => {
-                return action.payload.id === flippable.id;
-            });
+            return _.reject(state, (flippable: IFlippableState) => action.payload.id === flippable.id);
         case FlippableAction.changeSide:
             return state.map((flippable: IFlippableState) => flippableReducer(flippable, action));
         default:
@@ -53,10 +51,9 @@ const addFlippable = (state: IFlippableState, action: IReduxAction<IFlippablePay
     flipped: state.flipped,
 });
 
-const changeSide = (state: IFlippableState, action: IReduxAction<IFlippableChangeSidePayload>): IFlippableState => {
-    return state.id !== action.payload.id
+const changeSide = (state: IFlippableState, action: IReduxAction<IFlippableChangeSidePayload>): IFlippableState =>
+    state.id !== action.payload.id
         ? state
         : _.extend({}, state, {
               flipped: action.payload.flipped,
           });
-};

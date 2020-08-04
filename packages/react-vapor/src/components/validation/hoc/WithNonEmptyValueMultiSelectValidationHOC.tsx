@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
+
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {SelectSelector} from '../../select/SelectSelector';
@@ -41,11 +42,11 @@ export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Compo
             return () => {
                 resetNonEmptyMultiSelectErrorOnUnmount && clearError(props.id);
             };
-        }, [props.id, resetNonEmptyMultiSelectErrorOnUnmount]);
+        }, [props.id, resetNonEmptyMultiSelectErrorOnUnmount, clearError]);
 
         React.useEffect(() => {
             setError(props.id, !hasValuesSelected ? nonEmptyValidationMessage : '');
-        }, [hasValuesSelected, props.id, nonEmptyValidationMessage]);
+        }, [hasValuesSelected, props.id, nonEmptyValidationMessage, setError]);
 
         return <Component {...(props as T)} />;
     };

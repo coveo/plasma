@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {ITabPaneProps, TabPane} from '../TabPane';
 
 describe('TabPane', () => {
@@ -30,11 +30,13 @@ describe('TabPane', () => {
 
             tab.setProps({id, isActive: true});
             tab.mount();
+
             expect(tab.find('div').first().hasClass('active')).toBe(true);
         });
 
         it('should add classNames when className prop set', () => {
             tab.setProps({id, className: 'hello'}).mount();
+
             expect(tab.find('div').first().hasClass('hello')).toBe(true);
         });
     });

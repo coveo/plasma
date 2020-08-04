@@ -1,25 +1,23 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Facet, IFacet, IFacetProps} from '../Facet';
 import {FacetRow} from '../FacetRow';
 
 describe('Facets', () => {
     const facetRows: IFacet[] = [];
     const facet: IFacet = {name: '', formattedName: '', count: '0'};
+    /* eslint-disable jasmine/no-unsafe-spy */
     const toggleFacet: (facet: string, facetRow: IFacet) => void = jasmine.createSpy('toggleFacet');
     const clearFacet: (facet: string) => void = jasmine.createSpy('clearFacet');
+    /* eslint-enable jasmine/no-unsafe-spy */
     const maxRowsToShow = 4;
 
-    describe('<Facet />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(
-                    <Facet facetRows={facetRows} facet={facet} toggleFacet={toggleFacet} clearFacet={clearFacet} />
-                );
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Facet facetRows={facetRows} facet={facet} toggleFacet={toggleFacet} clearFacet={clearFacet} />);
+        }).not.toThrow();
     });
 
     describe('<Facet />', () => {
@@ -49,6 +47,7 @@ describe('Facets', () => {
 
         it('should render some html when there are rows to display', () => {
             facetComponent.setProps({...facetBasicAttributes, facetRows: [{name: 'a', formattedName: 'b'}]});
+
             expect(facetComponent.html()).not.toBeNull();
         });
 
@@ -61,6 +60,7 @@ describe('Facets', () => {
             facetComponent.unmount();
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
+
             expect(renderSpy.calls.count()).toBe(1);
         });
 
@@ -74,6 +74,7 @@ describe('Facets', () => {
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
             facetComponent.unmount();
+
             expect(destroySpy.calls.count()).toBe(1);
         });
 
@@ -115,6 +116,7 @@ describe('Facets', () => {
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
+
             expect(facetComponent.find('FacetMoreToggle').length).toBe(1);
             expect(facetComponent.find('FacetMoreRows').length).toBeGreaterThan(0);
             expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
@@ -157,6 +159,7 @@ describe('Facets', () => {
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
+
             expect(facetComponent.find('FacetMoreToggle').length).toBe(1);
             expect(facetComponent.find('FacetMoreToggleConnected').length).toBe(0);
         });
@@ -260,6 +263,7 @@ describe('Facets', () => {
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
+
             expect(facetComponent.find(expectedClass).length).toBe(1);
         });
 
@@ -269,6 +273,7 @@ describe('Facets', () => {
 
         it('should call toggleFacet when calling buildCategoryFacet', () => {
             callBuildCategoryFacet();
+
             expect(toggleFacet).toHaveBeenCalled();
         });
 
@@ -277,11 +282,13 @@ describe('Facets', () => {
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onToggleFacet: onToggleFacetSpy});
 
             callBuildCategoryFacet();
+
             expect(onToggleFacetSpy).not.toHaveBeenCalled();
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
             callBuildCategoryFacet();
+
             expect(onToggleFacetSpy).toHaveBeenCalled();
         });
 
@@ -291,6 +298,7 @@ describe('Facets', () => {
 
         it('should call clearFacet when calling clearCategoryFacet', () => {
             callClearCategoryFacet();
+
             expect(clearFacet).toHaveBeenCalled();
         });
 
@@ -299,11 +307,13 @@ describe('Facets', () => {
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onClearFacet: onClearFacetSpy});
 
             callClearCategoryFacet();
+
             expect(onClearFacetSpy).not.toHaveBeenCalled();
 
             facetComponent.setProps(newFacetAttributes);
             facetComponent.mount();
             callClearCategoryFacet();
+
             expect(onClearFacetSpy).toHaveBeenCalled();
         });
 
@@ -343,6 +353,7 @@ describe('Facets', () => {
             expect(facetComponent.find(FacetRow).at(2).props().facetRow).toEqual(
                 jasmine.objectContaining(unselected[1])
             );
+
             expect(facetComponent.find(FacetRow).at(3).props().facetRow).toEqual(
                 jasmine.objectContaining(unselected[0])
             );

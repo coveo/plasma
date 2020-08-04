@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {FilterBox} from '../../filterBox/FilterBox';
 import {FacetMoreRows, IFacetMoreRowsProps} from '../FacetMoreRows';
 
@@ -13,12 +13,10 @@ describe('Facets', () => {
         facetRows: facetRows,
     };
 
-    describe('<FacetMoreRows />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<FacetMoreRows facet={facet} facetRows={facetRows} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<FacetMoreRows facet={facet} facetRows={facetRows} />);
+        }).not.toThrow();
     });
 
     describe('<FacetMoreRows />', () => {
@@ -63,13 +61,14 @@ describe('Facets', () => {
             );
 
             facetMoreRows.setProps(newFacetAttributes);
+
             expect(facetMoreRowsInstance['facetSearch'].getElementsByTagName('input')[0]).toBe(
                 document.activeElement as HTMLInputElement
             );
         });
     });
 
-    describe('<FacetMoreRows />', () => {
+    describe('<FacetMoreRows 2 />', () => {
         beforeEach(() => {
             const otherElement: HTMLDivElement = document.createElement('div');
             otherElement.setAttribute('id', 'other');
@@ -107,10 +106,12 @@ describe('Facets', () => {
 
             const facetMoreRows = mount(<FacetMoreRows {...props} />, {attachTo: document.getElementById('App')});
             clickOnOther();
+
             expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
 
             facetMoreRows.unmount();
             clickOnOther();
+
             expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -124,9 +125,11 @@ describe('Facets', () => {
             mount(<FacetMoreRows {...props} />, {attachTo: document.getElementById('App')});
 
             (document.getElementsByClassName('facet-search')[0] as HTMLDivElement).click();
+
             expect(onDocumentClickSpy).not.toHaveBeenCalled();
 
             clickOnOther();
+
             expect(onDocumentClickSpy).toHaveBeenCalled();
         });
     });

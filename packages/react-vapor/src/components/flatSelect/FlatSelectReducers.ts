@@ -33,15 +33,13 @@ export const flatSelectsReducer = (
 ): IFlatSelectState[] => {
     switch (action.type) {
         case FlatSelectActions.select:
-            return state.map((flatSelect: IFlatSelectState) => {
-                return flatSelect.id === action.payload.id ? flatSelectReducer(flatSelect, action) : flatSelect;
-            });
+            return state.map((flatSelect: IFlatSelectState) =>
+                flatSelect.id === action.payload.id ? flatSelectReducer(flatSelect, action) : flatSelect
+            );
         case FlatSelectActions.add:
             return [...state, flatSelectReducer(undefined, action)];
         case FlatSelectActions.remove:
-            return _.reject(state, (flatSelect: IFlatSelectState) => {
-                return action.payload.id === flatSelect.id;
-            });
+            return _.reject(state, (flatSelect: IFlatSelectState) => action.payload.id === flatSelect.id);
         default:
             return state;
     }

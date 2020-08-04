@@ -55,9 +55,8 @@ export const addChildCheckbox = (
 export const removeParentCheckbox = (
     state: IGroupableCheckboxesState[],
     action: IReduxAction<IGroupableCheckboxActionPayload>
-): IGroupableCheckboxesState[] => {
-    return _.reject(state, (checkboxState: IGroupableCheckboxesState) => action.payload.id === checkboxState.parentId);
-};
+): IGroupableCheckboxesState[] =>
+    _.reject(state, (checkboxState: IGroupableCheckboxesState) => action.payload.id === checkboxState.parentId);
 
 export const removeChildCheckbox = (
     state: IGroupableCheckboxesState,
@@ -109,12 +108,10 @@ export const toggleParentCheckbox = (
     action: IReduxAction<IGroupableCheckboxActionPayload>
 ) => {
     const isChecked: boolean = !state.parent.checked;
-    const newCheckboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => {
-        return {
-            ...checkbox,
-            checked: checkbox.disabled ? checkbox.checked : isChecked,
-        };
-    });
+    const newCheckboxes: ICheckboxState[] = _.map(state.checkboxes, (checkbox: ICheckboxState) => ({
+        ...checkbox,
+        checked: checkbox.disabled ? checkbox.checked : isChecked,
+    }));
     return {
         ...state,
         parent: {

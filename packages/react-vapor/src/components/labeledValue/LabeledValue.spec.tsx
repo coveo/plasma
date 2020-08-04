@@ -57,6 +57,7 @@ describe('LabeledValue', () => {
         it('should render with the value inside the value section if value is a JSX.element', () => {
             const jsxValue: JSX.Element = <div className="jsx-value">value</div>;
             labeledValue.setProps({value: jsxValue}).update();
+
             expect(labeledValue.find('.value').find('.jsx-value').length).toBe(1);
         });
 
@@ -70,6 +71,7 @@ describe('LabeledValue', () => {
 
         it('should render a Tooltip with a placement prop having the value of informationPlacement if set', () => {
             labeledValue.setProps({informationPlacement: TooltipPlacement.Bottom}).update();
+
             expect(labeledValue.find(Tooltip).prop('placement')).toBe(TooltipPlacement.Bottom);
         });
 
@@ -84,6 +86,7 @@ describe('LabeledValue', () => {
 
         it('should not have the class "padded" if prop padding is set to false', () => {
             labeledValue.setProps({padding: false});
+
             expect(labeledValue.find('.box').hasClass('padded')).toBe(false);
         });
 
@@ -95,6 +98,7 @@ describe('LabeledValue', () => {
 
         it('should have the singleLine class if prop singleLine is set to true', () => {
             labeledValue.setProps({singleLine: true});
+
             expect(labeledValue.find('.label').hasClass('inline-block')).toBe(true);
             expect(labeledValue.find('.value').hasClass('inline-block')).toBe(true);
         });

@@ -191,9 +191,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
                         (!this.props.multi || !_.contains(this.props.selectedValues, item.value)) &&
                         !item.disabled
                 )
-                .map((item: IItemBoxProps) => {
-                    return {...item, index: realIndex++};
-                })
+                .map((item: IItemBoxProps) => ({...item, index: realIndex++}))
                 .value();
             const active = actives[mod(this.props.active, actives.length)];
             if (active) {

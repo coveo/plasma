@@ -139,6 +139,7 @@ describe('StringList', () => {
                 );
 
                 const newStateListLength: number = newState[stateId].list.length;
+
                 expect(newStateListLength).toBeGreaterThan(oldState[stateId].list.length);
                 expect(newState[stateId].list[newStateListLength - 1]).toEqual(newValue);
             });
@@ -182,6 +183,7 @@ describe('StringList', () => {
                 );
 
                 const newStateListLength: number = newState[stateId].list.length;
+
                 expect(newStateListLength).toBeLessThan(oldStateWithList[stateId].list.length);
                 expect(newStateListLength).toBe(0);
             });

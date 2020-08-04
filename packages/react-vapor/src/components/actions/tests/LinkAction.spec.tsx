@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IActionOptions} from '../Action';
 import {ILinkActionProps, LinkAction} from '../LinkAction';
 
@@ -13,12 +13,10 @@ describe('Actions', () => {
         enabled: true,
     };
 
-    describe('<LinkAction />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<LinkAction action={action} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<LinkAction action={action} />);
+        }).not.toThrow();
     });
 
     describe('<LinkAction />', () => {
@@ -55,6 +53,7 @@ describe('Actions', () => {
 
         it('should have a target attribute if there is a target for the action', () => {
             const expectedTarget = 'target="' + action.target + '"';
+
             expect(linkAction.html()).toContain(expectedTarget);
 
             const newAction = _.extend({}, action);
@@ -66,6 +65,7 @@ describe('Actions', () => {
 
         it('should have a "noopener noreferrer" as rel attribute if there is a target for the action', () => {
             const expectedRel = 'rel="noopener noreferrer"';
+
             expect(linkAction.html()).toContain(expectedRel);
 
             const newAction = _.extend({}, action);
@@ -107,6 +107,7 @@ describe('Actions', () => {
 
             it('shoud have the state-disabled class if hideDisabled set to false is passed as prop', () => {
                 linkAction.setProps({action: {...action, enabled: false, hideDisabled: false}});
+
                 expect(linkAction.find('a').hasClass('state-disabled')).toBe(true);
             });
 

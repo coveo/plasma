@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ISetNumericInputPayload, NumericInputActionTypes} from './NumericInputActions';
 
@@ -26,9 +27,8 @@ const mount = (state: INumericInputsState, action: IReduxAction<ISetNumericInput
     };
 };
 
-const unmount = (state: INumericInputsState, action: IReduxAction<ISetNumericInputPayload>) => {
-    return _.omit(state, action.payload.id);
-};
+const unmount = (state: INumericInputsState, action: IReduxAction<ISetNumericInputPayload>) =>
+    _.omit(state, action.payload.id);
 
 const set = (state: INumericInputState, action: IReduxAction<ISetNumericInputPayload>) => {
     const newValue = action.payload.value;
@@ -46,7 +46,7 @@ const NumericInputReducers: {[key: string]: (...args: any[]) => INumericInputSta
     [NumericInputActionTypes.set]: set,
 };
 
-function validateValueError(value: React.ReactText, min: number, max: number) {
+const validateValueError = (value: React.ReactText, min: number, max: number) => {
     let hasError = false;
     if (!_.isUndefined(min) && value < min) {
         hasError = true;
@@ -60,7 +60,7 @@ function validateValueError(value: React.ReactText, min: number, max: number) {
         hasError = true;
     }
     return hasError;
-}
+};
 
 export type INumericInputPayload = {id: string} | ISetNumericInputPayload;
 

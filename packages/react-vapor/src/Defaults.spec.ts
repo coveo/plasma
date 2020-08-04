@@ -11,6 +11,7 @@ describe('Defaults', () => {
             const setAppElementSpy = spyOn(ReactModal, 'setAppElement');
 
             Defaults.APP_ELEMENT = expectedAppElement;
+
             expect(setAppElementSpy).toHaveBeenCalledTimes(1);
             expect(setAppElementSpy).toHaveBeenCalledWith(expectedAppElement);
         });

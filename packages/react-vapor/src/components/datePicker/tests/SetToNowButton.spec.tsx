@@ -3,19 +3,21 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {Tooltip} from '../../tooltip/Tooltip';
-import {ISetToNowProps, SetToNowButton, SET_TO_NOW_DEFAULT_TOOLTIP} from '../SetToNowButton';
+import {ISetToNowProps, SET_TO_NOW_DEFAULT_TOOLTIP, SetToNowButton} from '../SetToNowButton';
 
 describe('Date picker', () => {
-    const BUTTON_BASIC_PROPS: ISetToNowProps = {
-        onClick: jasmine.createSpy('onClick'),
-    };
+    let BUTTON_BASIC_PROPS: ISetToNowProps;
 
-    describe('<SetToNowButton />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<SetToNowButton {...BUTTON_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        BUTTON_BASIC_PROPS = {
+            onClick: jasmine.createSpy('onClick'),
+        };
+    });
+
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<SetToNowButton {...BUTTON_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<SetToNowButton />', () => {
@@ -49,6 +51,7 @@ describe('Date picker', () => {
             const propsWithTooltip: ISetToNowProps = _.extend({}, BUTTON_BASIC_PROPS, {
                 tooltip: 'We now have a custom tooltip',
             });
+
             expect(setToNowButton.find(Tooltip).props().title).toBe(SET_TO_NOW_DEFAULT_TOOLTIP);
 
             setToNowButton.setProps(propsWithTooltip);

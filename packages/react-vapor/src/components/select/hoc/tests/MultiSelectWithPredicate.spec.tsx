@@ -33,9 +33,7 @@ describe('Select', () => {
             {id: UUID.generate(), option: {content: 'All'}, selected: true},
             {id: UUID.generate(), option: {content: 'None'}},
         ];
-        const matchPredicate = (predicate: string, item: IItemBoxProps) => {
-            return predicate === defaultFlatSelectOptions[0].id;
-        };
+        const matchPredicate = (predicate: string, item: IItemBoxProps) => predicate === defaultFlatSelectOptions[0].id;
 
         const basicProps: ISelectWithPredicateOwnProps & IMultiSelectOwnProps = {
             id,
@@ -72,6 +70,7 @@ describe('Select', () => {
 
             it('should not throw on unmount', () => {
                 mountMultiSelect();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 
@@ -106,7 +105,9 @@ describe('Select', () => {
             multiSelect
                 .find(SelectConnected)
                 .props()
-                .items.every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+                .items.every((item: IItemBoxProps) => {
+                    expect(item.hidden).toBe(true);
+                });
         });
 
         it('should not show items that are already hidden', () => {
@@ -141,6 +142,7 @@ describe('Select', () => {
 
                 // Move b from 0 to 1
                 multiSelect.find(DraggableSelectedOption).first().prop('move')(0, 1);
+
                 expect(spy).toHaveBeenCalledWith(reorderListBoxOption(id, [items[2].value, items[1].value]));
             });
 
@@ -156,6 +158,7 @@ describe('Select', () => {
 
                 // Move b from 0 to 1
                 multiSelect.find(DraggableSelectedOption).first().prop('onRemoveClick')();
+
                 expect(spy).toHaveBeenCalledWith(unselectListBoxOption(id, items[1].value));
             });
         });
@@ -183,6 +186,7 @@ describe('Select', () => {
                 )
                     .dive()
                     .dive();
+
                 expect(component.props().items).toEqual(items);
             });
 

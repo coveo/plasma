@@ -44,9 +44,7 @@ describe('Flippable', () => {
     };
 
     describe('flippablesReducer', () => {
-        const filterById = (actionId: string) => {
-            return (flippable: IFlippableState) => flippable.id === actionId;
-        };
+        const filterById = (actionId: string) => (flippable: IFlippableState) => flippable.id === actionId;
 
         it('should return the default state if the action is undefined and the state is undefined', () => {
             const flippablesState: IFlippableState[] = flippablesReducer(undefined, GENERIC_ACTION);

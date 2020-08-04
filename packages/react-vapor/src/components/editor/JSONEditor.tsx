@@ -48,7 +48,7 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
         onMount?.();
 
         return onUnmount;
-    }, []);
+    }, [onMount, onUnmount]);
 
     const handleChange = (json: string) => {
         const hasError = !JSONEditorUtils.validateValue(json);

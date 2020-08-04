@@ -35,6 +35,7 @@ describe('Table HOC', () => {
             expect(() =>
                 shallowWithStore(<TableWithPagination id="a" data={[]} renderBody={_.identity} />, store)
             ).not.toThrow();
+
             expect(() =>
                 shallowWithStore(<TableWithPagination id="b" data={[{value: 'a'}]} renderBody={_.identity} />, store)
             ).not.toThrow();
@@ -42,11 +43,13 @@ describe('Table HOC', () => {
 
         it('should render a TableHOC', () => {
             const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should render a NavigationConnected', () => {
             const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+
             expect(wrapper.find(NavigationConnected).exists()).toBe(true);
         });
 
@@ -95,16 +98,16 @@ describe('Table HOC', () => {
         });
 
         describe('with store data', () => {
-            const getStoreWithPage = (pageNb: number, perPage: number, count: number = 0) => {
-                return getStoreMock({
+            const getStoreWithPage = (pageNb: number, perPage: number, count: number = 0) =>
+                getStoreMock({
                     tableHOCPagination: [{id: defaultProps.id, count}],
                     paginationComposite: [{id: TableHOCUtils.getPaginationId(defaultProps.id), pageNb}],
                     perPageComposite: [{id: defaultProps.id, perPage}],
                 });
-            };
 
             it('should not throw if the data is null', () => {
                 store = getStoreWithPage(1, 5);
+
                 expect(() =>
                     shallowWithStore(<TableWithPagination {...defaultProps} data={null} />, store).dive()
                 ).not.toThrow();
@@ -117,6 +120,7 @@ describe('Table HOC', () => {
                 store = getStoreWithPage(page, perPage);
                 const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
                 const tableData = wrapper.find(TableHOC).prop('data');
+
                 expect(tableData).toEqual(defaultProps.data.slice(page * perPage, (page + 1) * perPage));
             });
 
@@ -132,6 +136,7 @@ describe('Table HOC', () => {
                         .dive()
                         .dive();
                     const tableData = wrapper.find(TableHOC).prop('data');
+
                     expect(tableData).toEqual(defaultProps.data);
                 });
 

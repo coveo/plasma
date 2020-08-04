@@ -2,8 +2,9 @@ import {mount, ReactWrapper, shallow, ShallowWrapper} from 'enzyme';
 import moment from 'moment';
 import * as React from 'react';
 import * as s from 'underscore.string';
+
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {ILastUpdatedProps, LastUpdated, LAST_UPDATE_LABEL} from '../LastUpdated';
+import {ILastUpdatedProps, LAST_UPDATE_LABEL, LastUpdated} from '../LastUpdated';
 
 describe('LastUpdated', () => {
     describe('<LastUpdated />', () => {
@@ -24,7 +25,7 @@ describe('LastUpdated', () => {
 
             lastUpdatedWrapper = shallow(<LastUpdated time={time} />);
 
-            expect(s.contains(lastUpdatedWrapper.html(), expectedTime));
+            expect(s.contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
         });
 
         it('should add the current time if we do not pass it the time prop', () => {
@@ -36,18 +37,20 @@ describe('LastUpdated', () => {
 
             lastUpdatedWrapper = shallow(<LastUpdated />);
 
-            expect(s.contains(lastUpdatedWrapper.html(), expectedTime));
+            expect(s.contains(lastUpdatedWrapper.html(), expectedTime)).toBe(true);
 
             jasmine.clock().uninstall();
         });
 
         it('should use the label passed as a prop to display the time, else it uses the default label', () => {
             lastUpdatedWrapper = shallow(<LastUpdated />);
-            expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL));
+
+            expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL)).toBe(true);
 
             const expectedLabel = 'Last update was at =>';
             lastUpdatedWrapper.setProps({label: expectedLabel});
-            expect(s.contains(lastUpdatedWrapper.html(), expectedLabel));
+
+            expect(s.contains(lastUpdatedWrapper.html(), expectedLabel)).toBe(true);
         });
 
         it('should trigger onRender prop when mounting', () => {
@@ -59,18 +62,21 @@ describe('LastUpdated', () => {
             lastUpdated.unmount();
             lastUpdated.setProps({onRender: renderSpy});
             lastUpdated.mount();
+
             expect(renderSpy.calls.count()).toBe(1);
         });
 
         it('should trigger onDestroy prop when unmounting', () => {
             const destroySpy = jasmine.createSpy('onDestroy');
             lastUpdated = mount(<LastUpdated />, {attachTo: document.getElementById('App')});
+
             expect(() => (lastUpdated.instance() as LastUpdated).componentWillUnmount()).not.toThrow();
 
             lastUpdated.unmount();
             lastUpdated.setProps({onDestroy: destroySpy});
             lastUpdated.mount();
             lastUpdated.unmount();
+
             expect(destroySpy.calls.count()).toBe(1);
         });
     });

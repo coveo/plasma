@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Dropdown, IDropdownProps} from '../Dropdown';
@@ -74,6 +74,7 @@ describe('Dropdown', () => {
 
         it('should remove the dropdown from the store when unmounting', () => {
             wrapper.unmount();
+
             expect(store.getState().dropdowns.length).toBe(0);
         });
 
@@ -81,14 +82,17 @@ describe('Dropdown', () => {
             expect(_.findWhere(store.getState().dropdowns, {id: basicDropdownProps.id}).opened).toBe(false);
 
             dropdown.find('.dropdown-toggle').simulate('click');
+
             expect(_.findWhere(store.getState().dropdowns, {id: basicDropdownProps.id}).opened).toBe(true);
         });
 
         it('should close the dropdown menu when clicking elsewhere', () => {
             store.dispatch(toggleDropdown(basicDropdownProps.id));
+
             expect(_.findWhere(store.getState().dropdowns, {id: basicDropdownProps.id}).opened).toBe(true);
 
             document.getElementById('App').click();
+
             expect(_.findWhere(store.getState().dropdowns, {id: basicDropdownProps.id}).opened).toBe(false);
         });
     });

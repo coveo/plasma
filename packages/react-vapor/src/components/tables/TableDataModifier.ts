@@ -57,8 +57,8 @@ export const applyFilterOnDisplayedIds = (
     tableOwnProps: ITableOwnProps
 ): string[] => {
     if (tableCompositeState.filter) {
-        const filterDefault = (dataId: string): boolean => {
-            return tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
+        const filterDefault = (dataId: string): boolean =>
+            tableOwnProps.headingAttributes.some((headingAttribute: ITableHeadingAttribute) => {
                 const {attributeName, attributeFormatter, filterFormatter} = headingAttribute;
                 const attributeValue = tableDataById[dataId][attributeName];
                 let attributeValueToUse = filterFormatter
@@ -73,7 +73,6 @@ export const applyFilterOnDisplayedIds = (
                     tableCompositeState.filter.toLowerCase()
                 );
             });
-        };
 
         const filterMethod = tableOwnProps.filterMethod
             ? (dataId: string): boolean =>
@@ -165,40 +164,33 @@ export const applyPaginationOnDisplayedIds = (
 export const defaultTableStateModifier = (
     tableOwnProps: ITableOwnProps,
     tableCompositeState: ITableCompositeState
-): ITableStateModifier => {
-    return (tableState: ITableState): ITableState => {
-        const tableDataById = (tableCompositeState.data && tableCompositeState.data.byId) || {};
-        let nextDisplayedIds = [...((tableCompositeState.data && tableCompositeState.data.allIds) || [])];
+): ITableStateModifier => (tableState: ITableState): ITableState => {
+    const tableDataById = (tableCompositeState.data && tableCompositeState.data.byId) || {};
+    let nextDisplayedIds = [...((tableCompositeState.data && tableCompositeState.data.allIds) || [])];
 
-        nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
-        nextDisplayedIds = applyFilterOnDisplayedIds(
-            nextDisplayedIds,
-            tableDataById,
-            tableCompositeState,
-            tableOwnProps
-        );
-        nextDisplayedIds = applyDatePickerOnDisplayedIds(
-            nextDisplayedIds,
-            tableDataById,
-            tableCompositeState,
-            tableOwnProps
-        );
+    nextDisplayedIds = applyPredicatesOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState);
+    nextDisplayedIds = applyFilterOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+    nextDisplayedIds = applyDatePickerOnDisplayedIds(
+        nextDisplayedIds,
+        tableDataById,
+        tableCompositeState,
+        tableOwnProps
+    );
 
-        const totalEntries = nextDisplayedIds.length;
-        const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));
+    const totalEntries = nextDisplayedIds.length;
+    const totalPages = Math.ceil(totalEntries / (tableCompositeState.perPage || DEFAULT_TABLE_PER_PAGE));
 
-        nextDisplayedIds = applySortOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
-        nextDisplayedIds = applyPaginationOnDisplayedIds(nextDisplayedIds, tableCompositeState);
+    nextDisplayedIds = applySortOnDisplayedIds(nextDisplayedIds, tableDataById, tableCompositeState, tableOwnProps);
+    nextDisplayedIds = applyPaginationOnDisplayedIds(nextDisplayedIds, tableCompositeState);
 
-        return {
-            ...tableState,
-            data: {
-                ...tableState.data,
-                displayedIds: nextDisplayedIds,
-                totalEntries,
-                totalPages,
-            },
-        };
+    return {
+        ...tableState,
+        data: {
+            ...tableState.data,
+            displayedIds: nextDisplayedIds,
+            totalEntries,
+            totalPages,
+        },
     };
 };
 
@@ -206,12 +198,10 @@ export const defaultTableStateModifierThunk = (
     tableOwnProps: ITableOwnProps,
     shouldResetPage: boolean,
     tableCompositeState: ITableCompositeState
-) => {
-    return (dispatch: IDispatch) => {
-        const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
-        dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
-        dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
-    };
+) => (dispatch: IDispatch) => {
+    const tableStateModifier = defaultTableStateModifier(tableOwnProps, tableCompositeState);
+    dispatch(modifyState(tableOwnProps.id, tableStateModifier, shouldResetPage));
+    dispatch(turnOffLoading(getTableLoadingIds(tableOwnProps.id)));
 };
 
 export const TableDataModifier = {

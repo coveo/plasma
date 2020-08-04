@@ -11,12 +11,10 @@ describe('paginationSelectWrapper', () => {
         onPageClick: _.noop,
     };
 
-    describe('<paginationSelectWrapper />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<PaginationSelect {...basicPaginationSelectProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<PaginationSelect {...basicPaginationSelectProps} />);
+        }).not.toThrow();
     });
 
     describe('<paginationSelectWrapper />', () => {
@@ -26,21 +24,25 @@ describe('paginationSelectWrapper', () => {
 
         it('should add the class disabled', () => {
             wrapper = shallowPaginationSelect({disabled: true});
+
             expect(wrapper.hasClass('disabled')).toBe(true);
         });
 
         it('should add the class selectable if not selected', () => {
             wrapper = shallowPaginationSelect({selected: false});
+
             expect(wrapper.hasClass('selectable')).toBe(true);
         });
 
         it('should not add the class selectable if  selected', () => {
             wrapper = shallowPaginationSelect({selected: true});
+
             expect(wrapper.hasClass('selectable')).toBe(false);
         });
 
         it('should show the pageNbr + 1', () => {
             wrapper = shallowPaginationSelect({pageNb: 3});
+
             expect(wrapper.text()).toBe('4');
         });
 

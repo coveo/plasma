@@ -1,6 +1,7 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
+
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {IRefreshCallbackProps, IRefreshCallbackState, RefreshCallback} from '../RefreshCallback';
@@ -12,7 +13,7 @@ describe('RefreshCallback tests', () => {
             expect(() => {
                 const component = shallowWithState(<RefreshCallback callback={() => ''} />, {});
                 component.unmount();
-            });
+            }).not.toThrow();
         });
 
         describe('once mounted', () => {
@@ -48,6 +49,7 @@ describe('RefreshCallback tests', () => {
                     refreshCallback: {id: RefreshStatus.stopped},
                 }).dive();
                 jasmine.clock().tick(1001);
+
                 expect(component.state().count).toBe(9);
 
                 component.setProps({
@@ -63,14 +65,17 @@ describe('RefreshCallback tests', () => {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 }).dive();
                 jasmine.clock().tick(1001);
+
                 expect(component.state().count).toBe(9);
 
                 component.setProps({
                     ...component.props(),
                     status: RefreshStatus.stopped,
                 });
+
                 expect(component.state().count).toBe(9);
                 jasmine.clock().tick(1001);
+
                 expect(component.state().count).toBe(9);
             });
 

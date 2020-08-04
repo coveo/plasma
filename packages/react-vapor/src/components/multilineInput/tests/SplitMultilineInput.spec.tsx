@@ -28,12 +28,10 @@ describe('SplitMultilineInput', () => {
         defaultValues: [],
     };
 
-    describe('<SplitMultilineInput />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<SplitMultilineInput {...basicProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<SplitMultilineInput {...basicProps} />);
+        }).not.toThrow();
     });
 
     describe('<SplitMultilineInput />', () => {

@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -115,31 +115,38 @@ describe('Facets', () => {
             const filterValue = 'something';
 
             store.dispatch(filterThrough(filterId, filterValue));
+
             expect(_.findWhere(store.getState().filters, {id: filterId}).filterText).toBe(filterValue);
 
             store.dispatch(toggleMoreFacetRows(facet));
+
             expect(_.findWhere(store.getState().filters, {id: filterId}).filterText).toBe('');
         });
 
         it('should close itself when clicking out of the "facet-search" div', () => {
             store.dispatch(toggleMoreFacetRows(facet));
             wrapper.update();
+
             expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
 
             (document.getElementsByClassName('facet-search')[0] as HTMLDivElement).click();
             wrapper.update();
+
             expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
 
             (document.getElementsByClassName('facet-more-search')[0] as HTMLDivElement).click();
             wrapper.update();
+
             expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(false);
 
             store.dispatch(toggleMoreFacetRows(facet));
             wrapper.update();
+
             expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
 
             document.getElementById('App').click();
             wrapper.update();
+
             expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(false);
         });
     });

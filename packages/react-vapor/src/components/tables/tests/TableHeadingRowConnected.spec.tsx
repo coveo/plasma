@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -88,6 +88,7 @@ describe('Tables', () => {
 
         it('should remove the row in the store on destroy', () => {
             wrapper.unmount();
+
             expect(store.getState().rows.filter((row) => row.id === basicTableHeadingRowProps.id).length).toBe(0);
         });
 
@@ -95,6 +96,7 @@ describe('Tables', () => {
             expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).opened).toBe(false);
 
             tableHeadingRow.find('tr').simulate('click');
+
             expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).opened).toBe(true);
         });
 
@@ -102,6 +104,7 @@ describe('Tables', () => {
             expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(false);
 
             tableHeadingRow.find('tr').simulate('click');
+
             expect(_.findWhere(store.getState().rows, {id: basicTableHeadingRowProps.id}).selected).toBe(true);
         });
 
@@ -126,9 +129,11 @@ describe('Tables', () => {
             expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
 
             tableHeadingRow.find('tr').simulate('click');
+
             expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
 
             wrapper.unmount();
+
             expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
         });
     });

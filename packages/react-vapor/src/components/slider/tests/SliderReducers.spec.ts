@@ -57,6 +57,7 @@ describe('SliderReducers', () => {
         };
 
         sliderState = SliderReducer(originalState, goodSliderAction);
+
         expect(sliderState).toEqual(expectedState);
     });
 });

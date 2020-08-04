@@ -26,6 +26,7 @@ export interface IChosenSelectProps extends React.HTMLProps<ChosenSelect> {
 
 /**
  * List of props that were passed to the <ChosenSelect> component but that should not be passed to the <select> element to avoid warnings.
+ *
  * @type {string[]}
  */
 const chosenSelectPropsToOmit = [
@@ -88,6 +89,7 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
      * HACK: Since we cannot overrdide onChange method signature (provided by React.HTMLProps<HTMLSelectElement>), since onChange is
      * required by React when a value has been specified (component becomes "controlled") and because chosen does not trigger the change
      * event on the <select> and foces us to use jQuery, we added a onChosenChange prop and faked the onChange prop.
+     *
      * @returns {JSX.Element | null}
      */
     render() {

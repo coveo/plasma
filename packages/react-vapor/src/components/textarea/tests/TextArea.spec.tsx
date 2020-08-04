@@ -1,20 +1,17 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
+import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
-import * as _ from 'underscore';
 
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {ITextAreaProps, TextArea, TextAreaConnected} from '../TextArea';
 import {TextAreaActions} from '../TextAreaActions';
 
 describe('TextArea', () => {
-    describe('<TextArea />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<TextArea id="textarea-id" />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<TextArea id="textarea-id" />);
+        }).not.toThrow();
     });
 
     describe('<TextArea />', () => {
@@ -35,21 +32,25 @@ describe('TextArea', () => {
 
         it('should set className when specified', () => {
             const className = 'a-class';
+
             expect(wrapper.hasClass(className)).toBe(false);
 
             wrapper.setProps({className}).update();
+
             expect(wrapper.find('textarea').hasClass(className)).toBe(true);
         });
 
         it('should set additionalAttributes when specified', () => {
             expect(wrapper.prop('placeholder')).toBeUndefined();
             wrapper.setProps({additionalAttributes: {placeholder: 'not null'}}).update();
+
             expect(wrapper.find('textarea').prop('placeholder')).toBe('not null');
         });
 
         it('should set disabled prop when specified', () => {
             expect(wrapper.prop('disabled')).toBeUndefined();
             wrapper.setProps({disabled: true}).update();
+
             expect(wrapper.find('textarea').prop('disabled')).toBe(true);
         });
 
@@ -58,12 +59,14 @@ describe('TextArea', () => {
 
             expect(wrapper.prop('validate')).toBeUndefined();
             wrapper.setProps({validate: validation}).update();
+
             expect(wrapper.prop('validate')).toBe(validation);
         });
 
         it('should set value prop when specified', () => {
             expect(wrapper.prop('value')).toBeUndefined();
             wrapper.setProps({value: 'non empty'}).update();
+
             expect(wrapper.find('textarea').prop('value')).toBe('non empty');
         });
 
@@ -107,6 +110,7 @@ describe('TextArea', () => {
             act(() => {
                 wrapper.mount();
             });
+
             expect(wrapper.contains(validationMessage)).toBeFalsy(); // initial mount is not validated
 
             wrapper.setProps({value: invalidValue});
@@ -223,6 +227,7 @@ describe('TextArea', () => {
                     act(() => {
                         hookWrapper.mount();
                     });
+
                     expect(store.getActions().find((action) => action.type === 'ADD_TEXTAREA')).toEqual(
                         jasmine.objectContaining({
                             payload: jasmine.objectContaining({id: textAreaProps.id, value: valueOnMount}),

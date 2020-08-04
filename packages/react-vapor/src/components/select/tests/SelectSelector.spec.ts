@@ -41,6 +41,7 @@ describe('Select', () => {
 
             it('should return the current object in the state if the id is in the state', () => {
                 const listBox: IListBoxState = {id, selected: list};
+
                 expect(SelectSelector.getListBox({listBoxes: [listBox]}, defaultOwnProps)).toEqual(listBox);
             });
         });
@@ -52,6 +53,7 @@ describe('Select', () => {
 
             it('should return the filterText in the state if the id is in the state', () => {
                 const items: IItemBoxProps[] = [{value: 'a'}];
+
                 expect(SelectSelector.getItems(defaultState, {id, items})).toEqual(items);
             });
         });
@@ -74,6 +76,7 @@ describe('Select', () => {
 
                 it('should return items with hidden true if match filter return false', () => {
                     const matchFilterFalse: MatchFilter = () => false;
+
                     expect(SelectCombiners.itemsWithFilterCombiner(items, filterText, matchFilterFalse)).toEqual([
                         {value: 'a', hidden: true},
                     ]);
@@ -119,6 +122,7 @@ describe('Select', () => {
                     };
 
                     const resultList = [...list1, ...list2];
+
                     expect(SelectSelector.getMultiSelectSelectedValues(state, {id}).length).toEqual(resultList.length);
                 });
 
@@ -129,6 +133,7 @@ describe('Select', () => {
                     };
 
                     const resultList = _.uniq([...list1, ...list3]);
+
                     expect(SelectSelector.getMultiSelectSelectedValues(state, {id}).length).toEqual(resultList.length);
                 });
             });

@@ -5,6 +5,7 @@ describe('RadioSelectSelectors', () => {
     describe('get', () => {
         it('should return the default radio select state when the radio select does not exist in the state', () => {
             const radioSelect = RadioSelectSelectors.get({radioSelects: []}, {id: 'I-do-not-exist-in-the-state'});
+
             expect(radioSelect).toEqual(radioSelectInitialState);
         });
 
@@ -18,6 +19,7 @@ describe('RadioSelectSelectors', () => {
                 {radioSelects: [expectedRadioSelect]},
                 {id: expectedRadioSelect.id}
             );
+
             expect(radioSelect).toEqual(expectedRadioSelect);
         });
     });
@@ -28,6 +30,7 @@ describe('RadioSelectSelectors', () => {
                 {radioSelects: []},
                 {id: 'I-do-not-exist-in-the-state'}
             );
+
             expect(selectedValue).toBeUndefined();
         });
 
@@ -41,6 +44,7 @@ describe('RadioSelectSelectors', () => {
                 {radioSelects: [expectedRadioSelect]},
                 {id: expectedRadioSelect.id}
             );
+
             expect(selectedValue).toBe(expectedRadioSelect.value);
         });
     });
@@ -51,6 +55,7 @@ describe('RadioSelectSelectors', () => {
                 {radioSelects: []},
                 {id: 'I-do-not-exist-in-the-state'}
             );
+
             expect(disabledValue).toBeUndefined();
         });
 
@@ -64,6 +69,7 @@ describe('RadioSelectSelectors', () => {
                 {radioSelects: [expectedRadioSelect]},
                 {id: expectedRadioSelect.id}
             );
+
             expect(disabledValues).toBe(expectedRadioSelect.disabledValues);
         });
     });

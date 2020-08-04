@@ -74,7 +74,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
     )(WrappedComponentDisconnected);
 }
 
-function getQuery(state: IReactVaporState, tableId: string): string {
+const getQuery = (state: IReactVaporState, tableId: string): string => {
     let order: SortOrderValues.ascending | SortOrderValues.descending;
     const tableState = TableHOCUtils.getCompositeState(tableId, state);
     const [from, to] = map(tableState.dateLimits, (limit) => limit && limit.toISOString());
@@ -100,62 +100,60 @@ function getQuery(state: IReactVaporState, tableId: string): string {
         [Params.lowerDateLimit]: from || undefined,
         [Params.upperDateLimit]: to || undefined,
     });
-}
+};
 
-function updateTableStateFromUrl(tableId: string): IThunkAction {
-    return (dispatch: IDispatch, getState) => {
-        const urlParams = UrlUtils.getSearchParams();
-        const possiblePredicates = TableHOCUtils.getPredicateIds(tableId, getState());
+const updateTableStateFromUrl = (tableId: string): IThunkAction => (dispatch: IDispatch, getState) => {
+    const urlParams = UrlUtils.getSearchParams();
+    const possiblePredicates = TableHOCUtils.getPredicateIds(tableId, getState());
 
-        Object.keys(urlParams)
-            .filter((key) => possiblePredicates.includes(key))
-            .forEach((key) =>
-                dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key]))
-            );
+    Object.keys(urlParams)
+        .filter((key) => possiblePredicates.includes(key))
+        .forEach((key) =>
+            dispatch(selectListBoxOption(TableHOCUtils.getPredicateId(tableId, key), false, urlParams[key]))
+        );
 
-        if (urlParams.hasOwnProperty(Params.lowerDateLimit)) {
-            dispatch(
-                changeDatePickerLowerLimit(
-                    TableHOCUtils.getDatePickerId(tableId),
-                    new Date(urlParams[Params.lowerDateLimit])
-                )
-            );
-        }
+    if (urlParams.hasOwnProperty(Params.lowerDateLimit)) {
+        dispatch(
+            changeDatePickerLowerLimit(
+                TableHOCUtils.getDatePickerId(tableId),
+                new Date(urlParams[Params.lowerDateLimit])
+            )
+        );
+    }
 
-        if (urlParams.hasOwnProperty(Params.upperDateLimit)) {
-            dispatch(
-                changeDatePickerUpperLimit(
-                    TableHOCUtils.getDatePickerId(tableId),
-                    new Date(urlParams[Params.upperDateLimit])
-                )
-            );
-        }
+    if (urlParams.hasOwnProperty(Params.upperDateLimit)) {
+        dispatch(
+            changeDatePickerUpperLimit(
+                TableHOCUtils.getDatePickerId(tableId),
+                new Date(urlParams[Params.upperDateLimit])
+            )
+        );
+    }
 
-        if (urlParams.hasOwnProperty(Params.lowerDateLimit) || urlParams.hasOwnProperty(Params.upperDateLimit)) {
-            dispatch(applyDatePicker(tableId));
-        }
+    if (urlParams.hasOwnProperty(Params.lowerDateLimit) || urlParams.hasOwnProperty(Params.upperDateLimit)) {
+        dispatch(applyDatePicker(tableId));
+    }
 
-        if (urlParams.hasOwnProperty(Params.filter)) {
-            dispatch(filterThrough(tableId, urlParams[Params.filter]));
-        }
+    if (urlParams.hasOwnProperty(Params.filter)) {
+        dispatch(filterThrough(tableId, urlParams[Params.filter]));
+    }
 
-        if (urlParams.hasOwnProperty(Params.sortKey) && urlParams.hasOwnProperty(Params.sortOrder)) {
-            dispatch(
-                TableHeaderActions.sortTable(
-                    urlParams[Params.sortKey],
-                    urlParams[Params.sortOrder] === SortOrderValues.ascending
-                )
-            );
-        }
+    if (urlParams.hasOwnProperty(Params.sortKey) && urlParams.hasOwnProperty(Params.sortOrder)) {
+        dispatch(
+            TableHeaderActions.sortTable(
+                urlParams[Params.sortKey],
+                urlParams[Params.sortOrder] === SortOrderValues.ascending
+            )
+        );
+    }
 
-        if (urlParams.hasOwnProperty(Params.pageSize)) {
-            dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
-        }
+    if (urlParams.hasOwnProperty(Params.pageSize)) {
+        dispatch(changePerPage(tableId, urlParams[Params.pageSize]));
+    }
 
-        if (urlParams.hasOwnProperty(Params.pageNumber)) {
-            dispatch(changePage(TableHOCUtils.getPaginationId(tableId), urlParams[Params.pageNumber]));
-        }
-    };
-}
+    if (urlParams.hasOwnProperty(Params.pageNumber)) {
+        dispatch(changePage(TableHOCUtils.getPaginationId(tableId), urlParams[Params.pageNumber]));
+    }
+};
 
 export {tableWithUrlState, Params as TableWithUrlStateParameters};

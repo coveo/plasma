@@ -46,6 +46,7 @@ describe('SearchBarConnected', () => {
         expect(store.getState().searchBars.length).toBe(1);
 
         component.unmount();
+
         expect(store.getState().searchBars.length).toBe(0);
     });
 
@@ -86,6 +87,7 @@ describe('SearchBarConnected', () => {
 
         it('should change the value in the state on input change', () => {
             component.find('input').prop('onChange')({target: {value: 'new value'}});
+
             expect(store.getState().searchBars[0].value).toBe('new value');
         });
 

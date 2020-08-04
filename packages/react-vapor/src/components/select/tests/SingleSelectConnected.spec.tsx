@@ -51,6 +51,7 @@ describe('Select', () => {
 
             it('should not throw on unmount', () => {
                 mountSingleSelect();
+
                 expect(() => singleSelect.unmount()).not.toThrow();
             });
 
@@ -99,6 +100,7 @@ describe('Select', () => {
             mountSingleSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             const value: string = select.find('.dropdown-selected-value').prop<string>('data-value');
+
             expect(value).toBe(selectedValue);
         });
 
@@ -171,6 +173,7 @@ describe('Select', () => {
             mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
 
             select.find('.btn-append').first().simulate('click');
+
             expect(spy).toHaveBeenCalledWith(clearListBoxOption(id));
         });
 
@@ -226,6 +229,7 @@ describe('Select', () => {
                 expect(getIsOpen()).toBe(false);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+
                 expect(getIsOpen()).toBe(true);
             });
 
@@ -234,12 +238,15 @@ describe('Select', () => {
 
                 expect(getIsOpen()).toBe(false, 0);
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
+
                 expect(getIsOpen()).toBe(false, 1);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+
                 expect(getIsOpen()).toBe(true, 2);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
+
                 expect(getIsOpen()).toBe(false, 3);
             });
         });
@@ -254,6 +261,7 @@ describe('Select', () => {
                         context: {store},
                     }
                 );
+
                 expect(mountedSingleSelect.find('#some-footer').matchesElement(footer)).toBeTruthy();
                 mountedSingleSelect.unmount();
             });
@@ -265,6 +273,7 @@ describe('Select', () => {
                 <SingleSelectConnected id={id} items={[{value: 'a', selected: false}]} customButton={CustomButton} />,
                 {}
             ).dive();
+
             expect(component.prop('button')).toBe(CustomButton);
         });
     });

@@ -9,7 +9,7 @@ export interface DropdownSearchInfiniteScrollOptionsProps {
     infiniteScroll: InfiniteScroll.InfiniteScrollProps;
 }
 
-export class DropdownSearchInfiniteScrollOptions extends React.Component<DropdownSearchInfiniteScrollOptionsProps, {}> {
+export class DropdownSearchInfiniteScrollOptions extends React.Component<DropdownSearchInfiniteScrollOptionsProps> {
     private id: string;
 
     componentWillMount() {

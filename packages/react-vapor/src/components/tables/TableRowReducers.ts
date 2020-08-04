@@ -52,9 +52,7 @@ export const tableRowsReducer = (
         case TableRowActions.add:
             return [...state, tableRowReducer(undefined, action)];
         case TableRowActions.remove:
-            return _.reject(state, (row: ITableRowState) => {
-                return action.payload.id === row.id;
-            });
+            return _.reject(state, (row: ITableRowState) => action.payload.id === row.id);
         case TableRowActions.toggleOpen:
         case TableRowActions.select:
         case TableRowActions.unselectAll:

@@ -35,9 +35,7 @@ export const promptsReducer = (
         case PromptActions.add:
             return [...state, promptReducer(undefined, action)];
         case PromptActions.remove:
-            return _.reject(state, (prompt: IPromptState) => {
-                return action.payload.id === prompt.id;
-            });
+            return _.reject(state, (prompt: IPromptState) => action.payload.id === prompt.id);
         default:
             return state;
     }

@@ -54,11 +54,13 @@ describe('CodeEditor', () => {
 
         it('should set readOnly to `nocursor` when receiving true from props, else keep props', () => {
             mountWithProps({readOnly: true});
+
             expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(
                 'nocursor'
             );
 
             codeEditor.setProps({readOnly: false});
+
             expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(
                 codeEditor.props().readOnly
             );
@@ -107,6 +109,7 @@ describe('CodeEditor', () => {
             (codeEditorInstance as any).addExtraKeywords();
 
             const newList: string[] = (CodeMirror as any).helpers.hintWords[basicProps.mode];
+
             expect(newList).not.toEqual(currentKeywords);
             expect(newList).toEqual(currentKeywords.concat(expectedNewKeywords));
         });

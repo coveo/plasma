@@ -25,9 +25,7 @@ export const withDirtyStickyFooterHOC = <T extends IStickyFooterProps>(
         validationIds,
         isOpened = false,
         ...props
-    }) => {
-        return <Component {...(props as any)} isOpened={isDirty || isOpened} />;
-    };
+    }) => <Component {...(props as any)} isOpened={isDirty || isOpened} />;
 
     const enhance = connect(mapStateToProps) as InferableComponentEnhancer<StateProps>;
     return enhance(WrappedStickyFooter);

@@ -16,15 +16,13 @@ module.exports = function (options) {
             rules: [
                 {
                     enforce: 'pre',
-                    test: /\.ts(x?)$/i,
+                    test: /\.spec\.ts(x?)$/i,
                     exclude: [/node_modules/],
                     use: {
-                        loader: 'tslint-loader',
+                        loader: 'eslint-loader',
                         options: {
-                            configFile: '../../tslint.json',
-                            tsConfigFile: './tsconfig.test.json',
-                            emitErrors: true,
-                            failOnHint: isTravis,
+                            fix: !isTravis,
+                            failOnError: isTravis,
                         },
                     },
                 },

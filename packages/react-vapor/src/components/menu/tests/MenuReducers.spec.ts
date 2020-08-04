@@ -135,6 +135,7 @@ describe('Menu', () => {
 
                 const oldState: IMenusState = state;
                 let newState: IMenusState = {};
+
                 expect(() => (newState = menuCompositeReducer(oldState, toggleMenu(id, true)))).not.toThrow();
 
                 expect(newState[id].id).toBe(id);

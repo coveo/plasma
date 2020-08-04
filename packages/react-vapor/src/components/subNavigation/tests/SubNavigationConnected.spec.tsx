@@ -1,10 +1,10 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
@@ -68,6 +68,7 @@ describe('SubNavigation', () => {
 
         it('should remove the dropdown from the store when unmounting', () => {
             wrapper.unmount();
+
             expect(store.getState().subNavigations.length).toBe(0);
         });
 
@@ -86,46 +87,44 @@ describe('SubNavigation', () => {
         });
     });
 
-    describe('<SubNavigationConnected />', () => {
-        it('should select the first menu item when mounting', () => {
-            store = TestUtils.buildStore();
-            const props: ISubNavigationProps = {
-                id: 'sub-nav-id',
-                items: [
-                    {id: 'a', label: 'A'},
-                    {id: 'b', label: 'B'},
-                ],
-            };
+    it('should select the first menu item when mounting', () => {
+        store = TestUtils.buildStore();
+        const props: ISubNavigationProps = {
+            id: 'sub-nav-id',
+            items: [
+                {id: 'a', label: 'A'},
+                {id: 'b', label: 'B'},
+            ],
+        };
 
-            wrapper = mount(
+        wrapper = mount(
+            <Provider store={store}>
+                <SubNavigationConnected {...props} />
+            </Provider>,
+            {attachTo: document.getElementById('App')}
+        );
+        act(() => {
+            wrapper.update();
+        });
+
+        expect(findWhere(store.getState().subNavigations, {id: props.id}).selected).toBe(props.items[0].id);
+        wrapper.unmount();
+    });
+
+    it('should not throw when there is no items', () => {
+        store = TestUtils.buildStore();
+        const props: ISubNavigationProps = {
+            id: 'sub-nav-id',
+            items: [],
+        };
+
+        expect(() =>
+            mount(
                 <Provider store={store}>
                     <SubNavigationConnected {...props} />
                 </Provider>,
                 {attachTo: document.getElementById('App')}
-            );
-            act(() => {
-                wrapper.update();
-            });
-
-            expect(findWhere(store.getState().subNavigations, {id: props.id}).selected).toBe(props.items[0].id);
-            wrapper.unmount();
-        });
-
-        it('should not throw when there is no items', () => {
-            store = TestUtils.buildStore();
-            const props: ISubNavigationProps = {
-                id: 'sub-nav-id',
-                items: [],
-            };
-
-            expect(() =>
-                mount(
-                    <Provider store={store}>
-                        <SubNavigationConnected {...props} />
-                    </Provider>,
-                    {attachTo: document.getElementById('App')}
-                ).unmount()
-            ).not.toThrow();
-        });
+            ).unmount()
+        ).not.toThrow();
     });
 });

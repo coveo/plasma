@@ -84,11 +84,13 @@ describe('Modal with Prevent Navigation', () => {
 
     it('should not have a PreventNavigationPrompt when isDirty is false', () => {
         shallowWithProps({}, false);
+
         expect(component.find(PreventNavigationPrompt).exists()).toBe(false);
     });
 
     it('should have a PreventNavigationPrompt when isDirty is true', () => {
         shallowWithProps({}, true);
+
         expect(component.find(PreventNavigationPrompt).exists()).toBe(true);
     });
 
@@ -96,6 +98,7 @@ describe('Modal with Prevent Navigation', () => {
         shallowWithProps({}, true);
 
         const props: PreventNavigationPromptProps = component.find(PreventNavigationPrompt).props();
+
         expect(props.id).toBe(`prevent-navigation-${SomeModal.ID}`);
         expect(props.title).toBe(preventNavigationDefaultConfig.title);
         expect(props.content).toBe(preventNavigationDefaultConfig.content);
@@ -117,6 +120,7 @@ describe('Modal with Prevent Navigation', () => {
         shallowWithProps(customConfig, true);
 
         const props: PreventNavigationPromptProps = component.find(PreventNavigationPrompt).props();
+
         expect(props.id).toBe(`prevent-navigation-${SomeModal.ID}`);
         expect(props.title).toBe(customConfig.title);
         expect(props.content).toBe(customConfig.content);

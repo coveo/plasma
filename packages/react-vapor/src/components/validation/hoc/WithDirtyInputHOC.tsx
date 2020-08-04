@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IInputOwnProps} from '../../input/Input';
 import {ValidationActions} from '../ValidationActions';
@@ -25,11 +26,12 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
         resetDirtyOnUnmount,
         ...props
     }) => {
-        React.useEffect(() => {
-            return () => {
+        React.useEffect(
+            () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
-            };
-        }, []);
+            },
+            [props.id, clearIsDirty, resetDirtyOnUnmount]
+        );
 
         return (
             <Component

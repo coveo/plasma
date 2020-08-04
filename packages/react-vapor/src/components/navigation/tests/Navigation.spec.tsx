@@ -14,12 +14,10 @@ describe(' navigation', () => {
         totalEntries: 12,
     };
 
-    describe('<Navigation />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<Navigation {...basicNavigationProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Navigation {...basicNavigationProps} />);
+        }).not.toThrow();
     });
 
     describe('<Navigation />', () => {
@@ -57,6 +55,7 @@ describe(' navigation', () => {
             expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(false);
 
             navigation.setProps(newNavigationProps);
+
             expect(navigation.find(NavigationPagination).closest('div').hasClass('hidden')).toBe(true);
         });
 
@@ -66,6 +65,7 @@ describe(' navigation', () => {
             expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(false);
 
             navigation.setProps(newNavigationProps);
+
             expect(navigation.find(NavigationPerPage).closest('div').hasClass('hidden')).toBe(true);
         });
 
@@ -78,6 +78,7 @@ describe(' navigation', () => {
             expect(navigation.find(NavigationPerPage).props().currentPerPage).toBeUndefined();
 
             navigation.setProps(newNavigationProps).update();
+
             expect(navigation.find(NavigationPerPage).props().currentPerPage).toBe(expectedPerPage);
         });
 
@@ -93,6 +94,7 @@ describe(' navigation', () => {
                 onPerPageClick,
             });
             navigation.setProps(newNavigationProps).update().find(NavigationPerPageSelect).last().simulate('click');
+
             expect(onPerPageClick).toHaveBeenCalledWith(expectedPerPage, currentPerPage, undefined); // newPerPage, currentPerPage, currentPage (currentPerPage and currentPage are undefined unless passed as props)
         });
     });

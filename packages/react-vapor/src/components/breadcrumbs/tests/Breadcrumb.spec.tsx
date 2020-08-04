@@ -28,6 +28,7 @@ describe('<Breadcrumb/>', () => {
 
         it('should render the default title', () => {
             const titleComponent = breadcrumbComponent.find(Title);
+
             expect(titleComponent.length).toEqual(1);
             expect(titleComponent.props().text).toEqual(defaultProps.title.text);
         });
@@ -47,6 +48,7 @@ describe('<Breadcrumb/>', () => {
             renderBreadcrumb({
                 links: [],
             });
+
             expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(0);
         });
 
@@ -54,6 +56,7 @@ describe('<Breadcrumb/>', () => {
             renderBreadcrumb({
                 links: [defaultLink],
             });
+
             expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(1);
         });
 
@@ -65,6 +68,7 @@ describe('<Breadcrumb/>', () => {
             renderBreadcrumb({
                 links: [defaultLink, secondLink],
             });
+
             expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(2);
         });
 
@@ -73,6 +77,7 @@ describe('<Breadcrumb/>', () => {
                 links: [defaultLink],
                 defaultLinkPath: 'test/',
             });
+
             expect(breadcrumbComponent.find(BreadcrumbLink).props().link).toContain('test/');
         });
     });

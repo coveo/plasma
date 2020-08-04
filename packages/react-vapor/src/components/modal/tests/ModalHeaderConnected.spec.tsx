@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -62,11 +62,14 @@ describe('ModalHeader', () => {
 
         it('should close the modalHeader in the store when clicking on modalHeader x', () => {
             store.dispatch(addModal(id));
+
             expect(_.findWhere(store.getState().modals, (modal: IModalState) => modal.id === id).isOpened).toBe(false);
             store.dispatch(openModal(id));
+
             expect(_.findWhere(store.getState().modals, (modal: IModalState) => modal.id === id).isOpened).toBe(true);
 
             modalHeader.find('.small-close').simulate('click');
+
             expect(_.findWhere(store.getState().modals, (modal: IModalState) => modal.id === id).isOpened).toBe(false);
         });
     });

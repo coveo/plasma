@@ -28,12 +28,15 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store));
-            expect(shallowWithStore(<TableHeaderWithSort {...defaultProps} isDefault />, store));
+            expect(() => {
+                shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store);
+                shallowWithStore(<TableHeaderWithSort {...defaultProps} isDefault />, store);
+            }).not.toThrow();
         });
 
         it('should render a th', () => {
             const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
+
             expect(wrapper.find('th').exists()).toBe(true);
         });
 

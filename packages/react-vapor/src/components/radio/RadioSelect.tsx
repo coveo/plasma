@@ -51,8 +51,8 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     }
 
     render() {
-        const children = React.Children.map(this.props.children, (child: React.ReactElement<any>) => {
-            return React.cloneElement(child, {
+        const children = React.Children.map(this.props.children, (child: React.ReactElement<any>) =>
+            React.cloneElement(child, {
                 name: child.props.name || this.props.name,
                 checked: this.props.value === child.props.value,
                 disabled: this.isValueDisabled(child.props.value),
@@ -63,8 +63,8 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
                     child.props.onClick && child.props.onClick(e);
                     this.handleToggle(child.props.value, e);
                 },
-            });
-        });
+            })
+        );
 
         return <div className={classNames('form-control radio-select', this.props.className)}>{children}</div>;
     }

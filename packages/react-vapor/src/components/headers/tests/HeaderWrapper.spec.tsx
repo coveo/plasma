@@ -15,6 +15,7 @@ describe('<HeaderWrapper/>', () => {
     it('should render the description when specified', () => {
         const money = '💰';
         const header = shallow(<HeaderWrapper description={money} />);
+
         expect(header.find('h4').text()).toBe(money);
     });
 

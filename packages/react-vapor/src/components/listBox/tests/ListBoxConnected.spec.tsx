@@ -45,6 +45,7 @@ describe('ListBox', () => {
 
             it('should not throw on unmount', () => {
                 mountListBox();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 
@@ -105,6 +106,7 @@ describe('ListBox', () => {
 
             listBox.find(ItemBox).first().find('li').simulate('click');
             const state = _.findWhere(store.getState().listBoxes, {id});
+
             expect(state.selected).toEqual([items[0].value]);
         });
     });

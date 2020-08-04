@@ -17,6 +17,7 @@ describe('SearchBar', () => {
         const containerDiv = shallow(<SearchBar {...requiredProps} />)
             .find('div')
             .first();
+
         expect(containerDiv.hasClass('search-bar')).toBe(true);
         expect(containerDiv.hasClass('search-bar-loading')).toBe(false);
         expect(containerDiv.hasClass('search-bar-disabled')).toBe(false);
@@ -26,6 +27,7 @@ describe('SearchBar', () => {
         const containerDiv = shallow(<SearchBar {...requiredProps} searching />)
             .find('div')
             .first();
+
         expect(containerDiv.hasClass('search-bar-loading')).toBe(true);
     });
 
@@ -33,6 +35,7 @@ describe('SearchBar', () => {
         const containerDiv = shallow(<SearchBar {...requiredProps} disabled />)
             .find('div')
             .first();
+
         expect(containerDiv.hasClass('search-bar-disabled')).toBe(true);
     });
 
@@ -40,16 +43,19 @@ describe('SearchBar', () => {
         const containerDiv = shallow(<SearchBar {...requiredProps} containerClassNames="extra-class" />)
             .find('div')
             .first();
+
         expect(containerDiv.hasClass('extra-class')).toBe(true);
     });
 
     it('should have an input inside the div container with the search-bar-input class by default', () => {
         const component = shallow(<SearchBar {...requiredProps} />);
+
         expect(component.find('div').first().find('input').prop('className')).toBe('search-bar-input');
     });
 
     it('should have an input inside the div container with extra classes if passed as props', () => {
         const component = shallow(<SearchBar {...requiredProps} inputClassNames="extra-class" />);
+
         expect(component.find('div').first().find('input').prop('className')).toContain('extra-class');
     });
 
@@ -59,9 +65,11 @@ describe('SearchBar', () => {
         const clickableSpan = component.find('div .search-bar-icon-container span');
 
         (clickableSpan.props() as any).onClick();
+
         expect(searchSpy).toHaveBeenCalledTimes(1);
 
         const svg = clickableSpan.find(Svg);
+
         expect(svg.length).toBe(1);
         expect(svg.prop('svgName')).toBe('search');
         expect(svg.prop('svgClass')).toBe('fill-medium-blue');
@@ -69,9 +77,11 @@ describe('SearchBar', () => {
 
     it('should have an unclickable grey search svg if SearchBar is disabled', () => {
         const component = shallow(<SearchBar {...requiredProps} disabled />);
+
         expect(component.find('div .search-bar-icon-container span').length).toBe(0);
 
         const svg = component.find('div .search-bar-icon-container').find(Svg);
+
         expect(svg.length).toBe(1);
         expect(svg.prop('svgName')).toBe('search');
         expect(svg.prop('svgClass')).toBe('fill-light-grey');

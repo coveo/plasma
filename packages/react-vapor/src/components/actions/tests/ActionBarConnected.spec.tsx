@@ -19,33 +19,37 @@ import {SecondaryActions} from '../SecondaryActions';
 
 describe('Actions', () => {
     const id: string = 'secondary-actions';
-    const actions: IActionOptions[] = [
-        {
-            name: 'action',
-            link: 'http://coveo.com',
-            target: '_blank',
-            primary: true,
-            enabled: true,
-        },
-        {
-            name: 'action2',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: true,
-        },
-        {
-            name: 'action3',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: false,
-        },
-        {
-            name: 'action4',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: false,
-            hideDisabled: false,
-        },
-    ];
+    let actions: IActionOptions[];
     const itemFilter: string = 'the item';
     const itemFilterLabel: string = 'Item filter';
+
+    beforeAll(() => {
+        actions = [
+            {
+                name: 'action',
+                link: 'http://coveo.com',
+                target: '_blank',
+                primary: true,
+                enabled: true,
+            },
+            {
+                name: 'action2',
+                trigger: jasmine.createSpy('triggerMethod'),
+                enabled: true,
+            },
+            {
+                name: 'action3',
+                trigger: jasmine.createSpy('triggerMethod'),
+                enabled: false,
+            },
+            {
+                name: 'action4',
+                trigger: jasmine.createSpy('triggerMethod'),
+                enabled: false,
+                hideDisabled: false,
+            },
+        ];
+    });
 
     describe('<ActionBarConnected />', () => {
         let wrapper: ReactWrapper;
@@ -86,6 +90,7 @@ describe('Actions', () => {
             expect(actionsProp.length).toBe(
                 actions.filter((action) => action.enabled || action.hideDisabled === false).length
             );
+
             expect(actionsProp[0]).toEqual(jasmine.objectContaining(actions[0]));
         });
 
@@ -128,10 +133,12 @@ describe('Actions', () => {
         it('should call onRender prop when mounted', () => {
             wrapper.unmount();
             store.dispatch(clearState());
+
             expect(store.getState().actionBars.length).toBe(0);
             expect(store.getState().itemFilters.length).toBe(0);
 
             wrapper.mount();
+
             expect(store.getState().actionBars.length).toBe(1);
             expect(store.getState().itemFilters.length).toBe(1);
         });
@@ -152,6 +159,7 @@ describe('Actions', () => {
 
         it('should call onDestroy prop when will unmount', () => {
             wrapper.unmount();
+
             expect(store.getState().actionBars.length).toBe(0);
         });
 
@@ -174,6 +182,7 @@ describe('Actions', () => {
             wrapper.update();
 
             const promptProp = wrapper.find(ActionBar).props().prompt;
+
             expect(promptProp).toBeDefined();
 
             expect(wrapper.find(ActionBar).find(`.prompt-${expectedClass}`).length).toBe(1);

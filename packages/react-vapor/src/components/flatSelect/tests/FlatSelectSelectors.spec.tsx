@@ -5,6 +5,7 @@ describe('FlatSelectSelectors', () => {
     describe('getInput', () => {
         it('should return the default flatSelect state when the flatSelect is not in the store', () => {
             const FlatSelect = FlatSelectSelectors.getInput({flatSelect: []}, {id: 'nothing is selected by the user'});
+
             expect(FlatSelect).toEqual(flatSelectInitialState);
         });
 
@@ -17,6 +18,7 @@ describe('FlatSelectSelectors', () => {
                 {flatSelect: [expectedSelectedFlatSelect]},
                 {id: expectedSelectedFlatSelect.id}
             );
+
             expect(selectedFlatSelect).toEqual(expectedSelectedFlatSelect);
         });
     });
@@ -27,6 +29,7 @@ describe('FlatSelectSelectors', () => {
                 {flatSelect: []},
                 {id: 'nothing-is-selected-by-the-user'}
             );
+
             expect(selectedOptionId).toBeUndefined();
         });
 
@@ -39,6 +42,7 @@ describe('FlatSelectSelectors', () => {
                 {flatSelect: [expectedSelectedFlatSelect]},
                 {id: expectedSelectedFlatSelect.id}
             );
+
             expect(expectedSelectedFlatSelect.selectedOptionId).toEqual(selectedFlatSelectOptionId);
         });
     });

@@ -80,6 +80,7 @@ describe('Reducers', () => {
             describe('with a different id', () => {
                 it('should not change a textArea not having the id passed in the payload', () => {
                     const action = changeTextAreaValue('a different id', 'a new value');
+
                     expect(textAreasReducer(oldState, action)[0]).toEqual(oldState[0]);
                 });
             });

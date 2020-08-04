@@ -31,9 +31,10 @@ export const SecondaryActions: React.FunctionComponent<ISecondaryActionsProps> =
             return false;
         })
         // Filter out the last action if it's a separator
-        .filter((action: IActionOptions, index: number, actionItems: IActionOptions[]) => {
-            return index < actionItems.length - 1 || !action.separator;
-        });
+        .filter(
+            (action: IActionOptions, index: number, actionItems: IActionOptions[]) =>
+                index < actionItems.length - 1 || !action.separator
+        );
 
     if (isEmpty(filteredActions)) {
         return null;

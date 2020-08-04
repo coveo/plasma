@@ -86,6 +86,7 @@ describe('Table HOC', () => {
         it('should not throw when setting the count for an inexisting table', () => {
             const oldState: ITableWithPaginationState[] = [];
             const action = TableWithPaginationActions.setCount('how-can-this-be', 1);
+
             expect(() => TableWithPaginationReducers(oldState, action)).not.toThrow();
         });
     });

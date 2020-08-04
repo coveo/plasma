@@ -15,11 +15,13 @@ describe('dropReducer', () => {
         it('should create a new group if the groupId do not exist yet', () => {
             const newGroup = 'el Dinosaure';
             const newState = dropReducer(initialState, DropActions.toggle('big foot', newGroup, false));
+
             expect(newState[newGroup]).toBeDefined();
         });
 
         it('should update the id in the group if the current id in the state is different from the id in the payload', () => {
             const newId = 'Rox&Rouky';
+
             expect(dropReducer(initialState, DropActions.toggle(newId, groupId))[groupId].id).toBe(newId);
         });
 

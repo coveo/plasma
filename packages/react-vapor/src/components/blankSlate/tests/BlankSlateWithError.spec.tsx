@@ -1,5 +1,6 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+
 import {IBlankSlateProps} from '../BlankSlate';
 import {BlankSlateWithError} from '../BlankSlatesHOC';
 
@@ -13,7 +14,7 @@ describe('BlankSlateWithError Tests', () => {
             expect(() => {
                 const component = shallowWithState(<BlankSlateWithError {...defaultProps} />, {});
                 component.unmount();
-            });
+            }).not.toThrow();
         });
     });
 });

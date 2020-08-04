@@ -55,9 +55,7 @@ export const optionPickersReducer = (
         case OptionPickerActions.add:
             return [...state, optionPickerReducer(undefined, action)];
         case OptionPickerActions.remove:
-            return _.reject(state, (optionPicker: IOptionPickerState) => {
-                return action.payload.id === optionPicker.id;
-            });
+            return _.reject(state, (optionPicker: IOptionPickerState) => action.payload.id === optionPicker.id);
         case OptionPickerActions.change:
             return state.map((optionPicker: IOptionPickerState) => optionPickerReducer(optionPicker, action));
         case OptionPickerActions.reset:

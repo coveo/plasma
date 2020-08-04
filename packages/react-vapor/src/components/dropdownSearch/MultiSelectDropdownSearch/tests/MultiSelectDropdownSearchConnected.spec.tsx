@@ -63,14 +63,17 @@ describe('MultiSelectDropdownSearch', () => {
             it('should add a new dropdownSearch state in the store when mounted', () => {
                 wrapper.unmount();
                 store.dispatch(clearState());
+
                 expect(store.getState().dropdownSearch.length).toBe(0);
 
                 wrapper.mount();
+
                 expect(store.getState().dropdownSearch.length).toBe(1);
             });
 
             it('should call onDestroy prop when will unmount', () => {
                 wrapper.unmount();
+
                 expect(store.getState().dropdownSearch.length).toBe(0);
             });
         });
@@ -162,15 +165,18 @@ describe('MultiSelectDropdownSearch', () => {
                 wrapper.find('li span').first().simulate('mouseDown');
 
                 const selectedOption = store.getState().dropdownSearch[0].options[0];
+
                 expect(selectedOption).not.toBe(defaultSelectedOptionPlaceholder);
                 expect(selectedOption.value).toBe('test 1');
             });
 
             it('should add the filterText in the state on onFilterTextChange', () => {
                 const filter: string = 't';
+
                 expect(store.getState().dropdownSearch[0].filterText).toBe('');
 
                 multiSelectDropdownSearchConnected.props().onFilterTextChange(filter);
+
                 expect(store.getState().dropdownSearch[0].filterText).toBe(filter);
             });
 

@@ -30,6 +30,7 @@ describe('<BasicHeader/>', () => {
 
         it('should render the default title', () => {
             const titleComponent = basicHeaderComponent.find(Title);
+
             expect(titleComponent.length).toBe(1);
             expect(titleComponent.props().text).toBe(defaultProps.title.text);
         });

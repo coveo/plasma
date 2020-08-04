@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {
     CornerRibbon,
     DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
@@ -31,10 +32,14 @@ describe('LogoCard', () => {
     });
 
     describe('Default <LogoCard />', () => {
-        const defaultLogoCardProps: Partial<ILogoCardProps> = {
-            onClick: jasmine.createSpy('onClick'),
-            title: 'some logocard title',
-        };
+        let defaultLogoCardProps: Partial<ILogoCardProps>;
+
+        beforeAll(() => {
+            defaultLogoCardProps = {
+                onClick: jasmine.createSpy('onClick'),
+                title: 'some logocard title',
+            };
+        });
 
         beforeEach(() => {
             mountWithProps(defaultLogoCardProps);
@@ -78,16 +83,20 @@ describe('LogoCard', () => {
     });
 
     describe('Disabled <LogoCard />', () => {
-        const disabledLogoCardProps: Partial<ILogoCardProps> = {
-            disabled: true,
-            onClick: jasmine.createSpy('onClick'),
-            ribbon: {
-                label: 'ribbonWhenEnabled',
-            },
-            disabledRibbon: {
-                label: 'ribbonWhenDisabled',
-            },
-        };
+        let disabledLogoCardProps: Partial<ILogoCardProps>;
+
+        beforeAll(() => {
+            disabledLogoCardProps = {
+                disabled: true,
+                onClick: jasmine.createSpy('onClick'),
+                ribbon: {
+                    label: 'ribbonWhenEnabled',
+                },
+                disabledRibbon: {
+                    label: 'ribbonWhenDisabled',
+                },
+            };
+        });
 
         beforeEach(() => {
             mountWithProps(disabledLogoCardProps);

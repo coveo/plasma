@@ -13,13 +13,12 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
     const totalOptions = 23;
     const optionsPerPage = 10;
 
-    function getOptions(prependText: string, total: number) {
-        return _.times(total, (n: number) => (
+    const getOptions = (prependText: string, total: number) =>
+        _.times(total, (n: number) => (
             <div key={n}>
                 {prependText} {n}
             </div>
         ));
-    }
 
     beforeEach(() => {
         basicProps = {
@@ -86,9 +85,11 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options.slice(0, optionsPerPage));
 
             autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.next();
+
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options.slice(0, optionsPerPage * 2));
 
             autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.next();
+
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(basicProps.options);
         });
 
@@ -96,6 +97,7 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
             const newOptions = getOptions('Other options', 33);
 
             autoInfiniteScroll.setProps({options: newOptions});
+
             expect(autoInfiniteScroll.state('activeOptions')).toEqual(newOptions.slice(0, optionsPerPage));
         });
 

@@ -1,4 +1,3 @@
-// tslint:disable-next-line:no-unused-variable
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -6,14 +5,12 @@ import * as _ from 'underscore';
 import {IToastProps, Toast, ToastType} from '../Toast';
 
 describe('Toasts', () => {
-    let toastComponent: ReactWrapper<IToastProps, {}>;
+    let toastComponent: ReactWrapper<IToastProps>;
     let toastBasicAttributes: IToastProps;
     let toastInstance: Toast;
 
-    describe('<Toast />', () => {
-        it('should render without errors', () => {
-            expect(() => shallow(<Toast title="Hello" />)).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => shallow(<Toast title="Hello" />)).not.toThrow();
     });
 
     describe('<Toast />', () => {
@@ -51,6 +48,7 @@ describe('Toasts', () => {
             toastComponent.setProps(newToastAttributes).mount();
 
             toastComponent.unmount();
+
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
@@ -107,7 +105,7 @@ describe('Toasts', () => {
 
             toastComponent.setProps({className: expectedClass});
 
-            expect(toastComponent.hasClass(expectedClass));
+            expect(toastComponent.hasClass(expectedClass)).toBe(true);
         });
 
         it('should have a description when the content is set', () => {
@@ -167,11 +165,13 @@ describe('Toasts', () => {
             const newToastAttributes = _.extend({}, toastBasicAttributes, {onClose: jasmine.createSpy('onClose')});
 
             toastComponent.find(closeSelector).simulate('click');
+
             expect(newToastAttributes.onClose).not.toHaveBeenCalled();
 
             toastComponent.setProps(newToastAttributes).mount();
 
             toastComponent.find(closeSelector).simulate('click');
+
             expect(newToastAttributes.onClose).toHaveBeenCalledTimes(1);
         });
 
@@ -180,15 +180,17 @@ describe('Toasts', () => {
             const newToastAttributes = _.extend({}, toastBasicAttributes, {dismissible: false});
 
             toastComponent.setProps(newToastAttributes).mount();
+
             expect(toastComponent.find(closeSelector).length).toBe(0);
         });
     });
 
     describe('<Toast /> with a dismiss timer', () => {
-        const onCloseToast = jasmine.createSpy('onClose');
         const dismissDelay = 2000;
+        let onCloseToast: jasmine.Spy;
 
         beforeEach(() => {
+            onCloseToast = jasmine.createSpy('onClose');
             toastBasicAttributes = {
                 title: 'some title',
                 // Subtract 1 so the jasmine.tick work as expected
@@ -206,15 +208,18 @@ describe('Toasts', () => {
         afterEach(() => {
             jasmine.clock().uninstall();
             toastComponent.detach();
+            onCloseToast.calls.reset();
         });
 
         it('should call onClose when the timer expires', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
 
             jasmine.clock().tick(dismissDelay);
+
             expect(onCloseToast).toHaveBeenCalledTimes(1);
 
             jasmine.clock().tick(dismissDelay);
+
             expect(onCloseToast).toHaveBeenCalledTimes(1);
         });
 
@@ -229,6 +234,7 @@ describe('Toasts', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
 
             jasmine.clock().tick(dismissDelay);
+
             expect(onCloseToast).not.toHaveBeenCalled();
         });
 

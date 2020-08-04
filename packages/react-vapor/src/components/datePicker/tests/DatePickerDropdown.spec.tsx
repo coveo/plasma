@@ -27,13 +27,11 @@ describe('Date picker', () => {
         withDrop: true,
     };
 
-    describe('<DatePickerDropdown />', () => {
-        it('should mount and unmount without errors', () => {
-            expect(() => {
-                const wrapper = shallow(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />);
-                wrapper.unmount();
-            }).not.toThrow();
-        });
+    it('should mount and unmount without errors', () => {
+        expect(() => {
+            const wrapper = shallow(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />);
+            wrapper.unmount();
+        }).not.toThrow();
     });
 
     describe('<DatePickerDropdown />', () => {
@@ -328,6 +326,7 @@ describe('Date picker', () => {
                     .renderOpenButton(() => '') as any,
                 {}
             );
+
             expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain('EMPTY_LABEL');
         });
 
@@ -382,6 +381,7 @@ describe('Date picker', () => {
                 .find('.dropdown-toggle')
                 .props()
                 .onClick({} as any);
+
             expect(onClickSpy).toHaveBeenCalled();
         });
 
@@ -419,6 +419,7 @@ describe('Date picker', () => {
             shallowComponent(onDestroyProps);
 
             datePickerDropdown.unmount();
+
             expect(onDestroySpy).toHaveBeenCalled();
         });
 
@@ -429,6 +430,7 @@ describe('Date picker', () => {
             shallowComponent(propsIsOpened);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+
             expect(datePickerBoxWrapper.find(Button).length).toBe(2);
         });
 
@@ -440,6 +442,7 @@ describe('Date picker', () => {
             shallowComponent(newProps);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+
             expect(datePickerBoxWrapper.find(Button).first().props().name).toContain(DEFAULT_APPLY_DATE_LABEL);
         });
 
@@ -464,6 +467,7 @@ describe('Date picker', () => {
             shallowComponent(newProps);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+
             expect(datePickerBoxWrapper.find(Button).last().props().name).toContain(DEFAULT_CANCEL_DATE_LABEL);
         });
 
@@ -476,6 +480,7 @@ describe('Date picker', () => {
             shallowComponent(newProps);
 
             const datePickerBoxWrapper = shallow(datePickerDropdown.find(DatePickerBox).props().footer);
+
             expect(datePickerBoxWrapper.find(Button).last().props().name).toContain(cancelLabel);
         });
 
@@ -555,6 +560,7 @@ describe('Date picker', () => {
 
         it('should render a Drop', () => {
             const wrapper = shallowWithState(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />, {});
+
             expect(wrapper.find(Drop).length).toBe(1);
         });
 

@@ -1,23 +1,21 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
 import {ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow';
 
 describe('Tables', () => {
     let basicTableHeadingRowProps: ITableHeadingRowProps;
 
-    describe('<TableHeadingRow />', () => {
-        it('should render without errors', () => {
-            basicTableHeadingRowProps = {
-                isCollapsible: false,
-            };
+    it('should render without errors', () => {
+        basicTableHeadingRowProps = {
+            isCollapsible: false,
+        };
 
-            expect(() => {
-                shallow(<TableHeadingRow {...basicTableHeadingRowProps} />);
-            }).not.toThrow();
-        });
+        expect(() => {
+            shallow(<TableHeadingRow {...basicTableHeadingRowProps} />);
+        }).not.toThrow();
     });
 
     describe('<TableHeadingRow />', () => {
@@ -59,6 +57,7 @@ describe('Tables', () => {
             expect(tableHeadingRow.find('tr').hasClass(rowClass)).toBe(true);
 
             tableHeadingRow.setProps({isCollapsible: false});
+
             expect(tableHeadingRow.find('tr').hasClass(rowClass)).toBe(false);
         });
 
@@ -66,6 +65,7 @@ describe('Tables', () => {
             expect(tableHeadingRow.find(TableCollapsibleRowToggle).length).toBe(1);
 
             tableHeadingRow.setProps({isCollapsible: false});
+
             expect(tableHeadingRow.find(TableCollapsibleRowToggle).length).toBe(0);
         });
 
@@ -76,6 +76,7 @@ describe('Tables', () => {
             expect(tableHeadingRow.find('tr').hasClass(expectedClass)).toBe(false);
 
             tableHeadingRow.setProps(newTabledHeadingRowProps);
+
             expect(tableHeadingRow.find('tr').hasClass(expectedClass)).toBe(true);
         });
 
@@ -88,6 +89,7 @@ describe('Tables', () => {
             tableHeadingRow.unmount();
             tableHeadingRow.setProps(newTabledHeadingRowProps);
             tableHeadingRow.mount();
+
             expect(onRenderSpy).toHaveBeenCalled();
         });
 
@@ -101,6 +103,7 @@ describe('Tables', () => {
             tableHeadingRow.setProps(newTabledHeadingRowProps);
             tableHeadingRow.mount();
             tableHeadingRow.unmount();
+
             expect(onDestroySpy).toHaveBeenCalled();
         });
 

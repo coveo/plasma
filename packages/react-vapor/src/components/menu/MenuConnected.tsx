@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../button/Button';
@@ -49,7 +50,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMenuOwnProps): IMenu
 });
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class MenuConnected extends React.Component<IMenuProps, {}> {
+export class MenuConnected extends React.Component<IMenuProps> {
     private list: HTMLDivElement;
     private button: HTMLDivElement;
 

@@ -15,6 +15,7 @@ describe('<ScatterSeries />', () => {
 
     it('should render a <g>', () => {
         const component = shallow(<ScatterSeries />);
+
         expect(component.find('g').exists()).toBe(true);
     });
 

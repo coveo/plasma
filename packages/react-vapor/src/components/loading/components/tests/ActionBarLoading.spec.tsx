@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {ActionBarLoading} from '../ActionBarLoading';
 
 describe('ActionBarLoading tests', () => {
@@ -8,7 +9,7 @@ describe('ActionBarLoading tests', () => {
             expect(() => {
                 const wrapper = shallow(<ActionBarLoading />, {});
                 wrapper.unmount();
-            });
+            }).not.toThrow();
         });
     });
 });

@@ -17,6 +17,7 @@ describe('RefreshCallbackReducer', () => {
             expect(state['id']).toBe(RefreshStatus.started);
         });
     });
+
     describe('stop', () => {
         it('should add the id in the state if not there"', () => {
             state = refreshCallBackReducer({}, RefreshCallBackActions.stop('id'));
@@ -30,6 +31,7 @@ describe('RefreshCallbackReducer', () => {
             expect(state['id']).toBe(RefreshStatus.stopped);
         });
     });
+
     describe('inProgress', () => {
         it('should add the id in the state if not there"', () => {
             state = refreshCallBackReducer({}, RefreshCallBackActions.inProgress('id'));

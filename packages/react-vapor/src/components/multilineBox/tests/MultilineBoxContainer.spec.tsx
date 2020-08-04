@@ -21,6 +21,7 @@ describe('Multiline box container', () => {
         it('should not throw if the containerNode is not defined without data', () => {
             const testId = 'id';
             RTestUtils.mockUUID(testId);
+
             expect(() =>
                 shallowWithState(
                     <MultilineBoxContainer id={id} renderBody={(data: IMultilineSingleBoxProps[]) => <div />} />,
@@ -41,6 +42,7 @@ describe('Multiline box container', () => {
         it('should not throw if he containerNode is not defined and the data is defined ', () => {
             const testId = 'id';
             RTestUtils.mockUUID(testId);
+
             expect(() =>
                 shallowWithState(
                     <MultilineBoxContainer

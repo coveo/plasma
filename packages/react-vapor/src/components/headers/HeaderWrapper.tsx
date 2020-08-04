@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Content, IContentProps} from '../content/Content';
 import {ITabsHeaderProps, TabsHeader} from './TabsHeader';
 
@@ -12,7 +13,7 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps {
     hasPadding?: boolean;
 }
 
-export class HeaderWrapper extends React.Component<IHeaderWrapperProps, {}> {
+export class HeaderWrapper extends React.Component<IHeaderWrapperProps> {
     static defaultProps: Partial<IHeaderWrapperProps> = {
         hasBorderBottom: true,
         hasPadding: true,

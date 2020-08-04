@@ -1,24 +1,26 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {DateUtils} from '../../../utils/DateUtils';
 import {DatePicker, DEFAULT_DATE_PICKER_COLOR, IDatePickerProps} from '../DatePicker';
 import {DateLimits} from '../DatePickerActions';
 
 describe('Date picker', () => {
-    const DATE_PICKER_BASIC_PROPS: IDatePickerProps = {
-        onClick: jasmine.createSpy('onClick'),
-        onBlur: jasmine.createSpy('onBlur'),
-        placeholder: 'Pick a date',
-    };
+    let DATE_PICKER_BASIC_PROPS: IDatePickerProps;
 
-    describe('<DatePicker />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<DatePicker {...DATE_PICKER_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        DATE_PICKER_BASIC_PROPS = {
+            onClick: jasmine.createSpy('onClick'),
+            onBlur: jasmine.createSpy('onBlur'),
+            placeholder: 'Pick a date',
+        };
+    });
+
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<DatePicker {...DATE_PICKER_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<DatePicker />', () => {
@@ -75,18 +77,22 @@ describe('Date picker', () => {
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower, upperLimit: false});
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(true);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.upper, upperLimit: false});
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.upper, upperLimit: true});
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(true);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower, upperLimit: true});
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
             }
         );
@@ -102,11 +108,13 @@ describe('Date picker', () => {
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: new Date()});
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(true);
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(true);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: new Date(), color: 'white'});
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
                 expect(datePicker.find('input').hasClass(`bg-${newProps.color}`)).toBe(true);
 
@@ -116,6 +124,7 @@ describe('Date picker', () => {
                     upperLimit: false,
                 });
                 datePicker.setProps(newProps);
+
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
             }
@@ -267,6 +276,7 @@ describe('Date picker', () => {
             (DATE_PICKER_BASIC_PROPS.onBlur as jasmine.Spy).calls.reset();
 
             datePicker.simulate('focus');
+
             expect(DATE_PICKER_BASIC_PROPS.onBlur).not.toHaveBeenCalled();
         });
 

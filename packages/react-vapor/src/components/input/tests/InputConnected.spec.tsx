@@ -52,31 +52,37 @@ describe('<InputConnected />', () => {
     describe('dispatch props', () => {
         it('should not throw when calling onRender with basic props', () => {
             mountComponentWithProps(inputProps);
+
             expect(() => wrapper.find(Input).prop('onRender')()).not.toThrow();
         });
 
         it('should not throw when calling onRender with validateOnMount set as a prop', () => {
             mountComponentWithProps({...inputProps, validateOnMount: true});
+
             expect(() => wrapper.find(Input).prop('onRender')()).not.toThrow();
         });
 
         it('should not throw when calling onDestroy', () => {
             mountComponentWithProps(inputProps);
+
             expect(() => wrapper.find(Input).prop('onDestroy')()).not.toThrow();
         });
 
         it('should not throw when calling onChange with basic props', () => {
             mountComponentWithProps(inputProps);
+
             expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
 
         it('should not throw when calling onChange when validateOnChange is set as a prop but not validate', () => {
             mountComponentWithProps({...inputProps, validateOnChange: true});
+
             expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
 
         it('should not throw when calling onChange when validateOnChange and validate are set as props', () => {
             mountComponentWithProps({...inputProps, validateOnChange: true, validate: (value: string) => !!value});
+
             expect(() => wrapper.find(Input).prop('onChange')()).not.toThrow();
         });
     });
@@ -86,6 +92,7 @@ describe('<InputConnected />', () => {
             mountComponentWithProps(inputProps);
 
             const input = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(input.value).toBe('');
             expect(input.valid).toBe(true);
             expect(input.disabled).toBe(false);
@@ -96,6 +103,7 @@ describe('<InputConnected />', () => {
             mountComponentWithProps({...inputProps, defaultValue});
 
             const input = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(input.value).toBe(defaultValue);
         });
 
@@ -104,6 +112,7 @@ describe('<InputConnected />', () => {
             mountComponentWithProps({...inputProps, disabledOnMount});
 
             const input = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(input.disabled).toBe(disabledOnMount);
         });
 
@@ -144,12 +153,14 @@ describe('<InputConnected />', () => {
         it('should change the value in the store to the new value and leave the valid value unchanged', () => {
             mountComponentWithProps(inputProps);
             const oldInputState = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(oldInputState.value).toBe('');
 
             (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = 'new value';
             wrapper.find('input').simulate('change');
 
             const newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(newInputState.value).toBe('new value');
             expect(newInputState.valid).toBe(oldInputState.valid);
         });
@@ -163,6 +174,7 @@ describe('<InputConnected />', () => {
             wrapper.find('input').simulate('change');
 
             let newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(validate(newInputState.value)).toBe(true);
             expect(newInputState.valid).toBe(validate(newInputState.value));
 
@@ -170,9 +182,11 @@ describe('<InputConnected />', () => {
             wrapper.find('input').simulate('change');
 
             newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
+
             expect(validate(newInputState.value)).toBe(false);
             expect(newInputState.valid).toBe(validate(newInputState.value));
         });
+
         it('should call changeDirtyState if set as props', () => {
             const changeDirtyStateSpy = jasmine.createSpy();
             const wrapperInputConnected = shallowWithState(<InputConnected />, {});

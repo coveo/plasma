@@ -27,15 +27,18 @@ describe('ColorBar', () => {
 
     it('should fill the no-color width with transparent if colored width does not reach 100%', () => {
         const colorBars = shallow(<ColorBar widthPerColor={{blue: 20}} />).find('.color-bar-color');
+
         expect(colorBars.length).toBe(2);
 
         const coloredStyle = colorBars.first().prop('style');
         const coloredColorProp = colorBars.first().prop('color');
+
         expect(coloredColorProp).toBe('blue');
         expect(coloredStyle.width).toBe('20%');
 
         const transparentStyle = colorBars.last().prop('style');
         const transparentColorProp = colorBars.last().prop('color');
+
         expect(transparentColorProp).toBe('transparent');
         expect(transparentStyle.width).toBe('80%');
     });
@@ -73,6 +76,7 @@ describe('ColorBar', () => {
             .forEach((color) => {
                 const {width} = color.prop('style');
                 const colorProp = color.first().prop('color');
+
                 expect(doubledWidthProps.widthPerColor[colorProp] / 2).toBe(parseInt(width.toString(), 10));
             });
     });

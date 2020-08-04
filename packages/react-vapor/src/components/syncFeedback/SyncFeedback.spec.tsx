@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {each} from 'underscore';
+
 import {SyncFeedback, SyncFeedbackState} from './SyncFeedback';
 
 describe('<SyncFeedback>', () => {
@@ -29,6 +29,7 @@ describe('<SyncFeedback>', () => {
 
         each([SyncFeedbackState.SYNCING, SyncFeedbackState.SUCCESS, SyncFeedbackState.ERROR], (state: string) => {
             const wrapper = shallow(<SyncFeedback state={state} feedback={expectedFeedback} />);
+
             expect(wrapper.find('.sync-feedback-text').length).toBe(1);
             expect(wrapper.find('.sync-feedback-text').text()).toBe(expectedFeedback);
         });
@@ -37,6 +38,7 @@ describe('<SyncFeedback>', () => {
     it('should have the mod-error class whent the state is ERROR', () => {
         const expectedClass = 'mod-error';
         const wrapper = shallow(<SyncFeedback state={SyncFeedbackState.ERROR} />);
+
         expect(wrapper.find('.sync-feedback').length).toBe(1);
         expect(wrapper.find('.sync-feedback').hasClass(expectedClass)).toBe(true);
     });
@@ -44,6 +46,7 @@ describe('<SyncFeedback>', () => {
     it('should have the mod-success class whent the state is ERROR', () => {
         const expectedClass = 'mod-success';
         const wrapper = shallow(<SyncFeedback state={SyncFeedbackState.SUCCESS} />);
+
         expect(wrapper.find('.sync-feedback').length).toBe(1);
         expect(wrapper.find('.sync-feedback').hasClass(expectedClass)).toBe(true);
     });
@@ -53,11 +56,13 @@ describe('<SyncFeedback>', () => {
         const errorClass = 'mod-error';
 
         const noneWrapper = shallow(<SyncFeedback state={SyncFeedbackState.NONE} />);
+
         expect(noneWrapper.find('.sync-feedback').length).toBe(1);
         expect(noneWrapper.find('.sync-feedback').hasClass(successClass)).toBe(false);
         expect(noneWrapper.find('.sync-feedback').hasClass(errorClass)).toBe(false);
 
         const syncingWrapper = shallow(<SyncFeedback state={SyncFeedbackState.SYNCING} />);
+
         expect(syncingWrapper.find('.sync-feedback').length).toBe(1);
         expect(syncingWrapper.find('.sync-feedback').hasClass(successClass)).toBe(false);
         expect(syncingWrapper.find('.sync-feedback').hasClass(errorClass)).toBe(false);

@@ -41,6 +41,7 @@ describe('Table HOC', () => {
 
         it('should render a tr', () => {
             const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+
             expect(wrapper.find('tr').exists()).toBe(true);
         });
 
@@ -55,22 +56,26 @@ describe('Table HOC', () => {
                 ],
             });
             const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+
             expect(wrapper.find('tr').hasClass('selected')).toBe(true);
         });
 
         it('should have the class "row-disabled" if the row has disabled prop to true', () => {
             const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" disabled />, store).dive();
+
             expect(wrapper.find('tr').hasClass('row-disabled')).toBe(true);
         });
 
         it('should have the class "no-hover" if the row has actions prop empty', () => {
             const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+
             expect(wrapper.find('tr').hasClass('no-hover')).toBe(true);
         });
 
         it('should not have the class "no-hover" if the row has actions prop', () => {
             const actions = [{name: 'name', enabled: true}];
             const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" actions={actions} />, store).dive();
+
             expect(wrapper.find('tr').hasClass('no-hover')).not.toBe(true);
         });
 
@@ -85,6 +90,7 @@ describe('Table HOC', () => {
                 ],
             });
             const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+
             expect(wrapper.find('tr').hasClass('selected')).toBe(false);
         });
 
@@ -189,9 +195,11 @@ describe('Table HOC', () => {
             ).dive();
 
             wrapper.find('tr').simulate('click', {ctrlKey: true});
+
             expect(store.getActions()).toContain(expectedActionWithMulti);
 
             wrapper.find('tr').simulate('click', {ctrlKey: false});
+
             expect(store.getActions()).toContain(expectedActionWithoutMulti);
         });
 
@@ -207,6 +215,7 @@ describe('Table HOC', () => {
             ).dive();
 
             wrapper.find('tr').simulate('doubleclick');
+
             expect(triggerActionSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -248,6 +257,7 @@ describe('Table HOC', () => {
 
             it('should render an additional row for the collapsible content', () => {
                 shallowComponent();
+
                 expect(wrapper.find('tr').length).toBe(2);
                 expect(wrapper.find('tr').at(0).hasClass('heading-row')).toBe(true);
                 expect(wrapper.find('tr').at(1).hasClass('collapsible-row')).toBe(true);
@@ -255,21 +265,25 @@ describe('Table HOC', () => {
 
             it('should render a single cell in the collapsible row that spans accross all the columns +1 for the toggle', () => {
                 shallowComponent();
+
                 expect(wrapper.find('tr.collapsible-row td').props().colSpan).toBe(3 + 1);
             });
 
             it('should render the collapsible content node inside the collapsible row', () => {
                 shallowComponent();
+
                 expect(wrapper.find('tr.collapsible-row td').contains(collapsibleContent)).toBe(true);
             });
 
             it('should have the class opened if the row is opened in the state', () => {
                 shallowComponent();
+
                 expect(wrapper.find('tr.heading-row').hasClass('opened')).toBe(true);
             });
 
             it('should render a CollapsibleToggle as collapsed state indicator if no customToggle is specified', () => {
                 shallowComponent();
+
                 expect(wrapper.find(CollapsibleToggle).exists()).toBe(true);
                 expect(wrapper.find(CollapsibleToggle).props().expanded).toBe(true);
             });
@@ -300,6 +314,7 @@ describe('Table HOC', () => {
 
             it('should set the collapsibleToggle null if the content is null', () => {
                 shallowComponent({collapsible: {content: null}});
+
                 expect(wrapper.find(CollapsibleToggle).length).toBe(0);
             });
         });
@@ -355,6 +370,7 @@ describe('Table HOC', () => {
                 />,
                 store
             ).dive();
+
             expect(store.getActions()).not.toContain(expectedAction);
 
             row.setProps({
@@ -363,6 +379,7 @@ describe('Table HOC', () => {
                     content: <div>Whatever</div>,
                 },
             });
+
             expect(store.getActions()).toContain(expectedAction);
         });
 
@@ -384,6 +401,7 @@ describe('Table HOC', () => {
                 <TableRowConnected id={defaultProps.id} tableId={defaultProps.tableId} />,
                 store
             ).dive();
+
             expect(store.getActions()).not.toContain(actionNotExpected);
 
             row.setProps({
@@ -391,6 +409,7 @@ describe('Table HOC', () => {
                     content: <div>Whatever</div>,
                 },
             });
+
             expect(store.getActions()).not.toContain(actionNotExpected);
         });
 
@@ -423,6 +442,7 @@ describe('Table HOC', () => {
                 'click',
                 jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation'])
             );
+
             expect(spy).toHaveBeenCalledWith(true);
         });
 
@@ -455,6 +475,7 @@ describe('Table HOC', () => {
                 'click',
                 jasmine.createSpyObj('event', ['preventDefault', 'stopPropagation'])
             );
+
             expect(spy).toHaveBeenCalledWith(false);
         });
     });

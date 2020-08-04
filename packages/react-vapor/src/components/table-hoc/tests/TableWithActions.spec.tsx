@@ -14,8 +14,9 @@ describe('Table HOC', () => {
         const TableWithActions = _.compose(tableWithActions())(TableHOC);
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithActions id="a" data={[]} renderBody={_.identity} />, {}));
-            expect(
+            expect(() => {
+                shallowWithState(<TableWithActions id="a" data={[]} renderBody={_.identity} />, {});
+
                 shallowWithState(
                     <TableWithActions
                         id="b"
@@ -29,17 +30,19 @@ describe('Table HOC', () => {
                         }
                     />,
                     {}
-                )
-            );
+                );
+            }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
             const wrapper = shallowWithState(<TableWithActions id="a" data={[]} renderBody={_.identity} />, {}).dive();
+
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should add the hasActionButtons prop on the table', () => {
             const wrapper = shallowWithState(<TableWithActions id="a" data={[]} renderBody={_.identity} />, {}).dive();
+
             expect(wrapper.find(TableHOC).prop('hasActionButtons')).toBe(true);
         });
 
@@ -49,8 +52,10 @@ describe('Table HOC', () => {
             let store: ReactVaporMockStore;
 
             const shallowComponent = () => {
+                /* eslint-disable jasmine/no-unsafe-spy */
                 spyOn(document.body, 'contains').and.returnValue(true);
                 const spy = spyOn(document, 'addEventListener');
+                /* eslint-enable */
 
                 store = getStoreMock({});
                 wrapper = shallowWithStore(

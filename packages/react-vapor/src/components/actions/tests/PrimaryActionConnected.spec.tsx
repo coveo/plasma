@@ -12,14 +12,18 @@ import {TriggerActionConnected} from '../TriggerActionConnected';
 
 describe('Actions', () => {
     describe('TablePrimaryActionView', () => {
-        const action: IActionOptions = {
-            name: 'action2',
-            trigger: jasmine.createSpy('triggerMethod'),
-            enabled: true,
-        };
+        let action: IActionOptions;
         let wrapper: ReactWrapper<any, any>;
         let primaryAction: ReactWrapper<IPrimaryActionProps, any>;
         let store: Store<IReactVaporState>;
+
+        beforeAll(() => {
+            action = {
+                name: 'action2',
+                trigger: jasmine.createSpy('triggerMethod'),
+                enabled: true,
+            };
+        });
 
         beforeEach(() => {
             store = TestUtils.buildStore();

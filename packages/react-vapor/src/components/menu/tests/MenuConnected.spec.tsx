@@ -44,6 +44,7 @@ describe('Menu', () => {
 
             it('should not throw on unmount', () => {
                 mountMenuConnected();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 
@@ -124,12 +125,15 @@ describe('Menu', () => {
                 mountMenuConnected();
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
+
                 expect(store.getState().menus[id].open).toBe(true, '1');
 
                 clickOnEl(menuWrapper.find('.select-dropdown-container').getDOMNode());
+
                 expect(store.getState().menus[id].open).toBe(true, '2');
 
                 clickOnEl();
+
                 expect(store.getState().menus[id].open).toBe(false, '3');
             });
 
@@ -139,6 +143,7 @@ describe('Menu', () => {
                 expect(store.getState().menus[id].open).toBe(false);
 
                 clickOnEl();
+
                 expect(store.getState().menus[id].open).toBe(false);
             });
 
@@ -146,9 +151,11 @@ describe('Menu', () => {
                 mountMenuConnected();
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
+
                 expect(store.getState().menus[id].open).toBe(true, 'open menu');
 
                 menuWrapper.find('.select-dropdown-container').simulate('click');
+
                 expect(store.getState().menus[id].open).toBe(false, 'close menu');
             });
 
@@ -156,9 +163,11 @@ describe('Menu', () => {
                 mountMenuConnected([], {closeOnSelectItem: false});
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
+
                 expect(store.getState().menus[id].open).toBe(true, 'open menu');
 
                 menuWrapper.find('.select-dropdown-container').simulate('click');
+
                 expect(store.getState().menus[id].open).toBe(true, 'menu keep open');
             });
         });

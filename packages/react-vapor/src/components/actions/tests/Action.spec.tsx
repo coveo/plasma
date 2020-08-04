@@ -6,35 +6,37 @@ import {Svg} from '../../svg/Svg';
 import {Action, IActionOptions, IActionProps} from '../Action';
 
 describe('Actions', () => {
-    const action: IActionOptions = {
-        name: 'action',
-        trigger: jasmine.createSpy('triggerMethod'),
-        enabled: true,
-    };
+    let action: IActionOptions;
 
-    describe('<Action />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<Action action={action} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        action = {
+            name: 'action',
+            trigger: jasmine.createSpy('triggerMethod'),
+            enabled: true,
+        };
+    });
 
-        it('should have a defaultProp hideDisabled set to true', () => {
-            expect(Action.defaultProps.hideDisabled).toBe(true);
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Action action={action} />);
+        }).not.toThrow();
+    });
 
-        it('should add the id of the action on a data-trigger attribute', () => {
-            const expectedId = 'cut';
-            const component = shallow(<Action action={{...action, id: expectedId}} />);
+    it('should have a defaultProp hideDisabled set to true', () => {
+        expect(Action.defaultProps.hideDisabled).toBe(true);
+    });
 
-            expect(component.find('.action-label').prop('data-trigger')).toBe(expectedId);
-        });
+    it('should add the id of the action on a data-trigger attribute', () => {
+        const expectedId = 'cut';
+        const component = shallow(<Action action={{...action, id: expectedId}} />);
 
-        it('should add the name of the action on a data-trigger attribute if the id is not defined', () => {
-            const component = shallow(<Action action={action} />);
+        expect(component.find('.action-label').prop('data-trigger')).toBe(expectedId);
+    });
 
-            expect(component.find('.action-label').prop('data-trigger')).toBe(action.name);
-        });
+    it('should add the name of the action on a data-trigger attribute if the id is not defined', () => {
+        const component = shallow(<Action action={action} />);
+
+        expect(component.find('.action-label').prop('data-trigger')).toBe(action.name);
     });
 
     describe('<Action />', () => {

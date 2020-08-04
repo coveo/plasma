@@ -46,18 +46,22 @@ describe('Component with editing', () => {
 
     it('should not set the component as dirty if isDirty is not set to true in the config', () => {
         mountComponentWithProps();
+
         expect(store.getState().dirtyComponents).toEqual([]);
     });
 
     it('should set the component as dirty if isDirty is set to true in the config', () => {
         mountComponentWithProps({id: SomeInput.ID, isDirty: true});
+
         expect(store.getState().dirtyComponents).toEqual([SomeInput.ID]);
     });
 
     it('should remove the component as dirty in the state on unmount', () => {
         const component = mountComponentWithProps({id: SomeInput.ID, isDirty: true});
+
         expect(store.getState().dirtyComponents).toEqual([SomeInput.ID]);
         component.unmount();
+
         expect(store.getState().dirtyComponents).toEqual([]);
     });
 
@@ -67,6 +71,7 @@ describe('Component with editing', () => {
 
     it('should render a sticky footer if footerChildren are passed', () => {
         const footerChildren = <Button />;
+
         expect(mountComponentWithProps({id: SomeInput.ID, footerChildren}).find(StickyFooter).length).toBe(1);
     });
 });

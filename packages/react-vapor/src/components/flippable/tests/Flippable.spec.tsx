@@ -112,6 +112,7 @@ describe('Flippable', () => {
             });
 
             flippable.find(`.${Flippable.sides.FRONT}`).simulate('click');
+
             expect(onFlipSpy).not.toHaveBeenCalled();
 
             flippable.setProps({
@@ -119,6 +120,7 @@ describe('Flippable', () => {
             });
 
             flippable.find(`.${Flippable.sides.FRONT}`).simulate('click');
+
             expect(onFlipSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -149,6 +151,7 @@ describe('Flippable', () => {
                 });
 
                 document.getElementById('App').click();
+
                 expect(onUnflipSpy).not.toHaveBeenCalled();
 
                 flippable.setProps({
@@ -156,9 +159,11 @@ describe('Flippable', () => {
                 });
 
                 flippable.find(`.${Flippable.sides.FRONT}`).simulate('click');
+
                 expect(onUnflipSpy).not.toHaveBeenCalled();
 
                 document.getElementById('App').click();
+
                 expect(onUnflipSpy).toHaveBeenCalledTimes(1);
             }
         );
@@ -173,10 +178,11 @@ describe('Flippable', () => {
             });
 
             document.getElementById('App').click();
+
             expect(onUnflipSpy).not.toHaveBeenCalled();
         });
 
-        it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {
+        it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns true', () => {
             const onUnflipSpy = jasmine.createSpy('onUnflip');
 
             flippable.setProps({
@@ -186,6 +192,7 @@ describe('Flippable', () => {
             });
 
             document.getElementById('App').click();
+
             expect(onUnflipSpy).toHaveBeenCalledTimes(1);
         });
     });

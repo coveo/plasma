@@ -75,9 +75,7 @@ export const actionBarsReducer = (
         case ActionBarActions.add:
             return [...state, actionBarReducer(undefined, action)];
         case ActionBarActions.remove:
-            return _.reject(state, (bar) => {
-                return action.payload.id === bar.id;
-            });
+            return _.reject(state, (bar) => action.payload.id === bar.id);
         default:
             return state;
     }

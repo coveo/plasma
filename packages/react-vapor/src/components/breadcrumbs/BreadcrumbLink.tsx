@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {Svg} from '../svg/Svg';
 
 export interface IBreadcrumbLinkProps {
@@ -9,7 +10,7 @@ export interface IBreadcrumbLinkProps {
     onClick?: (props: IBreadcrumbLinkProps) => boolean; // return false to cancel the href event
 }
 
-export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps, {}> {
+export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps> {
     private handleOnClick(e: React.MouseEvent<HTMLAnchorElement>): boolean {
         if (this.props.onClick && !this.props.onClick(this.props)) {
             e.stopPropagation();

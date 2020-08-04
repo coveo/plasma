@@ -1,16 +1,15 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import {FilterBox, FILTER_PLACEHOLDER, IFilterBoxProps} from '../FilterBox';
+
+import {FILTER_PLACEHOLDER, FilterBox, IFilterBoxProps} from '../FilterBox';
 
 describe('FilterBox', () => {
     const id: string = 'filter-box';
 
-    describe('<FilterBox />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<FilterBox id={id} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<FilterBox id={id} />);
+        }).not.toThrow();
     });
 
     describe('<FilterBox />', () => {
@@ -34,6 +33,7 @@ describe('FilterBox', () => {
             filterBox.setProps({id: id, onRender: renderSpy});
             filterBox.unmount();
             filterBox.mount();
+
             expect(renderSpy.calls.count()).toBe(1);
         });
 
@@ -45,6 +45,7 @@ describe('FilterBox', () => {
             filterBox.setProps({id: id, onDestroy: destroySpy});
             filterBox.mount();
             filterBox.unmount();
+
             expect(destroySpy.calls.count()).toBe(1);
         });
 
@@ -53,11 +54,13 @@ describe('FilterBox', () => {
             const input = filterBox.find('input');
 
             input.simulate('change');
+
             expect(filterSpy.calls.count()).toBe(0);
 
             filterBox.setProps({id: id, onFilter: filterSpy});
             filterBox.mount();
             input.simulate('change');
+
             expect(filterSpy.calls.count()).toBe(1);
         });
 
@@ -66,11 +69,13 @@ describe('FilterBox', () => {
             const input = filterBox.find('input');
 
             input.simulate('change');
+
             expect(onFilterCallbackSpy).not.toHaveBeenCalled();
 
             filterBox.setProps({id: id, onFilterCallback: onFilterCallbackSpy});
             filterBox.mount();
             input.simulate('change');
+
             expect(onFilterCallbackSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -81,6 +86,7 @@ describe('FilterBox', () => {
 
             filterBox.setProps({id: id, filterPlaceholder: expectedPlaceholder});
             filterBox.mount();
+
             expect(filterBox.html()).not.toContain(FILTER_PLACEHOLDER);
             expect(filterBox.html()).toContain(expectedPlaceholder);
         });
@@ -91,11 +97,13 @@ describe('FilterBox', () => {
             filterBoxInstance.filterInput.value = 'something';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
+
             expect(filterBox.find('span').first().hasClass('hidden')).toBe(false);
 
             filterBoxInstance.filterInput.value = '';
             filterBox.find('input').simulate('change');
             filterBox.mount().update();
+
             expect(filterBox.find('span').first().hasClass('hidden')).toBe(true);
         });
 
@@ -121,6 +129,7 @@ describe('FilterBox', () => {
             filterBoxInstance.filterInput.value = 'something';
 
             clearIcon.simulate('click');
+
             expect(filterBoxInstance.filterInput.value).toBe('');
         });
 
@@ -130,15 +139,18 @@ describe('FilterBox', () => {
             expect(filterBoxInstance.filterInput).not.toBe(document.activeElement as HTMLInputElement);
 
             clearIcon.simulate('click');
+
             expect(filterBoxInstance.filterInput).toBe(document.activeElement as HTMLInputElement);
         });
 
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
+
             expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(false);
 
             filterBox.setProps({id: id, containerClasses}).update();
+
             expect(filterBox.find('.filter-container').first().hasClass(containerClass)).toBe(true);
         });
 

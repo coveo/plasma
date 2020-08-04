@@ -29,24 +29,24 @@ export const getTableLoadingIds = (tableId: string): string[] => [
 export const convertInitialCollectionToDataById = (
     collection: Array<{[key: string]: any}>,
     attributeNameForId: string
-): ITableRowData => {
-    return collection.reduce((finalData: ITableRowData, model: {[key: string]: any}) => {
-        return {
+): ITableRowData =>
+    collection.reduce(
+        (finalData: ITableRowData, model: {[key: string]: any}) => ({
             ...finalData,
             [model[attributeNameForId]]: {
                 ...model,
                 id: model[attributeNameForId],
                 ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION: model.id,
             },
-        };
-    }, DEFAULT_TABLE_DATA.byId);
-};
+        }),
+        DEFAULT_TABLE_DATA.byId
+    );
 
 export const convertDataByIdToCollection = (
     dataById: ITableRowData,
     keepIdAttribute = true
-): Array<{[key: string]: any}> => {
-    return _.values(dataById).map((data: IData) => {
+): Array<{[key: string]: any}> =>
+    _.values(dataById).map((data: IData) => {
         const model: {[key: string]: any} = {
             ...data,
             id: keepIdAttribute && (data.ORIGINAL_MODEL_ID_BEFORE_TRANSFORMATION || data.id),
@@ -55,4 +55,3 @@ export const convertDataByIdToCollection = (
 
         return model;
     });
-};

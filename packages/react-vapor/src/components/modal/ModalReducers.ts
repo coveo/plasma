@@ -48,9 +48,7 @@ export const modalsReducer = (
         case ModalAction.addModal:
             return [...state, modalReducer(undefined, action)];
         case ModalAction.removeModal:
-            return _.reject(state, (modal: IModalState) => {
-                return action.payload.id === modal.id;
-            });
+            return _.reject(state, (modal: IModalState) => action.payload.id === modal.id);
         case ModalAction.closeModals:
         case ModalAction.openModal:
             return state.map((modal: IModalState) => modalReducer(modal, action));

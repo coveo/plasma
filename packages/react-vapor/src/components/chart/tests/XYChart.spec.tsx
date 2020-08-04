@@ -37,10 +37,11 @@ describe('<XYChart />', () => {
         const component = shallow(<XYChart height={100} width={100} series={XYChartContextMock.series} />);
 
         const provider = component.find(XYChartContext.Provider);
+
         expect(provider.exists()).toBe(true);
     });
 
-    it('should render a context provider', () => {
+    it('should use the supplied color pattern', () => {
         const colorPattern = ['red', 'blue', 'green'];
         const component = shallow(
             <XYChart height={100} width={100} series={XYChartContextMock.series} colorPattern={colorPattern} />
@@ -48,6 +49,7 @@ describe('<XYChart />', () => {
 
         const provider = component.find(XYChartContext.Provider);
         const context = provider.prop('value');
+
         expect(context.color(0, colorPattern)).toBe(colorPattern[0]);
     });
 
@@ -59,6 +61,7 @@ describe('<XYChart />', () => {
         );
 
         const svg = component.find('svg');
+
         expect(svg.exists()).toBe(true);
         expect(svg.prop('height')).toBe(expectedHeight);
         expect(svg.prop('width')).toBe(expectedWidth);
@@ -73,6 +76,7 @@ describe('<XYChart />', () => {
         );
 
         const svg = component.find('svg');
+
         expect(svg.prop('height')).toBe(initialHeight - 2 * padding);
         expect(svg.prop('width')).toBe(initialWidth - 2 * padding);
     });
@@ -90,6 +94,7 @@ describe('<XYChart />', () => {
         );
 
         const g = component.find('g');
+
         expect(g.exists()).toBe(true);
         expect(g.prop('transform')).toBe(`translate(${expectedLeftPadding},${expectedTopPadding})`);
     });

@@ -101,7 +101,7 @@ describe('FilterUtils', () => {
             expect(FilterUtils.matchesArrayLength('0', null)).toBe(false);
         });
 
-        it('should return true if the filter value is empty', () => {
+        it('should return true if the filter value matches the array lentgh', () => {
             expect(FilterUtils.matchesArrayLength('10', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])).toBe(true, 'exact match');
             expect(FilterUtils.matchesArrayLength('1', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])).toBe(true, 'partial match 1');
             expect(FilterUtils.matchesArrayLength('0', [0, 1, 2, 3, 4, 5, 6, 7, 8, 9])).toBe(true, 'partial match 0');

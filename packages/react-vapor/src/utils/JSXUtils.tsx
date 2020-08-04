@@ -8,9 +8,8 @@ import {decodeHtml} from './InputUtils';
 
 export type JSXRenderable = JSX.Element | JSX.Element[] | string | number;
 
-export const getReactNodeTextContent = (node: React.ReactNode): string => {
-    return _.compose(s.clean, decodeHtml, s.stripTags)(renderToStaticMarkup(<div>{node}</div>));
-};
+export const getReactNodeTextContent = (node: React.ReactNode): string =>
+    _.compose(s.clean, decodeHtml, s.stripTags)(renderToStaticMarkup(<div>{node}</div>));
 
 export const addClassNameToChildren = (children: React.ReactNode, className: string) =>
     React.Children.map(children, (child) =>

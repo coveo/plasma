@@ -74,12 +74,14 @@ describe('StatusCard', () => {
             mountWithProps({icon: 'view'});
 
             const svg = statusCard.find(Svg);
+
             expect(svg.length).toBe(1);
             expect(svg.find(`.${styles.statusCardIcon}`).length).toBeGreaterThanOrEqual(1);
         });
 
         it('should render a <h3/> with the class styles.statusCardTitle', () => {
             const title = statusCard.find('h3');
+
             expect(title.length).toBe(1);
             expect(title.html()).toContain(basicProps.title);
             expect(title.find(`.${styles.statusCardTitle}`).length).toBe(1);
@@ -87,6 +89,7 @@ describe('StatusCard', () => {
 
         it('should render the children with the class styles.statusCardInfo', () => {
             const children = statusCard.find(`.${styles.statusCardInfo}`);
+
             expect(children.length).toBe(1);
             expect(children.html()).toContain(statusCardChild);
         });

@@ -1,29 +1,24 @@
 import * as QueryString from 'query-string';
 
 /* istanbul ignore next */
-function getQuery() {
+const getQuery = () => {
     const queryPosition = window.location.hash.lastIndexOf('?');
     return queryPosition >= 0 ? window.location.hash.substring(queryPosition, window.location.hash.length) : '';
-}
+};
 
 /* istanbul ignore next */
-function getPathName() {
-    return window.location.hash.indexOf('?') >= 0
+const getPathName = () =>
+    window.location.hash.indexOf('?') >= 0
         ? window.location.href.substring(0, window.location.href.lastIndexOf('?'))
         : window.location.href;
-}
 
-function toObject(query: string) {
-    return {...QueryString.parse(query, {parseBooleans: true, parseNumbers: true, sort: false})};
-}
+const toObject = (query: string) => ({
+    ...QueryString.parse(query, {parseBooleans: true, parseNumbers: true, sort: false}),
+});
 
-function toQueryString(obj: object): string {
-    return QueryString.stringify(obj, {sort: false});
-}
+const toQueryString = (obj: Record<string, unknown>): string => QueryString.stringify(obj, {sort: false});
 
-function getSearchParams(): {[key: string]: any} {
-    return UrlUtils.toObject(UrlUtils.getQuery());
-}
+const getSearchParams = (): {[key: string]: any} => UrlUtils.toObject(UrlUtils.getQuery());
 
 export const UrlUtils = {
     getQuery,

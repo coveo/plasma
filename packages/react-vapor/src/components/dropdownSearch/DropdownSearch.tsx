@@ -91,7 +91,7 @@ export interface IDropdownSearchProps
 /**
  * @deprecated use components from SelectComponents instead
  */
-export class DropdownSearch extends React.Component<IDropdownSearchProps, {}> {
+export class DropdownSearch extends React.Component<IDropdownSearchProps> {
     static defaultProps: Partial<IDropdownSearchProps> = {
         isOpened: false,
         highlightThreshold: 100,

@@ -31,35 +31,33 @@ export interface MultiValuesInputProps {
     inputProps?: Omit<Partial<IInputOwnProps>, 'id'>;
 }
 
-export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = ({id, data, inputProps}) => {
-    return (
-        <MultilineBoxWithRemoveButton
-            id={id}
-            data={data}
-            renderBody={(allData: Array<IMultilineSingleBoxProps<string>>, parentProps: IMultilineParentProps) =>
-                allData.map((cData: IMultilineSingleBoxProps<string>) => (
-                    <InputConnected
-                        key={cData.id}
-                        id={cData.id}
-                        defaultValue={cData.props}
-                        {...inputProps}
-                        onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
-                            inputProps?.onKeyUp?.(e);
-                            const value = e.currentTarget.value;
-                            if (value !== '' && cData.isLast) {
-                                parentProps.addNewBox();
-                            }
-                        }}
-                        onBlur={(value: string) => {
-                            inputProps?.onBlur?.(value);
-                            if (value === '' && !cData.isLast) {
-                                parentProps.removeBox(cData.id);
-                            }
-                        }}
-                    />
-                ))
-            }
-            defaultProps=""
-        />
-    );
-};
+export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = ({id, data, inputProps}) => (
+    <MultilineBoxWithRemoveButton
+        id={id}
+        data={data}
+        renderBody={(allData: Array<IMultilineSingleBoxProps<string>>, parentProps: IMultilineParentProps) =>
+            allData.map((cData: IMultilineSingleBoxProps<string>) => (
+                <InputConnected
+                    key={cData.id}
+                    id={cData.id}
+                    defaultValue={cData.props}
+                    {...inputProps}
+                    onKeyUp={(e: React.KeyboardEvent<HTMLInputElement>) => {
+                        inputProps?.onKeyUp?.(e);
+                        const value = e.currentTarget.value;
+                        if (value !== '' && cData.isLast) {
+                            parentProps.addNewBox();
+                        }
+                    }}
+                    onBlur={(value: string) => {
+                        inputProps?.onBlur?.(value);
+                        if (value === '' && !cData.isLast) {
+                            parentProps.removeBox(cData.id);
+                        }
+                    }}
+                />
+            ))
+        }
+        defaultProps=""
+    />
+);

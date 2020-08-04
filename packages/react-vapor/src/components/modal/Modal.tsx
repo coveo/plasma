@@ -31,7 +31,7 @@ export interface IModalProps extends IModalOwnProps, Partial<IModalStateProps>, 
 /**
  * @deprecated use ModalComposite instead
  */
-export class Modal extends React.Component<IModalProps, {}> {
+export class Modal extends React.Component<IModalProps> {
     static defaultProps: Partial<IModalProps> = {
         closeTimeout: Defaults.MODAL_TIMEOUT,
     };

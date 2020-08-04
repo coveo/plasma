@@ -1,8 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -71,6 +71,7 @@ describe('FilterBox', () => {
 
         it('should remove the filter box in the store on render', () => {
             wrapper.unmount();
+
             expect(store.getState().filters.filter((filter) => filter.id === id).length).toBe(0);
         });
 
@@ -88,6 +89,7 @@ describe('FilterBox', () => {
             expect(
                 store.getState().filters.filter((filter) => filter.id === id && filter.filterText === '').length
             ).toBe(0);
+
             expect(
                 store.getState().filters.filter((filter) => filter.id === id && filter.filterText === newValue).length
             ).toBe(1);

@@ -31,18 +31,22 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(() => {
+                shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+            }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
             const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should add an action in the TableHOC props', () => {
             const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
             const actions = wrapper.find(TableHOC).prop('actions');
+
             expect(actions.length).toBe(1);
         });
 

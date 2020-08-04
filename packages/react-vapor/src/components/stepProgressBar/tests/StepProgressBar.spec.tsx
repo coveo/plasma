@@ -53,6 +53,7 @@ describe('StepProgressBar', () => {
             const currentStepAndDoneStepsCombined =
                 stepProgressBar.find(stepProgressBarDoneSelector).length +
                 stepProgressBar.find(stepProgressBarDoingSelector).length;
+
             expect(stepProgressBar.find(stepProgressBarToDoSelector).length).toBe(
                 testProps.numberOfSteps - currentStepAndDoneStepsCombined
             );

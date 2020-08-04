@@ -159,6 +159,7 @@ describe('Reducers', () => {
             expect(dropdownsState.filter((dropdown) => dropdown.id === action.payload.id)[0].opened).toBe(false);
 
             dropdownsState = dropdownsReducer(dropdownsState, action);
+
             expect(dropdownsState.filter((dropdown) => dropdown.id === action.payload.id)[0].opened).toBe(false);
         });
     });

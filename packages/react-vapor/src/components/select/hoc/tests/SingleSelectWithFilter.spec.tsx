@@ -64,6 +64,7 @@ describe('Select', () => {
 
             it('should not throw on unmount', () => {
                 mountSingleSelect();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 
@@ -87,18 +88,10 @@ describe('Select', () => {
                 mountSingleSelect();
 
                 expect(store.getState().selects.length).toBe(1);
+                expect(store.getState().selectWithFilter[id]).toBeDefined();
                 wrapper.unmount();
 
                 expect(store.getState().selects.length).toBe(0);
-            });
-
-            it('should remove the list box from the state when the component unmount', () => {
-                mountSingleSelect();
-
-                expect(store.getState().selectWithFilter[id]).toBeDefined();
-
-                wrapper.unmount();
-
                 expect(store.getState().selectWithFilter[id]).toBeUndefined();
             });
         });
@@ -116,7 +109,9 @@ describe('Select', () => {
             singleSelect
                 .find(SelectConnected)
                 .props()
-                .items.every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+                .items.every((item: IItemBoxProps) => {
+                    expect(item.hidden).toBe(true);
+                });
         });
 
         it('should not show items that are already hidden', () => {
@@ -148,7 +143,9 @@ describe('Select', () => {
             singleSelect
                 .find(SelectConnected)
                 .props()
-                .items.every((item: IItemBoxProps) => expect(item.hidden).toBe(true));
+                .items.every((item: IItemBoxProps) => {
+                    expect(item.hidden).toBe(true);
+                });
         });
 
         it('should set the highlight value equal to the filter', () => {
@@ -165,7 +162,9 @@ describe('Select', () => {
             singleSelect
                 .find(SelectConnected)
                 .props()
-                .items.every((item: IItemBoxProps) => expect(item.highlight).toBe(filterValue));
+                .items.every((item: IItemBoxProps) => {
+                    expect(item.highlight).toBe(filterValue);
+                });
         });
 
         describe('interactions', () => {
@@ -216,6 +215,7 @@ describe('Select', () => {
                     .find('.dropdown-toggle')
                     .simulate('keydown', {keyCode: keyCode.downArrow})
                     .simulate('keyup', {keyCode: keyCode.downArrow});
+
                 expect(dispatchSpy).toHaveBeenCalledWith(toggleSelect(id));
 
                 // Close the dropdown

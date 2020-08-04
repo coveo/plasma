@@ -21,6 +21,7 @@ describe('FilterBox', () => {
 
             it('should return the filterText in the state if the id is in the state', () => {
                 const filter: IFilterState = {id, filterText: 'text'};
+
                 expect(FilterBoxSelectors.getFilterText({filters: [filter]}, defaultOwnProps)).toEqual(
                     filter.filterText
                 );
@@ -36,6 +37,7 @@ describe('FilterBox', () => {
 
             it('should return the matchFilter if it is defined in the ownProps', () => {
                 const matchFilter: MatchFilter = () => true;
+
                 expect(FilterBoxSelectors.getMatchFilter(defaultState, {matchFilter})).toEqual(matchFilter);
             });
         });
