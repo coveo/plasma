@@ -32,31 +32,29 @@ const facetRows: IFacet[] = [
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IFacetActionPayload>) => void
-): ILastUpdateConnectedExamplesProps => {
-    return {
-        onRender: () => {
-            dispatch(
-                changeFacet(facet.name, {
-                    name: 'row2',
-                    formattedName: 'Irrelevent',
-                })
-            );
-            dispatch(
-                changeFacet(facet2.name, {
-                    name: 'row1',
-                    formattedName: 'it does not matter',
-                })
-            );
-            dispatch(
-                changeFacet(facet2.name, {
-                    name: 'row2',
-                    formattedName: 'why is this mandatory ?',
-                    exclude: true,
-                })
-            );
-        },
-    };
-};
+): ILastUpdateConnectedExamplesProps => ({
+    onRender: () => {
+        dispatch(
+            changeFacet(facet.name, {
+                name: 'row2',
+                formattedName: 'Irrelevent',
+            })
+        );
+        dispatch(
+            changeFacet(facet2.name, {
+                name: 'row1',
+                formattedName: 'it does not matter',
+            })
+        );
+        dispatch(
+            changeFacet(facet2.name, {
+                name: 'row2',
+                formattedName: 'why is this mandatory ?',
+                exclude: true,
+            })
+        );
+    },
+});
 
 const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateConnectedExamplesProps> = ({onRender}) => {
     React.useEffect(() => {
@@ -67,16 +65,7 @@ const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateCon
         <Section level={2} title="Facets connected to store">
             <div style={{width: 400}}>
                 <label className="form-control-label">Facet with the second row selectd</label>
-                <FacetConnected
-                    facet={facet}
-                    facetRows={facetRows}
-                    clearFacet={() => {
-                        return;
-                    }}
-                    toggleFacet={() => {
-                        return;
-                    }}
-                />
+                <FacetConnected facet={facet} facetRows={facetRows} clearFacet={() => null} toggleFacet={() => null} />
             </div>
             <div style={{width: 400}}>
                 <label className="form-control-label">
@@ -85,13 +74,9 @@ const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateCon
                 <FacetConnected
                     facet={facet2}
                     facetRows={facetRows}
-                    clearFacet={() => {
-                        return;
-                    }}
+                    clearFacet={() => null}
                     enableExclusions
-                    toggleFacet={() => {
-                        return;
-                    }}
+                    toggleFacet={() => null}
                 />
             </div>
         </Section>

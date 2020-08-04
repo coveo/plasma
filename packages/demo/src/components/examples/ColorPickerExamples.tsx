@@ -5,7 +5,7 @@ import {debounce} from 'underscore';
 import {Store} from '../../Store';
 
 const logColorPicked = debounce((colorPicked: any) => {
-    // tslint:disable-next-line
+    // eslint-disable-next-line no-console
     console.log(colorPicked);
 }, 500);
 

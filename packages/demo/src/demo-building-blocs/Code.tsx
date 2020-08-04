@@ -7,7 +7,7 @@ import {PrismLight as SyntaxHighlighter} from 'react-syntax-highlighter';
 import tsx from 'react-syntax-highlighter/dist/esm/languages/prism/tsx';
 import {prism as theme} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
-// tslint:disable-next-line
+// eslint-disable-next-line
 const prettierConfig = require('tsjs/prettier-config');
 
 SyntaxHighlighter.registerLanguage('tsx', tsx);

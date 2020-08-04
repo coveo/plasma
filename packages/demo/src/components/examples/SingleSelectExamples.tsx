@@ -168,17 +168,17 @@ const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<
 
     React.useEffect(() => {
         fetchPhotos({_page: 1, _limit: PER_PAGE});
-    }, [PER_PAGE]);
+    }, [fetchPhotos]);
 
-    function fetchNextPage() {
+    const fetchNextPage = () => {
         fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue}, false);
         setPage(pageNbr + 1);
-    }
+    };
 
-    function applyFilter() {
+    const applyFilter = () => {
         fetchPhotos({_page: 1, _limit: PER_PAGE, q: filterValue});
         setPage(1);
-    }
+    };
 
     return (
         <Section level={2} title="Server side single select">

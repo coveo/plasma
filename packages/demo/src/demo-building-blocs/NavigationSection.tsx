@@ -20,8 +20,8 @@ const Section: React.FunctionComponent<NavSectionProps> = ({
     isActive,
     isLink,
     ...rest
-}) => {
-    return isLink ? (
+}) =>
+    isLink ? (
         <Route
             path={baseUrl}
             children={(routeProps: RouteChildrenProps) => (
@@ -34,12 +34,9 @@ const Section: React.FunctionComponent<NavSectionProps> = ({
         />
     ) : (
         <SideNavigationMenuSection {...rest} expandable={false}>
-            {React.Children.map(children, (c) => {
-                return React.cloneElement(c as React.ReactElement, {baseUrl});
-            })}
+            {React.Children.map(children, (c) => React.cloneElement(c as React.ReactElement, {baseUrl}))}
         </SideNavigationMenuSection>
     );
-};
 
 const NavSection: React.FunctionComponent<{baseUrl?: string} & RouteComponentProps & NavSectionProps> = ({
     baseUrl = '',

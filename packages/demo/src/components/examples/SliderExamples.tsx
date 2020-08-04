@@ -31,34 +31,32 @@ const SimpleSliderExample: React.FunctionComponent = () => (
     </Section>
 );
 
-const SliderExample: React.FunctionComponent = () => {
-    return (
-        <Section level={3} key="two" title="Slider with asymetric range and initial value">
-            <Slider
-                key="patate"
-                min={-2000}
-                max={10000}
-                id="asymetricRangeId"
-                initialValue={2000}
-                marks={{'-2000': '-2000', 2000: '2000', 0: '0', 10000: '10,000'}}
-                hasTooltip
-                appendValue
-            />
-            <Slider
-                key="patatos-2"
-                min={5}
-                max={100}
-                id="asymetricRangeId-2"
-                initialValue={30}
-                crossingPoint={50}
-                step={5}
-                marks={{5: '5', 50: 'Recommended', 100: '100'}}
-                hasTooltip
-                appendValue
-            />
-        </Section>
-    );
-};
+const SliderExample: React.FunctionComponent = () => (
+    <Section level={3} key="two" title="Slider with asymetric range and initial value">
+        <Slider
+            key="patate"
+            min={-2000}
+            max={10000}
+            id="asymetricRangeId"
+            initialValue={2000}
+            marks={{'-2000': '-2000', 2000: '2000', 0: '0', 10000: '10,000'}}
+            hasTooltip
+            appendValue
+        />
+        <Slider
+            key="patatos-2"
+            min={5}
+            max={100}
+            id="asymetricRangeId-2"
+            initialValue={30}
+            crossingPoint={50}
+            step={5}
+            marks={{5: '5', 50: 'Recommended', 100: '100'}}
+            hasTooltip
+            appendValue
+        />
+    </Section>
+);
 
 const SliderAsymetric: React.FunctionComponent = () => {
     const [value, setValue] = React.useState(null);

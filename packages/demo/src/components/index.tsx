@@ -32,16 +32,14 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
         () =>
             components
                 .sort((a: IComponent, b: IComponent) => a.name.localeCompare(b.name))
-                .map(({path, ...rest}: IComponent) => {
-                    return (
-                        <Route
-                            key={rest.name}
-                            path={`${match.url}/${rest.name}`}
-                            component={() => <ComponentPage path={path} {...rest} />}
-                        />
-                    );
-                }),
-        [components]
+                .map(({path, ...rest}: IComponent) => (
+                    <Route
+                        key={rest.name}
+                        path={`${match.url}/${rest.name}`}
+                        component={() => <ComponentPage path={path} {...rest} />}
+                    />
+                )),
+        [components, match.url]
     );
 
     if (components.length === 0) {

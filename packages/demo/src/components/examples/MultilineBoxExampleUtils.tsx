@@ -9,20 +9,19 @@ export interface IMultilineBoxExamplesProps {
     displayName: string;
 }
 
-export class WrapperExample extends React.Component<{}, {id: string; data: IMultilineBoxExamplesProps[]}> {
-    constructor(props: any, state: any) {
-        super(props, state);
-
-        this.state = {
-            id: UUID.generate(),
-            data: [
-                {
-                    name: 'Pear',
-                    displayName: 'Paris',
-                },
-            ],
-        };
-    }
+export class WrapperExample extends React.Component<
+    React.Attributes,
+    {id: string; data: IMultilineBoxExamplesProps[]}
+> {
+    state = {
+        id: UUID.generate(),
+        data: [
+            {
+                name: 'Pear',
+                displayName: 'Paris',
+            },
+        ],
+    };
 
     render() {
         return (

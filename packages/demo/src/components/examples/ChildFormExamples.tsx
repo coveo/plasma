@@ -3,14 +3,12 @@ import {Checkbox, ChildForm, Input, Label, Radio, RadioSelect, Section, ToggleFo
 
 import {ExampleComponent} from '../ComponentsInterface';
 
-export const ChildFormExamples: ExampleComponent = () => {
-    return (
-        <Section>
-            <SimpleChildFormExample />
-            <ChildFormWithRadiosExamples />
-        </Section>
-    );
-};
+export const ChildFormExamples: ExampleComponent = () => (
+    <Section>
+        <SimpleChildFormExample />
+        <ChildFormWithRadiosExamples />
+    </Section>
+);
 
 ChildFormExamples.description =
     'Child Forms are used to make more controls accessible when a parent option is selected in a form.';

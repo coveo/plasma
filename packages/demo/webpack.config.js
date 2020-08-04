@@ -32,8 +32,12 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
         new ForkTsCheckerWebpackPlugin({
-            tslint: '../../tslint.json',
-            tslintAutoFix: true,
+            eslint: {
+                files: './src/**/*.{ts,tsx}',
+                options: {
+                    fix: true,
+                },
+            },
         }),
     ],
     stats: 'minimal',

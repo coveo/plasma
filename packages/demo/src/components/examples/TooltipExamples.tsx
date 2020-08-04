@@ -2,7 +2,7 @@ import moment from 'moment';
 import * as React from 'react';
 import {DateTooltip, Tooltip} from 'react-vapor';
 
-export class TooltipExamples extends React.Component<{}, {}> {
+export class TooltipExamples extends React.Component {
     static description =
         'Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks.';
 
