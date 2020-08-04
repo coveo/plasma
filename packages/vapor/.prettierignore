@@ -1,0 +1,6 @@
+dist/*
+node_modules/*
+tmp/*
+lib/*
+CHANGELOG.md
+scss/sprites.scss
