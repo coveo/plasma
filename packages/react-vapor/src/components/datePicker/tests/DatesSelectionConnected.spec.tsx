@@ -236,11 +236,13 @@ describe('Date picker', () => {
             expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe(
                 expectedValue
             );
+
             expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe(
                 expectedLabel
             );
 
             datesSelection.props().onBlur(new Date(), true, false);
+
             expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedValue).toBe('');
             expect(_.findWhere(store.getState().optionPickers, {id: DATES_SELECTION_ID}).selectedLabel).toBe('');
         });

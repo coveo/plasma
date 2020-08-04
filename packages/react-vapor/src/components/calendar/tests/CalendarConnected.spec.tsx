@@ -306,6 +306,7 @@ describe('Calendar', () => {
             expect(_.findWhere(store.getState().optionsCycles, {id: monthId}).currentOption).toBe(
                 DateUtils.currentMonth
             );
+
             expect(_.findWhere(store.getState().optionsCycles, {id: yearId}).currentOption).not.toBe(secondYear);
 
             store.dispatch(changeOptionsCycle(monthId, 13));

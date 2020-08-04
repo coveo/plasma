@@ -45,6 +45,7 @@ describe('Autocomplete', () => {
 
             it('should not throw on unmount', () => {
                 mountAutocomplete();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 
@@ -85,6 +86,7 @@ describe('Autocomplete', () => {
             mountAutocomplete([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             const value: string = autocomplete.find('input').prop<string>('value');
+
             expect(value).toBe(selectedValue);
         });
 
@@ -94,6 +96,7 @@ describe('Autocomplete', () => {
             expect(store.getState().autocompletes[0].open).toBe(false);
 
             autocomplete.find('input').simulate('focus');
+
             expect(store.getState().autocompletes[0].open).toBe(true);
         });
 
@@ -127,6 +130,7 @@ describe('Autocomplete', () => {
                 mountAutocomplete();
 
                 autocomplete.find('input').simulate('change', {target: {value: expectedValue}});
+
                 expect(store.getState().autocompletes[0].value).toBe(expectedValue);
             });
 
@@ -136,6 +140,7 @@ describe('Autocomplete', () => {
                 expect(store.getState().autocompletes[0].open).toBe(false);
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.enter});
+
                 expect(store.getState().autocompletes[0].open).toBe(true);
             });
 
@@ -144,12 +149,15 @@ describe('Autocomplete', () => {
 
                 expect(store.getState().autocompletes[0].open).toBe(false);
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.escape});
+
                 expect(store.getState().autocompletes[0].open).toBe(false);
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.enter});
+
                 expect(store.getState().autocompletes[0].open).toBe(true);
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.escape});
+
                 expect(store.getState().autocompletes[0].open).toBe(false);
             });
 
@@ -158,12 +166,15 @@ describe('Autocomplete', () => {
 
                 expect(store.getState().autocompletes[0].open).toBe(false);
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.downArrow});
+
                 expect(store.getState().autocompletes[0].open).toBe(true);
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.escape});
+
                 expect(store.getState().autocompletes[0].open).toBe(false);
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.upArrow});
+
                 expect(store.getState().autocompletes[0].open).toBe(true);
             });
 
@@ -212,12 +223,15 @@ describe('Autocomplete', () => {
                 mountAutocomplete();
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.enter});
+
                 expect(store.getState().autocompletes[0].open).toBe(true, '1');
 
                 clickOnEl(autocomplete.find('.autocomplete-list-container').getDOMNode());
+
                 expect(store.getState().autocompletes[0].open).toBe(true, '2');
 
                 clickOnEl();
+
                 expect(store.getState().autocompletes[0].open).toBe(false, '3');
             });
 
@@ -227,6 +241,7 @@ describe('Autocomplete', () => {
                 expect(store.getState().autocompletes[0].open).toBe(false);
 
                 clickOnEl();
+
                 expect(store.getState().autocompletes[0].open).toBe(false);
             });
         });

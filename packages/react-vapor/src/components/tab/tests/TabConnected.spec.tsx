@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -84,6 +84,7 @@ describe('Tab', () => {
                 store.getState().tabs,
                 (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
             );
+
             expect(tabGroup.tabs.filter((currentTab: ITabState) => currentTab.id === id).length).toBe(1);
         });
 
@@ -94,6 +95,7 @@ describe('Tab', () => {
                 store.getState().tabs,
                 (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
             );
+
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id).length).toBe(1);
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id)[0].isSelected).toBe(true);
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === tab2Id).length).toBe(1);
@@ -104,6 +106,7 @@ describe('Tab', () => {
                 store.getState().tabs,
                 (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
             );
+
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id)[0].isSelected).toBe(false);
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === tab2Id)[0].isSelected).toBe(true);
         });
@@ -115,6 +118,7 @@ describe('Tab', () => {
                 store.getState().tabs,
                 (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
             );
+
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id).length).toBe(1);
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id)[0].isSelected).toBe(true);
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === tab2Id).length).toBe(1);
@@ -126,12 +130,14 @@ describe('Tab', () => {
                 store.getState().tabs,
                 (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
             );
+
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id)[0].isSelected).toBe(true);
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === tab2Id)[0].isSelected).toBe(false);
         });
 
         it('should remove the tab in the store on destroy', () => {
             wrapper.unmount();
+
             expect(
                 store.getState().tabs.filter((currentTabGroup) => currentTabGroup.id === DEFAULT_GROUP_ID).length
             ).toBe(0);

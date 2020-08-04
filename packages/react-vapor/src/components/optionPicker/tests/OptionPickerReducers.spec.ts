@@ -170,6 +170,7 @@ describe('Option picker', () => {
                 expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedValue).toBe(
                     action.payload.value
                 );
+
                 expect(_.findWhere(optionPickersState, {id: action.payload.id}).selectedLabel).toBe(
                     action.payload.label
                 );

@@ -1,5 +1,5 @@
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {ValidComponentChildren} from './ValidComponentChildren';
 
 describe('ValidComponentChildren', () => {
@@ -12,6 +12,7 @@ describe('ValidComponentChildren', () => {
             },
             null
         );
+
         expect(counter).toBe(1);
     });
 
@@ -24,6 +25,7 @@ describe('ValidComponentChildren', () => {
             },
             null
         );
+
         expect(counter).toBe(0);
     });
 });

@@ -105,22 +105,27 @@ describe('SlideY', () => {
 
         it('should set the height to auto when the SlideY opens', () => {
             mountAndWrap(false);
+
             expect(() => wrapper.setProps({in: true})).not.toThrow();
 
             const el = component.find('.slide-y').first().getDOMNode() as HTMLElement;
+
             expect(el.style.height).toBe('auto');
         });
 
         it('should set the height to 0px when the SlideY is closes', () => {
             mountAndWrap(true);
+
             expect(() => wrapper.setProps({in: false})).not.toThrow();
 
             const el = wrapper.find('.slide-y').first().getDOMNode() as HTMLElement;
+
             expect(el.style.height).toBe('0px');
         });
 
         it('should remove the class slide-y-transition', () => {
             mountAndWrap(false);
+
             expect(() => wrapper.setProps({in: true}).update()).not.toThrow();
 
             const slideY = wrapper.find('.slide-y').first();

@@ -46,22 +46,20 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOw
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IGroupableCheckboxActionPayload>) => void,
     ownProps: IGroupableCheckboxOwnProps
-): IInputDispatchProps => {
-    return {
-        onRender: () =>
-            dispatch(
-                addGroupedCheckbox(
-                    ownProps.id,
-                    ownProps.defaultChecked,
-                    !!ownProps.defaultDisabled,
-                    ownProps.parentId,
-                    !!ownProps.isParent
-                )
-            ),
-        onDestroy: () => dispatch(removeGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
-        onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
-    };
-};
+): IInputDispatchProps => ({
+    onRender: () =>
+        dispatch(
+            addGroupedCheckbox(
+                ownProps.id,
+                ownProps.defaultChecked,
+                !!ownProps.defaultDisabled,
+                ownProps.parentId,
+                !!ownProps.isParent
+            )
+        ),
+    onDestroy: () => dispatch(removeGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
+    onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
+});
 
 export const GroupableCheckboxConnected: React.ComponentClass<IGroupableCheckboxOwnProps> = connect(
     mapStateToProps,

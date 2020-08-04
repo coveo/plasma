@@ -42,17 +42,15 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
     }
 
     render() {
-        const options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => {
-            return (
-                <li key={`option-${this.props.id}-${index}`}>
-                    <Option
-                        option={option}
-                        onClick={(value: string, label: string) => this.handleClick(value, label)}
-                        isActive={this.props.activeLabel && option.label === this.props.activeLabel}
-                    />
-                </li>
-            );
-        });
+        const options: JSX.Element[] = _.map(this.props.options, (option: IOption, index: number) => (
+            <li key={`option-${this.props.id}-${index}`}>
+                <Option
+                    option={option}
+                    onClick={(value: string, label: string) => this.handleClick(value, label)}
+                    isActive={this.props.activeLabel && option.label === this.props.activeLabel}
+                />
+            </li>
+        ));
 
         return <ul className="option-picker flex flex-wrap mt2 mb2">{options}</ul>;
     }

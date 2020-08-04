@@ -39,16 +39,19 @@ describe('<JSONEditorConnected />', () => {
 
     it('should not throw when calling onMount', () => {
         mountComponent();
+
         expect(() => wrapper.find(JSONEditor).prop('onMount')()).not.toThrow();
     });
 
     it('should not throw when calling onUnmount', () => {
         mountComponent();
+
         expect(() => wrapper.find(JSONEditor).prop('onUnmount')()).not.toThrow();
     });
 
     it('should not throw when calling onChange', () => {
         mountComponent();
+
         expect(() => wrapper.find(JSONEditor).prop('onChange')('{}', false)).not.toThrow();
     });
 
@@ -61,6 +64,7 @@ describe('<JSONEditorConnected />', () => {
 
     it('should dispatch addJSONEditor action on mount', () => {
         act(mountComponent);
+
         expect(store.getActions()).toContain(JSONEditorActions.addJSONEditor(basicProps.id, basicProps.value));
     });
 

@@ -59,6 +59,7 @@ describe('BlankSlate', () => {
 
         it('should render the custom title', () => {
             renderBlankSlate();
+
             expect(blankSlateComponent.find('h1').text()).toEqual(customProps.title);
         });
 
@@ -66,11 +67,13 @@ describe('BlankSlate', () => {
             renderBlankSlate({
                 withModal: true,
             });
+
             expect(blankSlateComponent.find('.mod-header-padding').length).toBe(1);
         });
 
         it('should render the custom description', () => {
             renderBlankSlate();
+
             expect(blankSlateComponent.find('p').length).toBe(1);
             expect(blankSlateComponent.find('p').text()).toEqual(customProps.description);
         });
@@ -89,6 +92,7 @@ describe('BlankSlate', () => {
 
         it('should render the button', () => {
             renderBlankSlate();
+
             expect(blankSlateComponent.find('button').length).toBe(1);
         });
 
@@ -107,11 +111,13 @@ describe('BlankSlate', () => {
                     },
                 ],
             });
+
             expect(blankSlateComponent.find('button').length).toBe(2);
         });
 
         it('should render the icon', () => {
             renderBlankSlate();
+
             expect(blankSlateComponent.find(Svg).length).toBe(1);
         });
     });

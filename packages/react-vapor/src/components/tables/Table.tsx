@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IAdditionalClass, IClassName} from '../../utils/ClassNameUtils';
 import {IThunkAction} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
@@ -146,10 +147,10 @@ export class Table extends React.Component<ITableProps> {
     constructor(props: ITableProps) {
         super(props);
 
-        // tslint:disable
+        /* eslint-disable */
         // Only use the initial load strategy for tables that do not provide initialTableData in their own props
         this.isInitialLoad = props.initialTableData == DEFAULT_TABLE_DATA;
-        // tslint:enable
+        /* eslint-enable */
     }
 
     componentDidMount() {

@@ -60,11 +60,10 @@ export const removeCustomOptions = (
     options: IDropdownOption[],
     supportSingleCustomOption: boolean,
     includeSelected: boolean = true
-) => {
-    return !supportSingleCustomOption
+) =>
+    !supportSingleCustomOption
         ? deepClone(options)
         : deepClone(options.filter((option: IDropdownOption) => isNotCustomOption(option, includeSelected)));
-};
 
 export const shouldHideOnFilter = (option: IDropdownOption, filterText: string): boolean =>
     !!(option.default || (option.custom && option.value === filterText));
@@ -120,9 +119,8 @@ export const addUniqueSelectedOption = (
     return deepClone(options);
 };
 
-export const getDisplayedOptions = (state: IDropdownSearchState): IDropdownOption[] => {
-    return _.reject(state.options, (option) => (!state.supportSingleCustomOption && option.custom) || option.hidden);
-};
+export const getDisplayedOptions = (state: IDropdownSearchState): IDropdownOption[] =>
+    _.reject(state.options, (option) => (!state.supportSingleCustomOption && option.custom) || option.hidden);
 
 export const getFilteredOptions = (state: IDropdownSearchState, filterText?: string) => {
     const currentFilterText: string = filterText || state.filterText || '';
@@ -132,11 +130,10 @@ export const getFilteredOptions = (state: IDropdownSearchState, filterText?: str
     });
 };
 
-export const selectSingleOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
-    return _.map(options, (option: IDropdownOption) =>
+export const selectSingleOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] =>
+    _.map(options, (option: IDropdownOption) =>
         _.extend(deepClone(option), {selected: option.value === selectedOption.value})
     );
-};
 
 export const multiSelectOption = (options: IDropdownOption[], selectedOption: IDropdownOption): IDropdownOption[] => {
     let valueFound: boolean = false;
@@ -361,11 +358,9 @@ export const dropdownsSearchReducer = (
         case DropdownSearchActions.open:
         case DropdownSearchActions.close:
         case DropdownSearchActions.select:
-            return state.map((dropdownSearch: IDropdownSearchState) => {
-                return dropdownSearch.id === action.payload.id
-                    ? dropdownSearchReducer(dropdownSearch, action)
-                    : dropdownSearch;
-            });
+            return state.map((dropdownSearch: IDropdownSearchState) =>
+                dropdownSearch.id === action.payload.id ? dropdownSearchReducer(dropdownSearch, action) : dropdownSearch
+            );
         case DropdownSearchActions.add:
             return [...state, dropdownSearchReducer(undefined, action)];
         case DropdownSearchActions.addMultiSelect:
@@ -375,15 +370,13 @@ export const dropdownsSearchReducer = (
         case DropdownSearchActions.addCustomSelectedOption:
         case DropdownSearchActions.onKeyDownMultiselect:
         case DropdownSearchActions.deselectOption:
-            return state.map((dropdownSearch: IDropdownSearchState) => {
-                return dropdownSearch.id === action.payload.id
+            return state.map((dropdownSearch: IDropdownSearchState) =>
+                dropdownSearch.id === action.payload.id
                     ? multiSelectDropdownSearchReducer(dropdownSearch, action)
-                    : dropdownSearch;
-            });
+                    : dropdownSearch
+            );
         case DropdownSearchActions.remove:
-            return _.reject(state, (dropdown: IDropdownSearchState) => {
-                return action.payload.id === dropdown.id;
-            });
+            return _.reject(state, (dropdown: IDropdownSearchState) => action.payload.id === dropdown.id);
         default:
             return state;
     }

@@ -22,9 +22,8 @@ describe('CollapsibleHeaderIcon tests', () => {
     });
 
     describe('once rendered', () => {
-        const shallowCollapsibleHeaderIcon = (props: CollapsibleHeaderIconProps = defaultProps) => {
-            return shallow(<CollapsibleHeaderIcon {...props} />);
-        };
+        const shallowCollapsibleHeaderIcon = (props: CollapsibleHeaderIconProps = defaultProps) =>
+            shallow(<CollapsibleHeaderIcon {...props} />);
 
         it('should return null if informationTooltip and informationUrl is undefined', () => {
             wrapper = shallowCollapsibleHeaderIcon({} as CollapsibleHeaderIconProps);

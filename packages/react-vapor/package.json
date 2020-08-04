@@ -27,13 +27,13 @@
         "build:esm": "npx rollup -c",
         "pretest": "gulp clean:tests",
         "test": "karma start",
-        "test:compile": "npx tslint --project ./tsconfig.test.json -c ../../tslint.json",
         "test:watch": "karma start --no-single-run --auto-watch",
         "test:browser": "karma start --browsers Chrome --no-single-run",
         "report-coverage": "codecov -f coverage/lcov.info",
         "precommit": "lint-staged",
         "snyk-protect": "snyk protect",
-        "prepublish": "npm run snyk-protect"
+        "prepublish": "npm run snyk-protect",
+        "lintfix": "../../node_modules/.bin/stylelint --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix"
     },
     "dependencies": {
         "diff2html": "3.1.8",
@@ -113,6 +113,8 @@
         "enzyme-adapter-react-16": "1.7.1",
         "enzyme-redux": "0.2.1",
         "escape-string-regexp": "1.0.5",
+        "eslint-loader": "^4.0.2",
+        "eslint-plugin-jasmine": "^4.1.1",
         "faker": "4.1.0",
         "fancy-log": "1.3.3",
         "file-loader": "5.1.0",
@@ -123,9 +125,9 @@
         "jasmine-core": "3.3.0",
         "jquery": "3.3.1",
         "karma": "4.2.0",
-        "karma-chrome-launcher": "3.0.0",
-        "karma-coverage-istanbul-reporter": "2.1.0",
-        "karma-jasmine": "2.0.1",
+        "karma-chrome-launcher": "3.1.0",
+        "karma-coverage-istanbul-reporter": "3.0.3",
+        "karma-jasmine": "3.3.1",
         "karma-mocha-reporter": "2.2.5",
         "karma-source-map-support": "1.4.0",
         "karma-webpack": "4.0.2",
@@ -135,6 +137,7 @@
         "moment": "2.24.0",
         "node-sass": "4.13.1",
         "postcss-loader": "3.0.0",
+        "puppeteer": "^5.2.1",
         "react": "16.13.1",
         "react-dnd": "2.5.1",
         "react-dnd-html5-backend": "2.5.1",
@@ -157,8 +160,6 @@
         "style-loader": "1.1.3",
         "ts-loader": "6.2.1",
         "ts-transformer-keys": "0.4.1",
-        "tslint": "6.0.0",
-        "tslint-loader": "3.5.4",
         "typescript": "3.8.3",
         "underscore": "1.9.2",
         "underscore.string": "3.3.5",
@@ -178,7 +179,7 @@
         ],
         "**/*.{ts,tsx}": [
             "prettier --write",
-            "tslint -c ../../tslint.json -p ./tsconfig.json --fix",
+            "eslint -c ./.eslintrc.js --fix",
             "git add"
         ],
         "**/*.{js,jsx,json,md,yml,html}": [

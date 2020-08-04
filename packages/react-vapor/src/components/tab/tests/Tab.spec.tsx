@@ -53,6 +53,7 @@ describe('Tab', () => {
 
     it('should set active class on container when isActive is true', () => {
         const tab = shallow(<Tab {...basicProps} isActive />);
+
         expect(tab.hasClass('active')).toBe(true);
     });
 

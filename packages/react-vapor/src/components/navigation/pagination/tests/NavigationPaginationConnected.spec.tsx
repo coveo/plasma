@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../../ReactVapor';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
@@ -77,6 +77,7 @@ describe('<NavigationPaginationConnected />', () => {
         expect(navigationPagination.find(PaginationSelect).length).toBeLessThan(
             basicNavigationPaginationProps.totalPages + 1
         );
+
         expect(fewPagesNavigationPagination.find(PaginationSelect).length).toBeLessThan(
             basicNavigationPaginationProps.totalPages + 1
         );
@@ -149,10 +150,12 @@ describe('<NavigationPaginationConnected />', () => {
             store.dispatch(changePage(basicNavigationPaginationProps.id, basicNavigationPaginationProps.totalPages - 4))
         );
         wrapper.update();
+
         expect(wrapper.find(NavigationPagination).first().props().currentPage).not.toBe(0);
 
         store.dispatch(resetPaging(basicNavigationPaginationProps.id));
         wrapper.update();
+
         expect(wrapper.find(NavigationPagination).first().props().currentPage).toBe(0);
     });
 });

@@ -14,13 +14,11 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IIn
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<ICheckboxActionPayload>) => void,
     ownProps: IInputOwnProps
-): IInputDispatchProps => {
-    return {
-        onRender: () => dispatch(addCheckbox(ownProps.id, ownProps.defaultChecked)),
-        onDestroy: () => dispatch(removeCheckbox(ownProps.id)),
-        onClick: (e: React.MouseEvent<HTMLElement>) => dispatch(toggleCheckbox(ownProps.id)),
-    };
-};
+): IInputDispatchProps => ({
+    onRender: () => dispatch(addCheckbox(ownProps.id, ownProps.defaultChecked)),
+    onDestroy: () => dispatch(removeCheckbox(ownProps.id)),
+    onClick: (e: React.MouseEvent<HTMLElement>) => dispatch(toggleCheckbox(ownProps.id)),
+});
 
 export const CheckboxConnected: React.ComponentClass<ICheckboxProps> = connect(
     mapStateToProps,

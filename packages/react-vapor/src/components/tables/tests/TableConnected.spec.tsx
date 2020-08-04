@@ -26,14 +26,13 @@ describe('<TableConnected />', () => {
         store.dispatch(clearState());
     });
 
-    const mountComponentWithProps = (props: ITableProps) => {
-        return mount(
+    const mountComponentWithProps = (props: ITableProps) =>
+        mount(
             <Provider store={store}>
                 <TableConnected {...props} />
             </Provider>,
             {attachTo: document.getElementById('App')}
         );
-    };
 
     describe('render', () => {
         const getInitialTableDataMock: any = (selectedIds: string[] = ['id1']) => ({
@@ -67,13 +66,16 @@ describe('<TableConnected />', () => {
         it('should put the table state in the store on mount', () => {
             expect(store.getState().tables[tablePropsMock.id]).toBeUndefined();
             mountComponentWithProps(tablePropsMock);
+
             expect(store.getState().tables[tablePropsMock.id]).toBeDefined();
         });
 
         it('should remove the table state in the store on unmount', () => {
             const tableConnected = mountComponentWithProps({...tablePropsMock, actionBar: true});
+
             expect(store.getState().tables[tablePropsMock.id]).toBeDefined();
             tableConnected.unmount();
+
             expect(store.getState().tables[tablePropsMock.id]).toBeUndefined();
         });
 
@@ -133,6 +135,7 @@ describe('<TableConnected />', () => {
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onRowClick(actions, 1);
             wrapper.update();
+
             expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
         });
 
@@ -159,6 +162,7 @@ describe('<TableConnected />', () => {
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onRowClick(actions, 2);
             wrapper.update();
+
             expect(wrapper.find(PrimaryAction).length).toBe(1);
         });
 
@@ -208,6 +212,7 @@ describe('<TableConnected />', () => {
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onWillUpdate(actions);
             wrapper.update();
+
             expect(wrapper.find(PrimaryAction).length).toBe(actions.length);
         });
 
@@ -218,6 +223,7 @@ describe('<TableConnected />', () => {
             expect(wrapper.find(PrimaryAction).length).toBe(0);
             tableConnected.props().onWillUpdate([]);
             wrapper.update();
+
             expect(wrapper.find(PrimaryAction).length).toBe(0);
         });
 
@@ -230,6 +236,7 @@ describe('<TableConnected />', () => {
             const tableComposite1 = tablePropsMock.tableCompositeState;
             const tableComposite2 = tablePropsMock.tableCompositeState;
             tableConnected.props().onModifyData(shouldResetPage, tableComposite1, tableComposite2);
+
             expect(manualSpy).toHaveBeenCalledTimes(1);
             expect(_.rest(manualSpy.calls.mostRecent().args)).toEqual([
                 shouldResetPage,
@@ -249,6 +256,7 @@ describe('<TableConnected />', () => {
             const shouldResetPage = true;
             const tableComposite1 = tablePropsMock.tableCompositeState;
             tableConnected.props().onModifyData(shouldResetPage, tableComposite1);
+
             expect(defaultTableStateModifierThunkSpy).toHaveBeenCalledTimes(1);
             expect(_.rest(defaultTableStateModifierThunkSpy.calls.mostRecent().args)).toEqual([
                 shouldResetPage,

@@ -1,6 +1,7 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {DraggableSelectedOption, IDraggableSelectedOptionProps} from '../DraggableSelectedOption';
 
@@ -48,6 +49,7 @@ describe('DraggableSelectedOption', () => {
 
             dndBackend.simulateBeginDrag([getHandlerId()[0]]);
             selectedOption.update();
+
             expect(selectedOption.find('.selected-option-wrapper').prop('style').opacity).toBe(0);
 
             dndBackend.simulateEndDrag();
@@ -110,7 +112,7 @@ describe('DraggableSelectedOption', () => {
             dndBackend.simulateEndDrag();
         });
 
-        it('should not switch elements if they are on different index but the dragged item is above the first item of the list', () => {
+        it('should not switch elements if they are on different index but the dragged item is below the first item of the list', () => {
             const spy = jasmine.createSpy('move');
             const top = 50;
             const bottom = 0;

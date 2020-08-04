@@ -19,16 +19,12 @@ export interface IDraggableSelectedOptionOwnProps {
 export interface IDraggableSelectedOptionProps extends IDraggableSelectedOptionOwnProps, ISelectedOptionProps {}
 
 const selectedOptionSource: IDragSource = {
-    isDragging(props: IDraggableSelectedOptionProps, monitor: any) {
-        return props.label === monitor.getItem().label;
-    },
-    beginDrag(props: IDraggableSelectedOptionProps) {
-        return {...props};
-    },
+    isDragging: (props: IDraggableSelectedOptionProps, monitor: any) => props.label === monitor.getItem().label,
+    beginDrag: (props: IDraggableSelectedOptionProps) => ({...props}),
 };
 
 const cardTarget: IDropTarget = {
-    hover(props: IDraggableSelectedOptionProps, monitor: any, component?: DraggableSelectedOption): void {
+    hover: (props: IDraggableSelectedOptionProps, monitor: any, component?: DraggableSelectedOption): void => {
         const dragIndex = monitor.getItem().index;
         const hoverIndex = props.index;
 
@@ -72,7 +68,7 @@ const cardTarget: IDropTarget = {
         // to avoid expensive index searches.
         monitor.getItem().index = hoverIndex;
     },
-    drop(props: IDraggableSelectedOptionProps, monitor: any) {
+    drop: (props: IDraggableSelectedOptionProps, monitor: any) => {
         monitor.getItem().label = null;
     },
 };

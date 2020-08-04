@@ -34,6 +34,7 @@ describe('<BreadcrumbHeader/>', () => {
 
         it('should render the default Breadcrumb', () => {
             const breadcrumbHeaderComponent = basicHeaderComponent.find(Breadcrumb);
+
             expect(breadcrumbHeaderComponent.length).toBe(1);
             expect((breadcrumbHeaderComponent.props() as IBreadcrumbProps).title.text).toBe(
                 defaultProps.breadcrumb.title.text

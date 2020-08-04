@@ -1,18 +1,16 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {SlideY} from '../../../animations/SlideY';
 import {ITableCollapsibleRowProps, TableCollapsibleRow} from '../TableCollapsibleRow';
 import {TableError} from '../TableError';
 
 describe('Tables', () => {
-    describe('<TableCollapsibleRow />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<TableCollapsibleRow nbColumns={6} id="collapsible-row" />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<TableCollapsibleRow nbColumns={6} id="collapsible-row" />);
+        }).not.toThrow();
     });
 
     describe('<TableCollapsibleRow />', () => {
@@ -86,6 +84,7 @@ describe('Tables', () => {
             expect(tableCollapsibleRow.find(TableError).length).toBe(1);
 
             tableCollapsibleRow.setProps(newTableCollapsibleRowProps);
+
             expect(tableCollapsibleRow.find(TableError).length).toBe(0);
         });
 
@@ -101,6 +100,7 @@ describe('Tables', () => {
             expect(tableCollapsibleRow.find(SlideY).prop('in')).toBe(true);
 
             tableCollapsibleRow.setProps(newTableCollapsibleRowProps);
+
             expect(tableCollapsibleRow.find('tr').hasClass(openedClass)).toBe(false);
             expect(tableCollapsibleRow.find(SlideY).prop('in')).toBe(false);
         });

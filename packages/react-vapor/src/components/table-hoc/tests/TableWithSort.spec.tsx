@@ -1,6 +1,7 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithSort} from '../TableWithSort';
@@ -22,12 +23,15 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithSort id="a" data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithSort id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(() => {
+                shallowWithState(<TableWithSort id="a" data={[]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithSort id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+            }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
             const wrapper = shallowWithState(<TableWithSort {...defaultProps} />, {}).dive();
+
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 

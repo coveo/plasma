@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {PaginationLoading} from '../PaginationLoading';
 
 describe('PaginationLoading tests', () => {
@@ -8,7 +9,7 @@ describe('PaginationLoading tests', () => {
             expect(() => {
                 const wrapper = shallow(<PaginationLoading />, {});
                 wrapper.unmount();
-            });
+            }).not.toThrow();
         });
     });
 });

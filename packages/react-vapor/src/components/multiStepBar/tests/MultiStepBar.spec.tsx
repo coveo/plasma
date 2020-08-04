@@ -88,6 +88,7 @@ describe('<MultiStepBar />', () => {
                         multiStepBar.find(`${multiStepBarBackgroundContainerSelector} ${multiStepBarDoneSelector}`)
                             .length
                     ).toBe(1);
+
                     expect(
                         multiStepBar.find(`${multiStepBarContainerSelector} ${multiStepBarDoneSelector}`).length
                     ).toBe(1);

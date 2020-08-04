@@ -12,18 +12,14 @@ export interface IWithEditing {
 
 export const withEditing = <T, R = any>(config: IWithEditing) => (
     Component: React.ComponentType<T>
-): React.ComponentClass<T, R> => {
-    return withDirty<T, R>({
+): React.ComponentClass<T, R> =>
+    withDirty<T, R>({
         id: config.id,
         isDirty: config.isDirty,
-        showDirty: (isDirty: boolean) => {
-            return (
-                config.footerChildren && (
-                    <StickyFooter className={config.footerClassName} isOpened={isDirty}>
-                        {config.footerChildren}
-                    </StickyFooter>
-                )
-            );
-        },
+        showDirty: (isDirty: boolean) =>
+            config.footerChildren && (
+                <StickyFooter className={config.footerClassName} isOpened={isDirty}>
+                    {config.footerChildren}
+                </StickyFooter>
+            ),
     })(Component);
-};

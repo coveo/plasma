@@ -20,7 +20,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     svgClass?: string;
 }
 
-export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
+export class BlankSlate extends React.Component<IBlankSlateProps> {
     static defaultProps: Partial<IBlankSlateProps> = {
         title: null,
         description: null,
@@ -47,9 +47,9 @@ export class BlankSlate extends React.Component<IBlankSlateProps, {}> {
     }
 
     private getButtonsTemplate(): JSX.Element[] {
-        return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => {
-            return <Button key={buttonProps.name} {...buttonProps} classes={this.props.buttonClasses} />;
-        });
+        return _.map(this.props.buttons, (buttonProps: IBaseActionOptions) => (
+            <Button key={buttonProps.name} {...buttonProps} classes={this.props.buttonClasses} />
+        ));
     }
 
     render() {

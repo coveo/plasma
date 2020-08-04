@@ -43,6 +43,7 @@ describe('JSXUtils', () => {
                 'new-class'
             );
             const component = shallow(resultingChildren[0] as React.ReactElement);
+
             expect(component.hasClass('old-class')).toBe(true);
             expect(component.hasClass('new-class')).toBe(true);
         });

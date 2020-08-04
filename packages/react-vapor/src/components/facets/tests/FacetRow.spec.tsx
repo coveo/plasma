@@ -1,12 +1,12 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IFacet} from '../Facet';
 import {FacetRow, IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
-    const spyOnToggleFacet: jasmine.Spy = jasmine.createSpy('onToggleFacet');
+    let spyOnToggleFacet: jasmine.Spy;
 
     const FACET_ROW_PROPS: IFacetRowProps = {
         facetRow: {
@@ -18,6 +18,10 @@ describe('Facets', () => {
         isChecked: false,
     };
     const FACET_ROW: JSX.Element = <FacetRow {...FACET_ROW_PROPS} />;
+
+    beforeAll(() => {
+        spyOnToggleFacet = jasmine.createSpy('onToggleFacet');
+    });
 
     describe('<FacetRow />', () => {
         it('should render without errors', () => {
@@ -58,13 +62,6 @@ describe('Facets', () => {
             expect(facetProp).toBe(FACET_ROW_PROPS.facet);
         });
 
-        it('should get the facet as a prop', () => {
-            const facetProp = facetRowView.props().facet;
-
-            expect(facetProp).toBeDefined();
-            expect(facetProp).toBe(FACET_ROW_PROPS.facet);
-        });
-
         it('should get what to do when toggling a row as a prop', () => {
             const onToggleFacetProp = facetRowView.props().onToggleFacet;
 
@@ -88,6 +85,7 @@ describe('Facets', () => {
 
         it('should call onToggleFacet on change', () => {
             spyOnToggleFacet.calls.reset();
+
             expect(FACET_ROW_PROPS.onToggleFacet).not.toHaveBeenCalled();
 
             facetRowView.find('label').simulate('click');
@@ -170,6 +168,7 @@ describe('Facets', () => {
             expect(facetRowView.html()).toContain(newProps.facetRow.count);
         });
     });
+
     describe('<FacetRow enableExclude />', () => {
         let facetRowExcludeView: ReactWrapper<IFacetRowProps>;
         let props: IFacetRowProps;
@@ -193,6 +192,7 @@ describe('Facets', () => {
                 ...facetRowExcludeView.props().facetRow,
                 exclude: true,
             };
+
             expect(spyOnToggleFacet).toHaveBeenCalledWith(facet);
         });
 

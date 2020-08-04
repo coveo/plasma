@@ -1,6 +1,6 @@
-// tslint:disable-next-line:no-unused-variable
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
+
 import {UUID} from '../../../../utils/UUID';
 import {IDropdownSearchProps} from '../../DropdownSearch';
 import {MultiSelectDropdownSearch} from '../MultiSelectDropdownSearch';

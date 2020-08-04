@@ -56,9 +56,7 @@ export const loadingsReducer = (
         case LoadingActions.add:
             return [...state, loadingReducer(undefined, action)];
         case LoadingActions.remove:
-            return _.reject(state, (loading: ILoadingState) => {
-                return loading.id === action.payload.ids[0];
-            });
+            return _.reject(state, (loading: ILoadingState) => loading.id === action.payload.ids[0]);
         case LoadingActions.turnOn:
         case LoadingActions.turnOff:
             return state.map((loading: ILoadingState) => loadingReducer(loading, action));

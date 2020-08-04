@@ -12,6 +12,7 @@ describe('TextAreaLabel', () => {
                 </TextAreaLabel>
             )
         ).not.toThrow();
+
         expect(() =>
             shallow(
                 <TextAreaLabel label="label">
@@ -27,6 +28,7 @@ describe('TextAreaLabel', () => {
                 <TextArea id="test" />
             </TextAreaLabel>
         ).find('div');
+
         expect(containerDiv.first()).toBeDefined();
         expect(containerDiv.children().length).toBe(2);
         expect(containerDiv.find(TextArea).length).toBe(1);
@@ -40,6 +42,7 @@ describe('TextAreaLabel', () => {
                 <TextArea id={textAreaId} />
             </TextAreaLabel>
         ).find('div');
+
         expect(containerDiv.find('label').prop('htmlFor')).toBe(textAreaId);
     });
 
@@ -51,6 +54,7 @@ describe('TextAreaLabel', () => {
                 <TextArea id="test" />
             </TextAreaLabel>
         );
+
         expect(component.find('div').prop('className')).not.toContain(extraClass);
 
         component = shallow(
@@ -58,6 +62,7 @@ describe('TextAreaLabel', () => {
                 <TextArea id="test" />
             </TextAreaLabel>
         );
+
         expect(component.find('div').prop('className')).toContain(extraClass);
     });
 });

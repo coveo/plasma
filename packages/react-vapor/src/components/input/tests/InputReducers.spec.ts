@@ -98,6 +98,7 @@ describe('Reducers', () => {
             describe('with a different id', () => {
                 it('should not change an input not having the id passed in the payload', () => {
                     const action = changeInputValue('a different id', 'a new value');
+
                     expect(inputsReducer(oldState, action)[0]).toEqual(oldState[0]);
                 });
             });

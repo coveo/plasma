@@ -31,11 +31,12 @@ describe('<SliderHandle/>', () => {
         expect(() => {
             shallowMountSliderHandle();
             shallowMountSliderHandle().unmount();
-        });
+        }).not.toThrow();
     });
 
     it('should show rangeOutput for the tooltip overlay if hasTooltip prop is passed but customTooltip props is not passed', () => {
         shallowedSliderHandle = shallowMountSliderHandle();
+
         expect(shallowedSliderHandle.prop('overlay')).toEqual(handleCustomProps.rangeOutput);
     });
 
@@ -47,11 +48,13 @@ describe('<SliderHandle/>', () => {
                 handleCustomProps={{...handleCustomProps, customTooltip: customToolTip}}
             />
         );
+
         expect(shallowedSliderHandle.prop('overlay')).toEqual(customToolTip);
     });
 
     it('should set the tooltip visible prop to true if the hasTooltip prop is passed and the handle is dragging', () => {
         shallowedSliderHandle = shallowMountSliderHandle();
+
         expect(shallowedSliderHandle.prop('visible')).toBeTruthy();
     });
 
@@ -59,6 +62,7 @@ describe('<SliderHandle/>', () => {
         shallowedSliderHandle = shallow(
             <SliderHandle handleProps={handleProps} handleCustomProps={{...handleCustomProps, hasTooltip: false}} />
         );
+
         expect(shallowedSliderHandle.prop('visible')).toBeFalsy();
     });
 });

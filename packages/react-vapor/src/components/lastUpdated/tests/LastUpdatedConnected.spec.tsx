@@ -1,9 +1,9 @@
 import {mount, ReactWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as s from 'underscore.string';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -75,6 +75,7 @@ describe('LastUpdated', () => {
 
             const storedTime = store.getState().lastUpdatedComposite.filter((timer) => timer.id === id)[0].time;
             store.dispatch(changeLastUpdated(id));
+
             expect(store.getState().lastUpdatedComposite.filter((timer) => timer.id === id)[0].time).not.toBe(
                 storedTime
             );
@@ -82,6 +83,7 @@ describe('LastUpdated', () => {
 
         it('should remove the last update time in the store on destroy', () => {
             wrapper.unmount();
+
             expect(store.getState().lastUpdatedComposite.filter((timer) => timer.id === id).length).toBe(0);
         });
     });

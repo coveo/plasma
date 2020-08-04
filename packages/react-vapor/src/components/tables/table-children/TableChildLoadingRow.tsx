@@ -7,8 +7,8 @@ export interface ITableChildLoadingRowProps extends ITableProps {
     isInitialLoad?: boolean;
 }
 
-export const TableChildLoadingRow = (props: ITableChildLoadingRowProps): JSX.Element => {
-    return props.isInitialLoad ? (
+export const TableChildLoadingRow = (props: ITableChildLoadingRowProps): JSX.Element =>
+    props.isInitialLoad ? (
         <tbody className="loading-row">
             <tr>
                 <td
@@ -21,4 +21,3 @@ export const TableChildLoadingRow = (props: ITableChildLoadingRowProps): JSX.Ele
             </tr>
         </tbody>
     ) : null;
-};

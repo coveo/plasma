@@ -1,5 +1,6 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+
 import {TextLoadingPlaceholder} from '../../loading';
 import {TableRowHeader} from '../TableRowHeader';
 
@@ -14,12 +15,13 @@ describe('TableRowHeader', () => {
                     {}
                 );
                 wrapper.unmount();
-            });
+            }).not.toThrow();
         });
 
         describe('once mounted', () => {
             it('should render a <TextLoadingPlaceholder /> if loading', () => {
                 const wrapper = shallowWithState(<TableRowHeader isLoading />, {});
+
                 expect(wrapper.find(TextLoadingPlaceholder).length).toBe(1);
             });
         });

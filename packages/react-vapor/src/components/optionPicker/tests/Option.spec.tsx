@@ -1,25 +1,27 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IOptionProps, Option} from '../Option';
 
 describe('Option picker', () => {
-    const OPTION_BASIC_PROPS: IOptionProps = {
-        option: {
-            label: 'Option 1',
-            value: () => 'optionValue',
-        },
-        isActive: false,
-        onClick: jasmine.createSpy('onClick'),
-    };
+    let OPTION_BASIC_PROPS: IOptionProps;
 
-    describe('<Option />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<Option {...OPTION_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        OPTION_BASIC_PROPS = {
+            option: {
+                label: 'Option 1',
+                value: () => 'optionValue',
+            },
+            isActive: false,
+            onClick: jasmine.createSpy('onClick'),
+        };
+    });
+
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Option {...OPTION_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<Option />', () => {

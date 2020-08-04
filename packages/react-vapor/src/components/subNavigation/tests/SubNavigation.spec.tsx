@@ -20,6 +20,7 @@ describe('SubNavigation', () => {
                 />
             )
         ).not.toThrow();
+
         expect(() =>
             shallow(<SubNavigation items={[{id: 'a', label: 'A'}]} selected="not-existing-id" />)
         ).not.toThrow();
@@ -85,6 +86,7 @@ describe('SubNavigation', () => {
                 items: [{id: 'a', label: 'A', disabled: true}],
             };
             subNavigation = shallow(<SubNavigation {...disabledItem} />);
+
             expect(subNavigation.find('a').hasClass('disabled')).toBe(true);
         });
 

@@ -19,6 +19,7 @@ describe('Filepicker', () => {
         const filepicker = shallow(<Filepicker {...basicProps} />)
             .children()
             .first();
+
         expect(filepicker.type()).toBe('input');
         expect(filepicker.prop('type')).toBe('file');
     });

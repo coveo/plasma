@@ -21,6 +21,7 @@ describe('TabSelector', () => {
                 },
                 ownProps
             );
+
             expect(tabGroup).toBe(undefined);
         });
 
@@ -45,9 +46,11 @@ describe('TabSelector', () => {
             };
             const tabGroup: ITabGroupState = TabSelectors.getTabGroup(tabGroupState, {});
             const expectedTabGroup = tabGroupState.tabs[0];
+
             expect(tabGroup).toEqual(expectedTabGroup);
         });
     });
+
     describe('getTabSelected', () => {
         it('should return the selected tab', () => {
             const tabGroupState = {
@@ -57,6 +60,7 @@ describe('TabSelector', () => {
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
+
             expect(TabSelectors.getSelectedTab.resultFunc(tabGroupState)).toEqual({
                 id: 'coulili-zazou',
                 isSelected: true,
@@ -71,6 +75,7 @@ describe('TabSelector', () => {
                     {id: 'gros-boudesse', isSelected: false},
                 ],
             };
+
             expect(TabSelectors.getSelectedTab.resultFunc(tabGroupState)).toBe(undefined);
         });
     });

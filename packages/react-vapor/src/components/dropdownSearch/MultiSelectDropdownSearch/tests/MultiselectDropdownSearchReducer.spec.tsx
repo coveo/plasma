@@ -34,6 +34,7 @@ describe('DropdownSearch', () => {
             for (const option of options) {
                 expect(updatedState.options.indexOf(option)).toBeDefined();
             }
+
             expect(_.where(updatedState.options, {selected: true})).toEqual([]);
             expect(updatedState.isOpened).toBe(false);
         });
@@ -124,9 +125,7 @@ describe('DropdownSearch', () => {
 
             expect(
                 _.findWhere(
-                    _.reject(updatedState.options, (option) => {
-                        return option.custom || option.hidden;
-                    }),
+                    _.reject(updatedState.options, (option) => option.custom || option.hidden),
                     {value: selectedOptionValue}
                 )
             ).toBeDefined();

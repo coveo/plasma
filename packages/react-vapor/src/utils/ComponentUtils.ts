@@ -21,18 +21,16 @@ export interface IComponentBehaviour {
     disabled?: boolean;
 }
 
-export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => {
-    return {
-        url,
-        target: '_blank',
-        svg: {
-            svgName: 'help',
-            svgClass: 'fill-orange icon mod-20',
-        },
-        tooltip: {
-            title,
-            placement: 'bottom',
-            container: 'body',
-        },
-    };
-};
+export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgProps => ({
+    url,
+    target: '_blank',
+    svg: {
+        svgName: 'help',
+        svgClass: 'fill-orange icon mod-20',
+    },
+    tooltip: {
+        title,
+        placement: 'bottom',
+        container: 'body',
+    },
+});

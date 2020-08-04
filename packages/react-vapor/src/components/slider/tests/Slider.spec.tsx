@@ -56,6 +56,7 @@ describe('<Slider/>', () => {
                 appendValueFormatter: (value: number) => `+${value}`,
                 appendValue: true,
             }).dive();
+
             expect(middleSlider.find('.slider-value').first().text()).toBe('+0');
             expect(middleSlider.find('.slider-value').first().text()).toBe('+0');
         });
@@ -64,11 +65,13 @@ describe('<Slider/>', () => {
             middleSlider = shallowedSlider().dive().childAt(1).dive();
             const children: any = middleSlider.prop('children');
             const marks = children[2].props.marks;
+
             expect(marks).toEqual({0: '-2000', 33: '2000', 17: '0', 100: '10,000'});
         });
 
         it('should apply step prop to the range slider', () => {
             middleSlider = shallowedSlider().dive().childAt(1).dive();
+
             expect((middleSlider.prop('children') as any)[2].props.step).toEqual(step);
         });
 
@@ -76,6 +79,7 @@ describe('<Slider/>', () => {
             middleSlider = shallowedSlider().dive().childAt(1).dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
+
             expect(firstHandle.props.handleCustomProps.hasTooltip).toBeTruthy();
         });
 
@@ -96,6 +100,7 @@ describe('<Slider/>', () => {
                 .dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
+
             expect(firstHandle.props.handleCustomProps.hasTooltip).toBeUndefined();
         });
 
@@ -103,6 +108,7 @@ describe('<Slider/>', () => {
             middleSlider = shallowedSlider().dive().childAt(1).dive();
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
+
             expect(firstHandle.props.handleProps.disabled).toBeFalsy();
         });
 
@@ -125,6 +131,7 @@ describe('<Slider/>', () => {
 
             const children: any = middleSlider.prop('children');
             const firstHandle = children[3][0];
+
             expect(firstHandle.props.handleProps.disabled).toBeTruthy();
         });
 
@@ -207,6 +214,7 @@ describe('<Slider/>', () => {
             expect(middleSlider.childAt(0).prop('className')).toContain('hidden');
             expect(middleSlider.childAt(2).prop('className')).not.toContain('hidden');
         });
+
         it('should NOT append the computed  value if the appendedValue prop is passed', () => {
             middleSlider = shallowWithStore(
                 <Slider
@@ -220,6 +228,7 @@ describe('<Slider/>', () => {
                 />,
                 store
             ).dive();
+
             expect(middleSlider.childAt(0).prop('className')).toContain('hidden');
             expect(middleSlider.childAt(1).prop('className')).not.toContain('appended-value');
             expect(middleSlider.childAt(2).prop('className')).toContain('hidden');
@@ -240,6 +249,7 @@ describe('<Slider/>', () => {
                     />
                 </Provider>
             );
+
             expect(mountedSlider.find(Range).prop('value')).not.toEqual(defaultSliderValue);
         });
 
@@ -260,6 +270,7 @@ describe('<Slider/>', () => {
             act(() => {
                 mountedSlider.find(Range).prop('onChange')([40, 50]);
             });
+
             expect(callBackSpy).toHaveBeenCalledTimes(1);
         });
     });

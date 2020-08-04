@@ -278,11 +278,13 @@ describe('Tab', () => {
             const tabsState: ITabGroupState[] = tabGroupsReducer(oldState, action);
 
             const defaultGroup = _.find(tabsState, (state: ITabGroupState) => state.id === DEFAULT_GROUP_ID);
+
             expect(defaultGroup.tabs.length).toBe(2);
             expect(defaultGroup.tabs.filter((tab) => tab.id === action.payload.id)[0].isSelected).toBe(true);
             expect(defaultGroup.tabs.filter((tab) => tab.id === 'some-tab2')[0].isSelected).toBe(false);
 
             const group2 = _.find(tabsState, (state: ITabGroupState) => state.id === GROUP_2_ID);
+
             expect(group2.tabs.length).toBe(2);
             expect(group2.tabs.filter((tab) => tab.id === action.payload.id)[0].isSelected).toBe(false);
             expect(group2.tabs.filter((tab) => tab.id === 'some-tab2')[0].isSelected).toBe(true);

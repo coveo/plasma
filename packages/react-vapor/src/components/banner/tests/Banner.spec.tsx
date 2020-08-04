@@ -39,6 +39,7 @@ describe('Banner', () => {
             mountWithProps(props);
 
             const bannerProps = banner.props();
+
             expect(bannerProps.name).toBe(basicProps.name);
             expect(bannerProps.nameSubtitle).toBe(props.nameSubtitle);
             expect(bannerProps.messageTitle).toBe(props.messageTitle);

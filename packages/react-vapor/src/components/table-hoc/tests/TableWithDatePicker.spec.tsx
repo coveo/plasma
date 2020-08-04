@@ -25,12 +25,15 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithDatePicker id="a" data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithDatePicker id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(() => {
+                shallowWithState(<TableWithDatePicker id="a" data={[]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithDatePicker id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+            }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
             const wrapper = shallowWithState(<TableWithDatePicker {...defaultProps} />, {}).dive();
+
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
@@ -61,6 +64,7 @@ describe('Table HOC', () => {
                     <TableWithDatePickerAndMatch {...defaultProps} />,
                     getStateWithDatePicker(lowerLimit)
                 ).dive();
+
                 expect(matchDatesSpy).toHaveBeenCalledTimes(defaultProps.data.length);
                 _.forEach(defaultProps.data, (value: Date) => {
                     expect(matchDatesSpy).toHaveBeenCalledWith(value, lowerLimit, null);
@@ -75,6 +79,7 @@ describe('Table HOC', () => {
                     <TableWithDatePickerAndMatch {...defaultProps} />,
                     getStateWithDatePicker(lowerLimit, upperLimit)
                 ).dive();
+
                 expect(matchDatesSpy).toHaveBeenCalledTimes(defaultProps.data.length);
                 _.forEach(defaultProps.data, (value: Date) => {
                     expect(matchDatesSpy).toHaveBeenCalledWith(value, lowerLimit, upperLimit);

@@ -1,6 +1,7 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
+
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {PaginationReduxActions} from '../../navigation/pagination';
 import {Svg} from '../../svg';
@@ -13,7 +14,7 @@ describe('PaginationPagesNumber tests', () => {
             expect(() => {
                 const wrapper = shallowWithState(<PaginationPagesNumber id={'id'} totalPages={10} />, {}).dive();
                 wrapper.unmount();
-            });
+            }).not.toThrow();
         });
 
         describe('once mounted', () => {
@@ -27,11 +28,13 @@ describe('PaginationPagesNumber tests', () => {
             describe('previous arrow', () => {
                 it('should be disabled if the current page is equal to 0', () => {
                     wrapper = shallowPaginationPagesNumber({}).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(0).hasClass('disabled')).toBe(true);
                 });
 
                 it('should be selectable if the current page is not equal to 0', () => {
                     wrapper = shallowPaginationPagesNumber({}, {paginationComposite: [{id, pageNb: 1}]}).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(0).hasClass('selectable')).toBe(true);
                 });
 
@@ -40,6 +43,7 @@ describe('PaginationPagesNumber tests', () => {
                         {hidden: true},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(0).hasClass('hidden')).toBe(true);
                 });
 
@@ -49,11 +53,13 @@ describe('PaginationPagesNumber tests', () => {
                         {previousLabel: label},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(0).text()).toContain(label);
                 });
 
                 it('should have a <Svg />', () => {
                     wrapper = shallowPaginationPagesNumber().dive();
+
                     expect(wrapper.find('a.flat-select-option').at(0).find(Svg).length).toBe(1);
                 });
             });
@@ -64,11 +70,13 @@ describe('PaginationPagesNumber tests', () => {
                         {totalPages: 11},
                         {paginationComposite: [{id, pageNb: 10}]}
                     ).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(1).hasClass('disabled')).toBe(true);
                 });
 
                 it('should be selectable if the current page is not equal to the last page', () => {
                     wrapper = shallowPaginationPagesNumber({}, {paginationComposite: [{id, pageNb: 5}]}).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(1).hasClass('selectable')).toBe(true);
                 });
 
@@ -77,6 +85,7 @@ describe('PaginationPagesNumber tests', () => {
                         {hidden: true},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(1).hasClass('hidden')).toBe(true);
                 });
 
@@ -86,11 +95,13 @@ describe('PaginationPagesNumber tests', () => {
                         {nextLabel: label},
                         {paginationComposite: [{id, pageNb: 5}]}
                     ).dive();
+
                     expect(wrapper.find('a.flat-select-option').at(1).text()).toContain(label);
                 });
 
                 it('should have a <Svg />', () => {
                     wrapper = shallowPaginationPagesNumber().dive();
+
                     expect(wrapper.find('a.flat-select-option').at(1).find(Svg).length).toBe(1);
                 });
             });
@@ -101,6 +112,7 @@ describe('PaginationPagesNumber tests', () => {
                         {totalPages: 3},
                         {paginationComposite: [{id, pageNb: 2}]}
                     ).dive();
+
                     expect(wrapper.find(PaginationSelect).length).toBe(3);
                 });
 
@@ -109,6 +121,7 @@ describe('PaginationPagesNumber tests', () => {
                         {totalPages: 12},
                         {paginationComposite: [{id, pageNb: 2}]}
                     ).dive();
+
                     expect(wrapper.find(PaginationSelect).length).toBe(7);
                 });
 
@@ -117,6 +130,7 @@ describe('PaginationPagesNumber tests', () => {
                         {totalPages: 12, numberOfPagesToShow: 5},
                         {paginationComposite: [{id, pageNb: 2}]}
                     ).dive();
+
                     expect(wrapper.find(PaginationSelect).length).toBe(5);
                 });
             });

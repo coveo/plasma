@@ -27,9 +27,11 @@ describe('SideNavigationMenuSection', () => {
 
     it('should setup the section header using the "header" prop', () => {
         section = shallow(<SideNavigationMenuSection header={header} />);
+
         expect(section.find('SideNavigationHeader').exists()).toBe(true);
 
         const sectionHeader = section.find('SideNavigationHeader');
+
         expect(sectionHeader.children().contains(header.title)).toBe(true);
         expect(sectionHeader.prop('svgName')).toBe(header.svgName);
         expect(sectionHeader.prop('svgClass')).toBe(header.svgClass);
@@ -37,9 +39,11 @@ describe('SideNavigationMenuSection', () => {
 
     it('should setup the section header directly using the props', () => {
         section = shallow(<SideNavigationMenuSection {...header} />);
+
         expect(section.find('SideNavigationHeader').exists()).toBe(true);
 
         const sectionHeader = section.find('SideNavigationHeader');
+
         expect(sectionHeader.children().contains(header.title)).toBe(true);
         expect(sectionHeader.prop('svgName')).toBe(header.svgName);
         expect(sectionHeader.prop('svgClass')).toBe(header.svgClass);

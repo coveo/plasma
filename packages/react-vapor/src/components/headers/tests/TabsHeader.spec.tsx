@@ -75,6 +75,7 @@ describe('<TabsHeader/>', () => {
             renderTabsHeader({
                 tabs: [tab1],
             });
+
             expect(tabsHeaderComponent.find(TabConnected).length).toEqual(1);
         });
 
@@ -82,6 +83,7 @@ describe('<TabsHeader/>', () => {
             renderTabsHeader({
                 tabs: [tab1, tab2],
             });
+
             expect(tabsHeaderComponent.find(TabConnected).length).toEqual(2);
         });
     });

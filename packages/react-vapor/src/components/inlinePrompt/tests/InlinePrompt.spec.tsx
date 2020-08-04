@@ -8,17 +8,15 @@ import {IInlinePromptOptions, InlinePrompt} from '../InlinePrompt';
 describe('InlinePrompt', () => {
     let options: IInlinePromptOptions;
 
-    describe('<InlinePrompt />', () => {
-        it('should render without errors', () => {
-            options = {
-                onClick: jasmine.createSpy('onClick'),
-                userChoice: {},
-            };
+    it('should render without errors', () => {
+        options = {
+            onClick: jasmine.createSpy('onClick'),
+            userChoice: {},
+        };
 
-            expect(() => {
-                shallow(<InlinePrompt options={options} />);
-            }).not.toThrow();
-        });
+        expect(() => {
+            shallow(<InlinePrompt options={options} />);
+        }).not.toThrow();
     });
 
     describe('<InlinePrompt />', () => {
@@ -56,6 +54,7 @@ describe('InlinePrompt', () => {
             expect(inlinePrompt.find('.prompt-' + options.className).length).toBe(1);
 
             inlinePrompt.setProps({options: newOptions});
+
             expect(inlinePrompt.find('.prompt-' + options.className).length).toBe(0);
             expect(inlinePrompt.find('.prompt-info').length).toBe(1);
         });
@@ -66,6 +65,7 @@ describe('InlinePrompt', () => {
             expect(inlinePrompt.find('.opened').length).toBe(0);
 
             inlinePrompt.setProps({options: newOptions});
+
             expect(inlinePrompt.find('.opened').length).toBe(1);
         });
 
@@ -76,6 +76,7 @@ describe('InlinePrompt', () => {
             expect(inlinePrompt.find(Svg).length).toBe(1);
 
             inlinePrompt.setProps({options: newOptions});
+
             expect(inlinePrompt.find(Svg).length).toBe(0);
         });
 
@@ -90,6 +91,7 @@ describe('InlinePrompt', () => {
             expect(inlinePrompt.find('.description').length).toBe(1);
 
             inlinePrompt.setProps({options: newOptions});
+
             expect(inlinePrompt.find('.description').length).toBe(0);
         });
 
@@ -100,11 +102,13 @@ describe('InlinePrompt', () => {
             expect(inlinePrompt.find('.cancel').length).toBe(1);
 
             inlinePrompt.setProps({options: newOptions});
+
             expect(inlinePrompt.find('.cancel').length).toBe(0);
         });
 
         it('should call the onClick prop when choice is clicked', () => {
             inlinePrompt.find('.prompt-action').first().simulate('click');
+
             expect(onClickSpy.calls.count()).toBe(1);
         });
 
@@ -113,6 +117,7 @@ describe('InlinePrompt', () => {
 
             inlinePrompt.setProps({options: options, onCancel: onCancelSpy});
             inlinePrompt.find('.cancel').first().simulate('click');
+
             expect(onCancelSpy.calls.count()).toBe(1);
         });
     });

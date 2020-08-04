@@ -38,12 +38,10 @@ export interface NumericInputProps
         Partial<NumericInputStateProps>,
         Partial<NumericInputDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => {
-    return {
-        value: NumericInputSelectors.getValue(state, ownProps),
-        hasError: NumericInputSelectors.getHasError(state, ownProps),
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => ({
+    value: NumericInputSelectors.getValue(state, ownProps),
+    hasError: NumericInputSelectors.getHasError(state, ownProps),
+});
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps): NumericInputDispatchProps => ({
     mount: (value: number) => dispatch(NumericInputActions.mount(ownProps.id, value, ownProps.min, ownProps.max)),

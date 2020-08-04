@@ -47,6 +47,7 @@ describe('Select', () => {
 
             it('should not throw on unmount', () => {
                 mountMultiSelect();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 
@@ -168,11 +169,13 @@ describe('Select', () => {
             ]);
 
             let state = _.findWhere(store.getState().listBoxes, {id});
+
             expect(state.selected).toEqual([firstSelected, secondSelected]);
 
             multiSelect.find(SelectedOption).at(0).find('.remove-option').simulate('click');
 
             state = _.findWhere(store.getState().listBoxes, {id});
+
             expect(state.selected).toEqual([secondSelected]);
         });
 
@@ -187,11 +190,13 @@ describe('Select', () => {
             ]);
 
             let state = _.findWhere(store.getState().listBoxes, {id});
+
             expect(state.selected).toEqual([firstSelected, secondSelected]);
 
             multiSelect.find('.remove-all-selected-options').simulate('click');
 
             state = _.findWhere(store.getState().listBoxes, {id});
+
             expect(state.selected).toEqual([]);
         });
     });

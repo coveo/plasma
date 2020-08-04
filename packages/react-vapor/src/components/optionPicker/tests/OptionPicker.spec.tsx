@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IOptionPickerProps, OptionPicker} from '../OptionPicker';
 
 describe('Option picker', () => {
@@ -18,12 +18,10 @@ describe('Option picker', () => {
         ],
     };
 
-    describe('<OptionPicker />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<OptionPicker {...OPTION_PICKER_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<OptionPicker {...OPTION_PICKER_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<OptionPicker />', () => {
@@ -103,6 +101,7 @@ describe('Option picker', () => {
             expect(() =>
                 optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel)
             ).not.toThrow();
+
             expect(onClickSpy).not.toHaveBeenCalled();
 
             optionPicker.setProps(withOnClickProps);

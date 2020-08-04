@@ -27,7 +27,7 @@ export interface IModalHeaderProps
         Partial<IModalHeaderStateProps>,
         Partial<IModalHeaderDispatchProps> {}
 
-export class ModalHeader extends React.Component<IModalHeaderProps, {}> {
+export class ModalHeader extends React.Component<IModalHeaderProps> {
     static defaultProps: Partial<IModalHeaderProps> = {
         lastOpened: true,
     };

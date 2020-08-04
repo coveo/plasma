@@ -60,25 +60,22 @@ export const modalWithPreventNavigation = <T, R = any>(config: IWithPreventNavig
             const {title, content, exit, stay} = _.defaults(config, preventNavigationDefaultConfig);
             this.ComponentWithDirty = withDirty<T & Partial<IWithPreventNavigationInjectedProps>>({
                 id: config.id,
-                showDirty: (isDirty: boolean) => {
-                    return (
-                        isDirty && (
-                            <PreventNavigationPrompt
-                                id={`prevent-navigation-${config.id}`}
-                                isOpen={this.state.showPrevent}
-                                title={title}
-                                onStay={() => this.setState({showPrevent: false})}
-                                onClose={() => {
-                                    this.setState({showPrevent: false});
-                                    this.props.closeModal(config.id);
-                                }}
-                                exit={exit}
-                                stay={stay}
-                                content={content}
-                            />
-                        )
-                    );
-                },
+                showDirty: (isDirty: boolean) =>
+                    isDirty && (
+                        <PreventNavigationPrompt
+                            id={`prevent-navigation-${config.id}`}
+                            isOpen={this.state.showPrevent}
+                            title={title}
+                            onStay={() => this.setState({showPrevent: false})}
+                            onClose={() => {
+                                this.setState({showPrevent: false});
+                                this.props.closeModal(config.id);
+                            }}
+                            exit={exit}
+                            stay={stay}
+                            content={content}
+                        />
+                    ),
             })(Component as any);
         }
 

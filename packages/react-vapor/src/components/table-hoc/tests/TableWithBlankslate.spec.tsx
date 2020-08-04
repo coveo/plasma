@@ -1,6 +1,7 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
 
@@ -15,14 +16,15 @@ describe('Table HOC', () => {
         };
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithBlankSlate {...defaultProps} />, {}));
-            expect(shallowWithState(<TableWithBlankSlate {...defaultProps} data={[{value: 'a'}]} />, {}));
+            expect(() => {
+                shallowWithState(<TableWithBlankSlate {...defaultProps} />, {});
+                shallowWithState(<TableWithBlankSlate {...defaultProps} data={[{value: 'a'}]} />, {});
+            }).not.toThrow();
         });
 
         describe('props and content', () => {
-            const shallowWithProps = (props: Partial<ITableHOCProps> = {}) => {
-                return shallowWithState(<TableWithBlankSlate {...defaultProps} {...props} />, {});
-            };
+            const shallowWithProps = (props: Partial<ITableHOCProps> = {}) =>
+                shallowWithState(<TableWithBlankSlate {...defaultProps} {...props} />, {});
 
             let renderSpy: jasmine.Spy;
             beforeEach(() => {
@@ -31,6 +33,7 @@ describe('Table HOC', () => {
 
             it('should render a TableHOC', () => {
                 const wrapper = shallowWithProps().dive();
+
                 expect(wrapper.find(TableHOC).exists()).toBe(true);
             });
 
@@ -59,11 +62,13 @@ describe('Table HOC', () => {
 
             it('should update the renderBody when the data is empty', () => {
                 shallowWithProps({renderBody: renderSpy}).dive();
+
                 expect(renderSpy).toHaveBeenCalledTimes(0);
             });
 
             it('should not render a BlankSlate when the data is null', () => {
                 shallowWithProps({data: null, renderBody: renderSpy}).dive().dive();
+
                 expect(renderSpy).toHaveBeenCalledTimes(1);
             });
 
@@ -75,6 +80,7 @@ describe('Table HOC', () => {
                 )(TableHOC);
 
                 const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...defaultProps} />, {});
+
                 expect((wrapper.dive().props() as any).renderBody().props.title).toBe(expectedTitle);
             });
         });

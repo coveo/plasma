@@ -15,6 +15,7 @@ describe('DropdownSearchUtils', () => {
 
         it('should return the selected option if there is one', () => {
             const selectedOption: IDropdownOption = {value: 'selected option', selected: true};
+
             expect(
                 getDropdownSearchSelectedOption('existing-dropdown', [
                     {options: [selectedOption], id: 'existing-dropdown'},

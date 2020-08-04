@@ -23,9 +23,7 @@ describe('Select', () => {
             {id: UUID.generate(), option: {content: 'None'}},
         ];
 
-        const matchPredicate = (predicate: string, item: IItemBoxProps) => {
-            return predicate === defaultFlatSelectOptions[0].id;
-        };
+        const matchPredicate = (predicate: string, item: IItemBoxProps) => predicate === defaultFlatSelectOptions[0].id;
 
         const mountMultiSelect = () => {
             wrapper = mount(
@@ -57,6 +55,7 @@ describe('Select', () => {
 
             it('should not throw on unmount', () => {
                 mountMultiSelect();
+
                 expect(() => wrapper.unmount()).not.toThrow();
             });
 

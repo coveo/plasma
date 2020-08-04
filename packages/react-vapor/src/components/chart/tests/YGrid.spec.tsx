@@ -14,6 +14,7 @@ describe('<YGrid />', () => {
 
     it('should render a line', () => {
         const component = shallow(<YGrid />);
+
         expect(component.find('line').exists()).toBe(true);
     });
 });

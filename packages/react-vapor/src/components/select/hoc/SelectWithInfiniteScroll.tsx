@@ -10,29 +10,27 @@ export interface SelectWithInfiniteScrollProps {
     next: () => void;
 }
 
-export function selectWithInfiniteScroll<P extends Omit<ISelectOwnProps, 'button'>>(
+export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button'>>(
     Component: React.ComponentType<P>
-): React.ComponentType<P & SelectWithInfiniteScrollProps> {
+): React.ComponentType<P & SelectWithInfiniteScrollProps> => {
     const ComponentWithInfiniteScroll: React.FunctionComponent<P & SelectWithInfiniteScrollProps> = (props) => {
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;
 
-        function itemsWrapper(items: React.ReactNode[]): React.ReactNode {
-            return (
-                <InfiniteScroll
-                    dataLength={dataLength}
-                    hasMore={hasMore}
-                    loader={<Loading className="p2 full-content-x" />}
-                    next={props.next}
-                    scrollableTarget={props.id}
-                    scrollThreshold={1}
-                    style={{overflow: 'initial'}}
-                    hasChildren={items.length > 0 || props.isLoading}
-                >
-                    {items}
-                </InfiniteScroll>
-            );
-        }
+        const itemsWrapper = (items: React.ReactNode[]): React.ReactNode => (
+            <InfiniteScroll
+                dataLength={dataLength}
+                hasMore={hasMore}
+                loader={<Loading className="p2 full-content-x" />}
+                next={props.next}
+                scrollableTarget={props.id}
+                scrollThreshold={1}
+                style={{overflow: 'initial'}}
+                hasChildren={items.length > 0 || props.isLoading}
+            >
+                {items}
+            </InfiniteScroll>
+        );
 
         return <Component {...(props as P)} wrapItems={itemsWrapper} />;
     };
@@ -41,4 +39,4 @@ export function selectWithInfiniteScroll<P extends Omit<ISelectOwnProps, 'button
         totalEntries: 0,
     } as Partial<P & SelectWithInfiniteScrollProps>;
     return ComponentWithInfiniteScroll;
-}
+};

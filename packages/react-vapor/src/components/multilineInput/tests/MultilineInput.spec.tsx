@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {Store} from 'redux';
 
@@ -12,12 +11,10 @@ import {DeletableInput} from '../DeletableInput';
 import {IMultilineInputProps, IMultilineInputValue, MultilineInput} from '../MultilineInput';
 
 describe('MultilineInput', () => {
-    describe('<MultilineInput />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<MultilineInput />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<MultilineInput />);
+        }).not.toThrow();
     });
 
     describe('<MultilineInput />', () => {
@@ -78,6 +75,7 @@ describe('MultilineInput', () => {
             multilineInput.mount();
 
             const innerAddInput = multilineInput.find(AddInput);
+
             expect(innerAddInput.length).toBe(1);
 
             innerAddInput.props().onBlur(aNewValue);
@@ -92,6 +90,7 @@ describe('MultilineInput', () => {
             multilineInput.mount();
 
             const innerDeleteInput = multilineInput.find(DeletableInput);
+
             expect(innerDeleteInput.length).toBe(1);
 
             innerDeleteInput.props().onBlur(aNewValue);
@@ -106,6 +105,7 @@ describe('MultilineInput', () => {
             multilineInput.mount();
 
             const innerDeleteInput = multilineInput.find(DeletableInput);
+
             expect(innerDeleteInput.length).toBe(1);
 
             innerDeleteInput.props().onBlur('');

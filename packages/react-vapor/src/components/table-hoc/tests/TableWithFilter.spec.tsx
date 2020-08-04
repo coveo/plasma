@@ -21,12 +21,15 @@ describe('Table HOC', () => {
         const getStateWithFilter = (filter: string) => ({filters: [{id: defaultProps.id, filterText: filter}]});
 
         it('should not throw', () => {
-            expect(shallowWithState(<TableWithFilter id="a" data={[]} renderBody={_.identity} />, {}));
-            expect(shallowWithState(<TableWithFilter id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {}));
+            expect(() => {
+                shallowWithState(<TableWithFilter id="a" data={[]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithFilter id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+            }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
             const wrapper = shallowWithState(<TableWithFilter {...defaultProps} />, {}).dive();
+
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 

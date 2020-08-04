@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ILinkSvgProps, LinkSvg} from '../LinkSvg';
 import {Svg} from '../Svg';
@@ -59,6 +59,7 @@ describe('<LinkSvg>', () => {
             renderLinkSvg({linkClasses: ['test', 'test1']});
 
             const element = linkSvgComponent.find('a');
+
             expect(element.hasClass('test')).toBe(true);
             expect(element.hasClass('test1')).toBe(true);
         });

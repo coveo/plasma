@@ -1,16 +1,14 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {IInputProps} from '../../input/Input';
 import {AddInput} from '../AddInput';
 
 describe('AddInput', () => {
-    describe('<AddInput />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<AddInput />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<AddInput />);
+        }).not.toThrow();
     });
 
     describe('<AddInput />', () => {
@@ -29,11 +27,13 @@ describe('AddInput', () => {
             const innerInput = addInput.find('input');
 
             innerInput.simulate('blur');
+
             expect(blurSpy).not.toHaveBeenCalled();
 
             addInput.setProps({onBlur: blurSpy}).mount();
 
             innerInput.simulate('blur');
+
             expect(blurSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -44,6 +44,7 @@ describe('AddInput', () => {
             innerInput.simulate('keyUp', {
                 key: 'Enter',
             });
+
             expect(blurSpy).not.toHaveBeenCalled();
 
             addInput.setProps({onBlur: blurSpy}).mount();
@@ -51,6 +52,7 @@ describe('AddInput', () => {
             innerInput.simulate('keyUp', {
                 key: 'Enter',
             });
+
             expect(blurSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -59,11 +61,13 @@ describe('AddInput', () => {
             const innerAddInputButton = addInput.find('.input-actions');
 
             innerAddInputButton.simulate('click');
+
             expect(blurSpy).not.toHaveBeenCalled();
 
             addInput.setProps({onBlur: blurSpy}).mount();
 
             innerAddInputButton.simulate('click');
+
             expect(blurSpy).toHaveBeenCalledTimes(1);
         });
     });

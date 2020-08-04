@@ -1,18 +1,17 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {UUID} from '../../../utils/UUID';
 import {Content, IContentProps} from '../../content/Content';
 import {ISvgProps, Svg} from '../../svg/Svg';
 import {FlatSelectOption, IFlatSelectOptionProps} from '../FlatSelectOption';
 
 describe('FlatSelect', () => {
-    describe('<FlatSelectOption />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<FlatSelectOption id={UUID.generate()} option={{content: 'test'}} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<FlatSelectOption id={UUID.generate()} option={{content: 'test'}} />);
+        }).not.toThrow();
     });
 
     describe('<FlatSelectOption />', () => {
@@ -56,6 +55,7 @@ describe('FlatSelect', () => {
             );
 
             const optionElement = flatSelect.find('a');
+
             expect(optionElement.hasClass('selectable')).toBe(false);
         });
 
@@ -67,6 +67,7 @@ describe('FlatSelect', () => {
             );
 
             const optionElement = flatSelect.find('a');
+
             expect(optionElement.hasClass('selectable')).toBe(true);
         });
 

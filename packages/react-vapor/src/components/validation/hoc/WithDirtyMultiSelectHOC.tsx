@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
+
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {SelectSelector} from '../../select/SelectSelector';
@@ -32,7 +33,7 @@ export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Componen
 
         React.useEffect(() => {
             toggleIsDirty(hasDifferentValuesSelected);
-        }, [hasDifferentValuesSelected]);
+        }, [hasDifferentValuesSelected, toggleIsDirty]);
 
         return <Component {...(props as T)} />;
     };

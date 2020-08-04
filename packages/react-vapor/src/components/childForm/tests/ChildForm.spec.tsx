@@ -1,16 +1,14 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {Radio} from '../../radio/Radio';
 import {ChildForm, IChildFormProps} from '../ChildForm';
 
 describe('ChildForm', () => {
-    describe('<ChildForm />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<ChildForm />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<ChildForm />);
+        }).not.toThrow();
     });
 
     describe('<ChildForm />', () => {
@@ -33,9 +31,11 @@ describe('ChildForm', () => {
             expect(childForm.find(Radio).first().prop('disabled')).toBe(false);
 
             childForm.setProps({disabled: false}).mount().update();
+
             expect(childForm.find(Radio).first().prop('disabled')).toBe(false);
 
             childForm.setProps({disabled: true}).mount().update();
+
             expect(childForm.find(Radio).first().prop('disabled')).toBe(true);
         });
     });

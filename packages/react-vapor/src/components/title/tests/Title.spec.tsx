@@ -72,6 +72,7 @@ describe('<Title/>', () => {
 
         it('should render the prefix', () => {
             renderTitle();
+
             expect(titleComponent.find('span.mr1').text()).toBe(customProps.prefix);
         });
 
@@ -79,6 +80,7 @@ describe('<Title/>', () => {
             renderTitle({
                 withTitleTooltip: true,
             });
+
             expect(titleComponent.find(Tooltip).length).toBe(1);
         });
 
@@ -86,6 +88,7 @@ describe('<Title/>', () => {
             renderTitle({
                 documentationLink,
             });
+
             expect(titleComponent.find(LinkSvg).length).toBe(1);
             expect(titleComponent.find(LinkSvg).prop('linkClasses')).toContain('inline-doc-link');
         });

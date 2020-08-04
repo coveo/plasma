@@ -1,4 +1,4 @@
-// tslint:disable
+/* eslint-disable */
 export class UUID {
     // TODO: replace for https://www.npmjs.com/package/uuid
     static generate() {
@@ -11,4 +11,3 @@ export class UUID {
         });
     }
 }
-// tslint:enable

@@ -126,6 +126,7 @@ describe('Option picker', () => {
             optionPicker.props().onClick(expectedSelectedValue, expectedSelectedLabel);
 
             optionPickerState = _.findWhere(store.getState().optionPickers, {id: OPTION_PICKER_BASIC_PROPS.id});
+
             expect(optionPickerState.selectedValue).toBe(expectedSelectedValue);
             expect(optionPickerState.selectedLabel).toBe(expectedSelectedLabel);
 
@@ -135,6 +136,7 @@ describe('Option picker', () => {
             optionPicker.props().onClick(expectedSelectedValue, expectedSelectedLabel);
 
             optionPickerState = _.findWhere(store.getState().optionPickers, {id: OPTION_PICKER_BASIC_PROPS.id});
+
             expect(optionPickerState.selectedValue).toBe(expectedSelectedValue);
             expect(optionPickerState.selectedLabel).toBe(expectedSelectedLabel);
         });

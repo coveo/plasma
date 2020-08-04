@@ -25,7 +25,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
     type OwnProps = P & ISelectWithPredicateOwnProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
-    function mapStateToProps(state: IReactVaporState, ownProps: OwnProps) {
+    const mapStateToProps = (state: IReactVaporState, ownProps: OwnProps) => {
         const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id});
 
         const items = ownProps.isServer
@@ -40,12 +40,13 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
             items,
             predicate,
         };
-    }
+    };
 
     const WrappedComponent: React.FunctionComponent<Props> = (props) => {
+        const {onUpdate, predicate} = props;
         React.useEffect(() => {
-            props.onUpdate?.();
-        }, [props.predicate, props.onUpdate]);
+            onUpdate?.();
+        }, [predicate, onUpdate]);
 
         return (
             <Component {..._.omit(props, SelectWithPredicatePropsToOmit)}>

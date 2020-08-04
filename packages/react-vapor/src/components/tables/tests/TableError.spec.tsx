@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {
     DESCRIPTION_LABEL,
     ERROR_CODE_LABEL,
@@ -20,12 +20,10 @@ describe('Tables', () => {
         errorCode: 'error_1',
     };
 
-    describe('<TableError />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<TableError error={error} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<TableError error={error} />);
+        }).not.toThrow();
     });
 
     describe('<TableError />', () => {
@@ -95,6 +93,7 @@ describe('Tables', () => {
             expect(tableError.html()).not.toContain(expectedLabel);
 
             tableError.setProps({error: error, descriptionLabel: expectedLabel});
+
             expect(tableError.html()).toContain(expectedLabel);
             expect(tableError.html()).not.toContain(DESCRIPTION_LABEL);
         });
@@ -106,6 +105,7 @@ describe('Tables', () => {
             expect(tableError.html()).not.toContain(expectedLabel);
 
             tableError.setProps({error: error, troubleshootingLabel: expectedLabel});
+
             expect(tableError.html()).toContain(expectedLabel);
             expect(tableError.html()).not.toContain(TROUBLESHOOTING_LABEL);
         });
@@ -117,6 +117,7 @@ describe('Tables', () => {
             expect(tableError.html()).not.toContain(expectedLabel);
 
             tableError.setProps({error: error, errorCodeLabel: expectedLabel});
+
             expect(tableError.html()).toContain(expectedLabel);
             expect(tableError.html()).not.toContain(ERROR_CODE_LABEL);
         });

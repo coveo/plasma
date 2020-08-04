@@ -79,13 +79,12 @@ const getPredicateIds = (tableId: string, state: IReactVaporState): string[] =>
 
 const getPaginationId = (tableId: string) => `pagination-${tableId}`;
 
-const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOCPredicateValue[] => {
-    return _.chain(state.listBoxes)
+const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOCPredicateValue[] =>
+    _.chain(state.listBoxes)
         .filter(filterTablePredicate.bind(null, tableId))
         .filter((list: IListBoxState) => list.selected && list.selected[0] !== '')
         .map((list: IListBoxState) => ({id: getComponentIdFromPredicateId(list.id), value: list.selected[0]}))
         .value();
-};
 
 const getDatePickerId = (tableId: string) => `${tableId}-date-range`;
 
@@ -98,6 +97,4 @@ export const TableHOCUtils = {
     getDatePickerId,
 };
 
-function filterTablePredicate(tableId: string, {id}: IListBoxState): boolean {
-    return new RegExp(`^${tableId}(.+)`).test(id);
-}
+const filterTablePredicate = (tableId: string, {id}: IListBoxState): boolean => new RegExp(`^${tableId}(.+)`).test(id);

@@ -195,6 +195,7 @@ describe('Reducers', () => {
             };
 
             const action = filterThrough(filterId, 'new filter value');
+
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(0);
         });
 
@@ -206,6 +207,7 @@ describe('Reducers', () => {
             };
 
             const action = filterThrough(filterId, 'new filter value');
+
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(oldState.pageNb);
         });
 
@@ -221,6 +223,7 @@ describe('Reducers', () => {
                 false,
                 'new predicate value'
             );
+
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(0);
         });
 
@@ -236,6 +239,7 @@ describe('Reducers', () => {
                 false,
                 'new predicate value'
             );
+
             expect(paginationCompositeReducer([oldState], action)[0].pageNb).toBe(oldState.pageNb);
         });
     });

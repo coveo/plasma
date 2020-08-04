@@ -100,6 +100,7 @@ describe('Reducers', () => {
             const toastContainersState: IToastsState[] = toastsContainerReducer(oldState, action);
 
             const containerState = _.findWhere(toastContainersState, {id: action.payload.containerId});
+
             expect(toastContainersState.length).toBe(oldState.length);
             expect(containerState.toasts.length).toBe(0);
         });

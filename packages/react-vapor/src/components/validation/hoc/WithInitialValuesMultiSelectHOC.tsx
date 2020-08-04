@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {ValidationActions} from '../ValidationActions';
@@ -44,16 +45,17 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
             selected: _.contains(initialValues, item.value),
         }));
 
-        React.useEffect(() => {
-            return () => {
+        React.useEffect(
+            () => () => {
                 props.resetInitialValueWarningOnUnmount && clearWarning();
-            };
-        }, []);
+            },
+            [clearWarning, props.resetInitialValueWarningOnUnmount]
+        );
 
         React.useEffect(() => {
             const message = invalidInitialValuesMessage?.(notFoundInitialValues) || '';
             setWarning(notFoundInitialValues.length > 0 ? message : '');
-        }, [invalidInitialValuesMessage, notFoundInitialValues.length]);
+        }, [invalidInitialValuesMessage, notFoundInitialValues, setWarning]);
 
         return <Component {...(props as T)} items={newItems} />;
     };

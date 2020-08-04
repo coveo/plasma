@@ -1,11 +1,10 @@
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
-import {ReduxUtils} from '../../utils/ReduxUtils';
-
 import classNames from 'classnames';
 import * as React from 'react';
+import {IReactVaporState} from '../../ReactVapor';
+import {ReduxUtils} from '../../utils/ReduxUtils';
 
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps} from '../tooltip/Tooltip';

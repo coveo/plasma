@@ -2,18 +2,16 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {FacetMoreToggle, FACET_TOGGLE_MORE_LABEL, IFacetMoreToggleProps} from '../FacetMoreToggle';
+import {FACET_TOGGLE_MORE_LABEL, FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
 
 describe('Facets', () => {
     const basicFacetMoreToggleProps: IFacetMoreToggleProps = {
         facet: 'facetTitle',
     };
-    describe('<FacetMoreToggle />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<FacetMoreToggle {...basicFacetMoreToggleProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<FacetMoreToggle {...basicFacetMoreToggleProps} />);
+        }).not.toThrow();
     });
 
     describe('<FacetMoreToggle />', () => {
@@ -44,6 +42,7 @@ describe('Facets', () => {
 
             facetMoreToggle.setProps(newFacetMoreToggleProps);
             facetMoreToggle.mount();
+
             expect(facetMoreToggle.html()).not.toContain(FACET_TOGGLE_MORE_LABEL);
             expect(facetMoreToggle.html()).toContain(expectedMoreLabel);
         });
@@ -54,6 +53,7 @@ describe('Facets', () => {
             const newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, {onToggleMore: onToggleMoreSpy});
 
             facetMoreToggle.find('input').simulate('change');
+
             expect(handleOnChangeSpy).toHaveBeenCalled();
 
             facetMoreToggle = mount(<FacetMoreToggle {...newFacetMoreToggleProps} />, {
@@ -62,6 +62,7 @@ describe('Facets', () => {
             const newHandleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
 
             facetMoreToggle.find('input').simulate('change');
+
             expect(newHandleOnChangeSpy).toHaveBeenCalled();
             expect(onToggleMoreSpy.calls.count()).toBe(1);
         });
@@ -72,9 +73,11 @@ describe('Facets', () => {
             document.addEventListener('click', generalEventSpy);
 
             (document.getElementsByClassName('facet-more')[0] as HTMLDivElement).click();
+
             expect(generalEventSpy).not.toHaveBeenCalled();
 
             document.getElementById('App').click();
+
             expect(generalEventSpy).toHaveBeenCalled();
 
             document.removeEventListener('click', generalEventSpy);

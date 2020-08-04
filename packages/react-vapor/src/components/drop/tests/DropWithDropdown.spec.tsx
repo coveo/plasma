@@ -21,6 +21,7 @@ describe('DropWithDropdown', () => {
                 <DropWithDropdown id={'test'} renderOpenButton={() => defaultButton} />,
                 {}
             ).dive();
+
             expect(() => {
                 wrapper.unmount();
             }).not.toThrow();

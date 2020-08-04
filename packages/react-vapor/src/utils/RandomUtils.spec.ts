@@ -14,6 +14,7 @@ describe('RandomUtils', () => {
 
         it('should return an element from the array', () => {
             const possibleValues = ['😎', '🤠', '😮'];
+
             expect(possibleValues).toContain(Random.pick(possibleValues));
             expect(possibleValues).toContain(Random.pick(possibleValues));
             expect(possibleValues).toContain(Random.pick(possibleValues));
@@ -30,6 +31,7 @@ describe('RandomUtils', () => {
     describe('Random.bool', () => {
         it('should return either true or false', () => {
             const possibleValues = [true, false];
+
             expect(possibleValues).toContain(Random.bool());
             expect(possibleValues).toContain(Random.bool());
             expect(possibleValues).toContain(Random.bool());

@@ -4,11 +4,9 @@ import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalProps, IModalStateProps, Modal} from './Modal';
 import {addModal, removeModal} from './ModalActions';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IModalOwnProps): IModalStateProps => {
-    return {
-        isOpened: state.modals.some((modal) => modal.id === ownProps.id && modal.isOpened),
-    };
-};
+const mapStateToProps = (state: IReactVaporState, ownProps: IModalOwnProps): IModalStateProps => ({
+    isOpened: state.modals.some((modal) => modal.id === ownProps.id && modal.isOpened),
+});
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,

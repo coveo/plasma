@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IInputOwnProps} from '../../input/Input';
 import {ValidationActions} from '../ValidationActions';
@@ -35,7 +36,7 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
             return () => {
                 resetErrorOnUnmount && clearError(props.id);
             };
-        }, []);
+        }, [props.id, clearError, resetErrorOnUnmount]);
 
         return (
             <Component

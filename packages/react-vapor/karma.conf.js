@@ -1,5 +1,6 @@
 const webpackConfig = require('./webpack.config.test.js')();
 const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
+process.env.CHROME_BIN = require('puppeteer').executablePath();
 
 module.exports = (config) => {
     const configuration = {
@@ -17,11 +18,11 @@ module.exports = (config) => {
 
         webpack: webpackConfig,
 
-        webpackServer: {
-            noInfo: true,
-        },
-
         reporters: ['mocha'],
+
+        mochaReporter: {
+            ignoreSkipped: true,
+        },
 
         client: {
             jasmine: {
@@ -32,15 +33,11 @@ module.exports = (config) => {
         port: 9876,
         colors: true,
 
+        browserNoActivityTimeout: 60000,
         browsers: ['ChromeHeadless'],
 
         autoWatch: false,
-        autoWatchBatchDelay: 5000,
         singleRun: true,
-
-        browserNoActivityTimeout: 500000,
-        browserDisconnectTolerance: 5,
-        browserConsoleLogOptions: {level: 'log', terminal: false},
     };
 
     if (!skipCoverageProcessing) {
@@ -51,9 +48,6 @@ module.exports = (config) => {
             fixWebpackSourcePaths: true,
         };
         configuration.browserConsoleLogOptions = {level: 'log', terminal: true};
-        configuration.mochaReporter = {
-            ignoreSkipped: true,
-        };
     }
 
     config.set(configuration);

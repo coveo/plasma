@@ -48,9 +48,7 @@ export const tabsReducer = (
             }
             return [...state, tabReducer({id: undefined, isSelected}, action)];
         case TabAction.removeTab:
-            return _.reject(state, (tab: ITabState) => {
-                return action.payload.id === tab.id;
-            });
+            return _.reject(state, (tab: ITabState) => action.payload.id === tab.id);
         case TabAction.selectTab:
             return state.map((tab: ITabState) => tabReducer(tab, action));
         default:
@@ -79,9 +77,7 @@ export const tabGroupReducer = (
     }
 };
 
-const findGroup = (state: ITabGroupState[], id: string) => {
-    return _.find(state, (group: ITabGroupState) => group.id === id);
-};
+const findGroup = (state: ITabGroupState[], id: string) => _.find(state, (group: ITabGroupState) => group.id === id);
 
 export const tabGroupsReducer = (
     state: ITabGroupState[] = tabGroupsInitialState,

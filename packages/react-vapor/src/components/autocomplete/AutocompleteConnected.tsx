@@ -99,8 +99,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IAutocompleteOwnProps
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class AutocompleteConnected extends React.Component<
-    IAutocompleteProps & React.HTMLProps<AutocompleteConnected>,
-    {}
+    IAutocompleteProps & React.HTMLProps<AutocompleteConnected>
 > {
     private dropdown: HTMLDivElement;
     private menu: HTMLDivElement;

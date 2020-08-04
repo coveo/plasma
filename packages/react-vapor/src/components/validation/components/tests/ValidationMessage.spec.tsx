@@ -25,6 +25,7 @@ describe('ValidationMessage', () => {
 
     it('should render nothing if the store is empty', () => {
         const result = shallowWithState(<ValidationMessage {...defaultProps} />, {}).dive();
+
         expect(result.text()).toBe('');
     });
 
@@ -41,6 +42,7 @@ describe('ValidationMessage', () => {
                 }),
             },
         }).dive();
+
         expect(result.text()).toBe('');
     });
 

@@ -137,6 +137,7 @@ describe('Item filters', () => {
                 },
             };
             const itemFilterState: IItemFilterState[] = itemFiltersReducer(oldState, action);
+
             expect(_.findWhere(itemFilterState, {id: action.payload.id}).item).toBe(action.payload.item);
             expect(itemFilterState.filter((itemFilter) => itemFilter.id !== action.payload.id).length).toBe(2);
         });

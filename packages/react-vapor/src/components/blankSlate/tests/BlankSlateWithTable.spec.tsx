@@ -1,5 +1,6 @@
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+
 import {BlankSlateWithTable} from '../BlankSlatesHOC';
 
 describe('BlankSlateWithTable Tests', () => {
@@ -12,7 +13,7 @@ describe('BlankSlateWithTable Tests', () => {
             expect(() => {
                 const component = shallowWithState(<BlankSlateWithTable {...defaultProps} />, {});
                 component.unmount();
-            });
+            }).not.toThrow();
         });
 
         describe('once mounted', () => {

@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {INavigationPerPageProps, NavigationPerPage, PER_PAGE_LABEL, PER_PAGE_NUMBERS} from '../NavigationPerPage';
 import {NavigationPerPageSelect} from '../NavigationPerPageSelect';
 
@@ -10,12 +10,10 @@ describe('NavigationPerPage', () => {
         totalEntries: 50,
     };
 
-    describe('<NavigationPerPage />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<NavigationPerPage />', () => {
@@ -73,11 +71,13 @@ describe('NavigationPerPage', () => {
             navigationPerPage = mount(<NavigationPerPage totalEntries={11} />, {
                 attachTo: document.getElementById('App'),
             });
+
             expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(2);
 
             navigationPerPage = mount(<NavigationPerPage totalEntries={21} />, {
                 attachTo: document.getElementById('App'),
             });
+
             expect(navigationPerPage.find(NavigationPerPageSelect).length).toBe(3);
         });
 
@@ -92,6 +92,7 @@ describe('NavigationPerPage', () => {
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onRender={onRenderSpy} />,
                 {attachTo: document.getElementById('App')}
             );
+
             expect(onRenderSpy).toHaveBeenCalled();
         });
 
@@ -107,6 +108,7 @@ describe('NavigationPerPage', () => {
                 {attachTo: document.getElementById('App')}
             );
             navigationPerPage.unmount();
+
             expect(onDestroySpy).toHaveBeenCalled();
         });
 
@@ -117,6 +119,7 @@ describe('NavigationPerPage', () => {
             expect(navigationPerPage.html()).toContain(PER_PAGE_LABEL);
 
             navigationPerPage.setProps(newNavigationPerPageProps);
+
             expect(navigationPerPage.html()).not.toContain(PER_PAGE_LABEL);
             expect(navigationPerPage.html()).toContain(expectedLabel);
         });
@@ -130,6 +133,7 @@ describe('NavigationPerPage', () => {
             expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(PER_PAGE_NUMBERS.length);
 
             navigationPerPage.setProps(newNavigationPerPageProps);
+
             expect(navigationPerPage.find('NavigationPerPageSelect').length).toBe(expectedPerPageNumbers.length);
         });
 
@@ -159,6 +163,7 @@ describe('NavigationPerPage', () => {
             navigationPerPage.setProps(newProps);
             // two clicks should call the function once
             navigationPerPageInstanceAsAny.handleClick(expectedPerPage);
+
             expect(newProps.onPerPageClick).not.toHaveBeenCalled();
         });
 

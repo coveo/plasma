@@ -32,7 +32,7 @@ export interface IListBoxDispatchProps {
 
 export interface IListBoxProps extends IListBoxOwnProps, IListBoxStateProps, IListBoxDispatchProps {}
 
-export class ListBox extends React.Component<IListBoxProps, {}> {
+export class ListBox extends React.Component<IListBoxProps> {
     static defaultProps: Partial<IListBoxProps> = {
         noResultItem: {
             value: 'No Items',
@@ -86,16 +86,14 @@ export class ListBox extends React.Component<IListBoxProps, {}> {
                 }
                 return itemWithIndex;
             })
-            .map((item: IItemBoxPropsWithIndex) => {
-                return (
-                    <ItemBox
-                        key={item.value}
-                        {...item}
-                        onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item, item.index)}
-                        selected={_.contains(this.props.selected, item.value)}
-                    />
-                );
-            })
+            .map((item: IItemBoxPropsWithIndex) => (
+                <ItemBox
+                    key={item.value}
+                    {...item}
+                    onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item, item.index)}
+                    selected={_.contains(this.props.selected, item.value)}
+                />
+            ))
             .value();
 
         const emptyItem = (

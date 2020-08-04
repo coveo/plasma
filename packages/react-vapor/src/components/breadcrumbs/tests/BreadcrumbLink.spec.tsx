@@ -25,26 +25,31 @@ describe('<BreadcrumbLink/>', () => {
 
         it('should render the default name', () => {
             renderBreadcrumbLink();
+
             expect(breadcrumbLinkComponent.find('.link').text()).toEqual(defaultProps.name as any);
         });
 
         it('should return a <a/> tag if the link is defined', () => {
             renderBreadcrumbLink({name: 'a', link: 'zelda'});
+
             expect(breadcrumbLinkComponent.find('a').length).toBe(1);
         });
 
         it('should return a <span/> tag if the link is not defined', () => {
             renderBreadcrumbLink({name: 'a', link: undefined});
+
             expect(breadcrumbLinkComponent.find('span').length).toBe(1);
         });
 
         it('should render a link undefined for the BreadcrumbLink if not defined', () => {
             renderBreadcrumbLink();
+
             expect(breadcrumbLinkComponent.find('.link').text()).toEqual(defaultProps.name as any);
         });
 
         it('should render the default link', () => {
             renderBreadcrumbLink();
+
             expect(breadcrumbLinkComponent.find(`.link[href="${defaultProps.link}"]`).length).toEqual(1);
         });
 

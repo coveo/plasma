@@ -41,12 +41,10 @@ const config = {
                 test: /\.tsx?$/i,
                 exclude: [/node_modules/],
                 use: {
-                    loader: 'tslint-loader',
+                    loader: 'eslint-loader',
                     options: {
-                        configFile: '../../tslint.json',
-                        tsConfigFile: './tsconfig.build.json',
-                        emitErrors: true,
-                        failOnHint: isTravis,
+                        fix: !isTravis,
+                        failOnError: isTravis,
                     },
                 },
             },

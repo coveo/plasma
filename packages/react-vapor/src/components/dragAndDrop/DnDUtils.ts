@@ -1,8 +1,8 @@
-import {IDragSource, IDropTarget} from 'react-dnd';
-import {DragDropContext} from 'react-dnd';
+import {DragDropContext, IDragSource, IDropTarget} from 'react-dnd';
 import HTML5Backend from 'react-dnd-html5-backend';
 import {findDOMNode} from 'react-dom';
 import * as _ from 'underscore';
+
 import {DnDContainer, IDraggableContainerOwnProps} from './DnDContainer';
 
 const move = (dragIndex: number, hoverIndex: number, list: any[], callBack: (listReorder: any[]) => void) => {
@@ -19,7 +19,7 @@ const move = (dragIndex: number, hoverIndex: number, list: any[], callBack: (lis
 };
 
 const getBoxTarget = (parameter: string): IDropTarget => ({
-    hover(props: IDraggableContainerOwnProps, monitor: any, component?: DnDContainer): void {
+    hover: (props: IDraggableContainerOwnProps, monitor: any, component?: DnDContainer): void => {
         const dragIndex = monitor.getItem().index;
         const hoverIndex = props.index;
 
@@ -63,18 +63,14 @@ const getBoxTarget = (parameter: string): IDropTarget => ({
         // to avoid expensive index searches.
         monitor.getItem().index = hoverIndex;
     },
-    drop(props: IDraggableContainerOwnProps, monitor: any) {
+    drop: (props: IDraggableContainerOwnProps, monitor: any) => {
         monitor.getItem()[parameter] = null;
     },
 });
 
 const getSelectedBoxSource = (parameter: string): IDragSource => ({
-    isDragging(props: IDraggableContainerOwnProps, monitor: any) {
-        return props.id === monitor.getItem()[parameter];
-    },
-    beginDrag(props: IDraggableContainerOwnProps) {
-        return {...props};
-    },
+    isDragging: (props: IDraggableContainerOwnProps, monitor: any) => props.id === monitor.getItem()[parameter],
+    beginDrag: (props: IDraggableContainerOwnProps) => ({...props}),
 });
 
 // This object is usefull when the drag happen outside of the DraggableSelectedOption,

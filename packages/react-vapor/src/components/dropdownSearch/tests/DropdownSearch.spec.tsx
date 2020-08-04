@@ -40,6 +40,7 @@ describe('DropdownSearch', () => {
     const infiniteScrollProps: InfiniteScrollProps = {
         dataLength: 2,
         hasMore: true,
+        // eslint-disable-next-line jasmine/no-unsafe-spy
         next: jasmine.createSpy('next'),
         endMessage: 'no more',
         loader: null,
@@ -315,10 +316,11 @@ describe('DropdownSearch', () => {
                         target: 'defined',
                         currentTarget: {dataset: {value: options[0].value}},
                     });
+
                     expect(onOptionClick).toHaveBeenCalledTimes(1);
                 });
 
-                it('should call onOptionClick if option is found in options', () => {
+                it('should not call onOptionClick if option was not found in options', () => {
                     const onOptionClick = jasmine.createSpy('onOptionClick');
                     dropdownSearch.setProps({...ownProps, onOptionClick});
 
@@ -341,6 +343,7 @@ describe('DropdownSearch', () => {
                 it('should return the selected option if there is one', () => {
                     const selected = {value: 'test', selected: true};
                     dropdownSearch.setProps({...ownProps, options: [selected, ...ownProps.options]});
+
                     expect(dropdownSearchInstanceAsAny.getSelectedOption()).toEqual(selected);
                 });
             });
@@ -355,6 +358,7 @@ describe('DropdownSearch', () => {
                         ...ownProps,
                         infiniteScroll: {...infiniteScrollProps},
                     });
+
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
                 });
 
@@ -363,6 +367,7 @@ describe('DropdownSearch', () => {
                         ...ownProps,
                         autoInfiniteScroll: {...autoInfiniteScrollOptions},
                     });
+
                     expect(dropdownSearchInstanceAsAny.getDropdownOptions()[0].type).toBe('div');
                 });
             });
@@ -377,6 +382,7 @@ describe('DropdownSearch', () => {
                         ...ownProps,
                         isOpened: true,
                     });
+
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe('ul');
                 });
 
@@ -386,6 +392,7 @@ describe('DropdownSearch', () => {
                         isOpened: true,
                         infiniteScroll: {...infiniteScrollProps},
                     });
+
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(
                         DropdownSearchInfiniteScrollOptions
                     );
@@ -397,6 +404,7 @@ describe('DropdownSearch', () => {
                         isOpened: true,
                         autoInfiniteScroll: {...autoInfiniteScrollOptions},
                     });
+
                     expect(dropdownSearchInstanceAsAny.getDropdownMenu().type).toBe(DropdownSearchAutoInfiniteScroll);
                 });
 
@@ -516,6 +524,7 @@ describe('DropdownSearch', () => {
 
                 const handleOnCloseSpy = spyOn(DropdownSearch.prototype as any, 'handleOnClose');
                 dropdownSearch.find('button.dropdown-toggle').simulate('blur');
+
                 expect(handleOnCloseSpy).toHaveBeenCalledTimes(1);
             });
 
@@ -529,6 +538,7 @@ describe('DropdownSearch', () => {
                 );
 
                 dropdownSearch.find('button.dropdown-toggle').simulate('blur');
+
                 expect(onCloseSpy).toHaveBeenCalledTimes(1);
             });
 
@@ -657,9 +667,7 @@ describe('DropdownSearch', () => {
             });
 
             it('should scroll down if the active option is not visible by the user inside the dropdown list', () => {
-                const opts = _.times(20, (n: number) => {
-                    return {value: `test ${n}`};
-                });
+                const opts = _.times(20, (n: number) => ({value: `test ${n}`}));
 
                 renderDropdownSearch(
                     _.extend({}, ownProps, {
@@ -681,13 +689,12 @@ describe('DropdownSearch', () => {
                 spyOn(ul, 'getBoundingClientRect').and.returnValue({bottom: 10, top: 10});
 
                 dropdownSearch.setProps({activeOption: {value: 'test 15'}});
+
                 expect(spy).toHaveBeenCalledTimes(1);
             });
 
             it('should scroll up if the active option is not visible by the user inside the dropdown list', () => {
-                const opts = _.times(20, (n: number) => {
-                    return {value: `test ${n}`, displayValue: `test ${n}`};
-                });
+                const opts = _.times(20, (n: number) => ({value: `test ${n}`, displayValue: `test ${n}`}));
 
                 renderDropdownSearch(
                     _.extend({}, ownProps, {
@@ -709,6 +716,7 @@ describe('DropdownSearch', () => {
                 spyOn(ul, 'getBoundingClientRect').and.returnValue({bottom: 200000, top: 200000});
 
                 dropdownSearch.setProps({activeOption: {value: 'test 1', displayValue: 'test 1'}});
+
                 expect(spy).toHaveBeenCalledTimes(1);
             });
         });

@@ -17,6 +17,7 @@ describe('MultiValuesInput', () => {
         const component = shallowWithState(<MultiValuesInput id="🚗" data={values} />, {}).dive();
 
         const body = shallowWithState(<div>{(component.prop('renderBody') as any)(values)}</div>, {});
+
         expect(body.find(InputConnected).length).toBe(values.length);
     });
 });

@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {ContentLoadingPlaceholder} from '../ContentLoadingPlaceholder';
 
 describe('ContentLoadingPlaceholder tests', () => {
@@ -13,7 +14,7 @@ describe('ContentLoadingPlaceholder tests', () => {
                     {}
                 );
                 wrapper.unmount();
-            });
+            }).not.toThrow();
         });
     });
 });

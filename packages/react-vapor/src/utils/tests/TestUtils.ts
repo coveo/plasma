@@ -53,21 +53,17 @@ export class TestUtils {
     }
 
     static makeDebounceStatic() {
-        // tslint:disable
         spyOn(_, 'debounce').and.callFake(function (func: () => void) {
             return function (this: any) {
                 func.apply(this, arguments as any);
             };
         });
-        // tslint:enable
     }
 
     static makeDeferSync() {
-        // tslint:disable
         spyOn(_, 'defer').and.callFake(function (this: any, func: () => void) {
             func.apply(this, arguments as any);
         });
-        // tslint:enable
     }
 
     static wrapComponentInDnDContext(WrappedComponent: any): React.ComponentType<any> {
@@ -99,21 +95,19 @@ export const triggerAlertFunction = () => {
     alert(`Alert function triggered`);
 };
 
-export const withSelectedValues = (id: string, ...values: string[]) => {
-    return (state: IReactVaporState) => ({
-        ...state,
-        listBoxes: [
-            ...(state.listBoxes || []),
-            {
-                active: 0,
-                ...{
-                    id: id,
-                    selected: values,
-                },
+export const withSelectedValues = (id: string, ...values: string[]) => (state: IReactVaporState) => ({
+    ...state,
+    listBoxes: [
+        ...(state.listBoxes || []),
+        {
+            active: 0,
+            ...{
+                id: id,
+                selected: values,
             },
-        ],
-    });
-};
+        },
+    ],
+});
 
 export type ReactVaporMockStore = MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
 export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch<IReactVaporState>>([thunk]);

@@ -42,9 +42,7 @@ export const checkboxesReducer = (
         case CheckboxActions.add:
             return [...state, checkboxReducer(undefined, action)];
         case CheckboxActions.remove:
-            return _.reject(state, (checkbox: ICheckboxState) => {
-                return action.payload.id === checkbox.id;
-            });
+            return _.reject(state, (checkbox: ICheckboxState) => action.payload.id === checkbox.id);
         case CheckboxActions.toggle:
             return state.map((checkbox: ICheckboxState) => checkboxReducer(checkbox, action));
         default:

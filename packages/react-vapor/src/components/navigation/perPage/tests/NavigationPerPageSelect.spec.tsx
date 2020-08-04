@@ -1,15 +1,19 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {INavigationPerPageSelectProps, NavigationPerPageSelect} from '../NavigationPerPageSelect';
 
 describe('NavigationPerPageSelect', () => {
-    const basicNavigationPerPageSelectProps: INavigationPerPageSelectProps = {
-        perPageNb: 20,
-        selected: false,
-        onPerPageClick: jasmine.createSpy('onPerPageClick'),
-    };
+    let basicNavigationPerPageSelectProps: INavigationPerPageSelectProps;
+
+    beforeAll(() => {
+        basicNavigationPerPageSelectProps = {
+            perPageNb: 20,
+            selected: false,
+            onPerPageClick: jasmine.createSpy('onPerPageClick'),
+        };
+    });
 
     describe('<NavigationPerPageSelect />', () => {
         it('should render without errors', () => {
@@ -78,6 +82,7 @@ describe('NavigationPerPageSelect', () => {
             expect(basicNavigationPerPageSelectProps.onPerPageClick).not.toHaveBeenCalled();
 
             navigationPerPageSelect.find('a').simulate('click');
+
             expect(basicNavigationPerPageSelectProps.onPerPageClick).toHaveBeenCalled();
         });
     });

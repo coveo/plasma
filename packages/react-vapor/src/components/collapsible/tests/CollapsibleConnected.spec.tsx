@@ -61,16 +61,19 @@ describe('<CollapsibleConnected />', () => {
 
             it('should set the expended from the state to SlideY', () => {
                 mountComponentWithProps({}, true);
+
                 expect(wrapper.find(SlideY).props().in).toBe(true);
             });
 
             it('should set the expended to the slideY', () => {
                 mountComponentWithProps({}, false);
+
                 expect(wrapper.find(SlideY).props().in).toBe(false);
             });
 
             it('should render header content', () => {
                 mountComponentWithProps({headerContent: <div className="test">test</div>});
+
                 expect(wrapper.find('.test').length).toBe(1);
             });
         });

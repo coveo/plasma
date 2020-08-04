@@ -32,6 +32,7 @@ describe('<CollapsibleContainerConnected />', () => {
     describe('Header Svg logic', () => {
         it('should render with no svg if no informationUrl and informationTooltip are passed', () => {
             mountComponentWithProps();
+
             expect(wrapper.find(`.${collapsibleProps.headerClasses}`).find(Svg).length).toBe(0);
         });
 
@@ -40,6 +41,7 @@ describe('<CollapsibleContainerConnected />', () => {
                 ...collapsibleProps,
                 informationUrl: 'http://whatever.com',
             });
+
             expect(wrapper.find(`.${styles.header}`).find(CollapsibleHeaderIcon).length).toBe(1);
         });
     });

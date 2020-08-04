@@ -57,48 +57,60 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
     onUnmount: () => dispatch(removeTextArea(ownProps.id)),
 });
 
-export const TextArea: React.FunctionComponent<ITextAreaProps> = (props) => {
-    const [debouncedValue, setDebouncedValue] = React.useState(props.value);
+export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
+    value,
+    validate,
+    onMount,
+    onUnmount,
+    onChange,
+    onChangeCallback,
+    validationMessage,
+    additionalAttributes,
+    disabled,
+    children,
+    isAutosize,
+    className,
+}) => {
+    const [debouncedValue, setDebouncedValue] = React.useState(value);
     const [isValid, setIsValid] = React.useState(true);
 
     React.useEffect(() => {
         const timeout = setTimeout(() => {
-            setDebouncedValue(props.value);
+            setDebouncedValue(value);
         }, 300);
         return () => clearTimeout(timeout);
-    }, [props.value]);
+    }, [value]);
 
     React.useEffect(() => {
-        setIsValid(props.validate?.(debouncedValue));
-    }, [debouncedValue]);
+        setIsValid(validate?.(debouncedValue));
+    }, [debouncedValue, validate]);
 
     React.useEffect(() => {
-        props.onMount?.();
+        onMount?.();
         setIsValid(true);
-        return props.onUnmount;
-    }, []);
+        return onUnmount;
+    }, [onMount, onUnmount]);
 
-    const getValidationLabel = () => {
-        return !isValid && <div className="full-content-x generic-form-error my1">{props.validationMessage}</div>;
-    };
+    const getValidationLabel = () =>
+        !isValid && <div className="full-content-x generic-form-error my1">{validationMessage}</div>;
 
     const handleOnChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
-        props.onChange?.(e);
-        props.onChangeCallback?.(e);
+        onChange?.(e);
+        onChangeCallback?.(e);
     };
 
-    const TextareaTagName: any = props.isAutosize ? TextareaAutosize : 'textarea';
+    const TextareaTagName: any = isAutosize ? TextareaAutosize : 'textarea';
 
     return (
         <>
             <TextareaTagName
-                {...props.additionalAttributes}
-                disabled={props.disabled}
-                className={props.className}
-                value={props.value}
+                {...additionalAttributes}
+                disabled={disabled}
+                className={className}
+                value={value}
                 onChange={handleOnChange}
             />
-            {props.children}
+            {children}
             {getValidationLabel()}
         </>
     );

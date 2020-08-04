@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {IActionOptions} from '../Action';
 import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected';
 
@@ -13,12 +13,10 @@ describe('Actions', () => {
     };
     const simple: boolean = false;
 
-    describe('<TriggerAction />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<TriggerAction action={action} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<TriggerAction action={action} />);
+        }).not.toThrow();
     });
 
     describe('<TriggerAction />', () => {
@@ -75,6 +73,7 @@ describe('Actions', () => {
             const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.enabled').simulate('click');
+
             expect(onTriggerActionSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -83,11 +82,13 @@ describe('Actions', () => {
             const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.state-disabled').simulate('click');
+
             expect(onTriggerActionSpy).not.toHaveBeenCalled();
         });
 
         it('should call the trigger of the action when clicked and no confirmation is required', () => {
             triggerAction.find('.enabled').simulate('click');
+
             expect(triggerSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -96,6 +97,7 @@ describe('Actions', () => {
             triggerAction.setProps({onCloseDropdown: onCloseDropdownSpy});
 
             triggerAction.find('.enabled').simulate('click');
+
             expect(onCloseDropdownSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -111,11 +113,13 @@ describe('Actions', () => {
                 },
             };
             triggerAction.setProps({action: newAction});
+
             expect(() => triggerActionInstance['onTriggerAction'].call(triggerActionInstance)).not.toThrow();
 
             triggerAction.setProps({action: newAction, onTriggerConfirm: onTriggerConfirmSpy});
 
             triggerAction.find('.enabled').simulate('click');
+
             expect(onTriggerConfirmSpy.calls.count()).toBe(1);
         });
 
@@ -123,6 +127,7 @@ describe('Actions', () => {
             const newAction = _.extend({}, action);
             newAction.trigger = undefined;
             triggerAction.setProps({action: newAction});
+
             expect(() => triggerActionInstance['onTriggerAction'].call(triggerActionInstance)).not.toThrow();
         });
 
@@ -148,6 +153,7 @@ describe('Actions', () => {
                     onConfirm: onConfirmSpy,
                 });
                 triggerAction.find('.enabled').simulate('click');
+
                 expect(triggerSpy).toHaveBeenCalled();
                 expect(onConfirmSpy).toHaveBeenCalled();
             }
@@ -166,6 +172,7 @@ describe('Actions', () => {
                 },
             };
             triggerAction.setProps({action: newAction, onTriggerConfirm: onTriggerConfirm});
+
             expect(() => triggerActionInstance['onTriggerAction'].call(triggerActionInstance)).not.toThrow();
         });
 
@@ -177,6 +184,7 @@ describe('Actions', () => {
                 .find('.enabled')
                 .props()
                 .onClick('mouseEvent' as any);
+
             expect(triggerSpy).toHaveBeenCalled();
             expect(triggerSpy.calls.first().object.requiresConfirmation.confirmLabel).toEqual(
                 newAction.requiresConfirmation.confirmLabel

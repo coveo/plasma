@@ -16,9 +16,8 @@ const getFilterText = (state: IReactVaporState, props: GetFilterTextProps): stri
 export interface GetMatchFilterTextProps {
     matchFilter?: MatchFilter;
 }
-const getMatchFilter = (state: IReactVaporState, props: GetMatchFilterTextProps): MatchFilter => {
-    return _.isUndefined(props.matchFilter) ? defaultListBoxMatchFilter : props.matchFilter;
-};
+const getMatchFilter = (state: IReactVaporState, props: GetMatchFilterTextProps): MatchFilter =>
+    _.isUndefined(props.matchFilter) ? defaultListBoxMatchFilter : props.matchFilter;
 
 export const FilterBoxSelectors = {
     getFilterText,

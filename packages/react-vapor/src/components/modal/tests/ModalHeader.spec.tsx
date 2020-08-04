@@ -13,12 +13,10 @@ describe('ModalHeader', () => {
         title: 'Title',
     };
 
-    describe('<ModalHeader />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<ModalHeader {...basicProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<ModalHeader {...basicProps} />);
+        }).not.toThrow();
     });
 
     describe('<ModalHeader />', () => {
@@ -43,6 +41,7 @@ describe('ModalHeader', () => {
 
             const input = modal.find('.small-close');
             input.simulate('click');
+
             expect(closeSpy.calls.count()).toBe(1);
             jasmine.clock().uninstall();
         });
@@ -57,6 +56,7 @@ describe('ModalHeader', () => {
 
             const input = modal.find('.small-close');
             input.simulate('click');
+
             expect(closeSpy.calls.count()).toBe(1);
             jasmine.clock().uninstall();
         });
@@ -68,16 +68,19 @@ describe('ModalHeader', () => {
             modal.mount();
             const input = modal.find('.small-close');
             input.simulate('click');
+
             expect(closeSpy.calls.count()).toBe(0);
         });
 
         it('should set class when the class is specified', () => {
             const headerClass = 'mod-big';
             const classes = [headerClass];
+
             expect(modal.find('header').first().html()).not.toContain(headerClass);
 
             modal.setProps(_.extend({}, basicProps, {classes}));
             modal.mount();
+
             expect(modal.find('header').first().html()).toContain(headerClass);
         });
 

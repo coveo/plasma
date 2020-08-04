@@ -13,6 +13,7 @@ describe('<RadioSelect />', () => {
 
     it('should unmount without errors', () => {
         const wrapper = shallow(<RadioSelect />);
+
         expect(() => {
             wrapper.unmount();
         }).not.toThrow();
@@ -27,6 +28,7 @@ describe('<RadioSelect />', () => {
         const radioName = 'Johnny the almighty magic chicken';
 
         const shallowRadioSelect = (props: IRadioSelectAllProps = {}) => {
+            // eslint-disable-next-line jasmine/no-unsafe-spy
             spy = jasmine.createSpy('onClick');
             radioSelect = shallow(
                 <RadioSelect {...props}>

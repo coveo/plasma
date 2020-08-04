@@ -1,6 +1,6 @@
 import {shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {TabNavigation} from '../TabNavigation';
 
 describe('TabNavigation', () => {

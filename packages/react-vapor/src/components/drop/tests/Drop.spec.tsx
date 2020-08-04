@@ -20,6 +20,7 @@ describe('Drop', () => {
 
         it('should unmount without errors', () => {
             const wrapper = shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {}).dive();
+
             expect(() => {
                 wrapper.unmount();
             }).not.toThrow();
@@ -186,6 +187,7 @@ describe('Drop', () => {
                         .renderDrop({} as any, {} as any, {} as any) as any,
                     {}
                 );
+
                 expect(shallowWrapperDropPod.prop('data-open')).toBe(false);
             });
 
@@ -199,15 +201,14 @@ describe('Drop', () => {
                         .renderDrop({} as any, {} as any, {} as any) as any,
                     {}
                 );
+
                 expect(shallowWrapperDropPod.prop('data-open')).toBe(true);
             });
 
             describe('events', () => {
                 it('should add the event on click if the drop is opening', () => {
                     const spy = spyOn(document, 'addEventListener');
-                    let shallowWrapper: ShallowWrapper;
-
-                    shallowWrapper = shallowWithState(
+                    const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
                         {}
                     ).dive();
@@ -221,9 +222,7 @@ describe('Drop', () => {
 
                 it('should remove the event on click if the drop is closing', () => {
                     const spy = spyOn(document, 'removeEventListener');
-                    let shallowWrapper: ShallowWrapper;
-
-                    shallowWrapper = shallowWithState(
+                    const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
                         {}
                     ).dive();

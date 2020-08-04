@@ -1,7 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import {all, extend} from 'underscore';
+
 import {DisplayClass} from '../../utils/ComponentUtils';
 import {IUserFeedbackProps, TextColorClass, UserFeedback, UserFeedbackState} from './UserFeedback';
 
@@ -39,9 +39,11 @@ describe('<UserFeedback>', () => {
                 expect(() =>
                     getShallowOutput('hello', UserFeedbackState.VALID, ['m1'], DisplayClass.BLOCK)
                 ).not.toThrow();
+
                 expect(() =>
                     getShallowOutput('hello', UserFeedbackState.WARNING, ['m1'], DisplayClass.BLOCK)
                 ).not.toThrow();
+
                 expect(() =>
                     getShallowOutput('hello', UserFeedbackState.ERROR, ['m1'], DisplayClass.BLOCK)
                 ).not.toThrow();
@@ -51,12 +53,12 @@ describe('<UserFeedback>', () => {
         describe('text content', () => {
             it('should contain the exact text passed to prop feedbackText', () => {
                 let testText = 'testing';
-                let wrongText: string;
 
                 expect(getShallowOutput(testText, '').text()).toBe(testText);
 
                 testText = 'hello this is a test over here';
-                wrongText = 'hello this is the wrong text over here';
+                const wrongText = 'hello this is the wrong text over here';
+
                 expect(getShallowOutput(testText, '').text()).not.toBe(wrongText);
             });
         });
@@ -83,6 +85,7 @@ describe('<UserFeedback>', () => {
                             DisplayClass.HIDDEN
                         )
                     ).toBe(true);
+
                     expect(
                         getShallowOutput('', UserFeedbackState.VALID, [], DisplayClass.BLOCK).hasClass(
                             DisplayClass.BLOCK
@@ -103,6 +106,7 @@ describe('<UserFeedback>', () => {
                             DisplayClass.INLINE_BLOCK
                         )
                     ).toBe(true);
+
                     expect(
                         getShallowOutput('', UserFeedbackState.WARNING, [], DisplayClass.INLINE_BLOCK).hasClass(
                             DisplayClass.HIDDEN
@@ -112,7 +116,8 @@ describe('<UserFeedback>', () => {
 
                 it('should have the default text color class', () => {
                     const componentOnStateWarning = getShallowOutput('', UserFeedbackState.WARNING);
-                    expect(componentOnStateWarning.hasClass(TextColorClass.default));
+
+                    expect(componentOnStateWarning.hasClass(TextColorClass.default)).toBe(true);
                 });
             });
 
@@ -128,6 +133,7 @@ describe('<UserFeedback>', () => {
                             DisplayClass.INLINE_BLOCK
                         )
                     ).toBe(true);
+
                     expect(
                         getShallowOutput('', UserFeedbackState.ERROR, [], DisplayClass.INLINE_BLOCK).hasClass(
                             DisplayClass.HIDDEN
@@ -137,7 +143,8 @@ describe('<UserFeedback>', () => {
 
                 it('should have the error text color class', () => {
                     const componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR);
-                    expect(componentOnStateError.hasClass(TextColorClass.error));
+
+                    expect(componentOnStateError.hasClass(TextColorClass.error)).toBe(true);
                 });
             });
         });
@@ -173,9 +180,11 @@ describe('<UserFeedback>', () => {
                 expect(areClassesAddedToElement(extraClass, testComponent)).toBe(true);
 
                 testComponent = getShallowOutput('', '', extraClasses);
+
                 expect(areClassesAddedToElement(extraClasses, testComponent)).toBe(true);
 
                 testComponent = getShallowOutput('', '', extraClassesRealLife);
+
                 expect(areClassesAddedToElement(extraClassesRealLife, testComponent)).toBe(true);
             });
         });

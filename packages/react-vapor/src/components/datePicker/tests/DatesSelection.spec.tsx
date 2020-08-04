@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {DATES_SEPARATOR, DateUtils} from '../../../utils/DateUtils';
 import {DatePicker} from '../DatePicker';
 import {
@@ -11,12 +11,10 @@ import {
 } from '../DatesSelection';
 
 describe('Date picker', () => {
-    describe('<DatesSelection />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<DatesSelection />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<DatesSelection />);
+        }).not.toThrow();
     });
 
     describe('<DatesSelection />', () => {
@@ -50,36 +48,45 @@ describe('Date picker', () => {
 
         it('should not add the class "mod-vertical" on the separator if the pickers are small', () => {
             datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: false});
+
             expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(false);
         });
 
         it('should add the class "mod-vertical" on the separator if the pickers are large', () => {
             datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: true});
+
             expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(true);
 
             datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: true});
+
             expect(datesSelection.find('.date-separator').hasClass('mod-vertical')).toBe(true);
         });
 
         it('should have the classes "mod-inline" and "flex" if the pickers are small', () => {
             datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: false});
+
             expect(datesSelection.find('.mod-inline.flex').length).toBe(1);
         });
 
         it('should not have the classes "mod-inline" and "flex" if the pickers are large', () => {
             datesSelection.setProps({isRange: false, withTime: false, hasSetToNowButton: false});
+
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
             datesSelection.setProps({isRange: true, withTime: false, hasSetToNowButton: true});
+
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
             datesSelection.setProps({isRange: false, withTime: true, hasSetToNowButton: false});
+
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
             datesSelection.setProps({isRange: false, withTime: true, hasSetToNowButton: true});
+
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
 
             datesSelection.setProps({isRange: false, withTime: false, hasSetToNowButton: true});
+
             expect(datesSelection.find('.mod-inline.flex').length).toBe(0);
         });
 
@@ -144,6 +151,7 @@ describe('Date picker', () => {
             datesSelection.unmount();
             datesSelection.setProps({onRender: onRenderSpy});
             datesSelection.mount();
+
             expect(onRenderSpy).toHaveBeenCalled();
         });
 
@@ -154,6 +162,7 @@ describe('Date picker', () => {
 
             datesSelection.setProps({onDestroy: onDestroySpy});
             datesSelection.unmount();
+
             expect(onDestroySpy).toHaveBeenCalled();
         });
 

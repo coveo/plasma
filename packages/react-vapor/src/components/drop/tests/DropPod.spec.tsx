@@ -1,9 +1,9 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
 import React from 'react';
+import ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
-import ReactDOM from 'react-dom';
 import {Defaults} from '../../../Defaults';
 import {DomPositionCalculator, DropPodPosition} from '../DomPositionCalculator';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from '../DropPod';
@@ -22,6 +22,7 @@ describe('DropPod', () => {
         let bottomPositionCalculatedSpy: jasmine.Spy;
         let topPositionCalculatedSpy: jasmine.Spy;
         const setupReference = (parentOffset = {}, dropOffset = {}, styleCalculated = {}, buttonOffset = {}) => {
+            /* eslint-disable jasmine/no-unsafe-spy */
             parentOffset = {...defaultParentOffset, ...parentOffset};
             const bottomStyle = _.isEmpty(styleCalculated)
                 ? {}
@@ -55,6 +56,7 @@ describe('DropPod', () => {
 
             spyOn(MutationObserver.prototype, 'observe');
             spyOn(MutationObserver.prototype, 'disconnect');
+            /* eslint-enable jasmine/no-unsafe-spy */
         };
 
         let buttonRef: React.RefObject<HTMLElement>;
@@ -64,6 +66,7 @@ describe('DropPod', () => {
 
         it('should mount and unmount without errors', () => {
             let wrapper: any;
+
             expect(() => {
                 wrapper = shallow(<DropPod renderDrop={() => defaultDrop} ref={buttonRef} />, {}).dive();
             }).not.toThrow('mount');
@@ -88,21 +91,25 @@ describe('DropPod', () => {
 
             it('should be close by default', () => {
                 shallowDropPod();
+
                 expect(wrapper.props().isOpen).toBe(false);
             });
 
             it('should have the default position by default', () => {
                 shallowDropPod();
+
                 expect(wrapper.props().positions).toEqual(defaultDropPodPosition);
             });
 
             it('should have minWidth set to 0 by default', () => {
                 shallowDropPod();
+
                 expect(wrapper.props().minWidth).toBe(0);
             });
 
             it('should have minHeight set to 0 by default', () => {
                 shallowDropPod();
+
                 expect(wrapper.props().minHeight).toBe(0);
             });
 
@@ -176,14 +183,7 @@ describe('DropPod', () => {
                             {}
                         ).dive());
 
-                    it('should set the visibility visible if the drop can be show', () => {
-                        setupReference();
-                        shallowDropPodForStyle();
-
-                        expect(styleRendered.visibility).toBe('visible');
-                    });
-
-                    it('should set the visibility visible if the drop can be show', () => {
+                    it('should set the visibility to visible if the drop can be shown', () => {
                         setupReference();
                         shallowDropPodForStyle();
 

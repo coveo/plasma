@@ -22,6 +22,7 @@ describe('TableHOC', () => {
 
         it('should render a table', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} />);
+
             expect(wrapper.find('table').exists()).toBe(true);
         });
 
@@ -42,17 +43,20 @@ describe('TableHOC', () => {
         it('should allow custom classes on the table', () => {
             const expectedClass = 'some-class';
             const wrapper = shallow(<TableHOC {...defaultProps} className={expectedClass} />);
+
             expect(wrapper.find('table').hasClass(expectedClass)).toBe(true);
         });
 
         it('should render a .table-container', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} />);
+
             expect(wrapper.find('.table-container').exists()).toBe(true);
         });
 
         it('should allow custom classes on the .table-container', () => {
             const expectedClass = 'some-class';
             const wrapper = shallow(<TableHOC {...defaultProps} containerClassName={expectedClass} />);
+
             expect(wrapper.find('.table-container').hasClass(expectedClass)).toBe(true);
         });
 
@@ -70,16 +74,19 @@ describe('TableHOC', () => {
 
         it('should not render an ActionBarConnected if the table prop hasActionButtons is false and the table have no actions', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons={false} actions={[]} />);
+
             expect(wrapper.find(ActionBarConnected).exists()).toBe(false);
         });
 
         it('should render an ActionBarConnected if the table prop hasActionButtons is true', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons />);
+
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
 
         it('should render an ActionBarConnected with a top border if the "hasBorderTop" is set to true', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons showBorderTop />);
+
             expect(wrapper.find(ActionBarConnected).prop('extraContainerClasses')).toContain('mod-border-top');
         });
 
@@ -87,21 +94,25 @@ describe('TableHOC', () => {
             const wrapper = shallow(
                 <TableHOC {...defaultProps} actions={[<FilterBoxConnected />]} hasActionButtons={false} />
             );
+
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
 
         it('should keep the tbody with rows data during the loading', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+
             expect(wrapper.find('tbody').length).toBe(1);
         });
 
         it('should set the tbody rows data hidden during the loading', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
+
             expect(wrapper.find('tbody').hasClass('hidden')).toBe(true);
         });
 
         it('should disabled actions on loading', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading />);
+
             expect(wrapper.find(ActionBarConnected).props().disabled).toBe(true);
         });
 
@@ -109,6 +120,7 @@ describe('TableHOC', () => {
             const wrapper = shallow(
                 <TableHOC {...defaultProps} actions={[<div />]} hasActionButtons isLoading={false} />
             );
+
             expect(wrapper.find(ActionBarConnected).props().disabled).toBe(false);
         });
     });

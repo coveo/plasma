@@ -17,9 +17,8 @@ describe('Options cycle', () => {
         let optionsCycle: ShallowWrapper<IOptionsCycleProps>;
         let store: ReactVaporMockStore;
 
-        const shallowCycleWithProps = (props: Partial<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = {}) => {
-            return shallowWithStore(<OptionsCycleConnected {...optionsCycleBasicProps} {...props} />, store);
-        };
+        const shallowCycleWithProps = (props: Partial<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = {}) =>
+            shallowWithStore(<OptionsCycleConnected {...optionsCycleBasicProps} {...props} />, store);
 
         beforeEach(() => {
             store = getStoreMock({
@@ -58,12 +57,14 @@ describe('Options cycle', () => {
 
         it('should add the optionCycle to the state when mounted', () => {
             optionsCycle = shallowCycleWithProps().dive();
+
             expect(store.getActions()).toContain(addOptionsCycle(optionsCycleBasicProps.id, 0));
         });
 
         it('should add the optionCycle to the state when mounted with the startAt', () => {
             const startAt = 3;
             optionsCycle = shallowCycleWithProps({startAt}).dive();
+
             expect(store.getActions()).toContain(addOptionsCycle(optionsCycleBasicProps.id, startAt));
         });
 

@@ -18,24 +18,21 @@ export interface HOCTableRowState {
     opened?: boolean;
 }
 
-const addTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowAddPayload>) => {
-    return [
-        ...state,
-        {
-            id: action.payload.id,
-            tableId: action.payload.tableId,
-            selected: false,
-            opened: false,
-        },
-    ];
-};
+const addTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowAddPayload>) => [
+    ...state,
+    {
+        id: action.payload.id,
+        tableId: action.payload.tableId,
+        selected: false,
+        opened: false,
+    },
+];
 
-const removeTableRowReducer = (state: HOCTableRowState[], {payload}: IReduxAction<ITableRowAddPayload>) => {
-    return _.reject(
+const removeTableRowReducer = (state: HOCTableRowState[], {payload}: IReduxAction<ITableRowAddPayload>) =>
+    _.reject(
         state,
         ({tableId, id}: HOCTableRowState) => (!payload.tableId || payload.tableId === tableId) && id === payload.id
     );
-};
 
 const selectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
     const current = _.findWhere(state, {id: action.payload.id});
@@ -72,13 +69,12 @@ const toggleCollasibleTableRowReducer = (
     return state;
 };
 
-const deselectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) => {
-    return _.map(state, (row: HOCTableRowState) => {
-        return row.tableId === action.payload.id || TableHOCUtils.getPaginationId(row.tableId) === action.payload.id
+const deselectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) =>
+    _.map(state, (row: HOCTableRowState) =>
+        row.tableId === action.payload.id || TableHOCUtils.getPaginationId(row.tableId) === action.payload.id
             ? {...row, selected: false}
-            : row;
-    });
-};
+            : row
+    );
 
 const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
     [TableHOCRowActionsType.add]: addTableRowReducer,

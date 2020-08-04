@@ -15,6 +15,7 @@ describe('ReduxTestUtilities', () => {
                 tableId,
                 ReduxTestUtilities.getStateWithType<IReactVaporState>(state)
             );
+
             expect(compositeState.sortAscending).toBe(true);
             expect(compositeState.sortKey).toBe('key');
         });

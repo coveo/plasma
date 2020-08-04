@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+
 import {keyCode} from '../../../utils/InputUtils';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {IDropdownOption} from '../DropdownSearch';
@@ -877,6 +878,7 @@ describe('DropdownSearch', () => {
 
                 it('should return false if the option is custom and selected by default', () => {
                     customOption.selected = true;
+
                     expect(isNotCustomOption(customOption)).toBe(false);
                 });
 
@@ -886,46 +888,15 @@ describe('DropdownSearch', () => {
 
                 it('should return true if the option is custom and selected, and includeSelected is set to false', () => {
                     customOption.selected = true;
+
                     expect(isNotCustomOption(customOption, false)).toBe(true);
                 });
 
                 it('should return true if the option is not custom', () => {
                     const optionNotCustom = _.extend(customOption, {custom: false});
+
                     expect(isNotCustomOption(optionNotCustom)).toBe(true);
                     expect(isNotCustomOption(optionNotCustom)).toBe(true);
-                });
-            });
-
-            describe('removeCustomOptions', () => {
-                const supportSingleCustomOption = true;
-
-                let testOptions: IDropdownOption[];
-
-                beforeEach(() => {
-                    testOptions = [
-                        {value: 'test 1', displayValue: 'display 1', custom: true, selected: true},
-                        {value: 'test 2', displayValue: 'display 2', custom: true, selected: false},
-                        {value: 'test 3', displayValue: 'display 3', custom: false, selected: false},
-                        {value: 'test 4', displayValue: 'display 4', custom: false, selected: true},
-                    ];
-                });
-
-                it('should return the same options if supportSingleCustomOption is false', () => {
-                    expect(removeCustomOptions(testOptions, !supportSingleCustomOption)).toEqual(testOptions);
-                });
-
-                describe('with supportSingleCustomOption', () => {
-                    it('should return only the non custom options by default', () => {
-                        expect(removeCustomOptions(testOptions, supportSingleCustomOption)).toEqual(
-                            testOptions.filter((option: IDropdownOption) => !option.custom)
-                        );
-                    });
-
-                    it('should return the non custom options with the selected custom option if includeSelected is set to false', () => {
-                        expect(removeCustomOptions(testOptions, supportSingleCustomOption, false)).toEqual(
-                            testOptions.filter((option: IDropdownOption) => !option.custom || option.selected)
-                        );
-                    });
                 });
             });
 
@@ -975,26 +946,31 @@ describe('DropdownSearch', () => {
                     expect(shouldHideOnFilter(testOption, testFilterText)).toBe(false);
 
                     testOption.value = testFilterText;
+
                     expect(shouldHideOnFilter(testOption, testFilterText)).toBe(false);
                 });
 
                 it('should return true if the option is default regardless of the filterText', () => {
                     testOption.default = true;
+
                     expect(shouldHideOnFilter(testOption, testFilterText)).toBe(true);
 
                     testOption.default = true;
                     testOption.value = testFilterText;
+
                     expect(shouldHideOnFilter(testOption, testFilterText)).toBe(true);
                 });
 
                 it('should return false if the option is custom and its value does not equal to the filterText', () => {
                     testOption.custom = true;
+
                     expect(shouldHideOnFilter(testOption, testFilterText)).toBe(false);
                 });
 
                 it('should return true if the option is custom and its value equals the filterText', () => {
                     testOption.custom = true;
                     testOption.value = testFilterText;
+
                     expect(shouldHideOnFilter(testOption, testFilterText)).toBe(true);
                 });
             });

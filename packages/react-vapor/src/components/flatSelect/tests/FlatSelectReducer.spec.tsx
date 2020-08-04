@@ -148,6 +148,7 @@ describe('FlatSelect', () => {
         };
 
         const flatSelectState: IFlatSelectState[] = flatSelectsReducer(oldState, action);
+
         expect(
             flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId)
                 .length
@@ -178,6 +179,7 @@ describe('FlatSelect', () => {
         };
 
         const flatSelectState: IFlatSelectState[] = flatSelectsReducer(oldState, action);
+
         expect(
             flatSelectState.filter((flatSelect) => flatSelect.selectedOptionId === action.payload.selectedOptionId)
                 .length

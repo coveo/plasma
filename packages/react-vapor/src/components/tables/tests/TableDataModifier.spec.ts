@@ -42,6 +42,7 @@ describe('TableDataModifier', () => {
             actions.forEach((action) => {
                 expect(dispatchSpy).toHaveBeenCalledWith(action);
             });
+
             expect(dispatchSpy.calls.count()).toBe(actions.length);
         });
     });
@@ -60,6 +61,7 @@ describe('TableDataModifier', () => {
             actions.forEach((action) => {
                 expect(dispatchSpy).toHaveBeenCalledWith(action);
             });
+
             expect(dispatchSpy.calls.count()).toBe(actions.length);
         });
     });
@@ -73,9 +75,7 @@ describe('TableDataModifier', () => {
             expect(applyPredicatesOnDisplayedIds([...displayedIds], tableCompositeState, data.byId)).toEqual(
                 displayedIds
             );
-        });
 
-        it('should return the same ids if the tableCompositeState has no predicates', () => {
             expect(applyPredicatesOnDisplayedIds([...displayedIds], data.byId, tableCompositeState)).toEqual(
                 displayedIds
             );
@@ -190,6 +190,7 @@ describe('TableDataModifier', () => {
             const expectedOrderOfIds = _.sortBy(_.values(data.byId), (currentData) =>
                 currentData.userName.toLowerCase()
             ).map((currentData) => currentData.id);
+
             expect(
                 applySortOnDisplayedIds(
                     [...displayedIds],
@@ -206,6 +207,7 @@ describe('TableDataModifier', () => {
             )
                 .reverse()
                 .map((currentData) => currentData.id);
+
             expect(
                 applySortOnDisplayedIds(
                     [...displayedIds],
@@ -409,6 +411,7 @@ describe('TableDataModifier', () => {
         it('should dispatch an action of type MODIFY_STATE_TABLE and turn off loading', () => {
             const dispatchSpy = jasmine.createSpy('dispatchSpy');
             defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)(dispatchSpy);
+
             expect(dispatchSpy).toHaveBeenCalledWith(jasmine.objectContaining({type: TableActions.modifyState}));
             expect(dispatchSpy).toHaveBeenCalledWith(turnOffLoading(getTableLoadingIds(tablePropsMockWithData.id)));
             expect(dispatchSpy.calls.count()).toBe(2);

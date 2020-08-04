@@ -82,6 +82,7 @@ describe('PartialStringMatch', () => {
                 <div>Or they can be in a div, like this match</div>
             </PartialStringMatch>
         );
+
         expect(component.find('Highlight').length).toBe(2);
     });
 
@@ -90,6 +91,7 @@ describe('PartialStringMatch', () => {
         const component = shallow(
             <PartialStringMatch partialMatch={matcher}>bacon is my favorite vegetable</PartialStringMatch>
         );
+
         expect(component.find('Highlight').dive().hasClass('bold')).toBe(true);
     });
 
@@ -126,6 +128,7 @@ describe('PartialStringMatch', () => {
                 return <span>aa</span>;
             }
         }
+
         expect(() => {
             shallow(
                 <PartialStringMatch partialMatch="a">

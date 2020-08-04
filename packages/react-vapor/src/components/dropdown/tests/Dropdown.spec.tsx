@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Dropdown, IDropdownProps} from '../Dropdown';
 
 describe('Dropdown', () => {
@@ -10,12 +10,10 @@ describe('Dropdown', () => {
         dropdownItems: [<li key="option1">Option 1</li>, <li key="option2">Option 2</li>],
     };
 
-    describe('<Dropdown />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<Dropdown {...basicDropdownProps} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Dropdown {...basicDropdownProps} />);
+        }).not.toThrow();
     });
 
     describe('<Dropdown />', () => {
@@ -51,6 +49,7 @@ describe('Dropdown', () => {
             expect(dropdown.find('.open').length).toBe(0);
 
             dropdown.setProps(newDropdownProps);
+
             expect(dropdown.find('.open').length).toBe(1);
         });
 
@@ -60,6 +59,7 @@ describe('Dropdown', () => {
             expect(dropdown.find('.some-class').length).toBe(0);
 
             dropdown.setProps(newDropdownProps).update();
+
             expect(dropdown.find('.some-class').length).toBeGreaterThanOrEqual(1);
         });
 
@@ -71,11 +71,12 @@ describe('Dropdown', () => {
 
             dropdown.setProps(newDropdownProps);
             dropdown.find('.dropdown-toggle').simulate('click');
+
             expect(onClickSpy).toHaveBeenCalled();
         });
     });
 
-    describe('<Dropdown />', () => {
+    describe('<Dropdown /> listeners', () => {
         beforeEach(() => {
             const otherElement: HTMLDivElement = document.createElement('div');
             otherElement.setAttribute('id', 'other');
@@ -100,6 +101,7 @@ describe('Dropdown', () => {
 
             mount(<Dropdown {...props} />, {attachTo: document.getElementById('App')});
             clickOnOther();
+
             expect(onDocumentClickSpy).not.toHaveBeenCalled();
         });
 
@@ -108,13 +110,16 @@ describe('Dropdown', () => {
             const props = _.extend({}, basicDropdownProps, {isOpened: true, onDocumentClick: onDocumentClickSpy});
 
             const dropdown = mount(<Dropdown {...props} />, {attachTo: document.getElementById('App')});
+
             expect(dropdown.props().isOpened).toBe(true);
 
             clickOnOther();
+
             expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
 
             dropdown.unmount();
             clickOnOther();
+
             expect(onDocumentClickSpy).toHaveBeenCalledTimes(1);
         });
 
@@ -125,9 +130,11 @@ describe('Dropdown', () => {
             mount(<Dropdown {...props} />, {attachTo: document.getElementById('App')});
 
             (document.getElementsByClassName('dropdown')[0] as HTMLDivElement).click();
+
             expect(onDocumentClickSpy).not.toHaveBeenCalled();
 
             document.getElementById('App').click();
+
             expect(onDocumentClickSpy).toHaveBeenCalled();
         });
     });
@@ -135,11 +142,13 @@ describe('Dropdown', () => {
     describe('once mounted', () => {
         it('should not add the class to set the cursor to default by default ', () => {
             const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} />);
+
             expect(wrapper.find('.dropdown').hasClass('cursor-default')).toBe(false);
         });
 
         it('should add the class to set the cursor to default if the component is disabled', () => {
             const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+
             expect(wrapper.find('.dropdown').hasClass('cursor-default')).toBe(true);
         });
 
@@ -163,16 +172,19 @@ describe('Dropdown', () => {
 
         it('should add the class disabled on dropdown-toggle if disabled', () => {
             const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+
             expect(wrapper.find('.dropdown-toggle').hasClass('disabled')).toBe(true);
         });
 
         it('should add the class transparency-4 on dropdown-toggle if disabled', () => {
             const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+
             expect(wrapper.find('.dropdown-toggle').hasClass('transparency-4')).toBe(true);
         });
 
         it('should add the class cursor-default on dropdown-toggle if disabled', () => {
             const wrapper = shallow(<Dropdown toggleContent={[<div />]} dropdownItems={[<div />]} disabled />);
+
             expect(wrapper.find('.dropdown-toggle').hasClass('cursor-default')).toBe(true);
         });
     });

@@ -66,6 +66,7 @@ describe('ActionableItem', () => {
                     .find(Drop)
                     .prop('renderOpenButton') as any;
                 const button = shallow(renderButton());
+
                 expect(button.find(Svg).prop('svgName')).toBe('more-append');
             });
 

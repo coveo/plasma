@@ -30,6 +30,7 @@ describe('InputSelectors', () => {
 
         it('should return the value if the input is defined in the state', () => {
             const expectedValue = 'bacon';
+
             expect(
                 InputSelectors.getValue(
                     {

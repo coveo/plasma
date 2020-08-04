@@ -54,6 +54,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 displayValue,
             });
+
             expect(ItemBoxComponent.find('li').text()).toBe(displayValue);
         });
 
@@ -61,6 +62,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 prepend: content,
             });
+
             expect(ItemBoxComponent.find(Content).length).toBe(1);
         });
 
@@ -68,6 +70,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 append: content,
             });
+
             expect(ItemBoxComponent.find(Content).length).toBe(1);
         });
 
@@ -75,6 +78,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 tooltip,
             });
+
             expect(ItemBoxComponent.find(Tooltip).length).toBe(1);
         });
 
@@ -82,6 +86,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 active: true,
             });
+
             expect(ItemBoxComponent.find('li').hasClass('active')).toBe(true);
         });
 
@@ -89,6 +94,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 selected: true,
             });
+
             expect(ItemBoxComponent.find('li').hasClass('selected')).toBe(true);
         });
 
@@ -96,6 +102,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 disabled: true,
             });
+
             expect(ItemBoxComponent.find('li').hasClass('disabled')).toBe(true);
         });
 
@@ -103,6 +110,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 hidden: true,
             });
+
             expect(ItemBoxComponent.find('li').hasClass('hidden')).toBe(true);
         });
 
@@ -110,6 +118,7 @@ describe('ItemBox', () => {
             renderItemBox({
                 divider: true,
             });
+
             expect(ItemBoxComponent.find('li').hasClass('divider')).toBe(true);
         });
 

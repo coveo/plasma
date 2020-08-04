@@ -1,15 +1,13 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {ITableCollapsibleRowToggleProps, TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
 
 describe('Tables', () => {
-    describe('<TableCollapsibleRowToggle />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<TableCollapsibleRowToggle isExpanded={false} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<TableCollapsibleRowToggle isExpanded={false} />);
+        }).not.toThrow();
     });
 
     describe('<TableCollapsibleRowToggle />', () => {
@@ -43,6 +41,7 @@ describe('Tables', () => {
 
         it('should have a svg with state-expanded if expanded', () => {
             tableCollapsibleRowToggle.setProps({isExpanded: true});
+
             expect(tableCollapsibleRowToggle.find('.state-expanded').length).toBeGreaterThanOrEqual(1);
             expect(tableCollapsibleRowToggle.find('.state-collapsed').length).toBe(0);
         });

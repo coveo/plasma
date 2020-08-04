@@ -19,6 +19,7 @@ describe('MultilineBoxSelectors', () => {
                     [id]: {id, list: undefined} as any,
                 },
             };
+
             expect(MultilineBoxSelectors.getIds(state, {id})).toEqual([]);
         });
 
@@ -28,6 +29,7 @@ describe('MultilineBoxSelectors', () => {
                     [id]: {id, list},
                 },
             };
+
             expect(MultilineBoxSelectors.getIds(state, {id})).toEqual(list);
         });
     });

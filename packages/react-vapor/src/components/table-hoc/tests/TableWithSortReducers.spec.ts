@@ -128,6 +128,7 @@ describe('Table HOC', () => {
 
                 const action = TableHeaderActions.sortTable(oldState[0].id);
                 const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+
                 expect(_.findWhere(tableHeadersState, {id: oldState[1].id}).isAsc).toBe(oldState[1].isAsc);
             });
 
@@ -142,6 +143,7 @@ describe('Table HOC', () => {
 
                 const action = TableHeaderActions.sortTable('🐌', false);
                 const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+
                 expect(_.findWhere(tableHeadersState, {id: '🐌'}).isAsc).toBe(false);
             });
 
@@ -156,6 +158,7 @@ describe('Table HOC', () => {
 
                 const action = TableHeaderActions.sortTable('🐊');
                 const tableHeadersState: ITableWithSortState[] = TableWithSortReducers(oldState, action);
+
                 expect(_.findWhere(tableHeadersState, {id: '🐊'}).isAsc).toBe(false);
             });
         });

@@ -9,7 +9,6 @@ import {IModalCompositeProps, ModalCompositeConnected} from '../ModalComposite';
 import {ModalHeader} from '../ModalHeader';
 import {ModalHeaderConnected} from '../ModalHeaderConnected';
 
-// tslint:disable-next-line:no-unused-variable
 describe('<ModalCompositeConnected />', () => {
     const basicProps: IModalCompositeProps = {
         id: 'modalo-mc-modal',
@@ -60,6 +59,7 @@ describe('<ModalCompositeConnected />', () => {
     it('should display a <ModalHeaderConnected /> component', () => {
         const store = getStoreMock();
         const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
+
         expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(1);
     });
 

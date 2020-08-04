@@ -49,6 +49,7 @@ describe('SliderUtils', () => {
                 // 100 not dividable by 3
                 utils.propsValidator({id: '🍅', min: 0, max: 100, initialValue: 50, step: 3});
             }).toThrow();
+
             expect(() => {
                 // 99 dividable by 3
                 utils.propsValidator({id: '🍅', min: 1, max: 100, initialValue: 50, step: 3});

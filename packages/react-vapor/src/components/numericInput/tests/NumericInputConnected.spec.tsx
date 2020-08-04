@@ -57,6 +57,7 @@ describe('Numeric Input', () => {
             ).dive();
 
             component.find(Button).at(0).prop('onClick')();
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - 1));
         });
 
@@ -68,8 +69,10 @@ describe('Numeric Input', () => {
             ).dive();
 
             component.find(Button).at(0).prop('onClick')();
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
         });
+
         describe('keyboard events', () => {
             const step = 10;
             let input: ShallowWrapper;
@@ -81,19 +84,23 @@ describe('Numeric Input', () => {
                 ).dive();
                 input = component.find('.js-numeric-input');
             });
+
             it('should increment by the step prop value onKeyDown on the input', () => {
                 input.simulate('keydown', {keyCode: keyCode.upArrow});
+
                 expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
             });
 
             it('should decrement by the step prop value onKeyDown on the input', () => {
                 input.simulate('keydown', {keyCode: keyCode.downArrow});
+
                 expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
             });
 
             it('should not change by another arrow than up or down on keydown', () => {
                 store.clearActions();
                 input.simulate('keydown', {keyCode: keyCode.rightArrow});
+
                 expect(store.getActions()).toEqual([]);
             });
         });
@@ -116,6 +123,7 @@ describe('Numeric Input', () => {
             ).dive();
 
             component.find(Button).at(0).prop('onClick')();
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, min, min));
         });
 
@@ -126,6 +134,7 @@ describe('Numeric Input', () => {
             ).dive();
 
             component.find(Button).at(1).prop('onClick')();
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + 1));
         });
 
@@ -137,6 +146,7 @@ describe('Numeric Input', () => {
             ).dive();
 
             component.find(Button).at(1).prop('onClick')();
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
         });
 
@@ -149,6 +159,7 @@ describe('Numeric Input', () => {
             ).dive();
 
             component.find(Button).at(1).prop('onClick')();
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, max, undefined, max));
         });
 
@@ -163,6 +174,7 @@ describe('Numeric Input', () => {
                 <NumericInputConnected id={id} invalidMessage={expectedMessage} />,
                 store
             ).dive();
+
             expect(component.find('.generic-form-error').text()).toBe(expectedMessage);
         });
 
@@ -171,6 +183,7 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
 
             component.find('.js-numeric-input').simulate('change', {target: {value: newValue}});
+
             expect(store.getActions()).toContain(NumericInputActions.setValue(id, newValue));
         });
 
@@ -187,6 +200,7 @@ describe('Numeric Input', () => {
                 const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
 
                 component.find(Button).at(0).prop('onClick')();
+
                 expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialNumericInputState.value));
             });
 
@@ -194,6 +208,7 @@ describe('Numeric Input', () => {
                 const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
 
                 component.find(Button).at(1).prop('onClick')();
+
                 expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialNumericInputState.value));
             });
 
@@ -204,16 +219,18 @@ describe('Numeric Input', () => {
                 ).dive();
 
                 component.find(Button).at(0).prop('onClick')();
+
                 expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue));
             });
 
-            it('should increment to the default value if initialValue is not defined', () => {
+            it('should increment from the initialValue if it is defined', () => {
                 const component = shallowWithStore(
                     <NumericInputConnected id={id} initialValue={initialValue} />,
                     store
                 ).dive();
 
                 component.find(Button).at(1).prop('onClick')();
+
                 expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue));
             });
         });

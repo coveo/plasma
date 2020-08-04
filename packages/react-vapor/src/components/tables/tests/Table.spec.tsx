@@ -29,14 +29,13 @@ describe('<Table />', () => {
         store.dispatch(clearState());
     });
 
-    const mountComponentWithProps = (props: ITableProps) => {
-        return mount(
+    const mountComponentWithProps = (props: ITableProps) =>
+        mount(
             <Provider store={store}>
                 <Table {...props} />
             </Provider>,
             {attachTo: document.getElementById('App')}
         );
-    };
 
     describe('on instantiation', () => {
         it('should set isInitialLoad to true if initialTableData equals DEFAULT_TABLE_DATA', () => {
@@ -48,6 +47,7 @@ describe('<Table />', () => {
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
             };
+
             expect((new Table(tablePropsWithoutDefaultInitialData) as any).isInitialLoad).toBe(false);
         });
     });
@@ -60,7 +60,7 @@ describe('<Table />', () => {
         });
 
         it('should not render the <TableChildLastUpdated/> if withoutLastUpdated is true', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps({
                 ...tablePropsMock,
                 withoutLastUpdated: true,
             } as any);
@@ -69,7 +69,7 @@ describe('<Table />', () => {
         });
 
         it('should render a blankslate null if some rows are displayed', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps({
                 ...tablePropsMock,
                 tableCompositeState: {
                     data: {byId: {test: {}}, allIds: ['test'], displayedIds: ['test'], totalEntries: 1, totalPages: 1},
@@ -80,7 +80,7 @@ describe('<Table />', () => {
         });
 
         it('should render null if table is loading', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps({
                 ...tablePropsMock,
                 tableCompositeState: {
                     isLoading: true,
@@ -91,7 +91,7 @@ describe('<Table />', () => {
         });
 
         it('should render a blankslate if no loading, empty table and isInitialLoad is false', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps({
                 ...tablePropsMock,
                 initialTableData: {...DEFAULT_TABLE_DATA, totalPages: 10, totalEntries: 1000},
                 tableCompositeState: {
@@ -119,7 +119,7 @@ describe('<Table />', () => {
         });
 
         it('should render with the wrapper fixed-header-table-container if the props withFixedHeader is true', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps({
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps({
                 ...tablePropsMock,
                 withFixedHeader: true,
             } as any);
@@ -225,14 +225,14 @@ describe('<Table />', () => {
         });
 
         it('should call onRowClick when a <TableChildBody /> calls its onRowClick function', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps(tablePropsMockWithData);
             table.find(TableChildBody).first().props().onRowClick([]);
 
             expect(tablePropsMockWithData.onRowClick).toHaveBeenCalledTimes(1);
         });
 
         it('should call getActions when a <TableChildBody /> calls its getActions function', () => {
-            const table: ReactWrapper<ITableProps, {}> = mountComponentWithProps(tablePropsMockWithData);
+            const table: ReactWrapper<ITableProps> = mountComponentWithProps(tablePropsMockWithData);
             table.find(TableChildBody).first().props().getActions({id: 'any'});
 
             expect(tablePropsMockWithData.getActions).toHaveBeenCalled();
@@ -251,6 +251,7 @@ describe('<Table />', () => {
 
             it('should not call onMofidyData if next tableCompositeState is identical to the previous', () => {
                 tableAsAny.componentWillReceiveProps(tableProps);
+
                 expect(onModifyDataSpy).not.toHaveBeenCalled();
             });
 
@@ -266,6 +267,7 @@ describe('<Table />', () => {
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = true;
+
                 expect(onModifyDataSpy).toHaveBeenCalledWith(
                     shouldResetPage,
                     nextProps.tableCompositeState,
@@ -285,6 +287,7 @@ describe('<Table />', () => {
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = false;
+
                 expect(onModifyDataSpy).toHaveBeenCalledWith(
                     shouldResetPage,
                     nextProps.tableCompositeState,
@@ -304,6 +307,7 @@ describe('<Table />', () => {
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = false;
+
                 expect(onModifyDataSpy).toHaveBeenCalledWith(
                     shouldResetPage,
                     nextProps.tableCompositeState,
@@ -331,6 +335,7 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         filter: 'someone just searched for something in the table',
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -344,6 +349,7 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         from: Date.now(),
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -357,6 +363,7 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         to: Date.now(),
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -370,6 +377,7 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         perPage: 50,
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -383,6 +391,7 @@ describe('<Table />', () => {
                         ...tableProps.tableCompositeState,
                         page: 3,
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -399,6 +408,7 @@ describe('<Table />', () => {
                             attribute: 'userName',
                         },
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -415,6 +425,7 @@ describe('<Table />', () => {
                             order: TableSortingOrder.ASCENDING,
                         },
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,
@@ -430,6 +441,7 @@ describe('<Table />', () => {
                             anyWouldDo: 'anyWouldDo',
                         },
                     };
+
                     expect(
                         tableAsAny.hasTableCompositeStateChanged(
                             tableProps.tableCompositeState,

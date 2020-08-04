@@ -125,6 +125,7 @@ describe('Button', () => {
                 showButton({
                     link,
                 });
+
                 expect(buttonComponent.find('a').prop('href')).toEqual(link);
             });
 
@@ -140,6 +141,7 @@ describe('Button', () => {
                 showButton({
                     link,
                 });
+
                 expect(buttonComponent.find('a').prop('rel')).toEqual('noopener noreferrer');
             });
 
@@ -147,6 +149,7 @@ describe('Button', () => {
                 showButton({
                     link,
                 });
+
                 expect(buttonComponent.find('a').prop('target')).toEqual('');
             });
 
@@ -156,6 +159,7 @@ describe('Button', () => {
                     link,
                     target,
                 });
+
                 expect(buttonComponent.find('a').prop('target')).toEqual(target);
             });
 

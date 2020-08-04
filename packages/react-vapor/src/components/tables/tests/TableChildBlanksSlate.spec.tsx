@@ -8,9 +8,8 @@ import {tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildBlankSlate />', () => {
     describe('render', () => {
-        const mountComponentWithProps = (props: ITableProps) => {
-            return mount(<TableChildBlankSlate {...props} />, {attachTo: document.getElementById('App')});
-        };
+        const mountComponentWithProps = (props: ITableProps) =>
+            mount(<TableChildBlankSlate {...props} />, {attachTo: document.getElementById('App')});
 
         describe('render without error', () => {
             it('should render without error if basic props are passed', () => {
@@ -162,6 +161,7 @@ describe('<TableChildBlankSlate />', () => {
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and filter is non empty', () => {
                 const blankslateTitleOnAction = 'no results on action!';
+
                 expect(
                     mountComponentWithProps({
                         ...tablePropsMock,
@@ -173,6 +173,7 @@ describe('<TableChildBlankSlate />', () => {
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and from (datePicker) is non empty', () => {
                 const blankslateTitleOnAction = 'no results on action!';
+
                 expect(
                     mountComponentWithProps({
                         ...tablePropsMock,
@@ -184,6 +185,7 @@ describe('<TableChildBlankSlate />', () => {
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and to (datePicker) is non empty', () => {
                 const blankslateTitleOnAction = 'no results on action!';
+
                 expect(
                     mountComponentWithProps({
                         ...tablePropsMock,
@@ -195,6 +197,7 @@ describe('<TableChildBlankSlate />', () => {
 
             it('should render the blankSlateNoResultsOnAction if the table has a blankslate on action and some predicates have a non default value', () => {
                 const blankslateTitleOnAction = 'no results on action!';
+
                 expect(
                     mountComponentWithProps({
                         ...tablePropsMock,
@@ -242,6 +245,7 @@ describe('<TableChildBlankSlate />', () => {
 
             it('should render blankslateOnError if the table is in error and has a blankslateOnError', () => {
                 const blankslateTitleOnAction = 'no results on action!';
+
                 expect(
                     mountComponentWithProps({
                         ...tablePropsMock,

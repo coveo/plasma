@@ -40,6 +40,7 @@ describe('FlatSelect', () => {
 
     it('should render a flat select option for each option', () => {
         const component = shallowWithState(<FlatSelectConnected {...props} />, {}).dive();
+
         expect(component.children().length).toBe(props.options.length);
         component.children().forEach((option) => {
             expect(option.type()).toBe(FlatSelectOption);
@@ -48,11 +49,13 @@ describe('FlatSelect', () => {
 
     it('should have the mod-btn-group class if the group prop is true', () => {
         const component = shallowWithState(<FlatSelectConnected {...props} group />, {}).dive();
+
         expect(component.hasClass('mod-btn-group')).toBe(true);
     });
 
     it('should have the mod-option-picker class if the optionPicker prop is true', () => {
         const component = shallowWithState(<FlatSelectConnected {...props} optionPicker />, {}).dive();
+
         expect(component.hasClass('mod-option-picker')).toBe(true);
     });
 
@@ -65,6 +68,7 @@ describe('FlatSelect', () => {
                 </Provider>
             );
         });
+
         expect(store.getActions()).toContain(addFlatSelect(props.id, props.options[0].id));
     });
 
@@ -77,6 +81,7 @@ describe('FlatSelect', () => {
                 </Provider>
             );
         });
+
         expect(store.getActions()).toContain(addFlatSelect(props.id, props.options[1].id));
     });
 
@@ -88,6 +93,7 @@ describe('FlatSelect', () => {
             </Provider>
         );
         component.unmount();
+
         expect(store.getActions()).toContain(removeFlatSelect(props.id));
     });
 
@@ -95,6 +101,7 @@ describe('FlatSelect', () => {
         const onClickSpy = jasmine.createSpy('onClick');
         const component = shallowWithState(<FlatSelectConnected {...props} onClick={onClickSpy} />, {}).dive();
         component.children().first().prop('onClick')('new-option');
+
         expect(onClickSpy).toHaveBeenCalledTimes(1);
         expect(onClickSpy).toHaveBeenCalledWith('new-option');
     });
@@ -103,6 +110,7 @@ describe('FlatSelect', () => {
         const store = getStoreMock();
         const component = shallowWithStore(<FlatSelectConnected {...props} />, store).dive();
         component.children().first().prop('onClick')({id: 'new-option'});
+
         expect(store.getActions()).toContain(selectFlatSelect(props.id, 'new-option'));
     });
 });

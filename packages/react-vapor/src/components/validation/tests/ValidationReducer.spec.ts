@@ -171,7 +171,7 @@ describe('ValidationReducer', () => {
         });
     });
 
-    describe('updateWarning', () => {
+    describe('updateDirty', () => {
         it('should create the validation state of a new component', () => {
             const newState = validationReducer(
                 {},

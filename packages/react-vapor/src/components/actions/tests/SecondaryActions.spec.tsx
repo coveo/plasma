@@ -14,12 +14,17 @@ describe('Actions', () => {
         target: '_blank',
         enabled: true,
     };
-    const triggerAction: IActionOptions = {
-        name: 'action2',
-        trigger: jasmine.createSpy('methodTrigger'),
-        enabled: true,
-    };
+    let triggerAction: IActionOptions;
+
     const actions: IActionOptions[] = [linkAction, ACTION_SEPARATOR, triggerAction];
+
+    beforeAll(() => {
+        triggerAction = {
+            name: 'action2',
+            trigger: jasmine.createSpy('methodTrigger'),
+            enabled: true,
+        };
+    });
 
     it('should render and unmount without throwing errors', () => {
         expect(() => {
@@ -54,6 +59,7 @@ describe('Actions', () => {
                 actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
             />
         );
+
         expect(wrapper.find(ActionsDropdown).props().disabled).toBe(false);
     });
 
@@ -64,6 +70,7 @@ describe('Actions', () => {
                 disabled
             />
         );
+
         expect(wrapper.find(ActionsDropdown).props().disabled).toBe(true);
     });
 
@@ -73,6 +80,7 @@ describe('Actions', () => {
                 actions={[linkAction, {...linkAction, primary: false}, {...linkAction, primary: false}]}
             />
         );
+
         expect(wrapper.find('div.dropdown').props().style.cursor).toBe('pointer');
     });
 
@@ -83,15 +91,15 @@ describe('Actions', () => {
                 disabled
             />
         );
+
         expect(wrapper.find('div.dropdown').props().style.cursor).toBe('default');
     });
 
     describe('separators', () => {
-        const shallowAndGetActions = (actionsList: IActionOptions[]) => {
-            return shallow(<SecondaryActions actions={actionsList} />)
+        const shallowAndGetActions = (actionsList: IActionOptions[]) =>
+            shallow(<SecondaryActions actions={actionsList} />)
                 .children()
                 .prop('actions');
-        };
 
         it('should remove a separator if followed by another separator', () => {
             expect(shallowAndGetActions([linkAction, ACTION_SEPARATOR, ACTION_SEPARATOR, triggerAction])).toEqual([
@@ -174,6 +182,7 @@ describe('Actions', () => {
             const rendered = shallow(
                 <SecondaryActions actions={[linkAction, ACTION_SEPARATOR, {...triggerAction, enabled: false}]} />
             ).children();
+
             expect(rendered.type()).toBe(PrimaryActionConnected);
             expect(rendered.prop('action')).toEqual(linkAction);
         });

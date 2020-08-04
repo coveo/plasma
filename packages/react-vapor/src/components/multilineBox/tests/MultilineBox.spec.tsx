@@ -33,6 +33,7 @@ describe('MultilineBox', () => {
 
         it('should render a multiline box', () => {
             const wrapper = shallowWithState(<MultilineBox {...defaultProps} />, {}).dive();
+
             expect(wrapper.find('div').exists()).toBe(true);
         });
 
@@ -91,7 +92,7 @@ describe('MultilineBox', () => {
                     expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.addValue);
                 });
 
-                it('should dispatch action to add a new id on addNewBox sent with the ParentProps object', () => {
+                it('should dispatch an action to add a new id on addNewBox sent with the ParentProps object', () => {
                     let parentId: string = '';
                     store = getStoreMock();
                     shallowWithStore(

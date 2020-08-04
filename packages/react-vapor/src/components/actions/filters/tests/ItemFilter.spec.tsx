@@ -1,24 +1,25 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {ITooltipProps, Tooltip} from '../../../tooltip/Tooltip';
 import {ELLIPSIS, IItemFilterProps, ItemFilter} from '../ItemFilter';
-/* tslint:enable:no-unused-variable */
 
 describe('Item filter', () => {
-    const ITEM_FILTER_BASIC_PROPS: IItemFilterProps = {
-        label: 'Item filter',
-        item: '',
-        onClear: jasmine.createSpy('onClear'),
-    };
+    let ITEM_FILTER_BASIC_PROPS: IItemFilterProps;
 
-    describe('<ItemFilter />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<ItemFilter {...ITEM_FILTER_BASIC_PROPS} />);
-            }).not.toThrow();
-        });
+    beforeAll(() => {
+        ITEM_FILTER_BASIC_PROPS = {
+            label: 'Item filter',
+            item: '',
+            onClear: jasmine.createSpy('onClear'),
+        };
+    });
+
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<ItemFilter {...ITEM_FILTER_BASIC_PROPS} />);
+        }).not.toThrow();
     });
 
     describe('<ItemFilter />', () => {
@@ -104,6 +105,7 @@ describe('Item filter', () => {
 
             it('should add a tooltip to the item if tooltip props are passed', () => {
                 itemFilterComponent.setProps({itemTooltipProps: {title: 'what a nice feature'}});
+
                 expect(itemFilterComponent.find(Tooltip).length).toBe(1);
             });
 

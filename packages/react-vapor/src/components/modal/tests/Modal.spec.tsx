@@ -7,12 +7,10 @@ import {IModalProps, Modal} from '../Modal';
 describe('Modal', () => {
     const id: string = 'modal';
 
-    describe('<Modal />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(<Modal id={id} />);
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(<Modal id={id} />);
+        }).not.toThrow();
     });
 
     describe('<Modal />', () => {
@@ -36,6 +34,7 @@ describe('Modal', () => {
             modal.setProps({id: id, onRender: renderSpy});
             modal.unmount();
             modal.mount();
+
             expect(renderSpy.calls.count()).toBe(1);
         });
 
@@ -47,6 +46,7 @@ describe('Modal', () => {
             modal.setProps({id: id, onDestroy: destroySpy});
             modal.mount();
             modal.unmount();
+
             expect(destroySpy.calls.count()).toBe(1);
         });
 
@@ -86,10 +86,12 @@ describe('Modal', () => {
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const classes = [containerClass];
+
             expect(modal.find('div').first().html()).not.toContain(containerClass);
 
             modal.setProps({id, classes});
             modal.mount();
+
             expect(modal.find('div').first().html()).toContain(containerClass);
         });
     });

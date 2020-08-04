@@ -1,6 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-// tslint:disable-next-line:no-unused-variable
 import * as React from 'react';
+
 import {
     DEFAULT_MODAL_PROMPT_CANCEL_LABEL,
     DEFAULT_MODAL_PROMPT_CONFIRM_LABEL,
@@ -15,24 +15,22 @@ describe('ModalPrompt', () => {
     const cancelLabel: string = 'Cancel';
     const message: string = 'message';
 
-    describe('<ModalPrompt />', () => {
-        it('should render without errors', () => {
-            expect(() => {
-                shallow(
-                    <ModalPrompt
-                        id={id}
-                        title={title}
-                        confirmLabel={confirmLabel}
-                        cancelLabel={cancelLabel}
-                        message={message}
-                        onConfirm={() => 1}
-                    />
-                );
-            }).not.toThrow();
-        });
+    it('should render without errors', () => {
+        expect(() => {
+            shallow(
+                <ModalPrompt
+                    id={id}
+                    title={title}
+                    confirmLabel={confirmLabel}
+                    cancelLabel={cancelLabel}
+                    message={message}
+                    onConfirm={() => 1}
+                />
+            );
+        }).not.toThrow();
     });
 
-    describe('<ModalPrompt />', () => {
+    describe('ModalPrompt no labels', () => {
         const defaultConfirmLabel: string = DEFAULT_MODAL_PROMPT_CONFIRM_LABEL;
         const defaultCancelLabel: string = DEFAULT_MODAL_PROMPT_CANCEL_LABEL;
         let modalPrompt: ReactWrapper<IModalPromptProps, any>;
@@ -108,16 +106,6 @@ describe('ModalPrompt', () => {
 
                 expect(confirmSpy).toHaveBeenCalledTimes(1);
             });
-
-            it('should call prop onConfirm when modalPrompt Confirm button is clicked and prop is set', () => {
-                confirmButton.simulate('click');
-                expect(confirmSpy).not.toHaveBeenCalled();
-
-                modalPrompt.setProps({id, title, onConfirm: confirmSpy});
-                confirmButton.simulate('click');
-
-                expect(confirmSpy).toHaveBeenCalledTimes(1);
-            });
         });
 
         describe('with a cancel spy', () => {
@@ -132,6 +120,7 @@ describe('ModalPrompt', () => {
                 const closeButton = modalPrompt.find('.small-close');
 
                 closeButton.simulate('click');
+
                 expect(cancelSpy).not.toHaveBeenCalled();
 
                 modalPrompt.setProps({id, title, onCancel: cancelSpy});
@@ -147,6 +136,7 @@ describe('ModalPrompt', () => {
                 const cancelButton = modalPrompt.find('.js-cancel');
 
                 cancelButton.simulate('click');
+
                 expect(cancelSpy).not.toHaveBeenCalled();
 
                 modalPrompt.setProps({id, title, onCancel: cancelSpy});
@@ -159,6 +149,7 @@ describe('ModalPrompt', () => {
                 const cancelButton = modalPrompt.find('.js-cancel');
 
                 cancelButton.simulate('click');
+
                 expect(cancelSpy).not.toHaveBeenCalled();
 
                 modalPrompt.setProps({id, title, onCancel: cancelSpy});

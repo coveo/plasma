@@ -21,12 +21,11 @@ describe('Multiline box with remove button', () => {
             Component: any,
             props: Partial<IMultilineBoxOwnProps> = {},
             state = {}
-        ): ShallowWrapper => {
-            return shallowWithState(<Component {...props} id={id} />, state)
+        ): ShallowWrapper =>
+            shallowWithState(<Component {...props} id={id} />, state)
                 .dive()
                 .dive()
                 .dive();
-        };
 
         it('should mount without errors', () => {
             expect(() =>
@@ -99,12 +98,11 @@ describe('Multiline box with remove button', () => {
                 Component: any,
                 props: Partial<IMultilineBoxOwnProps> = {},
                 s: any
-            ): ShallowWrapper => {
-                return shallowWithStore(<Component {...props} id={id} />, s)
+            ): ShallowWrapper =>
+                shallowWithStore(<Component {...props} id={id} />, s)
                     .dive()
                     .dive()
                     .dive();
-            };
 
             it('should contains a Button inside the remove button element sent as arguments', () => {
                 store = getStoreMock();

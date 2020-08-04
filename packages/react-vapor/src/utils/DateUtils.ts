@@ -1,5 +1,6 @@
 import moment from 'moment';
 import * as _ from 'underscore';
+
 import {IDay} from '../components/calendar/CalendarDay';
 
 export interface IDateComponents {
@@ -40,6 +41,7 @@ export class DateUtils {
             const days: IDay[] = [];
             for (let i = 0; i < 7; i++) {
                 days.push({
+                    // eslint-disable-next-line id-blacklist
                     number: date.date(),
                     isCurrentMonth: date.month() === firstDay.getMonth(),
                     isToday: date.isSame(DateUtils.currentDate, 'day'),
