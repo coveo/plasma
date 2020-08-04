@@ -50,6 +50,11 @@ form {
             }
         }
 
+        .labeled-tooltip {
+            width: 15px;
+            height: 15px;
+        }
+
         &.coveo-checkbox-label,
         &.coveo-slide-toggle-label {
             display: flex;

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
@@ -22,7 +23,11 @@ export class LabeledValue extends React.PureComponent<ILabeledValueProps> {
 
     render() {
         const informationSVG = !!this.props.information ? (
-            <Tooltip title={this.props.information} placement={this.props.informationPlacement || TooltipPlacement.Top}>
+            <Tooltip
+                title={this.props.information}
+                placement={this.props.informationPlacement || TooltipPlacement.Top}
+                className="labeled-tooltip"
+            >
                 <Svg svgName="info-14" svgClass="icon fill-medium-grey" />
             </Tooltip>
         ) : null;
@@ -35,10 +40,12 @@ export class LabeledValue extends React.PureComponent<ILabeledValueProps> {
                     this.props.className
                 )}
             >
-                <header className={classNames('label', {'inline-block': this.props.singleLine})}>
-                    <span className={classNames({mr1: !!this.props.information})}>{this.props.label}</span>
+                <div className="flex flex-center">
+                    <header className={classNames('label', {'inline-block': this.props.singleLine})}>
+                        <span className={classNames({mr1: !!this.props.information})}>{this.props.label}</span>
+                    </header>
                     {informationSVG}
-                </header>
+                </div>
                 <section className={classNames('value', {'inline-block': this.props.singleLine})}>
                     {this.props.value}
                 </section>

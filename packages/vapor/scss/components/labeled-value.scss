@@ -5,17 +5,18 @@
 
     .label,
     .value {
-        padding: 5px;
         overflow: hidden;
         text-overflow: ellipsis;
     }
 
     .label {
+        padding: 5px 0px 5px 5px;
         color: $light-blue;
         font-size: $small-font-size;
     }
 
     .value {
+        padding: 5px;
         font-size: $default-font-size;
         line-height: $default-line-height;
     }
