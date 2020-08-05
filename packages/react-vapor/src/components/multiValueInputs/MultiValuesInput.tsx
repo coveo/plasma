@@ -73,6 +73,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                         innerInputClasses={index >= limit && 'mod-no-border py1 input-wider-text-box'}
                         disabledTooltip={index >= limit && disabledTooltipTitle ? disabledTooltipTitle : ''}
                         labelTitle={index === 0 ? inputProps?.labelTitle : ''}
+                        validate={index === 0 ? inputProps?.validate : (value: string) => true}
                     />
                 ))
             }

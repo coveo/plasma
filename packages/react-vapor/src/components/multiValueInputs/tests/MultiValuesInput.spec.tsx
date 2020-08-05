@@ -24,6 +24,8 @@ describe('MultiValuesInput', () => {
     const testInputProps = {
         placeholder: 'a placeholder',
         labelTitle: 'a title',
+        validate: (value: string) => !!value,
+        validateOnMount: true,
     };
 
     const defaultProps = {
@@ -48,6 +50,7 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
             {}
         );
+
         expect(body.find(InputConnected).length).toBe(arrayOfMultilineSingleBoxProps.length);
     });
 
@@ -59,6 +62,7 @@ describe('MultiValuesInput', () => {
             {}
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
+
         expect(lastInputConnectedProps.disabled).toBe(true);
     });
 
@@ -73,6 +77,7 @@ describe('MultiValuesInput', () => {
             {}
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
+
         expect(lastInputConnectedProps.defaultValue).toBe('⌚');
     });
 
@@ -87,6 +92,7 @@ describe('MultiValuesInput', () => {
             {}
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
+
         expect(lastInputConnectedProps.disabled).toBe(true);
     });
 
@@ -104,6 +110,7 @@ describe('MultiValuesInput', () => {
             .find(InputConnected)
             .at(arrayOfMultilineSingleBoxAboveDataLimitProps.length - 2)
             .props();
+
         expect(oneInputConnectedBeforelastProps.disabled).toBe(false);
     });
 
@@ -118,6 +125,7 @@ describe('MultiValuesInput', () => {
             {}
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
+
         expect(lastInputConnectedProps.disabledTooltip).toBe(defaultProps.disabledTooltipTitle);
     });
 
@@ -135,6 +143,7 @@ describe('MultiValuesInput', () => {
             .find(InputConnected)
             .at(arrayOfMultilineSingleBoxAboveDataLimitProps.length - 2)
             .props();
+
         expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe('');
     });
 
@@ -152,6 +161,7 @@ describe('MultiValuesInput', () => {
             .find(InputConnected)
             .at(arrayOfMultilineSingleBoxAboveDataLimitProps.length - 2)
             .props();
+
         expect(oneInputConnectedBeforelastProps.placeholder).toBe(testInputProps.placeholder);
     });
 
@@ -166,6 +176,7 @@ describe('MultiValuesInput', () => {
             {}
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
+
         expect(lastInputConnectedProps.placeholder).toBe(defaultProps.reachedLimitPlaceholder);
     });
 
@@ -187,5 +198,20 @@ describe('MultiValuesInput', () => {
 
         expect(firstInputConnectedProps.labelTitle).toBe(testInputProps.labelTitle);
         expect(oneInputConnectedBeforelastProps.labelTitle).toBe('');
+    });
+
+    it("should only validate the first input's content", () => {
+        const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
+            {}
+        );
+
+        const lastInputConnectedValidation = body.find(InputConnected).last().props().validate('');
+        const firstInputConnectedValidation = body.find(InputConnected).first().props().validate('');
+
+        expect(lastInputConnectedValidation).toBe(true);
+        expect(firstInputConnectedValidation).toBe(false);
     });
 });
