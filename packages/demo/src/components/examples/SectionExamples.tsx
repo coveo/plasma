@@ -62,7 +62,7 @@ export class SectionExamples extends React.Component<any, any> {
                                     <Svg
                                         svgName="info"
                                         className="ml1 icon mod-align-with-text"
-                                        svgClass="fill-light-grey"
+                                        svgClass="fill-medium-grey"
                                     />
                                 </Tooltip>
                             </div>
