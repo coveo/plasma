@@ -15,6 +15,7 @@ import * as styles from './styles/CollapsibleContainer.scss';
 export interface ICollapsibleContainerOwnProps {
     id: string;
     title: React.ReactNode;
+    collapsibleToggleIcon?: React.ReactNode;
     expandedOnMount?: boolean;
     informationUrl?: string;
     informationTooltip?: ITooltipProps;
@@ -22,6 +23,7 @@ export interface ICollapsibleContainerOwnProps {
     collapsibleHeaderClassName?: IClassName;
     collapsibleBodyClassName?: IClassName;
     withoutContentPadding?: boolean;
+    disabled?: boolean;
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ICollapsibleContainerOwnProps) => {
@@ -44,6 +46,8 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
     informationTooltip,
     informationUrl,
     expandedOnMount,
+    collapsibleToggleIcon,
+    disabled,
 }) => {
     const contentClasses = classNames(
         {[styles.content]: !withoutContentPadding},
@@ -63,13 +67,19 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
             headerContent={
                 <div className={headerClasses}>
                     <div>{title}</div>
-                    <CollapsibleHeaderIcon informationTooltip={informationTooltip} informationUrl={informationUrl} />
+                    <CollapsibleHeaderIcon
+                        informationTooltip={informationTooltip}
+                        informationUrl={informationUrl}
+                        disabled={disabled}
+                    />
                 </div>
             }
             expandedOnMount={expandedOnMount}
             headerClasses={classNames(styles.header, expanded ? 'bg-light-grey' : 'bg-white')}
             toggleIconClassName="fill-medium-blue mr4"
+            collapsibleToggleIcon={collapsibleToggleIcon}
             withBorders
+            disabled={disabled}
         >
             <div className={contentClasses}>{children}</div>
         </CollapsibleConnected>

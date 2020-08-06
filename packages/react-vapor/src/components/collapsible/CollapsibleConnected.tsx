@@ -18,6 +18,7 @@ export interface CollapsibleOwnProps {
     toggleIconClassName?: string;
     className?: string;
     withBorders?: boolean;
+    collapsibleToggleIcon?: React.ReactNode;
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps) => {
@@ -52,6 +53,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     toggleIconClassName,
     onUnmount,
     onToggleExpandedState,
+    collapsibleToggleIcon,
 }) => {
     React.useEffect(() => {
         onMount();
@@ -66,7 +68,13 @@ export const CollapsibleDisconnected: React.FunctionComponent<
         <div className={classNames(className)}>
             <div className={headerClassesCombine} onClick={() => !disabled && onToggleExpandedState(expanded)}>
                 {headerContent}
-                <CollapsibleToggle expanded={expanded} svgClassName={toggleIconClassName} className="mr2" />
+                {collapsibleToggleIcon || (
+                    <CollapsibleToggle
+                        expanded={expanded}
+                        svgClassName={classNames(toggleIconClassName, {disabled: disabled})}
+                        className="mr2"
+                    />
+                )}
             </div>
             <SlideY id={id} in={expanded} timeout={COLLAPSIBLE_EFFECT_DURATION} duration={COLLAPSIBLE_EFFECT_DURATION}>
                 {children}
