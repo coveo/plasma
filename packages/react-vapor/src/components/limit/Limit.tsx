@@ -13,6 +13,7 @@ export interface LimitOwnProps {
     id?: string;
     title: string;
     limitLabel?: string;
+    classes?: string;
     usage?: number;
     limit?: number;
     isLimitEditable?: boolean;
@@ -60,8 +61,9 @@ const LimitDisconnect: React.FunctionComponent<LimitProps> = ({
     isLimitTheGoalToReach,
     isHistoryIncluded,
     onChangeLimit,
+    classes,
 }) => (
-    <div className="limit-box mb2">
+    <div className={classNames('limit-box mb2', classes)}>
         <div className="limit-box-main p2 pb1">
             <HeaderDivision limitLabel={title} isHistoryIncluded={isHistoryIncluded} />
             <ContentDivision
