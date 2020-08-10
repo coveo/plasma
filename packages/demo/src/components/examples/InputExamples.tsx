@@ -7,6 +7,7 @@ import {
     IMultilineSingleBoxProps,
     Input,
     InputConnected,
+    InputLabelWithTooltip,
     ISplitInput,
     Label,
     MultilineBox,
@@ -103,8 +104,13 @@ const InputsConnected: React.FunctionComponent = () => {
                     <InputConnected
                         id="super-input"
                         validate={validate}
-                        labelTitle="I am a connected input, and validated in real time."
-                        labelProps={{invalidMessage: 'Do not leave me empty'}}
+                        labelTitle={
+                            <InputLabelWithTooltip
+                                label="I am a connected input, and validated in real time."
+                                tooltip="This input is connected."
+                                invalidMessage="Do not leave me empty"
+                            />
+                        }
                         innerInputClasses="mb2"
                         validateOnChange
                     />
