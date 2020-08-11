@@ -1,7 +1,6 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
@@ -9,11 +8,11 @@ import * as _ from 'underscore';
 import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {IReactVaporState} from '../../../../ReactVapor';
 import {clearState} from '../../../../utils/ReduxUtils';
-import {TestUtils} from '../../../../utils/tests/TestUtils';
-import {UUID} from '../../../../utils/UUID';
+import {getStoreMock, TestUtils} from '../../../../utils/tests/TestUtils';
 import {DraggableSelectedOption} from '../../../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
 import {selectFlatSelect} from '../../../flatSelect/FlatSelectActions';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
+import {FlatSelectSelectors} from '../../../flatSelect/FlatSelectSelectors';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
 import {reorderListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected';
@@ -30,8 +29,8 @@ describe('Select', () => {
 
         const id: string = 'multi-select-with-predicate';
         const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
-            {id: UUID.generate(), option: {content: 'All'}, selected: true},
-            {id: UUID.generate(), option: {content: 'None'}},
+            {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
+            {id: 'my_real_id_02', option: {content: 'None'}},
         ];
         const matchPredicate = (predicate: string, item: IItemBoxProps) => predicate === defaultFlatSelectOptions[0].id;
 
@@ -96,7 +95,6 @@ describe('Select', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c', selected: true}];
 
             mountMultiSelect({items});
-            store.dispatch(toggleSelect(id, true));
             store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
             wrapper.update();
             multiSelect = wrapper.find(SelectConnected);
@@ -111,22 +109,25 @@ describe('Select', () => {
         });
 
         it('should not show items that are already hidden', () => {
+            spyOn(FlatSelectSelectors, 'getSelectedOptionId').and.returnValue(defaultFlatSelectOptions[0].id);
+
             const items = [
                 {value: 'a', hidden: true},
                 {value: 'b', selected: true},
                 {value: 'c', selected: true},
             ];
 
-            mountMultiSelect({items});
-            store.dispatch(toggleSelect(id, true));
-            store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[0].id));
-            wrapper.update();
-            multiSelect = wrapper.find(SelectConnected);
+            const multiSelectWrapper = mountWithStore(
+                <MultiSelectWithPredicate {...basicProps} items={items} />,
+                getStoreMock({})
+            );
+
+            multiSelect = multiSelectWrapper.find(SelectConnected);
 
             expect(multiSelect.props().items.length).toBe(items.length);
-            expect(multiSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
-            expect(multiSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined();
-            expect(multiSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined();
+            expect(multiSelect.find(SelectConnected).props().items[0].hidden).toBe(true, '0');
+            expect(multiSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined('1');
+            expect(multiSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined('2');
         });
 
         describe('Sortable', () => {
@@ -200,12 +201,8 @@ describe('Select', () => {
                     {attachTo: document.getElementById('App')}
                 );
 
-                onUpdateSpy.calls.reset();
-
-                act(() => {
-                    store.dispatch(toggleSelect(id, true));
-                    store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
-                });
+                store.dispatch(toggleSelect(id, true));
+                store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
 
                 expect(onUpdateSpy).toHaveBeenCalledTimes(1);
             });

@@ -42,15 +42,17 @@ describe('LastUpdated', () => {
             jasmine.clock().uninstall();
         });
 
-        it('should use the label passed as a prop to display the time, else it uses the default label', () => {
+        it('should use the default label if not defined', () => {
             lastUpdatedWrapper = shallow(<LastUpdated />);
 
             expect(s.contains(lastUpdatedWrapper.html(), LAST_UPDATE_LABEL)).toBe(true);
+        });
 
-            const expectedLabel = 'Last update was at =>';
-            lastUpdatedWrapper.setProps({label: expectedLabel});
+        it('should use the label passed as a prop to display the time', () => {
+            const expectedLabel = 'Last update was at';
+            lastUpdatedWrapper = shallow(<LastUpdated label={expectedLabel} />);
 
-            expect(s.contains(lastUpdatedWrapper.html(), expectedLabel)).toBe(true);
+            expect(lastUpdatedWrapper.html()).toContain(expectedLabel);
         });
 
         it('should trigger onRender prop when mounting', () => {

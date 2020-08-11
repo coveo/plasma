@@ -22,7 +22,7 @@ module.exports = function (options) {
                         loader: 'eslint-loader',
                         options: {
                             fix: !isTravis,
-                            failOnError: isTravis,
+                            failOnError: !!isTravis,
                         },
                     },
                 },

@@ -157,14 +157,7 @@ describe('TextArea', () => {
             const onUnmount = jasmine.createSpy('onUnmount');
 
             hookWrapper = mount(<TextArea id="textarea-id" onUnmount={onUnmount} />);
-
-            act(() => {
-                hookWrapper.unmount();
-            });
-
-            expect(onUnmount).toHaveBeenCalledTimes(1);
-
-            wrapper.setProps({onUnmount}).unmount();
+            hookWrapper.unmount();
 
             expect(onUnmount).toHaveBeenCalledTimes(1);
         });
