@@ -1,10 +1,11 @@
 import * as React from 'react';
 import {createSelector} from 'reselect';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {initialNumericInputState, INumericInputState} from './NumericInputReducers';
 
 const getNumericInput = (state: IReactVaporState, ownProps: {id: string}): INumericInputState =>
-    (state && state.numericInputs[ownProps.id]) || initialNumericInputState;
+    state?.numericInputs?.[ownProps.id] || initialNumericInputState;
 
 const getValue: (state: IReactVaporState, ownProps: {id: string}) => React.ReactText = createSelector(
     getNumericInput,
