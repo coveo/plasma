@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.0.0](https://github.com/coveo/react-vapor/compare/v6.11.2...v7.0.0) (2020-08-12)
+
+
+### Bug Fixes
+
+* typo in the README.md ([d15ec47](https://github.com/coveo/react-vapor/commit/d15ec470c4adc1b2c5749dfcb4e1bb7ebd74a637))
+
+
+### BREAKING CHANGES
+
+* The transition from tslint to eslint came with some breaking changes. The latest versions were deprecated to make up for it.
+
+
+
+
+
 ## [6.11.2](https://github.com/coveo/react-vapor/compare/v6.11.1...v6.11.2) (2020-08-12)
 
 
