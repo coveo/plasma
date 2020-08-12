@@ -6,7 +6,7 @@ import {UrlUtils} from '../../utils/UrlUtils';
 import {FlatSelectWithPrepend} from '../flatSelect/FlatSelectWithPrepend';
 import {Params} from '../table-hoc/TableWithUrlState';
 import {PaginationUtils} from './PaginationUtils';
-import {TablePaginationDefaultValue} from './TablePagination';
+import {TablePaginationDefaultValue} from './PaginationConstants';
 
 export interface IPaginationPerPageProps {
     id: string;

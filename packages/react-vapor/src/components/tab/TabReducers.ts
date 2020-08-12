@@ -1,8 +1,8 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ITabActionPayload, TabAction} from './TabActions';
-
-export const DEFAULT_GROUP_ID: string = 'default';
+import {TabConstants} from './TabConstants';
 
 export interface ITabState {
     id: string;
@@ -64,7 +64,7 @@ export const tabGroupReducer = (
         case TabAction.addTab:
         case TabAction.removeTab:
         case TabAction.selectTab:
-            const groupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
+            const groupId = action.payload.groupId ? action.payload.groupId : TabConstants.DefaultGroupId;
             if (state.id === groupId) {
                 return {
                     id: groupId,
@@ -85,14 +85,14 @@ export const tabGroupsReducer = (
 ): ITabGroupState[] => {
     switch (action.type) {
         case TabAction.addTab:
-            const addgroupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
+            const addgroupId = action.payload.groupId ? action.payload.groupId : TabConstants.DefaultGroupId;
             const addgroup = findGroup(state, addgroupId);
             if (addgroup) {
                 return state.map((tabGroup: ITabGroupState) => tabGroupReducer(tabGroup, action));
             }
             return [...state, tabGroupReducer({id: addgroupId, tabs: []}, action)];
         case TabAction.removeTab:
-            const groupId = action.payload.groupId ? action.payload.groupId : DEFAULT_GROUP_ID;
+            const groupId = action.payload.groupId ? action.payload.groupId : TabConstants.DefaultGroupId;
             const group = findGroup(state, groupId);
             if (group) {
                 const groups = state.map((tabGroup: ITabGroupState) => tabGroupReducer(tabGroup, action));

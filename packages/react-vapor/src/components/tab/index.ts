@@ -1,3 +1,4 @@
+export * from './TabConstants';
 export * from './Tab';
 export * from './TabActions';
 export * from './TabConnected';

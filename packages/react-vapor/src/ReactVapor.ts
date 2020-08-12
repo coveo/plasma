@@ -5,7 +5,7 @@ import {IActionBarState} from './components/actions/ActionBarReducers';
 import {IItemFilterState} from './components/actions/filters/ItemFilterReducers';
 import {IAutocompleteState} from './components/autocomplete/AutocompleteReducers';
 import {ICheckboxState} from './components/checkbox/CheckboxReducers';
-import {IGroupableCheckboxesState} from './components/checkbox/GroupableCheckboxReducers';
+import {IGroupableCheckboxesState} from './components/checkbox/GroupableCheckboxConstants';
 import {CollapsibleState} from './components/collapsible/CollapsibleReducers';
 import {IDatePickerState} from './components/datePicker/DatePickerReducers';
 import {IDropState} from './components/drop/redux/DropReducers';

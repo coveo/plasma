@@ -4,7 +4,7 @@ import {IReduxAction} from '../../../../utils/ReduxUtils';
 import {IDropdownOption} from '../../DropdownSearch';
 import {DropdownSearchActions, IOptionsDropdownSearchPayload} from '../../DropdownSearchActions';
 import {IDropdownSearchState} from '../../DropdownSearchReducers';
-import {multiSelectDropdownSearchReducer} from '../MultiSelectDropdownSearchReducer';
+import {multiSelectDropdownSearchReducer} from '../../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
     describe('MultiSelectDropdownSearchReducers', () => {

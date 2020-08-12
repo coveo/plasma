@@ -11,7 +11,7 @@ import {
     removeGroupedCheckbox,
     toggleGroupedCheckbox,
 } from './GroupableCheckboxActions';
-import {IGroupableCheckboxesState} from './GroupableCheckboxReducers';
+import {IGroupableCheckboxesState} from './GroupableCheckboxConstants';
 
 export interface IGroupableCheckboxOwnProps extends ICheckboxProps {
     isParent?: boolean;
