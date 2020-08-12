@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [6.11.0](https://github.com/coveo/react-vapor/compare/v6.10.1...v6.11.0) (2020-08-12)
+
+
+### Bug Fixes
+
+* **labeledvalue-labeledinput:** changed the css of the tooltip container ([b3cd29d](https://github.com/coveo/react-vapor/commit/b3cd29d1d9d9489d0f5779f9d4c454b9ef5ef87a))
+
+
+### Features
+
+* **collapsible:** disabled ([8e954fb](https://github.com/coveo/react-vapor/commit/8e954fbebeabfa3b33efccf8c3393fb2331ec0d5))
+
+
+
+
+
 ## [6.10.1](https://github.com/coveo/react-vapor/compare/v6.10.0...v6.10.1) (2020-07-30)
 
 **Note:** Version bump only for package react-vapor-demo
