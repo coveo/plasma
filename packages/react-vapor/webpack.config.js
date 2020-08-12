@@ -44,7 +44,7 @@ const config = {
                     loader: 'eslint-loader',
                     options: {
                         fix: !isTravis,
-                        failOnError: isTravis,
+                        failOnError: !!isTravis,
                     },
                 },
             },

@@ -2,7 +2,6 @@ import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import {Range} from 'rc-slider';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
@@ -266,10 +265,9 @@ describe('<Slider/>', () => {
                     />
                 </Provider>
             );
+
             callBackSpy.calls.reset();
-            act(() => {
-                mountedSlider.find(Range).prop('onChange')([40, 50]);
-            });
+            mountedSlider.find(Range).prop('onChange')([40, 50]);
 
             expect(callBackSpy).toHaveBeenCalledTimes(1);
         });

@@ -1,4 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
+import {mountWithState} from 'enzyme-redux';
 import React from 'react';
 import {OverlayTrigger} from 'react-bootstrap';
 import ReactDOM from 'react-dom';
@@ -23,13 +24,14 @@ describe('Tooltip', () => {
 
     describe('<Tooltip />', () => {
         it('should display the className passed as a prop', () => {
-            const tooltipWrapper = shallow(
+            const tooltipWrapper = mountWithState(
                 <Tooltip {...TOOLTIP_PROPS} className="some-class">
                     Hover me!
-                </Tooltip>
+                </Tooltip>,
+                {}
             );
 
-            expect(tooltipWrapper.hasClass('some-class')).toBe(true);
+            expect(tooltipWrapper.html()).toContain('some-class');
         });
 
         it('should display an <OverlayTrigger/>', () => {

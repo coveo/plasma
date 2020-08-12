@@ -8,11 +8,7 @@ import {IListBoxProps, ListBox} from '../ListBox';
 describe('ListBox', () => {
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;
 
-    let spyOnOptionClick: jasmine.Spy;
-
-    beforeAll(() => {
-        spyOnOptionClick = jasmine.createSpy('onOptionClick');
-    });
+    const spyOnOptionClick = jasmine.createSpy('onOptionClick');
 
     const defaultProps: IListBoxProps = {
         id: '🍄',

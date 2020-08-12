@@ -8,19 +8,22 @@ import {FacetRow, IFacetRowProps} from '../FacetRow';
 describe('Facets', () => {
     let spyOnToggleFacet: jasmine.Spy;
 
-    const FACET_ROW_PROPS: IFacetRowProps = {
-        facetRow: {
-            name: 'row',
-            formattedName: 'Row',
-        },
-        facet: 'facetTitle',
-        onToggleFacet: spyOnToggleFacet,
-        isChecked: false,
-    };
-    const FACET_ROW: JSX.Element = <FacetRow {...FACET_ROW_PROPS} />;
+    let FACET_ROW_PROPS: IFacetRowProps;
+    let FACET_ROW: JSX.Element;
 
-    beforeAll(() => {
+    beforeEach(() => {
         spyOnToggleFacet = jasmine.createSpy('onToggleFacet');
+
+        FACET_ROW_PROPS = {
+            facetRow: {
+                name: 'row',
+                formattedName: 'Row',
+            },
+            facet: 'facetTitle',
+            onToggleFacet: spyOnToggleFacet,
+            isChecked: false,
+        };
+        FACET_ROW = <FacetRow {...FACET_ROW_PROPS} />;
     });
 
     describe('<FacetRow />', () => {

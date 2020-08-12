@@ -9,23 +9,23 @@ import {RefreshStatus} from '../RefreshCallbackReducer';
 
 describe('RefreshCallback tests', () => {
     describe('<RefreshCallback />', () => {
+        beforeEach(() => {
+            jasmine.clock().install();
+        });
+
+        afterEach(() => {
+            jasmine.clock().uninstall();
+        });
+
         it('should mount and unmount without error', () => {
             expect(() => {
-                const component = shallowWithState(<RefreshCallback callback={() => ''} />, {});
+                const component = shallowWithState(<RefreshCallback callback={() => ''} />, {}).dive();
                 component.unmount();
             }).not.toThrow();
         });
 
         describe('once mounted', () => {
             let component: ShallowWrapper<IRefreshCallbackProps, IRefreshCallbackState>;
-
-            beforeEach(() => {
-                jasmine.clock().install();
-            });
-
-            afterEach(() => {
-                jasmine.clock().uninstall();
-            });
 
             it('should call renderCount on render', () => {
                 const spy = jasmine.createSpy('renderCount');

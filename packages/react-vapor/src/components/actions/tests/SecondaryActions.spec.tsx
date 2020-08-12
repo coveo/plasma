@@ -14,17 +14,13 @@ describe('Actions', () => {
         target: '_blank',
         enabled: true,
     };
-    let triggerAction: IActionOptions;
+    const triggerAction: IActionOptions = {
+        name: 'action2',
+        trigger: jasmine.createSpy('methodTrigger'),
+        enabled: true,
+    };
 
     const actions: IActionOptions[] = [linkAction, ACTION_SEPARATOR, triggerAction];
-
-    beforeAll(() => {
-        triggerAction = {
-            name: 'action2',
-            trigger: jasmine.createSpy('methodTrigger'),
-            enabled: true,
-        };
-    });
 
     it('should render and unmount without throwing errors', () => {
         expect(() => {
