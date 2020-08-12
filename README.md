@@ -38,7 +38,7 @@ npm start
 
 Changes made to any source files in any package will make the demo rebuild and refresh. Since the projects are in the same repository and we use Lerna, we don't have to link them together.
 
-### Commiting your changes
+### Committing your changes
 
 Every commit made to this repository must comply to the [Conventional Commits specification](https://www.conventionalcommits.org/). Our build system is configured to automatically release and publish new versions according to this convention.
 
