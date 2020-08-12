@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [6.11.2](https://github.com/coveo/react-vapor/compare/v6.11.1...v6.11.2) (2020-08-12)
+
+
+### Bug Fixes
+
+* **numericinput:** type error in selectors ([#1647](https://github.com/coveo/react-vapor/issues/1647)) ([e092d39](https://github.com/coveo/react-vapor/commit/e092d398c0d50d077935da9ad8e4ac9d2a5c6f31))
+
+
+
+
+
 ## [6.11.1](https://github.com/coveo/react-vapor/compare/v6.11.0...v6.11.1) (2020-08-12)
 
 **Note:** Version bump only for package root
