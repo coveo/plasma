@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.0.1](https://github.com/coveo/react-vapor/compare/v7.0.0...v7.0.1) (2020-08-13)
+
+
+### Bug Fixes
+
+* **infinite-loop:** use effect bad watch ([7e2730e](https://github.com/coveo/react-vapor/commit/7e2730e59f59de534be5fd7e4d42dadbfffca080))
+
+
+
+
+
 # [7.0.0](https://github.com/coveo/react-vapor/compare/v6.11.2...v7.0.0) (2020-08-12)
 
 **Note:** Version bump only for package react-vapor
