@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.1.0](https://github.com/coveo/react-vapor/compare/v7.0.1...v7.1.0) (2020-08-13)
+
+
+### Features
+
+* **input:** add label with tooltip ([#1645](https://github.com/coveo/react-vapor/issues/1645)) ([21504e6](https://github.com/coveo/react-vapor/commit/21504e6c31cf1fd72b856e8c0c87877765db63b4))
+
+
+
+
+
 ## [7.0.1](https://github.com/coveo/react-vapor/compare/v7.0.0...v7.0.1) (2020-08-13)
 
 
