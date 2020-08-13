@@ -33,7 +33,7 @@ export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Componen
 
         React.useEffect(() => {
             toggleIsDirty(hasDifferentValuesSelected);
-        }, [hasDifferentValuesSelected, toggleIsDirty]);
+        }, [hasDifferentValuesSelected]);
 
         return <Component {...(props as T)} />;
     };

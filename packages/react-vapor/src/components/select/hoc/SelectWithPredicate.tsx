@@ -46,7 +46,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
         const {onUpdate, predicate} = props;
         React.useEffect(() => {
             onUpdate?.();
-        }, [predicate, onUpdate]);
+        }, [predicate]);
 
         return (
             <Component {..._.omit(props, SelectWithPredicatePropsToOmit)}>

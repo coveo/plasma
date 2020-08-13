@@ -168,7 +168,7 @@ const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<
 
     React.useEffect(() => {
         fetchPhotos({_page: 1, _limit: PER_PAGE});
-    }, [fetchPhotos]);
+    }, []);
 
     const fetchNextPage = () => {
         fetchPhotos({_page: pageNbr + 1, _limit: PER_PAGE, q: filterValue}, false);

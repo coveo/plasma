@@ -83,13 +83,13 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
 
     React.useEffect(() => {
         setIsValid(validate?.(debouncedValue));
-    }, [debouncedValue, validate]);
+    }, [debouncedValue]);
 
     React.useEffect(() => {
         onMount?.();
         setIsValid(true);
         return onUnmount;
-    }, [onMount, onUnmount]);
+    }, []);
 
     const getValidationLabel = () =>
         !isValid && <div className="full-content-x generic-form-error my1">{validationMessage}</div>;

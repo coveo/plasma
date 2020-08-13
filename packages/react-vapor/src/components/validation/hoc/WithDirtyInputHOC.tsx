@@ -30,7 +30,7 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
             },
-            [props.id, clearIsDirty, resetDirtyOnUnmount]
+            []
         );
 
         return (

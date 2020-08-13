@@ -36,7 +36,7 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
             return () => {
                 resetErrorOnUnmount && clearError(props.id);
             };
-        }, [props.id, clearError, resetErrorOnUnmount]);
+        }, []);
 
         return (
             <Component

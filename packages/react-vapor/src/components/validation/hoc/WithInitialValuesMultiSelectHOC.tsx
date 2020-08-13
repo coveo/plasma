@@ -49,13 +49,13 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
             () => () => {
                 props.resetInitialValueWarningOnUnmount && clearWarning();
             },
-            [clearWarning, props.resetInitialValueWarningOnUnmount]
+            []
         );
 
         React.useEffect(() => {
             const message = invalidInitialValuesMessage?.(notFoundInitialValues) || '';
             setWarning(notFoundInitialValues.length > 0 ? message : '');
-        }, [invalidInitialValuesMessage, notFoundInitialValues, setWarning]);
+        }, [invalidInitialValuesMessage, notFoundInitialValues.length]);
 
         return <Component {...(props as T)} items={newItems} />;
     };

@@ -58,7 +58,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     React.useEffect(() => {
         onMount();
         return () => onUnmount();
-    }, [onMount, onUnmount]);
+    }, []);
 
     const headerClassesCombine = classNames('cursor-pointer flex space-between center-align', headerClasses, {
         'mod-border-bottom mod-border-top': withBorders,
