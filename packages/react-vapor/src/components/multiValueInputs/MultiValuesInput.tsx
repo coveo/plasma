@@ -18,7 +18,7 @@ const MultilineBoxWithRemoveButton = _.compose(
             <div key={`${data[index].id}`} className="flex">
                 <div className="flex-auto">{child}</div>
                 {getRemoveButton({
-                    classes: ['mod-no-border', 'bg-transparent', 'align-end', 'mt2'],
+                    classes: ['mod-no-border', 'bg-transparent', 'align-end', 'mt1'],
                 })}
             </div>
         ),
@@ -70,7 +70,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                         placeholder={index >= limit ? reachedLimitPlaceholder : inputProps?.placeholder}
                         disabled={index >= limit}
                         classes={index >= limit && 'mt0 mb0 ml-1'}
-                        innerInputClasses={index >= limit && 'mod-no-border py1 input-wider-text-box'}
+                        innerInputClasses={index >= limit && 'mod-no-border input-wider-text-box disabled-input'}
                         disabledTooltip={index >= limit && disabledTooltipTitle ? disabledTooltipTitle : ''}
                         labelTitle={index === 0 ? inputProps?.labelTitle : ''}
                         validate={index === 0 ? inputProps?.validate : (value: string) => true}
