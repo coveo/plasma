@@ -54,11 +54,8 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
 
     React.useEffect(() => {
         onChange?.(outputValue);
-    }, [onChange, outputValue]);
-
-    React.useEffect(() => {
         setOutputValue(outputValue);
-    }, [outputValue, setOutputValue]);
+    }, [outputValue]);
 
     const jumpValueFromHighToLowRange = React.useCallback(
         (handlePositions: number[]) => {

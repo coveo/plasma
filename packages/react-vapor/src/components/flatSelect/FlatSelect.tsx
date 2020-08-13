@@ -41,7 +41,7 @@ export const FlatSelect: React.FunctionComponent<IFlatSelectProps> = ({
     React.useEffect(() => {
         onRender?.();
         return onDestroy;
-    }, [onRender, onDestroy]);
+    }, []);
 
     const handleClick = (option: IFlatSelectOptionProps) => {
         onOptionClick?.(option);
