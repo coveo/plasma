@@ -24,7 +24,7 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Four', value: '4'},
     {displayValue: 'Five', value: '5'},
     {displayValue: 'Six', value: '6'},
-    {displayValue: 'Seven', value: '7'},
+    {displayValue: 'Seven', value: '7', selectedDisplayValue: 'James Bond 007'},
 ];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
