@@ -31,7 +31,10 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: React.
             e?.length > 1
                 ? `Some required fields are missing. Please complete them.`
                 : `Cannot save because of the following error: ${e}`,
-        warningMessage = (w) => `Can save but with warnings: ${w.join('\n')}`,
+        warningMessage = (w) =>
+            w?.length > 1
+                ? `Some fields have warnings. Please validate them before saving.`
+                : `Can save, but with the following warning: ${w}`,
         dirtyMessage = (d) => d.length === 0 && `Cannot save when there are no changes`,
         enabled,
         tooltip,
