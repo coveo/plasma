@@ -48,13 +48,13 @@ describe('Select', () => {
 
         describe('getItems', () => {
             it('should return an empty items list if it is not in the ownProps', () => {
-                expect(SelectSelector.getItems(defaultState, defaultOwnProps)).toEqual([]);
+                expect(SelectSelector.getItems(defaultState, {items: defaultOwnProps.items})).toEqual([]);
             });
 
             it('should return the filterText in the state if the id is in the state', () => {
                 const items: IItemBoxProps[] = [{value: 'a'}];
 
-                expect(SelectSelector.getItems(defaultState, {id, items})).toEqual(items);
+                expect(SelectSelector.getItems(defaultState, {items})).toEqual(items);
             });
         });
 

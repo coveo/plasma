@@ -10,13 +10,12 @@ import {
     toggleDisabledGroupedCheckbox,
     toggleGroupedCheckbox,
 } from '../GroupableCheckboxActions';
+import {groupableCheckboxesReducer, groupableCheckboxReducer} from '../GroupableCheckboxReducers';
 import {
     groupableCheckboxesInitialState,
-    groupableCheckboxesReducer,
     groupableCheckboxInitialState,
-    groupableCheckboxReducer,
     IGroupableCheckboxesState,
-} from '../GroupableCheckboxReducers';
+} from '../GroupableCheckboxConstants';
 
 describe('GroupableCheckbox', () => {
     describe('GroupableCheckboxReducers', () => {

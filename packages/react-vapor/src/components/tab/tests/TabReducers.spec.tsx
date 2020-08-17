@@ -2,7 +2,6 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ITabActionPayload, TabAction} from '../TabActions';
 import {
-    DEFAULT_GROUP_ID,
     ITabGroupState,
     ITabState,
     tabGroupInitialState,
@@ -14,6 +13,7 @@ import {
     tabsInitialState,
     tabsReducer,
 } from '../TabReducers';
+import {TabConstants} from '../TabConstants';
 
 describe('Tab', () => {
     describe('TabReducers', () => {
@@ -191,7 +191,7 @@ describe('Tab', () => {
             let tabsState: ITabGroupState[] = tabGroupsReducer(oldState, action);
 
             expect(tabsState.length).toBe(oldState.length + 1);
-            expect(tabsState.filter((tabGroup) => tabGroup.id === DEFAULT_GROUP_ID).length).toBe(1);
+            expect(tabsState.filter((tabGroup) => tabGroup.id === TabConstants.DefaultGroupId).length).toBe(1);
 
             oldState = tabsState;
             action.payload.groupId = 'some-group';
@@ -205,7 +205,7 @@ describe('Tab', () => {
         it('should return the old state without the ITabGroupState when the action is "TabAction.removeTab" and no tab remains', () => {
             let oldState: ITabGroupState[] = [
                 {
-                    id: DEFAULT_GROUP_ID,
+                    id: TabConstants.DefaultGroupId,
                     tabs: [
                         {
                             id: 'some-tab2',
@@ -234,14 +234,14 @@ describe('Tab', () => {
             tabsState = tabGroupsReducer(oldState, action);
 
             expect(tabsState.length).toBe(oldState.length - 1);
-            expect(tabsState.filter((tab) => tab.id === DEFAULT_GROUP_ID).length).toBe(0);
+            expect(tabsState.filter((tab) => tab.id === TabConstants.DefaultGroupId).length).toBe(0);
         });
 
         it('should select a tab when the action is "TabAction.selectTab"', () => {
             const GROUP_2_ID = 'group2';
             const oldState: ITabGroupState[] = [
                 {
-                    id: DEFAULT_GROUP_ID,
+                    id: TabConstants.DefaultGroupId,
                     tabs: [
                         {
                             id: 'some-tab2',
@@ -277,7 +277,7 @@ describe('Tab', () => {
             };
             const tabsState: ITabGroupState[] = tabGroupsReducer(oldState, action);
 
-            const defaultGroup = _.find(tabsState, (state: ITabGroupState) => state.id === DEFAULT_GROUP_ID);
+            const defaultGroup = _.find(tabsState, (state: ITabGroupState) => state.id === TabConstants.DefaultGroupId);
 
             expect(defaultGroup.tabs.length).toBe(2);
             expect(defaultGroup.tabs.filter((tab) => tab.id === action.payload.id)[0].isSelected).toBe(true);

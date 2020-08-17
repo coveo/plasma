@@ -3,7 +3,8 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {DateUtils} from '../../../utils/DateUtils';
-import {DatePicker, DEFAULT_DATE_PICKER_COLOR, IDatePickerProps} from '../DatePicker';
+import {DatePicker, IDatePickerProps} from '../DatePicker';
+import {DEFAULT_DATE_PICKER_COLOR} from '../DatePickerConstants';
 import {DateLimits} from '../DatePickerActions';
 
 describe('Date picker', () => {
