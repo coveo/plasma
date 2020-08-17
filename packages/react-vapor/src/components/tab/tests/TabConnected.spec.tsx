@@ -10,7 +10,8 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITabProps, Tab} from '../Tab';
 import {addTab, selectTab} from '../TabActions';
 import {TabConnected} from '../TabConnected';
-import {DEFAULT_GROUP_ID, ITabGroupState, ITabState} from '../TabReducers';
+import {ITabGroupState, ITabState} from '../TabReducers';
+import {TabConstants} from '../TabConstants';
 
 describe('Tab', () => {
     describe('<TabConnected />', () => {
@@ -82,7 +83,7 @@ describe('Tab', () => {
         it('should add the tab in the store on render', () => {
             const tabGroup = _.find(
                 store.getState().tabs,
-                (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
+                (currentTabGroup: ITabGroupState) => currentTabGroup.id === TabConstants.DefaultGroupId
             );
 
             expect(tabGroup.tabs.filter((currentTab: ITabState) => currentTab.id === id).length).toBe(1);
@@ -93,7 +94,7 @@ describe('Tab', () => {
             store.dispatch(addTab(tab2Id));
             let tabGroup = _.find(
                 store.getState().tabs,
-                (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
+                (currentTabGroup: ITabGroupState) => currentTabGroup.id === TabConstants.DefaultGroupId
             );
 
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id).length).toBe(1);
@@ -104,7 +105,7 @@ describe('Tab', () => {
             store.dispatch(selectTab(tab2Id));
             tabGroup = _.find(
                 store.getState().tabs,
-                (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
+                (currentTabGroup: ITabGroupState) => currentTabGroup.id === TabConstants.DefaultGroupId
             );
 
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id)[0].isSelected).toBe(false);
@@ -116,7 +117,7 @@ describe('Tab', () => {
             store.dispatch(addTab(tab2Id));
             let tabGroup = _.find(
                 store.getState().tabs,
-                (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
+                (currentTabGroup: ITabGroupState) => currentTabGroup.id === TabConstants.DefaultGroupId
             );
 
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id).length).toBe(1);
@@ -128,7 +129,7 @@ describe('Tab', () => {
             tab.simulate('click');
             tabGroup = _.find(
                 store.getState().tabs,
-                (currentTabGroup: ITabGroupState) => currentTabGroup.id === DEFAULT_GROUP_ID
+                (currentTabGroup: ITabGroupState) => currentTabGroup.id === TabConstants.DefaultGroupId
             );
 
             expect(tabGroup.tabs.filter((currentTab) => currentTab.id === id)[0].isSelected).toBe(true);
@@ -139,7 +140,8 @@ describe('Tab', () => {
             wrapper.unmount();
 
             expect(
-                store.getState().tabs.filter((currentTabGroup) => currentTabGroup.id === DEFAULT_GROUP_ID).length
+                store.getState().tabs.filter((currentTabGroup) => currentTabGroup.id === TabConstants.DefaultGroupId)
+                    .length
             ).toBe(0);
         });
     });

@@ -9,7 +9,7 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Checkbox} from '../Checkbox';
 import {ICheckboxState} from '../CheckboxReducers';
 import {GroupableCheckboxConnected, IGroupableCheckboxOwnProps} from '../GroupableCheckboxConnected';
-import {IGroupableCheckboxesState} from '../GroupableCheckboxReducers';
+import {IGroupableCheckboxesState} from '../GroupableCheckboxConstants';
 import {divTemplateClasses, divTemplateForMultipleCheckbox} from './GroupableCheckboxTestUtils';
 
 describe('GroupableCheckbox', () => {

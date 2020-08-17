@@ -1,4 +1,5 @@
-import {DEFAULT_GROUP_ID, ITabGroupState} from '../TabReducers';
+import {ITabGroupState} from '../TabReducers';
+import {TabConstants} from '../TabConstants';
 import {TabSelectors} from '../TabSelectors';
 
 describe('TabSelector', () => {
@@ -11,7 +12,7 @@ describe('TabSelector', () => {
                 {
                     tabs: [
                         {
-                            id: DEFAULT_GROUP_ID,
+                            id: TabConstants.DefaultGroupId,
                             tabs: [
                                 {id: 'coulili-zazou', isSelected: true},
                                 {id: 'gros-boudesse', isSelected: false},
@@ -29,7 +30,7 @@ describe('TabSelector', () => {
             const tabGroupState = {
                 tabs: [
                     {
-                        id: DEFAULT_GROUP_ID,
+                        id: TabConstants.DefaultGroupId,
                         tabs: [
                             {id: 'coulili-zazou', isSelected: true},
                             {id: 'gros-boudesse', isSelected: false},
@@ -54,7 +55,7 @@ describe('TabSelector', () => {
     describe('getTabSelected', () => {
         it('should return the selected tab', () => {
             const tabGroupState = {
-                id: DEFAULT_GROUP_ID,
+                id: TabConstants.DefaultGroupId,
                 tabs: [
                     {id: 'coulili-zazou', isSelected: true},
                     {id: 'gros-boudesse', isSelected: false},
@@ -69,7 +70,7 @@ describe('TabSelector', () => {
 
         it('should return false if no tabs are selected', () => {
             const tabGroupState = {
-                id: DEFAULT_GROUP_ID,
+                id: TabConstants.DefaultGroupId,
                 tabs: [
                     {id: 'coulili-zazou', isSelected: false},
                     {id: 'gros-boudesse', isSelected: false},
