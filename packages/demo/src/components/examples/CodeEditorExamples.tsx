@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CodeEditor, CodeMirrorModes, Loading} from 'react-vapor';
+import {CodeEditor, CodeMirrorModes} from 'react-vapor';
 
 export class CodeEditorExamples extends React.Component {
     render() {
