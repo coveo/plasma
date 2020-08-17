@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {CodeEditor, CodeMirrorModes} from 'react-vapor';
+import {CodeEditor, CodeMirrorModes, Loading} from 'react-vapor';
 
 export class CodeEditorExamples extends React.Component {
     render() {
@@ -18,6 +18,10 @@ export class CodeEditorExamples extends React.Component {
                 <div className="form-group">
                     <label className="form-control-label">Code Editor using codemirror with an action on change</label>
                     <CodeEditor value="" mode={CodeMirrorModes.Python} onChange={(code: string) => alert(code)} />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">Code Editor using the default value prop</label>
+                    <CodeEditor mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
                 </div>
             </div>
         );
