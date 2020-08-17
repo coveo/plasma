@@ -18,6 +18,7 @@ import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
 import * as styles from './styles/SingleSelect.scss';
+import {SelectConstants} from './SelectConstants';
 
 export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
     id: string;
@@ -65,7 +66,8 @@ export type ISelectProps = ISelectOwnProps &
 
 @ReduxConnect(makeMapStateToProps, mapDispatchToProps)
 export class SelectConnected extends React.PureComponent<ISelectProps> {
-    static DropGroup = 'select';
+    /* @deprecated use SelectConstants.DropGroupId instead */
+    static DropGroup = SelectConstants.DropGroupId;
     private dropdown = React.createRef<HTMLDivElement>();
 
     componentDidMount() {

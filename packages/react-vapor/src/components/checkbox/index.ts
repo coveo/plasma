@@ -3,6 +3,7 @@ export * from './CheckboxActions';
 export * from './CheckboxConnected';
 export * from './CheckboxReducers';
 export * from './CheckboxSelectors';
+export * from './GroupableCheckboxConstants';
 export * from './GroupableCheckboxActions';
 export * from './GroupableCheckboxConnected';
 export * from './GroupableCheckboxReducers';

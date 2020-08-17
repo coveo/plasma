@@ -3,6 +3,7 @@ import * as React from 'react';
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
 import {SetToNowButton} from './SetToNowButton';
+import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     onBlur: (date: Date, isUpperLimit: boolean) => void;
@@ -16,16 +17,6 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     isSelecting?: string;
     color?: string;
 }
-
-export const DatePickerColors = {
-    blue: 'blue',
-    green: 'green',
-    yellow: 'yellow',
-    red: 'red',
-    orange: 'orange',
-};
-
-export const DEFAULT_DATE_PICKER_COLOR: string = DatePickerColors.blue;
 
 export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelected: boolean}> {
     static defaultProps: Partial<IDatePickerProps> = {

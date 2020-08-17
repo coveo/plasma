@@ -3,8 +3,8 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../../ReactVapor';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ListBoxActions} from '../../listBox/ListBoxActions';
-import {SelectConnected} from '../../select/SelectConnected';
 import {DropReducerActions, IDropPayload} from './DropActions';
+import {SelectConstants} from '../../select/SelectConstants';
 
 export interface IDropState {
     [groupId: string]: {
@@ -18,11 +18,11 @@ export const dropInitialState: IDropState = {};
 export const dropReducer = (state: IDropState = dropInitialState, action: IReduxAction<IDropPayload>): IDropState => {
     switch (action.type) {
         case ListBoxActions.select:
-            const selectGroup = DropSelectors.getByGroup({drop: state}, {groupId: SelectConnected.DropGroup});
+            const selectGroup = DropSelectors.getByGroup({drop: state}, {groupId: SelectConstants.DropGroupId});
             if (selectGroup && action.payload.id === selectGroup.id) {
                 return {
                     ...state,
-                    [SelectConnected.DropGroup]: {
+                    [SelectConstants.DropGroupId]: {
                         ...selectGroup,
                         isOpen: false,
                     },

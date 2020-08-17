@@ -1,3 +1,4 @@
+export * from './PaginationConstants';
 export * from './PaginationPagesNumber';
 export * from './PaginationPerPage';
 export * from './PaginationSelect';

@@ -4,10 +4,11 @@ import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {ITabDispatchProps, ITabOwnProps, ITabProps, ITabStateProps, Tab} from './Tab';
 import {addTab, removeTab, selectTab} from './TabActions';
-import {DEFAULT_GROUP_ID, ITabGroupState} from './TabReducers';
+import {ITabGroupState} from './TabReducers';
+import {TabConstants} from './TabConstants';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITabOwnProps): ITabStateProps => {
-    const id = ownProps.groupId ? ownProps.groupId : DEFAULT_GROUP_ID;
+    const id = ownProps.groupId ? ownProps.groupId : TabConstants.DefaultGroupId;
     const tabGroup = _.find(state.tabs, (currentTabGroup: ITabGroupState) => currentTabGroup.id === id);
     return {
         isActive: tabGroup ? tabGroup.tabs.some((tab) => tab.id === ownProps.id && tab.isSelected) : false,

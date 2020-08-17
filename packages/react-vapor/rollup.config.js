@@ -1,3 +1,4 @@
+import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
 import resolve from '@rollup/plugin-node-resolve';
@@ -26,6 +27,7 @@ export default {
         'coveo-styleguide',
         'underscore.string',
     ],
+    onwarn,
     plugins: [
         inject({
             jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
@@ -74,4 +76,24 @@ function replacePlugin() {
         'process.env.NODE_ENV': JSON.stringify('production'),
         'process.env.REACT_VAPOR_VERSION': JSON.stringify(require('./package.json').version),
     });
+}
+
+function onwarn(warning, rollupWarn) {
+    const ignoredWarnings = [
+        {
+            ignoredCode: 'CIRCULAR_DEPENDENCY',
+            ignoredPath: 'node_modules',
+        },
+    ];
+
+    // only show warning when code and path don't match
+    // anything in above list of ignored warnings
+    if (
+        !ignoredWarnings.some(
+            ({ignoredCode, ignoredPath}) =>
+                warning.code === ignoredCode && warning.importer.includes(path.normalize(ignoredPath))
+        )
+    ) {
+        rollupWarn(warning);
+    }
 }

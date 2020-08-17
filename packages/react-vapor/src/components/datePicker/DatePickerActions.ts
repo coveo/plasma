@@ -1,5 +1,5 @@
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {DEFAULT_DATE_PICKER_COLOR} from './DatePicker';
+import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 import {DatePickerDateRange} from './DatePickerConstants';
 import {IRangeLimit} from './DatesSelection';
 

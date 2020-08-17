@@ -2,7 +2,7 @@ import * as _ from 'underscore';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ICheckboxState} from './CheckboxReducers';
 import {IGroupableCheckboxActionPayload} from './GroupableCheckboxActions';
-import {groupableCheckboxInitialState, IGroupableCheckboxesState} from './GroupableCheckboxReducers';
+import {groupableCheckboxInitialState, IGroupableCheckboxesState} from './GroupableCheckboxConstants';
 
 export const calculateTotalCheckboxesChecked = (checkboxes: ICheckboxState[]): number =>
     _.where(checkboxes, {checked: true}).length;
