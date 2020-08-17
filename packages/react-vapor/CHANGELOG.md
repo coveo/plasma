@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.1.2](https://github.com/coveo/react-vapor/compare/v7.1.1...v7.1.2) (2020-08-17)
+
+
+### Bug Fixes
+
+* **use-effect:** update use effect ([8c9ed79](https://github.com/coveo/react-vapor/commit/8c9ed79893c777b1614958b7749e16c4adee7a95))
+
+
+
+
+
 ## [7.1.1](https://github.com/coveo/react-vapor/compare/v7.1.0...v7.1.1) (2020-08-17)
 
 
