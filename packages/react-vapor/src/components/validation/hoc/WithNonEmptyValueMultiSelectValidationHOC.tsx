@@ -46,7 +46,7 @@ export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Compo
 
         React.useEffect(() => {
             setError(props.id, !hasValuesSelected ? nonEmptyValidationMessage : '');
-        }, [hasValuesSelected, props.id, nonEmptyValidationMessage, setError]);
+        }, [hasValuesSelected, props.id, nonEmptyValidationMessage]);
 
         return <Component {...(props as T)} />;
     };

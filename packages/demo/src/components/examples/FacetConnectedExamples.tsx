@@ -59,7 +59,7 @@ const mapDispatchToProps = (
 const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateConnectedExamplesProps> = ({onRender}) => {
     React.useEffect(() => {
         onRender();
-    }, [onRender]);
+    }, []);
 
     return (
         <Section level={2} title="Facets connected to store">

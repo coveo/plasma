@@ -121,7 +121,7 @@ const SliderDisconnected: React.FunctionComponent<SliderOwnProps & ReturnType<ty
 
     React.useEffect(() => {
         setHandlePosition([props.initialValue, props.initialValue]);
-    }, [props.initialValue, setHandlePosition]);
+    }, [props.initialValue]);
 
     const renderHandle = (handleProps: any) => {
         const customProps = {

@@ -46,7 +46,7 @@ export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.
     React.useEffect(() => {
         onRender?.();
         return () => onDestroy?.();
-    }, [onRender, onDestroy]);
+    }, []);
     const navProps = omit(props, ISubNavigationPropsToOmit);
 
     const handleItemClick = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
