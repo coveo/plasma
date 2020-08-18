@@ -18,7 +18,6 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
     render() {
         const tooltipContent = React.Children.count(this.props.children) > 0 ? this.props.children : this.props.label;
         const tooltipLabel = typeof this.props.label === 'string' ? this.props.label : '';
-
         return (
             <div className="selected-option" key={this.props.value}>
                 <Tooltip

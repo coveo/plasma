@@ -22,7 +22,7 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Disabled', value: 'disabled', disabled: true},
     {displayValue: 'Three', value: '3'},
     {displayValue: 'Four', value: '4'},
-    {displayValue: 'Five', value: '5'},
+    {displayValue: 'Five', value: '5', selectedTooltip: {title: 'HighFive!'}},
     {displayValue: 'Six', value: '6'},
     {displayValue: 'Seven', value: '7', selectedDisplayValue: 'James Bond 007'},
 ];

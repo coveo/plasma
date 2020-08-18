@@ -20,6 +20,7 @@ export interface IItemBoxProps {
     append?: IContentProps;
     onOptionClick?: (option?: IItemBoxProps, index?: number) => void;
     selectedDisplayValue?: string;
+    selectedTooltip?: ITooltipProps;
 }
 
 export class ItemBox extends React.Component<IItemBoxProps> {
