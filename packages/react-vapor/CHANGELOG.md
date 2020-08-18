@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.2.0](https://github.com/coveo/react-vapor/compare/v7.1.2...v7.2.0) (2020-08-18)
+
+
+### Features
+
+* **multi-select:** supporting the selectDisplayValue prop ([b1c5e7a](https://github.com/coveo/react-vapor/commit/b1c5e7aa4b777fe2dc48e6d6e340b5a25525bd81))
+
+
+
+
+
 ## [7.1.2](https://github.com/coveo/react-vapor/compare/v7.1.1...v7.1.2) (2020-08-17)
 
 
