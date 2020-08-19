@@ -41,14 +41,15 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
     dataLimit,
     reachedLimitPlaceholder,
     disabledTooltipTitle,
-}) => {
-    const limit = !!dataLimit ? dataLimit : Infinity;
-    return (
-        <MultilineBoxWithRemoveButton
-            id={id}
-            data={data}
-            renderBody={(allData: Array<IMultilineSingleBoxProps<string>>, parentProps: IMultilineParentProps) =>
-                allData.map((cData: IMultilineSingleBoxProps<string>, index) => (
+}) => (
+    <MultilineBoxWithRemoveButton
+        id={id}
+        data={data}
+        renderBody={(allData: Array<IMultilineSingleBoxProps<string>>, parentProps: IMultilineParentProps) =>
+            allData.map((cData: IMultilineSingleBoxProps<string>, index) => {
+                const isInputLimitReached = !!dataLimit && index >= dataLimit;
+                const isTooltipRequired = !_.isEmpty(cData.props) || !_.isEmpty(reachedLimitPlaceholder);
+                return (
                     <InputConnected
                         key={cData.id}
                         id={cData.id}
@@ -67,17 +68,17 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                                 parentProps.removeBox(cData.id);
                             }
                         }}
-                        placeholder={index >= limit ? reachedLimitPlaceholder : inputProps?.placeholder}
-                        disabled={index >= limit}
-                        classes={index >= limit && 'mt0 mb0 ml-1'}
-                        innerInputClasses={index >= limit && 'mod-no-border input-wider-text-box disabled-input'}
-                        disabledTooltip={index >= limit && disabledTooltipTitle ? disabledTooltipTitle : ''}
+                        placeholder={isInputLimitReached ? reachedLimitPlaceholder : inputProps?.placeholder}
+                        disabled={isInputLimitReached}
+                        classes={isInputLimitReached && 'mt0 mb0 ml-1'}
+                        innerInputClasses={isInputLimitReached && 'mod-no-border input-wider-text-box disabled-input'}
+                        disabledTooltip={isTooltipRequired && disabledTooltipTitle ? disabledTooltipTitle : ''}
                         labelTitle={index === 0 ? inputProps?.labelTitle : ''}
                         validate={index === 0 ? inputProps?.validate : (value: string) => true}
                     />
-                ))
-            }
-            defaultProps=""
-        />
-    );
-};
+                );
+            })
+        }
+        defaultProps=""
+    />
+);
