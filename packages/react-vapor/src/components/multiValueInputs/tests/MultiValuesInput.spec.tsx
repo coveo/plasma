@@ -214,4 +214,31 @@ describe('MultiValuesInput', () => {
         expect(lastInputConnectedValidation).toBe(true);
         expect(firstInputConnectedValidation).toBe(false);
     });
+
+    it('should NOT display a tooltip on the last input if the reachedLimitPlaceholder is not set', () => {
+        const emptyReachedLimitPlaceholderValues = ['🚕', ''];
+        const arrayOfMultilineSingleBoxReachedLimitPlaceholderProps: Array<IMultilineSingleBoxProps<string>> = [
+            {id: 'test1', isLast: false, props: '🚕'},
+            {id: 'test2', isLast: false, props: ''},
+        ];
+        const emptyReachedLimitPlaceholderProps = {
+            id: '🚗',
+            dataLimit: 1,
+            inputProps: testInputProps,
+            disabledTooltipTitle: "this input can't edited",
+        };
+        const component = shallowWithState(
+            <MultiValuesInput {...emptyReachedLimitPlaceholderProps} data={emptyReachedLimitPlaceholderValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxReachedLimitPlaceholderProps)}</div>,
+            {}
+        );
+
+        const lastInputConnectedValidation = body.find(InputConnected).last().props();
+
+        expect(lastInputConnectedValidation.disabledTooltip).toBe('');
+    });
 });

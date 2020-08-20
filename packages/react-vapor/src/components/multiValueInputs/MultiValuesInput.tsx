@@ -48,7 +48,8 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
         renderBody={(allData: Array<IMultilineSingleBoxProps<string>>, parentProps: IMultilineParentProps) =>
             allData.map((cData: IMultilineSingleBoxProps<string>, index) => {
                 const isInputLimitReached = !!dataLimit && index >= dataLimit;
-                const isTooltipRequired = !_.isEmpty(cData.props) || !_.isEmpty(reachedLimitPlaceholder);
+                const isTooltipRequired =
+                    isInputLimitReached && (!_.isEmpty(cData.props) || !_.isEmpty(reachedLimitPlaceholder));
                 return (
                     <InputConnected
                         key={cData.id}
