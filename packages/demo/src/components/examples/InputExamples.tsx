@@ -3,6 +3,7 @@ import {connect} from 'react-redux';
 import {
     AutocompleteConnected,
     Button,
+    IInputOwnProps,
     IItemBoxProps,
     IMultilineSingleBoxProps,
     Input,
@@ -177,12 +178,42 @@ const MultiValuesInputId = 'multivalue-id';
 const mapStateToProps = (state) => ({
     values: MultiValuesInputSelectors.getValues(state, MultiValuesInputId),
 });
-const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => (
-    <Section level={3} title="Multi-value inputs">
-        <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
-        <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
-    </Section>
-);
+const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => {
+    const validate = (value: any) => !!value;
+    const validateInputProps: Partial<IInputOwnProps> = {
+        validate,
+        labelProps: {invalidMessage: 'Do not leave me empty'},
+        validateOnChange: true,
+    };
+    const limitInputProps: Partial<IInputOwnProps> = {
+        placeholder: 'this is a placeholder',
+    };
+    return (
+        <>
+            <Section level={3} title="Multi-value inputs">
+                <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
+                <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
+            </Section>
+            <Section level={3} title="Multi-value inputs with a data limit">
+                <MultiValuesInput
+                    id="multi-data"
+                    data={['enabled', 'disabled']}
+                    dataLimit={1}
+                    inputProps={limitInputProps}
+                    reachedLimitPlaceholder={"this is a placeholder when you've reached the limit"}
+                    disabledTooltipTitle="this input can't edited"
+                />
+            </Section>
+            <Section level={3} title="Multi-value inputs with a validation">
+                <MultiValuesInput
+                    id="multi-validate"
+                    data={['Erase me to see the error']}
+                    inputProps={validateInputProps}
+                />
+            </Section>
+        </>
+    );
+};
 const MultilineInputExample = connect(mapStateToProps)(MultilineInputExampleDisconnected);
 
 const inputs: ISplitInput[] = [

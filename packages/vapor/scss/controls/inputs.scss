@@ -41,6 +41,13 @@ textarea {
         text-transform: none;
         transition: color 0.2s ease;
     }
+    &.disabled-input {
+        background-color: transparent;
+        &::placeholder {
+            color: $red;
+            font-size: 12px;
+        }
+    }
 }
 
 .input-group {
