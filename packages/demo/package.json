@@ -28,7 +28,7 @@
         "faker": "4.1.0",
         "jquery": "3.5.1",
         "lorem-ipsum": "2.0.3",
-        "moment": "2.26.0",
+        "moment": "2.27.0",
         "react": "16.13.1",
         "react-dom": "16.13.1",
         "react-markdown": "4.3.1",
