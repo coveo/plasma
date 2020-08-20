@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/coveo/react-vapor/compare/v7.2.0...v7.2.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade codemirror from 5.54.0 to 5.55.0 ([5099bca](https://github.com/coveo/react-vapor/commit/5099bcae800c7789d81cc55605fe9e621b43f210))
+* upgrade diff2html from 3.1.7 to 3.1.8 ([dee5f7e](https://github.com/coveo/react-vapor/commit/dee5f7e778c58920268f4deac282a9ba39663b10))
+* upgrade moment from 2.26.0 to 2.27.0 ([e927869](https://github.com/coveo/react-vapor/commit/e9278691c3e23d1e38d794cdc9d2974ec243e6fd))
+
+
+
+
+
 # [7.2.0](https://github.com/coveo/react-vapor/compare/v7.1.2...v7.2.0) (2020-08-18)
 
 

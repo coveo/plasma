@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.2.1](https://github.com/coveo/react-vapor/compare/v7.2.0...v7.2.1) (2020-08-20)
+
+
+### Bug Fixes
+
+* upgrade react-textarea-autosize from 8.1.1 to 8.2.0 ([869784f](https://github.com/coveo/react-vapor/commit/869784f66cbea527b61379863ac7c8a4e544f9c3))
+
+
+
+
+
 # [7.2.0](https://github.com/coveo/react-vapor/compare/v7.1.2...v7.2.0) (2020-08-18)
 
 
