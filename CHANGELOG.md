@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/coveo/react-vapor/compare/v7.2.1...v7.3.0) (2020-08-20)
+
+
+### Features
+
+* **multi-value-input:** only allows validation on the first input ([fa82350](https://github.com/coveo/react-vapor/commit/fa82350bca73a86af2b0c6e0540bd98935b8218c))
+* **multi-values-input:** add condition for the labelTitle props ([dc4fd88](https://github.com/coveo/react-vapor/commit/dc4fd88e502cafd1dd33966d7e6e4631362ea864))
+* **multi-values-input:** add dataLimit and placeholders optional props ([df982ed](https://github.com/coveo/react-vapor/commit/df982ed0a1923d0ebbbb2b410568bdf14f9997b2))
+
+
+
+
+
 ## [7.2.1](https://github.com/coveo/react-vapor/compare/v7.2.0...v7.2.1) (2020-08-20)
 
 

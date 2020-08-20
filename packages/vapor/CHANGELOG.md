@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.3.0](https://github.com/coveo/react-vapor/compare/v7.2.1...v7.3.0) (2020-08-20)
+
+
+### Features
+
+* **multi-values-input:** add dataLimit and placeholders optional props ([df982ed](https://github.com/coveo/react-vapor/commit/df982ed0a1923d0ebbbb2b410568bdf14f9997b2))
+
+
+
+
+
 # [7.0.0](https://github.com/coveo/react-vapor/compare/v6.11.2...v7.0.0) (2020-08-12)
 
 **Note:** Version bump only for package coveo-styleguide
