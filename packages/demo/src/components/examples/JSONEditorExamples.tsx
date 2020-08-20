@@ -21,17 +21,6 @@ export class JSONEditorExamples extends React.Component {
                     <label className="form-control-label">JSON Editor using codemirror with an action on change</label>
                     <JSONEditor value={JSONToString(fakeJSON)} onChange={(json: string) => alert(json)} />
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        JSON Editor without set codeMirror's lint option to false
-                    </label>
-                    <JSONEditor
-                        value={JSONToString(fakeJSON)}
-                        options={{
-                            lint: false,
-                        }}
-                    />
-                </div>
             </div>
         );
     }
