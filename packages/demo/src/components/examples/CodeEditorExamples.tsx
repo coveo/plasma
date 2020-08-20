@@ -19,6 +19,10 @@ export class CodeEditorExamples extends React.Component {
                     <label className="form-control-label">Code Editor using codemirror with an action on change</label>
                     <CodeEditor value="" mode={CodeMirrorModes.Python} onChange={(code: string) => alert(code)} />
                 </div>
+                <div className="form-group">
+                    <label className="form-control-label">Code Editor using the default value prop</label>
+                    <CodeEditor mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
+                </div>
             </div>
         );
     }

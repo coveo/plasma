@@ -31,6 +31,7 @@ export interface CodeEditorState {
 export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorState> {
     static defaultProps: Partial<ICodeEditorProps> = {
         className: 'mod-border',
+        value: '{}',
     };
 
     static defaultOptions: CodeMirror.EditorConfiguration = {
@@ -65,7 +66,6 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
             this.editor.getDoc().clearHistory();
         }
     }
-
     render() {
         return (
             <ReactCodeMirror.Controlled
