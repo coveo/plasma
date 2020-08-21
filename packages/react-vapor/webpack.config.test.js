@@ -1,6 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
-const isTravis = process.env.TRAVIS;
+const isJenkins = !!process.env.JENKINS_HOME;
 const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 const keysTransformer = require('ts-transformer-keys/transformer').default;
 
@@ -21,8 +21,8 @@ module.exports = function (options) {
                     use: {
                         loader: 'eslint-loader',
                         options: {
-                            fix: !isTravis,
-                            failOnError: !!isTravis,
+                            fix: !isJenkins,
+                            failOnError: !!isJenkins,
                         },
                     },
                 },
