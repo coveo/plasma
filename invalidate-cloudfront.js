@@ -1,14 +1,14 @@
 const exec = require('child_process').exec;
 const AWS = require('aws-sdk');
 
-const branchName = process.env.TRAVIS_PULL_REQUEST_BRANCH;
-const prNumber = process.env.TRAVIS_PULL_REQUEST;
+const branchName = process.env.BRANCH_NAME;
+const prNumber = process.env.JOB_NAME;
 
 const cloudfront = new AWS.CloudFront();
 const pathToInvalidate = prNumber !== 'false' ? `react-vapor/${branchName}/*` : 'react-vapor/*';
 console.log(pathToInvalidate);
 
-const shouldDoInvalidation = () => !!process.env.TRAVIS;
+const shouldDoInvalidation = () => !!process.env.JENKINS_HOME;
 const logInRed = (str) => console.log('\x1b[31m%s\x1b[0m', str);
 const logInGreen = (str) => console.log('\x1b[32m%s\x1b[0m', str);
 

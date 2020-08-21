@@ -6,9 +6,10 @@ const mime = require('mime-types');
 const fs = require('fs');
 const AWS = require('aws-sdk');
 
-const branchName = slugify(process.env.TRAVIS_PULL_REQUEST_BRANCH);
-const prNumber = process.env.TRAVIS_PULL_REQUEST;
-const userpassword = process.env.GITUSRPWD;
+const branchName = slugify(process.env.BRANCH_NAME);
+const prNumber = process.env.JOB_NAME;
+const userpassword = `${process.env.GIT_USR}:${process.env.GIT_PSW}`;
+
 const APIEndpointWithAuthentication = `https://${userpassword}@api.github.com/repos/coveo/react-vapor/pulls/${prNumber}/reviews`;
 const liveDemoMessage = `[Live demo available here](https://vapor.cloud.coveo.com/${branchName}/index.html).`;
 
