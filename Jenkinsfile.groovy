@@ -26,8 +26,8 @@ pipeline {
   agent { label "build && docker && linux" }
 
   environment {
-    GIT = credentials("github-coveobot")
     NPM_TOKEN = credentials("npmjs_com_token")
+    GIT = credentials("github-coveobot")
   }
 
   options {
