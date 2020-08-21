@@ -180,6 +180,8 @@ const mapStateToProps = (state) => ({
 });
 const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => {
     const validate = (value: any) => !!value;
+    const disabledInputInnerClasses = 'mod-no-border input-wider-text-box disabled-input';
+    const disabledInputClasse = 'mt0 mb0 ml-1';
     const validateInputProps: Partial<IInputOwnProps> = {
         validate,
         labelProps: {invalidMessage: 'Do not leave me empty'},
@@ -202,6 +204,8 @@ const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<type
                     inputProps={limitInputProps}
                     reachedLimitPlaceholder={"this is a placeholder when you've reached the limit"}
                     disabledTooltipTitle="this input can't edited"
+                    disabledInputInnerClasses={disabledInputInnerClasses}
+                    disabledInputClasses={disabledInputClasse}
                 />
             </Section>
             <Section level={3} title="Multi-value inputs with a validation">
