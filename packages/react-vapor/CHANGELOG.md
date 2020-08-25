@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.4.0](https://github.com/coveo/react-vapor/compare/v7.3.0...v7.4.0) (2020-08-25)
+
+
+### Features
+
+* **validation:** shorter save button tooltip with mutliple warnings ([#1654](https://github.com/coveo/react-vapor/issues/1654)) ([06152b8](https://github.com/coveo/react-vapor/commit/06152b829e137a51c47216d839357d7048fa4362))
+
+
+
+
+
 # [7.3.0](https://github.com/coveo/react-vapor/compare/v7.2.1...v7.3.0) (2020-08-20)
 
 
