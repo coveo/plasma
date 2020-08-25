@@ -109,7 +109,7 @@ export class ButtonExamples extends React.Component<any, any> {
                     <SaveButton
                         enabled
                         name="Save Button"
-                        validationIds={['inputId']}
+                        validationIds={[FIRST_INPUT_ID, SECOND_INPUT_ID]}
                         onClick={() => alert('Saving!')}
                     />
                 </Section>
@@ -200,35 +200,55 @@ export class ButtonExamples extends React.Component<any, any> {
 
 // stop-print
 
+const FIRST_INPUT_ID = 'firstInputId';
+const SECOND_INPUT_ID = 'secondInputId';
 const StatefulCheckboxesForSaveButtonDisconnect: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = ({
     setDirty,
     setWarning,
     setError,
 }) => (
     <LabeledInput label="Toggles to test the Save Button">
-        <CheckboxConnected id="saveCheckboxDirty" handleOnClick={(checked) => setDirty(!checked)} clearSides>
+        <CheckboxConnected
+            id="saveCheckboxDirty"
+            handleOnClick={(checked) => setDirty(FIRST_INPUT_ID, !checked)}
+            clearSides
+        >
             <Label>Click on me to set the component as dirty</Label>
         </CheckboxConnected>
         <CheckboxConnected
             id="saveCheckboxWarning"
-            handleOnClick={(checked) => setWarning(!checked ? 'WARNING' : '')}
+            handleOnClick={(checked) => setWarning(FIRST_INPUT_ID, !checked ? 'WARNING' : '')}
             clearSides
         >
             <Label>Click on me to set a warning</Label>
         </CheckboxConnected>
         <CheckboxConnected
+            id="saveCheckboxSecondWarning"
+            handleOnClick={(checked) => setWarning(SECOND_INPUT_ID, !checked ? 'SECOND WARNING' : '')}
+            clearSides
+        >
+            <Label>Click on me to set a second warning (activate both to change the message)</Label>
+        </CheckboxConnected>
+        <CheckboxConnected
             id="saveCheckboxError"
-            handleOnClick={(checked) => setError(!checked ? 'ERROR' : '')}
+            handleOnClick={(checked) => setError(FIRST_INPUT_ID, !checked ? 'ERROR' : '')}
             clearSides
         >
             <Label>Click on me to set an error</Label>
+        </CheckboxConnected>
+        <CheckboxConnected
+            id="saveCheckboxSecondError"
+            handleOnClick={(checked) => setError(SECOND_INPUT_ID, !checked ? 'SECOND ERROR' : '')}
+            clearSides
+        >
+            <Label>Click on me to set a second error (activate both to change the message)</Label>
         </CheckboxConnected>
     </LabeledInput>
 );
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
-    setDirty: (value: boolean) => dispatch(ValidationActions.setDirty('inputId', value)),
-    setWarning: (value: string) => dispatch(ValidationActions.setWarning('inputId', value)),
-    setError: (value: string) => dispatch(ValidationActions.setError('inputId', value)),
+    setDirty: (id: string, value: boolean) => dispatch(ValidationActions.setDirty(id, value)),
+    setWarning: (id: string, value: string) => dispatch(ValidationActions.setWarning(id, value)),
+    setError: (id: string, value: string) => dispatch(ValidationActions.setError(id, value)),
 });
 const DirtyCheckboxesForSaveButton = connect(null, mapDispatchToProps)(StatefulCheckboxesForSaveButtonDisconnect);
