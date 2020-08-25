@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.4.1](https://github.com/coveo/react-vapor/compare/v7.4.0...v7.4.1) (2020-08-25)
+
+
+### Bug Fixes
+
+* **hook:** restore hook dependencies for NonEmptyValidationHOC ([08fa617](https://github.com/coveo/react-vapor/commit/08fa617fec4eb760d2d7e959ae0f47ecad2d5c4a))
+* **required validation:** don't clear errors initially ([9a7e66f](https://github.com/coveo/react-vapor/commit/9a7e66fdd4df0103ed23d8ac1f225a54ed13ab11))
+
+
+
+
+
 # [7.4.0](https://github.com/coveo/react-vapor/compare/v7.3.0...v7.4.0) (2020-08-25)
 
 
