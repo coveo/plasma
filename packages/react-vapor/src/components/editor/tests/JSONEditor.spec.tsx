@@ -67,4 +67,10 @@ describe('<JSONEditor />', () => {
     it('should not throw on change if the onChange prop is undefined', () => {
         expect(() => shallowComponent({onChange: undefined})).not.toThrow();
     });
+
+    it('should set the lint option to false by default', () => {
+        shallowComponent();
+
+        expect(component.find(CodeEditor).props().options.lint).toBe(false);
+    });
 });
