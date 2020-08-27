@@ -9,6 +9,7 @@ import {CheckboxSelectors} from './CheckboxSelectors';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IInputOwnProps): IInputStateProps => ({
     checked: CheckboxSelectors.getIsSelected(state, {id: ownProps.id}),
+    disabled: CheckboxSelectors.getIsDisabled(state, {id: ownProps.id}),
 });
 
 const mapDispatchToProps = (

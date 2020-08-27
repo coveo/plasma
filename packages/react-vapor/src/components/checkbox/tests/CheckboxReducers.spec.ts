@@ -161,6 +161,7 @@ describe('Checkbox', () => {
                 payload: {
                     id: 'some-checkbox1',
                     checked: false,
+                    disabled: true,
                 },
             };
             const action2: IReduxAction<ICheckboxActionPayload> = {
@@ -176,6 +177,7 @@ describe('Checkbox', () => {
             expect(checkboxesState.length).toBe(oldState.length);
             expect(checkboxesState2.length).toBe(oldState.length);
             expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].checked).toBe(false);
+            expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].disabled).toBe(true);
             expect(checkboxesState2.filter((checkbox) => checkbox.id === action.payload.id)[0].checked).toBe(true);
         });
     });

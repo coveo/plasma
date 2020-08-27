@@ -1,4 +1,5 @@
 import * as _ from 'underscore';
+
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {CheckboxActions, ICheckboxActionPayload} from './CheckboxActions';
 
@@ -28,6 +29,7 @@ export const checkboxReducer = (
                 : {
                       ...state,
                       checked: _.isUndefined(action.payload.checked) ? !state.checked : action.payload.checked,
+                      disabled: _.isUndefined(action.payload.disabled) ? state.disabled : action.payload.disabled,
                   };
         default:
             return state;
