@@ -10,6 +10,7 @@ export const CheckboxActions = {
     toggle: 'TOGGLE_CHECKBOX',
     add: 'ADD_CHECKBOX',
     remove: 'REMOVE_CHECKBOX',
+    disable: 'DISABLE_CHECKBOX',
 };
 
 export const toggleCheckbox = (
@@ -45,8 +46,17 @@ export const removeCheckbox = (id: string): IReduxAction<ICheckboxActionPayload>
     },
 });
 
+export const disableCheckbox = (id: string, disabled: boolean): IReduxAction<ICheckboxActionPayload> => ({
+    type: CheckboxActions.disable,
+    payload: {
+        id,
+        disabled,
+    },
+});
+
 export const CheckboxReduxActions = {
     toggleCheckbox,
     addCheckbox,
     removeCheckbox,
+    disableCheckbox,
 };

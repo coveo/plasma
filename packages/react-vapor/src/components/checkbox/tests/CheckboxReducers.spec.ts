@@ -137,6 +137,39 @@ describe('Checkbox', () => {
             expect(checkboxesState.filter((checkbox) => checkbox.id === 'some-checkbox3')[0].checked).toBe(true);
         });
 
+        it('should disable a checkbox when the action is "CheckboxAction.disable"', () => {
+            const oldState: ICheckboxState[] = [
+                {
+                    id: 'some-checkbox1',
+                    checked: false,
+                    disabled: false,
+                },
+                {
+                    id: 'some-checkbox2',
+                    checked: false,
+                    disabled: false,
+                },
+                {
+                    id: 'some-checkbox3',
+                    checked: true,
+                    disabled: true,
+                },
+            ];
+
+            const action: IReduxAction<ICheckboxActionPayload> = {
+                type: CheckboxActions.disable,
+                payload: {
+                    id: 'some-checkbox1',
+                },
+            };
+            const checkboxesState: ICheckboxState[] = checkboxesReducer(oldState, action);
+
+            expect(checkboxesState.length).toBe(oldState.length);
+            expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].disabled).toBe(true);
+            expect(checkboxesState.filter((checkbox) => checkbox.id === 'some-checkbox2')[0].disabled).toBe(false);
+            expect(checkboxesState.filter((checkbox) => checkbox.id === 'some-checkbox3')[0].disabled).toBe(true);
+        });
+
         it('should toggle a checkbox to the checked state passed in the payload if there is one when the action is "CheckboxAction.toggle"', () => {
             const oldState: ICheckboxState[] = [
                 {
@@ -161,7 +194,6 @@ describe('Checkbox', () => {
                 payload: {
                     id: 'some-checkbox1',
                     checked: false,
-                    disabled: true,
                 },
             };
             const action2: IReduxAction<ICheckboxActionPayload> = {
@@ -177,8 +209,49 @@ describe('Checkbox', () => {
             expect(checkboxesState.length).toBe(oldState.length);
             expect(checkboxesState2.length).toBe(oldState.length);
             expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].checked).toBe(false);
-            expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].disabled).toBe(true);
             expect(checkboxesState2.filter((checkbox) => checkbox.id === action.payload.id)[0].checked).toBe(true);
+        });
+
+        it('should disable a checkbox to the disabled state passed in the payload if there is one when the action is "CheckboxAction.disable"', () => {
+            const oldState: ICheckboxState[] = [
+                {
+                    id: 'some-checkbox1',
+                    checked: false,
+                    disabled: false,
+                },
+                {
+                    id: 'some-checkbox2',
+                    checked: false,
+                    disabled: false,
+                },
+                {
+                    id: 'some-checkbox3',
+                    checked: true,
+                    disabled: false,
+                },
+            ];
+
+            const action: IReduxAction<ICheckboxActionPayload> = {
+                type: CheckboxActions.disable,
+                payload: {
+                    id: 'some-checkbox1',
+                    disabled: false,
+                },
+            };
+            const action2: IReduxAction<ICheckboxActionPayload> = {
+                type: CheckboxActions.disable,
+                payload: {
+                    id: 'some-checkbox1',
+                    disabled: true,
+                },
+            };
+            const checkboxesState: ICheckboxState[] = checkboxesReducer(oldState, action);
+            const checkboxesState2: ICheckboxState[] = checkboxesReducer(oldState, action2);
+
+            expect(checkboxesState.length).toBe(oldState.length);
+            expect(checkboxesState2.length).toBe(oldState.length);
+            expect(checkboxesState.filter((checkbox) => checkbox.id === action.payload.id)[0].disabled).toBe(false);
+            expect(checkboxesState2.filter((checkbox) => checkbox.id === action.payload.id)[0].disabled).toBe(true);
         });
     });
 });

@@ -29,7 +29,13 @@ export const checkboxReducer = (
                 : {
                       ...state,
                       checked: _.isUndefined(action.payload.checked) ? !state.checked : action.payload.checked,
-                      disabled: _.isUndefined(action.payload.disabled) ? state.disabled : action.payload.disabled,
+                  };
+        case CheckboxActions.disable:
+            return state.id !== action.payload.id
+                ? state
+                : {
+                      ...state,
+                      disabled: _.isUndefined(action.payload.disabled) ? !state.disabled : action.payload.disabled,
                   };
         default:
             return state;
@@ -46,6 +52,8 @@ export const checkboxesReducer = (
         case CheckboxActions.remove:
             return _.reject(state, (checkbox: ICheckboxState) => action.payload.id === checkbox.id);
         case CheckboxActions.toggle:
+            return state.map((checkbox: ICheckboxState) => checkboxReducer(checkbox, action));
+        case CheckboxActions.disable:
             return state.map((checkbox: ICheckboxState) => checkboxReducer(checkbox, action));
         default:
             return state;
