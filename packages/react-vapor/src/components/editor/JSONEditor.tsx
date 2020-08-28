@@ -73,6 +73,12 @@ export const JSONEditor: React.FunctionComponent<JSONEditorProps & JSONEditorSta
     );
 };
 
+JSONEditor.defaultProps = {
+    options: {
+        lint: false,
+    },
+};
+
 const ValidationDetails: React.FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
     <div className="input-validation-error-details">
         <Svg className="input-validation-error-icon" svgName="message-alert" svgClass="icon fill-white" />
