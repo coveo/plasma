@@ -9,13 +9,13 @@
         "aws-sdk": "2.576.0",
         "axios": "0.19.0",
         "cz-conventional-changelog": "3.0.2",
-        "eslint": "^7.5.0",
+        "eslint": "7.5.0",
         "husky": "4.2.5",
         "lerna": "3.18.4",
         "mime-types": "2.1.26",
         "prettier": "2.0.5",
         "stylelint": "13.6.1",
-        "tsjs": "3.0.x",
+        "tsjs": "^3.0.2",
         "underscore": "1.9.2",
         "walkdir": "0.4.1"
     },
@@ -38,7 +38,8 @@
         "not dead"
     ],
     "scripts": {
-        "setup": "npx lerna bootstrap --no-ci",
+        "gen-package-locks": "npm i --package-lock-only && npx lerna bootstrap -- --package-lock-only",
+        "setup": "npx lerna bootstrap",
         "start": "npm run build && lerna run start --parallel",
         "test": "lerna run test --parallel",
         "build": "lerna run build --stream",
