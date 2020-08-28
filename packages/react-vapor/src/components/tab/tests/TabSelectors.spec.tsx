@@ -1,5 +1,5 @@
-import {ITabGroupState} from '../TabReducers';
 import {TabConstants} from '../TabConstants';
+import {ITabGroupState, ITabState} from '../TabReducers';
 import {TabSelectors} from '../TabSelectors';
 
 describe('TabSelector', () => {
@@ -78,6 +78,45 @@ describe('TabSelector', () => {
             };
 
             expect(TabSelectors.getSelectedTab.resultFunc(tabGroupState)).toBe(undefined);
+        });
+    });
+
+    describe('getTab', () => {
+        it('should return the tab with the corresponding id', () => {
+            const tabGroupState = {
+                tabs: [
+                    {
+                        id: TabConstants.DefaultGroupId,
+                        tabs: [
+                            {id: 'gabriel quinoa', isSelected: true},
+                            {id: 'el bourde', isSelected: false},
+                        ],
+                    },
+                ],
+            };
+
+            const tab: ITabState = TabSelectors.getTab(tabGroupState, {id: 'gabriel quinoa'});
+            const expectedTabGroup = tabGroupState.tabs[0].tabs[0];
+
+            expect(tab).toEqual(expectedTabGroup);
+        });
+
+        it('should return undefined if no tabs have the provided id', () => {
+            const tabGroupState = {
+                tabs: [
+                    {
+                        id: TabConstants.DefaultGroupId,
+                        tabs: [
+                            {id: 'gabriel quinoa', isSelected: true},
+                            {id: 'el bourde', isSelected: false},
+                        ],
+                    },
+                ],
+            };
+
+            const tab: ITabState = TabSelectors.getTab(tabGroupState, {id: 'olive tailleur'});
+
+            expect(tab).toEqual(undefined);
         });
     });
 });
