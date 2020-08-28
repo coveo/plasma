@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.6.0](https://github.com/coveo/react-vapor/compare/v7.5.0...v7.6.0) (2020-08-28)
+
+
+### Features
+
+* **tabselectors.ts:** +getTab selector + uts ([6b2ae92](https://github.com/coveo/react-vapor/commit/6b2ae92cd876333b6d443ed0e134b5b26dbaddd1))
+
+
+
+
+
 # [7.5.0](https://github.com/coveo/react-vapor/compare/v7.4.2...v7.5.0) (2020-08-28)
 
 
