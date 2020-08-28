@@ -63,7 +63,6 @@ pipeline {
           def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
           env.PATH = "${nodeHome}/bin:${env.PATH}"
           sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
-          sh "npm config set package-lock false"
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"

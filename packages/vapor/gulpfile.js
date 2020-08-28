@@ -65,7 +65,7 @@ gulp.task('lib', () => {
 gulp.task('clean', (done) => {
     const filesToDelete = ['./dist', './_gh_pages', './.sass-cache', './tmp'];
     if (cleanAll) {
-        filesToDelete.concat(['**/*.orig', '**/*.rej', 'node_modules', 'package-lock.json']);
+        filesToDelete.concat(['**/*.orig', '**/*.rej', 'node_modules']);
     }
     return del(filesToDelete).then((deletedFiles) => {
         log(colors.green('Files deleted:', deletedFiles.join(', ')));
