@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.5.0](https://github.com/coveo/react-vapor/compare/v7.4.2...v7.5.0) (2020-08-28)
+
+
+### Bug Fixes
+
+* **json-editor:** set the default prop options lint=false ([7ebc825](https://github.com/coveo/react-vapor/commit/7ebc825b48c4876e5dc080c396534287deee8e60))
+
+
+### Features
+
+* **multi-values-input:** add disabled input classes props ([adb2b0b](https://github.com/coveo/react-vapor/commit/adb2b0b5377e4585b00d329ec5cec1c550921384))
+
+
+
+
+
 ## [7.4.2](https://github.com/coveo/react-vapor/compare/v7.4.1...v7.4.2) (2020-08-28)
 
 
