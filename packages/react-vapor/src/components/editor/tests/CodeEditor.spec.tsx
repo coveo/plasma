@@ -52,17 +52,15 @@ describe('CodeEditor', () => {
             expect(readOnlyProp).toBe(true);
         });
 
-        it('should set readOnly to `nocursor` when receiving true from props, else keep props', () => {
+        it('should set the code-editor-no-cursor className when in readOnly to hide the cursor', () => {
             mountWithProps({readOnly: true});
 
-            expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(
-                'nocursor'
-            );
+            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('code-editor-no-cursor');
 
             codeEditor.setProps({readOnly: false});
 
-            expect((codeEditorInstance as any).removeCursorWhenEditorIsReadOnly(codeEditor.props().readOnly)).toBe(
-                codeEditor.props().readOnly
+            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).not.toContain(
+                'code-editor-no-cursor'
             );
         });
 
@@ -115,7 +113,7 @@ describe('CodeEditor', () => {
         });
 
         it('should have a border by default', () => {
-            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toBe('mod-border');
+            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('mod-border');
         });
     });
 });

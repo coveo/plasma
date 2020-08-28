@@ -10,6 +10,7 @@ import * as CodeMirror from 'codemirror';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 
+import classNames from 'classnames';
 import {CodeMirrorGutters} from './EditorConstants';
 
 export interface ICodeEditorProps {
@@ -81,17 +82,13 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                 onChange={(editor, data, value: string) => this.props.onChange?.(value)}
                 options={{
                     ...CodeEditor.defaultOptions,
-                    readOnly: this.removeCursorWhenEditorIsReadOnly(),
+                    readOnly: this.props.readOnly,
                     mode: this.props.mode,
                     ...this.props.options,
                 }}
-                className={this.props.className}
+                className={classNames(this.props.className, {'code-editor-no-cursor': this.props.readOnly})}
             />
         );
-    }
-
-    private removeCursorWhenEditorIsReadOnly() {
-        return this.props.readOnly ? 'nocursor' : this.props.readOnly;
     }
 
     private addExtraKeywords() {
