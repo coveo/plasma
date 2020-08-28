@@ -1,11 +1,13 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import classNames from 'classnames';
 import {IButtonProps} from '../button/Button';
 import {IInputOwnProps} from '../input/Input';
 import {InputConnected} from '../input/InputConnected';
 import {multilineBoxWithRemoveButton} from '../multilineBox/hoc/MultilineBoxWithRemoveButton';
 import {IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../multilineBox/MultilineBox';
+import {IClassName} from '../../utils';
 
 const MultilineBoxWithRemoveButton = _.compose(
     multilineBoxWithRemoveButton({
@@ -32,6 +34,8 @@ export interface MultiValuesInputProps {
     dataLimit?: number;
     reachedLimitPlaceholder?: string;
     disabledTooltipTitle?: string;
+    disabledInputInnerClasses?: IClassName;
+    disabledInputClasses?: IClassName;
 }
 
 export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = ({
@@ -41,6 +45,8 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
     dataLimit,
     reachedLimitPlaceholder,
     disabledTooltipTitle,
+    disabledInputInnerClasses,
+    disabledInputClasses,
 }) => (
     <MultilineBoxWithRemoveButton
         id={id}
@@ -50,6 +56,12 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                 const isInputLimitReached = !!dataLimit && index >= dataLimit;
                 const isTooltipRequired =
                     isInputLimitReached && (!_.isEmpty(cData.props) || !_.isEmpty(reachedLimitPlaceholder));
+                const innerInputClasses = isInputLimitReached
+                    ? classNames(inputProps?.innerInputClasses, disabledInputInnerClasses)
+                    : inputProps?.innerInputClasses;
+                const classes = isInputLimitReached
+                    ? classNames(inputProps?.classes, disabledInputClasses)
+                    : inputProps?.classes;
                 return (
                     <InputConnected
                         key={cData.id}
@@ -71,8 +83,8 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                         }}
                         placeholder={isInputLimitReached ? reachedLimitPlaceholder : inputProps?.placeholder}
                         disabled={isInputLimitReached}
-                        classes={isInputLimitReached && 'mt0 mb0 ml-1'}
-                        innerInputClasses={isInputLimitReached && 'mod-no-border input-wider-text-box disabled-input'}
+                        classes={classes}
+                        innerInputClasses={innerInputClasses}
                         disabledTooltip={isTooltipRequired && disabledTooltipTitle ? disabledTooltipTitle : ''}
                         labelTitle={index === 0 ? inputProps?.labelTitle : ''}
                         validate={index === 0 ? inputProps?.validate : (value: string) => true}

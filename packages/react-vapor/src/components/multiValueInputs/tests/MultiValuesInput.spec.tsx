@@ -26,6 +26,8 @@ describe('MultiValuesInput', () => {
         labelTitle: 'a title',
         validate: (value: string) => !!value,
         validateOnMount: true,
+        classes: 'class',
+        innerInputClasses: 'inner',
     };
 
     const defaultProps = {
@@ -34,6 +36,8 @@ describe('MultiValuesInput', () => {
         inputProps: testInputProps,
         reachedLimitPlaceholder: 'a reached placeholder',
         disabledTooltipTitle: "this input can't edited",
+        disabledInputInnerClasses: 'disabledInner',
+        disabledInputClasses: 'disabledClass',
     };
 
     it('should render and unmount without throwing errors', () => {
@@ -94,6 +98,101 @@ describe('MultiValuesInput', () => {
         const lastInputConnectedProps = body.find(InputConnected).last().props();
 
         expect(lastInputConnectedProps.disabled).toBe(true);
+    });
+
+    it('should include the disabledInputInnerClasses if the inputs indexes are below the dataLimit', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const lastInputConnectedProps = body.find(InputConnected).first().props();
+
+        expect(lastInputConnectedProps.innerInputClasses).not.toContain('disabledInner');
+    });
+
+    it('should include the classes set in the classes prop in all inputs', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const firstInputConnectedProps = body.find(InputConnected).first().props();
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
+
+        expect(firstInputConnectedProps.classes).toContain('class');
+        expect(lastInputConnectedProps.classes).toContain('class');
+    });
+
+    it('should include the innerInputClasses set in the innerInputClasses prop in all inputs', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+
+        const firstInputConnectedProps = body.find(InputConnected).first().props();
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
+
+        expect(firstInputConnectedProps.innerInputClasses).toContain('inner');
+        expect(lastInputConnectedProps.innerInputClasses).toContain('inner');
+    });
+
+    it('should include the disabledInputInnerClasses if the inputs indexes are above or equal the dataLimit', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
+
+        expect(lastInputConnectedProps.innerInputClasses).toContain('disabledInner');
+    });
+
+    it('should include the disabledInputClasses if the inputs indexes are below the dataLimit', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const lastInputConnectedProps = body.find(InputConnected).first().props();
+
+        expect(lastInputConnectedProps.classes).not.toContain('disabledClass');
+    });
+
+    it('should include the disabledInputInnerClasses if the inputs indexes are above or equal the dataLimit', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const lastInputConnectedProps = body.find(InputConnected).last().props();
+
+        expect(lastInputConnectedProps.classes).toContain('disabledClass');
     });
 
     it("should NOT disable all the inputs in which it's index are below the dataLimit", () => {
