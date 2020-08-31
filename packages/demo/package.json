@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "7.6.0",
+    "version": "7.6.1",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
