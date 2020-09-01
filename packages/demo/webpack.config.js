@@ -2,7 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const keysTransformer = require('ts-transformer-keys/transformer').default;
-const isTravis = !!process.env.TRAVIS;
+const isJenkins = !!process.env.JENKINS_HOME;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 
 /**
@@ -12,13 +12,13 @@ module.exports = {
     entry: {
         main: './src/Index.tsx',
     },
-    mode: isTravis ? 'production' : 'development',
+    mode: isJenkins ? 'production' : 'development',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: '[name].bundle.js',
-        chunkFilename: 'assets/[name].bundle.js',
+        filename: '[name].[hash].js',
+        chunkFilename: 'assets/[name].[hash].js',
     },
-    devtool: isTravis ? 'source-map' : 'eval-source-map',
+    devtool: isJenkins ? 'source-map' : 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },

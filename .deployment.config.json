@@ -1,0 +1,66 @@
+{
+  "product": "react-vapor",
+  "team_name": "admin-ui",
+  "general": {
+    "environments_order": ["qa", "prd"],
+    "notifications": {
+      "slack_channels": ["admin-ui-builds"]
+    },
+    "gatekeeper": {
+      "deploy_next_if_passes": true
+    },
+    "team_jenkins": "jsadminbuilds"
+  },
+  "veracode": {
+    "sandbox_name": "react-vapor",
+    "prescan_timeout_minutes": 240,
+    "scan_timeout_minutes": 480,
+    "source": "veracode",
+    "scan_include_patterns": "*"
+  },
+  "observatory": {
+    "no_endpoint": true
+  },
+  "snyk": {
+    "org": "coveo-adminui",
+    "no_container_images": true,
+    "configurations": [
+      {
+        "project_name": "react-vapor"
+      }
+    ]
+  },
+  "ordered_phases": [
+    {
+      "id": "deploy-minified-files",
+      "s3": {
+        "bucket": "coveo-nqa-jsadmin",
+        "directory": "react-vapor",
+        "parameters": {
+          "include": "*.min.*",
+          "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
+          "content-encoding": "gzip"
+        },
+        "source": "packages/demo/dist",
+        "prd": {
+          "bucket": "coveo-nprd-jsadmin"
+        }
+      }
+    },
+    {
+      "id": "deploy-non-minified-files",
+      "s3": {
+        "bucket": "coveo-nqa-jsadmin",
+        "directory": "react-vapor",
+        "parameters": {
+          "exclude": "*.min.*",
+          "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
+        },
+        "source": "packages/demo/dist",
+        "prd": {
+          "bucket": "coveo-nprd-jsadmin"
+        }
+      }
+    }
+  ]
+}

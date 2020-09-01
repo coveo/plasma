@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const isTravis = process.env.TRAVIS;
+const isJenkins = !!process.env.JENKINS_HOME;
 const UnminifiedWebpackPlugin = require('unminified-webpack-plugin');
 const keysTransformer = require('ts-transformer-keys/transformer').default;
 
@@ -23,11 +23,11 @@ const config = {
             'd3',
         ],
     },
-    mode: isTravis ? 'production' : 'development',
+    mode: isJenkins ? 'production' : 'development',
     devtool: 'source-map',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: isTravis ? '[name].min.js' : '[name].js',
+        filename: isJenkins ? '[name].min.js' : '[name].js',
         library: ['ReactVapor'],
         libraryTarget: 'umd',
     },
@@ -43,8 +43,8 @@ const config = {
                 use: {
                     loader: 'eslint-loader',
                     options: {
-                        fix: !isTravis,
-                        failOnError: !!isTravis,
+                        fix: !isJenkins,
+                        failOnError: !!isJenkins,
                     },
                 },
             },
