@@ -137,7 +137,6 @@ pipeline {
       when {
         allOf {
           expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
-          expression { params.SKIP_PUBLISH == false }
         }
       }
       steps {
@@ -172,7 +171,6 @@ pipeline {
       when {
         allOf {
           expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
-          expression { params.SKIP_PUBLISH == false }
           expression { COMMITS_BEHIND == 0 }
         }
       }
