@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.3](https://github.com/coveo/react-vapor/compare/v7.6.2...v7.6.3) (2020-09-02)
+
+
+### Bug Fixes
+
+* **multi-values-input:** set the placeholder to undefined when i = limit ([dc6fdc5](https://github.com/coveo/react-vapor/commit/dc6fdc5fbd5cd9f0b35e0c6d84dc7ac9444e0806))
+
+
+
+
+
 ## [7.6.2](https://github.com/coveo/react-vapor/compare/v7.6.1...v7.6.2) (2020-09-01)
 
 **Note:** Version bump only for package react-vapor
