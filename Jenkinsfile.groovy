@@ -179,6 +179,16 @@ pipeline {
         script {
           setLastStageName();
 
+          runSnyk(
+            org: "coveo-admin-ui",
+            projectName: "react-vapor",
+            directory: ".",
+            archiveArtifacts: true,
+            scanDevDependencies: false,
+            dockerVariableMap: ["NODE_OPTIONS": env.NODE_OPTIONS],
+            additionalParameters: "--all-projects --prune-repeated-subdependencies"
+          )
+
           // Prepare veracode
           sh "mkdir -p veracode"
           sh "mkdir -p veracode/demo"
