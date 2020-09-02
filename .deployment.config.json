@@ -12,7 +12,7 @@
     "team_jenkins": "jsadminbuilds"
   },
   "veracode": {
-    "sandbox_name": "react-vapor",
+    "sandbox_name": "AdminUI - ReactVapor",
     "prescan_timeout_minutes": 240,
     "scan_timeout_minutes": 480,
     "source": "veracode",
