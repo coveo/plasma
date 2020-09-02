@@ -55,9 +55,19 @@
             color: $dark-grey;
             border-bottom-color: transparent;
 
-            @include placeholder($dark-grey);
+            &:not(.disabled-input) {
+                @include placeholder($dark-grey);
+                -webkit-text-fill-color: $dark-grey;
+            }
 
-            -webkit-text-fill-color: $dark-grey;
+            &.disabled-input {
+                margin-left: 1 * $spacing;
+                background-color: transparent;
+                &::placeholder {
+                    color: $red;
+                    font-size: 12px;
+                }
+            }
 
             & + label {
                 color: $lynch;
