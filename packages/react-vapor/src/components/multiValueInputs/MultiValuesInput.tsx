@@ -54,8 +54,10 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
         renderBody={(allData: Array<IMultilineSingleBoxProps<string>>, parentProps: IMultilineParentProps) =>
             allData.map((cData: IMultilineSingleBoxProps<string>, index) => {
                 const isInputLimitReached = !!dataLimit && index >= dataLimit;
+                const isIndexEqualToDataLimit = !!dataLimit && index === dataLimit;
+                const reachedPlaceholder = !isIndexEqualToDataLimit ? reachedLimitPlaceholder : undefined;
                 const isTooltipRequired =
-                    isInputLimitReached && (!_.isEmpty(cData.props) || !_.isEmpty(reachedLimitPlaceholder));
+                    isInputLimitReached && (!_.isEmpty(cData.props) || !_.isEmpty(reachedPlaceholder));
                 const innerInputClasses = isInputLimitReached
                     ? classNames(inputProps?.innerInputClasses, disabledInputInnerClasses)
                     : inputProps?.innerInputClasses;
@@ -81,7 +83,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                                 parentProps.removeBox(cData.id);
                             }
                         }}
-                        placeholder={isInputLimitReached ? reachedLimitPlaceholder : inputProps?.placeholder}
+                        placeholder={isInputLimitReached ? reachedPlaceholder : inputProps?.placeholder}
                         disabled={isInputLimitReached}
                         classes={classes}
                         innerInputClasses={innerInputClasses}
