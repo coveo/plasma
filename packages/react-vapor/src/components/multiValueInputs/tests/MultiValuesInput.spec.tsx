@@ -221,7 +221,10 @@ describe('MultiValuesInput', () => {
             <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
             {}
         );
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
+        const lastInputConnectedProps = body
+            .find(InputConnected)
+            .at(defaultAboveDataLimitValues.length - 2)
+            .props();
 
         expect(lastInputConnectedProps.disabledTooltip).toBe(defaultProps.disabledTooltipTitle);
     });
@@ -237,6 +240,21 @@ describe('MultiValuesInput', () => {
             {}
         );
         const oneInputConnectedBeforelastProps = body.find(InputConnected).first().props();
+
+        expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe('');
+    });
+
+    it("should NOT includes a Tooltip if the input value is empty even if it's index is above the dataLimit", () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
+            {}
+        ).dive();
+
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
+            {}
+        );
+        const oneInputConnectedBeforelastProps = body.find(InputConnected).last().props();
 
         expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe('');
     });
