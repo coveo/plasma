@@ -181,7 +181,6 @@ pipeline {
 
           runSnyk(
             org: "coveo-admin-ui",
-            projectName: "react-vapor",
             directory: ".",
             archiveArtifacts: true,
             scanDevDependencies: false,
