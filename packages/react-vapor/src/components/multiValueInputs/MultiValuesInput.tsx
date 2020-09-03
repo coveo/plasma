@@ -56,8 +56,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                 const isInputLimitReached = !!dataLimit && index >= dataLimit;
                 const isIndexEqualToDataLimit = !!dataLimit && index === dataLimit;
                 const reachedPlaceholder = !isIndexEqualToDataLimit ? reachedLimitPlaceholder : undefined;
-                const isTooltipRequired =
-                    isInputLimitReached && (!_.isEmpty(cData.props) || !_.isEmpty(reachedPlaceholder));
+                const isTooltipRequired = isInputLimitReached && !_.isEmpty(cData.props);
                 const innerInputClasses = isInputLimitReached
                     ? classNames(inputProps?.innerInputClasses, disabledInputInnerClasses)
                     : inputProps?.innerInputClasses;
