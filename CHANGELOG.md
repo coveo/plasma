@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [7.6.4](https://github.com/coveo/react-vapor/compare/v7.6.3...v7.6.4) (2020-09-03)
+
+
+### Bug Fixes
+
+* **multi-values-input:** remove tooltip if the placeholder is displayed ([3656e56](https://github.com/coveo/react-vapor/commit/3656e56ba73ee05cacacb2bc696794341d6af991))
+* **snyk:** add runSnyk with all-projects option ([f1040a6](https://github.com/coveo/react-vapor/commit/f1040a6d0efb6109b01e23bd21589f8c95ee62ca))
+* **snyk:** remove incompatible argument projectName ([141981a](https://github.com/coveo/react-vapor/commit/141981a0387d90044001f2d958172ed9644e3587))
+
+
+
+
+
 ## [7.6.3](https://github.com/coveo/react-vapor/compare/v7.6.2...v7.6.3) (2020-09-02)
 
 
