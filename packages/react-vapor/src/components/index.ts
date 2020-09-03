@@ -30,6 +30,7 @@ export * from './filterBox';
 export * from './flatSelect';
 export * from './flippable';
 export * from './form';
+export * from './formValidation';
 export * from './logoCard';
 export * from './headers';
 export * from './infoBox';

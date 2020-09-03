@@ -15,6 +15,7 @@ import {facetsReducer} from './components/facets/FacetReducers';
 import {filterBoxesReducer} from './components/filterBox/FilterBoxReducers';
 import {flatSelectsReducer} from './components/flatSelect/FlatSelectReducers';
 import {flippablesReducer} from './components/flippable/FlippableReducers';
+import {formValidationReducer} from './components/formValidation/redux/FormValidationReducer';
 import {promptsReducer} from './components/inlinePrompt/InlinePromptReducers';
 import {inputsReducer} from './components/input/InputReducers';
 import {lastUpdatedCompositeReducer} from './components/lastUpdated/LastUpdatedReducers';
@@ -88,6 +89,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     radioSelects: radioSelectsReducer,
     refreshCallback: refreshCallBackReducer,
     rows: tableRowsReducer,
+    formValidation: formValidationReducer,
     searchBars: searchBarsReducer,
     selects: selectCompositeReducer,
     selectWithFilter: selectWithFilterCompositeReducer,
