@@ -52,7 +52,6 @@ export const checkboxesReducer = (
         case CheckboxActions.remove:
             return _.reject(state, (checkbox: ICheckboxState) => action.payload.id === checkbox.id);
         case CheckboxActions.toggle:
-            return state.map((checkbox: ICheckboxState) => checkboxReducer(checkbox, action));
         case CheckboxActions.disable:
             return state.map((checkbox: ICheckboxState) => checkboxReducer(checkbox, action));
         default:
