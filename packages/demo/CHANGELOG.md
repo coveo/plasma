@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.7.0](https://github.com/coveo/react-vapor/compare/v7.6.4...v7.7.0) (2020-09-04)
+
+
+### Features
+
+* **multi-select:** allowing flexibility in tooltip value in multiselect ([523e8f8](https://github.com/coveo/react-vapor/commit/523e8f85da0affe459b9bad2a975c79fd9094e34))
+
+
+
+
+
 ## [7.6.4](https://github.com/coveo/react-vapor/compare/v7.6.3...v7.6.4) (2020-09-03)
 
 **Note:** Version bump only for package react-vapor-demo
