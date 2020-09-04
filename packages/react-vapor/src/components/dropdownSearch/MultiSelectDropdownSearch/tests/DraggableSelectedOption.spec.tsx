@@ -2,6 +2,7 @@ import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {Tooltip} from '../../../tooltip/Tooltip';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {DraggableSelectedOption, IDraggableSelectedOptionProps} from '../DraggableSelectedOption';
 
@@ -42,6 +43,20 @@ describe('DraggableSelectedOption', () => {
             mountOption({label});
 
             expect(selectedOption.find('.selected-option-value').first().text()).toBe(label);
+        });
+
+        it('should render a custom value for the tooltip in the selectedOption', () => {
+            const customValue: string = 'Bananas';
+            mountOption({selectedTooltip: {title: customValue}});
+
+            expect(selectedOption.find(Tooltip).prop('title')).toBe(customValue);
+        });
+
+        it('should render a custom value instead of the label prop in the selectedOption', () => {
+            const customValue: string = 'Bananas';
+            mountOption({label: 'helloworld', selectedTooltip: {title: customValue}});
+
+            expect(selectedOption.find(Tooltip).prop('title')).toBe(customValue);
         });
 
         it('should change the opacity when the element is dragged', () => {

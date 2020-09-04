@@ -91,6 +91,19 @@ describe('Select', () => {
             expect(multiSelect.html()).toContain(selectedDisplayValue);
         });
 
+        it('should contain a different tooltip value when the selected value has a selectedTooltip', () => {
+            const value = 'Bananas!';
+            mountMultiSelect([{value: 'a'}, {value: 'Five', selectedTooltip: {title: value}, selected: true}]);
+
+            expect(multiSelect.find(SelectedOption).prop('label')).toBe(value);
+        });
+
+        it('should contain a default tooltip value if no hoverTooltipValue is provided', () => {
+            mountMultiSelect([{value: 'a'}, {value: 'Five', selected: true}]);
+
+            expect(multiSelect.find(SelectedOption).prop('label')).toBe('Five');
+        });
+
         it('should contains a SelectedOption for every selected item', () => {
             const firstSelected = 'dis 1';
             const secondSelected = 'dis two';
