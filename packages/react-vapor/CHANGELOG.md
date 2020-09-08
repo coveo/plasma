@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [7.8.0](https://github.com/coveo/react-vapor/compare/v7.7.4...v7.8.0) (2020-09-08)
+
+
+### Features
+
+* **checkbox:** added a selector for disabled state ([1d479a4](https://github.com/coveo/react-vapor/commit/1d479a4100bcfb2ea64024b9848fd63705f0294b))
+* **checkboxconnected:** +disable action and unit tests ([28e0c7f](https://github.com/coveo/react-vapor/commit/28e0c7f2f61faef9a48fa52dc47d1f238e1c7693))
+
+
+
+
+
 ## [7.7.4](https://github.com/coveo/react-vapor/compare/v7.7.3...v7.7.4) (2020-09-08)
 
 **Note:** Version bump only for package react-vapor
