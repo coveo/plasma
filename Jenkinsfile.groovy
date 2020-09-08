@@ -154,11 +154,9 @@ pipeline {
             STARTED_BY_UPSTREAM = cause.upstream()
 
             if (env.BRANCH_NAME ==~ /release-.*/) {
-              sh "npx lerna publish patch --yes --force-publish"
-            } else if (!!STARTED_BY_USER || !!STARTED_BY_UPSTREAM) {
-              sh "npx lerna publish --yes --force-publish=\"react-vapor\""
+              sh "npx lerna publish patch --create-release github --yes --force-publish"
             } else {
-              sh "npx lerna publish --yes"
+              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
             }
           } else {
             sh "echo \"skipping publish since remote changed (something was merged)\""
