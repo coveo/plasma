@@ -20,7 +20,7 @@ const exitSinceDemoIsAlreadyPosted = () => {
 
 const options = {
     headers: {
-        Authorization: `token ${process.env.GIT_TOKEN}`,
+        Authorization: `token ${process.env.GH_TOKEN}`,
     },
 };
 
