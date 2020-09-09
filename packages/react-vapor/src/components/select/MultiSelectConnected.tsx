@@ -95,7 +95,8 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
         const displayValue = item.selectedDisplayValue ?? item.displayValue ?? item.value;
         return (
             <SelectedOption
-                label={item.selectedTooltip?.title ?? displayValue}
+                label={displayValue}
+                selectedTooltip={item.selectedTooltip}
                 value={item.value}
                 key={item.value}
                 onRemoveClick={() => this.props.onRemoveClick(item)}

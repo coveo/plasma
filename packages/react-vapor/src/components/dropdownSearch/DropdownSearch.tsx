@@ -27,6 +27,7 @@ export interface IDropdownOption {
     disabledTooltip?: ITooltipProps;
     default?: boolean;
     append?: string;
+    selectedTooltip?: ITooltipProps;
 }
 
 export interface IDropdownSearchStateProps {

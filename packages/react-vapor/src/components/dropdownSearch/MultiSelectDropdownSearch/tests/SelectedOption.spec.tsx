@@ -1,12 +1,12 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-
 import {ISelectedOptionProps, SelectedOption} from '../SelectedOption';
 
 describe('SelectedOption', () => {
     const props: ISelectedOptionProps = {
         value: 'test',
         label: '',
+        selectedTooltip: {title: 'customToolTip'},
     };
 
     describe('<SelectedOption />', () => {
@@ -53,6 +53,60 @@ describe('SelectedOption', () => {
 
                 expect(onRemoveOptionClick).not.toHaveBeenCalled();
             });
+        });
+    });
+
+    describe('Tooltip', () => {
+        it('should render the tooltip in selectedOption with the corresponding tooltip value', () => {
+            const label: string = 'displayTest';
+            const tooltipValue: string = 'tooltipCustom';
+            const customProps: ISelectedOptionProps = {
+                value: 'test',
+                label,
+                selectedTooltip: {title: tooltipValue},
+            };
+            const wrapper = shallow(<SelectedOption {...customProps} />);
+
+            expect(wrapper.children().first().prop('title')).toEqual(tooltipValue);
+        });
+
+        it('should render the tooltip in selectedOption placement at the top by default', () => {
+            const label: string = 'displayTest';
+            const tooltipValue: string = 'tooltipCustom';
+            const customProps: ISelectedOptionProps = {
+                value: 'test',
+                label,
+                selectedTooltip: {title: tooltipValue},
+            };
+            const wrapper = shallow(<SelectedOption {...customProps} />);
+
+            expect(wrapper.children().first().prop('placement')).toEqual('top');
+        });
+
+        it('should render the tooltip selectedOption with a different position', () => {
+            const label: string = 'displayTest';
+            const tooltipValue: string = 'tooltipCustom';
+            const customProps: ISelectedOptionProps = {
+                value: 'test',
+                label,
+                selectedTooltip: {title: tooltipValue, placement: 'bottom'},
+            };
+            const wrapper = shallow(<SelectedOption {...customProps} />);
+
+            expect(wrapper.children().first().prop('placement')).toEqual('bottom');
+        });
+
+        it('should render the tooltip footer in selectedOption', () => {
+            const label: string = 'displayTest';
+            const tooltipValue: string = 'tooltipCustom';
+            const customProps: ISelectedOptionProps = {
+                value: 'test',
+                label,
+                selectedTooltip: {title: tooltipValue, footer: 'Hello World!'},
+            };
+            const wrapper = shallow(<SelectedOption {...customProps} />);
+
+            expect(wrapper.children().first().prop('footer')).toEqual('Hello World!');
         });
     });
 });
