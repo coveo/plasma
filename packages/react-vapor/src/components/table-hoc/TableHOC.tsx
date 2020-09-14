@@ -24,6 +24,7 @@ export interface ITableHOCOwnProps {
     containerClassName?: string;
     tbodyClassName?: string;
     showBorderTop?: boolean;
+    showBorderBottom?: boolean;
     loading?: {
         isCard?: boolean;
         numberOfColumns?: number;
@@ -40,6 +41,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         hasActionButtons: false,
         actions: [],
         showBorderTop: false,
+        showBorderBottom: false,
         loading: {
             isCard: false,
             numberOfColumns: 5,
@@ -91,6 +93,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                         'mod-align-header',
                         {
                             'mod-border-top': this.props.showBorderTop,
+                            'mod-border-bottom': this.props.showBorderBottom,
                         }
                     ).split(' ')}
                     disabled={this.props.isLoading}
