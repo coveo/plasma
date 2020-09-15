@@ -15,6 +15,7 @@ import {IDropdownSearchState} from './components/dropdownSearch/DropdownSearchRe
 import {JSONEditorState} from './components/editor/JSONEditorReducers';
 import {IFacet} from './components/facets/Facet';
 import {IFacetState} from './components/facets/FacetReducers';
+import {FilepickerState} from './components/filepicker/FilepickerReducers';
 import {IFilterState} from './components/filterBox/FilterBoxReducers';
 import {IFlatSelectState} from './components/flatSelect/FlatSelectReducers';
 import {IFlippableState} from './components/flippable/FlippableReducers';
@@ -65,6 +66,7 @@ export interface IReactVaporState {
     dropdowns?: IDropdownState[];
     dropdownSearch?: IDropdownSearchState[];
     facets?: IFacetState[];
+    filepickers?: FilepickerState;
     filters?: IFilterState[];
     flatSelect?: IFlatSelectState[];
     flippables?: IFlippableState[];
