@@ -52,7 +52,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
 
     render() {
         const table = (
-            <table className={classNames(this.props.className)}>
+            <table className={classNames(this.props.className)} style={{marginTop: this.hasActions() ? -1 : 0}}>
                 {this.props.tableHeader}
                 <tbody
                     key={`table-body-${this.props.id}`}
@@ -81,8 +81,12 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         );
     }
 
+    private hasActions() {
+        return this.props.hasActionButtons || this.props.actions.length;
+    }
+
     private renderActions() {
-        if (this.props.hasActionButtons || this.props.actions.length) {
+        if (this.hasActions()) {
             return (
                 <ActionBarConnected
                     id={this.props.id}
