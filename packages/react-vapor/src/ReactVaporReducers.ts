@@ -12,6 +12,7 @@ import {dropdownsReducer} from './components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
 import {jsonEditorsReducer} from './components/editor/JSONEditorReducers';
 import {facetsReducer} from './components/facets/FacetReducers';
+import {filepickersReducer} from './components/filepicker/FilepickerReducers';
 import {filterBoxesReducer} from './components/filterBox/FilterBoxReducers';
 import {flatSelectsReducer} from './components/flatSelect/FlatSelectReducers';
 import {flippablesReducer} from './components/flippable/FlippableReducers';
@@ -63,6 +64,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     dropdowns: dropdownsReducer,
     dropdownSearch: dropdownsSearchReducer,
     facets: facetsReducer,
+    filepickers: filepickersReducer,
     filters: filterBoxesReducer,
     flatSelect: flatSelectsReducer,
     flippables: flippablesReducer,

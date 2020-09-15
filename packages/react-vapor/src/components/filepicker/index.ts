@@ -1,2 +1,3 @@
 export * from './Filepicker';
-export * from './FilepikcerSelectors';
+export * from './FilepickerActions';
+export * from './FilepickerSelectors';
