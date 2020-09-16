@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.0.0](https://github.com/coveo/react-vapor/compare/v7.9.1...v8.0.0) (2020-09-16)
+
+
+### improvement
+
+* **filepicker:** add redux state for the filepicker ([8e1409b](https://github.com/coveo/react-vapor/commit/8e1409bae044aa27ca984a618795d25636e828d3))
+
+
+### BREAKING CHANGES
+
+* **filepicker:** Filepicker is now a connected component so it must be wrapped inside a store
+provider
+
+
+
+
+
 ## [7.9.1](https://github.com/coveo/react-vapor/compare/v7.9.0...v7.9.1) (2020-09-10)
 
 **Note:** Version bump only for package root
