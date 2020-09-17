@@ -64,6 +64,12 @@ pipeline {
           env.PATH = "${nodeHome}/bin:${env.PATH}"
           sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
 
+          // TODO: remove this once DT-3364 is fixed, set parameter `excludeJenkinsCommit=true` in the webhook instead
+          commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
+          if(commitMessage.contains("[version bump]")) {
+              return
+          }
+
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
           sh "npm run setup"

@@ -1,27 +1,18 @@
 {
     "version": "8.0.10",
-    "packages": [
-        "packages/*"
-    ],
+    "packages": ["packages/*"],
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "allowBranch": [
-                "master"
-            ]
+            "allowBranch": ["master"]
         },
         "version": {
             "conventionalCommits": true,
-            "message": "chore(release): publish %s [skip travis]"
+            "message": "chore(release): [version bump] - %s"
         },
         "bootstrap": {
             "hoist": true,
-            "nohoist": [
-                "unidiff",
-                "query-string",
-                "strict-uri-encode",
-                "split-on-first"
-            ]
+            "nohoist": ["unidiff", "query-string", "strict-uri-encode", "split-on-first"]
         }
     }
 }
