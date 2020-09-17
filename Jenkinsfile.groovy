@@ -21,6 +21,8 @@ remote: 'git@bitbucket.org:coveord/deploy_pipeline.git',
 credentialsId: 'coveo-bitbucket-rd-ssh'
 ])
 
+def skipRemainingStages = false
+
 pipeline {
 
   agent { label "build && docker && linux" }
@@ -40,7 +42,28 @@ pipeline {
 
   stages {
 
+    stage('Skip') {
+      // TODO: remove this once DT-3364 is fixed, set parameter `excludeJenkinsCommit=true` in the webhook instead
+      steps {
+        script {
+          setLastStageName();
+          commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
+          if(commitMessage.contains("[version bump]")) {
+            skipRemainingStages = true
+            println "Skipping this build because it was triggered by a version bump."
+          } else {
+            skipRemainingStages = false
+            println "Not a version bump, the build will proceed."
+          }
+        }
+      }
+    }
+
     stage('Prepare') {
+      when {
+        expression { !skipRemainingStages }
+      }
+
       steps {
         script {
           setLastStageName();
@@ -64,12 +87,6 @@ pipeline {
           env.PATH = "${nodeHome}/bin:${env.PATH}"
           sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
 
-          // TODO: remove this once DT-3364 is fixed, set parameter `excludeJenkinsCommit=true` in the webhook instead
-          commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
-          if(commitMessage.contains("[version bump]")) {
-              return
-          }
-
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
           sh "npm run setup"
@@ -89,6 +106,10 @@ pipeline {
     }
 
     stage('Build') {
+      when {
+        expression { !skipRemainingStages }
+      }
+
       steps {
         script {
           setLastStageName();
@@ -98,6 +119,10 @@ pipeline {
     }
 
     stage('Test') {
+      when {
+        expression { !skipRemainingStages }
+      }
+
       steps {
         script {
           setLastStageName();
@@ -109,10 +134,13 @@ pipeline {
 
     stage('Deploy in S3') {
       when {
-        not {
-          expression {
-            env.BRANCH_NAME ==~ /(master|release-.*)/
+        allOf {
+          not {
+            expression {
+              env.BRANCH_NAME ==~ /(master|release-.*)/
+            }
           }
+          expression { !skipRemainingStages }
         }
       }
 
@@ -142,6 +170,7 @@ pipeline {
       when {
         allOf {
           expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
+          expression { !skipRemainingStages }
         }
       }
       steps {
@@ -173,6 +202,7 @@ pipeline {
     stage('Deployment pipeline') {
       when {
         allOf {
+          expression { !skipRemainingStages }
           expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
           expression { COMMITS_BEHIND == 0 }
         }
