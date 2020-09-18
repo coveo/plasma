@@ -95,7 +95,8 @@ export class DraggableSelectedOption extends React.PureComponent<IDraggableSelec
                 <div className="selected-option-wrapper" style={{opacity}}>
                     <SelectedOption
                         {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)}
-                        label={this.props.isDragging ? null : this.props.selectedTooltip?.title ?? this.props.label}
+                        label={this.props.isDragging ? null : this.props.label}
+                        selectedTooltip={this.props.selectedTooltip}
                     >
                         <div className="inline-flex">
                             {this.props.connectDragSource(

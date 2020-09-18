@@ -13,8 +13,10 @@ import {
     ValidationMessage,
     withInitialValuesMultiSelectHOC,
     withNonEmptyMultiSelectHOC,
+    Tooltip,
 } from 'react-vapor';
 import * as _ from 'underscore';
+import {TooltipPlacement} from '../../../../react-vapor/src/utils/TooltipUtils';
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
@@ -22,7 +24,14 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Disabled', value: 'disabled', disabled: true},
     {displayValue: 'Three', value: '3'},
     {displayValue: 'Four', value: '4'},
-    {displayValue: 'Five', value: '5', selectedTooltip: {title: 'HighFive!'}},
+    {
+        displayValue: 'Five',
+        value: '5',
+        selectedTooltip: {
+            title: 'HighFive!',
+            placement: TooltipPlacement.Bottom,
+        },
+    },
     {displayValue: 'Six', value: '6'},
     {displayValue: 'Seven', value: '7', selectedDisplayValue: 'James Bond 007'},
 ];

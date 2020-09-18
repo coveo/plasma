@@ -52,11 +52,25 @@ describe('DraggableSelectedOption', () => {
             expect(selectedOption.find(Tooltip).prop('title')).toBe(customValue);
         });
 
-        it('should render a custom value instead of the label prop in the selectedOption', () => {
+        it('should render a custom tooltip value instead of the label prop in the selectedOption', () => {
             const customValue: string = 'Bananas';
             mountOption({label: 'helloworld', selectedTooltip: {title: customValue}});
 
             expect(selectedOption.find(Tooltip).prop('title')).toBe(customValue);
+        });
+
+        it('should render the tooltip placement to be at the top for the selectedOption by default', () => {
+            const customValue: string = 'Bananas';
+            mountOption({label: 'helloworld', selectedTooltip: {title: customValue}});
+
+            expect(selectedOption.find(Tooltip).prop('placement')).toBe('top');
+        });
+
+        it('should render the tooltip placement to be at the bottom for the selectedOption', () => {
+            const customValue: string = 'Bananas';
+            mountOption({label: 'helloworld', selectedTooltip: {title: customValue, placement: 'bottom'}});
+
+            expect(selectedOption.find(Tooltip).prop('placement')).toBe('bottom');
         });
 
         it('should change the opacity when the element is dragged', () => {

@@ -2,11 +2,12 @@ import * as React from 'react';
 
 import {TooltipPlacement} from '../../../utils/TooltipUtils';
 import {Svg} from '../../svg/Svg';
-import {Tooltip} from '../../tooltip/Tooltip';
+import {Tooltip, ITooltipProps} from '../../tooltip/Tooltip';
 
 export interface ISelectedOptionProps {
     value: string;
     label: React.ReactNode;
+    selectedTooltip: ITooltipProps;
     onRemoveClick?: (value: string) => void;
 }
 
@@ -18,13 +19,16 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
     render() {
         const tooltipContent = React.Children.count(this.props.children) > 0 ? this.props.children : this.props.label;
         const tooltipLabel = typeof this.props.label === 'string' ? this.props.label : '';
+        const tooltipCustomLabel = this.props.selectedTooltip?.title;
+        const tooltipPosition = this.props.selectedTooltip?.placement;
         return (
             <div className="selected-option" key={this.props.value}>
                 <Tooltip
-                    title={tooltipLabel}
-                    placement={TooltipPlacement.Top}
-                    className="selected-option-value"
                     delayShow={300}
+                    {...this.props.selectedTooltip}
+                    title={tooltipCustomLabel ?? tooltipLabel}
+                    placement={tooltipPosition ?? TooltipPlacement.Top}
+                    className="selected-option-value"
                 >
                     {tooltipContent}
                 </Tooltip>

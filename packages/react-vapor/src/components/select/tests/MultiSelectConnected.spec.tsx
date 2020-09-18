@@ -3,6 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+import {Tooltip} from '../../tooltip/Tooltip';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -92,10 +93,10 @@ describe('Select', () => {
         });
 
         it('should contain a different tooltip value when the selected value has a selectedTooltip', () => {
-            const value = 'Bananas!';
-            mountMultiSelect([{value: 'a'}, {value: 'Five', selectedTooltip: {title: value}, selected: true}]);
+            const selectedTooltip = {title: 'Bananas!'};
+            mountMultiSelect([{value: 'a'}, {value: 'Five', selectedTooltip, selected: true}]);
 
-            expect(multiSelect.find(SelectedOption).prop('label')).toBe(value);
+            expect(multiSelect.find(SelectedOption).find(Tooltip).prop('title')).toBe('Bananas!');
         });
 
         it('should contain a default tooltip value if no hoverTooltipValue is provided', () => {
