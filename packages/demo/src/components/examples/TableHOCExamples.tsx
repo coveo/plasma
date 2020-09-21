@@ -197,6 +197,7 @@ const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<
             renderBody={(Alldata: IExampleRowData[]) => generateTableRow(Alldata, id)}
             tableHeader={renderHeader(id)}
             showBorderTop
+            showBorderBottom
         />
     );
 };

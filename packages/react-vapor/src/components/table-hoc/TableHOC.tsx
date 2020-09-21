@@ -24,6 +24,7 @@ export interface ITableHOCOwnProps {
     containerClassName?: string;
     tbodyClassName?: string;
     showBorderTop?: boolean;
+    showBorderBottom?: boolean;
     loading?: {
         isCard?: boolean;
         numberOfColumns?: number;
@@ -40,6 +41,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         hasActionButtons: false,
         actions: [],
         showBorderTop: false,
+        showBorderBottom: false,
         loading: {
             isCard: false,
             numberOfColumns: 5,
@@ -50,7 +52,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
 
     render() {
         const table = (
-            <table className={classNames(this.props.className)}>
+            <table className={classNames(this.props.className)} style={{marginTop: this.hasActions() ? -1 : 0}}>
                 {this.props.tableHeader}
                 <tbody
                     key={`table-body-${this.props.id}`}
@@ -79,8 +81,12 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         );
     }
 
+    private hasActions() {
+        return this.props.hasActionButtons || this.props.actions.length;
+    }
+
     private renderActions() {
-        if (this.props.hasActionButtons || this.props.actions.length) {
+        if (this.hasActions()) {
             return (
                 <ActionBarConnected
                     id={this.props.id}
@@ -91,6 +97,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                         'mod-align-header',
                         {
                             'mod-border-top': this.props.showBorderTop,
+                            'mod-border-bottom': this.props.showBorderBottom,
                         }
                     ).split(' ')}
                     disabled={this.props.isLoading}

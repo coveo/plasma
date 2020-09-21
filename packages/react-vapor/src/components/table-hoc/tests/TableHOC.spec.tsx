@@ -84,10 +84,16 @@ describe('TableHOC', () => {
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
 
-        it('should render an ActionBarConnected with a top border if the "hasBorderTop" is set to true', () => {
+        it('should render an ActionBarConnected with a top border if the "showBorderTop" is set to true', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons showBorderTop />);
 
             expect(wrapper.find(ActionBarConnected).prop('extraContainerClasses')).toContain('mod-border-top');
+        });
+
+        it('should render an ActionBarConnected with a top border if the "showBorderBottom" is set to true', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons showBorderBottom />);
+
+            expect(wrapper.find(ActionBarConnected).prop('extraContainerClasses')).toContain('mod-border-bottom');
         });
 
         it('should render an ActionBarConnected if the table prop hasActionButtons is false but the table have some actions', () => {
@@ -122,6 +128,18 @@ describe('TableHOC', () => {
             );
 
             expect(wrapper.find(ActionBarConnected).props().disabled).toBe(false);
+        });
+
+        it('should render a negative top margin on the table if there is an ActionBar', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons />);
+
+            expect(wrapper.find('table').prop('style').marginTop).toBe(-1);
+        });
+
+        it('should not render a negative top margin on the table if there is an ActionBar', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} />);
+
+            expect(wrapper.find('table').prop('style').marginTop).toBe(0);
         });
     });
 });
