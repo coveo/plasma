@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.15](https://github.com/coveo/react-vapor/compare/v8.0.14...v8.0.15) (2020-09-22)
+
+
+### Bug Fixes
+
+* **banner:** set padding to 40px ([#1691](https://github.com/coveo/react-vapor/issues/1691)) ([6d9a84b](https://github.com/coveo/react-vapor/commit/6d9a84b1f3d27da71dfc9744193fdf1a5f96b491))
+
+
+
+
+
 # [8.0.0](https://github.com/coveo/react-vapor/compare/v7.9.1...v8.0.0) (2020-09-16)
 
 **Note:** Version bump only for package coveo-styleguide
