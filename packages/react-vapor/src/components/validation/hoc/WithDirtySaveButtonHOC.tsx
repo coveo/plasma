@@ -47,7 +47,7 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: React.
         const generatedTooltip =
             (hasErrors && errorMessage(errors.map((error) => error.value))) ||
             (hasWarnings && canSaveWhenDirty && warningMessage(warnings.map((warning) => warning.value))) ||
-            dirtyMessage(dirty.map((d) => d.value));
+            (skipDirty ? '' : dirtyMessage(dirty.map((d) => d.value)));
 
         return (
             <Component

@@ -195,6 +195,21 @@ describe('WithDirtySaveButtonHOC', () => {
                 expect(tooltip).toEqual(message);
             });
 
+            it('should not change the tooltip to the dirty message formatter if the skipDirty prop is set to true', () => {
+                const message = 'you must change stuff';
+                const buttonWrapper = shallowButton(
+                    {
+                        skipDirty: true,
+                        dirtyMessage: () => message,
+                    },
+                    getStoreMock()
+                );
+
+                const tooltip = buttonWrapper.find(Button).prop('tooltip');
+
+                expect(tooltip).not.toEqual(message);
+            });
+
             it('should not change the tooltip when there is a warning but the component is not dirty', () => {
                 const storeWithOnlyWarning = getStoreMock({
                     validation: {
