@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.17](https://github.com/coveo/react-vapor/compare/v8.0.16...v8.0.17) (2020-09-23)
+
+
+### Bug Fixes
+
+* **validation:** should not display tooltip with skipDirty ([#1690](https://github.com/coveo/react-vapor/issues/1690)) ([52048f1](https://github.com/coveo/react-vapor/commit/52048f1a88bf065ed5e6f78a8993160176e5d4ba))
+
+
+
+
+
 ## [8.0.16](https://github.com/coveo/react-vapor/compare/v8.0.15...v8.0.16) (2020-09-23)
 
 
