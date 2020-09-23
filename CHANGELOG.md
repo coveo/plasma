@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.16](https://github.com/coveo/react-vapor/compare/v8.0.15...v8.0.16) (2020-09-23)
+
+
+### Bug Fixes
+
+* upgrade diff2html from 3.1.8 to 3.1.11 ([#1660](https://github.com/coveo/react-vapor/issues/1660)) ([1d916bf](https://github.com/coveo/react-vapor/commit/1d916bf87bd29f2dfa7a8c9edfccd5fdc3674f07))
+
+
+
+
+
 ## [8.0.15](https://github.com/coveo/react-vapor/compare/v8.0.14...v8.0.15) (2020-09-22)
 
 
