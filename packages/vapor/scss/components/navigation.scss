@@ -93,8 +93,11 @@
                 }
 
                 .navigation-menu-section-items {
-                    margin-bottom: 1em;
                     overflow-x: auto;
+
+                    &:not(.mb0) {
+                        margin-bottom: 1em;
+                    }
 
                     .navigation-menu-section-item {
                         font-weight: $navigation-menu-item-font-weight;

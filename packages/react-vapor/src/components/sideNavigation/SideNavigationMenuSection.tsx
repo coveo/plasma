@@ -24,6 +24,7 @@ export interface ISideNavigationSectionProps extends SideNavigationHeaderProps {
     expanded?: boolean;
     isActive?: boolean;
     onClick?: () => void;
+    itemsClassName?: string;
 }
 
 const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName, svgClass}) =>
@@ -63,6 +64,7 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
     children,
     isActive,
     isLink,
+    itemsClassName,
     ...headerProps
 }) => {
     const ref = React.useRef(null);
@@ -86,7 +88,9 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
         </SideNavigationHeader>
     );
 
-    const items = children ? <div className="navigation-menu-section-items">{children}</div> : null;
+    const items = children ? (
+        <div className={classNames('navigation-menu-section-items', itemsClassName)}>{children}</div>
+    ) : null;
     const sectionLink = isLink ? (
         <div className={sectionClasses} ref={ref}>
             {sectionHeader}
