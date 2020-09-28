@@ -1,34 +1,51 @@
-import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import path from 'path';
 import postcss from 'rollup-plugin-postcss';
 import scssVariable from 'rollup-plugin-sass-variables';
 import typescript from 'rollup-plugin-typescript2';
 import keysTransformer from 'ts-transformer-keys/transformer';
 
+const isJenkins = !!process.env.JENKINS_HOME;
+
+// necessary, otherwise tries to parse `new undefined()`
+const globals = {
+    'coveo-styleguide': 'VaporSVG',
+    'react-dom': 'ReactDOM',
+    'react-dom/server': 'server',
+    'react-redux': 'reactRedux',
+    'underscore.string': 's',
+    codemirror: 'CodeMirror',
+    d3: 'd3',
+    domain: 'domain$1',
+    jquery: 'jQuery',
+    react: 'React',
+    redux: 'Redux',
+    underscore: '_',
+};
+
 export default {
     input: 'src/Entry.ts',
     output: {
-        file: 'dist/react-vapor.esm.js',
-        format: 'es',
+        file: isJenkins ? 'dist/react-vapor.min.js' : 'dist/react-vapor.js',
+        format: 'umd',
+        name: 'ReactVapor',
+        sourcemap: true,
+        globals,
     },
-    external: [
-        'codemirror',
-        'd3',
-        'jquery',
-        'react',
-        'react-dom',
-        'react-dom/server',
-        'react-redux',
-        'redux',
-        'underscore',
-        'coveo-styleguide',
-        'underscore.string',
-    ],
+    external: Object.keys(globals),
     onwarn,
     plugins: [
+        resolve(),
+        commonjs({
+            namedExports: {
+                'hogan.js': ['Template', 'compile'],
+                'react-modal': ['setAppElement'],
+                'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
+            },
+        }),
         inject({
             jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
         }),
@@ -40,14 +57,6 @@ export default {
             use: ['sass'],
         }),
         scssVariable(),
-        resolve(),
-        commonjs({
-            namedExports: {
-                'hogan.js': ['Template', 'compile'],
-                'react-modal': ['setAppElement'],
-                'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
-            },
-        }),
         tsPlugin(),
     ],
 };
