@@ -1,4 +1,5 @@
 {
+    "extends": "./tsconfig.json",
     "compilerOptions": {
         "inlineSourceMap": true,
         "sourceMap": false,
@@ -15,7 +16,12 @@
         "lib": ["es2015", "dom"],
         "skipLibCheck": true,
         "target": "ES5",
-        "esModuleInterop": true
+        "esModuleInterop": true,
+        "plugins": [
+            {
+                "transform": "ts-transformer-keys/transformer"
+            }
+        ]
     },
     "exclude": ["node_modules", "dist", "coverage", "*.js"]
 }
