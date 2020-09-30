@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.18](https://github.com/coveo/react-vapor/compare/v8.0.17...v8.0.18) (2020-09-30)
+
+
+### Bug Fixes
+
+* **navigationitems:** make margin bottom optional ([#1692](https://github.com/coveo/react-vapor/issues/1692)) ([dc7bae4](https://github.com/coveo/react-vapor/commit/dc7bae44e81519169073825afaedc41aea647296))
+
+
+
+
+
 ## [8.0.15](https://github.com/coveo/react-vapor/compare/v8.0.14...v8.0.15) (2020-09-22)
 
 
