@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.19](https://github.com/coveo/react-vapor/compare/v8.0.18...v8.0.19) (2020-09-30)
+
+
+### Bug Fixes
+
+* **svg:** update svgmin config to avoid collision in svg ids ([9598565](https://github.com/coveo/react-vapor/commit/95985658cc5e43cb5536bc76e7590c1d875cff56))
+
+
+
+
+
 ## [8.0.18](https://github.com/coveo/react-vapor/compare/v8.0.17...v8.0.18) (2020-09-30)
 
 
