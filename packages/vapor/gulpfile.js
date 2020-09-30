@@ -3,6 +3,7 @@
 // --gzip                       Flag to enable gziphication                                         Default: false
 // --all                        Flag to remove all compiled files                                   Default: false
 
+const path = require('path');
 const del = require('del');
 const pngSprite = require('coveo-png-sprite');
 const gulp = require('gulp');
@@ -161,20 +162,29 @@ gulp.task('svg:concat', () => {
 
     return src
         .pipe(
-            svgmin({
-                plugins: [
-                    {
-                        removeAttrs: {
-                            attrs: ['xmlns:*', 'xmlns'],
+            svgmin((file) => {
+                var prefix = path.basename(file.relative, path.extname(file.relative));
+                return {
+                    plugins: [
+                        {
+                            removeAttrs: {
+                                attrs: ['xmlns:*', 'xmlns'],
+                            },
                         },
-                    },
-                    {
-                        removeUselessDefs: true,
-                    },
-                    {
-                        removeComments: true,
-                    },
-                ],
+                        {
+                            removeUselessDefs: true,
+                        },
+                        {
+                            removeComments: true,
+                        },
+                        {
+                            cleanupIDs: {
+                                prefix: prefix + '-',
+                                minify: true,
+                            },
+                        },
+                    ],
+                };
             })
         )
         .pipe(
