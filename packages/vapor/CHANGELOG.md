@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.0.20](https://github.com/coveo/react-vapor/compare/v8.0.19...v8.0.20) (2020-10-01)
+
+
+### Bug Fixes
+
+* use text instead of path in logo ([f5c58cf](https://github.com/coveo/react-vapor/commit/f5c58cf3c44ef7d20712523beb471f17a7840f8e))
+
+
+
+
+
 ## [8.0.19](https://github.com/coveo/react-vapor/compare/v8.0.18...v8.0.19) (2020-09-30)
 
 
