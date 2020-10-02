@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.1.0](https://github.com/coveo/react-vapor/compare/v8.0.20...v8.1.0) (2020-10-02)
+
+
+### Features
+
+* **svg:** add reversed info icon ([#1697](https://github.com/coveo/react-vapor/issues/1697)) ([6750372](https://github.com/coveo/react-vapor/commit/67503721bd342d77562c33919d0f3dc8b3043ad0))
+
+
+
+
+
 ## [8.0.20](https://github.com/coveo/react-vapor/compare/v8.0.19...v8.0.20) (2020-10-01)
 
 
