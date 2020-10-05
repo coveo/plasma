@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {Button} from '../button/Button';
 import {ModalComposite} from './ModalComposite';
 
@@ -50,8 +51,8 @@ export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChange
             <ModalComposite
                 title={modalTitle}
                 classes={className}
-                modalHeaderClasses={['mod-confirmation']}
-                modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                modalHeaderClasses={['mod-warning']}
+                modalBodyClasses={['momod-criticaldding', 'mod-form-top-bottom-padding']}
                 modalBodyChildren={<div>{unsavedChangesDescription}</div>}
                 modalFooterChildren={
                     <>

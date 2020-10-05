@@ -51,7 +51,7 @@ export class ModalPrompt extends React.Component<IModalPromptProps, any> {
             <Modal id={this.props.id} isOpened={this.props.isOpened} classes={['mod-prompt', 'mod-fade-in-scale']}>
                 <ModalHeader
                     title={this.props.title}
-                    classes={['mod-confirmation']}
+                    classes={['mod-criticalation']}
                     onClose={() => this.cancel()}
                 ></ModalHeader>
                 <ModalBody classes={['mod-header-padding', 'mod-form-top-bottom-padding']}>

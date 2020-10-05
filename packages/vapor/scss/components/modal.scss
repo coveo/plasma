@@ -184,11 +184,15 @@ $icon-size: (4em / 3);
         border-bottom: $default-border;
     }
 
-    &.mod-confirmation {
-        background-color: $yellow;
+    &.mod-success {
+        background-color: $green;
     }
 
     &.mod-warning {
+        background-color: $yellow;
+    }
+
+    &.mod-critical {
         background-color: $red;
     }
 

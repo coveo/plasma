@@ -58,29 +58,30 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
         close(id);
         toggleIsDirty(id, false);
     };
-    const modalConfirmationId = 'Modal-Confirmation-Connected';
+    const modalSuccessId = 'Modal-Success-Connected';
     const modalWarningId = 'Modal-Warning-Connected';
+    const modalCriticalId = 'Modal-Critical-Connected';
     const modalInfoId = 'Modal-Info-Connected';
     const modalId = 'Modal-Connected-#1';
     return (
         <Section level={2} title="Modals connected to the redux store">
-            <Section level={3} title="Confirmation, warning and info prompts" className="flex">
-                <Button className="btn m0 mr1" onClick={() => open(modalConfirmationId)}>
-                    Prompt confirmation
+            <Section level={3} title="Success, warning, critical and info prompts" className="flex">
+                <Button className="btn m0 mr1" onClick={() => open(modalSuccessId)}>
+                    Prompt success
                 </Button>
 
                 <ModalCompositeConnected
-                    id={modalConfirmationId}
-                    title="Prompt confirmation"
+                    id={modalSuccessId}
+                    title="Prompt success"
                     isPrompt
-                    modalHeaderClasses={['mod-confirmation']}
+                    modalHeaderClasses={['mod-success']}
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
                     modalFooterChildren={
                         <>
-                            <Button primary small onClick={() => handleClose(modalConfirmationId)}>
+                            <Button primary small onClick={() => handleClose(modalSuccessId)}>
                                 Confirm
                             </Button>
-                            <Button small onClick={() => handleClose(modalConfirmationId)}>
+                            <Button small onClick={() => handleClose(modalSuccessId)}>
                                 Close
                             </Button>
                         </>
@@ -98,7 +99,29 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     modalHeaderClasses={['mod-warning']}
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
                     modalFooterChildren={
-                        <Button small onClick={() => handleClose(modalWarningId)}>
+                        <>
+                            <Button primary small onClick={() => handleClose(modalWarningId)}>
+                                Confirm
+                            </Button>
+                            <Button small onClick={() => handleClose(modalWarningId)}>
+                                Close
+                            </Button>
+                        </>
+                    }
+                    modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+                />
+                <Button className="btn m0 mr1" onClick={() => open(modalCriticalId)}>
+                    Prompt critical
+                </Button>
+
+                <ModalCompositeConnected
+                    id={modalCriticalId}
+                    title="Prompt critical"
+                    isPrompt
+                    modalHeaderClasses={['mod-critical']}
+                    modalBodyChildren={<div className="mt2">{loremIpsum({count: 3})}</div>}
+                    modalFooterChildren={
+                        <Button small onClick={() => handleClose(modalCriticalId)}>
                             Close
                         </Button>
                     }
