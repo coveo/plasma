@@ -1,4 +1,5 @@
 import * as React from 'react';
+
 import {ModalComposite} from '../../components/modal/ModalComposite';
 
 export interface PreventNavigationPromptProps {
@@ -27,7 +28,7 @@ export const PreventNavigationPrompt = ({
         isOpen={isOpen}
         title={title}
         classes={['mod-prompt', 'mod-fade-in-scale']}
-        modalHeaderClasses={['mod-confirmation']}
+        modalHeaderClasses={['mod-warning']}
         modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
         modalBodyChildren={content}
         onClose={() => onStay()}
