@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.3.0](https://github.com/coveo/react-vapor/compare/v8.2.0...v8.3.0) (2020-10-13)
+
+
+### Features
+
+* **demo package-lock:** update package-lock to newest release ([e045e15](https://github.com/coveo/react-vapor/commit/e045e153e9c4125ce77a51f2b81149e27a45d1f6))
+
+
+
+
+
 # [8.2.0](https://github.com/coveo/react-vapor/compare/v8.1.0...v8.2.0) (2020-10-13)
 
 
