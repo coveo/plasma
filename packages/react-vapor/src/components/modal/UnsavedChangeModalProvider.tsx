@@ -52,7 +52,7 @@ export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChange
                 title={modalTitle}
                 classes={className}
                 modalHeaderClasses={['mod-warning']}
-                modalBodyClasses={['momod-criticaldding', 'mod-form-top-bottom-padding']}
+                modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 modalBodyChildren={<div>{unsavedChangesDescription}</div>}
                 modalFooterChildren={
                     <>
