@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.2.0](https://github.com/coveo/react-vapor/compare/v8.1.0...v8.2.0) (2020-10-13)
+
+
+### Features
+
+* **modal:** changed modal type color ([79e841d](https://github.com/coveo/react-vapor/commit/79e841d2b50741251f795bd8930fecdda587ecc3))
+* **modal:** removed some find/replace error i made ([a90cbe8](https://github.com/coveo/react-vapor/commit/a90cbe8ba220a1da9c1a5b33d93b957907422a10))
+
+
+
+
+
 # [8.1.0](https://github.com/coveo/react-vapor/compare/v8.0.20...v8.1.0) (2020-10-02)
 
 
