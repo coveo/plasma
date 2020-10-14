@@ -36,6 +36,7 @@ export interface MultiValuesInputProps {
     disabledTooltipTitle?: string;
     disabledInputInnerClasses?: IClassName;
     disabledInputClasses?: IClassName;
+    disabled?: boolean;
 }
 
 export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = ({
@@ -47,6 +48,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
     disabledTooltipTitle,
     disabledInputInnerClasses,
     disabledInputClasses,
+    disabled,
 }) => (
     <MultilineBoxWithRemoveButton
         id={id}
@@ -63,6 +65,11 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                 const classes = isInputLimitReached
                     ? classNames(inputProps?.classes, disabledInputClasses)
                     : inputProps?.classes;
+
+                if (cData.isLast && disabled) {
+                    return null;
+                }
+
                 return (
                     <InputConnected
                         key={cData.id}
@@ -76,6 +83,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                                 parentProps.addNewBox();
                             }
                         }}
+                        isReadOnly={disabled || isInputLimitReached}
                         onBlur={(value: string) => {
                             inputProps?.onBlur?.(value);
                             if (value === '' && !cData.isLast) {
@@ -83,7 +91,6 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                             }
                         }}
                         placeholder={isInputLimitReached ? reachedPlaceholder : inputProps?.placeholder}
-                        disabled={isInputLimitReached}
                         classes={classes}
                         innerInputClasses={innerInputClasses}
                         disabledTooltip={isTooltipRequired && disabledTooltipTitle ? disabledTooltipTitle : ''}
@@ -94,5 +101,6 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
             })
         }
         defaultProps=""
+        disabled={disabled}
     />
 );

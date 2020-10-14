@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
+import {connect} from 'react-redux';
 import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
-import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
+import {IDispatch} from '../../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../../button/Button';
 import {Svg} from '../../svg/Svg';
 import {
@@ -46,15 +47,13 @@ export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-
 export const multilineBoxWithRemoveButton = (
     supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}
 ) => (Component: MultilineBoxWithRemoveButtonComponent): MultilineBoxWithRemoveButtonComponent => {
-    const mapDispatchToProps = (
-        dispatch: IDispatch,
-        ownProps: IMultilineBoxOwnProps
-    ): Partial<IMultilineBoxDispatchProps> => ({
+    const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps) => ({
         removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
     });
 
-    @ReduxConnect(null, mapDispatchToProps)
-    class MultilineBoxWithRemoveButton<T> extends React.PureComponent<IMultilineBoxWithRemoveButtonProps<T>> {
+    class MultilineBoxWithRemoveButton<T> extends React.PureComponent<
+        IMultilineBoxWithRemoveButtonProps<T> & ReturnType<typeof mapDispatchToProps>
+    > {
         static defaultProps = {
             renderBody: () => <div />,
         };
@@ -73,8 +72,8 @@ export const multilineBoxWithRemoveButton = (
                     style={{
                         visibility: !data.isLast ? 'visible' : 'hidden',
                     }}
-                    onClick={() => !data.isLast && this.props.removeBox(data.id)}
-                    enabled={!data.isLast}
+                    onClick={() => !data.isLast && !this.props.disabled && this.props.removeBox(data.id)}
+                    enabled={!this.props.disabled}
                     {...props}
                 >
                     <Svg
@@ -113,5 +112,5 @@ export const multilineBoxWithRemoveButton = (
         }
     }
 
-    return MultilineBoxWithRemoveButton;
+    return connect(undefined, mapDispatchToProps)(MultilineBoxWithRemoveButton);
 };

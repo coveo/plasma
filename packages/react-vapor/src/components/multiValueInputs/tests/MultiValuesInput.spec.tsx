@@ -68,7 +68,7 @@ describe('MultiValuesInput', () => {
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
 
-        expect(lastInputConnectedProps.disabled).toBe(true);
+        expect(lastInputConnectedProps.isReadOnly).toBe(true);
     });
 
     it('should display all data, even if the data length are above the dataLimit', () => {
@@ -98,7 +98,7 @@ describe('MultiValuesInput', () => {
         );
         const lastInputConnectedProps = body.find(InputConnected).last().props();
 
-        expect(lastInputConnectedProps.disabled).toBe(true);
+        expect(lastInputConnectedProps.isReadOnly).toBe(true);
     });
 
     it('should include the disabledInputInnerClasses if the inputs indexes are below the dataLimit', () => {
@@ -208,7 +208,7 @@ describe('MultiValuesInput', () => {
         );
         const oneInputConnectedBeforelastProps = body.find(InputConnected).first().props();
 
-        expect(oneInputConnectedBeforelastProps.disabled).toBe(false);
+        expect(oneInputConnectedBeforelastProps.isReadOnly).toBe(false);
     });
 
     it("should include a Tooltip if set to all data in which it's index are above the dataLimit", () => {
