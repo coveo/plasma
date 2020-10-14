@@ -32,6 +32,7 @@ export interface IInputAdditionalOwnProps {
     maximum?: number /* @deprecated use max instead */;
     onBlur?: (value: string) => void;
     defaultValue?: string;
+    isReadOnly?: boolean;
 }
 
 export interface IInputNativeTagStateProps {
@@ -79,6 +80,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         valid: true,
         labelTitle: '',
         required: true,
+        isReadOnly: false,
     };
 
     constructor(props: IInputProps, state: IInputState) {
@@ -182,6 +184,11 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
             this.props.innerInputClasses
         );
 
+        let additionalProps: {disabled?: boolean} = {};
+        if (this.props.isReadOnly) {
+            additionalProps = {disabled: true};
+        }
+
         const inputElements = [
             <input
                 key={this.props.id}
@@ -195,6 +202,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 min={this.props.minimum}
                 max={this.props.maximum}
                 {..._.omit(this.props, [...PropsToOmitUtils.input, ...inputPropsToOmit])}
+                {...additionalProps}
             />,
             this.getLabel(),
             this.props.children,

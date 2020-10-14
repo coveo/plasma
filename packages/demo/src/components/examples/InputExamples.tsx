@@ -127,6 +127,16 @@ const InputsConnected: React.FunctionComponent = () => {
                     />
                 </Section>
 
+                <Section level={3} title="A simple input in state of readOnly.">
+                    <InputConnected
+                        id="super-input-3"
+                        labelTitle="I am a readOnly input label."
+                        innerInputClasses="mb2"
+                        defaultValue="I am in readOnly state"
+                        isReadOnly
+                    />
+                </Section>
+
                 <Section level={3} title="A connect input that you can toggle at will.">
                     <Button
                         name={'Toggle input'}
@@ -178,6 +188,7 @@ const MultiValuesInputId = 'multivalue-id';
 const mapStateToProps = (state) => ({
     values: MultiValuesInputSelectors.getValues(state, MultiValuesInputId),
 });
+
 const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapStateToProps>> = ({values}) => {
     const validate = (value: any) => !!value;
     const disabledInputInnerClasses = 'mod-no-border input-wider-text-box disabled-input';
@@ -213,6 +224,14 @@ const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<type
                     id="multi-validate"
                     data={['Erase me to see the error']}
                     inputProps={validateInputProps}
+                />
+            </Section>
+            <Section level={3} title="Multi-value inputs disabled">
+                <MultiValuesInput
+                    id="multi-disabled"
+                    data={['First data!', 'second data']}
+                    inputProps={validateInputProps}
+                    disabled
                 />
             </Section>
         </>
