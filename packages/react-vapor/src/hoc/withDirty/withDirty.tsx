@@ -19,23 +19,26 @@ export interface IWithDirtyDispatchProps {
     toggleIsDirty: (isDirty: boolean) => void;
 }
 
-export interface IWithDirtyProps extends Partial<IWithDirtyStateProps>, Partial<IWithDirtyDispatchProps> {}
+export interface IWithDirtyProps
+    extends Partial<IWithDirty>,
+        Partial<IWithDirtyStateProps>,
+        Partial<IWithDirtyDispatchProps> {}
 
-export const withDirty = <T, R = any>(config: IWithDirty) => (
-    Component: React.ComponentType<IWithDirtyProps & T>
-): React.ComponentClass<IWithDirtyProps & T, R> => {
-    const mapStateToProps = (state: IReactVaporState): IWithDirtyStateProps => ({
-        isDirty: WithDirtySelectors.getIsDirty(state, {id: config.id}),
+export const withDirty = <T, R = any>(config: Partial<IWithDirty> = {}) => (
+    Component: React.ComponentType<Partial<IWithDirtyProps> & T>
+): React.ComponentClass<Partial<IWithDirtyProps> & T, R> => {
+    const mapStateToProps = (state: IReactVaporState, ownProps: IWithDirty): IWithDirtyStateProps => ({
+        isDirty: WithDirtySelectors.getIsDirty(state, {id: ownProps.id || config.id}),
     });
 
-    const mapDispatchToProps = (dispatch: IDispatch): IWithDirtyDispatchProps => ({
-        toggleIsDirty: (isDirty: boolean) => dispatch(WithDirtyActions.toggle(config.id, isDirty)),
+    const mapDispatchToProps = (dispatch: IDispatch, ownProps: IWithDirty): IWithDirtyDispatchProps => ({
+        toggleIsDirty: (isDirty: boolean) => dispatch(WithDirtyActions.toggle(ownProps.id || config.id, isDirty)),
     });
 
     @ReduxConnect(mapStateToProps, mapDispatchToProps)
     class ComponentWithDirty extends React.PureComponent<Partial<IWithDirtyProps> & T, R> {
         componentDidMount() {
-            this.props.toggleIsDirty(config.isDirty);
+            this.props.toggleIsDirty(this.props?.isDirty || config?.isDirty);
         }
 
         componentWillUnmount() {
@@ -43,10 +46,11 @@ export const withDirty = <T, R = any>(config: IWithDirty) => (
         }
 
         render() {
+            const {showDirty, isDirty, children} = this.props;
             return (
                 <>
-                    <Component {...this.props}>{this.props.children}</Component>
-                    {config.showDirty(this.props.isDirty)}
+                    <Component {...this.props}>{children}</Component>
+                    {showDirty?.(isDirty) || config.showDirty(isDirty)}
                 </>
             );
         }

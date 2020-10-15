@@ -1,10 +1,23 @@
 import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
-import {Button, InputConnected, Section, StickyFooter, withDirtyInputHOC, withDirtyStickyFooterHOC} from 'react-vapor';
+import * as _ from 'underscore';
+import {
+    Button,
+    InputConnected,
+    Section,
+    StickyFooter,
+    withDirtyInputHOC,
+    withDirtyStickyFooterHOC,
+    withDirty,
+    SplitLayout,
+    IWithDirty,
+    ISplitLayoutProps,
+} from 'react-vapor';
 
 import {ExampleComponent} from '../ComponentsInterface';
 
 const lorem = loremIpsum({count: 200});
+const lorem1 = loremIpsum({count: 50});
 
 export const FooterExample: ExampleComponent = () => (
     <>
@@ -31,12 +44,27 @@ const InputWithDirty = withDirtyInputHOC(InputConnected);
 const StickyFooterWithDirty = withDirtyStickyFooterHOC(StickyFooter);
 const INPUT_ID = 'input-for-something';
 
+const ContentWithStickyFooter: React.FunctionComponent<Partial<IWithDirty> & ISplitLayoutProps> = _.compose(
+    withDirty()
+)(SplitLayout);
+
 const StickyFooterWithDirtyExample: React.FunctionComponent = () => (
     <Section title="A sticky footer with dirty implementation example">
-        <InputWithDirty id={INPUT_ID} labelTitle="Change something here to trigger the dirty state" />
-        <div className="mt2">{lorem}</div>
-        <StickyFooterWithDirty className="sticky-footer-mod-header" validationIds={[INPUT_ID]}>
-            <Button primary name="fake button   " />
-        </StickyFooterWithDirty>
+        <ContentWithStickyFooter
+            id="FooterWithContent"
+            leftChildren={
+                <div>
+                    <InputWithDirty id={INPUT_ID} labelTitle="Change something here to trigger the dirty state" />
+                    <div className="mt2">{lorem1}</div>
+                </div>
+            }
+            rightChildren={<div>Right Children</div>}
+            showDirty={() => (
+                <StickyFooterWithDirty className="sticky-footer-mod-header" validationIds={[INPUT_ID]}>
+                    <Button primary name="fake button" />
+                </StickyFooterWithDirty>
+            )}
+            isDirty
+        />
     </Section>
 );
