@@ -1,6 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {
+    Button,
     FilterBoxSelectors,
     IFlatSelectOptionProps,
     IItemBoxProps,
@@ -8,14 +9,17 @@ import {
     ISingleSelectOwnProps,
     Section,
     selectWithFilter,
-    selectWithInfiniteScroll,
     SelectWithInfiniteScrollProps,
+    selectWithInfiniteScroll,
     SingleSelectConnected,
     SingleSelectWithFilter,
     SingleSelectWithPredicate,
     SingleSelectWithPredicateAndFilter,
     UUID,
     withServerSideProcessing,
+    withValidationMessage,
+    ValidationActions,
+    IDispatch,
 } from 'react-vapor';
 import * as _ from 'underscore';
 
@@ -58,6 +62,7 @@ const ids = [
     UUID.generate(),
     UUID.generate(),
     UUID.generate(),
+    UUID.generate(),
 ];
 
 const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
@@ -65,6 +70,8 @@ const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
     {id: UUID.generate(), option: {content: 'even'}},
     {id: UUID.generate(), option: {content: 'odd'}},
 ];
+
+const SingleSelectConnectedWithValidation = _.compose(withValidationMessage)(SingleSelectConnected);
 
 const matchPredicate = (predicate: string, item: IItemBoxProps) => {
     const value = parseInt(item.value, 10);
@@ -142,6 +149,9 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
                 options={defaultFlatSelectOptions}
             />
         </Section>
+        <Section level={3} title="A single select with an error message to show with a button">
+            <SingleSelectWithMessageExample />
+        </Section>
     </Section>
 );
 
@@ -159,6 +169,15 @@ const PER_PAGE = 10;
 const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) => ({
     filterValue: FilterBoxSelectors.getFilterText(state, props),
 });
+
+const SingleSelectWithMessageExample = connect(undefined, (dispatch: IDispatch) => ({
+    showMessage: () => dispatch(ValidationActions.setError(ids[8], 'error message!')),
+}))(({showMessage}: {showMessage: () => void}) => (
+    <>
+        <SingleSelectConnectedWithValidation id={ids[8]} items={defaultItems} placeholder="Select something" />
+        <Button name="Show message" classes="mt1" onClick={() => showMessage()} />
+    </>
+));
 
 const ServerSideSingleSelectExampleDisconnected: React.FunctionComponent<
     {id: string} & ReturnType<typeof mapStateToProps>

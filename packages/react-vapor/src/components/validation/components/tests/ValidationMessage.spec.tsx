@@ -1,5 +1,7 @@
-import {shallowWithState} from 'enzyme-redux';
+import {mountWithStore, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+import {getStoreMock} from '../../../../utils/tests/TestUtils';
+import {ValidationActions} from '../../ValidationActions';
 import {ValidationState} from '../../ValidationState';
 import {IValidationMessageProps, ValidationMessage, ValidationMessageClasses} from '../ValidationMessage';
 
@@ -27,6 +29,13 @@ describe('ValidationMessage', () => {
         const result = shallowWithState(<ValidationMessage {...defaultProps} />, {}).dive();
 
         expect(result.text()).toBe('');
+    });
+
+    it('should call the action cleanMessage on unmount to remove the message from the state', () => {
+        const store = getStoreMock({});
+        mountWithStore(<ValidationMessage {...defaultProps} />, store).unmount();
+
+        expect(store.getActions()).toContain(ValidationActions.cleanMessage(defaultProps.id));
     });
 
     it('should render nothing if the store does not contain errors for the given ID', () => {
