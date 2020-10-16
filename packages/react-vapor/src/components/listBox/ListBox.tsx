@@ -17,6 +17,7 @@ export interface IListBoxOwnProps {
     wrapItems?: (items: React.ReactNode) => React.ReactNode;
     footer?: React.ReactNode;
     isLoading?: boolean;
+    noActive?: boolean;
 }
 
 export interface IListBoxStateProps {
@@ -38,6 +39,7 @@ export class ListBox extends React.Component<IListBoxProps> {
             value: 'No Items',
         },
         wrapItems: _.identity,
+        noActive: false,
     };
 
     componentDidMount() {
@@ -75,13 +77,14 @@ export class ListBox extends React.Component<IListBoxProps> {
 
                     itemWithIndex.index = realIndex;
                     itemWithIndex.active = active;
+
                     realIndex++;
                 }
                 return itemWithIndex;
             })
             .map((itemWithIndex: IItemBoxPropsWithIndex) => {
                 if (!itemWithIndex.disabled && activeSet === false) {
-                    itemWithIndex.active = true;
+                    itemWithIndex.active = !this.props.noActive;
                     activeSet = true;
                 }
                 return itemWithIndex;
