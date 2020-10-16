@@ -118,6 +118,44 @@ describe('Multiline box with remove button', () => {
                 expect(wrapper.find(Button).length).toBe(1);
             });
 
+            it('should disable the button if the component is disabled', () => {
+                store = getStoreMock();
+
+                const wrapper = shallowComponentWithStore(
+                    DefaultMultilineBoxWithRemoveButton,
+                    {
+                        data: [],
+                        disabled: true,
+                    },
+                    store
+                );
+
+                expect(wrapper.find(Button).prop('enabled')).toBe(false);
+            });
+
+            it('should remove the button if the component is disabled and is last row', () => {
+                RTestUtils.mockUUID('test');
+                store = getStoreMock({
+                    multilineIds: {
+                        [id]: {
+                            id: id,
+                            list: ['test'],
+                        },
+                    },
+                });
+
+                const wrapper = shallowComponentWithStore(
+                    DefaultMultilineBoxWithRemoveButton,
+                    {
+                        data: [{name: 'a', isLast: true}],
+                        disabled: true,
+                    },
+                    store
+                );
+
+                expect(wrapper.find(Button).length).toBe(0);
+            });
+
             it('should trigger a dispatch to remove the id from the multiline box on click button', () => {
                 const testId = 'testid';
 

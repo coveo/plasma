@@ -160,6 +160,16 @@ describe('<Input />', () => {
             expect(input.find(Label).props()).toEqual(jasmine.objectContaining(labelProps));
         });
 
+        it('should set disabled prop on the input if we set the prop isReadOnly to true', () => {
+            shallowInput({
+                id: 'test',
+                defaultValue: 'value',
+                isReadOnly: true,
+            });
+
+            expect(input.find('input').props()).toEqual(jasmine.objectContaining({disabled: true}));
+        });
+
         describe('add classes on specific input type defined in validatedInputTypes', () => {
             it('should set the input-field class on the container if the input is of type text', () => {
                 shallowInput({

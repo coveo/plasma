@@ -59,6 +59,41 @@ describe('MultiValuesInput', () => {
         expect(body.find(InputConnected).length).toBe(arrayOfMultilineSingleBoxProps.length);
     });
 
+    it('should remove the last input if disabled', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultValues} disabled />,
+            {}
+        ).dive();
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
+            {}
+        );
+
+        expect(body.find(InputConnected).length).toBe(defaultValues.length);
+    });
+
+    it('should not remove the last input if enabled', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultValues} disabled={false} />,
+            {}
+        ).dive();
+        const body = shallowWithState(
+            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
+            {}
+        );
+
+        expect(body.find(InputConnected).length).toBe(defaultValues.length + 1);
+    });
+
+    it('should set disabled on MultilineBoxWithRemoveButton', () => {
+        const component = shallowWithState(
+            <MultiValuesInput {...defaultProps} data={defaultValues} disabled />,
+            {}
+        ).dive();
+
+        expect(component.prop('disabled')).toBe(true);
+    });
+
     it('should disabled the possibility to add an input if a dataLimit is set and reached', () => {
         const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
 
