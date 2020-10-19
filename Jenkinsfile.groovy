@@ -91,6 +91,16 @@ pipeline {
           sh "rm -rf node_modules"
           sh "npm run setup"
 
+          runSnyk(
+            org: "coveo-admin-ui",
+            directory: "./packages",
+            image: "snyk/snyk-cli:npm",
+            archiveArtifacts: true,
+            scanDevDependencies: false,
+            dockerVariableMap: ["NODE_OPTIONS": env.NODE_OPTIONS],
+            additionalParameters: "--all-projects --prune-repeated-subdependencies"
+          )
+
           if (env.BRANCH_NAME ==~ /(master|release-.*)/) {
             sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
