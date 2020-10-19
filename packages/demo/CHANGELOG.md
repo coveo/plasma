@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.5.0](https://github.com/coveo/react-vapor/compare/v8.4.0...v8.5.0) (2020-10-19)
+
+
+### Features
+
+* **listbox:** remove active ([b09ddc5](https://github.com/coveo/react-vapor/commit/b09ddc5c0d23aa4e1e6d15cfa95a4c16717fb467))
+
+
+
+
+
 # [8.4.0](https://github.com/coveo/react-vapor/compare/v8.3.0...v8.4.0) (2020-10-15)
 
 
