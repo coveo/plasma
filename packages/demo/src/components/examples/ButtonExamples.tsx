@@ -163,7 +163,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                     primary: true,
                                 }}
                             >
-                                <ListBox items={[{value: 'option 1'}, {value: 'option 2'}]} />
+                                <ListBox items={[{value: 'option 1'}, {value: 'option 2'}]} noActive />
                             </MenuConnected>
                         </div>
                     </Section>
@@ -188,6 +188,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                         {value: 'option 2'},
                                         {value: 'option with very long value 3'},
                                     ]}
+                                    noActive
                                 />
                             </MenuConnected>
                         </div>

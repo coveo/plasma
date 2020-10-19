@@ -163,5 +163,16 @@ describe('ListBox', () => {
                 expect(item.type()).toBe(ItemBoxLoading);
             });
         });
+
+        it('should render without active on any item if noActive is set as a prop', (done) => {
+            renderListBox({
+                noActive: true,
+            });
+
+            listBoxComponent.find(ItemBox).forEach((itemBox) => {
+                expect(itemBox.prop('active')).toBe(false);
+            });
+            done();
+        });
     });
 });
