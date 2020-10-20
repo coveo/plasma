@@ -4,6 +4,7 @@ export const ValidationActionsTypes = {
     updateError: 'UPDATE_VALIDATION_ERROR',
     updateWarning: 'UPDATE_VALIDATION_WARNING',
     updateDirty: 'UPDATE_VALIDATION_DIRTY',
+    cleanMessage: 'CLEAN_MESSAGE',
 };
 
 export const ValidationActions = {
@@ -37,4 +38,10 @@ export const ValidationActions = {
     }),
     clearDirty: (id: string, validationType: string = ValidationTypes.default) =>
         ValidationActions.setDirty(id, null, validationType),
+    cleanMessage: (id: string) => ({
+        type: ValidationActionsTypes.cleanMessage,
+        payload: {
+            id,
+        },
+    }),
 };

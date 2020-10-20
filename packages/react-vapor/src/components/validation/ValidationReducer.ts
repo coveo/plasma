@@ -2,10 +2,15 @@ import * as _ from 'underscore';
 import {ValidationActions, ValidationActionsTypes} from './ValidationActions';
 import {ValidationsState, ValidationState} from './ValidationState';
 
-type ValidationActions =
-    | ReturnType<typeof ValidationActions.setError>
-    | ReturnType<typeof ValidationActions.setWarning>
-    | ReturnType<typeof ValidationActions.setDirty>;
+type ValidationActions = {
+    type: string;
+    payload: {
+        id: string;
+        error?: string;
+        validationType?: string;
+        value?: any;
+    };
+};
 
 export const validationReducer = (state: ValidationsState = {}, action: ValidationActions): ValidationsState => {
     switch (action.type) {
@@ -15,6 +20,10 @@ export const validationReducer = (state: ValidationsState = {}, action: Validati
             return {
                 ...state,
                 [action.payload.id]: oneValidationReducer(state[action.payload.id], action),
+            };
+        case ValidationActionsTypes.cleanMessage:
+            return {
+                ..._.omit(state, action.payload.id),
             };
         default:
             return state;

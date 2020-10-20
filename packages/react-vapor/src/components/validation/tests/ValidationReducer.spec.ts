@@ -1,5 +1,6 @@
-import {ValidationActionsTypes} from '../ValidationActions';
+import {ValidationActions, ValidationActionsTypes} from '../ValidationActions';
 import {validationReducer} from '../ValidationReducer';
+import {ValidationTypes} from '../ValidationTypes';
 
 describe('ValidationReducer', () => {
     const componentId = '🐟';
@@ -246,6 +247,24 @@ describe('ValidationReducer', () => {
                 validationType: nonEmptyValidationType,
                 value: true,
             });
+        });
+    });
+
+    describe('clean', () => {
+        it('should remove the id from the state on cleanMessage', () => {
+            const id = '1';
+            const newState = validationReducer(
+                {
+                    [id]: {
+                        isDirty: [],
+                        error: [{validationType: ValidationTypes.default, value: 'error message'}],
+                        warning: [],
+                    },
+                },
+                ValidationActions.cleanMessage(id)
+            );
+
+            expect(newState[id]).toBeUndefined();
         });
     });
 });
