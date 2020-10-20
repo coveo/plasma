@@ -1,88 +1,113 @@
+import {shallow} from 'enzyme';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {BlankSlateWithTable} from '../../blankSlate';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
 
-describe('Table HOC', () => {
-    describe('TableWithBlankSlate', () => {
-        const TableWithBlankSlate = _.compose(tableWithBlankSlate())(TableHOC);
+describe('TableWithBlankSlate', () => {
+    const TableWithBlankSlate: ReturnType<ReturnType<typeof tableWithBlankSlate>> = _.compose(tableWithBlankSlate())(
+        TableHOC
+    );
 
-        const defaultProps: ITableHOCProps = {
-            id: 'a',
-            data: [],
-            renderBody: _.identity,
-        };
+    const basicProps: ITableHOCProps = {
+        id: 'a',
+        data: [],
+        renderBody: _.identity,
+    };
 
-        it('should not throw', () => {
-            expect(() => {
-                shallowWithState(<TableWithBlankSlate {...defaultProps} />, {});
-                shallowWithState(<TableWithBlankSlate {...defaultProps} data={[{value: 'a'}]} />, {});
-            }).not.toThrow();
-        });
+    it('should not throw', () => {
+        expect(() => {
+            shallowWithState(<TableWithBlankSlate {...basicProps} />, {});
+            shallowWithState(<TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} />, {});
+        }).not.toThrow();
+    });
 
-        describe('props and content', () => {
-            const shallowWithProps = (props: Partial<ITableHOCProps> = {}) =>
-                shallowWithState(<TableWithBlankSlate {...defaultProps} {...props} />, {});
+    it('should render a TableHOC', () => {
+        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} />, {}).dive();
 
-            let renderSpy: jasmine.Spy;
-            beforeEach(() => {
-                renderSpy = jasmine.createSpy('render');
-            });
+        expect(wrapper.find(TableHOC).exists()).toBe(true);
+    });
 
-            it('should render a TableHOC', () => {
-                const wrapper = shallowWithProps().dive();
+    it('should override the TableHOC renderBody method when the data is empty and "renderBlankSlateOnly" is false', () => {
+        const renderSpy = jasmine.createSpy('render');
+        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {}).dive();
+        const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
+        tableRenderBody();
 
-                expect(wrapper.find(TableHOC).exists()).toBe(true);
-            });
+        expect(renderSpy).not.toHaveBeenCalled();
+    });
 
-            it('should override the TableHOC renderBody method when the data is empty', () => {
-                const wrapper = shallowWithProps({renderBody: renderSpy}).dive();
-                const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
-                tableRenderBody();
+    it('should render a BlankSlateWithTable when the data is empty', () => {
+        const renderedBody = shallow(
+            <div>
+                {shallowWithState(<TableWithBlankSlate {...basicProps} />, {})
+                    .dive()
+                    .prop<() => React.ReactNode>('renderBody')()}
+            </div>
+        ).children();
 
-                expect(renderSpy).not.toHaveBeenCalled();
-            });
+        expect(renderedBody.type()).toBe(BlankSlateWithTable);
+    });
 
-            it('should override the TableHOC renderBody method to return a BlankSlateWithTable when the data is empty', () => {
-                const wrapper = shallowWithProps({renderBody: renderSpy}).dive();
-                wrapper.find(TableHOC).prop('renderBody');
+    it('should render the custom blankslate provided in the "renderBlankslate" prop if it exists and the data is empty', () => {
+        const MyCustomBlankslate = () => <div>I prefer this blankslate over the default one.</div>;
+        const renderedBody = shallow(
+            <div>
+                {shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlate={<MyCustomBlankslate />} />, {})
+                    .dive()
+                    .prop<() => React.ReactNode>('renderBody')()}
+            </div>
+        ).children();
 
-                expect(renderSpy).toHaveBeenCalledTimes(0);
-            });
+        expect(renderedBody.type()).toBe(MyCustomBlankslate);
+    });
 
-            it('should not override the TableHOC renderBody method when there is data', () => {
-                const wrapper = shallowWithProps({data: [{value: 'a'}], renderBody: renderSpy}).dive();
-                const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
-                tableRenderBody();
+    it('should not render anything else than the blankslate if "renderBlankslateOnly" is true and the data is empty', () => {
+        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
 
-                expect(renderSpy).toHaveBeenCalledTimes(1);
-            });
+        expect(wrapper.type()).toBe(BlankSlateWithTable);
+    });
 
-            it('should update the renderBody when the data is empty', () => {
-                shallowWithProps({renderBody: renderSpy}).dive();
+    it('should not override the TableHOC renderBody method when there is data', () => {
+        const renderSpy = jasmine.createSpy('render');
+        const wrapper = shallowWithState(
+            <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
+            {}
+        ).dive();
+        const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
+        tableRenderBody();
 
-                expect(renderSpy).toHaveBeenCalledTimes(0);
-            });
+        expect(renderSpy).toHaveBeenCalledTimes(1);
+    });
 
-            it('should not render a BlankSlate when the data is null', () => {
-                shallowWithProps({data: null, renderBody: renderSpy}).dive().dive();
+    it('should update the renderBody when the data is empty', () => {
+        const renderSpy = jasmine.createSpy('render');
+        shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {}).dive();
 
-                expect(renderSpy).toHaveBeenCalledTimes(1);
-            });
+        expect(renderSpy).toHaveBeenCalledTimes(0);
+    });
 
-            it('should render the first BlankSlate when the data is empty', () => {
-                const expectedTitle = 'First';
-                const TableWithDoubleBlankSlate = _.compose(
-                    tableWithBlankSlate({title: expectedTitle}),
-                    tableWithBlankSlate({title: 'Second'})
-                )(TableHOC);
+    it('should not render a BlankSlate when the data is null', () => {
+        const renderSpy = jasmine.createSpy('render');
+        shallowWithState(<TableWithBlankSlate {...basicProps} data={null} renderBody={renderSpy} />, {})
+            .dive()
+            .dive();
 
-                const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...defaultProps} />, {});
+        expect(renderSpy).toHaveBeenCalledTimes(1);
+    });
 
-                expect((wrapper.dive().props() as any).renderBody().props.title).toBe(expectedTitle);
-            });
-        });
+    it('should render the first BlankSlate when the data is empty', () => {
+        const expectedTitle = 'First';
+        const TableWithDoubleBlankSlate = _.compose(
+            tableWithBlankSlate({title: expectedTitle}),
+            tableWithBlankSlate({title: 'Second'})
+        )(TableHOC);
+
+        const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...basicProps} />, {});
+
+        expect((wrapper.dive().props() as any).renderBody().props.title).toBe(expectedTitle);
     });
 });
