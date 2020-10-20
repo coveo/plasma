@@ -37,6 +37,7 @@ export interface IMultilineBoxOwnProps<T = any> {
         boxProps: IMultilineSingleBoxProps<T>,
         parentProps: IMultilineParentProps
     ) => React.ReactNode;
+    disabled?: boolean;
 }
 
 export interface IMultilineBoxStateProps {
