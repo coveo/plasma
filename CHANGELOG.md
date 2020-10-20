@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.7.0](https://github.com/coveo/react-vapor/compare/v8.6.0...v8.7.0) (2020-10-20)
+
+
+### Features
+
+* **multivalue:** can disabled ([4b41697](https://github.com/coveo/react-vapor/commit/4b41697055a772ec767c7f3a87f87772553b5943))
+* **validation-message:** clean state on unmout ([5c93d0c](https://github.com/coveo/react-vapor/commit/5c93d0c5cb429088a26fd2cbd2ee962ed7b80fca))
+
+
+
+
+
 # [8.6.0](https://github.com/coveo/react-vapor/compare/v8.5.0...v8.6.0) (2020-10-20)
 
 
