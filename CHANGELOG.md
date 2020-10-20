@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.6.0](https://github.com/coveo/react-vapor/compare/v8.5.0...v8.6.0) (2020-10-20)
+
+
+### Features
+
+* **svg:** add slack icon for trial dashboard ([#1706](https://github.com/coveo/react-vapor/issues/1706)) ([db631a8](https://github.com/coveo/react-vapor/commit/db631a89024c4bfcd1d6459a83d486afd5bc66e4))
+* **svg:** add unchecked icon ([#1708](https://github.com/coveo/react-vapor/issues/1708)) ([8e0f131](https://github.com/coveo/react-vapor/commit/8e0f131cbcda97c2f6d0d5a42fb25f89c279393e))
+
+
+
+
+
 # [8.5.0](https://github.com/coveo/react-vapor/compare/v8.4.0...v8.5.0) (2020-10-19)
 
 
