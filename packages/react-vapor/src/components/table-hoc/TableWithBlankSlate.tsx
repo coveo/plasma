@@ -11,7 +11,8 @@ import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithBlankSlateStateProps {
-    isEmpty: boolean;
+    renderBlankSlate?: React.ReactNode;
+    renderBlankSlateOnly?: boolean;
 }
 
 export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateStateProps> {}
@@ -20,11 +21,10 @@ const TableWithBlankSlatePropsToOmit = keys<ITableWithBlankSlateStateProps>();
 
 export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) => (
     Component: React.ComponentClass<ITableHOCOwnProps>
-): React.ComponentClass<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>> => {
-    const mapStateToProps = (
-        state: IReactVaporState,
-        ownProps: ITableHOCOwnProps
-    ): ITableWithBlankSlateStateProps | ITableHOCOwnProps => {
+): React.ComponentClass<ITableHOCOwnProps & ITableWithBlankSlateProps & React.HTMLAttributes<HTMLTableElement>> => {
+    const config = HocUtils.supplyConfig(supplier);
+    const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
+    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => {
         const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,
@@ -33,13 +33,18 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
     };
 
     @ReduxConnect(mapStateToProps)
-    class TableWithBlankSlate extends React.Component<ITableHOCOwnProps & ITableWithBlankSlateProps> {
+    class TableWithBlankSlate extends React.Component<
+        ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>
+    > {
         render() {
-            const newProps = {
-                ..._.omit(this.props, [...TableWithBlankSlatePropsToOmit]),
-                renderBody: this.props.isEmpty
-                    ? () => <BlankSlateWithTable {...HocUtils.supplyConfig(supplier)} />
-                    : this.props.renderBody,
+            const renderBlankslate = this.props.renderBlankSlate || defaultRenderBlankSlateMethod;
+            if (this.props.isEmpty && this.props.renderBlankSlateOnly) {
+                return renderBlankslate;
+            }
+
+            const newProps: ITableHOCOwnProps = {
+                ..._.omit(this.props, TableWithBlankSlatePropsToOmit),
+                renderBody: this.props.isEmpty ? () => renderBlankslate : this.props.renderBody,
             };
 
             return <Component {...newProps}>{this.props.children}</Component>;
