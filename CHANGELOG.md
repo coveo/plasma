@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.8.0](https://github.com/coveo/react-vapor/compare/v8.7.0...v8.8.0) (2020-10-21)
+
+
+### Features
+
+* **svg:** update 3 icons for trial dashboard ([#1709](https://github.com/coveo/react-vapor/issues/1709)) ([12b9fa4](https://github.com/coveo/react-vapor/commit/12b9fa48aa3cc68ec6a82991c0384d6f948c0f43))
+
+
+
+
+
 # [8.7.0](https://github.com/coveo/react-vapor/compare/v8.6.0...v8.7.0) (2020-10-20)
 
 
