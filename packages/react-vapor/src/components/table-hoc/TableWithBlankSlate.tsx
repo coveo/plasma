@@ -1,9 +1,7 @@
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
-import * as _ from 'underscore';
+import {connect} from 'react-redux';
 
 import {IReactVaporState} from '../../ReactVapor';
-import {ReduxConnect} from '../../utils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IBlankSlateWithTableProps} from '../blankSlate';
 import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
@@ -11,45 +9,40 @@ import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithBlankSlateStateProps {
-    renderBlankSlate?: React.ReactNode;
+    renderBlankSlate?: JSX.Element;
     renderBlankSlateOnly?: boolean;
 }
 
 export interface ITableWithBlankSlateProps extends Partial<ITableWithBlankSlateStateProps> {}
 
-const TableWithBlankSlatePropsToOmit = keys<ITableWithBlankSlateStateProps>();
-
 export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTableProps> = {}) => (
-    Component: React.ComponentClass<ITableHOCOwnProps>
-): React.ComponentClass<ITableHOCOwnProps & ITableWithBlankSlateProps & React.HTMLAttributes<HTMLTableElement>> => {
+    Component: React.ComponentClass<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>>
+): React.ComponentType<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps> => {
     const config = HocUtils.supplyConfig(supplier);
     const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => {
-        const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
+    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps & ITableWithBlankSlateProps) => {
+        const isEmpty = ownProps.renderBlankSlateOnly
+            ? TableSelectors.getIsTruelyEmpty(state, ownProps)
+            : TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,
             data: isEmpty ? null : ownProps.data,
         };
     };
 
-    @ReduxConnect(mapStateToProps)
-    class TableWithBlankSlate extends React.Component<
+    const TableWithBlankSlate: React.FunctionComponent<
         ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>
-    > {
-        render() {
-            const renderBlankslate = this.props.renderBlankSlate || defaultRenderBlankSlateMethod;
-            if (this.props.isEmpty && this.props.renderBlankSlateOnly) {
-                return renderBlankslate;
-            }
+    > = (props) => {
+        const {renderBlankSlate, renderBlankSlateOnly, isEmpty, ...tableProps} = props;
 
-            const newProps: ITableHOCOwnProps = {
-                ..._.omit(this.props, TableWithBlankSlatePropsToOmit),
-                renderBody: this.props.isEmpty ? () => renderBlankslate : this.props.renderBody,
-            };
+        const blankSlateToRender = renderBlankSlate || defaultRenderBlankSlateMethod;
 
-            return <Component {...newProps}>{this.props.children}</Component>;
+        if (isEmpty && renderBlankSlateOnly) {
+            return blankSlateToRender;
         }
-    }
 
-    return TableWithBlankSlate;
+        return <Component {...tableProps} renderBody={isEmpty ? () => blankSlateToRender : props.renderBody} />;
+    };
+
+    return connect(mapStateToProps)(TableWithBlankSlate);
 };

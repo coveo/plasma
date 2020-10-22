@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 
 import {BlankSlateWithTable} from '../../blankSlate';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
+import {TableSelectors} from '../TableSelectors';
 import {tableWithBlankSlate} from '../TableWithBlankSlate';
 
 describe('TableWithBlankSlate', () => {
@@ -65,12 +66,6 @@ describe('TableWithBlankSlate', () => {
         expect(renderedBody.type()).toBe(MyCustomBlankslate);
     });
 
-    it('should not render anything else than the blankslate if "renderBlankslateOnly" is true and the data is empty', () => {
-        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
-
-        expect(wrapper.type()).toBe(BlankSlateWithTable);
-    });
-
     it('should not override the TableHOC renderBody method when there is data', () => {
         const renderSpy = jasmine.createSpy('render');
         const wrapper = shallowWithState(
@@ -106,8 +101,24 @@ describe('TableWithBlankSlate', () => {
             tableWithBlankSlate({title: 'Second'})
         )(TableHOC);
 
-        const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...basicProps} />, {});
+        const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...basicProps} />, {}).dive();
 
-        expect((wrapper.dive().props() as any).renderBody().props.title).toBe(expectedTitle);
+        expect(wrapper.prop<() => JSX.Element>('renderBody')().props.title).toBe(expectedTitle);
+    });
+
+    describe('when "renderBlankSlateOnly" prop is set to true', () => {
+        it('should not render anything else than the blankslate if the table is truely empty', () => {
+            spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(true);
+            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
+
+            expect(wrapper.type()).toBe(BlankSlateWithTable);
+        });
+
+        it('should render the blank slate in the table body if the table is not truely empty', () => {
+            spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(false);
+            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
+
+            expect(wrapper.type()).toBe(TableHOC);
+        });
     });
 });

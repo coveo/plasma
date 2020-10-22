@@ -1,6 +1,5 @@
 const path = require('path');
 const webpack = require('webpack');
-const isJenkins = !!process.env.JENKINS_HOME;
 const skipCoverageProcessing = process.env.npm_lifecycle_script.indexOf('--browsers Chrome') !== -1;
 const keysTransformer = require('ts-transformer-keys/transformer').default;
 
@@ -14,18 +13,6 @@ module.exports = function (options) {
         },
         module: {
             rules: [
-                {
-                    enforce: 'pre',
-                    test: /\.spec\.ts(x?)$/i,
-                    exclude: [/node_modules/],
-                    use: {
-                        loader: 'eslint-loader',
-                        options: {
-                            fix: !isJenkins,
-                            failOnError: !!isJenkins,
-                        },
-                    },
-                },
                 {
                     /**
                      *  Transform let and const to var in js files below to make them ES5 compatible
