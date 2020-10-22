@@ -187,5 +187,6 @@
             "git add"
         ]
     },
+    "prettier": "tsjs/prettier-config",
     "snyk": true
 }
