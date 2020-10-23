@@ -17,3 +17,4 @@ export * from './TableWithUrlState';
 export * from './actions';
 export * from './reducers';
 export * from './TableRowHeader';
+export * from './TableWithPrepend';
