@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.9.0](https://github.com/coveo/react-vapor/compare/v8.8.0...v8.9.0) (2020-10-23)
+
+
+### Bug Fixes
+
+* **tablewithblankslate:** check if data is truely empty ([ab76697](https://github.com/coveo/react-vapor/commit/ab76697ff94debdccc57f3277bc6f2652d3b8f67))
+
+
+### Features
+
+* **tablewithprepend:** new table HOC to deal with prepended content ([d581391](https://github.com/coveo/react-vapor/commit/d581391e6d3b5bf407931f04b5947db0d019d006))
+
+
+
+
+
 # [8.8.0](https://github.com/coveo/react-vapor/compare/v8.7.0...v8.8.0) (2020-10-21)
 
 
