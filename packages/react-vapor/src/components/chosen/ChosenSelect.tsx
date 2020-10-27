@@ -86,9 +86,9 @@ export class ChosenSelect extends React.Component<IChosenSelectProps, any> {
     }
 
     /**
-     * HACK: Since we cannot overrdide onChange method signature (provided by React.HTMLProps<HTMLSelectElement>), since onChange is
+     * HACK: Since we cannot override onChange method signature (provided by React.HTMLProps<HTMLSelectElement>), since onChange is
      * required by React when a value has been specified (component becomes "controlled") and because chosen does not trigger the change
-     * event on the <select> and foces us to use jQuery, we added a onChosenChange prop and faked the onChange prop.
+     * event on the <select> and forces us to use jquery, we added a onChosenChange prop and faked the onChange prop.
      *
      * @returns {JSX.Element | null}
      */

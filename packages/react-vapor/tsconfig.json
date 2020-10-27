@@ -18,5 +18,5 @@
             }
         ]
     },
-    "exclude": ["**/node_modules", "**/dist", "**/coverage", "*.js", "**/target"]
+    "exclude": ["**/node_modules", "**/dist", "**/coverage", "*.js", "**/target", "**/setupTests"]
 }

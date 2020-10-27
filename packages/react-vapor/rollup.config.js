@@ -38,7 +38,7 @@ export default {
     external: Object.keys(globals),
     onwarn,
     plugins: [
-        resolve(),
+        resolve({browser: true}),
         commonjs({
             namedExports: {
                 'hogan.js': ['Template', 'compile'],
