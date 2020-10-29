@@ -85,16 +85,18 @@ const RadioSelectExample: React.FunctionComponent = () => (
             </RadioSelectConnected>
         </LabeledInput>
         <Section level={3}>
-            <Button
-                enabled
-                name="disable blue option"
-                onClick={() => Store.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: ['blue']}))}
-            />
-            <Button
-                enabled
-                name="enable blue option"
-                onClick={() => Store.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: []}))}
-            />
+            <div className="btn-container">
+                <Button
+                    enabled
+                    name="disable blue option"
+                    onClick={() => Store.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: ['blue']}))}
+                />
+                <Button
+                    enabled
+                    name="enable blue option"
+                    onClick={() => Store.dispatch(setRadioSelect(radioSelectConnectedId, {disabledValues: []}))}
+                />
+            </div>
         </Section>
     </Section>
 );
@@ -102,17 +104,15 @@ const RadioSelectExample: React.FunctionComponent = () => (
 const RadioSelectDisabledExample: React.FunctionComponent = () => (
     <Section level={3}>
         <LabeledInput label="A Radio Select with all options disabled">
-            <RadioSelectConnected
-                value="a-value"
-                disabled
-                onMount={() => 'I am Mounted, just for you!'}
-                onUnmount={() => 'This is the end, my friend...'}
-            >
+            <RadioSelectConnected id="RadioConnectedDisabled" valueOnMount="yellow" disabled>
                 <Radio id="Option4" name="disabledOptions" value="yellow">
                     <Label>Yellow</Label>
                 </Radio>
                 <Radio id="Option5" name="disabledOptions" value="red">
                     <Label>Red</Label>
+                </Radio>
+                <Radio id="Option6" name="disabledOptions" value="purple">
+                    <Label>purple</Label>
                 </Radio>
             </RadioSelectConnected>
         </LabeledInput>

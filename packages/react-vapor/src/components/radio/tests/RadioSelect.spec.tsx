@@ -137,6 +137,22 @@ describe('<RadioSelect />', () => {
             expect(spyOnChange).toHaveBeenCalledTimes(1);
         });
 
+        it('should not call onChange prop when the child call onClick if the component is disabled', () => {
+            const spyOnChange = jasmine.createSpy('onChange');
+            shallowRadioSelect({
+                onChange: spyOnChange,
+                disabled: true,
+            });
+
+            radioSelect
+                .find(Radio)
+                .first()
+                .props()
+                .onClick({} as any);
+
+            expect(spyOnChange).toHaveBeenCalledTimes(0);
+        });
+
         it('should call onChangeCallback prop when the child call onClick', () => {
             const spyOnChangeCallback = jasmine.createSpy('onChangeCallback');
             shallowRadioSelect({

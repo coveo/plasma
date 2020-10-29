@@ -17,7 +17,7 @@ export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
     disabled?: boolean;
     disabledTooltip?: string;
     children?: Array<React.ReactElement<typeof Radio>> | Array<React.ReactElement<ToggleForm>>;
-    onChangeCallback?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>) => void;
+    onChangeCallback?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>, disabled?: boolean) => void;
 }
 
 export interface IRadioSelectConnectedProps {
@@ -42,6 +42,10 @@ export interface IRadioSelectAllProps
         IRadioSelectStateProps {}
 
 export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
+    static defaultProps: Partial<IRadioSelectAllProps> = {
+        disabled: false,
+    };
+
     componentDidMount() {
         this.props.onMount?.(this.props.id, this.props.valueOnMount, this.props.disabledValuesOnMount);
     }
@@ -70,8 +74,10 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
     }
 
     private handleToggle(value: string, e: React.MouseEvent<HTMLElement>) {
-        this.props.onChange?.(value, this.props.id, e);
-        this.props.onChangeCallback?.(value, this.props.id, e);
+        if (!this.props.disabled) {
+            this.props.onChange?.(value, this.props.id, e);
+        }
+        this.props.onChangeCallback?.(value, this.props.id, e, this.props.disabled);
     }
 
     private isValueDisabled(childValue: string): boolean {
