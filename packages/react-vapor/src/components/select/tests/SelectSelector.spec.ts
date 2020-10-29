@@ -58,6 +58,36 @@ describe('Select', () => {
             });
         });
 
+        describe('getSelectedValue', () => {
+            const items: string[] = ['a', 'b'];
+            const listBox: IListBoxState = {id, selected: items};
+
+            it('should return only the first element selected', () => {
+                expect(SelectSelector.getSelectedValue({listBoxes: [listBox]}, defaultOwnProps)).toEqual('a');
+            });
+
+            it('should return nothing if no selected', () => {
+                expect(SelectSelector.getSelectedValue({listBoxes: [{id, selected: []}]}, defaultOwnProps)).toBe(
+                    undefined
+                );
+            });
+        });
+
+        describe('getSelectedValues', () => {
+            const items: string[] = ['a', 'b'];
+            const listBox: IListBoxState = {id, selected: items};
+
+            it('should return all elements selected', () => {
+                expect(SelectSelector.getSelectedValues({listBoxes: [listBox]}, defaultOwnProps)).toEqual(['a', 'b']);
+            });
+
+            it('should return nothing if no selected', () => {
+                expect(SelectSelector.getSelectedValues({listBoxes: [{id, selected: []}]}, defaultOwnProps)).toEqual(
+                    []
+                );
+            });
+        });
+
         describe('Combiner', () => {
             describe('itemsWithFilterCombiner', () => {
                 const items: IItemBoxProps[] = [{value: 'a'}];
