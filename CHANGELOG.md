@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.10.0](https://github.com/coveo/react-vapor/compare/v8.9.0...v8.10.0) (2020-11-03)
+
+
+### Features
+
+* **selector:** select ([e768332](https://github.com/coveo/react-vapor/commit/e768332e1c1031beee17e909f7fc740b94c3f865))
+
+
+
+
+
 # [8.9.0](https://github.com/coveo/react-vapor/compare/v8.8.0...v8.9.0) (2020-10-23)
 
 
