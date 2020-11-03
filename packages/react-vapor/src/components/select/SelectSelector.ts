@@ -56,8 +56,11 @@ const getServerFilteredItems = createSelector(
 );
 
 const listBoxSelectedCombiner = (listBox: IListBoxState): string[] => listBox?.selected ?? [];
+const listBoxSelectedValueCombiner = (listBox: IListBoxState): string => _.first(listBox?.selected ?? []);
 
 const getListBoxSelected = createSelector(getListBox, listBoxSelectedCombiner);
+
+const getSelectedValue = createSelector(getListBox, listBoxSelectedValueCombiner);
 
 const getListBoxActive = createSelector(getListBox, (listBox: IListBoxState) => listBox.active);
 
@@ -83,6 +86,8 @@ export const SelectSelector = {
     getCustomItemsWithFilter,
     getMultiSelectSelectedValues,
     getServerFilteredItems,
+    getSelectedValue,
+    getSelectedValues: getListBoxSelected,
 };
 
 export const SelectCombiners = {
