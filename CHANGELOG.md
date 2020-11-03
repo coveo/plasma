@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.10.1](https://github.com/coveo/react-vapor/compare/v8.10.0...v8.10.1) (2020-11-03)
+
+
+### Bug Fixes
+
+* **disabled:** radio select ([9defe9c](https://github.com/coveo/react-vapor/commit/9defe9cc19f6e36bd73dfa4da858b27a7e4e3541))
+
+
+
+
+
 # [8.10.0](https://github.com/coveo/react-vapor/compare/v8.9.0...v8.10.0) (2020-11-03)
 
 
