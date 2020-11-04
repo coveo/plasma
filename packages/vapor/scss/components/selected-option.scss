@@ -31,6 +31,9 @@
     text-overflow: ellipsis;
 
     @extend .selected-option-item;
+    &.readOnly {
+        margin-right: $dropdown-multiselect-items-margin;
+    }
 }
 
 .move-option {

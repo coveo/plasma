@@ -3,13 +3,13 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
-import {Tooltip} from '../../tooltip/Tooltip';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {SelectedOption} from '../../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
+import {Tooltip} from '../../tooltip/Tooltip';
 import {IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
 import {ISelectOwnProps, SelectConnected} from '../SelectConnected';
 import {SelectSelector} from '../SelectSelector';
@@ -212,6 +212,43 @@ describe('Select', () => {
             state = _.findWhere(store.getState().listBoxes, {id});
 
             expect(state.selected).toEqual([]);
+        });
+
+        it('should not render a X icon when readOnly is true', () => {
+            const firstSelected = 'dis 1';
+            const secondSelected = 'dis two';
+
+            mountMultiSelect(
+                [{value: 'a'}, {value: firstSelected, selected: true}, {value: secondSelected, selected: true}],
+                {readOnly: true}
+            );
+
+            expect(multiSelect.find(SelectedOption).at(0).find('.remove-option').length).toBe(0);
+            expect(multiSelect.find(SelectedOption).at(1).find('.remove-option').length).toBe(0);
+        });
+
+        it('should not render a X icon that remove all selected options when readOnly is true', () => {
+            const firstSelected = 'dis 1';
+            const secondSelected = 'dis two';
+
+            mountMultiSelect(
+                [{value: 'a'}, {value: firstSelected, selected: true}, {value: secondSelected, selected: true}],
+                {readOnly: true}
+            );
+
+            expect(multiSelect.find('.remove-all-selected-options').length).toBe(0);
+        });
+
+        it('should not render the dropdown if readOnly is true', () => {
+            mountMultiSelect(
+                [
+                    {value: 'a', selected: true},
+                    {value: 'b', selected: true},
+                ],
+                {readOnly: true}
+            );
+
+            expect(multiSelect.find('.multiselect-add').length).toBe(0);
         });
     });
 });

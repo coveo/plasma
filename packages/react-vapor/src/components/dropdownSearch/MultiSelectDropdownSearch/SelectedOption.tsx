@@ -1,14 +1,16 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 import {TooltipPlacement} from '../../../utils/TooltipUtils';
 import {Svg} from '../../svg/Svg';
-import {Tooltip, ITooltipProps} from '../../tooltip/Tooltip';
+import {ITooltipProps, Tooltip} from '../../tooltip/Tooltip';
 
 export interface ISelectedOptionProps {
     value: string;
     label: React.ReactNode;
     selectedTooltip: ITooltipProps;
     onRemoveClick?: (value: string) => void;
+    readOnly?: boolean;
 }
 
 export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
@@ -28,14 +30,16 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
                     {...this.props.selectedTooltip}
                     title={tooltipCustomLabel ?? tooltipLabel}
                     placement={tooltipPosition ?? TooltipPlacement.Top}
-                    className="selected-option-value"
+                    className={classNames('selected-option-value', {readOnly: this.props.readOnly})}
                 >
                     {tooltipContent}
                 </Tooltip>
 
-                <div className="remove-option" onClick={this.handleOnRemove}>
-                    <Svg svgName="clear" svgClass="icon fill-medium-blue mod-small" />
-                </div>
+                {!this.props.readOnly && (
+                    <div className="remove-option" onClick={this.handleOnRemove}>
+                        <Svg svgName="clear" svgClass="icon fill-medium-blue mod-small" />
+                    </div>
+                )}
             </div>
         );
     }
