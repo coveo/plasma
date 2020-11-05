@@ -146,7 +146,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                         placeholder="Select something"
                         deselectAllTooltipText="Remove all"
                         sortable
-                        readOnly
                     />
                 </div>
                 <div className="form-group">
@@ -156,6 +155,13 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">A Multi Select With Filter and Custom Values</label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        A Multi Select With Filter and Custom Values in readonly
+                    </label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues readOnly />
                 </div>
