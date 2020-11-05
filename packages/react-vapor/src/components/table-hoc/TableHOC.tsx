@@ -41,7 +41,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
         hasActionButtons: false,
         actions: [],
         showBorderTop: false,
-        showBorderBottom: false,
+        showBorderBottom: true,
         loading: {
             isCard: false,
             numberOfColumns: 5,
