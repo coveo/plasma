@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.10.2](https://github.com/coveo/react-vapor/compare/v8.10.1...v8.10.2) (2020-11-06)
+
+
+### Bug Fixes
+
+* **tablehoc:** set the showBorderBottom to true by default ([7a879c8](https://github.com/coveo/react-vapor/commit/7a879c8dcde78c3bcf312b141e7a7043e44964c6))
+
+
+
+
+
 ## [8.10.1](https://github.com/coveo/react-vapor/compare/v8.10.0...v8.10.1) (2020-11-03)
 
 
