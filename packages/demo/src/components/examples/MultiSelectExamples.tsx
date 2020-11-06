@@ -160,6 +160,13 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">
+                        A Multi Select With Filter and without selected values in readonly
+                    </label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues readOnly />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">
                         A Multi Select With Filter and Custom Values in readonly
                     </label>
                     <br />

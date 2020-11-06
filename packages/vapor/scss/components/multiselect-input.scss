@@ -36,6 +36,7 @@
     }
     &.readOnly {
         .selected-option,
+        .multiselect-empty,
         .sortable-selected-option:last-child {
             margin-bottom: 0;
         }
