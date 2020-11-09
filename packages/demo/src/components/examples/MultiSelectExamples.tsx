@@ -13,9 +13,9 @@ import {
     ValidationMessage,
     withInitialValuesMultiSelectHOC,
     withNonEmptyMultiSelectHOC,
-    Tooltip,
 } from 'react-vapor';
 import * as _ from 'underscore';
+
 import {TooltipPlacement} from '../../../../react-vapor/src/utils/TooltipUtils';
 
 const defaultItems: IItemBoxProps[] = [
@@ -99,6 +99,7 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
             _.extend({}, item, {append: {content: () => <span className="text-medium-grey ml1">{item.value}</span>}})
         );
         hoc[0].selected = true;
+        hoc[1].selected = true;
 
         this.state = {
             first: _.clone(defaultItems),
@@ -141,7 +142,7 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     <br />
                     <MultiSelectConnected
                         id={UUID.generate()}
-                        items={this.state.first}
+                        items={this.state.hoc}
                         placeholder="Select something"
                         deselectAllTooltipText="Remove all"
                         sortable
@@ -156,6 +157,20 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     <label className="form-control-label">A Multi Select With Filter and Custom Values</label>
                     <br />
                     <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        A Multi Select With Filter and without selected values in readonly
+                    </label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues readOnly />
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">
+                        A Multi Select With Filter and Custom Values in readonly
+                    </label>
+                    <br />
+                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues readOnly />
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">A Multi Select With Filter, Custom Values and no items</label>

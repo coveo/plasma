@@ -34,6 +34,13 @@
     .sortable-selected-option {
         margin: 0 $dropdown-multiselect-margin $dropdown-multiselect-margin 0;
     }
+    &.readOnly {
+        .selected-option,
+        .multiselect-empty,
+        .sortable-selected-option:last-child {
+            margin-bottom: 0;
+        }
+    }
 }
 
 .multiselect-input.mod-sortable .selected-options-container {

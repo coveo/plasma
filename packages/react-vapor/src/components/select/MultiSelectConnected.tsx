@@ -26,6 +26,7 @@ export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button'>, I
     sortable?: boolean;
     noDisabled?: boolean;
     multiSelectStyle?: React.CSSProperties;
+    readOnly?: boolean;
 }
 
 export interface IMultiSelectProps
@@ -100,6 +101,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                 value={item.value}
                 key={item.value}
                 onRemoveClick={() => this.props.onRemoveClick(item)}
+                readOnly={this.props.readOnly}
             >
                 {displayValue}
             </SelectedOption>
@@ -108,7 +110,12 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
 
     private renderDraggableOption(item: IItemBoxProps, index: number): JSX.Element {
         return (
-            <div className="flex flex-row flex-center sortable-selected-option" key={item.value}>
+            <div
+                className={classNames('flex flex-row flex-center sortable-selected-option', {
+                    readOnly: this.props.readOnly,
+                })}
+                key={item.value}
+            >
                 <span className="mr1 text-medium-grey">{index + 1}</span>
                 <DraggableSelectedOption
                     label={item.selectedDisplayValue ?? item.displayValue ?? item.value}
@@ -117,6 +124,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                     onRemoveClick={() => this.props.onRemoveClick(item)}
                     index={index}
                     move={(dragIndex: number, hoverIndex: number) => this.move(dragIndex, hoverIndex)}
+                    readOnly={this.props.readOnly}
                 />
             </div>
         );
@@ -136,7 +144,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
     }
 
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
-        return this.getSelectedOptions().length > 1 ? (
+        return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (
             <Tooltip title={this.props.deselectAllTooltipText} placement="top" noSpanWrapper>
                 <div className="remove-all-selected-options ml1" onClick={() => this.props.onRemoveAll()}>
                     <Svg svgName="clear" svgClass="icon fill-medium-blue" />
@@ -146,7 +154,9 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
     }
 
     private Toggle = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps): JSX.Element => {
-        const classes = classNames('multiselect-input', {'mod-sortable': this.props.sortable});
+        const classes = classNames('multiselect-input', {
+            'mod-sortable': this.props.sortable,
+        });
         const buttonAttrs =
             !this.props.noDisabled && this.props.selected && this.props.selected.length === this.props.items.length
                 ? {disabled: true}
@@ -159,21 +169,29 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
             <div className={classes} style={this.props.multiSelectStyle}>
                 {this.props.connectDropTarget(
                     <div className="multiselect-selected flex flex-center flex-auto full-content">
-                        <div className="selected-options-container truncate">{this.getSelectedOptionComponents()}</div>
+                        <div
+                            className={classNames('selected-options-container truncate', {
+                                readOnly: this.props.readOnly,
+                            })}
+                        >
+                            {this.getSelectedOptionComponents()}
+                        </div>
                         {this.getRemoveAllSelectedOptionsButton()}
                     </div>
                 )}
-                <button
-                    className={buttonClasses}
-                    type="button"
-                    onKeyDown={onKeyDown}
-                    onKeyUp={onKeyUp}
-                    onClick={onClick}
-                    {...buttonAttrs}
-                >
-                    <span className="dropdown-no-value">{this.props.placeholder}</span>
-                    <span className="dropdown-toggle-arrow" />
-                </button>
+                {!this.props.readOnly && (
+                    <button
+                        className={buttonClasses}
+                        type="button"
+                        onKeyDown={onKeyDown}
+                        onKeyUp={onKeyUp}
+                        onClick={onClick}
+                        {...buttonAttrs}
+                    >
+                        <span className="dropdown-no-value">{this.props.placeholder}</span>
+                        <span className="dropdown-toggle-arrow" />
+                    </button>
+                )}
             </div>
         );
     };

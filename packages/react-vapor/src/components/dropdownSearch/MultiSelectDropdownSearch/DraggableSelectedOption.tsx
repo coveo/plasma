@@ -3,9 +3,9 @@ import {DragSource, DropTarget, IDragSource, IDropTarget} from 'react-dnd';
 import {findDOMNode} from 'react-dom';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
-import {ITooltipProps} from '../../tooltip/Tooltip';
 
 import {Svg} from '../../svg/Svg';
+import {ITooltipProps} from '../../tooltip/Tooltip';
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
 export interface IDraggableSelectedOptionOwnProps {
@@ -97,13 +97,15 @@ export class DraggableSelectedOption extends React.PureComponent<IDraggableSelec
                         {..._.omit(this.props, DraggableSelectedOptionPropsToOmit)}
                         label={this.props.isDragging ? null : this.props.label}
                         selectedTooltip={this.props.selectedTooltip}
+                        readOnly={this.props.readOnly}
                     >
                         <div className="inline-flex">
-                            {this.props.connectDragSource(
-                                <div className="move-option infline-flex cursor-move align-center">
-                                    <Svg svgName="drag-drop" svgClass="icon mod-small" />
-                                </div>
-                            )}
+                            {!this.props.readOnly &&
+                                this.props.connectDragSource(
+                                    <div className="move-option infline-flex cursor-move align-center">
+                                        <Svg svgName="drag-drop" svgClass="icon mod-small" />
+                                    </div>
+                                )}
                             {this.props.label}
                         </div>
                     </SelectedOption>

@@ -2,8 +2,9 @@ import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {Tooltip} from '../../../tooltip/Tooltip';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
+import {Svg} from '../../../svg';
+import {Tooltip} from '../../../tooltip/Tooltip';
 import {DraggableSelectedOption, IDraggableSelectedOptionProps} from '../DraggableSelectedOption';
 
 describe('DraggableSelectedOption', () => {
@@ -71,6 +72,18 @@ describe('DraggableSelectedOption', () => {
             mountOption({label: 'helloworld', selectedTooltip: {title: customValue, placement: 'bottom'}});
 
             expect(selectedOption.find(Tooltip).prop('placement')).toBe('bottom');
+        });
+
+        it('should render the draggable icon and X icon if readOnly is false', () => {
+            mountOption();
+
+            expect(selectedOption.find(Svg).length).toBe(2);
+        });
+
+        it('should not render the draggable icon if readOnly is true', () => {
+            mountOption({readOnly: true});
+
+            expect(selectedOption.find(Svg).length).toBe(0);
         });
 
         it('should change the opacity when the element is dragged', () => {
