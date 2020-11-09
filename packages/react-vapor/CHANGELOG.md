@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.11.1](https://github.com/coveo/react-vapor/compare/v8.11.0...v8.11.1) (2020-11-09)
+
+
+### Bug Fixes
+
+* **table-with-blankslate:** check for table is loading ([6a8bc55](https://github.com/coveo/react-vapor/commit/6a8bc55bcb478da2e762b42f9f5f874ed3dab92b))
+
+
+
+
+
 # [8.11.0](https://github.com/coveo/react-vapor/compare/v8.10.2...v8.11.0) (2020-11-09)
 
 
