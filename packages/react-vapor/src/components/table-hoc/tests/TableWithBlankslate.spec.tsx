@@ -120,5 +120,15 @@ describe('TableWithBlankSlate', () => {
 
             expect(wrapper.type()).toBe(TableHOC);
         });
+
+        it('does not render the blank slate in the table body when the table is loading', () => {
+            spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(false);
+            const wrapper = shallowWithState(
+                <TableWithBlankSlate {...basicProps} renderBlankSlateOnly isLoading />,
+                {}
+            ).dive();
+
+            expect(wrapper.type()).toBe(TableHOC);
+        });
     });
 });

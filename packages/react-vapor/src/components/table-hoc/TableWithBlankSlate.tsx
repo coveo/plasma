@@ -37,7 +37,7 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
 
         const blankSlateToRender = renderBlankSlate || defaultRenderBlankSlateMethod;
 
-        if (isEmpty && renderBlankSlateOnly) {
+        if (isEmpty && renderBlankSlateOnly && !props.isLoading) {
             return blankSlateToRender;
         }
 
