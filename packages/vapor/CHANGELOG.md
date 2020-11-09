@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.11.0](https://github.com/coveo/react-vapor/compare/v8.10.2...v8.11.0) (2020-11-09)
+
+
+### Bug Fixes
+
+* **multiselectconnected:** added readOnly functionalities ([3691183](https://github.com/coveo/react-vapor/commit/3691183c71a5d0c871810f694e44ea07d6b82c14))
+
+
+
+
+
 # [8.8.0](https://github.com/coveo/react-vapor/compare/v8.7.0...v8.8.0) (2020-10-21)
 
 
