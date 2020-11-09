@@ -2,6 +2,7 @@ import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
+import {UrlUtils} from '../../../utils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
@@ -203,20 +204,67 @@ describe('Table HOC', () => {
             expect(store.getActions()).toContain(expectedActionWithoutMulti);
         });
 
-        it('should dispatch trigger actions with callOnDoubleClick=true when double clicking the row', () => {
-            const triggerActionSpy = jasmine.createSpy('triggerAction');
+        describe('double click', () => {
+            it('should dispatch trigger actions with callOnDoubleClick=true when double clicking the row', () => {
+                const triggerActionSpy = jasmine.createSpy('triggerAction');
 
-            const wrapper = shallowWithStore(
-                <TableRowConnected
-                    {...defaultProps}
-                    actions={[{enabled: true, name: 'action', callOnDoubleClick: true, trigger: triggerActionSpy}]}
-                />,
-                store
-            ).dive();
+                const wrapper = shallowWithStore(
+                    <TableRowConnected
+                        {...defaultProps}
+                        actions={[{enabled: true, name: 'action', callOnDoubleClick: true, trigger: triggerActionSpy}]}
+                    />,
+                    store
+                ).dive();
 
-            wrapper.find('tr').simulate('doubleclick');
+                wrapper.find('tr').simulate('doubleclick');
 
-            expect(triggerActionSpy).toHaveBeenCalledTimes(1);
+                expect(triggerActionSpy).toHaveBeenCalledTimes(1);
+            });
+
+            it('should navigate to the link if a link is defined instead of the trigger', () => {
+                const triggerActionSpy = jasmine.createSpy('triggerAction');
+                const redirectionSpy = spyOn(UrlUtils, 'redirectToUrl');
+                const wrapper = shallowWithStore(
+                    <TableRowConnected
+                        {...defaultProps}
+                        actions={[
+                            {
+                                enabled: true,
+                                name: 'action',
+                                callOnDoubleClick: true,
+                                trigger: triggerActionSpy,
+                                link: 'http://perdu.com/',
+                            },
+                        ]}
+                    />,
+                    store
+                ).dive();
+                wrapper.find('tr').simulate('doubleclick');
+
+                expect(triggerActionSpy).not.toHaveBeenCalled();
+                expect(redirectionSpy).toHaveBeenCalledWith('http://perdu.com/');
+            });
+
+            it('should not be triggered in any way when the action is not enabled', () => {
+                const triggerActionSpy = jasmine.createSpy('triggerAction');
+                const wrapper = shallowWithStore(
+                    <TableRowConnected
+                        {...defaultProps}
+                        actions={[
+                            {
+                                enabled: false,
+                                name: 'action',
+                                callOnDoubleClick: true,
+                                trigger: triggerActionSpy,
+                            },
+                        ]}
+                    />,
+                    store
+                ).dive();
+                wrapper.find('tr').simulate('doubleclick');
+
+                expect(triggerActionSpy).not.toHaveBeenCalled();
+            });
         });
 
         describe('when the row is collapsible', () => {
