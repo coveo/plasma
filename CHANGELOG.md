@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.12.0](https://github.com/coveo/react-vapor/compare/v8.11.1...v8.12.0) (2020-11-10)
+
+
+### Features
+
+* **collapsibleconnected:** add onclick prop ([#1720](https://github.com/coveo/react-vapor/issues/1720)) ([34d34a8](https://github.com/coveo/react-vapor/commit/34d34a8408ac08a8614557eb18e8fee5daf483e3))
+
+
+
+
+
 ## [8.11.1](https://github.com/coveo/react-vapor/compare/v8.11.0...v8.11.1) (2020-11-09)
 
 
