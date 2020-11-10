@@ -76,8 +76,8 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
 
         componentDidUpdate(prevProps: ITableWithDatePickerProps) {
             if (
-                prevProps.lowerLimit.valueOf() !== this.props.lowerLimit.valueOf() ||
-                prevProps.upperLimit.valueOf() !== this.props.upperLimit.valueOf()
+                prevProps.lowerLimit?.valueOf() !== this.props.lowerLimit?.valueOf() ||
+                prevProps.upperLimit?.valueOf() !== this.props.upperLimit?.valueOf()
             ) {
                 this.props.onUpdate?.();
             }
