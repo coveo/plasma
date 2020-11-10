@@ -60,6 +60,24 @@ describe('<CollapsibleConnected />', () => {
                 expect(store.getActions()).not.toContain(setCollapsibleExpanded(collapsibleProps.id, true));
             });
 
+            it('should call onClick prop if set when clicking the toggle', () => {
+                const onClickSpy = jasmine.createSpy('onClick');
+                mountComponentWithProps({disabled: false, onClick: onClickSpy});
+
+                wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
+
+                expect(onClickSpy).toHaveBeenCalled();
+            });
+
+            it('should not call onClick prop when clicking the toggle if disabled', () => {
+                const onClickSpy = jasmine.createSpy('onClick');
+                mountComponentWithProps({disabled: true, onClick: onClickSpy});
+
+                wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
+
+                expect(onClickSpy).not.toHaveBeenCalled();
+            });
+
             it('should set the expended from the state to SlideY', () => {
                 mountComponentWithProps({}, true);
 

@@ -19,6 +19,7 @@ export interface CollapsibleOwnProps {
     className?: string;
     withBorders?: boolean;
     collapsibleToggleIcon?: React.ReactNode;
+    onClick?: () => void;
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps) => {
@@ -54,6 +55,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     onUnmount,
     onToggleExpandedState,
     collapsibleToggleIcon,
+    onClick,
 }) => {
     React.useEffect(() => {
         onMount();
@@ -66,7 +68,15 @@ export const CollapsibleDisconnected: React.FunctionComponent<
 
     return (
         <div className={classNames(className)}>
-            <div className={headerClassesCombine} onClick={() => !disabled && onToggleExpandedState(expanded)}>
+            <div
+                className={headerClassesCombine}
+                onClick={() => {
+                    if (!disabled) {
+                        onToggleExpandedState(expanded);
+                        onClick?.();
+                    }
+                }}
+            >
                 {headerContent}
                 {collapsibleToggleIcon || (
                     <CollapsibleToggle
