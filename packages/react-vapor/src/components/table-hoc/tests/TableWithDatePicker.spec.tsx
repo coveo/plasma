@@ -37,6 +37,13 @@ describe('Table HOC', () => {
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
+        it('renders without throwing errors when no dates are initially selected and the table updates', () => {
+            expect(() => {
+                const table = shallowWithState(<TableWithDatePicker {...defaultProps} />, {}).dive();
+                table.setProps({}); // triggering an update
+            }).not.toThrow();
+        });
+
         it('should not filter the rows if no function is sent in the config', () => {
             const wrapper = shallowWithState(
                 <TableWithDatePicker {...defaultProps} />,
