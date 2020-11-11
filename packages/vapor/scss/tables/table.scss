@@ -169,6 +169,11 @@
             position: relative;
             top: -1px; // Small hack to make it work in all browsers...
         }
+
+        &.table-row-collapsible-btn {
+            padding: 0 $table-cell-left-right-padding;
+            vertical-align: middle;
+        }
     }
 
     &.row-selected td,

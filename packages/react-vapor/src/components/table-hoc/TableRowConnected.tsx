@@ -145,7 +145,7 @@ class TableRowConnected extends React.PureComponent<
                 collapsibleRowToggle = React.isValidElement(customToggle) ? (
                     customToggle
                 ) : (
-                    <td>
+                    <td className="table-row-collapsible-btn">
                         <CollapsibleToggle
                             onClick={this.onToggleCollapsible}
                             expanded={this.props.opened}
