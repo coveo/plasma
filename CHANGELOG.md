@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.12.1](https://github.com/coveo/react-vapor/compare/v8.12.0...v8.12.1) (2020-11-11)
+
+
+### Bug Fixes
+
+* **tablewithdatepicker:** prevent from throwing errors with null dates ([6b0abce](https://github.com/coveo/react-vapor/commit/6b0abce193d0d3971de0e3aca459d8e2456a67b2))
+
+
+
+
+
 # [8.12.0](https://github.com/coveo/react-vapor/compare/v8.11.1...v8.12.0) (2020-11-10)
 
 
