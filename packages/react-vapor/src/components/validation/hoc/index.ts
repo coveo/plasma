@@ -1,3 +1,4 @@
+export * from './WithDirtyCheckboxHOC';
 export * from './WithDirtyInputHOC';
 export * from './WithDirtyMultiSelectHOC';
 export * from './WithDirtySaveButtonHOC';
