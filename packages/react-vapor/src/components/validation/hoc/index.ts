@@ -1,5 +1,6 @@
 export * from './WithDirtyInputHOC';
 export * from './WithDirtyMultiSelectHOC';
+export * from './WithDirtySingleSelectHOC';
 export * from './WithDirtySaveButtonHOC';
 export * from './WithDirtyStickyFooter';
 export * from './WithInitialValuesMultiSelectHOC';
