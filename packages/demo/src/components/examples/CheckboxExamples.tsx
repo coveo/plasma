@@ -8,6 +8,8 @@ import {
     LabeledInput,
     Section,
     toggleDisabledAllGroupedCheckbox,
+    withDirtyCheckboxHOC,
+    withDirtySaveButtonHOC,
 } from 'react-vapor';
 
 import {Store} from '../../Store';
@@ -22,7 +24,11 @@ export const CheckboxExamples: ExampleComponent = () => (
 
 CheckboxExamples.description = 'Checkboxes allow users to select multiple options from a set.';
 
+const SaveButton = withDirtySaveButtonHOC(Button);
+
 // start-print
+
+const CheckboxWithDirty = withDirtyCheckboxHOC(CheckboxConnected);
 
 const Checkboxset: React.FunctionComponent = () => {
     const [checked, setChecked] = React.useState(false);
@@ -43,9 +49,22 @@ const Checkboxset: React.FunctionComponent = () => {
                     <CheckboxConnected id="checkbox4" indeterminate={true} clearSides>
                         <Label>A force checked and indeterminate (partially selected) checkbox</Label>
                     </CheckboxConnected>
-                    <Checkbox id="checkbox5" checked={checked} onClick={() => setChecked(!checked)}>
+                    <Checkbox id="checkbox5" checked={checked} onClick={() => setChecked(!checked)} clearSides>
                         <Label>A checkbox with local state</Label>
                     </Checkbox>
+                </LabeledInput>
+                <LabeledInput label="The checkbox set with dirty management">
+                    <CheckboxWithDirty id="checkbox-dirty" clearSides>
+                        <Label>A checkbox with a validation dirty state</Label>
+                    </CheckboxWithDirty>
+                    <CheckboxWithDirty id="checkbox-dirty-true" defaultChecked={true}>
+                        <Label>A checkbox with a validation dirty state that starts with a default value</Label>
+                    </CheckboxWithDirty>
+                    <SaveButton
+                        enabled
+                        validationIds={['checkbox-dirty', 'checkbox-dirty-true']}
+                        name="An example button bound to the checkboxes"
+                    />
                 </LabeledInput>
             </Section>
             <Section level={2}>
