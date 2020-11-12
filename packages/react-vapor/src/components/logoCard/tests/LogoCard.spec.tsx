@@ -8,6 +8,7 @@ import {
     PlacementX,
     PlacementY,
 } from '../../cornerRibbon/CornerRibbon';
+import {Tooltip} from '../../tooltip';
 import {
     DEFAULT_LOGO_CARD_CLASSNAME,
     DEFAULT_LOGO_ICON,
@@ -95,6 +96,7 @@ describe('LogoCard', () => {
                 disabledRibbon: {
                     label: 'ribbonWhenDisabled',
                 },
+                tooltip: 'Tooltip',
             };
         });
 
@@ -118,6 +120,10 @@ describe('LogoCard', () => {
 
         it('should render the disabled ribbon when a ribbon is already applied', () => {
             expect(logoCard.find(CornerRibbon).text()).toBe(disabledLogoCardProps.disabledRibbon.label);
+        });
+
+        it('should render a tooltip if the props are given', () => {
+            expect(logoCard.find(Tooltip).length).toBe(1);
         });
     });
 

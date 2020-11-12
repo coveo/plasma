@@ -12,6 +12,7 @@ import {
     ICornerRibbonProps,
 } from '../cornerRibbon/CornerRibbon';
 import {Svg} from '../svg/Svg';
+import {Tooltip} from '../tooltip';
 
 export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card';
 export const DEFAULT_LOGO_ICON: string = VaporSVG.svg.sourceCustom.name;
@@ -29,6 +30,8 @@ export interface ILogoCardProps {
     ribbon?: ICornerRibbonProps;
     svgName?: string;
     title: string;
+    tooltip?: string;
+    tooltipPlacement?: string;
 }
 
 const LogoCardPropsToOmit = keys<ILogoCardProps>();
@@ -72,7 +75,7 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
             ribbon = <CornerRibbon {...this.props.ribbon} />;
         }
 
-        return (
+        const logoCard: JSX.Element = (
             <div
                 className={containerClassName}
                 onClick={() => this.handleClick()}
@@ -90,6 +93,14 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
                 </div>
                 {ribbon}
             </div>
+        );
+
+        return this.props.disabled ? (
+            <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement}>
+                {logoCard}
+            </Tooltip>
+        ) : (
+            logoCard
         );
     }
 }
