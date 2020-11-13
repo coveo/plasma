@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.12.2](https://github.com/coveo/react-vapor/compare/v8.12.1...v8.12.2) (2020-11-13)
+
+
+### Bug Fixes
+
+* **tablerow:** adjust collapsible row height to match non-collapsible ([#1722](https://github.com/coveo/react-vapor/issues/1722)) ([f5678b2](https://github.com/coveo/react-vapor/commit/f5678b288522c33b9c01855d4e1beca78531d659))
+
+
+
+
+
 # [8.11.0](https://github.com/coveo/react-vapor/compare/v8.10.2...v8.11.0) (2020-11-09)
 
 
