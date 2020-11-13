@@ -33,7 +33,7 @@ export class LogoCardExamples extends React.Component<any, any> {
                             badges={MULTIPLE_BADGES}
                             description="Card description"
                             disabled
-                            tooltip={'Hello I am a tooltip and I appear on top of this logo card'}
+                            tooltip="Hello I am a tooltip and I appear on top of this logo card"
                             tooltipPlacement={TooltipPlacement.Top}
                         />
                     </div>

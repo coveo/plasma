@@ -5,6 +5,7 @@ import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
+import {TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
 import {
     CornerRibbon,
@@ -31,7 +32,7 @@ export interface ILogoCardProps {
     svgName?: string;
     title: string;
     tooltip?: string;
-    tooltipPlacement?: string;
+    tooltipPlacement?: TooltipPlacement;
 }
 
 const LogoCardPropsToOmit = keys<ILogoCardProps>();
@@ -76,31 +77,27 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
         }
 
         const logoCard: JSX.Element = (
-            <div
-                className={containerClassName}
-                onClick={() => this.handleClick()}
-                {..._.omit(this.props, LogoCardPropsToOmit)}
-            >
-                <div className="logo-card-logo">
-                    <Svg svgName={this.props.svgName} className={logoIconClassName} />
-                </div>
-                <div className="logo-card-content">
-                    <h2 className="logo-card-title">{this.props.title}</h2>
-                    <div>
-                        {...badges}
-                        {description}
+            <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement}>
+                <div
+                    className={containerClassName}
+                    onClick={() => this.handleClick()}
+                    {..._.omit(this.props, LogoCardPropsToOmit)}
+                >
+                    <div className="logo-card-logo">
+                        <Svg svgName={this.props.svgName} className={logoIconClassName} />
                     </div>
+                    <div className="logo-card-content">
+                        <h2 className="logo-card-title">{this.props.title}</h2>
+                        <div>
+                            {...badges}
+                            {description}
+                        </div>
+                    </div>
+                    {ribbon}
                 </div>
-                {ribbon}
-            </div>
+            </Tooltip>
         );
 
-        return this.props.disabled ? (
-            <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement}>
-                {logoCard}
-            </Tooltip>
-        ) : (
-            logoCard
-        );
+        return logoCard;
     }
 }

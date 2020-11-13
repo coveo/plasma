@@ -59,7 +59,7 @@ describe('LogoCard', () => {
         });
 
         it('should trigger the specified onClick prop if any', () => {
-            logoCard.simulate('click');
+            logoCard.props().onClick();
 
             expect(defaultLogoCardProps.onClick).toHaveBeenCalledTimes(1);
         });
