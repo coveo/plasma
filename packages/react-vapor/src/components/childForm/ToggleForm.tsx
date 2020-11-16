@@ -3,6 +3,10 @@ import * as React from 'react';
 import {Input} from '../input/Input';
 import {ChildForm} from './ChildForm';
 
+/**
+ * @deprecated Use a form or the class coveo-parent for the style instead
+ */
+
 export interface IToggleFormProps {
     classes?: string[];
     checked?: boolean;
