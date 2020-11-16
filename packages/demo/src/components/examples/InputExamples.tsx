@@ -22,6 +22,10 @@ import {
     SplitMultilineInput,
     ValidationSelectors,
     withDirtyInputHOC,
+    RadioSelectConnected,
+    Radio,
+    SlideY,
+    ChildForm,
 } from 'react-vapor';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -203,36 +207,33 @@ const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<type
     };
     return (
         <>
-            <Section level={3} title="Multi-value inputs">
-                <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
-                <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
-            </Section>
-            <Section level={3} title="Multi-value inputs with a data limit">
-                <MultiValuesInput
-                    id="multi-data"
-                    data={['enabled', 'disabled']}
-                    dataLimit={1}
-                    inputProps={limitInputProps}
-                    reachedLimitPlaceholder={"this is a placeholder when you've reached the limit"}
-                    disabledTooltipTitle="this input can't edited"
-                    disabledInputInnerClasses={disabledInputInnerClasses}
-                    disabledInputClasses={disabledInputClasse}
-                />
-            </Section>
-            <Section level={3} title="Multi-value inputs with a validation">
-                <MultiValuesInput
-                    id="multi-validate"
-                    data={['Erase me to see the error']}
-                    inputProps={validateInputProps}
-                />
-            </Section>
-            <Section level={3} title="Multi-value inputs disabled">
-                <MultiValuesInput
-                    id="multi-disabled"
-                    data={['First data!', 'second data']}
-                    inputProps={validateInputProps}
-                    disabled
-                />
+            <Section level={3} title="Multi-value inputs disabled with a Radio">
+                <RadioSelectConnected id="radio-test-1" valueOnMount={'a'} disabled>
+                    <Radio value="a" key="radio-1">
+                        <Label>Choice 1</Label>
+                        <p
+                            className="mod-align-with-radio-label text-lynch my1"
+                            dangerouslySetInnerHTML={{__html: 'allo'}}
+                        />
+                    </Radio>
+                    <SlideY in>
+                        <ChildForm className="mb1">
+                            <MultiValuesInput
+                                id="multi-disabled-2"
+                                data={['Im first!', 'last one!']}
+                                inputProps={validateInputProps}
+                                disabled
+                            />
+                        </ChildForm>
+                    </SlideY>
+                    <Radio value="b" key="radio-2">
+                        <Label>Choice 1</Label>
+                        <p
+                            className="mod-align-with-radio-label text-lynch my1"
+                            dangerouslySetInnerHTML={{__html: 'allo'}}
+                        />
+                    </Radio>
+                </RadioSelectConnected>
             </Section>
         </>
     );

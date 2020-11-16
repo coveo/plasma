@@ -6,7 +6,7 @@ import {ChildForm} from './ChildForm';
 export interface IToggleFormProps {
     classes?: string[];
     checked?: boolean;
-    children?: React.ReactElement<Input | ChildForm> | Array<React.ReactElement<Input | ChildForm>>;
+    children?: React.ReactElement<Input | typeof ChildForm> | Array<React.ReactElement<Input | typeof ChildForm>>;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
     value?: string;
 }
