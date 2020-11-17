@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.0.0](https://github.com/coveo/react-vapor/compare/v8.15.0...v9.0.0) (2020-11-17)
+
+
+### Code Refactoring
+
+* **childform and toggleform:** childForm ([c49bdfd](https://github.com/coveo/react-vapor/commit/c49bdfddf8d43b28f3cd944676c82b2cc8240cd8))
+
+
+### Features
+
+* **childform:** fix disabled ([a014694](https://github.com/coveo/react-vapor/commit/a0146945b009fb85e7a82cd05bd6ca16dbd28e7f))
+
+
+### BREAKING CHANGES
+
+* **childform and toggleform:** ChildForm do not set the disabled props for his direct children. this behaviour
+override the disabled prop set on this children
+
+
+
+
+
 # [8.15.0](https://github.com/coveo/react-vapor/compare/v8.14.1...v8.15.0) (2020-11-17)
 
 
