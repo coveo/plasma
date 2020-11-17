@@ -193,6 +193,7 @@
 .btn-container {
     display: inline-block;
     margin: 0;
+    vertical-align: middle;
 
     .btn[disabled] {
         pointer-events: none;
