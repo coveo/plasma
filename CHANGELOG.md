@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.13.0](https://github.com/coveo/react-vapor/compare/v8.12.3...v8.13.0) (2020-11-17)
+
+
+### Features
+
+* **validation:** allow checkbox dirty tracking ([3e6abb6](https://github.com/coveo/react-vapor/commit/3e6abb6c8fe9108a558fae43ea67698fd37f6173))
+
+
+
+
+
 ## [8.12.3](https://github.com/coveo/react-vapor/compare/v8.12.2...v8.12.3) (2020-11-13)
 
 **Note:** Version bump only for package root
