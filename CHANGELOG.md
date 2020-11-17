@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [8.14.1](https://github.com/coveo/react-vapor/compare/v8.14.0...v8.14.1) (2020-11-17)
+
+
+### Bug Fixes
+
+* **btn:** fix extra margin when using tooltip ([#1729](https://github.com/coveo/react-vapor/issues/1729)) ([0395f3f](https://github.com/coveo/react-vapor/commit/0395f3f1a53055441e30389b8f74f941e700bd29))
+
+
+
+
+
 # [8.14.0](https://github.com/coveo/react-vapor/compare/v8.13.0...v8.14.0) (2020-11-17)
 
 
