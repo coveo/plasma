@@ -5,6 +5,7 @@ import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
 import {IReactVaporState} from '../../ReactVapor';
+import {UrlUtils} from '../../utils';
 import {EventUtils} from '../../utils/EventUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
@@ -197,11 +198,12 @@ class TableRowConnected extends React.PureComponent<
     private handleDoubleClick = () => {
         _.chain(this.props.actions)
             .filter((action: IActionOptions) => action.callOnDoubleClick)
+            .filter((action: IActionOptions) => action.enabled)
             .forEach((action: IActionOptions) => {
                 if (action.link) {
-                    window.location.href = action.link;
-                } else if (action.trigger) {
-                    action.trigger();
+                    UrlUtils.redirectToUrl(action.link);
+                } else {
+                    action.trigger?.();
                 }
             });
     };

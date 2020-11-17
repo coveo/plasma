@@ -20,7 +20,12 @@ const toQueryString = (obj: Record<string, unknown>): string => QueryString.stri
 
 const getSearchParams = (): {[key: string]: any} => UrlUtils.toObject(UrlUtils.getQuery());
 
+const redirectToUrl = (link: string) => {
+    window.location.href = link;
+};
+
 export const UrlUtils = {
+    redirectToUrl,
     getQuery,
     getSearchParams,
     getPathName,
