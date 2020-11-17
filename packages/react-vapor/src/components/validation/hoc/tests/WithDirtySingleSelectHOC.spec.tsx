@@ -1,14 +1,13 @@
-import { ShallowWrapper } from 'enzyme';
+import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import { act } from 'react-dom/test-utils';
-import { Store } from 'redux';
-import { ValidationActions, ValidationTypes } from '../..';
-import { IReactVaporState } from '../../../../Entry';
+import {act} from 'react-dom/test-utils';
+import {Store} from 'redux';
+import {ValidationActions, ValidationTypes} from '../..';
+import {IReactVaporState} from '../../../../Entry';
 import {composeMockStore, getStoreMock, withSelectedValues} from '../../../../utils/tests/TestUtils';
-import { ISingleSelectOwnProps, SingleSelectConnected } from '../../../select/SingleSelectConnected';
-import { withDirtySingleSelectHOC } from '../WithDirtySingleSelectHOC';
-
+import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
+import {withDirtySingleSelectHOC, IWithDirtySingleSelectHOCProps} from '../WithDirtySingleSelectHOC';
 
 describe('SingleSelectWithDirty', () => {
     const SingleSelectWithHOC = withDirtySingleSelectHOC(SingleSelectConnected);
@@ -17,7 +16,7 @@ describe('SingleSelectWithDirty', () => {
     const ONE_VALUE = '🐟';
     const ANOTHER_VALUE = '🐠';
 
-    const defaultProps: ISingleSelectOwnProps = {
+    const DEFAULT_PROPS: ISingleSelectOwnProps & IWithDirtySingleSelectHOCProps = {
         id: 'SOME_ID',
         items: [],
     };
@@ -32,46 +31,66 @@ describe('SingleSelectWithDirty', () => {
         store.clearActions();
     });
 
-    const mountSingleSelectWithHOC = (defaultProps: ISingleSelectOwnProps, store: Store<IReactVaporState>, initialValue?: string) => {
-        const component = mountWithStore(<SingleSelectWithHOC {...defaultProps} initialValue={initialValue}/>, store);
+    const mountSingleSelectWithHOC = (
+        props: Partial<typeof DEFAULT_PROPS> = {},
+        storeToUse: Store<IReactVaporState> = store
+    ) => {
+        const component = mountWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} {...props} />, storeToUse);
         act(() => {
             component.mount();
         });
-    }
-    
+    };
+
     it('should render without error', () => {
-        expect(() => shallowWithStore(<SingleSelectWithHOC {...defaultProps} />, store)).not.toThrow();
+        expect(() => shallowWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} />, store)).not.toThrow();
     });
 
     it('should mount and unmount/detach without error', () => {
         let singleSelectWrapper: ShallowWrapper<ISingleSelectOwnProps>;
+
         expect(() => {
-            singleSelectWrapper = shallowWithStore(<SingleSelectWithHOC {...defaultProps} />, store);
+            singleSelectWrapper = shallowWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} />, store);
             singleSelectWrapper.unmount();
         }).not.toThrow();
     });
 
     it('should trigger the dirty state when the user selects a new value', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
+        const storeWithInitialValue = composeMockStore(withSelectedValues(DEFAULT_PROPS.id, ONE_VALUE));
 
-        mountSingleSelectWithHOC(defaultProps, store)
+        mountSingleSelectWithHOC({}, storeWithInitialValue);
 
-        expect(store.getActions()).toContain(ValidationActions.setDirty(defaultProps.id, true, ValidationTypes.wrongInitialValue));
+        expect(storeWithInitialValue.getActions()).toContain(
+            ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
+        );
     });
 
     it('should trigger the dirty state when the user selects a different value', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id, ANOTHER_VALUE));
+        const storeWithInitialValue = composeMockStore(withSelectedValues(DEFAULT_PROPS.id, ANOTHER_VALUE));
 
-        mountSingleSelectWithHOC(defaultProps, store, ONE_VALUE);
+        mountSingleSelectWithHOC(
+            {
+                initialValue: ONE_VALUE,
+            },
+            storeWithInitialValue
+        );
 
-        expect(store.getActions()).toContain(ValidationActions.setDirty(defaultProps.id, true, ValidationTypes.wrongInitialValue));
+        expect(storeWithInitialValue.getActions()).toContain(
+            ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
+        );
     });
 
     it('should not trigger the dirty state when the initial values are the same as the selected ones', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
+        const storeWithInitialValue = composeMockStore(withSelectedValues(DEFAULT_PROPS.id, ONE_VALUE));
 
-        mountSingleSelectWithHOC(defaultProps, store, ONE_VALUE);
+        mountSingleSelectWithHOC(
+            {
+                initialValue: ONE_VALUE,
+            },
+            storeWithInitialValue
+        );
 
-        expect(store.getActions()).not.toContain(ValidationActions.setDirty(defaultProps.id, true, ValidationTypes.wrongInitialValue));
+        expect(storeWithInitialValue.getActions()).not.toContain(
+            ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
+        );
     });
 });

@@ -22,6 +22,9 @@ import {
     IDispatch,
     withDirtySaveButtonHOC,
     withDirtySingleSelectHOC,
+    withNonEmptySingleSelectHOC,
+    LabeledInput,
+    ValidationMessage,
 } from 'react-vapor';
 
 import * as _ from 'underscore';
@@ -89,8 +92,8 @@ const matchPredicate = (predicate: string, item: IItemBoxProps) => {
     }
 };
 
+const SingleSelectWithNonEmptyValue = withNonEmptySingleSelectHOC(SingleSelectConnected);
 const SingleSelectWithDirty = withDirtySingleSelectHOC(SingleSelectConnected);
-
 const SaveButton = withDirtySaveButtonHOC(Button);
 
 const SingleSelectConnectedExamples: React.ComponentType = () => (
@@ -159,8 +162,14 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
         <Section level={3} title="A single select with an error message to show with a button">
             <SingleSelectWithMessageExample />
         </Section>
+        <Section level={3} title="A single select with non-empty validation">
+            <SingleSelectWithNonEmptyValue id="single-select-non-empty" items={defaultItems} canClear />
+            <div>
+                <ValidationMessage id="single-select-non-empty" />
+            </div>
+        </Section>
         <Section level={3} title="A single select with dirty management">
-            <SingleSelectWithDirty id="select-dirty" items={defaultItems} />
+            <SingleSelectWithDirty id="select-dirty" items={defaultItems} canClear />
             <SaveButton enabled validationIds={['select-dirty']} name="An example button bound to the select" />
         </Section>
     </Section>

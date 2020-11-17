@@ -7,3 +7,4 @@ export * from './WithInitialValuesMultiSelectHOC';
 export * from './WithNonEmptyValueInputValidationHOC';
 export * from './WithValidationMessageHOC';
 export * from './WithNonEmptyValueMultiSelectValidationHOC';
+export * from './WithNonEmptySingleSelectHOC';

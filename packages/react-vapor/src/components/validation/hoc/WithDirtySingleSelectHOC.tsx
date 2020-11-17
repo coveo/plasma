@@ -19,7 +19,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
     clearIsDirty: (id: string) => dispatch(ValidationActions.clearDirty(id, ValidationTypes.wrongInitialValue)),
 });
 
-export type ISingleSelectWithDirtyOwnProps = {
+export type IWithDirtySingleSelectHOCProps = {
     initialValue?: string;
     resetDirtyOnUnmount?: boolean;
 };
@@ -28,7 +28,7 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
     type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrapperSingleSelect: React.FunctionComponent<
-        T & ISingleSelectWithDirtyOwnProps & StateProps & DispatchProps
+        T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps
     > = ({initialValue, selectedValue, setIsDirty, clearIsDirty, resetDirtyOnUnmount, ...props}) => {
         React.useEffect(
             () => () => {
