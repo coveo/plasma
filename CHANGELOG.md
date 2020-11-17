@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [8.15.0](https://github.com/coveo/react-vapor/compare/v8.14.1...v8.15.0) (2020-11-17)
+
+
+### Bug Fixes
+
+* **action row:** if disabled no double click ([d42112b](https://github.com/coveo/react-vapor/commit/d42112b2d804cfafeb261ee19fb913271f3a108c))
+
+
+### Features
+
+* **redux utils:** added a connected component props type ([32d174b](https://github.com/coveo/react-vapor/commit/32d174b46620c2597b119d214cc7716d54742526))
+
+
+
+
+
 ## [8.14.1](https://github.com/coveo/react-vapor/compare/v8.14.0...v8.14.1) (2020-11-17)
 
 
