@@ -1,27 +1,11 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import * as _ from 'underscore';
-import {ValidComponentChildren} from '../../utils/ValidComponentChildren';
 
 export interface IChildFormProps extends React.HTMLAttributes<HTMLDivElement> {
-    disabled?: boolean;
+    className?: string;
+    disabled?: boolean; // @deprecated set your disabled state on each child component instead
 }
 
-export class ChildForm extends React.Component<IChildFormProps> {
-    render() {
-        const children = ValidComponentChildren.map(
-            this.props.children,
-            (child: React.ReactElement<any>) =>
-                React.cloneElement(child, {
-                    disabled: !!this.props.disabled,
-                }),
-            null
-        );
-
-        return (
-            <div {..._.omit(this.props, 'disabled')} className={classNames('coveo-child', this.props.className)}>
-                {children}
-            </div>
-        );
-    }
-}
+export const ChildForm: React.FunctionComponent<IChildFormProps> = ({className, children}) => (
+    <div className={classNames('coveo-child', className)}>{children}</div>
+);

@@ -3,10 +3,14 @@ import * as React from 'react';
 import {Input} from '../input/Input';
 import {ChildForm} from './ChildForm';
 
+/**
+ * @deprecated Use a form or the class coveo-parent for the style instead
+ */
+
 export interface IToggleFormProps {
     classes?: string[];
     checked?: boolean;
-    children?: React.ReactElement<Input | ChildForm> | Array<React.ReactElement<Input | ChildForm>>;
+    children?: React.ReactElement<Input | typeof ChildForm> | Array<React.ReactElement<Input | typeof ChildForm>>;
     onClick?: (e: React.MouseEvent<HTMLElement>) => void;
     value?: string;
 }

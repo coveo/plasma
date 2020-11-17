@@ -68,17 +68,5 @@ describe('ToggleForm', () => {
 
             expect(clickSpy.calls.count()).toBe(1);
         });
-
-        it('should disable ChildForm children when checked property is false', () => {
-            expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(true);
-
-            toggleForm.setProps({checked: false}).mount().update();
-
-            expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(true);
-
-            toggleForm.setProps({checked: true}).mount().update();
-
-            expect(toggleForm.find('ChildForm').first().prop('disabled')).toBe(false);
-        });
     });
 });
