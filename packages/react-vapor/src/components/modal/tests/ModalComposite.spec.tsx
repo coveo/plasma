@@ -104,4 +104,10 @@ describe('ModalComposite', () => {
 
         expect((modalComposite.find(ReactModal).prop('className') as ReactModal.Classes).base).toContain('mod-prompt');
     });
+
+    it('should add the force-z-index classname to the portalClassName props of the ReactModal component', () => {
+        const modalCompositeWrapper = shallow(<ModalComposite isOpened isPrompt isForceTop />);
+
+        expect(modalCompositeWrapper.find(ReactModal).prop('portalClassName')).toContain('force-z-index');
+    });
 });

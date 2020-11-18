@@ -258,3 +258,9 @@ $icon-size: (4em / 3);
     align-items: center;
     margin-bottom: 21px;
 }
+
+.ReactModalPortal {
+    &.force-z-index {
+        z-index: 100000;
+    }
+}

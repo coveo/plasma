@@ -171,6 +171,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     modalFooterChildren={<Button onClick={() => handleClose('example-4')}>Close</Button>}
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                     docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
+                    isForceTop
                     shouldCloseOnEsc={false}
                     shouldCloseOnOverlayClick={false}
                     onAfterOpen={() => alert('The modal content has mounted and is ready to open.')}

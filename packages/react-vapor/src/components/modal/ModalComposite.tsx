@@ -31,6 +31,7 @@ export interface IModalCompositeOwnProps
     modalFooterClasses?: IClassName;
     isPrompt?: boolean;
     validateShouldNavigate?: (isDirty: boolean) => boolean;
+    isForceTop?: boolean;
 }
 
 export interface IModalCompositeStateProps extends IReduxStatePossibleProps, IModalStateProps {
@@ -74,6 +75,7 @@ export class ModalComposite extends React.PureComponent<
                     afterOpen: 'opened',
                     beforeClose: 'clear',
                 }}
+                portalClassName={classNames('ReactModalPortal', {'force-z-index': this.props.isForceTop})}
                 onRequestClose={this.onRequestClose}
                 closeTimeoutMS={this.props.closeTimeout}
                 contentRef={this.props.contentRef}
