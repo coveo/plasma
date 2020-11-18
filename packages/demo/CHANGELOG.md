@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.1.0](https://github.com/coveo/react-vapor/compare/v9.0.0...v9.1.0) (2020-11-18)
+
+
+### Features
+
+* **validation:** dirty + non empty single select ([#1726](https://github.com/coveo/react-vapor/issues/1726)) ([5deb59c](https://github.com/coveo/react-vapor/commit/5deb59cd57af03919705efc5caf5cd021319ef08))
+
+
+
+
+
 # [9.0.0](https://github.com/coveo/react-vapor/compare/v8.15.0...v9.0.0) (2020-11-17)
 
 **Note:** Version bump only for package react-vapor-demo
