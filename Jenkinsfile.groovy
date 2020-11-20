@@ -212,14 +212,10 @@ pipeline {
         script {
           setLastStageName();
 
-          runSnyk(
-            org: "coveo-admin-ui",
-            directory: ".",
-            archiveArtifacts: true,
-            scanDevDependencies: false,
-            dockerVariableMap: ["NODE_OPTIONS": env.NODE_OPTIONS],
-            additionalParameters: "--all-projects --prune-repeated-subdependencies"
-          )
+          sh "npx snyk auth $SNYK_TOKEN"
+          sh "npx snyk test packages/*/ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-result.json || true"
+          sh "npx snyk monitor packages/*/ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-monitor-result.json || true"
+          archiveArtifacts artifacts: 'snyk-result.json,snyk-monitor-result.json'
 
           // Prepare veracode
           sh "mkdir -p veracode"
