@@ -201,6 +201,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         const yearPickerProps: IOptionsCycleProps = {
             options: this.props.years,
             isInline: true,
+            className: 'mod-year',
         };
 
         const orderedDays: string[] = [
