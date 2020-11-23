@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.2.0](https://github.com/coveo/react-vapor/compare/v9.1.2...v9.2.0) (2020-11-23)
+
+
+### Features
+
+* **datepicker:** add class for next and previous year ([#1734](https://github.com/coveo/react-vapor/issues/1734)) ([c706a4b](https://github.com/coveo/react-vapor/commit/c706a4b9680fde8a0a41cdb9d145e9ea5ae2991b))
+
+
+
+
+
 ## [9.1.2](https://github.com/coveo/react-vapor/compare/v9.1.1...v9.1.2) (2020-11-20)
 
 **Note:** Version bump only for package root
