@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.1](https://github.com/coveo/react-vapor/compare/v9.2.0...v9.2.1) (2020-11-24)
+
+
+### Bug Fixes
+
+* **modal composite:** openmodals array no duplication and clear ([0f8229c](https://github.com/coveo/react-vapor/commit/0f8229c677d4b275b9b847ed3a47bace3aaf11c4))
+
+
+
+
+
 # [9.2.0](https://github.com/coveo/react-vapor/compare/v9.1.2...v9.2.0) (2020-11-23)
 
 
