@@ -60,9 +60,14 @@ export const modalsReducer = (
 export const openModalsReducer = (state: string[] = [], action: IReduxAction<IModalActionPayload>): string[] => {
     switch (action.type) {
         case ModalAction.openModal:
-            return [...state, action.payload.id];
+            if (!state.includes(action.payload.id)) {
+                return [...state, action.payload.id];
+            }
+            return state;
         case ModalAction.closeModals:
             return _.without(state, ...action.payload.ids);
+        case ModalAction.removeModal:
+            return _.without(state, action.payload.id);
         default:
             return state;
     }

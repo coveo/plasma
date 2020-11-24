@@ -190,6 +190,27 @@ describe('Modal', () => {
                 expect(openModalsState[1]).toBe(action.payload.id);
             });
 
+            it('should not add the id to the openModals string array if the id of the opened modal is already there', () => {
+                let oldState: string[] = [];
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.openModal,
+                    payload: {
+                        id: '🍑',
+                    },
+                };
+                let openModalsState: string[] = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(1);
+                expect(openModalsState[0]).toBe(action.payload.id);
+
+                oldState = openModalsState;
+                action.payload.id = '🍑';
+                openModalsState = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(1);
+                expect(openModalsState[0]).toBe(action.payload.id);
+            });
+
             it('should return the old state without all of the ids when the action is "ModalAction.closeModals"', () => {
                 const oldState: string[] = ['some-modal2', 'some-modal1', 'some-modal3'];
                 const action: IReduxAction<IModalActionPayload> = {
@@ -203,6 +224,20 @@ describe('Modal', () => {
                 expect(openModalsState.length).toBe(oldState.length - action.payload.ids.length);
                 expect(_.contains(openModalsState, action.payload.ids[0])).toBe(false);
                 expect(_.contains(openModalsState, action.payload.ids[1])).toBe(false);
+            });
+
+            it('should return the old state without all of the ids when the action is "ModalAction.removeModals"', () => {
+                const oldState: string[] = ['some-modal2', 'some-modal1', 'some-modal3'];
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.removeModal,
+                    payload: {
+                        id: 'some-modal1',
+                    },
+                };
+                const openModalsState: string[] = openModalsReducer(oldState, action);
+
+                expect(openModalsState.length).toBe(oldState.length - 1);
+                expect(_.contains(openModalsState, action.payload.id)).toBe(false);
             });
         });
     });

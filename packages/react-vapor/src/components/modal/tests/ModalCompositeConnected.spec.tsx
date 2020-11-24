@@ -84,4 +84,13 @@ describe('<ModalCompositeConnected />', () => {
         expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(0, 'has modalHeaderConnected');
         expect(modalCompositeConnected.find(ModalHeader).length).toBe(0, 'has modalHeader');
     });
+
+    it('should dispatch a removeModal actions on destroy', () => {
+        const store = getStoreMock();
+        shallowWithStore(<ModalCompositeConnected id="id" isOpened />, store)
+            .dive()
+            .unmount();
+
+        expect(store.getActions()).toContain(removeModal('id'));
+    });
 });
