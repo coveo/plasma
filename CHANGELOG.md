@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.2](https://github.com/coveo/react-vapor/compare/v9.2.1...v9.2.2) (2020-11-25)
+
+
+### Bug Fixes
+
+* **validation:** automatically select initial value in single select ([#1737](https://github.com/coveo/react-vapor/issues/1737)) ([3b44add](https://github.com/coveo/react-vapor/commit/3b44add140d9344262154424e5db71a2f12cbf90))
+
+
+
+
+
 ## [9.2.1](https://github.com/coveo/react-vapor/compare/v9.2.0...v9.2.1) (2020-11-24)
 
 
