@@ -18,7 +18,14 @@ describe('SingleSelectWithDirty', () => {
 
     const DEFAULT_PROPS: ISingleSelectOwnProps & IWithDirtySingleSelectHOCProps = {
         id: 'SOME_ID',
-        items: [],
+        items: [
+            {
+                value: '0',
+            },
+            {
+                value: '1',
+            },
+        ],
     };
 
     beforeEach(() => {
@@ -52,6 +59,21 @@ describe('SingleSelectWithDirty', () => {
             singleSelectWrapper = shallowWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} />, store);
             singleSelectWrapper.unmount();
         }).not.toThrow();
+    });
+
+    it('should update the items prop to select the initial value', () => {
+        const initialValue = DEFAULT_PROPS.items[1].value;
+        const singleSelectWrapper = shallowWithStore(
+            <SingleSelectWithHOC {...DEFAULT_PROPS} initialValue={initialValue} />,
+            store
+        );
+        const selectedItem = singleSelectWrapper
+            .dive()
+            .find(SingleSelectConnected)
+            .prop('items')
+            .find((item) => item.selected);
+
+        expect(selectedItem.value).toBe(initialValue);
     });
 
     it('should trigger the dirty state when the user selects a new value', () => {

@@ -29,7 +29,7 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
     const WrapperSingleSelect: React.FunctionComponent<
         T & IWithDirtySingleSelectHOCProps & StateProps & DispatchProps
-    > = ({initialValue, selectedValue, setIsDirty, clearIsDirty, resetDirtyOnUnmount, ...props}) => {
+    > = ({initialValue, selectedValue, setIsDirty, clearIsDirty, resetDirtyOnUnmount, items, ...props}) => {
         React.useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
@@ -41,7 +41,9 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
             setIsDirty(props.id, initialValue !== selectedValue);
         }, [selectedValue]);
 
-        return <Component {...(props as T)} />;
+        const itemsWithSelectedInitialValue = items.map((item) => ({...item, selected: item.value === initialValue}));
+
+        return <Component {...(props as T)} items={itemsWithSelectedInitialValue} />;
     };
 
     const enhance = connect(mapStateToProps, mapDispatchToProps) as InferableComponentEnhancer<
