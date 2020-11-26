@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.4](https://github.com/coveo/react-vapor/compare/v9.2.3...v9.2.4) (2020-11-26)
+
+
+### Bug Fixes
+
+* **jenkinsfile.groovy:** set the NEW VERSION var after version is bumped ([d8287b9](https://github.com/coveo/react-vapor/commit/d8287b927cdece7c058e145e4136a4fbb67d1b45))
+
+
+
+
+
 ## [9.2.3](https://github.com/coveo/react-vapor/compare/v9.2.2...v9.2.3) (2020-11-26)
 
 **Note:** Version bump only for package react-vapor
