@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.2.5](https://github.com/coveo/react-vapor/compare/v9.2.4...v9.2.5) (2020-12-02)
+
+
+### Bug Fixes
+
+* **table.scss:** aDUI-6283 collapsible row animation fix ([9c81b4c](https://github.com/coveo/react-vapor/commit/9c81b4c94d679250d351bf8f54bafde156ce57d6))
+
+
+
+
+
 ## [9.2.4](https://github.com/coveo/react-vapor/compare/v9.2.3...v9.2.4) (2020-11-26)
 
 
