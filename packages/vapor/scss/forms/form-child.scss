@@ -7,7 +7,7 @@ $child-arrow-height: 10px;
 .coveo-child {
     position: relative;
     padding: $child-padding-y $child-padding-x;
-    background-color: $white;
+    background-color: var(--white);
     border-radius: $border-radius;
     border-top-left-radius: 0;
 
@@ -23,7 +23,7 @@ $child-arrow-height: 10px;
         width: 0;
         height: 0;
         border-right: $child-arrow-width / 2 solid transparent;
-        border-bottom: $child-arrow-height solid $white;
+        border-bottom: $child-arrow-height solid var(--white);
         border-left: $child-arrow-width / 2 solid transparent;
         content: '';
     }
@@ -36,7 +36,7 @@ $child-arrow-height: 10px;
             top: calc(50% - #{$child-arrow-height});
             left: -$child-arrow-height - ($child-arrow-width / 2);
             border-top: $child-arrow-width / 2 solid transparent;
-            border-right: $child-arrow-height solid $white;
+            border-right: $child-arrow-height solid var(--white);
             border-bottom: $child-arrow-width / 2 solid transparent;
         }
     }
@@ -46,10 +46,10 @@ $child-arrow-height: 10px;
     }
 
     &.mod-pure-white {
-        background-color: $pure-white;
+        background-color: var(--pure-white);
 
         &:before {
-            border-bottom-color: $pure-white;
+            border-bottom-color: var(--pure-white);
         }
     }
 }
@@ -57,7 +57,7 @@ $child-arrow-height: 10px;
 .child-section {
     margin-top: $child-section-spacing-top;
     padding-left: $child-section-spacing-left;
-    border-left: $child-section-border-size solid $light-grey;
+    border-left: $child-section-border-size solid var(--light-grey);
 }
 
 .mod-child-section-first-input {

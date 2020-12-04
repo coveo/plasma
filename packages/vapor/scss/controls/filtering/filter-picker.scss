@@ -1,6 +1,6 @@
 .filter-expression-picker {
     .filters {
-        background-color: $white;
+        background-color: var(--white);
     }
 
     .admin-filterbox {
@@ -25,9 +25,9 @@
             display: inline-block;
             margin-left: $filter-badge-margin-left;
             overflow: visible;
-            color: $dark-grey;
+            color: var(--dark-grey);
             font-size: $filter-badge-font-size;
-            background-color: $pure-white;
+            background-color: var(--pure-white);
 
             cursor: pointer;
 
@@ -42,21 +42,21 @@
 
             .filter-operator {
                 &.mod-negative {
-                    color: $red;
+                    color: var(--red);
                 }
                 &.mod-positive {
-                    color: $green;
+                    color: var(--green);
                 }
             }
 
             .filter-value-join {
-                color: $dark-grey;
+                color: var(--dark-grey);
             }
 
             .dropdown-toggle:disabled {
                 .filter-operator,
                 .filter-value-join {
-                    color: $medium-grey;
+                    color: var(--medium-grey);
                 }
             }
         }
@@ -65,7 +65,7 @@
             flex-grow: 2;
 
             padding: $filterbox-filters-container-padding;
-            background-color: $medium-grey;
+            background-color: var(--medium-grey);
         }
 
         .filters {

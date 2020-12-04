@@ -1,10 +1,13 @@
 // Must be the first import
 @import 'dependencies';
+@import 'redesign/utils';
 @import 'common/palette';
 @import 'common/palette-map';
 @import 'variables';
+@import 'redesign/colors';
 @import 'common/common';
 @import 'common/font';
+@import 'redesign/fonts';
 @import 'custom-reset';
 @import 'sprites';
 @import 'animations';

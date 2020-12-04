@@ -12,7 +12,7 @@
     margin: $facet-margin-y 0;
 
     padding-bottom: $facet-spacing;
-    background: $pure-white;
+    background: var(--pure-white);
     border: $default-border;
     border-radius: $border-radius;
 }
@@ -22,7 +22,7 @@
     clear: both;
 
     padding: $button-padding-x;
-    background: $white;
+    background: var(--white);
     border-top-left-radius: $border-radius;
     border-top-right-radius: $border-radius;
 }
@@ -43,7 +43,7 @@
         transform: translateY(-50%);
 
         &:hover {
-            fill: $dark-grey;
+            fill: var(--dark-grey);
         }
     }
 }
@@ -71,7 +71,7 @@
     padding: 0 $facet-spacing;
 
     &:hover {
-        background-color: $light-grey;
+        background-color: var(--light-grey);
         .exclude-button {
             display: flex;
         }
@@ -102,7 +102,7 @@
 
 .facet-value-count {
     padding-left: $facet-value-spacing;
-    color: $medium-grey;
+    color: var(--medium-grey);
 }
 
 .facet-more {
@@ -111,7 +111,7 @@
     }
 
     .label {
-        color: $blue;
+        color: var(--blue);
     }
 }
 
@@ -145,7 +145,7 @@
         height: inherit;
     }
     &:hover svg {
-        fill: $dark-blue;
+        fill: var(--dark-blue);
     }
 }
 
@@ -162,7 +162,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: $pure-white;
+        background: var(--pure-white);
         border: $checkbox-default-border;
 
         &:before {
@@ -195,7 +195,7 @@
         top: 50%;
         left: 50%;
         display: block;
-        background-color: $medium-grey;
+        background-color: var(--medium-grey);
         transform: translate(-50%, -50%);
         content: '';
     }
@@ -238,11 +238,11 @@
     overflow-y: auto;
     list-style: none;
 
-    background-color: $pure-white;
+    background-color: var(--pure-white);
     border: $default-border;
     border-radius: $border-radius;
 
-    @include slim-scroll($light-grey, $medium-grey);
+    @include slim-scroll(var(--light-grey), var(--medium-grey));
 }
 
 .facet-opened:last-child .facet-search-results {

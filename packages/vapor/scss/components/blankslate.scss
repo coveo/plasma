@@ -1,9 +1,9 @@
 .blankslate {
     padding: $blankslate-padding;
-    color: $medium-blue;
+    color: var(--medium-blue);
     text-align: center;
-    background-color: $white;
-    border: 1px solid $medium-blue;
+    background-color: var(--white);
+    border: 1px solid var(--medium-blue);
     border-radius: $border-radius;
 
     h1,
@@ -18,7 +18,7 @@
     p {
         max-width: $blankslate-description-width;
         margin: 0 auto $blankslate-paragraph-margin-bottom auto;
-        color: $medium-blue;
+        color: var(--medium-blue);
     }
 
     &.mod-small {
@@ -37,14 +37,14 @@
 
     // deprecated use .mod-error instead
     &.mod-danger {
-        background-color: rgba($red, $transparency-5);
-        border-color: $red;
+        background-color: var(--blankslate-mod-danger-color);
+        border-color: var(--red);
         h1,
         p {
-            color: $red;
+            color: var(--red);
         }
     }
     &.mod-error {
-        background-color: rgba($orange-5, $transparency-5);
+        background-color: var(--blankslate-mod-error-color);
     }
 }

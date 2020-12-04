@@ -79,7 +79,7 @@
 
         &:focus {
             i {
-                box-shadow: 0 0 6px 1px $medium-blue;
+                box-shadow: 0 0 6px 1px var(--medium-blue);
             }
         }
     }
@@ -100,7 +100,7 @@
         display: block;
         width: 18px;
         height: 18px;
-        border: 2px solid $medium-blue;
+        border: 2px solid var(--medium-blue);
         border-radius: 18px;
 
         &.add-action,
@@ -112,16 +112,16 @@
                 display: block;
                 width: 10px;
                 height: 2px;
-                background-color: $medium-blue;
+                background-color: var(--medium-blue);
                 content: '';
             }
         }
 
         &.add-action {
-            border-color: $orange;
+            border-color: var(--orange);
 
             &:before {
-                background-color: $orange;
+                background-color: var(--orange);
             }
 
             &:after {
@@ -131,7 +131,7 @@
                 display: block;
                 width: 2px;
                 height: 10px;
-                background-color: $orange;
+                background-color: var(--orange);
                 content: '';
             }
         }

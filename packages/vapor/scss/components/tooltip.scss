@@ -71,23 +71,23 @@
 
     &.state-error {
         .tooltip-inner {
-            background-color: $red;
+            background-color: var(--red);
         }
 
         &.left .tooltip-arrow {
-            border-left-color: $red;
+            border-left-color: var(--red);
         }
 
         &.bottom .tooltip-arrow {
-            border-bottom-color: $red;
+            border-bottom-color: var(--red);
         }
 
         &.top .tooltip-arrow {
-            border-top-color: $red;
+            border-top-color: var(--red);
         }
 
         &.right .tooltip-arrow {
-            border-right-color: $red;
+            border-right-color: var(--red);
         }
     }
 
@@ -126,7 +126,7 @@
     .tooltip-inner {
         max-width: 300px;
         padding: 5px 10px;
-        color: $pure-white;
+        color: var(--pure-white);
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;

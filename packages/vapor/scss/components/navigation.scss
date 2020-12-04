@@ -18,7 +18,7 @@
     background-color: $navigation-background-color;
     user-select: none;
 
-    @include slim-scroll($purple-blue, rgba(255, 255, 255, 0.5));
+    @include slim-scroll(var(--blue-purple-2), rgba(255, 255, 255, 0.5));
     &::-webkit-scrollbar,
     ::-webkit-scrollbar {
         width: $slim-scroll-bar-width + $navigation-border-for-scroll-bar * 2;
@@ -35,12 +35,12 @@
     .tooltip {
         &.right {
             .tooltip-arrow {
-                border-right-color: $orange;
+                border-right-color: var(--orange);
             }
         }
 
         .tooltip-inner {
-            background-color: $orange;
+            background-color: var(--orange);
         }
     }
 
@@ -49,7 +49,7 @@
         height: 100%;
         padding-top: 1em;
         overflow-x: hidden;
-        color: $white;
+        color: var(--white);
         background-color: $navigation-background-color;
 
         .navigation-menu-sections {
@@ -57,12 +57,12 @@
                 .navigation-menu-section-link {
                     border-left: $navigation-active-border-width solid transparent;
                     &:hover {
-                        background-color: $blue-purple-2;
+                        background-color: var(--blue-purple-2);
                         opacity: 1;
                     }
                     &.state-active {
-                        background-color: $blue-purple-2;
-                        border-left-color: $orange;
+                        background-color: var(--blue-purple-2);
+                        border-left-color: var(--orange);
                         opacity: 1;
                     }
                 }
@@ -71,7 +71,7 @@
                     display: flex;
                     align-items: center;
                     height: 55px;
-                    color: $white;
+                    color: var(--white);
                     font-weight: $navigation-menu-header-font-weight;
 
                     font-size: $navigation-section-font-size;
@@ -112,7 +112,7 @@
                             height: $navigation-menu-section-height;
                             margin-right: $navigation-right-margin;
                             padding-left: $navigation-horizontal-space;
-                            color: $white;
+                            color: var(--white);
                             font-size: $default-font-size;
                             letter-spacing: 0.05em;
 
@@ -147,8 +147,8 @@
                         }
 
                         &.state-active {
-                            background-color: $blue-purple-2;
-                            border-left-color: $orange;
+                            background-color: var(--blue-purple-2);
+                            border-left-color: var(--orange);
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;
@@ -156,7 +156,7 @@
                         }
 
                         &:hover {
-                            background-color: $blue-purple-2;
+                            background-color: var(--blue-purple-2);
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;

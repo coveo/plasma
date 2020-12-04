@@ -22,7 +22,7 @@
 :global(.coveo-styleguide .table) .tableNumberedRowContainer {
     width: 60px;
     padding: $default-margin;
-    color: $medium-blue;
+    color: var(--medium-blue);
     text-align: center;
     border-left: none;
 }

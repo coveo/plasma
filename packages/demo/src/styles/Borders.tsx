@@ -51,7 +51,10 @@ export default () => (
             <div style={{width: 100, height: 50}} className="m2 p2 mod-border mod-rounded-border-left-5">
                 left
             </div>
-            <div style={{width: 100, height: 50}} className="m2 p2 mod-border mod-rounded-border-right-5">
+            <div
+                style={{width: 100, height: 50}}
+                className="m2 p2 mod-border mod-rounded-border-right-5 mod-border-top-transparency-3"
+            >
                 right
             </div>
         </div>

@@ -16,27 +16,27 @@
     }
 
     .demo-side-nav {
-        @include slim-scroll($grey-2, $grey-4);
+        @include slim-scroll(var(--grey-2), var(--grey-4));
 
         > .navigation-menu {
-            background-color: $grey-1;
+            background-color: var(--grey-1);
         }
 
         .navigation-menu-section-header {
             margin-left: -10px;
-            color: black;
+            color: var(--black);
             font-weight: normal;
         }
 
         .navigation-menu-section-item-link {
-            color: black;
+            color: var(--black);
         }
 
         .navigation-menu-section-link,
         .navigation-menu-section-item {
             &.state-active {
                 font-weight: bold;
-                background-color: $grey-1;
+                background-color: var(--grey-1);
 
                 .navigation-menu-section-header {
                     font-weight: bold;
@@ -44,18 +44,18 @@
             }
 
             &:hover {
-                background-color: $grey-1;
+                background-color: var(--grey-1);
             }
         }
     }
 
     .demo-content {
-        @include slim-scroll($grey-2, $grey-4);
+        @include slim-scroll(var(--grey-2), var(--grey-4));
         overflow-y: overlay;
     }
 
     .top-navigation .tab {
-        color: $oxford-blue;
+        color: var(--oxford-blue);
         font-weight: normal;
         font-size: 14px;
         line-height: 17px;
@@ -107,7 +107,7 @@
         margin: 2px;
 
         &:hover {
-            background-color: $grey-3;
+            background-color: var(--grey-3);
         }
 
         a {

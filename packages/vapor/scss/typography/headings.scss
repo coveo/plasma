@@ -4,7 +4,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: $medium-blue;
+    color: var(--medium-blue);
     font-family: $base-font-family;
     line-height: $standard-line-height;
 }
@@ -76,7 +76,7 @@ h6 {
     }
     h1,
     .h1 {
-        color: $pure-white;
+        color: var(--pure-white);
     }
 }
 

@@ -2,8 +2,8 @@
     display: flex;
     width: 100%;
     height: $header-height;
-    color: $white;
-    background-color: $purple-blue;
+    color: var(--white);
+    background-color: var(--purple-blue);
 }
 
 .header-section {

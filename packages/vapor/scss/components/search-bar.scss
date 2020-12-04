@@ -31,13 +31,13 @@
 
     svg {
         cursor: pointer;
-        fill: $medium-blue;
+        fill: var(--medium-blue);
     }
 }
 
 .search-bar-disabled svg {
     cursor: default;
-    fill: $light-grey;
+    fill: var(--light-grey);
 }
 
 .search-bar-loading .search-bar-icon-container {

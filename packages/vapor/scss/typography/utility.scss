@@ -75,7 +75,7 @@
 }
 
 .help-text {
-    color: $lynch;
+    color: var(--lynch);
     font-size: $help-text-font-size;
     line-height: $help-text-line-height;
 }

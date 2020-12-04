@@ -1,18 +1,18 @@
 .flat-select {
     display: flex;
-    background-color: $pure-white;
+    background-color: var(--pure-white);
     border-radius: $border-radius;
 
     .flat-select-option {
         min-width: $flat-select-option-size;
         height: $flat-select-option-size;
         padding: 0 4px;
-        color: $pure-white;
+        color: var(--pure-white);
         font-size: 13px;
         line-height: $flat-select-option-size - 2px;
         text-align: center;
-        background-color: $medium-blue;
-        border: 1px solid $medium-blue;
+        background-color: var(--medium-blue);
+        border: 1px solid var(--medium-blue);
         border-radius: $border-radius;
 
         cursor: default;
@@ -34,7 +34,7 @@
             }
 
             .icon {
-                fill: $pure-white;
+                fill: var(--pure-white);
             }
         }
 
@@ -51,9 +51,9 @@
         }
 
         &.selectable {
-            color: $medium-blue;
-            background-color: $pure-white;
-            border: 1px solid $medium-grey;
+            color: var(--medium-blue);
+            background-color: var(--pure-white);
+            border: 1px solid var(--medium-grey);
 
             cursor: pointer;
 
@@ -62,7 +62,7 @@
             }
 
             .icon {
-                fill: $medium-blue;
+                fill: var(--medium-blue);
             }
         }
 
@@ -73,20 +73,20 @@
         &.mod-link,
         &.selectable.mod-link {
             padding: 0;
-            color: $medium-blue;
+            color: var(--medium-blue);
             font-size: $default-font-size;
-            background-color: $pure-white;
+            background-color: var(--pure-white);
             border: none;
 
             .icon {
-                fill: $medium-blue;
+                fill: var(--medium-blue);
             }
 
             &.disabled {
-                color: $medium-grey;
+                color: var(--medium-grey);
 
                 .icon {
-                    fill: $medium-grey;
+                    fill: var(--medium-grey);
                 }
             }
         }
@@ -121,15 +121,15 @@
 
     &.mod-option-picker .flat-select-option {
         flex: auto;
-        color: $medium-blue;
-        background-color: $light-grey;
-        border: 1px solid $blue;
+        color: var(--medium-blue);
+        background-color: var(--light-grey);
+        border: 1px solid var(--blue);
         border-right-width: 0;
         border-radius: 0;
 
         &.selectable {
-            background-color: $pure-white;
-            border-color: $medium-grey;
+            background-color: var(--pure-white);
+            border-color: var(--medium-grey);
         }
 
         &:first-child {
@@ -142,7 +142,7 @@
         }
 
         &:not(.selectable) + .flat-select-option {
-            border-left-color: $blue;
+            border-left-color: var(--blue);
         }
 
         & + .flat-select-option {
@@ -157,7 +157,7 @@
 
     .flat-select-prepend {
         margin-right: 10px;
-        color: $medium-grey;
+        color: var(--medium-grey);
         font-size: $default-font-size;
         line-height: 18px;
     }

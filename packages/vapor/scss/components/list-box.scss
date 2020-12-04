@@ -11,13 +11,13 @@
 
     box-shadow: $list-box-box-shadow;
 
-    @include slim-scroll($light-grey, $medium-grey);
+    @include slim-scroll(var(--light-grey), var(--medium-grey));
 }
 
 .item-box {
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
-    color: $dark-grey;
+    color: var(--dark-grey);
     font-size: $small-font-size;
     line-height: $default-line-height;
     white-space: nowrap;
@@ -29,18 +29,18 @@
     &:hover,
     &:focus,
     &.active {
-        color: $dark-blue;
-        background: $light-grey;
+        color: var(--dark-blue);
+        background: var(--light-grey);
     }
 
     &.selected {
-        color: $dark-blue;
+        color: var(--dark-blue);
         font-weight: bold;
     }
 
     &.disabled {
-        color: $medium-grey;
-        background: $pure-white;
+        color: var(--medium-grey);
+        background: var(--pure-white);
 
         cursor: default;
     }
@@ -54,7 +54,7 @@
         height: $item-box-divider-height;
         margin: $item-box-vertical-spacing 0;
         padding: 0;
-        background-color: $medium-grey;
+        background-color: var(--medium-grey);
 
         cursor: default;
     }
@@ -63,7 +63,7 @@
 .select-footer {
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
-    color: $dark-grey;
+    color: var(--dark-grey);
     font-size: $small-font-size;
     line-height: $default-line-height;
     white-space: nowrap;

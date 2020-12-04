@@ -34,23 +34,23 @@
 
     .change-page-link {
         padding: 0;
-        color: $medium-blue;
+        color: var(--medium-blue);
         font-size: $default-font-size;
-        background-color: $pure-white;
+        background-color: var(--pure-white);
         border: none;
         cursor: pointer;
 
         .icon {
-            fill: $medium-blue;
+            fill: var(--medium-blue);
         }
 
         &.disabled {
-            color: $medium-grey;
+            color: var(--medium-grey);
             cursor: default;
             pointer-events: none;
 
             .icon {
-                fill: $medium-grey;
+                fill: var(--medium-grey);
             }
         }
     }

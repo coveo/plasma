@@ -3,7 +3,7 @@
     width: $checkbox-size;
     height: $checkbox-size;
     padding: 0;
-    background: $pure-white;
+    background: var(--pure-white);
     border: $checkbox-default-border;
     border-radius: $border-radius;
     outline: none;
@@ -42,8 +42,8 @@ input[type='checkbox'].coveo-checkbox {
     }
 
     &:checked + button {
-        background-color: $orange;
-        border-color: $orange;
+        background-color: var(--orange);
+        border-color: var(--orange);
 
         &:before {
             position: absolute; // Position it in the center of the box
@@ -54,7 +54,7 @@ input[type='checkbox'].coveo-checkbox {
             box-sizing: content-box;
             width: 4px; // Make it a small rectangle so the border will create an L-shape
             height: 8px;
-            border: solid $pure-white; // Add a white border on the bottom and left, creating that 'L'
+            border: solid var(--pure-white); // Add a white border on the bottom and left, creating that 'L'
             border-width: 0 2px 2px 0;
             transform: rotate(40deg); // Rotate the L 40 degrees to turn it into a checkmark
             content: '';
@@ -62,8 +62,8 @@ input[type='checkbox'].coveo-checkbox {
     }
 
     &:disabled + button {
-        background-color: $dark-grey;
-        border-color: $dark-grey;
+        background-color: var(--dark-grey);
+        border-color: var(--dark-grey);
     }
 
     &:indeterminate + button {
@@ -84,11 +84,11 @@ input[type='checkbox'].coveo-checkbox {
     }
 
     &:indeterminate:disabled + button:before {
-        border-color: $pure-white;
+        border-color: var(--pure-white);
     }
 
     &:disabled + button {
-        background-color: $dark-grey;
+        background-color: var(--dark-grey);
 
         cursor: not-allowed;
         opacity: 0.2;
@@ -102,7 +102,7 @@ input[type='checkbox'].coveo-checkbox {
 .coveo-checkbox-label {
     display: inline-flex;
     align-items: center;
-    color: $dark-grey;
+    color: var(--dark-grey);
     line-height: 16px;
     vertical-align: middle; // Required to properly position checkboxes into tables
 

@@ -7,12 +7,12 @@
     position: absolute;
     width: $ribbon-width;
     height: $ribbon-height;
-    color: $pure-white;
+    color: var(--pure-white);
     font-size: $ribbon-font-size;
     line-height: $ribbon-height;
     letter-spacing: $ribbon-letter-spacing;
     text-align: center;
-    background-color: $medium-grey;
+    background-color: var(--medium-grey);
 
     &.left {
         left: $ribbon-x-offset;

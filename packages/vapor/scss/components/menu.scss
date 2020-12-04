@@ -1,11 +1,11 @@
 .dropdown.mod-menu {
     &.header-section {
         &:hover {
-            background-color: $blue-purple-2;
+            background-color: var(--blue-purple-2);
         }
 
         &.open {
-            background-color: $blue-purple-2;
+            background-color: var(--blue-purple-2);
         }
     }
     .dropdown-toggle {
@@ -18,12 +18,12 @@
         cursor: pointer;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon($pure-white);
+            @include arrow-down-icon(var(--pure-white));
         }
     }
 
     &.open .dropdown-toggle .dropdown-toggle-arrow {
-        @include arrow-up-icon($pure-white);
+        @include arrow-up-icon(var(--pure-white));
     }
 
     .dropdown-menu {

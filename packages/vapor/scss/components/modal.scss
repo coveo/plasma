@@ -45,7 +45,7 @@ $icon-size: (4em / 3);
 
 .modal-backdrop {
     z-index: $base-backdrop-z-index;
-    background: rgba($purple-blue, 0.9);
+    background: var(--modal-backdrop-color);
 
     opacity: 1;
     transition: all 0.3s;
@@ -176,8 +176,8 @@ $icon-size: (4em / 3);
     align-items: center;
     height: $modal-header-height;
     padding: 0 $header-padding;
-    color: $pure-white;
-    background-color: $pure-white;
+    color: var(--pure-white);
+    background-color: var(--pure-white);
     border-radius: $border-radius $border-radius 0 0;
 
     &:not(.mod-no-border-bottom) {
@@ -185,24 +185,24 @@ $icon-size: (4em / 3);
     }
 
     &.mod-success {
-        background-color: $green;
+        background-color: var(--green);
     }
 
     &.mod-warning {
-        background-color: $yellow;
+        background-color: var(--yellow);
     }
 
     &.mod-critical {
-        background-color: $red;
+        background-color: var(--red);
     }
 
     &.mod-info {
-        background-color: $medium-blue;
+        background-color: var(--medium-blue);
     }
 
     h1 {
         overflow: hidden;
-        color: $medium-blue;
+        color: var(--medium-blue);
         line-height: 30px;
         white-space: nowrap;
         text-overflow: ellipsis;
@@ -228,7 +228,7 @@ $icon-size: (4em / 3);
     flex-grow: 1;
 
     overflow: auto;
-    background-color: $pure-white;
+    background-color: var(--pure-white);
 
     -webkit-overflow-scrolling: touch;
 
@@ -243,7 +243,7 @@ $icon-size: (4em / 3);
     justify-content: flex-end;
     padding: $modal-footer-padding;
     overflow: hidden;
-    background-color: $white;
+    background-color: var(--white);
     border-top: $default-border;
     border-radius: 0 0 $border-radius $border-radius;
 
