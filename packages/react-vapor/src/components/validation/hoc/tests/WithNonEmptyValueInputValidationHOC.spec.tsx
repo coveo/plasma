@@ -54,12 +54,21 @@ describe('WithNonEmptyValueInputValidationHOC', () => {
                 inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} validate={validateSpy} />, store).dive();
             });
 
-            it('should dispatch a set error action when the validation fails', () => {
-                inputWrapper.prop('validate')('');
+            [
+                {title: 'empty', value: ''},
+                {title: 'whitespace', value: ' '},
+            ].forEach((test) => {
+                it(`should dispatch a set error action when the validation fails (${test.title})`, () => {
+                    inputWrapper.prop('validate')(test.value);
 
-                expect(store.getActions()).toContain(
-                    ValidationActions.setError(INPUT_PROPS.id, INPUT_PROPS.validationMessage, ValidationTypes.nonEmpty)
-                );
+                    expect(store.getActions()).toContain(
+                        ValidationActions.setError(
+                            INPUT_PROPS.id,
+                            INPUT_PROPS.validationMessage,
+                            ValidationTypes.nonEmpty
+                        )
+                    );
+                });
             });
 
             it('should not dispatch a set error action when the validation succeeds', () => {
