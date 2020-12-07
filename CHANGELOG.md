@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.6.0](https://github.com/coveo/react-vapor/compare/v9.5.1...v9.6.0) (2020-12-07)
+
+
+### Features
+
+* **button:** create css variable for text-transform ([#1747](https://github.com/coveo/react-vapor/issues/1747)) ([6a20b08](https://github.com/coveo/react-vapor/commit/6a20b08d693e6bf0e35057b07b7477255cc241f1))
+
+
+
+
+
 ## [9.5.1](https://github.com/coveo/react-vapor/compare/v9.5.0...v9.5.1) (2020-12-07)
 
 
