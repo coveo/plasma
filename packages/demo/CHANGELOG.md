@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.5.0](https://github.com/coveo/react-vapor/compare/v9.4.0...v9.5.0) (2020-12-07)
+
+
+### Features
+
+* **fonts:** use css variables ([#1746](https://github.com/coveo/react-vapor/issues/1746)) ([4b54b5a](https://github.com/coveo/react-vapor/commit/4b54b5a0db1b90815c9032472fcd8a934c6d4413))
+
+
+
+
+
 # [9.4.0](https://github.com/coveo/react-vapor/compare/v9.3.1...v9.4.0) (2020-12-07)
 
 **Note:** Version bump only for package react-vapor-demo
