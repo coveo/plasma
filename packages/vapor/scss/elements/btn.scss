@@ -67,8 +67,8 @@
 
         &:hover,
         &:focus {
-            background-color: var(--button-focus-color);
-            border: $button-border-width solid var(--button-focus-color);
+            background-color: var(--button-primary-focus-color);
+            border: $button-border-width solid var(--button-primary-focus-color);
         }
 
         &:disabled,
