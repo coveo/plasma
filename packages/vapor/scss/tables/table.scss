@@ -96,8 +96,6 @@
         height: $table-row-height;
         font-size: $table-row-font-size;
         line-height: $table-row-line-height;
-        -webkit-transform: translate3d(0, 0, 0);
-        transform: translate3d(0, 0, 0);
 
         &.disabled div.wrapper {
             opacity: 0.4;
