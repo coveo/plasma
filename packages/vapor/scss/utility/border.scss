@@ -56,24 +56,26 @@ $borders: border-top border-bottom border-left border-right;
     }
 }
 
-@each $color, $value in $palette {
-    .border-color-#{$color} {
-        border-color: $value;
+@each $color in $palette {
+    $key: nth($color, 1);
+
+    .border-color-#{$key} {
+        border-color: var(--#{$key});
     }
 
-    .border-left-color-#{$color} {
-        border-left-color: $value;
+    .border-left-color-#{$key} {
+        border-left-color: var(--#{$key});
     }
 
-    .border-right-color-#{$color} {
-        border-left-color: $value;
+    .border-right-color-#{$key} {
+        border-left-color: var(--#{$key});
     }
 
-    .border-top-color-#{$color} {
-        border-left-color: $value;
+    .border-top-color-#{$key} {
+        border-left-color: var(--#{$key});
     }
 
-    .border-bottom-color-#{$color} {
-        border-left-color: $value;
+    .border-bottom-color-#{$key} {
+        border-left-color: var(--#{$key});
     }
 }

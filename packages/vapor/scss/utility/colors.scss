@@ -1,17 +1,19 @@
 @each $color in $palette {
-    .bg-#{nth($color, 1)} {
-        background-color: nth($color, 2);
+    $key: nth($color, 1);
+
+    .bg-#{$key} {
+        background-color: var(--#{$key});
     }
 
-    .fill-#{nth($color, 1)} {
-        fill: nth($color, 2);
+    .fill-#{$key} {
+        fill: var(--#{$key});
     }
 
-    .text-#{nth($color, 1)} {
-        color: nth($color, 2);
+    .text-#{$key} {
+        color: var(--#{$key});
     }
 
-    .border-#{nth($color, 1)} {
-        border-color: nth($color, 2);
+    .border-#{$key} {
+        border-color: var(--#{$key});
     }
 }

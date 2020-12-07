@@ -559,9 +559,9 @@ $flippable-transition-duration: 0.8s;
 $flippable-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
 
 // Material Card
-$material-card-shadow: 0 2px 20px 0 rgba(0, 0, 0, 0.1);
-$material-card-shadow-hover: 0 2px 30px 0 rgba(0, 0, 0, 0.3);
-$material-card-shadow-active: 0 2px 20px 0 rgba(0, 0, 0, 0.3);
+$material-card-shadow: 0 2px 20px 0 var(--material-card-box-shadow-color);
+$material-card-shadow-hover: 0 2px 30px 0 var(--material-card-box-shadow-active-color);
+$material-card-shadow-active: 0 2px 20px 0 var(--material-card-box-shadow-active-color);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder

@@ -67,14 +67,14 @@
 
         &:hover,
         &:focus {
-            background-color: var(--orange-5-lighten);
-            border: $button-border-width solid var(--orange-5-lighten);
+            background-color: var(--button-focus-color);
+            border: $button-border-width solid var(--button-focus-color);
         }
 
         &:disabled,
         &.state-disabled {
-            background-color: var(--orange-20-lighten);
-            border: $button-border-width solid var(--orange-20-lighten);
+            background-color: var(--button-primary-disabled-color);
+            border: $button-border-width solid var(--button-primary-disabled-color);
         }
 
         .icon {
@@ -89,14 +89,14 @@
 
         &:hover,
         &:focus {
-            background-color: var(--red-5-lighten);
-            border: $button-border-width solid var(--red-5-lighten);
+            background-color: var(--button-danger-focus-color);
+            border: $button-border-width solid var(--button-danger-focus-color);
         }
 
         &:disabled,
         &.state-disabled {
-            background-color: var(--red-20-lighten);
-            border: $button-border-width solid var(--red-20-lighten);
+            background-color: var(--button-danger-disabled-color);
+            border: $button-border-width solid var(--button-danger-disabled-color);
         }
 
         .icon {
