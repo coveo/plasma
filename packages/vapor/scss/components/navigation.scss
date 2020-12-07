@@ -18,7 +18,7 @@
     background-color: $navigation-background-color;
     user-select: none;
 
-    @include slim-scroll(var(--blue-purple-2), rgba(255, 255, 255, 0.5));
+    @include slim-scroll(var(--purple-blue), var(--navigation-scroll-thumb-color));
     &::-webkit-scrollbar,
     ::-webkit-scrollbar {
         width: $slim-scroll-bar-width + $navigation-border-for-scroll-bar * 2;

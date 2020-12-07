@@ -1,5 +1,6 @@
-@each $color, $value in $palette {
-    .hover-color-#{$color}:hover {
-        background-color: $value;
+@each $color in $palette {
+    $key: nth($color, 1);
+    .hover-color-#{$key}:hover {
+        background-color: var(--#{$key});
     }
 }
