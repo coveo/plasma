@@ -25,7 +25,7 @@
         .navigation-menu-section-header {
             margin-left: -10px;
             color: var(--black);
-            font-weight: normal;
+            font-weight: var(--main-font-regular);
         }
 
         .navigation-menu-section-item-link {
@@ -35,11 +35,11 @@
         .navigation-menu-section-link,
         .navigation-menu-section-item {
             &.state-active {
-                font-weight: bold;
+                font-weight: var(--main-font-bold);
                 background-color: var(--grey-1);
 
                 .navigation-menu-section-header {
-                    font-weight: bold;
+                    font-weight: var(--main-font-bold);
                 }
             }
 
@@ -56,13 +56,13 @@
 
     .top-navigation .tab {
         color: var(--oxford-blue);
-        font-weight: normal;
+        font-weight: var(--main-font-regular);
         font-size: 14px;
         line-height: 17px;
         letter-spacing: 1.5px;
 
         &.active {
-            font-weight: bold;
+            font-weight: var(--main-font-bold);
         }
     }
 
@@ -98,7 +98,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: var(--main-font);
 
     li {
         display: inline-block;

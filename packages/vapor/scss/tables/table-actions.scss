@@ -77,7 +77,7 @@
             margin-top: 1px; // Hack to fix label vertical alignment...
             margin-left: $table-action-margin-left;
             color: var(--medium-blue);
-            font-weight: bold;
+            font-weight: var(--main-font-bold);
             font-size: 13px;
             line-height: 11px;
             text-transform: uppercase;

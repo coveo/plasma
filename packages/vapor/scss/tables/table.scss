@@ -28,7 +28,7 @@
     thead tr {
         height: $table-header-height;
         color: var(--medium-blue);
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
         font-size: $table-header-font-size;
         line-height: $table-header-line-height;
         background-color: transparent;
@@ -222,7 +222,7 @@
 
         & .mod-card-header {
             color: var(--medium-blue);
-            font-weight: bold;
+            font-weight: var(--main-font-bold);
             font-size: $medium-title-font-size;
             border-bottom: 2px solid var(--light-grey);
         }

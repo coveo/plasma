@@ -23,7 +23,7 @@
     }
 }
 
-@mixin placeholder($text-color: var(--medium-grey), $font-family: $base-font-family) {
+@mixin placeholder($text-color: var(--medium-grey), $font-family: var(--main-font)) {
     &::placeholder {
         color: $text-color;
         font-size: inherit;

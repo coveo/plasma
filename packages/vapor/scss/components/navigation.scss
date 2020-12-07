@@ -72,7 +72,7 @@
                     align-items: center;
                     height: 55px;
                     color: var(--white);
-                    font-weight: $navigation-menu-header-font-weight;
+                    font-weight: var(--main-font-bolder);
 
                     font-size: $navigation-section-font-size;
                     cursor: pointer;
@@ -100,7 +100,7 @@
                     }
 
                     .navigation-menu-section-item {
-                        font-weight: $navigation-menu-item-font-weight;
+                        font-weight: var(--main-font-regular);
                         border-left: $navigation-active-border-width solid transparent;
 
                         cursor: pointer;

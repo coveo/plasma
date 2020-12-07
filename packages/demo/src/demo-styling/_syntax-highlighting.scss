@@ -23,11 +23,11 @@
     }
     // Error
     .k {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Keyword
     .o {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Operator
     .cm {
@@ -37,7 +37,7 @@
     // Comment.Multiline
     .cp {
         color: #999;
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Comment.Preproc
     .c1 {
@@ -47,7 +47,7 @@
     // Comment.Single
     .cs {
         color: #999;
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
         font-style: italic;
     }
     // Comment.Special
@@ -92,7 +92,7 @@
     }
     // Generic.Prompt
     .gs {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Generic.Strong
     .gu {
@@ -104,24 +104,24 @@
     }
     // Generic.Traceback
     .kc {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Keyword.Constant
     .kd {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Keyword.Declaration
     .kp {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Keyword.Pseudo
     .kr {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Keyword.Reserved
     .kt {
         color: #458;
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Keyword.Type
     .m {
@@ -142,7 +142,7 @@
     // Name.Builtin
     .nc {
         color: #458;
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Name.Class
     .no {
@@ -155,12 +155,12 @@
     // Name.Entity
     .ne {
         color: #900;
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Name.Exception
     .nf {
         color: #900;
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Name.Function
     .nn {
@@ -176,7 +176,7 @@
     }
     // Name.Variable
     .ow {
-        font-weight: bold;
+        font-weight: var(--main-font-bold);
     }
     // Operator.Word
     .w {

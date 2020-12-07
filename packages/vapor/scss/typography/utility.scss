@@ -2,15 +2,15 @@
 // Source: https://github.com/basscss/utility-typography
 
 .bold {
-    font-weight: bold;
+    font-weight: var(--main-font-bold);
 }
 
 .semibold {
-    font-weight: 600;
+    font-weight: var(--main-font-bold);
 }
 
 .regular {
-    font-weight: normal;
+    font-weight: var(--main-font-regular);
 }
 
 .italic {

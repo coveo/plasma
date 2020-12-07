@@ -75,12 +75,12 @@
 
                 &.result-selected {
                     color: var(--medium-blue);
-                    font-weight: bold;
+                    font-weight: var(--main-font-bold);
                 }
 
                 em {
                     color: var(--dark-grey);
-                    font-weight: bold;
+                    font-weight: var(--main-font-bold);
                     font-style: normal;
                     text-decoration: underline;
                 }
@@ -115,7 +115,7 @@
         padding: 0 $button-padding-x;
         overflow: hidden;
         color: var(--medium-blue);
-        font-weight: 700;
+        font-weight: var(--main-font-bold);
         font-size: $dropdown-button-font-size;
         line-height: 34px;
         white-space: nowrap;
@@ -306,7 +306,7 @@
     .chosen-drop .chosen-results li.result-selected {
         display: list-item;
         color: var(--medium-grey);
-        font-weight: normal;
+        font-weight: var(--main-font-regular);
         cursor: default;
     }
 

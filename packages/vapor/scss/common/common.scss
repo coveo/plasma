@@ -17,7 +17,7 @@ body {
     // Base font size for the entire app
     font-size: 13px;
 
-    font-family: $base-font-family;
+    font-family: var(--main-font);
     -webkit-font-smoothing: antialiased;
 }
 

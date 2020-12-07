@@ -175,7 +175,7 @@
 
             &.state-selected {
                 color: var(--dark-blue);
-                font-weight: bold;
+                font-weight: var(--main-font-bold);
             }
 
             &.disabled {

@@ -95,7 +95,7 @@
     &.mod-btn-group .flat-select-option {
         height: $button-height;
         padding: $button-padding-y $button-padding-x;
-        font-weight: $button-font-weight;
+        font-weight: var(--main-font-bold);
 
         font-size: $button-font-size;
         line-height: $button-line-height;

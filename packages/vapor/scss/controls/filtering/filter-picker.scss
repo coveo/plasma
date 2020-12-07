@@ -17,7 +17,7 @@
         .filter-badge {
             box-sizing: border-box;
             height: $filter-badge-height;
-            font-weight: normal;
+            font-weight: var(--main-font-regular);
             text-transform: initial;
         }
 
