@@ -15,7 +15,7 @@
     font-family: var(--main-font);
     line-height: $button-line-height;
     white-space: nowrap;
-    text-transform: uppercase;
+    text-transform: var(--button-text-transform);
     text-decoration: none;
     text-overflow: ellipsis;
     vertical-align: middle;
