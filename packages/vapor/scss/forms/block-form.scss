@@ -31,7 +31,7 @@ form {
         display: inline-flex; // Used for inline-help-tooltip placement
         align-items: center;
         margin-bottom: $form-control-label-margin;
-        color: $medium-blue;
+        color: var(--medium-blue);
         font-size: $form-control-label-font-size;
 
         &.flex {
@@ -147,12 +147,12 @@ form {
 
         .inline-help-icon,
         .inline-help-icon > svg {
-            fill: $medium-grey;
+            fill: var(--medium-grey);
         }
 
         .inline-link-icon,
         .inline-link-icon > svg {
-            fill: $orange;
+            fill: var(--orange);
         }
     }
 }

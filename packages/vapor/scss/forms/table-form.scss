@@ -9,7 +9,7 @@
     .form-group {
         display: table-row;
         height: 36px;
-        color: $dark-grey;
+        color: var(--dark-grey);
 
         &.hidden {
             display: none;
@@ -30,10 +30,10 @@
         & > label:first-child {
             width: 30%;
             padding: 0 10px;
-            color: $medium-blue;
+            color: var(--medium-blue);
             font-size: $title-font-size;
             font-family: $base-font-family;
-            background-color: $pure-white;
+            background-color: var(--pure-white);
         }
 
         .context-help {
@@ -48,19 +48,19 @@
         .value {
             height: 39px;
             font-size: $title-font-size;
-            background-color: $white;
+            background-color: var(--white);
 
             input:disabled:not([type='radio']) {
                 font-weight: 600;
                 font-size: $title-font-size;
                 font-family: $base-font-family;
-                background-color: $pure-white;
+                background-color: var(--pure-white);
 
                 opacity: 0.4;
             }
 
             &.disabled {
-                background-color: $pure-white;
+                background-color: var(--pure-white);
             }
 
             input,
@@ -88,12 +88,12 @@
             }
 
             &.admin-editable:hover {
-                background-color: $light-grey;
+                background-color: var(--light-grey);
             }
 
             &.admin-non-editable {
                 padding-left: 9px;
-                background-color: $pure-white;
+                background-color: var(--pure-white);
 
                 i {
                     margin-right: 5px;

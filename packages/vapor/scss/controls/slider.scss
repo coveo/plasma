@@ -30,12 +30,12 @@ div.slider-container {
     .rc-slider-rail {
         height: $slider-rail-height;
         margin-top: $slider-rail-margin-top;
-        background-color: $grey-3;
+        background-color: var(--grey-3);
     }
 
     .rc-slider-track {
         height: $slider-track-height;
-        background: $blue-5;
+        background: var(--science-blue);
         border-radius: 0;
     }
 
@@ -45,7 +45,7 @@ div.slider-container {
         height: $slider-dot-height;
         margin-top: $slider-dot-margin-top;
         margin-left: $slider-dot-margin-left;
-        background-color: $heather;
+        background-color: var(--heather);
         border: none;
         border-radius: initial;
         box-shadow: $slider-dot-box-shadow;
@@ -64,7 +64,7 @@ div.slider-container {
 
     .rc-slider-mark-text {
         bottom: 3 * $spacing;
-        color: $bali-hai;
+        color: var(--bali-hai);
     }
 }
 
@@ -77,7 +77,7 @@ div.slider-container {
         }
 
         .rc-slider-tooltip-inner {
-            color: $dark-blue;
+            color: var(--dark-blue);
             font-size: $small-font-size;
             line-height: $default-line-height;
             background-color: transparent;

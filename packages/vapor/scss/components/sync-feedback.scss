@@ -3,15 +3,15 @@
     align-items: center;
 
     &.mod-error {
-        color: $red;
+        color: var(--red);
 
         .sync-feedback-icon svg {
-            fill: $red;
+            fill: var(--red);
         }
     }
 
     &.mod-success .sync-feedback-icon svg {
-        fill: $green;
+        fill: var(--green);
     }
 
     .sync-feedback-icon {
@@ -28,7 +28,7 @@
         border-radius: 50%;
 
         &.syncing {
-            background-color: $dark-grey;
+            background-color: var(--dark-grey);
             animation: scaleout 1s infinite ease-in-out;
         }
     }

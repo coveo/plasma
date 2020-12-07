@@ -4,27 +4,27 @@
     min-width: $color-dot-size;
     height: $color-dot-size;
     min-height: $color-dot-size;
-    background-color: $green;
+    background-color: var(--green);
     border-radius: 100%;
 
     &.state-critical {
-        background-color: $red;
+        background-color: var(--red);
     }
 
     &.state-major {
-        background-color: $orange;
+        background-color: var(--orange);
     }
 
     &.state-minor {
-        background-color: $yellow;
+        background-color: var(--yellow);
     }
 
     &.state-info {
-        background-color: $blue;
+        background-color: var(--blue);
     }
 
     &.state-disabled {
-        background-color: $light-grey;
+        background-color: var(--light-grey);
     }
 
     &.state-executing {
@@ -32,6 +32,6 @@
     }
 
     &.state-waiting {
-        background-color: $medium-grey;
+        background-color: var(--medium-grey);
     }
 }

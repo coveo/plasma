@@ -9,5 +9,5 @@
 .breadcrumb-arrow {
     @extend .icon;
     @extend .mod-normal;
-    fill: $medium-grey;
+    fill: var(--medium-grey);
 }

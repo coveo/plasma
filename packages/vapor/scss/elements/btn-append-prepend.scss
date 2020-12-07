@@ -47,7 +47,7 @@
 
         .btn-append {
             margin-left: $button-padding-x;
-            border-left: $button-border-width solid $medium-grey;
+            border-left: $button-border-width solid var(--medium-grey);
         }
     }
 
@@ -56,7 +56,7 @@
 
         .btn-prepend {
             margin-right: $button-padding-x;
-            border-right: $button-border-width solid $medium-grey;
+            border-right: $button-border-width solid var(--medium-grey);
         }
     }
 }

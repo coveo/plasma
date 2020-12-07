@@ -36,7 +36,7 @@ table.drag-and-drop-table-view {
         .icon {
             pointer-events: none;
 
-            fill: $medium-grey;
+            fill: var(--medium-grey);
         }
     }
 }

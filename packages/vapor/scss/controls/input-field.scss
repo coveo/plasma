@@ -29,10 +29,10 @@
         &:focus:not([readonly]),
         &:valid,
         &:disabled {
-            color: $dark-grey;
-            border-bottom: 1px solid $lynch;
+            color: var(--dark-grey);
+            border-bottom: 1px solid var(--lynch);
 
-            @include placeholder($lynch);
+            @include placeholder(var(--lynch));
 
             & + label,
             & + span {
@@ -40,37 +40,37 @@
             }
 
             &:focus:not([readonly]) {
-                color: $lynch;
-                border-bottom-color: $azure;
+                color: var(--lynch);
+                border-bottom-color: var(--azure);
 
                 & + label,
                 & + span {
-                    color: $azure;
+                    color: var(--azure);
                 }
             }
         }
 
         &:disabled,
         &[readonly='readonly'] {
-            color: $dark-grey;
+            color: var(--dark-grey);
             border-bottom-color: transparent;
 
             &:not(.disabled-input) {
-                @include placeholder($dark-grey);
-                -webkit-text-fill-color: $dark-grey;
+                @include placeholder(var(--dark-grey));
+                -webkit-text-fill-color: var(--dark-grey);
             }
 
             &.disabled-input {
                 margin-left: 1 * $spacing;
                 background-color: transparent;
                 &::placeholder {
-                    color: $red;
+                    color: var(--red);
                     font-size: 12px;
                 }
             }
 
             & + label {
-                color: $lynch;
+                color: var(--lynch);
             }
         }
     }
@@ -88,14 +88,14 @@
         display: flex; // Used for inline-help-tooltip placement
         box-sizing: content-box;
         height: 100%;
-        color: $lynch;
+        color: var(--lynch);
         font-size: $input-font-size;
         transition: $input-transition;
 
         &.active {
             top: -1 * $input-margin-top;
             padding-bottom: $input-margin-top;
-            color: $lynch;
+            color: var(--lynch);
             font-size: $form-control-label-font-size;
         }
     }
@@ -146,21 +146,21 @@
         }
 
         &.valid {
-            border-bottom-color: $green;
+            border-bottom-color: var(--green);
 
             & + label:after {
-                color: $green;
+                color: var(--green);
                 opacity: 1;
                 content: attr(data-valid-message);
             }
         }
 
         &.invalid {
-            border-bottom-color: $red;
+            border-bottom-color: var(--red);
         }
 
         &.invalid + label:after {
-            color: $red;
+            color: var(--red);
             opacity: 1;
             content: attr(data-invalid-message);
         }
@@ -207,7 +207,7 @@
 
     // Temp fix for the textarea since using label:after doesn't work (because of textarea variable size)
     &.validate textarea.invalid {
-        border-bottom-color: $red;
+        border-bottom-color: var(--red);
     }
 
     &.validate .generic-form-error {

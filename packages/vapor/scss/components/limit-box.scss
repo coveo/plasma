@@ -8,7 +8,7 @@
 .limit-box-numbers {
     label.form-control-label,
     .input-field input:valid + label {
-        color: $dark-medium-grey;
+        color: var(--dark-medium-grey);
     }
 }
 
@@ -29,12 +29,12 @@
 .limit-box-footer {
     width: 100%;
     height: $limit-progress-bar-height;
-    background-color: $light-grey;
+    background-color: var(--light-grey);
 }
 
 .limit-box-bar {
     height: 100%;
-    background-color: $green;
+    background-color: var(--green);
 }
 
 @for $i from 0 through 100 {
@@ -42,24 +42,24 @@
         width: $i * 1%;
 
         @if $i >= 75 {
-            background-color: $orange;
+            background-color: var(--orange);
         }
         @if $i == 100 {
-            background-color: $red;
+            background-color: var(--red);
         }
     }
 }
 
 .limit-box-bar.mod-green {
-    background-color: $green;
+    background-color: var(--green);
 }
 
 .limit-box-bar.mod-orange {
-    background-color: $orange;
+    background-color: var(--orange);
 }
 
 .limit-box-bar.mod-red {
-    background-color: $red;
+    background-color: var(--red);
 }
 
 .limit-history-button {

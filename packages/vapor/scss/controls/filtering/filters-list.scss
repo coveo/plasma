@@ -37,12 +37,12 @@
                 width: 100%;
                 margin-top: $filter-choices-section-margin-top;
                 padding-left: $filter-choices-section-padding-left;
-                color: $medium-blue;
+                color: var(--medium-blue);
                 text-transform: uppercase;
             }
 
             .list {
-                @include slim-scroll($light-grey, $medium-grey);
+                @include slim-scroll(var(--light-grey), var(--medium-grey));
             }
         }
     }
@@ -51,13 +51,13 @@
         max-height: 300px;
         overflow: auto;
 
-        @include slim-scroll($light-grey, $medium-grey);
+        @include slim-scroll(var(--light-grey), var(--medium-grey));
     }
 
     .filter-choices,
     .edit-filter-values {
         .popup-header {
-            background-color: $white;
+            background-color: var(--white);
             border-bottom: $default-border;
         }
     }
@@ -102,19 +102,19 @@
             line-height: $filter-not-selected-line-height;
             white-space: nowrap;
             text-overflow: ellipsis;
-            background-color: $pure-white;
+            background-color: var(--pure-white);
 
             cursor: pointer;
 
             .type {
-                color: $medium-grey;
+                color: var(--medium-grey);
                 font-size: $filter-type-font-size;
             }
         }
 
         li.filter:hover,
         li.filter.active {
-            background-color: $light-grey;
+            background-color: var(--light-grey);
         }
 
         label.filter {

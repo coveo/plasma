@@ -7,13 +7,13 @@
             width: 100%;
 
             .popup-header {
-                background-color: $pure-white;
+                background-color: var(--pure-white);
             }
 
             .selected-filter {
                 height: $selected-filter-height;
                 padding-left: $selected-filter-padding-left;
-                color: $medium-blue;
+                color: var(--medium-blue);
                 font-weight: bold;
                 font-size: $default-font-size;
                 line-height: $selected-filter-height;

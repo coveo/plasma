@@ -9,7 +9,7 @@
         display: inline-block;
         margin-right: $tab-margin-right;
         padding: $tab-padding;
-        color: $medium-blue;
+        color: var(--medium-blue);
         font-weight: bold;
         font-size: $tab-font-size;
         line-height: 16px;
@@ -21,12 +21,12 @@
         transition: all 0.2s ease;
 
         &.active {
-            color: $medium-blue;
-            border-bottom: $tab-bottom-border-height solid $orange;
+            color: var(--medium-blue);
+            border-bottom: $tab-bottom-border-height solid var(--orange);
         }
 
         &.disabled {
-            color: $medium-grey;
+            color: var(--medium-grey);
             cursor: not-allowed;
         }
 

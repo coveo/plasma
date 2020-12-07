@@ -4,6 +4,6 @@
     bottom: 0;
     left: 0;
     width: $table-selected-border-width;
-    background-color: $orange;
+    background-color: var(--orange);
     content: '';
 }

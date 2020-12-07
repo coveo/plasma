@@ -29,14 +29,14 @@
         width: auto;
         height: calc(#{$diff-line-height} + #{$diff-line-ajustment});
         margin-top: $diff-line-ajustment;
-        color: $dark-grey;
-        background: $white;
+        color: var(--dark-grey);
+        background: var(--white);
         border: none;
         border-left: $default-border;
         cursor: initial;
 
         &:global(.d2h-change) {
-            background: $white;
+            background: var(--white);
         }
     }
 
@@ -75,7 +75,7 @@
             width: calc(#{$diff-line-number-width} * 2 + #{$diff-line-number-width});
             height: $diff-line-ajustment * 2;
             margin-top: 0;
-            background: $pure-white;
+            background: var(--pure-white);
             border-right: none;
             border-bottom: none;
             border-left: none;
@@ -94,21 +94,21 @@
             width: 100%;
             margin-bottom: $diff-separator-margin;
             margin-left: 0;
-            color: $pure-white;
+            color: var(--pure-white);
             font-size: 0;
-            background: $pure-white;
-            border-bottom: 2px solid $medium-grey;
+            background: var(--pure-white);
+            border-bottom: 2px solid var(--medium-grey);
 
             &:before {
                 position: absolute;
                 top: 50%;
                 left: 0;
                 padding-bottom: $diff-separator-padding;
-                color: $dark-medium-grey;
+                color: var(--dark-medium-grey);
                 font-size: $diff-separator-font-size;
                 line-height: $diff-separator-line-height;
                 background: white;
-                border: $default-border-size solid $white;
+                border: $default-border-size solid var(--white);
                 border-radius: $border-radius;
                 transform: translateY(-50%);
                 content: '...';
@@ -118,17 +118,17 @@
     }
 
     :global(.d2h-ins):not(:global(.d2h-code-linenumber)) {
-        background: $soft-green;
+        background: var(--soft-green);
     }
 
     :global(.d2h-code-line),
     :global(.d2h-code-side-line) {
         :global(ins) {
-            background: $soft-green;
+            background: var(--soft-green);
         }
     }
 
     :global(.d2h-del):not(:global(.d2h-code-linenumber)) {
-        background: $soft-red;
+        background: var(--soft-red);
     }
 }

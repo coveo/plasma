@@ -27,7 +27,7 @@
 
     thead tr {
         height: $table-header-height;
-        color: $medium-blue;
+        color: var(--medium-blue);
         font-weight: bold;
         font-size: $table-header-font-size;
         line-height: $table-header-line-height;
@@ -40,7 +40,7 @@
         z-index: 1;
         padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
         white-space: nowrap;
-        background-color: $pure-white;
+        background-color: var(--pure-white);
         border-top: $table-border;
         border-bottom: $table-border;
 
@@ -55,7 +55,7 @@
                     height: 12px;
                     margin-left: 5px;
                     vertical-align: -2px;
-                    fill: $medium-blue;
+                    fill: var(--medium-blue);
 
                     .asc-arrow,
                     .desc-arrow {
@@ -78,7 +78,7 @@
             }
 
             &:hover {
-                background-color: $light-grey;
+                background-color: var(--light-grey);
             }
         }
     }
@@ -104,9 +104,9 @@
         }
 
         &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
-            background-color: $light-grey;
+            background-color: var(--light-grey);
             td {
-                background-color: $light-grey;
+                background-color: var(--light-grey);
             }
         }
 
@@ -117,9 +117,9 @@
 
         &.selected:not(.no-selection-indicator) {
             &:not(:hover) {
-                background-color: $white;
+                background-color: var(--white);
                 td {
-                    background-color: $white;
+                    background-color: var(--white);
                 }
             }
 
@@ -129,9 +129,9 @@
         }
 
         &.blankslate-rows:hover {
-            background-color: $pure-white;
+            background-color: var(--pure-white);
             td {
-                background-color: $pure-white;
+                background-color: var(--pure-white);
             }
         }
     }
@@ -151,7 +151,7 @@
         }
 
         &.edit.enabled {
-            color: $medium-blue;
+            color: var(--medium-blue);
             cursor: pointer;
         }
 
@@ -180,20 +180,20 @@
 
     &.row-selected td,
     &.row-selected:hover td {
-        background-color: $light-grey;
+        background-color: var(--light-grey);
     }
 
     &.confirm-delete {
         .row-selected td,
         &.row-selected:hover td {
-            background-color: rgba($red, 0.1);
-            border-color: $red;
+            background-color: var(--table-selected-row-hover-color);
+            border-color: var(--red);
             transition: background-color 300ms;
         }
     }
 
     &.mod-deleting tbody tr.selected td {
-        background-color: rgba($red, 0.1);
+        background-color: var(--table-selected-row-hover-color);
     }
 
     .mod-card-list {
@@ -223,10 +223,10 @@
         border-left: $status-card-border-width solid $transparent;
 
         & .mod-card-header {
-            color: $medium-blue;
+            color: var(--medium-blue);
             font-weight: bold;
             font-size: $medium-title-font-size;
-            border-bottom: 2px solid $light-grey;
+            border-bottom: 2px solid var(--light-grey);
         }
     }
 
@@ -236,13 +236,13 @@
         cursor: pointer;
 
         &:hover {
-            background-color: $grey-2;
+            background-color: var(--grey-2);
         }
     }
 
     tr.selected .mod-card {
-        background-color: $grey-1;
-        border-left: $status-card-border-width solid $orange;
+        background-color: var(--grey-1);
+        border-left: $status-card-border-width solid var(--orange);
     }
 }
 
@@ -252,7 +252,7 @@
 
 .table-last-update {
     margin: 10px $header-padding;
-    color: rgba($dark-grey, 0.5);
+    color: var(--date-picker-button-hover-color);
     font-size: 11px;
     text-align: right;
 }
@@ -282,9 +282,9 @@
 }
 
 $row-style: (
-    success: $green,
-    warning: $orange-2,
-    error: $red,
+    success: var(--green),
+    warning: var(--orange-2),
+    error: var(--red),
 );
 
 @each $style, $color in $row-style {
@@ -299,11 +299,11 @@ $row-style: (
     }
 }
 .row-disabled {
-    color: $dark-medium-grey;
+    color: var(--dark-medium-grey);
     > td:first-child {
-        border-left-color: $dark-medium-grey;
+        border-left-color: var(--dark-medium-grey);
     }
     svg {
-        fill: $dark-medium-grey;
+        fill: var(--dark-medium-grey);
     }
 }

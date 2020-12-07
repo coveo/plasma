@@ -78,15 +78,15 @@ $toast-close-size: 16px;
         pointer-events: all;
 
         &.mod-success {
-            background-color: $green;
+            background-color: var(--green);
         }
 
         &.mod-warning {
-            background-color: $yellow;
+            background-color: var(--yellow);
         }
 
         &.mod-error {
-            background-color: $red;
+            background-color: var(--red);
         }
 
         &.mod-hidden {

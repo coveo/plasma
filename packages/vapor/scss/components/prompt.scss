@@ -19,7 +19,7 @@ $prompt-message-line-height: 20px;
                 }
 
                 h1 {
-                    color: $pure-white;
+                    color: var(--pure-white);
                     white-space: inherit;
                 }
             }
@@ -51,7 +51,7 @@ $prompt-message-line-height: 20px;
             .modal-footer {
                 height: $modal-prompt-footer-height;
                 padding: $header-height-padding $modal-prompt-horizontal-padding;
-                background-color: $pure-white;
+                background-color: var(--pure-white);
                 border-top: 0;
             }
         }

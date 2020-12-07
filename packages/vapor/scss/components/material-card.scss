@@ -1,7 +1,7 @@
 .material-card {
     padding: 2 * $spacing;
-    background-color: $pure-white;
-    border: 1px solid rgba($grey-5, $transparency-4);
+    background-color: var(--pure-white);
+    border: 1px solid var(--material-card-color);
     border-radius: $border-radius;
     box-shadow: $material-card-shadow;
     transition: box-shadow 0.1s ease-out;

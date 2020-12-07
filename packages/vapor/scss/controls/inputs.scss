@@ -17,10 +17,10 @@ input[type='search'],
 input[type='tel'],
 input[type='color'] {
     padding: 3px 6px;
-    color: $dark-grey;
+    color: var(--dark-grey);
     font-size: $title-font-size;
     font-family: $base-font-family;
-    border: 1px solid $medium-grey;
+    border: 1px solid var(--medium-grey);
     border-radius: 2px;
 }
 
@@ -35,7 +35,7 @@ textarea {
     }
 
     &:-ms-input-placeholder {
-        color: $medium-grey;
+        color: var(--medium-grey);
         font-size: inherit;
         font-family: $base-font-family;
         text-transform: none;
@@ -44,7 +44,7 @@ textarea {
     &.disabled-input {
         background-color: transparent;
         &::placeholder {
-            color: $red;
+            color: var(--red);
             font-size: 12px;
         }
     }
@@ -60,8 +60,8 @@ textarea {
         margin-left: -5px;
         padding: 0;
         vertical-align: top;
-        background-color: $medium-grey;
-        border: 1px solid darken($medium-grey, 10%);
+        background-color: var(--medium-grey);
+        border: 1px solid var(--input-add-on-color);
         border-radius: 0 2px 2px 0;
     }
 }

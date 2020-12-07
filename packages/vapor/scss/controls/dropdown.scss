@@ -5,11 +5,11 @@
     &.open > .dropdown-toggle,
     .dropdown-toggle.open {
         &.mod-primary .dropdown-toggle-arrow {
-            @include arrow-up-icon($pure-white);
+            @include arrow-up-icon(var(--pure-white));
         }
 
         .dropdown-toggle-arrow {
-            @include arrow-up-icon($medium-blue);
+            @include arrow-up-icon(var(--medium-blue));
         }
     }
 
@@ -21,7 +21,7 @@
 
 .dropdown-prepend {
     padding-right: 5px;
-    color: $medium-grey;
+    color: var(--medium-grey);
 }
 
 .dropdown-option-append {
@@ -57,11 +57,11 @@
     text-overflow: ellipsis;
 
     &:disabled .dropdown-toggle-arrow {
-        @include arrow-down-icon($medium-grey);
+        @include arrow-down-icon(var(--medium-grey));
     }
 
     &.dropdown-toggle-placeholder {
-        color: $medium-grey;
+        color: var(--medium-grey);
     }
 
     &.mod-primary {
@@ -69,14 +69,14 @@
         text-transform: uppercase;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon($pure-white);
+            @include arrow-down-icon(var(--pure-white));
         }
     }
 
     .dropdown-option-append {
         float: right;
         width: $dropdown-toggle-append-width;
-        color: $medium-blue;
+        color: var(--medium-blue);
         text-align: right;
     }
 
@@ -89,7 +89,7 @@
         width: $dropdown-arrow-icon-size;
         height: $dropdown-arrow-icon-size;
 
-        @include arrow-down-icon($medium-blue);
+        @include arrow-down-icon(var(--medium-blue));
     }
 
     &.mod-search {
@@ -113,7 +113,7 @@
     display: inline-block;
     padding: $dropdown-option-padding;
     overflow: hidden;
-    color: $dark-grey;
+    color: var(--dark-grey);
     font-size: $dropdown-choice-font-size;
     line-height: $default-line-height;
     white-space: nowrap;
@@ -135,15 +135,15 @@
     margin: 0;
     padding: $dropdown-choices-top-bottom-margin 0;
     overflow-y: auto;
-    color: $dark-blue;
+    color: var(--dark-blue);
     list-style: none;
 
-    background-color: $pure-white;
-    border: 1px solid $medium-grey;
+    background-color: var(--pure-white);
+    border: 1px solid var(--medium-grey);
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
 
-    @include slim-scroll($light-grey, $medium-grey);
+    @include slim-scroll(var(--light-grey), var(--medium-grey));
 
     &.mod-right {
         right: 0;
@@ -154,15 +154,15 @@
     .option-wrapper {
         &:hover,
         &:focus {
-            color: $dark-blue;
-            background: $light-grey;
+            color: var(--dark-blue);
+            background: var(--light-grey);
         }
 
         &.disabled {
             > a,
             > span,
             .dropdown-option-append {
-                color: $medium-grey;
+                color: var(--medium-grey);
                 cursor: default;
             }
         }
@@ -174,12 +174,12 @@
             @extend %dropdown-option-line-style;
 
             &.state-selected {
-                color: $dark-blue;
+                color: var(--dark-blue);
                 font-weight: bold;
             }
 
             &.disabled {
-                color: $medium-grey;
+                color: var(--medium-grey);
                 cursor: default;
             }
 
@@ -190,14 +190,14 @@
         }
 
         &.active {
-            color: $dark-blue;
-            background-color: $light-grey;
+            color: var(--dark-blue);
+            background-color: var(--light-grey);
         }
 
         &.divider {
             height: 1px;
             margin: 8px 0;
-            background-color: $medium-grey;
+            background-color: var(--medium-grey);
 
             cursor: default;
         }

@@ -1,4 +1,4 @@
-@mixin slim-scroll($track-color: $light-grey, $thumb-color: $dark-grey) {
+@mixin slim-scroll($track-color: var(--light-grey), $thumb-color: var(--dark-grey)) {
     &::-webkit-scrollbar,
     ::-webkit-scrollbar {
         width: $slim-scroll-bar-width;
@@ -23,7 +23,7 @@
     }
 }
 
-@mixin placeholder($text-color: $medium-grey, $font-family: $base-font-family) {
+@mixin placeholder($text-color: var(--medium-grey), $font-family: $base-font-family) {
     &::placeholder {
         color: $text-color;
         font-size: inherit;

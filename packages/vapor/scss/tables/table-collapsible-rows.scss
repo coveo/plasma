@@ -38,7 +38,7 @@ table {
 
                     .section-title {
                         padding-top: $collapsible-title-padding;
-                        color: $medium-blue;
+                        color: var(--medium-blue);
                         font-weight: bold;
                         font-size: $collapsible-content-font-size;
                         text-transform: uppercase;
@@ -48,9 +48,9 @@ table {
                         margin-right: -$table-first-column-padding-left;
                         margin-left: -$table-first-column-padding-left;
                         padding: 15px $table-first-column-padding-left;
-                        background: $pure-white;
+                        background: var(--pure-white);
                         border-bottom: 1px solid;
-                        border-bottom-color: $medium-grey;
+                        border-bottom-color: var(--medium-grey);
 
                         .details-container {
                             padding-right: $details-container-padding;
@@ -84,7 +84,7 @@ table {
 
                         .error-title {
                             padding: 0;
-                            color: $red;
+                            color: var(--red);
                         }
 
                         .error-description-container {
@@ -96,7 +96,7 @@ table {
 
                             .error-description {
                                 padding-top: 5px;
-                                color: $red;
+                                color: var(--red);
                             }
                         }
 
@@ -111,7 +111,7 @@ table {
                 }
 
                 td {
-                    background-color: $pure-white;
+                    background-color: var(--pure-white);
                 }
             }
         }

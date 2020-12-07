@@ -6,7 +6,7 @@ $collapsible-timeout: 150ms;
 .container {
     transition: background-color $collapsible-timeout ease-in-out;
     &:hover {
-        background-color: $white;
+        background-color: var(--white);
     }
 }
 

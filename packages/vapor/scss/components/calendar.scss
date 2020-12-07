@@ -19,7 +19,7 @@
 
 .date-picker-box {
     width: $date-picker-width;
-    background-color: $pure-white;
+    background-color: var(--pure-white);
     border: $default-border;
     border-radius: $border-radius;
 
@@ -57,7 +57,7 @@
         }
 
         th {
-            color: $dark-grey;
+            color: var(--dark-grey);
             text-transform: uppercase;
             border-bottom: $calendar-border;
         }
@@ -74,7 +74,7 @@
 
         .other-month-date,
         .un-selectable {
-            color: $medium-grey;
+            color: var(--medium-grey);
         }
 
         .selected-date {
@@ -84,7 +84,7 @@
             display: block;
             width: calc(#{$calendar-cell-dimensions} + #{$calendar-border-width});
             height: $selected-date-height;
-            color: $pure-white;
+            color: var(--pure-white);
             line-height: $selected-date-height;
         }
 
@@ -98,7 +98,7 @@
                 display: block;
                 width: $calendar-limit-border-length;
                 height: $calendar-limit-border-width;
-                background: $medium-blue;
+                background: var(--medium-blue);
                 content: '';
             }
 
@@ -113,7 +113,7 @@
 
         .lower-limit {
             left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width});
-            border-left: $calendar-limit-border-width solid $medium-blue;
+            border-left: $calendar-limit-border-width solid var(--medium-blue);
 
             &:before,
             &:after {
@@ -122,7 +122,7 @@
         }
 
         .upper-limit {
-            border-right: $calendar-limit-border-width solid $medium-blue;
+            border-right: $calendar-limit-border-width solid var(--medium-blue);
 
             &:before,
             &:after {
@@ -143,7 +143,7 @@
                     display: block;
                     width: $calendar-limit-border-length;
                     height: $calendar-limit-border-width;
-                    background: $medium-blue;
+                    background: var(--medium-blue);
                     content: '';
                 }
 
@@ -197,14 +197,14 @@
 .option-picker {
     li {
         width: 50%;
-        background: $pure-white;
+        background: var(--pure-white);
 
         button {
             display: block;
             box-sizing: border-box;
             width: 100%;
             padding: $dropdown-choices-top-bottom-margin;
-            color: $medium-blue;
+            color: var(--medium-blue);
             font-size: $button-font-size;
             background: none;
             border: $default-border;
@@ -251,7 +251,7 @@
                 }
 
                 &.active {
-                    border-color: $blue;
+                    border-color: var(--blue);
                 }
             }
         }
@@ -279,7 +279,7 @@
         }
 
         &.date-picked {
-            color: $pure-white;
+            color: var(--pure-white);
         }
     }
 
@@ -324,7 +324,7 @@
     box-sizing: border-box;
     width: 100%;
     padding: $dropdown-choices-top-bottom-margin;
-    color: $medium-blue;
+    color: var(--medium-blue);
     font-size: $button-font-size;
     background: none;
     border: $default-border;

@@ -3,7 +3,7 @@
 
 .statusCard {
     position: relative;
-    background: $pure-white;
+    background: var(--pure-white);
     border-left: $status-card-border-width solid transparent;
     border-radius: $border-radius;
     box-shadow: $table-shadow;

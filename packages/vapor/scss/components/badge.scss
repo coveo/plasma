@@ -4,11 +4,11 @@
     height: $badge-height;
     margin-right: $badge-margin;
     padding: $badge-padding;
-    color: $pure-white;
+    color: var(--pure-white);
     font-size: $badge-font-size;
     line-height: $badge-line-height;
     text-transform: uppercase;
-    background-color: $orange;
+    background-color: var(--orange);
 
     &:last-child {
         margin-right: 0;

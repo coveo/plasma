@@ -7,13 +7,13 @@ table.mod-alternate {
         tr.collapsible-row:hover {
             td,
             td:hover {
-                background-color: $pure-white;
+                background-color: var(--pure-white);
             }
 
             &.selected {
                 td,
                 td:hover {
-                    background-color: $white;
+                    background-color: var(--white);
                 }
             }
         }
@@ -25,10 +25,10 @@ table.mod-alternate {
             tr.collapsible-row:hover {
                 td,
                 td:hover {
-                    background-color: $white;
+                    background-color: var(--white);
 
                     .row-error-container {
-                        background-color: $white;
+                        background-color: var(--white);
                     }
                 }
             }

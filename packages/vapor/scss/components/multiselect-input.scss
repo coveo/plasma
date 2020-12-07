@@ -54,7 +54,7 @@
 
 .multiselect-empty {
     margin-bottom: $spacing;
-    color: $medium-grey;
+    color: var(--medium-grey);
     line-height: $button-small-height + 2 * $button-border-width;
 }
 

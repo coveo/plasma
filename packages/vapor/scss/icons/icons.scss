@@ -62,7 +62,7 @@
     }
     &.disabled {
         opacity: $transparency-4;
-        fill: $light-grey;
+        fill: var(--light-grey);
     }
 }
 
@@ -90,7 +90,7 @@
     }
 
     .with-hover svg {
-        fill: $orange;
+        fill: var(--orange);
     }
 }
 

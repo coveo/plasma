@@ -11,10 +11,10 @@
     // Workaround to make the action bar have a border between multiple rows
 
     background: repeating-linear-gradient(
-        $white,
-        $white $table-actions-container-height,
-        $medium-grey $table-actions-container-height,
-        $medium-grey ($table-actions-container-height + 1)
+        var(--white),
+        var(--white) $table-actions-container-height,
+        var(--medium-grey) $table-actions-container-height,
+        var(--medium-grey) ($table-actions-container-height + 1)
     );
 }
 
@@ -64,8 +64,8 @@
             }
 
             &.open {
-                background-color: $light-grey;
-                border-color: $medium-grey;
+                background-color: var(--light-grey);
+                border-color: var(--medium-grey);
             }
 
             &:first-child {
@@ -76,7 +76,7 @@
         .action-label {
             margin-top: 1px; // Hack to fix label vertical alignment...
             margin-left: $table-action-margin-left;
-            color: $medium-blue;
+            color: var(--medium-blue);
             font-weight: bold;
             font-size: 13px;
             line-height: 11px;
@@ -121,7 +121,7 @@
 .item-filter-item {
     display: inline-block;
     margin: 0 $table-item-filter-padding-x;
-    color: $blue;
+    color: var(--blue);
 }
 
 .item-filter-clear {
