@@ -26,7 +26,7 @@
         margin-left: 14px;
 
         .member-info-name {
-            font-weight: 700;
+            font-weight: var(--main-font-bold);
             font-size: 13px;
             line-height: 16px;
             text-transform: uppercase;
@@ -34,7 +34,7 @@
 
         .member-info-email {
             margin-top: 2px;
-            font-weight: 400;
+            font-weight: var(--main-font-regular);
 
             font-size: 12px;
             line-height: 15px;

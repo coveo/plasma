@@ -55,7 +55,7 @@
 
 .facet-header-title {
     font-size: $default-font-size;
-    font-family: $base-font-family;
+    font-family: var(--main-font);
 }
 
 .facet-values {

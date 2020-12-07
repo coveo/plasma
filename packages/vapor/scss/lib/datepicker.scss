@@ -50,7 +50,7 @@ div.datepicker table td {
 div.datepicker th {
     padding: 0;
     color: #666666;
-    font-weight: normal;
+    font-weight: var(--main-font-regular);
     text-align: center;
 }
 
@@ -199,13 +199,13 @@ div.datepicker tbody.datepickerDays td.datepickerSpecial.datepickerSelected a {
 
 div.datepicker th a.datepickerMonth {
     color: #008ed6;
-    font-weight: normal;
+    font-weight: var(--main-font-regular);
 }
 
 /* style the day of week header cells */
 div.datepicker th {
     color: black;
-    font-weight: bold;
+    font-weight: var(--main-font-bold);
 }
 
 /* grey underline beneath day of week row */
@@ -241,7 +241,7 @@ div.datepicker tbody.datepickerDays td:hover {
 
 /* Bold today's date */
 div.datepicker td.datepickerToday a {
-    font-weight: bold;
+    font-weight: var(--main-font-bold);
 }
 
 /* cells are wider in the clean style */
