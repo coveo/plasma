@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.3.0](https://github.com/coveo/react-vapor/compare/v9.2.5...v9.3.0) (2020-12-07)
+
+
+### Features
+
+* **color:** new color ([7f23cb5](https://github.com/coveo/react-vapor/commit/7f23cb55037ea75178bd5df45695bb8ac4e794f6))
+
+
+
+
+
 ## [9.2.5](https://github.com/coveo/react-vapor/compare/v9.2.4...v9.2.5) (2020-12-02)
 
 **Note:** Version bump only for package react-vapor
