@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {Svg} from '../../svg';
 
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ITabProps, Tab} from '../Tab';
@@ -70,5 +71,12 @@ describe('Tab', () => {
 
         expect(tab.find(Tooltip).exists()).toBe(true);
         expect(tab.find(Tooltip).props().title).toBe(expectedTooltipText);
+    });
+
+    it('should render a Svg component if the svgName is not empty', () => {
+        const tab = shallow(<Tab {...basicProps} svgName="help" />);
+
+        expect(tab.find(Svg).exists()).toBe(true);
+        expect(tab.find(Svg).props().svgName).toBe('help');
     });
 });
