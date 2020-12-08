@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.2](https://github.com/coveo/react-vapor/compare/v9.6.1...v9.6.2) (2020-12-08)
+
+
+### Bug Fixes
+
+* **fonts:** revert css variables ([#1750](https://github.com/coveo/react-vapor/issues/1750)) ([04992fe](https://github.com/coveo/react-vapor/commit/04992fec42fb4b45e0af363224a813cc506e1f5d))
+
+
+
+
+
 ## [9.6.1](https://github.com/coveo/react-vapor/compare/v9.6.0...v9.6.1) (2020-12-08)
 
 
