@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.1](https://github.com/coveo/react-vapor/compare/v9.6.0...v9.6.1) (2020-12-08)
+
+
+### Bug Fixes
+
+* **sfint-3610:** consider whitespace string as empty ([1cba030](https://github.com/coveo/react-vapor/commit/1cba030e11711a73b2e24e72d5f88e78e1de853e))
+
+
+
+
+
 # [9.6.0](https://github.com/coveo/react-vapor/compare/v9.5.1...v9.6.0) (2020-12-07)
 
 
