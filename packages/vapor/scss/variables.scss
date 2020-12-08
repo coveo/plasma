@@ -48,6 +48,7 @@ $list-padding: 20px;
 // Button
 $button-font-size: 12px;
 $button-line-height: 15px;
+$button-font-weight: var(--main-font-bold);
 $button-padding-x: 16px;
 $button-padding-y: 8.5px;
 $button-border-width: 1px;
@@ -221,6 +222,8 @@ $card-minimum-width: 160px;
 $card-minimum-height: 70px;
 
 // Navigation
+$navigation-menu-header-font-weight: var(--main-font-bolder);
+$navigation-menu-item-font-weight: var(--main-font-regular);
 $navigation-width: 245px;
 $navigation-border-for-scroll-bar: 1px;
 $navigation-background-color: var(--purple-blue);
