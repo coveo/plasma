@@ -42,7 +42,7 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
             <Component
                 {...(props as T)}
                 validate={(value: string) => {
-                    const isEmpty = _.isEmpty(value);
+                    const isEmpty = !/\S/.test(value);
                     setError(props.id, isEmpty ? validationMessage : '');
                     return !isEmpty || (validate ? validate(value) : true);
                 }}
