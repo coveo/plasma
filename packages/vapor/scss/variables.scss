@@ -233,8 +233,8 @@ $navigation-section-icon-size: 20px;
 $navigation-section-icon-margin-right: 10px;
 $navigation-section-icon-margin-left: 15px;
 $navigation-section-arrow-margin: 15px;
-$navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right -
-    $navigation-active-border-width;
+$navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right +
+    $navigation-section-icon-margin-left - $navigation-active-border-width;
 $navigation-right-margin: $navigation-section-arrow-margin;
 $navigation-locked-color: var(--medium-grey);
 $navigation-tag-font-size: 10px;
