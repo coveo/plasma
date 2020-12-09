@@ -1,4 +1,7 @@
-@include placeholder();
+input,
+textarea {
+    @include placeholder();
+}
 
 select,
 textarea,
