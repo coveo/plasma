@@ -80,6 +80,10 @@
                         cursor: default;
                     }
 
+                    &.no-icon + .navigation-menu-section-items .navigation-menu-section-item-link {
+                        padding-left: $navigation-horizontal-space-no-icon;
+                    }
+
                     .navigation-menu-section-header-icon {
                         width: $navigation-section-icon-size;
                         height: $navigation-section-icon-size;
