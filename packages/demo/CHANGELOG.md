@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.3](https://github.com/coveo/react-vapor/compare/v9.6.2...v9.6.3) (2020-12-09)
+
+
+### Bug Fixes
+
+* **variables:** bump node-sas and sass-loader to fix issue ([597ab8d](https://github.com/coveo/react-vapor/commit/597ab8df2f2524e0ab9493688b14b0a2b71d307b))
+
+
+
+
+
 ## [9.6.2](https://github.com/coveo/react-vapor/compare/v9.6.1...v9.6.2) (2020-12-08)
 
 **Note:** Version bump only for package react-vapor-demo
