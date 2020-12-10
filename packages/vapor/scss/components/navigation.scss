@@ -15,7 +15,7 @@
     max-width: $navigation-width;
     overflow-x: auto;
     overflow-y: overlay;
-    background-color: $navigation-background-color;
+    background-color: var(--navigation-background-color);
     user-select: none;
 
     @include slim-scroll(var(--purple-blue), var(--navigation-scroll-thumb-color));
@@ -49,8 +49,8 @@
         height: 100%;
         padding-top: 1em;
         overflow-x: hidden;
-        color: var(--white);
-        background-color: $navigation-background-color;
+        color: var(--navigation-text-color);
+        background-color: var(--navigation-background-color);
 
         .navigation-menu-sections {
             .navigation-menu-section {
@@ -71,7 +71,7 @@
                     display: flex;
                     align-items: center;
                     height: 55px;
-                    color: var(--white);
+                    color: var(--navigation-text-color);
                     font-weight: var(--main-font-bolder);
 
                     font-size: $navigation-section-font-size;
@@ -88,12 +88,17 @@
                         width: $navigation-section-icon-size;
                         height: $navigation-section-icon-size;
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
+                        fill: var(--navigation-menu-section-icon-color);
                     }
                     .navigation-menu-section-header-no-icon {
                         height: $navigation-menu-section-height;
                         margin-right: $navigation-right-margin;
                         padding-left: $navigation-section-icon-margin-left;
                     }
+                }
+
+                .navigation-menu-section-toggle {
+                    fill: var(--navigation-menu-toggle-color);
                 }
 
                 .navigation-menu-section-items {
@@ -116,12 +121,12 @@
                             height: $navigation-menu-section-height;
                             margin-right: $navigation-right-margin;
                             padding-left: $navigation-horizontal-space;
-                            color: var(--white);
+                            color: var(--navigation-text-color);
                             font-size: $default-font-size;
                             letter-spacing: 0.05em;
 
                             &.state-locked {
-                                color: $navigation-locked-color;
+                                color: var(--navigation-locked-color);
                             }
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
@@ -151,8 +156,8 @@
                         }
 
                         &.state-active {
-                            background-color: var(--blue-purple-2);
-                            border-left-color: var(--orange);
+                            background-color: var(--navigation-selected-background-color);
+                            border-left-color: var(--navigation-strip-color);
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;
@@ -160,7 +165,7 @@
                         }
 
                         &:hover {
-                            background-color: var(--blue-purple-2);
+                            background-color: var(--navigation-hover-color);
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
                                 opacity: 1;

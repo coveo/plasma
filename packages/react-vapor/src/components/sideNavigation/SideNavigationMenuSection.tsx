@@ -31,7 +31,7 @@ const HeaderIcon: React.FunctionComponent<SideNavigationHeaderProps> = ({svgName
     svgName ? (
         <Svg
             svgName={svgName}
-            svgClass={classNames('navigation-menu-section-header-icon icon mod-lg transparency-3 fill-white', svgClass)}
+            svgClass={classNames('navigation-menu-section-header-icon icon mod-lg transparency-3', svgClass)}
         />
     ) : (
         <span className="navigation-menu-section-header-no-icon" />
@@ -108,7 +108,7 @@ export const SideNavigationMenuSection: React.FunctionComponent<ISideNavigationS
             className="navigation-menu-section"
             id={_.uniqueId('nav-section')}
             headerContent={sectionHeader}
-            toggleIconClassName="fill-white transparency-3"
+            toggleIconClassName="navigation-menu-section-toggle transparency-3"
             onToggleExpandedState={onClick}
             expanded={!!expanded}
         >
