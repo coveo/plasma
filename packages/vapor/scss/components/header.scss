@@ -2,8 +2,8 @@
     display: flex;
     width: 100%;
     height: $header-height;
-    color: var(--white);
-    background-color: var(--purple-blue);
+    color: var(--header-text-color);
+    background-color: var(--header-background-color);
 }
 
 .header-section {
@@ -25,6 +25,10 @@
     cursor: pointer;
     opacity: $transparency-2;
     transition: opacity $navigation-toggle-duration ease-in-out;
+
+    svg {
+        fill: var(--header-hamburger-color);
+    }
 }
 
 .header-hamburger-opened {
