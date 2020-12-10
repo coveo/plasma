@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.6](https://github.com/coveo/react-vapor/compare/v9.6.5...v9.6.6) (2020-12-10)
+
+
+### Bug Fixes
+
+* **react-vapor.version:** set react vapor version even if not new ([d712926](https://github.com/coveo/react-vapor/commit/d712926926317540714ddc1de8f615efa3dac802))
+
+
+
+
+
 ## [9.6.5](https://github.com/coveo/react-vapor/compare/v9.6.4...v9.6.5) (2020-12-10)
 
 
