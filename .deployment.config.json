@@ -66,6 +66,39 @@
                     "bucket": "coveo-nprd-jsadmin"
                 }
             }
+        },
+        {
+            "id": "deploy-styleguide-minified-files",
+            "s3": {
+                "bucket": "coveo-public-content",
+                "directory": "styleguide/$[VERSION]",
+                "parameters": {
+                    "include": "*.min.*",
+                    "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
+                    "content-encoding": "gzip"
+                },
+                "source": "packages/vapor/dist",
+                "disabled": true,
+                "prd": {
+                    "disabled": false
+                }
+            }
+        },
+        {
+            "id": "deploy-styleguide-non-minified-files",
+            "s3": {
+                "bucket": "coveo-public-content",
+                "directory": "styleguide/$[VERSION]",
+                "parameters": {
+                    "exclude": "*.min.*",
+                    "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
+                },
+                "source": "packages/vapor/dist",
+                "disabled": true,
+                "prd": {
+                    "disabled": false
+                }
+            }
         }
     ],
     "deployment_config_version": 1
