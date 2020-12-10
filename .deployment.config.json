@@ -71,9 +71,10 @@
             "id": "deploy-styleguide-minified-files",
             "s3": {
                 "bucket": "coveo-public-content",
-                "directory": "styleguide/$[VERSION]",
+                "directory": "styleguide/v$[VERSION]",
                 "parameters": {
                     "include": "*.min.*",
+                    "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
@@ -88,9 +89,10 @@
             "id": "deploy-styleguide-non-minified-files",
             "s3": {
                 "bucket": "coveo-public-content",
-                "directory": "styleguide/$[VERSION]",
+                "directory": "styleguide/v$[VERSION]",
                 "parameters": {
                     "exclude": "*.min.*",
+                    "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
                 "source": "packages/vapor/dist",
