@@ -70,7 +70,13 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         );
     }
 
-    private Toggle: React.FunctionComponent<ISelectButtonProps> = ({onClick, onKeyDown, onKeyUp, selectedOptions}) => {
+    private Toggle: React.FunctionComponent<ISelectButtonProps> = ({
+        onClick,
+        onKeyDown,
+        onKeyUp,
+        selectedOptions,
+        isOpen,
+    }) => {
         const option = selectedOptions[0];
         const showClear = !!option && this.props.canClear && !this.props.disabled;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
@@ -92,7 +98,10 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
                 {option?.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
                 {option?.append ? <Content {...option.append} /> : null}
-                <span className="dropdown-toggle-arrow" />
+                <Svg
+                    svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                    svgClass="icon dropdown-toggle-arrow"
+                />
                 {showClear && this.getDeselectOptionButton()}
             </button>
         );

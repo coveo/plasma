@@ -160,7 +160,7 @@
             width: $chosen-clear-icon-size;
             height: $chosen-clear-icon-size;
 
-            @include clear-icon(var(--medium-grey));
+            @include clear-icon($medium-grey);
         }
 
         &.chosen-single-with-deselect span {
@@ -190,7 +190,7 @@
             border-radius: 2px;
             outline: 0;
 
-            @include filter-icon(var(--medium-grey));
+            @include filter-icon($medium-grey);
         }
     }
 
@@ -208,7 +208,7 @@
         border-bottom-left-radius: 0;
 
         div b {
-            @include arrow-up-icon(var(--medium-blue));
+            @include arrow-up-icon($medium-blue);
         }
     }
 }
@@ -237,7 +237,7 @@
             height: $chosen-filter-icon-size;
             content: '';
 
-            @include filter-icon(var(--medium-grey));
+            @include filter-icon($medium-grey);
         }
 
         li {
@@ -287,7 +287,7 @@
                     width: $chosen-clear-icon-size;
                     height: $chosen-clear-icon-size;
 
-                    @include clear-icon(var(--medium-grey));
+                    @include clear-icon($medium-grey);
                 }
             }
 

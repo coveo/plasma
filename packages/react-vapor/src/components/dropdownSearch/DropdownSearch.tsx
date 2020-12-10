@@ -4,6 +4,7 @@ import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
 
+import * as VaporSVG from 'coveo-styleguide';
 import {keyCode} from '../../utils/InputUtils';
 import {Content} from '../content/Content';
 import {FilterBox} from '../filterBox/FilterBox';
@@ -330,7 +331,10 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
                 {this.getSvg(selectedOption)}
                 {this.getSelectedOptionElement()}
                 {this.getDropdownOptionAppend(selectedOption)}
-                <span className="dropdown-toggle-arrow"></span>
+                <Svg
+                    svgName={this.props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                    svgClass="icon dropdown-toggle-arrow"
+                />
             </button>
         );
     }
