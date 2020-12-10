@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.7.0](https://github.com/coveo/react-vapor/compare/v9.6.9...v9.7.0) (2020-12-10)
+
+
+### Features
+
+* **navigation:** add variables ([044c8ed](https://github.com/coveo/react-vapor/commit/044c8ed4c6bd94a188f5250bfad37da3bfb3f0aa))
+
+
+
+
+
 ## [9.6.8](https://github.com/coveo/react-vapor/compare/v9.6.7...v9.6.8) (2020-12-10)
 
 
