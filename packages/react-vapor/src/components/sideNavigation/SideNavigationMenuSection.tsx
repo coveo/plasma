@@ -45,6 +45,7 @@ const SideNavigationHeader: React.FunctionComponent<
             'navigation-menu-section-header',
             {
                 'no-collapse': !expandable && !isLink,
+                'no-icon': !customIcon && !iconProps.svgName,
             },
             className
         )}

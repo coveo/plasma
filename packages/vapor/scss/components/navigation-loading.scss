@@ -49,3 +49,7 @@
 .mod-sub-navigation-left-margin {
     margin-left: $navigation-horizontal-space;
 }
+
+.navigation-menu-section-header.no-icon + .navigation-menu-section-items .mod-sub-navigation-left-margin {
+    margin-left: $navigation-horizontal-space-no-icon;
+}
