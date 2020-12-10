@@ -1,0 +1,12 @@
+:root {
+    // Navigation
+    --navigation-background-color: #{$navigation-background-color};
+    --navigation-text-color: var(--white);
+    --navigation-title-icon-color: var(--black);
+    --navigation-hover-color: var(--blue-purple-2);
+    --navigation-selected-background-color: var(--blue-purple-2);
+    --navigation-strip-color: var(--orange);
+    --navigation-locked-color: #{$navigation-locked-color};
+    --navigation-menu-section-icon-color: var(--white);
+    --navigation-menu-toggle-color: var(--white);
+}
