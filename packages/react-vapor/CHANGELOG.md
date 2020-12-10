@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.8](https://github.com/coveo/react-vapor/compare/v9.6.7...v9.6.8) (2020-12-10)
+
+
+### Bug Fixes
+
+* **mixin:** single select ([e2247a1](https://github.com/coveo/react-vapor/commit/e2247a1e2903ec2cf686b46d1966a27bb108826d))
+
+
+
+
+
 ## [9.6.7](https://github.com/coveo/react-vapor/compare/v9.6.6...v9.6.7) (2020-12-10)
 
 **Note:** Version bump only for package react-vapor
