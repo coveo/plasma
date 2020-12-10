@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ITabOwnProps {
@@ -11,8 +10,7 @@ export interface ITabOwnProps {
     title: string;
     disabled?: boolean;
     tooltip?: string;
-    svgName?: string;
-    svgClass?: string;
+    children?: React.ReactNode;
 }
 
 export interface ITabStateProps {
@@ -37,7 +35,7 @@ export class Tab extends React.Component<ITabProps, any> {
 
         return (
             <div className={className} onClick={this.handleSelect}>
-                {!!this.props.svgName && <Svg svgName={this.props.svgName} svgClass={this.props.svgClass} />}
+                {!!this.props.children && this.props.children}
                 <Tooltip title={this.props.tooltip} placement={TooltipPlacement.Top}>
                     {this.props.title}
                 </Tooltip>

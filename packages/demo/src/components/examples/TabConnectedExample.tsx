@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
+import {Svg, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
 
 const TAB1_ID = 'tab1';
 const TAB2_ID = 'tab2';
@@ -23,8 +23,7 @@ export class TabsExamples extends React.Component<any, any> {
                             <TabConnected
                                 id={TAB3_ID}
                                 title="Tab with an icon"
-                                svgName="help"
-                                svgClass="icon fill-orange mod-16 mr1"
+                                children={<Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />}
                             />
                             <TabConnected id={TAB4_ID} title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
                         </TabNavigation>
