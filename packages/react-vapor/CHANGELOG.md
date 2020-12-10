@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.6.5](https://github.com/coveo/react-vapor/compare/v9.6.4...v9.6.5) (2020-12-10)
+
+
+### Bug Fixes
+
+* **navigation:** align menu items ([#1753](https://github.com/coveo/react-vapor/issues/1753)) ([c63db8b](https://github.com/coveo/react-vapor/commit/c63db8b173719ee664ba30e302a53bf26b70f2aa))
+
+
+
+
+
 ## [9.6.4](https://github.com/coveo/react-vapor/compare/v9.6.3...v9.6.4) (2020-12-09)
 
 **Note:** Version bump only for package react-vapor
