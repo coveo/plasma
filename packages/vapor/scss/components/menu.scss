@@ -18,12 +18,12 @@
         cursor: pointer;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon(var(--pure-white));
+            fill: var(--pure-white);
         }
     }
 
     &.open .dropdown-toggle .dropdown-toggle-arrow {
-        @include arrow-up-icon(var(--pure-white));
+        fill: var(--pure-white);
     }
 
     .dropdown-menu {

@@ -3,6 +3,7 @@ import moment from 'moment';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import * as VaporSVG from 'coveo-styleguide';
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
@@ -13,6 +14,7 @@ import {ModalFooter} from '../modal/ModalFooter';
 import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
 import {DatePickerDateRange} from './DatePickerConstants';
 import {IDatePickerState} from './DatePickerReducers';
+import {Svg} from '../svg';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
     label?: string;
@@ -182,7 +184,14 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                                             {labelSecondPart}
                                         </label>
                                     </span>
-                                    <span className="dropdown-toggle-arrow"></span>
+                                    <Svg
+                                        svgName={
+                                            this.props.isOpened
+                                                ? VaporSVG.svg.chartUp.name
+                                                : VaporSVG.svg.chartDown.name
+                                        }
+                                        svgClass="icon dropdown-toggle-arrow"
+                                    />
                                 </button>
                             </div>
                         </div>
@@ -206,7 +215,10 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                                 {labelSecondPart}
                             </label>
                         </span>
-                        <span className="dropdown-toggle-arrow"></span>
+                        <Svg
+                            svgName={this.props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                            svgClass="icon dropdown-toggle-arrow"
+                        />
                     </button>
                     <div className={menuClasses}>{this.getDatePickerBox()}</div>
                 </div>

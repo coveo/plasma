@@ -5,6 +5,7 @@ import {createStructuredSelector} from 'reselect';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
+import * as VaporSVG from 'coveo-styleguide';
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DnDUtils} from '../dragAndDrop/DnDUtils';
@@ -147,13 +148,13 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
         return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (
             <Tooltip title={this.props.deselectAllTooltipText} placement="top" noSpanWrapper>
                 <div className="remove-all-selected-options ml1" onClick={() => this.props.onRemoveAll()}>
-                    <Svg svgName="clear" svgClass="icon fill-medium-blue" />
+                    <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon fill-medium-blue" />
                 </div>
             </Tooltip>
         ) : null;
     }
 
-    private Toggle = ({onClick, onKeyDown, onKeyUp}: ISelectButtonProps): JSX.Element => {
+    private Toggle = ({onClick, onKeyDown, onKeyUp, isOpen}: ISelectButtonProps): JSX.Element => {
         const classes = classNames('multiselect-input', {
             'mod-sortable': this.props.sortable,
         });
@@ -189,7 +190,10 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                         {...buttonAttrs}
                     >
                         <span className="dropdown-no-value">{this.props.placeholder}</span>
-                        <span className="dropdown-toggle-arrow" />
+                        <Svg
+                            svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                            svgClass="icon dropdown-toggle-arrow"
+                        />
                     </button>
                 )}
             </div>

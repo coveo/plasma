@@ -41,6 +41,7 @@ export interface ISelectButtonProps {
     onKeyDown: (e: React.KeyboardEvent<HTMLElement>) => void;
     selectedOptions: IItemBoxProps[];
     placeholder?: string;
+    isOpen?: boolean;
 }
 
 const makeMapStateToProps = () =>
@@ -138,6 +139,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
                 onKeyUp={(e: React.KeyboardEvent<HTMLElement>) => this.onKeyUp(e)}
                 placeholder={this.props.placeholder}
                 selectedOptions={this.selectedOptions}
+                isOpen={this.props.isOpened}
             />
         </div>
     );
