@@ -75,7 +75,9 @@ describe('Tab', () => {
 
     it('should render a children component if it is not empty', () => {
         const tab = shallow(
-            <Tab {...basicProps} children={<Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />} />
+            <Tab {...basicProps}>
+                <Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />
+            </Tab>
         );
 
         expect(tab.find(Svg).exists()).toBe(true);

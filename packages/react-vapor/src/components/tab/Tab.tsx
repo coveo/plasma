@@ -10,7 +10,6 @@ export interface ITabOwnProps {
     title: string;
     disabled?: boolean;
     tooltip?: string;
-    children?: React.ReactNode;
 }
 
 export interface ITabStateProps {
@@ -35,7 +34,7 @@ export class Tab extends React.Component<ITabProps, any> {
 
         return (
             <div className={className} onClick={this.handleSelect}>
-                {!!this.props.children && this.props.children}
+                {this.props.children}
                 <Tooltip title={this.props.tooltip} placement={TooltipPlacement.Top}>
                     {this.props.title}
                 </Tooltip>
