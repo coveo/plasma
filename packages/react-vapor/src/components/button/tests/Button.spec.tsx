@@ -106,19 +106,6 @@ describe('Button', () => {
 
                 expect(buttonComponent.find('a').prop('disabled')).toBe(true);
                 expect(buttonComponent.find('a').hasClass('disabled')).toBe(true);
-                expect(buttonComponent.find('a').hasClass('text-medium-grey')).toBe(true);
-            });
-
-            it('should not add the text-medium-grey if the button is disabled and primary', () => {
-                showButton({
-                    enabled: false,
-                    primary: true,
-                    link,
-                });
-
-                expect(buttonComponent.find('a').prop('disabled')).toBe(true);
-                expect(buttonComponent.find('a').hasClass('disabled')).toBe(true);
-                expect(buttonComponent.find('a').hasClass('text-medium-grey')).toBe(false);
             });
 
             it('should add the link in a href', () => {

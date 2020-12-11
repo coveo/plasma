@@ -15,6 +15,60 @@
     --header-text-color: var(--white);
     --header-hamburger-color: var(--white);
 
+    // Button //
+    // Primary
+    --button-primary-color: var(--orange);
+    --button-primary-text-color: var(--white);
+    --button-primary-icon-color: var(--pure-white);
+
+    --button-primary-hover-color: #{lighten($orange, 5%)};
+    --button-primary-hover-focus: #{lighten($orange, 5%)};
+
+    --button-primary-active-color: #{lighten($orange, 5%)};
+
+    --button-primary-disabled-color: #{lighten($orange, 20%)};
+    --button-primary-disabled-text-color: var(--button-primary-text-color);
+    --button-primary-disabled-icon-color: var(--white);
+
+    // Secondary
+    --button-secondary-color: var(--pure-white);
+    --button-secondary-text-color: var(--medium-blue);
+    --button-secondary-border-color: var(--medium-grey);
+    --button-secondary-icon-color: var(--medium-blue);
+
+    --button-secondary-hover-border-color: var(--medium-grey);
+    --button-secondary-hover-text-color: var(--medium-blue);
+    --button-secondary-hover-focus-color: var(--medium-grey);
+
+    --button-secondary-focus-border-color: var(--medium-blue);
+    --button-secondary-focus-color: var(--light-grey);
+
+    --button-secondary-active-text-color: var(--medium-grey);
+
+    --button-secondary-disabled-color: var(--pure-white);
+    --button-secondary-disabled-text-color: var(--medium-grey);
+    --button-secondary-disabled-icon-color: var(--medium-grey);
+
+    // Danger
+    --button-danger-default-text-color: var(--pure-white);
+    --button-danger-default-icon-color: var(--white);
+
+    --button-danger-color: var(--red);
+    --button-danger-hover-color: #{lighten($red, 5%)};
+    --button-danger-active-color: #{lighten($red, 5%)};
+    --button-danger-focus-color: #{lighten($red, 5%)};
+
+    --button-danger-disabled-color: #{lighten($red, 20%)};
+    --button-danger-disabled-text-color: var(--pure-white);
+    --button-danger-disabled-icon-color: #{lighten($red, 20%)};
+
+    // Others
+    --button-confirm-icon-success-color: var(--pure-white);
+    --button-confirm-sucess-color: var(--green);
+    --button-confirm-error-color: var(--red);
+    --button-link-color: #{$links-color};
+    --button-link-hover-color: #{$links-color};
+
     // Status
     --status-green: var(--green);
     --status-red: var(--red);

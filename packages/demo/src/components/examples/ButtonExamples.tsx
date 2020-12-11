@@ -43,6 +43,34 @@ export class ButtonExamples extends React.Component<any, any> {
                         <Button enabled={true} classes={['mod-danger']} name="Danger Button" />
                         <Button enabled={true} classes={['mod-link']} name="Borderless Button" />
                     </Section>
+                    <Section level={3} title="Color modifiers disabled" description="Disabled state for each colors">
+                        <Button enabled={false} name="Default">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                        <Button enabled={false} primary={true} name="Primary Button">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                        <Button enabled={false} classes={['mod-danger']} name="Danger Button">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                        <Button enabled={false} classes={['mod-link']} name="Borderless Button">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                    </Section>
+                    <Section level={3} title="Color modifiers svg" description="Svg style for each colors">
+                        <Button enabled={true} name="Default">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                        <Button enabled={true} primary={true} name="Default">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                        <Button enabled={true} classes={['mod-danger']} name="Default">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                        <Button enabled={true} classes={['mod-link']} name="Default">
+                            <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        </Button>
+                    </Section>
                     <Section title="Size modifiers" level={3} description="Change the size of the buttons.">
                         <Button enabled={true} classes={['mod-small']} name="Small" />
                         <Button enabled={true} name="Default" />
