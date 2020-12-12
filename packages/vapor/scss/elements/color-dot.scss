@@ -4,11 +4,11 @@
     min-width: $color-dot-size;
     height: $color-dot-size;
     min-height: $color-dot-size;
-    background-color: var(--green);
+    background-color: var(--status-green);
     border-radius: 100%;
 
     &.state-critical {
-        background-color: var(--red);
+        background-color: var(--status-red);
     }
 
     &.state-major {
