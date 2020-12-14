@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.11.1](https://github.com/coveo/react-vapor/compare/v9.11.0...v9.11.1) (2020-12-14)
+
+
+### Bug Fixes
+
+* **gradient:** color ([3bcea88](https://github.com/coveo/react-vapor/commit/3bcea88ea4e998fb3ea703e9d1480aa11dcd5b98))
+
+
+
+
+
 # [9.10.0](https://github.com/coveo/react-vapor/compare/v9.9.0...v9.10.0) (2020-12-14)
 
 
