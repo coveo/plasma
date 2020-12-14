@@ -60,7 +60,7 @@
 
     --button-danger-disabled-color: #{lighten($red, 20%)};
     --button-danger-disabled-text-color: var(--pure-white);
-    --button-danger-disabled-icon-color: #{lighten($red, 20%)};
+    --button-danger-disabled-icon-color: var(--pure-white);
 
     // Others
     --button-confirm-icon-success-color: var(--pure-white);

@@ -192,7 +192,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                         <span className="dropdown-no-value">{this.props.placeholder}</span>
                         <Svg
                             svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
-                            svgClass="icon dropdown-toggle-arrow"
+                            svgClass="icon dropdown-toggle-arrow-style"
                         />
                     </button>
                 )}
