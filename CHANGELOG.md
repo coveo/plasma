@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.9.0](https://github.com/coveo/react-vapor/compare/v9.8.0...v9.9.0) (2020-12-14)
+
+
+### Features
+
+* **variables:** status green and red ([#1762](https://github.com/coveo/react-vapor/issues/1762)) ([0afd339](https://github.com/coveo/react-vapor/commit/0afd339dee83cac0ab23cc563124e10706f33493))
+
+
+
+
+
 # [9.8.0](https://github.com/coveo/react-vapor/compare/v9.7.0...v9.8.0) (2020-12-11)
 
 
