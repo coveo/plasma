@@ -9,7 +9,7 @@
     box-sizing: border-box;
     height: $button-height;
     padding: $button-padding-y $button-padding-x;
-    color: var(--medium-blue);
+    color: var(--button-secondary-text-color);
     font-weight: var(--main-font-bold);
     font-size: $button-font-size;
     font-family: var(--main-font);
@@ -19,33 +19,52 @@
     text-decoration: none;
     text-overflow: ellipsis;
     vertical-align: middle;
-    background-color: var(--pure-white);
-    border: $button-border-width solid var(--medium-grey);
+    background-color: var(--button-secondary-color);
+    border: $button-border-width solid var(--button-secondary-border-color);
     border-radius: $border-radius;
 
     cursor: pointer;
 
     .icon:not([class*='fill-']) {
-        fill: var(--medium-blue);
+        fill: var(--button-secondary-icon-color);
     }
 
-    &:hover,
+    &:active {
+        color: var(--button-secondary-active-text-color);
+        border-color: var(--button-secondary-active-border-color);
+
+        .icon {
+            fill: var(--button-secondary-active-text-color);
+        }
+    }
     &:focus {
+        @include button-focus(0px);
+        color: var(--button-secondary-text-color);
         text-decoration: none;
+        background-color: var(--button-secondary-focus-color);
+        outline-color: var(--button-secondary-focus-border-color);
     }
 
-    &:focus {
-        @include button-focus(-2px);
+    &:hover {
+        color: var(--button-secondary-hover-text-color);
+        border-color: var(--button-secondary-hover-border-color);
+        outline-color: var(--button-secondary-hover-border-color);
+
+        .icon {
+            fill: var(--button-secondary-hover-text-color);
+        }
     }
 
     &:disabled,
     &.state-disabled {
-        color: var(--medium-grey);
+        color: var(--button-secondary-disabled-text-color);
+        background-color: var(--button-secondary-disabled-color);
+        border-color: var(--button-secondary-disabled-border-color);
         cursor: default;
         pointer-events: none;
 
         .icon {
-            fill: var(--medium-grey);
+            fill: var(--button-secondary-disabled-icon-color);
         }
     }
 
@@ -61,46 +80,76 @@
     }
 
     &.mod-primary {
-        color: var(--pure-white);
-        background-color: var(--orange);
-        border: $button-border-width solid var(--orange);
+        color: var(--button-primary-text-color);
+        background-color: var(--button-primary-color);
+        border: $button-border-width solid var(--button-primary-color);
 
-        &:hover,
+        &:active {
+            background-color: var(--button-primary-active-color);
+            border: $button-border-width solid var(--button-primary-active-color);
+        }
+
         &:focus {
-            background-color: var(--button-primary-focus-color);
-            border: $button-border-width solid var(--button-primary-focus-color);
+            background-color: var(--button-primary-hover-focus);
+            border: $button-border-width solid var(--button-primary-hover-focus);
+        }
+
+        &:hover {
+            background-color: var(--button-primary-hover-color);
+            border: $button-border-width solid var(--button-primary-hover-color);
+            outline-color: var(--button-primary-hover-color);
         }
 
         &:disabled,
         &.state-disabled {
+            color: var(--button-primary-disabled-text-color);
             background-color: var(--button-primary-disabled-color);
             border: $button-border-width solid var(--button-primary-disabled-color);
+
+            .icon {
+                fill: var(--button-secondary-disabled-icon-color);
+            }
         }
 
         .icon {
-            fill: var(--pure-white);
+            fill: var(--button-primary-icon-color);
         }
     }
 
     &.mod-danger {
-        color: var(--pure-white);
-        background-color: var(--red);
-        border: $button-border-width solid var(--red);
+        color: var(--button-danger-default-text-color);
+        background-color: var(--button-danger-color);
+        border: $button-border-width solid var(--button-danger-color);
 
-        &:hover,
+        &:active {
+            background-color: var(--button-danger-active-color);
+            border: $button-border-width solid var(--button-danger-active-color);
+        }
+
         &:focus {
             background-color: var(--button-danger-focus-color);
             border: $button-border-width solid var(--button-danger-focus-color);
         }
 
+        &:hover {
+            background-color: var(--button-danger-hover-color);
+            border: $button-border-width solid var(--button-danger-hover-color);
+            outline-color: var(--button-danger-hover-color);
+        }
+
         &:disabled,
         &.state-disabled {
+            color: var(--button-danger-disabled-text-color);
             background-color: var(--button-danger-disabled-color);
             border: $button-border-width solid var(--button-danger-disabled-color);
+
+            .icon {
+                fill: var(--button-danger-disabled-icon-color);
+            }
         }
 
         .icon {
-            fill: var(--pure-white);
+            fill: var(--button-danger-default-icon-color);
         }
     }
 
@@ -153,7 +202,7 @@
             right: calc(50% - #{$button-confirm-icon-width} / 2);
             display: inline-block;
             font-size: $button-confirm-icon-width;
-            fill: var(--pure-white);
+            fill: var(--button-confirm-icon-success-color);
         }
     }
 
@@ -162,16 +211,17 @@
     }
 
     &.mod-confirm-success {
-        background-color: var(--green);
-        border: $button-border-width solid var(--green);
+        background-color: var(--button-confirm-sucess-color);
+        border: $button-border-width solid var(--button-confirm-sucess-color);
 
         &:focus,
         &:hover {
-            background-color: var(--green);
+            background-color: var(--button-confirm-sucess-color);
+            outline-color: var(--button-confirm-sucess-color);
         }
 
         &:before {
-            color: var(--green);
+            color: var(--button-confirm-sucess-color);
             content: attr(data-confirm-success);
         }
 
@@ -181,16 +231,17 @@
     }
 
     &.mod-confirm-error {
-        background-color: var(--red);
-        border: $button-border-width solid var(--red);
+        background-color: var(--button-confirm-error-color);
+        border: $button-border-width solid var(--button-confirm-error-color);
 
         &:focus,
         &:hover {
-            background-color: var(--red);
+            background-color: var(--button-confirm-error-color);
+            outline-color: var(--button-confirm-error-color);
         }
 
         &:before {
-            color: var(--red);
+            color: var(--button-confirm-error-color);
             content: attr(data-confirm-error);
         }
 
@@ -221,10 +272,10 @@
 
 .btn-hover:hover {
     .icon {
-        fill: $links-color;
+        fill: var(--button-link-color);
     }
 
     .btn-hover-text {
-        color: $links-color;
+        color: var(--button-link-hover-color);
     }
 }

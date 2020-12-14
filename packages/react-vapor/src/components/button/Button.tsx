@@ -77,7 +77,6 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
                 'mod-primary': this.props.primary,
                 'mod-small': this.props.small,
                 'state-disabled disabled': !this.props.enabled,
-                'text-medium-grey': !this.props.primary && !this.props.enabled,
             },
             this.props.classes
         );
