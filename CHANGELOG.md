@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.11.0](https://github.com/coveo/react-vapor/compare/v9.10.0...v9.11.0) (2020-12-14)
+
+
+### Features
+
+* **tab:** add the possibility to include a svg to a tab ([faf0f65](https://github.com/coveo/react-vapor/commit/faf0f659a2f4b8b71483c0418117b7b5a2876292))
+* **tab:** replace svg component to a children react.node instead ([fd8b90d](https://github.com/coveo/react-vapor/commit/fd8b90de86c1f49f4620f0c398208e2940b1ce53))
+
+
+
+
+
 # [9.10.0](https://github.com/coveo/react-vapor/compare/v9.9.0...v9.10.0) (2020-12-14)
 
 
