@@ -9,20 +9,20 @@
         display: inline-block;
         margin-right: $tab-margin-right;
         padding: $tab-padding;
-        color: var(--medium-blue);
-        font-weight: var(--main-font-bold);
-        font-size: $tab-font-size;
+        color: var(--heading-text-color);
+        font-weight: var(--tab-font-weight);
+        font-size: var(--tab-font-size);
         line-height: 16px;
         letter-spacing: 0.3px;
-        text-transform: uppercase;
+        text-transform: var(--button-text-transform);
         border-bottom: $tab-bottom-border-height solid transparent;
 
         cursor: pointer;
         transition: all 0.2s ease;
 
         &.active {
-            color: var(--medium-blue);
-            border-bottom: $tab-bottom-border-height solid var(--orange);
+            color: var(--heading-text-color);
+            border-bottom: $tab-bottom-border-height solid var(--tab-border-color);
         }
 
         &.disabled {
