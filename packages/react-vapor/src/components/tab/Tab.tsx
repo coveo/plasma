@@ -34,6 +34,7 @@ export class Tab extends React.Component<ITabProps, any> {
 
         return (
             <div className={className} onClick={this.handleSelect}>
+                {this.props.children}
                 <Tooltip title={this.props.tooltip} placement={TooltipPlacement.Top}>
                     {this.props.title}
                 </Tooltip>
