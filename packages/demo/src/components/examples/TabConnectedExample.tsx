@@ -5,6 +5,7 @@ const TAB1_ID = 'tab1';
 const TAB2_ID = 'tab2';
 const TAB3_ID = 'tab3';
 const TAB4_ID = 'tab4';
+const TAB5_ID = 'tab5';
 
 const TAB11_ID = 'tab11';
 const TAB22_ID = 'tab22';
@@ -23,7 +24,12 @@ export class TabsExamples extends React.Component<any, any> {
                             <TabConnected id={TAB3_ID} title="Tab with an icon">
                                 <Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />
                             </TabConnected>
-                            <TabConnected id={TAB4_ID} title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
+                            <TabConnected
+                                id={TAB4_ID}
+                                title=" Another Tab with an icon"
+                                children={<Svg svgName={'info'} svgClass={'icon fill-blue mod-16 mr1'} />}
+                            />
+                            <TabConnected id={TAB5_ID} title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
                         </TabNavigation>
                         <TabContent>
                             <TabPaneConnected id={TAB1_ID}>
@@ -42,6 +48,11 @@ export class TabsExamples extends React.Component<any, any> {
                                 </div>
                             </TabPaneConnected>
                             <TabPaneConnected id={TAB4_ID}>
+                                <div className="mod-header-padding mod-form-top-bottom-padding">
+                                    Content of the other tab with an icon.
+                                </div>
+                            </TabPaneConnected>
+                            <TabPaneConnected id={TAB5_ID}>
                                 <div className="mod-header-padding mod-form-top-bottom-padding">
                                     Last tab. You shouldn't be able to see this because the tab is disabled.
                                 </div>
