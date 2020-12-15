@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.11.2](https://github.com/coveo/react-vapor/compare/v9.11.1...v9.11.2) (2020-12-15)
+
+
+### Bug Fixes
+
+* remove useless border radius on application-container ([44e2aaa](https://github.com/coveo/react-vapor/commit/44e2aaac2510f655db3aedbeac339544c0ab2512))
+* **buttons:** variables ([6fccf40](https://github.com/coveo/react-vapor/commit/6fccf40e4db560cd043b5973c9b645710f9dd17e))
+
+
+
+
+
 ## [9.11.1](https://github.com/coveo/react-vapor/compare/v9.11.0...v9.11.1) (2020-12-14)
 
 
