@@ -9,7 +9,7 @@
         display: inline-block;
         margin-right: $tab-margin-right;
         padding: $tab-padding;
-        color: var(--heading-text-color);
+        color: var(--tab-text-color);
         font-weight: var(--tab-font-weight);
         font-size: var(--tab-font-size);
         line-height: 16px;
@@ -21,7 +21,7 @@
         transition: all 0.2s ease;
 
         &.active {
-            color: var(--heading-text-color);
+            color: var(--tab-text-color);
             border-bottom: $tab-bottom-border-height solid var(--tab-border-color);
         }
 

@@ -73,15 +73,20 @@
     --status-green: var(--green);
     --status-red: var(--red);
 
+    // Icon
+    --documentation-link-icon-color: var(--orange);
+
     // Gradient
     --gradient-bg-color-1: var(--mirage);
     --gradient-bg-color-2: var(--blue-purple-3);
 
-    // Table
-    --heading-text-color: var(--medium-blue);
+    // Panel header
     --basic-header-title-font-weight: var(--main-font-bold);
     --basic-header-description-font-size: var(--small-font-size);
-    --documentation-link-icon-color: var(--orange);
+    --heading-text-color: var(--medium-blue);
+
+    // Tab
     --tab-font-weight: var(--main-font-bold);
+    --tab-text-color: var(--medium-blue);
     --tab-border-color: var(--orange);
 }
