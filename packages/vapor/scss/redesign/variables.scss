@@ -89,4 +89,21 @@
     --tab-font-weight: var(--main-font-bold);
     --tab-text-color: var(--medium-blue);
     --tab-border-color: var(--orange);
+
+    // Table
+    --table-actions-background-color: var(--white);
+    --table-action-label-color: var(--medium-blue);
+    --table-action-label-font-weight: var(--main-font-bold);
+    --table-border-color: var(--medium-grey);
+    --table-header-text-color: var(--medium-blue);
+    --table-header-sort-icon-color: var(--medium-blue);
+    --table-selected-border-color: var(--orange);
+    --table-row-hover-color: var(--light-grey);
+    --table-row-selected-color: var(--white);
+    --table-cell-loading-color: var(--grey-3);
+    --blankslate-background-color: var(--white);
+    --blankslate-border-color: var(--medium-blue);
+
+    // Flat select
+    --flat-select-option-color: var(--medium-blue);
 }

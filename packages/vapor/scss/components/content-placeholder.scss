@@ -1,5 +1,6 @@
 .content-placeholder {
-    @extend .bg-grey-3, .mod-rounded-border-2;
+    @extend .mod-rounded-border-2;
+    background-color: var(--table-cell-loading-color);
 }
 
 .text-content-placeholder {

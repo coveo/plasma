@@ -63,17 +63,17 @@ const rowActions = [
     {
         primary: true,
         icon: 'edit',
-        name: 'edit',
+        name: 'Edit',
         enabled: true,
         trigger: () => alert('trigger on action'),
         callOnDoubleClick: true,
     },
-    {primary: false, icon: 'view', name: 'view', enabled: true},
-    {primary: false, icon: 'copy', name: 'copy', enabled: true},
+    {primary: false, icon: 'view', name: 'View', enabled: true},
+    {primary: false, icon: 'copy', name: 'Copy', enabled: true},
     {
         primary: false,
         icon: 'delete',
-        name: 'delete',
+        name: 'Delete',
         enabled: true,
         unrepeatable: true,
         requiresConfirmation: {
