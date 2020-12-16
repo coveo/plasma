@@ -53,9 +53,7 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
 ];
 
-const itemsWithASelectedItem = _.map(defaultItems, (item) =>
-    item.value === '3' ? {...item, selected: true} : {...item}
-);
+const itemsWithASelectedItem = _.map(defaultItems, (item) => (item.value === '3' ? {...item, selected: true} : item));
 
 const itemsWithAppendedValue = _.map(defaultItems, (item) => ({
     ...item,
