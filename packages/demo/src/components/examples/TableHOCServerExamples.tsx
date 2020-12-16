@@ -100,25 +100,11 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
     private ServerTableComposed = _.compose(
         withServerSideProcessing,
         tableWithUrlState,
-        tableWithBlankSlate({
-            title: 'No data fetched from the server',
-            description: 'Try reviewing the specified filters above or clearing all filters.',
-            buttons: [
-                {
-                    name: 'Clear filter',
-                    enabled: true,
-                    onClick: () => this.props.resetFilter(),
-                },
-            ],
-        }),
+        tableWithBlankSlate({title: 'No data fetched from the server'}),
         tableWithPredicate(TableHOCExampleUtils.tablePredicates[0]),
         tableWithPredicate(TableHOCExampleUtils.tablePredicates[1]),
-        tableWithFilter({
-            placeholder: 'Filter all',
-            blankSlate: {
-                title: 'No results found',
-            },
-        }),
+        tableWithBlankSlate({title: 'No users match the selected predicates'}),
+        tableWithFilter(),
         tableWithSort(),
         tableWithDatePicker({...(TableHOCExampleUtils.tableDatePickerConfig as any)}),
         tableWithNewPagination({perPageNumbers: [3, 5, 10]}),
@@ -168,6 +154,18 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                         onUpdateUrl={this.updateUrl}
                         isLoading={this.state.isLoading}
                         loading={{numberOfColumns: 6}}
+                        filterPlaceholder="Filter all"
+                        filterBlankslate={{
+                            title: 'No result match the specified filter',
+                            description: 'Try reviewing the specified filters above or clearing all filters.',
+                            buttons: [
+                                {
+                                    name: 'Clear filter',
+                                    enabled: true,
+                                    onClick: this.props.resetFilter,
+                                },
+                            ],
+                        }}
                     >
                         <LastUpdated time={new Date()} />
                     </this.ServerTableComposed>

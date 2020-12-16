@@ -107,22 +107,23 @@ describe('TableWithBlankSlate', () => {
     });
 
     describe('when "renderBlankSlateOnly" prop is set to true', () => {
-        it('should not render anything else than the blankslate if the table is truely empty', () => {
-            spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(true);
+        it('should not render anything else than the blankslate if the table is truly empty', () => {
+            spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(true);
             const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
 
             expect(wrapper.type()).toBe(BlankSlateWithTable);
         });
 
-        it('should render the blank slate in the table body if the table is not truely empty', () => {
-            spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(false);
+        it('should render the blank slate in the table body if the table is not truly empty', () => {
+            spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(false);
             const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
 
             expect(wrapper.type()).toBe(TableHOC);
+            expect(wrapper.prop<() => JSX.Element>('renderBody')().type).toBe(BlankSlateWithTable);
         });
 
-        it('does not render the blank slate in the table body when the table is loading', () => {
-            spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(false);
+        it('does not render the blank slate instead of the table when the table is loading', () => {
+            spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(true);
             const wrapper = shallowWithState(
                 <TableWithBlankSlate {...basicProps} renderBlankSlateOnly isLoading />,
                 {}

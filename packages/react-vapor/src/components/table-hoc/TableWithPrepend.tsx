@@ -13,7 +13,7 @@ export const tableWithPrepend = <P extends ITableHOCOwnProps & React.HTMLAttribu
     Component: React.ComponentClass<P>
 ) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: P & TableWithPrependProps) => ({
-        isTruelyEmpty: TableSelectors.getIsTruelyEmpty(state, ownProps),
+        isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
     });
 
     const TableWithPrepend: React.FunctionComponent<
@@ -22,10 +22,10 @@ export const tableWithPrepend = <P extends ITableHOCOwnProps & React.HTMLAttribu
             TableWithPrependProps &
             ReturnType<typeof mapStateToProps>
     > = (props) => {
-        const {prepend, isTruelyEmpty, ...tableProps} = props;
+        const {prepend, isTrulyEmpty, ...tableProps} = props;
         return (
             <>
-                {!isTruelyEmpty ? prepend : null}
+                {!isTrulyEmpty ? prepend : null}
                 <Component {...(tableProps as P)} />
             </>
         );

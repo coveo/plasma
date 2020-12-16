@@ -53,6 +53,7 @@ const tablePredicates = [
         values: [
             {displayValue: 'All', value: '', selected: true},
             {displayValue: 'Lebsackbury', value: 'Lebsackbury'},
+            {displayValue: 'Wakanda', value: 'Wakanda'},
         ],
     },
     {

@@ -8,6 +8,7 @@ export * from './TableSelectors';
 export * from './TableWithActions';
 export * from './TableWithBlankSlate';
 export * from './TableWithDatePicker';
+export * from './TableWithEmptyState';
 export * from './TableWithFilter';
 export * from './TableWithPagination';
 export * from './TableWithNewPagination';
