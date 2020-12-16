@@ -9,7 +9,13 @@ import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 
 export interface ITableWithBlankSlateStateProps {
+    /**
+     * @deprecated Use TableWithEmptyState instead
+     */
     renderBlankSlate?: JSX.Element;
+    /**
+     * @deprecated Use TableWithEmptyState instead
+     */
     renderBlankSlateOnly?: boolean;
 }
 
@@ -21,11 +27,10 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
     const config = HocUtils.supplyConfig(supplier);
     const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps & ITableWithBlankSlateProps) => {
-        const isEmpty = ownProps.renderBlankSlateOnly
-            ? TableSelectors.getIsTruelyEmpty(state, ownProps)
-            : TableSelectors.getIsEmpty(state, ownProps);
+        const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,
+            isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
             data: isEmpty ? null : ownProps.data,
         };
     };
@@ -33,11 +38,11 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
     const TableWithBlankSlate: React.FunctionComponent<
         ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>
     > = (props) => {
-        const {renderBlankSlate, renderBlankSlateOnly, isEmpty, ...tableProps} = props;
+        const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, ...tableProps} = props;
 
         const blankSlateToRender = renderBlankSlate || defaultRenderBlankSlateMethod;
 
-        if (isEmpty && renderBlankSlateOnly && !props.isLoading) {
+        if (renderBlankSlateOnly && isTrulyEmpty && !props.isLoading) {
             return blankSlateToRender;
         }
 

@@ -18,9 +18,9 @@ const initialTableSort: ITableWithSortState = {
 };
 
 const getIsEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean =>
-    props.data !== null && (!props.data || props.data.length === 0);
+    props.isServer ? !props.data?.length : props.data !== null && !props.data?.length;
 
-const getIsTruelyEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean => {
+const getIsTrulyEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean => {
     const compositeState = TableHOCUtils.getCompositeState(props.id, state);
     const isEmpty = getIsEmpty(state, props);
 
@@ -52,7 +52,11 @@ const getSelectedRows = (state: IReactVaporState, {id}: {id: string}): HOCTableR
 
 export const TableSelectors = {
     getIsEmpty,
-    getIsTruelyEmpty,
+    getIsTrulyEmpty,
+    /**
+     * @deprecated renamed to getIsTrulyEmpty
+     */
+    getIsTruelyEmpty: getIsTrulyEmpty,
     getDataCount,
     getSort,
     getTableRow,

@@ -20,8 +20,8 @@ describe('TableWithPrepend', () => {
         }).not.toThrow();
     });
 
-    it('should not render prepended content if the table is truely empty', () => {
-        spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(true);
+    it('should not render prepended content if the table is truly empty', () => {
+        spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(true);
         const Prepend = () => <span>ink!</span>;
         const wrapper = shallowWithState(
             <TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />,
@@ -29,11 +29,12 @@ describe('TableWithPrepend', () => {
         ).dive();
 
         expect(wrapper.children().first().type()).not.toBe(Prepend);
+
         expect(wrapper.children().first().type()).toBe(TableHOC);
     });
 
-    it('should render prepended content if the table is not truely empty', () => {
-        spyOn(TableSelectors, 'getIsTruelyEmpty').and.returnValue(false);
+    it('should render prepended content if the table is not truly empty', () => {
+        spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(false);
         const Prepend = () => <span>ink!</span>;
         const wrapper = shallowWithState(
             <TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />,
@@ -41,6 +42,7 @@ describe('TableWithPrepend', () => {
         ).dive();
 
         expect(wrapper.children().first().type()).not.toBe(TableHOC);
+
         expect(wrapper.children().first().type()).toBe(Prepend);
     });
 });
