@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.16.0](https://github.com/coveo/react-vapor/compare/v9.15.0...v9.16.0) (2020-12-16)
+
+
+### Features
+
+* **single-select-example:** add an example with a default selected item ([82407fa](https://github.com/coveo/react-vapor/commit/82407fa1e99d671f2a668426e0121d1cca08dbdf))
+
+
+
+
+
 # [9.15.0](https://github.com/coveo/react-vapor/compare/v9.14.0...v9.15.0) (2020-12-16)
 
 
