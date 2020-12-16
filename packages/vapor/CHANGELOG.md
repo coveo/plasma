@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.13.0](https://github.com/coveo/react-vapor/compare/v9.12.0...v9.13.0) (2020-12-16)
+
+
+### Features
+
+* **table:** create css variables ([#1769](https://github.com/coveo/react-vapor/issues/1769)) ([5f793a8](https://github.com/coveo/react-vapor/commit/5f793a8acb2a1e9f1a01f3903898355391fac9c4))
+
+
+
+
+
 # [9.12.0](https://github.com/coveo/react-vapor/compare/v9.11.2...v9.12.0) (2020-12-16)
 
 
