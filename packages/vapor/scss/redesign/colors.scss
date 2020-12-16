@@ -175,50 +175,50 @@
     --banner-box-shadow-1: #{rgba($black, $transparency-5)};
     --banner-box-shadow-2: #{rgba($black, 0.2)};
 
-    // info box
+    // Info box
     --info-box-color: #{rgba($pure-white, $transparency-5)};
 
-    // home card
+    // Home card
     --home-card-color: #{rgba($grey-5, $transparency-4)};
 
-    // material card
+    // Material card
     --material-card-color: #{rgba($grey-5, $transparency-4)};
     --material-card-box-shadow-color: #{rgba($black, 0.1)};
     --material-card-box-shadow-active-color: #{rgba($black, 0.3)};
 
-    // input
+    // Input
     --input-add-on-color: #{darken($medium-grey, 10%)};
 
-    // numeric input
+    // Numeric input
     --numeric-input-shadow: #{rgba($black, $transparency-5)};
 
-    // blankslate
+    // Blankslate
     --blankslate-mod-danger-color: #{rgba($red, $transparency-5)};
     --blankslate-mod-error-color: #{rgba($orange-5, $transparency-5)};
 
-    // table
+    // Table
     --table-selected-row-hover-color: #{rgba($red, $transparency-5)};
     --table-last-update-color: #{rgba($dark-grey, $transparency-3)};
     --table-row-drag-over-color: #{rgba($medium-grey, $transparency-3)};
 
-    // date picker
+    // Date picker
     --date-picker-button-hover-color: #{rgba($dark-grey, $transparency-3)};
 
-    // selected-option
+    // Selected-option
     --selected-option-remove-hover: #{darken($light-grey, 5%)};
 
-    // multi filter picker
+    // Multi filter picker
     --multi-filter-container-color: #{rgba($white, 0.4)};
 
-    // popover
+    // Popover
     --popover-box-shadow-color: #{rgba($stratos, 0.4)};
 
-    // modal
+    // Modal
     --modal-backdrop-color: #{rgba($purple-blue, $transparency-1)};
 
-    // chart
+    // Chart
     --chart-tooltip-content-color: #{rgba($black, $transparency-4)};
 
-    //navigation
+    // Navigation
     --navigation-scroll-thumb-color: #{rgba($pure-white, 0.5)};
 }

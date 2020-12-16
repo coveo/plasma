@@ -68,6 +68,7 @@
     --button-confirm-error-color: var(--red);
     --button-link-color: #{$links-color};
     --button-link-hover-color: #{$links-color};
+    --links-color: #{$links-color};
 
     // Status
     --status-green: var(--green);
@@ -106,4 +107,7 @@
 
     // Flat select
     --flat-select-option-color: var(--medium-blue);
+
+    // Border
+    --default-border-color: var(--medium-grey);
 }
