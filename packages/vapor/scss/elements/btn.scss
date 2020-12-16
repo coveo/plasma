@@ -11,7 +11,7 @@
     padding: $button-padding-y $button-padding-x;
     color: var(--button-secondary-text-color);
     font-weight: var(--main-font-bold);
-    font-size: $button-font-size;
+    font-size: var(--button-font-size);
     font-family: var(--main-font);
     line-height: $button-line-height;
     white-space: nowrap;
