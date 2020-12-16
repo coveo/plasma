@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {
     CalendarConnected,
+    ChildForm,
     DatePickerBox,
     DatePickerDropdownConnected,
     DatesSelectionConnected,
     Section,
 } from 'react-vapor';
 import * as _ from 'underscore';
-import {ChildForm} from '../../../../react-vapor/src/components/childForm/ChildForm';
 
 import {ExampleComponent} from '../ComponentsInterface';
 import {

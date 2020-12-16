@@ -6,8 +6,7 @@
         "experimentalDecorators": true,
         "downlevelIteration": true,
         "esModuleInterop": true,
-        "importsNotUsedAsValues": "preserve"
+        "importHelpers": true
     },
-    "exclude": ["node_modules", "dist", "*.js"],
     "include": ["src", "types"]
 }
