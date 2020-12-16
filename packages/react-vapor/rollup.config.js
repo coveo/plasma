@@ -13,6 +13,7 @@ export default {
     output: {
         file: 'dist/react-vapor.esm.js',
         format: 'es',
+        sourcemap: true,
     },
     external: [
         'codemirror',
