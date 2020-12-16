@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.15.0](https://github.com/coveo/react-vapor/compare/v9.14.0...v9.15.0) (2020-12-16)
+
+
+### Features
+
+* **tab:** include a children prop ([ff6076b](https://github.com/coveo/react-vapor/commit/ff6076bb80dba64d6065cb05eeb3cffafc9d75cb))
+
+
+
+
+
 # [9.14.0](https://github.com/coveo/react-vapor/compare/v9.13.1...v9.14.0) (2020-12-16)
 
 
