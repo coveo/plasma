@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.16.1](https://github.com/coveo/react-vapor/compare/v9.16.0...v9.16.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* **table:** minor fixes of variable ([#1775](https://github.com/coveo/react-vapor/issues/1775)) ([44c2540](https://github.com/coveo/react-vapor/commit/44c2540c0d7dc216ef742ae6b3f37bfb816b9d25))
+
+
+
+
+
 # [9.16.0](https://github.com/coveo/react-vapor/compare/v9.15.0...v9.16.0) (2020-12-16)
 
 
