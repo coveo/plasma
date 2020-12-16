@@ -190,7 +190,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                                                 ? VaporSVG.svg.chartUp.name
                                                 : VaporSVG.svg.chartDown.name
                                         }
-                                        svgClass="icon dropdown-toggle-arrow"
+                                        svgClass="icon dropdown-toggle-arrow-style"
                                     />
                                 </button>
                             </div>
@@ -217,7 +217,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                         </span>
                         <Svg
                             svgName={this.props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
-                            svgClass="icon dropdown-toggle-arrow"
+                            svgClass="icon dropdown-toggle-arrow-style"
                         />
                     </button>
                     <div className={menuClasses}>{this.getDatePickerBox()}</div>

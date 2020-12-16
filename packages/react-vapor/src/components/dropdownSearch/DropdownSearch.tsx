@@ -333,7 +333,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
                 {this.getDropdownOptionAppend(selectedOption)}
                 <Svg
                     svgName={this.props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
-                    svgClass="icon dropdown-toggle-arrow"
+                    svgClass="icon dropdown-toggle-arrow-style"
                 />
             </button>
         );
