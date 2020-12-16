@@ -29,6 +29,9 @@
     --help-text-line-height: #{$help-text-line-height};
     --text-max-width: #{$text-max-width};
     --tab-font-size: #{$tab-font-size};
+    --table-action-label-font-size: #{$small-font-size};
+    --table-header-font-size: #{$table-header-font-size};
+    --table-row-font-size: #{$table-row-font-size};
 
     // Button
     --button-font-size: #{$button-font-size};

@@ -39,7 +39,7 @@ const tableActions = (username: string) => [
     {
         primary: true,
         icon: 'edit',
-        name: 'edit',
+        name: 'Edit',
         enabled: true,
         trigger: () => alert(username),
         callOnDoubleClick: true,
