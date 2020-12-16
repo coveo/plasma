@@ -10,6 +10,7 @@ export interface ITabOwnProps {
     title: string;
     disabled?: boolean;
     tooltip?: string;
+    children?: React.ReactNode;
 }
 
 export interface ITabStateProps {
