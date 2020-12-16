@@ -23,7 +23,7 @@ export const documentationLink: ILinkSvgProps = {
     target: '_blank',
     svg: {
         svgName: 'help',
-        svgClass: 'fill-orange icon mod-20',
+        svgClass: 'documentation-link icon mod-20',
     },
 };
 

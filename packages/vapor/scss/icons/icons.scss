@@ -4,6 +4,10 @@
     height: 0.9em;
     overflow: visible;
 
+    &.documentation-link {
+        fill: var(--documentation-link-icon-color);
+    }
+
     &.mod-small {
         width: 0.7em;
         height: 0.7em;

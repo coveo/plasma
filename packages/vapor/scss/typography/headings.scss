@@ -4,7 +4,7 @@ h3,
 h4,
 h5,
 h6 {
-    color: var(--medium-blue);
+    color: var(--heading-text-color);
     font-family: var(--main-font);
     line-height: $standard-line-height;
 }
@@ -82,4 +82,12 @@ h6 {
 
 .mod-header-min-height {
     min-height: $header-line-height;
+}
+
+h1.table-header-title {
+    font-weight: var(--basic-header-title-font-weight);
+}
+
+h4.admin-description {
+    font-size: var(--basics-header-description-font-size);
 }
