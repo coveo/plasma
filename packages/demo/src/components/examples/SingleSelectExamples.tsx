@@ -23,7 +23,6 @@ import {
     withDirtySaveButtonHOC,
     withDirtySingleSelectHOC,
     withNonEmptySingleSelectHOC,
-    LabeledInput,
     ValidationMessage,
 } from 'react-vapor';
 
@@ -54,12 +53,15 @@ const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Seven', value: '7', selectedDisplayValue: '007 Bond, James'},
 ];
 
+const itemsWithASelectedItem = _.map(defaultItems, (item) => (item.value === '3' ? {...item, selected: true} : item));
+
 const itemsWithAppendedValue = _.map(defaultItems, (item) => ({
     ...item,
     append: {content: () => <span className="text-red ml3">{item.value}</span>},
 }));
 
 const ids = [
+    UUID.generate(),
     UUID.generate(),
     UUID.generate(),
     UUID.generate(),
@@ -116,9 +118,18 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
                 canClear
             />
         </Section>
+        <Section level={3} title="A single select with a selected item">
+            <SingleSelectConnected
+                id={ids[2]}
+                items={itemsWithASelectedItem}
+                toggleClasses="mod-right"
+                placeholder="Select something"
+                canClear
+            />
+        </Section>
         <Section level={3} title="A single select with predicates">
             <SingleSelectWithPredicate
-                id={ids[2]}
+                id={ids[3]}
                 items={itemsWithAppendedValue}
                 options={defaultFlatSelectOptions}
                 matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
@@ -126,11 +137,11 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
             />
         </Section>
         <Section level={3} title="A single select with filter">
-            <SingleSelectWithFilter id={ids[3]} items={itemsWithAppendedValue} />
+            <SingleSelectWithFilter id={ids[4]} items={itemsWithAppendedValue} />
         </Section>
         <Section level={3} title="A single select with a custom match filter that matches the exact value">
             <SingleSelectWithFilter
-                id={ids[4]}
+                id={ids[5]}
                 items={itemsWithAppendedValue}
                 matchFilter={(filter: string, item: IItemBoxProps) =>
                     _.isString(item.displayValue) ? item.displayValue.indexOf(filter) !== -1 : false
@@ -139,7 +150,7 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
         </Section>
         <Section level={3} title="A single select with a filter, predicates, a lots of values and a footer">
             <SingleSelectWithPredicateAndFilter
-                id={ids[5]}
+                id={ids[6]}
                 items={itemsWithAppendedValue}
                 options={defaultFlatSelectOptions}
                 matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
@@ -149,11 +160,11 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
             />
         </Section>
         <Section level={3} title="A single select with a custom button">
-            <SingleSelectConnected id={ids[6]} items={defaultItems} customButton={MyCustomButton} />
+            <SingleSelectConnected id={ids[7]} items={defaultItems} customButton={MyCustomButton} />
         </Section>
         <Section level={3} title="A single select with items loading">
             <SingleSelectWithPredicateAndFilter
-                id={ids[7]}
+                id={ids[8]}
                 isLoading
                 matchPredicate={(p: string, i: IItemBoxProps) => matchPredicate(p, i)}
                 options={defaultFlatSelectOptions}
@@ -202,10 +213,10 @@ const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) =>
 });
 
 const SingleSelectWithMessageExample = connect(undefined, (dispatch: IDispatch) => ({
-    showMessage: () => dispatch(ValidationActions.setError(ids[8], 'error message!')),
+    showMessage: () => dispatch(ValidationActions.setError(ids[9], 'error message!')),
 }))(({showMessage}: {showMessage: () => void}) => (
     <>
-        <SingleSelectConnectedWithValidation id={ids[8]} items={defaultItems} placeholder="Select something" />
+        <SingleSelectConnectedWithValidation id={ids[9]} items={defaultItems} placeholder="Select something" />
         <Button name="Show message" classes="mt1" onClick={() => showMessage()} />
     </>
 ));
