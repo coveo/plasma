@@ -32,6 +32,9 @@
     --table-action-label-font-size: #{$small-font-size};
     --table-header-font-size: #{$table-header-font-size};
     --table-row-font-size: #{$table-row-font-size};
+    --big-table-first-row-font-size: #{$big-table-first-row-font-size};
+    --big-table-first-row-font-weight: var(--main-font-regular);
+    --big-table-second-row-font-size: #{$big-table-second-row-font-size};
 
     // Button
     --button-font-size: #{$button-font-size};
