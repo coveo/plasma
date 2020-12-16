@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.13.1](https://github.com/coveo/react-vapor/compare/v9.13.0...v9.13.1) (2020-12-16)
+
+
+### Bug Fixes
+
+* **dropdown:** toggle ([43f4732](https://github.com/coveo/react-vapor/commit/43f4732476fb6c28a38882a3d8c2659f28be3ee6))
+
+
+
+
+
 # [9.13.0](https://github.com/coveo/react-vapor/compare/v9.12.0...v9.13.0) (2020-12-16)
 
 
