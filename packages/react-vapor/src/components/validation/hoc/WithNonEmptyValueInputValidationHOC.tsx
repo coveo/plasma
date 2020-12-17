@@ -31,6 +31,8 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
         validate,
         ...props
     }) => {
+        const [lastState, setLastState] = React.useState<boolean | null>(null);
+
         React.useEffect(
             () => () => {
                 resetErrorOnUnmount && clearError(props.id);
@@ -43,7 +45,10 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
                 {...(props as T)}
                 validate={(value: string) => {
                     const isEmpty = !/\S/.test(value);
-                    setError(props.id, isEmpty ? validationMessage : '');
+                    if (isEmpty !== lastState) {
+                        setLastState(isEmpty);
+                        setError(props.id, isEmpty ? validationMessage : '');
+                    }
                     return !isEmpty || (validate ? validate(value) : true);
                 }}
             />
