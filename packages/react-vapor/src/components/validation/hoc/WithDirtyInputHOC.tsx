@@ -26,6 +26,8 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
         resetDirtyOnUnmount,
         ...props
     }) => {
+        const [lastState, setLastState] = React.useState<boolean | null>(null);
+
         React.useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
@@ -37,7 +39,11 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
             <Component
                 {...(props as T)}
                 validate={(value: string) => {
-                    setIsDirty(props.id, value !== (props.defaultValue || ''));
+                    const isDirty = value !== (props.defaultValue || '');
+                    if (isDirty !== lastState) {
+                        setLastState(isDirty);
+                        setIsDirty(props.id, isDirty);
+                    }
                     return validate ? validate(value) : true;
                 }}
                 validateOnChange
