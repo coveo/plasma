@@ -5,7 +5,7 @@
     margin-right: $badge-margin;
     padding: $badge-padding;
     color: var(--pure-white);
-    font-size: $badge-font-size;
+    font-size: var(--badge-font-size);
     line-height: $badge-line-height;
     text-transform: uppercase;
     background-color: var(--orange);

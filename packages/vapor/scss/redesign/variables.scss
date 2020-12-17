@@ -9,6 +9,7 @@
     --navigation-locked-color: #{$navigation-locked-color};
     --navigation-menu-section-icon-color: var(--white);
     --navigation-menu-toggle-color: var(--white);
+    --navigation-scroll-track-color: var(--purple-blue);
 
     // Header
     --header-background-color: var(--purple-blue);
@@ -73,6 +74,11 @@
     // Status
     --status-green: var(--green);
     --status-red: var(--red);
+    --status-orange: var(--orange);
+    --status-yellow: var(--yellow);
+    --status-blue: var(--blue);
+    --status-light-grey: var(--light-grey);
+    --status-medium-grey: var(--medium-grey);
 
     // Icon
     --documentation-link-icon-color: var(--orange);
@@ -85,6 +91,8 @@
     --basic-header-title-font-weight: var(--main-font-bold);
     --basic-header-description-font-size: var(--small-font-size);
     --heading-text-color: var(--medium-blue);
+    --breadcrumb-arrow-color: var(--medium-grey);
+    --breadcrumb-link-color: var(--links-color);
 
     // Tab
     --tab-font-weight: var(--main-font-bold);
@@ -105,9 +113,12 @@
     --big-table-second-row-text-color: var(--dark-grey);
     --blankslate-background-color: var(--white);
     --blankslate-border-color: var(--medium-blue);
+    --blankslate-text-color: var(--medium-blue);
 
     // Flat select
-    --flat-select-option-color: var(--medium-blue);
+    --flat-select-background-color: var(--medium-blue);
+    --flat-select-text-color: var(--medium-blue);
+    --flat-select-prepend-color: var(--medium-grey);
 
     // Border
     --default-border-color: var(--medium-grey);
