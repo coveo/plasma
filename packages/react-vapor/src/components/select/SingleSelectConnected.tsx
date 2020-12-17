@@ -98,12 +98,12 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
                 {option?.prepend ? <Content {...option.prepend} /> : null}
                 {this.getSelectedOptionElement(option)}
                 {option?.append ? <Content {...option.append} /> : null}
-                {!showClear && (
-                    <Svg
-                        svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
-                        svgClass="icon dropdown-toggle-arrow-style"
-                    />
-                )}
+                <Svg
+                    svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                    svgClass={classNames('icon dropdown-toggle-arrow-size', {
+                        'dropdown-toggle-arrow-style': !showClear,
+                    })}
+                />
                 {showClear && this.getDeselectOptionButton()}
             </button>
         );

@@ -17,11 +17,15 @@
         display: block;
         margin-bottom: $form-bottom-padding;
     }
+
+    .btn {
+        border-color: var(--dropdown-btn-border-color);
+    }
 }
 
 .dropdown-prepend {
     padding-right: 5px;
-    color: var(--medium-grey);
+    color: var(--dropdown-default-color);
 }
 
 .dropdown-option-append {
@@ -33,6 +37,7 @@
     display: inline-block;
     max-width: 100%;
     overflow: hidden;
+    color: var(--dropdown-selected-value-color);
     white-space: nowrap;
     text-transform: none;
 
@@ -61,7 +66,7 @@
     }
 
     &.dropdown-toggle-placeholder {
-        color: var(--medium-grey);
+        color: var(--dropdown-toggle-placeholder-color);
     }
 
     &.mod-primary {
@@ -76,7 +81,7 @@
     .dropdown-option-append {
         float: right;
         width: $dropdown-toggle-append-width;
-        color: var(--medium-blue);
+        color: var(--dropdown-option-append-color);
         text-align: right;
     }
 
@@ -87,6 +92,14 @@
             50% - (#{$dropdown-arrow-icon-size} - 2px) / 2
         ); // Remove the approximated svg inner top/bottom padding
         right: $button-padding-x;
+        width: $dropdown-arrow-icon-size;
+        height: $dropdown-arrow-icon-size;
+
+        &.icon {
+            fill: var(--dropdown-toggle-arrow-color);
+        }
+    }
+    .dropdown-toggle-arrow-size {
         width: $dropdown-arrow-icon-size;
         height: $dropdown-arrow-icon-size;
     }
@@ -116,7 +129,7 @@
     display: inline-block;
     padding: $dropdown-option-padding;
     overflow: hidden;
-    color: var(--dark-grey);
+    color: var(--dropdown-option-line-color);
     font-size: $dropdown-choice-font-size;
     line-height: $default-line-height;
     white-space: nowrap;
@@ -138,15 +151,15 @@
     margin: 0;
     padding: $dropdown-choices-top-bottom-margin 0;
     overflow-y: auto;
-    color: var(--dark-blue);
+    color: var(--dropdown-menu-color);
     list-style: none;
 
-    background-color: var(--pure-white);
-    border: 1px solid var(--medium-grey);
+    background-color: var(--dropdown-menu-bg-color);
+    border: 1px solid var(--dropdown-menu-border-color);
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
 
-    @include slim-scroll(var(--light-grey), var(--medium-grey));
+    @include slim-scroll(var(--dropdown-menu-scrollbar-color), var(--dropdown-menu-scrollbar-thumb-color));
 
     &.mod-right {
         right: 0;
@@ -157,15 +170,16 @@
     .option-wrapper {
         &:hover,
         &:focus {
-            color: var(--dark-blue);
-            background: var(--light-grey);
+            color: var(--dropdown-menu-hover-color);
+            background: var(--dropdown-menu-hover-bg-color);
         }
 
         &.disabled {
             > a,
             > span,
             .dropdown-option-append {
-                color: var(--medium-grey);
+                color: var(--dropdown-menu-disabled-option-color);
+                background-color: var(--dropdown-menu-disabled-option-bg-color);
                 cursor: default;
             }
         }
@@ -177,12 +191,12 @@
             @extend %dropdown-option-line-style;
 
             &.state-selected {
-                color: var(--dark-blue);
+                color: var(--dropdown-menu-selected-option-color);
                 font-weight: var(--main-font-bold);
             }
 
             &.disabled {
-                color: var(--medium-grey);
+                color: var(--dropdown-menu-disabled-option-color);
                 cursor: default;
             }
 
@@ -193,14 +207,14 @@
         }
 
         &.active {
-            color: var(--dark-blue);
-            background-color: var(--light-grey);
+            color: var(--dropdown-menu-active-option-color);
+            background-color: var(--dropdown-menu-active-option-bg-color);
         }
 
         &.divider {
             height: 1px;
             margin: 8px 0;
-            background-color: var(--medium-grey);
+            background-color: var(--dropdown-menu-divider-bg-color);
 
             cursor: default;
         }
@@ -211,7 +225,6 @@
 
         .dropdown-option-append {
             width: $dropdown-option-append-width;
-
             @extend %dropdown-option-line-style;
         }
     }

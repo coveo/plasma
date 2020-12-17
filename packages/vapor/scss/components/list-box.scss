@@ -7,35 +7,45 @@
     padding: $list-box-vertical-spacing 0;
     overflow-y: auto;
     border: $default-border;
+    border-color: var(--list-box-border-color);
     border-radius: $list-box-border-radius;
 
     box-shadow: $list-box-box-shadow;
 
-    @include slim-scroll(var(--light-grey), var(--medium-grey));
+    @include slim-scroll(var(--list-box-scrollbar-color), var(--list-box-scrollbar-thumb-color));
 }
 
 .item-box {
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
-    color: var(--dark-grey);
+    color: var(--list-box-item-color);
     font-size: $small-font-size;
     line-height: $default-line-height;
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
+    background-color: var(--list-box-item-bg-color);
 
     cursor: pointer;
 
-    &:hover,
-    &:focus,
-    &.active {
-        color: var(--dark-blue);
-        background: var(--light-grey);
+    &:hover {
+        color: var(--list-box-item-hover-color);
+        background: var(--list-box-item-hover-bg-color);
     }
 
     &.selected {
         color: var(--dark-blue);
         font-weight: var(--main-font-bold);
+    }
+
+    &:focus,
+    &.active {
+        color: var(--list-box-item-active-color);
+        background: var(--list-box-item-active-bg-color);
+    }
+
+    &:focus {
+        border-color: var(--list-box-item-focus-color);
     }
 
     &.disabled {
