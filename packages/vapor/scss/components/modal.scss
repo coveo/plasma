@@ -185,24 +185,23 @@ $icon-size: (4em / 3);
     }
 
     &.mod-success {
-        background-color: var(--green);
+        background-color: var(--status-green);
     }
 
     &.mod-warning {
-        background-color: var(--yellow);
+        background-color: var(--status-yellow);
     }
 
     &.mod-critical {
-        background-color: var(--red);
+        background-color: var(--status-red);
     }
 
     &.mod-info {
-        background-color: var(--medium-blue);
+        background-color: var(--status-blue);
     }
 
     h1 {
         overflow: hidden;
-        color: var(--medium-blue);
         line-height: 30px;
         white-space: nowrap;
         text-overflow: ellipsis;
