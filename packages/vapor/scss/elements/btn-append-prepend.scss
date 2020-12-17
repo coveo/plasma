@@ -12,6 +12,11 @@
 
             &.mod-icon {
                 padding: 8px;
+                fill: var(--button-append-icon-color);
+            }
+
+            svg {
+                fill: var(--button-append-icon-color);
             }
         }
 

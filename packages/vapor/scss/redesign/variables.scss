@@ -110,4 +110,58 @@
 
     // Border
     --default-border-color: var(--medium-grey);
+
+    // ****************
+    // Dropdown
+
+    // Default
+
+    --dropdown-default-color: var(--medium-grey);
+    --dropdown-toggle-placeholder-color: var(--medium-grey);
+    --dropdown-toggle-append-color: var(--medium-blue);
+
+    --dropdown-option-line-color: var(--dark-grey);
+    --dropdown-btn-border-color: var(--medium-grey);
+    --dropdown-toggle-arrow-color: var(--medium-blue);
+    --dropdown-selected-value-color: var(--medium-blue);
+
+    // Menu
+    --dropdown-menu-color: var(--dark-grey);
+    --dropdown-menu-bg-color: var(--pure-white);
+    --dropdown-menu-border-color: var(--medium-grey);
+    --dropdown-menu-scrollbar-thumb-color: var(--medium-grey);
+    --dropdown-menu-scrollbar-color: var(--light-grey);
+    --dropdown-menu-box-shadow-color: rgba(0, 0, 0, 0.41);
+    --dropdown-menu-hover-color: var(--dark-blue);
+    --dropdown-menu-hover-bg-color: var(--light-grey);
+    --dropdown-menu-disabled-option-color: var(--medium-grey);
+    --dropdown-menu-disabled-option-bg-color: var(--grey-60);
+
+    --dropdown-menu-selected-option-color: var(--dark-blue);
+    --dropdown-menu-active-option-color: var(--dark-blue);
+    --dropdown-menu-active-option-bg-color: var(--light-grey);
+
+    --dropdown-menu-divider-bg-color: var(--medium-grey);
+
+    // Append/Prepend
+    --button-append-icon-color: var(--medium-blue);
+
+    // Search #deprecated
+    --dropdown-option-append-color: var(--medium-blue);
+
+    // list box
+    --list-box-scrollbar-thumb-color: var(--medium-grey);
+    --list-box-scrollbar-color: var(--light-grey);
+    --list-box-border-color: var(--medium-grey);
+
+    --list-box-item-color: var(--dark-grey);
+    --list-box-item-bg-color: var(--pure-white);
+
+    --list-box-item-active-color: var(--dark-blue);
+    --list-box-item-active-bg-color: var(--light-grey);
+
+    --list-box-item-hover-color: var(--dark-blue);
+    --list-box-item-hover-bg-color: var(--light-grey);
+
+    --list-box-item-focus-color: var(--medium-blue);
 }
