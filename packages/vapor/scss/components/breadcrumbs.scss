@@ -1,13 +1,17 @@
 .breadcrumb-title {
     @extend .h1;
     @extend .inline-flex;
-    @extend .bold;
     @extend .flex-center;
     margin-top: 0;
+    font-weight: var(--basic-header-title-font-weight);
+
+    a.link {
+        color: var(--breadcrumb-link-color);
+    }
 }
 
 .breadcrumb-arrow {
     @extend .icon;
     @extend .mod-normal;
-    fill: var(--medium-grey);
+    fill: var(--breadcrumb-arrow-color);
 }

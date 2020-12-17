@@ -11,8 +11,8 @@
         font-size: 13px;
         line-height: $flat-select-option-size - 2px;
         text-align: center;
-        background-color: var(--flat-select-option-color);
-        border: 1px solid var(--flat-select-option-color);
+        background-color: var(--flat-select-background-color);
+        border: 1px solid var(--flat-select-background-color);
         border-radius: $border-radius;
 
         cursor: default;
@@ -51,9 +51,9 @@
         }
 
         &.selectable {
-            color: var(--flat-select-option-color);
+            color: var(--flat-select-text-color);
             background-color: var(--pure-white);
-            border: 1px solid var(--medium-grey);
+            border: 1px solid var(--default-border-color);
 
             cursor: pointer;
 
@@ -62,7 +62,7 @@
             }
 
             .icon {
-                fill: var(--flat-select-option-color);
+                fill: var(--flat-select-text-color);
             }
         }
 
@@ -73,13 +73,13 @@
         &.mod-link,
         &.selectable.mod-link {
             padding: 0;
-            color: var(--flat-select-option-color);
+            color: var(--flat-select-background-color);
             font-size: $default-font-size;
             background-color: var(--pure-white);
             border: none;
 
             .icon {
-                fill: var(--flat-select-option-color);
+                fill: var(--flat-select-background-color);
             }
 
             &.disabled {
@@ -121,7 +121,7 @@
 
     &.mod-option-picker .flat-select-option {
         flex: auto;
-        color: var(--flat-select-option-color);
+        color: var(--flat-select-text-color);
         background-color: var(--light-grey);
         border: 1px solid var(--blue);
         border-right-width: 0;
@@ -129,7 +129,7 @@
 
         &.selectable {
             background-color: var(--pure-white);
-            border-color: var(--medium-grey);
+            border-color: var(--default-border-color);
         }
 
         &:first-child {
@@ -157,8 +157,9 @@
 
     .flat-select-prepend {
         margin-right: 10px;
-        color: var(--medium-grey);
-        font-size: $default-font-size;
+        color: var(--flat-select-prepend-color);
+        font-weight: var(--flat-select-prepend-font-weight);
+        font-size: var(--flat-select-prepend-font-size);
         line-height: 18px;
     }
 }

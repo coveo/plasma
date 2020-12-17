@@ -12,19 +12,19 @@
     }
 
     &.state-major {
-        background-color: var(--orange);
+        background-color: var(--status-orange);
     }
 
     &.state-minor {
-        background-color: var(--yellow);
+        background-color: var(--status-yellow);
     }
 
     &.state-info {
-        background-color: var(--blue);
+        background-color: var(--status-blue);
     }
 
     &.state-disabled {
-        background-color: var(--light-grey);
+        background-color: var(--status-light-grey);
     }
 
     &.state-executing {
@@ -32,6 +32,6 @@
     }
 
     &.state-waiting {
-        background-color: var(--medium-grey);
+        background-color: var(--status-medium-grey);
     }
 }

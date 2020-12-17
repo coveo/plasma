@@ -1,6 +1,6 @@
 .blankslate {
     padding: $blankslate-padding;
-    color: var(--medium-blue);
+    color: var(--blankslate-text-color);
     font-weight: var(--main-font-regular);
     text-align: center;
     background-color: var(--blankslate-background-color);
@@ -19,7 +19,7 @@
     p {
         max-width: $blankslate-description-width;
         margin: 0 auto $blankslate-paragraph-margin-bottom auto;
-        color: var(--medium-blue);
+        color: var(--blankslate-text-color);
     }
 
     &.mod-small {

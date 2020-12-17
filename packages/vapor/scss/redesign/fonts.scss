@@ -35,6 +35,9 @@
     --big-table-first-row-font-size: #{$big-table-first-row-font-size};
     --big-table-first-row-font-weight: var(--main-font-regular);
     --big-table-second-row-font-size: #{$big-table-second-row-font-size};
+    --flat-select-prepend-font-size: #{$default-font-size};
+    --flat-select-prepend-font-weight: var(--main-font-regular);
+    --badge-font-size: #{$badge-font-size};
 
     // Button
     --button-font-size: #{$button-font-size};
