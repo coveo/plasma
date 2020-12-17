@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.19.0](https://github.com/coveo/react-vapor/compare/v9.18.0...v9.19.0) (2020-12-17)
+
+
+### Features
+
+* **dropdown:** variables ([c19a072](https://github.com/coveo/react-vapor/commit/c19a072d42808e135c662a7ddcaef1fafeeadfe7))
+
+
+
+
+
 # [9.18.0](https://github.com/coveo/react-vapor/compare/v9.17.0...v9.18.0) (2020-12-17)
 
 **Note:** Version bump only for package react-vapor
