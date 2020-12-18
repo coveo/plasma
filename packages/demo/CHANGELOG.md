@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.20.0](https://github.com/coveo/react-vapor/compare/v9.19.0...v9.20.0) (2020-12-18)
+
+
+### Features
+
+* **table:** implement tableWithEmptyState HOC ([fa6322e](https://github.com/coveo/react-vapor/commit/fa6322ef11087de6457d7f21919664a16dfa95e3))
+
+
+
+
+
 # [9.19.0](https://github.com/coveo/react-vapor/compare/v9.18.0...v9.19.0) (2020-12-17)
 
 **Note:** Version bump only for package react-vapor-demo
