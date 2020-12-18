@@ -308,6 +308,7 @@ describe('Table HOC', () => {
 
                 expect(wrapper.find('tr').length).toBe(2);
                 expect(wrapper.find('tr').at(0).hasClass('heading-row')).toBe(true);
+
                 expect(wrapper.find('tr').at(1).hasClass('collapsible-row')).toBe(true);
             });
 
@@ -334,6 +335,18 @@ describe('Table HOC', () => {
 
                 expect(wrapper.find(CollapsibleToggle).exists()).toBe(true);
                 expect(wrapper.find(CollapsibleToggle).props().expanded).toBe(true);
+            });
+
+            it('should add mod-no-border-bottom when specified using the prop noBorderBottom', () => {
+                shallowComponent();
+                wrapper.setProps({
+                    collapsible: {
+                        content: collapsibleContent,
+                        noBorderBottom: true,
+                    },
+                });
+
+                expect(wrapper.find('tr.heading-row td').last().hasClass('mod-no-border-bottom')).toBe(true);
             });
 
             it('should render a collapsible row custom toggle when specified using the prop renderCustomToggleCell', () => {
