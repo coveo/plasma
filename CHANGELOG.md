@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.20.1](https://github.com/coveo/react-vapor/compare/v9.20.0...v9.20.1) (2020-12-21)
+
+
+### Bug Fixes
+
+* **button:** reset default text color to pure-white ([#1781](https://github.com/coveo/react-vapor/issues/1781)) ([1af4332](https://github.com/coveo/react-vapor/commit/1af4332e577eb5650053534cd953f394cea3f02a))
+
+
+
+
+
 # [9.20.0](https://github.com/coveo/react-vapor/compare/v9.19.0...v9.20.0) (2020-12-18)
 
 
