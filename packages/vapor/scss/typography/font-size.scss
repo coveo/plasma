@@ -3,7 +3,7 @@
 }
 
 .default-text {
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
 }
 
 .title-text {

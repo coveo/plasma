@@ -264,7 +264,7 @@
     input {
         width: 100%;
         padding: $dropdown-choices-top-bottom-margin;
-        font-size: $default-font-size;
+        font-size: var(--default-font-size);
         border-radius: $border-radius;
         outline: none;
 
@@ -338,12 +338,12 @@
 }
 
 .date-separator {
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
     line-height: $date-picker-dimension;
 
     &.mod-vertical {
         display: block;
-        line-height: $default-font-size;
+        line-height: var(--default-font-size);
         text-align: center;
 
         span {

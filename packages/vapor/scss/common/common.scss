@@ -22,7 +22,7 @@ body {
 }
 
 .markdown-documentation {
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
 
     p,
     li {

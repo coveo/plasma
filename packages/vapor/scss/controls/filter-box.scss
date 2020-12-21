@@ -50,6 +50,10 @@
         top: 8px;
         display: none;
         cursor: default;
+
+        svg {
+            fill: var(--filter-box-icon-color);
+        }
     }
 
     input.filter-box {

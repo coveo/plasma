@@ -122,7 +122,7 @@
                             margin-right: $navigation-right-margin;
                             padding-left: $navigation-horizontal-space;
                             color: var(--navigation-text-color);
-                            font-size: $default-font-size;
+                            font-size: var(--default-font-size);
                             letter-spacing: 0.05em;
 
                             &.state-locked {
