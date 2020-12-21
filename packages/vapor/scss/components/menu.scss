@@ -1,11 +1,11 @@
 .dropdown.mod-menu {
     &.header-section {
         &:hover {
-            background-color: var(--blue-purple-2);
+            background-color: var(--header-section-hover-color);
         }
 
         &.open {
-            background-color: var(--blue-purple-2);
+            background-color: var(--header-section-hover-color);
         }
     }
     .dropdown-toggle {
