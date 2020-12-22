@@ -85,8 +85,8 @@
                     }
 
                     .navigation-menu-section-header-icon {
-                        width: $navigation-section-icon-size;
-                        height: $navigation-section-icon-size;
+                        width: var(--navigation-section-icon-size);
+                        height: var(--navigation-section-icon-size);
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
                         fill: var(--navigation-menu-section-icon-color);
                     }
@@ -130,7 +130,7 @@
                             }
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
-                                opacity: 0.8;
+                                opacity: var(--navigation-menu-section-item-transparency);
                             }
                         }
 

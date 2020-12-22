@@ -10,6 +10,7 @@
     --navigation-menu-section-icon-color: var(--white);
     --navigation-menu-toggle-color: var(--white);
     --navigation-scroll-track-color: var(--purple-blue);
+    --navigation-menu-section-item-transparency: 0.8;
 
     // Header
     --header-background-color: var(--purple-blue);
@@ -184,4 +185,12 @@
 
     // Filter box
     --filter-box-icon-color: var(--medium-grey);
+
+    // Badge
+    --badge-background-color: var(--orange);
+    --badge-text-color: var(--pure-white);
+    --badge-height: #{$badge-height};
+    --badge-margin: #{$badge-margin};
+    --badge-padding: #{$badge-padding};
+    --badge-border: none;
 }

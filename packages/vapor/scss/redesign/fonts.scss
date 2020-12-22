@@ -38,6 +38,10 @@
     --flat-select-prepend-font-size: #{$default-font-size};
     --flat-select-prepend-font-weight: var(--main-font-regular);
     --badge-font-size: #{$badge-font-size};
+    --badge-mod-small-font-size: #{$badge-mod-small-font-size};
+    --badge-font-weight: var(--main-font-regular);
+    --badge-line-height: #{$badge-line-height};
+    --badge-text-transform: uppercase;
 
     // Button
     --button-font-size: #{$button-font-size};
@@ -54,4 +58,7 @@
 
     // Color dot
     --color-dot-size: #{$color-dot-size};
+
+    // Icon
+    --navigation-section-icon-size: #{$navigation-section-icon-size};
 }
