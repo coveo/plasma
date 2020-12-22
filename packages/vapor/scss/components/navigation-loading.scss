@@ -24,7 +24,7 @@
     position: relative;
     max-width: 90%;
 
-    height: $default-font-size;
+    height: var(--default-font-size);
     margin: $default-margin 0;
     background-size: $navigation-loading-background-size;
     border-radius: $navigation-loading-item-border-radius;
@@ -43,7 +43,7 @@
 }
 
 .mod-navigation-loading-bullet {
-    width: $default-font-size;
+    width: var(--default-font-size);
 }
 
 .mod-sub-navigation-left-margin {

@@ -13,3 +13,7 @@ a,
         @include focus-border(-2px);
     }
 }
+
+.icon-link {
+    fill: var(--links-color);
+}

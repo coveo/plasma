@@ -10,11 +10,13 @@
     --navigation-menu-section-icon-color: var(--white);
     --navigation-menu-toggle-color: var(--white);
     --navigation-scroll-track-color: var(--purple-blue);
+    --navigation-menu-section-item-transparency: 0.8;
 
     // Header
     --header-background-color: var(--purple-blue);
     --header-text-color: var(--white);
     --header-hamburger-color: var(--white);
+    --header-section-hover-color: var(--blue-purple-2);
 
     // Button //
     // Primary
@@ -177,4 +179,18 @@
     --list-box-item-hover-bg-color: var(--light-grey);
 
     --list-box-item-focus-color: var(--medium-blue);
+
+    // Input
+    --placeholder-text-color: var(--medium-grey);
+
+    // Filter box
+    --filter-box-icon-color: var(--medium-grey);
+
+    // Badge
+    --badge-background-color: var(--orange);
+    --badge-text-color: var(--pure-white);
+    --badge-height: #{$badge-height};
+    --badge-margin: #{$badge-margin};
+    --badge-padding: #{$badge-padding};
+    --badge-border: none;
 }

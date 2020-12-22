@@ -54,7 +54,7 @@
 }
 
 .facet-header-title {
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
     font-family: var(--main-font);
 }
 
@@ -82,7 +82,7 @@
     display: flex;
     justify-content: space-between;
     padding: $facet-value-spacing 0;
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
     line-height: $facet-value-line-height;
     cursor: pointer;
 

@@ -27,7 +27,7 @@ h2,
 
 h3,
 .h3 {
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
     &.mod-margin {
         margin-top: 1.4em;
     }

@@ -17,7 +17,7 @@
 
     .value {
         padding: 5px;
-        font-size: $default-font-size;
+        font-size: var(--default-font-size);
         line-height: $default-line-height;
     }
 }

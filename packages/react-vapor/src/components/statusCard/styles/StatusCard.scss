@@ -27,7 +27,7 @@
 
 .statusCardTitle {
     margin: $status-card-padding-y $status-card-padding $status-card-text-margin 0;
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
 
     :global(.simple) & {
         margin: 0 $status-card-margin $status-card-text-margin;

@@ -55,7 +55,7 @@
     align-items: center;
     padding: $button-padding-y $dropdown-toggle-right-padding $button-padding-y $button-padding-x;
     overflow: hidden;
-    font-size: $dropdown-button-font-size;
+    font-size: var(--dropdown-button-font-size);
     line-height: 16px;
     white-space: nowrap;
     text-transform: none;

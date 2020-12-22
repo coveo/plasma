@@ -35,7 +35,7 @@
     .change-page-link {
         padding: 0;
         color: var(--medium-blue);
-        font-size: $default-font-size;
+        font-size: var(--default-font-size);
         background-color: var(--pure-white);
         border: none;
         cursor: pointer;

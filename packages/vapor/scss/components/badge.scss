@@ -1,20 +1,23 @@
 .badge {
     display: inline-block;
     box-sizing: border-box;
-    height: $badge-height;
-    margin-right: $badge-margin;
-    padding: $badge-padding;
-    color: var(--pure-white);
+    height: var(--badge-height);
+    margin-right: var(--badge-margin);
+    padding: var(--badge-padding);
+    color: var(--badge-text-color);
+    font-weight: var(--badge-font-weight);
     font-size: var(--badge-font-size);
-    line-height: $badge-line-height;
-    text-transform: uppercase;
-    background-color: var(--orange);
+    line-height: var(--badge-line-height);
+    text-align: center;
+    text-transform: var(--badge-text-transform);
+    background-color: var(--badge-background-color);
+    border: var(--badge-border);
 
     &:last-child {
         margin-right: 0;
     }
 
     &.mod-small {
-        font-size: $badge-mod-small-font-size;
+        font-size: var(--badge-mod-small-font-size);
     }
 }

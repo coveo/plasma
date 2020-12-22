@@ -52,13 +52,13 @@
 }
 
 .bannerDescription {
-    color:  var(--banner-description-color);
+    color: var(--banner-description-color);
     font-size: $medium-title-font-size;
 }
 
 .bannerRight {
     color: var(--banner-description-color);
-    font-size: $default-font-size;
+    font-size: var(--default-font-size);
 }
 
 .bannerBottomRightInfos {

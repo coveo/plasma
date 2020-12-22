@@ -85,8 +85,8 @@
                     }
 
                     .navigation-menu-section-header-icon {
-                        width: $navigation-section-icon-size;
-                        height: $navigation-section-icon-size;
+                        width: var(--navigation-section-icon-size);
+                        height: var(--navigation-section-icon-size);
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
                         fill: var(--navigation-menu-section-icon-color);
                     }
@@ -122,7 +122,7 @@
                             margin-right: $navigation-right-margin;
                             padding-left: $navigation-horizontal-space;
                             color: var(--navigation-text-color);
-                            font-size: $default-font-size;
+                            font-size: var(--default-font-size);
                             letter-spacing: 0.05em;
 
                             &.state-locked {
@@ -130,7 +130,7 @@
                             }
                             .navigation-menu-section-item-link-name,
                             .navigation-menu-section-item-link-icon {
-                                opacity: 0.8;
+                                opacity: var(--navigation-menu-section-item-transparency);
                             }
                         }
 
