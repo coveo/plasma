@@ -55,7 +55,7 @@ describe('Facets', () => {
             const renderSpy = jasmine.createSpy('onRender');
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onRender: renderSpy});
 
-            expect(() => facetInstance.componentWillMount()).not.toThrow();
+            expect(() => facetInstance.UNSAFE_componentWillMount()).not.toThrow();
 
             facetComponent.unmount();
             facetComponent.setProps(newFacetAttributes);
@@ -349,7 +349,9 @@ describe('Facets', () => {
 
             expect(facetComponent.find(FacetRow).length).toBe(4);
             expect(facetComponent.find(FacetRow).at(0).props().facetRow).toEqual(jasmine.objectContaining(selected[1]));
+
             expect(facetComponent.find(FacetRow).at(1).props().facetRow).toEqual(jasmine.objectContaining(selected[0]));
+
             expect(facetComponent.find(FacetRow).at(2).props().facetRow).toEqual(
                 jasmine.objectContaining(unselected[1])
             );

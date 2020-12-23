@@ -110,7 +110,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         }
     }
 
-    componentWillReceiveProps(nextProps: ICalendarProps) {
+    UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps) {
         if (this.props.onDateChange && this.props.calendarSelection.length) {
             _.each(nextProps.calendarSelection, (calendarSelection: IDatePickerState, index: number) => {
                 if (this.props.calendarSelection[index]) {

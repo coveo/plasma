@@ -59,7 +59,7 @@ describe('LastUpdated', () => {
             const renderSpy = jasmine.createSpy('onRender');
             lastUpdated = mount(<LastUpdated />, {attachTo: document.getElementById('App')});
 
-            expect(() => (lastUpdated.instance() as LastUpdated).componentWillMount()).not.toThrow();
+            expect(() => (lastUpdated.instance() as LastUpdated).UNSAFE_componentWillMount()).not.toThrow();
 
             lastUpdated.unmount();
             lastUpdated.setProps({onRender: renderSpy});

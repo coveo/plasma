@@ -76,7 +76,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }
@@ -88,7 +88,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         }
     }
 
-    componentWillReceiveProps(nextProps: IDatesSelectionProps) {
+    UNSAFE_componentWillReceiveProps(nextProps: IDatesSelectionProps) {
         if (nextProps.quickOption && nextProps.quickOption !== this.props.quickOption) {
             const dates: string[] = nextProps.quickOption.split(DATES_SEPARATOR);
 

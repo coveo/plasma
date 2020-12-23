@@ -38,7 +38,7 @@ export class Modal extends React.Component<IModalProps> {
 
     private timeoutId: number;
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }

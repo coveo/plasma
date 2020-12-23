@@ -44,7 +44,7 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps> 
         }
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.initialPosition = !_.isUndefined(this.props.initialPosition)
             ? this.props.initialPosition
             : Math.ceil(this.props.perPageNumbers.length / 2) - 1;

@@ -85,7 +85,7 @@ describe('NavigationPerPage', () => {
             const onRenderSpy = jasmine.createSpy('onRender');
 
             expect(() => {
-                navigationPerPageInstance.componentWillMount();
+                navigationPerPageInstance.UNSAFE_componentWillMount();
             }).not.toThrow();
 
             navigationPerPage = mount(
@@ -100,7 +100,7 @@ describe('NavigationPerPage', () => {
             const onDestroySpy = jasmine.createSpy('onDestroy');
 
             expect(() => {
-                navigationPerPageInstance.componentWillMount();
+                navigationPerPageInstance.UNSAFE_componentWillMount();
             }).not.toThrow();
 
             navigationPerPage = mount(
