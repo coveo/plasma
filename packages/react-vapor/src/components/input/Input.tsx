@@ -90,7 +90,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         };
     }
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.onRender) {
             // undefined validOnMount will default to true in the state
             const validOnMount =

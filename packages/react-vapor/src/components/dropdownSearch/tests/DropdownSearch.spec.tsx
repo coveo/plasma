@@ -101,7 +101,7 @@ describe('DropdownSearch', () => {
             it('should call onMountCallBack prop if set when mounting', () => {
                 const onMountCallBack = jasmine.createSpy('onMountCallBack');
 
-                expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
+                expect(() => dropdownSearchInstance.UNSAFE_componentWillMount()).not.toThrow();
 
                 dropdownSearch.unmount();
                 dropdownSearch.setProps({onMountCallBack});
@@ -113,7 +113,7 @@ describe('DropdownSearch', () => {
             it('should call onMount prop if set when mounting', () => {
                 const onMountSpy = jasmine.createSpy('onMount');
 
-                expect(() => dropdownSearchInstance.componentWillMount()).not.toThrow();
+                expect(() => dropdownSearchInstance.UNSAFE_componentWillMount()).not.toThrow();
 
                 dropdownSearch.unmount();
                 dropdownSearch.setProps({onMount: onMountSpy});

@@ -34,7 +34,7 @@ export interface ITableHeadingRowProps
         ITableHeadingRowDispatchProps {}
 
 export class TableHeadingRow extends React.Component<ITableHeadingRowProps, any> {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.props.onRender?.();
     }
 

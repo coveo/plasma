@@ -29,7 +29,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
         }
     }
 
-    componentWillReceiveProps(nextProps: ICalendarDayProps) {
+    UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps) {
         if (
             !nextProps.day.isSelectable &&
             nextProps.day.isSelected &&

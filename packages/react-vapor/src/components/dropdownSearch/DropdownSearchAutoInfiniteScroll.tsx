@@ -30,7 +30,7 @@ export class DropdownSearchAutoInfiniteScroll extends React.Component<
         };
     }
 
-    componentWillUpdate(nextProps: IDropdownSearchAutoInfiniteScrollProps) {
+    UNSAFE_componentWillUpdate(nextProps: IDropdownSearchAutoInfiniteScrollProps) {
         if (!_.isEqual(this.props.options, nextProps.options)) {
             this.setState({activeOptions: nextProps.options.slice(0, this.props.optionsPerPage)});
         }

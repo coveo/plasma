@@ -42,7 +42,7 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
         }
     };
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }

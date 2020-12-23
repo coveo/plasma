@@ -35,7 +35,7 @@ export class Toast extends React.Component<IToastProps> {
         dismissible: true,
     };
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }

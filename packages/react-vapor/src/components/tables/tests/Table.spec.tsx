@@ -250,7 +250,7 @@ describe('<Table />', () => {
             });
 
             it('should not call onMofidyData if next tableCompositeState is identical to the previous', () => {
-                tableAsAny.componentWillReceiveProps(tableProps);
+                tableAsAny.UNSAFE_componentWillReceiveProps(tableProps);
 
                 expect(onModifyDataSpy).not.toHaveBeenCalled();
             });
@@ -263,7 +263,7 @@ describe('<Table />', () => {
                         filter: 'someone just searched for something in the table',
                     },
                 };
-                tableAsAny.componentWillReceiveProps(nextProps);
+                tableAsAny.UNSAFE_componentWillReceiveProps(nextProps);
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = true;
@@ -283,7 +283,7 @@ describe('<Table />', () => {
                         page: 3,
                     },
                 };
-                tableAsAny.componentWillReceiveProps(nextProps);
+                tableAsAny.UNSAFE_componentWillReceiveProps(nextProps);
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = false;
@@ -303,7 +303,7 @@ describe('<Table />', () => {
                         perPage: 20,
                     },
                 };
-                tableAsAny.componentWillReceiveProps(nextProps);
+                tableAsAny.UNSAFE_componentWillReceiveProps(nextProps);
 
                 expect(onModifyDataSpy).toHaveBeenCalledTimes(1);
                 const shouldResetPage = false;
@@ -488,7 +488,7 @@ describe('<Table />', () => {
                     actions: [{id: 'id1'}],
                 };
 
-                tableAsAny.componentWillUpdate(nextProps);
+                tableAsAny.UNSAFE_componentWillUpdate(nextProps);
 
                 expect(onWillUpdateSpy).not.toHaveBeenCalled();
             });
@@ -498,7 +498,7 @@ describe('<Table />', () => {
                     actions: [{id: 'id2'}],
                 };
 
-                tableAsAny.componentWillUpdate(nextProps);
+                tableAsAny.UNSAFE_componentWillUpdate(nextProps);
 
                 expect(onWillUpdateSpy).toHaveBeenCalledWith(nextProps.actions);
             });

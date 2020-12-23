@@ -159,7 +159,7 @@ export class Table extends React.Component<ITableProps> {
         }
     }
 
-    componentWillUpdate(nextProps: ITableProps) {
+    UNSAFE_componentWillUpdate(nextProps: ITableProps) {
         if (this.props.onWillUpdate && JSON.stringify(nextProps.actions) !== JSON.stringify(this.props.actions)) {
             this.props.onWillUpdate(nextProps.actions);
         }
@@ -174,7 +174,7 @@ export class Table extends React.Component<ITableProps> {
         }
     }
 
-    componentWillReceiveProps(nextProps: ITableProps) {
+    UNSAFE_componentWillReceiveProps(nextProps: ITableProps) {
         const {tableCompositeState} = this.props;
 
         if (this.hasTableCompositeStateChanged(tableCompositeState, nextProps.tableCompositeState)) {

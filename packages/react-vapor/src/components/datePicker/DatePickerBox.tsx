@@ -68,7 +68,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     private id: string;
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.id = DatePickerBox.getCalendarId(this.props.id);
     }
 

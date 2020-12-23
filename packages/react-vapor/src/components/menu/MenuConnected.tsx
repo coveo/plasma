@@ -60,7 +60,7 @@ export class MenuConnected extends React.Component<IMenuProps> {
         customOffset: 0,
     };
 
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         this.props.onRender();
         document.addEventListener('mousedown', this.handleDocumentClick);
     }

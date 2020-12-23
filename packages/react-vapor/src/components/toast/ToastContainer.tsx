@@ -29,7 +29,7 @@ export interface IToastContainerProps
         IToastContainerDispatchProps {}
 
 export class ToastContainer extends React.Component<IToastContainerProps> {
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }
