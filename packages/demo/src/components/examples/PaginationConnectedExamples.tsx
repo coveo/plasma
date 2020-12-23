@@ -10,7 +10,7 @@ const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedEx
 export class PaginationConnectedExamples extends React.PureComponent {
     static title: string = 'PaginationConnected';
     // Remove loading after a few seconds
-    componentWillMount() {
+    UNSAFE_componentWillMount() {
         Store.subscribe(() => {
             if (_.contains([LoadingActions.turnOn, LoadingActions.add], Store.getState().lastAction.type)) {
                 setTimeout(() => {
