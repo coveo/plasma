@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.21.2](https://github.com/coveo/react-vapor/compare/v9.21.1...v9.21.2) (2020-12-29)
+
+
+### Bug Fixes
+
+* packages/demo/package.json & packages/demo/package-lock.json to reduce vulnerabilities ([3d540f7](https://github.com/coveo/react-vapor/commit/3d540f7faa7387cb1b4ecfeeb68cc2ccc431168f))
+
+
+
+
+
 ## [9.21.1](https://github.com/coveo/react-vapor/compare/v9.21.0...v9.21.1) (2020-12-23)
 
 **Note:** Version bump only for package root
