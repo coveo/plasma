@@ -55,7 +55,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps> {
             ? {
                   svg: {
                       svgName: 'help',
-                      svgClass: 'fill-orange icon mod-20',
+                      svgClass: 'documentation-link icon mod-20',
                   },
                   ...this.props.docLink,
               }

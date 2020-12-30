@@ -78,7 +78,7 @@ div.slider-container {
 
         .rc-slider-tooltip-inner {
             color: var(--dark-blue);
-            font-size: $small-font-size;
+            font-size: var(--small-font-size);
             line-height: $default-line-height;
             background-color: transparent;
             box-shadow: none;

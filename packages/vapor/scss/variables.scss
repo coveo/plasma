@@ -235,6 +235,8 @@ $navigation-section-icon-margin-left: 15px;
 $navigation-section-arrow-margin: 15px;
 $navigation-horizontal-space: $navigation-section-icon-size + $navigation-section-icon-margin-right +
     $navigation-section-icon-margin-left - $navigation-active-border-width;
+$navigation-horizontal-space-loading: $navigation-section-icon-size + $navigation-section-icon-margin-right +
+    $navigation-section-icon-margin-left;
 $navigation-horizontal-space-no-icon: $navigation-section-icon-margin-left + $navigation-section-arrow-margin;
 $navigation-right-margin: $navigation-section-arrow-margin;
 $navigation-locked-color: var(--medium-grey);

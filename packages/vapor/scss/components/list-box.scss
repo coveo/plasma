@@ -19,7 +19,7 @@
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
     color: var(--list-box-item-color);
-    font-size: $small-font-size;
+    font-size: var(--small-font-size);
     line-height: $default-line-height;
     white-space: nowrap;
     text-overflow: ellipsis;
@@ -74,7 +74,7 @@
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
     color: var(--dark-grey);
-    font-size: $small-font-size;
+    font-size: var(--small-font-size);
     line-height: $default-line-height;
     white-space: nowrap;
     text-overflow: ellipsis;
