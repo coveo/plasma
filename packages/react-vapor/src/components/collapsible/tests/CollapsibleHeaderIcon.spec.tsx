@@ -31,10 +31,10 @@ describe('CollapsibleHeaderIcon tests', () => {
             expect(wrapper.find('.round-contextual-help').length).toBe(0);
         });
 
-        it('should fill orange if the informationUrl is defined', () => {
+        it('should fill documentation link icon color if the informationUrl is defined', () => {
             wrapper = shallowCollapsibleHeaderIcon();
 
-            expect(wrapper.find(LinkSvg).props().svg.svgClass).toContain('fill-orange');
+            expect(wrapper.find(LinkSvg).props().svg.svgClass).toContain('documentation-link');
             expect(wrapper.find(LinkSvg).props().svg.svgClass).not.toContain('fill-medium-grey');
         });
 
@@ -46,7 +46,7 @@ describe('CollapsibleHeaderIcon tests', () => {
             } as CollapsibleHeaderIconProps);
 
             expect(wrapper.find(Svg).props().svgClass).toContain('fill-medium-grey');
-            expect(wrapper.find(Svg).props().svgClass).not.toContain('fill-orange');
+            expect(wrapper.find(Svg).props().svgClass).not.toContain('documentation-link');
         });
 
         it('should set the svg name for info if informationUrl is not defined', () => {
