@@ -23,6 +23,7 @@ export interface ICodeEditorProps {
     extraKeywords?: string[];
     className?: string;
     options?: CodeMirror.EditorConfiguration;
+    isRefreshRequired?: boolean;
 }
 
 export interface CodeEditorState {
@@ -59,6 +60,11 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);
+        this.props.isRefreshRequired && setInterval(this.timer, 300);
+    }
+
+    componentWillUnmount() {
+        this.props.isRefreshRequired && clearInterval();
     }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
@@ -67,6 +73,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
             this.editor.getDoc().clearHistory();
         }
     }
+
     render() {
         return (
             <ReactCodeMirror.Controlled
@@ -79,7 +86,10 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                     this.setState({value});
                 }}
                 value={this.state.value}
-                onChange={(editor, data, value: string) => this.props.onChange?.(value)}
+                onChange={(editor, data, value: string) => {
+                    this.props.onChange?.(value);
+                    this.props.isRefreshRequired && clearInterval();
+                }}
                 options={{
                     ...CodeEditor.defaultOptions,
                     readOnly: this.props.readOnly,
@@ -99,4 +109,8 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
             );
         }
     }
+
+    private timer = () => {
+        this.editor.refresh();
+    };
 }

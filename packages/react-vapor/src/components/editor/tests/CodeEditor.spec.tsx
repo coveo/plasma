@@ -118,5 +118,12 @@ describe('CodeEditor', () => {
         it('should have a border by default', () => {
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('mod-border');
         });
+
+        it('should set an interval to refresh the editor if the isRefreshRequired prop is true', () => {
+            const intervalSpy = spyOn(global, 'setInterval');
+            mountWithProps({isRefreshRequired: true});
+
+            expect(intervalSpy).toHaveBeenCalledTimes(1);
+        });
     });
 });
