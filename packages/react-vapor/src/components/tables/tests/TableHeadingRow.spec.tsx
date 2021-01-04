@@ -84,7 +84,7 @@ describe('Tables', () => {
             const onRenderSpy = jasmine.createSpy('onRender');
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onRender: onRenderSpy});
 
-            expect(() => tableHeadingRowInstance.UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => tableHeadingRowInstance.componentDidMount()).not.toThrow();
 
             tableHeadingRow.unmount();
             tableHeadingRow.setProps(newTabledHeadingRowProps);

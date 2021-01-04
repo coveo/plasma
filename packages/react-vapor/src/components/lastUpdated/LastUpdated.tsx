@@ -22,7 +22,7 @@ export interface ILastUpdatedProps extends ILastUpdatedOwnProps, ILastUpdatedSta
 export const LAST_UPDATE_LABEL: string = 'Last update:';
 
 export class LastUpdated extends React.Component<ILastUpdatedProps, any> {
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }

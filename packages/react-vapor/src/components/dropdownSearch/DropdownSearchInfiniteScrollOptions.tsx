@@ -12,7 +12,7 @@ export interface DropdownSearchInfiniteScrollOptionsProps {
 export class DropdownSearchInfiniteScrollOptions extends React.Component<DropdownSearchInfiniteScrollOptionsProps> {
     private id: string;
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         this.id = _.uniqueId('infinite-dropdown');
     }
 

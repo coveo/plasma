@@ -108,7 +108,7 @@ export class AutocompleteConnected extends React.Component<
         inline: false,
     };
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         this.props.onRender();
         document.addEventListener('mousedown', this.handleDocumentClick);
     }

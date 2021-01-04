@@ -68,7 +68,7 @@ describe('Option picker', () => {
             const renderSpy: jasmine.Spy = jasmine.createSpy('onRender');
             const withRenderProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {onRender: renderSpy});
 
-            expect(() => optionPickerInstance.UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => optionPickerInstance.componentDidMount()).not.toThrow();
 
             optionPicker.setProps(withRenderProps);
             optionPicker.unmount();

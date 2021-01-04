@@ -59,7 +59,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxExamplesProps
 
 @ReduxConnect(mapStateToProps, mapDispatchToProps, ReduxUtils.defaultMergeProps)
 export class ListBoxExampleConnected extends React.Component<IListBoxExamplesProps> {
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         this.props.addListBoxExample();
     }
 

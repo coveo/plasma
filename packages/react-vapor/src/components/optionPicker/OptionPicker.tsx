@@ -29,7 +29,7 @@ export class OptionPicker extends React.Component<IOptionPickerProps, any> {
         }
     }
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }
