@@ -7,7 +7,6 @@
     // General
     --default-margin: #{$default-margin};
     --default-line-height: #{$default-line-height};
-    --banner-height: #{$banner-height};
     --header-line-height: #{$header-line-height};
     --spacing: #{$spacing};
 
@@ -15,34 +14,30 @@
     --small-font-size: #{$small-font-size};
     --default-font-size: #{$default-font-size};
     --title-font-size: #{$title-font-size};
-    --navigation-section-font-size: #{$navigation-section-font-size};
-    --navigation-tag-font-size: #{$navigation-tag-font-size};
     --medium-title-font-size: #{$medium-title-font-size};
     --big-font-size: #{$big-font-size};
     --big-title-font-size: #{$big-title-font-size};
-    --default-line-height: #{$default-line-height};
-    --big-line-height: #{$big-line-height};
     --code-font-size: #{$code-font-size};
+    --help-text-font-size: #{$help-text-font-size};
+
     --base-font-family: #{$base-font-family};
     --code-font-family: #{$code-font-family};
+
+    --big-line-height: #{$big-line-height};
     --standard-line-height: #{$standard-line-height};
-    --help-text-font-size: #{$help-text-font-size};
     --help-text-line-height: #{$help-text-line-height};
+
     --text-max-width: #{$text-max-width};
-    --tab-font-size: #{$tab-font-size};
-    --table-action-label-font-size: #{$small-font-size};
-    --table-header-font-size: #{$table-header-font-size};
-    --table-row-font-size: #{$table-row-font-size};
-    --big-table-first-row-font-size: #{$big-table-first-row-font-size};
-    --big-table-first-row-font-weight: var(--main-font-regular);
-    --big-table-second-row-font-size: #{$big-table-second-row-font-size};
-    --flat-select-prepend-font-size: #{$default-font-size};
-    --flat-select-prepend-font-weight: var(--main-font-regular);
+
+    // Badge
     --badge-font-size: #{$badge-font-size};
     --badge-mod-small-font-size: #{$badge-mod-small-font-size};
     --badge-font-weight: var(--main-font-regular);
     --badge-line-height: #{$badge-line-height};
     --badge-text-transform: uppercase;
+
+    // Banner
+    --banner-height: #{$banner-height};
 
     // Button
     --button-font-size: #{$button-font-size};
@@ -51,15 +46,37 @@
     --button-small-line-height: #{$button-small-line-height};
     --button-text-transform: uppercase;
 
+    // Color dot
+    --color-dot-size: #{$color-dot-size};
+
     // Dropdown
     --dropdown-button-font-size: #{$dropdown-button-font-size};
+
+    // Facet
+    --facet-header-font-size: var(--default-font-size);
+    --facet-header-font-weight: var(--main-font-bold);
+    --facet-header-line-height: inherit;
+
+    // Flat select
+    --flat-select-prepend-font-size: #{$default-font-size};
+    --flat-select-prepend-font-weight: var(--main-font-regular);
 
     // Input and textarea
     --input-font-size: #{$input-font-size};
 
-    // Color dot
-    --color-dot-size: #{$color-dot-size};
-
-    // Icon
+    // Navigation
     --navigation-section-icon-size: #{$navigation-section-icon-size};
+    --navigation-section-font-size: #{$navigation-section-font-size};
+    --navigation-tag-font-size: #{$navigation-tag-font-size};
+
+    // Tab
+    --tab-font-size: #{$tab-font-size};
+
+    // Table
+    --table-action-label-font-size: #{$small-font-size};
+    --table-header-font-size: #{$table-header-font-size};
+    --table-row-font-size: #{$table-row-font-size};
+    --big-table-first-row-font-size: #{$big-table-first-row-font-size};
+    --big-table-first-row-font-weight: var(--main-font-regular);
+    --big-table-second-row-font-size: #{$big-table-second-row-font-size};
 }

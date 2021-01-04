@@ -1,7 +1,7 @@
 .coveo-checkbox-button {
     position: relative;
-    width: $checkbox-size;
-    height: $checkbox-size;
+    width: var(--checkbox-size);
+    height: var(--checkbox-size);
     padding: 0;
     background: var(--pure-white);
     border: $checkbox-default-border;
@@ -42,8 +42,8 @@ input[type='checkbox'].coveo-checkbox {
     }
 
     &:checked + button {
-        background-color: var(--orange);
-        border-color: var(--orange);
+        background-color: var(--checkbox-checked-color);
+        border-color: var(--checkbox-checked-color);
 
         &:before {
             position: absolute; // Position it in the center of the box
@@ -102,7 +102,7 @@ input[type='checkbox'].coveo-checkbox {
 .coveo-checkbox-label {
     display: inline-flex;
     align-items: center;
-    color: var(--dark-grey);
+    color: var(--checkbox-text-color);
     line-height: 16px;
     vertical-align: middle; // Required to properly position checkboxes into tables
 
