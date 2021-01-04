@@ -76,7 +76,7 @@
     padding: 0 $facet-spacing;
 
     &:hover {
-        background-color: var(--light-grey);
+        background-color: var(--facet-value-hover-background-color);
         .exclude-button {
             display: flex;
         }
