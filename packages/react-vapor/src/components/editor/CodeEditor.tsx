@@ -26,7 +26,7 @@ export interface ICodeEditorProps {
     extraKeywords?: string[];
     className?: string;
     options?: CodeMirror.EditorConfiguration;
-    collapsibleId?: string;
+    isRefreshRequired?: boolean;
 }
 
 export interface CodeEditorState {
@@ -72,10 +72,11 @@ class CodeEditorDisconnect extends React.Component<
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);
-        if (this.props.isCollapsibleExpanded) {
-            this.editor.refresh();
-            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
-        }
+        this.props.isRefreshRequired && setInterval(this.timer, 300);
+    }
+
+    componentWillUnmount() {
+        this.props.isRefreshRequired && clearInterval();
     }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
@@ -103,6 +104,7 @@ class CodeEditorDisconnect extends React.Component<
                 value={this.state.value}
                 onChange={(editor, data, value: string) => {
                     this.props.onChange?.(value);
+                    this.props.isRefreshRequired && clearInterval();
                 }}
                 options={{
                     ...CodeEditorDisconnect.defaultOptions,
@@ -123,6 +125,10 @@ class CodeEditorDisconnect extends React.Component<
             );
         }
     }
+
+    private timer = () => {
+        this.editor.refresh();
+    };
 }
 
 export const CodeEditor = connect(mapStateToProps)(CodeEditorDisconnect);
