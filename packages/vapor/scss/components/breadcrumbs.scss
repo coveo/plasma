@@ -4,10 +4,6 @@
     @extend .flex-center;
     margin-top: 0;
     font-weight: var(--basic-header-title-font-weight);
-
-    a.link {
-        color: var(--breadcrumb-link-color);
-    }
 }
 
 .breadcrumb-arrow {

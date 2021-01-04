@@ -39,5 +39,9 @@
             font-size: 12px;
             line-height: 15px;
         }
+
+        &.text-white {
+            color: var(--pure-white);
+        }
     }
 }

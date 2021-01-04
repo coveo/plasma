@@ -12,7 +12,7 @@
     .label {
         padding: 5px 0px 5px 5px;
         color: var(--light-blue);
-        font-size: $small-font-size;
+        font-size: var(--small-font-size);
     }
 
     .value {

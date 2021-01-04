@@ -11,6 +11,7 @@
     --navigation-menu-toggle-color: var(--white);
     --navigation-scroll-track-color: var(--purple-blue);
     --navigation-menu-section-item-transparency: 0.8;
+    --navigation-menu-padding-top: 1em;
 
     // Header
     --header-background-color: var(--purple-blue);
@@ -94,7 +95,6 @@
     --basic-header-description-font-size: var(--small-font-size);
     --heading-text-color: var(--medium-blue);
     --breadcrumb-arrow-color: var(--medium-grey);
-    --breadcrumb-link-color: var(--links-color);
 
     // Tab
     --tab-font-weight: var(--main-font-bold);
@@ -182,6 +182,10 @@
 
     // Input
     --placeholder-text-color: var(--medium-grey);
+    --checkbox-border-color: var(--medium-blue);
+    --checkbox-checked-color: var(--orange);
+    --checkbox-text-color: var(--dark-grey);
+    --checkbox-size: #{$checkbox-size};
 
     // Filter box
     --filter-box-icon-color: var(--medium-grey);
@@ -193,4 +197,16 @@
     --badge-margin: #{$badge-margin};
     --badge-padding: #{$badge-padding};
     --badge-border: none;
+
+    // Facet
+    --facet-box-shadow: none;
+    --facet-border: #{$default-border};
+    --facet-border-radius: #{$border-radius};
+    --facet-header-background-color: var(--white);
+    --facet-header-text-color: var(--medium-blue);
+    --facet-value-count-text-color: var(--medium-grey);
+    --facet-value-hover-background-color: var(--light-grey);
+    --facet-header-eraser-color: var(--medium-grey);
+    --facet-header-eraser-hover-color: var(--dark-grey);
+    --facet-exclude-button-hover-color: var(--dark-blue);
 }

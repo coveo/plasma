@@ -4,7 +4,7 @@
     max-width: $facet-column-max-width;
     margin-right: 0;
     padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
-    border-right: $default-border;
+    border-right: var(--facet-border);
 }
 
 .facet {
@@ -13,8 +13,9 @@
 
     padding-bottom: $facet-spacing;
     background: var(--pure-white);
-    border: $default-border;
-    border-radius: $border-radius;
+    border: var(--facet-border);
+    border-radius: var(--facet-border-radius);
+    box-shadow: var(--facet-box-shadow);
 }
 
 .facet-header {
@@ -22,9 +23,9 @@
     clear: both;
 
     padding: $button-padding-x;
-    background: var(--white);
-    border-top-left-radius: $border-radius;
-    border-top-right-radius: $border-radius;
+    background: var(--facet-header-background-color);
+    border-top-left-radius: var(--facet-border-radius);
+    border-top-right-radius: var(--facet-border-radius);
 }
 
 .facet-header-eraser {
@@ -41,9 +42,10 @@
         width: $facet-more-button-icon-size;
         height: $facet-more-button-icon-size;
         transform: translateY(-50%);
+        fill: var(--facet-header-eraser-color);
 
         &:hover {
-            fill: var(--dark-grey);
+            fill: var(--facet-header-eraser-hover-color);
         }
     }
 }
@@ -54,8 +56,11 @@
 }
 
 .facet-header-title {
-    font-size: var(--default-font-size);
+    color: var(--facet-header-text-color);
+    font-weight: var(--facet-header-font-weight);
+    font-size: var(--facet-header-font-size);
     font-family: var(--main-font);
+    line-height: var(--facet-header-line-height);
 }
 
 .facet-values {
@@ -71,7 +76,7 @@
     padding: 0 $facet-spacing;
 
     &:hover {
-        background-color: var(--light-grey);
+        background-color: var(--facet-value-hover-background-color);
         .exclude-button {
             display: flex;
         }
@@ -102,7 +107,7 @@
 
 .facet-value-count {
     padding-left: $facet-value-spacing;
-    color: var(--medium-grey);
+    color: var(--facet-value-count-text-color);
 }
 
 .facet-more {
@@ -111,7 +116,7 @@
     }
 
     .label {
-        color: var(--blue);
+        color: var(--links-color);
     }
 }
 
@@ -145,7 +150,7 @@
         height: inherit;
     }
     &:hover svg {
-        fill: var(--dark-blue);
+        fill: var(--facet-exclude-button-hover-color);
     }
 }
 
@@ -239,8 +244,8 @@
     list-style: none;
 
     background-color: var(--pure-white);
-    border: $default-border;
-    border-radius: $border-radius;
+    border: var(--facet-border);
+    border-radius: var(--facet-border-radius);
 
     @include slim-scroll(var(--light-grey), var(--medium-grey));
 }

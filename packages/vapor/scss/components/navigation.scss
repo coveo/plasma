@@ -47,7 +47,7 @@
     .navigation-menu {
         position: relative;
         height: 100%;
-        padding-top: 1em;
+        padding-top: var(--navigation-menu-padding-top);
         overflow-x: hidden;
         color: var(--navigation-text-color);
         background-color: var(--navigation-background-color);
@@ -187,7 +187,7 @@
 .navigation-tag {
     display: inline-block;
     padding: $navigation-tag-padding;
-    font-size: $navigation-tag-font-size;
+    font-size: var(--navigation-tag-font-size);
     text-transform: none;
     word-break: keep-all;
     border-radius: $border-radius;

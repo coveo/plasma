@@ -135,10 +135,10 @@ export class Facet extends React.Component<IFacetProps, any> {
                             className="remove-selected-tooltip"
                             title={`${this.props.clearFacetLabel} ${this.props.facet.formattedName}`}
                         >
-                            <Svg svgName="clear" className="icon fill-medium-grey" />
+                            <Svg svgName="clear" className="icon" />
                         </Tooltip>
                     </div>
-                    <div className="facet-header-title bold text-medium-blue">{this.props.facet.formattedName}</div>
+                    <div className="facet-header-title">{this.props.facet.formattedName}</div>
                 </div>
                 <ul className="facet-values">
                     {rows.slice(0, rowsToShow)}
