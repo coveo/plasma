@@ -9,17 +9,11 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
   return
 }
 
-library identifier: 'jsadmin_pipeline@next', retriever: modernSCM([
- $class: 'GitSCMSource',
- remote: 'git@bitbucket.org:coveord/jsadmin_pipeline.git',
- credentialsId: 'coveo-bitbucket-rd-ssh'
-])
-
-library identifier: 'deploy_pipeline@v1.5', retriever: modernSCM([
-$class: 'GitSCMSource',
-remote: 'git@bitbucket.org:coveord/deploy_pipeline.git',
-credentialsId: 'coveo-bitbucket-rd-ssh'
-])
+library(
+    identifier: "jenkins-common-lib@v1.5",
+    retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jenkins-common-lib", repoOwner: "coveo")),
+    changelog: false
+)
 
 def skipRemainingStages = false
 
