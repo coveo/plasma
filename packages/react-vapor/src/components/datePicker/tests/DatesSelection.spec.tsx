@@ -146,7 +146,7 @@ describe('Date picker', () => {
         it('should call onRender prop if set when mounting', () => {
             const onRenderSpy: jasmine.Spy = jasmine.createSpy('onRender');
 
-            expect(() => datesSelectionInstance.UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => datesSelectionInstance.componentDidMount()).not.toThrow();
 
             datesSelection.unmount();
             datesSelection.setProps({onRender: onRenderSpy});

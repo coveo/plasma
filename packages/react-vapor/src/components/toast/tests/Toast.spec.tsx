@@ -31,7 +31,7 @@ describe('Toasts', () => {
             const renderSpy = jasmine.createSpy('onRender');
             const newToastAttributes = _.extend({}, toastBasicAttributes, {onRender: renderSpy});
 
-            expect(() => toastInstance.UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => toastInstance.componentDidMount()).not.toThrow();
 
             toastComponent.unmount();
             toastComponent.setProps(newToastAttributes).mount();

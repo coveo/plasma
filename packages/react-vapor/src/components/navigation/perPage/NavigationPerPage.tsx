@@ -36,7 +36,6 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps> 
         perPageNumbers: PER_PAGE_NUMBERS,
         label: PER_PAGE_LABEL,
     };
-    private initialPosition: number;
 
     private handleClick(newPerPage: number) {
         if (this.props.onPerPageClick && this.props.currentPerPage !== newPerPage) {
@@ -44,10 +43,13 @@ export class NavigationPerPage extends React.Component<INavigationPerPageProps> 
         }
     }
 
-    UNSAFE_componentWillMount() {
-        this.initialPosition = !_.isUndefined(this.props.initialPosition)
+    private get initialPosition(): number {
+        return !_.isUndefined(this.props.initialPosition)
             ? this.props.initialPosition
             : Math.ceil(this.props.perPageNumbers.length / 2) - 1;
+    }
+
+    componentDidMount() {
         this.props.onRender?.(this.props.perPageNumbers[this.initialPosition]);
     }
 

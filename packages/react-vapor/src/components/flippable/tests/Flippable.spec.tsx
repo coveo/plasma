@@ -26,7 +26,7 @@ describe('Flippable', () => {
         it('should call onRender prop if set when mounting', () => {
             const onRenderSpy = jasmine.createSpy('onRender');
 
-            expect(() => flippable.instance().UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => flippable.instance().componentDidMount()).not.toThrow();
 
             flippable.unmount();
             flippable.setProps({onRender: onRenderSpy});

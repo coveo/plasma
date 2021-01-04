@@ -35,13 +35,10 @@ export class Toast extends React.Component<IToastProps> {
         dismissible: true,
     };
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }
-    }
-
-    componentDidMount() {
         this.setTimeout();
     }
 

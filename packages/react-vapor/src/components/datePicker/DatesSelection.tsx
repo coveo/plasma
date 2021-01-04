@@ -76,7 +76,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         }
     }
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }

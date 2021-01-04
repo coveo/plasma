@@ -47,7 +47,7 @@ export class Flippable extends React.Component<IFlippableProps & React.HTMLProps
     private backside: HTMLDivElement;
     private frontside: HTMLDivElement;
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender();
         }

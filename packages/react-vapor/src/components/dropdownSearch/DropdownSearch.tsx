@@ -124,7 +124,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
         }
     }
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onMount) {
             this.props.onMount();
         }

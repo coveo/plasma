@@ -75,7 +75,7 @@ export class Facet extends React.Component<IFacetProps, any> {
         return _.sortBy(facetRows, (facetRow: IFacet) => facetRow.formattedName.toLowerCase());
     }
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onRender) {
             this.props.onRender(this.props.facet.name);
         }

@@ -29,7 +29,7 @@ describe('Modal', () => {
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jasmine.createSpy('onRender');
 
-            expect(() => modalInstance.UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => modalInstance.componentDidMount()).not.toThrow();
 
             modal.setProps({id: id, onRender: renderSpy});
             modal.unmount();

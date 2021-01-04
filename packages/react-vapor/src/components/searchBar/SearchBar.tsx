@@ -46,7 +46,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
         maxWidth: '500px',
     };
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onMount) {
             this.props.onMount();
         }

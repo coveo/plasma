@@ -55,7 +55,7 @@ describe('Facets', () => {
             const renderSpy = jasmine.createSpy('onRender');
             const newFacetAttributes = _.extend({}, facetBasicAttributes, {onRender: renderSpy});
 
-            expect(() => facetInstance.UNSAFE_componentWillMount()).not.toThrow();
+            expect(() => facetInstance.componentDidMount()).not.toThrow();
 
             facetComponent.unmount();
             facetComponent.setProps(newFacetAttributes);

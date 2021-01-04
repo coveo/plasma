@@ -34,7 +34,7 @@ export interface IFacetMoreRowsProps
 export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
     private facetSearch: HTMLDivElement;
 
-    UNSAFE_componentWillMount() {
+    componentDidMount() {
         if (this.props.onDocumentClick) {
             document.addEventListener('click', this.handleDocumentClick);
         }
