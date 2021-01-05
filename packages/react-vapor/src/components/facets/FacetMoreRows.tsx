@@ -40,19 +40,17 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
         }
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps: IFacetMoreRowsProps) {
-        if (this.props.onOpen && !this.props.isOpened && nextProps.isOpened) {
-            this.props.onOpen();
-        }
-    }
-
     componentWillUnmount() {
         if (this.props.onDocumentClick) {
             document.removeEventListener('click', this.handleDocumentClick);
         }
     }
 
-    componentDidUpdate() {
+    componentDidUpdate(prevProps: IFacetMoreRowsProps) {
+        if (!prevProps.isOpened && this.props.isOpened) {
+            this.props.onOpen?.();
+        }
+
         if (this.props.isOpened) {
             this.facetSearch.getElementsByTagName('input')[0].focus();
         }

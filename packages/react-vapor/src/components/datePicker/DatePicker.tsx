@@ -54,9 +54,9 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
         this.props.onClick(this.props.upperLimit);
     };
 
-    UNSAFE_componentWillReceiveProps(nextProps: IDatePickerProps) {
-        if (nextProps.date) {
-            const dateValue: string = this.getStringFromDate(nextProps.date);
+    componentDidUpdate(prevProps: IDatePickerProps) {
+        if (this.props.date) {
+            const dateValue: string = this.getStringFromDate(this.props.date);
 
             if (this.dateInput.value !== dateValue) {
                 this.dateInput.value = dateValue;
@@ -65,8 +65,8 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
             this.dateInput.value = '';
         }
         const isSelected =
-            (nextProps.isSelecting === DateLimits.upper && nextProps.upperLimit) ||
-            (nextProps.isSelecting === DateLimits.lower && !nextProps.upperLimit);
+            (this.props.isSelecting === DateLimits.upper && this.props.upperLimit) ||
+            (this.props.isSelecting === DateLimits.lower && !this.props.upperLimit);
         this.setState({isSelected});
     }
 
