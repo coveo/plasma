@@ -202,6 +202,7 @@
     --facet-box-shadow: none;
     --facet-border: #{$default-border};
     --facet-border-radius: #{$border-radius};
+    --facet-column-border: #{$default-border};
     --facet-header-background-color: var(--white);
     --facet-header-text-color: var(--medium-blue);
     --facet-value-count-text-color: var(--medium-grey);
@@ -209,4 +210,7 @@
     --facet-header-eraser-color: var(--medium-grey);
     --facet-header-eraser-hover-color: var(--dark-grey);
     --facet-exclude-button-hover-color: var(--dark-blue);
+
+    // Label
+    --label-text-color: var(--light-blue);
 }

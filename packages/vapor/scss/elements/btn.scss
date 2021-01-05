@@ -72,7 +72,7 @@
         height: $button-small-height;
         padding: $button-small-padding-y $button-small-padding-x;
         font-size: $button-small-font-size;
-        line-height: $button-small-line-height;
+        line-height: var(--button-small-line-height);
     }
 
     &.mod-large {
