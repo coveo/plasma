@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.22.0](https://github.com/coveo/react-vapor/compare/v9.21.4...v9.22.0) (2021-01-05)
+
+
+### Features
+
+* **tablerowconnected:** +noBorderBottom props ([47ac250](https://github.com/coveo/react-vapor/commit/47ac25091024c55d259ffe2e2513303769fffdac))
+
+
+
+
+
 ## [9.21.4](https://github.com/coveo/react-vapor/compare/v9.21.3...v9.21.4) (2021-01-04)
 
 **Note:** Version bump only for package root
