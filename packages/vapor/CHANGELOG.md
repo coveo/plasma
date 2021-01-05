@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.22.2](https://github.com/coveo/react-vapor/compare/v9.22.1...v9.22.2) (2021-01-05)
+
+
+### Bug Fixes
+
+* **rebranding:** css variables ([#1790](https://github.com/coveo/react-vapor/issues/1790)) ([e36406d](https://github.com/coveo/react-vapor/commit/e36406d4e7edeee2051f94062471e7638e067df7))
+
+
+
+
+
 ## [9.21.3](https://github.com/coveo/react-vapor/compare/v9.21.2...v9.21.3) (2021-01-04)
 
 **Note:** Version bump only for package coveo-styleguide
