@@ -19,6 +19,7 @@ export interface CollapsibleRowProps {
     content?: React.ReactNode;
     className?: string;
     expandOnMount?: boolean;
+    noBorderBottom?: boolean;
     renderCustomToggleCell?: (opened: boolean) => React.ReactNode;
     onToggleCollapsible?: (open: boolean) => void;
 }
@@ -146,7 +147,11 @@ class TableRowConnected extends React.PureComponent<
                 collapsibleRowToggle = React.isValidElement(customToggle) ? (
                     customToggle
                 ) : (
-                    <td className="table-row-collapsible-btn">
+                    <td
+                        className={classNames('table-row-collapsible-btn', {
+                            'mod-no-border-bottom': this.props.collapsible.noBorderBottom,
+                        })}
+                    >
                         <CollapsibleToggle
                             onClick={this.onToggleCollapsible}
                             expanded={this.props.opened}
