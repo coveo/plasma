@@ -29,18 +29,8 @@ describe('Date picker', () => {
         let datePickerInstance: DatePicker;
 
         beforeEach(() => {
-            datePicker = mount(<DatePicker {...DATE_PICKER_BASIC_PROPS} />, {attachTo: document.getElementById('App')});
+            datePicker = mount(<DatePicker {...DATE_PICKER_BASIC_PROPS} />);
             datePickerInstance = datePicker.instance() as DatePicker;
-        });
-
-        afterEach(() => {
-            datePicker.detach();
-        });
-
-        it('should get what to do on blur as a prop', () => {
-            const onBlurProp = datePicker.props().onBlur;
-
-            expect(onBlurProp).toBeDefined();
         });
 
         it('should display a <SetToNowButton /> component if hasSetToNowButton prop is set to true', () => {
@@ -78,21 +68,25 @@ describe('Date picker', () => {
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower, upperLimit: false});
                 datePicker.setProps(newProps);
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(true);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.upper, upperLimit: false});
                 datePicker.setProps(newProps);
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.upper, upperLimit: true});
                 datePicker.setProps(newProps);
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(true);
 
                 newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {isSelecting: DateLimits.lower, upperLimit: true});
                 datePicker.setProps(newProps);
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass('picking-date')).toBe(false);
             }
@@ -102,29 +96,29 @@ describe('Date picker', () => {
             'should have the classes "date-picked" and "bg-COLOR_PROP" or "bg-DEFAULT_COLOR" on the input if we are not' +
                 ' selecting the picker and there is a date set in the input',
             () => {
-                let newProps: IDatePickerProps;
-
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
 
-                newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: new Date()});
-                datePicker.setProps(newProps);
+                datePicker.setProps({...DATE_PICKER_BASIC_PROPS, date: new Date()});
+                datePicker.setState({isSelected: true});
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(true);
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(true);
 
-                newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: new Date(), color: 'white'});
-                datePicker.setProps(newProps);
+                datePicker.setProps({...DATE_PICKER_BASIC_PROPS, date: new Date(), color: 'white'});
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
-                expect(datePicker.find('input').hasClass(`bg-${newProps.color}`)).toBe(true);
+                expect(datePicker.find('input').hasClass('bg-white')).toBe(true);
 
-                newProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                datePicker.setProps({
+                    ...DATE_PICKER_BASIC_PROPS,
                     date: new Date(),
                     isSelecting: DateLimits.lower,
                     upperLimit: false,
                 });
-                datePicker.setProps(newProps);
+                datePicker.update();
 
                 expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
                 expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
@@ -234,11 +228,6 @@ describe('Date picker', () => {
             () => {
                 let newDate: Date = new Date();
                 let dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: newDate});
-                datePicker.setProps(dateProps);
-
-                expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getSimpleDate(newDate));
-
-                dateProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: newDate, withTime: true});
                 datePicker.setProps(dateProps);
 
                 expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getSimpleDate(newDate));

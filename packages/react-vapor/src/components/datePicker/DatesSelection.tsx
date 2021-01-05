@@ -88,9 +88,9 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         }
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps: IDatesSelectionProps) {
-        if (nextProps.quickOption && nextProps.quickOption !== this.props.quickOption) {
-            const dates: string[] = nextProps.quickOption.split(DATES_SEPARATOR);
+    componentDidUpdate(prevProps: IDatesSelectionProps) {
+        if (this.props.quickOption && this.props.quickOption !== prevProps.quickOption) {
+            const dates: string[] = this.props.quickOption.split(DATES_SEPARATOR);
 
             this.onDateChange(new Date(dates[0]), false, true);
 

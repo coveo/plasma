@@ -110,20 +110,20 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         }
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps: ICalendarProps) {
-        if (this.props.onDateChange && this.props.calendarSelection.length) {
-            _.each(nextProps.calendarSelection, (calendarSelection: IDatePickerState, index: number) => {
-                if (this.props.calendarSelection[index]) {
+    componentDidUpdate(prevProps: ICalendarProps) {
+        if (this.props.onDateChange && prevProps.calendarSelection.length) {
+            _.each(this.props.calendarSelection, (calendarSelection: IDatePickerState, index: number) => {
+                if (prevProps.calendarSelection[index]) {
                     let limitToChange: Date;
-                    const currentLowerLimit: Date = this.props.calendarSelection[index].lowerLimit;
-                    const currentUpperLimit: Date = this.props.calendarSelection[index].upperLimit;
-                    const nextLowerLimit: Date = calendarSelection.lowerLimit;
-                    const nextUpperLimit: Date = calendarSelection.upperLimit;
+                    const previousLowerLimit: Date = prevProps.calendarSelection[index].lowerLimit;
+                    const previousUpperLimit: Date = prevProps.calendarSelection[index].upperLimit;
+                    const currentLowerLimit: Date = calendarSelection.lowerLimit;
+                    const currentUpperLimit: Date = calendarSelection.upperLimit;
 
-                    if (DateUtils.isDifferent(currentLowerLimit, nextLowerLimit, 'minute')) {
-                        limitToChange = nextLowerLimit;
-                    } else if (DateUtils.isDifferent(currentUpperLimit, nextUpperLimit, 'minute')) {
-                        limitToChange = nextUpperLimit;
+                    if (DateUtils.isDifferent(previousLowerLimit, currentLowerLimit, 'minute')) {
+                        limitToChange = currentLowerLimit;
+                    } else if (DateUtils.isDifferent(previousUpperLimit, currentUpperLimit, 'minute')) {
+                        limitToChange = currentUpperLimit;
                     }
 
                     if (limitToChange) {

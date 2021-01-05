@@ -29,13 +29,13 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
         }
     }
 
-    UNSAFE_componentWillReceiveProps(nextProps: ICalendarDayProps) {
+    componentDidUpdate() {
         if (
-            !nextProps.day.isSelectable &&
-            nextProps.day.isSelected &&
-            (nextProps.day.isLowerLimit || nextProps.day.isUpperLimit)
+            !this.props.day.isSelectable &&
+            this.props.day.isSelected &&
+            (this.props.day.isLowerLimit || this.props.day.isUpperLimit)
         ) {
-            nextProps.onSelectUnselectable();
+            this.props.onSelectUnselectable();
         }
     }
 
