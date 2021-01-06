@@ -10,9 +10,6 @@
         cursor: default;
 
         *:not(.corner-ribbon) {
-            opacity: $logo-card-disabled-opacity;
-            filter: $logo-card-disabled-filter;
-
             /* Disable the filter on Edge since it breaks the flippable animation */
             @supports (-ms-ime-align: auto) {
                 filter: none;
