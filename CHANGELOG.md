@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.22.5](https://github.com/coveo/react-vapor/compare/v9.22.4...v9.22.5) (2021-01-07)
+
+
+### Bug Fixes
+
+* **white:** utils white ([a42a219](https://github.com/coveo/react-vapor/commit/a42a219410d7ef77ee824b0d3e77ea234477b7ae))
+
+
+
+
+
 ## [9.22.4](https://github.com/coveo/react-vapor/compare/v9.22.3...v9.22.4) (2021-01-06)
 
 **Note:** Version bump only for package root
