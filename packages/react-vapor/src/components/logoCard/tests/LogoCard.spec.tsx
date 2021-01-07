@@ -32,6 +32,60 @@ describe('LogoCard', () => {
         }).not.toThrow();
     });
 
+    describe('<LogoCard /> with title only', () => {
+        let defaultLogoCardProps: Partial<ILogoCardProps>;
+
+        it('should have a logo-card-content-center class when only a title is given', () => {
+            defaultLogoCardProps = {
+                title: 'Card title only',
+            };
+            mountWithProps(defaultLogoCardProps);
+
+            expect(logoCard.find('.logo-card-content-center').length).toBe(1);
+            expect(logoCard.find('.logo-card-content').length).toBe(0);
+        });
+
+        it('should have a logo-card-content class when there are badges in the LogoCard', () => {
+            defaultLogoCardProps = {
+                title: 'Card title with badges',
+                badges: [
+                    {
+                        label: 'badge 1',
+                    },
+                    {
+                        label: 'badge 2',
+                    },
+                ],
+            };
+            mountWithProps(defaultLogoCardProps);
+
+            expect(logoCard.find('.logo-card-content-center').length).toBe(0);
+            expect(logoCard.find('.logo-card-content').length).toBe(1);
+        });
+
+        it('should have a logo-card-content class when there is a description passed in the LogoCard', () => {
+            defaultLogoCardProps = {
+                title: 'Card title with a description',
+                description: 'some description',
+            };
+            mountWithProps(defaultLogoCardProps);
+
+            expect(logoCard.find('.logo-card-content-center').length).toBe(0);
+            expect(logoCard.find('.logo-card-content').length).toBe(1);
+        });
+
+        it('should have a logo-card-content class when there are badges and a description passed in the LogoCard', () => {
+            defaultLogoCardProps = {
+                title: 'Card title with a description',
+                description: 'some description',
+            };
+            mountWithProps(defaultLogoCardProps);
+
+            expect(logoCard.find('.logo-card-content-center').length).toBe(0);
+            expect(logoCard.find('.logo-card-content').length).toBe(1);
+        });
+    });
+
     describe('Default <LogoCard />', () => {
         let defaultLogoCardProps: Partial<ILogoCardProps>;
 
