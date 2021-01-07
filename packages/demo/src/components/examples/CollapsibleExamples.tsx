@@ -147,7 +147,7 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                     id="collapsible-container-example-6"
                     title="CollapsibleContainer With JSON editor"
                 >
-                    <JSONEditor value={JSONToString(fakeJSON)} isRefreshRequired />
+                    <JSONEditor value={JSONToString(fakeJSON)} collapsibleId="collapsible-container-example-6" />
                 </CollapsibleContainerConnected>
             </Section>
         </Section>
