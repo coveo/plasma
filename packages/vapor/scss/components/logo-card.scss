@@ -32,6 +32,12 @@
     justify-content: space-between;
 }
 
+.logo-card-content-center {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 .logo-card-title {
     color: $logo-card-title-color;
 }

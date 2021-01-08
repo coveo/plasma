@@ -63,6 +63,9 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
         );
         const logoIconClassName = classNames(DEFAULT_LOGO_ICON_CLASSNAME, DEFAULT_LOGO_ICON_SIZE);
         const descriptionClassName = classNames(this.props.badges.length ? 'ml1' : '');
+        const logoCardContentClassName = classNames(
+            !this.props.badges.length && !this.props.description ? 'logo-card-content-center' : 'logo-card-content'
+        );
 
         const badges = this.props.badges.map((badgeProps) => <Badge {...badgeProps} key={slugify(badgeProps.label)} />);
         const description = this.props.description ? (
@@ -86,12 +89,9 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
                     <div className="logo-card-logo">
                         <Svg svgName={this.props.svgName} className={logoIconClassName} />
                     </div>
-                    <div className="logo-card-content">
+                    <div className={logoCardContentClassName}>
                         <h2 className="logo-card-title">{this.props.title}</h2>
-                        <div>
-                            {...badges}
-                            {description}
-                        </div>
+                        {this.props.badges || this.props.description ? <div> {...badges} {description} </div> : ''}
                     </div>
                     {ribbon}
                 </div>

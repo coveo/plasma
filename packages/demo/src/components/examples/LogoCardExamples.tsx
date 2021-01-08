@@ -9,7 +9,13 @@ export class LogoCardExamples extends React.Component<any, any> {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Default LogoCard</label>
+                    <label className="form-control-label">LogoCard with title</label>
+                    <div className="form-control">
+                        <LogoCard title="Card title only" />
+                    </div>
+                </div>
+                <div className="form-group">
+                    <label className="form-control-label">LogoCard with description</label>
                     <div className="form-control">
                         <LogoCard title="Card title" description="Card description" />
                     </div>
