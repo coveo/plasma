@@ -100,7 +100,7 @@
 
         &.prompt-action {
             margin-left: $button-margin-width;
-            padding: $button-padding-y $button-padding-x;
+            padding: $button-padding-y-top $button-padding-x $button-padding-y-bottom $button-padding-x;
         }
     }
 }

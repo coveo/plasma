@@ -8,7 +8,7 @@
     display: inline-block;
     box-sizing: border-box;
     height: $button-height;
-    padding: $button-padding-y $button-padding-x;
+    padding: $button-padding-y-top $button-padding-x $button-padding-y-bottom $button-padding-x;
     color: var(--button-secondary-text-color);
     font-weight: var(--main-font-bold);
     font-size: var(--button-font-size);
