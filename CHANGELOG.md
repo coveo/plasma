@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.22.6](https://github.com/coveo/react-vapor/compare/v9.22.5...v9.22.6) (2021-01-11)
+
+
+### Bug Fixes
+
+* **datepicker:** move calendarId out of lifecycle method ([#1797](https://github.com/coveo/react-vapor/issues/1797)) ([6f0994a](https://github.com/coveo/react-vapor/commit/6f0994a2829b4656e5a537b0b1a96f14f2dc1953))
+
+
+
+
+
 ## [9.22.5](https://github.com/coveo/react-vapor/compare/v9.22.4...v9.22.5) (2021-01-07)
 
 
