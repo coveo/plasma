@@ -66,15 +66,9 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     static getCalendarId = (datePickerId: string) => `calendar-${datePickerId}`;
 
-    private id: string;
-
-    componentDidMount() {
-        this.id = DatePickerBox.getCalendarId(this.props.id);
-    }
-
     render() {
         const calendarProps: ICalendarProps = {
-            id: this.id,
+            id: DatePickerBox.getCalendarId(this.props.id),
             months: this.props.months,
             startingMonth: this.props.startingMonth,
             years: this.props.years,
@@ -150,7 +144,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 isClearable: this.props.isClearable,
                 rangeLimit: datesSelectionBox.rangeLimit,
                 color: datesSelectionBox.color,
-                calendarId: this.id,
+                calendarId: DatePickerBox.getCalendarId(this.props.id),
                 lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
                 upperLimitPlaceholder: this.props.upperLimitPlaceholder,
                 initiallyUnselected: this.props.initiallyUnselected,
