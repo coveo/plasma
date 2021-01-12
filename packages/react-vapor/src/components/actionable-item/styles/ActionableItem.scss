@@ -14,7 +14,7 @@ $actionable-item-dots-width: 12px;
 }
 
 .actionableItemContent {
-    padding: $button-padding-y $button-padding-x;
+    padding: $button-padding-y-top $button-padding-x $button-padding-y-bottom $button-padding-x;
     border-radius: $border-radius 0 0 $border-radius;
 }
 
