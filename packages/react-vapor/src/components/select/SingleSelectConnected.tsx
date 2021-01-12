@@ -136,7 +136,8 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         );
     }
 
-    private handleDeselect = () => {
+    private handleDeselect = (e: Event) => {
+        e.stopPropagation();
         if (!this.props.disabled) {
             this.props.deselect();
         }
