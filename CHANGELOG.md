@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.23.2](https://github.com/coveo/react-vapor/compare/v9.23.1...v9.23.2) (2021-01-14)
+
+
+### Bug Fixes
+
+* **button:** alignment ([319854f](https://github.com/coveo/react-vapor/commit/319854fbeecc86526454912e08da384bec3d35cf))
+
+
+
+
+
 ## [9.23.1](https://github.com/coveo/react-vapor/compare/v9.23.0...v9.23.1) (2021-01-14)
 
 
