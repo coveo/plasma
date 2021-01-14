@@ -78,7 +78,7 @@ export const multilineBoxWithRemoveButton = (
                 >
                     <Svg
                         svgName={VaporSVG.svg.remove.name}
-                        className="icon fill-medium-blue mod-18"
+                        className="icon mod-18"
                         style={{
                             visibility: !data.isLast ? 'visible' : 'hidden',
                         }}

@@ -126,7 +126,7 @@
         display: block;
         width: 18px;
         height: 18px;
-        border: 2px solid var(--medium-blue);
+        border: 2px solid var(--grey-60);
         border-radius: 18px;
 
         &.add-action,
@@ -138,16 +138,16 @@
                 display: block;
                 width: 10px;
                 height: 2px;
-                background-color: var(--medium-blue);
+                background-color: var(--grey-60);
                 content: '';
             }
         }
 
         &.add-action {
-            border-color: #1372ec; // --digital-blue-60
+            border-color: var(--button-primary-color);
 
             &:before {
-                background-color: #1372ec; // --digital-blue-60
+                background-color: var(--button-primary-color);
             }
 
             &:after {
@@ -157,7 +157,7 @@
                 display: block;
                 width: 2px;
                 height: 10px;
-                background-color: #1372ec; // --digital-blue-60
+                background-color: var(--button-primary-color);
                 content: '';
             }
         }
