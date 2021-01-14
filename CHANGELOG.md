@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.23.1](https://github.com/coveo/react-vapor/compare/v9.23.0...v9.23.1) (2021-01-14)
+
+
+### Bug Fixes
+
+* **singleselectconnected:** stopPropagation on cler button ([cbe072f](https://github.com/coveo/react-vapor/commit/cbe072f8b65ec8e29901ac9bccb912322ea1c75b))
+
+
+### Features
+
+* **demo link comment:** using script from jsadmin_pipeline ([1641b20](https://github.com/coveo/react-vapor/commit/1641b2067069d5523dc682dc1c31c433e3abbb53))
+
+
+
+
+
 # [9.23.0](https://github.com/coveo/react-vapor/compare/v9.22.7...v9.23.0) (2021-01-12)
 
 
