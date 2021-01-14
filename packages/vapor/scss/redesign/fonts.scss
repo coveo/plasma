@@ -1,8 +1,8 @@
 :root {
-    --main-font: Lato, Arial, Helvetica, sans-serif;
-    --main-font-regular: normal;
-    --main-font-bold: bold;
-    --main-font-bolder: 900;
+    --main-font: 'canada-type-gibson', sans-serif;
+    --main-font-regular: 300;
+    --main-font-bold: 400;
+    --main-font-bolder: 500;
 
     // General
     --default-margin: #{$default-margin};
