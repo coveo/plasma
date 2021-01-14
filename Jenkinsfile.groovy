@@ -9,14 +9,14 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
   return
 }
 
-library identifier: 'jsadmin_pipeline@next', retriever: modernSCM([
- $class: 'GitSCMSource',
- remote: 'git@bitbucket.org:coveord/jsadmin_pipeline.git',
- credentialsId: 'coveo-bitbucket-rd-ssh'
-])
+library(
+    identifier: "jsadmin_pipeline@master",
+    retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
+    changelog: false
+)
 
 library(
-    identifier: "jenkins-common-lib@v1.5",
+    identifier: "jenkins-common-lib@v1.6",
     retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jenkins-common-lib", repoOwner: "coveo")),
     changelog: false
 )
@@ -158,10 +158,14 @@ pipeline {
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
           ]]) {
-            sh "bash ./build/deploy-demo.sh ${env.CHANGE_BRANCH}"
-            sh "node ./build/add-comment.js"
 
-            def message = "Build succeeded: https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html"
+            
+            sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
+            runNodeScript.call(
+              'add-github-comment.js', 
+              "--demoLink=https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
+            )
+            def message = "Build succeeded: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
             notify.sendSlackWithThread(
                 color: "#00FF00", message: message,
                 ["admin-ui-builds"]
