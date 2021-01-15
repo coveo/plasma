@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.23.3](https://github.com/coveo/react-vapor/compare/v9.23.2...v9.23.3) (2021-01-15)
+
+
+### Bug Fixes
+
+* **svg:** size ([88828be](https://github.com/coveo/react-vapor/commit/88828be94d505ac085901d25f99f35a9f7165fb7))
+
+
+
+
+
 ## [9.23.2](https://github.com/coveo/react-vapor/compare/v9.23.1...v9.23.2) (2021-01-14)
 
 
