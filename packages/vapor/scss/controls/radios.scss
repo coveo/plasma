@@ -51,12 +51,12 @@
 
         &:checked + label {
             &:before {
-                border: 2px solid var(--orange);
+                border: 2px solid var(--azure);
             }
 
             &:after {
                 z-index: 0;
-                background-color: var(--orange);
+                background-color: var(--azure);
                 transform: scale(0.5);
             }
         }
