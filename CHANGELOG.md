@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.25.0](https://github.com/coveo/react-vapor/compare/v9.24.4...v9.25.0) (2021-01-19)
+
+
+### Features
+
+* **drop-pod:** remove the created portal when component is unmount ([2eda988](https://github.com/coveo/react-vapor/commit/2eda988ffb8f38e5a10fe928290192aec79ab643))
+
+
+
+
+
 ## [9.24.4](https://github.com/coveo/react-vapor/compare/v9.24.3...v9.24.4) (2021-01-19)
 
 **Note:** Version bump only for package root
