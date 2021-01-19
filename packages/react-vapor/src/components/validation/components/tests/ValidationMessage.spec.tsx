@@ -35,7 +35,7 @@ describe('ValidationMessage', () => {
         const store = getStoreMock({});
         mountWithStore(<ValidationMessage {...defaultProps} />, store).unmount();
 
-        expect(store.getActions()).toContain(ValidationActions.cleanMessage(defaultProps.id));
+        expect(store.getActions()).toContainEqual(ValidationActions.cleanMessage(defaultProps.id));
     });
 
     it('should render nothing if the store does not contain errors for the given ID', () => {

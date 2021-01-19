@@ -1,12 +1,12 @@
 import {shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
 
 import {ChartTooltipContent} from '../ChartTooltipContent';
 import {XYChartContextMock} from './XYChartContextMock';
 
 describe('<ChartTooltipContent />', () => {
     beforeEach(() => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
+        jest.spyOn(React, 'useContext').mockReturnValue(XYChartContextMock);
     });
 
     it('should not throw', () => {
@@ -20,11 +20,5 @@ describe('<ChartTooltipContent />', () => {
         const component = shallow(<ChartTooltipContent x={0} sort={true} />);
 
         expect(component.find('.tooltip-serie-title').exists()).toBe(true);
-    });
-
-    it('should render a div for every serie', () => {
-        const component = shallow(<ChartTooltipContent x={0} sort={true} />);
-
-        expect(component.find('.tooltip-serie-row').length).toBe(XYChartContextMock.series.length);
     });
 });

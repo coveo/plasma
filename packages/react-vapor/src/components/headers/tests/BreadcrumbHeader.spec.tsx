@@ -29,7 +29,7 @@ describe('<BreadcrumbHeader/>', () => {
         });
 
         afterEach(() => {
-            basicHeaderComponent.detach();
+            basicHeaderComponent?.unmount();
         });
 
         it('should render the default Breadcrumb', () => {

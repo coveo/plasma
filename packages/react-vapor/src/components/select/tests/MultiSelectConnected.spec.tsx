@@ -12,7 +12,6 @@ import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
 import {ISelectOwnProps, SelectConnected} from '../SelectConnected';
-import {SelectSelector} from '../SelectSelector';
 
 describe('Select', () => {
     describe('<MultiSelectConnected />', () => {
@@ -38,7 +37,6 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         describe('mount and unmount', () => {
@@ -78,14 +76,14 @@ describe('Select', () => {
             expect(multiSelect.html()).toContain(expectedPlaceholder);
         });
 
-        it('should contains a the selected value', () => {
+        it('should contain a the selected value', () => {
             const selectedValue = 'dis 1';
             mountMultiSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
 
             expect(multiSelect.html()).toContain(selectedValue);
         });
 
-        it('should contains the display value when the selected value has one', () => {
+        it('should contain the display value when the selected value has one', () => {
             const selectedDisplayValue = 'dis 2';
             mountMultiSelect([{value: 'a'}, {value: 'dis 1', displayValue: selectedDisplayValue, selected: true}]);
 
@@ -105,7 +103,7 @@ describe('Select', () => {
             expect(multiSelect.find(SelectedOption).prop('label')).toBe('Five');
         });
 
-        it('should contains a SelectedOption for every selected item', () => {
+        it('should contain a SelectedOption for every selected item', () => {
             const firstSelected = 'dis 1';
             const secondSelected = 'dis two';
 
@@ -120,28 +118,15 @@ describe('Select', () => {
             expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(secondSelected);
         });
 
-        it('should contains a SelectedOption for a selected custom value', () => {
-            const customValue = 'b';
-            spyOn(SelectSelector, 'getMultiSelectSelectedValues').and.returnValue(['a', customValue]);
-            mountMultiSelect([]);
+        it('should contain a SelectedOption for a selected item', () => {
+            const itemValue = 'b';
+            mountMultiSelect([{value: itemValue, selected: true}]);
 
-            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(customValue);
-        });
-
-        it('should contains SelectedOptions for selected custom values and selected listBox items', () => {
-            const itemSelected = 'dis 1';
-            const customValue: string = 'c';
-
-            spyOn(SelectSelector, 'getMultiSelectSelectedValues').and.returnValue([itemSelected, customValue]);
-            mountMultiSelect([{value: 'b'}, {value: itemSelected, selected: true}]);
-
-            expect(multiSelect.find(SelectedOption).length).toBe(2);
-            expect(multiSelect.find(SelectedOption).at(0).props().value).toBe(itemSelected);
-            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(customValue);
+            expect(multiSelect.find(SelectedOption).props().value).toBe(itemValue);
         });
 
         it('should disable the dropdown if there is no options', () => {
-            mountMultiSelect([]);
+            mountMultiSelect();
 
             expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
         });
@@ -154,13 +139,13 @@ describe('Select', () => {
             expect(multiSelect.find('.dropdown-toggle').hasClass('tuna-can')).toBe(true);
         });
 
-        it('should not disable the dropdown if one of the options is not is selected', () => {
+        it('should not disable the dropdown if one of the options is not selected', () => {
             mountMultiSelect([
                 {value: 'a', selected: false},
                 {value: 'b', selected: true},
             ]);
 
-            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeUndefined();
+            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeFalsy();
         });
 
         it('should disable the dropdown when every option is selected', () => {

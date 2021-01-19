@@ -44,10 +44,10 @@ describe('WithDirtyInputHOC', () => {
         });
 
         describe('after mount', () => {
-            let validateSpy: jasmine.Spy;
+            let validateSpy: jest.Mock<any, any>;
 
             beforeEach(() => {
-                validateSpy = jasmine.createSpy('validate');
+                validateSpy = jest.fn();
                 inputWrapper = shallowWithStore<typeof InputWithHOC>(
                     <InputWithHOC {...INPUT_PROPS} validate={validateSpy} />,
                     store
@@ -57,7 +57,7 @@ describe('WithDirtyInputHOC', () => {
             it('should dispatch a set dirty action with true when the value is different from the initial value', () => {
                 inputWrapper.prop('validate')('🍕');
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     ValidationActions.setDirty(INPUT_PROPS.id, true, ValidationTypes.wrongInitialValue)
                 );
             });
@@ -65,13 +65,13 @@ describe('WithDirtyInputHOC', () => {
             it('should dispatch a set dirty action with false when the value is the same as the initial value', () => {
                 inputWrapper.prop('validate')(INPUT_PROPS.defaultValue);
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     ValidationActions.setDirty(INPUT_PROPS.id, false, ValidationTypes.wrongInitialValue)
                 );
             });
 
             it('should call the original validate function and return the same value', () => {
-                validateSpy.and.returnValue(true);
+                validateSpy.mockReturnValue(true);
 
                 const result = inputWrapper.prop('validate')('🧀');
 

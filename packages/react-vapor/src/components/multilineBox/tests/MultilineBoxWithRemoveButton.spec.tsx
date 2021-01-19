@@ -71,7 +71,7 @@ describe('Multiline box with remove button', () => {
             ).not.toThrow();
         });
 
-        it('should not throw if he containerNode is not defined and the data is defined ', () => {
+        it('should not throw if he containerNode is not defined and the data is defined', () => {
             const testId = 'id';
             RTestUtils.mockUUID(testId);
 

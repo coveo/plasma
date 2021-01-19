@@ -27,29 +27,29 @@ describe('Options cycle', () => {
         };
 
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jasmine.createSpy('onRender');
+            const renderSpy = jest.fn();
             mountComponent({onRender: renderSpy});
 
-            expect(renderSpy.calls.count()).toBe(1);
+            expect(renderSpy.mock.calls.length).toBe(1);
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jasmine.createSpy('onDestroy');
+            const destroySpy = jest.fn();
             mountComponent({onDestroy: destroySpy});
 
             optionsCycleWrapper.unmount();
 
-            expect(destroySpy.calls.count()).toBe(1);
+            expect(destroySpy.mock.calls.length).toBe(1);
         });
 
         it('should display the selected option', () => {
             mountComponent();
 
-            expect(optionsCycleWrapper.find('div.option1').length).toBe(1, 'option 1');
+            expect(optionsCycleWrapper.find('div.option1').length).toBe(1);
 
             optionsCycleWrapper.setProps({options: OPTIONS, currentOption: 1});
 
-            expect(optionsCycleWrapper.find('div.option2').length).toBe(1, 'option 2');
+            expect(optionsCycleWrapper.find('div.option2').length).toBe(1);
         });
 
         it('should display the selected option even if it is not a string', () => {
@@ -78,47 +78,47 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange when clicking the previous arrow', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             mountComponent({onChange: spyOnChange});
 
             optionsCycleWrapper.find('.previous-option').simulate('click');
 
-            expect(spyOnChange.calls.count()).toBe(1);
+            expect(spyOnChange.mock.calls.length).toBe(1);
         });
 
         it('should call onChange when clicking the next arrow', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             mountComponent({onChange: spyOnChange});
 
             optionsCycleWrapper.find('.next-option').simulate('click');
 
-            expect(spyOnChange.calls.count()).toBe(1);
+            expect(spyOnChange.mock.calls.length).toBe(1);
         });
 
         it('should call onChangeOption when clicking the previous arrow', () => {
-            const spyOnChangeOption = jasmine.createSpy('onChangeOption');
+            const spyOnChangeOption = jest.fn();
 
             mountComponent({onChangeOption: spyOnChangeOption, onChange: _.noop});
 
             optionsCycleWrapper.find('.previous-option').simulate('click');
 
-            expect(spyOnChangeOption.calls.count()).toBe(1);
+            expect(spyOnChangeOption.mock.calls.length).toBe(1);
         });
 
         it('should call onChangeOption when clicking the next arrow', () => {
-            const spyOnChangeOption = jasmine.createSpy('onChangeOption');
+            const spyOnChangeOption = jest.fn();
 
             mountComponent({onChange: spyOnChangeOption});
 
             optionsCycleWrapper.find('.next-option').simulate('click');
 
-            expect(spyOnChangeOption.calls.count()).toBe(1);
+            expect(spyOnChangeOption.mock.calls.length).toBe(1);
         });
 
         it('should call onChange with the last option when clicking on the previous arrow if the current option is the first one', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: 0});
             optionsCycleWrapper.find('.previous-option').simulate('click');
@@ -127,7 +127,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the previous option when clicking on the previous arrow if the current option is not the first one', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: 2});
             optionsCycleWrapper.find('.previous-option').simulate('click');
@@ -136,7 +136,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the first option when clicking on the next arrow if the current option is the last one', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: OPTIONS.length - 1});
             optionsCycleWrapper.find('.next-option').simulate('click');
@@ -145,7 +145,7 @@ describe('Options cycle', () => {
         });
 
         it('should call onChange with the previous option when clicking on the next arrow if the current option is not the last one', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             mountComponent({onChange: spyOnChange, currentOption: 2});
             optionsCycleWrapper.find('.next-option').simulate('click');

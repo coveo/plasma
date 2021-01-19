@@ -25,13 +25,13 @@ describe('Select', () => {
             type: 'pokeball',
         };
 
-        let spyStringListCompositeState: jasmine.Spy;
+        let spyStringListCompositeState: jest.SpyInstance;
 
         beforeEach(() => {
-            spyStringListCompositeState = spyOn(StringListReducers, 'stringListCompositeReducer');
+            spyStringListCompositeState = jest.spyOn<any, string>(StringListReducers, 'stringListCompositeReducer');
         });
 
-        it('should return the default state if the action has no payload ', () => {
+        it('should return the default state if the action has no payload', () => {
             const newState: IStringListCompositeState = selectWithFilterCompositeReducer({}, {type: undefined});
 
             expect(newState).toEqual(stringListInitialState);

@@ -61,6 +61,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
     }
 
     private getDeletableInputs() {
+        const inputRefs: Input[] = [];
         return _.map(this.state.values, (values: ISplitValue, index: number) => {
             const labelIds: string[] = _.keys(values);
             const inputLength: number = labelIds.length;
@@ -72,22 +73,21 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                         inputIndex + 1 === inputLength ? (
                             <DeleteInputAction onClick={() => this.removeLine(index)} />
                         ) : null;
-                    let inputRef: Input;
                     return (
                         <Input
                             id={`${input.id}-${index}`}
                             validateOnChange
                             labelTitle={input.label}
                             labelProps={{invalidMessage: input.validationMessage}}
-                            ref={(ref: Input) => (inputRef = ref)}
+                            ref={(ref: Input) => inputRefs.push(ref)}
                             classes={styles.input}
                             value={values[labelId]}
                             placeholder={input.placeholder}
                             validate={input.validation ? (value: any) => input.validation(value) : undefined}
                             key={labelId + inputIndex}
                             onChange={(value?: string, valid?: boolean) => {
-                                this.changeValue(value, valid, index, labelId, inputRef);
-                                inputRef.validate();
+                                this.changeValue(value, valid, index, labelId, inputRefs[inputIndex]);
+                                inputRefs[inputIndex].validate();
                             }}
                         >
                             {deleteButton}
@@ -109,7 +109,11 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
         const inputs: JSX.Element[] = _.map(this.props.inputs, (input: ISplitInput, inputIndex: number) => (
             <Input
                 id={`add-${input.id}-${inputIndex}`}
-                ref={(ref: Input) => inputRefs.push(ref)}
+                ref={(ref: Input) => {
+                    if (ref !== null) {
+                        inputRefs.push(ref);
+                    }
+                }}
                 key={`add-${inputIndex}`}
                 classes={styles.input}
                 placeholder={input.placeholder}

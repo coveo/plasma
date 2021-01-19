@@ -1,11 +1,9 @@
 import * as React from 'react';
 import {OverlayTrigger, Tooltip as BootstrapTooltip} from 'react-bootstrap';
-import ReactDOM from 'react-dom';
+import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
-
-export const tooltipReactInstance = () => React;
 
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
 export interface IOverlayTriggerProps {
@@ -83,12 +81,7 @@ export class Tooltip extends React.Component<ITooltipProps> {
         className: '',
     };
 
-    private readonly overlay: React.RefObject<BootstrapTooltip>;
-
-    constructor(props: ITooltipProps) {
-        super(props);
-        this.overlay = React.createRef();
-    }
+    private readonly overlay = React.createRef<BootstrapTooltip>();
 
     componentWillUnmount() {
         if (this.overlay.current) {

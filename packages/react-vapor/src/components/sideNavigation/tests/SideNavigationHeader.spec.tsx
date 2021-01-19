@@ -13,7 +13,7 @@ describe('SideNavigationHeader', () => {
     });
 
     afterEach(() => {
-        wrapper.detach();
+        wrapper.unmount();
     });
 
     it('should render without errors', () => {

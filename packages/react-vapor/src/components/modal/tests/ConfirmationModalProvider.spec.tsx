@@ -6,20 +6,20 @@ import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {ModalCompositeConnected} from '../ModalComposite';
 import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
 
-describe('<ConfirmationModalProvider/>', () => {
+describe('<UnsavedChangeModalProvider/>', () => {
     let confirmationModalProvider: ShallowWrapper;
     let heavyConfirmationModalProvider;
-    let regularClickActionSpy: jasmine.Spy;
-    let promptBeforeClickActionSpy: jasmine.Spy;
+    let regularClickActionSpy: jest.Mock<any, any>;
+    let promptBeforeClickActionSpy: jest.Mock<any, any>;
     const store = getStoreMock();
     beforeEach(() => {
-        regularClickActionSpy = jasmine.createSpy('🥔');
-        promptBeforeClickActionSpy = jasmine.createSpy('🍟');
+        regularClickActionSpy = jest.fn();
+        promptBeforeClickActionSpy = jest.fn();
     });
 
     afterEach(() => {
-        regularClickActionSpy.calls.reset();
-        promptBeforeClickActionSpy.calls.reset();
+        regularClickActionSpy.mockReset();
+        promptBeforeClickActionSpy.mockReset();
         if (confirmationModalProvider?.exists()) {
             confirmationModalProvider.unmount();
         }

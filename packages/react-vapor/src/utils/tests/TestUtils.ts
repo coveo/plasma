@@ -1,10 +1,10 @@
-import React from 'react';
+import * as React from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
 import createMockStore, {MockStoreEnhanced} from 'redux-mock-store';
 import thunk from 'redux-thunk';
-import _ from 'underscore';
+import * as _ from 'underscore';
 
 import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
@@ -53,15 +53,16 @@ export class TestUtils {
     }
 
     static makeDebounceStatic() {
-        spyOn(_, 'debounce').and.callFake(function (func: () => void) {
-            return function (this: any) {
-                func.apply(this, arguments as any);
-            };
-        });
+        jest.spyOn(_, 'debounce').mockImplementation(
+            jest.fn((func: any) => {
+                func.cancel = jest.fn();
+                return func as ((...args: any[]) => any) & _.Cancelable;
+            })
+        );
     }
 
     static makeDeferSync() {
-        spyOn(_, 'defer').and.callFake(function (this: any, func: () => void) {
+        jest.spyOn(_, 'defer').mockImplementation(function (this: any, func: () => void) {
             func.apply(this, arguments as any);
         });
     }
@@ -114,3 +115,16 @@ export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch
 export const composeMockStore = (
     ...functions: Array<(state: Partial<IReactVaporState>) => Partial<IReactVaporState>>
 ) => getStoreMock(_.compose(...functions) as IReactVaporState);
+
+export const createTestAppContainer = () => {
+    const div = document.createElement('div');
+    div.setAttribute('id', 'App');
+    document.body.appendChild(div);
+};
+
+export const removeTestAppContainer = () => {
+    const div = document.getElementById('App');
+    if (div) {
+        document.body.removeChild(div);
+    }
+};

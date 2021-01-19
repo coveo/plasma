@@ -44,7 +44,7 @@ describe('<ModalCompositeConnected />', () => {
         const store = getStoreMock();
         shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
 
-        expect(store.getActions()).toContain(addModal(basicProps.id));
+        expect(store.getActions()).toContainEqual(addModal(basicProps.id));
     });
 
     it('should dispatch a "REMOVE_MODAL" action when it unmounts', () => {
@@ -53,7 +53,7 @@ describe('<ModalCompositeConnected />', () => {
 
         modalCompositeConnected.unmount();
 
-        expect(store.getActions()).toContain(removeModal(basicProps.id));
+        expect(store.getActions()).toContainEqual(removeModal(basicProps.id));
     });
 
     it('should display a <ModalHeaderConnected /> component', () => {
@@ -72,7 +72,7 @@ describe('<ModalCompositeConnected />', () => {
 
         modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeevent') as any);
 
-        expect(store.getActions()).toContain(closeModal(basicProps.id));
+        expect(store.getActions()).toContainEqual(closeModal(basicProps.id));
     });
 
     it('should not render a <ModalHeader /> or <ModalHeaderConnected /> if the title is not defined', () => {
@@ -81,16 +81,16 @@ describe('<ModalCompositeConnected />', () => {
             {}
         ).dive();
 
-        expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(0, 'has modalHeaderConnected');
-        expect(modalCompositeConnected.find(ModalHeader).length).toBe(0, 'has modalHeader');
+        expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(0);
+        expect(modalCompositeConnected.find(ModalHeader).length).toBe(0);
     });
 
-    it('should dispatch a removeModal actions on destroy', () => {
+    it('should dispatch a removeModal actions on unmount', () => {
         const store = getStoreMock();
         shallowWithStore(<ModalCompositeConnected id="id" isOpened />, store)
             .dive()
             .unmount();
 
-        expect(store.getActions()).toContain(removeModal('id'));
+        expect(store.getActions()).toContainEqual(removeModal('id'));
     });
 });

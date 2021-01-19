@@ -1,4 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
+import moment from 'moment';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -28,16 +29,14 @@ describe('Date picker', () => {
             wrapper = mount(
                 <Provider store={store}>
                     <DatesSelectionConnected id={DATES_SELECTION_ID} {...props} />
-                </Provider>,
-                {attachTo: document.getElementById('App')}
+                </Provider>
             );
             wrapper.update();
             datesSelection = wrapper.find(DatesSelection).first();
         };
 
         beforeEach(() => {
-            jasmine.clock().install();
-            jasmine.clock().mockDate(NOW);
+            jest.useFakeTimers();
             store = TestUtils.buildStore();
 
             mountComponent();
@@ -45,8 +44,7 @@ describe('Date picker', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
 
         it('should get an id as a prop', () => {
@@ -109,16 +107,22 @@ describe('Date picker', () => {
             store.dispatch(clearState());
             wrapper.update();
 
+            const receivedInMinutes = moment(wrapper.find(DatesSelection).props().lowerLimit).minutes();
+            const expectedInMinutes = moment(NOW).minutes();
+
             expect(_.findWhere(store.getState().datePickers, {id: DATES_SELECTION_ID})).toBeUndefined();
-            expect(wrapper.find(DatesSelection).props().lowerLimit).toEqual(NOW);
+            expect(receivedInMinutes).toEqual(expectedInMinutes);
         });
 
         it('should return the current date for the upper limit when the date picker does not exist in the state', () => {
             store.dispatch(clearState());
             wrapper.update();
 
+            const receivedInMinutes = moment(wrapper.find(DatesSelection).props().lowerLimit).minutes();
+            const expectedInMinutes = moment(NOW).minutes();
+
             expect(_.findWhere(store.getState().datePickers, {id: DATES_SELECTION_ID})).toBeUndefined();
-            expect(wrapper.find(DatesSelection).props().upperLimit).toEqual(NOW);
+            expect(receivedInMinutes).toEqual(expectedInMinutes);
         });
 
         it('should return an empty string for the picker selected when the date picker does not exist in the state', () => {

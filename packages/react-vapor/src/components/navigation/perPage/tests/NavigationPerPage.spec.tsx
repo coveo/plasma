@@ -29,10 +29,6 @@ describe('NavigationPerPage', () => {
             navigationPerPageInstanceAsAny = navigationPerPageInstance;
         });
 
-        afterEach(() => {
-            navigationPerPage.detach();
-        });
-
         it('should get the number of entries as a prop', () => {
             const totalEntriesProp = navigationPerPage.props().totalEntries;
 
@@ -82,11 +78,7 @@ describe('NavigationPerPage', () => {
         });
 
         it('should call onRender if prop is set on mount', () => {
-            const onRenderSpy = jasmine.createSpy('onRender');
-
-            expect(() => {
-                navigationPerPageInstance.componentDidMount();
-            }).not.toThrow();
+            const onRenderSpy = jest.fn();
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onRender={onRenderSpy} />,
@@ -97,11 +89,7 @@ describe('NavigationPerPage', () => {
         });
 
         it('should call onDestroy if prop is set when unmounting', () => {
-            const onDestroySpy = jasmine.createSpy('onDestroy');
-
-            expect(() => {
-                navigationPerPageInstance.componentDidMount();
-            }).not.toThrow();
+            const onDestroySpy = jest.fn();
 
             navigationPerPage = mount(
                 <NavigationPerPage {...NAVIGATION_PER_PAGE_BASIC_PROPS} onDestroy={onDestroySpy} />,
@@ -139,7 +127,7 @@ describe('NavigationPerPage', () => {
 
         it('should call onPerPageClick prop if it is set when calling handleClick and perPage is different than currentPerPage', () => {
             const newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS, {
-                onPerPageClick: jasmine.createSpy('onPerPageClick'),
+                onPerPageClick: jest.fn(),
             });
             const expectedPerPage: number = 22;
 
@@ -153,7 +141,7 @@ describe('NavigationPerPage', () => {
 
         it('should not call onPerPageClick prop if perPage is identical to currentPerPage', () => {
             const newProps: INavigationPerPageProps = _.extend({}, NAVIGATION_PER_PAGE_BASIC_PROPS, {
-                onPerPageClick: jasmine.createSpy('onPerPageClick'),
+                onPerPageClick: jest.fn(),
                 currentPerPage: 10,
             });
             const expectedPerPage: number = 10;

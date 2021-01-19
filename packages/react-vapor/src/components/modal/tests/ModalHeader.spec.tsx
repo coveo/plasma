@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {ILinkSvgProps} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
@@ -23,53 +24,54 @@ describe('ModalHeader', () => {
         let modal: ReactWrapper<IModalHeaderProps, any>;
 
         beforeEach(() => {
+            createTestAppContainer();
             modal = mount(<ModalHeader {...basicProps} />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
             modal.unmount();
-            modal.detach();
+            removeTestAppContainer();
         });
 
         it('should call prop onClose when modal x clicked and prop is set and last opened is not set', () => {
-            jasmine.clock().install();
-            const closeSpy = jasmine.createSpy('onClose');
+            jest.useFakeTimers();
+            const closeSpy = jest.fn();
 
             modal.setProps(_.extend({}, basicProps, {onClose: closeSpy}));
             modal.mount();
-            jasmine.clock().tick(5);
+            jest.advanceTimersByTime(5);
 
             const input = modal.find('.small-close');
             input.simulate('click');
 
-            expect(closeSpy.calls.count()).toBe(1);
-            jasmine.clock().uninstall();
+            expect(closeSpy.mock.calls.length).toBe(1);
+            jest.clearAllTimers();
         });
 
         it('should call prop onClose when modal x clicked and modal is last opened', () => {
-            jasmine.clock().install();
-            const closeSpy = jasmine.createSpy('onClose');
+            jest.useFakeTimers();
+            const closeSpy = jest.fn();
 
             modal.setProps(_.extend({}, basicProps, {lastOpened: true, onClose: closeSpy}));
             modal.mount();
-            jasmine.clock().tick(5);
+            jest.advanceTimersByTime(5);
 
             const input = modal.find('.small-close');
             input.simulate('click');
 
-            expect(closeSpy.calls.count()).toBe(1);
-            jasmine.clock().uninstall();
+            expect(closeSpy.mock.calls.length).toBe(1);
+            jest.clearAllTimers();
         });
 
         it('should not call prop onClose when modal x clicked and modal is not last opened', () => {
-            const closeSpy = jasmine.createSpy('onClose');
+            const closeSpy = jest.fn();
 
             modal.setProps(_.extend({}, basicProps, {lastOpened: false, onClose: closeSpy}));
             modal.mount();
             const input = modal.find('.small-close');
             input.simulate('click');
 
-            expect(closeSpy.calls.count()).toBe(0);
+            expect(closeSpy.mock.calls.length).toBe(0);
         });
 
         it('should set class when the class is specified', () => {

@@ -18,14 +18,14 @@ describe('ActionsBar', () => {
     });
 
     it('should call onRender prop if set when mounting', () => {
-        const onRenderSpy = jasmine.createSpy('onRender');
+        const onRenderSpy = jest.fn();
         shallow(<ActionBar onRender={onRenderSpy} />);
 
         expect(onRenderSpy).toHaveBeenCalled();
     });
 
     it('should call onDestroy prop if set when will unmount', () => {
-        const onDestroySpy = jasmine.createSpy('onDestroy');
+        const onDestroySpy = jest.fn();
 
         const actionBar = shallow(<ActionBar onDestroy={onDestroySpy} />);
         actionBar.unmount();
@@ -109,7 +109,7 @@ describe('ActionsBar', () => {
 
     it('should display an <InlinePrompt /> and no actions if there is a prompt', () => {
         const inlinePromptOptions: IInlinePromptOptions = {
-            onClick: jasmine.createSpy('onClick'),
+            onClick: jest.fn(),
             userChoice: {},
         };
         const inlinePrompt = shallowWithStore(
@@ -136,7 +136,7 @@ describe('ActionsBar', () => {
     });
 
     it('should call clearItemFilter if defined when clicking the "item-filter-clear" button', () => {
-        const clearItemFilterSpy = jasmine.createSpy('clearItemFilter');
+        const clearItemFilterSpy = jest.fn();
         const itemFilter = shallow(<ActionBar itemFilter="💎" clearItemFilter={clearItemFilterSpy} />)
             .childAt(0)
             .dive();
@@ -187,6 +187,6 @@ describe('ActionsBar', () => {
     it('should set the width on the bar if there is one sent as a prop', () => {
         const actionBar = shallow(<ActionBar width={90} />);
 
-        expect(actionBar.get(0).props.style).toEqual(jasmine.objectContaining({width: 90}));
+        expect(actionBar.get(0).props.style).toEqual(expect.objectContaining({width: 90}));
     });
 });

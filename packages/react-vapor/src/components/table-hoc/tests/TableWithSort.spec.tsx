@@ -82,7 +82,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the sort changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')
@@ -90,14 +90,14 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({isAsc: false});
+                wrapper.setProps({isAsc: false} as any);
                 wrapper.update();
 
                 expect(updateSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should not call onUpdate when the predicate does not changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')
@@ -105,7 +105,7 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({ignore: true});
+                wrapper.setProps({ignore: true} as any);
                 wrapper.update();
 
                 expect(updateSpy).not.toHaveBeenCalled();

@@ -44,7 +44,6 @@ describe('<NavigationPerPageConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.detach();
     });
 
     it('should get the current perPageNumber as a prop', () => {

@@ -21,12 +21,8 @@ describe('FilterBox', () => {
             filterBoxInstance = filterBox.instance() as FilterBox;
         });
 
-        afterEach(() => {
-            filterBox.detach();
-        });
-
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jasmine.createSpy('onRender');
+            const renderSpy = jest.fn();
 
             expect(() => filterBoxInstance.componentDidMount()).not.toThrow();
 
@@ -34,11 +30,11 @@ describe('FilterBox', () => {
             filterBox.unmount();
             filterBox.mount();
 
-            expect(renderSpy.calls.count()).toBe(1);
+            expect(renderSpy.mock.calls.length).toBe(1);
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jasmine.createSpy('onDestroy');
+            const destroySpy = jest.fn();
 
             expect(() => filterBoxInstance.componentDidMount()).not.toThrow();
 
@@ -46,26 +42,26 @@ describe('FilterBox', () => {
             filterBox.mount();
             filterBox.unmount();
 
-            expect(destroySpy.calls.count()).toBe(1);
+            expect(destroySpy.mock.calls.length).toBe(1);
         });
 
         it('should call prop onFilter when the filter input value has changed and prop is set', () => {
-            const filterSpy = jasmine.createSpy('onFilter');
+            const filterSpy = jest.fn();
             const input = filterBox.find('input');
 
             input.simulate('change');
 
-            expect(filterSpy.calls.count()).toBe(0);
+            expect(filterSpy.mock.calls.length).toBe(0);
 
             filterBox.setProps({id: id, onFilter: filterSpy});
             filterBox.mount();
             input.simulate('change');
 
-            expect(filterSpy.calls.count()).toBe(1);
+            expect(filterSpy.mock.calls.length).toBe(1);
         });
 
         it('should call prop onFilterCallback when the filter input value has changed and prop is set', () => {
-            const onFilterCallbackSpy = jasmine.createSpy('onFilterCallback');
+            const onFilterCallbackSpy = jest.fn();
             const input = filterBox.find('input');
 
             input.simulate('change');
@@ -133,16 +129,6 @@ describe('FilterBox', () => {
             expect(filterBoxInstance.filterInput.value).toBe('');
         });
 
-        it('should focus the filter box input when clicking the clear icon', () => {
-            const clearIcon = filterBox.find('span').first();
-
-            expect(filterBoxInstance.filterInput).not.toBe(document.activeElement as HTMLInputElement);
-
-            clearIcon.simulate('click');
-
-            expect(filterBoxInstance.filterInput).toBe(document.activeElement as HTMLInputElement);
-        });
-
         it('should set container class when the container class is specified', () => {
             const containerClass = 'mod-small';
             const containerClasses = [containerClass];
@@ -155,7 +141,7 @@ describe('FilterBox', () => {
         });
 
         it('should call onBlur when the input loose focus', () => {
-            const onBlur = jasmine.createSpy('onBlur');
+            const onBlur = jest.fn();
             filterBox.setProps({onBlur});
 
             const element = filterBox.find('.filter-box');
@@ -166,7 +152,7 @@ describe('FilterBox', () => {
         });
 
         it('should call onKeyDown when the input get a key down event', () => {
-            const onKeyDown = jasmine.createSpy('onKeyDown');
+            const onKeyDown = jest.fn();
             filterBox.setProps({onKeyDown});
 
             const element = filterBox.find('.filter-box');
@@ -176,7 +162,7 @@ describe('FilterBox', () => {
         });
 
         it('should call onKeyUp when the input get a key up event', () => {
-            const onKeyUp = jasmine.createSpy('onKeyUp');
+            const onKeyUp = jest.fn();
             filterBox.setProps({onKeyUp});
 
             const element = filterBox.find('.filter-box');
@@ -186,7 +172,7 @@ describe('FilterBox', () => {
         });
 
         it('should call placeCursorAtEndOfInputValue when a focus event is triggered on the filter box', () => {
-            const placeCursorAtEndOfInputValueSpy = spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
+            const placeCursorAtEndOfInputValueSpy = jest.spyOn(FilterBox.prototype, 'placeCursorAtEndOfInputValue');
 
             const element = filterBox.find('.filter-box');
             element.simulate('focus');

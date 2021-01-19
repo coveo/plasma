@@ -8,7 +8,7 @@ import {NavigationPagination} from '../pagination/NavigationPagination';
 import {NavigationPerPage, PER_PAGE_NUMBERS} from '../perPage/NavigationPerPage';
 import {NavigationPerPageSelect} from '../perPage/NavigationPerPageSelect';
 
-describe(' navigation', () => {
+describe('navigation', () => {
     const basicNavigationProps: INavigationProps = {
         totalPages: 4,
         totalEntries: 12,
@@ -28,7 +28,7 @@ describe(' navigation', () => {
         });
 
         afterEach(() => {
-            navigation.detach();
+            navigation?.unmount();
         });
 
         it('should get the number of pages as a prop', () => {
@@ -83,7 +83,7 @@ describe(' navigation', () => {
         });
 
         it('should call onPerPageClick prop with the correct values when it is set', () => {
-            const onPerPageClick = jasmine.createSpy('mockOnPerPageClick');
+            const onPerPageClick = jest.fn();
             const perPageNumbers: number[] = [2, 3, 4];
             const currentPerPage: number = perPageNumbers[1];
             const expectedPerPage: number = perPageNumbers[perPageNumbers.length - 1];

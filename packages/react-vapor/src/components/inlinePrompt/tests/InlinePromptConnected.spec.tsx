@@ -22,7 +22,7 @@ describe('InlinePrompt', () => {
         beforeEach(() => {
             id = 'filter-box';
             options = {
-                onClick: jasmine.createSpy('onClick'),
+                onClick: jest.fn(),
                 userChoice: {
                     icon: 'icon',
                     description: 'description',
@@ -50,7 +50,7 @@ describe('InlinePrompt', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            wrapper?.unmount();
         });
 
         it('should remove the prompt from the store on cancel', () => {

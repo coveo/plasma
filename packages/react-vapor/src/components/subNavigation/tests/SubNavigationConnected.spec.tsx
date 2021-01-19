@@ -40,10 +40,6 @@ describe('SubNavigation', () => {
             subNavigation = wrapper.find(SubNavigation);
         });
 
-        afterEach(() => {
-            wrapper.detach();
-        });
-
         it('should get what to do on render as a prop', () => {
             const onRenderProp = subNavigation.props().onRender;
 
@@ -83,7 +79,7 @@ describe('SubNavigation', () => {
                 .first();
             li.find('.sub-navigation-item-link').simulate('click');
 
-            expect(findWhere(store.getState().subNavigations, {id: basicProps.id}).selected).toBe(li.key(), 'after');
+            expect(findWhere(store.getState().subNavigations, {id: basicProps.id}).selected).toBe(li.key());
         });
     });
 

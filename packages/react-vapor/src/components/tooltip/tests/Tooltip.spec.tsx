@@ -1,12 +1,29 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import {mountWithState} from 'enzyme-redux';
-import React from 'react';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import {OverlayTrigger} from 'react-bootstrap';
-import ReactDOM from 'react-dom';
+import {mocked} from 'ts-jest/utils';
 
-import {ITooltipProps, Tooltip, tooltipReactInstance} from '../Tooltip';
+import {ITooltipProps, Tooltip} from '../Tooltip';
+
+jest.mock('react-dom');
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        createRef: jest.fn(() => ({current: null})),
+    };
+});
+
+const mockedReact = mocked(React);
+const mockedReactDOM = mocked(ReactDOM);
 
 describe('Tooltip', () => {
+    afterEach(() => {
+        jest.clearAllMocks();
+    });
+
     const TOOLTIP_PROPS: ITooltipProps = {
         title: 'My test tooltip!',
     };
@@ -89,51 +106,56 @@ describe('Tooltip', () => {
 
     describe('behaviour on unmount', () => {
         let el: HTMLElement;
-        let customRef: React.RefObject<any>;
-
-        let findDOMNodeSpy: jasmine.Spy;
-        let containsSpy: jasmine.Spy;
-        let appendChildSpy: jasmine.Spy;
+        let containsSpy: jest.SpyInstance;
+        let appendChildSpy: jest.SpyInstance;
         let tooltipWrapper: ShallowWrapper;
 
         beforeEach(() => {
             el = document.createElement('div');
-            customRef = React.createRef();
 
-            spyOn(tooltipReactInstance(), 'createRef').and.returnValue(customRef);
-            findDOMNodeSpy = spyOn(ReactDOM, 'findDOMNode').and.returnValue(el);
-            containsSpy = spyOn(document.body, 'contains').and.returnValue(false);
-            appendChildSpy = spyOn(document.body, 'appendChild');
+            mockedReact.createRef.mockReturnValue({
+                current: el,
+            });
+            mockedReactDOM.findDOMNode.mockReturnValue(el);
+            containsSpy = jest.spyOn(document.body, 'contains').mockReturnValue(false);
+            appendChildSpy = jest.spyOn(document.body, 'appendChild');
+        });
 
-            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hello</Tooltip>);
-            (customRef as any).current = el;
+        afterEach(() => {
+            jest.clearAllMocks();
         });
 
         it('should re-add the tooltip element on unmount if its not in the DOM', () => {
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hello</Tooltip>);
             tooltipWrapper.unmount();
 
             expect(appendChildSpy).toHaveBeenCalledWith(el);
         });
 
         it('should not re-add the tooltip element on unmount if the DOM already contain the node', () => {
-            containsSpy.and.returnValue(true);
+            containsSpy.mockReturnValue(true);
 
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hello</Tooltip>);
             tooltipWrapper.unmount();
 
             expect(appendChildSpy).not.toHaveBeenCalled();
         });
 
         it('should not re-add the tooltip element on unmount if the html node does not exists', () => {
-            findDOMNodeSpy.and.returnValue(null);
+            mockedReactDOM.findDOMNode.mockReturnValue(null);
 
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hello</Tooltip>);
             tooltipWrapper.unmount();
 
             expect(appendChildSpy).not.toHaveBeenCalled();
         });
 
         it('should not re-add the tooltip element on unmount if the ref has no current view', () => {
-            (customRef as any).current = undefined;
+            mockedReact.createRef.mockReturnValue({
+                current: null,
+            });
 
+            tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hello</Tooltip>);
             tooltipWrapper.unmount();
 
             expect(appendChildSpy).not.toHaveBeenCalled();

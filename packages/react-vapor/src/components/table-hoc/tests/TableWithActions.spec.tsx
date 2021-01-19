@@ -1,8 +1,9 @@
-import {ShallowWrapper} from 'enzyme';
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {mountWithStore, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {HOCTableRowState} from '..';
+import {clearState} from '../../../utils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {TableHOCRowActions} from '../actions/TableHOCRowActions';
 import {TableHOC} from '../TableHOC';
@@ -48,50 +49,64 @@ describe('Table HOC', () => {
 
         describe('click outside', () => {
             const id = 'a';
-            let wrapper: ShallowWrapper;
             let store: ReactVaporMockStore;
+            let registeredListeners: Record<string, EventListener>;
+            let outside: HTMLElement;
 
-            const shallowComponent = () => {
-                /* eslint-disable jasmine/no-unsafe-spy */
-                spyOn(document.body, 'contains').and.returnValue(true);
-                const spy = spyOn(document, 'addEventListener');
-                /* eslint-enable */
+            const triggerClick = (element: HTMLElement) =>
+                registeredListeners?.mousedown(({target: element} as unknown) as MouseEvent);
 
-                store = getStoreMock({});
-                wrapper = shallowWithStore(
-                    <TableWithActions id={id} data={[]} renderBody={_.identity} />,
-                    store
-                ).dive();
-                return [spy.calls.mostRecent().args[1]];
-            };
+            beforeAll(() => {
+                outside = document.createElement('div');
+                document.body.appendChild(outside);
+            });
+
+            beforeEach(() => {
+                store = getStoreMock();
+                registeredListeners = {};
+                document.addEventListener = jest.fn((event, cb) => {
+                    registeredListeners[event] = cb as EventListener;
+                });
+            });
 
             afterEach(() => {
-                wrapper?.unmount();
+                store.dispatch(clearState());
+            });
+
+            afterAll(() => {
+                document.body.removeChild(outside);
             });
 
             it('should not dispatch an action when the user click outside and no rows are selected', () => {
-                spyOn(TableSelectors, 'getSelectedRows').and.returnValue([]);
-                const [clickOnElement] = shallowComponent();
+                jest.spyOn(TableSelectors, 'getSelectedRows').mockReturnValue([]);
 
-                clickOnElement({target: {closest: (): HTMLElement => null}});
+                mountWithStore(<TableWithActions id="a" data={[{value: 'a'}]} renderBody={() => <tr></tr>} />, store);
+
+                triggerClick(outside);
 
                 expect(store.getActions()).not.toContain(TableHOCRowActions.deselectAll(id));
             });
 
             it('should dispatch an action when the user click outside and a row is selected', () => {
-                spyOn(TableSelectors, 'getSelectedRows').and.returnValue([{}]);
-                const [clickOnElement] = shallowComponent();
+                jest.spyOn(TableSelectors, 'getSelectedRows').mockReturnValue([{} as HOCTableRowState]);
 
-                clickOnElement({target: {closest: (): HTMLElement => null}});
+                mountWithStore(<TableWithActions id="a" data={[{value: 'a'}]} renderBody={() => <tr></tr>} />, store);
 
-                expect(store.getActions()).toContain(TableHOCRowActions.deselectAll(id));
+                triggerClick(outside);
+
+                expect(store.getActions()).toContainEqual(TableHOCRowActions.deselectAll(id));
             });
 
             it('should not dispatch an action when the user click inside the table', () => {
-                spyOn(TableSelectors, 'getSelectedRows').and.returnValue([{}]);
-                const [clickOnElement] = shallowComponent();
+                jest.spyOn(TableSelectors, 'getSelectedRows').mockReturnValue([{} as HOCTableRowState]);
+                const wrapper = mountWithStore(
+                    <TableWithActions id="a" data={[{value: 'a'}]} renderBody={() => <tr></tr>} />,
+                    store
+                );
 
-                clickOnElement({target: {closest: () => jasmine.anything()}});
+                triggerClick(wrapper.find(TableHOC).getDOMNode() as HTMLElement);
+
+                wrapper.find(TableHOC).simulate('click', {target: {closest: () => expect.anything()}});
 
                 expect(store.getActions()).not.toContain(TableHOCRowActions.deselectAll(id));
             });

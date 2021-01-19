@@ -1,7 +1,7 @@
 import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import * as _ from 'underscore';
+
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {ICheckboxOwnProps} from '../../../checkbox/Checkbox';
 import {CheckboxConnected} from '../../../checkbox/CheckboxConnected';
@@ -47,7 +47,7 @@ describe('WithDirtyCheckboxHOC', () => {
         });
 
         describe('after mount', () => {
-            let handleOnClickSpy: jasmine.Spy;
+            let handleOnClickSpy: jest.Mock;
 
             const shallowCheckbox = (props?: Partial<ICheckboxOwnProps & IInputOwnProps>) =>
                 shallowWithStore<typeof CheckboxWithHOC>(
@@ -56,14 +56,14 @@ describe('WithDirtyCheckboxHOC', () => {
                 ).dive();
 
             beforeEach(() => {
-                handleOnClickSpy = jasmine.createSpy('handleOnClick');
+                handleOnClickSpy = jest.fn();
                 checkboxWrapper = shallowCheckbox();
             });
 
             it('should dispatch a set dirty action with true when the value is different from the initial value (undefined, evaluated as false)', () => {
                 triggerCheck();
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     ValidationActions.setDirty(CHECKBOX_PROPS.id, true, ValidationTypes.wrongInitialValue)
                 );
             });
@@ -71,7 +71,7 @@ describe('WithDirtyCheckboxHOC', () => {
             it('should dispatch a set dirty action with false when the value is the same as the initial value (undefined, evaluated as false)', () => {
                 triggerUncheck();
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     ValidationActions.setDirty(CHECKBOX_PROPS.id, false, ValidationTypes.wrongInitialValue)
                 );
             });
@@ -82,7 +82,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 });
                 triggerUncheck();
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     ValidationActions.setDirty(CHECKBOX_PROPS.id, true, ValidationTypes.wrongInitialValue)
                 );
             });
@@ -93,7 +93,7 @@ describe('WithDirtyCheckboxHOC', () => {
                 });
                 triggerCheck();
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     ValidationActions.setDirty(CHECKBOX_PROPS.id, false, ValidationTypes.wrongInitialValue)
                 );
             });

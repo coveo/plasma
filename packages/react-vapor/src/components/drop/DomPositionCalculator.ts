@@ -1,4 +1,4 @@
-import {CSSProperties} from 'react';
+import * as React from 'react';
 
 export interface IDropUIPosition {
     position: string;
@@ -27,18 +27,19 @@ export interface IBoundingLimit {
 }
 
 export interface IDomPositionCalculatorReturn {
-    style?: Partial<CSSProperties>;
+    style?: Partial<React.CSSProperties>;
     lastPosition?: IDropUIPosition;
 }
 
-export const DomPositionCalculator: {
-    [position: string]: (
+export const DomPositionCalculator: Record<
+    string,
+    (
         buttonOffset: ClientRect | DOMRect,
         dropOffset: ClientRect | DOMRect,
         boundingLimit: IBoundingLimit,
         dropUIPosition: Partial<IDropUIPosition>
-    ) => IDomPositionCalculatorReturn;
-} = {
+    ) => IDomPositionCalculatorReturn
+> = {
     bottom: (
         buttonOffset: ClientRect | DOMRect,
         dropOffset: ClientRect | DOMRect,

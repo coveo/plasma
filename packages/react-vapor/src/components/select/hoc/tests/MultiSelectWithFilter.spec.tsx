@@ -38,7 +38,7 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            wrapper?.unmount();
         });
 
         beforeAll(() => {

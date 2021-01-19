@@ -68,7 +68,7 @@ describe('Button', () => {
         });
 
         it('should call the onClick props on click', () => {
-            const spyOnClick = jasmine.createSpy('onClick');
+            const spyOnClick = jest.fn();
 
             showButton({
                 onClick: spyOnClick,
@@ -160,7 +160,7 @@ describe('Button', () => {
             });
 
             it('should call the onClick props on click', () => {
-                const spyOnClick = jasmine.createSpy('onClick');
+                const spyOnClick = jest.fn();
 
                 showButton({
                     onClick: spyOnClick,

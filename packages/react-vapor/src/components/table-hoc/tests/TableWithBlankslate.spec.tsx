@@ -33,7 +33,7 @@ describe('TableWithBlankSlate', () => {
     });
 
     it('should override the TableHOC renderBody method when the data is empty and "renderBlankSlateOnly" is false', () => {
-        const renderSpy = jasmine.createSpy('render');
+        const renderSpy = jest.fn();
         const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {}).dive();
         const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
         tableRenderBody();
@@ -67,7 +67,7 @@ describe('TableWithBlankSlate', () => {
     });
 
     it('should not override the TableHOC renderBody method when there is data', () => {
-        const renderSpy = jasmine.createSpy('render');
+        const renderSpy = jest.fn();
         const wrapper = shallowWithState(
             <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
             {}
@@ -79,14 +79,14 @@ describe('TableWithBlankSlate', () => {
     });
 
     it('should update the renderBody when the data is empty', () => {
-        const renderSpy = jasmine.createSpy('render');
+        const renderSpy = jest.fn();
         shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {}).dive();
 
         expect(renderSpy).toHaveBeenCalledTimes(0);
     });
 
     it('should not render a BlankSlate when the data is null', () => {
-        const renderSpy = jasmine.createSpy('render');
+        const renderSpy = jest.fn();
         shallowWithState(<TableWithBlankSlate {...basicProps} data={null} renderBody={renderSpy} />, {})
             .dive()
             .dive();
@@ -107,23 +107,28 @@ describe('TableWithBlankSlate', () => {
     });
 
     describe('when "renderBlankSlateOnly" prop is set to true', () => {
-        it('should not render anything else than the blankslate if the table is truly empty', () => {
-            spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(true);
+        let getIsEmptySelectorSpy: jest.SpyInstance;
+
+        beforeAll(() => {
+            getIsEmptySelectorSpy = jest.spyOn(TableSelectors, 'getIsTruelyEmpty');
+        });
+
+        it('should not render anything else than the blankslate if the table is truely empty', () => {
+            getIsEmptySelectorSpy.mockReturnValue(true);
             const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
 
             expect(wrapper.type()).toBe(BlankSlateWithTable);
         });
 
-        it('should render the blank slate in the table body if the table is not truly empty', () => {
-            spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(false);
+        it('should render the blank slate in the table body if the table is not truely empty', () => {
+            getIsEmptySelectorSpy.mockReturnValue(false);
             const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
 
-            expect(wrapper.type()).toBe(TableHOC);
-            expect(wrapper.prop<() => JSX.Element>('renderBody')().type).toBe(BlankSlateWithTable);
+            expect(wrapper.type()).toBe(BlankSlateWithTable);
         });
 
-        it('does not render the blank slate instead of the table when the table is loading', () => {
-            spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(true);
+        it('does not render the blank slate in the table body when the table is loading', () => {
+            getIsEmptySelectorSpy.mockReturnValue(false);
             const wrapper = shallowWithState(
                 <TableWithBlankSlate {...basicProps} renderBlankSlateOnly isLoading />,
                 {}

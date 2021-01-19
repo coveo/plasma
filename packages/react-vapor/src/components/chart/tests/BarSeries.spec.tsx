@@ -1,12 +1,24 @@
 import {shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
+import {mocked} from 'ts-jest/utils';
 
 import {BarSeries} from '../BarSeries';
 import {ChartUtils} from '../ChartUtils';
 import {XYChartContextMock, XYChartOnePointContextMock} from './XYChartContextMock';
 
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        useContext: jest.fn(),
+    };
+});
+
+const mockedReact = mocked(React);
+
 describe('<BarSeries />', () => {
     it('should not throw', () => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
         expect(() => {
             shallow(<BarSeries />);
             shallow(<BarSeries barRatio={0.5} />);
@@ -14,13 +26,14 @@ describe('<BarSeries />', () => {
     });
 
     it('should render a <g>', () => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
         const component = shallow(<BarSeries />);
 
         expect(component.find('g').exists()).toBe(true);
     });
 
     it('should render a rect for every point in every serie', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
 
         const {series} = XYChartContextMock;
         const component = shallow(<BarSeries />);
@@ -29,7 +42,7 @@ describe('<BarSeries />', () => {
     });
 
     it('should not throw when there is only one point in a serie', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartOnePointContextMock);
+        mockedReact.useContext.mockReturnValue(XYChartOnePointContextMock);
 
         expect(() => {
             shallow(<BarSeries />);

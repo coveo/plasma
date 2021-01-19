@@ -30,7 +30,7 @@ describe('Table HOC', () => {
             expect(tableHeadersState).toBe(oldState);
         });
 
-        it('should return the state with all actions deselect ', () => {
+        it('should return the state with all actions deselect', () => {
             const oldState: HOCTableRowState[] = [
                 {id: 'a', tableId: 'b', selected: true},
                 {id: 'ab', tableId: 'b', selected: true},

@@ -1,12 +1,27 @@
 import * as d3 from 'd3';
 import {shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
+import {mocked} from 'ts-jest/utils';
 
 import {XYAxis} from '../XYAxis';
 import {XYChartContext} from '../XYChart';
 import {XYChartContextMock} from './XYChartContextMock';
 
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        useContext: jest.fn(),
+    };
+});
+
+const mockedReact = mocked(React);
+
 describe('<XYAxis />', () => {
+    beforeAll(() => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
+    });
+
     it('should not throw', () => {
         expect(() => {
             shallow(<XYAxis />);
@@ -29,24 +44,13 @@ describe('<XYAxis />', () => {
         expect(provider.exists()).toBe(true);
     });
 
-    it('should reduce the width and height in the context provider', () => {
-        const component = shallow(<XYAxis />);
-
-        const context = component.find(XYChartContext.Provider).prop('value');
-
-        expect(context.width).toBeLessThan(XYChartContextMock.width);
-        expect(context.height).toBeLessThan(XYChartContextMock.height);
-    });
-
     it('should render as many x ticks as there are points in the scale from the context', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
         const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
 
         expect(component.find('.x-axis-tick').length).toBe(XYChartContextMock.xScale.domain().length);
     });
 
     it('should render as many x ticks labels as d3 determine', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
         const component = shallow(<XYAxis x={{show: true}} y={{show: false}} />);
 
         // D3 doesn't enforce a strict tick count
@@ -61,7 +65,6 @@ describe('<XYAxis />', () => {
     });
 
     it('should render as many y ticks as defined in the context', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
         const component = shallow(<XYAxis x={{show: false}} y={{show: true}} />);
 
         // D3 doesn't enforce a strict tick count

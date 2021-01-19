@@ -49,7 +49,7 @@ describe('Select', () => {
         afterEach(() => {
             store.dispatch(clearState());
             if (wrapper && wrapper.exists()) {
-                wrapper.detach();
+                wrapper?.unmount();
             }
         });
 
@@ -169,10 +169,10 @@ describe('Select', () => {
 
         describe('interactions', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
-            let dispatchSpy: jasmine.Spy;
+            let dispatchSpy: jest.SpyInstance;
 
             beforeEach(() => {
-                dispatchSpy = spyOn(store, 'dispatch').and.callThrough();
+                dispatchSpy = jest.spyOn(store, 'dispatch');
                 mountSingleSelect({items});
             });
 
@@ -220,7 +220,7 @@ describe('Select', () => {
 
                 // Close the dropdown
                 store.dispatch(toggleSelect(id, false));
-                dispatchSpy.calls.reset();
+                dispatchSpy.mockClear();
 
                 singleSelect
                     .find('.dropdown-toggle')
@@ -294,7 +294,7 @@ describe('Select', () => {
             const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c'}];
 
             it('should not filter the items because it is done on the server', () => {
-                spyOn(FilterBoxSelectors, 'getFilterText').and.returnValue('a');
+                jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('a');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
                     <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} />,
                     store
@@ -304,8 +304,8 @@ describe('Select', () => {
             });
 
             it('should trigger the onUpdate prop when the selected predicate changes', () => {
-                const onUpdateSpy = jasmine.createSpy('onUpdate');
-                spyOn(FilterBoxSelectors, 'getFilterText').and.returnValue('current-filter-value');
+                const onUpdateSpy = jest.fn();
+                jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('current-filter-value');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
                     <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} onUpdate={onUpdateSpy} />,
                     store

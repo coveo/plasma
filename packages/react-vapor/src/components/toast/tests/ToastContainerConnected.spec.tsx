@@ -29,10 +29,6 @@ describe('Toasts', () => {
             component = wrapper.find(ToastContainer).first();
         });
 
-        afterEach(() => {
-            wrapper.detach();
-        });
-
         it('should get the toasts as a prop', () => {
             const toastsProp = component.props().toasts;
 

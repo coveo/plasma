@@ -26,7 +26,7 @@ import {predictableData, SELECTION_BOXES, tableOwnPropsMock, tablePropsMockWithD
 describe('TableDataModifier', () => {
     describe('dispatchPreTableStateModification', () => {
         it('should dispatch three actions to unselectAllRows, remove actions, and turn on loading', () => {
-            const dispatchSpy = jasmine.createSpy('dispatchSpy') as any;
+            const dispatchSpy = jest.fn() as any;
 
             const actions = [
                 unselectAllRows(tableOwnPropsMock.id),
@@ -43,13 +43,13 @@ describe('TableDataModifier', () => {
                 expect(dispatchSpy).toHaveBeenCalledWith(action);
             });
 
-            expect(dispatchSpy.calls.count()).toBe(actions.length);
+            expect(dispatchSpy.mock.calls.length).toBe(actions.length);
         });
     });
 
     describe('dispatchPostTableStateModification', () => {
         it('should dispatch two actions to turnOffLoading and update the last updated component', () => {
-            const dispatchSpy = jasmine.createSpy('dispatchSpy') as any;
+            const dispatchSpy = jest.fn() as any;
 
             const actions = [
                 turnOffLoading(getTableLoadingIds(tableOwnPropsMock.id)),
@@ -62,7 +62,7 @@ describe('TableDataModifier', () => {
                 expect(dispatchSpy).toHaveBeenCalledWith(action);
             });
 
-            expect(dispatchSpy.calls.count()).toBe(actions.length);
+            expect(dispatchSpy.mock.calls.length).toBe(actions.length);
         });
     });
 
@@ -409,12 +409,12 @@ describe('TableDataModifier', () => {
         });
 
         it('should dispatch an action of type MODIFY_STATE_TABLE and turn off loading', () => {
-            const dispatchSpy = jasmine.createSpy('dispatchSpy');
+            const dispatchSpy = jest.fn();
             defaultTableStateModifierThunk(tablePropsMockWithData, true, tableCompositeState)(dispatchSpy);
 
-            expect(dispatchSpy).toHaveBeenCalledWith(jasmine.objectContaining({type: TableActions.modifyState}));
+            expect(dispatchSpy).toHaveBeenCalledWith(expect.objectContaining({type: TableActions.modifyState}));
             expect(dispatchSpy).toHaveBeenCalledWith(turnOffLoading(getTableLoadingIds(tablePropsMockWithData.id)));
-            expect(dispatchSpy.calls.count()).toBe(2);
+            expect(dispatchSpy.mock.calls.length).toBe(2);
         });
     });
 });

@@ -142,7 +142,7 @@ describe('PaginationPagesNumber tests', () => {
                     store = getStoreMock();
                     shallowWithStore(<PaginationPagesNumber id={id} totalPages={10} />, store).dive();
 
-                    expect(store.getActions()).toContain(PaginationReduxActions.addPagination(id));
+                    expect(store.getActions()).toContainEqual(PaginationReduxActions.addPagination(id));
                 });
 
                 it('should dispatch a removePagination on unmount', () => {
@@ -150,7 +150,7 @@ describe('PaginationPagesNumber tests', () => {
                     wrapper = shallowWithStore(<PaginationPagesNumber id={id} totalPages={10} />, store).dive();
                     wrapper.unmount();
 
-                    expect(store.getActions()).toContain(PaginationReduxActions.removePagination(id));
+                    expect(store.getActions()).toContainEqual(PaginationReduxActions.removePagination(id));
                 });
 
                 it('should dispatch a changePage on click on a <PaginationSelect />', () => {
@@ -158,7 +158,7 @@ describe('PaginationPagesNumber tests', () => {
                     wrapper = shallowWithStore(<PaginationPagesNumber id={id} totalPages={10} />, store).dive();
                     wrapper.find(PaginationSelect).at(0).props().onPageClick(2);
 
-                    expect(store.getActions()).toContain(PaginationReduxActions.changePage(id, 2));
+                    expect(store.getActions()).toContainEqual(PaginationReduxActions.changePage(id, 2));
                 });
 
                 it('should dispatch a changePage on previous if the pageNb is greater than 0 and not equal to the current page', () => {
@@ -170,7 +170,7 @@ describe('PaginationPagesNumber tests', () => {
                         .props()
                         .onClick({} as any);
 
-                    expect(store.getActions()).toContain(PaginationReduxActions.changePage(id, 1));
+                    expect(store.getActions()).toContainEqual(PaginationReduxActions.changePage(id, 1));
                 });
 
                 it('should dispatch a changePage on next if the pageNb is greater than 0 and not equal to the current page', () => {
@@ -182,7 +182,7 @@ describe('PaginationPagesNumber tests', () => {
                         .props()
                         .onClick({} as any);
 
-                    expect(store.getActions()).toContain(PaginationReduxActions.changePage(id, 7));
+                    expect(store.getActions()).toContainEqual(PaginationReduxActions.changePage(id, 7));
                 });
 
                 it('should dispatch a changePage on update if the current page greater than the totalPage', () => {
@@ -190,7 +190,7 @@ describe('PaginationPagesNumber tests', () => {
                     wrapper = shallowWithStore(<PaginationPagesNumber id={id} totalPages={10} />, store).dive();
                     wrapper.setProps({totalPages: 4});
 
-                    expect(store.getActions()).toContain(PaginationReduxActions.changePage(id, 3));
+                    expect(store.getActions()).toContainEqual(PaginationReduxActions.changePage(id, 3));
                 });
             });
         });

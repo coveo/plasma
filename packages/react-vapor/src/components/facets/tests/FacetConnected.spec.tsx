@@ -49,8 +49,8 @@ describe('Facets', () => {
                     formattedName: 'Row 2',
                 },
             ];
-            onToggleFacet = jasmine.createSpy('onToggleFacet');
-            clearFacet = jasmine.createSpy('clearFacet');
+            onToggleFacet = jest.fn();
+            clearFacet = jest.fn();
 
             store = TestUtils.buildStore();
 
@@ -70,15 +70,11 @@ describe('Facets', () => {
             facetComponent = wrapper.find(Facet);
         });
 
-        afterEach(() => {
-            wrapper.detach();
-        });
-
         it('should get the facet rows as a prop', () => {
             const facetRowsProp = facetComponent.props().facetRows;
 
             expect(facetRowsProp).toBeDefined();
-            expect(jasmine.arrayContaining(facetRowsProp)).toEqual(jasmine.arrayContaining(facetRows));
+            expect(facetRows).toEqual(expect.arrayContaining(facetRowsProp));
         });
 
         it('should get the facet title as a prop', () => {

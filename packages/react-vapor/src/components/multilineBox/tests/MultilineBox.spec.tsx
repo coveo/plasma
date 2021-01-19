@@ -282,7 +282,7 @@ describe('MultilineBox', () => {
 
                     wrapper.setProps({
                         data: dataToTest,
-                    });
+                    } as any);
 
                     expect(_.pluck(store.getActions(), 'type')).not.toContain(StringListActions.updateValues);
                 });
@@ -296,7 +296,7 @@ describe('MultilineBox', () => {
 
                     wrapper.setProps({
                         data: {name: 'Succubus'},
-                    });
+                    } as any);
 
                     expect(_.pluck(store.getActions(), 'type')).toContain(StringListActions.updateValues);
                 });

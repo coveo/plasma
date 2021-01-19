@@ -34,7 +34,6 @@ describe('Menu', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         describe('mount and unmount', () => {
@@ -67,14 +66,6 @@ describe('Menu', () => {
         });
 
         describe('custom props', () => {
-            it('should add a style right on the menu to set the position right', () => {
-                mountMenuConnected([], {positionRight: true});
-
-                menuWrapper.find('.menu-toggle').simulate('mouseUp');
-
-                expect((menuWrapper.find('.select-dropdown-container').instance() as any).style.right).toBe('8px');
-            });
-
             it('should add custom classes on the element', () => {
                 mountMenuConnected([], {className: 'test'});
 
@@ -126,15 +117,15 @@ describe('Menu', () => {
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
 
-                expect(store.getState().menus[id].open).toBe(true, '1');
+                expect(store.getState().menus[id].open).toBe(true);
 
                 clickOnEl(menuWrapper.find('.select-dropdown-container').getDOMNode());
 
-                expect(store.getState().menus[id].open).toBe(true, '2');
+                expect(store.getState().menus[id].open).toBe(true);
 
                 clickOnEl();
 
-                expect(store.getState().menus[id].open).toBe(false, '3');
+                expect(store.getState().menus[id].open).toBe(false);
             });
 
             it('should not open the menu when the user click outside the menu', () => {
@@ -152,11 +143,11 @@ describe('Menu', () => {
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
 
-                expect(store.getState().menus[id].open).toBe(true, 'open menu');
+                expect(store.getState().menus[id].open).toBe(true);
 
                 menuWrapper.find('.select-dropdown-container').simulate('click');
 
-                expect(store.getState().menus[id].open).toBe(false, 'close menu');
+                expect(store.getState().menus[id].open).toBe(false);
             });
 
             it('should not close the menu when the user click inside the menu and the menu is open if the props closeOnSelectItem is set to false', () => {
@@ -164,11 +155,11 @@ describe('Menu', () => {
 
                 menuWrapper.find('.menu-toggle').simulate('mouseUp');
 
-                expect(store.getState().menus[id].open).toBe(true, 'open menu');
+                expect(store.getState().menus[id].open).toBe(true);
 
                 menuWrapper.find('.select-dropdown-container').simulate('click');
 
-                expect(store.getState().menus[id].open).toBe(true, 'menu keep open');
+                expect(store.getState().menus[id].open).toBe(true);
             });
         });
     });

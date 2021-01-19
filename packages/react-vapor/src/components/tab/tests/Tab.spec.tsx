@@ -19,7 +19,7 @@ describe('Tab', () => {
     });
 
     it('should call prop onRender on mounting if set', () => {
-        const onRenderSpy = jasmine.createSpy('onRender');
+        const onRenderSpy = jest.fn();
 
         shallow(<Tab {...basicProps} onRender={onRenderSpy} />);
 
@@ -27,7 +27,7 @@ describe('Tab', () => {
     });
 
     it('should call prop onDestroy when unmounting if set', () => {
-        const onDestroySpy = jasmine.createSpy('onDestroy');
+        const onDestroySpy = jest.fn();
 
         const tab = shallow(<Tab {...basicProps} onDestroy={onDestroySpy} />);
         tab.unmount();
@@ -36,7 +36,7 @@ describe('Tab', () => {
     });
 
     it('should call prop onSelect when tab is clicked and prop is set', () => {
-        const onSelectSpy = jasmine.createSpy('onSelect');
+        const onSelectSpy = jest.fn();
 
         const tab = shallow(<Tab {...basicProps} onSelect={onSelectSpy} />);
         tab.simulate('click');
@@ -45,7 +45,7 @@ describe('Tab', () => {
     });
 
     it('should should not call onSelect prop when clicking on the tab and disabled is true', () => {
-        const onSelectSpy = jasmine.createSpy('onSelect');
+        const onSelectSpy = jest.fn();
 
         const tab = shallow(<Tab {...basicProps} onSelect={onSelectSpy} disabled />);
         tab.simulate('click');
@@ -95,7 +95,7 @@ describe('Tab', () => {
     });
 
     it('should redirect to specific URL if the url prop is set', () => {
-        const navigateSpy = spyOn(UrlUtils, 'redirectToUrl');
+        const navigateSpy = jest.spyOn(UrlUtils, 'redirectToUrl');
 
         const tab = shallow(
             <Tab

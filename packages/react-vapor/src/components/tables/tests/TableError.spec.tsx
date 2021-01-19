@@ -34,7 +34,7 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableError.detach();
+            tableError?.unmount();
         });
 
         it('should get the error as a prop', () => {

@@ -33,7 +33,7 @@ describe('Facets', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            wrapper?.unmount();
         });
 
         it('should get its state (opened or not) as a prop', () => {

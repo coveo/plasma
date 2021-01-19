@@ -103,7 +103,7 @@ describe('ActionableItem', () => {
             });
 
             it('should call the onItemClick method if passed as prop', () => {
-                const props = {id: 'someid', onItemClick: jasmine.createSpy('onItemClick')};
+                const props = {id: 'someid', onItemClick: jest.fn()};
                 shallowWithProps(props);
 
                 actionableItem.find('.actionable-item-content').simulate('click');

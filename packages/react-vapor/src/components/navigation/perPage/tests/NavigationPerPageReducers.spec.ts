@@ -118,7 +118,7 @@ describe('Reducers', () => {
             };
             const perPageCompositeState = perPageCompositeReducer([oldState], action);
 
-            expect(perPageCompositeState[0]).toEqual(jasmine.objectContaining(newState));
+            expect(perPageCompositeState[0]).toEqual(expect.objectContaining(newState));
         });
 
         it('should change the page number of the action id when action is "CHANGE_PER_PAGE" and action id does not equal state id', () => {
@@ -136,7 +136,7 @@ describe('Reducers', () => {
             };
             const perPageCompositeState = perPageCompositeReducer([oldState], action);
 
-            expect(perPageCompositeState[0]).toEqual(jasmine.objectContaining(oldState));
+            expect(perPageCompositeState[0]).toEqual(expect.objectContaining(oldState));
         });
     });
 });

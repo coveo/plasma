@@ -23,7 +23,7 @@ describe('TableWithEmptyState', () => {
     });
 
     it('renders the empty state if the table is empty after waiting 50 ms', () => {
-        jasmine.clock().install();
+        jest.useFakeTimers();
         let table: ReactWrapper;
         act(() => {
             table = mountWithStore(
@@ -34,16 +34,16 @@ describe('TableWithEmptyState', () => {
 
         expect(table.children().children().type()).toBe(TableHOC);
 
-        jasmine.clock().tick(50);
+        jest.advanceTimersByTime(50);
         table.update();
 
         expect(table.children().children().type()).toBe(EmptyState);
 
-        jasmine.clock().uninstall();
+        jest.useRealTimers();
     });
 
     it('renders the table if the table is empty after waiting 50 ms but still loading', () => {
-        jasmine.clock().install();
+        jest.useFakeTimers();
         let table: ReactWrapper;
         act(() => {
             table = mountWithStore(
@@ -52,16 +52,16 @@ describe('TableWithEmptyState', () => {
             );
         });
 
-        jasmine.clock().tick(50);
+        jest.advanceTimersByTime(50);
         table.update();
 
         expect(table.children().children().type()).toBe(TableHOC);
 
-        jasmine.clock().uninstall();
+        jest.useRealTimers();
     });
 
     it('renders the table if the table is not empty after waiting 50 ms', () => {
-        jasmine.clock().install();
+        jest.useFakeTimers();
         let table: ReactWrapper;
         act(() => {
             table = mountWithStore(
@@ -70,11 +70,11 @@ describe('TableWithEmptyState', () => {
             );
         });
 
-        jasmine.clock().tick(50);
+        jest.advanceTimersByTime(50);
         table.update();
 
         expect(table.children().children().type()).toBe(TableHOC);
 
-        jasmine.clock().uninstall();
+        jest.useRealTimers();
     });
 });
