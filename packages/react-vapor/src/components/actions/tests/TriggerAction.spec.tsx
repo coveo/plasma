@@ -6,7 +6,7 @@ import {IActionOptions} from '../Action';
 import {ITriggerActionProps, TriggerAction} from '../TriggerActionConnected';
 
 describe('Actions', () => {
-    let triggerSpy: jasmine.Spy;
+    let triggerSpy: jest.Mock;
     const action: IActionOptions = {
         name: 'action',
         enabled: true,
@@ -24,7 +24,7 @@ describe('Actions', () => {
         let triggerActionInstance: TriggerAction;
 
         beforeEach(() => {
-            triggerSpy = jasmine.createSpy('triggerMethod');
+            triggerSpy = jest.fn();
             action.trigger = triggerSpy;
             triggerAction = mount(<TriggerAction action={action} simple={simple} />, {
                 attachTo: document.getElementById('App'),
@@ -34,7 +34,6 @@ describe('Actions', () => {
 
         afterEach(() => {
             triggerAction.unmount();
-            triggerAction.detach();
         });
 
         it('should get if the action is simple (no html) as a prop', () => {
@@ -70,7 +69,7 @@ describe('Actions', () => {
         });
 
         it('should call onTriggerAction when clicked if action is enabled', () => {
-            const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
+            const onTriggerActionSpy = jest.spyOn<any, string>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.enabled').simulate('click');
 
@@ -79,7 +78,7 @@ describe('Actions', () => {
 
         it('should not call onTriggerAction when clicked if action is not enabled and visible', () => {
             triggerAction.setProps({action: {...action, enabled: false, hideDisabled: false}});
-            const onTriggerActionSpy = spyOn<any>(triggerActionInstance, 'onTriggerAction');
+            const onTriggerActionSpy = jest.spyOn<any, string>(triggerActionInstance, 'onTriggerAction');
 
             triggerAction.find('.state-disabled').simulate('click');
 
@@ -93,7 +92,7 @@ describe('Actions', () => {
         });
 
         it('should call the onCloseDropdown if it exists and no confirmation is required', () => {
-            const onCloseDropdownSpy = jasmine.createSpy('onCloseDropdownSpy');
+            const onCloseDropdownSpy = jest.fn();
             triggerAction.setProps({onCloseDropdown: onCloseDropdownSpy});
 
             triggerAction.find('.enabled').simulate('click');
@@ -102,7 +101,7 @@ describe('Actions', () => {
         });
 
         it('should call the onTriggerConfirm if set when clicked and confirmation is required', () => {
-            const onTriggerConfirmSpy = jasmine.createSpy('onTriggerConfirmSpy');
+            const onTriggerConfirmSpy = jest.fn();
 
             const newAction = _.extend({}, action);
             newAction.requiresConfirmation = {
@@ -120,7 +119,7 @@ describe('Actions', () => {
 
             triggerAction.find('.enabled').simulate('click');
 
-            expect(onTriggerConfirmSpy.calls.count()).toBe(1);
+            expect(onTriggerConfirmSpy.mock.calls.length).toBe(1);
         });
 
         it('should not throw when clicking the action when the trigger of the action is not set and confirmation is not required', () => {
@@ -138,7 +137,7 @@ describe('Actions', () => {
                 const onTriggerConfirm = (onClick: () => void) => {
                     onClick();
                 };
-                const onConfirmSpy = jasmine.createSpy('onConfirm');
+                const onConfirmSpy = jest.fn();
                 const newAction = _.extend({}, action);
                 newAction.requiresConfirmation = {
                     confirmType: 'danger',
@@ -186,7 +185,8 @@ describe('Actions', () => {
                 .onClick('mouseEvent' as any);
 
             expect(triggerSpy).toHaveBeenCalled();
-            expect(triggerSpy.calls.first().object.requiresConfirmation.confirmLabel).toEqual(
+
+            expect(triggerSpy.mock.instances[0].requiresConfirmation.confirmLabel).toEqual(
                 newAction.requiresConfirmation.confirmLabel
             );
         });

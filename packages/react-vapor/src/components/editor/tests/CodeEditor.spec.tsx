@@ -69,7 +69,7 @@ describe('CodeEditor', () => {
 
             expect(onChangeProp).toBeUndefined();
 
-            mountWithProps({onChange: jasmine.createSpy('onChange')});
+            mountWithProps({onChange: jest.fn()});
 
             onChangeProp = codeEditor.props().onChange;
 
@@ -81,7 +81,7 @@ describe('CodeEditor', () => {
         });
 
         it('should call onChange prop when its value prop changes', () => {
-            const onChangeSpy: jasmine.Spy = jasmine.createSpy('onChange');
+            const onChangeSpy: jest.Mock<any, any> = jest.fn();
             const expectedValue: string = 'the expected value';
 
             mountWithProps({onChange: onChangeSpy});
@@ -92,7 +92,10 @@ describe('CodeEditor', () => {
         });
 
         it(`should clear codemirror's history if we set a new value`, () => {
-            const clearHistorySpy: jasmine.Spy = spyOn((codeEditorInstance as any).editor.getDoc(), 'clearHistory');
+            const clearHistorySpy: jest.SpyInstance = jest.spyOn(
+                (codeEditorInstance as any).editor.getDoc(),
+                'clearHistory'
+            );
 
             codeEditor.setProps({value: 'a new value'});
 

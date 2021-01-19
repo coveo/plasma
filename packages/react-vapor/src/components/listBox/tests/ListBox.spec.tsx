@@ -8,7 +8,7 @@ import {IListBoxProps, ListBox} from '../ListBox';
 describe('ListBox', () => {
     let listBoxComponent: ReactWrapper<IListBoxProps, any>;
 
-    const spyOnOptionClick = jasmine.createSpy('onOptionClick');
+    const spyOnOptionClick = jest.fn();
 
     const defaultProps: IListBoxProps = {
         id: '🍄',
@@ -37,7 +37,7 @@ describe('ListBox', () => {
 
         afterEach(() => {
             if (listBoxComponent && listBoxComponent.exists()) {
-                listBoxComponent.detach();
+                listBoxComponent?.unmount();
             }
         });
 
@@ -59,12 +59,12 @@ describe('ListBox', () => {
 
         afterEach(() => {
             if (listBoxComponent && listBoxComponent.exists()) {
-                listBoxComponent.detach();
+                listBoxComponent?.unmount();
             }
         });
 
         it('should call onRender on mount', () => {
-            const onRenderSpy = jasmine.createSpy('onRender');
+            const onRenderSpy = jest.fn();
             renderListBox({
                 onRender: onRenderSpy,
             });
@@ -73,7 +73,7 @@ describe('ListBox', () => {
         });
 
         it('should call onDestroy on unmount', () => {
-            const onDestroySpy = jasmine.createSpy('onDestroy');
+            const onDestroySpy = jest.fn();
             renderListBox({
                 onDestroy: onDestroySpy,
             });
@@ -94,7 +94,7 @@ describe('ListBox', () => {
         });
 
         it('should render items with events on onOptionClick', () => {
-            const onOptionClick: jasmine.Spy = jasmine.createSpy('onOptionClick');
+            const onOptionClick: jest.Mock<any, any> = jest.fn();
             renderListBox({
                 onOptionClick,
             });
@@ -105,7 +105,7 @@ describe('ListBox', () => {
         });
 
         it('should not trigger onOptionClick if the clicked item is disabled', () => {
-            const onOptionClick: jasmine.Spy = jasmine.createSpy('onOptionClick');
+            const onOptionClick: jest.Mock<any, any> = jest.fn();
             renderListBox({
                 items: [{value: 'test', disabled: true}],
                 onOptionClick,
@@ -164,7 +164,7 @@ describe('ListBox', () => {
             });
         });
 
-        it('should render without active on any item if noActive is set as a prop', (done) => {
+        it('should render without active on any item if noActive is set as a prop', () => {
             renderListBox({
                 noActive: true,
             });
@@ -172,7 +172,6 @@ describe('ListBox', () => {
             listBoxComponent.find(ItemBox).forEach((itemBox) => {
                 expect(itemBox.prop('active')).toBe(false);
             });
-            done();
         });
     });
 });

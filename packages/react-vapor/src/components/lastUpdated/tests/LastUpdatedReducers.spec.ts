@@ -98,7 +98,7 @@ describe('LastUpdated', () => {
         });
 
         it('should return the time of a timer when the action is "lastUpdatedActions.changeLastUpdated"', () => {
-            jasmine.clock().install();
+            jest.useFakeTimers();
 
             const oldState: ILastUpdatedState[] = [
                 {
@@ -122,14 +122,14 @@ describe('LastUpdated', () => {
             };
             const addedTime: number = 20001;
 
-            jasmine.clock().tick(addedTime);
+            jest.advanceTimersByTime(addedTime);
 
             const lastUpdateTimeState: ILastUpdatedState[] = lastUpdatedCompositeReducer(oldState, action);
 
             expect(lastUpdateTimeState.length).toBe(oldState.length);
             expect(lastUpdateTimeState.filter((timer) => timer.id === action.payload.id)[0].time).not.toBe(initialDate);
 
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
     });
 });

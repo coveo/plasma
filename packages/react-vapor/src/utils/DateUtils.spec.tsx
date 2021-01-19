@@ -38,12 +38,9 @@ describe('DateUtils', () => {
         it('should return false when passing similar moments for the given granularity', () => {
             const current = moment().startOf('minute').add(10, 'seconds');
 
-            expect(DateUtils.isDifferent(moment(current).subtract(1, 'second'), current, 'minute')).toBe(
-                false,
-                'subtracting a second'
-            );
+            expect(DateUtils.isDifferent(moment(current).subtract(1, 'second'), current, 'minute')).toBe(false);
 
-            expect(DateUtils.isDifferent('2018-01-01', '2018-12-31', 'year')).toBe(false, 'year');
+            expect(DateUtils.isDifferent('2018-01-01', '2018-12-31', 'year')).toBe(false);
         });
 
         it('should return true when passing different moments', () => {

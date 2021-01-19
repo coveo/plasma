@@ -45,7 +45,7 @@ describe('<NavigationPaginationConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.detach();
+        wrapper?.unmount();
     });
 
     it('should get the number of pages as a prop', () => {

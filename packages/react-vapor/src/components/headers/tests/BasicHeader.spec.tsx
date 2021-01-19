@@ -25,7 +25,7 @@ describe('<BasicHeader/>', () => {
         });
 
         afterEach(() => {
-            basicHeaderComponent.detach();
+            basicHeaderComponent?.unmount();
         });
 
         it('should render the default title', () => {

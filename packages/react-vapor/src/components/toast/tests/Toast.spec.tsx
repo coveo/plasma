@@ -23,15 +23,9 @@ describe('Toasts', () => {
             toastInstance = toastComponent.instance() as Toast;
         });
 
-        afterEach(() => {
-            toastComponent.detach();
-        });
-
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jasmine.createSpy('onRender');
+            const renderSpy = jest.fn();
             const newToastAttributes = _.extend({}, toastBasicAttributes, {onRender: renderSpy});
-
-            expect(() => toastInstance.componentDidMount()).not.toThrow();
 
             toastComponent.unmount();
             toastComponent.setProps(newToastAttributes).mount();
@@ -40,7 +34,7 @@ describe('Toasts', () => {
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jasmine.createSpy('onDestroy');
+            const destroySpy = jest.fn();
             const newToastAttributes = _.extend({}, toastBasicAttributes, {onDestroy: destroySpy});
 
             expect(() => toastInstance.componentWillUnmount()).not.toThrow();
@@ -162,7 +156,7 @@ describe('Toasts', () => {
 
         it('should call onClose when the user clicks on .toast-close', () => {
             const closeSelector = '.toast-close';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {onClose: jasmine.createSpy('onClose')});
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onClose: jest.fn()});
 
             toastComponent.find(closeSelector).simulate('click');
 
@@ -187,10 +181,10 @@ describe('Toasts', () => {
 
     describe('<Toast /> with a dismiss timer', () => {
         const dismissDelay = 2000;
-        let onCloseToast: jasmine.Spy;
+        let onCloseToast: jest.Mock<any, any>;
 
         beforeEach(() => {
-            onCloseToast = jasmine.createSpy('onClose');
+            onCloseToast = jest.fn();
             toastBasicAttributes = {
                 title: 'some title',
                 // Subtract 1 so the jasmine.tick work as expected
@@ -198,27 +192,27 @@ describe('Toasts', () => {
                 onClose: onCloseToast,
             };
 
-            onCloseToast.calls.reset();
-            jasmine.clock().install();
+            onCloseToast.mockReset();
+            jest.useFakeTimers();
 
             toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
             toastInstance = toastComponent.instance() as Toast;
         });
 
         afterEach(() => {
-            jasmine.clock().uninstall();
-            toastComponent.detach();
-            onCloseToast.calls.reset();
+            jest.clearAllTimers();
+            toastComponent?.unmount();
+            onCloseToast.mockReset();
         });
 
         it('should call onClose when the timer expires', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
 
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).toHaveBeenCalledTimes(1);
 
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).toHaveBeenCalledTimes(1);
         });
@@ -233,7 +227,7 @@ describe('Toasts', () => {
 
             expect(onCloseToast).not.toHaveBeenCalled();
 
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
         });
@@ -243,7 +237,7 @@ describe('Toasts', () => {
 
             expect(toastComponent.find('.toast').length).toBe(1);
             toastComponent.find('.toast').simulate('mouseEnter');
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
         });
@@ -252,12 +246,12 @@ describe('Toasts', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
 
             toastComponent.simulate('mouseEnter');
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
 
             toastComponent.simulate('mouseLeave');
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).toHaveBeenCalledTimes(1);
         });
@@ -269,12 +263,12 @@ describe('Toasts', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
 
             toastComponent.simulate('mouseEnter');
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
 
             toastComponent.simulate('mouseLeave');
-            jasmine.clock().tick(dismissDelay);
+            jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
         });

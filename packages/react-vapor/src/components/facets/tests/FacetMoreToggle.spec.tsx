@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {createTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {FACET_TOGGLE_MORE_LABEL, FacetMoreToggle, IFacetMoreToggleProps} from '../FacetMoreToggle';
 
@@ -18,13 +19,12 @@ describe('Facets', () => {
         let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
 
         beforeEach(() => {
-            facetMoreToggle = mount(<FacetMoreToggle {...basicFacetMoreToggleProps} />, {
-                attachTo: document.getElementById('App'),
-            });
+            createTestAppContainer();
+            facetMoreToggle = mount(<FacetMoreToggle {...basicFacetMoreToggleProps} />);
         });
 
         afterEach(() => {
-            facetMoreToggle.detach();
+            facetMoreToggle?.unmount();
         });
 
         it('should get the facet as a prop', () => {
@@ -48,31 +48,34 @@ describe('Facets', () => {
         });
 
         it('should call onToggleMore on change if prop is set', () => {
-            const onToggleMoreSpy = jasmine.createSpy('onToggleMore');
-            const handleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
+            const onToggleMoreSpy = jest.fn();
+            const handleOnChangeSpy: jest.SpyInstance = jest.spyOn(facetMoreToggle.instance() as any, 'handleOnChange');
             const newFacetMoreToggleProps = _.extend({}, basicFacetMoreToggleProps, {onToggleMore: onToggleMoreSpy});
 
             facetMoreToggle.find('input').simulate('change');
 
             expect(handleOnChangeSpy).toHaveBeenCalled();
 
-            facetMoreToggle = mount(<FacetMoreToggle {...newFacetMoreToggleProps} />, {
-                attachTo: document.getElementById('App'),
-            });
-            const newHandleOnChangeSpy = spyOn<any>(facetMoreToggle.instance(), 'handleOnChange').and.callThrough();
+            facetMoreToggle = mount(<FacetMoreToggle {...newFacetMoreToggleProps} />);
+            const newHandleOnChangeSpy: jest.SpyInstance = jest.spyOn(
+                facetMoreToggle.instance() as any,
+                'handleOnChange'
+            );
 
             facetMoreToggle.find('input').simulate('change');
 
             expect(newHandleOnChangeSpy).toHaveBeenCalled();
-            expect(onToggleMoreSpy.calls.count()).toBe(1);
+            expect(onToggleMoreSpy.mock.calls.length).toBe(1);
         });
 
         it('should stop clicks from propagating their events', () => {
-            const generalEventSpy = jasmine.createSpy('generalEvent');
+            const nativeEvent = {nativeEvent: {stopImmediatePropagation: _.noop}};
+
+            const generalEventSpy = jest.fn();
 
             document.addEventListener('click', generalEventSpy);
 
-            (document.getElementsByClassName('facet-more')[0] as HTMLDivElement).click();
+            facetMoreToggle.find('.facet-more').simulate('click', nativeEvent);
 
             expect(generalEventSpy).not.toHaveBeenCalled();
 

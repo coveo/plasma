@@ -35,7 +35,6 @@ describe('Autocomplete', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         describe('mount and unmount', () => {
@@ -101,7 +100,7 @@ describe('Autocomplete', () => {
         });
 
         it('should filter the visible values with custom function', () => {
-            const spy = jasmine.createSpy('matchFilter').and.callFake(() => false);
+            const spy = jest.fn(() => false);
             mountAutocomplete([{value: 'a'}, {value: 'b'}], {
                 // Take the value twice and make it uppercase
                 matchFilter: spy,
@@ -224,15 +223,15 @@ describe('Autocomplete', () => {
 
                 autocomplete.find('input').simulate('keyup', {keyCode: keyCode.enter});
 
-                expect(store.getState().autocompletes[0].open).toBe(true, '1');
+                expect(store.getState().autocompletes[0].open).toBe(true);
 
                 clickOnEl(autocomplete.find('.autocomplete-list-container').getDOMNode());
 
-                expect(store.getState().autocompletes[0].open).toBe(true, '2');
+                expect(store.getState().autocompletes[0].open).toBe(true);
 
                 clickOnEl();
 
-                expect(store.getState().autocompletes[0].open).toBe(false, '3');
+                expect(store.getState().autocompletes[0].open).toBe(false);
             });
 
             it('should not open the autocomplete when the user click outside the autocomplete', () => {

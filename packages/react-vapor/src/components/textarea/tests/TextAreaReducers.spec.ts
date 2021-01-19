@@ -25,7 +25,7 @@ describe('Reducers', () => {
             payload: {id: ''},
         };
 
-        it('should return the default state if the action is not related and the state is undefined ', () => {
+        it('should return the default state if the action is not related and the state is undefined', () => {
             expect(textAreasReducer(undefined, unrelatedAction)).toEqual(textAreasInitialState);
         });
 
@@ -54,7 +54,7 @@ describe('Reducers', () => {
                 const newState = textAreasReducer(oldState, action);
                 const newTextArea: ITextAreaState = getNewTextArea(newState, action)[0];
 
-                expect(newTextArea).toEqual(jasmine.objectContaining(action.payload));
+                expect(newTextArea).toEqual(expect.objectContaining(action.payload));
             });
 
             it('should return a textArea with the value in the payload if passed', () => {

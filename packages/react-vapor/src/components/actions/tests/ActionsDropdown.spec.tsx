@@ -17,7 +17,7 @@ describe('Actions', () => {
     beforeAll(() => {
         triggerAction = {
             name: 'action2',
-            trigger: jasmine.createSpy('methodTrigger'),
+            trigger: jest.fn(),
             enabled: true,
         };
     });

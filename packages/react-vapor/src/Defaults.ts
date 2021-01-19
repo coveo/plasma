@@ -1,4 +1,4 @@
-import ReactModal from 'react-modal';
+import {setAppElement} from 'react-modal';
 
 export abstract class Defaults {
     static MODAL_ROOT: string = 'body';
@@ -10,7 +10,7 @@ export abstract class Defaults {
     static TOOLTIP_ROOT: string = 'body';
 
     static set APP_ELEMENT(appElement: string | HTMLElement) {
-        ReactModal.setAppElement(appElement);
+        setAppElement(appElement);
     }
 
     static REFRESH_CALLBACK_INTERVAL_MS: number = 1000;

@@ -21,7 +21,6 @@ describe('<LoadingConnected />', () => {
                 {attachTo: document.getElementById('App')}
             );
             wrapper.unmount();
-            wrapper.detach();
         }).not.toThrow();
     });
 });

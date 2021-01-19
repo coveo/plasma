@@ -68,9 +68,9 @@ describe('Limit', () => {
         }).not.toThrow();
     });
 
-    describe('once mounted, ', () => {
+    describe('once mounted,', () => {
         afterEach(() => {
-            limit.detach();
+            limit?.unmount();
         });
 
         it('should display the custom limit label if the limitLabel prop is specified', () => {
@@ -170,7 +170,7 @@ describe('Limit', () => {
 
     describe('once mounted and connected', () => {
         afterEach(() => {
-            limit.detach();
+            limit?.unmount();
         });
 
         it('should contains an InputConnected if limit is editable', () => {

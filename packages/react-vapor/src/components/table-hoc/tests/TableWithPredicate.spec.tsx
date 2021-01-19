@@ -84,7 +84,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the predicate changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
@@ -93,14 +93,14 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({predicate: predicateValues[0].value});
+                wrapper.setProps({predicate: predicateValues[0].value} as any);
                 wrapper.update();
 
                 expect(updateSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should not call onUpdate when the predicate does not changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const predicate = predicateValues[1].value;
                 const wrapper = shallowWithState(
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
@@ -109,7 +109,7 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({ignore: true});
+                wrapper.setProps({ignore: true} as any);
                 wrapper.update();
 
                 expect(updateSpy).not.toHaveBeenCalled();

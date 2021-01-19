@@ -22,24 +22,18 @@ describe('Modal', () => {
             modalInstance = modal.instance() as Modal;
         });
 
-        afterEach(() => {
-            modal.detach();
-        });
-
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy = jasmine.createSpy('onRender');
-
-            expect(() => modalInstance.componentDidMount()).not.toThrow();
+            const renderSpy = jest.fn();
 
             modal.setProps({id: id, onRender: renderSpy});
             modal.unmount();
             modal.mount();
 
-            expect(renderSpy.calls.count()).toBe(1);
+            expect(renderSpy.mock.calls.length).toBe(1);
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy = jasmine.createSpy('onDestroy');
+            const destroySpy = jest.fn();
 
             expect(() => modalInstance.componentWillUnmount()).not.toThrow();
 
@@ -47,28 +41,28 @@ describe('Modal', () => {
             modal.mount();
             modal.unmount();
 
-            expect(destroySpy.calls.count()).toBe(1);
+            expect(destroySpy.mock.calls.length).toBe(1);
         });
 
         it('should call the prop closeCallback if it exists when closing the modal', () => {
-            jasmine.clock().install();
+            jest.useFakeTimers();
 
-            const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
+            const closeCallbackSpy: jest.Mock<any, any> = jest.fn();
             modal.setProps({isOpened: true, closeCallback: closeCallbackSpy});
             modal.update();
             modal.setProps({isOpened: false});
             modal.update();
 
-            jasmine.clock().tick(Defaults.MODAL_TIMEOUT);
+            jest.advanceTimersByTime(Defaults.MODAL_TIMEOUT);
 
             expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
 
         it('should call the prop closeCallback with a timeout if specified when closing the modal', () => {
-            jasmine.clock().install();
+            jest.useFakeTimers();
 
-            const closeCallbackSpy: jasmine.Spy = jasmine.createSpy('closeCallback');
+            const closeCallbackSpy: jest.Mock<any, any> = jest.fn();
             modal.setProps({isOpened: true, closeCallback: closeCallbackSpy, closeTimeout: 5});
             modal.update();
             modal.setProps({isOpened: false});
@@ -76,11 +70,11 @@ describe('Modal', () => {
 
             expect(closeCallbackSpy).toHaveBeenCalledTimes(0);
 
-            jasmine.clock().tick(5);
+            jest.advanceTimersByTime(5);
 
             expect(closeCallbackSpy).toHaveBeenCalledTimes(1);
 
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
 
         it('should set container class when the container class is specified', () => {

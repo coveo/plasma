@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 
-import {TestUtils} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableHeaderProps, TableHeader} from '../TableHeader';
 import {ITableHeaderCellOwnProps, ITableHeaderCellProps, TableHeaderCell} from '../TableHeaderCell';
 import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
@@ -24,6 +24,7 @@ describe('Tables', () => {
         let tableHeader: ReactWrapper<ITableHeaderProps, any>;
 
         beforeEach(() => {
+            createTestAppContainer();
             document.getElementById('App').innerHTML = '<table id="AppTable"></table>';
 
             columns = [
@@ -41,13 +42,7 @@ describe('Tables', () => {
 
             headerClass = 'header-class';
 
-            tableHeader = mount(<TableHeader columns={columns} headerClass={headerClass} />, {
-                attachTo: document.getElementById('AppTable'),
-            });
-        });
-
-        afterEach(() => {
-            tableHeader.detach();
+            tableHeader = mount(<TableHeader columns={columns} headerClass={headerClass} />);
         });
 
         it('should get the columns as a prop', () => {
@@ -89,8 +84,7 @@ describe('Tables', () => {
                 tableHeader = mount(
                     <Provider store={store}>
                         <TableHeader columns={_.values(currentColumns)} withReduxState />
-                    </Provider>,
-                    {attachTo: document.getElementById('AppTable')}
+                    </Provider>
                 );
 
                 expect(tableHeader.find(TableHeaderCellConnected).length).toBe(1);
@@ -108,8 +102,7 @@ describe('Tables', () => {
                 tableHeader = mount(
                     <Provider store={store}>
                         <TableHeader columns={_.values(currentColumns)} />
-                    </Provider>,
-                    {attachTo: document.getElementById('AppTable')}
+                    </Provider>
                 );
 
                 expect(tableHeader.find(TableHeaderCellConnected).length).toBe(0);

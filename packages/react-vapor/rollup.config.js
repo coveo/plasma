@@ -41,7 +41,9 @@ export default {
             use: ['sass'],
         }),
         scssVariable(),
-        resolve(),
+        resolve({
+            browser: true,
+        }),
         commonjs({
             namedExports: {
                 'hogan.js': ['Template', 'compile'],

@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {DateUtils} from '../../../utils/DateUtils';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 import {CalendarDay, ICalendarDayProps, IDay} from '../CalendarDay';
 
 describe('Calendar day', () => {
@@ -22,8 +23,8 @@ describe('Calendar day', () => {
     beforeAll(() => {
         BASIC_CALENDAR_DAY_PROPS = {
             day: DAY,
-            onClick: jasmine.createSpy('onClick'),
-            onSelectUnselectable: jasmine.createSpy('onSelectUnselectable'),
+            onClick: jest.fn(),
+            onSelectUnselectable: jest.fn(),
         };
     });
 
@@ -38,6 +39,7 @@ describe('Calendar day', () => {
         let calendarDayInstance: CalendarDay;
 
         beforeEach(() => {
+            createTestAppContainer();
             document.getElementById('App').innerHTML = '<table><tbody><tr id="AppTableRow"></tr></tbody></table>';
 
             calendarDay = mount(<CalendarDay {...BASIC_CALENDAR_DAY_PROPS} />, {
@@ -47,7 +49,8 @@ describe('Calendar day', () => {
         });
 
         afterEach(() => {
-            calendarDay.detach();
+            jest.resetAllMocks();
+            removeTestAppContainer();
         });
 
         it('should get the day as a prop', () => {
@@ -98,9 +101,9 @@ describe('Calendar day', () => {
 
             calendarDay.setProps(newProps);
 
-            expect(calendarDay.find('.selected-date').length).toBe(1, '.selected-date');
+            expect(calendarDay.find('.selected-date').length).toBe(1);
             expect(calendarDay.find('span').props().className).toContain('bg-');
-            expect(calendarDay.find('.bg-pink').length).toBe(1, '.bg-pink');
+            expect(calendarDay.find('.bg-pink').length).toBe(1);
         });
 
         it('should have the class "lower-limit" if the day is selected and isLowerLimit', () => {
@@ -148,7 +151,7 @@ describe('Calendar day', () => {
         });
 
         it('should call handleClick when clicking the day', () => {
-            const handleClickSpy: jasmine.Spy = spyOn<any>(calendarDayInstance, 'handleClick');
+            const handleClickSpy: jest.SpyInstance = jest.spyOn<any, string>(calendarDayInstance, 'handleClick');
 
             calendarDay.find('td').simulate('click');
 
@@ -180,7 +183,7 @@ describe('Calendar day', () => {
             });
             const unSelectableDayProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {
                 day: unSelectableDay,
-                onSelectUnselectable: jasmine.createSpy('onSelectUnselectable'),
+                onSelectUnselectable: jest.fn(),
             });
 
             calendarDay.setProps(unSelectableDayProps);

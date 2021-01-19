@@ -1,10 +1,25 @@
 import {shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
+import {mocked} from 'ts-jest/utils';
 
 import {XGrid} from '../XGrid';
 import {XYChartContextMock} from './XYChartContextMock';
 
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        useContext: jest.fn(),
+    };
+});
+
+const mockedReact = mocked(React);
+
 describe('<XGrid />', () => {
+    beforeAll(() => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
+    });
+
     it('should not throw with the default context', () => {
         expect(() => {
             shallow(<XGrid />);
@@ -14,8 +29,6 @@ describe('<XGrid />', () => {
     });
 
     it('should not throw with a custom context', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
-
         expect(() => {
             shallow(<XGrid />);
             shallow(<XGrid padding={10} />);
@@ -24,8 +37,6 @@ describe('<XGrid />', () => {
     });
 
     it('should render a line', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
-
         const component = shallow(<XGrid />);
 
         expect(component.find('line').exists()).toBe(true);

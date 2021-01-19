@@ -10,11 +10,11 @@ import {RefreshStatus} from '../RefreshCallbackReducer';
 describe('RefreshCallback tests', () => {
     describe('<RefreshCallback />', () => {
         beforeEach(() => {
-            jasmine.clock().install();
+            jest.useFakeTimers();
         });
 
         afterEach(() => {
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
 
         it('should mount and unmount without error', () => {
@@ -28,18 +28,18 @@ describe('RefreshCallback tests', () => {
             let component: ShallowWrapper<IRefreshCallbackProps, IRefreshCallbackState>;
 
             it('should call renderCount on render', () => {
-                const spy = jasmine.createSpy('renderCount');
+                const spy = jest.fn();
                 shallowWithState(<RefreshCallback callback={() => ''} renderCount={spy} />, {}).dive();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
 
             it('should call the callback when the timer is 0 and status inProgress', () => {
-                const spy = jasmine.createSpy('callback');
+                const spy = jest.fn();
                 shallowWithState(<RefreshCallback id={'id'} callback={spy} delay={1} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 }).dive();
-                jasmine.clock().tick(1001);
+                jest.advanceTimersByTime(1001);
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
@@ -48,7 +48,7 @@ describe('RefreshCallback tests', () => {
                 component = shallowWithState(<RefreshCallback id={'id'} callback={() => ''} />, {
                     refreshCallback: {id: RefreshStatus.stopped},
                 }).dive();
-                jasmine.clock().tick(1001);
+                jest.advanceTimersByTime(1001);
 
                 expect(component.state().count).toBe(9);
 
@@ -64,7 +64,7 @@ describe('RefreshCallback tests', () => {
                 component = shallowWithState(<RefreshCallback id={'id'} callback={() => ''} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 }).dive();
-                jasmine.clock().tick(1001);
+                jest.advanceTimersByTime(1001);
 
                 expect(component.state().count).toBe(9);
 
@@ -74,7 +74,7 @@ describe('RefreshCallback tests', () => {
                 });
 
                 expect(component.state().count).toBe(9);
-                jasmine.clock().tick(1001);
+                jest.advanceTimersByTime(1001);
 
                 expect(component.state().count).toBe(9);
             });
@@ -86,19 +86,19 @@ describe('RefreshCallback tests', () => {
                     store = getStoreMock({});
                     component = shallowWithStore(<RefreshCallback id={'id'} callback={() => ''} />, store).dive();
 
-                    expect(store.getActions()).toContain(RefreshCallBackActions.inProgress('id'));
+                    expect(store.getActions()).toContainEqual(RefreshCallBackActions.inProgress('id'));
                 });
 
                 it('should dispatch a stop when the callback is trigger', () => {
                     store = getStoreMock({
                         refreshCallback: {id: RefreshStatus.inProgress},
                     });
-                    const spy = jasmine.createSpy('callback');
+                    const spy = jest.fn();
                     shallowWithStore(<RefreshCallback id={'id'} callback={spy} delay={1} />, store).dive();
-                    jasmine.clock().tick(1001);
+                    jest.advanceTimersByTime(1001);
 
                     expect(spy).toHaveBeenCalledTimes(1);
-                    expect(store.getActions()).toContain(RefreshCallBackActions.stop('id'));
+                    expect(store.getActions()).toContainEqual(RefreshCallBackActions.stop('id'));
                 });
             });
         });

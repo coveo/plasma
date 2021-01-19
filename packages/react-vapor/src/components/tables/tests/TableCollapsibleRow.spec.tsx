@@ -18,6 +18,9 @@ describe('Tables', () => {
         let basicTableCollapsibleRowProps: ITableCollapsibleRowProps;
 
         beforeEach(() => {
+            const div = document.createElement('div');
+            div.setAttribute('id', 'App');
+            document.body.appendChild(div);
             document.getElementById('App').innerHTML = '<table><tbody id="AppTableBody"></tbody></table>';
 
             basicTableCollapsibleRowProps = {
@@ -75,7 +78,7 @@ describe('Tables', () => {
             const errorProp = tableCollapsibleRow.props().error;
 
             expect(errorProp).toBeDefined();
-            expect(errorProp).toEqual(jasmine.objectContaining(basicTableCollapsibleRowProps.error));
+            expect(errorProp).toEqual(expect.objectContaining(basicTableCollapsibleRowProps.error));
         });
 
         it('should render an <TableError /> component if is in error', () => {

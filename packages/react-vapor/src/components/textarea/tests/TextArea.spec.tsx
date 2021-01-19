@@ -5,7 +5,6 @@ import {act} from 'react-dom/test-utils';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {ITextAreaProps, TextArea, TextAreaConnected} from '../TextArea';
-import {TextAreaActions} from '../TextAreaActions';
 
 describe('TextArea', () => {
     it('should render without errors', () => {
@@ -20,10 +19,6 @@ describe('TextArea', () => {
 
         beforeEach(() => {
             wrapper = mount(<TextArea id="textarea-id" />, {attachTo: document.getElementById('App')});
-        });
-
-        afterEach(() => {
-            wrapper.detach();
         });
 
         it('should set textarea id when specified', () => {
@@ -83,7 +78,7 @@ describe('TextArea', () => {
         });
 
         it('should call prop onChange on textarea change', () => {
-            const onChange = jasmine.createSpy('onChange');
+            const onChange = jest.fn();
 
             wrapper.setProps({onChange}).update();
             wrapper.find('textarea').simulate('change');
@@ -92,7 +87,7 @@ describe('TextArea', () => {
         });
 
         it('should call prop onChangeCallback on textarea change', () => {
-            const onChangeCallback = jasmine.createSpy('onChangeCallback');
+            const onChangeCallback = jest.fn();
 
             wrapper.setProps({onChangeCallback}).update();
             wrapper.find('textarea').simulate('change');
@@ -101,7 +96,7 @@ describe('TextArea', () => {
         });
 
         it('should contains validation message if debounced value is invalid', () => {
-            jasmine.clock().install();
+            jest.useFakeTimers();
             const invalidValue = '';
             const validation = (value: string) => value !== invalidValue;
             const validationMessage = 'invalid value';
@@ -117,7 +112,7 @@ describe('TextArea', () => {
             act(() => {
                 wrapper.update(); // set value to invalid value
             });
-            jasmine.clock().tick(400);
+            jest.advanceTimersByTime(400);
             act(() => {
                 wrapper.update(); // setTimeout call back set the debouncedValue
             });
@@ -126,11 +121,11 @@ describe('TextArea', () => {
             });
 
             expect(wrapper.contains(validationMessage)).toBeTruthy();
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
 
         it('should call prop validate on value change', () => {
-            const validate = jasmine.createSpy('validate');
+            const validate = jest.fn();
             hookWrapper = mount(<TextArea id="textarea-id" validate={validate} />);
 
             hookWrapper.find('textarea').simulate('change', {target: {value: 'new value'}});
@@ -142,7 +137,7 @@ describe('TextArea', () => {
         });
 
         it('should call prop onMount on mount', () => {
-            const onMount = jasmine.createSpy('onMount');
+            const onMount = jest.fn();
 
             hookWrapper = mount(<TextArea id="textarea-id" onMount={onMount} />);
 
@@ -154,7 +149,7 @@ describe('TextArea', () => {
         });
 
         it('should call prop onUnmount on Unmount', () => {
-            const onUnmount = jasmine.createSpy('onUnmount');
+            const onUnmount = jest.fn();
 
             hookWrapper = mount(<TextArea id="textarea-id" onUnmount={onUnmount} />);
             hookWrapper.unmount();
@@ -176,7 +171,7 @@ describe('TextArea', () => {
 
             afterEach(() => {
                 store.clearActions();
-                wrapper.detach();
+                wrapper?.unmount();
             });
 
             describe('dispatch props', () => {
@@ -201,7 +196,7 @@ describe('TextArea', () => {
 
             describe('onMount', () => {
                 it('should add a textArea in the store with default values', () => {
-                    const add = spyOn(TextAreaActions, 'add');
+                    const add = jest.fn();
                     hookWrapper = mountWithStore(<TextAreaConnected id={'textarea-id'} onMount={add} />, store);
                     act(() => {
                         hookWrapper.update();
@@ -222,8 +217,8 @@ describe('TextArea', () => {
                     });
 
                     expect(store.getActions().find((action) => action.type === 'ADD_TEXTAREA')).toEqual(
-                        jasmine.objectContaining({
-                            payload: jasmine.objectContaining({id: textAreaProps.id, value: valueOnMount}),
+                        expect.objectContaining({
+                            payload: expect.objectContaining({id: textAreaProps.id, value: valueOnMount}),
                         })
                     );
                 });
@@ -240,8 +235,8 @@ describe('TextArea', () => {
                     });
 
                     expect(store.getActions().find((action) => action.type === 'ADD_TEXTAREA')).toEqual(
-                        jasmine.objectContaining({
-                            payload: jasmine.objectContaining({id: textAreaProps.id, disabled: disabledOnMount}),
+                        expect.objectContaining({
+                            payload: expect.objectContaining({id: textAreaProps.id, disabled: disabledOnMount}),
                         })
                     );
                 });
@@ -256,7 +251,7 @@ describe('TextArea', () => {
                     });
 
                     expect(store.getActions().find((action) => action.type === 'REMOVE_TEXTAREA')).toEqual(
-                        jasmine.objectContaining({payload: jasmine.objectContaining({id: textAreaProps.id})})
+                        expect.objectContaining({payload: expect.objectContaining({id: textAreaProps.id})})
                     );
                 });
             });
@@ -272,8 +267,8 @@ describe('TextArea', () => {
                     });
 
                     expect(store.getActions().find((action) => action.type === 'CHANGE_VALUE_TEXTAREA')).toEqual(
-                        jasmine.objectContaining({
-                            payload: jasmine.objectContaining({id: textAreaProps.id, value: 'new value'}),
+                        expect.objectContaining({
+                            payload: expect.objectContaining({id: textAreaProps.id, value: 'new value'}),
                         })
                     );
                 });

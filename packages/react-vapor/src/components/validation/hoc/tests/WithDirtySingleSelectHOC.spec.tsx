@@ -81,7 +81,7 @@ describe('SingleSelectWithDirty', () => {
 
         mountSingleSelectWithHOC({}, storeWithInitialValue);
 
-        expect(storeWithInitialValue.getActions()).toContain(
+        expect(storeWithInitialValue.getActions()).toContainEqual(
             ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
         );
     });
@@ -96,7 +96,7 @@ describe('SingleSelectWithDirty', () => {
             storeWithInitialValue
         );
 
-        expect(storeWithInitialValue.getActions()).toContain(
+        expect(storeWithInitialValue.getActions()).toContainEqual(
             ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
         );
     });
@@ -111,7 +111,7 @@ describe('SingleSelectWithDirty', () => {
             storeWithInitialValue
         );
 
-        expect(storeWithInitialValue.getActions()).not.toContain(
+        expect(storeWithInitialValue.getActions()).not.toContainEqual(
             ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
         );
     });

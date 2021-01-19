@@ -1,10 +1,10 @@
-import escapeRegExp from 'escape-string-regexp';
+import escapeStringRegexp from 'escape-string-regexp';
 import {ReactNode} from 'react';
 
 import {getReactNodeTextContent} from './JSXUtils';
 
 const matchesString = (filterValue: string, str: string, caseSensitive = false): boolean => {
-    const escapedFilterValue = escapeRegExp(filterValue ?? '');
+    const escapedFilterValue = escapeStringRegexp(filterValue ?? '');
     return escapedFilterValue === '' || new RegExp(escapedFilterValue, caseSensitive ? 'g' : 'gi').test(str);
 };
 

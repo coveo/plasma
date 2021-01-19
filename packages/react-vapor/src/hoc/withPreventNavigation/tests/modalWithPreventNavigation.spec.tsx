@@ -132,7 +132,7 @@ describe('Modal with Prevent Navigation', () => {
         shallowWithProps({}, true);
         component.find(PreventNavigationPrompt).prop('onClose')();
 
-        expect(store.getActions()).toContain(closeModal(SomeModal.ID));
+        expect(store.getActions()).toContainEqual(closeModal(SomeModal.ID));
     });
 
     it('should not dispatch a close modal when the prevent navigation onStay is called', () => {

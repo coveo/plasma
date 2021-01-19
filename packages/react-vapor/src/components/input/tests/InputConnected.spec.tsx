@@ -10,7 +10,7 @@ import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInputProps, Input} from '../Input';
 import {InputConnected} from '../InputConnected';
-import {inputPossibleProps, inputProps} from './InputTestCommons.spec';
+import {inputPossibleProps, inputProps} from './InputTestCommons.mock';
 
 describe('<InputConnected />', () => {
     let store: Store<IReactVaporState>;
@@ -22,7 +22,6 @@ describe('<InputConnected />', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper?.detach();
     });
 
     const mountComponentWithProps = (props: IInputProps = {}) => {
@@ -150,45 +149,8 @@ describe('<InputConnected />', () => {
     });
 
     describe('onChange', () => {
-        it('should change the value in the store to the new value and leave the valid value unchanged', () => {
-            mountComponentWithProps(inputProps);
-            const oldInputState = findWhere(store.getState().inputs, {id: inputProps.id});
-
-            expect(oldInputState.value).toBe('');
-
-            (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = 'new value';
-            wrapper.find('input').simulate('change');
-
-            const newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
-
-            expect(newInputState.value).toBe('new value');
-            expect(newInputState.valid).toBe(oldInputState.valid);
-        });
-
-        it('should send the proper valid value to the input state if validateOnChange and validate are set as props', () => {
-            const validateOnChange = true;
-            const validate = (value: string) => !!value;
-            mountComponentWithProps({...inputProps, validate, validateOnChange});
-
-            (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = 'new value';
-            wrapper.find('input').simulate('change');
-
-            let newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
-
-            expect(validate(newInputState.value)).toBe(true);
-            expect(newInputState.valid).toBe(validate(newInputState.value));
-
-            (document.querySelector(`#${inputProps.id}`) as HTMLInputElement).value = '';
-            wrapper.find('input').simulate('change');
-
-            newInputState = findWhere(store.getState().inputs, {id: inputProps.id});
-
-            expect(validate(newInputState.value)).toBe(false);
-            expect(newInputState.valid).toBe(validate(newInputState.value));
-        });
-
         it('should call changeDirtyState if set as props', () => {
-            const changeDirtyStateSpy = jasmine.createSpy();
+            const changeDirtyStateSpy = jest.fn();
             const wrapperInputConnected = shallowWithState(<InputConnected />, {});
 
             wrapperInputConnected.props().onChange();

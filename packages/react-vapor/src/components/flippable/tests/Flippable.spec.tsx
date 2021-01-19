@@ -3,6 +3,7 @@ import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 
 import {BrowserUtils} from '../../../utils/BrowserUtils';
+import {removeTestAppContainer} from '../../../utils/tests/TestUtils';
 import {Flippable, IFlippableProps} from '../Flippable';
 
 describe('Flippable', () => {
@@ -16,17 +17,19 @@ describe('Flippable', () => {
         let flippable: ReactWrapper<IFlippableProps>;
 
         beforeEach(() => {
+            const div = document.createElement('div');
+            div.setAttribute('id', 'App');
+            document.body.appendChild(div);
+
             flippable = mount(<Flippable />, {attachTo: document.getElementById('App')});
         });
 
         afterEach(() => {
-            flippable.detach();
+            removeTestAppContainer();
         });
 
         it('should call onRender prop if set when mounting', () => {
-            const onRenderSpy = jasmine.createSpy('onRender');
-
-            expect(() => flippable.instance().componentDidMount()).not.toThrow();
+            const onRenderSpy = jest.fn();
 
             flippable.unmount();
             flippable.setProps({onRender: onRenderSpy});
@@ -36,7 +39,7 @@ describe('Flippable', () => {
         });
 
         it('should call onDestroy prop if set when will unmount', () => {
-            const onDestroySpy = jasmine.createSpy('onDestroy');
+            const onDestroySpy = jest.fn();
 
             expect(() => flippable.instance().componentWillUnmount()).not.toThrow();
 
@@ -51,7 +54,7 @@ describe('Flippable', () => {
         });
 
         it('should have the flippable-ie class when the browser is IE', () => {
-            spyOn(BrowserUtils, 'isIE').and.returnValue(true);
+            jest.spyOn(BrowserUtils, 'isIE').mockReturnValue(true);
             const component = shallowWithState(<Flippable />, {});
 
             expect(component.hasClass('flippable-ie')).toBe(true);
@@ -104,7 +107,7 @@ describe('Flippable', () => {
         });
 
         it('should call onFlip prop if any when clicking on the front side and flippable is not flipped', () => {
-            const onFlipSpy = jasmine.createSpy('onFlip');
+            const onFlipSpy = jest.fn();
 
             flippable.setProps({
                 onFlip: onFlipSpy,
@@ -144,7 +147,7 @@ describe('Flippable', () => {
             'should call onUnflip prop if any when clicking outside the back side of the flippable ' +
                 'only when it is flipped',
             () => {
-                const onUnflipSpy = jasmine.createSpy('onUnflip');
+                const onUnflipSpy = jest.fn();
 
                 flippable.setProps({
                     onUnflip: onUnflipSpy,
@@ -169,7 +172,7 @@ describe('Flippable', () => {
         );
 
         it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns false', () => {
-            const onUnflipSpy = jasmine.createSpy('onUnflip');
+            const onUnflipSpy = jest.fn();
 
             flippable.setProps({
                 onUnflip: onUnflipSpy,
@@ -183,7 +186,7 @@ describe('Flippable', () => {
         });
 
         it('should not unflip the flippable when trying to unflip while allowUnflip prop is set and returns true', () => {
-            const onUnflipSpy = jasmine.createSpy('onUnflip');
+            const onUnflipSpy = jest.fn();
 
             flippable.setProps({
                 onUnflip: onUnflipSpy,

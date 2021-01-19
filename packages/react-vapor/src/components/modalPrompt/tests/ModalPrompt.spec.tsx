@@ -42,7 +42,7 @@ describe('ModalPrompt', () => {
         });
 
         afterEach(() => {
-            modalPrompt.detach();
+            modalPrompt?.unmount();
         });
 
         it('should set default value for cancel label when not set', () => {
@@ -76,7 +76,7 @@ describe('ModalPrompt', () => {
         });
 
         afterEach(() => {
-            modalPrompt.detach();
+            modalPrompt?.unmount();
         });
 
         it('should set opened class on container when isOpened is true', () => {
@@ -88,11 +88,11 @@ describe('ModalPrompt', () => {
         });
 
         describe('with a confirm spy', () => {
-            let confirmSpy: jasmine.Spy;
+            let confirmSpy: jest.Mock<any, any>;
             let confirmButton: ReactWrapper<React.HTMLAttributes<HTMLButtonElement>, void>;
 
             beforeEach(() => {
-                confirmSpy = jasmine.createSpy('onConfirm');
+                confirmSpy = jest.fn();
                 confirmButton = modalPrompt.find('.js-confirm');
             });
 
@@ -109,14 +109,14 @@ describe('ModalPrompt', () => {
         });
 
         describe('with a cancel spy', () => {
-            let cancelSpy: jasmine.Spy;
+            let cancelSpy: jest.Mock<any, any>;
 
             beforeEach(() => {
-                cancelSpy = jasmine.createSpy('onCancel');
+                cancelSpy = jest.fn();
             });
 
             it('should call prop onCancel when modalPrompt x is clicked and prop is set', () => {
-                jasmine.clock().install();
+                jest.useFakeTimers();
                 const closeButton = modalPrompt.find('.small-close');
 
                 closeButton.simulate('click');
@@ -124,12 +124,12 @@ describe('ModalPrompt', () => {
                 expect(cancelSpy).not.toHaveBeenCalled();
 
                 modalPrompt.setProps({id, title, onCancel: cancelSpy});
-                jasmine.clock().tick(5);
+                jest.advanceTimersByTime(5);
 
                 closeButton.simulate('click');
 
                 expect(cancelSpy).toHaveBeenCalledTimes(1);
-                jasmine.clock().uninstall();
+                jest.clearAllTimers();
             });
 
             it('should call prop onCancel when modalPrompt cancel button is clicked and prop is set', () => {

@@ -11,7 +11,7 @@ import {UUID} from '../UUID';
 import {TestUtils} from './TestUtils';
 
 const mockUUID = (generatedId: string = 'id') => {
-    spyOn(UUID, 'generate').and.returnValue(generatedId);
+    jest.spyOn(UUID, 'generate').mockReturnValue(generatedId);
 };
 
 const mockTagContext = () => {

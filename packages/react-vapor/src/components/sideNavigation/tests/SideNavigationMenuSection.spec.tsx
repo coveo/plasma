@@ -62,7 +62,7 @@ describe('SideNavigationMenuSection', () => {
     });
 
     it('should call onClick prop when clicking on the header', () => {
-        const onClickSpy = jasmine.createSpy('click');
+        const onClickSpy = jest.fn();
         section = shallow(<SideNavigationMenuSection {...header} onClick={onClickSpy} />);
         section.find('SideNavigationHeader').prop('onClick')(null);
 

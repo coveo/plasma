@@ -68,7 +68,6 @@ describe('GroupableCheckbox', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         describe('Child checkbox', () => {
@@ -111,11 +110,8 @@ describe('GroupableCheckbox', () => {
                 groupableCheckbox.props().onDestroy();
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
-                expect(groupableChekboxesState.length).toBe(1, 'state do not exist');
-                expect(groupableChekboxesState[0].checkboxes.length).toBe(
-                    0,
-                    'child checkbox was not removed on destroy'
-                );
+                expect(groupableChekboxesState.length).toBe(1);
+                expect(groupableChekboxesState[0].checkboxes.length).toBe(0);
             });
 
             it('should toggle the child checkbox on click witch checked true', () => {
@@ -125,11 +121,8 @@ describe('GroupableCheckbox', () => {
                 groupableCheckbox.props().onClick({} as any);
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
-                expect(groupableChekboxesState.length).toBe(1, 'checkboxes do not exist');
-                expect(groupableChekboxesState[0].checkboxes[0].checked).toBe(
-                    true,
-                    'child checkbox state checked was not updated on click'
-                );
+                expect(groupableChekboxesState.length).toBe(1);
+                expect(groupableChekboxesState[0].checkboxes[0].checked).toBe(true);
             });
 
             it('should toggle the child checkbox on click witch checked false', () => {
@@ -139,11 +132,8 @@ describe('GroupableCheckbox', () => {
                 groupableCheckbox.props().onClick({} as any);
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
-                expect(groupableChekboxesState.length).toBe(1, 'checkboxes do not exist');
-                expect(groupableChekboxesState[0].checkboxes[0].checked).toBe(
-                    false,
-                    'child checkbox state checked was not updated on click'
-                );
+                expect(groupableChekboxesState.length).toBe(1);
+                expect(groupableChekboxesState[0].checkboxes[0].checked).toBe(false);
             });
         });
 
@@ -168,8 +158,8 @@ describe('GroupableCheckbox', () => {
                 renderParentCheckbox();
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
-                expect(groupableChekboxesState.length).toBe(1, 'groupableCheckbox not added on render in the state');
-                expect(groupableChekboxesState[0].parent).toBeDefined('parent is not defined in the store');
+                expect(groupableChekboxesState.length).toBe(1);
+                expect(groupableChekboxesState[0].parent).toBeDefined();
             });
 
             it('should remove all the groupableChekboxeState if the parent is deleted', () => {
@@ -177,7 +167,7 @@ describe('GroupableCheckbox', () => {
                 groupableCheckbox.props().onDestroy();
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
-                expect(groupableChekboxesState.length).toBe(0, 'groupableCheckbox was not removed onDestroy');
+                expect(groupableChekboxesState.length).toBe(0);
             });
         });
 
@@ -195,7 +185,7 @@ describe('GroupableCheckbox', () => {
 
             afterEach(() => {
                 _.each(wrappers, (currentWrapper: ReactWrapper<any, any>) => {
-                    currentWrapper.detach();
+                    currentWrapper.unmount();
                 });
             });
 
@@ -203,24 +193,21 @@ describe('GroupableCheckbox', () => {
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
                 groupableCheckboxState = groupableChekboxesState[0];
 
-                expect(groupableChekboxesState.length).toBe(1, 'groupableCheckbox not added on render in the state');
-                expect(groupableCheckboxState.checkboxes.length).toBe(
-                    2,
-                    'child groupableCheckbox not added on render in the state.checkboxes'
-                );
+                expect(groupableChekboxesState.length).toBe(1);
+                expect(groupableCheckboxState.checkboxes.length).toBe(2);
 
-                expect(groupableCheckboxState.parent).toBeDefined('parent id not added with is child checkboxes');
+                expect(groupableCheckboxState.parent).toBeDefined();
             });
 
             it('should have total equal to the number of child checkboxes added', () => {
                 groupableCheckboxState = getFirstGroupableCheckbox(store);
 
-                expect(groupableCheckboxState.total).toBe(2, 'total was not updated on add child checkbox');
+                expect(groupableCheckboxState.total).toBe(2);
 
                 wrappers.push(renderChildCheckbox({id: parentId + '4'}, divTemplateClasses.checkbox4));
                 groupableCheckboxState = getFirstGroupableCheckbox(store);
 
-                expect(groupableCheckboxState.total).toBe(3, 'total was not updated on add the last child checkbox');
+                expect(groupableCheckboxState.total).toBe(3);
             });
 
             it('should have nbChecked equal to the number of child checkboxes checked added', () => {
@@ -230,7 +217,7 @@ describe('GroupableCheckbox', () => {
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
                 groupableCheckboxState = groupableChekboxesState[0];
 
-                expect(groupableCheckboxState.nbChecked).toBe(1, 'nbChecked was not updated on add child checkbox');
+                expect(groupableCheckboxState.nbChecked).toBe(1);
             });
 
             it('should toggle all child checkbox on click parent checkbox true', () => {
@@ -239,7 +226,7 @@ describe('GroupableCheckbox', () => {
 
                 expect(
                     _.every(groupableChekboxesState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.checked)
-                ).toBe(true, 'all checkboxes are not checked on parent click');
+                ).toBe(true);
 
                 expect(groupableChekboxesState[0].nbChecked).toBe(2);
             });
@@ -251,7 +238,7 @@ describe('GroupableCheckbox', () => {
 
                 expect(
                     _.every(groupableChekboxesState[0].checkboxes, (checkbox: ICheckboxState) => !checkbox.checked)
-                ).toBe(true, 'groupableCheckbox not added on render in the state');
+                ).toBe(true);
 
                 expect(groupableChekboxesState[0].nbChecked).toBe(0);
             });

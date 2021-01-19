@@ -41,7 +41,6 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            singleSelect.detach();
         });
 
         describe('mount and unmount', () => {
@@ -169,7 +168,7 @@ describe('Select', () => {
         });
 
         it('should clear the selected value when the deselect is clicked', () => {
-            const spy = spyOn(store, 'dispatch').and.callThrough();
+            const spy = jest.spyOn(store, 'dispatch');
             mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
 
             select.find('.btn-append').first().simulate('click');
@@ -203,7 +202,7 @@ describe('Select', () => {
         });
 
         it('should call with the selected option the onSelectOptionCallback prop when defined', () => {
-            const onSelectOptionCallbackSpy = jasmine.createSpy('onSelectOptionCallback');
+            const onSelectOptionCallbackSpy = jest.fn();
 
             mountSingleSelect([{value: 'a'}, {value: 'b'}], {onSelectOptionCallback: onSelectOptionCallbackSpy});
 
@@ -236,18 +235,18 @@ describe('Select', () => {
             it('should close the dropdown when the user press escape on the button and the dropdown is open', () => {
                 mountSingleSelect();
 
-                expect(getIsOpen()).toBe(false, 0);
+                expect(getIsOpen()).toBe(false);
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
 
-                expect(getIsOpen()).toBe(false, 1);
+                expect(getIsOpen()).toBe(false);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
 
-                expect(getIsOpen()).toBe(true, 2);
+                expect(getIsOpen()).toBe(true);
 
                 select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
 
-                expect(getIsOpen()).toBe(false, 3);
+                expect(getIsOpen()).toBe(false);
             });
         });
 

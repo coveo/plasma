@@ -26,7 +26,7 @@ describe('MultiSelectWithDirty', () => {
             component.mount();
         });
 
-        expect(store.getActions()).toContain(ValidationActions.setDirty(defaultProps.id, true));
+        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, true));
     });
 
     it('should trigger the dirty state when the user removes a value', () => {
@@ -41,7 +41,7 @@ describe('MultiSelectWithDirty', () => {
             component.mount();
         });
 
-        expect(store.getActions()).toContain(ValidationActions.setDirty(defaultProps.id, true));
+        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, true));
     });
 
     it('should not trigger the dirty state when the initial values are the same as the selected ones', () => {
@@ -53,7 +53,7 @@ describe('MultiSelectWithDirty', () => {
             component.mount();
         });
 
-        expect(store.getActions()).toContain(ValidationActions.setDirty(defaultProps.id, false));
+        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, false));
     });
 
     it('should not trigger the dirty state when there is no initial value and selected value', () => {
@@ -65,6 +65,6 @@ describe('MultiSelectWithDirty', () => {
             component.mount();
         });
 
-        expect(store.getActions()).toContain(ValidationActions.setDirty(defaultProps.id, false));
+        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, false));
     });
 });

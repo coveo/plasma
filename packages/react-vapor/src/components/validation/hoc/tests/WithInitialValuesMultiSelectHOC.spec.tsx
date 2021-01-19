@@ -43,7 +43,7 @@ describe('MultiSelectWithInitialValues', () => {
             component.mount();
         });
 
-        expect(emptyStore.getActions()).toContain(
+        expect(emptyStore.getActions()).toContainEqual(
             ValidationActions.setWarning(
                 defaultProps.id,
                 INVALID_INITIAL_VALUE_MOCK_MESSAGE,
@@ -71,7 +71,7 @@ describe('MultiSelectWithInitialValues', () => {
             component.mount();
         });
 
-        expect(emptyStore.getActions()).toContain(
+        expect(emptyStore.getActions()).toContainEqual(
             ValidationActions.setWarning(defaultProps.id, '', ValidationTypes.wrongInitialValue)
         );
     });
@@ -86,7 +86,7 @@ describe('MultiSelectWithInitialValues', () => {
             component.mount();
         });
 
-        expect(emptyStore.getActions()).toContain(
+        expect(emptyStore.getActions()).toContainEqual(
             ValidationActions.setWarning(defaultProps.id, '', ValidationTypes.wrongInitialValue)
         );
     });
@@ -127,7 +127,7 @@ describe('MultiSelectWithInitialValues', () => {
             component.unmount();
         });
 
-        expect(emptyStore.getActions()).toContain(
+        expect(emptyStore.getActions()).toContainEqual(
             ValidationActions.clearWarning(defaultProps.id, ValidationTypes.wrongInitialValue)
         );
     });

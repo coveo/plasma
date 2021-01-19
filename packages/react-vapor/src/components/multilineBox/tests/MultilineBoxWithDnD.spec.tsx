@@ -68,7 +68,7 @@ describe('Multiline box with drag & drop', () => {
             });
 
             it('should call the DnDUtils move function on props move set on DnDContainer', () => {
-                const spy = spyOn(DnDUtils, 'move').and.returnValue([]);
+                const spy = jest.spyOn(DnDUtils, 'move').mockImplementation(() => []);
 
                 const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,

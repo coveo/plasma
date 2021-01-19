@@ -1,4 +1,4 @@
-import escapeRegExp from 'escape-string-regexp';
+import escapeStringRegexp from 'escape-string-regexp';
 import * as React from 'react';
 
 export interface PartialStringMatchProps {
@@ -76,7 +76,7 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
 
     private hightlightMatches(str: string): React.ReactNode {
         const flags = this.props.caseInsensitive ? 'ig' : 'g';
-        const matcher = escapeRegExp(this.props.partialMatch);
+        const matcher = escapeStringRegexp(this.props.partialMatch);
         const regExp = new RegExp(`(${matcher})`, flags);
 
         if (regExp.test(str)) {
