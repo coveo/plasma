@@ -101,6 +101,8 @@ describe('Calendar day', () => {
             calendarDay.setProps(newProps);
 
             expect(calendarDay.find('.selected-date').length).toBe(1);
+            expect(calendarDay.find('span').props().className).toContain('bg-');
+            expect(calendarDay.find('.bg-pink').length).toBe(1);
         });
 
         it('should have the class "lower-limit" if the day is selected and isLowerLimit', () => {
