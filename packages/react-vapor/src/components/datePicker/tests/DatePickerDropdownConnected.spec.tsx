@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
 import {clearState} from '../../../utils/ReduxUtils';
-import {getStoreMock, TestUtils} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, getStoreMock, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
 import {DEFAULT_YEARS, MONTH_PICKER_ID, YEAR_PICKER_ID} from '../../calendar/Calendar';
 import {DefaultGroupIds, DropActions} from '../../drop/redux/DropActions';
@@ -41,32 +41,32 @@ describe('Date picker', () => {
             };
 
             it('should call isOpen from the DropSelector', () => {
-                const spy = spyOn(DropSelectors, 'isOpen');
+                const spy = jest.spyOn(DropSelectors, 'isOpen');
                 mountComponent();
 
                 expect(spy).toHaveBeenCalled();
             });
 
             it('should close the drop if the props withDrop is enable on onClose', () => {
-                spyOn(DropSelectors, 'isOpen').and.returnValue(true);
+                jest.spyOn(DropSelectors, 'isOpen').mockReturnValue(true);
 
                 wrapper = mountComponent();
                 const wrapperFooter = shallow(wrapper.find(DatePickerBox).props().footer);
                 wrapperFooter.find(Button).last().props().onClick();
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false)
                 );
             });
 
             it('should close the drop if the props withDrop is enable on onApply', () => {
-                spyOn(DropSelectors, 'isOpen').and.returnValue(true);
+                jest.spyOn(DropSelectors, 'isOpen').mockReturnValue(true);
 
                 wrapper = mountComponent();
                 const wrapperFooter = shallow(wrapper.find(DatePickerBox).props().footer);
                 wrapperFooter.find(Button).first().props().onClick();
 
-                expect(store.getActions()).toContain(
+                expect(store.getActions()).toContainEqual(
                     DropActions.toggle(DATE_PICKER_DROPDOWN_BASIC_PROPS.id, DefaultGroupIds.default, false)
                 );
             });
@@ -81,8 +81,7 @@ describe('Date picker', () => {
                 wrapper = mount(
                     <Provider store={store}>
                         <DatePickerDropdownConnected {...props} />
-                    </Provider>,
-                    {attachTo: document.getElementById('App')}
+                    </Provider>
                 );
                 datePickerDropdown = wrapper.find(DatePickerDropdown).first();
             };
@@ -90,12 +89,13 @@ describe('Date picker', () => {
             beforeEach(() => {
                 store = TestUtils.buildStore();
 
+                createTestAppContainer();
                 mountWithProps(DATE_PICKER_DROPDOWN_BASIC_PROPS);
             });
 
             afterEach(() => {
+                removeTestAppContainer();
                 store.dispatch(clearState());
-                wrapper.detach();
             });
 
             it('should get an id as a prop', () => {

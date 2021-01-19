@@ -58,14 +58,14 @@ describe('Options cycle', () => {
         it('should add the optionCycle to the state when mounted', () => {
             optionsCycle = shallowCycleWithProps().dive();
 
-            expect(store.getActions()).toContain(addOptionsCycle(optionsCycleBasicProps.id, 0));
+            expect(store.getActions()).toContainEqual(addOptionsCycle(optionsCycleBasicProps.id, 0));
         });
 
         it('should add the optionCycle to the state when mounted with the startAt', () => {
             const startAt = 3;
             optionsCycle = shallowCycleWithProps({startAt}).dive();
 
-            expect(store.getActions()).toContain(addOptionsCycle(optionsCycleBasicProps.id, startAt));
+            expect(store.getActions()).toContainEqual(addOptionsCycle(optionsCycleBasicProps.id, startAt));
         });
 
         it('should set the currentOption to the startAt prop', () => {
@@ -87,7 +87,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.previous-option').simulate('click');
 
-            expect(store.getActions()).toContain(changeOptionsCycle(optionsCycleBasicProps.id, startAt - 1));
+            expect(store.getActions()).toContainEqual(changeOptionsCycle(optionsCycleBasicProps.id, startAt - 1));
         });
 
         it('should dispatch a changeOptionsCycle when pressing the next button', () => {
@@ -95,7 +95,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.next-option').simulate('click');
 
-            expect(store.getActions()).toContain(changeOptionsCycle(optionsCycleBasicProps.id, startAt + 1));
+            expect(store.getActions()).toContainEqual(changeOptionsCycle(optionsCycleBasicProps.id, startAt + 1));
         });
 
         it('should dispatch a changeOptionsCycle by wrapping around when at 0 and the user press the previous button', () => {
@@ -103,7 +103,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.previous-option').simulate('click');
 
-            expect(store.getActions()).toContain(
+            expect(store.getActions()).toContainEqual(
                 changeOptionsCycle(optionsCycleBasicProps.id, optionsCycleBasicProps.options.length - 1)
             );
         });
@@ -113,7 +113,7 @@ describe('Options cycle', () => {
             const wrapper = shallowCycleWithProps({startAt}).dive();
             wrapper.find('.next-option').simulate('click');
 
-            expect(store.getActions()).toContain(changeOptionsCycle(optionsCycleBasicProps.id, 0));
+            expect(store.getActions()).toContainEqual(changeOptionsCycle(optionsCycleBasicProps.id, 0));
         });
 
         it('should disable the previous button when wrapAround is false and the cycle is at 0', () => {

@@ -97,7 +97,7 @@ describe('SelectWithInfiniteScroll', () => {
     });
 
     it('should call the next prop when the user scrolls to the bottom of the list', () => {
-        const nextSpy = jasmine.createSpy('next');
+        const nextSpy = jest.fn();
         const wrappedItems = renderInfiniteScroll({items: itemsProps, next: nextSpy});
 
         wrappedItems.find(InfiniteScroll).prop('next')();

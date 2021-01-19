@@ -65,14 +65,14 @@ describe('<JSONEditorConnected />', () => {
     it('should dispatch addJSONEditor action on mount', () => {
         act(mountComponent);
 
-        expect(store.getActions()).toContain(JSONEditorActions.addJSONEditor(basicProps.id, basicProps.value));
+        expect(store.getActions()).toContainEqual(JSONEditorActions.addJSONEditor(basicProps.id, basicProps.value));
     });
 
     it('should dispatch removeJSONEditor action on unmount', () => {
         act(mountComponent);
         wrapper.unmount();
 
-        expect(store.getActions()).toContain(JSONEditorActions.removeJSONEditor(basicProps.id));
+        expect(store.getActions()).toContainEqual(JSONEditorActions.removeJSONEditor(basicProps.id));
     });
 
     it('should dispatch updateJSONEditorValue action on change', () => {
@@ -80,12 +80,14 @@ describe('<JSONEditorConnected />', () => {
         act(mountComponent);
         wrapper.find(CodeEditor).prop('onChange')(expectedValue);
 
-        expect(store.getActions()).toContain(JSONEditorActions.updateJSONEditorValue(basicProps.id, expectedValue));
+        expect(store.getActions()).toContainEqual(
+            JSONEditorActions.updateJSONEditorValue(basicProps.id, expectedValue)
+        );
     });
 
     it('should call the onChange function from props if it is provided', () => {
         const expectedValue = '{"new-value": "fdsa"}';
-        const onChangeSpy = jasmine.createSpy('onChange');
+        const onChangeSpy = jest.fn();
 
         act(() => mountComponent({}, {...basicProps, onChange: onChangeSpy}));
         wrapper.find(CodeEditor).prop('onChange')(expectedValue);

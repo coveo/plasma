@@ -39,7 +39,7 @@ describe('<TabsHeader/>', () => {
         });
 
         afterEach(() => {
-            tabsHeaderComponent.detach();
+            tabsHeaderComponent?.unmount();
         });
 
         it('should render nothing if the tabs props is empty', () => {
@@ -68,7 +68,7 @@ describe('<TabsHeader/>', () => {
         };
 
         afterEach(() => {
-            tabsHeaderComponent.detach();
+            tabsHeaderComponent?.unmount();
         });
 
         it('should render 1 tab', () => {

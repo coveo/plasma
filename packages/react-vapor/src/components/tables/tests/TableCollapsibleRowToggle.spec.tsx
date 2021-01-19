@@ -1,5 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {ITableCollapsibleRowToggleProps, TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
 
@@ -15,6 +16,7 @@ describe('Tables', () => {
         let tableCollapsibleRowToggle: ReactWrapper<ITableCollapsibleRowToggleProps, any>;
 
         beforeEach(() => {
+            createTestAppContainer();
             document.getElementById('App').innerHTML = '<table><tbody><tr id="AppTableBodyRow"></tr></tbody></table>';
             isExpanded = false;
 
@@ -24,7 +26,7 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableCollapsibleRowToggle.detach();
+            removeTestAppContainer();
         });
 
         it('should get if it is expanded as a prop', () => {
@@ -40,7 +42,7 @@ describe('Tables', () => {
         });
 
         it('should have a svg with state-expanded if expanded', () => {
-            tableCollapsibleRowToggle.setProps({isExpanded: true});
+            tableCollapsibleRowToggle.setProps({isExpanded: true} as any);
 
             expect(tableCollapsibleRowToggle.find('.state-expanded').length).toBeGreaterThanOrEqual(1);
             expect(tableCollapsibleRowToggle.find('.state-collapsed').length).toBe(0);

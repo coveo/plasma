@@ -1,5 +1,5 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import * as React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
@@ -137,7 +137,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     }
 
     private canRenderDrop() {
-        return this.dropRef.current && this.props.isOpen && !!this.props.positions.length;
+        return !!this.dropRef.current && this.props.isOpen && !!this.props.positions.length;
     }
 
     private getRelativeParent = () => {

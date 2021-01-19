@@ -58,7 +58,7 @@ describe('Select', () => {
         afterEach(() => {
             store.dispatch(clearState());
             if (wrapper && wrapper.exists()) {
-                wrapper.detach();
+                wrapper?.unmount();
             }
         });
 
@@ -109,7 +109,7 @@ describe('Select', () => {
         });
 
         it('should not show items that are already hidden', () => {
-            spyOn(FlatSelectSelectors, 'getSelectedOptionId').and.returnValue(defaultFlatSelectOptions[0].id);
+            jest.spyOn(FlatSelectSelectors, 'getSelectedOptionId').mockReturnValue(defaultFlatSelectOptions[0].id);
 
             const items = [
                 {value: 'a', hidden: true},
@@ -125,14 +125,14 @@ describe('Select', () => {
             multiSelect = multiSelectWrapper.find(SelectConnected);
 
             expect(multiSelect.props().items.length).toBe(items.length);
-            expect(multiSelect.find(SelectConnected).props().items[0].hidden).toBe(true, '0');
-            expect(multiSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined('1');
-            expect(multiSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined('2');
+            expect(multiSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
+            expect(multiSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined();
+            expect(multiSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined();
         });
 
         describe('Sortable', () => {
             it('should be possible to reorder items', () => {
-                const spy = spyOn(store, 'dispatch').and.callThrough();
+                const spy = jest.spyOn(store, 'dispatch');
                 const items = [
                     {value: 'a', hidden: true},
                     {value: 'b', selected: true},
@@ -148,7 +148,7 @@ describe('Select', () => {
             });
 
             it('should be possible to delete an item', () => {
-                const spy = spyOn(store, 'dispatch').and.callThrough();
+                const spy = jest.spyOn(store, 'dispatch');
                 const items = [
                     {value: 'a', hidden: true},
                     {value: 'b', selected: true},
@@ -192,7 +192,7 @@ describe('Select', () => {
             });
 
             it('should trigger the onUpdate prop when the selected predicate changes', () => {
-                const onUpdateSpy = jasmine.createSpy('onUpdate');
+                const onUpdateSpy = jest.fn();
 
                 wrapper = mount(
                     <Provider store={store}>

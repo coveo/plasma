@@ -22,6 +22,9 @@ describe('Tables', () => {
         let tableHeaderCell: ReactWrapper<ITableHeaderCellProps, any>;
 
         beforeEach(() => {
+            const div = document.createElement('div');
+            div.setAttribute('id', 'App');
+            document.body.appendChild(div);
             document.getElementById('App').innerHTML = '<table><thead><tr id="AppTableHeadRow"></tr></thead></table>';
 
             title = 'Header 1';
@@ -30,10 +33,6 @@ describe('Tables', () => {
             tableHeaderCell = mount(<TableHeaderCell title={title} className={className} />, {
                 attachTo: document.getElementById('AppTableHeadRow'),
             });
-        });
-
-        afterEach(() => {
-            tableHeaderCell.detach();
         });
 
         it('should have the sorted attribute UNSORTED as a default prop', () => {
@@ -63,7 +62,7 @@ describe('Tables', () => {
         });
 
         it('should call onMount if it is set as a prop and attributeToSort is defined', () => {
-            const onMountSpy = jasmine.createSpy('onMount');
+            const onMountSpy = jest.fn();
 
             tableHeaderCell.unmount();
             tableHeaderCell.setProps({onMount: onMountSpy, attributeToSort: 'i am defined', onUnmount: _.noop});
@@ -73,7 +72,7 @@ describe('Tables', () => {
         });
 
         it('should not call onMount if it is set as a prop and attributeToSort is undefined', () => {
-            const onMountSpy = jasmine.createSpy('onMount');
+            const onMountSpy = jest.fn();
 
             tableHeaderCell.unmount();
             tableHeaderCell.setProps({onMount: onMountSpy, onUnmount: _.noop});
@@ -83,7 +82,7 @@ describe('Tables', () => {
         });
 
         it('should call onSort on click of the header cell if it is set as a prop and attributeToSort is defined', () => {
-            const onSortSpy = jasmine.createSpy('onSortSpy');
+            const onSortSpy = jest.fn();
 
             tableHeaderCell.setProps({onSort: onSortSpy, attributeToSort: 'i am defined'});
             tableHeaderCell.simulate('click');
@@ -92,7 +91,7 @@ describe('Tables', () => {
         });
 
         it('should not call onSort on click of the header cell if it is set as a prop and attributeToSort is undefined', () => {
-            const onSortSpy = jasmine.createSpy('onSortSpy');
+            const onSortSpy = jest.fn();
 
             tableHeaderCell.setProps({onSort: onSortSpy});
             tableHeaderCell.simulate('click');
@@ -101,7 +100,7 @@ describe('Tables', () => {
         });
 
         it('should call onUnmount if it is set as a prop', () => {
-            const onUnmountSpy = jasmine.createSpy('onUnmount');
+            const onUnmountSpy = jest.fn();
 
             tableHeaderCell.setProps({onUnmount: onUnmountSpy});
             tableHeaderCell.unmount();
@@ -110,7 +109,7 @@ describe('Tables', () => {
         });
 
         it('should call onClickCallBack if it is set as a prop', () => {
-            const onClickCallBackSpy = jasmine.createSpy('onClickCallBackSpy');
+            const onClickCallBackSpy = jest.fn();
             tableHeaderCell.setProps({onClickCallback: onClickCallBackSpy});
 
             tableHeaderCell.find('th').simulate('click');
@@ -125,7 +124,7 @@ describe('Tables', () => {
             const sortDescendingClass = 'admin-sort-descending';
             const throwIfSvgNotPresent = () => {
                 expect(tableHeaderCell.find(Svg).length).toBe(1);
-                expect(tableHeaderCell.find(Svg).props()).toEqual(jasmine.objectContaining(svgProps));
+                expect(tableHeaderCell.find(Svg).props()).toEqual(expect.objectContaining(svgProps));
             };
 
             it('should not be present if the cell has no sort', () => {

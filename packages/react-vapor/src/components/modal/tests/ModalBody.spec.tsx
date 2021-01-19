@@ -18,7 +18,7 @@ describe('ModalBody', () => {
         });
 
         afterEach(() => {
-            modalBody.detach();
+            modalBody?.unmount();
         });
 
         it('should set class when the class is specified', () => {

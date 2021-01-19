@@ -228,7 +228,7 @@ describe('<TableConnected />', () => {
         });
 
         it('should call the manual thunk if it is passed as own props on onModifyData', () => {
-            const manualSpy = jasmine.createSpy('manualSpy').and.returnValue(_.noop);
+            const manualSpy = jest.fn(() => _.noop);
             const wrapper = mountComponentWithProps({...tablePropsMock, manual: manualSpy});
             const tableConnected = wrapper.find(Table);
 
@@ -238,7 +238,7 @@ describe('<TableConnected />', () => {
             tableConnected.props().onModifyData(shouldResetPage, tableComposite1, tableComposite2);
 
             expect(manualSpy).toHaveBeenCalledTimes(1);
-            expect(_.rest(manualSpy.calls.mostRecent().args)).toEqual([
+            expect(_.rest(manualSpy.mock.calls[manualSpy.mock.calls.length - 1])).toEqual([
                 shouldResetPage,
                 tableComposite1,
                 tableComposite2,
@@ -248,20 +248,22 @@ describe('<TableConnected />', () => {
         it('should call the default data modifier thunk if manual is not in ownProps on onModifyData', () => {
             const wrapper = mountComponentWithProps({...tablePropsMockWithData});
             const tableConnected = wrapper.find(Table);
-            const defaultTableStateModifierThunkSpy = spyOn(
-                TableDataModifier,
-                'defaultTableStateModifierThunk'
-            ).and.returnValue(_.noop);
+            const defaultTableStateModifierThunkSpy = jest
+                .spyOn(TableDataModifier, 'defaultTableStateModifierThunk')
+                .mockReturnValue(_.noop);
 
             const shouldResetPage = true;
             const tableComposite1 = tablePropsMock.tableCompositeState;
             tableConnected.props().onModifyData(shouldResetPage, tableComposite1);
 
             expect(defaultTableStateModifierThunkSpy).toHaveBeenCalledTimes(1);
-            expect(_.rest(defaultTableStateModifierThunkSpy.calls.mostRecent().args)).toEqual([
-                shouldResetPage,
-                tableComposite1,
-            ]);
+            expect(
+                _.rest(
+                    defaultTableStateModifierThunkSpy.mock.calls[
+                        defaultTableStateModifierThunkSpy.mock.calls.length - 1
+                    ]
+                )
+            ).toEqual([shouldResetPage, tableComposite1]);
         });
     });
 });

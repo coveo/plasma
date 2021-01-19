@@ -8,7 +8,7 @@ import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Svg} from '../../svg/Svg';
 import {toggleSearchBarDisabled, toggleSearching} from '../SearchBarActions';
 import {SearchBarConnected} from '../SearchBarConnected';
-import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.spec';
+import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.mock';
 
 describe('SearchBarConnected', () => {
     const requiredProps = {...searchBarConnectedPropsScenarios[0]};
@@ -58,7 +58,7 @@ describe('SearchBarConnected', () => {
         );
 
         expect(store.getState().searchBars[0]).toEqual(
-            jasmine.objectContaining({searching: false, disabled: false, value: ''})
+            expect.objectContaining({searching: false, disabled: false, value: ''})
         );
     });
 
@@ -70,7 +70,7 @@ describe('SearchBarConnected', () => {
         );
 
         expect(store.getState().searchBars[0]).toEqual(
-            jasmine.objectContaining({searching: false, disabled: true, value: ''})
+            expect.objectContaining({searching: false, disabled: true, value: ''})
         );
     });
 

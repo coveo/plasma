@@ -1,10 +1,25 @@
 import {shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
+import {mocked} from 'ts-jest/utils';
 
 import {LineSeries} from '../LineSeries';
 import {XYChartContextMock} from './XYChartContextMock';
 
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        useContext: jest.fn(),
+    };
+});
+
+const mockedReact = mocked(React);
+
 describe('<LineSeries />', () => {
+    beforeAll(() => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
+    });
+
     it('should not throw', () => {
         expect(() => {
             shallow(<LineSeries />);
@@ -19,8 +34,6 @@ describe('<LineSeries />', () => {
     });
 
     it('should render a path for every serie', () => {
-        spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
-
         const {series} = XYChartContextMock;
         const component = shallow(<LineSeries />);
 

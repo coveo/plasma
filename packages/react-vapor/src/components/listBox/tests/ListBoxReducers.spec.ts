@@ -156,7 +156,7 @@ describe('ListBox', () => {
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
 
-                expect(newState[0].selected.length).toBe(2, 'length');
+                expect(newState[0].selected.length).toBe(2);
                 expect(newState[0].selected).toEqual([items[1].value, newValue]);
             });
 
@@ -187,7 +187,7 @@ describe('ListBox', () => {
                 expect(newState.length).toBe(oldState.length);
                 expect(newState[0].id).toBe(id);
 
-                expect(newState[0].selected.length).toBe(2, 'length');
+                expect(newState[0].selected.length).toBe(2);
                 expect(newState[0].selected).toEqual([items[1].value, newValue]);
                 expect(newState[0].active).toBe(null);
             });

@@ -64,7 +64,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the filter changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
@@ -73,14 +73,14 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({filter: 'a'});
+                wrapper.setProps({filter: 'a'} as any);
                 wrapper.update();
 
                 expect(updateSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should not call onUpdate when the filter does not changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const filterText = 'b';
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
@@ -89,7 +89,7 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({ignore: true});
+                wrapper.setProps({ignore: true} as any);
                 wrapper.update();
 
                 expect(updateSpy).not.toHaveBeenCalled();

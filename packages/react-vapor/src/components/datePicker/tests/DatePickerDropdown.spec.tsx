@@ -366,7 +366,7 @@ describe('Date picker', () => {
         });
 
         it('should call onClick when clicking the dropdown toggle', () => {
-            const onClickSpy = jasmine.createSpy();
+            const onClickSpy = jest.fn();
             shallowComponent({
                 onClick: onClickSpy,
             });
@@ -386,32 +386,21 @@ describe('Date picker', () => {
         });
 
         it('should not set a click listener to handleDocumentClick if it has the readonly prop', () => {
-            const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
-            shallow(
-                <DatePickerDropdown
-                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
-                    onDocumentClick={jasmine.createSpy('click')}
-                    readonly
-                />
-            );
+            const addEventListenerSpy: jest.SpyInstance = jest.spyOn(document, 'addEventListener');
+            shallow(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} onDocumentClick={jest.fn()} readonly />);
 
             expect(addEventListenerSpy).not.toHaveBeenCalled();
         });
 
         it('should set a click listener to handleDocumentClick if it does not have the readonly prop', () => {
-            const addEventListenerSpy: jasmine.Spy = spyOn(document, 'addEventListener');
-            shallow(
-                <DatePickerDropdown
-                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
-                    onDocumentClick={jasmine.createSpy('click')}
-                />
-            );
+            const addEventListenerSpy: jest.SpyInstance = jest.spyOn(document, 'addEventListener');
+            shallow(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} onDocumentClick={jest.fn()} />);
 
             expect(addEventListenerSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should call onDestroy prop if set when will unmount', () => {
-            const onDestroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
+            const onDestroySpy: jest.Mock<any, any> = jest.fn();
             const onDestroyProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 onDestroy: onDestroySpy,
             });
@@ -485,7 +474,7 @@ describe('Date picker', () => {
         });
 
         it('should call onApply when clicking on the apply button', () => {
-            const handleApplySpy: jasmine.Spy = jasmine.createSpy('onApply');
+            const handleApplySpy: jest.Mock<any, any> = jest.fn();
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
                 onApply: handleApplySpy,
@@ -499,7 +488,7 @@ describe('Date picker', () => {
         });
 
         it('should call onBeforeApply when clicking on the apply button', () => {
-            const handleApplySpy: jasmine.Spy = jasmine.createSpy('onBeforeApply');
+            const handleApplySpy: jest.Mock<any, any> = jest.fn();
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
                 onBeforeApply: handleApplySpy,
@@ -513,7 +502,7 @@ describe('Date picker', () => {
         });
 
         it('should call onCancel when clicking on the cancel button', () => {
-            const handleCancelSpy: jasmine.Spy = jasmine.createSpy('handleCancel');
+            const handleCancelSpy: jest.Mock<any, any> = jest.fn();
             const propsIsOpened: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 isOpened: true,
                 onCancel: handleCancelSpy,
@@ -531,7 +520,7 @@ describe('Date picker', () => {
             'should call onCancel prop with current month and current year when there is no applied lower limit ' +
                 'when calling handleCancel',
             () => {
-                const onCancelSpy: jasmine.Spy = jasmine.createSpy('onCancel');
+                const onCancelSpy: jest.Mock<any, any> = jest.fn();
                 const newProps: Partial<IDatePickerDropdownProps> = {
                     initiallyUnselected: true,
                     id: 'some-date-picker',
@@ -548,7 +537,7 @@ describe('Date picker', () => {
         );
 
         it('should call onClear prop if set when calling handleClear', () => {
-            const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+            const onClearSpy: jest.Mock<any, any> = jest.fn();
             const onClearProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
                 onClear: onClearSpy,
             });

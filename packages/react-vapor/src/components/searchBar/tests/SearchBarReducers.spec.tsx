@@ -18,7 +18,7 @@ describe('Reducers', () => {
             },
         };
 
-        it('should return the default state if the action is not defined and the state is undefined ', () => {
+        it('should return the default state if the action is not defined and the state is undefined', () => {
             const searchBarState: ISearchBarState[] = searchBarsReducer(undefined, genericAction);
 
             expect(searchBarState).toEqual(searchBarsInitialState);

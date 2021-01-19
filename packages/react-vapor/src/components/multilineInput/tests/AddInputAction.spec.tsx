@@ -18,7 +18,7 @@ describe('AddInputAction', () => {
         });
 
         afterEach(() => {
-            addInput.detach();
+            addInput?.unmount();
         });
 
         it('should render title prop if prop is set', () => {
@@ -32,17 +32,17 @@ describe('AddInputAction', () => {
         });
 
         it('should call onClick props on button click if prop is set', () => {
-            const clickSpy = jasmine.createSpy('onClick');
+            const clickSpy = jest.fn();
 
             const innerAction = addInput.find('.input-actions');
             innerAction.simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(0);
+            expect(clickSpy.mock.calls.length).toBe(0);
 
             addInput.setProps({onClick: clickSpy}).mount();
             innerAction.simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(1);
+            expect(clickSpy.mock.calls.length).toBe(1);
         });
     });
 });

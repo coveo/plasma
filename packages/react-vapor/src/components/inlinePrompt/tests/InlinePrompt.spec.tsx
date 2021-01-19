@@ -10,7 +10,7 @@ describe('InlinePrompt', () => {
 
     it('should render without errors', () => {
         options = {
-            onClick: jasmine.createSpy('onClick'),
+            onClick: jest.fn(),
             userChoice: {},
         };
 
@@ -21,10 +21,10 @@ describe('InlinePrompt', () => {
 
     describe('<InlinePrompt />', () => {
         let inlinePrompt: ReactWrapper;
-        let onClickSpy: jasmine.Spy;
+        let onClickSpy: jest.Mock<any, any>;
 
         beforeEach(() => {
-            onClickSpy = jasmine.createSpy('onClick');
+            onClickSpy = jest.fn();
             options = {
                 onClick: onClickSpy,
                 userChoice: {
@@ -45,7 +45,7 @@ describe('InlinePrompt', () => {
         });
 
         afterEach(() => {
-            inlinePrompt.detach();
+            inlinePrompt?.unmount();
         });
 
         it('should have the className as a class if defined', () => {
@@ -109,16 +109,16 @@ describe('InlinePrompt', () => {
         it('should call the onClick prop when choice is clicked', () => {
             inlinePrompt.find('.prompt-action').first().simulate('click');
 
-            expect(onClickSpy.calls.count()).toBe(1);
+            expect(onClickSpy.mock.calls.length).toBe(1);
         });
 
         it('should call the onCancel prop if set when clicking the cancel button', () => {
-            const onCancelSpy = jasmine.createSpy('onCancel');
+            const onCancelSpy = jest.fn();
 
             inlinePrompt.setProps({options: options, onCancel: onCancelSpy});
             inlinePrompt.find('.cancel').first().simulate('click');
 
-            expect(onCancelSpy.calls.count()).toBe(1);
+            expect(onCancelSpy.mock.calls.length).toBe(1);
         });
     });
 });

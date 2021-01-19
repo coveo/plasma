@@ -15,20 +15,20 @@ import {TableCollapsibleRowWrapper} from '../TableCollapsibleRowWrapper';
 import {TableHeadingRow} from '../TableHeadingRow';
 
 describe('<TableChildBody />', () => {
-    let spyOnRowClick: jasmine.Spy;
-    let spyHandleOnRowClick: jasmine.Spy;
+    let spyOnRowClick: jest.Mock<any, any>;
+    let spyHandleOnRowClick: jest.Mock<any, any>;
     let someActions: IActionOptions[];
     let tableChildBodyProps: ITableChildBodyProps;
     let store: Store<IReactVaporState>;
 
     beforeAll(() => {
         document.body.innerHTML += '<div id="App"></div>';
-        spyOnRowClick = jasmine.createSpy('onRowClick');
-        spyHandleOnRowClick = jasmine.createSpy('handleOnRowClick');
+        spyOnRowClick = jest.fn();
+        spyHandleOnRowClick = jest.fn();
         someActions = [
             {
                 name: 'some-action',
-                trigger: jasmine.createSpy('triggerMethod'),
+                trigger: jest.fn(),
                 enabled: true,
             },
         ];
@@ -43,7 +43,7 @@ describe('<TableChildBody />', () => {
             isLoading: false,
             onRowClick: spyOnRowClick,
             handleOnRowClick: spyHandleOnRowClick,
-            getActions: jasmine.createSpy('getActions').and.returnValue(someActions),
+            getActions: jest.fn(() => someActions),
             headingAttributes: [
                 {
                     attributeName: 'email',
@@ -105,7 +105,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should trigger an onClick event on click cell element', () => {
-            const spy = jasmine.createSpy('onclickcell');
+            const spy = jest.fn();
 
             const component = mountComponentWithProps({
                 ...tableChildBodyProps,
@@ -157,7 +157,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should call onRowClick with getActions result if it is defined on click of a heading row', () => {
-            spyOnRowClick.calls.reset();
+            spyOnRowClick.mockReset();
             mountComponentWithProps().find(TableHeadingRow).simulate('click');
 
             expect(spyOnRowClick).toHaveBeenCalledTimes(1);
@@ -168,7 +168,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should call handleOnRowClick if it is defined on click of a heading row', () => {
-            spyHandleOnRowClick.calls.reset();
+            spyHandleOnRowClick.mockReset();
             mountComponentWithProps().find(TableHeadingRow).simulate('click');
 
             expect(spyHandleOnRowClick).toHaveBeenCalledTimes(1);
@@ -177,7 +177,7 @@ describe('<TableChildBody />', () => {
         });
 
         it('should call getActions results with option callOnDoubleClick true on row double click', () => {
-            const actionSpy: jasmine.Spy = jasmine.createSpy('actionSpy');
+            const actionSpy = jest.fn();
             const twoActions: IActionOptions[] = [
                 {
                     name: 'action that should not be called',
@@ -193,10 +193,11 @@ describe('<TableChildBody />', () => {
                     trigger: actionSpy,
                 },
             ];
-            const getActionsSpy: jasmine.Spy = jasmine.createSpy('getActions').and.returnValue(twoActions);
-            const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {getActions: getActionsSpy});
+            const getActionsSpy = jest.fn().mockReturnValue(twoActions);
 
-            mountComponentWithProps(newProps).find(TableHeadingRow).simulate('dblclick');
+            mountComponentWithProps({...tableChildBodyProps, getActions: getActionsSpy})
+                .find(TableHeadingRow)
+                .simulate('dblclick');
 
             expect(getActionsSpy).toHaveBeenCalled();
             expect(actionSpy).toHaveBeenCalledTimes(1);
@@ -236,7 +237,7 @@ describe('<TableChildBody />', () => {
 
         it('should set the selectionDisabled prop to true on the <TableHeadingRow /> if there are no actions defined for the row', () => {
             const newProps: ITableChildBodyProps = _.extend({}, tableChildBodyProps, {
-                getActions: jasmine.createSpy('getActions').and.returnValue([]),
+                getActions: jest.fn(() => []),
             });
 
             expect(mountComponentWithProps(newProps).find(TableHeadingRow).props().selectionDisabled).toBe(true);

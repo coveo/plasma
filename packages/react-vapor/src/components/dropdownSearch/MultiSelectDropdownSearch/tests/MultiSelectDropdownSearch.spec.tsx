@@ -37,13 +37,13 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         afterEach(() => {
-            multiSelectDropdownSearch.detach();
+            multiSelectDropdownSearch?.unmount();
         });
 
         describe('render', () => {
             it('should call custom option click function on mousedown when the value is not present in the selected options', () => {
                 const filterText: string = 'customValue';
-                const onCustomOptionClick = jasmine.createSpy('onCustomOptionClick');
+                const onCustomOptionClick = jest.fn();
                 multiSelectDropdownSearch.setProps({
                     filterText,
                     onCustomOptionClick,
@@ -79,7 +79,7 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should call onKeyDownFilterBox props on key down in input', () => {
-                const onKeyDownFilterBox = jasmine.createSpy('onKeyDownFilterBox');
+                const onKeyDownFilterBox = jest.fn();
 
                 multiSelectDropdownSearch.setProps({
                     onKeyDownFilterBox,
@@ -91,7 +91,7 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should call onBlur props on blur in input', () => {
-                const onBlur = jasmine.createSpy('onBlur');
+                const onBlur = jest.fn();
 
                 multiSelectDropdownSearch.setProps({
                     onBlur,

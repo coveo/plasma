@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {
     DropdownSearchInfiniteScrollOptions,
@@ -12,13 +13,13 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
 
     beforeEach(() => {
         basicProps = {
-            onMouseEnter: jasmine.createSpy('onMouseEnter'),
+            onMouseEnter: jest.fn(),
             options: [<div key="1">1</div>, <div key="2">2</div>],
-            ulElementRefFunction: jasmine.createSpy('refFunction'),
+            ulElementRefFunction: jest.fn(),
             infiniteScroll: {
                 dataLength: 42,
                 hasMore: true,
-                next: jasmine.createSpy('next'),
+                next: jest.fn(),
                 endMessage: 'The end.',
                 loader: undefined,
             },
@@ -33,13 +34,14 @@ describe('DropdownSearchInfiniteScrollOptions', () => {
         let infiniteScrollOptions: ReactWrapper<DropdownSearchInfiniteScrollOptionsProps, any>;
 
         beforeEach(() => {
+            createTestAppContainer();
             infiniteScrollOptions = mount(<DropdownSearchInfiniteScrollOptions {...basicProps} />, {
                 attachTo: document.getElementById('App'),
             });
         });
 
         afterEach(() => {
-            infiniteScrollOptions.detach();
+            removeTestAppContainer();
         });
 
         it('should get what to do on mouse enter as a prop', () => {

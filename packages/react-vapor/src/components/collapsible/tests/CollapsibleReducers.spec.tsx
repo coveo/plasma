@@ -9,7 +9,7 @@ describe('Reducers', () => {
             payload: {id: ''},
         };
 
-        it('should return the default state if the action is not related and the state is undefined ', () => {
+        it('should return the default state if the action is not related and the state is undefined', () => {
             expect(collapsiblesReducer(undefined, unrelatedAction)).toEqual(collapsiblesInitialState);
         });
 
@@ -25,7 +25,7 @@ describe('Reducers', () => {
             expect(oldState).toEqual(newState);
         });
 
-        it('should return the old state when the action is unrelated for one ', () => {
+        it('should return the old state when the action is unrelated for one', () => {
             const oldState: CollapsibleState[] = [
                 {
                     id: 'some-',

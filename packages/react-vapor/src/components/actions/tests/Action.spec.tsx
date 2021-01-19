@@ -11,7 +11,7 @@ describe('Actions', () => {
     beforeAll(() => {
         action = {
             name: 'action',
-            trigger: jasmine.createSpy('triggerMethod'),
+            trigger: jest.fn(),
             enabled: true,
         };
     });
@@ -52,15 +52,11 @@ describe('Actions', () => {
             });
         });
 
-        afterEach(() => {
-            actionComponent.detach();
-        });
-
         it('should get an action as a prop', () => {
             const actionProp = actionComponent.props().action;
 
             expect(actionProp).toBeDefined();
-            expect(actionProp).toEqual(jasmine.objectContaining(action));
+            expect(actionProp).toEqual(expect.objectContaining(action));
         });
 
         it('should get if the action is simple (no html) as a prop', () => {

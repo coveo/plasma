@@ -16,7 +16,7 @@ describe('Actions', () => {
     };
     const triggerAction: IActionOptions = {
         name: 'action2',
-        trigger: jasmine.createSpy('methodTrigger'),
+        trigger: jest.fn(),
         enabled: true,
     };
 

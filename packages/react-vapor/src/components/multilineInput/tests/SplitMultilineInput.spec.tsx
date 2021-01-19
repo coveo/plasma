@@ -51,7 +51,7 @@ describe('SplitMultilineInput', () => {
         });
 
         afterEach(() => {
-            splitMultilineInput.detach();
+            splitMultilineInput?.unmount();
         });
 
         it('should get the inputs as a prop', () => {
@@ -102,7 +102,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should call removeLine with the index of the input when clicking the delete input action', () => {
-            const removeLineSpy: jasmine.Spy = spyOn<any>(splitMultilineInputInstance, 'removeLine');
+            const removeLineSpy: jest.SpyInstance = jest.spyOn<any, string>(splitMultilineInputInstance, 'removeLine');
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
 
             splitMultilineInput.find(DeleteInputAction).simulate('click');
@@ -113,7 +113,10 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should call changeValue when an existing input is changed', () => {
-            const changeValueSpy: jasmine.Spy = spyOn<any>(splitMultilineInputInstance, 'changeValue');
+            const changeValueSpy: jest.SpyInstance = jest.spyOn<any, string>(
+                splitMultilineInputInstance,
+                'changeValue'
+            );
             const expectedValue: string = 'a new value';
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]})).update();
@@ -125,17 +128,16 @@ describe('SplitMultilineInput', () => {
                 true,
                 0,
                 _.keys(defaultValue)[0],
-                jasmine.anything()
+                expect.anything()
             );
         });
 
         it('should call addLine when clicking the <AddInputAction />', () => {
-            const addLineSpy: jasmine.Spy = spyOn<any>(splitMultilineInputInstance, 'addLine');
-
+            const addLineSpy: jest.SpyInstance = jest.spyOn<any, string>(splitMultilineInputInstance, 'addLine');
             splitMultilineInput.find(AddInputAction).simulate('click');
 
             expect(addLineSpy).toHaveBeenCalledTimes(1);
-            expect(addLineSpy.calls.mostRecent().args[0].length).toBe(basicProps.inputs.length);
+            expect(addLineSpy.mock.calls[addLineSpy.mock.calls.length - 1][0].length).toBe(basicProps.inputs.length);
         });
 
         it('should send the validation to the <Input /> if there is a validation set on an split input', () => {
@@ -193,7 +195,7 @@ describe('SplitMultilineInput', () => {
         it('should add the new value to the state when calling addLine and there is no error', () => {
             const expectedValue: string = 'new value';
 
-            spyOn(Input.prototype, 'getInnerValue').and.returnValue(expectedValue);
+            jest.spyOn(Input.prototype, 'getInnerValue').mockReturnValue(expectedValue);
 
             splitMultilineInput.find(AddInputAction).simulate('click');
 
@@ -203,7 +205,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should reset the inputs of the line to add if the value was successfully added', () => {
-            const resetSpy: jasmine.Spy = spyOn(Input.prototype, 'reset');
+            const resetSpy = jest.spyOn(Input.prototype, 'reset');
 
             splitMultilineInput.find(AddInputAction).simulate('click');
 
@@ -228,7 +230,7 @@ describe('SplitMultilineInput', () => {
         });
 
         it('should not reset the inputs if an input is in error', () => {
-            const resetSpy: jasmine.Spy = spyOn(Input.prototype, 'reset');
+            const resetSpy: jest.SpyInstance = jest.spyOn(Input.prototype, 'reset');
             const newProps: ISplitMultilineInputProps = _.extend({}, basicProps, {
                 inputs: [
                     {
@@ -238,6 +240,7 @@ describe('SplitMultilineInput', () => {
                     },
                 ],
             });
+            resetSpy.mockClear();
             splitMultilineInput.setProps(newProps);
 
             splitMultilineInput.find(AddInputAction).simulate('click');
@@ -260,7 +263,7 @@ describe('SplitMultilineInput', () => {
             const unexpectedValue: string = 'the value has been changed!';
             const valueId: string = basicProps.inputs[0].id;
             const input: any = {
-                validate: jasmine.createSpy('validate'),
+                validate: jest.fn(),
             };
 
             splitMultilineInput.setProps(_.extend({}, basicProps, {defaultValues: [defaultValue]}));
@@ -273,7 +276,7 @@ describe('SplitMultilineInput', () => {
 
         it('should call onChange if it is set as a prop when calling handleChange', () => {
             const newProps: ISplitMultilineInputProps = _.extend({}, basicProps, {
-                onChange: jasmine.createSpy('onChange'),
+                onChange: jest.fn(),
             });
 
             expect(() => (splitMultilineInputInstance as any).handleChange()).not.toThrow();

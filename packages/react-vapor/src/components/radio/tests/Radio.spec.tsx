@@ -20,7 +20,7 @@ describe('Radio', () => {
         });
 
         afterEach(() => {
-            radio.detach();
+            radio?.unmount();
         });
 
         it('should set id prop', () => {
@@ -125,13 +125,13 @@ describe('Radio', () => {
         });
 
         it('should call prop onChange when specified on click', () => {
-            const changeSpy = jasmine.createSpy('onChange');
+            const changeSpy = jest.fn();
             const innerInput = radio.find('input');
 
             radio.setProps({onChange: changeSpy}).mount();
             innerInput.simulate('change');
 
-            expect(changeSpy.calls.count()).toBe(1);
+            expect(changeSpy.mock.calls.length).toBe(1);
         });
     });
 });

@@ -40,8 +40,7 @@ describe('MultiSelectDropdownSearch', () => {
             wrapper = mount(
                 <Provider store={store}>
                     <MultiSelectDropdownSearchConnected {...currentProps} />
-                </Provider>,
-                {attachTo: document.getElementById('App')}
+                </Provider>
             );
             multiSelectDropdownSearchConnected = wrapper.find(MultiSelectDropdownSearch).first();
         };
@@ -52,7 +51,6 @@ describe('MultiSelectDropdownSearch', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         describe('mount and unmount', () => {

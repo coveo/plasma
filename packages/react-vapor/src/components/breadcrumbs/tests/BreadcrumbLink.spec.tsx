@@ -61,7 +61,7 @@ describe('<BreadcrumbLink/>', () => {
                     stopImmediatePropagation: _.noop,
                 },
             };
-            const spy = jasmine.createSpy('onClick').and.returnValue(false);
+            const spy = jest.fn(() => false);
             renderBreadcrumbLink({...defaultProps, onClick: spy});
             breadcrumbLinkComponent
                 .find('a')
@@ -72,8 +72,8 @@ describe('<BreadcrumbLink/>', () => {
         });
 
         it('should return true if the onClick props return true', () => {
-            const stopPropagationSpy: jasmine.Spy = jasmine.createSpy('stopPropagation');
-            const spy: jasmine.Spy = spyOn<any>(BreadcrumbLink.prototype, 'handleOnClick').and.callThrough();
+            const stopPropagationSpy: jest.Mock<any, any> = jest.fn();
+            const spy: jest.SpyInstance = jest.spyOn<any, string>(BreadcrumbLink.prototype, 'handleOnClick');
             renderBreadcrumbLink({...defaultProps, onClick: () => true});
             breadcrumbLinkComponent.find('a.link').simulate('click', {
                 stopPropagation: stopPropagationSpy,
@@ -81,33 +81,6 @@ describe('<BreadcrumbLink/>', () => {
 
             expect(spy).toHaveBeenCalledTimes(1);
             expect(stopPropagationSpy).not.toHaveBeenCalled();
-        });
-
-        it('should call each event stop propagation on onClick if it returns false ', () => {
-            const stopPropagationSpy: jasmine.Spy = jasmine.createSpy('stopPropagation').and.callThrough();
-            const stopImmediatePropagationSpy: jasmine.Spy = jasmine
-                .createSpy('stopImmediatePropagation')
-                .and.callThrough();
-            const preventDefaultSpy: jasmine.Spy = jasmine.createSpy('preventDefault').and.callThrough();
-
-            const handleOnClickSpy: jasmine.Spy = spyOn<any>(
-                BreadcrumbLink.prototype,
-                'handleOnClick'
-            ).and.callThrough();
-
-            renderBreadcrumbLink({...defaultProps, onClick: () => false});
-            breadcrumbLinkComponent.find('a.link').simulate('click', {
-                stopPropagation: stopPropagationSpy,
-                nativeEvent: {
-                    stopImmediatePropagation: stopImmediatePropagationSpy,
-                },
-                preventDefault: preventDefaultSpy,
-            });
-
-            expect(handleOnClickSpy).toHaveBeenCalledTimes(1);
-            expect(stopPropagationSpy).toHaveBeenCalledTimes(1);
-            expect(stopImmediatePropagationSpy).toHaveBeenCalledTimes(1);
-            expect(preventDefaultSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

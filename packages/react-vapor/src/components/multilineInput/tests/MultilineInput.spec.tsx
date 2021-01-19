@@ -35,7 +35,7 @@ describe('MultilineInput', () => {
         });
 
         afterEach(() => {
-            multilineInput.detach();
+            multilineInput?.unmount();
         });
 
         it('should render an AddInput when no values are specified', () => {
@@ -70,7 +70,7 @@ describe('MultilineInput', () => {
         });
 
         it('should call prop onChange with new value when add input changes', () => {
-            const changeSpy = jasmine.createSpy('onChange');
+            const changeSpy = jest.fn();
             multilineInput.setProps({onChange: changeSpy, values: []});
             multilineInput.mount();
 
@@ -80,12 +80,12 @@ describe('MultilineInput', () => {
 
             innerAddInput.props().onBlur(aNewValue);
 
-            expect(changeSpy.calls.count()).toBe(1);
-            expect(changeSpy.calls.first().args[0][0].value).toBe(aNewValue);
+            expect(changeSpy).toHaveBeenCalledTimes(1);
+            expect(changeSpy).toHaveBeenCalledWith([expect.objectContaining({value: aNewValue})]);
         });
 
         it('should call prop onChange with updated value when delete input changes', () => {
-            const changeSpy = jasmine.createSpy('onChange');
+            const changeSpy = jest.fn();
             multilineInput.setProps({onChange: changeSpy, values: [multilineInputValue]});
             multilineInput.mount();
 
@@ -95,12 +95,12 @@ describe('MultilineInput', () => {
 
             innerDeleteInput.props().onBlur(aNewValue);
 
-            expect(changeSpy.calls.count()).toBe(1);
-            expect(changeSpy.calls.first().args[0][0].value).toBe(aNewValue);
+            expect(changeSpy).toHaveBeenCalledTimes(1);
+            expect(changeSpy).toHaveBeenCalledWith([{...multilineInputValue, value: aNewValue}]);
         });
 
         it('should call prop onChange with removed value when delete input changes for something empty', () => {
-            const changeSpy = jasmine.createSpy('onChange');
+            const changeSpy = jest.fn();
             multilineInput.setProps({onChange: changeSpy, values: [multilineInputValue]});
             multilineInput.mount();
 
@@ -110,8 +110,7 @@ describe('MultilineInput', () => {
 
             innerDeleteInput.props().onBlur('');
 
-            expect(changeSpy.calls.count()).toBe(1);
-            expect(changeSpy.calls.first().args[0].length).toBe(0);
+            expect(changeSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

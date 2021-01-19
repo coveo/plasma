@@ -1,5 +1,6 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {ITableEmptyRowProps, TableEmptyRow} from '../TableEmptyRow';
 
@@ -19,6 +20,7 @@ describe('Tables', () => {
         let tableEmptyRow: ReactWrapper<ITableEmptyRowProps, any>;
 
         beforeEach(() => {
+            createTestAppContainer();
             document.getElementById('App').innerHTML = '<table id="AppTable"></table>';
 
             tableEmptyRow = mount(<TableEmptyRow {...tableEmptyRowBasicProps} />, {
@@ -27,7 +29,7 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableEmptyRow.detach();
+            removeTestAppContainer();
         });
 
         it('should get its text as a prop', () => {

@@ -8,6 +8,6 @@
             "*": ["types/*", "*"]
         }
     },
-    "exclude": ["node_modules", "dist", "coverage", "*.js", "./src/**/*.spec.*"],
+    "exclude": ["node_modules", "dist", "coverage", "*.js", "./src/**/*.spec.*", "./src/**/*.mock.*"],
     "include": ["src"]
 }

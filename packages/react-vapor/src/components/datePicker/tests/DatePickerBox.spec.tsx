@@ -34,7 +34,7 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            datePickerBox.detach();
+            datePickerBox?.unmount();
         });
 
         it('should get the dates selection boxes as a prop', () => {
@@ -112,7 +112,7 @@ describe('Date picker', () => {
             });
 
             it('should call onClear prop when clicking on the clear button', () => {
-                const onClearSpy: jasmine.Spy = jasmine.createSpy('onClear');
+                const onClearSpy = jest.fn();
                 const onClearProps: IDatePickerBoxProps = _.extend({}, datePickerBox.props(), {onClear: onClearSpy});
 
                 datePickerBox.setProps(onClearProps);
@@ -158,10 +158,6 @@ describe('Date picker', () => {
                 {attachTo: document.getElementById('App')}
             );
             datePickerBox = wrapper.find(DatePickerBox).first();
-        });
-
-        afterEach(() => {
-            wrapper.detach();
         });
 
         it('should get withReduxState as a prop', () => {

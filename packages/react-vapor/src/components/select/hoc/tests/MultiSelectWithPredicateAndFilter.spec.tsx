@@ -45,7 +45,6 @@ describe('Select', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         describe('mount and unmount', () => {

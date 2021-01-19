@@ -60,7 +60,7 @@ describe('SingleSelectWithNonEmpty', () => {
 
         mountSingleSelectWithHOC({}, storeWithSelectedValue);
 
-        expect(storeWithSelectedValue.getActions()).toContain(
+        expect(storeWithSelectedValue.getActions()).toContainEqual(
             ValidationActions.setError(
                 DEFAULT_PROPS.id,
                 DEFAULT_PROPS.nonEmptyValidationMessage,
@@ -74,7 +74,7 @@ describe('SingleSelectWithNonEmpty', () => {
 
         mountSingleSelectWithHOC({}, storeWithSelectedValue);
 
-        expect(storeWithSelectedValue.getActions()).not.toContain(
+        expect(storeWithSelectedValue.getActions()).not.toContainEqual(
             ValidationActions.setError(
                 DEFAULT_PROPS.id,
                 DEFAULT_PROPS.nonEmptyValidationMessage,

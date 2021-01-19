@@ -6,10 +6,10 @@ import {ChosenSelect, IChosenSelectProps} from './ChosenSelect';
 describe('<ChosenSelect>', () => {
     let chosenSelectWrapper: ReactWrapper<IChosenSelectProps, any>;
     let chosenSelectProps: IChosenSelectProps;
-    let onChosenChangeSpy: jasmine.Spy;
+    let onChosenChangeSpy: jest.Mock<any, any>;
 
     beforeAll(() => {
-        onChosenChangeSpy = jasmine.createSpy('OnChosenChange');
+        onChosenChangeSpy = jest.fn();
     });
 
     beforeEach(() => {
@@ -43,8 +43,7 @@ describe('<ChosenSelect>', () => {
         }).not.toThrow();
 
         expect(() => {
-            chosenSelectWrapper.unmount();
-            chosenSelectWrapper.detach();
+            chosenSelectWrapper?.unmount();
         }).not.toThrow();
     });
 
@@ -58,10 +57,6 @@ describe('<ChosenSelect>', () => {
                 </ChosenSelect>,
                 {attachTo: document.getElementById('App')}
             );
-        });
-
-        afterEach(() => {
-            chosenSelectWrapper.detach();
         });
 
         it('should call the onChosenChange prop on change', () => {

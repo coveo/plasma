@@ -38,7 +38,6 @@ describe('Tab', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         it('should get its id as a prop', () => {

@@ -10,7 +10,7 @@ import {CollapsibleOwnProps} from '../CollapsibleConnected';
 import {CollapsibleContainerConnected, ICollapsibleContainerOwnProps} from '../CollapsibleContainerConnected';
 import {CollapsibleHeaderIcon} from '../CollapsibleHeaderIcon';
 import * as styles from '../styles/CollapsibleContainer.scss';
-import {collapsiblePossibleProps} from './CollapsibleTestCommon.spec';
+import {collapsiblePossibleProps} from './CollapsibleTestCommon.mock';
 
 describe('<CollapsibleContainerConnected />', () => {
     let store: Store<IReactVaporState>;
@@ -31,9 +31,11 @@ describe('<CollapsibleContainerConnected />', () => {
 
     describe('Header Svg logic', () => {
         it('should render with no svg if no informationUrl and informationTooltip are passed', () => {
-            mountComponentWithProps();
+            mountComponentWithProps({
+                ...collapsibleProps,
+            });
 
-            expect(wrapper.find(`.${collapsibleProps.headerClasses}`).find(Svg).length).toBe(0);
+            expect(wrapper.find(`.${collapsibleProps.headerClasses}`).find('Component').find(Svg).length).toBe(0);
         });
 
         it('should render a CollapsibleHeaderIcon', () => {

@@ -24,24 +24,26 @@ export class StatusCard extends React.Component<StatusCardProps> {
         return <div className={cardClasses}>{this.getContent()}</div>;
     }
 
-    private getContent(): JSX.Element[] {
+    private getContent(): JSX.Element {
         const titleClasses: string = classNames('text-medium-blue', styles.statusCardTitle);
 
-        return this.props.loading
-            ? [<Loading key="loading" className="center-align" />]
-            : [
-                  this.props.icon && (
-                      <Svg
-                          key="icon"
-                          svgName={this.props.icon}
-                          svgClass="icon mod-2x"
-                          className={styles.statusCardIcon}
-                      />
-                  ),
-                  <div key="status">
-                      <h3 className={titleClasses}>{this.props.title}</h3>
-                      <div className={styles.statusCardInfo}>{this.props.children}</div>
-                  </div>,
-              ];
+        return this.props.loading ? (
+            <Loading key="loading" className="center-align" />
+        ) : (
+            <>
+                {this.props.icon && (
+                    <Svg
+                        key="icon"
+                        svgName={this.props.icon}
+                        svgClass="icon mod-2x"
+                        className={styles.statusCardIcon}
+                    />
+                )}
+                <div key="status">
+                    <h3 className={titleClasses}>{this.props.title}</h3>
+                    <div className={styles.statusCardInfo}>{this.props.children}</div>
+                </div>
+            </>
+        );
     }
 }

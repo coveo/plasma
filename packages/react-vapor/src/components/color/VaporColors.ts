@@ -1,7 +1,7 @@
 // @ts-ignore
 import Colors from '!sass-variable-loader!../../../node_modules/coveo-styleguide/scss/common/palette.scss';
 
-export const convertKeysToKebabCase = (colors: Record<string, string>) =>
+export const convertKeysToKebabCase = (colors = {} as Record<string, string>) =>
     Object.entries(colors)
         .map((entry) => buildObjectWithKebabCaseKey(entry))
         .reduce((accumulated, obj) => ({...accumulated, ...obj}), {});

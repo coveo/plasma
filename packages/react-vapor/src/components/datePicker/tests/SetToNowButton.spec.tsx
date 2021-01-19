@@ -10,7 +10,7 @@ describe('Date picker', () => {
 
     beforeAll(() => {
         BUTTON_BASIC_PROPS = {
-            onClick: jasmine.createSpy('onClick'),
+            onClick: jest.fn(),
         };
     });
 
@@ -30,7 +30,7 @@ describe('Date picker', () => {
         });
 
         afterEach(() => {
-            setToNowButton.detach();
+            setToNowButton?.unmount();
         });
 
         it('should get what to do on click as a prop', () => {

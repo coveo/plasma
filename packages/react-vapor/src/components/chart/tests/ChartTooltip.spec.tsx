@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
+import {mocked} from 'ts-jest/utils';
 
 import {DropPodPosition} from '../../drop/DomPositionCalculator';
 import {DropPod} from '../../drop/DropPod';
@@ -8,10 +9,23 @@ import {ChartTooltipContent} from '../ChartTooltipContent';
 import {ChartUtils} from '../ChartUtils';
 import {XYChartContextMock, XYChartOnePointContextMock} from './XYChartContextMock';
 
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        useContext: jest.fn(),
+    };
+});
+
+const mockedReact = mocked(React);
+
 describe('<ChartTooltip />', () => {
-    let contextSpy: jasmine.Spy;
-    beforeEach(() => {
-        contextSpy = spyOn(React, 'useContext').and.returnValue(XYChartContextMock);
+    beforeAll(() => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it('should not throw', () => {
@@ -46,7 +60,12 @@ describe('<ChartTooltip />', () => {
     });
 
     it('should render a line on the right when the user hover a serie point', () => {
-        const getAttributeSpy = jasmine.createSpy('getAttribute').and.returnValues(DropPodPosition.right, '10', '0');
+        const getAttributeSpy = jest
+            .fn()
+            .mockReturnValueOnce(DropPodPosition.right)
+            .mockReturnValueOnce('10')
+            .mockReturnValue('0');
+
         const component = shallow(<ChartTooltip />);
         const rect = component.find('rect').first();
 
@@ -60,7 +79,12 @@ describe('<ChartTooltip />', () => {
     });
 
     it('should render a line on the left when the user hover a serie point', () => {
-        const getAttributeSpy = jasmine.createSpy('getAttribute').and.returnValues(DropPodPosition.left, '10', '0');
+        const getAttributeSpy = jest
+            .fn()
+            .mockReturnValueOnce(DropPodPosition.left)
+            .mockReturnValueOnce('10')
+            .mockReturnValue('0');
+
         const component = shallow(<ChartTooltip />);
         const rect = component.find('rect').first();
 
@@ -84,7 +108,7 @@ describe('<ChartTooltip />', () => {
     });
 
     it('should not throw when there is only one point in a serie', () => {
-        contextSpy.and.returnValue(XYChartOnePointContextMock);
+        mockedReact.useContext.mockReturnValue(XYChartOnePointContextMock);
 
         expect(() => {
             shallow(<ChartTooltip />);

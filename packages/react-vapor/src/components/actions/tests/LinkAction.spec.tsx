@@ -29,15 +29,11 @@ describe('Actions', () => {
             });
         });
 
-        afterEach(() => {
-            linkAction.detach();
-        });
-
         it('should get an action as a prop', () => {
             const actionProp = linkAction.props().action;
 
             expect(actionProp).toBeDefined();
-            expect(actionProp).toEqual(jasmine.objectContaining(action));
+            expect(actionProp).toEqual(expect.objectContaining(action));
         });
 
         it('should get if the action is simple (no html) as a prop', () => {

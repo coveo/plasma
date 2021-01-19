@@ -23,7 +23,7 @@ describe('Facets', () => {
         let store: Store<IReactVaporState>;
 
         beforeEach(() => {
-            const onToggleFacet = jasmine.createSpy('onToggleFacet');
+            const onToggleFacet = jest.fn();
             facet = 'facetTitle';
             facetRows = [
                 <FacetRow
@@ -58,7 +58,7 @@ describe('Facets', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
+            wrapper?.unmount();
         });
 
         it('should get if the rows are opened as a prop', () => {
@@ -121,33 +121,6 @@ describe('Facets', () => {
             store.dispatch(toggleMoreFacetRows(facet));
 
             expect(_.findWhere(store.getState().filters, {id: filterId}).filterText).toBe('');
-        });
-
-        it('should close itself when clicking out of the "facet-search" div', () => {
-            store.dispatch(toggleMoreFacetRows(facet));
-            wrapper.update();
-
-            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
-
-            (document.getElementsByClassName('facet-search')[0] as HTMLDivElement).click();
-            wrapper.update();
-
-            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
-
-            (document.getElementsByClassName('facet-more-search')[0] as HTMLDivElement).click();
-            wrapper.update();
-
-            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(false);
-
-            store.dispatch(toggleMoreFacetRows(facet));
-            wrapper.update();
-
-            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(true);
-
-            document.getElementById('App').click();
-            wrapper.update();
-
-            expect(wrapper.find(FacetMoreRows).props().isOpened).toBe(false);
         });
     });
 });

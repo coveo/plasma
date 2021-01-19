@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 

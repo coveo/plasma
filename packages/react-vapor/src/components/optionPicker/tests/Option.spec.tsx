@@ -14,7 +14,7 @@ describe('Option picker', () => {
                 value: () => 'optionValue',
             },
             isActive: false,
-            onClick: jasmine.createSpy('onClick'),
+            onClick: jest.fn(),
         };
     });
 
@@ -32,7 +32,7 @@ describe('Option picker', () => {
         });
 
         afterEach(() => {
-            option.detach();
+            option?.unmount();
         });
 
         it('should get the value as a prop', () => {

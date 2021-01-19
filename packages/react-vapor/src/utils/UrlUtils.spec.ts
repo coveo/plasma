@@ -2,7 +2,7 @@ import {UrlUtils} from './UrlUtils';
 
 describe('UrlUtils', () => {
     describe('toObject', () => {
-        it('should parse the query string into the proper object ', () => {
+        it('should parse the query string into the proper object', () => {
             expect(UrlUtils.toObject('a=b&c=d')).toEqual({a: 'b', c: 'd'});
         });
 
@@ -53,7 +53,7 @@ describe('UrlUtils', () => {
 
     describe('getSearchParams', () => {
         it('should transform the current query string into a parameters object', () => {
-            spyOn(UrlUtils, 'getQuery').and.returnValue('animal=tiger&age=7');
+            jest.spyOn(UrlUtils, 'getQuery').mockReturnValue('animal=tiger&age=7');
 
             expect(UrlUtils.getSearchParams()).toEqual({animal: 'tiger', age: 7});
         });

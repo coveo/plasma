@@ -23,7 +23,7 @@ describe('<Title/>', () => {
         });
 
         afterEach(() => {
-            titleComponent.detach();
+            titleComponent?.unmount();
         });
 
         it('should render the default text', () => {
@@ -67,7 +67,6 @@ describe('<Title/>', () => {
 
         afterEach(() => {
             titleComponent.unmount();
-            titleComponent.detach();
         });
 
         it('should render the prefix', () => {

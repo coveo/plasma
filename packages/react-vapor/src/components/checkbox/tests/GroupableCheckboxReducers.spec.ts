@@ -100,10 +100,8 @@ describe('GroupableCheckbox', () => {
                     action
                 );
 
-                expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the new state');
-                if (groupableCheckboxsState.length) {
-                    expect(groupableCheckboxsState[0].checkboxes.length).toBe(1, 'checkboxes is not defined');
-                }
+                expect(groupableCheckboxsState.length).toBe(1);
+                expect(groupableCheckboxsState[0].checkboxes.length).toBe(1);
             });
 
             it('should update the total on add child checkbox', () => {
@@ -114,10 +112,8 @@ describe('GroupableCheckbox', () => {
                     action
                 );
 
-                expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the new state');
-                if (groupableCheckboxsState.length) {
-                    expect(groupableCheckboxsState[0].total).toBe(1, 'total was not updated');
-                }
+                expect(groupableCheckboxsState.length).toBe(1);
+                expect(groupableCheckboxsState[0].total).toBe(1);
             });
 
             it('should have nbChecked equal to 0 on add checkbox not checked', () => {
@@ -128,10 +124,8 @@ describe('GroupableCheckbox', () => {
                     action
                 );
 
-                expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the new state');
-                if (groupableCheckboxsState.length) {
-                    expect(groupableCheckboxsState[0].nbChecked).toBe(0, 'nbChecked has been updated');
-                }
+                expect(groupableCheckboxsState.length).toBe(1);
+                expect(groupableCheckboxsState[0].nbChecked).toBe(0);
             });
 
             it('should update the nbChecked equal to 1 on add child checkbox checked', () => {
@@ -142,10 +136,8 @@ describe('GroupableCheckbox', () => {
                     action
                 );
 
-                expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the new state');
-                if (groupableCheckboxsState.length) {
-                    expect(groupableCheckboxsState[0].nbChecked).toBe(1, 'nbChecked was not updated');
-                }
+                expect(groupableCheckboxsState.length).toBe(1);
+                expect(groupableCheckboxsState[0].nbChecked).toBe(1);
             });
 
             it('should return a new state on add parent checkbox', () => {
@@ -167,11 +159,9 @@ describe('GroupableCheckbox', () => {
                     action
                 );
 
-                expect(groupableCheckboxsState.length).toBe(1, 'parent checkbox was not added in the new state');
-                if (groupableCheckboxsState.length) {
-                    expect(groupableCheckboxsState[0].parent).toBeDefined();
-                    expect(groupableCheckboxsState[0].parentId).toBe('parentId');
-                }
+                expect(groupableCheckboxsState.length).toBe(1);
+                expect(groupableCheckboxsState[0].parent).toBeDefined();
+                expect(groupableCheckboxsState[0].parentId).toBe('parentId');
             });
 
             describe('with a existing state', () => {
@@ -211,14 +201,9 @@ describe('GroupableCheckbox', () => {
                         action
                     );
 
-                    expect(groupableCheckboxsState.length).toBe(
-                        1,
-                        'parent checkbox was not added in the current state'
-                    );
-                    if (groupableCheckboxsState.length) {
-                        expect(groupableCheckboxsState[0].parent).toBeDefined();
-                        expect(groupableCheckboxsState[0].parentId).toBe('parentId');
-                    }
+                    expect(groupableCheckboxsState.length).toBe(1);
+                    expect(groupableCheckboxsState[0].parent).toBeDefined();
+                    expect(groupableCheckboxsState[0].parentId).toBe('parentId');
                 });
 
                 it('should return a new state on add child checkbox in the existing state', () => {
@@ -238,10 +223,8 @@ describe('GroupableCheckbox', () => {
                         action
                     );
 
-                    expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the current state');
-                    if (groupableCheckboxsState.length) {
-                        expect(groupableCheckboxsState[0].checkboxes.length).toBe(2);
-                    }
+                    expect(groupableCheckboxsState.length).toBe(1);
+                    expect(groupableCheckboxsState[0].checkboxes.length).toBe(2);
                 });
 
                 it('should update the total on add child checkbox with an existing state', () => {
@@ -251,10 +234,8 @@ describe('GroupableCheckbox', () => {
                         action
                     );
 
-                    expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the new state');
-                    if (groupableCheckboxsState.length) {
-                        expect(groupableCheckboxsState[0].total).toBe(2, 'total was not updated');
-                    }
+                    expect(groupableCheckboxsState.length).toBe(1);
+                    expect(groupableCheckboxsState[0].total).toBe(2);
                 });
 
                 it('should have nbChecked equal to 1 on add checkbox checked with an existing state', () => {
@@ -264,10 +245,8 @@ describe('GroupableCheckbox', () => {
                         action
                     );
 
-                    expect(groupableCheckboxsState.length).toBe(1, 'child checkbox was not added in the new state');
-                    if (groupableCheckboxsState.length) {
-                        expect(groupableCheckboxsState[0].nbChecked).toBe(1, 'nbChecked has been updated');
-                    }
+                    expect(groupableCheckboxsState.length).toBe(1);
+                    expect(groupableCheckboxsState[0].nbChecked).toBe(1);
                 });
             });
         });
@@ -585,13 +564,13 @@ describe('GroupableCheckbox', () => {
             it('should toggle disabled on the parent checkbox from the state', () => {
                 action = toggleDisabledGroupedCheckbox(parentId, undefined, true);
 
-                expect(currentState[0].parent.disabled).toBe(false, 'parent checkbox is disabled');
+                expect(currentState[0].parent.disabled).toBe(false);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
                     action
                 );
 
-                expect(groupableCheckboxsState[0].parent.disabled).toBe(true, 'parent checkbox is not disabled');
+                expect(groupableCheckboxsState[0].parent.disabled).toBe(true);
             });
         });
 
@@ -688,16 +667,16 @@ describe('GroupableCheckbox', () => {
             it('should toggle disabled on all child checkboxes if the parent is not disabled from the state', () => {
                 action = toggleDisabledAllGroupedCheckbox(childId, parentId);
 
-                expect(currentState[0].parent.disabled).toBe(false, 'parent checkbox is disabled');
+                expect(currentState[0].parent.disabled).toBe(false);
                 const groupableCheckboxsState: IGroupableCheckboxesState[] = groupableCheckboxesReducer(
                     currentState,
                     action
                 );
 
-                expect(groupableCheckboxsState[0].parent.disabled).toBe(true, 'parent checkbox is not disabled');
+                expect(groupableCheckboxsState[0].parent.disabled).toBe(true);
                 expect(
                     _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled)
-                ).toBe(true, 'not every checkboxes are disabled');
+                ).toBe(true);
             });
 
             it('should toggle disabled on all child checkboxes if the parent is disabled from the state', () => {
@@ -712,7 +691,7 @@ describe('GroupableCheckbox', () => {
                 expect(groupableCheckboxsState[0].parent.disabled).toBe(false);
                 expect(
                     _.every(groupableCheckboxsState[0].checkboxes, (checkbox: ICheckboxState) => checkbox.disabled)
-                ).toBe(false, 'not every checkboxes are not disabled');
+                ).toBe(false);
             });
 
             it('should disabled on all checkboxes if specified on from the state', () => {
