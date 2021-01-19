@@ -17,11 +17,7 @@
                 "transform": "ts-transformer-keys/transformer"
             }
         ],
-        "importHelpers": true,
-        "baseUrl": ".",
-        "paths": {
-            "react-vapor-test-utils": ["./jest/utils/react-vapor-test-utils"]
-        }
+        "importHelpers": true
     },
     "exclude": ["**/node_modules", "**/dist", "**/coverage", "*.js", "**/target"]
 }
