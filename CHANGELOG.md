@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.24.2](https://github.com/coveo/react-vapor/compare/v9.24.1...v9.24.2) (2021-01-19)
+
+
+### Features
+
+* **jenkins pipeline:** remove skip stage ([8846283](https://github.com/coveo/react-vapor/commit/8846283237798aa745471336348c339c4fef8ba0))
+
+
+
+
+
 ## [9.24.1](https://github.com/coveo/react-vapor/compare/v9.24.0...v9.24.1) (2021-01-19)
 
 **Note:** Version bump only for package root
