@@ -64,4 +64,5 @@ export const defaultTabs: ITabProps[] = [
     {id: 'tab1', title: 'Digimon'},
     {id: 'tab2', title: 'Beyblade'},
     {id: 'tab3', title: 'Pokemon'},
+    {id: 'tab4', title: 'Perdu', url: 'http://www.perdu.com'},
 ];

@@ -1,5 +1,6 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {UrlUtils} from '../../../utils';
 import {Svg} from '../../svg';
 
 import {Tooltip} from '../../tooltip/Tooltip';
@@ -91,5 +92,20 @@ describe('Tab', () => {
 
         expect(tab.find(Svg).exists()).toBe(true);
         expect(tab.find(Svg).props().svgName).toBe('help');
+    });
+
+    it('should redirect to specific URL if the url prop is set', () => {
+        const navigateSpy = spyOn(UrlUtils, 'redirectToUrl');
+
+        const tab = shallow(
+            <Tab
+                {...basicProps}
+                url="http://www.perdu.com"
+                children={<Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />}
+            />
+        );
+        tab.simulate('click');
+
+        expect(navigateSpy).toHaveBeenCalledWith('http://www.perdu.com');
     });
 });
