@@ -14,9 +14,18 @@ describe('Toasts', () => {
     });
 
     describe('<Toast />', () => {
+        beforeEach(() => {
+            toastBasicAttributes = {
+                title: 'some title',
+            };
+
+            toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
+            toastInstance = toastComponent.instance() as Toast;
+        });
+
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jest.fn();
-            const toastComponent = mount(<Toast {...defaultProps} onRender={renderSpy} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onRender: renderSpy});
 
             toastComponent.unmount();
 
@@ -25,7 +34,11 @@ describe('Toasts', () => {
 
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy = jest.fn();
-            const toastComponent = mount(<Toast {...defaultProps} onDestroy={destroySpy} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onDestroy: destroySpy});
+
+            expect(() => toastInstance.componentWillUnmount()).not.toThrow();
+
+            toastComponent.setProps(newToastAttributes).mount();
 
             toastComponent.unmount();
 
@@ -124,6 +137,7 @@ describe('Toasts', () => {
 
         it('should contain a toast-close when the dismissible prop is undefined', () => {
             const closeSelector = '.toast-close';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onClose: jest.fn()});
 
             const toastComponent = mount(<Toast {...defaultProps} />);
 
@@ -155,23 +169,32 @@ describe('Toasts', () => {
 
         beforeEach(() => {
             onCloseToast = jest.fn();
-            defaultProps = {
-                title: '👑',
-                dismiss: dismissDelay - 1, // Subtract 1 so the jest.useFakeTimers() work as expected
+            toastBasicAttributes = {
+                title: 'some title',
+                // Subtract 1 so the jasmine.tick work as expected
+                dismiss: dismissDelay - 1,
                 onClose: onCloseToast,
             };
 
             onCloseToast.mockReset();
             jest.useFakeTimers();
+
+            toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
+            toastInstance = toastComponent.instance() as Toast;
         });
 
         afterEach(() => {
             jest.clearAllTimers();
+            toastComponent?.unmount();
             onCloseToast.mockReset();
         });
 
         it('should call onClose when the timer expires', () => {
-            mount(<Toast {...defaultProps} />, {attachTo: document.getElementById('App')});
+            expect(onCloseToast).not.toHaveBeenCalled();
+
+            jest.advanceTimersByTime(dismissDelay);
+
+            expect(onCloseToast).toHaveBeenCalledTimes(1);
 
             jest.advanceTimersByTime(dismissDelay);
 
@@ -180,6 +203,8 @@ describe('Toasts', () => {
 
         it('should not call onClose when the toast is not dimissible even if the timer expires', () => {
             mount(<Toast {...defaultProps} dismissible={false} />);
+
+            expect(onCloseToast).not.toHaveBeenCalled();
 
             jest.advanceTimersByTime(dismissDelay);
 
