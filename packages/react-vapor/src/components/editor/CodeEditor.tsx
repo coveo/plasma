@@ -11,12 +11,12 @@ import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 
 import classNames from 'classnames';
+import {connect} from 'react-redux';
 import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
 import {CodeMirrorGutters} from './EditorConstants';
 import {IReactVaporState} from '../../ReactVapor';
-import {ReduxConnect} from '../../utils';
 
-export interface ICodeEditorOwnProps {
+export interface ICodeEditorProps {
     value: string;
     mode: any;
     readOnly?: boolean;
@@ -29,22 +29,18 @@ export interface ICodeEditorOwnProps {
     collapsibleId?: string;
 }
 
-export interface CodeEditorMappedState {
-    isCollapsibleExpanded?: boolean;
-}
-
 export interface CodeEditorState {
     value: string;
 }
 
-const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorOwnProps) => ({
+const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorProps) => ({
     isCollapsibleExpanded: CollapsibleSelectors.isExpanded(state, collapsibleId),
 });
 
-export interface ICodeEditorProps extends ICodeEditorOwnProps, Partial<ReturnType<typeof mapStateToProps>> {}
-
-@ReduxConnect(mapStateToProps)
-export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorState, CodeEditorMappedState> {
+class CodeEditorDisconnect extends React.Component<
+    ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>,
+    CodeEditorState
+> {
     static defaultProps: Partial<ICodeEditorProps> = {
         className: 'mod-border',
         value: '{}',
@@ -100,7 +96,7 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                     this.props.onChange?.(value);
                 }}
                 options={{
-                    ...CodeEditor.defaultOptions,
+                    ...CodeEditorDisconnect.defaultOptions,
                     readOnly: this.props.readOnly,
                     mode: this.props.mode,
                     ...this.props.options,
@@ -119,3 +115,5 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
         }
     }
 }
+
+export const CodeEditor = connect(mapStateToProps)(CodeEditorDisconnect);
