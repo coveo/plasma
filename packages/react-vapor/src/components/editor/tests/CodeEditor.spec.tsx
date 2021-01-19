@@ -99,7 +99,6 @@ describe('CodeEditor', () => {
         });
 
         it(`should clear codemirror's history if we set a new value`, () => {
-            codeEditorInstance = codeEditor.dive().instance() as any;
             const clearHistorySpy: jest.SpyInstance = jest.spyOn(
                 (codeEditorInstance as any).editor.getDoc(),
                 'clearHistory'

@@ -14,7 +14,7 @@ module.exports = {
             env: {
                 'jest/globals': true,
             },
-            extends: ['plugin:jest/recommended', 'plugin:testing-library/recommended', 'plugin:jest-dom/recommended'],
+            extends: 'plugin:jest/recommended',
         },
     ],
 };
