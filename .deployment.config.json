@@ -21,7 +21,8 @@
         "prescan_timeout_minutes": 240,
         "scan_timeout_minutes": 480,
         "source": "veracode",
-        "scan_include_patterns": "*"
+        "scan_include_patterns": "*",
+        "app_name": "Admin UI"
     },
     "observatory": {
         "no_endpoint": true
@@ -103,5 +104,5 @@
             }
         }
     ],
-    "deployment_config_version": 1
+    "deployment_config_version": 2
 }
