@@ -47,6 +47,8 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
     readonly dropRef: React.RefObject<HTMLElement>;
 
     private lastPosition: IDropUIPosition;
+    private dropElement: HTMLDivElement;
+    private portalRoot: Element;
 
     static defaultProps: Partial<IDropPodProps> = {
         isOpen: false,
@@ -64,6 +66,9 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         this.state = {
             offset: undefined,
         };
+
+        this.dropElement = document.createElement('div');
+        this.portalRoot = document.querySelector(this.props.selector ?? Defaults.DROP_ROOT);
 
         this.updateOffset = this.updateOffset.bind(this);
         if (
@@ -87,10 +92,12 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
         if (this.props.isOpen) {
             this.setEventsOnDocument();
         }
+        this.portalRoot.appendChild(this.dropElement);
     }
 
     componentWillUnmount() {
         this.removeEventsOnDocument();
+        this.portalRoot.removeChild(this.dropElement);
     }
 
     componentDidUpdate(prevProps: Readonly<IRDropPodProps>) {
@@ -240,7 +247,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
 
         const drop: React.ReactNode = this.props.renderDrop(style, this.dropRef, this.lastPosition);
 
-        return ReactDOM.createPortal(drop, document.querySelector(this.props.selector ?? Defaults.DROP_ROOT));
+        return ReactDOM.createPortal(drop, this.dropElement);
     }
 }
 

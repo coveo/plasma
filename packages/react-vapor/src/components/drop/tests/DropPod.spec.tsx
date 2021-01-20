@@ -145,26 +145,55 @@ describe('DropPod', () => {
                         Defaults.DROP_ROOT = 'body';
                     });
 
-                    it('should create a portal with the Defaults.DROP_ROOT if no selector is passed in props', () => {
+                    it('should create a div element and create a portal with it', () => {
+                        const divElement = document.createElement('div');
+                        spyOn(document, 'querySelector').and.callThrough();
+                        const portalSpy: jasmine.Spy = spyOn(ReactDOM, 'createPortal');
+
+                        shallow(<DropPod renderDrop={() => '🍟'} ref={buttonRef} />, {}).dive();
+
+                        expect(portalSpy).toHaveBeenCalledWith('🍟', divElement);
+                    });
+
+                    it('should append the div element to the Defaults.DROP_ROOT as the portal root if no selector is passed in props', () => {
+                        const divElement = document.createElement('div');
                         const expectedElement = document.querySelector('head');
                         Defaults.DROP_ROOT = 'head';
 
                         spyOn(document, 'querySelector').and.callThrough();
-                        const portalSpy: jasmine.Spy = spyOn(ReactDOM, 'createPortal');
+                        const appendChildSpy: jasmine.Spy = spyOn(expectedElement, 'appendChild');
                         shallow(<DropPod renderDrop={() => '🍟'} ref={buttonRef} />, {}).dive();
 
-                        expect(portalSpy).toHaveBeenCalledWith('🍟', expectedElement);
+                        expect(appendChildSpy).toHaveBeenCalledWith(divElement);
                     });
 
-                    it('should create a portal with the selector prop if passed to the dropPod', () => {
+                    it('should append the div element to with the selector prop as the portal root if passed to the dropPod', () => {
+                        const divElement = document.createElement('div');
                         const expectedElement = document.querySelector('head');
                         Defaults.DROP_ROOT = '#🥔';
 
                         spyOn(document, 'querySelector').and.callThrough();
-                        const portalSpy: jasmine.Spy = spyOn(ReactDOM, 'createPortal');
+                        const appendChildSpy: jasmine.Spy = spyOn(expectedElement, 'appendChild');
                         shallow(<DropPod renderDrop={() => '🍟'} selector="head" ref={buttonRef} />, {}).dive();
 
-                        expect(portalSpy).toHaveBeenCalledWith('🍟', expectedElement);
+                        expect(appendChildSpy).toHaveBeenCalledWith(divElement);
+                    });
+
+                    it('should remove the div element with the portal root', () => {
+                        const divElement = document.createElement('div');
+                        const expectedElement = document.querySelector('head');
+                        Defaults.DROP_ROOT = 'head';
+
+                        spyOn(document, 'querySelector').and.callThrough();
+                        const removeChildSpy: jasmine.Spy = spyOn(expectedElement, 'removeChild');
+                        const componentToUnmount = shallow(
+                            <DropPod renderDrop={() => '🍟'} ref={buttonRef} />,
+                            {}
+                        ).dive();
+
+                        componentToUnmount.unmount();
+
+                        expect(removeChildSpy).toHaveBeenCalledWith(divElement);
                     });
                 });
 

@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {UrlUtils} from '../../utils';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
@@ -11,6 +12,7 @@ export interface ITabOwnProps {
     disabled?: boolean;
     tooltip?: string;
     children?: React.ReactNode;
+    url?: string;
 }
 
 export interface ITabStateProps {
@@ -54,6 +56,9 @@ export class Tab extends React.Component<ITabProps, any> {
     private handleSelect = (e: React.MouseEvent) => {
         if (!this.props.disabled) {
             this.props.onSelect?.(e);
+            if (this.props.url) {
+                UrlUtils.redirectToUrl(this.props.url);
+            }
         }
     };
 }

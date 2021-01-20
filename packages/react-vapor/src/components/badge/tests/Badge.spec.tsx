@@ -2,6 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {Badge, DEFAULT_BADGE_CLASSNAME, IBadgeProps} from '../Badge';
+import {Svg} from '../../svg';
 
 describe('Badge', () => {
     let badge: ReactWrapper<IBadgeProps, any>;
@@ -40,6 +41,23 @@ describe('Badge', () => {
 
             expect(badge.find('.bg-blue').length).toBe(1);
             expect(badge.find('.bold').length).toBe(1);
+        });
+
+        it('should render the badge with SVG icons', () => {
+            mountWithProps({
+                extraClasses: [],
+                icon: 'lock',
+            });
+
+            expect(badge.find(Svg).length).toBe(1);
+        });
+
+        it('should not render the SVG component no props are passed in icon props', () => {
+            mountWithProps({
+                label: 'TestLabel',
+            });
+
+            expect(badge.find(Svg).length).toBe(0);
         });
     });
 });

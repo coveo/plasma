@@ -3,6 +3,76 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.25.2](https://github.com/coveo/react-vapor/compare/v9.25.1...v9.25.2) (2021-01-19)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.25.1](https://github.com/coveo/react-vapor/compare/v9.25.0...v9.25.1) (2021-01-19)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [9.25.0](https://github.com/coveo/react-vapor/compare/v9.24.4...v9.25.0) (2021-01-19)
+
+
+### Features
+
+* **drop-pod:** remove the created portal when component is unmount ([2eda988](https://github.com/coveo/react-vapor/commit/2eda988ffb8f38e5a10fe928290192aec79ab643))
+
+
+
+
+
+## [9.24.4](https://github.com/coveo/react-vapor/compare/v9.24.3...v9.24.4) (2021-01-19)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.24.3](https://github.com/coveo/react-vapor/compare/v9.24.2...v9.24.3) (2021-01-19)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.24.2](https://github.com/coveo/react-vapor/compare/v9.24.1...v9.24.2) (2021-01-19)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.24.1](https://github.com/coveo/react-vapor/compare/v9.24.0...v9.24.1) (2021-01-19)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [9.24.0](https://github.com/coveo/react-vapor/compare/v9.23.3...v9.24.0) (2021-01-19)
+
+
+### Features
+
+* **tab:** redirect to url prop ([cdedeb5](https://github.com/coveo/react-vapor/commit/cdedeb5aeb15dbb553cc9e9a5c94947d2769eff5))
+
+
+
+
+
 ## [9.23.3](https://github.com/coveo/react-vapor/compare/v9.23.2...v9.23.3) (2021-01-15)
 
 **Note:** Version bump only for package react-vapor
