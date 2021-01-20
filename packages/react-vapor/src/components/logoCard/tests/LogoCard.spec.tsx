@@ -76,12 +76,6 @@ describe('LogoCard', () => {
             disabledLogoCardProps = {
                 disabled: true,
                 onClick: jest.fn(),
-                ribbon: {
-                    label: 'ribbonWhenEnabled',
-                },
-                disabledRibbon: {
-                    label: 'ribbonWhenDisabled',
-                },
                 tooltip: 'Tooltip',
             };
         });
