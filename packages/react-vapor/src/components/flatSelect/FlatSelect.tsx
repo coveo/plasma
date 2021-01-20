@@ -53,7 +53,7 @@ export const FlatSelect: React.FunctionComponent<IFlatSelectProps> = ({
             key={flatSelectOption.id}
             {...flatSelectOption}
             onClick={handleClick}
-            disabled={disabled}
+            disabled={disabled || flatSelectOption.disabled}
             selected={selectedOptionId === flatSelectOption.id}
         />
     ));

@@ -71,6 +71,18 @@ describe('FlatSelect', () => {
             expect(optionElement.hasClass('selectable')).toBe(true);
         });
 
+        it('should have the class disabled if the props disabled is true', () => {
+            renderFlatSelectOption(
+                _.extend({}, defaultProps, {
+                    disabled: true,
+                })
+            );
+
+            const optionElement = flatSelect.find('a');
+
+            expect(optionElement.hasClass('disabled')).toBe(true);
+        });
+
         it('should have 1 <Content/> if only default props are set', () => {
             renderFlatSelectOption(defaultProps);
 

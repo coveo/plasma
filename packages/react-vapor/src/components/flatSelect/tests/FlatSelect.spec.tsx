@@ -113,4 +113,37 @@ describe('FlatSelect', () => {
 
         expect(store.getActions()).toContain(selectFlatSelect(props.id, 'new-option'));
     });
+
+    it('should disabled all options if the disabled prop is true', () => {
+        const propsWithDisabled = {...props, disabled: true};
+        const component = shallowWithState(<FlatSelectConnected {...propsWithDisabled} />, {}).dive();
+
+        for (let i = 0; i < component.find(FlatSelectOption).length; i++) {
+            expect(component.find(FlatSelectOption).at(i).props().disabled).toBe(true);
+        }
+    });
+
+    it('should disabled only one option if the disabled prop is set in a single option', () => {
+        const optionsWithOneDisabled: IFlatSelectOptionProps[] = [
+            {
+                id: UUID.generate(),
+                option: {
+                    content: 'test',
+                },
+                disabled: true,
+            },
+            {
+                id: UUID.generate(),
+                option: {
+                    content: 'test',
+                },
+            },
+        ];
+        const propsWithOneOptionDisabled = {...props, options: optionsWithOneDisabled};
+
+        const component = shallowWithState(<FlatSelectConnected {...propsWithOneOptionDisabled} />, {}).dive();
+
+        expect(component.find(FlatSelectOption).first().props().disabled).toBe(true);
+        expect(component.find(FlatSelectOption).at(1).props().disabled).toBe(false);
+    });
 });
