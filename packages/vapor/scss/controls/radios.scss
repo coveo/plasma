@@ -51,12 +51,12 @@
 
         &:checked + label {
             &:before {
-                border: 2px solid var(--azure);
+                border: 2px solid #15ab65; // success-60 from rebranding
             }
 
             &:after {
                 z-index: 0;
-                background-color: var(--azure);
+                background-color: #15ab65; // success-60 from rebranding
                 transform: scale(0.5);
             }
         }
