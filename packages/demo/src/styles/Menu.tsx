@@ -51,7 +51,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/whitespace" name="Whitespace" />
             <NavigationLink href="/cursor" name="Cursor" />
             <NavigationLink href="/color-dots" name="Color dots" />
-            <NavigationLink href="/hover" name="Hover" />
         </NavigationSection>
     </SideNavigation>
 );
