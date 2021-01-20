@@ -3,11 +3,15 @@
     // Default Style
     display: inline-block;
     box-sizing: border-box;
-    font-weight: var(--main-font-bolder);
+    height: var(--badge-height);
+    margin-right: var(--badge-margin);
+    padding: var(--badge-padding);
+    color: var(--badge-text-color);
+    font-weight: var(--badge-font-weight);
+    line-height: var(--badge-line-height);
     text-align: center;
-    text-transform: capitalize;
-    border: var(--default-border);
-    border-radius: 8px;
+    background-color: var(--badge-background-color);
+    border: var(--badge-border);
 
     // Variables
     --height: 32px;
