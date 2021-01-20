@@ -1,4 +1,4 @@
-import {IBadgeProps, ICornerRibbonProps} from 'react-vapor';
+import {IBadgeProps} from 'react-vapor';
 
 export const MULTIPLE_BADGES: IBadgeProps[] = [
     {
@@ -7,15 +7,10 @@ export const MULTIPLE_BADGES: IBadgeProps[] = [
     },
     {
         label: 'Badge 2',
-        extraClasses: ['bg-medium-blue'],
+        extraClasses: ['bg-orange'],
     },
     {
         label: 'Badge 3',
-        extraClasses: ['bg-darker-blue'],
+        extraClasses: ['bg-anakiwa'],
     },
 ];
-
-export const EXAMPLE_RIBBON_PROPS: ICornerRibbonProps = {
-    label: 'Ribbon',
-    extraClasses: ['bg-orange', 'bold'],
-};

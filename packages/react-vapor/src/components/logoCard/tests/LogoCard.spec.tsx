@@ -3,13 +3,6 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {
-    CornerRibbon,
-    DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME,
-    PlacementX,
-    PlacementY,
-} from '../../cornerRibbon/CornerRibbon';
-import {Tooltip} from '../../tooltip';
-import {
     DEFAULT_LOGO_CARD_CLASSNAME,
     DEFAULT_LOGO_ICON,
     DEFAULT_LOGO_ICON_CLASSNAME,
@@ -17,6 +10,7 @@ import {
     ILogoCardProps,
     LogoCard,
 } from '../LogoCard';
+import {Tooltip} from '../../tooltip';
 
 describe('LogoCard', () => {
     let logoCard: ReactWrapper<ILogoCardProps>;
@@ -30,60 +24,6 @@ describe('LogoCard', () => {
         expect(() => {
             shallow(<LogoCard title="test card" />);
         }).not.toThrow();
-    });
-
-    describe('<LogoCard /> with title only', () => {
-        let defaultLogoCardProps: Partial<ILogoCardProps>;
-
-        it('should have a logo-card-content-center class when only a title is given', () => {
-            defaultLogoCardProps = {
-                title: 'Card title only',
-            };
-            mountWithProps(defaultLogoCardProps);
-
-            expect(logoCard.find('.logo-card-content-center').length).toBe(1);
-            expect(logoCard.find('.logo-card-content').length).toBe(0);
-        });
-
-        it('should have a logo-card-content class when there are badges in the LogoCard', () => {
-            defaultLogoCardProps = {
-                title: 'Card title with badges',
-                badges: [
-                    {
-                        label: 'badge 1',
-                    },
-                    {
-                        label: 'badge 2',
-                    },
-                ],
-            };
-            mountWithProps(defaultLogoCardProps);
-
-            expect(logoCard.find('.logo-card-content-center').length).toBe(0);
-            expect(logoCard.find('.logo-card-content').length).toBe(1);
-        });
-
-        it('should have a logo-card-content class when there is a description passed in the LogoCard', () => {
-            defaultLogoCardProps = {
-                title: 'Card title with a description',
-                description: 'some description',
-            };
-            mountWithProps(defaultLogoCardProps);
-
-            expect(logoCard.find('.logo-card-content-center').length).toBe(0);
-            expect(logoCard.find('.logo-card-content').length).toBe(1);
-        });
-
-        it('should have a logo-card-content class when there are badges and a description passed in the LogoCard', () => {
-            defaultLogoCardProps = {
-                title: 'Card title with a description',
-                description: 'some description',
-            };
-            mountWithProps(defaultLogoCardProps);
-
-            expect(logoCard.find('.logo-card-content-center').length).toBe(0);
-            expect(logoCard.find('.logo-card-content').length).toBe(1);
-        });
     });
 
     describe('Default <LogoCard />', () => {
@@ -104,10 +44,6 @@ describe('LogoCard', () => {
             expect(logoCard.html()).toContain(DEFAULT_LOGO_CARD_CLASSNAME);
         });
 
-        it('should not have the ribbon-container class if no ribbon is used on the LogoCard', () => {
-            expect(logoCard.html()).not.toContain(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME);
-        });
-
         it('should render the specied title as props', () => {
             expect(logoCard.find('.logo-card-title').text()).toEqual(defaultLogoCardProps.title);
         });
@@ -116,10 +52,6 @@ describe('LogoCard', () => {
             logoCard.props().onClick();
 
             expect(defaultLogoCardProps.onClick).toHaveBeenCalledTimes(1);
-        });
-
-        it('should not render a corner-ribbon if no ribbon is set when not disabled', () => {
-            expect(logoCard.find('CornerRibbon').length).toBe(0);
         });
 
         it('should render no badges if no badges are specified as props', () => {
@@ -144,12 +76,6 @@ describe('LogoCard', () => {
             disabledLogoCardProps = {
                 disabled: true,
                 onClick: jest.fn(),
-                ribbon: {
-                    label: 'ribbonWhenEnabled',
-                },
-                disabledRibbon: {
-                    label: 'ribbonWhenDisabled',
-                },
                 tooltip: 'Tooltip',
             };
         });
@@ -162,18 +88,10 @@ describe('LogoCard', () => {
             expect(logoCard.html()).toContain('disabled');
         });
 
-        it('should have the ribbon-container class', () => {
-            expect(logoCard.html()).toContain(DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME);
-        });
-
         it('should not call onClick when clicking on the logoCard', () => {
             logoCard.simulate('click');
 
             expect(disabledLogoCardProps.onClick).not.toHaveBeenCalled();
-        });
-
-        it('should render the disabled ribbon when a ribbon is already applied', () => {
-            expect(logoCard.find(CornerRibbon).text()).toBe(disabledLogoCardProps.disabledRibbon.label);
         });
 
         it('should render a tooltip if the props are given', () => {
@@ -181,7 +99,7 @@ describe('LogoCard', () => {
         });
     });
 
-    describe('<LogoCard /> with badges, description and ribbon', () => {
+    describe('<LogoCard /> with badges, description', () => {
         const thisLogoCardProps: Partial<ILogoCardProps> = {
             badges: [
                 {
@@ -191,12 +109,6 @@ describe('LogoCard', () => {
                     label: 'badge 2',
                 },
             ],
-            ribbon: {
-                label: 'some-ribbon',
-                placementX: PlacementX.Right,
-                placementY: PlacementY.Bottom,
-                extraClasses: ['bold'],
-            },
             description: 'some description',
             extraContainerClasses: ['some-extra-class'],
             svgName: 'source-rss',
@@ -208,17 +120,6 @@ describe('LogoCard', () => {
 
         it('should render as many badges as specified in the props if any', () => {
             expect(logoCard.find('Badge').length).toBe(thisLogoCardProps.badges.length);
-        });
-
-        it('should render a ribbon as specified in the props if any', () => {
-            expect(logoCard.find(CornerRibbon).props()).toEqual(thisLogoCardProps.ribbon);
-        });
-
-        it('should render a description with ml1 class', () => {
-            const descriptionSpan = logoCard.find('span.ml1');
-
-            expect(descriptionSpan.length).toBeGreaterThan(0);
-            expect(descriptionSpan.text()).toBe(thisLogoCardProps.description);
         });
 
         it('should render extra container classes if specified as props', () => {

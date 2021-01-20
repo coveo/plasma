@@ -3,7 +3,6 @@
     margin: $logo-card-margin;
     padding: $logo-card-padding;
     border: $logo-card-border;
-
     cursor: pointer;
 
     &.disabled {
@@ -29,15 +28,17 @@
 .logo-card-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-}
-
-.logo-card-content-center {
-    display: flex;
-    flex-direction: column;
+    flex-grow: 1;
     justify-content: center;
 }
 
 .logo-card-title {
     color: $logo-card-title-color;
+}
+
+.logo-card-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
