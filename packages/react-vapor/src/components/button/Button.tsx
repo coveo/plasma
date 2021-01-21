@@ -47,7 +47,7 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
             });
 
             buttonElement = (
-                <a className={`${buttonClass} btn-container`} {...buttonAttrs}>
+                <a className={`${buttonClass} btn-container mod-no-button-tag`} {...buttonAttrs}>
                     {this.props.name}
                     {this.props.children}
                 </a>
