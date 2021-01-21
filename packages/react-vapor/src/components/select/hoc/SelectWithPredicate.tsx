@@ -16,6 +16,7 @@ export interface ISelectWithPredicateOwnProps {
     options: IFlatSelectOptionProps[];
     matchPredicate?: (predicate: string, item: IItemBoxProps) => boolean;
     initiallySelectedPredicateId?: string;
+    disabledFlatSelectOptions?: boolean;
 }
 const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
 
@@ -57,6 +58,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
                     group
                     optionPicker
                     defaultSelectedOptionId={props.initiallySelectedPredicateId}
+                    disabled={props.disabledFlatSelectOptions}
                 />
                 {props.children}
             </Component>

@@ -119,6 +119,43 @@ export class FlatSelectExamples extends React.Component {
                             }}
                         />
                     </Section>
+                    <Section level={2} title="Flat Select with a disabled option">
+                        <FlatSelectConnected
+                            {...{
+                                id: UUID.generate(),
+                                options: [
+                                    {
+                                        id: UUID.generate(),
+                                        option: {content: 'disabled'},
+                                        disabled: true,
+                                    },
+                                    {
+                                        id: UUID.generate(),
+                                        option: {content: 'enabled'},
+                                    },
+                                ],
+                            }}
+                        />
+                    </Section>
+                    <Section level={2} title="Flat Select with all options disabled">
+                        <FlatSelectConnected
+                            {...{
+                                id: UUID.generate(),
+                                options: [
+                                    {
+                                        id: UUID.generate(),
+                                        option: {content: "I'm a disabled FlatSelectOption"},
+                                        disabled: true,
+                                    },
+                                    {
+                                        id: UUID.generate(),
+                                        option: {content: "I'm a disabled FlatSelectOption too!"},
+                                    },
+                                ],
+                                disabled: true,
+                            }}
+                        />
+                    </Section>
                 </Section>
             </Form>
         );

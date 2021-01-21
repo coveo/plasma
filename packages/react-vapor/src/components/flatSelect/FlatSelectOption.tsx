@@ -18,6 +18,7 @@ export interface IFlatSelectOptionProps {
 export class FlatSelectOption extends React.Component<IFlatSelectOptionProps, any> {
     static defaultProps: Partial<IFlatSelectOptionProps> = {
         selected: false,
+        disabled: false,
     };
 
     private onClick() {
