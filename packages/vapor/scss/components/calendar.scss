@@ -245,13 +245,13 @@
 
         &:nth-child(1n) {
             button {
-                &:hover,
-                &.active {
-                    background-color: $date-picker-button-hover-bg;
+                &:hover {
+                    background-color: var(--light-grey);
                 }
 
                 &.active {
-                    border-color: var(--blue);
+                    color: var(--white);
+                    background-color: var(--blue-purple-3);
                 }
             }
         }
