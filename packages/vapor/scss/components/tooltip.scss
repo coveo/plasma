@@ -69,28 +69,6 @@
         }
     }
 
-    &.state-error {
-        .tooltip-inner {
-            background-color: var(--red);
-        }
-
-        &.left .tooltip-arrow {
-            border-left-color: var(--red);
-        }
-
-        &.bottom .tooltip-arrow {
-            border-bottom-color: var(--red);
-        }
-
-        &.top .tooltip-arrow {
-            border-top-color: var(--red);
-        }
-
-        &.right .tooltip-arrow {
-            border-right-color: var(--red);
-        }
-    }
-
     .tooltip-arrow {
         position: absolute;
         width: 0;
