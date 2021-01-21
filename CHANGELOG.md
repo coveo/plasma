@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.26.0](https://github.com/coveo/react-vapor/compare/v9.25.2...v9.26.0) (2021-01-21)
+
+
+### Bug Fixes
+
+* change color of selected radio button ([1a42b92](https://github.com/coveo/react-vapor/commit/1a42b9216408989607e5115013f13ca870e1af7c))
+* digital-blue-60 hardcoded ([450591d](https://github.com/coveo/react-vapor/commit/450591de0174447bc5baacfa7325d57e4de0229d))
+* green os for trial only T_T ([8f5b070](https://github.com/coveo/react-vapor/commit/8f5b070de6a959f91da28284bc616fcdd4f6e075))
+* new blue for add-action icon ([6d86fba](https://github.com/coveo/react-vapor/commit/6d86fbacc2abd597c73942e9b1bd9d9b1e755ecf))
+* the real new color but hardcoded ([4c2980c](https://github.com/coveo/react-vapor/commit/4c2980c591831941311cdeb63a016a6ec18f0bac))
+
+
+### Features
+
+* **badge:** adding prop to allow svg icons ([4814da9](https://github.com/coveo/react-vapor/commit/4814da9ef4a21647f4fb945d5eb0201cfd3b02de))
+
+
+### Reverts
+
+* Revert "feat(jenkins pipeline): remove skip stage" ([0972a50](https://github.com/coveo/react-vapor/commit/0972a5086e6ab8fd0af63f5c58f80c440a716fa7))
+
+
+
+
+
 ## [9.25.2](https://github.com/coveo/react-vapor/compare/v9.25.1...v9.25.2) (2021-01-19)
 
 **Note:** Version bump only for package root

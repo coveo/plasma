@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.26.0](https://github.com/coveo/react-vapor/compare/v9.25.2...v9.26.0) (2021-01-21)
+
+
+### Features
+
+* **badge:** adding prop to allow svg icons ([4814da9](https://github.com/coveo/react-vapor/commit/4814da9ef4a21647f4fb945d5eb0201cfd3b02de))
+
+
+
+
+
 ## [9.25.2](https://github.com/coveo/react-vapor/compare/v9.25.1...v9.25.2) (2021-01-19)
 
 **Note:** Version bump only for package react-vapor
