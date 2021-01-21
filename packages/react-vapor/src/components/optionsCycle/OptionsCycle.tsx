@@ -76,7 +76,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
                 >
                     <Svg svgName="arrow-left-rounded" svgClass="icon fill-dark-blue mod-16" />
                 </button>
-                <span className={classNames('options-cycle-option', this.props.buttonClassName)}>
+                <span className={classNames('options-cycle-option mod-no-button-tag', this.props.buttonClassName)}>
                     {this.props.options[this.props.currentOption]}
                 </span>
                 <button
