@@ -69,25 +69,28 @@
         }
     }
 
-    &.state-error {
-        .tooltip-inner {
-            background-color: var(--red);
-        }
+    @each $color in $palette {
+        $key: nth($color, 1);
+        &.mod-bg-#{$key} {
+            .tooltip-inner {
+                background-color: var(--#{$key});
+            }
 
-        &.left .tooltip-arrow {
-            border-left-color: var(--red);
-        }
+            &.left .tooltip-arrow {
+                border-left-color: var(--#{$key});
+            }
 
-        &.bottom .tooltip-arrow {
-            border-bottom-color: var(--red);
-        }
+            &.bottom .tooltip-arrow {
+                border-bottom-color: var(--#{$key});
+            }
 
-        &.top .tooltip-arrow {
-            border-top-color: var(--red);
-        }
+            &.top .tooltip-arrow {
+                border-top-color: var(--#{$key});
+            }
 
-        &.right .tooltip-arrow {
-            border-right-color: var(--red);
+            &.right .tooltip-arrow {
+                border-right-color: var(--#{$key});
+            }
         }
     }
 
