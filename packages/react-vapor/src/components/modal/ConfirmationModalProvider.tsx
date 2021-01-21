@@ -3,34 +3,35 @@ import * as React from 'react';
 import {Button} from '../button/Button';
 import {ModalComposite} from './ModalComposite';
 
-const defaultModalTitle = 'Unsaved Changes';
 const defaultModalClasses = ['mod-prompt', 'mod-fade-in-scale'];
-const defaultModalDescription =
-    'Are you sure you want to leave this page without saving? All unsaved changes will be lost.';
-const defaultConfirmButtonText = 'Exit without applying changes';
+const defaultConfirmButtonText = 'Confirm';
 
-export interface IUnsavedChangesModalProviderProps {
-    isDirty: boolean;
-    modalTitle?: string;
+export interface IConfirmationModalChildrenProps {
+    promptBefore: (callbackOnDiscard: () => any) => boolean;
+}
+
+export interface IConfirmationModalProviderProps {
+    shouldConfirm: boolean;
+    modalTitle: string;
+    modalBodyChildren: React.ReactNode;
     className?: string[];
-    children: (props: {promptBefore: (callbackOnDiscard: () => any) => boolean}) => React.ReactNode;
-    unsavedChangesDescription?: string;
+    children: (props: IConfirmationModalChildrenProps) => React.ReactNode;
     confirmButtonText?: string;
 }
 
-export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChangesModalProviderProps> = ({
-    isDirty,
+export const ConfirmationModalProvider: React.FunctionComponent<IConfirmationModalProviderProps> = ({
+    shouldConfirm,
     children,
-    modalTitle = defaultModalTitle,
+    modalTitle,
     className = defaultModalClasses,
-    unsavedChangesDescription = defaultModalDescription,
+    modalBodyChildren,
     confirmButtonText = defaultConfirmButtonText,
 }) => {
     const [isOpen, setIsOpen] = React.useState(false);
     const [confirm, setConfirm] = React.useState(null);
 
     const promptBefore = (callbackOnDiscard: () => any): boolean => {
-        if (isDirty) {
+        if (shouldConfirm) {
             setIsOpen(true);
             setConfirm(() => () => {
                 callbackOnDiscard();
@@ -53,7 +54,7 @@ export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChange
                 classes={className}
                 modalHeaderClasses={['mod-warning']}
                 modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
-                modalBodyChildren={<div>{unsavedChangesDescription}</div>}
+                modalBodyChildren={modalBodyChildren}
                 modalFooterChildren={
                     <>
                         <Button small name={confirmButtonText} onClick={confirm} primary />
