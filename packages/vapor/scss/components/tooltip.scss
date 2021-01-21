@@ -23,7 +23,7 @@
             margin-left: -5px;
             border-width: 5px 5px 0;
 
-            border-top-color: $dark-blue;
+            border-top-color: var(--tooltip-arrow-color);
         }
     }
 
@@ -37,7 +37,7 @@
             margin-top: -5px;
             border-width: 5px 5px 5px 0;
 
-            border-right-color: $dark-blue;
+            border-right-color: var(--tooltip-arrow-color);
         }
     }
 
@@ -51,7 +51,7 @@
             margin-left: -5px;
             border-width: 0 5px 5px;
 
-            border-bottom-color: $dark-blue;
+            border-bottom-color: var(--tooltip-arrow-color);
         }
     }
 
@@ -65,7 +65,7 @@
             margin-top: -5px;
             border-width: 5px 0 5px 5px;
 
-            border-left-color: $dark-blue;
+            border-left-color: var(--tooltip-arrow-color);
         }
     }
 
@@ -109,7 +109,7 @@
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;
-        background-color: $dark-blue;
+        background-color: var(--tooltip-background-color);
         border-radius: 2px;
     }
 }
