@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.26.1](https://github.com/coveo/react-vapor/compare/v9.26.0...v9.26.1) (2021-01-21)
+
+
+### Bug Fixes
+
+* **flat-select:** disabled the flatSelectOption when disabled is true ([ac97532](https://github.com/coveo/react-vapor/commit/ac97532fc404eb3b4d6ef8d8284d5cf998ac29e2))
+
+
+
+
+
 # [9.26.0](https://github.com/coveo/react-vapor/compare/v9.25.2...v9.26.0) (2021-01-21)
 
 
