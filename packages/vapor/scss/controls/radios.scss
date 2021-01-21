@@ -51,12 +51,12 @@
 
         &:checked + label {
             &:before {
-                border: 2px solid var(--orange);
+                border: 2px solid #1372ec; // digital-blue-60
             }
 
             &:after {
                 z-index: 0;
-                background-color: var(--orange);
+                background-color: #1372ec; // digital-blue-60
                 transform: scale(0.5);
             }
         }
