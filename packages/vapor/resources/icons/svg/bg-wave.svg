@@ -1,0 +1,10 @@
+<svg viewBox="0 0 1440 1120" xmlns="http://www.w3.org/2000/svg">
+    <title>Rectangle</title>
+    <g id="Light" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Home-Light" transform="translate(0.000000, -60.000000)" fill="#F6F7F9">
+            <g id="BG" transform="translate(-0.500000, 60.000000)">
+                <path d="M784.5,488 C1171.83333,414.666667 1390.5,252 1440.5,0 L1440.5,1120 L0.5,1120 C135.833333,772 397.166667,561.333333 784.5,488 Z" id="Rectangle"></path>
+            </g>
+        </g>
+    </g>
+</svg>
