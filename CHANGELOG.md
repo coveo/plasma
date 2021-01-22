@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.27.0](https://github.com/coveo/react-vapor/compare/v9.26.2...v9.27.0) (2021-01-22)
+
+
+### Features
+
+* **modal:** generalize the confirmation modal ([#1823](https://github.com/coveo/react-vapor/issues/1823)) ([cf318a8](https://github.com/coveo/react-vapor/commit/cf318a814bcc146c6dce52c8aafd01ca67b6da23))
+
+
+
+
+
 ## [9.26.2](https://github.com/coveo/react-vapor/compare/v9.26.1...v9.26.2) (2021-01-22)
 
 **Note:** Version bump only for package root
