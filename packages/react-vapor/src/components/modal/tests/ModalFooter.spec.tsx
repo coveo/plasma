@@ -18,7 +18,7 @@ describe('ModalFooter', () => {
         });
 
         afterEach(() => {
-            modalFooter.detach();
+            modalFooter?.unmount();
         });
 
         it('should set class when the class is specified', () => {

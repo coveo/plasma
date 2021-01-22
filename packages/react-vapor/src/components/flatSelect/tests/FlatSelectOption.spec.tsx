@@ -32,19 +32,19 @@ describe('FlatSelect', () => {
         };
 
         afterEach(() => {
-            flatSelect.detach();
+            flatSelect?.unmount();
         });
 
         it('should call prop onClick when specified on click', () => {
             renderFlatSelectOption();
 
-            const clickSpy = jasmine.createSpy('onClick');
+            const clickSpy = jest.fn();
             const option = flatSelect.find('a');
 
             flatSelect.setProps({onClick: clickSpy}).mount();
             option.simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(1);
+            expect(clickSpy.mock.calls.length).toBe(1);
         });
 
         it('should not have the class selectable if the props selected is true', () => {

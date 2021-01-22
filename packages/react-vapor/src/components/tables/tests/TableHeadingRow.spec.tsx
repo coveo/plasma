@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {TableCollapsibleRowToggle} from '../TableCollapsibleRowToggle';
 import {ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow';
@@ -23,6 +24,7 @@ describe('Tables', () => {
         let tableHeadingRowInstance: TableHeadingRow;
 
         beforeEach(() => {
+            createTestAppContainer();
             document.getElementById('App').innerHTML = '<table><tbody id="AppTableBody"></tbody></table>';
 
             basicTableHeadingRowProps = {
@@ -41,7 +43,7 @@ describe('Tables', () => {
         });
 
         afterEach(() => {
-            tableHeadingRow.detach();
+            removeTestAppContainer();
         });
 
         it('should get if it is collapsible as a prop', () => {
@@ -75,32 +77,30 @@ describe('Tables', () => {
 
             expect(tableHeadingRow.find('tr').hasClass(expectedClass)).toBe(false);
 
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
 
             expect(tableHeadingRow.find('tr').hasClass(expectedClass)).toBe(true);
         });
 
         it('should call onRender prop if set on mount', () => {
-            const onRenderSpy = jasmine.createSpy('onRender');
+            const onRenderSpy = jest.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onRender: onRenderSpy});
 
-            expect(() => tableHeadingRowInstance.componentDidMount()).not.toThrow();
-
             tableHeadingRow.unmount();
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
             tableHeadingRow.mount();
 
             expect(onRenderSpy).toHaveBeenCalled();
         });
 
         it('should call onDestroy prop if set when unmounting', () => {
-            const onDestroySpy = jasmine.createSpy('onDestroy');
+            const onDestroySpy = jest.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onDestroy: onDestroySpy});
 
             expect(() => tableHeadingRowInstance.componentWillUnmount()).not.toThrow();
 
             tableHeadingRow.unmount();
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
             tableHeadingRow.mount();
             tableHeadingRow.unmount();
 
@@ -108,29 +108,29 @@ describe('Tables', () => {
         });
 
         it('should call onClick prop if set when clicking on row', () => {
-            const onClickSpy = jasmine.createSpy('onClick');
+            const onClickSpy = jest.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClick: onClickSpy});
 
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
             tableHeadingRow.find('tr').simulate('click');
 
             expect(onClickSpy).toHaveBeenCalled();
         });
 
         it('should call onDoubleClick prop if set when double clicking on row', () => {
-            const onDoubleClickSpy = jasmine.createSpy('onDoubleClick');
+            const onDoubleClickSpy = jest.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onDoubleClick: onDoubleClickSpy});
 
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
             tableHeadingRow.find('tr').simulate('dblclick');
 
             expect(onDoubleClickSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should call onClickCallBack prop if set when clicking on row', () => {
-            const onClickCallback = jasmine.createSpy('onClickCallback');
+            const onClickCallback = jest.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClickCallback});
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
 
             tableHeadingRow.find('tr').simulate('click');
 
@@ -138,10 +138,10 @@ describe('Tables', () => {
         });
 
         it('should not call onClick prop if set when clicking inside an underlying dropdown', () => {
-            const onClickSpy = jasmine.createSpy('onClick');
+            const onClickSpy = jest.fn();
             const newTabledHeadingRowProps = _.extend({}, basicTableHeadingRowProps, {onClick: onClickSpy});
 
-            tableHeadingRow.setProps(newTabledHeadingRowProps);
+            tableHeadingRow.setProps(newTabledHeadingRowProps as any);
             tableHeadingRow.find('.dropdown').simulate('click');
 
             expect(onClickSpy).not.toHaveBeenCalled();

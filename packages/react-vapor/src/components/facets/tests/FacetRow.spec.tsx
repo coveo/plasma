@@ -6,13 +6,13 @@ import {IFacet} from '../Facet';
 import {FacetRow, IFacetRowProps} from '../FacetRow';
 
 describe('Facets', () => {
-    let spyOnToggleFacet: jasmine.Spy;
+    let spyOnToggleFacet: jest.Mock<any, any>;
 
     let FACET_ROW_PROPS: IFacetRowProps;
     let FACET_ROW: JSX.Element;
 
     beforeEach(() => {
-        spyOnToggleFacet = jasmine.createSpy('onToggleFacet');
+        spyOnToggleFacet = jest.fn();
 
         FACET_ROW_PROPS = {
             facetRow: {
@@ -40,11 +40,14 @@ describe('Facets', () => {
         });
 
         afterEach(() => {
-            facetRowView.detach();
+            facetRowView?.unmount();
         });
 
         it('should stop event if click on checkbox directly', () => {
-            const event = jasmine.createSpyObj('e', ['preventDefault', 'stopPropagation']);
+            const event = {
+                preventDefault: jest.fn(),
+                stopPropagation: jest.fn(),
+            };
             (facetRowView.instance() as any).stopEvent(event);
 
             expect(event.preventDefault).toHaveBeenCalled();
@@ -87,7 +90,7 @@ describe('Facets', () => {
         });
 
         it('should call onToggleFacet on change', () => {
-            spyOnToggleFacet.calls.reset();
+            spyOnToggleFacet.mockReset();
 
             expect(FACET_ROW_PROPS.onToggleFacet).not.toHaveBeenCalled();
 
@@ -97,7 +100,7 @@ describe('Facets', () => {
         });
 
         it('should call onToggleFacet on click button', () => {
-            spyOnToggleFacet.calls.reset();
+            spyOnToggleFacet.mockReset();
 
             facetRowView.find('button').simulate('click');
 

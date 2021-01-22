@@ -1,5 +1,6 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
+import {act} from 'react-dom/test-utils';
 
 import {ChartContainer} from '../ChartContainer';
 
@@ -14,21 +15,26 @@ describe('<ChartContainer />', () => {
     });
 
     it('should re-render on window resize', () => {
-        spyOn(Element.prototype, 'getBoundingClientRect').and.returnValue({width: 10, height: 50});
-        spyOn(Element.prototype, 'querySelectorAll').and.returnValue([{style: {}}]);
-        spyOn(window, 'requestAnimationFrame').and.callFake((cb: () => void) => cb());
+        jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({width: 10, height: 50} as DOMRect);
+        jest.spyOn(Element.prototype, 'querySelectorAll').mockReturnValue(([{style: {}}] as unknown) as NodeListOf<
+            SVGSVGElement
+        >);
+        jest.spyOn(window, 'requestAnimationFrame').mockImplementation((cb: any) => cb());
 
-        const renderSpy = jasmine.createSpy('render').and.returnValue(null);
+        const renderSpy = jest.fn(() => null);
 
-        const component = mount(<ChartContainer renderChart={renderSpy} />);
-        // Need the component to update to get the ref.current
-        component.setProps({renderChart: renderSpy});
+        act(() => {
+            const component = mount(<ChartContainer renderChart={renderSpy} />);
 
-        renderSpy.calls.reset();
+            // Need the component to update to get the ref.current
+            component.setProps({renderChart: renderSpy});
 
-        const resizeEvent = document.createEvent('Event');
-        resizeEvent.initEvent('resize', true, true);
-        window.dispatchEvent(resizeEvent);
+            renderSpy.mockReset();
+
+            const resizeEvent = document.createEvent('Event');
+            resizeEvent.initEvent('resize', true, true);
+            window.dispatchEvent(resizeEvent);
+        });
 
         expect(renderSpy).toHaveBeenCalledTimes(1);
     });

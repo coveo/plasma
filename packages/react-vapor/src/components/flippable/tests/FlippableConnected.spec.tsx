@@ -37,7 +37,6 @@ describe('Flippable', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         it('should get an id as prop', () => {

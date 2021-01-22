@@ -89,7 +89,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onBlur on inner input blur', () => {
-            const spyOnBlur = jasmine.createSpy('onBlur');
+            const spyOnBlur = jest.fn();
 
             shallowInput({
                 onBlur: spyOnBlur,
@@ -106,7 +106,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onChange on inner input change', () => {
-            const spyOnChange = jasmine.createSpy('onChange');
+            const spyOnChange = jest.fn();
 
             shallowInput({
                 onChange: spyOnChange,
@@ -118,7 +118,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onClick on inner container click', () => {
-            const spyOnClick = jasmine.createSpy('onClick');
+            const spyOnClick = jest.fn();
 
             shallowInput({
                 classes: 'banane',
@@ -132,7 +132,7 @@ describe('<Input />', () => {
         });
 
         it('should call prop onKeyUp on key up', () => {
-            const spyOnKeyUp = jasmine.createSpy('onKeyUp');
+            const spyOnKeyUp = jest.fn();
 
             shallowInput({
                 onKeyUp: spyOnKeyUp,
@@ -157,7 +157,7 @@ describe('<Input />', () => {
                 labelTitle: 'potatos',
             });
 
-            expect(input.find(Label).props()).toEqual(jasmine.objectContaining(labelProps));
+            expect(input.find(Label).props()).toEqual(expect.objectContaining(labelProps));
         });
 
         describe('add classes on specific input type defined in validatedInputTypes', () => {

@@ -55,7 +55,6 @@ describe('Calendar', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         it('should get an id as a prop', () => {

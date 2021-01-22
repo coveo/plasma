@@ -33,12 +33,8 @@ describe('NavigationPagination', () => {
             navigationPaginationInstance = navigationPagination.instance() as NavigationPagination;
         });
 
-        afterEach(() => {
-            navigationPagination.detach();
-        });
-
         it('should call prop onRender on mounting if set', () => {
-            const renderSpy: jasmine.Spy = jasmine.createSpy('onRender');
+            const renderSpy: jest.Mock<any, any> = jest.fn();
 
             expect(() => {
                 navigationPaginationInstance.componentDidMount();
@@ -53,7 +49,7 @@ describe('NavigationPagination', () => {
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
-            const destroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
+            const destroySpy: jest.Mock<any, any> = jest.fn();
 
             expect(() => {
                 navigationPaginationInstance.componentWillUnmount();
@@ -72,7 +68,7 @@ describe('NavigationPagination', () => {
             'should call onPageClick prop if set when clicking on next/previous or page number and page number is greater' +
                 'than or is 0 and does not equal the current page',
             () => {
-                const clickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+                const clickSpy: jest.Mock<any, any> = jest.fn();
                 const newNavigationPaginationProps: INavigationPaginationProps = _.extend(
                     {},
                     NAVIGATION_PAGINATION_BASIC_PROPS,

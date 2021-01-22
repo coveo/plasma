@@ -55,11 +55,11 @@ describe('Table HOC', () => {
         });
 
         describe('with a matchDates function', () => {
-            let matchDatesSpy: jasmine.Spy;
+            let matchDatesSpy: jest.Mock<any, any>;
             let TableWithDatePickerAndMatch: FilterableTableComponent;
 
             beforeEach(() => {
-                matchDatesSpy = jasmine.createSpy('match').and.returnValue(true);
+                matchDatesSpy = jest.fn(() => true);
 
                 TableWithDatePickerAndMatch = _.compose(tableWithDatePicker({matchDates: matchDatesSpy}))(TableHOC);
             });
@@ -111,7 +111,7 @@ describe('Table HOC', () => {
             });
 
             it('should call onUpdate when the lowerLimit changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
@@ -120,14 +120,14 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({lowerLimit: new Date()});
+                wrapper.setProps({lowerLimit: new Date()} as any);
                 wrapper.update();
 
                 expect(updateSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should call onUpdate when the upperLimit changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const lowerLimit = moment().subtract(15, 'm').toDate();
                 const upperLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
@@ -137,14 +137,14 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({upperLimit: new Date()});
+                wrapper.setProps({upperLimit: new Date()} as any);
                 wrapper.update();
 
                 expect(updateSpy).toHaveBeenCalledTimes(1);
             });
 
             it('should not call onUpdate when the date picker does not changes', () => {
-                const updateSpy = jasmine.createSpy('update');
+                const updateSpy = jest.fn();
                 const lowerLimit = moment().subtract(5, 'm').toDate();
                 const wrapper = shallowWithState(
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
@@ -153,7 +153,7 @@ describe('Table HOC', () => {
                     .dive()
                     .dive();
 
-                wrapper.setProps({ignore: true});
+                wrapper.setProps({ignore: true} as any);
                 wrapper.update();
 
                 expect(updateSpy).not.toHaveBeenCalled();

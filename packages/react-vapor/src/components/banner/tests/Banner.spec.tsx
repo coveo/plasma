@@ -17,9 +17,6 @@ describe('Banner', () => {
 
     describe('<Banner />', () => {
         const mountWithProps = (props?: Partial<BannerProps>) => {
-            if (banner && banner.length) {
-                banner.unmount();
-            }
             banner = mount(<Banner {...basicProps} {...props} />);
         };
 

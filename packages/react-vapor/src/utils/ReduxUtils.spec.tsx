@@ -7,15 +7,15 @@ describe('ReduxUtils', () => {
             b: false,
         };
         const expectedDispatchProps = {
-            c: jasmine.createSpy('c'),
+            c: jest.fn(),
         };
         const expectedOwnProps = {
             d: 'd',
         };
         const result = ReduxUtils.mergeProps(expectedStateProps, expectedDispatchProps, expectedOwnProps);
 
-        expect(result).toEqual(jasmine.objectContaining(expectedStateProps));
-        expect(result).toEqual(jasmine.objectContaining(expectedDispatchProps));
-        expect(result).toEqual(jasmine.objectContaining(expectedOwnProps));
+        expect(result).toEqual(expect.objectContaining(expectedStateProps));
+        expect(result).toEqual(expect.objectContaining(expectedDispatchProps));
+        expect(result).toEqual(expect.objectContaining(expectedOwnProps));
     });
 });

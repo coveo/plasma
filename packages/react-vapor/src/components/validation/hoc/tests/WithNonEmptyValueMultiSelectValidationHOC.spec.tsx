@@ -1,6 +1,6 @@
 import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
-import React from 'react';
+import * as React from 'react';
 import {act} from 'react-dom/test-utils';
 import {composeMockStore, getStoreMock, withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
@@ -37,7 +37,7 @@ describe('MultiSelectWithNonEmpty', () => {
             component.mount();
         });
 
-        expect(store.getActions()).toContain(
+        expect(store.getActions()).toContainEqual(
             ValidationActions.setError(
                 defaultProps.id,
                 defaultProps.nonEmptyValidationMessage,

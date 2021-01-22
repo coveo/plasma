@@ -127,7 +127,7 @@ describe('Reducers', () => {
             };
             const paginationState = paginationCompositeReducer([oldState], action);
 
-            expect(paginationState[0]).toEqual(jasmine.objectContaining(newState));
+            expect(paginationState[0]).toEqual(expect.objectContaining(newState));
         });
 
         it('should set the page number at 0 for the action id if the action is "RESET_PAGING"', () => {
@@ -145,7 +145,7 @@ describe('Reducers', () => {
             };
             const paginationState = paginationCompositeReducer([oldState], action);
 
-            expect(paginationState[0]).toEqual(jasmine.objectContaining(newState));
+            expect(paginationState[0]).toEqual(expect.objectContaining(newState));
         });
 
         it('should set the page number at 0 for the table state modification action if the table id is in the pagination id and shouldResetPage is true', () => {

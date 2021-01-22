@@ -1,8 +1,8 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import React from 'react';
+import * as React from 'react';
 
 import {keyCode} from '../../../utils/InputUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {IModalBackdropProps, ModalBackdrop} from '../ModalBackdrop';
 
 describe('ModalBackdrop', () => {
@@ -18,12 +18,13 @@ describe('ModalBackdrop', () => {
 
         beforeEach(() => {
             TestUtils.makeDeferSync();
-
-            modalBackdrop = mount(<ModalBackdrop />, {attachTo: document.getElementById('App')});
+            createTestAppContainer();
+            modalBackdrop = mount(<ModalBackdrop />);
         });
 
         afterEach(() => {
-            modalBackdrop.detach();
+            removeTestAppContainer();
+            jest.resetAllMocks();
         });
 
         it('should set "closed" class when display prop is false or not specified', () => {
@@ -60,7 +61,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should call onClick on click when onClick prop is set', () => {
-            const clickSpy = jasmine.createSpy('onClick');
+            const clickSpy = jest.fn();
 
             modalBackdrop.simulate('click');
 
@@ -73,21 +74,8 @@ describe('ModalBackdrop', () => {
             expect(clickSpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should call handleClick when user hits escape and the modal is the last one opened', () => {
-            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
-
-            modalBackdrop.setProps({lastOpened: true});
-
-            const event = document.createEvent('Event');
-            (event as any).keyCode = keyCode.escape;
-            event.initEvent('keydown', true, true);
-            document.dispatchEvent(event);
-
-            expect(handleClickSpy).toHaveBeenCalledTimes(1);
-        });
-
         it('should not call handleClick when user hits escape and the modal is not the last one opened', () => {
-            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
+            const handleClickSpy = jest.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: false});
 
@@ -100,7 +88,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should not call handleClick when user hits another key', () => {
-            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
+            const handleClickSpy = jest.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: true});
 
@@ -113,7 +101,7 @@ describe('ModalBackdrop', () => {
         });
 
         it('should not call handleClick when user hits escape but the event was handled somewhere else', () => {
-            const handleClickSpy = spyOn<any>(modalBackdrop.instance(), 'handleClick');
+            const handleClickSpy = jest.spyOn<any, string>(modalBackdrop.instance(), 'handleClick');
 
             modalBackdrop.setProps({lastOpened: true});
 

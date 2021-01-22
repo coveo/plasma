@@ -47,7 +47,7 @@ describe('paginationSelectWrapper', () => {
         });
 
         it('should call the onPageClick on click <a/>', () => {
-            const spy = jasmine.createSpy('onPageClick');
+            const spy = jest.fn();
             wrapper = shallowPaginationSelect({onPageClick: spy});
             wrapper.find('a').simulate('click');
 

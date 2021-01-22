@@ -34,10 +34,6 @@ describe('Calendar', () => {
             calendarInstance = calendar.instance() as Calendar;
         });
 
-        afterEach(() => {
-            calendar.detach();
-        });
-
         it('should display 2 <OptionsCycle /> (one for the month and the other for the year)', () => {
             expect(calendar.find('OptionsCycle').length).toBe(2);
         });
@@ -139,7 +135,7 @@ describe('Calendar', () => {
         });
 
         it('should call onClick when handleClick has been called, onClick is defined and one picker is selected', () => {
-            const onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+            const onClickSpy: jest.Mock<any, any> = jest.fn();
             const now: Date = new Date();
 
             expect(() => {
@@ -197,7 +193,7 @@ describe('Calendar', () => {
             'should call handleInvalidDateSelected when it is defined and selecting a day that is not selectable ' +
                 'and one picker is selected',
             () => {
-                const onSelectUnselectableSpy: jasmine.Spy = jasmine.createSpy('onSelectUnselectable');
+                const onSelectUnselectableSpy: jest.Mock<any, any> = jest.fn();
 
                 expect(() => {
                     calendarInstance['handleInvalidDateSelected'].call(calendarInstance);
@@ -252,7 +248,7 @@ describe('Calendar', () => {
         );
 
         it('should call handleClick on <CalendarDay /> click', () => {
-            const handleClickSpy: jasmine.Spy = spyOn<any>(calendarInstance, 'handleClick');
+            const handleClickSpy: jest.SpyInstance = jest.spyOn<any, string>(calendarInstance, 'handleClick');
             const firstCalendarDay: ReactWrapper<ICalendarDayProps, any> = calendar.find(CalendarDay).first();
             firstCalendarDay.find('td').simulate('click');
 

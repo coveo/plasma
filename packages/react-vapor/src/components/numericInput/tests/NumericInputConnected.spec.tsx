@@ -38,7 +38,7 @@ describe('Numeric Input', () => {
 
             shallowWithStore(<NumericInputConnected id={id} initialValue={expectedInitialValue} />, store).dive();
 
-            expect(store.getActions()).toContain(expectedAction);
+            expect(store.getActions()).toContainEqual(expectedAction);
         });
 
         it('should disable the decrement button when the value is lower than the min', () => {
@@ -58,7 +58,7 @@ describe('Numeric Input', () => {
 
             component.find(Button).at(0).prop('onClick')();
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - 1));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue - 1));
         });
 
         it('should decrement by the step prop value onClick on the increment button', () => {
@@ -70,7 +70,7 @@ describe('Numeric Input', () => {
 
             component.find(Button).at(0).prop('onClick')();
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue - step));
         });
 
         describe('keyboard events', () => {
@@ -88,13 +88,13 @@ describe('Numeric Input', () => {
             it('should increment by the step prop value onKeyDown on the input', () => {
                 input.simulate('keydown', {keyCode: keyCode.upArrow});
 
-                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
+                expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue + step));
             });
 
             it('should decrement by the step prop value onKeyDown on the input', () => {
                 input.simulate('keydown', {keyCode: keyCode.downArrow});
 
-                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue - step));
+                expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue - step));
             });
 
             it('should not change by another arrow than up or down on keydown', () => {
@@ -124,7 +124,7 @@ describe('Numeric Input', () => {
 
             component.find(Button).at(0).prop('onClick')();
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, min, min));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, min, min));
         });
 
         it('should trigger a setValue onClick on the increment button', () => {
@@ -135,7 +135,7 @@ describe('Numeric Input', () => {
 
             component.find(Button).at(1).prop('onClick')();
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + 1));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue + 1));
         });
 
         it('should increment by the step prop value onClick on the increment button', () => {
@@ -147,7 +147,7 @@ describe('Numeric Input', () => {
 
             component.find(Button).at(1).prop('onClick')();
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue + step));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue + step));
         });
 
         it('should not overflow the max onClick on the increment button', () => {
@@ -160,7 +160,7 @@ describe('Numeric Input', () => {
 
             component.find(Button).at(1).prop('onClick')();
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, max, undefined, max));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, max, undefined, max));
         });
 
         it('should display the error if the input is in error', () => {
@@ -184,7 +184,7 @@ describe('Numeric Input', () => {
 
             component.find('.js-numeric-input').simulate('change', {target: {value: newValue}});
 
-            expect(store.getActions()).toContain(NumericInputActions.setValue(id, newValue));
+            expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, newValue));
         });
 
         describe('when the value is a string', () => {
@@ -201,7 +201,9 @@ describe('Numeric Input', () => {
 
                 component.find(Button).at(0).prop('onClick')();
 
-                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialNumericInputState.value));
+                expect(store.getActions()).toContainEqual(
+                    NumericInputActions.setValue(id, initialNumericInputState.value)
+                );
             });
 
             it('should increment to the default value if initialValue is not defined', () => {
@@ -209,7 +211,9 @@ describe('Numeric Input', () => {
 
                 component.find(Button).at(1).prop('onClick')();
 
-                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialNumericInputState.value));
+                expect(store.getActions()).toContainEqual(
+                    NumericInputActions.setValue(id, initialNumericInputState.value)
+                );
             });
 
             it('should decrement to the initialValue if initialValue is defined', () => {
@@ -220,7 +224,7 @@ describe('Numeric Input', () => {
 
                 component.find(Button).at(0).prop('onClick')();
 
-                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue));
+                expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue));
             });
 
             it('should increment from the initialValue if it is defined', () => {
@@ -231,7 +235,7 @@ describe('Numeric Input', () => {
 
                 component.find(Button).at(1).prop('onClick')();
 
-                expect(store.getActions()).toContain(NumericInputActions.setValue(id, initialValue));
+                expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue));
             });
         });
     });

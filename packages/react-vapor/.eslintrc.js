@@ -12,14 +12,9 @@ module.exports = {
         {
             files: ['**/*.spec.{ts,tsx}'],
             env: {
-                jasmine: true,
+                'jest/globals': true,
             },
-            plugins: ['jasmine'],
-            extends: 'plugin:jasmine/recommended',
-            rules: {
-                'jasmine/no-spec-dupes': ['warn', 'branch'],
-                'jasmine/prefer-toHaveBeenCalledWith': 'off',
-            },
+            extends: 'plugin:jest/recommended',
         },
     ],
 };

@@ -20,7 +20,7 @@ describe('PaginationSelectors tests', () => {
     });
 
     describe('getPaginationPageNumber', () => {
-        it('should ', () => {
+        it('should return the number of pages from the state', () => {
             const paginationState = {id: 'test', pageNb: 2};
 
             expect(

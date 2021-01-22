@@ -170,7 +170,7 @@ describe('<Table />', () => {
 
     describe('after render', () => {
         it('should call onDidMount on componentDidMount if it is defined', () => {
-            const onDidMountSpy = jasmine.createSpy('onDidMountSpy');
+            const onDidMountSpy = jest.fn();
 
             mountComponentWithProps({...tablePropsMock, onDidMount: onDidMountSpy});
 
@@ -178,7 +178,7 @@ describe('<Table />', () => {
         });
 
         it('should call onUnmount on componentWillUnmount if it is defined', () => {
-            const onUnmountSpy = jasmine.createSpy('onUnmountSpy');
+            const onUnmountSpy = jest.fn();
 
             mountComponentWithProps({...tablePropsMock, onUnmount: onUnmountSpy}).unmount();
 
@@ -240,11 +240,11 @@ describe('<Table />', () => {
 
         describe('componentWillReceiveProps', () => {
             let tableAsAny: any;
-            let onModifyDataSpy: jasmine.Spy;
+            let onModifyDataSpy: jest.Mock<any, any>;
             let tableProps: any;
 
             beforeEach(() => {
-                onModifyDataSpy = jasmine.createSpy('onModifyDataSpy');
+                onModifyDataSpy = jest.fn();
                 tableProps = {...tablePropsMock, onModifyData: onModifyDataSpy};
                 tableAsAny = new Table(tableProps);
             });
@@ -473,12 +473,12 @@ describe('<Table />', () => {
         });
 
         describe('componentWillUpdate', () => {
-            let tableAsAny: any;
-            let onWillUpdateSpy: jasmine.Spy;
+            let tableAsAny: Table;
+            let onWillUpdateSpy: jest.Mock<any, any>;
             let tableProps: any;
 
             beforeEach(() => {
-                onWillUpdateSpy = jasmine.createSpy('onWillUpdateSpy');
+                onWillUpdateSpy = jest.fn();
                 tableProps = {...tablePropsMock, onWillUpdate: onWillUpdateSpy, actions: [{id: 'id1'}]};
                 tableAsAny = new Table(tableProps);
             });
@@ -486,7 +486,7 @@ describe('<Table />', () => {
             it('should not call onWillUpdate if next actions is identical to the previous action from the state', () => {
                 const nextProps = {
                     actions: [{id: 'id1'}],
-                };
+                } as ITableProps;
 
                 tableAsAny.UNSAFE_componentWillUpdate(nextProps);
 
@@ -496,7 +496,7 @@ describe('<Table />', () => {
             it('should call onWillUpdate if next actions is different to the previous action from the state', () => {
                 const nextProps = {
                     actions: [{id: 'id2'}],
-                };
+                } as ITableProps;
 
                 tableAsAny.UNSAFE_componentWillUpdate(nextProps);
 

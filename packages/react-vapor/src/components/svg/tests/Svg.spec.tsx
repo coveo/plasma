@@ -39,10 +39,6 @@ describe('Svg', () => {
             svg = mount(<Svg {...props} />, {attachTo: document.getElementById('App')});
         };
 
-        afterEach(() => {
-            svg.detach();
-        });
-
         it('should mount and unmount/detach without error', () => {
             expect(() => {
                 mountWithProps(BASIC_SVG);
@@ -50,7 +46,6 @@ describe('Svg', () => {
 
             expect(() => {
                 svg.unmount();
-                svg.detach();
             }).not.toThrow();
         });
 

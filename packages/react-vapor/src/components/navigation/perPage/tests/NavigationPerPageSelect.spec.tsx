@@ -11,7 +11,7 @@ describe('NavigationPerPageSelect', () => {
         basicNavigationPerPageSelectProps = {
             perPageNb: 20,
             selected: false,
-            onPerPageClick: jasmine.createSpy('onPerPageClick'),
+            onPerPageClick: jest.fn(),
         };
     });
 
@@ -33,7 +33,7 @@ describe('NavigationPerPageSelect', () => {
         });
 
         afterEach(() => {
-            navigationPerPageSelect.detach();
+            navigationPerPageSelect?.unmount();
         });
 
         it('should get the per page number as a prop', () => {

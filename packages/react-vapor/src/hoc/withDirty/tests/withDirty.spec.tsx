@@ -35,7 +35,7 @@ describe('Component with dirty', () => {
     it('should set the component as not dirty on mount', () => {
         mountComponentWithProps();
 
-        expect(store.getActions()).toContain(WithDirtyActions.toggle(SomeInput.ID, undefined));
+        expect(store.getActions()).toContainEqual(WithDirtyActions.toggle(SomeInput.ID, undefined));
     });
 
     it('should not set the component as dirty if isDirty is not set to true in the config', () => {
@@ -47,17 +47,17 @@ describe('Component with dirty', () => {
     it('should set the component as dirty if isDirty is set to true in the config', () => {
         mountComponentWithProps({isDirty: true});
 
-        expect(store.getActions()).toContain(WithDirtyActions.toggle(SomeInput.ID, true));
+        expect(store.getActions()).toContainEqual(WithDirtyActions.toggle(SomeInput.ID, true));
     });
 
     it('should remove the component as dirty in the state on unmount', () => {
         const component = mountComponentWithProps({isDirty: true});
 
-        expect(store.getActions()).not.toContain(WithDirtyActions.toggle(SomeInput.ID, false));
+        expect(store.getActions()).not.toContainEqual(WithDirtyActions.toggle(SomeInput.ID, false));
 
         component.unmount();
 
-        expect(store.getActions()).toContain(WithDirtyActions.toggle(SomeInput.ID, false));
+        expect(store.getActions()).toContainEqual(WithDirtyActions.toggle(SomeInput.ID, false));
     });
 
     it('should contains the showDirty element', () => {

@@ -26,7 +26,7 @@ describe('ToggleForm', () => {
         });
 
         afterEach(() => {
-            toggleForm.detach();
+            toggleForm?.unmount();
         });
 
         it('should set classes when specified', () => {
@@ -59,14 +59,14 @@ describe('ToggleForm', () => {
         });
 
         it('should call onClick handler when parent control is clicked and prop is set', () => {
-            const clickSpy = jasmine.createSpy('onClick');
+            const clickSpy = jest.fn();
             const parentControlInnerInput = toggleForm.find('.radio-option').first();
 
             toggleForm.setProps({onClick: clickSpy});
             toggleForm.mount();
             parentControlInnerInput.simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(1);
+            expect(clickSpy.mock.calls.length).toBe(1);
         });
     });
 });

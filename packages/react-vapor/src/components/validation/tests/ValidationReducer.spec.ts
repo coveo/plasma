@@ -30,7 +30,7 @@ describe('ValidationReducer', () => {
                 }
             );
 
-            expect(newState[componentId].error).toContain({
+            expect(newState[componentId].error).toContainEqual({
                 validationType: nonEmptyValidationType,
                 value: aMessage,
             });
@@ -108,7 +108,7 @@ describe('ValidationReducer', () => {
                 }
             );
 
-            expect(newState[componentId].warning).toContain({
+            expect(newState[componentId].warning).toContainEqual({
                 validationType: nonEmptyValidationType,
                 value: aMessage,
             });
@@ -186,7 +186,7 @@ describe('ValidationReducer', () => {
                 }
             );
 
-            expect(newState[componentId].isDirty).toContain({
+            expect(newState[componentId].isDirty).toContainEqual({
                 validationType: nonEmptyValidationType,
                 value: true,
             });

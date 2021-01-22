@@ -98,7 +98,7 @@ describe('DraggableSelectedOption', () => {
         });
 
         it('should not switch elements if they are on the same index', () => {
-            const spy = jasmine.createSpy('move');
+            const spy = jest.fn();
             mountOption({move: spy});
 
             dndBackend.simulateBeginDrag([getHandlerId()[0]]);
@@ -124,12 +124,12 @@ describe('DraggableSelectedOption', () => {
         });
 
         it('should switch elements if they are on different index and the dragged item is above another item', () => {
-            const spy = jasmine.createSpy('move');
+            const spy = jest.fn();
 
             mountOption({move: spy});
 
-            spyOn(dndMonitor, 'getItem').and.returnValue({index: 5});
-            spyOn(dndMonitor, 'getClientOffset').and.returnValue({y: 0});
+            jest.spyOn(dndMonitor, 'getItem').mockReturnValue({index: 5});
+            jest.spyOn(dndMonitor, 'getClientOffset').mockReturnValue({y: 0});
 
             dndBackend.simulateBeginDrag([getHandlerId()[0]]);
             dndBackend.simulateHover([getHandlerId(false)[1]]);
@@ -139,13 +139,13 @@ describe('DraggableSelectedOption', () => {
         });
 
         it('should not switch elements if they are on different index but the dragged item is above the first item of the list', () => {
-            const spy = jasmine.createSpy('move');
+            const spy = jest.fn();
 
             mountOption({move: spy});
 
-            spyOn(dndMonitor, 'getItem').and.returnValue({index: 5});
-            spyOn(dndMonitor, 'getClientOffset').and.returnValue({y: 30});
-            spyOn(Element.prototype, 'getBoundingClientRect').and.returnValue({bottom: 0, top: 50}); // middle is 25
+            jest.spyOn(dndMonitor, 'getItem').mockReturnValue({index: 5});
+            jest.spyOn(dndMonitor, 'getClientOffset').mockReturnValue({y: 30});
+            jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({bottom: 0, top: 50} as DOMRect); // middle is 25
 
             dndBackend.simulateBeginDrag([getHandlerId()[0]]);
             dndBackend.simulateHover([getHandlerId(false)[1]]);
@@ -155,15 +155,15 @@ describe('DraggableSelectedOption', () => {
         });
 
         it('should not switch elements if they are on different index but the dragged item is below the first item of the list', () => {
-            const spy = jasmine.createSpy('move');
+            const spy = jest.fn();
             const top = 50;
             const bottom = 0;
 
             mountOption({move: spy, index: 1});
 
-            spyOn(dndMonitor, 'getItem').and.returnValue({index: 0});
-            spyOn(dndMonitor, 'getClientOffset').and.returnValue({y: (top + bottom) / 2 - 1});
-            spyOn(Element.prototype, 'getBoundingClientRect').and.returnValue({bottom, top});
+            jest.spyOn(dndMonitor, 'getItem').mockReturnValue({index: 0});
+            jest.spyOn(dndMonitor, 'getClientOffset').mockReturnValue({y: (top + bottom) / 2 - 1});
+            jest.spyOn(Element.prototype, 'getBoundingClientRect').mockReturnValue({bottom, top} as DOMRect);
 
             dndBackend.simulateBeginDrag([getHandlerId()[0]]);
             dndBackend.simulateHover([getHandlerId(false)[1]]);

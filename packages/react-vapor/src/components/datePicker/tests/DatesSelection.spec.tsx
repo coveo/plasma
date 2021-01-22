@@ -26,10 +26,6 @@ describe('Date picker', () => {
             datesSelectionInstance = datesSelection.instance() as DatesSelection;
         });
 
-        afterEach(() => {
-            datesSelection.detach();
-        });
-
         it('should display one <DatePicker /> by default and two if isRange prop is set to true', () => {
             expect(datesSelection.find('DatePicker').length).toBe(1);
 
@@ -96,7 +92,7 @@ describe('Date picker', () => {
             () => {
                 const expectedDate: Date = new Date();
                 const expectedIsUpperLimit: boolean = true;
-                const onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
+                const onDateChangeSpy: jest.SpyInstance = jest.spyOn<any, any>(datesSelectionInstance, 'onDateChange');
 
                 datesSelection.find(DatePicker).first().props().onBlur(expectedDate, expectedIsUpperLimit);
 
@@ -109,7 +105,7 @@ describe('Date picker', () => {
                 'on the picker',
             () => {
                 const expectedIsUpperLimit: boolean = true;
-                const onDateClickSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateClick');
+                const onDateClickSpy: jest.SpyInstance = jest.spyOn<any, any>(datesSelectionInstance, 'onDateClick');
 
                 datesSelection.find(DatePicker).first().props().onClick(expectedIsUpperLimit);
 
@@ -118,7 +114,7 @@ describe('Date picker', () => {
         );
 
         it('should call onBlur prop if defined when calling onDateChange', () => {
-            const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
+            const onBlurSpy: jest.Mock<any, any> = jest.fn();
 
             expect(() => {
                 datesSelectionInstance['onDateChange'].call(datesSelectionInstance, new Date(), false);
@@ -131,7 +127,7 @@ describe('Date picker', () => {
         });
 
         it('should not throw on date click if the onClick prop is not defined', () => {
-            const onClickSpy: jasmine.Spy = jasmine.createSpy('onClick');
+            const onClickSpy: jest.Mock<any, any> = jest.fn();
 
             expect(() => {
                 datesSelectionInstance['onDateClick'].call(datesSelectionInstance, false);
@@ -144,9 +140,7 @@ describe('Date picker', () => {
         });
 
         it('should call onRender prop if set when mounting', () => {
-            const onRenderSpy: jasmine.Spy = jasmine.createSpy('onRender');
-
-            expect(() => datesSelectionInstance.componentDidMount()).not.toThrow();
+            const onRenderSpy: jest.Mock<any, any> = jest.fn();
 
             datesSelection.unmount();
             datesSelection.setProps({onRender: onRenderSpy});
@@ -156,7 +150,7 @@ describe('Date picker', () => {
         });
 
         it('should call onDestroy prop if set when will unmount', () => {
-            const onDestroySpy: jasmine.Spy = jasmine.createSpy('onDestroy');
+            const onDestroySpy: jest.Mock<any, any> = jest.fn();
 
             expect(() => datesSelectionInstance.componentWillUnmount()).not.toThrow();
 
@@ -193,7 +187,7 @@ describe('Date picker', () => {
         });
 
         it('should call onDateChange for each picker if the quick option has changed', () => {
-            const onDateChangeSpy: jasmine.Spy = spyOn<any>(datesSelectionInstance, 'onDateChange');
+            const onDateChangeSpy: jest.SpyInstance = jest.spyOn<any, string>(datesSelectionInstance, 'onDateChange');
             const now: Date = new Date();
 
             datesSelection.setProps({quickOption: now.toString()});
@@ -216,7 +210,7 @@ describe('Date picker', () => {
         });
 
         it('should call onBlur prop on blur of the date picker if the date is in the input is valid', () => {
-            const onBlurSpy: jasmine.Spy = jasmine.createSpy('onBlur');
+            const onBlurSpy: jest.Mock<any, any> = jest.fn();
 
             expect(() => {
                 datesSelection.find(DatePicker).props().onBlur(new Date(), false);

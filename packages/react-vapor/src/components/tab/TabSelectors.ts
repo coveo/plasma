@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import _ from 'underscore';
+import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {CherryPick} from '../../utils';

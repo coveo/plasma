@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 import {KeyValue} from '../../utils/DataStructuresUtils';
 import {ITooltipProps, Tooltip} from '../tooltip/Tooltip';
 import {ColorBar, IColorBarProps} from './ColorBar';
-import {noColorsPropsScenarios, withColorsPropsScenarios} from './ColorBarPropsScenarios.spec';
+import {noColorsPropsScenarios, withColorsPropsScenarios} from './ColorBarPropsScenarios.mock';
 
 describe('ColorBar', () => {
     it('should render without error in different prop scenarios', () => {
@@ -53,11 +53,13 @@ describe('ColorBar', () => {
                     const {width} = color.first().prop('style');
                     const colorProp = color.first().prop('color');
 
+                    /* eslint-disable jest/no-conditional-expect */
                     if (colorProp !== 'transparent') {
                         expect(nonZeroNonTransparentColors[colorProp]).toBe(parseInt(width.toString(), 10));
                     } else {
                         expect(colorProp).toBe('transparent');
                     }
+                    /* eslint-enable */
                 });
         });
     });
@@ -123,7 +125,7 @@ describe('ColorBar', () => {
         const colorBar = shallow(<ColorBar {...{widthPerColor, tooltipPerColor}} className="extra-class" />);
 
         _.keys(widthPerColor).map((color: string, index: number) => {
-            expect(colorBar.find(Tooltip).at(index).props()).toEqual(jasmine.objectContaining(tooltipPerColor[color]));
+            expect(colorBar.find(Tooltip).at(index).props()).toEqual(expect.objectContaining(tooltipPerColor[color]));
             expect(colorBar.find(Tooltip).at(index).find('.color-bar-color').html()).toContain(color);
         });
     });

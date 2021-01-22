@@ -76,11 +76,11 @@ describe('SlideY', () => {
         let component: ReactWrapper<SlideYProps, any>;
 
         beforeEach(() => {
-            jasmine.clock().install();
+            jest.useFakeTimers();
         });
 
         afterEach(() => {
-            jasmine.clock().uninstall();
+            jest.clearAllTimers();
         });
 
         const mountAndWrap = (isIn: boolean, duration?: number) => {
@@ -94,9 +94,9 @@ describe('SlideY', () => {
         };
 
         const transitionToEnd = (el: HTMLElement) => {
-            jasmine.clock().tick(timeout + 1);
+            jest.advanceTimersByTime(timeout + 1);
             el.dispatchEvent(
-                new TransitionEvent('transitionend', {
+                new Event('transitionend', {
                     bubbles: true,
                     cancelable: true,
                 })
@@ -153,7 +153,7 @@ describe('SlideY', () => {
             expect(() => wrapper.setProps({in: false})).not.toThrow();
             transitionToEnd(wrapper.find('.slide-y').first().getDOMNode() as HTMLElement);
 
-            expect(wrapper.html()).toContain('slide-y-closed');
+            expect(wrapper.find('.slide-y-closed').length).toBe(1);
         });
 
         it('should had the duration if one is added as a prop', () => {

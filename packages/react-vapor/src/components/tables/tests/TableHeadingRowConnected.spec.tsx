@@ -47,7 +47,6 @@ describe('Tables', () => {
 
         afterEach(() => {
             store.dispatch(clearState());
-            wrapper.detach();
         });
 
         it('should get its id as a prop', () => {
@@ -126,15 +125,15 @@ describe('Tables', () => {
 
             mountWithProps({isCollapsible: false});
 
-            expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
+            expect(store.getState().rows).toEqual(expect.objectContaining(rowState));
 
             tableHeadingRow.find('tr').simulate('click');
 
-            expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
+            expect(store.getState().rows).toEqual(expect.objectContaining(rowState));
 
             wrapper.unmount();
 
-            expect(store.getState().rows).toEqual(jasmine.objectContaining(rowState));
+            expect(store.getState().rows).toEqual(expect.objectContaining(rowState));
         });
     });
 });

@@ -20,12 +20,8 @@ describe('Checkbox', () => {
             checkbox = mount(<Checkbox {...props} />, {attachTo: document.getElementById('App')});
         };
 
-        afterEach(() => {
-            checkbox.detach();
-        });
-
         it('should call prop onClick when specified on click', () => {
-            const clickSpy = jasmine.createSpy('onClick');
+            const clickSpy = jest.fn();
             renderCheckbox({
                 onClick: clickSpy,
             });
@@ -33,11 +29,11 @@ describe('Checkbox', () => {
 
             innerLabel.simulate('click');
 
-            expect(clickSpy.calls.count()).toBe(1);
+            expect(clickSpy.mock.calls.length).toBe(1);
         });
 
         it('should not call prop onClick when specified on click if disabled', () => {
-            const clickSpy = jasmine.createSpy('onClick');
+            const clickSpy = jest.fn();
             renderCheckbox({
                 onClick: clickSpy,
                 disabled: true,
@@ -50,7 +46,7 @@ describe('Checkbox', () => {
         });
 
         it('should call prop handleOnClick when specified on click', () => {
-            const handleOnClickSpy = jasmine.createSpy('handleOnClick');
+            const handleOnClickSpy = jest.fn();
             renderCheckbox({
                 handleOnClick: handleOnClickSpy,
             });
@@ -63,7 +59,7 @@ describe('Checkbox', () => {
         });
 
         it('should not call prop handleOnClick when specified on click if disabled', () => {
-            const handleOnClickSpy = jasmine.createSpy('handleOnClick');
+            const handleOnClickSpy = jest.fn();
             renderCheckbox({
                 handleOnClick: handleOnClickSpy,
                 disabled: true,
@@ -72,7 +68,7 @@ describe('Checkbox', () => {
 
             innerLabel.simulate('click');
 
-            expect(handleOnClickSpy.calls.count()).toBe(0);
+            expect(handleOnClickSpy.mock.calls.length).toBe(0);
         });
 
         it('should set inner input type to checkbox', () => {

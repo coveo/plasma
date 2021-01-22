@@ -33,7 +33,7 @@ describe('ModalBackdrop', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.detach();
+        wrapper?.unmount();
     });
 
     it('should get display false as a prop', () => {
@@ -77,7 +77,7 @@ describe('<ModalBackdropConnected /> with displayFor', () => {
 
     afterEach(() => {
         store.dispatch(clearState());
-        wrapper.detach();
+        wrapper?.unmount();
     });
 
     it('should get display false as a prop', () => {

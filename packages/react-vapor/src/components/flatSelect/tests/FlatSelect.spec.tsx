@@ -69,7 +69,7 @@ describe('FlatSelect', () => {
             );
         });
 
-        expect(store.getActions()).toContain(addFlatSelect(props.id, props.options[0].id));
+        expect(store.getActions()).toContainEqual(addFlatSelect(props.id, props.options[0].id));
     });
 
     it('should select the default option it is specified', () => {
@@ -82,7 +82,7 @@ describe('FlatSelect', () => {
             );
         });
 
-        expect(store.getActions()).toContain(addFlatSelect(props.id, props.options[1].id));
+        expect(store.getActions()).toContainEqual(addFlatSelect(props.id, props.options[1].id));
     });
 
     it('should remove the flat select from the store when unmounting', () => {
@@ -94,11 +94,11 @@ describe('FlatSelect', () => {
         );
         component.unmount();
 
-        expect(store.getActions()).toContain(removeFlatSelect(props.id));
+        expect(store.getActions()).toContainEqual(removeFlatSelect(props.id));
     });
 
     it('should call "onClick" prop when changing selection', () => {
-        const onClickSpy = jasmine.createSpy('onClick');
+        const onClickSpy = jest.fn();
         const component = shallowWithState(<FlatSelectConnected {...props} onClick={onClickSpy} />, {}).dive();
         component.children().first().prop('onClick')('new-option');
 
@@ -111,7 +111,7 @@ describe('FlatSelect', () => {
         const component = shallowWithStore(<FlatSelectConnected {...props} />, store).dive();
         component.children().first().prop('onClick')({id: 'new-option'});
 
-        expect(store.getActions()).toContain(selectFlatSelect(props.id, 'new-option'));
+        expect(store.getActions()).toContainEqual(selectFlatSelect(props.id, 'new-option'));
     });
 
     it('should disabled all options if the disabled prop is true', () => {

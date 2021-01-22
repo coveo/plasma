@@ -27,7 +27,7 @@ describe('SubNavigation', () => {
     });
 
     it('should call onRender when the element is created', () => {
-        const spy = jasmine.createSpy('onRender');
+        const spy = jest.fn();
         const wrapper = mount(<SubNavigation items={[]} defaultSelected="" onRender={spy} />);
         act(() => {
             wrapper.update();
@@ -37,7 +37,7 @@ describe('SubNavigation', () => {
     });
 
     it('should call onDestroy when the element is created', () => {
-        const spy = jasmine.createSpy('onDestroy');
+        const spy = jest.fn();
         const subNav = mount(<SubNavigation items={[]} defaultSelected="" onDestroy={spy} />);
         subNav.unmount();
 
@@ -92,7 +92,7 @@ describe('SubNavigation', () => {
 
         it('should call the onClickItem prop when clicking on an item', () => {
             const clickedItem = 'b';
-            const spy = jasmine.createSpy('onClickItem');
+            const spy = jest.fn();
 
             subNavigation = shallow(<SubNavigation {...basicProps} onClickItem={spy} />);
             subNavigation

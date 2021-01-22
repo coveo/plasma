@@ -133,8 +133,8 @@ export const tablePropsMockWithData = {
             totalPages: 1,
         },
     } as any,
-    getActions: jasmine.createSpy('getActions'),
-    onRowClick: jasmine.createSpy('onClickRow'),
+    getActions: jest.fn(),
+    onRowClick: jest.fn(),
 } as any;
 
 export const tablePossibleProps = [

@@ -5,7 +5,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../../ReactVapor';
-import {TestUtils} from '../../../utils/tests/TestUtils';
+import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {Dropdown, IDropdownProps} from '../Dropdown';
 import {toggleDropdown} from '../DropdownActions';
 import {DropdownConnected} from '../DropdownConnected';
@@ -22,6 +22,7 @@ describe('Dropdown', () => {
         };
 
         beforeEach(() => {
+            createTestAppContainer();
             store = TestUtils.buildStore();
 
             wrapper = mount(
@@ -33,9 +34,7 @@ describe('Dropdown', () => {
             dropdown = wrapper.find(Dropdown);
         });
 
-        afterEach(() => {
-            wrapper.detach();
-        });
+        afterEach(() => removeTestAppContainer());
 
         it('should get if dropdown is opened as a prop', () => {
             const isOpenedProp = dropdown.props().isOpened;
@@ -91,7 +90,8 @@ describe('Dropdown', () => {
 
             expect(_.findWhere(store.getState().dropdowns, {id: basicDropdownProps.id}).opened).toBe(true);
 
-            document.getElementById('App').click();
+            const doc = document.getElementById('App');
+            doc.click();
 
             expect(_.findWhere(store.getState().dropdowns, {id: basicDropdownProps.id}).opened).toBe(false);
         });

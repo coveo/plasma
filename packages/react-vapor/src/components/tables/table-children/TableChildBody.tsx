@@ -57,7 +57,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             );
         }
     );
-    const collapsibleData = props.collapsibleFormatter && props.collapsibleFormatter(props.rowData);
+    const collapsibleData = props.collapsibleFormatter?.(props.rowData);
     const collapsibleRow = collapsibleData ? (
         <TableCollapsibleRowConnected
             id={headingAndCollapsibleId}
@@ -79,6 +79,7 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
         },
         getAdditionalClasses(props.additionalRowClasses, props.rowData)
     );
+    const actions = props.getActions?.(props.rowData) ?? [];
 
     const tableHeadingRowConnectedNode = (
         <TableHeadingRowConnected
@@ -88,22 +89,15 @@ export const TableChildBody = (props: ITableChildBodyProps): JSX.Element => {
             className={tableRowClasses}
             isCollapsible={!!collapsibleData}
             onClickCallback={() => {
-                if (props.onRowClick) {
-                    props.onRowClick(props.getActions(props.rowData));
-                }
+                props.onRowClick?.(actions);
 
-                if (props.handleOnRowClick) {
-                    props.handleOnRowClick(props.getActions(props.rowData), props.rowData);
-                }
+                props.handleOnRowClick?.(actions, props.rowData);
             }}
             onDoubleClick={() =>
-                props
-                    .getActions(props.rowData)
-                    .filter((action) => action.callOnDoubleClick)
-                    .forEach((action) => action.trigger())
+                actions.filter((action) => action.callOnDoubleClick).forEach((action) => action.trigger())
             }
             isMultiSelect={props.isMultiSelect}
-            selectionDisabled={props.getActions(props.rowData).length < 1}
+            selectionDisabled={actions.length < 1}
             tableHasCollapsibleRow={!!props.collapsibleFormatter}
         >
             {tableHeadingRowContent}

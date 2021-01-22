@@ -1,6 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {createTestAppContainer, removeTestAppContainer} from '../../../utils/tests/TestUtils';
 
 import {
     DropdownSearchAutoInfiniteScroll,
@@ -22,13 +23,16 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
 
     beforeEach(() => {
         basicProps = {
-            onMouseEnter: jasmine.createSpy('onMouseEnter'),
+            onMouseEnter: jest.fn(),
             options: getOptions('Test', totalOptions),
-            ulElementRefFunction: jasmine.createSpy('refFunction'),
+            ulElementRefFunction: jest.fn(),
             endMessage: 'the end',
             optionsPerPage,
         };
+        createTestAppContainer();
     });
+
+    afterEach(() => removeTestAppContainer());
 
     it('should render without errors', () => {
         expect(() => shallow(<DropdownSearchAutoInfiniteScroll {...basicProps} />)).not.toThrow();
@@ -38,13 +42,7 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
         let autoInfiniteScroll: ReactWrapper<IDropdownSearchAutoInfiniteScrollProps, any>;
 
         beforeEach(() => {
-            autoInfiniteScroll = mount(<DropdownSearchAutoInfiniteScroll {...basicProps} />, {
-                attachTo: document.getElementById('App'),
-            });
-        });
-
-        afterEach(() => {
-            autoInfiniteScroll.detach();
+            autoInfiniteScroll = mount(<DropdownSearchAutoInfiniteScroll {...basicProps} />);
         });
 
         it('should get what to do on mouse enter as a prop', () => {
@@ -102,6 +100,8 @@ describe('DropdownSearchAutoInfiniteScroll', () => {
         });
 
         it('should not show endMessage if infinite scrolling is unused (less options shown then per page)', () => {
+            autoInfiniteScroll = mount(<DropdownSearchAutoInfiniteScroll {...basicProps} />);
+
             expect(autoInfiniteScroll.find(DropdownSearchInfiniteScrollOptions).props().infiniteScroll.endMessage).toBe(
                 basicProps.endMessage
             );

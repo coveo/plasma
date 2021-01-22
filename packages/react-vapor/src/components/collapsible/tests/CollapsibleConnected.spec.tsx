@@ -8,7 +8,7 @@ import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {setCollapsibleExpanded} from '../CollapsibleActions';
 import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected';
 import {CollapsibleToggle} from '../CollapsibleToggle';
-import {collapsiblePossibleProps} from './CollapsibleTestCommon.spec';
+import {collapsiblePossibleProps} from './CollapsibleTestCommon.mock';
 
 describe('<CollapsibleConnected />', () => {
     let store: ReturnType<typeof getStoreMock>;
@@ -41,7 +41,7 @@ describe('<CollapsibleConnected />', () => {
 
                 wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
 
-                expect(store.getActions()).toContain(setCollapsibleExpanded(collapsibleProps.id, false));
+                expect(store.getActions()).toContainEqual(setCollapsibleExpanded(collapsibleProps.id, false));
             });
 
             it('should toggle the expanded prop to true on click of the collapsible header button', () => {
@@ -49,7 +49,7 @@ describe('<CollapsibleConnected />', () => {
 
                 wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
 
-                expect(store.getActions()).toContain(setCollapsibleExpanded(collapsibleProps.id, true));
+                expect(store.getActions()).toContainEqual(setCollapsibleExpanded(collapsibleProps.id, true));
             });
 
             it('should not toggle the expanded prop on click of the collapsible header button if disabled', () => {
@@ -61,7 +61,7 @@ describe('<CollapsibleConnected />', () => {
             });
 
             it('should call onClick prop if set when clicking the toggle', () => {
-                const onClickSpy = jasmine.createSpy('onClick');
+                const onClickSpy = jest.fn();
                 mountComponentWithProps({disabled: false, onClick: onClickSpy});
 
                 wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
@@ -70,7 +70,7 @@ describe('<CollapsibleConnected />', () => {
             });
 
             it('should not call onClick prop when clicking the toggle if disabled', () => {
-                const onClickSpy = jasmine.createSpy('onClick');
+                const onClickSpy = jest.fn();
                 mountComponentWithProps({disabled: true, onClick: onClickSpy});
 
                 wrapper.find(`.${collapsibleProps.headerClasses}`).simulate('click');
