@@ -98,7 +98,7 @@ pipeline {
             if (env.BRANCH_NAME ==~ /release-.*/) {
               sh "npx lerna version patch --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
             } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna version premajor --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
+              sh "npx lerna version premajor --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
             } else {
               sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
             }
