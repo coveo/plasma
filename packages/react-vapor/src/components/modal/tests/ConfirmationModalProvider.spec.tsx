@@ -4,11 +4,11 @@ import {Provider} from 'react-redux';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {ModalCompositeConnected} from '../ModalComposite';
-import {UnsavedChangesModalProvider} from '../UnsavedChangeModalProvider';
+import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
 
-describe('<UnsavedChangeModalProvider/>', () => {
-    let unsavedChangesModalProvider: ShallowWrapper;
-    let heavyUnsavedChangesModalProvider;
+describe('<ConfirmationModalProvider/>', () => {
+    let confirmationModalProvider: ShallowWrapper;
+    let heavyConfirmationModalProvider;
     let regularClickActionSpy: jasmine.Spy;
     let promptBeforeClickActionSpy: jasmine.Spy;
     const store = getStoreMock();
@@ -20,14 +20,18 @@ describe('<UnsavedChangeModalProvider/>', () => {
     afterEach(() => {
         regularClickActionSpy.calls.reset();
         promptBeforeClickActionSpy.calls.reset();
-        if (unsavedChangesModalProvider?.exists()) {
-            unsavedChangesModalProvider.unmount();
+        if (confirmationModalProvider?.exists()) {
+            confirmationModalProvider.unmount();
         }
     });
 
-    const shallowMountUnsavedModalProvider = (isDirty: boolean = false) =>
+    const shallowMountUnsavedModalProvider = (shouldConfirm: boolean = false) =>
         shallow(
-            <UnsavedChangesModalProvider isDirty={isDirty}>
+            <ConfirmationModalProvider
+                shouldConfirm={shouldConfirm}
+                modalTitle="Are you sure?"
+                modalBodyChildren={<div>some content</div>}
+            >
                 {({promptBefore}) => (
                     <ModalCompositeConnected
                         id="👾"
@@ -44,12 +48,16 @@ describe('<UnsavedChangeModalProvider/>', () => {
                         docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
                     />
                 )}
-            </UnsavedChangesModalProvider>
+            </ConfirmationModalProvider>
         );
 
-    const heavilyMountUnsavedModalProvider = (isDirty: boolean = false) =>
+    const heavilyMountUnsavedModalProvider = (shouldConfirm: boolean = false) =>
         mount(
-            <UnsavedChangesModalProvider isDirty={isDirty}>
+            <ConfirmationModalProvider
+                shouldConfirm={shouldConfirm}
+                modalTitle="Are you sure?"
+                modalBodyChildren={<div>some content</div>}
+            >
                 {({promptBefore}) => (
                     <Provider store={store}>
                         <ModalCompositeConnected
@@ -68,7 +76,7 @@ describe('<UnsavedChangeModalProvider/>', () => {
                         />
                     </Provider>
                 )}
-            </UnsavedChangesModalProvider>
+            </ConfirmationModalProvider>
         );
 
     it('should mount and unmount without trowing', () => {
@@ -77,69 +85,69 @@ describe('<UnsavedChangeModalProvider/>', () => {
         }).not.toThrow();
     });
 
-    describe('when dirty changes', () => {
-        it('should open the UnsavedChangesModal to interrupt the leaving action', () => {
-            heavyUnsavedChangesModalProvider = heavilyMountUnsavedModalProvider(true);
+    describe('when should confirm changes', () => {
+        it('should open the ConfirmationModal to interrupt the leaving action', () => {
+            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(true);
 
-            expect(heavyUnsavedChangesModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
+            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
 
-            const heavyModal: any = heavyUnsavedChangesModalProvider.find(ModalCompositeConnected);
+            const heavyModal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
             heavyModal.props().modalFooterChildren.props.onClick();
-            heavyUnsavedChangesModalProvider.update();
+            heavyConfirmationModalProvider.update();
 
-            expect(heavyUnsavedChangesModalProvider.childAt(1).prop('isOpen')).toBeTruthy();
+            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeTruthy();
         });
 
         describe('PromptBefore function', () => {
             it('should return false', () => {
-                unsavedChangesModalProvider = shallowMountUnsavedModalProvider(true);
-                unsavedChangesModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
+                confirmationModalProvider = shallowMountUnsavedModalProvider(true);
+                confirmationModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
 
                 expect(regularClickActionSpy).not.toHaveBeenCalled();
             });
         });
 
         it('should use the callback function in the promptBefore function when confirming the exit', () => {
-            heavyUnsavedChangesModalProvider = heavilyMountUnsavedModalProvider(true);
+            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(true);
 
-            const modal: any = heavyUnsavedChangesModalProvider.find(ModalCompositeConnected);
+            const modal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
             modal.props().modalFooterChildren.props.onClick();
-            heavyUnsavedChangesModalProvider.update();
-            const exitWithoutSavingButton: any = heavyUnsavedChangesModalProvider.childAt(1).find('Button').first();
+            heavyConfirmationModalProvider.update();
+            const exitWithoutSavingButton: any = heavyConfirmationModalProvider.childAt(1).find('Button').first();
             exitWithoutSavingButton.prop('onClick')();
 
             expect(promptBeforeClickActionSpy).toHaveBeenCalled();
         });
 
         it('should not use the callback function in the promptBefore function when cancelling the exit', () => {
-            heavyUnsavedChangesModalProvider = heavilyMountUnsavedModalProvider(true);
+            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(true);
 
-            const modal: any = heavyUnsavedChangesModalProvider.find(ModalCompositeConnected);
+            const modal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
             modal.props().modalFooterChildren.props.onClick();
-            heavyUnsavedChangesModalProvider.update();
-            const exitWithoutSavingButton: any = heavyUnsavedChangesModalProvider.childAt(1).find('Button').last();
+            heavyConfirmationModalProvider.update();
+            const exitWithoutSavingButton: any = heavyConfirmationModalProvider.childAt(1).find('Button').last();
             exitWithoutSavingButton.prop('onClick')();
 
             expect(promptBeforeClickActionSpy).not.toHaveBeenCalled();
         });
     });
 
-    describe('when the modal is not dirty', () => {
-        it('should not open the UnsavedChangesModal to interrupt the leaving action', () => {
-            heavyUnsavedChangesModalProvider = heavilyMountUnsavedModalProvider(false);
+    describe('when the modal is configured not to confirm changes', () => {
+        it('should not open the ConfirmationModal to interrupt the leaving action', () => {
+            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(false);
 
-            expect(heavyUnsavedChangesModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
+            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
 
-            const heavyModal: any = heavyUnsavedChangesModalProvider.find(ModalCompositeConnected);
+            const heavyModal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
             heavyModal.props().modalFooterChildren.props.onClick();
-            heavyUnsavedChangesModalProvider.update();
+            heavyConfirmationModalProvider.update();
 
-            expect(heavyUnsavedChangesModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
+            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
         });
 
         it('promptBefore function should return true', () => {
-            unsavedChangesModalProvider = shallowMountUnsavedModalProvider();
-            unsavedChangesModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
+            confirmationModalProvider = shallowMountUnsavedModalProvider();
+            confirmationModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
 
             expect(regularClickActionSpy).toHaveBeenCalled();
         });

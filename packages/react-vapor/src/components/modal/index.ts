@@ -1,3 +1,4 @@
+export * from './ConfirmationModalProvider';
 export * from './Modal';
 export * from './ModalActions';
 export * from './ModalBackdrop';
@@ -10,4 +11,4 @@ export * from './ModalHeader';
 export * from './ModalHeaderConnected';
 export * from './ModalReducers';
 export * from './loading/ModalLoading';
-export * from './UnsavedChangeModalProvider';
+export * from './UnsavedChangesModalProvider';
