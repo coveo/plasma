@@ -3,64 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [9.31.0](https://github.com/coveo/react-vapor/compare/v9.30.3...v9.31.0) (2021-02-12)
-
-
-### Features
-
-* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([367a8b8](https://github.com/coveo/react-vapor/commit/367a8b8582bf4b171d28b3dcc7214c3e5796bad8))
-
-
-
-
-
-# [9.30.0](https://github.com/coveo/react-vapor/compare/v9.29.5...v9.30.0) (2021-02-02)
-
-
-### Features
-
-* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([bc7a0a2](https://github.com/coveo/react-vapor/commit/bc7a0a2c2798a081c85e08de9f332f8a5b4dab34))
-
-
-
-
-
-## [9.29.3](https://github.com/coveo/react-vapor/compare/v9.29.2...v9.29.3) (2021-01-28)
-
-**Note:** Version bump only for package coveo-styleguide
-
-
-
-
-
-## [9.28.2](https://github.com/coveo/react-vapor/compare/v9.28.1...v9.28.2) (2021-01-26)
+# [11.0.0-next.0](https://github.com/coveo/react-vapor/compare/v10.0.0-next.0...v11.0.0-next.0) (2021-01-22)
 
 
 ### Bug Fixes
 
-* **multiline-field.scss:** when disabled, hide add, change remove icons ([c2ae7d1](https://github.com/coveo/react-vapor/commit/c2ae7d1f015f87103303d48409f39f2b5286d8ca))
-
-
-
-
-
-## [9.28.1](https://github.com/coveo/react-vapor/compare/v9.28.0...v9.28.1) (2021-01-25)
-
-
-### Bug Fixes
-
-* packages/vapor/package.json & packages/vapor/package-lock.json to reduce vulnerabilities ([#1826](https://github.com/coveo/react-vapor/issues/1826)) ([dbfcd3b](https://github.com/coveo/react-vapor/commit/dbfcd3b775d175819568c3557077754ba4e9e9bb))
-
-
-
-
-
-# [9.28.0](https://github.com/coveo/react-vapor/compare/v9.27.1...v9.28.0) (2021-01-25)
+* **button:** text ([ef6184c](https://github.com/coveo/react-vapor/commit/ef6184cb9d703e49688d85248de5010254a46c85))
+* **multiline-field:** fix multiline field add action color ([4ff1732](https://github.com/coveo/react-vapor/commit/4ff17327b81aab9c02d0e1b7c04f505b96b158bc))
 
 
 ### Features
 
-* **rebranding:** add new svgs ([#1829](https://github.com/coveo/react-vapor/issues/1829)) ([0d2f373](https://github.com/coveo/react-vapor/commit/0d2f373cdd684b2711976abc278a8181f35922ba))
+* **color:** new variables ([096f7d9](https://github.com/coveo/react-vapor/commit/096f7d950e1ba8e6369e44ecc70e06d9171e328a))
 
 
 
