@@ -153,6 +153,10 @@
         }
     }
 
+    &.mod-no-button-tag {
+        padding: var(--button-no-tag-button-padding-y) var(--button-padding-x);
+    }
+
     &.mod-link {
         background-color: transparent;
         border: none;
