@@ -4,19 +4,19 @@
 .banner {
     position: relative;
     padding: $banner-padding;
-    background: linear-gradient(45deg, var(--mirage) 0%, var(--science-blue) 100%);
+    background: var(--banner-background-color);
     box-shadow: $banner-box-shadow;
 }
 
 .bannerName {
-    color: var(--pure-white);
+    color: var(--banner-text-color);
     font-size: $small-font-size;
     text-transform: uppercase;
     opacity: $transparency-3;
 }
 
 .bannerSubtitle {
-    color: var(--pure-white);
+    color: var(--banner-text-color);
     font-size: $big-font-size;
 }
 
@@ -25,7 +25,7 @@
     width: 100%;
     margin-top: 2 * $spacing;
     margin-bottom: 2 * $spacing;
-    color: var(--pure-white);
+    color: var(--banner-text-color);
 }
 
 .bannerTitle {
@@ -34,20 +34,20 @@
 
 .bannerWarningTitle {
     position: relative;
-    color: var(--school-bus-yellow);
+    color: var(--banner-warning-text-color);
 }
 
 .bannerErrorTitle {
-    color: var(--red);
+    color: var(--banner-error-text-color);
 }
 
 .bannerWarningIcon {
     position: relative;
     top: $banner-warning-icon-fix;
-    fill: var(--school-bus-yellow);
+    fill: var(--banner-warning-text-color);
 
     .bannerErrorTitle & {
-        fill: var(--red);
+        fill: var(--banner-error-text-color);
     }
 }
 
