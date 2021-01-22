@@ -7,7 +7,9 @@
         "publish": {
             "conventionalCommits": true,
             "allowBranch": [
-                "master"
+                "master",
+                "next",
+                "release-*"
             ]
         },
         "version": {
