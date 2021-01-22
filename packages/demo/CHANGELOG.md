@@ -47,6 +47,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 # [10.0.0-next.0](https://github.com/coveo/react-vapor/compare/v9.26.2...v10.0.0-next.0) (2021-01-22)
+# [9.27.0](https://github.com/coveo/react-vapor/compare/v9.26.2...v9.27.0) (2021-01-22)
 
 **Note:** Version bump only for package react-vapor-demo
 
