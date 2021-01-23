@@ -15,6 +15,7 @@ import {
     multilineBoxContainer,
     multilineBoxWithDnD,
     multilineBoxWithRemoveButton,
+    MultilineInput,
     MultiValuesInput,
     MultiValuesInputSelectors,
     Section,
@@ -206,6 +207,9 @@ const MultilineInputExampleDisconnected: React.FunctionComponent<ReturnType<type
             <Section level={3} title="Multi-value inputs">
                 <MultiValuesInput id={MultiValuesInputId} data={['hello', 'world']} />
                 <p className="small transparency-2">Values in the state: {JSON.stringify(values, null, 2)}</p>
+            </Section>
+            <Section level={3} title="Multiline component (deprecated component)">
+                <MultilineInput values={[{id: 'deprecated', value: "I'm soooooo out fashion"}]} />
             </Section>
             <Section level={3} title="Multi-value inputs with a data limit">
                 <MultiValuesInput
