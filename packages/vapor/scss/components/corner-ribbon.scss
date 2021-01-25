@@ -41,4 +41,8 @@
             transform: rotate($ribbon-rotation-angle);
         }
     }
+
+    &.border-accent {
+        border: $default-border-size solid var(--red);
+    }
 }
