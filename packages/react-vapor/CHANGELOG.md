@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.3](https://github.com/coveo/react-vapor/compare/v10.0.0-next.2...v10.0.0-next.3) (2021-01-25)
+
+
+### Bug Fixes
+
+* rebase on next ([e9c233c](https://github.com/coveo/react-vapor/commit/e9c233c41f917a1abc3399fac39971b081335f50))
+
+
+
+
+
 # [10.0.0-next.2](https://github.com/coveo/react-vapor/compare/v10.0.0-next.1...v10.0.0-next.2) (2021-01-25)
 
 **Note:** Version bump only for package react-vapor
