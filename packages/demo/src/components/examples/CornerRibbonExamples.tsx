@@ -13,7 +13,24 @@ export class CornerRibbonExamples extends React.Component<any, any> {
                     <CornerRibbon label="Bottom Left" placementX={PlacementX.Left} placementY={PlacementY.Bottom} />
                     <CornerRibbon label="Bottom Right" placementX={PlacementX.Right} placementY={PlacementY.Bottom} />
                 </div>
-            </Section>
+                <div className="form-group">
+                    <label className="form-control-label">CornerRibbon with extra classes</label>
+                    <div className="form-control">
+                        <div
+                            style={rectangleContainer}
+                            className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME} bg-white`}
+                        >
+                            <CornerRibbon label="Ribbon" extraClasses={['bg-orange', 'bold']} />
+                            <CornerRibbon
+                                label="Ribbon"
+                                placementX={PlacementX.Left}
+                                placementY={PlacementY.Top}
+                                extraClasses={['bg-pure-white', 'text-red', 'bold', 'border-accent']}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
         );
     }
 }
