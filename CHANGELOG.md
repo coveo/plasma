@@ -15,6 +15,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 # [10.0.0-next.2](https://github.com/coveo/react-vapor/compare/v10.0.0-next.1...v10.0.0-next.2) (2021-01-25)
+# [9.28.0](https://github.com/coveo/react-vapor/compare/v9.27.1...v9.28.0) (2021-01-25)
+
+
+### Features
+
+* **rebranding:** add new svgs ([#1829](https://github.com/coveo/react-vapor/issues/1829)) ([0d2f373](https://github.com/coveo/react-vapor/commit/0d2f373cdd684b2711976abc278a8181f35922ba))
+
+
+
+
+
 ## [9.27.1](https://github.com/coveo/react-vapor/compare/v9.27.0...v9.27.1) (2021-01-22)
 
 **Note:** Version bump only for package root
