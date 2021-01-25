@@ -13,10 +13,6 @@
         .text-#{$key} {
             color: var(--light);
         }
-
-        .border-#{$key} {
-            border-color: var(--light);
-        }
     } @else {
         .bg-#{$key} {
             background-color: var(--#{$key});
@@ -28,10 +24,6 @@
 
         .text-#{$key} {
             color: var(--#{$key});
-        }
-
-        .border-#{$key} {
-            border-color: var(--#{$key});
         }
     }
 }
