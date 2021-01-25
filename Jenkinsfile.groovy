@@ -98,7 +98,7 @@ pipeline {
             if (env.BRANCH_NAME ==~ /release-.*/) {
               sh "npx lerna version patch --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
             } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna version premajor --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
+              sh "npx lerna version --conventional-prerelease --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
             } else {
               sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
             }
@@ -218,7 +218,7 @@ pipeline {
             if (env.BRANCH_NAME ==~ /release-.*/) {
               sh "npx lerna publish patch --create-release github --yes --force-publish"
             } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna publish premajor --preid next --create-release github --yes --force-publish=\"react-vapor\""
+              sh "npx lerna publish --conventional-prerelease --preid next --create-release github --yes --force-publish=\"react-vapor\""
             } else {
               sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
             }
