@@ -46,11 +46,13 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 * **button:** text ([ef6184c](https://github.com/coveo/react-vapor/commit/ef6184cb9d703e49688d85248de5010254a46c85))
 * **multiline-field:** fix multiline field add action color ([4ff1732](https://github.com/coveo/react-vapor/commit/4ff17327b81aab9c02d0e1b7c04f505b96b158bc))
+# [9.28.0](https://github.com/coveo/react-vapor/compare/v9.27.1...v9.28.0) (2021-01-25)
 
 
 ### Features
 
 * **color:** new variables ([096f7d9](https://github.com/coveo/react-vapor/commit/096f7d950e1ba8e6369e44ecc70e06d9171e328a))
+* **rebranding:** add new svgs ([#1829](https://github.com/coveo/react-vapor/issues/1829)) ([0d2f373](https://github.com/coveo/react-vapor/commit/0d2f373cdd684b2711976abc278a8181f35922ba))
 
 
 
