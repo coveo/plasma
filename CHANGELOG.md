@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.28.2](https://github.com/coveo/react-vapor/compare/v9.28.1...v9.28.2) (2021-01-26)
+
+
+### Bug Fixes
+
+* **drop pod:** revert portal removal ([9c0b663](https://github.com/coveo/react-vapor/commit/9c0b663575d431c87128150aeeca9d1e614f0866))
+* **multiline-field.scss:** when disabled, hide add, change remove icons ([c2ae7d1](https://github.com/coveo/react-vapor/commit/c2ae7d1f015f87103303d48409f39f2b5286d8ca))
+
+
+
+
+
 ## [9.28.1](https://github.com/coveo/react-vapor/compare/v9.28.0...v9.28.1) (2021-01-25)
 
 
