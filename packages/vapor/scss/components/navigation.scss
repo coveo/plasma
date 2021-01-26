@@ -57,12 +57,12 @@
                 .navigation-menu-section-link {
                     border-left: $navigation-active-border-width solid transparent;
                     &:hover {
-                        background-color: var(--blue-purple-2);
+                        background-color: var(--navigation-hover-color);
                         opacity: 1;
                     }
                     &.state-active {
-                        background-color: var(--blue-purple-2);
-                        border-left-color: var(--orange);
+                        background-color: var(--navigation-selected-background-color);
+                        border-left-color: var(--navigation-strip-color);
                         opacity: 1;
                     }
                 }
