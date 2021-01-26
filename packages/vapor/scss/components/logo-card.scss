@@ -1,8 +1,10 @@
 .logo-card {
+    --margin: 0.25rem;
+    --padding: 1rem;
+
     display: flex;
-    margin: $logo-card-margin;
-    padding: $logo-card-padding;
-    border: $logo-card-border;
+    margin: var(--margin);
+    padding: var(--padding);
     cursor: pointer;
 
     &.disabled {
@@ -19,10 +21,6 @@
     flex-direction: column;
     flex-grow: 1;
     justify-content: center;
-}
-
-.logo-card-title {
-    color: $logo-card-title-color;
 }
 
 .logo-card-badge {
