@@ -12,7 +12,7 @@ export const blankSlateWithError = (
                 <Component
                     {...this.props}
                     title={
-                        <div className="flex center-align">
+                        <div className="text-orange-8 flex center-align">
                             <Svg svgName={VaporSVG.svg.info.name} className="icon mr1 flex center-align" />
                             {this.props.title}
                         </div>
