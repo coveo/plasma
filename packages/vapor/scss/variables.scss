@@ -543,18 +543,6 @@ $ribbon-font-size: 0.8em;
 $ribbon-letter-spacing: 1px;
 $ribbon-rotation-angle: 45deg;
 
-// Card
-$card-container-box-shadow: 0 2px 8px 0 var(--box-shadow);
-$card-hover-box-shadow: -5px 0 5px var(--light-grey);
-
-// Logo card
-$logo-card-title-color: #4a4a4a;
-$logo-card-border: 1px solid var(--medium-grey);
-$logo-card-padding: 1rem;
-$logo-card-margin: 0.25rem;
-$logo-card-disabled-opacity: 0.75;
-$logo-card-disabled-filter: grayscale(100%);
-
 // Flippable
 $flippable-perspective: 1000px;
 $flippable-z-index: 1;
