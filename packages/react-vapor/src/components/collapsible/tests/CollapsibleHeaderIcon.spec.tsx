@@ -38,7 +38,7 @@ describe('CollapsibleHeaderIcon tests', () => {
             expect(wrapper.find(LinkSvg).props().svg.svgClass).not.toContain('disabled');
         });
 
-        it('should fill disabled color if the informationUrl is not defined', () => {
+        it('should fill like disabled if the informationUrl is not defined', () => {
             wrapper = shallowCollapsibleHeaderIcon({
                 informationTooltip: {
                     title: 'pomme',
