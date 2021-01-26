@@ -9,6 +9,7 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="General Guidelines" baseUrl="/general-guidelines" isLink />
         <NavigationSection title="Borders" baseUrl="/borders" isLink />
         <NavigationSection title="Cards" baseUrl="/cards">
+            <NavigationLink href="/card" name="Card" />
             <NavigationLink href="/home" name="Home" />
             <NavigationLink href="/material" name="Material" />
             <NavigationLink href="/wizard" name="Wizard" />
