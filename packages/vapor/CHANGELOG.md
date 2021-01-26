@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.4](https://github.com/coveo/react-vapor/compare/v10.0.0-next.3...v10.0.0-next.4) (2021-01-26)
+
+
+### Features
+
+* **rebranding:** add new svgs ([#1829](https://github.com/coveo/react-vapor/issues/1829)) ([c3d93d9](https://github.com/coveo/react-vapor/commit/c3d93d9ce03beba7032d78edc777f8f290554ba9))
+
+
+
+
+
 # [10.0.0-next.3](https://github.com/coveo/react-vapor/compare/v10.0.0-next.2...v10.0.0-next.3) (2021-01-25)
 
 
