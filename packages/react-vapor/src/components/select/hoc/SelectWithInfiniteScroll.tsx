@@ -8,6 +8,7 @@ import {ISelectOwnProps} from '../SelectConnected';
 export interface SelectWithInfiniteScrollProps {
     totalEntries: number;
     next: () => void;
+    scrollThreshold?: React.ReactText;
 }
 
 export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button'>>(
@@ -24,7 +25,7 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
                 loader={<Loading className="p2 full-content-x" />}
                 next={props.next}
                 scrollableTarget={props.id}
-                scrollThreshold={1}
+                scrollThreshold={props.scrollThreshold ?? 1}
                 style={{overflow: 'initial'}}
                 hasChildren={items.length > 0 || props.isLoading}
             >
