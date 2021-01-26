@@ -126,7 +126,7 @@
     // Tooltip
     --tooltip-background-color: var(--digital-blue-100);
     --tooltip-arrow-color: var(--digital-blue-100);
-    
+
     // Banner
     --banner-background-color: var(--navy-blue-80);
     --banner-warning-text-color: var(--warning-60);
@@ -240,7 +240,7 @@
 
     // Color dot
     --color-dot-size: 12px;
-    
+
     // Badge
     --badge-background-color: var(--orange);
     --badge-font-size: 0.92em;
@@ -263,4 +263,10 @@
     --facet-header-text-color: var(--grey-100);
     --facet-value-count-text-color: var(--grey-60);
     --facet-value-hover-background-color: var(--grey-20);
+
+    // Shadows
+    --shadow-color: rgba(229, 232, 232, 0.75);
+    --light-shadow: 0px 2px 8px var(--shadow-color);
+    --medium-shadow: 0px 4px 16px var(--shadow-color);
+    --large-shadow: 0px 8px 24px var(--shadow-color);
 }
