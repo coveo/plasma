@@ -8,12 +8,28 @@ import scssVariable from 'rollup-plugin-sass-variables';
 import typescript from 'rollup-plugin-typescript2';
 import keysTransformer from 'ts-transformer-keys/transformer';
 
-export default {
+export default [
+    {format: 'es', file: 'dist/react-vapor.esm.js'},
+    {format: 'umd', file: 'dist/react-vapor.js'},
+].map(({format, file}) => ({
     input: 'src/Entry.ts',
     output: {
-        file: 'dist/react-vapor.esm.js',
-        format: 'es',
+        file,
+        format,
         sourcemap: true,
+        name: 'ReactVapor',
+        globals: {
+            codemirror: 'CodeMirror',
+            d3: 'd3',
+            jquery: '$',
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react-redux': 'ReactRedux',
+            redux: 'Redux',
+            underscore: '_',
+            'coveo-styleguide': 'VaporSVG',
+            'underscore.string': 's',
+        },
     },
     external: [
         'codemirror',
@@ -53,7 +69,7 @@ export default {
         }),
         tsPlugin(),
     ],
-};
+}));
 
 function tsPlugin() {
     return typescript({
