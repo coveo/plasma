@@ -148,7 +148,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
         return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (
             <Tooltip title={this.props.deselectAllTooltipText} placement="top" noSpanWrapper>
                 <div className="remove-all-selected-options ml1" onClick={() => this.props.onRemoveAll()}>
-                    <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon fill-medium-blue" />
+                    <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon" />
                 </div>
             </Tooltip>
         ) : null;

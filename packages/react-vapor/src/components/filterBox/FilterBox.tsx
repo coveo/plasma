@@ -106,7 +106,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                     <Svg
                         svgName="clear"
                         className={svgClearClasses}
-                        svgClass="icon mod-lg fill-medium-grey"
+                        svgClass="icon mod-lg"
                         onClick={() => this.clearValue()}
                     />
                     <Svg svgName="filter" className="filter-icon" svgClass="icon mod-lg" />

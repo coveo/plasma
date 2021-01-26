@@ -127,7 +127,7 @@ const ComplexMultilineBox3 = _.compose(
             draggableContainerProps: {
                 className: 'inline-flex center-align',
             },
-            icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon fill-medium-grey mod-lg" />,
+            icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon mod-lg" />,
         },
     }),
     multilineBoxWithRemoveButton(),

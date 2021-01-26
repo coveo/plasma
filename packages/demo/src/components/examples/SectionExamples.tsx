@@ -59,11 +59,7 @@ export class SectionExamples extends React.Component<any, any> {
                             <div className="flex">
                                 Custom title with a Svg and Tooltip
                                 <Tooltip title="info title">
-                                    <Svg
-                                        svgName="info"
-                                        className="ml1 icon mod-align-with-text"
-                                        svgClass="fill-medium-grey"
-                                    />
+                                    <Svg svgName="info" className="ml1 icon mod-align-with-text" />
                                 </Tooltip>
                             </div>
                         }

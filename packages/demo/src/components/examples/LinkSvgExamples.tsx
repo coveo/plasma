@@ -51,7 +51,7 @@ export class LinkSvgExamples extends React.Component<any, any> {
                     <div className="form-control">
                         <LinkSvg
                             url={defaultProps.url}
-                            svg={{svgName: 'external', svgClass: 'icon mod-16 fill-blue ml1'}}
+                            svg={{svgName: 'external', svgClass: 'icon mod-16 ml1 documentation-link'}}
                             linkClasses={['bold', 'caps']}
                         >
                             Learn more on Google

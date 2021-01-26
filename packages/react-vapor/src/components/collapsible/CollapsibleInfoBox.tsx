@@ -22,7 +22,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
                 id={this.props.id}
                 className={classNames(styles.container, 'text-grey-9 mod-rounded-border-2')}
                 headerClasses="p1"
-                toggleIconClassName="fill-medium-blue"
+                toggleIconClassName=""
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
@@ -41,7 +41,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
             </div>
         ) : (
             <div className="inline-flex">
-                <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" svgClass="fill-medium-grey" />
+                <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" />
                 <h3 className="text-medium-blue">{this.props.title}</h3>
             </div>
         );

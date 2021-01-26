@@ -20,7 +20,7 @@ const Banner = () => (
                 </button>
             </div>
 
-            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white mod-lg" />
+            <Svg svgName={VaporSVG.svg.close.name} className="icon mod-lg" />
         </div>
     </VaporComponent>
 );

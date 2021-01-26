@@ -149,7 +149,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-orange'} />
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} />
                                     </>
                                 }
                             >
@@ -164,7 +164,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-pure-white'} />
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} />
                                     </>
                                 }
                                 buttonProps={{
@@ -184,7 +184,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-pure-white'} />
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} />
                                     </>
                                 }
                                 buttonProps={{
@@ -203,7 +203,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon fill-pure-white'} />
+                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} />
                                     </>
                                 }
                                 buttonProps={{

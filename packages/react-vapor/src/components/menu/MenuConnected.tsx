@@ -113,7 +113,7 @@ export class MenuConnected extends React.Component<IMenuProps> {
     }
 
     private getDefaultSvg() {
-        return <Svg svgName="more-append" svgClass="fill-medium-blue icon mod-lg" />;
+        return <Svg svgName="more-append" svgClass="icon mod-lg" />;
     }
 
     private onToggleMenu(e: React.SyntheticEvent<HTMLElement>) {
