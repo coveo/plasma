@@ -5,7 +5,6 @@ import {Store} from 'redux';
 
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Svg} from '../../svg/Svg';
 import {toggleSearchBarDisabled, toggleSearching} from '../SearchBarActions';
 import {SearchBarConnected} from '../SearchBarConnected';
 import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.mock';
@@ -96,13 +95,11 @@ describe('SearchBarConnected', () => {
             component.update();
 
             expect(component.find('input').prop('disabled')).toBe(true);
-            expect(component.find(Svg).prop('svgClass')).toBe('fill-light-grey');
 
             store.dispatch(toggleSearchBarDisabled(requiredProps.id, false));
             component.update();
 
             expect(component.find('input').prop('disabled')).toBe(false);
-            expect(component.find(Svg).prop('svgClass')).toBe('fill-medium-blue');
         });
 
         it('should toggle the searching state of search bar in the UI when toggleSearching is dispatched', () => {

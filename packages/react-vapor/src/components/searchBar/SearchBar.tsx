@@ -95,7 +95,7 @@ export class SearchBar extends React.Component<ISearchBarProps> {
 
     private getSearchIcon(): JSX.Element {
         const searchIcon = !this.props.searching ? (
-            <Svg svgName="search" svgClass={this.props.disabled ? 'fill-light-grey' : 'fill-medium-blue'} />
+            <Svg svgName="search" svgClass={this.props.disabled ? 'search-icon-disabled' : ''} />
         ) : (
             <div className="search-bar-spinner"></div>
         );

@@ -76,7 +76,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
             return (
                 <Tooltip title={this.props.deselectAllTooltipText} placement={'top'}>
                     <div className="remove-all-selected-options" onClick={() => this.handleOnRemoveAll()}>
-                        <Svg svgName="clear" svgClass="icon fill-medium-blue" />
+                        <Svg svgName="clear" svgClass="icon" />
                     </div>
                 </Tooltip>
             );
@@ -100,7 +100,7 @@ export class MultiselectInput extends React.Component<IMultiselectInputProps, an
                         onKeyDown={(e: React.KeyboardEvent<HTMLInputElement>) => this.handleOnKeyDown(e)}
                         value={this.props.filterText}
                     />
-                    <Svg svgName="filter" className="icon fill-dark-medium-grey" />
+                    <Svg svgName="filter" className="icon" />
                 </div>
             </div>
         );

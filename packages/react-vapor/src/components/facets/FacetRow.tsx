@@ -48,7 +48,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                         onChange={_.noop}
                     />
                     <button type="button" className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
-                        <Svg svgName="clear" className="icon hide exclude-icon" svgClass="fill-red" />
+                        <Svg svgName="clear" className="icon hide exclude-icon" />
                     </button>
                     {this.getLabel()}
                     {this.getCount()}
@@ -115,10 +115,10 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                 className="exclude-button"
                 title={this.props.excludeTooltipMessage(this.props.facetRow.formattedName)}
             >
-                <Svg svgName="exclude" className="icon" svgClass="fill-medium-grey" />
+                <Svg svgName="exclude" className="icon" />
             </Tooltip>
         ) : (
-            <Svg svgName="exclude" className="exclude-button icon" svgClass="fill-medium-grey" />
+            <Svg svgName="exclude" className="exclude-button icon" />
         );
     }
 
