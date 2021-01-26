@@ -10,86 +10,29 @@ import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import keysTransformer from 'ts-transformer-keys/transformer';
 
-const isJenkins = !!process.env.JENKINS_HOME;
-
-export default {
+export default [
+    {format: 'es', file: 'dist/react-vapor.esm.js'},
+    {format: 'umd', file: 'dist/react-vapor.js'},
+].map(({format, file}) => ({
     input: 'src/Entry.ts',
-    output: [
-        {
-            file: 'dist/react-vapor.esm.js',
-            format: 'es',
-            sourcemap: true
+    output: {
+        file,
+        format,
+        sourcemap: true,
+        name: 'ReactVapor',
+        globals: {
+            codemirror: 'CodeMirror',
+            d3: 'd3',
+            jquery: '$',
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react-redux': 'ReactRedux',
+            redux: 'Redux',
+            underscore: '_',
+            'coveo-styleguide': 'VaporSVG',
+            'underscore.string': 's',
         },
-        {
-            file: 'dist/react-vapor.js',
-            format: 'umd',
-            sourcemap: true,
-            name: 'ReactVapor',
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer'
-            },
-            plugins: [
-                externalGlobals({
-                    codemirror: 'CodeMirror',
-                    d3: 'd3',
-                    jquery: '$',
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                    'react-redux': 'ReactRedux',
-                    redux: 'Redux',
-                    underscore: '_',
-                    'coveo-styleguide': 'VaporSVG',
-                    'underscore.string': 's',
-                    'react-dom/server': 'ReactDOMServer'
-                })
-            ]
-        },
-        isJenkins && {
-            file: 'dist/react-vapor.min.js',
-            format: 'umd',
-            sourcemap: true,
-            name: 'ReactVapor',
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer'
-            },
-            plugins: [
-                terser(),
-                externalGlobals({
-                    codemirror: 'CodeMirror',
-                    d3: 'd3',
-                    jquery: '$',
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                    'react-redux': 'ReactRedux',
-                    redux: 'Redux',
-                    underscore: '_',
-                    'coveo-styleguide': 'VaporSVG',
-                    'underscore.string': 's',
-                    'react-dom/server': 'ReactDOMServer'
-                })
-            ]
-        }
-    ].filter(Boolean),
+    },
     external: [
         'codemirror',
         'd3',
@@ -127,9 +70,9 @@ export default {
                 'diff/dist/diff.js': ['diffChars', 'diffWordsWithSpace']
             }
         }),
-        tsPlugin()
-    ]
-};
+        tsPlugin(),
+    ],
+}));
 
 function tsPlugin() {
     return typescript({
