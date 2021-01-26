@@ -1,7 +1,18 @@
+$card-container-box-shadow: 0 2px 8px 0 var(--box-shadow);
+$card-hover-box-shadow: -5px 0 5px var(--light-grey);
+
 .card-content-box-shadow {
     box-shadow: $card-container-box-shadow;
 }
 
 .card-hover-box-shadow:hover {
     box-shadow: $card-hover-box-shadow;
+}
+
+.card {
+    --border-radius: 8px;
+
+    border: 1px solid var(--default-border-color);
+    border-radius: var(--border-radius);
+    box-shadow: var(--light-shadow);
 }
