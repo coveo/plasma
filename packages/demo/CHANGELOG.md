@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.8](https://github.com/coveo/react-vapor/compare/v10.0.0-next.7...v10.0.0-next.8) (2021-01-27)
+
+
+### Bug Fixes
+
+* **vapor:** demo ([7907f0a](https://github.com/coveo/react-vapor/commit/7907f0aa5e02359bf4b8a67555cd3cce2ddbae7b))
+
+
+### Features
+
+* **badge:** redesign ([89b5f7b](https://github.com/coveo/react-vapor/commit/89b5f7b427b51e15ff579669ea56e71d704ce63f))
+
+
+
+
+
 # [10.0.0-next.7](https://github.com/coveo/react-vapor/compare/v10.0.0-next.6...v10.0.0-next.7) (2021-01-27)
 
 **Note:** Version bump only for package react-vapor-demo
