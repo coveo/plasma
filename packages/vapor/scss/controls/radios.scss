@@ -12,8 +12,10 @@
             display: inline-flex;
             align-items: center;
             height: $radio-button-option-height;
+            padding-top: $radio-button-text-padding-top;
             padding-left: $radio-button-size + $checkbox-label-margin;
             color: var(--dark-grey);
+            font-weight: var(--main-font-bold);
             line-height: $radio-button-option-height;
             cursor: pointer;
             transition: 0.28s ease;
@@ -40,7 +42,7 @@
 
         &:not(:checked) + label {
             &:before {
-                border: 2px solid var(--medium-blue);
+                border: 2px solid var(--navy-blue-80);
             }
 
             &:after {
@@ -50,14 +52,18 @@
         }
 
         &:checked + label {
+            font-weight: var(--main-font-bolder);
+
             &:before {
-                border: 2px solid #1372ec; // digital-blue-60
+                border: 2px solid var(--digital-blue-60);
             }
 
             &:after {
                 z-index: 0;
-                background-color: #1372ec; // digital-blue-60
-                transform: scale(0.5);
+                padding: 5px;
+                background-color: var(--digital-blue-60);
+                transform: scale(1);
+                content: url('../../resources/icons/svg/content/radiocheck.svg');
             }
         }
 
@@ -67,13 +73,17 @@
                 cursor: not-allowed;
 
                 &:before {
-                    border-color: var(--medium-grey);
+                    background-color: var(--grey-20);
+                    border-color: var(--grey-40);
                 }
             }
 
             &:checked {
                 & + label:after {
-                    background-color: var(--medium-grey);
+                    padding: 3px;
+                    background-color: var(--grey-20);
+                    border: 2px solid var(--grey-40);
+                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
                 }
             }
         }
@@ -81,6 +91,7 @@
 
     .mod-align-with-radio-label {
         padding-left: $radio-button-size + $checkbox-label-margin;
+        color: var(--grey-80);
     }
 }
 
