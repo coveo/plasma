@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.29.2](https://github.com/coveo/react-vapor/compare/v9.29.1...v9.29.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **code-editor:** add the possibility to refresh the editor ([884b0b3](https://github.com/coveo/react-vapor/commit/884b0b3e9d7828a09ed518b0c2d7225cea6f99b1))
+
+
+
+
+
 ## [9.29.1](https://github.com/coveo/react-vapor/compare/v9.29.0...v9.29.1) (2021-01-27)
 
 
