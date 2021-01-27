@@ -79,20 +79,17 @@ export const collapsiblePossibleProps: CollapsibleOwnProps[] = [
         id: `collapsible-${_.uniqueId()}`,
         headerContent: <div>Some header content</div>,
         expandedOnMount: true,
-        toggleIconClassName: '',
     },
     {
         id: `collapsible-${_.uniqueId()}`,
         headerContent: <div>Some header content</div>,
         expandedOnMount: true,
-        toggleIconClassName: '',
         withBorders: true,
     },
     {
         id: `collapsible-${_.uniqueId()}`,
         headerContent: <div>Some header content</div>,
         expandedOnMount: true,
-        toggleIconClassName: '',
         withBorders: true,
     },
 ];
