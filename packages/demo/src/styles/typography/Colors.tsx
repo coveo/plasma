@@ -17,11 +17,11 @@ export default () => (
 
             <span className="text-medium-grey">.text-medium-grey</span>
 
-            <span className="text-light-grey bg-dark-grey">.text-light-gray</span>
+            <span className="text-light-grey">.text-light-gray</span>
 
-            <span className="text-white bg-dark-grey">.text-white</span>
+            <span className="text-white">.text-white</span>
 
-            <span className="text-pure-white bg-dark-grey">.text-pure-white</span>
+            <span className="text-pure-white">.text-pure-white</span>
 
             <span className="text-orange">.text-orange</span>
         </h3>

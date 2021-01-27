@@ -19,11 +19,7 @@ import {Store} from '../../Store';
 export const CollapsibleExamples: React.FunctionComponent = () => (
     <Section title="Collapsible Examples">
         <Section level={3} title="A basic collapsible">
-            <CollapsibleConnected
-                id="collapsible-example-1"
-                className="bg-white"
-                headerContent={<h3 className="p2">Collapsible header</h3>}
-            >
+            <CollapsibleConnected id="collapsible-example-1" headerContent={<h3 className="p2">Collapsible header</h3>}>
                 Collapsible content
             </CollapsibleConnected>
         </Section>
