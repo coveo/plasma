@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.29.0](https://github.com/coveo/react-vapor/compare/v9.28.2...v9.29.0) (2021-01-27)
+
+
+### Bug Fixes
+
+* **single-select:** buggy infinite scroll when zoom is 110% in chrome ([#1838](https://github.com/coveo/react-vapor/issues/1838)) ([f57c264](https://github.com/coveo/react-vapor/commit/f57c264634985ec81e9912a3f9c467f03e67c641))
+
+
+### Features
+
+* **rollup:** minify code with terser plugin ([a7bff42](https://github.com/coveo/react-vapor/commit/a7bff425a76e11ed29b9bf3ec1fd243b92c94aa6))
+
+
+
+
+
 ## [9.28.2](https://github.com/coveo/react-vapor/compare/v9.28.1...v9.28.2) (2021-01-26)
 
 
