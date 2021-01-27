@@ -31,6 +31,7 @@ export interface ICodeEditorProps {
 
 export interface CodeEditorState {
     value: string;
+    numberOfRefresh: number;
 }
 
 const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorProps) => ({
@@ -60,20 +61,28 @@ class CodeEditorDisconnect extends React.Component<
     private codemirror = React.createRef<ReactCodeMirror.Controlled>();
     private editor: CodeMirror.Editor;
 
-    constructor(props: ICodeEditorProps, state: CodeEditorState) {
+    constructor(props: ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>, state: CodeEditorState) {
         super(props, state);
 
         this.state = {
             value: props.value,
+            numberOfRefresh: 0,
         };
     }
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);
+        if (this.props.isCollapsibleExpanded) {
+            this.editor.refresh();
+            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
     }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
-        this.props.isCollapsibleExpanded && this.editor.refresh();
+        if (this.state.numberOfRefresh < 2 && this.props.isCollapsibleExpanded) {
+            this.editor.refresh();
+            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
         if (prevProps.value !== this.props.value && this.editor) {
             this.setState({value: this.props.value});
             this.editor.getDoc().clearHistory();
@@ -89,7 +98,7 @@ class CodeEditorDisconnect extends React.Component<
                     this.addExtraKeywords();
                 }}
                 onBeforeChange={(editor, data, value: string) => {
-                    this.setState({value});
+                    this.setState({value: value});
                 }}
                 value={this.state.value}
                 onChange={(editor, data, value: string) => {
