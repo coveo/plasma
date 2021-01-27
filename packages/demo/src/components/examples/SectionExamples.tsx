@@ -44,7 +44,7 @@ export class SectionExamples extends React.Component<any, any> {
                                     </Input>
                                 </LabeledInput>
                                 <LabeledInput helpText="This is the font family that will be used on the button...">
-                                    <Input value="Lato, Arial, sans serif">
+                                    <Input value="Canada type gibson, sans serif">
                                         <Label>Font Family</Label>
                                     </Input>
                                 </LabeledInput>

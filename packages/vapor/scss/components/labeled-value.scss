@@ -11,15 +11,20 @@
 
     .label {
         padding: 5px 0px 5px 5px;
-        color: var(--label-text-color);
+        color: var(--title-text-color);
         font-size: var(--small-font-size);
     }
 
     .value {
         padding: 5px;
+        color: var(--default-text-color);
         font-size: var(--default-font-size);
         line-height: $default-line-height;
     }
+}
+
+.label {
+    color: var(--title-text-color);
 }
 
 .mod-align-header {

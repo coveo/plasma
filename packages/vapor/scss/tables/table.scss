@@ -1,4 +1,6 @@
 .table {
+    --color: var(--default-text-color);
+
     width: 100%;
     text-align: left;
     border: none;
@@ -7,7 +9,6 @@
     th,
     td {
         position: relative;
-        text-align: left;
         vertical-align: top;
         background-clip: padding-box;
 
@@ -23,11 +24,15 @@
         .coveo-checkbox-label + .cell-content {
             margin-left: 10px;
         }
+
+        &:not(.center) {
+            text-align: left;
+        }
     }
 
     thead tr {
         height: $table-header-height;
-        color: var(--table-header-text-color);
+        color: var(--color);
         font-weight: var(--main-font-bold);
         font-size: var(--table-header-font-size);
         line-height: $table-header-line-height;
@@ -135,8 +140,10 @@
     }
 
     td {
+        --color: var(--title-text-color);
+
         padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
-        color: var(--black);
+        color: var(--color);
         text-align: left;
 
         &:not(.mod-no-border-bottom) {
@@ -150,7 +157,7 @@
         }
 
         &.edit.enabled {
-            color: var(--medium-blue);
+            color: var(--color);
             cursor: pointer;
         }
 
@@ -222,7 +229,9 @@
         border-left: $status-card-border-width solid $transparent;
 
         .mod-card-header {
-            color: var(--medium-blue);
+            --color: var(--title-text-color);
+
+            color: var(--color);
             font-weight: var(--main-font-bold);
             font-size: $medium-title-font-size;
             border-bottom: 2px solid var(--table-row-hover-color);
