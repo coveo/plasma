@@ -12,7 +12,7 @@ const Banner = () => (
         usage="Use it to provide info in your application."
         withSource
     >
-        <div className="banner flex center-align bg-orange">
+        <div className="banner flex center-align" style={{backgroundColor: '#1CEBCF'}}>
             <div className="banner-description">
                 The release of March 2016 includes significant content update
                 <button type="button" className="btn text-orange">

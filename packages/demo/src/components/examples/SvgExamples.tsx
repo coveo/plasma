@@ -23,8 +23,8 @@ export class SvgExamples extends React.Component<any, any> {
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-orange" />
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-red" />
                         <Svg svgName="clear" className="icon mod-2x" svgClass="fill-yellow" />
-                        <Svg svgName="clear" className="icon mod-2x" svgClass="fill-white bg-light-blue" />
-                        <Svg svgName="clear" className="icon mod-2x" svgClass="fill-yellow bg-red" />
+                        <Svg svgName="clear" className="icon mod-2x" svgClass="fill-white" />
+                        <Svg svgName="clear" className="icon mod-2x" svgClass="fill-yellow" />
                     </Section>
                     <Section level={2} title="Size modifiers" description="Change the size of the icons">
                         <Svg svgName="clear" className="icon" />

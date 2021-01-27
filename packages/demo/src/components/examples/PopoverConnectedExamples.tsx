@@ -50,7 +50,7 @@ const PopoverConnectedExamples = () => (
                         rightChildren={<div className="m2">{rightContent}</div>}
                     />
                     <div
-                        className="modal-footer mod-small bg-pure-white"
+                        className="modal-footer mod-small"
                         style={{
                             position: 'absolute',
                             marginLeft: '-20px',

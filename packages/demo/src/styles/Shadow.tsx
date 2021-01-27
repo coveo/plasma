@@ -10,19 +10,19 @@ const style = {
 export default () => (
     <VaporComponent id="shadow" title="Shadow" usage="Utility to apply shadow on element." withSource>
         <div className="flex space-between">
-            <div style={style} className="shadow-1 bg-white">
+            <div style={style} className="shadow-1">
                 1
             </div>
-            <div style={style} className="shadow-2 bg-white">
+            <div style={style} className="shadow-2">
                 2
             </div>
-            <div style={style} className="shadow-3 bg-white">
+            <div style={style} className="shadow-3">
                 3
             </div>
-            <div style={style} className="shadow-4 bg-white">
+            <div style={style} className="shadow-4">
                 4
             </div>
-            <div style={style} className="shadow-5 bg-white">
+            <div style={style} className="shadow-5">
                 5
             </div>
         </div>
