@@ -29,10 +29,6 @@ td.table-card-loading {
             width: 55%;
             min-width: 55%;
         }
-
-        & p:not(:first-child) .card-cell-content-loading {
-            background-color: var(--grey-1);
-        }
     }
 }
 
