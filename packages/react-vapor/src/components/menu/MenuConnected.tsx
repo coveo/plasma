@@ -82,9 +82,7 @@ export class MenuConnected extends React.Component<IMenuProps> {
             <div className={pickerClasses}>
                 <div ref={(ref: HTMLDivElement) => (this.button = ref)}>
                     <Button
-                        classes={classNames('btn menu-toggle', this.props.toggleClassName, {
-                            'bg-light-grey': this.props.isOpen,
-                        })}
+                        classes={classNames('btn menu-toggle', this.props.toggleClassName)}
                         onMouseUp={(e: React.MouseEvent<HTMLElement>) => this.onToggleMenu(e)}
                         {...this.props.buttonProps}
                     >

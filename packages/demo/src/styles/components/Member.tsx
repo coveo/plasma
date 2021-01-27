@@ -12,7 +12,7 @@ export const Member = () => (
         usage="Use when displaying a user or member thumbnail."
         withSource
     >
-        <div className="member bg-medium-grey p1">
+        <div className="member p1" style={{backgroundColor: '#e5e8e8'}}>
             <div className="member-icon">
                 <Svg svgName={VaporSVG.svg.domainGoogle.name} className="member-icon-provider icon mod-2x" />
             </div>

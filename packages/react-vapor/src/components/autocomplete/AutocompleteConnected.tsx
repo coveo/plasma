@@ -123,7 +123,7 @@ export class AutocompleteConnected extends React.Component<
             open: this.props.isOpen,
             dropdown: !this.props.inline,
         });
-        const dropdownClasses = classNames('autocomplete-list-container bg-pure-white', {
+        const dropdownClasses = classNames('autocomplete-list-container', {
             hidden: !this.props.isOpen,
             absolute: !this.props.inline,
             'full-content-x': !this.props.inline,
