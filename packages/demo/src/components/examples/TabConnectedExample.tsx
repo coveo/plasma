@@ -28,7 +28,6 @@ export class TabsExamples extends React.Component<any, any> {
                                 id={TAB4_ID}
                                 title=" Another Tab with an icon"
                                 children={<Svg svgName={'info'} svgClass={'icon documentation-link mod-16 mr1'} />}
-
                             />
                             <TabConnected id={TAB5_ID} title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
                         </TabNavigation>
