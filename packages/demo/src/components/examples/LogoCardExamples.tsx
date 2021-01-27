@@ -20,7 +20,7 @@ export class LogoCardExamples extends React.Component<any, any> {
                         <LogoCard
                             title="Card title"
                             disabled
-                            badges={[{label: 'Unavailable', icon: 'lock', extraClasses: ['mod-warning ml1']}]}
+                            badges={[{label: 'Unavailable', icon: 'lock'}]}
                             tooltip="Hello I am a tooltip and I appear on top of this logo card, this card is disabled with a badge"
                             tooltipPlacement={TooltipPlacement.Top}
                         />
