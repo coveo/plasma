@@ -72,10 +72,17 @@ class CodeEditorDisconnect extends React.Component<
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);
+        if (this.props.isCollapsibleExpanded) {
+            this.editor.refresh();
+            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
     }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
-        this.props.isCollapsibleExpanded && this.editor.refresh();
+        if (this.state.numberOfRefresh < 2 && this.props.isCollapsibleExpanded) {
+            this.editor.refresh();
+            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
         if (prevProps.value !== this.props.value && this.editor) {
             this.setState({value: this.props.value});
             this.editor.getDoc().clearHistory();
