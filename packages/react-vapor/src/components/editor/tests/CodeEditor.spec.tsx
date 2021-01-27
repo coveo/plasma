@@ -4,6 +4,7 @@ import {mountWithState, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
+import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
@@ -13,6 +14,7 @@ describe('CodeEditor', () => {
         value: 'any string',
         mode: CodeMirrorModes.Python,
     };
+    let codeEditorInstance: typeof CodeEditor;
 
     it('should render without errors', () => {
         expect(() => {
@@ -30,6 +32,7 @@ describe('CodeEditor', () => {
         };
 
         beforeEach(() => {
+            jest.spyOn(CollapsibleSelectors, 'isExpanded').mockReturnValue(false);
             mountWithProps();
         });
 
@@ -96,6 +99,7 @@ describe('CodeEditor', () => {
         });
 
         it(`should clear codemirror's history if we set a new value`, () => {
+            codeEditorInstance = codeEditor.dive().instance() as any;
             const clearHistorySpy: jest.SpyInstance = jest.spyOn(
                 (codeEditorInstance as any).editor.getDoc(),
                 'clearHistory'
@@ -103,7 +107,7 @@ describe('CodeEditor', () => {
 
             codeEditor.setProps({value: 'a new value'});
 
-            expect(clearHistorySpy).toHaveBeenCalledTimes(2);
+            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
         });
 
         it('should add any extra keywords for the autocompletion if there are some in the props', () => {
