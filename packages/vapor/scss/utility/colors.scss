@@ -2,16 +2,16 @@
     $key: nth($color, 1);
 
     @if $key == white {
-        .bg-#{$key} {
-            background-color: var(--light);
+        .fill-#{$key} {
+            fill: var(--light);
         }
 
         .text-#{$key} {
             color: var(--light);
         }
     } @else {
-        .bg-#{$key} {
-            background-color: var(--#{$key});
+        .fill-#{$key} {
+            fill: var(--#{$key});
         }
 
         .text-#{$key} {
