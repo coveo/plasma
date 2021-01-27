@@ -1,11 +1,15 @@
 :root {
     // General
+    // Use these variables as much as possible
     --heading-text-color: var(--navy-blue-80);
     --label-text-color: var(--navy-blue-80);
     --default-border-color: var(--grey-40);
     --links-color: var(--digital-blue-60);
+
     --default-font-size: 14px;
     --small-font-size: 12px;
+
+    --default-border: 1px solid;
 
     // Navigation
     --navigation-background-color: var(--white);
@@ -110,18 +114,9 @@
     --status-medium-grey: var(--grey-60);
 
     // Badge
-    --badge-font-size: 10px;
-    --badge-font-weight: var(--main-font-bold);
-    --badge-text-transform: capitalize;
-    --badge-text-color: var(--grey-60);
-    --badge-line-height: 8px;
-    --badge-height: 17px;
-    --badge-background-color: var(--grey-20);
-    --badge-border: 1px solid var(--grey-40);
-    --badge-padding: 0.5em;
-    --source-badge-light-color: var(--badge-background-color);
-    --source-badge-medium-color: var(--badge-background-color);
-    --source-badge-dark-color: var(--badge-background-color);
+    --source-badge-light-color: var(--background-color);
+    --source-badge-medium-color: var(--background-color);
+    --source-badge-dark-color: var(--background-color);
 
     // Tooltip
     --tooltip-background-color: var(--digital-blue-100);
@@ -240,15 +235,6 @@
 
     // Color dot
     --color-dot-size: 12px;
-
-    // Badge
-    --badge-background-color: var(--orange);
-    --badge-font-size: 0.92em;
-    --badge-text-color: var(--black);
-    --badge-height: #{$badge-height};
-    --badge-margin: #{$badge-margin};
-    --badge-padding: #{$badge-padding};
-    --badge-border: none;
 
     // Facet
     --facet-box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
