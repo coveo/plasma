@@ -7,7 +7,8 @@ export class InfoBox extends React.PureComponent<React.HTMLProps<HTMLDivElement>
         return (
             <div
                 {...this.props}
-                className={classNames('text-oxford-blue bg-onahau', this.props.className, styles.infoBox)}
+                className={classNames('text-oxford-blue', this.props.className, styles.infoBox)}
+                style={{backgroundColor: '#ccefff'}}
             >
                 {this.props.children}
             </div>

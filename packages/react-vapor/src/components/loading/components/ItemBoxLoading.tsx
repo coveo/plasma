@@ -8,13 +8,13 @@ const possibleWidths = ['mod-width-10', 'mod-width-20', 'mod-width-30', 'mod-wid
 export const ItemBoxLoading: React.FunctionComponent = () => (
     <li className="item-box disabled flex">
         <div
-            className={classNames('bg-grey-3 mod-rounded-border-1', Random.pick(possibleWidths))}
-            style={{height: '1em'}}
+            className={classNames('mod-rounded-border-1', Random.pick(possibleWidths))}
+            style={{height: '1em', backgroundColor: '#e5e8e8'}}
         />
         {Random.bool() && (
             <div
-                className={classNames('bg-grey-3 ml1 mod-rounded-border-1', Random.pick(possibleWidths))}
-                style={{height: '1em'}}
+                className={classNames('ml1 mod-rounded-border-1', Random.pick(possibleWidths))}
+                style={{height: '1em', backgroundColor: '#e5e8e8'}}
             />
         )}
     </li>
