@@ -10,20 +10,25 @@ export default () => (
         withSource
     >
         <div className="spaced-boxes-container flex flex-wrap" style={{maxWidth: 400}}>
-            <span className="p2 spaced-box" style={{backgroundColor: '#fa821e'}}>
+            <span className="p2 text-pure-white spaced-box" style={{backgroundColor: '#f05245'}}>
                 A span
             </span>
-            <button type="button" className="btn spaced-box mod-secondary">
+
+            <button type="button" className="btn spaced-box">
                 A button
             </button>
 
-            <span className="p2 bg-light-blue spaced-box">Another span</span>
+            <span className="p2 text-pure-white spaced-box" style={{backgroundColor: '#00adff'}}>
+                Another span
+            </span>
 
             <button type="button" className="btn mod-primary spaced-box">
                 Another button
             </button>
 
-            <span className="p2 bg-green spaced-box">More!</span>
+            <span className="p2 text-pure-white spaced-box" style={{backgroundColor: '#15ab65'}}>
+                More!
+            </span>
         </div>
     </VaporComponent>
 );
