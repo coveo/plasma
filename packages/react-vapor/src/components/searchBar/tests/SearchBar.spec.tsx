@@ -76,7 +76,6 @@ describe('SearchBar', () => {
 
         expect(svg.length).toBe(1);
         expect(svg.prop('svgName')).toBe('search');
-        expect(svg.prop('svgClass')).toBe('');
     });
 
     it('should have an unclickable grey search svg if SearchBar is disabled', () => {

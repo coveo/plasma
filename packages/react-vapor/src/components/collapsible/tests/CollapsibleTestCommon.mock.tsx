@@ -81,14 +81,12 @@ export const collapsiblePossibleProps: CollapsibleOwnProps[] = [
         headerContent: <div>Some header content</div>,
         headerClasses: 'text-medium-blue',
         expandedOnMount: true,
-        toggleIconClassName: '',
     },
     {
         id: `collapsible-${_.uniqueId()}`,
         headerContent: <div>Some header content</div>,
         headerClasses: 'text-medium-blue',
         expandedOnMount: true,
-        toggleIconClassName: '',
         withBorders: true,
     },
     {
@@ -96,7 +94,6 @@ export const collapsiblePossibleProps: CollapsibleOwnProps[] = [
         headerContent: <div>Some header content</div>,
         headerClasses: 'text-medium-blue',
         expandedOnMount: true,
-        toggleIconClassName: '',
         withBorders: true,
         className: 'bg-white',
     },
