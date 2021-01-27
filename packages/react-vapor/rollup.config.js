@@ -3,6 +3,7 @@ import inject from '@rollup/plugin-inject';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import path from 'path';
+import externalGlobals from 'rollup-plugin-external-globals';
 import postcss from 'rollup-plugin-postcss';
 import scssVariable from 'rollup-plugin-sass-variables';
 import {terser} from 'rollup-plugin-terser';
@@ -14,27 +15,14 @@ const isJenkins = !!process.env.JENKINS_HOME;
 export default [
     {format: 'es', file: 'dist/react-vapor.esm.js'},
     {format: 'umd', file: 'dist/react-vapor.js'},
-    ...(isJenkins ? [{format: 'umd', file: 'dist/react-vapor.min.js'}] : []),
+    ...(isJenkins ? [{format: 'umd', file: 'dist/react-vapor.min.js'}] : [])
 ].map(({format, file}) => ({
     input: 'src/Entry.ts',
     output: {
         file,
         format,
         sourcemap: true,
-        name: 'ReactVapor',
-        globals: {
-            codemirror: 'CodeMirror',
-            d3: 'd3',
-            jquery: '$',
-            react: 'React',
-            'react-dom': 'ReactDOM',
-            'react-redux': 'ReactRedux',
-            redux: 'Redux',
-            underscore: '_',
-            'coveo-styleguide': 'VaporSVG',
-            'underscore.string': 's',
-            'react-dom/server': 'server',
-        },
+        name: 'ReactVapor'
     },
     external: [
         'codemirror',
@@ -47,60 +35,73 @@ export default [
         'redux',
         'underscore',
         'coveo-styleguide',
-        'underscore.string',
+        'underscore.string'
     ],
     onwarn,
     plugins: [
         inject({
-            jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
+            jQuery: 'jquery' // chosen-js expects jQuery to be available as a global
         }),
         replacePlugin(),
         postcss({
             extract: false,
             modules: {localIdentName: '[name]-[local]-[hash:base64]'},
             namedExports: true,
-            use: ['sass'],
+            use: ['sass']
         }),
         scssVariable(),
         resolve({
-            browser: true,
+            browser: true
         }),
         commonjs({
             namedExports: {
                 'hogan.js': ['Template', 'compile'],
                 'react-modal': ['setAppElement'],
                 'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
-                diff2html: ['diffChars', 'diffWordsWithSpace'],
-            },
+                diff2html: ['diffChars', 'diffWordsWithSpace']
+            }
         }),
         tsPlugin(),
-        ...(file.includes('.min.') ? [terser()] : []),
-    ],
+        externalGlobals({
+            codemirror: 'CodeMirror',
+            d3: 'd3',
+            jquery: '$',
+            react: 'React',
+            'react-dom': 'ReactDOM',
+            'react-redux': 'ReactRedux',
+            redux: 'Redux',
+            underscore: '_',
+            'coveo-styleguide': 'VaporSVG',
+            'underscore.string': 's',
+            'react-dom/server': 'ReactDOMServer'
+        }),
+        ...(file.includes('.min.') ? [terser()] : [])
+    ]
 }));
 
 function tsPlugin() {
     return typescript({
         transformers: [
-            (service) => ({
+            service => ({
                 before: [keysTransformer(service.getProgram())],
-                after: [],
-            }),
+                after: []
+            })
         ],
         useTsconfigDeclarationDir: true,
         tsconfig: 'tsconfig.build.json',
         tsconfigOverride: {
             compilerOptions: {
                 declaration: true,
-                declarationDir: 'dist/definitions',
-            },
-        },
+                declarationDir: 'dist/definitions'
+            }
+        }
     });
 }
 
 function replacePlugin() {
     return replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
-        'process.env.REACT_VAPOR_VERSION': JSON.stringify(process.env.NEW_VERSION || require('./package.json').version),
+        'process.env.REACT_VAPOR_VERSION': JSON.stringify(process.env.NEW_VERSION || require('./package.json').version)
     });
 }
 
@@ -108,8 +109,8 @@ function onwarn(warning, rollupWarn) {
     const ignoredWarnings = [
         {
             ignoredCode: 'CIRCULAR_DEPENDENCY',
-            ignoredPath: 'node_modules',
-        },
+            ignoredPath: 'node_modules'
+        }
     ];
 
     // only show warning when code and path don't match
