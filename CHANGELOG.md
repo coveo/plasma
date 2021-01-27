@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.29.1](https://github.com/coveo/react-vapor/compare/v9.29.0...v9.29.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* **external globals:** using a plugin ([#1845](https://github.com/coveo/react-vapor/issues/1845)) ([58f80ae](https://github.com/coveo/react-vapor/commit/58f80aed50efdd5735b1e2161a67a53fa533f1e9))
+
+
+
+
+
 # [9.29.0](https://github.com/coveo/react-vapor/compare/v9.28.2...v9.29.0) (2021-01-27)
 
 
