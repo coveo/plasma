@@ -66,22 +66,15 @@
             font-weight: var(--main-font-bolder);
 
             &:before {
-                top: 5px;
-                left: 5px;
-                z-index: 1;
-                background-color: transparent;
-                transform: scale(1);
-                content: url('../../resources/icons/svg/content/radiocheck.svg');
+                border: 2px solid var(--digital-blue-60);
             }
 
             &:after {
                 z-index: 0;
                 padding: 5px;
                 background-color: var(--digital-blue-60);
-                border: 2px solid var(--digital-blue-60);
                 transform: scale(1);
-                transform-origin: center center;
-                transition: background-color 280ms ease 0ms;
+                content: url('../../resources/icons/svg/content/radiocheck.svg');
             }
         }
 
@@ -91,18 +84,17 @@
                 cursor: not-allowed;
 
                 &:before {
+                    background-color: var(--grey-20);
                     border-color: var(--grey-40);
                 }
             }
 
-            &:checked + label {
-                &:before {
-                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
-                }
-                &:after {
+            &:checked {
+                & + label:after {
                     padding: 3px;
                     background-color: var(--grey-20);
                     border: 2px solid var(--grey-40);
+                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
                 }
             }
         }
