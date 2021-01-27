@@ -1,16 +1,20 @@
-import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import path from 'path';
 import postcss from 'rollup-plugin-postcss';
 import scssVariable from 'rollup-plugin-sass-variables';
+import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import keysTransformer from 'ts-transformer-keys/transformer';
+
+const isJenkins = !!process.env.JENKINS_HOME;
 
 export default [
     {format: 'es', file: 'dist/react-vapor.esm.js'},
     {format: 'umd', file: 'dist/react-vapor.js'},
+    ...(isJenkins ? [{format: 'umd', file: 'dist/react-vapor.min.js'}] : []),
 ].map(({format, file}) => ({
     input: 'src/Entry.ts',
     output: {
@@ -29,6 +33,7 @@ export default [
             underscore: '_',
             'coveo-styleguide': 'VaporSVG',
             'underscore.string': 's',
+            'react-dom/server': 'server',
         },
     },
     external: [
@@ -65,9 +70,11 @@ export default [
                 'hogan.js': ['Template', 'compile'],
                 'react-modal': ['setAppElement'],
                 'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
+                diff2html: ['diffChars', 'diffWordsWithSpace'],
             },
         }),
         tsPlugin(),
+        ...(file.includes('.min.') ? [terser()] : []),
     ],
 }));
 
