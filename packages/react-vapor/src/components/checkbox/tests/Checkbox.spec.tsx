@@ -93,14 +93,14 @@ describe('Checkbox', () => {
                 disabled: true,
             });
 
-            expect(checkbox.find('.coveo-checkbox-label').hasClass('disabled')).toBe(true);
+            expect(checkbox.find('.checkbox-label').hasClass('disabled')).toBe(true);
 
             [false, undefined].forEach((falsyValue) => {
                 renderCheckbox({
                     disabled: falsyValue,
                 });
 
-                expect(checkbox.find('.coveo-checkbox-label').hasClass('disabled')).toBe(false);
+                expect(checkbox.find('.checkbox-label').hasClass('disabled')).toBe(false);
             });
         });
     });
