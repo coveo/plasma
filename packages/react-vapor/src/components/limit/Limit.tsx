@@ -89,7 +89,7 @@ const HeaderDivision: React.FunctionComponent<HeaderProps> = ({limitLabel, isHis
 const HistoryIcon: React.FunctionComponent<HistoryIconProps> = ({isHistoryIncluded}) =>
     isHistoryIncluded && (
         <span className="icon mod-lg limit-history-button">
-            <Svg svgName={VaporSVG.svg.menuAnalytics.name} className="fill-medium-blue" />
+            <Svg svgName={VaporSVG.svg.menuAnalytics.name} />
         </span>
     );
 

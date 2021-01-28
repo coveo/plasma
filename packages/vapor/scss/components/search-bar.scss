@@ -40,6 +40,10 @@
     fill: var(--light-grey);
 }
 
+.search-icon-disabled {
+    fill: var(--grey-40);
+}
+
 .search-bar-loading .search-bar-icon-container {
     position: relative;
 }

@@ -26,7 +26,7 @@ export const getBasicDocumentLink = (url: string, title: string = ''): ILinkSvgP
     target: '_blank',
     svg: {
         svgName: 'help',
-        svgClass: 'fill-orange icon mod-20',
+        svgClass: 'icon mod-20',
     },
     tooltip: {
         title,

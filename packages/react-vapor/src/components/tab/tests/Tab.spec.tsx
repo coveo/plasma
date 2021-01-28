@@ -77,7 +77,7 @@ describe('Tab', () => {
     it("should render a children component if it's included", () => {
         const tab = shallow(
             <Tab {...basicProps}>
-                <Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />
+                <Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />
             </Tab>
         );
 
@@ -86,9 +86,7 @@ describe('Tab', () => {
     });
 
     it("should render a children component if it's set", () => {
-        const tab = shallow(
-            <Tab {...basicProps} children={<Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />} />
-        );
+        const tab = shallow(<Tab {...basicProps} children={<Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />} />);
 
         expect(tab.find(Svg).exists()).toBe(true);
         expect(tab.find(Svg).props().svgName).toBe('help');
@@ -101,7 +99,7 @@ describe('Tab', () => {
             <Tab
                 {...basicProps}
                 url="http://www.perdu.com"
-                children={<Svg svgName={'help'} svgClass={'icon fill-orange mod-16 mr1'} />}
+                children={<Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />}
             />
         );
         tab.simulate('click');

@@ -37,7 +37,7 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
 
                 {!this.props.readOnly && (
                     <div className="remove-option" onClick={this.handleOnRemove}>
-                        <Svg svgName="clear" svgClass="icon fill-medium-blue mod-small" />
+                        <Svg svgName="clear" svgClass="icon mod-small" />
                     </div>
                 )}
             </div>
