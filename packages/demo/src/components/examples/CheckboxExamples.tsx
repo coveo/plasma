@@ -40,16 +40,22 @@ const Checkboxset: React.FunctionComponent = () => {
                     <CheckboxConnected id="checkbox1" clearSides>
                         <Label>An unchecked checkbox</Label>
                     </CheckboxConnected>
-                    <CheckboxConnected id="checkbox2" defaultChecked={true} clearSides>
+                    <CheckboxConnected id="checkbox2" defaultChecked clearSides>
                         <Label>A checked checkbox</Label>
                     </CheckboxConnected>
-                    <CheckboxConnected id="checkbox3" disabled={true} clearSides>
+                    <CheckboxConnected id="checkbox3" disabled clearSides>
                         <Label>A force disabled checkbox</Label>
                     </CheckboxConnected>
-                    <CheckboxConnected id="checkbox4" indeterminate={true} clearSides>
+                    <CheckboxConnected id="checkbox4" disabled defaultChecked clearSides>
+                        <Label>A force disabled state on a checked checkbox</Label>
+                    </CheckboxConnected>
+                    <CheckboxConnected id="checkbox5" indeterminate clearSides>
                         <Label>A force checked and indeterminate (partially selected) checkbox</Label>
                     </CheckboxConnected>
-                    <Checkbox id="checkbox5" checked={checked} onClick={() => setChecked(!checked)} clearSides>
+                    <CheckboxConnected id="checkbox6" disabled indeterminate clearSides>
+                        <Label>A force checked and indeterminate (partially selected) checkbox disabled</Label>
+                    </CheckboxConnected>
+                    <Checkbox id="checkbox7" checked={checked} onClick={() => setChecked(!checked)} clearSides>
                         <Label>A checkbox with local state</Label>
                     </Checkbox>
                 </LabeledInput>
@@ -57,7 +63,7 @@ const Checkboxset: React.FunctionComponent = () => {
                     <CheckboxWithDirty id="checkbox-dirty" clearSides>
                         <Label>A checkbox with a validation dirty state</Label>
                     </CheckboxWithDirty>
-                    <CheckboxWithDirty id="checkbox-dirty-true" defaultChecked={true}>
+                    <CheckboxWithDirty id="checkbox-dirty-true" defaultChecked>
                         <Label>A checkbox with a validation dirty state that starts with a default value</Label>
                     </CheckboxWithDirty>
                     <SaveButton

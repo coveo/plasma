@@ -162,8 +162,8 @@
     height: 100%;
     cursor: pointer;
 
-    + .coveo-checkbox-label > .exclude-box,
-    &:hover + .coveo-checkbox-label > button {
+    + .checkbox-label > .exclude-box,
+    &:hover + .checkbox-label > button {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -188,7 +188,7 @@
     float: left;
     border: $facet-more-button-border;
 
-    @extend .coveo-checkbox-button;
+    @extend .checkbox-button;
 
     & + .label {
         margin-left: $checkbox-label-margin;

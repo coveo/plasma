@@ -111,14 +111,14 @@ export const ValuePopup = () => {
                                     </div>
 
                                     <div className="string-filters popover-row">
-                                        <div className="form-control coveo-checkbox-labels-group">
-                                            <label className="coveo-checkbox-label">
-                                                <input type="checkbox" className="coveo-checkbox empty-filter" />
+                                        <div className="form-control checkbox-labels-group">
+                                            <label className="checkbox checkbox-label">
+                                                <input type="checkbox" className="empty-filter" />
                                                 <button type="button" />
                                                 <span className="label">Include blank values in filter</span>
                                             </label>
-                                            <label className="coveo-checkbox-label">
-                                                <input type="checkbox" className="coveo-checkbox null-filter" />
+                                            <label className="checkbox checkbox-label">
+                                                <input type="checkbox" className="null-filter" />
                                                 <button type="button" />
                                                 <span className="label">Include n/a values in filter</span>
                                             </label>
