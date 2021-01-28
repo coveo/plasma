@@ -28,7 +28,7 @@ export class StatusCard extends React.Component<StatusCardProps> {
     }
 
     private getContent(): JSX.Element {
-        const titleClasses: string = classNames('text-medium-blue', styles.statusCardTitle);
+        const titleClasses: string = classNames(styles.statusCardTitle);
 
         return this.props.loading ? (
             <Loading key="loading" className="center-align" />
