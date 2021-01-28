@@ -98,6 +98,5 @@ export const collapsiblePossibleProps: CollapsibleOwnProps[] = [
         expandedOnMount: true,
         toggleIconClassName: 'fill-medium-blue',
         withBorders: true,
-        className: 'bg-white',
     },
 ];

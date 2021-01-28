@@ -75,7 +75,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
                 </div>
             }
             expandedOnMount={expandedOnMount}
-            headerClasses={classNames(styles.header, expanded ? 'bg-light-grey' : 'bg-white')}
+            headerClasses={classNames(styles.header)}
             toggleIconClassName="fill-medium-blue mr4"
             collapsibleToggleIcon={collapsibleToggleIcon}
             withBorders

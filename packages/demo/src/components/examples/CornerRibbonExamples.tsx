@@ -10,10 +10,7 @@ export class CornerRibbonExamples extends React.Component<any, any> {
                 <div className="form-group">
                     <label className="form-control-label">CornerRibbon placement (default is top right)</label>
                     <div className="form-control">
-                        <div
-                            style={squareContainer}
-                            className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME} bg-white`}
-                        >
+                        <div style={squareContainer} className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME}`}>
                             <CornerRibbon label="Top Right" />
                             <CornerRibbon label="Top Left" placementX={PlacementX.Left} placementY={PlacementY.Top} />
                             <CornerRibbon
@@ -25,23 +22,6 @@ export class CornerRibbonExamples extends React.Component<any, any> {
                                 label="Bottom Right"
                                 placementX={PlacementX.Right}
                                 placementY={PlacementY.Bottom}
-                            />
-                        </div>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">CornerRibbon with extra classes</label>
-                    <div className="form-control">
-                        <div
-                            style={rectangleContainer}
-                            className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME} bg-white`}
-                        >
-                            <CornerRibbon label="Ribbon" extraClasses={['bg-orange', 'bold']} />
-                            <CornerRibbon
-                                label="Ribbon"
-                                placementX={PlacementX.Left}
-                                placementY={PlacementY.Top}
-                                extraClasses={['bg-pure-white', 'text-red', 'bold', 'border-accent']}
                             />
                         </div>
                     </div>
