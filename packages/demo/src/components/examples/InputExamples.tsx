@@ -287,16 +287,6 @@ const MultilineBoxWithFunctionnalities = _.compose(
     multilineBoxWithDnD()
 )(MultilineBox);
 
-const MultilineBoxWithCustomization = _.compose(
-    multilineBoxContainer({
-        containerNode: (child: React.ReactNode, data: any[], index: number) => (
-            <div key={`${data[index].id}Container`} className={'p2'} style={{backgroundColor: '#e5e8e8'}}>
-                {child}
-            </div>
-        ),
-    })
-)(MultilineBox);
-
 const MultilineBoxExamples: React.FunctionComponent = () => (
     <Section level={2} title="Examples of Multiline Inputs built with the MultilineBox Component">
         <Section
@@ -340,38 +330,6 @@ const MultilineBoxExamples: React.FunctionComponent = () => (
                     '1': 'default',
                     '2': 'props',
                     '3': 'Will add a new box if you change this.',
-                }}
-            />
-        </Section>
-        <Section
-            level={3}
-            title="A multiline box of inputs with a custom container. Will validate only when the value is the expected one"
-        >
-            <MultilineBoxWithCustomization<IMultilineInputWithMultilineBox>
-                id="secondMultilineBoxExample"
-                data={InitialValues}
-                renderBody={(data: IMultilineInputWithMultilineBoxData, parentProps: {addNewBox: () => void}) =>
-                    _.map(data, (cData: IMultilineSingleBoxProps<IMultilineInputWithMultilineBox>) => (
-                        <div key={cData.id}>
-                            <InputConnected
-                                id={`${cData.id}1`}
-                                classes="mt1 mx1"
-                                defaultValue={cData.props['1']}
-                                onChange={(value: string) => {
-                                    if (value === 'next' && cData.isLast) {
-                                        parentProps.addNewBox();
-                                        return true;
-                                    }
-                                    return false;
-                                }}
-                            />
-                            <InputConnected id={`${cData.id}2`} classes="mt1 mx1" defaultValue={cData.props['2']} />
-                        </div>
-                    ))
-                }
-                defaultProps={{
-                    '1': "Will create another box if you type 'next' here.",
-                    '2': 'But not here.',
                 }}
             />
         </Section>

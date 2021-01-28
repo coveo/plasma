@@ -6,26 +6,22 @@ import {squareContainer} from './CornerRibbonExamplesCommon';
 export class CornerRibbonExamples extends React.Component<any, any> {
     render() {
         return (
-            <Section level={2} title="CornerRibbon placement (default is top right)">
-                <div style={squareContainer} className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME} bg-white`}>
-                    <CornerRibbon label="Top Right" />
-                    <CornerRibbon label="Top Left" placementX={PlacementX.Left} placementY={PlacementY.Top} />
-                    <CornerRibbon label="Bottom Left" placementX={PlacementX.Left} placementY={PlacementY.Bottom} />
-                    <CornerRibbon label="Bottom Right" placementX={PlacementX.Right} placementY={PlacementY.Bottom} />
-                </div>
+            <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">CornerRibbon with extra classes</label>
+                    <label className="form-control-label">CornerRibbon placement (default is top right)</label>
                     <div className="form-control">
-                        <div
-                            style={rectangleContainer}
-                            className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME} bg-white`}
-                        >
-                            <CornerRibbon label="Ribbon" extraClasses={['bg-orange', 'bold']} />
+                        <div style={squareContainer} className={`${DEFAULT_CORNER_RIBBON_CONTAINER_CLASSNAME}`}>
+                            <CornerRibbon label="Top Right" />
+                            <CornerRibbon label="Top Left" placementX={PlacementX.Left} placementY={PlacementY.Top} />
                             <CornerRibbon
-                                label="Ribbon"
+                                label="Bottom Left"
                                 placementX={PlacementX.Left}
-                                placementY={PlacementY.Top}
-                                extraClasses={['bg-pure-white', 'text-red', 'bold', 'border-accent']}
+                                placementY={PlacementY.Bottom}
+                            />
+                            <CornerRibbon
+                                label="Bottom Right"
+                                placementX={PlacementX.Right}
+                                placementY={PlacementY.Bottom}
                             />
                         </div>
                     </div>
