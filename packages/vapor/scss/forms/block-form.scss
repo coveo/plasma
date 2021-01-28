@@ -28,10 +28,12 @@ form {
     }
 
     .form-control-label {
+        --color: var(--title-text-color);
+
         display: inline-flex; // Used for inline-help-tooltip placement
         align-items: center;
         margin-bottom: $form-control-label-margin;
-        color: var(--title-text-color);
+        color: var(--color);
         font-size: $form-control-label-font-size;
 
         &.flex {
