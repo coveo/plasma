@@ -71,12 +71,7 @@ export class BlankSlateExample extends React.Component<any, any> {
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">BlankSlate with an icon</label>
-                    <BlankSlate
-                        title="Title test"
-                        description="description test"
-                        svgName="tips"
-                        svgClass="fill-orange"
-                    />
+                    <BlankSlate title="Title test" description="description test" svgName="tips" />
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">BlankSlate in error</label>
@@ -96,12 +91,7 @@ export class BlankSlateExample extends React.Component<any, any> {
                             </tr>
                         </thead>
                         <tbody>
-                            <BlankSlateWithTable
-                                title="Title test"
-                                description="description test"
-                                svgName="tips"
-                                svgClass="fill-orange"
-                            />
+                            <BlankSlateWithTable title="Title test" description="description test" svgName="tips" />
                         </tbody>
                     </table>
                 </div>

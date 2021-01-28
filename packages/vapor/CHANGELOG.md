@@ -3,6 +3,60 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.9](https://github.com/coveo/react-vapor/compare/v10.0.0-next.8...v10.0.0-next.9) (2021-01-28)
+
+
+### Bug Fixes
+
+* rebase on next ([b4cee71](https://github.com/coveo/react-vapor/commit/b4cee71cb27def5ba9cf2d8e3ad08e21d3b24794))
+
+
+
+
+
+# [10.0.0-next.8](https://github.com/coveo/react-vapor/compare/v10.0.0-next.7...v10.0.0-next.8) (2021-01-27)
+
+
+### Bug Fixes
+
+* **vapor:** demo ([7907f0a](https://github.com/coveo/react-vapor/commit/7907f0aa5e02359bf4b8a67555cd3cce2ddbae7b))
+
+
+### Features
+
+* **badge:** redesign ([89b5f7b](https://github.com/coveo/react-vapor/commit/89b5f7b427b51e15ff579669ea56e71d704ce63f))
+
+
+
+
+
+# [10.0.0-next.7](https://github.com/coveo/react-vapor/compare/v10.0.0-next.6...v10.0.0-next.7) (2021-01-27)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [10.0.0-next.6](https://github.com/coveo/react-vapor/compare/v10.0.0-next.5...v10.0.0-next.6) (2021-01-27)
+
+
+### Bug Fixes
+
+* **option-picker:** change the hover and active option picked ([ec658f2](https://github.com/coveo/react-vapor/commit/ec658f2595a20fa7066599a29a29a24e04892abf))
+
+
+
+
+
+# [10.0.0-next.5](https://github.com/coveo/react-vapor/compare/v10.0.0-next.4...v10.0.0-next.5) (2021-01-26)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
 # [10.0.0-next.4](https://github.com/coveo/react-vapor/compare/v10.0.0-next.3...v10.0.0-next.4) (2021-01-26)
 
 

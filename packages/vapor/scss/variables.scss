@@ -520,17 +520,9 @@ $slide-y-transition-duration: 0.5s;
 // Progress bar
 $step-progress-bar-height: 8px;
 $step-progress-bar-border-width: 3px;
-$step-progress-bar-done-color: var(--turquoise);
-$step-progress-bar-doing-color: var(--caribbean-green);
-$step-progress-bar-to-do-color: var(--white);
-
-// Badge
-$badge-font-size: 0.92em;
-$badge-mod-small-font-size: 9px;
-$badge-height: 2em;
-$badge-line-height: 1em;
-$badge-padding: 0.46em 1.23em 0.46em 0.92em;
-$badge-margin: 4px;
+$step-progress-bar-done-color: var(--success-60);
+$step-progress-bar-doing-color: var(--success-80);
+$step-progress-bar-to-do-color: var(--grey-40);
 
 // Corner ribbon
 $ribbon-width: 10rem;
@@ -541,18 +533,6 @@ $ribbon-x-offset: calc((#{$ribbon-width} / -2) + #{$ribbon-distance-from-corner}
 $ribbon-font-size: 0.8em;
 $ribbon-letter-spacing: 1px;
 $ribbon-rotation-angle: 45deg;
-
-// Card
-$card-container-box-shadow: 0 2px 8px 0 var(--box-shadow);
-$card-hover-box-shadow: -5px 0 5px var(--light-grey);
-
-// Logo card
-$logo-card-title-color: #4a4a4a;
-$logo-card-border: 1px solid var(--medium-grey);
-$logo-card-padding: 1rem;
-$logo-card-margin: 0.25rem;
-$logo-card-disabled-opacity: 0.75;
-$logo-card-disabled-filter: grayscale(100%);
 
 // Flippable
 $flippable-perspective: 1000px;

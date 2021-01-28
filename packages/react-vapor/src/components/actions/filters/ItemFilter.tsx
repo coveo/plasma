@@ -39,7 +39,7 @@ export class ItemFilter extends React.Component<IItemFilterProps, any> {
                 <span className="item-filter-label">{this.props.label}: </span>
                 {itemFilter}
                 <button className="item-filter-clear" onClick={() => this.props.onClear()}>
-                    <Svg svgName="clear" svgClass="icon fill-dark-blue" />
+                    <Svg svgName="clear" svgClass="icon" />
                 </button>
             </div>
         );
