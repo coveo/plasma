@@ -73,11 +73,10 @@ describe('CornerRibbon', () => {
 
         it('should render the ribbon with extra classes if specified as prop', () => {
             mountWithProps({
-                extraClasses: ['bold', 'bg-orange'],
+                extraClasses: ['bold'],
             });
 
             expect(cornerRibbon.find('.bold').length).toBe(1);
-            expect(cornerRibbon.find('.bg-orange').length).toBe(1);
         });
     });
 });

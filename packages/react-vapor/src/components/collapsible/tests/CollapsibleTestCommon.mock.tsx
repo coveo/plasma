@@ -95,6 +95,5 @@ export const collapsiblePossibleProps: CollapsibleOwnProps[] = [
         headerClasses: 'text-medium-blue',
         expandedOnMount: true,
         withBorders: true,
-        className: 'bg-white',
     },
 ];

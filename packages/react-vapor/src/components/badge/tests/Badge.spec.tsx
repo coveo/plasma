@@ -36,10 +36,9 @@ describe('Badge', () => {
 
         it('should render the badge with the extra classes specified as props', () => {
             mountWithProps({
-                extraClasses: ['bg-blue', 'bold'],
+                extraClasses: ['bold'],
             });
 
-            expect(badge.find('.bg-blue').length).toBe(1);
             expect(badge.find('.bold').length).toBe(1);
         });
 
