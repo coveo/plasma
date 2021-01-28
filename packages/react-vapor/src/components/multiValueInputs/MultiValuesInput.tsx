@@ -20,7 +20,7 @@ const MultilineBoxWithRemoveButton = _.compose(
             <div key={`${data[index].id}`} className="flex">
                 <div className="flex-auto">{child}</div>
                 {getRemoveButton({
-                    classes: ['align-end', 'mt1', 'mod-link'],
+                    classes: ['mod-no-border', 'align-end', 'mt1'],
                 })}
             </div>
         ),
