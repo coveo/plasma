@@ -56,9 +56,7 @@
 }
 
 .facet-header-title {
-    --color: var(--title-text-color);
-
-    color: var(--color);
+    color: var(--title-text-color);
     font-weight: var(--facet-header-font-weight);
     font-size: var(--facet-header-font-size);
     font-family: var(--main-font);
