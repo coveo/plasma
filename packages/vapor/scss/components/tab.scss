@@ -23,14 +23,12 @@
         transition: all 0.2s ease;
 
         &.active {
-            color: var(--color);
             border-bottom: $tab-bottom-border-height solid var(--tab-border-color);
         }
 
         &.disabled {
             --color: var(--medium-grey);
 
-            color: var(--color);
             cursor: not-allowed;
         }
 
