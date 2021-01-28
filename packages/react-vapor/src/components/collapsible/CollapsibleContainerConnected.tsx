@@ -55,10 +55,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
         'mod-border-bottom'
     );
 
-    const headerClasses = classNames(
-        'inline-flex flex-center text-medium-blue caps p2 bold ml3',
-        collapsibleHeaderClassName
-    );
+    const headerClasses = classNames('inline-flex flex-center caps p2 bold ml3', collapsibleHeaderClassName);
 
     return (
         <CollapsibleConnected

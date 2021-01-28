@@ -75,9 +75,7 @@ const RadioSelectExample: React.FunctionComponent = () => (
                 </Radio>
                 <Radio id="Option2" name="enabledOptions" value="green">
                     <Label>Green</Label>
-                    <div className="mod-align-with-radio-label text-lynch mt1">
-                        The green color has an optional description.
-                    </div>
+                    <div className="mod-align-with-radio-label mt1">The green color has an optional description.</div>
                 </Radio>
                 <Radio id="Option3" name="enabledOptions" value="brown">
                     <Label>Brown</Label>

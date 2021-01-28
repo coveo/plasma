@@ -1,4 +1,6 @@
 table.big-table {
+    --color: var(--title-text-color);
+
     tbody {
         tr {
             height: $big-table-row-height;
@@ -29,7 +31,7 @@ table.big-table {
                         }
 
                         .label {
-                            color: var(--dark-grey);
+                            color: var(--color);
                         }
                     }
                 }
@@ -40,15 +42,17 @@ table.big-table {
                 position: relative;
 
                 .first-row {
-                    color: var(--big-table-first-row-text-color);
+                    color: var(--color);
                     font-weight: var(--big-table-first-row-font-weight);
                     font-size: var(--big-table-first-row-font-size);
                     line-height: $big-table-first-row-line-height;
                 }
 
                 div.second-row {
+                    --color: var(--default-text-color);
+
                     margin-top: 2px;
-                    color: var(--big-table-second-row-text-color);
+                    color: var(--color);
                     font-size: var(--big-table-second-row-font-size);
                     line-height: $big-table-second-row-line-height;
                 }

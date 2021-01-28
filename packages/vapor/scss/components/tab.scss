@@ -1,4 +1,6 @@
 .tab-navigation {
+    --color: var(--title-text-color);
+
     min-height: $tab-navigation-min-height;
     padding: 0 $header-padding;
     border-bottom: $default-border;
@@ -9,7 +11,7 @@
         display: inline-block;
         margin-right: $tab-margin-right;
         padding: $tab-padding;
-        color: var(--tab-text-color);
+        color: var(--color);
         font-weight: var(--tab-font-weight);
         font-size: var(--tab-font-size);
         line-height: 16px;
@@ -21,12 +23,12 @@
         transition: all 0.2s ease;
 
         &.active {
-            color: var(--tab-text-color);
             border-bottom: $tab-bottom-border-height solid var(--tab-border-color);
         }
 
         &.disabled {
-            color: var(--medium-grey);
+            --color: var(--medium-grey);
+
             cursor: not-allowed;
         }
 

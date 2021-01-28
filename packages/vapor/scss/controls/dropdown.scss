@@ -71,7 +71,7 @@
 
     &.mod-primary {
         font-size: $button-font-size;
-        text-transform: uppercase;
+        text-transform: var(--button-text-transform);
 
         .dropdown-toggle-arrow {
             @include arrow-down-icon(var(--pure-white));

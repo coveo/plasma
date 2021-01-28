@@ -64,7 +64,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
     render() {
         return (
             <div
-                className={classNames('options-cycle text-medium-blue', this.props.className, {
+                className={classNames('options-cycle', this.props.className, {
                     'mod-inline': this.props.isInline,
                 })}
             >

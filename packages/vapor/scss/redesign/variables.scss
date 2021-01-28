@@ -1,13 +1,9 @@
 :root {
     // General
-    // Use these variables as much as possible
-    --heading-text-color: var(--navy-blue-80);
-    --label-text-color: var(--navy-blue-80);
+    --default-text-color: var(--grey-80);
+    --title-text-color: var(--grey-100);
     --default-border-color: var(--grey-40);
     --links-color: var(--digital-blue-60);
-
-    --default-font-size: 14px;
-    --small-font-size: 12px;
 
     --default-border: 1px solid;
 
@@ -142,7 +138,6 @@
     // Tab
     --tab-font-size: #{$button-font-size};
     --tab-font-weight: var(--main-font-bolder);
-    --tab-text-color: var(--grey-100);
     --tab-border-color: var(--digital-blue-60);
 
     // Table
@@ -152,7 +147,6 @@
     --table-action-label-font-size: var(--default-font-size);
     --table-action-label-font-weight: var(--main-font-bolder);
     --table-action-label-color: var(--navy-blue-80);
-    --table-header-text-color: var(--grey-80);
     --table-header-font-size: #{$small-font-size};
     --table-header-sort-icon-color: var(--grey-60);
     --table-row-font-size: var(--default-font-size);
@@ -160,15 +154,11 @@
     --table-row-selected-color: var(--grey-20);
     --table-cell-loading-color: var(--grey-40);
     --blankslate-border-color: var(--grey-40);
-    --blankslate-text-color: var(--grey-100);
-    --big-table-first-row-text-color: var(--navy-blue-80);
     --big-table-first-row-font-size: var(--default-font-size);
     --big-table-first-row-font-weight: var(--main-font-bolder);
-    --big-table-second-row-text-color: var(--grey-80);
 
     // Flat select
     --flat-select-background-color: var(--digital-blue-60);
-    --flat-select-text-color: var(--navy-blue-80);
     --flat-select-prepend-color: var(--grey-100);
     --flat-select-prepend-font-size: var(--default-font-size);
     --flat-select-prepend-font-weight: var(--main-font-bolder);
@@ -226,10 +216,8 @@
 
     // Input
     --input-font-size: var(--default-font-size);
-    --placeholder-text-color: var(--grey-80);
     --checkbox-border-color: var(--navy-blue-80);
     --checkbox-checked-color: var(--digital-blue-60);
-    --checkbox-text-color: var(--grey-100);
 
     // Filter box
     --filter-box-icon-color: var(--grey-80);
@@ -247,7 +235,6 @@
     --facet-header-font-size: #{$title-font-size};
     --facet-header-font-weight: var(--main-font-regular);
     --facet-header-line-height: 20px;
-    --facet-header-text-color: var(--grey-100);
     --facet-value-count-text-color: var(--grey-60);
     --facet-value-hover-background-color: var(--grey-20);
 

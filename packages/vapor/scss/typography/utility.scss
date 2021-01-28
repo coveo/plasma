@@ -29,6 +29,10 @@
     text-transform: uppercase;
 }
 
+.capitalize {
+    text-transform: capitalize;
+}
+
 .reset-text-transform {
     text-transform: none;
 }
@@ -79,7 +83,7 @@
 }
 
 .help-text {
-    color: var(--lynch);
+    color: var(--default-text-color);
     font-size: $help-text-font-size;
     line-height: $help-text-line-height;
 }
