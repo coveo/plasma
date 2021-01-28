@@ -116,11 +116,14 @@
             display: flex;
         }
 
-        > label {
-            margin-right: calc(4 * var(--default-spacing));
-            margin-left: 18px;
-            cursor: pointer;
-        }
+.coveo-checkbox-label {
+    --color: var(--title-text-color);
+
+    display: inline-flex;
+    align-items: center;
+    color: var(--color);
+    line-height: 16px;
+    vertical-align: middle; // Required to properly position checkboxes into tables
 
         &.disabled .label {
             cursor: not-allowed;

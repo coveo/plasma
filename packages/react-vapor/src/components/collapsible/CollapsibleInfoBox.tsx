@@ -41,7 +41,7 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
         ) : (
             <div className="inline-flex">
                 <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" />
-                <h3 className="text-medium-blue">{this.props.title}</h3>
+                <h3>{this.props.title}</h3>
             </div>
         );
     }
