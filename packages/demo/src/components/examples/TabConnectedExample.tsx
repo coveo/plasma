@@ -22,7 +22,7 @@ export class TabsExamples extends React.Component<any, any> {
                             <TabConnected id={TAB1_ID} title="A Tab" />
                             <TabConnected id={TAB2_ID} title="Another Tab" tooltip="I am an enabled tab" />
                             <TabConnected id={TAB3_ID} title="Tab with an icon">
-                                <Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />
+                                <Svg svgName={'help'} svgClass={'icon documentation-link mod-16 mr1'} />
                             </TabConnected>
                             <TabConnected
                                 id={TAB4_ID}

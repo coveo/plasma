@@ -158,7 +158,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
             return (
                 <div key={boxId}>
-                    <h3 className="bold text-medium-blue">{datesSelectionBox.title}</h3>
+                    <h3 className="bold">{datesSelectionBox.title}</h3>
                     {optionPicker}
                     {dateSelection}
                 </div>

@@ -4,6 +4,9 @@
     --main-font-bold: 400;
     --main-font-bolder: 500;
 
+    --default-font-size: 14px;
+    --small-font-size: 12px;
+
     // General
     --default-margin: #{$default-margin};
     --default-line-height: #{$default-line-height};
@@ -37,7 +40,6 @@
     --button-line-height: #{$button-line-height};
     --button-small-font-size: #{$button-small-font-size};
     --button-small-line-height: #{$button-small-line-height};
-    --button-text-transform: uppercase;
 
     // Color dot
     --color-dot-size: #{$color-dot-size};

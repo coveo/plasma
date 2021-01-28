@@ -1,4 +1,6 @@
 .flat-select {
+    --color: var(--title-text-color);
+
     display: flex;
     background-color: var(--pure-white);
     border-radius: $border-radius;
@@ -51,7 +53,7 @@
         }
 
         &.selectable {
-            color: var(--flat-select-text-color);
+            color: var(--color);
             background-color: var(--pure-white);
             border: 1px solid var(--default-border-color);
 
@@ -62,7 +64,7 @@
             }
 
             .icon {
-                fill: var(--flat-select-text-color);
+                fill: currentColor;
             }
         }
 
@@ -121,7 +123,7 @@
 
     &.mod-option-picker .flat-select-option {
         flex: auto;
-        color: var(--flat-select-text-color);
+        color: var(--color);
         background-color: var(--light-grey);
         border: 1px solid var(--blue);
         border-right-width: 0;
