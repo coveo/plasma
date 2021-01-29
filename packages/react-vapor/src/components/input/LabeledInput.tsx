@@ -25,7 +25,7 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
     const header =
         !!label || !!information ? (
             <div className="flex">
-                <header className={classNames('label', 'text-light-blue', headerClassName)}>
+                <header className={classNames('label', headerClassName)}>
                     {!!label ? <span>{label}</span> : null}
                 </header>
                 {!!information ? (

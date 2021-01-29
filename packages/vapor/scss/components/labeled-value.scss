@@ -1,4 +1,6 @@
 .box {
+    --color: var(--default-text-color);
+
     &.padded {
         padding: 5px $collapsible-box-padding;
     }
@@ -10,16 +12,23 @@
     }
 
     .label {
+        --color: var(--title-text-color);
+
         padding: 5px 0px 5px 5px;
-        color: var(--label-text-color);
+        color: var(--color);
         font-size: var(--small-font-size);
     }
 
     .value {
         padding: 5px;
+        color: var(--color);
         font-size: var(--default-font-size);
         line-height: $default-line-height;
     }
+}
+
+.label {
+    color: var(--title-text-color);
 }
 
 .mod-align-header {

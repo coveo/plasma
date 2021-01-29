@@ -37,7 +37,7 @@ export class ListBoxExamples extends React.Component {
 
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1">List Box</h1>
+                <h1 className="mb1">List Box</h1>
 
                 <div className="form-group">
                     <label className="form-control-label">Default List Box</label>

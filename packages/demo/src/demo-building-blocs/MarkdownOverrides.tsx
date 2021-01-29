@@ -1,7 +1,6 @@
 import * as React from 'react';
 
-const heading = ({level, children}: any) =>
-    React.createElement(`h${level}`, {className: `h${level} text-medium-blue`}, children);
+const heading = ({level, children}: any) => React.createElement(`h${level}`, {className: `h${level}`}, children);
 
 const table = ({children}: any) => React.createElement('table', {className: 'table mb2'}, children);
 
