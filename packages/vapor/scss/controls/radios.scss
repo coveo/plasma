@@ -66,15 +66,22 @@
             font-weight: var(--main-font-bolder);
 
             &:before {
-                border: 2px solid var(--digital-blue-60);
+                top: 5px;
+                left: 5px;
+                z-index: 1;
+                background-color: transparent;
+                transform: scale(1);
+                content: url('../../resources/icons/svg/content/radiocheck.svg');
             }
 
             &:after {
                 z-index: 0;
                 padding: 5px;
                 background-color: var(--digital-blue-60);
+                border: 2px solid var(--digital-blue-60);
                 transform: scale(1);
-                content: url('../../resources/icons/svg/content/radiocheck.svg');
+                transform-origin: center center;
+                transition: background-color 280ms ease 0ms;
             }
         }
 
