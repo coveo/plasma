@@ -18,10 +18,20 @@
             font-weight: var(--main-font-bold);
             line-height: $radio-button-option-height;
             cursor: pointer;
-            transition: 0.28s ease;
             user-select: none;
 
-            &:before,
+            &:before {
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 0;
+                width: $radio-button-size;
+                height: $radio-button-size;
+                background-color: var(--pure-white);
+                border-radius: 50%;
+                content: '';
+            }
+
             &:after {
                 position: absolute;
                 top: 0;
@@ -31,7 +41,8 @@
                 height: $radio-button-size;
                 background-color: var(--pure-white);
                 border-radius: 50%;
-                transition: 0.28s ease;
+                transform: scale(0);
+                transform-origin: center center;
                 content: '';
             }
         }
@@ -55,15 +66,22 @@
             font-weight: var(--main-font-bolder);
 
             &:before {
-                border: 2px solid var(--digital-blue-60);
+                top: 5px;
+                left: 5px;
+                z-index: 1;
+                background-color: transparent;
+                transform: scale(1);
+                content: url('../../resources/icons/svg/content/radiocheck.svg');
             }
 
             &:after {
                 z-index: 0;
                 padding: 5px;
                 background-color: var(--digital-blue-60);
+                border: 2px solid var(--digital-blue-60);
                 transform: scale(1);
-                content: url('../../resources/icons/svg/content/radiocheck.svg');
+                transform-origin: center center;
+                transition: background-color 280ms ease 0ms;
             }
         }
 
