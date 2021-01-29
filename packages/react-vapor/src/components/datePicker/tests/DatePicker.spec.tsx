@@ -4,7 +4,6 @@ import * as _ from 'underscore';
 
 import {DateUtils} from '../../../utils/DateUtils';
 import {DatePicker, IDatePickerProps} from '../DatePicker';
-import {DEFAULT_DATE_PICKER_COLOR} from '../DatePickerConstants';
 import {DateLimits} from '../DatePickerActions';
 
 describe('Date picker', () => {
@@ -59,17 +58,6 @@ describe('Date picker', () => {
             expect(datePicker.find('input').length).toBe(1);
         });
 
-        it('should have a class "border-COLOR_PROP" on the input or "border-DEFAULT_COLOR" if the color prop is not set', () => {
-            const propsWithColor: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {color: 'blood'});
-
-            expect(datePicker.find('input').hasClass(`border-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(true);
-
-            datePicker.setProps(propsWithColor);
-
-            expect(datePicker.find('input').hasClass(`border-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
-            expect(datePicker.find('input').hasClass(`border-${propsWithColor.color}`)).toBe(true);
-        });
-
         it(
             'should have the class "picking-date" on the input if the picker is the lower limit and the lower limit is ' +
                 'being selected or if the picker is the upper limit and the upper limit is being selected',
@@ -104,38 +92,28 @@ describe('Date picker', () => {
             }
         );
 
-        it(
-            'should have the classes "date-picked" and "bg-COLOR_PROP" or "bg-DEFAULT_COLOR" on the input if we are not' +
-                ' selecting the picker and there is a date set in the input',
-            () => {
-                expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
-                expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
+        it('should have the classes "date-picked" on the input if we are not selecting the picker and there is a date set in the input', () => {
+            expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
 
-                datePicker.setProps({...DATE_PICKER_BASIC_PROPS, date: new Date()});
-                datePicker.setState({isSelected: true});
-                datePicker.update();
+            datePicker.setProps({...DATE_PICKER_BASIC_PROPS, date: new Date()});
+            datePicker.setState({isSelected: true});
+            datePicker.update();
 
-                expect(datePicker.find('input').hasClass('date-picked')).toBe(true);
-                expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(true);
+            expect(datePicker.find('input').hasClass('date-picked')).toBe(true);
 
-                datePicker.setProps({...DATE_PICKER_BASIC_PROPS, date: new Date(), color: 'white'});
-                datePicker.update();
+            datePicker.setProps({...DATE_PICKER_BASIC_PROPS, date: new Date(), color: 'white'});
+            datePicker.update();
 
-                expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
-                expect(datePicker.find('input').hasClass('bg-white')).toBe(true);
+            datePicker.setProps({
+                ...DATE_PICKER_BASIC_PROPS,
+                date: new Date(),
+                isSelecting: DateLimits.lower,
+                upperLimit: false,
+            });
+            datePicker.update();
 
-                datePicker.setProps({
-                    ...DATE_PICKER_BASIC_PROPS,
-                    date: new Date(),
-                    isSelecting: DateLimits.lower,
-                    upperLimit: false,
-                });
-                datePicker.update();
-
-                expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
-                expect(datePicker.find('input').hasClass(`bg-${DEFAULT_DATE_PICKER_COLOR}`)).toBe(false);
-            }
-        );
+            expect(datePicker.find('input').hasClass('date-picked')).toBe(false);
+        });
 
         it('should call setToToday when clicking the set to now button', () => {
             const withButtonProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {hasSetToNowButton: true});

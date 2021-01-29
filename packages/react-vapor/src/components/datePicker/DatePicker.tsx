@@ -75,10 +75,9 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
             <SetToNowButton onClick={this.setToToday} tooltip={this.props.setToNowTooltip} />
         ) : null;
 
-        const inputClasses = classNames(`border-${this.props.color}`, {
+        const inputClasses = classNames({
             'picking-date': this.state.isSelected,
             'date-picked': !this.state.isSelected && this.dateInput?.value,
-            [`bg-${this.props.color}`]: !this.state.isSelected && this.dateInput?.value,
         });
 
         return (
