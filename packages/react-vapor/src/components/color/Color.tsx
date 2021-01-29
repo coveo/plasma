@@ -19,7 +19,11 @@ export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivE
             colorStyle = {...colorStyle, ...this.props.style};
         }
         return (
-            <div {..._.omit(this.props, 'color', 'hex')} style={colorStyle} className={this.props.className}>
+            <div
+                {..._.omit(this.props, 'color', 'hex')}
+                style={colorStyle}
+                className={classNames(this.props.className)}
+            >
                 {this.props.children}
             </div>
         );
