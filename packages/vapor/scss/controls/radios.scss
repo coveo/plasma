@@ -91,17 +91,18 @@
                 cursor: not-allowed;
 
                 &:before {
-                    background-color: var(--grey-20);
                     border-color: var(--grey-40);
                 }
             }
 
-            &:checked {
-                & + label:after {
+            &:checked + label {
+                &:before {
+                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
+                }
+                &:after {
                     padding: 3px;
                     background-color: var(--grey-20);
                     border: 2px solid var(--grey-40);
-                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
                 }
             }
         }
