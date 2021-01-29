@@ -11,11 +11,10 @@ describe('ColorBar', () => {
         expect(() => shallow(<Color color="#145855" />)).not.toThrow();
     });
 
-    it('should add a backgroundColor instead of bg class if the css color does not exists in the palette', () => {
+    it('should add a backgroundColor if the css color does not exists in the palette', () => {
         const expectedColor = 'rebeccapurple';
         const color = shallow(<Color color={expectedColor} />);
 
-        expect(color.find(`.bg-${expectedColor}`).length).toBe(0);
         expect(color.find('div').prop('style').backgroundColor).toBe(expectedColor);
     });
 

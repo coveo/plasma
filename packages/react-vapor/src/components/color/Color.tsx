@@ -24,9 +24,7 @@ export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivE
             <div
                 {..._.omit(this.props, 'color', 'hex')}
                 style={colorStyle}
-                className={classNames(this.props.className, {
-                    [`bg-${this.props.color}`]: !isHex,
-                })}
+                className={classNames(this.props.className)}
             >
                 {this.props.children}
             </div>
