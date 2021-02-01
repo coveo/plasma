@@ -49,5 +49,6 @@
     }
     &.mod-error {
         background-color: var(--blankslate-mod-error-color);
+        border: 1px solid var(--orange);
     }
 }
