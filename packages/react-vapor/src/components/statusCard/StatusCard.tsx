@@ -18,10 +18,9 @@ export class StatusCard extends React.Component<StatusCardProps> {
     render() {
         const cardClasses: string = classNames(this.props.className, styles.statusCard, 'flex', {
             simple: this.props.simple,
-            [styles.modSuccess]: !this.props.loading && this.props.color === 'green',
-            [styles.modWarning]: !this.props.loading && this.props.color === 'yellow',
-            [styles.modCritical]: !this.props.loading && this.props.color === 'red',
-            [styles.modInformation]: !this.props.loading && this.props.color === 'information',
+            [styles.isGreen]: !this.props.loading && this.props.color === 'green',
+            [styles.isYellow]: !this.props.loading && this.props.color === 'yellow',
+            [styles.isRed]: !this.props.loading && this.props.color === 'red',
         });
 
         return <div className={cardClasses}>{this.getContent()}</div>;
