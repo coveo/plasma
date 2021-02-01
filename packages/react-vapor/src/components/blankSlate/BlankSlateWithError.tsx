@@ -18,7 +18,7 @@ export const blankSlateWithError = (
                         </div>
                     }
                     description={<span className="text-black semibold">{this.props.description}</span>}
-                    classes={['border-color-orange-8 mod-error']}
+                    classes={['mod-error']}
                 >
                     {this.props.children}
                 </Component>
