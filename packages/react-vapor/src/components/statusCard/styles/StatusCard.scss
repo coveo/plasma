@@ -19,6 +19,22 @@
         width: 100%;
         transform: translateY(-50%);
     }
+
+    &.isLoading {
+        border-left: none;
+    }
+}
+
+.isGreen {
+    border-left-color: #15ab65;
+}
+
+.isYellow {
+    border-left-color: #f0a702;
+}
+
+.isRed {
+    border-left-color: #c2271c;
 }
 
 .statusCardIcon {

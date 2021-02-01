@@ -31,19 +31,19 @@ export const StatusCardExamples = () => (
             <label className="form-control-label">Many status cards</label>
             <div className="form-control">
                 <div className="status-card-wrapper">
-                    <StatusCard color="red-berry" title="Engine 1" icon="settings">
+                    <StatusCard color="red" title="Engine 1" icon="settings">
                         Limited
                     </StatusCard>
-                    <StatusCard color="curious-blue-1" title="Engine 2" icon="settings" loading>
+                    <StatusCard color="yellow" title="Engine 2" icon="settings" loading>
                         Cool
                     </StatusCard>
-                    <StatusCard color="persian-green" title="Speed" icon="peak">
+                    <StatusCard color="green" title="Speed" icon="peak">
                         Below the limit
                     </StatusCard>
-                    <StatusCard color="sunglow" title="View" icon="view">
+                    <StatusCard color="yellow" title="View" icon="view">
                         Hazardeous
                     </StatusCard>
-                    <StatusCard color="tropical-rain-forest" title="Boost" icon="update">
+                    <StatusCard color="yellow" title="Boost" icon="update">
                         Ready
                     </StatusCard>
                 </div>
