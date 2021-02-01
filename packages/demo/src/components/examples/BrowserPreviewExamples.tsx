@@ -32,10 +32,7 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                 rightChildren={
                     <div className="p3">
                         <BrowserPreview>
-                            <BrowserPreviewError
-                                onClick={() => alert('Clicked!')}
-                                errorMessage="The Query expression within the Reference Cases field is not valid."
-                            />
+                            <BrowserPreviewError errorMessage="The Query expression within the Reference Cases field is not valid." />
                         </BrowserPreview>
                     </div>
                 }
