@@ -22,10 +22,8 @@ export const BrowserPreviewError: React.FunctionComponent<BrowserPreviewErrorPro
         >
             {/* TODO: new svg WIP */}
             <Svg svgName="view" className="block" />
-            <div className="big-text bolder">{description ?? 'Unable to show preview'}</div>
-            {errorMessage ? (
-                <div className="medium-title-text center mt1 browser-preview__state--error">{errorMessage}</div>
-            ) : null}
+            <p className="medium-title-text center bolder">{description ?? 'Unable to show preview'}</p>
+            {errorMessage ? <p className="center mt1 browser-preview__state--error">{errorMessage}</p> : null}
         </div>
     </BrowserPreview>
 );

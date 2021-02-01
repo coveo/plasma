@@ -1,6 +1,6 @@
 .browser-preview {
     height: 720px;
-    border: 1px solid #e5e8e8; // var(--grey-40)
+    border: 1px solid #e5e8e8; // var(--default-border-color)
     border-radius: $big-border-radius;
     box-shadow: 0px 4px 16px 0px rgba(#e5e8e8, 0.75); // var(--grey-40)
 
@@ -25,7 +25,7 @@
     }
 
     &__state {
-        color: #282829; // var(--grey-100)
+        color: #282829; // var(--title-text-color)
 
         svg {
             width: 300px;
@@ -33,16 +33,14 @@
             fill: #5f619e; // TODO: new svg WIP
         }
 
-        p.medium-title-text {
+        .medium-title-text {
             line-height: 24px;
         }
 
-        .big-text {
-            line-height: 32px;
-        }
-
         &--error {
-            color: #ff3e2e;
+            color: #626971; // var(--default-text-color)
+            font-size: 14px; // var(--default-font-size)
+            line-height: 18px;
         }
     }
 }

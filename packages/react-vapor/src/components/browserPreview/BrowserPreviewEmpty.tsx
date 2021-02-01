@@ -14,7 +14,7 @@ export const BrowserPreviewEmpty: React.FunctionComponent<BrowserPreviewEmptyPro
         <div onClick={onClick} className={classNames('browser-preview__state', {'cursor-pointer': onClick})}>
             {/* TODO: new svg WIP */}
             <Svg svgName="arrow-left-return" className="block" />
-            <p className="medium-title-text flex flex-column center-align">
+            <p className="medium-title-text flex flex-column center-align center">
                 {description ?? (
                     <>
                         <span>
