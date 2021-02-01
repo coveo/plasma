@@ -50,14 +50,6 @@
 
     &.mod-error {
         background-color: var(--blankslate-mod-error-color);
-        border-color: var(--orange-8);
-
-        h1 {
-            color: var(--orange-8);
-
-            svg {
-                fill: currentColor;
-            }
-        }
+        border: 1px solid var(--orange);
     }
 }
