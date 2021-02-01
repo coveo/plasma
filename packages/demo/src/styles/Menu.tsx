@@ -43,7 +43,6 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="Transparency" baseUrl="/transparency" isLink />
         <NavigationSection title="Typography" baseUrl="/typography">
             <NavigationLink href="/headings" name="Headings" />
-            <NavigationLink href="/colors" name="Colors" />
             <NavigationLink href="/utilities" name="Utilities" />
             <NavigationLink href="/lists" name="Lists" />
         </NavigationSection>
