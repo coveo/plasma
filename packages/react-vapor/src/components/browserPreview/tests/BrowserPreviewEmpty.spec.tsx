@@ -8,11 +8,10 @@ describe('BrowserPreviewEmpty', () => {
     let component: ReactWrapper<BrowserPreviewEmptyProps>;
     const defaultProps: BrowserPreviewEmptyProps = {
         onClick: jest.fn(),
-        description: '💖',
     };
 
-    const mountWithProps = (props: BrowserPreviewEmptyProps) => {
-        component = mount(<BrowserPreviewEmpty {...props} />, {
+    const mountWithProps = (props: BrowserPreviewEmptyProps, children?: React.ReactNode) => {
+        component = mount(<BrowserPreviewEmpty {...props}>{children}</BrowserPreviewEmpty>, {
             attachTo: document.getElementById('App'),
         });
     };
@@ -49,8 +48,9 @@ describe('BrowserPreviewEmpty', () => {
     });
 
     it('renders the specified description as child', () => {
-        mountWithProps(defaultProps);
+        const description = '💖';
+        mountWithProps(defaultProps, description);
 
-        expect(component.find('.browser-preview__state').childAt(1).text()).toEqual(defaultProps.description);
+        expect(component.find('.browser-preview__state').childAt(1).text()).toEqual(description);
     });
 });
