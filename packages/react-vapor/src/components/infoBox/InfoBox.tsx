@@ -5,11 +5,7 @@ import * as styles from './InfoBox.scss';
 export class InfoBox extends React.PureComponent<React.HTMLProps<HTMLDivElement>> {
     render() {
         return (
-            <div
-                {...this.props}
-                className={classNames('text-oxford-blue', this.props.className, styles.infoBox)}
-                style={{backgroundColor: '#ccefff'}}
-            >
+            <div {...this.props} className={classNames('text-oxford-blue', this.props.className, styles.infoBox)}>
                 {this.props.children}
             </div>
         );
