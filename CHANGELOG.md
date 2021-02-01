@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.11](https://github.com/coveo/react-vapor/compare/v10.0.0-next.10...v10.0.0-next.11) (2021-02-01)
+
+
+### Bug Fixes
+
+* fix color for icon in button (default + hover) ([06e67d0](https://github.com/coveo/react-vapor/commit/06e67d018d1c0abe44fac6ee18216fe0324a7a78))
+
+
+
+
+
 # [10.0.0-next.10](https://github.com/coveo/react-vapor/compare/v10.0.0-next.9...v10.0.0-next.10) (2021-01-28)
 
 **Note:** Version bump only for package root
