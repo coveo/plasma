@@ -17,7 +17,7 @@ export const blankSlateWithError = (
                             {this.props.title}
                         </div>
                     }
-                    description={<span className="bold">{this.props.description}</span>}
+                    description={<span className="text-black semibold">{this.props.description}</span>}
                     classes={['mod-error']}
                 >
                     {this.props.children}
