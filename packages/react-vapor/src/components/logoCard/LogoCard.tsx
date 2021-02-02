@@ -65,7 +65,9 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
                         <Svg svgName={this.props.svgName} className={logoIconClassName} />
                     </div>
                     <div className="logo-card-content">
-                        <h2 className="logo-card-title mb1">{this.props.title}</h2>
+                        <h2 className={classNames('logo-card-title', {mb1: !!this.props.description})}>
+                            {this.props.title}
+                        </h2>
                         {this.props.description}
                     </div>
                     {this.props.badges.length > 0 ? <div className="logo-card-badge">{...badges}</div> : null}
