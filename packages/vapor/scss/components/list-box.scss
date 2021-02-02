@@ -71,6 +71,11 @@
     }
 }
 
+.item-box-loading {
+    height: 1em;
+    background-color: var(--table-cell-loading-color);
+}
+
 .select-footer {
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
