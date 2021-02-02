@@ -1,17 +1,10 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {mount, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {Tooltip} from '../../tooltip';
-import {BrowserPreview, BrowserPreviewProps} from '../BrowserPreview';
+import {BrowserPreview} from '../BrowserPreview';
 
 describe('BrowserPreview', () => {
-    let component: ReactWrapper<BrowserPreviewProps>;
-    const mountWithProps = (props: BrowserPreviewProps) => {
-        component = mount(<BrowserPreview {...props} />, {
-            attachTo: document.getElementById('App'),
-        });
-    };
-
     it('renders without errors', () => {
         expect(() => {
             shallow(<BrowserPreview />);
@@ -20,7 +13,7 @@ describe('BrowserPreview', () => {
 
     it('renders the specified header description as tooltip title', () => {
         const headerDescription = '🥰';
-        mountWithProps({headerDescription});
+        const component = mount(<BrowserPreview headerDescription={headerDescription} />);
 
         expect(component.find(Tooltip).prop('title')).toEqual(headerDescription);
     });

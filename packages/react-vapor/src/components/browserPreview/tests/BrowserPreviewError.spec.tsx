@@ -13,9 +13,7 @@ describe('BrowserPreviewError', () => {
     };
 
     const mountWithProps = (props: BrowserPreviewErrorProps) => {
-        component = mount(<BrowserPreviewError {...props} />, {
-            attachTo: document.getElementById('App'),
-        });
+        component = mount(<BrowserPreviewError {...props} />);
     };
 
     it('renders without errors', () => {

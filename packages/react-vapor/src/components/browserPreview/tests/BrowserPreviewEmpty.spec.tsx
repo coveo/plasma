@@ -11,9 +11,7 @@ describe('BrowserPreviewEmpty', () => {
     };
 
     const mountWithProps = (props: BrowserPreviewEmptyProps, children?: React.ReactNode) => {
-        component = mount(<BrowserPreviewEmpty {...props}>{children}</BrowserPreviewEmpty>, {
-            attachTo: document.getElementById('App'),
-        });
+        component = mount(<BrowserPreviewEmpty {...props}>{children}</BrowserPreviewEmpty>);
     };
 
     it('renders without errors', () => {
