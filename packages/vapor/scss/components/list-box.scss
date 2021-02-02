@@ -6,6 +6,7 @@
     margin: 0;
     padding: $list-box-vertical-spacing 0;
     overflow-y: auto;
+    background-color: var(--white);
     border: $default-border;
     border-color: var(--list-box-border-color);
     border-radius: $list-box-border-radius;
