@@ -10,16 +10,20 @@ export const VaporColors: Record<string, string> = webpackVaporColors;
 
 export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
-        color: '#ffffff', // var(--white)?
+        color: '#FFFFFF', // var(--white)?
     };
 
     render() {
         let colorStyle: React.CSSProperties = {backgroundColor: this.props.color} || {};
         if (this.props.style) {
             colorStyle = {...colorStyle, ...this.props.style};
-        }
+        } // TODO: see if this break something...
         return (
-            <div {..._.omit(this.props, 'color', 'hex')} style={colorStyle} className={this.props.className}>
+            <div
+                {..._.omit(this.props, 'color', 'hex')}
+                style={{backgroundColor: this.props.color}}
+                className={this.props.className}
+            >
                 {this.props.children}
             </div>
         );

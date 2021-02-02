@@ -12,7 +12,7 @@ export class ColorExamples extends React.Component {
             ) : (
                 <tr className="no-hover" key={color}>
                     <td>
-                        <Color key={color} color={color} className="p2 material card" />
+                        <Color key={color} color={value} className="p2 material card" />
                     </td>
                     <td>
                         <p>{color}</p>
