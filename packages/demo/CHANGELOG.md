@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.30.0](https://github.com/coveo/react-vapor/compare/v9.29.5...v9.30.0) (2021-02-02)
+
+
+### Features
+
+* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([bc7a0a2](https://github.com/coveo/react-vapor/commit/bc7a0a2c2798a081c85e08de9f332f8a5b4dab34))
+
+
+
+
+
 ## [9.29.5](https://github.com/coveo/react-vapor/compare/v9.29.4...v9.29.5) (2021-01-29)
 
 **Note:** Version bump only for package react-vapor-demo
