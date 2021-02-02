@@ -16,12 +16,11 @@ export const BrowserPreviewError: React.FunctionComponent<BrowserPreviewErrorPro
 }) => (
     <div
         onClick={onClick}
-        className={classNames('browser-preview__state flex flex-column flex-auto center-align', {
-            'cursor-pointer': onClick,
-        })}
+        className={classNames('browser-preview__state flex flex-column center-align', {'cursor-pointer': onClick})}
     >
-        <Svg svgName="preview-error" className="block" />
-        <p className="medium-title-text mt2 center bolder">{description ?? 'Unable to show preview'}</p>
+        {/* TODO: new svg WIP */}
+        <Svg svgName="view" className="block" />
+        <p className="medium-title-text center bolder">{description ?? 'Unable to show preview'}</p>
         {errorMessage ? <p className="center mt1 browser-preview__state--error">{errorMessage}</p> : null}
     </div>
 );

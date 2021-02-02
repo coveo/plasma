@@ -11,7 +11,7 @@ export interface BrowserPreviewProps {
 export const BrowserPreview: React.FunctionComponent<BrowserPreviewProps> = ({children, headerDescription}) => (
     <div className="browser-preview flex flex-column">
         <BrowserPreviewHeader tooltipTitle={headerDescription ?? DefaultHeaderDescription} />
-        <div className="browser-preview__content flex flex-column flex-auto px4 py3">{children}</div>
+        <div className="flex flex-column flex-auto center-align p3">{children}</div>
     </div>
 );
 

@@ -39,17 +39,10 @@ describe('BrowserPreviewEmpty', () => {
         expect(defaultProps.onClick).toHaveBeenCalledTimes(1);
     });
 
-    it('renders a Svg as child by default', () => {
+    it('renders a Svg as child', () => {
         mountWithProps(defaultProps);
 
         expect(component.find('.browser-preview__state').childAt(0).find(Svg)).toBeTruthy();
-    });
-
-    it('renders the specified node instead of the default image', () => {
-        const image = <img src="fake" />;
-        mountWithProps({...defaultProps, image});
-
-        expect(component.find('img[src*="fake"]').exists()).toBe(true);
     });
 
     it('renders the specified description as child', () => {
