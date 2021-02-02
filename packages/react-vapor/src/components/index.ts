@@ -6,6 +6,7 @@ export * from './banner';
 export * from './blankSlate';
 export * from './borderedLine';
 export * from './breadcrumbs';
+export * from './browserPreview';
 export * from './button';
 export * from './calendar';
 export * from './chart';
