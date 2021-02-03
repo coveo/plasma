@@ -8,22 +8,21 @@ import {
     Loading,
     Section,
     Svg,
-    UUID,
 } from 'react-vapor';
 
 export class FlatSelectExamples extends React.Component {
     render() {
         const defaultFlatSelectOption: IFlatSelectOptionProps[] = [
             {
-                id: UUID.generate(),
+                id: 'uniqueId-1',
                 option: {content: 'Option 1'},
             },
             {
-                id: UUID.generate(),
+                id: 'uniqueId-2',
                 option: {content: 'Option 2'},
             },
             {
-                id: UUID.generate(),
+                id: 'uniqueId-3',
                 option: {content: 'Option 3'},
             },
         ];
@@ -41,7 +40,7 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Default Flat Select">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-1',
                                 options: defaultFlatSelectOption,
                             }}
                         />
@@ -49,7 +48,7 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select mod group">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-2',
                                 options: defaultFlatSelectOption,
                                 group: true,
                             }}
@@ -58,7 +57,7 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select mod option picker">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-3',
                                 options: defaultFlatSelectOption,
                                 optionPicker: true,
                             }}
@@ -67,15 +66,15 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select with option tooltip">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-4',
                                 options: [
                                     {
-                                        id: UUID.generate(),
+                                        id: 'itemTooltipId-1',
                                         option: {content: 'Option 1'},
                                         tooltip: {title: 'Option 1 tooltip', container: 'body', placement: 'bottom'},
                                     },
                                     {
-                                        id: UUID.generate(),
+                                        id: 'itemTooltipId-2',
                                         option: {content: 'Option 2'},
                                         tooltip: {title: 'Option 2 tooltip', container: 'body', placement: 'bottom'},
                                     },
@@ -86,15 +85,15 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select with option append and prepend">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-5',
                                 options: [
                                     {
-                                        id: UUID.generate(),
+                                        id: 'prependItemId',
                                         option: {content: 'Option 1'},
                                         prepend: prepend,
                                     },
                                     {
-                                        id: UUID.generate(),
+                                        id: 'appendItemId',
                                         option: {content: 'Option 2'},
                                         append: append,
                                     },
@@ -105,14 +104,14 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select with option component">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-6',
                                 options: [
                                     {
-                                        id: UUID.generate(),
+                                        id: 'loadingId-1',
                                         option: {content: Loading},
                                     },
                                     {
-                                        id: UUID.generate(),
+                                        id: 'loadingId-2',
                                         option: {content: Loading},
                                     },
                                 ],
@@ -122,15 +121,15 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select with a disabled option">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-7',
                                 options: [
                                     {
-                                        id: UUID.generate(),
+                                        id: 'disabledId-1',
                                         option: {content: 'disabled'},
                                         disabled: true,
                                     },
                                     {
-                                        id: UUID.generate(),
+                                        id: 'disabledId-1',
                                         option: {content: 'enabled'},
                                     },
                                 ],
@@ -140,15 +139,15 @@ export class FlatSelectExamples extends React.Component {
                     <Section level={2} title="Flat Select with all options disabled">
                         <FlatSelectConnected
                             {...{
-                                id: UUID.generate(),
+                                id: 'flatSelectId-8',
                                 options: [
                                     {
-                                        id: UUID.generate(),
+                                        id: 'disabledId-3',
                                         option: {content: "I'm a disabled FlatSelectOption"},
                                         disabled: true,
                                     },
                                     {
-                                        id: UUID.generate(),
+                                        id: 'disabledId-4',
                                         option: {content: "I'm a disabled FlatSelectOption too!"},
                                     },
                                 ],
