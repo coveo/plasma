@@ -72,7 +72,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
                 </div>
             }
             expandedOnMount={expandedOnMount}
-            headerClasses={classNames(styles.header)}
+            headerClasses={classNames(styles.header, expanded ? styles.expanded : styles.collapsed)}
             toggleIconClassName="mr4"
             collapsibleToggleIcon={collapsibleToggleIcon}
             withBorders
