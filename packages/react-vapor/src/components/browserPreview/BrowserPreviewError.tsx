@@ -16,7 +16,9 @@ export const BrowserPreviewError: React.FunctionComponent<BrowserPreviewErrorPro
 }) => (
     <div
         onClick={onClick}
-        className={classNames('browser-preview__state flex flex-column center-align', {'cursor-pointer': onClick})}
+        className={classNames('browser-preview__state flex flex-column flex-auto center-align', {
+            'cursor-pointer': onClick,
+        })}
     >
         {/* TODO: new svg WIP */}
         <Svg svgName="view" className="block" />
