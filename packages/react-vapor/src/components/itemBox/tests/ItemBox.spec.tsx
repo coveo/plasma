@@ -34,7 +34,7 @@ describe('ItemBox', () => {
     describe('<ItemBox /> with custom props', () => {
         const content: IContentProps = {
             content: 'Prefix',
-            classes: ['text-medium-grey', 'mr1'],
+            classes: ['mr1'],
         };
 
         const tooltip: ITooltipProps = {

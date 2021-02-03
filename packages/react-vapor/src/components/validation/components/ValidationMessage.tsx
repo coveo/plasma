@@ -20,8 +20,8 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IValidationMessagePro
 });
 
 export const ValidationMessageClasses = {
-    error: 'text-red',
-    warning: 'text-yellow',
+    error: 'validation-error',
+    warning: 'validation-warning',
 };
 
 export const ValidationMessageDisconnect: React.FunctionComponent<

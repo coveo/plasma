@@ -66,3 +66,12 @@
         }
     }
 }
+
+.validation {
+    &-error {
+        color: var(--red);
+    }
+    &-warning {
+        color: var(--status-yellow);
+    }
+}

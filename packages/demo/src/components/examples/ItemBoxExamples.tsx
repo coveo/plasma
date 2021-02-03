@@ -37,7 +37,7 @@ export class ItemBoxExamples extends React.Component<any, any> {
                 <div className="form-group">
                     <label className="form-control-label">Item Box with a prepend text</label>
                     <div className="form-control">
-                        <ItemBox value="test" prepend={{content: 'Prefix', classes: ['text-medium-grey', 'mr1']}} />
+                        <ItemBox value="test" prepend={{content: 'Prefix', classes: ['prepend', 'mr1']}} />
                     </div>
                 </div>
                 <div className="form-group">

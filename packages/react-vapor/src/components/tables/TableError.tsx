@@ -53,7 +53,7 @@ export class TableError extends React.Component<ITableErrorProps, any> {
                     <div className="details-container troubleshooting-container">
                         {errorTroubleshoot}
                         <div className="label">{errorCodeLabel}</div>
-                        <div className="value text-dark-blue">{this.props.error.errorCode}</div>
+                        <div className="value">{this.props.error.errorCode}</div>
                     </div>
                 </section>
             </div>

@@ -100,11 +100,9 @@ input[type='checkbox'].coveo-checkbox {
 }
 
 .coveo-checkbox-label {
-    --color: var(--title-text-color);
-
     display: inline-flex;
     align-items: center;
-    color: var(--color);
+    color: var(--title-text-color);
     line-height: 16px;
     vertical-align: middle; // Required to properly position checkboxes into tables
 
