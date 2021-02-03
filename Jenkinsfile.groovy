@@ -121,6 +121,12 @@ pipeline {
           sh "npm run build"
         }
       }
+
+      post {
+        failure {
+          postCommentOnGithub();
+        }
+      }
     }
 
     stage('Test') {
@@ -133,6 +139,12 @@ pipeline {
           setLastStageName();
           sh "npm run test"
           sh "npx lerna run report-coverage"
+        }
+      }
+
+      post {
+        failure {
+          postCommentOnGithub();
         }
       }
     }
@@ -161,16 +173,20 @@ pipeline {
 
             
             sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
-            runNodeScript.call(
-              'add-github-comment.js', 
-              "--demoLink=https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
-            )
+            postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+
             def message = "Build succeeded: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
             notify.sendSlackWithThread(
                 color: "#00FF00", message: message,
                 ["admin-ui-builds"]
             )
           }
+        }
+      }
+
+      post {
+        failure {
+          postCommentOnGithub();
         }
       }
     }
@@ -284,4 +300,11 @@ def getLastStageName() {
     stage = LAST_STAGE_NAME
   } catch (e) {}
   return stage
+}
+
+def postCommentOnGithub(demoLink="") {
+  runNodeScript.call(
+              'add-github-comment.js', 
+              "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
+            )
 }
