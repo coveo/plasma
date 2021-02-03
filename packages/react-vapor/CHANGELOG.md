@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.30.1](https://github.com/coveo/react-vapor/compare/v9.30.0...v9.30.1) (2021-02-03)
+
+
+### Bug Fixes
+
+* **browser-preview:** remove center-align from container ([#1855](https://github.com/coveo/react-vapor/issues/1855)) ([9b9811b](https://github.com/coveo/react-vapor/commit/9b9811badb6b276d94202db813e08640f6aa9bb8))
+* **logo-card title:** conditionally render margin bottom on title ([f3cf3db](https://github.com/coveo/react-vapor/commit/f3cf3db4191b5fd4420b08a6145ae9353080c395))
+
+
+
+
+
 # [9.30.0](https://github.com/coveo/react-vapor/compare/v9.29.5...v9.30.0) (2021-02-02)
 
 
