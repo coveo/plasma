@@ -143,7 +143,7 @@ const sort = (key: keyof IExampleRowData, isAsc: boolean, a: IExampleRowData, b:
 
 const predicateSetup = {
     id: 'firstPredicate',
-    prepend: <span className="mr1 text-medium-grey">prepend:</span>,
+    prepend: <span className="dropdown-prepend">prepend:</span>,
     values: [
         {displayValue: 'All', value: '', selected: true},
         {displayValue: twoHundredRowsOfData[2].city, value: twoHundredRowsOfData[2].city},

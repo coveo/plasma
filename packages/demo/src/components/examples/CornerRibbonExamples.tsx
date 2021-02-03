@@ -41,7 +41,7 @@ export class CornerRibbonExamples extends React.Component<any, any> {
                                 label="Ribbon"
                                 placementX={PlacementX.Left}
                                 placementY={PlacementY.Top}
-                                extraClasses={['bg-pure-white', 'text-red', 'bold', 'border-accent']}
+                                extraClasses={['bg-pure-white', 'mod-red', 'bold']}
                             />
                         </div>
                     </div>

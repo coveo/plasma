@@ -136,7 +136,7 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
     render() {
         return (
             <Section title="Server table with numbered rows">
-                <span className="block my2 text-grey-7">
+                <span className="block my2">
                     Please note that the backend service doesn't support dates but we still make a request for every
                     change in the date range.
                 </span>

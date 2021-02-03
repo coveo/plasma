@@ -15,7 +15,7 @@ const Banner = () => (
         <div className="banner flex center-align bg-orange">
             <div className="banner-description">
                 The release of March 2016 includes significant content update
-                <button type="button" className="btn text-orange">
+                <button type="button" className="btn">
                     Learn More
                 </button>
             </div>

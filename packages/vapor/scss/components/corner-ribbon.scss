@@ -4,10 +4,12 @@
 }
 
 .corner-ribbon {
+    --color: var(--pure-white);
+
     position: absolute;
     width: $ribbon-width;
     height: $ribbon-height;
-    color: var(--pure-white);
+    color: var(--color);
     font-size: $ribbon-font-size;
     line-height: $ribbon-height;
     letter-spacing: $ribbon-letter-spacing;
@@ -42,7 +44,8 @@
         }
     }
 
-    &.border-accent {
+    &.mod-red {
+        --color: var(--red);
         border: $default-border-size solid var(--red);
     }
 }
