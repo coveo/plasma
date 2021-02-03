@@ -12,3 +12,11 @@
 .content {
     padding: $form-top-padding $header-padding;
 }
+
+.expanded {
+    background-color: #e5e8e8; //var(--grey-40);
+}
+
+.collapsed {
+    background-color: #f6f7f9; //var(--grey-20);
+}
