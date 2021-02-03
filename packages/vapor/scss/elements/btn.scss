@@ -25,7 +25,7 @@
 
     cursor: pointer;
 
-    .icon:not([class*='fill-']) {
+    .icon {
         fill: var(--button-secondary-icon-color);
     }
 
@@ -51,7 +51,7 @@
         outline-color: var(--button-secondary-hover-border-color);
 
         .icon {
-            fill: var(--button-secondary-hover-text-color);
+            fill: var(--button-secondary-hover-icon-color);
         }
     }
 
