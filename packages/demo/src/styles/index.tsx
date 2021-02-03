@@ -3,7 +3,6 @@ import {Redirect, Route, RouteComponentProps} from 'react-router-dom';
 
 import Borders from './Borders';
 import Cards from './cards';
-import Colors from './colors';
 import Components from './components';
 import Filtering from './filtering';
 import FormControls from './form';
@@ -24,7 +23,6 @@ const Styles: React.FunctionComponent<RouteComponentProps> = ({match}) => (
             <Route path={`${match.url}/general-guidelines`} component={GeneralGuidelines} />
             <Route path={`${match.url}/borders`} component={Borders} />
             <Route path={`${match.url}/cards`} component={Cards} />
-            <Route path={`${match.url}/colors`} component={Colors} />
             <Route path={`${match.url}/components`} component={Components} />
             <Route path={`${match.url}/filtering`} component={Filtering} />
             <Route path={`${match.url}/form-controls`} component={FormControls} />
