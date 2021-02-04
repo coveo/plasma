@@ -6,6 +6,7 @@
     --links-color: var(--digital-blue-60);
 
     --default-border: 1px solid;
+    --default-spacing: 0.5rem;
 
     // Navigation
     --navigation-background-color: var(--white);
@@ -219,6 +220,8 @@
     --input-font-size: var(--default-font-size);
     --checkbox-border-color: var(--navy-blue-80);
     --checkbox-checked-color: var(--digital-blue-60);
+
+    --checkbox-text-color: var(--grey-100);
 
     // Filter box
     --filter-box-icon-color: var(--grey-80);
