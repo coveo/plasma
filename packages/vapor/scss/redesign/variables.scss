@@ -61,11 +61,12 @@
     // Secondary
     --button-secondary-color: var(--white);
     --button-secondary-text-color: var(--navy-blue-80);
-    --button-secondary-border-color: var(--black);
-    --button-secondary-icon-color: var(--black);
+    --button-secondary-border-color: var(--navy-blue-80);
+    --button-secondary-icon-color: var(--navy-blue-80);
 
     --button-secondary-hover-border-color: var(--digital-blue-80);
     --button-secondary-hover-text-color: var(--digital-blue-80);
+    --button-secondary-hover-icon-color: var(--digital-blue-80);
     --button-secondary-hover-focus-color: var(--white);
 
     --button-secondary-focus-border-color: var(--green);
@@ -158,7 +159,7 @@
     --big-table-first-row-font-weight: var(--main-font-bolder);
 
     // Flat select
-    --flat-select-background-color: var(--digital-blue-60);
+    --flat-select-background-color: var(--navy-blue-80);
     --flat-select-prepend-color: var(--grey-100);
     --flat-select-prepend-font-size: var(--default-font-size);
     --flat-select-prepend-font-weight: var(--main-font-bolder);
