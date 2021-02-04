@@ -69,9 +69,9 @@
 
 .validation {
     &-error {
-        color: var(--red);
+        color: var(--critical-60);
     }
     &-warning {
-        color: var(--status-yellow);
+        color: var(--warning-60);
     }
 }
