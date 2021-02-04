@@ -4,12 +4,10 @@
 }
 
 .corner-ribbon {
-    --color: var(--pure-white);
-
     position: absolute;
     width: $ribbon-width;
     height: $ribbon-height;
-    color: var(--color);
+    color: var(--pure-white);
     font-size: $ribbon-font-size;
     line-height: $ribbon-height;
     letter-spacing: $ribbon-letter-spacing;
@@ -42,10 +40,5 @@
         &.left {
             transform: rotate($ribbon-rotation-angle);
         }
-    }
-
-    &.mod-red {
-        --color: var(--red);
-        border: $default-border-size solid var(--red);
     }
 }
