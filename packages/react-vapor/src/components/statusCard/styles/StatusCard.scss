@@ -25,16 +25,20 @@
     }
 }
 
-.isGreen {
-    border-left-color: #15ab65;
+.isSuccess {
+    border-left-color: #2ba488; // var(--success-60)
 }
 
-.isYellow {
-    border-left-color: #f0a702;
+.isWarning {
+    border-left-color: #f0a702; // var(--warning-60)
 }
 
-.isRed {
-    border-left-color: #c2271c;
+.isCritical {
+    border-left-color: #da3c2f; // var(--critical-80)
+}
+
+.isInformation {
+    border-left-color: #097acc; // var(--information-80);
 }
 
 .statusCardIcon {
