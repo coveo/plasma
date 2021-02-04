@@ -59,7 +59,7 @@ export const StatusCardExamples = () => (
                     <StatusCard color="yellow" title="View" icon="view">
                         Hazardeous
                     </StatusCard>
-                    <StatusCard color="yellow" title="Boost" icon="update">
+                    <StatusCard color="information" title="Boost" icon="update">
                         Ready
                     </StatusCard>
                 </div>
