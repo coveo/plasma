@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
 
 export interface ICheckboxOwnProps {
-    handleOnClick?: (isChecked: boolean) => void;
+    handleOnClick?: (wasChecked: boolean) => void;
     clearSides?: boolean;
 }
 
