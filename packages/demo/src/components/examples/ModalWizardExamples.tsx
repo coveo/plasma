@@ -9,17 +9,10 @@ import {
     InputSelectors,
     Label,
     ModalWizard,
-    ModalWizardWithValidations,
     openModal,
     Radio,
     RadioSelectConnected,
     RadioSelectSelectors,
-    Section,
-    withDirtyInputHOC,
-    withNonEmptyValueInputValidationHOC,
-    withNonEmptySingleSelectHOC,
-    SingleSelectConnected,
-    withDirtySingleSelectHOC,
 } from 'react-vapor';
 
 import {IReactVaporExampleState} from '../../Reducers';
@@ -28,7 +21,7 @@ import {IReactVaporExampleState} from '../../Reducers';
 
 const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo');
 
-const enhanceExample1 = connect(
+const enhance = connect(
     (state: IReactVaporExampleState) => ({
         selectedPath: RadioSelectSelectors.getValue(state, {id: 'radio-step-1'}),
         inputTwoValue: InputSelectors.getValue(state, {id: 'input-step-2'}) || '',
@@ -38,7 +31,7 @@ const enhanceExample1 = connect(
     })
 );
 
-const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<typeof enhanceExample1>> = ({
+const ModalWizardExamplesDisconnected: React.FunctionComponent<ConnectedProps<typeof enhance>> = ({
     open,
     selectedPath,
     inputTwoValue,
@@ -70,10 +63,10 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
     };
 
     return (
-        <Section level={2} title="Standard ModalWizard">
-            <Button name="Open standard wizard" enabled primary onClick={() => open('standard-wizard')} />
+        <>
+            <Button name="Open wizard" enabled primary onClick={() => open('my-wizard')} />
             <ModalWizard
-                id="standard-wizard"
+                id="my-wizard"
                 title="Wizard 🧙‍♂️"
                 onFinish={() => alert('Congratulations! You completed the wizard')}
                 validateStep={validateStep}
@@ -110,62 +103,8 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
                     Enter "coveo" at step two to finish!
                 </Form>
             </ModalWizard>
-        </Section>
+        </>
     );
 };
 
-const StandardModalWizard = enhanceExample1(StandardModalWizardDisconnected);
-
-const NonEmptyInput: ReturnType<
-    typeof withDirtyInputHOC | typeof withNonEmptyValueInputValidationHOC
-> = withNonEmptyValueInputValidationHOC(withDirtyInputHOC(InputConnected));
-const NonEmptySelect = withDirtySingleSelectHOC(withNonEmptySingleSelectHOC(SingleSelectConnected));
-
-const enhanceExample2 = connect(null, (dispatch: IDispatch) => ({
-    open: (id: string) => dispatch(openModal(id)),
-}));
-
-const ModalWizardWithValidationIdsDisconnected: React.FunctionComponent<ConnectedProps<typeof enhanceExample2>> = ({
-    open,
-}) => (
-    <Section level={2} title="ModalWizard with built-in validation ids">
-        <Button name="Open wizard with validation ids" enabled primary onClick={() => open('validation-wizard')} />
-        <ModalWizardWithValidations
-            id="validation-wizard"
-            title="Wizard 🧙‍♂️"
-            onFinish={() => alert('Congratulations! You completed the wizard')}
-            validationIdsByStep={[['name-input'], ['favorite-animal-select']]}
-        >
-            <Form title="Step 1" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
-                <NonEmptyInput
-                    id="name-input"
-                    labelTitle="Name"
-                    autoComplete="off"
-                    validateOnMount
-                    validateOnChange
-                    resetDirtyOnUnmount
-                    resetErrorOnUnmount
-                />
-            </Form>
-            <Form title="Step 2" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
-                <NonEmptySelect
-                    id="favorite-animal-select"
-                    items={[
-                        {value: 'tiger', displayValue: 'Tiger 🐅'},
-                        {value: 'dog', displayValue: 'Dog 🐕', disabled: true},
-                        {value: 'squid', displayValue: 'Squid 🦑'},
-                    ]}
-                />
-            </Form>
-        </ModalWizardWithValidations>
-    </Section>
-);
-
-const ModalWizardWithValidationIds = enhanceExample2(ModalWizardWithValidationIdsDisconnected);
-
-export const ModalWizardExamples = () => (
-    <Section>
-        <StandardModalWizard />
-        <ModalWizardWithValidationIds />
-    </Section>
-);
+export const ModalWizardExamples = enhance(ModalWizardExamplesDisconnected);
