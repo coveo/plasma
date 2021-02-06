@@ -22,19 +22,19 @@
 }
 
 .isSuccess {
-    border-left-color: #2ba488; // var(--success-60)
+    border-left-color: var(--success-60);
 }
 
 .isWarning {
-    border-left-color: #f0a702; // var(--warning-60)
+    border-left-color: var(--warning-60);
 }
 
 .isCritical {
-    border-left-color: #da3c2f; // var(--critical-80)
+    border-left-color: var(--critical-80);
 }
 
 .isInformation {
-    border-left-color: #097acc; // var(--information-80);
+    border-left-color: var(--information-80);
 }
 
 .statusCardIcon {
