@@ -49,7 +49,7 @@ const tableActions = (username: string) => [
 const tablePredicates = [
     {
         id: 'address.city',
-        prepend: <span className="mr1 text-medium-grey">City:</span>,
+        prepend: <span className="dropdown-prepend">City:</span>,
         values: [
             {displayValue: 'All', value: '', selected: true},
             {displayValue: 'Lebsackbury', value: 'Lebsackbury'},
@@ -58,7 +58,7 @@ const tablePredicates = [
     },
     {
         id: 'username',
-        prepend: <span className="mr1 text-medium-grey">Username:</span>,
+        prepend: <span className="dropdown-prepend">Username:</span>,
         values: [
             {displayValue: 'All', value: '', selected: true},
             {displayValue: 'bret', value: 'Bret'},

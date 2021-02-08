@@ -41,7 +41,7 @@ export const SplitLayoutExamples = () => (
                 <SplitLayout
                     leftChildren={<div className="p1">{exampleTextLeft}</div>}
                     rightChildren={<div className="p1">{exampleTextRight}</div>}
-                    className="text-medium-blue bold"
+                    className="bold"
                 />
             </div>
         </div>
@@ -60,8 +60,8 @@ export const SplitLayoutExamples = () => (
                                 {exampleTextRight}
                             </div>
                         ))}
-                        leftContainerClassName="text-medium-blue bold"
-                        rightContainerClassName="text-orange italic"
+                        leftContainerClassName="bold"
+                        rightContainerClassName="italic"
                     />
                 </div>
             </div>
