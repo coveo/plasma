@@ -91,4 +91,4 @@ export class PartialStringMatch extends React.PureComponent<PartialStringMatchPr
     }
 }
 
-const Highlight: React.FunctionComponent = ({children}) => <span className="bold">{children}</span>;
+const Highlight: React.FunctionComponent = ({children}) => <span className="bolder">{children}</span>;

@@ -6,6 +6,8 @@
 
 #App {
     margin: 0 auto;
+    color: var(--default-text-color);
+    font-weight: var(--main-font-regular);
 
     .header-title {
         height: 27px;

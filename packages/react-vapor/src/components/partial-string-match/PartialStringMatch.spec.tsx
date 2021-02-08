@@ -92,7 +92,7 @@ describe('PartialStringMatch', () => {
             <PartialStringMatch partialMatch={matcher}>bacon is my favorite vegetable</PartialStringMatch>
         );
 
-        expect(component.find('Highlight').dive().hasClass('bold')).toBe(true);
+        expect(component.find('Highlight').dive().hasClass('bolder')).toBe(true);
     });
 
     it('should highlight all matches rendered throught a function component', () => {
