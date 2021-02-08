@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.14](https://github.com/coveo/react-vapor/compare/v10.0.0-next.13...v10.0.0-next.14) (2021-02-08)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
 # [10.0.0-next.13](https://github.com/coveo/react-vapor/compare/v10.0.0-next.12...v10.0.0-next.13) (2021-02-04)
 
 
