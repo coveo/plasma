@@ -3,7 +3,7 @@ import * as React from 'react';
 import {all, extend} from 'underscore';
 
 import {DisplayClass} from '../../utils/ComponentUtils';
-import {IUserFeedbackProps, TextColorClass, UserFeedback, UserFeedbackState} from './UserFeedback';
+import {IUserFeedbackProps, UserFeedback, UserFeedbackState} from './UserFeedback';
 
 describe('<UserFeedback>', () => {
     const getShallowOutput = (
@@ -113,12 +113,6 @@ describe('<UserFeedback>', () => {
                         )
                     ).toBe(false);
                 });
-
-                it('should have the default text color class', () => {
-                    const componentOnStateWarning = getShallowOutput('', UserFeedbackState.WARNING);
-
-                    expect(componentOnStateWarning.hasClass(TextColorClass.default)).toBe(true);
-                });
             });
 
             describe('ERROR state', () => {
@@ -144,24 +138,13 @@ describe('<UserFeedback>', () => {
                 it('should have the error text color class', () => {
                     const componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR);
 
-                    expect(componentOnStateError.hasClass(TextColorClass.error)).toBe(true);
+                    expect(componentOnStateError.hasClass('validation-error')).toBe(true);
                 });
             });
         });
 
         describe('constant classes', () => {
-            it('should only have the text-[color] and display classes if no extraClasses are passed as prop', () => {
-                const testComponentValid = getShallowOutput('', UserFeedbackState.VALID);
-                const testComponentWarning = getShallowOutput('', UserFeedbackState.WARNING);
-                const testComponentError = getShallowOutput('', UserFeedbackState.ERROR);
-
-                // a trailing space will be left at the end of the class property if no extraClasses are passed as prop
-                expect(/class=\"text-dark-grey hidden\"/.test(testComponentValid.html())).toBe(true);
-                expect(/class=\"text-dark-grey block\"/.test(testComponentWarning.html())).toBe(true);
-                expect(/class=\"text-red block\"/.test(testComponentError.html())).toBe(true);
-            });
-
-            it('should contain all classes passed through extraClasses, along with the text-[color] and display classes', () => {
+            it('should contain all classes passed through extraClasses, along with display classes', () => {
                 const extraClass: string[] = ['onlyoneclass'];
                 const extraClasses: string[] = ['each', 'word', 'represents', 'a', 'class'];
                 const extraClassesRealLife: string[] = ['mt1', 'mb2'];
@@ -172,7 +155,7 @@ describe('<UserFeedback>', () => {
                     shallowWrapper: ShallowWrapper<IUserFeedbackProps, any>
                 ): boolean => {
                     const allClasses: string[] = currentExtraClasses;
-                    allClasses.unshift(TextColorClass.default, DisplayClass.HIDDEN);
+                    allClasses.unshift(DisplayClass.HIDDEN);
 
                     return all(allClasses, (className: string) => shallowWrapper.hasClass(className));
                 };
