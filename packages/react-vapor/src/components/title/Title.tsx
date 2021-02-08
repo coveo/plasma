@@ -15,7 +15,7 @@ export interface ITitleProps {
 
 export const Title: React.FunctionComponent<ITitleProps> = (props) => {
     const linkClasses = classNames('inline-doc-link', props.documentationLink && props.documentationLink.linkClasses);
-    const titleClasses: string = classNames('table-header-title', 'mr1', 'truncate', props.classes);
+    const titleClasses: string = classNames('bolder', 'mr1', 'truncate', props.classes);
     const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
 
     const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;

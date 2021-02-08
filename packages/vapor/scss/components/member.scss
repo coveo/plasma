@@ -24,6 +24,7 @@
 
     .member-info {
         margin-left: 14px;
+        color: var(--pure-white);
 
         .member-info-name {
             font-weight: var(--main-font-bold);
@@ -38,10 +39,6 @@
 
             font-size: 12px;
             line-height: 15px;
-        }
-
-        &.text-white {
-            color: var(--pure-white);
         }
     }
 }

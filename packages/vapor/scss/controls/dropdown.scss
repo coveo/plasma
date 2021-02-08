@@ -37,7 +37,6 @@
     display: inline-block;
     max-width: 100%;
     overflow: hidden;
-    color: var(--dropdown-selected-value-color);
     white-space: nowrap;
     text-transform: none;
 
@@ -45,6 +44,10 @@
 
     &.with-append {
         width: calc(100% - #{$dropdown-toggle-with-append-right-padding});
+    }
+
+    .disabled {
+        color: var(--medium-grey);
     }
 }
 

@@ -5,17 +5,9 @@
         .bg-#{$key} {
             background-color: var(--light);
         }
-
-        .text-#{$key} {
-            color: var(--light);
-        }
     } @else {
         .bg-#{$key} {
             background-color: var(--#{$key});
-        }
-
-        .text-#{$key} {
-            color: var(--#{$key});
         }
     }
 }
