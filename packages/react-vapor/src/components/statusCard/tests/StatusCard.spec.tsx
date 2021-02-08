@@ -27,13 +27,13 @@ describe('StatusCard', () => {
     it('has the "isSuccess" class if not in loading', () => {
         const card = shallow(<StatusCard color="green" title="title" />);
 
-        expect(card.hasClass('isSuccess')).toBe(true);
+        expect(card.hasClass('modSuccess')).toBe(true);
     });
 
     it('does not have the "isSuccess" class if in loading', () => {
         const card = shallow(<StatusCard color="green" title="title" loading />);
 
-        expect(card.hasClass('isSuccess')).toBe(false);
+        expect(card.hasClass('modSuccess')).toBe(false);
     });
 
     it('renders a Svg if the "icon" prop is specified', () => {
