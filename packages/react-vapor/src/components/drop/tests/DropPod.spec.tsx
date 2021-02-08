@@ -162,26 +162,56 @@ describe('DropPod', () => {
                         Defaults.DROP_ROOT = 'body';
                     });
 
-                    it('should create a portal with the Defaults.DROP_ROOT if no selector is passed in props', () => {
+                    it('should create a div element and create a portal with it', () => {
+                        const divElement = document.createElement('div');
+                        jest.spyOn(document, 'querySelector');
+                        const portalSpy = jest.spyOn(ReactDOM, 'createPortal');
+
+                        shallow(<DropPod renderDrop={() => '🍟'} ref={buttonRef} />, {}).dive();
+
+                        expect(portalSpy).toHaveBeenCalledWith('🍟', divElement);
+                    });
+
+                    it('should append the div element to the Defaults.DROP_ROOT as the portal root if no selector is passed in props', () => {
+                        const divElement = document.createElement('div');
                         const expectedElement = document.querySelector('head');
                         Defaults.DROP_ROOT = 'head';
 
                         jest.spyOn(document, 'querySelector');
-                        const portalSpy = jest.spyOn(ReactDOM, 'createPortal');
+                        const appendChildSpy = jest.spyOn(expectedElement, 'appendChild');
                         shallow(<DropPod renderDrop={() => '🍟'} ref={buttonRef} />, {}).dive();
 
-                        expect(portalSpy).toHaveBeenCalledWith('🍟', expectedElement);
+                        expect(appendChildSpy).toHaveBeenCalledWith(divElement);
                     });
 
-                    it('should create a portal with the selector prop if passed to the dropPod', () => {
+                    it('should append the div element to the selector prop as the portal root if passed to the dropPod', () => {
+                        const divElement = document.createElement('div');
                         const expectedElement = document.querySelector('head');
                         Defaults.DROP_ROOT = '#🥔';
 
                         jest.spyOn(document, 'querySelector');
-                        const portalSpy = jest.spyOn(ReactDOM, 'createPortal');
+                        const appendChildSpy = jest.spyOn(expectedElement, 'appendChild');
+
                         shallow(<DropPod renderDrop={() => '🍟'} selector="head" ref={buttonRef} />, {}).dive();
 
-                        expect(portalSpy).toHaveBeenCalledWith('🍟', expectedElement);
+                        expect(appendChildSpy).toHaveBeenCalledWith(divElement);
+                    });
+
+                    it('should remove the div element with the portal root', () => {
+                        const divElement = document.createElement('div');
+                        const expectedElement = document.querySelector('head');
+                        Defaults.DROP_ROOT = 'head';
+
+                        jest.spyOn(document, 'querySelector');
+                        const removeChildSpy = jest.spyOn(expectedElement, 'removeChild');
+                        const componentToUnmount = shallow(
+                            <DropPod renderDrop={() => '🍟'} ref={buttonRef} />,
+                            {}
+                        ).dive();
+
+                        componentToUnmount.unmount();
+
+                        expect(removeChildSpy).toHaveBeenCalledWith(divElement);
                     });
                 });
 
