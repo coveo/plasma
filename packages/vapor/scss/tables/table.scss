@@ -19,7 +19,7 @@
             padding-right: 20px;
         }
 
-        .coveo-checkbox-label + .cell-content {
+        .checkbox-label + .cell-content {
             margin-left: 10px;
         }
 
@@ -167,7 +167,7 @@
             }
         }
 
-        .coveo-checkbox-label {
+        .checkbox-label {
             position: relative;
             top: -1px; // Small hack to make it work in all browsers...
         }
