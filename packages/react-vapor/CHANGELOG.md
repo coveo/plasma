@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.30.3](https://github.com/coveo/react-vapor/compare/v9.30.2...v9.30.3) (2021-02-09)
+
+
+### Bug Fixes
+
+* **drop:** revert the revert of the fix for drop ([ca2a886](https://github.com/coveo/react-vapor/commit/ca2a886abdfa4bcce2c098c9787b449b6d07e023))
+
+
+
+
+
 ## [9.30.2](https://github.com/coveo/react-vapor/compare/v9.30.1...v9.30.2) (2021-02-04)
 
 **Note:** Version bump only for package react-vapor
