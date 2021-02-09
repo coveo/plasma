@@ -1,6 +1,0 @@
-@each $color in $palette {
-    $key: nth($color, 1);
-
-    @if $key == white {
-    }
-}
