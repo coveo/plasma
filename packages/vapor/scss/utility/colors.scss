@@ -2,12 +2,5 @@
     $key: nth($color, 1);
 
     @if $key == white {
-        .text-#{$key} {
-            color: var(--light);
-        }
-    } @else {
-        .text-#{$key} {
-            color: var(--#{$key});
-        }
     }
 }

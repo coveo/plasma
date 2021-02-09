@@ -133,9 +133,7 @@ export class BlankSlateExample extends React.Component<any, any> {
                                         delay={10}
                                         callback={(start) => setTimeout(start, 2000)}
                                         renderCount={(count: number) => (
-                                            <span className="text-black small-text">
-                                                Auto refresh in {count} seconds
-                                            </span>
+                                            <span className="small-text">Auto refresh in {count} seconds</span>
                                         )}
                                         button={{
                                             name: 'Refresh',

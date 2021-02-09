@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.15](https://github.com/coveo/react-vapor/compare/v10.0.0-next.14...v10.0.0-next.15) (2021-02-08)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [10.0.0-next.14](https://github.com/coveo/react-vapor/compare/v10.0.0-next.13...v10.0.0-next.14) (2021-02-08)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [10.0.0-next.13](https://github.com/coveo/react-vapor/compare/v10.0.0-next.12...v10.0.0-next.13) (2021-02-04)
+
+
+### Features
+
+* **checkbox:** style ([75fd820](https://github.com/coveo/react-vapor/commit/75fd82025ee4dd436d7105c3a3bead79f601ee21))
+
+
+
+
+
 # [10.0.0-next.12](https://github.com/coveo/react-vapor/compare/v10.0.0-next.11...v10.0.0-next.12) (2021-02-03)
 
 

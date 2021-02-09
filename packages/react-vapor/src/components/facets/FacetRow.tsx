@@ -32,7 +32,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
             <li className={className}>
                 {this.getExcludeCheckbox()}
                 <label
-                    className="coveo-checkbox-label facet-value-label"
+                    className="checkbox checkbox-label facet-value-label"
                     onClick={(e) => {
                         // prevent event bubbling and trigger onToggleFacet only once no matter where you click on the row
                         e.preventDefault();
@@ -42,7 +42,7 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                     <input
                         type="checkbox"
                         name={this.props.facetRow.name}
-                        className="coveo-checkbox facet-checkbox-input"
+                        className="facet-checkbox-input"
                         checked={this.props.isChecked && !this.isExclude}
                         onClick={this.stopEvent}
                         onChange={_.noop}

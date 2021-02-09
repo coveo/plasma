@@ -21,7 +21,7 @@ export class InfoBoxExamples extends React.PureComponent {
                         <CollapsibleConnected
                             headerClasses="py2"
                             id="info-box-collapsible"
-                            headerContent={<p className="bold">Collapsible header</p>}
+                            headerContent={<p className="bolder">Collapsible header</p>}
                             expandedOnMount
                         >
                             <div className="pb2">

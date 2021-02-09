@@ -66,3 +66,12 @@
         }
     }
 }
+
+.validation {
+    &-error {
+        color: var(--critical-60);
+    }
+    &-warning {
+        color: var(--warning-60);
+    }
+}

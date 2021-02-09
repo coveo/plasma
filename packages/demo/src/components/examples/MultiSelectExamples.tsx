@@ -96,7 +96,7 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
         second[0].selected = true;
 
         const hoc = _.map(defaultItems, (item) =>
-            _.extend({}, item, {append: {content: () => <span className="text-medium-grey ml1">{item.value}</span>}})
+            _.extend({}, item, {append: {content: () => <span className="append ml1">{item.value}</span>}})
         );
         hoc[0].selected = true;
         hoc[1].selected = true;

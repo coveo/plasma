@@ -57,7 +57,7 @@ const itemsWithASelectedItem = _.map(defaultItems, (item) => (item.value === '3'
 
 const itemsWithAppendedValue = _.map(defaultItems, (item) => ({
     ...item,
-    append: {content: () => <span className="text-red ml3">{item.value}</span>},
+    append: {content: () => <span className="append-red ml3">{item.value}</span>},
 }));
 
 const ids = [
