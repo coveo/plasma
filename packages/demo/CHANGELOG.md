@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.16](https://github.com/coveo/react-vapor/compare/v10.0.0-next.15...v10.0.0-next.16) (2021-02-10)
+
+
+### Bug Fixes
+
+* fix merge conflicts ([bee033e](https://github.com/coveo/react-vapor/commit/bee033e3b6571afb8868ff74fcd63be0cec122fc))
+* improved my fix for the statusCard border-left color ([240c5ae](https://github.com/coveo/react-vapor/commit/240c5ae0c19155e00d78cd960da5b55bd3ad115b))
+* wIP status card left border color giving me headache ([9094a4e](https://github.com/coveo/react-vapor/commit/9094a4ecb32125bbdd6ab9254c1e570df6f4224e))
+
+
+
+
+
 # [10.0.0-next.15](https://github.com/coveo/react-vapor/compare/v10.0.0-next.14...v10.0.0-next.15) (2021-02-08)
 
 **Note:** Version bump only for package react-vapor-demo

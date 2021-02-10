@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.16](https://github.com/coveo/react-vapor/compare/v10.0.0-next.15...v10.0.0-next.16) (2021-02-10)
+
+
+### Bug Fixes
+
+* fix blankslate border color ([d01e77d](https://github.com/coveo/react-vapor/commit/d01e77deba0cceb1cfbe5795f4cc425861887cfc))
+* fix merge conflicts ([bee033e](https://github.com/coveo/react-vapor/commit/bee033e3b6571afb8868ff74fcd63be0cec122fc))
+* remove util from border.scss ([c0d2dcd](https://github.com/coveo/react-vapor/commit/c0d2dcdf3f64d60a1ee160dfb87e8a23f534f325))
+
+
+
+
+
 # [10.0.0-next.15](https://github.com/coveo/react-vapor/compare/v10.0.0-next.14...v10.0.0-next.15) (2021-02-08)
 
 **Note:** Version bump only for package coveo-styleguide

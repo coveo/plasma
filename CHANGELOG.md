@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.16](https://github.com/coveo/react-vapor/compare/v10.0.0-next.15...v10.0.0-next.16) (2021-02-10)
+
+
+### Bug Fixes
+
+* applied review for class name ([5c5bc90](https://github.com/coveo/react-vapor/commit/5c5bc90e6afe2e6c9908386b7edffbc032efd7ed))
+* fix blankslate border color ([d01e77d](https://github.com/coveo/react-vapor/commit/d01e77deba0cceb1cfbe5795f4cc425861887cfc))
+* fix tests for StatusCard ([24918ce](https://github.com/coveo/react-vapor/commit/24918cea4cb7d493d1b19acc2877ed820cfafbb4))
+* forgot to fix the uts like a noob ([e91c481](https://github.com/coveo/react-vapor/commit/e91c4814bea08b472fd9596506f3ff3b8b794530))
+* forgot to uncomment the var for the color ([51a7c60](https://github.com/coveo/react-vapor/commit/51a7c603bc30e0ff6cb254f5d66aec03a587ba85))
+* improved my fix for the statusCard border-left color ([240c5ae](https://github.com/coveo/react-vapor/commit/240c5ae0c19155e00d78cd960da5b55bd3ad115b))
+* remove dead classes in actionableItem demo ([d91c1e6](https://github.com/coveo/react-vapor/commit/d91c1e6c94aff22e291379c6c6867a667d2b0653))
+* remove util from border.scss ([c0d2dcd](https://github.com/coveo/react-vapor/commit/c0d2dcdf3f64d60a1ee160dfb87e8a23f534f325))
+* removed unused class ([d9b6dd6](https://github.com/coveo/react-vapor/commit/d9b6dd68c76f73569eacddf6979f837dd720a591))
+* wIP status card left border color giving me headache ([9094a4e](https://github.com/coveo/react-vapor/commit/9094a4ecb32125bbdd6ab9254c1e570df6f4224e))
+
+
+
+
+
 # [10.0.0-next.15](https://github.com/coveo/react-vapor/compare/v10.0.0-next.14...v10.0.0-next.15) (2021-02-08)
 
 **Note:** Version bump only for package root
