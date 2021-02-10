@@ -3,44 +3,6 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-<<<<<<< HEAD
-# [10.0.0-next.18](https://github.com/coveo/react-vapor/compare/v10.0.0-next.17...v10.0.0-next.18) (2021-02-14)
-
-
-### Bug Fixes
-
-* created css class for loading item box ([c4fbaef](https://github.com/coveo/react-vapor/commit/c4fbaef518411c397b52cb85e5ef4dd6d1572355))
-* delete color.scss util now that it's empty ([49553d4](https://github.com/coveo/react-vapor/commit/49553d4e09e4af4cc809909226815326afd4ee4c))
-* fix bg color for child form demo ([5466671](https://github.com/coveo/react-vapor/commit/5466671a8ae54fe986a82422fe32c780fcb4f85d))
-* fix error toast color + reworked the uts ([f8e485d](https://github.com/coveo/react-vapor/commit/f8e485dd8c8e38d7108c0c793d04fc34dfda646b))
-* fix for color demo ([7eb4836](https://github.com/coveo/react-vapor/commit/7eb48360ac5e95e048b3344f1a6db849b7d1f4b2))
-* fix list-box transparency ([49731c6](https://github.com/coveo/react-vapor/commit/49731c61c1d05b2f3c447951aaf148202731be6e))
-* fix merged conflits ([f3c2a23](https://github.com/coveo/react-vapor/commit/f3c2a23d49e7c21fcf0abb108247b943bef502da))
-* fixed bg color for select-dropdown-container ([a997f17](https://github.com/coveo/react-vapor/commit/a997f17fd81ddf0f40e5d7bff70610009f165497))
-* forgot to delete import ([c7bc36c](https://github.com/coveo/react-vapor/commit/c7bc36c2f7df93756473edcb61763ac7856bf0cd))
-* merge branch 'next' ([349e89b](https://github.com/coveo/react-vapor/commit/349e89b8e7a6d10a73670ebd29ae25d3c6cc788f))
-* merge conflicts fix ([882f014](https://github.com/coveo/react-vapor/commit/882f01414e2cad1fcc8c0433f9cc5bba953c1101))
-* pulled next to get latest changes ([16dde74](https://github.com/coveo/react-vapor/commit/16dde74d933ff8a450af9e517a415f237a1f3401))
-* put back removed css class for table-loading ([c2d0dad](https://github.com/coveo/react-vapor/commit/c2d0dad9054bea6b4f4df2283dc2b0089ba6553d))
-* removed bg-color util + started clean up of dead classes ([4ddf631](https://github.com/coveo/react-vapor/commit/4ddf631002667c95ec07366b66c4aacd660bb0dc))
-* tried to fix the color for the date picker ([54c10da](https://github.com/coveo/react-vapor/commit/54c10da7b570b5b389665381955cc854700bc3bf))
-* using var in .scss + fixed broken demo for spaced-box ([7ac26cb](https://github.com/coveo/react-vapor/commit/7ac26cb8664093401217703f4776371812ba618b))
-
-
-
-
-
-# [10.0.0-next.17](https://github.com/coveo/react-vapor/compare/v10.0.0-next.16...v10.0.0-next.17) (2021-02-12)
-
-
-### Bug Fixes
-
-* **child-form:** background and border colors ([#1864](https://github.com/coveo/react-vapor/issues/1864)) ([a1a1c09](https://github.com/coveo/react-vapor/commit/a1a1c09b3d9c63a131a69fa337730a80818c1b1e))
-
-
-
-
-
 # [10.0.0-next.16](https://github.com/coveo/react-vapor/compare/v10.0.0-next.15...v10.0.0-next.16) (2021-02-10)
 
 
