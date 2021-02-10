@@ -7,4 +7,8 @@
     margin-top: $box-spacing;
     margin-left: $box-spacing;
     color: var(--pure-white);
+
+    &.mod-secondary {
+        color: var(--button-secondary-text-color);
+    }
 }
