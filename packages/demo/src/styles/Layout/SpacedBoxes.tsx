@@ -10,9 +10,10 @@ export default () => (
         withSource
     >
         <div className="spaced-boxes-container flex flex-wrap" style={{maxWidth: 400}}>
-            <span className="p2 bg-red spaced-box">A span</span>
-
-            <button type="button" className="btn spaced-box">
+            <span className="p2 spaced-box" style={{backgroundColor: '#fa821e'}}>
+                A span
+            </span>
+            <button type="button" className="btn spaced-box mod-secondary">
                 A button
             </button>
 

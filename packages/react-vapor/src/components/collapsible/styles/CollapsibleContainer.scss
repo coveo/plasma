@@ -14,9 +14,9 @@
 }
 
 .expanded {
-    background-color: #e5e8e8; //var(--grey-40);
+    background-color: var(--grey-40);
 }
 
 .collapsed {
-    background-color: #f6f7f9; //var(--grey-20);
+    background-color: var(--grey-20);
 }
