@@ -68,6 +68,15 @@
 
         cursor: default;
     }
+
+    .prepend,
+    .append {
+        color: var(--medium-grey);
+
+        &-red {
+            color: var(--red);
+        }
+    }
 }
 
 .select-footer {

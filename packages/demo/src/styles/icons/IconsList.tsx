@@ -19,7 +19,7 @@ export const IconsList = () => (
 const IconItem = ({svgName, fileName}: {svgName: string; fileName: string}) => (
     <li className="cursor-pointer">
         <LinkSvg svg={{svgName}} url={getSvgURL(fileName)}>
-            <label className="icon-name text-black cursor-pointer">{svgName}</label>
+            <label className="icon-name cursor-pointer">{svgName}</label>
         </LinkSvg>
     </li>
 );

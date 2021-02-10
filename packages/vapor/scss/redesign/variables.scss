@@ -6,6 +6,7 @@
     --links-color: var(--digital-blue-60);
 
     --default-border: 1px solid;
+    --default-spacing: 0.5rem;
 
     // Navigation
     --navigation-background-color: var(--white);
@@ -19,14 +20,6 @@
     --navigation-menu-toggle-color: var(--navy-blue-80);
     --navigation-scroll-track-color: var(--grey-20);
     --navigation-scroll-thumb-color: var(--grey-40);
-    --navigation-status-background-color: var(--grey-20);
-    --navigation-status-border-color: var(--table-border-color);
-    --navigation-status-helper-icon-color: var(--digital-blue-60);
-    --navigation-status-info-background-color: var(--navy-blue-80);
-    --navigation-status-info-text-color: var(--white);
-    --navigation-status-info-font-size: var(--default-font-size);
-    --navigation-status-info-border-color: var(--transparent);
-    --navigation-status-info-link-color: var(--links-color);
     --navigation-menu-section-item-transparency: 1;
     --navigation-menu-padding-top: 0;
 
@@ -34,13 +27,6 @@
     --header-background-color: var(--navy-blue-80);
     --header-text-color: var(--white);
     --header-hamburger-color: var(--white);
-    --whats-new-banner-background-color: var(--green);
-    --whats-new-banner-text-color: var(--navy-blue-80);
-    --whats-new-banner-button-text-color: var(--navy-blue-80);
-    --whats-new-banner-button-background-color: var(--green);
-    --whats-new-banner-button-border: 1px solid var(--navy-blue-80);
-    --whats-new-banner-button-border-radius: #{$big-border-radius};
-    --whats-new-banner-close-icon-color: var(--navy-blue-80);
 
     // Gradient
     --gradient-bg-color-1: var(--navy-blue-80);
@@ -111,11 +97,6 @@
     --status-light-grey: var(--grey-20);
     --status-medium-grey: var(--grey-60);
 
-    // Badge
-    --source-badge-light-color: var(--background-color);
-    --source-badge-medium-color: var(--background-color);
-    --source-badge-dark-color: var(--background-color);
-
     // Tooltip
     --tooltip-background-color: var(--digital-blue-100);
     --tooltip-arrow-color: var(--digital-blue-100);
@@ -131,10 +112,6 @@
 
     // Icon
     --documentation-link-icon-color: var(--digital-blue-60);
-
-    // Panel header
-    --basic-header-title-font-weight: var(--main-font-bolder);
-    --basic-header-description-font-size: var(--default-font-size);
 
     // Tab
     --tab-font-size: #{$button-font-size};
@@ -154,7 +131,6 @@
     --table-row-hover-color: var(--grey-20);
     --table-row-selected-color: var(--grey-20);
     --table-cell-loading-color: var(--grey-40);
-    --blankslate-border-color: var(--grey-40);
     --big-table-first-row-font-size: var(--default-font-size);
     --big-table-first-row-font-weight: var(--main-font-bolder);
 

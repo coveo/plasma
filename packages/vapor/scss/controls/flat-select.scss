@@ -51,7 +51,7 @@
         }
 
         &.selectable {
-            color: var(--flat-select-text-color);
+            color: var(--title-text-color);
             background-color: var(--pure-white);
             border: 1px solid var(--default-border-color);
 
@@ -120,7 +120,7 @@
 
     &.mod-option-picker .flat-select-option {
         flex: auto;
-        color: var(--flat-select-text-color);
+        color: var(--title-text-color);
         background-color: var(--light-grey);
         border: 1px solid var(--flat-select-background-color);
         border-right-width: 0;
