@@ -52,6 +52,14 @@ $child-arrow-height: 10px;
             border-bottom-color: var(--pure-white);
         }
     }
+
+    &.mod-light {
+        background-color: var(--grey-20);
+
+        &:before {
+            border-bottom-color: var(--grey-20);
+        }
+    }
 }
 
 .child-section {
