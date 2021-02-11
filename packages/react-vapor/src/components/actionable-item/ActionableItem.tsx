@@ -28,7 +28,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                 <div
                     className={classNames(
                         {'cursor-pointer': !!this.props.onItemClick},
-                        'actionable-item-content align-middle inline-block border-color-medium-grey mod-border',
+                        'actionable-item-content align-middle inline-block mod-border',
                         styles.actionableItemContent,
                         styles.actionableItemContainer,
                         this.props.containerClassName
@@ -46,7 +46,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                             <div
                                 onClick={onClick}
                                 className={classNames(
-                                    'actionable-item-dots align-middle cursor-pointer inline-block mod-border-top mod-border-right border-color-medium-grey mod-border-bottom',
+                                    'actionable-item-dots align-middle cursor-pointer inline-block mod-border-top mod-border-right mod-border-bottom',
                                     styles.actionableItemDots,
                                     styles.actionableItemContainer
                                 )}

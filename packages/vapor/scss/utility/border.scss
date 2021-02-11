@@ -55,27 +55,3 @@ $borders: border-top border-bottom border-left border-right;
         border-radius: 0 $radius $radius 0;
     }
 }
-
-@each $color in $palette {
-    $key: nth($color, 1);
-
-    .border-color-#{$key} {
-        border-color: var(--#{$key});
-    }
-
-    .border-left-color-#{$key} {
-        border-left-color: var(--#{$key});
-    }
-
-    .border-right-color-#{$key} {
-        border-left-color: var(--#{$key});
-    }
-
-    .border-top-color-#{$key} {
-        border-left-color: var(--#{$key});
-    }
-
-    .border-bottom-color-#{$key} {
-        border-left-color: var(--#{$key});
-    }
-}
