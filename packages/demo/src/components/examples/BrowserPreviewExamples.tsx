@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {BrowserPreview, BrowserPreviewEmpty, BrowserPreviewError, Section, SplitLayout} from 'react-vapor';
+import {BrowserPreview, BrowserPreviewEmpty, BrowserPreviewError, Section, SplitLayout, Svg} from 'react-vapor';
 
 export const BrowserPreviewExamples: React.FunctionComponent = () => (
     <Section>
@@ -49,6 +49,23 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                                     Select a <span className="bolder">Query Pipeline</span>
                                 </span>
                                 <span>to see the preview</span>
+                            </BrowserPreviewEmpty>
+                        </BrowserPreview>
+                    </div>
+                }
+            />
+        </Section>
+        <Section level={2} title="Browser Preview with empty state and custom image">
+            <SplitLayout
+                leftChildren={<div />}
+                rightChildren={
+                    <div className="p3">
+                        <BrowserPreview>
+                            <BrowserPreviewEmpty
+                                onClick={() => alert('Refreshed!')}
+                                image={<Svg svgName="exportagain" className="block" />}
+                            >
+                                <span>Click to refresh this preview</span>
                             </BrowserPreviewEmpty>
                         </BrowserPreview>
                     </div>

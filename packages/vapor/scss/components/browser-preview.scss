@@ -24,12 +24,16 @@
         }
     }
 
+    &__content {
+        overflow: auto;
+    }
+
     &__state {
         color: #282829; // var(--title-text-color)
 
         svg {
-            width: 300px;
-            height: 300px;
+            width: 220px;
+            height: 220px;
             fill: #5f619e; // TODO: new svg WIP
         }
 
