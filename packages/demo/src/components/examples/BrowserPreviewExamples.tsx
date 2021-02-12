@@ -62,10 +62,10 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                     <div className="p3">
                         <BrowserPreview>
                             <BrowserPreviewEmpty
-                                onClick={() => alert('Refreshed!')}
-                                image={<Svg svgName="exportagain" className="block" />}
+                                onClick={() => alert('Wow!')}
+                                image={<Svg svgName="arrow-top-slim" className="block" />}
                             >
-                                <span>Click to refresh this preview</span>
+                                <span>Look at this browser-like header!</span>
                             </BrowserPreviewEmpty>
                         </BrowserPreview>
                     </div>
