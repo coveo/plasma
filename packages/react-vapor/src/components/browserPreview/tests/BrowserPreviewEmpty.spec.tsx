@@ -49,7 +49,7 @@ describe('BrowserPreviewEmpty', () => {
         const image = <img src="fake" />;
         mountWithProps({...defaultProps, image});
 
-        expect(component.find('.browser-preview__state').childAt(0).find('img[src*="fake"]')).toBeTruthy();
+        expect(component.find('img[src*="fake"]').exists()).toBe(true);
     });
 
     it('renders the specified description as child', () => {
