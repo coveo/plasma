@@ -112,6 +112,8 @@
         "enzyme-redux": "0.2.1",
         "escape-string-regexp": "1.0.5",
         "eslint-plugin-jest": "24.0.2",
+        "eslint-plugin-jest-dom": "^3.6.5",
+        "eslint-plugin-testing-library": "^3.10.1",
         "faker": "4.1.0",
         "fancy-log": "1.3.3",
         "gulp": "4.0.0",

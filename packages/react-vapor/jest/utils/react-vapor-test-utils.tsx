@@ -1,4 +1,4 @@
-import {RenderOptions, render} from '@testing-library/react';
+import {render, RenderOptions} from '@testing-library/react';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'redux';
@@ -8,7 +8,6 @@ import thunk from 'redux-thunk';
 import {IReactVaporState} from '../../src/ReactVapor';
 import {ReactVaporReducers} from '../../src/ReactVaporReducers';
 import {IDispatch} from '../../src/utils/ReduxUtils';
-import {Defaults} from '../../src/Defaults';
 
 const customRender = (
     ui: React.ReactElement,
@@ -32,13 +31,5 @@ const customRender = (
     return render(ui, {wrapper: TestWrapper, ...renderOptions});
 };
 
-const renderModal: typeof customRender = (ui, renderOptions) => {
-    const appRoot = document.createElement('div');
-    appRoot.id = 'root';
-    document.body.appendChild(appRoot);
-    Defaults.APP_ELEMENT = appRoot;
-    return customRender(ui, {...renderOptions, container: appRoot});
-};
-
 export * from '@testing-library/react';
-export {customRender as render, renderModal};
+export {customRender as render};
