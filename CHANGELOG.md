@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.31.0](https://github.com/coveo/react-vapor/compare/v9.30.3...v9.31.0) (2021-02-12)
+
+
+### Features
+
+* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([367a8b8](https://github.com/coveo/react-vapor/commit/367a8b8582bf4b171d28b3dcc7214c3e5796bad8))
+
+
+
+
+
 ## [9.30.3](https://github.com/coveo/react-vapor/compare/v9.30.2...v9.30.3) (2021-02-09)
 
 
