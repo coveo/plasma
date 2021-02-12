@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.17](https://github.com/coveo/react-vapor/compare/v10.0.0-next.16...v10.0.0-next.17) (2021-02-12)
+
+
+### Bug Fixes
+
+* **child-form:** background and border colors ([#1864](https://github.com/coveo/react-vapor/issues/1864)) ([a1a1c09](https://github.com/coveo/react-vapor/commit/a1a1c09b3d9c63a131a69fa337730a80818c1b1e))
+
+
+
+
+
 # [10.0.0-next.16](https://github.com/coveo/react-vapor/compare/v10.0.0-next.15...v10.0.0-next.16) (2021-02-10)
 
 
