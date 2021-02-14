@@ -86,6 +86,7 @@
             height: $selected-date-height;
             color: var(--pure-white);
             line-height: $selected-date-height;
+            background-color: var(--digital-blue-60);
         }
 
         .lower-limit,
@@ -98,7 +99,7 @@
                 display: block;
                 width: $calendar-limit-border-length;
                 height: $calendar-limit-border-width;
-                background: var(--medium-blue);
+                background: var(--navy-blue-80);
                 content: '';
             }
 
@@ -113,7 +114,7 @@
 
         .lower-limit {
             left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width});
-            border-left: $calendar-limit-border-width solid var(--medium-blue);
+            border-left: $calendar-limit-border-width solid var(--navy-blue-80);
 
             &:before,
             &:after {
@@ -122,7 +123,7 @@
         }
 
         .upper-limit {
-            border-right: $calendar-limit-border-width solid var(--medium-blue);
+            border-right: $calendar-limit-border-width solid var(--navy-blue-80);
 
             &:before,
             &:after {
@@ -143,7 +144,7 @@
                     display: block;
                     width: $calendar-limit-border-length;
                     height: $calendar-limit-border-width;
-                    background: var(--medium-blue);
+                    background: var(--navy-blue-80);
                     content: '';
                 }
 
@@ -274,12 +275,14 @@
 
         &.picking-date,
         &.date-picked {
+            border-color: var(--digital-blue-60);
             border-style: solid;
             border-width: 2px;
         }
 
         &.date-picked {
             color: var(--pure-white);
+            background-color: var(--digital-blue-60);
         }
     }
 
@@ -324,6 +327,7 @@
     box-sizing: border-box;
     width: 100%;
     padding: $dropdown-choices-top-bottom-margin;
+    color: var(--navy-blue-80);
     font-size: $button-font-size;
     background: none;
     border: $default-border;

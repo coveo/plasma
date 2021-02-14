@@ -17,7 +17,7 @@ export const ChartTooltipContent: React.FunctionComponent<ChartTooltipContentPro
     const xValues = ChartUtils.getXValues(series);
     const title = xFormat(xValues[x]);
     return (
-        <div className={classNames('flex flex-column bg-pure-white', styles.chartTooltipContent)}>
+        <div className={classNames('flex flex-column', styles.chartTooltipContent)}>
             <div className="flex flex-row center-align flex-start tooltip-serie-title">
                 <div className={classNames(styles.chartTooltipColor)} />
                 <div className={classNames('px1', styles.chartTooltipLabel)}>{title}</div>

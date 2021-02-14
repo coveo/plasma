@@ -92,18 +92,15 @@ describe('Calendar day', () => {
             expect(calendarDay.find('.todays-date').length).toBe(1);
         });
 
-        it('should have the classes "selected-date" and "bg-${color}" when the day is selected', () => {
+        it('should have the classes "selected-date" when the day is selected', () => {
             const selectedDate: IDay = _.extend({}, DAY, {isSelected: true, color: 'pink'});
             const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {day: selectedDate});
 
             expect(calendarDay.find('.selected-date').length).toBe(0);
-            expect(calendarDay.find('span').props().className).not.toContain('bg-');
 
             calendarDay.setProps(newProps);
 
             expect(calendarDay.find('.selected-date').length).toBe(1);
-            expect(calendarDay.find('span').props().className).toContain('bg-');
-            expect(calendarDay.find('.bg-pink').length).toBe(1);
         });
 
         it('should have the class "lower-limit" if the day is selected and isLowerLimit', () => {

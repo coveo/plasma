@@ -75,7 +75,7 @@ const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
             <>
                 {child}
                 {getRemoveButton({
-                    classes: [defaultMultilineBoxRemoveButtonClasses, 'bg-light-grey full-content-y'],
+                    classes: [defaultMultilineBoxRemoveButtonClasses, 'full-content-y'],
                 })}
             </>
         ),
@@ -86,7 +86,7 @@ const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
             data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>,
             index: number
         ) => (
-            <div key={`${data[index].id}Container`} className={'p1 bg-light-grey'}>
+            <div key={`${data[index].id}Container`} className={'p1'}>
                 {child}
             </div>
         ),

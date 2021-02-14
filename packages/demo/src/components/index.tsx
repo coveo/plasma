@@ -49,7 +49,7 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     return (
         <>
             <SideMenu components={components} />
-            <div className="coveo-form flex-auto relative bg-pure-white shadow-2 ml4 overflow-auto demo-content">
+            <div className="coveo-form flex-auto relative shadow-2 ml4 overflow-auto demo-content">
                 <Switch>
                     {routes}
                     <Route path="/" component={() => <Redirect to={`${match.url}/${components[0].name}`} />} />

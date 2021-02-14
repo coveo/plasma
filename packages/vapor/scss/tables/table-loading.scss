@@ -31,7 +31,7 @@ td.table-card-loading {
         }
 
         & p:not(:first-child) .card-cell-content-loading {
-            @extend .bg-grey-1;
+            background-color: var(--grey-1);
         }
     }
 }

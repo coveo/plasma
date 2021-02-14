@@ -57,7 +57,6 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
 
         if (this.props.day.isSelected && this.props.day.isSelectable) {
             dayClasses.push('selected-date');
-            dayClasses.push('bg-' + this.props.day.color);
 
             if (this.props.day.isLowerLimit) {
                 dayClasses.push('lower-limit');

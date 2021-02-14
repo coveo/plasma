@@ -254,6 +254,7 @@
 
 .select-dropdown-container {
     z-index: $table-header-z-index;
+    background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
 

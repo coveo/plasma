@@ -14,9 +14,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/material" name="Material" />
             <NavigationLink href="/wizard" name="Wizard" />
         </NavigationSection>
-        <NavigationSection title="Colors">
-            <NavigationLink href="/colors" name="Palette" />
-        </NavigationSection>
         <NavigationSection title="Other Components" baseUrl="/components">
             <NavigationLink href="/banner" name="Banner" />
             <NavigationLink href="/member" name="Member" />

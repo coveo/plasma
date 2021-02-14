@@ -13,7 +13,7 @@ export default () => {
             usage="Show a progression between 0 and 100%."
             withSource
         >
-            <div className="bg-medium-blue progress-bar-example-container">
+            <div className="progress-bar-example-container" style={{backgroundColor: '#333357'}}>
                 <div className="progress-bar" style={{width: 400}}>
                     <div className="progress">
                         <span className="progress-bar-completed" style={{width: width + '%'}} />
