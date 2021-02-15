@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.32.0](https://github.com/coveo/react-vapor/compare/v9.31.1...v9.32.0) (2021-02-15)
+
+
+### Bug Fixes
+
+* **dropdown:** keyboard navigation ([21ccd2c](https://github.com/coveo/react-vapor/commit/21ccd2c8c8456d084108c1a0fd622a6b16add319))
+* **rollup:** diff2html name export ([#1865](https://github.com/coveo/react-vapor/issues/1865)) ([dddcd6b](https://github.com/coveo/react-vapor/commit/dddcd6b079edf2b9257f2ee57a8bf77e1fa72d96))
+
+
+### Features
+
+* **react-vapor:** implement modal wizard component ([2c8cf76](https://github.com/coveo/react-vapor/commit/2c8cf76636a2f9af35a8ddee6c158ef5631f68c4))
+
+
+
+
+
 ## [9.31.1](https://github.com/coveo/react-vapor/compare/v9.31.0...v9.31.1) (2021-02-12)
 
 **Note:** Version bump only for package react-vapor
