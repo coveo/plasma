@@ -175,10 +175,10 @@ pipeline {
           ]]) {
 
             
-            sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
-            postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+            sh "bash ./build/deploy-demo.sh ${env.CHANGE_BRANCH}"
+            postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
 
-            def message = "Build succeeded: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
+            def message = "Build succeeded for <https://github.com/coveo/react-vapor/pull/${env.CHANGE_ID}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html"
             notify.sendSlackWithThread(
                 color: "#00FF00", message: message,
                 ["admin-ui-builds"]
