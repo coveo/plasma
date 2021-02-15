@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.32.0](https://github.com/coveo/react-vapor/compare/v9.31.1...v9.32.0) (2021-02-15)
+
+
+### Features
+
+* **react-vapor:** implement modal wizard component ([2c8cf76](https://github.com/coveo/react-vapor/commit/2c8cf76636a2f9af35a8ddee6c158ef5631f68c4))
+
+
+
+
+
 ## [9.31.1](https://github.com/coveo/react-vapor/compare/v9.31.0...v9.31.1) (2021-02-12)
 
 **Note:** Version bump only for package react-vapor-demo
