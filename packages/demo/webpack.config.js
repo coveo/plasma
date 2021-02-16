@@ -4,6 +4,8 @@ const path = require('path');
 const keysTransformer = require('ts-transformer-keys/transformer').default;
 const isJenkins = !!process.env.JENKINS_HOME;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
+const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
 
 /**
  * Config file for the documentation project
@@ -23,12 +25,19 @@ module.exports = {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
     },
     plugins: [
+        new CopyPlugin({
+            patterns: [
+                path.resolve(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.slim.min.js'),
+                path.resolve(__dirname, '..', '..', 'node_modules', 'chosen-js', 'chosen.jquery.min.js'),
+            ],
+        }),
         new HtmlWebpackPlugin({
             title: 'Vapor Design System',
             favicon: 'src/favicon.ico',
             chunks: ['main'],
             template: 'src/index.html',
         }),
+        new HtmlWebpackTagsPlugin({tags: ['jquery.slim.min.js', 'chosen.jquery.min.js'], append: true}),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
         new ForkTsCheckerWebpackPlugin({
