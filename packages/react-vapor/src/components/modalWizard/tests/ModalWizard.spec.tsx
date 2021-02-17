@@ -36,36 +36,43 @@ describe('ModalWizard', () => {
     });
 
     it('navigates properly through the steps when clicking on "next" and "previous" buttons', () => {
+        const FunctionComponentStep = () => <div>Step 2: FunctionComponent</div>;
+        class ClassComponentStep extends React.PureComponent {
+            render() {
+                return <div>Step 3: ClassComponent</div>;
+            }
+        }
+
         renderModal(
             <ModalWizard id="🧙‍♂️">
-                <div>Step 1</div>
-                <div>Step 2</div>
-                <div>Step 3</div>
+                <div>Step 1: ReactElement</div>
+                <FunctionComponentStep />
+                <ClassComponentStep />
             </ModalWizard>,
             {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
         );
 
-        expect(screen.getByText('Step 1')).toBeVisible();
-        expect(screen.getByText('Step 2')).not.toBeVisible();
-        expect(screen.getByText('Step 3')).not.toBeVisible();
+        expect(screen.getByText(/Step 1/)).toBeVisible();
+        expect(screen.getByText(/Step 2/)).not.toBeVisible();
+        expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
         userEvent.click(screen.getByRole('button', {name: 'Next'}));
 
-        expect(screen.getByText('Step 1')).not.toBeVisible();
-        expect(screen.getByText('Step 2')).toBeVisible();
-        expect(screen.getByText('Step 3')).not.toBeVisible();
+        expect(screen.getByText(/Step 1/)).not.toBeVisible();
+        expect(screen.getByText(/Step 2/)).toBeVisible();
+        expect(screen.getByText(/Step 3/)).not.toBeVisible();
 
         userEvent.click(screen.getByRole('button', {name: 'Next'}));
 
-        expect(screen.getByText('Step 1')).not.toBeVisible();
-        expect(screen.getByText('Step 2')).not.toBeVisible();
-        expect(screen.getByText('Step 3')).toBeVisible();
+        expect(screen.getByText(/Step 1/)).not.toBeVisible();
+        expect(screen.getByText(/Step 2/)).not.toBeVisible();
+        expect(screen.getByText(/Step 3/)).toBeVisible();
 
         userEvent.click(screen.getByRole('button', {name: 'Previous'}));
 
-        expect(screen.getByText('Step 1')).not.toBeVisible();
-        expect(screen.getByText('Step 2')).toBeVisible();
-        expect(screen.getByText('Step 3')).not.toBeVisible();
+        expect(screen.getByText(/Step 1/)).not.toBeVisible();
+        expect(screen.getByText(/Step 2/)).toBeVisible();
+        expect(screen.getByText(/Step 3/)).not.toBeVisible();
     });
 
     it('calls the "onFinish" prop and close the modal when clicking on the "finish" button', async () => {
