@@ -6,6 +6,6 @@ module.exports = new Proxy(
                 return true;
             }
             return key;
-        },
+        }
     }
 );

@@ -10,7 +10,7 @@ export const VaporColors: Record<string, string> = webpackVaporColors;
 
 export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
-        color: '#FFFFFF', // var(--white)?
+        color: 'var (--white)',
     };
 
     render() {

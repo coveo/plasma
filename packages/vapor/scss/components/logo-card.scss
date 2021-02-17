@@ -5,10 +5,23 @@
     display: flex;
     margin: var(--margin);
     padding: var(--padding);
+    // TODO: fix this
+    // border: $logo-card-border;
     cursor: pointer;
 
     &.disabled {
         cursor: default;
+
+        *:not(.corner-ribbon) {
+            /* Disable the filter on Edge since it breaks the flippable animation */
+            @supports (-ms-ime-align: auto) {
+                filter: none;
+            }
+        }
+
+        &.ribbon-container .corner-ribbon {
+            background-color: var(--medium-grey);
+        }
     }
 }
 
@@ -21,6 +34,11 @@
     flex-direction: column;
     flex-grow: 1;
     justify-content: center;
+}
+
+.logo-card-title {
+    // TODO: fix this
+    // color: $logo-card-title-color;
 }
 
 .logo-card-badge {

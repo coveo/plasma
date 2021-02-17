@@ -7,7 +7,7 @@ $child-arrow-height: 10px;
 .coveo-child {
     position: relative;
     padding: $child-padding-y $child-padding-x;
-    background-color: var(--white);
+    background-color: var(--grey-20);
     border-radius: $border-radius;
     border-top-left-radius: 0;
 
@@ -23,7 +23,7 @@ $child-arrow-height: 10px;
         width: 0;
         height: 0;
         border-right: $child-arrow-width / 2 solid transparent;
-        border-bottom: $child-arrow-height solid var(--white);
+        border-bottom: $child-arrow-height solid var(--grey-20);
         border-left: $child-arrow-width / 2 solid transparent;
         content: '';
     }
@@ -36,7 +36,7 @@ $child-arrow-height: 10px;
             top: calc(50% - #{$child-arrow-height});
             left: -$child-arrow-height - ($child-arrow-width / 2);
             border-top: $child-arrow-width / 2 solid transparent;
-            border-right: $child-arrow-height solid var(--white);
+            border-right: $child-arrow-height solid var(--grey-20);
             border-bottom: $child-arrow-width / 2 solid transparent;
         }
     }
@@ -50,6 +50,14 @@ $child-arrow-height: 10px;
 
         &:before {
             border-bottom-color: var(--pure-white);
+        }
+    }
+
+    &.mod-light {
+        background-color: var(--grey-20);
+
+        &:before {
+            border-bottom-color: var(--grey-20);
         }
     }
 }
