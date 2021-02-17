@@ -18,7 +18,7 @@ export default {
         {
             file: 'dist/react-vapor.esm.js',
             format: 'es',
-            sourcemap: true,
+            sourcemap: true
         },
         {
             file: 'dist/react-vapor.js',
@@ -36,7 +36,7 @@ export default {
                 underscore: '_',
                 'coveo-styleguide': 'VaporSVG',
                 'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
+                'react-dom/server': 'ReactDOMServer'
             },
             plugins: [
                 externalGlobals({
@@ -50,9 +50,9 @@ export default {
                     underscore: '_',
                     'coveo-styleguide': 'VaporSVG',
                     'underscore.string': 's',
-                    'react-dom/server': 'ReactDOMServer',
-                }),
-            ],
+                    'react-dom/server': 'ReactDOMServer'
+                })
+            ]
         },
         isJenkins && {
             file: 'dist/react-vapor.min.js',
@@ -70,7 +70,7 @@ export default {
                 underscore: '_',
                 'coveo-styleguide': 'VaporSVG',
                 'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
+                'react-dom/server': 'ReactDOMServer'
             },
             plugins: [
                 terser(),
@@ -85,10 +85,10 @@ export default {
                     underscore: '_',
                     'coveo-styleguide': 'VaporSVG',
                     'underscore.string': 's',
-                    'react-dom/server': 'ReactDOMServer',
-                }),
-            ],
-        },
+                    'react-dom/server': 'ReactDOMServer'
+                })
+            ]
+        }
     ].filter(Boolean),
     external: [
         'codemirror',
@@ -101,59 +101,59 @@ export default {
         'redux',
         'underscore',
         'coveo-styleguide',
-        'underscore.string',
+        'underscore.string'
     ],
     onwarn,
     plugins: [
         inject({
-            jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
+            jQuery: 'jquery' // chosen-js expects jQuery to be available as a global
         }),
         replacePlugin(),
         postcss({
             extract: false,
             modules: {localIdentName: '[name]-[local]-[hash:base64]'},
             namedExports: true,
-            use: ['sass'],
+            use: ['sass']
         }),
         scssVariable(),
         resolve({
-            browser: true,
+            browser: true
         }),
         commonjs({
             namedExports: {
                 'hogan.js': ['Template', 'compile'],
                 'react-modal': ['setAppElement'],
                 'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
-                'diff/dist/diff.js': ['diffChars', 'diffWordsWithSpace'],
-            },
+                'diff/dist/diff.js': ['diffChars', 'diffWordsWithSpace']
+            }
         }),
-        tsPlugin(),
-    ],
+        tsPlugin()
+    ]
 };
 
 function tsPlugin() {
     return typescript({
         transformers: [
-            (service) => ({
+            service => ({
                 before: [keysTransformer(service.getProgram())],
-                after: [],
-            }),
+                after: []
+            })
         ],
         useTsconfigDeclarationDir: true,
         tsconfig: 'tsconfig.build.json',
         tsconfigOverride: {
             compilerOptions: {
                 declaration: true,
-                declarationDir: 'dist/definitions',
-            },
-        },
+                declarationDir: 'dist/definitions'
+            }
+        }
     });
 }
 
 function replacePlugin() {
     return replace({
         'process.env.NODE_ENV': JSON.stringify('production'),
-        'process.env.REACT_VAPOR_VERSION': JSON.stringify(process.env.NEW_VERSION || require('./package.json').version),
+        'process.env.REACT_VAPOR_VERSION': JSON.stringify(process.env.NEW_VERSION || require('./package.json').version)
     });
 }
 
@@ -161,8 +161,8 @@ function onwarn(warning, rollupWarn) {
     const ignoredWarnings = [
         {
             ignoredCode: 'CIRCULAR_DEPENDENCY',
-            ignoredPath: 'node_modules',
-        },
+            ignoredPath: 'node_modules'
+        }
     ];
 
     // only show warning when code and path don't match

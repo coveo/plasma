@@ -34,7 +34,11 @@ const SimpleChildFormExample: React.FunctionComponent = () => {
                     </ChildForm>
                 </ToggleForm>
             </Section>
-            <Section level={3} className="p2" title="A Child Form background white with a Checkbox">
+            <Section
+                level={3}
+                className="p2 child-form-exemple-container"
+                title="A Child Form background white with a Checkbox"
+            >
                 <ToggleForm onClick={() => setSecondState(!secondState)} checked={secondState}>
                     <Checkbox>
                         <Label classes={['label']}>Edit properties</Label>
