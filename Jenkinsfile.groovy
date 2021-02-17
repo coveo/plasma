@@ -100,10 +100,11 @@ pipeline {
             } else {
               sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
             }
-            NEW_VERSION = sh(
+            env.NEW_VERSION = sh(
               script: "node -p -e 'require(`./packages/react-vapor/package.json`).version;'",
               returnStdout: true
             ).trim()
+
             sh "git reset --hard"
           }
         }
