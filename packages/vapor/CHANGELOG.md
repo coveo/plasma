@@ -3,6 +3,80 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.19](https://github.com/coveo/react-vapor/compare/v10.0.0-next.18...v10.0.0-next.19) (2021-02-18)
+
+
+### Bug Fixes
+
+* **flatselectexample:** fixed the examples of flatselect component ([02920a0](https://github.com/coveo/react-vapor/commit/02920a04562bc5c3c0d8fad130f532d159f88fdd))
+* created css class for loading item box ([4057438](https://github.com/coveo/react-vapor/commit/4057438f25bd13ad07e67bc5a2afe8df79562fcd))
+* fix blankslate border color ([cecfa32](https://github.com/coveo/react-vapor/commit/cecfa32e883acf8157264356259ad460f3c1399a))
+* fix color for icon in button (default + hover) ([08c57a6](https://github.com/coveo/react-vapor/commit/08c57a6bb61fe6ee5dd3697e95b4fa52746c6b45))
+* put back removed css class for table-loading ([cdff2fd](https://github.com/coveo/react-vapor/commit/cdff2fdd6f37cb6235e7f7ef46017620c2b95506))
+* **button:** text ([7b67959](https://github.com/coveo/react-vapor/commit/7b67959b33f31b2c8401577d44befd6fd070e755))
+* **disabled-checkmark-bg:** removed the misaligned disabled radio ([b1a44c5](https://github.com/coveo/react-vapor/commit/b1a44c5217ed3238e137f8cc6623398022fb6c21))
+* **flatselectexample:** fixed the examples of flatselect component ([a2aa424](https://github.com/coveo/react-vapor/commit/a2aa424b89d6e405d8f7b996f5f76a56c7bc70f2))
+* **radio-button:** adding checkmark inside radio ([83df4fc](https://github.com/coveo/react-vapor/commit/83df4fc8fa19a4d8a4d4a5cdf4d2cb9734e6d5c8))
+* **vapor:** demo ([f02eba9](https://github.com/coveo/react-vapor/commit/f02eba93de73bd915981b82e3ad0a467bcb4dde3))
+* created css class for loading item box ([b4a079c](https://github.com/coveo/react-vapor/commit/b4a079ce518290d5a9be6a3766ab4033125fc16c))
+* fix blankslate border color ([dad9b6e](https://github.com/coveo/react-vapor/commit/dad9b6e40124ad65d202e73cd2d4836b296ed2fc))
+* fix color for icon in button (default + hover) ([f745392](https://github.com/coveo/react-vapor/commit/f745392b4c6260e60637cffae7f0e1ca768e749f))
+* put back removed css class for table-loading ([4cffb10](https://github.com/coveo/react-vapor/commit/4cffb10899f5a313094d52ec03868bbfb22b2c2b))
+* rebase on next ([4f13401](https://github.com/coveo/react-vapor/commit/4f134010f4b05b14955ad6769ce381ce36d163a3))
+* removed bg-color util + started clean up of dead classes ([e88a64a](https://github.com/coveo/react-vapor/commit/e88a64a8e72911888427db9590ba4959a3acdf01))
+* **option-picker:** change the hover and active option picked ([c90539e](https://github.com/coveo/react-vapor/commit/c90539e362804868277f4be0cf7fa5f0a4edbf7f))
+* rebase on next ([a680a2d](https://github.com/coveo/react-vapor/commit/a680a2d05b6df6173782e215d16b26aaf3d0f1f8))
+* **multiline-field.scss:** when disabled, hide add, change remove icons ([2f23dc9](https://github.com/coveo/react-vapor/commit/2f23dc9b82d9bb0c331734396c39cb59e7bb91ad))
+* fix blankslate border color ([e99fc58](https://github.com/coveo/react-vapor/commit/e99fc5823d306eaa1edba2143e9bc37688bf68fb))
+* fix error toast color + reworked the uts ([a9e4132](https://github.com/coveo/react-vapor/commit/a9e4132b9eaa0c23cfa864264e9719a55b7c56b0))
+* packages/vapor/package.json & packages/vapor/package-lock.json to reduce vulnerabilities ([#1826](https://github.com/coveo/react-vapor/issues/1826)) ([264f49c](https://github.com/coveo/react-vapor/commit/264f49c7101e9887907623802a440ee6aefc540d))
+* rebase on next ([1a30417](https://github.com/coveo/react-vapor/commit/1a3041715bbbdcfa9afd3e13119e336bd05c49e9))
+* using var in .scss + fixed broken demo for spaced-box ([3f93ebc](https://github.com/coveo/react-vapor/commit/3f93ebcdd322129bfc3b2f295addd5cc65684d86))
+* **button:** text ([5200d31](https://github.com/coveo/react-vapor/commit/5200d31b047a5b11264a3567dbd01312c7637534))
+* **disabled-checkmark-bg:** removed the misaligned disabled radio ([9c04305](https://github.com/coveo/react-vapor/commit/9c04305679f44e24a04f37890df6d3c4f6c6cc6b))
+* **disabled-checkmark-bg:** removed the misaligned disabled radio ([c48e6d7](https://github.com/coveo/react-vapor/commit/c48e6d764b4f49fcaf6c64d997997fe31645bbd7))
+* **flatselectexample:** fixed the examples of flatselect component ([4bea128](https://github.com/coveo/react-vapor/commit/4bea128a39481b180ffb80a77080b6ec4e8fd259))
+* **option-picker:** change the hover and active option picked ([317d106](https://github.com/coveo/react-vapor/commit/317d106cdb013f4ead5bcb4a83a71ceda78aa7fe))
+* **option-picker:** change the hover and active option picked ([a39faa2](https://github.com/coveo/react-vapor/commit/a39faa2e2e442b28e33f3f1d92e784cd6a522de3))
+* **radio-button:** adding checkmark inside radio ([31a97f6](https://github.com/coveo/react-vapor/commit/31a97f6d259787ee849e24d1a4b35b659a313d89))
+* **vapor:** demo ([6884436](https://github.com/coveo/react-vapor/commit/68844366d62618d161ca3819dfd6c08c35ae83e9))
+* created css class for loading item box ([072ccf1](https://github.com/coveo/react-vapor/commit/072ccf11b3bd5e0283cd3e1ab9a3f176c8d66536))
+* fix color for icon in button (default + hover) ([8ec8d1e](https://github.com/coveo/react-vapor/commit/8ec8d1e2bf582281e3b3c72a239d6eb89715ccf7))
+* put back removed css class for table-loading ([b5ee3c2](https://github.com/coveo/react-vapor/commit/b5ee3c24ed32f7dc9dbd8c2dff942edaeec48e14))
+* rebase on next ([2ba2255](https://github.com/coveo/react-vapor/commit/2ba225540a9d3e532c4c30263ad1f29178543c72))
+* rebase on next ([102afe2](https://github.com/coveo/react-vapor/commit/102afe233c9a017e50f0a70e772c240809e81c26))
+* removed bg-color util + started clean up of dead classes ([79d5028](https://github.com/coveo/react-vapor/commit/79d50281ce8b78cc4ab9df7726720adac5020515))
+* **multiline-field.scss:** when disabled, hide add, change remove icons ([e891313](https://github.com/coveo/react-vapor/commit/e891313d05dcc7345d07d2a3cefce363aa57a962))
+* **radio-button:** adding checkmark inside radio ([3000a46](https://github.com/coveo/react-vapor/commit/3000a468ea96f84cdf8e353e5fb313ed791f6ec3))
+* **vapor:** demo ([f73ef72](https://github.com/coveo/react-vapor/commit/f73ef72c37a6e43cdad4964360c63446f9f2ca15))
+* rebase on next ([98a3c0f](https://github.com/coveo/react-vapor/commit/98a3c0fddc620c833e71e13698fcc889ac6cead6))
+* removed bg-color util + started clean up of dead classes ([531c82f](https://github.com/coveo/react-vapor/commit/531c82ff256c8cb9d65d890088198fb4ccd698ca))
+* **button:** text ([4eaf060](https://github.com/coveo/react-vapor/commit/4eaf060f2fba8ad90161704a4ab062ee5a959548))
+
+
+### Features
+
+* **badge:** redesign ([bd286e5](https://github.com/coveo/react-vapor/commit/bd286e543123ccaf1e30316f9205caae9bddab05))
+* **badge:** redesign ([b965cf2](https://github.com/coveo/react-vapor/commit/b965cf21c53c816e88981ead4ba33d9d7f8ac159))
+* **badge:** redesign ([7358f9c](https://github.com/coveo/react-vapor/commit/7358f9cb186d18d68607cba1f488599f9fdef45a))
+* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([8cc145d](https://github.com/coveo/react-vapor/commit/8cc145dadeb7d6b4614c99ca8f96349682815a9d))
+* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([7f7ab75](https://github.com/coveo/react-vapor/commit/7f7ab75fbb5ff238b3c9a4ab3b8de3dcfc81ee9e))
+* **checkbox:** style ([91fefd0](https://github.com/coveo/react-vapor/commit/91fefd04c52dd52acafdd6fd10194d7df2c999d2))
+* **checkbox:** style ([2124000](https://github.com/coveo/react-vapor/commit/21240008c056d4369842625bbe17c35e286de5d2))
+* **checkbox:** style ([508f1dd](https://github.com/coveo/react-vapor/commit/508f1dd6cb9e4d166fbc73d47cd8eb6ef424eb86))
+* **color:** new variables ([eb64086](https://github.com/coveo/react-vapor/commit/eb64086f0603fee2c2af7113dfe900452558df8b))
+* **radio:** style ([f84182a](https://github.com/coveo/react-vapor/commit/f84182a04dd639cdb716925c63839255a2e69bba))
+* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([1460180](https://github.com/coveo/react-vapor/commit/14601801d40b5f411722a4811c3acf531e038b7d))
+* **color:** new variables ([ec26d38](https://github.com/coveo/react-vapor/commit/ec26d38422972803acc5d67c2c697cb4bff14317))
+* **color:** new variables ([91a8123](https://github.com/coveo/react-vapor/commit/91a8123518bdce6e92b950f70bf3998c629a2fe0))
+* **radio:** style ([ad915c2](https://github.com/coveo/react-vapor/commit/ad915c26c9b7688603306ab8065e232508ef4a79))
+* **radio:** style ([a9fef94](https://github.com/coveo/react-vapor/commit/a9fef94224788192581af1d3a847ba10e0267ee7))
+* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([77c1f7f](https://github.com/coveo/react-vapor/commit/77c1f7f4bdc7f45584bf9aa798876625bc8d164a))
+
+
+
+
+
 # [10.0.0-next.18](https://github.com/coveo/react-vapor/compare/v10.0.0-next.17...v10.0.0-next.18) (2021-02-14)
 
 
