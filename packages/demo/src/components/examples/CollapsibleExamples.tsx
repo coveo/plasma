@@ -5,6 +5,9 @@ import {
     CollapsibleConnected,
     CollapsibleContainerConnected,
     CollapsibleInfoBox,
+    fakeJSON,
+    JSONEditor,
+    JSONToString,
     Section,
     setExpandedCollapsibleContainer,
     Svg,
@@ -137,6 +140,14 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                 />
                 <CollapsibleContainerConnected id="collapsible-container-example-5" title="CollapsibleContainer">
                     You just expanded me with a button!
+                </CollapsibleContainerConnected>
+            </Section>
+            <Section>
+                <CollapsibleContainerConnected
+                    id="collapsible-container-example-6"
+                    title="CollapsibleContainer With JSON editor"
+                >
+                    <JSONEditor value={JSONToString(fakeJSON)} collapsibleId="collapsible-container-example-6" />
                 </CollapsibleContainerConnected>
             </Section>
         </Section>

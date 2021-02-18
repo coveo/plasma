@@ -184,7 +184,7 @@ describe('DropPod', () => {
                         expect(appendChildSpy).toHaveBeenCalledWith(divElement);
                     });
 
-                    it('should append the div element to with the selector prop as the portal root if passed to the dropPod', () => {
+                    it('should append the div element to the selector prop as the portal root if passed to the dropPod', () => {
                         const divElement = document.createElement('div');
                         const expectedElement = document.querySelector('head');
                         Defaults.DROP_ROOT = '#🥔';

@@ -11,7 +11,10 @@ import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 
 import classNames from 'classnames';
+import {connect} from 'react-redux';
+import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
 import {CodeMirrorGutters} from './EditorConstants';
+import {IReactVaporState} from '../../ReactVapor';
 
 export interface ICodeEditorProps {
     value: string;
@@ -23,13 +26,22 @@ export interface ICodeEditorProps {
     extraKeywords?: string[];
     className?: string;
     options?: CodeMirror.EditorConfiguration;
+    collapsibleId?: string;
 }
 
 export interface CodeEditorState {
     value: string;
+    numberOfRefresh: number;
 }
 
-export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorState> {
+const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorProps) => ({
+    isCollapsibleExpanded: CollapsibleSelectors.isExpanded(state, collapsibleId),
+});
+
+class CodeEditorDisconnect extends React.Component<
+    ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>,
+    CodeEditorState
+> {
     static defaultProps: Partial<ICodeEditorProps> = {
         className: 'mod-border',
         value: '{}',
@@ -49,24 +61,34 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
     private codemirror = React.createRef<ReactCodeMirror.Controlled>();
     private editor: CodeMirror.Editor;
 
-    constructor(props: ICodeEditorProps, state: CodeEditorState) {
+    constructor(props: ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>, state: CodeEditorState) {
         super(props, state);
 
         this.state = {
             value: props.value,
+            numberOfRefresh: 0,
         };
     }
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);
+        if (this.props.isCollapsibleExpanded) {
+            this.editor.refresh();
+            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
     }
 
     componentDidUpdate(prevProps: ICodeEditorProps) {
+        if (this.state.numberOfRefresh < 2 && this.props.isCollapsibleExpanded) {
+            this.editor.refresh();
+            this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
         if (prevProps.value !== this.props.value && this.editor) {
             this.setState({value: this.props.value});
             this.editor.getDoc().clearHistory();
         }
     }
+
     render() {
         return (
             <ReactCodeMirror.Controlled
@@ -76,12 +98,14 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
                     this.addExtraKeywords();
                 }}
                 onBeforeChange={(editor, data, value: string) => {
-                    this.setState({value});
+                    this.setState({value: value});
                 }}
                 value={this.state.value}
-                onChange={(editor, data, value: string) => this.props.onChange?.(value)}
+                onChange={(editor, data, value: string) => {
+                    this.props.onChange?.(value);
+                }}
                 options={{
-                    ...CodeEditor.defaultOptions,
+                    ...CodeEditorDisconnect.defaultOptions,
                     readOnly: this.props.readOnly,
                     mode: this.props.mode,
                     ...this.props.options,
@@ -100,3 +124,5 @@ export class CodeEditor extends React.Component<ICodeEditorProps, CodeEditorStat
         }
     }
 }
+
+export const CodeEditor = connect(mapStateToProps)(CodeEditorDisconnect);

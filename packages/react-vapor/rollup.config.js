@@ -1,20 +1,95 @@
-import path from 'path';
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
 import resolve from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
+import path from 'path';
+import externalGlobals from 'rollup-plugin-external-globals';
 import postcss from 'rollup-plugin-postcss';
 import scssVariable from 'rollup-plugin-sass-variables';
+import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
 import keysTransformer from 'ts-transformer-keys/transformer';
 
+const isJenkins = !!process.env.JENKINS_HOME;
+
 export default {
     input: 'src/Entry.ts',
-    output: {
-        file: 'dist/react-vapor.esm.js',
-        format: 'es',
-        sourcemap: true,
-    },
+    output: [
+        {
+            file: 'dist/react-vapor.esm.js',
+            format: 'es',
+            sourcemap: true,
+        },
+        {
+            file: 'dist/react-vapor.js',
+            format: 'umd',
+            sourcemap: true,
+            name: 'ReactVapor',
+            globals: {
+                codemirror: 'CodeMirror',
+                d3: 'd3',
+                jquery: '$',
+                react: 'React',
+                'react-dom': 'ReactDOM',
+                'react-redux': 'ReactRedux',
+                redux: 'Redux',
+                underscore: '_',
+                'coveo-styleguide': 'VaporSVG',
+                'underscore.string': 's',
+                'react-dom/server': 'ReactDOMServer',
+            },
+            plugins: [
+                externalGlobals({
+                    codemirror: 'CodeMirror',
+                    d3: 'd3',
+                    jquery: '$',
+                    react: 'React',
+                    'react-dom': 'ReactDOM',
+                    'react-redux': 'ReactRedux',
+                    redux: 'Redux',
+                    underscore: '_',
+                    'coveo-styleguide': 'VaporSVG',
+                    'underscore.string': 's',
+                    'react-dom/server': 'ReactDOMServer',
+                }),
+            ],
+        },
+        isJenkins && {
+            file: 'dist/react-vapor.min.js',
+            format: 'umd',
+            sourcemap: true,
+            name: 'ReactVapor',
+            globals: {
+                codemirror: 'CodeMirror',
+                d3: 'd3',
+                jquery: '$',
+                react: 'React',
+                'react-dom': 'ReactDOM',
+                'react-redux': 'ReactRedux',
+                redux: 'Redux',
+                underscore: '_',
+                'coveo-styleguide': 'VaporSVG',
+                'underscore.string': 's',
+                'react-dom/server': 'ReactDOMServer',
+            },
+            plugins: [
+                terser(),
+                externalGlobals({
+                    codemirror: 'CodeMirror',
+                    d3: 'd3',
+                    jquery: '$',
+                    react: 'React',
+                    'react-dom': 'ReactDOM',
+                    'react-redux': 'ReactRedux',
+                    redux: 'Redux',
+                    underscore: '_',
+                    'coveo-styleguide': 'VaporSVG',
+                    'underscore.string': 's',
+                    'react-dom/server': 'ReactDOMServer',
+                }),
+            ],
+        },
+    ].filter(Boolean),
     external: [
         'codemirror',
         'd3',
@@ -49,6 +124,7 @@ export default {
                 'hogan.js': ['Template', 'compile'],
                 'react-modal': ['setAppElement'],
                 'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
+                'diff/dist/diff.js': ['diffChars', 'diffWordsWithSpace'],
             },
         }),
         tsPlugin(),

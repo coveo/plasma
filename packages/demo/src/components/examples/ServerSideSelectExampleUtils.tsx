@@ -42,7 +42,7 @@ export const usePhotosAPIMock = (): [any[], number, (params?: any, overwrite?: b
 
 export const PhotoItem: React.FunctionComponent<PhotoProps> = ({id, url, title, thumbnailUrl}) => (
     <div className="flex flex-center">
-        <a href={url} target="__blank" className="mr2">
+        <a href={url} target="__blank" className="mr2 flex">
             <img src={thumbnailUrl} alt={title} width={IMG_SIZE} height={IMG_SIZE} />
         </a>
         <span>{title}</span>
