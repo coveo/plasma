@@ -5,6 +5,7 @@ import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
+import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
 
@@ -13,22 +14,21 @@ describe('CodeEditor', () => {
         value: 'any string',
         mode: CodeMirrorModes.Python,
     };
+    let codeEditorInstance: typeof CodeEditor;
 
     it('should render without errors', () => {
         expect(() => {
-            shallow(<CodeEditor {...basicProps} />);
+            shallowWithState(<CodeEditor {...basicProps} />, {});
         }).not.toThrow();
     });
 
     describe('<CodeEditor />', () => {
-        let codeEditor: ReactWrapper<ICodeEditorProps, CodeEditorState>;
-        let codeEditorInstance: CodeEditor;
+        let wrapper: ShallowWrapper<any, any>;
+        let codeEditor: ShallowWrapper<ICodeEditorProps, CodeEditorState>;
 
         const mountWithProps = (props: Partial<ICodeEditorProps> = {}) => {
-            codeEditor = mount(<CodeEditor {..._.defaults(props, basicProps)} />, {
-                attachTo: document.getElementById('App'),
-            });
-            codeEditorInstance = codeEditor.instance() as any;
+            wrapper = shallowWithState(<CodeEditor {..._.defaults(props, basicProps)} />, {});
+            codeEditor = wrapper.dive();
         };
 
         beforeEach(() => {
@@ -43,13 +43,13 @@ describe('CodeEditor', () => {
         });
 
         it('should get the readonly state as a prop', () => {
-            let readOnlyProp: boolean = codeEditor.props().readOnly;
+            let readOnlyProp: boolean = wrapper.props().readOnly;
 
             expect(readOnlyProp).toBeUndefined();
 
             mountWithProps({readOnly: true});
 
-            readOnlyProp = codeEditor.props().readOnly;
+            readOnlyProp = wrapper.props().readOnly;
 
             expect(readOnlyProp).toBe(true);
         });
@@ -59,7 +59,7 @@ describe('CodeEditor', () => {
 
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('code-editor-no-cursor');
 
-            codeEditor.setProps({readOnly: false});
+            mountWithProps();
 
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).not.toContain(
                 'code-editor-no-cursor'
@@ -67,13 +67,13 @@ describe('CodeEditor', () => {
         });
 
         it('should get what to do on change state as a prop if set', () => {
-            let onChangeProp: (json: string) => void = codeEditor.props().onChange;
+            let onChangeProp: (json: string) => void = wrapper.props().onChange;
 
             expect(onChangeProp).toBeUndefined();
 
             mountWithProps({onChange: jest.fn()});
 
-            onChangeProp = codeEditor.props().onChange;
+            onChangeProp = wrapper.props().onChange;
 
             expect(onChangeProp).toBeDefined();
         });
@@ -87,7 +87,12 @@ describe('CodeEditor', () => {
             const expectedValue: string = 'the expected value';
 
             mountWithProps({onChange: onChangeSpy});
-            codeEditor.setProps({value: expectedValue});
+
+            codeEditor
+                .find(ReactCodeMirror.Controlled)
+                .first()
+                .props()
+                .onChange({} as CodeMirror.Editor, undefined, expectedValue);
 
             expect(onChangeSpy).toHaveBeenCalledTimes(1);
             expect(onChangeSpy).toHaveBeenCalledWith(expectedValue);
@@ -102,15 +107,22 @@ describe('CodeEditor', () => {
 
             codeEditor.setProps({value: 'a new value'});
 
-            expect(clearHistorySpy).toHaveBeenCalledTimes(2);
+            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
         });
 
         it('should add any extra keywords for the autocompletion if there are some in the props', () => {
             const currentKeywords: string[] = [...(CodeMirror as any).helpers.hintWords[basicProps.mode]];
             const expectedNewKeywords = ['one', 'two'];
 
-            codeEditor.setProps(_.extend({}, basicProps, {extraKeywords: expectedNewKeywords}));
-            (codeEditorInstance as any).addExtraKeywords();
+            const codeEditorMounted = mountWithState(
+                <CodeEditor {..._.extend({}, basicProps, {extraKeywords: expectedNewKeywords})} />,
+                {
+                    attachTo: document.getElementById('App'),
+                }
+            );
+
+            mountWithProps(_.extend({}, basicProps, {extraKeywords: expectedNewKeywords}));
+            codeEditorMounted.find(ReactCodeMirror.Controlled).first().props().editorDidMount;
 
             const newList: string[] = (CodeMirror as any).helpers.hintWords[basicProps.mode];
 
