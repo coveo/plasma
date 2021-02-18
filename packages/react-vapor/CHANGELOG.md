@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.32.4](https://github.com/coveo/react-vapor/compare/v9.32.3...v9.32.4) (2021-02-18)
+
+
+### Bug Fixes
+
+* **modalwizard:** make steps navigation work with function components ([a0ccd9c](https://github.com/coveo/react-vapor/commit/a0ccd9c436042b7807009d86c3902840df3b5b9b))
+
+
+
+
+
 ## [9.32.3](https://github.com/coveo/react-vapor/compare/v9.32.2...v9.32.3) (2021-02-17)
 
 **Note:** Version bump only for package react-vapor
