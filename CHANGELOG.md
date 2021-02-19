@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.20](https://github.com/coveo/react-vapor/compare/v10.0.0-next.19...v10.0.0-next.20) (2021-02-19)
+
+
+### Bug Fixes
+
+* **badge:** whitespace nowrap ([d5869fa](https://github.com/coveo/react-vapor/commit/d5869fab8a9da238747976fb5fd31c9e3e99bc39))
+
+
+
+
+
 # [10.0.0-next.19](https://github.com/coveo/react-vapor/compare/v10.0.0-next.18...v10.0.0-next.19) (2021-02-18)
 
 
