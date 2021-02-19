@@ -157,7 +157,7 @@ pipeline {
         allOf {
           not {
             expression {
-              env.BRANCH_NAME ==~ /(master|next|release-.*)/
+              env.BRANCH_NAME ==~ /(master|release-.*)/
             }
           }
           expression { !skipRemainingStages }
