@@ -192,9 +192,12 @@ pipeline {
 
       post {
         failure {
-          postCommentOnGithub();
+          script {
+            if (env.BRANCH_NAME != "next") {
+              postCommentOnGithub();
+            }
+          }
         }
-      }
     }
 
     stage('Publish') {
