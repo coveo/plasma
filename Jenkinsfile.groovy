@@ -178,7 +178,7 @@ pipeline {
             sh "bash ./build/deploy-demo.sh ${env.CHANGE_BRANCH}"
 
             if (env.BRANCH_NAME != "next") {
-                postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
+              postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
             }
 
             def message = "Build succeeded for <https://github.com/coveo/react-vapor/pull/${env.CHANGE_ID}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html"
@@ -192,9 +192,7 @@ pipeline {
 
       post {
         failure {
-          if (env.BRANCH_NAME != "next") {
-              postCommentOnGithub();
-          }
+          postCommentOnGithub();
         }
       }
     }
