@@ -198,6 +198,7 @@ pipeline {
             }
           }
         }
+      }
     }
 
     stage('Publish') {
