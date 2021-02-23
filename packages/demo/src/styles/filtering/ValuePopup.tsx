@@ -112,7 +112,7 @@ export const ValuePopup = () => {
 
                                     <div className="string-filters popover-row">
                                         <div className="form-control checkbox-labels-group">
-                                            <label className="checkbox checkbox-label">
+                                            <label className="checkbox checkbox-label mb1">
                                                 <input type="checkbox" className="empty-filter" />
                                                 <button type="button" />
                                                 <span className="label">Include blank values in filter</span>

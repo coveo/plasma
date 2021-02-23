@@ -15,7 +15,7 @@
             .sub-navigation-item-link {
                 display: block;
                 padding: $sub-navigation-item-padding;
-                color: var(--medium-blue);
+                color: var(--title-text-color);
                 line-height: $sub-navigation-line-height;
 
                 &.disabled {

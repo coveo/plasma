@@ -27,7 +27,6 @@
 
 .home-card-header {
     padding: $home-card-y-padding $home-card-x-padding;
-    color: var(--medium-blue);
     line-height: $header-line-height;
 
     h2 {
@@ -48,7 +47,7 @@
 
 .home-card-footer-action {
     padding: 0;
-    color: var(--blue);
+    color: var(--links-color);
     font-size: $small-font-size;
     background: none;
     border: none;
