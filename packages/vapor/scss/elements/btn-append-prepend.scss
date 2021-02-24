@@ -12,11 +12,11 @@
 
             &.mod-icon {
                 padding: 8px;
-                fill: var(--button-append-icon-color);
+                fill: var(--button-secondary-icon-color);
             }
 
             svg {
-                fill: var(--button-append-icon-color);
+                fill: var(--button-secondary-icon-color);
             }
         }
 
@@ -43,6 +43,17 @@
             .btn-append,
             .btn-prepend {
                 display: none;
+            }
+        }
+
+        &:hover {
+            &.mod-icon {
+                padding: 8px;
+                fill: var(--button-secondary-hover-icon-color);
+            }
+
+            svg {
+                fill: var(--button-secondary-hover-icon-color);
             }
         }
     }

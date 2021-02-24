@@ -16,7 +16,7 @@ export class LinkSvg extends React.Component<ILinkSvgProps> {
     static defaultProps: Partial<ILinkSvgProps> = {
         target: '_blank',
         linkClasses: [],
-        svg: {svgName: 'help', svgClass: 'icon'},
+        svg: {svgName: 'help', svgClass: 'icon documentation-link'},
     };
 
     render() {

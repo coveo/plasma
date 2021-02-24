@@ -152,7 +152,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExamplePro
                     title="Modal composite"
                     modalHeaderChildren={
                         <Tooltip title="A tooltip for the title">
-                            <Svg svgName="help" className="icon mod-2x ml1" />
+                            <Svg svgName="help" className="icon tooltip-icon mod-2x ml1" />
                         </Tooltip>
                     }
                     modalBodyChildren={<div className="mt2">{loremIpsum({count: 10})}</div>}
