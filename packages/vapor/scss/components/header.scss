@@ -2,8 +2,12 @@
     display: flex;
     width: 100%;
     height: $header-height;
-    color: var(--header-text-color);
+    color: var(--white);
     background-color: var(--header-background-color);
+
+    h3 {
+        color: inherit;
+    }
 }
 
 .header-section {

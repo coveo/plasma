@@ -1,16 +1,13 @@
 // Typography utility classes
 // Source: https://github.com/basscss/utility-typography
 
-.bold {
+.bold,
+.semibold {
     font-weight: var(--main-font-bold);
 }
 
 .bolder {
     font-weight: var(--main-font-bolder);
-}
-
-.semibold {
-    font-weight: var(--main-font-bold);
 }
 
 .regular {

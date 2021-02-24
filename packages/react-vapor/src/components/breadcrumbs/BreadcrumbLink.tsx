@@ -25,7 +25,6 @@ export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps> {
         const linkClasses = classNames(
             {
                 link: this.props.link,
-                bold: !this.props.link,
             },
             this.props.classes
         );

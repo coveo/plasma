@@ -17,8 +17,8 @@ export const Member = () => (
                 <Svg svgName={VaporSVG.svg.domainGoogle.name} className="member-icon-provider icon mod-2x" />
             </div>
             <div className="member-info">
-                <div className="member-info-name">Member name</div>
-                <div className="member-info-email">member@domain.com</div>
+                <div className="member-info-name label">Member name</div>
+                <div className="member-info-email label">member@domain.com</div>
             </div>
         </div>
     </VaporComponent>

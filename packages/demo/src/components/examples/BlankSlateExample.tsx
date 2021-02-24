@@ -29,7 +29,10 @@ export class BlankSlateExample extends React.Component<any, any> {
                         title="Title test"
                         description={
                             <span>
-                                This is a description with a link to <a href="https//www.google.com">this website</a>
+                                This is a description with a link to{' '}
+                                <a target="_blank" href="http://www.perdu.com/">
+                                    this website
+                                </a>
                             </span>
                         }
                     />

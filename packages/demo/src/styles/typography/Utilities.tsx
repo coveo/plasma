@@ -12,7 +12,7 @@ export default () => (
         <h3>
             <div className="bold">Text in bold</div>
 
-            <div className="semibold">Text in semibold</div>
+            <div className="bolder">Text in bolder</div>
 
             <div className="regular">Text in regular</div>
 
