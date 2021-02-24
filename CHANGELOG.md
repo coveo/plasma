@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.23](https://github.com/coveo/react-vapor/compare/v10.0.0-next.22...v10.0.0-next.23) (2021-02-24)
+
+
+### Bug Fixes
+
+* **next:** text colors in demo ([#1879](https://github.com/coveo/react-vapor/issues/1879)) ([e134024](https://github.com/coveo/react-vapor/commit/e134024d8fd9bc28c1cbd5f634d7ec588e8921da))
+
+
+
+
+
 # [10.0.0-next.22](https://github.com/coveo/react-vapor/compare/v10.0.0-next.21...v10.0.0-next.22) (2021-02-24)
 
 
