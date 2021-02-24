@@ -2,7 +2,6 @@
     --border: solid 2px var(--navy-blue-80);
     --background-color: var(--white);
     --checked-color: var(--digital-blue-60);
-    --focus-background-color: rgba(0, 0, 0, 0.08);
 
     --svg-underterminate-top: -4px;
     --svg-underterminate-left: 3px;
@@ -48,7 +47,6 @@
                 display: inline-block;
                 width: 26px;
                 height: 26px;
-                background-color: var(--focus-background-color);
             }
         }
 
@@ -56,22 +54,34 @@
             --background-color: var(--digital-blue-60);
             --border: solid 2px var(--digital-blue-60);
 
-            &:before {
-                position: absolute;
-                top: var(--svg-checked-top);
-                left: var(--svg-checked-left);
-                content: url('../../resources/icons/svg/content/checkbox.svg');
+            &:not(:disabled) {
+                &:before {
+                    position: absolute;
+                    top: var(--svg-checked-top);
+                    left: var(--svg-checked-left);
+                    content: url('../../resources/icons/svg/content/checkbox.svg');
+                }
+            }
+
+            &:disabled {
+                cursor: default;
             }
         }
 
         &:indeterminate + button {
             position: relative;
 
-            &:before {
-                position: absolute;
-                top: var(--svg-underterminate-top);
-                left: var(--svg-underterminate-left);
-                content: url('../../resources/icons/svg/content/undeterminate-checkbox.svg');
+            &:not(:disabled) {
+                &:before {
+                    position: absolute;
+                    top: var(--svg-underterminate-top);
+                    left: var(--svg-underterminate-left);
+                    content: url('../../resources/icons/svg/content/undeterminate-checkbox.svg');
+                }
+            }
+
+            &:disabled {
+                cursor: default;
             }
         }
 
@@ -79,19 +89,16 @@
             & + button {
                 --background-color: var(--grey-20);
                 --border: solid 2px var(--grey-40);
-                cursor: not-allowed;
+                cursor: default;
 
                 &:before {
                     position: absolute;
-                    top: var(--svg-checked-top);
-                    left: var(--svg-checked-left);
                     content: url('../../resources/icons/svg/content/disabled-checkbox.svg');
                 }
             }
+
             &:indeterminate + button:before {
                 position: absolute;
-                top: var(--svg-underterminate-top);
-                left: var(--svg-underterminate-left);
                 content: url('../../resources/icons/svg/content/disabled-undeterminate-checkbox.svg');
             }
         }
@@ -122,8 +129,8 @@
             cursor: pointer;
         }
 
-        &.disabled .label {
-            cursor: not-allowed;
+        button:disabled + label {
+            cursor: default;
             opacity: 0.4;
         }
 
