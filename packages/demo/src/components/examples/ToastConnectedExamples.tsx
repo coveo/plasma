@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {addToast, ReduxConnect, ToastContainerConnected, ToastType} from 'react-vapor';
+import {addToast, ReduxConnect, Svg, ToastContainerConnected, ToastType} from 'react-vapor';
 
 import {ToastContentExample} from './ToastContentExample';
 
@@ -8,6 +8,7 @@ export interface IToastConnectedExamplesProps {
 }
 
 const containerId = 'some-id';
+const downloadContainerId = 'download-toast-id';
 
 @ReduxConnect(null, {addToast})
 export class ToastConnectedExamples extends React.Component<IToastConnectedExamplesProps> {
@@ -94,7 +95,21 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                             React Component Content with children
                         </button>
 
+                        <button
+                            className="btn m0 mr1 mb1"
+                            onClick={() => {
+                                this.props.addToast(downloadContainerId, 'Preparing file for download...', {
+                                    children: <div>Some file.csv</div>,
+                                    isDownload: true,
+                                });
+                            }}
+                        >
+                            <Svg svgName="download" svgClass="icon icon mod-lg mr1" />
+                            Prepare Download
+                        </button>
+
                         <ToastContainerConnected id={containerId} />
+                        <ToastContainerConnected id={downloadContainerId} bottom left />
                     </div>
                 </div>
             </div>
