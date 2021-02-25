@@ -12,11 +12,11 @@
 
             &.mod-icon {
                 padding: 8px;
-                fill: var(--button-secondary-icon-color);
+                fill: var(--black);
             }
 
             svg {
-                fill: var(--button-secondary-icon-color);
+                fill: var(--black);
             }
         }
 
@@ -49,11 +49,11 @@
         &:hover {
             &.mod-icon {
                 padding: 8px;
-                fill: var(--button-secondary-hover-icon-color);
+                fill: var(--digital-blue-80);
             }
 
             svg {
-                fill: var(--button-secondary-hover-icon-color);
+                fill: var(--digital-blue-80);
             }
         }
     }
