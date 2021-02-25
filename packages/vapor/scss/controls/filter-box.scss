@@ -62,6 +62,10 @@
         padding-right: 40px;
         padding-left: 20px;
 
+        &:focus {
+            outline-color: var(--green);
+        }
+
         &::-ms-clear {
             display: none;
         }
