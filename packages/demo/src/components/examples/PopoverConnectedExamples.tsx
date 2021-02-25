@@ -42,7 +42,7 @@ const PopoverConnectedExamples = () => (
                 targetAttachment="bottom left"
                 className="mod-width-70"
             >
-                <div className="btn inline-block">Click to toggle the popover</div>
+                <div className="btn">Click to toggle the popover</div>
                 <div className="coveo-child pb5">
                     <SplitLayout
                         className="pb4"
