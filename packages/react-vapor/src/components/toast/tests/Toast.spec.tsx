@@ -275,37 +275,34 @@ describe('Toasts', () => {
     });
 
     describe('<Toast /> with download section', () => {
-        beforeEach(() => {
-            toastBasicAttributes = {
-                title: 'Preparing file for download...',
-                isDownload: true,
-            };
-
-            toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
-            toastInstance = toastComponent.instance() as Toast;
-        });
-
         it('should have class "toast-download" if the download prop is true', () => {
             const expectedClass = '.toast-download';
-            let newToastAttributes = _.extend({}, toastBasicAttributes);
-
+            toastComponent = mount(<Toast title="a" isDownload />);
             expect(toastComponent.find(expectedClass).length).toBe(1);
+        });
 
-            newToastAttributes = _.extend({}, toastBasicAttributes, {isDownload: false});
-            toastComponent.setProps(newToastAttributes).mount();
-
+        it('should not have the class "toast-download" if the download prop is false', () => {
+            const expectedClass = '.toast-download';
+            toastComponent = mount(<Toast title="a" isDownload={false} />);
             expect(toastComponent.find(expectedClass).length).toBe(0);
         });
 
         it('should load "Preparing file for download..." as a title', () => {
+            toastComponent = mount(
+                <Toast title="Preparing file for download..." isDownload>
+                    <div>Some file.csv</div>
+                </Toast>
+            );
+
             expect(toastComponent.find('.toast-title').text()).toBe('Preparing file for download...');
         });
 
         it('should have a loading icon in the description', () => {
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {children: <div>Some file.csv</div>});
-
-            toastComponent.setProps(newToastAttributes).mount();
-
+            toastComponent = mount(
+                <Toast title="a" isDownload>
+                    <div>Some file.csv</div>
+                </Toast>
+            );
             expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
         });
     });
