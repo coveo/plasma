@@ -4,7 +4,7 @@
     max-width: $facet-column-max-width;
     margin-right: 0;
     padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
-    border-right: var(--facet-column-border);
+    border-right: $default-border;
 }
 
 .facet {
@@ -42,10 +42,10 @@
         width: $facet-more-button-icon-size;
         height: $facet-more-button-icon-size;
         transform: translateY(-50%);
-        fill: var(--facet-header-eraser-color);
+        fill: var(--grey-60);
 
         &:hover {
-            fill: var(--facet-header-eraser-hover-color);
+            fill: var(--navy-blue-80);
         }
     }
 }
@@ -57,9 +57,7 @@
 
 .facet-header-title {
     color: var(--title-text-color);
-    font-weight: var(--facet-header-font-weight);
-    font-size: var(--facet-header-font-size);
-    font-family: var(--main-font);
+    font-size: #{$title-font-size};
     line-height: var(--facet-header-line-height);
 }
 
@@ -76,7 +74,8 @@
     padding: 0 $facet-spacing;
 
     &:hover {
-        background-color: var(--facet-value-hover-background-color);
+        background-color: var(--grey-20);
+
         .exclude-button {
             display: flex;
         }
@@ -145,12 +144,15 @@
     display: none;
     width: $facet-exclude-button-size;
     height: $facet-exclude-button-size;
+
     svg {
         width: inherit;
         height: inherit;
+        fill: var(--grey-60);
     }
+
     &:hover svg {
-        fill: var(--facet-exclude-button-hover-color);
+        fill: var(--navy-blue-80);
     }
 }
 
@@ -160,6 +162,7 @@
     right: 0;
     width: $facet-exclude-padding-right;
     height: 100%;
+    padding-bottom: 3px;
     cursor: pointer;
 
     + .checkbox-label > .exclude-box,
@@ -176,6 +179,7 @@
 
         .exclude-icon {
             display: block;
+            fill: var(--red);
         }
     }
 }
