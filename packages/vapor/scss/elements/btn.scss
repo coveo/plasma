@@ -71,7 +71,7 @@
 
     &.mod-small {
         height: $button-small-height;
-        padding: $button-small-padding-y $button-small-padding-x;
+        padding: $button-small-padding-top $button-small-padding-x $button-small-padding-bottom;
         font-size: $button-small-font-size;
         line-height: var(--button-small-line-height);
     }
