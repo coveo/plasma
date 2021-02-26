@@ -104,7 +104,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                                 });
                             }}
                         >
-                            <Svg svgName="download" svgClass="icon icon mod-lg mr1" />
+                            <Svg svgName="download" svgClass="icon mod-lg mr1" />
                             Prepare Download
                         </button>
 
