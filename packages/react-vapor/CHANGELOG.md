@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.26](https://github.com/coveo/react-vapor/compare/v10.0.0-next.25...v10.0.0-next.26) (2021-02-26)
+
+
+### Bug Fixes
+
+* **next:** facet connected style ([#1887](https://github.com/coveo/react-vapor/issues/1887)) ([569e1cd](https://github.com/coveo/react-vapor/commit/569e1cde7ba7d765a678e8ab76e6e132a8013e8f))
+
+
+
+
+
 # [10.0.0-next.25](https://github.com/coveo/react-vapor/compare/v10.0.0-next.24...v10.0.0-next.25) (2021-02-26)
 
 **Note:** Version bump only for package react-vapor

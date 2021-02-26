@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.26](https://github.com/coveo/react-vapor/compare/v10.0.0-next.25...v10.0.0-next.26) (2021-02-26)
+
+
+### Features
+
+* **next:** color dots demo ([#1884](https://github.com/coveo/react-vapor/issues/1884)) ([b5286f0](https://github.com/coveo/react-vapor/commit/b5286f0ceec779208f5a653c4ff9d95ab0789573))
+
+
+
+
+
 # [10.0.0-next.25](https://github.com/coveo/react-vapor/compare/v10.0.0-next.24...v10.0.0-next.25) (2021-02-26)
 
 **Note:** Version bump only for package react-vapor-demo
