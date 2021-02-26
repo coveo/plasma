@@ -55,24 +55,6 @@ export class BlankSlateExample extends React.Component<any, any> {
                     />
                 </div>
                 <div className="form-group">
-                    <label className="form-control-label">BlankSlate with two button with one disabled</label>
-                    <BlankSlate
-                        title="Title test"
-                        buttons={[
-                            {
-                                name: 'button 1',
-                                primary: true,
-                                enabled: true,
-                            },
-                            {
-                                name: 'button 2',
-                                enabled: false,
-                                link: 'link',
-                            },
-                        ]}
-                    />
-                </div>
-                <div className="form-group">
                     <label className="form-control-label">BlankSlate with an icon</label>
                     <BlankSlate title="Title test" description="description test" svgName="tips" />
                 </div>

@@ -22,9 +22,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/value-popup" name="Value Popup" />
         </NavigationSection>
         <NavigationSection title="Form Controls" baseUrl="/form-controls">
-            <NavigationLink href="/slide-toggle" name="Slide toggle" />
-            <NavigationLink href="/slide-toggle-modifiers" name="Slide toggle modifiers" />
-            <NavigationLink href="/slide-toggle-double" name="Slide toggle double" />
             <NavigationLink href="/progress-bar" name="Progress bar" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers">

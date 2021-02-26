@@ -18,7 +18,6 @@ export * from './color';
 export * from './color-picker';
 export * from './colorBar';
 export * from './content';
-export * from './cornerRibbon';
 export * from './datePicker';
 export * from './diffViewer';
 export * from './dragAndDrop';
