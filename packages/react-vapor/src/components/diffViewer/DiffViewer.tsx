@@ -1,53 +1,41 @@
-import * as Diff2Html from 'diff2html';
 import * as React from 'react';
-// @ts-ignore
-import * as unidiff from 'unidiff';
+import ReactDiffViewer from 'react-diff-viewer';
 
-import {BlankSlate} from '../blankSlate/BlankSlate';
-import * as styles from './styles/DiffViewer.scss';
+import {BlankSlate} from '../blankSlate';
 
-export interface DiffViewerProps extends React.ClassAttributes<DiffViewer> {
+/**
+ * @deprecated Use oldValue and newValue Props.
+ */
+export interface DiffViewerPropsDeprecated {
     first: string;
     second: string;
+}
+
+export interface DiffViewerBlankSlateProps {
     noChangesLabel?: string;
     noChangesDescription?: string;
 }
 
-export class DiffViewer extends React.Component<DiffViewerProps> {
-    static defaultProps: Partial<DiffViewerProps> = {
-        noChangesLabel: 'No changes',
-    };
+export type ReactDiffViewerProps = React.ComponentProps<typeof ReactDiffViewer>;
+export type DiffViewerDeprecatedProps = DiffViewerBlankSlateProps &
+    DiffViewerPropsDeprecated &
+    Omit<ReactDiffViewerProps, 'newValue' | 'oldValue'>;
+export type DiffViewerProps = DiffViewerBlankSlateProps & ReactDiffViewerProps;
 
-    static OutputFormat = {
-        Side: 'side-by-side',
-        Line: 'line-by-line',
-    } as const;
-
-    static InputFormat = {
-        Diff: 'diff',
-        JSON: 'json',
-    } as const;
-
-    static Matching = {
-        Lines: 'lines',
-        Words: 'words',
-        None: 'none',
-    } as const;
-
-    static EmptyHtmlRegex = new RegExp(/<div class="d2h-wrapper"\>\s*<\/div>/);
-
-    render() {
-        const diff = unidiff.diffLines(this.props.first, this.props.second);
-        const formattedDiff = unidiff.formatLines(diff, {context: 3});
-        const html = Diff2Html.html(formattedDiff, {
-            matching: DiffViewer.Matching.Words,
-            outputFormat: DiffViewer.OutputFormat.Line,
-        });
-
-        return !DiffViewer.EmptyHtmlRegex.test(html) ? (
-            <div className={styles.diffViewer} dangerouslySetInnerHTML={{__html: html}}></div>
-        ) : (
-            <BlankSlate title={this.props.noChangesLabel} description={this.props.noChangesDescription} />
-        );
-    }
-}
+export const DiffViewer: React.FC<DiffViewerDeprecatedProps | DiffViewerProps> = ({
+    first,
+    second,
+    oldValue,
+    newValue,
+    noChangesLabel,
+    noChangesDescription,
+    ...props
+}: DiffViewerDeprecatedProps & DiffViewerProps) => {
+    const a = first ?? oldValue;
+    const b = second ?? newValue;
+    return a !== b ? (
+        <ReactDiffViewer {...props} oldValue={a} newValue={b} />
+    ) : (
+        <BlankSlate title={noChangesLabel ?? 'No changes'} description={noChangesDescription} />
+    );
+};

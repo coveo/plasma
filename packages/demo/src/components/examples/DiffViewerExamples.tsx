@@ -1,19 +1,22 @@
-import 'diff2html/bundles/css/diff2html.min.css';
-
 import * as React from 'react';
-import {DiffViewer} from 'react-vapor';
+import {DiffViewer, Section} from 'react-vapor';
 
 import {fakeJSON, fakeJSON1, JSONToString} from './DiffViewerExmaplesCommon';
 
-export class DiffViewerExamples extends React.Component {
-    render() {
-        return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Diff Viewer</label>
-                    <DiffViewer first={JSONToString(fakeJSON)} second={JSONToString(fakeJSON1)} />
-                </div>
-            </div>
-        );
-    }
-}
+export const DiffViewerExamples: React.FC = () => (
+    <Section>
+        <Section level={2} title="DiffViewer with split view">
+            <DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} />
+        </Section>
+        <Section level={2} title="DiffViewer with unified view">
+            <DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} splitView={false} />
+        </Section>
+        <Section level={2} title="DiffViewer with no changes">
+            <DiffViewer
+                oldValue={JSONToString(fakeJSON)}
+                newValue={JSONToString(fakeJSON)}
+                noChangesLabel={'This is a no change label'}
+            />
+        </Section>
+    </Section>
+);
