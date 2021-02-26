@@ -9,7 +9,7 @@
     box-sizing: border-box;
     height: $button-height;
     padding: $button-padding-y $button-padding-x;
-    color: var(--button-secondary-text-color);
+    color: var(--navy-blue-80);
     font-weight: var(--main-font-bold);
     font-size: var(--button-font-size);
     font-family: var(--main-font);
@@ -19,52 +19,53 @@
     text-decoration: none;
     text-overflow: ellipsis;
     vertical-align: middle;
-    background-color: var(--button-secondary-color);
-    border: $button-border-width solid var(--button-secondary-border-color);
+    background-color: var(--pure-white);
+    border: $button-border-width solid var(--navy-blue-80);
     border-radius: $border-radius;
 
     cursor: pointer;
 
     .icon {
-        fill: var(--button-secondary-icon-color);
+        fill: var(--navy-blue-80);
     }
 
     &:active {
-        color: var(--button-secondary-active-text-color);
-        border-color: var(--button-secondary-active-border-color);
+        color: var(--digital-blue-100);
+        border-color: var(--digital-blue-100);
 
         .icon {
-            fill: var(--button-secondary-active-text-color);
+            fill: var(--digital-blue-100);
         }
     }
+
     &:focus {
         @include button-focus(0px);
-        color: var(--button-secondary-text-color);
+        color: var(--navy-blue-80);
         text-decoration: none;
-        background-color: var(--button-secondary-focus-color);
-        outline-color: var(--button-secondary-focus-border-color);
+        background-color: var(--pure-white);
+        outline-color: var(--green);
     }
 
     &:hover {
-        color: var(--button-secondary-hover-text-color);
-        border-color: var(--button-secondary-hover-border-color);
-        outline-color: var(--button-secondary-hover-border-color);
+        color: var(--digital-blue-80);
+        border-color: var(--digital-blue-80);
+        outline-color: var(--digital-blue-80);
 
         .icon {
-            fill: var(--button-secondary-hover-icon-color);
+            fill: var(--digital-blue-80);
         }
     }
 
     &:disabled,
     &.state-disabled {
-        color: var(--button-secondary-disabled-text-color);
-        background-color: var(--button-secondary-disabled-color);
-        border-color: var(--button-secondary-disabled-border-color);
+        color: var(--grey-60);
+        background-color: var(--grey-20);
+        border-color: var(--grey-40);
         cursor: default;
         pointer-events: none;
 
         .icon {
-            fill: var(--button-secondary-disabled-icon-color);
+            fill: var(--grey-60);
         }
     }
 
@@ -72,7 +73,7 @@
         height: $button-small-height;
         padding: $button-small-padding-y $button-small-padding-x;
         font-size: $button-small-font-size;
-        line-height: var(--button-small-line-height);
+        line-height: $button-small-line-height;
     }
 
     &.mod-large {
