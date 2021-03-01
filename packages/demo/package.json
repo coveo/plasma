@@ -24,7 +24,6 @@
         "codemirror": "5.58.2",
         "coveo-styleguide": "^9.32.6",
         "d3": "3.5.17",
-        "diff2html": "3.1.8",
         "faker": "4.1.0",
         "jquery": "3.5.1",
         "lorem-ipsum": "2.0.3",

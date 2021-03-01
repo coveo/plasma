@@ -1,49 +1,28 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import {screen} from '@testing-library/dom';
+import {render} from '@testing-library/react';
 import * as React from 'react';
 
 import {fakeJSON, fakeJSON1, JSONToString} from '../../../utils/JSONUtils';
-import {BlankSlate} from '../../blankSlate/BlankSlate';
-import {DiffViewer, DiffViewerProps} from '../DiffViewer';
+import {DiffViewer} from '../DiffViewer';
 
 describe('DiffViewer', () => {
-    const basicProps: DiffViewerProps = {
-        first: JSONToString(fakeJSON),
-        second: JSONToString(fakeJSON1),
-    };
+    it('should render the diffViewer table', () => {
+        const {container} = render(<DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} />);
+        const firstChild = container.firstChild as HTMLElement;
 
-    it('should render without errors', () => {
-        expect(() => {
-            shallow(<DiffViewer {...basicProps} />);
-        }).not.toThrow();
+        expect(firstChild.className).toContain('diff-container');
     });
 
-    describe('<DiffViewer />', () => {
-        let diffViewer: ReactWrapper<DiffViewerProps>;
-
-        beforeEach(() => {
-            diffViewer = mount(<DiffViewer {...basicProps} />, {attachTo: document.getElementById('App')});
-        });
-
-        it('should get the orginal string for the diff as a prop', () => {
-            const firstProp: string = diffViewer.props().first;
-
-            expect(firstProp).toBe(basicProps.first);
-        });
-
-        it('should get the edited string for the diff as a prop', () => {
-            const secondProp: string = diffViewer.props().second;
-
-            expect(secondProp).toBe(basicProps.second);
-        });
-
-        it('should render the diff table from diff2html', () => {
-            expect(diffViewer.html()).toContain('d2h-diff-table');
-        });
-
-        it('should display a blankslate if there are no changes', () => {
-            diffViewer.setProps({...basicProps, second: basicProps.first});
-
-            expect(diffViewer.find(BlankSlate).length).toBe(1);
-        });
+    it('should render the blankSlate and not the diffViewer table if the two values are the same', () => {
+        const {container} = render(
+            <DiffViewer
+                oldValue={JSONToString(fakeJSON)}
+                newValue={JSONToString(fakeJSON)}
+                noChangesLabel={'no changes'}
+            />
+        );
+        const firstChild = container.firstChild as HTMLElement;
+        expect(firstChild.className).not.toContain('diff-container');
+        expect(screen.getByText(/no changes/)).toBeVisible();
     });
 });
