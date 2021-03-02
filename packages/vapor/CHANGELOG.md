@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.32](https://github.com/coveo/react-vapor/compare/v10.0.0-next.31...v10.0.0-next.32) (2021-03-02)
+
+
+### Bug Fixes
+
+* **section:** ensure inputs always have minimal spacing ([b0f68ba](https://github.com/coveo/react-vapor/commit/b0f68baf45594fab272e7d6a1af562e2159e24ef))
+
+
+
+
+
 # [10.0.0-next.31](https://github.com/coveo/react-vapor/compare/v10.0.0-next.30...v10.0.0-next.31) (2021-03-02)
 
 
