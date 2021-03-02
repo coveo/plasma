@@ -2,6 +2,7 @@ import * as React from 'react';
 import {
     Form,
     Input,
+    InputConnected,
     Label,
     LabeledInput,
     Radio,
@@ -22,7 +23,7 @@ export class SectionExamples extends React.Component<any, any> {
                         title="Search panel"
                         description="Customizing the display and behavior of the interface displayed withing the search panel can be done by editing the code of your search interface directly or via the JavaScript Search Interface Editor. As for style, it can be modified by applying your own stylesheet or adding styling rules in the Advanced tab."
                     >
-                        <Section title="Main button" level={2}>
+                        <Section title="Main button">
                             <LabeledInput
                                 label="Location on screen"
                                 helpText="The widget button's position is fixed, which means it is positioned relative to the viewport and stays in the same place even if the page is scrolled."
@@ -37,7 +38,7 @@ export class SectionExamples extends React.Component<any, any> {
                                     </Radio>
                                 </RadioSelect>
                             </LabeledInput>
-                            <Section title="Content" level={2}>
+                            <Section title="Content">
                                 <LabeledInput helpText="The text that appears on the main widget button.">
                                     <Input value="Help">
                                         <Label>Text</Label>
@@ -69,13 +70,56 @@ export class SectionExamples extends React.Component<any, any> {
                 </Form>
 
                 <Form className="mt4">
-                    <Section title="Define your products structure" description="Inputs inside a Section of level 1">
+                    <Section
+                        title="This is the prefered way of using Sections, insert the section title here."
+                        description="Use this as a description for the section"
+                    >
+                        <LabeledInput
+                            label="Wrap components that do not expose a label into this <LabeledInput /> component."
+                            helpText="This `helpText` attribute helps the user understand which value to choose."
+                        >
+                            <SingleSelectConnected
+                                id="first"
+                                items={[
+                                    {
+                                        selected: true,
+                                        value: 'Product',
+                                    },
+                                    {
+                                        selected: false,
+                                        value: 'Variant',
+                                    },
+                                ]}
+                            />
+                        </LabeledInput>
+                        <InputConnected id="some-input" labelTitle="Label" />
+                        <LabeledInput
+                            label="Location on screen"
+                            helpText="The widget button's position is fixed, which means it is positioned relative to the viewport and stays in the same place even if the page is scrolled."
+                            optionalInformation="INFORMATION"
+                        >
+                            <RadioSelect>
+                                <Radio value="1">
+                                    <Label>Value 1</Label>
+                                </Radio>
+                                <Radio value="2">
+                                    <Label>Value 2</Label>
+                                </Radio>
+                            </RadioSelect>
+                        </LabeledInput>
+                    </Section>
+                </Form>
+                <Form className="mt4">
+                    <Section
+                        title="These sections help you understand the various level spacing"
+                        description="Each level has a different margin between each direct child. If you have extra spacing that you don't want, wrap the components into a single div to remove some spacing."
+                    >
                         <LabeledInput
                             label="Product Object Type"
                             helpText="Select the object type value that identifies a Product object"
                         >
                             <SingleSelectConnected
-                                id="first"
+                                id="first-level-1"
                                 items={[
                                     {
                                         selected: true,
@@ -94,7 +138,7 @@ export class SectionExamples extends React.Component<any, any> {
                             message="31 different products identified"
                         >
                             <SingleSelectConnected
-                                id="second"
+                                id="second-level-1"
                                 items={[
                                     {
                                         selected: true,
@@ -114,7 +158,7 @@ export class SectionExamples extends React.Component<any, any> {
                             helpText="Select the object type value that identifies a Product object"
                         >
                             <SingleSelectConnected
-                                id="first"
+                                id="first-level-2"
                                 items={[
                                     {
                                         selected: true,
@@ -133,7 +177,7 @@ export class SectionExamples extends React.Component<any, any> {
                             message="31 different products identified"
                         >
                             <SingleSelectConnected
-                                id="second"
+                                id="second-level-2"
                                 items={[
                                     {
                                         selected: true,
@@ -153,7 +197,7 @@ export class SectionExamples extends React.Component<any, any> {
                             helpText="Select the object type value that identifies a Product object"
                         >
                             <SingleSelectConnected
-                                id="first"
+                                id="first-level-3"
                                 items={[
                                     {
                                         selected: true,
@@ -172,7 +216,7 @@ export class SectionExamples extends React.Component<any, any> {
                             message="31 different products identified"
                         >
                             <SingleSelectConnected
-                                id="second"
+                                id="second-level-3"
                                 items={[
                                     {
                                         selected: true,
