@@ -13,8 +13,8 @@
         color: var(--pure-white);
         font-size: 13px;
         text-align: center;
-        background-color: var(--flat-select-background-color);
-        border: 1px solid var(--flat-select-background-color);
+        background-color: var(--navy-blue-80);
+        border: 1px solid var(--navy-blue-80);
         border-radius: $border-radius;
 
         cursor: default;
@@ -64,7 +64,7 @@
             }
 
             .icon {
-                fill: var(--flat-select-text-color);
+                fill: var(--navy-blue-80);
             }
         }
 
@@ -75,13 +75,13 @@
         &.mod-link,
         &.selectable.mod-link {
             padding: 0;
-            color: var(--flat-select-background-color);
+            color: var(--navy-blue-80);
             font-size: var(--default-font-size);
             background-color: var(--pure-white);
             border: none;
 
             .icon {
-                fill: var(--flat-select-background-color);
+                fill: var(--navy-blue-80);
             }
 
             &.disabled {
@@ -128,7 +128,7 @@
         flex: auto;
         color: var(--title-text-color);
         background-color: var(--light-grey);
-        border: 1px solid var(--flat-select-background-color);
+        border: 1px solid var(--navy-blue-80);
         border-right-width: 0;
         border-radius: 0;
 
@@ -147,7 +147,7 @@
         }
 
         &:not(.selectable) + .flat-select-option {
-            border-left-color: var(--flat-select-background-color);
+            border-left-color: var(--navy-blue-80);
         }
 
         & + .flat-select-option {
@@ -162,9 +162,9 @@
 
     .flat-select-prepend {
         margin-right: 10px;
-        color: var(--flat-select-prepend-color);
-        font-weight: var(--flat-select-prepend-font-weight);
-        font-size: var(--flat-select-prepend-font-size);
+        color: var(--grey-100);
+        font-weight: var(--main-font-bolder);
+        font-size: var(--default-font-size);
         line-height: 18px;
     }
 }

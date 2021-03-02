@@ -256,20 +256,12 @@
     --material-card-box-shadow-color: #{rgba($black, 0.1)};
     --material-card-box-shadow-active-color: #{rgba($black, 0.3)};
 
-    // Input
-    --input-add-on-color: #{darken($medium-grey, 10%)};
-
     // Numeric input
     --numeric-input-shadow: #{rgba($black, $transparency-5)};
 
     // Blankslate
     --blankslate-mod-danger-color: #{rgba($red, $transparency-5)};
     --blankslate-mod-error-color: #{rgba($orange-5, $transparency-5)};
-
-    // Table
-    --table-selected-row-hover-color: #{rgba($red, $transparency-5)};
-    --table-last-update-color: #{rgba($dark-grey, $transparency-3)};
-    --table-row-drag-over-color: #{rgba($medium-grey, $transparency-3)};
 
     // Date picker
     --date-picker-button-hover-color: #{rgba($dark-grey, $transparency-3)};

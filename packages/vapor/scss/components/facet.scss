@@ -13,9 +13,9 @@
 
     padding-bottom: $facet-spacing;
     background: var(--pure-white);
-    border: var(--facet-border);
-    border-radius: var(--facet-border-radius);
-    box-shadow: var(--facet-box-shadow);
+    border: 1px solid rgba($heather, 0.3);
+    border-radius: $big-border-radius;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .facet-header {
@@ -23,9 +23,9 @@
     clear: both;
 
     padding: $button-padding-x;
-    background: var(--facet-header-background-color);
-    border-top-left-radius: var(--facet-border-radius);
-    border-top-right-radius: var(--facet-border-radius);
+    background: var(--grey-20);
+    border-top-left-radius: $big-border-radius;
+    border-top-right-radius: $big-border-radius;
 }
 
 .facet-header-eraser {
@@ -58,7 +58,7 @@
 .facet-header-title {
     color: var(--title-text-color);
     font-size: #{$title-font-size};
-    line-height: var(--facet-header-line-height);
+    line-height: 20px;
 }
 
 .facet-values {
@@ -106,7 +106,7 @@
 
 .facet-value-count {
     padding-left: $facet-value-spacing;
-    color: var(--facet-value-count-text-color);
+    color: var(--grey-60);
 }
 
 .facet-more {
@@ -248,8 +248,8 @@
     list-style: none;
 
     background-color: var(--pure-white);
-    border: var(--facet-border);
-    border-radius: var(--facet-border-radius);
+    border: 1px solid rgba($heather, 0.3);
+    border-radius: $big-border-radius;
 
     @include slim-scroll(var(--light-grey), var(--medium-grey));
 }
