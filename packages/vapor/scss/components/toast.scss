@@ -129,4 +129,35 @@ $toast-close-size: 16px;
         color: $toast-text-color;
         font-size: $toast-description-font-size;
     }
+
+    .toast.toast-download {
+        min-width: 300px;
+        padding: 0;
+        background: var(--blue-purple-3);
+        border-radius: 6px;
+        box-shadow: 0 2px 4px var(--box-shadow);
+
+        .toast-title,
+        .toast-close {
+            padding: $toast-padding;
+        }
+        .toast-description {
+            margin-top: 0;
+            padding: $toast-padding;
+            color: var(--black);
+            font-size: var(--default-font-size);
+            background: var(--grey-1);
+            border-bottom-right-radius: inherit;
+            border-bottom-left-radius: inherit;
+            box-shadow: inset 0px 5px 6px -5px var(--black);
+
+            .spinner-container {
+                width: 16px;
+
+                .search-bar-spinner {
+                    left: 7px; // for pixel perfect alignment
+                }
+            }
+        }
+    }
 }

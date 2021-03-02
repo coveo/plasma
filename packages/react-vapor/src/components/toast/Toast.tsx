@@ -12,6 +12,7 @@ export interface IToastProps {
     dismiss?: number;
     dismissible?: boolean;
     animate?: boolean;
+    isDownload?: boolean;
     className?: string;
     /**
      * @deprecated use children instead
@@ -77,7 +78,10 @@ export class Toast extends React.Component<IToastProps> {
                 'mod-error': this.props.type === ToastType.Error,
                 'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
             },
-            this.props.className
+            this.props.className,
+            {
+                'toast-download': this.props.isDownload,
+            }
         );
 
         const closeButton = this.props.dismissible && (
@@ -88,7 +92,16 @@ export class Toast extends React.Component<IToastProps> {
 
         const toastContent = (!!this.props.content || !!this.props.children) && (
             <div className="toast-description">
-                {this.props.children}
+                {this.props.isDownload ? (
+                    <div className="flex space-between">
+                        {this.props.children}
+                        <div className="spinner-container relative">
+                            <div className="search-bar-spinner" />
+                        </div>
+                    </div>
+                ) : (
+                    this.props.children
+                )}
                 {_.isString(this.props.content) || !this.props.content
                     ? this.props.content
                     : React.createElement(this.props.content as React.ComponentClass)}

@@ -273,4 +273,37 @@ describe('Toasts', () => {
             expect(onCloseToast).not.toHaveBeenCalled();
         });
     });
+
+    describe('<Toast /> with download section', () => {
+        it('should have class "toast-download" if the download prop is true', () => {
+            const expectedClass = '.toast-download';
+            toastComponent = mount(<Toast title="a" isDownload />);
+            expect(toastComponent.find(expectedClass).length).toBe(1);
+        });
+
+        it('should not have the class "toast-download" if the download prop is false', () => {
+            const expectedClass = '.toast-download';
+            toastComponent = mount(<Toast title="a" isDownload={false} />);
+            expect(toastComponent.find(expectedClass).length).toBe(0);
+        });
+
+        it('should load "Preparing file for download..." as a title', () => {
+            toastComponent = mount(
+                <Toast title="Preparing file for download..." isDownload>
+                    <div>Some file.csv</div>
+                </Toast>
+            );
+
+            expect(toastComponent.find('.toast-title').text()).toBe('Preparing file for download...');
+        });
+
+        it('should have a loading icon in the description', () => {
+            toastComponent = mount(
+                <Toast title="a" isDownload>
+                    <div>Some file.csv</div>
+                </Toast>
+            );
+            expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
+        });
+    });
 });
