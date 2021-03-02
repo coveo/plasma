@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [10.0.0-next.31](https://github.com/coveo/react-vapor/compare/v10.0.0-next.30...v10.0.0-next.31) (2021-03-02)
+
+
+### Bug Fixes
+
+* **next:** clearable date picker ([#1892](https://github.com/coveo/react-vapor/issues/1892)) ([2f99248](https://github.com/coveo/react-vapor/commit/2f9924861f37db77ae92ae79553fe1ffc2ef3914))
+
+
+
+
+
 # [10.0.0-next.30](https://github.com/coveo/react-vapor/compare/v10.0.0-next.29...v10.0.0-next.30) (2021-03-02)
 
 
