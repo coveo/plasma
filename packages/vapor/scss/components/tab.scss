@@ -12,18 +12,18 @@
         margin-right: $tab-margin-right;
         padding: $tab-padding;
         color: var(--color);
-        font-weight: var(--tab-font-weight);
-        font-size: var(--tab-font-size);
+        font-weight: var(--main-font-bolder);
+        font-size: $tab-font-size;
         line-height: 16px;
         letter-spacing: 0.3px;
-        text-transform: var(--button-text-transform);
+        text-transform: none;
         border-bottom: $tab-bottom-border-height solid transparent;
 
         cursor: pointer;
         transition: all 0.2s ease;
 
         &.active {
-            border-bottom: $tab-bottom-border-height solid var(--tab-border-color);
+            border-bottom: $tab-bottom-border-height solid var(--digital-blue-60);
         }
 
         &.disabled {

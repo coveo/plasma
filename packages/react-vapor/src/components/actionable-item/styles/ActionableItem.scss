@@ -15,12 +15,12 @@ $actionable-item-dots-width: 12px;
 }
 
 .actionableItemContent {
-    padding: var(--button-no-tag-button-padding-y) var(--button-padding-x);
+    padding: 9px $button-padding-x;
     border-radius: $border-radius 0 0 $border-radius;
 }
 
 .actionableItemDots {
-    padding: var(--button-no-tag-button-padding-y) $actionable-item-dots-padding-x;
+    padding: 9px $actionable-item-dots-padding-x;
     border-radius: 0 $border-radius $border-radius 0;
 
     &:hover {

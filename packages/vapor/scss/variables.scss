@@ -46,8 +46,8 @@ $text-max-width: $breakpoint-desktop-small;
 $list-padding: 20px;
 
 // Button
-$button-font-size: 12px;
-$button-line-height: 15px;
+$button-font-size: var(--default-font-size);
+$button-line-height: 20px;
 $button-font-weight: var(--main-font-bold);
 $button-padding-x: 16px;
 $button-padding-y: 6px;
@@ -227,7 +227,7 @@ $navigation-menu-header-font-weight: var(--main-font-bolder);
 $navigation-menu-item-font-weight: var(--main-font-regular);
 $navigation-width: 245px;
 $navigation-border-for-scroll-bar: 1px;
-$navigation-background-color: var(--purple-blue);
+$navigation-background-color: var(--white);
 $navigation-active-background-color: var(--blue-purple-2);
 $navigation-active-border-width: 3px;
 $navigation-section-icon-size: 16px;
@@ -240,7 +240,7 @@ $navigation-horizontal-space-loading: $navigation-section-icon-size + $navigatio
     $navigation-section-icon-margin-left;
 $navigation-horizontal-space-no-icon: $navigation-section-icon-margin-left + $navigation-section-arrow-margin;
 $navigation-right-margin: $navigation-section-arrow-margin;
-$navigation-locked-color: var(--medium-grey);
+$navigation-locked-color: var(--grey-60);
 $navigation-tag-font-size: 10px;
 $navigation-tag-padding: 2px 5px;
 $navigation-menu-section-height: 35px;
@@ -266,7 +266,7 @@ $tab-bottom-border-height: 4px;
 $tab-padding: 10px 0 5px;
 $tab-margin-right: 30px;
 $tab-navigation-min-height: 36px;
-$tab-font-size: 13px;
+$tab-font-size: var(--default-font-size);
 $tab-pane-loading-margin-top: 50px;
 $sub-tab-font-size: 12px;
 

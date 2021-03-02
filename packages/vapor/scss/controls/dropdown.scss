@@ -74,7 +74,7 @@
 
     &.mod-primary {
         font-size: $button-font-size;
-        text-transform: var(--button-text-transform);
+        text-transform: none;
 
         .dropdown-toggle-arrow {
             @include arrow-down-icon(var(--pure-white));
@@ -84,7 +84,7 @@
     .dropdown-option-append {
         float: right;
         width: $dropdown-toggle-append-width;
-        color: var(--dropdown-option-append-color);
+        color: var(--grey-100);
         text-align: right;
     }
 

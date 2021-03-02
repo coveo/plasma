@@ -103,7 +103,7 @@
         padding: $button-padding-y $button-padding-x;
         font-weight: var(--main-font-bold);
 
-        font-size: var(--button-font-size);
+        font-size: $button-font-size;
         text-transform: uppercase;
         border-radius: 0;
 

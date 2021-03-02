@@ -144,10 +144,10 @@
         }
 
         &.add-action {
-            border-color: var(--button-primary-color);
+            border-color: var(--digital-blue-60);
 
             &:before {
-                background-color: var(--button-primary-color);
+                background-color: var(--digital-blue-60);
             }
 
             &:after {
@@ -157,7 +157,7 @@
                 display: block;
                 width: 2px;
                 height: 10px;
-                background-color: var(--button-primary-color);
+                background-color: var(--digital-blue-60);
                 content: '';
             }
         }

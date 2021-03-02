@@ -121,11 +121,6 @@
     --mona-lisa: #{$mona-lisa};
     --melon: #{$melon};
 
-    // Status
-    --red: #{$red};
-    --yellow: #{$yellow};
-    --green: #{$green};
-
     // Utilities
     --transparent: transparent;
 
@@ -140,10 +135,8 @@
     --dark-medium-grey: #{$dark-medium-grey};
     --medium-grey: #{$medium-grey};
     --light-grey: #{$light-grey};
-    --white: #{$white};
     --light: #{$light};
     --pure-white: #{$pure-white};
-    --orange: #{$orange};
     --stratos: #{$stratos};
     --purple-blue: #{$purple-blue};
 
@@ -253,17 +246,10 @@
 
     // ** Specific ** //
     // Button
-    --button-primary-focus-color: #{lighten($orange, 5%)};
-    --button-primary-disabled-color: #{lighten($orange, 20%)};
-    --button-danger-focus-color: #{lighten($red, 5%)};
-    --button-danger-disabled-color: #{lighten($red, 20%)};
     --links-color: #{$links-color};
 
     // Info box
     --info-box-color: #{rgba($pure-white, $transparency-5)};
-
-    // Home card
-    --home-card-color: #{rgba($grey-5, $transparency-4)};
 
     // Material card
     --material-card-color: #{rgba($grey-5, $transparency-4)};
@@ -302,7 +288,4 @@
 
     // Chart
     --chart-tooltip-content-color: #{rgba($black, $transparency-4)};
-
-    // Navigation
-    --navigation-scroll-thumb-color: #{rgba($pure-white, 0.5)};
 }
