@@ -1,6 +1,9 @@
 .box {
     &.padded {
         padding: 5px $collapsible-box-padding;
+        > div.flex.flex-center  {
+            align-items: baseline;
+        }
     }
 
     .label,

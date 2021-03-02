@@ -218,6 +218,7 @@ $icon-size: (4em / 3);
         & .icon {
             width: $icon-size;
             height: $icon-size;
+            fill: var(--pure-white);
         }
     }
 }

@@ -8,6 +8,10 @@
         fill: var(--documentation-link-icon-color);
     }
 
+    &.tooltip-icon {
+        fill: var(--digital-blue-60);
+    }
+
     &.mod-small {
         width: 0.7em;
         height: 0.7em;
@@ -20,7 +24,7 @@
 
     &.mod-align-with-text {
         line-height: 16px;
-        vertical-align: -2px;
+        vertical-align: -4px;
     }
 
     @for $i from 5 through 15 {

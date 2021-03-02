@@ -12,7 +12,7 @@
 
             &.mod-icon {
                 padding: 8px;
-                fill: var(--button-append-icon-color);
+                fill: var(--black);
             }
 
             .icon {
@@ -20,7 +20,7 @@
             }
 
             svg {
-                fill: var(--button-append-icon-color);
+                fill: var(--black);
             }
         }
 
@@ -47,6 +47,17 @@
             .btn-append,
             .btn-prepend {
                 display: none;
+            }
+        }
+
+        &:hover {
+            &.mod-icon {
+                padding: 8px;
+                fill: var(--digital-blue-80);
+            }
+
+            svg {
+                fill: var(--digital-blue-80);
             }
         }
     }
