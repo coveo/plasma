@@ -23,7 +23,7 @@
             margin-left: -5px;
             border-width: 5px 5px 0;
 
-            border-top-color: var(--tooltip-arrow-color);
+            border-top-color: var(--digital-blue-100);
         }
     }
 
@@ -37,7 +37,7 @@
             margin-top: -5px;
             border-width: 5px 5px 5px 0;
 
-            border-right-color: var(--tooltip-arrow-color);
+            border-right-color: var(--digital-blue-100);
         }
     }
 
@@ -51,7 +51,7 @@
             margin-left: -5px;
             border-width: 0 5px 5px;
 
-            border-bottom-color: var(--tooltip-arrow-color);
+            border-bottom-color: var(--digital-blue-100);
         }
     }
 
@@ -65,7 +65,7 @@
             margin-top: -5px;
             border-width: 5px 0 5px 5px;
 
-            border-left-color: var(--tooltip-arrow-color);
+            border-left-color: var(--digital-blue-100);
         }
     }
 
@@ -106,7 +106,7 @@
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;
-        background-color: var(--tooltip-background-color);
+        background-color: var(--digital-blue-100);
         border-radius: 2px;
     }
 }

@@ -12,11 +12,11 @@
     padding: $button-padding-y $button-padding-x;
     color: var(--navy-blue-80);
     font-weight: var(--main-font-bold);
-    font-size: var(--button-font-size);
+    font-size: $button-font-size;
     font-family: var(--main-font);
-    line-height: var(--button-line-height);
+    line-height: $button-line-height;
     white-space: nowrap;
-    text-transform: var(--button-text-transform);
+    text-transform: none;
     text-decoration: none;
     text-overflow: ellipsis;
     vertical-align: middle;
@@ -82,81 +82,81 @@
     }
 
     &.mod-primary {
-        color: var(--button-primary-text-color);
-        background-color: var(--button-primary-color);
-        border: $button-border-width solid var(--button-primary-color);
+        color: var(--white);
+        background-color: var(--digital-blue-60);
+        border: $button-border-width solid var(--digital-blue-60);
 
         &:active {
-            background-color: var(--button-primary-active-color);
-            border: $button-border-width solid var(--button-primary-active-color);
+            background-color: var(--digital-blue-100);
+            border: $button-border-width solid var(--digital-blue-100);
         }
 
         &:focus {
-            background-color: var(--button-primary-hover-focus);
-            border: $button-border-width solid var(--button-primary-hover-focus);
+            background-color: var(--digital-blue-60);
+            border: $button-border-width solid var(--digital-blue-60);
         }
 
         &:hover {
-            background-color: var(--button-primary-hover-color);
-            border: $button-border-width solid var(--button-primary-hover-color);
-            outline-color: var(--button-primary-hover-color);
+            background-color: var(--digital-blue-80);
+            border: $button-border-width solid var(--digital-blue-80);
+            outline-color: var(--digital-blue-80);
         }
 
         &:disabled,
         &.state-disabled {
-            color: var(--button-primary-disabled-text-color);
-            background-color: var(--button-primary-disabled-color);
-            border: $button-border-width solid var(--button-primary-disabled-color);
+            color: var(--grey-60);
+            background-color: var(--grey-40);
+            border: $button-border-width solid var(--grey-40);
 
             .icon {
-                fill: var(--button-primary-disabled-icon-color);
+                fill: var(--grey-60);
             }
         }
 
         .icon {
-            fill: var(--button-primary-icon-color);
+            fill: var(--white);
         }
     }
 
     &.mod-danger {
-        color: var(--button-danger-default-text-color);
-        background-color: var(--button-danger-color);
-        border: $button-border-width solid var(--button-danger-color);
+        color: var(--white);
+        background-color: var(--critical-60);
+        border: $button-border-width solid var(--critical-60);
 
         &:active {
-            background-color: var(--button-danger-active-color);
-            border: $button-border-width solid var(--button-danger-active-color);
+            background-color: var(--critical-100);
+            border: $button-border-width solid var(--critical-100);
         }
 
         &:focus {
-            background-color: var(--button-danger-focus-color);
-            border: $button-border-width solid var(--button-danger-focus-color);
+            background-color: var(--critical-60);
+            border: $button-border-width solid var(--critical-60);
         }
 
         &:hover {
-            background-color: var(--button-danger-hover-color);
-            border: $button-border-width solid var(--button-danger-hover-color);
-            outline-color: var(--button-danger-hover-color);
+            background-color: var(--critical-80);
+            border: $button-border-width solid var(--critical-80);
+            outline-color: var(--critical-80);
         }
 
         &:disabled,
         &.state-disabled {
-            color: var(--button-danger-disabled-text-color);
-            background-color: var(--button-danger-disabled-color);
-            border: $button-border-width solid var(--button-danger-disabled-color);
+            color: var(--grey-60);
+            background-color: var(--grey-40);
+            border: $button-border-width solid var(--grey-40);
 
             .icon {
-                fill: var(--button-danger-disabled-icon-color);
+                fill: var(--grey-60);
             }
         }
 
         .icon {
-            fill: var(--button-danger-default-icon-color);
+            fill: var(--white);
         }
     }
 
     &.mod-no-button-tag {
-        padding: var(--button-no-tag-button-padding-y) var(--button-padding-x);
+        padding: 9px $button-padding-x;
     }
 
     &.mod-link {
@@ -208,7 +208,7 @@
             right: calc(50% - #{$button-confirm-icon-width} / 2);
             display: inline-block;
             font-size: $button-confirm-icon-width;
-            fill: var(--button-confirm-icon-success-color);
+            fill: var(--white);
         }
     }
 
@@ -217,17 +217,17 @@
     }
 
     &.mod-confirm-success {
-        background-color: var(--button-confirm-sucess-color);
-        border: $button-border-width solid var(--button-confirm-sucess-color);
+        background-color: var(--green);
+        border: $button-border-width solid var(--green);
 
         &:focus,
         &:hover {
-            background-color: var(--button-confirm-sucess-color);
-            outline-color: var(--button-confirm-sucess-color);
+            background-color: var(--green);
+            outline-color: var(--green);
         }
 
         &:before {
-            color: var(--button-confirm-sucess-color);
+            color: var(--green);
             content: attr(data-confirm-success);
         }
 
@@ -237,17 +237,17 @@
     }
 
     &.mod-confirm-error {
-        background-color: var(--button-confirm-error-color);
-        border: $button-border-width solid var(--button-confirm-error-color);
+        background-color: var(--red);
+        border: $button-border-width solid var(--red);
 
         &:focus,
         &:hover {
-            background-color: var(--button-confirm-error-color);
-            outline-color: var(--button-confirm-error-color);
+            background-color: var(--red);
+            outline-color: var(--red);
         }
 
         &:before {
-            color: var(--button-confirm-error-color);
+            color: var(--red);
             content: attr(data-confirm-error);
         }
 
@@ -278,10 +278,10 @@
 
 .btn-hover:hover {
     .icon {
-        fill: var(--button-link-color);
+        fill: var(--green);
     }
 
     .btn-hover-text {
-        color: var(--button-link-hover-color);
+        color: var(--success-40);
     }
 }

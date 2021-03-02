@@ -3,7 +3,7 @@
     width: 100%;
     height: $header-height;
     color: var(--white);
-    background-color: var(--header-background-color);
+    background-color: var(--navy-blue-80);
 
     h3 {
         color: inherit;
@@ -31,7 +31,7 @@
     transition: opacity $navigation-toggle-duration ease-in-out;
 
     svg {
-        fill: var(--header-hamburger-color);
+        fill: var(--white);
     }
 }
 

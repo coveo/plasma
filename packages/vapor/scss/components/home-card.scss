@@ -16,7 +16,7 @@
     margin-bottom: $home-card-margin;
     padding: 2 * $spacing;
     background: var(--pure-white);
-    border: 1px solid var(--home-card-color);
+    border: 1px solid rgba($grey-5, $transparency-4);
     border-radius: $home-card-radius;
     box-shadow: $material-card-shadow;
 }

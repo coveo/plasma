@@ -18,7 +18,7 @@
 // @deprecated, the .bg-polygon class is deprecated, use .bg-gradient instead
 .bg-polygon,
 .bg-gradient {
-    background: linear-gradient(65deg, var(--gradient-bg-color-1) 0%, var(--gradient-bg-color-2) 100%);
+    background: linear-gradient(65deg, var(--navy-blue-80) 0%, var(--navy-blue-80) 100%);
     background-size: cover;
 }
 

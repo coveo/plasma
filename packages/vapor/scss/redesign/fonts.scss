@@ -10,7 +10,6 @@
     // General
     --default-margin: #{$default-margin};
     --default-line-height: #{$default-line-height};
-    --header-line-height: #{$header-line-height};
     --spacing: #{$spacing};
 
     // Typography
@@ -33,11 +32,6 @@
     // Banner
     --banner-height: #{$banner-height};
 
-    // Button
-    --button-font-size: #{$button-font-size};
-    --button-line-height: #{$button-line-height};
-    --button-small-font-size: #{$button-small-font-size};
-
     // Dropdown
     --dropdown-button-font-size: #{$dropdown-button-font-size};
 
@@ -47,14 +41,6 @@
 
     // Input and textarea
     --input-font-size: #{$input-font-size};
-
-    // Navigation
-    --navigation-section-icon-size: #{$navigation-section-icon-size};
-    --navigation-section-font-size: #{$navigation-section-font-size};
-    --navigation-tag-font-size: #{$navigation-tag-font-size};
-
-    // Tab
-    --tab-font-size: #{$tab-font-size};
 
     // Table
     --table-action-label-font-size: #{$small-font-size};
