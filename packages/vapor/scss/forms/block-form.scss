@@ -85,7 +85,7 @@ form {
                 }
 
                 > *:not(:first-child) {
-                    margin-top: $scaledSpacing;
+                    margin-top: 0.5rem;
                 }
             }
             > .btn {
