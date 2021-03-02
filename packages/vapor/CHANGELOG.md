@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.34.0](https://github.com/coveo/react-vapor/compare/v9.33.0...v9.34.0) (2021-03-02)
+
+
+### Features
+
+* **toast:** added a download section to the vapor toast ([2129fd7](https://github.com/coveo/react-vapor/commit/2129fd75688937830fbc139999546f61c0a7b1a0))
+
+
+
+
+
 ## [9.32.6](https://github.com/coveo/react-vapor/compare/v9.32.5...v9.32.6) (2021-02-22)
 
 
