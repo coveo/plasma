@@ -324,19 +324,17 @@
 
 .clear-selection-button {
     display: block;
-    box-sizing: border-box;
     width: 100%;
     padding: $dropdown-choices-top-bottom-margin;
-    color: var(--navy-blue-80);
     font-size: $button-font-size;
-    background: none;
-    border: $default-border;
-    border-radius: $border-radius;
-
-    cursor: pointer;
+    border: $button-border-width solid var(--navy-blue-80);
 
     &:hover {
-        background-color: $date-picker-button-hover-bg;
+        border-color: var(--digital-blue-80);
+    }
+
+    &:active {
+        border-color: var(--digital-blue-100);
     }
 }
 

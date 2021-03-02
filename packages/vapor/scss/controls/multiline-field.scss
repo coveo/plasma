@@ -88,7 +88,7 @@
             display: block;
             width: 18px;
             height: 18px;
-            border: 2px solid var(--button-secondary-disabled-icon-color);
+            border: 2px solid var(--grey-60);
             border-radius: 18px;
 
             &.add-action {
@@ -103,7 +103,7 @@
                     display: block;
                     width: 10px;
                     height: 2px;
-                    background-color: var(--button-secondary-disabled-icon-color);
+                    background-color: var(--grey-60);
                     content: '';
                 }
             }

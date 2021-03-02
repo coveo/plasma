@@ -1,9 +1,10 @@
 import classNames from 'classnames';
 import * as React from 'react';
+
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
-import {SetToNowButton} from './SetToNowButton';
 import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
+import {SetToNowButton} from './SetToNowButton';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     onBlur: (date: Date, isUpperLimit: boolean) => void;
@@ -77,7 +78,7 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
 
         const inputClasses = classNames({
             'picking-date': this.state.isSelected,
-            'date-picked': !this.state.isSelected && this.dateInput?.value,
+            'date-picked': !this.state.isSelected && !!this.props.date,
         });
 
         return (
