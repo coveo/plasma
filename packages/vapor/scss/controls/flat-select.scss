@@ -55,7 +55,7 @@
         &.selectable {
             color: var(--title-text-color);
             background-color: var(--pure-white);
-            border: 1px solid var(--default-border-color);
+            border: $default-border;
 
             cursor: pointer;
 
@@ -162,7 +162,7 @@
 
     .flat-select-prepend {
         margin-right: 10px;
-        color: var(--grey-100);
+        color: var(--title-text-color);
         font-weight: var(--main-font-bolder);
         font-size: var(--default-font-size);
         line-height: 18px;

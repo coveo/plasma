@@ -3,7 +3,7 @@
     background-color: var(--pure-white);
     border: $default-border;
     border-radius: $border-radius;
-    box-shadow: 0 2px 4px var(--popover-box-shadow-color);
+    box-shadow: 0 2px 4px rgba($stratos, 0.4);
 }
 
 .popover-body {

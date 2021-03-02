@@ -45,7 +45,7 @@ $icon-size: (4em / 3);
 
 .modal-backdrop {
     z-index: $base-backdrop-z-index;
-    background: var(--modal-backdrop-color);
+    background: rgba($purple-blue, $transparency-1);
 
     opacity: 1;
     transition: all 0.3s;
@@ -189,7 +189,7 @@ $icon-size: (4em / 3);
     }
 
     &.mod-warning {
-        background-color: var(--status-yellow);
+        background-color: var(--warning-60);
     }
 
     &.mod-critical {

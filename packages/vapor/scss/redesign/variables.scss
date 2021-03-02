@@ -1,68 +1,16 @@
 :root {
-    // General
+    --main-font: 'canada-type-gibson', sans-serif;
+    --main-font-regular: 300;
+    --main-font-bold: 400;
+    --main-font-bolder: 500;
+
+    /* ----------- Default Values ----------- */
+    --default-font-size: 14px;
+    --small-font-size: 12px;
+
     --default-text-color: var(--grey-80);
     --title-text-color: var(--grey-100);
+
     --default-border-color: var(--grey-40);
     --links-color: var(--digital-blue-60);
-
-    --default-border: 1px solid;
-    --default-spacing: 0.5rem;
-
-    // ****************
-    // Dropdown
-
-    // Default
-    --dropdown-default-color: var(--grey-80);
-    --dropdown-toggle-placeholder-color: var(--grey-80);
-    --dropdown-toggle-append-color: var(--grey-80);
-
-    --dropdown-option-line-color: var(--grey-100);
-    --dropdown-btn-border-color: var(--grey-40);
-    --dropdown-toggle-arrow-color: var(--grey-80);
-    --dropdown-selected-value-color: var(--grey-100);
-    --dropdown-button-font-size: var(--default-font-size);
-
-    // Menu
-    --dropdown-menu-color: var(--grey-100);
-    --dropdown-menu-bg-color: var(--white);
-    --dropdown-menu-border-color: var(--grey-40);
-    --dropdown-menu-scrollbar-thumb-color: var(--grey-20);
-    --dropdown-menu-scrollbar-color: var(--white);
-    --dropdown-menu-box-shadow-color: rgba(0, 0, 0, 0.41);
-    --dropdown-menu-hover-color: var(--grey-80);
-    --dropdown-menu-hover-bg-color: var(--grey-20);
-    --dropdown-menu-disabled-option-color: var(--medium-grey);
-    --dropdown-menu-disabled-option-bg-color: var(--grey-60);
-
-    --dropdown-menu-selected-option-color: var(--grey-40);
-    --dropdown-menu-active-option-color: var(--grey-40);
-    --dropdown-menu-active-option-bg-color: var(--navy-blue-80);
-
-    --dropdown-menu-divider-bg-color: var(--grey-60);
-
-    // List box
-    --list-box-scrollbar-thumb-color: var(--grey-20);
-    --list-box-scrollbar-color: var(--white);
-    --list-box-border-color: var(--grey-40);
-
-    --list-box-item-color: var(--grey-80);
-    --list-box-item-bg-color: var(--white);
-
-    --list-box-item-active-color: var(--grey-40);
-    --list-box-item-active-bg-color: var(--navy-blue-80);
-
-    --list-box-item-hover-color: var(--grey-80);
-    --list-box-item-hover-bg-color: var(--grey-20);
-
-    --list-box-item-focus-color: var(--turquoise);
-
-    // Input
-    --checkbox-border-color: var(--navy-blue-80);
-    --checkbox-checked-color: var(--digital-blue-60);
-
-    // Shadows
-    --shadow-color: rgba(229, 232, 232, 0.75);
-    --light-shadow: 0px 2px 8px var(--shadow-color);
-    --medium-shadow: 0px 4px 16px var(--shadow-color);
-    --large-shadow: 0px 8px 24px var(--shadow-color);
 }

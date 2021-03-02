@@ -1,13 +1,13 @@
 .browser-preview {
     height: 720px;
-    border: 1px solid #e5e8e8; // var(--default-border-color)
+    border: $default-border;
     border-radius: $big-border-radius;
-    box-shadow: 0px 4px 16px 0px rgba(#e5e8e8, 0.75); // var(--grey-40)
+    box-shadow: 0px 4px 16px 0px rgba(var(--grey-40), 0.75);
 
     &__header {
         color: var(--pure-white);
         font-size: 15px;
-        background-color: #5f619e; // var(--navy-blue-60)
+        background-color: var(--navy-blue-60);
         border-radius: $big-border-radius $big-border-radius 0px 0px;
 
         svg {
@@ -29,7 +29,7 @@
     }
 
     &__state {
-        color: #282829; // var(--title-text-color)
+        color: var(--title-text-color);
 
         svg {
             width: 220px;
@@ -42,8 +42,8 @@
         }
 
         &--error {
-            color: #626971; // var(--default-text-color)
-            font-size: 14px; // var(--default-font-size)
+            color: var(--default-text-color);
+            font-size: var(--default-font-size);
             line-height: 18px;
         }
     }

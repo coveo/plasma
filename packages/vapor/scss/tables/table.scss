@@ -252,7 +252,7 @@
 
 .table-last-update {
     margin: 10px $header-padding;
-    color: var(--date-picker-button-hover-color);
+    color: $date-picker-button-hover-bg;
     font-size: 11px;
     text-align: right;
 }
