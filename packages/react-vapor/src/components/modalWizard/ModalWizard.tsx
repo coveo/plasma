@@ -54,14 +54,14 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                     modalBodyChildren={
                         <>
                             <StepProgressBar numberOfSteps={numberOfSteps} currentStep={currentStep} />
-                            {steps.map((step: React.ReactElement, index: number) =>
-                                React.cloneElement(step, {
-                                    className: classNames(step.props?.['className'], {
-                                        hidden: index !== currentStep,
-                                    }),
-                                    hidden: index !== currentStep,
-                                })
-                            )}
+                            {steps.map((step: React.ReactElement, index: number) => {
+                                const hidden = index !== currentStep;
+                                return (
+                                    <div className={classNames({hidden})} hidden={hidden} key={index}>
+                                        {step}
+                                    </div>
+                                );
+                            })}
                         </>
                     }
                     modalFooterChildren={

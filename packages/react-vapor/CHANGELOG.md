@@ -3,353 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [10.0.0-next.33](https://github.com/coveo/react-vapor/compare/v10.0.0-next.32...v10.0.0-next.33) (2021-03-03)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.32](https://github.com/coveo/react-vapor/compare/v10.0.0-next.31...v10.0.0-next.32) (2021-03-02)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.31](https://github.com/coveo/react-vapor/compare/v10.0.0-next.30...v10.0.0-next.31) (2021-03-02)
-
-
-### Bug Fixes
-
-* **next:** clearable date picker ([#1892](https://github.com/coveo/react-vapor/issues/1892)) ([2f99248](https://github.com/coveo/react-vapor/commit/2f9924861f37db77ae92ae79553fe1ffc2ef3914))
-
-
-
-
-
-# [10.0.0-next.30](https://github.com/coveo/react-vapor/compare/v10.0.0-next.29...v10.0.0-next.30) (2021-03-02)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.29](https://github.com/coveo/react-vapor/compare/v10.0.0-next.28...v10.0.0-next.29) (2021-03-02)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.28](https://github.com/coveo/react-vapor/compare/v10.0.0-next.27...v10.0.0-next.28) (2021-03-01)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.27](https://github.com/coveo/react-vapor/compare/v10.0.0-next.26...v10.0.0-next.27) (2021-02-26)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.26](https://github.com/coveo/react-vapor/compare/v10.0.0-next.25...v10.0.0-next.26) (2021-02-26)
-
-
-### Bug Fixes
-
-* **next:** facet connected style ([#1887](https://github.com/coveo/react-vapor/issues/1887)) ([569e1cd](https://github.com/coveo/react-vapor/commit/569e1cde7ba7d765a678e8ab76e6e132a8013e8f))
-
-
-
-
-
-# [10.0.0-next.25](https://github.com/coveo/react-vapor/compare/v10.0.0-next.24...v10.0.0-next.25) (2021-02-26)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.24](https://github.com/coveo/react-vapor/compare/v10.0.0-next.23...v10.0.0-next.24) (2021-02-24)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.23](https://github.com/coveo/react-vapor/compare/v10.0.0-next.22...v10.0.0-next.23) (2021-02-24)
-
-
-### Bug Fixes
-
-* **next:** text colors in demo ([#1879](https://github.com/coveo/react-vapor/issues/1879)) ([e134024](https://github.com/coveo/react-vapor/commit/e134024d8fd9bc28c1cbd5f634d7ec588e8921da))
-
-
-
-
-
-# [10.0.0-next.22](https://github.com/coveo/react-vapor/compare/v10.0.0-next.21...v10.0.0-next.22) (2021-02-24)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.21](https://github.com/coveo/react-vapor/compare/v10.0.0-next.20...v10.0.0-next.21) (2021-02-22)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.20](https://github.com/coveo/react-vapor/compare/v10.0.0-next.19...v10.0.0-next.20) (2021-02-19)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.19](https://github.com/coveo/react-vapor/compare/v10.0.0-next.18...v10.0.0-next.19) (2021-02-18)
-
-
-### Bug Fixes
-
-* **code editor tests:** use tests from master ([af18363](https://github.com/coveo/react-vapor/commit/af1836393465318f53ce34281132c69733728a35))
-* **dropdown:** keyboard navigation ([297095f](https://github.com/coveo/react-vapor/commit/297095f17b851ffe508487a32aa927e45373c98b))
-* **jest config:** deleted useless files ([6ffc7aa](https://github.com/coveo/react-vapor/commit/6ffc7aa454522855886121ca7c5ffaa9d22f1d4b))
-* applied review ([d89776c](https://github.com/coveo/react-vapor/commit/d89776c24de083619d6f143ad2ad2a82de766f28))
-* applied review ([582e4d6](https://github.com/coveo/react-vapor/commit/582e4d6be070973d89930e43f4b32390c3e52f0e))
-* applied review for class name ([b3cf791](https://github.com/coveo/react-vapor/commit/b3cf79176bef5b4e8f64dfdffbef95e62bbe3471))
-* applied review for class name ([0d0c0e2](https://github.com/coveo/react-vapor/commit/0d0c0e2e0a0e0e492f18138575072ea99cc48294))
-* applied review for InfoBox ([cc32606](https://github.com/coveo/react-vapor/commit/cc3260696571b98988a8d1627774498c60da74f9))
-* applied review on pr ([9f1011f](https://github.com/coveo/react-vapor/commit/9f1011f6ce30d0e637d0171e1b2786268558f332))
-* better with the changes on the css file ([8a52095](https://github.com/coveo/react-vapor/commit/8a52095213164bb61e2ba8b57b3b9abe86d88d3e))
-* better with the changes on the css file ([aa0b4bc](https://github.com/coveo/react-vapor/commit/aa0b4bcb4c41f7cda50ea3663dd4f369ffb8fdf4))
-* created css class for loading item box ([4057438](https://github.com/coveo/react-vapor/commit/4057438f25bd13ad07e67bc5a2afe8df79562fcd))
-* fix blankslate border color ([cecfa32](https://github.com/coveo/react-vapor/commit/cecfa32e883acf8157264356259ad460f3c1399a))
-* fix error toast color + reworked the uts ([676e98c](https://github.com/coveo/react-vapor/commit/676e98ca6abeaee8f27e70697386a1b1549221a2))
-* fix error toast color + reworked the uts ([a9e4132](https://github.com/coveo/react-vapor/commit/a9e4132b9eaa0c23cfa864264e9719a55b7c56b0))
-* fix for color demo ([7432321](https://github.com/coveo/react-vapor/commit/743232133fad6fcc3bf975d20e2d052ef6d31c46))
-* fix list-box transparency ([f06ed92](https://github.com/coveo/react-vapor/commit/f06ed92c776636f7e6e67e93fb980a0f0294113e))
-* fix tests for StatusCard ([9bd78ed](https://github.com/coveo/react-vapor/commit/9bd78ed442ad4c4feaadb33e800896a4e1434fb7))
-* fix tests for StatusCard ([00e1171](https://github.com/coveo/react-vapor/commit/00e117124c56ae1d18f796f6dd8296670ab829b5))
-* fix the colorBar demo with hardcoded colors ([7949737](https://github.com/coveo/react-vapor/commit/7949737a1ef5f3bafe92e00919e261ca499701b9))
-* fix transparency for multi value input disabled remove btn ([594db76](https://github.com/coveo/react-vapor/commit/594db76f3cb2d1040e22cc732bd726704cf81289))
-* fix transparency for multi value input disabled remove btn ([4035536](https://github.com/coveo/react-vapor/commit/4035536794f9d4b1e5c5792d2a39ae3a8902b756))
-* fixed collapsible header color ([78d3cbf](https://github.com/coveo/react-vapor/commit/78d3cbf9c1a426cc6b8fe798c7fe2bda1ea11d7e))
-* fixed collapsible header color ([df7640c](https://github.com/coveo/react-vapor/commit/df7640cf409b942e88e12e73bb6f910881b29431))
-* forgot to fix the uts like a noob ([169b837](https://github.com/coveo/react-vapor/commit/169b83705c9c802f375d50f97a96ba61b0a842b9))
-* forgot to fix the uts like a noob ([7eac20a](https://github.com/coveo/react-vapor/commit/7eac20a08a493c41bf559ed921a0f138812f34e2))
-* forgot to uncomment the var for the color ([419d842](https://github.com/coveo/react-vapor/commit/419d842602e34c27e9dcde9bff653a947bd92481))
-* forgot to uncomment the var for the color ([8f054cc](https://github.com/coveo/react-vapor/commit/8f054cccc3226ff53ab696ba128241f4aa0a637b))
-* improved my fix for the statusCard border-left color ([2fce7cc](https://github.com/coveo/react-vapor/commit/2fce7ccea074c92b785ea7ac756fd36b1a7aa671))
-* improved my fix for the statusCard border-left color ([419ffdf](https://github.com/coveo/react-vapor/commit/419ffdf119ab7855aad56c2f92519738fc341f45))
-* rebase on next ([4f13401](https://github.com/coveo/react-vapor/commit/4f134010f4b05b14955ad6769ce381ce36d163a3))
-* remove dead classes in actionableItem demo ([ec58c3d](https://github.com/coveo/react-vapor/commit/ec58c3d6d4c064b428b8413b7572911cd3ecaa1b))
-* remove dead classes part 3 ([1f82756](https://github.com/coveo/react-vapor/commit/1f82756bf00ecfb606f5ada1169dc5c36eb33ef6))
-* remove dead classes part 4 ([9a3ccb2](https://github.com/coveo/react-vapor/commit/9a3ccb2a975582cef6ffcddbad69162ebba17a83))
-* removed bg-color util + started clean up of dead classes ([e88a64a](https://github.com/coveo/react-vapor/commit/e88a64a8e72911888427db9590ba4959a3acdf01))
-* removed the demo color and style page for color ([6020d65](https://github.com/coveo/react-vapor/commit/6020d6505186fbdb954e5944bd3b29aa79766395))
-* removed the demo color and style page for color ([d6245ea](https://github.com/coveo/react-vapor/commit/d6245eaba4c69b0dc78984fdd2686e43ec7b6fb7))
-* removed typography color exmaple from style demo ([8c69623](https://github.com/coveo/react-vapor/commit/8c69623dd3dc0acd56495ea52d49a931e9476e08))
-* removed unused class ([52bdcc4](https://github.com/coveo/react-vapor/commit/52bdcc4a7c39065cf94f9d640d8b0da6056b10c4))
-* removed unused class ([161de12](https://github.com/coveo/react-vapor/commit/161de12ec0abdd4fd70c00f29e632a9fb956d1d8))
-* removing dead classes part 2 ([152f0db](https://github.com/coveo/react-vapor/commit/152f0db671d78e9face1d2daf4ef575ec287228c))
-* tried to fix the color for the date picker ([5497152](https://github.com/coveo/react-vapor/commit/54971524da8074a2d261ba909375ebc3e5e22767))
-* wIP status card left border color giving me headache ([6c6cd88](https://github.com/coveo/react-vapor/commit/6c6cd88c668632300ccd11c6a5ad870e5b583374))
-* **browser-preview:** remove center-align from container ([#1855](https://github.com/coveo/react-vapor/issues/1855)) ([ddd3661](https://github.com/coveo/react-vapor/commit/ddd36616cc14db688ec27669d40a03f91587d038))
-* **chosen:** load chosen in the demo ([59cde1a](https://github.com/coveo/react-vapor/commit/59cde1aecace87d312364ad67f0f4435ff4b9978))
-* **code-editor:** add the possibility to refresh the editor ([a599f58](https://github.com/coveo/react-vapor/commit/a599f58b2461519abfce8eb3c957bcccc4b93479))
-* **drop:** revert the revert of the fix for drop ([77b332c](https://github.com/coveo/react-vapor/commit/77b332ce426672536e7651b0b6727f552fc167ba))
-* **drop pod:** revert portal removal ([1d37895](https://github.com/coveo/react-vapor/commit/1d37895fbe3119bda535cbbfd02641bc13c4ca0c))
-* **dropdown:** keyboard navigation ([db623a6](https://github.com/coveo/react-vapor/commit/db623a6966fe401d19baf86e7151d8fea6753990))
-* **external globals:** using a plugin ([#1845](https://github.com/coveo/react-vapor/issues/1845)) ([dcd614d](https://github.com/coveo/react-vapor/commit/dcd614dd65a96afc9b0f88263e83bf3118ea94e8))
-* **logo-card title:** conditionally render margin bottom on title ([590259f](https://github.com/coveo/react-vapor/commit/590259f1435006377285e89f52bf44abd996c7d1))
-* **rollup:** diff2html name export ([#1865](https://github.com/coveo/react-vapor/issues/1865)) ([240898e](https://github.com/coveo/react-vapor/commit/240898e5912f86719203839305c7d04b132fe395))
-* **rollup build:** adding regular globals ([59cbf6a](https://github.com/coveo/react-vapor/commit/59cbf6a9dae5f4c7f3af5cbace67d17680cf356a))
-* applied review ([a63677d](https://github.com/coveo/react-vapor/commit/a63677d8dae172efddd4d172d0a18b3d425346e3))
-* applied review for class name ([5568dcc](https://github.com/coveo/react-vapor/commit/5568dcc9dba1e65699ae5127a55dd9977f2e4cfc))
-* applied review for InfoBox ([9d86234](https://github.com/coveo/react-vapor/commit/9d86234196a9b6b9b1779bf080080c1c60bb9d4e))
-* applied review for InfoBox ([c5931a5](https://github.com/coveo/react-vapor/commit/c5931a51cafdbad79837cd1b460ae8817c058342))
-* applied review on pr ([8ff8cf9](https://github.com/coveo/react-vapor/commit/8ff8cf920e042826c82f64f866c13917ecaaf099))
-* applied review on pr ([cb2ffc2](https://github.com/coveo/react-vapor/commit/cb2ffc292af5ab5d69ae6c889f91224dd2025222))
-* better with the changes on the css file ([c8e4218](https://github.com/coveo/react-vapor/commit/c8e4218577c0125dbd12b2828ccdf2b8dc1e168e))
-* created css class for loading item box ([b4a079c](https://github.com/coveo/react-vapor/commit/b4a079ce518290d5a9be6a3766ab4033125fc16c))
-* created css class for loading item box ([072ccf1](https://github.com/coveo/react-vapor/commit/072ccf11b3bd5e0283cd3e1ab9a3f176c8d66536))
-* fix blankslate border color ([e99fc58](https://github.com/coveo/react-vapor/commit/e99fc5823d306eaa1edba2143e9bc37688bf68fb))
-* fix blankslate border color ([dad9b6e](https://github.com/coveo/react-vapor/commit/dad9b6e40124ad65d202e73cd2d4836b296ed2fc))
-* fix error toast color + reworked the uts ([13a918c](https://github.com/coveo/react-vapor/commit/13a918cfc52bfd0b8f47435d69b15f3135ccba82))
-* fix for color demo ([233db06](https://github.com/coveo/react-vapor/commit/233db068560b28048b98937cc096d484208d6a11))
-* fix for color demo ([85770f2](https://github.com/coveo/react-vapor/commit/85770f2714e075592b0f1af940bd7293c4af572e))
-* fix list-box transparency ([18ff568](https://github.com/coveo/react-vapor/commit/18ff5689f64c2ebd05495a51a880fcf19aa0c6ac))
-* fix list-box transparency ([7d41ccf](https://github.com/coveo/react-vapor/commit/7d41ccf149df7370223e2d1d39647714ae63e5f0))
-* fix tests for StatusCard ([a540209](https://github.com/coveo/react-vapor/commit/a540209ad0e49672ee49ea4718338ee7209a189a))
-* fix the colorBar demo with hardcoded colors ([2bf9ed8](https://github.com/coveo/react-vapor/commit/2bf9ed8906eaf47bff9c81229dd5960184a8e561))
-* fix the colorBar demo with hardcoded colors ([b739ea0](https://github.com/coveo/react-vapor/commit/b739ea02d1457d28dc3862f42bd38ab965252021))
-* fix transparency for multi value input disabled remove btn ([0113991](https://github.com/coveo/react-vapor/commit/01139919fb4dd5ddc203a86960cd35ba8ba4c6c7))
-* fixed collapsible header color ([003bd2e](https://github.com/coveo/react-vapor/commit/003bd2e17b93c976015c52acf98be747bcdf5b30))
-* forgot to fix the uts like a noob ([3ecc87e](https://github.com/coveo/react-vapor/commit/3ecc87e93f04bfead635517eafad2ff8fc55248e))
-* forgot to uncomment the var for the color ([478b77c](https://github.com/coveo/react-vapor/commit/478b77c51629270d8be6c870d40fb6832f66fcfd))
-* improved my fix for the statusCard border-left color ([25d16f0](https://github.com/coveo/react-vapor/commit/25d16f0a7d48419d2f7f5a4d33ce6ebd1dffe346))
-* rebase on next ([2ba2255](https://github.com/coveo/react-vapor/commit/2ba225540a9d3e532c4c30263ad1f29178543c72))
-* rebase on next ([102afe2](https://github.com/coveo/react-vapor/commit/102afe233c9a017e50f0a70e772c240809e81c26))
-* remove dead classes in actionableItem demo ([859a2e4](https://github.com/coveo/react-vapor/commit/859a2e46c22676334b887359d3b2d01e0a1644e8))
-* remove dead classes in actionableItem demo ([e38c3ec](https://github.com/coveo/react-vapor/commit/e38c3ec44e535fb5c63620948aa61e9b39d4aca9))
-* remove dead classes part 3 ([4aa7923](https://github.com/coveo/react-vapor/commit/4aa79233dd474abd7d14cb36bbbf077f7f038625))
-* remove dead classes part 3 ([13ab407](https://github.com/coveo/react-vapor/commit/13ab4074a7a49feab2b76ac4bf3c96881dcfd5ea))
-* remove dead classes part 4 ([e8e34cf](https://github.com/coveo/react-vapor/commit/e8e34cfad7dc8e9914334f7c4b0d8b12d36cb5a4))
-* remove dead classes part 4 ([187b67d](https://github.com/coveo/react-vapor/commit/187b67d3c6794d349e4ae096e434f46f4e945c32))
-* removed bg-color util + started clean up of dead classes ([79d5028](https://github.com/coveo/react-vapor/commit/79d50281ce8b78cc4ab9df7726720adac5020515))
-* removed bg-color util + started clean up of dead classes ([531c82f](https://github.com/coveo/react-vapor/commit/531c82ff256c8cb9d65d890088198fb4ccd698ca))
-* removed the demo color and style page for color ([fc50594](https://github.com/coveo/react-vapor/commit/fc50594cf4bee113e420e45da1714b92837f7611))
-* removed typography color exmaple from style demo ([eb53a11](https://github.com/coveo/react-vapor/commit/eb53a1110684107862c0d329212a1d9b94a4045f))
-* removed typography color exmaple from style demo ([38f1ecd](https://github.com/coveo/react-vapor/commit/38f1ecdcf57078976417a2a831f0012d2c52a62b))
-* removed unused class ([a381f60](https://github.com/coveo/react-vapor/commit/a381f60fc24f9719127b7e270855286be9440e38))
-* removing dead classes part 2 ([e205a98](https://github.com/coveo/react-vapor/commit/e205a986314c5bc6f103bbd9258dd8228e47ff27))
-* removing dead classes part 2 ([3eb6686](https://github.com/coveo/react-vapor/commit/3eb668695be88e6bac035eec6f1860190196e18a))
-* tried to fix the color for the date picker ([ae48ca7](https://github.com/coveo/react-vapor/commit/ae48ca747adad51f8a1e752e0d075f091ba9d619))
-* using var in .scss + fixed broken demo for spaced-box ([3f93ebc](https://github.com/coveo/react-vapor/commit/3f93ebcdd322129bfc3b2f295addd5cc65684d86))
-* wIP status card left border color giving me headache ([67f2703](https://github.com/coveo/react-vapor/commit/67f2703c7a5437e47589c5b8159d62c63018479a))
-* wIP status card left border color giving me headache ([ecc3cfb](https://github.com/coveo/react-vapor/commit/ecc3cfb3f3c6190eee9afcdc9de00c0fc2e799cc))
-* **browser-preview:** remove center-align from container ([#1855](https://github.com/coveo/react-vapor/issues/1855)) ([591941c](https://github.com/coveo/react-vapor/commit/591941c818bfa631ec97a27761a74d9fd6819d3d))
-* **chosen:** load chosen in the demo ([aa65668](https://github.com/coveo/react-vapor/commit/aa65668c1cf7024d22a4d3e1777f7ddff85c3165))
-* **code-editor:** add the possibility to refresh the editor ([e186443](https://github.com/coveo/react-vapor/commit/e1864433eadd765dbb676b536ad6cee4df5f6c76))
-* **drop:** revert the revert of the fix for drop ([3d790b5](https://github.com/coveo/react-vapor/commit/3d790b52735e1c9bdb40cc63d439a81b99989e0d))
-* **drop pod:** revert portal removal ([ce1dfa3](https://github.com/coveo/react-vapor/commit/ce1dfa37bf97cb7d9f7f665ac57b4e7e0a2a84c5))
-* **dropdown:** keyboard navigation ([797ff11](https://github.com/coveo/react-vapor/commit/797ff115e72cd2ec24614b05a3aa3a870c4e0e89))
-* **external globals:** using a plugin ([#1845](https://github.com/coveo/react-vapor/issues/1845)) ([f44344a](https://github.com/coveo/react-vapor/commit/f44344a90e2415caf592f878913e92ed43dccecf))
-* **logo-card title:** conditionally render margin bottom on title ([655e46d](https://github.com/coveo/react-vapor/commit/655e46d60138b9dcf458cdf7ce7929bae26fa39b))
-* **rollup:** diff2html name export ([#1865](https://github.com/coveo/react-vapor/issues/1865)) ([7a88c39](https://github.com/coveo/react-vapor/commit/7a88c396a5b3d5d543cdf69b53fed6fe527cf8f3))
-* **rollup build:** adding regular globals ([8d0b639](https://github.com/coveo/react-vapor/commit/8d0b639bc960e410ba013e708f97d7e398f63b55))
-* **single-select:** buggy infinite scroll when zoom is 110% in chrome ([#1838](https://github.com/coveo/react-vapor/issues/1838)) ([69bdd3a](https://github.com/coveo/react-vapor/commit/69bdd3a02c6550235939980c17fc4d12041b997a))
+# [9.34.0](https://github.com/coveo/react-vapor/compare/v9.33.0...v9.34.0) (2021-03-02)
 
 
 ### Features
 
-* **react-vapor:** implement modal wizard component ([a7bda6c](https://github.com/coveo/react-vapor/commit/a7bda6ce9e174aff7b57cee82b926fa02dc3fc2f))
-* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([1460180](https://github.com/coveo/react-vapor/commit/14601801d40b5f411722a4811c3acf531e038b7d))
-* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([8cc145d](https://github.com/coveo/react-vapor/commit/8cc145dadeb7d6b4614c99ca8f96349682815a9d))
-* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([7f7ab75](https://github.com/coveo/react-vapor/commit/7f7ab75fbb5ff238b3c9a4ab3b8de3dcfc81ee9e))
-* **react-vapor:** implement modal wizard component ([2677c25](https://github.com/coveo/react-vapor/commit/2677c258410dd2410aa5b3987a2172f13679a3d9))
-* **rollup:** minify code with terser plugin ([75d9bc0](https://github.com/coveo/react-vapor/commit/75d9bc0f37f58180513109d4903fc3b60fcec0c7))
-* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([77c1f7f](https://github.com/coveo/react-vapor/commit/77c1f7f4bdc7f45584bf9aa798876625bc8d164a))
-* **rollup:** minify code with terser plugin ([c90c52d](https://github.com/coveo/react-vapor/commit/c90c52dab69b145f576451d6a5a1960da13bfe24))
+* **toast:** added a download section to the vapor toast ([2129fd7](https://github.com/coveo/react-vapor/commit/2129fd75688937830fbc139999546f61c0a7b1a0))
 
 
 
 
 
-# [10.0.0-next.18](https://github.com/coveo/react-vapor/compare/v10.0.0-next.17...v10.0.0-next.18) (2021-02-14)
-
-
-### Bug Fixes
-
-* applied review ([235df78](https://github.com/coveo/react-vapor/commit/235df789eca4d24c610686ddabdf43bb0a55663f))
-* applied review for InfoBox ([0632b7b](https://github.com/coveo/react-vapor/commit/0632b7bf93e5ae6287ab4173ea1abf298bbea011))
-* better with the changes on the css file ([ecc8aa6](https://github.com/coveo/react-vapor/commit/ecc8aa660d9b1d9b5b1acfdbb7390d2abab58215))
-* created css class for loading item box ([c4fbaef](https://github.com/coveo/react-vapor/commit/c4fbaef518411c397b52cb85e5ef4dd6d1572355))
-* fix error toast color + reworked the uts ([f8e485d](https://github.com/coveo/react-vapor/commit/f8e485dd8c8e38d7108c0c793d04fc34dfda646b))
-* fix for color demo ([7eb4836](https://github.com/coveo/react-vapor/commit/7eb48360ac5e95e048b3344f1a6db849b7d1f4b2))
-* fix list-box transparency ([49731c6](https://github.com/coveo/react-vapor/commit/49731c61c1d05b2f3c447951aaf148202731be6e))
-* fix merged conflits ([f3c2a23](https://github.com/coveo/react-vapor/commit/f3c2a23d49e7c21fcf0abb108247b943bef502da))
-* fix the colorBar demo with hardcoded colors ([0de7650](https://github.com/coveo/react-vapor/commit/0de7650fbf32ccc7bc6dfd02755017f912464afd))
-* fix transparency for multi value input disabled remove btn ([d9cfe0f](https://github.com/coveo/react-vapor/commit/d9cfe0f7a4756fc059e7c092649a93121fddbf70))
-* fixed collapsible header color ([9a30b79](https://github.com/coveo/react-vapor/commit/9a30b792de1cda3e53892a7706eb45a8f37da62f))
-* merge branch 'next' ([349e89b](https://github.com/coveo/react-vapor/commit/349e89b8e7a6d10a73670ebd29ae25d3c6cc788f))
-* merge conflicts fix ([882f014](https://github.com/coveo/react-vapor/commit/882f01414e2cad1fcc8c0433f9cc5bba953c1101))
-* pulled next to get latest changes ([16dde74](https://github.com/coveo/react-vapor/commit/16dde74d933ff8a450af9e517a415f237a1f3401))
-* remove dead classes part 3 ([c8a471c](https://github.com/coveo/react-vapor/commit/c8a471c0a4b45ee4fc17689ee6f771cb4fa544fd))
-* remove dead classes part 4 ([453efed](https://github.com/coveo/react-vapor/commit/453efed6ee680dfc5cab96607f2e8d11c63daef7))
-* removed bg-color util + started clean up of dead classes ([4ddf631](https://github.com/coveo/react-vapor/commit/4ddf631002667c95ec07366b66c4aacd660bb0dc))
-* removed the demo color and style page for color ([4ff7f9e](https://github.com/coveo/react-vapor/commit/4ff7f9ef9be848691012df07aa2b9bbf4c82a53b))
-* removed typography color exmaple from style demo ([45c5612](https://github.com/coveo/react-vapor/commit/45c5612ae1336b31eb5ce0f69d420122e450deb1))
-* removing dead classes part 2 ([1c0946e](https://github.com/coveo/react-vapor/commit/1c0946ebc60449a92c3484532a7a20c7b8722fb7))
-* tried to fix the color for the date picker ([54c10da](https://github.com/coveo/react-vapor/commit/54c10da7b570b5b389665381955cc854700bc3bf))
-* using var in .scss + fixed broken demo for spaced-box ([7ac26cb](https://github.com/coveo/react-vapor/commit/7ac26cb8664093401217703f4776371812ba618b))
-
-
-
-
-
-# [10.0.0-next.17](https://github.com/coveo/react-vapor/compare/v10.0.0-next.16...v10.0.0-next.17) (2021-02-12)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.16](https://github.com/coveo/react-vapor/compare/v10.0.0-next.15...v10.0.0-next.16) (2021-02-10)
-
-
-### Bug Fixes
-
-* applied review for class name ([5c5bc90](https://github.com/coveo/react-vapor/commit/5c5bc90e6afe2e6c9908386b7edffbc032efd7ed))
-* fix blankslate border color ([d01e77d](https://github.com/coveo/react-vapor/commit/d01e77deba0cceb1cfbe5795f4cc425861887cfc))
-* fix merge conflicts ([bee033e](https://github.com/coveo/react-vapor/commit/bee033e3b6571afb8868ff74fcd63be0cec122fc))
-* fix tests for StatusCard ([24918ce](https://github.com/coveo/react-vapor/commit/24918cea4cb7d493d1b19acc2877ed820cfafbb4))
-* forgot to fix the uts like a noob ([e91c481](https://github.com/coveo/react-vapor/commit/e91c4814bea08b472fd9596506f3ff3b8b794530))
-* forgot to uncomment the var for the color ([51a7c60](https://github.com/coveo/react-vapor/commit/51a7c603bc30e0ff6cb254f5d66aec03a587ba85))
-* improved my fix for the statusCard border-left color ([240c5ae](https://github.com/coveo/react-vapor/commit/240c5ae0c19155e00d78cd960da5b55bd3ad115b))
-* remove dead classes in actionableItem demo ([d91c1e6](https://github.com/coveo/react-vapor/commit/d91c1e6c94aff22e291379c6c6867a667d2b0653))
-* removed unused class ([d9b6dd6](https://github.com/coveo/react-vapor/commit/d9b6dd68c76f73569eacddf6979f837dd720a591))
-* wIP status card left border color giving me headache ([9094a4e](https://github.com/coveo/react-vapor/commit/9094a4ecb32125bbdd6ab9254c1e570df6f4224e))
-
-
-
-
-
-# [10.0.0-next.15](https://github.com/coveo/react-vapor/compare/v10.0.0-next.14...v10.0.0-next.15) (2021-02-08)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.14](https://github.com/coveo/react-vapor/compare/v10.0.0-next.13...v10.0.0-next.14) (2021-02-08)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.13](https://github.com/coveo/react-vapor/compare/v10.0.0-next.12...v10.0.0-next.13) (2021-02-04)
+# [9.33.0](https://github.com/coveo/react-vapor/compare/v9.32.6...v9.33.0) (2021-03-01)
 
 
 ### Features
 
-* **checkbox:** style ([75fd820](https://github.com/coveo/react-vapor/commit/75fd82025ee4dd436d7105c3a3bead79f601ee21))
+* **diff viewer:** change lib ([4fd943f](https://github.com/coveo/react-vapor/commit/4fd943faf5cd0d832544564d822e5bd0cd7033a1))
 
 
 
 
 
-# [10.0.0-next.12](https://github.com/coveo/react-vapor/compare/v10.0.0-next.11...v10.0.0-next.12) (2021-02-03)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.11](https://github.com/coveo/react-vapor/compare/v10.0.0-next.10...v10.0.0-next.11) (2021-02-01)
+## [9.32.6](https://github.com/coveo/react-vapor/compare/v9.32.5...v9.32.6) (2021-02-22)
 
 **Note:** Version bump only for package react-vapor
 
@@ -357,7 +33,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [10.0.0-next.10](https://github.com/coveo/react-vapor/compare/v10.0.0-next.9...v10.0.0-next.10) (2021-01-28)
+## [9.32.5](https://github.com/coveo/react-vapor/compare/v9.32.4...v9.32.5) (2021-02-19)
 
 **Note:** Version bump only for package react-vapor
 
@@ -365,27 +41,18 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [10.0.0-next.9](https://github.com/coveo/react-vapor/compare/v10.0.0-next.8...v10.0.0-next.9) (2021-01-28)
+## [9.32.4](https://github.com/coveo/react-vapor/compare/v9.32.3...v9.32.4) (2021-02-18)
 
 
 ### Bug Fixes
 
-* applied review on pr ([7841497](https://github.com/coveo/react-vapor/commit/7841497d6f93ba318dc7b13438106e1f4b93a7a9))
-* rebase on next ([b4cee71](https://github.com/coveo/react-vapor/commit/b4cee71cb27def5ba9cf2d8e3ad08e21d3b24794))
+* **modalwizard:** make steps navigation work with function components ([a0ccd9c](https://github.com/coveo/react-vapor/commit/a0ccd9c436042b7807009d86c3902840df3b5b9b))
 
 
 
 
 
-# [10.0.0-next.8](https://github.com/coveo/react-vapor/compare/v10.0.0-next.7...v10.0.0-next.8) (2021-01-27)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.7](https://github.com/coveo/react-vapor/compare/v10.0.0-next.6...v10.0.0-next.7) (2021-01-27)
+## [9.32.3](https://github.com/coveo/react-vapor/compare/v9.32.2...v9.32.3) (2021-02-17)
 
 **Note:** Version bump only for package react-vapor
 
@@ -393,42 +60,187 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [10.0.0-next.6](https://github.com/coveo/react-vapor/compare/v10.0.0-next.5...v10.0.0-next.6) (2021-01-27)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.5](https://github.com/coveo/react-vapor/compare/v10.0.0-next.4...v10.0.0-next.5) (2021-01-26)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.4](https://github.com/coveo/react-vapor/compare/v10.0.0-next.3...v10.0.0-next.4) (2021-01-26)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [10.0.0-next.3](https://github.com/coveo/react-vapor/compare/v10.0.0-next.2...v10.0.0-next.3) (2021-01-25)
+## [9.32.2](https://github.com/coveo/react-vapor/compare/v9.32.1...v9.32.2) (2021-02-16)
 
 
 ### Bug Fixes
 
-* rebase on next ([e9c233c](https://github.com/coveo/react-vapor/commit/e9c233c41f917a1abc3399fac39971b081335f50))
+* **chosen:** load chosen in the demo ([32d23a1](https://github.com/coveo/react-vapor/commit/32d23a16bd5a29ec9ce9f82685f01c1524b755fe))
 
 
 
 
 
-# [10.0.0-next.2](https://github.com/coveo/react-vapor/compare/v10.0.0-next.1...v10.0.0-next.2) (2021-01-25)
+## [9.32.1](https://github.com/coveo/react-vapor/compare/v9.32.0...v9.32.1) (2021-02-16)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [9.32.0](https://github.com/coveo/react-vapor/compare/v9.31.1...v9.32.0) (2021-02-15)
+
+
+### Bug Fixes
+
+* **dropdown:** keyboard navigation ([21ccd2c](https://github.com/coveo/react-vapor/commit/21ccd2c8c8456d084108c1a0fd622a6b16add319))
+* **rollup:** diff2html name export ([#1865](https://github.com/coveo/react-vapor/issues/1865)) ([dddcd6b](https://github.com/coveo/react-vapor/commit/dddcd6b079edf2b9257f2ee57a8bf77e1fa72d96))
+
+
+### Features
+
+* **react-vapor:** implement modal wizard component ([2c8cf76](https://github.com/coveo/react-vapor/commit/2c8cf76636a2f9af35a8ddee6c158ef5631f68c4))
+
+
+
+
+
+## [9.31.1](https://github.com/coveo/react-vapor/compare/v9.31.0...v9.31.1) (2021-02-12)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [9.31.0](https://github.com/coveo/react-vapor/compare/v9.30.3...v9.31.0) (2021-02-12)
+
+
+### Features
+
+* update preview images and some styling ([#1861](https://github.com/coveo/react-vapor/issues/1861)) ([367a8b8](https://github.com/coveo/react-vapor/commit/367a8b8582bf4b171d28b3dcc7214c3e5796bad8))
+
+
+
+
+
+## [9.30.3](https://github.com/coveo/react-vapor/compare/v9.30.2...v9.30.3) (2021-02-09)
+
+
+### Bug Fixes
+
+* **drop:** revert the revert of the fix for drop ([ca2a886](https://github.com/coveo/react-vapor/commit/ca2a886abdfa4bcce2c098c9787b449b6d07e023))
+
+
+
+
+
+## [9.30.2](https://github.com/coveo/react-vapor/compare/v9.30.1...v9.30.2) (2021-02-04)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.30.1](https://github.com/coveo/react-vapor/compare/v9.30.0...v9.30.1) (2021-02-03)
+
+
+### Bug Fixes
+
+* **browser-preview:** remove center-align from container ([#1855](https://github.com/coveo/react-vapor/issues/1855)) ([9b9811b](https://github.com/coveo/react-vapor/commit/9b9811badb6b276d94202db813e08640f6aa9bb8))
+* **logo-card title:** conditionally render margin bottom on title ([f3cf3db](https://github.com/coveo/react-vapor/commit/f3cf3db4191b5fd4420b08a6145ae9353080c395))
+
+
+
+
+
+# [9.30.0](https://github.com/coveo/react-vapor/compare/v9.29.5...v9.30.0) (2021-02-02)
+
+
+### Features
+
+* **browser-preview:** add new components ([#1853](https://github.com/coveo/react-vapor/issues/1853)) ([bc7a0a2](https://github.com/coveo/react-vapor/commit/bc7a0a2c2798a081c85e08de9f332f8a5b4dab34))
+
+
+
+
+
+## [9.29.5](https://github.com/coveo/react-vapor/compare/v9.29.4...v9.29.5) (2021-01-29)
+
+
+### Bug Fixes
+
+* **rollup build:** adding regular globals ([be3fe55](https://github.com/coveo/react-vapor/commit/be3fe55e68a9600f0ffb0b1a60a85b7fb9b756c7))
+
+
+
+
+
+## [9.29.4](https://github.com/coveo/react-vapor/compare/v9.29.3...v9.29.4) (2021-01-28)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.29.3](https://github.com/coveo/react-vapor/compare/v9.29.2...v9.29.3) (2021-01-28)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [9.29.2](https://github.com/coveo/react-vapor/compare/v9.29.1...v9.29.2) (2021-01-27)
+
+
+### Bug Fixes
+
+* **code-editor:** add the possibility to refresh the editor ([884b0b3](https://github.com/coveo/react-vapor/commit/884b0b3e9d7828a09ed518b0c2d7225cea6f99b1))
+
+
+
+
+
+## [9.29.1](https://github.com/coveo/react-vapor/compare/v9.29.0...v9.29.1) (2021-01-27)
+
+
+### Bug Fixes
+
+* **external globals:** using a plugin ([#1845](https://github.com/coveo/react-vapor/issues/1845)) ([58f80ae](https://github.com/coveo/react-vapor/commit/58f80aed50efdd5735b1e2161a67a53fa533f1e9))
+
+
+
+
+
+# [9.29.0](https://github.com/coveo/react-vapor/compare/v9.28.2...v9.29.0) (2021-01-27)
+
+
+### Bug Fixes
+
+* **single-select:** buggy infinite scroll when zoom is 110% in chrome ([#1838](https://github.com/coveo/react-vapor/issues/1838)) ([f57c264](https://github.com/coveo/react-vapor/commit/f57c264634985ec81e9912a3f9c467f03e67c641))
+
+
+### Features
+
+* **rollup:** minify code with terser plugin ([a7bff42](https://github.com/coveo/react-vapor/commit/a7bff425a76e11ed29b9bf3ec1fd243b92c94aa6))
+
+
+
+
+
+## [9.28.2](https://github.com/coveo/react-vapor/compare/v9.28.1...v9.28.2) (2021-01-26)
+
+
+### Bug Fixes
+
+* **drop pod:** revert portal removal ([9c0b663](https://github.com/coveo/react-vapor/commit/9c0b663575d431c87128150aeeca9d1e614f0866))
+
+
+
+
+
+## [9.28.1](https://github.com/coveo/react-vapor/compare/v9.28.0...v9.28.1) (2021-01-25)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
 # [9.28.0](https://github.com/coveo/react-vapor/compare/v9.27.1...v9.28.0) (2021-01-25)
 
 **Note:** Version bump only for package react-vapor
@@ -445,41 +257,6 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [10.0.0-next.1](https://github.com/coveo/react-vapor/compare/v10.0.0-next.0...v10.0.0-next.1) (2021-01-25)
-
-
-### Bug Fixes
-
-* **button:** text ([ef6184c](https://github.com/coveo/react-vapor/commit/ef6184cb9d703e49688d85248de5010254a46c85))
-* **multiline-field:** fix multiline field add action color ([4ff1732](https://github.com/coveo/react-vapor/commit/4ff17327b81aab9c02d0e1b7c04f505b96b158bc))
-* **options-cycle:** text alignment ([11ff5c4](https://github.com/coveo/react-vapor/commit/11ff5c456cf31b9842bd2eb867572b3c0538d65d))
-
-
-
-
-
-# [12.0.0-next.0](https://github.com/coveo/react-vapor/compare/v11.0.0-next.0...v12.0.0-next.0) (2021-01-25)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [11.0.0-next.0](https://github.com/coveo/react-vapor/compare/v10.0.0-next.0...v11.0.0-next.0) (2021-01-22)
-
-
-### Bug Fixes
-
-* **button:** text ([ef6184c](https://github.com/coveo/react-vapor/commit/ef6184cb9d703e49688d85248de5010254a46c85))
-* **multiline-field:** fix multiline field add action color ([4ff1732](https://github.com/coveo/react-vapor/commit/4ff17327b81aab9c02d0e1b7c04f505b96b158bc))
-* **options-cycle:** text alignment ([11ff5c4](https://github.com/coveo/react-vapor/commit/11ff5c456cf31b9842bd2eb867572b3c0538d65d))
-
-
-
-
-
-# [10.0.0-next.0](https://github.com/coveo/react-vapor/compare/v9.26.2...v10.0.0-next.0) (2021-01-22)
 # [9.27.0](https://github.com/coveo/react-vapor/compare/v9.26.2...v9.27.0) (2021-01-22)
 
 

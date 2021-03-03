@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "10.0.0-next.33",
+    "version": "9.34.0",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
@@ -22,9 +22,8 @@
     "dependencies": {
         "classnames": "2.2.6",
         "codemirror": "5.58.2",
-        "coveo-styleguide": "^10.0.0-next.33",
+        "coveo-styleguide": "^9.34.0",
         "d3": "3.5.17",
-        "diff2html": "3.1.8",
         "faker": "4.1.0",
         "jquery": "3.5.1",
         "lorem-ipsum": "2.0.3",
@@ -35,7 +34,7 @@
         "react-redux": "5.1.2",
         "react-router-dom": "5.2.0",
         "react-syntax-highlighter": "13.5.1",
-        "react-vapor": "^10.0.0-next.33",
+        "react-vapor": "^9.34.0",
         "redux": "4.0.5",
         "redux-devtools-extension": "2.13.8",
         "redux-promise-middleware": "6.1.2",
@@ -66,7 +65,7 @@
         "fibers": "4.0.2",
         "file-loader": "5.1.0",
         "fork-ts-checker-webpack-plugin": "5.0.14",
-        "html-webpack-plugin": "3.2.0",
+        "html-webpack-plugin": "4.5.1",
         "html-webpack-tags-plugin": "^2.0.17",
         "lint-staged": "9.4.2",
         "node-sass": "5.0.0",
@@ -82,7 +81,7 @@
         "typescript": "3.8.3",
         "webpack": "4.41.6",
         "webpack-cli": "3.3.11",
-        "webpack-dev-server": "3.10.3"
+        "webpack-dev-server": "3.11.2"
     },
     "lint-staged": {
         "**/*.scss": [

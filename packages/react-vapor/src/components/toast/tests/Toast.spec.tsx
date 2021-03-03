@@ -1,31 +1,45 @@
-import {mount, shallow} from 'enzyme';
+import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IToastProps, Toast, ToastType} from '../Toast';
 
 describe('Toasts', () => {
-    let defaultProps: IToastProps = {
-        title: '👑',
-    };
+    let toastComponent: ReactWrapper<IToastProps>;
+    let toastBasicAttributes: IToastProps;
+    let toastInstance: Toast;
 
     it('should render without errors', () => {
         expect(() => shallow(<Toast title="Hello" />)).not.toThrow();
     });
 
     describe('<Toast />', () => {
+        beforeEach(() => {
+            toastBasicAttributes = {
+                title: 'some title',
+            };
+
+            toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
+            toastInstance = toastComponent.instance() as Toast;
+        });
+
         it('should call prop onRender on mounting if set', () => {
             const renderSpy = jest.fn();
-            const toastComponent = mount(<Toast {...defaultProps} onRender={renderSpy} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onRender: renderSpy});
 
             toastComponent.unmount();
+            toastComponent.setProps(newToastAttributes).mount();
 
             expect(renderSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should call prop onDestroy on unmounting if set', () => {
             const destroySpy = jest.fn();
-            const toastComponent = mount(<Toast {...defaultProps} onDestroy={destroySpy} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onDestroy: destroySpy});
+
+            expect(() => toastInstance.componentWillUnmount()).not.toThrow();
+
+            toastComponent.setProps(newToastAttributes).mount();
 
             toastComponent.unmount();
 
@@ -33,56 +47,69 @@ describe('Toasts', () => {
         });
 
         it('should have class "mod-success" when type is Success', () => {
-            const toastComponent = mount(<Toast {...{type: ToastType.Success}} />);
+            toastComponent.setProps({type: ToastType.Success});
 
             expect(toastComponent.children().hasClass('mod-success')).toBe(true);
         });
 
         it('should have class "mod-success" when both type and className props are empty', () => {
-            const toastComponent = mount(<Toast />);
-
             expect(toastComponent.children().hasClass('mod-success')).toBe(true);
         });
 
-        it('should have class "mod-error" when type is Error', () => {
-            const toastComponent = mount(<Toast {...{type: ToastType.Error}} />);
-
-            expect(toastComponent.children().hasClass('mod-error')).toBe(true);
-        });
-
         it('should have class "mod-warning" if the type is Warning', () => {
-            const toastComponent = mount(<Toast {...{type: ToastType.Warning}} />);
+            const expectedClass = '.mod-warning';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {type: ToastType.Warning});
 
-            expect(toastComponent.children().hasClass('mod-warning')).toBe(true);
+            expect(toastComponent.find(expectedClass).length).toBe(0);
+
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(toastComponent.find(expectedClass).length).toBe(1);
         });
 
-        it('should have class "mod-animated" if the animate props is true', () => {
-            const toastComponent = mount(<Toast {...defaultProps} animate={true} />);
+        it('should have class "mod-warning" if the type is Error', () => {
+            const expectedClass = '.mod-error';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {type: ToastType.Error});
 
-            expect(toastComponent.children().hasClass('mod-animated')).toBe(true);
+            expect(toastComponent.find(expectedClass).length).toBe(0);
+
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(toastComponent.find(expectedClass).length).toBe(1);
         });
 
-        it('should have class "mod-animated" if the animate props is undefined', () => {
-            const toastComponent = mount(<Toast {...defaultProps} />);
+        it('should have class "mod-animated" if the animate props is undefined or true', () => {
+            const expectedClass = '.mod-animated';
+            let newToastAttributes = _.extend({}, toastBasicAttributes, {animate: true});
 
-            expect(toastComponent.children().hasClass('mod-animated')).toBe(true);
+            expect(toastComponent.find(expectedClass).length).toBe(1);
+
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(toastComponent.find(expectedClass).length).toBe(1);
+
+            newToastAttributes = _.extend({}, toastBasicAttributes, {animate: false});
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(toastComponent.find(expectedClass).length).toBe(0);
         });
 
         it('should have any class specified in the className prop', () => {
             const expectedClass = 'my-awesome-class';
 
-            const toastComponent = mount(<Toast {...defaultProps} className={expectedClass} />);
+            toastComponent.setProps({className: expectedClass});
 
             expect(toastComponent.hasClass(expectedClass)).toBe(true);
         });
 
         it('should have a description when the content is set', () => {
             const descriptionContainer = '.toast-description';
-            const expectedDescription = 'GameStonks = 📈 💵';
+            const expectedDescription = 'description';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: expectedDescription});
 
-            const toastComponent = mount(
-                <Toast {...defaultProps} className={descriptionContainer} content={expectedDescription} />
-            );
+            expect(toastComponent.find(descriptionContainer).length).toBe(0);
+
+            toastComponent.setProps(newToastAttributes).mount();
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
             expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
@@ -90,15 +117,14 @@ describe('Toasts', () => {
 
         it('should allow JSX in the content', () => {
             const descriptionContainer = '.toast-description';
-            const expectedDescription = 'GameStonks = 📈 💵';
+            const expectedDescription = 'description';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {
+                content: () => <a href="#">{expectedDescription}</a>,
+            });
 
-            const toastComponent = mount(
-                <Toast
-                    {...defaultProps}
-                    className={descriptionContainer}
-                    content={() => <a href="#">{expectedDescription}</a>}
-                />
-            );
+            expect(toastComponent.find(descriptionContainer).length).toBe(0);
+
+            toastComponent.setProps(newToastAttributes).mount();
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
             expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
@@ -106,44 +132,48 @@ describe('Toasts', () => {
 
         it('should render the children node inside the toast', () => {
             const descriptionContainer = '.toast-description';
-            const expectedChildren = <div>GameStonks = 📈 💵</div>;
+            const expectedChildren = <div>my toast content</div>;
 
-            const toastComponent = mount(<Toast {...defaultProps} children={expectedChildren} />);
+            toastComponent = mount(<Toast {...toastBasicAttributes}>{expectedChildren}</Toast>, {
+                attachTo: document.getElementById('App'),
+            });
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
             expect(toastComponent.find(descriptionContainer).children().equals(expectedChildren)).toBe(true);
         });
 
-        it('should contain a toast-close when the dismissible prop is undefined or true', () => {
+        it('should contain a toast-close when the prop is undefined or true', () => {
             const closeSelector = '.toast-close';
 
-            const toastComponent = mount(<Toast {...defaultProps} dismissible={true} />);
-
+            // By default dismisslbe is omitted
             expect(toastComponent.find(closeSelector).length).toBe(1);
-        });
 
-        it('should contain a toast-close when the dismissible prop is undefined', () => {
-            const closeSelector = '.toast-close';
-
-            const toastComponent = mount(<Toast {...defaultProps} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {dismissible: true});
+            toastComponent.setProps(newToastAttributes).mount();
 
             expect(toastComponent.find(closeSelector).length).toBe(1);
         });
 
         it('should call onClose when the user clicks on .toast-close', () => {
             const closeSelector = '.toast-close';
-            const closeSpy = jest.fn();
-            const toastComponent = mount(<Toast {...defaultProps} onClose={closeSpy} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {onClose: jest.fn()});
 
             toastComponent.find(closeSelector).simulate('click');
 
-            expect(closeSpy).toHaveBeenCalledTimes(1);
+            expect(newToastAttributes.onClose).not.toHaveBeenCalled();
+
+            toastComponent.setProps(newToastAttributes).mount();
+
+            toastComponent.find(closeSelector).simulate('click');
+
+            expect(newToastAttributes.onClose).toHaveBeenCalledTimes(1);
         });
 
         it('should not contain a toast-close when the toast is not dismissible', () => {
             const closeSelector = '.toast-close';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {dismissible: false});
 
-            const toastComponent = mount(<Toast {...defaultProps} dismissible={false} />);
+            toastComponent.setProps(newToastAttributes).mount();
 
             expect(toastComponent.find(closeSelector).length).toBe(0);
         });
@@ -155,23 +185,32 @@ describe('Toasts', () => {
 
         beforeEach(() => {
             onCloseToast = jest.fn();
-            defaultProps = {
-                title: '👑',
-                dismiss: dismissDelay - 1, // Subtract 1 so the jest.useFakeTimers() work as expected
+            toastBasicAttributes = {
+                title: 'some title',
+                // Subtract 1 so the jasmine.tick work as expected
+                dismiss: dismissDelay - 1,
                 onClose: onCloseToast,
             };
 
             onCloseToast.mockReset();
             jest.useFakeTimers();
+
+            toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
+            toastInstance = toastComponent.instance() as Toast;
         });
 
         afterEach(() => {
             jest.clearAllTimers();
+            toastComponent?.unmount();
             onCloseToast.mockReset();
         });
 
         it('should call onClose when the timer expires', () => {
-            mount(<Toast {...defaultProps} />, {attachTo: document.getElementById('App')});
+            expect(onCloseToast).not.toHaveBeenCalled();
+
+            jest.advanceTimersByTime(dismissDelay);
+
+            expect(onCloseToast).toHaveBeenCalledTimes(1);
 
             jest.advanceTimersByTime(dismissDelay);
 
@@ -179,7 +218,14 @@ describe('Toasts', () => {
         });
 
         it('should not call onClose when the toast is not dimissible even if the timer expires', () => {
-            mount(<Toast {...defaultProps} dismissible={false} />);
+            // Needed to clear the timeout since we mounted it in the beforeEach
+            toastComponent.simulate('mouseEnter');
+
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {dismissible: false});
+            toastComponent.setProps(newToastAttributes).mount();
+            toastComponent.simulate('mouseLeave');
+
+            expect(onCloseToast).not.toHaveBeenCalled();
 
             jest.advanceTimersByTime(dismissDelay);
 
@@ -187,17 +233,17 @@ describe('Toasts', () => {
         });
 
         it('should clear the timeout on mouseenter', () => {
-            const toastComponent = mount(<Toast {...defaultProps} />);
+            expect(onCloseToast).not.toHaveBeenCalled();
 
+            expect(toastComponent.find('.toast').length).toBe(1);
             toastComponent.find('.toast').simulate('mouseEnter');
             jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
-            expect(toastComponent.find('.toast').length).toBe(1);
         });
 
         it('should reset the timeout on mouseleave', () => {
-            const toastComponent = mount(<Toast {...defaultProps} />);
+            expect(onCloseToast).not.toHaveBeenCalled();
 
             toastComponent.simulate('mouseEnter');
             jest.advanceTimersByTime(dismissDelay);
@@ -211,7 +257,10 @@ describe('Toasts', () => {
         });
 
         it('should not dismiss the toast if the dismiss is set to 0', () => {
-            const toastComponent = mount(<Toast {...defaultProps} dismiss={0} />);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {dismiss: 0});
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(onCloseToast).not.toHaveBeenCalled();
 
             toastComponent.simulate('mouseEnter');
             jest.advanceTimersByTime(dismissDelay);
@@ -222,6 +271,39 @@ describe('Toasts', () => {
             jest.advanceTimersByTime(dismissDelay);
 
             expect(onCloseToast).not.toHaveBeenCalled();
+        });
+    });
+
+    describe('<Toast /> with download section', () => {
+        it('should have class "toast-download" if the download prop is true', () => {
+            const expectedClass = '.toast-download';
+            toastComponent = mount(<Toast title="a" isDownload />);
+            expect(toastComponent.find(expectedClass).length).toBe(1);
+        });
+
+        it('should not have the class "toast-download" if the download prop is false', () => {
+            const expectedClass = '.toast-download';
+            toastComponent = mount(<Toast title="a" isDownload={false} />);
+            expect(toastComponent.find(expectedClass).length).toBe(0);
+        });
+
+        it('should load "Preparing file for download..." as a title', () => {
+            toastComponent = mount(
+                <Toast title="Preparing file for download..." isDownload>
+                    <div>Some file.csv</div>
+                </Toast>
+            );
+
+            expect(toastComponent.find('.toast-title').text()).toBe('Preparing file for download...');
+        });
+
+        it('should have a loading icon in the description', () => {
+            toastComponent = mount(
+                <Toast title="a" isDownload>
+                    <div>Some file.csv</div>
+                </Toast>
+            );
+            expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
         });
     });
 });
