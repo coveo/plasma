@@ -4,19 +4,19 @@
 .banner {
     position: relative;
     padding: $banner-padding;
-    background: var(--banner-background-color);
+    background: var(--navy-blue-80);
     box-shadow: $banner-box-shadow;
 }
 
 .bannerName {
-    color: var(--banner-text-color);
+    color: var(--white);
     font-size: $small-font-size;
     text-transform: uppercase;
     opacity: $transparency-3;
 }
 
 .bannerSubtitle {
-    color: var(--banner-text-color);
+    color: var(--white);
     font-size: $big-font-size;
 }
 
@@ -25,40 +25,40 @@
     width: 100%;
     margin-top: 2 * $spacing;
     margin-bottom: 2 * $spacing;
-    color: var(--banner-text-color);
+    color: var(--white);
 }
 
 .bannerTitle {
-    color: var(--banner-text-color);
+    color: var(--white);
     font-size: $big-title-font-size;
 }
 
 .bannerWarningTitle {
     position: relative;
-    color: var(--banner-warning-text-color);
+    color: var(--warning-60);
 }
 
 .bannerErrorTitle {
-    color: var(--banner-error-text-color);
+    color: var(--critical-80);
 }
 
 .bannerWarningIcon {
     position: relative;
     top: $banner-warning-icon-fix;
-    fill: var(--banner-warning-text-color);
+    fill: var(--warning-60);
 
     .bannerErrorTitle & {
-        fill: var(--banner-error-text-color);
+        fill: var(--critical-80);
     }
 }
 
 .bannerDescription {
-    color: var(--banner-description-color);
+    color: rgba($pure-white, $transparency-2);
     font-size: $medium-title-font-size;
 }
 
 .bannerRight {
-    color: var(--banner-description-color);
+    color: rgba($pure-white, $transparency-2);
     font-size: var(--default-font-size);
 }
 

@@ -15,38 +15,17 @@
     // Typography
     --title-font-size: #{$title-font-size};
     --medium-title-font-size: #{$medium-title-font-size};
-    --big-font-size: #{$big-font-size};
-    --big-title-font-size: #{$big-title-font-size};
     --code-font-size: #{$code-font-size};
     --help-text-font-size: #{$help-text-font-size};
 
     --base-font-family: #{$base-font-family};
     --code-font-family: #{$code-font-family};
 
-    --big-line-height: #{$big-line-height};
     --standard-line-height: #{$standard-line-height};
     --help-text-line-height: #{$help-text-line-height};
 
     --text-max-width: #{$text-max-width};
 
-    // Banner
-    --banner-height: #{$banner-height};
-
     // Dropdown
     --dropdown-button-font-size: #{$dropdown-button-font-size};
-
-    // Flat select
-    --flat-select-prepend-font-size: #{$default-font-size};
-    --flat-select-prepend-font-weight: var(--main-font-regular);
-
-    // Input and textarea
-    --input-font-size: #{$input-font-size};
-
-    // Table
-    --table-action-label-font-size: #{$small-font-size};
-    --table-header-font-size: #{$table-header-font-size};
-    --table-row-font-size: #{$table-row-font-size};
-    --big-table-first-row-font-size: #{$big-table-first-row-font-size};
-    --big-table-first-row-font-weight: var(--main-font-regular);
-    --big-table-second-row-font-size: #{$big-table-second-row-font-size};
 }
