@@ -25,8 +25,8 @@ $default-border-size: 1px;
 $default-border: $default-border-size solid var(--default-border-color);
 
 // Typography
-$small-font-size: 13px;
-$default-font-size: 15px;
+$small-font-size: 12px;
+$default-font-size: 14px;
 $title-font-size: 16px;
 $navigation-section-font-size: 16px;
 $medium-title-font-size: 18px;
@@ -68,7 +68,7 @@ $button-color-transition: all 0.05s ease-in;
 $checkbox-size: 18px;
 $checkbox-label-margin: 18px;
 $checkbox-label-margin-top: 10px;
-$checkbox-default-border: solid 2px var(--checkbox-border-color);
+$checkbox-default-border: solid 2px var(--navy-blue-80);
 $radio-button-option-height: 18px;
 $radio-button-size: 22px;
 $radio-button-text-padding-top: 5px;
@@ -94,7 +94,7 @@ $numeric-input-default-padding: 18px;
 $numeric-input-digit-padding: 10px;
 
 // Links
-$links-color: #009ddc;
+$links-color: var(--digital-blue-60);
 
 // Filter Box
 $filter-box-height: 34px;
@@ -370,8 +370,8 @@ $collapsible-infobox-border-radius: 4px;
 $dropdown-choices-top-bottom-margin: 8px;
 $dropdown-arrow-icon-size: 10px;
 $dropdown-icon-text-spacing: 10px;
-$dropdown-button-font-size: 13px;
-$dropdown-choice-font-size: 13px;
+$dropdown-button-font-size: 14px;
+$dropdown-choice-font-size: 14px;
 $dropdown-option-padding: 8px 16px;
 $dropdown-menu-max-height: 245px;
 $dropdown-button-min-width: 260px;
@@ -470,7 +470,7 @@ $selected-date-height: 28px;
 $calendar-limit-border-width: 2px;
 $calendar-limit-border-length: 5px;
 $calendar-max-height: 336px;
-$date-picker-button-hover-bg: var(--date-picker-button-hover-color);
+$date-picker-button-hover-bg: rgba($dark-grey, $transparency-3);
 
 // Tooltip
 $tooltip-z-index: 100000;
@@ -490,7 +490,7 @@ $item-box-spacing: 5px;
 $item-box-vertical-spacing: 8px;
 $list-box-max-height: 240px;
 $list-box-vertical-spacing: 8px;
-$list-box-box-shadow: 0 2px 4px var(--box-shadow);
+$list-box-box-shadow: 0 2px 4px rgba($black, $transparency-4);
 $list-box-border-radius: 0 0 2px 2px;
 
 // Limit Box
@@ -542,9 +542,9 @@ $flippable-transition-duration: 0.8s;
 $flippable-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
 
 // Material Card
-$material-card-shadow: 0 2px 20px 0 var(--material-card-box-shadow-color);
-$material-card-shadow-hover: 0 2px 30px 0 var(--material-card-box-shadow-active-color);
-$material-card-shadow-active: 0 2px 20px 0 var(--material-card-box-shadow-active-color);
+$material-card-shadow: 0 2px 20px 0 rgba($black, 0.1);
+$material-card-shadow-hover: 0 2px 30px 0 rgba($black, 0.3);
+$material-card-shadow-active: 0 2px 20px 0 rgba($black, 0.3);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder

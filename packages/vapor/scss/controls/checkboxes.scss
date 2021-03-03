@@ -101,7 +101,7 @@
     }
 
     .checkbox-row {
-        margin-right: calc(4 * var(--default-spacing));
+        margin-right: calc(4 * 0.5rem);
     }
 
     &.checkbox-label {
@@ -120,7 +120,7 @@
         }
 
         > label {
-            margin-right: calc(4 * var(--default-spacing));
+            margin-right: calc(4 * 0.5rem);
             margin-left: 18px;
             cursor: pointer;
         }
