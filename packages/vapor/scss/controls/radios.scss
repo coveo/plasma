@@ -14,7 +14,7 @@
             height: $radio-button-option-height;
             padding-top: $radio-button-text-padding-top;
             padding-left: $radio-button-size + $checkbox-label-margin;
-            color: var(--dark-grey);
+            color: var(--title-text-color);
             font-weight: var(--main-font-bold);
             line-height: $radio-button-option-height;
             cursor: pointer;
@@ -45,6 +45,11 @@
                 transform-origin: center center;
                 content: '';
             }
+
+            & + .help-text,
+            & + .description {
+                padding-left: $radio-button-size + $checkbox-label-margin;
+            }
         }
 
         &:focus + label:before {
@@ -63,6 +68,7 @@
         }
 
         &:checked + label {
+            padding-top: $radio-button-checked-text-padding-top;
             font-weight: var(--main-font-bolder);
 
             &:before {

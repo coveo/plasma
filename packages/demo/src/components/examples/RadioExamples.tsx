@@ -31,7 +31,6 @@ export const RadioButtonExamples: ExampleComponent = () => (
 );
 
 const paragraphStyle = {
-    marginLeft: 36,
     marginTop: 10,
     marginRight: 36,
 };
