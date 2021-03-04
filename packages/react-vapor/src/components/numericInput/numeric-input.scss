@@ -19,6 +19,7 @@ $numeric-input-buttons-border-radius: 4px;
     }
 
     .numericInputButton {
+        display: inline-block;
         width: $numeric-input-height;
         height: $numeric-input-height;
         color: var(--pure-white);

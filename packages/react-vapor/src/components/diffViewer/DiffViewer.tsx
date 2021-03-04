@@ -1,5 +1,5 @@
 import * as React from 'react';
-import ReactDiffViewer from 'react-diff-viewer';
+import ReactDiffViewer, {ReactDiffViewerStylesOverride} from 'react-diff-viewer';
 
 import {BlankSlate} from '../blankSlate';
 
@@ -31,10 +31,20 @@ export const DiffViewer: React.FC<DiffViewerDeprecatedProps | DiffViewerProps> =
     noChangesDescription,
     ...props
 }: DiffViewerDeprecatedProps & DiffViewerProps) => {
+    const defaultStyles = {
+        codeFold: {fontFamily: 'canada-type-gibson, sans-serif', fontWeight: 400},
+        diffContainer: {
+            fontFamily: 'source_code_pro_regular, Courier New, Courier, monospace',
+            color: '#282829',
+            pre: {lineHeight: '18px'},
+        },
+    } as ReactDiffViewerStylesOverride;
+
     const a = first ?? oldValue;
     const b = second ?? newValue;
+
     return a !== b ? (
-        <ReactDiffViewer {...props} oldValue={a} newValue={b} />
+        <ReactDiffViewer {...props} oldValue={a} newValue={b} styles={{...defaultStyles, ...props.styles}} />
     ) : (
         <BlankSlate title={noChangesLabel ?? 'No changes'} description={noChangesDescription} />
     );
