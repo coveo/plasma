@@ -1,15 +1,22 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import {IReactVaporState} from 'src/ReactVapor';
 
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IInputOwnProps} from '../../input/Input';
 import {ValidationActions} from '../ValidationActions';
+import {ValidationSelectors} from '../ValidationSelectors';
 import {ValidationTypes} from '../ValidationTypes';
 import {InferableComponentEnhancer} from './connectHOC';
 
 export interface IWithDirtyInputOwnProps {
+    id?: string;
     resetDirtyOnUnmount?: boolean;
 }
+
+const mapStateToProps = (state: IReactVaporState, ownProps: IWithDirtyInputOwnProps) => ({
+    wasDirty: ValidationSelectors.isDirty([ownProps.id ?? ''])(state),
+});
 
 const mapDispatchToProps = (dispatch: IDispatch) => ({
     setIsDirty: (id: string, isDirty: boolean) =>
@@ -18,16 +25,16 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 });
 
 export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.ComponentType<T>) => {
+    type StateProps = ReturnType<typeof mapStateToProps>;
     type DispatchProps = ReturnType<typeof mapDispatchToProps>;
-    const WrappedInput: React.FunctionComponent<T & IWithDirtyInputOwnProps & DispatchProps> = ({
+    const WrappedInput: React.FunctionComponent<T & IWithDirtyInputOwnProps & StateProps & DispatchProps> = ({
+        wasDirty,
         setIsDirty,
         clearIsDirty,
         validate,
         resetDirtyOnUnmount,
         ...props
     }) => {
-        const [lastState, setLastState] = React.useState<boolean | null>(null);
-
         React.useEffect(
             () => () => {
                 resetDirtyOnUnmount && clearIsDirty(props.id);
@@ -40,8 +47,7 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
                 {...(props as T)}
                 validate={(value: string) => {
                     const isDirty = value !== (props.defaultValue || '');
-                    if (isDirty !== lastState) {
-                        setLastState(isDirty);
+                    if (isDirty !== wasDirty) {
                         setIsDirty(props.id, isDirty);
                     }
                     return validate ? validate(value) : true;
@@ -51,6 +57,8 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
         );
     };
 
-    const enhance = connect(null, mapDispatchToProps) as InferableComponentEnhancer<DispatchProps>;
+    const enhance = connect(mapStateToProps, mapDispatchToProps) as InferableComponentEnhancer<
+        StateProps & DispatchProps
+    >;
     return enhance(WrappedInput);
 };
