@@ -1,32 +1,17 @@
-import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
+import {render, screen, within} from 'react-vapor-test-utils';
 import * as _ from 'underscore';
 
-import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../../ReactVapor';
-import {clearState} from '../../../../utils/ReduxUtils';
-import {getStoreMock, TestUtils} from '../../../../utils/tests/TestUtils';
-import {DraggableSelectedOption} from '../../../dropdownSearch/MultiSelectDropdownSearch/DraggableSelectedOption';
-import {selectFlatSelect} from '../../../flatSelect/FlatSelectActions';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
-import {FlatSelectSelectors} from '../../../flatSelect/FlatSelectSelectors';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {reorderListBoxOption, unselectListBoxOption} from '../../../listBox/ListBoxActions';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected';
-import {toggleSelect} from '../../SelectActions';
-import {ISelectOwnProps, SelectConnected} from '../../SelectConnected';
 import {MultiSelectWithPredicate} from '../SelectComponents';
 import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate';
+import {withServerSideProcessing} from '../../../../hoc';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
-        let wrapper: ReactWrapper<any, any>;
-        let multiSelect: ReactWrapper<ISelectOwnProps, void>;
-        let store: Store<IReactVaporState>;
-
         const id: string = 'multi-select-with-predicate';
         const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
             {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
@@ -41,168 +26,81 @@ describe('Select', () => {
             matchPredicate,
         };
 
-        const mountMultiSelect = (props?: Partial<ISelectWithPredicateOwnProps & IMultiSelectOwnProps>) => {
-            wrapper = mount(
-                <Provider store={store}>
-                    <MultiSelectWithPredicate {...basicProps} {...props} />
-                </Provider>,
-                {attachTo: document.getElementById('App')}
-            );
-            multiSelect = wrapper.find(SelectConnected).first();
-        };
+        it('hides items when they do not match the predicates', () => {
+            const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
-        beforeEach(() => {
-            store = TestUtils.buildStore();
+            render(<MultiSelectWithPredicate {...basicProps} items={items} />, {});
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            let lists = screen.getAllByRole('list');
+            expect(within(lists[1]).getByText('first')).toBeInTheDocument();
+
+            // select the none flat select
+            userEvent.click(screen.getByText('None'));
+
+            lists = screen.getAllByRole('list');
+            expect(within(lists[1]).queryByText('first')).not.toBeInTheDocument();
+            expect(within(lists[1]).getByText('No Items')).toBeInTheDocument();
         });
 
-        afterEach(() => {
-            store.dispatch(clearState());
-            if (wrapper && wrapper.exists()) {
-                wrapper?.unmount();
-            }
-        });
-
-        describe('mount and unmount', () => {
-            it('should not throw on mount', () => {
-                expect(() => mountMultiSelect()).not.toThrow();
-            });
-
-            it('should not throw on unmount', () => {
-                mountMultiSelect();
-
-                expect(() => wrapper.unmount()).not.toThrow();
-            });
-
-            it('should add the list box to the state when mounted', () => {
-                expect(store.getState().selects.length).toBe(0);
-
-                mountMultiSelect();
-
-                expect(store.getState().selects.length).toBe(1);
-            });
-
-            it('should remove the list box from the state when the component unmount', () => {
-                mountMultiSelect();
-
-                expect(store.getState().selects.length).toBe(1);
-                wrapper.unmount();
-
-                expect(store.getState().selects.length).toBe(0);
-            });
-        });
-
-        it('should hide items when they do not match the predicates', () => {
-            const items = [{value: 'a'}, {value: 'b', selected: true}, {value: 'c', selected: true}];
-
-            mountMultiSelect({items});
-            store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
-            wrapper.update();
-            multiSelect = wrapper.find(SelectConnected);
-
-            expect(multiSelect.props().items.length).toBe(items.length);
-            multiSelect
-                .find(SelectConnected)
-                .props()
-                .items.every((item: IItemBoxProps) => {
-                    expect(item.hidden).toBe(true);
-                });
-        });
-
-        it('should not show items that are already hidden', () => {
-            jest.spyOn(FlatSelectSelectors, 'getSelectedOptionId').mockReturnValue(defaultFlatSelectOptions[0].id);
-
-            const items = [
-                {value: 'a', hidden: true},
-                {value: 'b', selected: true},
-                {value: 'c', selected: true},
+        it('shows items that match the predicates', () => {
+            const options: IFlatSelectOptionProps[] = [
+                {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
+                {id: 'my_real_id_02', option: {content: 'Beer'}},
             ];
+            const matcher = (predicate: string, item: IItemBoxProps) =>
+                predicate === defaultFlatSelectOptions[0].id || item.value === '🍻';
+            const items = [{value: '🐝'}, {value: '🍻'}, {value: '🥩'}];
 
-            const multiSelectWrapper = mountWithStore(
-                <MultiSelectWithPredicate {...basicProps} items={items} />,
-                getStoreMock({})
-            );
+            render(<MultiSelectWithPredicate id={id} options={options} items={items} matchPredicate={matcher} />);
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
 
-            multiSelect = multiSelectWrapper.find(SelectConnected);
+            // select the all flat select
+            userEvent.click(screen.getByText('Beer'));
 
-            expect(multiSelect.props().items.length).toBe(items.length);
-            expect(multiSelect.find(SelectConnected).props().items[0].hidden).toBe(true);
-            expect(multiSelect.find(SelectConnected).props().items[1].hidden).toBeUndefined();
-            expect(multiSelect.find(SelectConnected).props().items[2].hidden).toBeUndefined();
+            const lists = screen.getAllByRole('list');
+            expect(within(lists[1]).queryByText('🐝')).not.toBeInTheDocument();
+            expect(within(lists[1]).getByText('🍻')).toBeInTheDocument();
+            expect(within(lists[1]).queryByText('🥩')).not.toBeInTheDocument();
         });
 
-        describe('Sortable', () => {
-            it('should be possible to reorder items', () => {
-                const spy = jest.spyOn(store, 'dispatch');
-                const items = [
-                    {value: 'a', hidden: true},
-                    {value: 'b', selected: true},
-                    {value: 'c', selected: true},
-                ];
-
-                mountMultiSelect({items, sortable: true});
-
-                // Move b from 0 to 1
-                multiSelect.find(DraggableSelectedOption).first().prop('move')(0, 1);
-
-                expect(spy).toHaveBeenCalledWith(reorderListBoxOption(id, [items[2].value, items[1].value]));
-            });
-
-            it('should be possible to delete an item', () => {
-                const spy = jest.spyOn(store, 'dispatch');
-                const items = [
-                    {value: 'a', hidden: true},
-                    {value: 'b', selected: true},
-                    {value: 'c', selected: true},
-                ];
-
-                mountMultiSelect({items, sortable: true});
-
-                // Move b from 0 to 1
-                multiSelect.find(DraggableSelectedOption).first().prop('onRemoveClick')();
-
-                expect(spy).toHaveBeenCalledWith(unselectListBoxOption(id, items[1].value));
-            });
-        });
-
-        describe('when predicates are processed on the server side', () => {
+        describe('with predicates processed server side', () => {
             const ServerSideMultiSelectWithPredicates = _.compose(
                 withServerSideProcessing,
                 selectWithPredicate
             )(MultiSelectConnected);
 
-            const items = [
-                {value: 'a', hidden: true},
-                {value: 'b', selected: true},
-                {value: 'c', selected: true},
-            ];
-
             it('should not filter the items based on any predicate because it is done on the server', () => {
-                const component: ShallowWrapper<ISelectOwnProps & ISelectWithPredicateOwnProps> = shallowWithStore(
-                    <ServerSideMultiSelectWithPredicates
-                        {...basicProps}
-                        items={items}
-                        predicate={basicProps.options[1].id}
-                    />,
-                    store
-                )
-                    .dive()
-                    .dive();
+                const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
-                expect(component.props().items).toEqual(items);
+                render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} />, {});
+                // open the dropdown
+                userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+                // select the none flat select
+                userEvent.click(screen.getByText('None'));
+
+                const lists = screen.getAllByRole('list');
+                expect(within(lists[1]).getByText('first')).toBeInTheDocument();
+                expect(within(lists[1]).getByText('second')).toBeInTheDocument();
+                expect(within(lists[1]).getByText('third')).toBeInTheDocument();
             });
 
-            it('should trigger the onUpdate prop when the selected predicate changes', () => {
+            it('triggers the onUpdate prop when the selected predicate changes', () => {
                 const onUpdateSpy = jest.fn();
 
-                wrapper = mount(
-                    <Provider store={store}>
-                        <ServerSideMultiSelectWithPredicates {...basicProps} onUpdate={onUpdateSpy} />
-                    </Provider>,
-                    {attachTo: document.getElementById('App')}
-                );
+                const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
-                store.dispatch(toggleSelect(id, true));
-                store.dispatch(selectFlatSelect(id, defaultFlatSelectOptions[1].id));
+                render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} onUpdate={onUpdateSpy} />);
+                // open the dropdown
+                userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+                onUpdateSpy.mockReset();
+
+                // select the none flat select
+                userEvent.click(screen.getByText('None'));
 
                 expect(onUpdateSpy).toHaveBeenCalledTimes(1);
             });
