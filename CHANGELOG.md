@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.34.1](https://github.com/coveo/react-vapor/compare/v9.34.0...v9.34.1) (2021-03-04)
+
+
+### Bug Fixes
+
+* detect changes after clearing dirty flag ([#1890](https://github.com/coveo/react-vapor/issues/1890)) ([72325f5](https://github.com/coveo/react-vapor/commit/72325f59127a393555657df8be4b38b0e083c30c))
+
+
+
+
+
 # [9.34.0](https://github.com/coveo/react-vapor/compare/v9.33.0...v9.34.0) (2021-03-02)
 
 ### Features
