@@ -41,7 +41,10 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
             setIsDirty(props.id, initialValue !== selectedValue);
         }, [selectedValue]);
 
-        const itemsWithSelectedInitialValue = items.map((item) => ({...item, selected: item.value === initialValue}));
+        const itemsWithSelectedInitialValue = React.useMemo(
+            () => items.map((item) => ({...item, selected: item.value === initialValue})),
+            [items, initialValue]
+        );
 
         return <Component {...(props as T)} items={itemsWithSelectedInitialValue} />;
     };

@@ -13,7 +13,7 @@ import {Drop} from '../drop/Drop';
 import {IDropPodProps} from '../drop/DropPod';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IItemBoxPropsWithIndex, IListBoxOwnProps} from '../listBox/ListBox';
-import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxActions';
+import {selectListBoxOption, setActiveListBoxOption, unselectListBoxOption} from '../listBox/ListBoxActions';
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
@@ -58,6 +58,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISelectOwnProps) => (
     selectValue: (value: string, isMulti: boolean, index?: number) => {
         dispatch(selectListBoxOption(ownProps.id, isMulti, value, index));
     },
+    deselectValue: (value: string) => dispatch(unselectListBoxOption(ownProps.id, value)),
     setActive: (diff: number) => dispatch(setActiveListBoxOption(ownProps.id, diff)),
 });
 
@@ -86,6 +87,24 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         if ((this.props.isOpened && !this.props.hasFocusableChild) || (wentFromOpenedToClosed && selectionChanged)) {
             this.focusOnButton();
         }
+
+        const previouslySelectedItems = prevProps.items?.filter((item) => item.selected).map((item) => item.value);
+        const currentlySelectedItems = this.props.items?.filter((item) => item.selected).map((item) => item.value);
+
+        const removedItems = _.difference(previouslySelectedItems, currentlySelectedItems);
+        const addedItems = _.difference(currentlySelectedItems, previouslySelectedItems);
+
+        removedItems.forEach((removed) => {
+            prevProps.deselectValue(removed);
+        });
+
+        addedItems.forEach((added) => {
+            this.props.selectValue(
+                added,
+                this.props.multi,
+                this.props.items.findIndex((item) => item.value === added)
+            );
+        });
     }
 
     render() {

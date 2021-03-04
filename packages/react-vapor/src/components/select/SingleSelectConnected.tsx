@@ -53,6 +53,11 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
     };
 
     componentDidUpdate(prevProps: ISingleSelectProps) {
+        const newSelectedItemValue = this.props.items?.find((item) => item.selected)?.value;
+        if (prevProps.items?.find((item) => item.selected)?.value !== newSelectedItemValue) {
+            this.props.onSelectOptionCallback?.(newSelectedItemValue);
+        }
+
         if (prevProps.selectedOption !== this.props.selectedOption) {
             this.props.onSelectOptionCallback?.(this.props.selectedOption);
         }

@@ -24,6 +24,7 @@ import {
     withDirtySingleSelectHOC,
     withNonEmptySingleSelectHOC,
     ValidationMessage,
+    Label,
 } from 'react-vapor';
 
 import * as _ from 'underscore';
@@ -194,8 +195,58 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
                 name="An example button bound to the select"
             />
         </Section>
+        <Section
+            level={3}
+            title="A single select with a changing initial value"
+            description="This proves that you can change the selected item at runtime and it will properly update the input."
+        >
+            <SingleSelectWithChangingSelectedValue />
+            <SingleSelectWithChangingItems />
+        </Section>
     </Section>
 );
+
+const SingleSelectWithChangingSelectedValue = () => {
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    return (
+        <>
+            <div>
+                <SingleSelectConnected
+                    id="changing-value"
+                    items={defaultItems.map((item, index) => ({
+                        ...item,
+                        selected: selectedIndex === index,
+                    }))}
+                    canClear
+                />
+            </div>
+            <div>
+                <Button onClick={() => setSelectedIndex((selectedIndex + 1) % defaultItems.length)}>
+                    Click me to select the next value
+                </Button>
+                <Label>Locally selected value: {defaultItems[selectedIndex].displayValue}</Label>
+            </div>
+        </>
+    );
+};
+
+const SingleSelectWithChangingItems = () => {
+    const [selectedIndex, setSelectedIndex] = React.useState(0);
+    const possibleItemsChoices = [defaultItems, itemsWithASelectedItem];
+    return (
+        <>
+            <div>
+                <SingleSelectConnected id="changing-items" items={possibleItemsChoices[selectedIndex]} canClear />
+            </div>
+            <div>
+                <Button onClick={() => setSelectedIndex((selectedIndex + 1) % possibleItemsChoices.length)}>
+                    Click me to change the items
+                </Button>
+                <Label>Locally selected items set: {selectedIndex}</Label>
+            </div>
+        </>
+    );
+};
 
 const MyCustomButton: React.FunctionComponent<ISelectButtonProps> = ({onClick, selectedOptions}) => {
     const option = selectedOptions[0];
