@@ -40,7 +40,7 @@ describe('Select', () => {
 
             fireEvent.mouseOver(screen.getByText('🌱'));
 
-            expect(await screen.findByLabelText(/:seed:/)).toBeInTheDocument();
+            expect(await screen.findByLabelText(/:seed:/)).toBeVisible();
         });
 
         it('displays the displayValue in the selected items', () => {
@@ -70,9 +70,9 @@ describe('Select', () => {
 
             const lists = screen.getAllByRole('list');
 
-            expect(within(lists[1]).getByText(':seed:')).toBeInTheDocument();
-            expect(within(lists[1]).getByText(':potato:')).toBeInTheDocument();
-            expect(within(lists[1]).getByText('🍟')).toBeInTheDocument();
+            expect(within(lists[1]).getByText(':seed:')).toBeVisible();
+            expect(within(lists[1]).getByText(':potato:')).toBeVisible();
+            expect(within(lists[1]).getByText('🍟')).toBeVisible();
         });
 
         it('hides items that are hidden', () => {
@@ -128,7 +128,6 @@ describe('Select', () => {
         });
 
         it('does not contain the deselect all button when in read only', () => {
-
             const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} readOnly />);
 
@@ -143,29 +142,28 @@ describe('Select', () => {
             userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
 
             let lists = screen.getAllByRole('list');
-            expect(within(lists[0]).getByText('🥔')).toBeInTheDocument();
+            expect(within(lists[0]).getByText('🥔')).toBeVisible();
 
-            expect(within(lists[1]).getByText('🌱')).toBeInTheDocument();
+            expect(within(lists[1]).getByText('🌱')).toBeVisible();
             expect(within(lists[1]).queryByText('🥔')).not.toBeInTheDocument();
-            expect(within(lists[1]).getByText('🍟')).toBeInTheDocument();
+            expect(within(lists[1]).getByText('🍟')).toBeVisible();
 
             userEvent.click(within(lists[1]).getByText('🍟'));
 
             lists = screen.getAllByRole('list');
-            expect(within(lists[0]).getByText('🥔')).toBeInTheDocument();
-            expect(within(lists[0]).getByText('🍟')).toBeInTheDocument();
+            expect(within(lists[0]).getByText('🥔')).toBeVisible();
+            expect(within(lists[0]).getByText('🍟')).toBeVisible();
 
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
 
             lists = screen.getAllByRole('list');
-            expect(within(lists[1]).getByText('🌱')).toBeInTheDocument();
+            expect(within(lists[1]).getByText('🌱')).toBeVisible();
             expect(within(lists[1]).queryByText('🥔')).not.toBeInTheDocument();
             expect(within(lists[1]).queryByText('🍟')).not.toBeInTheDocument();
         });
 
         it('does not open the dropdown if there is no unselected items', () => {
-
             const items = [
                 {value: '🌱', selected: true},
                 {value: '🥔', selected: true},
@@ -180,7 +178,6 @@ describe('Select', () => {
         });
 
         it('does not open the dropdown if there is no items', () => {
-
             render(<MultiSelectConnected id={id} items={[]} />);
 
             // open the dropdown
@@ -193,7 +190,7 @@ describe('Select', () => {
         it('allows custom toggleClasses on the dropdown', () => {
             const {container} = render(<MultiSelectConnected id={id} items={[]} toggleClasses="coulili-zazou" />);
 
-            expect(container.querySelector('.coulili-zazou')).toBeInTheDocument();
+            expect(container.querySelector('.coulili-zazou')).toBeVisible();
         });
 
         describe('Sortable', () => {

@@ -34,14 +34,14 @@ describe('Select', () => {
             userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
 
             let lists = screen.getAllByRole('list');
-            expect(within(lists[1]).getByText('first')).toBeInTheDocument();
+            expect(within(lists[1]).getByText('first')).toBeVisible();
 
             // select the none flat select
             userEvent.click(screen.getByText('None'));
 
             lists = screen.getAllByRole('list');
             expect(within(lists[1]).queryByText('first')).not.toBeInTheDocument();
-            expect(within(lists[1]).getByText('No Items')).toBeInTheDocument();
+            expect(within(lists[1]).getByText('No Items')).toBeVisible();
         });
 
         it('shows items that match the predicates', () => {
@@ -62,7 +62,7 @@ describe('Select', () => {
 
             const lists = screen.getAllByRole('list');
             expect(within(lists[1]).queryByText('🐝')).not.toBeInTheDocument();
-            expect(within(lists[1]).getByText('🍻')).toBeInTheDocument();
+            expect(within(lists[1]).getByText('🍻')).toBeVisible();
             expect(within(lists[1]).queryByText('🥩')).not.toBeInTheDocument();
         });
 
@@ -83,9 +83,9 @@ describe('Select', () => {
                 userEvent.click(screen.getByText('None'));
 
                 const lists = screen.getAllByRole('list');
-                expect(within(lists[1]).getByText('first')).toBeInTheDocument();
-                expect(within(lists[1]).getByText('second')).toBeInTheDocument();
-                expect(within(lists[1]).getByText('third')).toBeInTheDocument();
+                expect(within(lists[1]).getByText('first')).toBeVisible();
+                expect(within(lists[1]).getByText('second')).toBeVisible();
+                expect(within(lists[1]).getByText('third')).toBeVisible();
             });
 
             it('triggers the onUpdate prop when the selected predicate changes', () => {
