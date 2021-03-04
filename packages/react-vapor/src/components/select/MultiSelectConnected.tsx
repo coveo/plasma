@@ -147,7 +147,12 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
     private getRemoveAllSelectedOptionsButton(): JSX.Element {
         return this.getSelectedOptions().length > 1 && !this.props.readOnly ? (
             <Tooltip title={this.props.deselectAllTooltipText} placement="top" noSpanWrapper>
-                <div className="remove-all-selected-options ml1" onClick={() => this.props.onRemoveAll()}>
+                <div
+                    className="remove-all-selected-options ml1"
+                    onClick={() => this.props.onRemoveAll()}
+                    role="button"
+                    aria-label={this.props.deselectAllTooltipText}
+                >
                     <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon fill-medium-blue" />
                 </div>
             </Tooltip>
@@ -174,6 +179,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                             className={classNames('selected-options-container truncate', {
                                 readOnly: this.props.readOnly,
                             })}
+                            role="list"
                         >
                             {this.getSelectedOptionComponents()}
                         </div>
