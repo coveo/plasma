@@ -1,13 +1,18 @@
 import * as React from 'react';
 import {ValidationMessage} from '../components/ValidationMessage';
 
-export const withValidationMessage = <T extends {id?: string}, R = any>(
+interface IWithValidationMessageHOCProps {
+    id?: string;
+    onlyShowMessageIfDirty?: boolean;
+}
+
+export const withValidationMessage = <T extends IWithValidationMessageHOCProps, R = any>(
     Component: React.ComponentClass<T, R> | React.FunctionComponent<T>
-) => (props: T) => (
+) => ({onlyShowMessageIfDirty, ...props}: T) => (
     <>
         <Component {...(props as T)} />
         <div>
-            <ValidationMessage id={props.id!} />
+            <ValidationMessage id={props.id!} onlyShowIfDirty={onlyShowMessageIfDirty} />
         </div>
     </>
 );
