@@ -127,7 +127,8 @@ describe('Select', () => {
             expect(screen.getByRole('list')).toHaveTextContent('No selected option');
         });
 
-        it('is does not contain the deselect all button when in read only', () => {
+        it('does not contain the deselect all button when in read only', () => {
+
             const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} readOnly />);
 
@@ -163,7 +164,8 @@ describe('Select', () => {
             expect(within(lists[1]).queryByText('🍟')).not.toBeInTheDocument();
         });
 
-        it('is does not open the dropdown if there is no unselected items', () => {
+        it('does not open the dropdown if there is no unselected items', () => {
+
             const items = [
                 {value: '🌱', selected: true},
                 {value: '🥔', selected: true},
@@ -177,7 +179,8 @@ describe('Select', () => {
             expect(screen.getAllByRole('list').length).toBe(1);
         });
 
-        it('is does not open the dropdown if there is no items', () => {
+        it('does not open the dropdown if there is no items', () => {
+
             render(<MultiSelectConnected id={id} items={[]} />);
 
             // open the dropdown
