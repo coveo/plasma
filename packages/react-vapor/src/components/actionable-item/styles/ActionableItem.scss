@@ -6,6 +6,7 @@ $actionable-item-dots-width: 12px;
 
 .actionableItemContainer {
     height: $button-height;
+    color: var(--title-text-color);
     background-color: var(--white);
 }
 

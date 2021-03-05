@@ -1,0 +1,31 @@
+$infoBoxPadding: 2 * $spacing;
+$infoBoxBorderSize: 4px;
+$infoBoxAdditionalPadding: 3 * $spacing;
+
+.info-box {
+    // Default Style
+    padding: $infoBoxPadding $infoBoxPadding $infoBoxPadding $infoBoxAdditionalPadding;
+    font-size: $blankslate-small-p-font-size;
+    line-height: $default-line-height;
+
+    // Style Override
+    background-color: var(--background-color);
+    border-color: var(--border-color);
+    border-left: $infoBoxBorderSize solid;
+    border-radius: $border-radius;
+    box-shadow: 0 2px 4px 0 rgba($pure-white, $transparency-5);
+
+    // Variables
+    --background-color: var(--information-20);
+    --border-color: var(--azure);
+
+    // Mods
+    &.mod-warning {
+        --background-color: var(--warning-20);
+        --border-color: var(--warning-60);
+    }
+}
+
+.info-box__footer {
+    margin-top: $infoBoxAdditionalPadding;
+}

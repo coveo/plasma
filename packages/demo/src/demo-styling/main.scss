@@ -30,6 +30,10 @@
         }
     }
 
+    .tab {
+        text-transform: capitalize;
+    }
+
     @media (max-width: $breakpoint-desktop-small) {
         .demo-content {
             margin-left: 0;

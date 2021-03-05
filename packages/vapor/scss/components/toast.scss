@@ -141,6 +141,11 @@ $toast-close-size: 16px;
         .toast-close {
             padding: $toast-padding;
         }
+
+        .toast-close {
+            fill: $toast-text-color;
+        }
+
         .toast-description {
             margin-top: 0;
             padding: $toast-padding;

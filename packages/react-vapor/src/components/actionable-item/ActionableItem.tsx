@@ -51,7 +51,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                                     styles.actionableItemContainer
                                 )}
                             >
-                                <Svg svgName="more-append" svgClass="icon mod-12" />
+                                <Svg svgName="more-append" svgClass="icon mod-12 flex" />
                             </div>
                         )}
                         {...(this.props.dropProps || {})}
