@@ -1,21 +1,28 @@
+import userEvent from '@testing-library/user-event';
+import {render, screen} from 'react-vapor-test-utils';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
-import {tableWithPredicate} from '../TableWithPredicate';
+import {tableWithPredicate, tableWithPredicateGeneric} from '../TableWithPredicate';
+import {SingleSelectWithFilter} from '../../select/hoc/SelectComponents';
 import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('Table HOC', () => {
-    describe('TableWithPredicate', () => {
+    describe('TableWithPredicateGeneric', () => {
         const predicateId = 'predicate-id';
         const predicateValues = [
             {displayValue: 'All', value: '', selected: true},
             {displayValue: 'test', value: 'test'},
         ];
 
-        const TableWithPredicate = _.compose(tableWithPredicate({id: predicateId, values: predicateValues}))(TableHOC);
+        const TableWithPredicate = _.compose(
+            tableWithPredicateGeneric({id: predicateId})((props) => (
+                <SingleSelectWithFilter id={props.id} items={predicateValues} />
+            ))
+        )(TableHOC);
 
         const defaultProps: ITableHOCProps = {
             id: 'a',
@@ -114,6 +121,78 @@ describe('Table HOC', () => {
 
                 expect(updateSpy).not.toHaveBeenCalled();
             });
+        });
+    });
+
+    describe('TableWithPredicate', () => {
+        const predicateId = 'predicate-id';
+        const predicateValues = [
+            {displayValue: 'All', value: '-1', selected: true},
+            {displayValue: 'test', value: 'test'},
+        ];
+
+        const TableWithPredicate = _.compose(tableWithPredicate({id: predicateId, values: predicateValues}))(TableHOC);
+
+        const defaultProps: ITableHOCProps = {
+            id: 'a',
+            data: [
+                {value: 'a', city: 'not-test'},
+                {value: 'b', city: 'test'},
+            ],
+            renderBody: (data: any[]): React.ReactNode =>
+                data.map((x) => (
+                    <tr>
+                        <td>{x.value}</td>
+                    </tr>
+                )),
+        };
+
+        const getStateWithPredicate = (predicate: string) => ({
+            listBoxes: [{id: TableHOCUtils.getPredicateId(defaultProps.id, predicateId), selected: [predicate]}],
+        });
+
+        it('should not throw', () => {
+            expect(() => {
+                shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+            }).not.toThrow();
+        });
+
+        it('should render a TableHOC', () => {
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+
+            expect(wrapper.find(TableHOC).exists()).toBe(true);
+        });
+
+        it('should add an action in the TableHOC props', () => {
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+            const actions = wrapper.find(TableHOC).prop('actions');
+
+            expect(actions.length).toBe(1);
+        });
+
+        it('should filter out elements not matching the predicate in the state', () => {
+            const predicate = predicateValues[1].value;
+            const wrapper = shallowWithState(
+                <TableWithPredicate {...defaultProps} />,
+                getStateWithPredicate(predicate)
+            ).dive();
+
+            const filteredData = _.filter(defaultProps.data, ({city}) => city === predicate);
+            const tableData = wrapper.find(TableHOC).prop('data');
+
+            expect(tableData).toEqual(filteredData);
+        });
+
+        it('should show values when opened', () => {
+            render(<TableWithPredicate {...defaultProps} />);
+
+            // Click on the dropdown
+            userEvent.click(screen.getByRole('button'));
+            const listitems = screen.getAllByRole('listitem');
+            expect(listitems.length).toBe(2);
+            expect(listitems[0]).toHaveTextContent('All');
+            expect(listitems[1]).toHaveTextContent('test');
         });
     });
 });

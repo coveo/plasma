@@ -15,9 +15,10 @@ import * as styles from './styles/TableWithPredicates.scss';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './utils/TableHOCUtils';
 
-export interface IPredicateComponentProps extends Partial<ITableWithPredicateStateProps>,
-ITableHOCOwnProps,
-WithServerSideProcessingProps {
+export interface IPredicateComponentProps
+    extends Partial<ITableWithPredicateStateProps>,
+        ITableHOCOwnProps,
+        WithServerSideProcessingProps {
     id: string;
 }
 
@@ -46,9 +47,7 @@ const defaultMatchPredicate = (predicate: string, datum: any) =>
 type TableWithPredicateComponent = React.ComponentType<ITableWithPredicateProps>;
 export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPredicateGenericConfig>) => (
     PredicateComponent: PredicateComponentType
-) => (
-    TableComponent: TableWithPredicateComponent
-): TableWithPredicateComponent => {
+) => (TableComponent: TableWithPredicateComponent): TableWithPredicateComponent => {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapStateToProps = (
@@ -95,7 +94,7 @@ export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPre
 
             const predicateComponentProps = {
                 ...newProps,
-                id: key
+                id: key,
             };
 
             const predicateAction = (
@@ -130,15 +129,13 @@ export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateC
     const config = HocUtils.supplyConfig(supplier);
 
     return tableWithPredicateGeneric({
-        ...config
-    })(
-      (props) => (
-            <SingleSelectConnected
-                id={props.id}
-                items={config.values}
-                buttonPrepend={config.prepend}
-                isLoading={props.isLoading}
-            />
-        )
-    );
+        ...config,
+    })((props) => (
+        <SingleSelectConnected
+            id={props.id}
+            items={config.values}
+            buttonPrepend={config.prepend}
+            isLoading={props.isLoading}
+        />
+    ));
 };
