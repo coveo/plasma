@@ -158,7 +158,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
             return (
                 <div key={boxId}>
-                    <h3 className="bold text-medium-blue">{datesSelectionBox.title}</h3>
+                    <h3 className="bold">{datesSelectionBox.title}</h3>
                     {optionPicker}
                     {dateSelection}
                 </div>
@@ -168,7 +168,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     private getClearOptions(): JSX.Element {
         return this.props.isClearable ? (
-            <button type="button" onClick={() => this.props.onClear()} className="clear-selection-button mt2">
+            <button type="button" onClick={this.props.onClear} className="clear-selection-button btn mt2">
                 {this.props.clearLabel}
             </button>
         ) : null;

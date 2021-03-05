@@ -25,12 +25,12 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
     const header =
         !!label || !!information ? (
             <div className="flex">
-                <header className={classNames('label', 'text-light-blue', headerClassName)}>
+                <header className={classNames('label', headerClassName)}>
                     {!!label ? <span>{label}</span> : null}
                 </header>
                 {!!information ? (
                     <Tooltip title={information} placement={TooltipPlacement.Right} className="ml1 labeled-tooltip">
-                        <Svg svgName="info-14" svgClass="icon fill-medium-grey" />
+                        <Svg svgName="info-14" svgClass="icon" />
                     </Tooltip>
                 ) : null}
             </div>

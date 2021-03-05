@@ -75,7 +75,7 @@ const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
             <>
                 {child}
                 {getRemoveButton({
-                    classes: [defaultMultilineBoxRemoveButtonClasses, 'bg-light-grey full-content-y'],
+                    classes: [defaultMultilineBoxRemoveButtonClasses, 'full-content-y'],
                 })}
             </>
         ),
@@ -86,7 +86,7 @@ const MultilineBoxWithContainerAndTwoRemoveButton = _.compose(
             data: Array<IMultilineSingleBoxProps<IMultilineBoxExamplesProps>>,
             index: number
         ) => (
-            <div key={`${data[index].id}Container`} className={'p1 bg-light-grey'}>
+            <div key={`${data[index].id}Container`} className={'p1'}>
                 {child}
             </div>
         ),
@@ -127,7 +127,7 @@ const ComplexMultilineBox3 = _.compose(
             draggableContainerProps: {
                 className: 'inline-flex center-align',
             },
-            icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon fill-medium-grey mod-lg" />,
+            icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon mod-lg" />,
         },
     }),
     multilineBoxWithRemoveButton(),

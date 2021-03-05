@@ -213,6 +213,8 @@ describe('DropPod', () => {
 
                         expect(removeChildSpy).toHaveBeenCalledWith(divElement);
                     });
+
+                    // expect(ReactDOM.createPortal).toHaveBeenCalledWith('🍟', expectedElement);
                 });
 
                 describe('calculate style position for the dropPod', () => {

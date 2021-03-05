@@ -19,7 +19,7 @@ export const InputLabelWithTooltip: React.FunctionComponent<InputLabelWithToolti
     <Label invalidMessage={invalidMessage}>
         {label}
         <Tooltip title={tooltip} placement={TooltipPlacement.Right}>
-            <Svg svgName="info" svgClass="icon fill-medium-grey mod-16 ml1" />
+            <Svg svgName="info" svgClass="icon documentation-link mod-16 ml1" />
         </Tooltip>
     </Label>
 );

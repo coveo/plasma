@@ -23,7 +23,7 @@
             margin-left: -5px;
             border-width: 5px 5px 0;
 
-            border-top-color: $dark-blue;
+            border-top-color: var(--digital-blue-100);
         }
     }
 
@@ -37,7 +37,7 @@
             margin-top: -5px;
             border-width: 5px 5px 5px 0;
 
-            border-right-color: $dark-blue;
+            border-right-color: var(--digital-blue-100);
         }
     }
 
@@ -51,7 +51,7 @@
             margin-left: -5px;
             border-width: 0 5px 5px;
 
-            border-bottom-color: $dark-blue;
+            border-bottom-color: var(--digital-blue-100);
         }
     }
 
@@ -65,32 +65,29 @@
             margin-top: -5px;
             border-width: 5px 0 5px 5px;
 
-            border-left-color: $dark-blue;
+            border-left-color: var(--digital-blue-100);
         }
     }
 
-    @each $color in $palette {
-        $key: nth($color, 1);
-        &.mod-bg-#{$key} {
-            .tooltip-inner {
-                background-color: var(--#{$key});
-            }
+    &.state-error {
+        .tooltip-inner {
+            background-color: var(--red);
+        }
 
-            &.left .tooltip-arrow {
-                border-left-color: var(--#{$key});
-            }
+        &.left .tooltip-arrow {
+            border-left-color: var(--red);
+        }
 
-            &.bottom .tooltip-arrow {
-                border-bottom-color: var(--#{$key});
-            }
+        &.bottom .tooltip-arrow {
+            border-bottom-color: var(--red);
+        }
 
-            &.top .tooltip-arrow {
-                border-top-color: var(--#{$key});
-            }
+        &.top .tooltip-arrow {
+            border-top-color: var(--red);
+        }
 
-            &.right .tooltip-arrow {
-                border-right-color: var(--#{$key});
-            }
+        &.right .tooltip-arrow {
+            border-right-color: var(--red);
         }
     }
 
@@ -109,7 +106,7 @@
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;
-        background-color: $dark-blue;
+        background-color: var(--digital-blue-100);
         border-radius: 2px;
     }
 }

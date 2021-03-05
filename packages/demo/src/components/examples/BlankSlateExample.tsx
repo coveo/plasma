@@ -29,7 +29,10 @@ export class BlankSlateExample extends React.Component<any, any> {
                         title="Title test"
                         description={
                             <span>
-                                This is a description with a link to <a href="https//www.google.com">this website</a>
+                                This is a description with a link to{' '}
+                                <a target="_blank" href="http://www.perdu.com/">
+                                    this website
+                                </a>
                             </span>
                         }
                     />
@@ -52,31 +55,8 @@ export class BlankSlateExample extends React.Component<any, any> {
                     />
                 </div>
                 <div className="form-group">
-                    <label className="form-control-label">BlankSlate with two button with one disabled</label>
-                    <BlankSlate
-                        title="Title test"
-                        buttons={[
-                            {
-                                name: 'button 1',
-                                primary: true,
-                                enabled: true,
-                            },
-                            {
-                                name: 'button 2',
-                                enabled: false,
-                                link: 'link',
-                            },
-                        ]}
-                    />
-                </div>
-                <div className="form-group">
                     <label className="form-control-label">BlankSlate with an icon</label>
-                    <BlankSlate
-                        title="Title test"
-                        description="description test"
-                        svgName="tips"
-                        svgClass="fill-orange"
-                    />
+                    <BlankSlate title="Title test" description="description test" svgName="tips" />
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">BlankSlate in error</label>
@@ -96,12 +76,7 @@ export class BlankSlateExample extends React.Component<any, any> {
                             </tr>
                         </thead>
                         <tbody>
-                            <BlankSlateWithTable
-                                title="Title test"
-                                description="description test"
-                                svgName="tips"
-                                svgClass="fill-orange"
-                            />
+                            <BlankSlateWithTable title="Title test" description="description test" svgName="tips" />
                         </tbody>
                     </table>
                 </div>
@@ -143,9 +118,7 @@ export class BlankSlateExample extends React.Component<any, any> {
                                         delay={10}
                                         callback={(start) => setTimeout(start, 2000)}
                                         renderCount={(count: number) => (
-                                            <span className="text-black small-text">
-                                                Auto refresh in {count} seconds
-                                            </span>
+                                            <span className="small-text">Auto refresh in {count} seconds</span>
                                         )}
                                         button={{
                                             name: 'Refresh',

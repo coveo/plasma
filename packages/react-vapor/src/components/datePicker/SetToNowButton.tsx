@@ -14,7 +14,7 @@ export class SetToNowButton extends React.Component<ISetToNowProps, any> {
         return (
             <Tooltip title={this.props.tooltip || SET_TO_NOW_DEFAULT_TOOLTIP} placement="top">
                 <button type="button" onClick={() => this.props.onClick()} className="date-button">
-                    <Svg svgName="set-to-now" className="fill-medium-blue" />
+                    <Svg svgName="set-to-now" />
                 </button>
             </Tooltip>
         );

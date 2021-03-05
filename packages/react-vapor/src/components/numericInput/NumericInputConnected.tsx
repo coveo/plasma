@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -82,7 +83,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         onClick={this.onDecrement}
                         type="button"
                     >
-                        <Svg svgName="minus" svgClass="icon mod-12 fill-pure-white" />
+                        <Svg svgName="minus" svgClass="icon mod-12 align-middle" />
                     </Button>
                     <div className="flex flex-column">
                         <input
@@ -107,7 +108,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         onClick={this.onIncrement}
                         type="button"
                     >
-                        <Svg svgName="plus" svgClass="icon mod-12 fill-pure-white" />
+                        <Svg svgName="plus" svgClass="icon mod-12 align-middle" />
                     </Button>
                 </div>
                 <div className="flex flex-row">

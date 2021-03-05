@@ -20,9 +20,8 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
         return (
             <CollapsibleConnected
                 id={this.props.id}
-                className={classNames(styles.container, 'text-grey-9 mod-rounded-border-2')}
+                className={classNames(styles.container, 'label mod-rounded-border-2')}
                 headerClasses="p1"
-                toggleIconClassName="fill-medium-blue"
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
@@ -34,15 +33,15 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
     private getHeader(): React.ReactNode {
         return this.props.isSection ? (
             <div className="flex pl1">
-                <h2 className="text-medium-blue">{this.props.title}</h2>
+                <h2>{this.props.title}</h2>
                 {this.props.sectionAdditionalContent && (
                     <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
                 )}
             </div>
         ) : (
             <div className="inline-flex">
-                <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" svgClass="fill-medium-grey" />
-                <h3 className="text-medium-blue">{this.props.title}</h3>
+                <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" />
+                <h3>{this.props.title}</h3>
             </div>
         );
     }

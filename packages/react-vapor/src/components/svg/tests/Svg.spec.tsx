@@ -9,25 +9,25 @@ describe('Svg', () => {
     const BASIC_SVG: ISvgProps = {
         svgName: 'clear',
         className: 'icon',
-        svgClass: 'fill-medium-blue',
+        svgClass: '🎩',
     };
 
     const INVALID_SVG_NAME: ISvgProps = {
         svgName: 'some-invalid-svg-name',
         className: 'icon',
-        svgClass: 'fill-medium-blue',
+        svgClass: '🎩',
     };
 
     const DASHED_SVG_NAME: ISvgProps = {
         svgName: 'source-custom',
         className: 'icon',
-        svgClass: 'fill-medium-blue',
+        svgClass: '🎩',
     };
 
     const CAMELIZED_SVG_NAME: ISvgProps = {
         svgName: 'sourceCustom',
         className: 'icon',
-        svgClass: 'fill-medium-blue',
+        svgClass: '🎩',
     };
 
     it('should render without error', () => {

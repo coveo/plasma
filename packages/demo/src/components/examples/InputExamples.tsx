@@ -290,7 +290,7 @@ const MultilineBoxWithFunctionnalities = _.compose(
 const MultilineBoxWithCustomization = _.compose(
     multilineBoxContainer({
         containerNode: (child: React.ReactNode, data: any[], index: number) => (
-            <div key={`${data[index].id}Container`} className={'p2 bg-light-grey'}>
+            <div key={`${data[index].id}Container`} className={'p2'} style={{backgroundColor: '#e5e8e8'}}>
                 {child}
             </div>
         ),

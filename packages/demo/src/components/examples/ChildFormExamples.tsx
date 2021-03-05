@@ -27,14 +27,18 @@ const SimpleChildFormExample: React.FunctionComponent = () => {
                     <Checkbox>
                         <Label classes={['label']}>Edit properties</Label>
                     </Checkbox>
-                    <ChildForm disabled={!firstState}>
+                    <ChildForm disabled={!firstState} className="mod-light">
                         <Input id="input-A" value="Some value" classes={['input-field', 'form-group']}>
                             <Label>Child form input</Label>
                         </Input>
                     </ChildForm>
                 </ToggleForm>
             </Section>
-            <Section level={3} className="bg-medium-grey p2" title="A Child Form background white with a Checkbox">
+            <Section
+                level={3}
+                className="p2 child-form-exemple-container"
+                title="A Child Form background white with a Checkbox"
+            >
                 <ToggleForm onClick={() => setSecondState(!secondState)} checked={secondState}>
                     <Checkbox>
                         <Label classes={['label']}>Edit properties</Label>
@@ -63,7 +67,7 @@ const ChildFormWithRadiosExamples: React.FunctionComponent = () => {
                     <Radio id={childFormRadioValue}>
                         <Label>Option 2</Label>
                     </Radio>
-                    <ChildForm>
+                    <ChildForm className="mod-light">
                         <Input id="input-C" value="Some value" classes={['input-field', 'form-group']}>
                             <Label>Dependant Option</Label>
                         </Input>

@@ -4,4 +4,13 @@
             width: $i * $numeric-input-digit-padding + $numeric-input-default-padding;
         }
     }
+    .btn {
+        &:focus {
+            background-color: var(--blue-purple-2);
+        }
+
+        .icon {
+            fill: var(--pure-white);
+        }
+    }
 }

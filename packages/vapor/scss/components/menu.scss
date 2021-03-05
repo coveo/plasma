@@ -1,13 +1,9 @@
 .dropdown.mod-menu {
-    &.header-section {
-        &:hover {
-            background-color: var(--header-section-hover-color);
-        }
-
-        &.open {
-            background-color: var(--header-section-hover-color);
-        }
+    &.header-section:hover,
+    &.header-section.open {
+        background-color: #191d3d;
     }
+
     .dropdown-toggle {
         height: auto;
         min-height: $button-height;

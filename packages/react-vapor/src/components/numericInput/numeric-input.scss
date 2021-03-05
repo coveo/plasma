@@ -9,16 +9,17 @@ $numeric-input-buttons-border-radius: 4px;
         height: $numeric-input-height;
         padding: $spacing;
         overflow: hidden;
-        color: var(--medium-blue);
+        color: var(--title-text-color);
         font-size: $title-font-size;
 
         text-overflow: ellipsis;
         border: $default-border;
         border-radius: $border-radius;
-        box-shadow: inset 0 0 3px 0 var(--numeric-input-shadow);
+        box-shadow: inset 0 0 3px 0 rgba($black, $transparency-5);
     }
 
     .numericInputButton {
+        display: inline-block;
         width: $numeric-input-height;
         height: $numeric-input-height;
         color: var(--pure-white);

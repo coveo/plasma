@@ -2,8 +2,12 @@
     display: flex;
     width: 100%;
     height: $header-height;
-    color: var(--header-text-color);
-    background-color: var(--header-background-color);
+    color: var(--white);
+    background-color: var(--navy-blue-80);
+
+    h3 {
+        color: inherit;
+    }
 }
 
 .header-section {
@@ -27,7 +31,7 @@
     transition: opacity $navigation-toggle-duration ease-in-out;
 
     svg {
-        fill: var(--header-hamburger-color);
+        fill: var(--white);
     }
 }
 

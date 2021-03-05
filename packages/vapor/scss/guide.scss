@@ -1,6 +1,5 @@
 // Must be the first import
 @import 'dependencies';
-@import 'redesign/utils';
 @import 'common/palette';
 @import 'common/palette-map';
 @import 'variables';
@@ -8,7 +7,6 @@
 @import 'redesign/variables';
 @import 'common/common';
 @import 'common/font';
-@import 'redesign/fonts';
 @import 'custom-reset';
 @import 'sprites';
 @import 'animations';
@@ -121,6 +119,7 @@
     @import 'components/multi-step-bar';
     @import 'components/card';
     @import 'components/browser-preview';
+    @import 'components/info-box';
     // Forms
     @import 'forms/form-sections';
     @import 'forms/form-child';
@@ -141,10 +140,8 @@
     @import 'utility/white-space';
     @import 'utility/default-white-space';
     @import 'utility/spaced-boxes';
-    @import 'utility/colors';
     @import 'utility/cursor';
     @import 'utility/pointers';
     @import 'utility/transparency';
-    @import 'utility/hover';
     @import 'utility/shadow';
 }

@@ -19,13 +19,13 @@
     }
 
     .btn {
-        border-color: var(--dropdown-btn-border-color);
+        border-color: var(--default-border-color);
     }
 }
 
 .dropdown-prepend {
     padding-right: 5px;
-    color: var(--dropdown-default-color);
+    color: var(--default-text-color);
 }
 
 .dropdown-option-append {
@@ -37,7 +37,6 @@
     display: inline-block;
     max-width: 100%;
     overflow: hidden;
-    color: var(--dropdown-selected-value-color);
     white-space: nowrap;
     text-transform: none;
 
@@ -45,6 +44,10 @@
 
     &.with-append {
         width: calc(100% - #{$dropdown-toggle-with-append-right-padding});
+    }
+
+    .disabled {
+        color: var(--medium-grey);
     }
 }
 
@@ -55,7 +58,7 @@
     align-items: center;
     padding: $button-padding-y $dropdown-toggle-right-padding $button-padding-y $button-padding-x;
     overflow: hidden;
-    font-size: var(--dropdown-button-font-size);
+    font-size: $dropdown-button-font-size;
     line-height: 16px;
     white-space: nowrap;
     text-transform: none;
@@ -66,12 +69,12 @@
     }
 
     &.dropdown-toggle-placeholder {
-        color: var(--dropdown-toggle-placeholder-color);
+        color: var(--default-text-color);
     }
 
     &.mod-primary {
         font-size: $button-font-size;
-        text-transform: uppercase;
+        text-transform: none;
 
         .dropdown-toggle-arrow {
             @include arrow-down-icon(var(--pure-white));
@@ -81,7 +84,7 @@
     .dropdown-option-append {
         float: right;
         width: $dropdown-toggle-append-width;
-        color: var(--dropdown-option-append-color);
+        color: var(--title-text-color);
         text-align: right;
     }
 
@@ -96,7 +99,7 @@
         height: $dropdown-arrow-icon-size;
 
         &.icon {
-            fill: var(--dropdown-toggle-arrow-color);
+            fill: var(--grey-80);
         }
     }
     .dropdown-toggle-arrow-size {
@@ -129,7 +132,7 @@
     display: inline-block;
     padding: $dropdown-option-padding;
     overflow: hidden;
-    color: var(--dropdown-option-line-color);
+    color: var(--title-text-color);
     font-size: $dropdown-choice-font-size;
     line-height: $default-line-height;
     white-space: nowrap;
@@ -151,15 +154,15 @@
     margin: 0;
     padding: $dropdown-choices-top-bottom-margin 0;
     overflow-y: auto;
-    color: var(--dropdown-menu-color);
+    color: var(--title-text-color);
     list-style: none;
 
-    background-color: var(--dropdown-menu-bg-color);
-    border: 1px solid var(--dropdown-menu-border-color);
+    background-color: var(--white);
+    border: $default-border;
     border-radius: 0 0 2px 2px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.41);
 
-    @include slim-scroll(var(--dropdown-menu-scrollbar-color), var(--dropdown-menu-scrollbar-thumb-color));
+    @include slim-scroll(var(--white), var(--grey-20));
 
     &.mod-right {
         right: 0;
@@ -170,16 +173,16 @@
     .option-wrapper {
         &:hover,
         &:focus {
-            color: var(--dropdown-menu-hover-color);
-            background: var(--dropdown-menu-hover-bg-color);
+            color: var(--grey-80);
+            background: var(--grey-20);
         }
 
         &.disabled {
             > a,
             > span,
             .dropdown-option-append {
-                color: var(--dropdown-menu-disabled-option-color);
-                background-color: var(--dropdown-menu-disabled-option-bg-color);
+                color: var(--medium-grey);
+                background-color: var(--grey-60);
                 cursor: default;
             }
         }
@@ -191,12 +194,12 @@
             @extend %dropdown-option-line-style;
 
             &.state-selected {
-                color: var(--dropdown-menu-selected-option-color);
+                color: var(--grey-40);
                 font-weight: var(--main-font-bold);
             }
 
             &.disabled {
-                color: var(--dropdown-menu-disabled-option-color);
+                color: var(--medium-grey);
                 cursor: default;
             }
 
@@ -207,14 +210,14 @@
         }
 
         &.active {
-            color: var(--dropdown-menu-active-option-color);
-            background-color: var(--dropdown-menu-active-option-bg-color);
+            color: var(--grey-40);
+            background-color: var(--navy-blue-80);
         }
 
         &.divider {
             height: 1px;
             margin: 8px 0;
-            background-color: var(--dropdown-menu-divider-bg-color);
+            background-color: var(--grey-60);
 
             cursor: default;
         }
@@ -251,6 +254,7 @@
 
 .select-dropdown-container {
     z-index: $table-header-z-index;
+    background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
 

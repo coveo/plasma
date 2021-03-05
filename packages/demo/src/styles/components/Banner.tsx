@@ -12,15 +12,15 @@ const Banner = () => (
         usage="Use it to provide info in your application."
         withSource
     >
-        <div className="banner flex center-align bg-orange">
+        <div className="banner flex center-align" style={{backgroundColor: '#1CEBCF'}}>
             <div className="banner-description">
                 The release of March 2016 includes significant content update
-                <button type="button" className="btn text-orange">
+                <button type="button" className="btn">
                     Learn More
                 </button>
             </div>
 
-            <Svg svgName={VaporSVG.svg.close.name} className="icon fill-pure-white mod-lg" />
+            <Svg svgName={VaporSVG.svg.close.name} className="icon mod-lg" />
         </div>
     </VaporComponent>
 );

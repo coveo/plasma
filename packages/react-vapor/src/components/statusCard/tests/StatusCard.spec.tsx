@@ -24,16 +24,16 @@ describe('StatusCard', () => {
         expect(card.hasClass('simple')).toBe(true);
     });
 
-    it('has the "border-left-color-<color>" class if not in loading', () => {
+    it('has the "isSuccess" class if not in loading', () => {
         const card = shallow(<StatusCard color="green" title="title" />);
 
-        expect(card.hasClass('border-left-color-green')).toBe(true);
+        expect(card.hasClass('modSuccess')).toBe(true);
     });
 
-    it('does not have the "border-left-color-<color>" class if in loading', () => {
+    it('does not have the "isSuccess" class if in loading', () => {
         const card = shallow(<StatusCard color="green" title="title" loading />);
 
-        expect(card.hasClass('border-left-color-green')).toBe(false);
+        expect(card.hasClass('modSuccess')).toBe(false);
     });
 
     it('renders a Svg if the "icon" prop is specified', () => {

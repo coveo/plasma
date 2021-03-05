@@ -5,7 +5,7 @@
     overflow: visible;
 
     &.documentation-link {
-        fill: var(--documentation-link-icon-color);
+        fill: var(--digital-blue-60);
     }
 
     &.mod-small {
@@ -20,7 +20,7 @@
 
     &.mod-align-with-text {
         line-height: 16px;
-        vertical-align: -2px;
+        vertical-align: -4px;
     }
 
     @for $i from 5 through 15 {
@@ -66,7 +66,7 @@
     }
     &.disabled {
         opacity: $transparency-4;
-        fill: var(--light-grey);
+        fill: var(--grey-60);
     }
 }
 

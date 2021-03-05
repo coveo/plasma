@@ -11,6 +11,11 @@ export class InfoBoxExamples extends React.PureComponent {
                 </div>
 
                 <div className="form-group">
+                    <label className="form-control-label">Empty InfoBox in warning mode</label>
+                    <InfoBox className="mod-warning" />
+                </div>
+
+                <div className="form-group">
                     <label className="form-control-label">InfoBox</label>
                     <InfoBox>Some information about the current component.</InfoBox>
                 </div>
@@ -21,7 +26,7 @@ export class InfoBoxExamples extends React.PureComponent {
                         <CollapsibleConnected
                             headerClasses="py2"
                             id="info-box-collapsible"
-                            headerContent={<p className="bold">Collapsible header</p>}
+                            headerContent={<p className="bolder">Collapsible header</p>}
                             expandedOnMount
                         >
                             <div className="pb2">

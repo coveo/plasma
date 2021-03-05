@@ -19,9 +19,15 @@
     }
 
     :global(.d2h-diff-table) {
+        color: var(--title-text-color);
         font-size: $code-font-size;
         font-family: $code-font-family;
         border-bottom: $default-border;
+    }
+
+    :global(.d2h-file-list-title) {
+        color: var(--title-text-color);
+        font-weight: var(--main-font-bold);
     }
 
     :global(.d2h-code-linenumber) {

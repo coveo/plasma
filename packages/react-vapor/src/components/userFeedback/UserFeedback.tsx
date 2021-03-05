@@ -18,11 +18,6 @@ export const UserFeedbackState = {
     ERROR: 'ERROR',
 };
 
-export const TextColorClass = {
-    default: 'text-dark-grey',
-    error: 'text-red',
-};
-
 export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
     render() {
         const style = this.getUserFeedbackStyle();
@@ -34,8 +29,7 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
         const displayClassOnShow = this.props.displayOnShow || DisplayClass.BLOCK;
 
         const renderedDisplayClass = state === UserFeedbackState.VALID ? DisplayClass.HIDDEN : displayClassOnShow;
-        const renderedTextColorClass =
-            state === UserFeedbackState.ERROR ? TextColorClass.error : TextColorClass.default;
+        const renderedTextColorClass = state === UserFeedbackState.ERROR ? 'validation-error' : null;
         const renderedExtraClasses = this.props.extraClasses || [];
 
         return {

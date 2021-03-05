@@ -25,8 +25,7 @@ export const CollapsibleHeaderIcon: React.FunctionComponent<CollapsibleHeaderIco
         svgName: informationUrl ? VaporSVG.svg.help.name : VaporSVG.svg.info.name,
         svgClass: classNames('icon mod-lg ml1', {
             'documentation-link': !!informationUrl,
-            'fill-medium-grey': !informationUrl,
-            'fill-light-grey': disabled,
+            disabled: !informationUrl || disabled,
         }),
     };
 

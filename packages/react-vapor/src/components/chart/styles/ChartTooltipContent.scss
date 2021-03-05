@@ -5,8 +5,9 @@ $chart-tooltip-content-size: 3px;
 
 .chartTooltipContent {
     font-size: $small-font-size;
+    background-color: var(--white);
     border: $default-border;
-    box-shadow: 0 0 $chart-tooltip-content-size 0 var(--chart-tooltip-content-color);
+    box-shadow: 0 0 $chart-tooltip-content-size 0 rgba($black, $transparency-4);
 }
 
 .chartTooltipColor {

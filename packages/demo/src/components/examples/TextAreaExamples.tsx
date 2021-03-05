@@ -40,15 +40,15 @@ export const TextAreaExamples = (): JSX.Element => (
                     disabledOnMount
                 />
                 <button
-                    className="mb2 block"
-                    onClick={() => {
+                    className="btn"
+                    onClick={() =>
                         Store.dispatch(
                             setDisabledTextArea(
                                 'super-textarea-3',
                                 !findWhere(Store.getState().textAreas, {id: 'super-textarea-3'}).disabled
                             )
-                        );
-                    }}
+                        )
+                    }
                 >
                     Toggle TextArea disabled state
                 </button>

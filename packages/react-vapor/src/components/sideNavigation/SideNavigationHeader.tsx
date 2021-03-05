@@ -34,7 +34,7 @@ export class SideNavigationHeader extends React.Component<ISideNavigationHeaderP
             <span className="navigation-menu-section-header-icon" />
         );
         return (
-            <div className="navigation-menu-section-header text-white" onClick={() => this.handleClick()}>
+            <div className="navigation-menu-section-header" onClick={() => this.handleClick()}>
                 {icon}
                 {this.props.title}
                 {this.props.children}

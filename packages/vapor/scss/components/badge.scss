@@ -1,22 +1,67 @@
+/* stylelint-disable */
 .badge {
+    // Default Style
     display: inline-block;
     box-sizing: border-box;
-    height: var(--badge-height);
-    margin-right: var(--badge-margin);
-    padding: var(--badge-padding);
-    color: var(--badge-text-color);
-    font-weight: var(--badge-font-weight);
-    line-height: var(--badge-line-height);
-    white-space: nowrap;
+    font-weight: var(--main-font-bolder);
     text-align: center;
-    background-color: var(--badge-background-color);
-    border: var(--badge-border);
+    text-transform: capitalize;
+    border: 1px solid;
+    border-radius: 8px;
+    white-space: nowrap;
+
+    // Variables
+    --height: 32px;
+    --padding: 6px 16px;
+    --font-size: 16px;
+    --line-height: 20px;
+    --color: var(--grey-80);
+    --border-color: var(--grey-20);
+    --background-color: var(--grey-20);
+
+    // Style Override
+    height: var(--height);
+    padding: var(--padding);
+    font-size: var(--font-size);
+    line-height: var(--line-height);
+    color: var(--color);
+    border-color: var(--border-color);
+    background-color: var(--background-color);
+
+    // Mods
+    &.mod-small {
+        --height: 24px;
+        --padding: 4px 8px;
+        --font-size: 12px;
+        --line-height: 16px;
+    }
+
+    &.mod-critical {
+        --color: var(--critical-100);
+        --border-color: var(--critical-20);
+        --background-color: var(--critical-20);
+    }
+
+    &.mod-warning {
+        --color: var(--warning-100);
+        --border-color: var(--warning-20);
+        --background-color: var(--warning-20);
+    }
+
+    &.mod-information {
+        --color: var(--information-100);
+        --border-color: var(--information-20);
+        --background-color: var(--information-20);
+    }
+
+    &.mod-success {
+        --color: var(--success-100);
+        --border-color: var(--success-20);
+        --background-color: var(--success-20);
+    }
 
     &:last-child {
         margin-right: 0;
     }
-
-    &.mod-small {
-        font-size: var(--badge-mod-small-font-size);
-    }
 }
+/* stylelint-enabled */

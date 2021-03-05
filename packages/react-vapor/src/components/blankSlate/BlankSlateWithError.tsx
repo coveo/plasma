@@ -12,16 +12,13 @@ export const blankSlateWithError = (
                 <Component
                     {...this.props}
                     title={
-                        <div className="text-orange-8 flex center-align">
-                            <Svg
-                                svgName={VaporSVG.svg.info.name}
-                                className="icon mr1 fill-orange-8 flex center-align"
-                            />
+                        <div className="flex center-align">
+                            <Svg svgName={VaporSVG.svg.info.name} className="icon mr1 flex center-align" />
                             {this.props.title}
                         </div>
                     }
-                    description={<span className="text-black semibold">{this.props.description}</span>}
-                    classes={['border-color-orange-8 mod-error']}
+                    description={<span className="bold">{this.props.description}</span>}
+                    classes={['mod-error']}
                 >
                     {this.props.children}
                 </Component>

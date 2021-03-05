@@ -42,7 +42,7 @@ const PopoverConnectedExamples = () => (
                 targetAttachment="bottom left"
                 className="mod-width-70"
             >
-                <div className="btn inline-block">Click to toggle the popover</div>
+                <div className="btn">Click to toggle the popover</div>
                 <div className="coveo-child pb5">
                     <SplitLayout
                         className="pb4"
@@ -50,7 +50,7 @@ const PopoverConnectedExamples = () => (
                         rightChildren={<div className="m2">{rightContent}</div>}
                     />
                     <div
-                        className="modal-footer mod-small bg-pure-white"
+                        className="modal-footer mod-small"
                         style={{
                             position: 'absolute',
                             marginLeft: '-20px',

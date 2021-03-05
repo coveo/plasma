@@ -92,11 +92,13 @@ pipeline {
           sh "rm -rf node_modules"
           sh "npm run setup"
 
-          if (env.BRANCH_NAME ==~ /(master|release-.*)/) {
+          if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
             sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
             if (env.BRANCH_NAME ==~ /release-.*/) {
               sh "npx lerna version patch --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
+            } else if (env.BRANCH_NAME == "next") {
+              sh "npx lerna version --conventional-prerelease --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
             } else {
               sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
             }
@@ -174,7 +176,10 @@ pipeline {
 
             
             sh "bash ./build/deploy-demo.sh ${env.CHANGE_BRANCH}"
-            postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
+
+            if (env.BRANCH_NAME != "next") {
+              postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
+            }
 
             def message = "Build succeeded for <https://github.com/coveo/react-vapor/pull/${env.CHANGE_ID}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html"
             notify.sendSlackWithThread(
@@ -187,7 +192,11 @@ pipeline {
 
       post {
         failure {
-          postCommentOnGithub();
+          script {
+            if (env.BRANCH_NAME != "next") {
+              postCommentOnGithub();
+            }
+          }
         }
       }
     }
@@ -195,7 +204,7 @@ pipeline {
     stage('Publish') {
       when {
         allOf {
-          expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
+          expression { env.BRANCH_NAME ==~ /(master|next|release-.*)/ }
           expression { !skipRemainingStages }
         }
       }
@@ -215,6 +224,8 @@ pipeline {
 
             if (env.BRANCH_NAME ==~ /release-.*/) {
               sh "npx lerna publish patch --create-release github --yes --force-publish"
+            } else if (env.BRANCH_NAME == "next") {
+              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\""
             } else {
               sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
             }

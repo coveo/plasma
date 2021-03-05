@@ -25,12 +25,7 @@ export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = (
     ));
 
     const toggleContent: JSX.Element[] = [
-        <Svg
-            key="action-dropdown-toggle-icon"
-            svgName="more"
-            className="action-icon"
-            svgClass="icon icon-medium fill-medium-blue"
-        />,
+        <Svg key="action-dropdown-toggle-icon" svgName="more" className="action-icon" svgClass="icon icon-medium" />,
         <span key="action-dropdown-toggle-label" className="action-label" data-trigger="more">
             {moreLabel || MORE_LABEL}
         </span>,

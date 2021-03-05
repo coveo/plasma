@@ -139,8 +139,8 @@ export default () => (
             </p>
         </Section>
         <Section title="Hit Zones">
-            <p className="h2 bold text-light-blue">
-                <Svg svgName={VaporSVG.svg.tips.name} svgClass="icon fill-medium-blue mr1" />
+            <p className="h2 bold">
+                <Svg svgName={VaporSVG.svg.tips.name} svgClass="icon mr1" />
                 44px x 44px + 10px clearance around hit zones (54px total)
             </p>
             <p>

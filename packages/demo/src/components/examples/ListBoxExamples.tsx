@@ -37,7 +37,7 @@ export class ListBoxExamples extends React.Component {
 
         return (
             <div className="mt2">
-                <h1 className="text-blue mb1">List Box</h1>
+                <h1 className="mb1">List Box</h1>
 
                 <div className="form-group">
                     <label className="form-control-label">Default List Box</label>
@@ -63,13 +63,6 @@ export class ListBoxExamples extends React.Component {
                         <ListBox items={defaultItems} selected={['test1']} onOptionClick={triggerAlertFunction} />
                     </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box with custom classes</label>
-                    <div className="form-control">
-                        <ListBox items={defaultItems} classes={['bg-light-blue']} />
-                    </div>
-                </div>
-
                 <div className="form-group">
                     <label className="form-control-label">List Box with an onClick event on the last element</label>
                     <div className="form-control">

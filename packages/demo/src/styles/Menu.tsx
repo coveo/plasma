@@ -9,12 +9,10 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="General Guidelines" baseUrl="/general-guidelines" isLink />
         <NavigationSection title="Borders" baseUrl="/borders" isLink />
         <NavigationSection title="Cards" baseUrl="/cards">
+            <NavigationLink href="/card" name="Card" />
             <NavigationLink href="/home" name="Home" />
             <NavigationLink href="/material" name="Material" />
             <NavigationLink href="/wizard" name="Wizard" />
-        </NavigationSection>
-        <NavigationSection title="Colors">
-            <NavigationLink href="/colors" name="Palette" />
         </NavigationSection>
         <NavigationSection title="Other Components" baseUrl="/components">
             <NavigationLink href="/banner" name="Banner" />
@@ -24,9 +22,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/value-popup" name="Value Popup" />
         </NavigationSection>
         <NavigationSection title="Form Controls" baseUrl="/form-controls">
-            <NavigationLink href="/slide-toggle" name="Slide toggle" />
-            <NavigationLink href="/slide-toggle-modifiers" name="Slide toggle modifiers" />
-            <NavigationLink href="/slide-toggle-double" name="Slide toggle double" />
             <NavigationLink href="/progress-bar" name="Progress bar" />
         </NavigationSection>
         <NavigationSection title="Headers" baseUrl="/headers">
@@ -42,7 +37,6 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="Transparency" baseUrl="/transparency" isLink />
         <NavigationSection title="Typography" baseUrl="/typography">
             <NavigationLink href="/headings" name="Headings" />
-            <NavigationLink href="/colors" name="Colors" />
             <NavigationLink href="/utilities" name="Utilities" />
             <NavigationLink href="/lists" name="Lists" />
         </NavigationSection>
@@ -51,7 +45,6 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/whitespace" name="Whitespace" />
             <NavigationLink href="/cursor" name="Cursor" />
             <NavigationLink href="/color-dots" name="Color dots" />
-            <NavigationLink href="/hover" name="Hover" />
         </NavigationSection>
     </SideNavigation>
 );

@@ -34,7 +34,7 @@ export class TableError extends React.Component<ITableErrorProps, any> {
 
         const errorTroubleshoot: JSX.Element = this.props.error.errorTroubleshoot ? (
             <div>
-                <div className="label text-light-blue">{troubleshootingLabel}</div>
+                <div className="label">{troubleshootingLabel}</div>
                 <div className="value" dangerouslySetInnerHTML={{__html: this.props.error.errorTroubleshoot}}></div>
             </div>
         ) : null;
@@ -44,7 +44,7 @@ export class TableError extends React.Component<ITableErrorProps, any> {
                 <h4 className="caps bold error-title">{this.props.error.errorStatus}</h4>
                 <section className="columns">
                     <div className="details-container error-description-container">
-                        <div className="label text-light-blue">{descriptionLabel}</div>
+                        <div className="label">{descriptionLabel}</div>
                         <div className="value error-description">
                             <div dangerouslySetInnerHTML={{__html: this.props.error.errorDescription}}></div>
                             {errorPrecision}
@@ -52,8 +52,8 @@ export class TableError extends React.Component<ITableErrorProps, any> {
                     </div>
                     <div className="details-container troubleshooting-container">
                         {errorTroubleshoot}
-                        <div className="label text-light-blue">{errorCodeLabel}</div>
-                        <div className="value text-dark-blue">{this.props.error.errorCode}</div>
+                        <div className="label">{errorCodeLabel}</div>
+                        <div className="value">{this.props.error.errorCode}</div>
                     </div>
                 </section>
             </div>

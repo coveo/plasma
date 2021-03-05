@@ -3,14 +3,14 @@ import {IBadgeProps} from 'react-vapor';
 export const MULTIPLE_BADGES: IBadgeProps[] = [
     {
         label: 'Badge 1',
-        extraClasses: ['bg-blue'],
+        extraClasses: ['mod-success ml1'],
     },
     {
         label: 'Badge 2',
-        extraClasses: ['bg-orange'],
+        extraClasses: ['mod-critical ml1'],
     },
     {
         label: 'Badge 3',
-        extraClasses: ['bg-anakiwa'],
+        extraClasses: ['mod-information ml1'],
     },
 ];

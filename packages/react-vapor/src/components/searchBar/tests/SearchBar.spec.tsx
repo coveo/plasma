@@ -76,7 +76,6 @@ describe('SearchBar', () => {
 
         expect(svg.length).toBe(1);
         expect(svg.prop('svgName')).toBe('search');
-        expect(svg.prop('svgClass')).toBe('fill-medium-blue');
     });
 
     it('should have an unclickable grey search svg if SearchBar is disabled', () => {
@@ -88,7 +87,7 @@ describe('SearchBar', () => {
 
         expect(svg.length).toBe(1);
         expect(svg.prop('svgName')).toBe('search');
-        expect(svg.prop('svgClass')).toBe('fill-light-grey');
+        expect(svg.prop('svgClass')).toBe('search-icon-disabled');
     });
 
     it('should have an unclickable loading animation if searching is passed as prop', () => {

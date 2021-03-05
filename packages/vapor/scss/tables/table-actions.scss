@@ -11,14 +11,14 @@
     // Workaround to make the action bar have a border between multiple rows
 
     background: repeating-linear-gradient(
-        var(--table-actions-background-color),
-        var(--table-actions-background-color) $table-actions-container-height,
-        var(--table-border-color) $table-actions-container-height,
-        var(--table-border-color) ($table-actions-container-height + 1)
+        var(--grey-20),
+        var(--grey-20) $table-actions-container-height,
+        var(--grey-40) $table-actions-container-height,
+        var(--grey-40) ($table-actions-container-height + 1)
     );
 
     &.mod-border-top {
-        border-top: 1px solid var(--table-border-color);
+        border-top: 1px solid var(--grey-40);
     }
 }
 
@@ -69,7 +69,7 @@
 
             &.open {
                 background-color: var(--light-grey);
-                border-color: var(--table-border-color);
+                border-color: var(--grey-40);
             }
 
             &:first-child {
@@ -80,11 +80,11 @@
         .action-label {
             margin-top: 1px; // Hack to fix label vertical alignment...
             margin-left: $table-action-margin-left;
-            color: var(--table-action-label-color);
-            font-weight: var(--table-action-label-font-weight);
-            font-size: var(--table-action-label-font-size);
+            color: var(--navy-blue-80);
+            font-weight: var(--main-font-bolder);
+            font-size: var(--default-font-size);
             line-height: 11px;
-            text-transform: var(--button-text-transform);
+            text-transform: none;
         }
 
         .action-icon,
@@ -95,7 +95,7 @@
         }
 
         .action-icon svg {
-            fill: var(--table-action-label-color);
+            fill: var(--navy-blue-80);
         }
 
         &.prompt-action {

@@ -7,7 +7,6 @@
     th,
     td {
         position: relative;
-        text-align: left;
         vertical-align: top;
         background-clip: padding-box;
 
@@ -20,16 +19,19 @@
             padding-right: 20px;
         }
 
-        .coveo-checkbox-label + .cell-content {
+        .checkbox-label + .cell-content {
             margin-left: 10px;
+        }
+
+        &:not(.center) {
+            text-align: left;
         }
     }
 
     thead tr {
         height: $table-header-height;
-        color: var(--table-header-text-color);
         font-weight: var(--main-font-bold);
-        font-size: var(--table-header-font-size);
+        font-size: $table-header-font-size;
         line-height: $table-header-line-height;
         background-color: transparent;
     }
@@ -55,7 +57,7 @@
                     height: 12px;
                     margin-left: 5px;
                     vertical-align: -2px;
-                    fill: var(--table-header-sort-icon-color);
+                    fill: var(--grey-60);
 
                     .asc-arrow,
                     .desc-arrow {
@@ -78,7 +80,7 @@
             }
 
             &:hover {
-                background-color: var(--table-row-hover-color);
+                background-color: var(--grey-20);
             }
         }
     }
@@ -94,7 +96,7 @@
     tr {
         position: relative;
         height: $table-row-height;
-        font-size: var(--table-row-font-size);
+        font-size: $table-row-font-size;
         line-height: $table-row-line-height;
 
         &.disabled div.wrapper {
@@ -102,9 +104,9 @@
         }
 
         &:not(.no-hover):not(.collapsible-row):not(.empty):hover {
-            background-color: var(--table-row-hover-color);
+            background-color: var(--grey-20);
             td {
-                background-color: var(--table-row-hover-color);
+                background-color: var(--grey-20);
             }
         }
 
@@ -115,9 +117,9 @@
 
         &.selected:not(.no-selection-indicator) {
             &:not(:hover) {
-                background-color: var(--table-row-selected-color);
+                background-color: var(--grey-20);
                 td {
-                    background-color: var(--table-row-selected-color);
+                    background-color: var(--grey-20);
                 }
             }
 
@@ -136,7 +138,7 @@
 
     td {
         padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
-        color: var(--black);
+        color: var(--title-text-color);
         text-align: left;
 
         &:not(.mod-no-border-bottom) {
@@ -150,7 +152,6 @@
         }
 
         &.edit.enabled {
-            color: var(--medium-blue);
             cursor: pointer;
         }
 
@@ -166,7 +167,7 @@
             }
         }
 
-        .coveo-checkbox-label {
+        .checkbox-label {
             position: relative;
             top: -1px; // Small hack to make it work in all browsers...
         }
@@ -179,20 +180,20 @@
 
     &.row-selected td,
     &.row-selected:hover td {
-        background-color: var(--table-row-hover-color);
+        background-color: var(--grey-20);
     }
 
     &.confirm-delete {
         .row-selected td,
         &.row-selected:hover td {
-            background-color: var(--table-selected-row-hover-color);
+            background-color: rgba($red, $transparency-5);
             border-color: var(--red);
             transition: background-color 300ms;
         }
     }
 
     &.mod-deleting tbody tr.selected td {
-        background-color: var(--table-selected-row-hover-color);
+        background-color: rgba($red, $transparency-5);
     }
 
     .mod-card-list {
@@ -222,10 +223,10 @@
         border-left: $status-card-border-width solid $transparent;
 
         .mod-card-header {
-            color: var(--medium-blue);
+            color: var(--title-text-color);
             font-weight: var(--main-font-bold);
             font-size: $medium-title-font-size;
-            border-bottom: 2px solid var(--table-row-hover-color);
+            border-bottom: 2px solid var(--grey-20);
         }
     }
 
@@ -251,7 +252,7 @@
 
 .table-last-update {
     margin: 10px $header-padding;
-    color: var(--date-picker-button-hover-color);
+    color: $date-picker-button-hover-bg;
     font-size: 11px;
     text-align: right;
 }

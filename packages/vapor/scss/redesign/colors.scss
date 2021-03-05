@@ -1,135 +1,19 @@
 @import '../common/palette';
 
-@function toRGB($color) {
-    @return red($color) + ',' + green($color) + ',' + blue($color);
-}
-
 :root {
-    // Primary colors
-    --mirage: #{$mirage};
-    --coveo-blue: #{$coveo-blue};
-    --coveo-orange: #{$coveo-orange};
-
-    // Secondary colors
+    /* ----------- Deprecated Palette ----------- */
     --azure: #{$azure};
-    --anakiwa: #{$anakiwa};
-    --java: #{$java};
-
-    // Primary palette
     --science-blue: #{$science-blue};
-    --dodger-blue: #{$dodger-blue};
-    --tropical-rain-forest: #{$tropical-rain-forest};
-    --observatory: #{$observatory};
-    --caribbean-green: #{$caribbean-green};
     --lynch: #{$lynch};
     --bali-hai: #{$bali-hai};
-    --nepal: #{$nepal};
     --heather: #{$heather};
-    --tango: #{$tango};
-    --neon-carrot: #{$neon-carrot};
-    --tan-hide: #{$tan-hide};
-
-    // Partners palette
-    --coveo-sitecore-red: #{$coveo-sitecore-red};
-    --coveo-salesforce-blue: #{$coveo-salesforce-blue};
-
-    // Grey palette
-    --oxford-blue: #{$oxford-blue};
-    --coveo-grey: #{$coveo-grey};
     --grey-1: #{$grey-1};
     --grey-2: #{$grey-2};
     --grey-3: #{$grey-3};
     --grey-4: #{$grey-4};
-    --grey-5: #{$grey-5};
-    --grey-6: #{$grey-6};
-    --grey-7: #{$grey-7};
-    --grey-8: #{$grey-8};
-    --grey-9: #{$grey-9};
-    --grey-10: #{$grey-10};
-
-    // Blue palette
-    // used
-    --blue-7: #{$blue-7};
-
-    // Not used
-    --blue-1: #{$blue-1};
-    --blue-2: #{$blue-2};
-    --blue-3: #{$blue-3};
-    --blue-4: #{$blue-4};
-    --blue-5: #{$blue-5};
-    --blue-6: #{$blue-6};
-    --blue-8: #{$blue-8};
-    --blue-9: #{$blue-9};
-    --blue-10: #{$blue-10};
-    --astral: #{$astral};
-    --matisse: #{$matisse};
-    --curious-blue-1: #{$curious-blue-1};
-    --curious-blue-2: #{$curious-blue-2};
-    --picton-blue: #{$picton-blue};
-    --cerulean: #{$cerulean};
-    --onahau: #{$onahau};
-    --onahau-1: #{$onahau-1};
-
-    // Blue/Purple palette
-    --coveo-blue-purple: --mirage;
-    --blue-purple-1: #{$blue-purple-1};
     --blue-purple-2: #{$blue-purple-2};
-    --blue-purple-3: #{$blue-purple-3};
-    --blue-purple-4: #{$blue-purple-4};
-    --blue-purple-5: #{$blue-purple-5};
-
-    // Green palette
-    --frosted-mint: #{$frosted-mint};
-    --frosted-mint-1: #{$frosted-mint-1};
-    --persian-green: #{$persian-green};
-    --watercourse: #{$watercourse};
-    --cyprus: #{$cyprus};
-    --deep-teal: #{$deep-teal};
-
-    // Orange/Yellow palette
-    --orange-1: #{$orange-1};
     --orange-2: #{$orange-2};
-    --orange-3: #{$orange-3};
-    --orange-4: #{$orange-4};
-    --orange-5: #{$orange-5};
-    --orange-6: #{$orange-6};
-    --orange-7: #{$orange-7};
     --orange-8: #{$orange-8};
-    --carrot-orange: #{$carrot-orange};
-    --tahiti-gold: #{$tahiti-gold};
-    --buttercup: #{$buttercup};
-    --my-sin: #{$my-sin};
-    --amber: #{$amber};
-    --sunglow: #{$sunglow};
-    --school-bus-yellow: #{$school-bus-yellow};
-    --picasso: #{$picasso};
-    --lemon-chiffon: #{$lemon-chiffon};
-    --travertine: #{$travertine};
-
-    // Red/Pink palette
-    --lonestar-1: #{$lonestar-1};
-    --lonestar-2: #{$lonestar-2};
-    --red-berry: #{$red-berry};
-    --sangria: #{$sangria};
-    --milano-red: #{$milano-red};
-    --pomegranate: #{$pomegranate};
-    --persimmon: #{$persimmon};
-    --bittersweet: #{$bittersweet};
-    --mona-lisa: #{$mona-lisa};
-    --melon: #{$melon};
-
-    // Status
-    --red: #{$red};
-    --yellow: #{$yellow};
-    --green: #{$green};
-
-    // Utilities
-    --transparent: transparent;
-
-    /* ----------- Deprecated Palette ----------- */
-
-    // Primary palette
-    --darker-blue: #{$darker-blue};
     --dark-blue: #{$dark-blue};
     --medium-blue: #{$medium-blue};
     --light-blue: #{$light-blue};
@@ -137,89 +21,90 @@
     --dark-medium-grey: #{$dark-medium-grey};
     --medium-grey: #{$medium-grey};
     --light-grey: #{$light-grey};
-    --white: #{$white};
-    --light: #{$light};
     --pure-white: #{$pure-white};
-    --orange: #{$orange};
-    --stratos: #{$stratos};
-    --purple-blue: #{$purple-blue};
-
-    // Secondary palette
     --soft-red: #{$soft-red};
     --soft-green: #{$soft-green};
-    --blue: #{$blue};
-    --black: #{$black};
     --turquoise: #{$turquoise};
 
-    // Brands
-    --salesforce-blue: #{$salesforce-blue};
-    --google-red: #{$google-red};
-    --office365-red: #{$office365-red};
+    /* ----------- New Palette for Rebranding ----------- */
 
-    // *************************** //
-    // *    NEW CSS Variables    * //
-    // *************************** //
+    // Primary
+    --navy-blue-100: #181d3a;
+    --navy-blue-80: #333357;
+    --navy-blue-60: #5f619e;
+    --navy-blue-40: #8588dd;
 
-    // ** General ** //
-    --box-shadow: #{rgba($black, $transparency-4)};
+    --digital-blue-100: #2e45ba;
+    --digital-blue-80: #215cd3;
+    --digital-blue-60: #1372ec;
+    --digital-blue-40: #5388eb;
+    --digital-blue-20: #759ef1;
 
-    // ** Specific ** //
-    // Button
-    --button-primary-focus-color: #{lighten($orange, 5%)};
-    --button-primary-disabled-color: #{lighten($orange, 20%)};
-    --button-danger-focus-color: #{lighten($red, 5%)};
-    --button-danger-disabled-color: #{lighten($red, 20%)};
-    --links-color: #{$links-color};
+    // Secondary
+    --red: #f05245;
+    --blue: #00adff;
+    --yellow: #ffe300;
+    --green: #1cebcf;
+    --orange: #fa821e;
 
-    // Banner
-    --banner-description-color: #{rgba($pure-white, $transparency-2)};
-    --banner-box-shadow-1: #{rgba($black, $transparency-5)};
-    --banner-box-shadow-2: #{rgba($black, 0.2)};
+    // Background
+    --dark-purple-100: #431b59;
+    --dark-purple-80: #5d3175;
+    --dark-purple-60: #7d458f;
+    --dark-purple-40: #9961a7;
+    --dark-purple-20: #b382bd;
 
-    // Info box
-    --info-box-color: #{rgba($pure-white, $transparency-5)};
+    --dark-green-100: #043c3d;
+    --dark-green-80: #095759;
+    --dark-green-60: #0f7173;
+    --dark-green-40: #269b9d;
+    --dark-green-20: #4dbdc0;
 
-    // Home card
-    --home-card-color: #{rgba($grey-5, $transparency-4)};
+    --dark-blue-100: #1b2f93;
+    --dark-blue-80: #2e45ba;
+    --dark-blue-60: #415ada;
+    --dark-blue-40: #5e75f1;
+    --dark-blue-20: #808bff;
 
-    // Material card
-    --material-card-color: #{rgba($grey-5, $transparency-4)};
-    --material-card-box-shadow-color: #{rgba($black, 0.1)};
-    --material-card-box-shadow-active-color: #{rgba($black, 0.3)};
+    // Greyscale
+    --black: #000000;
+    --grey-100: #282829;
+    --grey-80: #626971;
+    --grey-60: #8e959d;
+    --grey-40: #e5e8e8;
+    --grey-20: #f6f7f9;
+    --white: #ffffff;
 
-    // Input
-    --input-add-on-color: #{darken($medium-grey, 10%)};
+    // Utility
+    --information-100: #0d69ac;
+    --information-80: #097acc;
+    --information-60: #1598ea;
+    --information-40: #66c9ff;
+    --information-20: #ccefff;
 
-    // Numeric input
-    --numeric-input-shadow: #{rgba($black, $transparency-5)};
+    --success-100: #016b52;
+    --success-80: #0d866a;
+    --success-60: #12a344;
+    --success-40: #6edbc1;
+    --success-20: #ccf9ee;
 
-    // Blankslate
-    --blankslate-mod-danger-color: #{rgba($red, $transparency-5)};
-    --blankslate-mod-error-color: #{rgba($orange-5, $transparency-5)};
+    --warning-100: #805700;
+    --warning-80: #bf7500;
+    --warning-70: #e2b104;
+    --warning-60: #f0a702;
+    --warning-40: #fdcd66;
+    --warning-20: #ffefcc;
 
-    // Table
-    --table-selected-row-hover-color: #{rgba($red, $transparency-5)};
-    --table-last-update-color: #{rgba($dark-grey, $transparency-3)};
-    --table-row-drag-over-color: #{rgba($medium-grey, $transparency-3)};
+    --critical-100: #c2271c;
+    --critical-80: #da3c2f;
+    --critical-70: #cd2113;
+    --critical-60: #f05245;
+    --critical-40: #ff8276;
+    --critical-20: #ffcecc;
 
-    // Date picker
-    --date-picker-button-hover-color: #{rgba($dark-grey, $transparency-3)};
+    --sienna-orange-60: #e06036;
 
-    // Selected-option
-    --selected-option-remove-hover: #{darken($light-grey, 5%)};
-
-    // Multi filter picker
-    --multi-filter-container-color: #{rgba($white, 0.4)};
-
-    // Popover
-    --popover-box-shadow-color: #{rgba($stratos, 0.4)};
-
-    // Modal
-    --modal-backdrop-color: #{rgba($purple-blue, $transparency-1)};
-
-    // Chart
-    --chart-tooltip-content-color: #{rgba($black, $transparency-4)};
-
-    // Navigation
-    --navigation-scroll-thumb-color: #{rgba($pure-white, 0.5)};
+    // Status
+    --status-green: #15ab65;
+    --status-red: #ff3e2e;
 }

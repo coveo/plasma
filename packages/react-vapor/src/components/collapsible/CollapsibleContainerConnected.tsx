@@ -55,10 +55,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
         'mod-border-bottom'
     );
 
-    const headerClasses = classNames(
-        'inline-flex flex-center text-medium-blue caps p2 bold ml3',
-        collapsibleHeaderClassName
-    );
+    const headerClasses = classNames('inline-flex flex-center caps p2 bold ml3', collapsibleHeaderClassName);
 
     return (
         <CollapsibleConnected
@@ -75,8 +72,8 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
                 </div>
             }
             expandedOnMount={expandedOnMount}
-            headerClasses={classNames(styles.header, expanded ? 'bg-light-grey' : 'bg-white')}
-            toggleIconClassName="fill-medium-blue mr4"
+            headerClasses={classNames(styles.header, expanded ? styles.expanded : styles.collapsed)}
+            toggleIconClassName="mr4"
             collapsibleToggleIcon={collapsibleToggleIcon}
             withBorders
             disabled={disabled}

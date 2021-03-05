@@ -70,7 +70,7 @@ export class ModalHeader extends React.Component<IModalHeaderProps> {
                         this.close();
                     }}
                 >
-                    <Svg svgName="close" className="icon mod-lg fill-pure-white" />
+                    <Svg svgName="close" className="icon mod-lg" />
                 </span>
             );
         }

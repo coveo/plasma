@@ -10,7 +10,7 @@
     height: 100%;
     min-height: $dropdown-multiselect-option-height;
     margin: $dropdown-multiselect-margin;
-    color: var(--medium-blue);
+    color: var(--title-text-color);
     font-size: $button-small-font-size;
     line-height: $dropdown-multiselect-option-height;
     background-color: var(--pure-white);
@@ -59,11 +59,11 @@
 }
 
 .remove-option:hover {
-    background-color: var(--selected-option-remove-hover);
+    background-color: darken($light-grey, 5%);
 
     cursor: pointer;
 }
 
 .remove-option:active {
-    background-color: var(--selected-option-remove-hover);
+    background-color: darken($light-grey, 5%);
 }

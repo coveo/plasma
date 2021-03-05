@@ -10,7 +10,7 @@ import {Badge, IBadgeProps} from '../badge/Badge';
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip';
 
-export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card';
+export const DEFAULT_LOGO_CARD_CLASSNAME: string = 'logo-card card';
 export const DEFAULT_LOGO_ICON: string = VaporSVG.svg.sourceCustom.name;
 export const DEFAULT_LOGO_ICON_CLASSNAME: string = 'icon';
 export const DEFAULT_LOGO_ICON_SIZE: string = 'mod-4x';

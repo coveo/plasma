@@ -64,7 +64,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
     render() {
         return (
             <div
-                className={classNames('options-cycle text-medium-blue', this.props.className, {
+                className={classNames('options-cycle', this.props.className, {
                     'mod-inline': this.props.isInline,
                 })}
             >
@@ -74,7 +74,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
                     onClick={() => this.goToPreviousOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === 0}
                 >
-                    <Svg svgName="arrow-left-rounded" svgClass="icon fill-dark-blue mod-16" />
+                    <Svg svgName="arrow-left-rounded" svgClass="icon mod-16" />
                 </button>
                 <span className={classNames('options-cycle-option', this.props.buttonClassName)}>
                     {this.props.options[this.props.currentOption]}
@@ -85,7 +85,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
                     onClick={() => this.goToNextOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === this.props.options.length - 1}
                 >
-                    <Svg svgName="arrow-right-rounded" svgClass="icon fill-dark-blue mod-16" />
+                    <Svg svgName="arrow-right-rounded" svgClass="icon mod-16" />
                 </button>
             </div>
         );

@@ -9,13 +9,13 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
             <div className="mt2">
                 <div className="form-group">
                     <label className="form-control-label">PartialStringMatch without match</label>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch partialMatch="I do not match">I do not have a match</PartialStringMatch>
                     </div>
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">PartialStringMatch with partial match undefined</label>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch>
                             I do not have a match because partialMatch was not passed as prop
                         </PartialStringMatch>
@@ -23,16 +23,16 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">PartialStringMatch with partial match</label>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch partialMatch="I match at the">I match at the beginning</PartialStringMatch>
                     </div>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch partialMatch="the end">I match at the end</PartialStringMatch>
                     </div>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch partialMatch="in the">I match in the middle</PartialStringMatch>
                     </div>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch partialMatch="match multiple">
                             I match multiple times because I match multiple substrings
                         </PartialStringMatch>
@@ -42,7 +42,7 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                     <label className="form-control-label">
                         PartialStringMatch with partial match (caseInsensitive)
                     </label>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch partialMatch={'partial match'.toUpperCase()} caseInsensitive>
                             I match even if my partial match is in uppercase
                         </PartialStringMatch>
@@ -50,7 +50,7 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">PartialStringMatch with dangerous match</label>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch
                             wholeString='Hey <script>alert("I may be dangerous")</script>'
                             partialMatch={'<script>alert("I may be dangerous")</script>'}
@@ -60,7 +60,7 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
 
                 <div className="form-group">
                     <label className="form-control-label">PartialStringMatch with children</label>
-                    <div className="text-dark-grey">
+                    <div>
                         <PartialStringMatch key="a" partialMatch="o">
                             <div>Hello</div>
                             <br />

@@ -93,7 +93,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
             return (
                 <div
                     className={classNames(
-                        'btn dropdown-toggle mod-rounded-border-2 bg-pure-white cursor-auto mod-no-border',
+                        'btn dropdown-toggle mod-rounded-border-2 cursor-auto mod-no-border',
                         styles.singleSelectFixedWidth
                     )}
                 />
@@ -116,10 +116,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
                 closeOnClickDrop={false}
                 {...this.props.dropOption}
             >
-                <div
-                    className={classNames('select-dropdown-container bg-pure-white', this.props.dropClasses)}
-                    style={{minWidth}}
-                >
+                <div className={classNames('select-dropdown-container', this.props.dropClasses)} style={{minWidth}}>
                     {this.renderChildren()}
                     <ListBoxConnected {..._.pick(this.props, listBoxProps)} />
                 </div>
@@ -154,7 +151,7 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
                     });
                 }
             });
-            return <div className="flex p2 flex-center bg-white flex-column mod-border-bottom">{newChildren}</div>;
+            return <div className="flex p2 flex-center flex-column mod-border-bottom">{newChildren}</div>;
         }
         return null;
     }

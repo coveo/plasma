@@ -6,6 +6,8 @@
 
 #App {
     margin: 0 auto;
+    color: var(--default-text-color);
+    font-weight: var(--main-font-regular);
 
     .header-title {
         height: 27px;
@@ -15,55 +17,21 @@
         height: auto;
     }
 
-    .demo-side-nav {
-        @include slim-scroll(var(--grey-2), var(--grey-4));
-
-        > .navigation-menu {
-            background-color: var(--grey-1);
-        }
-
-        .navigation-menu-section-header {
-            margin-left: -10px;
-            color: var(--black);
-            font-weight: var(--main-font-regular);
-        }
-
-        .navigation-menu-section-item-link {
-            color: var(--black);
-        }
-
-        .navigation-menu-section-link,
-        .navigation-menu-section-item {
-            &.state-active {
-                font-weight: var(--main-font-bold);
-                background-color: var(--grey-1);
-
-                .navigation-menu-section-header {
-                    font-weight: var(--main-font-bold);
-                }
-            }
-
-            &:hover {
-                background-color: var(--grey-1);
-            }
-        }
-    }
-
     .demo-content {
         @include slim-scroll(var(--grey-2), var(--grey-4));
         overflow-y: overlay;
     }
 
     .top-navigation .tab {
-        color: var(--oxford-blue);
         font-weight: var(--main-font-regular);
-        font-size: 14px;
-        line-height: 17px;
-        letter-spacing: 1.5px;
 
         &.active {
             font-weight: var(--main-font-bold);
         }
+    }
+
+    .tab {
+        text-transform: capitalize;
     }
 
     @media (max-width: $breakpoint-desktop-small) {
@@ -147,4 +115,8 @@
     position: absolute;
     right: 1.5rem;
     bottom: 2.4rem;
+}
+
+.child-form-exemple-container {
+    background-color: var(--grey-40);
 }

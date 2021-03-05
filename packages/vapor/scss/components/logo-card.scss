@@ -1,8 +1,12 @@
 .logo-card {
+    --margin: 0.25rem;
+    --padding: 1rem;
+
     display: flex;
-    margin: $logo-card-margin;
-    padding: $logo-card-padding;
-    border: $logo-card-border;
+    margin: var(--margin);
+    padding: var(--padding);
+    // TODO: fix this
+    // border: $logo-card-border;
     cursor: pointer;
 
     &.disabled {
@@ -33,7 +37,15 @@
 }
 
 .logo-card-title {
-    color: $logo-card-title-color;
+    // TODO: fix this
+    // color: $logo-card-title-color;
+}
+
+.logo-card-badge {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
 }
 
 .logo-card-badge {

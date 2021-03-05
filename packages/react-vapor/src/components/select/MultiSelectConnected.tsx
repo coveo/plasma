@@ -117,7 +117,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                 })}
                 key={item.value}
             >
-                <span className="mr1 text-medium-grey">{index + 1}</span>
+                <span className="mr1">{index + 1}</span>
                 <DraggableSelectedOption
                     label={item.selectedDisplayValue ?? item.displayValue ?? item.value}
                     selectedTooltip={item.selectedTooltip}
@@ -153,7 +153,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                     role="button"
                     aria-label={this.props.deselectAllTooltipText}
                 >
-                    <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon fill-medium-blue" />
+                    <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon" />
                 </div>
             </Tooltip>
         ) : null;

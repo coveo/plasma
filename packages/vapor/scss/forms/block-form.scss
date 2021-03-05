@@ -31,7 +31,7 @@ form {
         display: inline-flex; // Used for inline-help-tooltip placement
         align-items: center;
         margin-bottom: $form-control-label-margin;
-        color: var(--medium-blue);
+        color: var(--title-text-color);
         font-size: $form-control-label-font-size;
 
         &.flex {
@@ -53,9 +53,10 @@ form {
         .labeled-tooltip {
             width: 15px;
             height: 15px;
+            fill: var(--digital-blue-60);
         }
 
-        &.coveo-checkbox-label,
+        &.checkbox-label,
         &.coveo-slide-toggle-label {
             display: flex;
         }
@@ -84,7 +85,7 @@ form {
                 }
 
                 > *:not(:first-child) {
-                    margin-top: $scaledSpacing;
+                    margin-top: 0.5rem;
                 }
             }
             > .btn {

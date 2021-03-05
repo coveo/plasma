@@ -52,7 +52,7 @@
         cursor: default;
 
         svg {
-            fill: var(--filter-box-icon-color);
+            fill: var(--grey-80);
         }
     }
 
@@ -61,6 +61,10 @@
         margin: 0;
         padding-right: 40px;
         padding-left: 20px;
+
+        &:focus {
+            outline-color: var(--green);
+        }
 
         &::-ms-clear {
             display: none;

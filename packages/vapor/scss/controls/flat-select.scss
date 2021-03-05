@@ -4,15 +4,17 @@
     border-radius: $border-radius;
 
     .flat-select-option {
+        display: flex;
+        align-items: center;
+        justify-content: center;
         min-width: $flat-select-option-size;
         height: $flat-select-option-size;
         padding: 0 4px;
         color: var(--pure-white);
         font-size: 13px;
-        line-height: $flat-select-option-size - 2px;
         text-align: center;
-        background-color: var(--flat-select-background-color);
-        border: 1px solid var(--flat-select-background-color);
+        background-color: var(--navy-blue-80);
+        border: 1px solid var(--navy-blue-80);
         border-radius: $border-radius;
 
         cursor: default;
@@ -51,9 +53,9 @@
         }
 
         &.selectable {
-            color: var(--flat-select-text-color);
+            color: var(--title-text-color);
             background-color: var(--pure-white);
-            border: 1px solid var(--default-border-color);
+            border: $default-border;
 
             cursor: pointer;
 
@@ -62,7 +64,7 @@
             }
 
             .icon {
-                fill: var(--flat-select-text-color);
+                fill: var(--navy-blue-80);
             }
         }
 
@@ -73,13 +75,13 @@
         &.mod-link,
         &.selectable.mod-link {
             padding: 0;
-            color: var(--flat-select-background-color);
+            color: var(--navy-blue-80);
             font-size: var(--default-font-size);
             background-color: var(--pure-white);
             border: none;
 
             .icon {
-                fill: var(--flat-select-background-color);
+                fill: var(--navy-blue-80);
             }
 
             &.disabled {
@@ -90,6 +92,10 @@
                 }
             }
         }
+
+        .icon {
+            margin-bottom: -2px;
+        }
     }
 
     &.mod-btn-group .flat-select-option {
@@ -97,8 +103,7 @@
         padding: $button-padding-y $button-padding-x;
         font-weight: var(--main-font-bold);
 
-        font-size: var(--button-font-size);
-        line-height: var(--button-line-height);
+        font-size: $button-font-size;
         text-transform: uppercase;
         border-radius: 0;
 
@@ -121,9 +126,9 @@
 
     &.mod-option-picker .flat-select-option {
         flex: auto;
-        color: var(--flat-select-text-color);
+        color: var(--title-text-color);
         background-color: var(--light-grey);
-        border: 1px solid var(--blue);
+        border: 1px solid var(--navy-blue-80);
         border-right-width: 0;
         border-radius: 0;
 
@@ -142,7 +147,7 @@
         }
 
         &:not(.selectable) + .flat-select-option {
-            border-left-color: var(--blue);
+            border-left-color: var(--navy-blue-80);
         }
 
         & + .flat-select-option {
@@ -157,9 +162,9 @@
 
     .flat-select-prepend {
         margin-right: 10px;
-        color: var(--flat-select-prepend-color);
-        font-weight: var(--flat-select-prepend-font-weight);
-        font-size: var(--flat-select-prepend-font-size);
+        color: var(--title-text-color);
+        font-weight: var(--main-font-bolder);
+        font-size: var(--default-font-size);
         line-height: 18px;
     }
 }

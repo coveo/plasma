@@ -36,7 +36,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                             label: (
                                 <span className="flex space-between">
                                     <span className="truncate">Avatar</span>
-                                    <Svg svgName="thumb-up" svgClass="icon fill-green" />
+                                    <Svg svgName="thumb-up" svgClass="icon" />
                                 </span>
                             ),
                             id: 'avatar',
@@ -46,7 +46,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                             label: (
                                 <span className="flex space-between">
                                     <span className="truncate">Titanic</span>
-                                    <Svg svgName="thumb-up" svgClass="icon fill-green" />
+                                    <Svg svgName="thumb-up" svgClass="icon" />
                                 </span>
                             ),
                             id: 'titanic',
@@ -55,7 +55,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                             label: (
                                 <span className="flex space-between">
                                     <span className="truncate pr1">Star Wars: The Force Awakens</span>
-                                    <Svg svgName="thumb-up" svgClass="icon fill-green" />
+                                    <Svg svgName="thumb-up" svgClass="icon" />
                                 </span>
                             ),
                             id: 'star-wars',
@@ -64,7 +64,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                             label: (
                                 <span className="flex space-between">
                                     <span className="truncate">Jurassic World</span>
-                                    <Svg svgName="thumb-down" svgClass="icon fill-red" />
+                                    <Svg svgName="thumb-down" svgClass="icon" />
                                 </span>
                             ),
                             id: 'jurasic-world',
@@ -73,7 +73,7 @@ const SubNavigationConnectedExamples: React.FunctionComponent = () => (
                             label: (
                                 <span className="flex space-between">
                                     <span className="truncate">The Avengers</span>
-                                    <Svg svgName="thumb-down" svgClass="icon fill-red" />
+                                    <Svg svgName="thumb-down" svgClass="icon" />
                                 </span>
                             ),
                             id: 'the-avengers',

@@ -4,7 +4,7 @@
     max-width: $facet-column-max-width;
     margin-right: 0;
     padding: $facet-column-padding-y $facet-column-padding-right $facet-column-padding-y $facet-column-padding-left;
-    border-right: var(--facet-column-border);
+    border-right: $default-border;
 }
 
 .facet {
@@ -13,9 +13,9 @@
 
     padding-bottom: $facet-spacing;
     background: var(--pure-white);
-    border: var(--facet-border);
-    border-radius: var(--facet-border-radius);
-    box-shadow: var(--facet-box-shadow);
+    border: 1px solid rgba($heather, 0.3);
+    border-radius: $big-border-radius;
+    box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .facet-header {
@@ -23,9 +23,9 @@
     clear: both;
 
     padding: $button-padding-x;
-    background: var(--facet-header-background-color);
-    border-top-left-radius: var(--facet-border-radius);
-    border-top-right-radius: var(--facet-border-radius);
+    background: var(--grey-20);
+    border-top-left-radius: $big-border-radius;
+    border-top-right-radius: $big-border-radius;
 }
 
 .facet-header-eraser {
@@ -42,10 +42,10 @@
         width: $facet-more-button-icon-size;
         height: $facet-more-button-icon-size;
         transform: translateY(-50%);
-        fill: var(--facet-header-eraser-color);
+        fill: var(--grey-60);
 
         &:hover {
-            fill: var(--facet-header-eraser-hover-color);
+            fill: var(--navy-blue-80);
         }
     }
 }
@@ -56,11 +56,9 @@
 }
 
 .facet-header-title {
-    color: var(--facet-header-text-color);
-    font-weight: var(--facet-header-font-weight);
-    font-size: var(--facet-header-font-size);
-    font-family: var(--main-font);
-    line-height: var(--facet-header-line-height);
+    color: var(--title-text-color);
+    font-size: #{$title-font-size};
+    line-height: 20px;
 }
 
 .facet-values {
@@ -76,7 +74,8 @@
     padding: 0 $facet-spacing;
 
     &:hover {
-        background-color: var(--facet-value-hover-background-color);
+        background-color: var(--grey-20);
+
         .exclude-button {
             display: flex;
         }
@@ -107,7 +106,7 @@
 
 .facet-value-count {
     padding-left: $facet-value-spacing;
-    color: var(--facet-value-count-text-color);
+    color: var(--grey-60);
 }
 
 .facet-more {
@@ -145,12 +144,15 @@
     display: none;
     width: $facet-exclude-button-size;
     height: $facet-exclude-button-size;
+
     svg {
         width: inherit;
         height: inherit;
+        fill: var(--grey-60);
     }
+
     &:hover svg {
-        fill: var(--facet-exclude-button-hover-color);
+        fill: var(--navy-blue-80);
     }
 }
 
@@ -160,10 +162,11 @@
     right: 0;
     width: $facet-exclude-padding-right;
     height: 100%;
+    padding-bottom: 3px;
     cursor: pointer;
 
-    + .coveo-checkbox-label > .exclude-box,
-    &:hover + .coveo-checkbox-label > button {
+    + .checkbox-label > .exclude-box,
+    &:hover + .checkbox-label > button {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -176,6 +179,7 @@
 
         .exclude-icon {
             display: block;
+            fill: var(--red);
         }
     }
 }
@@ -188,7 +192,7 @@
     float: left;
     border: $facet-more-button-border;
 
-    @extend .coveo-checkbox-button;
+    @extend .checkbox-button;
 
     & + .label {
         margin-left: $checkbox-label-margin;
@@ -244,8 +248,8 @@
     list-style: none;
 
     background-color: var(--pure-white);
-    border: var(--facet-border);
-    border-radius: var(--facet-border-radius);
+    border: 1px solid rgba($heather, 0.3);
+    border-radius: $big-border-radius;
 
     @include slim-scroll(var(--light-grey), var(--medium-grey));
 }

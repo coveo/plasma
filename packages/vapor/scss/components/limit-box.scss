@@ -5,13 +5,6 @@
     border-radius: $border-radius;
 }
 
-.limit-box-numbers {
-    label.form-control-label,
-    .input-field input:valid + label {
-        color: var(--dark-medium-grey);
-    }
-}
-
 .limit-box-usage,
 .limit-box-limit {
     width: 50%;
@@ -23,6 +16,7 @@
     width: 100%;
     height: $input-height;
     padding: $input-padding;
+    color: var(--title-text-color);
     font-size: $input-font-size;
 }
 

@@ -15,8 +15,8 @@ const Wizard = () => (
                     <div className="coveo-form">
                         <div className="form-group left-align">
                             <h3>
-                                Coveo Cloud has identified the following{' '}
-                                <em className="bold text-medium-blue">Coveo organizations</em> related to your account.
+                                Coveo Cloud has identified the following <em className="bold">Coveo organizations</em>{' '}
+                                related to your account.
                             </h3>
                         </div>
                         <div className="form-group input-field">

@@ -1,10 +1,10 @@
 .blankslate {
     padding: $blankslate-padding;
-    color: var(--blankslate-text-color);
+    color: var(--title-text-color);
     font-weight: var(--main-font-regular);
     text-align: center;
-    background-color: var(--blankslate-background-color);
-    border: 1px solid var(--blankslate-border-color);
+    background-color: var(--grey-20);
+    border: 1px solid var(--grey-40);
     border-radius: $border-radius;
 
     h1,
@@ -19,7 +19,6 @@
     p {
         max-width: $blankslate-description-width;
         margin: 0 auto $blankslate-paragraph-margin-bottom auto;
-        color: var(--blankslate-text-color);
     }
 
     &.mod-small {
@@ -38,14 +37,24 @@
 
     // deprecated use .mod-error instead
     &.mod-danger {
-        background-color: var(--blankslate-mod-danger-color);
+        background-color: rgba($red, $transparency-5);
         border-color: var(--red);
         h1,
         p {
             color: var(--red);
         }
     }
+
     &.mod-error {
-        background-color: var(--blankslate-mod-error-color);
+        background-color: rgba($orange-5, $transparency-5);
+        border-color: var(--orange-8);
+
+        h1 {
+            color: var(--orange-8);
+
+            svg {
+                fill: currentColor;
+            }
+        }
     }
 }

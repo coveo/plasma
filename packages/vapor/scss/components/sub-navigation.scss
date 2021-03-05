@@ -15,7 +15,7 @@
             .sub-navigation-item-link {
                 display: block;
                 padding: $sub-navigation-item-padding;
-                color: var(--medium-blue);
+                color: var(--title-text-color);
                 line-height: $sub-navigation-line-height;
 
                 &.disabled {
@@ -25,7 +25,7 @@
             }
 
             &.mod-selected {
-                background-color: var(--light-grey);
+                background-color: var(--grey-20);
 
                 &:before {
                     position: absolute;
@@ -34,7 +34,7 @@
                     display: block;
                     width: $sub-navigation-selected-border-width;
                     height: 100%;
-                    background-color: var(--orange);
+                    background-color: var(--digital-blue-80);
                     content: '';
                 }
             }

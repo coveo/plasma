@@ -4,8 +4,8 @@ import {mountWithState, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
-import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 
+import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
 import {CodeMirrorModes} from '../EditorConstants';
 

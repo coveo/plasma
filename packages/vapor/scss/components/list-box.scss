@@ -6,31 +6,32 @@
     margin: 0;
     padding: $list-box-vertical-spacing 0;
     overflow-y: auto;
+    background-color: var(--white);
     border: $default-border;
-    border-color: var(--list-box-border-color);
+    border-color: var(--default-border-color);
     border-radius: $list-box-border-radius;
 
     box-shadow: $list-box-box-shadow;
 
-    @include slim-scroll(var(--list-box-scrollbar-color), var(--list-box-scrollbar-thumb-color));
+    @include slim-scroll(var(--white), var(--grey-20));
 }
 
 .item-box {
     padding: $item-box-vertical-spacing $item-box-horizontal-spacing;
     overflow: hidden;
-    color: var(--list-box-item-color);
+    color: var(--default-text-color);
     font-size: var(--small-font-size);
     line-height: $default-line-height;
     white-space: nowrap;
     text-overflow: ellipsis;
     list-style: none;
-    background-color: var(--list-box-item-bg-color);
+    background-color: var(--white);
 
     cursor: pointer;
 
     &:hover {
-        color: var(--list-box-item-hover-color);
-        background: var(--list-box-item-hover-bg-color);
+        color: var(--grey-80);
+        background: var(--grey-20);
     }
 
     &.selected {
@@ -40,12 +41,12 @@
 
     &:focus,
     &.active {
-        color: var(--list-box-item-active-color);
-        background: var(--list-box-item-active-bg-color);
+        color: var(--grey-40);
+        background: var(--navy-blue-80);
     }
 
     &:focus {
-        border-color: var(--list-box-item-focus-color);
+        border-color: var(--turquoise);
     }
 
     &.disabled {
@@ -68,6 +69,20 @@
 
         cursor: default;
     }
+
+    .prepend,
+    .append {
+        color: var(--medium-grey);
+
+        &-red {
+            color: var(--red);
+        }
+    }
+}
+
+.item-box-loading {
+    height: 1em;
+    background-color: var(--grey-40);
 }
 
 .select-footer {

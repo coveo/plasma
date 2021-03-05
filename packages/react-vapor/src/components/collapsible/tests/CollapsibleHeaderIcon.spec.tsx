@@ -35,17 +35,17 @@ describe('CollapsibleHeaderIcon tests', () => {
             wrapper = shallowCollapsibleHeaderIcon();
 
             expect(wrapper.find(LinkSvg).props().svg.svgClass).toContain('documentation-link');
-            expect(wrapper.find(LinkSvg).props().svg.svgClass).not.toContain('fill-medium-grey');
+            expect(wrapper.find(LinkSvg).props().svg.svgClass).not.toContain('disabled');
         });
 
-        it('should fill medium grey if the informationUrl is not defined', () => {
+        it('should fill disabled color if the informationUrl is not defined', () => {
             wrapper = shallowCollapsibleHeaderIcon({
                 informationTooltip: {
                     title: 'pomme',
                 },
             } as CollapsibleHeaderIconProps);
 
-            expect(wrapper.find(Svg).props().svgClass).toContain('fill-medium-grey');
+            expect(wrapper.find(Svg).props().svgClass).toContain('disabled');
             expect(wrapper.find(Svg).props().svgClass).not.toContain('documentation-link');
         });
 

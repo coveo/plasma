@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+
 import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IFacet} from './Facet';
@@ -30,9 +31,9 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
         });
         return (
             <li className={className}>
-                {this.getExcludeCheckbox()}
+                {this.getExcludeAction()}
                 <label
-                    className="coveo-checkbox-label facet-value-label"
+                    className="checkbox checkbox-label facet-value-label"
                     onClick={(e) => {
                         // prevent event bubbling and trigger onToggleFacet only once no matter where you click on the row
                         e.preventDefault();
@@ -42,13 +43,13 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
                     <input
                         type="checkbox"
                         name={this.props.facetRow.name}
-                        className="coveo-checkbox facet-checkbox-input"
+                        className="facet-checkbox-input"
                         checked={this.props.isChecked && !this.isExclude}
                         onClick={this.stopEvent}
                         onChange={_.noop}
                     />
                     <button type="button" className={this.props.isChecked && this.isExclude ? 'exclude-box' : ''}>
-                        <Svg svgName="clear" className="icon hide exclude-icon" svgClass="fill-red" />
+                        <Svg svgName="clear" className="icon hide exclude-icon" />
                     </button>
                     {this.getLabel()}
                     {this.getCount()}
@@ -92,33 +93,24 @@ export class FacetRow extends React.Component<IFacetRowProps, any> {
         }
     }
 
-    private getExcludeCheckbox(): JSX.Element {
-        if (!!this.props.enableExclusions) {
-            return (
-                <div className="flex center-align facet-exclude-button" onClick={() => this.toggleFacetToExclude()}>
-                    <input
-                        type="checkbox"
-                        className="coveo-checkbox"
-                        checked={this.props.isChecked && this.isExclude}
-                        onClick={this.stopEvent}
-                        onChange={_.noop}
-                    />
-                    {this.getExcludeButton()}
-                </div>
-            );
-        }
+    private getExcludeAction() {
+        return this.props.enableExclusions ? (
+            <div className="flex center-align facet-exclude-button" onClick={() => this.toggleFacetToExclude()}>
+                {this.props.isChecked && this.isExclude ? null : this.getExcludeButton()}
+            </div>
+        ) : null;
     }
 
-    private getExcludeButton(): JSX.Element {
+    private getExcludeButton() {
         return this.props.excludeTooltipMessage ? (
             <Tooltip
                 className="exclude-button"
                 title={this.props.excludeTooltipMessage(this.props.facetRow.formattedName)}
             >
-                <Svg svgName="exclude" className="icon" svgClass="fill-medium-grey" />
+                <Svg svgName="exclude" className="icon" />
             </Tooltip>
         ) : (
-            <Svg svgName="exclude" className="exclude-button icon" svgClass="fill-medium-grey" />
+            <Svg svgName="exclude" className="exclude-button icon" />
         );
     }
 

@@ -86,7 +86,7 @@ export class Toast extends React.Component<IToastProps> {
 
         const closeButton = this.props.dismissible && (
             <span className="toast-close" onClick={() => this.close()}>
-                <Svg svgName="close" className="icon mod-lg fill-pure-white" />
+                <Svg svgName="close" className="icon mod-lg" />
             </span>
         );
 
