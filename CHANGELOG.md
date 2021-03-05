@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.34.3](https://github.com/coveo/react-vapor/compare/v9.34.2...v9.34.3) (2021-03-05)
+
+
+### Bug Fixes
+
+* **infinite-scroll:** display the infinite scroll only when open ([0ad21ee](https://github.com/coveo/react-vapor/commit/0ad21eeed2ae3223827439035d42be760a149240))
+
+
+
+
+
 ## [9.34.2](https://github.com/coveo/react-vapor/compare/v9.34.1...v9.34.2) (2021-03-04)
 
 **Note:** Version bump only for package root
