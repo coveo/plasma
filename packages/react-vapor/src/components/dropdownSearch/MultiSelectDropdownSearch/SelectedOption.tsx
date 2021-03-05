@@ -24,7 +24,7 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
         const tooltipCustomLabel = this.props.selectedTooltip?.title;
         const tooltipPosition = this.props.selectedTooltip?.placement;
         return (
-            <div className="selected-option" key={this.props.value}>
+            <div className="selected-option" key={this.props.value} role="listitem">
                 <Tooltip
                     delayShow={300}
                     {...this.props.selectedTooltip}
@@ -36,7 +36,7 @@ export class SelectedOption extends React.PureComponent<ISelectedOptionProps> {
                 </Tooltip>
 
                 {!this.props.readOnly && (
-                    <div className="remove-option" onClick={this.handleOnRemove}>
+                    <div className="remove-option" onClick={this.handleOnRemove} role="button">
                         <Svg svgName="clear" svgClass="icon mod-small" />
                     </div>
                 )}

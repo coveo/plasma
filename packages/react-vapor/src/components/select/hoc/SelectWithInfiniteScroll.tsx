@@ -1,9 +1,12 @@
 import * as React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {Loading} from '../../loading/Loading';
 import {ISelectOwnProps} from '../SelectConnected';
+import {SelectSelector} from '../SelectSelector';
 
 export interface SelectWithInfiniteScrollProps {
     totalEntries: number;
@@ -13,7 +16,13 @@ export interface SelectWithInfiniteScrollProps {
 export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button'>>(
     Component: React.ComponentType<P>
 ): React.ComponentType<P & SelectWithInfiniteScrollProps> => {
-    const ComponentWithInfiniteScroll: React.FunctionComponent<P & SelectWithInfiniteScrollProps> = (props) => {
+    const mapStateToProps = createStructuredSelector({
+        isOpened: SelectSelector.getSelectOpened,
+    });
+
+    const ComponentWithInfiniteScroll: React.FunctionComponent<
+        P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>
+    > = (props) => {
         const dataLength = _.size(props.items);
         const hasMore = props.totalEntries - dataLength > 0;
 
@@ -23,8 +32,7 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
                 hasMore={hasMore}
                 loader={<Loading className="p2 full-content-x" />}
                 next={props.next}
-                scrollableTarget={props.id}
-                scrollThreshold={0.9}
+                scrollableTarget={`${props.id}-container`}
                 style={{overflow: 'initial'}}
                 hasChildren={items.length > 0 || props.isLoading}
             >
@@ -32,11 +40,13 @@ export const selectWithInfiniteScroll = <P extends Omit<ISelectOwnProps, 'button
             </InfiniteScroll>
         );
 
-        return <Component {...(props as P)} wrapItems={itemsWrapper} />;
+        return <Component {...(props as P)} wrapItems={props.isOpened ? itemsWrapper : undefined} />;
     };
     ComponentWithInfiniteScroll.displayName = `withInfiniteScroll(${Component.displayName})`;
     ComponentWithInfiniteScroll.defaultProps = {
         totalEntries: 0,
-    } as Partial<P & SelectWithInfiniteScrollProps>;
-    return ComponentWithInfiniteScroll;
+    } as Partial<P & SelectWithInfiniteScrollProps & ReturnType<typeof mapStateToProps>>;
+
+    // @ts-ignore
+    return connect(mapStateToProps)(ComponentWithInfiniteScroll);
 };

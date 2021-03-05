@@ -32,6 +32,8 @@ export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTM
     render() {
         return (
             <div
+                role="alert"
+                aria-busy="true"
                 className={classNames('spinner', this.props.className, {
                     'flex center-align flex-auto full-content-y': this.props.fullContent,
                 })}

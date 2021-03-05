@@ -105,6 +105,7 @@ export class Drop extends React.PureComponent<IDropProps> {
                         className={classNames('drop', this.props.listContainerProps.className)}
                         {...this.props.listContainerProps}
                         data-open={this.props.isOpen}
+                        aria-hidden={!this.props.isOpen}
                     >
                         {this.props.children}
                     </div>

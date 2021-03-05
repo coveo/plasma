@@ -1,239 +1,241 @@
-import {mount, ReactWrapper} from 'enzyme';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
-import * as _ from 'underscore';
+import {render, screen, fireEvent, within} from 'react-vapor-test-utils';
 
-import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {SelectedOption} from '../../dropdownSearch/MultiSelectDropdownSearch/SelectedOption';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {Tooltip} from '../../tooltip/Tooltip';
-import {IMultiSelectProps, MultiSelectConnected} from '../MultiSelectConnected';
-import {ISelectOwnProps, SelectConnected} from '../SelectConnected';
+import {MultiSelectConnected} from '../MultiSelectConnected';
 
 describe('Select', () => {
     describe('<MultiSelectConnected />', () => {
-        let wrapper: ReactWrapper<any, any>;
-        let multiSelect: ReactWrapper<ISelectOwnProps, void>;
-        let store: Store<IReactVaporState>;
+        const id: string = 'multi-select';
 
-        const id: string = 'list-box-connected';
+        it('contains the specified placeholder when no items are selected', () => {
+            const items = [{value: '🌱'}, {value: '🥔'}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} emptyPlaceholder="🍍" />);
 
-        const mountMultiSelect = (items: IItemBoxProps[] = [], props: Partial<IMultiSelectProps> = {}) => {
-            wrapper = mount(
-                <Provider store={store}>
-                    <MultiSelectConnected id={id} items={items} {...props} />
-                </Provider>,
-                {attachTo: document.getElementById('App')}
-            );
-            multiSelect = wrapper.find(SelectConnected).first();
-        };
-
-        beforeEach(() => {
-            store = TestUtils.buildStore();
+            expect(screen.getByRole('list')).toHaveTextContent('🍍');
         });
 
-        afterEach(() => {
-            store.dispatch(clearState());
+        it('displays the selected items', () => {
+            const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            const listitems = screen.getAllByRole('listitem');
+            expect(listitems.length).toBe(2);
+            expect(listitems[0]).toHaveTextContent('🌱');
+            expect(listitems[1]).toHaveTextContent('🥔');
         });
 
-        describe('mount and unmount', () => {
-            it('should not throw on mount', () => {
-                expect(() => mountMultiSelect()).not.toThrow();
+        it('describes the item with a tooltip', async () => {
+            const items = [{value: '🌱', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            fireEvent.mouseOver(screen.getByText('🌱'));
+
+            expect(await screen.findByLabelText(/🌱/)).toBeVisible();
+        });
+
+        it('describes the item with a custom tooltip', async () => {
+            const items = [{value: '🌱', selected: true, selectedTooltip: {title: ':seed:'}}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            fireEvent.mouseOver(screen.getByText('🌱'));
+
+            expect(await screen.findByLabelText(/:seed:/)).toBeVisible();
+        });
+
+        it('displays the displayValue in the selected items', () => {
+            const items = [
+                {value: '🌱', selected: true, displayValue: ':seed:'},
+                {value: '🥔', selected: true, displayValue: ':potato:'},
+                {value: '🍟'},
+            ];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            const listitems = screen.getAllByRole('listitem');
+            expect(listitems.length).toBe(2);
+            expect(listitems[0]).toHaveTextContent(':seed:');
+            expect(listitems[1]).toHaveTextContent(':potato:');
+        });
+
+        it('displays the displayValue in the dropdown list', () => {
+            const items = [
+                {value: '🌱', displayValue: ':seed:'},
+                {value: '🥔', displayValue: ':potato:'},
+                {value: '🍟'},
+            ];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            const lists = screen.getAllByRole('list');
+
+            expect(within(lists[1]).getByText(':seed:')).toBeVisible();
+            expect(within(lists[1]).getByText(':potato:')).toBeVisible();
+            expect(within(lists[1]).getByText('🍟')).toBeVisible();
+        });
+
+        it('hides items that are hidden', () => {
+            const items = [{value: 'first', hidden: true}, {value: 'second'}, {value: 'third'}];
+
+            render(<MultiSelectConnected id={id} items={items} />, {});
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            const lists = screen.getAllByRole('list');
+            expect(within(lists[1]).queryByText('first')).not.toBeInTheDocument();
+        });
+
+        it('is possible to remove a selected item', () => {
+            const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            let listitems = screen.getAllByRole('listitem');
+            expect(listitems.length).toBe(2);
+            expect(listitems[0]).toHaveTextContent('🌱');
+            expect(listitems[1]).toHaveTextContent('🥔');
+
+            userEvent.click(within(listitems[0]).getByRole('button'));
+
+            listitems = screen.getAllByRole('listitem');
+            expect(listitems.length).toBe(1);
+            expect(listitems[0]).toHaveTextContent('🥔');
+        });
+
+        it('does not contain the button to add a value when in read only', () => {
+            const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} readOnly />);
+
+            expect(screen.queryByRole('button', {name: 'Select an option'})).not.toBeInTheDocument();
+        });
+
+        it('does not contain the remove button on the selected items when in read only', () => {
+            const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} readOnly />);
+
+            const listitems = screen.getAllByRole('listitem');
+            expect(within(listitems[0]).queryByRole('button')).not.toBeInTheDocument();
+            expect(within(listitems[1]).queryByRole('button')).not.toBeInTheDocument();
+        });
+
+        it('is possible to remove all selected items', () => {
+            const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            userEvent.click(screen.getByRole('button', {name: 'Deselect All'}));
+
+            expect(screen.getByRole('list')).toHaveTextContent('No selected option');
+        });
+
+        it('does not contain the deselect all button when in read only', () => {
+            const items = [{value: '🌱', selected: true}, {value: '🥔', selected: true}, {value: '🍟'}];
+            render(<MultiSelectConnected id={id} items={items} readOnly />);
+
+            expect(screen.queryByRole('button', {name: 'Deselect All'})).not.toBeInTheDocument();
+        });
+
+        it('hides items from the dropdown list when they are selected', () => {
+            const items = [{value: '🌱'}, {value: '🥔', selected: true}, {value: '🍟'}];
+
+            render(<MultiSelectConnected id={id} items={items} />);
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            let lists = screen.getAllByRole('list');
+            expect(within(lists[0]).getByText('🥔')).toBeVisible();
+
+            expect(within(lists[1]).getByText('🌱')).toBeVisible();
+            expect(within(lists[1]).queryByText('🥔')).not.toBeInTheDocument();
+            expect(within(lists[1]).getByText('🍟')).toBeVisible();
+
+            userEvent.click(within(lists[1]).getByText('🍟'));
+
+            lists = screen.getAllByRole('list');
+            expect(within(lists[0]).getByText('🥔')).toBeVisible();
+            expect(within(lists[0]).getByText('🍟')).toBeVisible();
+
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            lists = screen.getAllByRole('list');
+            expect(within(lists[1]).getByText('🌱')).toBeVisible();
+            expect(within(lists[1]).queryByText('🥔')).not.toBeInTheDocument();
+            expect(within(lists[1]).queryByText('🍟')).not.toBeInTheDocument();
+        });
+
+        it('does not open the dropdown if there is no unselected items', () => {
+            const items = [
+                {value: '🌱', selected: true},
+                {value: '🥔', selected: true},
+            ];
+            render(<MultiSelectConnected id={id} items={items} />);
+
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            // one list for the selected values
+            expect(screen.getAllByRole('list').length).toBe(1);
+        });
+
+        it('does not open the dropdown if there is no items', () => {
+            render(<MultiSelectConnected id={id} items={[]} />);
+
+            // open the dropdown
+            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+            // one list for the selected values
+            expect(screen.getAllByRole('list').length).toBe(1);
+        });
+
+        it('allows custom toggleClasses on the dropdown', () => {
+            const {container} = render(<MultiSelectConnected id={id} items={[]} toggleClasses="coulili-zazou" />);
+
+            expect(container.querySelector('.coulili-zazou')).toBeVisible();
+        });
+
+        describe('Sortable', () => {
+            const dragAndDrop = (source: Element, target: Element) => {
+                const eventData: any = {dataTransfer: {files: []}};
+                fireEvent.dragStart(source, eventData);
+                fireEvent.dragEnter(target, eventData);
+                fireEvent.dragOver(target, eventData);
+                fireEvent.drop(target, eventData);
+            };
+
+            it('does not have the drag icon if the component is not sortable', () => {
+                const items = [{value: '🌱', selected: true}];
+
+                const {container} = render(<MultiSelectConnected id={id} items={items} sortable={false} />);
+
+                const listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🌱');
+
+                const dragIcons = container.querySelector('[aria-grabbed=false] svg');
+                expect(dragIcons).not.toBeInTheDocument();
             });
 
-            it('should not throw on unmount', () => {
-                mountMultiSelect();
+            it('is possible to reorder items', () => {
+                const items = [
+                    {value: '🌱', selected: true},
+                    {value: '🥔', selected: true},
+                    {value: '🍟', selected: true},
+                ];
 
-                expect(() => wrapper.unmount()).not.toThrow();
+                const {container} = render(<MultiSelectConnected id={id} items={items} sortable />);
+
+                let listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🌱');
+                expect(listitems[1]).toHaveTextContent('🥔');
+                expect(listitems[2]).toHaveTextContent('🍟');
+
+                const dragIcons = container.querySelectorAll('[aria-grabbed=false] svg');
+                dragAndDrop(dragIcons[1], listitems[2]);
+
+                listitems = screen.getAllByRole('listitem');
+                expect(listitems[0]).toHaveTextContent('🌱');
+                expect(listitems[1]).toHaveTextContent('🍟');
+                expect(listitems[2]).toHaveTextContent('🥔');
             });
-
-            it('should add the list box to the state when mounted', () => {
-                expect(store.getState().selects.length).toBe(0);
-
-                mountMultiSelect();
-
-                expect(store.getState().selects.length).toBe(1);
-            });
-
-            it('should remove the list box from the state when the component unmount', () => {
-                mountMultiSelect();
-
-                expect(store.getState().selects.length).toBe(1);
-                wrapper.unmount();
-
-                expect(store.getState().selects.length).toBe(0);
-            });
-        });
-
-        it('should allow a custom placeholder', () => {
-            const expectedPlaceholder = 'select thingy';
-
-            mountMultiSelect([{value: 'a'}, {value: 'b'}], {placeholder: expectedPlaceholder});
-
-            expect(multiSelect.html()).toContain(expectedPlaceholder);
-        });
-
-        it('should contain a the selected value', () => {
-            const selectedValue = 'dis 1';
-            mountMultiSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
-
-            expect(multiSelect.html()).toContain(selectedValue);
-        });
-
-        it('should contain the display value when the selected value has one', () => {
-            const selectedDisplayValue = 'dis 2';
-            mountMultiSelect([{value: 'a'}, {value: 'dis 1', displayValue: selectedDisplayValue, selected: true}]);
-
-            expect(multiSelect.html()).toContain(selectedDisplayValue);
-        });
-
-        it('should contain a different tooltip value when the selected value has a selectedTooltip', () => {
-            const selectedTooltip = {title: 'Bananas!'};
-            mountMultiSelect([{value: 'a'}, {value: 'Five', selectedTooltip, selected: true}]);
-
-            expect(multiSelect.find(SelectedOption).find(Tooltip).prop('title')).toBe('Bananas!');
-        });
-
-        it('should contain a default tooltip value if no hoverTooltipValue is provided', () => {
-            mountMultiSelect([{value: 'a'}, {value: 'Five', selected: true}]);
-
-            expect(multiSelect.find(SelectedOption).prop('label')).toBe('Five');
-        });
-
-        it('should contain a SelectedOption for every selected item', () => {
-            const firstSelected = 'dis 1';
-            const secondSelected = 'dis two';
-
-            mountMultiSelect([
-                {value: 'a'},
-                {value: firstSelected, selected: true},
-                {value: secondSelected, selected: true},
-            ]);
-
-            expect(multiSelect.find(SelectedOption).length).toBe(2);
-            expect(multiSelect.find(SelectedOption).at(0).props().value).toBe(firstSelected);
-            expect(multiSelect.find(SelectedOption).at(1).props().value).toBe(secondSelected);
-        });
-
-        it('should contain a SelectedOption for a selected item', () => {
-            const itemValue = 'b';
-            mountMultiSelect([{value: itemValue, selected: true}]);
-
-            expect(multiSelect.find(SelectedOption).props().value).toBe(itemValue);
-        });
-
-        it('should disable the dropdown if there is no options', () => {
-            mountMultiSelect();
-
-            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
-        });
-
-        it('should set the toggleClasses prop if any on the dropdown-toggle', () => {
-            mountMultiSelect([], {
-                toggleClasses: 'tuna-can',
-            });
-
-            expect(multiSelect.find('.dropdown-toggle').hasClass('tuna-can')).toBe(true);
-        });
-
-        it('should not disable the dropdown if one of the options is not selected', () => {
-            mountMultiSelect([
-                {value: 'a', selected: false},
-                {value: 'b', selected: true},
-            ]);
-
-            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBeFalsy();
-        });
-
-        it('should disable the dropdown when every option is selected', () => {
-            mountMultiSelect([
-                {value: 'a', selected: true},
-                {value: 'b', selected: true},
-            ]);
-
-            expect(multiSelect.find('.multiselect-add').prop('disabled')).toBe(true);
-        });
-
-        it('should remove the selected item when a X on SelectedOption is clicked', () => {
-            const firstSelected = 'dis 1';
-            const secondSelected = 'dis two';
-
-            mountMultiSelect([
-                {value: 'a'},
-                {value: firstSelected, selected: true},
-                {value: secondSelected, selected: true},
-            ]);
-
-            let state = _.findWhere(store.getState().listBoxes, {id});
-
-            expect(state.selected).toEqual([firstSelected, secondSelected]);
-
-            multiSelect.find(SelectedOption).at(0).find('.remove-option').simulate('click');
-
-            state = _.findWhere(store.getState().listBoxes, {id});
-
-            expect(state.selected).toEqual([secondSelected]);
-        });
-
-        it('should remove all selected items when the clear button is clicked', () => {
-            const firstSelected = 'dis 1';
-            const secondSelected = 'dis two';
-
-            mountMultiSelect([
-                {value: 'a'},
-                {value: firstSelected, selected: true},
-                {value: secondSelected, selected: true},
-            ]);
-
-            let state = _.findWhere(store.getState().listBoxes, {id});
-
-            expect(state.selected).toEqual([firstSelected, secondSelected]);
-
-            multiSelect.find('.remove-all-selected-options').simulate('click');
-
-            state = _.findWhere(store.getState().listBoxes, {id});
-
-            expect(state.selected).toEqual([]);
-        });
-
-        it('should not render a X icon when readOnly is true', () => {
-            const firstSelected = 'dis 1';
-            const secondSelected = 'dis two';
-
-            mountMultiSelect(
-                [{value: 'a'}, {value: firstSelected, selected: true}, {value: secondSelected, selected: true}],
-                {readOnly: true}
-            );
-
-            expect(multiSelect.find(SelectedOption).at(0).find('.remove-option').length).toBe(0);
-            expect(multiSelect.find(SelectedOption).at(1).find('.remove-option').length).toBe(0);
-        });
-
-        it('should not render a X icon that remove all selected options when readOnly is true', () => {
-            const firstSelected = 'dis 1';
-            const secondSelected = 'dis two';
-
-            mountMultiSelect(
-                [{value: 'a'}, {value: firstSelected, selected: true}, {value: secondSelected, selected: true}],
-                {readOnly: true}
-            );
-
-            expect(multiSelect.find('.remove-all-selected-options').length).toBe(0);
-        });
-
-        it('should not render the dropdown if readOnly is true', () => {
-            mountMultiSelect(
-                [
-                    {value: 'a', selected: true},
-                    {value: 'b', selected: true},
-                ],
-                {readOnly: true}
-            );
-
-            expect(multiSelect.find('.multiselect-add').length).toBe(0);
         });
     });
 });

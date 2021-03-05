@@ -83,6 +83,7 @@ export class ItemBox extends React.Component<IItemBoxProps> {
                     className={this.getClasses()}
                     onClick={() => this.handleOnOptionClick()}
                     data-value={this.props.value}
+                    aria-hidden={this.props.hidden}
                 >
                     {this.props.prepend ? <Content {...this.props.prepend} /> : null}
                     <PartialStringMatch partialMatch={this.props.highlight} caseInsensitive>

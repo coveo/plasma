@@ -97,9 +97,11 @@ export class Tooltip extends React.Component<ITooltipProps> {
             <div className="tooltip-footer">{this.props.footer}</div>
         ) : null;
 
+        const id = _.uniqueId('tooltip-');
+
         const tooltip: JSX.Element = (
             <BootstrapTooltip
-                id={_.uniqueId('tooltip-')}
+                id={id}
                 ref={this.overlay}
                 container={this.props.container || Defaults.TOOLTIP_ROOT}
                 {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
@@ -113,7 +115,9 @@ export class Tooltip extends React.Component<ITooltipProps> {
         const children = this.props.noSpanWrapper ? (
             (this.props.children as any)
         ) : (
-            <span className={this.props.className}>{this.props.children}</span>
+            <span className={this.props.className} aria-labelledby={id}>
+                {this.props.children}
+            </span>
         );
 
         if (this.props.title) {

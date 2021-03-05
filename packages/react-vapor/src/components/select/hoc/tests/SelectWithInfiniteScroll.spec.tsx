@@ -1,107 +1,88 @@
-import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import userEvent from '@testing-library/user-event';
+import {render, screen} from 'react-vapor-test-utils';
 import * as React from 'react';
-import InfiniteScroll from 'react-infinite-scroll-component';
 
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {IItemBoxProps} from '../../../itemBox/ItemBox';
-import {ISelectProps} from '../../SelectConnected';
-import {ISingleSelectOwnProps, SingleSelectConnected} from '../../SingleSelectConnected';
-import {selectWithInfiniteScroll, SelectWithInfiniteScrollProps} from '../SelectWithInfiniteScroll';
+import {SingleSelectConnected} from '../../SingleSelectConnected';
+import {selectWithInfiniteScroll} from '../SelectWithInfiniteScroll';
 
 describe('SelectWithInfiniteScroll', () => {
     const SingleSelectWithInfiniteScroll = selectWithInfiniteScroll(SingleSelectConnected);
-    const basicProps: ISingleSelectOwnProps & SelectWithInfiniteScrollProps = {
-        id: 'to-infinity-and-beyond',
-        next: () => [],
-        totalEntries: 0,
-    };
+    const id = 'to-infinity-and-beyond';
 
-    const items = [<span>1</span>, <span>2</span>, <span>3</span>];
-    const itemsProps: IItemBoxProps[] = [
-        {value: '1', displayValue: <span>1</span>},
-        {value: '2', displayValue: <span>2</span>},
-        {value: '3', displayValue: <span>3</span>},
-    ];
+    it('contains the items', () => {
+        const items = [{value: '🏹'}, {value: '💘'}, {value: '👼'}];
 
-    const renderInfiniteScroll = (
-        props: Partial<ISingleSelectOwnProps & SelectWithInfiniteScrollProps>
-    ): ShallowWrapper<InfiniteScroll.InfiniteScrollProps> => {
-        const component: ShallowWrapper<ISelectProps> = shallowWithStore(
-            <SingleSelectWithInfiniteScroll {...basicProps} {...props} />,
-            getStoreMock()
-        ).dive();
+        render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
 
-        return shallow(<div>{component.prop('wrapItems')(props.items)}</div>);
-    };
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
 
-    it('should not throw when rendering and unmounting', () => {
-        expect(() => {
-            const component = shallowWithStore(
-                <SingleSelectWithInfiniteScroll {...basicProps} />,
-                getStoreMock()
-            ).dive();
-            component.unmount();
-        }).not.toThrow();
+        const listitems = screen.getAllByRole('listitem');
+        expect(listitems.length).toBe(3);
+        expect(listitems[0]).toHaveTextContent('🏹');
+        expect(listitems[1]).toHaveTextContent('💘');
+        expect(listitems[2]).toHaveTextContent('👼');
     });
 
-    it('should wrap the items with an infinite scroll component', () => {
-        const component: ShallowWrapper<ISelectProps> = shallowWithStore(
-            <SingleSelectWithInfiniteScroll {...basicProps} />,
-            getStoreMock()
-        ).dive();
-
-        expect(component.prop('wrapItems')).toBeDefined();
-
-        const wrappedItems = shallow(<div>{component.prop('wrapItems')(items)}</div>);
-
-        expect(wrappedItems.find(InfiniteScroll).exists()).toBe(true);
-        expect(wrappedItems.find(InfiniteScroll).contains(items)).toBe(true);
-    });
-
-    it('should set the hasChildren prop to true if there is at least one item', () => {
-        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: itemsProps});
-
-        expect(wrappedItems.find(InfiniteScroll).prop('hasChildren')).toBe(true);
-    });
-
-    it('should set the hasChildren prop to true if the select is loading', () => {
-        // this is because the skeleton loading is shown while loading
-        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: [], isLoading: true});
-
-        expect(wrappedItems.find(InfiniteScroll).prop('hasChildren')).toBe(true);
-    });
-
-    it('should set the hasChildren prop to false if the select is not loading and it has no items', () => {
-        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: [], isLoading: false});
-
-        expect(wrappedItems.find(InfiniteScroll).prop('hasChildren')).toBe(false);
-    });
-
-    it('should set hasMore prop to false on the infinite scroll component when the total number of items is less than the totalEntries prop', () => {
-        const wrappedItems = renderInfiniteScroll({totalEntries: 3, items: itemsProps});
-
-        expect(wrappedItems.find(InfiniteScroll).prop('hasMore')).toBe(false);
-    });
-
-    it('should set hasMore prop to true on the infinite scroll component when the total number of items is less than the totalEntries prop', () => {
-        const wrappedItems = renderInfiniteScroll({totalEntries: 4, items: itemsProps});
-
-        expect(wrappedItems.find(InfiniteScroll).prop('hasMore')).toBe(true);
-    });
-
-    it('should set dataLength prop to the number of items on the infinite scroll', () => {
-        const wrappedItems = renderInfiniteScroll({items: itemsProps});
-
-        expect(wrappedItems.find(InfiniteScroll).prop('dataLength')).toBe(itemsProps.length);
-    });
-
-    it('should call the next prop when the user scrolls to the bottom of the list', () => {
+    it('calls the next prop when the user scrolls to the bottom of the list', () => {
         const nextSpy = jest.fn();
-        const wrappedItems = renderInfiniteScroll({items: itemsProps, next: nextSpy});
+        const items = [{value: '1'}, {value: '2'}, {value: '3'}];
 
-        wrappedItems.find(InfiniteScroll).prop('next')();
+        render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={5000} items={items} />);
+
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+        const list = screen.getByRole('list');
+        const scrollEvent = new Event('scroll');
+        list.dispatchEvent(scrollEvent);
 
         expect(nextSpy).toHaveBeenCalledTimes(1);
+    });
+
+    it('does not call the next prop when there is no more items and the user scrolls to the bottom of the list', () => {
+        const nextSpy = jest.fn();
+        const items = [{value: '1'}, {value: '2'}, {value: '3'}];
+
+        render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={3} items={items} />);
+
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+        const list = screen.getByRole('list');
+        const scrollEvent = new Event('scroll');
+        list.dispatchEvent(scrollEvent);
+
+        expect(nextSpy).toHaveBeenCalledTimes(0);
+    });
+
+    it('displays a loading when the user scrolls to the bottom of the list and there is more items to display', () => {
+        const items = [{value: '1'}, {value: '2'}, {value: '3'}];
+
+        render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
+
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+        const list = screen.getByRole('list');
+        const scrollEvent = new Event('scroll');
+        list.dispatchEvent(scrollEvent);
+
+        expect(screen.getByRole('alert')).toBeVisible();
+    });
+
+    it('does not displays a loading when the user scrolls to the bottom of the list and there is no more items to display', () => {
+        const items = [{value: '1'}, {value: '2'}, {value: '3'}];
+
+        render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={3} items={items} />);
+
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+
+        const list = screen.getByRole('list');
+        const scrollEvent = new Event('scroll');
+        list.dispatchEvent(scrollEvent);
+
+        expect(screen.queryByRole('alert')).not.toBeInTheDocument();
     });
 });

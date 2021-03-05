@@ -127,7 +127,7 @@ export class ListBox extends React.Component<IListBoxProps> {
         const items = this.props.isLoading ? this.getLoadingItems() : this.getItems();
         return (
             <>
-                <ul className={this.getClasses()} id={this.props.id}>
+                <ul className={this.getClasses()} id={`${this.props.id}-container`}>
                     {this.props.wrapItems(items)}
                 </ul>
                 {this.props.footer}

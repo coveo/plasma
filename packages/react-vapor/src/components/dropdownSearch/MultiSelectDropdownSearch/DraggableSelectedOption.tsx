@@ -102,7 +102,10 @@ export class DraggableSelectedOption extends React.PureComponent<IDraggableSelec
                         <div className="inline-flex">
                             {!this.props.readOnly &&
                                 this.props.connectDragSource(
-                                    <div className="move-option infline-flex cursor-move align-center">
+                                    <div
+                                        className="move-option infline-flex cursor-move align-center"
+                                        aria-grabbed={this.props.isDragging}
+                                    >
                                         <Svg svgName="drag-drop" svgClass="icon mod-small" />
                                     </div>
                                 )}
