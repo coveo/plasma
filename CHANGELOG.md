@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.35.1](https://github.com/coveo/react-vapor/compare/v9.35.0...v9.35.1) (2021-03-05)
+
+
+### Features
+
+* **rebranding:** activate rebranding on master branch ([3f69b49](https://github.com/coveo/react-vapor/commit/3f69b49c0d4ddcddb44596f2bd5362b843b10089))
+
+
+### BREAKING CHANGES
+
+* **rebranding:** a lot of component changed of style, some component exemples were removed. We also removed a lot of scss variables, color, etc
+
+
+
+
+
 # [9.35.0](https://github.com/coveo/react-vapor/compare/v9.34.3...v9.35.0) (2021-03-05)
 
 
