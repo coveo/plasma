@@ -15,10 +15,16 @@ import * as styles from './styles/TableWithPredicates.scss';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './utils/TableHOCUtils';
 
-export interface ITableWithPredicateConfig extends WithServerSideProcessingProps {
+export interface IPredicateComponentProps extends Partial<ITableWithPredicateStateProps>,
+ITableHOCOwnProps,
+WithServerSideProcessingProps {
     id: string;
-    values: IItemBoxProps[];
-    prepend?: React.ReactNode;
+}
+
+type PredicateComponentType = React.ComponentType<IPredicateComponentProps>;
+
+export interface ITableWithPredicateGenericConfig extends WithServerSideProcessingProps {
+    id: string;
     matchPredicate?: (predicate: string, datum: any) => boolean;
 }
 
@@ -38,9 +44,10 @@ const defaultMatchPredicate = (predicate: string, datum: any) =>
     !predicate || _.some(_.values(datum), (value: string) => value === predicate);
 
 type TableWithPredicateComponent = React.ComponentType<ITableWithPredicateProps>;
-
-export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => (
-    Component: TableWithPredicateComponent
+export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPredicateGenericConfig>) => (
+    PredicateComponent: PredicateComponentType
+) => (
+    TableComponent: TableWithPredicateComponent
 ): TableWithPredicateComponent => {
     const config = HocUtils.supplyConfig(supplier);
 
@@ -84,29 +91,54 @@ export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateC
         render() {
             const key = TableHOCUtils.getPredicateId(this.props.id, config.id);
             const actions = this.props.actions || [];
+            const newProps = _.omit(this.props, [...TableWithPredicatePropsToOmit]);
+
+            const predicateComponentProps = {
+                ...newProps,
+                id: key
+            };
+
             const predicateAction = (
                 <div
                     className={classNames('coveo-table-actions predicate-filters', styles.tablePredicateFilters)}
                     key={key}
                 >
-                    <SingleSelectConnected
-                        id={key}
-                        items={config.values}
-                        buttonPrepend={config.prepend}
-                        isLoading={this.props.isLoading}
-                    />
+                    <PredicateComponent {...predicateComponentProps} />
                 </div>
             );
 
             const newActions = [...actions, predicateAction];
-            const newProps = _.omit(this.props, [...TableWithPredicatePropsToOmit]);
             return (
-                <Component {...newProps} actions={newActions}>
+                <TableComponent {...newProps} actions={newActions}>
                     {this.props.children}
-                </Component>
+                </TableComponent>
             );
         }
     }
 
     return TableWithPredicate;
+};
+
+export interface ITableWithPredicateConfig extends WithServerSideProcessingProps {
+    id: string;
+    values: IItemBoxProps[];
+    prepend?: React.ReactNode;
+    matchPredicate?: (predicate: string, datum: any) => boolean;
+}
+
+export const tableWithPredicate = (supplier: ConfigSupplier<ITableWithPredicateConfig>) => {
+    const config = HocUtils.supplyConfig(supplier);
+
+    return tableWithPredicateGeneric({
+        ...config
+    })(
+      (props) => (
+            <SingleSelectConnected
+                id={props.id}
+                items={config.values}
+                buttonPrepend={config.prepend}
+                isLoading={props.isLoading}
+            />
+        )
+    );
 };
