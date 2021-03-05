@@ -8,9 +8,11 @@ import {ValidationSelectors} from '../ValidationSelectors';
 
 export interface IValidationMessageProps {
     id: string;
+    onlyShowIfDirty?: boolean;
 }
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IValidationMessageProps) => ({
+    isDirty: ValidationSelectors.getIsDirty(ownProps.id)(state),
     errors: ValidationSelectors.getErrors(ownProps.id)(state),
     warnings: ValidationSelectors.getWarnings(ownProps.id)(state),
 });
@@ -26,15 +28,17 @@ export const ValidationMessageClasses = {
 
 export const ValidationMessageDisconnect: React.FunctionComponent<
     IValidationMessageProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
-> = ({errors, warnings, cleanMessage}) => {
+> = ({onlyShowIfDirty, isDirty, errors, warnings, cleanMessage}) => {
     React.useEffect(() => () => cleanMessage(), []);
 
+    const hasDirty = !onlyShowIfDirty || isDirty.some((dirty) => dirty.value);
     const hasErrors = errors.length > 0;
     const hasWarnings = warnings.length > 0;
     const eitherErrorsOrWarnings = hasErrors ? errors : warnings;
     return (
         <>
-            {(hasErrors || hasWarnings) &&
+            {hasDirty &&
+                (hasErrors || hasWarnings) &&
                 eitherErrorsOrWarnings.map(({validationType, value}) => (
                     <span
                         key={validationType}
