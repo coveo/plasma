@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [9.35.0](https://github.com/coveo/react-vapor/compare/v9.34.3...v9.35.0) (2021-03-05)
+
+
+### Features
+
+* **rebranding:** merge next branch into master ([#1897](https://github.com/coveo/react-vapor/issues/1897)) ([f17b424](https://github.com/coveo/react-vapor/commit/f17b424b5c94447668adb6652949514e1083a0b3)), closes [#1846](https://github.com/coveo/react-vapor/issues/1846) [#1857](https://github.com/coveo/react-vapor/issues/1857) [#1858](https://github.com/coveo/react-vapor/issues/1858) [#1845](https://github.com/coveo/react-vapor/issues/1845) [#1853](https://github.com/coveo/react-vapor/issues/1853) [#1855](https://github.com/coveo/react-vapor/issues/1855) [#1861](https://github.com/coveo/react-vapor/issues/1861) [#1865](https://github.com/coveo/react-vapor/issues/1865) [#1846](https://github.com/coveo/react-vapor/issues/1846) [#1857](https://github.com/coveo/react-vapor/issues/1857) [#1858](https://github.com/coveo/react-vapor/issues/1858) [#1877](https://github.com/coveo/react-vapor/issues/1877) [#1881](https://github.com/coveo/react-vapor/issues/1881) [#1879](https://github.com/coveo/react-vapor/issues/1879) [#1884](https://github.com/coveo/react-vapor/issues/1884) [#1887](https://github.com/coveo/react-vapor/issues/1887) [#1892](https://github.com/coveo/react-vapor/issues/1892) [#1893](https://github.com/coveo/react-vapor/issues/1893) [#1895](https://github.com/coveo/react-vapor/issues/1895) [#1896](https://github.com/coveo/react-vapor/issues/1896)
+
+
+
+
+
 ## [9.34.3](https://github.com/coveo/react-vapor/compare/v9.34.2...v9.34.3) (2021-03-05)
 
 **Note:** Version bump only for package react-vapor-demo
