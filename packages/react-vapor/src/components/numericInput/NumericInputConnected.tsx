@@ -83,7 +83,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         onClick={this.onDecrement}
                         type="button"
                     >
-                        <Svg svgName="minus" svgClass="icon mod-12" />
+                        <Svg svgName="minus" svgClass="icon mod-12 align-middle" />
                     </Button>
                     <div className="flex flex-column">
                         <input
@@ -108,7 +108,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         onClick={this.onIncrement}
                         type="button"
                     >
-                        <Svg svgName="plus" svgClass="icon mod-12" />
+                        <Svg svgName="plus" svgClass="icon mod-12 align-middle" />
                     </Button>
                 </div>
                 <div className="flex flex-row">

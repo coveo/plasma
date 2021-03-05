@@ -94,7 +94,7 @@ export class ListBox extends React.Component<IListBoxProps> {
                     key={item.value}
                     {...item}
                     onOptionClick={(option: IItemBoxProps) => this.onSelectItem(item, item.index)}
-                    active={_.contains(this.props.selected, item.value)}
+                    selected={_.contains(this.props.selected, item.value)}
                 />
             ))
             .value();

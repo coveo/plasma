@@ -112,6 +112,7 @@ $toast-close-size: 16px;
         float: right;
         padding-left: $toast-close-padding-left;
         cursor: pointer;
+        fill: $toast-text-color;
 
         svg {
             width: $toast-close-size;
@@ -140,10 +141,6 @@ $toast-close-size: 16px;
         .toast-title,
         .toast-close {
             padding: $toast-padding;
-        }
-
-        .toast-close {
-            fill: $toast-text-color;
         }
 
         .toast-description {

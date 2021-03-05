@@ -32,7 +32,11 @@ export const DiffViewer: React.FC<DiffViewerDeprecatedProps | DiffViewerProps> =
     ...props
 }: DiffViewerDeprecatedProps & DiffViewerProps) => {
     const defaultStyles = {
-        codeFold: {fontFamily: 'canada-type-gibson, sans-serif', fontWeight: 400},
+        codeFold: {
+            fontFamily: 'canada-type-gibson, sans-serif',
+            fontWeight: 400,
+            a: {pre: {display: 'block', marginTop: '10px'}},
+        },
         diffContainer: {
             fontFamily: 'source_code_pro_regular, Courier New, Courier, monospace',
             color: '#282829',

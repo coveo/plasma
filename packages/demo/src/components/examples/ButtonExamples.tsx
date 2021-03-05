@@ -99,11 +99,7 @@ export class ButtonExamples extends React.Component<any, any> {
                         </span>
                         Log in with Google
                     </Button>
-                    <Button
-                        enabled={true}
-                        classes={['mod-append', 'mod-on-hover', 'spaced-box']}
-                        name="Append on Hover"
-                    >
+                    <Button enabled={true} classes={['mod-append', 'mod-on-hover']} name="Append on Hover">
                         <span className="btn-append">A</span>
                     </Button>
                 </Section>

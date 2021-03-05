@@ -51,6 +51,9 @@ textarea {
             font-size: 12px;
         }
     }
+    &:disabled {
+        color: var(--grey-60);
+    }
 }
 
 .input-group {
