@@ -119,4 +119,58 @@ describe('ValidationMessage', () => {
         expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(1);
         expect(result.find(`.${ValidationMessageClasses.warning}`).length).toBe(0);
     });
+
+    describe('with the onlyShowIfDirty flag', () => {
+        it('should render nothing when there are errors and warnings but the component is not dirty', () => {
+            const result = shallowWithState(
+                <ValidationMessage {...defaultProps} onlyShowIfDirty />,
+                getStateForExistingComponent({
+                    isDirty: [
+                        {validationType: nonEmptyValidationType, value: false},
+                        {validationType: 'somethingelse', value: false},
+                    ],
+                    error: [
+                        {
+                            validationType: nonEmptyValidationType,
+                            value: nonEmptyMessage,
+                        },
+                    ],
+                    warning: [
+                        {
+                            validationType: 'somethingelse',
+                            value: 'ohno',
+                        },
+                    ],
+                })
+            ).dive();
+
+            expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(0);
+            expect(result.find(`.${ValidationMessageClasses.warning}`).length).toBe(0);
+        });
+
+        it('should render errors when there are errors and the component is dirty', () => {
+            const result = shallowWithState(
+                <ValidationMessage {...defaultProps} onlyShowIfDirty />,
+                getStateForExistingComponent({
+                    isDirty: [
+                        {validationType: 'anotherone', value: false},
+                        {validationType: nonEmptyValidationType, value: true},
+                    ],
+                    error: [
+                        {
+                            validationType: nonEmptyValidationType,
+                            value: nonEmptyMessage,
+                        },
+                        {
+                            validationType: 'anotherone',
+                            value: 'wow',
+                        },
+                    ],
+                })
+            ).dive();
+
+            expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(2);
+            expect(result.find(`.${ValidationMessageClasses.error}`).first().text()).toContain(nonEmptyMessage);
+        });
+    });
 });
