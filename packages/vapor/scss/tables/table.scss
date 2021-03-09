@@ -40,7 +40,8 @@
         position: sticky;
         top: 0;
         z-index: 1;
-        padding: $table-header-top-bottom-padding $table-cell-left-right-padding;
+        padding: $table-header-top-padding $table-cell-left-right-padding $table-header-bottom-padding
+            $table-cell-left-right-padding;
         white-space: nowrap;
         background-color: var(--pure-white);
         border-top: $table-border;

@@ -42,6 +42,8 @@ const Navigation: React.FunctionComponent = () => (
         </NavigationSection>
         <NavigationSection baseUrl="/utility" title="Utility">
             <NavigationLink href="/line-height" name="Text Size" />
+            <NavigationLink href="/text-colors" name="Text Colors" />
+            <NavigationLink href="/icon-colors" name="Icon Colors" />
             <NavigationLink href="/whitespace" name="Whitespace" />
             <NavigationLink href="/cursor" name="Cursor" />
             <NavigationLink href="/color-dots" name="Color dots" />
