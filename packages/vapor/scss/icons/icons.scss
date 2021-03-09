@@ -33,6 +33,10 @@
         --fill: var(--success-60);
     }
 
+    &.mod-white {
+        --fill: var(--white);
+    }
+
     &.mod-small {
         width: 0.7em;
         height: 0.7em;
