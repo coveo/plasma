@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.0.2](https://github.com/coveo/react-vapor/compare/v10.0.1...v10.0.2) (2021-03-09)
+
+
+### Bug Fixes
+
+* **rebranding:** add mods and fix facet ([#1902](https://github.com/coveo/react-vapor/issues/1902)) ([ade66a8](https://github.com/coveo/react-vapor/commit/ade66a838c5addfc9def7fc1e29c924939d5f32b))
+
+
+
+
+
 ## [10.0.1](https://github.com/coveo/react-vapor/compare/v10.0.0...v10.0.1) (2021-03-05)
 
 
