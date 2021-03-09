@@ -28,6 +28,11 @@ const facetRows: IFacet[] = [
         formattedName: 'Row 4, count of 0',
         count: '0',
     },
+    {
+        name: 'row5',
+        formattedName: 'This row is super loooooooooooooooooooonoooooooooooooooooooong',
+        count: '123456',
+    },
 ];
 
 const mapDispatchToProps = (

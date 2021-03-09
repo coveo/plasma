@@ -1,11 +1,36 @@
+/* stylelint-disable */
 .icon {
     display: inline-block;
     width: 0.9em;
     height: 0.9em;
     overflow: visible;
 
+    --fill: currentColor;
+
+    fill: var(--fill);
+
     &.documentation-link {
-        fill: var(--digital-blue-60);
+        --fill: var(--digital-blue-60);
+    }
+
+    &.no-link {
+        --fill: var(--grey-80);
+    }
+
+    &.disabled {
+        --fill: var(--grey-60);
+    }
+
+    &.mod-error {
+        --fill: var(--critical-70);
+    }
+
+    &.mod-warning {
+        --fill: var(--warning-70);
+    }
+
+    &.mod-success {
+        --fill: var(--success-60);
     }
 
     &.mod-small {
@@ -63,10 +88,6 @@
         width: 5em;
         height: 5em;
         vertical-align: -2em;
-    }
-    &.disabled {
-        opacity: $transparency-4;
-        fill: var(--grey-60);
     }
 }
 

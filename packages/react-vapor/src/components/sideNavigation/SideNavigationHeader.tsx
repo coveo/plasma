@@ -24,10 +24,7 @@ export class SideNavigationHeader extends React.Component<ISideNavigationHeaderP
     }
 
     render() {
-        const svgClass = classNames(
-            'navigation-menu-section-header-icon icon mod-lg transparency-3',
-            this.props.svgClass
-        );
+        const svgClass = classNames('navigation-menu-section-header-icon icon mod-lg', this.props.svgClass);
         const icon = this.props.svgName ? (
             <Svg svgName={this.props.svgName} svgClass={svgClass} />
         ) : (

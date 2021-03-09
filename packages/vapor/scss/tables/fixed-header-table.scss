@@ -32,7 +32,7 @@
                 div.fixed-header-container {
                     position: absolute;
                     top: 0;
-                    padding: $table-header-top-bottom-padding 0;
+                    padding: $table-header-top-padding 0 $table-header-bottom-padding 0;
                     font-size: 12px;
                     line-height: $table-header-line-height;
                 }
