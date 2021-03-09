@@ -37,6 +37,14 @@
         --fill: var(--white);
     }
 
+    &.office365-red {
+        --fill: var(--orange-8);
+    }
+
+    &.salesforce-blue {
+        --fill: var(--coveo-salesforce-blue);
+    }
+
     &.mod-small {
         width: 0.7em;
         height: 0.7em;
