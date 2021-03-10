@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [9.34.3](https://github.com/coveo/react-vapor/compare/v9.34.1...v9.34.3) (2021-03-10)
+
+
+### Bug Fixes
+
+* **infinite-scroll:** display the infinite scroll only when open ([0ad21ee](https://github.com/coveo/react-vapor/commit/0ad21eeed2ae3223827439035d42be760a149240))
+* **validation:** prop to show validation message only if dirty ([#1898](https://github.com/coveo/react-vapor/issues/1898)) ([85ea0f9](https://github.com/coveo/react-vapor/commit/85ea0f90de43337f24debb49ab8ea97e1a00e94d))
+
+
+### Features
+
+* **table-hoc-predicate:** add generic tableWithPredicate ([e7912c5](https://github.com/coveo/react-vapor/commit/e7912c50a2cdccd661e7b0829339beb1a9339e0f))
+
+
+
+
+
 ## [9.34.1](https://github.com/coveo/react-vapor/compare/v9.34.0...v9.34.1) (2021-03-04)
 
 
