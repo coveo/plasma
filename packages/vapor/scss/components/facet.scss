@@ -90,6 +90,10 @@
     line-height: $facet-value-line-height;
     cursor: pointer;
 
+    button {
+        line-height: inherit;
+    }
+
     .label {
         display: block;
         flex-grow: 1;
