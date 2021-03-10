@@ -1,5 +1,5 @@
 {
-    "version": "9.34.1",
+    "version": "9.34.3",
     "packages": ["packages/*"],
     "command": {
         "publish": {
