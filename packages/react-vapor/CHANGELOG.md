@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.1](https://github.com/coveo/react-vapor/compare/v10.1.0...v10.1.1) (2021-03-10)
+
+
+### Bug Fixes
+
+* **rebranding:** radio shadow and facet button line-height ([#1904](https://github.com/coveo/react-vapor/issues/1904)) ([c9ddd60](https://github.com/coveo/react-vapor/commit/c9ddd60c398e08507d2744a95622c3c9efb8303c))
+
+
+
+
+
 # [10.1.0](https://github.com/coveo/react-vapor/compare/v10.0.2...v10.1.0) (2021-03-10)
 
 
