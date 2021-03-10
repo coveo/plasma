@@ -109,7 +109,7 @@
         display: inline-flex;
         align-items: center;
         color: var(--title-text-color);
-        line-height: 16px;
+        line-height: 17px;
         vertical-align: middle; // Required to properly position checkboxes into tables
 
         .label {
@@ -124,6 +124,10 @@
             margin-right: calc(4 * 0.5rem);
             margin-left: 18px;
             cursor: pointer;
+        }
+
+        button {
+            line-height: inherit;
         }
 
         button:disabled + label {

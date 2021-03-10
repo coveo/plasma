@@ -72,9 +72,8 @@
             font-weight: var(--main-font-bolder);
 
             &:before {
-                top: 5px;
-                left: 5px;
                 z-index: 1;
+                padding: 5px;
                 background-color: transparent;
                 transform: scale(1);
                 content: url('../../resources/icons/svg/content/radiocheck.svg');

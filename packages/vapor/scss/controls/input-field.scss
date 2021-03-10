@@ -87,14 +87,14 @@
         z-index: 0;
         box-sizing: content-box;
         height: 100%;
-        color: var(--lynch);
+        color: var(--title-text-color);
         font-size: $input-font-size;
         transition: $input-transition;
 
         &.active {
             top: -1 * $input-margin-top;
             padding-bottom: $input-margin-top;
-            color: var(--lynch);
+            color: var(--title-text-color);
             font-size: $form-control-label-font-size;
         }
     }

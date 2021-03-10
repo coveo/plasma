@@ -260,6 +260,10 @@
 
     box-shadow: $list-box-box-shadow;
 
+    .select-dropdown-filter {
+        background-color: var(--grey-20);
+    }
+
     .list-box {
         border: none;
         box-shadow: initial;
