@@ -151,7 +151,11 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
                     });
                 }
             });
-            return <div className="flex p2 flex-center flex-column mod-border-bottom">{newChildren}</div>;
+            return (
+                <div className="flex p2 flex-center flex-column mod-border-bottom select-dropdown-filter">
+                    {newChildren}
+                </div>
+            );
         }
         return null;
     }
