@@ -1,10 +1,15 @@
 {
-    "version": "9.34.3",
-    "packages": ["packages/*"],
+    "version": "9.34.4",
+    "packages": [
+        "packages/*"
+    ],
     "command": {
         "publish": {
             "conventionalCommits": true,
-            "allowBranch": ["master", "release-*"]
+            "allowBranch": [
+                "master",
+                "release-*"
+            ]
         },
         "version": {
             "conventionalCommits": true,
@@ -12,7 +17,12 @@
         },
         "bootstrap": {
             "hoist": true,
-            "nohoist": ["unidiff", "query-string", "strict-uri-encode", "split-on-first"]
+            "nohoist": [
+                "unidiff",
+                "query-string",
+                "strict-uri-encode",
+                "split-on-first"
+            ]
         }
     }
 }
