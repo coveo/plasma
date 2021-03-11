@@ -70,7 +70,7 @@
         &:checked + label {
             &:before {
                 z-index: 1;
-                padding: 7px 5px 5px 5px;
+                padding: 6px 5px 5px 5px;
                 background-color: transparent;
                 transform: scale(1);
                 content: url('../../resources/icons/svg/content/radiocheck.svg');
