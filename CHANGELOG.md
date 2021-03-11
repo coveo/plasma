@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.2](https://github.com/coveo/react-vapor/compare/v10.1.1...v10.1.2) (2021-03-11)
+
+
+### Bug Fixes
+
+* **rebranding:** radio button box-shadow on focus ([#1906](https://github.com/coveo/react-vapor/issues/1906)) ([9df3290](https://github.com/coveo/react-vapor/commit/9df3290ca8f7e91d0ddea44a1922fe56032cbd95))
+
+
+
+
+
 ## [10.1.1](https://github.com/coveo/react-vapor/compare/v10.1.0...v10.1.1) (2021-03-10)
 
 
