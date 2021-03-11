@@ -174,5 +174,8 @@
     &.mod-light {
         --background-color: var(--grey-20);
     }
+    &.mod-medium {
+        --background-color: var(--grey-40);
+    }
     // TODO: add mod-error, mod-dark etc.
 }
