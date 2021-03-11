@@ -26,7 +26,7 @@
 
     cursor: pointer;
 
-    .icon {
+    .icon:not(.documentation-link) {
         fill: var(--navy-blue-80);
     }
 
