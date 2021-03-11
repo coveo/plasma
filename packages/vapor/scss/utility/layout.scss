@@ -166,3 +166,13 @@
         z-index: $i;
     }
 }
+
+.background {
+    --background-color: var(--pure-white);
+    background-color: var(--background-color);
+
+    &.mod-light {
+        --background-color: var(--grey-20);
+    }
+    // TODO: add mod-error, mod-dark etc.
+}

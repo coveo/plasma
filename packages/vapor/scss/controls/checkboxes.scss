@@ -98,6 +98,11 @@
                 position: absolute;
                 content: url('../../resources/icons/svg/content/disabled-undeterminate-checkbox.svg');
             }
+
+            & ~ .help-text,
+            & ~ .description {
+                color: var(--grey-60);
+            }
         }
     }
 

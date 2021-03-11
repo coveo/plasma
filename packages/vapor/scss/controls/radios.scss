@@ -53,7 +53,7 @@
         }
 
         &:focus + label:before {
-            box-shadow: 0 0 0 8px var(--light-grey);
+            box-shadow: 0 0 0 4px var(--light-grey);
         }
 
         &:not(:checked) + label {
@@ -68,12 +68,9 @@
         }
 
         &:checked + label {
-            padding-top: $radio-button-checked-text-padding-top;
-            font-weight: var(--main-font-bolder);
-
             &:before {
                 z-index: 1;
-                padding: 5px;
+                padding: 7px 5px 5px 5px;
                 background-color: transparent;
                 transform: scale(1);
                 content: url('../../resources/icons/svg/content/radiocheck.svg');
@@ -92,12 +89,18 @@
 
         &:disabled {
             & + label {
-                color: var(--medium-grey);
+                color: var(--grey-60);
                 cursor: not-allowed;
 
                 &:before {
                     border-color: var(--grey-40);
                 }
+            }
+
+            & ~ .help-text,
+            & ~ .description,
+            & ~ .mod-align-with-radio-label {
+                color: var(--grey-60);
             }
 
             &:checked + label {
