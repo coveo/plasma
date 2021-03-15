@@ -128,12 +128,17 @@ const enhanceExample2 = connect(null, (dispatch: IDispatch) => ({
 const ModalWizardWithValidationIdsDisconnected: React.FunctionComponent<ConnectedProps<typeof enhanceExample2>> = ({
     open,
 }) => (
-    <Section level={2} title="ModalWizard with built-in validation ids">
+    <Section level={2} title="ModalWizard with built-in validation ids using onFinishAsync">
         <Button name="Open wizard with validation ids" enabled primary onClick={() => open('validation-wizard')} />
         <ModalWizardWithValidations
             id="validation-wizard"
             title="Wizard 🧙‍♂️"
-            onFinish={() => alert('Congratulations! You completed the wizard')}
+            onFinishAsync={async () => {
+                alert(
+                    'Sorry, you cannot finish this modal! - onFinishAsync prop was used and an error was thrown which will keep this modal open'
+                );
+                throw new Error('Modal stays open because an error is thrown');
+            }}
             validationIdsByStep={[['name-input'], ['favorite-animal-select']]}
         >
             <Form title="Step 1" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>

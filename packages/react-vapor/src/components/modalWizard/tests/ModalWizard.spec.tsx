@@ -91,6 +91,45 @@ describe('ModalWizard', () => {
 
         expect(finishSpy).toHaveBeenCalledTimes(1);
         await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
+        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
+    it('calls the "onFinishAsync" prop and close the modal when clicking on the "finish" button', async () => {
+        const finishSpy = jest.fn().mockResolvedValue('success!');
+
+        renderModal(
+            <ModalWizard id="🧙‍♂️" onFinishAsync={finishSpy}>
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+        );
+
+        userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        userEvent.click(screen.getByRole('button', {name: 'Finish'}));
+
+        expect(finishSpy).toHaveBeenCalledTimes(1);
+        await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
+        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+    });
+
+    it('does not call "onFinishAsync" function when onFinish is provided', async () => {
+        const onFinishSpy = jest.fn();
+        const onFinishAsyncSpy = jest.fn();
+
+        renderModal(
+            <ModalWizard id="🧙‍♂️" onFinish={onFinishSpy} onFinishAsync={onFinishAsyncSpy}>
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+        );
+
+        userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        userEvent.click(screen.getByRole('button', {name: 'Finish'}));
+
+        expect(onFinishAsyncSpy).toHaveBeenCalledTimes(0);
+        await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
     });
 
     it('disables the next button if the current step is invalid', () => {

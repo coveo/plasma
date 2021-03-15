@@ -13,6 +13,7 @@ export interface ModalWizardProps
     extends Omit<IModalCompositeOwnProps, 'modalBodyChildren' | 'validateShouldNavigate'> {
     id: string;
     onFinish?: () => unknown;
+    onFinishAsync?: () => Promise<void>;
     validateStep?: (currentStep: number, isLastStep?: boolean) => {isValid: boolean; message?: string};
     isDirty?: boolean;
     cancelButtonLabel?: string;
@@ -29,6 +30,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
     id,
     close,
     onFinish,
+    onFinishAsync,
     children,
     modalFooterChildren,
     validateStep,
@@ -84,8 +86,12 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                                 enabled={isValid}
                                 onClick={() => {
                                     if (isLastStep) {
-                                        onFinish?.();
-                                        close();
+                                        if (onFinish) {
+                                            onFinish?.();
+                                            close();
+                                        } else if (onFinishAsync) {
+                                            onFinishAsync()?.then(close);
+                                        }
                                     } else {
                                         setCurrentStep(currentStep + 1);
                                     }
