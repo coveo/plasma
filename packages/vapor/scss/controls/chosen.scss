@@ -74,7 +74,7 @@
                 }
 
                 &.result-selected {
-                    color: var(--medium-blue);
+                    color: var(--title-text-color);
                     font-weight: var(--main-font-bold);
                 }
 
@@ -114,7 +114,7 @@
         height: 34px;
         padding: 0 $button-padding-x;
         overflow: hidden;
-        color: var(--medium-blue);
+        color: var(--title-text-color);
         font-weight: var(--main-font-bold);
         font-size: $dropdown-button-font-size;
         line-height: 34px;
@@ -148,7 +148,7 @@
                 background-position: center;
                 background-size: $dropdown-arrow-icon-size $dropdown-arrow-icon-size;
 
-                @include arrow-down-icon(var(--medium-blue));
+                @include arrow-down-icon(var(--title-text-color));
             }
         }
 
@@ -208,7 +208,7 @@
         border-bottom-left-radius: 0;
 
         div b {
-            @include arrow-up-icon($medium-blue);
+            @include arrow-up-icon(var(--title-text-color));
         }
     }
 }

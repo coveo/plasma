@@ -193,7 +193,7 @@
 
             @extend %dropdown-option-line-style;
 
-            &.state-selected {
+            &.selected-value {
                 color: var(--grey-40);
                 font-weight: var(--main-font-bold);
             }

@@ -283,9 +283,9 @@
 }
 
 $row-style: (
-    success: var(--green),
-    warning: var(--orange-2),
-    error: var(--red),
+    success: var(--success-60),
+    warning: var(--warning-70),
+    error: var(--critical-70),
 );
 
 @each $style, $color in $row-style {
