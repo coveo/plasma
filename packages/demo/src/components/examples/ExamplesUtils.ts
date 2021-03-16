@@ -24,6 +24,7 @@ export const documentationLink: ILinkSvgProps = {
     svg: {
         svgName: 'help',
         svgClass: 'documentation-link icon mod-20',
+        className: 'flex',
     },
 };
 
