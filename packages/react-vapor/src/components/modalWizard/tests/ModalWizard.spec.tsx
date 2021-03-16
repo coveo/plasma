@@ -113,7 +113,25 @@ describe('ModalWizard', () => {
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
 
-    it('does not call "onFinishAsync" function when onFinish is provided', async () => {
+    it('calls the "onFinishAsync" prop and the modal stays open after it is rejected', () => {
+        const finishSpy = jest.fn().mockRejectedValue('helloWorld');
+
+        renderModal(
+            <ModalWizard id="🧙‍♂️" onFinishAsync={finishSpy}>
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+        );
+
+        userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        userEvent.click(screen.getByRole('button', {name: 'Finish'}));
+
+        expect(finishSpy).toHaveBeenCalledTimes(1);
+        expect(screen.queryByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('does not call "onFinishAsync" function when onFinish is provided', () => {
         const onFinishSpy = jest.fn();
         const onFinishAsyncSpy = jest.fn();
 
@@ -129,7 +147,6 @@ describe('ModalWizard', () => {
         userEvent.click(screen.getByRole('button', {name: 'Finish'}));
 
         expect(onFinishAsyncSpy).toHaveBeenCalledTimes(0);
-        await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
     });
 
     it('disables the next button if the current step is invalid', () => {

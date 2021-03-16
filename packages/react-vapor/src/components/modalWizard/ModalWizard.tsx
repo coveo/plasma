@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
+import _ from 'underscore';
 import {ConnectedProps, IDispatch, TooltipPlacement} from '../../utils';
 import {Button} from '../button';
 import {ModalActions} from '../modal/ModalActions';
@@ -90,7 +91,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                                             onFinish?.();
                                             close();
                                         } else if (onFinishAsync) {
-                                            onFinishAsync()?.then(close);
+                                            onFinishAsync().then(close).catch(_.noop);
                                         }
                                     } else {
                                         setCurrentStep(currentStep + 1);
