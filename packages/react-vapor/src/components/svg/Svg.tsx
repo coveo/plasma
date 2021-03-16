@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
@@ -26,8 +27,9 @@ export class Svg extends React.Component<ISvgProps> {
         const formattedSvgName: string = camelize(this.props.svgName);
         const svgString: string = VaporSVG.svg[formattedSvgName] && VaporSVG.svg[formattedSvgName].svgString;
 
+        const spanClasses = classNames('flex', this.props.className);
         // Omit Svg props to avoid warnings.
-        const svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
+        const svgSpanProps = extend({}, omit(this.props, svgPropsToOmit), {className: spanClasses});
 
         if (svgString) {
             return (
