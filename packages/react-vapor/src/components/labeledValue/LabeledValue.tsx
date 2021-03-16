@@ -28,7 +28,7 @@ export class LabeledValue extends React.PureComponent<ILabeledValueProps> {
                 placement={this.props.informationPlacement || TooltipPlacement.Top}
                 className="labeled-tooltip"
             >
-                <Svg svgName="info-14" svgClass="icon" />
+                <Svg svgName="info-14" svgClass="icon no-link" />
             </Tooltip>
         ) : null;
 

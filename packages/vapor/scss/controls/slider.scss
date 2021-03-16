@@ -64,7 +64,8 @@ div.slider-container {
 
     .rc-slider-mark-text {
         bottom: 3 * $spacing;
-        color: var(--bali-hai);
+        color: var(--title-text-color);
+        font-weight: var(--main-font-regular);
     }
 }
 
