@@ -122,7 +122,7 @@
         "jquery": "3.3.1",
         "lint-staged": "9.4.2",
         "lorem-ipsum": "2.0.3",
-        "minimist": "1.2.0",
+        "minimist": "1.2.3",
         "moment": "2.24.0",
         "node-sass": "5.0.0",
         "react": "16.13.1",
