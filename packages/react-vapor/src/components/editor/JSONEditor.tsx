@@ -84,7 +84,7 @@ JSONEditor.defaultProps = {
 
 const ValidationDetails: React.FunctionComponent<{errorMessage?: string}> = ({errorMessage}) => (
     <div className="input-validation-error-details">
-        <Svg className="input-validation-error-icon" svgName="message-alert" svgClass="icon" />
+        <Svg className="input-validation-error-icon" svgName="message-alert" svgClass="icon mod-white" />
         <span className="input-validation-error-message">{errorMessage ?? DEFAULT_JSON_ERROR_MESSAGE}</span>
     </div>
 );
