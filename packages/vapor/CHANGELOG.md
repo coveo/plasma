@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [10.1.4](https://github.com/coveo/react-vapor/compare/v10.1.3...v10.1.4) (2021-03-17)
+
+
+### Bug Fixes
+
+* upgrade codemirror from 5.59.2 to 5.59.3 ([fd80e8d](https://github.com/coveo/react-vapor/commit/fd80e8dc668a1efd39689b1fe8d667473cb540aa))
+
+
+
+
+
 ## [10.1.3](https://github.com/coveo/react-vapor/compare/v10.1.2...v10.1.3) (2021-03-16)
 
 
