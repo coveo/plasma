@@ -8,7 +8,6 @@ import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
-import * as styles from './numeric-input.scss';
 import {NumericInputActions} from './NumericInputActions';
 import {initialNumericInputState} from './NumericInputReducers';
 import {NumericInputSelectors} from './NumericInputSelectors';
@@ -78,7 +77,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
             <div className="numeric-input flex flex-column">
                 <div className="flex flex-row">
                     <Button
-                        classes={['js-decrement mr1 p0', styles.numericInputButton]}
+                        classes="js-decrement mr1 p0"
                         enabled={decrementEnabled}
                         onClick={this.onDecrement}
                         type="button"
@@ -94,8 +93,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                                     [`mod-max-${this.props.maxLength}-digit`]:
                                         _.isNumber(this.props.maxLength) && this.props.maxLength > 0,
                                 },
-                                this.props.className,
-                                styles.numericInput
+                                this.props.className
                             )}
                             value={this.props.value}
                             onChange={this.onChange}
@@ -103,7 +101,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                         />
                     </div>
                     <Button
-                        classes={['js-increment ml1 p0', styles.numericInputButton]}
+                        classes="js-increment ml1 p0"
                         enabled={incrementEnabled}
                         onClick={this.onIncrement}
                         type="button"

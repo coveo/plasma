@@ -5,7 +5,7 @@
     &.open > .dropdown-toggle,
     .dropdown-toggle.open {
         &.mod-primary .dropdown-toggle-arrow {
-            @include arrow-up-icon(var(--pure-white));
+            @include arrow-up-icon($pure-white);
         }
 
         .dropdown-toggle-arrow {
@@ -77,7 +77,7 @@
         text-transform: none;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon(var(--pure-white));
+            @include arrow-down-icon($pure-white);
         }
     }
 
