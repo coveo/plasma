@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [11.0.0](https://github.com/coveo/react-vapor/compare/v10.1.6...v11.0.0) (2021-03-18)
+
+
+### Code Refactoring
+
+* **modal-wizard:** changing the way we close the modal on finish ([7235b73](https://github.com/coveo/react-vapor/commit/7235b73d57f90e283c2e3545730ea979b9c2cbda))
+
+
+### BREAKING CHANGES
+
+* **modal-wizard:** The user will need to call the close callback in the onFinish prop
+
+
+
+
+
 ## [10.1.6](https://github.com/coveo/react-vapor/compare/v10.1.5...v10.1.6) (2021-03-18)
 
 **Note:** Version bump only for package react-vapor-demo
