@@ -30,6 +30,7 @@
 
     thead tr {
         height: $table-header-height;
+        color: var(--default-text-color);
         font-weight: var(--main-font-bold);
         font-size: $table-header-font-size;
         line-height: $table-header-line-height;

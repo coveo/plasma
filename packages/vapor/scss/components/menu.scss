@@ -14,7 +14,7 @@
         cursor: pointer;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon(var(--pure-white));
+            @include arrow-down-icon($pure-white);
         }
 
         .dropdown-toggle-arrow-style {
@@ -23,7 +23,7 @@
     }
 
     &.open .dropdown-toggle .dropdown-toggle-arrow {
-        @include arrow-up-icon(var(--pure-white));
+        @include arrow-up-icon($pure-white);
     }
 
     .dropdown-menu {
