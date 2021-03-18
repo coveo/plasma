@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.1](https://github.com/coveo/react-vapor/compare/v11.0.0...v11.0.1) (2021-03-18)
+
+
+### Bug Fixes
+
+* **rebranding:** adjustments on style ([#1910](https://github.com/coveo/react-vapor/issues/1910)) ([9010ae4](https://github.com/coveo/react-vapor/commit/9010ae4234576101fc948ae4f11cc1475ccf35cd))
+
+
+
+
+
 # [11.0.0](https://github.com/coveo/react-vapor/compare/v10.1.6...v11.0.0) (2021-03-18)
 
 
