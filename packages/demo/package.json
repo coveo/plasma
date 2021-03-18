@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "10.1.5",
+    "version": "10.1.6",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
@@ -22,7 +22,7 @@
     "dependencies": {
         "classnames": "2.2.6",
         "codemirror": "5.58.2",
-        "coveo-styleguide": "^10.1.5",
+        "coveo-styleguide": "^10.1.6",
         "d3": "3.5.17",
         "faker": "4.1.0",
         "jquery": "3.5.1",
@@ -34,7 +34,7 @@
         "react-redux": "5.1.2",
         "react-router-dom": "5.2.0",
         "react-syntax-highlighter": "13.5.1",
-        "react-vapor": "^10.1.5",
+        "react-vapor": "^10.1.6",
         "redux": "4.0.5",
         "redux-devtools-extension": "2.13.8",
         "redux-promise-middleware": "6.1.2",
