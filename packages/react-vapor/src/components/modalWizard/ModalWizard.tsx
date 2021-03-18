@@ -12,7 +12,7 @@ import {StepProgressBar} from '../stepProgressBar';
 export interface ModalWizardProps
     extends Omit<IModalCompositeOwnProps, 'modalBodyChildren' | 'validateShouldNavigate'> {
     id: string;
-    onFinish?: () => unknown;
+    onFinish?: (close: () => void) => unknown;
     validateStep?: (currentStep: number, isLastStep?: boolean) => {isValid: boolean; message?: string};
     isDirty?: boolean;
     cancelButtonLabel?: string;
@@ -84,8 +84,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                                 enabled={isValid}
                                 onClick={() => {
                                     if (isLastStep) {
-                                        onFinish?.();
-                                        close();
+                                        onFinish?.(close);
                                     } else {
                                         setCurrentStep(currentStep + 1);
                                     }

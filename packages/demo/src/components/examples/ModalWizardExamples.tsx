@@ -75,7 +75,10 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
             <ModalWizard
                 id="standard-wizard"
                 title="Wizard 🧙‍♂️"
-                onFinish={() => alert('Congratulations! You completed the wizard')}
+                onFinish={(close) => {
+                    alert('Congratulations! You completed the wizard');
+                    close();
+                }}
                 validateStep={validateStep}
                 isDirty={!!selectedPath || !!inputTwoValue}
             >
@@ -133,7 +136,10 @@ const ModalWizardWithValidationIdsDisconnected: React.FunctionComponent<Connecte
         <ModalWizardWithValidations
             id="validation-wizard"
             title="Wizard 🧙‍♂️"
-            onFinish={() => alert('Congratulations! You completed the wizard')}
+            onFinish={(close) => {
+                alert('Congratulations! You completed the wizard');
+                close();
+            }}
             validationIdsByStep={[['name-input'], ['favorite-animal-select']]}
         >
             <Form title="Step 1" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>

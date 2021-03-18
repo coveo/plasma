@@ -75,7 +75,7 @@ describe('ModalWizard', () => {
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
     });
 
-    it('calls the "onFinish" prop and close the modal when clicking on the "finish" button', async () => {
+    it('calls the "onFinish" prop and the modal stays open when clicking on the "finish" button', () => {
         const finishSpy = jest.fn();
 
         renderModal(
@@ -90,7 +90,28 @@ describe('ModalWizard', () => {
         userEvent.click(screen.getByRole('button', {name: 'Finish'}));
 
         expect(finishSpy).toHaveBeenCalledTimes(1);
+        expect(screen.getByRole('dialog')).toBeInTheDocument();
+    });
+
+    it('calls the "onFinish" prop and the modal closes when clicking on the "finish" button', async () => {
+        renderModal(
+            <ModalWizard
+                id="🧙‍♂️"
+                onFinish={(close) => {
+                    close();
+                }}
+            >
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+        );
+
+        userEvent.click(screen.getByRole('button', {name: 'Next'}));
+        userEvent.click(screen.getByRole('button', {name: 'Finish'}));
+
         await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
+        expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
 
     it('disables the next button if the current step is invalid', () => {
