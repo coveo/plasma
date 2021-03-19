@@ -157,4 +157,45 @@ describe('ModalWizard', () => {
         await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
     });
+
+    it('changes the title depending on the step if a function was provided as title', () => {
+        renderModal(
+            <ModalWizard id="🧙‍♂️" title={(currentStep: number) => (currentStep === 0 ? 'Title 1' : 'Title 2')}>
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+        );
+
+        expect(screen.getByRole('heading', {name: /title 1/i})).toBeVisible();
+        expect(screen.queryByRole('heading', {name: /title 2/i})).not.toBeInTheDocument();
+
+        userEvent.click(screen.getByRole('button', {name: 'Next'}));
+
+        expect(screen.queryByRole('heading', {name: /title 1/i})).not.toBeInTheDocument();
+        expect(screen.getByRole('heading', {name: /title 2/i})).toBeVisible();
+    });
+
+    it('changes the footer depending on the step if a function was provided as modalFooterChildren', () => {
+        renderModal(
+            <ModalWizard
+                id="🧙‍♂️"
+                modalFooterChildren={(currentStep: number) =>
+                    currentStep === 0 ? 'Footer Children 1' : 'Footer Children 2'
+                }
+            >
+                <div>Step 1</div>
+                <div>Step 2</div>
+            </ModalWizard>,
+            {initialState: {modals: [{id: '🧙‍♂️', isOpened: true}]}}
+        );
+
+        expect(screen.getByText(/footer children 1/i)).toBeVisible();
+        expect(screen.queryByText(/footer children 2/i)).not.toBeInTheDocument();
+
+        userEvent.click(screen.getByRole('button', {name: 'Next'}));
+
+        expect(screen.queryByText(/footer children 1/i)).not.toBeInTheDocument();
+        expect(screen.getByText(/footer children 2/i)).toBeVisible();
+    });
 });
