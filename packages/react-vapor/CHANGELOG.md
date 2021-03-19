@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [12.0.0](https://github.com/coveo/react-vapor/compare/v11.0.2...v12.0.0) (2021-03-19)
+
+
+### Bug Fixes
+
+* **status-card:** remove the css module and load the style with css ([a3065ee](https://github.com/coveo/react-vapor/commit/a3065eea48647da5916f5993545f65c35b97ac16))
+
+
+### BREAKING CHANGES
+
+* **status-card:** The color prop was removed from the StatusCard component, use mod-information,
+mod-success, mod-warning or mod-critical classes instead.
+
+
+
+
+
 ## [11.0.2](https://github.com/coveo/react-vapor/compare/v11.0.1...v11.0.2) (2021-03-19)
 
 
