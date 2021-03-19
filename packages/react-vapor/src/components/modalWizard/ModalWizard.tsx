@@ -9,11 +9,18 @@ import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalCo
 import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider';
 import {StepProgressBar} from '../stepProgressBar';
 
+type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
+
 export interface ModalWizardProps
-    extends Omit<IModalCompositeOwnProps, 'modalBodyChildren' | 'validateShouldNavigate'> {
+    extends Omit<
+        IModalCompositeOwnProps,
+        'modalBodyChildren' | 'validateShouldNavigate' | 'modalFooterChildren' | 'title'
+    > {
     id: string;
     onFinish?: (close: () => void) => unknown;
-    validateStep?: (currentStep: number, isLastStep?: boolean) => {isValid: boolean; message?: string};
+    validateStep?: DependsOnStep<{isValid: boolean; message?: string}>;
+    modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
+    title?: string | DependsOnStep<string>;
     isDirty?: boolean;
     cancelButtonLabel?: string;
     nextButtonLabel?: string;
@@ -27,6 +34,7 @@ const enhance = connect(null, (dispatch: IDispatch, {id}: ModalWizardProps) => (
 
 const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & ConnectedProps<typeof enhance>> = ({
     id,
+    title,
     close,
     onFinish,
     children,
@@ -44,7 +52,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
     const numberOfSteps = steps.length;
     const isFirstStep = currentStep === 0;
     const isLastStep = currentStep === numberOfSteps - 1;
-    const {isValid, message} = validateStep?.(currentStep, isLastStep) ?? {isValid: true};
+    const {isValid, message} = validateStep?.(currentStep, numberOfSteps) ?? {isValid: true};
 
     return (
         <UnsavedChangesModalProvider isDirty={isDirty}>
@@ -66,7 +74,9 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                     }
                     modalFooterChildren={
                         <>
-                            {modalFooterChildren}
+                            {typeof modalFooterChildren === 'function'
+                                ? modalFooterChildren(currentStep, numberOfSteps)
+                                : modalFooterChildren}
                             <Button
                                 name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                                 onClick={() => {
@@ -96,6 +106,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                     }
                     onAfterOpen={() => setCurrentStep(0)}
                     validateShouldNavigate={() => promptBefore(close)}
+                    title={typeof title === 'function' ? title(currentStep, numberOfSteps) : title}
                     {...modalProps}
                 />
             )}

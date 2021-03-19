@@ -43,7 +43,7 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
     selectedPath,
     inputTwoValue,
 }) => {
-    const validateStep = (currentStep: number, isLastStep: boolean) => {
+    const validateStep = (currentStep: number, numberOfSteps: number) => {
         if (currentStep === 0) {
             return {
                 isValid: !!selectedPath,
@@ -60,7 +60,7 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
             } else {
                 return {isValid: true};
             }
-        } else if (isLastStep) {
+        } else if (currentStep === numberOfSteps - 1) {
             return {
                 isValid: containsCoveo(inputTwoValue),
                 message: !containsCoveo(inputTwoValue) && 'The input at step 2 must contain "coveo" to finish.',
@@ -81,6 +81,9 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
                 }}
                 validateStep={validateStep}
                 isDirty={!!selectedPath || !!inputTwoValue}
+                modalFooterChildren={(currentStep, numberOfSteps) =>
+                    currentStep < numberOfSteps - 1 ? null : <div className="flex-auto">Last Step!</div>
+                }
             >
                 <Form title="Step 1" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
                     <RadioSelectConnected id="radio-step-1">
