@@ -1,7 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {StickyFooter} from '../StickyFooter';
-import * as styles from '../StickyFooter.scss';
 
 describe('StickyFooter', () => {
     it('should render without error', () => {
@@ -28,12 +28,12 @@ describe('StickyFooter', () => {
     it('should render opened class if it is opened', () => {
         const component = shallow(<StickyFooter isOpened={true} />);
 
-        expect(component.find('#StickyFooter').hasClass(styles.stickyFooterOpened)).toBe(true);
+        expect(component.find('#StickyFooter').hasClass('opened')).toBe(true);
     });
 
     it('should not render opened class if it is closed', () => {
         const component = shallow(<StickyFooter isOpened={false} />);
 
-        expect(component.find('#StickyFooter').hasClass(styles.stickyFooterOpened)).toBe(false);
+        expect(component.find('#StickyFooter').hasClass('opened')).toBe(false);
     });
 });

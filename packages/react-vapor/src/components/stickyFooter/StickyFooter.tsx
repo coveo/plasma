@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import * as styles from './StickyFooter.scss';
 
 export interface IStickyFooterProps {
     isOpened: boolean;
@@ -17,10 +16,7 @@ export class StickyFooter extends React.Component<IStickyFooterProps> {
     render() {
         const {id, className, isOpened} = this.props;
         return (
-            <div
-                id={id}
-                className={classNames(styles.stickyFooter, {[styles.stickyFooterOpened]: isOpened}, className)}
-            >
+            <div id={id} className={classNames('sticky-footer', {opened: isOpened}, className)}>
                 {this.props.children}
             </div>
         );
