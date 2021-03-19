@@ -1,6 +1,11 @@
 $card-container-box-shadow: 0 2px 8px 0 rgba($black, $transparency-4);
 $card-hover-box-shadow: -5px 0 5px var(--light-grey);
 
+// Status Cards
+$status-card-border-width: 4px;
+$status-card-margin: 10px;
+$status-card-small-width: 160px;
+
 .card-content-box-shadow {
     box-shadow: $card-container-box-shadow;
 }
@@ -15,4 +20,54 @@ $card-hover-box-shadow: -5px 0 5px var(--light-grey);
     border: $default-border;
     border-radius: var(--border-radius);
     box-shadow: 0px 2px 8px rgba(229, 232, 232, 0.75);
+}
+
+.status-card {
+    position: relative;
+    background: var(--pure-white);
+    border-left: $status-card-border-width solid transparent;
+    border-radius: $border-radius;
+    box-shadow: $table-shadow;
+
+    &.simple {
+        background: transparent;
+        box-shadow: none;
+    }
+
+    &:not(.loading) {
+        &.mod-success {
+            border-left-color: var(--success-60);
+        }
+
+        &.mod-warning {
+            border-left-color: var(--warning-60);
+        }
+
+        &.mod-critical {
+            border-left-color: var(--critical-80);
+        }
+
+        &.mod-information {
+            border-left-color: var(--information-80);
+        }
+    }
+}
+
+.status-card-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+
+    .status-card {
+        width: calc((100% - #{$status-card-margin} * 3) / 4);
+        margin-right: $status-card-margin;
+        margin-bottom: $status-card-margin;
+
+        &:nth-child(4n) {
+            margin-right: 0;
+        }
+
+        &:global(.simple) {
+            width: $status-card-small-width;
+        }
+    }
 }
