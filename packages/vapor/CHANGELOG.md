@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [11.0.2](https://github.com/coveo/react-vapor/compare/v11.0.1...v11.0.2) (2021-03-19)
+
+
+### Bug Fixes
+
+* **sticky-footer:** remove css modules ([#1915](https://github.com/coveo/react-vapor/issues/1915)) ([b3d3d76](https://github.com/coveo/react-vapor/commit/b3d3d76fb7fceaed484a100ef44a7a89cf085a45))
+
+
+
+
+
 ## [11.0.1](https://github.com/coveo/react-vapor/compare/v11.0.0...v11.0.1) (2021-03-18)
 
 
