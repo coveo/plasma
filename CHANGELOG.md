@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.0.0](https://github.com/coveo/react-vapor/compare/v12.0.0...v13.0.0) (2021-03-22)
+
+
+### improvement
+
+* **modalwizard:** allow footer and title to depend on step ([c90f113](https://github.com/coveo/react-vapor/commit/c90f113bdbef13405638c62b21f9c100cc87634f))
+
+
+### BREAKING CHANGES
+
+* **modalwizard:** ModalWizard `validateStep` function now takes in the total number of steps as
+second parameter instead of a boolean indicating whether if it is the last step. This change allow
+for more flexibility.
+
+
+
+
+
 # [12.0.0](https://github.com/coveo/react-vapor/compare/v11.0.2...v12.0.0) (2021-03-19)
 
 
