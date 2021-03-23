@@ -190,6 +190,30 @@ describe('Modal', () => {
                 expect(openModalsState[1]).toBe(action.payload.id);
             });
 
+            it('adds the modal id to the array when adding a new modal opened on mount', () => {
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.addModal,
+                    payload: {
+                        id: 'my-modal',
+                        isOpened: true,
+                    },
+                };
+
+                expect(openModalsReducer([], action)).toEqual(['my-modal']);
+            });
+
+            it('does not add the modal id to the array when adding a new modal closed on mount', () => {
+                const action: IReduxAction<IModalActionPayload> = {
+                    type: ModalAction.addModal,
+                    payload: {
+                        id: 'my-modal',
+                        isOpened: false,
+                    },
+                };
+
+                expect(openModalsReducer([], action)).toEqual([]);
+            });
+
             it('should not add the id to the openModals string array if the id of the opened modal is already there', () => {
                 let oldState: string[] = [];
                 const action: IReduxAction<IModalActionPayload> = {

@@ -11,7 +11,6 @@ export interface IModalOwnProps {
     closeTimeout?: number;
     /**
      * Renders the Modal already opened.
-     * To be used with ModalConnected only.
      */
     openOnMount?: boolean;
     contentRef?: (el: HTMLDivElement) => void;
