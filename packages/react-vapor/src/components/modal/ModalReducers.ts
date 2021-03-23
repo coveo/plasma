@@ -64,6 +64,11 @@ export const openModalsReducer = (state: string[] = [], action: IReduxAction<IMo
                 return [...state, action.payload.id];
             }
             return state;
+        case ModalAction.addModal:
+            if (action.payload.isOpened) {
+                return [...state, action.payload.id];
+            }
+            return state;
         case ModalAction.closeModals:
             return _.without(state, ...action.payload.ids);
         case ModalAction.removeModal:
