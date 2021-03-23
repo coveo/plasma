@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import {Moment} from 'moment';
 import * as React from 'react';
 
@@ -12,6 +13,7 @@ export interface IDay {
     isUpperLimit?: boolean;
     color?: string;
     isSelectable?: boolean;
+    isCountdown?: boolean;
 }
 
 export interface ICalendarDayProps extends React.ClassAttributes<CalendarDay> {
@@ -30,50 +32,37 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
     }
 
     componentDidUpdate() {
-        if (
-            !this.props.day.isSelectable &&
-            this.props.day.isSelected &&
-            (this.props.day.isLowerLimit || this.props.day.isUpperLimit)
-        ) {
+        const {day} = this.props;
+
+        if (!day.isSelectable && day.isSelected && (day.isLowerLimit || day.isUpperLimit)) {
             this.props.onSelectUnselectable();
         }
     }
 
     render() {
-        const dayClasses: string[] = [];
-        const dayCellClasses: string[] = [CalendarDay.DEFAULT_DATE_CLASS];
+        const {day} = this.props;
 
-        if (!this.props.day.isCurrentMonth) {
-            dayClasses.push('other-month-date');
-        }
+        const isSelectedAndSelectable = day.isSelected && day.isSelectable;
 
-        if (!this.props.day.isSelectable) {
-            dayCellClasses.push('un-selectable');
-        }
+        const dayClassNames: string = classNames({
+            'other-month-date': !day.isCurrentMonth,
+            'todays-date': day.isToday,
+            countdown: day.isCountdown,
+            'selected-date': isSelectedAndSelectable,
+            'lower-limit': isSelectedAndSelectable && day.isLowerLimit,
+            'upper-limit': isSelectedAndSelectable && day.isUpperLimit,
+        });
 
-        if (this.props.day.isToday) {
-            dayClasses.push('todays-date');
-        }
+        const dayCellClassNames: string = classNames(CalendarDay.DEFAULT_DATE_CLASS, {
+            'un-selectable': !day.isSelectable,
+        });
 
-        if (this.props.day.isSelected && this.props.day.isSelectable) {
-            dayClasses.push('selected-date');
-
-            if (this.props.day.isLowerLimit) {
-                dayClasses.push('lower-limit');
-            }
-
-            if (this.props.day.isUpperLimit) {
-                dayClasses.push('upper-limit');
-            }
-        }
-
-        const bothLimitsElement: JSX.Element =
-            this.props.day.isLowerLimit && this.props.day.isUpperLimit ? <span></span> : null;
+        const bothLimitsElement: JSX.Element = day.isLowerLimit && day.isUpperLimit ? <span /> : null;
 
         return (
-            <td className={dayCellClasses.join(' ')} onClick={() => this.handleClick()}>
-                <span className={dayClasses.join(' ')}>
-                    {this.props.day.number}
+            <td className={dayCellClassNames} onClick={() => this.handleClick()}>
+                <span className={dayClassNames}>
+                    {day.number}
                     {bothLimitsElement}
                 </span>
             </td>

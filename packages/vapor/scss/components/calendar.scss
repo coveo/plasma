@@ -168,6 +168,67 @@
             }
         }
     }
+
+    &.countdown-calendar {
+        table.calendar-grid {
+            tr,
+            td {
+                border: 0;
+            }
+
+            th {
+                border-bottom: 0;
+            }
+
+            td {
+                .countdown {
+                    position: relative;
+                    top: 0;
+                    left: calc(#{$selected-date-offset} + #{$calendar-limit-border-width} + 2px);
+                    display: block;
+                    width: $countdown-cell-height;
+                    height: $countdown-cell-height;
+                    color: var(--grey-40);
+                    line-height: $selected-date-height;
+                    background-color: var(--grey-40);
+                    border-radius: 50%;
+
+                    &.lower-limit,
+                    &.upper-limit {
+                        &:before,
+                        &:after {
+                            display: none;
+                        }
+                    }
+
+                    &.other-month-date {
+                        color: var(--pure-white);
+                        background-color: var(--pure-white);
+                    }
+
+                    &.selected-date {
+                        color: var(--navy-blue-80);
+                        background-color: var(--navy-blue-80);
+
+                        &.lower-limit,
+                        &.upper-limit {
+                            &:before,
+                            &:after {
+                                display: none;
+                            }
+                        }
+
+                        &.todays-date {
+                            color: var(--navy-blue-80);
+                            font-size: $small-font-size;
+                            background-color: var(--pure-white);
+                            border: 1px solid var(--navy-blue-80);
+                        }
+                    }
+                }
+            }
+        }
+    }
 }
 
 .options-cycle {

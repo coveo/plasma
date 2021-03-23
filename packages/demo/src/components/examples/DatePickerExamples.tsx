@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {
+    Calendar,
     CalendarConnected,
     ChildForm,
     DatePickerBox,
@@ -11,6 +12,7 @@ import * as _ from 'underscore';
 
 import {ExampleComponent} from '../ComponentsInterface';
 import {
+    CALENDAR_COUNTDOWN_DATES,
     CALENDAR_SELECTION_RULES,
     DATE_RANGE_EXAMPLE,
     FOUR_SELECTION_BOXES,
@@ -20,6 +22,7 @@ import {
 export const DatePickerExamples: ExampleComponent = () => (
     <Section>
         <CalendarComponent />
+        <CountdownComponent />
         <DatePickerComponents />
         <DatesSelectionComponent />
     </Section>
@@ -29,6 +32,12 @@ DatePickerExamples.title = 'DatePicker';
 const CalendarComponent: React.FunctionComponent = () => (
     <Section title="Calendar component">
         <CalendarConnected id="calendar" />
+    </Section>
+);
+
+const CountdownComponent: React.FunctionComponent = () => (
+    <Section title="Countdown component" mods={['mod-form-top-bottom-padding']}>
+        <Calendar id="countdown-calendar" countdown calendarSelection={CALENDAR_COUNTDOWN_DATES} />
     </Section>
 );
 

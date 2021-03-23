@@ -5,6 +5,7 @@ import {
     DatePickerDateRange,
     DATES_SEPARATOR,
     ICalendarSelectionRule,
+    IDatePickerState,
     IDatesSelectionBox,
 } from 'react-vapor';
 
@@ -189,3 +190,13 @@ export const CALENDAR_SELECTION_RULES_SINGLE_DATE: ICalendarSelectionRule[] = [
 ];
 
 export const DATE_RANGE_EXAMPLE: DatePickerDateRange = [moment().toDate(), moment().add(3, 'day').toDate()];
+
+export const CALENDAR_COUNTDOWN_DATES: IDatePickerState[] = [
+    {
+        id: 'countdown-id',
+        calendarId: 'countdown-calendar-id',
+        isRange: true,
+        lowerLimit: moment().toDate(),
+        upperLimit: moment().date(moment().daysInMonth()).toDate(),
+    } as IDatePickerState,
+];
