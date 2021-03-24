@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.0.2](https://github.com/coveo/react-vapor/compare/v13.0.1...v13.0.2) (2021-03-24)
+
+
+### Features
+
+* cypress innitial configuration ([80ca872](https://github.com/coveo/react-vapor/commit/80ca872cdc95f658b7457a6e6dd2c8f5fcd7e2db))
+
+
+
+
+
 ## [13.0.1](https://github.com/coveo/react-vapor/compare/v13.0.0...v13.0.1) (2021-03-24)
 
 
