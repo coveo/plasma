@@ -41,6 +41,7 @@ import {ISelectState} from './components/select/SelectReducers';
 import {ISliderState} from './components/slider/SliderReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
+import {HOCTableState} from './components/table-hoc/reducers/TableHOCReducers';
 import {HOCTableRowState} from './components/table-hoc/reducers/TableRowReducers';
 import {ITableWithPaginationState} from './components/table-hoc/reducers/TableWithPaginationReducers';
 import {ITableWithSortState} from './components/table-hoc/reducers/TableWithSortReducers';
@@ -105,6 +106,7 @@ export interface IReactVaporState {
     tableHOCHeader?: ITableWithSortState[];
     tableHOCPagination?: ITableWithPaginationState[];
     tableHOCRow?: HOCTableRowState[];
+    tablesHOC?: HOCTableState[];
     textAreas?: ITextAreaState[];
     validation?: ValidationsState;
 }

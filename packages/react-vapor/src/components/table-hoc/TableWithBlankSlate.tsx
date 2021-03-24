@@ -31,6 +31,7 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
         return {
             isEmpty,
             isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
+            isEmptyStateSet: TableSelectors.isEmptyStateSet(state, ownProps),
             data: isEmpty ? null : ownProps.data,
         };
     };
@@ -41,6 +42,10 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
         const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, ...tableProps} = props;
 
         const blankSlateToRender = renderBlankSlate || defaultRenderBlankSlateMethod;
+
+        if (tableProps.isEmptyStateSet && isTrulyEmpty && !props.isLoading) {
+            return <></>;
+        }
 
         if (renderBlankSlateOnly && isTrulyEmpty && !props.isLoading) {
             return blankSlateToRender;
