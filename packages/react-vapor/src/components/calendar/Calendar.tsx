@@ -275,12 +275,13 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         );
 
         if (this.props.countdown) {
+            const countdownDays = moment()
+                .date(moment().month(this.props.months[selectedMonth]).daysInMonth())
+                .fromNow(true);
+
             this.countdownHeader = (
                 <div id="countdown-header">
-                    <h2 className="bold mb1">
-                        {moment().date(moment().month(this.props.months[selectedMonth]).daysInMonth()).fromNow(true)}{' '}
-                        left
-                    </h2>
+                    <h2 className="bold mb1">{countdownDays} left</h2>
                     <div className="smaller">in {this.props.months[selectedMonth]}</div>
                 </div>
             );
@@ -295,7 +296,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
         return (
             <div className={wrapperClasses}>
-                {this.props.showHeader && (this.countdownHeader || defaultHeader)}
+                {this.props.showHeader && (this.countdownHeader ?? defaultHeader)}
                 <table className={tableClasses}>
                     <TableHeader
                         columns={daysHeaderColumns}

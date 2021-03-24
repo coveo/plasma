@@ -42,15 +42,15 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
     render() {
         const {day} = this.props;
 
-        const isSelectedAndSelectable = day.isSelected && day.isSelectable;
+        const isSelectableAndSelected = day.isSelected && day.isSelectable;
 
         const dayClassNames: string = classNames({
             'other-month-date': !day.isCurrentMonth,
             'todays-date': day.isToday,
             countdown: day.isCountdown,
-            'selected-date': isSelectedAndSelectable,
-            'lower-limit': isSelectedAndSelectable && day.isLowerLimit,
-            'upper-limit': isSelectedAndSelectable && day.isUpperLimit,
+            'selected-date': isSelectableAndSelected,
+            'lower-limit': isSelectableAndSelected && day.isLowerLimit,
+            'upper-limit': isSelectableAndSelected && day.isUpperLimit,
         });
 
         const dayCellClassNames: string = classNames(CalendarDay.DEFAULT_DATE_CLASS, {
@@ -59,10 +59,12 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
 
         const bothLimitsElement: JSX.Element = day.isLowerLimit && day.isUpperLimit ? <span /> : null;
 
+        const isCountdownAndToday = day.isCountdown && day.isToday;
+
         return (
             <td className={dayCellClassNames} onClick={() => this.handleClick()}>
                 <span className={dayClassNames}>
-                    {day.number}
+                    {(isCountdownAndToday || !day.isCountdown) && day.number}
                     {bothLimitsElement}
                 </span>
             </td>
