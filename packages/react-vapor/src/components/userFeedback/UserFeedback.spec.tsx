@@ -138,7 +138,7 @@ describe('<UserFeedback>', () => {
                 it('should have the error text color class', () => {
                     const componentOnStateError = getShallowOutput('', UserFeedbackState.ERROR);
 
-                    expect(componentOnStateError.hasClass('validation-error')).toBe(true);
+                    expect(componentOnStateError.hasClass('mod-error')).toBe(true);
                 });
             });
         });

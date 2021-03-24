@@ -3,7 +3,7 @@ import * as React from 'react';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {ValidationActions} from '../../ValidationActions';
 import {ValidationState} from '../../ValidationState';
-import {IValidationMessageProps, ValidationMessage, ValidationMessageClasses} from '../ValidationMessage';
+import {IValidationMessageProps, ValidationMessage} from '../ValidationMessage';
 
 describe('ValidationMessage', () => {
     const defaultProps: IValidationMessageProps = {
@@ -72,8 +72,8 @@ describe('ValidationMessage', () => {
             })
         ).dive();
 
-        expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(2);
-        expect(result.find(`.${ValidationMessageClasses.error}`).first().text()).toContain(nonEmptyMessage);
+        expect(result.find('.mod-error').length).toBe(2);
+        expect(result.find('.mod-error').first().text()).toContain(nonEmptyMessage);
     });
 
     it('should render warnings when there are warnings', () => {
@@ -93,8 +93,8 @@ describe('ValidationMessage', () => {
             })
         ).dive();
 
-        expect(result.find(`.${ValidationMessageClasses.warning}`).length).toBe(2);
-        expect(result.find(`.${ValidationMessageClasses.warning}`).first().text()).toContain(nonEmptyMessage);
+        expect(result.find('.mod-warning').length).toBe(2);
+        expect(result.find('.mod-warning').first().text()).toContain(nonEmptyMessage);
     });
 
     it('should render not render warnings if there are already errors', () => {
@@ -116,8 +116,8 @@ describe('ValidationMessage', () => {
             })
         ).dive();
 
-        expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(1);
-        expect(result.find(`.${ValidationMessageClasses.warning}`).length).toBe(0);
+        expect(result.find('.mod-error').length).toBe(1);
+        expect(result.find('.mod-warning').length).toBe(0);
     });
 
     describe('with the onlyShowIfDirty flag', () => {
@@ -144,8 +144,8 @@ describe('ValidationMessage', () => {
                 })
             ).dive();
 
-            expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(0);
-            expect(result.find(`.${ValidationMessageClasses.warning}`).length).toBe(0);
+            expect(result.find('.mod-error').length).toBe(0);
+            expect(result.find('.mod-warning').length).toBe(0);
         });
 
         it('should render errors when there are errors and the component is dirty', () => {
@@ -169,8 +169,8 @@ describe('ValidationMessage', () => {
                 })
             ).dive();
 
-            expect(result.find(`.${ValidationMessageClasses.error}`).length).toBe(2);
-            expect(result.find(`.${ValidationMessageClasses.error}`).first().text()).toContain(nonEmptyMessage);
+            expect(result.find('.mod-error').length).toBe(2);
+            expect(result.find('.mod-error').first().text()).toContain(nonEmptyMessage);
         });
     });
 });

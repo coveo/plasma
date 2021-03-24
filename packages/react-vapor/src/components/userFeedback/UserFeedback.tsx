@@ -29,7 +29,7 @@ export class UserFeedback extends React.Component<IUserFeedbackProps, any> {
         const displayClassOnShow = this.props.displayOnShow || DisplayClass.BLOCK;
 
         const renderedDisplayClass = state === UserFeedbackState.VALID ? DisplayClass.HIDDEN : displayClassOnShow;
-        const renderedTextColorClass = state === UserFeedbackState.ERROR ? 'validation-error' : null;
+        const renderedTextColorClass = state === UserFeedbackState.ERROR ? 'text mod-error' : 'text mod-emphasized';
         const renderedExtraClasses = this.props.extraClasses || [];
 
         return {
