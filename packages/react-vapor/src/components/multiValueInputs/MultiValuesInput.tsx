@@ -95,7 +95,7 @@ export const MultiValuesInput: React.FunctionComponent<MultiValuesInputProps> = 
                         innerInputClasses={innerInputClasses}
                         disabledTooltip={isTooltipRequired && disabledTooltipTitle ? disabledTooltipTitle : ''}
                         labelTitle={index === 0 ? inputProps?.labelTitle : ''}
-                        validate={index === 0 ? inputProps?.validate : (value: string) => true}
+                        validate={inputProps?.validate}
                     />
                 );
             })
