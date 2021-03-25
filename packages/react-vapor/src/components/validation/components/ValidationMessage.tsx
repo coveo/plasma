@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
+
 import {IReactVaporState} from '../../../ReactVapor';
 import {IDispatch} from '../../../utils';
 import {ValidationActions} from '../ValidationActions';
@@ -21,11 +22,6 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IValidationMessagePro
     cleanMessage: () => dispatch(ValidationActions.cleanMessage(ownProps.id)),
 });
 
-export const ValidationMessageClasses = {
-    error: 'validation-error',
-    warning: 'validation-warning',
-};
-
 export const ValidationMessageDisconnect: React.FunctionComponent<
     IValidationMessageProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
 > = ({onlyShowIfDirty, isDirty, errors, warnings, cleanMessage}) => {
@@ -42,9 +38,9 @@ export const ValidationMessageDisconnect: React.FunctionComponent<
                 eitherErrorsOrWarnings.map(({validationType, value}) => (
                     <span
                         key={validationType}
-                        className={classNames({
-                            [ValidationMessageClasses.error]: hasErrors,
-                            [ValidationMessageClasses.warning]: !hasErrors,
+                        className={classNames('text', {
+                            'mod-error': hasErrors,
+                            'mod-warning': !hasErrors,
                         })}
                     >
                         {value}
