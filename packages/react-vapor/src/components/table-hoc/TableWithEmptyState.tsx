@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IDispatch} from 'react-vapor';
 import * as _ from 'underscore';
+import {IDispatch} from '../../utils/ReduxUtils';
 
 import {IReactVaporState} from '../../ReactVapor';
 import {TableHOCActions} from './actions/TableHOCActions';
@@ -22,6 +22,7 @@ export const tableWithEmptyState = (
         return {
             isTrulyEmpty,
             data: isTrulyEmpty ? null : ownProps.data,
+            isEmptyStateAlreadySet: TableSelectors.isEmptyStateAlreadySet(state, ownProps),
         };
     };
 
@@ -35,7 +36,7 @@ export const tableWithEmptyState = (
             ReturnType<typeof mapStateToProps> &
             ReturnType<typeof mapDispatchToProps>
     > = (props) => {
-        const {emptyState, isTrulyEmpty: isTrulyEmpty, setEmptyState, ...tableProps} = props;
+        const {emptyState, isTrulyEmpty: isTrulyEmpty, setEmptyState, isEmptyStateAlreadySet, ...tableProps} = props;
         const [shouldRenderEmptyState, setShouldRenderEmptyState_immediate] = React.useState(false);
 
         const setShouldRenderEmptyState_debounced = React.useRef(
@@ -44,7 +45,7 @@ export const tableWithEmptyState = (
 
         // Cancelling the debounced function on unmount to prevent calling setState on an unmounted component
         React.useEffect(() => {
-            props.setEmptyState();
+            !isEmptyStateAlreadySet && props.setEmptyState();
             setShouldRenderEmptyState_debounced.cancel;
         }, []);
 

@@ -19,9 +19,16 @@ const initialTableSort: ITableWithSortState = {
 
 const isEmptyStateSet = (state: IReactVaporState, ownProps: TableSelectorsProps): boolean => {
     const tablesHOC = state.tablesHOC;
-    const tableHOC = tablesHOC.find((table) => table.id === ownProps.id);
+    const tableHOC = tablesHOC?.find((table) => table.id === ownProps.id);
 
-    return tableHOC?.emptyStateSet ?? false;
+    return !!tableHOC?.emptyStateSet;
+};
+
+const isEmptyStateAlreadySet = (state: IReactVaporState, ownProps: TableSelectorsProps): boolean => {
+    const tablesHOC = state.tablesHOC;
+    const tableHOC = tablesHOC?.find((table) => table.id === ownProps.id);
+
+    return !_.isUndefined(tableHOC?.emptyStateSet);
 };
 
 const getIsEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean =>
@@ -65,6 +72,7 @@ export const TableSelectors = {
      */
     getIsTruelyEmpty: getIsTrulyEmpty,
     isEmptyStateSet,
+    isEmptyStateAlreadySet,
     getDataCount,
     getSort,
     getTableRow,

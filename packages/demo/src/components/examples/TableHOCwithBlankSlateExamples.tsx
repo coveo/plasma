@@ -1,15 +1,5 @@
 import * as React from 'react';
-import {tableWithEmptyState, withServerSideProcessing} from 'react-vapor';
-import {
-    Section,
-    TableHOC,
-    tableWithBlankSlate,
-    tableWithFilter,
-    tableWithActions,
-    tableWithPrepend,
-    tableWithPredicate,
-    tableWithNewPagination,
-} from 'react-vapor';
+import {Section, TableHOC, tableWithBlankSlate, tableWithEmptyState, tableWithFilter} from 'react-vapor';
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../ComponentsInterface';
@@ -30,22 +20,11 @@ export interface IExampleRowData {
     id: string;
 }
 
-const twoHundredRowsOfData = generateDataWithFacker(200);
-const predicateSetup = {
-    id: 'firstPredicate',
-    prepend: <span className="dropdown-prepend">prepend:</span>,
-    values: [
-        {displayValue: 'All', value: '', selected: true},
-        {displayValue: twoHundredRowsOfData[2].city, value: twoHundredRowsOfData[2].city},
-        {displayValue: twoHundredRowsOfData[1].email, value: twoHundredRowsOfData[1].email},
-    ],
-};
-
 // start-print
 
 const TableWithBlankSlateExample: React.FunctionComponent = () => (
     <>
-        <Section>
+        <Section level={1} title="TableHOC with a blankSlate">
             <TableWithBlankSlateComposed
                 id="tableWithBlankSlate"
                 className="table"
@@ -57,7 +36,7 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
             />
         </Section>
 
-        <Section>
+        <Section level={1} title="TableHOC with a blankSlate and an empty state">
             <TableWithEmptyStateComposed
                 id="tableWithEmptyState"
                 className="table"
@@ -67,7 +46,6 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
                     data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1
                 }
                 emptyState={<EmptyState />}
-                prepend={<Prepend />}
             />
         </Section>
     </>
@@ -81,14 +59,8 @@ const TableWithBlankSlateComposed = _.compose(
 
 const TableWithEmptyStateComposed = _.compose(
     tableWithEmptyState,
-    withServerSideProcessing,
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
-    tableWithFilter(),
-    tableWithActions(),
-    tableWithPrepend,
-    tableWithPredicate({...predicateSetup}),
-    tableWithNewPagination({isServer: true, perPageNumbers: [3, 5, 10]})
+    tableWithFilter()
 )(TableHOC);
 
-const EmptyState: React.FunctionComponent = () => <div> A truly empty space </div>;
-const Prepend: React.FunctionComponent = () => <div>prepend</div>;
+const EmptyState: React.FunctionComponent = () => <div> A truly empty state </div>;

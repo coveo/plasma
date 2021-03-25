@@ -44,7 +44,6 @@ export const tableWithFilter = (
             filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
         const urlParams = UrlUtils.getSearchParams();
         return {
-            isEmpty: TableSelectors.getIsEmpty(state, ownProps),
             isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
             isEmptyStateSet: TableSelectors.isEmptyStateSet(state, ownProps),
             filter: filterText,
@@ -61,10 +60,18 @@ export const tableWithFilter = (
         }
 
         render() {
-            const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} = this.props;
+            const {
+                filterBlankslate,
+                filterMatcher,
+                filterPlaceholder,
+                filter,
+                urlFilter,
+                isEmptyStateSet,
+                isTrulyEmpty,
+                ...tableProps
+            } = this.props;
             const blankSlateProps = filterBlankslate || config.blankSlate;
-            const shouldShowBlankslate =
-                _.isEmpty(this.props.data) && !_.isEmpty(this.props.filter) && !_.isEmpty(blankSlateProps);
+            const shouldShowBlankslate = !_.isEmpty(blankSlateProps) && !isEmptyStateSet && isTrulyEmpty;
             const filterAction = (
                 <FilterBoxConnected
                     key="FilterBox"
@@ -75,9 +82,7 @@ export const tableWithFilter = (
                 />
             );
 
-            return this.props.isEmptyStateSet && this.props.isTrulyEmpty && !this.props.isLoading ? (
-                <></>
-            ) : (
+            return (
                 <WrappedTable
                     {...tableProps}
                     actions={[...(this.props.actions ?? []), filterAction]}

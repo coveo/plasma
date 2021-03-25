@@ -137,4 +137,21 @@ describe('TableWithBlankSlate', () => {
             expect(wrapper.type()).toBe(TableHOC);
         });
     });
+
+    describe('When an empty state is set', () => {
+        it('should call and render the tableHOC render body if the emptyState is set, the table is truly empty and is not loading', () => {
+            jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValueOnce(true);
+            jest.spyOn(TableSelectors, 'isEmptyStateSet').mockReturnValueOnce(true);
+
+            const renderSpy = jest.fn();
+            const wrapper = shallowWithState(
+                <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
+                {}
+            ).dive();
+            const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
+            tableRenderBody();
+
+            expect(renderSpy).toHaveBeenCalledTimes(1);
+        });
+    });
 });

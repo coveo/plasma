@@ -1,12 +1,16 @@
+import {render} from 'react-vapor-test-utils';
 import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
+import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {TableHOCActions} from '../actions/TableHOCActions';
 import {TableHOC} from '../TableHOC';
 import {tableWithEmptyState} from '../TableWithEmptyState';
+import {TableSelectors} from '../TableSelectors';
 
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);
@@ -76,5 +80,30 @@ describe('TableWithEmptyState', () => {
         expect(table.children().children().type()).toBe(TableHOC);
 
         jest.useRealTimers();
+    });
+
+    it('should not call the setEmptyState from the TableHOCActions the table render has the setEmptyState property already set', () => {
+        jest.spyOn<any, string>(TableSelectors, 'isEmptyStateAlreadySet').mockReturnValueOnce(true);
+        const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
+
+        render(
+            <Provider store={getStoreMock()}>
+                <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />
+            </Provider>
+        );
+
+        expect(setEmptyStateSpy).not.toHaveBeenCalled();
+    });
+
+    it('should call the setEmptyState from the TableHOCActions when the table is first rendered', () => {
+        const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
+
+        render(
+            <Provider store={getStoreMock()}>
+                <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />
+            </Provider>
+        );
+
+        expect(setEmptyStateSpy).toHaveBeenCalledTimes(1);
     });
 });
