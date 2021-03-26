@@ -577,5 +577,23 @@ describe('Calendar', () => {
                 });
             });
         });
+
+        describe('Countdown', () => {
+            it('should add the countdown-calendar class to the wrapper if countdown prop is provided', () => {
+                expect(calendar.find('.countdown-calendar').length).toBe(0);
+
+                calendar.setProps({countdown: true});
+
+                expect(calendar.find('.countdown-calendar').length).toBe(1);
+            });
+
+            it('should show the countdown-header if countdown prop provided', () => {
+                expect(calendar.find('#countdown-header').length).toBe(0);
+
+                calendar.setProps({countdown: true});
+
+                expect(calendar.find('#countdown-header').length).toBe(1);
+            });
+        });
     });
 });

@@ -187,5 +187,17 @@ describe('Calendar day', () => {
 
             expect(unSelectableDayProps.onSelectUnselectable).toHaveBeenCalledTimes(1);
         });
+
+        describe('Countdown', () => {
+            it('should have countdown class if isCountdown prop provided', () => {
+                const newDayProps: IDay = {
+                    ...DAY,
+                    isCountdown: true,
+                };
+                const component = shallow(<CalendarDay {...BASIC_CALENDAR_DAY_PROPS} day={newDayProps} />);
+
+                expect(component.find('.countdown').length).toBe(1);
+            });
+        });
     });
 });

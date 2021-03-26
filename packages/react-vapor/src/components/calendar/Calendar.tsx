@@ -37,6 +37,8 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
     isLinkedToDateRange?: boolean;
     simple?: boolean;
     wrapperClassNames?: string;
+    showHeader?: boolean;
+    countdown?: boolean;
 }
 
 export interface ICalendarStateProps extends IReduxStatePossibleProps {
@@ -68,6 +70,8 @@ export const MONTH_PICKER_ID: string = 'calendar-months';
 export const YEAR_PICKER_ID: string = 'calendar-years';
 
 export class Calendar extends React.Component<ICalendarProps, any> {
+    private countdownHeader: React.ReactNode;
+
     static defaultProps: Partial<ICalendarProps> = {
         selectionRules: [],
         years: DEFAULT_YEARS,
@@ -75,6 +79,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         days: DEFAULT_DAYS,
         startingMonth: DateUtils.currentMonth,
         startingDay: 0,
+        showHeader: true,
     };
 
     private getSelectedDatePicker(): IDatePickerState {
@@ -163,6 +168,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
                 (calendarSelection.isRange && day.date.isSame(selectionStart, 'day')) || day.isLowerLimit;
             day.isUpperLimit = (calendarSelection.isRange && day.date.isSame(selectionEnd, 'day')) || day.isUpperLimit;
             day.color = isSelected ? calendarSelection.color : day.color;
+            day.isCountdown = !!this.props.countdown;
 
             _.each(this.props.selectionRules, (rule: ICalendarSelectionRule) => {
                 if (day.isSelectable) {
@@ -209,7 +215,9 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             ...this.props.days.slice(this.props.startingDay + 1),
             ...this.props.days.slice(0, this.props.startingDay),
         ];
-        const daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({title: day}));
+        const daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({
+            title: this.props.countdown ? day.substr(0, 1) : day,
+        }));
 
         const monthPicker = this.props.withReduxState ? (
             <OptionsCycleConnected
@@ -246,7 +254,11 @@ export class Calendar extends React.Component<ICalendarProps, any> {
                 );
             });
 
-            return <tr key={`week-${days[0].key}`}>{days}</tr>;
+            return (
+                <tr key={`week-${days[0].key}`} className={classNames({'no-hover': this.props.countdown})}>
+                    {days}
+                </tr>
+            );
         });
 
         const tableClasses: string = classNames('table', 'calendar-grid', {
@@ -257,21 +269,43 @@ export class Calendar extends React.Component<ICalendarProps, any> {
             'calendar',
             {
                 'mod-width-50': !this.props.simple,
+                'countdown-calendar': this.props.countdown,
             },
             this.props.wrapperClassNames
         );
 
+        if (this.props.countdown) {
+            const countdownDays = moment()
+                .date(moment().month(this.props.months[selectedMonth]).daysInMonth())
+                .fromNow(true);
+
+            this.countdownHeader = (
+                <div id="countdown-header">
+                    <h2 className="bold mb1">{countdownDays} left</h2>
+                    <div className="smaller">in {this.props.months[selectedMonth]}</div>
+                </div>
+            );
+        }
+
+        const defaultHeader = (
+            <div className="calendar-header p2">
+                {monthPicker}
+                {yearPicker}
+            </div>
+        );
+
         return (
             <div className={wrapperClasses}>
-                <div className="calendar-header p2">
-                    {monthPicker}
-                    {yearPicker}
-                </div>
+                {this.props.showHeader && (this.countdownHeader ?? defaultHeader)}
                 <table className={tableClasses}>
-                    <TableHeader columns={daysHeaderColumns} headerClass="mod-no-border-top" />
+                    <TableHeader
+                        columns={daysHeaderColumns}
+                        headerClass={classNames('mod-no-border-top', {'mod-no-border-bottom': this.props.countdown})}
+                    />
                     <tbody>{weeks}</tbody>
                 </table>
             </div>
         );
     }
 }
+1;
