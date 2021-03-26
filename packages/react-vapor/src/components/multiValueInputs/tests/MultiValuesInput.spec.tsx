@@ -318,7 +318,7 @@ describe('MultiValuesInput', () => {
         expect(oneInputConnectedBeforelastProps.labelTitle).toBe('');
     });
 
-    it("should only validate the first input's content", () => {
+    it("should validate all the inputs' content", () => {
         const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
 
         const body = shallowWithState(
@@ -329,7 +329,7 @@ describe('MultiValuesInput', () => {
         const lastInputConnectedValidation = body.find(InputConnected).last().props().validate('');
         const firstInputConnectedValidation = body.find(InputConnected).first().props().validate('');
 
-        expect(lastInputConnectedValidation).toBe(true);
+        expect(lastInputConnectedValidation).toBe(false);
         expect(firstInputConnectedValidation).toBe(false);
     });
 
