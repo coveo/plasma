@@ -48,6 +48,9 @@ pipeline {
       steps {
         script {
           setLastStageName();
+          
+          MASTER_RELEASE_FAILURE_CHANNELS = ["admin-ui-builds", "cloudadmindev", "admin-ui-guild"]
+          PR_CHANNELS = ["admin-ui-builds"]
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
           if(commitMessage.contains("[version bump]")) {
             skipRemainingStages = true
@@ -286,10 +289,17 @@ pipeline {
         def color = "FF0000";
         def message = "Build FAILED at stage *${getLastStageName()}* - ${env.JOB_NAME} (<${env.BUILD_URL}|#${env.BUILD_NUMBER}>)";
 
-        notify.sendSlackWithThread(
+        if(env.JOB_NAME ==~ /(master|release-.*)/){
+          notify.sendSlackWithThread(
             color: color, message: message,
-            ["admin-ui-builds"]
-        )
+            MASTER_RELEASE_FAILURE_CHANNELS
+          )
+        } else {
+          notify.sendSlackWithThread(
+            color: color, message: message,
+            PR_CHANNELS
+          )
+        }
       }
     }
     always {
