@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/coveo/react-vapor/compare/v13.0.4...v13.1.0) (2021-03-26)
+
+
+### Bug Fixes
+
+* **multivaluesinput:** validate all the inputs ([#1922](https://github.com/coveo/react-vapor/issues/1922)) ([464b38d](https://github.com/coveo/react-vapor/commit/464b38d8cda998188f18d5ff8c7c338a94a39aed))
+
+
+### Features
+
+* **calendar:** new countdown feature for calendar ([91970c0](https://github.com/coveo/react-vapor/commit/91970c0ecd392b459f1cdbf42e31c24a7213edb6))
+
+
+
+
+
 ## [13.0.4](https://github.com/coveo/react-vapor/compare/v13.0.3...v13.0.4) (2021-03-26)
 
 **Note:** Version bump only for package react-vapor

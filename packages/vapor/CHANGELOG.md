@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.1.0](https://github.com/coveo/react-vapor/compare/v13.0.4...v13.1.0) (2021-03-26)
+
+
+### Features
+
+* **calendar:** new countdown feature for calendar ([91970c0](https://github.com/coveo/react-vapor/commit/91970c0ecd392b459f1cdbf42e31c24a7213edb6))
+
+
+
+
+
 # [13.0.0](https://github.com/coveo/react-vapor/compare/v12.0.0...v13.0.0) (2021-03-22)
 
 **Note:** Version bump only for package coveo-styleguide
