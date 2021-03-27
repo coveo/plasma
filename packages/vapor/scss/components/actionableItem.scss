@@ -1,0 +1,31 @@
+$actionable-item-dots-padding-x: 8px;
+$actionable-item-dots-width: 12px;
+
+.actionable-item-container {
+    height: $button-height;
+    color: var(--title-text-color);
+    background-color: var(--white);
+}
+
+.actionable-item-content,
+.actionable-item-dots {
+    border-radius: $border-radius;
+}
+
+.actionable-item-content {
+    padding: 9px $button-padding-x;
+    border-radius: $border-radius 0 0 $border-radius;
+}
+
+.actionable-item-dots {
+    padding: 9px $actionable-item-dots-padding-x;
+    border-radius: 0 $border-radius $border-radius 0;
+
+    &:hover {
+        background-color: var(--light-grey);
+    }
+}
+
+:global(.actionable-item-target) {
+    display: inline-block;
+}
