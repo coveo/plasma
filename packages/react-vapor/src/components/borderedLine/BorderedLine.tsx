@@ -1,9 +1,8 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import * as styles from './styles/BorderedLine.scss';
 
 export class BorderedLine extends React.PureComponent<React.HTMLAttributes<HTMLDivElement>> {
-    static defaultClassName = classNames(styles.borderedLine, 'mod-border-top mod-border-bottom');
+    static defaultClassName = classNames('bordered-line mod-border-top mod-border-bottom');
 
     render() {
         return (
