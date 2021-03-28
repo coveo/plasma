@@ -67,3 +67,8 @@
 .remove-option:active {
     background-color: darken($light-grey, 5%);
 }
+
+// Single select
+.single-select-fixed-width {
+    width: $dropdown-button-min-width;
+}
