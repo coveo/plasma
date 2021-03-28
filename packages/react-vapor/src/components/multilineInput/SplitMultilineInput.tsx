@@ -5,7 +5,6 @@ import {Input} from '../input/Input';
 import {Label} from '../input/Label';
 import {AddInputAction} from './AddInputAction';
 import {DeleteInputAction} from './DeleteInputAction';
-import * as styles from './styles/SplitMultilineInput.scss';
 
 export interface ISplitInput {
     id: string;
@@ -51,7 +50,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
 
     render() {
         return (
-            <div className={styles.inputBlock}>
+            <div className={'split-multiline-input input-block'}>
                 <ul>
                     {this.getDeletableInputs()}
                     {this.getNewInput()}
@@ -80,7 +79,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                             labelTitle={input.label}
                             labelProps={{invalidMessage: input.validationMessage}}
                             ref={(ref: Input) => inputRefs.push(ref)}
-                            classes={styles.input}
+                            classes={'split-multiline-input'}
                             value={values[labelId]}
                             placeholder={input.placeholder}
                             validate={input.validation ? (value: any) => input.validation(value) : undefined}
@@ -115,7 +114,7 @@ export class SplitMultilineInput extends React.PureComponent<ISplitMultilineInpu
                     }
                 }}
                 key={`add-${inputIndex}`}
-                classes={styles.input}
+                classes={'split-multiline-input'}
                 placeholder={input.placeholder}
                 validate={input.validation ? (value: any) => input.validation(value) : undefined}
                 labelTitle={false}
