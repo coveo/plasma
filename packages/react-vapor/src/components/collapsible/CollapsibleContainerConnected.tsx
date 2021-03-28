@@ -10,8 +10,6 @@ import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {CollapsibleConnected} from './CollapsibleConnected';
 import {CollapsibleHeaderIcon} from './CollapsibleHeaderIcon';
-import * as styles from './styles/CollapsibleContainer.scss';
-
 export interface ICollapsibleContainerOwnProps {
     id: string;
     title: React.ReactNode;
@@ -50,7 +48,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
     disabled,
 }) => {
     const contentClasses = classNames(
-        {[styles.content]: !withoutContentPadding},
+        {'collapsible-container content': !withoutContentPadding},
         collapsibleBodyClassName,
         'mod-border-bottom'
     );
@@ -60,7 +58,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
     return (
         <CollapsibleConnected
             id={id}
-            className={classNames(className, styles.collapsible)}
+            className={classNames(className, 'collapsible-container')}
             headerContent={
                 <div className={headerClasses}>
                     <div>{title}</div>
@@ -72,7 +70,10 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
                 </div>
             }
             expandedOnMount={expandedOnMount}
-            headerClasses={classNames(styles.header, expanded ? styles.expanded : styles.collapsed)}
+            headerClasses={classNames(
+                'collapsible-container header' +
+                    (expanded ? 'collapsible-container expanded' : 'collapsible-container collapsed')
+            )}
             toggleIconClassName="mr4"
             collapsibleToggleIcon={collapsibleToggleIcon}
             withBorders

@@ -3,8 +3,6 @@ import * as React from 'react';
 
 import {Svg} from '../svg/Svg';
 import {CollapsibleConnected} from './CollapsibleConnected';
-import * as styles from './styles/CollapsibleInfoBox.scss';
-
 export interface CollapsibleInfoBoxProps {
     id: string;
     title: string;
@@ -20,12 +18,12 @@ export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxPr
         return (
             <CollapsibleConnected
                 id={this.props.id}
-                className={classNames(styles.container, 'label mod-rounded-border-2')}
+                className={'collapsible-info-box container label mod-rounded-border-2'}
                 headerClasses="p1"
                 headerContent={this.getHeader()}
                 expandedOnMount={this.props.expandedOnMount}
             >
-                <div className={classNames(styles.alignWithIcon, 'px1 pb1 mr3')}>{this.props.children}</div>
+                <div className={'collapsible-info-box align-with-icon px1 pb1 mr3'}>{this.props.children}</div>
             </CollapsibleConnected>
         );
     }
