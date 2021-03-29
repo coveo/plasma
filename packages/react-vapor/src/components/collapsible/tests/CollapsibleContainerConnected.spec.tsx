@@ -34,7 +34,8 @@ describe('CollapsibleContainerConnected', () => {
     });
 
     describe('if informationUrl is passed', () => {
-        it('render a round contextual help svg in the header', () => {
+        it('renders a round contextual help svg in the header', () => {
+
             const {container} = render(
                 <Provider store={store}>
                     <CollapsibleContainerConnected id="👑" title="🥔" informationUrl="http://coveo.github.io/vapor/">
@@ -49,7 +50,8 @@ describe('CollapsibleContainerConnected', () => {
     });
 
     describe('if informationTooltip is passed', () => {
-        it('render a round contextual help svg in the header', () => {
+        it('renders a round contextual help svg in the header', () => {
+
             const {container} = render(
                 <Provider store={store}>
                     <CollapsibleContainerConnected
