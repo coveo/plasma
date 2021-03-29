@@ -96,7 +96,7 @@ export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPre
             };
 
             const predicateAction = (
-                <div className={'coveo-table-actions predicate-filters table-predicate-filters'} key={key}>
+                <div className="coveo-table-actions predicate-filters table-predicate-filters" key={key}>
                     <PredicateComponent {...predicateComponentProps} />
                 </div>
             );
