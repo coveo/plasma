@@ -111,6 +111,17 @@ describe('Calendar', () => {
             expect(calendar.html()).toContain(DEFAULT_YEARS[startingYear]);
         });
 
+        it('should default to the current year if the startingYear prop is out of range / not included in the list of given years', () => {
+            const startingYear: number = 50;
+
+            expect(calendar.html()).toContain(DateUtils.currentYear.toString());
+
+            calendar.unmount();
+            calendar = mount(<Calendar startingYear={startingYear} />, {attachTo: document.getElementById('App')});
+
+            expect(calendar.html()).toContain(DateUtils.currentYear.toString());
+        });
+
         it('should start the week on the startingDay sent as prop or simply use the first one (assumed to be Sunday)', () => {
             const startingDay: number = 3;
             let firstDayOfSecondWeek: number = parseInt(
