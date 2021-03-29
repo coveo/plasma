@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 export class BorderedLine extends React.PureComponent<React.HTMLAttributes<HTMLDivElement>> {
-    static defaultClassName = classNames('bordered-line mod-border-top mod-border-bottom');
+    static defaultClassName = 'bordered-line mod-border-top mod-border-bottom';
 
     render() {
         return (

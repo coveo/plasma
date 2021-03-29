@@ -27,9 +27,8 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
             'actionable-item-content actionable-item-container align-middle inline-block mod-border',
             this.props.containerClassName
         );
-        const dropPodClasses: string = classNames(
-            'actionable-item-container actionable-item-dots align-middle cursor-pointer inline-block mod-border-top mod-border-right mod-border-bottom'
-        );
+        const dropPodClasses: string =
+            'actionable-item-container actionable-item-dots align-middle cursor-pointer inline-block mod-border-top mod-border-right mod-border-bottom';
 
         return (
             <div {..._.omit(this.props, 'actions', 'onItemClick', 'dropProps', 'containerClassName')}>
