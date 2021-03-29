@@ -1,39 +1,72 @@
 import * as React from 'react';
-import {screen} from '@testing-library/dom';
+import {Provider} from 'react-redux';
+import {Store} from 'redux';
 import {render} from '@testing-library/react';
-import {CollapsibleContainerConnected} from 'src/components';
+import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
+import {IReactVaporState} from '../../../ReactVapor';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 
-describe('<CollapsibleContainerConnected />', () => {
+describe('CollapsibleContainerConnected', () => {
+    let store: Store<IReactVaporState>;
+
+    beforeEach(() => {
+        store = TestUtils.buildStore();
+    });
+
+    afterEach(() => {
+        store.dispatch(clearState());
+    });
+
     describe('if no informationUrl and informationTooltip are passed', () => {
-        it('does not render a svg in the header', () => {
-            render(<CollapsibleContainerConnected></CollapsibleContainerConnected>);
+        it('does not render a round contextual help svg in the header', () => {
+            const {container} = render(
+                <Provider store={store}>
+                    <CollapsibleContainerConnected id="👑" title="🥔">
+                        PatateKing!
+                    </CollapsibleContainerConnected>
+                </Provider>
+            );
 
-            screen.debug();
-
-            expect(true).toBe(true);
-            // expect(wrapper.find(`.${collapsibleProps.headerClasses}`).find('Component').find(Svg).length).toBe(0);
+            const svg = container.querySelector('span.round-contextual-help');
+            expect(svg).not.toBeInTheDocument();
         });
     });
 
     describe('if informationUrl is passed', () => {
-        it('render a svg in the header', () => {
-            // informationUrl: 'http://whatever.com',
+        it('render a round contextual help svg in the header', () => {
+            const {container} = render(
+                <Provider store={store}>
+                    <CollapsibleContainerConnected id="👑" title="🥔" informationUrl="http://coveo.github.io/vapor/">
+                        PatateKing!
+                    </CollapsibleContainerConnected>
+                </Provider>
+            );
 
-            render(<CollapsibleContainerConnected></CollapsibleContainerConnected>);
-
-            screen.debug();
-
-            expect(true).toBe(true);
+            const svg = container.querySelector('span.round-contextual-help svg.documentation-link');
+            expect(svg).toBeInTheDocument();
         });
     });
 
     describe('if informationTooltip is passed', () => {
-        it('render a svg in the header', () => {
-            // tooltipMessage: 'PatateKing',
+        it('render a round contextual help svg in the header', () => {
+            const {container} = render(
+                <Provider store={store}>
+                    <CollapsibleContainerConnected
+                        id="👑"
+                        title="🥔"
+                        informationTooltip={{
+                            title: 'PatateKing',
+                            placement: 'top',
+                        }}
+                    >
+                        PatateKing!
+                    </CollapsibleContainerConnected>
+                </Provider>
+            );
 
-            render(<CollapsibleContainerConnected></CollapsibleContainerConnected>);
-
-            expect(true).toBe(true);
+            const svg = container.querySelector('span.round-contextual-help svg.icon');
+            expect(svg).toBeInTheDocument();
         });
     });
 });
