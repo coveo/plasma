@@ -12,14 +12,14 @@ describe('TableHOCReducers', () => {
         },
     };
 
-    it('should return the default state if the action is not defined', () => {
+    it('should return the default state if the action and the state is not defined', () => {
         const oldState: HOCTableState[] = undefined;
         const tablesHOCState: HOCTableState[] = TableHOCReducers(oldState, fakeAction);
 
         expect(tablesHOCState).toEqual([]);
     });
 
-    it('should return the old state when the action is not defined', () => {
+    it('should return the old state if the latter is defined but the action is not', () => {
         const oldState: HOCTableState[] = [{id: 'a-table', emptyStateSet: true}];
         const tablesHOCState: HOCTableState = TableHOCReducers(oldState, fakeAction);
 

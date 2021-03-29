@@ -41,7 +41,7 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
     > = (props) => {
         const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, isEmptyStateSet, ...tableProps} = props;
 
-        const blankSlateToRender = renderBlankSlate || defaultRenderBlankSlateMethod;
+        const blankSlateToRender = renderBlankSlate ?? defaultRenderBlankSlateMethod;
         let componentToReturn = (
             <Component {...tableProps} renderBody={isEmpty ? () => blankSlateToRender : props.renderBody} />
         );

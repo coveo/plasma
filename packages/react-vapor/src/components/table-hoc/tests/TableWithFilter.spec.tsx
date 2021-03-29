@@ -96,7 +96,7 @@ describe('Table HOC', () => {
                 expect(updateSpy).not.toHaveBeenCalled();
             });
 
-            it('should render a blankSlate as renderBody if the table is truly empty, the emptyState is not set and the table is not loading', () => {
+            it('should render a blankSlate as renderBody if the table is truly empty and the emptyState is not set', () => {
                 jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValueOnce(true);
                 const wrapper = shallowWithState(
                     <TableWithFilterServer {...defaultProps} data={null} />,

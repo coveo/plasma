@@ -45,9 +45,12 @@ export const tableWithEmptyState = (
 
         // Cancelling the debounced function on unmount to prevent calling setState on an unmounted component
         React.useEffect(() => {
-            !isEmptyStateAlreadySet && props.setEmptyState();
             setShouldRenderEmptyState_debounced.cancel;
         }, []);
+
+        React.useEffect(() => {
+            !isEmptyStateAlreadySet && props.setEmptyState();
+        }, [isEmptyStateAlreadySet]);
 
         React.useEffect(() => {
             setShouldRenderEmptyState_debounced(isTrulyEmpty && !props.isLoading);

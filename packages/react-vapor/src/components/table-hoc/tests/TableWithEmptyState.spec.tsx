@@ -82,7 +82,7 @@ describe('TableWithEmptyState', () => {
         jest.useRealTimers();
     });
 
-    it('should not call the setEmptyState from the TableHOCActions the table render has the setEmptyState property already set', () => {
+    it('should not call the setEmptyState action from the TableHOCActions if the table rendered has the setEmptyState property already set', () => {
         jest.spyOn<any, string>(TableSelectors, 'isEmptyStateAlreadySet').mockReturnValueOnce(true);
         const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
 

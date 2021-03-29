@@ -24,7 +24,7 @@ export interface IExampleRowData {
 
 const TableWithBlankSlateExample: React.FunctionComponent = () => (
     <>
-        <Section level={1} title="TableHOC with a blankSlate">
+        <Section title="TableHOC with a blankSlate">
             <TableWithBlankSlateComposed
                 id="tableWithBlankSlate"
                 className="table"
@@ -36,7 +36,7 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
             />
         </Section>
 
-        <Section level={1} title="TableHOC with a blankSlate and an empty state">
+        <Section title="TableHOC with a blankSlate and an empty state">
             <TableWithEmptyStateComposed
                 id="tableWithEmptyState"
                 className="table"
