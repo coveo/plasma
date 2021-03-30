@@ -1,4 +1,3 @@
-import classNames from 'classnames';
 import * as React from 'react';
 import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
@@ -11,7 +10,6 @@ import {UrlUtils} from '../../utils/UrlUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {SelectSelector} from '../select/SelectSelector';
 import {SingleSelectConnected} from '../select/SingleSelectConnected';
-import * as styles from './styles/TableWithPredicates.scss';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableHOCUtils} from './utils/TableHOCUtils';
 
@@ -98,10 +96,7 @@ export const tableWithPredicateGeneric = (supplier: ConfigSupplier<ITableWithPre
             };
 
             const predicateAction = (
-                <div
-                    className={classNames('coveo-table-actions predicate-filters', styles.tablePredicateFilters)}
-                    key={key}
-                >
+                <div className="coveo-table-actions predicate-filters table-predicate-filters" key={key}>
                     <PredicateComponent {...predicateComponentProps} />
                 </div>
             );

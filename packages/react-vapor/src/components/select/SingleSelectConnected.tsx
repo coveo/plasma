@@ -15,8 +15,6 @@ import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
-import * as styles from './styles/SingleSelect.scss';
-
 export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button'> {
     onSelectOptionCallback?: (option: string) => void;
     buttonPrepend?: React.ReactNode;
@@ -81,7 +79,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         const showClear = !!option && this.props.canClear && !this.props.disabled;
         const buttonClasses = classNames('btn dropdown-toggle', this.props.toggleClasses, {
             'dropdown-toggle-placeholder': !option,
-            [styles.singleSelectFixedWidth]: !this.props.noFixedWidth,
+            'single-select-fixed-width': !this.props.noFixedWidth,
             'mod-append': showClear,
         });
 

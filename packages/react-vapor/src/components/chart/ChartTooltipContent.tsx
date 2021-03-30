@@ -1,10 +1,8 @@
-import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {Color} from '../color/Color';
 import {ChartUtils} from './ChartUtils';
-import * as styles from './styles/ChartTooltipContent.scss';
 import {XYChartContext, XYSerie} from './XYChart';
 
 export interface ChartTooltipContentProps {
@@ -17,10 +15,10 @@ export const ChartTooltipContent: React.FunctionComponent<ChartTooltipContentPro
     const xValues = ChartUtils.getXValues(series);
     const title = xFormat(xValues[x]);
     return (
-        <div className={classNames('flex flex-column', styles.chartTooltipContent)}>
+        <div className="chart-tooltip-content flex flex-column">
             <div className="flex flex-row center-align flex-start tooltip-serie-title">
-                <div className={classNames(styles.chartTooltipColor)} />
-                <div className={classNames('px1', styles.chartTooltipLabel)}>{title}</div>
+                <div className="chart-tooltip-color" />
+                <div className="chart-tooltip-label px1">{title}</div>
                 <div className="pr1 flex-auto" />
             </div>
             {_.chain(series)
@@ -39,11 +37,8 @@ export const ChartTooltipContent: React.FunctionComponent<ChartTooltipContentPro
                                 key={`tooltip-serie-row-${serie.label}`}
                                 className="flex flex-row center-align flex-start tooltip-serie-row"
                             >
-                                <Color
-                                    className={classNames(styles.chartTooltipColor)}
-                                    color={color(serieIndex, colorPattern, point)}
-                                />
-                                <div className={classNames('pl1 pr2', styles.chartTooltipLabel)}>{serie.label}</div>
+                                <Color className="chart-tooltip-color" color={color(serieIndex, colorPattern, point)} />
+                                <div className="chart-tooltip-label pl1 pr2">{serie.label}</div>
                                 <div className="pr1 flex-auto right-align">{yFormat(point.y)}</div>
                             </div>
                         )

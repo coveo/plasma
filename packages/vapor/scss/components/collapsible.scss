@@ -44,3 +44,38 @@
         left: $collapsible-contextual-help-positioning;
     }
 }
+
+.collapsible-info-box {
+    $collapsible-timeout: 150ms;
+
+    &.container {
+        transition: background-color $collapsible-timeout ease-in-out;
+        &:hover {
+            background-color: var(--white);
+        }
+    }
+
+    &.align-with-icon {
+        margin-left: calc(1rem + #{$collapsible-infobox-icon-size});
+    }
+}
+
+.collapsible-container {
+    margin-top: -$default-border-size;
+
+    .collapsible-header {
+        min-height: $collapsible-height;
+    }
+
+    .content {
+        padding: $form-top-padding $header-padding;
+    }
+
+    .expanded {
+        background-color: var(--grey-40);
+    }
+
+    .collapsed {
+        background-color: var(--grey-20);
+    }
+}

@@ -1,0 +1,14 @@
+.split-multiline-input {
+    flex: auto;
+    margin-right: 2em;
+    margin-bottom: 1em;
+
+    &:last-child {
+        margin-right: 0;
+        padding-right: 2em;
+    }
+
+    .input-block {
+        margin-top: 0;
+    }
+}

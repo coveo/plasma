@@ -1,50 +1,74 @@
-import {ReactWrapper} from 'enzyme';
-import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
+import {Provider} from 'react-redux';
 import {Store} from 'redux';
-
+import {render} from '@testing-library/react';
+import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
 import {IReactVaporState} from '../../../ReactVapor';
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {Svg} from '../../svg/Svg';
-import {CollapsibleOwnProps} from '../CollapsibleConnected';
-import {CollapsibleContainerConnected, ICollapsibleContainerOwnProps} from '../CollapsibleContainerConnected';
-import {CollapsibleHeaderIcon} from '../CollapsibleHeaderIcon';
-import * as styles from '../styles/CollapsibleContainer.scss';
-import {collapsiblePossibleProps} from './CollapsibleTestCommon.mock';
+import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 
-describe('<CollapsibleContainerConnected />', () => {
+describe('CollapsibleContainerConnected', () => {
     let store: Store<IReactVaporState>;
-    let wrapper: ReactWrapper<CollapsibleOwnProps>;
-    const collapsibleProps = collapsiblePossibleProps[0];
 
-    const mountComponentWithProps = (props: Partial<ICollapsibleContainerOwnProps> = {}, expanded: boolean = true) => {
-        store = getStoreMock({
-            collapsibles: [{id: collapsibleProps.id, expanded}],
-        } as IReactVaporState);
-        wrapper = mountWithStore(
-            <CollapsibleContainerConnected {...collapsibleProps} {...props}>
-                dummy children
-            </CollapsibleContainerConnected>,
-            store
-        );
-    };
+    beforeEach(() => {
+        store = TestUtils.buildStore();
+    });
 
-    describe('Header Svg logic', () => {
-        it('should render with no svg if no informationUrl and informationTooltip are passed', () => {
-            mountComponentWithProps({
-                ...collapsibleProps,
-            });
+    afterEach(() => {
+        store.dispatch(clearState());
+    });
 
-            expect(wrapper.find(`.${collapsibleProps.headerClasses}`).find('Component').find(Svg).length).toBe(0);
+    describe('if no informationUrl and informationTooltip are passed', () => {
+        it('does not render a round contextual help svg in the header', () => {
+            const {container} = render(
+                <Provider store={store}>
+                    <CollapsibleContainerConnected id="👑" title="🥔">
+                        PatateKing!
+                    </CollapsibleContainerConnected>
+                </Provider>
+            );
+
+            const svg = container.querySelector('span.round-contextual-help');
+            expect(svg).not.toBeInTheDocument();
         });
+    });
 
-        it('should render a CollapsibleHeaderIcon', () => {
-            mountComponentWithProps({
-                ...collapsibleProps,
-                informationUrl: 'http://whatever.com',
-            });
+    describe('if informationUrl is passed', () => {
+        it('renders a round contextual help svg in the header', () => {
 
-            expect(wrapper.find(`.${styles.header}`).find(CollapsibleHeaderIcon).length).toBe(1);
+            const {container} = render(
+                <Provider store={store}>
+                    <CollapsibleContainerConnected id="👑" title="🥔" informationUrl="http://coveo.github.io/vapor/">
+                        PatateKing!
+                    </CollapsibleContainerConnected>
+                </Provider>
+            );
+
+            const svg = container.querySelector('span.round-contextual-help svg.documentation-link');
+            expect(svg).toBeInTheDocument();
+        });
+    });
+
+    describe('if informationTooltip is passed', () => {
+        it('renders a round contextual help svg in the header', () => {
+
+            const {container} = render(
+                <Provider store={store}>
+                    <CollapsibleContainerConnected
+                        id="👑"
+                        title="🥔"
+                        informationTooltip={{
+                            title: 'PatateKing',
+                            placement: 'top',
+                        }}
+                    >
+                        PatateKing!
+                    </CollapsibleContainerConnected>
+                </Provider>
+            );
+
+            const svg = container.querySelector('span.round-contextual-help svg.icon');
+            expect(svg).toBeInTheDocument();
         });
     });
 });

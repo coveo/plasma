@@ -17,7 +17,6 @@ import {selectListBoxOption, setActiveListBoxOption} from '../listBox/ListBoxAct
 import {ListBoxConnected} from '../listBox/ListBoxConnected';
 import {addSelect, removeSelect, toggleSelect} from './SelectActions';
 import {SelectSelector} from './SelectSelector';
-import * as styles from './styles/SingleSelect.scss';
 import {SelectConstants} from './SelectConstants';
 
 export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
@@ -92,10 +91,9 @@ export class SelectConnected extends React.PureComponent<ISelectProps> {
         if (this.props.isLoading && !this.props.selectedValues) {
             return (
                 <div
-                    className={classNames(
-                        'btn dropdown-toggle mod-rounded-border-2 cursor-auto mod-no-border',
-                        styles.singleSelectFixedWidth
-                    )}
+                    className={
+                        'single-select-fixed-width btn dropdown-toggle mod-rounded-border-2 cursor-auto mod-no-border'
+                    }
                 />
             );
         }
