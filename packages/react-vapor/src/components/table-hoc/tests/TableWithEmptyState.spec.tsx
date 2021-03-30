@@ -3,7 +3,6 @@ import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
-import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
@@ -86,11 +85,7 @@ describe('TableWithEmptyState', () => {
         jest.spyOn<any, string>(TableSelectors, 'isEmptyStateAlreadySet').mockReturnValueOnce(true);
         const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
 
-        render(
-            <Provider store={getStoreMock()}>
-                <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />
-            </Provider>
-        );
+        render(<TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />);
 
         expect(setEmptyStateSpy).not.toHaveBeenCalled();
     });
@@ -98,11 +93,7 @@ describe('TableWithEmptyState', () => {
     it('should call the setEmptyState from the TableHOCActions when the table is first rendered', () => {
         const setEmptyStateSpy = jest.spyOn<any, string>(TableHOCActions, 'setEmptyState');
 
-        render(
-            <Provider store={getStoreMock()}>
-                <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />
-            </Provider>
-        );
+        render(<TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />);
 
         expect(setEmptyStateSpy).toHaveBeenCalledTimes(1);
     });
