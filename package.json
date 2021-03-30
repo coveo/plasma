@@ -58,5 +58,9 @@
         "extends": [
             "@commitlint/config-conventional"
         ]
+    },
+    "dependencies": {
+        "gulp": "^4.0.2",
+        "npm": "^7.7.5"
     }
 }
