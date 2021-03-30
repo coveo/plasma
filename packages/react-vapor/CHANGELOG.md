@@ -3,6 +3,26 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [13.2.0](https://github.com/coveo/react-vapor/compare/v13.1.0...v13.2.0) (2021-03-30)
+
+
+### Features
+
+* **actionableitem:** removed css module ([ce0ccdd](https://github.com/coveo/react-vapor/commit/ce0ccddae6b515de580833e87c0e6c8ea6d10db7))
+* **banner:** removed css module ([9c59e61](https://github.com/coveo/react-vapor/commit/9c59e61f9edb42f57b35960e28afedb684827c6c))
+* **bordered-line:** removed css module ([cb18034](https://github.com/coveo/react-vapor/commit/cb1803478099d895700758da5227f8360af3b6f9))
+* **chart-tooltip-content:** removed css module ([f531b7e](https://github.com/coveo/react-vapor/commit/f531b7e8f3b5a804526ae1006a984414d4f17222))
+* **collapsible:** removed css module ([78c6528](https://github.com/coveo/react-vapor/commit/78c6528e9fe82be293284eef795a3eae5afa2cfb))
+* **diff-viewer:** removes css module ([26575d7](https://github.com/coveo/react-vapor/commit/26575d7b59bf5b3bb1f6db265c118b8393752f30))
+* **separator:** removed css module ([6ec2b2f](https://github.com/coveo/react-vapor/commit/6ec2b2fe5761a7796ee783d3279f58dec70b0fa1))
+* **single-select:** removed css module ([3b53b9e](https://github.com/coveo/react-vapor/commit/3b53b9e595cfdc61ff9b7174fc813cc67cda61d9))
+* **split-multiline-input:** remove css module ([a1cc312](https://github.com/coveo/react-vapor/commit/a1cc3125ef2750054948480fd2479a52e8def6c9))
+* **table-hoc:** removed css module ([66f8937](https://github.com/coveo/react-vapor/commit/66f89375fcfbfd5e0ac593fbcb9c4e3764ca446d))
+
+
+
+
+
 # [13.1.0](https://github.com/coveo/react-vapor/compare/v13.0.4...v13.1.0) (2021-03-26)
 
 
