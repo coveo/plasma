@@ -11,7 +11,6 @@ export * from './InputUtils';
 export * from './JSONUtils';
 export * from './JSXUtils';
 export * from './ReduxUtils';
-export * from './ReduxTestUtilities';
 export * from './TooltipUtils';
 export * from './UUID';
 export * from './UrlUtils';

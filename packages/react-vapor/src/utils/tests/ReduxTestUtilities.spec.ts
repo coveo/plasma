@@ -1,6 +1,6 @@
 import {TableHOCUtils} from '../../components/table-hoc/utils/TableHOCUtils';
 import {IReactVaporState} from '../../ReactVapor';
-import {ReduxTestUtilities} from '../ReduxTestUtilities';
+import {ReduxTestUtilities} from './ReduxTestUtilities';
 
 describe('ReduxTestUtilities', () => {
     const tableId = 'tableId';

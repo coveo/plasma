@@ -93,7 +93,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         }
 
         render() {
-            const newProps = _.omit(this.props, [...TableWithPaginationProps]);
+            const newProps = _.omit(this.props, TableWithPaginationProps);
             return (
                 <Component {...newProps}>
                     <NavigationConnected

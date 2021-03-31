@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IReactVaporState} from 'src/ReactVapor';
+import {IReactVaporState} from '../../../ReactVapor';
 
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IInputOwnProps} from '../../input/Input';

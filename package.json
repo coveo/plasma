@@ -42,12 +42,12 @@
     "scripts": {
         "gen-package-locks": "npm i --package-lock-only && npx lerna bootstrap -- --package-lock-only",
         "setup": "npx lerna bootstrap",
-        "start": "npm run build && lerna run start --parallel",
+        "start": "lerna run build --stream --scope coveo-styleguide && lerna run start --parallel --ignore react-vapor",
         "test": "lerna run test --parallel",
         "build": "lerna run build --stream",
         "lintfix": "lerna run lintfix --parallel",
         "commit-cli": "git-cz",
-        "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm run setup && echo done"
+        "reconstruct": "lerna run clean --stream && npx lerna clean --yes && npx rimraf node_modules && npm run setup && echo done"
     },
     "config": {
         "commitizen": {

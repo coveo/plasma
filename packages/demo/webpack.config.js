@@ -22,6 +22,9 @@ module.exports = {
     devtool: isJenkins ? 'source-map' : 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        alias: {
+            'react-vapor': path.resolve(__dirname, '../react-vapor/src/Entry.ts'),
+        },
     },
     plugins: [
         new CopyPlugin({
@@ -40,6 +43,9 @@ module.exports = {
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
         new ForkTsCheckerWebpackPlugin({
+            typescript: {
+                build: true,
+            },
             eslint: {
                 files: './src/**/*.{ts,tsx}',
                 options: {
@@ -62,9 +68,8 @@ module.exports = {
                     {
                         loader: 'ts-loader',
                         options: {
-                            projectReferences: true,
                             transpileOnly: true,
-                            experimentalWatchApi: true,
+                            projectReferences: true,
                         },
                     },
                 ],

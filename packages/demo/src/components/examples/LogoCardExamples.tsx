@@ -1,6 +1,5 @@
 import * as React from 'react';
-import {LogoCard} from 'react-vapor';
-import {TooltipPlacement} from 'react-vapor/src/utils/TooltipUtils';
+import {LogoCard, TooltipPlacement} from 'react-vapor';
 
 import {MULTIPLE_BADGES} from './LogoCardExamplesCommon';
 

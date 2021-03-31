@@ -6,7 +6,16 @@
         "experimentalDecorators": true,
         "downlevelIteration": true,
         "esModuleInterop": true,
-        "importHelpers": true
+        "importHelpers": true,
+        "composite": true,
+        "rootDir": "src",
+        "outDir": "dist",
+        "baseUrl": ".",
+        "tsBuildInfoFile": "./dist/.tsbuildinfo",
+        "paths": {
+            "react-vapor": ["../react-vapor/src/Entry.ts"]
+        }
     },
-    "include": ["src", "types"]
+    "include": ["src", "types"],
+    "references": [{"path": "../react-vapor/tsconfig.build.json"}]
 }

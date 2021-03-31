@@ -29,9 +29,10 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
         setWarning,
         clearWarning,
         invalidInitialValuesMessage = defaultInvalidInitialValuesMessageGenerator,
+        items = [],
         ...props
     }) => {
-        const {initialValues = [] as string[], items = []} = props;
+        const {initialValues = [] as string[]} = props;
 
         const notFoundInitialValues =
             initialValues?.length &&
