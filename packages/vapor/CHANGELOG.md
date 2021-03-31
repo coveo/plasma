@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.1](https://github.com/coveo/react-vapor/compare/v13.2.0...v13.2.1) (2021-03-31)
+
+
+### Bug Fixes
+
+* **icons:** changed rule to use relative units ([593ca58](https://github.com/coveo/react-vapor/commit/593ca583825ce68f818e4b1162a78a8a8a218054))
+
+
+
+
+
 # [13.2.0](https://github.com/coveo/react-vapor/compare/v13.1.0...v13.2.0) (2021-03-30)
 
 
