@@ -56,8 +56,8 @@
     }
 
     &.mod-align-with-text {
-        line-height: 16px;
-        vertical-align: -4px;
+        line-height: 1em;
+        vertical-align: -0.2em;
     }
 
     @for $i from 5 through 15 {
