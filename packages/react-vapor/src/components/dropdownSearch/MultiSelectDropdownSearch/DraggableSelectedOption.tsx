@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {DragSource, DropTarget, IDragSource, IDropTarget} from 'react-dnd';
 import {findDOMNode} from 'react-dom';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {Svg} from '../../svg/Svg';
@@ -76,7 +75,15 @@ const cardTarget: IDropTarget = {
 };
 
 export const DraggableSelectedOptionType = 'SELECTED_OPTION';
-const DraggableSelectedOptionPropsToOmit = keys<IDraggableSelectedOptionOwnProps>();
+const DraggableSelectedOptionPropsToOmit = [
+    'connectDragPreview',
+    'connectDragSource',
+    'connectDropTarget',
+    'index',
+    'isDragging',
+    'move',
+    'selectedTooltip',
+];
 
 @DropTarget(DraggableSelectedOptionType, cardTarget, (connect: any) => ({
     connectDropTarget: connect.dropTarget(),

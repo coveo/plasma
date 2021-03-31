@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
@@ -25,7 +24,26 @@ export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button'> {
     customButton?: React.ComponentType<ISelectButtonProps>;
 }
 
-const selectPropsKeys = keys<ISelectOwnProps>();
+const selectPropsKeys = [
+    'button',
+    'classes',
+    'disabled',
+    'dropClasses',
+    'dropOption',
+    'footer',
+    'hasFocusableChild',
+    'id',
+    'isLoading',
+    'items',
+    'multi',
+    'noActive',
+    'noResultItem',
+    'onUpdate',
+    'placeholder',
+    'selectClasses',
+    'toggleClasses',
+    'wrapItems',
+];
 
 export type ISingleSelectProps = ISingleSelectOwnProps &
     ReturnType<typeof mapDispatchToProps> &

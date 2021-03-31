@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVapor';
@@ -50,6 +49,21 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: NumericInputOwnProps)
         dispatch(NumericInputActions.setValue(ownProps.id, value, ownProps.min, ownProps.max)),
 });
 
+const inputPropsToOmit = [
+    'hasError',
+    'id',
+    'initialValue',
+    'invalidMessage',
+    'max',
+    'maxLength',
+    'min',
+    'mount',
+    'setValue',
+    'step',
+    'unmount',
+    'value',
+];
+
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class NumericInputConnected extends React.PureComponent<NumericInputProps & React.HTMLProps<HTMLInputElement>> {
     static defaultProps: Partial<NumericInputOwnProps> = {
@@ -86,7 +100,7 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                     </Button>
                     <div className="flex flex-column">
                         <input
-                            {..._.omit(this.props, keys<NumericInputProps>())}
+                            {..._.omit(this.props, inputPropsToOmit)}
                             className={classNames(
                                 'js-numeric-input',
                                 {

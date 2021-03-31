@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -37,7 +36,7 @@ export interface ITableWithPredicateProps
         ITableHOCOwnProps,
         WithServerSideProcessingProps {}
 
-const TableWithPredicatePropsToOmit = keys<ITableWithPredicateStateProps>();
+const TableWithPredicatePropsToOmit = ['predicate', 'urlPredicate'];
 
 const defaultMatchPredicate = (predicate: string, datum: any) =>
     !predicate || _.some(_.values(datum), (value: string) => value === predicate);

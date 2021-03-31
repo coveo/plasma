@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -29,11 +28,20 @@ export interface ISelectWithFilterOwnProps {
     filter?: IFilterBoxOwnProps;
 }
 
-const SelectWithFilterPropsToOmit = keys<ISelectWithFilterOwnProps>();
+const SelectWithFilterPropsToOmit = [
+    'addValueText',
+    'customValues',
+    'defaultCustomValues',
+    'duplicateText',
+    'filter',
+    'matchFilter',
+    'noItemsText',
+    'noResultFilterText',
+];
 
-export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
+export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
     Component: React.ComponentType<P>
-): React.ComponentClass<P & ISelectWithFilterOwnProps> {
+): React.ComponentClass<P & ISelectWithFilterOwnProps> => {
     type OwnProps = P & ISelectWithFilterOwnProps;
     type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
 
@@ -174,4 +182,4 @@ export function selectWithFilter<P extends Omit<ISelectOwnProps, 'button'> & Wit
 
     // @ts-ignore
     return connect(makeMapStateToProps, mapDispatchToProps)(WrappedComponent);
-}
+};

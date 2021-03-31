@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
 import {IClassName} from '../../utils/ClassNameUtils';
@@ -61,7 +60,30 @@ export interface IInputDispatchProps {
     changeDirtyState?: (value?: string, valid?: boolean) => void;
 }
 
-const inputPropsToOmit = keys<IInputAdditionalOwnProps & IInputAdditionalStateProps & IInputDispatchProps>();
+const inputPropsToOmit = [
+    'changeDirtyState',
+    'classes',
+    'defaultValue',
+    'disabledOnMount',
+    'disabledTooltip',
+    'id',
+    'indeterminate',
+    'innerInputClasses',
+    'isReadOnly',
+    'labelProps',
+    'labelTitle',
+    'maximum',
+    'minimum',
+    'onBlur',
+    'onChange',
+    'onClick',
+    'onDestroy',
+    'onRender',
+    'valid',
+    'validate',
+    'validateOnChange',
+    'validateOnMount',
+];
 
 export interface IInputOwnProps extends IInputAdditionalOwnProps, IInputNativeTagOwnProps {}
 

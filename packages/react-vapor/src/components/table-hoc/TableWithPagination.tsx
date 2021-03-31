@@ -1,6 +1,5 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -30,7 +29,7 @@ export interface ITableWithPaginationStateProps {
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ITableWithPaginationProps
+    ownProps: ITableHOCOwnProps
 ) => ({
     onMount: () => {
         dispatch(turnOffLoading([`loading-${ownProps.id}`]));
@@ -45,7 +44,7 @@ export interface ITableWithPaginationProps
         Partial<ITableWithPaginationStateProps>,
         Partial<ReturnType<typeof mapDispatchToProps>> {}
 
-const TableWithPaginationProps = keys<ITableWithPaginationStateProps>();
+const TableWithPaginationProps = ['totalEntries', 'totalPages', 'pageNb', 'perPage'];
 
 const sliceData = (data: any[], startingIndex: number, endingIndex: number) => data.slice(startingIndex, endingIndex);
 

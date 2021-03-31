@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import {omit} from 'underscore';
 
 export interface ILoadingOwnProps extends React.ClassAttributes<Loading> {
@@ -37,7 +36,7 @@ export class Loading extends React.Component<ILoadingProps & React.HTMLProps<HTM
                 className={classNames('spinner', this.props.className, {
                     'flex center-align flex-auto full-content-y': this.props.fullContent,
                 })}
-                {...omit(this.props, keys<ILoadingProps>())}
+                {...omit(this.props, ['id', 'className', 'fullContent', 'onRender', 'onDestroy'])}
             >
                 <div className="bounce1"></div>
                 <div className="bounce2"></div>

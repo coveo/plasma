@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
@@ -11,7 +10,19 @@ export interface IButtonProps extends IBaseActionOptions {
     classes?: string[] | string;
 }
 
-const ButtonPropsToOmit = keys<IButtonProps>();
+const ButtonPropsToOmit = [
+    'classes',
+    'enabled',
+    'hideDisabled',
+    'link',
+    'name',
+    'onClick',
+    'primary',
+    'small',
+    'target',
+    'tooltip',
+    'tooltipPlacement',
+];
 
 export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttributes<HTMLButtonElement>> {
     static defaultProps: Partial<IButtonProps> = {

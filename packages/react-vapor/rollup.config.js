@@ -8,7 +8,6 @@ import postcss from 'rollup-plugin-postcss';
 import scssVariable from 'rollup-plugin-sass-variables';
 import {terser} from 'rollup-plugin-terser';
 import typescript from 'rollup-plugin-typescript2';
-import keysTransformer from 'ts-transformer-keys/transformer';
 
 const isJenkins = !!process.env.JENKINS_HOME;
 
@@ -133,12 +132,6 @@ export default {
 
 function tsPlugin() {
     return typescript({
-        transformers: [
-            (service) => ({
-                before: [keysTransformer(service.getProgram())],
-                after: [],
-            }),
-        ],
         useTsconfigDeclarationDir: true,
         tsconfig: 'tsconfig.build.json',
         tsconfigOverride: {
