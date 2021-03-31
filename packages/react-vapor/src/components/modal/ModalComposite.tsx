@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import * as React from 'react';
 import ReactModal from 'react-modal';
 import {connect} from 'react-redux';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
@@ -44,7 +43,31 @@ export interface IModalCompositeProps
         Partial<IModalCompositeStateProps>,
         Partial<IModalCompositeDispatchProps> {}
 
-const modalPropsToOmit = keys<IModalCompositeProps>();
+const modalPropsToOmit = [
+    'classes',
+    'closeCallback',
+    'closeTimeout',
+    'contentRef',
+    'displayFor',
+    'docLink',
+    'id',
+    'isOpened',
+    'isPrompt',
+    'layer',
+    'modalBodyChildren',
+    'modalBodyClasses',
+    'modalFooterChildren',
+    'modalFooterClasses',
+    'modalHeaderChildren',
+    'modalHeaderClasses',
+    'onClose',
+    'onDestroy',
+    'onRender',
+    'openOnMount',
+    'title',
+    'validateShouldNavigate',
+    'withReduxState',
+];
 
 export class ModalComposite extends React.PureComponent<
     IModalCompositeProps & Partial<ReactModal.Props> & Partial<IWithDirtyProps>

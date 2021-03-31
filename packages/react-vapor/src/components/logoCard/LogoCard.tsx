@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 import {slugify} from 'underscore.string';
 
@@ -28,7 +27,17 @@ export interface ILogoCardProps {
     tooltipPlacement?: TooltipPlacement;
 }
 
-const LogoCardPropsToOmit = keys<ILogoCardProps>();
+const LogoCardPropsToOmit = [
+    'badges',
+    'description',
+    'disabled',
+    'extraContainerClasses',
+    'onClick',
+    'svgName',
+    'title',
+    'tooltip',
+    'tooltipPlacement',
+];
 
 export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<HTMLDivElement>> {
     static defaultProps: Partial<ILogoCardProps> = {

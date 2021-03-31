@@ -1,7 +1,6 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const keysTransformer = require('ts-transformer-keys/transformer').default;
 const isJenkins = !!process.env.JENKINS_HOME;
 const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
@@ -66,9 +65,6 @@ module.exports = {
                             projectReferences: true,
                             transpileOnly: true,
                             experimentalWatchApi: true,
-                            getCustomTransformers: (program) => ({
-                                before: [keysTransformer(program)],
-                            }),
                         },
                     },
                 ],

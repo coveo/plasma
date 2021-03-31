@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import {map, omit} from 'underscore';
 
 export interface ISubNavigationOwnProps {
@@ -31,7 +30,15 @@ export interface ISubNavigationProps
         ISubNavigationStateProps,
         ISubNavigationDispatchProps {}
 
-const ISubNavigationPropsToOmit = keys<ISubNavigationProps>();
+const ISubNavigationPropsToOmit = [
+    'defaultSelected',
+    'id',
+    'items',
+    'onClickItem',
+    'onDestroy',
+    'onRender',
+    'selected',
+];
 
 export const SubNavigation: React.FunctionComponent<ISubNavigationProps & React.HTMLAttributes<HTMLElement>> = ({
     onDestroy,

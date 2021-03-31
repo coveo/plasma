@@ -1,6 +1,5 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import {extend, omit} from 'underscore';
 import {camelize} from 'underscore.string';
 
@@ -11,7 +10,7 @@ export interface ISvgTagProps {
 
 export interface ISvgProps extends ISvgTagProps, React.HTMLAttributes<HTMLSpanElement> {}
 
-const svgPropsToOmit = keys<ISvgTagProps>();
+const svgPropsToOmit = ['svgClass', 'svgName'];
 
 export class Svg extends React.Component<ISvgProps> {
     static defaultProps: Partial<ISvgProps> = {

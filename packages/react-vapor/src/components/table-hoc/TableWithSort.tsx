@@ -1,5 +1,4 @@
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -24,7 +23,7 @@ export interface ITableWithSortProps
         Partial<ITableWithSortStateProps>,
         WithServerSideProcessingProps {}
 
-const TableWithSortPropsToOmit = keys<ITableWithSortStateProps>();
+const TableWithSortPropsToOmit = ['isAsc', 'sortKey'];
 
 const defaultSort = () => 0;
 

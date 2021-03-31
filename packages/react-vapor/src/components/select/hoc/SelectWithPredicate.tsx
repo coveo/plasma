@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -18,7 +17,12 @@ export interface ISelectWithPredicateOwnProps {
     initiallySelectedPredicateId?: string;
     disabledFlatSelectOptions?: boolean;
 }
-const SelectWithPredicatePropsToOmit = keys<ISelectWithPredicateOwnProps>();
+const SelectWithPredicatePropsToOmit = [
+    'disabledFlatSelectOptions',
+    'initiallySelectedPredicateId',
+    'matchPredicate',
+    'options',
+];
 
 export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & WithServerSideProcessingProps>(
     Component: React.ComponentType<P>

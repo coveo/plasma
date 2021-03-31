@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {IComponentBehaviour} from '../../utils/ComponentUtils';
@@ -32,7 +31,17 @@ export interface ISelectOwnProps extends IListBoxOwnProps, IComponentBehaviour {
     toggleClasses?: string;
 }
 
-const listBoxProps = keys<IListBoxOwnProps>();
+const listBoxProps = [
+    'classes',
+    'footer',
+    'id',
+    'isLoading',
+    'items',
+    'multi',
+    'noActive',
+    'noResultItem',
+    'wrapItems',
+];
 
 export interface ISelectButtonProps {
     onClick: (e: React.MouseEvent) => void;

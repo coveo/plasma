@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
@@ -41,7 +40,22 @@ export interface ITableRowConnectedProps
         Partial<ITableRowStateProps>,
         Partial<ITableRowDispatchProps> {}
 
-const TableRowPropsToOmit = keys<ITableRowConnectedProps>();
+const TableRowPropsToOmit = [
+    'actions',
+    'collapsible',
+    'disabled',
+    'handleClick',
+    'id',
+    'isMultiselect',
+    'onActionBarActionsChanged',
+    'onCollapsibleClick',
+    'onMount',
+    'onUnmount',
+    'onUpdateToCollapsibleRow',
+    'opened',
+    'selected',
+    'tableId',
+];
 
 const isCollapsible = (props: ITableRowOwnProps): boolean =>
     props.collapsible &&

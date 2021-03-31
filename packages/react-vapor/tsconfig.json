@@ -12,11 +12,6 @@
         "lib": ["es2015", "dom"],
         "allowSyntheticDefaultImports": true,
         "strictBindCallApply": true,
-        "plugins": [
-            {
-                "transform": "ts-transformer-keys/transformer"
-            }
-        ],
         "importHelpers": true,
         "baseUrl": ".",
         "paths": {

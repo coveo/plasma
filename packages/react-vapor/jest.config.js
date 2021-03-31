@@ -15,11 +15,7 @@ module.exports = {
     testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],
     globals: {
         'ts-jest': {
-            // relative path to the ts-jest-keys-transformer.js file
             tsconfig: '<rootDir>/tsconfig.test.json',
-            astTransformers: {
-                before: ['<rootDir>/jest/ts-jest-keys-transformer.js'],
-            },
         },
     },
 };

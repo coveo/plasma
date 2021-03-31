@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {BrowserUtils} from '../../utils/BrowserUtils';
@@ -27,7 +26,18 @@ export interface IFlippableStateProps {
 
 export interface IFlippableProps extends IFlippableOwnProps, IFlippableDispatchProps, IFlippableStateProps {}
 
-const FlippablePropsToOmit = keys<IFlippableProps>();
+const FlippablePropsToOmit = [
+    'allowUnflip',
+    'back',
+    'className',
+    'front',
+    'id',
+    'isFlipped',
+    'onDestroy',
+    'onFlip',
+    'onRender',
+    'onUnflip',
+];
 
 export class Flippable extends React.Component<IFlippableProps & React.HTMLProps<HTMLDivElement>, any> {
     static CONTAINER_CLASSNAME: string = 'flippable';

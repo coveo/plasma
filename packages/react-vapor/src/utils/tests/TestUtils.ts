@@ -53,17 +53,27 @@ export class TestUtils {
     }
 
     static makeDebounceStatic() {
-        jest.spyOn(_, 'debounce').mockImplementation(
-            jest.fn((func: any) => {
-                func.cancel = jest.fn();
-                return func as ((...args: any[]) => any) & _.Cancelable;
-            })
-        );
+        jest.mock('underscore', () => {
+            const originalUnderscore = jest.requireActual('underscore');
+            return {
+                ...originalUnderscore,
+                debounce: jest.fn((func: any) => {
+                    func.cancel = jest.fn();
+                    return func as ((...args: any[]) => any) & _.Cancelable;
+                }),
+            };
+        });
     }
 
     static makeDeferSync() {
-        jest.spyOn(_, 'defer').mockImplementation(function (this: any, func: () => void) {
-            func.apply(this, arguments as any);
+        jest.mock('underscore', () => {
+            const originalUnderscore = jest.requireActual('underscore');
+            return {
+                ...originalUnderscore,
+                defer: function (this: any, func: () => void) {
+                    func.apply(this, arguments as any);
+                },
+            };
         });
     }
 

@@ -144,7 +144,7 @@
         "rollup-plugin-terser": "^7.0.2",
         "rollup-plugin-typescript2": "0.27.0",
         "ts-jest": "26.4.4",
-        "ts-transformer-keys": "0.4.1",
+        "tslib": "2.1.0",
         "typescript": "3.8.3",
         "underscore": "1.9.2",
         "underscore.string": "3.3.5"
