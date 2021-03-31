@@ -27,6 +27,7 @@ export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button'>, I
     noDisabled?: boolean;
     multiSelectStyle?: React.CSSProperties;
     readOnly?: boolean;
+    connectDropTarget?: any;
 }
 
 export interface IMultiSelectProps

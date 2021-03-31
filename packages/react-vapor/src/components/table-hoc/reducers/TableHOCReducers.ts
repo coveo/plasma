@@ -1,5 +1,6 @@
-import {IReduxAction} from 'src/utils';
 import _ from 'underscore';
+
+import {IReduxAction} from '../../../utils';
 import {TableHOCActionsType, TableHOCSetEmptyStatePayload} from '../actions/TableHOCActions';
 
 export interface HOCTableState {

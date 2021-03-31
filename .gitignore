@@ -27,3 +27,5 @@ travis-deploy-key
 # temporary files
 **/coverage
 **/tmp
+**/.rollup.cache
+**/*.tsbuildinfo
