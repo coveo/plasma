@@ -3,7 +3,7 @@ import {Section, TableHOC, tableWithBlankSlate, tableWithEmptyState, tableWithFi
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../ComponentsInterface';
-import {generateDataWithFacker, generateTableRow} from './TableHOCExamples';
+import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHOCwithBlankSlateExamples: ExampleComponent = () => (
     <Section>
@@ -28,7 +28,7 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
             <TableWithBlankSlateComposed
                 id="tableWithBlankSlate"
                 className="table"
-                data={generateDataWithFacker(0)}
+                data={generateDataWithFaker(0)}
                 renderBody={(data) => generateTableRow(data, 'tableWithBlankSlate')}
                 filterMatcher={(filter: string, data: IExampleRowData) =>
                     data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1
@@ -40,7 +40,7 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
             <TableWithEmptyStateComposed
                 id="tableWithEmptyState"
                 className="table"
-                data={generateDataWithFacker(0)}
+                data={generateDataWithFaker(0)}
                 renderBody={(data) => generateTableRow(data, 'tableWithBlankSlate')}
                 filterMatcher={(filter: string, data: IExampleRowData) =>
                     data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1
