@@ -58,7 +58,7 @@ export const DEFAULT_MONTHS: string[] = moment.months();
 export const DEFAULT_YEARS: string[] = [
     ...DateUtils.getPreviousYears(10),
     DateUtils.currentYear.toString(),
-    ...DateUtils.getNextYears(10),
+    ...DateUtils.getNextYears(30),
 ];
 
 export const DEFAULT_DAYS: string[] = moment.weekdaysShort();
