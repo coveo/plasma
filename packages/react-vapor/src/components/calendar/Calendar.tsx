@@ -58,9 +58,9 @@ export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, 
 export const DEFAULT_MONTHS: string[] = moment.months();
 
 export const DEFAULT_YEARS: string[] = [
-    ...DateUtils.getPreviousYears(10),
+    ...DateUtils.getPreviousYears(30),
     DateUtils.currentYear.toString(),
-    ...DateUtils.getNextYears(10),
+    ...DateUtils.getNextYears(30),
 ];
 
 export const DEFAULT_DAYS: string[] = moment.weekdaysShort();
@@ -201,9 +201,14 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         };
 
         const startingYearIndex: number = this.props.years.indexOf(DateUtils.currentYear.toString());
+
+        // this.props.startingYear is an index, so can't be more than length of this.props.years
+        const isStartingYearDefined = !!this.props.years[this.props.startingYear];
+
         const startingYear: number =
-            this.props.startingYear ||
+            (isStartingYearDefined && this.props.startingYear) ||
             (startingYearIndex >= 0 ? startingYearIndex : Math.floor(this.props.years.length / 2));
+
         const yearPickerProps: IOptionsCycleProps = {
             options: this.props.years,
             isInline: true,

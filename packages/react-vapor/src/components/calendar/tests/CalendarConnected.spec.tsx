@@ -89,7 +89,7 @@ describe('Calendar', () => {
             const expectedSelectedYear: number = 3;
 
             expect(selectedYearProp).toBeDefined();
-            expect(selectedYearProp).toBe(10);
+            expect(selectedYearProp).toBe(30);
 
             store.dispatch(changeOptionsCycle(CALENDAR_ID + YEAR_PICKER_ID, expectedSelectedYear));
             wrapper.update();
