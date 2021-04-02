@@ -1,6 +1,6 @@
 context('Actions', () => {
     before(() => {
-      cy.visit('http://192.168.0.190:8080/#/components/ActionableItem')
+      cy.visit('localhost:8080/#/components/ActionableItem')
     })
     it('Validate Actionnable item without onItemClick Method',() => {
       cy.get('div[class*="actionable-item-content"]')
