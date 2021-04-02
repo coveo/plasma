@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.2](https://github.com/coveo/react-vapor/compare/v13.2.1...v13.2.2) (2021-04-02)
+
+
+### Bug Fixes
+
+* **calendar:** added condition to default to current year if bad data ([4b60130](https://github.com/coveo/react-vapor/commit/4b601307a6f0ac919b56535293d09ea3b5672291))
+
+
+
+
+
 ## [13.2.1](https://github.com/coveo/react-vapor/compare/v13.2.0...v13.2.1) (2021-03-31)
 
 **Note:** Version bump only for package react-vapor
