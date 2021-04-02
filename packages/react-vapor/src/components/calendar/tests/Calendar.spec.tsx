@@ -112,7 +112,7 @@ describe('Calendar', () => {
         });
 
         it('should default to the current year if the startingYear prop is out of range / not included in the list of given years', () => {
-            const startingYear: number = 50;
+            const startingYear: number = 100;
 
             expect(calendar.html()).toContain(DateUtils.currentYear.toString());
 
