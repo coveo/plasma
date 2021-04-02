@@ -1,7 +1,7 @@
 /// <reference types="cypress" />
 context('Actions', () => {
   before(() => {
-	  cy.visit('http://192.168.0.168:8080//#/components/Checkbox')
+	  cy.visit('localhost:8080/#/components/Checkbox')
   })
 	it('Validate checkbox is checked', ()=>{
 		cy.get('#checkbox1').should('not.be.checked')
