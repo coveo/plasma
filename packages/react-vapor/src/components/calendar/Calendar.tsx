@@ -56,7 +56,7 @@ export interface ICalendarProps extends ICalendarOwnProps, ICalendarStateProps, 
 export const DEFAULT_MONTHS: string[] = moment.months();
 
 export const DEFAULT_YEARS: string[] = [
-    ...DateUtils.getPreviousYears(10),
+    ...DateUtils.getPreviousYears(30),
     DateUtils.currentYear.toString(),
     ...DateUtils.getNextYears(30),
 ];
