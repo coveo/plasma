@@ -43,7 +43,7 @@ export const TableHOCExamples = () => (
 );
 
 // https://github.com/marak/Faker.js/
-export const generateDataWithFacker = (length: number) =>
+export const generateDataWithFaker = (length: number) =>
     _.map(_.range(length), (i: number) => {
         seed(i + 1);
         const fakedData = helpers.contextualCard();
@@ -55,7 +55,7 @@ export const generateDataWithFacker = (length: number) =>
             id: UUID.generate(),
         };
     });
-const twoHundredRowsOfData = generateDataWithFacker(200);
+const twoHundredRowsOfData = generateDataWithFaker(200);
 
 // start-print
 

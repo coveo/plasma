@@ -1,8 +1,44 @@
 import {IReactVaporState} from '../../../ReactVapor';
-import {TableSelectors} from '../TableSelectors';
+import {TableSelectors, TableSelectorsProps} from '../TableSelectors';
 import {ITableHOCCompositeState, TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('TableSelectors', () => {
+    describe('isEmptyStateSet', () => {
+        const anyId = '🍡';
+        it('should return true if the emptyStateSet property is true', () => {
+            const state = {tablesHOC: [{id: anyId, emptyStateSet: true}]} as IReactVaporState;
+            expect(TableSelectors.isEmptyStateSet(state, {id: anyId} as TableSelectorsProps)).toBe(true);
+        });
+
+        it('should return false if the emptyStateSet property is false', () => {
+            const state = {tablesHOC: [{id: anyId, emptyStateSet: false}]} as IReactVaporState;
+            expect(TableSelectors.isEmptyStateSet(state, {id: anyId} as TableSelectorsProps)).toBe(false);
+        });
+
+        it('should return false if the emptyStateSet property is undefined', () => {
+            const state = {} as IReactVaporState;
+            expect(TableSelectors.isEmptyStateSet(state, {id: anyId} as TableSelectorsProps)).toBe(false);
+        });
+    });
+
+    describe('isEmptyStateAlreadySet', () => {
+        const anyId = '🍡';
+        it('should return true if the emptyStateSet property is set as true', () => {
+            const state = {tablesHOC: [{id: anyId, emptyStateSet: true}]} as IReactVaporState;
+            expect(TableSelectors.isEmptyStateAlreadySet(state, {id: anyId} as TableSelectorsProps)).toBe(true);
+        });
+
+        it('should return true if the emptyStateSet property is set as false', () => {
+            const state = {tablesHOC: [{id: anyId, emptyStateSet: false}]} as IReactVaporState;
+            expect(TableSelectors.isEmptyStateAlreadySet(state, {id: anyId} as TableSelectorsProps)).toBe(true);
+        });
+
+        it('should return false if the emptyStateSet property undefined', () => {
+            const state = {} as IReactVaporState;
+            expect(TableSelectors.isEmptyStateAlreadySet(state, {id: anyId} as TableSelectorsProps)).toBe(false);
+        });
+    });
+
     describe('getIsEmpty', () => {
         describe('when the "isServer" prop is true', () => {
             it('returns true if the "data" prop is undefined', () => {
@@ -43,7 +79,7 @@ describe('TableSelectors', () => {
 
     describe('getIsTrulyEmpty', () => {
         it('should return true if the data is empty, there is no filter, predicate or date limit applied', () => {
-            spyOn(TableHOCUtils, 'getCompositeState').and.returnValue({});
+            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce({});
 
             expect(TableSelectors.getIsTrulyEmpty({} as IReactVaporState, {id: 'table-id', data: []})).toBe(true);
         });
@@ -52,7 +88,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 dateLimits: [null, null],
             };
-            spyOn(TableHOCUtils, 'getCompositeState').and.returnValue(tableState);
+            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as IReactVaporState, {id: 'table-id', data: []})).toBe(true);
         });
@@ -61,7 +97,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 filter: 'desk',
             };
-            spyOn(TableHOCUtils, 'getCompositeState').and.returnValue(tableState);
+            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as IReactVaporState, {id: 'table-id', data: []})).toBe(false);
         });
@@ -70,7 +106,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 predicates: [{id: 'type', value: 'a'}],
             };
-            spyOn(TableHOCUtils, 'getCompositeState').and.returnValue(tableState);
+            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as IReactVaporState, {id: 'table-id', data: []})).toBe(false);
         });
@@ -80,7 +116,7 @@ describe('TableSelectors', () => {
             const tableState: ITableHOCCompositeState = {
                 dateLimits: [now],
             };
-            spyOn(TableHOCUtils, 'getCompositeState').and.returnValue(tableState);
+            jest.spyOn(TableHOCUtils, 'getCompositeState').mockReturnValueOnce(tableState);
 
             expect(TableSelectors.getIsTrulyEmpty({} as IReactVaporState, {id: 'table-id', data: []})).toBe(false);
         });
