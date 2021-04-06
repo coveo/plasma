@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "13.2.2",
+    "version": "13.2.3",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
@@ -34,13 +34,13 @@
         "react-redux": "5.1.2",
         "react-router-dom": "5.2.0",
         "react-syntax-highlighter": "13.5.1",
-        "react-vapor": "^13.2.2",
+        "react-vapor": "^13.2.3",
         "redux": "4.0.5",
         "redux-devtools-extension": "2.13.8",
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.3.0",
         "reselect": "4.0.0",
-        "snyk": "1.316.1",
+        "snyk": "1.518.0",
         "underscore": "1.10.2",
         "underscore.string": "3.3.5"
     },
