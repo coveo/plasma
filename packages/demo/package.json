@@ -40,7 +40,7 @@
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.3.0",
         "reselect": "4.0.0",
-        "snyk": "1.316.1",
+        "snyk": "1.518.0",
         "underscore": "1.10.2",
         "underscore.string": "3.3.5"
     },
