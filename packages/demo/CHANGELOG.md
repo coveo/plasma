@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.3](https://github.com/coveo/react-vapor/compare/v13.2.2...v13.2.3) (2021-04-06)
+
+
+### Bug Fixes
+
+* **table-hoc:** check if emptyState is set before render blankslate ([3b50f3f](https://github.com/coveo/react-vapor/commit/3b50f3fe777cb51627c3bb5cd2a37803ee976a99))
+* **table-hoc:** should render the tablehoc body if empty state is set ([60e5858](https://github.com/coveo/react-vapor/commit/60e5858a446f653f973349922cf22e0348ec9ba2))
+
+
+
+
+
 ## [13.2.2](https://github.com/coveo/react-vapor/compare/v13.2.1...v13.2.2) (2021-04-02)
 
 **Note:** Version bump only for package react-vapor-demo
