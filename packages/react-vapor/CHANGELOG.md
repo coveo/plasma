@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [13.2.4](https://github.com/coveo/react-vapor/compare/v13.2.3...v13.2.4) (2021-04-06)
+
+
+### Bug Fixes
+
+* **react-vapor:** remove ts-transformer-keys ([73fcdd2](https://github.com/coveo/react-vapor/commit/73fcdd2de419d208c299596462ed4d7e6bc51527))
+
+
+
+
+
 ## [13.2.3](https://github.com/coveo/react-vapor/compare/v13.2.2...v13.2.3) (2021-04-06)
 
 

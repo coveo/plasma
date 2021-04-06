@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "13.2.3",
+    "version": "13.2.4",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
@@ -34,7 +34,7 @@
         "react-redux": "5.1.2",
         "react-router-dom": "5.2.0",
         "react-syntax-highlighter": "13.5.1",
-        "react-vapor": "^13.2.3",
+        "react-vapor": "^13.2.4",
         "redux": "4.0.5",
         "redux-devtools-extension": "2.13.8",
         "redux-promise-middleware": "6.1.2",
@@ -77,8 +77,8 @@
         "source-map-loader": "1.1.0",
         "style-loader": "1.1.3",
         "ts-loader": "6.2.1",
-        "typescript": "3.8.3",
         "tslib": "2.1.0",
+        "typescript": "3.8.3",
         "webpack": "4.41.6",
         "webpack-cli": "3.3.11",
         "webpack-dev-server": "3.11.2"
