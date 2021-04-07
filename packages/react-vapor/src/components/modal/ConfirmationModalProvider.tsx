@@ -11,6 +11,7 @@ export interface IConfirmationModalChildrenProps {
 }
 
 export interface IConfirmationModalProviderProps {
+    id?: string;
     shouldConfirm: boolean;
     modalTitle: string;
     modalBodyChildren: React.ReactNode;
@@ -20,6 +21,7 @@ export interface IConfirmationModalProviderProps {
 }
 
 export const ConfirmationModalProvider: React.FunctionComponent<IConfirmationModalProviderProps> = ({
+    id,
     shouldConfirm,
     children,
     modalTitle,
@@ -50,6 +52,7 @@ export const ConfirmationModalProvider: React.FunctionComponent<IConfirmationMod
         <>
             {children({promptBefore})}
             <ModalComposite
+                id={id}
                 title={modalTitle}
                 classes={className}
                 modalHeaderClasses={['mod-warning']}
