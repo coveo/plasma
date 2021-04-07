@@ -47,7 +47,8 @@
         "build": "lerna run build --stream",
         "lintfix": "lerna run lintfix --parallel",
         "commit-cli": "git-cz",
-        "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm run setup && echo done"
+        "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm run setup && echo done",
+        "open-cypress": "npx cypress open --project ./packages/e2eTesting"
     },
     "config": {
         "commitizen": {
