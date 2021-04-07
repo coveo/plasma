@@ -1,12 +1,14 @@
 import * as CodeMirror from 'codemirror';
 import {ShallowWrapper} from 'enzyme';
-import {mountWithState, shallowWithState} from 'enzyme-redux';
+import {mountWithState, mountWithStore, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
 
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
+import {CodeEditorActionTypes} from '../CodeEditorActions';
 import {CodeMirrorModes} from '../EditorConstants';
 
 describe('CodeEditor', () => {
@@ -42,18 +44,6 @@ describe('CodeEditor', () => {
             expect(valueProp).toBe(basicProps.value);
         });
 
-        it('should get the readonly state as a prop', () => {
-            let readOnlyProp: boolean = wrapper.props().readOnly;
-
-            expect(readOnlyProp).toBeUndefined();
-
-            mountWithProps({readOnly: true});
-
-            readOnlyProp = wrapper.props().readOnly;
-
-            expect(readOnlyProp).toBe(true);
-        });
-
         it('should set the code-editor-no-cursor className when in readOnly to hide the cursor', () => {
             mountWithProps({readOnly: true});
 
@@ -64,18 +54,6 @@ describe('CodeEditor', () => {
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).not.toContain(
                 'code-editor-no-cursor'
             );
-        });
-
-        it('should get what to do on change state as a prop if set', () => {
-            let onChangeProp: (json: string) => void = wrapper.props().onChange;
-
-            expect(onChangeProp).toBeUndefined();
-
-            mountWithProps({onChange: jest.fn()});
-
-            onChangeProp = wrapper.props().onChange;
-
-            expect(onChangeProp).toBeDefined();
         });
 
         it('should display a <CodeMirror /> component', () => {
@@ -132,6 +110,33 @@ describe('CodeEditor', () => {
 
         it('should have a border by default', () => {
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('mod-border');
+        });
+
+        it('should modify the store on mount with a value, on change if mounted with an Id and on unmount with a clear', () => {
+            jest.useFakeTimers();
+            const store = getStoreMock();
+
+            const component = mountWithStore(<CodeEditor id="anId" value="a value" />, store);
+
+            jest.advanceTimersByTime(500);
+            jest.useFakeTimers();
+            expect(store.getActions().length).toBe(1);
+            expect(store.getActions()[0].type).toBe(CodeEditorActionTypes.update);
+
+            component
+                .find('Controlled')
+                .props()
+                .onChange('' as any);
+
+            jest.advanceTimersByTime(500);
+
+            expect(store.getActions().length).toBe(2);
+            expect(store.getActions()[1].type).toBe(CodeEditorActionTypes.update);
+
+            component.unmount();
+
+            expect(store.getActions().length).toBe(3);
+            expect(store.getActions()[2].type).toBe(CodeEditorActionTypes.remove);
         });
     });
 });
