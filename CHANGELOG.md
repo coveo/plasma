@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.0.1](https://github.com/coveo/react-vapor/compare/v14.0.0...v14.0.1) (2021-04-08)
+
+
+### Bug Fixes
+
+* **react-vapor:** fix "main" and "module" paths in package.json ([6227b7f](https://github.com/coveo/react-vapor/commit/6227b7f4888f9e86de29c70aa2ffb2017834aacd))
+
+
+
+
+
 # [14.0.0](https://github.com/coveo/react-vapor/compare/v13.2.5...v14.0.0) (2021-04-08)
 
 
