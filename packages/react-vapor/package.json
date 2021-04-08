@@ -13,8 +13,8 @@
     "homepage": "https://github.com/coveo/react-vapor#readme",
     "author": "Coveo",
     "license": "Apache-2.0",
-    "main": "dist/bundle/react-vapor.js",
-    "module": "dist/bundle/react-vapor.esm.js",
+    "main": "dist/bundles/react-vapor.js",
+    "module": "dist/bundles/react-vapor.esm.js",
     "types": "dist/Entry.d.ts",
     "repository": {
         "type": "git",
