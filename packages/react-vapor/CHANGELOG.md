@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.0.0](https://github.com/coveo/react-vapor/compare/v13.2.5...v14.0.0) (2021-04-08)
+
+
+### Build System
+
+* **demo:** build the demo using project references ([c73be3c](https://github.com/coveo/react-vapor/commit/c73be3c43c677a61a16bcc55000c55e9a683e7f7))
+
+
+### BREAKING CHANGES
+
+* **demo:** `react-vapor.js` and `react-vapor.esm.js` were moved
+from `dist` to `dist/bundles`.
+
+
+
+
+
 ## [13.2.5](https://github.com/coveo/react-vapor/compare/v13.2.4...v13.2.5) (2021-04-07)
 
 **Note:** Version bump only for package react-vapor
