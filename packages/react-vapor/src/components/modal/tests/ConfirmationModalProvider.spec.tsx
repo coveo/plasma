@@ -1,155 +1,143 @@
-import {mount, shallow, ShallowWrapper} from 'enzyme';
+import {screen, fireEvent} from '@testing-library/dom';
+import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
-import {Provider} from 'react-redux';
+import {renderModal} from 'react-vapor-test-utils';
+import {Store} from 'redux';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {ModalCompositeConnected} from '../ModalComposite';
+import {IReactVaporState} from '../../../ReactVapor';
+// import {clearState} from '../../../utils/ReduxUtils';
+import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
+import {ModalCompositeConnected} from '../ModalComposite';
 
 describe('<UnsavedChangeModalProvider/>', () => {
-    let confirmationModalProvider: ShallowWrapper;
-    let heavyConfirmationModalProvider;
-    let regularClickActionSpy: jest.Mock<any, any>;
-    let promptBeforeClickActionSpy: jest.Mock<any, any>;
-    const store = getStoreMock();
+    let store: Store<IReactVaporState>;
+
+    // const mockChildren = jest.fn(); // lol
+
+    // const defaultProps: IConfirmationModalProviderProps = {
+    //     confirmationModalId: '👾-unsaved-modal',
+    //     shouldConfirm: true,
+    //     modalTitle: 'Unsaved Changes',
+    //     modalBodyChildren: <div>some content</div>,
+    //     className: ['potato'],
+    //     children: mockChildren,
+    //     confirmButtonText: 'Confirm',
+    // };
+
     beforeEach(() => {
-        regularClickActionSpy = jest.fn();
-        promptBeforeClickActionSpy = jest.fn();
+        store = TestUtils.buildStore();
     });
 
-    afterEach(() => {
-        regularClickActionSpy.mockReset();
-        promptBeforeClickActionSpy.mockReset();
-        if (confirmationModalProvider?.exists()) {
-            confirmationModalProvider.unmount();
-        }
-    });
+    // afterEach(() => {
+    // store.dispatch(clearState());
+    // mockChildren.mockReset();
+    // });
 
-    const shallowMountUnsavedModalProvider = (shouldConfirm: boolean = false) =>
-        shallow(
-            <ConfirmationModalProvider
-                shouldConfirm={shouldConfirm}
-                modalTitle="Are you sure?"
-                modalBodyChildren={<div>some content</div>}
-            >
-                {({promptBefore}) => (
-                    <ModalCompositeConnected
-                        id="👾"
-                        title="🙄"
-                        classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
-                        modalBodyChildren="🙈 🙉 🙊"
-                        modalFooterChildren={
-                            <button
-                                className="btn"
-                                onClick={() => promptBefore(promptBeforeClickActionSpy) && regularClickActionSpy()}
-                            />
-                        }
-                        modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
-                        docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
-                    />
-                )}
-            </ConfirmationModalProvider>
-        );
+    // const shallowMountUnsavedModalProvider = (shouldConfirm: boolean = false) =>
+    //     shallow(
+    //         <Provider store={store}>
+    //             <ConfirmationModalProvider
+    //                 shouldConfirm={shouldConfirm}
+    //                 modalTitle="Are you sure?"
+    //                 modalBodyChildren={<div>some content</div>}
+    //             >
+    //                 {({promptBefore}) => (
+    //                     <ModalCompositeConnected
+    //                         id="👾"
+    //                         title="🙄"
+    //                         classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
+    //                         modalBodyChildren="🙈 🙉 🙊"
+    //                         modalFooterChildren={
+    //                             <button
+    //                                 className="btn"
+    //                                 onClick={() => promptBefore(promptBeforeClickActionSpy) && regularClickActionSpy()}
+    //                             />
+    //                         }
+    //                         modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+    //                         docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
+    //                     />
+    //                 )}
+    //             </ConfirmationModalProvider>
+    //         </Provider>
+    //     );
 
-    const heavilyMountUnsavedModalProvider = (shouldConfirm: boolean = false) =>
-        mount(
-            <ConfirmationModalProvider
-                shouldConfirm={shouldConfirm}
-                modalTitle="Are you sure?"
-                modalBodyChildren={<div>some content</div>}
-            >
-                {({promptBefore}) => (
-                    <Provider store={store}>
+    // const heavilyMountUnsavedModalProvider = (shouldConfirm: boolean = false) =>
+    //     mount(
+    //         <Provider store={store}>
+    //             <ConfirmationModalProvider
+    //                 shouldConfirm={shouldConfirm}
+    //                 modalTitle="Are you sure?"
+    //                 modalBodyChildren={<div>some content</div>}
+    //             >
+    //                 {({promptBefore}) => (
+    //                     <Provider store={store}>
+    //                         <ModalCompositeConnected
+    //                             id="👾"
+    //                             title="🙄"
+    //                             classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
+    //                             modalBodyChildren="🙈 🙉 🙊"
+    //                             modalFooterChildren={
+    //                                 <button
+    //                                     className="btn"
+    //                                     onClick={() =>
+    //                                         promptBefore(promptBeforeClickActionSpy) && regularClickActionSpy()
+    //                                     }
+    //                                 />
+    //                             }
+    //                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
+    //                             docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
+    //                         />
+    //                     </Provider>
+    //                 )}
+    //             </ConfirmationModalProvider>
+    //         </Provider>
+    //     );
+
+    describe('SHOULDCONFIRM: when shouldConfirm prop is true:', () => {
+        it('should open the ConfirmationModal to interrupt the leaving action', () => {
+            renderModal(
+                <ConfirmationModalProvider
+                    shouldConfirm
+                    confirmationModalId="👾-unsaved-modal"
+                    modalTitle="Are you sure?"
+                    modalBodyChildren="Big bada boom"
+                >
+                    {({promptBefore}) => (
                         <ModalCompositeConnected
+                            isDirty
                             id="👾"
                             title="🙄"
                             classes={['mod-slide-in-bottom', 'mod-big', 'mod-stick-bottom']}
-                            modalBodyChildren="🙈 🙉 🙊"
-                            modalFooterChildren={
-                                <button
-                                    className="btn"
-                                    onClick={() => promptBefore(promptBeforeClickActionSpy) && regularClickActionSpy()}
-                                />
-                            }
+                            modalBodyChildren="Hakuna matata"
+                            modalFooterChildren={<button className="btn" onClick={() => promptBefore(jest.fn())} />}
                             modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
-                            docLink={{url: 'https://www.coveo.com', tooltip: {title: 'Go to coveo.com'}}}
                         />
-                    </Provider>
-                )}
-            </ConfirmationModalProvider>
-        );
+                    )}
+                </ConfirmationModalProvider>,
+                {initialState: {modals: [{id: '👾', isOpened: true}]}}
+            );
 
-    it('should mount and unmount without trowing', () => {
-        expect(() => {
-            shallowMountUnsavedModalProvider().unmount();
-        }).not.toThrow();
-    });
+            expect(screen.queryByText('Unsaved Changes')).not.toBeInTheDocument();
 
-    describe('when should confirm changes', () => {
-        it('should open the ConfirmationModal to interrupt the leaving action', () => {
-            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(true);
+            // fireEvent.click(document);
 
-            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
+            // userEvent.click(document.body);
+            userEvent.type(screen.getByRole('dialog'), specialChars.escape);
 
-            const heavyModal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
-            heavyModal.props().modalFooterChildren.props.onClick();
-            heavyConfirmationModalProvider.update();
-
-            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeTruthy();
+            expect(screen.getByText('Unsaved Changes')).toBeVisible();
         });
 
-        describe('PromptBefore function', () => {
-            it('should return false', () => {
-                confirmationModalProvider = shallowMountUnsavedModalProvider(true);
-                confirmationModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
+        it('PromptBefore function should return false', () => {});
 
-                expect(regularClickActionSpy).not.toHaveBeenCalled();
-            });
-        });
+        it('should use the callback function in the promptBefore function when confirming the exit', () => {});
 
-        it('should use the callback function in the promptBefore function when confirming the exit', () => {
-            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(true);
-
-            const modal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
-            modal.props().modalFooterChildren.props.onClick();
-            heavyConfirmationModalProvider.update();
-            const exitWithoutSavingButton: any = heavyConfirmationModalProvider.childAt(1).find('Button').first();
-            exitWithoutSavingButton.prop('onClick')();
-
-            expect(promptBeforeClickActionSpy).toHaveBeenCalled();
-        });
-
-        it('should not use the callback function in the promptBefore function when cancelling the exit', () => {
-            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(true);
-
-            const modal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
-            modal.props().modalFooterChildren.props.onClick();
-            heavyConfirmationModalProvider.update();
-            const exitWithoutSavingButton: any = heavyConfirmationModalProvider.childAt(1).find('Button').last();
-            exitWithoutSavingButton.prop('onClick')();
-
-            expect(promptBeforeClickActionSpy).not.toHaveBeenCalled();
-        });
+        it('should not use the callback function in the promptBefore function when cancelling the exit', () => {});
     });
 
     describe('when the modal is configured not to confirm changes', () => {
-        it('should not open the ConfirmationModal to interrupt the leaving action', () => {
-            heavyConfirmationModalProvider = heavilyMountUnsavedModalProvider(false);
+        it('should not open the ConfirmationModal to interrupt the leaving action', () => {});
 
-            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
-
-            const heavyModal: any = heavyConfirmationModalProvider.find(ModalCompositeConnected);
-            heavyModal.props().modalFooterChildren.props.onClick();
-            heavyConfirmationModalProvider.update();
-
-            expect(heavyConfirmationModalProvider.childAt(1).prop('isOpen')).toBeFalsy();
-        });
-
-        it('promptBefore function should return true', () => {
-            confirmationModalProvider = shallowMountUnsavedModalProvider();
-            confirmationModalProvider.childAt(0).props().modalFooterChildren.props.onClick();
-
-            expect(regularClickActionSpy).toHaveBeenCalled();
-        });
+        it('promptBefore function should return true', () => {});
     });
 });

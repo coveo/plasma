@@ -55,7 +55,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
     const {isValid, message} = validateStep?.(currentStep, numberOfSteps) ?? {isValid: true};
 
     return (
-        <UnsavedChangesModalProvider isDirty={isDirty}>
+        <UnsavedChangesModalProvider isDirty={isDirty} confirmationModalId={`${id}-unsaved-modal`}>
             {({promptBefore}) => (
                 <ModalCompositeConnected
                     id={id}

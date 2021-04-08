@@ -11,7 +11,7 @@ const defaultConfirmButtonText = 'Exit without applying changes';
 
 export interface IUnsavedChangesModalProviderProps {
     isDirty: boolean;
-    id?: string;
+    confirmationModalId?: string;
     modalTitle?: string;
     className?: string[];
     children: (props: IConfirmationModalChildrenProps) => React.ReactNode;
@@ -22,20 +22,20 @@ export interface IUnsavedChangesModalProviderProps {
 export const UnsavedChangesModalProvider: React.FunctionComponent<IUnsavedChangesModalProviderProps> = ({
     isDirty,
     children,
-    id = defaultModalId,
+    confirmationModalId = defaultModalId,
     modalTitle = defaultModalTitle,
     className = defaultModalClasses,
     unsavedChangesDescription = defaultModalDescription,
     confirmButtonText = defaultConfirmButtonText,
 }) => (
     <ConfirmationModalProvider
-        id={id}
+        confirmationModalId={confirmationModalId}
         className={className}
         shouldConfirm={isDirty}
         modalTitle={modalTitle}
         modalBodyChildren={<div>{unsavedChangesDescription}</div>}
         confirmButtonText={confirmButtonText}
     >
-        {(options) => children(options)}
+        {(options: IConfirmationModalChildrenProps) => children(options)}
     </ConfirmationModalProvider>
 );
