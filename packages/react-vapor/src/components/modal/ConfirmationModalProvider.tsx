@@ -23,7 +23,7 @@ export interface IConfirmationModalProviderProps {
     confirmButtonText?: string;
 }
 
-const enchance = connect(null, (dispatch: IDispatch, ownProps: IConfirmationModalProviderProps) => ({
+const enhance = connect(null, (dispatch: IDispatch, ownProps: IConfirmationModalProviderProps) => ({
     onOpen: () => dispatch(ModalActions.openModal(ownProps.confirmationModalId)),
     onClose: () => dispatch(ModalActions.closeModal(ownProps.confirmationModalId)),
 }));
@@ -33,7 +33,7 @@ const enchance = connect(null, (dispatch: IDispatch, ownProps: IConfirmationModa
  */
 
 export const ConfirmationModalProviderDisconnected: React.FunctionComponent<
-    IConfirmationModalProviderProps & ConnectedProps<typeof enchance>
+    IConfirmationModalProviderProps & ConnectedProps<typeof enhance>
 > = ({
     confirmationModalId,
     shouldConfirm,
@@ -80,4 +80,4 @@ export const ConfirmationModalProviderDisconnected: React.FunctionComponent<
     );
 };
 
-export const ConfirmationModalProvider = enchance(ConfirmationModalProviderDisconnected);
+export const ConfirmationModalProvider = enhance(ConfirmationModalProviderDisconnected);
