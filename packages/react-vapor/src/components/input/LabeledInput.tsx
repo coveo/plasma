@@ -30,7 +30,7 @@ export const LabeledInput: React.FunctionComponent<ILabeledInputProps> = ({
                 </header>
                 {!!information ? (
                     <Tooltip title={information} placement={TooltipPlacement.Right} className="ml1 labeled-tooltip">
-                        <Svg svgName="info-14" svgClass="icon" />
+                        <Svg svgName="info" svgClass="icon mod-14" />
                     </Tooltip>
                 ) : null}
             </div>
