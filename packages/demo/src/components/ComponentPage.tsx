@@ -40,10 +40,11 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
         title: tabName,
     });
 
-    const tabProps: ITabProps[] = hasMarkdownTabs && [
-        {id: getTabId('development'), title: component.firstTabLabel || 'Develop'},
-        ...tabs.sort((tabA: TabConfig, tabB: TabConfig) => tabA.order - tabB.order).map(mapTabConfigToProps),
-    ];
+    const tabProps: ITabProps[] =
+        hasMarkdownTabs &&
+        [{id: getTabId('development'), title: component.firstTabLabel || 'Develop'}].concat(
+            tabs.sort((tabA: TabConfig, tabB: TabConfig) => tabA.order - tabB.order).map(mapTabConfigToProps)
+        );
     const PageLayout = hasMarkdownTabs ? PageLayoutWithTabs : PageLayoutWithoutTabs;
 
     return tabs === null ? (

@@ -6,7 +6,6 @@ import {ICheckboxOwnProps} from '../../checkbox/Checkbox';
 import {IInputOwnProps} from '../../input/Input';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationTypes} from '../ValidationTypes';
-import {InferableComponentEnhancer} from './connectHOC';
 
 export interface IWithDirtyCheckboxOwnProps {
     resetDirtyOnUnmount?: boolean;
@@ -48,6 +47,5 @@ export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProp
         );
     };
 
-    const enhance = connect(null, mapDispatchToProps) as InferableComponentEnhancer<DispatchProps>;
-    return enhance(WrappedCheckbox);
+    return connect(null, mapDispatchToProps)(WrappedCheckbox);
 };

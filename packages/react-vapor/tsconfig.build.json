@@ -11,7 +11,7 @@
         "declarationMap": true,
         "tsBuildInfoFile": "./dist/.tsbuildinfo"
     },
-    "exclude": ["*.js", "./src/**/*.spec.*", "./src/**/*.mock.*", "./src/utils/tests"],
+    "exclude": ["*.js", "./src/**/*.spec.*", "./src/**/*.mock.*", "**/tests/**", "./src/utils/tests"],
     "include": ["src"],
     "references": []
 }

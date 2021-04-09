@@ -16,31 +16,31 @@ describe('ColorPicker', () => {
 
     it('should mount and unmount without error', () => {
         expect(() => {
-            const picker = shallowWithStore(<ColorPicker />, store);
+            const picker = shallowWithStore(<ColorPicker id="🆔" />, store);
             picker.unmount();
         }).not.toThrow();
     });
 
     it('should render a ChromeColorPicker', () => {
-        const picker = shallowWithStore(<ColorPicker />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" />, store).dive();
 
         expect(picker.find(ChromePicker).length).toBe(1);
     });
 
     it('should pass down props to ChromePicker', () => {
-        const picker = shallowWithStore(<ColorPicker disableAlpha={true} />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" disableAlpha={true} />, store).dive();
 
         expect(picker.find(ChromePicker).props().disableAlpha).toBe(true);
     });
 
     it('should render an InputConnected', () => {
-        const picker = shallowWithStore(<ColorPicker />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" />, store).dive();
 
         expect(picker.find(InputConnected).length).toBe(1);
     });
 
     it('should sync the InputConnected and ChromePicker with color props', () => {
-        const picker = shallowWithStore(<ColorPicker defaultColor="#fff" />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" defaultColor="#fff" />, store).dive();
 
         expect(picker.find(ChromePicker).prop('color')).toBe('#fff');
         expect(picker.find(InputConnected).prop('defaultValue')).toBe('#fff');

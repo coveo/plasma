@@ -2,9 +2,7 @@ import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
-import {Store} from 'redux';
 import {ValidationActions, ValidationTypes} from '../..';
-import {IReactVaporState} from '../../../../Entry';
 import {composeMockStore, getStoreMock, withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
 import {withDirtySingleSelectHOC, IWithDirtySingleSelectHOCProps} from '../WithDirtySingleSelectHOC';
@@ -40,7 +38,7 @@ describe('SingleSelectWithDirty', () => {
 
     const mountSingleSelectWithHOC = (
         props: Partial<typeof DEFAULT_PROPS> = {},
-        storeToUse: Store<IReactVaporState> = store
+        storeToUse: ReturnType<typeof getStoreMock> = store
     ) => {
         const component = mountWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} {...props} />, storeToUse);
         act(() => {
