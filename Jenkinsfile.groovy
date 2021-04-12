@@ -289,7 +289,7 @@ pipeline {
         def color = "FF0000";
         def message = "Build FAILED at stage *${getLastStageName()}* - ${env.JOB_NAME} (<${env.BUILD_URL}|#${env.BUILD_NUMBER}>)";
 
-        if(env.JOB_NAME ==~ /(master|release-.*)/){
+        if(env.BRANCH_NAME ==~ /(master|release-.*)/){
           notify.sendSlackWithThread(
             color: color, message: message,
             MASTER_RELEASE_FAILURE_CHANNELS
