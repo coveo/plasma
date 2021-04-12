@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.1.0](https://github.com/coveo/react-vapor/compare/v14.0.3...v14.1.0) (2021-04-12)
+
+
+### Features
+
+* **datepicker:** added code example for countdown ([faae5f3](https://github.com/coveo/react-vapor/commit/faae5f3695ebb8e369049deb9bd4e68150329396))
+
+
+
+
+
 ## [14.0.3](https://github.com/coveo/react-vapor/compare/v14.0.2...v14.0.3) (2021-04-09)
 
 
