@@ -6,6 +6,7 @@ import {
     Label,
     LabeledInput,
     Radio,
+    RadioCard,
     RadioSelectConnected,
     Section,
     setRadioSelect,
@@ -27,6 +28,7 @@ export const RadioButtonExamples: ExampleComponent = () => (
         <RadioSelectExample />
         <RadioSelectDisabledExample />
         <RadioSelectWrappedExample />
+        <RadioCardSelectExample />
     </Section>
 );
 
@@ -56,6 +58,12 @@ const blueRadioButtonProps = {
 const redRadioButtonProps = {
     id: 'red',
     value: 'red',
+    ...radioButtonProps,
+};
+
+const greenRadioButtonProps = {
+    id: 'green',
+    value: 'green',
     ...radioButtonProps,
 };
 
@@ -135,6 +143,31 @@ const RadioSelectWrappedExample: React.FunctionComponent = () => (
                     <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
                 </InputDescription>
             </Radio>
+        </RadioSelectConnected>
+    </Section>
+);
+
+const RadioCardSelectExample: React.FunctionComponent = () => (
+    <Section level={3} title="A radio card select.">
+        <RadioSelectConnected id="radio-card-select-example" valueOnMount={'blue'} className="flex">
+            <RadioCard id="blue" name="card-option" value="blue">
+                <img className="mb2" src="https://via.placeholder.com/150x100" />
+                <Label>
+                    <span className="bold">{'Blue color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
+                </InputDescription>
+            </RadioCard>
+            <RadioCard id="red" name="card-option" value="red" disabled>
+                <img className="mb2" src="https://via.placeholder.com/150x100" />
+                <Label>
+                    <span className="bold">{'Red color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                </InputDescription>
+            </RadioCard>
         </RadioSelectConnected>
     </Section>
 );

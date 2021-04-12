@@ -122,8 +122,42 @@
     }
 }
 
+.radio-card-container {
+    .radio-card {
+        @extend .card;
+
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+        padding: 27px 25px;
+
+        &:hover {
+            cursor: pointer !important;
+        }
+        *:hover {
+            cursor: pointer !important;
+        }
+    }
+
+    .card-input {
+        display: none;
+    }
+
+    .card-input:checked + .radio-card {
+        border: 2px solid var(--digital-blue-60);
+    }
+
+    .card-input:disabled + .radio-card {
+        background-color: var(--grey-20);
+    }
+}
+
 .radio-select {
     .radio-option + .radio-option {
         margin-top: $checkbox-label-margin-top;
+    }
+
+    .radio-card-container + .radio-card-container {
+        margin-left: $radio-card-margin-left;
     }
 }
