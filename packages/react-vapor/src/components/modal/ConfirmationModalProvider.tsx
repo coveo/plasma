@@ -24,15 +24,11 @@ export interface IConfirmationModalProviderProps {
 }
 
 const enhance = connect(null, (dispatch: IDispatch, ownProps: IConfirmationModalProviderProps) => ({
-    onOpen: () => dispatch(ModalActions.openModal(ownProps.confirmationModalId)),
-    onClose: () => dispatch(ModalActions.closeModal(ownProps.confirmationModalId)),
+    openPrompt: () => dispatch(ModalActions.openModal(ownProps.confirmationModalId)),
+    closePrompt: () => dispatch(ModalActions.closeModal(ownProps.confirmationModalId)),
 }));
 
-/**
- * @description wrapper for a modal, that adds a confirmation modal below it
- */
-
-export const ConfirmationModalProviderDisconnected: React.FunctionComponent<
+const ConfirmationModalProviderDisconnected: React.FunctionComponent<
     IConfirmationModalProviderProps & ConnectedProps<typeof enhance>
 > = ({
     confirmationModalId,
@@ -42,17 +38,17 @@ export const ConfirmationModalProviderDisconnected: React.FunctionComponent<
     className = defaultModalClasses,
     modalBodyChildren,
     confirmButtonText = defaultConfirmButtonText,
-    onOpen,
-    onClose,
+    openPrompt,
+    closePrompt,
 }) => {
     const [confirm, setConfirm] = React.useState(null);
 
     const promptBefore = (callbackOnDiscard: () => any): boolean => {
         if (shouldConfirm) {
-            onOpen();
+            openPrompt();
             setConfirm(() => () => {
                 callbackOnDiscard();
-                onClose();
+                closePrompt();
             });
             return false;
         }
@@ -72,7 +68,7 @@ export const ConfirmationModalProviderDisconnected: React.FunctionComponent<
                 modalFooterChildren={
                     <>
                         <Button small name={confirmButtonText} onClick={confirm} primary />
-                        <Button small autoFocus name="Cancel" onClick={onClose} />
+                        <Button small autoFocus name="Cancel" onClick={closePrompt} />
                     </>
                 }
             />
