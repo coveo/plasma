@@ -36,10 +36,10 @@ const cleanAll = argv.all;
 
 gulp.task('lib', () => {
     const dependencies = [
-        '../../node_modules/coveo-slider/dist/js/Coveo.Slider.js',
-        '../../node_modules/chosen-npm/public/chosen.jquery.js',
-        '../../node_modules/materialize-css/js/jquery.easing.1.3.js',
-        '../../node_modules/materialize-css/js/collapsible.js',
+        'node_modules/coveo-slider/dist/js/Coveo.Slider.js',
+        'node_modules/chosen-npm/public/chosen.jquery.js',
+        'node_modules/materialize-css/js/jquery.easing.1.3.js',
+        'node_modules/materialize-css/js/collapsible.js',
         './lib/js/*',
     ];
     dependencies.forEach((path) => {
