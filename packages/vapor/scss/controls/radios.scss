@@ -123,11 +123,13 @@
 }
 
 .radio-card-container {
+    flex: 0;
+
     .radio-card {
         @extend .card;
-
         display: flex;
         flex-direction: column;
+
         height: 100%;
         padding: 27px 25px;
 
@@ -144,20 +146,17 @@
     }
 
     .card-input:checked + .radio-card {
-        border: 2px solid var(--digital-blue-60);
+        box-shadow: 0 0 0 2px var(--digital-blue-60);
     }
 
     .card-input:disabled + .radio-card {
         background-color: var(--grey-20);
+        cursor: not-allowed;
     }
 }
 
 .radio-select {
     .radio-option + .radio-option {
         margin-top: $checkbox-label-margin-top;
-    }
-
-    .radio-card-container + .radio-card-container {
-        margin-left: $radio-card-margin-left;
     }
 }

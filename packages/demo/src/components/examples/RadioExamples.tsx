@@ -149,7 +149,13 @@ const RadioSelectWrappedExample: React.FunctionComponent = () => (
 
 const RadioCardSelectExample: React.FunctionComponent = () => (
     <Section level={3} title="A radio card select.">
-        <RadioSelectConnected id="radio-card-select-example" valueOnMount={'blue'} className="flex">
+        <RadioSelectConnected
+            id="radio-card-select-example"
+            valueOnMount={'blue'}
+            className="flex flex-wrap spaced-boxes-container"
+            disabledTooltip="you see me because of the disabledTooltip prop"
+            disabledValuesOnMount={['red']}
+        >
             <RadioCard id="blue" name="card-option" value="blue">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
                 <Label>
@@ -159,13 +165,22 @@ const RadioCardSelectExample: React.FunctionComponent = () => (
                     <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
                 </InputDescription>
             </RadioCard>
-            <RadioCard id="red" name="card-option" value="red" disabled>
+            <RadioCard id="red" name="card-option" value="red">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
                 <Label>
                     <span className="bold">{'Red color'}</span>
                 </Label>
                 <InputDescription>
                     <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                </InputDescription>
+            </RadioCard>
+            <RadioCard id="green" name="card-option" value="green">
+                <img className="mb2" src="https://via.placeholder.com/150x100" />
+                <Label>
+                    <span className="bold">{'Green color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Green is the best color.'}</div>
                 </InputDescription>
             </RadioCard>
         </RadioSelectConnected>
