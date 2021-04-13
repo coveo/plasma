@@ -152,7 +152,7 @@ const RadioCardSelectExample: React.FunctionComponent = () => (
         <RadioSelectConnected
             id="radio-card-select-example"
             valueOnMount={'blue'}
-            className="flex flex-wrap spaced-boxes-container"
+            className="flex flex-wrap"
             disabledTooltip="you see me because of the disabledTooltip prop"
             disabledValuesOnMount={['red']}
         >
