@@ -34,6 +34,7 @@
     --navy-blue-80: #333357;
     --navy-blue-60: #5f619e;
     --navy-blue-40: #8588dd;
+    --navy-blue-20: #d6d7fd;
 
     --digital-blue-100: #2e45ba;
     --digital-blue-80: #215cd3;
@@ -59,6 +60,7 @@
     --dark-green-80: #095759;
     --dark-green-60: #0f7173;
     --dark-green-40: #269b9d;
+    --dark-green-30: #79d1c3;
     --dark-green-20: #4dbdc0;
 
     --dark-blue-100: #1b2f93;
@@ -72,9 +74,17 @@
     --grey-100: #282829;
     --grey-80: #626971;
     --grey-60: #8e959d;
+    --grey-50: #c5cacf;
     --grey-40: #e5e8e8;
     --grey-20: #f6f7f9;
     --white: #ffffff;
+
+    // Accent
+    --pomegranate-20: #ffd7d3;
+    --pomegranate-40: #ee8279;
+
+    --turbo-yellow-20: #fff7ba;
+    --turbo-yellow-50: #ffe300;
 
     // Utility
     --information-100: #0d69ac;
@@ -108,4 +118,14 @@
     // Status
     --status-green: #15ab65;
     --status-red: #ff3e2e;
+
+    // Semantic
+    --semantic-critical-100: #600a03;
+
+    --semantic-warning-90: #836602;
+
+    --semantic-info-80: #333357;
+
+    --semantic-success-100: #004a20;
+    --semantic-success-0: #d3fce9;
 }
