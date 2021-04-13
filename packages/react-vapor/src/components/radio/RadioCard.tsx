@@ -8,7 +8,7 @@ export interface RadioCardProps extends Omit<IInputProps, 'outerContainerClass' 
 
 export const RadioCard: React.FunctionComponent<RadioCardProps> = (props) => {
     const classes = classNames('radio-card', props.classes);
-    const containerClasses = 'radio-card-container space-box p3';
+    const containerClasses = 'radio-card-container spaced-box m2';
 
     return props.disabled && props.disabledTooltip ? (
         <label onClick={props.onClick} className={containerClasses}>

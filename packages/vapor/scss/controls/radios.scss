@@ -123,21 +123,26 @@
 }
 
 .radio-card-container {
+    --shadow-color: rgba(229, 232, 232, 0.75);
     flex: 0;
 
     .radio-card {
-        @extend .card;
         display: flex;
         flex-direction: column;
-
         height: 100%;
-        padding: 27px 25px;
+        padding: 20px;
+        border: $default-border;
+        border-radius: 8px;
+        box-shadow: 0px 2px 8px var(--shadow-color);
+        transition: all 0.3s ease-in-out;
 
         &:hover {
+            box-shadow: 0px 8px 8px var(--shadow-color);
+            transform: translate3d(0px, -8px, 0px);
             cursor: pointer !important;
         }
-        *:hover {
-            cursor: pointer !important;
+        *:hover:not(a) {
+            cursor: inherit;
         }
     }
 
@@ -146,12 +151,18 @@
     }
 
     .card-input:checked + .radio-card {
-        box-shadow: 0 0 0 2px var(--digital-blue-60);
+        box-shadow: 0px 4px 8px var(--shadow-color), inset 0 0 0 2px var(--digital-blue-60);
+        transform: translate3d(0px, -4px, 0px);
     }
 
     .card-input:disabled + .radio-card {
-        background-color: var(--grey-20);
-        cursor: not-allowed;
+        box-shadow: none;
+        transform: none;
+        cursor: not-allowed !important;
+
+        * {
+            color: var(--medium-grey);
+        }
     }
 }
 
