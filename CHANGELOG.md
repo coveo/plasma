@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [14.2.2](https://github.com/coveo/react-vapor/compare/v14.2.1...v14.2.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **code editor:** prevent reducer from crashing on empty state ([aac4e14](https://github.com/coveo/react-vapor/commit/aac4e14918a6127340d41c83613e5df7c60eb73c))
+
+
+
+
+
 ## [14.2.1](https://github.com/coveo/react-vapor/compare/v14.2.0...v14.2.1) (2021-04-14)
 
 **Note:** Version bump only for package root
