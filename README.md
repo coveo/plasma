@@ -19,6 +19,7 @@ Make sure you have
 
 -   [Node.js](https://nodejs.org/)'s LTS version
 -   [NPM](https://www.npmjs.com/package/npm)'s LTS version
+-   [PNPM](https://pnpm.io/installation) >= 5
 
 ## Setup
 
@@ -27,16 +28,16 @@ All the commands in the instructions must be run at the root of the project.
 First you need to install the project's dependencies and link the projects together.
 
 ```bash
-npm run setup
+pnpm install
 ```
 
 ### Running the demo pages locally
 
 ```bash
-npm start
+pnpm start
 ```
 
-Changes made to any source files in any package will make the demo rebuild and refresh. Since the projects are in the same repository and we use Lerna, we don't have to link them together.
+Changes made to any source files in any package will make the demo rebuild and refresh. Since the projects are in the same repository and we use pnpm, we don't have to link them together.
 
 ### Committing your changes
 
