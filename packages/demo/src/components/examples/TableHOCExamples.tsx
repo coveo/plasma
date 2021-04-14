@@ -3,6 +3,7 @@ import moment from 'moment';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {
+    Badge,
     DateUtils,
     filterThrough,
     IDispatch,
@@ -100,6 +101,7 @@ const renderHeader = (tableId: string) => (
                 Username
             </TableHeaderWithSort>
             <th>Date of birth</th>
+            <th>Badge</th>
         </tr>
     </thead>
 );
@@ -111,6 +113,9 @@ export const generateTableRow = (allData: IExampleRowData[], tableId: string) =>
             <td key="email">{data.email.toLowerCase()}</td>
             <td key="username">{data.username.toLowerCase()}</td>
             <td key="date-of-birth">{data.dateOfBirth.toLocaleDateString()}</td>
+            <td>
+                <Badge label={'🥔 King'} extraClasses={['mod-small mod-success']} />
+            </td>
         </TableRowConnected>
     ));
 
