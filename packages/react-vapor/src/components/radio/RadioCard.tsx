@@ -26,20 +26,20 @@ export const RadioCard: React.FunctionComponent<RadioCardProps> = (props) => {
 };
 
 const RadioCardContent: React.FunctionComponent<RadioCardProps & {classes: string}> = ({
-    classes,
-    checked,
     id,
     name,
+    classes,
+    checked,
     disabled,
     onChange,
     children,
 }) => (
     <>
         <input
-            type="radio"
-            className="card-input"
             id={id}
             name={name}
+            type="radio"
+            className="card-input"
             checked={checked}
             disabled={disabled}
             onChange={(event) => onChange(event.target.value)}
