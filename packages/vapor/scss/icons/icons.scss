@@ -65,8 +65,8 @@
         &.mod-#{$size} {
             width: $size + px;
             height: $size + px;
-
-            @extend .mod-align-with-text;
+            line-height: $size + px;
+            vertical-align: -0.5 * ceil($size / 4) + px;
         }
     }
 

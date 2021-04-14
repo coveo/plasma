@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [15.0.0-next.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.1...v15.0.0-next.2) (2021-04-14)
+## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
 
 **Note:** Version bump only for package react-vapor
 
@@ -11,7 +11,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [15.0.0-next.1](https://github.com/coveo/react-vapor/compare/v14.0.1...v15.0.0-next.1) (2021-04-08)
+## [14.1.1](https://github.com/coveo/react-vapor/compare/v14.1.0...v14.1.1) (2021-04-13)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [14.1.0](https://github.com/coveo/react-vapor/compare/v14.0.3...v14.1.0) (2021-04-12)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [14.0.3](https://github.com/coveo/react-vapor/compare/v14.0.2...v14.0.3) (2021-04-09)
+
+
+### Bug Fixes
+
+* **table-with-filter:** revert to previous state, ignore empty state ([b04227a](https://github.com/coveo/react-vapor/commit/b04227ae459a3f8b70d905dca9198f6c68c85d3f))
+
+
+
+
+
+## [14.0.2](https://github.com/coveo/react-vapor/compare/v14.0.1...v14.0.2) (2021-04-09)
 
 **Note:** Version bump only for package react-vapor
 

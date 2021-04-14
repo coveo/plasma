@@ -28,6 +28,8 @@ export const DatePickerExamples: ExampleComponent = () => (
 );
 DatePickerExamples.title = 'DatePicker';
 
+// start-print
+
 const CalendarComponent: React.FunctionComponent = () => (
     <Section title="Calendar component">
         <CalendarConnected id="calendar" />
@@ -39,8 +41,6 @@ const CountdownComponent: React.FunctionComponent = () => (
         <Countdown />
     </Section>
 );
-
-// start-print
 
 const DatePickerComponents: React.FunctionComponent = () => (
     <Section title="Date pickers">

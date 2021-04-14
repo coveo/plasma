@@ -35,13 +35,7 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
         target: '',
     };
 
-    private onClick() {
-        if (this.props.onClick && this.props.enabled) {
-            this.props.onClick();
-        }
-    }
-
-    getTemplate(buttonClass: string): JSX.Element {
+    render() {
         let buttonElement: JSX.Element;
 
         let buttonAttrs = {
@@ -58,14 +52,14 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
             });
 
             buttonElement = (
-                <a className={`${buttonClass} btn-container`} {...buttonAttrs}>
+                <a className={`${this.className} btn-container`} {...buttonAttrs}>
                     {this.props.name}
                     {this.props.children}
                 </a>
             );
         } else {
             buttonElement = (
-                <button className={buttonClass} {...buttonAttrs}>
+                <button className={this.className} {...buttonAttrs}>
                     {this.props.name}
                     {this.props.children}
                 </button>
@@ -81,7 +75,13 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
         );
     }
 
-    private getClasses() {
+    private onClick() {
+        if (this.props.enabled) {
+            this.props.onClick?.();
+        }
+    }
+
+    private get className(): string {
         return classNames(
             'btn',
             {
@@ -91,9 +91,5 @@ export class Button extends React.Component<IButtonProps & React.ButtonHTMLAttri
             },
             this.props.classes
         );
-    }
-
-    render() {
-        return this.getTemplate(this.getClasses());
     }
 }

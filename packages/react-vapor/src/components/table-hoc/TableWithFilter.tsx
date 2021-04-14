@@ -8,7 +8,6 @@ import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
 import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
 import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
 import {ITableHOCOwnProps, TableHOC} from './TableHOC';
-import {TableSelectors} from './TableSelectors';
 import {Params} from './TableWithUrlState';
 
 export interface ITableWithFilterConfig extends WithServerSideProcessingProps {
@@ -44,8 +43,6 @@ export const tableWithFilter = (
             filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
         const urlParams = UrlUtils.getSearchParams();
         return {
-            isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
-            isEmptyStateSet: TableSelectors.isEmptyStateSet(state, ownProps),
             filter: filterText,
             urlFilter: urlParams[Params.filter],
             data: ownProps.isServer || config.isServer ? ownProps.data : ownProps.data && filterData(),
@@ -60,18 +57,10 @@ export const tableWithFilter = (
         }
 
         render() {
-            const {
-                filterBlankslate,
-                filterMatcher,
-                filterPlaceholder,
-                filter,
-                urlFilter,
-                isEmptyStateSet,
-                isTrulyEmpty,
-                ...tableProps
-            } = this.props;
+            const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} = this.props;
             const blankSlateProps = filterBlankslate || config.blankSlate;
-            const shouldShowBlankslate = !_.isEmpty(blankSlateProps) && !isEmptyStateSet && isTrulyEmpty;
+            const shouldShowBlankslate =
+                _.isEmpty(this.props.data) && !_.isEmpty(filter) && !_.isEmpty(blankSlateProps);
             const filterAction = (
                 <FilterBoxConnected
                     key="FilterBox"

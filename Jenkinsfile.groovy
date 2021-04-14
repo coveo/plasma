@@ -326,8 +326,8 @@ def getLastStageName() {
 }
 
 def postCommentOnGithub(demoLink="") {
-  runPackage.call(
-              'github-comment',
-              "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
-            )
+    runPackage.call(
+      "github-comment",
+      "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
+    )
 }
