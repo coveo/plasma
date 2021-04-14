@@ -131,9 +131,6 @@
         flex-direction: column;
         height: 100%;
         padding: 20px;
-        border: $default-border;
-        border-radius: 8px;
-        box-shadow: 0px 2px 8px var(--shadow-color);
         transition: all 0.3s ease-in-out;
 
         &:hover {

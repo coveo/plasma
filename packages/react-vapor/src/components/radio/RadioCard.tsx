@@ -7,40 +7,46 @@ import {Tooltip} from '../tooltip';
 export interface RadioCardProps extends Omit<IInputProps, 'outerContainerClass' | 'outerElementInContainer'> {}
 
 export const RadioCard: React.FunctionComponent<RadioCardProps> = (props) => {
-    const classes = classNames('radio-card', props.classes);
+    const classes = classNames('card', 'radio-card', props.classes);
     const containerClasses = 'radio-card-container m2';
+
+    const {onClick, ...otherProps} = props;
 
     return props.disabled && props.disabledTooltip ? (
         <label onClick={props.onClick} className={containerClasses}>
             <Tooltip title={props.disabledTooltip} placement={TooltipPlacement.Bottom}>
-                <RadioCardContent props={props} classes={classes} />
+                <RadioCardContent {...otherProps} classes={classes} />
             </Tooltip>
         </label>
     ) : (
         <label onClick={props.onClick} className={containerClasses}>
-            <RadioCardContent props={props} classes={classes} />
+            <RadioCardContent {...otherProps} classes={classes} />
         </label>
     );
 };
 
-const RadioCardContent: React.FunctionComponent<{props: RadioCardProps; classes: string}> = ({props, classes}) => {
-    // const inputProps = omit(props, ['children', 'classes']);
-    const inputProps = {
-        type: 'radio',
-        checked: props.checked,
-        id: props.id,
-        name: props.name,
-        className: 'card-input',
-        disabled: props.disabled,
-        onChange: (event: React.ChangeEvent<HTMLInputElement>) => props.onChange(event.target.value),
-    };
-    return (
-        <>
-            <input {...inputProps} />
-            <div className={classes}>{props.children}</div>
-        </>
-    );
-};
+const RadioCardContent: React.FunctionComponent<RadioCardProps & {classes: string}> = ({
+    classes,
+    checked,
+    id,
+    name,
+    disabled,
+    onChange,
+    children,
+}) => (
+    <>
+        <input
+            type="radio"
+            className="card-input"
+            id={id}
+            name={name}
+            checked={checked}
+            disabled={disabled}
+            onChange={(event) => onChange(event.target.value)}
+        />
+        <div className={classes}>{children}</div>
+    </>
+);
 
 RadioCard.defaultProps = {
     ...Input.defaultProps,
