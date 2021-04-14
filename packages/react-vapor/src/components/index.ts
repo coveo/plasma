@@ -45,6 +45,7 @@ export * from './logoCard';
 export * from './menu';
 export * from './modal';
 export * from './modalPrompt';
+export * from './modalSelect';
 export * from './modalWizard';
 export * from './multilineBox';
 export * from './multilineInput';

@@ -27,6 +27,7 @@ import {IListBoxState} from './components/listBox/ListBoxReducers';
 import {ILoadingState} from './components/loading/LoadingReducers';
 import {IMenusState} from './components/menu/MenuReducers';
 import {IModalState} from './components/modal/ModalReducers';
+import {IModalSelectState} from './components/modalSelect/ModalSelectReducers';
 import {IPaginationState} from './components/navigation/pagination/NavigationPaginationReducers';
 import {IPerPageState} from './components/navigation/perPage/NavigationPerPageReducers';
 import {INumericInputsState} from './components/numericInput/NumericInputReducers';
@@ -81,6 +82,7 @@ export interface IReactVaporState {
     listBoxes?: IListBoxState[];
     menus?: IMenusState;
     modals?: IModalState[];
+    modalSelects?: IModalSelectState[];
     multilineIds?: IStringListCompositeState;
     numericInputs?: INumericInputsState;
     openModals?: string[];

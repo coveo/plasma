@@ -1,4 +1,5 @@
 import {ReducersMapObject} from 'redux';
+import {modalSelectsReducer} from './components';
 
 import {actionBarsReducer} from './components/actions/ActionBarReducers';
 import {itemFiltersReducer} from './components/actions/filters/ItemFilterReducers';
@@ -79,6 +80,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     loadings: loadingsReducer,
     menus: menuCompositeReducer,
     modals: modalsReducer,
+    modalSelects: modalSelectsReducer,
     multilineIds: stringListCompositeReducer,
     numericInputs: numericInputReducer,
     openModals: openModalsReducer,
