@@ -49,6 +49,8 @@
     --green: #1cebcf;
     --orange: #fa821e;
 
+    --forest-green-30: #79d1c3;
+
     // Background
     --dark-purple-100: #431b59;
     --dark-purple-80: #5d3175;
@@ -60,7 +62,6 @@
     --dark-green-80: #095759;
     --dark-green-60: #0f7173;
     --dark-green-40: #269b9d;
-    --dark-green-30: #79d1c3;
     --dark-green-20: #4dbdc0;
 
     --dark-blue-100: #1b2f93;
@@ -80,11 +81,16 @@
     --white: #ffffff;
 
     // Accent
-    --pomegranate-20: #ffd7d3;
     --pomegranate-40: #ee8279;
+    --pomegranate-20: #ffd7d3;
 
-    --turbo-yellow-20: #fff7ba;
     --turbo-yellow-50: #ffe300;
+    --turbo-yellow-20: #fff7ba;
+
+    --sienna-orange-70: #c04c26;
+    --sienna-orange-60: #e06036;
+    --sienna-orange-40: #fe926e;
+    --sienna-orange-20: #ffcdbd;
 
     // Utility
     --information-100: #0d69ac;
@@ -112,8 +118,6 @@
     --critical-60: #f05245;
     --critical-40: #ff8276;
     --critical-20: #ffcecc;
-
-    --sienna-orange-60: #e06036;
 
     // Status
     --status-green: #15ab65;
