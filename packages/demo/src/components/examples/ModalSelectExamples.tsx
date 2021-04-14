@@ -52,39 +52,33 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
                 close();
             }}
         >
-            <RadioSelectConnected
-                id={radioSelectId}
-                valueOnMount={selectedValue}
-                className="flex flex-wrap mx-auto center-align full-content-y"
-            >
-                <RadioCard id="blue" name="card-option" value="blue">
-                    <div className="mb2" style={{backgroundColor: 'deepskyblue', width: '150px', height: '100px'}} />
-                    <Label>
-                        <span className="bold">{'Blue color'}</span>
-                    </Label>
-                    <InputDescription>
-                        <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
-                    </InputDescription>
-                </RadioCard>
-                <RadioCard id="red" name="card-option" value="red">
-                    <div className="mb2" style={{backgroundColor: 'tomato', width: '150px', height: '100px'}} />
-                    <Label>
-                        <span className="bold">{'Red color'}</span>
-                    </Label>
-                    <InputDescription>
-                        <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
-                    </InputDescription>
-                </RadioCard>
-                <RadioCard id="yellow" name="card-option" value="yellow">
-                    <div className="mb2" style={{backgroundColor: 'gold', width: '150px', height: '100px'}} />
-                    <Label>
-                        <span className="bold">{'Yellow color'}</span>
-                    </Label>
-                    <InputDescription>
-                        <div style={{...paragraphStyle}}>{'Yellow is the best color.'}</div>
-                    </InputDescription>
-                </RadioCard>
-            </RadioSelectConnected>
+            <RadioCard id="blue" name="card-option" value="blue">
+                <div className="mb2" style={{backgroundColor: 'deepskyblue', width: '150px', height: '100px'}} />
+                <Label>
+                    <span className="bold">{'Blue color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
+                </InputDescription>
+            </RadioCard>
+            <RadioCard id="red" name="card-option" value="red">
+                <div className="mb2" style={{backgroundColor: 'tomato', width: '150px', height: '100px'}} />
+                <Label>
+                    <span className="bold">{'Red color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                </InputDescription>
+            </RadioCard>
+            <RadioCard id="yellow" name="card-option" value="yellow">
+                <div className="mb2" style={{backgroundColor: 'gold', width: '150px', height: '100px'}} />
+                <Label>
+                    <span className="bold">{'Yellow color'}</span>
+                </Label>
+                <InputDescription>
+                    <div style={{...paragraphStyle}}>{'Yellow is the best color.'}</div>
+                </InputDescription>
+            </RadioCard>
         </ModalSelect>
     </Section>
 );

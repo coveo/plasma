@@ -6,8 +6,9 @@ import {ModalActions} from '../modal/ModalActions';
 import {setModalSelect, removeModalSelect} from './ModalSelectActions';
 import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalComposite';
 import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider';
-import {RadioSelectSelectors} from '../radio';
+import {IRadioSelectAllProps, RadioSelectConnected, RadioSelectSelectors} from '../radio';
 import {IReactVaporState} from '../../ReactVapor';
+import {ModalSelectSelectors} from './ModalSelectSelectors';
 
 type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
 
@@ -24,10 +25,12 @@ export interface IModalSelectOwnProps
     isDirty?: boolean;
     cancelButtonLabel?: string;
     confirmButtonLabel?: string;
+    radioSelectProps?: IRadioSelectAllProps;
 }
 
-const mapStateToProps = (state: IReactVaporState, props: {radioSelectId: string}) => ({
-    selectedValue: RadioSelectSelectors.getValue(state, {id: props.radioSelectId}),
+const mapStateToProps = (state: IReactVaporState, props: {id: string; radioSelectId: string}) => ({
+    radioValue: RadioSelectSelectors.getValue(state, {id: props.radioSelectId}),
+    selectedValue: ModalSelectSelectors.getValue(state, {id: props.id}),
 });
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IModalSelectOwnProps) => ({
@@ -49,11 +52,13 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
     isDirty,
     cancelButtonLabel = 'Cancel',
     confirmButtonLabel = 'Confirm',
+    radioValue,
     selectedValue,
     close,
     setValue,
     remove,
     onConfirm,
+    radioSelectProps,
     ...modalProps
 }) => {
     React.useEffect(() => () => remove(), []);
@@ -63,7 +68,16 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
             {({promptBefore}) => (
                 <ModalCompositeConnected
                     id={id}
-                    modalBodyChildren={children}
+                    modalBodyChildren={
+                        <RadioSelectConnected
+                            id={radioSelectId}
+                            valueOnMount={selectedValue}
+                            className="flex flex-wrap mx-auto center-align full-content-y"
+                            {...radioSelectProps}
+                        >
+                            {React.Children.toArray(children) as React.ReactElement[]}
+                        </RadioSelectConnected>
+                    }
                     modalFooterChildren={
                         <>
                             {modalFooterChildren}
@@ -72,7 +86,7 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
                                 primary
                                 name={confirmButtonLabel}
                                 onClick={() => {
-                                    setValue(selectedValue);
+                                    setValue(radioValue);
                                     onConfirm?.(close);
                                 }}
                             />
