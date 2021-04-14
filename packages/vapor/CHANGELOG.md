@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-next.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.2...v15.0.0-next.3) (2021-04-14)
+
+
+
+## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **table:** line-height to help align badges in table ([81b4927](https://github.com/coveo/react-vapor/commit/81b49279b95873aeb778619cf5da9e64c0412433))
+
+
+
+## [14.0.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.1...v14.0.2) (2021-04-09)
+
+
+
+
+
 ## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
 
 
