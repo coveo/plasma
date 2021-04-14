@@ -1,4 +1,4 @@
-import {render} from 'react-vapor-test-utils';
+import {render, screen} from 'react-vapor-test-utils';
 import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
@@ -25,24 +25,12 @@ describe('TableWithEmptyState', () => {
         }).not.toThrow();
     });
 
-    it('renders the empty state if the table is empty after waiting 50 ms', () => {
-        jest.useFakeTimers();
-        let table: ReactWrapper;
-        act(() => {
-            table = mountWithStore(
-                <TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} />,
-                getStoreMock()
-            );
-        });
+    it('renders the empty state if the table is empty after waiting 50 ms', async () => {
+        render(<TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} />);
 
-        expect(table.children().children().type()).toBe(TableHOC);
+        expect(screen.queryByText('No data!')).not.toBeInTheDocument();
 
-        jest.advanceTimersByTime(50);
-        table.update();
-
-        expect(table.children().children().type()).toBe(EmptyState);
-
-        jest.useRealTimers();
+        expect(await screen.findByText('No data!')).toBeVisible();
     });
 
     it('renders the table if the table is empty after waiting 50 ms but still loading', () => {

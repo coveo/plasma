@@ -39,7 +39,7 @@ const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorPr
 });
 
 class CodeEditorDisconnect extends React.Component<
-    ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>,
+    ICodeEditorProps & ReturnType<typeof mapStateToProps>,
     CodeEditorState
 > {
     static defaultProps: Partial<ICodeEditorProps> = {
@@ -61,14 +61,10 @@ class CodeEditorDisconnect extends React.Component<
     private codemirror = React.createRef<ReactCodeMirror.Controlled>();
     private editor: CodeMirror.Editor;
 
-    constructor(props: ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>, state: CodeEditorState) {
-        super(props, state);
-
-        this.state = {
-            value: props.value,
-            numberOfRefresh: 0,
-        };
-    }
+    state = {
+        value: this.props.value,
+        numberOfRefresh: 0,
+    };
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);

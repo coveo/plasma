@@ -93,6 +93,7 @@ pipeline {
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
+          sh "npm install -g pnpm"
           sh "pnpm install"
 
           if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
@@ -325,8 +326,8 @@ def getLastStageName() {
 }
 
 def postCommentOnGithub(demoLink="") {
-  runNodeScript.call(
-              'add-github-comment.js', 
+  runPackage.call(
+              'github-comment',
               "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
             )
 }

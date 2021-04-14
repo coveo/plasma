@@ -6,7 +6,6 @@ import {IDispatch} from '../../../utils/ReduxUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationTypes} from '../ValidationTypes';
-import {InferableComponentEnhancer} from './connectHOC';
 
 const mapDispatchToProps = (dispatch: IDispatch, {id}: IMultiSelectOwnProps) => ({
     setWarning: (warning: string) =>
@@ -61,6 +60,5 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
         return <Component {...(props as T)} items={newItems} />;
     };
 
-    const enhance = connect(null, mapDispatchToProps) as InferableComponentEnhancer<DispatchProps>;
-    return enhance(WrappedMultiSelect);
+    return connect(null, mapDispatchToProps)(WrappedMultiSelect);
 };

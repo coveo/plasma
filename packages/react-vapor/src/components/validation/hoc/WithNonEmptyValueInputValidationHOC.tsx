@@ -1,12 +1,10 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
 
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IInputOwnProps} from '../../input/Input';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationTypes} from '../ValidationTypes';
-import {InferableComponentEnhancer} from './connectHOC';
 
 export interface IWithNonEmptyValueInputValidationProps {
     validationMessage?: string;
@@ -55,6 +53,5 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
         );
     };
 
-    const enhance = connect(null, mapDispatchToProps) as InferableComponentEnhancer<DispatchProps>;
-    return enhance(WrappedInput);
+    return connect(null, mapDispatchToProps)(WrappedInput);
 };

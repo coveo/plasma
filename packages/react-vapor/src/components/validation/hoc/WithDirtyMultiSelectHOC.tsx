@@ -7,7 +7,6 @@ import {IDispatch} from '../../../utils/ReduxUtils';
 import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {SelectSelector} from '../../select/SelectSelector';
 import {ValidationActions} from '../ValidationActions';
-import {InferableComponentEnhancer} from './connectHOC';
 
 const mapStateToProps = createStructuredSelector({
     selectedValues: SelectSelector.getMultiSelectSelectedValues,
@@ -38,8 +37,5 @@ export const withDirtyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Componen
         return <Component {...(props as T)} />;
     };
 
-    const enhance = connect(mapStateToProps, mapDispatchToProps) as InferableComponentEnhancer<
-        StateProps & DispatchProps
-    >;
-    return enhance(WrappedMultiSelect);
+    return connect(mapStateToProps, mapDispatchToProps)(WrappedMultiSelect);
 };
