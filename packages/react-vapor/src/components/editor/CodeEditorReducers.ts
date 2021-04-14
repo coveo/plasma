@@ -26,7 +26,7 @@ export const codeEditorsReducer = (
                 },
             };
         case CodeEditorActionTypes.remove:
-            if (Object.keys(state).length > 1) {
+            if (state && Object.keys(state).length > 1) {
                 delete state[action.payload.id];
             } else {
                 state = null;
