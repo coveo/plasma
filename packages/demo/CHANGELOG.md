@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.2.0](https://github.com/coveo/react-vapor/compare/v14.1.2...v14.2.0) (2021-04-14)
+
+
+### Features
+
+* **code editor:** value in store ([7354ccf](https://github.com/coveo/react-vapor/commit/7354ccf32f21abcb45120e255418259291d31ac3))
+
+
+
+
+
 ## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
 
 
