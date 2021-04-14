@@ -26,7 +26,7 @@ const paragraphStyle = {
 const modalSelectId = 'modal-select';
 const radioSelectId = 'radio-select';
 
-const enhanceExample1 = connect(
+const enhanceExample = connect(
     (state: IReactVaporExampleState) => ({
         selectedValue: ModalSelectSelectors.getValue(state, {id: modalSelectId}),
     }),
@@ -35,7 +35,7 @@ const enhanceExample1 = connect(
     })
 );
 
-const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typeof enhanceExample1>> = ({
+const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typeof enhanceExample>> = ({
     open,
     selectedValue,
 }) => (
@@ -49,11 +49,14 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
             title="The Best Color"
             isDirty={!!selectedValue}
             onConfirm={(close) => {
-                // alert('Correct! This is indeed the best color.');
                 close();
             }}
         >
-            <RadioSelectConnected id={radioSelectId} className="flex flex-wrap mx-auto center-align full-content-y ">
+            <RadioSelectConnected
+                id={radioSelectId}
+                valueOnMount={selectedValue}
+                className="flex flex-wrap mx-auto center-align full-content-y"
+            >
                 <RadioCard id="blue" name="card-option" value="blue">
                     <div className="mb2" style={{backgroundColor: 'deepskyblue', width: '150px', height: '100px'}} />
                     <Label>
@@ -72,7 +75,7 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
                         <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
                     </InputDescription>
                 </RadioCard>
-                <RadioCard id="green" name="card-option" value="green">
+                <RadioCard id="yellow" name="card-option" value="yellow">
                     <div className="mb2" style={{backgroundColor: 'gold', width: '150px', height: '100px'}} />
                     <Label>
                         <span className="bold">{'Yellow color'}</span>
@@ -86,7 +89,7 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
     </Section>
 );
 
-const ExampleModalSelect = enhanceExample1(ExampleModalSelectDisconnected);
+const ExampleModalSelect = enhanceExample(ExampleModalSelectDisconnected);
 
 export const ModalSelectExamples = () => (
     <Section>
