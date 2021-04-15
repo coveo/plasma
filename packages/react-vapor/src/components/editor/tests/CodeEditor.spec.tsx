@@ -1,4 +1,5 @@
 import userEvent from '@testing-library/user-event';
+import {waitFor} from '@testing-library/dom';
 import * as CodeMirror from 'codemirror';
 import {ShallowWrapper} from 'enzyme';
 import {mountWithState, shallowWithState} from 'enzyme-redux';
@@ -11,8 +12,6 @@ import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
 import {CodeEditorActions} from '../CodeEditorActions';
 import {CodeMirrorModes} from '../EditorConstants';
-import {waitFor} from '@testing-library/dom';
-
 
 describe('CodeEditor', () => {
     const basicProps: ICodeEditorProps = {
