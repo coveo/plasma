@@ -21,7 +21,6 @@ export interface IModalSelectOwnProps
     onConfirm?: (close: () => void) => unknown;
     modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
     title?: string | DependsOnStep<string>;
-    isDirty?: boolean;
     cancelButtonLabel?: string;
     confirmButtonLabel?: string;
     radioSelectProps?: IRadioSelectAllProps;
@@ -48,7 +47,6 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
     title,
     children,
     modalFooterChildren,
-    isDirty,
     cancelButtonLabel = 'Cancel',
     confirmButtonLabel = 'Confirm',
     radioValue,

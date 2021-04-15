@@ -9,7 +9,6 @@ import {
     ModalSelect,
     openModal,
     RadioCard,
-    RadioSelectConnected,
     ModalSelectSelectors,
     Section,
 } from 'react-vapor';
@@ -47,7 +46,6 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
             id={modalSelectId}
             radioId={radioId}
             title="Select The Best Color"
-            isDirty={!!selectedValue}
             onConfirm={(close) => {
                 close();
             }}
