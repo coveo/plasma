@@ -236,7 +236,7 @@ pipeline {
             sh "pnpm install --lockfile-only"
             sh "git add pnpm-lock.yaml"
             sh "git commit -m \"chore(release): [version bump]\""
-            sh "git push"
+            sh "git push -u origin master"
           } else {
             sh "echo \"skipping publish since remote changed (something was merged)\""
           }
