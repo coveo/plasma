@@ -10,6 +10,7 @@ import {datePickersReducer} from './components/datePicker/DatePickerReducers';
 import {dropReducer} from './components/drop/redux/DropReducers';
 import {dropdownsReducer} from './components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
+import {codeEditorsReducer} from './components/editor/CodeEditorReducers';
 import {jsonEditorsReducer} from './components/editor/JSONEditorReducers';
 import {facetsReducer} from './components/facets/FacetReducers';
 import {filepickersReducer} from './components/filepicker/FilepickerReducers';
@@ -72,6 +73,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     groupableCheckboxes: groupableCheckboxesReducer,
     inputs: inputsReducer,
     itemFilters: itemFiltersReducer,
+    codeEditors: codeEditorsReducer,
     jsonEditors: jsonEditorsReducer,
     lastAction,
     lastUpdatedComposite: lastUpdatedCompositeReducer,

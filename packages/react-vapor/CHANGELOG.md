@@ -3,32 +3,56 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [15.0.0-next.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.2...v15.0.0-next.3) (2021-04-14)
+# [14.3.0](https://github.com/coveo/react-vapor/compare/v14.2.3...v14.3.0) (2021-04-15)
+
+
+### Features
+
+* **react-vapor:** added CardSelect ([9ae5025](https://github.com/coveo/react-vapor/commit/9ae50256543be78042abf3bd45fdc65e5a576a8f))
+* **react-vapor:** added UT ([5f25843](https://github.com/coveo/react-vapor/commit/5f258431d88fef0312b101a545aa1236f666a6a9))
+* **react-vapor:** fixes based on comments ([517bff5](https://github.com/coveo/react-vapor/commit/517bff588eb92e4f5e808fcf418550ccce484964))
+* **react-vapor:** hover animation ([be7bdf4](https://github.com/coveo/react-vapor/commit/be7bdf4ccd9f39f36c7975b4968439ef0c27c462))
+* **react-vapor:** little reformating ([b3d921d](https://github.com/coveo/react-vapor/commit/b3d921def81f39a51a0c46c9f555bfb28b34594f))
+* **react-vapor:** removed unecessary classes ([e7742b0](https://github.com/coveo/react-vapor/commit/e7742b000664029f20d651f123c554e9f7848360))
+* **react-vapor:** reordered props ([a6dae8a](https://github.com/coveo/react-vapor/commit/a6dae8af503b8f76cd5bf1001521421b3a16acd5))
 
 
 
-## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
+
+
+## [14.2.3](https://github.com/coveo/react-vapor/compare/v14.2.2...v14.2.3) (2021-04-15)
+
+**Note:** Version bump only for package react-vapor
 
 
 
-## [14.1.1](https://github.com/coveo/react-vapor/compare/v14.1.0...v14.1.1) (2021-04-13)
 
 
-
-# [14.1.0](https://github.com/coveo/react-vapor/compare/v14.0.3...v14.1.0) (2021-04-12)
-
-
-
-## [14.0.3](https://github.com/coveo/react-vapor/compare/v14.0.2...v14.0.3) (2021-04-09)
+## [14.2.2](https://github.com/coveo/react-vapor/compare/v14.2.1...v14.2.2) (2021-04-14)
 
 
 ### Bug Fixes
 
-* **table-with-filter:** revert to previous state, ignore empty state ([b04227a](https://github.com/coveo/react-vapor/commit/b04227ae459a3f8b70d905dca9198f6c68c85d3f))
+* **code editor:** prevent reducer from crashing on empty state ([aac4e14](https://github.com/coveo/react-vapor/commit/aac4e14918a6127340d41c83613e5df7c60eb73c))
 
 
 
-## [14.0.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.1...v14.0.2) (2021-04-09)
+
+
+## [14.2.1](https://github.com/coveo/react-vapor/compare/v14.2.0...v14.2.1) (2021-04-14)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [14.2.0](https://github.com/coveo/react-vapor/compare/v14.1.2...v14.2.0) (2021-04-14)
+
+
+### Features
+
+* **code editor:** value in store ([7354ccf](https://github.com/coveo/react-vapor/commit/7354ccf32f21abcb45120e255418259291d31ac3))
 
 
 

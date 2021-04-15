@@ -12,6 +12,7 @@ import {IDropState} from './components/drop/redux/DropReducers';
 import {IDropdownState} from './components/dropdown/DropdownReducers';
 import {IDropdownOption} from './components/dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from './components/dropdownSearch/DropdownSearchReducers';
+import {CodeEditorState} from './components/editor/CodeEditorReducers';
 import {JSONEditorState} from './components/editor/JSONEditorReducers';
 import {IFacet} from './components/facets/Facet';
 import {IFacetState} from './components/facets/FacetReducers';
@@ -74,6 +75,7 @@ export interface IReactVaporState {
     groupableCheckboxes?: IGroupableCheckboxesState[];
     inputs?: IInputState[];
     itemFilters?: IItemFilterState[];
+    codeEditors?: CodeEditorState[];
     jsonEditors?: JSONEditorState[];
     lastAction?: Redux.Action;
     lastUpdatedComposite?: ILastUpdatedState[];

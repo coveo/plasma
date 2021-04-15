@@ -1,13 +1,18 @@
+import userEvent from '@testing-library/user-event';
 import * as CodeMirror from 'codemirror';
 import {ShallowWrapper} from 'enzyme';
 import {mountWithState, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
+import {render, screen} from 'react-vapor-test-utils';
 
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
+import {CodeEditorActions} from '../CodeEditorActions';
 import {CodeMirrorModes} from '../EditorConstants';
+import {waitFor} from '@testing-library/dom';
+
 
 describe('CodeEditor', () => {
     const basicProps: ICodeEditorProps = {
@@ -42,18 +47,6 @@ describe('CodeEditor', () => {
             expect(valueProp).toBe(basicProps.value);
         });
 
-        it('should get the readonly state as a prop', () => {
-            let readOnlyProp: boolean = wrapper.props().readOnly;
-
-            expect(readOnlyProp).toBeUndefined();
-
-            mountWithProps({readOnly: true});
-
-            readOnlyProp = wrapper.props().readOnly;
-
-            expect(readOnlyProp).toBe(true);
-        });
-
         it('should set the code-editor-no-cursor className when in readOnly to hide the cursor', () => {
             mountWithProps({readOnly: true});
 
@@ -64,18 +57,6 @@ describe('CodeEditor', () => {
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).not.toContain(
                 'code-editor-no-cursor'
             );
-        });
-
-        it('should get what to do on change state as a prop if set', () => {
-            let onChangeProp: (json: string) => void = wrapper.props().onChange;
-
-            expect(onChangeProp).toBeUndefined();
-
-            mountWithProps({onChange: jest.fn()});
-
-            onChangeProp = wrapper.props().onChange;
-
-            expect(onChangeProp).toBeDefined();
         });
 
         it('should display a <CodeMirror /> component', () => {
@@ -132,6 +113,26 @@ describe('CodeEditor', () => {
 
         it('should have a border by default', () => {
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('mod-border');
+        });
+
+        it('updates the value in the store on mount and on change if mounted with an id', async () => {
+            const updateSpy = jest.spyOn(CodeEditorActions, 'updateValue');
+            render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
+
+            expect(updateSpy).toHaveBeenCalledTimes(1);
+
+            userEvent.type(screen.getByRole('textbox'), 'new value');
+
+            await waitFor(() => expect(updateSpy).toHaveBeenCalledTimes(2), {timeout: 2000});
+        });
+
+        it('removes the code editor from the store on unmount if mounted with an id', () => {
+            const removeSpy = jest.spyOn(CodeEditorActions, 'remove');
+            const {unmount} = render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
+
+            unmount();
+
+            expect(removeSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

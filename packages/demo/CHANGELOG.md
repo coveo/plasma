@@ -3,37 +3,53 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [15.0.0-next.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.2...v15.0.0-next.3) (2021-04-14)
-
-
-
-## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
-
-
-### Bug Fixes
-
-* **table:** line-height to help align badges in table ([81b4927](https://github.com/coveo/react-vapor/commit/81b49279b95873aeb778619cf5da9e64c0412433))
-
-
-
-## [14.1.1](https://github.com/coveo/react-vapor/compare/v14.1.0...v14.1.1) (2021-04-13)
-
-
-
-# [14.1.0](https://github.com/coveo/react-vapor/compare/v14.0.3...v14.1.0) (2021-04-12)
+# [14.3.0](https://github.com/coveo/react-vapor/compare/v14.2.3...v14.3.0) (2021-04-15)
 
 
 ### Features
 
-* **datepicker:** added code example for countdown ([faae5f3](https://github.com/coveo/react-vapor/commit/faae5f3695ebb8e369049deb9bd4e68150329396))
+* **react-vapor:** added CardSelect ([9ae5025](https://github.com/coveo/react-vapor/commit/9ae50256543be78042abf3bd45fdc65e5a576a8f))
+* **react-vapor:** added UT ([5f25843](https://github.com/coveo/react-vapor/commit/5f258431d88fef0312b101a545aa1236f666a6a9))
+* **react-vapor:** fixes based on comments ([517bff5](https://github.com/coveo/react-vapor/commit/517bff588eb92e4f5e808fcf418550ccce484964))
+* **react-vapor:** removed unecessary classes ([e7742b0](https://github.com/coveo/react-vapor/commit/e7742b000664029f20d651f123c554e9f7848360))
 
 
 
-## [14.0.3](https://github.com/coveo/react-vapor/compare/v14.0.2...v14.0.3) (2021-04-09)
+
+
+## [14.2.3](https://github.com/coveo/react-vapor/compare/v14.2.2...v14.2.3) (2021-04-15)
+
+
+### Bug Fixes
+
+* **badges:** added beta badges + reworked demo ([0598f28](https://github.com/coveo/react-vapor/commit/0598f2806aa72c1d3c94030517965669cc99b152))
 
 
 
-## [14.0.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.1...v14.0.2) (2021-04-09)
+
+
+## [14.2.2](https://github.com/coveo/react-vapor/compare/v14.2.1...v14.2.2) (2021-04-14)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [14.2.1](https://github.com/coveo/react-vapor/compare/v14.2.0...v14.2.1) (2021-04-14)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [14.2.0](https://github.com/coveo/react-vapor/compare/v14.1.2...v14.2.0) (2021-04-14)
+
+
+### Features
+
+* **code editor:** value in store ([7354ccf](https://github.com/coveo/react-vapor/commit/7354ccf32f21abcb45120e255418259291d31ac3))
 
 
 

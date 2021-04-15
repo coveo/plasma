@@ -10,8 +10,15 @@ export class CodeEditorExamples extends React.Component {
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Code Editor using codemirror with line wrapping</label>
-                    <CodeEditor value="" mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
+                    <label className="form-control-label">
+                        Code Editor with line wrapping and a starting value in the redux store
+                    </label>
+                    <CodeEditor
+                        id="CodeEditorId"
+                        value="A starting value"
+                        mode={CodeMirrorModes.Python}
+                        options={{lineWrapping: true}}
+                    />
                 </div>
 
                 <div className="form-group">
