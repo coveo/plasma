@@ -16,7 +16,7 @@ describe('RadioCard', () => {
         let radio: ReactWrapper<RadioCardProps, any>;
 
         beforeEach(() => {
-            radio = mount(<RadioCard id={anId} />, {attachTo: document.getElementById('App')});
+            radio = mount(<RadioCard id={anId} />);
         });
 
         afterEach(() => {

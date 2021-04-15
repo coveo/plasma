@@ -28,7 +28,7 @@ describe('<RadioSelect />', () => {
         const secondRadioValue = 'red';
         const radioName = 'Johnny the almighty magic chicken';
 
-        const shallowRadioSelect__Radio = (props: IRadioSelectAllProps = {}) => {
+        const shallowRadioSelect = (props: IRadioSelectAllProps = {}) => {
             spy = jest.fn();
             radioSelect = shallow(
                 <RadioSelect {...props}>
@@ -38,7 +38,7 @@ describe('<RadioSelect />', () => {
             );
         };
 
-        const shallowRadioSelect__Card = (props: IRadioSelectAllProps = {}) => {
+        const shallowRadioSelectWithCard = (props: IRadioSelectAllProps = {}) => {
             spy = jest.fn();
             radioSelect = shallow(
                 <RadioSelect {...props}>
@@ -50,148 +50,148 @@ describe('<RadioSelect />', () => {
 
         const shallowRadioSelectVariations = [
             {
-                creator: shallowRadioSelect__Radio,
+                name: 'RadioSelect',
+                creator: shallowRadioSelect,
                 radioFC: Radio,
             },
             {
-                creator: shallowRadioSelect__Card,
+                name: 'RadioSelectWithCard',
+                creator: shallowRadioSelectWithCard,
                 radioFC: RadioCard,
             },
         ];
 
-        shallowRadioSelectVariations.forEach((shallowRadioSelect) => {
-            it('should call onMount on mount', () => {
-                const spyOnMount = jest.fn();
-                shallowRadioSelect.creator({
-                    onMount: spyOnMount,
+        shallowRadioSelectVariations.forEach((variation) => {
+            describe(`${variation.name}`, () => {
+                it('should call onMount on mount', () => {
+                    const spyOnMount = jest.fn();
+                    variation.creator({
+                        onMount: spyOnMount,
+                    });
+
+                    expect(spyOnMount).toHaveBeenCalledTimes(1);
                 });
 
-                expect(spyOnMount).toHaveBeenCalledTimes(1);
-            });
+                it('should call onUnmount on unmount', () => {
+                    const spyOnUnmount = jest.fn();
+                    variation.creator({
+                        onUnmount: spyOnUnmount,
+                    });
+                    radioSelect.unmount();
 
-            it('should call onUnmount on unmount', () => {
-                const spyOnUnmount = jest.fn();
-                shallowRadioSelect.creator({
-                    onUnmount: spyOnUnmount,
-                });
-                radioSelect.unmount();
-
-                expect(spyOnUnmount).toHaveBeenCalledTimes(1);
-            });
-
-            it('should set disabled on child if the props disabled is set to true', () => {
-                shallowRadioSelect.creator({
-                    disabled: true,
+                    expect(spyOnUnmount).toHaveBeenCalledTimes(1);
                 });
 
-                expect(radioSelect.find(shallowRadioSelect.radioFC).first().props().disabled).toBe(true);
-            });
+                it('should set disabled on child if the props disabled is set to true', () => {
+                    variation.creator({
+                        disabled: true,
+                    });
 
-            it('should set disabled on child if the child value is present in the disabled values list', () => {
-                shallowRadioSelect.creator({
-                    disabled: false,
-                    disabledValues: [firstRadioValue, secondRadioValue],
+                    expect(radioSelect.find(variation.radioFC).first().props().disabled).toBe(true);
                 });
 
-                expect(radioSelect.find(shallowRadioSelect.radioFC).first().props().disabled).toBe(true);
-                expect(radioSelect.find(shallowRadioSelect.radioFC).last().props().disabled).toBe(true);
-            });
+                it('should set disabled on child if the child value is present in the disabled values list', () => {
+                    variation.creator({
+                        disabled: false,
+                        disabledValues: [firstRadioValue, secondRadioValue],
+                    });
 
-            it('should use the name from the child if defined', () => {
-                shallowRadioSelect.creator();
-
-                expect(radioSelect.find(shallowRadioSelect.radioFC).last().props().name).toBe(radioName);
-            });
-
-            it('should use the name prop instead of the child name if its not defined', () => {
-                shallowRadioSelect.creator({
-                    name: 'leaf',
+                    expect(radioSelect.find(variation.radioFC).first().props().disabled).toBe(true);
+                    expect(radioSelect.find(variation.radioFC).last().props().disabled).toBe(true);
                 });
 
-                expect(radioSelect.find(shallowRadioSelect.radioFC).first().props().name).toBe('leaf');
-            });
+                it('should use the name from the child if defined', () => {
+                    variation.creator();
 
-            it('should pass disabledTooltip prop to each child', () => {
-                const disabledTooltip = 'golf';
-                shallowRadioSelect.creator({
-                    disabledTooltip,
+                    expect(radioSelect.find(variation.radioFC).last().props().name).toBe(radioName);
                 });
 
-                expect(radioSelect.find(shallowRadioSelect.radioFC).first().props().disabledTooltip).toBe(
-                    disabledTooltip
-                );
-                expect(radioSelect.find(shallowRadioSelect.radioFC).last().props().disabledTooltip).toBe(
-                    disabledTooltip
-                );
-            });
+                it('should use the name prop instead of the child name if its not defined', () => {
+                    variation.creator({
+                        name: 'leaf',
+                    });
 
-            it('should set the prop checked of the children with the same value than the radio select', () => {
-                shallowRadioSelect.creator({
-                    value: firstRadioValue,
+                    expect(radioSelect.find(variation.radioFC).first().props().name).toBe('leaf');
                 });
 
-                expect(radioSelect.find(shallowRadioSelect.radioFC).first().props().checked).toBe(true);
-                expect(radioSelect.find(shallowRadioSelect.radioFC).last().props().checked).toBe(false);
-            });
+                it('should pass disabledTooltip prop to each child', () => {
+                    const disabledTooltip = 'golf';
+                    variation.creator({
+                        disabledTooltip,
+                    });
 
-            it('should call onClick on children props if defined', () => {
-                shallowRadioSelect.creator();
-
-                expect(radioSelect.find(shallowRadioSelect.radioFC).first().props().onClick).toBeDefined();
-
-                radioSelect
-                    .find(shallowRadioSelect.radioFC)
-                    .first()
-                    .props()
-                    .onClick({} as any);
-
-                expect(spy).toHaveBeenCalledTimes(1);
-            });
-
-            it('should call onChange prop when the child call onClick', () => {
-                const spyOnChange = jest.fn();
-                shallowRadioSelect.creator({
-                    onChange: spyOnChange,
+                    expect(radioSelect.find(variation.radioFC).first().props().disabledTooltip).toBe(disabledTooltip);
+                    expect(radioSelect.find(variation.radioFC).last().props().disabledTooltip).toBe(disabledTooltip);
                 });
 
-                radioSelect
-                    .find(shallowRadioSelect.radioFC)
-                    .first()
-                    .props()
-                    .onClick({} as any);
+                it('should set the prop checked of the children with the same value than the radio select', () => {
+                    variation.creator({
+                        value: firstRadioValue,
+                    });
 
-                expect(spyOnChange).toHaveBeenCalledTimes(1);
-            });
-
-            it('should not call onChange prop when the child call onClick if the component is disabled', () => {
-                const spyOnChange = jest.fn();
-                shallowRadioSelect.creator({
-                    onChange: spyOnChange,
-                    disabled: true,
+                    expect(radioSelect.find(variation.radioFC).first().props().checked).toBe(true);
+                    expect(radioSelect.find(variation.radioFC).last().props().checked).toBe(false);
                 });
 
-                radioSelect
-                    .find(shallowRadioSelect.radioFC)
-                    .first()
-                    .props()
-                    .onClick({} as any);
+                it('should call onClick on children props if defined', () => {
+                    variation.creator();
 
-                expect(spyOnChange).toHaveBeenCalledTimes(0);
-            });
+                    expect(radioSelect.find(variation.radioFC).first().props().onClick).toBeDefined();
 
-            it('should call onChangeCallback prop when the child call onClick', () => {
-                const spyOnChangeCallback = jest.fn();
-                shallowRadioSelect.creator({
-                    onChangeCallback: spyOnChangeCallback,
+                    radioSelect
+                        .find(variation.radioFC)
+                        .first()
+                        .props()
+                        .onClick({} as any);
+
+                    expect(spy).toHaveBeenCalledTimes(1);
                 });
 
-                radioSelect
-                    .find(shallowRadioSelect.radioFC)
-                    .first()
-                    .props()
-                    .onClick({} as any);
+                it('should call onChange prop when the child call onClick', () => {
+                    const spyOnChange = jest.fn();
+                    variation.creator({
+                        onChange: spyOnChange,
+                    });
 
-                expect(spyOnChangeCallback).toHaveBeenCalledTimes(1);
+                    radioSelect
+                        .find(variation.radioFC)
+                        .first()
+                        .props()
+                        .onClick({} as any);
+
+                    expect(spyOnChange).toHaveBeenCalledTimes(1);
+                });
+
+                it('should not call onChange prop when the child call onClick if the component is disabled', () => {
+                    const spyOnChange = jest.fn();
+                    variation.creator({
+                        onChange: spyOnChange,
+                        disabled: true,
+                    });
+
+                    radioSelect
+                        .find(variation.radioFC)
+                        .first()
+                        .props()
+                        .onClick({} as any);
+
+                    expect(spyOnChange).toHaveBeenCalledTimes(0);
+                });
+
+                it('should call onChangeCallback prop when the child call onClick', () => {
+                    const spyOnChangeCallback = jest.fn();
+                    variation.creator({
+                        onChangeCallback: spyOnChangeCallback,
+                    });
+
+                    radioSelect
+                        .find(variation.radioFC)
+                        .first()
+                        .props()
+                        .onClick({} as any);
+
+                    expect(spyOnChangeCallback).toHaveBeenCalledTimes(1);
+                });
             });
         });
     });

@@ -125,22 +125,22 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
 );
 
 const RadioSelectWrappedExample: React.FunctionComponent = () => (
-    <Section level={3} title="A radio select with a wrapped radio button.">
+    <Section level={3} title="A radio select with a wrapped radio button">
         <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
             <Radio {...blueRadioButtonProps}>
                 <Label>
-                    <span className="bold">{'Blue color'}</span>
+                    <span className="bold">Blue color</span>
                 </Label>
                 <InputDescription>
-                    <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
+                    <div style={{...paragraphStyle}}>Blue is the best color.</div>
                 </InputDescription>
             </Radio>
             <Radio {...redRadioButtonProps}>
                 <Label>
-                    <span className="bold">{'Red color'}</span>
+                    <span className="bold">Red color</span>
                 </Label>
                 <InputDescription>
-                    <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                    <div style={{...paragraphStyle}}>Red is the best color.</div>
                 </InputDescription>
             </Radio>
         </RadioSelectConnected>
@@ -148,10 +148,10 @@ const RadioSelectWrappedExample: React.FunctionComponent = () => (
 );
 
 const RadioCardSelectExample: React.FunctionComponent = () => (
-    <Section level={3} title="A radio card select.">
+    <Section level={3} title="A radio card select">
         <RadioSelectConnected
             id="radio-card-select-example"
-            valueOnMount={'blue'}
+            valueOnMount="blue"
             className="flex flex-wrap"
             disabledTooltip="you see me because of the disabledTooltip prop"
             disabledValuesOnMount={['red']}
@@ -159,28 +159,28 @@ const RadioCardSelectExample: React.FunctionComponent = () => (
             <RadioCard id="blue" name="card-option" value="blue">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
                 <Label>
-                    <span className="bold">{'Blue color'}</span>
+                    <span className="bold">Blue color</span>
                 </Label>
                 <InputDescription>
-                    <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
+                    <div style={{...paragraphStyle}}>Blue is the best color.</div>
                 </InputDescription>
             </RadioCard>
             <RadioCard id="red" name="card-option" value="red">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
                 <Label>
-                    <span className="bold">{'Red color'}</span>
+                    <span className="bold">Red color</span>
                 </Label>
                 <InputDescription>
-                    <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
+                    <div style={{...paragraphStyle}}>Red is the best color.</div>
                 </InputDescription>
             </RadioCard>
             <RadioCard id="green" name="card-option" value="green">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
                 <Label>
-                    <span className="bold">{'Green color'}</span>
+                    <span className="bold">Green color</span>
                 </Label>
                 <InputDescription>
-                    <div style={{...paragraphStyle}}>{'Green is the best color.'}</div>
+                    <div style={{...paragraphStyle}}>Green is the best color.</div>
                 </InputDescription>
             </RadioCard>
         </RadioSelectConnected>
