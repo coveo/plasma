@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {RadioCard} from '.';
 
 import {ToggleForm} from '../childForm/ToggleForm';
 import {Radio} from './Radio';
@@ -16,7 +17,7 @@ export interface IRadioSelectProps extends IRadioSelectOnChangeCallback {
     value?: string;
     disabled?: boolean;
     disabledTooltip?: string;
-    children?: Array<React.ReactElement<typeof Radio>> | Array<React.ReactElement<ToggleForm>>;
+    children?: Array<React.ReactElement<typeof Radio | typeof RadioCard>> | Array<React.ReactElement<ToggleForm>>;
     onChangeCallback?: (value: string, id?: string, e?: React.MouseEvent<HTMLElement>, disabled?: boolean) => void;
 }
 
