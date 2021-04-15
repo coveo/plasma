@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [14.3.0](https://github.com/coveo/react-vapor/compare/v14.2.3...v14.3.0) (2021-04-15)
+
+
+### Features
+
+* **react-vapor:** added CardSelect ([9ae5025](https://github.com/coveo/react-vapor/commit/9ae50256543be78042abf3bd45fdc65e5a576a8f))
+* **react-vapor:** added UT ([5f25843](https://github.com/coveo/react-vapor/commit/5f258431d88fef0312b101a545aa1236f666a6a9))
+* **react-vapor:** fixes based on comments ([517bff5](https://github.com/coveo/react-vapor/commit/517bff588eb92e4f5e808fcf418550ccce484964))
+* **react-vapor:** hover animation ([be7bdf4](https://github.com/coveo/react-vapor/commit/be7bdf4ccd9f39f36c7975b4968439ef0c27c462))
+* **react-vapor:** little reformating ([b3d921d](https://github.com/coveo/react-vapor/commit/b3d921def81f39a51a0c46c9f555bfb28b34594f))
+* **react-vapor:** removed unecessary classes ([e7742b0](https://github.com/coveo/react-vapor/commit/e7742b000664029f20d651f123c554e9f7848360))
+* **react-vapor:** reordered props ([a6dae8a](https://github.com/coveo/react-vapor/commit/a6dae8af503b8f76cd5bf1001521421b3a16acd5))
+
+
+
+
+
 ## [14.2.3](https://github.com/coveo/react-vapor/compare/v14.2.2...v14.2.3) (2021-04-15)
 
 **Note:** Version bump only for package react-vapor
