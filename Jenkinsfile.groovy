@@ -93,7 +93,8 @@ pipeline {
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
-          sh "npm run setup"
+          sh "npm install -g pnpm"
+          sh "pnpm install"
 
           if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
             sh "git fetch --tags origin ${env.BRANCH_NAME}"
@@ -124,7 +125,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "npm run build"
+          sh "pnpm build"
         }
       }
 
@@ -143,8 +144,8 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "npm run test"
-          sh "npx lerna run report-coverage"
+          sh "pnpm test"
+          sh "pnpm -r report-coverage"
         }
       }
 

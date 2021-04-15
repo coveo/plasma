@@ -19,7 +19,7 @@ describe('RefreshCallback tests', () => {
 
         it('should mount and unmount without error', () => {
             expect(() => {
-                const component = shallowWithState(<RefreshCallback callback={() => ''} />, {}).dive();
+                const component = shallowWithState(<RefreshCallback id="🆔" callback={() => ''} />, {}).dive();
                 component.unmount();
             }).not.toThrow();
         });
@@ -29,7 +29,7 @@ describe('RefreshCallback tests', () => {
 
             it('should call renderCount on render', () => {
                 const spy = jest.fn();
-                shallowWithState(<RefreshCallback callback={() => ''} renderCount={spy} />, {}).dive();
+                shallowWithState(<RefreshCallback id="🆔" callback={() => ''} renderCount={spy} />, {}).dive();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });

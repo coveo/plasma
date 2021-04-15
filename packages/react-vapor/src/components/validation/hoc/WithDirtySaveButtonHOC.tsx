@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import {IReactVaporState} from '../../../ReactVapor';
 import {IButtonProps} from '../../button/Button';
 import {ValidationSelectors} from '../ValidationSelectors';
-import {InferableComponentEnhancer} from './connectHOC';
 
 export interface IWithDirtySaveButtonHOCProps {
     validationIds: string[];
@@ -57,6 +56,5 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: React.
             />
         );
     };
-    const enhance = connect(mapStateToProps) as InferableComponentEnhancer<StateProps>;
-    return enhance(WrappedButton);
+    return connect(mapStateToProps)(WrappedButton);
 };

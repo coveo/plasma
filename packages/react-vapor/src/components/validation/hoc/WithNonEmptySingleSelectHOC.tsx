@@ -7,7 +7,6 @@ import {SelectSelector} from '../../select/SelectSelector';
 import {ISingleSelectOwnProps} from '../../select/SingleSelectConnected';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationTypes} from '../ValidationTypes';
-import {InferableComponentEnhancer} from './connectHOC';
 
 const mapStateToProps = createStructuredSelector({
     selectedValue: SelectSelector.getSelectedValue,
@@ -50,8 +49,5 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
         return <Component {...(props as T)} />;
     };
 
-    const enhance = connect(mapStateToProps, mapDispatchToProps) as InferableComponentEnhancer<
-        StateProps & DispatchProps
-    >;
-    return enhance(WrappedSingleSelect);
+    return connect(mapStateToProps, mapDispatchToProps)(WrappedSingleSelect);
 };

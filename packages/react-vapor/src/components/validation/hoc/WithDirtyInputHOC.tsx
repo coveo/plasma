@@ -7,7 +7,6 @@ import {IInputOwnProps} from '../../input/Input';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationSelectors} from '../ValidationSelectors';
 import {ValidationTypes} from '../ValidationTypes';
-import {InferableComponentEnhancer} from './connectHOC';
 
 export interface IWithDirtyInputOwnProps {
     id?: string;
@@ -57,8 +56,5 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
         );
     };
 
-    const enhance = connect(mapStateToProps, mapDispatchToProps) as InferableComponentEnhancer<
-        StateProps & DispatchProps
-    >;
-    return enhance(WrappedInput);
+    return connect(mapStateToProps, mapDispatchToProps)(WrappedInput);
 };

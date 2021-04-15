@@ -7,7 +7,6 @@ import {IMultiSelectOwnProps} from '../../select/MultiSelectConnected';
 import {SelectSelector} from '../../select/SelectSelector';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationTypes} from '../ValidationTypes';
-import {InferableComponentEnhancer} from './connectHOC';
 
 const mapStateToProps = createStructuredSelector({
     selectedValues: SelectSelector.getMultiSelectSelectedValues,
@@ -51,8 +50,5 @@ export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Compo
         return <Component {...(props as T)} />;
     };
 
-    const enhance = connect(mapStateToProps, mapDispatchToProps) as InferableComponentEnhancer<
-        StateProps & DispatchProps
-    >;
-    return enhance(WrappedMultiSelect);
+    return connect(mapStateToProps, mapDispatchToProps)(WrappedMultiSelect);
 };

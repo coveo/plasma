@@ -14,8 +14,10 @@
         "tsBuildInfoFile": "./dist/.tsbuildinfo",
         "paths": {
             "react-vapor": ["../react-vapor/src/Entry.ts"]
-        }
+        },
+        "lib": ["ES2020", "dom"],
+        "typeRoots": ["./types", "./node_modules/@types"]
     },
-    "include": ["src", "types"],
+    "include": ["src"],
     "references": [{"path": "../react-vapor/tsconfig.build.json"}]
 }

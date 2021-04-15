@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.0.0-next.4](https://github.com/coveo/react-vapor/compare/v14.3.0...v15.0.0-next.4) (2021-04-15)
+
+
+### Code Refactoring
+
+* replace npm with pnpm ([dab28b8](https://github.com/coveo/react-vapor/commit/dab28b817344f5f2e50cd4dd8ce188809109dd4f))
+
+
+### BREAKING CHANGES
+
+* we now use pnpm instead of npm and lerna to install the dependencies, link the packages together, and run the project
+
+
+
+# [15.0.0-next.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.2...v15.0.0-next.3) (2021-04-14)
+
+
+### Bug Fixes
+
+* **build:** update lockfile ([ab600cb](https://github.com/coveo/react-vapor/commit/ab600cb24e20b700472f883ad609e81d22638673))
+
+
+
+# [15.0.0-next.2](https://github.com/coveo/react-vapor/compare/v14.1.2...v15.0.0-next.2) (2021-04-14)
+
+
+
+# [15.0.0-next.1](https://github.com/coveo/react-vapor/compare/v14.0.1...v15.0.0-next.1) (2021-04-08)
+
+
+
+
+
 # [14.3.0](https://github.com/coveo/react-vapor/compare/v14.2.3...v14.3.0) (2021-04-15)
 
 

@@ -1,14 +1,16 @@
+import userEvent from '@testing-library/user-event';
+import {waitFor} from '@testing-library/dom';
 import * as CodeMirror from 'codemirror';
 import {ShallowWrapper} from 'enzyme';
-import {mountWithState, mountWithStore, shallowWithState} from 'enzyme-redux';
+import {mountWithState, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import * as _ from 'underscore';
+import {render, screen} from 'react-vapor-test-utils';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
-import {CodeEditorActionTypes} from '../CodeEditorActions';
+import {CodeEditorActions} from '../CodeEditorActions';
 import {CodeMirrorModes} from '../EditorConstants';
 
 describe('CodeEditor', () => {
@@ -112,31 +114,24 @@ describe('CodeEditor', () => {
             expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('mod-border');
         });
 
-        it('should modify the store on mount with a value, on change if mounted with an Id and on unmount with a clear', () => {
-            jest.useFakeTimers();
-            const store = getStoreMock();
+        it('updates the value in the store on mount and on change if mounted with an id', async () => {
+            const updateSpy = jest.spyOn(CodeEditorActions, 'updateValue');
+            render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
 
-            const component = mountWithStore(<CodeEditor id="anId" value="a value" />, store);
+            expect(updateSpy).toHaveBeenCalledTimes(1);
 
-            jest.advanceTimersByTime(500);
-            jest.useFakeTimers();
-            expect(store.getActions().length).toBe(1);
-            expect(store.getActions()[0].type).toBe(CodeEditorActionTypes.update);
+            userEvent.type(screen.getByRole('textbox'), 'new value');
 
-            component
-                .find('Controlled')
-                .props()
-                .onChange('' as any);
+            await waitFor(() => expect(updateSpy).toHaveBeenCalledTimes(2), {timeout: 2000});
+        });
 
-            jest.advanceTimersByTime(500);
+        it('removes the code editor from the store on unmount if mounted with an id', () => {
+            const removeSpy = jest.spyOn(CodeEditorActions, 'remove');
+            const {unmount} = render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
 
-            expect(store.getActions().length).toBe(2);
-            expect(store.getActions()[1].type).toBe(CodeEditorActionTypes.update);
+            unmount();
 
-            component.unmount();
-
-            expect(store.getActions().length).toBe(3);
-            expect(store.getActions()[2].type).toBe(CodeEditorActionTypes.remove);
+            expect(removeSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

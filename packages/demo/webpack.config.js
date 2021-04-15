@@ -30,7 +30,14 @@ module.exports = {
         new CopyPlugin({
             patterns: [
                 path.resolve(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.slim.min.js'),
-                path.resolve(__dirname, '..', '..', 'node_modules', 'chosen-js', 'chosen.jquery.min.js'),
+                path.resolve(
+                    __dirname,
+                    'node_modules',
+                    'react-vapor',
+                    'node_modules',
+                    'chosen-js',
+                    'chosen.jquery.min.js'
+                ),
             ],
         }),
         new HtmlWebpackPlugin({
@@ -44,7 +51,9 @@ module.exports = {
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
         new ForkTsCheckerWebpackPlugin({
             typescript: {
-                build: true,
+                configOverwrite: {
+                    include: ['src', './types/**/*.d.ts', './node_modules/@types/**/*.d.ts'],
+                },
             },
             eslint: {
                 files: './src/**/*.{ts,tsx}',

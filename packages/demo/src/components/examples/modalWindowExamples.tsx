@@ -22,11 +22,7 @@ import * as _ from 'underscore';
 import {ExampleComponent} from '../ComponentsInterface';
 
 export interface ModalConnectedExampleProps {
-    id?: string;
-    open?: (id: string) => void;
-    close?: (id: string) => void;
-    isDirty?: boolean;
-    toggleIsDirty?: (id: string, dirty: boolean) => void;
+    id: string;
 }
 
 export const ModalWindowExamples: ExampleComponent = () => (
@@ -49,7 +45,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
     toggleIsDirty: (id: string, isDirty: boolean) => dispatch(WithDirtyActions.toggle(id, isDirty)),
 });
 
-const ModalExampleDisconnected: React.FunctionComponent<ModalConnectedExampleProps> = ({
+const ModalExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = ({
     open,
     close,
     toggleIsDirty,
@@ -187,13 +183,9 @@ const mapStateToProps = (state: IReactVaporState, ownProps: any) => ({
     isDirty: WithDirtySelectors.getIsDirty(state, {id: ownProps.id}),
 });
 
-const ModalWithDirtyChangeDiscardPreventionDisconnected: React.FunctionComponent<ModalConnectedExampleProps> = ({
-    id,
-    close,
-    open,
-    toggleIsDirty,
-    isDirty,
-}) => {
+const ModalWithDirtyChangeDiscardPreventionDisconnected: React.FunctionComponent<
+    ModalConnectedExampleProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
+> = ({id, close, open, toggleIsDirty, isDirty}) => {
     const handleClose = () => {
         close(id);
         toggleIsDirty(id, false);
@@ -238,7 +230,7 @@ const ModalWithDirtyChangeDiscardPrevention = connect(
     mapDispatchToProps
 )(ModalWithDirtyChangeDiscardPreventionDisconnected);
 
-const ModalLoadingExampleDisconnected: React.FunctionComponent<{open: (id: string) => void}> = ({open}) => {
+const ModalLoadingExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = ({open}) => {
     const loadingModalExampleId = 'Loading-modal-example';
     return (
         <Section level={3} title="A loading modal">

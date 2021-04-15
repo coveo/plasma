@@ -1,6 +1,10 @@
 import * as React from 'react';
 import {CodeEditor, CodeMirrorModes} from 'react-vapor';
 
+const defaultValue = `from math import pi as PI
+print(PI) // 3.141592653589793
+`;
+
 export class CodeEditorExamples extends React.Component {
     render() {
         return (
@@ -28,7 +32,7 @@ export class CodeEditorExamples extends React.Component {
                 </div>
                 <div className="form-group">
                     <label className="form-control-label">Code Editor using the default value prop</label>
-                    <CodeEditor mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
+                    <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
                 </div>
             </div>
         );

@@ -108,5 +108,12 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         }
     }
 
-    return connect(mapStateToProps, mapDispatchToProps)(TableWithPagination);
+    return connect<
+        ReturnType<typeof mapStateToProps>,
+        ReturnType<typeof mapDispatchToProps>,
+        ITableHOCOwnProps & WithServerSideProcessingProps
+    >(
+        mapStateToProps,
+        mapDispatchToProps
+    )(TableWithPagination as any);
 };
