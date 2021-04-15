@@ -227,12 +227,16 @@ pipeline {
             STARTED_BY_UPSTREAM = cause.upstream()
 
             if (env.BRANCH_NAME ==~ /release-.*/) {
-              sh "npx lerna publish patch --create-release github --yes --force-publish"
+              sh "npx lerna publish patch --create-release github --yes --force-publish --no-push"
             } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\""
+              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\" --no-push"
             } else {
-              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
+              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\" --no-push"
             }
+            sh "pnpm install --lockfile-only"
+            sh "git add pnpm-lock.yaml"
+            sh "git commit -m \"chore(release): [version bump]\""
+            sh "git push"
           } else {
             sh "echo \"skipping publish since remote changed (something was merged)\""
           }
