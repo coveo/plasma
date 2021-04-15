@@ -18,7 +18,7 @@ export interface IModalSelectOwnProps
         'modalBodyChildren' | 'validateShouldNavigate' | 'modalFooterChildren' | 'title'
     > {
     id: string;
-    radioSelectId: string;
+    radioId: string;
     onConfirm?: (close: () => void) => unknown;
     modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
     title?: string | DependsOnStep<string>;
@@ -28,8 +28,8 @@ export interface IModalSelectOwnProps
     radioSelectProps?: IRadioSelectAllProps;
 }
 
-const mapStateToProps = (state: IReactVaporState, props: {id: string; radioSelectId: string}) => ({
-    radioValue: RadioSelectSelectors.getValue(state, {id: props.radioSelectId}),
+const mapStateToProps = (state: IReactVaporState, props: {id: string; radioId: string}) => ({
+    radioValue: RadioSelectSelectors.getValue(state, {id: props.radioId}),
     selectedValue: ModalSelectSelectors.getValue(state, {id: props.id}),
 });
 
@@ -45,7 +45,7 @@ export type IModalSelectProps = IModalSelectOwnProps &
 
 const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
     id,
-    radioSelectId,
+    radioId,
     title,
     children,
     modalFooterChildren,
@@ -61,7 +61,10 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
     radioSelectProps,
     ...modalProps
 }) => {
-    React.useEffect(() => () => remove(), []);
+    React.useEffect(() => {
+        setValue(radioSelectProps?.valueOnMount);
+        return () => remove();
+    }, []);
 
     return (
         <UnsavedChangesModalProvider isDirty={isDirty}>
@@ -70,10 +73,10 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
                     id={id}
                     modalBodyChildren={
                         <RadioSelectConnected
-                            id={radioSelectId}
-                            valueOnMount={selectedValue}
+                            id={radioId}
                             className="flex flex-wrap mx-auto center-align full-content-y"
                             {...radioSelectProps}
+                            valueOnMount={selectedValue || radioSelectProps?.valueOnMount}
                         >
                             {React.Children.toArray(children) as React.ReactElement[]}
                         </RadioSelectConnected>

@@ -24,7 +24,7 @@ const paragraphStyle = {
 // start-print
 
 const modalSelectId = 'modal-select';
-const radioSelectId = 'radio-select';
+const radioId = 'radio-select';
 
 const enhanceExample = connect(
     (state: IReactVaporExampleState) => ({
@@ -45,14 +45,17 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
         </Button>
         <ModalSelect
             id={modalSelectId}
-            radioSelectId={radioSelectId}
+            radioId={radioId}
             title="The Best Color"
             isDirty={!!selectedValue}
             onConfirm={(close) => {
                 close();
             }}
+            radioSelectProps={{
+                valueOnMount: 'Blue',
+            }}
         >
-            <RadioCard id="blue" name="card-option" value="blue">
+            <RadioCard id="blue" name="card-option" value="Blue">
                 <div className="mb2" style={{backgroundColor: 'deepskyblue', width: '150px', height: '100px'}} />
                 <Label>
                     <span className="bold">{'Blue color'}</span>
@@ -61,7 +64,7 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
                     <div style={{...paragraphStyle}}>{'Blue is the best color.'}</div>
                 </InputDescription>
             </RadioCard>
-            <RadioCard id="red" name="card-option" value="red">
+            <RadioCard id="red" name="card-option" value="Red">
                 <div className="mb2" style={{backgroundColor: 'tomato', width: '150px', height: '100px'}} />
                 <Label>
                     <span className="bold">{'Red color'}</span>
@@ -70,7 +73,7 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
                     <div style={{...paragraphStyle}}>{'Red is the best color.'}</div>
                 </InputDescription>
             </RadioCard>
-            <RadioCard id="yellow" name="card-option" value="yellow">
+            <RadioCard id="yellow" name="card-option" value="Yellow">
                 <div className="mb2" style={{backgroundColor: 'gold', width: '150px', height: '100px'}} />
                 <Label>
                     <span className="bold">{'Yellow color'}</span>

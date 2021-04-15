@@ -20,7 +20,5 @@ export const setModalSelect = (id: string, value?: string): IReduxAction<IModalS
 
 export const removeModalSelect = (id: string): IReduxAction<IModalSelectActionPayload> => ({
     type: ModalSelectActions.remove,
-    payload: {
-        id,
-    },
+    payload: {id},
 });
