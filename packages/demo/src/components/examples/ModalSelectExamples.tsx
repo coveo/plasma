@@ -46,7 +46,7 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
         <ModalSelect
             id={modalSelectId}
             radioId={radioId}
-            title="The Best Color"
+            title="Select The Best Color"
             isDirty={!!selectedValue}
             onConfirm={(close) => {
                 close();

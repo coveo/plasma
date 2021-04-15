@@ -5,7 +5,6 @@ import {Button} from '../button';
 import {ModalActions} from '../modal/ModalActions';
 import {setModalSelect, removeModalSelect} from './ModalSelectActions';
 import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalComposite';
-import {UnsavedChangesModalProvider} from '../modal/UnsavedChangesModalProvider';
 import {IRadioSelectAllProps, RadioSelectConnected, RadioSelectSelectors} from '../radio';
 import {IReactVaporState} from '../../ReactVapor';
 import {ModalSelectSelectors} from './ModalSelectSelectors';
@@ -67,40 +66,35 @@ const ModalSelectDisconnected: React.FunctionComponent<IModalSelectProps> = ({
     }, []);
 
     return (
-        <UnsavedChangesModalProvider isDirty={isDirty}>
-            {({promptBefore}) => (
-                <ModalCompositeConnected
-                    id={id}
-                    modalBodyChildren={
-                        <RadioSelectConnected
-                            id={radioId}
-                            className="flex flex-wrap mx-auto center-align full-content-y"
-                            {...radioSelectProps}
-                            valueOnMount={selectedValue || radioSelectProps?.valueOnMount}
-                        >
-                            {React.Children.toArray(children) as React.ReactElement[]}
-                        </RadioSelectConnected>
-                    }
-                    modalFooterChildren={
-                        <>
-                            {modalFooterChildren}
-                            <Button name={cancelButtonLabel} onClick={close} enabled />
-                            <Button
-                                primary
-                                name={confirmButtonLabel}
-                                onClick={() => {
-                                    setValue(radioValue);
-                                    onConfirm?.(close);
-                                }}
-                            />
-                        </>
-                    }
-                    validateShouldNavigate={() => promptBefore(close)}
-                    title={title}
-                    {...modalProps}
-                />
-            )}
-        </UnsavedChangesModalProvider>
+        <ModalCompositeConnected
+            id={id}
+            modalBodyChildren={
+                <RadioSelectConnected
+                    id={radioId}
+                    className="flex flex-wrap mx-auto center-align full-content-y"
+                    {...radioSelectProps}
+                    valueOnMount={selectedValue || radioSelectProps?.valueOnMount}
+                >
+                    {React.Children.toArray(children) as React.ReactElement[]}
+                </RadioSelectConnected>
+            }
+            modalFooterChildren={
+                <>
+                    {modalFooterChildren}
+                    <Button name={cancelButtonLabel} onClick={close} enabled />
+                    <Button
+                        primary
+                        name={confirmButtonLabel}
+                        onClick={() => {
+                            setValue(radioValue);
+                            onConfirm?.(close);
+                        }}
+                    />
+                </>
+            }
+            title={title}
+            {...modalProps}
+        />
     );
 };
 
