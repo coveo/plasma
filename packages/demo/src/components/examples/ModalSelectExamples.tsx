@@ -38,7 +38,11 @@ const ExampleModalSelectDisconnected: React.FunctionComponent<ConnectedProps<typ
     open,
     selectedValue,
 }) => (
-    <Section level={2} title="ModalSelect">
+    <Section
+        level={2}
+        title="ModalSelect"
+        description="The ModalSelect component offers detailed choice selection in a compact format using a modal."
+    >
         <Button enabled={true} classes={['mod-append']} name="The Best Color" onClick={() => open('modal-select')}>
             <span className="btn-append">{selectedValue ?? 'none'}</span>
         </Button>
