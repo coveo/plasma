@@ -8,9 +8,6 @@ import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalCo
 import {IRadioSelectAllProps, RadioSelectConnected, RadioSelectSelectors} from '../radio';
 import {IReactVaporState} from '../../ReactVapor';
 import {ModalSelectSelectors} from './ModalSelectSelectors';
-
-type DependsOnStep<T> = (currentStep: number, numberOfSteps: number) => T;
-
 export interface IModalSelectOwnProps
     extends Omit<
         IModalCompositeOwnProps,
@@ -19,8 +16,8 @@ export interface IModalSelectOwnProps
     id: string;
     radioId: string;
     onConfirm?: (close: () => void) => unknown;
-    modalFooterChildren?: React.ReactNode | DependsOnStep<React.ReactNode>;
-    title?: string | DependsOnStep<string>;
+    modalFooterChildren?: React.ReactNode;
+    title?: string;
     cancelButtonLabel?: string;
     confirmButtonLabel?: string;
     radioSelectProps?: IRadioSelectAllProps;
