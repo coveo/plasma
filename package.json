@@ -5,10 +5,8 @@
         "@commitlint/cli": "8.3.5",
         "@commitlint/config-conventional": "8.3.4",
         "@sindresorhus/slugify": "0.11.0",
-        "@testing-library/cypress": "^7.0.4",
         "aws-sdk": "2.576.0",
         "axios": "^0.21.1",
-        "cypress": "^6.8.0",
         "cz-conventional-changelog": "^3.0.2",
         "eslint": "7.5.0",
         "husky": "4.2.5",
@@ -44,10 +42,12 @@
         "start": "pnpm build --stream --filter=coveo-styleguide && pnpm -r start --parallel --filter=\\!react-vapor",
         "test": "pnpm -r test --parallel",
         "clean": "pnpm -r clean --parallel",
+        "e2e:open": "pnpm -r e2e:open --stream",
+        "e2e:run": "pnpm -r e2e:run --stream",
         "build": "pnpm -r build --stream",
         "lintfix": "pnpm -r lintfix --parallel",
         "commit-cli": "git-cz",
-        "reconstruct": "npx rimraf node_modules && npm run setup && echo done"
+        "reconstruct": "npx rimraf node_modules && npx rimraf packages/*/node_modules && npm run setup && echo done"
     },
     "config": {
         "commitizen": {
