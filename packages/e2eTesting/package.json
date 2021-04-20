@@ -2,7 +2,7 @@
   "name": "e2etesting",
   "private": true,
   "version": "15.0.3",
-  "description": "Functionnal tests for react-vapor",
+  "description": "End to end tests for react-vapor",
   "main": "index.js",
   "scripts": {
     "e2e:open": "cypress open",
