@@ -22,7 +22,7 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
             return c;
         };
         const loadAll = () => {
-            const componentFiles = require.context('./examples', true, /Examples?\.tsx?$/i, 'lazy');
+            const componentFiles = require.context('./examples', true, /Examples?\.js?$/i, 'lazy');
             return Promise.all(componentFiles.keys().map((path) => load(path, componentFiles)));
         };
         loadAll().then((all) => setComponents(all.filter(Boolean)));

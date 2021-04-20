@@ -1,4 +1,4 @@
-import './demo-styling/main.scss';
+import '@demo-styling/main.scss';
 
 import loadable from '@loadable/component';
 import * as React from 'react';

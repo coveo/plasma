@@ -2,7 +2,6 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
 const isJenkins = !!process.env.JENKINS_HOME;
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -11,7 +10,7 @@ const CopyPlugin = require('copy-webpack-plugin');
  */
 module.exports = {
     entry: {
-        main: './src/Index.tsx',
+        main: './built/Index.js',
     },
     mode: isJenkins ? 'production' : 'development',
     output: {
@@ -21,23 +20,17 @@ module.exports = {
     },
     devtool: isJenkins ? 'source-map' : 'eval-source-map',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
         alias: {
-            'react-vapor': path.resolve(__dirname, '../react-vapor/src/Entry.ts'),
+            'react-vapor': path.resolve(__dirname, '../react-vapor/dist/Entry.js'),
+            '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
         },
     },
     plugins: [
         new CopyPlugin({
             patterns: [
                 path.resolve(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.slim.min.js'),
-                path.resolve(
-                    __dirname,
-                    'node_modules',
-                    'react-vapor',
-                    'node_modules',
-                    'chosen-js',
-                    'chosen.jquery.min.js'
-                ),
+                path.resolve(__dirname, '..', 'react-vapor', 'node_modules', 'chosen-js', 'chosen.jquery.min.js'),
             ],
         }),
         new HtmlWebpackPlugin({
@@ -49,19 +42,6 @@ module.exports = {
         new HtmlWebpackTagsPlugin({tags: ['jquery.slim.min.js', 'chosen.jquery.min.js'], append: true}),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
-        new ForkTsCheckerWebpackPlugin({
-            typescript: {
-                configOverwrite: {
-                    include: ['src', './types/**/*.d.ts', './node_modules/@types/**/*.d.ts'],
-                },
-            },
-            eslint: {
-                files: './src/**/*.{ts,tsx}',
-                options: {
-                    fix: true,
-                },
-            },
-        }),
     ],
     stats: 'minimal',
     module: {
@@ -70,18 +50,6 @@ module.exports = {
                 test: /\.js$/,
                 enforce: 'pre',
                 use: ['source-map-loader'],
-            },
-            {
-                test: /\.tsx?$/,
-                use: [
-                    {
-                        loader: 'ts-loader',
-                        options: {
-                            transpileOnly: true,
-                            projectReferences: true,
-                        },
-                    },
-                ],
             },
             {
                 test: /\.s?css$/,
@@ -112,5 +80,8 @@ module.exports = {
         hot: true,
         progress: false,
         open: true,
+        watchOptions: {
+            aggregateTimeout: 0,
+        },
     },
 };

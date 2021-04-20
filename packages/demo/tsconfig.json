@@ -9,11 +9,12 @@
         "importHelpers": true,
         "composite": true,
         "rootDir": "src",
-        "outDir": "dist",
+        "outDir": "built",
         "baseUrl": ".",
-        "tsBuildInfoFile": "./dist/.tsbuildinfo",
+        "tsBuildInfoFile": "./built/.tsbuildinfo",
         "paths": {
-            "react-vapor": ["../react-vapor/src/Entry.ts"]
+            "react-vapor": ["../react-vapor/src/Entry.ts"],
+            "@demo-styling/*": ["./src/demo-styling/*"]
         },
         "lib": ["ES2020", "dom"],
         "typeRoots": ["./types", "./node_modules/@types"]
