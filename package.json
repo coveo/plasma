@@ -44,6 +44,7 @@
         "setup": "pnpm install",
         "start": "pnpm build --stream --filter=coveo-styleguide && pnpm -r start --parallel --filter=\\!react-vapor",
         "test": "pnpm -r test --parallel",
+        "clean": "pnpm -r clean --parallel",
         "build": "pnpm -r build --stream",
         "lintfix": "pnpm -r lintfix --parallel",
         "commit-cli": "git-cz",
