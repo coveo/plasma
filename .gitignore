@@ -23,6 +23,7 @@ travis-deploy-key
 
 # distribution
 **/dist
+**/built
 
 # temporary files
 **/coverage
