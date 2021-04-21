@@ -1,1 +1,15 @@
-{}
+{
+  "integrationFolder": "integration",
+  "testFiles": "**/*.spec.ts",
+  "fixturesFolder": "fixtures",
+  "pluginsFile": "plugins/index.ts",
+  "supportFile": "support/index.ts",
+  "videosFolder": "videos",
+  "screenshotsFolder": "screenshots",
+  "reporter": "junit",
+  "reporterOptions": {
+    "mochaFile": "reports/junit-[hash].xml"
+  },
+  "viewportWidth": 1366,
+  "viewportHeight": 768
+}

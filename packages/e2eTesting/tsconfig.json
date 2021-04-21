@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "target": "es6",
+        "lib": ["es6", "es7", "dom"],
+        "types": ["cypress"],
+        "moduleResolution": "node",
+        "skipLibCheck": true
+    },
+    "include": ["integration/**/*.ts", "support/**/*.ts"]
+}
