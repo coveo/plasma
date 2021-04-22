@@ -8,7 +8,6 @@ import {
     InfoLine,
     LineSeries,
     ScatterSeries,
-    VaporColors,
     XGrid,
     XYAxis,
     XYChart,
@@ -67,7 +66,7 @@ const dateData = [
     },
 ];
 
-const overPattern = [VaporColors['orange-1'], VaporColors['orange-2'], VaporColors['orange-3']];
+const overPattern = ['var(--deprecated-orange-1)', 'var(--deprecated-orange)', 'var(--deprecated-coveo-orange)'];
 const ChartType = {
     Scatter: 'scatter',
     Line: 'line',
