@@ -1,4 +1,3 @@
-/// <reference types="cypress" />
 context('Actions', () => {
   before(() => {
 	  cy.visit('localhost:8080/#/components/Checkbox')
