@@ -13,7 +13,7 @@
     color: var(--title-text-color);
     font-size: $button-small-font-size;
     line-height: $dropdown-multiselect-option-height;
-    background-color: var(--pure-white);
+    background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
 
@@ -59,13 +59,13 @@
 }
 
 .remove-option:hover {
-    background-color: darken($light-grey, 5%);
+    background-color: var(--deprecated-medium-grey);
 
     cursor: pointer;
 }
 
 .remove-option:active {
-    background-color: darken($light-grey, 5%);
+    background-color: var(--deprecated-medium-grey);
 }
 
 // Single select

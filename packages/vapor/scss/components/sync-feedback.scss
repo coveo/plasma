@@ -28,7 +28,7 @@
         border-radius: 50%;
 
         &.syncing {
-            background-color: var(--dark-grey);
+            background-color: var(--deprecated-dark-grey);
             animation: scaleout 1s infinite ease-in-out;
         }
     }

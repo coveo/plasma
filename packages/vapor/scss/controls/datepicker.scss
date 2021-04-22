@@ -1,11 +1,11 @@
 $datepicker-border-color: #f6f6f6;
-$datepicker-dayofweeks-color: var(--dark-grey);
+$datepicker-dayofweeks-color: var(--deprecated-dark-grey);
 $datepicker-day-hover-background-color: #eeeeee;
-$datepicker-day-color: var(--dark-grey);
-$datepicker-day-selected-notinmonth-color: var(--dark-grey);
+$datepicker-day-color: var(--deprecated-dark-grey);
+$datepicker-day-selected-notinmonth-color: var(--deprecated-dark-grey);
 $datepicker-day-selected-notinmonth-background-color: #d2dce6;
-$datepicker-day-selected-background-color: lighten($medium-blue, 5%);
-$datepicker-day-notinmonth-background-color: var(--dark-grey);
+$datepicker-day-selected-background-color: var(--deprecated-medium-blue);
+$datepicker-day-notinmonth-background-color: var(--deprecated-dark-grey);
 $datepicker-day-disabled-background-color: #e6e6e6;
 $datepicker-day-disabled-color: #666666;
 
@@ -24,7 +24,7 @@ $datepicker-day-disabled-color: #666666;
 }
 
 .datepicker {
-    background-color: var(--pure-white);
+    background-color: var(--white);
 
     .datepickerBlock {
         border: none !important;
@@ -43,10 +43,10 @@ $datepicker-day-disabled-color: #666666;
                 &.datepickerDoW {
                     th {
                         padding: 2px 0;
-                        border-bottom: 1px solid var(--medium-grey);
+                        border-bottom: 1px solid var(--deprecated-medium-grey);
                     }
                     span {
-                        color: var(--medium-grey);
+                        color: var(--deprecated-medium-grey);
                         font-size: 9px;
                         border-top: none;
                         border-right: none;
@@ -58,7 +58,7 @@ $datepicker-day-disabled-color: #666666;
             tr:first-child th {
                 a:hover {
                     text-decoration: none;
-                    background: var(--medium-grey);
+                    background: var(--deprecated-medium-grey);
 
                     cursor: pointer;
                 }
@@ -109,31 +109,31 @@ $datepicker-day-disabled-color: #666666;
                     }
 
                     &.datepickerSelected {
-                        background-color: var(--light-blue);
+                        background-color: var(--deprecated-light-blue);
 
                         &.datepickerNotInMonth {
-                            background-color: var(--medium-grey);
+                            background-color: var(--deprecated-medium-grey);
                             a {
-                                color: var(--dark-grey);
+                                color: var(--deprecated-dark-grey);
                             }
                         }
                     }
 
                     &.datepickerNotInMonth {
-                        background-color: var(--light-grey);
+                        background-color: var(--deprecated-light-grey);
                     }
 
                     &.datepickerFuture {
                         &.datepickerNotInMonth {
-                            background-color: var(--light-grey);
+                            background-color: var(--deprecated-light-grey);
                             a {
                                 cursor: default;
                             }
 
                             &.datepickerDisabled {
-                                background-color: var(--light-grey);
+                                background-color: var(--deprecated-light-grey);
                                 a {
-                                    color: var(--medium-grey);
+                                    color: var(--deprecated-medium-grey);
                                     cursor: default;
                                 }
                             }
@@ -141,10 +141,10 @@ $datepicker-day-disabled-color: #666666;
                     }
 
                     &.datepickerDisabled {
-                        background-color: var(--light-grey);
+                        background-color: var(--deprecated-light-grey);
 
                         a {
-                            color: var(--medium-grey);
+                            color: var(--deprecated-medium-grey);
                             cursor: default;
                         }
                     }

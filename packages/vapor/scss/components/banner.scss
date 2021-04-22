@@ -62,7 +62,7 @@
 }
 
 .banner-right {
-    color: rgba($pure-white, $transparency-2);
+    color: rgba(var(--white-rgb), $transparency-2);
     font-size: var(--default-font-size);
 }
 

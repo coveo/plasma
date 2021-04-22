@@ -29,10 +29,10 @@
         &:focus:not([readonly]),
         &:valid,
         &:disabled {
-            color: var(--dark-grey);
-            border-bottom: 1px solid var(--lynch);
+            color: var(--deprecated-dark-grey);
+            border-bottom: 1px solid var(--deprecated-lynch);
 
-            @include placeholder(var(--lynch));
+            @include placeholder(var(--deprecated-lynch));
 
             & + label,
             & + span {
@@ -40,24 +40,24 @@
             }
 
             &:focus:not([readonly]) {
-                color: var(--lynch);
-                border-bottom-color: var(--azure);
+                color: var(--deprecated-lynch);
+                border-bottom-color: var(--deprecated-azure);
 
                 & + label,
                 & + span {
-                    color: var(--azure);
+                    color: var(--deprecated-azure);
                 }
             }
         }
 
         &:disabled,
         &[readonly='readonly'] {
-            color: var(--dark-grey);
+            color: var(--deprecated-dark-grey);
             border-bottom-color: transparent;
 
             &:not(.disabled-input) {
-                @include placeholder(var(--dark-grey));
-                -webkit-text-fill-color: var(--dark-grey);
+                @include placeholder(var(--deprecated-dark-grey));
+                -webkit-text-fill-color: var(--deprecated-dark-grey);
             }
 
             &.disabled-input {

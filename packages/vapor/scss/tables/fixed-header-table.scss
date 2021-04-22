@@ -9,7 +9,7 @@
         border-top: $table-border;
         border-bottom: $table-border;
 
-        @include slim-scroll(var(--light-grey), var(--medium-grey));
+        @include slim-scroll(var(--deprecated-light-grey), var(--deprecated-medium-grey));
 
         table {
             thead tr {

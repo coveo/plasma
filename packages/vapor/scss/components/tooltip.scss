@@ -102,7 +102,7 @@
     .tooltip-inner {
         max-width: 300px;
         padding: 5px 10px;
-        color: var(--pure-white);
+        color: var(--white);
         white-space: normal;
         text-decoration: none;
         word-wrap: break-word;
@@ -123,7 +123,7 @@ $chart-tooltip-content-size: 3px;
     font-size: $small-font-size;
     background-color: var(--white);
     border: $default-border;
-    box-shadow: 0 0 $chart-tooltip-content-size 0 rgba($black, $transparency-4);
+    box-shadow: 0 0 $chart-tooltip-content-size 0 rgba(var(--black-rgb), $transparency-4);
 }
 
 .chart-tooltip-color {

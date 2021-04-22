@@ -22,8 +22,8 @@
         height: $button-height;
         padding: 0;
         vertical-align: bottom;
-        background-color: var(--pure-white);
-        border: 1px solid var(--medium-grey);
+        background-color: var(--white);
+        border: 1px solid var(--deprecated-medium-grey);
         border-radius: 2px;
 
         cursor: pointer;
@@ -31,14 +31,14 @@
         &.open,
         &:focus,
         &:active {
-            background-color: var(--light-grey);
+            background-color: var(--deprecated-light-grey);
         }
 
         span {
             vertical-align: middle;
 
             &.state-disabled {
-                color: var(--medium-grey);
+                color: var(--deprecated-medium-grey);
                 cursor: default;
             }
         }

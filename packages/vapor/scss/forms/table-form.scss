@@ -9,7 +9,7 @@
     .form-group {
         display: table-row;
         height: 36px;
-        color: var(--dark-grey);
+        color: var(--deprecated-dark-grey);
 
         &.hidden {
             display: none;
@@ -30,10 +30,10 @@
         & > label:first-child {
             width: 30%;
             padding: 0 10px;
-            color: var(--medium-blue);
+            color: var(--deprecated-medium-blue);
             font-size: $title-font-size;
             font-family: var(--main-font);
-            background-color: var(--pure-white);
+            background-color: var(--white);
         }
 
         .context-help {
@@ -54,13 +54,13 @@
                 font-weight: var(--main-font-bold);
                 font-size: $title-font-size;
                 font-family: var(--main-font);
-                background-color: var(--pure-white);
+                background-color: var(--white);
 
                 opacity: 0.4;
             }
 
             &.disabled {
-                background-color: var(--pure-white);
+                background-color: var(--white);
             }
 
             input,
@@ -88,12 +88,12 @@
             }
 
             &.admin-editable:hover {
-                background-color: var(--light-grey);
+                background-color: var(--deprecated-light-grey);
             }
 
             &.admin-non-editable {
                 padding-left: 9px;
-                background-color: var(--pure-white);
+                background-color: var(--white);
 
                 i {
                     margin-right: 5px;

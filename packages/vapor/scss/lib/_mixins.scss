@@ -1,4 +1,4 @@
-@mixin slim-scroll($track-color: var(--light-grey), $thumb-color: var(--dark-grey)) {
+@mixin slim-scroll($track-color: var(--deprecated-light-grey), $thumb-color: var(--deprecated-dark-grey)) {
     &::-webkit-scrollbar,
     ::-webkit-scrollbar {
         width: $slim-scroll-bar-width;

@@ -1,5 +1,5 @@
 @mixin button-focus($offset) {
-    background-color: var(--light-grey);
+    background-color: var(--deprecated-light-grey);
 
     @include focus-border($offset);
 }
@@ -20,7 +20,7 @@
     text-decoration: none;
     text-overflow: ellipsis;
     vertical-align: middle;
-    background-color: var(--pure-white);
+    background-color: var(--white);
     border: $button-border-width solid var(--navy-blue-80);
     border-radius: $border-radius;
 
@@ -43,7 +43,7 @@
         @include button-focus(0px);
         color: var(--navy-blue-80);
         text-decoration: none;
-        background-color: var(--pure-white);
+        background-color: var(--white);
         outline-color: var(--green);
     }
 

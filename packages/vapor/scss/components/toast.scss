@@ -134,9 +134,9 @@ $toast-close-size: 16px;
     .toast.toast-download {
         min-width: 300px;
         padding: 0;
-        background: $blue-purple-3;
+        background: var(--deprecated-blue-purple-3);
         border-radius: 6px;
-        box-shadow: 0 2px 4px rgba($black, $transparency-4);
+        box-shadow: 0 2px 4px rgba(var(--black-rgb), $transparency-4);
 
         .toast-title,
         .toast-close {
@@ -148,7 +148,7 @@ $toast-close-size: 16px;
             padding: $toast-padding;
             color: var(--title-text-color);
             font-size: var(--default-font-size);
-            background: var(--grey-1);
+            background: var(--deprecated-grey-1);
             border-bottom-right-radius: inherit;
             border-bottom-left-radius: inherit;
             box-shadow: inset 0px 5px 6px -5px var(--grey-100);

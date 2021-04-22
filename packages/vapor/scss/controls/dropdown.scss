@@ -5,11 +5,11 @@
     &.open > .dropdown-toggle,
     .dropdown-toggle.open {
         &.mod-primary .dropdown-toggle-arrow {
-            @include arrow-up-icon($pure-white);
+            @include arrow-up-icon(var(--white));
         }
 
         .dropdown-toggle-arrow {
-            @include arrow-up-icon(var(--medium-blue));
+            @include arrow-up-icon(var(--deprecated-medium-blue));
         }
     }
 
@@ -47,7 +47,7 @@
     }
 
     .disabled {
-        color: var(--medium-grey);
+        color: var(--deprecated-medium-grey);
     }
 }
 
@@ -65,7 +65,7 @@
     text-overflow: ellipsis;
 
     &:disabled .dropdown-toggle-arrow {
-        @include arrow-down-icon(var(--medium-grey));
+        @include arrow-down-icon(var(--deprecated-medium-grey));
     }
 
     &.dropdown-toggle-placeholder {
@@ -77,7 +77,7 @@
         text-transform: none;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon($pure-white);
+            @include arrow-down-icon(var(--white));
         }
     }
 
@@ -108,7 +108,7 @@
     }
 
     .dropdown-toggle-arrow {
-        @include arrow-down-icon(var(--medium-blue));
+        @include arrow-down-icon(var(--deprecated-medium-blue));
     }
 
     &.mod-search {
@@ -181,7 +181,7 @@
             > a,
             > span,
             .dropdown-option-append {
-                color: var(--medium-grey);
+                color: var(--deprecated-medium-grey);
                 background-color: var(--grey-60);
                 cursor: default;
             }
@@ -199,7 +199,7 @@
             }
 
             &.disabled {
-                color: var(--medium-grey);
+                color: var(--deprecated-medium-grey);
                 cursor: default;
             }
 
