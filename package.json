@@ -39,7 +39,7 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "setup": "pnpm install",
-        "start": "pnpm build --stream --filter=coveo-styleguide && pnpm -r start --parallel --filter=\\!react-vapor",
+        "start": "pnpm build --stream --filter=coveo-styleguide && pnpm -r start --parallel --filter=\"!react-vapor\"",
         "test": "pnpm -r test --parallel",
         "clean": "pnpm -r clean --parallel",
         "e2e:open": "pnpm -r e2e:open --stream",
@@ -58,5 +58,8 @@
         "extends": [
             "@commitlint/config-conventional"
         ]
+    },
+    "dependencies": {
+        "git-cz": "^4.7.6"
     }
 }
