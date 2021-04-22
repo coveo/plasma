@@ -156,6 +156,25 @@ pipeline {
       }
     }
 
+    stage('Test') {
+      when {
+        expression { !skipRemainingStages }
+      }
+
+      steps {
+        script {
+          setLastStageName();
+          sh "cypress run"
+        }
+      }
+
+      post {
+        failure {
+          postCommentOnGithub();
+        }
+      }
+    }
+
     stage('Deploy in S3') {
       when {
         allOf {
