@@ -19,7 +19,7 @@
 
 .date-picker-box {
     width: $date-picker-width;
-    background-color: var(--pure-white);
+    background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
 
@@ -57,7 +57,7 @@
         }
 
         th {
-            color: var(--dark-grey);
+            color: var(--deprecated-dark-grey);
             text-transform: uppercase;
             border-bottom: $calendar-border;
         }
@@ -74,7 +74,7 @@
 
         .other-month-date,
         .un-selectable {
-            color: var(--medium-grey);
+            color: var(--deprecated-medium-grey);
         }
 
         .selected-date {
@@ -84,7 +84,7 @@
             display: block;
             width: calc(#{$calendar-cell-dimensions} + #{$calendar-border-width});
             height: $selected-date-height;
-            color: var(--pure-white);
+            color: var(--white);
             line-height: $selected-date-height;
             background-color: var(--digital-blue-60);
         }
@@ -202,8 +202,8 @@
                     }
 
                     &.other-month-date {
-                        color: var(--pure-white);
-                        background-color: var(--pure-white);
+                        color: var(--white);
+                        background-color: var(--white);
                     }
 
                     &.selected-date {
@@ -221,7 +221,7 @@
                         &.todays-date {
                             color: var(--navy-blue-80);
                             font-size: $small-font-size;
-                            background-color: var(--pure-white);
+                            background-color: var(--white);
                             border: 1px solid var(--navy-blue-80);
                         }
                     }
@@ -260,7 +260,7 @@
 .option-picker {
     li {
         width: 50%;
-        background: var(--pure-white);
+        background: var(--white);
 
         button {
             display: block;
@@ -309,7 +309,7 @@
         &:nth-child(1n) {
             button {
                 &:hover {
-                    background-color: var(--light-grey);
+                    background-color: var(--deprecated-light-grey);
                 }
 
                 &.active {
@@ -343,7 +343,7 @@
         }
 
         &.date-picked {
-            color: var(--pure-white);
+            color: var(--white);
             background-color: var(--digital-blue-60);
         }
     }

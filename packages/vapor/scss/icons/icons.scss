@@ -34,15 +34,15 @@
     }
 
     &.mod-white {
-        --fill: var(--pure-white);
+        --fill: var(--white);
     }
 
     &.office365-red {
-        --fill: var(--orange-8);
+        --fill: var(--deprecated-red);
     }
 
     &.salesforce-blue {
-        --fill: var(--coveo-salesforce-blue);
+        --fill: var(--salesforce-blue);
     }
 
     &.mod-small {

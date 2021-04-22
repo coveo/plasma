@@ -12,8 +12,8 @@
     margin: $facet-margin-y 0;
 
     padding-bottom: $facet-spacing;
-    background: var(--pure-white);
-    border: 1px solid rgba($heather, 0.3);
+    background: var(--white);
+    border: 1px solid rgba(var(--deprecated-heather-rgb), 0.3);
     border-radius: $big-border-radius;
     box-shadow: 0px 2px 10px 0px rgba(0, 0, 0, 0.1);
 }
@@ -174,7 +174,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
-        background: var(--pure-white);
+        background: var(--white);
         border: $checkbox-default-border;
 
         &:before {
@@ -208,7 +208,7 @@
         top: 50%;
         left: 50%;
         display: block;
-        background-color: var(--medium-grey);
+        background-color: var(--deprecated-medium-grey);
         transform: translate(-50%, -50%);
         content: '';
     }
@@ -251,11 +251,11 @@
     overflow-y: auto;
     list-style: none;
 
-    background-color: var(--pure-white);
-    border: 1px solid rgba($heather, 0.3);
+    background-color: var(--white);
+    border: 1px solid rgba(var(--deprecated-heather-rgb), 0.3);
     border-radius: $big-border-radius;
 
-    @include slim-scroll(var(--light-grey), var(--medium-grey));
+    @include slim-scroll(var(--deprecated-light-grey), var(--deprecated-medium-grey));
 }
 
 .facet-opened:last-child .facet-search-results {

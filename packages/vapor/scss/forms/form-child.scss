@@ -46,10 +46,10 @@ $child-arrow-height: 10px;
     }
 
     &.mod-pure-white {
-        background-color: var(--pure-white);
+        background-color: var(--white);
 
         &:before {
-            border-bottom-color: var(--pure-white);
+            border-bottom-color: var(--white);
         }
     }
 
@@ -65,7 +65,7 @@ $child-arrow-height: 10px;
 .child-section {
     margin-top: $child-section-spacing-top;
     padding-left: $child-section-spacing-left;
-    border-left: $child-section-border-size solid var(--light-grey);
+    border-left: $child-section-border-size solid var(--deprecated-light-grey);
 }
 
 .mod-child-section-first-input {

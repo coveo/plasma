@@ -1,9 +1,9 @@
 .popover {
     min-width: $popover-min-width;
-    background-color: var(--pure-white);
+    background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
-    box-shadow: 0 2px 4px rgba($stratos, 0.4);
+    box-shadow: 0 2px 4px rgba(var(--deprecated-stratos-rgb), 0.4);
 }
 
 .popover-body {
@@ -17,7 +17,7 @@
     padding: $popover-footer-y-padding $button-padding-x;
     overflow: hidden;
     background-color: var(--white);
-    border-top: solid 1px var(--medium-grey);
+    border-top: solid 1px var(--deprecated-medium-grey);
     border-radius: 0 0 $border-radius $border-radius;
 }
 

@@ -9,7 +9,7 @@
             display: flex;
             align-items: center;
             padding: 0 10px;
-            color: var(--pure-white);
+            color: var(--white);
             font-size: 12px;
             line-height: 16px;
             background-color: var(--red);
@@ -37,7 +37,7 @@
     }
 
     &.multiline-input-validation-error .erroneous-input {
-        background-color: var(--pure-white);
+        background-color: var(--white);
     }
 }
 

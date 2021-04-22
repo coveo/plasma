@@ -11,7 +11,7 @@
     padding: 0;
 
     &:not(:last-child) {
-        border-right: $step-progress-bar-border-width solid var(--pure-white);
+        border-right: $step-progress-bar-border-width solid var(--white);
     }
 }
 

@@ -14,16 +14,16 @@
         cursor: pointer;
 
         .dropdown-toggle-arrow {
-            @include arrow-down-icon($pure-white);
+            @include arrow-down-icon(var(--white));
         }
 
         .dropdown-toggle-arrow-style {
-            fill: var(--pure-white);
+            fill: var(--white);
         }
     }
 
     &.open .dropdown-toggle .dropdown-toggle-arrow {
-        @include arrow-up-icon($pure-white);
+        @include arrow-up-icon(var(--white));
     }
 
     .dropdown-menu {

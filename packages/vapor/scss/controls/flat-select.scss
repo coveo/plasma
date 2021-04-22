@@ -1,6 +1,6 @@
 .flat-select {
     display: flex;
-    background-color: var(--pure-white);
+    background-color: var(--white);
     border-radius: $border-radius;
 
     .flat-select-option {
@@ -10,7 +10,7 @@
         min-width: $flat-select-option-size;
         height: $flat-select-option-size;
         padding: 0 4px;
-        color: var(--pure-white);
+        color: var(--white);
         font-size: 13px;
         text-align: center;
         background-color: var(--navy-blue-80);
@@ -36,7 +36,7 @@
             }
 
             .icon {
-                fill: var(--pure-white);
+                fill: var(--white);
             }
         }
 
@@ -54,7 +54,7 @@
 
         &.selectable {
             color: var(--title-text-color);
-            background-color: var(--pure-white);
+            background-color: var(--white);
             border: $default-border;
 
             cursor: pointer;
@@ -77,7 +77,7 @@
             padding: 0;
             color: var(--navy-blue-80);
             font-size: var(--default-font-size);
-            background-color: var(--pure-white);
+            background-color: var(--white);
             border: none;
 
             .icon {
@@ -85,10 +85,10 @@
             }
 
             &.disabled {
-                color: var(--medium-grey);
+                color: var(--deprecated-medium-grey);
 
                 .icon {
-                    fill: var(--medium-grey);
+                    fill: var(--deprecated-medium-grey);
                 }
             }
         }
@@ -133,7 +133,7 @@
         border-radius: 0;
 
         &.selectable {
-            background-color: var(--pure-white);
+            background-color: var(--white);
             border-color: var(--default-border-color);
         }
 

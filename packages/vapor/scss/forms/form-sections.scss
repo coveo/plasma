@@ -1,13 +1,13 @@
 .section-heading {
     .heading-title {
-        color: var(--medium-blue);
+        color: var(--deprecated-medium-blue);
         font-weight: var(--main-font-bold);
         font-size: $title-font-size;
     }
 
     .heading-description {
         margin-top: $form-heading-description-margin-top;
-        color: var(--dark-grey);
+        color: var(--deprecated-dark-grey);
         font-size: 12px;
     }
 }
@@ -35,12 +35,12 @@
             margin: 5px 0;
 
             .heading-title {
-                color: var(--medium-blue);
+                color: var(--deprecated-medium-blue);
                 font-size: 13px;
                 text-transform: uppercase;
 
                 svg {
-                    fill: var(--medium-blue);
+                    fill: var(--deprecated-medium-blue);
                 }
             }
         }
@@ -55,7 +55,7 @@
 
     span {
         display: inline-block;
-        color: var(--medium-grey);
+        color: var(--deprecated-medium-grey);
         text-transform: uppercase;
 
         &:before,
@@ -69,12 +69,12 @@
 
         &:before {
             left: 0;
-            border-image: linear-gradient(to left, var(--medium-grey), white) 1;
+            border-image: linear-gradient(to left, var(--deprecated-medium-grey), white) 1;
         }
 
         &:after {
             left: 265px;
-            border-image: linear-gradient(to right, var(--medium-grey), white) 1;
+            border-image: linear-gradient(to right, var(--deprecated-medium-grey), white) 1;
         }
     }
 }

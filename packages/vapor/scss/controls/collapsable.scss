@@ -23,7 +23,7 @@
     }
 
     .panel {
-        border-bottom: 2px solid var(--medium-grey);
+        border-bottom: 2px solid var(--deprecated-medium-grey);
 
         + .panel {
             margin-top: 15px;
@@ -37,7 +37,7 @@
                 display: block;
                 margin-bottom: 5px;
                 padding: 3px 0 3px 26px;
-                color: var(--medium-blue);
+                color: var(--deprecated-medium-blue);
                 font-size: var(--default-font-size);
                 font-family: var(--main-font);
                 line-height: initial;

@@ -34,23 +34,23 @@
 
     .change-page-link {
         padding: 0;
-        color: var(--medium-blue);
+        color: var(--deprecated-medium-blue);
         font-size: var(--default-font-size);
-        background-color: var(--pure-white);
+        background-color: var(--white);
         border: none;
         cursor: pointer;
 
         .icon {
-            fill: var(--medium-blue);
+            fill: var(--deprecated-medium-blue);
         }
 
         &.disabled {
-            color: var(--medium-grey);
+            color: var(--deprecated-medium-grey);
             cursor: default;
             pointer-events: none;
 
             .icon {
-                fill: var(--medium-grey);
+                fill: var(--deprecated-medium-grey);
             }
         }
     }
@@ -60,13 +60,13 @@
         border: 1px solid var(--digital-blue-60);
 
         &.selectable {
-            background-color: var(--pure-white);
+            background-color: var(--white);
             border: $default-border;
         }
 
         &.mod-link {
             color: var(--digital-blue-80);
-            background-color: var(--pure-white);
+            background-color: var(--white);
             border: none;
 
             .icon {

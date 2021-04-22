@@ -20,10 +20,10 @@ input[type='search'],
 input[type='tel'],
 input[type='color'] {
     padding: 3px 6px;
-    color: var(--dark-grey);
+    color: var(--deprecated-dark-grey);
     font-size: $input-font-size;
     font-family: var(--main-font);
-    border: 1px solid var(--medium-grey);
+    border: 1px solid var(--deprecated-medium-grey);
     border-radius: 2px;
 }
 
@@ -38,7 +38,7 @@ textarea {
     }
 
     &:-ms-input-placeholder {
-        color: var(--medium-grey);
+        color: var(--deprecated-medium-grey);
         font-size: inherit;
         font-family: var(--main-font);
         text-transform: none;
@@ -66,8 +66,8 @@ textarea {
         margin-left: -5px;
         padding: 0;
         vertical-align: top;
-        background-color: var(--medium-grey);
-        border: 1px solid darken($medium-grey, 10%);
+        background-color: var(--deprecated-medium-grey);
+        border: 1px solid var(--deprecated-dark-medium-grey);
         border-radius: 0 2px 2px 0;
     }
 }

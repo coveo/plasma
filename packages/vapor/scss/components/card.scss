@@ -1,5 +1,5 @@
-$card-container-box-shadow: 0 2px 8px 0 rgba($black, $transparency-4);
-$card-hover-box-shadow: -5px 0 5px var(--light-grey);
+$card-container-box-shadow: 0 2px 8px 0 rgba(var(--black-rgb), $transparency-4);
+$card-hover-box-shadow: -5px 0 5px var(--deprecated-light-grey);
 
 // Status Cards
 $status-card-border-width: 4px;
@@ -19,12 +19,12 @@ $status-card-small-width: 160px;
 
     border: $default-border;
     border-radius: var(--border-radius);
-    box-shadow: 0px 2px 8px rgba(229, 232, 232, 0.75);
+    box-shadow: 0px 2px 8px rgba(var(--grey-40-rgb), 0.75);
 }
 
 .status-card {
     position: relative;
-    background: var(--pure-white);
+    background: var(--white);
     border-left: $status-card-border-width solid transparent;
     border-radius: $border-radius;
     box-shadow: $table-shadow;
