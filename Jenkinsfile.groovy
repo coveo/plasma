@@ -164,7 +164,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "cypress run"
+          sh "npx cypress run --project ./packages/e2eTesting "
         }
       }
 
