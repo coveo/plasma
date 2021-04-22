@@ -1,0 +1,61 @@
+$colors: (
+    'deprecated-white': #f1f3f4,
+    'deprecated-light-grey': #e6ecf0,
+    'deprecated-medium-grey': #bcc3ca,
+    'deprecated-dark-medium-grey': #7a7d81,
+    'deprecated-dark-grey': #373737,
+    'deprecated-stratos': #08080e,
+    'deprecated-grey-1': #f7f8f9,
+    'deprecated-grey-2': #eff3f7,
+    'deprecated-grey-3': #e4eaed,
+    'deprecated-grey-4': #cfd9e0,
+    'deprecated-heather': #b5c4cf,
+    'deprecated-nepal': #94a9bf,
+    'deprecated-bali-hai': #8097aa,
+    'deprecated-lynch': #5d7289,
+    'deprecated-grey-9': #4e5f71,
+    'deprecated-amber': #fbba06,
+    'deprecated-school-bus-yellow': #ffdf00,
+    'deprecated-orange-1': #ffbc86,
+    'deprecated-orange': #f58020,
+    'deprecated-coveo-orange': #f58020,
+    'deprecated-tango': #e56613,
+    'deprecated-milano-red': #d02b08,
+    'deprecated-red': #ce3f00,
+    'deprecated-green': #009830,
+    'deprecated-caribbean-green': #05c3a2,
+    'deprecated-frosted-mint': #d3fff8,
+    'deprecated-observatory': #028f7b,
+    'deprecated-turquoise': #26e8cc,
+    'deprecated-anakiwa': #4ed6ff,
+    'deprecated-blue-1': #cde7ff,
+    'deprecated-blue-2': #8fc9ff,
+    'deprecated-dodger-blue': #3ca0ff,
+    'deprecated-azure': #0d80ef,
+    'deprecated-science-blue': #0061c0,
+    'deprecated-coveo-blue': #004990,
+    'deprecated-blue-7': #00305c,
+    'deprecated-blue-8': #00284b,
+    'deprecated-light-blue': #296896,
+    'deprecated-blue-purple-2': #354667,
+    'deprecated-blue-purple-3': #2d385e,
+    'deprecated-purple-blue': #1e2541,
+    'deprecated-medium-blue': #1d4f76,
+    'deprecated-dark-blue': #263e55,
+    'deprecated-oxford-blue': #313a45,
+    'salesforce-blue': #009ddc,
+    'white': #ffffff,
+    'black': #000000,
+);
+
+@function hexToRGB($hex) {
+    @return red($hex), green($hex), blue($hex);
+}
+
+/* css variables*/
+:root {
+    @each $name, $hexValue in $colors {
+        --#{$name}: #{$hexValue};
+        --#{$name}-rgb: #{hexToRGB($hexValue)};
+    }
+}
