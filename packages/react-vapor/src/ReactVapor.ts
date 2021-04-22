@@ -12,6 +12,7 @@ import {IDropState} from './components/drop/redux/DropReducers';
 import {IDropdownState} from './components/dropdown/DropdownReducers';
 import {IDropdownOption} from './components/dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from './components/dropdownSearch/DropdownSearchReducers';
+import {CodeEditorState} from './components/editor/CodeEditorReducers';
 import {JSONEditorState} from './components/editor/JSONEditorReducers';
 import {IFacet} from './components/facets/Facet';
 import {IFacetState} from './components/facets/FacetReducers';
@@ -41,6 +42,7 @@ import {ISelectState} from './components/select/SelectReducers';
 import {ISliderState} from './components/slider/SliderReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
+import {HOCTableState} from './components/table-hoc/reducers/TableHOCReducers';
 import {HOCTableRowState} from './components/table-hoc/reducers/TableRowReducers';
 import {ITableWithPaginationState} from './components/table-hoc/reducers/TableWithPaginationReducers';
 import {ITableWithSortState} from './components/table-hoc/reducers/TableWithSortReducers';
@@ -73,6 +75,7 @@ export interface IReactVaporState {
     groupableCheckboxes?: IGroupableCheckboxesState[];
     inputs?: IInputState[];
     itemFilters?: IItemFilterState[];
+    codeEditors?: CodeEditorState[];
     jsonEditors?: JSONEditorState[];
     lastAction?: Redux.Action;
     lastUpdatedComposite?: ILastUpdatedState[];
@@ -105,6 +108,7 @@ export interface IReactVaporState {
     tableHOCHeader?: ITableWithSortState[];
     tableHOCPagination?: ITableWithPaginationState[];
     tableHOCRow?: HOCTableRowState[];
+    tablesHOC?: HOCTableState[];
     textAreas?: ITextAreaState[];
     validation?: ValidationsState;
 }

@@ -2,8 +2,6 @@ import {ShallowWrapper} from 'enzyme';
 import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import React from 'react';
 import {act} from 'react-dom/test-utils';
-import {Store} from 'redux';
-import {IReactVaporState} from '../../../../Entry';
 import {composeMockStore, getStoreMock, withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
 import {ValidationActions} from '../../ValidationActions';
@@ -34,7 +32,7 @@ describe('SingleSelectWithNonEmpty', () => {
 
     const mountSingleSelectWithHOC = (
         props: Partial<typeof DEFAULT_PROPS> = {},
-        storeToUse: Store<IReactVaporState> = store
+        storeToUse: ReturnType<typeof getStoreMock> = store
     ) => {
         const component = mountWithStore(<SingleSelectWithNonEmpty {...DEFAULT_PROPS} {...props} />, storeToUse);
         act(() => {

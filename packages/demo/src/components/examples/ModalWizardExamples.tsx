@@ -122,9 +122,7 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
 
 const StandardModalWizard = enhanceExample1(StandardModalWizardDisconnected);
 
-const NonEmptyInput: ReturnType<
-    typeof withDirtyInputHOC | typeof withNonEmptyValueInputValidationHOC
-> = withNonEmptyValueInputValidationHOC(withDirtyInputHOC(InputConnected));
+const NonEmptyInput = withNonEmptyValueInputValidationHOC(withDirtyInputHOC(InputConnected));
 const NonEmptySelect = withDirtySingleSelectHOC(withNonEmptySingleSelectHOC(SingleSelectConnected));
 
 const enhanceExample2 = connect(null, (dispatch: IDispatch) => ({

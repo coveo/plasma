@@ -3,6 +3,139 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.2.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.2.0) (2021-04-21)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [15.1.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.1.0) (2021-04-21)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [15.0.4](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.0.4) (2021-04-21)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [15.0.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.0.3) (2021-04-16)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [15.0.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.0.2) (2021-04-15)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [15.0.0-next.5](https://github.com/coveo/react-vapor/compare/v15.0.0-next.4...v15.0.0-next.5) (2021-04-15)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [15.0.0-next.4](https://github.com/coveo/react-vapor/compare/v14.3.0...v15.0.0-next.4) (2021-04-15)
+
+
+
+# [15.0.0-next.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.2...v15.0.0-next.3) (2021-04-14)
+
+
+
+# [15.0.0-next.2](https://github.com/coveo/react-vapor/compare/v14.1.2...v15.0.0-next.2) (2021-04-14)
+
+
+
+# [15.0.0-next.1](https://github.com/coveo/react-vapor/compare/v14.0.1...v15.0.0-next.1) (2021-04-08)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [14.3.0](https://github.com/coveo/react-vapor/compare/v14.2.3...v14.3.0) (2021-04-15)
+
+
+### Features
+
+* **react-vapor:** added CardSelect ([9ae5025](https://github.com/coveo/react-vapor/commit/9ae50256543be78042abf3bd45fdc65e5a576a8f))
+* **react-vapor:** added UT ([5f25843](https://github.com/coveo/react-vapor/commit/5f258431d88fef0312b101a545aa1236f666a6a9))
+* **react-vapor:** hover animation ([be7bdf4](https://github.com/coveo/react-vapor/commit/be7bdf4ccd9f39f36c7975b4968439ef0c27c462))
+* **react-vapor:** little reformating ([b3d921d](https://github.com/coveo/react-vapor/commit/b3d921def81f39a51a0c46c9f555bfb28b34594f))
+* **react-vapor:** removed selected elevation ([23c14ad](https://github.com/coveo/react-vapor/commit/23c14ad03873dfbca77ae71d75b2ef9da01f5997))
+* **react-vapor:** removed unused css var ([e66c427](https://github.com/coveo/react-vapor/commit/e66c4270aac560dd0ee89b84ac987c9104465070))
+
+
+
+
+
+## [14.2.3](https://github.com/coveo/react-vapor/compare/v14.2.2...v14.2.3) (2021-04-15)
+
+
+### Bug Fixes
+
+* **badges:** added beta badges + reworked demo ([0598f28](https://github.com/coveo/react-vapor/commit/0598f2806aa72c1d3c94030517965669cc99b152))
+* **badges:** fix line-height ([ef8093f](https://github.com/coveo/react-vapor/commit/ef8093fcfa726d55f44b9770062de76fb2762313))
+* **badges:** new border colors to make the badge stand out ([180d72b](https://github.com/coveo/react-vapor/commit/180d72b6350e052378143ec0ef4fa2fdfcdb79be))
+
+
+
+
+
+## [14.1.2](https://github.com/coveo/react-vapor/compare/v14.1.1...v14.1.2) (2021-04-14)
+
+
+### Bug Fixes
+
+* **table:** line-height to help align badges in table ([81b4927](https://github.com/coveo/react-vapor/commit/81b49279b95873aeb778619cf5da9e64c0412433))
+
+
+
+
+
+## [14.0.2](https://github.com/coveo/react-vapor/compare/v14.0.1...v14.0.2) (2021-04-09)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+# [14.0.0](https://github.com/coveo/react-vapor/compare/v13.2.5...v14.0.0) (2021-04-08)
+
+
+### Build System
+
+* **demo:** build the demo using project references ([c73be3c](https://github.com/coveo/react-vapor/commit/c73be3c43c677a61a16bcc55000c55e9a683e7f7))
+
+
+### BREAKING CHANGES
+
+* **demo:** `react-vapor.js` and `react-vapor.esm.js` were moved
+from `dist` to `dist/bundles`.
+
+
+
+
+
 ## [13.2.1](https://github.com/coveo/react-vapor/compare/v13.2.0...v13.2.1) (2021-03-31)
 
 

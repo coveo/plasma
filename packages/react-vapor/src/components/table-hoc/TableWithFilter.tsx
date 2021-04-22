@@ -38,7 +38,6 @@ export const tableWithFilter = (
 
     const mapStateToProps = (state: IReactVaporState, ownProps: OwnProps) => {
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
-
         const matchFilter = ownProps.filterMatcher || config.matchFilter || defaultMatchFilter;
         const filterData = () =>
             filterText ? _.filter(ownProps.data, (datum: any) => matchFilter(filterText, datum)) : ownProps.data;
@@ -61,7 +60,7 @@ export const tableWithFilter = (
             const {filterBlankslate, filterMatcher, filterPlaceholder, filter, urlFilter, ...tableProps} = this.props;
             const blankSlateProps = filterBlankslate || config.blankSlate;
             const shouldShowBlankslate =
-                _.isEmpty(this.props.data) && !_.isEmpty(this.props.filter) && !_.isEmpty(blankSlateProps);
+                _.isEmpty(this.props.data) && !_.isEmpty(filter) && !_.isEmpty(blankSlateProps);
             const filterAction = (
                 <FilterBoxConnected
                     key="FilterBox"

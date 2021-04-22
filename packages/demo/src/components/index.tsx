@@ -7,24 +7,25 @@ import ComponentPage from './ComponentPage';
 import {IComponent} from './ComponentsInterface';
 import SideMenu from './Menu';
 
+const componentFiles = require.context('./examples', true, /Examples?\.js?$/i, 'lazy');
+
+const load = async (path: string, ctx: any) => {
+    const component = await ctx(path);
+    const name = _.keys(component)[0].replace(/Examples?/i, '');
+    const componentPrototype = _.values(component)[0];
+    const c: IComponent = {
+        name,
+        path,
+        component: componentPrototype,
+    };
+    return c;
+};
+
+const loadAll = () => Promise.all(componentFiles.keys().map((path) => load(path, componentFiles)));
+
 const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     const [components, setComponents] = React.useState([]);
     React.useEffect(() => {
-        const load = async (path: string, ctx: any) => {
-            const component = await ctx(path);
-            const name = _.keys(component)[0].replace(/Examples?/i, '');
-            const componentPrototype = _.values(component)[0];
-            const c: IComponent = {
-                name,
-                path,
-                component: componentPrototype,
-            };
-            return c;
-        };
-        const loadAll = () => {
-            const componentFiles = require.context('./examples', true, /Examples?\.tsx?$/i, 'lazy');
-            return Promise.all(componentFiles.keys().map((path) => load(path, componentFiles)));
-        };
         loadAll().then((all) => setComponents(all.filter(Boolean)));
     }, []);
 

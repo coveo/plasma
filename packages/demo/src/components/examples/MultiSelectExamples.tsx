@@ -9,14 +9,13 @@ import {
     MultiSelectWithPredicate,
     MultiSelectWithPredicateAndFilter,
     Section,
+    TooltipPlacement,
     UUID,
     ValidationMessage,
     withInitialValuesMultiSelectHOC,
     withNonEmptyMultiSelectHOC,
 } from 'react-vapor';
 import * as _ from 'underscore';
-
-import {TooltipPlacement} from '../../../../react-vapor/src/utils/TooltipUtils';
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},

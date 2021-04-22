@@ -1,13 +1,13 @@
 import * as _ from 'underscore';
-import {IDatePickerState} from '../components/datePicker/DatePickerReducers';
-import {IListBoxState} from '../components/listBox/ListBoxReducers';
-import {PaginationUtils} from '../components/pagination/PaginationUtils';
+import {IDatePickerState} from '../../components/datePicker/DatePickerReducers';
+import {IListBoxState} from '../../components/listBox/ListBoxReducers';
+import {PaginationUtils} from '../../components/pagination/PaginationUtils';
 import {
     ITableHOCCompositeState,
     ITableHOCPredicateValue,
     TableHOCUtils,
-} from '../components/table-hoc/utils/TableHOCUtils';
-import {IReactVaporState} from '../ReactVapor';
+} from '../../components/table-hoc/utils/TableHOCUtils';
+import {IReactVaporState} from '../../ReactVapor';
 
 const createTableHOCCompositeState = <T extends IReactVaporState>(
     tableId: string,

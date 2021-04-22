@@ -1,13 +1,17 @@
 {
     "extends": "./tsconfig",
     "compilerOptions": {
+        "composite": true,
+        "outDir": "dist",
+        "rootDir": "src",
         "removeComments": false,
+        "noImplicitAny": false,
         "sourceMap": true,
-        "baseUrl": "./",
-        "paths": {
-            "*": ["types/*", "*"]
-        }
+        "declaration": true,
+        "declarationMap": true,
+        "tsBuildInfoFile": "./dist/.tsbuildinfo"
     },
-    "exclude": ["node_modules", "dist", "coverage", "*.js", "./src/**/*.spec.*", "./src/**/*.mock.*"],
-    "include": ["src"]
+    "exclude": ["*.js", "./src/**/*.spec.*", "./src/**/*.mock.*", "**/tests/**", "./src/utils/tests"],
+    "include": ["src"],
+    "references": []
 }

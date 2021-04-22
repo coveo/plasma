@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {DropTarget, IDropTargetProps} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import * as VaporSVG from 'coveo-styleguide';
@@ -28,6 +27,7 @@ export interface IMultiSelectOwnProps extends Omit<ISelectOwnProps, 'button'>, I
     noDisabled?: boolean;
     multiSelectStyle?: React.CSSProperties;
     readOnly?: boolean;
+    connectDropTarget?: any;
 }
 
 export interface IMultiSelectProps
@@ -35,7 +35,26 @@ export interface IMultiSelectProps
         ReturnType<ReturnType<typeof makeMapStateToProps>>,
         ReturnType<typeof mapDispatchToProps> {}
 
-const selectPropsKeys = keys<ISelectOwnProps>();
+const selectPropsKeys = [
+    'button',
+    'classes',
+    'disabled',
+    'dropClasses',
+    'dropOption',
+    'footer',
+    'hasFocusableChild',
+    'id',
+    'isLoading',
+    'items',
+    'multi',
+    'noActive',
+    'noResultItem',
+    'onUpdate',
+    'placeholder',
+    'selectClasses',
+    'toggleClasses',
+    'wrapItems',
+];
 
 const makeMapStateToProps = () =>
     createStructuredSelector({

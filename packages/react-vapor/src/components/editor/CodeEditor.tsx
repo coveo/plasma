@@ -6,17 +6,21 @@ import 'codemirror/addon/search/matchesonscrollbar';
 import 'codemirror/addon/search/search';
 import 'codemirror/mode/python/python';
 
+import classNames from 'classnames';
 import * as CodeMirror from 'codemirror';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
-
-import classNames from 'classnames';
 import {connect} from 'react-redux';
-import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
-import {CodeMirrorGutters} from './EditorConstants';
+import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVapor';
+import {IDispatch} from '../../utils';
+import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
+import {CodeEditorActions} from './CodeEditorActions';
+import {CodeMirrorGutters} from './EditorConstants';
 
 export interface ICodeEditorProps {
+    id?: string;
     value: string;
     mode: any;
     readOnly?: boolean;
@@ -38,8 +42,13 @@ const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorPr
     isCollapsibleExpanded: CollapsibleSelectors.isExpanded(state, collapsibleId),
 });
 
+const mapDispatchToProps = (dispatch: IDispatch, {id}: ICodeEditorProps) => ({
+    updateStoreValue: (value: string) => dispatch(CodeEditorActions.updateValue(id, value)),
+    clearCodeEditorFromStore: () => dispatch(CodeEditorActions.remove(id)),
+});
+
 class CodeEditorDisconnect extends React.Component<
-    ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>,
+    ICodeEditorProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>,
     CodeEditorState
 > {
     static defaultProps: Partial<ICodeEditorProps> = {
@@ -61,20 +70,19 @@ class CodeEditorDisconnect extends React.Component<
     private codemirror = React.createRef<ReactCodeMirror.Controlled>();
     private editor: CodeMirror.Editor;
 
-    constructor(props: ICodeEditorProps & Partial<ReturnType<typeof mapStateToProps>>, state: CodeEditorState) {
-        super(props, state);
-
-        this.state = {
-            value: props.value,
-            numberOfRefresh: 0,
-        };
-    }
+    state = {
+        value: this.props.value,
+        numberOfRefresh: 0,
+    };
 
     componentDidMount() {
         this.props.onMount?.(this.codemirror.current);
         if (this.props.isCollapsibleExpanded) {
             this.editor.refresh();
             this.setState({numberOfRefresh: this.state.numberOfRefresh + 1});
+        }
+        if (this.props.id) {
+            this.props.updateStoreValue(this.props.value);
         }
     }
 
@@ -88,6 +96,16 @@ class CodeEditorDisconnect extends React.Component<
             this.editor.getDoc().clearHistory();
         }
     }
+
+    componentWillUnmount() {
+        if (this.props.id) {
+            this.props.clearCodeEditorFromStore();
+        }
+    }
+
+    private debouncedUpdateStore = _.debounce((value: string) => {
+        this.props.updateStoreValue(value);
+    }, 500);
 
     render() {
         return (
@@ -103,6 +121,9 @@ class CodeEditorDisconnect extends React.Component<
                 value={this.state.value}
                 onChange={(editor, data, value: string) => {
                     this.props.onChange?.(value);
+                    if (this.props.id) {
+                        this.debouncedUpdateStore(value);
+                    }
                 }}
                 options={{
                     ...CodeEditorDisconnect.defaultOptions,
@@ -125,4 +146,4 @@ class CodeEditorDisconnect extends React.Component<
     }
 }
 
-export const CodeEditor = connect(mapStateToProps)(CodeEditorDisconnect);
+export const CodeEditor = connect(mapStateToProps, mapDispatchToProps)(CodeEditorDisconnect);

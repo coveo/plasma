@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
@@ -36,7 +35,7 @@ export interface ITableWithDatePickerProps
         ITableHOCOwnProps,
         WithServerSideProcessingProps {}
 
-const TableWithFilterPropsToOmit = keys<ITableWithDatePickerStateProps>();
+const TableWithFilterPropsToOmit = ['lowerLimit', 'upperLimit'];
 
 export type FilterableTableComponent = React.ComponentClass<ITableWithDatePickerProps>;
 

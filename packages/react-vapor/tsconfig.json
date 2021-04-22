@@ -12,15 +12,11 @@
         "lib": ["es2015", "dom"],
         "allowSyntheticDefaultImports": true,
         "strictBindCallApply": true,
-        "plugins": [
-            {
-                "transform": "ts-transformer-keys/transformer"
-            }
-        ],
         "importHelpers": true,
         "baseUrl": ".",
         "paths": {
-            "react-vapor-test-utils": ["./jest/utils/react-vapor-test-utils"]
+            "react-vapor-test-utils": ["./jest/utils/react-vapor-test-utils"],
+            "*": ["types/*", "*"]
         }
     },
     "exclude": ["**/node_modules", "**/dist", "**/coverage", "*.js", "**/target"]

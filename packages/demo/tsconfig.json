@@ -6,7 +6,19 @@
         "experimentalDecorators": true,
         "downlevelIteration": true,
         "esModuleInterop": true,
-        "importHelpers": true
+        "importHelpers": true,
+        "composite": true,
+        "rootDir": "src",
+        "outDir": "built",
+        "baseUrl": ".",
+        "tsBuildInfoFile": "./built/.tsbuildinfo",
+        "paths": {
+            "react-vapor": ["../react-vapor/src/Entry.ts"],
+            "@demo-styling/*": ["./src/demo-styling/*"]
+        },
+        "lib": ["ES2020", "dom"],
+        "typeRoots": ["./types", "./node_modules/@types"]
     },
-    "include": ["src", "types"]
+    "include": ["src"],
+    "references": [{"path": "../react-vapor/tsconfig.build.json"}]
 }

@@ -1,6 +1,5 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {keys} from 'ts-transformer-keys';
 import {defer, omit} from 'underscore';
 
 import {keyCode} from '../../utils/InputUtils';
@@ -24,7 +23,7 @@ export interface IModalBackdropProps
         IModalBackdropStateProps,
         IModalBackdropDispatchProps {}
 
-const ModalBackdropPropsToOmit = keys<IModalBackdropProps>();
+const ModalBackdropPropsToOmit = ['displayFor', 'isPrompt', 'display', 'lastOpened', 'onClick'];
 
 export type IModalBackdropAllProps = IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>;
 

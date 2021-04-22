@@ -23,7 +23,10 @@ travis-deploy-key
 
 # distribution
 **/dist
+**/built
 
 # temporary files
 **/coverage
 **/tmp
+**/.rollup.cache
+**/*.tsbuildinfo

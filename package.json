@@ -4,13 +4,10 @@
     "devDependencies": {
         "@commitlint/cli": "8.3.5",
         "@commitlint/config-conventional": "8.3.4",
-        "@commitlint/travis-cli": "8.3.5",
         "@sindresorhus/slugify": "0.11.0",
-        "@testing-library/cypress": "^7.0.4",
         "aws-sdk": "2.576.0",
         "axios": "^0.21.1",
-        "cypress": "^6.8.0",
-        "cz-conventional-changelog": "3.0.2",
+        "cz-conventional-changelog": "^3.0.2",
         "eslint": "7.5.0",
         "husky": "4.2.5",
         "lerna": "3.18.4",
@@ -18,7 +15,7 @@
         "prettier": "2.0.5",
         "stylelint": "13.6.1",
         "tsjs": "^3.0.2",
-        "underscore": "1.9.2",
+        "underscore": "1.12.1",
         "walkdir": "0.4.1"
     },
     "husky": {
@@ -40,15 +37,18 @@
         "not dead"
     ],
     "scripts": {
-        "gen-package-locks": "npm i --package-lock-only && npx lerna bootstrap -- --package-lock-only",
-        "setup": "npx lerna bootstrap",
-        "start": "npm run build && lerna run start --parallel",
-        "test": "lerna run test --parallel",
-        "build": "lerna run build --stream",
-        "lintfix": "lerna run lintfix --parallel",
+        "preinstall": "npx only-allow pnpm",
+        "setup": "pnpm install",
+        "start": "pnpm build --stream --filter=coveo-styleguide && pnpm -r start --parallel --filter=\\!react-vapor",
+        "test": "pnpm -r test --parallel",
+        "clean": "pnpm -r clean --parallel",
+        "e2e:open": "pnpm -r e2e:open --stream",
+        "e2e:run": "pnpm -r e2e:run --stream",
+        "build": "pnpm -r build --stream",
+        "lintfix": "pnpm -r lintfix --parallel",
         "commit-cli": "git-cz",
-        "reconstruct": "npx lerna clean --yes && npx rimraf node_modules && npm run setup && echo done",
-        "open-cypress": "npx cypress open --project ./packages/e2eTesting"
+        "open-cypress": "npx cypress open --project ./packages/e2eTesting",
+        "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
     },
     "config": {
         "commitizen": {

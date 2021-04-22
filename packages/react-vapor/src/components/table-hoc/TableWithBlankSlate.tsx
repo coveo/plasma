@@ -31,6 +31,7 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
         return {
             isEmpty,
             isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
+            isEmptyStateSet: TableSelectors.isEmptyStateSet(state, ownProps),
             data: isEmpty ? null : ownProps.data,
         };
     };
@@ -38,15 +39,22 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
     const TableWithBlankSlate: React.FunctionComponent<
         ITableHOCOwnProps & ITableWithBlankSlateProps & ReturnType<typeof mapStateToProps>
     > = (props) => {
-        const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, ...tableProps} = props;
+        const {renderBlankSlate, renderBlankSlateOnly, isEmpty, isTrulyEmpty, isEmptyStateSet, ...tableProps} = props;
 
-        const blankSlateToRender = renderBlankSlate || defaultRenderBlankSlateMethod;
+        const blankSlateToRender = renderBlankSlate ?? defaultRenderBlankSlateMethod;
+        let componentToReturn = (
+            <Component {...tableProps} renderBody={isEmpty ? () => blankSlateToRender : props.renderBody} />
+        );
 
-        if (renderBlankSlateOnly && isTrulyEmpty && !props.isLoading) {
-            return blankSlateToRender;
+        if (isTrulyEmpty && !props.isLoading) {
+            if (isEmptyStateSet) {
+                componentToReturn = <Component {...tableProps} renderBody={props.renderBody} />;
+            } else if (renderBlankSlateOnly) {
+                componentToReturn = blankSlateToRender;
+            }
         }
 
-        return <Component {...tableProps} renderBody={isEmpty ? () => blankSlateToRender : props.renderBody} />;
+        return componentToReturn;
     };
 
     return connect(mapStateToProps)(TableWithBlankSlate);

@@ -7,21 +7,19 @@ import externalGlobals from 'rollup-plugin-external-globals';
 import postcss from 'rollup-plugin-postcss';
 import scssVariable from 'rollup-plugin-sass-variables';
 import {terser} from 'rollup-plugin-terser';
-import typescript from 'rollup-plugin-typescript2';
-import keysTransformer from 'ts-transformer-keys/transformer';
 
 const isJenkins = !!process.env.JENKINS_HOME;
 
 export default {
-    input: 'src/Entry.ts',
+    input: 'dist/Entry.js',
     output: [
         {
-            file: 'dist/react-vapor.esm.js',
+            file: 'dist/bundles/react-vapor.esm.js',
             format: 'es',
             sourcemap: true,
         },
         {
-            file: 'dist/react-vapor.js',
+            file: 'dist/bundles/react-vapor.js',
             format: 'umd',
             sourcemap: true,
             name: 'ReactVapor',
@@ -55,7 +53,7 @@ export default {
             ],
         },
         isJenkins && {
-            file: 'dist/react-vapor.min.js',
+            file: 'dist/bundles/react-vapor.min.js',
             format: 'umd',
             sourcemap: true,
             name: 'ReactVapor',
@@ -127,28 +125,8 @@ export default {
                 'diff/dist/diff.js': ['diffChars', 'diffWordsWithSpace'],
             },
         }),
-        tsPlugin(),
     ],
 };
-
-function tsPlugin() {
-    return typescript({
-        transformers: [
-            (service) => ({
-                before: [keysTransformer(service.getProgram())],
-                after: [],
-            }),
-        ],
-        useTsconfigDeclarationDir: true,
-        tsconfig: 'tsconfig.build.json',
-        tsconfigOverride: {
-            compilerOptions: {
-                declaration: true,
-                declarationDir: 'dist/definitions',
-            },
-        },
-    });
-}
 
 function replacePlugin() {
     return replace({

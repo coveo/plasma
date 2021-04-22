@@ -14,9 +14,9 @@
     --height: 32px;
     --padding: 6px 16px;
     --font-size: 16px;
-    --line-height: 20px;
+    --line-height: 18px;
     --color: var(--grey-80);
-    --border-color: var(--grey-20);
+    --border-color: var(--grey-50);
     --background-color: var(--grey-20);
 
     // Style Override
@@ -33,31 +33,37 @@
         --height: 24px;
         --padding: 4px 8px;
         --font-size: 12px;
-        --line-height: 16px;
+        --line-height: 14px;
     }
 
     &.mod-critical {
-        --color: var(--critical-100);
-        --border-color: var(--critical-20);
-        --background-color: var(--critical-20);
+        --color: var(--semantic-critical-100);
+        --border-color: var(--pomegranate-40);
+        --background-color: var(--pomegranate-20);
     }
 
     &.mod-warning {
-        --color: var(--warning-100);
-        --border-color: var(--warning-20);
-        --background-color: var(--warning-20);
+        --color: var(--semantic-warning-90);
+        --border-color: var(--turbo-yellow-50);
+        --background-color: var(--turbo-yellow-20);
     }
 
     &.mod-information {
-        --color: var(--information-100);
-        --border-color: var(--information-20);
-        --background-color: var(--information-20);
+        --color: var(--semantic-info-80);
+        --border-color: var(--navy-blue-40);
+        --background-color: var(--navy-blue-20);
     }
 
     &.mod-success {
-        --color: var(--success-100);
-        --border-color: var(--success-20);
-        --background-color: var(--success-20);
+        --color: var(--semantic-success-100);
+        --border-color: var(--forest-green-30);
+        --background-color: var(--semantic-success-0);
+    }
+
+    &.mod-beta {
+        --color: var(--sienna-orange-70);
+        --border-color: var(--sienna-orange-40);
+        --background-color: var(--sienna-orange-20);
     }
 
     &:last-child {

@@ -36,7 +36,7 @@ export interface IActionBarProps {
 }
 
 export class ActionBar extends React.PureComponent<
-    IActionBarProps & Partial<ReturnType<typeof mapStateToProps>> & Partial<ReturnType<typeof mapDispatchToProps>>
+    IActionBarProps & Partial<ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>>
 > {
     static defaultProps: Partial<IActionBarProps> = {
         extraContainerClasses: [],
@@ -185,4 +185,11 @@ const mapDispatchToProps = (dispatch: IDispatch<IReactVaporState>, ownProps: IAc
     },
 });
 
-export const ActionBarConnected = connect(mapStateToProps, mapDispatchToProps)(ActionBar);
+export const ActionBarConnected = connect<
+    ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps>,
+    IActionBarProps
+>(
+    mapStateToProps,
+    mapDispatchToProps
+)(ActionBar as any);

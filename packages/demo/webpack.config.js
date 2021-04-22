@@ -1,9 +1,7 @@
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const path = require('path');
-const keysTransformer = require('ts-transformer-keys/transformer').default;
 const isJenkins = !!process.env.JENKINS_HOME;
-const ForkTsCheckerWebpackPlugin = require('fork-ts-checker-webpack-plugin');
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
 
@@ -12,7 +10,7 @@ const CopyPlugin = require('copy-webpack-plugin');
  */
 module.exports = {
     entry: {
-        main: './src/Index.tsx',
+        main: './built/Index.js',
     },
     mode: isJenkins ? 'production' : 'development',
     output: {
@@ -22,13 +20,18 @@ module.exports = {
     },
     devtool: isJenkins ? 'source-map' : 'eval-source-map',
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.jsx'],
+        extensions: ['.js', '.jsx'],
+        alias: {
+            'react-vapor': path.resolve(__dirname, '../react-vapor/dist/Entry.js'),
+            '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
+            '@examples': path.resolve(__dirname, 'src/components/examples'),
+        },
     },
     plugins: [
         new CopyPlugin({
             patterns: [
                 path.resolve(__dirname, 'node_modules', 'jquery', 'dist', 'jquery.slim.min.js'),
-                path.resolve(__dirname, '..', '..', 'node_modules', 'chosen-js', 'chosen.jquery.min.js'),
+                path.resolve(__dirname, '..', 'react-vapor', 'node_modules', 'chosen-js', 'chosen.jquery.min.js'),
             ],
         }),
         new HtmlWebpackPlugin({
@@ -40,14 +43,6 @@ module.exports = {
         new HtmlWebpackTagsPlugin({tags: ['jquery.slim.min.js', 'chosen.jquery.min.js'], append: true}),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
-        new ForkTsCheckerWebpackPlugin({
-            eslint: {
-                files: './src/**/*.{ts,tsx}',
-                options: {
-                    fix: true,
-                },
-            },
-        }),
     ],
     stats: 'minimal',
     module: {
@@ -56,22 +51,6 @@ module.exports = {
                 test: /\.js$/,
                 enforce: 'pre',
                 use: ['source-map-loader'],
-            },
-            {
-                test: /\.tsx?$/,
-                use: [
-                    {
-                        loader: 'ts-loader',
-                        options: {
-                            projectReferences: true,
-                            transpileOnly: true,
-                            experimentalWatchApi: true,
-                            getCustomTransformers: (program) => ({
-                                before: [keysTransformer(program)],
-                            }),
-                        },
-                    },
-                ],
             },
             {
                 test: /\.s?css$/,
@@ -102,5 +81,8 @@ module.exports = {
         hot: true,
         progress: false,
         open: true,
+        watchOptions: {
+            aggregateTimeout: 0,
+        },
     },
 };

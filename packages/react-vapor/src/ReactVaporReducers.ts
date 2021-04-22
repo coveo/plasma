@@ -10,6 +10,7 @@ import {datePickersReducer} from './components/datePicker/DatePickerReducers';
 import {dropReducer} from './components/drop/redux/DropReducers';
 import {dropdownsReducer} from './components/dropdown/DropdownReducers';
 import {dropdownsSearchReducer} from './components/dropdownSearch/DropdownSearchReducers';
+import {codeEditorsReducer} from './components/editor/CodeEditorReducers';
 import {jsonEditorsReducer} from './components/editor/JSONEditorReducers';
 import {facetsReducer} from './components/facets/FacetReducers';
 import {filepickersReducer} from './components/filepicker/FilepickerReducers';
@@ -37,6 +38,7 @@ import {selectCompositeReducer} from './components/select/SelectReducers';
 import {SliderReducer} from './components/slider/SliderReducers';
 import {subNavigationsReducer} from './components/subNavigation/SubNavigationReducers';
 import {tabGroupsReducer} from './components/tab/TabReducers';
+import {TableHOCReducers} from './components/table-hoc/reducers/TableHOCReducers';
 import {TableRowReducers} from './components/table-hoc/reducers/TableRowReducers';
 import {TableWithPaginationReducers} from './components/table-hoc/reducers/TableWithPaginationReducers';
 import {TableWithSortReducers} from './components/table-hoc/reducers/TableWithSortReducers';
@@ -71,6 +73,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     groupableCheckboxes: groupableCheckboxesReducer,
     inputs: inputsReducer,
     itemFilters: itemFiltersReducer,
+    codeEditors: codeEditorsReducer,
     jsonEditors: jsonEditorsReducer,
     lastAction,
     lastUpdatedComposite: lastUpdatedCompositeReducer,
@@ -99,6 +102,7 @@ export const ReactVaporReducers: ReducersMapObject = {
     tableHOCHeader: TableWithSortReducers,
     tableHOCPagination: TableWithPaginationReducers,
     tableHOCRow: TableRowReducers,
+    tablesHOC: TableHOCReducers,
     tables: tablesReducer,
     tabs: tabGroupsReducer,
     textAreas: textAreasReducer,

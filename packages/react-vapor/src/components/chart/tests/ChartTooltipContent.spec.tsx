@@ -1,12 +1,27 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
+import {mocked} from 'ts-jest/utils';
 
 import {ChartTooltipContent} from '../ChartTooltipContent';
 import {XYChartContextMock} from './XYChartContextMock';
 
+jest.mock('react', () => {
+    const originReact = jest.requireActual('react');
+    return {
+        ...originReact,
+        useContext: jest.fn(),
+    };
+});
+
+const mockedReact = mocked(React);
+
 describe('<ChartTooltipContent />', () => {
-    beforeEach(() => {
-        jest.spyOn(React, 'useContext').mockReturnValue(XYChartContextMock);
+    beforeAll(() => {
+        mockedReact.useContext.mockReturnValue(XYChartContextMock);
+    });
+
+    afterEach(() => {
+        jest.clearAllMocks();
     });
 
     it('should not throw', () => {

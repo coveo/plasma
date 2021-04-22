@@ -3,7 +3,7 @@ import {Section, TableHOC, tableWithBlankSlate, tableWithFilter} from 'react-vap
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../ComponentsInterface';
-import {generateDataWithFacker, generateTableRow} from './TableHOCExamples';
+import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
     <Section level={1} title="Table loading examples">
@@ -20,7 +20,7 @@ export const TableHocLoadingExamples: ExampleComponent = () => (
 );
 TableHocLoadingExamples.title = 'TableHOC loading';
 
-const fiveDataRows = generateDataWithFacker(10);
+const fiveDataRows = generateDataWithFaker(10);
 
 // start-print
 

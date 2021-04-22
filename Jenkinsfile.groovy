@@ -93,7 +93,8 @@ pipeline {
 
           sh "npm cache clean --force"
           sh "rm -rf node_modules"
-          sh "npm run setup"
+          sh "npm install -g pnpm"
+          sh "pnpm install"
 
           if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
             sh "git fetch --tags origin ${env.BRANCH_NAME}"
@@ -124,7 +125,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "npm run build"
+          sh "pnpm build"
         }
       }
 
@@ -143,8 +144,8 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "npm run test"
-          sh "npx lerna run report-coverage"
+          sh "pnpm test"
+          sh "pnpm -r report-coverage"
         }
       }
 
@@ -226,12 +227,16 @@ pipeline {
             STARTED_BY_UPSTREAM = cause.upstream()
 
             if (env.BRANCH_NAME ==~ /release-.*/) {
-              sh "npx lerna publish patch --create-release github --yes --force-publish"
+              sh "npx lerna publish patch --create-release github --yes --force-publish --no-push"
             } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\""
+              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\" --no-push"
             } else {
-              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
+              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\" --no-push"
             }
+            sh "pnpm install --lockfile-only"
+            sh "git add pnpm-lock.yaml"
+            sh "git commit -m \"chore(release): [version bump]\""
+            sh "git push -u origin master"
           } else {
             sh "echo \"skipping publish since remote changed (something was merged)\""
           }
@@ -289,7 +294,7 @@ pipeline {
         def color = "FF0000";
         def message = "Build FAILED at stage *${getLastStageName()}* - ${env.JOB_NAME} (<${env.BUILD_URL}|#${env.BUILD_NUMBER}>)";
 
-        if(env.JOB_NAME ==~ /(master|release-.*)/){
+        if(env.BRANCH_NAME ==~ /(master|release-.*)/){
           notify.sendSlackWithThread(
             color: color, message: message,
             MASTER_RELEASE_FAILURE_CHANNELS
@@ -325,8 +330,8 @@ def getLastStageName() {
 }
 
 def postCommentOnGithub(demoLink="") {
-  runNodeScript.call(
-              'add-github-comment.js', 
-              "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
-            )
+    runPackage.call(
+      "github-comment",
+      "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
+    )
 }

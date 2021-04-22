@@ -40,10 +40,11 @@ const ComponentPage: React.FunctionComponent<ComponentPageProps> = (props) => {
         title: tabName,
     });
 
-    const tabProps: ITabProps[] = hasMarkdownTabs && [
-        {id: getTabId('development'), title: component.firstTabLabel || 'Develop'},
-        ...tabs.sort((tabA: TabConfig, tabB: TabConfig) => tabA.order - tabB.order).map(mapTabConfigToProps),
-    ];
+    const tabProps: ITabProps[] =
+        hasMarkdownTabs &&
+        [{id: getTabId('development'), title: component.firstTabLabel || 'Develop'}].concat(
+            tabs.sort((tabA: TabConfig, tabB: TabConfig) => tabA.order - tabB.order).map(mapTabConfigToProps)
+        );
     const PageLayout = hasMarkdownTabs ? PageLayoutWithTabs : PageLayoutWithoutTabs;
 
     return tabs === null ? (
@@ -102,7 +103,11 @@ const DevelopmentTabContent: React.FunctionComponent<ComponentPageProps> = ({com
     const [code, setCode] = React.useState('');
     React.useEffect(() => {
         const doImport = async () => {
-            const res: {default: string} = await import('!!raw-loader!./examples/' + path.replace('./', ''));
+            const res: {default: string} = await import(
+                // path has format './ComponentName.js'
+                // source file is at '@examples/ComponentName.tsx'
+                '!!raw-loader!@examples/' + path.replace('./', '').replace('.js', '.tsx')
+            );
             return chopDownSourceFile(res.default);
         };
         doImport().then(setCode);
