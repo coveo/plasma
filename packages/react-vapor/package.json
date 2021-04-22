@@ -146,7 +146,6 @@
         "rollup-plugin-postcss": "2.5.0",
         "rollup-plugin-sass-variables": "0.1.1",
         "rollup-plugin-terser": "^7.0.2",
-        "sass-variable-loader": "0.1.2",
         "ts-jest": "26.4.4",
         "tslib": "^1",
         "typescript": "3.8.3",

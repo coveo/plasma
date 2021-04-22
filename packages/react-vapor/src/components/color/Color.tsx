@@ -1,12 +1,9 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {webpackVaporColors} from './VaporColors';
 
 export interface ColorProps {
     color: string;
 }
-
-export const VaporColors: Record<string, string> = webpackVaporColors;
 
 export class Color extends React.Component<ColorProps & React.HTMLProps<HTMLDivElement>> {
     static defaultprops: Partial<ColorProps> = {
