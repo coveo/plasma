@@ -156,7 +156,7 @@ pipeline {
       }
     }
 
-    stage('Test') {
+    stage('cypress') {
       when {
         expression { !skipRemainingStages }
       }
