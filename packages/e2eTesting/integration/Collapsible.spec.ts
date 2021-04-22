@@ -1,5 +1,3 @@
-/// <reference types="cypress" />
-
 const CollapsibleInfoBox = 'div[class="cursor-pointer flex space-between center-align p1"]';
 const CollapsibleContainer = 'div[class*="collapsible-container"]';
 context('Actions', () => {
