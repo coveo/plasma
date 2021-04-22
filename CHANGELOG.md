@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.3.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.3.0) (2021-04-22)
+
+
+### Bug Fixes
+
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+* **demo:** show example source code instead of compiles .js ([c78958f](https://github.com/coveo/react-vapor/commit/c78958f22de92abb6d2f0472c58f37624121c605))
+
+
+### Features
+
+* **cypress:** make setup more resilient ([88a78b9](https://github.com/coveo/react-vapor/commit/88a78b9dbd9d826524f0518480be05bd7fad8bbb))
+* **cypress:** make setup more resilient ([60ff291](https://github.com/coveo/react-vapor/commit/60ff2917c33f35e2cdc4451204a8d0e87bbd8a8a))
+
+
+
+
+
 # [15.2.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.2.0) (2021-04-21)
 
 
