@@ -10,17 +10,12 @@
     width: var(--width);
     height: var(--height);
 
-    &.mod-big {
-        --width: 28px;
-        --height: 28px;
-    }
-
-    &.mod-normal {
+    &.mod-small {
         --width: 20px;
         --height: 20px;
     }
 
-    &.mod-small {
+    &.mod-smaller {
         --width: 14px;
         --height: 14px;
     }
