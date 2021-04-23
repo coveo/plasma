@@ -1,19 +1,6 @@
 :root {
     /* ----------- New Palette for Rebranding ----------- */
 
-    // Primary
-    --navy-blue-100: #181d3a;
-    --navy-blue-80: #333357;
-    --navy-blue-60: #5f619e;
-    --navy-blue-40: #8588dd;
-    --navy-blue-20: #d6d7fd;
-
-    --digital-blue-100: #2e45ba;
-    --digital-blue-80: #215cd3;
-    --digital-blue-60: #1372ec;
-    --digital-blue-40: #5388eb;
-    --digital-blue-20: #759ef1;
-
     // Secondary
     --red: #f05245;
     --blue: #00adff;
@@ -42,27 +29,9 @@
     --dark-blue-40: #5e75f1;
     --dark-blue-20: #808bff;
 
-    // Greyscale
-    --black: #000000;
-    --grey-100: #282829;
-    --grey-80: #626971;
-    --grey-60: #8e959d;
-    --grey-50: #c5cacf;
-    --grey-40: #e5e8e8;
-    --grey-20: #f6f7f9;
-    --white: #ffffff;
-
     // Accent
     --pomegranate-40: #ee8279;
     --pomegranate-20: #ffd7d3;
-
-    --turbo-yellow-50: #ffe300;
-    --turbo-yellow-20: #fff7ba;
-
-    --sienna-orange-70: #c04c26;
-    --sienna-orange-60: #e06036;
-    --sienna-orange-40: #fe926e;
-    --sienna-orange-20: #ffcdbd;
 
     // Utility
     --information-100: #0d69ac;
@@ -71,22 +40,17 @@
     --information-40: #66c9ff;
     --information-20: #ccefff;
 
-    --success-100: #016b52;
     --success-80: #0d866a;
-    --success-60: #12a344;
     --success-40: #6edbc1;
     --success-20: #ccf9ee;
 
     --warning-100: #805700;
     --warning-80: #bf7500;
-    --warning-70: #e2b104;
     --warning-60: #f0a702;
     --warning-40: #fdcd66;
     --warning-20: #ffefcc;
 
-    --critical-100: #c2271c;
     --critical-80: #da3c2f;
-    --critical-70: #cd2113;
     --critical-60: #f05245;
     --critical-40: #ff8276;
     --critical-20: #ffcecc;
