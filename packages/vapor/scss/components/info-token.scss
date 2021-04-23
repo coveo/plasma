@@ -1,55 +1,27 @@
 .info-token {
     // Default Style
     display: inline-block;
-    width: 28px;
-    height: 28px;
-    text-align: center;
-
-    // Style Override
-    background-color: var(--background-color);
-    border: 1px solid;
-    border-color: var(--border-color);
-    border-radius: 50%;
-    // left: 2px;
-    // top: 2px;
-    // box-sizing: border-box;
 
     // Variables
-    --background-color: #525296;
-    --border-color: #525296;
+    --width: 28px;
+    --height: 28px;
 
-    svg {
-        fill: white;
+    // Style Override
+    width: var(--width);
+    height: var(--height);
+
+    &.mod-big {
+        --width: 28px;
+        --height: 28px;
     }
 
-    // Mods
-    &.mod-info {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
+    &.mod-normal {
+        --width: 20px;
+        --height: 20px;
     }
 
-    &.mod-tip {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
-    }
-
-    &.mod-warning {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
-    }
-
-    &.mod-critical {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
-    }
-
-    &.mod-success {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
-    }
-
-    &.mod-question {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
+    &.mod-small {
+        --width: 14px;
+        --height: 14px;
     }
 }

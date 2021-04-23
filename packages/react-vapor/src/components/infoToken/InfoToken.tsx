@@ -18,7 +18,7 @@ export class InfoToken extends React.Component<IInfoTokenProps> {
         const className = classNames(DEFAULT_INFO_TOKEN_CLASSNAME, this.props.extraClasses);
         return (
             <span className={className}>
-                <Svg svgName={this.props.icon} svgClass="icon" className="pr1 py1" />
+                <Svg svgName={this.props.icon} className="pr1 py1" />
             </span>
         );
     }
