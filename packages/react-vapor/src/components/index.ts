@@ -33,7 +33,6 @@ export * from './form';
 export * from './logoCard';
 export * from './headers';
 export * from './infoBox';
-export * from './infoToken';
 export * from './inlinePrompt';
 export * from './input';
 export * from './itemBox';
