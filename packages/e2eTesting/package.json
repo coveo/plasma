@@ -6,14 +6,13 @@
   "main": "index.js",
   "scripts": {
     "e2e:open": "cypress open",
-    "e2e:run": "cypress run",
+    "e2e:run": "cypress run --headless",
     "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{ts,tsx,js,jsx,json,md,yml,html}\""
   },
   "devDependencies": {
     "@testing-library/cypress": "^7.0.6",
     "cypress": "^7.1.0",
-    "typescript": "^4.2.4",
-    "Xvfb":"^0.4.0"
+    "typescript": "^4.2.4"
   },
   "author": "Coveo",
   "license": "Apache-2.0",
