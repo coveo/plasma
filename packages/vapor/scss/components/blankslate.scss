@@ -38,10 +38,10 @@
     // deprecated use .mod-error instead
     &.mod-danger {
         background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
-        border-color: var(--red);
+        border-color: var(--critical-70);
         h1,
         p {
-            color: var(--red);
+            color: var(--critical-70);
         }
     }
 

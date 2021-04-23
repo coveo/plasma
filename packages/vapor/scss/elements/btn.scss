@@ -44,7 +44,7 @@
         color: var(--navy-blue-80);
         text-decoration: none;
         background-color: var(--white);
-        outline-color: var(--green);
+        outline-color: var(--bright-turquoise-40);
     }
 
     &:hover {
@@ -120,8 +120,8 @@
 
     &.mod-danger {
         color: var(--white);
-        background-color: var(--critical-60);
-        border: $button-border-width solid var(--critical-60);
+        background-color: var(--critical-70);
+        border: $button-border-width solid var(--critical-70);
 
         &:active {
             background-color: var(--critical-100);
@@ -129,14 +129,14 @@
         }
 
         &:focus {
-            background-color: var(--critical-60);
-            border: $button-border-width solid var(--critical-60);
+            background-color: var(--critical-70);
+            border: $button-border-width solid var(--critical-70);
         }
 
         &:hover {
-            background-color: var(--critical-80);
-            border: $button-border-width solid var(--critical-80);
-            outline-color: var(--critical-80);
+            background-color: var(--pomegranate-red-80);
+            border: $button-border-width solid var(--pomegranate-red-80);
+            outline-color: var(--pomegranate-red-80);
         }
 
         &:disabled,
@@ -213,17 +213,17 @@
     }
 
     &.mod-confirm-success {
-        background-color: var(--green);
-        border: $button-border-width solid var(--green);
+        background-color: var(--bright-turquoise-40);
+        border: $button-border-width solid var(--bright-turquoise-40);
 
         &:focus,
         &:hover {
-            background-color: var(--green);
-            outline-color: var(--green);
+            background-color: var(--bright-turquoise-40);
+            outline-color: var(--bright-turquoise-40);
         }
 
         &:before {
-            color: var(--green);
+            color: var(--bright-turquoise-40);
             content: attr(data-confirm-success);
         }
 
@@ -233,17 +233,17 @@
     }
 
     &.mod-confirm-error {
-        background-color: var(--red);
-        border: $button-border-width solid var(--red);
+        background-color: var(--critical-70);
+        border: $button-border-width solid var(--critical-70);
 
         &:focus,
         &:hover {
-            background-color: var(--red);
-            outline-color: var(--red);
+            background-color: var(--critical-70);
+            outline-color: var(--critical-70);
         }
 
         &:before {
-            color: var(--red);
+            color: var(--critical-70);
             content: attr(data-confirm-error);
         }
 
@@ -278,10 +278,10 @@ button {
 
 .btn-hover:hover {
     .icon {
-        fill: var(--green);
+        fill: var(--bright-turquoise-40);
     }
 
     .btn-hover-text {
-        color: var(--success-40);
+        color: var(--rain-forest-green-30);
     }
 }

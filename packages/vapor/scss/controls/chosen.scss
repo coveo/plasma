@@ -195,7 +195,7 @@
     }
 
     &.chosen-container-active .chosen-single {
-        outline: var(--orange) auto 5px;
+        outline: var(--deprecated-orange) auto 5px;
     }
 
     &.chosen-container-single-nosearch .chosen-drop .chosen-search {
@@ -311,7 +311,7 @@
     }
 
     &.chosen-container-active .chosen-choices {
-        outline: var(--orange) auto 5px;
+        outline: var(--deprecated-orange) auto 5px;
     }
 
     &.chosen-with-drop .chosen-choices {

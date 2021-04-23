@@ -3,15 +3,15 @@
     align-items: center;
 
     &.mod-error {
-        color: var(--red);
+        color: var(--critical-70);
 
         .sync-feedback-icon svg {
-            fill: var(--red);
+            fill: var(--critical-70);
         }
     }
 
     &.mod-success .sync-feedback-icon svg {
-        fill: var(--status-green);
+        fill: var(--success-60);
     }
 
     .sync-feedback-icon {

@@ -185,19 +185,19 @@ $icon-size: (4em / 3);
     }
 
     &.mod-success {
-        background-color: var(--status-green);
+        background-color: var(--success-60);
     }
 
     &.mod-warning {
-        background-color: var(--warning-60);
+        background-color: var(--warning-70);
     }
 
     &.mod-critical {
-        background-color: var(--status-red);
+        background-color: var(--critical-70);
     }
 
     &.mod-info {
-        background-color: var(--information-60);
+        background-color: var(--info-60);
     }
 
     h1 {

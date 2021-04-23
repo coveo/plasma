@@ -12,7 +12,7 @@
             color: var(--white);
             font-size: 12px;
             line-height: 16px;
-            background-color: var(--red);
+            background-color: var(--critical-70);
 
             .input-validation-error-icon {
                 &,
@@ -22,7 +22,7 @@
                 }
 
                 .icon:not(.mod-white) {
-                    fill: var(--red);
+                    fill: var(--critical-70);
                 }
             }
 
@@ -32,7 +32,7 @@
         }
 
         label {
-            color: var(--red);
+            color: var(--critical-70);
         }
     }
 
@@ -44,7 +44,7 @@
 .generic-form-error {
     display: inline-block;
     margin-bottom: 10px;
-    color: var(--red);
+    color: var(--critical-70);
     font-size: 12px;
 
     &.bottom {
@@ -58,20 +58,20 @@
     &.multiline-input-validation-error {
         label,
         .value {
-            border-bottom: solid 1px var(--red);
+            border-bottom: solid 1px var(--critical-70);
         }
 
         & > label:first-child {
-            color: var(--red);
+            color: var(--critical-70);
         }
     }
 }
 
 .validation {
     &-error {
-        color: var(--critical-60);
+        color: var(--critical-70);
     }
     &-warning {
-        color: var(--warning-60);
+        color: var(--warning-70);
     }
 }

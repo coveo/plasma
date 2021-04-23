@@ -13,8 +13,8 @@ $infoBoxAdditionalPadding: 3 * $spacing;
     border-left: $infoBoxBorderSize solid;
 
     // Variables
-    --background-color: var(--information-20);
-    --border-color: var(--deprecated-azure);
+    --background-color: var(--info-10);
+    --border-color: var(--info-60);
 
     // Style Override
     background-color: var(--background-color);
@@ -22,8 +22,8 @@ $infoBoxAdditionalPadding: 3 * $spacing;
 
     // Mods
     &.mod-warning {
-        --background-color: var(--warning-20);
-        --border-color: var(--warning-60);
+        --background-color: var(--warning-10);
+        --border-color: var(--warning-70);
     }
 }
 
