@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {Svg} from 'react-vapor';
 
 export class InfoTokenExamples extends React.Component<any, any> {
     render() {
@@ -7,7 +8,7 @@ export class InfoTokenExamples extends React.Component<any, any> {
                 <div className="form-group">
                     <label className="form-control-label">Warnings tokens</label>
                     <div className="form-control">
-                        <Svg svgName={'add'} className="icon mod-normal ml1" />
+                        <Svg svgName={'info-token-full-critical-16'} />
                         {/* <InfoToken icon="info-token-warning" extraClasses={['ml1']} />
                         <InfoToken icon="info-token-warning" extraClasses={['mod-small ml1']} />
                         <InfoToken icon="info-token-warning" extraClasses={['mod-smaller ml1']} /> */}
