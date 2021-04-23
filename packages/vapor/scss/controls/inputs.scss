@@ -47,7 +47,7 @@ textarea {
     &.disabled-input {
         background-color: transparent;
         &::placeholder {
-            color: var(--red);
+            color: var(--critical-70);
             font-size: 12px;
         }
     }

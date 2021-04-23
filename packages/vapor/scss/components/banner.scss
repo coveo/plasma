@@ -44,20 +44,20 @@
 }
 
 .banner-warning-title {
-    color: var(--warning-60);
+    color: var(--warning-70);
 }
 
 .banner-error-title {
-    color: var(--critical-80);
+    color: var(--pomegranate-red-80);
 }
 
 .banner-warning-icon {
     position: relative;
     top: $banner-warning-icon-fix;
-    fill: var(--warning-60);
+    fill: var(--warning-70);
 
     .banner-error-title & {
-        fill: var(--critical-80);
+        fill: var(--pomegranate-red-80);
     }
 }
 

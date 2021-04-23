@@ -522,10 +522,10 @@ $slide-y-transition-duration: 0.5s;
 
 // Progress bar
 $step-progress-bar-height: 8px;
-$step-progress-bar-border-width: 3px;
-$step-progress-bar-done-color: var(--success-60);
-$step-progress-bar-doing-color: var(--success-80);
-$step-progress-bar-to-do-color: var(--grey-40);
+$step-progress-bar-border-width: 4px;
+$step-progress-bar-done-color: var(--bright-turquoise-70);
+$step-progress-bar-doing-color: var(--bright-turquoise-40);
+$step-progress-bar-to-do-color: var(--bright-turquoise-10);
 
 // Corner ribbon
 $ribbon-width: 10rem;
@@ -582,8 +582,8 @@ $multi-step-animation-color: var(--deprecated-light-grey);
 $multi-step-to-do-color: var(--deprecated-light-grey);
 $multi-step-doing-color: #3bb862;
 $multi-step-done-color: #3bb862;
-$multi-step-error-color: var(--red);
-$multi-step-warning-color: var(--orange);
+$multi-step-error-color: var(--critical-70);
+$multi-step-warning-color: var(--deprecated-orange);
 
 // Icons
 $icon-hover-offset: 2px;

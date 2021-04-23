@@ -190,7 +190,7 @@
         .row-selected td,
         &.row-selected:hover td {
             background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
-            border-color: var(--red);
+            border-color: var(--critical-70);
             transition: background-color 300ms;
         }
     }
@@ -245,7 +245,7 @@
 
     tr.selected .mod-card {
         background-color: var(--deprecated-grey-1);
-        border-left: $status-card-border-width solid var(--orange);
+        border-left: $status-card-border-width solid var(--deprecated-orange);
     }
 }
 

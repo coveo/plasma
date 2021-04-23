@@ -40,15 +40,15 @@ $status-card-small-width: 160px;
         }
 
         &.mod-warning {
-            border-left-color: var(--warning-60);
+            border-left-color: var(--warning-70);
         }
 
         &.mod-critical {
-            border-left-color: var(--critical-80);
+            border-left-color: var(--critical-70);
         }
 
         &.mod-information {
-            border-left-color: var(--information-80);
+            border-left-color: var(--info-60);
         }
     }
 }

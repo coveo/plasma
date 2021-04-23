@@ -35,12 +35,12 @@
     .tooltip {
         &.right {
             .tooltip-arrow {
-                border-right-color: var(--orange);
+                border-right-color: var(--deprecated-orange);
             }
         }
 
         .tooltip-inner {
-            background-color: var(--orange);
+            background-color: var(--deprecated-orange);
         }
     }
 

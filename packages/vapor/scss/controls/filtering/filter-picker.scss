@@ -42,10 +42,10 @@
 
             .filter-operator {
                 &.mod-negative {
-                    color: var(--red);
+                    color: var(--critical-70);
                 }
                 &.mod-positive {
-                    color: var(--green);
+                    color: var(--bright-turquoise-40);
                 }
             }
 
