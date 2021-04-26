@@ -129,6 +129,13 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                 <Button
                     enabled
                     className="btn m0 mr1 mb1"
+                    name="Information"
+                    onClick={() => renderToast('containerId', 'Information !', {type: 'Info'})}
+                />
+
+                <Button
+                    enabled
+                    className="btn m0 mr1 mb1"
                     name="Success"
                     onClick={() => renderToast('containerId', 'Success !')}
                 />

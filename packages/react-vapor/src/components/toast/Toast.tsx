@@ -27,6 +27,7 @@ export const ToastType = {
     Success: 'Success',
     Warning: 'Warning',
     Error: 'Error',
+    Info: 'Info',
 };
 
 export class Toast extends React.Component<IToastProps> {
@@ -76,6 +77,7 @@ export class Toast extends React.Component<IToastProps> {
                     (_.isEmpty(this.props.className) && _.isEmpty(this.props.type)),
                 'mod-warning': this.props.type === ToastType.Warning,
                 'mod-error': this.props.type === ToastType.Error,
+                'mod-info': this.props.type === ToastType.Info,
                 'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
             },
             this.props.className,
