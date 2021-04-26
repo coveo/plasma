@@ -1,12 +1,12 @@
 $toast-z-index: 9999;
 $toast-margin: 20px;
 $toast-margin-top: $header-height;
-$toast-padding: 20px;
-$toast-text-color: var(--white);
+$toast-download-padding: 20px;
 $toast-text-font-size: 14px;
 $toast-title-font-weight: 500;
 $toast-description-margin-top: 15px;
 $toast-close-size: 16px;
+$toast-close-padding-left: 5px;
 
 .toast-container {
     position: fixed;
@@ -47,7 +47,9 @@ $toast-close-size: 16px;
         // Default Style
         display: block;
         min-width: var(--min-width);
-        padding: $toast-padding;
+        margin: 10px 0px;
+        padding: var(--padding);
+        color: var(--text-color);
 
         // override
         background-color: var(--background-color);
@@ -58,6 +60,8 @@ $toast-close-size: 16px;
         // variables
         --background-color: var(--success-60);
         --min-width: 280px;
+        --padding: 20px;
+        --text-color: var(--white);
 
         &.mod-success {
             --background-color: var(--success-60);
@@ -77,8 +81,7 @@ $toast-close-size: 16px;
 
         &.mod-small {
             --min-width: none;
-            // margin-top: $toast-margin;
-            margin: 10px 0px;
+            --padding: 16px;
         }
 
         &.mod-hidden {
@@ -101,7 +104,6 @@ $toast-close-size: 16px;
     }
 
     .toast-title {
-        color: $toast-text-color;
         font-weight: $toast-title-font-weight;
         font-size: $toast-text-font-size;
         line-height: 20px;
@@ -110,21 +112,19 @@ $toast-close-size: 16px;
 
     .toast-description {
         margin-top: $toast-description-margin-top;
-        color: $toast-text-color;
         font-size: $toast-text-font-size;
     }
 
-    &:not(.mod-small) {
-        .toast-close {
-            float: right;
-            padding-left: $toast-close-padding-left;
-            cursor: pointer;
-            fill: $toast-text-color;
+    .toast-close {
+        position: static;
+        float: right;
+        padding-left: $toast-close-padding-left;
+        cursor: pointer;
+        fill: var(--text-color);
 
-            svg {
-                width: $toast-close-size;
-                height: $toast-close-size;
-            }
+        svg {
+            width: $toast-close-size;
+            height: $toast-close-size;
         }
     }
 
@@ -137,12 +137,12 @@ $toast-close-size: 16px;
 
         .toast-title,
         .toast-close {
-            padding: $toast-padding;
+            padding: $toast-download-padding;
         }
 
         .toast-description {
             margin-top: 0;
-            padding: $toast-padding;
+            padding: $toast-download-padding;
             color: var(--title-text-color);
             font-size: var(--default-font-size);
             background: var(--grey-1);
