@@ -13,6 +13,7 @@ export interface IToastProps {
     dismissible?: boolean;
     animate?: boolean;
     isDownload?: boolean;
+    isSmall?: boolean;
     className?: string;
     /**
      * @deprecated use children instead
@@ -79,6 +80,7 @@ export class Toast extends React.Component<IToastProps> {
                 'mod-error': this.props.type === ToastType.Error,
                 'mod-info': this.props.type === ToastType.Info,
                 'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
+                'mod-small': this.props.isSmall,
             },
             this.props.className,
             {
@@ -86,13 +88,13 @@ export class Toast extends React.Component<IToastProps> {
             }
         );
 
-        const closeButton = this.props.dismissible && (
+        const closeButton = this.props.dismissible && !this.props.isSmall && (
             <span className="toast-close" onClick={() => this.close()}>
                 <Svg svgName="close" className="icon mod-lg" />
             </span>
         );
 
-        const toastContent = (!!this.props.content || !!this.props.children) && (
+        const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
             <div className="toast-description">
                 {this.props.isDownload ? (
                     <div className="flex space-between">

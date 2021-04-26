@@ -1,39 +1,12 @@
-$toast-min-width: 280px;
 $toast-z-index: 9999;
 $toast-margin: 20px;
 $toast-margin-top: $header-height;
 $toast-padding: 20px;
-$toast-text-color: #ffffff;
-$toast-title-font-size: 16px;
-$toast-description-font-size: 12px;
+$toast-text-color: var(--white);
+$toast-text-font-size: 14px;
+$toast-title-font-weight: 500;
 $toast-description-margin-top: 15px;
 $toast-close-size: 16px;
-
-@keyframes toastFadeInTop {
-    from {
-        transform: translate(0, -100%);
-
-        opacity: 0;
-    }
-    to {
-        transform: translate(0, 0);
-
-        opacity: 1;
-    }
-}
-
-@keyframes toastFadeInBottom {
-    from {
-        transform: translate(0, 100%);
-
-        opacity: 0;
-    }
-    to {
-        transform: translate(0, 0);
-
-        opacity: 1;
-    }
-}
 
 .toast-container {
     position: fixed;
@@ -71,29 +44,41 @@ $toast-close-size: 16px;
     }
 
     .toast {
+        // Default Style
         display: block;
-        min-width: $toast-min-width;
-        margin-top: $toast-margin;
+        min-width: var(--min-width);
         padding: $toast-padding;
+
+        // override
+        background-color: var(--background-color);
         border-radius: 8px;
-        // commum a tous
         box-shadow: 0px 14px 26px rgba(142, 142, 142, 0.16);
         pointer-events: all;
 
+        // variables
+        --background-color: var(--success-60);
+        --min-width: 280px;
+
         &.mod-success {
-            background-color: var(--success-60);
+            --background-color: var(--success-60);
         }
 
         &.mod-warning {
-            background-color: var(--warning-70);
+            --background-color: var(--warning-70);
         }
 
         &.mod-error {
-            background-color: var(--critical-70);
+            --background-color: var(--critical-70);
         }
 
         &.mod-info {
-            background-color: #525296; // get var pls arie
+            --background-color: #525296; //get var pls arie
+        }
+
+        &.mod-small {
+            --min-width: none;
+            // margin-top: $toast-margin;
+            margin: 10px 0px;
         }
 
         &.mod-hidden {
@@ -115,27 +100,32 @@ $toast-close-size: 16px;
         }
     }
 
-    .toast-close {
-        float: right;
-        padding-left: $toast-close-padding-left;
-        cursor: pointer;
-        fill: $toast-text-color;
-
-        svg {
-            width: $toast-close-size;
-            height: $toast-close-size;
-        }
-    }
-
     .toast-title {
         color: $toast-text-color;
-        font-size: $toast-title-font-size;
+        font-weight: $toast-title-font-weight;
+        font-size: $toast-text-font-size;
+        line-height: 20px;
+        text-align: center;
     }
 
     .toast-description {
         margin-top: $toast-description-margin-top;
         color: $toast-text-color;
-        font-size: $toast-description-font-size;
+        font-size: $toast-text-font-size;
+    }
+
+    &:not(.mod-small) {
+        .toast-close {
+            float: right;
+            padding-left: $toast-close-padding-left;
+            cursor: pointer;
+            fill: $toast-text-color;
+
+            svg {
+                width: $toast-close-size;
+                height: $toast-close-size;
+            }
+        }
     }
 
     .toast.toast-download {
@@ -168,5 +158,31 @@ $toast-close-size: 16px;
                 }
             }
         }
+    }
+}
+
+@keyframes toastFadeInTop {
+    from {
+        transform: translate(0, -100%);
+
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+
+        opacity: 1;
+    }
+}
+
+@keyframes toastFadeInBottom {
+    from {
+        transform: translate(0, 100%);
+
+        opacity: 0;
+    }
+    to {
+        transform: translate(0, 0);
+
+        opacity: 1;
     }
 }
