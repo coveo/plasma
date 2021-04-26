@@ -64,11 +64,10 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                 <CollapsibleContainerConnected
                     id="collapsible-container-example-1"
                     title="CollapsibleContainer expanded on mount"
-                    informationUrl="http://coveo.github.io/vapor/"
+                    informationUrl="https://www.coveo.com/en"
                     informationTooltip={{
                         title:
                             "I display information and if you click me you'll be led to a url that was provided to me.",
-                        placement: 'top',
                     }}
                     expandedOnMount
                 >
@@ -79,11 +78,10 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                 <CollapsibleContainerConnected
                     id="collapsible-container-example-2"
                     title="CollapsibleContainer with custom icon"
-                    informationUrl="http://coveo.github.io/vapor/"
+                    informationUrl="https://www.coveo.com/en"
                     informationTooltip={{
                         title:
                             "I display information and if you click me you'll be led to a url that was provided to me.",
-                        placement: 'top',
                     }}
                     collapsibleToggleIcon={
                         <span className="flex space-between center-align">
@@ -98,11 +96,10 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                 <CollapsibleContainerConnected
                     id="collapsible-container-example-3"
                     title="CollapsibleContainer disabled"
-                    informationUrl="http://coveo.github.io/vapor/"
+                    informationUrl="https://www.coveo.com/en"
                     informationTooltip={{
                         title:
                             "I display information and if you click me you'll be led to a url that was provided to me.",
-                        placement: 'top',
                     }}
                     disabled
                 >
@@ -115,7 +112,6 @@ export const CollapsibleExamples: React.FunctionComponent = () => (
                     title="CollapsibleContainer not expanded on mount"
                     informationTooltip={{
                         title: 'I display information only since no url was given to me.',
-                        placement: 'top',
                     }}
                 >
                     I was not expanded on mount, but now I am! Thanks!

@@ -9,8 +9,6 @@ const defaultSvgProps: ISvgProps = {
 
 const defaultTooltipProps: ITooltipProps = {
     title: 'default tooltip description',
-    placement: 'bottom',
-    container: 'body',
 };
 
 export class LinkSvgExamples extends React.Component<any, any> {

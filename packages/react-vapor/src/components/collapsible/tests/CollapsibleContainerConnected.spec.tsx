@@ -1,74 +1,39 @@
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
-import {render} from '@testing-library/react';
+import {render, screen} from 'react-vapor-test-utils';
+
 import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
-import {IReactVaporState} from '../../../ReactVapor';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
 
 describe('CollapsibleContainerConnected', () => {
-    let store: Store<IReactVaporState>;
+    it('displays the collapsible header and its content', () => {
+        render(
+            <CollapsibleContainerConnected id="🆔" title="the title">
+                content
+            </CollapsibleContainerConnected>
+        );
 
-    beforeEach(() => {
-        store = TestUtils.buildStore();
+        expect(screen.getByText('the title')).toBeVisible();
+        expect(screen.getByText('content')).toBeVisible();
+        expect(screen.queryByRole('img', {name: /help icon/i})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: /info icon/i})).not.toBeInTheDocument();
     });
 
-    afterEach(() => {
-        store.dispatch(clearState());
+    it('displays an help icon next to the title if informationUrl prop was provided', () => {
+        render(
+            <CollapsibleContainerConnected id="🆔" title="the title" informationUrl="http://perdu.com">
+                content
+            </CollapsibleContainerConnected>
+        );
+
+        expect(screen.getByRole('img', {name: /help icon/i})).toBeInTheDocument();
     });
 
-    describe('if no informationUrl and informationTooltip are passed', () => {
-        it('does not render a round contextual help svg in the header', () => {
-            const {container} = render(
-                <Provider store={store}>
-                    <CollapsibleContainerConnected id="👑" title="🥔">
-                        PatateKing!
-                    </CollapsibleContainerConnected>
-                </Provider>
-            );
+    it('displays an info icon next to the title if informationTooltip prop was provided alone', () => {
+        render(
+            <CollapsibleContainerConnected id="🆔" title="the title" informationTooltip={{title: 'tooltip!'}}>
+                content
+            </CollapsibleContainerConnected>
+        );
 
-            const svg = container.querySelector('span.round-contextual-help');
-            expect(svg).not.toBeInTheDocument();
-        });
-    });
-
-    describe('if informationUrl is passed', () => {
-        it('renders a round contextual help svg in the header', () => {
-
-            const {container} = render(
-                <Provider store={store}>
-                    <CollapsibleContainerConnected id="👑" title="🥔" informationUrl="http://coveo.github.io/vapor/">
-                        PatateKing!
-                    </CollapsibleContainerConnected>
-                </Provider>
-            );
-
-            const svg = container.querySelector('span.round-contextual-help svg.documentation-link');
-            expect(svg).toBeInTheDocument();
-        });
-    });
-
-    describe('if informationTooltip is passed', () => {
-        it('renders a round contextual help svg in the header', () => {
-
-            const {container} = render(
-                <Provider store={store}>
-                    <CollapsibleContainerConnected
-                        id="👑"
-                        title="🥔"
-                        informationTooltip={{
-                            title: 'PatateKing',
-                            placement: 'top',
-                        }}
-                    >
-                        PatateKing!
-                    </CollapsibleContainerConnected>
-                </Provider>
-            );
-
-            const svg = container.querySelector('span.round-contextual-help svg.icon');
-            expect(svg).toBeInTheDocument();
-        });
+        expect(screen.getByRole('img', {name: /info icon/i})).toBeInTheDocument();
     });
 });
