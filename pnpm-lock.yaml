@@ -8535,7 +8535,7 @@ packages:
   /git-cz/4.7.6:
     resolution: {integrity: sha512-WtQEXqetJSi9LKPI77bMdSQWvLGjE93egVbR0zjXd1KFKrFvo/YE/UuGNcMeBDiwzxfQBhjyV7Hn0YUZ8Q0BcQ==}
     hasBin: true
-    dev: false
+    dev: true
 
   /git-raw-commits/2.0.0:
     resolution: {integrity: sha512-w4jFEJFgKXMQJ0H0ikBk2S+4KP2VEjhCvLCNqbNRQC8BgGWgLKNCO7a9K9LI+TVT7Gfoloje502sEnctibffgg==}
