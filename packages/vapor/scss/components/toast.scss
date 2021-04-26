@@ -75,18 +75,25 @@ $toast-close-size: 16px;
         min-width: $toast-min-width;
         margin-top: $toast-margin;
         padding: $toast-padding;
+        border-radius: 8px;
+        // commum a tous
+        box-shadow: 0px 14px 26px rgba(142, 142, 142, 0.16);
         pointer-events: all;
 
         &.mod-success {
-            background-color: var(--status-green);
+            background-color: var(--success-60);
         }
 
         &.mod-warning {
-            background-color: var(--warning-60);
+            background-color: var(--warning-70);
         }
 
         &.mod-error {
-            background-color: var(--status-red);
+            background-color: var(--critical-70);
+        }
+
+        &.mod-info {
+            background-color: #525296; // get var pls arie
         }
 
         &.mod-hidden {
