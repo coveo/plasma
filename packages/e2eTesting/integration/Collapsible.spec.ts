@@ -1,5 +1,6 @@
 const CollapsibleInfoBox = 'div[class="cursor-pointer flex space-between center-align p1"]';
 const CollapsibleContainer = 'div[class*="collapsible-container"]';
+
 context('Actions', () => {
   before(() => {
 		cy.visit('localhost:8080/#/components/Collapsible');
