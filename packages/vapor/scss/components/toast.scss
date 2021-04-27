@@ -141,7 +141,7 @@ $toast-close-padding-left: 5px;
     .toast.toast-download {
         min-width: 300px;
         padding: 0;
-        background: $blue-purple-3;
+        background: #525296; // get the var arie!!!
         border-radius: 6px;
         box-shadow: 0 2px 4px rgba($black, $transparency-4);
 
@@ -153,12 +153,13 @@ $toast-close-padding-left: 5px;
         .toast-description {
             margin-top: 0;
             padding: $toast-download-padding;
-            color: var(--title-text-color);
-            font-size: var(--default-font-size);
-            background: var(--grey-1);
+            color: var(--grey-80);
+            font-size: 12px;
+            line-height: 16px;
+            background: var(--white);
             border-bottom-right-radius: inherit;
             border-bottom-left-radius: inherit;
-            box-shadow: inset 0px 5px 6px -5px var(--grey-100);
+            filter: drop-shadow(0px 8px 17px rgba(142, 142, 142, 0.22));
 
             .spinner-container {
                 width: 16px;
