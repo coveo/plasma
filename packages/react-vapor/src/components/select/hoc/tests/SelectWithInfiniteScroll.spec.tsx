@@ -15,7 +15,7 @@ describe('SelectWithInfiniteScroll', () => {
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const listitems = screen.getAllByRole('listitem');
         expect(listitems.length).toBe(3);
@@ -31,7 +31,7 @@ describe('SelectWithInfiniteScroll', () => {
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('list');
         const scrollEvent = new Event('scroll');
@@ -47,7 +47,7 @@ describe('SelectWithInfiniteScroll', () => {
         render(<SingleSelectWithInfiniteScroll id={id} next={nextSpy} totalEntries={3} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('list');
         const scrollEvent = new Event('scroll');
@@ -62,7 +62,7 @@ describe('SelectWithInfiniteScroll', () => {
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={5000} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('list');
         const scrollEvent = new Event('scroll');
@@ -77,7 +77,7 @@ describe('SelectWithInfiniteScroll', () => {
         render(<SingleSelectWithInfiniteScroll id={id} next={() => []} totalEntries={3} items={items} />);
 
         // open the dropdown
-        userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
         const list = screen.getByRole('list');
         const scrollEvent = new Event('scroll');

@@ -66,7 +66,7 @@ describe('Select', () => {
             render(<MultiSelectConnected id={id} items={items} />);
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             const lists = screen.getAllByRole('list');
 
@@ -80,7 +80,7 @@ describe('Select', () => {
 
             render(<MultiSelectConnected id={id} items={items} />, {});
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             const lists = screen.getAllByRole('list');
             expect(within(lists[1]).queryByText('first')).not.toBeInTheDocument();
@@ -139,7 +139,7 @@ describe('Select', () => {
 
             render(<MultiSelectConnected id={id} items={items} />);
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             let lists = screen.getAllByRole('list');
             expect(within(lists[0]).getByText('🥔')).toBeVisible();
@@ -155,7 +155,7 @@ describe('Select', () => {
             expect(within(lists[0]).getByText('🍟')).toBeVisible();
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             lists = screen.getAllByRole('list');
             expect(within(lists[1]).getByText('🌱')).toBeVisible();
@@ -171,7 +171,7 @@ describe('Select', () => {
             render(<MultiSelectConnected id={id} items={items} />);
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             // one list for the selected values
             expect(screen.getAllByRole('list').length).toBe(1);
@@ -181,7 +181,7 @@ describe('Select', () => {
             render(<MultiSelectConnected id={id} items={[]} />);
 
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             // one list for the selected values
             expect(screen.getAllByRole('list').length).toBe(1);
