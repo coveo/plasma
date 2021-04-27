@@ -73,7 +73,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         key="toast-1"
                         id="toast-1"
                         title="Timed Sucess !!"
-                        dismiss={1000}
+                        dismiss={2000}
                         onClose={() => setState({...state, Success: false})}
                     />
                 )}
@@ -85,7 +85,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         id="toast-1"
                         title="Left Info !!"
                         type="Info"
-                        dismiss={1000}
+                        dismiss={2000}
                         onClose={() => setState({...state, Info: false})}
                     />
                 )}
@@ -97,7 +97,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         id="toast-1"
                         title="Warning !!"
                         type="Warning"
-                        dismiss={1000}
+                        dismiss={2000}
                         onClose={() => setState({...state, Warning: false})}
                     />
                 )}
@@ -109,7 +109,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         id="toast-1"
                         title="Error !!"
                         type="Error"
-                        dismiss={1000}
+                        dismiss={2000}
                         onClose={() => setState({...state, Error: false})}
                     />
                 )}
@@ -146,6 +146,8 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
         </ul>
     );
 
+    const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet accumsan ante.';
+
     return (
         <>
             <Section level={2} title="Toasts with a redux store" className="flex">
@@ -153,33 +155,39 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     enabled
                     className="btn m0 mr1 mb1"
                     name="Information"
-                    onClick={() => renderToast('containerId', 'Information !', {type: 'Info'})}
+                    onClick={() =>
+                        renderToast('containerId', 'Information !', {type: 'Info', content: toastDescription})
+                    }
                 />
 
                 <Button
                     enabled
                     className="btn m0 mr1 mb1"
                     name="Success"
-                    onClick={() => renderToast('containerId', 'Success !')}
+                    onClick={() => renderToast('containerId', 'Success !', {content: toastDescription})}
                 />
 
                 <Button
                     enabled
                     className="btn m0 mr1 mb1"
                     name="Warning   "
-                    onClick={() => renderToast('containerId', 'Warning !', {type: 'Warning'})}
+                    onClick={() =>
+                        renderToast('containerId', 'Warning !', {type: 'Warning', content: toastDescription})
+                    }
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Error"
-                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error'})}
+                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error', content: toastDescription})}
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Timed Success"
-                    onClick={() => renderToast('containerId', 'Timed Success !', {dismiss: 1000})}
+                    onClick={() =>
+                        renderToast('containerId', 'Timed Success !', {dismiss: 2000, content: toastDescription})
+                    }
                 />
 
                 <Button
@@ -207,7 +215,7 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                         renderToast('containerId', "I'm so small !", {
                             type: 'Info',
                             isSmall: true,
-                            dismiss: 1000,
+                            dismiss: 2000,
                         })
                     }
                 />
@@ -219,7 +227,7 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     onClick={() =>
                         renderToast('containerId', 'Success !', {
                             isSmall: true,
-                            dismiss: 1000,
+                            dismiss: 2000,
                         })
                     }
                 />
@@ -229,14 +237,14 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     className="btn m0 mr1 mb1"
                     name="Warning   "
                     onClick={() =>
-                        renderToast('containerId', 'Warning !', {type: 'Warning', dismiss: 1000, isSmall: true})
+                        renderToast('containerId', 'Warning !', {type: 'Warning', dismiss: 2000, isSmall: true})
                     }
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Error"
-                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error', dismiss: 1000, isSmall: true})}
+                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error', dismiss: 2000, isSmall: true})}
                 />
 
                 <Button
