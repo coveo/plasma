@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-next.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v16.0.0-next.2) (2021-04-27)
+
+
+### Bug Fixes
+
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+* **types:** include types of dependencies we export ([d85f697](https://github.com/coveo/react-vapor/commit/d85f6972cb7f43fe4d6f45fd399e6bfbaf2ebef6))
+
+
+### Code Refactoring
+
+* **vapor:** remove js variables for vapor colors ([6ab6d0c](https://github.com/coveo/react-vapor/commit/6ab6d0cd9b44eb8253abfddedec8e63cdaddf79c))
+
+
+### BREAKING CHANGES
+
+* **vapor:** VaporColors is no longer exported from react-vapor, use `'var(--color-name)'` in
+your code instead.
+
+
+
+
+
 # [16.0.0-next.1](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v16.0.0-next.1) (2021-04-26)
 
 
