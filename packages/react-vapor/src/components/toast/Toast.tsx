@@ -111,7 +111,7 @@ export class Toast extends React.Component<IToastProps> {
             </span>
         );
 
-        const infoToken = !this.props.isSmall && (
+        const infoToken = !this.props.isSmall && !this.props.isDownload && (
             <Svg svgName={this.getInfoToken(this.props.type)} className="toast-info-token" />
         );
 
