@@ -30,6 +30,8 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
         Timed: false,
     });
 
+    const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
+
     return (
         <>
             <Section level={2} title="Toasts with a local state" className="flex">
@@ -73,6 +75,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         key="toast-1"
                         id="toast-1"
                         title="Timed Sucess !!"
+                        content={toastDescription}
                         dismiss={2000}
                         onClose={() => setState({...state, Success: false})}
                     />
@@ -84,6 +87,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         key="toast-1"
                         id="toast-1"
                         title="Left Info !!"
+                        content={toastDescription}
                         type="Info"
                         dismiss={2000}
                         onClose={() => setState({...state, Info: false})}
@@ -96,6 +100,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         key="toast-1"
                         id="toast-1"
                         title="Warning !!"
+                        content={toastDescription}
                         type="Warning"
                         dismiss={2000}
                         onClose={() => setState({...state, Warning: false})}
@@ -108,6 +113,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         key="toast-1"
                         id="toast-1"
                         title="Error !!"
+                        content={toastDescription}
                         type="Error"
                         dismiss={2000}
                         onClose={() => setState({...state, Error: false})}
@@ -120,6 +126,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         key="toast-1"
                         id="toast-1"
                         title="An eternal Success !"
+                        content={toastDescription}
                         dismissible={false}
                         onClose={() => setState({...state, Timed: false})}
                     />
