@@ -17,7 +17,8 @@ describe('CollapsibleContainerConnected', () => {
         expect(screen.queryByRole('img', {name: /info icon/i})).not.toBeInTheDocument();
     });
 
-    it('displays an help icon next to the title if informationUrl prop was provided', () => {
+    it('displays a help icon next to the title if informationUrl prop was provided', () => {
+
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationUrl="http://perdu.com">
                 content
