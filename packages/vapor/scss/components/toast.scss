@@ -115,6 +115,20 @@ $toast-close-padding-left: 5px;
         font-size: $toast-text-font-size;
     }
 
+    .toast-info-token {
+        position: static;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        float: left;
+        padding: 12px 12px 12px 8px;
+        // svg {
+        //     border: 1px solid #ffffff;
+        //     box-sizing: border-box;
+        // }
+    }
+
     .toast-close {
         position: static;
         float: right;

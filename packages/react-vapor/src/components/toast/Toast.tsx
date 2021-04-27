@@ -88,10 +88,21 @@ export class Toast extends React.Component<IToastProps> {
             }
         );
 
+        // const getInfoToken = {
+        //     'info-token-full-information-32': this.props.type === ToastType.Info,
+        //     'info-token-full-critical-32': this.props.type === ToastType.Error,
+        //     'info-token-full-warning-32': this.props.type === ToastType.Warning,
+        //     'info-token-full-success-32': this.props.type === ToastType.Success,
+        // };
+
         const closeButton = this.props.dismissible && !this.props.isSmall && (
             <span className="toast-close" onClick={() => this.close()}>
                 <Svg svgName="close" className="icon mod-lg" />
             </span>
+        );
+
+        const infoToken = !this.props.isSmall && (
+            <Svg svgName="info-token-full-critical-32" className="toast-info-token" />
         );
 
         const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
@@ -114,6 +125,7 @@ export class Toast extends React.Component<IToastProps> {
 
         return (
             <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
+                {infoToken}
                 {closeButton}
                 <div className="toast-title">{this.props.title}</div>
                 {toastContent}
