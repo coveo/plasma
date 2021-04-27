@@ -20,22 +20,21 @@ export const CollapsibleHeaderIcon: React.FunctionComponent<CollapsibleHeaderIco
     if (!informationUrl && !informationTooltip) {
         return null;
     }
-    const tooltipProps = {placement: TooltipPlacement.Right, title: informationTooltip};
+    const tooltipProps = {placement: TooltipPlacement.Right, ...informationTooltip};
     const svgProps = {
         svgName: informationUrl ? VaporSVG.svg.help.name : VaporSVG.svg.info.name,
-        svgClass: classNames('icon mod-lg ml1', {
+        svgClass: classNames('icon mod-lg', {
             'documentation-link': !!informationUrl,
-            disabled: !informationUrl || disabled,
+            'no-link': !informationUrl,
+            disabled,
         }),
     };
 
-    const headerIcon = informationUrl ? (
+    return informationUrl ? (
         <LinkSvg url={informationUrl} target="_blank" tooltip={tooltipProps} svg={svgProps} />
     ) : (
         <Tooltip {...tooltipProps}>
             <Svg {...svgProps} />
         </Tooltip>
     );
-
-    return <span className="round-contextual-help">{headerIcon}</span>;
 };

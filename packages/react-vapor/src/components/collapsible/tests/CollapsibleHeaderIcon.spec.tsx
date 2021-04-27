@@ -5,7 +5,7 @@ import {LinkSvg} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
 import {CollapsibleHeaderIcon, CollapsibleHeaderIconProps} from '../CollapsibleHeaderIcon';
 
-describe('CollapsibleHeaderIcon tests', () => {
+describe('CollapsibleHeaderIcon', () => {
     const defaultProps = {
         informationTooltip: {
             title: 'pomme',
@@ -45,7 +45,7 @@ describe('CollapsibleHeaderIcon tests', () => {
                 },
             } as CollapsibleHeaderIconProps);
 
-            expect(wrapper.find(Svg).props().svgClass).toContain('disabled');
+            expect(wrapper.find(Svg).props().svgClass).toContain('no-link');
             expect(wrapper.find(Svg).props().svgClass).not.toContain('documentation-link');
         });
 
