@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0-next.3](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v16.0.0-next.3) (2021-04-27)
+
+
+### Code Refactoring
+
+* **vapor:** remove old palette ([7d03689](https://github.com/coveo/react-vapor/commit/7d0368988c1375fc1742fcbfde6413cc83126f82))
+* **vapor:** remove redesign color variables ([6012a87](https://github.com/coveo/react-vapor/commit/6012a8702b2c16aed06d57f531be8da4f0b655f5))
+
+
+### Features
+
+* **vapor:** add new colors and remove duplicate variables declaration ([60cc3ae](https://github.com/coveo/react-vapor/commit/60cc3ae372db4a8b70e55217c77950c4940189cf))
+* **vapor:** build a new mechanism to create color variables ([d8b2c64](https://github.com/coveo/react-vapor/commit/d8b2c641a855e044761619153730a716692c7d8e))
+
+
+### BREAKING CHANGES
+
+* **vapor:** Some css variables were removed or changed names. Have a look at the new colors
+declaration in scss/colors.scss to find a replacement for colors that were removed.
+* **vapor:** common/palette.scss and the scss variables that go with it no longer exist. Use the
+css variables from colors.scss instead.
+
+
+
+
+
 # [16.0.0-next.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v16.0.0-next.2) (2021-04-27)
 
 
