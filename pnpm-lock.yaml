@@ -171,6 +171,7 @@ importers:
 
   packages/react-vapor:
     specifiers:
+      '@rollup/plugin-alias': ^3.1.2
       '@rollup/plugin-commonjs': 11.0.2
       '@rollup/plugin-inject': 4.0.1
       '@rollup/plugin-node-resolve': 7.1.1
@@ -298,6 +299,7 @@ importers:
       strict-uri-encode: 2.0.0
       unidiff: 0.0.4
     devDependencies:
+      '@rollup/plugin-alias': 3.1.2_rollup@2.3.3
       '@rollup/plugin-commonjs': 11.0.2_rollup@2.3.3
       '@rollup/plugin-inject': 4.0.1_rollup@2.3.3
       '@rollup/plugin-node-resolve': 7.1.1_rollup@2.3.3
@@ -2180,6 +2182,16 @@ packages:
       sprintf-js: 1.1.2
       utf8: 3.0.0
     dev: false
+
+  /@rollup/plugin-alias/3.1.2_rollup@2.3.3:
+    resolution: {integrity: sha512-wzDnQ6v7CcoRzS0qVwFPrFdYA4Qlr+ookA217Y2Z3DPZE1R8jrFNM3jvGgOf6o6DMjbnQIn5lCIJgHPe1Bt3uw==}
+    engines: {node: '>=8.0.0'}
+    peerDependencies:
+      rollup: ^1.20.0||^2.0.0
+    dependencies:
+      rollup: 2.3.3
+      slash: 3.0.0
+    dev: true
 
   /@rollup/plugin-commonjs/11.0.2_rollup@2.3.3:
     resolution: {integrity: sha512-MPYGZr0qdbV5zZj8/2AuomVpnRVXRU5XKXb3HVniwRoRCreGlf5kOE081isNWeiLIi6IYkwTX9zE0/c7V8g81g==}
@@ -8221,7 +8233,7 @@ packages:
       debug:
         optional: true
     dependencies:
-      debug: 4.3.1_supports-color@6.1.0
+      debug: 4.3.1
     dev: false
 
   /for-in/1.0.2:

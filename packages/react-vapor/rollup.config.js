@@ -1,6 +1,7 @@
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
 import resolve from '@rollup/plugin-node-resolve';
+import alias from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
 import path from 'path';
 import externalGlobals from 'rollup-plugin-external-globals';
@@ -103,6 +104,7 @@ export default {
     ],
     onwarn,
     plugins: [
+        alias({entries: [{find: 'indexof', replacement: 'component-indexof'}]}),
         inject({
             jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
         }),
