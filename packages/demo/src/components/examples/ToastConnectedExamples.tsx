@@ -9,6 +9,7 @@ export interface IToastConnectedExamplesProps {
 
 const containerId = 'some-id';
 const downloadContainerId = 'download-toast-id';
+const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet accumsan ante.';
 
 @ReduxConnect(null, {addToast})
 export class ToastConnectedExamples extends React.Component<IToastConnectedExamplesProps> {
@@ -24,7 +25,7 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         <button
                             className="btn m0 mr1 mb1"
                             onClick={() => {
-                                this.props.addToast(containerId, 'Success!');
+                                this.props.addToast(containerId, 'Success!', {content: toastDescription});
                             }}
                         >
                             Basic
@@ -33,7 +34,22 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         <button
                             className="btn m0 mr1 mb1"
                             onClick={() => {
-                                this.props.addToast(containerId, 'Warning!', {type: ToastType.Warning});
+                                this.props.addToast(containerId, 'Information!', {
+                                    type: ToastType.Info,
+                                    content: toastDescription,
+                                });
+                            }}
+                        >
+                            Information
+                        </button>
+
+                        <button
+                            className="btn m0 mr1 mb1"
+                            onClick={() => {
+                                this.props.addToast(containerId, 'Warning!', {
+                                    type: ToastType.Warning,
+                                    content: toastDescription,
+                                });
                             }}
                         >
                             Warning
@@ -42,7 +58,10 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         <button
                             className="btn m0 mr1 mb1"
                             onClick={() => {
-                                this.props.addToast(containerId, 'Error!', {type: ToastType.Error});
+                                this.props.addToast(containerId, 'Error!', {
+                                    type: ToastType.Error,
+                                    content: toastDescription,
+                                });
                             }}
                         >
                             Error
@@ -51,7 +70,10 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
                         <button
                             className="btn m0 mr1 mb1"
                             onClick={() => {
-                                this.props.addToast(containerId, 'Timed Success!', {dismiss: 1000});
+                                this.props.addToast(containerId, 'Timed Success!', {
+                                    dismiss: 1000,
+                                    content: toastDescription,
+                                });
                             }}
                         >
                             Timed
