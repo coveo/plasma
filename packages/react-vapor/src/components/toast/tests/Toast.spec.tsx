@@ -46,7 +46,7 @@ describe('Toasts', () => {
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should have class "mod-small" when isSmall propr is true', () => {
+        it('should have class "mod-small" when isSmall prop is true', () => {
             toastComponent.setProps({isSmall: true});
 
             expect(toastComponent.children().hasClass('mod-small')).toBe(true);
