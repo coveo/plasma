@@ -71,7 +71,7 @@ export class Toast extends React.Component<IToastProps> {
 
     private getInfoToken(type: string) {
         let infoToken = '';
-        if (type === ToastType.Success || (_.isEmpty(this.props.className) && _.isEmpty(this.props.type))) {
+        if (type === ToastType.Success || (!this.props.className && !this.props.type)) {
             infoToken = 'info-token-full-success-32';
         }
         if (type === ToastType.Info) {
@@ -90,9 +90,7 @@ export class Toast extends React.Component<IToastProps> {
         const classes = classNames(
             'toast',
             {
-                'mod-success':
-                    this.props.type === ToastType.Success ||
-                    (_.isEmpty(this.props.className) && _.isEmpty(this.props.type)),
+                'mod-success': this.props.type === ToastType.Success || (!this.props.className && !this.props.type),
                 'mod-warning': this.props.type === ToastType.Warning,
                 'mod-error': this.props.type === ToastType.Error,
                 'mod-info': this.props.type === ToastType.Info,
