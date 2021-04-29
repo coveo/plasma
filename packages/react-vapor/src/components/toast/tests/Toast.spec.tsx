@@ -46,6 +46,18 @@ describe('Toasts', () => {
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
+        it('should have class "mod-small" when isSmall propr is true', () => {
+            toastComponent.setProps({isSmall: true});
+
+            expect(toastComponent.children().hasClass('mod-small')).toBe(true);
+        });
+
+        it('should have class "mod-info" when type is Info', () => {
+            toastComponent.setProps({type: ToastType.Info});
+
+            expect(toastComponent.children().hasClass('mod-info')).toBe(true);
+        });
+
         it('should have class "mod-success" when type is Success', () => {
             toastComponent.setProps({type: ToastType.Success});
 
@@ -57,41 +69,31 @@ describe('Toasts', () => {
         });
 
         it('should have class "mod-warning" if the type is Warning', () => {
-            const expectedClass = '.mod-warning';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {type: ToastType.Warning});
+            toastComponent.setProps({type: ToastType.Warning});
 
-            expect(toastComponent.find(expectedClass).length).toBe(0);
-
-            toastComponent.setProps(newToastAttributes).mount();
-
-            expect(toastComponent.find(expectedClass).length).toBe(1);
+            expect(toastComponent.children().hasClass('mod-warning')).toBe(true);
         });
 
-        it('should have class "mod-warning" if the type is Error', () => {
-            const expectedClass = '.mod-error';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {type: ToastType.Error});
+        it('should have class "mod-error" if the type is Error', () => {
+            toastComponent.setProps({type: ToastType.Error});
 
-            expect(toastComponent.find(expectedClass).length).toBe(0);
-
-            toastComponent.setProps(newToastAttributes).mount();
-
-            expect(toastComponent.find(expectedClass).length).toBe(1);
+            expect(toastComponent.children().hasClass('mod-error')).toBe(true);
         });
 
-        it('should have class "mod-animated" if the animate props is undefined or true', () => {
-            const expectedClass = '.mod-animated';
-            let newToastAttributes = _.extend({}, toastBasicAttributes, {animate: true});
+        it('should not have class "mod-animated" if the animate props is false', () => {
+            toastComponent.setProps({animate: false});
 
-            expect(toastComponent.find(expectedClass).length).toBe(1);
+            expect(toastComponent.children().hasClass('mod-animated')).toBe(false);
+        });
 
-            toastComponent.setProps(newToastAttributes).mount();
+        it('should have class "mod-animated" if the animate props is true', () => {
+            toastComponent.setProps({animate: true});
 
-            expect(toastComponent.find(expectedClass).length).toBe(1);
+            expect(toastComponent.children().hasClass('mod-animated')).toBe(true);
+        });
 
-            newToastAttributes = _.extend({}, toastBasicAttributes, {animate: false});
-            toastComponent.setProps(newToastAttributes).mount();
-
-            expect(toastComponent.find(expectedClass).length).toBe(0);
+        it('should have class "mod-animated" if the animate props is undefined', () => {
+            expect(toastComponent.children().hasClass('mod-animated')).toBe(true);
         });
 
         it('should have any class specified in the className prop', () => {
@@ -102,17 +104,31 @@ describe('Toasts', () => {
             expect(toastComponent.hasClass(expectedClass)).toBe(true);
         });
 
-        it('should have a description when the content is set', () => {
+        it('should have a description when the content is set and isSmall is false', () => {
             const descriptionContainer = '.toast-description';
             const expectedDescription = 'description';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {content: expectedDescription});
-
-            expect(toastComponent.find(descriptionContainer).length).toBe(0);
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {
+                isSmall: false,
+                content: expectedDescription,
+            });
 
             toastComponent.setProps(newToastAttributes).mount();
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
             expect(toastComponent.find(descriptionContainer).text()).toBe(expectedDescription);
+        });
+
+        it('should not have a description when isSmall is true even if content is set', () => {
+            const descriptionContainer = '.toast-description';
+            const expectedDescription = 'description';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {
+                isSmall: true,
+                content: expectedDescription,
+            });
+
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(toastComponent.find(descriptionContainer).length).toBe(0);
         });
 
         it('should allow JSX in the content', () => {
@@ -142,16 +158,24 @@ describe('Toasts', () => {
             expect(toastComponent.find(descriptionContainer).children().equals(expectedChildren)).toBe(true);
         });
 
-        it('should contain a toast-close when the prop is undefined or true', () => {
+        it('should contain a toast-close when the prop is undefined or true and isSmall is false', () => {
             const closeSelector = '.toast-close';
 
             // By default dismisslbe is omitted
             expect(toastComponent.find(closeSelector).length).toBe(1);
 
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {dismissible: true});
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {isSmall: false, dismissible: true});
             toastComponent.setProps(newToastAttributes).mount();
 
             expect(toastComponent.find(closeSelector).length).toBe(1);
+        });
+
+        it('should not contain a toast-close when isSmall is true', () => {
+            const closeSelector = '.toast-close';
+            const newToastAttributes = _.extend({}, toastBasicAttributes, {isSmall: true, dismissible: true});
+            toastComponent.setProps(newToastAttributes).mount();
+
+            expect(toastComponent.find(closeSelector).length).toBe(0);
         });
 
         it('should call onClose when the user clicks on .toast-close', () => {
