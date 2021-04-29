@@ -3,6 +3,29 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [15.5.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.5.0) (2021-04-27)
+
+
+### Bug Fixes
+
+* **collapsible:** make collapsible header icon tooltip appear ([#1967](https://github.com/coveo/react-vapor/issues/1967)) ([2e91e1d](https://github.com/coveo/react-vapor/commit/2e91e1daf5b8d81dd3675d18f0f4ca6e90f734b6))
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+
+
+
+
+
+# [15.4.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.4.0) (2021-04-26)
+
+
+### Bug Fixes
+
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+
+
+
+
+
 # [15.3.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.3.0) (2021-04-22)
 
 
