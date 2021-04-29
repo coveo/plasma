@@ -70,20 +70,18 @@ export class Toast extends React.Component<IToastProps> {
     }
 
     private getInfoToken(type: string) {
-        let infoToken = '';
         if (type === ToastType.Success || (!this.props.className && !this.props.type)) {
-            infoToken = 'info-token-full-success-32';
+            return 'info-token-full-success-32';
         }
         if (type === ToastType.Info) {
-            infoToken = 'info-token-full-information-32';
+            return 'info-token-full-information-32';
         }
         if (type === ToastType.Warning) {
-            infoToken = 'info-token-full-warning-32';
+            return 'info-token-full-warning-32';
         }
         if (type === ToastType.Error) {
-            infoToken = 'info-token-full-critical-32';
+            return 'info-token-full-critical-32';
         }
-        return infoToken;
     }
 
     render() {
