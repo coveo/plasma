@@ -88,7 +88,8 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         id="toast-1"
                         title="Left Info !!"
                         content={toastDescription}
-                        type="Info"
+                        type={ToastType.Info}
+
                         dismiss={2000}
                         onClose={() => setState({...state, Info: false})}
                     />
@@ -101,7 +102,8 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         id="toast-1"
                         title="Warning !!"
                         content={toastDescription}
-                        type="Warning"
+                        type={ToastType.Warning}
+
                         dismiss={2000}
                         onClose={() => setState({...state, Warning: false})}
                     />
@@ -114,7 +116,8 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         id="toast-1"
                         title="Error !!"
                         content={toastDescription}
-                        type="Error"
+                        type={ToastType.Error}
+
                         dismiss={2000}
                         onClose={() => setState({...state, Error: false})}
                     />
@@ -163,7 +166,8 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     className="btn m0 mr1 mb1"
                     name="Information"
                     onClick={() =>
-                        renderToast('containerId', 'Information !', {type: 'Info', content: toastDescription})
+                        renderToast('containerId', 'Information !', {type: ToastType.Info, content: toastDescription})
+
                     }
                 />
 
@@ -177,16 +181,19 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                 <Button
                     enabled
                     className="btn m0 mr1 mb1"
-                    name="Warning   "
+                    name="Warning"
+
                     onClick={() =>
-                        renderToast('containerId', 'Warning !', {type: 'Warning', content: toastDescription})
+                        renderToast('containerId', 'Warning !', {type: ToastType.Warning, content: toastDescription})
+
                     }
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Error"
-                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error', content: toastDescription})}
+                    onClick={() => renderToast('containerId', 'Error !', {type: ToastType.Error, content: toastDescription})}
+
                 />
 
                 <Button
@@ -221,7 +228,8 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     name="Information"
                     onClick={() =>
                         renderToast('containerId', "I'm so small !", {
-                            type: 'Info',
+                            type: ToastType.Info,
+
                             isSmall: true,
                             dismiss: 2000,
                         })
@@ -243,24 +251,29 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                 <Button
                     enabled
                     className="btn m0 mr1 mb1"
-                    name="Warning   "
+                    name="Warning"
+
                     onClick={() =>
-                        renderToast('containerId', 'Warning !', {type: 'Warning', dismiss: 2000, isSmall: true})
+                        renderToast('containerId', 'Warning !', {type: ToastType.Warning, dismiss: 2000, isSmall: true})
+
                     }
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Error"
-                    onClick={() => renderToast('containerId', 'Error !', {type: 'Error', dismiss: 2000, isSmall: true})}
+                    onClick={() => renderToast('containerId', 'Error !', {type: ToastType.Error, dismiss: 2000, isSmall: true})}
+
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Plot twist"
                     onClick={() =>
-                        renderToast('containerId', 'Small toast dont render content or children, Only title!', {
-                            type: 'Error',
+                        renderToast('containerId', "Small toast doesn't render content or children, Only title!", {
+
+                            type: ToastType.Error,
+
                             content: toastContent,
                             isSmall: true,
                             dismiss: 3000,
