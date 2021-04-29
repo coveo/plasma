@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v16.0.0) (2021-04-29)
+
+
+### Features
+
+* **info-token:** added all the svg + completed the demo page ([2386704](https://github.com/coveo/react-vapor/commit/238670456d98d543e19210eafe928d5487210aef))
+* **info-token:** clean slate, starting from scratch ([fbf5d14](https://github.com/coveo/react-vapor/commit/fbf5d1496678334254596754f50f5d50f3b9c808))
+* **info-token:** new svg part 1 ([b9dca59](https://github.com/coveo/react-vapor/commit/b9dca59f68188c33aba1e9d14a42b5f2ced43c29))
+* **info-token:** wIP mise en place + gossage svg not working ([c30b50b](https://github.com/coveo/react-vapor/commit/c30b50b0bf8647ad3468e7f6bdac1112151d1067))
+* **info-tokens:** added sgvs + resolved my size problem xD ([4c1ead4](https://github.com/coveo/react-vapor/commit/4c1ead45e3f2fafdf655465dbe6fb2cb8f818cc2))
+* **info-tokens:** better name for css classes ([ef94a8e](https://github.com/coveo/react-vapor/commit/ef94a8e6c183e82b0c8281806ac43954f372a155))
+
+
+
+
+
 # [15.5.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.5.0) (2021-04-27)
 
 
