@@ -3,6 +3,43 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [16.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v16.0.0) (2021-04-29)
+
+
+### Bug Fixes
+
+* **collapsible:** make collapsible header icon tooltip appear ([#1967](https://github.com/coveo/react-vapor/issues/1967)) ([2e91e1d](https://github.com/coveo/react-vapor/commit/2e91e1daf5b8d81dd3675d18f0f4ca6e90f734b6))
+* 🐛 Remove unsused reference ([54dd6d8](https://github.com/coveo/react-vapor/commit/54dd6d84ce1b180e1f4c636995b9357f9a175d27))
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+* **demo:** show example source code instead of compiles .js ([c78958f](https://github.com/coveo/react-vapor/commit/c78958f22de92abb6d2f0472c58f37624121c605))
+
+
+### Features
+
+* **cypress:** make setup more resilient ([88a78b9](https://github.com/coveo/react-vapor/commit/88a78b9dbd9d826524f0518480be05bd7fad8bbb))
+* **cypress:** make setup more resilient ([60ff291](https://github.com/coveo/react-vapor/commit/60ff2917c33f35e2cdc4451204a8d0e87bbd8a8a))
+* **info-token:** added all the svg + completed the demo page ([2386704](https://github.com/coveo/react-vapor/commit/238670456d98d543e19210eafe928d5487210aef))
+* **info-token:** clean slate, starting from scratch ([fbf5d14](https://github.com/coveo/react-vapor/commit/fbf5d1496678334254596754f50f5d50f3b9c808))
+* **info-token:** new svg part 1 ([b9dca59](https://github.com/coveo/react-vapor/commit/b9dca59f68188c33aba1e9d14a42b5f2ced43c29))
+* **info-token:** wIP mise en place + gossage svg not working ([c30b50b](https://github.com/coveo/react-vapor/commit/c30b50b0bf8647ad3468e7f6bdac1112151d1067))
+* **info-tokens:** added sgvs + resolved my size problem xD ([4c1ead4](https://github.com/coveo/react-vapor/commit/4c1ead45e3f2fafdf655465dbe6fb2cb8f818cc2))
+* **info-tokens:** better name for css classes ([ef94a8e](https://github.com/coveo/react-vapor/commit/ef94a8e6c183e82b0c8281806ac43954f372a155))
+* 🎸 Validate Collapsible ([d54f54d](https://github.com/coveo/react-vapor/commit/d54f54ddf8296ccca65da4b7714b6fa47d067cfc))
+
+
+### BREAKING CHANGES
+
+* 🧨 n
+
+✅ Closes: n
+* 🧨 n
+
+✅ Closes: n
+
+
+
+
+
 # [15.5.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v15.5.0) (2021-04-27)
 
 
