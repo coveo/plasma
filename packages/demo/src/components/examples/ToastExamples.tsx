@@ -202,10 +202,11 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     name="custom JSX"
                     onClick={() => renderToast('containerId', 'Custom JSX !', {content: toastContent})}
                 />
+
                 <Button
                     className="btn m0 mr1 mb1"
                     name="custom String"
-                    onClick={() => renderToast('containerId', 'Timed Success!', {content: 'I am a string !'})}
+                    onClick={() => renderToast('containerId', 'Custom string!', {content: 'I am a string !'})}
                 />
             </Section>
 
@@ -262,7 +263,7 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                             type: 'Error',
                             content: toastContent,
                             isSmall: true,
-                            dismiss: 5000,
+                            dismiss: 3000,
                         })
                     }
                 />

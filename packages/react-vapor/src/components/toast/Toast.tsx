@@ -69,7 +69,7 @@ export class Toast extends React.Component<IToastProps> {
         }
     }
 
-    private getInfoToken(type: any) {
+    private getInfoToken(type: string) {
         let infoToken = '';
         if (type === ToastType.Success || (_.isEmpty(this.props.className) && _.isEmpty(this.props.type))) {
             infoToken = 'info-token-full-success-32';
