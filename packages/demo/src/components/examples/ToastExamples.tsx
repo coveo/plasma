@@ -10,6 +10,7 @@ import {
     Toast,
     ToastContainer,
     ToastContainerConnected,
+    ToastType,
 } from 'react-vapor';
 
 import {ExampleComponent} from '../ComponentsInterface';
@@ -89,7 +90,6 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         title="Left Info !!"
                         content={toastDescription}
                         type={ToastType.Info}
-
                         dismiss={2000}
                         onClose={() => setState({...state, Info: false})}
                     />
@@ -103,7 +103,6 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         title="Warning !!"
                         content={toastDescription}
                         type={ToastType.Warning}
-
                         dismiss={2000}
                         onClose={() => setState({...state, Warning: false})}
                     />
@@ -117,7 +116,6 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                         title="Error !!"
                         content={toastDescription}
                         type={ToastType.Error}
-
                         dismiss={2000}
                         onClose={() => setState({...state, Error: false})}
                     />
@@ -167,7 +165,6 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     name="Information"
                     onClick={() =>
                         renderToast('containerId', 'Information !', {type: ToastType.Info, content: toastDescription})
-
                     }
                 />
 
@@ -182,18 +179,17 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     enabled
                     className="btn m0 mr1 mb1"
                     name="Warning"
-
                     onClick={() =>
                         renderToast('containerId', 'Warning !', {type: ToastType.Warning, content: toastDescription})
-
                     }
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Error"
-                    onClick={() => renderToast('containerId', 'Error !', {type: ToastType.Error, content: toastDescription})}
-
+                    onClick={() =>
+                        renderToast('containerId', 'Error !', {type: ToastType.Error, content: toastDescription})
+                    }
                 />
 
                 <Button
@@ -252,18 +248,17 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     enabled
                     className="btn m0 mr1 mb1"
                     name="Warning"
-
                     onClick={() =>
                         renderToast('containerId', 'Warning !', {type: ToastType.Warning, dismiss: 2000, isSmall: true})
-
                     }
                 />
 
                 <Button
                     className="btn m0 mr1 mb1"
                     name="Error"
-                    onClick={() => renderToast('containerId', 'Error !', {type: ToastType.Error, dismiss: 2000, isSmall: true})}
-
+                    onClick={() =>
+                        renderToast('containerId', 'Error !', {type: ToastType.Error, dismiss: 2000, isSmall: true})
+                    }
                 />
 
                 <Button
@@ -271,7 +266,6 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                     name="Plot twist"
                     onClick={() =>
                         renderToast('containerId', "Small toast doesn't render content or children, Only title!", {
-
                             type: ToastType.Error,
 
                             content: toastContent,
