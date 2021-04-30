@@ -9,6 +9,7 @@
         "axios": "^0.21.1",
         "cz-conventional-changelog": "^3.0.2",
         "eslint": "7.5.0",
+        "git-cz": "^4.7.6",
         "husky": "4.2.5",
         "lerna": "3.18.4",
         "mime-types": "2.1.26",
