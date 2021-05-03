@@ -9,6 +9,7 @@
         "axios": "^0.21.1",
         "cz-conventional-changelog": "^3.0.2",
         "eslint": "7.5.0",
+        "git-cz": "^4.7.6"
         "husky": "4.2.5",
         "lerna": "3.18.4",
         "mime-types": "2.1.26",
@@ -39,7 +40,7 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "setup": "pnpm install",
-        "start": "pnpm build --stream --filter=coveo-styleguide && pnpm -r start --parallel --filter=\"!react-vapor\"",
+        "start": "pnpm build --stream --filter coveo-styleguide && pnpm -r start --parallel --filter coveo-styleguide --filter react-vapor-demo",
         "test": "pnpm -r test --parallel",
         "clean": "pnpm -r clean --parallel",
         "e2e:open": "pnpm -r e2e:open --stream",
@@ -58,8 +59,5 @@
         "extends": [
             "@commitlint/config-conventional"
         ]
-    },
-    "dependencies": {
-        "git-cz": "^4.7.6"
     }
 }
