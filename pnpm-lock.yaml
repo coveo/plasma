@@ -20,8 +20,6 @@ importers:
       tsjs: ^3.0.2
       underscore: 1.12.1
       walkdir: 0.4.1
-    dependencies:
-      git-cz: 4.7.6
     devDependencies:
       '@commitlint/cli': 8.3.5
       '@commitlint/config-conventional': 8.3.4
@@ -30,6 +28,7 @@ importers:
       axios: 0.21.1
       cz-conventional-changelog: 3.2.0
       eslint: 7.5.0
+      git-cz: 4.7.6
       husky: 4.2.5
       lerna: 3.18.4
       mime-types: 2.1.26
