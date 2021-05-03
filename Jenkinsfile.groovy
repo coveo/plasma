@@ -249,8 +249,8 @@ pipeline {
       when {
         allOf {
           expression { !skipRemainingStages }
-          expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
-          expression { COMMITS_BEHIND == 0 }
+          // expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
+          // expression { COMMITS_BEHIND == 0 }
         }
       }
 
@@ -265,26 +265,26 @@ pipeline {
           sh "npx snyk monitor packages/*/ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-monitor-result.json || true"
           archiveArtifacts artifacts: 'snyk-result.json,snyk-monitor-result.json'
 
-          // Prepare veracode
-          sh "mkdir -p veracode"
-          sh "mkdir -p veracode/demo"
-          sh "mkdir -p veracode/react-vapor"
+          // // Prepare veracode
+          // sh "mkdir -p veracode"
+          // sh "mkdir -p veracode/demo"
+          // sh "mkdir -p veracode/react-vapor"
 
-          // copy all ts and tsx files
-          sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
-          sh "rsync -arvR ./packages/react-vapor/src/**/*.ts* ./veracode/react-vapor/"
+          // // copy all ts and tsx files
+          // sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
+          // sh "rsync -arvR ./packages/react-vapor/src/**/*.ts* ./veracode/react-vapor/"
 
-          dir('veracode') {
-            // remove spec and mock files
-            sh "find . -name '*.spec.*' -delete"
-            sh "find . -name '*.mock.*' -delete"
-          }
+          // dir('veracode') {
+          //   // remove spec and mock files
+          //   sh "find . -name '*.spec.*' -delete"
+          //   sh "find . -name '*.mock.*' -delete"
+          // }
 
-          NEW_VERSION = sh(
-            script: "node -p -e 'require(`./lerna.json`).version;'",
-            returnStdout: true
-          ).trim()
-          deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
+          // NEW_VERSION = sh(
+          //   script: "node -p -e 'require(`./lerna.json`).version;'",
+          //   returnStdout: true
+          // ).trim()
+          // deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
         }
       }
     }
