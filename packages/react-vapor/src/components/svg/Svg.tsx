@@ -18,7 +18,10 @@ export class Svg extends React.Component<ISvgProps> {
     };
 
     private setSvgClass(svgString: string, svgClass: string): string {
-        return svgString.replace('<svg ', `<svg class="${svgClass}" `).replace('<svg>', `<svg class="${svgClass}">`);
+        return svgString
+            .replace('<svg ', `<svg class="${svgClass}" `)
+            .replace('<svg>', `<svg class="${svgClass}">`)
+            .replace('<svg ', `<svg role="img" aria-label="${this.props.svgName} icon" `);
     }
 
     render() {
@@ -38,7 +41,7 @@ export class Svg extends React.Component<ISvgProps> {
         } else {
             return (
                 <span {...svgSpanProps}>
-                    <svg className={this.props.svgClass} />
+                    <svg className={this.props.svgClass} aria-label={`icon-${this.props.svgName}`} />
                 </span>
             );
         }

@@ -48,6 +48,7 @@
         "build": "pnpm -r build --stream",
         "lintfix": "pnpm -r lintfix --parallel",
         "commit-cli": "git-cz",
+        "open-cypress": "npx cypress open --project ./packages/e2eTesting",
         "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
     },
     "config": {

@@ -31,7 +31,7 @@ describe('Select', () => {
 
             render(<MultiSelectWithPredicate {...basicProps} items={items} />, {});
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             let lists = screen.getAllByRole('list');
             expect(within(lists[1]).getByText('first')).toBeVisible();
@@ -55,7 +55,7 @@ describe('Select', () => {
 
             render(<MultiSelectWithPredicate id={id} options={options} items={items} matchPredicate={matcher} />);
             // open the dropdown
-            userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+            userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
             // select the all flat select
             userEvent.click(screen.getByText('Beer'));
@@ -77,7 +77,7 @@ describe('Select', () => {
 
                 render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} />, {});
                 // open the dropdown
-                userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+                userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
                 // select the none flat select
                 userEvent.click(screen.getByText('None'));
@@ -95,7 +95,7 @@ describe('Select', () => {
 
                 render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} onUpdate={onUpdateSpy} />);
                 // open the dropdown
-                userEvent.click(screen.getByRole('button', {name: 'Select an option'}));
+                userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
                 onUpdateSpy.mockReset();
 
