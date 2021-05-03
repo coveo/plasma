@@ -3,6 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v18.0.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **collapsible:** make collapsible header icon tooltip appear ([#1967](https://github.com/coveo/react-vapor/issues/1967)) ([2e91e1d](https://github.com/coveo/react-vapor/commit/2e91e1daf5b8d81dd3675d18f0f4ca6e90f734b6))
+* **demo:** show example source code instead of compiles .js ([c78958f](https://github.com/coveo/react-vapor/commit/c78958f22de92abb6d2f0472c58f37624121c605))
+
+
+### Features
+
+* 🎸 add content in some toast demos ([3c4c14d](https://github.com/coveo/react-vapor/commit/3c4c14d6c3f6b17b918abd0bf9c384d20aab03f6))
+* 🎸 big toast are done! ([2cb06d2](https://github.com/coveo/react-vapor/commit/2cb06d2913fd64dd1f2da9371f5f5dfac159ef06))
+* 🎸 fix build (forgot to import toasttype) ([30eeb55](https://github.com/coveo/react-vapor/commit/30eeb55302327b8532a776695efd61df9d38781b))
+* 🎸 progress with the style, mod-small works! ([375caa6](https://github.com/coveo/react-vapor/commit/375caa6ad89e2792a47a0cd821a5543e23b321f0))
+* 🎸 refacto tsx ([319cf03](https://github.com/coveo/react-vapor/commit/319cf03f665efd1686d22412759f4e04d7458a9a))
+* 🎸 toast redesign, new color, round corner ([8ea1e11](https://github.com/coveo/react-vapor/commit/8ea1e11f1478014d5b0c5ffa7827d376c70cbbf2))
+* **info-token:** added all the svg + completed the demo page ([2386704](https://github.com/coveo/react-vapor/commit/238670456d98d543e19210eafe928d5487210aef))
+* **info-token:** clean slate, starting from scratch ([fbf5d14](https://github.com/coveo/react-vapor/commit/fbf5d1496678334254596754f50f5d50f3b9c808))
+* **info-token:** new svg part 1 ([b9dca59](https://github.com/coveo/react-vapor/commit/b9dca59f68188c33aba1e9d14a42b5f2ced43c29))
+* **info-token:** wIP mise en place + gossage svg not working ([c30b50b](https://github.com/coveo/react-vapor/commit/c30b50b0bf8647ad3468e7f6bdac1112151d1067))
+* **info-tokens:** added sgvs + resolved my size problem xD ([4c1ead4](https://github.com/coveo/react-vapor/commit/4c1ead45e3f2fafdf655465dbe6fb2cb8f818cc2))
+* **info-tokens:** better name for css classes ([ef94a8e](https://github.com/coveo/react-vapor/commit/ef94a8e6c183e82b0c8281806ac43954f372a155))
+
+
+
+
+
 # [17.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v17.0.0) (2021-04-30)
 
 
