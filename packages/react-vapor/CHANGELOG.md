@@ -3,6 +3,31 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [18.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v18.0.0) (2021-05-03)
+
+
+### Bug Fixes
+
+* **collapsible:** make collapsible header icon tooltip appear ([#1967](https://github.com/coveo/react-vapor/issues/1967)) ([2e91e1d](https://github.com/coveo/react-vapor/commit/2e91e1daf5b8d81dd3675d18f0f4ca6e90f734b6))
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+
+
+### Features
+
+* 🎸 [WIP] adding info token to big toast ([87d2258](https://github.com/coveo/react-vapor/commit/87d2258adabf6b495ebd941b0b7b2f75d20ad7b8))
+* 🎸 adapted style for the download toast from figma ([5a9c086](https://github.com/coveo/react-vapor/commit/5a9c086f014c94fea7d351143ba6a28486df221a))
+* 🎸 added new uts for new mods ([afe327b](https://github.com/coveo/react-vapor/commit/afe327b42ac862ba425886ffff7085ab89b55b1a))
+* 🎸 aplied review to pr ([8ee848e](https://github.com/coveo/react-vapor/commit/8ee848e14c7ad6867fee3aabb8127e1a945a8631))
+* 🎸 applied last review ([4d975bb](https://github.com/coveo/react-vapor/commit/4d975bbcd6d23c3d3df57047fa7808110bc0973f))
+* 🎸 big toast are done! ([2cb06d2](https://github.com/coveo/react-vapor/commit/2cb06d2913fd64dd1f2da9371f5f5dfac159ef06))
+* 🎸 progress with the style, mod-small works! ([375caa6](https://github.com/coveo/react-vapor/commit/375caa6ad89e2792a47a0cd821a5543e23b321f0))
+* 🎸 refacto tsx ([319cf03](https://github.com/coveo/react-vapor/commit/319cf03f665efd1686d22412759f4e04d7458a9a))
+* 🎸 toast redesign, new color, round corner ([8ea1e11](https://github.com/coveo/react-vapor/commit/8ea1e11f1478014d5b0c5ffa7827d376c70cbbf2))
+
+
+
+
+
 # [17.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v17.0.0) (2021-04-30)
 
 
