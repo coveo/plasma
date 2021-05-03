@@ -10,7 +10,8 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
 }
 
 library(
-    identifier: "jsadmin_pipeline@master",
+    // identifier: "jsadmin_pipeline@master",
+    identifier: "jsadmin_pipeline@ADUI-6927/script-convert-pnpm-to-npm-lockfile",
     retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
     changelog: false
 )
@@ -257,6 +258,8 @@ pipeline {
         script {
           setLastStageName();
 
+          convertPNPMLockToNPMLock("./pnpm-lock.yaml", "./package-lock.json");
+          
           sh "npx snyk auth $SNYK_TOKEN"
           sh "npx snyk test packages/*/ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-result.json || true"
           sh "npx snyk monitor packages/*/ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-monitor-result.json || true"
@@ -334,4 +337,8 @@ def postCommentOnGithub(demoLink="") {
       "github-comment",
       "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
     )
+}
+
+def convertPNPMLockToNPMLock(pnpmLockPath="", npmLockPath="") {
+  runPackage.call("convertPNPMLockToNPM", "--pnpmLockPath=${pnpmLockPath} --npmLockPath=${npmLockPath}")
 }
