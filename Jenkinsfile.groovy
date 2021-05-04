@@ -118,24 +118,24 @@ pipeline {
       }
     }
 
-    // stage('Build') {
-    //   when {
-    //     expression { !skipRemainingStages }
-    //   }
+    stage('Build') {
+      when {
+        expression { !skipRemainingStages }
+      }
 
-    //   steps {
-    //     script {
-    //       setLastStageName();
-    //       sh "pnpm build"
-    //     }
-    //   }
+      steps {
+        script {
+          setLastStageName();
+          sh "pnpm build"
+        }
+      }
 
-    //   post {
-    //     failure {
-    //       postCommentOnGithub();
-    //     }
-    //   }
-    // }
+      post {
+        failure {
+          postCommentOnGithub();
+        }
+      }
+    }
 
     // // stage('Test') {
     // //   when {
@@ -157,93 +157,93 @@ pipeline {
     // //   }
     // // }
 
-    // stage('Deploy in S3') {
-    //   when {
-    //     allOf {
-    //       not {
-    //         expression {
-    //           env.BRANCH_NAME ==~ /(master|release-.*)/
-    //         }
-    //       }
-    //       expression { !skipRemainingStages }
-    //     }
-    //   }
+    stage('Deploy in S3') {
+      when {
+        allOf {
+          not {
+            expression {
+              env.BRANCH_NAME ==~ /(master|release-.*)/
+            }
+          }
+          expression { !skipRemainingStages }
+        }
+      }
 
-    //   steps {
-    //     script {
-    //       setLastStageName();
-    //       withCredentials([[
-    //         $class: 'AmazonWebServicesCredentialsBinding',
-    //         credentialsId: 'aws_coveodev_rw_binaries_key',
-    //         accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-    //         secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-    //       ]]) {
+      steps {
+        script {
+          setLastStageName();
+          withCredentials([[
+            $class: 'AmazonWebServicesCredentialsBinding',
+            credentialsId: 'aws_coveodev_rw_binaries_key',
+            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+          ]]) {
 
             
-    //         sh "bash ./build/deploy-demo.sh ${env.CHANGE_BRANCH}"
+            sh "bash ./build/deploy-demo.sh ${env.CHANGE_BRANCH}"
 
-    //         if (env.BRANCH_NAME != "next") {
-    //           postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
-    //         }
+            if (env.BRANCH_NAME != "next") {
+              postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html");
+            }
 
-    //         def message = "Build succeeded for <https://github.com/coveo/react-vapor/pull/${env.CHANGE_ID}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html"
-    //         notify.sendSlackWithThread(
-    //             color: "#00FF00", message: message,
-    //             ["admin-ui-builds"]
-    //         )
-    //       }
-    //     }
-    //   }
+            def message = "Build succeeded for <https://github.com/coveo/react-vapor/pull/${env.CHANGE_ID}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.CHANGE_BRANCH}/index.html"
+            notify.sendSlackWithThread(
+                color: "#00FF00", message: message,
+                ["admin-ui-builds"]
+            )
+          }
+        }
+      }
 
-    //   post {
-    //     failure {
-    //       script {
-    //         if (env.BRANCH_NAME != "next") {
-    //           postCommentOnGithub();
-    //         }
-    //       }
-    //     }
-    //   }
-    // }
+      post {
+        failure {
+          script {
+            if (env.BRANCH_NAME != "next") {
+              postCommentOnGithub();
+            }
+          }
+        }
+      }
+    }
 
-    // stage('Publish') {
-    //   when {
-    //     allOf {
-    //       expression { env.BRANCH_NAME ==~ /(master|next|release-.*)/ }
-    //       expression { !skipRemainingStages }
-    //     }
-    //   }
-    //   steps {
-    //     script {
-    //       setLastStageName();
-    //       sh "git fetch origin ${env.BRANCH_NAME}"
-    //       REMOTE = "origin/" + env.BRANCH_NAME
-    //       COMMITS_BEHIND = sh(
-    //         script: "git rev-list --count \"$REMOTE...${env.BRANCH_NAME}\"",
-    //         returnStdout: true
-    //       ).trim().toInteger()
+    stage('Publish') {
+      when {
+        allOf {
+          expression { env.BRANCH_NAME ==~ /(master|next|release-.*)/ }
+          expression { !skipRemainingStages }
+        }
+      }
+      steps {
+        script {
+          setLastStageName();
+          sh "git fetch origin ${env.BRANCH_NAME}"
+          REMOTE = "origin/" + env.BRANCH_NAME
+          COMMITS_BEHIND = sh(
+            script: "git rev-list --count \"$REMOTE...${env.BRANCH_NAME}\"",
+            returnStdout: true
+          ).trim().toInteger()
 
-    //       if (COMMITS_BEHIND == 0) {
-    //         STARTED_BY_USER = cause.user()
-    //         STARTED_BY_UPSTREAM = cause.upstream()
+          if (COMMITS_BEHIND == 0) {
+            STARTED_BY_USER = cause.user()
+            STARTED_BY_UPSTREAM = cause.upstream()
 
-    //         if (env.BRANCH_NAME ==~ /release-.*/) {
-    //           sh "npx lerna publish patch --create-release github --yes --force-publish --no-push"
-    //         } else if (env.BRANCH_NAME == "next") {
-    //           sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\" --no-push"
-    //         } else {
-    //           sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\" --no-push"
-    //         }
-    //         sh "pnpm install --lockfile-only"
-    //         sh "git add pnpm-lock.yaml"
-    //         sh "git commit -m \"chore(release): [version bump]\""
-    //         sh "git push -u origin master"
-    //       } else {
-    //         sh "echo \"skipping publish since remote changed (something was merged)\""
-    //       }
-    //     }
-    //   }
-    // }
+            if (env.BRANCH_NAME ==~ /release-.*/) {
+              sh "npx lerna publish patch --create-release github --yes --force-publish --no-push"
+            } else if (env.BRANCH_NAME == "next") {
+              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\" --no-push"
+            } else {
+              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\" --no-push"
+            }
+            sh "pnpm install --lockfile-only"
+            sh "git add pnpm-lock.yaml"
+            sh "git commit -m \"chore(release): [version bump]\""
+            sh "git push -u origin master"
+          } else {
+            sh "echo \"skipping publish since remote changed (something was merged)\""
+          }
+        }
+      }
+    }
 
     stage('Deployment pipeline') {
       when {
@@ -257,8 +257,6 @@ pipeline {
       steps {
         script {
           setLastStageName();
-
-
 
           convertPNPMLockToNPMLock("./pnpm-lock.yaml", "./package-lock.json");
           
