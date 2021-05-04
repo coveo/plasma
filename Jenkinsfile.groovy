@@ -137,25 +137,25 @@ pipeline {
       }
     }
 
-    // // stage('Test') {
-    // //   when {
-    // //     expression { !skipRemainingStages }
-    // //   }
+    // stage('Test') {
+    //   when {
+    //     expression { !skipRemainingStages }
+    //   }
 
-    // //   steps {
-    // //     script {
-    // //       setLastStageName();
-    // //       sh "pnpm test"
-    // //       sh "pnpm -r report-coverage"
-    // //     }
-    // //   }
+    //   steps {
+    //     script {
+    //       setLastStageName();
+    //       sh "pnpm test"
+    //       sh "pnpm -r report-coverage"
+    //     }
+    //   }
 
-    // //   post {
-    // //     failure {
-    // //       postCommentOnGithub();
-    // //     }
-    // //   }
-    // // }
+    //   post {
+    //     failure {
+    //       postCommentOnGithub();
+    //     }
+    //   }
+    // }
 
     stage('Deploy in S3') {
       when {
@@ -340,5 +340,5 @@ def postCommentOnGithub(demoLink="") {
 }
 
 def convertPNPMLockToNPMLock(pnpmLockPath="", npmLockPath="") {
-  runPatate.call("convertPNPMLockToNPM", "--pnpmLockPath=${pnpmLockPath} --npmLockPath=${npmLockPath}")
+  runPackage.call("convertPNPMLockToNPM", "--pnpmLockPath=${pnpmLockPath} --npmLockPath=${npmLockPath}")
 }
