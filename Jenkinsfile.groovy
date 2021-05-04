@@ -64,59 +64,59 @@ pipeline {
       }
     }
 
-    // stage('Prepare') {
-    //   when {
-    //     expression { !skipRemainingStages }
-    //   }
+    stage('Prepare') {
+      when {
+        expression { !skipRemainingStages }
+      }
 
-    //   steps {
-    //     script {
-    //       setLastStageName();
+      steps {
+        script {
+          setLastStageName();
 
-    //       NEW_VERSION = ""
-    //       SCOPE = ""
+          NEW_VERSION = ""
+          SCOPE = ""
 
-    //       sh "mkdir -p ${env.BRANCH_NAME}"
-    //       checkout([
-    //         $class: 'GitSCM',
-    //         branches: scm.branches,
-    //         extensions: scm.extensions + [[$class: "CleanCheckout"]] + [[$class: "LocalBranch", localBranch: "**"]] + [[$class: 'CloneOption', noTags: false, reference: '', shallow: false]],
-    //         userRemoteConfigs: [[credentialsId: "github-coveobot", url: "https://github.com/coveo/react-vapor.git"]]
-    //       ])
+          sh "mkdir -p ${env.BRANCH_NAME}"
+          checkout([
+            $class: 'GitSCM',
+            branches: scm.branches,
+            extensions: scm.extensions + [[$class: "CleanCheckout"]] + [[$class: "LocalBranch", localBranch: "**"]] + [[$class: 'CloneOption', noTags: false, reference: '', shallow: false]],
+            userRemoteConfigs: [[credentialsId: "github-coveobot", url: "https://github.com/coveo/react-vapor.git"]]
+          ])
 
-    //       sh "git config --global user.email \"jenkins@coveo.com\""
-    //       sh "git config --global user.name \"Jenkins CI\""
-    //       sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GH_TOKEN}@github.com/coveo/react-vapor.git\""
+          sh "git config --global user.email \"jenkins@coveo.com\""
+          sh "git config --global user.name \"Jenkins CI\""
+          sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GH_TOKEN}@github.com/coveo/react-vapor.git\""
 
-    //       def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
-    //       env.PATH = "${nodeHome}/bin:${env.PATH}"
-    //       sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
+          def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
+          env.PATH = "${nodeHome}/bin:${env.PATH}"
+          sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
 
-    //       sh "npm cache clean --force"
-    //       sh "rm -rf node_modules"
-    //       sh "npm install -g pnpm"
-    //       sh "pnpm install"
+          sh "npm cache clean --force"
+          sh "rm -rf node_modules"
+          sh "npm install -g pnpm"
+          sh "pnpm install"
 
-    //       if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
-    //         sh "git fetch --tags origin ${env.BRANCH_NAME}"
+          if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
+            sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
-    //         if (env.BRANCH_NAME ==~ /release-.*/) {
-    //           sh "npx lerna version patch --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
-    //         } else if (env.BRANCH_NAME == "next") {
-    //           sh "npx lerna version --conventional-prerelease --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
-    //         } else {
-    //           sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
-    //         }
-    //         env.NEW_VERSION = sh(
-    //           script: "node -p -e 'require(`./packages/react-vapor/package.json`).version;'",
-    //           returnStdout: true
-    //         ).trim()
+            if (env.BRANCH_NAME ==~ /release-.*/) {
+              sh "npx lerna version patch --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
+            } else if (env.BRANCH_NAME == "next") {
+              sh "npx lerna version --conventional-prerelease --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
+            } else {
+              sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
+            }
+            env.NEW_VERSION = sh(
+              script: "node -p -e 'require(`./packages/react-vapor/package.json`).version;'",
+              returnStdout: true
+            ).trim()
 
-    //         sh "git reset --hard"
-    //       }
-    //     }
-    //   }
-    // }
+            sh "git reset --hard"
+          }
+        }
+      }
+    }
 
     // stage('Build') {
     //   when {
