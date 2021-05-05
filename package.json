@@ -9,7 +9,6 @@
         "axios": "^0.21.1",
         "cz-conventional-changelog": "^3.0.2",
         "eslint": "7.5.0",
-        "git-cz": "^4.7.6",
         "husky": "4.2.5",
         "lerna": "3.18.4",
         "mime-types": "2.1.26",
@@ -47,13 +46,13 @@
         "e2e:run": "pnpm -r e2e:run --stream",
         "build": "pnpm -r build --stream",
         "lintfix": "pnpm -r lintfix --parallel",
-        "commit-cli": "git-cz",
+        "commit-cli": "cz",
         "open-cypress": "npx cypress open --project ./packages/e2eTesting",
         "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
     },
     "config": {
         "commitizen": {
-            "path": "./node_modules/cz-conventional-changelog"
+            "path": "cz-conventional-changelog"
         }
     },
     "commitlint": {
