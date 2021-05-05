@@ -258,7 +258,7 @@ pipeline {
         script {
           setLastStageName();
 
-          convertPNPMLockToNPMLock("./pnpm-lock.yaml", "./package-lock.json");
+          convertPNPMLockToNPMLock("../pnpm-lock.yaml", "../package-lock.json");
           
           sh "npx snyk auth $SNYK_TOKEN"
           sh "npx snyk test packages/*/ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-result.json || true"
@@ -340,5 +340,5 @@ def postCommentOnGithub(demoLink="") {
 }
 
 def convertPNPMLockToNPMLock(pnpmLockPath="", npmLockPath="") {
-  runUnzipPackage.call("convert-pnpm-to-npm-lock", "--pnpmLockPath=${pnpmLockPath} --npmLockPath=${npmLockPath}")
+  runUnzipPackage.call("convert-pnpm-to-npm-lock", "${pnpmLockPath} ${npmLockPath}")
 }
