@@ -69,10 +69,12 @@
     font-family: var(--main-font);
 
     li {
-        display: inline-block;
+        display: inline-flex;
+        justify-content: center;
         width: 100px;
         height: 120px;
         margin: 2px;
+        word-break: break-all;
 
         &:hover {
             background-color: var(--deprecated-grey-3);
@@ -81,9 +83,8 @@
         a {
             display: flex;
             flex-direction: column-reverse;
-            justify-content: flex-end;
+            justify-content: center;
             height: 100%;
-            padding-top: 20px;
             text-align: center;
 
             svg {
