@@ -1,15 +1,14 @@
+import classNames from 'classnames';
+import * as React from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import classNames from 'classnames';
-import * as React from 'react';
 import {IReactVaporState} from '../../ReactVapor';
-import {ReduxUtils} from '../../utils/ReduxUtils';
-
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {CollapsibleConnected} from './CollapsibleConnected';
 import {CollapsibleHeaderIcon} from './CollapsibleHeaderIcon';
+
 export interface ICollapsibleContainerOwnProps {
     id: string;
     title: React.ReactNode;
@@ -61,7 +60,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
             className={classNames(className, 'collapsible-container')}
             headerContent={
                 <div className={headerClasses}>
-                    <div>{title}</div>
+                    <div className="mr1">{title}</div>
                     <CollapsibleHeaderIcon
                         informationTooltip={informationTooltip}
                         informationUrl={informationUrl}
@@ -81,8 +80,4 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
     );
 };
 
-export const CollapsibleContainerConnected = connect(
-    mapStateToProps,
-    undefined,
-    ReduxUtils.mergeProps
-)(CollapsibleContainerDisconnected);
+export const CollapsibleContainerConnected = connect(mapStateToProps)(CollapsibleContainerDisconnected);

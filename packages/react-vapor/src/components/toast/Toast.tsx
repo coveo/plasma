@@ -13,6 +13,7 @@ export interface IToastProps {
     dismissible?: boolean;
     animate?: boolean;
     isDownload?: boolean;
+    isSmall?: boolean;
     className?: string;
     /**
      * @deprecated use children instead
@@ -27,6 +28,7 @@ export const ToastType = {
     Success: 'Success',
     Warning: 'Warning',
     Error: 'Error',
+    Info: 'Info',
 };
 
 export class Toast extends React.Component<IToastProps> {
@@ -67,16 +69,31 @@ export class Toast extends React.Component<IToastProps> {
         }
     }
 
+    private getInfoToken(type: string) {
+        if (type === ToastType.Success || (!this.props.className && !this.props.type)) {
+            return 'info-token-full-success-32';
+        }
+        if (type === ToastType.Info) {
+            return 'info-token-full-information-32';
+        }
+        if (type === ToastType.Warning) {
+            return 'info-token-full-warning-32';
+        }
+        if (type === ToastType.Error) {
+            return 'info-token-full-critical-32';
+        }
+    }
+
     render() {
         const classes = classNames(
             'toast',
             {
-                'mod-success':
-                    this.props.type === ToastType.Success ||
-                    (_.isEmpty(this.props.className) && _.isEmpty(this.props.type)),
+                'mod-success': this.props.type === ToastType.Success || (!this.props.className && !this.props.type),
                 'mod-warning': this.props.type === ToastType.Warning,
                 'mod-error': this.props.type === ToastType.Error,
+                'mod-info': this.props.type === ToastType.Info,
                 'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
+                'mod-small': this.props.isSmall,
             },
             this.props.className,
             {
@@ -84,13 +101,17 @@ export class Toast extends React.Component<IToastProps> {
             }
         );
 
-        const closeButton = this.props.dismissible && (
+        const closeButton = this.props.dismissible && !this.props.isSmall && (
             <span className="toast-close" onClick={() => this.close()}>
                 <Svg svgName="close" className="icon mod-lg" />
             </span>
         );
 
-        const toastContent = (!!this.props.content || !!this.props.children) && (
+        const infoToken = !this.props.isSmall && !this.props.isDownload && (
+            <Svg svgName={this.getInfoToken(this.props.type)} className="toast-info-token" />
+        );
+
+        const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
             <div className="toast-description">
                 {this.props.isDownload ? (
                     <div className="flex space-between">
@@ -110,6 +131,7 @@ export class Toast extends React.Component<IToastProps> {
 
         return (
             <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
+                {infoToken}
                 {closeButton}
                 <div className="toast-title">{this.props.title}</div>
                 {toastContent}
