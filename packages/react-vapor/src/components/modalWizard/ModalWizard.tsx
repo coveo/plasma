@@ -83,7 +83,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                                 name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                                 onClick={() => {
                                     if (isFirstStep) {
-                                        onCancel();
+                                        onCancel?.();
                                         close();
                                     } else {
                                         setCurrentStep(currentStep - 1);
