@@ -259,11 +259,14 @@ pipeline {
           setLastStageName();
 
           convertPNPMLockToNPMLock("../pnpm-lock.yaml", "../package-lock.json");
-          
+
           sh "npx snyk auth $SNYK_TOKEN"
           sh "npx snyk test ./ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-result.json || true"
           sh "npx snyk monitor ./ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-monitor-result.json || true"
           archiveArtifacts artifacts: 'snyk-result.json,snyk-monitor-result.json'
+          
+          // To avoid failure in convertPNPMLockToNPMLock when the cache is not clearer between builds
+          sh "rm -rf package-lock.json"
 
           // // Prepare veracode
           // sh "mkdir -p veracode"
