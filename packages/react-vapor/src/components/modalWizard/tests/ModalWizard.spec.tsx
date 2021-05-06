@@ -15,10 +15,11 @@ describe('ModalWizard', () => {
         jest.useRealTimers();
     });
 
-    it('closes the modal when clicking on "cancel"', async () => {
+    it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {
+        const cancelSpy = jest.fn();
         renderModal(
             <div>
-                <ModalWizard id="🧙‍♂️">
+                <ModalWizard id="🧙‍♂️" onCancel={cancelSpy}>
                     <div>Step 1</div>
                     <div>Step 2</div>
                     <div>Step 3</div>
@@ -33,6 +34,7 @@ describe('ModalWizard', () => {
 
         await waitForElementToBeRemoved(() => screen.queryByRole('dialog'));
         expect(screen.queryByRole('dialog')).not.toBeInTheDocument();
+        expect(cancelSpy).toHaveBeenCalledTimes(1);
     });
 
     it('navigates properly through the steps when clicking on "next" and "previous" buttons', () => {
