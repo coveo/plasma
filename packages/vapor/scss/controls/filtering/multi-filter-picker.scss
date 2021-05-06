@@ -13,7 +13,7 @@
 
         .add-container {
             overflow: auto;
-            background-color: rgba($white, 0.4);
+            background-color: rgba(var(--deprecated-white-rgb), 0.4);
 
             .add {
                 padding: $multi-filterpickerbox-add-padding;
@@ -24,7 +24,7 @@
                     width: $multi-filter-picker-add-icon-width;
                     height: $multi-filter-picker-add-icon-width;
                     vertical-align: text-bottom;
-                    fill: var(--orange);
+                    fill: var(--deprecated-orange);
                 }
             }
         }
@@ -48,7 +48,7 @@
                 margin-left: $filter-where-margin-left;
                 padding: $filter-where-padding;
                 line-height: $filter-where-line-height;
-                background-color: var(--pure-white);
+                background-color: var(--white);
             }
 
             .filter-type {

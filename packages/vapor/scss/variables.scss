@@ -74,7 +74,7 @@ $radio-button-size: 22px;
 $radio-button-text-padding-top: 5px;
 
 // Input and textarea
-$input-border: 1px solid var(--lynch);
+$input-border: 1px solid var(--deprecated-lynch);
 $input-height: 34px;
 $input-font-size: 14px;
 $input-margin: 0 0 15px 0 !default;
@@ -115,7 +115,7 @@ $filterpickerbox-margin-bottom: 1px;
 $filterpickerbox-small-padding: 13px 20px;
 $multi-filterpickerbox-add-padding: 10px 20px;
 $multi-filter-picker-margin-bottom: 20px;
-$multi-filter-picker-border-bottom: 2px solid var(--pure-white);
+$multi-filter-picker-border-bottom: 2px solid var(--white);
 $multi-filter-picker-add-icon-width: 20px;
 $filters-margin-right: 5px;
 $filterbox-filters-container-padding: 4px 4px 3px;
@@ -228,7 +228,7 @@ $navigation-menu-item-font-weight: var(--main-font-regular);
 $navigation-width: 245px;
 $navigation-border-for-scroll-bar: 1px;
 $navigation-background-color: var(--white);
-$navigation-active-background-color: var(--blue-purple-2);
+$navigation-active-background-color: var(--deprecated-blue-purple-2);
 $navigation-active-border-width: 3px;
 $navigation-section-icon-size: 16px;
 $navigation-section-icon-margin-right: 10px;
@@ -291,7 +291,7 @@ $table-border-button: $table-border-width solid transparent;
 $table-selected-border-width: 5px;
 $table-column-draggable-width: 25px;
 $table-column-draggable-padding: 7px 10px;
-$table-row-drag-over-color: rgba($medium-grey, $transparency-3);
+$table-row-drag-over-color: rgba(var(--deprecated-medium-grey-rgb), $transparency-3);
 $big-table-blankslate-section-padding: 20px 40px 20px 35px;
 $big-table-row-height: 36px;
 $big-table-icon-margin: 20px;
@@ -303,7 +303,7 @@ $big-table-second-row-line-height: 17px;
 $table-slim-font-size: 13px;
 $table-small-svg-width: 20px;
 $table-action-margin-left: 10px;
-$table-shadow: 0 2px 8px 1px var(--medium-grey);
+$table-shadow: 0 2px 8px 1px var(--deprecated-medium-grey);
 $table-state-icon-size: 25px;
 $table-blankslate-row-width: 20px;
 $table-cell-border-bottom-color-loading: 3px;
@@ -420,7 +420,7 @@ $facet-value-spacing: 5px;
 $facet-checkbox-mark-size: 10px;
 $facet-checkbox-line-width: 2px;
 $facet-more-height: 200px;
-$facet-more-button-border: 2px dashed var(--medium-grey);
+$facet-more-button-border: 2px dashed var(--deprecated-medium-grey);
 $facet-more-button-icon-size: 10px;
 $facet-exclude-padding-right: 24px;
 $facet-exclude-checkbox-icon-size: 10px;
@@ -465,13 +465,13 @@ $date-picker-dimension: 36px;
 $calendar-width: 280px;
 $calendar-cell-dimensions: 40px;
 $calendar-border-width: 1px;
-$calendar-border: $calendar-border-width solid var(--light-grey);
+$calendar-border: $calendar-border-width solid var(--deprecated-light-grey);
 $selected-date-offset: 2px;
 $selected-date-height: 28px;
 $calendar-limit-border-width: 2px;
 $calendar-limit-border-length: 5px;
 $calendar-max-height: 336px;
-$date-picker-button-hover-bg: rgba($dark-grey, $transparency-3);
+$date-picker-button-hover-bg: rgba(var(--deprecated-dark-grey-rgb), $transparency-3);
 $countdown-cell-height: 28px;
 
 // Tooltip
@@ -492,7 +492,7 @@ $item-box-spacing: 5px;
 $item-box-vertical-spacing: 8px;
 $list-box-max-height: 240px;
 $list-box-vertical-spacing: 8px;
-$list-box-box-shadow: 0 2px 4px rgba($black, $transparency-4);
+$list-box-box-shadow: 0 2px 4px rgba(var(--black-rgb), $transparency-4);
 $list-box-border-radius: 0 0 2px 2px;
 
 // Limit Box
@@ -505,7 +505,7 @@ $slider-rail-margin-top: 2px;
 $slider-track-height: 8px;
 $slider-dot-margin-left: -2px;
 $slider-dot-margin-top: -5px;
-$slider-dot-box-shadow: 0 0 1px 0 var(--pure-white);
+$slider-dot-box-shadow: 0 0 1px 0 var(--white);
 $slider-dot-height: 18px;
 $slider-dot-width: 2px;
 $slider-dot-active-height: 8px;
@@ -514,7 +514,7 @@ $slider-handle-height: 18px;
 $slider-handle-margin-top: -6px;
 $slider-handle-margin-left: -18px;
 $slider-handle-background-size: 34px 18px;
-$slider-handle-box-shadow: 0 0 1px 0 var(--dark-blue);
+$slider-handle-box-shadow: 0 0 1px 0 var(--deprecated-dark-blue);
 $slider-handle-border-radius: 4px;
 
 // SlideY anim
@@ -522,10 +522,10 @@ $slide-y-transition-duration: 0.5s;
 
 // Progress bar
 $step-progress-bar-height: 8px;
-$step-progress-bar-border-width: 3px;
-$step-progress-bar-done-color: var(--success-60);
-$step-progress-bar-doing-color: var(--success-80);
-$step-progress-bar-to-do-color: var(--grey-40);
+$step-progress-bar-border-width: 4px;
+$step-progress-bar-done-color: var(--bright-turquoise-70);
+$step-progress-bar-doing-color: var(--bright-turquoise-40);
+$step-progress-bar-to-do-color: var(--bright-turquoise-10);
 
 // Corner ribbon
 $ribbon-width: 10rem;
@@ -544,9 +544,9 @@ $flippable-transition-duration: 0.8s;
 $flippable-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.3);
 
 // Material Card
-$material-card-shadow: 0 2px 20px 0 rgba($black, 0.1);
-$material-card-shadow-hover: 0 2px 30px 0 rgba($black, 0.3);
-$material-card-shadow-active: 0 2px 20px 0 rgba($black, 0.3);
+$material-card-shadow: 0 2px 20px 0 rgba(var(--black-rgb), 0.1);
+$material-card-shadow-hover: 0 2px 30px 0 rgba(var(--black-rgb), 0.3);
+$material-card-shadow-active: 0 2px 20px 0 rgba(var(--black-rgb), 0.3);
 $material-card-colored-border-height: 5px;
 
 // Content placeholder
@@ -578,12 +578,12 @@ $multi-step-bar-mod-small-text-padding: 3px 2px;
 $multi-step-bar-separation: 5px;
 $multi-step-sliding-animation-background-width: 28px;
 $multi-step-sliding-animation-background-height: 50px;
-$multi-step-animation-color: var(--light-grey);
-$multi-step-to-do-color: var(--light-grey);
+$multi-step-animation-color: var(--deprecated-light-grey);
+$multi-step-to-do-color: var(--deprecated-light-grey);
 $multi-step-doing-color: #3bb862;
 $multi-step-done-color: #3bb862;
-$multi-step-error-color: var(--red);
-$multi-step-warning-color: var(--orange);
+$multi-step-error-color: var(--critical-70);
+$multi-step-warning-color: var(--deprecated-orange);
 
 // Icons
 $icon-hover-offset: 2px;
@@ -612,7 +612,8 @@ $banner-content-height: 165px;
 $banner-content-padding: 50px;
 $banner-right-width: 300px;
 $banner-warning-icon-fix: 2px;
-$banner-box-shadow: inset 0 5px 10px 0 rgba($black, $transparency-5), inset 0 -10px 50px 0 rgba($black, 0.2);
+$banner-box-shadow: inset 0 5px 10px 0 rgba(var(--black-rgb), $transparency-5),
+    inset 0 -10px 50px 0 rgba(var(--black-rgb), 0.2);
 
 // Status Cards
 $status-card-border-width: 4px;
@@ -625,7 +626,7 @@ $status-card-small-width: 160px;
 // Vertical Line
 $vertical-line-width: 1px;
 $vertical-line-height: 1rem;
-$vertical-line-border-left: 1px solid var(--dark-medium-grey);
+$vertical-line-border-left: 1px solid var(--deprecated-dark-medium-grey);
 
 // Drop
 $drop-z-index: 10000;

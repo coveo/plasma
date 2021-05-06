@@ -18,25 +18,25 @@ $numeric-input-buttons-border-radius: 4px;
         text-overflow: ellipsis;
         border: $default-border;
         border-radius: $border-radius;
-        box-shadow: inset 0 0 3px 0 rgba($black, $transparency-5);
+        box-shadow: inset 0 0 3px 0 rgba(var(--black-rgb), $transparency-5);
     }
 
     .btn {
         display: inline-block;
         width: $numeric-input-height;
         height: $numeric-input-height;
-        color: var(--pure-white);
+        color: var(--white);
         line-height: $numeric-input-height - 2 * $default-border-size;
-        background-color: var(--blue-purple-2);
+        background-color: var(--deprecated-blue-purple-2);
         border-radius: $numeric-input-buttons-border-radius;
         outline: none;
 
         &:focus {
-            background-color: var(--blue-purple-2);
+            background-color: var(--deprecated-blue-purple-2);
         }
 
         .icon {
-            fill: var(--pure-white);
+            fill: var(--white);
         }
     }
 }

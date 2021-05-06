@@ -29,10 +29,10 @@
         &:focus:not([readonly]),
         &:valid,
         &:disabled {
-            color: var(--dark-grey);
-            border-bottom: 1px solid var(--lynch);
+            color: var(--deprecated-dark-grey);
+            border-bottom: 1px solid var(--deprecated-lynch);
 
-            @include placeholder(var(--lynch));
+            @include placeholder(var(--deprecated-lynch));
 
             & + label,
             & + span {
@@ -40,31 +40,31 @@
             }
 
             &:focus:not([readonly]) {
-                color: var(--lynch);
-                border-bottom-color: var(--azure);
+                color: var(--deprecated-lynch);
+                border-bottom-color: var(--deprecated-azure);
 
                 & + label,
                 & + span {
-                    color: var(--azure);
+                    color: var(--deprecated-azure);
                 }
             }
         }
 
         &:disabled,
         &[readonly='readonly'] {
-            color: var(--dark-grey);
+            color: var(--deprecated-dark-grey);
             border-bottom-color: transparent;
 
             &:not(.disabled-input) {
-                @include placeholder(var(--dark-grey));
-                -webkit-text-fill-color: var(--dark-grey);
+                @include placeholder(var(--deprecated-dark-grey));
+                -webkit-text-fill-color: var(--deprecated-dark-grey);
             }
 
             &.disabled-input {
                 margin-left: 1 * $spacing;
                 background-color: transparent;
                 &::placeholder {
-                    color: var(--red);
+                    color: var(--critical-70);
                     font-size: 12px;
                 }
             }
@@ -145,21 +145,21 @@
         }
 
         &.valid {
-            border-bottom-color: var(--green);
+            border-bottom-color: var(--bright-turquoise-40);
 
             & + label:after {
-                color: var(--green);
+                color: var(--bright-turquoise-40);
                 opacity: 1;
                 content: attr(data-valid-message);
             }
         }
 
         &.invalid {
-            border-bottom-color: var(--red);
+            border-bottom-color: var(--critical-70);
         }
 
         &.invalid + label:after {
-            color: var(--red);
+            color: var(--critical-70);
             opacity: 1;
             content: attr(data-invalid-message);
         }
@@ -206,7 +206,7 @@
 
     // Temp fix for the textarea since using label:after doesn't work (because of textarea variable size)
     &.validate textarea.invalid {
-        border-bottom-color: var(--red);
+        border-bottom-color: var(--critical-70);
     }
 
     &.validate .generic-form-error {

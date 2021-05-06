@@ -1,5 +1,4 @@
 @import '~coveo-styleguide/dist/css/CoveoStyleGuide.css';
-@import '~coveo-styleguide/scss/common/palette';
 @import '~coveo-styleguide/scss/lib/mixins';
 @import '~coveo-styleguide/scss/variables';
 @import 'syntax-highlighting';
@@ -19,7 +18,7 @@
     }
 
     .demo-content {
-        @include slim-scroll(var(--grey-2), var(--grey-4));
+        @include slim-scroll(var(--deprecated-grey-2), var(--deprecated-grey-4));
         overflow-y: overlay;
     }
 
@@ -78,7 +77,7 @@
         word-break: break-all;
 
         &:hover {
-            background-color: var(--grey-3);
+            background-color: var(--deprecated-grey-3);
         }
 
         a {
@@ -86,7 +85,6 @@
             flex-direction: column-reverse;
             justify-content: center;
             height: 100%;
-            // padding-top: 20px;
             text-align: center;
 
             svg {

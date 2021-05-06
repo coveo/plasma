@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "19.0.0",
+    "version": "20.0.0-next.1",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -33,6 +33,8 @@
         "lintfix": "../../node_modules/.bin/stylelint --fix \"**/*.scss\" && ../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix"
     },
     "dependencies": {
+        "@types/codemirror": "0.0.62",
+        "@types/rc-slider": "8.6.0",
         "chosen-js": "1.8.7",
         "query-string": "6.13.1",
         "rc-slider": "8.7.1",
@@ -64,6 +66,7 @@
         "underscore.string": "^3.3.5"
     },
     "devDependencies": {
+        "@rollup/plugin-alias": "^3.1.2",
         "@rollup/plugin-commonjs": "11.0.2",
         "@rollup/plugin-inject": "4.0.1",
         "@rollup/plugin-node-resolve": "7.1.1",
@@ -74,7 +77,6 @@
         "@testing-library/user-event": "^12.6.3",
         "@types/chosen-js": "1.6.2",
         "@types/classnames": "2.2.9",
-        "@types/codemirror": "0.0.62",
         "@types/d3": "3.5.41",
         "@types/enzyme": "3.1.15",
         "@types/enzyme-adapter-react-16": "1.0.6",
@@ -85,7 +87,6 @@
         "@types/jquery": "2.0.46",
         "@types/loadable__component": "5.10.0",
         "@types/lorem-ipsum": "2.0.0",
-        "@types/rc-slider": "8.6.0",
         "@types/react": "16.9.19",
         "@types/react-bootstrap": "0.32.15",
         "@types/react-codemirror": "1.0.2",
@@ -108,7 +109,7 @@
         "codecov": "3.2.0",
         "codemirror": "^5.54.0",
         "concurrently": "5.1.0",
-        "coveo-styleguide": "^19.0.0",
+        "coveo-styleguide": "^20.0.0-next.1",
         "d3": "3.5.17",
         "del": "5.1.0",
         "dnd-core": "2.5.1",
@@ -146,7 +147,6 @@
         "rollup-plugin-postcss": "2.5.0",
         "rollup-plugin-sass-variables": "0.1.1",
         "rollup-plugin-terser": "^7.0.2",
-        "sass-variable-loader": "0.1.2",
         "ts-jest": "26.4.4",
         "tslib": "^1",
         "typescript": "3.8.3",

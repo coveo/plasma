@@ -5,7 +5,7 @@
 }
 
 .loading-bg-light-grey {
-    background: var(--light-grey);
+    background: var(--deprecated-light-grey);
     background: linear-gradient(to right, #e9eef2 8%, #d1dbe3 18%, #e9eef2 33%);
     background-size: $navigation-loading-background-size;
 }

@@ -5,7 +5,7 @@
 label.coveo-slide-toggle-double {
     float: left;
     margin-bottom: 0;
-    color: var(--dark-grey);
+    color: var(--deprecated-dark-grey);
     font-size: 13px;
     line-height: 22px;
 
@@ -27,8 +27,8 @@ input.coveo-slide-toggle-double[type='checkbox'] {
         box-sizing: initial;
         width: 33px;
         height: 16px;
-        background: var(--medium-grey) url('../../resources/images/misc/two_option_toggle.png') 0 0;
-        border: 3px solid var(--medium-grey);
+        background: var(--deprecated-medium-grey) url('../../resources/images/misc/two_option_toggle.png') 0 0;
+        border: 3px solid var(--deprecated-medium-grey);
         border-radius: 3px;
 
         cursor: pointer;

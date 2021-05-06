@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {VaporColors} from '../color/Color';
 import {DropPodPosition, IDropUIPosition} from '../drop/DomPositionCalculator';
 import {DropPod} from '../drop/DropPod';
 import {ChartTooltipContent} from './ChartTooltipContent';
@@ -60,7 +59,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                     x={xScale(position.pointX) - 1}
                     y={yScale(yDomain[1])}
                     height={yScale(yDomain[0])}
-                    fill={VaporColors.orange}
+                    fill={'var(--deprecated-orange)'}
                 />
             )}
             <circle cx={position.x} cy={position.y} r="1" fill="transparent" ref={dropRoot} />

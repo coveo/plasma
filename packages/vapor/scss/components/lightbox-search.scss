@@ -1,7 +1,7 @@
 .lightbox-search-input {
     width: 100%;
     padding: 10px 20px;
-    color: var(--dark-grey);
+    color: var(--deprecated-dark-grey);
     font-size: 2rem;
     border: none;
     outline: none;
@@ -12,20 +12,20 @@
     margin-top: 5px;
     padding: 0;
     overflow: hidden;
-    background: var(--pure-white);
+    background: var(--white);
     border: none;
     border-radius: $border-radius;
 
     ul li {
         height: auto;
         padding: 0;
-        color: var(--dark-grey);
+        color: var(--deprecated-dark-grey);
         line-height: inherit;
         cursor: pointer;
 
         &:hover,
         &.admin-active {
-            color: var(--medium-blue);
+            color: var(--deprecated-medium-blue);
             background-color: var(--white);
         }
 
@@ -33,7 +33,7 @@
             display: block;
             padding: 10px 20px;
             font-size: 1.8rem;
-            border-top: 1px solid var(--light-grey);
+            border-top: 1px solid var(--deprecated-light-grey);
         }
     }
 }

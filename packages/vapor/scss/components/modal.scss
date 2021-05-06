@@ -45,7 +45,7 @@ $icon-size: (4em / 3);
 
 .modal-backdrop {
     z-index: $base-backdrop-z-index;
-    background: rgba($purple-blue, $transparency-1);
+    background: rgba(var(--deprecated-purple-blue-rgb), $transparency-1);
 
     opacity: 1;
     transition: all 0.3s;
@@ -176,8 +176,8 @@ $icon-size: (4em / 3);
     align-items: center;
     height: $modal-header-height;
     padding: 0 $header-padding;
-    color: var(--pure-white);
-    background-color: var(--pure-white);
+    color: var(--white);
+    background-color: var(--white);
     border-radius: $border-radius $border-radius 0 0;
 
     &:not(.mod-no-border-bottom) {
@@ -185,19 +185,19 @@ $icon-size: (4em / 3);
     }
 
     &.mod-success {
-        background-color: var(--status-green);
+        background-color: var(--success-60);
     }
 
     &.mod-warning {
-        background-color: var(--warning-60);
+        background-color: var(--warning-70);
     }
 
     &.mod-critical {
-        background-color: var(--status-red);
+        background-color: var(--critical-70);
     }
 
     &.mod-info {
-        background-color: var(--information-60);
+        background-color: var(--info-60);
     }
 
     h1 {
@@ -218,7 +218,7 @@ $icon-size: (4em / 3);
         & .icon {
             width: $icon-size;
             height: $icon-size;
-            fill: var(--pure-white);
+            fill: var(--white);
         }
     }
 }
@@ -228,7 +228,7 @@ $icon-size: (4em / 3);
     flex-grow: 1;
 
     overflow: auto;
-    background-color: var(--pure-white);
+    background-color: var(--white);
 
     -webkit-overflow-scrolling: touch;
 

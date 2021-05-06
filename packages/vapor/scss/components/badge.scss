@@ -16,6 +16,7 @@
     --font-size: 16px;
     --line-height: 18px;
     --color: var(--grey-80);
+    --fill: var(--grey-80);
     --border-color: var(--grey-50);
     --background-color: var(--grey-20);
 
@@ -37,31 +38,36 @@
     }
 
     &.mod-critical {
-        --color: var(--semantic-critical-100);
-        --border-color: var(--pomegranate-40);
-        --background-color: var(--pomegranate-20);
+        --color: var(--critical-100);
+        --fill: var(--critical-100);
+        --border-color: var(--pomegranate-red-40);
+        --background-color: var(--pomegranate-red-20);
     }
 
     &.mod-warning {
-        --color: var(--semantic-warning-90);
-        --border-color: var(--turbo-yellow-50);
+        --color: var(--warning-90);
+        --fill: var(--warning-90);
+        --border-color: var(--turbo-yellow-40);
         --background-color: var(--turbo-yellow-20);
     }
 
     &.mod-information {
-        --color: var(--semantic-info-80);
+        --color: var(--navy-blue-80);
+        --fill: var(--navy-blue-80);
         --border-color: var(--navy-blue-40);
         --background-color: var(--navy-blue-20);
     }
 
     &.mod-success {
-        --color: var(--semantic-success-100);
-        --border-color: var(--forest-green-30);
-        --background-color: var(--semantic-success-0);
+        --color: var(--success-100);
+        --fill: var(--success-100);
+        --border-color: var(--rain-forest-green-30);
+        --background-color: var(--success-10);
     }
 
     &.mod-beta {
         --color: var(--sienna-orange-70);
+        --fill: var(--sienna-orange-70);
         --border-color: var(--sienna-orange-40);
         --background-color: var(--sienna-orange-20);
     }

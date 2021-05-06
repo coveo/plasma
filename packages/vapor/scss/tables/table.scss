@@ -45,7 +45,7 @@
         padding: $table-header-top-padding $table-cell-left-right-padding $table-header-bottom-padding
             $table-cell-left-right-padding;
         white-space: nowrap;
-        background-color: var(--pure-white);
+        background-color: var(--white);
         border-top: $table-border;
         border-bottom: $table-border;
 
@@ -132,9 +132,9 @@
         }
 
         &.blankslate-rows:hover {
-            background-color: var(--pure-white);
+            background-color: var(--white);
             td {
-                background-color: var(--pure-white);
+                background-color: var(--white);
             }
         }
     }
@@ -189,14 +189,14 @@
     &.confirm-delete {
         .row-selected td,
         &.row-selected:hover td {
-            background-color: rgba($red, $transparency-5);
-            border-color: var(--red);
+            background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
+            border-color: var(--critical-70);
             transition: background-color 300ms;
         }
     }
 
     &.mod-deleting tbody tr.selected td {
-        background-color: rgba($red, $transparency-5);
+        background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
     }
 
     .mod-card-list {
@@ -223,7 +223,7 @@
 
     .mod-card-row .mod-card {
         min-height: $mod-card-row-min-height;
-        border-left: $status-card-border-width solid $transparent;
+        border-left: $status-card-border-width solid transparent;
 
         .mod-card-header {
             color: var(--title-text-color);
@@ -235,17 +235,17 @@
 
     .mod-card {
         border-radius: $big-border-radius;
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+        box-shadow: 0px 2px 10px rgba(var(--deprecated-black-rgb), 0.2);
         cursor: pointer;
 
         &:hover {
-            background-color: var(--grey-2);
+            background-color: var(--deprecated-grey-2);
         }
     }
 
     tr.selected .mod-card {
-        background-color: var(--grey-1);
-        border-left: $status-card-border-width solid var(--orange);
+        background-color: var(--deprecated-grey-1);
+        border-left: $status-card-border-width solid var(--deprecated-orange);
     }
 }
 
@@ -302,11 +302,11 @@ $row-style: (
     }
 }
 .row-disabled {
-    color: var(--dark-medium-grey);
+    color: var(--deprecated-dark-medium-grey);
     > td:first-child {
-        border-left-color: var(--dark-medium-grey);
+        border-left-color: var(--deprecated-dark-medium-grey);
     }
     svg {
-        fill: var(--dark-medium-grey);
+        fill: var(--deprecated-dark-medium-grey);
     }
 }

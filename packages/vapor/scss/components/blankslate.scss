@@ -37,20 +37,20 @@
 
     // deprecated use .mod-error instead
     &.mod-danger {
-        background-color: rgba($red, $transparency-5);
-        border-color: var(--red);
+        background-color: rgba(var(--deprecated-red-rgb), $transparency-5);
+        border-color: var(--critical-70);
         h1,
         p {
-            color: var(--red);
+            color: var(--critical-70);
         }
     }
 
     &.mod-error {
-        background-color: rgba($orange-5, $transparency-5);
-        border-color: var(--orange-8);
+        background-color: rgba(var(--deprecated-tango-rgb), $transparency-5);
+        border-color: var(--deprecated-red);
 
         h1 {
-            color: var(--orange-8);
+            color: var(--deprecated-red);
 
             svg {
                 fill: currentColor;

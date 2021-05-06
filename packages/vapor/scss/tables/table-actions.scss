@@ -68,7 +68,7 @@
             }
 
             &.open {
-                background-color: var(--light-grey);
+                background-color: var(--deprecated-light-grey);
                 border-color: var(--grey-40);
             }
 
@@ -129,7 +129,7 @@
 .item-filter-item {
     display: inline-block;
     margin: 0 $table-item-filter-padding-x;
-    color: var(--blue);
+    color: var(--cerulean-blue-50);
 }
 
 .item-filter-clear {

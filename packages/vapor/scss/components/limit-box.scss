@@ -23,12 +23,12 @@
 .limit-box-footer {
     width: 100%;
     height: $limit-progress-bar-height;
-    background-color: var(--light-grey);
+    background-color: var(--deprecated-light-grey);
 }
 
 .limit-box-bar {
     height: 100%;
-    background-color: var(--green);
+    background-color: var(--bright-turquoise-40);
 }
 
 @for $i from 0 through 100 {
@@ -36,24 +36,24 @@
         width: $i * 1%;
 
         @if $i >= 75 {
-            background-color: var(--orange);
+            background-color: var(--deprecated-orange);
         }
         @if $i == 100 {
-            background-color: var(--red);
+            background-color: var(--critical-70);
         }
     }
 }
 
 .limit-box-bar.mod-green {
-    background-color: var(--green);
+    background-color: var(--bright-turquoise-40);
 }
 
 .limit-box-bar.mod-orange {
-    background-color: var(--orange);
+    background-color: var(--deprecated-orange);
 }
 
 .limit-box-bar.mod-red {
-    background-color: var(--red);
+    background-color: var(--critical-70);
 }
 
 .limit-history-button {

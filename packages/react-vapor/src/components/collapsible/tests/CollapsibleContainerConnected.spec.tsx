@@ -18,7 +18,6 @@ describe('CollapsibleContainerConnected', () => {
     });
 
     it('displays a help icon next to the title if informationUrl prop was provided', () => {
-
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationUrl="http://perdu.com">
                 content

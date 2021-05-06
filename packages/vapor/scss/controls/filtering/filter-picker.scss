@@ -25,9 +25,9 @@
             display: inline-block;
             margin-left: $filter-badge-margin-left;
             overflow: visible;
-            color: var(--dark-grey);
+            color: var(--deprecated-dark-grey);
             font-size: $filter-badge-font-size;
-            background-color: var(--pure-white);
+            background-color: var(--white);
 
             cursor: pointer;
 
@@ -42,21 +42,21 @@
 
             .filter-operator {
                 &.mod-negative {
-                    color: var(--red);
+                    color: var(--critical-70);
                 }
                 &.mod-positive {
-                    color: var(--green);
+                    color: var(--bright-turquoise-40);
                 }
             }
 
             .filter-value-join {
-                color: var(--dark-grey);
+                color: var(--deprecated-dark-grey);
             }
 
             .dropdown-toggle:disabled {
                 .filter-operator,
                 .filter-value-join {
-                    color: var(--medium-grey);
+                    color: var(--deprecated-medium-grey);
                 }
             }
         }
@@ -65,7 +65,7 @@
             flex-grow: 2;
 
             padding: $filterbox-filters-container-padding;
-            background-color: var(--medium-grey);
+            background-color: var(--deprecated-medium-grey);
         }
 
         .filters {

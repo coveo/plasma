@@ -2,7 +2,6 @@ import * as d3 from 'd3';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {VaporColors} from '../color/Color';
 import {ChartBaseProps} from './ChartContainer';
 import {ChartUtils} from './ChartUtils';
 
@@ -61,8 +60,13 @@ export const XYChartContext = React.createContext<XYChartContextProps>({
 });
 
 const getDateChartColorPattern = (numOfColors: number) => {
-    const colorPattern: string[] = [VaporColors.azure, VaporColors.java, VaporColors.anakiwa, VaporColors.nepal];
-    return numOfColors > 2 ? [VaporColors['blue-8'], ...colorPattern] : colorPattern;
+    const colorPattern: string[] = [
+        'var(--deprecated-azure)',
+        'var(--deprecated-turquoise)',
+        'var(--deprecated-anakiwa)',
+        'var(--deprecated-nepal)',
+    ];
+    return numOfColors > 2 ? ['var(--deprecated-blue-8)', ...colorPattern] : colorPattern;
 };
 const defaultPadding = 10;
 

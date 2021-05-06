@@ -48,9 +48,9 @@ table {
                         margin-right: -$table-first-column-padding-left;
                         margin-left: -$table-first-column-padding-left;
                         padding: 15px $table-first-column-padding-left;
-                        background: var(--pure-white);
+                        background: var(--white);
                         border-bottom: 1px solid;
-                        border-bottom-color: var(--medium-grey);
+                        border-bottom-color: var(--deprecated-medium-grey);
 
                         .details-container {
                             padding-right: $details-container-padding;
@@ -84,7 +84,7 @@ table {
 
                         .error-title {
                             padding: 0;
-                            color: var(--red);
+                            color: var(--critical-70);
                         }
 
                         .error-description-container {
@@ -96,7 +96,7 @@ table {
 
                             .error-description {
                                 padding-top: 5px;
-                                color: var(--red);
+                                color: var(--critical-70);
                             }
                         }
 
@@ -111,7 +111,7 @@ table {
                 }
 
                 td {
-                    background-color: var(--pure-white);
+                    background-color: var(--white);
                 }
             }
         }
