@@ -3,6 +3,47 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0-next.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v20.0.0-next.2) (2021-05-06)
+
+
+### Bug Fixes
+
+* **collapsible:** make collapsible header icon tooltip appear ([#1967](https://github.com/coveo/react-vapor/issues/1967)) ([adc4cb7](https://github.com/coveo/react-vapor/commit/adc4cb795afb34e9f5b7ed16e96d65c68c024c08))
+* **confirmationmodalprovider:** updated tests to use RTL ([8e30153](https://github.com/coveo/react-vapor/commit/8e30153cb2105a5205c4a2f5e27942b0e4c2808f))
+* **types:** include types of dependencies we export ([d85f697](https://github.com/coveo/react-vapor/commit/d85f6972cb7f43fe4d6f45fd399e6bfbaf2ebef6))
+
+
+### Code Refactoring
+
+* **vapor:** remove js variables for vapor colors ([6ab6d0c](https://github.com/coveo/react-vapor/commit/6ab6d0cd9b44eb8253abfddedec8e63cdaddf79c))
+
+
+### Features
+
+* 🎸 [WIP] adding info token to big toast ([1bc955f](https://github.com/coveo/react-vapor/commit/1bc955f705001e9e992995fbbbe25d7dbf5b8a82))
+* 🎸 adapted style for the download toast from figma ([b440df2](https://github.com/coveo/react-vapor/commit/b440df2554cdd15ec7687277a7517af1fd9587fd))
+* 🎸 added new uts for new mods ([71f66b8](https://github.com/coveo/react-vapor/commit/71f66b8699a69d5df78b9d95df328f4dfde6e4d9))
+* 🎸 aplied review to pr ([8f7dd7e](https://github.com/coveo/react-vapor/commit/8f7dd7e7af96b77b6b5d27ca4d373a35a4e6f6d1))
+* 🎸 applied last review ([d767ef4](https://github.com/coveo/react-vapor/commit/d767ef43d1c567e5f8f088cbe1849f8571265f47))
+* 🎸 big toast are done! ([6429c77](https://github.com/coveo/react-vapor/commit/6429c77797b700ee85e74ceb9e8aaac1ff97473f))
+* 🎸 progress with the style, mod-small works! ([0210b38](https://github.com/coveo/react-vapor/commit/0210b38da6543a689789cdd68400a78ebcbe740f))
+* 🎸 refacto tsx ([4d8988a](https://github.com/coveo/react-vapor/commit/4d8988aadde0d4c0e353266e9850746909e5c42c))
+* 🎸 toast redesign, new color, round corner ([fb50c6f](https://github.com/coveo/react-vapor/commit/fb50c6f37c8d230cd8f2e637a31a2d3f52a671bb))
+* **info-token:** added all the svg + completed the demo page ([6a31a47](https://github.com/coveo/react-vapor/commit/6a31a47609d362d44bb85791dd592aafb8ebd4f4))
+* **info-token:** clean slate, starting from scratch ([cc0124f](https://github.com/coveo/react-vapor/commit/cc0124fa1971896502bf17fd1f77984439eda3b6))
+* **info-token:** wIP mise en place + gossage svg not working ([e5ca005](https://github.com/coveo/react-vapor/commit/e5ca005b71a77b1445c631aa313f7c4c5c496fed))
+* **info-tokens:** added sgvs + resolved my size problem xD ([161ca76](https://github.com/coveo/react-vapor/commit/161ca76340ce7f2c2e3a1e7ef63d0d11875a0da1))
+
+
+### BREAKING CHANGES
+
+* **vapor:** VaporColors is no longer exported from react-vapor, use `'var(--color-name)'` in
+your code instead.
+
+
+
+
+
 # [20.0.0-next.1](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v20.0.0-next.1) (2021-05-05)
 
 

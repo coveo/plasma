@@ -3,6 +3,45 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [20.0.0-next.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v20.0.0-next.2) (2021-05-06)
+
+
+### Code Refactoring
+
+* **vapor:** remove old palette ([7d03689](https://github.com/coveo/react-vapor/commit/7d0368988c1375fc1742fcbfde6413cc83126f82))
+* **vapor:** remove redesign color variables ([6012a87](https://github.com/coveo/react-vapor/commit/6012a8702b2c16aed06d57f531be8da4f0b655f5))
+
+
+### Features
+
+* 🎸 [WIP] adding info token to big toast ([1bc955f](https://github.com/coveo/react-vapor/commit/1bc955f705001e9e992995fbbbe25d7dbf5b8a82))
+* 🎸 adapted style for the download toast from figma ([b440df2](https://github.com/coveo/react-vapor/commit/b440df2554cdd15ec7687277a7517af1fd9587fd))
+* 🎸 big toast are done! ([6429c77](https://github.com/coveo/react-vapor/commit/6429c77797b700ee85e74ceb9e8aaac1ff97473f))
+* 🎸 progress with the style, mod-small works! ([0210b38](https://github.com/coveo/react-vapor/commit/0210b38da6543a689789cdd68400a78ebcbe740f))
+* 🎸 refacto scss ([f6b223f](https://github.com/coveo/react-vapor/commit/f6b223f13039fd25572aceb68bb1a9cf684a4e50))
+* 🎸 small toast done! mise en place for the big ones ([c52500d](https://github.com/coveo/react-vapor/commit/c52500d37552990ae8210b3de6b945be52eb3372))
+* 🎸 toast redesign, new color, round corner ([fb50c6f](https://github.com/coveo/react-vapor/commit/fb50c6f37c8d230cd8f2e637a31a2d3f52a671bb))
+* **info-token:** added all the svg + completed the demo page ([6a31a47](https://github.com/coveo/react-vapor/commit/6a31a47609d362d44bb85791dd592aafb8ebd4f4))
+* **info-token:** clean slate, starting from scratch ([cc0124f](https://github.com/coveo/react-vapor/commit/cc0124fa1971896502bf17fd1f77984439eda3b6))
+* **info-token:** new svg part 1 ([e105bcb](https://github.com/coveo/react-vapor/commit/e105bcbf07a46786f81f11a77d02879ca1f4c245))
+* **info-token:** wIP mise en place + gossage svg not working ([e5ca005](https://github.com/coveo/react-vapor/commit/e5ca005b71a77b1445c631aa313f7c4c5c496fed))
+* **info-tokens:** added sgvs + resolved my size problem xD ([161ca76](https://github.com/coveo/react-vapor/commit/161ca76340ce7f2c2e3a1e7ef63d0d11875a0da1))
+* **info-tokens:** better name for css classes ([2a2ce3f](https://github.com/coveo/react-vapor/commit/2a2ce3f068db87c288faf1b6e5dfa076076a5441))
+* **vapor:** add new colors and remove duplicate variables declaration ([60cc3ae](https://github.com/coveo/react-vapor/commit/60cc3ae372db4a8b70e55217c77950c4940189cf))
+* **vapor:** build a new mechanism to create color variables ([d8b2c64](https://github.com/coveo/react-vapor/commit/d8b2c641a855e044761619153730a716692c7d8e))
+
+
+### BREAKING CHANGES
+
+* **vapor:** Some css variables were removed or changed names. Have a look at the new colors
+declaration in scss/colors.scss to find a replacement for colors that were removed.
+* **vapor:** common/palette.scss and the scss variables that go with it no longer exist. Use the
+css variables from colors.scss instead.
+
+
+
+
+
 # [20.0.0-next.1](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v20.0.0-next.1) (2021-05-05)
 
 
