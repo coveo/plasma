@@ -137,25 +137,25 @@ pipeline {
       }
     }
 
-    // stage('Test') {
-    //   when {
-    //     expression { !skipRemainingStages }
-    //   }
+    stage('Test') {
+      when {
+        expression { !skipRemainingStages }
+      }
 
-    //   steps {
-    //     script {
-    //       setLastStageName();
-    //       sh "pnpm test"
-    //       sh "pnpm -r report-coverage"
-    //     }
-    //   }
+      steps {
+        script {
+          setLastStageName();
+          sh "pnpm test"
+          sh "pnpm -r report-coverage"
+        }
+      }
 
-    //   post {
-    //     failure {
-    //       postCommentOnGithub();
-    //     }
-    //   }
-    // }
+      post {
+        failure {
+          postCommentOnGithub();
+        }
+      }
+    }
 
     stage('Deploy in S3') {
       when {
@@ -268,20 +268,20 @@ pipeline {
           // To avoid failure in convertPNPMLockToNPMLock when the cache is not clearer between builds
           sh "rm -rf package-lock.json"
 
-          // // Prepare veracode
-          // sh "mkdir -p veracode"
-          // sh "mkdir -p veracode/demo"
-          // sh "mkdir -p veracode/react-vapor"
+          // Prepare veracode
+          sh "mkdir -p veracode"
+          sh "mkdir -p veracode/demo"
+          sh "mkdir -p veracode/react-vapor"
 
-          // // copy all ts and tsx files
-          // sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
-          // sh "rsync -arvR ./packages/react-vapor/src/**/*.ts* ./veracode/react-vapor/"
+          // copy all ts and tsx files
+          sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
+          sh "rsync -arvR ./packages/react-vapor/src/**/*.ts* ./veracode/react-vapor/"
 
-          // dir('veracode') {
-          //   // remove spec and mock files
-          //   sh "find . -name '*.spec.*' -delete"
-          //   sh "find . -name '*.mock.*' -delete"
-          // }
+          dir('veracode') {
+            // remove spec and mock files
+            sh "find . -name '*.spec.*' -delete"
+            sh "find . -name '*.mock.*' -delete"
+          }
 
           // NEW_VERSION = sh(
           //   script: "node -p -e 'require(`./lerna.json`).version;'",
