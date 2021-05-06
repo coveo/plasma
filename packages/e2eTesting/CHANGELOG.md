@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.0.0](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v21.0.0) (2021-05-06)
+
+
+### Bug Fixes
+
+* 🐛 Remove unsused reference ([4c6ed26](https://github.com/coveo/react-vapor/commit/4c6ed26dda770a0bb841542423830718bf42db3b))
+
+
+### Features
+
+* 🎸 Validate Collapsible ([db12ae6](https://github.com/coveo/react-vapor/commit/db12ae68b9bb377131b5270d0e7c1af3de5c4fe1))
+* **cypress:** make setup more resilient ([88a78b9](https://github.com/coveo/react-vapor/commit/88a78b9dbd9d826524f0518480be05bd7fad8bbb))
+* **cypress:** make setup more resilient ([60ff291](https://github.com/coveo/react-vapor/commit/60ff2917c33f35e2cdc4451204a8d0e87bbd8a8a))
+
+
+
+
+
 # [20.0.0-next.2](https://github.com/coveo/react-vapor/compare/v15.0.0-next.5...v20.0.0-next.2) (2021-05-06)
 
 
