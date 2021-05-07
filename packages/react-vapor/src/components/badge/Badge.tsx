@@ -18,7 +18,7 @@ export class Badge extends React.Component<IBadgeProps> {
     render() {
         const className = classNames(DEFAULT_BADGE_CLASSNAME, this.props.extraClasses);
         return (
-            <span className={className}>
+            <span className={className} aria-label="badge">
                 {this.props.icon?.length && <Svg svgName={this.props.icon} svgClass="icon" className="pr1 py1" />}
                 <span>{this.props.label}</span>
             </span>

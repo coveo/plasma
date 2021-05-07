@@ -1,0 +1,52 @@
+.icon-card {
+    position: relative;
+    transition: var(--default-transition);
+
+    .card {
+        position: relative;
+        z-index: 1;
+        transition: var(--default-transition);
+    }
+
+    &.mod-drawer:hover,
+    &.open {
+        transform: translate3d(0px, -8px, 0px);
+
+        .card {
+            box-shadow: var(--medium-elevation-on-light);
+        }
+    }
+}
+
+.icon-card-drawer {
+    justify-content: space-between;
+    margin-top: -8px;
+    padding: 36px 32px 28px 32px;
+    background-color: var(--grey-20);
+    border-right: $default-border;
+    border-bottom: $default-border;
+    border-left: $default-border;
+    border-radius: 0 0 8px 8px;
+
+    .icon-card-drawer-choice {
+        font-weight: normal;
+        font-size: 16px;
+    }
+
+    &.mod-vertical {
+        flex-direction: column;
+        align-items: flex-start;
+
+        .icon-card-drawer-choice {
+            margin: 0.5rem 0;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            &:last-child {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
