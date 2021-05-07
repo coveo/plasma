@@ -235,7 +235,7 @@
 
     .mod-card {
         border-radius: $big-border-radius;
-        box-shadow: 0px 2px 10px rgba(var(--deprecated-black-rgb), 0.2);
+        box-shadow: 0px 2px 10px rgba(var(--black-rgb), 0.2);
         cursor: pointer;
 
         &:hover {
@@ -245,7 +245,7 @@
 
     tr.selected .mod-card {
         background-color: var(--deprecated-grey-1);
-        border-left: $status-card-border-width solid var(--deprecated-orange);
+        border-left: $status-card-border-width solid var(--digital-blue-60);
     }
 }
 
