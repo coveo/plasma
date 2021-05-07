@@ -227,11 +227,11 @@ pipeline {
             STARTED_BY_UPSTREAM = cause.upstream()
 
             if (env.BRANCH_NAME ==~ /release-.*/) {
-              sh "npx lerna publish patch --create-release github --yes --force-publish --no-push"
+              sh "npx lerna publish patch --create-release github --yes --force-publish"
             } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\" --no-push"
+              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\""
             } else {
-              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\" --no-push"
+              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
             }
             sh "pnpm install --lockfile-only"
             sh "git add pnpm-lock.yaml"
