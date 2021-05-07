@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.2.0](https://github.com/coveo/react-vapor/compare/v21.0.0...v21.2.0) (2021-05-07)
+
+
+### Features
+
+* **vapor:** added the variables for the shadows on light background ([c37092a](https://github.com/coveo/react-vapor/commit/c37092a1004e16bb9cc23ff495986f089d562731))
+
+
+
+
+
 # [21.1.0](https://github.com/coveo/react-vapor/compare/v21.0.0...v21.1.0) (2021-05-07)
 
 
