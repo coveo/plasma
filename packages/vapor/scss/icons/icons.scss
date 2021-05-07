@@ -6,43 +6,64 @@
     overflow: visible;
 
     --fill: inherit;
+    --stroke: inherit;
 
-    fill: var(--fill);
+    &:not(.mod-stroke) {
+        fill: var(--fill);
+    }
+
+    &.mod-stroke {
+        stroke: var(--stroke);
+    }
 
     &.documentation-link {
         --fill: var(--digital-blue-60);
+        --stroke: var(--digital-blue-60);
+    }
+
+    &.mod-link {
+        --fill: var(--digital-blue-60);
+        --stroke: var(--digital-blue-60);
     }
 
     &.no-link {
         --fill: var(--grey-60);
+        --stroke: var(--grey-60);
     }
 
     &.disabled {
         --fill: var(--grey-40);
+        --stroke: var(--grey-40);
     }
 
     &.mod-error {
         --fill: var(--critical-70);
+        --stroke: var(--critical-70);
     }
 
     &.mod-warning {
         --fill: var(--warning-70);
+        --stroke: var(--warning-70);
     }
 
     &.mod-success {
         --fill: var(--success-60);
+        --stroke: var(--success-60);
     }
 
     &.mod-white {
         --fill: var(--white);
+        --stroke: var(--white);
     }
 
     &.office365-red {
         --fill: var(--deprecated-red);
+        --stroke: var(--deprecated-red);
     }
 
     &.salesforce-blue {
         --fill: var(--salesforce-blue);
+        --stroke: var(--salesforce-blue);
     }
 
     &.mod-small {
