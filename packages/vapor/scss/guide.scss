@@ -12,6 +12,10 @@
 @import 'helpers';
 @import 'placeholders';
 
+// Utility
+@import 'utility/shadow';
+@import 'utility/transitions';
+
 //Progress bar
 @import 'elements/progress-bar';
 
@@ -147,5 +151,4 @@
     @import 'utility/cursor';
     @import 'utility/pointers';
     @import 'utility/transparency';
-    @import 'utility/shadow';
 }
