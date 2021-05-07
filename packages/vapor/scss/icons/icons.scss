@@ -76,9 +76,10 @@
         vertical-align: -0.2em;
     }
 
-    @for $i from 5 through 15 {
+    @for $i from 5 through 36 {
         $size: $i * 2;
         &.mod-#{$size} {
+            min-width: $size + px;
             width: $size + px;
             height: $size + px;
             line-height: $size + px;
