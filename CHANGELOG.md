@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.4.0](https://github.com/coveo/react-vapor/compare/v21.3.1...v21.4.0) (2021-05-07)
+
+
+### Features
+
+* **icons:** add email-sent icon ([0f245f3](https://github.com/coveo/react-vapor/commit/0f245f3132eb2e9db7eac1fe6d13d416f8ed2eea))
+* **icons:** add svgs cloud, crawling-bot, and database ([e9a65bc](https://github.com/coveo/react-vapor/commit/e9a65bc5fdf52a1662c726107fa36334dcaa3ef7))
+
+
+
+
+
 ## [21.3.1](https://github.com/coveo/react-vapor/compare/v21.3.0...v21.3.1) (2021-05-07)
 
 
