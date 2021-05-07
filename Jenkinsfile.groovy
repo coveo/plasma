@@ -10,8 +10,7 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
 }
 
 library(
-    // identifier: "jsadmin_pipeline@master",
-    identifier: "jsadmin_pipeline@ADUI-6927/script-convert-pnpm-to-npm-lockfile",
+    identifier: "jsadmin_pipeline@master",
     retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
     changelog: false
 )
@@ -249,8 +248,8 @@ pipeline {
       when {
         allOf {
           expression { !skipRemainingStages }
-          // expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
-          // expression { COMMITS_BEHIND == 0 }
+          expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
+          expression { COMMITS_BEHIND == 0 }
         }
       }
 
@@ -283,11 +282,11 @@ pipeline {
             sh "find . -name '*.mock.*' -delete"
           }
 
-          // NEW_VERSION = sh(
-          //   script: "node -p -e 'require(`./lerna.json`).version;'",
-          //   returnStdout: true
-          // ).trim()
-          // deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
+          NEW_VERSION = sh(
+            script: "node -p -e 'require(`./lerna.json`).version;'",
+            returnStdout: true
+          ).trim()
+          deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
         }
       }
     }
