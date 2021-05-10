@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.5.0](https://github.com/coveo/react-vapor/compare/v21.4.0...v21.5.0) (2021-05-10)
+
+
+### Features
+
+* **icon:** allow adding colors to stroked icons ([b9b5a81](https://github.com/coveo/react-vapor/commit/b9b5a81bb03a7d8461bc548b5cf0ebaf80901c72))
+
+
+
+
+
 # [21.4.0](https://github.com/coveo/react-vapor/compare/v21.3.1...v21.4.0) (2021-05-07)
 
 
