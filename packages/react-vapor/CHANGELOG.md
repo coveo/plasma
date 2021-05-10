@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.7.0](https://github.com/coveo/react-vapor/compare/v21.6.0...v21.7.0) (2021-05-10)
+
+
+### Bug Fixes
+
+* **wizard on cancel:** optional oncancel ([da56645](https://github.com/coveo/react-vapor/commit/da56645d28efe46a5344f4b497966fbe71683480))
+
+
+### Features
+
+* **modal wizard:** oncancel ([7ee779d](https://github.com/coveo/react-vapor/commit/7ee779dc518a922dfa460101caf0590a6fca2dc5))
+
+
+
+
+
 # [21.6.0](https://github.com/coveo/react-vapor/compare/v21.5.0...v21.6.0) (2021-05-10)
 
 **Note:** Version bump only for package react-vapor
