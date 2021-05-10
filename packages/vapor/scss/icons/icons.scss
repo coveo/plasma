@@ -17,13 +17,8 @@
     }
 
     &.documentation-link {
-        --fill: var(--digital-blue-60);
-        --stroke: var(--digital-blue-60);
-    }
-
-    &.mod-link {
-        --fill: var(--digital-blue-60);
-        --stroke: var(--digital-blue-60);
+        --fill: var(--links-color);
+        --stroke: var(--links-color);
     }
 
     &.no-link {

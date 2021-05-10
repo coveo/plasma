@@ -6,6 +6,7 @@
 html,
 body,
 div,
+button,
 span,
 applet,
 object,
@@ -151,8 +152,10 @@ input::-moz-focus-inner {
     border: 0;
 }
 
-// For Safari
 button {
-    margin: 0;
+    align-items: unset;
+    text-align: unset;
+    background-color: transparent;
+    border: none;
     border-radius: 0;
 }
