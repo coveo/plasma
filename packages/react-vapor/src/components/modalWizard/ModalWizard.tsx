@@ -26,6 +26,7 @@ export interface ModalWizardProps
     nextButtonLabel?: string;
     previousButtonLabel?: string;
     finishButtonLabel?: string;
+    onCancel?: () => void;
 }
 
 const enhance = connect(null, (dispatch: IDispatch, {id}: ModalWizardProps) => ({
@@ -45,6 +46,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
     nextButtonLabel = 'Next',
     previousButtonLabel = 'Previous',
     finishButtonLabel = 'Finish',
+    onCancel,
     ...modalProps
 }) => {
     const [currentStep, setCurrentStep] = React.useState(0);
@@ -81,6 +83,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                                 name={isFirstStep ? cancelButtonLabel : previousButtonLabel}
                                 onClick={() => {
                                     if (isFirstStep) {
+                                        onCancel?.();
                                         close();
                                     } else {
                                         setCurrentStep(currentStep - 1);
