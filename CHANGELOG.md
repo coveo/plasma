@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.6.0](https://github.com/coveo/react-vapor/compare/v21.5.0...v21.6.0) (2021-05-10)
+
+
+### Features
+
+* **table:** fixed bad variable and changed selected style ([db6d949](https://github.com/coveo/react-vapor/commit/db6d9498295abe2b5a36ee896791aca38963b2a5))
+
+
+
+
+
 # [21.5.0](https://github.com/coveo/react-vapor/compare/v21.4.0...v21.5.0) (2021-05-10)
 
 
