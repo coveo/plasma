@@ -16,11 +16,11 @@ export class LinkSvg extends React.Component<ILinkSvgProps> {
     static defaultProps: Partial<ILinkSvgProps> = {
         target: '_blank',
         linkClasses: [],
-        svg: {svgName: 'help', svgClass: 'icon mod-14 documentation-link'},
+        svg: {svgName: 'help', svgClass: 'icon mod-14'},
     };
 
     render() {
-        const classes = classNames('inline-flex flex-center', this.props.linkClasses);
+        const classes = classNames('link inline-flex flex-center', this.props.linkClasses);
         const href = this.props.url ? {href: this.props.url} : null;
         return (
             <Tooltip {...this.props.tooltip} noSpanWrapper>

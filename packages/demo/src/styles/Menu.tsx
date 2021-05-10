@@ -39,6 +39,7 @@ const Navigation: React.FunctionComponent = () => (
             <NavigationLink href="/headings" name="Headings" />
             <NavigationLink href="/utilities" name="Utilities" />
             <NavigationLink href="/lists" name="Lists" />
+            <NavigationLink href="/links" name="Links" />
         </NavigationSection>
         <NavigationSection baseUrl="/utility" title="Utility">
             <NavigationLink href="/line-height" name="Text Size" />
