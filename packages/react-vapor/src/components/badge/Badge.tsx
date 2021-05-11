@@ -4,23 +4,43 @@ import {Svg} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
-export interface IBadgeProps {
-    label: string;
-    icon?: string;
+interface BadgeBasicProps {
     extraClasses?: string[];
 }
+
+interface BadgeWithLabelProps extends BadgeBasicProps {
+    label: string;
+}
+interface BadgeWithIconProps extends BadgeBasicProps {
+    icon: string;
+}
+
+export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
 
 export class Badge extends React.Component<IBadgeProps> {
     static defaultProps: Partial<IBadgeProps> = {
         extraClasses: [],
     };
 
+    private get isSmall(): boolean {
+        return this.className.includes('mod-small');
+    }
+
+    private get className(): string {
+        return classNames(DEFAULT_BADGE_CLASSNAME, this.props.extraClasses);
+    }
+
     render() {
-        const className = classNames(DEFAULT_BADGE_CLASSNAME, this.props.extraClasses);
         return (
-            <span className={className}>
-                {this.props.icon?.length && <Svg svgName={this.props.icon} svgClass="icon" className="pr1 py1" />}
-                <span>{this.props.label}</span>
+            <span className={this.className} aria-label="badge">
+                {'icon' in this.props ? (
+                    <Svg
+                        svgName={this.props.icon}
+                        svgClass={classNames('icon', {'mod-16': !this.isSmall, 'mod-12': this.isSmall})}
+                        className={classNames({mr1: 'label' in this.props && this.props.label})}
+                    />
+                ) : null}
+                {'label' in this.props ? <span>{this.props.label}</span> : null}
             </span>
         );
     }
