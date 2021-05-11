@@ -1,62 +1,20 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
-import * as _ from 'underscore';
-import {Badge, DEFAULT_BADGE_CLASSNAME, IBadgeProps} from '../Badge';
-import {Svg} from '../../svg';
+import {render, screen, within} from 'react-vapor-test-utils';
+
+import {Badge} from '../Badge';
 
 describe('Badge', () => {
-    let badge: ReactWrapper<IBadgeProps, any>;
+    it('renders a badge', () => {
+        render(<Badge label="label" icon="lock" />);
 
-    it('should render without errors', () => {
-        expect(() => {
-            shallow(<Badge label="badge" />);
-        }).not.toThrow();
+        const badge = screen.getByLabelText('badge');
+        expect(badge).toBeInTheDocument();
+        expect(within(badge).getByText('label')).toBeInTheDocument();
+        expect(within(badge).getByRole('img', {name: 'lock icon'})).toBeInTheDocument();
     });
 
-    describe('<Badge />', () => {
-        const mountWithProps = (props: Partial<IBadgeProps>) => {
-            badge = mount(<Badge {..._.defaults(props, {label: 'badge'})} />, {
-                attachTo: document.getElementById('App'),
-            });
-        };
-
-        it('should render badge with the label specified as prop', () => {
-            mountWithProps({
-                label: 'somelabel',
-            });
-
-            expect(badge.text()).toEqual('somelabel');
-        });
-
-        it('should render the badge with the default badge class', () => {
-            mountWithProps({});
-
-            expect(badge.find(`.${DEFAULT_BADGE_CLASSNAME}`).length).toBe(1);
-        });
-
-        it('should render the badge with the extra classes specified as props', () => {
-            mountWithProps({
-                extraClasses: ['bold'],
-            });
-
-            expect(badge.find('.bold').length).toBe(1);
-        });
-
-        it('should render the badge with SVG icons', () => {
-            mountWithProps({
-                extraClasses: [],
-                icon: 'lock',
-            });
-
-            expect(badge.find(Svg).length).toBe(1);
-        });
-
-        it('should not render the SVG component no props are passed in icon props', () => {
-            mountWithProps({
-                label: 'TestLabel',
-            });
-
-            expect(badge.find(Svg).length).toBe(0);
-        });
+    it('makes the icon smaller in small badges', () => {
+        render(<Badge label="label" icon="lock" extraClasses={['mod-small']} />);
+        expect(screen.getByRole('img', {name: 'lock icon'})).toHaveClass('mod-12');
     });
 });

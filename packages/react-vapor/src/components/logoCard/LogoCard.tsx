@@ -61,7 +61,9 @@ export class LogoCard extends React.Component<ILogoCardProps & React.HTMLProps<H
         );
         const logoIconClassName = classNames(DEFAULT_LOGO_ICON_CLASSNAME, DEFAULT_LOGO_ICON_SIZE);
 
-        const badges = this.props.badges.map((badgeProps) => <Badge {...badgeProps} key={slugify(badgeProps.label)} />);
+        const badges = this.props.badges.map((badgeProps) => (
+            <Badge {...badgeProps} key={slugify(JSON.stringify(badgeProps))} />
+        ));
 
         const logoCard: JSX.Element = (
             <Tooltip title={this.props.tooltip} placement={this.props.tooltipPlacement}>
