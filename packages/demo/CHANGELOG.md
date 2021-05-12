@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [21.8.0](https://github.com/coveo/react-vapor/compare/v21.7.1...v21.8.0) (2021-05-12)
+
+
+### Features
+
+* **links:** improve links style ([8039d95](https://github.com/coveo/react-vapor/commit/8039d9506b588ad2884aa6167f0e76d039437bd7))
+
+
+
+
+
 ## [21.7.1](https://github.com/coveo/react-vapor/compare/v21.7.0...v21.7.1) (2021-05-12)
 
 
