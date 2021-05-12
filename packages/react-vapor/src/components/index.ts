@@ -32,6 +32,7 @@ export * from './flippable';
 export * from './form';
 export * from './iconCard';
 export * from './headers';
+export * from './info-token';
 export * from './infoBox';
 export * from './inlinePrompt';
 export * from './input';

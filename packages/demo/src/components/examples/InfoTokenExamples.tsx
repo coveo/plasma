@@ -1,77 +1,55 @@
 import * as React from 'react';
-import {Svg} from 'react-vapor';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType, Section} from 'react-vapor';
 
-export class InfoTokenExamples extends React.Component<any, any> {
-    render() {
-        return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Information tokens</label>
-                    <div className="form-control">
-                        <Svg svgName={'info-token-full-information-16'} />
-                        <Svg svgName={'info-token-full-information-24'} />
-                        <Svg svgName={'info-token-full-information-32'} />
-                        <Svg svgName={'info-token-stroked-information-16'} />
-                        <Svg svgName={'info-token-stroked-information-24'} />
-                        <Svg svgName={'info-token-stroked-information-32'} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Success tokens</label>
-                    <div className="form-control">
-                        <Svg svgName={'info-token-full-success-16'} />
-                        <Svg svgName={'info-token-full-success-24'} />
-                        <Svg svgName={'info-token-full-success-32'} />
-                        <Svg svgName={'info-token-stroked-success-16'} />
-                        <Svg svgName={'info-token-stroked-success-24'} />
-                        <Svg svgName={'info-token-stroked-success-32'} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Warnings tokens</label>
-                    <div className="form-control">
-                        <Svg svgName={'info-token-full-warning-16'} />
-                        <Svg svgName={'info-token-full-warning-24'} />
-                        <Svg svgName={'info-token-full-warning-32'} />
-                        <Svg svgName={'info-token-stroked-warning-16'} />
-                        <Svg svgName={'info-token-stroked-warning-24'} />
-                        <Svg svgName={'info-token-stroked-warning-32'} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Tip tokens</label>
-                    <div className="form-control">
-                        <Svg svgName={'info-token-full-tip-16'} />
-                        <Svg svgName={'info-token-full-tip-24'} />
-                        <Svg svgName={'info-token-full-tip-32'} />
-                        <Svg svgName={'info-token-stroked-tip-16'} />
-                        <Svg svgName={'info-token-stroked-tip-24'} />
-                        <Svg svgName={'info-token-stroked-tip-32'} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Critical tokens</label>
-                    <div className="form-control">
-                        <Svg svgName={'info-token-full-critical-16'} />
-                        <Svg svgName={'info-token-full-critical-24'} />
-                        <Svg svgName={'info-token-full-critical-32'} />
-                        <Svg svgName={'info-token-stroked-critical-16'} />
-                        <Svg svgName={'info-token-stroked-critical-24'} />
-                        <Svg svgName={'info-token-stroked-critical-32'} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Question tokens</label>
-                    <div className="form-control">
-                        <Svg svgName={'info-token-full-question-16'} />
-                        <Svg svgName={'info-token-full-question-24'} />
-                        <Svg svgName={'info-token-full-question-32'} />
-                        <Svg svgName={'info-token-stroked-question-16'} />
-                        <Svg svgName={'info-token-stroked-question-24'} />
-                        <Svg svgName={'info-token-stroked-question-32'} />
-                    </div>
-                </div>
-            </div>
-        );
-    }
-}
+export const InfoTokenExamples: React.FunctionComponent = () => (
+    <Section>
+        <Section level={2} title="Information">
+            <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Small} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Medium} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
+        </Section>
+        <Section level={2} title="Success">
+            <InfoToken type={InfoTokenType.Success} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Success} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Success} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Success} size={InfoTokenSize.Small} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Success} size={InfoTokenSize.Medium} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Success} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
+        </Section>
+        <Section level={2} title="Warning">
+            <InfoToken type={InfoTokenType.Warning} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Warning} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Warning} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Warning} size={InfoTokenSize.Small} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Warning} size={InfoTokenSize.Medium} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Warning} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
+        </Section>
+        <Section level={2} title="Critical">
+            <InfoToken type={InfoTokenType.Critical} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Critical} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Critical} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Critical} size={InfoTokenSize.Small} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Critical} size={InfoTokenSize.Medium} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Critical} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
+        </Section>
+        <Section level={2} title="Tip">
+            <InfoToken type={InfoTokenType.Tip} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Tip} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Tip} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Tip} size={InfoTokenSize.Small} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Tip} size={InfoTokenSize.Medium} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Tip} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
+        </Section>
+        <Section level={2} title="Question">
+            <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Medium} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+            <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Small} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Medium} mode={InfoTokenMode.Stroked} />
+            <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
+        </Section>
+    </Section>
+);
