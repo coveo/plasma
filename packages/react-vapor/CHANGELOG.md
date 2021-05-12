@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [21.7.1](https://github.com/coveo/react-vapor/compare/v21.7.0...v21.7.1) (2021-05-12)
+
+
+### Bug Fixes
+
+* **badge:** allow badges with only icons ([52d9442](https://github.com/coveo/react-vapor/commit/52d94422fddb20df8b6e210fea3bcf026ad2b409))
+
+
+
+
+
 # [21.7.0](https://github.com/coveo/react-vapor/compare/v21.6.0...v21.7.0) (2021-05-10)
 
 
