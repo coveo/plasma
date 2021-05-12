@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.0.0](https://github.com/coveo/react-vapor/compare/v21.8.0...v22.0.0) (2021-05-12)
+
+
+### Features
+
+* **icon-card:** implement the full IconCard component with drawer ([e20a618](https://github.com/coveo/react-vapor/commit/e20a618ac1b6c6d4f31c63f650ce4350d2a8919a))
+
+
+### BREAKING CHANGES
+
+* **icon-card:** LogoCard was renamed to IconCard and its props have changed.
+
+
+
+
+
 # [21.8.0](https://github.com/coveo/react-vapor/compare/v21.7.1...v21.8.0) (2021-05-12)
 
 
