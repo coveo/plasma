@@ -16,6 +16,11 @@
         stroke: var(--stroke);
     }
 
+    &.mod-info {
+        --fill: var(--info-60);
+        --stroke: var(--info-60);
+    }
+
     &.documentation-link {
         --fill: var(--links-color);
         --stroke: var(--links-color);

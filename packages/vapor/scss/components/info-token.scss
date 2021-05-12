@@ -1,0 +1,12 @@
+.info-token {
+    &.filled {
+        .icon {
+            fill: var(--fill);
+            --stroke: var(--white);
+
+            &.mod-warning {
+                --stroke: var(--black);
+            }
+        }
+    }
+}

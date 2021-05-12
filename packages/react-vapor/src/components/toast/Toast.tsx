@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 
 import {Svg} from '../svg/Svg';
 
@@ -31,11 +32,19 @@ export const ToastType = {
     Info: 'Info',
 };
 
+const InfoTokenTypeMapping: Record<string, InfoTokenType> = {
+    [ToastType.Info]: InfoTokenType.Information,
+    [ToastType.Success]: InfoTokenType.Success,
+    [ToastType.Warning]: InfoTokenType.Warning,
+    [ToastType.Error]: InfoTokenType.Critical,
+};
+
 export class Toast extends React.Component<IToastProps> {
     private timeout: number;
 
     static defaultProps: Partial<IToastProps> = {
         dismissible: true,
+        type: ToastType.Success,
     };
 
     componentDidMount() {
@@ -69,21 +78,6 @@ export class Toast extends React.Component<IToastProps> {
         }
     }
 
-    private getInfoToken(type: string) {
-        if (type === ToastType.Success || (!this.props.className && !this.props.type)) {
-            return 'info-token-full-success-32';
-        }
-        if (type === ToastType.Info) {
-            return 'info-token-full-information-32';
-        }
-        if (type === ToastType.Warning) {
-            return 'info-token-full-warning-32';
-        }
-        if (type === ToastType.Error) {
-            return 'info-token-full-critical-32';
-        }
-    }
-
     render() {
         const classes = classNames(
             'toast',
@@ -108,7 +102,11 @@ export class Toast extends React.Component<IToastProps> {
         );
 
         const infoToken = !this.props.isSmall && !this.props.isDownload && (
-            <Svg svgName={this.getInfoToken(this.props.type)} className="toast-info-token" />
+            <InfoToken
+                type={InfoTokenTypeMapping[this.props.type]}
+                size={InfoTokenSize.Large}
+                mode={InfoTokenMode.Filled}
+            />
         );
 
         const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
