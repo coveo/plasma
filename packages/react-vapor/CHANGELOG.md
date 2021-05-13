@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.1.0](https://github.com/coveo/react-vapor/compare/v22.0.0...v22.1.0) (2021-05-13)
+
+
+### Features
+
+* **info-token:** implement info-token component ([a5a6159](https://github.com/coveo/react-vapor/commit/a5a615912b2add7b916b932d1a6751956205d1bb))
+
+
+
+
+
 # [22.0.0](https://github.com/coveo/react-vapor/compare/v21.8.0...v22.0.0) (2021-05-12)
 
 
