@@ -104,9 +104,9 @@ class CodeEditorDisconnect extends React.Component<
         }
     }
 
-    private debouncedUpdateStore = _.debounce((value: string) => {
-        this.props.updateStoreValue(value);
-    }, 500);
+    private updateStore = () => {
+        this.props.updateStoreValue(this.state.value);
+    };
 
     render() {
         return (
@@ -122,15 +122,20 @@ class CodeEditorDisconnect extends React.Component<
                 value={this.state.value}
                 onChange={(editor, data, value: string) => {
                     this.props.onChange?.(value);
-                    if (this.props.id) {
-                        this.debouncedUpdateStore(value);
-                    }
+                    this.setState({
+                        value,
+                    });
                 }}
                 options={{
                     ...CodeEditorDisconnect.defaultOptions,
                     readOnly: this.props.readOnly,
                     mode: this.props.mode,
                     ...this.props.options,
+                }}
+                onBlur={() => {
+                    if (this.props.id) {
+                        this.updateStore();
+                    }
                 }}
                 className={classNames(this.props.className, {'code-editor-no-cursor': this.props.readOnly})}
             />

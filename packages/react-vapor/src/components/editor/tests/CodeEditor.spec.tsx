@@ -122,6 +122,7 @@ describe('CodeEditor', () => {
             expect(updateSpy).toHaveBeenCalledTimes(1);
 
             userEvent.type(screen.getByRole('textbox'), 'new value');
+            screen.getByRole('textbox').blur();
 
             await waitFor(() => expect(updateSpy).toHaveBeenCalledTimes(2), {timeout: 2000});
         });
