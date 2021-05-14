@@ -16,6 +16,7 @@ export interface IToastProps {
     isDownload?: boolean;
     isSmall?: boolean;
     className?: string;
+    showInfoToken?: boolean;
     /**
      * @deprecated use children instead
      */
@@ -45,6 +46,7 @@ export class Toast extends React.Component<IToastProps> {
     static defaultProps: Partial<IToastProps> = {
         dismissible: true,
         type: ToastType.Success,
+        showInfoToken: true,
     };
 
     componentDidMount() {
@@ -129,7 +131,7 @@ export class Toast extends React.Component<IToastProps> {
 
         return (
             <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
-                {infoToken}
+                {this.props.showInfoToken ? infoToken : null}
                 {closeButton}
                 <div className="toast-title">{this.props.title}</div>
                 {toastContent}
