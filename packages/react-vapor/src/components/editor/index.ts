@@ -1,4 +1,5 @@
 export * from './CodeEditor';
+export * from './CodeEditorSelectors';
 export * from './EditorConstants';
 export * from './JSONEditor';
 export * from './JSONEditorActions';
