@@ -1,7 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {screen} from '@testing-library/dom';
 
+import {render} from '@testing-library/react';
 import {IToastProps, Toast, ToastType} from '../Toast';
 
 describe('Toasts', () => {
@@ -166,7 +168,6 @@ describe('Toasts', () => {
 
             const newToastAttributes = _.extend({}, toastBasicAttributes, {isSmall: false, dismissible: true});
             toastComponent.setProps(newToastAttributes).mount();
-
             expect(toastComponent.find(closeSelector).length).toBe(1);
         });
 
@@ -327,7 +328,27 @@ describe('Toasts', () => {
                     <div>Some file.csv</div>
                 </Toast>
             );
+
             expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
+        });
+        it('should render the by default infoToken Svg', () => {
+            render(<Toast title="admin-ui" />);
+
+            expect(
+                screen.getByRole('img', {
+                    name: /checkstrokedlarge icon/i,
+                })
+            ).toBeInTheDocument();
+        });
+
+        it('should not render the infoToken Svg when showInfoToken is false', () => {
+            render(<Toast title="admin-ui" showInfoToken={false} />);
+
+            expect(
+                screen.queryByRole('img', {
+                    name: /checkstrokedlarge icon/i,
+                })
+            ).not.toBeInTheDocument();
         });
     });
 });
