@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.2.0](https://github.com/coveo/react-vapor/compare/v22.1.0...v22.2.0) (2021-05-17)
+
+
+### Bug Fixes
+
+* **code editor:** selectors to export ([29ab953](https://github.com/coveo/react-vapor/commit/29ab9536f0aaad66df2fa7590ced374807e5f3da))
+
+
+### Features
+
+* **toast:** option to move infoToken on toast when its not needed ([065ac2a](https://github.com/coveo/react-vapor/commit/065ac2acc3788250f98ebbaed2da8322a99dbfaf))
+
+
+
+
+
 # [22.1.0](https://github.com/coveo/react-vapor/compare/v22.0.0...v22.1.0) (2021-05-13)
 
 
