@@ -77,7 +77,7 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
         >
             <Tooltip {...tooltip} placement={tooltip?.placement || TooltipPlacement.Top} noSpanWrapper>
                 <button
-                    className={classNames('card flex full-content-x p2', {
+                    className={classNames('card flex full-content-x p3', {
                         'cursor-pointer': (!!onClick || hasChoices) && !disabled && !isOpen,
                         'mod-small': !!small,
                     })}
@@ -86,11 +86,14 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
                 >
                     <Svg
                         svgName={svgName}
-                        className={classNames('logo icon mr3', {'mod-72': !small, 'mod-40': !!small})}
+                        svgClass={classNames('logo overflow-hidden mod-rounded-border-4 icon mr3', {
+                            'mod-72': !small,
+                            'mod-40': !!small,
+                        })}
                     />
                     <div className="flex flex-column flex-auto justify-center">
-                        <h2 className="title">{title}</h2>
-                        <p className="description">{description}</p>
+                        <h6 className="title">{title}</h6>
+                        {description && <p className="description">{description}</p>}
                     </div>
                     {badgeComponents.length > 0 ? <div className="flex center-align">{...badgeComponents}</div> : null}
                 </button>
