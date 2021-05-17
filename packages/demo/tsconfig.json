@@ -2,12 +2,6 @@
     "extends": "../tsconfig-base",
     "compilerOptions": {
         "removeComments": false,
-        "sourceMap": true,
-        "experimentalDecorators": true,
-        "downlevelIteration": true,
-        "esModuleInterop": true,
-        "importHelpers": true,
-        "composite": true,
         "rootDir": "src",
         "outDir": "built",
         "baseUrl": ".",

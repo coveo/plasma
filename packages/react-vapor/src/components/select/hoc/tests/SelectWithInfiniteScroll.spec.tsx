@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
-import {render, screen} from 'react-vapor-test-utils';
 import * as React from 'react';
+import {render, screen} from '@test-utils';
 
 import {SingleSelectConnected} from '../../SingleSelectConnected';
 import {selectWithInfiniteScroll} from '../SelectWithInfiniteScroll';

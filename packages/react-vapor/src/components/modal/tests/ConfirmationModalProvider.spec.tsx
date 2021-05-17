@@ -1,7 +1,7 @@
-import {screen} from '@testing-library/dom';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {renderModal} from 'react-vapor-test-utils';
+import {renderModal, screen} from '@test-utils';
+
 import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
 import {ModalCompositeConnected} from '../ModalComposite';
 

@@ -1,9 +1,8 @@
 {
     "extends": "./tsconfig.json",
     "compilerOptions": {
-        "esModuleInterop": true,
+        "sourceMap": false,
         "inlineSourceMap": true,
-        "module": "CommonJS",
-        "sourceMap": false
+        "module": "CommonJS"
     }
 }

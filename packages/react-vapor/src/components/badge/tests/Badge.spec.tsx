@@ -1,5 +1,5 @@
+import {render, screen, within} from '@test-utils';
 import * as React from 'react';
-import {render, screen, within} from 'react-vapor-test-utils';
 
 import {Badge} from '../Badge';
 

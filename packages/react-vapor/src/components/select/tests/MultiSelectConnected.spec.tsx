@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {render, screen, fireEvent, within} from 'react-vapor-test-utils';
+import {fireEvent, render, screen, within} from '@test-utils';
 
 import {MultiSelectConnected} from '../MultiSelectConnected';
 

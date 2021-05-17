@@ -1,15 +1,13 @@
-import {render, screen} from 'react-vapor-test-utils';
 import {ReactWrapper} from 'enzyme';
 import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
-import * as _ from 'underscore';
+import {act, render, screen} from '@test-utils';
 
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {TableHOCActions} from '../actions/TableHOCActions';
 import {TableHOC} from '../TableHOC';
-import {tableWithEmptyState} from '../TableWithEmptyState';
 import {TableSelectors} from '../TableSelectors';
+import {tableWithEmptyState} from '../TableWithEmptyState';
 
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);

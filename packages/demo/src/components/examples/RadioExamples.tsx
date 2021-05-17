@@ -61,12 +61,6 @@ const redRadioButtonProps = {
     ...radioButtonProps,
 };
 
-const greenRadioButtonProps = {
-    id: 'green',
-    value: 'green',
-    ...radioButtonProps,
-};
-
 const RadioSelectExample: React.FunctionComponent = () => (
     <Section level={2} title="Radio select with redux store">
         <LabeledInput label="The Label of the Radio Select">

@@ -1,13 +1,13 @@
 import userEvent from '@testing-library/user-event';
-import {render, screen} from 'react-vapor-test-utils';
 import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+import {render, screen} from '@test-utils';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
+import {SingleSelectWithFilter} from '../../select/hoc/SelectComponents';
 import {ITableHOCProps, TableHOC} from '../TableHOC';
 import {tableWithPredicate, tableWithPredicateGeneric} from '../TableWithPredicate';
-import {SingleSelectWithFilter} from '../../select/hoc/SelectComponents';
 import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('Table HOC', () => {

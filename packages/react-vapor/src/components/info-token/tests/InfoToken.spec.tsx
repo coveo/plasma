@@ -1,5 +1,6 @@
+import {render, screen} from '@test-utils';
 import * as React from 'react';
-import {render, screen} from 'react-vapor-test-utils';
+
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../InfoToken';
 
 describe('InfoToken', () => {

@@ -1,12 +1,11 @@
 import userEvent from '@testing-library/user-event';
-import {waitFor} from '@testing-library/dom';
 import * as CodeMirror from 'codemirror';
 import {ShallowWrapper} from 'enzyme';
 import {mountWithState, shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
+import {render, waitFor, screen} from '@test-utils';
 import * as _ from 'underscore';
-import {render, screen} from 'react-vapor-test-utils';
 
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
 import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';

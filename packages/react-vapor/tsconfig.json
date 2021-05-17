@@ -1,23 +1,14 @@
 {
     "extends": "../tsconfig-base",
     "compilerOptions": {
-        "emitDecoratorMetadata": true,
-        "experimentalDecorators": true,
-        "downlevelIteration": true,
-        "allowJs": true,
-        "noImplicitAny": true,
-        "noImplicitThis": true,
-        "removeComments": true,
-        "noUnusedLocals": true,
-        "lib": ["es2015", "dom"],
-        "allowSyntheticDefaultImports": true,
-        "strictBindCallApply": true,
-        "importHelpers": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "tsBuildInfoFile": "./dist/.tsbuildinfo",
         "baseUrl": ".",
         "paths": {
-            "react-vapor-test-utils": ["./jest/utils/react-vapor-test-utils"],
+            "@test-utils": ["src/TestUtils.tsx"],
             "*": ["types/*", "*"]
         }
     },
-    "exclude": ["**/node_modules", "**/dist", "**/coverage", "*.js", "**/target"]
+    "include": ["src"]
 }

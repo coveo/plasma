@@ -1,14 +1,14 @@
-import {RenderOptions, render} from '@testing-library/react';
+import {render, RenderOptions, RenderResult} from '@testing-library/react';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'redux';
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 
-import {ReactVaporReducers} from '../../src/ReactVaporReducers';
-import {IDispatch} from '../../src/utils/ReduxUtils';
-import {Defaults} from '../../src/Defaults';
-import {IReactVaporState} from '../../src/ReactVaporState';
+import {Defaults} from './Defaults';
+import {ReactVaporReducers} from './ReactVaporReducers';
+import {IReactVaporState} from './ReactVaporState';
+import {IDispatch} from './utils/ReduxUtils';
 
 const customRender = (
     ui: React.ReactElement,
@@ -26,7 +26,7 @@ const customRender = (
             dispatch: IDispatch<IReactVaporState>;
         };
     } = {}
-) => {
+): RenderResult => {
     const TestWrapper: React.FunctionComponent = ({children}) => <Provider store={store}>{children}</Provider>;
 
     return render(ui, {wrapper: TestWrapper, ...renderOptions});

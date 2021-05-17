@@ -1,7 +1,6 @@
-import {screen, waitForElementToBeRemoved} from '@testing-library/dom';
 import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
-import {renderModal} from 'react-vapor-test-utils';
+import {renderModal, screen, waitForElementToBeRemoved} from '@test-utils';
 
 import {ModalWizard} from '../ModalWizard';
 
