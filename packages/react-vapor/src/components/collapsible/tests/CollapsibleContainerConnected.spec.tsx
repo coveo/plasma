@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {render, screen} from 'react-vapor-test-utils';
+import {render, screen} from '@test-utils';
 
 import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
 

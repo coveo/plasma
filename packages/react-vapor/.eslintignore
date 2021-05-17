@@ -1,5 +1,5 @@
-node_modules/*
-dist/*
-coverage/*
-**/*.scss.d.ts
-*.js
+node_modules
+dist
+coverage
+**/*.js
+jest

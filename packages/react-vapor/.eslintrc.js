@@ -4,17 +4,17 @@ module.exports = {
     },
     extends: [require.resolve('tsjs/eslint-config')],
     parserOptions: {
-        project: 'tsconfig.eslint.json',
+        project: './tsconfig.json',
         tsconfigRootDir: __dirname,
         sourceType: 'module',
     },
     overrides: [
         {
-            files: ['**/*.spec.{ts,tsx}'],
+            files: ['**/*.spec.*'],
             env: {
                 'jest/globals': true,
             },
-            extends: ['plugin:jest/recommended', 'plugin:testing-library/recommended', 'plugin:jest-dom/recommended'],
+            extends: ['plugin:jest/recommended', 'plugin:testing-library/react', 'plugin:jest-dom/recommended'],
         },
     ],
 };

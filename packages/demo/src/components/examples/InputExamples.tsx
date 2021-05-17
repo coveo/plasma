@@ -26,6 +26,7 @@ import {
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
+import {IReactVaporExampleState} from '../../Reducers';
 import {Store} from '../../Store';
 import {ExampleComponent} from '../ComponentsInterface';
 
@@ -185,7 +186,7 @@ const MessageWhenInputIsDirty = connect(
 const InputWithDirty = withDirtyInputHOC(InputConnected);
 
 const MultiValuesInputId = 'multivalue-id';
-const mapStateToProps = (state) => ({
+const mapStateToProps = (state: IReactVaporExampleState) => ({
     values: MultiValuesInputSelectors.getValues(state, MultiValuesInputId),
 });
 

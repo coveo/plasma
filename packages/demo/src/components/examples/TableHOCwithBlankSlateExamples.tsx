@@ -41,7 +41,7 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
                 id="tableWithEmptyState"
                 className="table"
                 data={generateDataWithFaker(0)}
-                renderBody={(data) => generateTableRow(data, 'tableWithBlankSlate')}
+                renderBody={(data: IExampleRowData[]) => generateTableRow(data, 'tableWithBlankSlate')}
                 filterMatcher={(filter: string, data: IExampleRowData) =>
                     data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1
                 }

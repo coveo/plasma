@@ -1,14 +1,14 @@
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {render, screen, within} from 'react-vapor-test-utils';
+import {render, screen, within} from '@test-utils';
 import * as _ from 'underscore';
 
+import {withServerSideProcessing} from '../../../../hoc';
 import {IFlatSelectOptionProps} from '../../../flatSelect/FlatSelectOption';
 import {IItemBoxProps} from '../../../itemBox/ItemBox';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConnected';
 import {MultiSelectWithPredicate} from '../SelectComponents';
 import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate';
-import {withServerSideProcessing} from '../../../../hoc';
 
 describe('Select', () => {
     describe('<MultiSelectWithPredicate />', () => {
