@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {CherryPick} from '../../utils';
 import {ITabOwnProps} from './Tab';
 import {TabConstants} from './TabConstants';

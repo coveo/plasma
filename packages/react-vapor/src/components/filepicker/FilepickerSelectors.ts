@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {FilepickerState} from './FilepickerReducers';
 
 const getFile = (inputId: string): File => {

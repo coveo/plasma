@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ValidationState} from './ValidationState';
 
 const getErrors = (id: string) => (state: IReactVaporState) =>

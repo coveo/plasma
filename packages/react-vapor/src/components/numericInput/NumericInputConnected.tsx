@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';

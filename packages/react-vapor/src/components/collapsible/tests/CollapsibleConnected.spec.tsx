@@ -3,7 +3,7 @@ import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
 import {SlideY} from '../../../animations/SlideY';
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {setCollapsibleExpanded} from '../CollapsibleActions';
 import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected';

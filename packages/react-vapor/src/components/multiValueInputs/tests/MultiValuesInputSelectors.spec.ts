@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {MultiValuesInputSelectors} from '../MultiValuesInputSelectors';
 
 describe('MultiValuesInputSelectors', () => {

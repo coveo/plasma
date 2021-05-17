@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {ILoadingDispatchProps, ILoadingOwnProps, ILoadingProps, Loading} from './Loading';
 import {addLoading, removeLoading} from './LoadingActions';

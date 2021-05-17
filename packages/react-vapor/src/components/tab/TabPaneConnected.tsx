@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {ITabPaneDispatchProps, ITabPaneOwnProps, ITabPaneProps, ITabPaneStateProps, TabPane} from './TabPane';
 import {TabSelectors} from './TabSelectors';

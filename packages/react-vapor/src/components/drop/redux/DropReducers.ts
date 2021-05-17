@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ListBoxActions} from '../../listBox/ListBoxActions';
 import {DropReducerActions, IDropPayload} from './DropActions';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar';
 import {DefaultGroupIds, DropActions} from '../drop/redux/DropActions';

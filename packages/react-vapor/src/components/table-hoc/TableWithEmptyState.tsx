@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IDispatch} from '../../utils/ReduxUtils';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {TableHOCActions} from './actions/TableHOCActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';

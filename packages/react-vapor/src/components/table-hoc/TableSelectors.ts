@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {HOCTableRowState} from './reducers/TableRowReducers';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {TableHOCUtils} from './utils/TableHOCUtils';

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
 import {DefaultGroupIds, DropActions} from './redux/DropActions';

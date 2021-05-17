@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxActionsPayload} from '../../ReactVaporState';
 import {ComponentId} from '../../utils/ComponentUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {WithDirtyActionTypes} from './withDirtyActions';

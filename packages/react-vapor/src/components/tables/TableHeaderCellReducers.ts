@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {TableSortingOrder} from './TableConstants';
 import {TableHeaderCellActions} from './TableHeaderCellActions';

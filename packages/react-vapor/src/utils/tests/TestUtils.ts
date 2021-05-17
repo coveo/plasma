@@ -8,8 +8,8 @@ import * as _ from 'underscore';
 
 import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
-import {IReactVaporState} from '../../ReactVapor';
 import {ReactVaporReducers} from '../../ReactVaporReducers';
+import {IReactVaporState} from '../../ReactVaporState';
 import {CommonActions, IDispatch} from '../ReduxUtils';
 
 export interface IExampleRowData {

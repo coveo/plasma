@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 import * as s from 'underscore.string';
-import {IReduxActionsPayload} from '../../ReactVapor';
+import {IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ListBoxActions} from '../listBox/ListBoxActions';
 import {LoadingActions} from '../loading/LoadingActions';

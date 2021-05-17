@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {CollapsibleState} from './CollapsibleReducers';
 
 const isExpanded = (state: IReactVaporState, id: string): boolean => {

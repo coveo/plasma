@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITabProps} from '../../tab/Tab';

@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';

@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IPaginationState} from '../navigation/pagination';
 
 const getPaginationState = (state: IReactVaporState, {id}: {id: string}) =>

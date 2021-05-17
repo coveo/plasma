@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createSelector} from 'reselect';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {initialNumericInputState, INumericInputState} from './NumericInputReducers';
 
 const getNumericInput = (state: IReactVaporState, ownProps: {id: string}): INumericInputState =>

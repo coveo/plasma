@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
 import {IOptionPickerState} from '../optionPicker/OptionPickerReducers';

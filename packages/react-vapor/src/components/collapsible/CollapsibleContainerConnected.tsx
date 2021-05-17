@@ -3,7 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {CollapsibleConnected} from './CollapsibleConnected';

@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IInputState} from './InputReducers';
 
 const getInput = (state: IReactVaporState, props: {id: string}): IInputState =>

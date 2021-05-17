@@ -1,5 +1,5 @@
 import {TableHOCUtils} from '../../components/table-hoc/utils/TableHOCUtils';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ReduxTestUtilities} from './ReduxTestUtilities';
 
 describe('ReduxTestUtilities', () => {

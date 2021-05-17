@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {TableSelectors, TableSelectorsProps} from '../TableSelectors';
 import {ITableHOCCompositeState, TableHOCUtils} from '../utils/TableHOCUtils';
 

@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';

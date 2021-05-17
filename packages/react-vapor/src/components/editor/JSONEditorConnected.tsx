@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils';
 import {JSONEditor, JSONEditorDispatchProps, JSONEditorProps, JSONEditorStateProps} from './JSONEditor';
 import {JSONEditorActions} from './JSONEditorActions';

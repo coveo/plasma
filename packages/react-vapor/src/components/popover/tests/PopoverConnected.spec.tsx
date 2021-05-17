@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IPopoverProps, Popover} from '../Popover';

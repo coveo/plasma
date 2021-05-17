@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, IThunkAction} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {applyDatePicker, changeDatePickerLowerLimit, changeDatePickerUpperLimit} from '../datePicker/DatePickerActions';

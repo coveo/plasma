@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {UrlUtils} from '../../utils';
 import {EventUtils} from '../../utils/EventUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';

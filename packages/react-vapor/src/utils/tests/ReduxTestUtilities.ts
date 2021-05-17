@@ -7,7 +7,7 @@ import {
     ITableHOCPredicateValue,
     TableHOCUtils,
 } from '../../components/table-hoc/utils/TableHOCUtils';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 
 const createTableHOCCompositeState = <T extends IReactVaporState>(
     tableId: string,

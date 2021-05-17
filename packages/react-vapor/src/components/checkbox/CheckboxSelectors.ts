@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ICheckboxState} from './CheckboxReducers';
 
 const get = (state: IReactVaporState, {id}: {id: string}) => _.findWhere(state.checkboxes, {id});

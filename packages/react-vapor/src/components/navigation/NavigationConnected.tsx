@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {ILoadingState} from '../loading/LoadingReducers';
 import {INavigationOwnProps, INavigationProps, INavigationStateProps, Navigation} from './Navigation';

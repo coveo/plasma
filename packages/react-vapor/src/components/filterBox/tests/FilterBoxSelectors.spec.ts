@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {ISelectWithFilterOwnProps, ISingleSelectOwnProps} from '../../select';
 import {IFilterState} from '../FilterBoxReducers';
 import {FilterBoxSelectors} from '../FilterBoxSelectors';
