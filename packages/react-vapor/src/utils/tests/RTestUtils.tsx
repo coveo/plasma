@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {UUID} from '../UUID';
 import {TestUtils} from './TestUtils';
 

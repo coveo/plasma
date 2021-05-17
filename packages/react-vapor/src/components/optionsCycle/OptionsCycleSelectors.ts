@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 
 const getCurrentOption = (state: IReactVaporState, props: {id: string; startAt?: number}): number => {
     const cycle = _.findWhere(state.optionsCycles, {id: props.id});

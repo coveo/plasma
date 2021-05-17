@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {JSONEditorState} from './JSONEditorReducers';
 
 const getValue = (state: IReactVaporState, id: string): string => {

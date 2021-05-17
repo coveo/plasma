@@ -5,10 +5,10 @@ import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'r
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 
-import {IReactVaporState} from '../../src/ReactVapor';
 import {ReactVaporReducers} from '../../src/ReactVaporReducers';
 import {IDispatch} from '../../src/utils/ReduxUtils';
 import {Defaults} from '../../src/Defaults';
+import {IReactVaporState} from '../../src/ReactVaporState';
 
 const customRender = (
     ui: React.ReactElement,

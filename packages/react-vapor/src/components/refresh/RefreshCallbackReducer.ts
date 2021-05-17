@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
 import {RefreshCallbackActionType} from './RefeshCallbackActions';
 

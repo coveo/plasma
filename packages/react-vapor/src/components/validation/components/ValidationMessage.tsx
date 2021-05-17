@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {IDispatch} from '../../../utils';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationSelectors} from '../ValidationSelectors';

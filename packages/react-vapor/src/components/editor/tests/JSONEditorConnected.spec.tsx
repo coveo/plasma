@@ -5,7 +5,7 @@ import {act} from 'react-dom/test-utils';
 import {MockStoreEnhanced} from 'redux-mock-store';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {IDispatch} from '../../../utils';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {CodeEditor} from '../CodeEditor';

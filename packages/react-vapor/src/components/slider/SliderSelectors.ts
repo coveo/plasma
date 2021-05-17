@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ISliderState} from './SliderReducers';
 
 const getSlider = (state: IReactVaporState, props: {id: string}): ISliderState =>

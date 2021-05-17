@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';

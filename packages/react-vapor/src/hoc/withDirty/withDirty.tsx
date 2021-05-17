@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {WithDirtyActions} from './withDirtyActions';
 import {WithDirtySelectors} from './withDirtySelectors';

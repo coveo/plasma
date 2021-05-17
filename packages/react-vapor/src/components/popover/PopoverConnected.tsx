@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IPopoverDispatchProps, IPopoverProps, IPopoverState, Popover} from './Popover';
 import {addPopover, removePopover, setPopoverIsOpen} from './PopoverActions';

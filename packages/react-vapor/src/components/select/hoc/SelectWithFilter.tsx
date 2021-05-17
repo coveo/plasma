@@ -5,7 +5,7 @@ import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';

@@ -1,5 +1,5 @@
 export * from './Defaults';
-export * from './ReactVapor';
+export * from './ReactVaporState';
 export * from './ReactVaporReducers';
 export * from './Version';
 export * from './animations';

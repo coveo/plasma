@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as s from 'underscore.string';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ILastUpdatedProps, LastUpdated} from '../LastUpdated';

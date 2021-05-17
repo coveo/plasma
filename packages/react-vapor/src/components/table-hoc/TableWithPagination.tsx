@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVapor';
+import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';

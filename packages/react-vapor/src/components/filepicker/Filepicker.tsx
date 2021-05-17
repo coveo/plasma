@@ -3,7 +3,7 @@ import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils';
 import {FileMetadata, FileUtils} from '../../utils/FileUtils';
 import {Svg} from '../svg';

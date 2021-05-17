@@ -3,7 +3,7 @@ import * as Redux from 'redux';
 import {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {extend} from 'underscore';
 
-import {IReactVaporState} from '../ReactVapor';
+import {IReactVaporState} from '../ReactVaporState';
 
 /**
  * use this type with an enhance function containing the connecting functions like such:

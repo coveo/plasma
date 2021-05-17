@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {ConnectedProps, IDispatch} from '../../utils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';

@@ -5,7 +5,7 @@ import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
 import {shallowWithState} from 'enzyme-redux';
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInputProps, Input} from '../Input';

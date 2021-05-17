@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {CollapsibleSelectors} from '../CollapsibleSelectors';
 
 describe('CollapsibleSelectors', () => {

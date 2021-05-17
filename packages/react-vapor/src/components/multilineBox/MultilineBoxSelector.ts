@@ -1,5 +1,5 @@
 import {createSelector} from 'reselect';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IStringListState} from '../../reusableState/customList/StringListReducers';
 
 const initialMultiBoxIDs: IStringListState = {id: undefined, list: []};

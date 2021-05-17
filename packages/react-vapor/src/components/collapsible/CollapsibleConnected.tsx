@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
 import {CollapsibleToggle} from './CollapsibleToggle';

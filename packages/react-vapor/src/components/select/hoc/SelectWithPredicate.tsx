@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {FlatSelectConnected} from '../../flatSelect';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';

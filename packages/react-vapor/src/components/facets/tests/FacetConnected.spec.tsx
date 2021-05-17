@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Facet, IFacet, IFacetProps} from '../Facet';
 import {FacetConnected} from '../FacetConnected';

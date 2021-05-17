@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {Dropdown, IDropdownProps} from '../Dropdown';
 import {toggleDropdown} from '../DropdownActions';

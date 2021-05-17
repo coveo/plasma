@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';

@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {flatSelectInitialState, IFlatSelectState} from './FlatSelectReducers';
 
 const getInput = (state: IReactVaporState, ownProps: {id: string}): IFlatSelectState =>

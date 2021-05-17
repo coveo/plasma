@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDatePickerState} from './DatePickerReducers';
 
 const getDatePicker = (state: IReactVaporState, props: {id: string}): IDatePickerState => {

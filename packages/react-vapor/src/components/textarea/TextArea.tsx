@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils';
 import {ILabelProps} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ChromePicker, ChromePickerProps, ColorResult} from 'react-color';
 import {connect} from 'react-redux';
 import {isString, noop, uniqueId} from 'underscore';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {changeInputValue} from '../input/InputActions';
 import {InputConnected} from '../input/InputConnected';

@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVapor';
+import {IReactVaporState} from '../../../ReactVaporState';
 import {JSONEditorSelectors} from '../JSONEditorSelectors';
 
 describe('JSONEditorSelectors', () => {

@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {InputSelectors} from '../input/InputSelectors';
 import {MultilineBoxSelectors} from '../multilineBox/MultilineBoxSelector';
 

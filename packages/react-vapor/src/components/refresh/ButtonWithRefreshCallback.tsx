@@ -1,7 +1,7 @@
 import {FunctionComponent} from 'react';
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../button/Button';
 import {RefreshCallBackActions} from './RefeshCallbackActions';

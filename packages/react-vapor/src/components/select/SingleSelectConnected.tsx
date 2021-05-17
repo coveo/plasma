@@ -4,7 +4,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVapor';
+import {IReactVaporState} from '../../ReactVaporState';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
