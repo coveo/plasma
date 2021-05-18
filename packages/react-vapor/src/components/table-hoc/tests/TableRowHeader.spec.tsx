@@ -1,4 +1,4 @@
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {TextLoadingPlaceholder} from '../../loading';

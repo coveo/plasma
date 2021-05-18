@@ -6,7 +6,6 @@ import {addToastContainer, removeToast, removeToastContainer} from './ToastActio
 import {
     IToastContainerDispatchProps,
     IToastContainerOwnProps,
-    IToastContainerProps,
     IToastContainerStateProps,
     ToastContainer,
 } from './ToastContainer';
@@ -24,7 +23,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IToastContainerOwnPro
     onCloseToast: (id: string) => dispatch(removeToast(ownProps.id, id)),
 });
 
-export const ToastContainerConnected: React.ComponentClass<IToastContainerProps> = connect(
+export const ToastContainerConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

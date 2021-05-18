@@ -99,4 +99,11 @@ class RefreshCallbackDisconnected extends React.PureComponent<IRefreshCallbackPr
     }
 }
 
-export const RefreshCallback = connect(mapStateToProps, mapDispatchToProps)(RefreshCallbackDisconnected);
+export const RefreshCallback = connect<
+    ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps>,
+    IRefreshCallbackOwnProps
+>(
+    mapStateToProps,
+    mapDispatchToProps
+)(RefreshCallbackDisconnected as any);

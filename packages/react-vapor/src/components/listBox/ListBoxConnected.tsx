@@ -1,11 +1,10 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
-import {IListBoxDispatchProps, IListBoxOwnProps, IListBoxProps, IListBoxStateProps, ListBox} from './ListBox';
+import {IListBoxDispatchProps, IListBoxOwnProps, IListBoxStateProps, ListBox} from './ListBox';
 import {addListBox, removeListBox, selectListBoxOption} from './ListBoxActions';
 import {IListBoxState} from './ListBoxReducers';
 
@@ -24,8 +23,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IListBoxOwnProps): IL
         dispatch(selectListBoxOption(ownProps.id, ownProps.multi, option.value, index)),
 });
 
-export const ListBoxConnected: React.ComponentClass<IListBoxProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.defaultMergeProps
-)(ListBox);
+export const ListBoxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.defaultMergeProps)(ListBox);

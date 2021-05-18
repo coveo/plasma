@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -7,7 +6,6 @@ import {closeModals} from './ModalActions';
 import {
     IModalBackdropDispatchProps,
     IModalBackdropOwnProps,
-    IModalBackdropProps,
     IModalBackdropStateProps,
     ModalBackdrop,
 } from './ModalBackdrop';
@@ -35,6 +33,8 @@ const mapDispatchToProps = (
 /**
  * @deprecated use ModalCompositeConnected instead
  */
-export const ModalBackdropConnected: React.ComponentClass<
-    IModalBackdropProps & React.HTMLAttributes<HTMLDivElement>
-> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(ModalBackdrop);
+export const ModalBackdropConnected = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(ModalBackdrop);

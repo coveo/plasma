@@ -1,13 +1,7 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    ITableHeaderCellDispatchProps,
-    ITableHeaderCellOwnProps,
-    ITableHeaderCellProps,
-    TableHeaderCell,
-} from './TableHeaderCell';
+import {ITableHeaderCellDispatchProps, ITableHeaderCellOwnProps, TableHeaderCell} from './TableHeaderCell';
 import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from './TableHeaderCellActions';
 import {ITableHeaderCellState} from './TableHeaderCellReducers';
 
@@ -28,7 +22,7 @@ const mapDispatchToProps = (
     onUnmount: () => dispatch(removeHeaderCell(ownProps.id)),
 });
 
-export const TableHeaderCellConnected: React.ComponentClass<ITableHeaderCellProps> = connect(
+export const TableHeaderCellConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

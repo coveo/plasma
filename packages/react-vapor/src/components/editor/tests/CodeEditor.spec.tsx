@@ -1,7 +1,7 @@
 import userEvent from '@testing-library/user-event';
 import * as CodeMirror from 'codemirror';
 import {ShallowWrapper} from 'enzyme';
-import {mountWithState, shallowWithState} from 'enzyme-redux';
+import {mountWithState, shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as ReactCodeMirror from 'react-codemirror2';
 import {render, waitFor, screen} from '@test-utils';
@@ -21,7 +21,9 @@ describe('CodeEditor', () => {
 
     it('should render without errors', () => {
         expect(() => {
-            shallowWithState(<CodeEditor {...basicProps} />, {});
+            shallowWithState(<CodeEditor {...basicProps} />, {})
+                .dive()
+                .dive();
         }).not.toThrow();
     });
 
@@ -31,7 +33,7 @@ describe('CodeEditor', () => {
 
         const mountWithProps = (props: Partial<ICodeEditorProps> = {}) => {
             wrapper = shallowWithState(<CodeEditor {..._.defaults(props, basicProps)} />, {});
-            codeEditor = wrapper.dive();
+            codeEditor = wrapper.dive().dive();
         };
 
         beforeEach(() => {

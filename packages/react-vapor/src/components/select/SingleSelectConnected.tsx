@@ -160,4 +160,11 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
     };
 }
 
-export const SingleSelectConnected = connect(mapStateToProps, mapDispatchToProps)(SingleSelect);
+export const SingleSelectConnected = connect<
+    ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps>,
+    ISingleSelectOwnProps
+>(
+    mapStateToProps,
+    mapDispatchToProps
+)(SingleSelect as any);

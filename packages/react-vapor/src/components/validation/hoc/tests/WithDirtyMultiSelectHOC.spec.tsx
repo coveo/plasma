@@ -1,9 +1,7 @@
-import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
-import {composeMockStore, withSelectedValues} from '../../../../utils/tests/TestUtils';
+import {render, screen} from '@test-utils';
+import {IsDirtyIndicator, withSelectedValues} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
-import {ValidationActions} from '../../ValidationActions';
 import {withDirtyMultiSelectHOC} from '../WithDirtyMultiSelectHOC';
 
 const MultiSelectWithDirty = withDirtyMultiSelectHOC(MultiSelectConnected);
@@ -18,53 +16,57 @@ describe('MultiSelectWithDirty', () => {
     const ANOTHER_VALUE = '🐠';
 
     it('should trigger the dirty state when the user selects a new value', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
+        const initialState = withSelectedValues(defaultProps.id, ONE_VALUE)({});
 
-        const component = mountWithStore(<MultiSelectWithDirty {...defaultProps} initialValues={[]} />, store);
+        render(
+            <>
+                <MultiSelectWithDirty {...defaultProps} initialValues={[]} />
+                <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
+            </>,
+            {initialState}
+        );
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, true));
+        expect(screen.getByText('is dirty')).toBeVisible();
     });
 
     it('should trigger the dirty state when the user removes a value', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
+        const initialState = withSelectedValues(defaultProps.id, ONE_VALUE)({});
 
-        const component = mountWithStore(
-            <MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE, ANOTHER_VALUE]} />,
-            store
+        render(
+            <>
+                <MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE, ANOTHER_VALUE]} />
+                <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
+            </>,
+            {initialState}
         );
-
-        act(() => {
-            component.mount();
-        });
-
-        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, true));
+        expect(screen.getByText('is dirty')).toBeVisible();
     });
 
     it('should not trigger the dirty state when the initial values are the same as the selected ones', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
+        const initialState = withSelectedValues(defaultProps.id, ONE_VALUE)({});
 
-        const component = mountWithStore(<MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE]} />, store);
+        render(
+            <>
+                <MultiSelectWithDirty {...defaultProps} initialValues={[ONE_VALUE]} />
+                <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
+            </>,
+            {initialState}
+        );
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, false));
+        expect(screen.queryByText('is dirty')).not.toBeInTheDocument();
     });
 
     it('should not trigger the dirty state when there is no initial value and selected value', () => {
-        const store = composeMockStore(withSelectedValues(defaultProps.id));
+        const initialState = withSelectedValues(defaultProps.id)({});
 
-        const component = mountWithStore(<MultiSelectWithDirty {...defaultProps} initialValues={[]} />, store);
+        render(
+            <>
+                <MultiSelectWithDirty {...defaultProps} initialValues={[]} />
+                <IsDirtyIndicator id={defaultProps.id} label="is dirty" />
+            </>,
+            {initialState}
+        );
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(store.getActions()).toContainEqual(ValidationActions.setDirty(defaultProps.id, false));
+        expect(screen.queryByText('is dirty')).not.toBeInTheDocument();
     });
 });

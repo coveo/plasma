@@ -1,4 +1,4 @@
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -26,20 +26,28 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() => {
-                shallowWithState(<TableWithDatePicker id="a" data={[]} renderBody={_.identity} />, {});
-                shallowWithState(<TableWithDatePicker id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithDatePicker id="a" data={[]} renderBody={_.identity} />, {})
+                    .dive()
+                    .dive();
+                shallowWithState(<TableWithDatePicker id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {})
+                    .dive()
+                    .dive();
             }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
-            const wrapper = shallowWithState(<TableWithDatePicker {...defaultProps} />, {}).dive();
+            const wrapper = shallowWithState(<TableWithDatePicker {...defaultProps} />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('renders without throwing errors when no dates are initially selected and the table updates', () => {
             expect(() => {
-                const table = shallowWithState(<TableWithDatePicker {...defaultProps} />, {}).dive();
+                const table = shallowWithState(<TableWithDatePicker {...defaultProps} />, {})
+                    .dive()
+                    .dive();
                 table.setProps({}); // triggering an update
             }).not.toThrow();
         });
@@ -48,7 +56,9 @@ describe('Table HOC', () => {
             const wrapper = shallowWithState(
                 <TableWithDatePicker {...defaultProps} />,
                 getStateWithDatePicker(new Date())
-            ).dive();
+            )
+                .dive()
+                .dive();
             const tableData = wrapper.find(TableHOC).prop('data');
 
             expect(tableData).toEqual(defaultProps.data);
@@ -67,10 +77,9 @@ describe('Table HOC', () => {
             it('should filter call the matchDates function for every rows', () => {
                 const lowerLimit = moment().subtract(10, 'm').toDate();
 
-                shallowWithState(
-                    <TableWithDatePickerAndMatch {...defaultProps} />,
-                    getStateWithDatePicker(lowerLimit)
-                ).dive();
+                shallowWithState(<TableWithDatePickerAndMatch {...defaultProps} />, getStateWithDatePicker(lowerLimit))
+                    .dive()
+                    .dive();
 
                 expect(matchDatesSpy).toHaveBeenCalledTimes(defaultProps.data.length);
                 _.forEach(defaultProps.data, (value: Date) => {
@@ -85,7 +94,9 @@ describe('Table HOC', () => {
                 shallowWithState(
                     <TableWithDatePickerAndMatch {...defaultProps} />,
                     getStateWithDatePicker(lowerLimit, upperLimit)
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 expect(matchDatesSpy).toHaveBeenCalledTimes(defaultProps.data.length);
                 _.forEach(defaultProps.data, (value: Date) => {
@@ -103,6 +114,7 @@ describe('Table HOC', () => {
                     getStateWithDatePicker(new Date())
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
@@ -117,6 +129,7 @@ describe('Table HOC', () => {
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithDatePicker(lowerLimit)
                 )
+                    .dive()
                     .dive()
                     .dive();
 
@@ -135,6 +148,7 @@ describe('Table HOC', () => {
                     getStateWithDatePicker(lowerLimit, upperLimit)
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 wrapper.setProps({upperLimit: new Date()} as any);
@@ -150,6 +164,7 @@ describe('Table HOC', () => {
                     <TableWithDatePickerServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithDatePicker(lowerLimit, new Date())
                 )
+                    .dive()
                     .dive()
                     .dive();
 

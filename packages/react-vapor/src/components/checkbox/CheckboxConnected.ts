@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import {IReactVaporState} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {IInputDispatchProps, IInputOwnProps, IInputStateProps} from '../input/Input';
-import {Checkbox, ICheckboxProps} from './Checkbox';
+import {Checkbox} from './Checkbox';
 import {addCheckbox, ICheckboxActionPayload, removeCheckbox, toggleCheckbox} from './CheckboxActions';
 import {CheckboxSelectors} from './CheckboxSelectors';
 
@@ -21,8 +21,4 @@ const mapDispatchToProps = (
     onClick: (e: React.MouseEvent<HTMLElement>) => dispatch(toggleCheckbox(ownProps.id)),
 });
 
-export const CheckboxConnected: React.ComponentClass<ICheckboxProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Checkbox);
+export const CheckboxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);

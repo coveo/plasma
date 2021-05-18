@@ -1,18 +1,12 @@
-import {ShallowWrapper} from 'enzyme';
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
-import {ValidationActions, ValidationTypes} from '../..';
-import {composeMockStore, getStoreMock, withSelectedValues} from '../../../../utils/tests/TestUtils';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
+import {IsDirtyIndicator} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
 import {withDirtySingleSelectHOC, IWithDirtySingleSelectHOCProps} from '../WithDirtySingleSelectHOC';
 
 describe('SingleSelectWithDirty', () => {
     const SingleSelectWithHOC = withDirtySingleSelectHOC(SingleSelectConnected);
-    let store: ReturnType<typeof getStoreMock>;
-
-    const ONE_VALUE = '🐟';
-    const ANOTHER_VALUE = '🐠';
 
     const DEFAULT_PROPS: ISingleSelectOwnProps & IWithDirtySingleSelectHOCProps = {
         id: 'SOME_ID',
@@ -26,91 +20,68 @@ describe('SingleSelectWithDirty', () => {
         ],
     };
 
-    beforeEach(() => {
-        store = getStoreMock({
-            validation: {},
-        });
-    });
-
-    afterEach(() => {
-        store.clearActions();
-    });
-
-    const mountSingleSelectWithHOC = (
-        props: Partial<typeof DEFAULT_PROPS> = {},
-        storeToUse: ReturnType<typeof getStoreMock> = store
-    ) => {
-        const component = mountWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} {...props} />, storeToUse);
-        act(() => {
-            component.mount();
-        });
-    };
-
-    it('should render without error', () => {
-        expect(() => shallowWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} />, store)).not.toThrow();
-    });
-
-    it('should mount and unmount/detach without error', () => {
-        let singleSelectWrapper: ShallowWrapper<ISingleSelectOwnProps>;
-
+    it('should mount and unmount without error', () => {
         expect(() => {
-            singleSelectWrapper = shallowWithStore(<SingleSelectWithHOC {...DEFAULT_PROPS} />, store);
-            singleSelectWrapper.unmount();
+            const {unmount} = render(<SingleSelectWithHOC {...DEFAULT_PROPS} />);
+            unmount();
         }).not.toThrow();
     });
 
     it('should update the items prop to select the initial value', () => {
-        const initialValue = DEFAULT_PROPS.items[1].value;
-        const singleSelectWrapper = shallowWithStore(
-            <SingleSelectWithHOC {...DEFAULT_PROPS} initialValue={initialValue} />,
-            store
+        const initialValue = 'my value';
+        render(
+            <SingleSelectWithHOC id="🍎" items={[{value: 'my value'}, {value: 'potato'}]} initialValue={initialValue} />
         );
-        const selectedItem = singleSelectWrapper
-            .dive()
-            .find(SingleSelectConnected)
-            .prop('items')
-            .find((item) => item.selected);
 
-        expect(selectedItem.value).toBe(initialValue);
+        expect(screen.getByRole('button', {name: /my value/})).toBeVisible();
     });
 
-    it('should trigger the dirty state when the user selects a new value', () => {
-        const storeWithInitialValue = composeMockStore(withSelectedValues(DEFAULT_PROPS.id, ONE_VALUE));
-
-        mountSingleSelectWithHOC({}, storeWithInitialValue);
-
-        expect(storeWithInitialValue.getActions()).toContainEqual(
-            ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
+    it('should trigger the dirty state when the user selects a value', () => {
+        render(
+            <>
+                <SingleSelectWithHOC id="🍎" items={[{value: 'new value'}, {value: 'some value'}]} initialValue="" />
+                <IsDirtyIndicator id="🍎" label="is dirty" />
+            </>
         );
+
+        userEvent.click(screen.getByRole('button'));
+
+        userEvent.click(screen.getByText('new value'));
+
+        expect(screen.getByText('is dirty')).toBeVisible();
     });
 
     it('should trigger the dirty state when the user selects a different value', () => {
-        const storeWithInitialValue = composeMockStore(withSelectedValues(DEFAULT_PROPS.id, ANOTHER_VALUE));
-
-        mountSingleSelectWithHOC(
-            {
-                initialValue: ONE_VALUE,
-            },
-            storeWithInitialValue
+        render(
+            <>
+                <SingleSelectWithHOC
+                    id="🍎"
+                    items={[{value: 'new value'}, {value: 'old value'}]}
+                    initialValue="old value"
+                />
+                <IsDirtyIndicator id="🍎" label="is dirty" />
+            </>
         );
 
-        expect(storeWithInitialValue.getActions()).toContainEqual(
-            ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
-        );
+        userEvent.click(screen.getByRole('button'));
+
+        userEvent.click(screen.getByText('new value'));
+
+        expect(screen.getByText('is dirty')).toBeVisible();
     });
 
     it('should not trigger the dirty state when the initial values are the same as the selected ones', () => {
-        const storeWithInitialValue = composeMockStore(withSelectedValues(DEFAULT_PROPS.id, ONE_VALUE));
-
-        mountSingleSelectWithHOC(
-            {
-                initialValue: ONE_VALUE,
-            },
-            storeWithInitialValue
+        render(
+            <>
+                <SingleSelectWithHOC
+                    id="🍎"
+                    items={[{value: 'some value'}, {value: 'current value'}]}
+                    initialValue="current value"
+                />
+                <IsDirtyIndicator id={DEFAULT_PROPS.id} label="is dirty" />
+            </>
         );
 
-        expect(storeWithInitialValue.getActions()).not.toContainEqual(
-            ValidationActions.setDirty(DEFAULT_PROPS.id, true, ValidationTypes.wrongInitialValue)
-        );
+        expect(screen.queryByText('is dirty')).not.toBeInTheDocument();
     });
 });

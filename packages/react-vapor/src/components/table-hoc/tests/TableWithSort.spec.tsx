@@ -1,4 +1,4 @@
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -24,28 +24,35 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() => {
-                shallowWithState(<TableWithSort id="a" data={[]} renderBody={_.identity} />, {});
-                shallowWithState(<TableWithSort id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithSort id="a" data={[]} renderBody={_.identity} />, {})
+                    .dive()
+                    .dive();
+                shallowWithState(<TableWithSort id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {})
+                    .dive()
+                    .dive();
             }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
-            const wrapper = shallowWithState(<TableWithSort {...defaultProps} />, {}).dive();
+            const wrapper = shallowWithState(<TableWithSort {...defaultProps} />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should not throw if the ownProps data is null', () => {
             expect(() => {
-                shallowWithState(<TableWithSort {...defaultProps} data={null} />, {}).dive();
+                shallowWithState(<TableWithSort {...defaultProps} data={null} />, {})
+                    .dive()
+                    .dive();
             }).not.toThrow();
         });
 
         it('should sort elements', () => {
-            const wrapper = shallowWithState(
-                <TableWithSort {...defaultProps} />,
-                getStateWithSort(true, 'value')
-            ).dive();
+            const wrapper = shallowWithState(<TableWithSort {...defaultProps} />, getStateWithSort(true, 'value'))
+                .dive()
+                .dive();
 
             const sortedData = [...defaultProps.data].sort((a, b) => b.value - a.value);
             const tableData = wrapper.find(TableHOC).prop('data');
@@ -59,7 +66,9 @@ describe('Table HOC', () => {
             const wrapper = shallowWithState(
                 <TableWithDefaultSort {...defaultProps} />,
                 getStateWithSort(true, 'value')
-            ).dive();
+            )
+                .dive()
+                .dive();
             const tableData = wrapper.find(TableHOC).prop('data');
 
             expect(tableData).toEqual(defaultProps.data);
@@ -73,6 +82,7 @@ describe('Table HOC', () => {
                     <TableWithPredicateServer {...defaultProps} />,
                     getStateWithSort(true, 'value')
                 )
+                    .dive()
                     .dive()
                     .dive();
 
@@ -88,6 +98,7 @@ describe('Table HOC', () => {
                     getStateWithSort(true, 'value')
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 wrapper.setProps({isAsc: false} as any);
@@ -102,6 +113,7 @@ describe('Table HOC', () => {
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithSort(true, 'value')
                 )
+                    .dive()
                     .dive()
                     .dive();
 

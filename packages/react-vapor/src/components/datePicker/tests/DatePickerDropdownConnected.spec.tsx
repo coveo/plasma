@@ -1,5 +1,4 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
-import {mountWithStore} from 'enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -34,9 +33,10 @@ describe('Date picker', () => {
             let wrapper: ReactWrapper;
             const mountComponent = (props?: IDatePickerDropdownOwnProps) => {
                 store = getStoreMock();
-                return mountWithStore(
-                    <DatePickerDropdownConnected {...DATE_PICKER_DROPDOWN_BASIC_PROPS} withDrop {...props} />,
-                    store
+                return mount(
+                    <Provider store={store}>
+                        <DatePickerDropdownConnected {...DATE_PICKER_DROPDOWN_BASIC_PROPS} withDrop {...props} />
+                    </Provider>
                 );
             };
 

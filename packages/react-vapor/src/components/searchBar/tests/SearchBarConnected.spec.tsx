@@ -1,119 +1,46 @@
-import {mount} from 'enzyme';
+import {mountWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
-import {Provider} from 'react-redux';
-import {Store} from 'redux';
 
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {toggleSearchBarDisabled, toggleSearching} from '../SearchBarActions';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {addSearchBar, removeSearchBar, setSearchBarValue} from '../SearchBarActions';
 import {SearchBarConnected} from '../SearchBarConnected';
 import {searchBarConnectedPropsScenarios} from './SearchBarPropsScenarios.mock';
 
 describe('SearchBarConnected', () => {
     const requiredProps = {...searchBarConnectedPropsScenarios[0]};
 
-    let store: Store<any>;
-
-    beforeEach(() => {
-        store = TestUtils.buildStore();
-    });
-
-    afterEach(() => {
-        store.dispatch(clearState());
-    });
-
     it('should not throw on mount and unmount in different props scenarios', () => {
         expect(() => {
             searchBarConnectedPropsScenarios.forEach((props) => {
-                mount(
-                    <Provider store={store}>
-                        <SearchBarConnected {...props} />
-                    </Provider>
-                ).unmount();
+                mountWithStore(<SearchBarConnected {...props} />, getStoreMock()).unmount();
             });
         }).not.toThrow();
     });
 
     it('should add and remove the search bar on mount and unmount respectively', () => {
-        const component = mount(
-            <Provider store={store}>
-                <SearchBarConnected {...requiredProps} />
-            </Provider>
-        );
+        const store = getStoreMock();
+        const component = mountWithStore(<SearchBarConnected {...requiredProps} />, store);
 
-        expect(store.getState().searchBars[0].id).toBe(requiredProps.id);
-        expect(store.getState().searchBars.length).toBe(1);
+        expect(store.getActions()).toContainEqual(addSearchBar(requiredProps.id, false));
 
         component.unmount();
 
-        expect(store.getState().searchBars.length).toBe(0);
+        expect(store.getActions()).toContainEqual(removeSearchBar(requiredProps.id));
     });
 
-    it('should mount with a state not searching, not disabled, and without value by default', () => {
-        mount(
-            <Provider store={store}>
-                <SearchBarConnected {...requiredProps} />
-            </Provider>
-        );
+    it('should add itself to the store with disabled if disabledOnMount is passed as true', () => {
+        const store = getStoreMock();
+        const disabledOnMount = true;
+        mountWithStore(<SearchBarConnected {...requiredProps} disabledOnMount />, store);
 
-        expect(store.getState().searchBars[0]).toEqual(
-            expect.objectContaining({searching: false, disabled: false, value: ''})
-        );
+        expect(store.getActions()).toContainEqual(addSearchBar(requiredProps.id, disabledOnMount));
     });
 
-    it('should mount with a state not searching, disabled, and without value if disabledOnMount is passed as prop', () => {
-        mount(
-            <Provider store={store}>
-                <SearchBarConnected {...requiredProps} disabledOnMount />
-            </Provider>
-        );
+    it('should change the value in the state on input change', () => {
+        const store = getStoreMock();
+        const component = mountWithStore(<SearchBarConnected {...requiredProps} />, store);
+        component.find('input').prop('onChange')({target: {value: 'new value'}} as any);
 
-        expect(store.getState().searchBars[0]).toEqual(
-            expect.objectContaining({searching: false, disabled: true, value: ''})
-        );
-    });
-
-    describe('after mount', () => {
-        let component: any;
-
-        beforeEach(() => {
-            component = mount(
-                <Provider store={store}>
-                    <SearchBarConnected {...requiredProps} />
-                </Provider>
-            );
-        });
-
-        it('should change the value in the state on input change', () => {
-            component.find('input').prop('onChange')({target: {value: 'new value'}});
-
-            expect(store.getState().searchBars[0].value).toBe('new value');
-        });
-
-        it('should toggle the disabled state of search bar in the UI when toggleSearchBarDisabled is dispatched', () => {
-            store.dispatch(toggleSearchBarDisabled(requiredProps.id, true));
-            component.update();
-
-            expect(component.find('input').prop('disabled')).toBe(true);
-
-            store.dispatch(toggleSearchBarDisabled(requiredProps.id, false));
-            component.update();
-
-            expect(component.find('input').prop('disabled')).toBe(false);
-        });
-
-        it('should toggle the searching state of search bar in the UI when toggleSearching is dispatched', () => {
-            store.dispatch(toggleSearching(requiredProps.id, true));
-            component.update();
-
-            expect(component.find('div').first().hasClass('search-bar-loading')).toBe(true);
-            expect(component.find('input').prop('disabled')).toBe(true);
-
-            store.dispatch(toggleSearching(requiredProps.id, false));
-            component.update();
-
-            expect(component.find('div').first().hasClass('search-bar-loading')).toBe(false);
-            expect(component.find('input').prop('disabled')).toBe(false);
-        });
+        expect(store.getActions()).toContainEqual(setSearchBarValue(requiredProps.id, 'new value'));
     });
 });

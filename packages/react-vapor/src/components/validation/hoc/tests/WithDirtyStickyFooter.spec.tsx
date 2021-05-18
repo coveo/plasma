@@ -1,6 +1,6 @@
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
-import * as _ from 'underscore';
+
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {StickyFooter} from '../../../stickyFooter/StickyFooter';
 import {withDirtyStickyFooterHOC} from '../WithDirtyStickyFooter';
@@ -23,12 +23,18 @@ describe('WithDirtyStickyFooter', () => {
 
     describe('<StickyFooterWithHOC />', () => {
         it('should render without error', () => {
-            expect(() => shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, store)).not.toThrow();
+            expect(() =>
+                shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, store)
+                    .dive()
+                    .dive()
+            ).not.toThrow();
         });
 
         it('should mount and unmount/detach without error', () => {
             expect(() => {
-                const stickyFooterWrapper = shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, store);
+                const stickyFooterWrapper = shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, store)
+                    .dive()
+                    .dive();
                 stickyFooterWrapper.unmount();
             }).not.toThrow();
         });
@@ -53,10 +59,9 @@ describe('WithDirtyStickyFooter', () => {
             it('should set isOpened to true if the selector returns true', () => {
                 const storeWithDirty = getStoreWithDirty(true);
 
-                const stickyFooter = shallowWithStore(
-                    <StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />,
-                    storeWithDirty
-                ).dive();
+                const stickyFooter = shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, storeWithDirty)
+                    .dive()
+                    .dive();
                 const isOpened = stickyFooter.find(StickyFooter).prop('isOpened');
 
                 expect(isOpened).toBe(true);
@@ -65,10 +70,9 @@ describe('WithDirtyStickyFooter', () => {
             it('should set isOpened to false if the selector returns false', () => {
                 const storeWithDirty = getStoreWithDirty(false);
 
-                const stickyFooter = shallowWithStore(
-                    <StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />,
-                    storeWithDirty
-                ).dive();
+                const stickyFooter = shallowWithStore(<StickyFooterWithHOC {...STICKY_FOOTER_PROPS} />, storeWithDirty)
+                    .dive()
+                    .dive();
                 const isOpened = stickyFooter.find(StickyFooter).prop('isOpened');
 
                 expect(isOpened).toBe(false);
@@ -80,7 +84,9 @@ describe('WithDirtyStickyFooter', () => {
                 const stickyFooter = shallowWithStore(
                     <StickyFooterWithHOC {...STICKY_FOOTER_PROPS} isOpened={true} />,
                     storeWithDirty
-                ).dive();
+                )
+                    .dive()
+                    .dive();
                 const isOpened = stickyFooter.find(StickyFooter).prop('isOpened');
 
                 expect(isOpened).toBe(true);

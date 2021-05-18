@@ -1,4 +1,4 @@
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -33,22 +33,29 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() =>
-                shallowWithStore(<TableWithPagination id="a" data={[]} renderBody={_.identity} />, store)
+                shallowWithStore(<TableWithPagination id="a" data={[]} renderBody={_.identity} />, store).dive()
             ).not.toThrow();
 
             expect(() =>
-                shallowWithStore(<TableWithPagination id="b" data={[{value: 'a'}]} renderBody={_.identity} />, store)
+                shallowWithStore(
+                    <TableWithPagination id="b" data={[{value: 'a'}]} renderBody={_.identity} />,
+                    store
+                ).dive()
             ).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
-            const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should render a NavigationConnected', () => {
-            const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find(NavigationConnected).exists()).toBe(true);
         });
@@ -56,7 +63,9 @@ describe('Table HOC', () => {
         it('should dispatch a turnOffLoading on mount', () => {
             const expectedAction = turnOffLoading([`loading-${defaultProps.id}`]);
 
-            shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+            shallowWithStore(<TableWithPagination {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -64,7 +73,9 @@ describe('Table HOC', () => {
         it('should dispatch a TableWithPaginationActions.add on mount', () => {
             const expectedAction = TableWithPaginationActions.add(defaultProps.id);
 
-            shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+            shallowWithStore(<TableWithPagination {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -72,7 +83,9 @@ describe('Table HOC', () => {
         it('should dispatch an TableWithPaginationActions.remove on componentWillUnmount', () => {
             const expectedAction = TableWithPaginationActions.remove(defaultProps.id);
 
-            const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store)
+                .dive()
+                .dive();
             wrapper.unmount();
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -83,16 +96,17 @@ describe('Table HOC', () => {
             const MyTable: React.ComponentType<ITableWithPaginationProps> = _.compose(
                 tableWithPagination({perPageNumbers: expectedPerPageNumbers})
             )(TableHOC);
-            const table = shallowWithStore(<MyTable {...defaultProps} />, getStoreMock()).dive();
+            const table = shallowWithStore(<MyTable {...defaultProps} />, getStoreMock())
+                .dive()
+                .dive();
 
             expect(table.find(NavigationConnected).prop('perPageNumbers')).toEqual(expectedPerPageNumbers);
         });
 
         it('should always have a totalPages count of 1 or more', () => {
-            const table = shallowWithStore(
-                <TableWithPagination id="💎" renderBody={_.identity} data={[]} />,
-                store
-            ).dive();
+            const table = shallowWithStore(<TableWithPagination id="💎" renderBody={_.identity} data={[]} />, store)
+                .dive()
+                .dive();
 
             expect(table.find(NavigationConnected).prop('totalPages')).toBe(1);
         });
@@ -109,7 +123,9 @@ describe('Table HOC', () => {
                 store = getStoreWithPage(1, 5);
 
                 expect(() =>
-                    shallowWithStore(<TableWithPagination {...defaultProps} data={null} />, store).dive()
+                    shallowWithStore(<TableWithPagination {...defaultProps} data={null} />, store)
+                        .dive()
+                        .dive()
                 ).not.toThrow();
             });
 
@@ -118,7 +134,9 @@ describe('Table HOC', () => {
                 const page = 2;
 
                 store = getStoreWithPage(page, perPage);
-                const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store).dive();
+                const wrapper = shallowWithStore(<TableWithPagination {...defaultProps} />, store)
+                    .dive()
+                    .dive();
                 const tableData = wrapper.find(TableHOC).prop('data');
 
                 expect(tableData).toEqual(defaultProps.data.slice(page * perPage, (page + 1) * perPage));
@@ -133,6 +151,7 @@ describe('Table HOC', () => {
 
                     store = getStoreWithPage(page, perPage);
                     const wrapper = shallowWithStore(<TableWithPaginationServer {...defaultProps} />, store)
+                        .dive()
                         .dive()
                         .dive();
                     const tableData = wrapper.find(TableHOC).prop('data');
@@ -150,6 +169,7 @@ describe('Table HOC', () => {
                         <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
                         store
                     )
+                        .dive()
                         .dive()
                         .dive();
 
@@ -172,6 +192,7 @@ describe('Table HOC', () => {
                         <TableWithPaginationServer {...defaultProps} onUpdate={updateSpy} />,
                         store
                     )
+                        .dive()
                         .dive()
                         .dive();
 

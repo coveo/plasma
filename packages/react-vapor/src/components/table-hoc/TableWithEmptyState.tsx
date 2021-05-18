@@ -16,7 +16,7 @@ const UPDATE_DELAY = 50; // ms
 
 export const tableWithEmptyState = (
     Component: React.ComponentClass<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>>
-): React.ComponentType<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement> & TableWithEmptyStateProps> => {
+) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => {
         const isTrulyEmpty = TableSelectors.getIsTrulyEmpty(state, ownProps);
         return {
@@ -57,5 +57,12 @@ export const tableWithEmptyState = (
         return shouldRenderEmptyState ? emptyState : <Component {...tableProps} />;
     };
 
-    return connect(mapStateToProps, mapDispatchToProps)(TableEmptyState);
+    return connect<
+        ReturnType<typeof mapStateToProps>,
+        ReturnType<typeof mapDispatchToProps>,
+        ITableHOCOwnProps & TableWithEmptyStateProps
+    >(
+        mapStateToProps,
+        mapDispatchToProps
+    )(TableEmptyState as any);
 };

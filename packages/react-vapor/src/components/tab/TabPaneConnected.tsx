@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 
 import {IReactVaporState} from '../../ReactVaporState';
 import {ReduxUtils} from '../../utils/ReduxUtils';
-import {ITabPaneDispatchProps, ITabPaneOwnProps, ITabPaneProps, ITabPaneStateProps, TabPane} from './TabPane';
+import {ITabPaneDispatchProps, ITabPaneOwnProps, ITabPaneStateProps, TabPane} from './TabPane';
 import {TabSelectors} from './TabSelectors';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITabPaneOwnProps): ITabPaneStateProps => {
@@ -14,8 +14,4 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITabPaneOwnProps): I
 
 const mapDispatchToProps = (): ITabPaneDispatchProps => ({});
 
-export const TabPaneConnected: React.ComponentClass<ITabPaneProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(TabPane);
+export const TabPaneConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TabPane);

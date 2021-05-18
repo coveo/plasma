@@ -116,8 +116,4 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
     );
 };
 
-export const TextAreaConnected: React.ComponentClass<ITextAreaProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(TextArea);
+export const TextAreaConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(TextArea);

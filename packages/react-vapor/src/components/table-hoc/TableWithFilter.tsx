@@ -28,9 +28,7 @@ const defaultMatchFilter = (filter: string, datum: any) =>
 
 export const tableWithFilter = (
     supplier: ConfigSupplier<ITableWithFilterConfig> = {blankSlate: {title: 'No results'}}
-) => (
-    WrappedTable: typeof TableHOC
-): React.ComponentType<ITableHOCOwnProps & TableWithFilterProps & React.HTMLAttributes<HTMLTableElement>> => {
+) => (WrappedTable: typeof TableHOC) => {
     type OwnProps = ITableHOCOwnProps & TableWithFilterProps & WithServerSideProcessingProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
@@ -87,5 +85,5 @@ export const tableWithFilter = (
         }
     }
 
-    return connect(mapStateToProps)(TableWithFilter);
+    return connect<ReturnType<typeof mapStateToProps>, null, OwnProps>(mapStateToProps)(TableWithFilter as any);
 };

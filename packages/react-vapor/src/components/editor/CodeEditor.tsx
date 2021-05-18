@@ -31,6 +31,7 @@ export interface ICodeEditorProps {
     className?: string;
     options?: CodeMirror.EditorConfiguration;
     collapsibleId?: string;
+    ref?: React.Ref<CodeEditorDisconnect>;
 }
 
 export interface CodeEditorState {
@@ -146,4 +147,11 @@ class CodeEditorDisconnect extends React.Component<
     }
 }
 
-export const CodeEditor = connect(mapStateToProps, mapDispatchToProps)(CodeEditorDisconnect);
+export const CodeEditor = connect<
+    ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps>,
+    React.PropsWithRef<ICodeEditorProps>
+>(
+    mapStateToProps,
+    mapDispatchToProps
+)(CodeEditorDisconnect as any);

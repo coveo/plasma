@@ -1,5 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -23,23 +23,22 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() => {
-                shallowWithState(<TableWithFilter id="a" data={[]} renderBody={_.identity} />, {});
-                shallowWithState(<TableWithFilter id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithFilter id="a" data={[]} renderBody={_.identity} />, {})
+                    .dive()
+                    .dive()
+                    .dive();
+                shallowWithState(<TableWithFilter id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {})
+                    .dive()
+                    .dive()
+                    .dive();
             }).not.toThrow();
-        });
-
-        it('should render a TableHOC', () => {
-            const wrapper = shallowWithState(<TableWithFilter {...defaultProps} />, {}).dive();
-
-            expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should filter out elements not matching the filter in the state', () => {
             const filterText = 'b';
-            const wrapper = shallowWithState(
-                <TableWithFilter {...defaultProps} />,
-                getStateWithFilter(filterText)
-            ).dive();
+            const wrapper = shallowWithState(<TableWithFilter {...defaultProps} />, getStateWithFilter(filterText))
+                .dive()
+                .dive();
 
             const filteredData = _.filter(defaultProps.data, ({value}) => value === filterText);
             const tableData = wrapper.find(TableHOC).prop('data');
@@ -57,6 +56,7 @@ describe('Table HOC', () => {
                     getStateWithFilter(filterText)
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
@@ -71,6 +71,7 @@ describe('Table HOC', () => {
                     <TableWithFilterServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithFilter(filterText)
                 )
+                    .dive()
                     .dive()
                     .dive();
 
@@ -88,6 +89,7 @@ describe('Table HOC', () => {
                     getStateWithFilter(filterText)
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 wrapper.setProps({ignore: true} as any);
@@ -104,7 +106,7 @@ describe('Table HOC', () => {
                 );
 
                 const wrapperRenderBody: ShallowWrapper<IBlankSlateProps> = shallow(
-                    (wrapper as any).dive().dive().props().renderBody()
+                    (wrapper as any).dive().dive().dive().props().renderBody()
                 );
 
                 expect((wrapperRenderBody.instance().props as IBlankSlateProps).title).toBeDefined();

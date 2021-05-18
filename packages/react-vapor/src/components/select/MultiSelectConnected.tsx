@@ -245,4 +245,4 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
     }
 }
 
-export const MultiSelectConnected: React.ComponentClass<IMultiSelectOwnProps> = DnDUtils.TagControlContext(MultiSelect);
+export const MultiSelectConnected = DnDUtils.TagControlContext(MultiSelect);

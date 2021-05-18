@@ -1,9 +1,6 @@
 import {shallow} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
-import {IInlinePromptOptions, InlinePrompt} from '../../inlinePrompt/InlinePrompt';
 import {ActionBar} from '../ActionBar';
 import {PrimaryAction} from '../PrimaryAction';
 import {PrimaryActionConnected} from '../PrimaryActionConnected';
@@ -105,26 +102,6 @@ describe('ActionsBar', () => {
                 .find(SecondaryActions)
                 .exists()
         ).toBe(false);
-    });
-
-    it('should display an <InlinePrompt /> and no actions if there is a prompt', () => {
-        const inlinePromptOptions: IInlinePromptOptions = {
-            onClick: jest.fn(),
-            userChoice: {},
-        };
-        const inlinePrompt = shallowWithStore(
-            <ActionBar prompt={{id: '💎', options: inlinePromptOptions}} />,
-            getStoreMock()
-        )
-            .childAt(1)
-            .dive()
-            .childAt(0)
-            .dive()
-            .childAt(0)
-            .dive()
-            .find(InlinePrompt);
-
-        expect(inlinePrompt.exists()).toBe(true);
     });
 
     it('should display an <ItemFilter /> if there is an itemFilter prop', () => {

@@ -61,8 +61,4 @@ const mapDispatchToProps = (
     onClick: () => dispatch(toggleGroupedCheckbox(ownProps.id, ownProps.parentId, !!ownProps.isParent)),
 });
 
-export const GroupableCheckboxConnected: React.ComponentClass<IGroupableCheckboxOwnProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Checkbox);
+export const GroupableCheckboxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Checkbox);

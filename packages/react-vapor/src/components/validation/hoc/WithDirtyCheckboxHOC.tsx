@@ -47,5 +47,5 @@ export const withDirtyCheckboxHOC = <T extends ICheckboxOwnProps & IInputOwnProp
         );
     };
 
-    return connect(null, mapDispatchToProps)(WrappedCheckbox);
+    return connect<null, DispatchProps, T>(null, mapDispatchToProps)(WrappedCheckbox as any);
 };

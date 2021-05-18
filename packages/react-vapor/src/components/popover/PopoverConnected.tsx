@@ -18,8 +18,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IPopoverProps): IPopo
     onUnmount: () => dispatch(removePopover(ownProps.id)),
 });
 
-export const PopoverConnected: React.ComponentClass<IPopoverProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Popover);
+export const PopoverConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Popover);

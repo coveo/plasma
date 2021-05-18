@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {connect} from 'react-redux';
+import {connect, useSelector} from 'react-redux';
 import {
     AutocompleteConnected,
     Button,
@@ -177,11 +177,14 @@ const InputsWithDirtyManagement: React.FunctionComponent = () => (
     </Section>
 );
 
-const MessageWhenInputIsDirty = connect(
-    createStructuredSelector({
-        isDirty: ValidationSelectors.isDirty(['dirtyinput']),
-    })
-)(({isDirty}) => isDirty && <div>I am now dirty!</div>);
+const MessageWhenInputIsDirty: React.FC = () => {
+    const {isDirty} = useSelector(
+        createStructuredSelector({
+            isDirty: ValidationSelectors.isDirty(['dirtyinput']),
+        })
+    );
+    return isDirty && <div>I am now dirty!</div>;
+};
 
 const InputWithDirty = withDirtyInputHOC(InputConnected);
 

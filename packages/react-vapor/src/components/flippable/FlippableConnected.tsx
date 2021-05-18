@@ -3,13 +3,7 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    Flippable,
-    IFlippableDispatchProps,
-    IFlippableOwnProps,
-    IFlippableProps,
-    IFlippableStateProps,
-} from './Flippable';
+import {Flippable, IFlippableDispatchProps, IFlippableOwnProps, IFlippableStateProps} from './Flippable';
 import {addFlippable, changeFlippableSide, removeFlippable} from './FlippableActions';
 import {IFlippableState} from './FlippableReducers';
 
@@ -27,8 +21,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IFlippableOwnProps): 
     onUnflip: () => dispatch(changeFlippableSide(ownProps.id, false)),
 });
 
-export const FlippableConnected: React.ComponentClass<IFlippableProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Flippable);
+export const FlippableConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Flippable);

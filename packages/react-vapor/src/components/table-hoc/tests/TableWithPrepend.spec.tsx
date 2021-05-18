@@ -1,4 +1,4 @@
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {TableHOC} from '../TableHOC';
@@ -21,12 +21,11 @@ describe('TableWithPrepend', () => {
     });
 
     it('should not render prepended content if the table is truly empty', () => {
-        spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(true);
+        jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValue(true);
         const Prepend = () => <span>ink!</span>;
-        const wrapper = shallowWithState(
-            <TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />,
-            {}
-        ).dive();
+        const wrapper = shallowWithState(<TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />, {})
+            .dive()
+            .dive();
 
         expect(wrapper.children().first().type()).not.toBe(Prepend);
 
@@ -34,12 +33,11 @@ describe('TableWithPrepend', () => {
     });
 
     it('should render prepended content if the table is not truly empty', () => {
-        spyOn(TableSelectors, 'getIsTrulyEmpty').and.returnValue(false);
+        jest.spyOn(TableSelectors, 'getIsTrulyEmpty').mockReturnValue(false);
         const Prepend = () => <span>ink!</span>;
-        const wrapper = shallowWithState(
-            <TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />,
-            {}
-        ).dive();
+        const wrapper = shallowWithState(<TableWithPrepend {...basicProps} data={[]} prepend={<Prepend />} />, {})
+            .dive()
+            .dive();
 
         expect(wrapper.children().first().type()).not.toBe(TableHOC);
 

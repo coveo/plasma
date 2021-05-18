@@ -6,7 +6,6 @@ import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
     ISubNavigationDispatchProps,
     ISubNavigationOwnProps,
-    ISubNavigationProps,
     ISubNavigationStateProps,
     SubNavigation,
 } from './SubNavigation';
@@ -32,6 +31,8 @@ const mapDispatchToProps = (
     onClickItem: (itemId) => dispatch(selectSubNavigation(ownProps.id, itemId)),
 });
 
-export const SubNavigationConnected: React.ComponentClass<
-    ISubNavigationProps & React.HTMLAttributes<HTMLElement>
-> = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SubNavigation);
+export const SubNavigationConnected = connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    ReduxUtils.mergeProps
+)(SubNavigation);

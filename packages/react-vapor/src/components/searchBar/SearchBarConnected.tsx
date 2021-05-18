@@ -3,13 +3,7 @@ import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    ISearchBarDispatchProps,
-    ISearchBarOwnProps,
-    ISearchBarProps,
-    ISearchBarStateProps,
-    SearchBar,
-} from './SearchBar';
+import {ISearchBarDispatchProps, ISearchBarOwnProps, ISearchBarStateProps, SearchBar} from './SearchBar';
 import {addSearchBar, removeSearchBar, setSearchBarValue} from './SearchBarActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ISearchBarOwnProps): ISearchBarStateProps => {
@@ -29,8 +23,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ISearchBarOwnProps): 
         dispatch(setSearchBarValue(ownProps.id, event.target.value)),
 });
 
-export const SearchBarConnected: React.ComponentClass<ISearchBarProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(SearchBar);
+export const SearchBarConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(SearchBar);

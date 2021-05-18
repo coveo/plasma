@@ -24,8 +24,4 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputProps): IInputD
     },
 });
 
-export const InputConnected: React.ComponentClass<IInputProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Input);
+export const InputConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Input);

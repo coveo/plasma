@@ -50,5 +50,8 @@ export const withNonEmptyMultiSelectHOC = <T extends IMultiSelectOwnProps>(Compo
         return <Component {...(props as T)} />;
     };
 
-    return connect(mapStateToProps, mapDispatchToProps)(WrappedMultiSelect);
+    return connect<StateProps, DispatchProps, T & WithNonEmptyValueMultiSelectValidationProps>(
+        mapStateToProps,
+        mapDispatchToProps
+    )(WrappedMultiSelect as any);
 };

@@ -1,5 +1,5 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -219,21 +219,27 @@ describe('Actions', () => {
             });
 
             it('should remove the prompt onDestroy', () => {
-                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore).dive();
+                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore)
+                    .dive()
+                    .dive();
                 component.unmount();
 
                 expect(RStore.getActions()).toContainEqual(removePrompt(ownProps.id));
             });
 
             it('should remove the item filter onDestroy', () => {
-                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore).dive();
+                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore)
+                    .dive()
+                    .dive();
                 component.unmount();
 
                 expect(RStore.getActions()).toContainEqual(removeItemFilter(ownProps.id));
             });
 
             it('should remove the action bar onDestroy', () => {
-                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore).dive();
+                const component = shallowWithStore(<ActionBarConnected {...ownProps} />, RStore)
+                    .dive()
+                    .dive();
                 component.unmount();
 
                 expect(RStore.getActions()).toContainEqual(removeActionBar(ownProps.id));

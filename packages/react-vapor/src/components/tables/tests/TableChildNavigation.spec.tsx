@@ -50,7 +50,7 @@ describe('<TableChildNavigation />', () => {
         });
 
         it('should render null if navigation is not passed as prop', () => {
-            expect(mountComponentWithProps(tablePropsMock).html()).toBeNull();
+            expect(mountComponentWithProps(tablePropsMock).html()).toBe('');
         });
 
         it('should render NavigationConnected if passed as boolean', () => {

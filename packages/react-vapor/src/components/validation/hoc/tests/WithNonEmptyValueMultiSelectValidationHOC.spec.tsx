@@ -1,18 +1,21 @@
-import {ShallowWrapper} from 'enzyme';
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
-import {composeMockStore, getStoreMock, withSelectedValues} from '../../../../utils/tests/TestUtils';
+import {render, screen} from '@test-utils';
+import {withSelectedValues, ErrorList} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
-import {ValidationActions} from '../../ValidationActions';
-import {ValidationTypes} from '../../ValidationTypes';
 import {
     withNonEmptyMultiSelectHOC,
     WithNonEmptyValueMultiSelectValidationProps,
 } from '../WithNonEmptyValueMultiSelectValidationHOC';
 
 const MultiSelectWithNonEmpty = withNonEmptyMultiSelectHOC(MultiSelectConnected);
-let multiSelectWrapper: ShallowWrapper<WithNonEmptyValueMultiSelectValidationProps & IMultiSelectOwnProps>;
+const MultiSelectWithNonEmptyAndError: React.FC<IMultiSelectOwnProps & WithNonEmptyValueMultiSelectValidationProps> = (
+    props
+) => (
+    <>
+        <MultiSelectWithNonEmpty {...props} />
+        <ErrorList id={props.id} />
+    </>
+);
 
 describe('MultiSelectWithNonEmpty', () => {
     const defaultProps: IMultiSelectOwnProps & WithNonEmptyValueMultiSelectValidationProps = {
@@ -21,56 +24,26 @@ describe('MultiSelectWithNonEmpty', () => {
         items: [],
     };
 
-    let store: ReturnType<typeof getStoreMock>;
-
-    afterEach(() => {
-        store.clearActions();
-    });
-
     const ONE_VALUE = '🐟';
 
-    it('should dispatch a setError action on mount if there are no values selected', () => {
-        store = composeMockStore(withSelectedValues(defaultProps.id));
-        const component = mountWithStore(<MultiSelectWithNonEmpty {...defaultProps} />, store);
+    it('contains the text error if no values are selected', () => {
+        const initialState = withSelectedValues(defaultProps.id)({});
+        render(<MultiSelectWithNonEmptyAndError {...defaultProps} />, {initialState});
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(store.getActions()).toContainEqual(
-            ValidationActions.setError(
-                defaultProps.id,
-                defaultProps.nonEmptyValidationMessage,
-                ValidationTypes.nonEmpty
-            )
-        );
+        expect(screen.getByText(defaultProps.nonEmptyValidationMessage)).toBeInTheDocument();
     });
 
-    it('should not dispatch a setError action on mount if there is a value selected', () => {
-        store = composeMockStore(withSelectedValues(defaultProps.id, ONE_VALUE));
-        const component = mountWithStore(<MultiSelectWithNonEmpty {...defaultProps} />, store);
+    it('does not contain the text error if some values are selected', () => {
+        const initialState = withSelectedValues(defaultProps.id, ONE_VALUE)({});
+        render(<MultiSelectWithNonEmptyAndError {...defaultProps} />, {initialState});
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(store.getActions()).not.toContain(
-            ValidationActions.setError(
-                defaultProps.id,
-                defaultProps.nonEmptyValidationMessage,
-                ValidationTypes.nonEmpty
-            )
-        );
+        expect(screen.queryByText(defaultProps.nonEmptyValidationMessage)).not.toBeInTheDocument();
     });
 
-    it('should render without error', () => {
-        expect(() => shallowWithStore(<MultiSelectWithNonEmpty {...defaultProps} />, store)).not.toThrow();
-    });
-
-    it('should mount and unmount/detach without error', () => {
+    it('should unmount without error', () => {
+        const {unmount} = render(<MultiSelectWithNonEmptyAndError {...defaultProps} />);
         expect(() => {
-            multiSelectWrapper = shallowWithStore(<MultiSelectWithNonEmpty {...defaultProps} />, store);
-            multiSelectWrapper.unmount();
+            unmount();
         }).not.toThrow();
     });
 });

@@ -1,362 +1,202 @@
-import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 
-import {InputConnected} from '../../input/InputConnected';
-import {IMultilineSingleBoxProps} from '../../multilineBox/MultilineBox';
 import {MultiValuesInput} from '../MultiValuesInput';
 
 describe('MultiValuesInput', () => {
-    const defaultValues = ['🚕', '🚌', '🚒'];
-    const defaultAboveDataLimitValues = ['🚕', '🚌', '🚒', '⌚', ''];
-    const arrayOfMultilineSingleBoxProps: Array<IMultilineSingleBoxProps<string>> = [
-        {id: 'test1', isLast: false, props: '🚕'},
-        {id: 'test2', isLast: false, props: '🚌'},
-        {id: 'test3', isLast: false, props: '🚒'},
-        {id: 'test4', isLast: true, props: ''},
-    ];
-    const arrayOfMultilineSingleBoxAboveDataLimitProps: Array<IMultilineSingleBoxProps<string>> = [
-        {id: 'test1', isLast: false, props: '🚕'},
-        {id: 'test2', isLast: false, props: '🚌'},
-        {id: 'test3', isLast: false, props: '🚒'},
-        {id: 'test4', isLast: false, props: '⌚'},
-        {id: 'test4', isLast: false, props: ''},
-    ];
-
-    const testInputProps = {
-        placeholder: 'a placeholder',
-        labelTitle: 'a title',
-        validate: (value: string) => !!value,
-        validateOnMount: true,
-        classes: 'class',
-        innerInputClasses: 'inner',
-    };
-
     const defaultProps = {
         id: '🚗',
         dataLimit: 3,
-        inputProps: testInputProps,
-        reachedLimitPlaceholder: 'a reached placeholder',
-        disabledTooltipTitle: "this input can't edited",
-        disabledInputInnerClasses: 'disabledInner',
-        disabledInputClasses: 'disabledClass',
     };
 
     it('should render and unmount without throwing errors', () => {
         expect(() => {
-            const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
-            component.unmount();
+            const {unmount} = render(<MultiValuesInput {...defaultProps} data={['🚕', '🚌', '🚒']} />);
+            unmount();
         }).not.toThrow();
     });
 
-    it('should create an input for every value in data', () => {
-        const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
+    it('should create an input for every value in data, plus one to add a value', () => {
+        render(<MultiValuesInput {...defaultProps} data={['🚕', '🚌', '🚒']} />, {});
 
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
-            {}
-        );
-
-        expect(body.find(InputConnected).length).toBe(arrayOfMultilineSingleBoxProps.length);
+        expect(screen.getAllByRole('textbox').length).toBe(3 + 1);
     });
 
-    it('should disabled the possibility to add an input if a dataLimit is set and reached', () => {
-        const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
+    it('disable the add input if a dataLimit is set and reached', () => {
+        render(<MultiValuesInput {...defaultProps} dataLimit={3} data={['🚕', '🚌', '🚒']} />, {});
 
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
-            {}
-        );
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
-
-        expect(lastInputConnectedProps.isReadOnly).toBe(true);
+        expect(screen.getAllByRole('textbox')[3]).toBeDisabled();
     });
 
     it('should display all data, even if the data length are above the dataLimit', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
+        render(<MultiValuesInput {...defaultProps} dataLimit={3} data={['🚕', '🚌', '🚒', '⌚', '⏰']} />, {});
 
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
-
-        expect(lastInputConnectedProps.defaultValue).toBe('');
+        expect(screen.getAllByRole('textbox').length).toBe(5 + 1);
     });
 
-    it("should disable all the inputs in which it's index are above or equal the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
+    it('keeps enabled all the inputs with an index under the dataLimit', () => {
+        const LIMIT = 3;
+        render(<MultiValuesInput {...defaultProps} dataLimit={LIMIT} data={['🚕', '🚌', '🚒', '⌚', '⏰']} />, {});
 
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
-
-        expect(lastInputConnectedProps.isReadOnly).toBe(true);
+        for (let i = 0; i < LIMIT; i++) {
+            expect(screen.getAllByRole('textbox')[i]).toBeEnabled();
+        }
     });
 
-    it('should include the disabledInputInnerClasses if the inputs indexes are below the dataLimit', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
+    it('disable all the inputs with an index above or equal to the dataLimit', () => {
+        const LIMIT = 3;
+        render(<MultiValuesInput {...defaultProps} dataLimit={3} data={['🚕', '🚌', '🚒', '⌚', '⏰']} />, {});
 
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const lastInputConnectedProps = body.find(InputConnected).first().props();
-
-        expect(lastInputConnectedProps.innerInputClasses).not.toContain('disabledInner');
+        for (let i = LIMIT; i < 6; i++) {
+            expect(screen.getAllByRole('textbox')[i]).toBeDisabled();
+        }
     });
 
     it('should include the classes set in the classes prop in all inputs', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                inputProps={{classes: 'potato', innerInputClasses: 'potatoes'}}
+                dataLimit={12}
+                data={['🚕', '🚌', '🚒']}
+            />
         );
-        const firstInputConnectedProps = body.find(InputConnected).first().props();
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
 
-        expect(firstInputConnectedProps.classes).toContain('class');
-        expect(lastInputConnectedProps.classes).toContain('class');
+        expect(document.querySelectorAll('.potato').length).toBe(3 + 1);
+        expect(document.querySelectorAll('.potatoes').length).toBe(3 + 1);
     });
 
-    it('should include the innerInputClasses set in the innerInputClasses prop in all inputs', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+    it('adds the disabledInputInnerClasses and disabledInputClasses if the inputs indexes are above or equal the dataLimit', () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                disabledInputInnerClasses={'disabled-inner-selector'}
+                disabledInputClasses={'disabled-selector'}
+                dataLimit={2}
+                data={['🚕', '🚌', '🚒', '⌚', '⏰']}
+            />
         );
 
-        const firstInputConnectedProps = body.find(InputConnected).first().props();
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
-
-        expect(firstInputConnectedProps.innerInputClasses).toContain('inner');
-        expect(lastInputConnectedProps.innerInputClasses).toContain('inner');
+        expect(document.querySelectorAll('.disabled-inner-selector').length).toBe(4);
+        expect(document.querySelectorAll('.disabled-selector').length).toBe(4);
     });
 
-    it('should include the disabledInputInnerClasses if the inputs indexes are above or equal the dataLimit', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+    it('includes a tooltip for inputs with an index equal or above the dataLimit', async () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                disabledTooltipTitle={'You have no power here'}
+                dataLimit={3}
+                data={['🚕', '🚌', '🚒', '⌚', '⏰']}
+            />
         );
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
 
-        expect(lastInputConnectedProps.innerInputClasses).toContain('disabledInner');
+        expect(screen.getAllByRole('textbox')[3].parentElement).toHaveAttribute('aria-labelledby');
+        userEvent.hover(screen.getAllByRole('textbox')[3].parentElement);
+
+        expect(await screen.findByText('You have no power here')).toBeVisible();
     });
 
-    it('should include the disabledInputClasses if the inputs indexes are below the dataLimit', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+    it('does not include a Tooltip for elements below the dataLimit', () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                disabledTooltipTitle={'You have no power here'}
+                dataLimit={3}
+                data={['🚕', '🚌', '🚒', '⌚', '⏰']}
+            />
         );
-        const lastInputConnectedProps = body.find(InputConnected).first().props();
-
-        expect(lastInputConnectedProps.classes).not.toContain('disabledClass');
+        expect(screen.getAllByRole('textbox')[2].parentElement).not.toHaveAttribute('aria-labelledby');
     });
 
-    it("should NOT disable all the inputs in which it's index are below the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+    it("does not includes a Tooltip if the input value is empty even if it's index is above the dataLimit", () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                disabledTooltipTitle={'You have no power here'}
+                dataLimit={1}
+                data={['🚕', '']}
+            />
         );
-        const oneInputConnectedBeforelastProps = body.find(InputConnected).first().props();
 
-        expect(oneInputConnectedBeforelastProps.isReadOnly).toBe(false);
+        expect(screen.getAllByRole('textbox')[1].parentElement).not.toHaveAttribute('aria-labelledby');
     });
 
-    it("should include a Tooltip if set to all data in which it's index are above the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+    it('sets the placeholder to all input under the dataLimit', () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                inputProps={{placeholder: 'This is my seat'}}
+                dataLimit={3}
+                data={['🚕', '🚌', '🚒', '⌚', '⏰']}
+            />
         );
-        const lastInputConnectedProps = body
-            .find(InputConnected)
-            .at(defaultAboveDataLimitValues.length - 2)
-            .props();
 
-        expect(lastInputConnectedProps.disabledTooltip).toBe(defaultProps.disabledTooltipTitle);
+        expect(screen.getAllByPlaceholderText('This is my seat').length).toBe(3);
     });
 
-    it("should NOT includes a Tooltip if set to all data in which it's index are below the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
+    it('overrides the placeholder with the reachedLimitPlaceholder props for inputs above the dataLimit', () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                inputProps={{placeholder: 'This is my seat'}}
+                reachedLimitPlaceholder="No it is mine"
+                dataLimit={2}
+                data={['🚕', '🚌', '🚒', '⌚', '⏰']}
+            />
         );
-        const oneInputConnectedBeforelastProps = body.find(InputConnected).first().props();
 
-        expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe('');
-    });
-
-    it("should NOT includes a Tooltip if the input value is empty even if it's index is above the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const oneInputConnectedBeforelastProps = body.find(InputConnected).last().props();
-
-        expect(oneInputConnectedBeforelastProps.disabledTooltip).toBe('');
-    });
-
-    it("should set the placeholder value with the placeholder props to all data in which it's index below the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const oneInputConnectedBeforelastProps = body.find(InputConnected).first().props();
-
-        expect(oneInputConnectedBeforelastProps.placeholder).toBe(testInputProps.placeholder);
-    });
-
-    it("should set the placeholder value with the reachedLimitPlaceholder props to all data in which it's index above the dataLimit", () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const lastInputConnectedProps = body.find(InputConnected).last().props();
-
-        expect(lastInputConnectedProps.placeholder).toBe(defaultProps.reachedLimitPlaceholder);
+        expect(screen.getAllByPlaceholderText('No it is mine').length).toBe(3);
     });
 
     it('should set the reachedLimitPlaceholder to undefined if the number of input reached the limit, but not above', () => {
-        const emptyReachedLimitPlaceholderValues = ['🚕', ''];
-        const arrayOfMultilineSingleBoxReachedLimitPlaceholderProps: Array<IMultilineSingleBoxProps<string>> = [
-            {id: 'test1', isLast: false, props: '🚕'},
-            {id: 'test2', isLast: false, props: ''},
-        ];
-        const emptyReachedLimitPlaceholderProps = {
-            id: '🚗',
-            dataLimit: 1,
-            inputProps: testInputProps,
-            disabledTooltipTitle: "this input can't edited",
-        };
-        const component = shallowWithState(
-            <MultiValuesInput {...emptyReachedLimitPlaceholderProps} data={emptyReachedLimitPlaceholderValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxReachedLimitPlaceholderProps)}</div>,
-            {}
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                inputProps={{placeholder: 'This is my seat'}}
+                reachedLimitPlaceholder="No it is mine"
+                dataLimit={2}
+                data={['🚕', '🚌']}
+            />
         );
 
-        const lastInputConnectedValidation = body.find(InputConnected).last().props();
-
-        expect(lastInputConnectedValidation.placeholder).toBe(undefined);
+        expect(screen.getAllByRole('textbox')[2].parentElement).not.toHaveAttribute('placeholder');
     });
 
-    it('should display the labelTitle only on the first input', () => {
-        const component = shallowWithState(
-            <MultiValuesInput {...defaultProps} data={defaultAboveDataLimitValues} />,
-            {}
-        ).dive();
+    it('displays a label on the first input', () => {
+        render(<MultiValuesInput {...defaultProps} inputProps={{labelTitle: 'hello world'}} data={['🚕', '🚌']} />);
 
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxAboveDataLimitProps)}</div>,
-            {}
-        );
-        const firstInputConnectedProps = body.find(InputConnected).first().props();
-        const oneInputConnectedBeforelastProps = body.find(InputConnected).last().props();
-
-        expect(firstInputConnectedProps.labelTitle).toBe(testInputProps.labelTitle);
-        expect(oneInputConnectedBeforelastProps.labelTitle).toBe('');
+        expect(screen.getByText('hello world')).toBeVisible();
+        expect(screen.getAllByText('hello world').length).toBe(1);
     });
 
-    it("should validate all the inputs' content", () => {
-        const component = shallowWithState(<MultiValuesInput {...defaultProps} data={defaultValues} />, {}).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxProps)}</div>,
-            {}
+    it("validates all the inputs' content", async () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                inputProps={{
+                    validate: (value: string) => value.length < 5,
+                    validateOnChange: true,
+                    labelProps: {invalidMessage: 'too much food'},
+                }}
+                data={['🍍', '🍓']}
+            />
         );
-
-        const lastInputConnectedValidation = body.find(InputConnected).last().props().validate('');
-        const firstInputConnectedValidation = body.find(InputConnected).first().props().validate('');
-
-        expect(lastInputConnectedValidation).toBe(false);
-        expect(firstInputConnectedValidation).toBe(false);
+        userEvent.type(screen.getAllByRole('textbox')[1], '🍎🍐🍒🍉🍍');
+        expect(screen.getAllByRole('textbox')[1]).toHaveClass('invalid');
     });
 
-    it('should NOT display a tooltip on the last input if the reachedLimitPlaceholder is not set', () => {
-        const emptyReachedLimitPlaceholderValues = ['🚕', ''];
-        const arrayOfMultilineSingleBoxReachedLimitPlaceholderProps: Array<IMultilineSingleBoxProps<string>> = [
-            {id: 'test1', isLast: false, props: '🚕'},
-            {id: 'test2', isLast: false, props: ''},
-        ];
-        const emptyReachedLimitPlaceholderProps = {
-            id: '🚗',
-            dataLimit: 1,
-            inputProps: testInputProps,
-            disabledTooltipTitle: "this input can't edited",
-        };
-        const component = shallowWithState(
-            <MultiValuesInput {...emptyReachedLimitPlaceholderProps} data={emptyReachedLimitPlaceholderValues} />,
-            {}
-        ).dive();
-
-        const body = shallowWithState(
-            <div>{(component.prop('renderBody') as any)(arrayOfMultilineSingleBoxReachedLimitPlaceholderProps)}</div>,
-            {}
+    it('does not add a tooltip on the last input if the reachedLimitPlaceholder is not set', () => {
+        render(
+            <MultiValuesInput
+                {...defaultProps}
+                disabledTooltipTitle={'You have no power here'}
+                reachedLimitPlaceholder={undefined}
+                dataLimit={1}
+                data={['🚕']}
+            />
         );
-
-        const lastInputConnectedValidation = body.find(InputConnected).last().props();
-
-        expect(lastInputConnectedValidation.disabledTooltip).toBe('');
+        expect(screen.getAllByRole('textbox')[1].parentElement).not.toHaveAttribute('aria-labelledby');
     });
 });

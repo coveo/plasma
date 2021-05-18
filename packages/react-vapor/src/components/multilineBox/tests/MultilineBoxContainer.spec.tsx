@@ -1,4 +1,4 @@
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
@@ -13,6 +13,7 @@ describe('Multiline box container', () => {
         it('should not throw if the containerNode and data is not defined', () => {
             expect(() =>
                 shallowWithState(<MultilineBoxContainer id={id} />, {})
+                    .dive()
                     .dive()
                     .dive()
             ).not.toThrow();
@@ -34,6 +35,7 @@ describe('Multiline box container', () => {
                         },
                     }
                 )
+                    .dive()
                     .dive()
                     .dive()
             ).not.toThrow();
@@ -61,6 +63,7 @@ describe('Multiline box container', () => {
                 )
                     .dive()
                     .dive()
+                    .dive()
             ).not.toThrow();
         });
 
@@ -72,6 +75,7 @@ describe('Multiline box container', () => {
                 )
                     .dive()
                     .dive()
+                    .dive()
             ).not.toThrow();
         });
 
@@ -80,6 +84,7 @@ describe('Multiline box container', () => {
                 <MultilineBoxContainer id={id} data={[]} renderBody={_.identity} defaultProps={{}} />,
                 {}
             )
+                .dive()
                 .dive()
                 .dive();
 
@@ -118,6 +123,7 @@ describe('Multiline box container', () => {
                     }
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 expect(spyContainerNode).toHaveBeenCalledTimes(1);
@@ -132,6 +138,7 @@ describe('Multiline box container', () => {
                         },
                     },
                 })
+                    .dive()
                     .dive()
                     .dive();
 

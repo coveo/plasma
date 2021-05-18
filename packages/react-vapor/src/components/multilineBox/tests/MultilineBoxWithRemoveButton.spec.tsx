@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -23,6 +23,7 @@ describe('Multiline box with remove button', () => {
             state = {}
         ): ShallowWrapper =>
             shallowWithState(<Component {...props} id={id} />, state)
+                .dive()
                 .dive()
                 .dive()
                 .dive();
@@ -100,6 +101,7 @@ describe('Multiline box with remove button', () => {
                 s: any
             ): ShallowWrapper =>
                 shallowWithStore(<Component {...props} id={id} />, s)
+                    .dive()
                     .dive()
                     .dive()
                     .dive();

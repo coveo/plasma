@@ -1,10 +1,9 @@
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {ChromePicker} from 'react-color';
-import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../utils/tests/TestUtils';
-import {addInput, removeInput} from '../input/InputActions';
+
+import {getStoreMock, ReactVaporMockStore} from '../../utils/tests/TestUtils';
 import {InputConnected} from '../input/InputConnected';
-import {InputSelectors} from '../input/InputSelectors';
 import {ColorPicker} from './ColorPicker';
 
 describe('ColorPicker', () => {
@@ -16,53 +15,45 @@ describe('ColorPicker', () => {
 
     it('should mount and unmount without error', () => {
         expect(() => {
-            const picker = shallowWithStore(<ColorPicker id="🆔" />, store);
+            const picker = shallowWithStore(<ColorPicker id="🆔" />, store)
+                .dive()
+                .dive();
             picker.unmount();
         }).not.toThrow();
     });
 
     it('should render a ChromeColorPicker', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" />, store)
+            .dive()
+            .dive();
 
         expect(picker.find(ChromePicker).length).toBe(1);
     });
 
     it('should pass down props to ChromePicker', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" disableAlpha={true} />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" disableAlpha={true} />, store)
+            .dive()
+            .dive();
 
         expect(picker.find(ChromePicker).props().disableAlpha).toBe(true);
     });
 
-    it('should render an InputConnected', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" />, store).dive();
+    it('should contain an InputConnected with the same id', () => {
+        const component = shallowWithStore(<ColorPicker id="foo" />, store)
+            .dive()
+            .dive();
 
-        expect(picker.find(InputConnected).length).toBe(1);
+        const input = component.find(InputConnected);
+        expect(input.exists()).toBe(true);
+        expect(input.prop('id')).toBe('foo');
     });
 
     it('should sync the InputConnected and ChromePicker with color props', () => {
-        const picker = shallowWithStore(<ColorPicker id="🆔" defaultColor="#fff" />, store).dive();
+        const picker = shallowWithStore(<ColorPicker id="🆔" defaultColor="#fff" />, store)
+            .dive()
+            .dive();
 
         expect(picker.find(ChromePicker).prop('color')).toBe('#fff');
         expect(picker.find(InputConnected).prop('defaultValue')).toBe('#fff');
-    });
-
-    it('should make the color available from state', () => {
-        const nonMockStore = TestUtils.buildStore();
-        mountWithStore(<ColorPicker defaultColor="#47FF21" id="color-picker-test" />, nonMockStore);
-
-        expect(InputSelectors.getValue(nonMockStore.getState(), {id: 'color-picker-test'})).toBe('#47FF21');
-    });
-
-    it('should add state input on mount', () => {
-        mountWithStore(<ColorPicker id="foo" />, store);
-
-        expect(store.getActions()).toContainEqual(addInput('foo'));
-    });
-
-    it('should remove state input on destroy', () => {
-        const picker = mountWithStore(<ColorPicker id="foo" />, store);
-        picker.unmount();
-
-        expect(store.getActions()).toContainEqual(removeInput('foo'));
     });
 });

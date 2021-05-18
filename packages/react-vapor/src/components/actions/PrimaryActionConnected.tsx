@@ -1,7 +1,6 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import {ReduxUtils} from '../../utils/ReduxUtils';
-import {IPrimaryActionProps, IPrimaryActionStateProps, PrimaryAction} from './PrimaryAction';
+import {IPrimaryActionStateProps, PrimaryAction} from './PrimaryAction';
 
 const mapStateToProps = (): IPrimaryActionStateProps => ({
     withReduxState: true,
@@ -9,7 +8,7 @@ const mapStateToProps = (): IPrimaryActionStateProps => ({
 
 const mapDispatchToProps = () => ({});
 
-export const PrimaryActionConnected: React.ComponentClass<IPrimaryActionProps> = connect(
+export const PrimaryActionConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

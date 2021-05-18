@@ -56,5 +56,8 @@ export const withDirtyInputHOC = <T extends IInputOwnProps>(Component: React.Com
         );
     };
 
-    return connect(mapStateToProps, mapDispatchToProps)(WrappedInput);
+    return connect<StateProps, DispatchProps, T & IWithDirtyInputOwnProps>(
+        mapStateToProps,
+        mapDispatchToProps
+    )(WrappedInput as any);
 };

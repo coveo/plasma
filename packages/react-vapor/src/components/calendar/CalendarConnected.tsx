@@ -1,5 +1,4 @@
 import moment from 'moment';
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -17,7 +16,6 @@ import {
     Calendar,
     ICalendarDispatchProps,
     ICalendarOwnProps,
-    ICalendarProps,
     ICalendarStateProps,
     MONTH_PICKER_ID,
     YEAR_PICKER_ID,
@@ -63,8 +61,4 @@ const mapDispatchToProps = (
     onDateChange: (pickerId: string, newValue: number) => dispatch(changeOptionsCycle(pickerId, newValue)),
 });
 
-export const CalendarConnected: React.ComponentClass<ICalendarProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Calendar);
+export const CalendarConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Calendar);

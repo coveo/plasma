@@ -31,9 +31,12 @@ export interface ModalWizardProps
     onCancel?: () => unknown;
 }
 
-const enhance = connect(null, (dispatch: IDispatch, {id}: ModalWizardProps) => ({
-    close: () => dispatch(ModalActions.closeModal(id)),
-}));
+const enhance = connect<null, {close: () => void}, React.PropsWithChildren<ModalWizardProps>>(
+    null,
+    (dispatch: IDispatch, {id}: ModalWizardProps) => ({
+        close: () => dispatch(ModalActions.closeModal(id)),
+    })
+);
 
 const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & ConnectedProps<typeof enhance>> = ({
     id,

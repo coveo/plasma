@@ -29,7 +29,7 @@ export interface ITableWithPaginationStateProps {
 
 const mapDispatchToProps = (
     dispatch: (action: IReduxAction<IReduxActionsPayload>) => void,
-    ownProps: ITableHOCOwnProps
+    ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
 ) => ({
     onMount: () => {
         dispatch(turnOffLoading([`loading-${ownProps.id}`]));
@@ -50,11 +50,11 @@ const sliceData = (data: any[], startingIndex: number, endingIndex: number) => d
 
 export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginationConfig> = {}) => (
     Component: React.ComponentType<ITableWithPaginationProps>
-): React.ComponentClass<ITableWithPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
+) => {
     const config = HocUtils.supplyConfig(supplier);
     const mapStateToProps = (
         state: IReactVaporState,
-        ownProps: ITableWithPaginationProps
+        ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
     ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
         const perPage = NavigationSelectors.getPerPage(state, {id: ownProps.id});
@@ -77,7 +77,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
         };
     };
 
-    class TableWithPagination extends React.Component<ITableHOCOwnProps & ITableWithPaginationProps> {
+    class TableWithPagination extends React.Component<ITableWithPaginationProps> {
         componentDidMount() {
             this.props.onMount();
         }
@@ -111,7 +111,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
     return connect<
         ReturnType<typeof mapStateToProps>,
         ReturnType<typeof mapDispatchToProps>,
-        ITableHOCOwnProps & WithServerSideProcessingProps
+        React.PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
     >(
         mapStateToProps,
         mapDispatchToProps

@@ -1,9 +1,8 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVaporState';
 import {ReduxUtils} from '../../utils/ReduxUtils';
-import {ITableCollapsibleRowOwnProps, ITableCollapsibleRowProps, TableCollapsibleRow} from './TableCollapsibleRow';
+import {ITableCollapsibleRowOwnProps, TableCollapsibleRow} from './TableCollapsibleRow';
 import {ITableRowState} from './TableRowReducers';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: ITableCollapsibleRowOwnProps) => {
@@ -16,7 +15,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: ITableCollapsibleRow
 
 const mapDispatchToProps = () => ({});
 
-export const TableCollapsibleRowConnected: React.ComponentClass<ITableCollapsibleRowProps> = connect(
+export const TableCollapsibleRowConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

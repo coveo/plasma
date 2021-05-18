@@ -8,8 +8,9 @@ module.exports = {
     setupFilesAfterEnv: ['<rootDir>/jest/setup.ts'],
     reporters: ['default'],
     transform: {
-        '^.+\\.tsx?$': 'ts-jest',
+        '^.+\\.(jsx?|tsx?)$': 'ts-jest',
     },
+    transformIgnorePatterns: ['/node_modules/(?!@helpers/enzyme-redux)(.*)'],
     testMatch: ['<rootDir>/src/**/*.spec.{ts,tsx}'],
     moduleFileExtensions: ['ts', 'tsx', 'js', 'scss'],
     testPathIgnorePatterns: ['<rootDir>[/\\\\](node_modules|.next)[/\\\\]'],

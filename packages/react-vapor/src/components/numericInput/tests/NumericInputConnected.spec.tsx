@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {keyCode} from '../../../utils/InputUtils';
@@ -26,7 +26,9 @@ describe('Numeric Input', () => {
             expect(() => {
                 store = getStoreMock({numericInputs: {}});
 
-                const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
+                const component = shallowWithStore(<NumericInputConnected id={id} />, store)
+                    .dive()
+                    .dive();
                 component.unmount();
             }).not.toThrow();
         });
@@ -35,7 +37,9 @@ describe('Numeric Input', () => {
             const expectedInitialValue = 1000;
             const expectedAction = NumericInputActions.mount(id, expectedInitialValue);
 
-            shallowWithStore(<NumericInputConnected id={id} initialValue={expectedInitialValue} />, store).dive();
+            shallowWithStore(<NumericInputConnected id={id} initialValue={expectedInitialValue} />, store)
+                .dive()
+                .dive();
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -44,16 +48,17 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} min={initialValue} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(component.find('button').at(0).prop('disabled')).toBe(true);
         });
 
         it('should trigger a setValue onClick on the decrement button', () => {
-            const component = shallowWithStore(
-                <NumericInputConnected id={id} initialValue={initialValue} />,
-                store
-            ).dive();
+            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store)
+                .dive()
+                .dive();
 
             component.find('button').at(0).prop<any>('onClick')();
 
@@ -65,7 +70,9 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             component.find('button').at(0).prop<any>('onClick')();
 
@@ -80,7 +87,9 @@ describe('Numeric Input', () => {
                 const component = shallowWithStore(
                     <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
                 input = component.find('.js-numeric-input');
             });
 
@@ -108,7 +117,9 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} max={initialValue} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(component.find('button').at(1).prop('disabled')).toBe(true);
         });
@@ -119,7 +130,9 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} min={min} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             component.find('button').at(0).prop<any>('onClick')();
 
@@ -127,10 +140,9 @@ describe('Numeric Input', () => {
         });
 
         it('should trigger a setValue onClick on the increment button', () => {
-            const component = shallowWithStore(
-                <NumericInputConnected id={id} initialValue={initialValue} />,
-                store
-            ).dive();
+            const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store)
+                .dive()
+                .dive();
 
             component.find('button').at(1).prop<any>('onClick')();
 
@@ -142,7 +154,9 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             component.find('button').at(1).prop<any>('onClick')();
 
@@ -155,7 +169,9 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} initialValue={initialValue} step={step} max={max} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             component.find('button').at(1).prop<any>('onClick')();
 
@@ -172,14 +188,18 @@ describe('Numeric Input', () => {
             const component = shallowWithStore(
                 <NumericInputConnected id={id} invalidMessage={expectedMessage} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(component.find('.generic-form-error').text()).toBe(expectedMessage);
         });
 
         it('should trigger a setValue when the input change', () => {
             const newValue = '125';
-            const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
+            const component = shallowWithStore(<NumericInputConnected id={id} />, store)
+                .dive()
+                .dive();
 
             component.find('.js-numeric-input').simulate('change', {target: {value: newValue}});
 
@@ -196,7 +216,9 @@ describe('Numeric Input', () => {
             });
 
             it('should decrement to the default value if initialValue is not defined', () => {
-                const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
+                const component = shallowWithStore(<NumericInputConnected id={id} />, store)
+                    .dive()
+                    .dive();
 
                 component.find('button').at(0).prop<any>('onClick')();
 
@@ -206,7 +228,9 @@ describe('Numeric Input', () => {
             });
 
             it('should increment to the default value if initialValue is not defined', () => {
-                const component = shallowWithStore(<NumericInputConnected id={id} />, store).dive();
+                const component = shallowWithStore(<NumericInputConnected id={id} />, store)
+                    .dive()
+                    .dive();
 
                 component.find('button').at(1).prop<any>('onClick')();
 
@@ -216,10 +240,9 @@ describe('Numeric Input', () => {
             });
 
             it('should decrement to the initialValue if initialValue is defined', () => {
-                const component = shallowWithStore(
-                    <NumericInputConnected id={id} initialValue={initialValue} />,
-                    store
-                ).dive();
+                const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store)
+                    .dive()
+                    .dive();
 
                 component.find('button').at(0).prop<any>('onClick')();
 
@@ -227,10 +250,9 @@ describe('Numeric Input', () => {
             });
 
             it('should increment from the initialValue if it is defined', () => {
-                const component = shallowWithStore(
-                    <NumericInputConnected id={id} initialValue={initialValue} />,
-                    store
-                ).dive();
+                const component = shallowWithStore(<NumericInputConnected id={id} initialValue={initialValue} />, store)
+                    .dive()
+                    .dive();
 
                 component.find('button').at(1).prop<any>('onClick')();
 

@@ -1,5 +1,5 @@
 import userEvent from '@testing-library/user-event';
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {render, screen} from '@test-utils';
 import * as _ from 'underscore';
@@ -45,13 +45,17 @@ describe('Table HOC', () => {
         });
 
         it('should render a TableHOC', () => {
-            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should add an action in the TableHOC props', () => {
-            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {})
+                .dive()
+                .dive();
             const actions = wrapper.find(TableHOC).prop('actions');
 
             expect(actions.length).toBe(1);
@@ -59,10 +63,9 @@ describe('Table HOC', () => {
 
         it('should filter out elements not matching the predicate in the state', () => {
             const predicate = predicateValues[1].value;
-            const wrapper = shallowWithState(
-                <TableWithPredicate {...defaultProps} />,
-                getStateWithPredicate(predicate)
-            ).dive();
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, getStateWithPredicate(predicate))
+                .dive()
+                .dive();
 
             const filteredData = _.filter(defaultProps.data, ({city}) => city === predicate);
             const tableData = wrapper.find(TableHOC).prop('data');
@@ -83,6 +86,7 @@ describe('Table HOC', () => {
                     getStateWithPredicate(predicate)
                 )
                     .dive()
+                    .dive()
                     .dive();
 
                 const tableData = wrapper.find(TableHOC).prop('data');
@@ -97,6 +101,7 @@ describe('Table HOC', () => {
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithPredicate(predicate)
                 )
+                    .dive()
                     .dive()
                     .dive();
 
@@ -113,6 +118,7 @@ describe('Table HOC', () => {
                     <TableWithPredicateServer {...defaultProps} onUpdate={updateSpy} />,
                     getStateWithPredicate(predicate)
                 )
+                    .dive()
                     .dive()
                     .dive();
 
@@ -153,19 +159,26 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() => {
-                shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {});
-                shallowWithState(<TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />, {});
+                shallowWithState(<TableWithPredicate id="a" data={[]} renderBody={_.identity} />, {}).dive();
+                shallowWithState(
+                    <TableWithPredicate id="b" data={[{value: 'a'}]} renderBody={_.identity} />,
+                    {}
+                ).dive();
             }).not.toThrow();
         });
 
         it('should render a TableHOC', () => {
-            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.find(TableHOC).exists()).toBe(true);
         });
 
         it('should add an action in the TableHOC props', () => {
-            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {}).dive();
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, {})
+                .dive()
+                .dive();
             const actions = wrapper.find(TableHOC).prop('actions');
 
             expect(actions.length).toBe(1);
@@ -173,10 +186,9 @@ describe('Table HOC', () => {
 
         it('should filter out elements not matching the predicate in the state', () => {
             const predicate = predicateValues[1].value;
-            const wrapper = shallowWithState(
-                <TableWithPredicate {...defaultProps} />,
-                getStateWithPredicate(predicate)
-            ).dive();
+            const wrapper = shallowWithState(<TableWithPredicate {...defaultProps} />, getStateWithPredicate(predicate))
+                .dive()
+                .dive();
 
             const filteredData = _.filter(defaultProps.data, ({city}) => city === predicate);
             const tableData = wrapper.find(TableHOC).prop('data');

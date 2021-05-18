@@ -33,6 +33,7 @@ export interface IActionBarProps {
     moreLabel?: string;
     itemFilterCropLength?: number;
     disabled?: boolean;
+    children?: React.ReactNode;
 }
 
 export class ActionBar extends React.PureComponent<

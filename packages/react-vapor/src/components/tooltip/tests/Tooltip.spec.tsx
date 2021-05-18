@@ -1,5 +1,5 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {mountWithState} from 'enzyme-redux';
+import {mountWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {OverlayTrigger} from 'react-bootstrap';

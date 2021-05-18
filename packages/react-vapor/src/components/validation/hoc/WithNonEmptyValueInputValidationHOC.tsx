@@ -53,5 +53,8 @@ export const withNonEmptyValueInputValidationHOC = <T extends IInputOwnProps>(
         );
     };
 
-    return connect(null, mapDispatchToProps)(WrappedInput);
+    return connect<null, DispatchProps, T & IWithNonEmptyValueInputValidationProps>(
+        null,
+        mapDispatchToProps
+    )(WrappedInput as any);
 };

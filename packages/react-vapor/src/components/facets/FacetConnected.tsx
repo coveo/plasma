@@ -1,9 +1,8 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetProps, IFacetStateProps} from './Facet';
+import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetStateProps} from './Facet';
 import {addFacet, changeFacet, emptyFacet, removeFacet} from './FacetActions';
 import {IFacetState} from './FacetReducers';
 
@@ -33,8 +32,4 @@ const mapDispatchToProps = (dispatch: (action: IReduxAction<IReduxActionsPayload
     onClearFacet: (facet: string) => dispatch(emptyFacet(facet)),
 });
 
-export const FacetConnected: React.ComponentClass<IFacetProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Facet);
+export const FacetConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Facet);

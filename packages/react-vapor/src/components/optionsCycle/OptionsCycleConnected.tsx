@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -6,7 +5,6 @@ import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
     IOptionsCycleConnectedOwnProps,
     IOptionsCycleDispatchProps,
-    IOptionsCycleProps,
     IOptionsCycleStateProps,
     OptionsCycle,
 } from './OptionsCycle';
@@ -29,8 +27,4 @@ const mapDispatchToProps = (
     onChange: (index: number) => dispatch(changeOptionsCycle(ownProps.id, index)),
 });
 
-export const OptionsCycleConnected: React.ComponentClass<IOptionsCycleProps & IOptionsCycleConnectedOwnProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(OptionsCycle);
+export const OptionsCycleConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(OptionsCycle);

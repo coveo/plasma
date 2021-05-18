@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -8,7 +7,6 @@ import {
     FacetMoreToggle,
     IFacetMoreToggleDispatchProps,
     IFacetMoreToggleOwnProps,
-    IFacetMoreToggleProps,
     IFacetMoreToggleStateProps,
 } from './FacetMoreToggle';
 import {IFacetState} from './FacetReducers';
@@ -27,7 +25,7 @@ const mapDispatchToProps = (
     onToggleMore: (facet: string) => dispatch(toggleMoreFacetRows(facet)),
 });
 
-export const FacetMoreToggleConnected: React.ComponentClass<IFacetMoreToggleProps> = connect(
+export const FacetMoreToggleConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

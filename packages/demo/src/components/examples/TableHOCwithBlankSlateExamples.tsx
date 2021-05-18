@@ -29,7 +29,7 @@ const TableWithBlankSlateExample: React.FunctionComponent = () => (
                 id="tableWithBlankSlate"
                 className="table"
                 data={generateDataWithFaker(0)}
-                renderBody={(data) => generateTableRow(data, 'tableWithBlankSlate')}
+                renderBody={(data: IExampleRowData[]) => generateTableRow(data, 'tableWithBlankSlate')}
                 filterMatcher={(filter: string, data: IExampleRowData) =>
                     data.username.toLowerCase().indexOf(filter.toLowerCase()) !== -1
                 }
@@ -55,7 +55,7 @@ const TableWithBlankSlateComposed = _.compose(
     tableWithBlankSlate({title: 'No data caused the table to be empty'}),
     tableWithFilter(),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'})
-)(TableHOC) as ReturnType<ReturnType<typeof tableWithFilter>>;
+)(TableHOC);
 
 const TableWithEmptyStateComposed = _.compose(
     tableWithEmptyState,

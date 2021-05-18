@@ -1,4 +1,4 @@
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
@@ -32,7 +32,9 @@ describe('WithDirtySaveButtonHOC', () => {
 
     it('should mount and unmount/detach without error', () => {
         expect(() => {
-            const buttonWrapper = shallowWithStore(<ButtonWithHOC {...BUTTON_PROPS} />, store);
+            const buttonWrapper = shallowWithStore(<ButtonWithHOC {...BUTTON_PROPS} />, store)
+                .dive()
+                .dive();
             buttonWrapper.unmount();
         }).not.toThrow();
     });
@@ -78,7 +80,9 @@ describe('WithDirtySaveButtonHOC', () => {
             },
         });
         const shallowButton = (props: Partial<typeof BUTTON_PROPS>, storeToUse: ReturnType<typeof getStoreMock>) =>
-            shallowWithStore<typeof ButtonWithHOC>(<ButtonWithHOC {...BUTTON_PROPS} {...props} />, storeToUse).dive();
+            shallowWithStore<typeof ButtonWithHOC>(<ButtonWithHOC {...BUTTON_PROPS} {...props} />, storeToUse)
+                .dive()
+                .dive();
 
         beforeEach(() => {
             storeWithErrorsAndDirty.clearActions();

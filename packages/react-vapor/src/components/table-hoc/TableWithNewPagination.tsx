@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
 import {IReactVaporState} from '../../ReactVaporState';
-import {ConnectedProps, IDispatch} from '../../utils';
+import {IDispatch} from '../../utils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';
 import {INavigationChildrenProps, INavigationOwnProps} from '../navigation';
@@ -27,9 +27,7 @@ export interface ITableWithNewPaginationProps extends ITableHOCOwnProps, WithSer
 
 export const tableWithNewPagination = (
     supplier: ConfigSupplier<ITableWithNewPaginationConfig> = {perPageNumbers: PER_PAGE_NUMBERS}
-) => (
-    Component: React.ComponentType<ITableWithNewPaginationProps>
-): React.ComponentClass<ITableWithNewPaginationProps & React.HTMLAttributes<HTMLTableElement>> => {
+) => (Component: React.ComponentType<ITableWithNewPaginationProps>) => {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableWithNewPaginationProps) => ({
@@ -66,10 +64,8 @@ export const tableWithNewPagination = (
         };
     };
 
-    const enhance = connect(mapStateToProps, mapDispatchToProps);
-
     class TableWithNewPaginationDisconnected extends React.Component<
-        ITableWithNewPaginationProps & ConnectedProps<typeof enhance>
+        ITableWithNewPaginationProps & ReturnType<typeof mapStateToProps> & ReturnType<typeof mapDispatchToProps>
     > {
         componentDidMount() {
             this.props.onMount();
@@ -79,7 +75,7 @@ export const tableWithNewPagination = (
             this.props.onUnmount();
         }
 
-        componentDidUpdate(prevProps: ITableWithNewPaginationProps & ConnectedProps<typeof enhance>) {
+        componentDidUpdate(prevProps: ITableWithNewPaginationProps & ReturnType<typeof mapStateToProps>) {
             if (prevProps.pageNb !== this.props.pageNb || prevProps.perPage !== this.props.perPage) {
                 this.props.onUpdate?.();
             }
@@ -107,5 +103,12 @@ export const tableWithNewPagination = (
         }
     }
 
-    return enhance(TableWithNewPaginationDisconnected);
+    return connect<
+        ReturnType<typeof mapStateToProps>,
+        ReturnType<typeof mapDispatchToProps>,
+        ITableWithNewPaginationProps
+    >(
+        mapStateToProps,
+        mapDispatchToProps
+    )(TableWithNewPaginationDisconnected as any);
 };

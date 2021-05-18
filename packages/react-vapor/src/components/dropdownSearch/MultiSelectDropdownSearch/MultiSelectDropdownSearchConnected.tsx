@@ -59,7 +59,7 @@ const mapDispatchToProps = (
         dispatch(updateOptionsDropdownSearch(ownProps.id, options, undefined, false)),
 });
 
-export const MultiSelectDropdownSearchConnected: React.ComponentClass<IDropdownSearchProps> = connect(
+export const MultiSelectDropdownSearchConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

@@ -56,5 +56,5 @@ export const withDirtySaveButtonHOC = <T extends IButtonProps>(Component: React.
             />
         );
     };
-    return connect(mapStateToProps)(WrappedButton);
+    return connect<StateProps, null, T & IWithDirtySaveButtonHOCProps>(mapStateToProps)(WrappedButton as any);
 };

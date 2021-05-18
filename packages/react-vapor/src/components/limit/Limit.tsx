@@ -22,7 +22,7 @@ export interface LimitOwnProps {
 }
 
 const mapStateToProps = (state: IReactVaporState, {id, limit}: LimitOwnProps) => {
-    const ownLimit: number = limit ?? Limit.defaultProps.limit;
+    const ownLimit: number = limit ?? 100;
     const currentLimit: number = +InputSelectors.getValue(state, {id}) || ownLimit;
     return {
         currentLimit,
@@ -53,13 +53,13 @@ type ProgressBarProps = Pick<LimitProps, 'usage' | 'isLimitTheGoalToReach' | 'li
 const LimitDisconnect: React.FunctionComponent<LimitProps> = ({
     id,
     title,
-    limitLabel,
+    limitLabel = 'Limit',
     usage,
-    limit,
+    limit = 100,
     currentLimit,
-    isLimitEditable,
-    isLimitTheGoalToReach,
-    isHistoryIncluded,
+    isLimitEditable = false,
+    isLimitTheGoalToReach = false,
+    isHistoryIncluded = false,
     onChangeLimit,
     className,
 }) => (
@@ -144,7 +144,7 @@ const LimitDivision: React.FunctionComponent<LimitContentProps> = ({
             defaultValue={limitValueString}
             min={minLimitValue}
             classes="limit-box-limit form-group input-field validate"
-            onChange={(limitValue) => onChangeLimit(limitValue)}
+            onChange={(limitValue: string) => onChangeLimit(limitValue)}
         />
     ) : (
         <div className="limit-box-limit">
@@ -176,11 +176,3 @@ const getProgressBarClass = (usageValue: number, limitValue: number): string => 
 };
 
 export const Limit = connect(mapStateToProps, mapDispatchToProps)(LimitDisconnect);
-
-Limit.defaultProps = {
-    limitLabel: 'Limit',
-    limit: 100,
-    isLimitEditable: false,
-    isLimitTheGoalToReach: false,
-    isHistoryIncluded: false,
-};
