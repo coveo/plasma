@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.3.3](https://github.com/coveo/react-vapor/compare/v22.3.2...v22.3.3) (2021-05-18)
+
+
+### Bug Fixes
+
+* **iconcard:** apply some minor visual corrections to the iconcard ([ebfdfff](https://github.com/coveo/react-vapor/commit/ebfdfff3127f357c8a5aef7dbfa46524200fa61b))
+
+
+
+
+
 # [22.3.0](https://github.com/coveo/react-vapor/compare/v22.2.0...v22.3.0) (2021-05-17)
 
 
