@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVaporState';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {Button} from '../button/Button';
 import {Svg} from '../svg/Svg';
 import {NumericInputActions} from './NumericInputActions';
 import {initialNumericInputState} from './NumericInputReducers';
@@ -90,14 +89,9 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
         return (
             <div className="numeric-input flex flex-column">
                 <div className="flex flex-row">
-                    <Button
-                        classes="js-decrement mr1 p0"
-                        enabled={decrementEnabled}
-                        onClick={this.onDecrement}
-                        type="button"
-                    >
-                        <Svg svgName="minus" svgClass="icon mod-12 align-middle" />
-                    </Button>
+                    <button className="js-decrement mr1" disabled={!decrementEnabled} onClick={this.onDecrement}>
+                        <Svg svgName="minus" svgClass="icon mod-12" />
+                    </button>
                     <div className="flex flex-column">
                         <input
                             {..._.omit(this.props, inputPropsToOmit)}
@@ -114,14 +108,9 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                             onKeyDown={this.onKeyDown}
                         />
                     </div>
-                    <Button
-                        classes="js-increment ml1 p0"
-                        enabled={incrementEnabled}
-                        onClick={this.onIncrement}
-                        type="button"
-                    >
-                        <Svg svgName="plus" svgClass="icon mod-12 align-middle" />
-                    </Button>
+                    <button className="js-increment ml1" disabled={!incrementEnabled} onClick={this.onIncrement}>
+                        <Svg svgName="plus" svgClass="icon mod-12" />
+                    </button>
                 </div>
                 <div className="flex flex-row">
                     {this.props.hasError && <span className="generic-form-error my1">{this.props.invalidMessage}</span>}
