@@ -3,7 +3,7 @@
     width: 100%;
     height: $header-height;
     color: var(--white);
-    background-color: var(--navy-blue-80);
+    background: linear-gradient(270deg, var(--grape-purple-70) 0, var(--navy-blue-80) 65%);
 
     h3 {
         color: inherit;

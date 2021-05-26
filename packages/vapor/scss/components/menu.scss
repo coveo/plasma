@@ -1,7 +1,7 @@
 .dropdown.mod-menu {
     &.header-section:hover,
     &.header-section.open {
-        background-color: #191d3d;
+        background-color: var(--navy-blue-100);
     }
 
     .dropdown-toggle {
