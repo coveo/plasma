@@ -28,7 +28,7 @@ export interface ModalWizardProps
     finishButtonLabel?: string;
     onNext?: () => unknown;
     onPrevious?: () => unknown;
-    onCancel?: () => void;
+    onCancel?: () => unknown;
 }
 
 const enhance = connect(null, (dispatch: IDispatch, {id}: ModalWizardProps) => ({
