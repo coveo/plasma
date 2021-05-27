@@ -3,7 +3,7 @@
     width: 100%;
     height: $header-height;
     color: var(--white);
-    background-color: var(--navy-blue-80);
+    background: var(--gradient-header);
 
     h3 {
         color: inherit;
@@ -13,6 +13,10 @@
 .header-section {
     &.mod-padded {
         padding: 0 25px;
+    }
+
+    &.mod-icon {
+        width: $header-height;
     }
 }
 
