@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.5.0](https://github.com/coveo/react-vapor/compare/v22.4.0...v22.5.0) (2021-05-27)
+
+
+### Features
+
+* **shadow:** add new css variables for shadows ([ebf416f](https://github.com/coveo/react-vapor/commit/ebf416f9fc2ec3ae43bc6ec18ba7aaf57ebd8a74))
+
+
+
+
+
 # [22.4.0](https://github.com/coveo/react-vapor/compare/v22.3.5...v22.4.0) (2021-05-27)
 
 
