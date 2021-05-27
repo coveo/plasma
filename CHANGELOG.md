@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.6.1](https://github.com/coveo/react-vapor/compare/v22.6.0...v22.6.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* **toast:** use high-elevation-on-neutral shadow ([15c1676](https://github.com/coveo/react-vapor/commit/15c16763d86e53e6d6dff09a345ed1b504c09da3))
+
+
+
+
+
 # [22.6.0](https://github.com/coveo/react-vapor/compare/v22.5.0...v22.6.0) (2021-05-27)
 
 
