@@ -37,6 +37,9 @@ describe('ModalWizard', () => {
     });
 
     it('navigates properly through the steps when clicking on "next" and "previous" buttons', () => {
+        const nextSpy = jest.fn();
+        const previousSpy = jest.fn();
+
         const FunctionComponentStep = () => <div>Step 2: FunctionComponent</div>;
         class ClassComponentStep extends React.PureComponent {
             render() {
@@ -45,7 +48,7 @@ describe('ModalWizard', () => {
         }
 
         renderModal(
-            <ModalWizard id="🧙‍♂️">
+            <ModalWizard id="🧙‍♂️" onNext={nextSpy} onPrevious={previousSpy}>
                 <div>Step 1: ReactElement</div>
                 <FunctionComponentStep />
                 <ClassComponentStep />
@@ -74,6 +77,9 @@ describe('ModalWizard', () => {
         expect(screen.getByText(/Step 1/)).not.toBeVisible();
         expect(screen.getByText(/Step 2/)).toBeVisible();
         expect(screen.getByText(/Step 3/)).not.toBeVisible();
+
+        expect(nextSpy).toHaveBeenCalledTimes(2);
+        expect(previousSpy).toHaveBeenCalledTimes(1);
     });
 
     it('calls the "onFinish" prop and the modal stays open when clicking on the "finish" button', () => {
