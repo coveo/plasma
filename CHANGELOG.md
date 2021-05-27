@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.6.0](https://github.com/coveo/react-vapor/compare/v22.5.0...v22.6.0) (2021-05-27)
+
+
+### Features
+
+* **header:** update style and add icons ([#2004](https://github.com/coveo/react-vapor/issues/2004)) ([17a1084](https://github.com/coveo/react-vapor/commit/17a108499e2f7e5a484a8fd3dc5de5b1e93581ab))
+
+
+
+
+
 # [22.5.0](https://github.com/coveo/react-vapor/compare/v22.4.0...v22.5.0) (2021-05-27)
 
 
