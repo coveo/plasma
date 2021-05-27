@@ -33,7 +33,6 @@ const Navigation: React.FunctionComponent = () => (
         <NavigationSection title="Layout" baseUrl="/layout">
             <NavigationLink href="/spaced-box" name="Spaced box" />
         </NavigationSection>
-        <NavigationSection title="Shadow" baseUrl="/shadow" isLink />
         <NavigationSection title="Transparency" baseUrl="/transparency" isLink />
         <NavigationSection title="Typography" baseUrl="/typography">
             <NavigationLink href="/headings" name="Headings" />
