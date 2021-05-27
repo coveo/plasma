@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.4.0](https://github.com/coveo/react-vapor/compare/v22.3.5...v22.4.0) (2021-05-27)
+
+
+### Features
+
+* **modal-wizard:** added optional onclick callback props ([325fcbc](https://github.com/coveo/react-vapor/commit/325fcbc52379bbcdeeb35c4b53eeebee9a2ced0c))
+* **modal-wizard:** changed oncancel type ([dbb503f](https://github.com/coveo/react-vapor/commit/dbb503f302fe859d600c1a32e61c5b053d9655b3))
+
+
+
+
+
 ## [22.3.5](https://github.com/coveo/react-vapor/compare/v22.3.4...v22.3.5) (2021-05-19)
 
 
