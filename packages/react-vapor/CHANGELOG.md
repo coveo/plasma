@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.7.0](https://github.com/coveo/react-vapor/compare/v22.6.2...v22.7.0) (2021-05-31)
+
+
+### Features
+
+* **react-redux:** prepare for version bump ([fe11d09](https://github.com/coveo/react-vapor/commit/fe11d0970d9e188b920b0e2a43bfae625a4733e0))
+
+
+
+
+
 ## [22.6.2](https://github.com/coveo/react-vapor/compare/v22.6.1...v22.6.2) (2021-05-27)
 
 **Note:** Version bump only for package react-vapor
