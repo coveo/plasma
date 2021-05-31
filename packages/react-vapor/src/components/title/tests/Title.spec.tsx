@@ -27,7 +27,7 @@ describe('<Title/>', () => {
         });
 
         it('should render the default text', () => {
-            expect(titleComponent.find('h1').text()).toBe(defaultProps.text as string);
+            expect(titleComponent.find('h4').text()).toBe(defaultProps.text as string);
         });
 
         it('should not render the prefix', () => {

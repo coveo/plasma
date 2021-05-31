@@ -30,10 +30,10 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
 
     return (
         <div className="flex flex-center full-content-x">
-            <h1 className={titleClasses}>
+            <h4 className={titleClasses}>
                 <span className={prefixClasses}>{props.prefix}</span>
                 {title}
-            </h1>
+            </h4>
             {linkIcon}
             {props.children}
         </div>
