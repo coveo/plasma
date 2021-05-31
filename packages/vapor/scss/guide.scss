@@ -11,6 +11,7 @@
 @import 'slide-animation';
 @import 'helpers';
 @import 'placeholders';
+@import 'typekit';
 
 // Utility
 @import 'utility/shadow';
@@ -24,11 +25,9 @@
 @import 'elements/btn-append-prepend';
 
 // Typography
-@import 'typography/headings';
 @import 'typography/elements';
 @import 'elements/links';
 @import 'elements/color-dot';
-@import 'typography/line-height';
 
 // Icons
 @import 'icons/icons';
@@ -140,7 +139,7 @@
     // Utility
     @import 'typography/utility';
     @import 'typography/lists';
-    @import 'typography/font-size.scss';
+    @import 'typography/font-size';
     @import 'utility/align';
     @import 'utility/border';
     @import 'utility/flex';
