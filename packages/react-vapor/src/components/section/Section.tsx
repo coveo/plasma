@@ -19,15 +19,11 @@ export const Section: React.FunctionComponent<ISectionProps> = ({
     mods,
     level = 1,
 }) => {
-    const titleProps: React.HTMLProps<HTMLElement> = {
-        className: 'mb1',
-        children: title,
-    };
-    const H = `h${level + 1}`;
+    const Heading = `h${level + 3}` as keyof JSX.IntrinsicElements;
     return (
         <fieldset className={classNames(className, mods, `level-${level} form-group mod-padding-children`)}>
-            {title && <H {...titleProps} />}
-            {description && <p className="description">{description}</p>}
+            {title && <Heading className={classNames({'h4-book': level === 1})}>{title}</Heading>}
+            {description && <p>{description}</p>}
             {children}
         </fieldset>
     );
