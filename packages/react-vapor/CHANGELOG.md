@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.7.1](https://github.com/coveo/react-vapor/compare/v22.7.0...v22.7.1) (2021-05-31)
+
+
+### Bug Fixes
+
+* **code editor:** onblur replace debounce ([61cd2ba](https://github.com/coveo/react-vapor/commit/61cd2ba747c6d7aa723644cb9eb30ba86539bb5b))
+
+
+
+
+
 # [22.7.0](https://github.com/coveo/react-vapor/compare/v22.6.2...v22.7.0) (2021-05-31)
 
 
