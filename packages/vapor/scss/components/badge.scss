@@ -5,14 +5,13 @@
     box-sizing: border-box;
     font-weight: var(--main-font-bolder);
     text-align: center;
-    text-transform: capitalize;
     border: 1px solid;
     border-radius: 8px;
     white-space: nowrap;
 
     // Variables
     --height: 32px;
-    --padding: 6px 16px;
+    --padding: 6px 8px;
     --font-size: 16px;
     --line-height: 18px;
     --color: var(--grey-80);
@@ -70,6 +69,11 @@
         --fill: var(--sienna-orange-70);
         --border-color: var(--sienna-orange-40);
         --background-color: var(--sienna-orange-20);
+    }
+
+    &.mod-tag {
+        --background-color: var(--white);
+        font-weight: var(--main-font-bold);
     }
 
     &:last-child {

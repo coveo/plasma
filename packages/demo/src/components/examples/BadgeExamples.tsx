@@ -12,6 +12,7 @@ export const BadgeExamples: React.FunctionComponent = () => (
             <Badge label="Beta" extraClasses={['mod-beta ml1']} />
             <Badge icon="lock" extraClasses={['ml1']} />
             <Badge icon="lock" label="Label" extraClasses={['ml1']} />
+            <Badge icon="lock" label="tag" extraClasses={['mod-tag ml1']} />
         </Section>
         <Section level={2} title="Small">
             <Badge label="Default" extraClasses={['mod-small']} />
@@ -22,6 +23,7 @@ export const BadgeExamples: React.FunctionComponent = () => (
             <Badge label="Beta" extraClasses={['mod-small mod-beta ml1']} />
             <Badge icon="lock" extraClasses={['mod-small ml1']} />
             <Badge icon="lock" label="Label" extraClasses={['mod-small ml1']} />
+            <Badge icon="lock" label="tag" extraClasses={['mod-small mod-tag ml1']} />
         </Section>
     </Section>
 );
