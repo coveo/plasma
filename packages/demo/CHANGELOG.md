@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.8.0](https://github.com/coveo/react-vapor/compare/v22.7.1...v22.8.0) (2021-05-31)
+
+
+### Features
+
+* **badge:** add badge as tag, remove some padding ([#2007](https://github.com/coveo/react-vapor/issues/2007)) ([ec6d81e](https://github.com/coveo/react-vapor/commit/ec6d81ebf7704f9badf42be9ab15f7d59f206257))
+
+
+
+
+
 ## [22.7.1](https://github.com/coveo/react-vapor/compare/v22.7.0...v22.7.1) (2021-05-31)
 
 **Note:** Version bump only for package react-vapor-demo
