@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
@@ -33,12 +33,18 @@ describe('WithDirtyInputHOC', () => {
 
     describe('<InputWithHOC />', () => {
         it('should render without error', () => {
-            expect(() => shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)).not.toThrow();
+            expect(() =>
+                shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
+                    .dive()
+                    .dive()
+            ).not.toThrow();
         });
 
         it('should mount and unmount/detach without error', () => {
             expect(() => {
-                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store);
+                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
+                    .dive()
+                    .dive();
                 inputWrapper.unmount();
             }).not.toThrow();
         });
@@ -62,7 +68,9 @@ describe('WithDirtyInputHOC', () => {
 
             it('should dispatch a set dirty action with true when the input was not dirty and the value is different from the initial value', () => {
                 store = getStoreWithDirtyInput(false);
-                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store).dive();
+                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
+                    .dive()
+                    .dive();
 
                 inputWrapper.prop('validate')('🍕');
 
@@ -73,7 +81,9 @@ describe('WithDirtyInputHOC', () => {
 
             it('should dispatch a set dirty action with false when the input was dirty and the value is the same as the initial value', () => {
                 store = getStoreWithDirtyInput(true);
-                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store).dive();
+                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
+                    .dive()
+                    .dive();
 
                 inputWrapper.prop('validate')(INPUT_PROPS.defaultValue);
 
@@ -84,7 +94,9 @@ describe('WithDirtyInputHOC', () => {
 
             it('should not dispatch a set dirty action when the input was not dirty and the value is the same as the initial value', () => {
                 store = getStoreWithDirtyInput(false);
-                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store).dive();
+                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
+                    .dive()
+                    .dive();
 
                 inputWrapper.prop('validate')(INPUT_PROPS.defaultValue);
 
@@ -93,7 +105,9 @@ describe('WithDirtyInputHOC', () => {
 
             it('should not dispatch a set dirty action when the input was dirty and the value is different from the initial value', () => {
                 store = getStoreWithDirtyInput(true);
-                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store).dive();
+                inputWrapper = shallowWithStore(<InputWithHOC {...INPUT_PROPS} />, store)
+                    .dive()
+                    .dive();
 
                 inputWrapper.prop('validate')('🍕');
 
@@ -105,7 +119,9 @@ describe('WithDirtyInputHOC', () => {
                 inputWrapper = shallowWithStore<typeof InputWithHOC>(
                     <InputWithHOC {...INPUT_PROPS} validate={validateSpy} />,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 const result = inputWrapper.prop('validate')('🧀');
 

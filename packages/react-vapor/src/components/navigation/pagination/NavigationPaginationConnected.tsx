@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVaporState';
@@ -6,7 +5,6 @@ import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {
     INavigationPaginationDispatchProps,
     INavigationPaginationOwnProps,
-    INavigationPaginationProps,
     INavigationPaginationStateProps,
     NavigationPagination,
 } from './NavigationPagination';
@@ -33,7 +31,7 @@ const mapDispatchToProps = (
     onPageClick: (pageNb: number) => dispatch(changePage(ownProps.id, pageNb)),
 });
 
-export const NavigationPaginationConnected: React.ComponentClass<INavigationPaginationProps> = connect(
+export const NavigationPaginationConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

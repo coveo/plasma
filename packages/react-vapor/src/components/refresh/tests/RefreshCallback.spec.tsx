@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
@@ -19,7 +19,9 @@ describe('RefreshCallback tests', () => {
 
         it('should mount and unmount without error', () => {
             expect(() => {
-                const component = shallowWithState(<RefreshCallback id="🆔" callback={() => ''} />, {}).dive();
+                const component = shallowWithState(<RefreshCallback id="🆔" callback={() => ''} />, {})
+                    .dive()
+                    .dive();
                 component.unmount();
             }).not.toThrow();
         });
@@ -29,7 +31,9 @@ describe('RefreshCallback tests', () => {
 
             it('should call renderCount on render', () => {
                 const spy = jest.fn();
-                shallowWithState(<RefreshCallback id="🆔" callback={() => ''} renderCount={spy} />, {}).dive();
+                shallowWithState(<RefreshCallback id="🆔" callback={() => ''} renderCount={spy} />, {})
+                    .dive()
+                    .dive();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
@@ -38,7 +42,9 @@ describe('RefreshCallback tests', () => {
                 const spy = jest.fn();
                 shallowWithState(<RefreshCallback id={'id'} callback={spy} delay={1} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
-                }).dive();
+                })
+                    .dive()
+                    .dive();
                 jest.advanceTimersByTime(1001);
 
                 expect(spy).toHaveBeenCalledTimes(1);
@@ -47,7 +53,9 @@ describe('RefreshCallback tests', () => {
             it('should reset the count in the state and the timer if the status change to "start"', () => {
                 component = shallowWithState(<RefreshCallback id={'id'} callback={() => ''} />, {
                     refreshCallback: {id: RefreshStatus.stopped},
-                }).dive();
+                })
+                    .dive()
+                    .dive();
                 jest.advanceTimersByTime(1001);
 
                 expect(component.state().count).toBe(9);
@@ -63,7 +71,9 @@ describe('RefreshCallback tests', () => {
             it('should stop the time if the state status change for "stop"', () => {
                 component = shallowWithState(<RefreshCallback id={'id'} callback={() => ''} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
-                }).dive();
+                })
+                    .dive()
+                    .dive();
                 jest.advanceTimersByTime(1001);
 
                 expect(component.state().count).toBe(9);
@@ -84,7 +94,9 @@ describe('RefreshCallback tests', () => {
 
                 it('should dispatch a inProgress on mount', () => {
                     store = getStoreMock({});
-                    component = shallowWithStore(<RefreshCallback id={'id'} callback={() => ''} />, store).dive();
+                    component = shallowWithStore(<RefreshCallback id={'id'} callback={() => ''} />, store)
+                        .dive()
+                        .dive();
 
                     expect(store.getActions()).toContainEqual(RefreshCallBackActions.inProgress('id'));
                 });
@@ -94,7 +106,9 @@ describe('RefreshCallback tests', () => {
                         refreshCallback: {id: RefreshStatus.inProgress},
                     });
                     const spy = jest.fn();
-                    shallowWithStore(<RefreshCallback id={'id'} callback={spy} delay={1} />, store).dive();
+                    shallowWithStore(<RefreshCallback id={'id'} callback={spy} delay={1} />, store)
+                        .dive()
+                        .dive();
                     jest.advanceTimersByTime(1001);
 
                     expect(spy).toHaveBeenCalledTimes(1);

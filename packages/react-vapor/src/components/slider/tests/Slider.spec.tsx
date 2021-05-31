@@ -1,15 +1,15 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import {Range} from 'rc-slider';
 import * as React from 'react';
 import {act} from 'react-dom/test-utils';
 import {Provider} from 'react-redux';
 
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {AppendedValueSide, Slider} from '../Slider';
 
 describe('<Slider/>', () => {
-    let store: ReactVaporMockStore;
+    let store: ReturnType<typeof getStoreMock>;
     const middleSliderRequiredProps = {
         id: 'SOME-ID',
         max: 100,

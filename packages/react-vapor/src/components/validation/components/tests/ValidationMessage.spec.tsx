@@ -1,4 +1,4 @@
-import {mountWithStore, shallowWithState} from 'enzyme-redux';
+import {mountWithStore, shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
 import {ValidationActions} from '../../ValidationActions';
@@ -26,7 +26,9 @@ describe('ValidationMessage', () => {
     });
 
     it('should render nothing if the store is empty', () => {
-        const result = shallowWithState(<ValidationMessage {...defaultProps} />, {}).dive();
+        const result = shallowWithState(<ValidationMessage {...defaultProps} />, {})
+            .dive()
+            .dive();
 
         expect(result.text()).toBe('');
     });
@@ -50,7 +52,9 @@ describe('ValidationMessage', () => {
                     ],
                 }),
             },
-        }).dive();
+        })
+            .dive()
+            .dive();
 
         expect(result.text()).toBe('');
     });
@@ -70,7 +74,9 @@ describe('ValidationMessage', () => {
                     },
                 ],
             })
-        ).dive();
+        )
+            .dive()
+            .dive();
 
         expect(result.find('.mod-error').length).toBe(2);
         expect(result.find('.mod-error').first().text()).toContain(nonEmptyMessage);
@@ -91,7 +97,9 @@ describe('ValidationMessage', () => {
                     },
                 ],
             })
-        ).dive();
+        )
+            .dive()
+            .dive();
 
         expect(result.find('.mod-warning').length).toBe(2);
         expect(result.find('.mod-warning').first().text()).toContain(nonEmptyMessage);
@@ -114,7 +122,9 @@ describe('ValidationMessage', () => {
                     },
                 ],
             })
-        ).dive();
+        )
+            .dive()
+            .dive();
 
         expect(result.find('.mod-error').length).toBe(1);
         expect(result.find('.mod-warning').length).toBe(0);
@@ -142,7 +152,9 @@ describe('ValidationMessage', () => {
                         },
                     ],
                 })
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(result.find('.mod-error').length).toBe(0);
             expect(result.find('.mod-warning').length).toBe(0);
@@ -167,7 +179,9 @@ describe('ValidationMessage', () => {
                         },
                     ],
                 })
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(result.find('.mod-error').length).toBe(2);
             expect(result.find('.mod-error').first().text()).toContain(nonEmptyMessage);

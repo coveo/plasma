@@ -1,10 +1,9 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {updateSelectedRows} from './TableActions';
-import {ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow} from './TableHeadingRow';
+import {ITableHeadingRowOwnProps, TableHeadingRow} from './TableHeadingRow';
 import {ITableState} from './TableReducers';
 import {addRow, removeRow, selectRow, toggleRowOpened} from './TableRowActions';
 import {ITableRowState} from './TableRowReducers';
@@ -37,7 +36,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableHeadingRowOwnPr
     onDestroy: () => dispatch(removeRow(ownProps.id)),
 });
 
-export const TableHeadingRowConnected: React.ComponentClass<ITableHeadingRowProps> = connect(
+export const TableHeadingRowConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

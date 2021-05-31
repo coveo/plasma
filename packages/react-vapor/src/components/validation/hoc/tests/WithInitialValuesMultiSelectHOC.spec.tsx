@@ -1,16 +1,22 @@
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
-import {getStoreMock} from '../../../../utils/tests/TestUtils';
+import {render, screen, within} from '@test-utils';
+
+import {getStoreMock, WarningList} from '../../../../utils/tests/TestUtils';
 import {IMultiSelectOwnProps, MultiSelectConnected} from '../../../select/MultiSelectConnected';
-import {ValidationActions} from '../../ValidationActions';
-import {ValidationTypes} from '../../ValidationTypes';
 import {
     IMultiSelectWithInitialValuesOwnProps,
     withInitialValuesMultiSelectHOC,
 } from '../WithInitialValuesMultiSelectHOC';
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
+const MultiSelectWithInitialValuesAndWarnings: React.FC<
+    IMultiSelectOwnProps & IMultiSelectWithInitialValuesOwnProps
+> = (props) => (
+    <>
+        <WarningList id={props.id} />
+        <MultiSelectWithInitialValues {...props} />
+    </>
+);
 
 describe('MultiSelectWithInitialValues', () => {
     const INVALID_INITIAL_VALUE_MOCK_MESSAGE = 'Something went wrong';
@@ -31,30 +37,17 @@ describe('MultiSelectWithInitialValues', () => {
         emptyStore.clearActions();
     });
 
-    it('should trigger the warning state when there is an invalid initial value', () => {
+    it('adds a warning when there is an invalid initial value', () => {
         const INVALID_VALUE = 'X';
 
-        const component = mountWithStore(
-            <MultiSelectWithInitialValues {...defaultProps} initialValues={[INVALID_VALUE]} />,
-            emptyStore
-        );
+        render(<MultiSelectWithInitialValuesAndWarnings {...defaultProps} initialValues={[INVALID_VALUE]} />);
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(emptyStore.getActions()).toContainEqual(
-            ValidationActions.setWarning(
-                defaultProps.id,
-                INVALID_INITIAL_VALUE_MOCK_MESSAGE,
-                ValidationTypes.wrongInitialValue
-            )
-        );
+        expect(screen.getByText(INVALID_INITIAL_VALUE_MOCK_MESSAGE)).toBeVisible();
     });
 
-    it('should set an empty warning state when the initial values are the same as the selected ones', () => {
-        const component = mountWithStore(
-            <MultiSelectWithInitialValues
+    it('sets an empty warning state when the initial values are the same as the selected ones', () => {
+        render(
+            <MultiSelectWithInitialValuesAndWarnings
                 {...defaultProps}
                 items={[
                     {
@@ -63,37 +56,20 @@ describe('MultiSelectWithInitialValues', () => {
                     },
                 ]}
                 initialValues={[ONE_VALUE]}
-            />,
-            emptyStore
+            />
         );
-
-        act(() => {
-            component.mount();
-        });
-
-        expect(emptyStore.getActions()).toContainEqual(
-            ValidationActions.setWarning(defaultProps.id, '', ValidationTypes.wrongInitialValue)
-        );
+        expect(within(screen.getByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
     });
 
-    it('should set an empty warning state when there is no initial value and selected value', () => {
-        const component = mountWithStore(
-            <MultiSelectWithInitialValues {...defaultProps} initialValues={[]} />,
-            emptyStore
-        );
+    it('displays no warning state when there is no initial value and selected value', () => {
+        render(<MultiSelectWithInitialValuesAndWarnings {...defaultProps} initialValues={[]} />);
 
-        act(() => {
-            component.mount();
-        });
-
-        expect(emptyStore.getActions()).toContainEqual(
-            ValidationActions.setWarning(defaultProps.id, '', ValidationTypes.wrongInitialValue)
-        );
+        expect(within(screen.getByRole('list', {name: 'warnings'})).queryByRole('listitem')).not.toBeInTheDocument();
     });
 
-    it('should set the selected state directly in the items', () => {
-        const component = shallowWithStore(
-            <MultiSelectWithInitialValues
+    it('selects the item', () => {
+        render(
+            <MultiSelectWithInitialValuesAndWarnings
                 {...defaultProps}
                 items={[
                     {
@@ -102,33 +78,9 @@ describe('MultiSelectWithInitialValues', () => {
                     },
                 ]}
                 initialValues={[ONE_VALUE]}
-            />,
-            emptyStore
-        ).dive();
-
-        const items = component.find(MultiSelectConnected).prop('items');
-
-        expect(items[0].selected).toBe(true);
-    });
-
-    it('should reset the state when the resetOnUnmount prop is defined', () => {
-        const component = mountWithStore(
-            <MultiSelectWithInitialValues {...defaultProps} initialValues={[]} resetInitialValueWarningOnUnmount />,
-            emptyStore
+            />
         );
 
-        act(() => {
-            component.mount();
-        });
-
-        emptyStore.clearActions();
-
-        act(() => {
-            component.unmount();
-        });
-
-        expect(emptyStore.getActions()).toContainEqual(
-            ValidationActions.clearWarning(defaultProps.id, ValidationTypes.wrongInitialValue)
-        );
+        expect(within(screen.getAllByRole('list')[1]).queryByText(ONE_VALUE)).toBeVisible();
     });
 });

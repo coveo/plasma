@@ -45,5 +45,8 @@ export const withDirtySingleSelectHOC = <T extends ISingleSelectOwnProps>(Compon
         return <Component {...(props as T)} items={itemsWithSelectedInitialValue} />;
     };
 
-    return connect(mapStateToProps, mapDispatchToProps)(WrapperSingleSelect);
+    return connect<StateProps, DispatchProps, T & IWithDirtySingleSelectHOCProps>(
+        mapStateToProps,
+        mapDispatchToProps
+    )(WrapperSingleSelect as any);
 };

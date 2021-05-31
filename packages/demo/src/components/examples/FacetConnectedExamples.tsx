@@ -70,7 +70,12 @@ const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateCon
         <Section level={2} title="Facets connected to store">
             <div style={{width: 400}}>
                 <label className="form-control-label">Facet with the second row selectd</label>
-                <FacetConnected facet={facet} facetRows={facetRows} clearFacet={() => null} toggleFacet={() => null} />
+                <FacetConnected
+                    facet={facet}
+                    facetRows={facetRows}
+                    clearFacet={(): void => null}
+                    toggleFacet={(): void => null}
+                />
             </div>
             <div style={{width: 400}}>
                 <label className="form-control-label">
@@ -79,9 +84,9 @@ const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateCon
                 <FacetConnected
                     facet={facet2}
                     facetRows={facetRows}
-                    clearFacet={() => null}
+                    clearFacet={(): void => null}
                     enableExclusions
-                    toggleFacet={() => null}
+                    toggleFacet={(): void => null}
                 />
             </div>
         </Section>

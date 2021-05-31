@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import ReactModal from 'react-modal';
 
@@ -16,9 +16,12 @@ describe('<ModalCompositeConnected />', () => {
     };
 
     it('should get withReduxState set to true as a prop', () => {
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, getStoreMock());
+        const modalCompositeConnected = shallowWithStore(
+            <ModalCompositeConnected {...basicProps} />,
+            getStoreMock()
+        ).dive();
 
-        expect(modalCompositeConnected.props().withReduxState).toBe(true);
+        expect(modalCompositeConnected.prop('withReduxState')).toBe(true);
     });
 
     it('should have isOpened prop to true if the modal is opened in the store', () => {
@@ -28,28 +31,32 @@ describe('<ModalCompositeConnected />', () => {
                 {id: basicProps.id, isOpened: true},
             ],
         });
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store);
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
 
-        expect(modalCompositeConnected.props().isOpened).toBe(true);
+        expect(modalCompositeConnected.prop('isOpened')).toBe(true);
     });
 
     it('should have the layer prop set to the position of the current modal in opened modal stack + 1', () => {
         const store = getStoreMock({openModals: ['meeeeehhh-I-m-a-sheep', basicProps.id, 'mooooohhh-I-m-a-cow']});
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store);
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
 
-        expect(modalCompositeConnected.props().layer).toBe(2);
+        expect(modalCompositeConnected.prop('layer')).toBe(2);
     });
 
     it('should dispatch an "ADD_MODAL" action when it mounts', () => {
         const store = getStoreMock();
-        shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
+        shallowWithStore(<ModalCompositeConnected {...basicProps} />, store)
+            .dive()
+            .dive();
 
         expect(store.getActions()).toContainEqual(addModal(basicProps.id));
     });
 
     it('should dispatch a "REMOVE_MODAL" action when it unmounts', () => {
         const store = getStoreMock();
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store)
+            .dive()
+            .dive();
 
         modalCompositeConnected.unmount();
 
@@ -58,7 +65,9 @@ describe('<ModalCompositeConnected />', () => {
 
     it('should display a <ModalHeaderConnected /> component', () => {
         const store = getStoreMock();
-        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store).dive();
+        const modalCompositeConnected = shallowWithStore(<ModalCompositeConnected {...basicProps} />, store)
+            .dive()
+            .dive();
 
         expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(1);
     });
@@ -68,7 +77,9 @@ describe('<ModalCompositeConnected />', () => {
         const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithStore(
             <ModalCompositeConnected {...basicProps} isOpened />,
             store
-        ).dive();
+        )
+            .dive()
+            .dive();
 
         modalCompositeConnected.props().onRequestClose(new MouseEvent('fakeevent') as any);
 
@@ -79,7 +90,9 @@ describe('<ModalCompositeConnected />', () => {
         const modalCompositeConnected: ShallowWrapper<ReactModal.Props> = shallowWithState(
             <ModalCompositeConnected id="id" isOpened />,
             {}
-        ).dive();
+        )
+            .dive()
+            .dive();
 
         expect(modalCompositeConnected.find(ModalHeaderConnected).length).toBe(0);
         expect(modalCompositeConnected.find(ModalHeader).length).toBe(0);
@@ -88,6 +101,7 @@ describe('<ModalCompositeConnected />', () => {
     it('should dispatch a removeModal actions on unmount', () => {
         const store = getStoreMock();
         shallowWithStore(<ModalCompositeConnected id="id" isOpened />, store)
+            .dive()
             .dive()
             .unmount();
 

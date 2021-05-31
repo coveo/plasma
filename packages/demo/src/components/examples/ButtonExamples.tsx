@@ -235,35 +235,35 @@ const StatefulCheckboxesForSaveButtonDisconnect: React.FunctionComponent<ReturnT
     <LabeledInput label="Toggles to test the Save Button">
         <CheckboxConnected
             id="saveCheckboxDirty"
-            handleOnClick={(checked) => setDirty(FIRST_INPUT_ID, !checked)}
+            handleOnClick={(checked: boolean) => setDirty(FIRST_INPUT_ID, !checked)}
             clearSides
         >
             <Label>Click on me to set the component as dirty</Label>
         </CheckboxConnected>
         <CheckboxConnected
             id="saveCheckboxWarning"
-            handleOnClick={(checked) => setWarning(FIRST_INPUT_ID, !checked ? 'WARNING' : '')}
+            handleOnClick={(checked: boolean) => setWarning(FIRST_INPUT_ID, !checked ? 'WARNING' : '')}
             clearSides
         >
             <Label>Click on me to set a warning</Label>
         </CheckboxConnected>
         <CheckboxConnected
             id="saveCheckboxSecondWarning"
-            handleOnClick={(checked) => setWarning(SECOND_INPUT_ID, !checked ? 'SECOND WARNING' : '')}
+            handleOnClick={(checked: boolean) => setWarning(SECOND_INPUT_ID, !checked ? 'SECOND WARNING' : '')}
             clearSides
         >
             <Label>Click on me to set a second warning (activate both to change the message)</Label>
         </CheckboxConnected>
         <CheckboxConnected
             id="saveCheckboxError"
-            handleOnClick={(checked) => setError(FIRST_INPUT_ID, !checked ? 'ERROR' : '')}
+            handleOnClick={(checked: boolean) => setError(FIRST_INPUT_ID, !checked ? 'ERROR' : '')}
             clearSides
         >
             <Label>Click on me to set an error</Label>
         </CheckboxConnected>
         <CheckboxConnected
             id="saveCheckboxSecondError"
-            handleOnClick={(checked) => setError(SECOND_INPUT_ID, !checked ? 'SECOND ERROR' : '')}
+            handleOnClick={(checked: boolean) => setError(SECOND_INPUT_ID, !checked ? 'SECOND ERROR' : '')}
             clearSides
         >
             <Label>Click on me to set a second error (activate both to change the message)</Label>

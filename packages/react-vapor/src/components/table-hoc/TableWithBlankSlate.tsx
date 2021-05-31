@@ -57,5 +57,7 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
         return componentToReturn;
     };
 
-    return connect(mapStateToProps)(TableWithBlankSlate);
+    return connect<ReturnType<typeof mapStateToProps>, ITableHOCOwnProps & ITableWithBlankSlateProps>(mapStateToProps)(
+        TableWithBlankSlate as any
+    );
 };

@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -15,7 +14,6 @@ import {
     DatePickerDropdown,
     IDatePickerDropdownDispatchProps,
     IDatePickerDropdownOwnProps,
-    IDatePickerDropdownProps,
     IDatePickerDropdownStateProps,
 } from './DatePickerDropdown';
 import {IDatePickerState} from './DatePickerReducers';
@@ -81,7 +79,7 @@ const mapDispatchToProps = (
     },
 });
 
-export const DatePickerDropdownConnected: React.ComponentClass<IDatePickerDropdownProps> = connect(
+export const DatePickerDropdownConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

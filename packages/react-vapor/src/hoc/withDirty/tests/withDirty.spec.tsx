@@ -1,4 +1,4 @@
-import {mountWithStore} from 'enzyme-redux';
+import {mountWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {Input} from '../../../components/input/Input';

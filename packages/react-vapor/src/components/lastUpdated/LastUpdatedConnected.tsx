@@ -1,15 +1,8 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    ILastUpdatedDispatchProps,
-    ILastUpdatedOwnProps,
-    ILastUpdatedProps,
-    ILastUpdatedStateProps,
-    LastUpdated,
-} from './LastUpdated';
+import {ILastUpdatedDispatchProps, ILastUpdatedOwnProps, ILastUpdatedStateProps, LastUpdated} from './LastUpdated';
 import {addLastUpdated, removeLastUpdated} from './LastUpdatedActions';
 import {ILastUpdatedState} from './LastUpdatedReducers';
 
@@ -29,8 +22,4 @@ const mapDispatchToProps = (
     onDestroy: () => dispatch(removeLastUpdated(ownProps.id)),
 });
 
-export const LastUpdatedConnected: React.ComponentClass<ILastUpdatedProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(LastUpdated);
+export const LastUpdatedConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(LastUpdated);

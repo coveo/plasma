@@ -60,5 +60,8 @@ export const withInitialValuesMultiSelectHOC = <T extends IMultiSelectOwnProps>(
         return <Component {...(props as T)} items={newItems} />;
     };
 
-    return connect(null, mapDispatchToProps)(WrappedMultiSelect);
+    return connect<null, DispatchProps, T & IMultiSelectWithInitialValuesOwnProps>(
+        null,
+        mapDispatchToProps
+    )(WrappedMultiSelect as any);
 };

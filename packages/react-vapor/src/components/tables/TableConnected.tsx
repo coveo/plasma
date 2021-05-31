@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
@@ -15,7 +14,7 @@ import {IDropdownSearchState} from '../dropdownSearch/DropdownSearchReducers';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
 import {IPaginationState} from '../navigation/pagination/NavigationPaginationReducers';
 import {IPerPageState} from '../navigation/perPage/NavigationPerPageReducers';
-import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, ITableProps, Table} from './Table';
+import {IData, ITableCompositeStateProps, ITableDispatchProps, ITableOwnProps, Table} from './Table';
 import {addTable, removeTable} from './TableActions';
 import {DEFAULT_TABLE_DATA, TableChildComponent, TABLE_PREDICATE_DEFAULT_VALUE} from './TableConstants';
 import {defaultTableStateModifierThunk} from './TableDataModifier';
@@ -141,11 +140,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITableOwnProps): ITab
     },
 });
 
-export const TableConnected: React.ComponentClass<ITableProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Table);
+export const TableConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Table);
 
 export const TableConnectedUtils = {
     getTableCompositeState,

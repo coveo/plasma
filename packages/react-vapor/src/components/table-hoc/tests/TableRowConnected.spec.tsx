@@ -1,8 +1,10 @@
 import {ShallowWrapper} from 'enzyme';
-import {mountWithStore, shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
-import {HOCTableRowState} from '..';
+import {screen, render} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 
+import {HOCTableRowState} from '..';
 import {UrlUtils} from '../../../utils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
@@ -36,17 +38,25 @@ describe('Table HOC', () => {
         });
 
         it('should not throw', () => {
-            expect(() => shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)).not.toThrow();
+            expect(() =>
+                shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)
+                    .dive()
+                    .dive()
+            ).not.toThrow();
             expect(() =>
                 shallowWithStore(
                     <TableRowConnected id="b" tableId="c" actions={[{enabled: false, name: 'test'}]} />,
                     store
                 )
+                    .dive()
+                    .dive()
             ).not.toThrow();
         });
 
         it('should render a tr', () => {
-            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('tr').exists()).toBe(true);
         });
@@ -61,26 +71,34 @@ describe('Table HOC', () => {
                     },
                 ],
             });
-            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('tr').hasClass('selected')).toBe(true);
         });
 
         it('should have the class "row-disabled" if the row has disabled prop to true', () => {
-            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" disabled />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" disabled />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('tr').hasClass('row-disabled')).toBe(true);
         });
 
         it('should have the class "no-hover" if the row has actions prop empty', () => {
-            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('tr').hasClass('no-hover')).toBe(true);
         });
 
         it('should not have the class "no-hover" if the row has actions prop', () => {
             const actions = [{name: 'name', enabled: true}];
-            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" actions={actions} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" actions={actions} />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('tr').hasClass('no-hover')).not.toBe(true);
         });
@@ -95,7 +113,9 @@ describe('Table HOC', () => {
                     },
                 ],
             });
-            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected id="a" tableId="b" />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('tr').hasClass('selected')).toBe(false);
         });
@@ -103,7 +123,9 @@ describe('Table HOC', () => {
         it('should dispatch a TableHOCRowActions.add on componentDidMount', () => {
             const expectedAction = TableHOCRowActions.add(defaultProps.id, defaultProps.tableId);
 
-            shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
+            shallowWithStore(<TableRowConnected {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -115,7 +137,9 @@ describe('Table HOC', () => {
                 opened: false,
             } as HOCTableRowState);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store)
+                .dive()
+                .dive();
             wrapper.unmount();
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -125,7 +149,9 @@ describe('Table HOC', () => {
             const actions = [{name: 'name', enabled: false}];
             const expectedAction = addActionsToActionBar(defaultProps.tableId, actions);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store)
+                .dive()
+                .dive();
             wrapper.find('tr').simulate('click', {});
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -137,7 +163,9 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(
                 <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
             wrapper.find('tr').simulate('click', {});
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -152,7 +180,9 @@ describe('Table HOC', () => {
                 opened: false,
             } as HOCTableRowState);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store)
+                .dive()
+                .dive();
             wrapper.setProps({actions: newActions} as any);
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -167,7 +197,9 @@ describe('Table HOC', () => {
                 opened: false,
             } as HOCTableRowState);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} actions={actions} />, store)
+                .dive()
+                .dive();
             wrapper.setProps({actions: newActions} as any);
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -176,28 +208,28 @@ describe('Table HOC', () => {
         it('should not dispatch a TableHOCRowActions.select action on click when actions is empty', () => {
             const actionNotExpected = TableHOCRowActions.select(defaultProps.id, false);
 
-            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableRowConnected {...defaultProps} />, store)
+                .dive()
+                .dive();
             wrapper.find('tr').simulate('click', {});
 
             expect(store.getActions()).not.toContain(actionNotExpected);
         });
 
-        it('should not dispatch a TableHOCRowActions.select action on click when clicking inside an underlying dropdown', () => {
-            const actionNotExpected = TableHOCRowActions.select(defaultProps.id, false);
-
+        it('does not select the row when clicking inside an underlying dropdown', () => {
             // We must mount the component here because simulated events don't propagate throughout ShallowWrappers
-            const wrapper = mountWithStore(
+            render(
                 <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]}>
                     <td>
-                        <div className="dropdown"></div>
+                        <div role="button" className="dropdown">
+                            name
+                        </div>
                     </td>
-                </TableRowConnected>,
-                store
+                </TableRowConnected>
             );
 
-            wrapper.find('.dropdown').simulate('click');
-
-            expect(store.getActions()).not.toContain(actionNotExpected);
+            userEvent.click(screen.getByRole('button', {name: 'name'}));
+            expect(screen.getByRole('row')).toHaveAttribute('aria-selected', 'false');
         });
 
         it('should dispatch an TableHOCRowActions.select on click and handle multi-select', () => {
@@ -207,7 +239,9 @@ describe('Table HOC', () => {
             const wrapper = shallowWithStore(
                 <TableRowConnected {...defaultProps} actions={[{enabled: true, name: 'action'}]} isMultiselect />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             wrapper.find('tr').simulate('click', {ctrlKey: true});
 
@@ -228,7 +262,9 @@ describe('Table HOC', () => {
                         actions={[{enabled: true, name: 'action', callOnDoubleClick: true, trigger: triggerActionSpy}]}
                     />,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 wrapper.find('tr').simulate('doubleclick');
 
@@ -252,7 +288,9 @@ describe('Table HOC', () => {
                         ]}
                     />,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
                 wrapper.find('tr').simulate('doubleclick');
 
                 expect(triggerActionSpy).not.toHaveBeenCalled();
@@ -274,7 +312,9 @@ describe('Table HOC', () => {
                         ]}
                     />,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
                 wrapper.find('tr').simulate('doubleclick');
 
                 expect(triggerActionSpy).not.toHaveBeenCalled();
@@ -314,7 +354,9 @@ describe('Table HOC', () => {
                         {false}
                     </TableRowConnected>,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
             };
 
             it('should render an additional row for the collapsible content', () => {
@@ -327,9 +369,24 @@ describe('Table HOC', () => {
             });
 
             it('should render a single cell in the collapsible row that spans accross all the columns +1 for the toggle', () => {
-                shallowComponent();
+                render(
+                    <TableRowConnected
+                        id={defaultProps.id}
+                        tableId={defaultProps.tableId}
+                        collapsible={{
+                            content: collapsibleContent,
+                        }}
+                    >
+                        <td>Column 1</td>
+                        <td>Column 2</td>
+                        <td>Column 3</td>
+                        {null}
+                        {[]}
+                        {false}
+                    </TableRowConnected>
+                );
 
-                expect(wrapper.find('tr.collapsible-row td').props().colSpan).toBe(3 + 1);
+                expect(document.querySelector('tr.collapsible-row td')).toHaveAttribute('colSpan', '4');
             });
 
             it('should render the collapsible content node inside the collapsible row', () => {
@@ -419,7 +476,9 @@ describe('Table HOC', () => {
                     }}
                 />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -445,7 +504,9 @@ describe('Table HOC', () => {
                     collapsible={{expandOnMount: true}}
                 />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(store.getActions()).not.toContain(expectedAction);
 
@@ -476,7 +537,9 @@ describe('Table HOC', () => {
             const row = shallowWithStore(
                 <TableRowConnected id={defaultProps.id} tableId={defaultProps.tableId} />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             expect(store.getActions()).not.toContain(actionNotExpected);
 
@@ -512,7 +575,9 @@ describe('Table HOC', () => {
                     }}
                 />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             row.find(CollapsibleToggle).simulate('click', {
                 preventDefault: jest.fn(),
@@ -545,7 +610,9 @@ describe('Table HOC', () => {
                     }}
                 />,
                 store
-            ).dive();
+            )
+                .dive()
+                .dive();
 
             row.find(CollapsibleToggle).simulate('click', {
                 preventDefault: jest.fn(),

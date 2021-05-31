@@ -60,4 +60,11 @@ class ColorPickerDisconnected extends React.Component<
     }
 }
 
-export const ColorPicker = connect(mapStateToProps, mapDispatchToProps)(ColorPickerDisconnected);
+export const ColorPicker = connect<
+    ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps>,
+    IColorPickerProps
+>(
+    mapStateToProps,
+    mapDispatchToProps
+)(ColorPickerDisconnected as any);

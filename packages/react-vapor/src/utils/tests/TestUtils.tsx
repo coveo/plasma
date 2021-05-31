@@ -2,15 +2,18 @@ import * as React from 'react';
 import {DragDropContext} from 'react-dnd';
 import TestBackend from 'react-dnd-test-backend';
 import * as Redux from 'redux';
-import createMockStore, {MockStoreEnhanced} from 'redux-mock-store';
+import createMockStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import * as _ from 'underscore';
+import {useSelector} from 'react-redux';
 
+import {createStructuredSelector} from 'reselect';
 import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {ReactVaporReducers} from '../../ReactVaporReducers';
 import {IReactVaporState} from '../../ReactVaporState';
 import {CommonActions, IDispatch} from '../ReduxUtils';
+import {ValidationSelectors} from '../../components';
 
 export interface IExampleRowData {
     city: string;
@@ -89,6 +92,29 @@ export class TestUtils {
     }
 }
 
+export const ErrorList: React.FC<{id: string}> = ({id}) => {
+    const errors = useSelector(ValidationSelectors.getErrors(id));
+    const errorList = errors.map(({value}) => <li key={value}>{value}</li>);
+
+    return <ul aria-label="errors">{errorList}</ul>;
+};
+
+export const WarningList: React.FC<{id: string}> = ({id}) => {
+    const warnings = useSelector(ValidationSelectors.getWarnings(id));
+    const warningList = warnings.map(({value}) => <li key={value}>{value}</li>);
+
+    return <ul aria-label="warnings">{warningList}</ul>;
+};
+
+export const IsDirtyIndicator: React.FC<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
+    const {isDirty} = useSelector(
+        createStructuredSelector({
+            isDirty: ValidationSelectors.isDirty([id]),
+        })
+    );
+    return isDirty && <div>{label}</div>;
+};
+
 export const defaultMapStateToProps = () => ({});
 
 export const defaultSvgProps: ISvgProps = {
@@ -120,8 +146,8 @@ export const withSelectedValues = (id: string, ...values: string[]) => (state: I
     ],
 });
 
-export type ReactVaporMockStore = MockStoreEnhanced<IReactVaporState, IDispatch<IReactVaporState>>;
-export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch<IReactVaporState>>([thunk]);
+export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch>([thunk]);
+export type ReactVaporMockStore = ReturnType<typeof getStoreMock>;
 export const composeMockStore = (
     ...functions: Array<(state: Partial<IReactVaporState>) => Partial<IReactVaporState>>
 ) => getStoreMock(_.compose(...functions) as IReactVaporState);

@@ -1,10 +1,10 @@
-import {mount, ReactWrapper} from 'enzyme';
+import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -151,13 +151,11 @@ describe('<InputConnected />', () => {
     describe('onChange', () => {
         it('should call changeDirtyState if set as props', () => {
             const changeDirtyStateSpy = jest.fn();
-            const wrapperInputConnected = shallowWithState(<InputConnected />, {});
+            const wrapperInputConnected: ShallowWrapper<IInputProps> = shallowWithState(
+                <InputConnected changeDirtyState={changeDirtyStateSpy} />,
+                {}
+            ).dive();
 
-            wrapperInputConnected.props().onChange();
-
-            expect(changeDirtyStateSpy).toHaveBeenCalledTimes(0);
-
-            wrapperInputConnected.setProps({changeDirtyState: changeDirtyStateSpy});
             wrapperInputConnected.props().onChange();
 
             expect(changeDirtyStateSpy).toHaveBeenCalledTimes(1);

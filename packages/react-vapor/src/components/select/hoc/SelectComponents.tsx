@@ -7,8 +7,12 @@ import {ISelectWithFilterOwnProps, selectWithFilter} from './SelectWithFilter';
 import {ISelectWithPredicateOwnProps, selectWithPredicate} from './SelectWithPredicate';
 
 // Single Select
-export const SingleSelectWithFilter = selectWithFilter(SingleSelectConnected);
-export const SingleSelectWithPredicate = selectWithPredicate(SingleSelectConnected);
+export const SingleSelectWithFilter: React.ComponentType<
+    ISelectWithFilterOwnProps & ISingleSelectOwnProps
+> = selectWithFilter(SingleSelectConnected);
+export const SingleSelectWithPredicate: React.ComponentType<
+    ISelectWithPredicateOwnProps & ISingleSelectOwnProps
+> = selectWithPredicate(SingleSelectConnected);
 export const SingleSelectWithPredicateAndFilter: React.ComponentType<
     ISingleSelectOwnProps & ISelectWithFilterOwnProps & ISelectWithPredicateOwnProps
 > = _.compose(selectWithPredicate, selectWithFilter)(SingleSelectConnected);

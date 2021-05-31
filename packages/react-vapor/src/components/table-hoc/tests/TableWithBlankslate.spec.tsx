@@ -1,5 +1,5 @@
 import {shallow} from 'enzyme';
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -21,20 +21,28 @@ describe('TableWithBlankSlate', () => {
 
     it('should not throw', () => {
         expect(() => {
-            shallowWithState(<TableWithBlankSlate {...basicProps} />, {});
-            shallowWithState(<TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} />, {});
+            shallowWithState(<TableWithBlankSlate {...basicProps} />, {})
+                .dive()
+                .dive();
+            shallowWithState(<TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} />, {})
+                .dive()
+                .dive();
         }).not.toThrow();
     });
 
     it('should render a TableHOC', () => {
-        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} />, {}).dive();
+        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} />, {})
+            .dive()
+            .dive();
 
         expect(wrapper.find(TableHOC).exists()).toBe(true);
     });
 
     it('should override the TableHOC renderBody method when the data is empty and "renderBlankSlateOnly" is false', () => {
         const renderSpy = jest.fn();
-        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {}).dive();
+        const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {})
+            .dive()
+            .dive();
         const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
         tableRenderBody();
 
@@ -45,6 +53,7 @@ describe('TableWithBlankSlate', () => {
         const renderedBody = shallow(
             <div>
                 {shallowWithState(<TableWithBlankSlate {...basicProps} />, {})
+                    .dive()
                     .dive()
                     .prop<() => React.ReactNode>('renderBody')()}
             </div>
@@ -59,6 +68,7 @@ describe('TableWithBlankSlate', () => {
             <div>
                 {shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlate={<MyCustomBlankslate />} />, {})
                     .dive()
+                    .dive()
                     .prop<() => React.ReactNode>('renderBody')()}
             </div>
         ).children();
@@ -71,7 +81,9 @@ describe('TableWithBlankSlate', () => {
         const wrapper = shallowWithState(
             <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
             {}
-        ).dive();
+        )
+            .dive()
+            .dive();
         const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
         tableRenderBody();
 
@@ -80,7 +92,9 @@ describe('TableWithBlankSlate', () => {
 
     it('should update the renderBody when the data is empty', () => {
         const renderSpy = jest.fn();
-        shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {}).dive();
+        shallowWithState(<TableWithBlankSlate {...basicProps} renderBody={renderSpy} />, {})
+            .dive()
+            .dive();
 
         expect(renderSpy).toHaveBeenCalledTimes(0);
     });
@@ -88,6 +102,7 @@ describe('TableWithBlankSlate', () => {
     it('should not render a BlankSlate when the data is null', () => {
         const renderSpy = jest.fn();
         shallowWithState(<TableWithBlankSlate {...basicProps} data={null} renderBody={renderSpy} />, {})
+            .dive()
             .dive()
             .dive();
 
@@ -101,7 +116,9 @@ describe('TableWithBlankSlate', () => {
             tableWithBlankSlate({title: 'Second'})
         )(TableHOC);
 
-        const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...basicProps} />, {}).dive();
+        const wrapper = shallowWithState(<TableWithDoubleBlankSlate {...basicProps} />, {})
+            .dive()
+            .dive();
 
         expect(wrapper.prop<() => JSX.Element>('renderBody')().props.title).toBe(expectedTitle);
     });
@@ -115,24 +132,27 @@ describe('TableWithBlankSlate', () => {
 
         it('should not render anything else than the blankslate if the table is truely empty', () => {
             getIsEmptySelectorSpy.mockReturnValue(true);
-            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
+            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.type()).toBe(BlankSlateWithTable);
         });
 
         it('should render the blank slate in the table body if the table is not truely empty', () => {
             getIsEmptySelectorSpy.mockReturnValue(false);
-            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {}).dive();
+            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.type()).toBe(BlankSlateWithTable);
         });
 
         it('does not render the blank slate in the table body when the table is loading', () => {
             getIsEmptySelectorSpy.mockReturnValue(false);
-            const wrapper = shallowWithState(
-                <TableWithBlankSlate {...basicProps} renderBlankSlateOnly isLoading />,
-                {}
-            ).dive();
+            const wrapper = shallowWithState(<TableWithBlankSlate {...basicProps} renderBlankSlateOnly isLoading />, {})
+                .dive()
+                .dive();
 
             expect(wrapper.type()).toBe(TableHOC);
         });
@@ -147,7 +167,9 @@ describe('TableWithBlankSlate', () => {
             const wrapper = shallowWithState(
                 <TableWithBlankSlate {...basicProps} data={[{value: 'a'}]} renderBody={renderSpy} />,
                 {}
-            ).dive();
+            )
+                .dive()
+                .dive();
             const tableRenderBody = wrapper.find(TableHOC).prop('renderBody') as () => any;
             tableRenderBody();
 

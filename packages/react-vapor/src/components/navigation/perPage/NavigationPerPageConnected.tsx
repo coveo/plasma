@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
@@ -9,7 +8,6 @@ import {IPaginationState} from '../pagination/NavigationPaginationReducers';
 import {
     INavigationPerPageDispatchProps,
     INavigationPerPageOwnProps,
-    INavigationPerPageProps,
     INavigationPerPageStateProps,
     NavigationPerPage,
     PER_PAGE_NUMBERS,
@@ -47,7 +45,7 @@ const mapDispatchToProps = (
     },
 });
 
-export const NavigationPerPageConnected: React.ComponentClass<INavigationPerPageProps> = connect(
+export const NavigationPerPageConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

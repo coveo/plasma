@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -18,7 +17,6 @@ import {
     DatesSelection,
     IDatesSelectionDispatchProps,
     IDatesSelectionOwnProps,
-    IDatesSelectionProps,
     IDatesSelectionStateProps,
 } from './DatesSelection';
 
@@ -75,7 +73,7 @@ const mapDispatchToProps = (
     },
 });
 
-export const DatesSelectionConnected: React.ComponentClass<IDatesSelectionProps> = connect(
+export const DatesSelectionConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

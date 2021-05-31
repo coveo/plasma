@@ -26,5 +26,5 @@ export const withDirtyStickyFooterHOC = <T extends IStickyFooterProps>(
         ...props
     }) => <Component {...(props as any)} isOpened={isDirty || isOpened} />;
 
-    return connect(mapStateToProps)(WrappedStickyFooter);
+    return connect<StateProps, null, React.PropsWithChildren<NewOwnProps>>(mapStateToProps)(WrappedStickyFooter as any);
 };

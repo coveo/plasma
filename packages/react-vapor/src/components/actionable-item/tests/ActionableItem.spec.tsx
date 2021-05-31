@@ -1,8 +1,9 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+import {render, screen} from '@test-utils';
 
 import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -38,7 +39,8 @@ describe('ActionableItem', () => {
                 <ActionableItem {...basicProps} {...props}>
                     {children}
                 </ActionableItem>,
-                store
+                store,
+                false
             );
         };
 
@@ -54,9 +56,9 @@ describe('ActionableItem', () => {
 
             it('should render the children in the actionable-item-content container', () => {
                 const children = <div className="children">hello world</div>;
-                shallowWithProps(undefined, children);
+                render(<ActionableItem {...basicProps}>{children}</ActionableItem>);
 
-                expect(actionableItem.find('.actionable-item-content').find('.children').length).toBe(1);
+                expect(screen.getByText('hello world')).toBeVisible();
             });
 
             it('should render the more-append svg in the Drop', () => {

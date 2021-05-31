@@ -80,4 +80,8 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
     );
 };
 
-export const CollapsibleContainerConnected = connect(mapStateToProps)(CollapsibleContainerDisconnected);
+export const CollapsibleContainerConnected = connect<
+    ReturnType<typeof mapStateToProps>,
+    null,
+    React.PropsWithChildren<ICollapsibleContainerOwnProps>
+>(mapStateToProps)(CollapsibleContainerDisconnected);

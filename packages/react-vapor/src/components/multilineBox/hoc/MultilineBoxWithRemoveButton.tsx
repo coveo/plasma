@@ -46,7 +46,7 @@ export const defaultMultilineBoxRemoveButtonClasses: string = 'center-align mod-
 
 export const multilineBoxWithRemoveButton = (
     supplier: ConfigSupplier<IMultilineBoxWithRemoveButtonSupplierProps> = {containerNode: defaultContainerNode}
-) => (Component: MultilineBoxWithRemoveButtonComponent): MultilineBoxWithRemoveButtonComponent => {
+) => (Component: MultilineBoxWithRemoveButtonComponent) => {
     const mapDispatchToProps = (dispatch: IDispatch, ownProps: IMultilineBoxOwnProps) => ({
         removeBox: (id: string) => dispatch(removeValueStringList(ownProps.id, id)),
     });
@@ -112,5 +112,8 @@ export const multilineBoxWithRemoveButton = (
         }
     }
 
-    return connect(undefined, mapDispatchToProps)(MultilineBoxWithRemoveButton);
+    return connect<null, ReturnType<typeof mapDispatchToProps>, IMultilineBoxWithRemoveButtonProps<any>>(
+        undefined,
+        mapDispatchToProps
+    )(MultilineBoxWithRemoveButton as any);
 };

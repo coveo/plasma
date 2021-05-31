@@ -7,12 +7,13 @@ import {IDispatch} from '../../utils/ReduxUtils';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
+import {WithServerSideProcessingProps} from '../../hoc';
 
 export interface ITableWithActionsProps extends ITableHOCOwnProps {}
 
 type TableWithActionsComponent = React.ComponentClass<ITableWithActionsProps>;
 
-export const tableWithActions = () => (Component: TableWithActionsComponent): TableWithActionsComponent => {
+export const tableWithActions = () => (Component: TableWithActionsComponent) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => ({
         hasSelectedRow: TableSelectors.getSelectedRows(state, ownProps).length > 0,
     });
@@ -52,5 +53,12 @@ export const tableWithActions = () => (Component: TableWithActionsComponent): Ta
         };
     }
 
-    return connect(mapStateToProps, mapDispatchToProps)(TableWithActions);
+    return connect<
+        ReturnType<typeof mapStateToProps>,
+        ReturnType<typeof mapDispatchToProps>,
+        React.PropsWithChildren<ITableHOCOwnProps & WithServerSideProcessingProps>
+    >(
+        mapStateToProps,
+        mapDispatchToProps
+    )(TableWithActions as any);
 };

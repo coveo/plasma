@@ -1,8 +1,7 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import {IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {ILoadingDispatchProps, ILoadingOwnProps, ILoadingProps, Loading} from './Loading';
+import {ILoadingDispatchProps, ILoadingOwnProps, Loading} from './Loading';
 import {addLoading, removeLoading} from './LoadingActions';
 
 const mapStateToProps = () => ({});
@@ -15,8 +14,4 @@ const mapDispatchToProps = (
     onDestroy: () => dispatch(removeLoading(ownProps.id)),
 });
 
-export const LoadingConnected: React.ComponentClass<ILoadingProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Loading);
+export const LoadingConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Loading);

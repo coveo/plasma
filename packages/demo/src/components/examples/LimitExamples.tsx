@@ -4,7 +4,7 @@ import {Limit} from 'react-vapor';
 const title = 'Limit example';
 const usage = 42;
 const usageNearLimit = 80;
-const usageEqualToLimit = Limit.defaultProps.limit;
+const usageEqualToLimit = 100;
 const customLimit = 130;
 const customLimitTitle = 'Throttling limit';
 

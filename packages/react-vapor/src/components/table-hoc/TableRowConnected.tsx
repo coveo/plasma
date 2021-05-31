@@ -191,6 +191,7 @@ class TableRowConnected extends React.PureComponent<
                     })}
                     onClick={this.handleClick}
                     onDoubleClick={this.handleDoubleClick}
+                    aria-selected={this.props.selected}
                 >
                     {this.props.children}
                     {collapsibleRowToggle}

@@ -1,9 +1,11 @@
 import {shallow, ShallowWrapper} from 'enzyme';
-import {shallowWithState} from 'enzyme-redux';
+import {shallowWithState} from '@helpers/enzyme-redux';
 import moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {render, screen} from '@test-utils';
 
+import userEvent from '@testing-library/user-event';
 import {DateUtils} from '../../../utils/DateUtils';
 import {Button} from '../../button/Button';
 import {Drop} from '../../drop/Drop';
@@ -106,78 +108,33 @@ describe('Date picker', () => {
         });
 
         it('should disable the dropdown button when readonly props is truthy', () => {
-            shallowComponent({
-                ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
-                readonly: true,
-            });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-            const button = dropContentWrapper.find('button.dropdown-toggle');
-
-            expect(datePickerDropdownInstance.props.readonly).toBeTruthy();
-            expect(button.props().disabled).toBeTruthy();
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} readonly />);
+            expect(screen.getByRole('button')).toBeDisabled();
         });
 
         it('should have the class "open" if the isOpened prop is set to true', () => {
-            shallowComponent({
-                isOpened: true,
-            });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} isOpened />);
 
-            expect(dropContentWrapper.find('.dropdown-wrapper').hasClass('open')).toBe(true);
+            expect(document.querySelector('.dropdown-wrapper.open')).toBeVisible();
         });
 
         it('should not have the class "open" if the isOpened prop is set to false', () => {
-            shallowComponent({
-                isOpened: false,
-            });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} isOpened={false} />);
 
-            expect(dropContentWrapper.find('.dropdown-wrapper').hasClass('open')).toBe(false);
+            expect(document.querySelector('.dropdown-wrapper')).not.toHaveClass('open');
         });
 
         it('should display the label passed as a prop or use the default one', () => {
             const expectedLabel: string = 'This is the date picker dropdown label';
-            shallowComponent({label: expectedLabel});
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} label={expectedLabel} />);
 
-            expect(dropContentWrapper.contains(expectedLabel)).toBe(true);
+            expect(screen.getByText(expectedLabel)).toBeVisible();
         });
 
         it('should display the default label', () => {
-            shallowComponent({});
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} />);
 
-            expect(dropContentWrapper.contains(DEFAULT_DATE_PICKER_DROPDOWN_LABEL)).toBe(true);
+            expect(screen.getByText(DEFAULT_DATE_PICKER_DROPDOWN_LABEL)).toBeVisible();
         });
 
         it('should display the dates from the date picker if the datePicker prop is set', () => {
@@ -199,27 +156,15 @@ describe('Date picker', () => {
                 simple: false,
             };
 
-            const propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                datePicker: newDatePicker,
-            });
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} datePicker={newDatePicker} />);
 
-            shallowComponent(propsWithDatePicker);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain(formattedNow);
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain(formattedThen);
+            expect(screen.getByText(new RegExp(formattedThen))).toBeVisible();
+            expect(screen.getByText(new RegExp(formattedNow))).toBeVisible();
         });
 
         it('should display the dates from the date picker if the datePicker prop is set in readonly', () => {
             const formattedNow: string = DateUtils.getSimpleDate(now);
             const formattedThen: string = DateUtils.getSimpleDate(then);
-            const toLabel: string = 'à';
             const newDatePicker = {
                 id: 'id',
                 calendarId: 'calendarId',
@@ -236,25 +181,10 @@ describe('Date picker', () => {
                 simple: false,
             };
 
-            const propsWithDatePicker: IDatePickerDropdownProps = {
-                datePicker: newDatePicker,
-                toLabel,
-                ...DATE_PICKER_DROPDOWN_BASIC_PROPS,
-                readonly: true,
-            };
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} datePicker={newDatePicker} readonly />);
 
-            shallowComponent(propsWithDatePicker);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-
-            expect(dropContentWrapper.html()).toContain(formattedNow);
-            expect(dropContentWrapper.html()).toContain(formattedThen);
-            expect(dropContentWrapper.html()).toContain(toLabel);
+            expect(screen.getByText(new RegExp(formattedThen))).toBeVisible();
+            expect(screen.getByText(new RegExp(formattedNow))).toBeVisible();
         });
 
         it('should display the date from the date picker with time on the label if the first dateSelectionBox is with time', () => {
@@ -283,18 +213,16 @@ describe('Date picker', () => {
                 },
             };
 
-            shallowComponent(newProps);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
+            render(
+                <DatePickerDropdown
+                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
+                    datesSelectionBoxes={newProps.datesSelectionBoxes}
+                    datePicker={newProps.datePicker}
+                    readonly
+                />
             );
 
-            expect(dropContentWrapper.find('.dropdown-selected-value').html()).toContain(
-                DateUtils.getDateWithTimeString(rightNow)
-            );
+            expect(screen.getByText(new RegExp(DateUtils.getDateWithTimeString(rightNow)))).toBeVisible();
         });
 
         it('should display the label props if date picker is clearable and nothing is selected', () => {
@@ -313,21 +241,16 @@ describe('Date picker', () => {
                 inputUpperLimit: null,
                 simple: false,
             };
-            const newProps: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                datePicker: newDatePicker,
-                label: 'EMPTY_LABEL',
-                isClearable: true,
-            });
-            shallowComponent(newProps);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
+            render(
+                <DatePickerDropdown
+                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
+                    datePicker={newDatePicker}
+                    label="EMPTY_LABEL"
+                    isClearable
+                />
             );
 
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toContain('EMPTY_LABEL');
+            expect(screen.getByText('EMPTY_LABEL')).toBeVisible();
         });
 
         it('should not display the to-label and the upperlimit if it is equal to the lower limit', () => {
@@ -349,39 +272,24 @@ describe('Date picker', () => {
                 inputUpperLimit: end,
                 simple: false,
             };
-            const propsWithDatePicker: IDatePickerDropdownProps = _.extend({}, DATE_PICKER_DROPDOWN_BASIC_PROPS, {
-                datePicker,
-            });
-            shallowComponent(propsWithDatePicker);
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
+            render(
+                <DatePickerDropdown
+                    {...DATE_PICKER_DROPDOWN_BASIC_PROPS}
+                    datePicker={datePicker}
+                    label="EMPTY_LABEL"
+                    isClearable
+                />
             );
 
-            expect(dropContentWrapper.find('.dropdown-selected-value').text()).toBe(formattedNow);
-            expect(dropContentWrapper.find('.to-label').length).toBe(0);
+            expect(screen.getByText(formattedNow)).toBeVisible();
+            expect(document.querySelector('.to-label')).not.toBeInTheDocument();
         });
 
         it('should call onClick when clicking the dropdown toggle', () => {
             const onClickSpy = jest.fn();
-            shallowComponent({
-                onClick: onClickSpy,
-            });
-            const dropContentWrapper = shallowWithState(
-                datePickerDropdown
-                    .find(Drop)
-                    .props()
-                    .renderOpenButton(() => '') as any,
-                {}
-            );
-            dropContentWrapper
-                .find('.dropdown-toggle')
-                .props()
-                .onClick({} as any);
+            render(<DatePickerDropdown {...DATE_PICKER_DROPDOWN_BASIC_PROPS} onClick={onClickSpy} />);
 
+            userEvent.click(screen.getByRole('button'));
             expect(onClickSpy).toHaveBeenCalled();
         });
 

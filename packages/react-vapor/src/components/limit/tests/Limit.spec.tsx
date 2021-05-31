@@ -1,17 +1,17 @@
 import {mount, ReactWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import * as _ from 'underscore';
 
 import {clearState} from '../../../utils';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {InputConnected} from '../../input';
 import {Limit, LimitProps} from '../Limit';
 
 describe('Limit', () => {
     let limit: ReactWrapper<LimitProps, any>;
-    let store: ReactVaporMockStore;
+    let store: ReturnType<typeof getStoreMock>;
 
     const anyCurrentLimit = 100;
     const bufferFunction = () => _.any;
@@ -80,7 +80,7 @@ describe('Limit', () => {
         });
 
         it('should display the default limit label if the limitLabel prop is not specified', () => {
-            const expectedDefaultLimitTitle: string = Limit.defaultProps.limitLabel;
+            const expectedDefaultLimitTitle: string = 'Limit';
             limit = mountLimitWithStore(defaultProps);
 
             expect(limit.find('.limit-box-limit').find('label').text()).toBe(expectedDefaultLimitTitle);
@@ -111,7 +111,7 @@ describe('Limit', () => {
         });
 
         it('should display the default limit value if the limit prop is not specified', () => {
-            const expectedDefaultLimit: number = Limit.defaultProps.limit;
+            const expectedDefaultLimit: number = 100;
             limit = mountLimitWithStore(defaultProps);
 
             expect(limit.find('.limit-box-limit-value').text()).toBe(expectedDefaultLimit.toString());
@@ -136,7 +136,7 @@ describe('Limit', () => {
         });
 
         it('should display the progress-bar based on the percentage by usage at the given limit', () => {
-            const expectedPercentage: number = Math.round((anyUsage / Limit.defaultProps.limit) * 100);
+            const expectedPercentage: number = Math.round((anyUsage / 100) * 100);
             const expectedProgressBarClassName: string = `progress-${expectedPercentage.toString()}`;
             limit = mountLimitWithStore(defaultPropsWithUsage);
 
@@ -173,10 +173,10 @@ describe('Limit', () => {
             limit?.unmount();
         });
 
-        it('should contains an InputConnected if limit is editable', () => {
+        it('should contains an input if limit is editable', () => {
             limit = mountLimitWithStore(limitEditableProps);
 
-            expect(limit.find(InputConnected).length).toEqual(1);
+            expect(limit.find('input').exists()).toBe(true);
         });
 
         it('should add the input in the store when limit is editable', () => {

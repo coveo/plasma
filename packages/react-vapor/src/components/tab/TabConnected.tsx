@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {ITabDispatchProps, ITabOwnProps, ITabProps, ITabStateProps, Tab} from './Tab';
+import {ITabDispatchProps, ITabOwnProps, ITabStateProps, Tab} from './Tab';
 import {addTab, removeTab, selectTab} from './TabActions';
 import {ITabGroupState} from './TabReducers';
 import {TabConstants} from './TabConstants';
@@ -24,8 +24,4 @@ const mapDispatchToProps = (
     onSelect: () => dispatch(selectTab(ownProps.id, ownProps.groupId)),
 });
 
-export const TabConnected: React.ComponentClass<ITabProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Tab);
+export const TabConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Tab);

@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {IModalDispatchProps, IModalOwnProps, IModalProps, IModalStateProps, Modal} from './Modal';
+import {IModalDispatchProps, IModalOwnProps, IModalStateProps, Modal} from './Modal';
 import {addModal, removeModal} from './ModalActions';
 
 const mapStateToProps = (state: IReactVaporState, ownProps: IModalOwnProps): IModalStateProps => ({
@@ -19,8 +19,4 @@ const mapDispatchToProps = (
 /**
  * @deprecated use ModalCompositeConnected instead
  */
-export const ModalConnected: React.ComponentClass<IModalProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Modal);
+export const ModalConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Modal);

@@ -1,9 +1,8 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {Dropdown, IDropdownDispatchProps, IDropdownOwnProps, IDropdownProps, IDropdownStateProps} from './Dropdown';
+import {Dropdown, IDropdownDispatchProps, IDropdownOwnProps, IDropdownStateProps} from './Dropdown';
 import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from './DropdownActions';
 import {IDropdownState} from './DropdownReducers';
 
@@ -25,8 +24,4 @@ const mapDispatchToProps = (
     onDocumentClick: () => dispatch(closeDropdown(ownProps.id)),
 });
 
-export const DropdownConnected: React.ComponentClass<IDropdownProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(Dropdown);
+export const DropdownConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Dropdown);

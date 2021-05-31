@@ -1,4 +1,4 @@
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
@@ -29,13 +29,19 @@ describe('Table HOC', () => {
 
         it('should not throw', () => {
             expect(() => {
-                shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store);
-                shallowWithStore(<TableHeaderWithSort {...defaultProps} isDefault />, store);
+                shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store)
+                    .dive()
+                    .dive();
+                shallowWithStore(<TableHeaderWithSort {...defaultProps} isDefault />, store)
+                    .dive()
+                    .dive();
             }).not.toThrow();
         });
 
         it('should render a th', () => {
-            const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find('th').exists()).toBe(true);
         });
@@ -47,7 +53,9 @@ describe('Table HOC', () => {
                         <div>Hello</div>
                     </TableHeaderWithSort>,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
             expect(render).not.toThrow();
         });
@@ -55,7 +63,9 @@ describe('Table HOC', () => {
         it('should dispatch an addTableHeader on componentDidMount', () => {
             const expectedAction = TableHeaderActions.addTableHeader(defaultProps.id, defaultProps.tableId, undefined);
 
-            shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
+            shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store)
+                .dive()
+                .dive();
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
@@ -63,7 +73,9 @@ describe('Table HOC', () => {
         it('should dispatch an removeTableHeader on componentWillUnmount', () => {
             const expectedAction = TableHeaderActions.removeTableHeader(defaultProps.id);
 
-            const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store)
+                .dive()
+                .dive();
             wrapper.unmount();
 
             expect(store.getActions()).toContainEqual(expectedAction);
@@ -72,14 +84,18 @@ describe('Table HOC', () => {
         it('should dispatch an sortTable on click', () => {
             const expectedAction = TableHeaderActions.sortTable(defaultProps.id);
 
-            const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store).dive();
+            const wrapper = shallowWithStore(<TableHeaderWithSort {...defaultProps} />, store)
+                .dive()
+                .dive();
             wrapper.find('th').simulate('click');
 
             expect(store.getActions()).toContainEqual(expectedAction);
         });
 
         it('should render a <TextLoadingPlaceholder /> if the prop isLoading is set to true', () => {
-            const wrapper = shallowWithState(<TableHeaderWithSort {...defaultProps} isLoading />, store).dive();
+            const wrapper = shallowWithState(<TableHeaderWithSort {...defaultProps} isLoading />, store)
+                .dive()
+                .dive();
 
             expect(wrapper.find(TextLoadingPlaceholder).length).toBe(1);
         });

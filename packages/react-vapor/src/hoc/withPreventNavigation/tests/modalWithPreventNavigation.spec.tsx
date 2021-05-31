@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {closeModal} from '../../../components/modal/ModalActions';
@@ -40,6 +40,7 @@ describe('Modal with Prevent Navigation', () => {
 
         const SomeModalWithPreventNaviationHOC = modalWithPreventNavigation({id: SomeModal.ID, ...config})(SomeModal);
         component = shallowWithStore(<SomeModalWithPreventNaviationHOC />, store)
+            .dive()
             .dive()
             .dive()
             .dive();

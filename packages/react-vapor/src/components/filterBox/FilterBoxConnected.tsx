@@ -1,15 +1,8 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    FilterBox,
-    IFilterBoxDispatchProps,
-    IFilterBoxOwnProps,
-    IFilterBoxProps,
-    IFilterBoxStateProps,
-} from './FilterBox';
+import {FilterBox, IFilterBoxDispatchProps, IFilterBoxOwnProps, IFilterBoxStateProps} from './FilterBox';
 import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';
 import {FilterBoxSelectors} from './FilterBoxSelectors';
 
@@ -29,8 +22,4 @@ const mapDispatchToProps = (dispatch: IDispatch): IFilterBoxDispatchProps => ({
     onFilter: (id: string, filterText: string) => debouncedFilterThrough(dispatch, id, filterText),
 });
 
-export const FilterBoxConnected: React.ComponentClass<IFilterBoxProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(FilterBox);
+export const FilterBoxConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(FilterBox);

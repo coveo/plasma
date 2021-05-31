@@ -139,4 +139,11 @@ class PaginationPagesNumberDisconnected extends React.Component<IPaginationPages
     }
 }
 
-export const PaginationPagesNumber = connect(mapStateToProps, mapDispatchToProps)(PaginationPagesNumberDisconnected);
+export const PaginationPagesNumber = connect<
+    ReturnType<typeof mapStateToProps>,
+    ReturnType<typeof mapDispatchToProps>,
+    IPaginationPagesNumberOwnProps
+>(
+    mapStateToProps,
+    mapDispatchToProps
+)(PaginationPagesNumberDisconnected as any);

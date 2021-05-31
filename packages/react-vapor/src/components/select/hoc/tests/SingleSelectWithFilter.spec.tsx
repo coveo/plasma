@@ -1,5 +1,5 @@
 import {mount, ReactWrapper, ShallowWrapper} from 'enzyme';
-import {shallowWithStore} from 'enzyme-redux';
+import {shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
@@ -287,7 +287,7 @@ describe('Select', () => {
         });
 
         describe('when filter is processed on the server side', () => {
-            const ServerSideMultiSingleSelectWithFilter: React.ComponentType<
+            const ServerSideSingleSelectWithFilter: React.ComponentType<
                 ISelectWithFilterOwnProps & ISingleSelectOwnProps
             > = _.compose(withServerSideProcessing, selectWithFilter)(SingleSelectConnected);
 
@@ -296,9 +296,11 @@ describe('Select', () => {
             it('should not filter the items because it is done on the server', () => {
                 jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('a');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
-                    <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} />,
+                    <ServerSideSingleSelectWithFilter {...basicProps} items={items} />,
                     store
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 expect(component.props().items).toEqual(items);
             });
@@ -307,9 +309,10 @@ describe('Select', () => {
                 const onUpdateSpy = jest.fn();
                 jest.spyOn(FilterBoxSelectors, 'getFilterText').mockReturnValue('current-filter-value');
                 const component: ShallowWrapper<ISelectWithFilterOwnProps & ISingleSelectOwnProps> = shallowWithStore(
-                    <ServerSideMultiSingleSelectWithFilter {...basicProps} items={items} onUpdate={onUpdateSpy} />,
+                    <ServerSideSingleSelectWithFilter {...basicProps} items={items} onUpdate={onUpdateSpy} />,
                     store
                 )
+                    .dive()
                     .dive()
                     .dive();
 

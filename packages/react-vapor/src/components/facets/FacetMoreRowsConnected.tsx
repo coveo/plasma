@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
@@ -10,7 +9,6 @@ import {
     FacetMoreRows,
     IFacetMoreRowsDispatchProps,
     IFacetMoreRowsOwnProps,
-    IFacetMoreRowsProps,
     IFacetMoreRowsStateProps,
 } from './FacetMoreRows';
 import {IFacetState} from './FacetReducers';
@@ -34,7 +32,7 @@ const mapDispatchToProps = (
     onDocumentClick: () => dispatch(closeMoreFacetRows()),
 });
 
-export const FacetMoreRowsConnected: React.ComponentClass<IFacetMoreRowsProps> = connect(
+export const FacetMoreRowsConnected = connect(
     mapStateToProps,
     mapDispatchToProps,
     ReduxUtils.mergeProps

@@ -1,15 +1,8 @@
-import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
-import {
-    IOptionPickerDispatchProps,
-    IOptionPickerOwnProps,
-    IOptionPickerProps,
-    IOptionPickerStateProps,
-    OptionPicker,
-} from './OptionPicker';
+import {IOptionPickerDispatchProps, IOptionPickerOwnProps, IOptionPickerStateProps, OptionPicker} from './OptionPicker';
 import {addOptionPicker, changeOptionPicker, removeOptionPicker} from './OptionPickerActions';
 import {IOptionPickerState} from './OptionPickerReducers';
 
@@ -30,8 +23,4 @@ const mapDispatchToProps = (
     onClick: (value: string, label: string) => dispatch(changeOptionPicker(ownProps.id, label, value)),
 });
 
-export const OptionPickerConnected: React.ComponentClass<IOptionPickerProps> = connect(
-    mapStateToProps,
-    mapDispatchToProps,
-    ReduxUtils.mergeProps
-)(OptionPicker);
+export const OptionPickerConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(OptionPicker);

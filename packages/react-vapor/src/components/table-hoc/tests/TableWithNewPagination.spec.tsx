@@ -1,5 +1,5 @@
 import {ShallowWrapper} from 'enzyme';
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -36,7 +36,7 @@ describe('TableWithNewPagination tests', () => {
                 state = {}
             ) => {
                 const TableWithNewPagination = _.compose(tableWithNewPagination(config))(TableHOC);
-                return shallowWithState(<TableWithNewPagination {...props} />, state);
+                return shallowWithState(<TableWithNewPagination {...props} />, state).dive();
             };
 
             it('should set the defaultPerPageSelected for <TablePagination /> with the second value in the array if defined', () => {
@@ -129,7 +129,7 @@ describe('TableWithNewPagination tests', () => {
                 props: Partial<ITableWithNewPaginationProps> = {}
             ) => {
                 const TableWithNewPagination = _.compose(tableWithNewPagination(config))(TableHOC);
-                return shallowWithStore(<TableWithNewPagination {...props} />, store);
+                return shallowWithStore(<TableWithNewPagination {...props} />, store).dive();
             };
 
             it('should add the table pagination in the store on mount', () => {

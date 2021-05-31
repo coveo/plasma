@@ -49,5 +49,8 @@ export const withNonEmptySingleSelectHOC = <T extends ISingleSelectOwnProps>(Com
         return <Component {...(props as T)} />;
     };
 
-    return connect(mapStateToProps, mapDispatchToProps)(WrappedSingleSelect);
+    return connect<StateProps, DispatchProps, T & IWithNonEmptySingleSelectHOCProps>(
+        mapStateToProps,
+        mapDispatchToProps
+    )(WrappedSingleSelect as any);
 };

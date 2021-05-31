@@ -1,4 +1,4 @@
-import {shallowWithState, shallowWithStore} from 'enzyme-redux';
+import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
@@ -19,7 +19,9 @@ describe('ButtonWithRefreshCallback tests', () => {
 
         it('should mount and unmount without error', () => {
             expect(() => {
-                const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} />, {}).dive();
+                const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} />, {})
+                    .dive()
+                    .dive();
                 component.unmount();
             }).not.toThrow();
         });
@@ -30,7 +32,9 @@ describe('ButtonWithRefreshCallback tests', () => {
 
                 const component = shallowWithState(<ButtonWithRefreshCallback {...defaultProps} callback={spy} />, {
                     refreshCallback: {id: RefreshStatus.inProgress},
-                }).dive();
+                })
+                    .dive()
+                    .dive();
                 component.find(Button).props().onClick();
 
                 expect(spy).toHaveBeenCalledTimes(1);
@@ -41,7 +45,9 @@ describe('ButtonWithRefreshCallback tests', () => {
                     refreshCallback: {id: RefreshStatus.inProgress},
                 });
 
-                const component = shallowWithStore(<ButtonWithRefreshCallback {...defaultProps} />, store).dive();
+                const component = shallowWithStore(<ButtonWithRefreshCallback {...defaultProps} />, store)
+                    .dive()
+                    .dive();
                 component.find(Button).props().onClick();
 
                 expect(store.getActions()).toContainEqual(RefreshCallBackActions.stop(defaultProps.id));
@@ -53,7 +59,9 @@ describe('ButtonWithRefreshCallback tests', () => {
                     {
                         refreshCallback: {[defaultProps.id]: RefreshStatus.stopped},
                     }
-                ).dive();
+                )
+                    .dive()
+                    .dive();
 
                 expect(component.find(Button).props().enabled).toBe(false);
             });

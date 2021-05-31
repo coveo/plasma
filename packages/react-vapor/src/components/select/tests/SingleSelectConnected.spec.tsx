@@ -1,279 +1,265 @@
-import {mount, ReactWrapper} from 'enzyme';
-import {shallowWithState} from 'enzyme-redux';
 import * as React from 'react';
-import {Store} from 'redux';
-import * as _ from 'underscore';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
+import {fireEvent} from '@testing-library/react';
 
-import {IReactVaporState} from '../../../ReactVaporState';
-import {keyCode} from '../../../utils/InputUtils';
-import {clearState} from '../../../utils/ReduxUtils';
-import {TestUtils} from '../../../utils/tests/TestUtils';
-import {IItemBoxProps} from '../../itemBox/ItemBox';
-import {clearListBoxOption} from '../../listBox/ListBoxActions';
-import {SelectConnected} from '../SelectConnected';
-import {SelectSelector} from '../SelectSelector';
-import {ISingleSelectOwnProps, ISingleSelectProps, SingleSelectConnected} from '../SingleSelectConnected';
+import {SingleSelectConnected} from '../SingleSelectConnected';
+import {keyCode} from '../../../utils';
 
 describe('Select', () => {
     describe('<SingleSelectConnected />', () => {
-        let singleSelect: ReactWrapper<ISingleSelectProps>;
-        let select: ReactWrapper<ISingleSelectOwnProps>;
-        let store: Store<IReactVaporState>;
-
         const id: string = 'list-box-connected';
 
-        const mountSingleSelect = (
-            items: IItemBoxProps[] = [],
-            props: Partial<ISingleSelectProps & React.ButtonHTMLAttributes<HTMLButtonElement>> = {}
-        ) => {
-            singleSelect = mount(<SingleSelectConnected id={id} items={items} {...props} />, {
-                attachTo: document.getElementById('App'),
-                context: {store},
-            });
-            select = singleSelect.find(SelectConnected).first();
-        };
-
-        const getIsOpen = () => SelectSelector.getSelectOpened(store.getState(), {id});
-
-        beforeEach(() => {
-            store = TestUtils.buildStore();
-        });
-
-        afterEach(() => {
-            store.dispatch(clearState());
-        });
-
         describe('mount and unmount', () => {
-            it('should not throw on mount', () => {
-                expect(() => mountSingleSelect()).not.toThrow();
-            });
-
-            it('should not throw on unmount', () => {
-                mountSingleSelect();
-
-                expect(() => singleSelect.unmount()).not.toThrow();
-            });
-
-            it('should add the list box to the state when mounted', () => {
-                expect(store.getState().selects.length).toBe(0);
-
-                mountSingleSelect();
-
-                expect(store.getState().selects.length).toBe(1);
-            });
-
-            it('should remove the list box from the state when the component unmount', () => {
-                mountSingleSelect();
-
-                expect(store.getState().selects.length).toBe(1);
-                singleSelect.unmount();
-
-                expect(store.getState().selects.length).toBe(0);
+            it('should not throw on mount and unmount', () => {
+                expect(() => {
+                    const {unmount} = render(<SingleSelectConnected id={id} items={[]} />);
+                    unmount();
+                }).not.toThrow();
             });
         });
 
         it('should allow a custom placeholder', () => {
-            const expectedPlaceholder = 'select thingy';
+            render(<SingleSelectConnected id={id} placeholder="select thingy" items={[]} />);
 
-            mountSingleSelect([{value: 'a'}, {value: 'b'}], {placeholder: expectedPlaceholder});
-
-            expect(select.html()).toContain(expectedPlaceholder);
+            expect(screen.getByRole('button', {name: /select thingy/})).toBeVisible();
         });
 
         it('should contain the selected value', () => {
-            const selectedValue = 'dis 1';
-            mountSingleSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
+            render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'dis 1', selected: true}]} />);
 
-            expect(select.html()).toContain(selectedValue);
+            expect(screen.getByRole('button', {name: /dis 1/})).toBeVisible();
         });
 
         it('should contain the display value when the selected value has one', () => {
-            const selectedDisplayValue = 'dis 2';
-            mountSingleSelect([{value: 'a'}, {value: 'dis 1', displayValue: selectedDisplayValue, selected: true}]);
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    items={[{value: 'a'}, {value: 'dis 1', displayValue: 'dis 2', selected: true}]}
+                />
+            );
 
-            expect(select.html()).toContain(selectedDisplayValue);
+            expect(screen.getByRole('button', {name: /dis 2/})).toBeVisible();
         });
 
         it('should contain the selected item as a prop', () => {
-            const selectedValue = 'dis 1';
-            mountSingleSelect([{value: 'a'}, {value: selectedValue, selected: true}]);
+            render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'dis 1', selected: true}]} />);
 
-            const value: string = select.find('.dropdown-selected-value').prop<string>('data-value');
-
-            expect(value).toBe(selectedValue);
+            expect(document.querySelector(`[data-value="dis 1"]`)).toBeVisible();
         });
 
         it('should set the toggleClasses prop if any on the dropdown-toggle', () => {
-            mountSingleSelect([], {
-                toggleClasses: 'some-class',
-            });
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    toggleClasses="some-class"
+                    items={[{value: 'a'}, {value: 'selected value', selected: true}]}
+                />
+            );
 
-            expect(select.find('.dropdown-toggle').hasClass('some-class')).toBe(true);
+            expect(screen.getByRole('button', {name: /selected value/})).toHaveClass('some-class');
         });
 
         it('should disable the toggle button when disabled prop is set to true', () => {
-            mountSingleSelect([], {
-                disabled: true,
-            } as any);
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    disabled
+                    items={[{value: 'a'}, {value: 'selected value', selected: true}]}
+                />
+            );
 
-            expect(select.find('.dropdown-toggle').is('[disabled]')).toBe(true);
+            expect(screen.getByRole('button', {name: /selected value/})).toBeDisabled();
         });
 
         it('should contain the toggle prepend in the toggle (button) if defined', () => {
-            const expectedPrepend = <span>{'some prepended text'}</span>;
-            mountSingleSelect([], {buttonPrepend: expectedPrepend});
+            const expectedPrepend = <span>some prepended text</span>;
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    buttonPrepend={expectedPrepend}
+                    items={[{value: 'a'}, {value: 'selected value', selected: true}]}
+                />
+            );
 
-            expect(select.find('.dropdown-toggle').children().first().equals(expectedPrepend)).toBe(true);
+            expect(screen.getByText('some prepended text')).toBeVisible();
         });
 
         it('should contain the prepend and append in the button when selected', () => {
             const prepend = 'pre';
             const append = 'post';
-            mountSingleSelect([
-                {value: 'a', selected: true, prepend: {content: prepend}, append: {content: append}},
-                {value: 'b', selected: false},
-            ]);
-            const buttonHTML = select.find('.dropdown-toggle').html();
-
-            expect(buttonHTML).toContain(prepend);
-            expect(buttonHTML).toContain(append);
-        });
-
-        it('should have a clear icon when a value selected and canClear is true', () => {
-            mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
-
-            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(true);
-            expect(select.find('.btn-append').exists()).toBe(true);
-        });
-
-        it('should not have a clear icon when a value selected and canClear is undefined', () => {
-            mountSingleSelect([{value: 'a', selected: true}]);
-
-            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
-            expect(select.find('.btn-append').exists()).toBe(false);
-        });
-
-        it('should not have a clear icon when no value is selected and canClear is true', () => {
-            mountSingleSelect([{value: 'a', selected: false}], {canClear: true});
-
-            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
-            expect(select.find('.btn-append').exists()).toBe(false);
-        });
-
-        it('should not have a clear icon when disabled is true even if canClear is true', () => {
-            mountSingleSelect([{value: 'a', selected: false}], {canClear: true, disabled: true});
-
-            expect(select.find('.dropdown-toggle').hasClass('mod-append')).toBe(false);
-            expect(select.find('.btn-append').exists()).toBe(false);
-        });
-
-        it('should clear the selected value when the deselect is clicked', () => {
-            const spy = jest.spyOn(store, 'dispatch');
-            mountSingleSelect([{value: 'a', selected: true}], {canClear: true});
-
-            select.find('.btn-append').first().simulate('click');
-
-            expect(spy).toHaveBeenCalledWith(clearListBoxOption(id));
-        });
-
-        it('should display the selectedDisplayValue if defined in the button for the selected item', () => {
-            const selectedDisplayValue = 'Another selected value bites the dust';
-            mountSingleSelect([
-                {value: 'a', selected: true, selectedDisplayValue},
-                {value: 'b', selected: false},
-            ]);
-            const buttonHTML = select.find('.dropdown-toggle').html();
-
-            expect(buttonHTML).toContain(selectedDisplayValue);
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    items={[
+                        {value: 'a', selected: true, prepend: {content: prepend}, append: {content: append}},
+                        {value: 'b', selected: false},
+                    ]}
+                />
+            );
+            expect(screen.getByRole('button', {name: /pre a post/})).toBeVisible();
         });
 
         it('should not contain the prepend and append in the button when not selected', () => {
             const prepend = 'pre';
             const append = 'post';
-            mountSingleSelect([
-                {value: 'a', selected: false, prepend: {content: 'pre'}, append: {content: 'post'}},
-                {value: 'b', selected: true},
-            ]);
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    items={[
+                        {value: 'a', selected: false, prepend: {content: prepend}, append: {content: append}},
+                        {value: 'b', selected: true},
+                    ]}
+                />
+            );
+            expect(screen.queryByRole('button', {name: /pre a post/})).not.toBeInTheDocument();
+        });
 
-            const buttonHTML = select.find('.dropdown-toggle').html();
+        it('should have a clear icon when a value selected and canClear is true', () => {
+            render(<SingleSelectConnected id={id} items={[{value: 'my value', selected: true}]} canClear />);
 
-            expect(buttonHTML).not.toContain(prepend);
-            expect(buttonHTML).not.toContain(append);
+            expect(screen.getByRole('button', {name: /my value/})).toHaveClass('mod-append');
+            expect(screen.getByRole('img', {name: /clear icon/})).toBeVisible();
+        });
+
+        it('should not have a clear icon when a value selected and canClear is undefined', () => {
+            render(<SingleSelectConnected id={id} items={[{value: 'my value', selected: true}]} canClear={false} />);
+
+            expect(screen.getByRole('button', {name: /my value/})).not.toHaveClass('mod-append');
+            expect(screen.queryByRole('img', {name: /clear icon/})).not.toBeInTheDocument();
+        });
+
+        it('should not have a clear icon when no value is selected and canClear is true', () => {
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    placeholder="select one"
+                    items={[{value: 'my value', selected: false}]}
+                    canClear
+                />
+            );
+
+            expect(screen.getByRole('button', {name: /select one/})).not.toHaveClass('mod-append');
+            expect(screen.queryByRole('img', {name: /clear icon/})).not.toBeInTheDocument();
+        });
+
+        it('should not have a clear icon when disabled is true even if canClear is true', () => {
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    placeholder="select one"
+                    items={[{value: 'my value', selected: false}]}
+                    canClear
+                    disabled
+                />
+            );
+
+            expect(screen.getByRole('button', {name: /select one/})).not.toHaveClass('mod-append');
+            expect(screen.queryByRole('img', {name: /clear icon/})).not.toBeInTheDocument();
+        });
+
+        it('should clear the selected value when the deselect is clicked', () => {
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    placeholder="select one"
+                    items={[{value: 'my value', selected: true}]}
+                    canClear
+                />
+            );
+
+            expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
+
+            userEvent.click(screen.queryByRole('img', {name: /clear icon/}));
+
+            expect(screen.getByRole('button', {name: /select one/})).toBeVisible();
+        });
+
+        it('should display the selectedDisplayValue if defined in the button for the selected item', () => {
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    items={[
+                        {
+                            value: 'a',
+                            selected: true,
+                            selectedDisplayValue: 'Another selected value bites the dust',
+                            displayValue: '🥔',
+                        },
+                        {value: 'b', selected: false},
+                    ]}
+                />
+            );
+            expect(screen.queryByRole('button', {name: /Another selected value bites the dust/})).toBeVisible();
         });
 
         it('should call with the selected option the onSelectOptionCallback prop when defined', () => {
             const onSelectOptionCallbackSpy = jest.fn();
 
-            mountSingleSelect([{value: 'a'}, {value: 'b'}], {onSelectOptionCallback: onSelectOptionCallbackSpy});
+            render(
+                <SingleSelectConnected
+                    id={id}
+                    items={[{value: 'a'}, {value: 'b', displayValue: 'to select value'}]}
+                    onSelectOptionCallback={onSelectOptionCallbackSpy}
+                />
+            );
 
-            select.find('.dropdown-toggle').simulate('click');
-            select.find('.item-box').first().simulate('click');
+            userEvent.click(screen.getByRole('button'));
 
-            expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('a');
+            userEvent.click(screen.getByText('to select value'));
+
+            expect(onSelectOptionCallbackSpy).toHaveBeenCalledWith('b');
         });
-
         describe('keyboard events', () => {
-            it('should not throw on keydown in the dropdown', () => {
-                mountSingleSelect();
-
-                const el = select.find('.dropdown-toggle');
-                _.each(keyCode, (code) => {
-                    expect(() => el.simulate('keydown', {keyCode: code})).not.toThrow();
-                });
-            });
-
             it('should open the dropdown when the user press enter on the button', () => {
-                mountSingleSelect();
+                render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} />);
 
-                expect(getIsOpen()).toBe(false);
+                expect(screen.queryByRole('list')).not.toBeInTheDocument();
 
-                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+                fireEvent.keyDown(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
+                fireEvent.keyUp(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
 
-                expect(getIsOpen()).toBe(true);
+                expect(screen.queryByRole('list')).toBeVisible();
             });
 
             it('should close the dropdown when the user press escape on the button and the dropdown is open', () => {
-                mountSingleSelect();
+                render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} />);
 
-                expect(getIsOpen()).toBe(false);
-                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
+                expect(screen.queryByRole('list')).not.toBeInTheDocument();
 
-                expect(getIsOpen()).toBe(false);
+                fireEvent.keyDown(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
+                fireEvent.keyUp(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
 
-                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.enter});
+                expect(screen.queryByRole('list')).not.toBeInTheDocument();
 
-                expect(getIsOpen()).toBe(true);
+                fireEvent.keyDown(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
+                fireEvent.keyUp(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
 
-                select.find('.dropdown-toggle').simulate('keyup', {keyCode: keyCode.escape});
+                expect(screen.queryByRole('list')).toBeVisible();
 
-                expect(getIsOpen()).toBe(false);
+                fireEvent.keyDown(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
+                fireEvent.keyUp(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
+
+                expect(screen.queryByRole('list')).not.toBeInTheDocument();
             });
         });
-
         describe('footer props', () => {
-            it('should pass the footer prop to <SelectConnected/>', () => {
-                const footer: React.ReactElement = <span id="some-footer"> 👢 </span>;
-                const mountedSingleSelect = mount(
-                    <SingleSelectConnected id={id} items={[{value: 'a', selected: false}]} footer={footer} />,
-                    {
-                        attachTo: document.getElementById('App'),
-                        context: {store},
-                    }
-                );
+            it('displays the footer when the dropdown is opened', () => {
+                const footer: React.ReactElement = <span id="some-footer">👢</span>;
+                render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} footer={footer} />);
 
-                expect(mountedSingleSelect.find('#some-footer').matchesElement(footer)).toBeTruthy();
-                mountedSingleSelect.unmount();
+                expect(screen.queryByText('👢')).not.toBeVisible();
+
+                userEvent.click(screen.getByRole('button'));
+
+                expect(screen.getByText('👢')).toBeVisible();
             });
         });
-
         it('should render the custom button prop content as toggle if it is specified', () => {
-            const CustomButton = () => <span>🍄🍄🍄🍄🍄🍄</span>;
-            const component = shallowWithState(
-                <SingleSelectConnected id={id} items={[{value: 'a', selected: false}]} customButton={CustomButton} />,
-                {}
-            ).dive();
+            const CustomButton = () => <button>🍄🍄🍄🍄🍄🍄</button>;
+            render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} customButton={CustomButton} />);
 
-            expect(component.prop('button')).toBe(CustomButton);
+            expect(screen.queryByRole('button', {name: '🍄🍄🍄🍄🍄🍄'})).toBeVisible();
         });
     });
 });

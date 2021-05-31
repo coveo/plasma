@@ -1,6 +1,8 @@
 import {ReactWrapper, ShallowWrapper} from 'enzyme';
-import {mountWithStore, shallowWithState} from 'enzyme-redux';
+import {mountWithStore, shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
+import userEvent from '@testing-library/user-event';
+import {render, screen, waitFor} from '@test-utils';
 
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
@@ -14,12 +16,16 @@ describe('Drop', () => {
 
         it('should mount without errors', () => {
             expect(() => {
-                shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {}).dive();
+                shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {})
+                    .dive()
+                    .dive();
             }).not.toThrow();
         });
 
         it('should unmount without errors', () => {
-            const wrapper = shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {}).dive();
+            const wrapper = shallowWithState(<Drop id={'test'} renderOpenButton={() => defaultButton} />, {})
+                .dive()
+                .dive();
 
             expect(() => {
                 wrapper.unmount();
@@ -28,7 +34,9 @@ describe('Drop', () => {
 
         it('should call renderOpenButton on mount', () => {
             const renderOpenButtonSpy = jest.fn(() => <div>DIV</div>);
-            shallowWithState(<Drop id={'test'} renderOpenButton={renderOpenButtonSpy} />, {}).dive();
+            shallowWithState(<Drop id={'test'} renderOpenButton={renderOpenButtonSpy} />, {})
+                .dive()
+                .dive();
 
             expect(renderOpenButtonSpy).toHaveBeenCalledTimes(1);
         });
@@ -124,41 +132,43 @@ describe('Drop', () => {
                 expect(store.getActions()).not.toContain(DropActions.toggle(id, DefaultGroupIds.default, false));
             });
 
-            it('should dispatch an action to toggle drop isOpen if the element target is in the body and inside the drop element', () => {
-                const store = getStoreMock(defaultStore(true));
-                mountDropWithStore({}, store, <div id={'Drop'} className={'drop'}></div>);
-
-                store.dispatch(DropActions.toggle(id, DefaultGroupIds.default));
-
-                RTestUtils.clickOnElement(document.getElementById('Drop'));
-
-                expect(store.getActions()).toContainEqual(DropActions.toggle(id, DefaultGroupIds.default, false));
-            });
-
-            it('should not dispatch an action to toggle drop isOpen if drop is close', () => {
-                const store = getStoreMock(defaultStore(false));
-                mountDropWithStore({}, store, <div id={'Drop'} className={'drop'}></div>);
-
-                store.dispatch(DropActions.toggle(id, DefaultGroupIds.default));
-
-                RTestUtils.clickOnElement(document.getElementById('Drop'));
-
-                expect(store.getActions()).not.toContain(DropActions.toggle(id, DefaultGroupIds.default, false));
-            });
-
-            it('should not dispatch an action to toggle drop isOpen if the element target is in the body and inside the drop element if closeOnClickDrop is false', () => {
-                const store = getStoreMock(defaultStore(true));
-                mountDropWithStore(
-                    {
-                        closeOnClickDrop: false,
-                    },
-                    store,
-                    <div id={'Drop'} className={'drop'}></div>
+            it('closes the drop if the click happen inside of it', async () => {
+                render(
+                    <Drop
+                        id={id}
+                        renderOpenButton={(onClick: () => void) => <button onClick={onClick}>toggle drop</button>}
+                    >
+                        <button>children button</button>
+                    </Drop>
                 );
 
-                RTestUtils.clickOnElement(document.getElementById('Drop'));
+                userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
 
-                expect(store.getActions()).not.toContain(DropActions.toggle(id, DefaultGroupIds.default, false));
+                await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
+
+                userEvent.click(screen.getByRole('button', {name: 'children button'}));
+
+                expect(screen.queryByRole('button', {name: 'children button'})).not.toBeInTheDocument();
+            });
+
+            it('does not close the drop if the click happen inside and closeOnClickDrop is false', async () => {
+                render(
+                    <Drop
+                        id={id}
+                        renderOpenButton={(onClick: () => void) => <button onClick={onClick}>toggle drop</button>}
+                        closeOnClickDrop={false}
+                    >
+                        <button>children button</button>
+                    </Drop>
+                );
+
+                userEvent.click(screen.getByRole('button', {name: 'toggle drop'}));
+
+                await waitFor(() => expect(screen.getByRole('button', {name: 'children button'})).toBeVisible());
+
+                userEvent.click(screen.getByRole('button', {name: 'children button'}));
+
+                expect(screen.getByRole('button', {name: 'children button'})).toBeVisible();
             });
 
             it('should dispatch a toggle event when we call onClick sent with renderOpenButton', () => {
@@ -211,7 +221,9 @@ describe('Drop', () => {
                     const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
                         {}
-                    ).dive();
+                    )
+                        .dive()
+                        .dive();
 
                     expect(spy).toHaveBeenCalledTimes(0);
 
@@ -225,7 +237,9 @@ describe('Drop', () => {
                     const shallowWrapper = shallowWithState(
                         <Drop id={'test'} renderOpenButton={() => defaultButton} />,
                         {}
-                    ).dive();
+                    )
+                        .dive()
+                        .dive();
 
                     shallowWrapper.setProps({isOpen: true} as any);
                     shallowWrapper.setProps({isOpen: false} as any);
