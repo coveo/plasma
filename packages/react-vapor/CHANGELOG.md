@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v23.0.0-next.3...v23.0.0-next.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
+
+
+
+
+
 # [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
 
 
