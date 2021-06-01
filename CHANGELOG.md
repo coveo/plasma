@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+### Features
+
+* **vapor:** implement new typekit ([a7f03b5](https://github.com/coveo/react-vapor/commit/a7f03b51725749c82b2f3e3bd3d0d0fe66f69b74))
+
+
+### BREAKING CHANGES
+
+* **vapor:** All headings (h1-h6) and paragraphs (p) don't have the same visual style as before.
+They look very different up to a point at which we must acknowledge those changes are considered
+breaking.
+
+
+
+
+
 # [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
 
 **Note:** Version bump only for package root
