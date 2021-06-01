@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 import {connect} from 'react-redux';
+
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {InputConnected} from '../input';
