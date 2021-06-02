@@ -193,7 +193,7 @@ importers:
       '@testing-library/user-event': ^12.6.3
       '@types/chosen-js': 1.6.2
       '@types/classnames': 2.2.9
-      '@types/codemirror': 0.0.62
+      '@types/codemirror': 0.0.109
       '@types/d3': 3.5.41
       '@types/enzyme': 3.10.8
       '@types/enzyme-adapter-react-16': 1.0.6
@@ -285,7 +285,7 @@ importers:
       underscore.string: 3.3.5
       unidiff: 0.0.4
     dependencies:
-      '@types/codemirror': 0.0.62
+      '@types/codemirror': 0.0.109
       '@types/rc-slider': 8.6.0
       chosen-js: 1.8.7
       query-string: 6.13.1
@@ -2785,8 +2785,15 @@ packages:
     resolution: {integrity: sha512-MNl+rT5UmZeilaPxAVs6YaPC2m6aA8rofviZbhbxpPpl61uKodfdQVsBtgJGTqGizEf02oW3tsVe7FYB8kK14A==}
     dev: true
 
+  /@types/codemirror/0.0.109:
+    resolution: {integrity: sha512-cSdiHeeLjvGn649lRTNeYrVCDOgDrtP+bDDSFDd1TF+i0jKGPDRozno2NOJ9lTniso+taiv4kiVS8dgM8Jm5lg==}
+    dependencies:
+      '@types/tern': 0.23.3
+    dev: false
+
   /@types/codemirror/0.0.62:
     resolution: {integrity: sha512-0w0vA4wfkEF6GlQ0dBZHrAW7RTP2udN5wZZFFngVmvl37P2StSqNqDxP+hizd+EMOhRCUnrdSuWmAsIQczpLxQ==}
+    dev: true
 
   /@types/d3/3.5.41:
     resolution: {integrity: sha512-dInnr7nSPsofnLggOf70xvsInUjf3tRrE8XmxsioXALWQHkwEWi7RhTBCa9mYmiUDHMtuanSDN/JOW187ChIhw==}
@@ -2834,7 +2841,6 @@ packages:
 
   /@types/estree/0.0.47:
     resolution: {integrity: sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg==}
-    dev: true
 
   /@types/faker/4.1.9:
     resolution: {integrity: sha512-4ZFqA3CEXB6MgT8sDV8E5LhW+O9ndONsHeQXMbEwfOsjoQ4UXKqTJKru+BjDBUfobYEpQz1WYF9/uzQsvbY2wA==}
@@ -3192,6 +3198,12 @@ packages:
   /@types/tapable/1.0.7:
     resolution: {integrity: sha512-0VBprVqfgFD7Ehb2vd8Lh9TG3jP98gvr8rgehQqzztZNI7o8zS8Ad4jyZneKELphpuE212D8J70LnSNQSyO6bQ==}
     dev: true
+
+  /@types/tern/0.23.3:
+    resolution: {integrity: sha512-imDtS4TAoTcXk0g7u4kkWqedB3E4qpjXzCpD2LU5M5NAXHzCDsypyvXSaG7mM8DKYkCRa7tFp4tS/lp/Wo7Q3w==}
+    dependencies:
+      '@types/estree': 0.0.47
+    dev: false
 
   /@types/testing-library__jest-dom/5.9.5:
     resolution: {integrity: sha512-ggn3ws+yRbOHog9GxnXiEZ/35Mow6YtPZpd7Z5mKDeZS/o7zx3yAle0ov/wjhVB5QT4N2Dt+GNoGCdqkBGCajQ==}
