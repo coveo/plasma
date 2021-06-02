@@ -245,7 +245,7 @@ importers:
       minimist: 1.2.3
       moment: ^2.24.0
       node-sass: 5.0.0
-      query-string: 6.13.1
+      query-string: 6.14.1
       rc-slider: 8.7.1
       rc-tooltip: ^3.7.0
       react: 16.13.1
@@ -288,7 +288,7 @@ importers:
       '@types/codemirror': 0.0.62
       '@types/rc-slider': 8.6.0
       chosen-js: 1.8.7
-      query-string: 6.13.1
+      query-string: 6.14.1
       rc-slider: 8.7.1
       rc-tooltip: 3.7.3
       react-bootstrap: 0.33.1_react-dom@16.13.1+react@16.13.1
@@ -8162,7 +8162,6 @@ packages:
   /filter-obj/1.1.0:
     resolution: {integrity: sha1-mzERErxsYSehbgFsbF1/GeCAXFs=}
     engines: {node: '>=0.10.0'}
-    dev: true
 
   /finalhandler/1.1.2:
     resolution: {integrity: sha512-aAWcW57uxVNrQZqFXjITpW3sIUQmHGG3qSb9mUah9MgMC4NeWhNOlNjXEYq3HjRAvL6arUviZGGJsBg6z0zsWA==}
@@ -14630,15 +14629,6 @@ packages:
       strict-uri-encode: 1.1.0
     dev: true
 
-  /query-string/6.13.1:
-    resolution: {integrity: sha512-RfoButmcK+yCta1+FuU8REvisx1oEzhMKwhLUNcepQTPGcNMp1sIqjnfCtfnvGSQZQEhaBHvccujtWoUV3TTbA==}
-    engines: {node: '>=6'}
-    dependencies:
-      decode-uri-component: 0.2.0
-      split-on-first: 1.1.0
-      strict-uri-encode: 2.0.0
-    dev: false
-
   /query-string/6.14.1:
     resolution: {integrity: sha512-XDxAeVmpfu1/6IjyT/gXHOl+S0vQ9owggJ30hhWKdHAsNPOcasn5o9BW0eejZqL2e4vMjhAxoW3jVHcD6mbcYw==}
     engines: {node: '>=6'}
@@ -14647,7 +14637,6 @@ packages:
       filter-obj: 1.1.0
       split-on-first: 1.1.0
       strict-uri-encode: 2.0.0
-    dev: true
 
   /querystring-es3/0.2.1:
     resolution: {integrity: sha1-nsYfeQSYdXB9aUFFlv2Qek1xHnM=}
