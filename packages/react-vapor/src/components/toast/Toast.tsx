@@ -111,30 +111,45 @@ export class Toast extends React.Component<IToastProps> {
             />
         );
 
-        const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
-            <div className="toast-description">
-                {this.props.isDownload ? (
+        const downloadToast = (
+            <div className="toast-download-container flex flex-column">
+                <div className="toast-title">{this.props.title}</div>
+                <div className="toast-description">
                     <div className="flex space-between">
                         {this.props.children}
                         <div className="spinner-container relative">
                             <div className="search-bar-spinner" />
                         </div>
                     </div>
-                ) : (
-                    this.props.children
-                )}
-                {_.isString(this.props.content) || !this.props.content
-                    ? this.props.content
-                    : React.createElement(this.props.content as React.ComponentClass)}
+                </div>
+            </div>
+        );
+
+        const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
+            <div className="toast-description">
+                <div>
+                    {this.props.children}
+                    {_.isString(this.props.content) || !this.props.content
+                        ? this.props.content
+                        : React.createElement(this.props.content as React.ComponentClass)}
+                </div>
             </div>
         );
 
         return (
             <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
-                {this.props.showInfoToken ? infoToken : null}
-                {closeButton}
-                <div className="toast-title">{this.props.title}</div>
-                {toastContent}
+                {this.props.isDownload ? (
+                    downloadToast
+                ) : (
+                    <>
+                        {this.props.showInfoToken ? infoToken : null}
+                        <div className="toast-content-container">
+                            {this.props.title && <div className="toast-title">{this.props.title}</div>}
+                            {toastContent}
+                        </div>
+                        {closeButton}
+                    </>
+                )}
             </div>
         );
     }

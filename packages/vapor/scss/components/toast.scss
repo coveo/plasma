@@ -47,8 +47,9 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 
     .toast {
         // Default Style
-        display: block;
+        display: flex;
         min-width: var(--min-width);
+        max-width: var(--max-width);
         margin: $toast-margin;
         padding: var(--padding);
         color: var(--text-color);
@@ -62,6 +63,7 @@ $toast-info-token-padding: 12px 16px 12px 8px;
         // variables
         --background-color: var(--success-60);
         --min-width: 280px;
+        --max-width: 632px;
         --padding: 20px;
         --text-color: var(--white);
 
@@ -106,6 +108,14 @@ $toast-info-token-padding: 12px 16px 12px 8px;
         }
     }
 
+    .toast:not(.mod-small):not(.toast-download) .toast-content-container {
+        display: flex;
+        flex: 1 1 auto;
+        flex-direction: column;
+        justify-content: center;
+        min-height: 55px;
+    }
+
     .toast-title {
         font-weight: $toast-title-font-weight;
         font-size: $toast-text-font-size;
@@ -113,7 +123,10 @@ $toast-info-token-padding: 12px 16px 12px 8px;
     }
 
     .toast-description {
-        margin-top: 10px;
+        display: flex;
+        align-items: center;
+        height: 100%;
+        padding-right: 10px;
         font-size: $toast-text-font-size;
     }
 
@@ -123,13 +136,11 @@ $toast-info-token-padding: 12px 16px 12px 8px;
         flex-direction: row;
         align-items: center;
         justify-content: center;
-        float: left;
         padding: $toast-info-token-padding;
     }
 
     .toast-close {
         position: static;
-        float: right;
         padding-left: $toast-close-padding-left;
         cursor: pointer;
         fill: var(--text-color);
@@ -147,6 +158,10 @@ $toast-info-token-padding: 12px 16px 12px 8px;
         border-radius: 6px;
         box-shadow: var(--high-elevation-on-neutral);
 
+        .toast-download-container {
+            width: 100%;
+        }
+
         .toast-title,
         .toast-close {
             padding: $toast-download-padding;
@@ -162,6 +177,10 @@ $toast-info-token-padding: 12px 16px 12px 8px;
             border-bottom-right-radius: inherit;
             border-bottom-left-radius: inherit;
             filter: drop-shadow(0px 8px 17px rgba(142, 142, 142, 0.22));
+
+            > div {
+                width: 100%;
+            }
 
             .spinner-container {
                 width: 16px;
