@@ -2,12 +2,17 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 import {contains, isUndefined, uniqueId} from 'underscore';
+import {connect} from 'react-redux';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {PropsToOmitUtils} from '../../utils/PropsToOmitUtils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
+import {IReactVaporState} from '../../ReactVaporState';
+import {InputSelectors} from './InputSelectors';
+import {IDispatch, ReduxUtils} from '../../utils';
+import {addInput, removeInput, changeInputValue} from './InputActions';
 
 const validatedInputTypes: string[] = ['number', 'text', 'password'];
 
@@ -243,3 +248,24 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         );
     }
 }
+
+const mapStateToProps = (state: IReactVaporState, ownProps: IInputProps): IInputStateProps => {
+    const input = InputSelectors.getInput(state, {id: ownProps.id});
+    return {
+        valid: input && input.valid,
+        value: input && input.value,
+        disabled: input && input.disabled,
+    };
+};
+
+const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputProps): IInputDispatchProps => ({
+    onRender: (value: string = '', valid = true, disabled = false) =>
+        dispatch(addInput(ownProps.id, value, valid, disabled)),
+    onDestroy: () => dispatch(removeInput(ownProps.id)),
+    onChange: (value: string, valid = true) => {
+        dispatch(changeInputValue(ownProps.id, value, valid));
+        ownProps.changeDirtyState?.(value);
+    },
+});
+
+export const InputConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Input);

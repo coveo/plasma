@@ -54,7 +54,7 @@ const Body = ({
 const CardRow = ({numberOfColumns, numberOfSubRow}: {numberOfColumns?: number; numberOfSubRow?: number}) => (
     <tr className="no-hover">
         {_.times(numberOfColumns, (nRow: number) => (
-            <CardLoading numberOfSubRow={numberOfSubRow} />
+            <CardLoading key={`card-row-loading-${nRow}`} numberOfSubRow={numberOfSubRow} />
         ))}
     </tr>
 );

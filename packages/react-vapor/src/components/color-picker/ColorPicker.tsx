@@ -5,7 +5,7 @@ import {isString, noop, uniqueId} from 'underscore';
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {changeInputValue} from '../input/InputActions';
-import {InputConnected} from '../input/InputConnected';
+import {InputConnected} from '../input/Input';
 import {InputSelectors} from '../input/InputSelectors';
 
 export interface IColorPickerProps extends ChromePickerProps {

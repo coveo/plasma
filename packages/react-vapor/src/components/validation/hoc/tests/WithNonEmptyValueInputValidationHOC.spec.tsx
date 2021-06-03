@@ -1,10 +1,9 @@
-import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
+import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
-import * as _ from 'underscore';
+
 import {getStoreMock} from '../../../../utils/tests/TestUtils';
-import {IInputOwnProps} from '../../../input/Input';
-import {InputConnected} from '../../../input/InputConnected';
+import {IInputOwnProps, InputConnected} from '../../../input/Input';
 import {ValidationActions} from '../../ValidationActions';
 import {ValidationTypes} from '../../ValidationTypes';
 import {
