@@ -1,10 +1,8 @@
+import {render, screen} from '@testing-library/react';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {screen, waitForElementToBeRemoved} from '@testing-library/react';
 
-import {render} from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
 import {IToastProps, Toast, ToastType} from '../Toast';
 
 describe('Toasts', () => {
