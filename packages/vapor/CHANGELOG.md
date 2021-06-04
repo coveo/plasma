@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.9.0](https://github.com/coveo/react-vapor/compare/v22.8.3...v22.9.0) (2021-06-04)
+
+
+### Features
+
+* **top-bar:** add icons for user header section ([#2023](https://github.com/coveo/react-vapor/issues/2023)) ([577385e](https://github.com/coveo/react-vapor/commit/577385efba2f5f7a2b9bc74a1d56204dd9b627b3))
+
+
+
+
+
 ## [22.8.3](https://github.com/coveo/react-vapor/compare/v22.8.2...v22.8.3) (2021-06-04)
 
 **Note:** Version bump only for package coveo-styleguide
