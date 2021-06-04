@@ -251,7 +251,7 @@ importers:
       react: 16.13.1
       react-bootstrap: 0.33.1
       react-codemirror2: 7.2.1
-      react-color: 2.17.3
+      react-color: 2.19.3
       react-diff-viewer: ^3.1.1
       react-dnd: 2.6.0
       react-dnd-html5-backend: 2.6.0
@@ -293,7 +293,7 @@ importers:
       rc-tooltip: 3.7.3
       react-bootstrap: 0.33.1_react-dom@16.13.1+react@16.13.1
       react-codemirror2: 7.2.1_codemirror@5.60.0+react@16.13.1
-      react-color: 2.17.3_react@16.13.1
+      react-color: 2.19.3_react@16.13.1
       react-diff-viewer: 3.1.1_react-dom@16.13.1+react@16.13.1
       react-dnd: 2.6.0_react@16.13.1
       react-dnd-html5-backend: 2.6.0
@@ -14868,17 +14868,19 @@ packages:
       react: 16.13.1
     dev: false
 
-  /react-color/2.17.3_react@16.13.1:
-    resolution: {integrity: sha512-1dtO8LqAVotPIChlmo6kLtFS1FP89ll8/OiA8EcFRDR+ntcK+0ukJgByuIQHRtzvigf26dV5HklnxDIvhON9VQ==}
+  /react-color/2.19.3_react@16.13.1:
+    resolution: {integrity: sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==}
+    peerDependencies:
+      react: '*'
     dependencies:
       '@icons/material': 0.2.4_react@16.13.1
       lodash: 4.17.21
+      lodash-es: 4.17.21
       material-colors: 1.2.6
       prop-types: 15.7.2
+      react: 16.13.1
       reactcss: 1.2.3
       tinycolor2: 1.4.2
-    transitivePeerDependencies:
-      - react
     dev: false
 
   /react-diff-viewer/3.1.1_react-dom@16.13.1+react@16.13.1:
