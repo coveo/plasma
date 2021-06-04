@@ -203,7 +203,7 @@ importers:
       '@types/jquery': 2.0.46
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
-      '@types/rc-slider': 8.6.0
+      '@types/rc-slider': 8.6.6
       '@types/react': 16.9.19
       '@types/react-bootstrap': 0.32.15
       '@types/react-codemirror': 1.0.2
@@ -286,7 +286,7 @@ importers:
       unidiff: 0.0.4
     dependencies:
       '@types/codemirror': 0.0.62
-      '@types/rc-slider': 8.6.0
+      '@types/rc-slider': 8.6.6
       chosen-js: 1.8.7
       query-string: 6.13.1
       rc-slider: 8.7.1
@@ -3018,17 +3018,17 @@ packages:
     resolution: {integrity: sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==}
     dev: true
 
-  /@types/rc-slider/8.6.0:
-    resolution: {integrity: sha512-PaJZcUCip4ba3fIvbOkJ4IXs1s7aBj5WyBHwF2vowJGOVyA5ACSwxqi3z4O802JdmEzboeru0LofLna5LO2CJw==}
+  /@types/rc-slider/8.6.6:
+    resolution: {integrity: sha512-2Q3vwKrSm3PbgiMNwzxMkOaMtcAGi0xQ8WPeVKoabk1vNYHiVR44DMC3mr9jC2lhbxCBgGBJWF9sBhmnSDQ8Bg==}
     dependencies:
       '@types/rc-tooltip': 3.7.3
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: false
 
   /@types/rc-tooltip/3.7.3:
     resolution: {integrity: sha512-2+lEqXGGY6MSoE/SGEdSf75B1TGljQXBdeaDfBNhXASytMU/p/1XeftZgphERZrjT4Afsh25nH/7tFlTmpdOxQ==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: false
 
   /@types/react-bootstrap/0.32.15:
