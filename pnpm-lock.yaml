@@ -68,7 +68,7 @@ importers:
       codemirror: ^5.58.2
       concurrently: ^6.0.2
       copy-webpack-plugin: ^6.4.1
-      coveo-styleguide: ^22.9.0
+      coveo-styleguide: ^22.9.1
       css-loader: 3.4.2
       d3: 3.5.17
       faker: 4.1.0
@@ -89,7 +89,7 @@ importers:
       react-router: ^5.2.0
       react-router-dom: ^5.2.0
       react-syntax-highlighter: 13.5.1
-      react-vapor: ^22.9.0
+      react-vapor: ^22.9.1
       redux: 4.0.5
       redux-devtools-extension: 2.13.8
       redux-promise-middleware: 6.1.2
@@ -226,7 +226,7 @@ importers:
       codecov: 3.2.0
       codemirror: ^5.54.0
       concurrently: 5.1.0
-      coveo-styleguide: ^22.9.0
+      coveo-styleguide: ^22.9.1
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
