@@ -3,47 +3,34 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v23.0.0-next.3...v23.0.0-next.4) (2021-06-01)
-
-
-### Bug Fixes
-
-* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
-
-
-
-
-
-# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
-
-
-### Bug Fixes
-
-* **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
-
-
-
-
-
-# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+# [22.9.0](https://github.com/coveo/react-vapor/compare/v22.8.3...v22.9.0) (2021-06-04)
 
 
 ### Features
 
-* **vapor:** implement new typekit ([a7f03b5](https://github.com/coveo/react-vapor/commit/a7f03b51725749c82b2f3e3bd3d0d0fe66f69b74))
-
-
-### BREAKING CHANGES
-
-* **vapor:** All headings (h1-h6) and paragraphs (p) don't have the same visual style as before.
-They look very different up to a point at which we must acknowledge those changes are considered
-breaking.
+* **top-bar:** add icons for user header section ([#2023](https://github.com/coveo/react-vapor/issues/2023)) ([577385e](https://github.com/coveo/react-vapor/commit/577385efba2f5f7a2b9bc74a1d56204dd9b627b3))
 
 
 
 
 
-# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+## [22.8.3](https://github.com/coveo/react-vapor/compare/v22.8.2...v22.8.3) (2021-06-04)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [22.8.2](https://github.com/coveo/react-vapor/compare/v22.8.1...v22.8.2) (2021-06-01)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [22.8.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v22.8.1) (2021-06-01)
 
 **Note:** Version bump only for package root
 
