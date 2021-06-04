@@ -23,7 +23,7 @@ export interface IToastProps {
      */
     content?: React.ReactNode;
     /**
-     * @deprecated - can't find any instances in RV or Admin that use this but leaving in just case
+     * @deprecated
      */
     onRender?: () => void;
     /**
