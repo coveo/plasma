@@ -79,15 +79,9 @@ export const Toast: React.FC<IToastProps> = ({
         };
     }, []);
 
-    const close = () => {
-        if (onClose) {
-            onClose();
-        }
-    };
-
     const handleSetTimeout = () => {
         if (dismissible && dismiss > 0) {
-            timeout = setTimeout(() => close(), dismiss) as any;
+            timeout = setTimeout(() => onClose?.(), dismiss) as any;
         }
     };
 
@@ -112,7 +106,7 @@ export const Toast: React.FC<IToastProps> = ({
     );
 
     const closeButton = dismissible && !isSmall && (
-        <span className="toast-close" onClick={() => close()}>
+        <span className="toast-close" onClick={() => onClose?.()}>
             <Svg svgName="close" className="icon mod-lg" />
         </span>
     );

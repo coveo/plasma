@@ -1,4 +1,5 @@
-import {render, screen} from '@testing-library/react';
+import {render, screen, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -280,30 +281,21 @@ describe('Toasts', () => {
             expect(onCloseToast).toHaveBeenCalledTimes(1);
         });
 
-        it.skip('should not dismiss the toast if the dismiss is set to 0', async () => {
+        it('should not dismiss the toast if the dismiss is set to 0', async () => {
             const newToastAttributes = _.extend({}, toastBasicAttributes, {dismiss: 0});
 
-            // const {container} = render(<Toast {...newToastAttributes} />);
+            render(<Toast {...newToastAttributes} />);
 
-            // userEvent.hover(container);
+            userEvent.hover(screen.queryByText('some title'));
 
-            // await waitForElementToBeRemoved(container);
-
-            // screen.logTestingPlaygroundURL();
-
-            const component = mount(<Toast {...newToastAttributes} />, {attachTo: document.getElementById('App')});
-
-            expect(onCloseToast).not.toHaveBeenCalled();
-
-            component.simulate('mouseEnter');
-            jest.advanceTimersByTime(dismissDelay);
-
-            expect(onCloseToast).not.toHaveBeenCalled();
-
-            component.simulate('mouseLeave');
-            jest.advanceTimersByTime(dismissDelay);
-
-            expect(onCloseToast).not.toHaveBeenCalled();
+            await waitFor(
+                () => {
+                    expect(screen.queryByText('some title')).toBeInTheDocument();
+                },
+                {
+                    timeout: dismissDelay,
+                }
+            );
         });
     });
 
