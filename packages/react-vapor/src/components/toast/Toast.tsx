@@ -27,7 +27,7 @@ export interface IToastProps {
      */
     onRender?: () => void;
     /**
-     * @deprecated - can't find any instances in RV or Admin that use this but leaving in just case
+     * @deprecated - Use onClose instead
      */
     onDestroy?: () => void;
 }
