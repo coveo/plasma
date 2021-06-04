@@ -17,12 +17,18 @@ export interface IToastProps {
     isSmall?: boolean;
     className?: string;
     showInfoToken?: boolean;
+    onClose?: () => void;
     /**
      * @deprecated use children instead
      */
     content?: React.ReactNode;
+    /**
+     * @deprecated
+     */
     onRender?: () => void;
-    onClose?: () => void;
+    /**
+     * @deprecated - Use onClose instead
+     */
     onDestroy?: () => void;
 }
 
@@ -40,102 +46,112 @@ const InfoTokenTypeMapping: Record<string, InfoTokenType> = {
     [ToastType.Error]: InfoTokenType.Critical,
 };
 
-export class Toast extends React.Component<IToastProps> {
-    private timeout: number;
+/**
+ * A toast should be a short notif and not a lengthy piece of daily news,
+ * so a character limit of ~150 max is recommended
+ */
 
-    static defaultProps: Partial<IToastProps> = {
-        dismissible: true,
-        type: ToastType.Success,
-        showInfoToken: true,
+export const Toast: React.FC<IToastProps> = ({
+    title,
+    type = ToastType.Success,
+    dismiss,
+    dismissible = true,
+    animate,
+    isDownload,
+    isSmall,
+    className,
+    showInfoToken = true,
+    children,
+    onClose,
+    content,
+    onRender,
+    onDestroy,
+}) => {
+    let timeout: number;
+
+    React.useEffect(() => {
+        onRender?.();
+        handleSetTimeout();
+
+        return () => {
+            clearTimeout();
+            onDestroy?.();
+        };
+    }, []);
+
+    const handleSetTimeout = () => {
+        if (dismissible && dismiss > 0) {
+            timeout = setTimeout(() => onClose?.(), dismiss) as any;
+        }
     };
 
-    componentDidMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
+    const handleClearTimeout = () => {
+        clearTimeout(timeout);
+    };
+
+    const classes = classNames(
+        'toast',
+        {
+            'mod-success': type === ToastType.Success || (!className && !type),
+            'mod-warning': type === ToastType.Warning,
+            'mod-error': type === ToastType.Error,
+            'mod-info': type === ToastType.Info,
+            'mod-animated': _.isUndefined(animate) || animate === true,
+            'mod-small': isSmall,
+        },
+        className,
+        {
+            'toast-download': isDownload,
         }
-        this.setTimeout();
-    }
+    );
 
-    componentWillUnmount() {
-        this.clearTimeout();
+    const closeButton = dismissible && !isSmall && (
+        <span className="toast-close" onClick={() => onClose?.()}>
+            <Svg svgName="close" className="icon mod-lg" />
+        </span>
+    );
 
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
-    }
+    const infoToken = !isSmall && !isDownload && (
+        <InfoToken type={InfoTokenTypeMapping[type]} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
+    );
 
-    private setTimeout() {
-        if (this.props.dismissible && this.props.dismiss > 0) {
-            this.timeout = setTimeout(() => this.close(), this.props.dismiss) as any;
-        }
-    }
-
-    private clearTimeout() {
-        clearTimeout(this.timeout);
-    }
-
-    private close() {
-        if (this.props.onClose) {
-            this.props.onClose();
-        }
-    }
-
-    render() {
-        const classes = classNames(
-            'toast',
-            {
-                'mod-success': this.props.type === ToastType.Success || (!this.props.className && !this.props.type),
-                'mod-warning': this.props.type === ToastType.Warning,
-                'mod-error': this.props.type === ToastType.Error,
-                'mod-info': this.props.type === ToastType.Info,
-                'mod-animated': _.isUndefined(this.props.animate) || this.props.animate === true,
-                'mod-small': this.props.isSmall,
-            },
-            this.props.className,
-            {
-                'toast-download': this.props.isDownload,
-            }
-        );
-
-        const closeButton = this.props.dismissible && !this.props.isSmall && (
-            <span className="toast-close" onClick={() => this.close()}>
-                <Svg svgName="close" className="icon mod-lg" />
-            </span>
-        );
-
-        const infoToken = !this.props.isSmall && !this.props.isDownload && (
-            <InfoToken
-                type={InfoTokenTypeMapping[this.props.type]}
-                size={InfoTokenSize.Large}
-                mode={InfoTokenMode.Filled}
-            />
-        );
-
-        const toastContent = (!!this.props.content || !!this.props.children) && !this.props.isSmall && (
+    const downloadToast = (
+        <div className="toast-download-container flex flex-column">
+            <div className="toast-title">{title}</div>
             <div className="toast-description">
-                {this.props.isDownload ? (
-                    <div className="flex space-between">
-                        {this.props.children}
-                        <div className="spinner-container relative">
-                            <div className="search-bar-spinner" />
-                        </div>
+                <div className="flex space-between">
+                    {children}
+                    <div className="spinner-container relative">
+                        <div className="search-bar-spinner" />
                     </div>
-                ) : (
-                    this.props.children
-                )}
-                {_.isString(this.props.content) || !this.props.content
-                    ? this.props.content
-                    : React.createElement(this.props.content as React.ComponentClass)}
+                </div>
             </div>
-        );
+        </div>
+    );
 
-        return (
-            <div className={classes} onMouseEnter={() => this.clearTimeout()} onMouseLeave={() => this.setTimeout()}>
-                {this.props.showInfoToken ? infoToken : null}
-                {closeButton}
-                <div className="toast-title">{this.props.title}</div>
-                {toastContent}
+    const toastContent = (!!content || !!children) && !isSmall && (
+        <div className="toast-description">
+            <div>
+                {children}
+                {_.isString(content) || !content ? content : React.createElement(content as React.ComponentClass)}
             </div>
-        );
-    }
-}
+        </div>
+    );
+
+    return (
+        <div className={classes} onMouseEnter={() => handleClearTimeout()} onMouseLeave={() => handleSetTimeout()}>
+            {isDownload ? (
+                downloadToast
+            ) : (
+                <>
+                    {showInfoToken ? infoToken : null}
+                    <div className="toast-content-container">
+                        {title && <div className="toast-title">{title}</div>}
+                        {toastContent}
+                    </div>
+                    {closeButton}
+                </>
+            )}
+        </div>
+    );
+};
