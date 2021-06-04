@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.9.1](https://github.com/coveo/react-vapor/compare/v22.9.0...v22.9.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* upgrade @types/rc-slider from 8.6.0 to 8.6.6 ([eba5210](https://github.com/coveo/react-vapor/commit/eba5210ca804f320f45e38244d5692a4af458f95))
+* upgrade multiple dependencies with Snyk ([814cdac](https://github.com/coveo/react-vapor/commit/814cdac7348301411d6c25a169636b6ff14dc4da))
+
+
+
+
+
 # [22.9.0](https://github.com/coveo/react-vapor/compare/v22.8.3...v22.9.0) (2021-06-04)
 
 **Note:** Version bump only for package react-vapor
