@@ -90,7 +90,7 @@ importers:
       react-router-dom: ^5.2.0
       react-syntax-highlighter: 13.5.1
       react-vapor: ^22.9.3
-      redux: 4.0.5
+      redux: 4.1.0
       redux-devtools-extension: 2.13.8
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.3.0
@@ -125,9 +125,9 @@ importers:
       react-router-dom: 5.2.0_react@16.13.1
       react-syntax-highlighter: 13.5.1_react@16.13.1
       react-vapor: link:../react-vapor
-      redux: 4.0.5
-      redux-devtools-extension: 2.13.8_redux@4.0.5
-      redux-promise-middleware: 6.1.2_redux@4.0.5
+      redux: 4.1.0
+      redux-devtools-extension: 2.13.8_redux@4.1.0
+      redux-promise-middleware: 6.1.2_redux@4.1.0
       redux-thunk: 2.3.0
       reselect: 4.0.0
       snyk: 1.543.0
@@ -145,7 +145,7 @@ importers:
       '@types/react-router': 5.1.13
       '@types/react-router-dom': 5.1.7
       '@types/react-syntax-highlighter': 11.0.4
-      '@types/redux-promise-middleware': 6.0.0_redux@4.0.5
+      '@types/redux-promise-middleware': 6.0.0_redux@4.1.0
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.15.1
       concurrently: 6.0.2
@@ -3146,6 +3146,15 @@ packages:
     deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
     dependencies:
       redux-promise-middleware: 6.1.2_redux@4.0.5
+    transitivePeerDependencies:
+      - redux
+    dev: true
+
+  /@types/redux-promise-middleware/6.0.0_redux@4.1.0:
+    resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
+    deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
+    dependencies:
+      redux-promise-middleware: 6.1.2_redux@4.1.0
     transitivePeerDependencies:
       - redux
     dev: true
@@ -15368,12 +15377,12 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
-  /redux-devtools-extension/2.13.8_redux@4.0.5:
+  /redux-devtools-extension/2.13.8_redux@4.1.0:
     resolution: {integrity: sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==}
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.0.5
+      redux: 4.1.0
     dev: false
 
   /redux-logger/3.0.6:
@@ -15394,6 +15403,14 @@ packages:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
       redux: 4.0.5
+    dev: true
+
+  /redux-promise-middleware/6.1.2_redux@4.1.0:
+    resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
+    peerDependencies:
+      redux: ^2.0.0 || ^3.0.0 || ^4.0.0
+    dependencies:
+      redux: 4.1.0
 
   /redux-thunk/2.3.0:
     resolution: {integrity: sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==}
@@ -15411,6 +15428,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       symbol-observable: 1.2.0
+    dev: true
 
   /redux/4.1.0:
     resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
