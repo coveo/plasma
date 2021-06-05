@@ -20,7 +20,7 @@ const Home = () => (
                     </p>
                 </div>
                 <div className="home-card-footer">
-                    <a href="#" className="home-card-footer-link">
+                    <a href="#" className="home-card-footer-link link">
                         View More
                     </a>
                 </div>
@@ -60,7 +60,7 @@ const Home = () => (
                     </p>
                 </div>
                 <div className="home-card-footer">
-                    <a href="#" className="home-card-footer-link">
+                    <a href="#" className="home-card-footer-link link">
                         View More
                     </a>
                 </div>
