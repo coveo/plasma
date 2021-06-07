@@ -28,6 +28,7 @@ export interface InfoTokenProps {
     type: InfoTokenType;
     size: InfoTokenSize;
     mode: InfoTokenMode;
+    className?: string;
 }
 
 const SvgMapping: Record<InfoTokenType, Record<InfoTokenSize, string>> = {
@@ -83,9 +84,9 @@ const ModeClassMapping: Record<InfoTokenMode, string> = {
     [InfoTokenMode.Filled]: 'filled',
 };
 
-export const InfoToken: React.FunctionComponent<InfoTokenProps> = ({mode, size, type}) => (
+export const InfoToken: React.FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => (
     <Svg
-        className={classNames('info-token', ModeClassMapping[mode])}
+        className={classNames('info-token', ModeClassMapping[mode], SizeClassMapping[size], className)}
         svgName={SvgMapping[type][size]}
         svgClass={classNames('icon mod-stroke', SizeClassMapping[size], TypeColorMapping[type])}
     />
