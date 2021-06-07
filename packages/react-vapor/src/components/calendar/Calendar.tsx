@@ -286,7 +286,7 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
             this.countdownHeader = (
                 <div id="countdown-header">
-                    <h2 className="bold mb1">{countdownDays} left</h2>
+                    <h5 className="bold mb1">{countdownDays} left </h5>
                     <div className="smaller">in {this.props.months[selectedMonth]}</div>
                 </div>
             );
