@@ -4,7 +4,7 @@ import {AppendedValueSide, Section, Slider} from 'react-vapor';
 import {ExampleComponent} from '../ComponentsInterface';
 
 export const SliderExamples: ExampleComponent = () => (
-    <Section title="Slider Examples">
+    <Section>
         <SimpleSliderExample />
         <SliderExample />
         <SliderAsymetric />
@@ -13,26 +13,24 @@ export const SliderExamples: ExampleComponent = () => (
 );
 
 const SimpleSliderExample: React.FunctionComponent = () => (
-    <Section level={2} title="Simple Slider">
-        <Section level={3} title="A simple slider with marks, step, a formated tooltip and an initial value">
-            <Slider
-                id="🍄"
-                hasTooltip
-                step={25}
-                marks={{
-                    0: 'Lower',
-                    50: 'Middle',
-                    100: 'Higher',
-                }}
-                initialValue={50}
-                appendValueFormatter={(value: number) => `${value}$`}
-            />
-        </Section>
+    <Section level={2} title="A simple slider with marks, step, a formated tooltip and an initial value">
+        <Slider
+            id="🍄"
+            hasTooltip
+            step={25}
+            marks={{
+                0: 'Lower',
+                50: 'Middle',
+                100: 'Higher',
+            }}
+            initialValue={50}
+            appendValueFormatter={(value: number) => `${value}$`}
+        />
     </Section>
 );
 
 const SliderExample: React.FunctionComponent = () => (
-    <Section level={3} key="two" title="Slider with asymetric range and initial value">
+    <Section level={2} key="two" title="Slider with asymetric range and initial value">
         <Slider
             key="patate"
             min={-2000}
@@ -62,7 +60,7 @@ const SliderAsymetric: React.FunctionComponent = () => {
     const [value, setValue] = React.useState(null);
 
     return (
-        <Section key="one" level={3} title={`Slider with marks and steps. Its current value is ${value}`}>
+        <Section key="one" level={2} title={`Slider with marks and steps. Its current value is ${value}`}>
             <Slider
                 key="pwel"
                 min={-100}
@@ -111,7 +109,7 @@ const SliderWithPercent: React.FunctionComponent = () => {
     };
 
     return (
-        <Section key="one" level={3} title={`Slider showing the percent allocated to each side`}>
+        <Section key="one" level={2} title={`Slider showing the percent allocated to each side`}>
             <Slider
                 key="gnagnagna"
                 min={-50}

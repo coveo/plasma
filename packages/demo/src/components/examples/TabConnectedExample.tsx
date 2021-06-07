@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Svg, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
+import {Section, Svg, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
 
 const TAB1_ID = 'tab1';
 const TAB2_ID = 'tab2';
@@ -14,9 +14,8 @@ const TAB33_ID = 'tab33';
 export class TabsExamples extends React.Component<any, any> {
     render() {
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Tabs</label>
+            <Section>
+                <Section level={3} title="Basic Tabs">
                     <div>
                         <TabNavigation>
                             <TabConnected id={TAB1_ID} title="A Tab" />
@@ -59,14 +58,13 @@ export class TabsExamples extends React.Component<any, any> {
                             </TabPaneConnected>
                         </TabContent>
                     </div>
-                </div>
-
-                <div className="form-group">
-                    <label className="form-control-label">
-                        Tabs with custom attributes on element (use the inspector to see changes)
-                    </label>
+                </Section>
+                <Section level={3} title="Tabs with custom attributes on element (use the inspector to see changes)">
                     <div>
-                        <TabNavigation className={'tab-navigation-custom-class'} style={{backgroundColor: 'grey'}}>
+                        <TabNavigation
+                            className={'tab-navigation-custom-class'}
+                            style={{backgroundColor: 'var(--grey-20)'}}
+                        >
                             <TabConnected id={TAB11_ID} title="A Tab" />
                             <TabConnected id={TAB22_ID} title="Another Tab" />
                             <TabConnected id={TAB33_ID} title="Yet Another Tab" />
@@ -87,8 +85,8 @@ export class TabsExamples extends React.Component<any, any> {
                             </TabPaneConnected>
                         </TabContent>
                     </div>
-                </div>
-            </div>
+                </Section>
+            </Section>
         );
     }
 }
