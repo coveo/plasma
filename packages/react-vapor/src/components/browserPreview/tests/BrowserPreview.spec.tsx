@@ -1,20 +1,26 @@
-import {mount, shallow} from 'enzyme';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
-import {Tooltip} from '../../tooltip';
 import {BrowserPreview} from '../BrowserPreview';
 
 describe('BrowserPreview', () => {
-    it('renders without errors', () => {
-        expect(() => {
-            shallow(<BrowserPreview />);
-        }).not.toThrow();
+    it('renders the specified header description as tooltip title', async () => {
+        const headerDescription = '🥰';
+        render(<BrowserPreview headerDescription={headerDescription} />);
+        userEvent.hover(
+            screen.getByRole('img', {
+                name: /info icon/i,
+            })
+        );
+
+        expect(await screen.findByText(headerDescription)).toBeVisible();
     });
 
-    it('renders the specified header description as tooltip title', () => {
-        const headerDescription = '🥰';
-        const component = mount(<BrowserPreview headerDescription={headerDescription} />);
+    it('renders the specific title when provided', () => {
+        const headerTitle = 'La CacouSoudane';
+        render(<BrowserPreview title={headerTitle} />);
 
-        expect(component.find(Tooltip).prop('title')).toEqual(headerDescription);
+        expect(screen.getByText(/la cacousoudane/i)).toBeInTheDocument();
     });
 });
