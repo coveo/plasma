@@ -63,7 +63,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
     }, []);
 
     const headerClassesCombine = classNames(
-        'cursor-pointer flex space-between center-align p2',
+        'cursor-pointer flex space-between center-align',
         headerClasses,
         {
             'mod-border-bottom mod-border-top': withBorders,
