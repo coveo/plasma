@@ -39,16 +39,14 @@ describe('CollapsibleInfoBox', () => {
             expect(component.find(CollapsibleConnected).exists()).toBe(true);
         });
 
-        it('should display a <h3 /> and a <Svg /> if not a section', () => {
-            expect(component.find('h3').exists()).toBe(true);
+        it('should render a <h6 /> and <svg /> in header', () => {
+            expect(component.find('h6').exists()).toBe(true);
             expect(component.find(Svg).length).toBe(2);
         });
 
-        it('should display a <h2 /> instead of a <h3 /> and a <Svg /> if it is a section', () => {
+        it('should not render a <svg /> in header if isSection', () => {
             mountComponent({isSection: true});
-
-            expect(component.find('h2').exists()).toBe(true);
-            expect(component.find('h3').exists()).toBe(false);
+            expect(component.find('h6').exists()).toBe(true);
             expect(component.find(Svg).length).toBe(1);
         });
 
