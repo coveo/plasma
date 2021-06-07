@@ -3,14 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v23.0.0-next.3...v23.0.0-next.4) (2021-06-01)
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.0...v23.0.0-next.5) (2021-06-04)
+
+
+### Bug Fixes
+
+* upgrade @types/rc-slider from 8.6.0 to 8.6.6 ([eba5210](https://github.com/coveo/react-vapor/commit/eba5210ca804f320f45e38244d5692a4af458f95))
+* upgrade multiple dependencies with Snyk ([814cdac](https://github.com/coveo/react-vapor/commit/814cdac7348301411d6c25a169636b6ff14dc4da))
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
 
 
 ### Bug Fixes
 
 * **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
-
-
 
 
 
@@ -23,9 +31,17 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-
-
 # [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+
+
+
+
+
+# [22.9.0](https://github.com/coveo/react-vapor/compare/v22.8.3...v22.9.0) (2021-06-04)
 
 **Note:** Version bump only for package react-vapor
 
@@ -33,7 +49,23 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+## [22.8.3](https://github.com/coveo/react-vapor/compare/v22.8.2...v22.8.3) (2021-06-04)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.8.2](https://github.com/coveo/react-vapor/compare/v22.8.1...v22.8.2) (2021-06-01)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.8.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v22.8.1) (2021-06-01)
 
 **Note:** Version bump only for package react-vapor
 

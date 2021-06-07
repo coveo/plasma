@@ -1,7 +1,7 @@
 import 'rc-slider/assets/index.css';
 
 import classNames from 'classnames';
-import {Range, SliderProps} from 'rc-slider';
+import {CommonApiProps, Range} from 'rc-slider';
 import {RCTooltip} from 'rc-tooltip';
 import * as React from 'react';
 import {connect} from 'react-redux';
@@ -24,7 +24,7 @@ export enum AppendedValueSide {
     both = 'BOTH',
 }
 
-export interface SliderOwnProps extends SliderProps {
+export interface SliderOwnProps extends CommonApiProps {
     id: string;
     initialValue?: number;
     crossingPoint?: number;
