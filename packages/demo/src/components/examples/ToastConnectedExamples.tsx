@@ -20,7 +20,6 @@ export class ToastConnectedExamples extends React.Component<IToastConnectedExamp
         return (
             <div className="mt2">
                 <div className="form-group">
-                    <label className="form-control-label">Toasts</label>
                     <div className="flex flex-wrap">
                         <button
                             className="btn m0 mr1 mb1"

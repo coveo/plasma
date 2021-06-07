@@ -33,7 +33,7 @@ export interface IExampleRowData {
 }
 
 export const TableHOCExamples = () => (
-    <Section title="Table HOC">
+    <Section>
         <Section level={2} title="Table with Data">
             <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />
         </Section>
