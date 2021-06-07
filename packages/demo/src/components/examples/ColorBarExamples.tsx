@@ -55,7 +55,7 @@ export const ColorBarExamples = () => (
             <label className="form-control-label">ColorBar in a Card</label>
             <div className="form-control">
                 <div className="material-card" style={{width: '300px'}}>
-                    <h2 className="p2">I am a card and I have a cool ColorBar border</h2>
+                    <h5 className="p2">I am a card and I have a cool ColorBar border</h5>
                     <div className="px2 pb2">(No, it's not a real border, but don't tell anyone.)</div>
                     <ColorBar
                         className="color-bar-border"
