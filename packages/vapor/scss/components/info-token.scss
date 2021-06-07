@@ -1,4 +1,18 @@
 .info-token {
+    display: inline-block;
+
+    &.mod-16 {
+        height: 16px;
+    }
+
+    &.mod-24 {
+        height: 24px;
+    }
+
+    &.mod-32 {
+        height: 32px;
+    }
+
     &.filled {
         .icon {
             fill: var(--fill);
