@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix general guidelines demo ([827b3e6](https://github.com/coveo/react-vapor/commit/827b3e652c1a34ee7c3b27e76103cc30841c58c9))
+* fix style for List demo ([7beb2bb](https://github.com/coveo/react-vapor/commit/7beb2bb9747560401cb58d7d46b4806eb9dc016c))
+* fix style for utilities demo ([b739256](https://github.com/coveo/react-vapor/commit/b7392563ffaebfbdd254d4962e90711f7b09a2f8))
+
+
+
+
+
 # [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
 
 
