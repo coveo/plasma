@@ -56,10 +56,8 @@ textarea {
     }
 }
 
-.js-numeric-input {
-    &.disabled {
-        color: var(--grey-60);
-    }
+.js-numeric-input.disabled {
+    color: var(--grey-60);
 }
 
 .input-group {
