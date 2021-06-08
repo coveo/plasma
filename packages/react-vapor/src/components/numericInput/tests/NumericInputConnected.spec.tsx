@@ -269,7 +269,6 @@ describe('Numeric Input', () => {
                     },
                 });
 
-                screen.logTestingPlaygroundURL();
                 expect(screen.getByRole('button', {name: /minus icon/i})).toBeDisabled();
                 expect(screen.getByRole('button', {name: /plus icon/i})).toBeDisabled();
                 expect(screen.getByRole('textbox')).toBeDisabled();
