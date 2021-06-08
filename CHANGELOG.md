@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+
+
+
+
+
 # [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v23.0.0-next.6...v23.0.0-next.7) (2021-06-08)
 
 
