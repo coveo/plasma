@@ -62,9 +62,14 @@ export const CollapsibleDisconnected: React.FunctionComponent<
         return () => onUnmount();
     }, []);
 
-    const headerClassesCombine = classNames('cursor-pointer flex space-between center-align', headerClasses, {
-        'mod-border-bottom mod-border-top': withBorders,
-    });
+    const headerClassesCombine = classNames(
+        'cursor-pointer flex space-between center-align',
+        headerClasses,
+        {
+            'mod-border-bottom mod-border-top': withBorders,
+        },
+        {disabled}
+    );
 
     return (
         <div className={classNames(className)}>
@@ -81,14 +86,21 @@ export const CollapsibleDisconnected: React.FunctionComponent<
                 {collapsibleToggleIcon || (
                     <CollapsibleToggle
                         expanded={expanded}
-                        svgClassName={classNames(toggleIconClassName, {disabled: disabled})}
+                        svgClassName={classNames(toggleIconClassName, {disabled})}
                         className="mr2"
                     />
                 )}
             </div>
-            <SlideY id={id} in={expanded} timeout={COLLAPSIBLE_EFFECT_DURATION} duration={COLLAPSIBLE_EFFECT_DURATION}>
-                {children}
-            </SlideY>
+            {!disabled && (
+                <SlideY
+                    id={id}
+                    in={expanded}
+                    timeout={COLLAPSIBLE_EFFECT_DURATION}
+                    duration={COLLAPSIBLE_EFFECT_DURATION}
+                >
+                    <div className="collapsible-content">{children}</div>
+                </SlideY>
+            )}
         </div>
     );
 };

@@ -3,6 +3,7 @@ import * as React from 'react';
 
 import {Svg} from '../svg/Svg';
 import {CollapsibleConnected} from './CollapsibleConnected';
+
 export interface CollapsibleInfoBoxProps {
     id: string;
     title: string;
@@ -13,40 +14,45 @@ export interface CollapsibleInfoBoxProps {
     sectionAdditionalContentClasses?: string;
 }
 
-export class CollapsibleInfoBox extends React.PureComponent<CollapsibleInfoBoxProps> {
-    render() {
-        return (
-            <CollapsibleConnected
-                id={this.props.id}
-                className={'collapsible-info-box container label mod-rounded-border-2'}
-                headerClasses="p1"
-                headerContent={this.getHeader()}
-                expandedOnMount={this.props.expandedOnMount}
-            >
-                <div className={'collapsible-info-box align-with-icon px1 pb1 mr3'}>{this.props.children}</div>
-            </CollapsibleConnected>
-        );
-    }
-
-    private getHeader(): React.ReactNode {
-        return this.props.isSection ? (
-            <div className="flex pl1">
-                <h2>{this.props.title}</h2>
-                {this.props.sectionAdditionalContent && (
-                    <span className={this.getAdditionalInfoClasses()}>{this.props.sectionAdditionalContent}</span>
+export const CollapsibleInfoBox: React.FC<CollapsibleInfoBoxProps> = ({
+    id,
+    title,
+    expandedOnMount,
+    isSection,
+    sectionAdditionalContent,
+    sectionAdditionalContentCondition,
+    sectionAdditionalContentClasses,
+    children,
+}) => {
+    const getHeader = (): React.ReactNode =>
+        isSection ? (
+            <div className="flex flex-center pl1">
+                <h6>{title}</h6>
+                {sectionAdditionalContent && (
+                    <span className={getAdditionalInfoClasses()}>{sectionAdditionalContent}</span>
                 )}
             </div>
         ) : (
-            <div className="inline-flex">
+            <div className="flex">
                 <Svg svgName="info" className="icon mod-20 mx1 js-info-svg" />
-                <h3>{this.props.title}</h3>
+                <h6>{title}</h6>
             </div>
         );
-    }
 
-    private getAdditionalInfoClasses() {
-        return classNames(this.props.sectionAdditionalContentClasses, {
-            hidden: this.props.sectionAdditionalContentCondition && !this.props.sectionAdditionalContentCondition(),
+    const getAdditionalInfoClasses = () =>
+        classNames(sectionAdditionalContentClasses, {
+            hidden: sectionAdditionalContentCondition && !sectionAdditionalContentCondition(),
         });
-    }
-}
+
+    return (
+        <CollapsibleConnected
+            id={id}
+            className={'collapsible-info-box container label mod-rounded-border-2'}
+            headerClasses="p1"
+            headerContent={getHeader()}
+            expandedOnMount={expandedOnMount}
+        >
+            <div className={'collapsible-info-box align-with-icon p1 mr3'}>{children}</div>
+        </CollapsibleConnected>
+    );
+};
