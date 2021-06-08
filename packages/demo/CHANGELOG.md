@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.11.0](https://github.com/coveo/react-vapor/compare/v22.10.0...v22.11.0) (2021-06-08)
+
+
+### Features
+
+* **browserpreview:** +title props ([761c1fb](https://github.com/coveo/react-vapor/commit/761c1fbff5f1acdbe7903ef3622e807423cbe883))
+
+
+
+
+
 # [22.10.0](https://github.com/coveo/react-vapor/compare/v22.9.6...v22.10.0) (2021-06-08)
 
 
