@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.9.4](https://github.com/coveo/react-vapor/compare/v22.9.3...v22.9.4) (2021-06-08)
+
+
+### Bug Fixes
+
+* upgrade classnames from 2.2.6 to 2.3.1 ([5fafb7e](https://github.com/coveo/react-vapor/commit/5fafb7e6c966d54e4eceb31584d0ea4dc0b02f99))
+
+
+
+
+
 ## [22.9.3](https://github.com/coveo/react-vapor/compare/v22.9.2...v22.9.3) (2021-06-04)
 
 **Note:** Version bump only for package root
