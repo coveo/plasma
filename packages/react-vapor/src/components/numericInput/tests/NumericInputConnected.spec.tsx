@@ -1,7 +1,8 @@
-import {ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
+import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 
+import {render, screen} from '../../../TestUtils';
 import {keyCode} from '../../../utils/InputUtils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {NumericInputActions} from '../NumericInputActions';
@@ -257,6 +258,20 @@ describe('Numeric Input', () => {
                 component.find('button').at(1).prop<any>('onClick')();
 
                 expect(store.getActions()).toContainEqual(NumericInputActions.setValue(id, initialValue));
+            });
+
+            it('is disabled if you pass it the disabled prop', () => {
+                render(<NumericInputConnected id={id} initialValue={initialValue} disabled />, {
+                    initialState: {
+                        numericInputs: {
+                            [id]: {value: initialValue, hasError: false},
+                        },
+                    },
+                });
+
+                expect(screen.getByRole('button', {name: /minus icon/i})).toBeDisabled();
+                expect(screen.getByRole('button', {name: /plus icon/i})).toBeDisabled();
+                expect(screen.getByRole('textbox')).toBeDisabled();
             });
         });
     });

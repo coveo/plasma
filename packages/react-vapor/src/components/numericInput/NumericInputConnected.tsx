@@ -86,10 +86,15 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
             _.isUndefined(this.props.max) || _.isNaN(valueAsNumber) || valueAsNumber < this.props.max;
         const decrementEnabled =
             _.isUndefined(this.props.min) || _.isNaN(valueAsNumber) || valueAsNumber > this.props.min;
+
         return (
             <div className="numeric-input flex flex-column">
                 <div className="flex flex-row">
-                    <button className="js-decrement mr1" disabled={!decrementEnabled} onClick={this.onDecrement}>
+                    <button
+                        className="js-decrement mr1"
+                        disabled={!decrementEnabled || this.props.disabled}
+                        onClick={this.onDecrement}
+                    >
                         <Svg svgName="minus" svgClass="icon mod-12" />
                     </button>
                     <div className="flex flex-column">
@@ -100,15 +105,21 @@ export class NumericInputConnected extends React.PureComponent<NumericInputProps
                                 {
                                     [`mod-max-${this.props.maxLength}-digit`]:
                                         _.isNumber(this.props.maxLength) && this.props.maxLength > 0,
+                                    disabled: this.props.disabled,
                                 },
                                 this.props.className
                             )}
                             value={this.props.value}
                             onChange={this.onChange}
                             onKeyDown={this.onKeyDown}
+                            disabled={this.props.disabled}
                         />
                     </div>
-                    <button className="js-increment ml1" disabled={!incrementEnabled} onClick={this.onIncrement}>
+                    <button
+                        className="js-increment ml1"
+                        disabled={!incrementEnabled || this.props.disabled}
+                        onClick={this.onIncrement}
+                    >
                         <Svg svgName="plus" svgClass="icon mod-12" />
                     </button>
                 </div>
