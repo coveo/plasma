@@ -14,14 +14,14 @@ NumericInputExamples.description =
 const NumericInputs: React.FunctionComponent = () => (
     <Section level={2} title="Numeric input examples">
         <Section level={3} title="A numeric input with an initial value">
-            <NumericInputConnected id="numeric-2" initialValue={5} />
+            <NumericInputConnected id="numeric-0" initialValue={5} />
         </Section>
         <Section
             level={3}
             title="A numeric with an initial value of 500, a step of 50, a minimum of 25 and a max of 950 with three digits. Its inital value is 500."
         >
             <NumericInputConnected
-                id="numeric-4"
+                id="numeric-1"
                 initialValue={500}
                 step={50}
                 min={25}
@@ -30,6 +30,10 @@ const NumericInputs: React.FunctionComponent = () => (
                 invalidMessage="The value must be between 25 and 999."
             />
         </Section>
-        <Section level={3}></Section>
+        <Section level={3} title="a disabled numeric input">
+            <Section level={3} title="A numeric input with an initial value">
+                <NumericInputConnected id="numeric-2" initialValue={100} disabled />
+            </Section>
+        </Section>
     </Section>
 );
