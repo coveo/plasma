@@ -213,11 +213,30 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                 />
             </Section>
 
+            <Section level={2} title="Toasts with big descriptions" className="flex">
+                <Label className="flex">Sometimes we only want toasts with a description</Label>
+
+                <Button
+                    enabled
+                    className="btn m0 mr1 mb1"
+                    name="Description"
+                    onClick={() => renderToast('containerId', '', {type: ToastType.Info, content: toastDescription})}
+                />
+
+                <Button
+                    enabled
+                    className="btn m0 mr1 mb1"
+                    name="Longer description"
+                    onClick={() =>
+                        renderToast('containerId', '', {
+                            type: ToastType.Info,
+                            content: `${toastDescription} ${toastDescription}`,
+                        })
+                    }
+                />
+            </Section>
+
             <Section level={2} title="Small toasts" className="flex">
-                <Label className="flex">
-                    The small version of the toast needs a dismiss value because they don't have an X button to close
-                    them manually.
-                </Label>
                 <Button
                     enabled
                     className="btn m0 mr1 mb1"

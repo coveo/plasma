@@ -64,11 +64,11 @@ importers:
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.15.1
-      classnames: 2.2.6
+      classnames: 2.3.1
       codemirror: ^5.58.2
       concurrently: ^6.0.2
       copy-webpack-plugin: ^6.4.1
-      coveo-styleguide: ^22.8.2
+      coveo-styleguide: ^22.9.6
       css-loader: 3.4.2
       d3: 3.5.17
       faker: 4.1.0
@@ -89,7 +89,7 @@ importers:
       react-router: ^5.2.0
       react-router-dom: ^5.2.0
       react-syntax-highlighter: 13.5.1
-      react-vapor: ^22.8.2
+      react-vapor: ^22.9.6
       redux: 4.0.5
       redux-devtools-extension: 2.13.8
       redux-promise-middleware: 6.1.2
@@ -109,7 +109,7 @@ importers:
       webpack-cli: 3.3.11
       webpack-dev-server: 3.11.2
     dependencies:
-      classnames: 2.2.6
+      classnames: 2.3.1
       codemirror: 5.60.0
       coveo-styleguide: link:../vapor
       d3: 3.5.17
@@ -193,7 +193,7 @@ importers:
       '@testing-library/user-event': ^12.6.3
       '@types/chosen-js': 1.6.2
       '@types/classnames': 2.2.9
-      '@types/codemirror': 0.0.109
+      '@types/codemirror': 0.0.62
       '@types/d3': 3.5.41
       '@types/enzyme': 3.10.8
       '@types/enzyme-adapter-react-16': 1.0.6
@@ -203,7 +203,7 @@ importers:
       '@types/jquery': 2.0.46
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
-      '@types/rc-slider': 8.6.0
+      '@types/rc-slider': 8.6.6
       '@types/react': 16.9.19
       '@types/react-bootstrap': 0.32.15
       '@types/react-codemirror': 1.0.2
@@ -226,7 +226,7 @@ importers:
       codecov: 3.2.0
       codemirror: ^5.54.0
       concurrently: 5.1.0
-      coveo-styleguide: ^22.8.2
+      coveo-styleguide: ^22.9.6
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
@@ -251,10 +251,10 @@ importers:
       react: 16.13.1
       react-bootstrap: 0.33.1
       react-codemirror2: 7.2.1
-      react-color: 2.17.3
+      react-color: 2.19.3
       react-diff-viewer: ^3.1.1
-      react-dnd: 2.5.1
-      react-dnd-html5-backend: 2.5.1
+      react-dnd: 2.6.0
+      react-dnd-html5-backend: 2.6.0
       react-dnd-test-backend: 2.5.1
       react-dom: 16.13.1
       react-infinite-scroll-component: 4.5.3
@@ -285,18 +285,18 @@ importers:
       underscore.string: 3.3.5
       unidiff: 0.0.4
     dependencies:
-      '@types/codemirror': 0.0.109
-      '@types/rc-slider': 8.6.0
+      '@types/codemirror': 0.0.62
+      '@types/rc-slider': 8.6.6
       chosen-js: 1.8.7
       query-string: 6.13.1
       rc-slider: 8.7.1
       rc-tooltip: 3.7.3
       react-bootstrap: 0.33.1_react-dom@16.13.1+react@16.13.1
       react-codemirror2: 7.2.1_codemirror@5.60.0+react@16.13.1
-      react-color: 2.17.3_react@16.13.1
+      react-color: 2.19.3_react@16.13.1
       react-diff-viewer: 3.1.1_react-dom@16.13.1+react@16.13.1
-      react-dnd: 2.5.1_react@16.13.1
-      react-dnd-html5-backend: 2.5.1_react-dnd@2.5.1
+      react-dnd: 2.6.0_react@16.13.1
+      react-dnd-html5-backend: 2.6.0
       react-infinite-scroll-component: 4.5.3_react@16.13.1
       react-modal: 3.11.2_react-dom@16.13.1+react@16.13.1
       react-tether: 1.0.5_react-dom@16.13.1+react@16.13.1
@@ -368,7 +368,7 @@ importers:
       moment: 2.29.1
       node-sass: 5.0.0
       react: 16.13.1
-      react-dnd-test-backend: 2.5.1_react-dnd@2.5.1
+      react-dnd-test-backend: 2.5.1_react-dnd@2.6.0
       react-dom: 16.13.1_react@16.13.1
       react-redux: 7.2.4_react-dom@16.13.1+react@16.13.1
       react-transition-group: 2.5.1_react-dom@16.13.1+react@16.13.1
@@ -2785,15 +2785,8 @@ packages:
     resolution: {integrity: sha512-MNl+rT5UmZeilaPxAVs6YaPC2m6aA8rofviZbhbxpPpl61uKodfdQVsBtgJGTqGizEf02oW3tsVe7FYB8kK14A==}
     dev: true
 
-  /@types/codemirror/0.0.109:
-    resolution: {integrity: sha512-cSdiHeeLjvGn649lRTNeYrVCDOgDrtP+bDDSFDd1TF+i0jKGPDRozno2NOJ9lTniso+taiv4kiVS8dgM8Jm5lg==}
-    dependencies:
-      '@types/tern': 0.23.3
-    dev: false
-
   /@types/codemirror/0.0.62:
     resolution: {integrity: sha512-0w0vA4wfkEF6GlQ0dBZHrAW7RTP2udN5wZZFFngVmvl37P2StSqNqDxP+hizd+EMOhRCUnrdSuWmAsIQczpLxQ==}
-    dev: true
 
   /@types/d3/3.5.41:
     resolution: {integrity: sha512-dInnr7nSPsofnLggOf70xvsInUjf3tRrE8XmxsioXALWQHkwEWi7RhTBCa9mYmiUDHMtuanSDN/JOW187ChIhw==}
@@ -2841,6 +2834,7 @@ packages:
 
   /@types/estree/0.0.47:
     resolution: {integrity: sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg==}
+    dev: true
 
   /@types/faker/4.1.9:
     resolution: {integrity: sha512-4ZFqA3CEXB6MgT8sDV8E5LhW+O9ndONsHeQXMbEwfOsjoQ4UXKqTJKru+BjDBUfobYEpQz1WYF9/uzQsvbY2wA==}
@@ -3024,17 +3018,17 @@ packages:
     resolution: {integrity: sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==}
     dev: true
 
-  /@types/rc-slider/8.6.0:
-    resolution: {integrity: sha512-PaJZcUCip4ba3fIvbOkJ4IXs1s7aBj5WyBHwF2vowJGOVyA5ACSwxqi3z4O802JdmEzboeru0LofLna5LO2CJw==}
+  /@types/rc-slider/8.6.6:
+    resolution: {integrity: sha512-2Q3vwKrSm3PbgiMNwzxMkOaMtcAGi0xQ8WPeVKoabk1vNYHiVR44DMC3mr9jC2lhbxCBgGBJWF9sBhmnSDQ8Bg==}
     dependencies:
       '@types/rc-tooltip': 3.7.3
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: false
 
   /@types/rc-tooltip/3.7.3:
     resolution: {integrity: sha512-2+lEqXGGY6MSoE/SGEdSf75B1TGljQXBdeaDfBNhXASytMU/p/1XeftZgphERZrjT4Afsh25nH/7tFlTmpdOxQ==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: false
 
   /@types/react-bootstrap/0.32.15:
@@ -3198,12 +3192,6 @@ packages:
   /@types/tapable/1.0.7:
     resolution: {integrity: sha512-0VBprVqfgFD7Ehb2vd8Lh9TG3jP98gvr8rgehQqzztZNI7o8zS8Ad4jyZneKELphpuE212D8J70LnSNQSyO6bQ==}
     dev: true
-
-  /@types/tern/0.23.3:
-    resolution: {integrity: sha512-imDtS4TAoTcXk0g7u4kkWqedB3E4qpjXzCpD2LU5M5NAXHzCDsypyvXSaG7mM8DKYkCRa7tFp4tS/lp/Wo7Q3w==}
-    dependencies:
-      '@types/estree': 0.0.47
-    dev: false
 
   /@types/testing-library__jest-dom/5.9.5:
     resolution: {integrity: sha512-ggn3ws+yRbOHog9GxnXiEZ/35Mow6YtPZpd7Z5mKDeZS/o7zx3yAle0ov/wjhVB5QT4N2Dt+GNoGCdqkBGCajQ==}
@@ -6864,6 +6852,16 @@ packages:
       invariant: 2.2.4
       lodash: 4.17.21
       redux: 3.7.2
+    dev: true
+
+  /dnd-core/2.6.0:
+    resolution: {integrity: sha1-ErrWbVh0LG5ffPKUP7aFlED4CcQ=}
+    dependencies:
+      asap: 2.0.6
+      invariant: 2.2.4
+      lodash: 4.17.21
+      redux: 3.7.2
+    dev: false
 
   /dns-equal/1.0.0:
     resolution: {integrity: sha1-s55/HabrCnW6nBcySzR1PEfgZU0=}
@@ -14870,17 +14868,19 @@ packages:
       react: 16.13.1
     dev: false
 
-  /react-color/2.17.3_react@16.13.1:
-    resolution: {integrity: sha512-1dtO8LqAVotPIChlmo6kLtFS1FP89ll8/OiA8EcFRDR+ntcK+0ukJgByuIQHRtzvigf26dV5HklnxDIvhON9VQ==}
+  /react-color/2.19.3_react@16.13.1:
+    resolution: {integrity: sha512-LEeGE/ZzNLIsFWa1TMe8y5VYqr7bibneWmvJwm1pCn/eNmrabWDh659JSPn9BuaMpEfU83WTOJfnCcjDZwNQTA==}
+    peerDependencies:
+      react: '*'
     dependencies:
       '@icons/material': 0.2.4_react@16.13.1
       lodash: 4.17.21
+      lodash-es: 4.17.21
       material-colors: 1.2.6
       prop-types: 15.7.2
+      react: 16.13.1
       reactcss: 1.2.3
       tinycolor2: 1.4.2
-    transitivePeerDependencies:
-      - react
     dev: false
 
   /react-diff-viewer/3.1.1_react-dom@16.13.1+react@16.13.1:
@@ -14900,31 +14900,28 @@ packages:
       react-dom: 16.13.1_react@16.13.1
     dev: false
 
-  /react-dnd-html5-backend/2.5.1_react-dnd@2.5.1:
-    resolution: {integrity: sha1-02VuUUsMRpkCpIX/+nX4aE4hx3c=}
-    peerDependencies:
-      react-dnd: ^2.5.1
+  /react-dnd-html5-backend/2.6.0:
+    resolution: {integrity: sha1-WQzRzKeEQbsnTt1XH+9MCxbdz44=}
     dependencies:
       lodash: 4.17.21
-      react-dnd: 2.5.1_react@16.13.1
     dev: false
 
-  /react-dnd-test-backend/2.5.1_react-dnd@2.5.1:
+  /react-dnd-test-backend/2.5.1_react-dnd@2.6.0:
     resolution: {integrity: sha1-+6jEzYgKmzfIWQfzNxI4MZ1HQ9Q=}
     peerDependencies:
       react-dnd: ^2.2.0
     dependencies:
       dnd-core: 2.5.1
-      react-dnd: 2.5.1_react@16.13.1
+      react-dnd: 2.6.0_react@16.13.1
     dev: true
 
-  /react-dnd/2.5.1_react@16.13.1:
-    resolution: {integrity: sha1-7O8dnYR4y3av1Zdc1RI+98O+v+U=}
+  /react-dnd/2.6.0_react@16.13.1:
+    resolution: {integrity: sha1-f6JWds+CfViokSk+PBq1naACVFo=}
     peerDependencies:
-      react: ^0.14.0 || ^15.0.0-0
+      react: '*'
     dependencies:
       disposables: 1.0.2
-      dnd-core: 2.5.1
+      dnd-core: 2.6.0
       hoist-non-react-statics: 2.5.5
       invariant: 2.2.4
       lodash: 4.17.21

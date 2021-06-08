@@ -30,7 +30,7 @@ import {IReactVaporExampleState} from '../../Reducers';
 import {Store} from '../../Store';
 import {ExampleComponent} from '../ComponentsInterface';
 
-export const TextInputExamples: ExampleComponent = () => (
+export const InputExamples: ExampleComponent = () => (
     <Section title="Inputs Examples">
         <SimpleInputDisconnected />
         <InputsConnected />
@@ -39,8 +39,8 @@ export const TextInputExamples: ExampleComponent = () => (
         <MultilineBoxExamples />
     </Section>
 );
-TextInputExamples.description =
-    'Text Inputs allow users to enter a single line of letters, numbers, or symbols. They are used to submit short character strings.';
+InputExamples.description =
+    'Inputs allow users to enter a single line of letters, numbers, or symbols. They are used to submit short character strings.';
 
 export const MultilineInputComponents: React.FunctionComponent = () => (
     <Section level={2} title="Multiline Input Examples">

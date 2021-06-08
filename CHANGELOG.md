@@ -3,6 +3,86 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.9.6](https://github.com/coveo/react-vapor/compare/v22.9.5...v22.9.6) (2021-06-08)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [22.9.5](https://github.com/coveo/react-vapor/compare/v22.9.4...v22.9.5) (2021-06-08)
+
+
+### Bug Fixes
+
+* **info-token:** make InfoToken hold its width better ([552c722](https://github.com/coveo/react-vapor/commit/552c722385e31e65d2cb9534932fa6ae05953472))
+
+
+
+
+
+## [22.9.4](https://github.com/coveo/react-vapor/compare/v22.9.3...v22.9.4) (2021-06-08)
+
+
+### Bug Fixes
+
+* upgrade classnames from 2.2.6 to 2.3.1 ([5fafb7e](https://github.com/coveo/react-vapor/commit/5fafb7e6c966d54e4eceb31584d0ea4dc0b02f99))
+
+
+
+
+
+## [22.9.3](https://github.com/coveo/react-vapor/compare/v22.9.2...v22.9.3) (2021-06-04)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [22.9.2](https://github.com/coveo/react-vapor/compare/v22.9.1...v22.9.2) (2021-06-04)
+
+
+### Bug Fixes
+
+* upgrade react-color from 2.17.3 to 2.19.3 ([cf21fc4](https://github.com/coveo/react-vapor/commit/cf21fc4434856f7be62ec18824e93bb07e385af7))
+
+
+
+
+
+## [22.9.1](https://github.com/coveo/react-vapor/compare/v22.9.0...v22.9.1) (2021-06-04)
+
+
+### Bug Fixes
+
+* upgrade @types/rc-slider from 8.6.0 to 8.6.6 ([eba5210](https://github.com/coveo/react-vapor/commit/eba5210ca804f320f45e38244d5692a4af458f95))
+* upgrade multiple dependencies with Snyk ([814cdac](https://github.com/coveo/react-vapor/commit/814cdac7348301411d6c25a169636b6ff14dc4da))
+
+
+
+
+
+# [22.9.0](https://github.com/coveo/react-vapor/compare/v22.8.3...v22.9.0) (2021-06-04)
+
+
+### Features
+
+* **top-bar:** add icons for user header section ([#2023](https://github.com/coveo/react-vapor/issues/2023)) ([577385e](https://github.com/coveo/react-vapor/commit/577385efba2f5f7a2b9bc74a1d56204dd9b627b3))
+
+
+
+
+
+## [22.8.3](https://github.com/coveo/react-vapor/compare/v22.8.2...v22.8.3) (2021-06-04)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [22.8.2](https://github.com/coveo/react-vapor/compare/v22.8.1...v22.8.2) (2021-06-01)
 
 **Note:** Version bump only for package root
