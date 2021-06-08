@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.9.5](https://github.com/coveo/react-vapor/compare/v22.9.4...v22.9.5) (2021-06-08)
+
+
+### Bug Fixes
+
+* **info-token:** make InfoToken hold its width better ([552c722](https://github.com/coveo/react-vapor/commit/552c722385e31e65d2cb9534932fa6ae05953472))
+
+
+
+
+
 ## [22.9.4](https://github.com/coveo/react-vapor/compare/v22.9.3...v22.9.4) (2021-06-08)
 
 
