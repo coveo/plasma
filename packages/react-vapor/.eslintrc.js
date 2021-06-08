@@ -15,6 +15,9 @@ module.exports = {
                 'jest/globals': true,
             },
             extends: ['plugin:jest/recommended', 'plugin:testing-library/react', 'plugin:jest-dom/recommended'],
+            rules: {
+                'jest/expect-expect': ['warn', {assertFunctionNames: ['expect*', 'assert*']}],
+            },
         },
     ],
 };
