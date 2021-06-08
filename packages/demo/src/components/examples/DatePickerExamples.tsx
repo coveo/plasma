@@ -31,19 +31,19 @@ DatePickerExamples.title = 'DatePicker';
 // start-print
 
 const CalendarComponent: React.FunctionComponent = () => (
-    <Section title="Calendar component">
+    <Section level={1} title="Calendar component">
         <CalendarConnected id="calendar" />
     </Section>
 );
 
 const CountdownComponent: React.FunctionComponent = () => (
-    <Section title="Countdown component" mods={['mod-form-top-bottom-padding']}>
+    <Section level={1} title="Countdown component" mods={['mod-form-top-bottom-padding']}>
         <Countdown />
     </Section>
 );
 
 const DatePickerComponents: React.FunctionComponent = () => (
-    <Section title="Date pickers">
+    <Section level={1} title="Date pickers">
         <Section level={2} title="DatePickerBox">
             <DatePickerBox id="date-picker-box" withReduxState datesSelectionBoxes={SELECTION_BOXES} />
         </Section>
@@ -82,7 +82,6 @@ const DatePickerComponents: React.FunctionComponent = () => (
                     initiallyUnselected
                 />
             </Section>
-
             <Section level={3} title="Date picker dropdown with drop">
                 <DatePickerDropdownConnected
                     id="date-picker-dropdown-3"
@@ -93,7 +92,6 @@ const DatePickerComponents: React.FunctionComponent = () => (
                     withDrop
                 />
             </Section>
-
             <Section level={3} title="Date picker dropdown with drop and a child form">
                 <ChildForm>
                     <Section level={2} title="My date picker label">
