@@ -9,38 +9,36 @@ export default () => (
         usage="Change typographic weights, styles, and alignment with these utility classes."
         withSource
     >
-        <h3>
-            <div className="bold">Text in bold</div>
+        <p className="bold">Text in bold</p>
 
-            <div className="bolder">Text in bolder</div>
+        <p className="bolder">Text in bolder</p>
 
-            <div className="regular">Text in regular</div>
+        <p className="regular">Text in regular</p>
 
-            <div className="italic">Text in italic</div>
+        <p className="italic">Text in italic</p>
 
-            <div className="underline">Text with underline</div>
+        <p className="underline">Text with underline</p>
 
-            <div className="caps">Text in caps</div>
+        <p className="caps">Text in caps</p>
 
-            <div className="left-align">Text with left-align</div>
+        <p className="left-align">Text with left-align</p>
 
-            <div className="center">Text in center</div>
+        <p className="center">Text in center</p>
 
-            <div className="right-align">Text with right-align</div>
+        <p className="right-align">Text with right-align</p>
 
-            <div className="justify">Text in justify</div>
+        <p className="justify">Text in justify</p>
 
-            <div className="nowrap">Text with nowrap</div>
+        <p className="nowrap">Text with nowrap</p>
 
-            <div className="break-word" style={{width: 145}}>
-                Text with break-word
-            </div>
+        <p className="break-word" style={{width: 145}}>
+            Text with break-word
+        </p>
 
-            <div className="truncate" style={{width: 145}}>
-                Text with truncate is cut
-            </div>
+        <p className="truncate" style={{width: 145}}>
+            Text with truncate is cut
+        </p>
 
-            <div className="smaller">Text that has 80% of its parent size</div>
-        </h3>
+        <p className="smaller">Text that has 80% of its parent size</p>
     </VaporComponent>
 );
