@@ -19,7 +19,7 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                 rightChildren={
                     <div className="p3">
                         <BrowserPreview>
-                            <h1>Hello World</h1>
+                            <h4>Hello World</h4>
                             <p>Here's the description</p>
                         </BrowserPreview>
                     </div>

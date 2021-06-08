@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+
+
+
+
+
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v23.0.0-next.6...v23.0.0-next.7) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+
+
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v23.0.0-next.5...v23.0.0-next.6) (2021-06-07)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
 # [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.0...v23.0.0-next.5) (2021-06-04)
 
 

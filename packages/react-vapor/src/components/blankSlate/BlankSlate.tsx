@@ -64,7 +64,7 @@ export class BlankSlate extends React.Component<IBlankSlateProps> {
             <div className={modalClasses}>
                 <div className={blankSlateClasses}>
                     {this.getSvgTemplate()}
-                    <h1>{this.props.title}</h1>
+                    <h4>{this.props.title}</h4>
                     {this.getDescriptionTemplate()}
                     {this.getButtonsTemplate()}
                     {this.props.additionalSection}

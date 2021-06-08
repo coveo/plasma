@@ -20,7 +20,7 @@ describe('BlankSlate', () => {
         });
 
         it('should render the default title', () => {
-            expect(blankSlateComponent.find('h1').text()).toEqual('');
+            expect(blankSlateComponent.find('h4').text()).toEqual('');
         });
 
         it('should render without the class added to adjust the style with a modal', () => {
@@ -60,7 +60,7 @@ describe('BlankSlate', () => {
         it('should render the custom title', () => {
             renderBlankSlate();
 
-            expect(blankSlateComponent.find('h1').text()).toEqual(customProps.title);
+            expect(blankSlateComponent.find('h4').text()).toEqual(customProps.title);
         });
 
         it('should add the class to adjust the style with a modal', () => {
