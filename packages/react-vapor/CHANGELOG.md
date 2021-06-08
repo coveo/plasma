@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v23.0.0-next.9...v23.0.0-next.10) (2021-06-08)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
 # [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
 
 **Note:** Version bump only for package react-vapor
