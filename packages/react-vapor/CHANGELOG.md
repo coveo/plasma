@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.11.1](https://github.com/coveo/react-vapor/compare/v22.11.0...v22.11.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **slider.tsx:** changed interface for slider ([69b1e1a](https://github.com/coveo/react-vapor/commit/69b1e1a9a8b8f495f0adb695298cc9068ec6d176))
+
+
+
+
+
 # [22.11.0](https://github.com/coveo/react-vapor/compare/v22.10.0...v22.11.0) (2021-06-08)
 
 
