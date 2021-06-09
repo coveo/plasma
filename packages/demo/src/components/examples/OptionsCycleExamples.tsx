@@ -21,9 +21,9 @@ const OptionsCycles: React.FunctionComponent = () => (
             <OptionsCycleConnected
                 id="Cycle-3"
                 options={OPTIONS}
-                previousClassName="btn mod-border w4"
+                previousClassName="btn mod-border w4 center"
                 buttonClassName="btn ml1"
-                nextClassName="btn mod-border ml1 w4"
+                nextClassName="btn mod-border ml1 w4 center"
             />
         </Section>
     </Section>

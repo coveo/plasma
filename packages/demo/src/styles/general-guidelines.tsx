@@ -147,12 +147,12 @@ export default () => (
                 their answers are valid. Inline Validation helps people complete forms quickly and with less effort,
                 fewer errors, and more satisfaction. The opposite approche is to validate all the inputs at the end of
                 the process, when the user submits the form.
-                <br></br>
-                <br></br>
+            </p>
+            <p className="body-m-book-subdued">
                 It can give many types of feedback: suggestions for valid answers, confirmation that a correct answer
                 was given, and live updates designed to help people stay within necessary limits.
-                <br></br>
-                <br></br>
+            </p>
+            <p className="body-m-book-subdued">
                 Inline validation is useful for the answers that are not obvious, answers with specific formatting
                 requirements or answers with potentially high error rates (e.g., Name would not be appropriate for
                 inline validation).

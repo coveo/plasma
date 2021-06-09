@@ -6,7 +6,7 @@ import {ExampleComponent} from '../ComponentsInterface';
 import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
-    <Section level={1} title="Table loading examples">
+    <Section>
         <Section level={2} title="Table loading with the default number of row">
             <TableLoadingExamplesWithDataNull />
         </Section>
