@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v23.0.0-next.10...v23.0.0-next.11) (2021-06-09)
+
+
+### Bug Fixes
+
+* applied review from another pr ([369f4df](https://github.com/coveo/react-vapor/commit/369f4dfa1b680647e3459d042f15543aca0c2cf6))
+* applied review part one ([7425e41](https://github.com/coveo/react-vapor/commit/7425e416f713e9874dbc012b7163bd4e6fab5abf))
+* fix some nitpick things ([a448a25](https://github.com/coveo/react-vapor/commit/a448a2549befee9a9936fbc54a5e6152f85f3513))
+* fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
+* fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
+* remove useless tag ([ea388c6](https://github.com/coveo/react-vapor/commit/ea388c6390291bdcce16fbcbbd6d851b46ed1d2f))
+* removed repetitive label ([b5bf942](https://github.com/coveo/react-vapor/commit/b5bf942e3284d044478d748c13154d086b389995))
+
+
+
+
+
 # [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v23.0.0-next.9...v23.0.0-next.10) (2021-06-08)
 
 **Note:** Version bump only for package react-vapor-demo
