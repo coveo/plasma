@@ -65,6 +65,12 @@ export class TableHeaderWithSort extends React.Component<
             'admin-sort-descending': this.props.sorted === false,
         });
 
+        const getSvg = classNames({
+            'sorted-asc': this.props.sorted === true,
+            'sorted-desc': this.props.sorted === false,
+            'asc-desc': this.props.sorted === undefined,
+        });
+
         if (this.props.isLoading) {
             return (
                 <th id={this.props.id}>
@@ -77,7 +83,7 @@ export class TableHeaderWithSort extends React.Component<
             <th id={this.props.id} className={headerCellClasses} onClick={() => this.props.onSort()}>
                 {this.props.children}
                 <div className="admin-sort-icon">
-                    <Svg svgName="asc-desc" className="tables-sort icon" />
+                    <Svg svgName={getSvg} className="tables-sort icon" />
                 </div>
             </th>
         );
