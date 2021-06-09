@@ -18,7 +18,7 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                 leftChildren={<div />}
                 rightChildren={
                     <div className="p3">
-                        <BrowserPreview title={'Custom title!'} />
+                        <BrowserPreview title={'Custom title! Custom title!'} />
                     </div>
                 }
             />
