@@ -18,7 +18,7 @@ importers:
       prettier: 2.0.5
       stylelint: 13.6.1
       tsjs: ^3.0.2
-      underscore: 1.12.1
+      underscore: 1.13.1
       walkdir: 0.4.1
     devDependencies:
       '@commitlint/cli': 8.3.5
@@ -35,7 +35,7 @@ importers:
       prettier: 2.0.5
       stylelint: 13.6.1
       tsjs: 3.0.2_prettier@2.0.5+stylelint@13.6.1
-      underscore: 1.12.1
+      underscore: 1.13.1
       walkdir: 0.4.1
 
   helpers/enzyme-redux:
@@ -90,7 +90,7 @@ importers:
       react-router-dom: ^5.2.0
       react-syntax-highlighter: 13.5.1
       react-vapor: ^22.11.2
-      redux: 4.0.5
+      redux: 4.1.0
       redux-devtools-extension: 2.13.8
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.3.0
@@ -103,7 +103,7 @@ importers:
       style-loader: 1.1.3
       tslib: ^1
       typescript: 3.8.3
-      underscore: 1.12.1
+      underscore: 1.13.1
       underscore.string: 3.3.5
       webpack: 4.41.6
       webpack-cli: 3.3.11
@@ -125,13 +125,13 @@ importers:
       react-router-dom: 5.2.0_react@16.13.1
       react-syntax-highlighter: 13.5.1_react@16.13.1
       react-vapor: link:../react-vapor
-      redux: 4.0.5
-      redux-devtools-extension: 2.13.8_redux@4.0.5
-      redux-promise-middleware: 6.1.2_redux@4.0.5
+      redux: 4.1.0
+      redux-devtools-extension: 2.13.8_redux@4.1.0
+      redux-promise-middleware: 6.1.2_redux@4.1.0
       redux-thunk: 2.3.0
       reselect: 4.0.0
       snyk: 1.543.0
-      underscore: 1.12.1
+      underscore: 1.13.1
       underscore.string: 3.3.5
     devDependencies:
       '@loadable/component': 5.10.2_react@16.13.1
@@ -145,7 +145,7 @@ importers:
       '@types/react-router': 5.1.13
       '@types/react-router-dom': 5.1.7
       '@types/react-syntax-highlighter': 11.0.4
-      '@types/redux-promise-middleware': 6.0.0_redux@4.0.5
+      '@types/redux-promise-middleware': 6.0.0_redux@4.1.0
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.15.1
       concurrently: 6.0.2
@@ -193,7 +193,7 @@ importers:
       '@testing-library/user-event': ^12.6.3
       '@types/chosen-js': 1.6.2
       '@types/classnames': 2.2.9
-      '@types/codemirror': 0.0.62
+      '@types/codemirror': 0.0.109
       '@types/d3': 3.5.41
       '@types/enzyme': 3.10.8
       '@types/enzyme-adapter-react-16': 1.0.6
@@ -258,12 +258,12 @@ importers:
       react-dnd-test-backend: 2.5.1
       react-dom: 16.13.1
       react-infinite-scroll-component: 4.5.3
-      react-modal: 3.11.2
+      react-modal: 3.11.1
       react-redux: ^7.2.4
       react-tether: 1.0.5
-      react-textarea-autosize: 8.2.0
+      react-textarea-autosize: 8.3.2
       react-transition-group: 2.5.1
-      redux: 4.0.5
+      redux: 4.1.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.3
       redux-promise-middleware: 6.1.2
@@ -281,11 +281,11 @@ importers:
       ts-jest: 26.4.4
       tslib: ^1
       typescript: 3.8.3
-      underscore: 1.12.1
+      underscore: 1.13.1
       underscore.string: 3.3.5
       unidiff: 0.0.4
     dependencies:
-      '@types/codemirror': 0.0.62
+      '@types/codemirror': 0.0.109
       '@types/rc-slider': 8.6.6
       chosen-js: 1.8.7
       query-string: 6.14.1
@@ -298,9 +298,9 @@ importers:
       react-dnd: 2.6.0_react@16.13.1
       react-dnd-html5-backend: 2.6.0
       react-infinite-scroll-component: 4.5.3_react@16.13.1
-      react-modal: 3.11.2_react-dom@16.13.1+react@16.13.1
+      react-modal: 3.11.1_react-dom@16.13.1+react@16.13.1
       react-tether: 1.0.5_react-dom@16.13.1+react@16.13.1
-      react-textarea-autosize: 8.2.0_80f683af1d19c0d623db1dceb845836c
+      react-textarea-autosize: 8.3.2_80f683af1d19c0d623db1dceb845836c
       snyk: 1.543.0
       split-on-first: 1.1.0
       strict-uri-encode: 2.0.0
@@ -339,7 +339,7 @@ importers:
       '@types/react-transition-group': 2.0.15
       '@types/redux-logger': 3.0.6
       '@types/redux-mock-store': 1.0.2
-      '@types/redux-promise-middleware': 6.0.0_redux@4.0.5
+      '@types/redux-promise-middleware': 6.0.0_redux@4.1.0
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.33
       ansi-colors: 3.2.4
@@ -372,10 +372,10 @@ importers:
       react-dom: 16.13.1_react@16.13.1
       react-redux: 7.2.4_react-dom@16.13.1+react@16.13.1
       react-transition-group: 2.5.1_react-dom@16.13.1+react@16.13.1
-      redux: 4.0.5
+      redux: 4.1.0
       redux-logger: 3.0.6
       redux-mock-store: 1.5.3
-      redux-promise-middleware: 6.1.2_redux@4.0.5
+      redux-promise-middleware: 6.1.2_redux@4.1.0
       redux-thunk: 2.3.0
       reselect: 4.0.0
       rimraf: 3.0.2
@@ -387,7 +387,7 @@ importers:
       ts-jest: 26.4.4_jest@26.6.3+typescript@3.8.3
       tslib: 1.14.1
       typescript: 3.8.3
-      underscore: 1.12.1
+      underscore: 1.13.1
       underscore.string: 3.3.5
 
   packages/vapor:
@@ -425,7 +425,7 @@ importers:
       resolve-url-loader: 3.1.0
       sass-loader: 10.1.0
       style-loader: 1.1.3
-      underscore: 1.12.1
+      underscore: 1.13.1
       underscore.string: 3.3.5
       webpack: 4.41.6
       webpack-cli: 3.3.11
@@ -464,7 +464,7 @@ importers:
       resolve-url-loader: 3.1.0
       sass-loader: 10.1.0_node-sass@5.0.0+webpack@4.41.6
       style-loader: 1.1.3_webpack@4.41.6
-      underscore: 1.12.1
+      underscore: 1.13.1
       underscore.string: 3.3.5
       webpack: 4.41.6
       webpack-cli: 3.3.11_webpack@4.41.6
@@ -2785,8 +2785,15 @@ packages:
     resolution: {integrity: sha512-MNl+rT5UmZeilaPxAVs6YaPC2m6aA8rofviZbhbxpPpl61uKodfdQVsBtgJGTqGizEf02oW3tsVe7FYB8kK14A==}
     dev: true
 
+  /@types/codemirror/0.0.109:
+    resolution: {integrity: sha512-cSdiHeeLjvGn649lRTNeYrVCDOgDrtP+bDDSFDd1TF+i0jKGPDRozno2NOJ9lTniso+taiv4kiVS8dgM8Jm5lg==}
+    dependencies:
+      '@types/tern': 0.23.3
+    dev: false
+
   /@types/codemirror/0.0.62:
     resolution: {integrity: sha512-0w0vA4wfkEF6GlQ0dBZHrAW7RTP2udN5wZZFFngVmvl37P2StSqNqDxP+hizd+EMOhRCUnrdSuWmAsIQczpLxQ==}
+    dev: true
 
   /@types/d3/3.5.41:
     resolution: {integrity: sha512-dInnr7nSPsofnLggOf70xvsInUjf3tRrE8XmxsioXALWQHkwEWi7RhTBCa9mYmiUDHMtuanSDN/JOW187ChIhw==}
@@ -2834,7 +2841,6 @@ packages:
 
   /@types/estree/0.0.47:
     resolution: {integrity: sha512-c5ciR06jK8u9BstrmJyO97m+klJrrhCf9u3rLu3DEAJBirxRqSCvDQoYKmxuYwQI5SZChAWu+tq9oVlGRuzPAg==}
-    dev: true
 
   /@types/faker/4.1.9:
     resolution: {integrity: sha512-4ZFqA3CEXB6MgT8sDV8E5LhW+O9ndONsHeQXMbEwfOsjoQ4UXKqTJKru+BjDBUfobYEpQz1WYF9/uzQsvbY2wA==}
@@ -3141,11 +3147,11 @@ packages:
       redux: 4.0.5
     dev: true
 
-  /@types/redux-promise-middleware/6.0.0_redux@4.0.5:
+  /@types/redux-promise-middleware/6.0.0_redux@4.1.0:
     resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
     deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
     dependencies:
-      redux-promise-middleware: 6.1.2_redux@4.0.5
+      redux-promise-middleware: 6.1.2_redux@4.1.0
     transitivePeerDependencies:
       - redux
     dev: true
@@ -3192,6 +3198,12 @@ packages:
   /@types/tapable/1.0.7:
     resolution: {integrity: sha512-0VBprVqfgFD7Ehb2vd8Lh9TG3jP98gvr8rgehQqzztZNI7o8zS8Ad4jyZneKELphpuE212D8J70LnSNQSyO6bQ==}
     dev: true
+
+  /@types/tern/0.23.3:
+    resolution: {integrity: sha512-imDtS4TAoTcXk0g7u4kkWqedB3E4qpjXzCpD2LU5M5NAXHzCDsypyvXSaG7mM8DKYkCRa7tFp4tS/lp/Wo7Q3w==}
+    dependencies:
+      '@types/estree': 0.0.47
+    dev: false
 
   /@types/testing-library__jest-dom/5.9.5:
     resolution: {integrity: sha512-ggn3ws+yRbOHog9GxnXiEZ/35Mow6YtPZpd7Z5mKDeZS/o7zx3yAle0ov/wjhVB5QT4N2Dt+GNoGCdqkBGCajQ==}
@@ -14964,8 +14976,8 @@ packages:
       xtend: 4.0.2
     dev: false
 
-  /react-modal/3.11.2_react-dom@16.13.1+react@16.13.1:
-    resolution: {integrity: sha512-o8gvvCOFaG1T7W6JUvsYjRjMVToLZgLIsi5kdhFIQCtHxDkA47LznX62j+l6YQkpXDbvQegsDyxe/+JJsFQN7w==}
+  /react-modal/3.11.1_react-dom@16.13.1+react@16.13.1:
+    resolution: {integrity: sha512-8uN744Yq0X2lbfSLxsEEc2UV3RjSRb4yDVxRQ1aGzPo86QjNOwhQSukDb8U8kR+636TRTvfMren10fgOjAy9eA==}
     peerDependencies:
       react: ^0.14.0 || ^15.0.0 || ^16
       react-dom: ^0.14.0 || ^15.0.0 || ^16
@@ -15115,12 +15127,13 @@ packages:
       tether: 1.4.7
     dev: false
 
-  /react-textarea-autosize/8.2.0_80f683af1d19c0d623db1dceb845836c:
-    resolution: {integrity: sha512-grajUlVbkx6VdtSxCgzloUIphIZF5bKr21OYMceWPKkniy7H0mRAT/AXPrRtObAe+zUePnNlBwUc4ivVjUGIjw==}
+  /react-textarea-autosize/8.3.2_80f683af1d19c0d623db1dceb845836c:
+    resolution: {integrity: sha512-JrMWVgQSaExQByP3ggI1eA8zF4mF0+ddVuX7acUeK2V7bmrpjVOY72vmLz2IXFJSAXoY3D80nEzrn0GWajWK3Q==}
+    engines: {node: '>=10'}
     peerDependencies:
-      react: ^16.8.0
+      react: ^16.8.0 || ^17.0.0
     dependencies:
-      '@babel/runtime': 7.13.10
+      '@babel/runtime': 7.14.0
       react: 16.13.1
       use-composed-ref: 1.1.0_react@16.13.1
       use-latest: 1.2.0_80f683af1d19c0d623db1dceb845836c
@@ -15357,12 +15370,12 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
-  /redux-devtools-extension/2.13.8_redux@4.0.5:
+  /redux-devtools-extension/2.13.8_redux@4.1.0:
     resolution: {integrity: sha512-8qlpooP2QqPtZHQZRhx3x3OP5skEV1py/zUdMY28WNAocbafxdG2tRD1MWE7sp8obGMNYuLWanhhQ7EQvT1FBg==}
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.0.5
+      redux: 4.1.0
     dev: false
 
   /redux-logger/3.0.6:
@@ -15377,12 +15390,12 @@ packages:
       lodash.isplainobject: 4.0.6
     dev: true
 
-  /redux-promise-middleware/6.1.2_redux@4.0.5:
+  /redux-promise-middleware/6.1.2_redux@4.1.0:
     resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
     peerDependencies:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
-      redux: 4.0.5
+      redux: 4.1.0
 
   /redux-thunk/2.3.0:
     resolution: {integrity: sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==}
@@ -15400,6 +15413,7 @@ packages:
     dependencies:
       loose-envify: 1.4.0
       symbol-observable: 1.2.0
+    dev: true
 
   /redux/4.1.0:
     resolution: {integrity: sha512-uI2dQN43zqLWCt6B/BMGRMY6db7TTY4qeHHfGeKb3EOhmOKjU3KdWvNLJyqaHRksv/ErdNH7cFZWg9jXtewy4g==}
@@ -18383,8 +18397,8 @@ packages:
       sprintf-js: 1.1.2
       util-deprecate: 1.0.2
 
-  /underscore/1.12.1:
-    resolution: {integrity: sha512-hEQt0+ZLDVUMhebKxL4x1BTtDY7bavVofhZ9KZ4aI26X9SRaE+Y3m83XUL1UP2jn8ynjndwCCpEHdUG+9pP1Tw==}
+  /underscore/1.13.1:
+    resolution: {integrity: sha512-hzSoAVtJF+3ZtiFX0VgfFPHEDRm7Y/QPjGyNo4TVdnDTdft3tr8hEkD25a1jC+TjTuE7tkHGKkhwCgs9dgBB2g==}
 
   /undertaker-registry/1.0.1:
     resolution: {integrity: sha1-XkvaMI5KiirlhPm5pDWaSZglzFA=}

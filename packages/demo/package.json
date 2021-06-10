@@ -37,13 +37,13 @@
         "react-router-dom": "^5.2.0",
         "react-syntax-highlighter": "13.5.1",
         "react-vapor": "^22.11.2",
-        "redux": "4.0.5",
+        "redux": "4.1.0",
         "redux-devtools-extension": "2.13.8",
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.3.0",
         "reselect": "4.0.0",
         "snyk": "^1.518.0",
-        "underscore": "1.12.1",
+        "underscore": "1.13.1",
         "underscore.string": "3.3.5"
     },
     "devDependencies": {
