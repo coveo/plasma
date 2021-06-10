@@ -31,7 +31,8 @@ export interface ITableHeaderCellProps
         ITableHeaderCellDispatchProps {}
 
 /**
- * @deprecated use TableHeaderWithSort instead
+ * @deprecated since version 22.11.30
+ * use TableHeaderWithSort instead
  */
 export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any> {
     static defaultProps: Partial<ITableHeaderCellProps> = {
