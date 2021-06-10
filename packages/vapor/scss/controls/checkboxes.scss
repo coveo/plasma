@@ -87,8 +87,10 @@
                 --background-color: var(--grey-20);
                 --border: solid 2px var(--grey-50);
                 cursor: default;
+            }
 
-                &:before {
+            &:checked {
+                & + button:before {
                     position: absolute;
                     content: url('../../resources/icons/svg/content/disabled-checkbox.svg');
                 }
