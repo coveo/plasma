@@ -23,4 +23,11 @@ describe('BrowserPreview', () => {
 
         expect(screen.getByText(/la cacousoudane/i)).toBeInTheDocument();
     });
+
+    it('renders the specific title truncated when provided, but too long', () => {
+        const headerTitle = 'La CacouSoudane FAFOU LOUDANE';
+        render(<BrowserPreview title={headerTitle} />);
+
+        expect(screen.getByText(/la cacousoudane fafo\.\.\./i)).toBeInTheDocument();
+    });
 });
