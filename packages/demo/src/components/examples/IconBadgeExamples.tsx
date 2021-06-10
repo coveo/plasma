@@ -1,0 +1,40 @@
+import {svg} from 'coveo-styleguide';
+import * as React from 'react';
+import {IconBadge, IconBadgeType, Section} from 'react-vapor';
+
+export const IconBadgeExamples: React.FunctionComponent = () => (
+    <Section>
+        <Section level={2} title="IconBadge on the top bar with different status">
+            <div className="header" style={{background: 'var(--grape-purple-70)'}}>
+                <div className="header-section mod-icon flex center-align">
+                    <IconBadge
+                        svgName={svg.bellStrokedMedium.name}
+                        type={IconBadgeType.New}
+                        className="mod-navigation"
+                    />
+                </div>
+                <div className="header-section mod-icon flex center-align">
+                    <IconBadge
+                        svgName={svg.bellStrokedMedium.name}
+                        type={IconBadgeType.Information}
+                        className="mod-navigation"
+                    />
+                </div>
+                <div className="header-section mod-icon flex center-align">
+                    <IconBadge
+                        svgName={svg.bellStrokedMedium.name}
+                        type={IconBadgeType.Warning}
+                        className="mod-navigation"
+                    />
+                </div>
+                <div className="header-section mod-icon flex center-align">
+                    <IconBadge
+                        svgName={svg.bellStrokedMedium.name}
+                        type={IconBadgeType.Major}
+                        className="mod-navigation"
+                    />
+                </div>
+            </div>
+        </Section>
+    </Section>
+);
