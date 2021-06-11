@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.11.4](https://github.com/coveo/react-vapor/compare/v22.11.3...v22.11.4) (2021-06-11)
+
+
+### Bug Fixes
+
+* grey-50 for the disabled-underterminate-checkbox ([4641b47](https://github.com/coveo/react-vapor/commit/4641b4780b0bbf4d8f78646522a0d084397bac3a))
+* removed lost check on unchecked disabled checkeboxes ([5f5e177](https://github.com/coveo/react-vapor/commit/5f5e1773b4f8e939f9f9a45551ced8cd3658a528))
+* **checkboxes:** use grey-50 so the disabled chexk is more visible ([de57139](https://github.com/coveo/react-vapor/commit/de571392d8e4dfbd9811686da36986d4e415b4f4))
+
+
+
+
+
 ## [22.11.3](https://github.com/coveo/react-vapor/compare/v22.11.2...v22.11.3) (2021-06-10)
 
 **Note:** Version bump only for package root
