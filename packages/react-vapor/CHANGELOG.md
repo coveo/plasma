@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.12.0](https://github.com/coveo/react-vapor/compare/v22.11.6...v22.12.0) (2021-06-11)
+
+
+### Features
+
+* **textinput:** add new input component ([c5b9221](https://github.com/coveo/react-vapor/commit/c5b92218530cc37a0c61b784b0c65ea2aaef35fb))
+
+
+
+
+
 ## [22.11.6](https://github.com/coveo/react-vapor/compare/v22.11.5...v22.11.6) (2021-06-11)
 
 **Note:** Version bump only for package react-vapor
