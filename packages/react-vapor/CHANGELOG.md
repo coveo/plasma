@@ -3,6 +3,77 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.12](https://github.com/coveo/react-vapor/compare/v22.11.5...v23.0.0-next.12) (2021-06-11)
+
+
+
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v22.11.2...v23.0.0-next.11) (2021-06-09)
+
+
+
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v22.9.6...v23.0.0-next.10) (2021-06-08)
+
+
+
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
+
+
+
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v22.9.4...v23.0.0-next.7) (2021-06-08)
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
+
+
+### Bug Fixes
+
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+
+
+
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.1...v23.0.0-next.5) (2021-06-04)
+
+
+### Bug Fixes
+
+* fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
+
+
+
+# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
+
+
+### Bug Fixes
+
+* **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
+
+
+
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+
+
+
+
+
 # [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v23.0.0-next.10...v23.0.0-next.11) (2021-06-09)
 
 **Note:** Version bump only for package react-vapor

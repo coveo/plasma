@@ -3,6 +3,87 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.12](https://github.com/coveo/react-vapor/compare/v22.11.5...v23.0.0-next.12) (2021-06-11)
+
+
+
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v22.11.2...v23.0.0-next.11) (2021-06-09)
+
+
+### Bug Fixes
+
+* applied review part one ([7425e41](https://github.com/coveo/react-vapor/commit/7425e416f713e9874dbc012b7163bd4e6fab5abf))
+* remove useless tag ([ea388c6](https://github.com/coveo/react-vapor/commit/ea388c6390291bdcce16fbcbbd6d851b46ed1d2f))
+
+
+
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v22.9.6...v23.0.0-next.10) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
+* fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
+
+
+
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
+
+
+### Bug Fixes
+
+* applied review from another pr ([369f4df](https://github.com/coveo/react-vapor/commit/369f4dfa1b680647e3459d042f15543aca0c2cf6))
+
+
+
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v22.9.4...v23.0.0-next.7) (2021-06-08)
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
+
+
+### Bug Fixes
+
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+* fix general guidelines demo ([827b3e6](https://github.com/coveo/react-vapor/commit/827b3e652c1a34ee7c3b27e76103cc30841c58c9))
+* fix some nitpick things ([a448a25](https://github.com/coveo/react-vapor/commit/a448a2549befee9a9936fbc54a5e6152f85f3513))
+* fix style for home demo ([060afbd](https://github.com/coveo/react-vapor/commit/060afbd031b4bbba189834cf2bd7657649b23f41))
+* fix style for List demo ([7beb2bb](https://github.com/coveo/react-vapor/commit/7beb2bb9747560401cb58d7d46b4806eb9dc016c))
+* fix style for material demo ([962b08f](https://github.com/coveo/react-vapor/commit/962b08f7eeb9624d01581c99f03b7d0fff709be8))
+* fix style for utilities demo ([b739256](https://github.com/coveo/react-vapor/commit/b7392563ffaebfbdd254d4962e90711f7b09a2f8))
+* fix style of wizard demo ([90c39d8](https://github.com/coveo/react-vapor/commit/90c39d8b7151ab50b49ec34527a4e73e3df69170))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+* removed repetitive label ([b5bf942](https://github.com/coveo/react-vapor/commit/b5bf942e3284d044478d748c13154d086b389995))
+
+
+
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.1...v23.0.0-next.5) (2021-06-04)
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
+
+
+
+# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
+
+
+
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+
+
+
+
+
 # [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v23.0.0-next.10...v23.0.0-next.11) (2021-06-09)
 
 
