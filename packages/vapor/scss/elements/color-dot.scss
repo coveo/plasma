@@ -23,6 +23,10 @@
     }
 
     &.state-minor {
+        --background-color: var(--warning-70);
+    }
+
+    &.state-warning {
         --background-color: var(--turbo-yellow-50);
     }
 
