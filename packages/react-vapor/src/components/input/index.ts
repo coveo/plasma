@@ -1,6 +1,5 @@
 export * from './Input';
 export * from './InputActions';
-export * from './InputConnected';
 export * from './InputDescription';
 export * from './InputLabelWithTooltip';
 export * from './InputReducers';

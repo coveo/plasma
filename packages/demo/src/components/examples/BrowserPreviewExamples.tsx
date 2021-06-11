@@ -13,6 +13,16 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                 }
             />
         </Section>
+        <Section level={2} title="Browser Preview with custom title">
+            <SplitLayout
+                leftChildren={<div />}
+                rightChildren={
+                    <div className="p3">
+                        <BrowserPreview title={'Custom title! Custom title!'} />
+                    </div>
+                }
+            />
+        </Section>
         <Section level={2} title="Browser Preview with custom content">
             <SplitLayout
                 leftChildren={<div />}
