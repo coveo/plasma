@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.13.0](https://github.com/coveo/react-vapor/compare/v22.12.0...v22.13.0) (2021-06-11)
+
+
+### Features
+
+* **top-bar:** create icon badge component ([#2052](https://github.com/coveo/react-vapor/issues/2052)) ([e3c0dc9](https://github.com/coveo/react-vapor/commit/e3c0dc90ca1e659cd6e2b3d9f899ee0c308ddf76))
+
+
+
+
+
 # [22.12.0](https://github.com/coveo/react-vapor/compare/v22.11.6...v22.12.0) (2021-06-11)
 
 
