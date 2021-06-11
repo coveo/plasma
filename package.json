@@ -16,7 +16,7 @@
         "prettier": "2.0.5",
         "stylelint": "13.6.1",
         "tsjs": "^3.0.2",
-        "underscore": "1.12.1",
+        "underscore": "1.13.1",
         "walkdir": "0.4.1"
     },
     "husky": {
