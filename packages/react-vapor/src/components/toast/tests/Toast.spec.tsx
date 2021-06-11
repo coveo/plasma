@@ -1,15 +1,14 @@
+import {render, screen, waitFor} from '@testing-library/react';
+import userEvent from '@testing-library/user-event';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {screen} from '@testing-library/dom';
 
-import {render} from '@testing-library/react';
 import {IToastProps, Toast, ToastType} from '../Toast';
 
 describe('Toasts', () => {
     let toastComponent: ReactWrapper<IToastProps>;
     let toastBasicAttributes: IToastProps;
-    let toastInstance: Toast;
 
     it('should render without errors', () => {
         expect(() => shallow(<Toast title="Hello" />)).not.toThrow();
@@ -22,7 +21,6 @@ describe('Toasts', () => {
             };
 
             toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
-            toastInstance = toastComponent.instance() as Toast;
         });
 
         it('should call prop onRender on mounting if set', () => {
@@ -39,11 +37,9 @@ describe('Toasts', () => {
             const destroySpy = jest.fn();
             const newToastAttributes = _.extend({}, toastBasicAttributes, {onDestroy: destroySpy});
 
-            expect(() => toastInstance.componentWillUnmount()).not.toThrow();
-
-            toastComponent.setProps(newToastAttributes).mount();
-
-            toastComponent.unmount();
+            expect(() =>
+                mount(<Toast {...newToastAttributes} />, {attachTo: document.getElementById('App')}).unmount()
+            ).not.toThrow();
 
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
@@ -157,7 +153,12 @@ describe('Toasts', () => {
             });
 
             expect(toastComponent.find(descriptionContainer).length).toBe(1);
-            expect(toastComponent.find(descriptionContainer).children().equals(expectedChildren)).toBe(true);
+            expect(
+                toastComponent
+                    .find(descriptionContainer)
+                    .children()
+                    .equals(<div>{expectedChildren}</div>)
+            ).toBe(true);
         });
 
         it('should contain a toast-close when the prop is undefined or true and isSmall is false', () => {
@@ -221,7 +222,6 @@ describe('Toasts', () => {
             jest.useFakeTimers();
 
             toastComponent = mount(<Toast {...toastBasicAttributes} />, {attachTo: document.getElementById('App')});
-            toastInstance = toastComponent.instance() as Toast;
         });
 
         afterEach(() => {
@@ -281,21 +281,21 @@ describe('Toasts', () => {
             expect(onCloseToast).toHaveBeenCalledTimes(1);
         });
 
-        it('should not dismiss the toast if the dismiss is set to 0', () => {
+        it('should not dismiss the toast if the dismiss is set to 0', async () => {
             const newToastAttributes = _.extend({}, toastBasicAttributes, {dismiss: 0});
-            toastComponent.setProps(newToastAttributes).mount();
 
-            expect(onCloseToast).not.toHaveBeenCalled();
+            render(<Toast {...newToastAttributes} />);
 
-            toastComponent.simulate('mouseEnter');
-            jest.advanceTimersByTime(dismissDelay);
+            userEvent.hover(screen.queryByText('some title'));
 
-            expect(onCloseToast).not.toHaveBeenCalled();
-
-            toastComponent.simulate('mouseLeave');
-            jest.advanceTimersByTime(dismissDelay);
-
-            expect(onCloseToast).not.toHaveBeenCalled();
+            await waitFor(
+                () => {
+                    expect(screen.queryByText('some title')).toBeInTheDocument();
+                },
+                {
+                    timeout: dismissDelay,
+                }
+            );
         });
     });
 

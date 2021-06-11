@@ -3,7 +3,7 @@ import * as React from 'react';
 import {ChromePicker} from 'react-color';
 
 import {getStoreMock, ReactVaporMockStore} from '../../utils/tests/TestUtils';
-import {InputConnected} from '../input/InputConnected';
+import {InputConnected} from '../input/Input';
 import {ColorPicker} from './ColorPicker';
 
 describe('ColorPicker', () => {

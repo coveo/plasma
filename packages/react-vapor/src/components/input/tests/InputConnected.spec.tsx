@@ -9,7 +9,7 @@ import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInputProps, Input} from '../Input';
-import {InputConnected} from '../InputConnected';
+import {InputConnected} from '../Input';
 import {inputPossibleProps, inputProps} from './InputTestCommons.mock';
 
 describe('<InputConnected />', () => {
