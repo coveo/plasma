@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.14.0](https://github.com/coveo/react-vapor/compare/v22.13.0...v22.14.0) (2021-06-11)
+
+
+### Features
+
+* **color-dot:** add more states and mod-small ([#2057](https://github.com/coveo/react-vapor/issues/2057)) ([de8bbd4](https://github.com/coveo/react-vapor/commit/de8bbd49cbaad126313b503b2ea7dfbf12acaa4b))
+
+
+
+
+
 # [22.13.0](https://github.com/coveo/react-vapor/compare/v22.12.0...v22.13.0) (2021-06-11)
 
 
