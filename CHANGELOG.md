@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.11.5](https://github.com/coveo/react-vapor/compare/v22.11.4...v22.11.5) (2021-06-11)
+
+
+### Bug Fixes
+
+* add new lines in svg files ([81aac3c](https://github.com/coveo/react-vapor/commit/81aac3c1d2cbf7a6a76e629681f13f3e0ed5709e))
+* applied review to pr ([0bc3fc4](https://github.com/coveo/react-vapor/commit/0bc3fc4adeffaddd44f4e5c3b656e7adf7339184))
+* changed color to be more visible ([b4f57cd](https://github.com/coveo/react-vapor/commit/b4f57cdd43ea3d501f1b3b9c8dfb4688cfcad9ab))
+* **tableheaderwithsort:** (WIP) get colored arrows when clicking on sort ([db89f42](https://github.com/coveo/react-vapor/commit/db89f42362aff7b50bc176d522eccfb5f29da07e))
+
+
+
+
+
 ## [22.11.4](https://github.com/coveo/react-vapor/compare/v22.11.3...v22.11.4) (2021-06-11)
 
 
