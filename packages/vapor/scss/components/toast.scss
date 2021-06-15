@@ -132,9 +132,6 @@ $toast-info-token-padding: 12px 16px 12px 8px;
 
     .info-token {
         position: static;
-        flex-direction: row;
-        align-items: center;
-        justify-content: center;
         padding: $toast-info-token-padding;
     }
 
