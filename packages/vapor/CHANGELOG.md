@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.15.0](https://github.com/coveo/react-vapor/compare/v22.14.0...v22.15.0) (2021-06-15)
+
+
+### Features
+
+* add new icons unlock stroked ([#2059](https://github.com/coveo/react-vapor/issues/2059)) ([fa56733](https://github.com/coveo/react-vapor/commit/fa5673380e6f7d311cc0bc8dc785dba6699f1374))
+
+
+
+
+
 # [22.14.0](https://github.com/coveo/react-vapor/compare/v22.13.0...v22.14.0) (2021-06-11)
 
 
