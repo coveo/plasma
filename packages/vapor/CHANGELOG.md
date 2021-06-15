@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.13](https://github.com/coveo/react-vapor/compare/v23.0.0-next.12...v23.0.0-next.13) (2021-06-15)
+
+
+### Bug Fixes
+
+* applied review to pr ([c46e381](https://github.com/coveo/react-vapor/commit/c46e3818ffeccee4aec0f56c08cc869adf3bbb2a))
+* **toast:** fix info token in toast ([476c622](https://github.com/coveo/react-vapor/commit/476c62237e644dcc6f386131a39d3ea2ab0dc69e))
+
+
+
+
+
 # [23.0.0-next.12](https://github.com/coveo/react-vapor/compare/v22.11.5...v23.0.0-next.12) (2021-06-11)
 
 
