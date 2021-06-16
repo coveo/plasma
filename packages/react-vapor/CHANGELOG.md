@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.16.0](https://github.com/coveo/react-vapor/compare/v22.15.1...v22.16.0) (2021-06-16)
+
+
+### Features
+
+* **iconcard:** allow IconCard to have children ([212313f](https://github.com/coveo/react-vapor/commit/212313f4acb12384a42327efbd4fdc758fa9db4b))
+
+
+
+
+
 ## [22.15.1](https://github.com/coveo/react-vapor/compare/v22.15.0...v22.15.1) (2021-06-15)
 
 **Note:** Version bump only for package react-vapor
