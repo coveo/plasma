@@ -16,6 +16,11 @@
         stroke: var(--stroke);
     }
 
+    &.mod-black {
+        --fill: var(--grey-100);
+        --stroke: var(--grey-100);
+    }
+
     &.mod-info {
         --fill: var(--info-60);
         --stroke: var(--info-60);

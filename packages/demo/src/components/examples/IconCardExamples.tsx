@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {IconCard, Section} from 'react-vapor';
+import {IconCard, Section, Svg} from 'react-vapor';
 
 export const IconCardExamples: React.FunctionComponent = () => (
     // start-print
@@ -40,6 +40,16 @@ export const IconCardExamples: React.FunctionComponent = () => (
                     onClick={(choice) => alert(choice)}
                     style={{width: '368px'}}
                 />
+                <IconCard
+                    small
+                    title="Web"
+                    svgName="sourceWeb"
+                    animateOnHover
+                    onClick={() => alert('You clicked the card')}
+                    style={{width: '368px'}}
+                >
+                    <Svg svgName="cloud" svgClass="icon mod-24 mod-stroke mod-black" />
+                </IconCard>
             </Section>
             <Section level={3} title="Disbled">
                 <IconCard

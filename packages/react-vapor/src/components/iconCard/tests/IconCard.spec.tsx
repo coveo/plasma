@@ -197,4 +197,29 @@ describe('IconCard', () => {
         expect(drawer).toHaveClass('mod-small');
         expect(card).toHaveClass('mod-small');
     });
+
+    it('renders the children inside the card if specified', () => {
+        render(
+            <IconCard title="Title" svgName="home" small>
+                child
+            </IconCard>
+        );
+
+        const card = screen.getByRole('button', {name: /title/i});
+        expect(within(card).getByText(/child/i)).toBeInTheDocument();
+    });
+
+    it('animates the card on hover if animateOnHover prop is true', () => {
+        const {container} = render(<IconCard title="Title" svgName="home" animateOnHover />);
+
+        const card = container.querySelector('.icon-card');
+        expect(card).toHaveClass('animateOnHover');
+    });
+
+    it('does not animates the card on hover if disabled', () => {
+        const {container} = render(<IconCard title="Title" svgName="home" animateOnHover disabled />);
+
+        const card = container.querySelector('.icon-card');
+        expect(card).not.toHaveClass('animateOnHover');
+    });
 });
