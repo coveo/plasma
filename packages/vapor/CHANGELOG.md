@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.17.0](https://github.com/coveo/react-vapor/compare/v22.16.0...v22.17.0) (2021-06-16)
+
+
+### Features
+
+* add new icon stroked, cloud-light, crawling-bot, key & unlock ([#2062](https://github.com/coveo/react-vapor/issues/2062)) ([b9d1569](https://github.com/coveo/react-vapor/commit/b9d1569a2a5a25c2628d77a2c0576efe0cf96cb3))
+
+
+
+
+
 # [22.16.0](https://github.com/coveo/react-vapor/compare/v22.15.1...v22.16.0) (2021-06-16)
 
 
