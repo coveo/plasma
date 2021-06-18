@@ -1,4 +1,4 @@
-import type * as Cypress from "cypress";
+import type * as Cypress from 'cypress';
 // ***********************************************************
 // This example plugins/index.ts can be used to load plugins
 //
@@ -15,5 +15,5 @@ import type * as Cypress from "cypress";
 const config: Cypress.PluginConfig = (on: Cypress.PluginEvents, config: Cypress.PluginConfigOptions) => {
     // `on` is used to hook into various events Cypress emits
     // `config` is the resolved Cypress config
-}
+};
 export default config;

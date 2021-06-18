@@ -43,7 +43,11 @@ describe('DnDContainer', () => {
                         isDraggable: false,
                     });
 
-                    expect(component.wrapper.find('.select-me').props().style.visibility).toBe('hidden');
+                    expect(component.wrapper.find('.select-me').props()).toMatchObject({
+                        style: {
+                            visibility: 'hidden',
+                        },
+                    });
                 });
 
                 it('should set visibility to visible on svg wrapper if the isDraggable is set to true', () => {
@@ -53,7 +57,11 @@ describe('DnDContainer', () => {
                         isDraggable: true,
                     });
 
-                    expect(component.wrapper.find('.select-me').props().style.visibility).toBe('visible');
+                    expect(component.wrapper.find('.select-me').props()).toMatchObject({
+                        style: {
+                            visibility: 'visible',
+                        },
+                    });
                 });
 
                 it('should set cursor to default on svg wrapper if the isDraggable is set to false', () => {
@@ -63,7 +71,11 @@ describe('DnDContainer', () => {
                         isDraggable: false,
                     });
 
-                    expect(component.wrapper.find('.select-me').props().style.cursor).toBe('default');
+                    expect(component.wrapper.find('.select-me').props()).toMatchObject({
+                        style: {
+                            cursor: 'default',
+                        },
+                    });
                 });
 
                 it('should set cursor to move on svg wrapper if the isDraggable is set to true', () => {
@@ -73,7 +85,11 @@ describe('DnDContainer', () => {
                         isDraggable: true,
                     });
 
-                    expect(component.wrapper.find('.select-me').props().style.cursor).toBe('move');
+                    expect(component.wrapper.find('.select-me').props()).toMatchObject({
+                        style: {
+                            cursor: 'move',
+                        },
+                    });
                 });
 
                 it('should set the icon if defined as prop', () => {
