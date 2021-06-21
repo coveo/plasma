@@ -105,27 +105,29 @@ export const TextInput: React.FunctionComponent<TextInputProps & React.HTMLProps
             )}
         >
             {inputProps.title && <h6>{inputProps.title}</h6>}
-            {description && <p className="text-input-description mb2">{description}</p>}
+            {description && <p className="body-m-book-subdued mb2">{description}</p>}
             <div className="flex flex-center">
                 <div
                     className="text-input-box flex flex-column justify-center"
                     onClick={() => inputElement.current.focus()}
                 >
-                    <label htmlFor={id}>{inputProps.required ? label : `${label} (Optional)`}</label>
+                    <label className="body-s-book-subdued cursor-text" htmlFor={id}>
+                        {inputProps.required ? label : `${label} (Optional)`}
+                    </label>
                     <input
                         {...omit(inputProps, 'value')}
                         id={id}
                         onChange={handleChange}
                         onBlur={handleOnBlur}
                         value={state.value}
-                        className="flex-auto"
+                        className="flex-auto body-m-book"
                         ref={inputElement}
                         aria-invalid={state.status === 'invalid'}
                     />
                 </div>
                 <HelpTooltip message={tooltip} />
             </div>
-            {helpText && <div className="mt1 ml2 text-input-help-text">{helpText}</div>}
+            {helpText && <div className="mt1 ml2 body-s-book-subdued">{helpText}</div>}
             <ValidationMessage inputId={id} />
         </div>
     );
@@ -164,7 +166,7 @@ const ValidationMessage: React.FunctionComponent<{inputId: string}> = ({inputId}
     return (
         <div className="mt1 ml2 inline-flex flex-center">
             <InfoToken mode={InfoTokenMode.Stroked} size={InfoTokenSize.Small} type={statusIconMapping[state.status]} />
-            <span className="text-input-message">{state.message}</span>
+            <span className="text-input-message body-s-book">{state.message}</span>
         </div>
     );
 };
