@@ -114,6 +114,7 @@
     @import 'components/badge';
     @import 'components/corner-ribbon';
     @import 'components/code-editor.scss';
+    @import 'components/icon-badge';
     @import 'components/icon-card';
     @import 'components/flippable';
     @import 'components/material-card';
@@ -151,4 +152,5 @@
     @import 'utility/cursor';
     @import 'utility/pointers';
     @import 'utility/transparency';
+    @import 'controls/text-input';
 }

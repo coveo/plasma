@@ -24,6 +24,7 @@ export interface IconCardProps {
     tooltip?: ITooltipProps;
     choices?: IconCardChoice[];
     small?: boolean;
+    animateOnHover?: boolean;
 }
 
 export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLProps<HTMLDivElement>, 'onClick'>> = ({
@@ -35,8 +36,10 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
     svgName,
     tooltip,
     choices,
+    animateOnHover,
     className,
     small,
+    children,
     ...restProps
 }) => {
     const [isOpen, setIsOpen] = React.useState<boolean>(false);
@@ -67,7 +70,7 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
             className={classNames(
                 'icon-card',
                 {
-                    'mod-drawer': hasChoices && !disabled,
+                    animateOnHover: (hasChoices || animateOnHover) && !disabled,
                     open: isOpen,
                     disabled,
                 },
@@ -95,7 +98,13 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
                         <h6 className="title">{title}</h6>
                         {description && <p className="description">{description}</p>}
                     </div>
-                    {badgeComponents.length > 0 ? <div className="flex center-align">{...badgeComponents}</div> : null}
+
+                    {badgeComponents.length > 0 || React.Children.count(children) > 0 ? (
+                        <div className="flex center-align">
+                            {children}
+                            {...badgeComponents}
+                        </div>
+                    ) : null}
                 </button>
             </Tooltip>
             {choices?.length ? (
