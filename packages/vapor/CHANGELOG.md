@@ -3,7 +3,92 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [23.0.0-next.13](https://github.com/coveo/react-vapor/compare/v23.0.0-next.12...v23.0.0-next.13) (2021-06-15)
+# [22.17.0](https://github.com/coveo/react-vapor/compare/v22.16.0...v22.17.0) (2021-06-16)
+
+
+### Features
+
+* add new icon stroked, cloud-light, crawling-bot, key & unlock ([#2062](https://github.com/coveo/react-vapor/issues/2062)) ([b9d1569](https://github.com/coveo/react-vapor/commit/b9d1569a2a5a25c2628d77a2c0576efe0cf96cb3))
+
+
+
+
+
+# [22.16.0](https://github.com/coveo/react-vapor/compare/v22.15.1...v22.16.0) (2021-06-16)
+
+
+### Features
+
+* **iconcard:** allow IconCard to have children ([212313f](https://github.com/coveo/react-vapor/commit/212313f4acb12384a42327efbd4fdc758fa9db4b))
+
+
+
+
+
+## [22.15.1](https://github.com/coveo/react-vapor/compare/v22.15.0...v22.15.1) (2021-06-15)
+
+
+### Bug Fixes
+
+* icons unlock stroked ([#2060](https://github.com/coveo/react-vapor/issues/2060)) ([125907c](https://github.com/coveo/react-vapor/commit/125907cb8815bd6355aa51091e1c474d3168e44d))
+
+
+
+
+
+# [22.15.0](https://github.com/coveo/react-vapor/compare/v22.14.0...v22.15.0) (2021-06-15)
+
+
+### Features
+
+* add new icons unlock stroked ([#2059](https://github.com/coveo/react-vapor/issues/2059)) ([fa56733](https://github.com/coveo/react-vapor/commit/fa5673380e6f7d311cc0bc8dc785dba6699f1374))
+
+
+
+
+
+# [22.14.0](https://github.com/coveo/react-vapor/compare/v22.13.0...v22.14.0) (2021-06-11)
+
+
+### Features
+
+* **color-dot:** add more states and mod-small ([#2057](https://github.com/coveo/react-vapor/issues/2057)) ([de8bbd4](https://github.com/coveo/react-vapor/commit/de8bbd49cbaad126313b503b2ea7dfbf12acaa4b))
+
+
+
+
+
+# [22.13.0](https://github.com/coveo/react-vapor/compare/v22.12.0...v22.13.0) (2021-06-11)
+
+
+### Features
+
+* **top-bar:** create icon badge component ([#2052](https://github.com/coveo/react-vapor/issues/2052)) ([e3c0dc9](https://github.com/coveo/react-vapor/commit/e3c0dc90ca1e659cd6e2b3d9f899ee0c308ddf76))
+
+
+
+
+
+# [22.12.0](https://github.com/coveo/react-vapor/compare/v22.11.6...v22.12.0) (2021-06-11)
+
+
+### Features
+
+* **textinput:** add new input component ([c5b9221](https://github.com/coveo/react-vapor/commit/c5b92218530cc37a0c61b784b0c65ea2aaef35fb))
+
+
+
+
+
+## [22.11.6](https://github.com/coveo/react-vapor/compare/v22.11.5...v22.11.6) (2021-06-11)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [22.11.5](https://github.com/coveo/react-vapor/compare/v22.11.4...v22.11.5) (2021-06-11)
 
 
 ### Bug Fixes

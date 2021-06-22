@@ -1,0 +1,147 @@
+%body-s {
+    // replace with .book-s once typekit is ready
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 16px;
+    letter-spacing: 0.003em;
+}
+
+%body-m {
+    // replace with .book-m once typekit is ready
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 20px;
+    letter-spacing: 0.003em;
+}
+
+%body-l {
+    // replace with .book-l once typekit is ready
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.003em;
+}
+
+%h6 {
+    // replace with .book-l once typekit is ready
+    font-size: 16px;
+    line-height: 24px;
+    letter-spacing: 0.011em;
+}
+
+.text-input {
+    --status-color: transparent;
+    --status-text-color: var(--grey-80);
+    --stroke: var(--status-color);
+    --input-text-color: var(--grey-100);
+    --label-text-color: var(--grey-80);
+    --border-color: var(--default-border-color);
+    --background-color: var(--white);
+    --transition: all 0.2s ease;
+
+    .text-input-box {
+        position: relative;
+        width: 310px;
+        height: 48px;
+        padding: 6px 16px 9px 16px;
+        overflow: hidden;
+        background-color: var(--background-color);
+        border: 1px solid var(--border-color);
+        border-radius: 8px;
+        cursor: text;
+        transition: var(--transition);
+
+        &:hover {
+            --border-color: var(--grey-50);
+        }
+
+        &:focus-within {
+            --border-color: var(--digital-blue-40);
+            box-shadow: 0px 0px 0px 4px #c7e4ff;
+        }
+
+        &::before {
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            left: 0;
+            height: 2px;
+            background-color: var(--status-color);
+            content: '';
+        }
+    }
+
+    h6 {
+        @extend %h6;
+        color: var(--grey-100);
+        font-weight: 500;
+    }
+
+    input {
+        @extend %body-m;
+        padding: 0;
+        color: var(--input-text-color);
+        background-color: var(--background-color);
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+
+    label {
+        @extend %body-s;
+        color: var(--label-text-color);
+        cursor: text;
+    }
+
+    .text-input-description {
+        @extend %body-m;
+        color: var(--grey-80);
+        font-weight: 400;
+    }
+
+    .text-input-message {
+        @extend %body-s;
+        margin-left: 4px;
+        color: var(--status-text-color);
+    }
+
+    .text-input-help-text {
+        // replace with .body-s-book-subdued
+        @extend %body-s;
+        color: var(--grey-80);
+    }
+
+    &.invalid {
+        --status-color: var(--critical-70);
+        --status-text-color: var(--critical-100);
+    }
+
+    &.valid {
+        --status-color: var(--success-60);
+        --status-text-color: var(--success-100);
+    }
+
+    &.warning {
+        --status-color: var(--warning-70);
+        --status-text-color: var(--warning-90);
+    }
+
+    &.disabled .text-input-box {
+        --background-color: var(--grey-20);
+        --label-text-color: var(--grey-60);
+        --input-text-color: var(--grey-60);
+        pointer-events: none;
+    }
+
+    &.empty:not(:focus-within) {
+        label {
+            @extend %body-m;
+        }
+
+        input {
+            max-height: 0;
+        }
+    }
+}

@@ -22,6 +22,12 @@
 
     &.mod-icon {
         width: $header-height;
+        cursor: pointer;
+
+        &:hover,
+        &.open {
+            background-color: var(--navy-blue-100);
+        }
     }
 }
 
