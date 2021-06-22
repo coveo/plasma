@@ -12,7 +12,6 @@ describe('ColorBar', () => {
     });
 
     it('should add a backgroundColor', () => {
-
         const expectedColor = 'rebeccapurple';
         const color = shallow(<Color color={expectedColor} />);
 
