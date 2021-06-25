@@ -256,10 +256,10 @@ importers:
       react-dnd-test-backend: 2.5.1
       react-dom: 16.14.0
       react-infinite-scroll-component: 4.5.3
-      react-modal: 3.11.1
+      react-modal: 3.14.2
       react-redux: ^7.2.4
       react-tether: 1.0.5
-      react-textarea-autosize: 8.3.2
+      react-textarea-autosize: 8.3.3
       react-transition-group: 2.5.1
       redux: 4.1.0
       redux-logger: 3.0.6
@@ -296,9 +296,9 @@ importers:
       react-dnd: 2.6.0_react@16.14.0
       react-dnd-html5-backend: 2.6.0
       react-infinite-scroll-component: 4.5.3_react@16.14.0
-      react-modal: 3.11.1_react-dom@16.14.0+react@16.14.0
+      react-modal: 3.14.2_react-dom@16.14.0+react@16.14.0
       react-tether: 1.0.5_react-dom@16.14.0+react@16.14.0
-      react-textarea-autosize: 8.3.2_5283d3c8d694c64e162d21c7dd1475fb
+      react-textarea-autosize: 8.3.3_5283d3c8d694c64e162d21c7dd1475fb
       snyk: 1.543.0
       split-on-first: 1.1.0
       strict-uri-encode: 2.0.0
@@ -15058,11 +15058,12 @@ packages:
       xtend: 4.0.2
     dev: false
 
-  /react-modal/3.11.1_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-8uN744Yq0X2lbfSLxsEEc2UV3RjSRb4yDVxRQ1aGzPo86QjNOwhQSukDb8U8kR+636TRTvfMren10fgOjAy9eA==}
+  /react-modal/3.14.2_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-CYasEJanwneDsmvtx/fisXhgDxtt3I8jWTVX/tP9dM/J1NgDKU9lgjR9zuCCl33ub2jrTWhXyijCxCzYGN8sJg==}
+    engines: {node: '>=8'}
     peerDependencies:
-      react: ^0.14.0 || ^15.0.0 || ^16
-      react-dom: ^0.14.0 || ^15.0.0 || ^16
+      react: ^0.14.0 || ^15.0.0 || ^16 || ^17
+      react-dom: ^0.14.0 || ^15.0.0 || ^16 || ^17
     dependencies:
       exenv: 1.2.2
       prop-types: 15.7.2
@@ -15209,8 +15210,8 @@ packages:
       tether: 1.4.7
     dev: false
 
-  /react-textarea-autosize/8.3.2_5283d3c8d694c64e162d21c7dd1475fb:
-    resolution: {integrity: sha512-JrMWVgQSaExQByP3ggI1eA8zF4mF0+ddVuX7acUeK2V7bmrpjVOY72vmLz2IXFJSAXoY3D80nEzrn0GWajWK3Q==}
+  /react-textarea-autosize/8.3.3_5283d3c8d694c64e162d21c7dd1475fb:
+    resolution: {integrity: sha512-2XlHXK2TDxS6vbQaoPbMOfQ8GK7+irc2fVK6QFIcC8GOnH3zI/v481n+j1L0WaPVvKxwesnY93fEfH++sus2rQ==}
     engines: {node: '>=10'}
     peerDependencies:
       react: ^16.8.0 || ^17.0.0
