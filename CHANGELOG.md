@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
+
+
+### Bug Fixes
+
+* **singleselect:** wrapped section children ([87bf515](https://github.com/coveo/react-vapor/commit/87bf51506699b5a00212caef0ca7fb390124fa16))
+
+
+
+
+
 ## [22.17.2](https://github.com/coveo/react-vapor/compare/v22.17.1...v22.17.2) (2021-06-28)
 
 **Note:** Version bump only for package root
