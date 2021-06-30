@@ -1,110 +1,111 @@
-import {render} from '@test-utils';
-import {shallow} from 'enzyme';
+import {render, screen, within} from '@test-utils';
+import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
 
 import {UrlUtils} from '../../../utils';
-import {Svg} from '../../svg';
-import {Tooltip} from '../../tooltip/Tooltip';
-import {ITabProps, Tab} from '../Tab';
+import {Tab, TabConnected} from '../Tab';
+import {TabContent} from '../TabContent';
+import {TabNavigation} from '../TabNavigation';
+import {TabPaneConnected} from '../TabPane';
 
 describe('Tab', () => {
-    const basicProps: ITabProps = {
-        title: 'tab title',
-    };
-
-    it('should render and unmount without errors', () => {
-        expect(() => {
-            const tab = shallow(<Tab {...basicProps} />);
-            tab.unmount();
-        }).not.toThrow();
+    it('displays the tooltip text when hovering over the tab button', async () => {
+        render(<Tab title="Title" tooltip="tooltip content" />);
+        const tab = screen.getByRole('tab', {name: /title/i});
+        userEvent.hover(tab);
+        expect(await screen.findByText('tooltip content')).toBeInTheDocument();
     });
 
-    it('should call prop onRender on mounting if set', () => {
-        const onRenderSpy = jest.fn();
-
-        render(<Tab {...basicProps} onRender={onRenderSpy} />);
-
-        expect(onRenderSpy).toHaveBeenCalledTimes(1);
+    it('redirects to the specified url when clicking on the tab', () => {
+        const spy = jest.spyOn(UrlUtils, 'redirectToUrl').mockImplementation(() => null);
+        render(<Tab title="Title" url="www" />);
+        userEvent.click(screen.getByRole('tab', {name: /title/i}));
+        expect(spy).toHaveBeenCalledWith('www');
+        spy.mockReset();
+        spy.mockRestore();
     });
 
-    it('should call prop onDestroy when unmounting if set', () => {
-        const onDestroySpy = jest.fn();
+    describe('Navigation', () => {
+        beforeEach(() => {
+            render(
+                <div>
+                    <TabNavigation>
+                        <TabConnected id="A" title="Tab 1" />
+                        <TabConnected id="B" title="Tab 2" />
+                        <TabConnected id="C" title="Tab 3" />
+                        <TabConnected id="D" title="Tab 4" disabled />
+                    </TabNavigation>
+                    <TabContent>
+                        <TabPaneConnected id="A">Content tab 1</TabPaneConnected>
+                        <TabPaneConnected id="B">Content tab 2</TabPaneConnected>
+                        <TabPaneConnected id="C">Content tab 3</TabPaneConnected>
+                        <TabPaneConnected id="D">Content tab 4</TabPaneConnected>
+                    </TabContent>
+                </div>
+            );
+        });
 
-        const {unmount} = render(<Tab {...basicProps} onDestroy={onDestroySpy} />);
-        unmount();
+        it('displays the first panel by default', () => {
+            const tabPanel1 = screen.getByRole('tabpanel', {name: /Tab 1/i});
+            expect(tabPanel1).toBeVisible();
+            expect(within(tabPanel1).getByText(/content tab 1/i)).toBeVisible();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 2/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 3/i})).not.toBeInTheDocument();
+        });
 
-        expect(onDestroySpy).toHaveBeenCalledTimes(1);
-    });
+        it('displays the panel associated with the active panel', () => {
+            const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
+            const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
+            const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
 
-    it('should call prop onSelect when tab is clicked and prop is set', () => {
-        const onSelectSpy = jest.fn();
+            userEvent.click(tab2);
 
-        const tab = shallow(<Tab {...basicProps} onSelect={onSelectSpy} />);
-        tab.simulate('click');
+            expect(screen.queryByRole('tabpanel', {name: /Tab 1/i})).not.toBeInTheDocument();
+            expect(screen.getByRole('tabpanel', {name: /Tab 2/i})).toBeVisible();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 3/i})).not.toBeInTheDocument();
 
-        expect(onSelectSpy).toHaveBeenCalledTimes(1);
-    });
+            userEvent.click(tab3);
 
-    it('should should not call onSelect prop when clicking on the tab and disabled is true', () => {
-        const onSelectSpy = jest.fn();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 1/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 2/i})).not.toBeInTheDocument();
+            expect(screen.getByRole('tabpanel', {name: /Tab 3/i})).toBeVisible();
 
-        const tab = shallow(<Tab {...basicProps} onSelect={onSelectSpy} disabled />);
-        tab.simulate('click');
+            userEvent.click(tab1);
 
-        expect(onSelectSpy).not.toHaveBeenCalled();
-    });
+            expect(screen.getByRole('tabpanel', {name: /Tab 1/i})).toBeVisible();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 2/i})).not.toBeInTheDocument();
+            expect(screen.queryByRole('tabpanel', {name: /Tab 3/i})).not.toBeInTheDocument();
+        });
 
-    it('should set active class on container when isActive is true', () => {
-        const tab = shallow(<Tab {...basicProps} isActive />);
+        it('supports keyboard navigation between tabs', () => {
+            const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
+            const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
+            const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
 
-        expect(tab.hasClass('active')).toBe(true);
-    });
+            expect(document.body).toHaveFocus();
+            userEvent.tab();
 
-    it('should set disabled class on container when disabled is true', () => {
-        const tab = shallow(<Tab {...basicProps} disabled />);
+            // Move right
+            expect(tab1).toHaveFocus();
+            userEvent.type(tab1, specialChars.arrowRight);
+            expect(tab2).toHaveFocus();
+            userEvent.type(tab2, specialChars.arrowRight);
+            expect(tab3).toHaveFocus();
+            userEvent.type(tab3, specialChars.arrowRight);
+            expect(tab1).toHaveFocus();
 
-        expect(tab.hasClass('enabled')).toBe(false);
-        expect(tab.hasClass('disabled')).toBe(true);
-    });
+            // Move left
+            userEvent.type(tab1, specialChars.arrowLeft);
+            expect(tab3).toHaveFocus();
+            userEvent.type(tab3, specialChars.arrowLeft);
+            expect(tab2).toHaveFocus();
+            userEvent.type(tab2, specialChars.arrowLeft);
+            expect(tab1).toHaveFocus();
+        });
 
-    it('should render a Tooltip if the tooltip prop is not empty', () => {
-        const expectedTooltipText = 'I am a tooltip';
-        const tab = shallow(<Tab {...basicProps} tooltip={expectedTooltipText} />);
-
-        expect(tab.find(Tooltip).exists()).toBe(true);
-        expect(tab.find(Tooltip).props().title).toBe(expectedTooltipText);
-    });
-
-    it("should render a children component if it's included", () => {
-        const tab = shallow(
-            <Tab {...basicProps}>
-                <Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />
-            </Tab>
-        );
-
-        expect(tab.find(Svg).exists()).toBe(true);
-        expect(tab.find(Svg).props().svgName).toBe('help');
-    });
-
-    it("should render a children component if it's set", () => {
-        const tab = shallow(<Tab {...basicProps} children={<Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />} />);
-
-        expect(tab.find(Svg).exists()).toBe(true);
-        expect(tab.find(Svg).props().svgName).toBe('help');
-    });
-
-    it('should redirect to specific URL if the url prop is set', () => {
-        const navigateSpy = jest.spyOn(UrlUtils, 'redirectToUrl');
-
-        const tab = shallow(
-            <Tab
-                {...basicProps}
-                url="http://www.perdu.com"
-                children={<Svg svgName={'help'} svgClass={'icon mod-16 mr1'} />}
-            />
-        );
-        tab.simulate('click');
-
-        expect(navigateSpy).toHaveBeenCalledWith('http://www.perdu.com');
+        it('does not display the panel associated with a disabled tab', () => {
+            userEvent.click(screen.getByRole('tab', {name: /Tab 4/i}));
+            expect(screen.queryByRole('tabpanel', {name: /Tab 4/i})).not.toBeInTheDocument();
+        });
     });
 });
