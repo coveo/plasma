@@ -30,15 +30,16 @@ const enhance = connect(
 
 export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}
 export const Tab: React.FunctionComponent<ITabProps> = ({
-    onRender,
-    onDestroy,
-    disabled,
-    isActive,
-    onSelect,
-    url,
     children,
     tooltip,
+    disabled,
+    isActive,
     title,
+    url,
+    id,
+    onRender,
+    onDestroy,
+    onSelect,
 }) => {
     React.useEffect(() => {
         onRender?.();
@@ -53,21 +54,30 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
             }
         }
     };
-
     return (
-        <div
-            className={classNames('tab', {
-                enabled: !disabled,
-                disabled: disabled,
-                active: isActive,
-            })}
-            onClick={handleSelect}
+        <Tooltip
+            title={tooltip}
+            placement={TooltipPlacement.Top}
+            className={classNames('inline-block', {'cursor-not-allowed': disabled})}
         >
-            {children}
-            <Tooltip title={tooltip} placement={TooltipPlacement.Top}>
+            <button
+                role="tab"
+                aria-selected={!!isActive}
+                aria-controls={`panel-${id}`}
+                id={`tab-${id}`}
+                tabIndex={isActive ? 0 : -1}
+                className={classNames('tab', {
+                    enabled: !disabled,
+                    disabled: disabled,
+                    active: isActive,
+                })}
+                onClick={handleSelect}
+                disabled={disabled}
+            >
+                {children}
                 {title}
-            </Tooltip>
-        </div>
+            </button>
+        </Tooltip>
     );
 };
 

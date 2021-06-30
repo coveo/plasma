@@ -18,8 +18,16 @@ const enhance = connect(createStructuredSelector({isActive: TabSelectors.getIsTa
 
 export interface ITabPaneProps extends ITabPaneOwnProps, Partial<ConnectedProps<typeof enhance>> {}
 
-export const TabPane: React.FunctionComponent<ITabPaneProps> = ({children, className, isActive}) => (
-    <div className={classNames('tab-pane', className, {active: isActive})}>{children}</div>
+export const TabPane: React.FunctionComponent<ITabPaneProps> = ({id, className, isActive, children}) => (
+    <div
+        id={`panel-${id}`}
+        role="tabpanel"
+        tabIndex={0}
+        aria-labelledby={`tab-${id}`}
+        aria-hidden={!isActive}
+        className={classNames('tab-pane', className, {active: isActive})}
+    >
+        {children}
+    </div>
 );
-
 export const TabPaneConnected = enhance(TabPane);
