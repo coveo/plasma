@@ -45,7 +45,7 @@ export default () => (
         </Section>
 
         <Section level={2} title="Color dot aligned with text">
-            <span className="inline-flex label">
+            <span className="flex label">
                 <i className="color-dot mr1" />
                 Success
             </span>
