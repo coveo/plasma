@@ -1,9 +1,13 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {UrlUtils} from '../../utils';
+import {connect} from 'react-redux';
+import {createStructuredSelector} from 'reselect';
 
+import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
+import {addTab, removeTab, selectTab} from './TabActions';
+import {TabSelectors} from './TabSelectors';
 
 export interface ITabOwnProps {
     groupId?: string;
@@ -15,50 +19,56 @@ export interface ITabOwnProps {
     url?: string;
 }
 
-export interface ITabStateProps {
-    isActive: boolean;
-}
+const enhance = connect(
+    createStructuredSelector({isActive: TabSelectors.getIsTabSelected}),
+    (dispatch: IDispatch, ownProps: ITabOwnProps) => ({
+        onRender: (): void => void dispatch(addTab(ownProps.id, ownProps.groupId)),
+        onDestroy: (): void => void dispatch(removeTab(ownProps.id, ownProps.groupId)),
+        onSelect: (e: React.MouseEvent): void => void dispatch(selectTab(ownProps.id, ownProps.groupId)),
+    })
+);
 
-export interface ITabDispatchProps {
-    onRender: () => void;
-    onDestroy: () => void;
-    onSelect: (e: React.MouseEvent) => void;
-}
+export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}
+export const Tab: React.FunctionComponent<ITabProps> = ({
+    onRender,
+    onDestroy,
+    disabled,
+    isActive,
+    onSelect,
+    url,
+    children,
+    tooltip,
+    title,
+}) => {
+    React.useEffect(() => {
+        onRender?.();
+        return onDestroy;
+    }, []);
 
-export interface ITabProps extends ITabOwnProps, Partial<ITabStateProps>, Partial<ITabDispatchProps> {}
-
-export class Tab extends React.Component<ITabProps, any> {
-    render() {
-        const className = classNames('tab', {
-            enabled: !this.props.disabled,
-            disabled: this.props.disabled,
-            active: this.props.isActive,
-        });
-
-        return (
-            <div className={className} onClick={this.handleSelect}>
-                {this.props.children}
-                <Tooltip title={this.props.tooltip} placement={TooltipPlacement.Top}>
-                    {this.props.title}
-                </Tooltip>
-            </div>
-        );
-    }
-
-    componentDidMount() {
-        this.props.onRender?.();
-    }
-
-    componentWillUnmount() {
-        this.props.onDestroy?.();
-    }
-
-    private handleSelect = (e: React.MouseEvent) => {
-        if (!this.props.disabled) {
-            this.props.onSelect?.(e);
-            if (this.props.url) {
-                UrlUtils.redirectToUrl(this.props.url);
+    const handleSelect = (e: React.MouseEvent) => {
+        if (!disabled) {
+            onSelect?.(e);
+            if (url) {
+                UrlUtils.redirectToUrl(url);
             }
         }
     };
-}
+
+    return (
+        <div
+            className={classNames('tab', {
+                enabled: !disabled,
+                disabled: disabled,
+                active: isActive,
+            })}
+            onClick={handleSelect}
+        >
+            {children}
+            <Tooltip title={tooltip} placement={TooltipPlacement.Top}>
+                {title}
+            </Tooltip>
+        </div>
+    );
+};
+
+export const TabConnected = enhance(Tab);

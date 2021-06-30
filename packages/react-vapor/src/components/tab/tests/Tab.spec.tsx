@@ -1,8 +1,9 @@
+import {render} from '@test-utils';
 import {shallow} from 'enzyme';
 import * as React from 'react';
+
 import {UrlUtils} from '../../../utils';
 import {Svg} from '../../svg';
-
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ITabProps, Tab} from '../Tab';
 
@@ -21,7 +22,7 @@ describe('Tab', () => {
     it('should call prop onRender on mounting if set', () => {
         const onRenderSpy = jest.fn();
 
-        shallow(<Tab {...basicProps} onRender={onRenderSpy} />);
+        render(<Tab {...basicProps} onRender={onRenderSpy} />);
 
         expect(onRenderSpy).toHaveBeenCalledTimes(1);
     });
@@ -29,8 +30,8 @@ describe('Tab', () => {
     it('should call prop onDestroy when unmounting if set', () => {
         const onDestroySpy = jest.fn();
 
-        const tab = shallow(<Tab {...basicProps} onDestroy={onDestroySpy} />);
-        tab.unmount();
+        const {unmount} = render(<Tab {...basicProps} onDestroy={onDestroySpy} />);
+        unmount();
 
         expect(onDestroySpy).toHaveBeenCalledTimes(1);
     });
