@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
+
+
+### Features
+
+* **tabs:** improve accessibility of tabs ([36be341](https://github.com/coveo/react-vapor/commit/36be341841ad293e2be79301278225f880892ac0))
+
+
+
+
+
 ## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
 
 
