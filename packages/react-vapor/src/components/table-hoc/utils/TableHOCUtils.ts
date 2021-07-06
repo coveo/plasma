@@ -23,6 +23,15 @@ export interface ITableHOCCompositeState {
     dateLimits?: [Date, Date?];
 }
 
+export interface Dimensions {
+    height: number;
+    width: number;
+}
+export interface FixedWidthState {
+    field: string;
+    dimensions?: Dimensions;
+}
+
 const PREDICATE_SEPARATOR = '--';
 
 const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
@@ -88,6 +97,17 @@ const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOC
 
 const getDatePickerId = (tableId: string) => `${tableId}-date-range`;
 
+const setFixedWidth = (width: number, isFixedWidth: boolean) => (isFixedWidth ? {style: {width, maxWidth: width}} : {});
+
+const getColumnWidth = (field: string, cols: FixedWidthState[]) => {
+    const column = cols.find((col) => col.field === field);
+
+    if (column) {
+        return setFixedWidth(column.dimensions?.width, true);
+    }
+    return null;
+};
+
 export const TableHOCUtils = {
     getCompositeState,
     getPredicateId,
@@ -95,6 +115,8 @@ export const TableHOCUtils = {
     getPaginationId,
     getTableIdFromPredicateId,
     getDatePickerId,
+    setFixedWidth,
+    getColumnWidth,
 };
 
 const filterTablePredicate = (tableId: string, {id}: IListBoxState): boolean => new RegExp(`^${tableId}(.+)`).test(id);

@@ -12,6 +12,10 @@
         width: $text-content-placeholder-word-width;
     }
 
+    &.mod-tiny {
+        width: $text-content-placeholder-tiny-width;
+    }
+
     &.mod-small {
         width: $text-content-placeholder-small-width;
     }

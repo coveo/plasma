@@ -1,8 +1,9 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVaporState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {TextLoadingPlaceholder} from '../loading/components/TextLoadingPlaceholder';
 import {Svg} from '../svg/Svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
@@ -13,6 +14,7 @@ export interface ITableHeaderWithSortOwnProps {
     tableId: string;
     isLoading?: boolean;
     isDefault?: boolean;
+    fixWidth?: boolean;
 }
 
 export interface HOCTableHeaderStateProps {
@@ -30,56 +32,77 @@ export interface ITableHeaderWithSortProps
         Partial<HOCTableHeaderStateProps>,
         Partial<ITableHeaderWithSortDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderWithSortOwnProps) => {
-    const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id: ownProps.id});
-
-    return {
-        sorted: tableSort && tableSort.isAsc,
-    };
-};
-
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: ITableHeaderWithSortOwnProps
-): ITableHeaderWithSortDispatchProps => ({
-    onMount: () => dispatch(TableHeaderActions.addTableHeader(ownProps.id, ownProps.tableId, ownProps.isDefault)),
-    onSort: () => dispatch(TableHeaderActions.sortTable(ownProps.id)),
-    onUnmount: () => dispatch(TableHeaderActions.removeTableHeader(ownProps.id)),
-});
-
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class TableHeaderWithSort extends React.Component<
+export const TableHeaderWithSort: React.FC<
     ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
-> {
-    componentDidMount() {
-        this.props.onMount();
-    }
+> = ({className, isLoading, id, tableId, isDefault, fixWidth, children}) => {
+    const dispatch = useDispatch();
+    const {sorted} = useSelector((state: IReactVaporState) => {
+        const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
 
-    componentWillUnmount() {
-        this.props.onUnmount();
-    }
+        return {
+            sorted: tableSort && tableSort.isAsc,
+        };
+    });
 
-    render() {
-        const headerCellClasses = classNames(this.props.className, 'admin-sort', {
-            'admin-sort-ascending': this.props.sorted === true,
-            'admin-sort-descending': this.props.sorted === false,
-        });
+    const onMount = () => dispatch(TableHeaderActions.addTableHeader(id, tableId, isDefault));
+    const onSort = () => dispatch(TableHeaderActions.sortTable(id));
+    const onUnmount = () => dispatch(TableHeaderActions.removeTableHeader(id));
 
-        if (this.props.isLoading) {
-            return (
-                <th id={this.props.id}>
-                    <TextLoadingPlaceholder small />
-                </th>
-            );
+    const targetRef = React.useRef<HTMLTableHeaderCellElement>();
+    const [dimensions, setDimensions] = React.useState({width: 0, height: 0});
+
+    // set column width in localStorage if fixWidth prop is passed
+    // could use a hook since section is repeated?
+    React.useLayoutEffect(() => {
+        if (fixWidth && targetRef.current) {
+            setDimensions({
+                width: targetRef.current.offsetWidth,
+                height: targetRef.current.offsetHeight,
+            });
+        }
+    }, []);
+
+    React.useEffect(() => {
+        if (fixWidth && dimensions.height && dimensions.width) {
+            window.localStorage.setItem(`th-dimensions-${id}`, JSON.stringify(dimensions));
+            targetRef.current.style.width = `${dimensions.width}px`;
+        }
+    }, [isLoading]);
+
+    React.useEffect(() => {
+        onMount();
+
+        const local = window.localStorage.getItem(`th-dimensions-${id}`);
+
+        if (local) {
+            // sets the column width for the table
+            targetRef.current.style.width = `${JSON.parse(local).width}px`;
         }
 
+        return () => {
+            onUnmount();
+        };
+    }, []);
+
+    const headerCellClasses = classNames(className, 'admin-sort', {
+        'admin-sort-ascending': sorted === true,
+        'admin-sort-descending': sorted === false,
+    });
+
+    if (isLoading) {
         return (
-            <th id={this.props.id} className={headerCellClasses} onClick={() => this.props.onSort()}>
-                {this.props.children}
-                <div className="admin-sort-icon">
-                    <Svg svgName="asc-desc" className="tables-sort icon" />
-                </div>
+            <th id={id} ref={targetRef}>
+                <TextLoadingPlaceholder small />
             </th>
         );
     }
-}
+
+    return (
+        <th id={id} className={headerCellClasses} onClick={() => onSort()} ref={targetRef}>
+            {children}
+            <div className="admin-sort-icon">
+                <Svg svgName="asc-desc" className="tables-sort icon" />
+            </div>
+        </th>
+    );
+};

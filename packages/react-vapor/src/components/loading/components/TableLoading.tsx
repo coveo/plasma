@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {FixedWidthState, TableHOCUtils} from '../../table-hoc';
 
 const Table = ({
     isCard = false,
@@ -30,11 +31,14 @@ const Body = ({
     numberOfColumns = 4,
     numberOfRow = 10,
     numberOfSubRow = 3,
+    columns,
 }: {
     isCard?: boolean;
     numberOfColumns?: number;
     numberOfRow?: number;
     numberOfSubRow?: number;
+    /* use when you want fixed width */
+    columns?: FixedWidthState[];
 }) => (
     <tbody>
         {_.times(numberOfRow, (nColumn: number) =>
@@ -45,7 +49,12 @@ const Body = ({
                     numberOfSubRow={numberOfSubRow}
                 />
             ) : (
-                <TableRow key={`table-row-loading-${nColumn}`} numberOfColumns={numberOfColumns} nColumn={nColumn} />
+                <TableRow
+                    key={`table-row-loading-${nColumn}`}
+                    numberOfColumns={numberOfColumns}
+                    nColumn={nColumn}
+                    columns={columns}
+                />
             )
         )}
     </tbody>
@@ -75,16 +84,36 @@ const CardSubRow = ({num}: {num: number}) => (
     </p>
 );
 
-const TableRow = ({numberOfColumns, nColumn}: {numberOfColumns?: number; nColumn: number}) => (
+const TableRow = ({
+    numberOfColumns,
+    nColumn,
+    columns,
+}: {
+    numberOfColumns?: number;
+    nColumn: number;
+    /* use when you want fixed width */
+    columns?: FixedWidthState[];
+}) => (
     <tr className="mod-border-bottom no-hover">
-        {_.times(numberOfColumns, (nRow: number) => (
-            <Row key={`table-row-loading-${nRow}`} num={nColumn} />
-        ))}
+        {columns?.length
+            ? columns.map((col, i) => (
+                  <Cell key={`table-row-loading-${i}`} num={nColumn} colWidth={col.dimensions?.width} />
+              ))
+            : _.times(numberOfColumns, (nRow: number) => <Cell key={`table-row-loading-${nRow}`} num={nColumn} />)}
     </tr>
 );
 
-const Row = ({num}: {num: number}) => (
-    <td className="table-cell-loading">
+/**
+ * @deprecated use Cell instead as \<Row /\> doesn't render a \<tr /\>
+ */
+const Row = ({num, colWidth}: {num: number; colWidth?: number}) => (
+    <td className="table-cell-loading" {...TableHOCUtils.setFixedWidth(colWidth, !!colWidth)}>
+        <div className={classNames('table-cell-content-loading', {'mod-half': num % 2})} />
+    </td>
+);
+
+const Cell = ({num, colWidth}: {num: number; colWidth?: number}) => (
+    <td className="table-cell-loading" {...TableHOCUtils.setFixedWidth(colWidth, !!colWidth)}>
         <div className={classNames('table-cell-content-loading', {'mod-half': num % 2})} />
     </td>
 );
@@ -97,4 +126,5 @@ export const TableLoading = {
     CardLoading,
     CardSubRow,
     Row,
+    Cell,
 };

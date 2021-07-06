@@ -6,6 +6,7 @@ import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/
 import {ActionBarConnected} from '../actions/ActionBar';
 import {TableLoading} from '../loading/components/TableLoading';
 import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
+import {FixedWidthState} from './utils/TableHOCUtils';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead
@@ -17,7 +18,7 @@ export interface ITableHOCOwnProps {
     isLoading?: boolean;
     hasActionButtons?: boolean;
     data: any[];
-    renderBody: (data: any[]) => React.ReactNode;
+    renderBody: (data: any[], fixedWidthColumns?: FixedWidthState[]) => React.ReactNode;
     actions?: React.ReactNode[];
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
@@ -30,6 +31,7 @@ export interface ITableHOCOwnProps {
         numberOfColumns?: number;
         defaultLoadingRow?: number;
         numberOfSubRow?: number;
+        fixedWidthColumns?: FixedWidthState[];
     };
 }
 
@@ -47,6 +49,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
             numberOfColumns: 5,
             defaultLoadingRow: PER_PAGE_NUMBERS[1],
             numberOfSubRow: 3,
+            fixedWidthColumns: [],
         },
     };
 
@@ -58,7 +61,7 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                     key={`table-body-${this.props.id}`}
                     className={classNames({hidden: this.props.isLoading}, this.props.tbodyClassName)}
                 >
-                    {this.props.renderBody(this.props.data || [])}
+                    {this.props.renderBody(this.props.data || [], this.props.loading.fixedWidthColumns)}
                 </tbody>
                 {this.props.isLoading && (
                     <TableLoading.Body
@@ -67,6 +70,8 @@ export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAtt
                         numberOfRow={_.size(this.props.data) || this.props.loading?.defaultLoadingRow}
                         numberOfColumns={this.props.loading?.numberOfColumns}
                         numberOfSubRow={this.props.loading?.numberOfSubRow}
+                        /* use when you want fixed width */
+                        columns={this.props.loading.fixedWidthColumns}
                     />
                 )}
             </table>
