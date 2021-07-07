@@ -10,19 +10,19 @@ describe('FileUtils', () => {
         });
 
         it('should return an object containing the specified file name', () => {
-            expect(FileUtils.serialize(file)).toEqual(jasmine.objectContaining({name: '🤓'}));
+            expect(FileUtils.serialize(file)).toEqual(expect.objectContaining({name: '🤓'}));
         });
 
         it('should return an object containing the specified file type', () => {
-            expect(FileUtils.serialize(file)).toEqual(jasmine.objectContaining({type: 'text/plain'}));
+            expect(FileUtils.serialize(file)).toEqual(expect.objectContaining({type: 'text/plain'}));
         });
 
         it('should return an object containing the specified file size', () => {
-            expect(FileUtils.serialize(file)).toEqual(jasmine.objectContaining({size: 33}));
+            expect(FileUtils.serialize(file)).toEqual(expect.objectContaining({size: 33}));
         });
 
         it('should return an object containing the specified file last modified date', () => {
-            expect(FileUtils.serialize(file)).toEqual(jasmine.objectContaining({lastModified: now}));
+            expect(FileUtils.serialize(file)).toEqual(expect.objectContaining({lastModified: now}));
         });
     });
 });

@@ -30,6 +30,10 @@ export interface ITableHeaderCellProps
         ITableHeaderStateProps,
         ITableHeaderCellDispatchProps {}
 
+/**
+ * @deprecated since version 22.11.30
+ * use TableHeaderWithSort instead
+ */
 export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any> {
     static defaultProps: Partial<ITableHeaderCellProps> = {
         sorted: TableSortingOrder.UNSORTED,

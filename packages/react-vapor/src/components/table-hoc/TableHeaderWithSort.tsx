@@ -89,6 +89,12 @@ export const TableHeaderWithSort: React.FC<
         'admin-sort-descending': sorted === false,
     });
 
+    const getSvg = classNames({
+        'sorted-asc': sorted === true,
+        'sorted-desc': sorted === false,
+        'asc-desc': sorted === undefined,
+    });
+
     if (isLoading) {
         return (
             <th id={id} ref={targetRef}>
@@ -101,7 +107,7 @@ export const TableHeaderWithSort: React.FC<
         <th id={id} className={headerCellClasses} onClick={() => onSort()} ref={targetRef}>
             {children}
             <div className="admin-sort-icon">
-                <Svg svgName="asc-desc" className="tables-sort icon" />
+                <Svg svgName={getSvg} className="tables-sort icon" />
             </div>
         </th>
     );

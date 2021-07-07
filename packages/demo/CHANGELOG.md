@@ -3,6 +3,171 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
+
+
+### Bug Fixes
+
+* **singleselect:** wrapped section children ([87bf515](https://github.com/coveo/react-vapor/commit/87bf51506699b5a00212caef0ca7fb390124fa16))
+
+
+
+
+
+## [22.17.2](https://github.com/coveo/react-vapor/compare/v22.17.1...v22.17.2) (2021-06-28)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.17.1](https://github.com/coveo/react-vapor/compare/v22.17.0...v22.17.1) (2021-06-22)
+
+
+### Bug Fixes
+
+* **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
+
+
+
+
+
+# [22.17.0](https://github.com/coveo/react-vapor/compare/v22.16.0...v22.17.0) (2021-06-16)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.16.0](https://github.com/coveo/react-vapor/compare/v22.15.1...v22.16.0) (2021-06-16)
+
+
+### Features
+
+* **iconcard:** allow IconCard to have children ([212313f](https://github.com/coveo/react-vapor/commit/212313f4acb12384a42327efbd4fdc758fa9db4b))
+
+
+
+
+
+## [22.15.1](https://github.com/coveo/react-vapor/compare/v22.15.0...v22.15.1) (2021-06-15)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.15.0](https://github.com/coveo/react-vapor/compare/v22.14.0...v22.15.0) (2021-06-15)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.14.0](https://github.com/coveo/react-vapor/compare/v22.13.0...v22.14.0) (2021-06-11)
+
+
+### Features
+
+* **color-dot:** add more states and mod-small ([#2057](https://github.com/coveo/react-vapor/issues/2057)) ([de8bbd4](https://github.com/coveo/react-vapor/commit/de8bbd49cbaad126313b503b2ea7dfbf12acaa4b))
+
+
+
+
+
+# [22.13.0](https://github.com/coveo/react-vapor/compare/v22.12.0...v22.13.0) (2021-06-11)
+
+
+### Features
+
+* **top-bar:** create icon badge component ([#2052](https://github.com/coveo/react-vapor/issues/2052)) ([e3c0dc9](https://github.com/coveo/react-vapor/commit/e3c0dc90ca1e659cd6e2b3d9f899ee0c308ddf76))
+
+
+
+
+
+# [22.12.0](https://github.com/coveo/react-vapor/compare/v22.11.6...v22.12.0) (2021-06-11)
+
+
+### Features
+
+* **textinput:** add new input component ([c5b9221](https://github.com/coveo/react-vapor/commit/c5b92218530cc37a0c61b784b0c65ea2aaef35fb))
+
+
+
+
+
+## [22.11.6](https://github.com/coveo/react-vapor/compare/v22.11.5...v22.11.6) (2021-06-11)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.11.5](https://github.com/coveo/react-vapor/compare/v22.11.4...v22.11.5) (2021-06-11)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.11.4](https://github.com/coveo/react-vapor/compare/v22.11.3...v22.11.4) (2021-06-11)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.11.3](https://github.com/coveo/react-vapor/compare/v22.11.2...v22.11.3) (2021-06-10)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.11.2](https://github.com/coveo/react-vapor/compare/v22.11.1...v22.11.2) (2021-06-09)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.11.1](https://github.com/coveo/react-vapor/compare/v22.11.0...v22.11.1) (2021-06-09)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.11.0](https://github.com/coveo/react-vapor/compare/v22.10.0...v22.11.0) (2021-06-08)
+
+
+### Features
+
+* **browserpreview:** +title props ([761c1fb](https://github.com/coveo/react-vapor/commit/761c1fbff5f1acdbe7903ef3622e807423cbe883))
+
+
+
+
+
 # [22.10.0](https://github.com/coveo/react-vapor/compare/v22.9.6...v22.10.0) (2021-06-08)
 
 

@@ -180,19 +180,21 @@ const SingleSelectConnectedExamples: React.ComponentType = () => (
             </div>
         </Section>
         <Section level={3} title="A single select with dirty management">
-            <SingleSelectWithDirty id="select-dirty" items={defaultItems} canClear />
-            <SingleSelectWithDirty
-                id="select-dirty-with-initial-value"
-                items={defaultItems}
-                initialValue={defaultItems[1].value}
-                canClear
-                footer={<div className="select-footer">This one already has an initial value</div>}
-            />
-            <SaveButton
-                enabled
-                validationIds={['select-dirty', 'select-dirty-with-initial-value']}
-                name="An example button bound to the select"
-            />
+            <div>
+                <SingleSelectWithDirty id="select-dirty" items={defaultItems} canClear />
+                <SingleSelectWithDirty
+                    id="select-dirty-with-initial-value"
+                    items={defaultItems}
+                    initialValue={defaultItems[1].value}
+                    canClear
+                    footer={<div className="select-footer">This one already has an initial value</div>}
+                />
+                <SaveButton
+                    enabled
+                    validationIds={['select-dirty', 'select-dirty-with-initial-value']}
+                    name="An example button bound to the select"
+                />
+            </div>
         </Section>
     </Section>
 );

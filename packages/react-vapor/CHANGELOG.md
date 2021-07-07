@@ -3,6 +3,180 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
+
+
+### Features
+
+* **tabs:** improve accessibility of tabs ([36be341](https://github.com/coveo/react-vapor/commit/36be341841ad293e2be79301278225f880892ac0))
+
+
+
+
+
+## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.17.2](https://github.com/coveo/react-vapor/compare/v22.17.1...v22.17.2) (2021-06-28)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.17.1](https://github.com/coveo/react-vapor/compare/v22.17.0...v22.17.1) (2021-06-22)
+
+
+### Bug Fixes
+
+* **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
+
+
+
+
+
+# [22.17.0](https://github.com/coveo/react-vapor/compare/v22.16.0...v22.17.0) (2021-06-16)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [22.16.0](https://github.com/coveo/react-vapor/compare/v22.15.1...v22.16.0) (2021-06-16)
+
+
+### Features
+
+* **iconcard:** allow IconCard to have children ([212313f](https://github.com/coveo/react-vapor/commit/212313f4acb12384a42327efbd4fdc758fa9db4b))
+
+
+
+
+
+## [22.15.1](https://github.com/coveo/react-vapor/compare/v22.15.0...v22.15.1) (2021-06-15)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [22.15.0](https://github.com/coveo/react-vapor/compare/v22.14.0...v22.15.0) (2021-06-15)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [22.14.0](https://github.com/coveo/react-vapor/compare/v22.13.0...v22.14.0) (2021-06-11)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [22.13.0](https://github.com/coveo/react-vapor/compare/v22.12.0...v22.13.0) (2021-06-11)
+
+
+### Features
+
+* **top-bar:** create icon badge component ([#2052](https://github.com/coveo/react-vapor/issues/2052)) ([e3c0dc9](https://github.com/coveo/react-vapor/commit/e3c0dc90ca1e659cd6e2b3d9f899ee0c308ddf76))
+
+
+
+
+
+# [22.12.0](https://github.com/coveo/react-vapor/compare/v22.11.6...v22.12.0) (2021-06-11)
+
+
+### Features
+
+* **textinput:** add new input component ([c5b9221](https://github.com/coveo/react-vapor/commit/c5b92218530cc37a0c61b784b0c65ea2aaef35fb))
+
+
+
+
+
+## [22.11.6](https://github.com/coveo/react-vapor/compare/v22.11.5...v22.11.6) (2021-06-11)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.11.5](https://github.com/coveo/react-vapor/compare/v22.11.4...v22.11.5) (2021-06-11)
+
+
+### Bug Fixes
+
+* applied review to pr ([0bc3fc4](https://github.com/coveo/react-vapor/commit/0bc3fc4adeffaddd44f4e5c3b656e7adf7339184))
+* **tableheaderwithsort:** (WIP) get colored arrows when clicking on sort ([db89f42](https://github.com/coveo/react-vapor/commit/db89f42362aff7b50bc176d522eccfb5f29da07e))
+
+
+
+
+
+## [22.11.4](https://github.com/coveo/react-vapor/compare/v22.11.3...v22.11.4) (2021-06-11)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.11.3](https://github.com/coveo/react-vapor/compare/v22.11.2...v22.11.3) (2021-06-10)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.11.2](https://github.com/coveo/react-vapor/compare/v22.11.1...v22.11.2) (2021-06-09)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [22.11.1](https://github.com/coveo/react-vapor/compare/v22.11.0...v22.11.1) (2021-06-09)
+
+
+### Bug Fixes
+
+* **slider.tsx:** changed interface for slider ([69b1e1a](https://github.com/coveo/react-vapor/commit/69b1e1a9a8b8f495f0adb695298cc9068ec6d176))
+
+
+
+
+
+# [22.11.0](https://github.com/coveo/react-vapor/compare/v22.10.0...v22.11.0) (2021-06-08)
+
+
+### Bug Fixes
+
+* upgrade query-string from 6.13.1 to 6.14.1 ([28dcc06](https://github.com/coveo/react-vapor/commit/28dcc06fe83eafff540dc69708cb17f755d6083f))
+
+
+### Features
+
+* **browserpreview:** +title props ([761c1fb](https://github.com/coveo/react-vapor/commit/761c1fbff5f1acdbe7903ef3622e807423cbe883))
+
+
+
+
+
 # [22.10.0](https://github.com/coveo/react-vapor/compare/v22.9.6...v22.10.0) (2021-06-08)
 
 

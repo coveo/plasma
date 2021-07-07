@@ -40,5 +40,24 @@ const renderModal: typeof customRender = (ui, renderOptions) => {
     return customRender(ui, {...renderOptions, container: appRoot});
 };
 
+/**
+ * Jest logs thrown errors with console.error even when using `.toThrow()` matcher.
+ * This function will silence those logs.
+ *
+ * @param func Function that you would normally pass to `expect(func).toThrow()`
+ */
+const expectToThrow = (func: () => unknown, error?: JestToErrorArg): void => {
+    // Even though the error is caught, it still gets printed to the console
+    // so we mock that out to avoid the wall of red text.
+    const spy = jest.spyOn(console, 'error');
+    spy.mockImplementation(() => null);
+
+    expect(func).toThrow(error);
+
+    spy.mockRestore();
+};
+
+type JestToErrorArg = Parameters<jest.Matchers<unknown, () => unknown>['toThrow']>[0];
+
 export * from '@testing-library/react';
-export {customRender as render, renderModal};
+export {customRender as render, renderModal, expectToThrow};

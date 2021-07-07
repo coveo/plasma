@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
-import {ITabProps} from '../tab/Tab';
-import {TabConnected} from '../tab/TabConnected';
+
+import {ITabProps, TabConnected} from '../tab/Tab';
 import {TabNavigation} from '../tab/TabNavigation';
 
 export interface ITabsHeaderProps {
