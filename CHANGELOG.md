@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [22.19.0](https://github.com/coveo/react-vapor/compare/v22.18.0...v22.19.0) (2021-07-07)
+
+
+### Features
+
+* **svg:** add `associate` icon ([39b375d](https://github.com/coveo/react-vapor/commit/39b375d04fbf31462e8cbef7b5c2b31cb53c556b))
+
+
+
+
+
 # [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
 
 
