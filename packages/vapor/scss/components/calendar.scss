@@ -249,12 +249,16 @@
 }
 
 .options-cycle-button {
-    display: inline-block;
+    justify-content: center;
     padding: 0;
     background-color: var(--white);
     border: none;
 
     cursor: pointer;
+
+    &.mod-border {
+        border: $button-border-width solid var(--navy-blue-80);
+    }
 }
 
 .option-picker {
