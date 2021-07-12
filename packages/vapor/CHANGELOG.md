@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.19.2](https://github.com/coveo/react-vapor/compare/v22.19.1...v22.19.2) (2021-07-12)
+
+
+### Bug Fixes
+
+* **option-picker:** alignement when used as a button ([bc6341a](https://github.com/coveo/react-vapor/commit/bc6341a4b34c821eea6681225cc2798895cbb132))
+
+
+
+
+
 # [22.19.0](https://github.com/coveo/react-vapor/compare/v22.18.0...v22.19.0) (2021-07-07)
 
 
