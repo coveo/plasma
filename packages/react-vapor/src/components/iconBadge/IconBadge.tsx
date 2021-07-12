@@ -4,14 +4,14 @@ import * as React from 'react';
 import {Svg} from '../svg';
 
 export enum IconBadgeSize {
-    Medium,
+    Medium = 'Medium',
 }
 
 export enum IconBadgeType {
-    New,
-    Information,
-    Warning,
-    Major,
+    New = 'New',
+    Information = 'Information',
+    Warning = 'Warning',
+    Major = 'Major',
 }
 
 export interface IconBadgeProps {
