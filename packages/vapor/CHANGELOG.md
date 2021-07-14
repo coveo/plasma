@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.19.3](https://github.com/coveo/react-vapor/compare/v22.19.2...v22.19.3) (2021-07-14)
+
+
+### Bug Fixes
+
+* **focus:** override outline for Firefox ([81d32dc](https://github.com/coveo/react-vapor/commit/81d32dc71b1bca98f8e664600152531bc20e5c9e))
+* **focus:** override outline for Firefox ([7e48066](https://github.com/coveo/react-vapor/commit/7e48066d74507b145be86e4e1caa0fb98a678c54))
+
+
+
+
+
 ## [22.19.2](https://github.com/coveo/react-vapor/compare/v22.19.1...v22.19.2) (2021-07-12)
 
 
