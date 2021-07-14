@@ -1,12 +1,4 @@
-import {
-    Button,
-    IBreadcrumbLinkProps,
-    IBreadcrumbProps,
-    IContentProps,
-    ILinkSvgProps,
-    ITabProps,
-    ITitleProps,
-} from 'react-vapor';
+import {Button, IBreadcrumbLinkProps, IBreadcrumbProps, IContentProps, ILinkSvgProps, ITitleProps} from 'react-vapor';
 
 export const link1: IBreadcrumbLinkProps = {
     name: 'Pikachu',
@@ -60,10 +52,3 @@ export const defaultBreadcrumbLongTitle: IBreadcrumbProps = {
     },
     links: [link1, link2],
 };
-
-export const defaultTabs: ITabProps[] = [
-    {id: 'tab1', title: 'Digimon'},
-    {id: 'tab2', title: 'Beyblade'},
-    {id: 'tab3', title: 'Pokemon'},
-    {id: 'tab4', title: 'Perdu', url: 'http://www.perdu.com'},
-];
