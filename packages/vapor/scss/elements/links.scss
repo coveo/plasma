@@ -55,3 +55,10 @@ a {
         text-decoration: underline;
     }
 }
+
+// override the style of the focus for links in Firefox
+@supports (-moz-appearance: none) {
+    .link:focus {
+        outline-style: solid;
+    }
+}
