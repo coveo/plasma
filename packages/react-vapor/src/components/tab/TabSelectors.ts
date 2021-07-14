@@ -15,10 +15,11 @@ const getSelectedTab = createSelector(
     (tabGroup: ITabGroupState): ITabState => _.findWhere(tabGroup?.tabs, {isSelected: true})
 );
 
-const getTab = (state: IReactVaporState, {id}: CherryPick<ITabOwnProps, 'id'>): ITabState =>
-    state.tabs
-        ?.reduce((accumulator, tabGroup): ITabState[] => [...accumulator, ...tabGroup.tabs], [])
-        .find((tab) => tab.id === id);
+const getTab = createSelector(
+    getTabGroup,
+    (state, {id}: CherryPick<ITabOwnProps, 'id'>) => id,
+    (tabGroup: ITabGroupState, id: string): ITabState => _.findWhere(tabGroup?.tabs, {id})
+);
 
 const getIsTabSelected = createSelector(getTab, (tab) => tab?.isSelected ?? false);
 

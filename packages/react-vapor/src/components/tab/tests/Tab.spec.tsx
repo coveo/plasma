@@ -26,11 +26,42 @@ describe('Tab', () => {
     });
 
     it('calls the onSelect callback when clicking on the tab', () => {
-
         const onSelectSpy = jest.fn();
         render(<TabConnected id="🆔" title="Title" onSelect={onSelectSpy} />);
         userEvent.click(screen.getByRole('tab', {name: /title/i}));
         expect(onSelectSpy).toHaveBeenCalled();
+    });
+
+    it('manages 2 tab groups independently from each other', () => {
+        render(
+            <div>
+                <TabNavigation>
+                    <TabConnected groupId="X" id="A" title="Tab 1" />
+                    <TabConnected groupId="X" id="B" title="Tab 2" />
+                </TabNavigation>
+                <TabNavigation>
+                    <TabConnected groupId="Y" id="A" title="Tab 3" />
+                    <TabConnected groupId="Y" id="B" title="Tab 4" />
+                </TabNavigation>
+            </div>
+        );
+
+        const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
+        const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
+        const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
+        const tab4 = screen.getByRole('tab', {name: /Tab 4/i});
+
+        expect(tab1).toHaveAttribute('aria-selected', 'true');
+        expect(tab2).toHaveAttribute('aria-selected', 'false');
+        expect(tab3).toHaveAttribute('aria-selected', 'true');
+        expect(tab4).toHaveAttribute('aria-selected', 'false');
+
+        userEvent.click(tab2);
+
+        expect(tab1).toHaveAttribute('aria-selected', 'false');
+        expect(tab2).toHaveAttribute('aria-selected', 'true');
+        expect(tab3).toHaveAttribute('aria-selected', 'true');
+        expect(tab4).toHaveAttribute('aria-selected', 'false');
     });
 
     describe('Navigation', () => {
