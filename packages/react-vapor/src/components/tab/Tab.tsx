@@ -6,7 +6,7 @@ import {createStructuredSelector} from 'reselect';
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
-import {addTab, removeTab, selectTab} from './TabActions';
+import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
 
 export interface ITabOwnProps {
@@ -17,14 +17,15 @@ export interface ITabOwnProps {
     tooltip?: string;
     children?: React.ReactNode;
     url?: string;
+    onSelect?: (e: React.MouseEvent) => void;
 }
 
 const enhance = connect(
     createStructuredSelector({isActive: TabSelectors.getIsTabSelected}),
     (dispatch: IDispatch, ownProps: ITabOwnProps) => ({
-        onRender: (): void => void dispatch(addTab(ownProps.id, ownProps.groupId)),
-        onDestroy: (): void => void dispatch(removeTab(ownProps.id, ownProps.groupId)),
-        onSelect: (e: React.MouseEvent): void => void dispatch(selectTab(ownProps.id, ownProps.groupId)),
+        onRender: (): void => void dispatch(TabActions.addTab(ownProps.id, ownProps.groupId)),
+        onDestroy: (): void => void dispatch(TabActions.removeTab(ownProps.id, ownProps.groupId)),
+        selectTab: (): void => void dispatch(TabActions.selectTab(ownProps.id, ownProps.groupId)),
     })
 );
 
@@ -40,6 +41,7 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
     onRender,
     onDestroy,
     onSelect,
+    selectTab,
 }) => {
     React.useEffect(() => {
         onRender?.();
@@ -48,6 +50,7 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
 
     const handleSelect = (e: React.MouseEvent) => {
         if (!disabled) {
+            selectTab?.();
             onSelect?.(e);
             if (url) {
                 UrlUtils.redirectToUrl(url);

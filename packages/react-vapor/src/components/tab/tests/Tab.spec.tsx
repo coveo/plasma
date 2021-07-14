@@ -25,6 +25,13 @@ describe('Tab', () => {
         spy.mockRestore();
     });
 
+    it('calls the onSlect callback when clicking on the tab', () => {
+        const onSelectSpy = jest.fn();
+        render(<TabConnected id="🆔" title="Title" onSelect={onSelectSpy} />);
+        userEvent.click(screen.getByRole('tab', {name: /title/i}));
+        expect(onSelectSpy).toHaveBeenCalled();
+    });
+
     describe('Navigation', () => {
         beforeEach(() => {
             render(
