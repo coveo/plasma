@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.19.4](https://github.com/coveo/react-vapor/compare/v22.19.3...v22.19.4) (2021-07-15)
+
+
+### Bug Fixes
+
+* **tabs:** allow onSelect prop on TabConnected ([#2081](https://github.com/coveo/react-vapor/issues/2081)) ([3610f83](https://github.com/coveo/react-vapor/commit/3610f83f0f6ead996a352195774defe2ff683d0a))
+
+
+
+
+
 ## [22.19.3](https://github.com/coveo/react-vapor/compare/v22.19.2...v22.19.3) (2021-07-14)
 
 **Note:** Version bump only for package react-vapor
