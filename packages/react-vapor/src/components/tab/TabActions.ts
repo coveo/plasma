@@ -34,3 +34,9 @@ export const removeTab = (id: string, groupId?: string): IReduxAction<ITabAction
         id,
     },
 });
+
+export const TabActions = {
+    selectTab,
+    addTab,
+    removeTab,
+};
