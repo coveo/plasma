@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.19.5](https://github.com/coveo/react-vapor/compare/v22.19.4...v22.19.5) (2021-07-15)
+
+
+### Bug Fixes
+
+* **tabs:** allow multiple independent tab navigations at the same time ([0548f87](https://github.com/coveo/react-vapor/commit/0548f87c675f9250857ea0cd595a4d9e40a607f7))
+
+
+
+
+
 ## [22.19.4](https://github.com/coveo/react-vapor/compare/v22.19.3...v22.19.4) (2021-07-15)
 
 **Note:** Version bump only for package react-vapor-demo
