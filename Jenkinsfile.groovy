@@ -10,7 +10,7 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
 }
 
 library(
-    identifier: "jsadmin_pipeline@master",
+    identifier: "jsadmin_pipeline@UITOOL-59/convert-pnpm-lock-to-npm",
     retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
     changelog: false
 )
@@ -257,15 +257,21 @@ pipeline {
         script {
           setLastStageName();
 
-          convertPNPMLockToNPMLock("../pnpm-lock.yaml", "../package-lock.json");
+          // snyk
+          sh "mkdir -p snyk"
+            
+          convertPNPMLockToNPM("../pnpm-lock.yaml", "../snyk");
+            
+          dir('snyk') {
+            sh "npx snyk auth $SNYK_TOKEN"
+            sh "npx snyk test --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > ../snyk-result.json || true"
+            sh "npx snyk monitor --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > ../snyk-monitor-result.json || true"
+          }
 
-          sh "npx snyk auth $SNYK_TOKEN"
-          sh "npx snyk test ./ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-result.json || true"
-          sh "npx snyk monitor ./ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-monitor-result.json || true"
           archiveArtifacts artifacts: 'snyk-result.json,snyk-monitor-result.json'
-          
-          // To avoid failure in convertPNPMLockToNPMLock when the cache is not clearer between builds
-          sh "rm -rf package-lock.json"
+
+          // To avoid failure when the cache is not cleared between builds
+          sh "rm -rf ./snyk"
 
           // Prepare veracode
           sh "mkdir -p veracode"
