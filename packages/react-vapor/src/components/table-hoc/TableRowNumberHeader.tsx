@@ -8,7 +8,7 @@ interface TableRowNumberHeaderProps {
 }
 
 export const TableRowNumberHeader: React.FC<TableRowNumberHeaderProps> = ({id, isLoading}) => {
-    const {style, targetRef} = useCustomLayoutEffect({id, isLoading});
+    const {style, tableHeaderRef} = useCustomLayoutEffect({id, isLoading});
 
-    return <th ref={targetRef} style={style} />;
+    return <th ref={tableHeaderRef} style={style} />;
 };

@@ -47,7 +47,7 @@ export const TableHeaderWithSort: React.FC<
     const onSort = () => dispatch(TableHeaderActions.sortTable(id));
     const onUnmount = () => dispatch(TableHeaderActions.removeTableHeader(id));
 
-    const {style, targetRef} = useCustomLayoutEffect({id, isLoading});
+    const {style, tableHeaderRef} = useCustomLayoutEffect({id, isLoading});
 
     React.useEffect(() => {
         onMount();
@@ -70,14 +70,14 @@ export const TableHeaderWithSort: React.FC<
 
     if (isLoading) {
         return (
-            <th id={id} ref={targetRef} style={style}>
+            <th id={id} ref={tableHeaderRef} style={style}>
                 {children}
             </th>
         );
     }
 
     return (
-        <th id={id} className={headerCellClasses} onClick={() => onSort()} ref={targetRef} style={style}>
+        <th id={id} className={headerCellClasses} onClick={() => onSort()} ref={tableHeaderRef} style={style}>
             {children}
             <div className="admin-sort-icon">
                 <Svg svgName={getSvg} className="tables-sort icon" />

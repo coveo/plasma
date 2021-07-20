@@ -8,10 +8,10 @@ interface TableRowHeaderProps {
 }
 
 export const TableRowHeader: React.FC<TableRowHeaderProps> = ({id, isLoading, children}) => {
-    const {style, targetRef} = useCustomLayoutEffect({id, isLoading});
+    const {style, tableHeaderRef} = useCustomLayoutEffect({id, isLoading});
 
     return (
-        <th ref={targetRef} style={style}>
+        <th ref={tableHeaderRef} style={style}>
             {children}
         </th>
     );
