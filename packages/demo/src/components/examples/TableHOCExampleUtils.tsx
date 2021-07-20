@@ -1,7 +1,6 @@
 import moment from 'moment';
 import * as React from 'react';
-import {DateUtils, TableHOCUtils, TableRowConnected, TableRowNumberColumn} from 'react-vapor';
-import {FixedWidthState} from 'react-vapor/src/components/table-hoc';
+import {DateUtils, TableRowConnected, TableRowNumberColumn} from 'react-vapor';
 
 import {SELECTION_BOXES_LONG} from './DatePickerExamplesCommon';
 import {IExampleRowData} from './TableHOCExamples';
@@ -10,7 +9,6 @@ import {TableHOCServerExampleId} from './TableHOCServerExamples';
 export interface ITableHOCServerExampleContext {
     isLoading: boolean;
     id: string;
-    fixWidth?: boolean;
 }
 
 export const TableHOCServerExampleContext = React.createContext<ITableHOCServerExampleContext>({
@@ -18,7 +16,7 @@ export const TableHOCServerExampleContext = React.createContext<ITableHOCServerE
     id: undefined,
 });
 
-const generateRows = (allData: IExampleRowData[], fixedWidthColumns?: FixedWidthState[]) =>
+const generateRows = (allData: IExampleRowData[]) =>
     allData.map(({email, username, dateOfBirth, city}: IExampleRowData, i: number) => (
         <TableRowConnected
             id={username}
@@ -30,18 +28,10 @@ const generateRows = (allData: IExampleRowData[], fixedWidthColumns?: FixedWidth
             collapsible={{content: i % 2 ? <div className="py2">👋</div> : null}}
         >
             <TableRowNumberColumn number={i + 1} />
-            <td key="city" {...TableHOCUtils.getColumnWidth('city', fixedWidthColumns)}>
-                {city}
-            </td>
-            <td key="email" {...TableHOCUtils.getColumnWidth('email', fixedWidthColumns)}>
-                {email.toLowerCase()}
-            </td>
-            <td key="username" {...TableHOCUtils.getColumnWidth('username', fixedWidthColumns)}>
-                {username.toLowerCase()}
-            </td>
-            <td key="date-of-birth" {...TableHOCUtils.getColumnWidth('dob', fixedWidthColumns)}>
-                {dateOfBirth.toLocaleDateString()}
-            </td>
+            <td key="city">{city}</td>
+            <td key="email">{email.toLowerCase()}</td>
+            <td key="username">{username.toLowerCase()}</td>
+            <td key="date-of-birth">{dateOfBirth.toLocaleDateString()}</td>
         </TableRowConnected>
     ));
 

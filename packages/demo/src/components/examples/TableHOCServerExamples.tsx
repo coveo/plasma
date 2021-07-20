@@ -4,7 +4,6 @@ import {connect} from 'react-redux';
 import {RouteComponentProps, withRouter} from 'react-router';
 import {
     filterThrough,
-    FixedWidthState,
     IDispatch,
     IReactVaporState,
     ITableHOCCompositeState,
@@ -50,7 +49,6 @@ export interface IExampleServerTableState {
 interface TableHOCServerExamplesState {
     data: {users: [any]; count: number};
     isLoading: boolean;
-    fixedWidthColumns?: FixedWidthState[];
 }
 
 export const TableHOCServerExamples = () => <TableHOCServer />;
@@ -60,46 +58,27 @@ TableHOCServerExamples.title = 'TableHOC server';
 // start-print
 export const TableHOCServerExampleId = 'complex-example';
 
-export const FixedWidthColumnIds = {
-    rowNum: 'number-row',
-    city: 'city',
-    email: 'email',
-    username: 'username',
-    dob: 'dob',
-};
-
 const renderHeader = () => (
     <TableHOCServerExampleContext.Consumer>
-        {({isLoading, fixWidth}) => (
+        {({isLoading}) => (
             <thead>
-                <tr style={{height: 45}}>
-                    <TableRowNumberHeader isLoading fixWidth={fixWidth} id={FixedWidthColumnIds.rowNum} />
-                    <TableHeaderWithSort
-                        id={FixedWidthColumnIds.city}
-                        tableId={TableHOCServerExampleId}
-                        isLoading={isLoading}
-                        fixWidth={fixWidth}
-                    >
+                <tr>
+                    <TableRowNumberHeader id="numHeader" isLoading={isLoading} />
+                    <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
                         City
                     </TableHeaderWithSort>
-                    <TableHeaderWithSort
-                        id={FixedWidthColumnIds.email}
-                        tableId={TableHOCServerExampleId}
-                        isLoading={isLoading}
-                        fixWidth={fixWidth}
-                    >
+                    <TableHeaderWithSort id="email" tableId={TableHOCServerExampleId} isLoading={isLoading}>
                         Email
                     </TableHeaderWithSort>
                     <TableHeaderWithSort
-                        id={FixedWidthColumnIds.username}
+                        id="username"
                         tableId={TableHOCServerExampleId}
                         isLoading={isLoading}
                         isDefault
-                        fixWidth={fixWidth}
                     >
                         Username
                     </TableHeaderWithSort>
-                    <TableRowHeader isLoading={isLoading} fixWidth={fixWidth} id={FixedWidthColumnIds.dob}>
+                    <TableRowHeader id="dob" isLoading={isLoading}>
                         Date of Birth
                     </TableRowHeader>
                     <TableRowHeader isLoading={isLoading} />
@@ -118,7 +97,6 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
     state: TableHOCServerExamplesState = {
         data: null,
         isLoading: true,
-        fixedWidthColumns: [],
     };
 
     private ServerTableComposed = _.compose(
@@ -156,23 +134,6 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
 
     componentDidMount() {
         this.fetch();
-
-        /**
-         * NOTE FOR DRAFT:
-         * these fields are set in localStorage by the <th /> if
-         * the { fixWidth: true } prop is passed into the context:
-         * TableRowHeader, TableRowNumberHeader, TableHeaderWithSort.
-         * When the table mounts, even after a page refresh, we
-         * check for those values here and pass them to the renderBody
-         * via the TableHOC loading props { fixedWidthColumns: this.state.fixedWidthColumns }
-         */
-
-        this.setState({
-            fixedWidthColumns: _.map(FixedWidthColumnIds, (field) => ({
-                field,
-                dimensions: JSON.parse(window.localStorage.getItem(`th-dimensions-${field}`)),
-            })),
-        });
     }
 
     render() {
@@ -183,11 +144,7 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                     change in the date range.
                 </span>
                 <TableHOCServerExampleContext.Provider
-                    value={{
-                        isLoading: this.state.isLoading,
-                        id: TableHOCServerExampleId,
-                        fixWidth: true, // accessed by renderHeader
-                    }}
+                    value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
                 >
                     <this.ServerTableComposed
                         id={TableHOCServerExampleId}
@@ -198,7 +155,7 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
                         onUpdate={this.onUpdate}
                         onUpdateUrl={this.updateUrl}
                         isLoading={this.state.isLoading}
-                        loading={{numberOfColumns: 6, fixedWidthColumns: this.state.fixedWidthColumns}}
+                        loading={{numberOfColumns: 6}}
                         filterPlaceholder="Filter all"
                         filterBlankslate={{
                             title: 'No result match the specified filter',

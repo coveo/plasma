@@ -6,19 +6,22 @@ import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/
 import {ActionBarConnected} from '../actions/ActionBar';
 import {TableLoading} from '../loading/components/TableLoading';
 import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
-import {FixedWidthState} from './utils/TableHOCUtils';
 
 /**
  * @deprecated Use WithServerSideProcessingProps directly instead
  */
 export type IMaybeServerConfig = WithServerSideProcessingProps;
 
+export interface ColumnWidths {
+    [id: string]: number;
+}
+
 export interface ITableHOCOwnProps {
     id: string;
     isLoading?: boolean;
     hasActionButtons?: boolean;
     data: any[];
-    renderBody: (data: any[], fixedWidthColumns?: FixedWidthState[]) => React.ReactNode;
+    renderBody: (data: any[]) => React.ReactNode;
     actions?: React.ReactNode[];
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
@@ -31,86 +34,100 @@ export interface ITableHOCOwnProps {
         numberOfColumns?: number;
         defaultLoadingRow?: number;
         numberOfSubRow?: number;
-        fixedWidthColumns?: FixedWidthState[];
     };
+    columnWidths?: ColumnWidths;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
 
-export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
-    static defaultProps: Partial<ITableHOCOwnProps> = {
-        isLoading: false,
-        hasActionButtons: false,
-        actions: [],
-        showBorderTop: false,
-        showBorderBottom: true,
-        loading: {
-            isCard: false,
-            numberOfColumns: 5,
-            defaultLoadingRow: PER_PAGE_NUMBERS[1],
-            numberOfSubRow: 3,
-            fixedWidthColumns: [],
-        },
-    };
+export interface ITableHOContext {
+    columnWidths?: ColumnWidths;
+    setColumnWidths?: (id: string, width: number) => void;
+}
 
-    render() {
-        const table = (
-            <table className={classNames(this.props.className)} style={{marginTop: this.hasActions() ? -1 : 0}}>
-                {this.props.tableHeader}
-                <tbody
-                    key={`table-body-${this.props.id}`}
-                    className={classNames({hidden: this.props.isLoading}, this.props.tbodyClassName)}
-                >
-                    {this.props.renderBody(this.props.data || [], this.props.loading.fixedWidthColumns)}
-                </tbody>
-                {this.props.isLoading && (
-                    <TableLoading.Body
-                        key={`table-loading-${this.props.id}`}
-                        isCard={this.props.loading?.isCard}
-                        numberOfRow={_.size(this.props.data) || this.props.loading?.defaultLoadingRow}
-                        numberOfColumns={this.props.loading?.numberOfColumns}
-                        numberOfSubRow={this.props.loading?.numberOfSubRow}
-                        /* use when you want fixed width */
-                        columns={this.props.loading.fixedWidthColumns}
-                    />
-                )}
-            </table>
-        );
+const initialColumnWidths: ColumnWidths = {};
 
-        return (
-            <div className={classNames('table-container', this.props.containerClassName)}>
-                {this.renderActions()}
-                {table}
-                {this.props.children}
-            </div>
-        );
-    }
+export const TableHOCContext = React.createContext<ITableHOContext>({columnWidths: initialColumnWidths});
 
-    private hasActions() {
-        return this.props.hasActionButtons || this.props.actions.length;
-    }
+export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
+    hasActionButtons = false,
+    actions = [],
+    showBorderTop = false,
+    showBorderBottom = true,
+    id,
+    children,
+    className,
+    tableHeader,
+    tbodyClassName,
+    renderBody,
+    data,
+    containerClassName,
+    isLoading = false,
+    loading = {
+        isCard: false,
+        numberOfColumns: 5,
+        defaultLoadingRow: PER_PAGE_NUMBERS[1],
+        numberOfSubRow: 3,
+    },
+}) => {
+    const [columnWidths, setColumnWidths] = React.useState<ColumnWidths>({});
 
-    private renderActions() {
-        if (this.hasActions()) {
+    const hasActions = () => hasActionButtons || actions.length;
+
+    const renderActions = () => {
+        if (hasActions()) {
             return (
                 <ActionBarConnected
-                    id={this.props.id}
+                    id={id}
                     removeDefaultContainerClasses
                     extraContainerClasses={classNames(
                         'coveo-table-actions-container',
                         'mod-cancel-header-padding',
                         'mod-align-header',
                         {
-                            'mod-border-top': this.props.showBorderTop,
-                            'mod-border-bottom': this.props.showBorderBottom,
+                            'mod-border-top': showBorderTop,
+                            'mod-border-bottom': showBorderBottom,
                         }
                     ).split(' ')}
-                    disabled={this.props.isLoading}
+                    disabled={isLoading}
                 >
-                    {this.props.actions}
+                    {actions}
                 </ActionBarConnected>
             );
         }
         return null;
-    }
-}
+    };
+
+    const handleColumnWidths = (columnId: string, width: number) => {
+        columnWidths[columnId] = width;
+        setColumnWidths(columnWidths);
+    };
+
+    const table = (
+        <table className={classNames(className)} style={{marginTop: hasActions() ? -1 : 0}}>
+            {tableHeader}
+            <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
+                {renderBody(data)}
+            </tbody>
+            {isLoading && (
+                <TableLoading.Body
+                    key={`table-loading-${id}`}
+                    isCard={loading?.isCard}
+                    numberOfRow={_.size(data) || loading?.defaultLoadingRow}
+                    numberOfColumns={loading?.numberOfColumns}
+                    numberOfSubRow={loading?.numberOfSubRow}
+                />
+            )}
+        </table>
+    );
+
+    return (
+        <TableHOCContext.Provider value={{columnWidths, setColumnWidths: handleColumnWidths}}>
+            <div className={classNames('table-container', containerClassName)}>
+                {renderActions()}
+                {table}
+                {children}
+            </div>
+        </TableHOCContext.Provider>
+    );
+};
