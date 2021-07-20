@@ -23,15 +23,6 @@ export interface ITableHOCCompositeState {
     dateLimits?: [Date, Date?];
 }
 
-export interface Dimensions {
-    height: number;
-    width: number;
-}
-export interface FixedWidthState {
-    colId: string;
-    width?: number;
-}
-
 const PREDICATE_SEPARATOR = '--';
 
 const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
