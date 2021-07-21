@@ -1,20 +1,19 @@
 import * as React from 'react';
-import {TableHOCContext} from '../TableHOC';
 
-export const useCustomLayoutEffect = ({id, isLoading}: {id: string; isLoading: boolean}) => {
+export const useCustomLayoutEffect = (isLoading: boolean) => {
     const tableHeaderRef = React.useRef<HTMLTableHeaderCellElement>();
-    const {columnWidths, setColumnWidths} = React.useContext(TableHOCContext);
+    const [columnWidth, setColumnWidth] = React.useState<number>();
 
     React.useLayoutEffect(() => {
-        if (id && tableHeaderRef.current && !isLoading) {
-            setColumnWidths(id, tableHeaderRef.current.offsetWidth);
+        if (tableHeaderRef.current && !isLoading) {
+            setColumnWidth(tableHeaderRef.current.offsetWidth);
         }
     }, [isLoading]);
 
     const style = {
-        width: `${columnWidths[id]}px`,
-        minWidth: `${columnWidths[id]}px`,
-        maxWidth: `${columnWidths[id]}px`,
+        width: `${columnWidth}px`,
+        minWidth: `${columnWidth}px`,
+        maxWidth: `${columnWidth}px`,
     };
 
     return {style, tableHeaderRef};

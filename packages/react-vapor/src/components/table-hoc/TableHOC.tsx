@@ -12,10 +12,6 @@ import {PER_PAGE_NUMBERS} from '../navigation/perPage/NavigationPerPage';
  */
 export type IMaybeServerConfig = WithServerSideProcessingProps;
 
-export interface ColumnWidths {
-    [id: string]: number;
-}
-
 export interface ITableHOCOwnProps {
     id: string;
     isLoading?: boolean;
@@ -35,19 +31,9 @@ export interface ITableHOCOwnProps {
         defaultLoadingRow?: number;
         numberOfSubRow?: number;
     };
-    columnWidths?: ColumnWidths;
 }
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
-
-export interface ITableHOContext {
-    columnWidths?: ColumnWidths;
-    setColumnWidths?: (id: string, width: number) => void;
-}
-
-const initialColumnWidths: ColumnWidths = {};
-
-export const TableHOCContext = React.createContext<ITableHOContext>({columnWidths: initialColumnWidths});
 
 export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
     hasActionButtons = false,
@@ -70,8 +56,6 @@ export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableE
         numberOfSubRow: 3,
     },
 }) => {
-    const [columnWidths, setColumnWidths] = React.useState<ColumnWidths>({});
-
     const hasActions = () => hasActionButtons || actions.length;
 
     const renderActions = () => {
@@ -98,11 +82,6 @@ export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableE
         return null;
     };
 
-    const handleColumnWidths = (columnId: string, width: number) => {
-        columnWidths[columnId] = width;
-        setColumnWidths(columnWidths);
-    };
-
     const table = (
         <table className={classNames(className)} style={{marginTop: hasActions() ? -1 : 0}}>
             {tableHeader}
@@ -122,12 +101,10 @@ export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableE
     );
 
     return (
-        <TableHOCContext.Provider value={{columnWidths, setColumnWidths: handleColumnWidths}}>
-            <div className={classNames('table-container', containerClassName)}>
-                {renderActions()}
-                {table}
-                {children}
-            </div>
-        </TableHOCContext.Provider>
+        <div className={classNames('table-container', containerClassName)}>
+            {renderActions()}
+            {table}
+            {children}
+        </div>
     );
 };

@@ -84,13 +84,9 @@ const TableRow = ({numberOfColumns, nColumn}: {numberOfColumns?: number; nColumn
 );
 
 /**
- * @deprecated use Cell instead as \<Row /\> doesn't render a \<tr /\>
+ * @deprecated use Cell instead
  */
-const Row = ({num}: {num: number}) => (
-    <td className="table-cell-loading">
-        <div className={classNames('table-cell-content-loading', {'mod-half': num % 2})} />
-    </td>
-);
+const Row = ({num}: {num: number}) => <Cell num={num} />;
 
 const Cell = ({num}: {num: number}) => (
     <td className="table-cell-loading">

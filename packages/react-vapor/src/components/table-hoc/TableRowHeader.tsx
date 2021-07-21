@@ -7,8 +7,8 @@ interface TableRowHeaderProps {
     isLoading?: boolean;
 }
 
-export const TableRowHeader: React.FC<TableRowHeaderProps> = ({id, isLoading, children}) => {
-    const {style, tableHeaderRef} = useCustomLayoutEffect({id, isLoading});
+export const TableRowHeader: React.FC<TableRowHeaderProps> = ({isLoading, children}) => {
+    const {style, tableHeaderRef} = useCustomLayoutEffect(isLoading);
 
     return (
         <th ref={tableHeaderRef} style={style}>

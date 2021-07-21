@@ -20,16 +20,7 @@ export interface HOCTableHeaderStateProps {
     sorted: boolean;
 }
 
-export interface ITableHeaderWithSortDispatchProps {
-    onMount: () => void;
-    onSort: () => void;
-    onUnmount: () => void;
-}
-
-export interface ITableHeaderWithSortProps
-    extends ITableHeaderWithSortOwnProps,
-        Partial<HOCTableHeaderStateProps>,
-        Partial<ITableHeaderWithSortDispatchProps> {}
+export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps, Partial<HOCTableHeaderStateProps> {}
 
 export const TableHeaderWithSort: React.FC<
     ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
@@ -47,14 +38,12 @@ export const TableHeaderWithSort: React.FC<
     const onSort = () => dispatch(TableHeaderActions.sortTable(id));
     const onUnmount = () => dispatch(TableHeaderActions.removeTableHeader(id));
 
-    const {style, tableHeaderRef} = useCustomLayoutEffect({id, isLoading});
+    const {style, tableHeaderRef} = useCustomLayoutEffect(isLoading);
 
     React.useEffect(() => {
         onMount();
 
-        return () => {
-            onUnmount();
-        };
+        return onUnmount;
     }, []);
 
     const headerCellClasses = classNames(className, 'admin-sort', {
