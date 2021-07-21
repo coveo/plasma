@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [22.20.1](https://github.com/coveo/react-vapor/compare/v22.20.0...v22.20.1) (2021-07-21)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 # [22.20.0](https://github.com/coveo/react-vapor/compare/v22.19.5...v22.20.0) (2021-07-15)
 
 
