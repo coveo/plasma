@@ -1,6 +1,6 @@
 {
     "name": "react-vapor-demo",
-    "version": "22.20.2",
+    "version": "22.20.3",
     "private": true,
     "description": "Vapor Design System",
     "main": "src/Index.ts",
@@ -36,7 +36,7 @@
         "react-router": "^5.2.0",
         "react-router-dom": "^5.2.0",
         "react-syntax-highlighter": "13.5.3",
-        "react-vapor": "^22.20.2",
+        "react-vapor": "^22.20.3",
         "redux": "4.1.0",
         "redux-devtools-extension": "2.13.9",
         "redux-promise-middleware": "6.1.2",
