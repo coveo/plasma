@@ -347,6 +347,6 @@ def postCommentOnGithub(demoLink="") {
     )
 }
 
-def convertPNPMLockToNPMLock(pnpmLockPath="", npmLockPath="") {
-  runUnzipPackage.call("convert-pnpm-to-npm-lock", "${pnpmLockPath} ${npmLockPath}")
+def convertPNPMLockToNPM(pnpmLockPath="", npmLockPath="") {
+  runUnzipPackage.call("convert-pnpm-lock-to-npm", "${pnpmLockPath} ${npmLockPath}")
 }
