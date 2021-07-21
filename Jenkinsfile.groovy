@@ -300,6 +300,18 @@ pipeline {
   }
 
   post {
+    fixed {
+      script {
+        if(env.BRANCH_NAME ==~ /(master|release-.*)/){
+          def message = "Build is back to normal for <${env.BUILD_URL}|${env.JOB_NAME}>";
+          def color = "#2ECC71"; // green
+          notify.sendSlackWithThread(
+            color: color, message: message,
+            MASTER_RELEASE_FAILURE_CHANNELS
+          )
+        }
+      }
+    }
     failure {
       script {
         def color = "FF0000";
