@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.0.0](https://github.com/coveo/react-vapor/compare/v23.0.0...v24.0.0) (2021-07-22)
+
+
+### chore
+
+* typekit release ([5a835cb](https://github.com/coveo/react-vapor/commit/5a835cbbb98de07be9f25bb8b8f79394fb60fe5f))
+
+
+### BREAKING CHANGES
+
+* All headings (h1-h6) and paragraphs (p) don't have the same visual style as before. They look very different up to a point at which we must acknowledge those changes are considered breaking.
+
+
+
+
+
 # [23.0.0-next.17](https://github.com/coveo/react-vapor/compare/v23.0.0-next.16...v23.0.0-next.17) (2021-07-22)
 
 **Note:** Version bump only for package e2etesting
