@@ -25,7 +25,9 @@ export class HeaderWrapper extends React.Component<IHeaderWrapperProps> {
                 <div className={this.classes}>
                     <div className="truncate mr2">
                         {this.props.children}
-                        <h4 className="admin-description normal-white-space">{this.props.description}</h4>
+                        <h4 className="admin-description h4-book-subdued normal-white-space">
+                            {this.props.description}
+                        </h4>
                     </div>
                     <div className="action-bar">{this.actions}</div>
                 </div>

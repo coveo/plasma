@@ -8,6 +8,7 @@ import {
     InfoLine,
     LineSeries,
     ScatterSeries,
+    Section,
     XGrid,
     XYAxis,
     XYChart,
@@ -76,9 +77,8 @@ const ChartType = {
 export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
-        <div className="mt2">
-            <div className="form-group">
-                <label className="form-control-label">Basic {s.capitalize(chartType)} Chart</label>
+        <Section>
+            <Section level={3} title={`Basic ${s.capitalize(chartType)} Chart`}>
                 <div className="form-control" style={{height: '300px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
@@ -105,10 +105,8 @@ export const ChartExamples: React.FunctionComponent = () => {
                         name={`${type} Series`}
                     />
                 ))}
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">Chart with tooltip</label>
+            </Section>
+            <Section level={3} title="Chart with tooltip">
                 <div className="form-control" style={{height: '300px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
@@ -119,10 +117,8 @@ export const ChartExamples: React.FunctionComponent = () => {
                         )}
                     />
                 </div>
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">Chart with y-axis and Info Lines</label>
+            </Section>
+            <Section level={3} title="Chart with y-axis and Info Lines">
                 <div className="form-control" style={{height: '300px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
@@ -138,10 +134,8 @@ export const ChartExamples: React.FunctionComponent = () => {
                         )}
                     />
                 </div>
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">Combined Chart</label>
+            </Section>
+            <Section level={3} title="Combined Chart">
                 <div className="form-control" style={{height: '500px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
@@ -167,10 +161,8 @@ export const ChartExamples: React.FunctionComponent = () => {
                         )}
                     />
                 </div>
-            </div>
-
-            <div className="form-group">
-                <label className="form-control-label">Date Chart</label>
+            </Section>
+            <Section level={3} title="Date Chart">
                 <div className="form-control" style={{height: '300px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
@@ -188,9 +180,6 @@ export const ChartExamples: React.FunctionComponent = () => {
                         )}
                     />
                 </div>
-            </div>
-            <div className="form-group">
-                <label className="form-control-label">Date Chart</label>
                 <div className="form-control" style={{height: '300px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
@@ -218,7 +207,7 @@ export const ChartExamples: React.FunctionComponent = () => {
                         )}
                     />
                 </div>
-            </div>
-        </div>
+            </Section>
+        </Section>
     );
 };

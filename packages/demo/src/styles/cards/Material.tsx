@@ -6,21 +6,21 @@ const Material = () => (
     <VaporComponent key="material" id="material" title="Material" usage="A container to display content" withSource>
         <div className="material-card mb2">
             <div className="p2">
-                <h2 className="mb2">I am a material card and you can fill me with whatever you want.</h2>
+                <h6 className="mb2">I am a material card and you can fill me with whatever you want.</h6>
                 <div>I am just a container after all.</div>
             </div>
         </div>
 
         <div className="material-card with-hover mb2">
             <div className="p2">
-                <h2 className="mb2">I am a material card with an hover effect.</h2>
+                <h6 className="mb2">I am a material card with an hover effect.</h6>
                 <div>Please hover me.</div>
             </div>
         </div>
 
         <div className="material-card with-hover with-active mb2">
             <div className="p2">
-                <h2 className="mb2">I am a material card with hover and click effects.</h2>
+                <h6 className="mb2">I am a material card with hover and click effects.</h6>
                 <div>Please hover and click me.</div>
             </div>
         </div>

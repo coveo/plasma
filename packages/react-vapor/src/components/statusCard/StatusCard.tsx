@@ -31,7 +31,7 @@ export class StatusCard extends React.Component<StatusCardProps> {
                     <Svg key="icon" className="py3 mr3" svgName={this.props.icon} svgClass="icon mod-2x" />
                 )}
                 <div key="status" className="py2">
-                    <h3>{this.props.title}</h3>
+                    <h6>{this.props.title}</h6>
                     {this.props.children && <div className="mt1">{this.props.children}</div>}
                 </div>
             </>

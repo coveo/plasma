@@ -3,6 +3,139 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [23.0.0-next.16](https://github.com/coveo/react-vapor/compare/v22.21.0...v23.0.0-next.16) (2021-07-22)
+
+
+
+# [23.0.0-next.15](https://github.com/coveo/react-vapor/compare/v23.0.0-next.14...v23.0.0-next.15) (2021-06-22)
+
+
+
+# [23.0.0-next.14](https://github.com/coveo/react-vapor/compare/v22.17.0...v23.0.0-next.14) (2021-06-22)
+
+
+
+# [23.0.0-next.13](https://github.com/coveo/react-vapor/compare/v22.15.0...v23.0.0-next.13) (2021-06-15)
+
+
+### Bug Fixes
+
+* applied review to pr ([c46e381](https://github.com/coveo/react-vapor/commit/c46e3818ffeccee4aec0f56c08cc869adf3bbb2a))
+* **toast:** fix info token in toast ([476c622](https://github.com/coveo/react-vapor/commit/476c62237e644dcc6f386131a39d3ea2ab0dc69e))
+
+
+
+# [23.0.0-next.12](https://github.com/coveo/react-vapor/compare/v22.13.0...v23.0.0-next.12) (2021-06-11)
+
+
+
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v22.11.2...v23.0.0-next.11) (2021-06-09)
+
+
+### Bug Fixes
+
+* applied review part one ([7425e41](https://github.com/coveo/react-vapor/commit/7425e416f713e9874dbc012b7163bd4e6fab5abf))
+* remove useless tag ([ea388c6](https://github.com/coveo/react-vapor/commit/ea388c6390291bdcce16fbcbbd6d851b46ed1d2f))
+
+
+
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v22.9.6...v23.0.0-next.10) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
+* fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
+
+
+
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
+
+
+### Bug Fixes
+
+* applied review from another pr ([369f4df](https://github.com/coveo/react-vapor/commit/369f4dfa1b680647e3459d042f15543aca0c2cf6))
+
+
+
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v22.9.4...v23.0.0-next.7) (2021-06-08)
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
+
+
+### Bug Fixes
+
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+* fix general guidelines demo ([827b3e6](https://github.com/coveo/react-vapor/commit/827b3e652c1a34ee7c3b27e76103cc30841c58c9))
+* fix some nitpick things ([a448a25](https://github.com/coveo/react-vapor/commit/a448a2549befee9a9936fbc54a5e6152f85f3513))
+* fix style for home demo ([060afbd](https://github.com/coveo/react-vapor/commit/060afbd031b4bbba189834cf2bd7657649b23f41))
+* fix style for List demo ([7beb2bb](https://github.com/coveo/react-vapor/commit/7beb2bb9747560401cb58d7d46b4806eb9dc016c))
+* fix style for material demo ([962b08f](https://github.com/coveo/react-vapor/commit/962b08f7eeb9624d01581c99f03b7d0fff709be8))
+* fix style for utilities demo ([b739256](https://github.com/coveo/react-vapor/commit/b7392563ffaebfbdd254d4962e90711f7b09a2f8))
+* fix style of wizard demo ([90c39d8](https://github.com/coveo/react-vapor/commit/90c39d8b7151ab50b49ec34527a4e73e3df69170))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+* removed repetitive label ([b5bf942](https://github.com/coveo/react-vapor/commit/b5bf942e3284d044478d748c13154d086b389995))
+
+
+
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.1...v23.0.0-next.5) (2021-06-04)
+
+
+### Bug Fixes
+
+* fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
+
+
+
+# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
+
+
+### Bug Fixes
+
+* **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
+
+
+
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+### Features
+
+* **vapor:** implement new typekit ([a7f03b5](https://github.com/coveo/react-vapor/commit/a7f03b51725749c82b2f3e3bd3d0d0fe66f69b74))
+
+
+### BREAKING CHANGES
+
+* **vapor:** All headings (h1-h6) and paragraphs (p) don't have the same visual style as before.
+They look very different up to a point at which we must acknowledge those changes are considered
+breaking.
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+
+
+
+
+
+<<<<<<< HEAD
+# [23.0.0-next.15](https://github.com/coveo/react-vapor/compare/v23.0.0-next.14...v23.0.0-next.15) (2021-06-22)
+=======
 # [22.21.0](https://github.com/coveo/react-vapor/compare/v22.20.3...v22.21.0) (2021-07-22)
 
 
@@ -15,6 +148,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## [22.20.3](https://github.com/coveo/react-vapor/compare/v22.20.2...v22.20.3) (2021-07-21)
+>>>>>>> master
 
 **Note:** Version bump only for package root
 
@@ -22,6 +156,37 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+<<<<<<< HEAD
+# [23.0.0-next.14](https://github.com/coveo/react-vapor/compare/v22.17.0...v23.0.0-next.14) (2021-06-22)
+
+
+
+# [23.0.0-next.13](https://github.com/coveo/react-vapor/compare/v22.15.0...v23.0.0-next.13) (2021-06-15)
+
+
+### Bug Fixes
+
+* applied review to pr ([c46e381](https://github.com/coveo/react-vapor/commit/c46e3818ffeccee4aec0f56c08cc869adf3bbb2a))
+* **toast:** fix info token in toast ([476c622](https://github.com/coveo/react-vapor/commit/476c62237e644dcc6f386131a39d3ea2ab0dc69e))
+
+
+
+# [23.0.0-next.12](https://github.com/coveo/react-vapor/compare/v22.13.0...v23.0.0-next.12) (2021-06-11)
+
+
+
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v22.11.2...v23.0.0-next.11) (2021-06-09)
+
+
+### Bug Fixes
+
+* applied review part one ([7425e41](https://github.com/coveo/react-vapor/commit/7425e416f713e9874dbc012b7163bd4e6fab5abf))
+* remove useless tag ([ea388c6](https://github.com/coveo/react-vapor/commit/ea388c6390291bdcce16fbcbbd6d851b46ed1d2f))
+
+
+
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v22.9.6...v23.0.0-next.10) (2021-06-08)
+=======
 ## [22.20.2](https://github.com/coveo/react-vapor/compare/v22.20.1...v22.20.2) (2021-07-21)
 
 **Note:** Version bump only for package root
@@ -50,10 +215,19 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## [22.19.5](https://github.com/coveo/react-vapor/compare/v22.19.4...v22.19.5) (2021-07-15)
+>>>>>>> master
 
 
 ### Bug Fixes
 
+<<<<<<< HEAD
+* fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
+* fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
+
+
+
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
+=======
 * **tabs:** allow multiple independent tab navigations at the same time ([0548f87](https://github.com/coveo/react-vapor/commit/0548f87c675f9250857ea0cd595a4d9e40a607f7))
 
 
@@ -61,10 +235,26 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## [22.19.4](https://github.com/coveo/react-vapor/compare/v22.19.3...v22.19.4) (2021-07-15)
+>>>>>>> master
 
 
 ### Bug Fixes
 
+<<<<<<< HEAD
+* applied review from another pr ([369f4df](https://github.com/coveo/react-vapor/commit/369f4dfa1b680647e3459d042f15543aca0c2cf6))
+
+
+
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v22.9.4...v23.0.0-next.7) (2021-06-08)
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
+=======
 * **tabs:** allow onSelect prop on TabConnected ([#2081](https://github.com/coveo/react-vapor/issues/2081)) ([3610f83](https://github.com/coveo/react-vapor/commit/3610f83f0f6ead996a352195774defe2ff683d0a))
 
 
@@ -84,10 +274,45 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## [22.19.2](https://github.com/coveo/react-vapor/compare/v22.19.1...v22.19.2) (2021-07-12)
+>>>>>>> master
 
 
 ### Bug Fixes
 
+<<<<<<< HEAD
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+* fix general guidelines demo ([827b3e6](https://github.com/coveo/react-vapor/commit/827b3e652c1a34ee7c3b27e76103cc30841c58c9))
+* fix some nitpick things ([a448a25](https://github.com/coveo/react-vapor/commit/a448a2549befee9a9936fbc54a5e6152f85f3513))
+* fix style for home demo ([060afbd](https://github.com/coveo/react-vapor/commit/060afbd031b4bbba189834cf2bd7657649b23f41))
+* fix style for List demo ([7beb2bb](https://github.com/coveo/react-vapor/commit/7beb2bb9747560401cb58d7d46b4806eb9dc016c))
+* fix style for material demo ([962b08f](https://github.com/coveo/react-vapor/commit/962b08f7eeb9624d01581c99f03b7d0fff709be8))
+* fix style for utilities demo ([b739256](https://github.com/coveo/react-vapor/commit/b7392563ffaebfbdd254d4962e90711f7b09a2f8))
+* fix style of wizard demo ([90c39d8](https://github.com/coveo/react-vapor/commit/90c39d8b7151ab50b49ec34527a4e73e3df69170))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+* removed repetitive label ([b5bf942](https://github.com/coveo/react-vapor/commit/b5bf942e3284d044478d748c13154d086b389995))
+
+
+
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.1...v23.0.0-next.5) (2021-06-04)
+
+
+### Bug Fixes
+
+* fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
+
+
+
+# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
+=======
 * **option-picker:** alignement when used as a button ([bc6341a](https://github.com/coveo/react-vapor/commit/bc6341a4b34c821eea6681225cc2798895cbb132))
 
 
@@ -125,10 +350,34 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 ## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
+>>>>>>> master
 
 
 ### Bug Fixes
 
+<<<<<<< HEAD
+* **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
+
+
+
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+### Features
+
+* **vapor:** implement new typekit ([a7f03b5](https://github.com/coveo/react-vapor/commit/a7f03b51725749c82b2f3e3bd3d0d0fe66f69b74))
+
+
+### BREAKING CHANGES
+
+* **vapor:** All headings (h1-h6) and paragraphs (p) don't have the same visual style as before.
+They look very different up to a point at which we must acknowledge those changes are considered
+breaking.
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+=======
 * **singleselect:** wrapped section children ([87bf515](https://github.com/coveo/react-vapor/commit/87bf51506699b5a00212caef0ca7fb390124fa16))
 
 
@@ -149,6 +398,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 ### Bug Fixes
 
 * **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
+>>>>>>> master
 
 
 
@@ -244,89 +494,139 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 ### Bug Fixes
 
-* add new lines in svg files ([81aac3c](https://github.com/coveo/react-vapor/commit/81aac3c1d2cbf7a6a76e629681f13f3e0ed5709e))
-* applied review to pr ([0bc3fc4](https://github.com/coveo/react-vapor/commit/0bc3fc4adeffaddd44f4e5c3b656e7adf7339184))
-* changed color to be more visible ([b4f57cd](https://github.com/coveo/react-vapor/commit/b4f57cdd43ea3d501f1b3b9c8dfb4688cfcad9ab))
-* **tableheaderwithsort:** (WIP) get colored arrows when clicking on sort ([db89f42](https://github.com/coveo/react-vapor/commit/db89f42362aff7b50bc176d522eccfb5f29da07e))
+* applied review to pr ([c46e381](https://github.com/coveo/react-vapor/commit/c46e3818ffeccee4aec0f56c08cc869adf3bbb2a))
+* **toast:** fix info token in toast ([476c622](https://github.com/coveo/react-vapor/commit/476c62237e644dcc6f386131a39d3ea2ab0dc69e))
 
 
 
 
 
-## [22.11.4](https://github.com/coveo/react-vapor/compare/v22.11.3...v22.11.4) (2021-06-11)
-
-
-### Bug Fixes
-
-* grey-50 for the disabled-underterminate-checkbox ([4641b47](https://github.com/coveo/react-vapor/commit/4641b4780b0bbf4d8f78646522a0d084397bac3a))
-* removed lost check on unchecked disabled checkeboxes ([5f5e177](https://github.com/coveo/react-vapor/commit/5f5e1773b4f8e939f9f9a45551ced8cd3658a528))
-* **checkboxes:** use grey-50 so the disabled chexk is more visible ([de57139](https://github.com/coveo/react-vapor/commit/de571392d8e4dfbd9811686da36986d4e415b4f4))
+# [23.0.0-next.12](https://github.com/coveo/react-vapor/compare/v22.11.5...v23.0.0-next.12) (2021-06-11)
 
 
 
-
-
-## [22.11.3](https://github.com/coveo/react-vapor/compare/v22.11.2...v22.11.3) (2021-06-10)
-
-**Note:** Version bump only for package root
-
-
-
-
-
-## [22.11.2](https://github.com/coveo/react-vapor/compare/v22.11.1...v22.11.2) (2021-06-09)
-
-**Note:** Version bump only for package root
-
-
-
-
-
-## [22.11.1](https://github.com/coveo/react-vapor/compare/v22.11.0...v22.11.1) (2021-06-09)
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v22.11.2...v23.0.0-next.11) (2021-06-09)
 
 
 ### Bug Fixes
 
-* **slider.tsx:** changed interface for slider ([69b1e1a](https://github.com/coveo/react-vapor/commit/69b1e1a9a8b8f495f0adb695298cc9068ec6d176))
+* applied review part one ([7425e41](https://github.com/coveo/react-vapor/commit/7425e416f713e9874dbc012b7163bd4e6fab5abf))
+* remove useless tag ([ea388c6](https://github.com/coveo/react-vapor/commit/ea388c6390291bdcce16fbcbbd6d851b46ed1d2f))
 
 
 
-
-
-# [22.11.0](https://github.com/coveo/react-vapor/compare/v22.10.0...v22.11.0) (2021-06-08)
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v22.9.6...v23.0.0-next.10) (2021-06-08)
 
 
 ### Bug Fixes
 
-* upgrade query-string from 6.13.1 to 6.14.1 ([28dcc06](https://github.com/coveo/react-vapor/commit/28dcc06fe83eafff540dc69708cb17f755d6083f))
+* fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
+* fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
+
+
+
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
+
+
+### Bug Fixes
+
+* applied review from another pr ([369f4df](https://github.com/coveo/react-vapor/commit/369f4dfa1b680647e3459d042f15543aca0c2cf6))
+
+
+
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
+
+
+
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v22.9.4...v23.0.0-next.7) (2021-06-08)
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
+
+
+### Bug Fixes
+
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
+* fix general guidelines demo ([827b3e6](https://github.com/coveo/react-vapor/commit/827b3e652c1a34ee7c3b27e76103cc30841c58c9))
+* fix some nitpick things ([a448a25](https://github.com/coveo/react-vapor/commit/a448a2549befee9a9936fbc54a5e6152f85f3513))
+* fix style for home demo ([060afbd](https://github.com/coveo/react-vapor/commit/060afbd031b4bbba189834cf2bd7657649b23f41))
+* fix style for List demo ([7beb2bb](https://github.com/coveo/react-vapor/commit/7beb2bb9747560401cb58d7d46b4806eb9dc016c))
+* fix style for material demo ([962b08f](https://github.com/coveo/react-vapor/commit/962b08f7eeb9624d01581c99f03b7d0fff709be8))
+* fix style for utilities demo ([b739256](https://github.com/coveo/react-vapor/commit/b7392563ffaebfbdd254d4962e90711f7b09a2f8))
+* fix style of wizard demo ([90c39d8](https://github.com/coveo/react-vapor/commit/90c39d8b7151ab50b49ec34527a4e73e3df69170))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+* removed repetitive label ([b5bf942](https://github.com/coveo/react-vapor/commit/b5bf942e3284d044478d748c13154d086b389995))
+
+
+
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.1...v23.0.0-next.5) (2021-06-04)
+
+
+### Bug Fixes
+
+* fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
+
+
+
+# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
+
+
+### Bug Fixes
+
+* **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
+
+
+
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
 
 
 ### Features
 
-* **browserpreview:** +title props ([761c1fb](https://github.com/coveo/react-vapor/commit/761c1fbff5f1acdbe7903ef3622e807423cbe883))
+* **vapor:** implement new typekit ([a7f03b5](https://github.com/coveo/react-vapor/commit/a7f03b51725749c82b2f3e3bd3d0d0fe66f69b74))
+
+
+### BREAKING CHANGES
+
+* **vapor:** All headings (h1-h6) and paragraphs (p) don't have the same visual style as before.
+They look very different up to a point at which we must acknowledge those changes are considered
+breaking.
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
 
 
 
 
 
-# [22.10.0](https://github.com/coveo/react-vapor/compare/v22.9.6...v22.10.0) (2021-06-08)
+# [23.0.0-next.11](https://github.com/coveo/react-vapor/compare/v23.0.0-next.10...v23.0.0-next.11) (2021-06-09)
 
 
 ### Bug Fixes
 
-* **numeric input:** clean up test ([f49e429](https://github.com/coveo/react-vapor/commit/f49e429c40aed17d7320c4c9ac42074354e5b7c9))
-* **numeric input:** css fine tune ([f70e1b4](https://github.com/coveo/react-vapor/commit/f70e1b4c3c7dd9850d879ee275fce9aaa9993139))
+* applied review from another pr ([369f4df](https://github.com/coveo/react-vapor/commit/369f4dfa1b680647e3459d042f15543aca0c2cf6))
+* applied review part one ([7425e41](https://github.com/coveo/react-vapor/commit/7425e416f713e9874dbc012b7163bd4e6fab5abf))
+* fix some nitpick things ([a448a25](https://github.com/coveo/react-vapor/commit/a448a2549befee9a9936fbc54a5e6152f85f3513))
+* fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
+* fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
+* remove useless tag ([ea388c6](https://github.com/coveo/react-vapor/commit/ea388c6390291bdcce16fbcbbd6d851b46ed1d2f))
+* removed repetitive label ([b5bf942](https://github.com/coveo/react-vapor/commit/b5bf942e3284d044478d748c13154d086b389995))
 
 
-### Features
-
-* **numeric input:** disabled prop ([4fa826a](https://github.com/coveo/react-vapor/commit/4fa826af20de6ebfb39f35942a8e8494767c6a0a))
 
 
 
-
-
-## [22.9.6](https://github.com/coveo/react-vapor/compare/v22.9.5...v22.9.6) (2021-06-08)
+# [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v23.0.0-next.9...v23.0.0-next.10) (2021-06-08)
 
 **Note:** Version bump only for package root
 
@@ -334,29 +634,46 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [22.9.5](https://github.com/coveo/react-vapor/compare/v22.9.4...v22.9.5) (2021-06-08)
+# [23.0.0-next.9](https://github.com/coveo/react-vapor/compare/v23.0.0-next.8...v23.0.0-next.9) (2021-06-08)
 
 
 ### Bug Fixes
 
-* **info-token:** make InfoToken hold its width better ([552c722](https://github.com/coveo/react-vapor/commit/552c722385e31e65d2cb9534932fa6ae05953472))
+* fix general guidelines demo ([827b3e6](https://github.com/coveo/react-vapor/commit/827b3e652c1a34ee7c3b27e76103cc30841c58c9))
+* fix style for List demo ([7beb2bb](https://github.com/coveo/react-vapor/commit/7beb2bb9747560401cb58d7d46b4806eb9dc016c))
+* fix style for utilities demo ([b739256](https://github.com/coveo/react-vapor/commit/b7392563ffaebfbdd254d4962e90711f7b09a2f8))
 
 
 
 
 
-## [22.9.4](https://github.com/coveo/react-vapor/compare/v22.9.3...v22.9.4) (2021-06-08)
+# [23.0.0-next.8](https://github.com/coveo/react-vapor/compare/v23.0.0-next.7...v23.0.0-next.8) (2021-06-08)
 
 
 ### Bug Fixes
 
-* upgrade classnames from 2.2.6 to 2.3.1 ([5fafb7e](https://github.com/coveo/react-vapor/commit/5fafb7e6c966d54e4eceb31584d0ea4dc0b02f99))
+* fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
 
 
 
 
 
-## [22.9.3](https://github.com/coveo/react-vapor/compare/v22.9.2...v22.9.3) (2021-06-04)
+# [23.0.0-next.7](https://github.com/coveo/react-vapor/compare/v23.0.0-next.6...v23.0.0-next.7) (2021-06-08)
+
+
+### Bug Fixes
+
+* fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
+* fix style for home demo ([060afbd](https://github.com/coveo/react-vapor/commit/060afbd031b4bbba189834cf2bd7657649b23f41))
+* fix style for material demo ([962b08f](https://github.com/coveo/react-vapor/commit/962b08f7eeb9624d01581c99f03b7d0fff709be8))
+* fix style of wizard demo ([90c39d8](https://github.com/coveo/react-vapor/commit/90c39d8b7151ab50b49ec34527a4e73e3df69170))
+* fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
+
+
+
+
+
+# [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v23.0.0-next.5...v23.0.0-next.6) (2021-06-07)
 
 **Note:** Version bump only for package root
 
@@ -364,24 +681,51 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
-## [22.9.2](https://github.com/coveo/react-vapor/compare/v22.9.1...v22.9.2) (2021-06-04)
-
-
-### Bug Fixes
-
-* upgrade react-color from 2.17.3 to 2.19.3 ([cf21fc4](https://github.com/coveo/react-vapor/commit/cf21fc4434856f7be62ec18824e93bb07e385af7))
-
-
-
-
-
-## [22.9.1](https://github.com/coveo/react-vapor/compare/v22.9.0...v22.9.1) (2021-06-04)
+# [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.0...v23.0.0-next.5) (2021-06-04)
 
 
 ### Bug Fixes
 
 * upgrade @types/rc-slider from 8.6.0 to 8.6.6 ([eba5210](https://github.com/coveo/react-vapor/commit/eba5210ca804f320f45e38244d5692a4af458f95))
 * upgrade multiple dependencies with Snyk ([814cdac](https://github.com/coveo/react-vapor/commit/814cdac7348301411d6c25a169636b6ff14dc4da))
+
+
+
+# [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
+
+
+### Bug Fixes
+
+* **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
+
+
+
+# [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
+
+
+### Bug Fixes
+
+* **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
+
+
+
+# [23.0.0-next.2](https://github.com/coveo/react-vapor/compare/v23.0.0-next.1...v23.0.0-next.2) (2021-06-01)
+
+
+### Features
+
+* **vapor:** implement new typekit ([a7f03b5](https://github.com/coveo/react-vapor/commit/a7f03b51725749c82b2f3e3bd3d0d0fe66f69b74))
+
+
+### BREAKING CHANGES
+
+* **vapor:** All headings (h1-h6) and paragraphs (p) don't have the same visual style as before.
+They look very different up to a point at which we must acknowledge those changes are considered
+breaking.
+
+
+
+# [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
 
 
 

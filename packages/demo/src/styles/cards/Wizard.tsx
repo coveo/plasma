@@ -8,16 +8,16 @@ const Wizard = () => (
             <div className="wizard-card spaced-box mod-small">
                 <header className="header flex center-align">
                     <div className="header-section">
-                        <h3 className="bold">Use a Coveo Organization</h3>
+                        <h6 className="bold">Use a Coveo Organization</h6>
                     </div>
                 </header>
                 <div className="wizard-card-body">
                     <div className="coveo-form">
                         <div className="form-group left-align">
-                            <h3>
-                                Coveo Cloud has identified the following <em className="bold">Coveo organizations</em>{' '}
+                            <p>
+                                Coveo Cloud has identified the following <em className="bolder">Coveo organizations</em>{' '}
                                 related to your account.
-                            </h3>
+                            </p>
                         </div>
                         <div className="form-group input-field">
                             <input type="text" value="my org name" required disabled />
@@ -35,7 +35,7 @@ const Wizard = () => (
             <div className="wizard-card spaced-box mod-small">
                 <header className="header flex center-align">
                     <div className="header-section">
-                        <h3 className="bold">Create a New Coveo Organization</h3>
+                        <h6 className="bold">Create a New Coveo Organization</h6>
                     </div>
                 </header>
                 <div className="wizard-card-body">

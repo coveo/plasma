@@ -26,7 +26,7 @@ export interface ModalConnectedExampleProps {
 }
 
 export const ModalWindowExamples: ExampleComponent = () => (
-    <Section title="Modal Window Examples">
+    <Section>
         <ModalCompositeExampleConnected />
         <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />
         <ModalLoadingExample />
@@ -61,7 +61,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
     const modalId = 'Modal-Connected-#1';
     return (
         <Section level={2} title="Modals connected to the redux store">
-            <Section level={3} title="Success, warning, critical and info prompts" className="flex">
+            <Section level={3} description="Success, warning, critical and info prompts" className="flex">
                 <Button className="btn m0 mr1" onClick={() => open(modalSuccessId)}>
                     Prompt success
                 </Button>
@@ -140,7 +140,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
                     modalBodyClasses={['mod-header-padding', 'mod-form-top-bottom-padding']}
                 />
             </Section>
-            <Section level={3} title="A simple modal window connected">
+            <Section level={3} description="A simple modal window connected">
                 <Button onClick={() => open(modalId)}>Open Modal</Button>
 
                 <ModalCompositeConnected
@@ -157,7 +157,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
                 />
             </Section>
 
-            <Section level={3} title="A modal with additionnal configuration props">
+            <Section level={3} description="A modal with additionnal configuration props">
                 <Button onClick={() => open('example-4')}>Open Modal</Button>
                 <ModalCompositeConnected
                     id="example-4"
@@ -192,7 +192,10 @@ const ModalWithDirtyChangeDiscardPreventionDisconnected: React.FunctionComponent
     };
 
     return (
-        <Section level={3} title="A modal implemented with the <UnsavedChangesModalProvider/> and confirmation prompt">
+        <Section
+            level={3}
+            description="A modal implemented with the <UnsavedChangesModalProvider/> and confirmation prompt"
+        >
             <Button onClick={() => open(id)}>Open Modal</Button>
             <UnsavedChangesModalProvider isDirty={isDirty}>
                 {({promptBefore}) => (
@@ -233,7 +236,7 @@ const ModalWithDirtyChangeDiscardPrevention = connect(
 const ModalLoadingExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = ({open}) => {
     const loadingModalExampleId = 'Loading-modal-example';
     return (
-        <Section level={3} title="A loading modal">
+        <Section level={3} description="A loading modal">
             <Button onClick={() => open(loadingModalExampleId)}>Open Modal</Button>
             <ModalLoading id={loadingModalExampleId} title={'my loading title'} openOnMount={false} />
         </Section>

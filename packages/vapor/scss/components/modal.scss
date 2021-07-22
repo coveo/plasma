@@ -207,6 +207,13 @@ $icon-size: (4em / 3);
         text-overflow: ellipsis;
     }
 
+    &.mod-success h4,
+    &.mod-warning h4,
+    &.mod-critical h4,
+    &.mod-info h4 {
+        color: var(--white);
+    }
+
     .small-close {
         position: absolute;
         top: -($icon-size + pxtoem(10));

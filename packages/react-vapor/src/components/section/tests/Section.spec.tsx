@@ -15,34 +15,34 @@ describe('Section', () => {
     });
 
     describe('<Section />', () => {
-        it('should render the title in a h2 tag when defined', () => {
+        it('should render the title in a h4 tag when defined', () => {
             const section = shallow(<Section title={SOME_TITLE} />);
 
-            expect(section.find('h2').text()).toBe(SOME_TITLE);
+            expect(section.find('h4').text()).toBe(SOME_TITLE);
         });
 
-        it('should render the title in a h3 tag with level 2', () => {
+        it('should render the title in a h5 tag with level 2', () => {
             const section = shallow(<Section title={SOME_TITLE} level={2} />);
 
-            expect(section.find('h3').text()).toBe(SOME_TITLE);
+            expect(section.find('h5').text()).toBe(SOME_TITLE);
         });
 
-        it('should render the title node in a h2 tag', () => {
+        it('should render the title node in a h4 tag', () => {
             const section = shallow(<Section title={<div className="title-test">test</div>} level={2} />);
 
             expect(section.find('div.title-test').length).toBe(1);
         });
 
-        it('should render the title in a h4 tag with level 3', () => {
+        it('should render the title in a h6 tag with level 3', () => {
             const section = shallow(<Section title={SOME_TITLE} level={3} />);
 
-            expect(section.find('h4').text()).toBe(SOME_TITLE);
+            expect(section.find('h6').text()).toBe(SOME_TITLE);
         });
 
         it('should not render the title when undefined', () => {
             const section = shallow(<Section />);
 
-            expect(section.find('h2').exists()).toBe(false);
+            expect(section.find('h4').exists()).toBe(false);
         });
 
         it('should render the description in a p tag when defined', () => {
