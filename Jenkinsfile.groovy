@@ -257,15 +257,21 @@ pipeline {
         script {
           setLastStageName();
 
-          convertPNPMLockToNPMLock("../pnpm-lock.yaml", "../package-lock.json");
+          // snyk
+          sh "mkdir -p snyk"
+            
+          convertPNPMLockToNPM("../pnpm-lock.yaml", "../snyk");
+            
+          dir('snyk') {
+            sh "npx snyk auth $SNYK_TOKEN"
+            sh "npx snyk test --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > ../snyk-result.json || true"
+            sh "npx snyk monitor --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > ../snyk-monitor-result.json || true"
+          }
 
-          sh "npx snyk auth $SNYK_TOKEN"
-          sh "npx snyk test ./ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-result.json || true"
-          sh "npx snyk monitor ./ --org=coveo-admin-ui --file=package-lock.json --strict-out-of-sync=false --json > snyk-monitor-result.json || true"
           archiveArtifacts artifacts: 'snyk-result.json,snyk-monitor-result.json'
-          
-          // To avoid failure in convertPNPMLockToNPMLock when the cache is not clearer between builds
-          sh "rm -rf package-lock.json"
+
+          // To avoid failure when the cache is not cleared between builds
+          sh "rm -rf ./snyk"
 
           // Prepare veracode
           sh "mkdir -p veracode"
@@ -294,6 +300,18 @@ pipeline {
   }
 
   post {
+    fixed {
+      script {
+        if(env.BRANCH_NAME ==~ /(master|release-.*)/){
+          def message = "Build is back to normal for <${env.BUILD_URL}|${env.JOB_NAME}>";
+          def color = "#2ECC71"; // green
+          notify.sendSlackWithThread(
+            color: color, message: message,
+            MASTER_RELEASE_FAILURE_CHANNELS
+          )
+        }
+      }
+    }
     failure {
       script {
         def color = "FF0000";
@@ -341,6 +359,6 @@ def postCommentOnGithub(demoLink="") {
     )
 }
 
-def convertPNPMLockToNPMLock(pnpmLockPath="", npmLockPath="") {
-  runUnzipPackage.call("convert-pnpm-to-npm-lock", "${pnpmLockPath} ${npmLockPath}")
+def convertPNPMLockToNPM(pnpmLockPath="", npmLockPath="") {
+  runUnzipPackage.call("convert-pnpm-lock-to-npm", "${pnpmLockPath} ${npmLockPath}")
 }

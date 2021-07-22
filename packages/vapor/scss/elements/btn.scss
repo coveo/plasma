@@ -44,7 +44,6 @@
         color: var(--navy-blue-80);
         text-decoration: none;
         background-color: var(--white);
-        outline-color: var(--bright-turquoise-40);
     }
 
     &:hover {
@@ -283,5 +282,13 @@ button {
 
     .btn-hover-text {
         color: var(--rain-forest-green-30);
+    }
+}
+
+// override the style of the focus for buttons in Firefox
+@supports (-moz-appearance: none) {
+    .btn:focus {
+        outline-style: solid;
+        outline-offset: -2px;
     }
 }

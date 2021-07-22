@@ -1,7 +1,6 @@
-import * as React from 'react';
-import {render, screen} from '@test-utils';
+import {render, screen, within} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {within} from '@testing-library/react';
+import * as React from 'react';
 
 import {JSONEditorProps} from '../JSONEditor';
 import {JSONEditorConnected} from '../JSONEditorConnected';

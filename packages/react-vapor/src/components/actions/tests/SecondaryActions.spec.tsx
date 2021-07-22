@@ -77,7 +77,11 @@ describe('Actions', () => {
             />
         );
 
-        expect(wrapper.find('div.dropdown').props().style.cursor).toBe('pointer');
+        expect(wrapper.find('div.dropdown').props()).toMatchObject({
+            style: {
+                cursor: 'pointer',
+            },
+        });
     });
 
     it('should add the style cursor default if the component is disabled', () => {
@@ -88,7 +92,11 @@ describe('Actions', () => {
             />
         );
 
-        expect(wrapper.find('div.dropdown').props().style.cursor).toBe('default');
+        expect(wrapper.find('div.dropdown').props()).toMatchObject({
+            style: {
+                cursor: 'default',
+            },
+        });
     });
 
     describe('separators', () => {

@@ -89,6 +89,11 @@
                         height: $navigation-section-icon-size;
                         margin: 0 $navigation-section-icon-margin-right 0 $navigation-section-icon-margin-left;
                         fill: var(--navy-blue-80);
+
+                        &.mod-stroke {
+                            fill: none;
+                            stroke: var(--navy-blue-80);
+                        }
                     }
                     .navigation-menu-section-header-no-icon {
                         height: $navigation-menu-section-height;

@@ -11,47 +11,62 @@ const customLimitTitle = 'Throttling limit';
 export const LimitExamples: React.FunctionComponent = () => (
     <div className="coveo-form">
         <div className="form-group">
-            <label className="form-control-label">A limit with an usage value</label>
+            <label className="form-control-label">A limit card with an usage value</label>
             <div className="form-control">
-                <Limit id="1" title={title} usage={usage} />
+                <Limit id="1" title={title} usage={usage} limit={100} />
             </div>
         </div>
         <div className="form-group">
-            <label className="form-control-label">A limit with a history icon included</label>
+            <label className="form-control-label">A limit card with a history icon included</label>
             <div className="form-control">
-                <Limit id="2" title={title} usage={usageNearLimit} isHistoryIncluded />
+                <Limit
+                    id="2"
+                    title={title}
+                    usage={usageNearLimit}
+                    isHistoryIncluded
+                    limit={100}
+                    onHistoryIconClick={() => alert('I am an action!')}
+                />
             </div>
         </div>
         <div className="form-group">
-            <label className="form-control-label">A limit with an usage value that reached the limit value</label>
+            <label className="form-control-label">A limit card with an usage value that reached the limit value</label>
             <div className="form-control">
-                <Limit id="3" title={title} usage={usageEqualToLimit} />
+                <Limit id="3" title={title} usage={usageEqualToLimit} limit={100} />
             </div>
         </div>
         <div className="form-group">
             <label className="form-control-label">
-                A limit with an usage value that reached the "goal" limit value
+                A limit card with an usage value that reached the "goal" limit value
             </label>
             <div className="form-control">
-                <Limit id="4" title={title} usage={usageEqualToLimit} isLimitTheGoalToReach />
+                <Limit id="4" title={title} usage={usageEqualToLimit} isLimitTheGoalToReach limit={100} />
             </div>
         </div>
         <div className="form-group">
-            <label className="form-control-label">A limit with a custom limit value and a custom limit title</label>
+            <label className="form-control-label">
+                A limit card with a custom limit value and a custom limit title
+            </label>
             <div className="form-control">
                 <Limit id="5" title={title} usage={usage} limit={customLimit} limitLabel={customLimitTitle} />
             </div>
         </div>
         <div className="form-group">
-            <label className="form-control-label">A limit with a modifiable limit value</label>
+            <label className="form-control-label">A limit card with a modifiable limit value</label>
             <div className="form-control">
-                <Limit id="6" title={title} usage={usage} isLimitEditable />
+                <Limit id="6" title={title} usage={usage} isLimitEditable limit={100} />
             </div>
         </div>
         <div className="form-group">
-            <label className="form-control-label">A limit without an usage value</label>
+            <label className="form-control-label">A limit card without a usage value</label>
             <div className="form-control">
-                <Limit id="7" title={title} isLimitEditable />
+                <Limit id="7" title={title} isLimitEditable limit={100} />
+            </div>
+        </div>
+        <div className="form-group">
+            <label className="form-control-label">A limit card without a limit, but with usage </label>
+            <div className="form-control">
+                <Limit id="8" title={title} usage={17} isLimitEditable />
             </div>
         </div>
     </div>

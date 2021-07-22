@@ -3,7 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+<<<<<<< HEAD
 # [23.0.0-next.15](https://github.com/coveo/react-vapor/compare/v23.0.0-next.14...v23.0.0-next.15) (2021-06-22)
+=======
+# [22.21.0](https://github.com/coveo/react-vapor/compare/v22.20.3...v22.21.0) (2021-07-22)
+
+
+### Features
+
+* **limit:** +onClick method on history icon ([0c12782](https://github.com/coveo/react-vapor/commit/0c12782070d0d686f8410bf29943627b69b23b97))
+
+
+
+
+
+## [22.20.3](https://github.com/coveo/react-vapor/compare/v22.20.2...v22.20.3) (2021-07-21)
+>>>>>>> master
 
 **Note:** Version bump only for package react-vapor-demo
 
@@ -11,6 +26,7 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 
+<<<<<<< HEAD
 # [23.0.0-next.14](https://github.com/coveo/react-vapor/compare/v22.17.0...v23.0.0-next.14) (2021-06-22)
 
 
@@ -34,10 +50,41 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 # [23.0.0-next.10](https://github.com/coveo/react-vapor/compare/v22.9.6...v23.0.0-next.10) (2021-06-08)
+=======
+## [22.20.2](https://github.com/coveo/react-vapor/compare/v22.20.1...v22.20.2) (2021-07-21)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.20.1](https://github.com/coveo/react-vapor/compare/v22.20.0...v22.20.1) (2021-07-21)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.20.0](https://github.com/coveo/react-vapor/compare/v22.19.5...v22.20.0) (2021-07-15)
+
+
+### Features
+
+* **svg:** add new side nav icons ([#2080](https://github.com/coveo/react-vapor/issues/2080)) ([830e07f](https://github.com/coveo/react-vapor/commit/830e07fe5b1a513dea0a0f5aebbf31438cc60a84))
+
+
+
+
+
+## [22.19.5](https://github.com/coveo/react-vapor/compare/v22.19.4...v22.19.5) (2021-07-15)
+>>>>>>> master
 
 
 ### Bug Fixes
 
+<<<<<<< HEAD
 * fix svg alignment in optionCycle ([3532e26](https://github.com/coveo/react-vapor/commit/3532e26a1f2ee5b60accf82b968c2c5a54326c08))
 * fixed size for label in chart ([4978b23](https://github.com/coveo/react-vapor/commit/4978b23cb25d94f3b5a6b706f24c7fb909003b19))
 
@@ -95,6 +142,87 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 
 # [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
+=======
+* **tabs:** allow multiple independent tab navigations at the same time ([0548f87](https://github.com/coveo/react-vapor/commit/0548f87c675f9250857ea0cd595a4d9e40a607f7))
+
+
+
+
+
+## [22.19.4](https://github.com/coveo/react-vapor/compare/v22.19.3...v22.19.4) (2021-07-15)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.19.3](https://github.com/coveo/react-vapor/compare/v22.19.2...v22.19.3) (2021-07-14)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.19.2](https://github.com/coveo/react-vapor/compare/v22.19.1...v22.19.2) (2021-07-12)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.19.1](https://github.com/coveo/react-vapor/compare/v22.19.0...v22.19.1) (2021-07-12)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.19.0](https://github.com/coveo/react-vapor/compare/v22.18.0...v22.19.0) (2021-07-07)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+# [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
+
+
+### Bug Fixes
+
+* **singleselect:** wrapped section children ([87bf515](https://github.com/coveo/react-vapor/commit/87bf51506699b5a00212caef0ca7fb390124fa16))
+
+
+
+
+
+## [22.17.2](https://github.com/coveo/react-vapor/compare/v22.17.1...v22.17.2) (2021-06-28)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
+## [22.17.1](https://github.com/coveo/react-vapor/compare/v22.17.0...v22.17.1) (2021-06-22)
+
+
+### Bug Fixes
+
+* **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
+>>>>>>> master
 
 
 

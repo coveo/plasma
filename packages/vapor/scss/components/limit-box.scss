@@ -24,6 +24,9 @@
     width: 100%;
     height: $limit-progress-bar-height;
     background-color: var(--deprecated-light-grey);
+    &.no-limit {
+        background-color: var(--white);
+    }
 }
 
 .limit-box-bar {

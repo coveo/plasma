@@ -1,5 +1,4 @@
-import {screen} from '@testing-library/dom';
-import {render} from '@testing-library/react';
+import {render, screen} from '@test-utils';
 import * as React from 'react';
 
 import {fakeJSON, fakeJSON1, JSONToString} from '../../../utils/JSONUtils';

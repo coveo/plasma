@@ -64,7 +64,6 @@
         "concurrently": "^6.0.2",
         "copy-webpack-plugin": "^6.4.1",
         "css-loader": "3.4.2",
-        "fibers": "4.0.2",
         "file-loader": "5.1.0",
         "html-webpack-plugin": "4.5.1",
         "html-webpack-tags-plugin": "^2.0.17",

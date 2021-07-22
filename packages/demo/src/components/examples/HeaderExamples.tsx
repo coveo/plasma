@@ -2,7 +2,7 @@ import * as React from 'react';
 import {BasicHeader, BreadcrumbHeader, Button, Section, Svg} from 'react-vapor';
 
 import {ExampleComponent} from '../ComponentsInterface';
-import {actions, defaultBreadcrumb, defaultTabs, defaultTitle, link1, link2} from './ExamplesUtils';
+import {actions, defaultBreadcrumb, defaultTitle, link1, link2} from './ExamplesUtils';
 
 export const HeaderExamples: ExampleComponent = () => (
     <Section>
@@ -20,7 +20,12 @@ const SimpleHeader: React.FunctionComponent = () => (
                 title={defaultTitle}
                 description="Simple description for the title"
                 actions={actions}
-                tabs={defaultTabs}
+                tabs={[
+                    {groupId: 'example1', id: 'tab1', title: 'Digimon'},
+                    {groupId: 'example1', id: 'tab2', title: 'Beyblade'},
+                    {groupId: 'example1', id: 'tab3', title: 'Pokemon'},
+                    {groupId: 'example1', id: 'tab4', title: 'Perdu', url: 'http://www.perdu.com'},
+                ]}
             />
         </Section>
     </Section>
@@ -32,7 +37,12 @@ const BreadcrumbHeaders: React.FunctionComponent = () => (
             <BreadcrumbHeader
                 breadcrumb={defaultBreadcrumb}
                 description="Simple description for the title"
-                tabs={defaultTabs}
+                tabs={[
+                    {groupId: 'example2', id: 'tab1', title: 'Digimon'},
+                    {groupId: 'example2', id: 'tab2', title: 'Beyblade'},
+                    {groupId: 'example2', id: 'tab3', title: 'Pokemon'},
+                    {groupId: 'example2', id: 'tab4', title: 'Perdu', url: 'http://www.perdu.com'},
+                ]}
                 actions={[
                     {
                         content: (

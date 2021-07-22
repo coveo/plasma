@@ -7,8 +7,7 @@ import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addTab} from '../TabActions';
-import {ITabPaneProps, TabPane} from '../TabPane';
-import {TabPaneConnected} from '../TabPaneConnected';
+import {ITabPaneProps, TabPane, TabPaneConnected} from '../TabPane';
 
 describe('TabPane', () => {
     describe('<TabPaneConnected />', () => {
