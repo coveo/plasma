@@ -102,6 +102,7 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                         onKeyUp={this.props.onKeyUp}
                         style={inputMaxWidth}
                         autoFocus={this.props.isAutoFocus}
+                        aria-label={`${this.props.id}-name`}
                     />
                     <Svg
                         svgName="clear"
