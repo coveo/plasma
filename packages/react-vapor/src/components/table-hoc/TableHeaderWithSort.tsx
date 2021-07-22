@@ -66,7 +66,14 @@ export const TableHeaderWithSort: React.FC<
     }
 
     return (
-        <th id={id} className={headerCellClasses} onClick={() => onSort()} ref={tableHeaderRef} style={style}>
+        <th
+            id={id}
+            className={headerCellClasses}
+            onClick={() => onSort()}
+            ref={tableHeaderRef}
+            style={style}
+            title="admin-sort"
+        >
             {children}
             <div className="admin-sort-icon">
                 <Svg svgName={getSvg} className="tables-sort icon" />

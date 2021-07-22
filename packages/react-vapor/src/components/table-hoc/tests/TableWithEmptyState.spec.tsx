@@ -1,9 +1,7 @@
-import {ReactWrapper} from 'enzyme';
-import {mountWithStore} from '@helpers/enzyme-redux';
-import * as React from 'react';
 import {act, render, screen} from '@test-utils';
+import * as React from 'react';
 
-import {getStoreMock} from '../../../utils/tests/TestUtils';
+import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {TableHOCActions} from '../actions/TableHOCActions';
 import {TableHOC} from '../TableHOC';
 import {TableSelectors} from '../TableSelectors';
@@ -12,14 +10,17 @@ import {tableWithEmptyState} from '../TableWithEmptyState';
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);
     const EmptyState: React.FunctionComponent = () => <div>No data!</div>;
+    let store: ReactVaporMockStore;
+
+    beforeEach(() => {
+        store = getStoreMock();
+    });
 
     it('renders and unmounts without throwing errors', () => {
         expect(() => {
-            const table = mountWithStore(
-                <TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} />,
-                getStoreMock()
-            );
-            table.unmount();
+            render(<TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} />, {
+                store,
+            }).unmount();
         }).not.toThrow();
     });
 
@@ -31,39 +32,43 @@ describe('TableWithEmptyState', () => {
         expect(await screen.findByText('No data!')).toBeVisible();
     });
 
-    it('renders the table if the table is empty after waiting 50 ms but still loading', () => {
+    it('renders the loading table if the table is empty after waiting 50 ms but still loading', () => {
         jest.useFakeTimers();
-        let table: ReactWrapper;
+        let update: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => void;
         act(() => {
-            table = mountWithStore(
+            const {rerender} = render(
                 <TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} isLoading />,
-                getStoreMock()
+                {
+                    store,
+                }
             );
+            update = rerender;
         });
 
         jest.advanceTimersByTime(50);
-        table.update();
+        update(<TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} isLoading />);
 
-        expect(table.children().children().type()).toBe(TableHOC);
-
+        expect(screen.getAllByRole('row').length).toBe(20);
         jest.useRealTimers();
     });
 
     it('renders the table if the table is not empty after waiting 50 ms', () => {
         jest.useFakeTimers();
-        let table: ReactWrapper;
+        let update: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => void;
         act(() => {
-            table = mountWithStore(
+            const {rerender} = render(
                 <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />,
-                getStoreMock()
+                {
+                    store,
+                }
             );
+            update = rerender;
         });
 
         jest.advanceTimersByTime(50);
-        table.update();
+        update(<TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />);
 
-        expect(table.children().children().type()).toBe(TableHOC);
-
+        expect(screen.getByRole('table')).toBeInTheDocument();
         jest.useRealTimers();
     });
 
