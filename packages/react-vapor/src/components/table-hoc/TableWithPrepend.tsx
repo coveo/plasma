@@ -9,7 +9,7 @@ export interface TableWithPrependProps extends ITableHOCOwnProps, Omit<React.HTM
     prepend?: React.ReactNode;
 }
 
-export const tableWithPrepend = (Component: React.ComponentClass<TableWithPrependProps>) => {
+export const tableWithPrepend = (Component: React.FC<TableWithPrependProps>) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: TableWithPrependProps) => ({
         isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
     });

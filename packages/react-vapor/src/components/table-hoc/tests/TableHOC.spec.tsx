@@ -9,7 +9,7 @@ import {ITableHOCOwnProps, TableHOC} from '../TableHOC';
 
 describe('TableHOC', () => {
     describe('<TableHOC/>', () => {
-        const defaultProps: Partial<ITableHOCOwnProps> = {
+        const defaultProps: ITableHOCOwnProps = {
             id: 'table',
             data: [],
             renderBody: _.identity,
