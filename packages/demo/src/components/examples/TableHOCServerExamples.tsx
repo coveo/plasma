@@ -209,7 +209,7 @@ const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () =
             city: user.address.city,
             username: user.username,
             email: user.email,
-            dateOfBirth: moment('1995-12-25').toDate(), // fake a year of birth
+            dateOfBirth: moment().subtract(user.address.city.length, 'years').toDate(), // fake a year of birth
         }));
 
         dispatch(TableWithPaginationActions.setCount(TableHOCServerExampleId, count as any));
