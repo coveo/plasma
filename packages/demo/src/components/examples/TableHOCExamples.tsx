@@ -107,7 +107,7 @@ const renderHeader = (tableId: string) => (
 );
 
 export const generateTableRow = (allData: IExampleRowData[], tableId: string) =>
-    allData.map((data: IExampleRowData) => (
+    allData?.map((data: IExampleRowData) => (
         <TableRowConnected id={data.id} tableId={tableId} key={data.id} actions={rowActions}>
             <td key="city">{data.city}</td>
             <td key="email">{data.email.toLowerCase()}</td>
