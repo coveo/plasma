@@ -63,7 +63,7 @@ const renderHeader = () => (
         {({isLoading}) => (
             <thead>
                 <tr>
-                    <TableRowNumberHeader id="numHeader" isLoading={isLoading} />
+                    <TableRowNumberHeader isLoading={isLoading} />
                     <TableHeaderWithSort id="address.city" tableId={TableHOCServerExampleId} isLoading={isLoading}>
                         City
                     </TableHeaderWithSort>
@@ -78,9 +78,7 @@ const renderHeader = () => (
                     >
                         Username
                     </TableHeaderWithSort>
-                    <TableRowHeader id="dob" isLoading={isLoading}>
-                        Date of Birth
-                    </TableRowHeader>
+                    <TableRowHeader isLoading={isLoading}>Date of Birth</TableRowHeader>
                     <TableRowHeader isLoading={isLoading} />
                 </tr>
             </thead>
