@@ -213,7 +213,6 @@ describe('Select', () => {
             it('should open the dropdown when the user press enter on the button', () => {
                 render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} />);
 
-                screen.logTestingPlaygroundURL();
                 expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
                 fireEvent.keyDown(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
