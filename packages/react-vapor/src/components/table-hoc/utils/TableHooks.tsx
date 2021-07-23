@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const useCustomLayoutEffect = (isLoading: boolean) => {
+export const useFixedWidthWhileLoading = (isLoading: boolean) => {
     const tableHeaderRef = React.useRef<HTMLTableHeaderCellElement>();
     const [columnWidth, setColumnWidth] = React.useState<number>();
 
@@ -10,10 +10,8 @@ export const useCustomLayoutEffect = (isLoading: boolean) => {
         }
     }, [isLoading]);
 
-    const style = {
+    const style: React.CSSProperties = {
         width: `${columnWidth}px`,
-        minWidth: `${columnWidth}px`,
-        maxWidth: `${columnWidth}px`,
     };
 
     return {style, tableHeaderRef};

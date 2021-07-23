@@ -7,7 +7,7 @@ import {IReactVaporState} from '../../ReactVaporState';
 import {Svg} from '../svg/Svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
-import {useCustomLayoutEffect} from './utils/TableHooks';
+import {useFixedWidthWhileLoading} from './utils/TableHooks';
 
 export interface ITableHeaderWithSortOwnProps {
     id: string;
@@ -38,7 +38,7 @@ export const TableHeaderWithSort: React.FC<
     const onSort = () => dispatch(TableHeaderActions.sortTable(id));
     const onUnmount = () => dispatch(TableHeaderActions.removeTableHeader(id));
 
-    const {style, tableHeaderRef} = useCustomLayoutEffect(isLoading);
+    const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 
     React.useEffect(() => {
         onMount();
