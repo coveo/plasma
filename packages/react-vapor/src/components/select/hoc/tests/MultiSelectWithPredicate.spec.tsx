@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {render, screen, within} from '@test-utils';
+import {render, screen} from '@test-utils';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../../hoc';
@@ -10,100 +10,130 @@ import {IMultiSelectOwnProps, MultiSelectConnected} from '../../MultiSelectConne
 import {MultiSelectWithPredicate} from '../SelectComponents';
 import {ISelectWithPredicateOwnProps, selectWithPredicate} from '../SelectWithPredicate';
 
-describe('Select', () => {
-    describe('<MultiSelectWithPredicate />', () => {
-        const id: string = 'multi-select-with-predicate';
-        const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
+describe('MultiSelectWithPredicate', () => {
+    const id: string = 'multi-select-with-predicate';
+    const defaultFlatSelectOptions: IFlatSelectOptionProps[] = [
+        {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
+        {id: 'my_real_id_02', option: {content: 'None'}},
+    ];
+    const matchPredicate = (predicate: string, item: IItemBoxProps) => predicate === defaultFlatSelectOptions[0].id;
+
+    const basicProps: ISelectWithPredicateOwnProps & IMultiSelectOwnProps = {
+        id,
+        items: [],
+        options: defaultFlatSelectOptions,
+        matchPredicate,
+    };
+
+    it('hides items when they do not match the predicates', () => {
+        const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
+
+        render(<MultiSelectWithPredicate {...basicProps} items={items} />, {});
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+
+        expect(
+            screen.getByRole('option', {
+                name: /first/i,
+            })
+        ).toBeVisible();
+
+        // select the none flat select
+        userEvent.click(screen.getByText('None'));
+
+        expect(
+            screen.queryByRole('option', {
+                name: /first/i,
+            })
+        ).not.toBeInTheDocument();
+        expect(
+            screen.getByRole('option', {
+                name: /no items/i,
+            })
+        ).toBeVisible();
+    });
+
+    it('shows items that match the predicates', () => {
+        const options: IFlatSelectOptionProps[] = [
             {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
-            {id: 'my_real_id_02', option: {content: 'None'}},
+            {id: 'my_real_id_02', option: {content: 'Beer'}},
         ];
-        const matchPredicate = (predicate: string, item: IItemBoxProps) => predicate === defaultFlatSelectOptions[0].id;
+        const matcher = (predicate: string, item: IItemBoxProps) =>
+            predicate === defaultFlatSelectOptions[0].id || item.value === '🍻';
+        const items = [{value: '🐝'}, {value: '🍻'}, {value: '🥩'}];
 
-        const basicProps: ISelectWithPredicateOwnProps & IMultiSelectOwnProps = {
-            id,
-            items: [],
-            options: defaultFlatSelectOptions,
-            matchPredicate,
-        };
+        render(<MultiSelectWithPredicate id={id} options={options} items={items} matchPredicate={matcher} />);
+        // open the dropdown
+        userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-        it('hides items when they do not match the predicates', () => {
+        // select the all flat select
+        userEvent.click(screen.getByText('Beer'));
+
+        expect(
+            screen.queryByRole('option', {
+                name: /🐝/i,
+            })
+        ).not.toBeInTheDocument();
+        expect(
+            screen.getByRole('option', {
+                name: /🍻/i,
+            })
+        ).toBeVisible();
+        expect(
+            screen.queryByRole('option', {
+                name: /🥩/i,
+            })
+        ).not.toBeInTheDocument();
+    });
+
+    describe('with predicates processed server side', () => {
+        const ServerSideMultiSelectWithPredicates = _.compose(
+            withServerSideProcessing,
+            selectWithPredicate
+        )(MultiSelectConnected);
+
+        it('should not filter the items based on any predicate because it is done on the server', () => {
             const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
 
-            render(<MultiSelectWithPredicate {...basicProps} items={items} />, {});
+            render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} />, {});
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-
-            let lists = screen.getAllByRole('list');
-            expect(within(lists[1]).getByText('first')).toBeVisible();
 
             // select the none flat select
             userEvent.click(screen.getByText('None'));
 
-            lists = screen.getAllByRole('list');
-            expect(within(lists[1]).queryByText('first')).not.toBeInTheDocument();
-            expect(within(lists[1]).getByText('No Items')).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /first/i,
+                })
+            ).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /second/i,
+                })
+            ).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /third/i,
+                })
+            ).toBeVisible();
         });
 
-        it('shows items that match the predicates', () => {
-            const options: IFlatSelectOptionProps[] = [
-                {id: 'my_real_id_01', option: {content: 'All'}, selected: true},
-                {id: 'my_real_id_02', option: {content: 'Beer'}},
-            ];
-            const matcher = (predicate: string, item: IItemBoxProps) =>
-                predicate === defaultFlatSelectOptions[0].id || item.value === '🍻';
-            const items = [{value: '🐝'}, {value: '🍻'}, {value: '🥩'}];
+        it('triggers the onUpdate prop when the selected predicate changes', () => {
+            const onUpdateSpy = jest.fn();
 
-            render(<MultiSelectWithPredicate id={id} options={options} items={items} matchPredicate={matcher} />);
+            const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
+
+            render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} onUpdate={onUpdateSpy} />);
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-            // select the all flat select
-            userEvent.click(screen.getByText('Beer'));
+            onUpdateSpy.mockReset();
 
-            const lists = screen.getAllByRole('list');
-            expect(within(lists[1]).queryByText('🐝')).not.toBeInTheDocument();
-            expect(within(lists[1]).getByText('🍻')).toBeVisible();
-            expect(within(lists[1]).queryByText('🥩')).not.toBeInTheDocument();
-        });
+            // select the none flat select
+            userEvent.click(screen.getByText('None'));
 
-        describe('with predicates processed server side', () => {
-            const ServerSideMultiSelectWithPredicates = _.compose(
-                withServerSideProcessing,
-                selectWithPredicate
-            )(MultiSelectConnected);
-
-            it('should not filter the items based on any predicate because it is done on the server', () => {
-                const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
-
-                render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} />, {});
-                // open the dropdown
-                userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-
-                // select the none flat select
-                userEvent.click(screen.getByText('None'));
-
-                const lists = screen.getAllByRole('list');
-                expect(within(lists[1]).getByText('first')).toBeVisible();
-                expect(within(lists[1]).getByText('second')).toBeVisible();
-                expect(within(lists[1]).getByText('third')).toBeVisible();
-            });
-
-            it('triggers the onUpdate prop when the selected predicate changes', () => {
-                const onUpdateSpy = jest.fn();
-
-                const items = [{value: 'first'}, {value: 'second'}, {value: 'third'}];
-
-                render(<ServerSideMultiSelectWithPredicates {...basicProps} items={items} onUpdate={onUpdateSpy} />);
-                // open the dropdown
-                userEvent.click(screen.getByRole('button', {name: /select an option/i}));
-
-                onUpdateSpy.mockReset();
-
-                // select the none flat select
-                userEvent.click(screen.getByText('None'));
-
-                expect(onUpdateSpy).toHaveBeenCalledTimes(1);
-            });
+            expect(onUpdateSpy).toHaveBeenCalledTimes(1);
         });
     });
 });

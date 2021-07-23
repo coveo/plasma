@@ -68,11 +68,21 @@ describe('Select', () => {
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-            const lists = screen.getAllByRole('list');
-
-            expect(within(lists[1]).getByText(':seed:')).toBeVisible();
-            expect(within(lists[1]).getByText(':potato:')).toBeVisible();
-            expect(within(lists[1]).getByText('🍟')).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /:seed:/i,
+                })
+            ).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /:seed:/i,
+                })
+            ).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /🍟/i,
+                })
+            ).toBeVisible();
         });
 
         it('hides items that are hidden', () => {
@@ -82,8 +92,11 @@ describe('Select', () => {
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-            const lists = screen.getAllByRole('list');
-            expect(within(lists[1]).queryByText('first')).not.toBeInTheDocument();
+            expect(
+                screen.queryByRole('option', {
+                    name: /first/i,
+                })
+            ).not.toBeInTheDocument();
         });
 
         it('is possible to remove a selected item', () => {
@@ -141,26 +154,47 @@ describe('Select', () => {
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-            let lists = screen.getAllByRole('list');
-            expect(within(lists[0]).getByText('🥔')).toBeVisible();
+            // pre-selected option is in the listbos
+            expect(screen.getByText(/🥔/i)).toBeInTheDocument();
 
-            expect(within(lists[1]).getByText('🌱')).toBeVisible();
-            expect(within(lists[1]).queryByText('🥔')).not.toBeInTheDocument();
-            expect(within(lists[1]).getByText('🍟')).toBeVisible();
+            expect(
+                screen.getByRole('option', {
+                    name: /🌱/i,
+                })
+            ).toBeInTheDocument();
+            expect(
+                screen.getByRole('option', {
+                    name: /🍟/i,
+                })
+            ).toBeInTheDocument();
 
-            userEvent.click(within(lists[1]).getByText('🍟'));
-
-            lists = screen.getAllByRole('list');
-            expect(within(lists[0]).getByText('🥔')).toBeVisible();
-            expect(within(lists[0]).getByText('🍟')).toBeVisible();
+            // select 🍟
+            userEvent.click(
+                screen.getByRole('option', {
+                    name: /🍟/i,
+                })
+            );
+            expect(screen.getByText(/🥔/i)).toBeInTheDocument();
+            expect(screen.getByText(/🍟/i)).toBeInTheDocument();
 
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-            lists = screen.getAllByRole('list');
-            expect(within(lists[1]).getByText('🌱')).toBeVisible();
-            expect(within(lists[1]).queryByText('🥔')).not.toBeInTheDocument();
-            expect(within(lists[1]).queryByText('🍟')).not.toBeInTheDocument();
+            expect(
+                screen.getByRole('option', {
+                    name: /🌱/i,
+                })
+            ).toBeVisible();
+            expect(
+                screen.queryByRole('option', {
+                    name: /🥔/i,
+                })
+            ).not.toBeInTheDocument();
+            expect(
+                screen.queryByRole('option', {
+                    name: /🍟/i,
+                })
+            ).not.toBeInTheDocument();
         });
 
         it('does not open the dropdown if there is no unselected items', () => {
