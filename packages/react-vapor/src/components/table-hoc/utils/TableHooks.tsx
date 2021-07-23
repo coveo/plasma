@@ -10,9 +10,11 @@ export const useFixedWidthWhileLoading = (isLoading: boolean) => {
         }
     }, [isLoading]);
 
-    const style: React.CSSProperties = {
-        width: `${columnWidth}px`,
-    };
+    const style: React.CSSProperties = isLoading
+        ? {
+              width: `${columnWidth}px`,
+          }
+        : {};
 
     return {style, tableHeaderRef};
 };
