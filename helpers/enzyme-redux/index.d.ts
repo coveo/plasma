@@ -9,5 +9,3 @@ export function shallowWithStore<P>(
 export function mountWithStore<P>(Component: ReactElement<P>, store: any, withContext: boolean = true): ReactWrapper<P>;
 export function shallowWithState<P>(Component: ReactElement<P>, state: any): ShallowWrapper<P>;
 export function mountWithState<P>(Component: ReactElement<P>, state: any): ReactWrapper<P>;
-
-export * from 'enzyme';
