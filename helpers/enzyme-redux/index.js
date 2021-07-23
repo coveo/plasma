@@ -33,3 +33,5 @@ export const mountWithState = (Component, state, withContext = true) => {
     const ReactReduxComponent = React.createElement(Provider, {store}, Component);
     return enzyme.mount(withContext ? ComponentAlreadyWithProvider : ReactReduxComponent);
 };
+
+export * from 'enzyme';
