@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.1](https://github.com/coveo/react-vapor/compare/v24.0.0...v24.0.1) (2021-07-27)
+
+
+### Bug Fixes
+
+* **limits:** removed conditional limitlabel ([b3d1d64](https://github.com/coveo/react-vapor/commit/b3d1d64bea2e862e4ffd1f499790eef200806504))
+
+
+
+
+
 # [24.0.0](https://github.com/coveo/react-vapor/compare/v23.0.0...v24.0.0) (2021-07-22)
 
 
