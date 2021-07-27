@@ -103,7 +103,7 @@ const LimitDivision: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({
         />
     ) : (
         <div className="limit-box-limit">
-            <label className="form-control-label">{limit && limitLabel}</label>
+            <label className="form-control-label">{limitLabel}</label>
             <span className="limit-box-limit-value">{limit}</span>
         </div>
     );
