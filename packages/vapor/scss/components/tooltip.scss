@@ -108,6 +108,12 @@
         word-wrap: break-word;
         background-color: var(--digital-blue-100);
         border-radius: 2px;
+
+        .body-m-book,
+        p,
+        .p {
+            --color: var(--white);
+        }
     }
 }
 
