@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.0.2](https://github.com/coveo/react-vapor/compare/v24.0.1...v24.0.2) (2021-07-28)
+
+
+### Bug Fixes
+
+* **typekit,tooltip:** set the text color to white ([#2091](https://github.com/coveo/react-vapor/issues/2091)) ([6b9c1ab](https://github.com/coveo/react-vapor/commit/6b9c1ab83e405987e469ebdf413f6a3ed67d38f3))
+
+
+
+
+
 ## [24.0.1](https://github.com/coveo/react-vapor/compare/v24.0.0...v24.0.1) (2021-07-27)
 
 
