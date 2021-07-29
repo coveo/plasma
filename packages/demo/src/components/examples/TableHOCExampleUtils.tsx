@@ -17,21 +17,21 @@ export const TableHOCServerExampleContext = React.createContext<ITableHOCServerE
 });
 
 const generateRows = (allData: IExampleRowData[]) =>
-    allData.map((data: IExampleRowData, i: number) => (
+    allData.map(({email, username, dateOfBirth, city}: IExampleRowData, i: number) => (
         <TableRowConnected
-            id={data.username}
+            id={username}
             tableId={TableHOCServerExampleId}
-            key={data.username}
-            actions={tableActions(data.username)}
+            key={username}
+            actions={tableActions(username)}
             isMultiselect
             disabled={i % 3 === 0}
             collapsible={{content: i % 2 ? <div className="py2">👋</div> : null}}
         >
             <TableRowNumberColumn number={i + 1} />
-            <td key="city">{data.city}</td>
-            <td key="email">{data.email.toLowerCase()}</td>
-            <td key="username">{data.username.toLowerCase()}</td>
-            <td key="date-of-birth">{data.dateOfBirth.toLocaleDateString()}</td>
+            <td key="city">{city}</td>
+            <td key="email">{email.toLowerCase()}</td>
+            <td key="username">{username.toLowerCase()}</td>
+            <td key="date-of-birth">{dateOfBirth.toLocaleDateString()}</td>
         </TableRowConnected>
     ));
 

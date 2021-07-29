@@ -35,77 +35,76 @@ export interface ITableHOCOwnProps {
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
 
-export class TableHOC extends React.PureComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> {
-    static defaultProps: Partial<ITableHOCOwnProps> = {
-        isLoading: false,
-        hasActionButtons: false,
-        actions: [],
-        showBorderTop: false,
-        showBorderBottom: true,
-        loading: {
-            isCard: false,
-            numberOfColumns: 5,
-            defaultLoadingRow: PER_PAGE_NUMBERS[1],
-            numberOfSubRow: 3,
-        },
-    };
+export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
+    hasActionButtons = false,
+    actions = [],
+    showBorderTop = false,
+    showBorderBottom = true,
+    id,
+    children,
+    className,
+    tableHeader,
+    tbodyClassName,
+    renderBody,
+    data,
+    containerClassName,
+    isLoading = false,
+    loading = {
+        isCard: false,
+        numberOfColumns: 5,
+        defaultLoadingRow: PER_PAGE_NUMBERS[1],
+        numberOfSubRow: 3,
+    },
+}) => {
+    const hasActions = () => hasActionButtons || actions.length;
 
-    render() {
-        const table = (
-            <table className={classNames(this.props.className)} style={{marginTop: this.hasActions() ? -1 : 0}}>
-                {this.props.tableHeader}
-                <tbody
-                    key={`table-body-${this.props.id}`}
-                    className={classNames({hidden: this.props.isLoading}, this.props.tbodyClassName)}
-                >
-                    {this.props.renderBody(this.props.data || [])}
-                </tbody>
-                {this.props.isLoading && (
-                    <TableLoading.Body
-                        key={`table-loading-${this.props.id}`}
-                        isCard={this.props.loading?.isCard}
-                        numberOfRow={_.size(this.props.data) || this.props.loading?.defaultLoadingRow}
-                        numberOfColumns={this.props.loading?.numberOfColumns}
-                        numberOfSubRow={this.props.loading?.numberOfSubRow}
-                    />
-                )}
-            </table>
-        );
-
-        return (
-            <div className={classNames('table-container', this.props.containerClassName)}>
-                {this.renderActions()}
-                {table}
-                {this.props.children}
-            </div>
-        );
-    }
-
-    private hasActions() {
-        return this.props.hasActionButtons || this.props.actions.length;
-    }
-
-    private renderActions() {
-        if (this.hasActions()) {
+    const renderActions = () => {
+        if (hasActions()) {
             return (
                 <ActionBarConnected
-                    id={this.props.id}
+                    id={id}
                     removeDefaultContainerClasses
                     extraContainerClasses={classNames(
                         'coveo-table-actions-container',
                         'mod-cancel-header-padding',
                         'mod-align-header',
                         {
-                            'mod-border-top': this.props.showBorderTop,
-                            'mod-border-bottom': this.props.showBorderBottom,
+                            'mod-border-top': showBorderTop,
+                            'mod-border-bottom': showBorderBottom,
                         }
                     ).split(' ')}
-                    disabled={this.props.isLoading}
+                    disabled={isLoading}
                 >
-                    {this.props.actions}
+                    {actions}
                 </ActionBarConnected>
             );
         }
         return null;
-    }
-}
+    };
+
+    const table = (
+        <table className={classNames(className)} style={{marginTop: hasActions() ? '-1px' : 0}}>
+            {tableHeader}
+            <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
+                {renderBody(data)}
+            </tbody>
+            {isLoading && (
+                <TableLoading.Body
+                    key={`table-loading-${id}`}
+                    isCard={loading?.isCard}
+                    numberOfRow={_.size(data) || loading?.defaultLoadingRow}
+                    numberOfColumns={loading?.numberOfColumns}
+                    numberOfSubRow={loading?.numberOfSubRow}
+                />
+            )}
+        </table>
+    );
+
+    return (
+        <div className={classNames('table-container', containerClassName)}>
+            {renderActions()}
+            {table}
+            {children}
+        </div>
+    );
+};

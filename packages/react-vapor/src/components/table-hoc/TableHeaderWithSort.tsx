@@ -1,12 +1,13 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../ReactVaporState';
-import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
-import {TextLoadingPlaceholder} from '../loading/components/TextLoadingPlaceholder';
 import {Svg} from '../svg/Svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
+import {useFixedWidthWhileLoading} from './utils/TableHooks';
 
 export interface ITableHeaderWithSortOwnProps {
     id: string;
@@ -19,73 +20,61 @@ export interface HOCTableHeaderStateProps {
     sorted: boolean;
 }
 
-export interface ITableHeaderWithSortDispatchProps {
-    onMount: () => void;
-    onSort: () => void;
-    onUnmount: () => void;
-}
+export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps, Partial<HOCTableHeaderStateProps> {}
 
-export interface ITableHeaderWithSortProps
-    extends ITableHeaderWithSortOwnProps,
-        Partial<HOCTableHeaderStateProps>,
-        Partial<ITableHeaderWithSortDispatchProps> {}
-
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderWithSortOwnProps) => {
-    const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id: ownProps.id});
-
-    return {
-        sorted: tableSort && tableSort.isAsc,
-    };
-};
-
-const mapDispatchToProps = (
-    dispatch: IDispatch,
-    ownProps: ITableHeaderWithSortOwnProps
-): ITableHeaderWithSortDispatchProps => ({
-    onMount: () => dispatch(TableHeaderActions.addTableHeader(ownProps.id, ownProps.tableId, ownProps.isDefault)),
-    onSort: () => dispatch(TableHeaderActions.sortTable(ownProps.id)),
-    onUnmount: () => dispatch(TableHeaderActions.removeTableHeader(ownProps.id)),
-});
-
-@ReduxConnect(mapStateToProps, mapDispatchToProps)
-export class TableHeaderWithSort extends React.Component<
+export const TableHeaderWithSort: React.FunctionComponent<
     ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
-> {
-    componentDidMount() {
-        this.props.onMount();
-    }
+> = ({className, isLoading, id, tableId, isDefault, children}) => {
+    const dispatch = useDispatch();
+    const sorted = useSelector((state: IReactVaporState) => {
+        const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
+        return tableSort && tableSort.isAsc;
+    });
 
-    componentWillUnmount() {
-        this.props.onUnmount();
-    }
+    const onMount = () => dispatch(TableHeaderActions.addTableHeader(id, tableId, isDefault));
+    const onSort = () => dispatch(TableHeaderActions.sortTable(id));
+    const onUnmount = () => dispatch(TableHeaderActions.removeTableHeader(id));
 
-    render() {
-        const headerCellClasses = classNames(this.props.className, 'admin-sort', {
-            'admin-sort-ascending': this.props.sorted === true,
-            'admin-sort-descending': this.props.sorted === false,
-        });
+    const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 
-        const getSvg = classNames({
-            'sorted-asc': this.props.sorted === true,
-            'sorted-desc': this.props.sorted === false,
-            'asc-desc': this.props.sorted === undefined,
-        });
+    React.useEffect(() => {
+        onMount();
 
-        if (this.props.isLoading) {
-            return (
-                <th id={this.props.id}>
-                    <TextLoadingPlaceholder small />
-                </th>
-            );
-        }
+        return onUnmount;
+    }, []);
 
+    const headerCellClasses = classNames(className, 'admin-sort', {
+        'admin-sort-ascending': sorted === true,
+        'admin-sort-descending': sorted === false,
+    });
+
+    const getSvg = classNames({
+        'sorted-asc': sorted === true,
+        'sorted-desc': sorted === false,
+        'asc-desc': sorted === undefined,
+    });
+
+    if (isLoading) {
         return (
-            <th id={this.props.id} className={headerCellClasses} onClick={() => this.props.onSort()}>
-                {this.props.children}
-                <div className="admin-sort-icon">
-                    <Svg svgName={getSvg} className="tables-sort icon" />
-                </div>
+            <th id={id} ref={tableHeaderRef} style={style}>
+                {children}
             </th>
         );
     }
-}
+
+    return (
+        <th
+            id={id}
+            className={headerCellClasses}
+            onClick={onSort}
+            ref={tableHeaderRef}
+            style={style}
+            title="admin-sort"
+        >
+            {children}
+            <div className="admin-sort-icon">
+                <Svg svgName={getSvg} className="tables-sort icon" />
+            </div>
+        </th>
+    );
+};

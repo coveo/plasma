@@ -78,12 +78,17 @@ const CardSubRow = ({num}: {num: number}) => (
 const TableRow = ({numberOfColumns, nColumn}: {numberOfColumns?: number; nColumn: number}) => (
     <tr className="mod-border-bottom no-hover">
         {_.times(numberOfColumns, (nRow: number) => (
-            <Row key={`table-row-loading-${nRow}`} num={nColumn} />
+            <Cell key={`table-row-loading-${nRow}`} num={nColumn} />
         ))}
     </tr>
 );
 
-const Row = ({num}: {num: number}) => (
+/**
+ * @deprecated use Cell instead
+ */
+const Row = ({num}: {num: number}) => <Cell num={num} />;
+
+const Cell = ({num}: {num: number}) => (
     <td className="table-cell-loading">
         <div className={classNames('table-cell-content-loading', {'mod-half': num % 2})} />
     </td>
@@ -97,4 +102,5 @@ export const TableLoading = {
     CardLoading,
     CardSubRow,
     Row,
+    Cell,
 };

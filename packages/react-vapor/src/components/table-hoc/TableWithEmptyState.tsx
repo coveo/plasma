@@ -15,7 +15,7 @@ export interface TableWithEmptyStateProps {
 const UPDATE_DELAY = 50; // ms
 
 export const tableWithEmptyState = (
-    Component: React.ComponentClass<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>>
+    Component: React.FunctionComponent<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>>
 ) => {
     const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => {
         const isTrulyEmpty = TableSelectors.getIsTrulyEmpty(state, ownProps);

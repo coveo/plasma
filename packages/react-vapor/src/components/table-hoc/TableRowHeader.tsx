@@ -1,11 +1,17 @@
 import * as React from 'react';
-import {TextLoadingPlaceholder} from '../loading/components/TextLoadingPlaceholder';
 
-export const TableRowHeader = ({isLoading, children}: {isLoading?: boolean; children?: React.ReactNode}) =>
-    isLoading ? (
-        <th>
-            <TextLoadingPlaceholder small />
+import {useFixedWidthWhileLoading} from './utils/TableHooks';
+
+interface TableRowHeaderProps {
+    isLoading?: boolean;
+}
+
+export const TableRowHeader: React.FunctionComponent<TableRowHeaderProps> = ({isLoading, children}) => {
+    const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
+
+    return (
+        <th ref={tableHeaderRef} style={style}>
+            {children}
         </th>
-    ) : (
-        <th>{children}</th>
     );
+};
