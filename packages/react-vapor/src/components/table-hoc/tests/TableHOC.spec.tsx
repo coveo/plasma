@@ -139,7 +139,7 @@ describe('TableHOC', () => {
         it('should render a negative top margin on the table if there is an ActionBar', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} hasActionButtons />);
 
-            expect(wrapper.find('table').prop('style').marginTop).toBe(-1);
+            expect(wrapper.find('table').prop('style').marginTop).toBe('-1px');
         });
 
         it('should not render a negative top margin on the table if there is an ActionBar', () => {

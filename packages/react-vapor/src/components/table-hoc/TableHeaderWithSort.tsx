@@ -26,12 +26,9 @@ export const TableHeaderWithSort: React.FunctionComponent<
     ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
 > = ({className, isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
-    const {sorted} = useSelector((state: IReactVaporState) => {
+    const sorted = useSelector((state: IReactVaporState) => {
         const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
-
-        return {
-            sorted: tableSort && tableSort.isAsc,
-        };
+        return tableSort && tableSort.isAsc;
     });
 
     const onMount = () => dispatch(TableHeaderActions.addTableHeader(id, tableId, isDefault));
