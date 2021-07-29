@@ -1,4 +1,5 @@
 import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
 import {MultiSelectWithFilter} from '../SelectComponents';
@@ -8,24 +9,23 @@ describe('Select', () => {
         const id: string = 'multi-select-with-filter';
 
         it('should add a duplicate if the filterValue is already selected', () => {
-            const filterValue: string = 'a';
-            const duplicateText: string = 'duplicate';
+            const duplicateText: string = 'a';
 
             render(
                 <MultiSelectWithFilter
                     id={id}
                     duplicateText={duplicateText}
                     items={[
-                        {value: filterValue, selected: true},
-                        {value: filterValue, selected: true},
+                        {value: duplicateText, selected: true},
+                        {value: duplicateText, selected: true},
                     ]}
-                />,
-                {
-                    initialState: {},
-                }
+                />
             );
 
+            userEvent.click(screen.getByText(/select an option/i));
+
             const listItems = screen.getAllByRole('listitem');
+            screen.logTestingPlaygroundURL();
 
             expect(listItems.length).toBe(2);
             expect(listItems[0]).toHaveTextContent(listItems[1].textContent);
@@ -34,18 +34,13 @@ describe('Select', () => {
         it('should open the dropdown even if the list is empty with customValue', () => {
             const noItemsText = 'not an item text';
 
-            render(<MultiSelectWithFilter id={id} noItemsText={noItemsText} customValues items={[]} />, {
-                initialState: {},
-            });
+            render(<MultiSelectWithFilter id={id} noItemsText={noItemsText} customValues items={[]} />);
+            userEvent.click(screen.getByText(/select an option/i));
 
-            expect(
-                screen.getByRole('option', {
-                    hidden: true,
-                })
-            ).toHaveTextContent(noItemsText);
+            expect(screen.getByRole('option')).toHaveTextContent(noItemsText);
         });
 
-        it('should set the noItems in noResultItem if items is not empty and all values are selected', () => {
+        it('should set the noItemsText in noResultItem if items is not empty and all values are selected', () => {
             const noItemsText = 'not an item text';
 
             render(
@@ -57,17 +52,12 @@ describe('Select', () => {
                         {value: 'a', selected: true},
                         {value: 'b', selected: true},
                     ]}
-                />,
-                {
-                    initialState: {},
-                }
+                />
             );
 
-            expect(
-                screen.getByRole('option', {
-                    hidden: true,
-                })
-            ).toHaveTextContent(noItemsText);
+            userEvent.click(screen.getByText(/select an option/i));
+
+            expect(screen.getByRole('option', {name: noItemsText})).toBeInTheDocument();
         });
     });
 });

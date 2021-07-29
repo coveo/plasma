@@ -35,34 +35,30 @@ describe('Select', () => {
         });
 
         it('describes the item with a custom tooltip', async () => {
-            const items = [{value: '🌱', selected: true, selectedTooltip: {title: ':seed:'}}, {value: '🍟'}];
+            const items = [{value: '🌱', selected: true, selectedTooltip: {title: '🌱'}}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} />);
 
             fireEvent.mouseOver(screen.getByText('🌱'));
 
-            expect(await screen.findByLabelText(/:seed:/)).toBeVisible();
+            expect(await screen.findByLabelText(/🌱/)).toBeVisible();
         });
 
         it('displays the displayValue in the selected items', () => {
             const items = [
-                {value: '🌱', selected: true, displayValue: ':seed:'},
-                {value: '🥔', selected: true, displayValue: ':potato:'},
+                {value: '🌱', selected: true, displayValue: '🌱'},
+                {value: '🥔', selected: true, displayValue: '🥔'},
                 {value: '🍟'},
             ];
             render(<MultiSelectConnected id={id} items={items} />);
 
             const listitems = screen.getAllByRole('listitem');
             expect(listitems.length).toBe(2);
-            expect(listitems[0]).toHaveTextContent(':seed:');
-            expect(listitems[1]).toHaveTextContent(':potato:');
+            expect(listitems[0]).toHaveTextContent('🌱');
+            expect(listitems[1]).toHaveTextContent('🥔');
         });
 
         it('displays the displayValue in the dropdown list', () => {
-            const items = [
-                {value: '🌱', displayValue: ':seed:'},
-                {value: '🥔', displayValue: ':potato:'},
-                {value: '🍟'},
-            ];
+            const items = [{value: '🌱', displayValue: '🌱'}, {value: '🥔', displayValue: '🥔'}, {value: '🍟'}];
             render(<MultiSelectConnected id={id} items={items} />);
 
             // open the dropdown
@@ -70,12 +66,12 @@ describe('Select', () => {
 
             expect(
                 screen.getByRole('option', {
-                    name: /:seed:/i,
+                    name: /🌱/i,
                 })
             ).toBeVisible();
             expect(
                 screen.getByRole('option', {
-                    name: /:seed:/i,
+                    name: /🌱/i,
                 })
             ).toBeVisible();
             expect(
@@ -154,7 +150,7 @@ describe('Select', () => {
             // open the dropdown
             userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-            // pre-selected option is in the listbos
+            // pre-selected option is in the listbox
             expect(screen.getByText(/🥔/i)).toBeInTheDocument();
 
             expect(

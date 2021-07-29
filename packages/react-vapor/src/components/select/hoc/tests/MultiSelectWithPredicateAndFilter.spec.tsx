@@ -33,8 +33,7 @@ describe('MultiSelectWithPredicateAndFilter', () => {
                     options={defaultFlatSelectOptions}
                     matchPredicate={matchPredicate}
                 />
-            </Provider>,
-            {attachTo: document.getElementById('App')}
+            </Provider>
         );
     };
 
