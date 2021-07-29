@@ -213,33 +213,33 @@ describe('Select', () => {
             it('should open the dropdown when the user press enter on the button', () => {
                 render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} />);
 
-                expect(screen.queryByRole('list')).not.toBeInTheDocument();
+                expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
                 fireEvent.keyDown(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
                 fireEvent.keyUp(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
 
-                expect(screen.queryByRole('list')).toBeVisible();
+                expect(screen.queryByRole('listbox')).toBeVisible();
             });
 
             it('should close the dropdown when the user press escape on the button and the dropdown is open', () => {
                 render(<SingleSelectConnected id={id} items={[{value: 'a'}, {value: 'b'}]} />);
 
-                expect(screen.queryByRole('list')).not.toBeInTheDocument();
+                expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
                 fireEvent.keyDown(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
                 fireEvent.keyUp(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
 
-                expect(screen.queryByRole('list')).not.toBeInTheDocument();
+                expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
 
                 fireEvent.keyDown(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
                 fireEvent.keyUp(screen.getByRole('button'), {key: 'Enter', code: 'Enter', keyCode: keyCode.enter});
 
-                expect(screen.queryByRole('list')).toBeVisible();
+                expect(screen.queryByRole('listbox')).toBeVisible();
 
                 fireEvent.keyDown(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
                 fireEvent.keyUp(screen.getByRole('button'), {key: 'Escape', code: 'Escape', keyCode: keyCode.escape});
 
-                expect(screen.queryByRole('list')).not.toBeInTheDocument();
+                expect(screen.queryByRole('listbox')).not.toBeInTheDocument();
             });
         });
         describe('footer props', () => {

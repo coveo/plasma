@@ -199,12 +199,30 @@ describe('Table HOC', () => {
         it('should show values when opened', () => {
             render(<TableWithPredicate {...defaultProps} />);
 
+            expect(
+                screen.queryByRole('option', {
+                    name: /all/i,
+                })
+            ).not.toBeInTheDocument();
+            expect(
+                screen.queryByRole('option', {
+                    name: /test/i,
+                })
+            ).not.toBeInTheDocument();
+
             // Click on the dropdown
             userEvent.click(screen.getByRole('button'));
-            const listitems = screen.getAllByRole('listitem');
-            expect(listitems.length).toBe(2);
-            expect(listitems[0]).toHaveTextContent('All');
-            expect(listitems[1]).toHaveTextContent('test');
+
+            expect(
+                screen.getByRole('option', {
+                    name: /all/i,
+                })
+            ).toBeInTheDocument();
+            expect(
+                screen.getByRole('option', {
+                    name: /test/i,
+                })
+            ).toBeInTheDocument();
         });
     });
 });

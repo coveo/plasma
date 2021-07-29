@@ -17,7 +17,7 @@ describe('SelectWithInfiniteScroll', () => {
         // open the dropdown
         userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-        const listitems = screen.getAllByRole('listitem');
+        const listitems = screen.getAllByRole('option');
         expect(listitems.length).toBe(3);
         expect(listitems[0]).toHaveTextContent('🏹');
         expect(listitems[1]).toHaveTextContent('💘');
@@ -33,7 +33,7 @@ describe('SelectWithInfiniteScroll', () => {
         // open the dropdown
         userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-        const list = screen.getByRole('list');
+        const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
         list.dispatchEvent(scrollEvent);
 
@@ -49,7 +49,7 @@ describe('SelectWithInfiniteScroll', () => {
         // open the dropdown
         userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-        const list = screen.getByRole('list');
+        const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
         list.dispatchEvent(scrollEvent);
 
@@ -64,7 +64,7 @@ describe('SelectWithInfiniteScroll', () => {
         // open the dropdown
         userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-        const list = screen.getByRole('list');
+        const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
         list.dispatchEvent(scrollEvent);
 
@@ -79,7 +79,7 @@ describe('SelectWithInfiniteScroll', () => {
         // open the dropdown
         userEvent.click(screen.getByRole('button', {name: /select an option/i}));
 
-        const list = screen.getByRole('list');
+        const list = screen.getByRole('listbox');
         const scrollEvent = new Event('scroll');
         list.dispatchEvent(scrollEvent);
 
