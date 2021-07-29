@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.2.0](https://github.com/coveo/react-vapor/compare/v24.1.0...v24.2.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **tableserver:** changed server call from ajax to fetch ([374336a](https://github.com/coveo/react-vapor/commit/374336add869e2e885c08d9b5175f14228179b47))
+
+
+### Features
+
+* **generatetablerows:** added null checkon map ([0f76a93](https://github.com/coveo/react-vapor/commit/0f76a9395bd717c01e9ae0da1b8ffd13362945c9))
+* **tabl:** restored fake date ([1ec8817](https://github.com/coveo/react-vapor/commit/1ec88179b907996cbdd6f206adb3618a29effd6c))
+* **tablehoc:** got the setwidth working ([fa87edd](https://github.com/coveo/react-vapor/commit/fa87edddf5017d9f97d4126cd034c68a192625c6))
+* **tablerowheader:** removed id from props ([455f375](https://github.com/coveo/react-vapor/commit/455f375b154baa33475cbf836ec54ab8a6b1bb82))
+
+
+
+
+
 # [24.1.0](https://github.com/coveo/react-vapor/compare/v24.0.2...v24.1.0) (2021-07-29)
 
 **Note:** Version bump only for package react-vapor-demo

@@ -3,6 +3,32 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.2.0](https://github.com/coveo/react-vapor/compare/v24.1.0...v24.2.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **tableserver:** changed server call from ajax to fetch ([374336a](https://github.com/coveo/react-vapor/commit/374336add869e2e885c08d9b5175f14228179b47))
+
+
+### Features
+
+* **generatetablerows:** added null checkon map ([0f76a93](https://github.com/coveo/react-vapor/commit/0f76a9395bd717c01e9ae0da1b8ffd13362945c9))
+* **tabl:** restored fake date ([1ec8817](https://github.com/coveo/react-vapor/commit/1ec88179b907996cbdd6f206adb3618a29effd6c))
+* **table:** renamed hook, added CSS type, removed style ([c2c9366](https://github.com/coveo/react-vapor/commit/c2c936620053e5344299b51760eae20e72e90122))
+* **table:** updated tests ([8877bec](https://github.com/coveo/react-vapor/commit/8877bec1dd40777927352be6bc3fd0b059a45397))
+* **tableheaderref:** renamed targetRef to tableHeaderRef ([078a1c0](https://github.com/coveo/react-vapor/commit/078a1c01f67b84fbce6ae7a3d233911b2e996fdc))
+* **tablehoc:** fixed tests ([9a29e13](https://github.com/coveo/react-vapor/commit/9a29e13143569eb8d439cae4a9c115ac475da21f))
+* **tablehoc:** got the setwidth working ([fa87edd](https://github.com/coveo/react-vapor/commit/fa87edddf5017d9f97d4126cd034c68a192625c6))
+* **tablehoc:** removed context ([58a4701](https://github.com/coveo/react-vapor/commit/58a4701fc560bd176f498ae459335e59ed252f96))
+* **tablerowheader:** removed id from props ([455f375](https://github.com/coveo/react-vapor/commit/455f375b154baa33475cbf836ec54ab8a6b1bb82))
+* **textloadingplaceholder:** removed tiny ([176a6a4](https://github.com/coveo/react-vapor/commit/176a6a4891e683a5fc2baa3ebafdbea35bd1540d))
+* **usefixedwidthwhileloading:** added ternery to style return ([94132c8](https://github.com/coveo/react-vapor/commit/94132c874a159d008b34a751e59a62835ea1e388))
+
+
+
+
+
 # [24.1.0](https://github.com/coveo/react-vapor/compare/v24.0.2...v24.1.0) (2021-07-29)
 
 
