@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.1.0](https://github.com/coveo/react-vapor/compare/v24.0.2...v24.1.0) (2021-07-29)
+
+
+### Bug Fixes
+
+* **filterbox:** updated accessibility and tests ([5537725](https://github.com/coveo/react-vapor/commit/5537725484d20c0414ef4097e7630fb989cc13ee))
+* **multiselect:** applied reviews ([96a44dd](https://github.com/coveo/react-vapor/commit/96a44ddc6bfadd48720c0ac965044b592c2dadd1))
+* **selects:** fix tests to use new accessibility ([ee23ce1](https://github.com/coveo/react-vapor/commit/ee23ce139867c28b378f232ff9b3889fa63fd949))
+
+
+### Features
+
+* **itembox:** added accessibility roles ([e4f43f4](https://github.com/coveo/react-vapor/commit/e4f43f460a1d373b92a27318362e7b845feca8b5))
+
+
+
+
+
 ## [24.0.2](https://github.com/coveo/react-vapor/compare/v24.0.1...v24.0.2) (2021-07-28)
 
 
