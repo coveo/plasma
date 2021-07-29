@@ -41,7 +41,7 @@ Changes made to any source files in any package will make the demo rebuild and r
 
 ### Testing
 
-All new unit tests for components should be written using Jest and [React Testing Library](https://testing-library.com/), and not Enzyme which is being phased out.
+All new unit tests for components should be written using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/), and not Enzyme which is being phased out.
 
 There are two packages that are tested:
 
@@ -50,7 +50,7 @@ There are two packages that are tested:
 
 To run all tests from the root, you can run `pnpm test`
 
-Alternatively, you can run it directly from the `react-vapor` package, which also allows using two other testing methods:
+Alternatively, you can run it directly from the `packages/react-vapor` package, which also allows using two other testing methods:
 
 #### Watching and Debugging
 
