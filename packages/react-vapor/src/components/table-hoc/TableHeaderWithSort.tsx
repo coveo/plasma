@@ -22,7 +22,7 @@ export interface HOCTableHeaderStateProps {
 
 export interface ITableHeaderWithSortProps extends ITableHeaderWithSortOwnProps, Partial<HOCTableHeaderStateProps> {}
 
-export const TableHeaderWithSort: React.FC<
+export const TableHeaderWithSort: React.FunctionComponent<
     ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
 > = ({className, isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
@@ -69,7 +69,7 @@ export const TableHeaderWithSort: React.FC<
         <th
             id={id}
             className={headerCellClasses}
-            onClick={() => onSort()}
+            onClick={onSort}
             ref={tableHeaderRef}
             style={style}
             title="admin-sort"

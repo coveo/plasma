@@ -99,14 +99,14 @@ export const ErrorList: React.FC<{id: string}> = ({id}) => {
     return <ul aria-label="errors">{errorList}</ul>;
 };
 
-export const WarningList: React.FC<{id: string}> = ({id}) => {
+export const WarningList: React.FunctionComponent<{id: string}> = ({id}) => {
     const warnings = useSelector(ValidationSelectors.getWarnings(id));
     const warningList = warnings.map(({value}) => <li key={value}>{value}</li>);
 
     return <ul aria-label="warnings">{warningList}</ul>;
 };
 
-export const IsDirtyIndicator: React.FC<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
+export const IsDirtyIndicator: React.FunctionComponent<{id: string; label?: string}> = ({id, label = 'is dirty'}) => {
     const {isDirty} = useSelector(
         createStructuredSelector({
             isDirty: ValidationSelectors.isDirty([id]),

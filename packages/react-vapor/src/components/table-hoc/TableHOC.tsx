@@ -35,7 +35,7 @@ export interface ITableHOCOwnProps {
 
 export interface ITableHOCProps extends ITableHOCOwnProps {}
 
-export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
+export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
     hasActionButtons = false,
     actions = [],
     showBorderTop = false,
@@ -83,7 +83,7 @@ export const TableHOC: React.FC<ITableHOCProps & React.HTMLAttributes<HTMLTableE
     };
 
     const table = (
-        <table className={classNames(className)} style={{marginTop: hasActions() ? -1 : 0}}>
+        <table className={classNames(className)} style={{marginTop: hasActions() ? '-1px' : 0}}>
             {tableHeader}
             <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
                 {renderBody(data)}

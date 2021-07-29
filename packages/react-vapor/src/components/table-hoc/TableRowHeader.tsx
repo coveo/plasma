@@ -6,7 +6,7 @@ interface TableRowHeaderProps {
     isLoading?: boolean;
 }
 
-export const TableRowHeader: React.FC<TableRowHeaderProps> = ({isLoading, children}) => {
+export const TableRowHeader: React.FunctionComponent<TableRowHeaderProps> = ({isLoading, children}) => {
     const {style, tableHeaderRef} = useFixedWidthWhileLoading(isLoading);
 
     return (
