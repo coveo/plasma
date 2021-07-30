@@ -25,7 +25,6 @@ describe('Select', () => {
             userEvent.click(screen.getByText(/select an option/i));
 
             const listItems = screen.getAllByRole('listitem');
-            screen.logTestingPlaygroundURL();
 
             expect(listItems.length).toBe(2);
             expect(listItems[0]).toHaveTextContent(listItems[1].textContent);
