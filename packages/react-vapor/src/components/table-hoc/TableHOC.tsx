@@ -86,7 +86,7 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
         <table className={classNames(className)} style={{marginTop: hasActions() ? '-1px' : 0}}>
             {tableHeader}
             <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
-                {renderBody(data)}
+                {renderBody(data || [])}
             </tbody>
             {isLoading && (
                 <TableLoading.Body

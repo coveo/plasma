@@ -1,3 +1,4 @@
+import {render} from '@test-utils';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -18,6 +19,18 @@ describe('TableHOC', () => {
         it('should not throw', () => {
             expect(() => shallow(<TableHOC id="table" data={[]} renderBody={_.identity} />)).not.toThrow();
             expect(() => shallow(<TableHOC id="table-2" data={null} renderBody={_.identity} />)).not.toThrow();
+        });
+
+        it('should call renderBody with an array when data is null', () => {
+            const renderBody = jest.fn();
+            render(<TableHOC id="table-2" data={null} renderBody={renderBody} />);
+            expect(renderBody).toHaveBeenCalledWith([]);
+        });
+
+        it('should call renderBody with an array when data is undefined', () => {
+            const renderBody = jest.fn();
+            render(<TableHOC id="table-2" data={undefined} renderBody={renderBody} />);
+            expect(renderBody).toHaveBeenCalledWith([]);
         });
 
         it('should render a table', () => {
