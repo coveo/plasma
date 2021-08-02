@@ -1,3 +1,4 @@
+import {renderModal, screen} from '@test-utils';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 import ReactModal from 'react-modal';
@@ -51,6 +52,24 @@ describe('ModalComposite', () => {
 
         expect(modalContent.exists()).toBe(true);
         expect(modalContent.find(ModalHeader).exists()).toBe(true);
+    });
+
+    it('renders an accessible heading', () => {
+        renderModal(<ModalComposite isOpened title="my title" />);
+
+        expect(screen.getByRole('dialog', {name: 'my title'})).toBeVisible();
+    });
+
+    it('is possible to access modals by their title', () => {
+        renderModal(
+            <>
+                <ModalComposite id="first" isOpened title="first modal title" />
+                <ModalComposite id="second" isOpened title="second modal title" />
+            </>
+        );
+
+        expect(screen.getByRole('dialog', {name: 'first modal title'})).toBeVisible();
+        expect(screen.getByRole('dialog', {name: 'second modal title'})).toBeVisible();
     });
 
     it('should render modal header children inside the modal header', () => {

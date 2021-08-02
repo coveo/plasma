@@ -83,6 +83,9 @@ export class ModalComposite extends React.PureComponent<
             <ReactModal
                 key={this.props.id}
                 isOpen={this.props.isOpened}
+                aria={{
+                    labelledby: `modal-${this.props.id}-title`,
+                }}
                 className={{
                     base: classNames('modal-container --react-modal', this.props.classes, {
                         'mod-prompt': this.props.isPrompt,
@@ -140,6 +143,7 @@ export class ModalComposite extends React.PureComponent<
             title: this.props.title,
             classes: this.props.modalHeaderClasses,
             docLink: this.props.docLink,
+            htmlId: `modal-${this.props.id}-title`,
         };
 
         if (!this.props.title) {
