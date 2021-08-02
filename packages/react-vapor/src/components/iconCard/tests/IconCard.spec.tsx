@@ -131,6 +131,9 @@ describe('IconCard', () => {
             />
         );
 
+        // Open the drawer
+        userEvent.click(screen.getByRole('button', {name: /title/i}));
+
         const drawer = screen.getByRole('list');
         expect(drawer).toBeInTheDocument();
         expect(within(drawer).getAllByRole('listitem').length).toBe(2);
@@ -151,6 +154,9 @@ describe('IconCard', () => {
                 ]}
             />
         );
+        // Open the drawer
+        userEvent.click(screen.getByRole('button', {name: /title/i}));
+
         userEvent.click(screen.getByRole('button', {name: '🍌'}));
         expect(mockOnClick).toHaveBeenCalledTimes(1);
         expect(mockOnClick).toHaveBeenCalledWith('banana');
@@ -169,6 +175,9 @@ describe('IconCard', () => {
                 ]}
             />
         );
+
+        // Open the drawer
+        userEvent.click(screen.getByRole('button', {name: /title/i}));
 
         const button = screen.queryByRole('button', {name: '🍌'});
         expect(button).toBeInTheDocument();
@@ -193,7 +202,7 @@ describe('IconCard', () => {
         );
 
         const card = screen.getByRole('button', {name: /title/i});
-        const drawer = screen.getByRole('list');
+        const drawer = screen.getByRole('list', {hidden: true});
         expect(drawer).toHaveClass('mod-small');
         expect(card).toHaveClass('mod-small');
     });

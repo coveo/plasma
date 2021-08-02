@@ -53,7 +53,12 @@ export class SlideY extends React.PureComponent<SlideYProps> {
                 onExiting={() => this.onExiting()}
                 onTransitionEnd={() => this.handleTransitionEnd()}
             >
-                <div className="slide-y slide-y-closed" ref={(el: HTMLElement) => (this.el = el)} {...style}>
+                <div
+                    className="slide-y slide-y-closed"
+                    aria-hidden={!this.props.in}
+                    ref={(el: HTMLElement) => (this.el = el)}
+                    {...style}
+                >
                     {this.props.children}
                 </div>
             </Transition>
