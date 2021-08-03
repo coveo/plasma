@@ -20,6 +20,7 @@ export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = (
     id,
     disabled = false,
 }) => {
+    const label = moreLabel || MORE_LABEL;
     const actionItems = actions?.map((action: IActionOptions, index: number) => (
         <ActionDropdownItem key={`action-${action.id ?? index}`} action={action} parentId={id} />
     ));
@@ -27,11 +28,19 @@ export const ActionsDropdown: React.FunctionComponent<IActionsDropdownProps> = (
     const toggleContent: JSX.Element[] = [
         <Svg key="action-dropdown-toggle-icon" svgName="more" className="action-icon" svgClass="icon icon-medium" />,
         <span key="action-dropdown-toggle-label" className="action-label" data-trigger="more">
-            {moreLabel || MORE_LABEL}
+            {label}
         </span>,
     ];
 
-    return <DropdownConnected toggleContent={toggleContent} dropdownItems={actionItems} id={id} disabled={disabled} />;
+    return (
+        <DropdownConnected
+            ariaLabel={label}
+            toggleContent={toggleContent}
+            dropdownItems={actionItems}
+            id={id}
+            disabled={disabled}
+        />
+    );
 };
 
 /**

@@ -7,6 +7,7 @@ import {closeDropdown} from '../dropdown/DropdownActions';
 import {IUserChoice} from '../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../inlinePrompt/InlinePromptActions';
 import {Action, IBasicActionProps, IConfirmData} from './Action';
+import {keyCode} from '../../utils';
 
 export interface ITriggerActionOwnProps extends React.ClassAttributes<TriggerAction>, IBasicActionProps {
     confirmLabel?: string;
@@ -62,6 +63,14 @@ export class TriggerAction extends React.Component<ITriggerActionProps> {
         }
     }
 
+    private handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+        if (this.props.action.enabled && (event.keyCode === keyCode.enter || event.keyCode === keyCode.space)) {
+            // Prevent the default action to stop scrolling when space is pressed
+            event.preventDefault();
+            this.onTriggerAction();
+        }
+    };
+
     render() {
         const actionClasses: string = classNames({
             enabled: this.props.action.enabled,
@@ -72,8 +81,11 @@ export class TriggerAction extends React.Component<ITriggerActionProps> {
         return (
             <span
                 onClick={() => this.props.action.enabled && this.onTriggerAction()}
+                onKeyDown={this.handleKeyDown}
                 className={actionClasses}
                 title={this.props.action.name}
+                role="button"
+                tabIndex={0}
             >
                 <Action action={this.props.action} simple={this.props.simple} />
             </span>

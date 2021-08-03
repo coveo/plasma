@@ -2,12 +2,15 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
+import {keyCode} from '../../utils';
+
 export interface IDropdownOwnProps extends React.ClassAttributes<Dropdown> {
     id?: string;
     toggleContent: JSX.Element[];
     dropdownItems: JSX.Element[];
     className?: string;
     disabled?: boolean;
+    ariaLabel?: string;
 }
 
 export interface IDropdownStateProps {
@@ -39,6 +42,14 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
             if (!facetSearch.contains(e.target as Node)) {
                 this.props.onDocumentClick();
             }
+        }
+    };
+
+    private handleKeyDown = (event: React.KeyboardEvent<HTMLSpanElement>) => {
+        if (!this.props.disabled && (event.keyCode === keyCode.enter || event.keyCode === keyCode.space)) {
+            // Prevent the default action to stop scrolling when space is pressed
+            event.preventDefault();
+            this.props.onClick?.();
         }
     };
 
@@ -79,10 +90,16 @@ export class Dropdown extends React.Component<IDropdownProps, any> {
                         'disabled transparency-4 cursor-default': this.props.disabled,
                     })}
                     onClick={() => this.handleClick()}
+                    onKeyDown={this.handleKeyDown}
+                    role="button"
+                    tabIndex={0}
+                    aria-label={this.props.ariaLabel}
                 >
                     {this.props.toggleContent}
                 </span>
-                <ul className="dropdown-menu normal-height">{this.props.dropdownItems}</ul>
+                <ul className="dropdown-menu normal-height" aria-hidden={!this.props.isOpened}>
+                    {this.props.dropdownItems}
+                </ul>
             </div>
         );
     }

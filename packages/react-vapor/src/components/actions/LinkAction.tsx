@@ -20,6 +20,6 @@ export class LinkAction extends React.Component<ILinkActionProps> {
             opts.rel = 'noopener noreferrer';
         }
 
-        return <a className={actionClasses} href={href} title={this.props.action.name} {...opts} />;
+        return <a className={actionClasses} href={href} title={this.props.action.name} role="button" {...opts} />;
     }
 }
