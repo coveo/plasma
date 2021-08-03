@@ -11,6 +11,7 @@ export interface ITitleProps {
     withTitleTooltip?: boolean;
     documentationLink?: ILinkSvgProps;
     classes?: string[];
+    htmlId?: string;
 }
 
 export const Title: React.FunctionComponent<ITitleProps> = (props) => {
@@ -30,7 +31,7 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
 
     return (
         <div className="flex flex-center full-content-x">
-            <h4 className={titleClasses}>
+            <h4 className={titleClasses} id={props.htmlId}>
                 <span className={prefixClasses}>{props.prefix}</span>
                 {title}
             </h4>

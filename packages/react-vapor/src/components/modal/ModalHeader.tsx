@@ -12,6 +12,7 @@ export interface IModalHeaderOwnProps {
     title: string;
     classes?: IClassName;
     docLink?: ILinkSvgProps;
+    htmlId?: string;
 }
 
 export interface IModalHeaderStateProps {
@@ -79,7 +80,12 @@ export class ModalHeader extends React.Component<IModalHeaderProps> {
         return (
             <header className={classes}>
                 <div className="truncate">
-                    <Title text={this.props.title} documentationLink={docLinkProps} classes={['regular']} />
+                    <Title
+                        text={this.props.title}
+                        documentationLink={docLinkProps}
+                        classes={['regular']}
+                        htmlId={this.props.htmlId}
+                    />
                 </div>
                 {this.props.children}
                 {closeComponent}
