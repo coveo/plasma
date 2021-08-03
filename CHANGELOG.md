@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.3.0](https://github.com/coveo/react-vapor/compare/v24.2.2...v24.3.0) (2021-08-03)
+
+
+### Features
+
+* **modal:** improve accessibility by adding a labelledby property ([1780f61](https://github.com/coveo/react-vapor/commit/1780f61219d7d9761d098f8f8fd48a1e73f411ff))
+* improve accessibility of the SlideY component ([e51d5d1](https://github.com/coveo/react-vapor/commit/e51d5d15483d9ffb479af44568b52a56de139c04))
+
+
+
+
+
 ## [24.2.2](https://github.com/coveo/react-vapor/compare/v24.2.1...v24.2.2) (2021-07-30)
 
 **Note:** Version bump only for package root
