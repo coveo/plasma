@@ -1,5 +1,6 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
+import {render, screen} from '@test-utils';
 import {SlideY, SlideYProps} from '../SlideY';
 
 describe('SlideY', () => {
@@ -163,6 +164,28 @@ describe('SlideY', () => {
             expect(wrapper.find('.slide-y').first().prop('style').transitionDuration).toContain(
                 expectedDuration.toString()
             );
+        });
+
+        it('hides the content when closed', () => {
+            render(
+                <SlideY in={false}>
+                    <button>my children</button>
+                </SlideY>
+            );
+            // The element is not accessible since aria-hidden is true
+            expect(screen.queryByRole('button', {name: 'my children'})).not.toBeInTheDocument();
+
+            // You can still access it by passing hidden: true
+            expect(screen.getByRole('button', {hidden: true, name: 'my children'})).toBeVisible();
+        });
+
+        it('shows the content when opened', () => {
+            render(
+                <SlideY in>
+                    <button>my children</button>
+                </SlideY>
+            );
+            expect(screen.getByRole('button', {name: 'my children'})).toBeVisible();
         });
     });
 });
