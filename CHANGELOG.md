@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.4.0](https://github.com/coveo/react-vapor/compare/v24.3.0...v24.4.0) (2021-08-03)
+
+
+### Features
+
+* **table:** make the table actions more accessible ([7ddff36](https://github.com/coveo/react-vapor/commit/7ddff366669add7a9d05cf4776abd052d4d46219))
+
+
+
+
+
 # [24.3.0](https://github.com/coveo/react-vapor/compare/v24.2.2...v24.3.0) (2021-08-03)
 
 
