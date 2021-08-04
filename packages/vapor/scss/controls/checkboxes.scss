@@ -42,6 +42,10 @@
                 content: '';
             }
 
+            &:focus {
+                --border: solid 2px var(--digital-blue-60);
+            }
+
             &:focus:after {
                 top: -6px;
                 left: -6px;
@@ -54,6 +58,12 @@
         &:checked + button {
             --background-color: var(--digital-blue-60);
             --border: solid 2px var(--digital-blue-60);
+
+            &:focus,
+            &:hover {
+                --background-color: var(--digital-blue-80);
+                --border: solid 2px var(--digital-blue-80);
+            }
 
             &:before {
                 position: absolute;
@@ -83,7 +93,8 @@
         }
 
         &:disabled {
-            & + button {
+            & + button,
+            & + button:hover {
                 --background-color: var(--grey-20);
                 --border: solid 2px var(--grey-50);
                 cursor: default;

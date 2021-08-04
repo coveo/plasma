@@ -1,5 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
+import {CheckboxContext, CheckboxContextProps} from '../checkbox/CheckboxContext';
 
 export interface ILabelProps {
     type?: string;
@@ -8,19 +9,23 @@ export interface ILabelProps {
     invalidMessage?: string;
 }
 
-export class Label extends React.Component<ILabelProps & React.HTMLProps<HTMLLabelElement>, any> {
-    render() {
-        const classes = classNames(this.props.classes);
-        const {validMessage, invalidMessage, children, ...attributes} = this.props;
-        return (
-            <label
-                className={classes}
-                data-valid-message={validMessage}
-                data-invalid-message={invalidMessage}
-                {...attributes}
-            >
-                {children}
-            </label>
-        );
-    }
-}
+export const Label: React.FunctionComponent<ILabelProps & React.HTMLProps<HTMLLabelElement>> = ({
+    classes,
+    validMessage,
+    invalidMessage,
+    children,
+    ...attributes
+}) => {
+    const {labelId} = React.useContext<CheckboxContextProps>(CheckboxContext);
+    return (
+        <label
+            className={classNames(classes)}
+            data-valid-message={validMessage}
+            data-invalid-message={invalidMessage}
+            id={labelId}
+            {...attributes}
+        >
+            {children}
+        </label>
+    );
+};
