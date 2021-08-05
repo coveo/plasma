@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.5.0](https://github.com/coveo/react-vapor/compare/v24.4.0...v24.5.0) (2021-08-05)
+
+
+### Features
+
+* improve accessibility of the checkbox component ([8dc17d8](https://github.com/coveo/react-vapor/commit/8dc17d847f40f2c11e4c0f90d9a858b646d8418c))
+
+
+
+
+
 ## [24.0.2](https://github.com/coveo/react-vapor/compare/v24.0.1...v24.0.2) (2021-07-28)
 
 
