@@ -1,7 +1,8 @@
 import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
+import {render, screen} from '@test-utils';
 
-import {IInputProps} from '../../input/Input';
+import {IInputProps, Label} from '../../input';
 import {Checkbox, ICheckboxProps} from '../Checkbox';
 
 describe('Checkbox', () => {
@@ -102,6 +103,31 @@ describe('Checkbox', () => {
 
                 expect(checkbox.find('.checkbox-label').hasClass('disabled')).toBe(false);
             });
+        });
+
+        it('is possible to get the checkboxes by their labels', () => {
+            render(
+                <>
+                    <Checkbox id="my-test">
+                        <Label>awesome label</Label>
+                    </Checkbox>
+                    <Checkbox id="my-other-test">
+                        <Label>even awesomer label</Label>
+                    </Checkbox>
+                </>
+            );
+            expect(screen.getByRole('checkbox', {name: 'awesome label'})).toBeVisible();
+            expect(screen.getByRole('checkbox', {name: 'even awesomer label'})).toBeVisible();
+        });
+
+        it('is possible to add a custom aria-labelledby attribute', () => {
+            render(
+                <>
+                    <Checkbox id="my-test" aria-labelledby="my-id" />
+                    <Label id="my-id">custom label</Label>
+                </>
+            );
+            expect(screen.getByRole('checkbox', {name: 'custom label'})).toBeVisible();
         });
     });
 });

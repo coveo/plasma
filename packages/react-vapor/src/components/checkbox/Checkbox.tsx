@@ -2,10 +2,12 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {IInputProps, Input} from '../input/Input';
+import {CheckboxContext} from './CheckboxContext';
 
 export interface ICheckboxOwnProps {
     handleOnClick?: (wasChecked: boolean) => void;
     clearSides?: boolean;
+    'aria-labelledby'?: string;
 }
 
 export interface ICheckboxStateProps {
@@ -44,23 +46,33 @@ export class Checkbox extends React.Component<ICheckboxProps> {
     }
 
     render() {
+        const {clearSides, children, 'aria-labelledby': labeledBy, handleOnClick, ...attributes} = this.props;
         const classes: string = classNames(
             'checkbox checkbox-label',
             {disabled: !!this.props.disabled, 'checkbox-clear': this.props.clearSides},
             this.props.classes
         );
         const innerInputClasses: string = classNames('react-vapor-checkbox', this.props.innerInputClasses);
+        const hasChildren = React.Children.count(this.props.children) > 0;
+        const labelId = hasChildren && this.props.id ? `checkbox-${this.props.id}` : labeledBy;
         return (
             <Input
-                {...this.props}
+                {...attributes}
                 classes={[classes]}
                 innerInputClasses={[innerInputClasses]}
                 type="checkbox"
                 onClick={(e: React.MouseEvent<HTMLElement>) => this.handleOnClick(e)}
                 readOnly
             >
-                <button type="button" disabled={!!this.props.disabled}></button>
-                {this.props.children}
+                <button
+                    type="button"
+                    role="checkbox"
+                    aria-checked={this.props.checked}
+                    aria-labelledby={labelId}
+                    tabIndex={0}
+                    disabled={!!this.props.disabled}
+                />
+                <CheckboxContext.Provider value={{labelId}}>{this.props.children}</CheckboxContext.Provider>
             </Input>
         );
     }
