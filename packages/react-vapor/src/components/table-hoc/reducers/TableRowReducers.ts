@@ -69,6 +69,15 @@ const toggleCollasibleTableRowReducer = (
     return state;
 };
 
+const closeAllRowsReducer = (
+    state: HOCTableRowState[],
+    _action: IReduxAction<unknown>
+): ITableRowToggleCollapsiblePayload[] =>
+    state.map((row: HOCTableRowState) => ({
+        ...row,
+        opened: false,
+    }));
+
 const deselectTableRowReducer = (state: HOCTableRowState[], action: IReduxAction<ITableRowSelectPayload>) =>
     _.map(state, (row: HOCTableRowState) =>
         row.tableId === action.payload.id || TableHOCUtils.getPaginationId(row.tableId) === action.payload.id
@@ -82,11 +91,12 @@ const TableRowActionReducers: {[key: string]: (...args: any[]) => any} = {
     [TableHOCRowActionsType.select]: selectTableRowReducer,
     [TableHOCRowActionsType.deselectAll]: deselectTableRowReducer,
     [TableHOCRowActionsType.toggleCollapsible]: toggleCollasibleTableRowReducer,
+    [TableHOCRowActionsType.closeAllRows]: closeAllRowsReducer,
     [PerPageActions.change]: deselectTableRowReducer,
     [PaginationActions.changePage]: deselectTableRowReducer,
 };
 
-type ITableRowPayload = BasePayload | ITableRowAddPayload | ITableRowSelectPayload;
+type ITableRowPayload = BasePayload | ITableRowAddPayload | ITableRowSelectPayload | unknown;
 export const TableRowReducers = (state: HOCTableRowState[] = [], action: IReduxAction<ITableRowPayload>) => {
     if (!_.isUndefined(TableRowActionReducers[action.type])) {
         return TableRowActionReducers[action.type](state, action);

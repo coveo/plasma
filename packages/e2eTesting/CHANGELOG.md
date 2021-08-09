@@ -5,46 +5,27 @@ See [Conventional Commits](https://conventionalcommits.org) for commit guideline
 
 # [24.0.0](https://github.com/coveo/react-vapor/compare/v23.0.0...v24.0.0) (2021-07-22)
 
-
 ### chore
 
-* typekit release ([5a835cb](https://github.com/coveo/react-vapor/commit/5a835cbbb98de07be9f25bb8b8f79394fb60fe5f))
-
+-   typekit release ([5a835cb](https://github.com/coveo/react-vapor/commit/5a835cbbb98de07be9f25bb8b8f79394fb60fe5f))
 
 ### BREAKING CHANGES
 
-* All headings (h1-h6) and paragraphs (p) don't have the same visual style as before. They look very different up to a point at which we must acknowledge those changes are considered breaking.
-
-
-
-
+-   All headings (h1-h6) and paragraphs (p) don't have the same visual style as before. They look very different up to a point at which we must acknowledge those changes are considered breaking.
 
 # [23.0.0-next.17](https://github.com/coveo/react-vapor/compare/v23.0.0-next.16...v23.0.0-next.17) (2021-07-22)
 
 **Note:** Version bump only for package e2etesting
 
-
-
-
-
 # [23.0.0-next.16](https://github.com/coveo/react-vapor/compare/v22.21.0...v23.0.0-next.16) (2021-07-22)
 
 **Note:** Version bump only for package e2etesting
 
-
-
-
-
 ## [22.17.1](https://github.com/coveo/react-vapor/compare/v22.17.0...v22.17.1) (2021-06-22)
-
 
 ### Bug Fixes
 
-* **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
-
-
-
-
+-   **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
 
 # [22.0.0](https://github.com/coveo/react-vapor/compare/v21.8.0...v22.0.0) (2021-05-12)
 
