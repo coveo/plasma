@@ -6,6 +6,7 @@ export const TableHOCRowActionsType = {
     select: 'SELECT_TABLE_ROW',
     deselectAll: 'DESELECT_ALL_TABLE_ROW',
     toggleCollapsible: 'TOGGLE_TABLE_COLLAPSIBLE_ROW',
+    closeAllRows: 'CLOSE_ALL_ROWS',
 };
 
 export interface ITableRowAddPayload extends BasePayload {
@@ -46,10 +47,15 @@ const toggleCollapsibleRow = (id: string, opened?: boolean): IReduxAction<ITable
     payload: {id, opened},
 });
 
+const closeAllRows = (): IReduxAction<unknown> => ({
+    type: TableHOCRowActionsType.closeAllRows,
+});
+
 export const TableHOCRowActions = {
     add: addTableRow,
     remove: removeTableRow,
     select: selectRow,
     deselectAll: deselectAllRows,
     toggleCollapsible: toggleCollapsibleRow,
+    closeAllRows: closeAllRows,
 };
