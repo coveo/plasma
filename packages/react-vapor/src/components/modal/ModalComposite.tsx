@@ -28,6 +28,7 @@ export interface IModalCompositeOwnProps
     modalBodyClasses?: IClassName;
     modalFooterChildren?: React.ReactNode;
     modalFooterClasses?: IClassName;
+    contentClasses?: IClassName;
     isPrompt?: boolean;
     validateShouldNavigate?: (isDirty: boolean) => boolean;
 }
@@ -67,6 +68,7 @@ const modalPropsToOmit = [
     'title',
     'validateShouldNavigate',
     'withReduxState',
+    'contentClasses',
 ];
 
 export class ModalComposite extends React.PureComponent<
@@ -107,7 +109,7 @@ export class ModalComposite extends React.PureComponent<
                 onAfterClose={this.props.closeCallback}
                 {...reactModalprops}
             >
-                <div className="modal-content" id={this.props.id}>
+                <div className={classNames('modal-content', this.props.contentClasses)} id={this.props.id}>
                     {this.getModalHeader()}
                     {this.getModalBody()}
                     {this.getModalFooter()}
