@@ -23,6 +23,7 @@ export interface IAddDatePickerPayload extends IDatePickerPayload {
     calendarId: string;
     isRange: boolean;
     rangeLimit?: IRangeLimit;
+    minimalRangeLimit?: IRangeLimit;
     initiallyUnselected?: boolean;
     isClearable?: boolean;
     simple?: boolean;
@@ -46,6 +47,7 @@ export const addDatePicker = (
     id: string,
     isRange: boolean,
     rangeLimit: IRangeLimit = undefined,
+    minimalRangeLimit: IRangeLimit = undefined,
     color: string = DEFAULT_DATE_PICKER_COLOR,
     calendarId: string = '',
     initiallyUnselected = false,
@@ -60,6 +62,7 @@ export const addDatePicker = (
         calendarId,
         isRange,
         rangeLimit,
+        minimalRangeLimit,
         initiallyUnselected,
         isClearable,
         simple,

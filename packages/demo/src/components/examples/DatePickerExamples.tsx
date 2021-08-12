@@ -65,6 +65,20 @@ const DatePickerComponents: React.FunctionComponent = () => (
                     selectionRules={CALENDAR_SELECTION_RULES}
                 />
             </Section>
+            <Section level={3} title="DatePicker dropdown with a minimal range limit of 5 minutes">
+                <DatePickerDropdownConnected
+                    id="date-picker-dropdown-2"
+                    datesSelectionBoxes={[
+                        {
+                            ...FOUR_SELECTION_BOXES[0],
+                            minimalRangeLimit: {
+                                minutes: 5,
+                                message: 'You need a range of at least 5 minutes from the start to the end',
+                            },
+                        },
+                    ]}
+                />
+            </Section>
             <Section level={3} title="Date picker dropdown disabled">
                 <DatePickerDropdownConnected
                     id="date-picker-dropdown-disabled"
@@ -75,7 +89,7 @@ const DatePickerComponents: React.FunctionComponent = () => (
             </Section>
             <Section level={3} title="Clearable date picker dropdown initially unselected with Redux state">
                 <DatePickerDropdownConnected
-                    id="date-picker-dropdown-2"
+                    id="date-picker-dropdown-3"
                     datesSelectionBoxes={FOUR_SELECTION_BOXES}
                     selectionRules={[]}
                     isClearable
@@ -84,7 +98,7 @@ const DatePickerComponents: React.FunctionComponent = () => (
             </Section>
             <Section level={3} title="Date picker dropdown with drop">
                 <DatePickerDropdownConnected
-                    id="date-picker-dropdown-3"
+                    id="date-picker-dropdown-4"
                     datesSelectionBoxes={FOUR_SELECTION_BOXES}
                     selectionRules={[]}
                     isClearable
@@ -96,7 +110,7 @@ const DatePickerComponents: React.FunctionComponent = () => (
                 <ChildForm>
                     <Section level={2} title="My date picker label">
                         <DatePickerDropdownConnected
-                            id="date-picker-dropdown-4"
+                            id="date-picker-dropdown-5"
                             datesSelectionBoxes={[{...FOUR_SELECTION_BOXES[0], isRange: false}]}
                             selectionRules={[]}
                             isClearable

@@ -483,7 +483,7 @@ describe('Date picker', () => {
                 });
             };
 
-            it('should disabled the primary button if the the inputLowerLimit has exceeded the range limit with the inputUpperLimit', () => {
+            it('should disabled the primary button if the inputLowerLimit has exceeded the range limit with the inputUpperLimit', () => {
                 const date: Date = new Date();
                 date.setFullYear(date.getFullYear() + 1);
                 changeDatePickerState({
@@ -496,6 +496,24 @@ describe('Date picker', () => {
 
                 expect(datePickerBoxWrapper.find(Button).first().props().enabled).toBe(false);
                 expect(datePickerBoxWrapper.find(Button).first().props().tooltip).toBe('test');
+            });
+
+            it('disables the primary button if the minimal range limit is not met between the lowerLimit and the upperLimit', () => {
+                const lowerDate = new Date(2021, 2, 11);
+                const upperDate = new Date(2021, 2, 12);
+
+                const datePickerState = {
+                    inputLowerLimit: lowerDate,
+                    inputUpperLimit: upperDate,
+                    minimalRangeLimit: {
+                        days: 5,
+                    },
+                } as IDatePickerState;
+                render(<DatePickerDropdown datePicker={datePickerState} />);
+
+                const applyButton = screen.getByRole('button', {name: /Apply/});
+                expect(applyButton).toBeVisible();
+                expect(applyButton).toHaveClass('disabled');
             });
 
             it('should enabled the primary button if the the inputLowerLimit does not exceeded the range limit with the inputUpperLimit', () => {
