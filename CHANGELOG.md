@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.6.1](https://github.com/coveo/react-vapor/compare/v24.6.0...v24.6.1) (2021-08-12)
+
+
+### Bug Fixes
+
+* changed the width for min-width at 320px ([b5efc9c](https://github.com/coveo/react-vapor/commit/b5efc9c3be301d91c0fe68b059ede3186c99cb94))
+
+
+
+
+
 # [24.6.0](https://github.com/coveo/react-vapor/compare/v24.5.0...v24.6.0) (2021-08-09)
 
 
