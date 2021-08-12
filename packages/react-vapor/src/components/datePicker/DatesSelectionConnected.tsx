@@ -44,13 +44,13 @@ const mapDispatchToProps = (
                 ownProps.id,
                 ownProps.isRange,
                 ownProps.rangeLimit,
-                ownProps.minimalRangeLimit,
                 ownProps.color,
                 ownProps.calendarId,
                 ownProps.initiallyUnselected,
                 ownProps.isClearable,
                 undefined,
-                ownProps.initialDateRange
+                ownProps.initialDateRange,
+                ownProps.minimalRangeLimit
             )
         );
     },

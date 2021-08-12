@@ -47,13 +47,13 @@ export const addDatePicker = (
     id: string,
     isRange: boolean,
     rangeLimit: IRangeLimit = undefined,
-    minimalRangeLimit: IRangeLimit = undefined,
     color: string = DEFAULT_DATE_PICKER_COLOR,
     calendarId: string = '',
     initiallyUnselected = false,
     isClearable = false,
     simple = false,
-    initialDateRange?: DatePickerDateRange
+    initialDateRange?: DatePickerDateRange,
+    minimalRangeLimit: IRangeLimit = undefined
 ): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {
@@ -62,11 +62,11 @@ export const addDatePicker = (
         calendarId,
         isRange,
         rangeLimit,
-        minimalRangeLimit,
         initiallyUnselected,
         isClearable,
         simple,
         initialDateRange,
+        minimalRangeLimit,
     },
 });
 
