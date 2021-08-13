@@ -123,4 +123,9 @@ describe('ModalComposite', () => {
 
         expect((modalComposite.prop('className') as ReactModal.Classes).base).toContain('mod-prompt');
     });
+
+    it('passes the contentClasses prop to the modal classNames', () => {
+        const modalComposite = shallow(<ModalComposite isOpened isPrompt contentClasses="content-class" />);
+        expect(modalComposite.find('.content-class').exists()).toBe(true);
+    });
 });
