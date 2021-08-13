@@ -287,7 +287,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     }
 
     private hasNotReachTheMinimalRangeLimit(): boolean {
-        if (this.props.datePicker && this.props.datePicker.minimalRangeLimit) {
+        if (this.props.datePicker?.minimalRangeLimit) {
             const {limit, diff} = this.getLimitAndDiffInMinutes(this.props.datePicker.minimalRangeLimit);
             return Math.abs(diff) < limit;
         }
@@ -295,7 +295,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     }
 
     private hasExceededRangeLimit(): boolean {
-        if (this.props.datePicker && this.props.datePicker.rangeLimit) {
+        if (this.props.datePicker?.rangeLimit) {
             const {limit, diff} = this.getLimitAndDiffInMinutes(this.props.datePicker.rangeLimit);
             return diff > limit;
         }

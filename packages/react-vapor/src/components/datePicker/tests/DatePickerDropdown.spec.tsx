@@ -483,7 +483,7 @@ describe('Date picker', () => {
                 });
             };
 
-            it('should disabled the primary button if the inputLowerLimit has exceeded the range limit with the inputUpperLimit', () => {
+            it('should disable the primary button if the inputLowerLimit has exceeded the range limit with the inputUpperLimit', () => {
                 const date: Date = new Date();
                 date.setFullYear(date.getFullYear() + 1);
                 changeDatePickerState({
