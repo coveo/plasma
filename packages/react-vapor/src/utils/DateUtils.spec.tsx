@@ -1,4 +1,5 @@
 import moment from 'moment';
+import {IRangeLimit} from '../components';
 import {DateUtils} from './DateUtils';
 
 describe('DateUtils', () => {
@@ -49,6 +50,25 @@ describe('DateUtils', () => {
             expect(DateUtils.isDifferent(moment(), moment().add(1, 'day'))).toBe(true);
             expect(DateUtils.isDifferent(moment().subtract(1, 'second'), moment())).toBe(true);
             expect(DateUtils.isDifferent('2018-01-01', '2018-12-31')).toBe(true);
+        });
+    });
+
+    describe('convertRangeToMinutes', () => {
+        it('returns 0 if the range value does not have any values set', () => {
+            const emptyRange: IRangeLimit = {};
+
+            expect(DateUtils.convertRangeToMinutes(emptyRange)).toBe(0);
+        });
+
+        it('returns the number of minutes based on the range value', () => {
+            const rangeWithoutHours: IRangeLimit = {weeks: 2, days: 3, minutes: 10};
+            const rangeWithoutWeeks: IRangeLimit = {days: 2, hours: 5, minutes: 16};
+
+            const expectedNumberOfMinutesRangeWithoutHours = 2 * 10080 + 3 * 1440 + 10;
+            const expectedNumberOfMinutesRangeWithoutWeeks = 2 * 1440 + 5 * 60 + 16;
+
+            expect(DateUtils.convertRangeToMinutes(rangeWithoutHours)).toBe(expectedNumberOfMinutesRangeWithoutHours);
+            expect(DateUtils.convertRangeToMinutes(rangeWithoutWeeks)).toBe(expectedNumberOfMinutesRangeWithoutWeeks);
         });
     });
 });

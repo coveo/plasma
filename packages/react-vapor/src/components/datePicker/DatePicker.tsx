@@ -49,9 +49,7 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
     };
 
     private updateDateBasedOnMinimalLimit = (date: Date) => {
-        const {weeks, days, hours, minutes} = this.props.minimalRangeLimit;
-        const minimalLimitInMinutes: number =
-            (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0) + (minutes ? minutes : 0);
+        const minimalLimitInMinutes: number = DateUtils.convertRangeToMinutes(this.props.minimalRangeLimit);
         const diff = moment().diff(moment(date), 'minutes');
         if (Math.abs(diff) < minimalLimitInMinutes) {
             return moment(date).add(minimalLimitInMinutes, 'minutes').toDate();

@@ -276,9 +276,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
     }
 
     private getLimitAndDiffInMinutes(range: IRangeLimit): {limit: number; diff: number} {
-        const {weeks, days, hours, minutes} = range;
-        const limit: number =
-            (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0) + (minutes ? minutes : 0);
+        const limit: number = DateUtils.convertRangeToMinutes(range);
         const diff: number = moment(this.props.datePicker.inputUpperLimit).diff(
             moment(this.props.datePicker.inputLowerLimit),
             'minutes'
