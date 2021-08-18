@@ -1,5 +1,6 @@
 import moment from 'moment';
 import * as _ from 'underscore';
+import {IRangeLimit} from '../components';
 
 import {IDay} from '../components/calendar/CalendarDay';
 
@@ -89,6 +90,19 @@ export class DateUtils {
 
     static getDateFromSimpleDateString(date: string): Date {
         return moment(date, SIMPLE_DATE_FORMAT, true).toDate();
+    }
+
+    static convertRangeToMinutes(range: IRangeLimit): number {
+        const {weeks, days, hours, minutes} = range;
+
+        return moment
+            .duration({
+                weeks: weeks ? weeks : 0,
+                days: days ? days : 0,
+                hours: hours ? hours : 0,
+                minutes: minutes ? minutes : 0,
+            })
+            .asMinutes();
     }
 
     /**

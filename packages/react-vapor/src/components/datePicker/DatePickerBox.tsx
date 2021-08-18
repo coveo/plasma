@@ -18,6 +18,7 @@ export interface IDatesSelectionBox {
     quickOptions?: IOption[];
     isRange?: boolean;
     rangeLimit?: IRangeLimit;
+    minimalRangeLimit?: IRangeLimit;
     withTime?: boolean;
     hasSetToNowButton?: boolean;
     color?: string;
@@ -143,6 +144,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 isRange: datesSelectionBox.isRange,
                 isClearable: this.props.isClearable,
                 rangeLimit: datesSelectionBox.rangeLimit,
+                minimalRangeLimit: datesSelectionBox.minimalRangeLimit,
                 color: datesSelectionBox.color,
                 calendarId: DatePickerBox.getCalendarId(this.props.id),
                 lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,

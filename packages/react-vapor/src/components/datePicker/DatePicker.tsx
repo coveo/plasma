@@ -1,9 +1,11 @@
+import moment from 'moment';
 import classNames from 'classnames';
 import * as React from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
 import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
+import {IRangeLimit} from './DatesSelection';
 import {SetToNowButton} from './SetToNowButton';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
@@ -13,6 +15,7 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     withTime?: boolean;
     hasSetToNowButton?: boolean;
     upperLimit?: boolean;
+    minimalRangeLimit?: IRangeLimit;
     date?: Date;
     setToNowTooltip?: string;
     isSelecting?: string;
@@ -39,8 +42,20 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
 
     private setToToday = () => {
         const date = new Date();
-        this.dateInput.value = this.getStringFromDate(date);
+        this.dateInput.value = this.props.minimalRangeLimit
+            ? this.getStringFromDate(this.updateDateBasedOnMinimalLimit(date))
+            : this.getStringFromDate(date);
         this.handleChangeDate();
+    };
+
+    private updateDateBasedOnMinimalLimit = (date: Date) => {
+        const minimalLimitInMinutes: number = DateUtils.convertRangeToMinutes(this.props.minimalRangeLimit);
+        const diff = moment().diff(moment(date), 'minutes');
+        if (Math.abs(diff) < minimalLimitInMinutes) {
+            return moment(date).add(minimalLimitInMinutes, 'minutes').toDate();
+        }
+
+        return date;
     };
 
     private handleChangeDate = () => {

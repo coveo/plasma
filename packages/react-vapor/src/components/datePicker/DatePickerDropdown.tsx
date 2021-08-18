@@ -4,6 +4,7 @@ import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
 import * as VaporSVG from 'coveo-styleguide';
+import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Button} from '../button/Button';
@@ -15,6 +16,7 @@ import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesS
 import {DatePickerDateRange} from './DatePickerConstants';
 import {IDatePickerState} from './DatePickerReducers';
 import {Svg} from '../svg';
+import {IRangeLimit} from './DatesSelection';
 
 export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
     label?: string;
@@ -273,24 +275,48 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
             : DateUtils.getSimpleDate(date);
     }
 
+    private getLimitAndDiffInMinutes(range: IRangeLimit): {limit: number; diff: number} {
+        const limit: number = DateUtils.convertRangeToMinutes(range);
+        const diff: number = moment(this.props.datePicker.inputUpperLimit).diff(
+            moment(this.props.datePicker.inputLowerLimit),
+            'minutes'
+        );
+        return {limit, diff};
+    }
+
+    private hasNotReachTheMinimalRangeLimit(): boolean {
+        if (this.props.datePicker?.minimalRangeLimit) {
+            const {limit, diff} = this.getLimitAndDiffInMinutes(this.props.datePicker.minimalRangeLimit);
+            return Math.abs(diff) < limit;
+        }
+        return false;
+    }
+
     private hasExceededRangeLimit(): boolean {
-        if (this.props.datePicker && this.props.datePicker.rangeLimit) {
-            const {weeks, days, hours} = this.props.datePicker.rangeLimit;
-            const limitInMinutes: number =
-                (weeks ? weeks * 10080 : 0) + (days ? days * 1440 : 0) + (hours ? hours * 60 : 0);
-            const diffInMinutes: number = moment(this.props.datePicker.inputUpperLimit).diff(
-                moment(this.props.datePicker.inputLowerLimit),
-                'minutes'
-            );
-            return diffInMinutes > limitInMinutes;
+        if (this.props.datePicker?.rangeLimit) {
+            const {limit, diff} = this.getLimitAndDiffInMinutes(this.props.datePicker.rangeLimit);
+            return diff > limit;
         }
 
         return false;
     }
 
+    private getApplyButtonTooltip(hasExceededRangeLimit: boolean, hasNotReachTheMinimalRangeLimit: boolean): string {
+        if (hasExceededRangeLimit) {
+            return this.props.datePicker.rangeLimit.message;
+        }
+
+        if (hasNotReachTheMinimalRangeLimit) {
+            return this.props.datePicker.minimalRangeLimit.message;
+        }
+
+        return '';
+    }
+
     private getDatePickerBox(): JSX.Element {
         if (this.props.isOpened || this.props.renderDatePickerWhenClosed) {
             const hasExceededRangeLimit = this.hasExceededRangeLimit();
+            const hasNotReachTheMinimalRangeLimit = this.hasNotReachTheMinimalRangeLimit();
             const datePickerBoxProps: IDatePickerBoxProps = {
                 setToNowTooltip: this.props.setToNowTooltip,
                 datesSelectionBoxes: this.props.datesSelectionBoxes,
@@ -314,12 +340,12 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                 footer: (
                     <ModalFooter classes={['mod-small']}>
                         <Button
-                            enabled={!hasExceededRangeLimit}
+                            enabled={!hasExceededRangeLimit && !hasNotReachTheMinimalRangeLimit}
                             name={this.props.applyLabel}
                             small={true}
                             primary={true}
-                            tooltip={hasExceededRangeLimit ? this.props.datePicker.rangeLimit.message : ''}
-                            tooltipPlacement={'left'}
+                            tooltip={this.getApplyButtonTooltip(hasExceededRangeLimit, hasNotReachTheMinimalRangeLimit)}
+                            tooltipPlacement={TooltipPlacement.Left}
                             onClick={() => this.handleApply()}
                         />
                         <Button

@@ -1,3 +1,4 @@
+import moment from 'moment';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -289,6 +290,23 @@ describe('Date picker', () => {
                 document.getElementById('CalendarDay').click();
 
                 expect(dateProps.onBlur).not.toHaveBeenCalled();
+            });
+
+            it('updates the date based on the minimal range limit if the property is set', () => {
+                const today: Date = new Date();
+                const expectedDate: Date = moment(today).add(5, 'days').toDate();
+                const withoutTimeProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {
+                    minimalRangeLimit: {days: 5},
+                    hasSetToNowButton: true,
+                    upperLimit: true,
+                });
+                datePicker.setProps(withoutTimeProps);
+
+                expect(datePickerInstance['dateInput'].value).toBe('');
+
+                datePicker.find('button').simulate('click');
+
+                expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getSimpleDate(expectedDate));
             });
         });
     });

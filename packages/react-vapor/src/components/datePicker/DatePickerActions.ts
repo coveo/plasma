@@ -23,6 +23,7 @@ export interface IAddDatePickerPayload extends IDatePickerPayload {
     calendarId: string;
     isRange: boolean;
     rangeLimit?: IRangeLimit;
+    minimalRangeLimit?: IRangeLimit;
     initiallyUnselected?: boolean;
     isClearable?: boolean;
     simple?: boolean;
@@ -51,7 +52,8 @@ export const addDatePicker = (
     initiallyUnselected = false,
     isClearable = false,
     simple = false,
-    initialDateRange?: DatePickerDateRange
+    initialDateRange?: DatePickerDateRange,
+    minimalRangeLimit: IRangeLimit = undefined
 ): IReduxAction<IAddDatePickerPayload> => ({
     type: DatePickerActions.add,
     payload: {
@@ -64,6 +66,7 @@ export const addDatePicker = (
         isClearable,
         simple,
         initialDateRange,
+        minimalRangeLimit,
     },
 });
 

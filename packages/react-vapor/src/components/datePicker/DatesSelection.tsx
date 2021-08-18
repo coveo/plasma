@@ -7,6 +7,7 @@ export interface IRangeLimit {
     weeks?: number;
     days?: number;
     hours?: number;
+    minutes?: number;
     message?: string;
 }
 
@@ -17,6 +18,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
     isRange?: boolean;
     isClearable?: boolean;
     rangeLimit?: IRangeLimit;
+    minimalRangeLimit?: IRangeLimit;
     color?: string;
     calendarId?: string;
     defaultLowerLimit?: Date;
@@ -126,6 +128,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
             onBlur: (date: Date, isUpperLimit: boolean) => this.handleOnBlur(date, isUpperLimit),
             placeholder: '',
         };
+        const endDatePickerProps = {...datePickerProps, minimalRangeLimit: this.props.minimalRangeLimit};
         const separatorClasses: string[] = ['date-separator'];
         if (isLarge) {
             separatorClasses.push('mod-vertical');
@@ -139,7 +142,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
             <DatePicker
                 upperLimit
                 date={this.props.upperLimit}
-                {...datePickerProps}
+                {...endDatePickerProps}
                 placeholder={this.props.upperLimitPlaceholder}
             />
         ) : null;

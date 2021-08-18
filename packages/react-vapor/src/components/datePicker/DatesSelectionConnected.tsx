@@ -49,7 +49,8 @@ const mapDispatchToProps = (
                 ownProps.initiallyUnselected,
                 ownProps.isClearable,
                 undefined,
-                ownProps.initialDateRange
+                ownProps.initialDateRange,
+                ownProps.minimalRangeLimit
             )
         );
     },

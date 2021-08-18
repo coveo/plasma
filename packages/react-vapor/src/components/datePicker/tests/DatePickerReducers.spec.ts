@@ -894,6 +894,22 @@ describe('Date picker', () => {
 
                 expect(newDatePicker.appliedUpperLimit).toBe(oldDatePicker.lowerLimit);
             });
+
+            it('should set the upperLimit to the end of the day value if the state is set as a range and the upperLimit is undefined', () => {
+                const lowerLimit = new Date(2021, 3, 12);
+                const expectedUpperLimit = moment(lowerLimit).endOf('day').toDate();
+
+                oldDatePicker = {
+                    ...BASE_DATE_PICKER_STATE,
+                    lowerLimit,
+                    isRange: true,
+                    upperLimit: null,
+                    isClearable: true,
+                };
+                newDatePicker = datePickerReducer(oldDatePicker, action);
+
+                expect(newDatePicker.inputUpperLimit).toEqual(expectedUpperLimit);
+            });
         });
     });
 });
