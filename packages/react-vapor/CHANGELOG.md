@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.7.1](https://github.com/coveo/react-vapor/compare/v24.7.0...v24.7.1) (2021-08-18)
+
+
+### Bug Fixes
+
+* **date-picker:** allow minimal range limit ([371f4b0](https://github.com/coveo/react-vapor/commit/371f4b03e147aeb4c011e46cf884cad584e661c0))
+
+
+
+
+
 # [24.7.0](https://github.com/coveo/react-vapor/compare/v24.6.1...v24.7.0) (2021-08-13)
 
 
