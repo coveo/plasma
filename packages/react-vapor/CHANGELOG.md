@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.8.0](https://github.com/coveo/react-vapor/compare/v24.7.1...v24.8.0) (2021-08-19)
+
+
+### Features
+
+* **form:** +customhook to get the state of all specific forms ([eece6aa](https://github.com/coveo/react-vapor/commit/eece6aa1fd9216a719d309d7a3f7f570426f8375))
+
+
+
+
+
 ## [24.7.1](https://github.com/coveo/react-vapor/compare/v24.7.0...v24.7.1) (2021-08-18)
 
 
