@@ -18,7 +18,7 @@ const componentReducers = {
     TextInput: generateRecordReducer(textInputReducer),
 };
 
-type FormComponent = keyof typeof componentReducers;
+export type FormComponent = keyof typeof componentReducers;
 type FormComponentReducer = typeof componentReducers[FormComponent];
 type FormAction = {type: FormComponent} & React.ReducerAction<FormComponentReducer>;
 type FormState = Record<FormComponent, React.ReducerState<FormComponentReducer>>;
