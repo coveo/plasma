@@ -1,21 +1,26 @@
-import * as React from 'react';
+import React from 'react';
 import * as ReactDOM from 'react-dom';
-import {Provider} from 'react-redux';
+import * as ReactRedux from 'react-redux';
 import {HashRouter} from 'react-router-dom';
-import {Defaults} from 'react-vapor';
+import * as ReactVapor from 'react-vapor';
 
 import {App} from './OneDemoToRuleThemAll';
 import {Store} from './Store';
 
-Defaults.APP_ELEMENT = '#App';
-Defaults.MODAL_ROOT = '#Modals';
-Defaults.DROP_ROOT = '#Drops';
+ReactVapor.Defaults.APP_ELEMENT = '#App';
+ReactVapor.Defaults.MODAL_ROOT = '#Modals';
+ReactVapor.Defaults.DROP_ROOT = '#Drops';
+
+window.React = React;
+window.ReactDOM = ReactDOM;
+(window as any).ReactRedux = ReactRedux;
+(window as any).ReactVapor = ReactVapor;
 
 ReactDOM.render(
     <HashRouter>
-        <Provider store={Store}>
+        <ReactRedux.Provider store={Store}>
             <App />
-        </Provider>
+        </ReactRedux.Provider>
     </HashRouter>,
     document.getElementById('App')
 );
