@@ -120,6 +120,7 @@ $toast-info-token-padding: 12px 16px 12px 8px;
         font-weight: $toast-title-font-weight;
         font-size: $toast-text-font-size;
         line-height: 20px;
+        word-break: break-all;
     }
 
     .toast-description {
