@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.8.1](https://github.com/coveo/react-vapor/compare/v24.8.0...v24.8.1) (2021-08-20)
+
+
+### Bug Fixes
+
+* **toast:** add word-break to toast-title ([#2106](https://github.com/coveo/react-vapor/issues/2106)) ([4d3794d](https://github.com/coveo/react-vapor/commit/4d3794d0a7a0e35abf033ad9ee56afc16218c840))
+
+
+
+
+
 # [24.8.0](https://github.com/coveo/react-vapor/compare/v24.7.1...v24.8.0) (2021-08-19)
 
 
