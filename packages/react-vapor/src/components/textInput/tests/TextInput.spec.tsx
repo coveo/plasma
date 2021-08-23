@@ -1,8 +1,9 @@
-import * as React from 'react';
-import {render, expectToThrow, screen, fireEvent} from '@test-utils';
+import {expectToThrow, fireEvent, render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
-import {TextInput, InputValidator} from '../TextInput';
+import * as React from 'react';
+
 import {FormProvider} from '../../form/FormProvider';
+import {InputValidator, TextInput} from '../TextInput';
 
 describe('TextInput', () => {
     it('throws an error if the rendering a TextInput outside a FormProvider', () => {
@@ -196,5 +197,29 @@ describe('TextInput', () => {
         expect(firstNameInput).toBeValid();
         expect(lastNameInput).toHaveValue('Doe');
         expect(lastNameInput).toBeValid();
+    });
+
+    it('resets its state when unmounting and remounting with the same id', () => {
+        const Fixture = () => {
+            const [isMounted, toggleMounted] = React.useState(true);
+            return (
+                <>
+                    <button onClick={() => toggleMounted(!isMounted)}>toggle input</button>
+                    {isMounted ? <TextInput id="🆔" type="text" label="Name" /> : null}
+                </>
+            );
+        };
+
+        render(
+            <FormProvider>
+                <Fixture />
+            </FormProvider>
+        );
+
+        userEvent.type(screen.getByRole('textbox', {name: /name/i}), 'some value');
+        expect(screen.getByRole('textbox', {name: /name/i})).toHaveValue('some value');
+        userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // unmount
+        userEvent.click(screen.getByRole('button', {name: /toggle input/i})); // mount again
+        expect(screen.getByRole('textbox', {name: /name/i})).toHaveValue('');
     });
 });

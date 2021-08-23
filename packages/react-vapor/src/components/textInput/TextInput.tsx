@@ -90,6 +90,9 @@ export const TextInput: React.FunctionComponent<TextInputProps & React.HTMLProps
         if (showValidationOnMount) {
             dispatch({type: 'show-validation'});
         }
+        return () => {
+            dispatch({type: 'reset'});
+        };
     }, []);
 
     return (

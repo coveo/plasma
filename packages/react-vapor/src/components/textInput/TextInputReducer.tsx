@@ -9,7 +9,8 @@ export type TextInputAction =
     | {type: 'set-warning'}
     | {type: 'set-message'; payload: string}
     | {type: 'set-dirty'}
-    | {type: 'set-pristine'};
+    | {type: 'set-pristine'}
+    | {type: 'reset'};
 
 export type TextInputState = {
     value: string;
@@ -50,6 +51,8 @@ export const textInputReducer: React.Reducer<TextInputState, TextInputAction> = 
             return {...state, isDirty: true};
         case 'set-pristine':
             return {...state, isDirty: false};
+        case 'reset':
+            return textInputDefaultState;
         default:
             throw new Error(`Unhandled action type: ${(action as {type: 'string'}).type}.`);
     }
