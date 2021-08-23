@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.9.1](https://github.com/coveo/react-vapor/compare/v24.9.0...v24.9.1) (2021-08-23)
+
+
+### Bug Fixes
+
+* **textinput:** clear text input state on unmount ([7885686](https://github.com/coveo/react-vapor/commit/78856863a0b848c1db7c13c627a73f2939b613a9))
+
+
+
+
+
 # [24.9.0](https://github.com/coveo/react-vapor/compare/v24.8.1...v24.9.0) (2021-08-20)
 
 **Note:** Version bump only for package react-vapor
