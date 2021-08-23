@@ -1,6 +1,6 @@
 import {useContext, useMemo} from 'react';
-import {TextInputState} from './TextInputReducer';
-import {FormComponent, FormContext} from '../form/FormProvider';
+import {TextInputState} from '../textInput/TextInputReducer';
+import {FormComponent, FormContext} from './FormProvider';
 
 export const useFormComponent = (component: FormComponent): {state: Record<string, TextInputState>} => {
     const formContext = useContext(FormContext);
