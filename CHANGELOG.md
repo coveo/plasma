@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.9.2](https://github.com/coveo/react-vapor/compare/v24.9.1...v24.9.2) (2021-08-25)
+
+
+### Features
+
+* **deployement:** deploy css in s3 ([eb8f27f](https://github.com/coveo/react-vapor/commit/eb8f27fe7aa84a9c0582a4ed52819a4ed967ebc9))
+
+
+
+
+
 ## [24.9.1](https://github.com/coveo/react-vapor/compare/v24.9.0...v24.9.1) (2021-08-23)
 
 
