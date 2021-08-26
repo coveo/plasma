@@ -3,6 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {ConnectedProps, IDispatch, TooltipPlacement} from '../../utils';
+import {useMountedState} from '../../utils/useMountedState';
 import {Button} from '../button';
 import {ModalActions} from '../modal/ModalActions';
 import {IModalCompositeOwnProps, ModalCompositeConnected} from '../modal/ModalComposite';
@@ -62,6 +63,7 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
     const isFirstStep = currentStep === 0;
     const isLastStep = currentStep === numberOfSteps - 1;
     const {isValid, message} = validateStep?.(currentStep, numberOfSteps) ?? {isValid: true};
+    const isMounted = useMountedState();
 
     return (
         <UnsavedChangesModalProvider isDirty={isDirty} confirmationModalId={`${id}-unsaved-modal`}>
@@ -116,7 +118,11 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                             />
                         </>
                     }
-                    onAfterOpen={() => setCurrentStep(0)}
+                    onAfterOpen={() => {
+                        if (isMounted()) {
+                            setCurrentStep(0);
+                        }
+                    }}
                     validateShouldNavigate={() => promptBefore(close)}
                     title={typeof title === 'function' ? title(currentStep, numberOfSteps) : title}
                     {...modalProps}
