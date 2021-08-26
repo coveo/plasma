@@ -1,76 +1,69 @@
-import {mountWithStore} from '@helpers/enzyme-redux';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
+import {useDispatch} from 'react-redux';
 
-import {Input} from '../../../components/input/Input';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
-import {IWithDirty, IWithDirtyProps, withDirty} from '../withDirty';
+import {IDispatch} from '../../../utils';
+import {IWithDirtyProps, withDirty} from '../withDirty';
 import {WithDirtyActions} from '../withDirtyActions';
 
-describe('Component with dirty', () => {
-    let store: ReactVaporMockStore;
-
-    beforeEach(() => {
-        store = getStoreMock({
-            dirtyComponents: [],
-        });
-    });
-
-    class SomeInput extends React.Component<IWithDirtyProps> {
-        static ID = 'SomeInput';
-
-        render() {
-            return <Input onChange={() => this.props.toggleIsDirty(true)} />;
-        }
-    }
-
-    const mountComponentWithProps = (config?: Partial<IWithDirty>) => {
-        const SomeInputWithEditingHOC = withDirty({id: SomeInput.ID, showDirty: () => 'Hello', ...config})(SomeInput);
-        return mountWithStore(<SomeInputWithEditingHOC />, store);
+describe('withDirty', () => {
+    const Fixture: React.FunctionComponent<IWithDirtyProps> = () => {
+        const dispatch: IDispatch = useDispatch();
+        return <input onChange={(e) => dispatch(WithDirtyActions.toggle('🆔', e.target.value === 'dirty'))} />;
     };
 
-    it('should mount without error', () => {
-        expect(() => mountComponentWithProps()).not.toThrow();
+    it('renders the component as not dirty on mount', () => {
+        const ComponentWithDirty = withDirty({id: '🆔', showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean')})(
+            Fixture
+        );
+
+        render(<ComponentWithDirty />);
+
+        expect(screen.getByText('clean')).toBeInTheDocument();
+        expect(screen.queryByText('dirty')).not.toBeInTheDocument();
     });
 
-    it('should set the component as not dirty on mount', () => {
-        mountComponentWithProps();
+    it('renders the component as dirty if it is identified as such', () => {
+        const ComponentWithDirty = withDirty({id: '🆔', showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean')})(
+            Fixture
+        );
 
-        expect(store.getActions()).toContainEqual(WithDirtyActions.toggle(SomeInput.ID, undefined));
+        render(<ComponentWithDirty />);
+        userEvent.type(screen.getByRole('textbox'), 'dirty');
+
+        expect(screen.queryByText('clean')).not.toBeInTheDocument();
+        expect(screen.getByText('dirty')).toBeInTheDocument();
     });
 
-    it('should not set the component as dirty if isDirty is not set to true in the config', () => {
-        mountComponentWithProps();
+    it('always renders the component as not dirty if isDirty is set to false in the config', () => {
+        const ComponentWithDirty = withDirty({
+            id: '🆔',
+            showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean'),
+            isDirty: false,
+        })(Fixture);
 
-        expect(store.getActions()).not.toContain(WithDirtyActions.toggle(SomeInput.ID, true));
+        render(<ComponentWithDirty />);
+
+        expect(screen.getByText('clean')).toBeInTheDocument();
+        expect(screen.queryByText('dirty')).not.toBeInTheDocument();
+        userEvent.type(screen.getByRole('textbox'), 'dirty');
+        expect(screen.getByText('clean')).toBeInTheDocument();
+        expect(screen.queryByText('dirty')).not.toBeInTheDocument();
     });
 
-    it('should set the component as dirty if isDirty is set to true in the config', () => {
-        mountComponentWithProps({isDirty: true});
+    it('always renders the component not dirty if isDirty is set to true in the config', () => {
+        const ComponentWithDirty = withDirty({
+            id: '🆔',
+            showDirty: (isDirty) => (isDirty ? 'dirty' : 'clean'),
+            isDirty: true,
+        })(Fixture);
 
-        expect(store.getActions()).toContainEqual(WithDirtyActions.toggle(SomeInput.ID, true));
-    });
-
-    it('should remove the component as dirty in the state on unmount', () => {
-        const component = mountComponentWithProps({isDirty: true});
-
-        expect(store.getActions()).not.toContainEqual(WithDirtyActions.toggle(SomeInput.ID, false));
-
-        component.unmount();
-
-        expect(store.getActions()).toContainEqual(WithDirtyActions.toggle(SomeInput.ID, false));
-    });
-
-    it('should contains the showDirty element', () => {
-        const el = <span className="this-is-it" />;
-        const component = mountComponentWithProps({showDirty: () => el});
-
-        expect(component.find('.this-is-it').exists()).toBe(true);
-    });
-
-    it('should get the toggleIsDirty as a prop', () => {
-        const el = <span className="this-is-it" />;
-        const component = mountComponentWithProps({showDirty: () => el});
-
-        expect(component.find('.this-is-it').exists()).toBe(true);
+        render(<ComponentWithDirty />);
+        expect(screen.queryByText('clean')).not.toBeInTheDocument();
+        expect(screen.getByText('dirty')).toBeInTheDocument();
+        userEvent.type(screen.getByRole('textbox'), 'clean');
+        expect(screen.queryByText('clean')).not.toBeInTheDocument();
+        expect(screen.getByText('dirty')).toBeInTheDocument();
     });
 });
