@@ -32,3 +32,19 @@ document.createRange = () => {
 
     return range;
 };
+
+/**
+ * Prevents modal `unmount` timeout to remove ModalRoot and cause error.
+ *
+ * Solution to:
+ * Uncaught NotFoundError: Failed to execute 'removeChild' on 'Node': The node to be removed is not a child of this node.
+ */
+const flushAllPendingTimers = () => {
+    let id = window.setTimeout((): void => null, 0);
+    while (id--) {
+        window.clearTimeout(id);
+    }
+};
+
+afterEach(jest.restoreAllMocks);
+afterEach(flushAllPendingTimers);
