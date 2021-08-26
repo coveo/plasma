@@ -5,15 +5,6 @@ import {renderModal, screen, waitForElementToBeRemoved} from '@test-utils';
 import {ModalWizardWithValidations} from '../ModalWizardWithValidations';
 
 describe('ModalWizardWithValidations', () => {
-    beforeEach(() => {
-        jest.useFakeTimers();
-    });
-
-    afterEach(() => {
-        jest.runOnlyPendingTimers();
-        jest.useRealTimers();
-    });
-
     it('validates each steps using validation ids', () => {
         renderModal(
             <ModalWizardWithValidations id="🌶🧙‍♂️" validationIdsByStep={[['step-1'], ['step-2-a', 'step-2-b']]}>
