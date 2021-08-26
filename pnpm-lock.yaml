@@ -90,7 +90,7 @@ importers:
       react-router: ^5.2.0
       react-router-dom: ^5.2.0
       react-syntax-highlighter: 13.5.3
-      react-vapor: ^24.9.2
+      react-vapor: ^24.9.3
       redux: 4.1.0
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
