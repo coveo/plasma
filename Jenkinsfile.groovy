@@ -48,7 +48,6 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          
           MASTER_RELEASE_FAILURE_CHANNELS = ["admin-ui-builds", "cloudadmindev", "admin-ui-guild"]
           PR_CHANNELS = ["admin-ui-builds"]
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
@@ -177,8 +176,6 @@ pipeline {
             accessKeyVariable: 'AWS_ACCESS_KEY_ID',
             secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
           ]]) {
-
-            
             sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
 
             if (env.BRANCH_NAME != "next") {
@@ -274,9 +271,7 @@ pipeline {
           sh "rm -rf ./snyk"
 
           // Prepare veracode
-          sh "mkdir -p veracode"
-          sh "mkdir -p veracode/demo"
-          sh "mkdir -p veracode/react-vapor"
+          sh "mkdir -p veracode/demo veracode/react-vapor"
 
           // copy all ts and tsx files
           sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
