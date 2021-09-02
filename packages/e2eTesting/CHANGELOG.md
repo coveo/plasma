@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.10.1](https://github.com/coveo/react-vapor/compare/v24.10.0...v24.10.1) (2021-09-02)
+
+**Note:** Version bump only for package e2etesting
+
+
+
+
+
 # [24.6.0](https://github.com/coveo/react-vapor/compare/v24.5.0...v24.6.0) (2021-08-09)
 
 ### Features
