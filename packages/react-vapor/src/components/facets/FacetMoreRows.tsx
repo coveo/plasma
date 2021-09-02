@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {contains} from 'underscore.string';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {FilterBox} from '../filterBox/FilterBox';
 import {FilterBoxConnected} from '../filterBox/FilterBoxConnected';
@@ -72,7 +72,7 @@ export class FacetMoreRows extends React.Component<IFacetMoreRowsProps, any> {
             this.props.filterText && this.props.filterText.length
                 ? _.map(this.props.facetRows, (facetRow: JSX.Element) => {
                       const facetText = facetRow.props.facetRow.formattedName;
-                      if (s.contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
+                      if (contains(facetText.toLowerCase(), this.props.filterText.toLowerCase())) {
                           return facetRow;
                       }
                   }).filter(Boolean)

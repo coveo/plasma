@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {contains} from 'underscore.string';
 
 import {deepClone} from '../../utils/CloneUtils';
 import {keyCode} from '../../utils/InputUtils';
@@ -126,7 +126,7 @@ export const getFilteredOptions = (state: IDropdownSearchState, filterText?: str
     const currentFilterText: string = filterText || state.filterText || '';
     return _.filter(getDisplayedOptions(state), (option: IDropdownOption) => {
         const displayValue = option.displayValue || option.value;
-        return s.contains(displayValue.toLowerCase(), currentFilterText.toLowerCase());
+        return contains(displayValue.toLowerCase(), currentFilterText.toLowerCase());
     });
 };
 

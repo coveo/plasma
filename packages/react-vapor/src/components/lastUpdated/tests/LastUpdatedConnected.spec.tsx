@@ -2,7 +2,7 @@ import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
-import * as s from 'underscore.string';
+import {contains} from 'underscore.string';
 
 import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
@@ -62,7 +62,7 @@ describe('LastUpdated', () => {
         });
 
         it('should display the last update time', () => {
-            expect(s.contains(lastUpdated.html(), 'AM') || s.contains(lastUpdated.html(), 'PM')).toBe(true);
+            expect(contains(lastUpdated.html(), 'AM') || contains(lastUpdated.html(), 'PM')).toBe(true);
         });
 
         it('should add the last update time in the store on render', () => {

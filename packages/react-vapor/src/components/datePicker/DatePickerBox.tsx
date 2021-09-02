@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {slugify} from 'underscore.string';
 
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
 import {Calendar, ICalendarProps, ICalendarSelectionRule} from '../calendar/Calendar';
@@ -124,7 +124,7 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
 
     private getdateSelectionBoxes(): JSX.Element[] {
         return _.map(this.props.datesSelectionBoxes, (datesSelectionBox: IDatesSelectionBox) => {
-            const boxId: string = `${this.props.id}-${s.slugify(datesSelectionBox.title)}`;
+            const boxId: string = `${this.props.id}-${slugify(datesSelectionBox.title)}`;
 
             const quickOptionsProps: IOptionPickerProps = {
                 id: boxId,

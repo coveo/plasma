@@ -16,7 +16,7 @@ import {
     YGrid,
 } from 'react-vapor';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {capitalize} from 'underscore.string';
 
 const data = [
     {
@@ -78,7 +78,7 @@ export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
         <Section>
-            <Section level={3} title={`Basic ${s.capitalize(chartType)} Chart`}>
+            <Section level={3} title={`Basic ${capitalize(chartType)} Chart`}>
                 <div className="form-control" style={{height: '300px'}}>
                     <ChartContainer
                         renderChart={(width, height) => (
