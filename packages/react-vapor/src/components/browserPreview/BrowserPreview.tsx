@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as s from 'underscore.string';
+import {truncate} from 'underscore.string';
 
 import {TooltipPlacement} from '../../utils';
 import {Svg} from '../svg';
@@ -29,7 +29,7 @@ const BrowserPreviewHeader: React.FunctionComponent<{tooltipTitle: string; title
             </Tooltip>
         </div>
         <div>
-            <span className="bolder">{s.truncate(title, TitleMaxLength)}</span>
+            <span className="bolder">{truncate(title, TitleMaxLength)}</span>
         </div>
         <div>
             <span className="white-dot" />

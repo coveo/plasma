@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {contains} from 'underscore.string';
 import {IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {ListBoxActions} from '../listBox/ListBoxActions';
@@ -44,7 +44,7 @@ export const actionBarReducer = (
         case ListBoxActions.select:
             return state.id === action.payload.id ||
                 TableHOCUtils.getPaginationId(state.id) === action.payload.id ||
-                s.contains(action.payload.id, state.id)
+                contains(action.payload.id, state.id)
                 ? {...state, actions: []}
                 : state;
         case TableHOCRowActionsType.remove:

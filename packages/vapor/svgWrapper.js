@@ -1,10 +1,10 @@
 import * as $ from 'jquery';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {camelize, humanize} from 'underscore.string';
 
 import {svg as svgEnum} from './tmp/svg.js';
 
-const formatSvgName = (svgName) => s.camelize(s.humanize(svgName), true);
+const formatSvgName = (svgName) => camelize(humanize(svgName), true);
 
 const isSvgStringValid = (svgString) => /^<svg(\s.+)?>.*<\/svg>$/i.test(svgString);
 

@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {contains} from 'underscore.string';
 
 import * as VaporSVG from 'coveo-styleguide';
 import {keyCode} from '../../utils/InputUtils';
@@ -157,7 +157,7 @@ export class DropdownSearch extends React.Component<IDropdownSearchProps> {
                 const value = option.displayValue || option.value;
                 return (
                     _.isEmpty(this.props.filterText) ||
-                    s.contains(value.toLowerCase(), this.props.filterText.toLowerCase())
+                    contains(value.toLowerCase(), this.props.filterText.toLowerCase())
                 );
             })
             .map((opt: IDropdownOption, index: number, opts: IDropdownOption[]) => {
