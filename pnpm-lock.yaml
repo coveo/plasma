@@ -85,7 +85,7 @@ importers:
       raw-loader: 4.0.0
       react: 16.14.0
       react-dom: 16.14.0
-      react-markdown: 5.0.0
+      react-markdown: 5.0.3
       react-redux: ^7.2.4
       react-router: ^5.2.0
       react-router-dom: ^5.2.0
@@ -120,7 +120,7 @@ importers:
       moment: 2.29.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
-      react-markdown: 5.0.0_5283d3c8d694c64e162d21c7dd1475fb
+      react-markdown: 5.0.3_5283d3c8d694c64e162d21c7dd1475fb
       react-redux: 7.2.4_react-dom@16.14.0+react@16.14.0
       react-router: 5.2.0_react@16.14.0
       react-router-dom: 5.2.0_react@16.14.0
@@ -15141,11 +15141,11 @@ packages:
   /react-lifecycles-compat/3.0.4:
     resolution: {integrity: sha512-fBASbA6LnOU9dOU2eW7aQ8xmYBSXUIWr+UmF9b1efZBazGNO+rcXT/icdKnYm2pTwcRylVUYwW7H1PHfLekVzA==}
 
-  /react-markdown/5.0.0_5283d3c8d694c64e162d21c7dd1475fb:
-    resolution: {integrity: sha512-Zf7ogiF+RETW5728n+uYTib4Y4S0nYT00Hae6LWfMckxfwWtYdYGC+dYLZBPTHN91j9N5tEPAi0mRayakDxRKQ==}
+  /react-markdown/5.0.3_5283d3c8d694c64e162d21c7dd1475fb:
+    resolution: {integrity: sha512-jDWOc1AvWn0WahpjW6NK64mtx6cwjM4iSsLHJPNBqoAgGOVoIdJMqaKX4++plhOtdd4JksdqzlDibgPx6B/M2w==}
     peerDependencies:
-      '@types/react': ^15.0.0 || ^16.0.0
-      react: ^15.0.0 || ^16.0.0
+      '@types/react': '>=16'
+      react: '>=16'
     dependencies:
       '@types/mdast': 3.0.3
       '@types/react': 16.9.19
