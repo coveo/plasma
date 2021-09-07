@@ -76,9 +76,8 @@
                     "content-encoding": "gzip"
                 },
                 "source": "packages/vapor/dist",
-                "disabled": true,
-                "prd": {
-                    "disabled": false
+                "qa": {
+                    "disabled": true
                 }
             }
         },
@@ -93,9 +92,8 @@
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
                 "source": "packages/vapor/dist",
-                "disabled": true,
-                "prd": {
-                    "disabled": false
+                "qa": {
+                    "disabled": true
                 }
             }
         }

@@ -2,7 +2,6 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {Svg} from '../../svg/Svg';
 import {IInlinePromptOptions, InlinePrompt} from '../InlinePrompt';
 
 describe('InlinePrompt', () => {
@@ -67,17 +66,6 @@ describe('InlinePrompt', () => {
             inlinePrompt.setProps({options: newOptions});
 
             expect(inlinePrompt.find('.opened').length).toBe(1);
-        });
-
-        it('should display an icon if there is one set in the user choice', () => {
-            const newUserChoice = _.extend({}, options.userChoice, {icon: undefined});
-            const newOptions = _.extend({}, options, {userChoice: newUserChoice});
-
-            expect(inlinePrompt.find(Svg).length).toBe(1);
-
-            inlinePrompt.setProps({options: newOptions});
-
-            expect(inlinePrompt.find(Svg).length).toBe(0);
         });
 
         it('should render as many choice buttons as there are choices', () => {

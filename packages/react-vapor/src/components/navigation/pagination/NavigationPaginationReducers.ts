@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {contains} from 'underscore.string';
 import {IReduxActionsPayload} from '../../../ReactVaporState';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {FilterActions} from '../../filterBox/FilterBoxActions';
@@ -34,14 +34,14 @@ export const paginationReducer = (
         case PaginationActions.reset:
             return state.id === action.payload.id ? {id: state.id, pageNb: action.payload.pageNb} : state;
         case TableActions.modifyState:
-            return s.contains(state.id, action.payload.id) && action.payload.shouldResetPage
+            return contains(state.id, action.payload.id) && action.payload.shouldResetPage
                 ? {...state, pageNb: 0}
                 : state;
         case FilterActions.filterThrough:
-            return s.contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
+            return contains(state.id, action.payload.id) ? {...state, pageNb: 0} : state;
         case ListBoxActions.select: {
             const tableId = TableHOCUtils.getTableIdFromPredicateId(action.payload.id);
-            return tableId && s.contains(state.id, tableId) ? {...state, pageNb: 0} : state;
+            return tableId && contains(state.id, tableId) ? {...state, pageNb: 0} : state;
         }
         default:
             return state;

@@ -5,15 +5,6 @@ import {renderModal, screen, waitForElementToBeRemoved} from '@test-utils';
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
-    beforeEach(() => {
-        jest.useFakeTimers();
-    });
-
-    afterEach(() => {
-        jest.runOnlyPendingTimers();
-        jest.useRealTimers();
-    });
-
     it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {
         const cancelSpy = jest.fn();
         renderModal(

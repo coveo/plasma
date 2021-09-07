@@ -3,6 +3,61 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.10.2](https://github.com/coveo/react-vapor/compare/v24.10.1...v24.10.2) (2021-09-02)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [24.10.1](https://github.com/coveo/react-vapor/compare/v24.10.0...v24.10.1) (2021-09-02)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [24.10.0](https://github.com/coveo/react-vapor/compare/v24.9.4...v24.10.0) (2021-09-01)
+
+
+### Features
+
+* **inlineprompt:** removed icon from inline prompt ([261fa86](https://github.com/coveo/react-vapor/commit/261fa86ee44a3f9f91429802574dc42a22224b2b))
+
+
+
+
+
+## [24.9.4](https://github.com/coveo/react-vapor/compare/v24.9.3...v24.9.4) (2021-08-30)
+
+
+### Bug Fixes
+
+* **modal-wizard:** remove memory leak ([f98c922](https://github.com/coveo/react-vapor/commit/f98c9223fdd07095a969238d5c3bb367fdcc999f))
+* **withdirty:** make sure isDirty in config has priority ([ecbd70a](https://github.com/coveo/react-vapor/commit/ecbd70a035635e9610255be0ac534b84ae30a4b5))
+
+
+
+
+
+## [24.9.3](https://github.com/coveo/react-vapor/compare/v24.9.2...v24.9.3) (2021-08-26)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [24.9.2](https://github.com/coveo/react-vapor/compare/v24.9.1...v24.9.2) (2021-08-25)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
 ## [24.9.1](https://github.com/coveo/react-vapor/compare/v24.9.0...v24.9.1) (2021-08-23)
 
 

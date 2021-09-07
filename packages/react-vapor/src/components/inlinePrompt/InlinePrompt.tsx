@@ -5,7 +5,6 @@ import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
-import {Svg} from '../svg/Svg';
 import {removePrompt} from './InlinePromptActions';
 
 export interface IUserChoice {
@@ -30,10 +29,6 @@ export interface IInlinePromptProps {
 export const InlinePrompt: React.FunctionComponent<
     IInlinePromptProps & Partial<ReturnType<typeof mapDispatchToProps>>
 > = ({options, onCancel}) => {
-    const icon: JSX.Element = options.userChoice.icon ? (
-        <Svg svgName={options.userChoice.icon} className="prompt-icon mr1" svgClass="icon mod-2x" />
-    ) : null;
-
     const choices: JSX.Element[] = _.map(options.userChoice.choices, (choice: string) => (
         <button
             type="button"
@@ -59,10 +54,7 @@ export const InlinePrompt: React.FunctionComponent<
 
     return (
         <span className={className}>
-            <span className="label-confirmation">
-                {icon}
-                {description}
-            </span>
+            <span className="label-confirmation">{description}</span>
             {choices}
             {cancel}
         </span>

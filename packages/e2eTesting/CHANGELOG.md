@@ -3,16 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
-# [24.6.0](https://github.com/coveo/react-vapor/compare/v24.5.0...v24.6.0) (2021-08-09)
+## [24.10.1](https://github.com/coveo/react-vapor/compare/v24.10.0...v24.10.1) (2021-09-02)
 
+**Note:** Version bump only for package e2etesting
+
+
+
+
+
+# [24.6.0](https://github.com/coveo/react-vapor/compare/v24.5.0...v24.6.0) (2021-08-09)
 
 ### Features
 
-* **table-hoc:** add action close all collapsible row ([#2099](https://github.com/coveo/react-vapor/issues/2099)) ([053b125](https://github.com/coveo/react-vapor/commit/053b125e76a9d10655bb10267ae48d461000f0ca))
-
-
-
-
+-   **table-hoc:** add action close all collapsible row ([#2099](https://github.com/coveo/react-vapor/issues/2099)) ([053b125](https://github.com/coveo/react-vapor/commit/053b125e76a9d10655bb10267ae48d461000f0ca))
 
 # [24.0.0](https://github.com/coveo/react-vapor/compare/v23.0.0...v24.0.0) (2021-07-22)
 

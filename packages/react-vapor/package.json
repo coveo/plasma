@@ -1,6 +1,6 @@
 {
     "name": "react-vapor",
-    "version": "24.9.1",
+    "version": "24.10.2",
     "description": "Vapor CSS components implemented with React!",
     "keywords": [
         "coveo",
@@ -50,7 +50,6 @@
         "react-modal": "3.14.2",
         "react-tether": "1.0.5",
         "react-textarea-autosize": "8.3.3",
-        "snyk": "^1.158.0",
         "split-on-first": "1.x.x",
         "strict-uri-encode": "2.x.x",
         "unidiff": "0.0.4"
@@ -109,7 +108,7 @@
         "codecov": "3.2.0",
         "codemirror": "^5.54.0",
         "concurrently": "5.1.0",
-        "coveo-styleguide": "^24.9.0",
+        "coveo-styleguide": "^24.10.2",
         "d3": "3.5.17",
         "del": "5.1.0",
         "dnd-core": "2.5.1",
@@ -146,6 +145,7 @@
         "rollup-plugin-postcss": "2.5.0",
         "rollup-plugin-sass-variables": "0.1.1",
         "rollup-plugin-terser": "^7.0.2",
+        "snyk": "^1.158.0",
         "ts-jest": "26.4.4",
         "tslib": "^1",
         "typescript": "3.8.3",

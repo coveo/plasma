@@ -1,6 +1,6 @@
 import moment from 'moment';
 import * as _ from 'underscore';
-import * as s from 'underscore.string';
+import {reverse} from 'underscore.string';
 
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {changeLastUpdated} from '../../lastUpdated/LastUpdatedActions';
@@ -229,7 +229,7 @@ describe('TableDataModifier', () => {
                             attributeName: 'userName',
                             titleFormatter: _.identity,
                             attributeFormatter: _.identity,
-                            sortByMethod: (attributeValue: string) => s.reverse(attributeValue).toLowerCase(),
+                            sortByMethod: (attributeValue: string) => reverse(attributeValue).toLowerCase(),
                         },
                     ],
                 };
@@ -238,7 +238,7 @@ describe('TableDataModifier', () => {
             it('should return the same ids but sorted ascending with the custom sortByMethod by the specified attribute if sorted ASCENDING', () => {
                 const expectedOrderOfIds = _.chain(data.byId)
                     .values()
-                    .sortBy((currentData) => s.reverse(currentData.userName).toLowerCase())
+                    .sortBy((currentData) => reverse(currentData.userName).toLowerCase())
                     .map((currentData) => currentData.id)
                     .value();
 
@@ -255,7 +255,7 @@ describe('TableDataModifier', () => {
             it('should return the same ids but sorted descending with the custom sortByMethod by the specified attribute if sorted DESCENDING', () => {
                 const expectedOrderOfIds = _.chain(data.byId)
                     .values()
-                    .sortBy((currentData) => s.reverse(currentData.userName).toLowerCase())
+                    .sortBy((currentData) => reverse(currentData.userName).toLowerCase())
                     .map((currentData) => currentData.id)
                     .reverse()
                     .value();
