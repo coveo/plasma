@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.10.3](https://github.com/coveo/react-vapor/compare/v24.10.2...v24.10.3) (2021-09-07)
+
+
+### Bug Fixes
+
+* upgrade react-markdown from 5.0.0 to 5.0.3 ([5ec92aa](https://github.com/coveo/react-vapor/commit/5ec92aa3158fe7d68b0da3332ce8731c69502892))
+* upgrade redux from 4.1.0 to 4.1.1 ([4f2b155](https://github.com/coveo/react-vapor/commit/4f2b1551b6cce668c3a9f1c5d0a4364229b5dfa1))
+
+
+
+
+
 ## [24.10.2](https://github.com/coveo/react-vapor/compare/v24.10.1...v24.10.2) (2021-09-02)
 
 **Note:** Version bump only for package root
