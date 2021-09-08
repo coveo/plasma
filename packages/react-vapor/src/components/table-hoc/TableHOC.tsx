@@ -2,6 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {IContentProps} from '../../Entry';
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
 import {ActionBarConnected} from '../actions/ActionBar';
 import {TableLoading} from '../loading/components/TableLoading';
@@ -19,6 +20,7 @@ export interface ITableHOCOwnProps {
     data: any[];
     renderBody: (data: any[]) => React.ReactNode;
     actions?: React.ReactNode[];
+    actionBarPrefixContent?: IContentProps;
     tableHeader?: React.ReactNode;
     onUpdate?: () => void;
     containerClassName?: string;
@@ -38,6 +40,7 @@ export interface ITableHOCProps extends ITableHOCOwnProps {}
 export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttributes<HTMLTableElement>> = ({
     hasActionButtons = false,
     actions = [],
+    actionBarPrefixContent,
     showBorderTop = false,
     showBorderBottom = true,
     id,
@@ -56,10 +59,10 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
         numberOfSubRow: 3,
     },
 }) => {
-    const hasActions = () => hasActionButtons || actions.length;
+    const hasActionBar = () => hasActionButtons || actions.length || actionBarPrefixContent;
 
-    const renderActions = () => {
-        if (hasActions()) {
+    const renderActionBar = () => {
+        if (hasActionBar()) {
             return (
                 <ActionBarConnected
                     id={id}
@@ -74,6 +77,7 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
                         }
                     ).split(' ')}
                     disabled={isLoading}
+                    prefixContent={actionBarPrefixContent}
                 >
                     {actions}
                 </ActionBarConnected>
@@ -83,7 +87,7 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
     };
 
     const table = (
-        <table className={classNames(className)} style={{marginTop: hasActions() ? '-1px' : 0}}>
+        <table className={classNames(className)} style={{marginTop: hasActionBar() ? '-1px' : 0}}>
             {tableHeader}
             <tbody key={`table-body-${id}`} className={classNames({hidden: isLoading}, tbodyClassName)}>
                 {renderBody(data || [])}
@@ -102,7 +106,7 @@ export const TableHOC: React.FunctionComponent<ITableHOCProps & React.HTMLAttrib
 
     return (
         <div className={classNames('table-container', containerClassName)}>
-            {renderActions()}
+            {renderActionBar()}
             {table}
             {children}
         </div>

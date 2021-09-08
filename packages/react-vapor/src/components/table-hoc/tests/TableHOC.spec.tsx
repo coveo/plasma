@@ -123,6 +123,19 @@ describe('TableHOC', () => {
             expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
         });
 
+        it('should render an ActionBarConnected if the table prop has an action bar prefix', () => {
+            const wrapper = shallow(<TableHOC {...defaultProps} actionBarPrefixContent={{content: <div />}} />);
+
+            expect(wrapper.find(ActionBarConnected).exists()).toBe(true);
+        });
+
+        it('should pass the action bar prefix to ActionBarConnected', () => {
+            const content = {content: <div id="someContent" />};
+            const wrapper = shallow(<TableHOC {...defaultProps} actionBarPrefixContent={content} />);
+
+            expect(wrapper.find(ActionBarConnected).props().prefixContent).toBe(content);
+        });
+
         it('should keep the tbody with rows data during the loading', () => {
             const wrapper = shallow(<TableHOC {...defaultProps} isLoading />);
 
