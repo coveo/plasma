@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.11.0](https://github.com/coveo/react-vapor/compare/v24.10.3...v24.11.0) (2021-09-08)
+
+
+### Features
+
+* **table-hoc:** added action bar prefix ([960c5dd](https://github.com/coveo/react-vapor/commit/960c5ddac3acf0c244b66628af63a30c0ae5f191))
+
+
+
+
+
 ## [24.10.3](https://github.com/coveo/react-vapor/compare/v24.10.2...v24.10.3) (2021-09-07)
 
 **Note:** Version bump only for package react-vapor
