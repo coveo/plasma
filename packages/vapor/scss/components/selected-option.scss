@@ -12,7 +12,7 @@
     margin: $dropdown-multiselect-margin;
     color: var(--title-text-color);
     font-size: $button-small-font-size;
-    line-height: $dropdown-multiselect-option-height;
+    line-height: $dropdown-multiselect-option-height - 1px;
     background-color: var(--white);
     border: $default-border;
     border-radius: $border-radius;
