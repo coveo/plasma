@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.11.3](https://github.com/coveo/react-vapor/compare/v24.11.2...v24.11.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* change the padding bottom for the icon ([a0b1876](https://github.com/coveo/react-vapor/commit/a0b18763222b8b78be3a108b00b8b716d422d056))
+
+
+
+
+
 ## [24.11.2](https://github.com/coveo/react-vapor/compare/v24.11.1...v24.11.2) (2021-09-16)
 
 **Note:** Version bump only for package coveo-styleguide
