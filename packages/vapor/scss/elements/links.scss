@@ -49,9 +49,9 @@ a {
     }
 
     &:visited {
-        --color: var(--grape-purple-30);
-        --fill: var(--grape-purple-30);
-        --stroke: var(--grape-purple-30);
+        --color: var(--links-color);
+        --fill: var(--links-color);
+        --stroke: var(--links-color);
         text-decoration: underline;
     }
 }
