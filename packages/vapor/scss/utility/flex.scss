@@ -22,6 +22,10 @@
     align-items: stretch;
 }
 
+.flex-start {
+    align-items: start;
+}
+
 .flex-auto {
     flex-basis: auto;
     flex-grow: 1;
