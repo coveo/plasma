@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.11.4](https://github.com/coveo/react-vapor/compare/v24.11.3...v24.11.4) (2021-09-17)
+
+
+### Bug Fixes
+
+* **toast:** set additional padding for the close part ([d5b01b2](https://github.com/coveo/react-vapor/commit/d5b01b29c344dc706ce47dea8e931cbcfcd4ff5c))
+
+
+
+
+
 ## [24.11.3](https://github.com/coveo/react-vapor/compare/v24.11.2...v24.11.3) (2021-09-16)
 
 **Note:** Version bump only for package react-vapor-demo
