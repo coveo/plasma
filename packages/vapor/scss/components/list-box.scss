@@ -13,7 +13,7 @@
 
     box-shadow: $list-box-box-shadow;
 
-    @include slim-scroll(var(--white), var(--grey-20));
+    @include slim-scroll(var(--white), var(--grey-50));
 }
 
 .item-box {
