@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.11.7](https://github.com/coveo/react-vapor/compare/v24.11.6...v24.11.7) (2021-09-20)
+
+
+### Bug Fixes
+
+* **title:** HTMLHeadingElement ([a406d54](https://github.com/coveo/react-vapor/commit/a406d54e33d294297c335485c59470824a9621de))
+* **title:** remove no console ([d6cdfa5](https://github.com/coveo/react-vapor/commit/d6cdfa5f8fd7d664b3b3b8c0cd123eeeffb2dbdf))
+* **title:** tooltip appear if truncated ([55da5e0](https://github.com/coveo/react-vapor/commit/55da5e0263bb7e04614346316d94ce73724d49f7))
+
+
+
+
+
 ## [24.11.6](https://github.com/coveo/react-vapor/compare/v24.11.5...v24.11.6) (2021-09-20)
 
 **Note:** Version bump only for package react-vapor
