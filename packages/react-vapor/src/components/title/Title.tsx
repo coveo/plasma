@@ -1,4 +1,3 @@
-/* eslint-disable no-console */
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
