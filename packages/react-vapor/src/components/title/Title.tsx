@@ -15,7 +15,8 @@ export interface ITitleProps {
 }
 
 export const Title: React.FunctionComponent<ITitleProps> = (props) => {
-    const ref = React.useRef<HTMLHRElement>();
+    const ref = React.useRef<HTMLHeadingElement>();
+
     const [isTruncated, setIsTruncated] = React.useState(false);
     const linkClasses = classNames('inline-doc-link', props.documentationLink && props.documentationLink.linkClasses);
     const titleClasses: string = classNames('bolder', 'mr1', 'truncate', props.classes);
