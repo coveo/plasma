@@ -1,9 +1,11 @@
 .lightbox-search-input {
     width: 100%;
     padding: 10px 20px;
-    color: var(--deprecated-dark-grey);
+    color: var(--grey-60);
+    font-weight: var(--font-weight-book);
     font-size: 2rem;
     border: none;
+    border-radius: 8px;
     outline: none;
 }
 
