@@ -1,6 +1,9 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {render, screen} from '@test-utils';
+
+import {fireEvent, within} from '@testing-library/react';
 import {ILinkSvgProps, LinkSvg} from '../../svg/LinkSvg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {ITitleProps, Title} from '../Title';
@@ -91,5 +94,38 @@ describe('<Title/>', () => {
             expect(titleComponent.find(LinkSvg).length).toBe(1);
             expect(titleComponent.find(LinkSvg).prop('linkClasses')).toContain('inline-doc-link');
         });
+    });
+
+    it('renders a tooltip if the title is truncated', async () => {
+        // mock the element DOM properties
+        const originalScrollWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetHeight');
+        const originalOffsetWidth = Object.getOwnPropertyDescriptor(HTMLElement.prototype, 'offsetWidth');
+
+        Object.defineProperty(HTMLElement.prototype, 'scrollWidth', {
+            configurable: true,
+            value: 150,
+        });
+        Object.defineProperty(HTMLElement.prototype, 'offsetWidth', {
+            configurable: true,
+            value: 140,
+        });
+
+        render(<Title {...defaultProps} text="This is the title text to be truncated" />);
+
+        // first hover to trigger the REF detection
+        fireEvent.mouseOver(screen.getByRole('heading', {name: /this is the title text to be truncated/i}));
+
+        // second hover to make the tooltip appear
+        fireEvent.mouseOver(screen.getByText(/this is the title text to be truncated/i));
+
+        const tooltip = await screen.findByRole('tooltip', {
+            name: /this is the title text to be truncated/i,
+        });
+
+        expect(within(tooltip).getByText(/this is the title text to be truncated/i)).toBeInTheDocument();
+
+        // reset the Element DOM Properties
+        Object.defineProperty(HTMLElement.prototype, 'offsetHeight', originalScrollWidth);
+        Object.defineProperty(HTMLElement.prototype, 'offsetWidth', originalOffsetWidth);
     });
 });
