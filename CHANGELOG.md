@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.12.0](https://github.com/coveo/react-vapor/compare/v24.11.7...v24.12.0) (2021-09-20)
+
+
+### Features
+
+* **lightbox search:** style update ([8988603](https://github.com/coveo/react-vapor/commit/8988603f224c5a825d38534c093d8ecdcfe7409f))
+
+
+
+
+
 ## [24.11.7](https://github.com/coveo/react-vapor/compare/v24.11.6...v24.11.7) (2021-09-20)
 
 
