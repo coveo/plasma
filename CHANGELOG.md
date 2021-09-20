@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.11.6](https://github.com/coveo/react-vapor/compare/v24.11.5...v24.11.6) (2021-09-20)
+
+
+### Bug Fixes
+
+* **list box:** scrollbar visibility ([37d00ef](https://github.com/coveo/react-vapor/commit/37d00ef5d96c31c1c7c14d8f13196919275e177d))
+
+
+
+
+
 ## [24.11.5](https://github.com/coveo/react-vapor/compare/v24.11.4...v24.11.5) (2021-09-17)
 
 **Note:** Version bump only for package root
