@@ -96,17 +96,17 @@
     letter-spacing: 0.003em;
 }
 
-.hero {
-    @extend %hero;
-    @extend %medium;
-    @extend %regular;
-}
+// .hero {
+//     @extend %hero;
+//     @extend %medium;
+//     @extend %regular;
+// }
 
-.hero-light {
-    @extend %hero;
-    @extend %light;
-    @extend %regular;
-}
+// .hero-light {
+//     @extend %hero;
+//     @extend %light;
+//     @extend %regular;
+// }
 
 .hero-subdued {
     @extend %hero;
@@ -120,11 +120,15 @@
     @extend %subdued;
 }
 
-.h1,
-h1 {
-    @extend %h1;
-    @extend %medium;
-    @extend %regular;
+// .h1,
+// h1 {
+//     @extend %h1;
+//     @extend %medium;
+//     @extend %regular;
+// }
+h1,
+.h1 {
+    @extend .heading-1-medium;
 }
 
 .h1-subdued {
@@ -145,11 +149,16 @@ h1 {
     @extend %subdued;
 }
 
-.h2,
-h2 {
-    @extend %h2;
-    @extend %medium;
-    @extend %regular;
+// .h2,
+// h2 {
+//     @extend %h2;
+//     @extend %medium;
+//     @extend %regular;
+// }
+
+h2,
+.h2 {
+    @extend .heading-2-medium;
 }
 
 .h2-subdued {
@@ -170,11 +179,15 @@ h2 {
     @extend %subdued;
 }
 
-.h3,
-h3 {
-    @extend %h3;
-    @extend %medium;
-    @extend %regular;
+// .h3,
+// h3 {
+//     @extend %h3;
+//     @extend %medium;
+//     @extend %regular;
+// }
+h3,
+.h3 {
+    @extend .heading-3-medium;
 }
 
 .h3-subdued {
@@ -195,11 +208,16 @@ h3 {
     @extend %subdued;
 }
 
-.h4,
-h4 {
-    @extend %h4;
-    @extend %medium;
-    @extend %regular;
+// .h4,
+// h4 {
+//     @extend %h4;
+//     @extend %medium;
+//     @extend %regular;
+// }
+
+h4,
+.h4 {
+    @extend .heading-4-medium;
 }
 
 .h4-subdued {
@@ -220,11 +238,16 @@ h4 {
     @extend %subdued;
 }
 
-.h5,
-h5 {
-    @extend %h5;
-    @extend %medium;
-    @extend %regular;
+// .h5,
+// h5 {
+//     @extend %h5;
+//     @extend %medium;
+//     @extend %regular;
+// }
+
+h5,
+.h5 {
+    @extend .heading-5-medium;
 }
 
 .h5-subdued {
@@ -233,11 +256,16 @@ h5 {
     @extend %subdued;
 }
 
-.h6,
-h6 {
-    @extend %h6;
-    @extend %medium;
-    @extend %regular;
+// .h6,
+// h6 {
+//     @extend %h6;
+//     @extend %medium;
+//     @extend %regular;
+// }
+
+h6,
+.h6 {
+    @extend .heading-6-medium;
 }
 
 .h6-subdued {

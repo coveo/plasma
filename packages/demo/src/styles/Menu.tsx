@@ -29,6 +29,7 @@ const Navigation: React.FunctionComponent = () => (
         </NavigationSection>
         <NavigationSection title="Icons" baseUrl="/icons">
             <NavigationLink href="/list" name="Icons" />
+            <NavigationLink href="/iconography" name="Iconography" />
         </NavigationSection>
         <NavigationSection title="Layout" baseUrl="/layout">
             <NavigationLink href="/spaced-box" name="Spaced box" />

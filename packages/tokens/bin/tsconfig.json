@@ -1,0 +1,11 @@
+{
+    "compilerOptions": {
+        "strict": true,
+        "types": ["Node"],
+        "esModuleInterop": true,
+        "resolveJsonModule": true,
+        "forceConsistentCasingInFileNames": true,
+        "moduleResolution": "node"
+    },
+    "include": ["**/*.ts"]
+}

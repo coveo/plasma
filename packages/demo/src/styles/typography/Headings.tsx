@@ -9,11 +9,17 @@ export default () => (
         usage="All HTML headings, `h1` through `h6`, are available."
         withSource
     >
-        <h1>Admin heading 1</h1>
-        <h2>Admin heading 2</h2>
-        <h3>Admin heading 3</h3>
-        <h4>Admin heading 4</h4>
-        <h5>Admin heading 5</h5>
-        <h6>Admin heading 6</h6>
+        <div className="hero-medium">Hero Medium</div>
+        <div className="hero-light">Hero Light</div>
+        <h1>Heading 1 Medium</h1>
+        <h1 className="heading-1-light">Heading 1 Light</h1>
+        <h2>Heading 2 Medium</h2>
+        <h2 className="heading-2-book">Heading 2 Book</h2>
+        <h3>Heading 3 Medium</h3>
+        <h3 className="heading-3-book">Heading 3 Book</h3>
+        <h4>Heading 4 Medium</h4>
+        <h4 className="heading-4-book">Heading 4 Book</h4>
+        <h5>Heading 5 Medium</h5>
+        <h6>Heading 6 Medium</h6>
     </VaporComponent>
 );
