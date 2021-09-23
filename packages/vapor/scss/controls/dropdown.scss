@@ -99,6 +99,7 @@
         height: $dropdown-arrow-icon-size;
 
         &.icon {
+            pointer-events: none;
             fill: var(--grey-80);
         }
     }
