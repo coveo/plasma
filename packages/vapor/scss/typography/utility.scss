@@ -80,9 +80,7 @@
 }
 
 .help-text {
-    color: var(--default-text-color);
-    font-size: $help-text-font-size;
-    line-height: $help-text-line-height;
+    @extend .body-s-book-subdued;
 }
 
 .sup {
