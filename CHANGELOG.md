@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.1](https://github.com/coveo/react-vapor/compare/v24.12.0...v24.12.1) (2021-09-23)
+
+
+### Bug Fixes
+
+* **datepicker:** datepicker should open when clicking on the svg ([ac5b675](https://github.com/coveo/react-vapor/commit/ac5b675b53ac455b44121de864b538e03f15a104))
+
+
+
+
+
 # [24.12.0](https://github.com/coveo/react-vapor/compare/v24.11.7...v24.12.0) (2021-09-20)
 
 
