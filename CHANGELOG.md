@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.3](https://github.com/coveo/react-vapor/compare/v24.12.2...v24.12.3) (2021-09-23)
+
+
+### Bug Fixes
+
+* **modal:** adding extra class for specificity ([ce81e9e](https://github.com/coveo/react-vapor/commit/ce81e9ec70f653cd40d68c068bdf42d0b96bfd1c))
+* **slider:** change sldier handle tooltip position ([5aee656](https://github.com/coveo/react-vapor/commit/5aee6563f82fae4bbe1c5210dc51dbc221361922))
+
+
+
+
+
 ## [24.12.2](https://github.com/coveo/react-vapor/compare/v24.12.1...v24.12.2) (2021-09-23)
 
 

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.3](https://github.com/coveo/react-vapor/compare/v24.12.2...v24.12.3) (2021-09-23)
+
+
+### Bug Fixes
+
+* **modal:** adding extra class for specificity ([ce81e9e](https://github.com/coveo/react-vapor/commit/ce81e9ec70f653cd40d68c068bdf42d0b96bfd1c))
+
+
+
+
+
 ## [24.12.1](https://github.com/coveo/react-vapor/compare/v24.12.0...v24.12.1) (2021-09-23)
 
 
