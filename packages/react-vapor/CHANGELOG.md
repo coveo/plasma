@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.2](https://github.com/coveo/react-vapor/compare/v24.12.1...v24.12.2) (2021-09-23)
+
+
+### Bug Fixes
+
+* **textarea:** show validation message only when appropriate ([c33a2aa](https://github.com/coveo/react-vapor/commit/c33a2aa5bd50f3e5555fa0d193828483b90e50fb))
+
+
+
+
+
 ## [24.12.1](https://github.com/coveo/react-vapor/compare/v24.12.0...v24.12.1) (2021-09-23)
 
 **Note:** Version bump only for package react-vapor
