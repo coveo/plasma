@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.5](https://github.com/coveo/react-vapor/compare/v24.12.4...v24.12.5) (2021-09-24)
+
+
+### Bug Fixes
+
+* **radio:** refresh style of radio buttons ([c7f83d5](https://github.com/coveo/react-vapor/commit/c7f83d517e7cecb210adcaafc77ae8241234b269))
+
+
+
+
+
 ## [24.12.3](https://github.com/coveo/react-vapor/compare/v24.12.2...v24.12.3) (2021-09-23)
 
 
