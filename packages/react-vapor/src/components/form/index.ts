@@ -1,4 +1,4 @@
 export * from './Form';
 export * from './FormGroup';
-export {FormProvider} from '../form/FormProvider';
+export {FormProvider, FormContext} from '../form/FormProvider';
 export * from './useFormComponent';
