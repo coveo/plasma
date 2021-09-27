@@ -1,4 +1,12 @@
+$radio-button-option-height: 16px;
+$radio-button-size: 20px;
+$radio-button-text-padding-top: 5px;
+$labelIndent: $radio-button-size + $radio-button-option-height;
+
 .radio-option {
+    --circle-stroke-color: var(--digital-blue-60);
+    --circle-fill-color: var(--white);
+
     position: relative;
 
     input[type='radio'] {
@@ -8,117 +16,88 @@
         opacity: 0;
 
         & + label {
+            @extend .body-l-book;
+
             position: relative;
             display: inline-flex;
             align-items: center;
-            height: $radio-button-option-height;
-            padding-top: $radio-button-text-padding-top;
-            padding-left: $radio-button-size + $checkbox-label-margin;
-            color: var(--title-text-color);
-            font-weight: var(--main-font-bold);
-            line-height: $radio-button-option-height;
+            padding-left: $labelIndent;
             cursor: pointer;
             user-select: none;
 
+            // color circle
             &:before {
                 position: absolute;
-                top: 0;
+                top: 2px;
                 left: 0;
                 z-index: 0;
                 width: $radio-button-size;
                 height: $radio-button-size;
-                background-color: var(--white);
+                background-color: var(--circle-fill-color);
+                border: 1px solid var(--circle-stroke-color);
                 border-radius: 50%;
                 content: '';
             }
 
-            &:after {
-                position: absolute;
-                top: 0;
-                left: 0;
-                z-index: 0;
-                width: $radio-button-size;
-                height: $radio-button-size;
-                background-color: var(--white);
-                border-radius: 50%;
-                transform: scale(0);
-                transform-origin: center center;
-                content: '';
-            }
-
-            & + .help-text,
-            & + .description {
-                padding-left: $radio-button-size + $checkbox-label-margin;
-            }
-        }
-
-        &:focus + label:before {
-            box-shadow: 0 0 0 4px var(--deprecated-light-grey);
-        }
-
-        &:not(:checked) + label {
-            &:before {
-                border: 2px solid var(--navy-blue-80);
-            }
-
-            &:after {
-                z-index: -1;
-                transform: scale(0);
-            }
-        }
-
-        &:checked + label {
-            &:before {
-                z-index: 1;
-                padding: 6px 5px 5px 5px;
-                background-color: transparent;
-                transform: scale(1);
-                content: url('../../resources/icons/svg/content/radiocheck.svg');
-            }
-
-            &:after {
-                z-index: 0;
-                padding: 5px;
-                background-color: var(--digital-blue-60);
-                border: 2px solid var(--digital-blue-60);
-                transform: scale(1);
-                transform-origin: center center;
-                transition: background-color 280ms ease 0ms;
-            }
-        }
-
-        &:disabled {
-            & + label {
-                color: var(--grey-60);
-                cursor: not-allowed;
-
-                &:before {
-                    border-color: var(--grey-40);
-                }
+            &:hover {
+                --circle-stroke-color: var(--digital-blue-80);
             }
 
             & ~ .help-text,
             & ~ .description,
             & ~ .mod-align-with-radio-label {
+                @extend .body-s-book-subdued;
+                padding-left: $labelIndent;
+            }
+        }
+
+        &:checked + label {
+            @extend .h6;
+            --circle-fill-color: var(--digital-blue-60);
+
+            // checkmark
+            &:after {
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                z-index: 1;
+                width: $radio-button-option-height;
+                height: $radio-button-option-height;
+                content: url('../../resources/icons/svg/content/radiocheck.svg');
+            }
+
+            &:hover {
+                --circle-fill-color: var(--digital-blue-80);
+            }
+        }
+
+        &:disabled {
+            & + label {
+                --circle-stroke-color: var(--grey-50);
+                --circle-fill-color: var(--grey-20);
                 color: var(--grey-60);
+                cursor: not-allowed;
+
+                & ~ .help-text,
+                & ~ .description,
+                & ~ .mod-align-with-radio-label {
+                    color: var(--grey-60);
+                }
             }
 
             &:checked + label {
-                &:before {
-                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
-                }
+                // checkmark
                 &:after {
-                    padding: 3px;
-                    background-color: var(--grey-20);
-                    border: 2px solid var(--grey-40);
+                    position: absolute;
+                    top: 2px;
+                    left: 2px;
+                    z-index: 1;
+                    width: $radio-button-option-height;
+                    height: $radio-button-option-height;
+                    content: url('../../resources/icons/svg/content/disabled-radiocheck.svg');
                 }
             }
         }
-    }
-
-    .mod-align-with-radio-label {
-        padding-left: $radio-button-size + $checkbox-label-margin;
-        color: var(--grey-80);
     }
 }
 
@@ -131,6 +110,10 @@
         height: 100%;
         padding: 20px;
         transition: var(--default-transition);
+
+        & > label {
+            @extend .body-l-book;
+        }
 
         &:hover {
             box-shadow: var(--medium-elevation-on-light);
@@ -157,7 +140,7 @@
         cursor: not-allowed !important;
 
         * {
-            color: var(--deprecated-medium-grey);
+            color: var(--grey-60);
         }
     }
 }

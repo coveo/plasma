@@ -236,6 +236,30 @@ const ToastsWithReduxStoreDisconnected: React.FunctionComponent<ReturnType<typeo
                 />
             </Section>
 
+            <Section level={2} title="Toasts with only title" className="flex">
+                <Label className="flex">Sometimes we want toast with only a title that can be closed</Label>
+
+                <Button
+                    enabled
+                    className="btn m0 mr1 mb1"
+                    name="Description"
+                    onClick={() => renderToast('containerId', 'Small title', {})}
+                />
+
+                <Button
+                    enabled
+                    className="btn m0 mr1 mb1"
+                    name="Longer description"
+                    onClick={() =>
+                        renderToast(
+                            'containerId',
+                            'Very long title that proves that there is enough padding from the title close part of the toast',
+                            {}
+                        )
+                    }
+                />
+            </Section>
+
             <Section level={2} title="Small toasts" className="flex">
                 <Button
                     enabled

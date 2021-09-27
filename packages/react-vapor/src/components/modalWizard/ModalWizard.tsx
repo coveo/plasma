@@ -70,9 +70,10 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
             {({promptBefore}) => (
                 <ModalCompositeConnected
                     id={id}
+                    modalHeaderChildren={<StepProgressBar numberOfSteps={numberOfSteps} currentStep={currentStep} />}
+                    modalHeaderClasses={['p0 flex flex-column flex-start space-between full-content-x modal-wizard']}
                     modalBodyChildren={
                         <>
-                            <StepProgressBar numberOfSteps={numberOfSteps} currentStep={currentStep} />
                             {steps.map((step: React.ReactElement, index: number) => {
                                 const hidden = index !== currentStep;
                                 return (

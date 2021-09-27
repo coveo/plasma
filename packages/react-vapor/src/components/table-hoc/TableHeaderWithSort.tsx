@@ -63,14 +63,7 @@ export const TableHeaderWithSort: React.FunctionComponent<
     }
 
     return (
-        <th
-            id={id}
-            className={headerCellClasses}
-            onClick={onSort}
-            ref={tableHeaderRef}
-            style={style}
-            title="admin-sort"
-        >
+        <th id={id} className={headerCellClasses} onClick={onSort} ref={tableHeaderRef} style={style}>
             {children}
             <div className="admin-sort-icon">
                 <Svg svgName={getSvg} className="tables-sort icon" />

@@ -58,6 +58,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: ITextAreaOwnProps): I
 });
 
 export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
+    id,
     value,
     validate,
     onMount,
@@ -82,7 +83,9 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
     }, [value]);
 
     React.useEffect(() => {
-        setIsValid(validate?.(debouncedValue));
+        if (validate) {
+            setIsValid(validate(debouncedValue));
+        }
     }, [debouncedValue]);
 
     React.useEffect(() => {
@@ -104,6 +107,7 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
     return (
         <>
             <TextareaTagName
+                id={id}
                 {...additionalAttributes}
                 disabled={disabled}
                 className={className}

@@ -32,11 +32,6 @@ export const RadioButtonExamples: ExampleComponent = () => (
     </Section>
 );
 
-const paragraphStyle = {
-    marginTop: 10,
-    marginRight: 36,
-};
-
 RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
 
 const radioSelectConnectedId = 'radioselectconnected';
@@ -46,7 +41,7 @@ const radioSelectConnectedId = 'radioselectconnected';
 const radioButtonProps = {
     name: 'rankingResult',
     outerContainerClass: 'modal-radio-button',
-    outerElementInContainer: <img src="https://via.placeholder.com/150x100" />,
+    outerElementInContainer: <img src="https://via.placeholder.com/150x100" className="ml5" />,
 };
 
 const blueRadioButtonProps = {
@@ -76,7 +71,7 @@ const RadioSelectExample: React.FunctionComponent = () => (
                 </Radio>
                 <Radio id="Option2" name="enabledOptions" value="green">
                     <Label>Green</Label>
-                    <div className="mod-align-with-radio-label mt1">The green color has an optional description.</div>
+                    <div className="mod-align-with-radio-label">The green color has an optional description.</div>
                 </Radio>
                 <Radio id="Option3" name="enabledOptions" value="brown">
                     <Label>Brown</Label>
@@ -109,6 +104,7 @@ const RadioSelectDisabledExample: React.FunctionComponent = () => (
                 </Radio>
                 <Radio id="Option5" name="disabledOptions" value="red">
                     <Label>Red</Label>
+                    <div className="mod-align-with-radio-label">The red color has an optional description.</div>
                 </Radio>
                 <Radio id="Option6" name="disabledOptions" value="purple">
                     <Label>purple</Label>
@@ -122,20 +118,12 @@ const RadioSelectWrappedExample: React.FunctionComponent = () => (
     <Section level={3} title="A radio select with a wrapped radio button">
         <RadioSelectConnected id="addRankingResult" valueOnMount={'blue'}>
             <Radio {...blueRadioButtonProps}>
-                <Label>
-                    <span className="bold">Blue color</span>
-                </Label>
-                <InputDescription>
-                    <div style={{...paragraphStyle}}>Blue is the best color.</div>
-                </InputDescription>
+                <Label>Blue color</Label>
+                <InputDescription>Blue is the best color.</InputDescription>
             </Radio>
             <Radio {...redRadioButtonProps}>
-                <Label>
-                    <span className="bold">Red color</span>
-                </Label>
-                <InputDescription>
-                    <div style={{...paragraphStyle}}>Red is the best color.</div>
-                </InputDescription>
+                <Label>Red color</Label>
+                <InputDescription>Red is the best color.</InputDescription>
             </Radio>
         </RadioSelectConnected>
     </Section>
@@ -152,30 +140,18 @@ const RadioCardSelectExample: React.FunctionComponent = () => (
         >
             <RadioCard id="blue" name="card-option" value="blue">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
-                <Label>
-                    <span className="bold">Blue color</span>
-                </Label>
-                <InputDescription>
-                    <div style={{...paragraphStyle}}>Blue is the best color.</div>
-                </InputDescription>
+                <Label>Blue color</Label>
+                <InputDescription>Blue is the best color.</InputDescription>
             </RadioCard>
             <RadioCard id="red" name="card-option" value="red">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
-                <Label>
-                    <span className="bold">Red color</span>
-                </Label>
-                <InputDescription>
-                    <div style={{...paragraphStyle}}>Red is the best color.</div>
-                </InputDescription>
+                <Label>Red color</Label>
+                <InputDescription>Red is the best color.</InputDescription>
             </RadioCard>
             <RadioCard id="green" name="card-option" value="green">
                 <img className="mb2" src="https://via.placeholder.com/150x100" />
-                <Label>
-                    <span className="bold">Green color</span>
-                </Label>
-                <InputDescription>
-                    <div style={{...paragraphStyle}}>Green is the best color.</div>
-                </InputDescription>
+                <Label>Green color</Label>
+                <InputDescription>Green is the best color.</InputDescription>
             </RadioCard>
         </RadioSelectConnected>
     </Section>

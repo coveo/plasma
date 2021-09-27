@@ -3,6 +3,110 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.6](https://github.com/coveo/react-vapor/compare/v24.12.5...v24.12.6) (2021-09-27)
+
+
+### Bug Fixes
+
+* **toast:** remove word-break attribute ([20edb3c](https://github.com/coveo/react-vapor/commit/20edb3c11f0c87706f2c02408472cbfdbe0bbb22))
+
+
+
+
+
+## [24.12.5](https://github.com/coveo/react-vapor/compare/v24.12.4...v24.12.5) (2021-09-24)
+
+
+### Bug Fixes
+
+* **radio:** refresh style of radio buttons ([c7f83d5](https://github.com/coveo/react-vapor/commit/c7f83d517e7cecb210adcaafc77ae8241234b269))
+
+
+
+
+
+## [24.12.3](https://github.com/coveo/react-vapor/compare/v24.12.2...v24.12.3) (2021-09-23)
+
+
+### Bug Fixes
+
+* **modal:** adding extra class for specificity ([ce81e9e](https://github.com/coveo/react-vapor/commit/ce81e9ec70f653cd40d68c068bdf42d0b96bfd1c))
+
+
+
+
+
+## [24.12.1](https://github.com/coveo/react-vapor/compare/v24.12.0...v24.12.1) (2021-09-23)
+
+
+### Bug Fixes
+
+* **datepicker:** datepicker should open when clicking on the svg ([ac5b675](https://github.com/coveo/react-vapor/commit/ac5b675b53ac455b44121de864b538e03f15a104))
+
+
+
+
+
+# [24.12.0](https://github.com/coveo/react-vapor/compare/v24.11.7...v24.12.0) (2021-09-20)
+
+
+### Features
+
+* **lightbox search:** style update ([8988603](https://github.com/coveo/react-vapor/commit/8988603f224c5a825d38534c093d8ecdcfe7409f))
+
+
+
+
+
+## [24.11.6](https://github.com/coveo/react-vapor/compare/v24.11.5...v24.11.6) (2021-09-20)
+
+
+### Bug Fixes
+
+* **list box:** scrollbar visibility ([37d00ef](https://github.com/coveo/react-vapor/commit/37d00ef5d96c31c1c7c14d8f13196919275e177d))
+
+
+
+
+
+## [24.11.5](https://github.com/coveo/react-vapor/compare/v24.11.4...v24.11.5) (2021-09-17)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.11.4](https://github.com/coveo/react-vapor/compare/v24.11.3...v24.11.4) (2021-09-17)
+
+
+### Bug Fixes
+
+* **toast:** set additional padding for the close part ([d5b01b2](https://github.com/coveo/react-vapor/commit/d5b01b29c344dc706ce47dea8e931cbcfcd4ff5c))
+
+
+
+
+
+## [24.11.3](https://github.com/coveo/react-vapor/compare/v24.11.2...v24.11.3) (2021-09-16)
+
+
+### Bug Fixes
+
+* change the padding bottom for the icon ([a0b1876](https://github.com/coveo/react-vapor/commit/a0b18763222b8b78be3a108b00b8b716d422d056))
+
+
+
+
+
+## [24.11.2](https://github.com/coveo/react-vapor/compare/v24.11.1...v24.11.2) (2021-09-16)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
 ## [24.11.1](https://github.com/coveo/react-vapor/compare/v24.11.0...v24.11.1) (2021-09-16)
 
 **Note:** Version bump only for package coveo-styleguide
