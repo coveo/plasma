@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.6](https://github.com/coveo/react-vapor/compare/v24.12.5...v24.12.6) (2021-09-27)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
 ## [24.12.5](https://github.com/coveo/react-vapor/compare/v24.12.4...v24.12.5) (2021-09-24)
 
 
