@@ -3,8 +3,8 @@
 <svg version="1.1" id="Calque_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 29 43" style="enable-background:new 0 0 29 43;" xml:space="preserve">
 <style type="text/css">
-	.st0{stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
+	.svgArrowTopSlimPaths{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;}
 </style>
-<path class="st0" stroke="#282829" d="M14.4,41.2v-39"/>
-<path class="st0" stroke="#282829" d="M2.1,15.7L14.4,2.2l12.3,13.5"/>
+<path class="svgArrowTopSlimPaths" stroke="#282829" d="M14.4,41.2v-39"/>
+<path class="svgArrowTopSlimPaths" stroke="#282829" d="M2.1,15.7L14.4,2.2l12.3,13.5"/>
 </svg>
