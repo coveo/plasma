@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.12.8](https://github.com/coveo/react-vapor/compare/v24.12.7...v24.12.8) (2021-09-28)
+
+
+### Bug Fixes
+
+* add mr1 on link to not truncate the focus ([07ae9ef](https://github.com/coveo/react-vapor/commit/07ae9eff0cc4df2ba734cdc0f442e25ba63a329c))
+
+
+
+
+
 ## [24.12.7](https://github.com/coveo/react-vapor/compare/v24.12.6...v24.12.7) (2021-09-27)
 
 **Note:** Version bump only for package react-vapor-demo
