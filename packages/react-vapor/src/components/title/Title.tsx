@@ -22,7 +22,7 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
         'inline-doc-link mr1',
         props.documentationLink && props.documentationLink.linkClasses
     );
-    const titleClasses: string = classNames('bolder', 'mr1', 'truncate', props.classes);
+    const titleClasses: string = classNames('bolder', 'm1', 'truncate', props.classes);
     const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
     const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;
     const tooltipProps = _.isString(props.text) ? {title: props.text} : {};
