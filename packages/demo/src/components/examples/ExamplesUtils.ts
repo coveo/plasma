@@ -18,6 +18,11 @@ export const documentationLink: ILinkSvgProps = {
         svgClass: 'documentation-link icon mod-20',
         className: 'flex',
     },
+    tooltip: {
+        title: "I'm a tooltip!",
+        placement: 'bottom',
+        container: 'body',
+    },
 };
 
 export const defaultTitle: ITitleProps = {

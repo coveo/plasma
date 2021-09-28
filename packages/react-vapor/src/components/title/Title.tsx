@@ -18,7 +18,10 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
     const ref = React.useRef<HTMLHeadingElement>();
 
     const [isTruncated, setIsTruncated] = React.useState(false);
-    const linkClasses = classNames('inline-doc-link', props.documentationLink && props.documentationLink.linkClasses);
+    const linkClasses = classNames(
+        'inline-doc-link mr1',
+        props.documentationLink && props.documentationLink.linkClasses
+    );
     const titleClasses: string = classNames('bolder', 'mr1', 'truncate', props.classes);
     const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
     const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;
