@@ -86,13 +86,12 @@ describe('<Title/>', () => {
             expect(titleComponent.find(Tooltip).length).toBe(1);
         });
 
-        it('should render the documentation link with the inline-doc-link and mr1 classes by default', () => {
+        it('should render the documentation link SVG', () => {
             renderTitle({
                 documentationLink,
             });
 
             expect(titleComponent.find(LinkSvg).length).toBe(1);
-            expect(titleComponent.find(LinkSvg).prop('linkClasses')).toContain('inline-doc-link mr1');
         });
     });
 
