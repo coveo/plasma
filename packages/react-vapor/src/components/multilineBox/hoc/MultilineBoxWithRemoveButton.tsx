@@ -59,20 +59,21 @@ export const multilineBoxWithRemoveButton = (
         };
 
         private getRemoveButtonNode(
-            data: Partial<IMultilineSingleBoxProps<T>> = {},
-            props: Partial<IButtonProps> = {}
+            data: Array<Partial<IMultilineSingleBoxProps<T>>>,
+            props: Partial<IButtonProps> = {},
+            index: number
         ) {
             return (
                 <Button
                     classes={[
                         classNames(defaultMultilineBoxRemoveButtonClasses, {
-                            'cursor-pointer': !data.isLast,
+                            'cursor-pointer': !data[index]?.isLast,
                         }),
                     ]}
                     style={{
-                        visibility: !data.isLast ? 'visible' : 'hidden',
+                        visibility: data.length > 1 ? 'visible' : 'hidden',
                     }}
-                    onClick={() => !data.isLast && !this.props.disabled && this.props.removeBox(data.id)}
+                    onClick={() => !this.props.disabled && this.props.removeBox(data[index].id)}
                     enabled={!this.props.disabled}
                     {...props}
                 >
@@ -80,7 +81,7 @@ export const multilineBoxWithRemoveButton = (
                         svgName={VaporSVG.svg.remove.name}
                         className="icon mod-18"
                         style={{
-                            visibility: !data.isLast ? 'visible' : 'hidden',
+                            visibility: data.length > 1 ? 'visible' : 'hidden',
                         }}
                     />
                 </Button>
@@ -91,7 +92,7 @@ export const multilineBoxWithRemoveButton = (
             return React.Children.map(children, (child: React.ReactNode, index: number) =>
                 HocUtils.supplyConfig(supplier).containerNode(
                     child,
-                    (props?: Partial<IButtonProps>) => this.getRemoveButtonNode(data[index], props),
+                    (props?: Partial<IButtonProps>) => this.getRemoveButtonNode(data, props, index),
                     data,
                     index
                 )
