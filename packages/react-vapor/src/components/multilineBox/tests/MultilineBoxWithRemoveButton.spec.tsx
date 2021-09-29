@@ -8,7 +8,8 @@ import {RTestUtils} from '../../../utils/tests/RTestUtils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {Button, IButtonProps} from '../../button/Button';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
-import {IMultilineBoxOwnProps, MultilineBox} from '../MultilineBox';
+import {IMultilineBoxOwnProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
+import {render, screen} from '../../../TestUtils';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
@@ -183,6 +184,32 @@ describe('Multiline box with remove button', () => {
                     );
 
                     expect(wrapper.find('.pick-me-plz').length).toBe(1);
+                });
+
+                it('should render a remove button for all the elements returned from the renderBody prop', () => {
+                    render(
+                        <ModifiedMultilineBoxWithRemoveButton
+                            id="allo"
+                            data={[
+                                {name: 'potatos', displayName: 'soudane'},
+                                {name: 'potatas', displayName: 'cromonasse'},
+                                {name: 'help', displayName: 'me'},
+                            ]}
+                            renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>{'mommy'}</div>)}
+                        />
+                    );
+                    expect(screen.getAllByRole('button', {name: /remove icon/i}).length).toBe(4);
+                });
+
+                it('should not render a remove button if one element is returned from the renderBody prop', () => {
+                    render(
+                        <ModifiedMultilineBoxWithRemoveButton
+                            id="allo"
+                            data={[]}
+                            renderBody={(data: IMultilineSingleBoxProps[]) => data.map((test) => <div>{'mommy'}</div>)}
+                        />
+                    );
+                    expect(screen.queryAllByRole('button', {name: /remove icon/i}).length).toBe(0);
                 });
             });
         });
