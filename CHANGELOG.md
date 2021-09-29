@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.13.0](https://github.com/coveo/react-vapor/compare/v24.12.9...v24.13.0) (2021-09-29)
+
+
+### Features
+
+* **multiboxwithremovebutton:** *remove button ([ff4ac63](https://github.com/coveo/react-vapor/commit/ff4ac63bf140585d7d50e7b44f0df523784259a7))
+
+
+
+
+
 ## [24.12.9](https://github.com/coveo/react-vapor/compare/v24.12.8...v24.12.9) (2021-09-28)
 
 
