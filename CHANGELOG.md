@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.1](https://github.com/coveo/react-vapor/compare/v24.13.0...v24.13.1) (2021-09-29)
+
+
+### Bug Fixes
+
+* **svg:** css conflict with logo-white ([3d801fb](https://github.com/coveo/react-vapor/commit/3d801fb90d11052c53d8f1c725723a366588eba6))
+* **svg:** revert stroke width ([c972419](https://github.com/coveo/react-vapor/commit/c9724190c7ddd723e363f2a560fa7cff572c0c0f))
+* **svg:** use unique CSS class name ([5068d7a](https://github.com/coveo/react-vapor/commit/5068d7a1b722d30f6bcf8881649622e6c401176f))
+
+
+
+
+
 # [24.13.0](https://github.com/coveo/react-vapor/compare/v24.12.9...v24.13.0) (2021-09-29)
 
 
