@@ -16,11 +16,19 @@ export const SideNavigationExample: React.FunctionComponent = () => {
         <Form>
             <Section level={2} title="Side Navigation">
                 <SideNavigation>
-                    <SideNavigationMenuSection title="Section 1" svgName={svg.coveoIcon16px.name}>
-                        <SideNavigationItem isActive href="http://coveo.com" title="Link to Coveo" />
-                        <SideNavigationItem href="http://coveo.com" title="Another link to Coveo" />
+                    <SideNavigationMenuSection title="Regular Section" svgName={svg.coveoIcon16px.name}>
+                        <SideNavigationItem isActive>
+                            <a href="http://coveo.com" title="Link to Coveo">
+                                Link to Coveo
+                            </a>
+                        </SideNavigationItem>
+                        <SideNavigationItem>
+                            <a href="http://coveo.com" title="Link to Coveo">
+                                Another link to Coveo
+                            </a>
+                        </SideNavigationItem>
                     </SideNavigationMenuSection>
-                    <SideNavigationMenuSection title="Section 2">
+                    <SideNavigationMenuSection title="Loading Section">
                         <SideNavigationLoadingItem className="mod-width-30" />
                         <SideNavigationLoadingItem className="mod-width-50" />
                         <SideNavigationLoadingItem className="mod-width-40" />

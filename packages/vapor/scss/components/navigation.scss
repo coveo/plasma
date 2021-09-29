@@ -107,7 +107,7 @@
                 }
 
                 .navigation-menu-section-items {
-                    overflow-x: auto;
+                    overflow-x: visible;
 
                     &:not(.mb0) {
                         margin-bottom: 1em;
@@ -125,10 +125,20 @@
                             justify-content: space-between;
                             height: $navigation-menu-section-height;
                             margin-right: $navigation-right-margin;
+                            padding-right: 2px;
                             padding-left: $navigation-horizontal-space;
                             color: var(--navy-blue-80);
                             font-size: var(--default-font-size);
                             letter-spacing: 0.05em;
+                            border: 2px solid transparent;
+                            border-radius: 8px;
+
+                            &:focus-visible {
+                                background: var(--navy-blue-10);
+                                border: 2px solid var(--cerulean-blue-50);
+                                outline: none;
+                                box-shadow: 0px 0px 0px 3px var(--cerulean-blue-20);
+                            }
 
                             &.state-locked {
                                 color: $navigation-locked-color;
