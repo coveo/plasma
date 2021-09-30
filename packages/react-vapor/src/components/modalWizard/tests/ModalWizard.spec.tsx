@@ -1,13 +1,13 @@
 import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
-import {renderModal, screen, waitForElementToBeRemoved} from '@test-utils';
+import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
 import {ModalWizard} from '../ModalWizard';
 
 describe('ModalWizard', () => {
     it('closes the modal and execute the onCancel prop if passed when clicking on "cancel"', async () => {
         const cancelSpy = jest.fn();
-        renderModal(
+        render(
             <div>
                 <ModalWizard id="🧙‍♂️" onCancel={cancelSpy}>
                     <div>Step 1</div>
@@ -38,7 +38,7 @@ describe('ModalWizard', () => {
             }
         }
 
-        renderModal(
+        render(
             <ModalWizard id="🧙‍♂️" onNext={nextSpy} onPrevious={previousSpy}>
                 <div>Step 1: ReactElement</div>
                 <FunctionComponentStep />
@@ -76,7 +76,7 @@ describe('ModalWizard', () => {
     it('calls the "onFinish" prop and the modal stays open when clicking on the "finish" button', () => {
         const finishSpy = jest.fn();
 
-        renderModal(
+        render(
             <ModalWizard id="🧙‍♂️" onFinish={finishSpy}>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -92,7 +92,7 @@ describe('ModalWizard', () => {
     });
 
     it('calls the "onFinish" prop and the modal closes when clicking on the "finish" button', async () => {
-        renderModal(
+        render(
             <ModalWizard
                 id="🧙‍♂️"
                 onFinish={(close) => {
@@ -113,7 +113,7 @@ describe('ModalWizard', () => {
     });
 
     it('disables the next button if the current step is invalid', () => {
-        renderModal(
+        render(
             <ModalWizard id="🧙‍♂️" validateStep={() => ({isValid: false})}>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -125,7 +125,7 @@ describe('ModalWizard', () => {
     });
 
     it('prevents from closing the modal accidently if it has pending changes', () => {
-        renderModal(
+        render(
             <ModalWizard id="🧙‍♂️" isDirty>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -142,7 +142,7 @@ describe('ModalWizard', () => {
     });
 
     it('does not prevent from closing the modal accidently if it has no pending changes', async () => {
-        renderModal(
+        render(
             <ModalWizard id="🧙‍♂️" isDirty={false}>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -157,7 +157,7 @@ describe('ModalWizard', () => {
     });
 
     it('changes the title depending on the step if a function was provided as title', () => {
-        renderModal(
+        render(
             <ModalWizard id="🧙‍♂️" title={(currentStep: number) => (currentStep === 0 ? 'Title 1' : 'Title 2')}>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -175,7 +175,7 @@ describe('ModalWizard', () => {
     });
 
     it('changes the footer depending on the step if a function was provided as modalFooterChildren', () => {
-        renderModal(
+        render(
             <ModalWizard
                 id="🧙‍♂️"
                 modalFooterChildren={(currentStep: number) =>

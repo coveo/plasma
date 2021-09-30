@@ -2,13 +2,13 @@
     "extends": "../tsconfig-base",
     "compilerOptions": {
         "outDir": "dist",
-        "rootDir": "src",
         "tsBuildInfoFile": "./dist/.tsbuildinfo",
         "baseUrl": ".",
         "paths": {
-            "@test-utils": ["src/TestUtils.tsx"],
+            "@test-utils": ["jest/utils.tsx"],
             "*": ["types/*", "*"]
         }
     },
-    "include": ["src"]
+    "include": ["src", "jest"],
+    "exclude": ["**/*.js"]
 }

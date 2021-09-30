@@ -16,12 +16,8 @@ jest.mock('react', () => {
 const mockedReact = mocked(React);
 
 describe('<ChartTooltipContent />', () => {
-    beforeAll(() => {
+    beforeEach(() => {
         mockedReact.useContext.mockReturnValue(XYChartContextMock);
-    });
-
-    afterEach(() => {
-        jest.clearAllMocks();
     });
 
     it('should not throw', () => {

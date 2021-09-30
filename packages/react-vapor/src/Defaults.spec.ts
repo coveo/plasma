@@ -2,17 +2,16 @@ import ReactModal from 'react-modal';
 
 import {Defaults} from './Defaults';
 
-jest.mock('react-modal');
-
 describe('Defaults', () => {
     describe('APP_ELEMENT', () => {
         it('should call ReactModal.setAppElement', () => {
+            const setAppElementSpy = jest.spyOn(ReactModal, 'setAppElement').mockImplementation(() => null);
             const expectedAppElement = '#app-element';
 
             Defaults.APP_ELEMENT = expectedAppElement;
 
-            expect(ReactModal.setAppElement).toHaveBeenCalledTimes(1);
-            expect(ReactModal.setAppElement).toHaveBeenCalledWith(expectedAppElement);
+            expect(setAppElementSpy).toHaveBeenCalledTimes(1);
+            expect(setAppElementSpy).toHaveBeenCalledWith(expectedAppElement);
         });
     });
 });

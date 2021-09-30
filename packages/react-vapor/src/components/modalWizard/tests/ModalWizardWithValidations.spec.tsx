@@ -1,12 +1,12 @@
 import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
-import {renderModal, screen, waitForElementToBeRemoved} from '@test-utils';
+import {render, screen, waitForElementToBeRemoved} from '@test-utils';
 
 import {ModalWizardWithValidations} from '../ModalWizardWithValidations';
 
 describe('ModalWizardWithValidations', () => {
     it('validates each steps using validation ids', () => {
-        renderModal(
+        render(
             <ModalWizardWithValidations id="🌶🧙‍♂️" validationIdsByStep={[['step-1'], ['step-2-a', 'step-2-b']]}>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -37,7 +37,7 @@ describe('ModalWizardWithValidations', () => {
     });
 
     it('prevents from closing the modal accidently if any step is dirty', () => {
-        renderModal(
+        render(
             <ModalWizardWithValidations id="🌶🧙‍♂️" validationIdsByStep={[['step-1'], ['step-2']]}>
                 <div>Step 1</div>
                 <div>Step 2</div>
@@ -65,7 +65,7 @@ describe('ModalWizardWithValidations', () => {
     });
 
     it('does not prevent from closing the modal accidently if it has no pending changes', async () => {
-        renderModal(
+        render(
             <ModalWizardWithValidations id="🌶🧙‍♂️" validationIdsByStep={[['step-1'], ['step-2']]}>
                 <div>Step 1</div>
                 <div>Step 2</div>

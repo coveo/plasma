@@ -1,5 +1,6 @@
-import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
+import {render, screen} from '@test-utils';
+import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -9,7 +10,6 @@ import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils'
 import {Button, IButtonProps} from '../../button/Button';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineBoxOwnProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
-import {render, screen} from '../../../TestUtils';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {

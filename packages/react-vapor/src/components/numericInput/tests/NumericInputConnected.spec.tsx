@@ -1,8 +1,8 @@
 import {shallowWithStore} from '@helpers/enzyme-redux';
+import {render, screen} from '@test-utils';
 import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 
-import {render, screen} from '../../../TestUtils';
 import {keyCode} from '../../../utils/InputUtils';
 import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
 import {NumericInputActions} from '../NumericInputActions';

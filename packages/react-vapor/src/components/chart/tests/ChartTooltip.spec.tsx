@@ -24,10 +24,6 @@ describe('<ChartTooltip />', () => {
         mockedReact.useContext.mockReturnValue(XYChartContextMock);
     });
 
-    afterEach(() => {
-        jest.clearAllMocks();
-    });
-
     it('should not throw', () => {
         expect(() => {
             shallow(<ChartTooltip />);
