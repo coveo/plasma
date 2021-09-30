@@ -5,10 +5,26 @@ import {AnyAction, applyMiddleware, combineReducers, createStore, Store} from 'r
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 
-import {Defaults} from './Defaults';
-import {ReactVaporReducers} from './ReactVaporReducers';
-import {IReactVaporState} from './ReactVaporState';
-import {IDispatch} from './utils/ReduxUtils';
+import {Defaults} from '../src/Defaults';
+import {ReactVaporReducers} from '../src/ReactVaporReducers';
+import {IReactVaporState} from '../src/ReactVaporState';
+import {IDispatch} from '../src/utils/ReduxUtils';
+
+const TEST_CONTAINER_ID = 'app';
+const MODAL_ROOT_ID = 'modals';
+const DROP_ROOT_ID = 'dropdowns';
+
+const setup = () => {
+    document.body.innerHTML = `<div id="${TEST_CONTAINER_ID}"></div><div id="${MODAL_ROOT_ID}"></div><div id="${DROP_ROOT_ID}"></div>`;
+    Defaults.APP_ELEMENT = '#' + TEST_CONTAINER_ID;
+    Defaults.MODAL_ROOT = '#' + MODAL_ROOT_ID;
+    Defaults.DROP_ROOT = '#' + DROP_ROOT_ID;
+    Defaults.MODAL_TIMEOUT = 0;
+};
+
+const cleanup = () => {
+    jest.restoreAllMocks();
+};
 
 const customRender = (
     ui: React.ReactElement,
@@ -19,6 +35,7 @@ const customRender = (
             initialState,
             applyMiddleware(thunk, promise)
         ),
+        container = document.getElementById(TEST_CONTAINER_ID),
         ...renderOptions
     }: Omit<RenderOptions, 'queries'> & {
         initialState?: IReactVaporState;
@@ -29,15 +46,7 @@ const customRender = (
 ): RenderResult => {
     const TestWrapper: React.FunctionComponent = ({children}) => <Provider store={store}>{children}</Provider>;
 
-    return render(ui, {wrapper: TestWrapper, ...renderOptions});
-};
-
-const renderModal: typeof customRender = (ui, renderOptions) => {
-    const appRoot = document.createElement('div');
-    appRoot.id = 'root';
-    document.body.appendChild(appRoot);
-    Defaults.APP_ELEMENT = appRoot;
-    return customRender(ui, {...renderOptions, container: appRoot});
+    return render(ui, {wrapper: TestWrapper, container, ...renderOptions});
 };
 
 /**
@@ -60,4 +69,4 @@ const expectToThrow = (func: () => unknown, error?: JestToErrorArg): void => {
 type JestToErrorArg = Parameters<jest.Matchers<unknown, () => unknown>['toThrow']>[0];
 
 export * from '@testing-library/react';
-export {customRender as render, renderModal, expectToThrow};
+export {customRender as render, expectToThrow, cleanup, setup};

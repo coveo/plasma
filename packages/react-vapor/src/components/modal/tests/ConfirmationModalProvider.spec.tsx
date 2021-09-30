@@ -1,6 +1,6 @@
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {renderModal, screen} from '@test-utils';
+import {render, screen} from '@test-utils';
 
 import {ConfirmationModalProvider} from '../ConfirmationModalProvider';
 import {ModalCompositeConnected} from '../ModalComposite';
@@ -8,7 +8,7 @@ import {ModalCompositeConnected} from '../ModalComposite';
 describe('ConfirmationModalProvider', () => {
     describe('when shouldConfirm prop is true:', () => {
         it('should open the ConfirmationModal to interrupt the leaving action if isDirty is true', () => {
-            renderModal(
+            render(
                 <ConfirmationModalProvider
                     shouldConfirm
                     confirmationModalId="👾-unsaved-changes"
@@ -41,7 +41,7 @@ describe('ConfirmationModalProvider', () => {
 
     describe('when shouldConfirm prop is false:', () => {
         it('should not open the ConfirmationModal to interrupt the leaving action if isDirty is true', () => {
-            renderModal(
+            render(
                 <ConfirmationModalProvider
                     shouldConfirm={false}
                     confirmationModalId="👾-unsaved-changes"

@@ -19,15 +19,8 @@ describe('<Popover>', () => {
             <Popover {...props}>
                 <span id={popoverToggleId}>Toggle</span>
                 <span id={popoverElementId}>Tether element</span>
-            </Popover>,
-            {attachTo: document.getElementById('App')}
+            </Popover>
         ));
-
-    beforeAll(() => {
-        const app = document.createElement('div');
-        app.id = 'App';
-        document.body.appendChild(app);
-    });
 
     beforeEach(() => {
         popoverProps = {
@@ -190,7 +183,7 @@ describe('<Popover>', () => {
             });
 
             it('should close the popover when clicking outside Popover', () => {
-                document.getElementById('App').click();
+                document.body.click();
 
                 expect(toggleOpenedSpy.mock.calls.length).toBe(1);
 
@@ -216,7 +209,7 @@ describe('<Popover>', () => {
             });
 
             it('should close the popover when clicking outside Popover', () => {
-                document.getElementById('App').click();
+                document.body.click();
 
                 expect(toggleOpenedSpy).toHaveBeenCalledTimes(1);
 
@@ -234,7 +227,7 @@ describe('<Popover>', () => {
             });
 
             it('should not update if already closed', () => {
-                document.getElementById('App').click();
+                document.body.click();
 
                 expect(toggleOpenedSpy).not.toHaveBeenCalled();
             });
@@ -251,7 +244,7 @@ describe('<Popover>', () => {
             });
 
             it('should not update if already closed', () => {
-                document.getElementById('App').click();
+                document.body.click();
 
                 expect(toggleOpenedSpy).not.toHaveBeenCalled();
             });
