@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.2](https://github.com/coveo/react-vapor/compare/v24.13.1...v24.13.2) (2021-09-30)
+
+
+### Bug Fixes
+
+* **modal:** remove memory leak from react-modal ([c1b0bc5](https://github.com/coveo/react-vapor/commit/c1b0bc58da688fab9d06728bd31f96887fa13c25))
+
+
+
+
+
 ## [24.13.1](https://github.com/coveo/react-vapor/compare/v24.13.0...v24.13.1) (2021-09-29)
 
 
