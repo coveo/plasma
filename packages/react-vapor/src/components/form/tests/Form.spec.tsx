@@ -1,6 +1,7 @@
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
+import {render} from '@test-utils';
 import {Form} from '../Form';
 
 describe('Form', () => {
@@ -27,10 +28,11 @@ describe('Form', () => {
         });
 
         it('should render the fieldset with mods and classNames', () => {
-            const form = shallow(<Form className={SOME_CLASS} mods="mod-header-padding" />);
+            const {container} = render(<Form className={SOME_CLASS} mods="mod-header-padding" />);
+            const formCollection = container.firstChild as HTMLFormElement;
 
-            expect(form.hasClass(SOME_CLASS)).toBe(true);
-            expect(form.hasClass('mod-header-padding')).toBe(true);
+            expect(formCollection.getElementsByClassName(SOME_CLASS).length).toBe(1);
+            expect(formCollection.getElementsByClassName('mod-header-padding').length).toBe(1);
         });
 
         it('should render children', () => {
@@ -45,17 +47,19 @@ describe('Form', () => {
         });
 
         it('should set margin top and bottom if "noMargin" prop is set to false', () => {
-            const form = shallow(<Form>Whatever</Form>);
+            const {container} = render(<Form className={SOME_CLASS} mods="mod-header-padding" />);
+            const formCollection = container.firstChild as HTMLFormElement;
 
-            expect(form.hasClass('my2')).toBe(true);
+            expect(formCollection.getElementsByClassName('my2').length).toBe(1);
         });
 
         it('should not set margin top and bottom if "noMargin" prop is set to true', () => {
-            const form = shallow(<Form noMargin>Whatever</Form>);
+            const {container} = render(<Form className={SOME_CLASS} noMargin mods="mod-header-padding" />);
+            const formCollection = container.firstChild as HTMLFormElement;
 
-            expect(form.hasClass('my2')).toBe(false);
-            expect(form.hasClass('mt2')).toBe(false);
-            expect(form.hasClass('mb2')).toBe(false);
+            expect(formCollection.getElementsByClassName('my2').length).toBe(0);
+            expect(formCollection.getElementsByClassName('mt2').length).toBe(0);
+            expect(formCollection.getElementsByClassName('mb2').length).toBe(0);
         });
     });
 });
