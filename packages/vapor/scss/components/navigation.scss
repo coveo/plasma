@@ -130,14 +130,12 @@
                             color: var(--navy-blue-80);
                             font-size: var(--default-font-size);
                             letter-spacing: 0.05em;
-                            border: 2px solid transparent;
+                            border: 2px solid transparent; // transparent border needed for outline
                             border-radius: 8px;
 
+                            &:focus,
                             &:focus-visible {
-                                background: var(--navy-blue-10);
-                                border: 2px solid var(--cerulean-blue-50);
-                                outline: none;
-                                box-shadow: 0 0 0 3px var(--cerulean-blue-20);
+                                @include focus-border(2px);
                             }
 
                             &.state-locked {

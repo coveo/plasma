@@ -17,8 +17,8 @@ $browser-context: 13; // Default
 }
 
 @mixin focus-border($offset) {
-    outline-width: 2px;
-    outline-style: auto;
-    outline-color: var(--bright-turquoise-40);
-    outline-offset: $offset;
+    background: var(--navy-blue-10);
+    border: 2px solid var(--cerulean-blue-50);
+    outline: none;
+    box-shadow: 0 0 0 3px var(--cerulean-blue-20);
 }
