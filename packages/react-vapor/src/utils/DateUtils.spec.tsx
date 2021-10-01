@@ -15,6 +15,12 @@ describe('DateUtils', () => {
 
             expect(DateUtils.getValidDate(date).toString()).toBe(moment().toDate().toString());
         });
+
+        it('return undefined if the date is an empty string', () => {
+            const date = '';
+
+            expect(DateUtils.getValidDate(date)).toBe(undefined);
+        });
     });
 
     describe('isDifferent', () => {
