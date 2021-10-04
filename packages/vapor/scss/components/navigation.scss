@@ -133,9 +133,8 @@
                             border: 2px solid transparent; // transparent border needed for outline
                             border-radius: 8px;
 
-                            &:focus,
                             &:focus-visible {
-                                @include focus-border(2px);
+                                @include focus-border();
                             }
 
                             &.state-locked {

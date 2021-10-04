@@ -1,9 +1,3 @@
-@mixin button-focus($offset) {
-    background-color: var(--deprecated-light-grey);
-
-    @include focus-border($offset);
-}
-
 .btn {
     display: inline-flex;
     align-items: center;
@@ -40,7 +34,7 @@
     }
 
     &:focus {
-        @include button-focus(0px);
+        @include focus-border(var(--white), 0, $button-border-width);
         color: var(--navy-blue-80);
         text-decoration: none;
         background-color: var(--white);

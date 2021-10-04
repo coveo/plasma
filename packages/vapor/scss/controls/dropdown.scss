@@ -115,6 +115,10 @@
     &.mod-search {
         text-align: left;
     }
+
+    &:focus {
+        @include focus-border(var(--white), 0, $button-border-width);
+    }
 }
 
 .dropdown-toggle .value-icon,

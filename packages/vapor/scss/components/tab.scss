@@ -29,6 +29,10 @@
             --color: var(--deprecated-medium-grey);
             pointer-events: none;
         }
+
+        &:focus-visible {
+            @include focus-outline();
+        }
     }
 
     & > * {

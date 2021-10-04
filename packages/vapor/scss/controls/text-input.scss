@@ -46,7 +46,7 @@
         border: none;
 
         &:focus {
-            outline: none;
+            @include focus-outline();
         }
     }
 
