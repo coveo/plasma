@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.5](https://github.com/coveo/react-vapor/compare/v24.13.4...v24.13.5) (2021-10-04)
+
+
+### Bug Fixes
+
+* **svg:** conflict with SVGs that require fill attribute ([714d385](https://github.com/coveo/react-vapor/commit/714d385e0e87df1ff4de5a3d9d1846535becca6c))
+
+
+### Reverts
+
+* **svg:** reverts the push source svg change ([89190d3](https://github.com/coveo/react-vapor/commit/89190d3e1908ad864230963b736b10263c3a75b0))
+
+
+
+
+
 ## [24.13.4](https://github.com/coveo/react-vapor/compare/v24.13.3...v24.13.4) (2021-10-01)
 
 **Note:** Version bump only for package root
