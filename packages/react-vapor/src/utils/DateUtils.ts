@@ -72,14 +72,12 @@ export class DateUtils {
     }
 
     static getValidDate(date: string, fromTime: boolean = false): Date {
-        if (date !== '') {
-            const momentDate: moment.Moment = moment(date, LONG_DATE_FORMAT, fromTime);
-            if (momentDate.isValid()) {
-                return momentDate.toDate();
-            }
-
-            return moment().toDate();
+        const momentDate: moment.Moment = moment(date, LONG_DATE_FORMAT, fromTime);
+        if (momentDate.isValid()) {
+            return momentDate.toDate();
         }
+
+        return moment().toDate();
     }
 
     static getSimpleDate(date: Date): string {

@@ -59,10 +59,12 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
     };
 
     private handleChangeDate = () => {
-        const date: Date = this.getDateFromString(this.dateInput.value);
+        if (this.dateInput.value !== '') {
+            const date: Date = this.getDateFromString(this.dateInput.value);
 
-        if (date.getDate()) {
-            this.props.onBlur(date, this.props.upperLimit);
+            if (date.getDate()) {
+                this.props.onBlur(date, this.props.upperLimit);
+            }
         }
     };
 
