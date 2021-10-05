@@ -18,7 +18,7 @@ $browser-context: 13; // Default
 
 @mixin focus-outline($offset: 0) {
     outline-width: 2px;
-    outline-style: solid;
+    outline-style: auto;
     outline-color: var(--cerulean-blue-50);
     outline-offset: $offset;
 }
