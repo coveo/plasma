@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.6](https://github.com/coveo/react-vapor/compare/v24.13.5...v24.13.6) (2021-10-05)
+
+
+### Bug Fixes
+
+* **form component:** fieldset without form autocompletes ([5ba3469](https://github.com/coveo/react-vapor/commit/5ba34690b7c82cedada9b1b680472ddb64a0245d))
+
+
+
+
+
 ## [24.13.5](https://github.com/coveo/react-vapor/compare/v24.13.4...v24.13.5) (2021-10-04)
 
 
