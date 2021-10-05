@@ -11,7 +11,7 @@ const TAB11_ID = 'tab11';
 const TAB22_ID = 'tab22';
 const TAB33_ID = 'tab33';
 
-export const TabsConnectedExamples: React.FC = () => (
+export const TabsConnectedExamples: React.FunctionComponent = () => (
     <Section>
         <Section level={3} title="Basic Tabs">
             <div>
