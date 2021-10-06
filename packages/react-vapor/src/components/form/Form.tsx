@@ -10,11 +10,16 @@ export interface IFormProps {
     noMargin?: boolean;
 }
 
-export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin}) => (
-    <form>
-        <fieldset className={classNames('coveo-form mod-padding-children', {my2: !noMargin}, mods, className)}>
-            {title && <h2 className="mb2">{title}</h2>}
-            {children}
-        </fieldset>
-    </form>
-);
+export const Form: React.FunctionComponent<IFormProps> = ({children, className, title, mods, noMargin}) => {
+    const onSubmit = (submitEvent: React.FormEvent) => {
+        submitEvent.preventDefault();
+    };
+    return (
+        <form onSubmit={onSubmit}>
+            <fieldset className={classNames('coveo-form mod-padding-children', {my2: !noMargin}, mods, className)}>
+                {title && <h2 className="mb2">{title}</h2>}
+                {children}
+            </fieldset>
+        </form>
+    );
+};

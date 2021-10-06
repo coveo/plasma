@@ -1,7 +1,8 @@
+import userEvent from '@testing-library/user-event';
 import {shallow} from 'enzyme';
 import * as React from 'react';
 
-import {render} from '@test-utils';
+import {render, screen} from '@test-utils';
 import {Form} from '../Form';
 
 describe('Form', () => {
@@ -60,6 +61,22 @@ describe('Form', () => {
             expect(formCollection.getElementsByClassName('my2').length).toBe(0);
             expect(formCollection.getElementsByClassName('mt2').length).toBe(0);
             expect(formCollection.getElementsByClassName('mb2').length).toBe(0);
+        });
+
+        it('does not change the url when the user press enter inside a form', () => {
+            const initialHREF = window.location.href;
+
+            render(
+                <Form>
+                    <input defaultValue="" name="patate" />
+                    <input type="submit" value="submit" />
+                </Form>
+            );
+
+            userEvent.type(screen.getByRole('textbox'), 'hello world');
+            userEvent.click(screen.getByRole('button'));
+
+            expect(window.location.href).toBe(initialHREF);
         });
     });
 });
