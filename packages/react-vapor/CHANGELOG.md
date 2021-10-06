@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.7](https://github.com/coveo/react-vapor/compare/v24.13.6...v24.13.7) (2021-10-06)
+
+
+### Bug Fixes
+
+* **datepicker:** dont set now() if input is empty string ([c856871](https://github.com/coveo/react-vapor/commit/c856871867bef864dd836158d4a3d6083f19ce78))
+* **datepicker:** put the condition in the datePicker ([8efb0eb](https://github.com/coveo/react-vapor/commit/8efb0eb8b1b815cacec2b2748c7a24d043157e23))
+
+
+
+
+
 ## [24.13.6](https://github.com/coveo/react-vapor/compare/v24.13.5...v24.13.6) (2021-10-05)
 
 
