@@ -232,6 +232,13 @@ describe('Date picker', () => {
             expect(datePickerInstance['dateInput'].value).toBe('');
         });
 
+        it('set an empty value in the date input when passing it an empty string date as prop', () => {
+            const dateProps: IDatePickerProps = _.extend({}, DATE_PICKER_BASIC_PROPS, {date: 'null'});
+            datePicker.setProps(dateProps);
+
+            expect(datePickerInstance['dateInput'].value).toBe('');
+        });
+
         it('should call onClick prop with whether or not the date picker is for the upper limit on input focus', () => {
             datePicker.find('input').simulate('focus');
 
