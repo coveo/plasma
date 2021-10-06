@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.8](https://github.com/coveo/react-vapor/compare/v24.13.7...v24.13.8) (2021-10-06)
+
+
+### Bug Fixes
+
+* **form:** prevent the default behaviour of submitting on forms ([473a1c0](https://github.com/coveo/react-vapor/commit/473a1c03ad12174690720f440b6714e38e063132))
+
+
+
+
+
 ## [24.13.7](https://github.com/coveo/react-vapor/compare/v24.13.6...v24.13.7) (2021-10-06)
 
 
