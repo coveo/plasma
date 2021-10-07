@@ -31,7 +31,7 @@ a {
     }
 
     &:focus {
-        @include focus-border(5px);
+        @include focus-outline(5px);
     }
 
     &:hover {

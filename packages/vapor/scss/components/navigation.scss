@@ -107,7 +107,7 @@
                 }
 
                 .navigation-menu-section-items {
-                    overflow-x: auto;
+                    overflow-x: visible;
 
                     &:not(.mb0) {
                         margin-bottom: 1em;
@@ -125,10 +125,17 @@
                             justify-content: space-between;
                             height: $navigation-menu-section-height;
                             margin-right: $navigation-right-margin;
+                            padding-right: 2px;
                             padding-left: $navigation-horizontal-space;
                             color: var(--navy-blue-80);
                             font-size: var(--default-font-size);
                             letter-spacing: 0.05em;
+                            border: 2px solid transparent; // transparent border needed for outline
+                            border-radius: 8px;
+
+                            &:focus-visible {
+                                @include focus-border();
+                            }
 
                             &.state-locked {
                                 color: $navigation-locked-color;

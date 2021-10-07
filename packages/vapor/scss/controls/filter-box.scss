@@ -62,10 +62,6 @@
         padding-right: 40px;
         padding-left: 20px;
 
-        &:focus {
-            outline-color: var(--bright-turquoise-40);
-        }
-
         &::-ms-clear {
             display: none;
         }

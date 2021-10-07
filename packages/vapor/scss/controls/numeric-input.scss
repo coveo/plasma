@@ -21,7 +21,7 @@ $numeric-input-buttons-border-radius: 4px;
         box-shadow: inset 0 0 3px 0 rgba(var(--black-rgb), $transparency-5);
 
         &:focus {
-            @include focus-border(0);
+            @include focus-outline();
         }
     }
 
@@ -43,10 +43,11 @@ $numeric-input-buttons-border-radius: 4px;
         &:hover {
             background-color: var(--digital-blue-100);
         }
+    }
 
-        &:focus {
-            @include focus-border(0);
-        }
+    input:focus,
+    button:focus {
+        @include focus-outline();
     }
 }
 // override the style of the focus for numeric inputs in Firefox
