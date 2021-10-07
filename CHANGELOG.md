@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.9](https://github.com/coveo/react-vapor/compare/v24.13.8...v24.13.9) (2021-10-07)
+
+
+### Bug Fixes
+
+* moved the m1 to the linkClasses ([21bfd83](https://github.com/coveo/react-vapor/commit/21bfd83117156ea26b1665603319350103b79ae3))
+* **svg:** arrow right link not respecting mod-stroke rules ([ebc9a0c](https://github.com/coveo/react-vapor/commit/ebc9a0c29ac13d9dbf043c1f413a452cb0457eaa))
+
+
+
+
+
 ## [24.13.8](https://github.com/coveo/react-vapor/compare/v24.13.7...v24.13.8) (2021-10-06)
 
 

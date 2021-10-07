@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.13.9](https://github.com/coveo/react-vapor/compare/v24.13.8...v24.13.9) (2021-10-07)
+
+
+### Bug Fixes
+
+* **svg:** arrow right link not respecting mod-stroke rules ([ebc9a0c](https://github.com/coveo/react-vapor/commit/ebc9a0c29ac13d9dbf043c1f413a452cb0457eaa))
+
+
+
+
+
 ## [24.13.5](https://github.com/coveo/react-vapor/compare/v24.13.4...v24.13.5) (2021-10-04)
 
 
