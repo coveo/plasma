@@ -34,7 +34,7 @@
     }
 
     &:focus {
-        @include focus-border(var(--white), 0, $button-border-width);
+        @include focus-border(var(--white), $border-radius, $button-border-width);
         color: var(--navy-blue-80);
         text-decoration: none;
         background-color: var(--white);
