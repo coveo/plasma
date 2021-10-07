@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.14.0](https://github.com/coveo/react-vapor/compare/v24.13.9...v24.14.0) (2021-10-07)
+
+
+### Features
+
+* **icons:** add gear icon ([#2153](https://github.com/coveo/react-vapor/issues/2153)) ([a4d7600](https://github.com/coveo/react-vapor/commit/a4d760029176e8f348753c1c02cb2b0e9b66ce3b))
+
+
+
+
+
 ## [24.13.9](https://github.com/coveo/react-vapor/compare/v24.13.8...v24.13.9) (2021-10-07)
 
 
