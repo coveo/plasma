@@ -19,10 +19,10 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
 
     const [isTruncated, setIsTruncated] = React.useState(false);
     const linkClasses = classNames(
-        'inline-doc-link mr1',
+        'inline-doc-link m1',
         props.documentationLink && props.documentationLink.linkClasses
     );
-    const titleClasses: string = classNames('bolder', 'm1', 'truncate', props.classes);
+    const titleClasses: string = classNames('bolder', 'truncate', props.classes);
     const prefixClasses: string = classNames({mr1: !_.isEmpty(props.prefix)});
     const linkIcon = props.documentationLink && <LinkSvg {...props.documentationLink} linkClasses={[linkClasses]} />;
     const tooltipProps = _.isString(props.text) ? {title: props.text} : {};
