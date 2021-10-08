@@ -91,7 +91,7 @@
     .dropdown-toggle-arrow,
     .dropdown-toggle-arrow-style {
         position: absolute;
-        top: calc(50% - ($dropdown-arrow-icon-size / 2)); // Remove the approximated svg inner top/bottom padding
+        top: calc(50% - (#{$dropdown-arrow-icon-size} / 2)); // Remove the approximated svg inner top/bottom padding
         right: $button-padding-x;
         width: $dropdown-arrow-icon-size;
         height: $dropdown-arrow-icon-size;
