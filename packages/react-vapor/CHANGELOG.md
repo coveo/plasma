@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.14.3](https://github.com/coveo/react-vapor/compare/v24.14.2...v24.14.3) (2021-10-12)
+
+
+### Bug Fixes
+
+* **form:** remove the "block" type display for the form component ([#2155](https://github.com/coveo/react-vapor/issues/2155)) ([5cba9a0](https://github.com/coveo/react-vapor/commit/5cba9a008454dc639c3359761687a66a41bafd57))
+
+
+
+
+
 ## [24.14.2](https://github.com/coveo/react-vapor/compare/v24.14.1...v24.14.2) (2021-10-08)
 
 **Note:** Version bump only for package react-vapor
