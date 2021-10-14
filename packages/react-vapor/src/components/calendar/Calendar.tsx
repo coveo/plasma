@@ -280,12 +280,10 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         );
 
         if (this.props.countdown) {
-            const daysInMonth = moment().month(this.props.months[selectedMonth]).daysInMonth();
-            const daysLeftInMonth = moment().date(daysInMonth).fromNow(true);
-            const currentDayOfMonth = moment().date();
-
-            // Datepicker uses below logic to avoid displaying 'A few [hours|minutes|seconds] left'
-            const countdownTitle = currentDayOfMonth === daysInMonth ? 'Last day' : `${daysLeftInMonth} left`;
+            const endOfMonth = moment().endOf('month');
+            const daysLeftInMonth = endOfMonth.diff(moment(), 'days');
+            // Datepicker uses below logic to avoid displaying '0 days left'
+            const countdownTitle = daysLeftInMonth === 0 ? 'Last day' : `${daysLeftInMonth} days left`;
 
             this.countdownHeader = (
                 <div id="countdown-header">

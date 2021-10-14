@@ -17,9 +17,7 @@ describe('Countdown', () => {
     });
 
     it('should display "Last day" on the last day of the month', () => {
-        const dateNow = Date.now;
-        // @ts-ignore
-        Date.now = jest.fn(() => new Date('2020-01-31T12:00:00.000Z'));
+        jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-31T12:00:00.000Z').getTime());
 
         render(<Countdown />);
 
@@ -28,7 +26,5 @@ describe('Countdown', () => {
                 name: /last day/i,
             })
         ).toBeInTheDocument();
-
-        Date.now = dateNow;
     });
 });
