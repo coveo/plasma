@@ -25,6 +25,12 @@ export interface ICalendarSelectionRule {
     isFor: string;
 }
 
+type Languages = 'en';
+
+interface I18nConfig {
+    [key: string]: Record<Languages, string>;
+}
+
 export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
     id?: string;
     months?: string[];
@@ -39,6 +45,8 @@ export interface ICalendarOwnProps extends React.ClassAttributes<Calendar> {
     wrapperClassNames?: string;
     showHeader?: boolean;
     countdown?: boolean;
+    locales?: I18nConfig;
+    defaultLanguage?: Languages;
 }
 
 export interface ICalendarStateProps extends IReduxStatePossibleProps {
@@ -80,6 +88,15 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         startingMonth: DateUtils.currentMonth,
         startingDay: 0,
         showHeader: true,
+        defaultLanguage: 'en',
+        locales: {
+            countdownHeader: {
+                en: '#{days} days left',
+            },
+            countdownHeaderLastDay: {
+                en: 'Last day',
+            },
+        },
     };
 
     private getSelectedDatePicker(): IDatePickerState {
@@ -280,10 +297,19 @@ export class Calendar extends React.Component<ICalendarProps, any> {
         );
 
         if (this.props.countdown) {
+            const {
+                locales: {countdownHeader, countdownHeaderLastDay},
+                defaultLanguage,
+            } = this.props;
+
             const endOfMonth = moment().endOf('month');
             const daysLeftInMonth = endOfMonth.diff(moment(), 'days');
+
             // Datepicker uses below logic to avoid displaying '0 days left'
-            const countdownTitle = daysLeftInMonth === 0 ? 'Last day' : `${daysLeftInMonth} days left`;
+            const countdownTitle =
+                daysLeftInMonth === 0
+                    ? countdownHeaderLastDay[defaultLanguage]
+                    : countdownHeader[defaultLanguage].replace('#{days}', daysLeftInMonth.toString());
 
             this.countdownHeader = (
                 <div id="countdown-header">
