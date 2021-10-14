@@ -1,4 +1,4 @@
-import {render} from '@test-utils';
+import {render, screen} from '@test-utils';
 import moment from 'moment';
 import * as React from 'react';
 
@@ -14,5 +14,22 @@ describe('Countdown', () => {
 
         expect(container.firstChild).toHaveClass('countdown-calendar');
         expect(today).toHaveClass('todays-date');
+        expect(
+            screen.getByRole('heading', {
+                name: /days left/i,
+            })
+        ).toBeInTheDocument();
+    });
+
+    it('should display "Last day" on the last day of the month', () => {
+        jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-31T12:00:00.000Z').getTime());
+
+        render(<Countdown />);
+
+        expect(
+            screen.getByRole('heading', {
+                name: /last day/i,
+            })
+        ).toBeInTheDocument();
     });
 });

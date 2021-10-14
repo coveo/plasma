@@ -131,7 +131,7 @@
             }
         }
 
-        .lower-limit.upper-limit {
+        .lower-limit.upper-limit:not(.countdown) {
             width: calc(
                 #{$calendar-cell-dimensions} - #{$selected-date-offset} * 2 - #{$calendar-limit-border-width} * 2 - #{$selected-date-offset}
             );
