@@ -14,6 +14,11 @@ describe('Countdown', () => {
 
         expect(container.firstChild).toHaveClass('countdown-calendar');
         expect(today).toHaveClass('todays-date');
+        expect(
+            screen.getByRole('heading', {
+                name: /days left/i,
+            })
+        ).toBeInTheDocument();
     });
 
     it('should display "Last day" on the last day of the month', () => {
