@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.14.4](https://github.com/coveo/react-vapor/compare/v24.14.3...v24.14.4) (2021-10-14)
+
+
+### Bug Fixes
+
+* **countdown:** moment fix to display better text ([d6e0ede](https://github.com/coveo/react-vapor/commit/d6e0ede81b7a0a91980d43e9edf9948a84768c13))
+
+
+
+
+
 ## [24.14.3](https://github.com/coveo/react-vapor/compare/v24.14.2...v24.14.3) (2021-10-12)
 
 
