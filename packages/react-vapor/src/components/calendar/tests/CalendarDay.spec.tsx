@@ -70,7 +70,7 @@ describe('Calendar day', () => {
             expect(calendarDay.html()).toContain(DAY.number.toString());
         });
 
-        it('should have the class "other-month-date" is the isCurrentMonth of the day prop is set to false', () => {
+        it('should have the class "other-month-date" if the isCurrentMonth of the day prop is set to false', () => {
             const dayFromOtherMonth: IDay = _.extend({}, DAY, {isCurrentMonth: false});
             const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {day: dayFromOtherMonth});
 
@@ -81,7 +81,7 @@ describe('Calendar day', () => {
             expect(calendarDay.find('.other-month-date').length).toBe(1);
         });
 
-        it('should have the class "todays-date" is the isToday of the day prop is set to true', () => {
+        it('should have the class "todays-date" if the isToday of the day prop is set to true', () => {
             const today: IDay = _.extend({}, DAY, {isToday: true});
             const newProps: ICalendarDayProps = _.extend({}, BASIC_CALENDAR_DAY_PROPS, {day: today});
 

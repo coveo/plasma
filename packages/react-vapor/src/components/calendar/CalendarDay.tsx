@@ -48,6 +48,7 @@ export class CalendarDay extends React.Component<ICalendarDayProps> {
             'other-month-date': !day.isCurrentMonth,
             'todays-date': day.isToday,
             countdown: day.isCountdown,
+            'previous-date': !isSelectableAndSelected && day.isCountdown && day.isCurrentMonth,
             'selected-date': isSelectableAndSelected,
             'lower-limit': isSelectableAndSelected && day.isLowerLimit,
             'upper-limit': isSelectableAndSelected && day.isUpperLimit,

@@ -188,10 +188,13 @@
                     display: block;
                     width: $countdown-cell-height;
                     height: $countdown-cell-height;
-                    color: var(--grey-40);
                     line-height: $selected-date-height;
-                    background-color: var(--grey-40);
                     border-radius: 50%;
+
+                    &.previous-date {
+                        background-color: var(--white);
+                        border: 1px solid var(--grey-50);
+                    }
 
                     &.lower-limit,
                     &.upper-limit {
@@ -207,8 +210,8 @@
                     }
 
                     &.selected-date {
-                        color: var(--navy-blue-80);
-                        background-color: var(--navy-blue-80);
+                        color: var(--navy-blue-60);
+                        background-color: var(--navy-blue-60);
 
                         &.lower-limit,
                         &.upper-limit {
@@ -219,10 +222,10 @@
                         }
 
                         &.todays-date {
-                            color: var(--navy-blue-80);
+                            color: var(--navy-blue-60);
                             font-size: $small-font-size;
                             background-color: var(--white);
-                            border: 1px solid var(--navy-blue-80);
+                            border: 1px solid var(--navy-blue-60);
                         }
                     }
                 }

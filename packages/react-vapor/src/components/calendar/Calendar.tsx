@@ -313,8 +313,8 @@ export class Calendar extends React.Component<ICalendarProps, any> {
 
             this.countdownHeader = (
                 <div id="countdown-header">
+                    <h5 className="regular">{this.props.months[selectedMonth]}</h5>
                     <h5 className="bold mb1">{countdownTitle}</h5>
-                    <div className="smaller">in {this.props.months[selectedMonth]}</div>
                 </div>
             );
         }
