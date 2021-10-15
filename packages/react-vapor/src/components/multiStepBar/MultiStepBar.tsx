@@ -30,9 +30,11 @@ const getStepContent = (step: IStep): JSX.Element =>
     step.text ? <div className="multi-step-bar-text">{step.text}</div> : null;
 
 /**
- * @deprecated use [StepProgressBar](https://github.com/coveo/react-vapor/blob/654feb6ae0383f661dd86b9396f7c36b076665c8/packages/react-vapor/src/components/stepProgressBar/StepProgressBar.tsx) instead
+ * @deprecated since version 24.15.0
+ * @see [use StepProgressBar instead]{@link https://github.com/coveo/react-vapor/blob/654feb6ae0383f661dd86b9396f7c36b076665c8/packages/react-vapor/src/components/stepProgressBar/StepProgressBar.tsx}
  */
 export const MultiStepBar = (props: IMultiStepBarProps) => {
+
     const {className, small, inProgressAnimation, barAnimation, separator, steps} = props;
     const containerClasses = classNames(className, {
         'multi-step-bar-container': true,
