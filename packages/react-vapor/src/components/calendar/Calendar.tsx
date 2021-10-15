@@ -2,7 +2,6 @@ import classNames from 'classnames';
 import moment from 'moment';
 import * as React from 'react';
 import {useEffect} from 'react';
-import * as _ from 'underscore';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -239,7 +238,7 @@ export const Calendar: React.FunctionComponent<ICalendarProps> = ({
     };
 
     const orderedDays: string[] = [days[startingDay], ...days.slice(startingDay + 1), ...days.slice(0, startingDay)];
-    const daysHeaderColumns: ITableHeaderCellProps[] = _.map(orderedDays, (day: string) => ({
+    const daysHeaderColumns: ITableHeaderCellProps[] = orderedDays.map((day: string) => ({
         title: countdown ? day.substr(0, 1) : day,
     }));
 
@@ -255,9 +254,10 @@ export const Calendar: React.FunctionComponent<ICalendarProps> = ({
         <OptionsCycle currentOption={startingYear} {...yearPickerProps} />
     );
 
-    const selectedYearOption = !_.isUndefined(selectedYear) ? selectedYear : startingYear;
+    const selectedYearOption = selectedYear || startingYear;
+
     const year = parseInt(years[selectedYearOption], 10);
-    const selectedMonth = !_.isUndefined(props.selectedMonth) ? props.selectedMonth : startingMonth;
+    const selectedMonth = props.selectedMonth ?? startingMonth;
     const month: IDay[][] = DateUtils.getMonthWeeks(new Date(year, selectedMonth), startingDay);
 
     const weeks = month.map((week: IDay[]) => {
