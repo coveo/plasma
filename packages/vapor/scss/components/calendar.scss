@@ -339,6 +339,13 @@
             border: $default-border;
         }
 
+        &.date-picked {
+            @include placeholder(var(--white));
+        }
+        &.picking-date {
+            @include placeholder();
+        }
+
         &.picking-date,
         &.date-picked {
             border-color: var(--digital-blue-60);
@@ -354,7 +361,6 @@
 
     > span {
         order: 1;
-
         margin-left: $default-margin;
     }
 }

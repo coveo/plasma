@@ -1,6 +1,6 @@
-import moment from 'moment';
 import classNames from 'classnames';
-import * as React from 'react';
+import moment from 'moment';
+import React, {useEffect, useRef, useState} from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
@@ -8,7 +8,7 @@ import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 import {IRangeLimit} from './DatesSelection';
 import {SetToNowButton} from './SetToNowButton';
 
-export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
+export interface IDatePickerProps {
     onBlur: (date: Date, isUpperLimit: boolean) => void;
     onClick: (isUpperLimit: boolean) => void;
     placeholder: string;
@@ -22,94 +22,95 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     color?: string;
 }
 
-export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelected: boolean}> {
-    static defaultProps: Partial<IDatePickerProps> = {
-        color: DEFAULT_DATE_PICKER_COLOR,
+export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
+    color = DEFAULT_DATE_PICKER_COLOR,
+    date,
+    hasSetToNowButton,
+    isSelecting,
+    minimalRangeLimit,
+    onBlur,
+    onClick,
+    placeholder,
+    setToNowTooltip,
+    upperLimit,
+    withTime,
+}) => {
+    const dateRef = useRef<string>();
+
+    const [isSelected, setIsSelected] = useState<boolean>(false);
+
+    const getStringFromDate = (d: Date): string =>
+        withTime ? DateUtils.getDateWithTimeString(d) : DateUtils.getSimpleDate(d);
+
+    const setToToday = () => {
+        const d = new Date();
+        dateRef.current = minimalRangeLimit
+            ? getStringFromDate(updateDateBasedOnMinimalLimit(d))
+            : getStringFromDate(d);
+        handleChangeDate();
     };
 
-    private dateInput: HTMLInputElement;
-    state = {isSelected: false};
-
-    private getDateFromString(dateValue: string): Date {
-        return this.props.withTime
-            ? DateUtils.getDateFromTimeString(dateValue)
-            : DateUtils.getDateFromSimpleDateString(dateValue);
-    }
-
-    private getStringFromDate(date: Date): string {
-        return this.props.withTime ? DateUtils.getDateWithTimeString(date) : DateUtils.getSimpleDate(date);
-    }
-
-    private setToToday = () => {
-        const date = new Date();
-        this.dateInput.value = this.props.minimalRangeLimit
-            ? this.getStringFromDate(this.updateDateBasedOnMinimalLimit(date))
-            : this.getStringFromDate(date);
-        this.handleChangeDate();
-    };
-
-    private updateDateBasedOnMinimalLimit = (date: Date) => {
-        const minimalLimitInMinutes: number = DateUtils.convertRangeToMinutes(this.props.minimalRangeLimit);
-        const diff = moment().diff(moment(date), 'minutes');
+    const updateDateBasedOnMinimalLimit = (d: Date) => {
+        const minimalLimitInMinutes: number = DateUtils.convertRangeToMinutes(minimalRangeLimit);
+        const diff = moment().diff(moment(d), 'minutes');
         if (Math.abs(diff) < minimalLimitInMinutes) {
-            return moment(date).add(minimalLimitInMinutes, 'minutes').toDate();
+            return moment(d).add(minimalLimitInMinutes, 'minutes').toDate();
         }
 
         return date;
     };
 
-    private handleChangeDate = () => {
-        if (this.dateInput.value !== '') {
-            const date: Date = this.getDateFromString(this.dateInput.value);
+    const handleChangeDate = () => {
+        if (dateRef.current !== '') {
+            const d: Date = withTime
+                ? DateUtils.getDateFromTimeString(dateRef.current)
+                : DateUtils.getDateFromSimpleDateString(dateRef.current);
 
-            if (date.getDate()) {
-                this.props.onBlur(date, this.props.upperLimit);
+            if (d.getDate()) {
+                onBlur(d, upperLimit);
             }
         }
     };
 
-    private handleClick = () => {
-        this.props.onClick(this.props.upperLimit);
+    const handleClick = () => {
+        onClick(upperLimit);
     };
 
-    componentDidUpdate(prevProps: IDatePickerProps) {
-        if (this.props.date) {
-            const dateValue: string = this.getStringFromDate(this.props.date);
+    useEffect(() => {
+        if (date) {
+            const dateValue: string = getStringFromDate(date);
 
-            if (this.dateInput.value !== dateValue) {
-                this.dateInput.value = dateValue;
+            if (dateRef.current !== dateValue) {
+                dateRef.current = dateValue;
             }
         } else {
-            this.dateInput.value = '';
+            dateRef.current = '';
         }
-        const isSelected =
-            (this.props.isSelecting === DateLimits.upper && this.props.upperLimit) ||
-            (this.props.isSelecting === DateLimits.lower && !this.props.upperLimit);
-        this.setState({isSelected});
-    }
+        const selected =
+            (isSelecting === DateLimits.upper && upperLimit) || (isSelecting === DateLimits.lower && !upperLimit);
 
-    render() {
-        const nowButton: JSX.Element = this.props.hasSetToNowButton ? (
-            <SetToNowButton onClick={this.setToToday} tooltip={this.props.setToNowTooltip} />
-        ) : null;
+        setIsSelected(selected);
+    }, [date]);
 
-        const inputClasses = classNames({
-            'picking-date': this.state.isSelected,
-            'date-picked': !this.state.isSelected && !!this.props.date,
-        });
+    const nowButton: JSX.Element = hasSetToNowButton ? (
+        <SetToNowButton onClick={setToToday} tooltip={setToNowTooltip} />
+    ) : null;
 
-        return (
-            <div className="date-picker flex">
-                <input
-                    className={inputClasses}
-                    ref={(dateInput: HTMLInputElement) => (this.dateInput = dateInput)}
-                    onBlur={this.handleChangeDate}
-                    onFocus={this.handleClick}
-                    placeholder={this.props.placeholder}
-                    required
-                />
-                {nowButton}
-            </div>
-        );
-    }
-}
+    const inputClasses = classNames({
+        'picking-date': isSelected,
+        'date-picked': !isSelected && !!date,
+    });
+    return (
+        <div className="date-picker flex">
+            <input
+                className={inputClasses}
+                ref={(d: HTMLInputElement) => (dateRef.current = d?.value)}
+                onBlur={handleChangeDate}
+                onFocus={handleClick}
+                placeholder={placeholder}
+                required
+            />
+            {nowButton}
+        </div>
+    );
+};
