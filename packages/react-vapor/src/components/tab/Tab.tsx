@@ -80,6 +80,13 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
                 {children}
                 {title}
             </button>
+            <div
+                className={classNames('tab-bottom', {
+                    enabled: !disabled,
+                    disabled: disabled,
+                    active: isActive,
+                })}
+            ></div>
         </Tooltip>
     );
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Svg, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
+import {Badge, Svg, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
 
 export const TabsExamples: React.FunctionComponent = () => (
     <>
@@ -12,9 +12,14 @@ export const TabsExamples: React.FunctionComponent = () => (
             <TabConnected
                 id="tab4"
                 title=" Another Tab with an icon"
-                children={<Svg svgName="info" svgClass="icon documentation-link mod-16 mr1" />}
+                children={<Svg svgName="domain-salesforce" svgClass="icon  salesforce-blue mod-16 mr1" />}
             />
-            <TabConnected id="tab5" title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
+            <TabConnected
+                id="tab5"
+                title=" A Tab with an badge"
+                children={<Badge label="Success" extraClasses={['mod-success mod-small mr1']} />}
+            />
+            <TabConnected id="tab6" title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
         </TabNavigation>
         <TabContent>
             <TabPaneConnected id="tab1">
