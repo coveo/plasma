@@ -12,7 +12,7 @@ export const TabsExamples: React.FunctionComponent = () => (
             <TabConnected
                 id="tab4"
                 title=" A Tab with an badge"
-                children={<Badge label="Success" extraClasses={['mod-success mod-small mr2']} />}
+                children={<Badge label="Success" extraClasses={['mod-success mod-small']} />}
             />
             <TabConnected id="tab5" title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
             <TabConnected
