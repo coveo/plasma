@@ -1,10 +1,9 @@
 import * as React from 'react';
-import {Section, Svg, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
+import {Section, TabConnected, TabContent, TabNavigation, TabPaneConnected} from 'react-vapor';
 
 const TAB1_ID = 'tab1';
 const TAB2_ID = 'tab2';
 const TAB3_ID = 'tab3';
-const TAB4_ID = 'tab4';
 const TAB5_ID = 'tab5';
 
 const TAB11_ID = 'tab11';
@@ -18,14 +17,12 @@ export const TabsConnectedExamples: React.FunctionComponent = () => (
                 <TabNavigation>
                     <TabConnected id={TAB1_ID} title="A Tab" />
                     <TabConnected id={TAB2_ID} title="Another Tab" tooltip="I am an enabled tab" />
-                    <TabConnected id={TAB3_ID} title="Tab with an icon">
-                        <Svg svgName={'help'} svgClass={'icon documentation-link mod-16 mr1'} />
-                    </TabConnected>
                     <TabConnected
-                        id={TAB4_ID}
-                        title=" Another Tab with an icon"
-                        children={<Svg svgName={'info'} svgClass={'icon documentation-link mod-16 mr1'} />}
-                    />
+                        id={TAB3_ID}
+                        title="Tab with an icon"
+                        icon={'help'}
+                        iconExtraClasses={'documentation-link'}
+                    ></TabConnected>
                     <TabConnected id={TAB5_ID} title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
                 </TabNavigation>
                 <TabContent>
@@ -38,11 +35,6 @@ export const TabsConnectedExamples: React.FunctionComponent = () => (
                     <TabPaneConnected id={TAB3_ID}>
                         <div className="mod-header-padding mod-form-top-bottom-padding">
                             Content of the tab with an icon.
-                        </div>
-                    </TabPaneConnected>
-                    <TabPaneConnected id={TAB4_ID}>
-                        <div className="mod-header-padding mod-form-top-bottom-padding">
-                            Content of the other tab with an icon.
                         </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB5_ID}>
