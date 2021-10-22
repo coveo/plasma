@@ -1,14 +1,22 @@
 .tab-navigation {
+    display: flex;
     min-height: $tab-navigation-min-height;
     padding: 0 32px;
     border-bottom: $default-border;
+
+    &.mod-align-right {
+        justify-content: right;
+    }
+
+    &.mod-align-center {
+        justify-content: center;
+    }
 
     .tab {
         position: relative;
         bottom: 0px;
         display: inline-block;
         height: 44px;
-        margin-bottom: 1px;
         text-transform: none;
         cursor: pointer;
 
