@@ -49,8 +49,6 @@ pipeline {
         script {
           setLastStageName();
           
-          MASTER_RELEASE_FAILURE_CHANNELS = ["admin-ui-builds", "cloudadmindev", "admin-ui-guild"]
-          PR_CHANNELS = ["admin-ui-builds"]
           commitMessage = sh(returnStdout: true, script: "git log -1 --pretty=%B").trim()
           if(commitMessage.contains("[version bump]")) {
             skipRemainingStages = true
@@ -72,6 +70,8 @@ pipeline {
         script {
           setLastStageName();
 
+          MASTER_RELEASE_FAILURE_CHANNELS = ["admin-ui-builds", "cloudadmindev", "admin-ui-guild"]
+          PR_CHANNELS = ["admin-ui-builds"]
           NEW_VERSION = ""
           SCOPE = ""
 
@@ -95,24 +95,6 @@ pipeline {
           sh "rm -rf node_modules"
           sh "npm install -g pnpm"
           sh "pnpm install"
-
-          if (env.BRANCH_NAME ==~ /(master|next|release-.*)/) {
-            sh "git fetch --tags origin ${env.BRANCH_NAME}"
-
-            if (env.BRANCH_NAME ==~ /release-.*/) {
-              sh "npx lerna version patch --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
-            } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna version --conventional-prerelease --preid next --no-commit-hooks --no-git-tag-version --no-push --force-publish --yes"
-            } else {
-              sh "npx lerna version --no-commit-hooks --no-git-tag-version --no-push --force-publish=\"react-vapor\" --yes"
-            }
-            env.NEW_VERSION = sh(
-              script: "node -p -e 'require(`./packages/react-vapor/package.json`).version;'",
-              returnStdout: true
-            ).trim()
-
-            sh "git reset --hard"
-          }
         }
       }
     }
@@ -156,7 +138,7 @@ pipeline {
       }
     }
 
-    stage('Deploy in S3') {
+    stage('Deploy PR demo') {
       when {
         allOf {
           not {
@@ -205,11 +187,11 @@ pipeline {
       }
     }
 
-    stage('Publish') {
+    stage('Novelty check') {
       when {
         allOf {
-          expression { env.BRANCH_NAME ==~ /(master|next|release-.*)/ }
           expression { !skipRemainingStages }
+          expression { env.BRANCH_NAME ==~ /(master|next|release-.*)/ }
         }
       }
       steps {
@@ -217,47 +199,93 @@ pipeline {
           setLastStageName();
           sh "git fetch origin ${env.BRANCH_NAME}"
           REMOTE = "origin/" + env.BRANCH_NAME
+
           COMMITS_BEHIND = sh(
             script: "git rev-list --count \"$REMOTE...${env.BRANCH_NAME}\"",
             returnStdout: true
           ).trim().toInteger()
 
-          if (COMMITS_BEHIND == 0) {
-            STARTED_BY_USER = cause.user()
-            STARTED_BY_UPSTREAM = cause.upstream()
-
-            if (env.BRANCH_NAME ==~ /release-.*/) {
-              sh "npx lerna publish patch --create-release github --yes --force-publish"
-            } else if (env.BRANCH_NAME == "next") {
-              sh "npx lerna publish --conventional-prerelease --preid next --dist-tag next --create-release github --yes --force-publish=\"react-vapor\""
-            } else {
-              sh "npx lerna publish --create-release github --yes --force-publish=\"react-vapor\""
-            }
-            sh "pnpm install --lockfile-only"
-            sh "git add pnpm-lock.yaml"
-            sh "git commit -m \"chore(release): [version bump]\""
-            sh "git push -u origin ${env.BRANCH_NAME}"
-          } else {
-            sh "echo \"skipping publish since remote changed (something was merged)\""
-          }
+          if (COMMITS_BEHIND > 0) {
+            skipRemainingStages = true
+            println "Skipping deployment since remote changed (something was merged)"
+          } 
         }
       }
     }
 
-    stage('Deployment pipeline') {
+    stage('Publish') {
+      when {
+        allOf {
+          expression { !skipRemainingStages }
+          expression { env.BRANCH_NAME ==~ /(master|next|release-.*)/ }
+        }
+      }
+      steps {
+        script {
+          sh "git fetch --tags origin ${env.BRANCH_NAME}"
+
+          if (env.BRANCH_NAME ==~ /release-.*/) {
+            // release
+            sh "npx lerna publish patch \
+            --create-release github \
+            --no-commit-hooks \
+            --force-publish \
+            --no-push \
+            --no-private \
+            --no-git-reset \
+            --yes"
+          } else if (env.BRANCH_NAME == "next") {
+            // next
+            sh "npx lerna publish \
+            --conventional-commits \
+            --create-release github \
+            --conventional-prerelease \
+            --preid next \
+            --dist-tag next \
+            --no-commit-hooks \
+            --force-publish \
+            --no-push \
+            --no-private \
+            --no-git-reset \
+            --yes"
+          } else {
+            // master
+            sh "npx lerna publish \
+            --conventional-commits \
+            --create-release github \
+            --no-commit-hooks \
+            --force-publish \
+            --no-push \
+            --no-private \
+            --no-git-reset \
+            --yes"
+          }
+
+          sh "pnpm install --lockfile-only"
+          sh "git add pnpm-lock.yaml"
+          sh "git commit --amend --no-edit"
+          sh "git push -u origin ${env.BRANCH_NAME}"
+
+          NEW_VERSION = sh(
+            script: "node -p -e 'require(`./lerna.json`).version;'",
+            returnStdout: true
+          ).trim()
+
+          sh "git reset --hard"
+        }
+      }
+    }
+
+    stage('Snyk') {
       when {
         allOf {
           expression { !skipRemainingStages }
           expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
-          expression { COMMITS_BEHIND == 0 }
         }
       }
-
       steps {
         script {
           setLastStageName();
-
-          // snyk
           sh "mkdir -p snyk"
             
           convertPNPMLockToNPM("../pnpm-lock.yaml", "../snyk");
@@ -272,8 +300,21 @@ pipeline {
 
           // To avoid failure when the cache is not cleared between builds
           sh "rm -rf ./snyk"
+        }
+      }
+    }
 
-          // Prepare veracode
+    stage('Veracode') {
+       when {
+        allOf {
+          expression { !skipRemainingStages }
+          expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
+        }
+      }
+
+      steps {
+        script {
+          setLastStageName();
           sh "mkdir -p veracode"
           sh "mkdir -p veracode/demo"
           sh "mkdir -p veracode/react-vapor"
@@ -287,16 +328,26 @@ pipeline {
             sh "find . -name '*.spec.*' -delete"
             sh "find . -name '*.mock.*' -delete"
           }
-
-          NEW_VERSION = sh(
-            script: "node -p -e 'require(`./lerna.json`).version;'",
-            returnStdout: true
-          ).trim()
-          deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
         }
       }
     }
 
+    stage('Deployment pipeline') {
+      when {
+        allOf {
+          expression { !skipRemainingStages }
+          expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
+        }
+      }
+
+      steps {
+        script {
+          setLastStageName();
+          
+          deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
+        }
+      }
+    }
   }
 
   post {
