@@ -2,6 +2,7 @@ import {render, screen, within} from '@test-utils';
 import userEvent, {specialChars} from '@testing-library/user-event';
 import * as React from 'react';
 
+import {Badge} from '../../badge/Badge';
 import {UrlUtils} from '../../../utils';
 import {Tab, TabConnected} from '../Tab';
 import {TabContent} from '../TabContent';
@@ -14,6 +15,27 @@ describe('Tab', () => {
         const tab = screen.getByRole('tab', {name: /title/i});
         userEvent.hover(tab);
         expect(await screen.findByText('tooltip content')).toBeInTheDocument();
+    });
+
+    it('displays the icon when one is set', () => {
+        render(<Tab title="Title" icon={'help'} />);
+
+        expect(
+            screen.getByRole('tab', {
+                name: /help icon title/i,
+            })
+        ).toBeInTheDocument();
+    });
+
+    it('displays the badge when one is set', () => {
+        render(<Tab title="Title" badge={<Badge label="Tag" extraClasses={['mod-information mod-small ml1']} />} />);
+
+        expect(
+            screen.getByRole('tab', {
+                name: /title badge/i,
+            })
+        ).toBeInTheDocument();
+        expect(screen.getByText(/tag/i)).toBeInTheDocument();
     });
 
     it('redirects to the specified url when clicking on the tab', () => {

@@ -83,7 +83,7 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {icon ? <Svg svgName={icon} svgClass={classNames('icon mod-16 mr1', iconExtraClasses)} /> : null}
+                {icon ? <Svg svgName={icon} svgClass={classNames('tab-icon mod-16', iconExtraClasses)} /> : null}
                 {title}
                 {badge ? badge : null}
             </button>

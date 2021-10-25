@@ -17,11 +17,17 @@
         bottom: 0px;
         display: inline-block;
         height: 44px;
+        margin-left: 0.5rem;
         text-transform: none;
         cursor: pointer;
 
         &.active {
             font-weight: var(--main-font-bolder);
+        }
+
+        .tab-icon {
+            @extend .icon;
+            margin-right: 5px;
         }
 
         &:disabled {
@@ -40,6 +46,7 @@
     }
 
     .active-tab-bottom-line {
+        margin-left: 0.5rem;
         border: solid transparent;
         border-radius: $tab-bottom-border-height;
 

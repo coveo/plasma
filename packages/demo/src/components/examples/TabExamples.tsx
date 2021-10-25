@@ -27,6 +27,13 @@ const DefaultExmaple: React.FunctionComponent = () => (
             <TabConnected id="tab2" title="Gyarados" tooltip="I have a toolip!" />
             <TabConnected id="tab3" title="Chamender" />
             <TabConnected id="tab4" title="Rapidash" tooltip="I'm disabled" disabled />
+            <TabConnected
+                id="tab13"
+                title="Mr. Mime"
+                icon={'people'}
+                tooltip="I have a icon and a badge!"
+                badge={<Badge label="Tag" extraClasses={['mod-information mod-small ml1']} />}
+            />
         </TabNavigation>
         <TabContent>
             <TabPaneConnected id="tab1">
@@ -40,6 +47,9 @@ const DefaultExmaple: React.FunctionComponent = () => (
             </TabPaneConnected>
             <TabPaneConnected id="tab4">
                 <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fourth tab.</div>
+            </TabPaneConnected>
+            <TabPaneConnected id="tab13">
+                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fifth tab.</div>
             </TabPaneConnected>
         </TabContent>{' '}
     </>
