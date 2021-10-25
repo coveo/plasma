@@ -3,15 +3,10 @@
     "team_name": "admin-ui",
     "general": {
         "environments_order": {
-            "sequential": [
-                "qa",
-                "prd"
-            ]
+            "sequential": ["prd"]
         },
         "notifications": {
-            "slack_channels": [
-                "admin-ui-builds"
-            ]
+            "slack_channels": ["admin-ui-builds"]
         },
         "team_jenkins": "jsadminbuilds",
         "start_environment_automatically": true
@@ -32,36 +27,33 @@
         "no_container_images": true,
         "configurations": []
     },
+    "package_rollout": {
+        "only_consider_changesets_after": "$[CHANGESET]"
+    },
     "ordered_phases": [
         {
             "id": "deploy-minified-files",
             "s3": {
-                "bucket": "coveo-nqa-jsadmin",
+                "bucket": "coveo-nprd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
                     "include": "*.min.*",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
-                "source": "packages/demo/dist",
-                "prd": {
-                    "bucket": "coveo-nprd-jsadmin"
-                }
+                "source": "packages/demo/dist"
             }
         },
         {
             "id": "deploy-non-minified-files",
             "s3": {
-                "bucket": "coveo-nqa-jsadmin",
+                "bucket": "coveo-nprd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
                     "exclude": "*.min.*",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/demo/dist",
-                "prd": {
-                    "bucket": "coveo-nprd-jsadmin"
-                }
+                "source": "packages/demo/dist"
             }
         },
         {
@@ -75,10 +67,7 @@
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
-                "source": "packages/vapor/dist",
-                "qa": {
-                    "disabled": true
-                }
+                "source": "packages/vapor/dist"
             }
         },
         {
@@ -91,10 +80,13 @@
                     "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/vapor/dist",
-                "qa": {
-                    "disabled": true
-                }
+                "source": "packages/vapor/dist"
+            }
+        },
+        {
+            "id": "update-npm-tags",
+            "team_jenkins": {
+                "job_name": "vapor-production-release"
             }
         }
     ],

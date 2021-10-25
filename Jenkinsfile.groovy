@@ -253,6 +253,7 @@ pipeline {
             sh "npx lerna publish \
             --conventional-commits \
             --create-release github \
+            --dist-tag alpha \
             --no-commit-hooks \
             --force-publish \
             --no-push \
@@ -343,8 +344,17 @@ pipeline {
       steps {
         script {
           setLastStageName();
+
+          CURRENT_CHANGESET = sh(
+            script: "git rev-parse HEAD",
+            returnStdout: true
+          )
           
-          deploymentPackage.command(command: "package create --version ${NEW_VERSION} --resolve VERSION=${NEW_VERSION} --with-deploy")
+          deploymentPackage.command(command: "package create \
+          --version ${NEW_VERSION} \
+          --resolve VERSION=${NEW_VERSION} \
+          --resolve CHANGESET=${CURRENT_CHANGESET} \
+          --with-deploy")
         }
       }
     }
