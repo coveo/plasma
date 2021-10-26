@@ -20,10 +20,6 @@
         text-transform: none;
         cursor: pointer;
 
-        &.active {
-            font-weight: var(--main-font-bolder);
-        }
-
         .tab-icon {
             @extend .icon;
             margin-right: 5px;

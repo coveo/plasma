@@ -75,10 +75,11 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
                 aria-controls={`panel-${id}`}
                 id={`tab-${id}`}
                 tabIndex={isActive ? 0 : -1}
-                className={classNames('tab p', {
+                className={classNames('tab', {
                     enabled: !disabled,
                     disabled: disabled,
-                    active: isActive,
+                    'body-m': isActive,
+                    'body-m-book': !isActive,
                 })}
                 onClick={handleSelect}
                 disabled={disabled}
