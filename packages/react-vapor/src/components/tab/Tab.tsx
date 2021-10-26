@@ -85,7 +85,7 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
             >
                 {icon ? <Svg svgName={icon} svgClass={classNames('tab-icon mod-16', iconExtraClasses)} /> : null}
                 {title}
-                {badge ? badge : null}
+                {badge ?? null}
             </button>
             <div
                 className={classNames('active-tab-bottom-line', {
