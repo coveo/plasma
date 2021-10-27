@@ -1,7 +1,6 @@
 import classNames from 'classnames';
 import moment from 'moment';
-import * as React from 'react';
-import {useEffect} from 'react';
+import React, {useEffect, FunctionComponent} from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -85,7 +84,7 @@ const defaultLocales = {
         en: 'Last day',
     },
 };
-export const Calendar: React.FunctionComponent<ICalendarProps> = ({
+export const Calendar: FunctionComponent<ICalendarProps> = ({
     id,
     years = DEFAULT_YEARS,
     months = DEFAULT_MONTHS,
