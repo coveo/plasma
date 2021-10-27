@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import moment from 'moment';
-import React, {useEffect, useRef, useState} from 'react';
+import React, {useEffect, useState} from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
@@ -22,7 +22,6 @@ export interface IDatePickerProps {
 }
 
 export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
-    date,
     hasSetToNowButton,
     isSelecting,
     minimalRangeLimit,
@@ -32,19 +31,20 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
     setToNowTooltip,
     upperLimit,
     withTime,
+    ...props
 }) => {
-    const dateRef = useRef<string>();
-
-    const [isSelected, setIsSelected] = useState<boolean>(false);
-
     const getStringFromDate = (d: Date): string =>
         withTime ? DateUtils.getDateWithTimeString(d) : DateUtils.getSimpleDate(d);
 
+    const [date, setDate] = useState(getStringFromDate(props.date));
+    const [isSelected, setIsSelected] = useState<boolean>(false);
+
     const setToToday = () => {
         const d = new Date();
-        dateRef.current = minimalRangeLimit
+        const newDateState = minimalRangeLimit
             ? getStringFromDate(updateDateBasedOnMinimalLimit(d))
             : getStringFromDate(d);
+        setDate(newDateState);
         handleChangeDate();
     };
 
@@ -55,14 +55,14 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
             return moment(d).add(minimalLimitInMinutes, 'minutes').toDate();
         }
 
-        return date;
+        return props.date;
     };
 
-    const handleChangeDate = () => {
-        if (dateRef.current !== '') {
+    const handleChangeDate = (e?: React.FocusEvent<HTMLInputElement>) => {
+        if (date !== '') {
             const d: Date = withTime
-                ? DateUtils.getDateFromTimeString(dateRef.current)
-                : DateUtils.getDateFromSimpleDateString(dateRef.current);
+                ? DateUtils.getDateFromTimeString(date)
+                : DateUtils.getDateFromSimpleDateString(date);
 
             if (d.getDate()) {
                 onBlur(d, upperLimit);
@@ -75,20 +75,18 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
     };
 
     useEffect(() => {
-        if (date) {
-            const dateValue: string = getStringFromDate(date);
+        if (props.date) {
+            const dateValue: string = getStringFromDate(props.date);
 
-            if (dateRef.current !== dateValue) {
-                dateRef.current = dateValue;
-            }
+            setDate(dateValue);
         } else {
-            dateRef.current = '';
+            setDate('');
         }
         const selected =
             (isSelecting === DateLimits.upper && upperLimit) || (isSelecting === DateLimits.lower && !upperLimit);
 
         setIsSelected(selected);
-    }, [date]);
+    }, [props.date]);
 
     const nowButton: JSX.Element = hasSetToNowButton ? (
         <SetToNowButton onClick={setToToday} tooltip={setToNowTooltip} />
@@ -96,18 +94,17 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
 
     const inputClasses = classNames({
         'picking-date': isSelected,
-        'date-picked': !isSelected && !!date,
+        'date-picked': !isSelected && !!props.date,
     });
 
     return (
         <div className="date-picker flex">
             <input
                 className={inputClasses}
-                ref={(d: HTMLInputElement) => (dateRef.current = d?.value)}
                 onBlur={handleChangeDate}
                 onFocus={handleClick}
                 placeholder={placeholder}
-                defaultValue={dateRef.current}
+                value={date}
                 required
             />
             {nowButton}
