@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as React from 'react';
+import React, {FunctionComponent} from 'react';
 import {slugify} from 'underscore.string';
 
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -61,7 +61,7 @@ export interface IDatePickerBoxProps
 
 export const getCalendarId = (datePickerId: string) => `calendar-${datePickerId}`;
 
-export const DatePickerBox: React.FunctionComponent<IDatePickerBoxProps> = ({
+export const DatePickerBox: FunctionComponent<IDatePickerBoxProps> = ({
     clearLabel = DEFAULT_CLEAR_DATE_LABEL,
     id,
     datesSelectionBoxes,

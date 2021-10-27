@@ -1,4 +1,5 @@
-import * as React from 'react';
+import classNames from 'classnames';
+import React, {useEffect, FunctionComponent} from 'react';
 import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
 import {DatePicker, IDatePickerProps} from './DatePicker';
 import {DatePickerDateRange} from './DatePickerConstants';
@@ -11,7 +12,7 @@ export interface IRangeLimit {
     message?: string;
 }
 
-export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSelection> {
+export interface IDatesSelectionOwnProps {
     id?: string;
     withTime?: boolean;
     hasSetToNowButton?: boolean;
@@ -58,105 +59,95 @@ export interface IDatesSelectionProps
 export const LOWER_LIMIT_PLACEHOLDER: string = 'Select a start date';
 export const UPPER_LIMIT_PLACEHOLDER: string = 'Select an end date';
 
-export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
-    static defaultProps: Partial<IDatesSelectionProps> = {
-        lowerLimitPlaceholder: LOWER_LIMIT_PLACEHOLDER,
-        upperLimitPlaceholder: UPPER_LIMIT_PLACEHOLDER,
-        quickOption: '',
-        isSelecting: '',
+export const DatesSelection: FunctionComponent<IDatesSelectionProps> = ({
+    lowerLimitPlaceholder = LOWER_LIMIT_PLACEHOLDER,
+    upperLimitPlaceholder = UPPER_LIMIT_PLACEHOLDER,
+    quickOption = '',
+    isSelecting = '',
+    ...props
+}) => {
+    const onDateChange = (date: Date, isUpperLimit: boolean, datePicker?: boolean) => {
+        if (props.onBlur) {
+            props.onBlur(date, isUpperLimit, datePicker);
+        }
     };
 
-    private onDateChange(date: Date, isUpperLimit: boolean, datePicker?: boolean) {
-        if (this.props.onBlur) {
-            this.props.onBlur(date, isUpperLimit, datePicker);
+    const onDateClick = (isUpperLimit: boolean) => {
+        if (props.onClick) {
+            props.onClick(isUpperLimit);
         }
-    }
+    };
 
-    private onDateClick(isUpperLimit: boolean) {
-        if (this.props.onClick) {
-            this.props.onClick(isUpperLimit);
+    useEffect(() => {
+        if (props.onRender) {
+            props.onRender();
         }
-    }
-
-    componentDidMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
-    }
-
-    componentDidUpdate(prevProps: IDatesSelectionProps) {
-        if (this.props.quickOption && this.props.quickOption !== prevProps.quickOption) {
-            const dates: string[] = this.props.quickOption.split(DATES_SEPARATOR);
-
-            this.onDateChange(new Date(dates[0]), false, true);
-
-            if (dates.length > 1) {
-                this.onDateChange(new Date(dates[1]), true, true);
+        return () => {
+            if (props.onDestroy) {
+                props.onDestroy();
             }
-        }
-    }
+        };
+    }, []);
 
-    private handleOnBlur(date: Date, isUpperLimit: boolean = false) {
-        const formattedLowerLimit: string = DateUtils.getDateWithTimeString(this.props.inputLowerLimit);
-        const formattedUpperLimit: string = DateUtils.getDateWithTimeString(this.props.inputUpperLimit);
+    useEffect(() => {
+        const dates: string[] = quickOption.split(DATES_SEPARATOR);
+
+        // new Date('' || undefined || null) throws Invalid Date
+        onDateChange(dates[0] ? new Date(dates[0]) : new Date(), false, true);
+
+        if (dates.length > 1) {
+            onDateChange(new Date(dates[1]), true, true);
+        }
+    }, [quickOption]);
+
+    const handleOnBlur = (date: Date, isUpperLimit: boolean = false) => {
+        const formattedLowerLimit: string = DateUtils.getDateWithTimeString(props.inputLowerLimit);
+        const formattedUpperLimit: string = DateUtils.getDateWithTimeString(props.inputUpperLimit);
         const formattedInputDate: string = DateUtils.getDateWithTimeString(date);
 
         if (
             (!isUpperLimit && formattedLowerLimit !== formattedInputDate) ||
             (isUpperLimit && formattedUpperLimit !== formattedInputDate)
         ) {
-            this.onDateChange(date, isUpperLimit);
+            onDateChange(date, isUpperLimit);
         }
-    }
+    };
 
-    render() {
-        const isSmallSplit = this.props.isRange && !this.props.hasSetToNowButton;
-        const isLarge = this.props.withTime || (this.props.isRange && this.props.hasSetToNowButton);
-        const wrapperClasses: string = !isSmallSplit || isLarge ? '' : 'mod-inline flex';
-        const datePickerProps: IDatePickerProps = {
-            withTime: this.props.withTime,
-            hasSetToNowButton: this.props.hasSetToNowButton,
-            setToNowTooltip: this.props.setToNowTooltip,
-            isSelecting: this.props.isSelecting,
-            onClick: (isUpperLimit: boolean) => this.onDateClick(isUpperLimit),
-            onBlur: (date: Date, isUpperLimit: boolean) => this.handleOnBlur(date, isUpperLimit),
-            placeholder: '',
-        };
-        const endDatePickerProps = {...datePickerProps, minimalRangeLimit: this.props.minimalRangeLimit};
-        const separatorClasses: string[] = ['date-separator'];
-        if (isLarge) {
-            separatorClasses.push('mod-vertical');
-        }
-        const separator: JSX.Element = this.props.isRange ? (
-            <span className={separatorClasses.join(' ')}>
-                <span>-</span>
-            </span>
-        ) : null;
-        const toDate: JSX.Element = this.props.isRange ? (
-            <DatePicker
-                upperLimit
-                date={this.props.upperLimit}
-                {...endDatePickerProps}
-                placeholder={this.props.upperLimitPlaceholder}
-            />
-        ) : null;
+    // render start
+    const isSmallSplit = props.isRange && !props.hasSetToNowButton;
+    const isLarge = props.withTime || (props.isRange && props.hasSetToNowButton);
+    const wrapperClasses: string = !isSmallSplit || isLarge ? '' : 'mod-inline flex';
 
-        return (
-            <div className={wrapperClasses}>
-                <DatePicker
-                    date={this.props.lowerLimit}
-                    {...datePickerProps}
-                    placeholder={this.props.lowerLimitPlaceholder}
-                />
-                {separator}
-                {toDate}
-            </div>
-        );
-    }
-}
+    const datePickerProps: IDatePickerProps = {
+        withTime: props.withTime,
+        hasSetToNowButton: props.hasSetToNowButton,
+        setToNowTooltip: props.setToNowTooltip,
+        isSelecting: isSelecting,
+        onClick: (isUpperLimit: boolean) => onDateClick(isUpperLimit),
+        onBlur: (date: Date, isUpperLimit: boolean) => handleOnBlur(date, isUpperLimit),
+        placeholder: '',
+    };
+
+    const endDatePickerProps = {...datePickerProps, minimalRangeLimit: props.minimalRangeLimit};
+
+    const separator: JSX.Element = props.isRange ? (
+        <span className={classNames('date-separator', {'mod-vertical': isLarge})}>
+            <span>-</span>
+        </span>
+    ) : null;
+
+    // console.log('props.upperLimit', props.upperLimit);
+
+    const toDate: JSX.Element = props.isRange ? (
+        <DatePicker upperLimit date={props.upperLimit} {...endDatePickerProps} placeholder={upperLimitPlaceholder} />
+    ) : null;
+
+    return (
+        <div className={wrapperClasses}>
+            <DatePicker date={props.lowerLimit} {...datePickerProps} placeholder={lowerLimitPlaceholder} />
+            {separator}
+            {toDate}
+        </div>
+    );
+    // render end
+};

@@ -4,7 +4,6 @@ import React, {useEffect, useRef, useState} from 'react';
 
 import {DateUtils} from '../../utils/DateUtils';
 import {DateLimits} from './DatePickerActions';
-import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 import {IRangeLimit} from './DatesSelection';
 import {SetToNowButton} from './SetToNowButton';
 
@@ -23,7 +22,6 @@ export interface IDatePickerProps {
 }
 
 export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
-    color = DEFAULT_DATE_PICKER_COLOR,
     date,
     hasSetToNowButton,
     isSelecting,
@@ -100,6 +98,7 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
         'picking-date': isSelected,
         'date-picked': !isSelected && !!date,
     });
+
     return (
         <div className="date-picker flex">
             <input
@@ -108,6 +107,7 @@ export const DatePicker: React.FunctionComponent<IDatePickerProps> = ({
                 onBlur={handleChangeDate}
                 onFocus={handleClick}
                 placeholder={placeholder}
+                defaultValue={dateRef.current}
                 required
             />
             {nowButton}

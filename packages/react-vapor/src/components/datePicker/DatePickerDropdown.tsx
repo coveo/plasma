@@ -1,9 +1,8 @@
 import classNames from 'classnames';
-import moment from 'moment';
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-
 import * as VaporSVG from 'coveo-styleguide';
+import moment from 'moment';
+import React, {useEffect, useRef, FunctionComponent} from 'react';
+
 import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -12,13 +11,13 @@ import {DEFAULT_YEARS, ICalendarSelectionRule} from '../calendar/Calendar';
 import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
 import {ModalFooter} from '../modal/ModalFooter';
+import {Svg} from '../svg';
 import {DatePickerBox, IDatePickerBoxChildrenProps, IDatePickerBoxProps, IDatesSelectionBox} from './DatePickerBox';
 import {DatePickerDateRange} from './DatePickerConstants';
 import {IDatePickerState} from './DatePickerReducers';
-import {Svg} from '../svg';
 import {IRangeLimit} from './DatesSelection';
 
-export interface IDatePickerDropdownOwnProps extends React.ClassAttributes<DatePickerDropdown> {
+export interface IDatePickerDropdownOwnProps {
     label?: string;
     className?: string;
     id?: string;
@@ -86,284 +85,250 @@ export const DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES: string[] = [];
 export const DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED: boolean = true;
 export const DEFAULT_INITIALY_UNSELECTED: boolean = false;
 
-export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps, any> {
-    static defaultProps: Partial<IDatePickerDropdownProps> = {
-        label: DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
-        applyLabel: DEFAULT_APPLY_DATE_LABEL,
-        cancelLabel: DEFAULT_CANCEL_DATE_LABEL,
-        toLabel: DEFAULT_TO_LABEL,
-        extraDropdownClasses: DEFAULT_EXTRA_DROPDOWN_CLASSES,
-        extraDropdownToggleClasses: DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
-        renderDatePickerWhenClosed: DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED,
-        isClearable: false,
-        withDrop: false,
+export const DatePickerDropdown: FunctionComponent<IDatePickerDropdownProps> = ({
+    label = DEFAULT_DATE_PICKER_DROPDOWN_LABEL,
+    applyLabel = DEFAULT_APPLY_DATE_LABEL,
+    cancelLabel = DEFAULT_CANCEL_DATE_LABEL,
+    toLabel = DEFAULT_TO_LABEL,
+    extraDropdownClasses = DEFAULT_EXTRA_DROPDOWN_CLASSES,
+    extraDropdownToggleClasses = DEFAULT_EXTRA_DROPDOWN_TOGGLE_CLASSES,
+    renderDatePickerWhenClosed = DEFAULT_RENDER_DATEPICKER_WHEN_CLOSED,
+    isClearable = false,
+    withDrop = false,
+    ...props
+}) => {
+    const dropdownRef = useRef<HTMLDivElement>();
+
+    const handleOutsideClick = (e: MouseEvent) => {
+        if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+            props.onDocumentClick();
+            handleCancel();
+        }
     };
 
-    private dropdown: HTMLDivElement;
+    useEffect(() => {
+        props.onRender?.();
 
-    componentDidMount() {
-        if (this.props.onRender) {
-            this.props.onRender();
+        if (props.onDocumentClick && !props.readonly) {
+            document.addEventListener('click', handleOutsideClick);
         }
 
-        if (this.props.onDocumentClick && !this.props.readonly) {
-            document.addEventListener('click', this.handleDocumentClick);
-        }
-    }
-
-    componentWillUnmount() {
-        if (this.props.onDocumentClick && !this.props.readonly) {
-            document.removeEventListener('click', this.handleDocumentClick);
-        }
-
-        if (this.props.onDestroy) {
-            this.props.onDestroy();
-        }
-    }
-
-    render() {
-        let label: string = this.props.label;
-        let toLabel: JSX.Element = null;
-        let labelSecondPart: string = '';
-
-        if (this.props.datePicker && this.props.datePicker.appliedLowerLimit) {
-            label = this.formatDate(this.props.datePicker.appliedLowerLimit);
-            if (this.props.datePicker.isRange) {
-                const formattedUpper = this.formatDate(this.props.datePicker.appliedUpperLimit);
-                if (formattedUpper !== label) {
-                    toLabel = (
-                        <span className={classNames('mx1', {disabled: this.props.readonly})}>{this.props.toLabel}</span>
-                    );
-                    labelSecondPart = formattedUpper;
-                }
+        return () => {
+            if (props.onDocumentClick && !props.readonly) {
+                document.removeEventListener('click', handleOutsideClick);
             }
-        }
 
-        const dropdownClasses: string = classNames(...this.props.extraDropdownClasses, 'dropdown-wrapper', 'dropdown', {
-            open: this.props.isOpened,
-        });
+            props.onDestroy?.();
+        };
+    }, []);
 
-        const menuClasses: string = classNames('dropdown-menu', 'normal-height', {
-            'on-right': this.props.onRight,
-        });
-
-        const toggleClasses = classNames(
-            'dropdown-toggle btn inline-flex flex-center',
-            this.props.extraDropdownToggleClasses,
-            {
-                'dropdown-toggle-placeholder': !this.props.datePicker || !this.props.datePicker.appliedLowerLimit,
-            }
-        );
-
-        if (this.props.withDrop) {
-            return (
-                <Drop
-                    id={this.props.id}
-                    positions={[DropPodPosition.bottom, DropPodPosition.top]}
-                    buttonContainerProps={{className: 'inline-block'}}
-                    renderOpenButton={(onClick: () => void) => (
-                        <div
-                            className={classNames('date-picker-dropdown', this.props.className)}
-                            ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}
-                        >
-                            <div className={dropdownClasses}>
-                                <button
-                                    className={toggleClasses}
-                                    onClick={() => {
-                                        this.handleClick();
-                                        onClick();
-                                    }}
-                                    disabled={this.props.readonly}
-                                >
-                                    <span className="dropdown-selected-value">
-                                        <label>
-                                            {label}
-                                            {toLabel}
-                                            {labelSecondPart}
-                                        </label>
-                                    </span>
-                                    <Svg
-                                        svgName={
-                                            this.props.isOpened
-                                                ? VaporSVG.svg.chartUp.name
-                                                : VaporSVG.svg.chartDown.name
-                                        }
-                                        svgClass="icon dropdown-toggle-arrow-style"
-                                    />
-                                </button>
-                            </div>
-                        </div>
-                    )}
-                    closeOnClickDrop={false}
-                    {...this.props.dropOptions}
-                >
-                    {this.getDatePickerBox()}
-                </Drop>
-            );
-        }
-
-        return (
-            <div className={classNames('date-picker-dropdown', this.props.className)}>
-                <div className={dropdownClasses} ref={(dropdown: HTMLDivElement) => (this.dropdown = dropdown)}>
-                    <button className={toggleClasses} onClick={this.handleClick} disabled={this.props.readonly}>
-                        <span className="dropdown-selected-value">
-                            <label>
-                                {label}
-                                {toLabel}
-                                {labelSecondPart}
-                            </label>
-                        </span>
-                        <Svg
-                            svgName={this.props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
-                            svgClass="icon dropdown-toggle-arrow-style"
-                        />
-                    </button>
-                    <div className={menuClasses}>{this.getDatePickerBox()}</div>
-                </div>
-            </div>
-        );
-    }
-
-    private handleClick = () => {
-        if (this.props.onClick && !this.props.readonly) {
-            this.props.onClick(this.props.datePicker);
+    const handleClick = () => {
+        if (!props.readonly) {
+            props.onClick?.(props.datePicker);
         }
     };
 
-    private handleDocumentClick = (e: MouseEvent) => {
-        const dropdown: Element | Text = ReactDOM.findDOMNode(this.dropdown);
-        if (!dropdown.contains(e.target as Node) && this.props.isOpened && !this.props.withDrop) {
-            this.props.onDocumentClick();
-            this.handleCancel();
-        }
+    const handleApply = () => {
+        props.onBeforeApply?.();
+        props.onApply?.();
     };
 
-    private handleApply() {
-        if (this.props.onBeforeApply) {
-            this.props.onBeforeApply();
-        }
-
-        if (this.props.onApply) {
-            this.props.onApply();
-        }
-    }
-
-    private handleCancel() {
-        if (this.props.onCancel) {
+    const handleCancel = () => {
+        if (props.onCancel) {
             const currentMonth: number =
-                this.props.datePicker && this.props.datePicker.appliedLowerLimit
-                    ? this.props.datePicker.appliedLowerLimit.getMonth()
+                props.datePicker && props.datePicker.appliedLowerLimit
+                    ? props.datePicker.appliedLowerLimit.getMonth()
                     : DateUtils.currentMonth;
-            const years: string[] = this.props.years || DEFAULT_YEARS;
+
+            const y: string[] = props.years || DEFAULT_YEARS;
+
             const currentYear: number =
-                this.props.datePicker && this.props.datePicker.appliedLowerLimit
-                    ? this.props.datePicker.appliedLowerLimit.getFullYear()
+                props.datePicker && props.datePicker.appliedLowerLimit
+                    ? props.datePicker.appliedLowerLimit.getFullYear()
                     : DateUtils.currentYear;
-            this.props.onCancel(currentMonth, years.indexOf(currentYear.toString()), this.props.isOpened);
-        }
-    }
 
-    private handleClear() {
-        if (this.props.onClear) {
-            this.props.onClear();
+            props.onCancel(currentMonth, y.indexOf(currentYear.toString()), props.isOpened);
         }
-    }
+    };
 
-    private formatDate(date: Date): string {
-        return this.props.datesSelectionBoxes.length && this.props.datesSelectionBoxes[0].withTime
+    const handleClear = () => {
+        props.onClear?.();
+    };
+
+    const formatDate = (date: Date): string =>
+        props.datesSelectionBoxes.length && props.datesSelectionBoxes[0].withTime
             ? DateUtils.getDateWithTimeString(date)
             : DateUtils.getSimpleDate(date);
-    }
 
-    private getLimitAndDiffInMinutes(range: IRangeLimit): {limit: number; diff: number} {
-        const limit: number = DateUtils.convertRangeToMinutes(range);
-        const diff: number = moment(this.props.datePicker.inputUpperLimit).diff(
-            moment(this.props.datePicker.inputLowerLimit),
-            'minutes'
-        );
+    const getLimitAndDiffInMinutes = (range: IRangeLimit): {limit: number; diff: number} => {
+        const limit = DateUtils.convertRangeToMinutes(range);
+        const diff = moment(props.datePicker.inputUpperLimit).diff(moment(props.datePicker.inputLowerLimit), 'minutes');
         return {limit, diff};
-    }
+    };
 
-    private hasNotReachTheMinimalRangeLimit(): boolean {
-        if (this.props.datePicker?.minimalRangeLimit) {
-            const {limit, diff} = this.getLimitAndDiffInMinutes(this.props.datePicker.minimalRangeLimit);
+    const hasNotReachTheMinimalRangeLimit = (): boolean => {
+        if (props.datePicker?.minimalRangeLimit) {
+            const {limit, diff} = getLimitAndDiffInMinutes(props.datePicker.minimalRangeLimit);
             return Math.abs(diff) < limit;
         }
         return false;
-    }
+    };
 
-    private hasExceededRangeLimit(): boolean {
-        if (this.props.datePicker?.rangeLimit) {
-            const {limit, diff} = this.getLimitAndDiffInMinutes(this.props.datePicker.rangeLimit);
+    const hasExceededRangeLimit = (): boolean => {
+        if (props.datePicker?.rangeLimit) {
+            const {limit, diff} = getLimitAndDiffInMinutes(props.datePicker.rangeLimit);
             return diff > limit;
         }
 
         return false;
-    }
+    };
 
-    private getApplyButtonTooltip(hasExceededRangeLimit: boolean, hasNotReachTheMinimalRangeLimit: boolean): string {
-        if (hasExceededRangeLimit) {
-            return this.props.datePicker.rangeLimit.message;
+    const getApplyButtonTooltip = (isRangeLimitExceeded: boolean, isMinimalRangeLimitReached: boolean): string => {
+        if (isRangeLimitExceeded) {
+            return props.datePicker.rangeLimit.message;
         }
 
-        if (hasNotReachTheMinimalRangeLimit) {
-            return this.props.datePicker.minimalRangeLimit.message;
+        if (isMinimalRangeLimitReached) {
+            return props.datePicker.minimalRangeLimit.message;
         }
 
         return '';
-    }
+    };
 
-    private getDatePickerBox(): JSX.Element {
-        if (this.props.isOpened || this.props.renderDatePickerWhenClosed) {
-            const hasExceededRangeLimit = this.hasExceededRangeLimit();
-            const hasNotReachTheMinimalRangeLimit = this.hasNotReachTheMinimalRangeLimit();
+    const getDatePickerBox = (): JSX.Element => {
+        if (props.isOpened || renderDatePickerWhenClosed) {
+            const isRangeLimitExceeded = hasExceededRangeLimit();
+            const isMinimalRangeLimitReached = hasNotReachTheMinimalRangeLimit();
             const datePickerBoxProps: IDatePickerBoxProps = {
-                setToNowTooltip: this.props.setToNowTooltip,
-                datesSelectionBoxes: this.props.datesSelectionBoxes,
-                months: this.props.months,
-                startingMonth: this.props.startingMonth,
-                years: this.props.years,
-                startingYear: this.props.startingYear,
-                days: this.props.days,
-                startingDay: this.props.startingDay,
-                selectionRules: this.props.selectionRules,
-                lowerLimitPlaceholder: this.props.lowerLimitPlaceholder,
-                upperLimitPlaceholder: this.props.upperLimitPlaceholder,
-                isLinkedToDateRange: this.props.isLinkedToDateRange,
-                isClearable: this.props.isClearable,
-                initiallyUnselected: this.props.initiallyUnselected,
-                clearLabel: this.props.clearLabel,
-                simple: this.props.simple,
-                initialDateRange: this.props.initialDateRange,
+                setToNowTooltip: props.setToNowTooltip,
+                datesSelectionBoxes: props.datesSelectionBoxes,
+                months: props.months,
+                startingMonth: props.startingMonth,
+                years: props.years,
+                startingYear: props.startingYear,
+                days: props.days,
+                startingDay: props.startingDay,
+                selectionRules: props.selectionRules,
+                lowerLimitPlaceholder: props.lowerLimitPlaceholder,
+                upperLimitPlaceholder: props.upperLimitPlaceholder,
+                isLinkedToDateRange: props.isLinkedToDateRange,
+                isClearable,
+                initiallyUnselected: props.initiallyUnselected,
+                clearLabel: props.clearLabel,
+                simple: props.simple,
+                initialDateRange: props.initialDateRange,
                 withoutBoxResize: true,
-                onClear: () => this.handleClear(),
+                onClear: () => handleClear(),
                 footer: (
                     <ModalFooter classes={['mod-small']}>
                         <Button
-                            enabled={!hasExceededRangeLimit && !hasNotReachTheMinimalRangeLimit}
-                            name={this.props.applyLabel}
+                            enabled={!isRangeLimitExceeded && !isMinimalRangeLimitReached}
+                            name={applyLabel}
                             small={true}
                             primary={true}
-                            tooltip={this.getApplyButtonTooltip(hasExceededRangeLimit, hasNotReachTheMinimalRangeLimit)}
+                            tooltip={getApplyButtonTooltip(isRangeLimitExceeded, isMinimalRangeLimitReached)}
                             tooltipPlacement={TooltipPlacement.Left}
-                            onClick={() => this.handleApply()}
+                            onClick={handleApply}
                         />
-                        <Button
-                            enabled={true}
-                            name={this.props.cancelLabel}
-                            small={true}
-                            primary={true}
-                            onClick={() => this.handleCancel()}
-                        />
+                        <Button enabled={true} name={cancelLabel} small={true} primary={true} onClick={handleCancel} />
                     </ModalFooter>
                 ),
             };
 
-            return this.props.withReduxState ? (
-                <DatePickerBox withReduxState id={this.props.id} {...datePickerBoxProps} />
-            ) : (
-                <DatePickerBox {...datePickerBoxProps} />
+            return (
+                <DatePickerBox
+                    {...(props.withReduxState && {withReduxState: true, id: props.id})}
+                    {...datePickerBoxProps}
+                />
             );
         }
+    };
+
+    let dropdownLabel = label;
+    let dropdownToLabel: JSX.Element = null;
+    let labelSecondPart = '';
+
+    if (props.datePicker && props.datePicker.appliedLowerLimit) {
+        dropdownLabel = formatDate(props.datePicker.appliedLowerLimit);
+        if (props.datePicker.isRange) {
+            const formattedUpper = formatDate(props.datePicker.appliedUpperLimit);
+            if (formattedUpper !== dropdownLabel) {
+                dropdownToLabel = <span className={classNames('mx1', {disabled: props.readonly})}>{toLabel}</span>;
+                labelSecondPart = formattedUpper;
+            }
+        }
     }
-}
+
+    const dropdownClasses = classNames(extraDropdownClasses, 'dropdown-wrapper dropdown', {
+        open: props.isOpened,
+    });
+
+    const menuClasses = classNames('dropdown-menu normal-height', {
+        'on-right': props.onRight,
+    });
+
+    const toggleClasses = classNames('dropdown-toggle btn inline-flex flex-center', extraDropdownToggleClasses, {
+        'dropdown-toggle-placeholder': !props.datePicker || !props.datePicker.appliedLowerLimit,
+    });
+
+    if (withDrop) {
+        return (
+            <Drop
+                id={props.id}
+                positions={[DropPodPosition.bottom, DropPodPosition.top]}
+                buttonContainerProps={{className: 'inline-block'}}
+                renderOpenButton={(onClick: () => void) => (
+                    <div className={classNames('date-picker-dropdown', props.className)} ref={dropdownRef}>
+                        <div className={dropdownClasses}>
+                            <button
+                                className={toggleClasses}
+                                onClick={() => {
+                                    handleClick();
+                                    onClick();
+                                }}
+                                disabled={props.readonly}
+                            >
+                                <span className="dropdown-selected-value">
+                                    <label>
+                                        {dropdownLabel}
+                                        {dropdownToLabel}
+                                        {labelSecondPart}
+                                    </label>
+                                </span>
+                                <Svg
+                                    svgName={props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                                    svgClass="icon dropdown-toggle-arrow-style"
+                                />
+                            </button>
+                        </div>
+                    </div>
+                )}
+                closeOnClickDrop={false}
+                {...props.dropOptions}
+            >
+                {getDatePickerBox()}
+            </Drop>
+        );
+    }
+
+    return (
+        <div className={classNames('date-picker-dropdown', props.className)}>
+            <div className={dropdownClasses} ref={dropdownRef}>
+                <button className={toggleClasses} onClick={handleClick} disabled={props.readonly}>
+                    <span className="dropdown-selected-value">
+                        <label>
+                            {dropdownLabel}
+                            {dropdownToLabel}
+                            {labelSecondPart}
+                        </label>
+                    </span>
+                    <Svg
+                        svgName={props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                        svgClass="icon dropdown-toggle-arrow-style"
+                    />
+                </button>
+                <div className={menuClasses}>{getDatePickerBox()}</div>
+            </div>
+        </div>
+    );
+};
