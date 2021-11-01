@@ -51,7 +51,7 @@
         "gulp-rename": "1.2.2",
         "gulp-svgmin": "3.0.0",
         "gulp-uglify": "3.0.0",
-        "jquery": "^3.5.1",
+        "jquery": "3.6.0",
         "lint-staged": "9.4.2",
         "materialize-css": "0.98.2",
         "merge-stream": "1.0.1",
