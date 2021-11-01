@@ -9,15 +9,20 @@
     },
     "homepage": "https://github.com/coveo/react-vapor/packages/tokens#readme",
     "scripts": {
-        "tokens:fetch": "ts-node -r dotenv-safe/config ./bin/fetch.ts --project ./bin/tsconfig.json"
+        "tokens:fetch": "ts-node -r dotenv-safe/config ./bin/fetch.ts --project ./bin/tsconfig.json",
+        "tokens:build": "ts-node ./bin/build.ts --project ./bin/tsconfig.json && tsc --project tsconfig.json && pnpm tokens:lint",
+        "tokens:lint": "prettier --write \"{src,scss,data}/*.{scss,ts,tsx,json}\""
     },
     "license": "Apache-2.0",
     "devDependencies": {
         "@types/fs-extra": "9.0.13",
         "@types/node": "16.11.6",
+        "@types/rimraf": "3.0.2",
         "dotenv-safe": "8.2.0",
         "figma-js": "1.14.0",
         "fs-extra": "10.0.0",
+        "prettier": "2.4.1",
+        "rimraf": "3.0.2",
         "ts-node": "10.4.0",
         "tslib": "2.3.1",
         "typescript": "4.4.4"

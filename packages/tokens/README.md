@@ -33,6 +33,6 @@ Coming soon.
 ## Internal usage
 
 - `tokens:fetch`: fetches tokens information from our tokens library in Figma
-- `tokens:build`: (coming soon) translates the fetched tokens into all the available output formats
+- `tokens:build`: translates the fetched tokens into all the available output formats
 
 
