@@ -222,6 +222,7 @@ pipeline {
       }
       steps {
         script {
+          setLastStageName();
           sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
           if (env.BRANCH_NAME ==~ /release-.*/) {
