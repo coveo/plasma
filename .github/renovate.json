@@ -1,0 +1,16 @@
+{
+  "extends": ["config:base"],
+  "timezone": "America/Montreal",
+  "prCreation": "immediate",
+  "semanticCommitScope": "deps",
+  "packageRules": [
+    {
+      "updateTypes": [
+        "minor",
+        "patch"
+      ],
+      "automerge": true,
+      "semanticCommitType": "chore"
+    }
+  ]
+}
