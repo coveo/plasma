@@ -3,7 +3,6 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 
-import {ConnectedProps} from '../../utils';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {TabSelectors} from './TabSelectors';
 
@@ -12,13 +11,12 @@ export interface ITabPaneOwnProps {
     id?: string;
     className?: IClassName;
     children?: React.ReactNode;
+    isActive?: boolean;
 }
 
-const enhance = connect(createStructuredSelector({isActive: TabSelectors.getIsTabSelected}));
+const makeMapStateToProps = () => createStructuredSelector({isActive: TabSelectors.getIsTabSelected});
 
-export interface ITabPaneProps extends ITabPaneOwnProps, Partial<ConnectedProps<typeof enhance>> {}
-
-export const TabPane: React.FunctionComponent<ITabPaneProps> = ({id, className, isActive, children}) => (
+export const TabPane: React.FunctionComponent<ITabPaneOwnProps> = ({id, className, isActive, children}) => (
     <div
         id={`panel-${id}`}
         role="tabpanel"
@@ -30,4 +28,8 @@ export const TabPane: React.FunctionComponent<ITabPaneProps> = ({id, className, 
         {children}
     </div>
 );
-export const TabPaneConnected = enhance(TabPane);
+export const TabPaneConnected = connect<
+    ReturnType<ReturnType<typeof makeMapStateToProps>>,
+    Record<string, never>,
+    ITabPaneOwnProps
+>(makeMapStateToProps)(TabPane as any);
