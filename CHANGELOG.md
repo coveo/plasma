@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.14.8](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.8) (2021-11-01)
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
 ## [24.14.7](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.7) (2021-11-01)
 
 **Note:** Version bump only for package root
