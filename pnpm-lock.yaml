@@ -205,7 +205,7 @@ importers:
       '@types/lorem-ipsum': 2.0.0
       '@types/rc-slider': 8.6.6
       '@types/react': 16.9.19
-      '@types/react-bootstrap': 0.32.15
+      '@types/react-bootstrap': 0.32.28
       '@types/react-codemirror': 1.0.6
       '@types/react-color': 3.0.1
       '@types/react-dom': 16.9.14
@@ -328,7 +328,7 @@ importers:
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.9.19
-      '@types/react-bootstrap': 0.32.15
+      '@types/react-bootstrap': 0.32.28
       '@types/react-codemirror': 1.0.6
       '@types/react-color': 3.0.1
       '@types/react-dom': 16.9.14
@@ -2700,10 +2700,10 @@ packages:
       '@types/react': 17.0.6
     dev: false
 
-  /@types/react-bootstrap/0.32.15:
-    resolution: {integrity: sha512-OWI9dUle8dbwVugBFQu5ganhd10VkktIRrMuDpVRL7vppp8L3nr/ZbJR4Rt4+x2xzHLhWdK/B2a/umm7oh24RQ==}
+  /@types/react-bootstrap/0.32.28:
+    resolution: {integrity: sha512-+cGcRsnKZrmBhb1wV/fg/gC5LxgcP33O1QhQD/G5HtV0D2nID8tU6nU1M8bM6k72uc2X/0fHezt9Cdv8qBmG3A==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/react-codemirror/1.0.6:
