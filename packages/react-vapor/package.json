@@ -79,7 +79,7 @@
         "@testing-library/user-event": "12.8.3",
         "@types/chosen-js": "1.6.2",
         "@types/classnames": "2.2.9",
-        "@types/d3": "3.5.41",
+        "@types/d3": "3.5.46",
         "@types/enzyme": "3.10.8",
         "@types/enzyme-adapter-react-16": "1.0.6",
         "@types/escape-string-regexp": "1.0.0",
