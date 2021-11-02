@@ -226,7 +226,7 @@ importers:
       codecov: 3.2.0
       codemirror: 5.63.3
       concurrently: 5.1.0
-      coveo-styleguide: ^24.14.13
+      coveo-styleguide: ^24.14.14
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
