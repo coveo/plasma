@@ -163,7 +163,7 @@ pipeline {
             
             sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
 
-            if (env.BRANCH_NAME != "next") {
+            if (env.CHANGE_ID != null) {
               postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html");
             }
 
