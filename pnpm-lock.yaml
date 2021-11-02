@@ -212,7 +212,7 @@ importers:
       '@types/react-infinite-scroll-component': 4.2.3
       '@types/react-modal': 3.8.2
       '@types/react-tether': 0.5.4
-      '@types/react-textarea-autosize': 4.3.3
+      '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.0.15
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.2
@@ -335,7 +335,7 @@ importers:
       '@types/react-infinite-scroll-component': 4.2.3
       '@types/react-modal': 3.8.2
       '@types/react-tether': 0.5.4
-      '@types/react-textarea-autosize': 4.3.3
+      '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.0.15
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.2
@@ -2539,7 +2539,7 @@ packages:
     resolution: {integrity: sha512-6b4JWgV+FNec1c4+8HauGbXg5gRc1oQK93t2+4W+bHjG/PzO+iPvagY6d6bXAZ+t+ps51Zb2F9LQ4vl0S0Epog==}
     dependencies:
       '@types/cheerio': 0.22.28
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/enzyme/3.10.8:
@@ -2707,7 +2707,7 @@ packages:
   /@types/rc-tooltip/3.7.3:
     resolution: {integrity: sha512-2+lEqXGGY6MSoE/SGEdSf75B1TGljQXBdeaDfBNhXASytMU/p/1XeftZgphERZrjT4Afsh25nH/7tFlTmpdOxQ==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: false
 
   /@types/react-bootstrap/0.32.15:
@@ -2783,10 +2783,10 @@ packages:
       '@types/tether': 1.4.5
     dev: true
 
-  /@types/react-textarea-autosize/4.3.3:
-    resolution: {integrity: sha512-fl0yK995xJg31Y/7EkR0rkg9hbIqX6mas7e/DZdMr0mb+CDZ6gwdYXor6XjWJqGW3MRsuKY9HbqHne9ZWQqNVg==}
+  /@types/react-textarea-autosize/4.3.6:
+    resolution: {integrity: sha512-cTf8tCem0c8A7CERYbTuF+bRFaqYu7N7HLCa6ZhUhDx8XnUsTpGx5udMWljt87JpciUKuUkImKPEsy6kcKhrcQ==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/react-transition-group/2.0.15:
