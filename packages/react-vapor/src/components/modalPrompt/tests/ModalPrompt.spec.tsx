@@ -88,15 +88,10 @@ describe('ModalPrompt', () => {
         });
 
         describe('with a confirm spy', () => {
-            let confirmSpy: jest.Mock<any, any>;
-            let confirmButton: ReactWrapper<React.HTMLAttributes<HTMLButtonElement>, void>;
-
-            beforeEach(() => {
-                confirmSpy = jest.fn();
-                confirmButton = modalPrompt.find('.js-confirm');
-            });
-
             it('should call prop onConfirm when modalPrompt Confirm button is clicked and prop is set', () => {
+                const confirmSpy = jest.fn();
+                const confirmButton = modalPrompt.find('.js-confirm');
+
                 confirmButton.simulate('click');
 
                 expect(confirmSpy).not.toHaveBeenCalled();
