@@ -209,7 +209,7 @@ importers:
       '@types/react-codemirror': 1.0.6
       '@types/react-color': 3.0.1
       '@types/react-dom': 16.9.14
-      '@types/react-infinite-scroll-component': 4.2.3
+      '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.8.2
       '@types/react-tether': 0.5.4
       '@types/react-textarea-autosize': 4.3.6
@@ -332,7 +332,7 @@ importers:
       '@types/react-codemirror': 1.0.6
       '@types/react-color': 3.0.1
       '@types/react-dom': 16.9.14
-      '@types/react-infinite-scroll-component': 4.2.3
+      '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.8.2
       '@types/react-tether': 0.5.4
       '@types/react-textarea-autosize': 4.3.6
@@ -2725,10 +2725,10 @@ packages:
       '@types/react': 16.9.19
     dev: true
 
-  /@types/react-infinite-scroll-component/4.2.3:
-    resolution: {integrity: sha512-z+OdWU6Uno1QZt0EbQjQA3pWkYByMxvXg0m2j5IG1zqQGRx6InbRDhu3rW4XzmOgHgp6ik5Mw7toCjrfqKxHNw==}
+  /@types/react-infinite-scroll-component/4.2.5:
+    resolution: {integrity: sha512-Vo2ykqsvATeFgAAz0IBvO7fgpx9Q2kHG/KJJRNTrdWL06ghTG0t/l/+oY1Z5Zl5PJoLArEHu8D4Yq0kD8jx8ow==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/react-modal/3.8.2:
