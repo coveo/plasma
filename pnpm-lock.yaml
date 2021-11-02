@@ -200,7 +200,7 @@ importers:
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
       '@types/jest': 26.0.24
-      '@types/jquery': 2.0.46
+      '@types/jquery': 2.0.57
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
       '@types/rc-slider': 8.6.6
@@ -324,7 +324,7 @@ importers:
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
       '@types/jest': 26.0.24
-      '@types/jquery': 2.0.46
+      '@types/jquery': 2.0.57
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.9.19
@@ -2508,7 +2508,7 @@ packages:
   /@types/chosen-js/1.6.2:
     resolution: {integrity: sha512-JMG6svozOHSmiz++k6bNk8OqjQBNlPFvYGiqcxbk6P52HR02O6auHY5MUPP+xPi4ESizO8tCyMPKwF9gklhrAw==}
     dependencies:
-      '@types/jquery': 2.0.46
+      '@types/jquery': 2.0.57
     dev: true
 
   /@types/classnames/2.2.9:
@@ -2619,8 +2619,8 @@ packages:
       pretty-format: 26.6.2
     dev: true
 
-  /@types/jquery/2.0.46:
-    resolution: {integrity: sha512-U64bkZqTfFi4HXHqOckD1Uxvg+oPooCjD5bQ10t9xOG5Ke6cR8tFnvERXrQtrRWvgS428nhAL1V8qv1b88kgyQ==}
+  /@types/jquery/2.0.57:
+    resolution: {integrity: sha512-QUJ5wVL8iTZofgZjCfVnHxcMqqPPLfVfEKe8rfksMdmSmqEenpcpEBQO45VSSfng/tunwoLF+3I8rzEzVhYNLQ==}
     dev: true
 
   /@types/json-schema/7.0.7:
