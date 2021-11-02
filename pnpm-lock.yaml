@@ -402,7 +402,7 @@ importers:
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2
       css-loader: 3.4.2
-      cssnano: 4.1.10
+      cssnano: 4.1.11
       del: 5.1.0
       fancy-log: 1.3.3
       file-loader: 5.1.0
@@ -442,7 +442,7 @@ importers:
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2_jquery@3.6.0+underscore@1.13.1
       css-loader: 3.4.2_webpack@4.41.6
-      cssnano: 4.1.10
+      cssnano: 4.1.11
       del: 5.1.0
       fancy-log: 1.3.3
       file-loader: 5.1.0_webpack@4.41.6
@@ -5826,16 +5826,6 @@ packages:
     engines: {node: '>=6.9.0'}
     dev: true
 
-  /cssnano/4.1.10:
-    resolution: {integrity: sha512-5wny+F6H4/8RgNlaqab4ktc3e0/blKutmq8yNlBFXA//nSFFAqAngjNVRzUvCgYROULmZZUoosL/KSoZo5aUaQ==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      cosmiconfig: 5.2.1
-      cssnano-preset-default: 4.0.8
-      is-resolvable: 1.1.0
-      postcss: 7.0.35
-    dev: true
-
   /cssnano/4.1.11:
     resolution: {integrity: sha512-6gZm2htn7xIPJOHY824ERgj8cNPgPxyCSnkXc4v7YvNW+TdVfzgngHcEhy/8D11kUWRUMbke+tC+AUcUsnMz2g==}
     engines: {node: '>=6.9.0'}
@@ -8430,7 +8420,7 @@ packages:
       lodash._reevaluate: 3.0.0
       lodash._reinterpolate: 3.0.0
       lodash.template: 3.6.2
-      minimist: 1.2.3
+      minimist: 1.2.5
       multipipe: 0.1.2
       object-assign: 3.0.0
       replace-ext: 0.0.1
@@ -16328,6 +16318,7 @@ packages:
   /svgo/1.3.2:
     resolution: {integrity: sha512-yhy/sQYxR5BkC98CY7o31VGsg014AKLEPxdfhora76l36hD9Rdy5NZA/Ocn6yayNPgSamYdtX2rFJdcv07AYVw==}
     engines: {node: '>=4.0.0'}
+    deprecated: This SVGO version is no longer supported. Upgrade to v2.x.x.
     hasBin: true
     dependencies:
       chalk: 2.4.2
