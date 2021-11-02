@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.14.15](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.15) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+
+
+
 ## [24.14.14](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.14) (2021-11-02)
 
 
