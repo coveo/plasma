@@ -3,13 +3,13 @@
   "timezone": "America/Montreal",
   "prCreation": "immediate",
   "semanticCommitScope": "deps",
+  "commitBody": "UITOOL-284",
   "packageRules": [
     {
-      "updateTypes": [
-        "minor",
-        "patch"
-      ],
+      "description": "Automatically merge minor and patch-level updates",
+      "updateTypes": ["minor", "patch"],
       "automerge": true,
+      "automergeType": "branch",
       "semanticCommitType": "chore"
     }
   ]
