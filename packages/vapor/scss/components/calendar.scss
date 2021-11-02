@@ -344,6 +344,10 @@
             border-color: var(--digital-blue-60);
             border-style: solid;
             border-width: 2px;
+
+            &.invalid {
+                border-color: var(--critical-70);
+            }
         }
 
         &.date-picked {
