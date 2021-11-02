@@ -54,7 +54,7 @@ importers:
     specifiers:
       '@loadable/component': 5.10.2
       '@types/classnames': 2.2.9
-      '@types/faker': 4.1.9
+      '@types/faker': 4.1.12
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
       '@types/prettier': 1.19.0
@@ -136,7 +136,7 @@ importers:
     devDependencies:
       '@loadable/component': 5.10.2_react@16.14.0
       '@types/classnames': 2.2.9
-      '@types/faker': 4.1.9
+      '@types/faker': 4.1.12
       '@types/loadable__component': 5.10.0
       '@types/lorem-ipsum': 2.0.0
       '@types/prettier': 1.19.0
@@ -198,7 +198,7 @@ importers:
       '@types/enzyme': 3.10.8
       '@types/enzyme-adapter-react-16': 1.0.6
       '@types/escape-string-regexp': 1.0.0
-      '@types/faker': 4.1.9
+      '@types/faker': 4.1.12
       '@types/jest': 26.0.18
       '@types/jquery': 2.0.46
       '@types/loadable__component': 5.10.0
@@ -322,7 +322,7 @@ importers:
       '@types/enzyme': 3.10.8
       '@types/enzyme-adapter-react-16': 1.0.6
       '@types/escape-string-regexp': 1.0.0
-      '@types/faker': 4.1.9
+      '@types/faker': 4.1.12
       '@types/jest': 26.0.18
       '@types/jquery': 2.0.46
       '@types/loadable__component': 5.10.0
@@ -2569,8 +2569,8 @@ packages:
     resolution: {integrity: sha512-LfZwXoGUDo0C3me81HXgkBg5CTQYb6xzEl+fNmbO4JdRiSKQ8A0GD1OBBvKAIsbCUgoyAty7m99GqqMQe784ew==}
     dev: false
 
-  /@types/faker/4.1.9:
-    resolution: {integrity: sha512-4ZFqA3CEXB6MgT8sDV8E5LhW+O9ndONsHeQXMbEwfOsjoQ4UXKqTJKru+BjDBUfobYEpQz1WYF9/uzQsvbY2wA==}
+  /@types/faker/4.1.12:
+    resolution: {integrity: sha512-0MEyzJrLLs1WaOCx9ULK6FzdCSj2EuxdSP9kvuxxdBEGujZYUOZ4vkPXdgu3dhyg/pOdn7VCatelYX7k0YShlA==}
     dev: true
 
   /@types/glob/7.1.3:
