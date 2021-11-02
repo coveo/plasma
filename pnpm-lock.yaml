@@ -214,7 +214,7 @@ importers:
       '@types/react-tether': 0.5.4
       '@types/react-textarea-autosize': 4.3.3
       '@types/react-transition-group': 2.0.15
-      '@types/redux-logger': 3.0.6
+      '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.2
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
@@ -337,7 +337,7 @@ importers:
       '@types/react-tether': 0.5.4
       '@types/react-textarea-autosize': 4.3.3
       '@types/react-transition-group': 2.0.15
-      '@types/redux-logger': 3.0.6
+      '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.2
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
@@ -2812,10 +2812,10 @@ packages:
       '@types/scheduler': 0.16.1
       csstype: 3.0.8
 
-  /@types/redux-logger/3.0.6:
-    resolution: {integrity: sha512-HXVJnbyuTcVtQ+qiwDcbLEMoOgNjKnNYVKx29P4NhV+FIgVVRCFILEPzjgSxlmMLc6aBVaEew7PfE3421DZ6Jw==}
+  /@types/redux-logger/3.0.9:
+    resolution: {integrity: sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==}
     dependencies:
-      redux: 3.7.2
+      redux: 4.1.2
     dev: true
 
   /@types/redux-mock-store/1.0.2:
