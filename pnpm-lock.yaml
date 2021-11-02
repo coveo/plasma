@@ -75,7 +75,7 @@ importers:
       d3: 3.5.17
       faker: 4.1.0
       file-loader: 5.1.0
-      html-webpack-plugin: 4.5.1
+      html-webpack-plugin: 4.5.2
       html-webpack-tags-plugin: 2.0.17
       jquery: 3.6.0
       lint-staged: 9.4.2
@@ -152,7 +152,7 @@ importers:
       copy-webpack-plugin: 6.4.1_webpack@4.41.6
       css-loader: 3.4.2_webpack@4.41.6
       file-loader: 5.1.0_webpack@4.41.6
-      html-webpack-plugin: 4.5.1_webpack@4.41.6
+      html-webpack-plugin: 4.5.2_webpack@4.41.6
       html-webpack-tags-plugin: 2.0.17
       lint-staged: 9.4.2
       node-sass: 5.0.0
@@ -2897,7 +2897,7 @@ packages:
   /@types/webpack-sources/2.1.0:
     resolution: {integrity: sha512-LXn/oYIpBeucgP1EIJbKQ2/4ZmpvRl+dlrFdX7+94SKRUV3Evy3FsfMZY318vGhkWUS5MPhtOM3w1/hCOAOXcg==}
     dependencies:
-      '@types/node': 14.14.41
+      '@types/node': 15.12.3
       '@types/source-list-map': 0.1.2
       source-map: 0.7.3
     dev: true
@@ -2906,7 +2906,7 @@ packages:
     resolution: {integrity: sha512-wK/oi5gcHi72VMTbOaQ70VcDxSQ1uX8S2tukBK9ARuGXrYM/+u4ou73roc7trXDNmCxCoerE8zruQqX/wuHszA==}
     dependencies:
       '@types/anymatch': 1.3.1
-      '@types/node': 14.14.41
+      '@types/node': 15.12.3
       '@types/tapable': 1.0.7
       '@types/uglify-js': 3.13.0
       '@types/webpack-sources': 2.1.0
@@ -6099,8 +6099,8 @@ packages:
     resolution: {integrity: sha512-yd9c5AdiqVcR+JjcwUQb9DkhJc8ngNr0MahEBGvDiJw8puWab2yZlh+nkasOnZP+EGTAP6rRp2JzJhJZzvNF8g==}
     dependencies:
       is-arguments: 1.1.0
-      is-date-object: 1.0.2
-      is-regex: 1.1.2
+      is-date-object: 1.0.4
+      is-regex: 1.1.3
       object-is: 1.1.5
       object-keys: 1.1.1
       regexp.prototype.flags: 1.3.1
@@ -8724,8 +8724,8 @@ packages:
       react: 16.14.0
     dev: false
 
-  /html-webpack-plugin/4.5.1_webpack@4.41.6:
-    resolution: {integrity: sha512-yzK7RQZwv9xB+pcdHNTjcqbaaDZ+5L0zJHXfi89iWIZmb/FtzxhLk0635rmJihcQbs3ZUF27Xp4oWGx6EK56zg==}
+  /html-webpack-plugin/4.5.2_webpack@4.41.6:
+    resolution: {integrity: sha512-q5oYdzjKUIPQVjOosjgvCHQOv9Ett9CYYHlgvJeXG0qQvdSojnBq4vAdQBwn1+yGveAwHCoe/rMR86ozX3+c2A==}
     engines: {node: '>=6.9'}
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
@@ -9341,11 +9341,6 @@ packages:
       kind-of: 6.0.3
     dev: true
 
-  /is-date-object/1.0.2:
-    resolution: {integrity: sha512-USlDT524woQ08aoZFzh3/Z6ch9Y/EWXEHQ/AaRN0SkKq4t2Jw2R2339tSXmwuVoY7LLlBCbOIlx2myP/L5zk0g==}
-    engines: {node: '>= 0.4'}
-    dev: true
-
   /is-date-object/1.0.4:
     resolution: {integrity: sha512-/b4ZVsG7Z5XVtIxs/h9W8nvfLgSAyKYdtGWQLbqy6jA1icmgjf8WCoTKgeS4wy5tYaPePouzFMANbnj94c2Z+A==}
     engines: {node: '>= 0.4'}
@@ -9564,14 +9559,6 @@ packages:
     resolution: {integrity: sha512-U82MsXXiFIrjCK4otLT+o2NA2Cd2g5MLoOVXUZjIOhLurrRxpEXzI8O0KZHr3IjLvlAH1kTPYSuqer5T9ZVBKQ==}
     dependencies:
       '@types/estree': 0.0.48
-    dev: true
-
-  /is-regex/1.1.2:
-    resolution: {integrity: sha512-axvdhb5pdhEVThqJzYXwMlVuZwC+FF2DpcOhTS+y/8jVq4trxyPgfcwIxIKiyeuLlSQYKkmUaPQJ8ZE4yNKXDg==}
-    engines: {node: '>= 0.4'}
-    dependencies:
-      call-bind: 1.0.2
-      has-symbols: 1.0.2
     dev: true
 
   /is-regex/1.1.3:
