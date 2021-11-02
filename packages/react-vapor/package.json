@@ -83,7 +83,7 @@
         "@types/enzyme": "3.10.8",
         "@types/enzyme-adapter-react-16": "1.0.6",
         "@types/escape-string-regexp": "1.0.0",
-        "@types/faker": "4.1.9",
+        "@types/faker": "4.1.12",
         "@types/jest": "26.0.18",
         "@types/jquery": "2.0.46",
         "@types/loadable__component": "5.10.0",
