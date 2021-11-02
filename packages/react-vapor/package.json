@@ -80,7 +80,7 @@
         "@types/chosen-js": "1.6.2",
         "@types/classnames": "2.2.9",
         "@types/d3": "3.5.46",
-        "@types/enzyme": "3.10.8",
+        "@types/enzyme": "3.10.10",
         "@types/enzyme-adapter-react-16": "1.0.6",
         "@types/escape-string-regexp": "1.0.0",
         "@types/faker": "4.1.12",
