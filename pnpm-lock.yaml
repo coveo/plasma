@@ -91,7 +91,7 @@ importers:
       react-router-dom: 5.3.0
       react-syntax-highlighter: 15.4.4
       react-vapor: ^24.14.6
-      redux: 4.1.1
+      redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.3.0
@@ -126,9 +126,9 @@ importers:
       react-router-dom: 5.3.0_react@16.14.0
       react-syntax-highlighter: 15.4.4_react@16.14.0
       react-vapor: link:../react-vapor
-      redux: 4.1.1
-      redux-devtools-extension: 2.13.9_redux@4.1.1
-      redux-promise-middleware: 6.1.2_redux@4.1.1
+      redux: 4.1.2
+      redux-devtools-extension: 2.13.9_redux@4.1.2
+      redux-promise-middleware: 6.1.2_redux@4.1.2
       redux-thunk: 2.3.0
       reselect: 4.0.0
       underscore: 1.13.1
@@ -145,7 +145,7 @@ importers:
       '@types/react-router': 5.1.17
       '@types/react-router-dom': 5.3.2
       '@types/react-syntax-highlighter': 13.5.2
-      '@types/redux-promise-middleware': 6.0.0_redux@4.1.1
+      '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.15.1
       concurrently: 6.3.0
@@ -2808,15 +2808,6 @@ packages:
     resolution: {integrity: sha512-6LBtAQBN34i7SI5X+Qs4zpTEZO1tTDZ6sZ9fzFjYwTl3nLQXaBtwYdoV44CzNnyKu438xJ1lSIYyw0YMvunESw==}
     dependencies:
       redux: 4.0.5
-    dev: true
-
-  /@types/redux-promise-middleware/6.0.0_redux@4.1.1:
-    resolution: {integrity: sha512-G4MvO6popCiZtlWKbGNkV2S0vnp7ENhKTZj2uUl2yEfcP2oAaFTaqQg3lGvc4uEemsr3VCoCgj4XkF9YIs1nOw==}
-    deprecated: This is a stub types definition. redux-promise-middleware provides its own type definitions, so you do not need this installed.
-    dependencies:
-      redux-promise-middleware: 6.1.2_redux@4.1.1
-    transitivePeerDependencies:
-      - redux
     dev: true
 
   /@types/redux-promise-middleware/6.0.0_redux@4.1.2:
@@ -14458,12 +14449,12 @@ packages:
       strip-indent: 3.0.0
     dev: true
 
-  /redux-devtools-extension/2.13.9_redux@4.1.1:
+  /redux-devtools-extension/2.13.9_redux@4.1.2:
     resolution: {integrity: sha512-cNJ8Q/EtjhQaZ71c8I9+BPySIBVEKssbPpskBfsXqb8HJ002A3KRVHfeRzwRo6mGPqsm7XuHTqNSNeS1Khig0A==}
     peerDependencies:
       redux: ^3.1.0 || ^4.0.0
     dependencies:
-      redux: 4.1.1
+      redux: 4.1.2
     dev: false
 
   /redux-logger/3.0.6:
@@ -14478,20 +14469,12 @@ packages:
       lodash.isplainobject: 4.0.6
     dev: true
 
-  /redux-promise-middleware/6.1.2_redux@4.1.1:
-    resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
-    peerDependencies:
-      redux: ^2.0.0 || ^3.0.0 || ^4.0.0
-    dependencies:
-      redux: 4.1.1
-
   /redux-promise-middleware/6.1.2_redux@4.1.2:
     resolution: {integrity: sha512-ZqZu/nnSzGgwTtNbGoGVontpk7LjTOv0kigtt3CcgXI9gpq+8WlfXTXRZD0WTD5yaohRq0q2nYmJXSTjwXs83Q==}
     peerDependencies:
       redux: ^2.0.0 || ^3.0.0 || ^4.0.0
     dependencies:
       redux: 4.1.2
-    dev: true
 
   /redux-thunk/2.3.0:
     resolution: {integrity: sha512-km6dclyFnmcvxhAcrQV2AkZmPQjzPDjgVlQtR0EQjxZPyJ0BnMf3in1ryuR8A2qU0HldVRfxYXbFSKlI3N7Slw==}
@@ -14520,7 +14503,6 @@ packages:
     resolution: {integrity: sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==}
     dependencies:
       '@babel/runtime': 7.16.0
-    dev: true
 
   /reflect.ownkeys/0.2.0:
     resolution: {integrity: sha1-dJrO7H8/34tj+SegSAnpDFwLNGA=}
