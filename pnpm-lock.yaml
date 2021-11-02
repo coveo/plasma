@@ -400,7 +400,7 @@ importers:
       codemirror: ^5.59.4
       concurrently: 5.1.0
       coveo-png-sprite: 1.0.1
-      coveo-slider: 1.0.1
+      coveo-slider: 1.0.2
       css-loader: 3.4.2
       cssnano: 4.1.10
       del: 5.1.0
@@ -440,7 +440,7 @@ importers:
       chosen-npm: 1.4.2
       concurrently: 5.1.0
       coveo-png-sprite: 1.0.1
-      coveo-slider: 1.0.1
+      coveo-slider: 1.0.2_jquery@3.6.0+underscore@1.13.1
       css-loader: 3.4.2_webpack@4.41.6
       cssnano: 4.1.10
       del: 5.1.0
@@ -5564,8 +5564,14 @@ packages:
       vinyl: 2.2.0
     dev: true
 
-  /coveo-slider/1.0.1:
-    resolution: {integrity: sha512-90LLL9DArELv37y1KCOBUSaBZMYKmUORK0B+oaueJMBWAstgSkWI1Gy6T3EuwXxdf5fEvJX/V5fkXhUkae8CRA==}
+  /coveo-slider/1.0.2_jquery@3.6.0+underscore@1.13.1:
+    resolution: {integrity: sha512-CXdx/Ga93I9/hqe6AaW8RvfISNh1PF/OMaVI2mz0Ppf5uz2gZTi3xXtfYClQWg0dP59rZH7xv4rmWfJiha0sDg==}
+    peerDependencies:
+      jquery: ^2.2.4
+      underscore: ^1.9.1
+    dependencies:
+      jquery: 3.6.0
+      underscore: 1.13.1
     dev: true
 
   /create-ecdh/4.0.4:
