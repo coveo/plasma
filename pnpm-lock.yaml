@@ -218,7 +218,7 @@ importers:
       '@types/redux-mock-store': 1.0.2
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
-      '@types/underscore.string': 0.0.33
+      '@types/underscore.string': 0.0.38
       ansi-colors: 3.2.4
       autoprefixer: 9.4.0
       chosen-js: 1.8.7
@@ -341,7 +341,7 @@ importers:
       '@types/redux-mock-store': 1.0.2
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
-      '@types/underscore.string': 0.0.33
+      '@types/underscore.string': 0.0.38
       ansi-colors: 3.2.4
       autoprefixer: 9.4.0
       classnames: 2.2.6
@@ -2869,8 +2869,8 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /@types/underscore.string/0.0.33:
-    resolution: {integrity: sha512-Lx2mWs8099HAaCzfxSse1MOSXor4jS1HgIwzhnuOehcPOQiIQb9UGy2B/NjinolZX46yUUfF4VYvLU3YuM0Inw==}
+  /@types/underscore.string/0.0.38:
+    resolution: {integrity: sha512-QPMttDInBYkulH/3nON0KnYpEd/RlyE5kUrhuts5d76B/stpjXpDticq+iTluoAsVnVXuGECFhPtuX+aDJdx+A==}
     dependencies:
       '@types/underscore': 1.8.10
     dev: true
