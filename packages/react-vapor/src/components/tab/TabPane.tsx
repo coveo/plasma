@@ -6,7 +6,7 @@ import {createStructuredSelector} from 'reselect';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {TabSelectors} from './TabSelectors';
 
-export interface ITabPaneOwnProps {
+export interface ITabPaneProps {
     groupId?: string;
     id?: string;
     className?: IClassName;
@@ -16,7 +16,7 @@ export interface ITabPaneOwnProps {
 
 const makeMapStateToProps = () => createStructuredSelector({isActive: TabSelectors.getIsTabSelected});
 
-export const TabPane: React.FunctionComponent<ITabPaneOwnProps> = ({id, className, isActive, children}) => (
+export const TabPane: React.FunctionComponent<ITabPaneProps> = ({id, className, isActive, children}) => (
     <div
         id={`panel-${id}`}
         role="tabpanel"
@@ -31,5 +31,5 @@ export const TabPane: React.FunctionComponent<ITabPaneOwnProps> = ({id, classNam
 export const TabPaneConnected = connect<
     ReturnType<ReturnType<typeof makeMapStateToProps>>,
     Record<string, never>,
-    ITabPaneOwnProps
+    ITabPaneProps
 >(makeMapStateToProps)(TabPane as any);
