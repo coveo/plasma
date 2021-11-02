@@ -223,7 +223,7 @@ importers:
       autoprefixer: 9.4.0
       chosen-js: 1.8.7
       classnames: 2.2.6
-      codecov: 3.2.0
+      codecov: 3.7.1
       codemirror: 5.63.3
       concurrently: 5.1.0
       coveo-styleguide: ^24.14.15
@@ -345,7 +345,7 @@ importers:
       ansi-colors: 3.2.4
       autoprefixer: 9.4.0
       classnames: 2.2.6
-      codecov: 3.2.0
+      codecov: 3.7.1
       codemirror: 5.63.3
       concurrently: 5.1.0
       coveo-styleguide: link:../vapor
@@ -3348,11 +3348,9 @@ packages:
       regex-parser: 2.2.10
     dev: true
 
-  /agent-base/4.3.0:
-    resolution: {integrity: sha512-salcGninV0nPrwpGNn4VTXBb1SOuXQBiqbrNXoeizJsHrsL6ERFM2Ne3JUSBWRE6aeNJI2ROP/WEEIDUiDe3cg==}
-    engines: {node: '>= 4.0.0'}
-    dependencies:
-      es6-promisify: 5.0.0
+  /agent-base/5.1.1:
+    resolution: {integrity: sha512-TMeqbNl2fMW0nMjTEPOwe3J/PRFP4vqeoNuQMG0HlMrtm5QxKqdvAkZ1pRBQ/ulIyDD5Yq0nJ7YbdD8ey0TO3g==}
+    engines: {node: '>= 6.0.0'}
     dev: true
 
   /agent-base/6.0.2:
@@ -4989,16 +4987,18 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /codecov/3.2.0:
-    resolution: {integrity: sha512-3NJvNARXxilqnqVfgzDHyVrF4oeVgaYW1c1O6Oi5mn93exE7HTSSFNiYdwojWW6IwrCZABJ8crpNbKoo9aUHQw==}
+  /codecov/3.7.1:
+    resolution: {integrity: sha512-JHWxyPTkMLLJn9SmKJnwAnvY09kg2Os2+Ux+GG7LwZ9g8gzDDISpIN5wAsH1UBaafA/yGcd3KofMaorE8qd6Lw==}
     engines: {node: '>=4.0'}
     hasBin: true
     dependencies:
       argv: 0.0.2
       ignore-walk: 3.0.3
-      js-yaml: 3.14.1
-      teeny-request: 3.11.3
+      js-yaml: 3.13.1
+      teeny-request: 6.0.1
       urlgrey: 0.4.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /codemirror/5.60.0:
@@ -6775,16 +6775,6 @@ packages:
       d: 1.0.1
       es5-ext: 0.10.53
       es6-symbol: 3.1.3
-    dev: true
-
-  /es6-promise/4.2.8:
-    resolution: {integrity: sha512-HJDGx5daxeIvxdBxvG2cb9g4tEvwIk3i8+nhX0yGrYmZUzbkdg8QbDevheDB8gd0//uPj4c1EQua8Q+MViT0/w==}
-    dev: true
-
-  /es6-promisify/5.0.0:
-    resolution: {integrity: sha1-UQnWLz5W6pZ8S2NQWu8IKRyKUgM=}
-    dependencies:
-      es6-promise: 4.2.8
     dev: true
 
   /es6-symbol/3.1.3:
@@ -8887,12 +8877,14 @@ packages:
     resolution: {integrity: sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=}
     dev: true
 
-  /https-proxy-agent/2.2.4:
-    resolution: {integrity: sha512-OmvfoQ53WLjtA9HeYP9RNrWMJzzAz1JGaSFr1nijg0PVR1JaD/xbJq1mdEIIlxGpXp9eSe/O2LgU9DJmTPd0Eg==}
-    engines: {node: '>= 4.5.0'}
+  /https-proxy-agent/4.0.0:
+    resolution: {integrity: sha512-zoDhWrkR3of1l9QAL8/scJZyLu8j/gBkcwcaQOZh7Gyh/+uJQzGVETdgT30akuwkpL8HTRfssqI3BZuV18teDg==}
+    engines: {node: '>= 6.0.0'}
     dependencies:
-      agent-base: 4.3.0
-      debug: 3.2.7
+      agent-base: 5.1.1
+      debug: 4.3.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /https-proxy-agent/5.0.0:
@@ -10226,6 +10218,14 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
+
+  /js-yaml/3.13.1:
+    resolution: {integrity: sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==}
+    hasBin: true
+    dependencies:
+      argparse: 1.0.10
+      esprima: 4.0.1
+    dev: true
 
   /js-yaml/3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -15811,6 +15811,12 @@ packages:
       stream-shift: 1.0.1
     dev: true
 
+  /stream-events/1.0.5:
+    resolution: {integrity: sha512-E1GUzBSgvct8Jsb3v2X15pjzN1tYebtbLaMg+eBOUOAxgbLoSbT2NS91ckc5lJD1KfLjId+jXJRgo0qnV5Nerg==}
+    dependencies:
+      stubs: 3.0.0
+    dev: true
+
   /stream-exhaust/1.0.2:
     resolution: {integrity: sha512-b/qaq/GlBK5xaq1yrK9/zFcyRSTNxmcZwFLGSTG0mXgZl/4Z6GgiyYOXOvY7N3eEvFRAG1bkDRz5EPGSvPYQlw==}
     dev: true
@@ -16054,6 +16060,10 @@ packages:
       duplexer: 0.1.2
       minimist: 1.2.5
       through: 2.3.8
+    dev: true
+
+  /stubs/3.0.0:
+    resolution: {integrity: sha1-6NK6H6nJBXAwPAMLaQD31fiavls=}
     dev: true
 
   /style-inject/0.3.0:
@@ -16392,12 +16402,16 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /teeny-request/3.11.3:
-    resolution: {integrity: sha512-CKncqSF7sH6p4rzCgkb/z/Pcos5efl0DmolzvlqRQUNcpRIruOhY9+T1FsIlyEbfWd7MsFpodROOwHYh2BaXzw==}
+  /teeny-request/6.0.1:
+    resolution: {integrity: sha512-TAK0c9a00ELOqLrZ49cFxvPVogMUFaWY8dUsQc/0CuQPGF+BOxOQzXfE413BAk2kLomwNplvdtMpeaeGWmoc2g==}
     dependencies:
-      https-proxy-agent: 2.2.4
+      http-proxy-agent: 4.0.1
+      https-proxy-agent: 4.0.0
       node-fetch: 2.6.1
+      stream-events: 1.0.5
       uuid: 3.4.0
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /temp-dir/1.0.0:
