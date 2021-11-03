@@ -67,15 +67,17 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
             // and we need the value immediately to decide whether to to call props.onBlur
             let isDatePermitted = true;
 
-            this.props.selectionRules?.forEach((rule: ICalendarSelectionRule) => {
-                if (
-                    (rule.isFor === CalendarSelectionRuleType.lower && this.props.isSelecting === DateLimits.lower) ||
-                    (rule.isFor === CalendarSelectionRuleType.upper && this.props.isSelecting === DateLimits.upper)
-                ) {
+            this.props.selectionRules
+                ?.filter(
+                    (rule: ICalendarSelectionRule) =>
+                        (rule.isFor === CalendarSelectionRuleType.lower &&
+                            this.props.isSelecting === DateLimits.lower) ||
+                        (rule.isFor === CalendarSelectionRuleType.upper && this.props.isSelecting === DateLimits.upper)
+                )
+                .forEach((rule: ICalendarSelectionRule) => {
                     isDatePermitted = rule.test(date);
                     this.setState({isDatePermitted});
-                }
-            });
+                });
 
             if (isDatePermitted && date.getDate()) {
                 this.props.onBlur(date, this.props.upperLimit);

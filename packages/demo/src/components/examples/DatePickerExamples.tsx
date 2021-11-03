@@ -68,7 +68,7 @@ const DatePickerComponents: React.FunctionComponent = () => (
             </Section>
             <Section
                 level={3}
-                title="DatePicker dropdown that allows s start date within the last two weeks for a maximum range of 7 days"
+                title="DatePicker dropdown that allows a start date within the last two weeks for a maximum range of 7 days"
             >
                 <DatePickerDropdownConnected
                     id="date-picker-dropdown-log-browser"
