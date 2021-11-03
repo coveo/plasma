@@ -44,7 +44,7 @@ export class HeaderWrapper extends React.Component<IHeaderWrapperProps> {
 
     private get classes(): string {
         return classNames(
-            'flex flex-center space-between header-height panel-header',
+            'flex flex-center space-between panel-header',
             {
                 'mod-no-border-bottom': !this.props.hasBorderBottom || this.props.tabs,
                 px0: !this.props.hasPadding,
