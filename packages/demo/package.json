@@ -15,7 +15,7 @@
     },
     "author": "Coveo",
     "license": "Apache-2.0",
-    "homepage": "https://vapor.cloud.coveo.com/",
+    "homepage": "https://vapor.coveo.com/",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/react-vapor.git"

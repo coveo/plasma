@@ -3,7 +3,7 @@
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square&logo=appveyor)](https://conventionalcommits.org)
 
-React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://vapor.cloud.coveo.com/). Vapor package contains the generic style classes used across the components and react-vapor is a react implementation of multiple visual and behavioural components.
+React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://vapor.coveo.com/). Vapor package contains the generic style classes used across the components and react-vapor is a react implementation of multiple visual and behavioural components.
 
 ## Usage
 

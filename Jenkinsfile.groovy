@@ -166,13 +166,13 @@ pipeline {
             def SOURCE_LINK = ""
             def pullRequestURL = getCommitPullRequestURL()
             if (pullRequestURL != "") {
-              postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+              postCommentOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
               SOURCE_LINK = pullRequestURL
             } else {
               SOURCE_LINK = "https://github.com/coveo/react-vapor/tree/${env.BRANCH_NAME}"
             }
 
-            def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
+            def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html"
             notify.sendSlackWithThread(
                 color: "#00FF00", message: message,
                 ["admin-ui-builds"]
