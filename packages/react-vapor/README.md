@@ -8,7 +8,7 @@
 
 [Coveo Administration Console](https://platform.cloud.coveo.com/admin/)'s design system.
 
-[Have a look at `react-vapor`'s demo page!](https://vapor.cloud.coveo.com/)
+[Have a look at `react-vapor`'s demo page!](https://vapor.coveo.com/)
 
 ## Getting started
 
