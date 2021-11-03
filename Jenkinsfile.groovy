@@ -163,11 +163,16 @@ pipeline {
             
             sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
 
-            if (env.CHANGE_ID != null) {
+            def SOURCE_LINK = ""
+            def pullRequestURL = getCommitPullRequestURL()
+            if (pullRequestURL != "") {
               postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+              SOURCE_LINK = pullRequestURL
+            } else {
+              SOURCE_LINK = "https://github.com/coveo/react-vapor/tree/${env.BRANCH_NAME}"
             }
 
-            def message = "Build succeeded for <https://github.com/coveo/react-vapor/pull/${env.CHANGE_ID}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
+            def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
             notify.sendSlackWithThread(
                 color: "#00FF00", message: message,
                 ["admin-ui-builds"]
@@ -179,9 +184,7 @@ pipeline {
       post {
         failure {
           script {
-            if (env.BRANCH_NAME != "next") {
-              postCommentOnGithub();
-            }
+            postCommentOnGithub();
           }
         }
       }
@@ -405,10 +408,27 @@ def getLastStageName() {
 }
 
 def postCommentOnGithub(demoLink="") {
+  withCredentials([usernamePassword(credentialsId: 'github-app-dev',
+    usernameVariable: 'GITHUB_APP',
+    passwordVariable: 'GITHUB_ACCESS_TOKEN')
+  ]) {
     runPackage.call(
       "github-comment",
-      "--demoLink=${demoLink} --prNumber=${env.CHANGE_ID} --githubToken=${env.GH_TOKEN} --repositoryName=react-vapor"
+      "--demoLink=${demoLink} --commitHash=${env.GIT_COMMIT} --repo=react-vapor"
     )
+  }
+}
+
+def getCommitPullRequestURL() {
+  withCredentials([usernamePassword(credentialsId: 'github-app-dev',
+    usernameVariable: 'GITHUB_APP',
+    passwordVariable: 'GITHUB_ACCESS_TOKEN')
+  ]) {
+    return runPackage.call(
+      "github-commit-pr-url",
+      "--commitHash=${env.GIT_COMMIT} --repo=react-vapor"
+    )
+  }
 }
 
 def convertPNPMLockToNPM(pnpmLockPath="", npmLockPath="") {
