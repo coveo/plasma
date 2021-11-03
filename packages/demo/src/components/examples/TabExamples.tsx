@@ -6,11 +6,12 @@ export const TabsExamples: React.FunctionComponent = () => (
         <Section level={3} title="Simple tab navigation">
             <DefaultExmaple />
         </Section>
-        <Section level={3} title="Tab with icons + center aligned">
+        <Section
+            level={3}
+            title="Tab with icons"
+            description="Icons on tabs are an optional elements usually added for illustrative purposes. If used in an instance, they should be considered for every tab item or none at all."
+        >
             <WithIconsExmaple />
-        </Section>
-        <Section level={3} title="Tab with badges + right aligned">
-            <WithBadgesExample />
         </Section>
     </Section>
 );
@@ -28,9 +29,8 @@ const DefaultExmaple: React.FunctionComponent = () => (
                 groupId="patate"
                 id="tab13"
                 title="Mr. Mime"
-                icon={'people'}
-                tooltip="I have a icon and a badge!"
-                badge={<Badge label="Tag" extraClasses={['mod-information mod-small ml1']} />}
+                tooltip="I have a badge!"
+                badge={<Badge label="Beta" extraClasses={['mod-beta mod-small ml1']} />}
             />
         </TabNavigation>
         <TabContent>
@@ -55,35 +55,18 @@ const DefaultExmaple: React.FunctionComponent = () => (
 
 const WithIconsExmaple: React.FunctionComponent = () => (
     <>
-        <TabNavigation className={'mod-align-center'}>
+        <TabNavigation>
+            <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={'lightning'} />
+            <TabConnected groupId="banane" id="tab6" title="Gyarados" icon={'exclamationMarkInCircle'} />
+            <TabConnected groupId="banane" id="tab7" title="Charmander" icon={'check'} />
+            <TabConnected groupId="banane" id="tab8" title="Rapidash" icon={'details'} disabled />
             <TabConnected
                 groupId="banane"
-                id="tab5"
-                title="Pikachu"
-                icon={'lightning'}
-                iconExtraClasses={'mod-warning'}
-            />
-            <TabConnected
-                groupId="banane"
-                id="tab6"
-                title="Gyarados"
-                icon={'exclamationMarkInCircle'}
-                iconExtraClasses={'mod-error'}
-            />
-            <TabConnected
-                groupId="banane"
-                id="tab7"
-                title="Charmander"
-                icon={'help'}
-                iconExtraClasses={'documentation-link'}
-            />
-            <TabConnected
-                groupId="banane"
-                id="tab8"
-                title="Rapidash"
-                icon={'help'}
-                iconExtraClasses={'documentation-link'}
-                disabled
+                id="tab14"
+                title="Mr. Mime"
+                tooltip="I have an icon and a badge!"
+                icon={'email'}
+                badge={<Badge label="Success" extraClasses={['mod-success mod-small ml1']} />}
             />
         </TabNavigation>
         <TabContent>
@@ -99,57 +82,8 @@ const WithIconsExmaple: React.FunctionComponent = () => (
             <TabPaneConnected groupId="banane" id="tab8">
                 <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fourth tab.</div>
             </TabPaneConnected>
-        </TabContent>
-    </>
-);
-
-const WithBadgesExample: React.FunctionComponent = () => (
-    <>
-        <TabNavigation className={'mod-align-right'}>
-            <TabConnected
-                groupId="poire"
-                id="tab9"
-                title="Pikachu"
-                badge={<Badge label="Success" extraClasses={['mod-success mod-small ml1']} />}
-            />
-            <TabConnected
-                groupId="poire"
-                id="tab10"
-                title="Gyarados"
-                badge={
-                    <Badge
-                        label="Beware"
-                        icon={'exclamationMarkInCircle'}
-                        extraClasses={['mod-warning mod-small ml1']}
-                    />
-                }
-            />
-            <TabConnected
-                groupId="poire"
-                id="tab11"
-                title="Charmander"
-                badge={<Badge icon={'lightning'} extraClasses={['mod-info mod-small ml1']} />}
-            />
-            <TabConnected
-                groupId="poire"
-                id="tab12"
-                title="Rapidash"
-                badge={<Badge label="Beta" extraClasses={['mod-beta mod-small ml1']} />}
-                disabled
-            />
-        </TabNavigation>
-        <TabContent>
-            <TabPaneConnected groupId="poire" id="tab9">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the first tab.</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="poire" id="tab10">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the second tab.</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="poire" id="tab11">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the third tab .</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="poire" id="ta12">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fourth tab.</div>
+            <TabPaneConnected groupId="banane" id="tab14">
+                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the last tab.</div>
             </TabPaneConnected>
         </TabContent>
     </>

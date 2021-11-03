@@ -17,7 +17,6 @@ export interface ITabOwnProps {
     disabled?: boolean;
     tooltip?: string;
     icon?: string;
-    iconExtraClasses?: string;
     badge?: React.ReactNode;
     url?: string;
     onSelect?: (e: React.MouseEvent) => void;
@@ -36,7 +35,6 @@ export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof e
 
 export const Tab: React.FunctionComponent<ITabProps> = ({
     icon,
-    iconExtraClasses,
     badge,
     tooltip,
     disabled,
@@ -84,7 +82,7 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {icon ? <Svg svgName={icon} svgClass={classNames('tab-icon mod-16', iconExtraClasses)} /> : null}
+                {icon ? <Svg svgName={icon} svgClass={'tab-icon mod-16'} /> : null}
                 {title}
                 {badge ?? null}
             </button>

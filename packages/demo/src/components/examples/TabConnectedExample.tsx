@@ -3,7 +3,6 @@ import {Section, TabConnected, TabContent, TabNavigation, TabPaneConnected} from
 
 const TAB1_ID = 'tab1';
 const TAB2_ID = 'tab2';
-const TAB3_ID = 'tab3';
 const TAB5_ID = 'tab5';
 
 const TAB11_ID = 'tab11';
@@ -17,12 +16,6 @@ export const TabsConnectedExamples: React.FunctionComponent = () => (
                 <TabNavigation>
                     <TabConnected id={TAB1_ID} title="A Tab" />
                     <TabConnected id={TAB2_ID} title="Another Tab" tooltip="I am an enabled tab" />
-                    <TabConnected
-                        id={TAB3_ID}
-                        title="Tab with an icon"
-                        icon={'help'}
-                        iconExtraClasses={'documentation-link'}
-                    ></TabConnected>
                     <TabConnected id={TAB5_ID} title="A Disabled Tab" tooltip="I am a disabled tab" disabled />
                 </TabNavigation>
                 <TabContent>
@@ -31,11 +24,6 @@ export const TabsConnectedExamples: React.FunctionComponent = () => (
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB2_ID}>
                         <div className="mod-header-padding mod-form-top-bottom-padding">Content of the second tab.</div>
-                    </TabPaneConnected>
-                    <TabPaneConnected id={TAB3_ID}>
-                        <div className="mod-header-padding mod-form-top-bottom-padding">
-                            Content of the tab with an icon.
-                        </div>
                     </TabPaneConnected>
                     <TabPaneConnected id={TAB5_ID}>
                         <div className="mod-header-padding mod-form-top-bottom-padding">
