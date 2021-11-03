@@ -207,7 +207,7 @@ importers:
       '@types/react': 16.9.19
       '@types/react-bootstrap': 0.32.28
       '@types/react-codemirror': 1.0.6
-      '@types/react-color': 3.0.1
+      '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.8.2
@@ -330,7 +330,7 @@ importers:
       '@types/react': 16.9.19
       '@types/react-bootstrap': 0.32.28
       '@types/react-codemirror': 1.0.6
-      '@types/react-color': 3.0.1
+      '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-infinite-scroll-component': 4.2.5
       '@types/react-modal': 3.8.2
@@ -2706,10 +2706,11 @@ packages:
       '@types/react': 17.0.6
     dev: true
 
-  /@types/react-color/3.0.1:
-    resolution: {integrity: sha512-J6mYm43Sid9y+OjZ7NDfJ2VVkeeuTPNVImNFITgQNXodHteKfl/t/5pAR5Z9buodZ2tCctsZjgiMlQOpfntakw==}
+  /@types/react-color/3.0.6:
+    resolution: {integrity: sha512-OzPIO5AyRmLA7PlOyISlgabpYUa3En74LP8mTMa0veCA719SvYQov4WLMsHvCgXP+L+KI9yGhYnqZafVGG0P4w==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
+      '@types/reactcss': 1.2.6
     dev: true
 
   /@types/react-dom/16.9.14:
@@ -2790,6 +2791,12 @@ packages:
       '@types/prop-types': 15.7.3
       '@types/scheduler': 0.16.1
       csstype: 3.0.8
+
+  /@types/reactcss/1.2.6:
+    resolution: {integrity: sha512-qaIzpCuXNWomGR1Xq8SCFTtF4v8V27Y6f+b9+bzHiv087MylI/nTCqqdChNeWS7tslgROmYB7yeiruWX7WnqNg==}
+    dependencies:
+      '@types/react': 17.0.6
+    dev: true
 
   /@types/redux-logger/3.0.9:
     resolution: {integrity: sha512-cwYhVbYNgH01aepeMwhd0ABX6fhVB2rcQ9m80u8Fl50ZODhsZ8RhQArnLTkE7/Zrfq4Sz/taNoF7DQy9pCZSKg==}
