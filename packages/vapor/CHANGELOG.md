@@ -3,6 +3,126 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.14.21](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.21) (2021-11-03)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.20](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.20) (2021-11-03)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.19](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.19) (2021-11-03)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.18](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.18) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.17](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.17) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.16](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.16) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.15](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.15) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.14](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.14) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.13](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.13) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.12](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.12) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.11](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.11) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.10](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.10) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.9](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.9) (2021-11-02)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.8](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.8) (2021-11-01)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
+## [24.14.7](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.7) (2021-11-01)
+
+**Note:** Version bump only for package coveo-styleguide
+
+
+
+
+
 ## [24.14.4](https://github.com/coveo/react-vapor/compare/v24.14.3...v24.14.4) (2021-10-14)
 
 **Note:** Version bump only for package coveo-styleguide

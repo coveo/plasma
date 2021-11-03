@@ -3,6 +3,233 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [24.14.21](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.21) (2021-11-03)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.20](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.20) (2021-11-03)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.19](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.19) (2021-11-03)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.18](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.18) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.17](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.17) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.16](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.16) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.15](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.15) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.14](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.14) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.13](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.13) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.12](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.12) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.11](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.11) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.10](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.10) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.9](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.9) (2021-11-02)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.8](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.8) (2021-11-01)
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+
+
+
+
+
+## [24.14.7](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.14.7) (2021-11-01)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 ## [24.14.6](https://github.com/coveo/react-vapor/compare/v24.14.5...v24.14.6) (2021-10-18)
 
 **Note:** Version bump only for package root

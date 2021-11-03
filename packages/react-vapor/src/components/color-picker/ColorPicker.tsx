@@ -21,8 +21,8 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IColorPickerProps) =
 };
 
 const mapDispatchToProps = (dispatch: IDispatch, ownProps: IColorPickerProps) => ({
-    onChangeComplete: (colorPicked: ColorResult) => {
-        ownProps.onChangeComplete && ownProps.onChangeComplete(colorPicked);
+    onChangeComplete: (colorPicked: ColorResult, event: React.ChangeEvent<HTMLInputElement>) => {
+        ownProps.onChangeComplete?.(colorPicked, event);
         dispatch(changeInputValue(ownProps.id, colorPicked.hex, true));
     },
 });
