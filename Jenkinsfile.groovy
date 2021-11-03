@@ -153,31 +153,24 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          withCredentials([[
-            $class: 'AmazonWebServicesCredentialsBinding',
-            credentialsId: 'aws_coveodev_rw_binaries_key',
-            accessKeyVariable: 'AWS_ACCESS_KEY_ID',
-            secretKeyVariable: 'AWS_SECRET_ACCESS_KEY'
-          ]]) {
-
-            
+          withAWS(roleAccount: '043612128888', role: 'nrd-jsadmin-s3-role', useNode: true) {
             sh "bash ./build/deploy-demo.sh ${env.BRANCH_NAME}"
-
-            def SOURCE_LINK = ""
-            def pullRequestURL = getCommitPullRequestURL()
-            if (pullRequestURL != "") {
-              postCommentOnGithub("https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html");
-              SOURCE_LINK = pullRequestURL
-            } else {
-              SOURCE_LINK = "https://github.com/coveo/react-vapor/tree/${env.BRANCH_NAME}"
-            }
-
-            def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vaporqa.cloud.coveo.com/feature/${env.BRANCH_NAME}/index.html"
-            notify.sendSlackWithThread(
-                color: "#00FF00", message: message,
-                ["admin-ui-builds"]
-            )
           }
+
+          def SOURCE_LINK = ""
+          def pullRequestURL = getCommitPullRequestURL()
+          if (pullRequestURL != "") {
+            postCommentOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+            SOURCE_LINK = pullRequestURL
+          } else {
+            SOURCE_LINK = "https://github.com/coveo/react-vapor/tree/${env.BRANCH_NAME}"
+          }
+
+          def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html"
+          notify.sendSlackWithThread(
+              color: "#00FF00", message: message,
+              ["admin-ui-builds"]
+          )
         }
       }
 
