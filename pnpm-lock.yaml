@@ -52,7 +52,7 @@ importers:
 
   packages/demo:
     specifiers:
-      '@loadable/component': 5.10.2
+      '@loadable/component': 5.15.0
       '@types/classnames': 2.2.9
       '@types/faker': 4.1.12
       '@types/loadable__component': 5.10.0
@@ -134,7 +134,7 @@ importers:
       underscore: 1.13.1
       underscore.string: 3.3.5
     devDependencies:
-      '@loadable/component': 5.10.2_react@16.14.0
+      '@loadable/component': 5.15.0_react@16.14.0
       '@types/classnames': 2.2.9
       '@types/faker': 4.1.12
       '@types/loadable__component': 5.10.0
@@ -770,12 +770,6 @@ packages:
     resolution: {integrity: sha512-x/XYVQ1h684pp1mJwOV4CyvqZXqbc8CMsMGUnAbuc82ZCdv1U63w5RSUzgDSXQHG5Rps/kiksH6g2D5BuaKyXg==}
     dependencies:
       core-js-pure: 3.10.1
-      regenerator-runtime: 0.13.7
-    dev: true
-
-  /@babel/runtime/7.13.10:
-    resolution: {integrity: sha512-4QPkjJq6Ns3V/RgpEahRk+AGfL0eO6RHHtTWoNNr5mO49G6B5+X6d6THgWEAvTrznU5xYpbAlVKRYcsCgh/Akw==}
-    dependencies:
       regenerator-runtime: 0.13.7
     dev: true
 
@@ -1993,15 +1987,16 @@ packages:
       write-file-atomic: 3.0.3
     dev: true
 
-  /@loadable/component/5.10.2_react@16.14.0:
-    resolution: {integrity: sha512-pUzGRc/mhGzZ0+xJPQErnS68BQEApFYGwn10iSDqBHdDhOruCASTer1J+rYI4jaJJcegJwnuzh7j/SqMoiCyAQ==}
+  /@loadable/component/5.15.0_react@16.14.0:
+    resolution: {integrity: sha512-g63rQzypPOZi0BeGsK4ST2MYhsFR+i7bhL8k/McUoWDNMDuTTdUlQ2GACKxqh5sI/dNC/6nVoPrycMnSylnAgQ==}
     engines: {node: '>=8'}
     peerDependencies:
       react: '>=16.3.0'
     dependencies:
-      '@babel/runtime': 7.13.10
+      '@babel/runtime': 7.16.0
       hoist-non-react-statics: 3.3.2
       react: 16.14.0
+      react-is: 16.13.1
     dev: true
 
   /@marionebl/sander/0.6.1:

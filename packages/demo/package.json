@@ -46,7 +46,7 @@
         "underscore.string": "3.3.5"
     },
     "devDependencies": {
-        "@loadable/component": "5.10.2",
+        "@loadable/component": "5.15.0",
         "@types/classnames": "2.2.9",
         "@types/faker": "4.1.12",
         "@types/loadable__component": "5.10.0",
