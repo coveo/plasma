@@ -12,5 +12,11 @@
       "automergeType": "branch",
       "semanticCommitType": "chore"
     }
-  ]
+  ],
+  "lockFileMaintenance": {
+    "description": "Regenerate the pnpm-lock.yaml file",
+    "enabled": true,
+    "automerge": true,
+    "extends": ["schedule:weekly"]
+  }
 }
