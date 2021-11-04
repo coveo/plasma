@@ -394,14 +394,14 @@ importers:
 
   packages/tokens:
     specifiers:
-      '@types/fs-extra': ^9.0.12
-      '@types/node': ^16.9.0
-      dotenv-safe: ^8.2.0
-      figma-js: ^1.14.0
-      fs-extra: ^10.0.0
-      ts-node: ^10.2.1
-      tslib: ^2.3.1
-      typescript: ^4.4.2
+      '@types/fs-extra': 9.0.13
+      '@types/node': 16.11.6
+      dotenv-safe: 8.2.0
+      figma-js: 1.14.0
+      fs-extra: 10.0.0
+      ts-node: 10.4.0
+      tslib: 2.3.1
+      typescript: 4.4.4
     devDependencies:
       '@types/fs-extra': 9.0.13
       '@types/node': 16.11.6
@@ -4024,14 +4024,6 @@ packages:
     resolution: {integrity: sha512-xh1Rl34h6Fi1DC2WWKfxUTVqRsNnr6LsKz2+hfwDxQJWmrx8+c7ylaqBMcHfl1U1r2dsifOvKX3LQuLNZ+XSvA==}
     dev: true
 
-  /axios/0.21.1:
-    resolution: {integrity: sha512-dKQiRHxGD9PPRIUNIWvZhPTPpl1rf/OxTYKsqKUDjBwYylTvV7SjSHJb9ratfyzM6wCdLCOYLzs73qpg5c4iGA==}
-    dependencies:
-      follow-redirects: 1.13.3_debug@4.3.1
-    transitivePeerDependencies:
-      - debug
-    dev: true
-
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
@@ -7563,7 +7555,7 @@ packages:
     resolution: {integrity: sha512-XqUmDmGj8tJkjNEuSoKWke0dzbRedya0jc0Ob3lr/g0pLeQI5TtMmz5zpsFLw4KRRtbDD5V/J2MRJhm9nvRS+A==}
     engines: {node: '>=8.9'}
     dependencies:
-      axios: 0.21.1
+      axios: 0.21.4
     transitivePeerDependencies:
       - debug
     dev: true
