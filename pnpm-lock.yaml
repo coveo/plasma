@@ -14,7 +14,7 @@ importers:
       eslint: 7.5.0
       husky: 4.2.5
       lerna: 4.0.0
-      mime-types: 2.1.26
+      mime-types: 2.1.33
       prettier: 2.0.5
       stylelint: 13.6.1
       tsjs: 3.0.2
@@ -31,7 +31,7 @@ importers:
       eslint: 7.5.0
       husky: 4.2.5
       lerna: 4.0.0
-      mime-types: 2.1.26
+      mime-types: 2.1.33
       prettier: 2.0.5
       stylelint: 13.6.1
       tsjs: 3.0.2_prettier@2.0.5+stylelint@13.6.1
@@ -3004,6 +3004,7 @@ packages:
 
   /@types/yauzl/2.9.2:
     resolution: {integrity: sha512-8uALY5LTvSuHgloDVUvWP3pIauILm+8/0pDMokuDYIoNsOkSwd5AiHBTSEJjKTDcZr5z8UpgOWZkxBF4iJftoA==}
+    requiresBuild: true
     dependencies:
       '@types/node': 16.11.6
     dev: true
@@ -6678,6 +6679,7 @@ packages:
 
   /encoding/0.1.13:
     resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    requiresBuild: true
     dependencies:
       iconv-lite: 0.6.2
     dev: true
@@ -11513,21 +11515,14 @@ packages:
       brorand: 1.1.0
     dev: true
 
-  /mime-db/1.43.0:
-    resolution: {integrity: sha512-+5dsGEEovYbT8UY9yD7eE4XTc4UwJ1jBYlgaQQF38ENsKR3wj/8q8RFZrF9WIZpB2V1ArTVFUva8sAul1NzRzQ==}
-    engines: {node: '>= 0.6'}
-    dev: true
-
   /mime-db/1.47.0:
     resolution: {integrity: sha512-QBmA/G2y+IfeS4oktet3qRZ+P5kPhCKRXxXnQEudYqUaEioAU1/Lq2us3D/t1Jfo4hE9REQPrbB7K5sOczJVIw==}
     engines: {node: '>= 0.6'}
     dev: true
 
-  /mime-types/2.1.26:
-    resolution: {integrity: sha512-01paPWYgLrkqAyrlDorC1uDwl2p3qZT7yl806vW7DvDoxwXi46jsjFbg+WdwotBIk6/MbEhO/dh5aZ5sNj/dWQ==}
+  /mime-db/1.50.0:
+    resolution: {integrity: sha512-9tMZCDlYHqeERXEHO9f/hKfNXhre5dK2eE/krIvUjZbS2KPcqGDfNShIWS1uW9XOTKQKqK6qbeOci18rbfW77A==}
     engines: {node: '>= 0.6'}
-    dependencies:
-      mime-db: 1.43.0
     dev: true
 
   /mime-types/2.1.30:
@@ -11535,6 +11530,13 @@ packages:
     engines: {node: '>= 0.6'}
     dependencies:
       mime-db: 1.47.0
+    dev: true
+
+  /mime-types/2.1.33:
+    resolution: {integrity: sha512-plLElXp7pRDd0bNZHw+nMd52vRYjLwQjygaNg7ddJ2uJtTlmnTCjWuPKxVu6//AdaRuME84SvLW91sIkBqGT0g==}
+    engines: {node: '>= 0.6'}
+    dependencies:
+      mime-db: 1.50.0
     dev: true
 
   /mime/1.6.0:
