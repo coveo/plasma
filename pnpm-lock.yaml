@@ -82,7 +82,7 @@ importers:
       lorem-ipsum: 2.0.4
       moment: 2.29.1
       node-sass: 5.0.0
-      raw-loader: 4.0.0
+      raw-loader: 4.0.2
       react: 16.14.0
       react-dom: 16.14.0
       react-markdown: 5.0.3
@@ -156,7 +156,7 @@ importers:
       html-webpack-tags-plugin: 2.0.17
       lint-staged: 9.4.2
       node-sass: 5.0.0
-      raw-loader: 4.0.0_webpack@4.41.6
+      raw-loader: 4.0.2_webpack@4.41.6
       rimraf: 3.0.2
       sass: 1.25.0
       sass-loader: 10.1.0_e1d2096bd0ea1b2c89b9c51b472e13b5
@@ -13830,14 +13830,14 @@ packages:
       unpipe: 1.0.0
     dev: true
 
-  /raw-loader/4.0.0_webpack@4.41.6:
-    resolution: {integrity: sha512-iINUOYvl1cGEmfoaLjnZXt4bKfT2LJnZZib5N/LLyAphC+Dd11vNP9CNVb38j+SAJpFI1uo8j9frmih53ASy7Q==}
+  /raw-loader/4.0.2_webpack@4.41.6:
+    resolution: {integrity: sha512-ZnScIV3ag9A4wPX/ZayxL/jZH+euYb6FcUinPcgiQW0+UBtEv0O6Q3lGd3cqJ+GHH+rksEv3Pj99oxJ3u3VIKA==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
     dependencies:
-      loader-utils: 1.4.0
-      schema-utils: 2.7.1
+      loader-utils: 2.0.0
+      schema-utils: 3.0.0
       webpack: 4.41.6
     dev: true
 
