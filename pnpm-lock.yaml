@@ -215,7 +215,7 @@ importers:
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.0.15
       '@types/redux-logger': 3.0.9
-      '@types/redux-mock-store': 1.0.2
+      '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
@@ -266,7 +266,7 @@ importers:
       react-transition-group: 2.5.1
       redux: 4.1.2
       redux-logger: 3.0.6
-      redux-mock-store: 1.5.3
+      redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2
       redux-thunk: 2.3.0
       reselect: 4.0.0
@@ -338,7 +338,7 @@ importers:
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.0.15
       '@types/redux-logger': 3.0.9
-      '@types/redux-mock-store': 1.0.2
+      '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
@@ -375,7 +375,7 @@ importers:
       react-transition-group: 2.5.1_react-dom@16.14.0+react@16.14.0
       redux: 4.1.2
       redux-logger: 3.0.6
-      redux-mock-store: 1.5.3
+      redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2_redux@4.1.2
       redux-thunk: 2.3.0
       reselect: 4.0.0
@@ -2876,10 +2876,10 @@ packages:
       redux: 4.1.2
     dev: true
 
-  /@types/redux-mock-store/1.0.2:
-    resolution: {integrity: sha512-6LBtAQBN34i7SI5X+Qs4zpTEZO1tTDZ6sZ9fzFjYwTl3nLQXaBtwYdoV44CzNnyKu438xJ1lSIYyw0YMvunESw==}
+  /@types/redux-mock-store/1.0.3:
+    resolution: {integrity: sha512-Wqe3tJa6x9MxMN4DJnMfZoBRBRak1XTPklqj4qkVm5VBpZnC8PSADf4kLuFQ9NAdHaowfWoEeUMz7NWc2GMtnA==}
     dependencies:
-      redux: 4.0.5
+      redux: 4.1.2
     dev: true
 
   /@types/redux-promise-middleware/6.0.0_redux@4.1.2:
@@ -3004,6 +3004,7 @@ packages:
 
   /@types/yauzl/2.9.2:
     resolution: {integrity: sha512-8uALY5LTvSuHgloDVUvWP3pIauILm+8/0pDMokuDYIoNsOkSwd5AiHBTSEJjKTDcZr5z8UpgOWZkxBF4iJftoA==}
+    requiresBuild: true
     dependencies:
       '@types/node': 16.11.6
     dev: true
@@ -6678,6 +6679,7 @@ packages:
 
   /encoding/0.1.13:
     resolution: {integrity: sha512-ETBauow1T35Y/WZMkio9jiM0Z5xjHHmJ4XmjZOq1l/dXz3lr2sRn87nJy20RupqSh1F2m3HHPSp8ShIPQJrJ3A==}
+    requiresBuild: true
     dependencies:
       iconv-lite: 0.6.2
     dev: true
@@ -14499,8 +14501,8 @@ packages:
       deep-diff: 0.3.8
     dev: true
 
-  /redux-mock-store/1.5.3:
-    resolution: {integrity: sha512-ryhkkb/4D4CUGpAV2ln1GOY/uh51aczjcRz9k2L2bPx/Xja3c5pSGJJPyR25GNVRXtKIExScdAgFdiXp68GmJA==}
+  /redux-mock-store/1.5.4:
+    resolution: {integrity: sha512-xmcA0O/tjCLXhh9Fuiq6pMrJCwFRaouA8436zcikdIpYWWCjU76CRk+i2bHx8EeiSiMGnB85/lZdU3wIJVXHTA==}
     dependencies:
       lodash.isplainobject: 4.0.6
     dev: true
@@ -14522,13 +14524,6 @@ packages:
       lodash-es: 4.17.21
       loose-envify: 1.4.0
       symbol-observable: 1.2.0
-
-  /redux/4.0.5:
-    resolution: {integrity: sha512-VSz1uMAH24DM6MF72vcojpYPtrTUu3ByVWfPL1nPfVRb5mZVTve5GnNCUV53QM/BZ66xfWrm0CTWoM+Xlz8V1w==}
-    dependencies:
-      loose-envify: 1.4.0
-      symbol-observable: 1.2.0
-    dev: true
 
   /redux/4.1.2:
     resolution: {integrity: sha512-SH8PglcebESbd/shgf6mii6EIoRM0zrQyjcuQ+ojmfxjTtE0z9Y8pa62iA/OJ58qjP6j27uyW4kUF4jl/jd6sw==}
