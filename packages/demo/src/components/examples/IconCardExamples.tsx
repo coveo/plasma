@@ -21,7 +21,7 @@ export const IconCardExamples: React.FunctionComponent = () => (
                     choices={[
                         {value: 'cloud', label: 'Cloud', icon: 'cloud'},
                         {value: 'on-prem', label: 'On-Premise', icon: 'database'},
-                        {value: 'crodule', label: 'Crawling Module', icon: 'crawling-bot', disabled: true},
+                        {value: 'crodule', label: 'Crawling Module', icon: 'crawlingBot', disabled: true},
                     ]}
                     style={{width: '48%'}}
                     onClick={(choice) => alert(choice)}
@@ -35,7 +35,7 @@ export const IconCardExamples: React.FunctionComponent = () => (
                     choices={[
                         {value: 'cloud', label: 'Cloud', icon: 'cloud'},
                         {value: 'on-prem', label: 'On-Premise', icon: 'database'},
-                        {value: 'crodule', label: 'Crawling Module', icon: 'crawling-bot', disabled: true},
+                        {value: 'crodule', label: 'Crawling Module', icon: 'crawlingBot', disabled: true},
                     ]}
                     onClick={(choice) => alert(choice)}
                     style={{width: '368px'}}

@@ -10,7 +10,7 @@ export class ItemBoxExamples extends React.Component<any, any> {
         };
 
         const svg: ISvgProps = {
-            svgName: 'domain-google',
+            svgName: 'domainGoogle',
             svgClass: 'icon',
         };
         const getPrepend: IContentProps = {content: () => <Svg {...svg} />, classes: ['mr1']};

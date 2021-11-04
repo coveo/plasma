@@ -1,6 +1,6 @@
 import moment from 'moment';
 import * as React from 'react';
-import {DateUtils, TableRowConnected, TableRowNumberColumn} from 'react-vapor';
+import {DateUtils, SvgNames, TableRowConnected, TableRowNumberColumn} from 'react-vapor';
 
 import {SELECTION_BOXES_LONG} from './DatePickerExamplesCommon';
 import {IExampleRowData} from './TableHOCExamples';
@@ -38,7 +38,7 @@ const generateRows = (allData: IExampleRowData[]) =>
 const tableActions = (username: string) => [
     {
         primary: true,
-        icon: 'edit',
+        icon: 'edit' as SvgNames,
         name: 'Edit',
         enabled: true,
         trigger: () => alert(username),

@@ -6,7 +6,7 @@ export const StatusCardExamples = () => (
         <div className="form-group">
             <label className="form-control-label">Status card success</label>
             <div className="form-control">
-                <StatusCard className="mod-success" title="Tasks" icon="date-today">
+                <StatusCard className="mod-success" title="Tasks" icon="dateToday">
                     10/10 done!
                 </StatusCard>
             </div>
@@ -22,7 +22,7 @@ export const StatusCardExamples = () => (
         <div className="form-group">
             <label className="form-control-label">Status card critical</label>
             <div className="form-control">
-                <StatusCard className="mod-critical" title="Tasks" icon="date-today">
+                <StatusCard className="mod-critical" title="Tasks" icon="dateToday">
                     2/10 done!
                 </StatusCard>
             </div>

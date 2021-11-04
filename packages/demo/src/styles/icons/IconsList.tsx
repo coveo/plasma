@@ -1,6 +1,6 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
-import {LinkSvg} from 'react-vapor';
+import {LinkSvg, SvgNames} from 'react-vapor';
 
 import VaporComponent from '../../demo-building-blocs/VaporComponent';
 
@@ -10,13 +10,13 @@ export const IconsList = () => (
             {Object.keys(VaporSVG.svg)
                 .sort()
                 .map((svgName) => (
-                    <IconItem key={svgName} svgName={svgName} fileName={VaporSVG.svg[svgName].fileName} />
+                    <IconItem key={svgName} svgName={svgName as SvgNames} fileName={VaporSVG.svg[svgName].fileName} />
                 ))}
         </ul>
     </VaporComponent>
 );
 
-const IconItem = ({svgName, fileName}: {svgName: string; fileName: string}) => (
+const IconItem = ({svgName, fileName}: {svgName: SvgNames; fileName: string}) => (
     <li className="cursor-pointer">
         <LinkSvg svg={{svgName}} url={getSvgURL(fileName)}>
             <label className="icon-name cursor-pointer">{svgName}</label>

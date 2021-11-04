@@ -3,7 +3,7 @@ import {ILinkSvgProps, ISvgProps, ITooltipProps, LinkSvg} from 'react-vapor';
 import * as _ from 'underscore';
 
 const defaultSvgProps: ISvgProps = {
-    svgName: 'domain-google',
+    svgName: 'domainGoogle',
     svgClass: 'icon mod-2x',
 };
 

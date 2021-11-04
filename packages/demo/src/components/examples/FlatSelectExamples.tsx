@@ -28,7 +28,7 @@ export class FlatSelectExamples extends React.Component {
         ];
 
         const svg: ISvgProps = {
-            svgName: 'domain-google',
+            svgName: 'domainGoogle',
             svgClass: 'icon',
         };
         const prepend: IContentProps = {content: () => <Svg {...svg} />, classes: ['mr1']};
