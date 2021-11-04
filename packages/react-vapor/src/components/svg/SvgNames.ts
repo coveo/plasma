@@ -1,4 +1,5 @@
 export type SvgNames =
+    | ''
     | 'accessPrivate'
     | 'accessSecured'
     | 'accessShared'
