@@ -7,6 +7,7 @@ import {keyCode} from '../../../utils/InputUtils';
 import {UUID} from '../../../utils/UUID';
 import {Content} from '../../content/Content';
 import {FilterBox} from '../../filterBox/FilterBox';
+import {SvgNames} from '../../svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
 import {
@@ -18,9 +19,9 @@ import {defaultSelectedOptionPlaceholder} from '../DropdownSearchReducers';
 
 describe('DropdownSearch', () => {
     const id: string = UUID.generate();
-    const options = [
+    const options: IDropdownOption[] = [
         {value: 'test a', displayValue: 'test a', prefix: 'test'},
-        {value: 'test b', displayValue: 'test b', svg: {svgClass: 'svg-class', svgName: 'svg-name'}},
+        {value: 'test b', displayValue: 'test b', svg: {svgClass: 'svg-class', svgName: 'svgName' as SvgNames}},
         {value: 'test c', displayValue: 'test c'},
     ];
 

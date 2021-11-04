@@ -49,9 +49,9 @@ export const TableHeaderWithSort: React.FunctionComponent<
     });
 
     const getSvg = classNames({
-        'sorted-asc': sorted === true,
-        'sorted-desc': sorted === false,
-        'asc-desc': sorted === undefined,
+        sortedAsc: sorted === true,
+        sortedDesc: sorted === false,
+        ascDesc: sorted === undefined,
     }) as SvgNames;
 
     if (isLoading) {

@@ -1,6 +1,7 @@
 import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 
+import {SvgNames} from '../../svg';
 import {Collapsible} from '../../collapsible/Collapsible';
 import {ISideNavigationSectionProps, SideNavigationMenuSection} from '../SideNavigationMenuSection';
 
@@ -8,7 +9,7 @@ describe('SideNavigationMenuSection', () => {
     let section: ShallowWrapper<ISideNavigationSectionProps>;
     const header = {
         title: 'title is comming from the header prop',
-        svgName: 'some-name',
+        svgName: 'some-name' as SvgNames,
         svgClass: 'some-class',
     };
 

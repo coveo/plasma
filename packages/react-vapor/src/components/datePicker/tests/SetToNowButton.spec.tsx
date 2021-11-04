@@ -39,10 +39,6 @@ describe('Date picker', () => {
             expect(onClickProp).toBeDefined();
         });
 
-        it('should display a <Svg /> component', () => {
-            expect(setToNowButton.find('Svg').length).toBe(1);
-        });
-
         it('should display a <Tooltip /> component', () => {
             expect(setToNowButton.find('Tooltip').length).toBe(1);
         });

@@ -2,6 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {ISvgProps, Svg} from '../Svg';
+import {SvgNames} from '../SvgNames';
 
 describe('Svg', () => {
     let svg: ReactWrapper<ISvgProps, any>;
@@ -13,13 +14,13 @@ describe('Svg', () => {
     };
 
     const INVALID_SVG_NAME: ISvgProps = {
-        svgName: 'some-invalid-svg-name',
+        svgName: 'someInvalidSvgName' as SvgNames,
         className: 'icon',
         svgClass: '🎩',
     };
 
     const DASHED_SVG_NAME: ISvgProps = {
-        svgName: 'source-custom',
+        svgName: 'sourceCustom',
         className: 'icon',
         svgClass: '🎩',
     };
