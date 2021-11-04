@@ -14,6 +14,7 @@
 
         .tab-icon {
             @extend .icon;
+            --stroke: var(--grey-100);
             margin-right: 5px;
         }
 

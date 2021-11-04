@@ -57,7 +57,7 @@ const WithIconsExmaple: React.FunctionComponent = () => (
     <>
         <TabNavigation>
             <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={'lightning'} />
-            <TabConnected groupId="banane" id="tab6" title="Gyarados" icon={'exclamationMarkInCircle'} />
+            <TabConnected groupId="banane" id="tab6" title="Gyarados" icon={'crawlingBotStroked16'} iconModStroke />
             <TabConnected groupId="banane" id="tab7" title="Charmander" icon={'check'} />
             <TabConnected groupId="banane" id="tab8" title="Rapidash" icon={'details'} disabled />
             <TabConnected
