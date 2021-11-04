@@ -1,11 +1,11 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
 
-// import {SvgNames} from './SvgNames';
+import {SvgNames} from './SvgNames';
 
 export interface ISvgTagProps {
     svgClass?: string;
-    svgName: string;
+    svgName: SvgNames;
 }
 
 export interface ISvgProps extends ISvgTagProps, React.HTMLAttributes<HTMLSpanElement> {}
