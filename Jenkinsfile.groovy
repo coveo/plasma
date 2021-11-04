@@ -29,8 +29,8 @@ pipeline {
 
   environment {
     NPM_TOKEN = credentials("npmjs_com_token")
-    GIT = credentials("github-coveobot")
-    GH_TOKEN = credentials("github-coveobot_token")
+    GIT = credentials("github-commit-token")
+    GH_TOKEN = credentials("github-commit-token")
     SNYK_TOKEN = credentials("snyk_token")
   }
 
@@ -80,12 +80,12 @@ pipeline {
             $class: 'GitSCM',
             branches: scm.branches,
             extensions: scm.extensions + [[$class: "CleanCheckout"]] + [[$class: "LocalBranch", localBranch: "**"]] + [[$class: 'CloneOption', noTags: false, reference: '', shallow: false]],
-            userRemoteConfigs: [[credentialsId: "github-coveobot", url: "https://github.com/coveo/react-vapor.git"]]
+            userRemoteConfigs: [[credentialsId: "github-app-dev", url: "https://github.com/coveo/react-vapor.git"]]
           ])
 
           sh "git config --global user.email \"jenkins@coveo.com\""
           sh "git config --global user.name \"Jenkins CI\""
-          sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GH_TOKEN}@github.com/coveo/react-vapor.git\""
+          sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GIT_PSW}@github.com/coveo/react-vapor.git\""
 
           def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
           env.PATH = "${nodeHome}/bin:${env.PATH}"
