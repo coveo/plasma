@@ -309,7 +309,7 @@ pipeline {
     }
 
     stage('Veracode') {
-       when {
+      when {
         allOf {
           expression { !skipRemainingStages }
           expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
@@ -369,17 +369,20 @@ pipeline {
     }
     failure {
       script {
-        def color = "FF0000";
-        def message = "Build FAILED at stage *${getLastStageName()}* - ${env.JOB_NAME} (<${env.BUILD_URL}|#${env.BUILD_NUMBER}>)";
+        def color = "#FF0000";
+        def commits = getBuildChangeSets()
+        def messageMasterBuild = "Build FAILED at stage *${getLastStageName()}* - ${env.JOB_NAME} (<${env.BUILD_URL}|#${env.BUILD_NUMBER}>)\n" +
+          "Last commits:\n ${commits}";
+        def messagePrBuild = "Build FAILED at stage *${getLastStageName()}* - ${env.JOB_NAME} (<${env.BUILD_URL}|#${env.BUILD_NUMBER}>)";
 
         if(env.BRANCH_NAME ==~ /(master|release-.*)/){
           notify.sendSlackWithThread(
-            color: color, message: message,
+            color: color, message: messageMasterBuild,
             MASTER_RELEASE_FAILURE_CHANNELS
           )
         } else {
           notify.sendSlackWithThread(
-            color: color, message: message,
+            color: color, message: messagePrBuild,
             PR_CHANNELS
           )
         }
@@ -391,6 +394,28 @@ pipeline {
       }
     }
   }
+}
+
+@NonCPS 
+def getBuildChangeSets() {
+    MAX_MSG_LEN = 100
+    def changeString = ""
+
+    echo "Gathering commits info from current build"
+    def changeLogSets = currentBuild.rawBuild.changeSets
+    for (int i = 0; i < changeLogSets.size(); i++) {
+        def entries = changeLogSets[i].items
+        for (int j = 0; j < entries.length; j++) {
+            def entry = entries[j]
+            truncated_msg = entry.msg.take(MAX_MSG_LEN)
+            changeString += " - ${truncated_msg} [${entry.author}]\n"
+        }
+    }
+
+    if (!changeString) {
+        changeString = " - No new changes"
+    }
+    return changeString
 }
 
 void setLastStageName() {
