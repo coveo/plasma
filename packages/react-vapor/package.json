@@ -126,7 +126,7 @@
         "jquery": "3.6.0",
         "lint-staged": "9.4.2",
         "lorem-ipsum": "2.0.4",
-        "minimist": "1.2.3",
+        "minimist": "1.2.5",
         "moment": "2.29.1",
         "node-sass": "5.0.0",
         "react": "16.14.0",
