@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import {svg} from 'coveo-styleguide';
 import * as React from 'react';
 
-import {Svg} from '../svg';
+import {Svg, SvgNames} from '../svg';
 
 export enum InfoTokenType {
     Information,
@@ -31,7 +31,7 @@ export interface InfoTokenProps {
     className?: string;
 }
 
-const SvgMapping: Record<InfoTokenType, Record<InfoTokenSize, string>> = {
+const SvgMapping: Record<InfoTokenType, Record<InfoTokenSize, SvgNames>> = {
     [InfoTokenType.Information]: {
         [InfoTokenSize.Small]: svg.infoStrokedSmall.name,
         [InfoTokenSize.Medium]: svg.infoStrokedMedium.name,

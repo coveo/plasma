@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {Svg} from '../svg/Svg';
+import {Svg} from '../svg';
 
 export interface IBreadcrumbLinkProps {
     name: React.ReactNode;
@@ -38,7 +38,7 @@ export class BreadcrumbLink extends React.Component<IBreadcrumbLinkProps> {
                 >
                     {this.props.name}
                 </TagName>
-                <Svg svgName="arrow-right-rounded" className="breadcrumb-arrow" />
+                <Svg svgName="arrowRightRounded" className="breadcrumb-arrow" />
             </li>
         );
     }

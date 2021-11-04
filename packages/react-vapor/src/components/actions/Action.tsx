@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface IConfirmButtonLabel {
@@ -28,7 +28,7 @@ export interface IBaseActionOptions {
 }
 
 export interface IActionOptions extends IBaseActionOptions {
-    icon?: string;
+    icon?: SvgNames;
     iconClass?: string;
     id?: string;
     trigger?: () => void;

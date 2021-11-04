@@ -96,11 +96,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
                         data-page={currentPage - 1}
                         onClick={() => this.handlePageClick(currentPage - 1)}
                     >
-                        <Svg
-                            svgName="arrow-left-rounded"
-                            className="pagination-icon"
-                            svgClass="icon icon-small mod-lg"
-                        />
+                        <Svg svgName="arrowLeftRounded" className="pagination-icon" svgClass="icon icon-small mod-lg" />
                         {previousLabel}
                     </a>
                     {pageSelects}
@@ -111,7 +107,7 @@ export class NavigationPagination extends React.Component<INavigationPaginationP
                     >
                         {nextLabel}
                         <Svg
-                            svgName="arrow-right-rounded"
+                            svgName="arrowRightRounded"
                             className="pagination-icon"
                             svgClass="icon icon-small mod-lg"
                         />

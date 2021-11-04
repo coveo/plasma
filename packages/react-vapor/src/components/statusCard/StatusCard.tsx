@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import * as React from 'react';
 
 import {Loading} from '../loading/Loading';
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 
 export interface StatusCardProps {
     title: string;
     className?: string;
-    icon?: string;
+    icon?: SvgNames;
     simple?: boolean;
     loading?: boolean;
 }

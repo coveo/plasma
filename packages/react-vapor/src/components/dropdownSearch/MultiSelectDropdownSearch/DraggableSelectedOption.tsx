@@ -3,7 +3,7 @@ import {DragSource, DropTarget, IDragSource, IDropTarget} from 'react-dnd';
 import {findDOMNode} from 'react-dom';
 import * as _ from 'underscore';
 
-import {Svg} from '../../svg/Svg';
+import {Svg} from '../../svg';
 import {ITooltipProps} from '../../tooltip/Tooltip';
 import {ISelectedOptionProps, SelectedOption} from './SelectedOption';
 
@@ -113,7 +113,7 @@ export class DraggableSelectedOption extends React.PureComponent<IDraggableSelec
                                         className="move-option infline-flex cursor-move align-center"
                                         aria-grabbed={this.props.isDragging}
                                     >
-                                        <Svg svgName="drag-drop" svgClass="icon mod-small" />
+                                        <Svg svgName="dragDrop" svgClass="icon mod-small" />
                                     </div>
                                 )}
                             {this.props.label}

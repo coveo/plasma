@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {Svg} from '../svg';
+import {Svg, SvgNames} from '../svg';
 
 export enum IconBadgeSize {
     Medium,
@@ -15,7 +15,7 @@ export enum IconBadgeType {
 }
 
 export interface IconBadgeProps {
-    svgName: string;
+    svgName: SvgNames;
     type: IconBadgeType;
     size?: IconBadgeSize;
     svgClass?: string;

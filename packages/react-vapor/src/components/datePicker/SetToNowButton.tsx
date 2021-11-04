@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {Svg} from '../svg/Svg';
+
+import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface ISetToNowProps extends React.ClassAttributes<SetToNowButton> {
@@ -14,7 +15,7 @@ export class SetToNowButton extends React.Component<ISetToNowProps, any> {
         return (
             <Tooltip title={this.props.tooltip || SET_TO_NOW_DEFAULT_TOOLTIP} placement="top">
                 <button type="button" onClick={() => this.props.onClick()} className="date-button">
-                    <Svg svgName="set-to-now" />
+                    <Svg svgName="setToNow" />
                 </button>
             </Tooltip>
         );
