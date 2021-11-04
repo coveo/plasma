@@ -1,7 +1,7 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
-import {extend, omit} from 'underscore';
-import {camelize} from 'underscore.string';
+
+// import {SvgNames} from './SvgNames';
 
 export interface ISvgTagProps {
     svgClass?: string;
@@ -10,40 +10,21 @@ export interface ISvgTagProps {
 
 export interface ISvgProps extends ISvgTagProps, React.HTMLAttributes<HTMLSpanElement> {}
 
-const svgPropsToOmit = ['svgClass', 'svgName'];
-
-export class Svg extends React.Component<ISvgProps> {
-    static defaultProps: Partial<ISvgProps> = {
-        svgClass: '',
+export const Svg: React.FunctionComponent<ISvgProps> = ({svgClass = '', svgName, ...props}) => {
+    // eslint-disable-next-line arrow-body-style
+    const setSvgClass = (svgStr: string): string => {
+        return svgStr
+            .replace('<svg ', `<svg class="${svgClass}" role="img" aria-label="${svgName} icon" `)
+            .replace('<svg>', `<svg class="${svgClass}">`);
     };
 
-    private setSvgClass(svgString: string, svgClass: string): string {
-        return svgString
-            .replace('<svg ', `<svg class="${svgClass}" `)
-            .replace('<svg>', `<svg class="${svgClass}">`)
-            .replace('<svg ', `<svg role="img" aria-label="${this.props.svgName} icon" `);
+    if (VaporSVG.svg[svgName]) {
+        return <span {...props} dangerouslySetInnerHTML={{__html: setSvgClass(VaporSVG.svg[svgName].svgString)}} />;
     }
 
-    render() {
-        const formattedSvgName: string = camelize(this.props.svgName);
-        const svgString: string = VaporSVG.svg[formattedSvgName] && VaporSVG.svg[formattedSvgName].svgString;
-
-        // Omit Svg props to avoid warnings.
-        const svgSpanProps = extend({}, omit(this.props, svgPropsToOmit));
-
-        if (svgString) {
-            return (
-                <span
-                    {...svgSpanProps}
-                    dangerouslySetInnerHTML={{__html: this.setSvgClass(svgString, this.props.svgClass)}}
-                />
-            );
-        } else {
-            return (
-                <span {...svgSpanProps}>
-                    <svg className={this.props.svgClass} aria-label={`icon-${this.props.svgName}`} />
-                </span>
-            );
-        }
-    }
-}
+    return (
+        <span {...props}>
+            <svg className={svgClass} aria-label={`icon-${svgName}`} />
+        </span>
+    );
+};
