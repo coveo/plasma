@@ -1,7 +1,11 @@
 {
   "extends": ["config:base"],
   "timezone": "America/Montreal",
-  "prCreation": "immediate",
+  "schedule": [
+    "after 8pm every weekday",
+    "before 6am every weekday",
+    "every weekend"
+  ],
   "semanticCommitScope": "deps",
   "commitBody": "UITOOL-284",
   "packageRules": [
@@ -9,7 +13,6 @@
       "description": "Automatically merge minor and patch-level updates",
       "updateTypes": ["minor", "patch"],
       "automerge": true,
-      "automergeType": "branch",
       "semanticCommitType": "chore"
     }
   ],
