@@ -7,6 +7,7 @@ module.exports = {
     },
     setupFiles: ['<rootDir>/jest/setup.ts'],
     setupFilesAfterEnv: ['<rootDir>/jest/entry.tsx'],
+    testEnvironment: 'jsdom',
     reporters: ['default'],
     transform: {
         '^.+\\.(jsx?|tsx?)$': 'ts-jest',
