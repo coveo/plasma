@@ -7,7 +7,7 @@ importers:
       '@commitlint/cli': 8.3.5
       '@commitlint/config-conventional': 8.3.4
       '@sindresorhus/slugify': 0.11.0
-      aws-sdk: 2.576.0
+      aws-sdk: 2.1023.0
       axios: 0.21.4
       commitizen: 4.2.4
       cz-conventional-changelog: 3.3.0
@@ -24,7 +24,7 @@ importers:
       '@commitlint/cli': 8.3.5
       '@commitlint/config-conventional': 8.3.4
       '@sindresorhus/slugify': 0.11.0
-      aws-sdk: 2.576.0
+      aws-sdk: 2.1023.0
       axios: 0.21.4
       commitizen: 4.2.4
       cz-conventional-changelog: 3.3.0
@@ -4018,19 +4018,19 @@ packages:
     resolution: {integrity: sha1-8YL0DRd1fZeKE5pMnKQMTA5EhgM=}
     dev: true
 
-  /aws-sdk/2.576.0:
-    resolution: {integrity: sha512-VdMN1GnQ5V6nzgzl90VcZugNslXt1AyuYBlYHEB/1xz5FXKKJ+D4RDHryDRBOUC65F1OqS2G0mseoaxYEJEznQ==}
-    engines: {node: '>= 0.8.0'}
+  /aws-sdk/2.1023.0:
+    resolution: {integrity: sha512-RAI8sUfK+00yL9i3xz5kbM3+t/0mjjnKhKyauXAlJN4seDYtIX5+BqMghpkZwvLBdi6idXIuz+FHWETHZccyuA==}
+    engines: {node: '>= 10.0.0'}
     dependencies:
       buffer: 4.9.2
       events: 1.1.1
-      ieee754: 1.2.1
+      ieee754: 1.1.13
       jmespath: 0.15.0
-      querystring: 0.2.1
-      sax: 1.2.4
+      querystring: 0.2.0
+      sax: 1.2.1
       url: 0.10.3
-      uuid: 3.4.0
-      xml2js: 0.4.23
+      uuid: 3.3.2
+      xml2js: 0.4.19
     dev: true
 
   /aws-sign2/0.7.0:
@@ -9070,6 +9070,10 @@ packages:
       harmony-reflect: 1.6.2
     dev: true
 
+  /ieee754/1.1.13:
+    resolution: {integrity: sha512-4vf7I2LYV/HaWerSo3XmlMkp5eZ83i+/CDluXi/IGTs/O1sejBNhTtnxzmRZfvOUqj7lZjqHkeTvpgSFDlWZTg==}
+    dev: true
+
   /ieee754/1.2.1:
     resolution: {integrity: sha512-dcyqhDvX1C46lXZcVqCpK+FtMRQVdIMN6/Df5js2zouUsqG7I6sFxitIC+7KYK29KdXOLHdu9zL4sFnoVQnqaA==}
     dev: true
@@ -13795,11 +13799,7 @@ packages:
   /querystring/0.2.0:
     resolution: {integrity: sha1-sgmEkgO7Jd+CDadW50cAWHhSFiA=}
     engines: {node: '>=0.4.x'}
-    dev: true
-
-  /querystring/0.2.1:
-    resolution: {integrity: sha512-wkvS7mL/JMugcup3/rMitHmd9ecIGd2lhFhK9N3UUQ450h66d1r3Y9nvXzQAW1Lq+wyx61k/1pfKS5KuKiyEbg==}
-    engines: {node: '>=0.4.x'}
+    deprecated: The querystring API is considered Legacy. new code should use the URLSearchParams API instead.
     dev: true
 
   /querystringify/2.2.0:
@@ -15179,6 +15179,10 @@ packages:
     hasBin: true
     dependencies:
       chokidar: 3.5.1
+    dev: true
+
+  /sax/1.2.1:
+    resolution: {integrity: sha1-e45lYZCyKOgaZq6nSEgNgozS03o=}
     dev: true
 
   /sax/1.2.4:
@@ -17375,6 +17379,12 @@ packages:
     engines: {node: '>= 0.4.0'}
     dev: true
 
+  /uuid/3.3.2:
+    resolution: {integrity: sha512-yXJmeNaw3DnnKAOKJE51sL/ZaYfWJRl1pK9dr19YFCu0ObS231AB1/LbqTKRAQ5kw8A90rA6fr4riOUpTZvQZA==}
+    deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    hasBin: true
+    dev: true
+
   /uuid/3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
     deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
@@ -17978,16 +17988,15 @@ packages:
     resolution: {integrity: sha512-A5CUptxDsvxKJEU3yO6DuWBSJz/qizqzJKOMIfUJHETbBw/sFaDxgd6fxm1ewUaM0jZ444Fc5vC5ROYurg/4Pw==}
     dev: true
 
-  /xml2js/0.4.23:
-    resolution: {integrity: sha512-ySPiMjM0+pLDftHgXY4By0uswI3SPKLDw/i3UXbnO8M/p28zqexCUoPmQFrYD+/1BzhGJSs2i1ERWKJAtiLrug==}
-    engines: {node: '>=4.0.0'}
+  /xml2js/0.4.19:
+    resolution: {integrity: sha512-esZnJZJOiJR9wWKMyuvSE1y6Dq5LCuJanqhxslH2bxM6duahNZ+HMpCLhBQGZkbX6xRf8x1Y2eJlgt2q3qo49Q==}
     dependencies:
       sax: 1.2.4
-      xmlbuilder: 11.0.1
+      xmlbuilder: 9.0.7
     dev: true
 
-  /xmlbuilder/11.0.1:
-    resolution: {integrity: sha512-fDlsI/kFEx7gLvbecc0/ohLG50fugQp8ryHzMTuW9vSa1GJ0XYWKnhsUx7oie3G98+r56aTQIUB4kht42R3JvA==}
+  /xmlbuilder/9.0.7:
+    resolution: {integrity: sha1-Ey7mPS7FVlxVfiD0wi35rKaGsQ0=}
     engines: {node: '>=4.0'}
     dev: true
 
