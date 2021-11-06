@@ -65,7 +65,7 @@ importers:
       '@types/react-syntax-highlighter': 13.5.2
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
-      '@types/webpack-env': 1.15.1
+      '@types/webpack-env': 1.16.3
       classnames: 2.3.1
       codemirror: 5.63.3
       concurrently: 6.3.0
@@ -147,7 +147,7 @@ importers:
       '@types/react-syntax-highlighter': 13.5.2
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
-      '@types/webpack-env': 1.15.1
+      '@types/webpack-env': 1.16.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1_webpack@4.41.6
       css-loader: 3.4.2_webpack@4.41.6
@@ -2976,8 +2976,8 @@ packages:
       '@types/vfile-message': 2.0.0
     dev: true
 
-  /@types/webpack-env/1.15.1:
-    resolution: {integrity: sha512-eWN5ElDTeBc5lRDh95SqA8x18D0ll2pWudU3uWiyfsRmIZcmUXpEsxPU+7+BsdCrO2vfLRC629u/MmjbmF+2tA==}
+  /@types/webpack-env/1.16.3:
+    resolution: {integrity: sha512-9gtOPPkfyNoEqCQgx4qJKkuNm/x0R2hKR7fdl7zvTJyHnIisuE/LfvXOsYWL0o3qq6uiBnKZNNNzi3l0y/X+xw==}
     dev: true
 
   /@types/webpack-sources/2.1.0:
