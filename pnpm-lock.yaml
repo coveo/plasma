@@ -223,7 +223,7 @@ importers:
       autoprefixer: 9.8.8
       chosen-js: 1.8.7
       classnames: 2.3.1
-      codecov: 3.7.1
+      codecov: 3.8.2
       codemirror: 5.63.3
       concurrently: 5.1.0
       coveo-styleguide: ^24.27.0
@@ -345,7 +345,7 @@ importers:
       ansi-colors: 3.2.4
       autoprefixer: 9.8.8
       classnames: 2.3.1
-      codecov: 3.7.1
+      codecov: 3.8.2
       codemirror: 5.63.3
       concurrently: 5.1.0
       coveo-styleguide: link:../vapor
@@ -3192,7 +3192,7 @@ packages:
     dependencies:
       '@typescript-eslint/types': 4.22.0
       '@typescript-eslint/visitor-keys': 4.22.0
-      debug: 4.3.1
+      debug: 4.3.2
       globby: 11.0.3
       is-glob: 4.0.1
       semver: 7.3.5
@@ -3436,11 +3436,6 @@ packages:
     dependencies:
       loader-utils: 2.0.0
       regex-parser: 2.2.11
-    dev: true
-
-  /agent-base/5.1.1:
-    resolution: {integrity: sha512-TMeqbNl2fMW0nMjTEPOwe3J/PRFP4vqeoNuQMG0HlMrtm5QxKqdvAkZ1pRBQ/ulIyDD5Yq0nJ7YbdD8ey0TO3g==}
-    engines: {node: '>= 6.0.0'}
     dev: true
 
   /agent-base/6.0.2:
@@ -5072,15 +5067,15 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: true
 
-  /codecov/3.7.1:
-    resolution: {integrity: sha512-JHWxyPTkMLLJn9SmKJnwAnvY09kg2Os2+Ux+GG7LwZ9g8gzDDISpIN5wAsH1UBaafA/yGcd3KofMaorE8qd6Lw==}
+  /codecov/3.8.2:
+    resolution: {integrity: sha512-6w/kt/xvmPsWMfDFPE/T054txA9RTgcJEw36PNa6MYX+YV29jCHCRFXwbQ3QZBTOgnex1J2WP8bo2AT8TWWz9g==}
     engines: {node: '>=4.0'}
     hasBin: true
     dependencies:
       argv: 0.0.2
       ignore-walk: 3.0.3
-      js-yaml: 3.13.1
-      teeny-request: 6.0.1
+      js-yaml: 3.14.1
+      teeny-request: 7.0.1
       urlgrey: 0.4.4
     transitivePeerDependencies:
       - supports-color
@@ -8989,16 +8984,6 @@ packages:
     resolution: {integrity: sha1-7AbBDgo0wPL68Zn3/X/Hj//QPHM=}
     dev: true
 
-  /https-proxy-agent/4.0.0:
-    resolution: {integrity: sha512-zoDhWrkR3of1l9QAL8/scJZyLu8j/gBkcwcaQOZh7Gyh/+uJQzGVETdgT30akuwkpL8HTRfssqI3BZuV18teDg==}
-    engines: {node: '>= 6.0.0'}
-    dependencies:
-      agent-base: 5.1.1
-      debug: 4.3.2
-    transitivePeerDependencies:
-      - supports-color
-    dev: true
-
   /https-proxy-agent/5.0.0:
     resolution: {integrity: sha512-EkYm5BcKUGiduxzSt3Eppko+PiNWNEpa4ySk9vTC6wDsQJW9rHSa+UhGNJoRYp7bz6Ht1eaRIa6QaJqO5rCFbA==}
     engines: {node: '>= 6'}
@@ -10362,14 +10347,6 @@ packages:
 
   /js-tokens/4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
-
-  /js-yaml/3.13.1:
-    resolution: {integrity: sha512-YfbcO7jXDdyj0DGxYVSlSeQNHbD7XPWvrVWeVUujrQEoZzWJIRrCPoyk6kL6IAjAG2IolMK4T0hNUe0HOUs5Jw==}
-    hasBin: true
-    dependencies:
-      argparse: 1.0.10
-      esprima: 4.0.1
-    dev: true
 
   /js-yaml/3.14.1:
     resolution: {integrity: sha512-okMH7OXXJ7YrN9Ok3/SXrnu4iX9yOk+25nqX4imS2npuvTYDmo/QEZoqwZkYaIDk3jVvBOTOIEgEhaLOynBS9g==}
@@ -16441,14 +16418,15 @@ packages:
       yallist: 4.0.0
     dev: true
 
-  /teeny-request/6.0.1:
-    resolution: {integrity: sha512-TAK0c9a00ELOqLrZ49cFxvPVogMUFaWY8dUsQc/0CuQPGF+BOxOQzXfE413BAk2kLomwNplvdtMpeaeGWmoc2g==}
+  /teeny-request/7.0.1:
+    resolution: {integrity: sha512-sasJmQ37klOlplL4Ia/786M5YlOcoLGQyq2TE4WHSRupbAuDaQW0PfVxV4MtdBtRJ4ngzS+1qim8zP6Zp35qCw==}
+    engines: {node: '>=10'}
     dependencies:
       http-proxy-agent: 4.0.1
-      https-proxy-agent: 4.0.0
+      https-proxy-agent: 5.0.0
       node-fetch: 2.6.1
       stream-events: 1.0.5
-      uuid: 3.4.0
+      uuid: 8.3.2
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -17393,6 +17371,11 @@ packages:
   /uuid/3.4.0:
     resolution: {integrity: sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==}
     deprecated: Please upgrade  to version 7 or higher.  Older versions may use Math.random() in certain circumstances, which is known to be problematic.  See https://v8.dev/blog/math-random for details.
+    hasBin: true
+    dev: true
+
+  /uuid/8.3.2:
+    resolution: {integrity: sha512-+NYs2QeMWy+GWFOEm9xnn6HCDp0l7QBD7ml8zLUmJ+93Q5NF0NocErnwkTkXVFNiX3/fpC6afS8Dhb/gz7R7eg==}
     hasBin: true
     dev: true
 
