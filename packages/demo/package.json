@@ -49,7 +49,7 @@
         "@loadable/component": "5.15.0",
         "@types/classnames": "2.2.9",
         "@types/faker": "4.1.12",
-        "@types/loadable__component": "5.10.0",
+        "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
         "@types/prettier": "1.19.1",
         "@types/react": "16.9.19",
