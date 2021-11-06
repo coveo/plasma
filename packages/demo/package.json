@@ -47,7 +47,7 @@
     },
     "devDependencies": {
         "@loadable/component": "5.15.0",
-        "@types/classnames": "2.2.9",
+        "@types/classnames": "2.3.0",
         "@types/faker": "4.1.12",
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
