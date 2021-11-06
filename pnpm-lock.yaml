@@ -55,7 +55,7 @@ importers:
       '@loadable/component': 5.15.0
       '@types/classnames': 2.2.9
       '@types/faker': 4.1.12
-      '@types/loadable__component': 5.10.0
+      '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/prettier': 1.19.1
       '@types/react': 16.9.19
@@ -137,7 +137,7 @@ importers:
       '@loadable/component': 5.15.0_react@16.14.0
       '@types/classnames': 2.2.9
       '@types/faker': 4.1.12
-      '@types/loadable__component': 5.10.0
+      '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/prettier': 1.19.1
       '@types/react': 16.9.19
@@ -201,7 +201,7 @@ importers:
       '@types/faker': 4.1.12
       '@types/jest': 27.0.2
       '@types/jquery': 2.0.57
-      '@types/loadable__component': 5.10.0
+      '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/rc-slider': 8.6.6
       '@types/react': 16.9.19
@@ -325,7 +325,7 @@ importers:
       '@types/faker': 4.1.12
       '@types/jest': 27.0.2
       '@types/jquery': 2.0.57
-      '@types/loadable__component': 5.10.0
+      '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.9.19
       '@types/react-bootstrap': 0.32.28
@@ -2582,7 +2582,7 @@ packages:
     resolution: {integrity: sha512-6b4JWgV+FNec1c4+8HauGbXg5gRc1oQK93t2+4W+bHjG/PzO+iPvagY6d6bXAZ+t+ps51Zb2F9LQ4vl0S0Epog==}
     dependencies:
       '@types/cheerio': 0.22.28
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/enzyme/3.10.10:
@@ -2692,10 +2692,10 @@ packages:
     resolution: {integrity: sha1-7ihweulOEdK4J7y+UnC86n8+ce4=}
     dev: true
 
-  /@types/loadable__component/5.10.0:
-    resolution: {integrity: sha512-AaDP1VxV3p7CdPOtOTl3ALgQ6ES4AxJKO9UGj9vJonq/w2yERxwdzFiWNQFh9fEDXEzjxujBlM2RmSJtHV1/pA==}
+  /@types/loadable__component/5.13.4:
+    resolution: {integrity: sha512-YhoCCxyuvP2XeZNbHbi8Wb9EMaUJuA2VGHxJffcQYrJKIKSkymJrhbzsf9y4zpTmr5pExAAEh5hbF628PAZ8Dg==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/lorem-ipsum/2.0.0:
@@ -2762,7 +2762,7 @@ packages:
   /@types/rc-tooltip/3.7.3:
     resolution: {integrity: sha512-2+lEqXGGY6MSoE/SGEdSf75B1TGljQXBdeaDfBNhXASytMU/p/1XeftZgphERZrjT4Afsh25nH/7tFlTmpdOxQ==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: false
 
   /@types/react-bootstrap/0.32.28:
@@ -17028,7 +17028,7 @@ packages:
       react: '>=15.0.0'
     dependencies:
       '@babel/runtime': 7.16.0
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
       invariant: 2.2.4
       react: 16.14.0
       react-lifecycles-compat: 3.0.4
