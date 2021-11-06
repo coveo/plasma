@@ -191,7 +191,7 @@ importers:
       '@testing-library/jest-dom': 5.15.0
       '@testing-library/react': 11.2.7
       '@testing-library/user-event': 12.8.3
-      '@types/chosen-js': 1.6.2
+      '@types/chosen-js': 1.8.3
       '@types/classnames': 2.2.9
       '@types/codemirror': 0.0.109
       '@types/d3': 3.5.46
@@ -316,7 +316,7 @@ importers:
       '@testing-library/jest-dom': 5.15.0
       '@testing-library/react': 11.2.7_react-dom@16.14.0+react@16.14.0
       '@testing-library/user-event': 12.8.3_@testing-library+dom@7.31.2
-      '@types/chosen-js': 1.6.2
+      '@types/chosen-js': 1.8.3
       '@types/classnames': 2.2.9
       '@types/d3': 3.5.46
       '@types/enzyme': 3.10.10
@@ -2553,10 +2553,10 @@ packages:
       '@types/node': 16.11.6
     dev: true
 
-  /@types/chosen-js/1.6.2:
-    resolution: {integrity: sha512-JMG6svozOHSmiz++k6bNk8OqjQBNlPFvYGiqcxbk6P52HR02O6auHY5MUPP+xPi4ESizO8tCyMPKwF9gklhrAw==}
+  /@types/chosen-js/1.8.3:
+    resolution: {integrity: sha512-HoXjB21X12y1D8x9G2qSSqea1zGelwWciZbHTh3Mm3GW4pgme3sNLM+IiGkkcwCfr2DsvskjG1qOAlFsav5ojA==}
     dependencies:
-      '@types/jquery': 2.0.46
+      '@types/jquery': 2.0.57
     dev: true
 
   /@types/classnames/2.2.9:
@@ -2678,10 +2678,6 @@ packages:
     dependencies:
       jest-diff: 27.3.1
       pretty-format: 27.3.1
-    dev: true
-
-  /@types/jquery/2.0.46:
-    resolution: {integrity: sha512-U64bkZqTfFi4HXHqOckD1Uxvg+oPooCjD5bQ10t9xOG5Ke6cR8tFnvERXrQtrRWvgS428nhAL1V8qv1b88kgyQ==}
     dev: true
 
   /@types/jquery/2.0.57:

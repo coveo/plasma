@@ -77,7 +77,7 @@
         "@testing-library/jest-dom": "5.15.0",
         "@testing-library/react": "11.2.7",
         "@testing-library/user-event": "12.8.3",
-        "@types/chosen-js": "1.6.2",
+        "@types/chosen-js": "1.8.3",
         "@types/classnames": "2.2.9",
         "@types/d3": "3.5.46",
         "@types/enzyme": "3.10.10",
