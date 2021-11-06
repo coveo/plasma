@@ -188,7 +188,7 @@ importers:
       '@rollup/plugin-node-resolve': 7.1.3
       '@rollup/plugin-replace': 2.4.2
       '@testing-library/dom': 7.31.2
-      '@testing-library/jest-dom': 5.14.1
+      '@testing-library/jest-dom': 5.15.0
       '@testing-library/react': 11.2.7
       '@testing-library/user-event': 12.8.3
       '@types/chosen-js': 1.6.2
@@ -313,7 +313,7 @@ importers:
       '@rollup/plugin-node-resolve': 7.1.3_rollup@2.3.3
       '@rollup/plugin-replace': 2.4.2_rollup@2.3.3
       '@testing-library/dom': 7.31.2
-      '@testing-library/jest-dom': 5.14.1
+      '@testing-library/jest-dom': 5.15.0
       '@testing-library/react': 11.2.7_react-dom@16.14.0+react@16.14.0
       '@testing-library/user-event': 12.8.3_@testing-library+dom@7.31.2
       '@types/chosen-js': 1.6.2
@@ -2451,8 +2451,8 @@ packages:
       pretty-format: 26.6.2
     dev: true
 
-  /@testing-library/jest-dom/5.14.1:
-    resolution: {integrity: sha512-dfB7HVIgTNCxH22M1+KU6viG5of2ldoA5ly8Ar8xkezKHKXjRvznCdbMbqjYGgO2xjRbwnR+rR8MLUIqF3kKbQ==}
+  /@testing-library/jest-dom/5.15.0:
+    resolution: {integrity: sha512-lOMuQidnL1tWHLEWIhL6UvSZC1Qt3OkNe1khvi2h6xFiqpe5O8arYs46OU0qyUGq0cSTbroQyMktYNXu3a7sAA==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
     dependencies:
       '@babel/runtime': 7.16.0
@@ -2671,13 +2671,6 @@ packages:
     resolution: {integrity: sha512-nwKNbvnwJ2/mndE9ItP/zc2TCzw6uuodnF4EHYWD+gCQDVBuRQL5UzbZD0/ezy1iKsFU2ZQiDqg4M9dN4+wZgA==}
     dependencies:
       '@types/istanbul-lib-report': 3.0.0
-    dev: true
-
-  /@types/jest/26.0.24:
-    resolution: {integrity: sha512-E/X5Vib8BWqZNRlDxj9vYXhsDwPYbPINqKF9BsnSoon4RQ0D9moEuLD8txgyypFLH7J4+Lho9Nr/c8H0Fi+17w==}
-    dependencies:
-      jest-diff: 26.6.2
-      pretty-format: 26.6.2
     dev: true
 
   /@types/jest/27.0.2:
@@ -2946,7 +2939,7 @@ packages:
   /@types/testing-library__jest-dom/5.9.5:
     resolution: {integrity: sha512-ggn3ws+yRbOHog9GxnXiEZ/35Mow6YtPZpd7Z5mKDeZS/o7zx3yAle0ov/wjhVB5QT4N2Dt+GNoGCdqkBGCajQ==}
     dependencies:
-      '@types/jest': 26.0.24
+      '@types/jest': 27.0.2
     dev: true
 
   /@types/tether/1.4.5:
@@ -4120,7 +4113,7 @@ packages:
   /babel-plugin-macros/2.8.0:
     resolution: {integrity: sha512-SEP5kJpfGYqYKpBrj5XU3ahw5p5GOHJ0U5ssOSQ/WBVdwkD2Dzlce95exQTs3jOVWPPKLBN2rlEWkCK7dSmLvg==}
     dependencies:
-      '@babel/runtime': 7.14.6
+      '@babel/runtime': 7.16.0
       cosmiconfig: 6.0.0
       resolve: 1.20.0
     dev: false
@@ -6355,11 +6348,6 @@ packages:
     dependencies:
       asap: 2.0.6
       wrappy: 1.0.2
-    dev: true
-
-  /diff-sequences/26.6.2:
-    resolution: {integrity: sha512-Mv/TDa3nZ9sbc5soK+OoA74BsS3mL37yixCvUAQkiuA4Wz6YtwP/K47n2rv2ovzHZvoiQeA5FTQOschKkEwB0Q==}
-    engines: {node: '>= 10.14.2'}
     dev: true
 
   /diff-sequences/27.0.6:
@@ -9974,16 +9962,6 @@ packages:
       - utf-8-validate
     dev: true
 
-  /jest-diff/26.6.2:
-    resolution: {integrity: sha512-6m+9Z3Gv9wN0WFVasqjCL/06+EFCMTqDEUl/b87HYK2rAPTyfz4ZIuSlPhY51PIQRWx5TaxeF1qmXKe9gfN3sA==}
-    engines: {node: '>= 10.14.2'}
-    dependencies:
-      chalk: 4.1.1
-      diff-sequences: 26.6.2
-      jest-get-type: 26.3.0
-      pretty-format: 26.6.2
-    dev: true
-
   /jest-diff/27.3.1:
     resolution: {integrity: sha512-PCeuAH4AWUo2O5+ksW4pL9v5xJAcIKPUPfIhZBcG1RKv/0+dvaWTQK1Nrau8d67dp65fOqbeMdoil+6PedyEPQ==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
@@ -10040,11 +10018,6 @@ packages:
       '@types/node': 16.11.6
       jest-mock: 27.3.0
       jest-util: 27.3.1
-    dev: true
-
-  /jest-get-type/26.3.0:
-    resolution: {integrity: sha512-TpfaviN1R2pQWkIihlfEanwOXK0zcxrKEE4MlU6Tn7keoXdN6/3gK/xl0yEh8DOunn5pOVGKf8hB4R9gVh04ig==}
-    engines: {node: '>= 10.14.2'}
     dev: true
 
   /jest-get-type/27.3.1:
@@ -17058,7 +17031,7 @@ packages:
     peerDependencies:
       react: '>=15.0.0'
     dependencies:
-      '@babel/runtime': 7.14.6
+      '@babel/runtime': 7.16.0
       '@types/react': 16.9.19
       invariant: 2.2.4
       react: 16.14.0
