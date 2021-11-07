@@ -52,7 +52,7 @@
         "gulp-svgmin": "3.0.0",
         "gulp-uglify": "3.0.2",
         "jquery": "3.6.0",
-        "lint-staged": "9.4.2",
+        "lint-staged": "9.5.0",
         "materialize-css": "0.98.2",
         "merge-stream": "1.0.1",
         "mini-css-extract-plugin": "0.7.0",
