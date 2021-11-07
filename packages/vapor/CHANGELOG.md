@@ -1025,7 +1025,6 @@ breaking.
 
 
 
-<<<<<<< HEAD
 # [23.0.0-next.15](https://github.com/coveo/react-vapor/compare/v23.0.0-next.14...v23.0.0-next.15) (2021-06-22)
 
 **Note:** Version bump only for package coveo-styleguide
@@ -1057,36 +1056,10 @@ breaking.
 
 
 # [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
-=======
-# [22.21.0](https://github.com/coveo/react-vapor/compare/v22.20.3...v22.21.0) (2021-07-22)
-
-
-### Features
-
-* **limit:** +onClick method on history icon ([0c12782](https://github.com/coveo/react-vapor/commit/0c12782070d0d686f8410bf29943627b69b23b97))
-
-
-
-
-
-# [22.20.0](https://github.com/coveo/react-vapor/compare/v22.19.5...v22.20.0) (2021-07-15)
-
-
-### Features
-
-* **svg:** add new side nav icons ([#2080](https://github.com/coveo/react-vapor/issues/2080)) ([830e07f](https://github.com/coveo/react-vapor/commit/830e07fe5b1a513dea0a0f5aebbf31438cc60a84))
-
-
-
-
-
-## [22.19.3](https://github.com/coveo/react-vapor/compare/v22.19.2...v22.19.3) (2021-07-14)
->>>>>>> master
 
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 * fix style of wizard demo ([90c39d8](https://github.com/coveo/react-vapor/commit/90c39d8b7151ab50b49ec34527a4e73e3df69170))
 
 
@@ -1101,21 +1074,10 @@ breaking.
 
 
 # [23.0.0-next.4](https://github.com/coveo/react-vapor/compare/v22.8.1...v23.0.0-next.4) (2021-06-01)
-=======
-* **focus:** override outline for Firefox ([81d32dc](https://github.com/coveo/react-vapor/commit/81d32dc71b1bca98f8e664600152531bc20e5c9e))
-* **focus:** override outline for Firefox ([7e48066](https://github.com/coveo/react-vapor/commit/7e48066d74507b145be86e4e1caa0fb98a678c54))
-
-
-
-
-
-## [22.19.2](https://github.com/coveo/react-vapor/compare/v22.19.1...v22.19.2) (2021-07-12)
->>>>>>> master
 
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 * **section:** change section titles to lower headings levels ([8b53b0f](https://github.com/coveo/react-vapor/commit/8b53b0f9638d5a007a14b4587a2cf938ee3f83de))
 
 
@@ -1146,31 +1108,6 @@ breaking.
 
 
 # [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
-=======
-* **option-picker:** alignement when used as a button ([bc6341a](https://github.com/coveo/react-vapor/commit/bc6341a4b34c821eea6681225cc2798895cbb132))
-
-
-
-
-
-# [22.19.0](https://github.com/coveo/react-vapor/compare/v22.18.0...v22.19.0) (2021-07-07)
-
-
-### Features
-
-* **svg:** add `associate` icon ([39b375d](https://github.com/coveo/react-vapor/commit/39b375d04fbf31462e8cbef7b5c2b31cb53c556b))
-
-
-
-
-
-# [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
-
-
-### Features
-
-* **tabs:** improve accessibility of tabs ([36be341](https://github.com/coveo/react-vapor/commit/36be341841ad293e2be79301278225f880892ac0))
->>>>>>> master
 
 
 
