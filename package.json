@@ -10,7 +10,7 @@
         "commitizen": "4.2.4",
         "cz-conventional-changelog": "3.3.0",
         "eslint": "7.32.0",
-        "husky": "4.2.5",
+        "husky": "4.3.8",
         "lerna": "4.0.0",
         "mime-types": "2.1.33",
         "prettier": "2.0.5",
