@@ -71,7 +71,7 @@ importers:
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1
       coveo-styleguide: ^24.14.4
-      css-loader: 3.4.2
+      css-loader: 3.6.0
       d3: 3.5.17
       faker: 4.1.0
       file-loader: 5.1.0
@@ -150,7 +150,7 @@ importers:
       '@types/webpack-env': 1.16.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1_webpack@4.41.6
-      css-loader: 3.4.2_webpack@4.41.6
+      css-loader: 3.6.0_webpack@4.41.6
       file-loader: 5.1.0_webpack@4.41.6
       html-webpack-plugin: 4.5.2_webpack@4.41.6
       html-webpack-tags-plugin: 2.0.17
@@ -427,7 +427,7 @@ importers:
       concurrently: 5.3.0
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2
-      css-loader: 3.4.2
+      css-loader: 3.6.0
       cssnano: 4.1.11
       del: 5.1.0
       fancy-log: 1.3.3
@@ -467,7 +467,7 @@ importers:
       concurrently: 5.3.0
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2_jquery@3.6.0+underscore@1.13.1
-      css-loader: 3.4.2_webpack@4.41.6
+      css-loader: 3.6.0_webpack@4.41.6
       cssnano: 4.1.11
       del: 5.1.0
       fancy-log: 1.3.3
@@ -5720,8 +5720,8 @@ packages:
       timsort: 0.3.0
     dev: true
 
-  /css-loader/3.4.2_webpack@4.41.6:
-    resolution: {integrity: sha512-jYq4zdZT0oS0Iykt+fqnzVLRIeiPWhka+7BqPn+oSIpWJAHak5tmB/WZrJ2a21JhCeFyNnnlroSl8c+MtVndzA==}
+  /css-loader/3.6.0_webpack@4.41.6:
+    resolution: {integrity: sha512-M5lSukoWi1If8dhQAUCvj4H8vUt3vOnwbQBH9DdTm/s4Ym2B/3dPMtYZeJmq7Q3S3Pa+I94DcZ7pc9bP14cWIQ==}
     engines: {node: '>= 8.9.0'}
     peerDependencies:
       webpack: ^4.0.0 || ^5.0.0
@@ -5731,13 +5731,14 @@ packages:
       icss-utils: 4.1.1
       loader-utils: 1.4.0
       normalize-path: 3.0.0
-      postcss: 7.0.35
+      postcss: 7.0.36
       postcss-modules-extract-imports: 2.0.0
       postcss-modules-local-by-default: 3.0.3
       postcss-modules-scope: 2.2.0
       postcss-modules-values: 3.0.0
       postcss-value-parser: 4.1.0
       schema-utils: 2.7.1
+      semver: 6.3.0
       webpack: 4.41.6
     dev: true
 
