@@ -108,7 +108,7 @@
         "classnames": "2.3.1",
         "codecov": "3.8.2",
         "codemirror": "5.63.3",
-        "concurrently": "5.1.0",
+        "concurrently": "5.3.0",
         "coveo-styleguide": "^24.28.0",
         "d3": "3.5.17",
         "del": "5.1.0",
