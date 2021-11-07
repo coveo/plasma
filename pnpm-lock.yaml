@@ -233,7 +233,7 @@ importers:
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6
       escape-string-regexp: 1.0.5
-      eslint-plugin-jest: 24.0.2
+      eslint-plugin-jest: 24.7.0
       eslint-plugin-jest-dom: 3.9.2
       eslint-plugin-testing-library: 3.10.2
       faker: 4.1.0
@@ -355,7 +355,7 @@ importers:
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6_4f82faf5e8cab057bc46d4d95079ec42
       escape-string-regexp: 1.0.5
-      eslint-plugin-jest: 24.0.2_eslint@7.32.0+typescript@3.8.3
+      eslint-plugin-jest: 24.7.0_eslint@7.32.0+typescript@3.8.3
       eslint-plugin-jest-dom: 3.9.2_eslint@7.32.0
       eslint-plugin-testing-library: 3.10.2_eslint@7.32.0+typescript@3.8.3
       faker: 4.1.0
@@ -6993,11 +6993,15 @@ packages:
       requireindex: 1.2.0
     dev: true
 
-  /eslint-plugin-jest/24.0.2_eslint@7.32.0+typescript@3.8.3:
-    resolution: {integrity: sha512-DSBLNpkKDOpUJQkTGSs5sVJWsu0nDyQ2rYxkr0Eh7nrkc5bMUr/dlDbtTj3l8y6UaCVsem6rryF1OZrKnz1S5g==}
+  /eslint-plugin-jest/24.7.0_eslint@7.32.0+typescript@3.8.3:
+    resolution: {integrity: sha512-wUxdF2bAZiYSKBclsUMrYHH6WxiBreNjyDxbRv345TIvPeoCEgPNEn3Sa+ZrSqsf1Dl9SqqSREXMHExlMMu1DA==}
     engines: {node: '>=10'}
     peerDependencies:
+      '@typescript-eslint/eslint-plugin': '>= 4'
       eslint: '>=5'
+    peerDependenciesMeta:
+      '@typescript-eslint/eslint-plugin':
+        optional: true
     dependencies:
       '@typescript-eslint/experimental-utils': 4.22.0_eslint@7.32.0+typescript@3.8.3
       eslint: 7.32.0
