@@ -438,7 +438,7 @@ importers:
       gulp-files-to-json: 0.2.1
       gulp-gzip: 1.4.2
       gulp-if: 2.0.2
-      gulp-rename: 1.2.2
+      gulp-rename: 1.4.0
       gulp-svgmin: 3.0.0
       gulp-uglify: 3.0.2
       jquery: 3.6.0
@@ -478,7 +478,7 @@ importers:
       gulp-files-to-json: 0.2.1
       gulp-gzip: 1.4.2
       gulp-if: 2.0.2
-      gulp-rename: 1.2.2
+      gulp-rename: 1.4.0
       gulp-svgmin: 3.0.0
       gulp-uglify: 3.0.2
       jquery: 3.6.0
@@ -8535,9 +8535,9 @@ packages:
       minimatch: 3.0.4
     dev: true
 
-  /gulp-rename/1.2.2:
-    resolution: {integrity: sha1-OtRCh2PwXidk3sHGfYaNsnVoeBc=}
-    engines: {node: '>=0.10.0', npm: '>=1.2.10'}
+  /gulp-rename/1.4.0:
+    resolution: {integrity: sha512-swzbIGb/arEoFK89tPY58vg3Ok1bw+d35PfUNwWqdo7KM4jkmuGA78JiDNqR+JeZFaeeHnRg9N7aihX3YPmsyg==}
+    engines: {node: '>=4'}
     dev: true
 
   /gulp-svgmin/3.0.0:
