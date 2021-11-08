@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [24.37.0](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.37.0) (2021-11-08)
+
+
+### Bug Fixes
+
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* **deps:** add renovate bot configuration ([e964a5e](https://github.com/coveo/react-vapor/commit/e964a5ea620fc311ff4c98193d398222ead7b8cb))
+* **tokens:** create tokens:build command ([7f58731](https://github.com/coveo/react-vapor/commit/7f587311d5881f1c4732ebb50d973e0d792301c8))
+* **tokens:** initialize tokens package + implement fetch tokens logic ([74dfd90](https://github.com/coveo/react-vapor/commit/74dfd905c20b3fdd56ad4a0ffaeea3d289d37e98))
+
+
+
+
+
 # [24.36.0](https://github.com/coveo/react-vapor/compare/v24.14.6...v24.36.0) (2021-11-07)
 
 
