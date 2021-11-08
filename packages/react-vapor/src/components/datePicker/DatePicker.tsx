@@ -61,6 +61,10 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
     };
 
     private handleChangeDate = () => {
+        if (!moment(this.dateInput.value).isValid()) {
+            return;
+        }
+
         if (this.dateInput.value !== '') {
             const date: Date = this.getDateFromString(this.dateInput.value);
             // setting isDatePermitted as let and in component state, since setState is async and triggers rerender of component
@@ -70,18 +74,18 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
             this.props.selectionRules
                 ?.filter(
                     (rule: ICalendarSelectionRule) =>
-                        (rule.isFor === CalendarSelectionRuleType.lower &&
-                            this.props.isSelecting === DateLimits.lower) ||
-                        (rule.isFor === CalendarSelectionRuleType.upper && this.props.isSelecting === DateLimits.upper)
+                        (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.lower) ||
+                        (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.upper)
                 )
                 .forEach((rule: ICalendarSelectionRule) => {
                     isDatePermitted = rule.test(date);
-                    this.setState({isDatePermitted});
                 });
 
-            if (isDatePermitted && date.getDate()) {
-                this.props.onBlur(date, this.props.upperLimit);
-            }
+            this.setState({isDatePermitted}, () => {
+                if (isDatePermitted && date.getDate()) {
+                    this.props.onBlur(date, this.props.upperLimit);
+                }
+            });
         }
     };
 
