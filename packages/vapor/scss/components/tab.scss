@@ -1,33 +1,31 @@
 .tab-navigation {
-    --color: var(--title-text-color);
-
+    display: flex;
     min-height: $tab-navigation-min-height;
-    padding: 0 $header-padding;
+    padding: 0 32px;
     border-bottom: $default-border;
 
     .tab {
         position: relative;
-        bottom: -1px;
         display: inline-block;
-        padding: $tab-padding;
-        color: var(--color);
-        font-weight: var(--main-font-bolder);
-        font-size: $tab-font-size;
-        line-height: 16px;
-        letter-spacing: 0.3px;
+        height: 44px;
+        margin-left: 0.5rem;
         text-transform: none;
-        border-bottom: $tab-bottom-border-height solid transparent;
-
         cursor: pointer;
-        transition: all 0.2s ease;
 
-        &.active {
-            border-bottom: $tab-bottom-border-height solid var(--digital-blue-60);
+        .tab-icon {
+            @extend .icon;
+            --stroke: var(--grey-100);
+            margin-right: 5px;
         }
 
         &:disabled {
-            --color: var(--deprecated-medium-grey);
+            color: var(--grey-60);
+            cursor: default;
             pointer-events: none;
+
+            .icon {
+                fill: var(--grey-60);
+            }
         }
 
         &:focus-visible {
@@ -35,12 +33,18 @@
         }
     }
 
+    .active-tab-bottom-line {
+        margin-left: 0.5rem;
+        border: solid transparent;
+        border-radius: $tab-bottom-border-height;
+
+        &.active {
+            border: solid var(--digital-blue-60);
+        }
+    }
+
     & > * {
         margin-right: $tab-margin-right;
-
-        &:last-child {
-            margin-right: 0;
-        }
     }
 
     &.sub-tabs {

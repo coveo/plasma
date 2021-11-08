@@ -5,6 +5,7 @@ import {createStructuredSelector} from 'reselect';
 
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
+import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
@@ -15,7 +16,9 @@ export interface ITabOwnProps {
     title: string;
     disabled?: boolean;
     tooltip?: string;
-    children?: React.ReactNode;
+    icon?: string;
+    iconModStroke?: boolean;
+    badge?: React.ReactNode;
     url?: string;
     onSelect?: (e: React.MouseEvent) => void;
 }
@@ -30,8 +33,11 @@ const enhance = connect(
 );
 
 export interface ITabProps extends ITabOwnProps, Partial<ConnectedProps<typeof enhance>> {}
+
 export const Tab: React.FunctionComponent<ITabProps> = ({
-    children,
+    icon,
+    iconModStroke,
+    badge,
     tooltip,
     disabled,
     isActive,
@@ -72,14 +78,23 @@ export const Tab: React.FunctionComponent<ITabProps> = ({
                 className={classNames('tab', {
                     enabled: !disabled,
                     disabled: disabled,
-                    active: isActive,
+                    'body-m': isActive,
+                    'body-m-book': !isActive,
                 })}
                 onClick={handleSelect}
                 disabled={disabled}
             >
-                {children}
+                {icon ? (
+                    <Svg svgName={icon} svgClass={classNames('tab-icon mod-16', {'mod-stroke': iconModStroke})} />
+                ) : null}
                 {title}
+                {badge ?? null}
             </button>
+            <div
+                className={classNames('active-tab-bottom-line', {
+                    active: isActive,
+                })}
+            ></div>
         </Tooltip>
     );
 };
