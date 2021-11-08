@@ -5,7 +5,7 @@ import {createStructuredSelector} from 'reselect';
 
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg} from '../svg';
+import {Svg, SvgNames} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
@@ -16,7 +16,7 @@ export interface ITabOwnProps {
     title: string;
     disabled?: boolean;
     tooltip?: string;
-    icon?: string;
+    icon?: SvgNames;
     iconModStroke?: boolean;
     badge?: React.ReactNode;
     url?: string;
