@@ -17,3 +17,4 @@ export * from './UrlUtils';
 export * from './ValidComponentChildren';
 export * from './PropsToOmitUtils';
 export * from './TypesUtils';
+export * from './RandomUtils';
