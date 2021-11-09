@@ -272,7 +272,7 @@ pipeline {
 
           sh "pnpm install --lockfile-only"
           sh "git add pnpm-lock.yaml"
-          sh "git commit --amend --no-edit"
+          sh "git commit -m \"chore(release): [version bump] - v${NEW_VERSION}\""
           sh "git tag -a -m \"v${NEW_VERSION}\" v${NEW_VERSION}"
           sh "git push -u origin ${env.BRANCH_NAME} --follow-tags --force"
           sh "git reset --hard"
