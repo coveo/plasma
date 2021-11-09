@@ -70,7 +70,7 @@ importers:
       codemirror: 5.63.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1
-      coveo-styleguide: 26.0.0
+      coveo-styleguide: ^27.0.1
       css-loader: 3.6.0
       d3: 3.5.17
       faker: 4.1.0
@@ -90,7 +90,7 @@ importers:
       react-router: 5.2.1
       react-router-dom: 5.3.0
       react-syntax-highlighter: 15.4.4
-      react-vapor: ^24.14.6
+      react-vapor: ^27.0.1
       redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
@@ -112,7 +112,7 @@ importers:
     dependencies:
       classnames: 2.3.1
       codemirror: 5.63.3
-      coveo-styleguide: 26.0.0
+      coveo-styleguide: link:../vapor
       d3: 3.5.17
       faker: 4.1.0
       jquery: 3.6.0
@@ -125,7 +125,7 @@ importers:
       react-router: 5.2.1_react@16.14.0
       react-router-dom: 5.3.0_react@16.14.0
       react-syntax-highlighter: 15.4.4_react@16.14.0
-      react-vapor: 24.37.0_c1a750d61710d9130e0e63969c33e83a
+      react-vapor: link:../react-vapor
       redux: 4.1.2
       redux-devtools-extension: 2.13.9_redux@4.1.2
       redux-promise-middleware: 6.1.2_redux@4.1.2
@@ -226,7 +226,7 @@ importers:
       codecov: 3.8.2
       codemirror: 5.63.3
       concurrently: 5.3.0
-      coveo-styleguide: ^27.0.0
+      coveo-styleguide: ^27.0.1
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
@@ -5610,17 +5610,6 @@ packages:
       jquery: 3.6.0
       underscore: 1.13.1
     dev: true
-
-  /coveo-styleguide/26.0.0:
-    resolution: {integrity: sha512-ocP5fqZAWU52QPerjnXEXVl09RRD1vQTxEdy0PzCw0nrFo8pFNOCmx5iOrGwo99xmADdH2Z1SkezbC2ansAL0Q==}
-    peerDependencies:
-      chosen-npm: ^1.4.2
-      coveo-slider: ^1.0.1
-      materialize-css: ^0.98.2
-    dependencies:
-      codemirror: 5.63.3
-      rc-slider: 8.7.1
-    dev: false
 
   /create-ecdh/4.0.4:
     resolution: {integrity: sha512-mf+TCx8wWc9VpuxfP2ht0iSISLZnt0JgWlrOKZiNqyUZWnjIaCIVNQArMHnCZKfEYRg6IM7A+NeJoN8gf/Ws0A==}
@@ -14315,52 +14304,6 @@ packages:
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
       react-lifecycles-compat: 3.0.4
-    dev: false
-
-  /react-vapor/24.37.0_c1a750d61710d9130e0e63969c33e83a:
-    resolution: {integrity: sha512-3phJESWWsD7BUoK3koNlo2KAVNX6Qpb9/RzvbJBed9qQqKwCO4pUryLSXtskigfxVJ186q4KbJJMKZbwxIG+Zg==}
-    peerDependencies:
-      codemirror: ^5.39.2
-      d3: ^3.5.17
-      jquery: '>= 2.0.0 =< 3'
-      react: ^16.8.0
-      react-dom: ^16.8.0
-      react-redux: ^7.2.4
-      redux: ^4.0.1
-      underscore: ^1.8.3
-      underscore.string: ^3.3.5
-    dependencies:
-      '@types/codemirror': 0.0.109
-      '@types/rc-slider': 8.6.6
-      chosen-js: 1.8.7
-      codemirror: 5.63.3
-      d3: 3.5.17
-      jquery: 3.6.0
-      query-string: 6.14.1
-      rc-slider: 8.7.1
-      rc-tooltip: 3.7.3
-      react: 16.14.0
-      react-bootstrap: 0.33.1_react-dom@16.14.0+react@16.14.0
-      react-codemirror2: 7.2.1_codemirror@5.63.3+react@16.14.0
-      react-color: 2.19.3_react@16.14.0
-      react-diff-viewer: 3.1.1_react-dom@16.14.0+react@16.14.0
-      react-dnd: 2.6.0_react@16.14.0
-      react-dnd-html5-backend: 2.6.0
-      react-dom: 16.14.0_react@16.14.0
-      react-infinite-scroll-component: 4.5.3_react@16.14.0
-      react-modal: 3.14.3_react-dom@16.14.0+react@16.14.0
-      react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      react-tether: 1.0.5_react-dom@16.14.0+react@16.14.0
-      react-textarea-autosize: 8.3.3_5283d3c8d694c64e162d21c7dd1475fb
-      redux: 4.1.2
-      split-on-first: 1.1.0
-      strict-uri-encode: 2.0.0
-      underscore: 1.13.1
-      underscore.string: 3.3.5
-      unidiff: 0.0.4
-    transitivePeerDependencies:
-      - '@types/react'
-      - prop-types
     dev: false
 
   /react/16.14.0:
