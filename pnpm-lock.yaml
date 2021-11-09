@@ -70,7 +70,7 @@ importers:
       codemirror: 5.63.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1
-      coveo-styleguide: 27.0.1
+      coveo-styleguide: ^27.0.2
       css-loader: 3.6.0
       d3: 3.5.17
       faker: 4.1.0
@@ -90,7 +90,7 @@ importers:
       react-router: 5.2.1
       react-router-dom: 5.3.0
       react-syntax-highlighter: 15.4.4
-      react-vapor: 27.0.1
+      react-vapor: ^27.0.2
       redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
@@ -226,7 +226,7 @@ importers:
       codecov: 3.8.2
       codemirror: 5.63.3
       concurrently: 5.3.0
-      coveo-styleguide: 27.0.1
+      coveo-styleguide: ^27.0.2
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
@@ -355,9 +355,9 @@ importers:
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6_4f82faf5e8cab057bc46d4d95079ec42
       escape-string-regexp: 1.0.5
-      eslint-plugin-jest: 24.7.0_typescript@3.8.3
-      eslint-plugin-jest-dom: 3.9.2
-      eslint-plugin-testing-library: 3.10.2_typescript@3.8.3
+      eslint-plugin-jest: 24.7.0_eslint@7.32.0+typescript@3.8.3
+      eslint-plugin-jest-dom: 3.9.2_eslint@7.32.0
+      eslint-plugin-testing-library: 3.10.2_eslint@7.32.0+typescript@3.8.3
       faker: 4.1.0
       fancy-log: 1.3.3
       identity-obj-proxy: 3.0.0
@@ -3064,7 +3064,7 @@ packages:
       - typescript
     dev: true
 
-  /@typescript-eslint/experimental-utils/3.10.1_typescript@3.8.3:
+  /@typescript-eslint/experimental-utils/3.10.1_eslint@7.32.0+typescript@3.8.3:
     resolution: {integrity: sha512-DewqIgscDzmAfd5nOGe4zm6Bl7PKtMG2Ad0KG8CUZAHlXfAKTF9Ol5PXhiMh39yRL2ChRH1cuuUGOcVyyrhQIw==}
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
@@ -3073,6 +3073,7 @@ packages:
       '@types/json-schema': 7.0.7
       '@typescript-eslint/types': 3.10.1
       '@typescript-eslint/typescript-estree': 3.10.1_typescript@3.8.3
+      eslint: 7.32.0
       eslint-scope: 5.1.1
       eslint-utils: 2.1.0
     transitivePeerDependencies:
@@ -3080,7 +3081,7 @@ packages:
       - typescript
     dev: true
 
-  /@typescript-eslint/experimental-utils/4.22.0_typescript@3.8.3:
+  /@typescript-eslint/experimental-utils/4.22.0_eslint@7.32.0+typescript@3.8.3:
     resolution: {integrity: sha512-xJXHHl6TuAxB5AWiVrGhvbGL8/hbiCQ8FiWwObO3r0fnvBdrbWEDy1hlvGQOAWc6qsCWuWMKdVWlLAEMpxnddg==}
     engines: {node: ^10.12.0 || >=12.0.0}
     peerDependencies:
@@ -3090,6 +3091,7 @@ packages:
       '@typescript-eslint/scope-manager': 4.22.0
       '@typescript-eslint/types': 4.22.0
       '@typescript-eslint/typescript-estree': 4.22.0_typescript@3.8.3
+      eslint: 7.32.0
       eslint-scope: 5.1.1
       eslint-utils: 2.1.0
     transitivePeerDependencies:
@@ -6930,7 +6932,7 @@ packages:
       tsconfig-paths: 3.9.0
     dev: true
 
-  /eslint-plugin-jest-dom/3.9.2:
+  /eslint-plugin-jest-dom/3.9.2_eslint@7.32.0:
     resolution: {integrity: sha512-DKNW6nxYkBvwv36WcYFxapCalGjOGSWUu5PREpDVuXGbEns3S5jhr+mZ5W2N6MxbOWw/2U61C1JVLH31gwVjOQ==}
     engines: {node: ^10.12.0 || >=12.0.0, npm: '>=6', yarn: '>=1'}
     peerDependencies:
@@ -6938,10 +6940,11 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.0
       '@testing-library/dom': 7.31.2
+      eslint: 7.32.0
       requireindex: 1.2.0
     dev: true
 
-  /eslint-plugin-jest/24.7.0_typescript@3.8.3:
+  /eslint-plugin-jest/24.7.0_eslint@7.32.0+typescript@3.8.3:
     resolution: {integrity: sha512-wUxdF2bAZiYSKBclsUMrYHH6WxiBreNjyDxbRv345TIvPeoCEgPNEn3Sa+ZrSqsf1Dl9SqqSREXMHExlMMu1DA==}
     engines: {node: '>=10'}
     peerDependencies:
@@ -6951,7 +6954,8 @@ packages:
       '@typescript-eslint/eslint-plugin':
         optional: true
     dependencies:
-      '@typescript-eslint/experimental-utils': 4.22.0_typescript@3.8.3
+      '@typescript-eslint/experimental-utils': 4.22.0_eslint@7.32.0+typescript@3.8.3
+      eslint: 7.32.0
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -7030,13 +7034,14 @@ packages:
       string.prototype.matchall: 4.0.4
     dev: true
 
-  /eslint-plugin-testing-library/3.10.2_typescript@3.8.3:
+  /eslint-plugin-testing-library/3.10.2_eslint@7.32.0+typescript@3.8.3:
     resolution: {integrity: sha512-WAmOCt7EbF1XM8XfbCKAEzAPnShkNSwcIsAD2jHdsMUT9mZJPjLCG7pMzbcC8kK366NOuGip8HKLDC+Xk4yIdA==}
     engines: {node: ^10.12.0 || >=12.0.0, npm: '>=6'}
     peerDependencies:
       eslint: ^5 || ^6 || ^7
     dependencies:
-      '@typescript-eslint/experimental-utils': 3.10.1_typescript@3.8.3
+      '@typescript-eslint/experimental-utils': 3.10.1_eslint@7.32.0+typescript@3.8.3
+      eslint: 7.32.0
     transitivePeerDependencies:
       - supports-color
       - typescript
