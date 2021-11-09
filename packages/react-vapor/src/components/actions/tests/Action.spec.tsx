@@ -33,6 +33,13 @@ describe('Actions', () => {
         expect(component.find('.action-label').prop('data-trigger')).toBe(expectedId);
     });
 
+    it('should add the iconClass of the action on the icon class', () => {
+        const iconClass = 'bloup';
+        const component = shallow(<Action action={{...action, icon: 'link', iconClass}} />);
+
+        expect(component.find(Svg).prop('className')).toContain(iconClass);
+    });
+
     it('should add the name of the action on a data-trigger attribute if the id is not defined', () => {
         const component = shallow(<Action action={action} />);
 
