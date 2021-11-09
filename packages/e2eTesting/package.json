@@ -1,7 +1,7 @@
 {
     "name": "e2etesting",
     "private": true,
-    "version": "27.0.1",
+    "version": "27.0.2",
     "description": "End to end tests for react-vapor",
     "main": "index.js",
     "scripts": {
