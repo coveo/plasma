@@ -1,3 +1,4 @@
+import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -37,6 +38,16 @@ describe('Date picker', () => {
             const onClickProp = setToNowButton.props().onClick;
 
             expect(onClickProp).toBeDefined();
+        });
+
+        it('should display a <Svg /> component', () => {
+            render(<SetToNowButton {...BUTTON_BASIC_PROPS} />);
+
+            expect(
+                screen.getByRole('button', {
+                    name: /settonow icon/i,
+                })
+            ).toBeInTheDocument();
         });
 
         it('should display a <Tooltip /> component', () => {

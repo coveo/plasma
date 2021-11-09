@@ -30,7 +30,6 @@ export class BlankSlate extends React.Component<IBlankSlateProps> {
         classes: [],
         containerClasses: [],
         descriptionClassName: '',
-        svgName: '',
         svgClass: '',
     };
 

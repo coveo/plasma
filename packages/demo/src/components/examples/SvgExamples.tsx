@@ -2,14 +2,14 @@ import * as React from 'react';
 import {useSelector} from 'react-redux';
 import {
     FlatSelectConnected,
+    FlatSelectSelectors,
     IItemBoxProps,
-    Random,
     Section,
     SingleSelectConnected,
+    StringUtils,
     Svg,
     SVG_NAMES,
     SvgNames,
-    FlatSelectSelectors,
 } from 'react-vapor';
 import {IReactVaporExampleState} from 'src/Reducers';
 
@@ -33,11 +33,11 @@ export const SvgExamples: React.FC = () => {
         FlatSelectSelectors.getSelectedOptionId(state, {id: 'font-size-select-id'})
     );
 
-    const selectedSvg = svgName?.selected[0] ?? '';
+    const selectedSvg = svgName?.selected[0];
 
     const defaultItems: IItemBoxProps[] = Object.values(SVG_NAMES).map((name, i) => ({
         value: name,
-        displayValue: Random.separateCamelCase(name),
+        displayValue: StringUtils.separateCamelCase(name),
         selected: i === 0,
     }));
 
