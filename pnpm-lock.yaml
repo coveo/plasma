@@ -112,7 +112,7 @@ importers:
     dependencies:
       classnames: 2.3.1
       codemirror: 5.63.3
-      coveo-styleguide: link:../vapor
+      coveo-styleguide: 25.0.0
       d3: 3.5.17
       faker: 4.1.0
       jquery: 3.6.0
@@ -226,7 +226,7 @@ importers:
       codecov: 3.8.2
       codemirror: 5.63.3
       concurrently: 5.3.0
-      coveo-styleguide: 25.0.0
+      coveo-styleguide: ^26.0.0
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
@@ -5610,6 +5610,17 @@ packages:
       jquery: 3.6.0
       underscore: 1.13.1
     dev: true
+
+  /coveo-styleguide/25.0.0:
+    resolution: {integrity: sha512-d2lj1ZAzFDc6DH9szHngtnLrKf77OVDuwCkLqZtRCSesT3n5UKC9lbNQ/pOsnE0hnEdndRRvg9eOMRVaGNgtbA==}
+    peerDependencies:
+      chosen-npm: ^1.4.2
+      coveo-slider: ^1.0.1
+      materialize-css: ^0.98.2
+    dependencies:
+      codemirror: 5.63.3
+      rc-slider: 8.7.1
+    dev: false
 
   /create-ecdh/4.0.4:
     resolution: {integrity: sha512-mf+TCx8wWc9VpuxfP2ht0iSISLZnt0JgWlrOKZiNqyUZWnjIaCIVNQArMHnCZKfEYRg6IM7A+NeJoN8gf/Ws0A==}
