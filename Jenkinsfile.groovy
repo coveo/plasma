@@ -237,6 +237,7 @@ pipeline {
             --no-push \
             --no-private \
             --no-git-reset \
+            --no-git-tag-version \
             --yes"
           } else if (env.BRANCH_NAME == "next") {
             // next
@@ -251,6 +252,7 @@ pipeline {
             --no-push \
             --no-private \
             --no-git-reset \
+            --no-git-tag-version \
             --yes"
           } else {
             // master
@@ -262,19 +264,20 @@ pipeline {
             --no-push \
             --no-private \
             --no-git-reset \
+            --no-git-tag-version \
             --yes"
           }
-
-          sh "pnpm install --lockfile-only"
-          sh "git add pnpm-lock.yaml"
-          sh "git commit --amend --no-edit"
-          sh "git push -u origin ${env.BRANCH_NAME} --force"
 
           NEW_VERSION = sh(
             script: "node -p -e 'require(`./lerna.json`).version;'",
             returnStdout: true
           ).trim()
 
+          sh "pnpm install --lockfile-only"
+          sh "git add pnpm-lock.yaml"
+          sh "git commit --amend --no-edit"
+          sh "git tag -a -m \"v${NEW_VERSION}\" v${NEW_VERSION}"
+          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags --force"
           sh "git reset --hard"
         }
       }
