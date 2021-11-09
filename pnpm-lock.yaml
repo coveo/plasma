@@ -70,7 +70,7 @@ importers:
       codemirror: 5.63.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1
-      coveo-styleguide: ^24.14.4
+      coveo-styleguide: ^25.0.0
       css-loader: 3.6.0
       d3: 3.5.17
       faker: 4.1.0
@@ -112,7 +112,7 @@ importers:
     dependencies:
       classnames: 2.3.1
       codemirror: 5.63.3
-      coveo-styleguide: 24.37.0
+      coveo-styleguide: link:../vapor
       d3: 3.5.17
       faker: 4.1.0
       jquery: 3.6.0
@@ -5649,17 +5649,6 @@ packages:
       jquery: 3.6.0
       underscore: 1.13.1
     dev: true
-
-  /coveo-styleguide/24.37.0:
-    resolution: {integrity: sha512-uSQSrS3zJChY/XZa/rvCfnkfa+IRjLRNWC2zn/jKcQu7CdIAePuFeLDJPS7YwKmkWxTjc9cW2XwtsRszZFu+CQ==}
-    peerDependencies:
-      chosen-npm: ^1.4.2
-      coveo-slider: ^1.0.1
-      materialize-css: ^0.98.2
-    dependencies:
-      codemirror: 5.63.3
-      rc-slider: 8.7.1
-    dev: false
 
   /create-ecdh/4.0.4:
     resolution: {integrity: sha512-mf+TCx8wWc9VpuxfP2ht0iSISLZnt0JgWlrOKZiNqyUZWnjIaCIVNQArMHnCZKfEYRg6IM7A+NeJoN8gf/Ws0A==}
