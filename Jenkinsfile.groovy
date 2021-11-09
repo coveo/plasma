@@ -235,7 +235,6 @@ pipeline {
             --no-commit-hooks \
             --force-publish \
             --no-push \
-            --no-private \
             --no-git-reset \
             --no-git-tag-version \
             --yes"
@@ -250,7 +249,6 @@ pipeline {
             --no-commit-hooks \
             --force-publish \
             --no-push \
-            --no-private \
             --no-git-reset \
             --no-git-tag-version \
             --yes"
@@ -262,7 +260,6 @@ pipeline {
             --no-commit-hooks \
             --force-publish \
             --no-push \
-            --no-private \
             --no-git-reset \
             --no-git-tag-version \
             --yes"
