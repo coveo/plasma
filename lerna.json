@@ -7,7 +7,8 @@
             "allowBranch": ["master", "next", "release-*"]
         },
         "version": {
-            "conventionalCommits": true
+            "conventionalCommits": true,
+            "message": "chore(release): [version bump] - %s"
         },
         "bootstrap": {
             "hoist": true,

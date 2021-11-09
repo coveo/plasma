@@ -236,7 +236,6 @@ pipeline {
             --force-publish \
             --no-push \
             --no-git-reset \
-            --no-git-tag-version \
             --yes"
           } else if (env.BRANCH_NAME == "next") {
             // next
@@ -250,7 +249,6 @@ pipeline {
             --force-publish \
             --no-push \
             --no-git-reset \
-            --no-git-tag-version \
             --yes"
           } else {
             // master
@@ -261,7 +259,6 @@ pipeline {
             --force-publish \
             --no-push \
             --no-git-reset \
-            --no-git-tag-version \
             --yes"
           }
 
@@ -270,11 +267,12 @@ pipeline {
             returnStdout: true
           ).trim()
 
+          sh "git tag -d v${NEW_VERSION}" // delete tag created by lerna publish
           sh "pnpm install --lockfile-only"
           sh "git add pnpm-lock.yaml"
-          sh "git commit -m \"chore(release): [version bump] - v${NEW_VERSION}\""
-          sh "git tag -a -m \"v${NEW_VERSION}\" v${NEW_VERSION}"
-          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags --force"
+          sh "git commit --amend --no-edit"
+          sh "git tag -a -m \"v${NEW_VERSION}\" v${NEW_VERSION}" // create new tag on the amended commit
+          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags --force" // push everything along with new tag
           sh "git reset --hard"
         }
       }
