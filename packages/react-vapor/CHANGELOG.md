@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [27.0.0](https://github.com/coveo/react-vapor/compare/v24.14.6...v27.0.0) (2021-11-09)
+
+
+### Bug Fixes
+
+* **package:** removed ^ ([a41f5bf](https://github.com/coveo/react-vapor/commit/a41f5bfc10c4a9a363da5325668c6db4c5618478))
+* **unit tests:** broken interface ([0bd8830](https://github.com/coveo/react-vapor/commit/0bd88308005eb01fb039a4039455656cfa32a58d))
+
+
+### Features
+
+* appled review part 2 ([c617f12](https://github.com/coveo/react-vapor/commit/c617f129cdbeb88754f7b201047e08d67e006274))
+* applied review for mod-stroke ([0179f40](https://github.com/coveo/react-vapor/commit/0179f40931b5be08f4764e5c09cbb8abd48dee26))
+* applied review from UX after discussion ([430a24e](https://github.com/coveo/react-vapor/commit/430a24e38026b2c49998ee3843d8a8f1ba2671c0))
+* applied reviews part 1 ([994a39d](https://github.com/coveo/react-vapor/commit/994a39d7cebc909688f3f4ad623ee327793e00ed))
+* refacto + new uts ([7e2121c](https://github.com/coveo/react-vapor/commit/7e2121c31913dcf187c4688c94aa35c189a476aa))
+* refresh the tabs style (wip) ([4f30b06](https://github.com/coveo/react-vapor/commit/4f30b06f6eca3057054b0677be802e3acd8c6c4b))
+* remove useless css + added new examples ([dbae924](https://github.com/coveo/react-vapor/commit/dbae9249f679fd1f2d38f4d30cbbc1f632e9a995))
+* **tab component:** applied new style + added some demo ([4aa7983](https://github.com/coveo/react-vapor/commit/4aa798345bc22327b59291546e4e52a48961c193))
+
+
+### BREAKING CHANGES
+
+* **tab component:** The children props was renamed badge. If you want to add an icon to the tab you now
+need to simply provide an icon name (string) via the new icon prop. You can also add extraClasses for your icons via the new iconExtraClasses prop.
+
+
+
+
+
 # [26.0.0](https://github.com/coveo/react-vapor/compare/v24.14.6...v26.0.0) (2021-11-09)
 
 
