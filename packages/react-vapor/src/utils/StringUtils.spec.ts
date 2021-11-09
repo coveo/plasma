@@ -2,7 +2,7 @@ import {StringUtils} from './StringUtils';
 
 describe('StringUtils', () => {
     describe('separateCamelCase', () => {
-        it('should convert a list os camelCase to normal text', () => {
+        it('should convert a list of camelCase to normal text', () => {
             const strings = [
                 {from: 'camelCase', expected: 'camel case'},
                 {from: 'imTheBatman', expected: 'im the batman'},

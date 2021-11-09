@@ -77,7 +77,7 @@ export const SvgExamples: React.FC = () => {
                 </Section>
             </Section>
             <Section level={2} title="Based on a relative size (eg mod-2x, mod-3x)">
-                <div style={{fontSize: selectedFontSize}} className="flex flex-center">
+                <div style={{fontSize: selectedFontSize}} className="flex flex-center mb5">
                     <Svg svgName={selectedSvg} className="mr1 icon mod-small" />
                     <Svg svgName={selectedSvg} className="mr1 icon mod-warning mod-lg" />
                     <Svg svgName={selectedSvg} className="mr1 icon mod-info mod-2x" />
@@ -87,7 +87,7 @@ export const SvgExamples: React.FC = () => {
                 </div>
             </Section>
             <Section level={2} title="Based on a fixed size (eg mod-10, mod-20)">
-                <div style={{fontSize: selectedFontSize}} className="flex flex-center space-between">
+                <div style={{fontSize: selectedFontSize}} className="flex flex-center space-between mb5">
                     <Svg svgName={selectedSvg} className="icon mod-info mod-10" />
                     <Svg svgName={selectedSvg} className="icon mod-info mod-12" />
                     <Svg svgName={selectedSvg} className="icon documentation-link mod-14" />
