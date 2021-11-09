@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.3](https://github.com/coveo/react-vapor/compare/v27.0.2...v27.0.3) (2021-11-09)
+
+
+### Features
+
+* commits + author to failing master build slackbot notifs ([a8bacf2](https://github.com/coveo/react-vapor/commit/a8bacf29b0805b70dfa45e7813aff59a3b2a67a7))
+
+
+
+
+
 # [27.0.0](https://github.com/coveo/react-vapor/compare/v24.14.6...v27.0.0) (2021-11-09)
 
 
