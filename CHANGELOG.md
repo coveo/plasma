@@ -3,6 +3,30 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.0.0](https://github.com/coveo/react-vapor/compare/v27.0.8...v28.0.0) (2021-11-10)
+
+
+### Bug Fixes
+
+* **package:** update coveo-styleguide ([a84eda7](https://github.com/coveo/react-vapor/commit/a84eda7d21e3127e86bef9c4234968b473d5dc48))
+* **tab:** fixed conflicting type issue ([7b00e10](https://github.com/coveo/react-vapor/commit/7b00e1010d230f9442d08edcbc2e8e58e9c00ad1))
+
+
+### Code Refactoring
+
+* **demo:** fixed breaking changes in demo ([8615626](https://github.com/coveo/react-vapor/commit/86156263793b218bf4d2bcaa628fd4076b21cea8))
+* **react-vapor:** fixed breaking changes in react-vapor ([8b9d4eb](https://github.com/coveo/react-vapor/commit/8b9d4eb68edc5f8e754d20d848a7e01304b5f4c6))
+
+
+### BREAKING CHANGES
+
+* **react-vapor:** any component that passes a string, not an SvgName type, will throw an error
+* **demo:** any component that passes a string, not an SvgName type, will throw an error
+
+
+
+
+
 ## [27.0.8](https://github.com/coveo/react-vapor/compare/v27.0.7...v27.0.8) (2021-11-10)
 
 **Note:** Version bump only for package root
