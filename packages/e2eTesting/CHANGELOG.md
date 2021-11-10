@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [27.0.5](https://github.com/coveo/react-vapor/compare/v27.0.4...v27.0.5) (2021-11-10)
+
+**Note:** Version bump only for package e2etesting
+
+
+
+
+
 ## [27.0.4](https://github.com/coveo/react-vapor/compare/v27.0.3...v27.0.4) (2021-11-10)
 
 **Note:** Version bump only for package e2etesting
