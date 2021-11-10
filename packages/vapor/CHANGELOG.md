@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.3](https://github.com/coveo/react-vapor/compare/v28.0.2...v28.0.3) (2021-11-10)
+
+
+### Bug Fixes
+
+* **textarea:** render disabled textarea as paragraph ([bf3d696](https://github.com/coveo/react-vapor/commit/bf3d696fa9a1bd3d6177344dd32f55fff570b1ca))
+
+
+
+
+
 ## [28.0.2](https://github.com/coveo/react-vapor/compare/v28.0.1...v28.0.2) (2021-11-10)
 
 **Note:** Version bump only for package coveo-styleguide
