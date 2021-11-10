@@ -75,6 +75,10 @@
     white-space: normal;
 }
 
+.preserve-white-space {
+    white-space: pre-wrap;
+}
+
 .smaller {
     font-size: 0.8em;
 }

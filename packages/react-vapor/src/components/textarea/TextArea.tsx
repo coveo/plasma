@@ -2,6 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
+import classNames from 'classnames';
 
 import {IReactVaporState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils';
@@ -106,14 +107,18 @@ export const TextArea: React.FunctionComponent<ITextAreaProps> = ({
 
     return (
         <>
-            <TextareaTagName
-                id={id}
-                {...additionalAttributes}
-                disabled={disabled}
-                className={className}
-                value={value}
-                onChange={handleOnChange}
-            />
+            {disabled ? (
+                <p className={classNames('preserve-white-space', className)}>{value}</p>
+            ) : (
+                <TextareaTagName
+                    id={id}
+                    {...additionalAttributes}
+                    disabled={disabled}
+                    className={className}
+                    value={value}
+                    onChange={handleOnChange}
+                />
+            )}
             {children}
             {getValidationLabel()}
         </>
