@@ -6,5 +6,6 @@
 
 * @coveo/admin-console @coveo/ui-tooling
 
-# Prevent PRs that only modify package.json from notifying everyone
-package.json @ghost
+# Prevent PRs that only modify package versions from notifying everyone
+package.json
+pnpm-lock.yaml

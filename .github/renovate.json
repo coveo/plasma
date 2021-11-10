@@ -6,6 +6,7 @@
     "before 6am every weekday",
     "every weekend"
   ],
+  "updateNotScheduled": false,
   "semanticCommitScope": "deps",
   "commitBody": "UITOOL-284",
   "packageRules": [
