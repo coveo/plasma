@@ -2,10 +2,11 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
-import {Svg} from '../svg/Svg';
+import {Svg} from '../svg';
 import {PaginationSelect} from './PaginationSelect';
 import {PaginationSelectors} from './PaginationSelectors';
 
@@ -113,11 +114,7 @@ class PaginationPagesNumberDisconnected extends React.Component<IPaginationPages
                         data-page={currentPage - 1}
                         onClick={() => this.handlePageClick(currentPage - 1)}
                     >
-                        <Svg
-                            svgName="arrow-left-rounded"
-                            className="pagination-icon"
-                            svgClass="icon icon-small mod-lg"
-                        />
+                        <Svg svgName="arrowLeftRounded" className="pagination-icon" svgClass="icon icon-small mod-lg" />
                         {previousLabel}
                     </a>
                     {pageSelects}
@@ -128,7 +125,7 @@ class PaginationPagesNumberDisconnected extends React.Component<IPaginationPages
                     >
                         {nextLabel}
                         <Svg
-                            svgName="arrow-right-rounded"
+                            svgName="arrowRightRounded"
                             className="pagination-icon"
                             svgClass="icon icon-small mod-lg"
                         />

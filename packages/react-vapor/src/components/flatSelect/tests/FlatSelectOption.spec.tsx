@@ -22,7 +22,7 @@ describe('FlatSelect', () => {
             option: defaultOption,
         };
         const svg: ISvgProps = {
-            svgName: 'domain-google',
+            svgName: 'domainGoogle',
             svgClass: 'icon',
         };
         const content: IContentProps = {content: () => <Svg {...svg} />, classes: ['mr1']};

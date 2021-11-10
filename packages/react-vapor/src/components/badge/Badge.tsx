@@ -1,6 +1,6 @@
 import classNames from 'classnames';
 import * as React from 'react';
-import {Svg} from '../svg';
+import {Svg, SvgNames} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
@@ -12,7 +12,7 @@ interface BadgeWithLabelProps extends BadgeBasicProps {
     label: string;
 }
 interface BadgeWithIconProps extends BadgeBasicProps {
-    icon: string;
+    icon: SvgNames;
 }
 
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);

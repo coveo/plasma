@@ -20,7 +20,7 @@ export const BrowserPreviewError: React.FunctionComponent<BrowserPreviewErrorPro
             'cursor-pointer': onClick,
         })}
     >
-        <Svg svgName="preview-error" className="block" />
+        <Svg svgName="previewError" className="block" />
         <p className="medium-title-text mt2 center bolder">{description ?? 'Unable to show preview'}</p>
         {errorMessage ? <p className="center mt1 browser-preview__state--error">{errorMessage}</p> : null}
     </div>

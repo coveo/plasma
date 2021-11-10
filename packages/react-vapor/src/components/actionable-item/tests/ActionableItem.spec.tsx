@@ -61,7 +61,7 @@ describe('ActionableItem', () => {
                 expect(screen.getByText('hello world')).toBeVisible();
             });
 
-            it('should render the more-append svg in the Drop', () => {
+            it('should render the moreAppend svg in the Drop', () => {
                 shallowWithProps();
 
                 const renderButton: () => React.ReactElement = actionableItem
@@ -69,7 +69,7 @@ describe('ActionableItem', () => {
                     .prop('renderOpenButton') as any;
                 const button = shallow(renderButton());
 
-                expect(button.find(Svg).prop('svgName')).toBe('more-append');
+                expect(button.find(Svg).prop('svgName')).toBe('moreAppend');
             });
 
             it('should not render a Drop if there is no actions', () => {

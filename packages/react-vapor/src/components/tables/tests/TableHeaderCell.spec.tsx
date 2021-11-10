@@ -118,7 +118,7 @@ describe('Tables', () => {
         });
 
         describe('sort icon', () => {
-            const svgProps = {svgName: 'asc-desc', className: 'tables-sort icon'};
+            const svgProps = {svgName: 'ascDesc', className: 'tables-sort icon'};
             const sortDefaultClass = 'admin-sort';
             const sortAscendingClass = 'admin-sort-ascending';
             const sortDescendingClass = 'admin-sort-descending';

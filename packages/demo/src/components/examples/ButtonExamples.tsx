@@ -145,7 +145,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} className="flex" />
+                                        <Svg svgName="chartDown" svgClass={'ml1 icon'} className="flex" />
                                     </>
                                 }
                             >
@@ -160,7 +160,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} className="flex" />
+                                        <Svg svgName="chartDown" svgClass={'ml1 icon'} className="flex" />
                                     </>
                                 }
                                 buttonProps={{
@@ -180,7 +180,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} className="flex" />
+                                        <Svg svgName="chartDown" svgClass={'ml1 icon'} className="flex" />
                                     </>
                                 }
                                 buttonProps={{
@@ -199,7 +199,7 @@ export class ButtonExamples extends React.Component<any, any> {
                                 buttonSvg={
                                     <>
                                         menu
-                                        <Svg svgName={'chart-down'} svgClass={'ml1 icon'} className="flex" />
+                                        <Svg svgName="chartDown" svgClass={'ml1 icon'} className="flex" />
                                     </>
                                 }
                                 buttonProps={{

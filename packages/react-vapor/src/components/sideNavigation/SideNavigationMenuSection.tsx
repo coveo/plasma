@@ -3,12 +3,12 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {Collapsible} from '../collapsible/Collapsible';
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 import {ISideNavigationHeaderProps} from './SideNavigationHeader';
 
 export interface SideNavigationHeaderProps {
     title?: React.ReactNode;
-    svgName?: string;
+    svgName?: SvgNames;
     svgClass?: string;
     customIcon?: React.ReactNode;
     onClick?: (event: React.MouseEvent) => void;

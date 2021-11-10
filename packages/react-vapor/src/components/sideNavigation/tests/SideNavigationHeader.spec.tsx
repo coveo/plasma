@@ -1,7 +1,7 @@
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
-import {Svg} from '../../svg/Svg';
+import {Svg, SvgNames} from '../../svg';
 import {ISideNavigationHeaderProps, SideNavigationHeader} from '../SideNavigationHeader';
 
 describe('SideNavigationHeader', () => {
@@ -23,7 +23,7 @@ describe('SideNavigationHeader', () => {
     });
 
     it('should render an icon if svgTitle prop is specified.', () => {
-        const svgName = 'menu-content';
+        const svgName = 'menu-content' as SvgNames;
         wrapper.setProps({svgName, title});
         wrapper.mount();
 

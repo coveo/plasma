@@ -65,7 +65,7 @@ const WithIconsExmaple: React.FunctionComponent = () => (
                 id="tab14"
                 title="Mr. Mime"
                 tooltip="I have an icon and a badge!"
-                icon={'email'}
+                icon="email"
                 badge={<Badge label="Success" extraClasses={['mod-success mod-small ml1']} />}
             />
         </TabNavigation>

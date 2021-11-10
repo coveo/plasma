@@ -74,7 +74,7 @@ export class TableHeaderCell extends React.Component<ITableHeaderCellProps, any>
         const tableCellHasSort = !_.isUndefined(this.props.sorted) && !!this.props.attributeToSort;
         const sortIcon: JSX.Element = tableCellHasSort ? (
             <div className="admin-sort-icon">
-                <Svg svgName="asc-desc" className="tables-sort icon" />
+                <Svg svgName="ascDesc" className="tables-sort icon" />
             </div>
         ) : null;
 

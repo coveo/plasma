@@ -38,7 +38,7 @@ const generateRows = (allData: IExampleRowData[]) =>
 const tableActions = (username: string) => [
     {
         primary: true,
-        icon: 'edit',
+        icon: 'edit' as const,
         name: 'Edit',
         enabled: true,
         trigger: () => alert(username),

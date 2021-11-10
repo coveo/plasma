@@ -3,9 +3,11 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
+
 import {IReactVaporState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
+import {IActionOptions} from '../../actions/Action';
 import {PrimaryAction} from '../../actions/PrimaryAction';
 import {openDropdownSearch} from '../../dropdownSearch/DropdownSearchActions';
 import {ITableProps, Table} from '../Table';
@@ -117,7 +119,7 @@ describe('<TableConnected />', () => {
             const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true});
             const tableConnected = wrapper.find(Table);
 
-            const actions = [
+            const actions: IActionOptions[] = [
                 {
                     enabled: true,
                     name: 'action1',
@@ -143,7 +145,7 @@ describe('<TableConnected />', () => {
             const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true, rowsMultiSelect: true});
             const tableConnected = wrapper.find(Table);
 
-            const actions = [
+            const actions: IActionOptions[] = [
                 {
                     enabled: true,
                     name: 'action1',
@@ -193,7 +195,7 @@ describe('<TableConnected />', () => {
             const wrapper = mountComponentWithProps({...tablePropsMock, actionBar: true});
             const tableConnected = wrapper.find(Table);
 
-            const actions = [
+            const actions: IActionOptions[] = [
                 {
                     enabled: true,
                     name: 'action1',

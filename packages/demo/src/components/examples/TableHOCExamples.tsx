@@ -6,6 +6,7 @@ import {
     Badge,
     DateUtils,
     filterThrough,
+    IActionOptions,
     IDispatch,
     Section,
     TableHeaderWithSort,
@@ -60,7 +61,7 @@ const twoHundredRowsOfData = generateDataWithFaker(200);
 
 // start-print
 
-const rowActions = [
+const rowActions: IActionOptions[] = [
     {
         primary: true,
         icon: 'edit',

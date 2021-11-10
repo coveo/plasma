@@ -6,7 +6,7 @@ import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
-import {Svg} from '../svg/Svg';
+import {Svg} from '../svg';
 
 export interface IActionableItemProps {
     id: string;
@@ -45,7 +45,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         buttonContainerProps={{className: 'inline-block'}}
                         renderOpenButton={(onClick: () => void) => (
                             <div onClick={onClick} className={dropPodClasses}>
-                                <Svg svgName="more-append" svgClass="icon mod-12 flex" />
+                                <Svg svgName="moreAppend" svgClass="icon mod-12 flex" />
                             </div>
                         )}
                         {...(this.props.dropProps || {})}

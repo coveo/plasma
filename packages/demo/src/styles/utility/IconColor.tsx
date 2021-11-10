@@ -13,8 +13,8 @@ export default () => (
             <Svg svgName="info" className="icon mr1 mod-3x mod-warning" />
             <Svg svgName="info" className="icon mr1 mod-3x mod-success" />
             <Svg svgName="info" className="icon mr1 mod-3x mod-white" style={{backgroundColor: '#8e959d'}} />
-            <Svg svgName="domain-office365" className="icon mr1 mod-3x office365-red" />
-            <Svg svgName="domain-salesforce" className="icon mod-3x salesforce-blue inline-flex" />
+            <Svg svgName="domainOffice365" className="icon mr1 mod-3x office365-red" />
+            <Svg svgName="domainSalesforce" className="icon mod-3x salesforce-blue inline-flex" />
         </Section>
     </VaporComponent>
 );

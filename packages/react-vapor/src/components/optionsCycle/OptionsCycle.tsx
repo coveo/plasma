@@ -1,7 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {Svg} from '../svg/Svg';
+import {Svg} from '../svg';
 
 export interface IOptionsCycleConnectedOwnProps {
     id: string;
@@ -74,7 +74,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
                     onClick={() => this.goToPreviousOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === 0}
                 >
-                    <Svg svgName="arrow-left-rounded" className="icon mod-16" />
+                    <Svg svgName="arrowLeftRounded" className="icon mod-16" />
                 </button>
                 <span className={classNames('options-cycle-option', this.props.buttonClassName)}>
                     {this.props.options[this.props.currentOption]}
@@ -85,7 +85,7 @@ export class OptionsCycle extends React.Component<IOptionsCycleProps> {
                     onClick={() => this.goToNextOption()}
                     disabled={!this.props.wrapAround && this.props.currentOption === this.props.options.length - 1}
                 >
-                    <Svg svgName="arrow-right-rounded" className="icon mod-16" />
+                    <Svg svgName="arrowRightRounded" className="icon mod-16" />
                 </button>
             </div>
         );

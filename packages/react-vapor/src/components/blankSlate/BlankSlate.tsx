@@ -4,7 +4,7 @@ import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
 import {Button} from '../button/Button';
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     title?: React.ReactNode;
@@ -16,7 +16,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     containerClasses?: string[];
     descriptionClassName?: string;
     buttonClasses?: string[];
-    svgName?: string;
+    svgName?: SvgNames;
     svgClass?: string;
 }
 
@@ -30,7 +30,6 @@ export class BlankSlate extends React.Component<IBlankSlateProps> {
         classes: [],
         containerClasses: [],
         descriptionClassName: '',
-        svgName: '',
         svgClass: '',
     };
 

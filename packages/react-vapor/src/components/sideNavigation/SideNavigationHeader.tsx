@@ -1,14 +1,14 @@
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 
 /**
  * @deprecated Use SideNavigationHeaderProps instead
  */
 export interface ISideNavigationHeaderProps {
     title: string;
-    svgName?: string;
+    svgName?: SvgNames;
     svgClass?: string;
     onClick?: () => void;
 }

@@ -118,7 +118,7 @@ export const IsDirtyIndicator: React.FunctionComponent<{id: string; label?: stri
 export const defaultMapStateToProps = () => ({});
 
 export const defaultSvgProps: ISvgProps = {
-    svgName: 'domain-google',
+    svgName: 'domainGoogle',
     svgClass: 'icon mod-2x',
 };
 

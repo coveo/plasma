@@ -5,19 +5,19 @@ import {slugify} from 'underscore.string';
 import {SlideY} from '../../animations';
 import {TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 import {ITooltipProps, Tooltip} from '../tooltip';
 
 export interface IconCardChoice {
     value: string;
     label: string;
-    icon?: string;
+    icon?: SvgNames;
     disabled?: boolean;
 }
 
 export interface IconCardProps {
     title: string;
-    svgName: string;
+    svgName: SvgNames;
     badges?: IBadgeProps[];
     description?: string;
     onClick?: (choice?: string) => void;

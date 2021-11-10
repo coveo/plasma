@@ -4,7 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
 import {IReactVaporState} from '../../ReactVaporState';
-import {Svg} from '../svg/Svg';
+import {Svg, SvgNames} from '../svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {useFixedWidthWhileLoading} from './utils/TableHooks';
@@ -49,10 +49,10 @@ export const TableHeaderWithSort: React.FunctionComponent<
     });
 
     const getSvg = classNames({
-        'sorted-asc': sorted === true,
-        'sorted-desc': sorted === false,
-        'asc-desc': sorted === undefined,
-    });
+        sortedAsc: sorted === true,
+        sortedDesc: sorted === false,
+        ascDesc: sorted === undefined,
+    }) as SvgNames;
 
     if (isLoading) {
         return (

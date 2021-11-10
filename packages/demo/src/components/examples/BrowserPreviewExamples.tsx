@@ -73,7 +73,7 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                         <BrowserPreview>
                             <BrowserPreviewEmpty
                                 onClick={() => alert('Wow!')}
-                                image={<Svg svgName="arrow-top-slim" className="block" />}
+                                image={<Svg svgName="arrowTopSlim" className="block" />}
                             >
                                 <span>Look at this browser-like header!</span>
                             </BrowserPreviewEmpty>
