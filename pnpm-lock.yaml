@@ -70,7 +70,7 @@ importers:
       codemirror: 5.63.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1
-      coveo-styleguide: ^27.0.7
+      coveo-styleguide: ^27.0.8
       css-loader: 3.6.0
       d3: 3.5.17
       faker: 4.1.0
@@ -90,7 +90,7 @@ importers:
       react-router: 5.2.1
       react-router-dom: 5.3.0
       react-syntax-highlighter: 15.4.4
-      react-vapor: ^27.0.7
+      react-vapor: ^27.0.8
       redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
@@ -226,7 +226,7 @@ importers:
       codecov: 3.8.2
       codemirror: 5.63.3
       concurrently: 5.3.0
-      coveo-styleguide: ^27.0.7
+      coveo-styleguide: ^27.0.8
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.5.1
@@ -4054,7 +4054,7 @@ packages:
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5
     transitivePeerDependencies:
       - debug
     dev: true
@@ -4062,7 +4062,7 @@ packages:
   /axios/0.24.0:
     resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
     dependencies:
-      follow-redirects: 1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5
     transitivePeerDependencies:
       - debug
     dev: true
@@ -7806,7 +7806,7 @@ packages:
       readable-stream: 2.3.7
     dev: true
 
-  /follow-redirects/1.14.5_debug@4.3.2:
+  /follow-redirects/1.14.5:
     resolution: {integrity: sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -7814,8 +7814,6 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
-    dependencies:
-      debug: 4.3.2_supports-color@6.1.0
     dev: true
 
   /for-in/1.0.2:
@@ -8976,7 +8974,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
