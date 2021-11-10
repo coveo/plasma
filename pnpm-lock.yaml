@@ -213,7 +213,7 @@ importers:
       '@types/react-modal': 3.8.2
       '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
-      '@types/react-transition-group': 2.0.15
+      '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0
@@ -263,7 +263,7 @@ importers:
       react-redux: 7.2.6
       react-tether: 1.0.5
       react-textarea-autosize: 8.3.3
-      react-transition-group: 2.5.1
+      react-transition-group: 2.9.0
       redux: 4.1.2
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
@@ -336,7 +336,7 @@ importers:
       '@types/react-modal': 3.8.2
       '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
-      '@types/react-transition-group': 2.0.15
+      '@types/react-transition-group': 2.9.2
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
@@ -372,7 +372,7 @@ importers:
       react-dnd-test-backend: 2.5.1_react-dnd@2.6.0
       react-dom: 16.14.0_react@16.14.0
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      react-transition-group: 2.5.1_react-dom@16.14.0+react@16.14.0
+      react-transition-group: 2.9.0_react-dom@16.14.0+react@16.14.0
       redux: 4.1.2
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
@@ -807,6 +807,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       regenerator-runtime: 0.13.7
+    dev: false
 
   /@babel/runtime/7.16.0:
     resolution: {integrity: sha512-Nht8L0O8YCktmsDV6FqFue7vQLRx3Hb0B37lS5y0jDRqRxlBG4wIJHnf9/bgSE2UyipKFA01YtS+npRdTWBUyw==}
@@ -2850,10 +2851,10 @@ packages:
       '@types/react': 17.0.6
     dev: true
 
-  /@types/react-transition-group/2.0.15:
-    resolution: {integrity: sha512-S0QnNzbHoWXDbKBl/xk5dxA4FT+BNlBcI3hku991cl8Cz3ytOkUMcCRtzdX11eb86E131bSsQqy5WrPCdJYblw==}
+  /@types/react-transition-group/2.9.2:
+    resolution: {integrity: sha512-5Fv2DQNO+GpdPZcxp2x/OQG/H19A01WlmpjVD9cKvVFmoVLOZ9LvBgSWG6pSXIU4og5fgbvGPaCV5+VGkWAEHA==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/react/16.9.19:
@@ -6455,7 +6456,7 @@ packages:
   /dom-helpers/3.4.0:
     resolution: {integrity: sha512-LnuPJ+dwqKDIyotW1VzmOZ5TONUN7CwkCR5hrgawTUbkBGYdeoNLZo6nNfGkCrjtE1nXXaj7iMMpDa8/d9WoIA==}
     dependencies:
-      '@babel/runtime': 7.14.6
+      '@babel/runtime': 7.16.0
 
   /dom-serializer/0.1.1:
     resolution: {integrity: sha512-l0IU0pPzLWSHBcieZbpOKgkIn3ts3vAh7ZuFyXNwJxJXk/c4Gwj9xaTJwIDVQCXawWD0qb3IzMGH5rglQaO0XA==}
@@ -14282,20 +14283,6 @@ packages:
       - '@types/react'
     dev: false
 
-  /react-transition-group/2.5.1_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-8x/CxUL9SjYFmUdzsBPTgtKeCxt7QArjNSte0wwiLtF/Ix/o1nWNJooNy5o9XbHIKS31pz7J5VF2l41TwlvbHQ==}
-    peerDependencies:
-      react: '>=15.0.0'
-      react-dom: '>=15.0.0'
-    dependencies:
-      dom-helpers: 3.4.0
-      loose-envify: 1.4.0
-      prop-types: 15.7.2
-      react: 16.14.0
-      react-dom: 16.14.0_react@16.14.0
-      react-lifecycles-compat: 3.0.4
-    dev: true
-
   /react-transition-group/2.9.0_react-dom@16.14.0+react@16.14.0:
     resolution: {integrity: sha512-+HzNTCHpeQyl4MJ/bdE0u6XRMe9+XG/+aL4mCxVN4DnPBQ0/5bfHWPDuOZUzYdMj94daZaZdCCc1Dzt9R/xSSg==}
     peerDependencies:
@@ -14308,7 +14295,6 @@ packages:
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
       react-lifecycles-compat: 3.0.4
-    dev: false
 
   /react/16.14.0:
     resolution: {integrity: sha512-0X2CImDkJGApiAlcf0ODKIneSwBPhqJawOa5wCtKbu7ZECrmS26NvtSILynQ66cgkT/RJ4LidJOc3bUESwmU8g==}
