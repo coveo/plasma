@@ -12,6 +12,7 @@ import * as _ from 'underscore';
 
 import {ExampleComponent} from '../ComponentsInterface';
 import {
+    CALENDAR_ADVANCED_SELECTION_RULES,
     CALENDAR_SELECTION_RULES,
     DATE_RANGE_EXAMPLE,
     FOUR_SELECTION_BOXES,
@@ -53,7 +54,7 @@ const DatePickerComponents: React.FunctionComponent = () => (
                     id="date-picker-dropdown"
                     datesSelectionBoxes={SELECTION_BOXES}
                     selectionRules={CALENDAR_SELECTION_RULES}
-                    initialDateRange={DATE_RANGE_EXAMPLE} // optionnal
+                    initialDateRange={DATE_RANGE_EXAMPLE} // optional
                 />
             </Section>
             <Section level={3} title="DatePicker dropdown with a range limit of 3 days">
@@ -63,6 +64,18 @@ const DatePickerComponents: React.FunctionComponent = () => (
                         _.extend({}, SELECTION_BOXES[0], {rangeLimit: {days: 3, message: 'Date limit exceeded'}}),
                     ]}
                     selectionRules={CALENDAR_SELECTION_RULES}
+                />
+            </Section>
+            <Section
+                level={3}
+                title="DatePicker dropdown that allows a start date within the last two weeks for a maximum range of 7 days"
+            >
+                <DatePickerDropdownConnected
+                    id="date-picker-dropdown-log-browser"
+                    datesSelectionBoxes={[
+                        _.extend({}, SELECTION_BOXES[0], {rangeLimit: {days: 7, message: 'Date limit exceeded'}}),
+                    ]}
+                    selectionRules={CALENDAR_ADVANCED_SELECTION_RULES}
                 />
             </Section>
             <Section level={3} title="DatePicker dropdown with a minimal range limit of 5 minutes">

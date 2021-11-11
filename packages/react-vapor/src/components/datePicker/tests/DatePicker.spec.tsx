@@ -1,8 +1,9 @@
-import moment from 'moment';
 import {mount, ReactWrapper, shallow} from 'enzyme';
+import moment from 'moment';
 import * as React from 'react';
 import * as _ from 'underscore';
 
+import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../../calendar/Calendar';
 import {DateUtils} from '../../../utils/DateUtils';
 import {DatePicker, IDatePickerProps} from '../DatePicker';
 import {DateLimits} from '../DatePickerActions';
@@ -314,6 +315,59 @@ describe('Date picker', () => {
                 datePicker.find('button').simulate('click');
 
                 expect(datePickerInstance['dateInput'].value).toBe(DateUtils.getSimpleDate(expectedDate));
+            });
+
+            it('does not allow setting the date if the date is out of range', () => {
+                const CALENDAR_ADVANCED_SELECTION_RULES: ICalendarSelectionRule[] = [
+                    {
+                        test: (date: Date) => date <= new Date() && date >= moment().subtract(2, 'weeks').toDate(), // is the date within the last two weeks
+                        isFor: CalendarSelectionRuleType.all,
+                    },
+                    {
+                        test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') >= 0, // The end of your selection cannot be before the start of your selection
+                        isFor: CalendarSelectionRuleType.upper,
+                    },
+                    {
+                        test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') <= 7, // You cannot select more than 7 days at a time
+                        isFor: CalendarSelectionRuleType.lower,
+                    },
+                ];
+
+                const onBlurSpy = jest.fn();
+                const newOnChangeSpyProps: IDatePickerProps = {
+                    ...DATE_PICKER_BASIC_PROPS,
+                    onBlur: onBlurSpy,
+                    selectionRules: CALENDAR_ADVANCED_SELECTION_RULES,
+                    isSelecting: DateLimits.lower,
+                };
+
+                datePicker.setProps(newOnChangeSpyProps);
+
+                const setPastDate = (daysAgo: number) => new Date(new Date().setDate(new Date().getDate() - daysAgo));
+
+                datePickerInstance['dateInput'].value = DateUtils.getSimpleDate(setPastDate(20));
+                datePicker.find('input').simulate('blur');
+                expect(onBlurSpy).toHaveBeenCalledTimes(0);
+
+                datePickerInstance['dateInput'].value = DateUtils.getSimpleDate(setPastDate(15));
+                datePicker.find('input').simulate('blur');
+                expect(onBlurSpy).toHaveBeenCalledTimes(0);
+
+                datePickerInstance['dateInput'].value = DateUtils.getSimpleDate(setPastDate(14));
+                datePicker.find('input').simulate('blur');
+                expect(onBlurSpy).toHaveBeenCalledTimes(0);
+
+                datePickerInstance['dateInput'].value = DateUtils.getSimpleDate(setPastDate(13));
+                datePicker.find('input').simulate('blur');
+                expect(onBlurSpy).toHaveBeenCalledTimes(1);
+
+                datePickerInstance['dateInput'].value = DateUtils.getSimpleDate(setPastDate(7));
+                datePicker.find('input').simulate('blur');
+                expect(onBlurSpy).toHaveBeenCalledTimes(2);
+
+                datePickerInstance['dateInput'].value = DateUtils.getSimpleDate(setPastDate(17));
+                datePicker.find('input').simulate('blur');
+                expect(onBlurSpy).toHaveBeenCalledTimes(2);
             });
         });
     });

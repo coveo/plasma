@@ -151,7 +151,9 @@ export class DatePickerBox extends React.Component<IDatePickerBoxProps, any> {
                 upperLimitPlaceholder: this.props.upperLimitPlaceholder,
                 initiallyUnselected: this.props.initiallyUnselected,
                 initialDateRange: this.props.initialDateRange,
+                selectionRules: this.props.selectionRules,
             };
+
             const dateSelection: JSX.Element = this.props.withReduxState ? (
                 <DatesSelectionConnected {...datesSelectionProps} />
             ) : (

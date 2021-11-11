@@ -154,6 +154,21 @@ export const CALENDAR_SELECTION_RULES: ICalendarSelectionRule[] = [
     },
 ];
 
+export const CALENDAR_ADVANCED_SELECTION_RULES: ICalendarSelectionRule[] = [
+    {
+        test: (date: Date) => date <= new Date() && date >= moment().subtract(2, 'weeks').toDate(), // is the date within the last two weeks
+        isFor: CalendarSelectionRuleType.all,
+    },
+    {
+        test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') >= 0, // The end of your selection cannot be before the start of your selection
+        isFor: CalendarSelectionRuleType.upper,
+    },
+    {
+        test: (date: Date, endDate: Date) => moment(endDate).diff(moment(date), 'day') <= 7, // You cannot select more than 7 days at a time
+        isFor: CalendarSelectionRuleType.lower,
+    },
+];
+
 export const SELECTION_BOX: IDatesSelectionBox[] = [
     {
         title: 'Select date',

@@ -7,6 +7,7 @@ import {DateLimits} from './DatePickerActions';
 import {DEFAULT_DATE_PICKER_COLOR} from './DatePickerConstants';
 import {IRangeLimit} from './DatesSelection';
 import {SetToNowButton} from './SetToNowButton';
+import {CalendarSelectionRuleType, ICalendarSelectionRule} from '../calendar';
 
 export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     onBlur: (date: Date, isUpperLimit: boolean) => void;
@@ -20,15 +21,16 @@ export interface IDatePickerProps extends React.ClassAttributes<DatePicker> {
     setToNowTooltip?: string;
     isSelecting?: string;
     color?: string;
+    selectionRules?: ICalendarSelectionRule[];
 }
 
-export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelected: boolean}> {
+export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelected: boolean; isDatePermitted: boolean}> {
     static defaultProps: Partial<IDatePickerProps> = {
         color: DEFAULT_DATE_PICKER_COLOR,
     };
 
     private dateInput: HTMLInputElement;
-    state = {isSelected: false};
+    state = {isSelected: false, isDatePermitted: true};
 
     private getDateFromString(dateValue: string): Date {
         return this.props.withTime
@@ -59,12 +61,31 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
     };
 
     private handleChangeDate = () => {
+        if (!moment(this.dateInput.value).isValid()) {
+            return;
+        }
+
         if (this.dateInput.value !== '') {
             const date: Date = this.getDateFromString(this.dateInput.value);
+            // setting isDatePermitted as let and in component state, since setState is async and triggers rerender of component
+            // and we need the value immediately to decide whether to to call props.onBlur
+            let isDatePermitted = true;
 
-            if (date.getDate()) {
-                this.props.onBlur(date, this.props.upperLimit);
-            }
+            this.props.selectionRules
+                ?.filter(
+                    (rule: ICalendarSelectionRule) =>
+                        (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.lower) ||
+                        (rule.isFor === CalendarSelectionRuleType.all && this.props.isSelecting === DateLimits.upper)
+                )
+                .forEach((rule: ICalendarSelectionRule) => {
+                    isDatePermitted = rule.test(date);
+                });
+
+            this.setState({isDatePermitted}, () => {
+                if (isDatePermitted && date.getDate()) {
+                    this.props.onBlur(date, this.props.upperLimit);
+                }
+            });
         }
     };
 
@@ -85,7 +106,12 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
         const isSelected =
             (this.props.isSelecting === DateLimits.upper && this.props.upperLimit) ||
             (this.props.isSelecting === DateLimits.lower && !this.props.upperLimit);
-        this.setState({isSelected});
+
+        // Setting invalid state in componentDidUpdate triggers props.onBlur which causes infinie loop.
+        // Wrapping setState in condition to check the date is within the allowed range fixes this.
+        if (this.state.isDatePermitted) {
+            this.setState({isSelected});
+        }
     }
 
     render() {
@@ -96,6 +122,7 @@ export class DatePicker extends React.PureComponent<IDatePickerProps, {isSelecte
         const inputClasses = classNames({
             'picking-date': this.state.isSelected,
             'date-picked': !this.state.isSelected && !!this.props.date,
+            invalid: !this.state.isDatePermitted,
         });
 
         return (

@@ -1,5 +1,7 @@
 import * as React from 'react';
+
 import {DATES_SEPARATOR, DateUtils} from '../../utils/DateUtils';
+import {ICalendarSelectionRule} from '../calendar/Calendar';
 import {DatePicker, IDatePickerProps} from './DatePicker';
 import {DatePickerDateRange} from './DatePickerConstants';
 
@@ -27,6 +29,7 @@ export interface IDatesSelectionOwnProps extends React.ClassAttributes<DatesSele
     upperLimitPlaceholder?: string;
     initiallyUnselected?: boolean;
     initialDateRange?: DatePickerDateRange;
+    selectionRules?: ICalendarSelectionRule[];
 }
 
 export interface IDatesSelectionStateProps {
@@ -120,6 +123,7 @@ export class DatesSelection extends React.Component<IDatesSelectionProps, any> {
         const isLarge = this.props.withTime || (this.props.isRange && this.props.hasSetToNowButton);
         const wrapperClasses: string = !isSmallSplit || isLarge ? '' : 'mod-inline flex';
         const datePickerProps: IDatePickerProps = {
+            selectionRules: this.props.selectionRules,
             withTime: this.props.withTime,
             hasSetToNowButton: this.props.hasSetToNowButton,
             setToNowTooltip: this.props.setToNowTooltip,
