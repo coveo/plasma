@@ -31,6 +31,7 @@ describe('MultiSelectWithPredicate', () => {
         render(<MultiSelectWithPredicate {...basicProps} items={items} />, {});
         // open the dropdown
         userEvent.click(screen.getByRole('button', {name: /select an option/i}));
+        userEvent.click(screen.getByText(/all/i));
 
         expect(
             screen.getByRole('option', {
