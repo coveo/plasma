@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.0.7](https://github.com/coveo/react-vapor/compare/v28.0.6...v28.0.7) (2021-11-11)
+
+
+### Bug Fixes
+
+* **datepicker:** added valid date check ([b5425ce](https://github.com/coveo/react-vapor/commit/b5425ce717c074db3aab784244761f948f8a96a9))
+* **datepicker:** applied reviews ([f5d449f](https://github.com/coveo/react-vapor/commit/f5d449f40fce981bf166fe9cdf2c1742f603ee6a))
+
+
+
+
+
 ## [28.0.6](https://github.com/coveo/react-vapor/compare/v28.0.5...v28.0.6) (2021-11-11)
 
 **Note:** Version bump only for package react-vapor
