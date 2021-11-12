@@ -43,10 +43,7 @@ Changes made to any source files in any package will make the demo rebuild and r
 
 All new unit tests for components should be written using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/), and not Enzyme which is being phased out.
 
-There are two packages that are tested:
-
-- `packages/react-vapor`: this is the source of all components so tests are critical here
-- `packages/e2eTesting`: Cypress E2E tests, which is relatively new
+Tests are critical in `packages/react-vapor` as this is the source of all components
 
 To run all tests from the root, you can run `pnpm test`
 
