@@ -273,7 +273,7 @@ importers:
       rimraf: 3.0.2
       rollup: 2.59.0
       rollup-plugin-external-globals: 0.6.1
-      rollup-plugin-postcss: 2.5.0
+      rollup-plugin-postcss: 2.9.0
       rollup-plugin-sass-variables: 0.1.1
       rollup-plugin-terser: 7.0.2
       snyk: 1.749.0
@@ -382,7 +382,7 @@ importers:
       rimraf: 3.0.2
       rollup: 2.59.0
       rollup-plugin-external-globals: 0.6.1_rollup@2.59.0
-      rollup-plugin-postcss: 2.5.0
+      rollup-plugin-postcss: 2.9.0
       rollup-plugin-sass-variables: 0.1.1
       rollup-plugin-terser: 7.0.2_rollup@2.59.0
       snyk: 1.749.0
@@ -1211,7 +1211,7 @@ packages:
       micromatch: 4.0.4
       rimraf: 3.0.2
       slash: 3.0.0
-      strip-ansi: 6.0.0
+      strip-ansi: 6.0.1
     transitivePeerDependencies:
       - bufferutil
       - canvas
@@ -3599,11 +3599,6 @@ packages:
   /ansi-regex/4.1.0:
     resolution: {integrity: sha512-1apePfXM1UOSqw0o9IiFAovVz9M5S1Dg+4TrDwfMewQ6p/rmMueb7tWZjQ1rx4Loy1ArBggoqGpfqqdI4rondg==}
     engines: {node: '>=6'}
-    dev: true
-
-  /ansi-regex/5.0.0:
-    resolution: {integrity: sha512-bY6fj56OUQ0hU1KjFNDQuJFezqKdrAyFdIevADiqrWHwSlbmBNMHp5ak2f40Pm8JTFyM2mqxkG6ngkHO11f/lg==}
-    engines: {node: '>=8'}
     dev: true
 
   /ansi-regex/5.0.1:
@@ -9095,6 +9090,13 @@ packages:
       import-from: 2.1.0
     dev: true
 
+  /import-cwd/3.0.0:
+    resolution: {integrity: sha512-4pnzH16plW+hgvRECbDWpQl3cqtvSofHWh44met7ESfZ8UZOWWddm8hEyDTqREJ9RbYHY8gi8DqmaelApoOGMg==}
+    engines: {node: '>=8'}
+    dependencies:
+      import-from: 3.0.0
+    dev: true
+
   /import-fresh/2.0.0:
     resolution: {integrity: sha1-2BNVwVYS04bGH53dOSLUMEgipUY=}
     engines: {node: '>=4'}
@@ -9115,6 +9117,13 @@ packages:
     engines: {node: '>=4'}
     dependencies:
       resolve-from: 3.0.0
+    dev: true
+
+  /import-from/3.0.0:
+    resolution: {integrity: sha512-CiuXOFFSzkU5x/CR0+z7T91Iht4CXgfCxVOFRhh2Zyhg5wOpWvvDLQUsWl+gcN+QscYBjez8hDCt85O7RLDttQ==}
+    engines: {node: '>=8'}
+    dependencies:
+      resolve-from: 5.0.0
     dev: true
 
   /import-lazy/3.1.0:
@@ -12585,11 +12594,6 @@ packages:
     engines: {node: '>=8'}
     dev: true
 
-  /p-queue/2.4.2:
-    resolution: {integrity: sha512-n8/y+yDJwBjoLQe1GSJbbaYQLTI7QHNZI2+rpmCDbe++WLf9HC3gf6iqj5yfPAV71W4UF3ql5W1+UBPXoXTxng==}
-    engines: {node: '>=4'}
-    dev: true
-
   /p-queue/6.6.2:
     resolution: {integrity: sha512-RwFpb72c/BhQLEXIZ5K2e+AhgNVmIejGlTgiB9MzZ0e93GRvqZ7uSi0dvRF7/XIXDeNkra2fNHBxTyPDGySpjQ==}
     engines: {node: '>=8'}
@@ -13281,8 +13285,8 @@ packages:
       postcss: 7.0.36
     dev: true
 
-  /postcss-modules/1.5.0:
-    resolution: {integrity: sha512-KiAihzcV0TxTTNA5OXreyIXctuHOfR50WIhqBpc8pe0Q5dcs/Uap9EVlifOI9am7zGGdGOJQ6B1MPYKo2UxgOg==}
+  /postcss-modules/2.0.0:
+    resolution: {integrity: sha512-eqp+Bva+U2cwQO7dECJ8/V+X+uH1HduNeITB0CPPFAu6d/8LKQ32/j+p9rQ2YL1QytVcrNU0X+fBqgGmQIA1Rw==}
     dependencies:
       css-modules-loader-core: 1.1.0
       generic-names: 2.0.1
@@ -13590,7 +13594,7 @@ packages:
     engines: {node: '>= 10'}
     dependencies:
       '@jest/types': 26.6.2
-      ansi-regex: 5.0.0
+      ansi-regex: 5.0.1
       ansi-styles: 4.3.0
       react-is: 17.0.2
     dev: true
@@ -15006,23 +15010,23 @@ packages:
       rollup: 2.59.0
     dev: true
 
-  /rollup-plugin-postcss/2.5.0:
-    resolution: {integrity: sha512-tBba0iMOY+eH1bP2rUhO/WK45uTRdRbuM5yWViO7tUChUrgA+JSQJscpCpStebPZoFxRwfkJRk2PZHd1q+JY2A==}
-    engines: {node: '>=6'}
+  /rollup-plugin-postcss/2.9.0:
+    resolution: {integrity: sha512-Y7qDwlqjZMBexbB1kRJf+jKIQL8HR6C+ay53YzN+nNJ64hn1PNZfBE3c61hFUhD//zrMwmm7uBW30RuTi+CD0w==}
+    engines: {node: '>=10'}
     dependencies:
-      chalk: 2.4.2
+      chalk: 4.1.1
       concat-with-sourcemaps: 1.1.0
       cssnano: 4.1.11
-      import-cwd: 2.1.0
-      p-queue: 2.4.2
-      pify: 3.0.0
-      postcss: 7.0.35
+      import-cwd: 3.0.0
+      p-queue: 6.6.2
+      pify: 5.0.0
+      postcss: 7.0.36
       postcss-load-config: 2.1.2
-      postcss-modules: 1.5.0
+      postcss-modules: 2.0.0
       promise.series: 0.2.0
       resolve: 1.20.0
       rollup-pluginutils: 2.8.2
-      safe-identifier: 0.3.1
+      safe-identifier: 0.4.2
       style-inject: 0.3.0
     dev: true
 
@@ -15099,8 +15103,8 @@ packages:
     resolution: {integrity: sha512-rp3So07KcdmmKbGvgaNxQSJr7bGVSVk5S9Eq1F+ppbRo70+YeaDxkw5Dd8NPN+GD6bjnYm2VuPuCXmpuYvmCXQ==}
     dev: true
 
-  /safe-identifier/0.3.1:
-    resolution: {integrity: sha512-+vr9lVsmciuoP1fz8w30qDcohwH2S/tb5dPGQ8zHmG9jQf7YHU2fIKGxxcDpeY38J0Dep+DdPMz8FszVZT0Mbw==}
+  /safe-identifier/0.4.2:
+    resolution: {integrity: sha512-6pNbSMW6OhAi9j+N8V+U715yBQsaWJ7eyEUaOrawX+isg5ZxhUlV1NipNtgaKHmFGiABwt+ZF04Ii+3Xjkg+8w==}
     dev: true
 
   /safe-regex/1.1.0:
@@ -15898,7 +15902,7 @@ packages:
     engines: {node: '>=10'}
     dependencies:
       char-regex: 1.0.2
-      strip-ansi: 6.0.0
+      strip-ansi: 6.0.1
     dev: true
 
   /string-width/1.0.2:
