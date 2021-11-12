@@ -43,12 +43,9 @@
         "start": "pnpm build --stream --filter coveo-styleguide && pnpm -r start --parallel --filter coveo-styleguide --filter react-vapor-demo",
         "test": "pnpm -r test --parallel",
         "clean": "pnpm -r clean --parallel",
-        "e2e:open": "pnpm -r e2e:open --stream",
-        "e2e:run": "pnpm -r e2e:run --stream",
         "build": "pnpm -r build --stream",
         "lintfix": "pnpm -r lintfix --parallel",
         "commit-cli": "cz",
-        "open-cypress": "npx cypress open --project ./packages/e2eTesting",
         "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
     },
     "config": {
