@@ -89,7 +89,7 @@ importers:
       react-redux: 7.2.6
       react-router: 5.2.1
       react-router-dom: 5.3.0
-      react-syntax-highlighter: 15.4.4
+      react-syntax-highlighter: 15.4.5
       react-vapor: ^28.0.11
       redux: 4.1.2
       redux-devtools-extension: 2.13.9
@@ -124,7 +124,7 @@ importers:
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-router: 5.2.1_react@16.14.0
       react-router-dom: 5.3.0_react@16.14.0
-      react-syntax-highlighter: 15.4.4_react@16.14.0
+      react-syntax-highlighter: 15.4.5_react@16.14.0
       react-vapor: link:../react-vapor
       redux: 4.1.2
       redux-devtools-extension: 2.13.9_redux@4.1.2
@@ -13282,6 +13282,10 @@ packages:
       clipboard: 2.0.8
     dev: false
 
+  /prismjs/1.25.0:
+    resolution: {integrity: sha512-WCjJHl1KEWbnkQom1+SzftbtXMKQoezOCYs5rECqMN+jP+apI7ftoflyqigqzopSO3hMhTEb0mFClA8lkolgEg==}
+    dev: false
+
   /process-nextick-args/2.0.1:
     resolution: {integrity: sha512-3ouUOpQhtgrbOa17J7+uxOTpITYWaGP7/AhoR3+A+/1e9skrzelGi/dXzEYyvbxubEF6Wn2ypscTKiKJFFn1ag==}
     dev: true
@@ -13877,15 +13881,15 @@ packages:
       tiny-warning: 1.0.3
     dev: false
 
-  /react-syntax-highlighter/15.4.4_react@16.14.0:
-    resolution: {integrity: sha512-PsOFHNTzkb3OroXdoR897eKN5EZ6grht1iM+f1lJSq7/L0YVnkJaNVwC3wEUYPOAmeyl5xyer1DjL6MrumO6Zw==}
+  /react-syntax-highlighter/15.4.5_react@16.14.0:
+    resolution: {integrity: sha512-RC90KQTxZ/b7+9iE6s9nmiFLFjWswUcfULi4GwVzdFVKVMQySkJWBuOmJFfjwjMVCo0IUUuJrWebNKyviKpwLQ==}
     peerDependencies:
       react: '>= 0.14.0'
     dependencies:
-      '@babel/runtime': 7.14.6
+      '@babel/runtime': 7.16.0
       highlight.js: 10.7.2
       lowlight: 1.20.0
-      prismjs: 1.23.0
+      prismjs: 1.25.0
       react: 16.14.0
       refractor: 3.3.1
     dev: false
