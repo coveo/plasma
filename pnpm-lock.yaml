@@ -97,7 +97,7 @@ importers:
       redux-thunk: 2.4.0
       reselect: 4.1.2
       rimraf: 3.0.2
-      sass: 1.25.0
+      sass: 1.43.4
       sass-loader: 10.1.0
       snyk: 1.749.0
       source-map-loader: 1.1.3
@@ -158,8 +158,8 @@ importers:
       node-sass: 5.0.0
       raw-loader: 4.0.2_webpack@4.41.6
       rimraf: 3.0.2
-      sass: 1.25.0
-      sass-loader: 10.1.0_e1d2096bd0ea1b2c89b9c51b472e13b5
+      sass: 1.43.4
+      sass-loader: 10.1.0_3892402627d0261a426ed1f9db08ea41
       snyk: 1.749.0
       source-map-loader: 1.1.3_webpack@4.41.6
       style-loader: 1.1.3_webpack@4.41.6
@@ -14782,7 +14782,7 @@ packages:
       yargs: 13.3.2
     dev: true
 
-  /sass-loader/10.1.0_e1d2096bd0ea1b2c89b9c51b472e13b5:
+  /sass-loader/10.1.0_3892402627d0261a426ed1f9db08ea41:
     resolution: {integrity: sha512-ZCKAlczLBbFd3aGAhowpYEy69Te3Z68cg8bnHHl6WnSCvnKpbM6pQrz957HWMa8LKVuhnD9uMplmMAHwGQtHeg==}
     engines: {node: '>= 10.13.0'}
     peerDependencies:
@@ -14802,7 +14802,7 @@ packages:
       loader-utils: 2.0.0
       neo-async: 2.6.2
       node-sass: 5.0.0
-      sass: 1.25.0
+      sass: 1.43.4
       schema-utils: 3.0.0
       semver: 7.3.5
       webpack: 4.41.6
@@ -14833,8 +14833,8 @@ packages:
       webpack: 4.41.6
     dev: true
 
-  /sass/1.25.0:
-    resolution: {integrity: sha512-uQMjye0Y70SEDGO56n0j91tauqS9E1BmpKHtiYNQScXDHeaE9uHwNEqQNFf4Bes/3DHMNinB6u79JsG10XWNyw==}
+  /sass/1.43.4:
+    resolution: {integrity: sha512-/ptG7KE9lxpGSYiXn7Ar+lKOv37xfWsZRtFYal2QHNigyVQDx685VFT/h7ejVr+R8w7H4tmUgtulsKl5YpveOg==}
     engines: {node: '>=8.9.0'}
     hasBin: true
     dependencies:
