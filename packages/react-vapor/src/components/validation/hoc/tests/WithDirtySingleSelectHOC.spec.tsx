@@ -1,10 +1,9 @@
-import {render, screen, waitFor} from '@test-utils';
-import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import {IsDirtyIndicator} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
-import {IWithDirtySingleSelectHOCProps, withDirtySingleSelectHOC} from '../WithDirtySingleSelectHOC';
+import {withDirtySingleSelectHOC, IWithDirtySingleSelectHOCProps} from '../WithDirtySingleSelectHOC';
 
 describe('SingleSelectWithDirty', () => {
     const SingleSelectWithHOC = withDirtySingleSelectHOC(SingleSelectConnected);
@@ -47,16 +46,12 @@ describe('SingleSelectWithDirty', () => {
 
         userEvent.click(screen.getByRole('button'));
 
-        userEvent.click(
-            screen.getByRole('option', {
-                name: /new value/i,
-            })
-        );
+        userEvent.click(screen.getByText('new value'));
 
-        expect(screen.getByText(/is dirty/i)).toBeVisible();
+        expect(screen.getByText('is dirty')).toBeVisible();
     });
 
-    it('should trigger the dirty state when the user selects a different value', async () => {
+    it('should trigger the dirty state when the user selects a different value', () => {
         render(
             <>
                 <SingleSelectWithHOC
@@ -70,21 +65,7 @@ describe('SingleSelectWithDirty', () => {
 
         userEvent.click(screen.getByRole('button'));
 
-        userEvent.click(
-            screen.getByRole('option', {
-                name: /new value/i,
-            })
-        );
-
-        userEvent.click(screen.getByRole('button'));
-
-        userEvent.click(
-            screen.getByRole('option', {
-                name: /old value/i,
-            })
-        );
-
-        await waitFor(() => screen.findByText('is dirty'));
+        userEvent.click(screen.getByText('new value'));
 
         expect(screen.getByText('is dirty')).toBeVisible();
     });
