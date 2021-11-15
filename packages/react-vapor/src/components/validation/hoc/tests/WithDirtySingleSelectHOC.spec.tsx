@@ -1,9 +1,10 @@
-import * as React from 'react';
-import {render, screen} from '@test-utils';
+import {render, screen, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
+import * as React from 'react';
+
 import {IsDirtyIndicator} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
-import {withDirtySingleSelectHOC, IWithDirtySingleSelectHOCProps} from '../WithDirtySingleSelectHOC';
+import {IWithDirtySingleSelectHOCProps, withDirtySingleSelectHOC} from '../WithDirtySingleSelectHOC';
 
 describe('SingleSelectWithDirty', () => {
     const SingleSelectWithHOC = withDirtySingleSelectHOC(SingleSelectConnected);
@@ -55,7 +56,7 @@ describe('SingleSelectWithDirty', () => {
         expect(screen.getByText(/is dirty/i)).toBeVisible();
     });
 
-    it('should trigger the dirty state when the user selects a different value', () => {
+    it('should trigger the dirty state when the user selects a different value', async () => {
         render(
             <>
                 <SingleSelectWithHOC
@@ -82,6 +83,8 @@ describe('SingleSelectWithDirty', () => {
                 name: /old value/i,
             })
         );
+
+        await waitFor(() => screen.findByText('is dirty'));
 
         expect(screen.getByText('is dirty')).toBeVisible();
     });
