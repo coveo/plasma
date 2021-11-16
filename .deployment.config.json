@@ -31,7 +31,7 @@
         {
             "id": "deploy-minified-files",
             "s3": {
-                "disable": true,
+                "disabled": true,
                 "bucket": "coveo-nrd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
@@ -41,14 +41,14 @@
                 },
                 "source": "packages/demo/dist",
                 "rd": {
-                    "disable": false
+                    "disabled": false
                 }
             }
         },
         {
             "id": "deploy-non-minified-files",
             "s3": {
-                "disable": true,
+                "disabled": true,
                 "bucket": "coveo-nrd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
@@ -57,14 +57,14 @@
                 },
                 "source": "packages/demo/dist",
                 "rd": {
-                    "disable": false
+                    "disabled": false
                 }
             }
         },
         {
             "id": "deploy-styleguide-minified-files",
             "s3": {
-                "disable": true,
+                "disabled": true,
                 "bucket": "coveo-public-content",
                 "directory": "styleguide/v$[VERSION]",
                 "parameters": {
@@ -82,7 +82,7 @@
         {
             "id": "deploy-styleguide-non-minified-files",
             "s3": {
-                "disable": true,
+                "disabled": true,
                 "bucket": "coveo-public-content",
                 "directory": "styleguide/v$[VERSION]",
                 "parameters": {
