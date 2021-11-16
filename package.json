@@ -5,7 +5,7 @@
         "@commitlint/cli": "14.1.0",
         "@commitlint/config-conventional": "14.1.0",
         "@sindresorhus/slugify": "0.11.0",
-        "aws-sdk": "2.1028.0",
+        "aws-sdk": "2.1029.0",
         "axios": "0.24.0",
         "commitizen": "4.2.4",
         "cz-conventional-changelog": "3.3.0",
