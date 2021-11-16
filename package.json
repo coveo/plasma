@@ -14,7 +14,7 @@
         "lerna": "4.0.0",
         "mime-types": "2.1.34",
         "prettier": "2.0.5",
-        "stylelint": "13.6.1",
+        "stylelint": "13.13.1",
         "tsjs": "3.0.2",
         "underscore": "1.13.1",
         "walkdir": "0.4.1"
