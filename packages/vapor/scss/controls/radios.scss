@@ -139,7 +139,7 @@ $labelIndent: $radio-button-size + $radio-button-option-height;
         transform: none;
         cursor: not-allowed !important;
 
-        *:not(a) {
+        *:not(a):not(.enabled *) {
             color: var(--grey-60);
         }
     }
