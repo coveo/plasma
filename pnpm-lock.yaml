@@ -219,7 +219,7 @@ importers:
       coveo-styleguide: ^28.0.19
       d3: 3.5.17
       del: 5.1.0
-      dnd-core: 2.5.1
+      dnd-core: 2.6.0
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6
       escape-string-regexp: 1.0.5
@@ -246,7 +246,7 @@ importers:
       react-diff-viewer: ^3.1.1
       react-dnd: 2.6.0
       react-dnd-html5-backend: 2.6.0
-      react-dnd-test-backend: 2.5.1
+      react-dnd-test-backend: 2.6.0
       react-dom: 16.14.0
       react-infinite-scroll-component: 4.5.3
       react-modal: 3.14.3
@@ -341,7 +341,7 @@ importers:
       coveo-styleguide: link:../vapor
       d3: 3.5.17
       del: 5.1.0
-      dnd-core: 2.5.1
+      dnd-core: 2.6.0
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6_4f82faf5e8cab057bc46d4d95079ec42
       escape-string-regexp: 1.0.5
@@ -359,7 +359,7 @@ importers:
       moment: 2.29.1
       node-sass: 5.0.0
       react: 16.14.0
-      react-dnd-test-backend: 2.5.1_react-dnd@2.6.0
+      react-dnd-test-backend: 2.6.0_react-dnd@2.6.0
       react-dom: 16.14.0_react@16.14.0
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-transition-group: 2.9.0_react-dom@16.14.0+react@16.14.0
@@ -6190,15 +6190,6 @@ packages:
     resolution: {integrity: sha1-NsamdEdfVaLWkTVnpgFETkh7S24=}
     dev: false
 
-  /dnd-core/2.5.1:
-    resolution: {integrity: sha1-F49a1lJs4C3VlQjxFVNfe/wM6U4=}
-    dependencies:
-      asap: 2.0.6
-      invariant: 2.2.4
-      lodash: 4.17.21
-      redux: 3.7.2
-    dev: true
-
   /dnd-core/2.6.0:
     resolution: {integrity: sha1-ErrWbVh0LG5ffPKUP7aFlED4CcQ=}
     dependencies:
@@ -6206,7 +6197,6 @@ packages:
       invariant: 2.2.4
       lodash: 4.17.21
       redux: 3.7.2
-    dev: false
 
   /dns-equal/1.0.0:
     resolution: {integrity: sha1-s55/HabrCnW6nBcySzR1PEfgZU0=}
@@ -13706,12 +13696,12 @@ packages:
       lodash: 4.17.21
     dev: false
 
-  /react-dnd-test-backend/2.5.1_react-dnd@2.6.0:
-    resolution: {integrity: sha1-+6jEzYgKmzfIWQfzNxI4MZ1HQ9Q=}
+  /react-dnd-test-backend/2.6.0_react-dnd@2.6.0:
+    resolution: {integrity: sha1-PXivaAXgcwoBnGt++cgetvmzueM=}
     peerDependencies:
       react-dnd: ^2.2.0
     dependencies:
-      dnd-core: 2.5.1
+      dnd-core: 2.6.0
       react-dnd: 2.6.0_react@16.14.0
     dev: true
 
