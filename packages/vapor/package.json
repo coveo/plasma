@@ -31,7 +31,7 @@
         "materialize-css": "^0.98.2"
     },
     "devDependencies": {
-        "ansi-colors": "3.2.4",
+        "ansi-colors": "4.1.1",
         "autosize": "3.0.21",
         "chosen-npm": "1.4.2",
         "concurrently": "5.3.0",

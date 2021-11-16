@@ -209,7 +209,7 @@ importers:
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
-      ansi-colors: 3.2.4
+      ansi-colors: 4.1.1
       autoprefixer: 9.8.8
       chosen-js: 1.8.7
       classnames: 2.3.1
@@ -332,7 +332,7 @@ importers:
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
       '@types/underscore.string': 0.0.38
-      ansi-colors: 3.2.4
+      ansi-colors: 4.1.1
       autoprefixer: 9.8.8
       classnames: 2.3.1
       codecov: 3.8.2
@@ -410,7 +410,7 @@ importers:
 
   packages/vapor:
     specifiers:
-      ansi-colors: 3.2.4
+      ansi-colors: 4.1.1
       autosize: 3.0.21
       chosen-npm: 1.4.2
       codemirror: ^5.59.4
@@ -451,7 +451,7 @@ importers:
       codemirror: 5.60.0
       rc-slider: 8.7.1
     devDependencies:
-      ansi-colors: 3.2.4
+      ansi-colors: 4.1.1
       autosize: 3.0.21
       chosen-npm: 1.4.2
       concurrently: 5.3.0
@@ -3990,7 +3990,7 @@ packages:
   /axios/0.21.4:
     resolution: {integrity: sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==}
     dependencies:
-      follow-redirects: 1.14.5
+      follow-redirects: 1.14.5_debug@4.3.2
     transitivePeerDependencies:
       - debug
     dev: true
@@ -3998,7 +3998,7 @@ packages:
   /axios/0.24.0:
     resolution: {integrity: sha512-Q6cWsys88HoPgAaFAVUb0WpPk0O8iTeisR9IMqy9G8AbO4NlpVknrnQS03zzF9PGAWgO3cgletO3VjV/P7VztA==}
     dependencies:
-      follow-redirects: 1.14.5
+      follow-redirects: 1.14.5_debug@4.3.2
     transitivePeerDependencies:
       - debug
     dev: true
@@ -7569,7 +7569,7 @@ packages:
       readable-stream: 2.3.7
     dev: true
 
-  /follow-redirects/1.14.5:
+  /follow-redirects/1.14.5_debug@4.3.2:
     resolution: {integrity: sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==}
     engines: {node: '>=4.0'}
     peerDependencies:
@@ -7577,6 +7577,8 @@ packages:
     peerDependenciesMeta:
       debug:
         optional: true
+    dependencies:
+      debug: 4.3.2_supports-color@6.1.0
     dev: true
 
   /for-in/1.0.2:
@@ -8715,7 +8717,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.5
+      follow-redirects: 1.14.5_debug@4.3.2
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
