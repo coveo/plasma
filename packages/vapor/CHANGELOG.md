@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.1.0](https://github.com/coveo/react-vapor/compare/v28.0.20...v28.1.0) (2021-11-16)
+
+
+### Features
+
+* **icons:** add some missing icons ([33b94fc](https://github.com/coveo/react-vapor/commit/33b94fc35a3b94bba306a7580356864b39c300c1))
+
+
+
+
+
 ## [28.0.20](https://github.com/coveo/react-vapor/compare/v28.0.19...v28.0.20) (2021-11-16)
 
 **Note:** Version bump only for package coveo-styleguide
