@@ -4,7 +4,91 @@ interface NavItem {
     href?: string;
     selected?: boolean;
     children?: NavItem[];
+    disabled?: boolean;
 }
+
+/**
+ * ==========================
+ * PAGES MISSING (COMPONENTS):
+ * ==========================
+ *
+ * * ACTIONABLE ITEM
+ * * ACTION BAR CONNECTED
+ * * BLANKSLATE
+ * * BORDERED LINE
+ * * BROWSER PREVIEW
+ * * COLOUR BAR
+ * * COLOUR PICKER
+ * * DATEPICKER
+ * * FACET CONNECTED
+ * * FILEPICKER
+ * * FOOTER
+ * * ICON BADGE
+ * * ITEM FILTER
+ * * ITEM FILTER CONNECTED
+ * * JSON EDITOR
+ * * LABELED VALUE
+ * * LAST UPDATED
+ * * LAST UPDATED CONNECTED
+ * * LINK SVG
+ * * LIST BOX
+ * * MODAL WIZARD
+ * * MULTI SELECT (MULTI & SINGLE WILL UNDER DROPDOWN I GUESS)
+ * * PAGINATION CONNECTED
+ * * PARTIALSTRING MATCH
+ * * POPOVER
+ * * REFESH
+ * * SECTION
+ * * SEPARATOR
+ * * SIDENAVIGATION LOADING
+ * * SLIDEY
+ * * SUBNAVIGATION
+ * * SVG :-(
+ * * SYNC
+ * * TABLE LOADING / SERVER / BLANK - I ASSUME THESE WILL BE ROLLED INTO THE TABLE DEMO
+ * * TABSCONNECTED
+ * * TEXT AREA
+ * * TOAST CONNECTED
+ * * TOAST CONTENT
+ *
+ * ==========================
+ * * PAGES MISSING (STYLES):
+ * ==========================
+ *
+ * * CARD - styles/cards/card IS CURRENTLY THE NEW ROUTE FOR CARD. HOME / MATERIAL / WIZARD MISSING
+ * * MEMBER
+ * * BANNER - DUPLICATE WITH THE ONE IN COMPONENTS
+ * * ICONOGRAPHY LINKEDTOICONS, NOT SVG. SHOULD THESE BEE ROLLED TOGETHER
+ * * SPACE BOX
+ * * TRANSPARENCY
+ * * TYPOGRAPHY - HEADING / UTILITIES / LISTS AND UTILITY SECTION SHOULD BE GROUPED IN TYPEKIT WHEN READY
+ *
+ * ===============================
+ * NON-EXISTENT COMPONENTS / PAGES
+ * ===============================
+ *
+ * marked as disabled for the sidenav
+ *
+ * * PALETTE
+ * * TYPEKIT
+ * * ILLUSTRATION
+ * * EFFECT
+ * * COMMERCE CONFIG CARD
+ * * DIVIDER
+ * * TOPBAR
+ * * SEARCH RESULT CARD
+ * * ACTION BUTTON
+ * * ADD REMOVE BUTTON
+ * * FACET
+ * * TOGGLE
+ * * BREADCRUMBS
+ * * PROMPT
+ * * STATUS TOKEN
+ * * STATUS WIDGET
+ * * COVEOEXPLOADER
+ * * RICHPOPOVER
+ * * SKELETONBLUR
+ */
 
 export const NavItems: NavItem[] = [
     {
@@ -20,23 +104,27 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Palette',
-                href: '/Palette',
+                href: '/styles/Palette',
+                disabled: true,
             },
             {
                 label: 'Typekit',
-                href: '/Typekit',
+                href: '/styles/Typekit',
+                disabled: true,
             },
             {
                 label: 'Iconography',
-                href: '/Iconography',
+                href: '/styles/icons/list',
             },
             {
                 label: 'Illustration',
-                href: '/Illustration',
+                href: '/styles/Illustration',
+                disabled: true,
             },
             {
                 label: 'Effects',
-                href: '/Effects',
+                href: '/styles/Effects',
+                disabled: true,
             },
         ],
     },
@@ -45,55 +133,59 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Action Bar',
-                href: '/ActionBar',
+                href: '/components/ActionBar',
             },
             {
                 label: 'Bordered Line / Row',
-                href: '/BorderedLine',
+                href: '/components/BorderedLine',
             },
             {
                 label: 'Card',
-                href: '/Card',
+                href: '/styles/cards/card',
             },
             {
                 label: 'Commerce Config Card',
-                href: '/CommerceConfigCard',
+                href: '/components/CommerceConfigCard',
+                disabled: true,
             },
             {
                 label: 'Divider',
-                href: '/Divider',
+                href: '/components/Divider',
+                disabled: true,
             },
             {
                 label: 'Icon / Logo Card',
-                href: '/IconCard',
+                href: '/components/IconCard',
             },
             {
                 label: 'Modal',
-                href: '/Modal',
+                href: '/components/ModalWindow',
             },
             {
                 label: 'Page Header',
-                href: '/PageHeader',
+                href: '/styles/headers/site',
             },
             {
                 label: 'Top Bar',
-                href: '/TopBar',
+                href: '/components/TopBar',
+                disabled: true,
             },
             {
                 label: 'Search Result Card',
-                href: '/SearchResultCard',
+                href: '/components/SearchResultCard',
+                disabled: true,
             },
             {
                 label: 'Split Layout',
-                href: '/SplitLayout',
+                href: '/components/SplitLayout',
             },
             {
                 label: 'Table',
-                href: '/Table',
+                href: '/components/TableHOC',
             },
             {
                 label: 'Banner',
-                href: '/Banner',
+                href: '/components/Banner',
             },
         ],
     },
@@ -102,83 +194,88 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Action Button',
-                href: '/ActionButton',
+                href: '/components/ActionButton',
+                disabled: true,
             },
             {
                 label: 'Actionable Item',
-                href: '/ActionableItem',
+                href: '/components/ActionableItem',
             },
             {
                 label: 'Add/Remove',
-                href: '/AddRemove',
+                href: '/components/AddRemove',
+                disabled: true,
             },
             {
                 label: 'Button',
-                href: '/Button',
+                href: '/components/Button',
             },
             {
                 label: 'Checkbox',
-                href: '/Checkbox',
+                href: '/components/Checkbox',
             },
             {
                 label: 'Childform',
-                href: '/Childform',
+                href: '/components/Childform',
             },
             {
                 label: 'Code Editor',
-                href: '/CodeEditor',
+                href: '/components/CodeEditor',
             },
             {
                 label: 'Diff Viewer',
-                href: '/DiffViewer',
+                href: '/components/DiffViewer',
             },
             {
                 label: 'Dropdown',
-                href: '/Dropdown',
+                // will need MultiSelect toooo
+                href: '/components/SingleSelect',
             },
             {
                 label: 'Filter Box',
-                href: '/FilterBox',
+                href: '/components/FilterBox',
             },
             {
                 label: 'Facet',
-                href: '/Facet',
+                href: '/components/Facet',
+                disabled: true,
             },
             {
                 label: 'Link',
-                href: '/Link',
+                href: '/styles/typography/links',
             },
             {
                 label: 'Multiline Box',
-                href: '/MultilineBox',
+                href: '/components/MultilineBox',
             },
             {
                 label: 'Numeric Input',
-                href: '/NumericInput',
+                href: '/components/NumericInput',
             },
             {
                 label: 'Radio Button',
-                href: '/RadioButton',
+                href: '/components/RadioButton',
             },
             {
                 label: 'Search Bar',
-                href: '/SearchBar',
+                href: '/components/SearchBar',
             },
             {
                 label: 'Slider',
-                href: '/Slider',
+                href: '/components/Slider',
             },
             {
                 label: 'Text Input',
-                href: '/TextInput',
+                href: '/components/TextInput',
             },
             {
                 label: 'Toggle',
-                href: '/Toggle',
+                href: '/components/Toggle',
+                disabled: true,
             },
             {
                 label: 'Value Popup',
-                href: '/ValuePopup',
+                href: '/styles/filtering/value-popup',
             },
         ],
     },
@@ -187,27 +284,28 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Page Title / Breadcrumbs',
-                href: '/Breadcrumbs',
+                href: '/components/Breadcrumbs',
+                disabled: true,
             },
             {
                 label: 'Flat Select',
-                href: '/FlatSelect',
+                href: '/components/FlatSelect',
             },
             {
                 label: 'Options Cycle',
-                href: '/OptionsCycle',
+                href: '/components/OptionsCycle',
             },
             {
                 label: 'Pagination',
-                href: '/Pagination',
+                href: '/components/Pagination',
             },
             {
                 label: 'Sidebar Navigation',
-                href: '/SidebarNavigation',
+                href: '/components/SideNavigation',
             },
             {
                 label: 'Tabs',
-                href: '/Tabs',
+                href: '/components/Tabs',
             },
         ],
     },
@@ -216,63 +314,62 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Toast',
-                href: '/Toast',
+                href: '/components/Toast',
             },
             {
                 label: 'InfoBox',
-                href: '/InfoBox',
+                href: '/components/InfoBox',
             },
             {
                 label: 'Info Token',
-                href: '/InfoToken',
+                href: '/components/InfoToken',
             },
             {
                 label: 'Limit Card',
-                href: '/LimitCard',
-            },
-            {
-                label: 'Multistep Bar',
-                href: '/MultistepBar',
+                href: '/components/Limit',
             },
             {
                 label: 'Progress Bar',
-                href: '/ProgressBar',
+                href: '/styles/form-controls/progress-bar',
             },
             {
                 label: 'Prompt Modals',
-                href: '/Prompt',
+                href: '/components/Prompt',
+                disabled: true,
             },
             {
                 label: 'Spinner / Loader',
-                href: '/Loading',
+                href: '/components/Loading',
             },
             {
                 label: 'Status Card',
-                href: '/StatusCard',
+                href: '/components/StatusCard',
             },
             {
                 label: 'Status Token',
-                href: '/StatusToken',
+                href: '/components/StatusToken',
+                disabled: true,
             },
             {
                 label: 'Status Widget',
-                href: '/StatusWidget',
+                href: '/components/StatusWidget',
+                disabled: true,
             },
             {
                 label: 'Step / Progress Bar',
-                href: '/StepProgressBar',
+                href: '/components/StepProgressBar',
             },
             {
                 label: 'Sync Feedback',
-                href: '/SyncFeedback',
+                href: '/components/SyncFeedback',
             },
             {
                 label: 'Tab / Badge',
-                href: '/Badge',
+                href: '/components/Badge',
             },
             {
                 label: 'Tooltip',
-                href: '/Tooltip',
+                href: '/components/Tooltip',
             },
         ],
     },
@@ -281,23 +378,26 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Border',
-                href: '/Border',
+                href: '/styles/borders',
             },
             {
                 label: 'Collapsible',
-                href: '/Collapsible',
+                href: '/components/Collapsible',
             },
             {
                 label: 'Coveo Exp. Loader',
-                href: '/CoveoExpLoader',
+                href: '/components/CoveoExpLoader',
+                disabled: true,
             },
             {
                 label: 'Rich Popover',
-                href: '/RichPopover',
+                href: '/components/RichPopover',
+                disabled: true,
             },
             {
                 label: 'Skeleton Blur',
-                href: '/SkeletonBlur',
+                href: '/components/SkeletonBlur',
+                disabled: true,
             },
         ],
     },
