@@ -200,7 +200,7 @@ importers:
       '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-infinite-scroll-component': 4.2.5
-      '@types/react-modal': 3.8.2
+      '@types/react-modal': 3.13.1
       '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.9.2
@@ -249,7 +249,7 @@ importers:
       react-dnd-test-backend: 2.6.0
       react-dom: 16.14.0
       react-infinite-scroll-component: 4.5.3
-      react-modal: 3.14.3
+      react-modal: 3.14.4
       react-redux: 7.2.6
       react-tether: 1.0.5
       react-textarea-autosize: 8.3.3
@@ -289,7 +289,7 @@ importers:
       react-dnd: 2.6.0_react@16.14.0
       react-dnd-html5-backend: 2.6.0
       react-infinite-scroll-component: 4.5.3_react@16.14.0
-      react-modal: 3.14.3_react-dom@16.14.0+react@16.14.0
+      react-modal: 3.14.4_react-dom@16.14.0+react@16.14.0
       react-tether: 1.0.5_react-dom@16.14.0+react@16.14.0
       react-textarea-autosize: 8.3.3_5283d3c8d694c64e162d21c7dd1475fb
       split-on-first: 1.1.0
@@ -323,7 +323,7 @@ importers:
       '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-infinite-scroll-component': 4.2.5
-      '@types/react-modal': 3.8.2
+      '@types/react-modal': 3.13.1
       '@types/react-tether': 0.5.5
       '@types/react-textarea-autosize': 4.3.6
       '@types/react-transition-group': 2.9.2
@@ -2764,10 +2764,10 @@ packages:
       '@types/react': 17.0.6
     dev: true
 
-  /@types/react-modal/3.8.2:
-    resolution: {integrity: sha512-/Drs+XfHg9M60fy2Q63UUlhECXSNknDu3tnwFnbOhcdDjq03VD3hLCfv3X+BBzRqgu4TOu+TwEwBhgI8qdVAAQ==}
+  /@types/react-modal/3.13.1:
+    resolution: {integrity: sha512-iY/gPvTDIy6Z+37l+ibmrY+GTV4KQTHcCyR5FIytm182RQS69G5ps4PH2FxtC7bAQ2QRHXMevsBgck7IQruHNg==}
     dependencies:
-      '@types/react': 16.9.19
+      '@types/react': 17.0.6
     dev: true
 
   /@types/react-redux/7.1.20:
@@ -13751,8 +13751,8 @@ packages:
       - supports-color
     dev: false
 
-  /react-modal/3.14.3_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-+C2KODVKyu20zHXPJxfOOcf571L1u/EpFlH+oS/3YDn8rgVE51QZuxuuIwabJ8ZFnOEHaD+r6XNjqwtxZnXO0g==}
+  /react-modal/3.14.4_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-8surmulejafYCH9wfUmFyj4UfbSJwjcgbS9gf3oOItu4Hwd6ivJyVBETI0yHRhpJKCLZMUtnhzk76wXTsNL6Qg==}
     engines: {node: '>=8'}
     peerDependencies:
       react: ^0.14.0 || ^15.0.0 || ^16 || ^17
