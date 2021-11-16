@@ -179,7 +179,7 @@ importers:
       '@rollup/plugin-replace': 2.4.2
       '@testing-library/dom': 8.11.1
       '@testing-library/jest-dom': 5.15.0
-      '@testing-library/react': 11.2.7
+      '@testing-library/react': 12.1.2
       '@testing-library/user-event': 12.8.3
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
@@ -304,7 +304,7 @@ importers:
       '@rollup/plugin-replace': 2.4.2_rollup@2.60.0
       '@testing-library/dom': 8.11.1
       '@testing-library/jest-dom': 5.15.0
-      '@testing-library/react': 11.2.7_react-dom@16.14.0+react@16.14.0
+      '@testing-library/react': 12.1.2_react-dom@16.14.0+react@16.14.0
       '@testing-library/user-event': 12.8.3_@testing-library+dom@8.11.1
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
@@ -2427,15 +2427,15 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/11.2.7_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-tzRNp7pzd5QmbtXNG/mhdcl7Awfu/Iz1RaVHY75zTdOkmHCuzMhRL83gWHSgOAcjS3CCbyfwUHMZgRJb4kAfpA==}
-    engines: {node: '>=10'}
+  /@testing-library/react/12.1.2_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-ihQiEOklNyHIpo2Y8FREkyD1QAea054U0MVbwH1m8N9TxeFz+KoJ9LkqoKqJlzx2JDm56DVwaJ1r36JYxZM05g==}
+    engines: {node: '>=12'}
     peerDependencies:
       react: '*'
       react-dom: '*'
     dependencies:
       '@babel/runtime': 7.16.0
-      '@testing-library/dom': 7.31.2
+      '@testing-library/dom': 8.11.1
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
     dev: true

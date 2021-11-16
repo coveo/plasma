@@ -46,13 +46,9 @@ describe('SingleSelectWithDirty', () => {
 
         userEvent.click(screen.getByRole('button'));
 
-        userEvent.click(
-            screen.getByRole('option', {
-                name: /new value/i,
-            })
-        );
+        userEvent.click(screen.getByText('new value'));
 
-        expect(screen.getByText(/is dirty/i)).toBeVisible();
+        expect(screen.getByText('is dirty')).toBeVisible();
     });
 
     it('should trigger the dirty state when the user selects a different value', () => {
@@ -69,19 +65,7 @@ describe('SingleSelectWithDirty', () => {
 
         userEvent.click(screen.getByRole('button'));
 
-        userEvent.click(
-            screen.getByRole('option', {
-                name: /new value/i,
-            })
-        );
-
-        userEvent.click(screen.getByRole('button'));
-
-        userEvent.click(
-            screen.getByRole('option', {
-                name: /old value/i,
-            })
-        );
+        userEvent.click(screen.getByText('new value'));
 
         expect(screen.getByText('is dirty')).toBeVisible();
     });
