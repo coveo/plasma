@@ -1,3 +1,4 @@
+import classNames from 'classnames';
 import * as React from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
@@ -54,11 +55,15 @@ export class Action extends React.Component<IActionProps, any> {
     };
 
     render() {
-        const {icon, id, name, tooltipPlacement, tooltip} = this.props.action;
+        const {icon, iconClass, id, name, tooltipPlacement, tooltip} = this.props.action;
         const actionIcon: JSX.Element = icon ? (
-            <Svg svgName={icon} className="action-icon" svgClass="icon" />
+            <Svg svgName={icon} className={classNames(iconClass, 'action-icon')} svgClass="icon" />
         ) : (
-            <Svg svgName="more" className="action-icon action-icon-more" svgClass="icon icon-medium" />
+            <Svg
+                svgName="more"
+                className={classNames(iconClass, 'action-icon action-icon-more')}
+                svgClass="icon icon-medium"
+            />
         );
         const inside: string | JSX.Element = this.props.simple ? (
             name
