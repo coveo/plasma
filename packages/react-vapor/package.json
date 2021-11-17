@@ -103,7 +103,7 @@
         "@types/redux-promise-middleware": "6.0.0",
         "@types/underscore": "1.8.10",
         "@types/underscore.string": "0.0.38",
-        "ansi-colors": "3.2.4",
+        "ansi-colors": "4.1.1",
         "autoprefixer": "9.8.8",
         "classnames": "2.3.1",
         "codecov": "3.8.2",
