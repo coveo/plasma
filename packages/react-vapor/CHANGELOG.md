@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.1.8](https://github.com/coveo/react-vapor/compare/v28.1.7...v28.1.8) (2021-11-17)
+
+
+### Bug Fixes
+
+* **action:** properly use iconClass - COM-1330 ([#2261](https://github.com/coveo/react-vapor/issues/2261)) ([3a02cd4](https://github.com/coveo/react-vapor/commit/3a02cd4faaa447bb411540f10d6e1bb3560f3748))
+
+
+
+
+
 ## [28.1.7](https://github.com/coveo/react-vapor/compare/v28.1.6...v28.1.7) (2021-11-17)
 
 **Note:** Version bump only for package react-vapor
