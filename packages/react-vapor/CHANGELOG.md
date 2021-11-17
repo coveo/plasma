@@ -1487,7 +1487,6 @@ need to simply provide an icon name (string) via the new icon prop. You can also
 
 
 
-<<<<<<< HEAD
 # [23.0.0-next.15](https://github.com/coveo/react-vapor/compare/v23.0.0-next.14...v23.0.0-next.15) (2021-06-22)
 
 **Note:** Version bump only for package react-vapor
@@ -1529,77 +1528,20 @@ need to simply provide an icon name (string) via the new icon prop. You can also
 
 
 # [23.0.0-next.6](https://github.com/coveo/react-vapor/compare/v22.9.3...v23.0.0-next.6) (2021-06-07)
-=======
-# [22.21.0](https://github.com/coveo/react-vapor/compare/v22.20.3...v22.21.0) (2021-07-22)
-
-
-### Features
-
-* **limit:** +onClick method on history icon ([0c12782](https://github.com/coveo/react-vapor/commit/0c12782070d0d686f8410bf29943627b69b23b97))
-
-
-
-
-
-## [22.20.3](https://github.com/coveo/react-vapor/compare/v22.20.2...v22.20.3) (2021-07-21)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-## [22.20.2](https://github.com/coveo/react-vapor/compare/v22.20.1...v22.20.2) (2021-07-21)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-## [22.20.1](https://github.com/coveo/react-vapor/compare/v22.20.0...v22.20.1) (2021-07-21)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [22.20.0](https://github.com/coveo/react-vapor/compare/v22.19.5...v22.20.0) (2021-07-15)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-## [22.19.5](https://github.com/coveo/react-vapor/compare/v22.19.4...v22.19.5) (2021-07-15)
->>>>>>> master
 
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 * fix date picker style for new typekit ([dcdd5ee](https://github.com/coveo/react-vapor/commit/dcdd5eed29227fa9ec3ea517230402c9a04d5836))
 * fix titles sizes ([47b3367](https://github.com/coveo/react-vapor/commit/47b336791bb3f0a628bba3e9ccee39a35cfa4e22))
 
 
 
 # [23.0.0-next.5](https://github.com/coveo/react-vapor/compare/v22.9.1...v23.0.0-next.5) (2021-06-04)
-=======
-* **tabs:** allow multiple independent tab navigations at the same time ([0548f87](https://github.com/coveo/react-vapor/commit/0548f87c675f9250857ea0cd595a4d9e40a607f7))
-
-
-
-
-
-## [22.19.4](https://github.com/coveo/react-vapor/compare/v22.19.3...v22.19.4) (2021-07-15)
->>>>>>> master
 
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 * fix description style in headers ([0f12035](https://github.com/coveo/react-vapor/commit/0f12035990cf32d298f015be550ed0555eacfd77))
 
 
@@ -1614,28 +1556,10 @@ need to simply provide an icon name (string) via the new icon prop. You can also
 
 
 # [23.0.0-next.3](https://github.com/coveo/react-vapor/compare/v23.0.0-next.2...v23.0.0-next.3) (2021-06-01)
-=======
-* **tabs:** allow onSelect prop on TabConnected ([#2081](https://github.com/coveo/react-vapor/issues/2081)) ([3610f83](https://github.com/coveo/react-vapor/commit/3610f83f0f6ead996a352195774defe2ff683d0a))
-
-
-
-
-
-## [22.19.3](https://github.com/coveo/react-vapor/compare/v22.19.2...v22.19.3) (2021-07-14)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-## [22.19.2](https://github.com/coveo/react-vapor/compare/v22.19.1...v22.19.2) (2021-07-12)
->>>>>>> master
 
 
 ### Bug Fixes
 
-<<<<<<< HEAD
 * **header:** change h1 for h4 in title component ([df7027f](https://github.com/coveo/react-vapor/commit/df7027f725041a1a86f5885d8a0ef109c7a48315))
 
 
@@ -1645,63 +1569,6 @@ need to simply provide an icon name (string) via the new icon prop. You can also
 
 
 # [23.0.0-next.1](https://github.com/coveo/react-vapor/compare/v22.8.0...v23.0.0-next.1) (2021-05-31)
-=======
-* **option-picker:** alignement when used as a button ([bc6341a](https://github.com/coveo/react-vapor/commit/bc6341a4b34c821eea6681225cc2798895cbb132))
-
-
-
-
-
-## [22.19.1](https://github.com/coveo/react-vapor/compare/v22.19.0...v22.19.1) (2021-07-12)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [22.19.0](https://github.com/coveo/react-vapor/compare/v22.18.0...v22.19.0) (2021-07-07)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-# [22.18.0](https://github.com/coveo/react-vapor/compare/v22.17.3...v22.18.0) (2021-07-05)
-
-
-### Features
-
-* **tabs:** improve accessibility of tabs ([36be341](https://github.com/coveo/react-vapor/commit/36be341841ad293e2be79301278225f880892ac0))
-
-
-
-
-
-## [22.17.3](https://github.com/coveo/react-vapor/compare/v22.17.2...v22.17.3) (2021-06-29)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-## [22.17.2](https://github.com/coveo/react-vapor/compare/v22.17.1...v22.17.2) (2021-06-28)
-
-**Note:** Version bump only for package react-vapor
-
-
-
-
-
-## [22.17.1](https://github.com/coveo/react-vapor/compare/v22.17.0...v22.17.1) (2021-06-22)
-
-
-### Bug Fixes
-
-* **demo:** remove fibers dependency ([#2063](https://github.com/coveo/react-vapor/issues/2063)) ([c71676b](https://github.com/coveo/react-vapor/commit/c71676bae63d82aa0a3053d23ce62c4fc12c3aac))
->>>>>>> master
 
 
 
