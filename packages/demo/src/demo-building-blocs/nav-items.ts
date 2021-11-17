@@ -5,69 +5,24 @@ interface NavItem {
     selected?: boolean;
     children?: NavItem[];
     disabled?: boolean;
+    new?: boolean;
 }
 
 /**
- * ==========================
- * PAGES MISSING (COMPONENTS):
- * ==========================
+ * ==============
+ * PAGES MISSING:
+ * ==============
  *
- * * ACTIONABLE ITEM
- * * ACTION BAR CONNECTED
- * * BLANKSLATE
- * * BORDERED LINE
- * * BROWSER PREVIEW
- * * COLOUR BAR
- * * COLOUR PICKER
- * * DATEPICKER
- * * FACET CONNECTED
- * * FILEPICKER
- * * FOOTER
- * * ICON BADGE
- * * ITEM FILTER
- * * ITEM FILTER CONNECTED
- * * JSON EDITOR
- * * LABELED VALUE
- * * LAST UPDATED
- * * LAST UPDATED CONNECTED
- * * LINK SVG
- * * LIST BOX
- * * MODAL WIZARD
- * * MULTI SELECT (MULTI & SINGLE WILL UNDER DROPDOWN I GUESS)
- * * PAGINATION CONNECTED
- * * PARTIALSTRING MATCH
- * * POPOVER
- * * REFESH
- * * SECTION
- * * SEPARATOR
- * * SIDENAVIGATION LOADING
- * * SLIDEY
- * * SUBNAVIGATION
- * * SVG :-(
- * * SYNC
- * * TABLE LOADING / SERVER / BLANK - I ASSUME THESE WILL BE ROLLED INTO THE TABLE DEMO
- * * TABSCONNECTED
- * * TEXT AREA
- * * TOAST CONNECTED
- * * TOAST CONTENT
+ * Many pages from Vapor aren't included in the mockup for Plasma.
+ * I've added all those pages (from components and styles) in a new section 'Not Included'
+ * As work continues we can roll sections we want to keep into other pages, give them their own page or
+ * drop them altogether
  *
- * ==========================
- * * PAGES MISSING (STYLES):
- * ==========================
+ * =========
+ * NEW PAGES
+ * =========
  *
- * * CARD - styles/cards/card IS CURRENTLY THE NEW ROUTE FOR CARD. HOME / MATERIAL / WIZARD MISSING
- * * MEMBER
- * * BANNER - DUPLICATE WITH THE ONE IN COMPONENTS
- * * ICONOGRAPHY LINKEDTOICONS, NOT SVG. SHOULD THESE BEE ROLLED TOGETHER
- * * SPACE BOX
- * * TRANSPARENCY
- * * TYPOGRAPHY - HEADING / UTILITIES / LISTS AND UTILITY SECTION SHOULD BE GROUPED IN TYPEKIT WHEN READY
- *
- * ===============================
- * NON-EXISTENT COMPONENTS / PAGES
- * ===============================
- *
- * marked as disabled for the sidenav
+ * marked as disabled / coming soon for the sidenav
  *
  * * PALETTE
  * * TYPEKIT
@@ -284,7 +239,7 @@ export const NavItems: NavItem[] = [
         children: [
             {
                 label: 'Page Title / Breadcrumbs',
-                href: '/components/Breadcrumbs',
+                href: '/components/Header',
                 disabled: true,
             },
             {
@@ -399,6 +354,67 @@ export const NavItems: NavItem[] = [
                 href: '/components/SkeletonBlur',
                 disabled: true,
             },
+        ],
+    },
+    {
+        groupTitle: 'Not included',
+        children: [
+            {label: 'Actionable Item', href: '/components/ActionableItem'},
+            {label: 'Action Bar Connected', href: '/components/ActionBarConnected'},
+            {label: 'Blankslate', href: '/components/BlankSlate'},
+            {label: 'Bordered Line', href: '/components/BorderedLine'},
+            {label: 'Browser Preview', href: '/components/BrowserPreview'},
+            {label: 'Card Home', href: '/styles/cards/home'},
+            {label: 'Card Material', href: '/styles/cards/material'},
+            {label: 'Card Wizard', href: '/styles/cards/wizard'},
+            {label: 'Chart', href: '/components/Chart'},
+            {label: 'Colour Bar', href: '/components/ColorBar'},
+            {label: 'Colour Picker', href: '/components/ColorPicker'},
+            {label: 'Date Picker', href: '/components/DatePicker'},
+            {label: 'Facet Connected', href: '/components/FacetConnected'},
+            {label: 'File Picker', href: '/components/Filepicker'},
+            {label: 'Footer', href: '/components/Footer'},
+            {label: 'Icon Badge', href: '/components/IconBadge'},
+            {label: 'Item Filter', href: '/components/Item Filter'},
+            {label: 'Item Filter Connected', href: '/components/ItemFilterConnected'},
+            {label: 'JSON Editor', href: '/components/JSONEditor'},
+            {label: 'Labeled Value', href: '/components/LabeledValue'},
+            {label: 'Last Updated', href: '/components/LastUpdated'},
+            {label: 'Last Updated Connected', href: '/components/LastUpdatedConnected'},
+            {label: 'Link Svg', href: '/components/LinkSvg'},
+            {label: 'List Box', href: '/components/ListBox'},
+            {label: 'Member', href: '/styles/components/member'},
+            {label: 'Modal Wizard', href: '/components/ModalWizard'},
+            {label: 'Multi Select', href: '/components/MultiSelect'},
+            {label: 'Pagination Connected', href: '/components/PaginationConnected'},
+            {label: 'Partialstring Match', href: '/components/PartialstringMatch'},
+            {label: 'Popover', href: '/components/Popover'},
+            {label: 'Refesh', href: '/components/Refresh'},
+            {label: 'Section', href: '/components/Section'},
+            {label: 'Separator', href: '/components/Separator'},
+            {label: 'Sidenavigation Loading', href: '/components/SidenavigationLoading'},
+            {label: 'Slidey', href: '/components/Slidey'},
+            {label: 'Spaced Box', href: '/styles/layout/spaced-box'},
+            {label: 'Subnavigation', href: '/components/Subnavigation'},
+            {label: 'SVG', href: '/components/SVG'},
+            {label: 'Sync', href: '/components/Sync'},
+            {label: 'Table Loading', href: '/components/TableHOCLoading'},
+            {label: 'Table Server', href: '/components/TableHOCServer'},
+            {label: 'Table Blank Slate', href: '/components/TableHOCwithBlankSlate'},
+            {label: 'Tabs Connected', href: '/components/TabsConnected'},
+            {label: 'Text Area', href: '/components/TextArea'},
+            {label: 'Toast Connected', href: '/components/ToastConnected'},
+            {label: 'Toast Content', href: '/components/ToastContent'},
+            {label: 'Transparency', href: '/styles/transparency'},
+            {label: 'Typekit - Headings', href: '/styles/typography/headings'},
+            {label: 'Typekit - Utilities', href: '/styles/typography/utilities'},
+            {label: 'Typekit - Lists', href: '/styles/typography/lists'},
+            {label: 'Typekit - Text Size', href: '/styles/utility/line-height'},
+            {label: 'Typekit - Text Colors', href: '/styles/utility/text-colors'},
+            {label: 'Typekit - Icon Colors', href: '/styles/utility/icon-colors'},
+            {label: 'Typekit - Whitespace', href: '/styles/utility/whitespace'},
+            {label: 'Cursor', href: '/styles/utility/cursor'},
+            {label: 'Color Dots', href: '/styles/utility/color-dots'},
         ],
     },
 ];
