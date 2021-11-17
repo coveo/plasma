@@ -3,6 +3,126 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.1.5](https://github.com/coveo/react-vapor/compare/v28.1.4...v28.1.5) (2021-11-17)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.1.4](https://github.com/coveo/react-vapor/compare/v28.1.3...v28.1.4) (2021-11-17)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.1.3](https://github.com/coveo/react-vapor/compare/v28.1.2...v28.1.3) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.1.2](https://github.com/coveo/react-vapor/compare/v28.1.1...v28.1.2) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.1.1](https://github.com/coveo/react-vapor/compare/v28.1.0...v28.1.1) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+# [28.1.0](https://github.com/coveo/react-vapor/compare/v28.0.20...v28.1.0) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.20](https://github.com/coveo/react-vapor/compare/v28.0.19...v28.0.20) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.19](https://github.com/coveo/react-vapor/compare/v28.0.18...v28.0.19) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.18](https://github.com/coveo/react-vapor/compare/v28.0.17...v28.0.18) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.17](https://github.com/coveo/react-vapor/compare/v28.0.16...v28.0.17) (2021-11-16)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.16](https://github.com/coveo/react-vapor/compare/v28.0.15...v28.0.16) (2021-11-15)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.15](https://github.com/coveo/react-vapor/compare/v28.0.14...v28.0.15) (2021-11-13)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.14](https://github.com/coveo/react-vapor/compare/v28.0.13...v28.0.14) (2021-11-13)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.13](https://github.com/coveo/react-vapor/compare/v28.0.12...v28.0.13) (2021-11-13)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
+## [28.0.12](https://github.com/coveo/react-vapor/compare/v28.0.11...v28.0.12) (2021-11-13)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
 ## [28.0.11](https://github.com/coveo/react-vapor/compare/v28.0.10...v28.0.11) (2021-11-12)
 
 **Note:** Version bump only for package @coveord/design-tokens
