@@ -10,6 +10,7 @@ export interface ISideNavigationItemProps {
 
 export interface SideNavigationItemProps extends Partial<ISideNavigationItemProps> {
     isActive?: boolean;
+    disabled?: boolean;
 }
 
 export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps> = ({
@@ -18,6 +19,7 @@ export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps
     title,
     children,
     target,
+    disabled,
 }) => {
     const ref = React.useRef(null);
 
@@ -27,7 +29,7 @@ export const SideNavigationItem: React.FunctionComponent<SideNavigationItemProps
         }
     }, [isActive]);
 
-    const itemClasses = classNames('navigation-menu-section-item', {'state-active': isActive});
+    const itemClasses = classNames('navigation-menu-section-item', {'state-active': isActive, disabled});
 
     // Rendering an anchor tag from href and title support for retrocompatibility
     return href && title ? (

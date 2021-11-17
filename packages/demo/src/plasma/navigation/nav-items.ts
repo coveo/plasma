@@ -1,11 +1,10 @@
-interface NavItem {
+export interface NavItem {
     groupTitle?: string;
     label?: string;
     href?: string;
     selected?: boolean;
     children?: NavItem[];
     disabled?: boolean;
-    new?: boolean;
 }
 
 /**
@@ -52,19 +51,19 @@ export const NavItems: NavItem[] = [
     },
     {
         label: 'Brand',
-        href: '/Brand',
+        href: '/brand',
     },
     {
         groupTitle: 'Foundations',
         children: [
             {
                 label: 'Palette',
-                href: '/styles/Palette',
+                href: '/components/Palette',
                 disabled: true,
             },
             {
                 label: 'Typekit',
-                href: '/styles/Typekit',
+                href: '/components/Typekit',
                 disabled: true,
             },
             {
@@ -73,12 +72,12 @@ export const NavItems: NavItem[] = [
             },
             {
                 label: 'Illustration',
-                href: '/styles/Illustration',
+                href: '/components/Illustration',
                 disabled: true,
             },
             {
                 label: 'Effects',
-                href: '/styles/Effects',
+                href: '/components/Effects',
                 disabled: true,
             },
         ],
@@ -359,7 +358,6 @@ export const NavItems: NavItem[] = [
     {
         groupTitle: 'Not included',
         children: [
-            {label: 'Actionable Item', href: '/components/ActionableItem'},
             {label: 'Action Bar Connected', href: '/components/ActionBarConnected'},
             {label: 'Blankslate', href: '/components/BlankSlate'},
             {label: 'Bordered Line', href: '/components/BorderedLine'},
