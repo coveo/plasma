@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.2.0](https://github.com/coveo/react-vapor/compare/v28.1.8...v28.2.0) (2021-11-18)
+
+
+### Features
+
+* **new navigation:** added new side nav, style changes ([0cce979](https://github.com/coveo/react-vapor/commit/0cce97931b6e7d3c3d78d8f379089ef85c1f3de2))
+
+
+
+
+
 ## [28.1.8](https://github.com/coveo/react-vapor/compare/v28.1.7...v28.1.8) (2021-11-17)
 
 **Note:** Version bump only for package coveo-styleguide

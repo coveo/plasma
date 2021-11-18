@@ -3,6 +3,23 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.2.0](https://github.com/coveo/react-vapor/compare/v28.1.8...v28.2.0) (2021-11-18)
+
+
+### Bug Fixes
+
+* **sidenav:** reorganised ([624ea4e](https://github.com/coveo/react-vapor/commit/624ea4e7e3c1de55d6d8f414f67ff123c9aedc6d))
+
+
+### Features
+
+* **new navigation:** added new side nav, style changes ([0cce979](https://github.com/coveo/react-vapor/commit/0cce97931b6e7d3c3d78d8f379089ef85c1f3de2))
+* **notfound:** updated notfound and index ([d87ac08](https://github.com/coveo/react-vapor/commit/d87ac0813a242fc74ccc0a98d3f8177be4407da7))
+
+
+
+
+
 ## [28.1.8](https://github.com/coveo/react-vapor/compare/v28.1.7...v28.1.8) (2021-11-17)
 
 
