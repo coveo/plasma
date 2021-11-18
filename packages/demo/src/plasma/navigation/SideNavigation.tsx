@@ -41,9 +41,11 @@ const CollapsibleSideSection: React.FC<{nav: NavItem}> = ({nav}) => {
             onClick={() => setExpanded(!expanded)}
             title={<NavLink label={nav.groupTitle} />}
         >
-            {nav.children.map((navChild) => (
-                <NavLink label={navChild.label} href={navChild.href} disabled={navChild.disabled} />
-            ))}
+            {nav.children
+                .sort((a, b) => a.label.localeCompare(b.label))
+                .map((navChild) => (
+                    <NavLink label={navChild.label} href={navChild.href} disabled={navChild.disabled} />
+                ))}
         </SideNavigationMenuSection>
     );
 };
