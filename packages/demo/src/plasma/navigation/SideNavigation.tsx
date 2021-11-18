@@ -1,6 +1,6 @@
 /* eslint-disable arrow-body-style */
 import React, {useState} from 'react';
-import {RouteChildrenProps} from 'react-router';
+import {RouteChildrenProps, useLocation} from 'react-router';
 import {Link, Route} from 'react-router-dom';
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from 'react-vapor';
 
@@ -51,14 +51,21 @@ const CollapsibleSideSection: React.FC<{nav: NavItem}> = ({nav}) => {
 };
 
 export const Navigation: React.FunctionComponent = () => {
+    const {pathname} = useLocation();
+
     const sideNav = NavItems.map((nav) => {
         if (nav.label) {
-            return <SideNavigationMenuSection title={<NavLink href={nav.href} label={nav.label} />} />;
+            return (
+                <SideNavigationMenuSection
+                    isActive={pathname.includes(nav.href)}
+                    title={<NavLink href={nav.href} label={nav.label} />}
+                />
+            );
         }
         if (nav.children) {
             return <CollapsibleSideSection nav={nav} />;
         }
     });
 
-    return <SideNavigation className="demo-side-nav">{sideNav}</SideNavigation>;
+    return <SideNavigation className="navigation-menu-sections">{sideNav}</SideNavigation>;
 };

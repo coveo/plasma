@@ -145,7 +145,6 @@ export const NavItems: NavItem[] = [
     },
     {
         groupTitle: 'Input',
-
         children: [
             {
                 label: 'Action Button',

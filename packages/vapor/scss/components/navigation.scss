@@ -97,7 +97,7 @@
                     }
                     .navigation-menu-section-header-no-icon {
                         height: $navigation-menu-section-height;
-                        padding-left: $sidenavigation-padding-left;
+                        padding-left: $sidenavigation-padding-left + $navigation-active-border-width;
                     }
                 }
 
@@ -114,6 +114,7 @@
 
                     .navigation-menu-section-item {
                         font-weight: var(--main-font-regular);
+                        border-left: $navigation-active-border-width solid transparent;
                         cursor: pointer;
 
                         &.disabled {
