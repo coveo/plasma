@@ -1,11 +1,11 @@
 import * as React from 'react';
-import {Redirect, Route, RouteComponentProps, Switch} from 'react-router-dom';
+import {Route, RouteComponentProps, Switch} from 'react-router-dom';
 import {Loading} from 'react-vapor';
 import * as _ from 'underscore';
 
 import ComponentPage from './ComponentPage';
 import {IComponent} from './ComponentsInterface';
-import SideMenu from './Menu';
+import {NotFound} from './NotFound';
 
 const componentFiles = require.context('./examples', true, /Examples?\.js?$/i, 'lazy');
 
@@ -48,15 +48,12 @@ const Components: React.FunctionComponent<RouteComponentProps> = ({match}) => {
     }
 
     return (
-        <>
-            <SideMenu components={components} />
-            <div className="coveo-form flex-auto relative shadow-2 ml4 overflow-auto demo-content">
-                <Switch>
-                    {routes}
-                    <Route path="/" component={() => <Redirect to={`${match.url}/${components[0].name}`} />} />
-                </Switch>
-            </div>
-        </>
+        <div className="coveo-form flex-auto relative overflow-auto demo-content">
+            <Switch>
+                {routes}
+                <Route path="*" component={NotFound} />
+            </Switch>
+        </div>
     );
 };
 

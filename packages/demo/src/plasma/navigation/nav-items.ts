@@ -1,11 +1,10 @@
-interface NavItem {
+export interface NavItem {
     groupTitle?: string;
     label?: string;
     href?: string;
     selected?: boolean;
     children?: NavItem[];
     disabled?: boolean;
-    new?: boolean;
 }
 
 /**
@@ -52,19 +51,14 @@ export const NavItems: NavItem[] = [
     },
     {
         label: 'Brand',
-        href: '/Brand',
+        href: '/brand',
     },
     {
         groupTitle: 'Foundations',
         children: [
             {
-                label: 'Palette',
-                href: '/styles/Palette',
-                disabled: true,
-            },
-            {
-                label: 'Typekit',
-                href: '/styles/Typekit',
+                label: 'Effects',
+                href: '/components/Effects',
                 disabled: true,
             },
             {
@@ -73,12 +67,17 @@ export const NavItems: NavItem[] = [
             },
             {
                 label: 'Illustration',
-                href: '/styles/Illustration',
+                href: '/components/Illustration',
                 disabled: true,
             },
             {
-                label: 'Effects',
-                href: '/styles/Effects',
+                label: 'Palette',
+                href: '/components/Palette',
+                disabled: true,
+            },
+            {
+                label: 'Typekit',
+                href: '/components/Typekit',
                 disabled: true,
             },
         ],
@@ -238,11 +237,6 @@ export const NavItems: NavItem[] = [
         groupTitle: 'Navigation',
         children: [
             {
-                label: 'Page Title / Breadcrumbs',
-                href: '/components/Header',
-                disabled: true,
-            },
-            {
                 label: 'Flat Select',
                 href: '/components/FlatSelect',
             },
@@ -251,12 +245,21 @@ export const NavItems: NavItem[] = [
                 href: '/components/OptionsCycle',
             },
             {
+                label: 'Page Title / Breadcrumbs',
+                href: '/components/Header',
+                disabled: true,
+            },
+            {
                 label: 'Pagination',
                 href: '/components/Pagination',
             },
             {
                 label: 'Sidebar Navigation',
                 href: '/components/SideNavigation',
+            },
+            {
+                label: 'Subnavigation',
+                href: '/components/Subnavigation',
             },
             {
                 label: 'Tabs',
@@ -268,16 +271,12 @@ export const NavItems: NavItem[] = [
         groupTitle: 'Feedback and Info',
         children: [
             {
-                label: 'Toast',
-                href: '/components/Toast',
+                label: 'Info Token',
+                href: '/components/InfoToken',
             },
             {
                 label: 'InfoBox',
                 href: '/components/InfoBox',
-            },
-            {
-                label: 'Info Token',
-                href: '/components/InfoToken',
             },
             {
                 label: 'Limit Card',
@@ -323,6 +322,10 @@ export const NavItems: NavItem[] = [
                 href: '/components/Badge',
             },
             {
+                label: 'Toast',
+                href: '/components/Toast',
+            },
+            {
                 label: 'Tooltip',
                 href: '/components/Tooltip',
             },
@@ -359,62 +362,218 @@ export const NavItems: NavItem[] = [
     {
         groupTitle: 'Not included',
         children: [
-            {label: 'Actionable Item', href: '/components/ActionableItem'},
-            {label: 'Action Bar Connected', href: '/components/ActionBarConnected'},
-            {label: 'Blankslate', href: '/components/BlankSlate'},
-            {label: 'Bordered Line', href: '/components/BorderedLine'},
-            {label: 'Browser Preview', href: '/components/BrowserPreview'},
-            {label: 'Card Home', href: '/styles/cards/home'},
-            {label: 'Card Material', href: '/styles/cards/material'},
-            {label: 'Card Wizard', href: '/styles/cards/wizard'},
-            {label: 'Chart', href: '/components/Chart'},
-            {label: 'Colour Bar', href: '/components/ColorBar'},
-            {label: 'Colour Picker', href: '/components/ColorPicker'},
-            {label: 'Date Picker', href: '/components/DatePicker'},
-            {label: 'Facet Connected', href: '/components/FacetConnected'},
-            {label: 'File Picker', href: '/components/Filepicker'},
-            {label: 'Footer', href: '/components/Footer'},
-            {label: 'Icon Badge', href: '/components/IconBadge'},
-            {label: 'Item Filter', href: '/components/Item Filter'},
-            {label: 'Item Filter Connected', href: '/components/ItemFilterConnected'},
-            {label: 'JSON Editor', href: '/components/JSONEditor'},
-            {label: 'Labeled Value', href: '/components/LabeledValue'},
-            {label: 'Last Updated', href: '/components/LastUpdated'},
-            {label: 'Last Updated Connected', href: '/components/LastUpdatedConnected'},
-            {label: 'Link Svg', href: '/components/LinkSvg'},
-            {label: 'List Box', href: '/components/ListBox'},
-            {label: 'Member', href: '/styles/components/member'},
-            {label: 'Modal Wizard', href: '/components/ModalWizard'},
-            {label: 'Multi Select', href: '/components/MultiSelect'},
-            {label: 'Pagination Connected', href: '/components/PaginationConnected'},
-            {label: 'Partialstring Match', href: '/components/PartialstringMatch'},
-            {label: 'Popover', href: '/components/Popover'},
-            {label: 'Refesh', href: '/components/Refresh'},
-            {label: 'Section', href: '/components/Section'},
-            {label: 'Separator', href: '/components/Separator'},
-            {label: 'Sidenavigation Loading', href: '/components/SidenavigationLoading'},
-            {label: 'Slidey', href: '/components/Slidey'},
-            {label: 'Spaced Box', href: '/styles/layout/spaced-box'},
-            {label: 'Subnavigation', href: '/components/Subnavigation'},
-            {label: 'SVG', href: '/components/SVG'},
-            {label: 'Sync', href: '/components/Sync'},
-            {label: 'Table Loading', href: '/components/TableHOCLoading'},
-            {label: 'Table Server', href: '/components/TableHOCServer'},
-            {label: 'Table Blank Slate', href: '/components/TableHOCwithBlankSlate'},
-            {label: 'Tabs Connected', href: '/components/TabsConnected'},
-            {label: 'Text Area', href: '/components/TextArea'},
-            {label: 'Toast Connected', href: '/components/ToastConnected'},
-            {label: 'Toast Content', href: '/components/ToastContent'},
-            {label: 'Transparency', href: '/styles/transparency'},
-            {label: 'Typekit - Headings', href: '/styles/typography/headings'},
-            {label: 'Typekit - Utilities', href: '/styles/typography/utilities'},
-            {label: 'Typekit - Lists', href: '/styles/typography/lists'},
-            {label: 'Typekit - Text Size', href: '/styles/utility/line-height'},
-            {label: 'Typekit - Text Colors', href: '/styles/utility/text-colors'},
-            {label: 'Typekit - Icon Colors', href: '/styles/utility/icon-colors'},
-            {label: 'Typekit - Whitespace', href: '/styles/utility/whitespace'},
-            {label: 'Cursor', href: '/styles/utility/cursor'},
-            {label: 'Color Dots', href: '/styles/utility/color-dots'},
+            {
+                label: 'Action Bar Connected',
+                href: '/components/ActionBarConnected',
+            },
+            {
+                label: 'Blankslate',
+                href: '/components/BlankSlate',
+            },
+            {
+                label: 'Browser Preview',
+                href: '/components/BrowserPreview',
+            },
+            {
+                label: 'Card Home',
+                href: '/styles/cards/home',
+            },
+            {
+                label: 'Card Material',
+                href: '/styles/cards/material',
+            },
+            {
+                label: 'Card Wizard',
+                href: '/styles/cards/wizard',
+            },
+            {
+                label: 'Chart',
+                href: '/components/Chart',
+            },
+            {
+                label: 'Color Dots',
+                href: '/styles/utility/color-dots',
+            },
+            {
+                label: 'Colour Bar',
+                href: '/components/ColorBar',
+            },
+            {
+                label: 'Colour Picker',
+                href: '/components/ColorPicker',
+            },
+            {
+                label: 'Cursor',
+                href: '/styles/utility/cursor',
+            },
+            {
+                label: 'Date Picker',
+                href: '/components/DatePicker',
+            },
+            {
+                label: 'Facet Connected',
+                href: '/components/FacetConnected',
+            },
+            {
+                label: 'File Picker',
+                href: '/components/Filepicker',
+            },
+            {
+                label: 'Footer',
+                href: '/components/Footer',
+            },
+            {
+                label: 'Icon Badge',
+                href: '/components/IconBadge',
+            },
+            {
+                label: 'Item Filter',
+                href: '/components/Item Filter',
+            },
+            {
+                label: 'Item Filter Connected',
+                href: '/components/ItemFilterConnected',
+            },
+            {
+                label: 'JSON Editor',
+                href: '/components/JSONEditor',
+            },
+            {
+                label: 'Labeled Value',
+                href: '/components/LabeledValue',
+            },
+            {
+                label: 'Last Updated',
+                href: '/components/LastUpdated',
+            },
+            {
+                label: 'Last Updated Connected',
+                href: '/components/LastUpdatedConnected',
+            },
+            {
+                label: 'Link Svg',
+                href: '/components/LinkSvg',
+            },
+            {
+                label: 'List Box',
+                href: '/components/ListBox',
+            },
+            {
+                label: 'Member',
+                href: '/styles/components/member',
+            },
+            {
+                label: 'Modal Wizard',
+                href: '/components/ModalWizard',
+            },
+            {
+                label: 'Multi Select',
+                href: '/components/MultiSelect',
+            },
+            {
+                label: 'Pagination Connected',
+                href: '/components/PaginationConnected',
+            },
+            {
+                label: 'Partialstring Match',
+                href: '/components/PartialstringMatch',
+            },
+            {
+                label: 'Popover',
+                href: '/components/Popover',
+            },
+            {
+                label: 'Refesh',
+                href: '/components/Refresh',
+            },
+            {
+                label: 'Section',
+                href: '/components/Section',
+            },
+            {
+                label: 'Separator',
+                href: '/components/Separator',
+            },
+            {
+                label: 'Sidenavigation Loading',
+                href: '/components/SidenavigationLoading',
+            },
+            {
+                label: 'Slidey',
+                href: '/components/Slidey',
+            },
+            {
+                label: 'Spaced Box',
+                href: '/styles/layout/spaced-box',
+            },
+            {
+                label: 'SVG',
+                href: '/components/SVG',
+            },
+            {
+                label: 'Sync',
+                href: '/components/Sync',
+            },
+            {
+                label: 'Table Blank Slate',
+                href: '/components/TableHOCwithBlankSlate',
+            },
+            {
+                label: 'Table Loading',
+                href: '/components/TableHOCLoading',
+            },
+            {
+                label: 'Table Server',
+                href: '/components/TableHOCServer',
+            },
+            {
+                label: 'Tabs Connected',
+                href: '/components/TabsConnected',
+            },
+            {
+                label: 'Text Area',
+                href: '/components/TextArea',
+            },
+            {
+                label: 'Toast Connected',
+                href: '/components/ToastConnected',
+            },
+            {
+                label: 'Toast Content',
+                href: '/components/ToastContent',
+            },
+            {
+                label: 'Transparency',
+                href: '/styles/transparency',
+            },
+            {
+                label: 'Typekit - Headings',
+                href: '/styles/typography/headings',
+            },
+            {
+                label: 'Typekit - Icon Colors',
+                href: '/styles/utility/icon-colors',
+            },
+            {
+                label: 'Typekit - Lists',
+                href: '/styles/typography/lists',
+            },
+            {
+                label: 'Typekit - Text Colors',
+                href: '/styles/utility/text-colors',
+            },
+            {
+                label: 'Typekit - Text Size',
+                href: '/styles/utility/line-height',
+            },
+            {
+                label: 'Typekit - Utilities',
+                href: '/styles/typography/utilities',
+            },
+            {
+                label: 'Typekit - Whitespace',
+                href: '/styles/utility/whitespace',
+            },
         ],
     },
 ];
