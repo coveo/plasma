@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.1](https://github.com/coveo/react-vapor/compare/v28.2.0...v28.2.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* **tabcomponent:** blue line should be 4 px ([2843da7](https://github.com/coveo/react-vapor/commit/2843da7e3f4b834a9d98fdcc97924f4bb959da97))
+
+
+
+
+
 # [28.2.0](https://github.com/coveo/react-vapor/compare/v28.1.8...v28.2.0) (2021-11-18)
 
 

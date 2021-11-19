@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [28.2.1](https://github.com/coveo/react-vapor/compare/v28.2.0...v28.2.1) (2021-11-19)
+
+
+### Bug Fixes
+
+* **tabcomponent:** make all tab bold, not just the active one ([4d0b80c](https://github.com/coveo/react-vapor/commit/4d0b80c9a296067b9dd64aba5e2e955d3060a03e))
+
+
+
+
+
 # [28.2.0](https://github.com/coveo/react-vapor/compare/v28.1.8...v28.2.0) (2021-11-18)
 
 
