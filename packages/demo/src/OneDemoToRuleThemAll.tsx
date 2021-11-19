@@ -8,15 +8,15 @@ import {Loading} from 'react-vapor';
 import logo from '../resources/plasma-logo.svg';
 import ScrollToTop from './demo-building-blocs/ScrollTop';
 import Brand from './plasma/Brand';
-import {DisplayAndUtilitiesRoutes} from './plasma/display-and-utilities';
 import Home from './plasma/Home';
 import {Navigation} from './plasma/navigation/SideNavigation';
-import {NotIncludedRoutes} from './plasma/not-included';
+import {DisplayAndUtilitiesRoutes} from './plasma/routes/display-and-utilities';
 import {FeedbackAndInfoRoutes} from './plasma/routes/feedback-and-info';
 import {FoundationsRoutes} from './plasma/routes/foundation';
 import {InputRoutes} from './plasma/routes/input';
 import {LayoutRoutes} from './plasma/routes/layout';
 import {NavigationRoutes} from './plasma/routes/navigation';
+import {NotIncludedRoutes} from './plasma/routes/not-included';
 
 const Header = () => (
     <div id="header" className="flex flex-center space-between demo-header">
