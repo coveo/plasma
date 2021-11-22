@@ -17,6 +17,8 @@ import {
 } from 'react-vapor';
 import * as _ from 'underscore';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
     {displayValue: 'Test One', value: '1'},
@@ -110,189 +112,193 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
 
     render() {
         return (
-            <div className="mb2">
-                <div className="form-group">
-                    <label className="form-control-label">A Simple Multi Select without items</label>
-                    <br />
-                    <MultiSelectConnected id={UUID.generate()} items={[]} />
+            <VaporComponent id="multiselect" title="Multi-select" usage="">
+                <div className="mb2">
+                    <div className="form-group">
+                        <label className="form-control-label">A Simple Multi Select without items</label>
+                        <br />
+                        <MultiSelectConnected id={UUID.generate()} items={[]} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Simple Multi Select with only one items</label>
+                        <br />
+                        <MultiSelectConnected id={UUID.generate()} items={[{value: 'Single Item'}]} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select with filter, disabled</label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'Single Item'}]} disabled />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Simple Multi Select with Custom Strings</label>
+                        <br />
+                        <MultiSelectConnected
+                            id={UUID.generate()}
+                            items={this.state.first}
+                            placeholder="Select something"
+                            deselectAllTooltipText="Remove all"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Sortable Multi Select with Custom Strings</label>
+                        <br />
+                        <MultiSelectConnected
+                            id={UUID.generate()}
+                            items={this.state.hoc}
+                            placeholder="Select something"
+                            deselectAllTooltipText="Remove all"
+                            sortable
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select With Filter</label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select With Filter and Custom Values</label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter and without selected values in readonly
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues readOnly />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter and Custom Values in readonly
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues readOnly />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter, Custom Values and no items
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter, Custom Values and list of items selectable
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} customValues />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter and list of items selectable
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select With Filter and default list</label>
+                        <br />
+                        <MultiSelectWithFilter
+                            id={UUID.generate()}
+                            defaultCustomValues={['c', 'd']}
+                            items={[{value: 'a'}, {value: 'b'}]}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter, default list and Custom Values{' '}
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter
+                            id={UUID.generate()}
+                            defaultCustomValues={['c', 'd']}
+                            items={[{value: 'a'}, {value: 'b'}]}
+                            customValues
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter that only match display value
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter
+                            id={UUID.generate()}
+                            items={this.state.hoc}
+                            matchFilter={(filter: string, item: IItemBoxProps) =>
+                                getReactNodeTextContent(item.displayValue).indexOf(filter) !== -1
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select With Predicates</label>
+                        <br />
+                        <MultiSelectWithPredicate
+                            id={UUID.generate()}
+                            items={this.state.hoc}
+                            options={defaultFlatSelectOptions}
+                            matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select With 500px width</label>
+                        <br />
+                        <MultiSelectConnected
+                            id={UUID.generate()}
+                            items={this.state.hoc}
+                            multiSelectStyle={{width: '500px'}}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select with width 100%</label>
+                        <br />
+                        <MultiSelectConnected
+                            id={'test'}
+                            items={this.state.hoc}
+                            selectClasses="mod-width-100"
+                            multiSelectStyle={{width: '100%'}}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">A Multi Select With Filter and Predicates</label>
+                        <br />
+                        <MultiSelectWithPredicateAndFilter
+                            id={UUID.generate()}
+                            items={this.state.hoc}
+                            options={defaultFlatSelectOptions}
+                            matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter, Predicate and Custom Values
+                        </label>
+                        <br />
+                        <MultiSelectWithPredicateAndFilter
+                            id={UUID.generate()}
+                            items={this.state.hoc}
+                            options={defaultFlatSelectOptions}
+                            matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
+                            customValues
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            A Multi Select With Filter, default list and Custom Values{' '}
+                        </label>
+                        <br />
+                        <MultiSelectWithFilter
+                            id={UUID.generate()}
+                            defaultCustomValues={['b'.repeat(100)]}
+                            items={[{value: 'a'.repeat(100)}]}
+                            customValues
+                        />
+                    </div>
+                    <MultiSelectWithInitialValuesExample />
+                    <div className="form-group">
+                        <WithNonEmptyMultiSelectExample />
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Simple Multi Select with only one items</label>
-                    <br />
-                    <MultiSelectConnected id={UUID.generate()} items={[{value: 'Single Item'}]} />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select with filter, disabled</label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'Single Item'}]} disabled />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Simple Multi Select with Custom Strings</label>
-                    <br />
-                    <MultiSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.first}
-                        placeholder="Select something"
-                        deselectAllTooltipText="Remove all"
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Sortable Multi Select with Custom Strings</label>
-                    <br />
-                    <MultiSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        placeholder="Select something"
-                        deselectAllTooltipText="Remove all"
-                        sortable
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With Filter</label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With Filter and Custom Values</label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter and without selected values in readonly
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues readOnly />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter and Custom Values in readonly
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues readOnly />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With Filter, Custom Values and no items</label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter, Custom Values and list of items selectable
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} customValues />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter and list of items selectable
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With Filter and default list</label>
-                    <br />
-                    <MultiSelectWithFilter
-                        id={UUID.generate()}
-                        defaultCustomValues={['c', 'd']}
-                        items={[{value: 'a'}, {value: 'b'}]}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter, default list and Custom Values{' '}
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter
-                        id={UUID.generate()}
-                        defaultCustomValues={['c', 'd']}
-                        items={[{value: 'a'}, {value: 'b'}]}
-                        customValues
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter that only match display value
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        matchFilter={(filter: string, item: IItemBoxProps) =>
-                            getReactNodeTextContent(item.displayValue).indexOf(filter) !== -1
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With Predicates</label>
-                    <br />
-                    <MultiSelectWithPredicate
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With 500px width</label>
-                    <br />
-                    <MultiSelectConnected
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        multiSelectStyle={{width: '500px'}}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select with width 100%</label>
-                    <br />
-                    <MultiSelectConnected
-                        id={'test'}
-                        items={this.state.hoc}
-                        selectClasses="mod-width-100"
-                        multiSelectStyle={{width: '100%'}}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">A Multi Select With Filter and Predicates</label>
-                    <br />
-                    <MultiSelectWithPredicateAndFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter, Predicate and Custom Values
-                    </label>
-                    <br />
-                    <MultiSelectWithPredicateAndFilter
-                        id={UUID.generate()}
-                        items={this.state.hoc}
-                        options={defaultFlatSelectOptions}
-                        matchPredicate={(p: string, i: IItemBoxProps) => this.matchPredicate(p, i)}
-                        customValues
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        A Multi Select With Filter, default list and Custom Values{' '}
-                    </label>
-                    <br />
-                    <MultiSelectWithFilter
-                        id={UUID.generate()}
-                        defaultCustomValues={['b'.repeat(100)]}
-                        items={[{value: 'a'.repeat(100)}]}
-                        customValues
-                    />
-                </div>
-                <MultiSelectWithInitialValuesExample />
-                <div className="form-group">
-                    <WithNonEmptyMultiSelectExample />
-                </div>
-            </div>
+            </VaporComponent>
         );
     }
 

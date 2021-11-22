@@ -12,6 +12,7 @@ import {
 
 import {IReactVaporExampleState} from '../../../../Reducers';
 import {addListBoxExample, removeListBoxExample, updateListBoxExample} from './ListBoxExampleActions';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 interface IListBoxExamplesDispatchProps {
     updateOptions: () => void;
@@ -73,7 +74,7 @@ export class ListBoxExampleConnected extends React.Component<IListBoxExamplesPro
 
     render() {
         return (
-            <div>
+            <VaporComponent id="list-box-connected" title="List Box Connected" usage="">
                 <ListBoxConnected id={this.props.id} items={this.props.items} multi={!!this.props.multi} />
                 <Button
                     key={this.props.id + 'button'}
@@ -82,7 +83,7 @@ export class ListBoxExampleConnected extends React.Component<IListBoxExamplesPro
                     name="Update options with a reset on selected values"
                     onClick={() => this.handleOnClick()}
                 />
-            </div>
+            </VaporComponent>
         );
     }
 }

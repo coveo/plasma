@@ -23,7 +23,7 @@ import {
 } from 'react-vapor';
 
 import {IReactVaporExampleState} from '../../../../Reducers';
-
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo');
@@ -70,53 +70,57 @@ const StandardModalWizardDisconnected: React.FunctionComponent<ConnectedProps<ty
     };
 
     return (
-        <Section level={2} title="Standard ModalWizard">
-            <Button name="Open standard wizard" enabled primary onClick={() => open('standard-wizard')} />
-            <ModalWizard
-                id="standard-wizard"
-                title="Wizard 🧙‍♂️"
-                onFinish={(close) => {
-                    alert('Congratulations! You completed the wizard');
-                    close();
-                }}
-                validateStep={validateStep}
-                isDirty={!!selectedPath || !!inputTwoValue}
-                modalFooterChildren={(currentStep, numberOfSteps) =>
-                    currentStep < numberOfSteps - 1 ? null : <div className="flex-auto">Last Step!</div>
-                }
-            >
-                <Form title="Step 1" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
-                    <RadioSelectConnected id="radio-step-1">
-                        <Radio id="path1" name="wizardPath" value="redhorn">
-                            <Label>Pass over the mountain</Label>
-                        </Radio>
-                        <Radio id="path2" name="wizardPath" value="moria">
-                            <Label>Go under the mountain through Moria</Label>
-                        </Radio>
-                    </RadioSelectConnected>
-                </Form>
-                <Form title="Step 2" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
-                    <InputConnected
-                        id="input-step-2"
-                        autoComplete="off"
-                        validateOnChange
-                        validate={(value: string) => !!value.trim()}
-                        labelTitle={<Label invalidMessage="Cannot be left empty">Enter something to continue</Label>}
-                    />
-                </Form>
-                {selectedPath === 'redhorn' && (
-                    <Form title="Step 3" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
-                        Its longer, but we'll get there!
-                    </Form>
-                )}
-                <Form
-                    title={selectedPath === 'moria' ? 'Step 3' : 'Step 4'}
-                    mods={['mod-form-top-bottom-padding', 'mod-header-padding']}
+        <VaporComponent id="modal-wizard" title="Modal Wizard" usage="">
+            <Section level={2} title="Standard ModalWizard">
+                <Button name="Open standard wizard" enabled primary onClick={() => open('standard-wizard')} />
+                <ModalWizard
+                    id="standard-wizard"
+                    title="Wizard 🧙‍♂️"
+                    onFinish={(close) => {
+                        alert('Congratulations! You completed the wizard');
+                        close();
+                    }}
+                    validateStep={validateStep}
+                    isDirty={!!selectedPath || !!inputTwoValue}
+                    modalFooterChildren={(currentStep, numberOfSteps) =>
+                        currentStep < numberOfSteps - 1 ? null : <div className="flex-auto">Last Step!</div>
+                    }
                 >
-                    Enter "coveo" at step two to finish!
-                </Form>
-            </ModalWizard>
-        </Section>
+                    <Form title="Step 1" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
+                        <RadioSelectConnected id="radio-step-1">
+                            <Radio id="path1" name="wizardPath" value="redhorn">
+                                <Label>Pass over the mountain</Label>
+                            </Radio>
+                            <Radio id="path2" name="wizardPath" value="moria">
+                                <Label>Go under the mountain through Moria</Label>
+                            </Radio>
+                        </RadioSelectConnected>
+                    </Form>
+                    <Form title="Step 2" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
+                        <InputConnected
+                            id="input-step-2"
+                            autoComplete="off"
+                            validateOnChange
+                            validate={(value: string) => !!value.trim()}
+                            labelTitle={
+                                <Label invalidMessage="Cannot be left empty">Enter something to continue</Label>
+                            }
+                        />
+                    </Form>
+                    {selectedPath === 'redhorn' && (
+                        <Form title="Step 3" mods={['mod-form-top-bottom-padding', 'mod-header-padding']}>
+                            Its longer, but we'll get there!
+                        </Form>
+                    )}
+                    <Form
+                        title={selectedPath === 'moria' ? 'Step 3' : 'Step 4'}
+                        mods={['mod-form-top-bottom-padding', 'mod-header-padding']}
+                    >
+                        Enter "coveo" at step two to finish!
+                    </Form>
+                </ModalWizard>
+            </Section>
+        </VaporComponent>
     );
 };
 

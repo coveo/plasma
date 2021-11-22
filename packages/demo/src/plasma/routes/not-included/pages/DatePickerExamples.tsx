@@ -18,14 +18,17 @@ import {
     FOUR_SELECTION_BOXES,
     SELECTION_BOXES,
 } from './DatePickerExamplesCommon';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const DatePickerExamples: ExampleComponent = () => (
-    <Section>
-        <CalendarComponent />
-        <CountdownComponent />
-        <DatePickerComponents />
-        <DatesSelectionComponent />
-    </Section>
+    <VaporComponent id="datepicker" title="Date Picker" usage="">
+        <Section>
+            <CalendarComponent />
+            <CountdownComponent />
+            <DatePickerComponents />
+            <DatesSelectionComponent />
+        </Section>
+    </VaporComponent>
 );
 DatePickerExamples.title = 'DatePicker';
 

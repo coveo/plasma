@@ -30,6 +30,7 @@ import {
 import * as _ from 'underscore';
 
 import {TableHOCExampleUtils, TableHOCServerExampleContext} from './TableHOCExampleUtils';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 type TableHOCServerProps = RouteComponentProps & ReturnType<typeof mapDispatchToProps>;
 
@@ -136,41 +137,43 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
 
     render() {
         return (
-            <Section title="Server table with numbered rows">
-                <span className="block my2">
-                    Please note that the backend service doesn't support dates but we still make a request for every
-                    change in the date range.
-                </span>
-                <TableHOCServerExampleContext.Provider
-                    value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
-                >
-                    <this.ServerTableComposed
-                        id={TableHOCServerExampleId}
-                        className="table table-numbered mod-collapsible-rows"
-                        data={this.state.data?.users ?? []}
-                        renderBody={TableHOCExampleUtils.generateRows}
-                        tableHeader={renderHeader()}
-                        onUpdate={this.onUpdate}
-                        onUpdateUrl={this.updateUrl}
-                        isLoading={this.state.isLoading}
-                        loading={{numberOfColumns: 6}}
-                        filterPlaceholder="Filter all"
-                        filterBlankslate={{
-                            title: 'No result match the specified filter',
-                            description: 'Try reviewing the specified filters above or clearing all filters.',
-                            buttons: [
-                                {
-                                    name: 'Clear filter',
-                                    enabled: true,
-                                    onClick: this.props.resetFilter,
-                                },
-                            ],
-                        }}
+            <VaporComponent id="table-hoc-server" title="Table HOC Server" usage="">
+                <Section title="Server table with numbered rows">
+                    <span className="block my2">
+                        Please note that the backend service doesn't support dates but we still make a request for every
+                        change in the date range.
+                    </span>
+                    <TableHOCServerExampleContext.Provider
+                        value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
                     >
-                        <LastUpdated time={new Date()} />
-                    </this.ServerTableComposed>
-                </TableHOCServerExampleContext.Provider>
-            </Section>
+                        <this.ServerTableComposed
+                            id={TableHOCServerExampleId}
+                            className="table table-numbered mod-collapsible-rows"
+                            data={this.state.data?.users ?? []}
+                            renderBody={TableHOCExampleUtils.generateRows}
+                            tableHeader={renderHeader()}
+                            onUpdate={this.onUpdate}
+                            onUpdateUrl={this.updateUrl}
+                            isLoading={this.state.isLoading}
+                            loading={{numberOfColumns: 6}}
+                            filterPlaceholder="Filter all"
+                            filterBlankslate={{
+                                title: 'No result match the specified filter',
+                                description: 'Try reviewing the specified filters above or clearing all filters.',
+                                buttons: [
+                                    {
+                                        name: 'Clear filter',
+                                        enabled: true,
+                                        onClick: this.props.resetFilter,
+                                    },
+                                ],
+                            }}
+                        >
+                            <LastUpdated time={new Date()} />
+                        </this.ServerTableComposed>
+                    </TableHOCServerExampleContext.Provider>
+                </Section>
+            </VaporComponent>
         );
     }
 }

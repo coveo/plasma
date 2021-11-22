@@ -13,11 +13,13 @@ import {
     Tooltip,
 } from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 export class SectionExamples extends React.Component<any, any> {
     render() {
         return (
             // start-print
-            <>
+            <VaporComponent id="sections" title="Sections" usage="">
                 <Form>
                     <Section
                         title="Search panel"
@@ -231,7 +233,7 @@ export class SectionExamples extends React.Component<any, any> {
                         </LabeledInput>
                     </Section>
                 </Form>
-            </>
+            </VaporComponent>
             // stop-print
         );
     }

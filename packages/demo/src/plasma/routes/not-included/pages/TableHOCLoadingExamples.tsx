@@ -5,19 +5,22 @@ import * as _ from 'underscore';
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
 // move to tablehoc example utils
 import {generateDataWithFaker, generateTableRow} from '../../../../components/examples/TableHOCExamples';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
-    <Section>
-        <Section level={2} title="Table loading with the default number of row">
-            <TableLoadingExamplesWithDataNull />
+    <VaporComponent id="table-hoc-loading" title="Table HOC Loading" usage="">
+        <Section>
+            <Section level={2} title="Table loading with the default number of row">
+                <TableLoadingExamplesWithDataNull />
+            </Section>
+            <Section level={2} title="Table loading with the number of row equal to the number of data">
+                <TableLoadingExamplesWithData />
+            </Section>
+            <Section level={2} title="Big table loading">
+                <BigTableLoadingExample />
+            </Section>
         </Section>
-        <Section level={2} title="Table loading with the number of row equal to the number of data">
-            <TableLoadingExamplesWithData />
-        </Section>
-        <Section level={2} title="Big table loading">
-            <BigTableLoadingExample />
-        </Section>
-    </Section>
+    </VaporComponent>
 );
 TableHocLoadingExamples.title = 'TableHOC loading';
 

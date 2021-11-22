@@ -3,6 +3,7 @@ import * as React from 'react';
 import {Button, PopoverConnected, SplitLayout} from 'react-vapor';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const leftContent = (
     <div>
@@ -34,40 +35,42 @@ const rightContent = (
 );
 
 const PopoverConnectedExamples = () => (
-    <div className="mb5">
-        <div className="mt2 mb3">
-            <PopoverConnected
-                id="popover-connected-example1"
-                attachment="top left"
-                targetAttachment="bottom left"
-                className="mod-width-70"
-            >
-                <div className="btn">Click to toggle the popover</div>
-                <div className="coveo-child pb5">
-                    <SplitLayout
-                        className="pb4"
-                        leftChildren={<div className="m2">{leftContent}</div>}
-                        rightChildren={<div className="m2">{rightContent}</div>}
-                    />
-                    <div
-                        className="modal-footer mod-small"
-                        style={{
-                            position: 'absolute',
-                            marginLeft: '-20px',
-                            width: '100%',
-                            bottom: 0,
-                        }}
-                    >
-                        <Button enabled={true} small={true} name="Action Lorem" />
+    <VaporComponent id="popover-connected" title="Popover Connected" usage="">
+        <div className="mb5">
+            <div className="mt2 mb3">
+                <PopoverConnected
+                    id="popover-connected-example1"
+                    attachment="top left"
+                    targetAttachment="bottom left"
+                    className="mod-width-70"
+                >
+                    <div className="btn">Click to toggle the popover</div>
+                    <div className="coveo-child pb5">
+                        <SplitLayout
+                            className="pb4"
+                            leftChildren={<div className="m2">{leftContent}</div>}
+                            rightChildren={<div className="m2">{rightContent}</div>}
+                        />
+                        <div
+                            className="modal-footer mod-small"
+                            style={{
+                                position: 'absolute',
+                                marginLeft: '-20px',
+                                width: '100%',
+                                bottom: 0,
+                            }}
+                        >
+                            <Button enabled={true} small={true} name="Action Lorem" />
+                        </div>
                     </div>
-                </div>
-            </PopoverConnected>
+                </PopoverConnected>
+            </div>
+            <div className="display-block w100 mb5">
+                <p className="h3 mb2">{loremIpsum({count: 5, sentenceUpperBound: 15})}</p>
+                <p className="h3 mb2">{loremIpsum({count: 5, sentenceUpperBound: 15})}</p>
+            </div>
         </div>
-        <div className="display-block w100 mb5">
-            <p className="h3 mb2">{loremIpsum({count: 5, sentenceUpperBound: 15})}</p>
-            <p className="h3 mb2">{loremIpsum({count: 5, sentenceUpperBound: 15})}</p>
-        </div>
-    </div>
+    </VaporComponent>
 );
 
 export const PopoverExample: ExampleComponent = PopoverConnectedExamples;

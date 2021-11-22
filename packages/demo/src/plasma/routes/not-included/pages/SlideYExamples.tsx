@@ -2,6 +2,8 @@ import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
 import {Button, SlideY} from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 interface SlideYExamplesState {
     first: boolean;
     second: boolean;
@@ -25,34 +27,36 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
 
     render() {
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Basic SlideY animation</label>
-                    <div className="form-control">
-                        <Button
-                            name="Toggle"
-                            onClick={() => this.setState({...this.state, first: !this.state.first})}
-                            enabled
-                        ></Button>
-                        <SlideY in={this.state.first} timeout={500}>
-                            <div>{this.first}</div>
-                        </SlideY>
+            <VaporComponent id="slidey" title="Slide-Y" usage="">
+                <div className="mt2">
+                    <div className="form-group">
+                        <label className="form-control-label">Basic SlideY animation</label>
+                        <div className="form-control">
+                            <Button
+                                name="Toggle"
+                                onClick={() => this.setState({...this.state, first: !this.state.first})}
+                                enabled
+                            ></Button>
+                            <SlideY in={this.state.first} timeout={500}>
+                                <div>{this.first}</div>
+                            </SlideY>
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Very slow SlideY animation</label>
+                        <div className="form-control">
+                            <Button
+                                name="Toggle"
+                                onClick={() => this.setState({...this.state, second: !this.state.second})}
+                                enabled
+                            ></Button>
+                            <SlideY in={this.state.second} timeout={500} duration={5000}>
+                                <div>{this.second}</div>
+                            </SlideY>
+                        </div>
                     </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">Very slow SlideY animation</label>
-                    <div className="form-control">
-                        <Button
-                            name="Toggle"
-                            onClick={() => this.setState({...this.state, second: !this.state.second})}
-                            enabled
-                        ></Button>
-                        <SlideY in={this.state.second} timeout={500} duration={5000}>
-                            <div>{this.second}</div>
-                        </SlideY>
-                    </div>
-                </div>
-            </div>
+            </VaporComponent>
         );
     }
 }

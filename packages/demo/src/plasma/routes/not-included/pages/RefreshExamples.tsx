@@ -10,6 +10,8 @@ import {
     Section,
 } from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 // start-print
 const mapDispatchToProps = (dispatch: IDispatch) => ({
     start: (id: string) => dispatch(RefreshCallBackActions.start(id)),
@@ -17,7 +19,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 });
 
 const RefreshExamplesDisconnected = (props: ReturnType<typeof mapDispatchToProps>) => (
-    <>
+    <VaporComponent id="refresh" title="Refresh" usage="">
         <Section level={2} title="Component to handle Refresh">
             <LabeledInput label="Refresh counter">
                 <Button name="Start" className="btn mr2" onClick={() => props.start('refresh-1')} />
@@ -50,7 +52,7 @@ const RefreshExamplesDisconnected = (props: ReturnType<typeof mapDispatchToProps
                 </div>
             </LabeledInput>
         </Section>
-    </>
+    </VaporComponent>
 );
 
 export const RefreshExamples = connect(undefined, mapDispatchToProps)(RefreshExamplesDisconnected);

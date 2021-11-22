@@ -2,6 +2,7 @@ import * as React from 'react';
 import {IItemBoxProps, ITooltipProps, ListBox, ListBoxConnected, UUID} from 'react-vapor';
 
 import {ListBoxExampleConnected} from './ListBoxExampleConnected';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export class ListBoxExamples extends React.Component {
     private idSingle: string = 'listbox_connected_updated_single';
@@ -36,62 +37,68 @@ export class ListBoxExamples extends React.Component {
         ]);
 
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Default List Box</label>
-                    <div className="form-control">
-                        <ListBox items={defaultItems} />
+            <VaporComponent id="list-box" title="List Box" usage="">
+                <div className="mt2">
+                    <div className="form-group">
+                        <label className="form-control-label">Default List Box</label>
+                        <div className="form-control">
+                            <ListBox items={defaultItems} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Loading List Box</label>
+                        <div className="form-control">
+                            <ListBox items={defaultItems} isLoading />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">List Box with no items</label>
+                        <div className="form-control">
+                            <ListBox items={[]} noResultItem={{value: 'no items'}} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">List Box with an trigger on click items</label>
+                        <div className="form-control">
+                            <ListBox items={defaultItems} selected={['test1']} onOptionClick={triggerAlertFunction} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">List Box with an onClick event on the last element</label>
+                        <div className="form-control">
+                            <ListBox items={clickableItems} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">List Box Connected (single)</label>
+                        <div className="form-control">
+                            <ListBoxConnected id={UUID.generate()} items={defaultItems} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">List Box Connected (multi)</label>
+                        <div className="form-control">
+                            <ListBoxConnected id={UUID.generate()} items={defaultItems} multi />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            List Box Connected updated with new options (single)
+                        </label>
+                        <div className="form-control">
+                            <ListBoxExampleConnected id={this.idSingle} items={defaultItems} />
+                        </div>
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            List Box Connected updated with new options (multi)
+                        </label>
+                        <div className="form-control">
+                            <ListBoxExampleConnected id={this.idMulti} items={defaultItems} multi />
+                        </div>
                     </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">Loading List Box</label>
-                    <div className="form-control">
-                        <ListBox items={defaultItems} isLoading />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box with no items</label>
-                    <div className="form-control">
-                        <ListBox items={[]} noResultItem={{value: 'no items'}} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box with an trigger on click items</label>
-                    <div className="form-control">
-                        <ListBox items={defaultItems} selected={['test1']} onOptionClick={triggerAlertFunction} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box with an onClick event on the last element</label>
-                    <div className="form-control">
-                        <ListBox items={clickableItems} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box Connected (single)</label>
-                    <div className="form-control">
-                        <ListBoxConnected id={UUID.generate()} items={defaultItems} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box Connected (multi)</label>
-                    <div className="form-control">
-                        <ListBoxConnected id={UUID.generate()} items={defaultItems} multi />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box Connected updated with new options (single)</label>
-                    <div className="form-control">
-                        <ListBoxExampleConnected id={this.idSingle} items={defaultItems} />
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">List Box Connected updated with new options (multi)</label>
-                    <div className="form-control">
-                        <ListBoxExampleConnected id={this.idMulti} items={defaultItems} multi />
-                    </div>
-                </div>
-            </div>
+            </VaporComponent>
         );
     }
 }

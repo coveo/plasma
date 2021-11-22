@@ -1,10 +1,14 @@
 import * as React from 'react';
 import {Badge, Section, Separator} from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 export const SeparatorExamples = () => (
-    <Section>
-        <Badge label="Badge" />
-        <Separator />
-        <span>This is a text</span>
-    </Section>
+    <VaporComponent id="separator" title="Separator" usage="">
+        <Section>
+            <Badge label="Badge" />
+            <Separator />
+            <span>This is a text</span>
+        </Section>
+    </VaporComponent>
 );

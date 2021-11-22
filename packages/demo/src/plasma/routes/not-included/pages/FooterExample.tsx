@@ -15,15 +15,16 @@ import {
 } from 'react-vapor';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const lorem = loremIpsum({count: 200});
 const lorem1 = loremIpsum({count: 50});
 
 export const FooterExample: ExampleComponent = () => (
-    <>
+    <VaporComponent id="footer" title="Footer" usage="">
         <StickyFooterExample />
         <StickyFooterWithDirtyExample />
-    </>
+    </VaporComponent>
 );
 
 const StickyFooterExample: React.FunctionComponent = () => {

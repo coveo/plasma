@@ -3,6 +3,7 @@ import {INavigationOwnProps, LoadingActions, NavigationConnected, turnOffLoading
 import * as _ from 'underscore';
 
 import {Store} from '../../../../Store';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const navigationConnectedExampleId = 'navigation-connected';
 const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedExampleId];
@@ -28,12 +29,14 @@ export class PaginationConnectedExamples extends React.PureComponent {
             loadingIds: navigationConnectedExampleLoadingIds,
         };
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Pagination with Redux state and loading</label>
-                    <NavigationConnected {...navigationProps} />
+            <VaporComponent id="pagination-connected" title="Pagination Connected" usage="">
+                <div className="mt2">
+                    <div className="form-group">
+                        <label className="form-control-label">Pagination with Redux state and loading</label>
+                        <NavigationConnected {...navigationProps} />
+                    </div>
                 </div>
-            </div>
+            </VaporComponent>
         );
     }
 }

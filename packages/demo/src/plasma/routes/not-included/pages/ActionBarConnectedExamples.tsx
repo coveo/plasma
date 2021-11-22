@@ -2,6 +2,7 @@ import * as React from 'react';
 import {ActionBarConnected, ACTION_SEPARATOR, addActionsToActionBar, IActionOptions, Section} from 'react-vapor';
 
 import {Store} from '../../../../Store';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const actionBarId = 'action-bar-connected';
 
@@ -94,14 +95,16 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
 
     render() {
         return (
-            <Section title="Action bar examples">
-                <Section
-                    level={2}
-                    title="Action bar with Redux state and inline prompt (actions appear after 4 seconds)"
-                >
-                    <ActionBarConnected id={actionBarId} />
+            <VaporComponent id="action-bar-connected" title="Action Bar Connected" usage="">
+                <Section title="Action bar examples">
+                    <Section
+                        level={2}
+                        title="Action bar with Redux state and inline prompt (actions appear after 4 seconds)"
+                    >
+                        <ActionBarConnected id={actionBarId} />
+                    </Section>
                 </Section>
-            </Section>
+            </VaporComponent>
         );
     }
 }
