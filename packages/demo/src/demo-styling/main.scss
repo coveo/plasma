@@ -4,13 +4,18 @@
 @import 'syntax-highlighting';
 
 #App {
+    overflow: hidden;
     color: var(--default-text-color);
     font-weight: var(--main-font-regular);
     font-size: var(--default-font-size);
 
-    .header-title {
-        height: 27px;
-        margin-left: 2em;
+    .demo-header {
+        height: 112px;
+        background-color: var(--navy-blue-80);
+    }
+
+    .header-logo {
+        margin-left: 32px;
     }
 
     .header-height {
