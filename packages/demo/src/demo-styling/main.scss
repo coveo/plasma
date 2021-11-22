@@ -26,6 +26,7 @@
 
     .demo-content {
         @include slim-scroll(var(--deprecated-grey-2), var(--deprecated-grey-4));
+        padding-left: 1rem;
         overflow-y: overlay;
     }
 
