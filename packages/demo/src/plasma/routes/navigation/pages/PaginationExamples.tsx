@@ -1,6 +1,8 @@
 import * as React from 'react';
 import {INavigationProps, Navigation} from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 export class PaginationExamples extends React.PureComponent {
     static title: string = 'Pagination';
     render() {
@@ -12,28 +14,30 @@ export class PaginationExamples extends React.PureComponent {
             onPerPageClick: (newPerPage) => alert('New per page option selected: ' + newPerPage),
         };
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Pagination</label>
-                    <Navigation {...navigationProps} />
+            <VaporComponent id="pagination" title="Pagination" usage="">
+                <div className="mt2">
+                    <div className="form-group">
+                        <label className="form-control-label">Pagination</label>
+                        <Navigation {...navigationProps} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Pagination with loading</label>
+                        <Navigation {...navigationProps} isLoading={true} />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Pagination with custom values</label>
+                        <Navigation
+                            {...navigationProps}
+                            previousLabel="Précédente"
+                            nextLabel="Prochaine"
+                            numberOfPagesToShow={3}
+                            currentPage={1}
+                            perPageLabel="Items par page"
+                            perPageNumbers={[2, 10, 25, 50]}
+                        />
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">Pagination with loading</label>
-                    <Navigation {...navigationProps} isLoading={true} />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Pagination with custom values</label>
-                    <Navigation
-                        {...navigationProps}
-                        previousLabel="Précédente"
-                        nextLabel="Prochaine"
-                        numberOfPagesToShow={3}
-                        currentPage={1}
-                        perPageLabel="Items par page"
-                        perPageNumbers={[2, 10, 25, 50]}
-                    />
-                </div>
-            </div>
+            </VaporComponent>
         );
     }
 }
