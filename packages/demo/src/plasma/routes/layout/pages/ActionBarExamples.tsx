@@ -1,53 +1,55 @@
 import * as React from 'react';
 import {ActionBar, ACTION_SEPARATOR, IActionOptions, Section} from 'react-vapor';
 
-export class ActionBarExamples extends React.Component<any, any> {
-    render() {
-        const actions: IActionOptions[] = [
-            {
-                name: 'Link to Coveo',
-                link: 'http://coveo.com',
-                target: '_blank',
-                icon: 'exit',
-                primary: true,
-                enabled: true,
-            },
-            {
-                name: 'action1',
-                trigger: () => alert('Action 1 was triggered'),
-                enabled: true,
-            },
-            ACTION_SEPARATOR,
-            {
-                name: 'action2',
-                trigger: () => alert('Action 2 was triggered'),
-                enabled: true,
-            },
-            {
-                name: 'Link to Coveo (disabled)',
-                link: 'http://coveo.com',
-                target: '_blank',
-                icon: 'exit',
-                primary: true,
-                enabled: false,
-                hideDisabled: false,
-                tooltip: "You cannot access Coveo's website at the moment.",
-                tooltipPlacement: 'bottom',
-            },
-            {
-                name: 'visibly disabled',
-                trigger: () => alert('I will never be triggered'),
-                target: '_blank',
-                icon: 'open',
-                primary: true,
-                enabled: false,
-                hideDisabled: false,
-                tooltip: 'You cannot trigger me.',
-                tooltipPlacement: 'bottom',
-            },
-        ];
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
-        return (
+export const ActionBarExamples: React.FunctionComponent = () => {
+    const actions: IActionOptions[] = [
+        {
+            name: 'Link to Coveo',
+            link: 'http://coveo.com',
+            target: '_blank',
+            icon: 'exit',
+            primary: true,
+            enabled: true,
+        },
+        {
+            name: 'action1',
+            trigger: () => alert('Action 1 was triggered'),
+            enabled: true,
+        },
+        ACTION_SEPARATOR,
+        {
+            name: 'action2',
+            trigger: () => alert('Action 2 was triggered'),
+            enabled: true,
+        },
+        {
+            name: 'Link to Coveo (disabled)',
+            link: 'http://coveo.com',
+            target: '_blank',
+            icon: 'exit',
+            primary: true,
+            enabled: false,
+            hideDisabled: false,
+            tooltip: "You cannot access Coveo's website at the moment.",
+            tooltipPlacement: 'bottom',
+        },
+        {
+            name: 'visibly disabled',
+            trigger: () => alert('I will never be triggered'),
+            target: '_blank',
+            icon: 'open',
+            primary: true,
+            enabled: false,
+            hideDisabled: false,
+            tooltip: 'You cannot trigger me.',
+            tooltipPlacement: 'bottom',
+        },
+    ];
+
+    return (
+        <VaporComponent id="action-bar" title="Action Bar" usage="Different uses of the Action Bar">
             <Section level={1} title="ActionBar examples">
                 <Section level={2} title="Action bar without actions">
                     <ActionBar />
@@ -98,6 +100,6 @@ export class ActionBarExamples extends React.Component<any, any> {
                     />
                 </Section>
             </Section>
-        );
-    }
-}
+        </VaporComponent>
+    );
+};

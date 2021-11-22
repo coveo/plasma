@@ -20,17 +20,19 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
-
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export interface ModalConnectedExampleProps {
     id: string;
 }
 
 export const ModalWindowExamples: ExampleComponent = () => (
-    <Section>
-        <ModalCompositeExampleConnected />
-        <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />
-        <ModalLoadingExample />
-    </Section>
+    <VaporComponent id="modal-window" title="Modal Window" usage="">
+        <Section>
+            <ModalCompositeExampleConnected />
+            <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />
+            <ModalLoadingExample />
+        </Section>
+    </VaporComponent>
 );
 
 ModalWindowExamples.title = 'Modal Window';

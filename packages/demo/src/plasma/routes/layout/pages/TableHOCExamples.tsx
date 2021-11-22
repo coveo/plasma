@@ -24,6 +24,7 @@ import {
 import * as _ from 'underscore';
 
 import {SELECTION_BOXES_LONG} from '../../not-included/pages/DatePickerExamplesCommon';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export interface IExampleRowData {
     city: string;
@@ -34,14 +35,16 @@ export interface IExampleRowData {
 }
 
 export const TableHOCExamples = () => (
-    <Section>
-        <Section level={2} title="Table with Data">
-            <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />
+    <VaporComponent id="table-hoc" title="Table" usage="">
+        <Section>
+            <Section level={2} title="Table with Data">
+                <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />
+            </Section>
+            <Section level={2} title="Table without data">
+                <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering2" data={[]} />
+            </Section>
         </Section>
-        <Section level={2} title="Table without data">
-            <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering2" data={[]} />
-        </Section>
-    </Section>
+    </VaporComponent>
 );
 
 // https://github.com/marak/Faker.js/
