@@ -1,27 +1,46 @@
 import * as React from 'react';
-import {Route, Switch} from 'react-router-dom';
+import {Route, Switch, useRouteMatch} from 'react-router-dom';
 
-export const InputRoutes: React.FunctionComponent = () => (
-    <Switch>
-        <Route exact path="/ActionBar" component={() => <div />} />
-        <Route exact path="/ActionableItem" component={() => <div />} />
-        <Route exact path="/AddRemove" component={() => <div />} />
-        <Route exact path="/Button" component={() => <div />} />
-        <Route exact path="/Checkbox" component={() => <div />} />
-        <Route exact path="/Childform" component={() => <div />} />
-        <Route exact path="/CodeEditor" component={() => <div />} />
-        <Route exact path="/DiffViewer" component={() => <div />} />
-        <Route exact path="/Dropdown" component={() => <div />} />
-        <Route exact path="/FilterBox" component={() => <div />} />
-        <Route exact path="/Facet" component={() => <div />} />
-        <Route exact path="/typography/links" component={() => <div />} />
-        <Route exact path="/MultilineBox" component={() => <div />} />
-        <Route exact path="/NumericInput" component={() => <div />} />
-        <Route exact path="/RadioButton" component={() => <div />} />
-        <Route exact path="/SearchBar" component={() => <div />} />
-        <Route exact path="/Slider" component={() => <div />} />
-        <Route exact path="/TextInput" component={() => <div />} />
-        <Route exact path="/Toggle" component={() => <div />} />
-        <Route exact path="/filtering/value-popup" component={() => <div />} />
-    </Switch>
-);
+import {ActionableItemExamples} from './pages/ActionableItemExamples';
+import {ButtonExamples} from './pages/ButtonExamples';
+import {CheckboxExamples} from './pages/CheckboxExamples';
+import {ChildFormExamples} from './pages/ChildFormExamples';
+import {CodeEditorExamples} from './pages/CodeEditorExamples';
+import {DiffViewerExamples} from './pages/DiffViewerExamples';
+import {FacetConnectedExamples} from './pages/FacetConnectedExamples';
+import {FilterBoxExamples} from './pages/FilterBoxExamples';
+import {MultilineBoxExamples} from './pages/MultilineBoxExamples';
+import {NumericInputExamples} from './pages/NumericInputExamples';
+import {RadioButtonExamples} from './pages/RadioExamples';
+import {SearchBarExamples} from './pages/SearchBarExamples';
+import {SliderExamples} from './pages/SliderExamples';
+import {TextInputExamples} from './pages/TextInputExamples';
+import ValuePopup from './pages/ValuePopup';
+
+export const InputRoutes: React.FunctionComponent = () => {
+    const {path} = useRouteMatch();
+
+    return (
+        <Switch>
+            <Route path={`${path}/ActionableItem`} component={() => <ActionableItemExamples />} />
+            <Route path={`${path}/AddRemove`} component={() => <div />} />
+            <Route path={`${path}/Button`} component={() => <ButtonExamples />} />
+            <Route path={`${path}/Checkbox`} component={() => <CheckboxExamples />} />
+            <Route path={`${path}/Childform`} component={() => <ChildFormExamples />} />
+            <Route path={`${path}/CodeEditor`} component={() => <CodeEditorExamples />} />
+            <Route path={`${path}/DiffViewer`} component={() => <DiffViewerExamples />} />
+            <Route path={`${path}/Dropdown`} component={() => <div />} />
+            <Route path={`${path}/FilterBox`} component={() => <FilterBoxExamples />} />
+            <Route path={`${path}/Facet`} component={() => <FacetConnectedExamples />} />
+            <Route path={`${path}/links`} component={() => <div />} />
+            <Route path={`${path}/MultilineBox`} component={() => <MultilineBoxExamples />} />
+            <Route path={`${path}/NumericInput`} component={() => <NumericInputExamples />} />
+            <Route path={`${path}/RadioButton`} component={() => <RadioButtonExamples />} />
+            <Route path={`${path}/SearchBar`} component={() => <SearchBarExamples />} />
+            <Route path={`${path}/Slider`} component={() => <SliderExamples />} />
+            <Route path={`${path}/TextInput`} component={() => <TextInputExamples />} />
+            <Route path={`${path}/Toggle`} component={() => <div />} />
+            <Route path={`${path}/ValuePopup`} component={() => <ValuePopup />} />
+        </Switch>
+    );
+};
