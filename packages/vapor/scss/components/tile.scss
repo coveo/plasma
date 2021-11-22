@@ -1,0 +1,19 @@
+.tile {
+    position: relative;
+    width: 264px;
+    height: 221px;
+    background: var(--grey-00);
+
+    border: 1px solid var(--grey-40);
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(229, 232, 232, 0.75);
+
+    .tile-name-container {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        z-index: 1;
+        display: flex;
+        padding: 0;
+    }
+}
