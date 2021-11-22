@@ -13,6 +13,8 @@ import {
     ToastType,
 } from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 export const ToastExamples = () => (
     <Section>
         <ToastsWithLocalState />
@@ -32,7 +34,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
     const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
     return (
-        <>
+        <VaporComponent id="toast" title="Toasts" usage="">
             <Section level={2} title="Toasts with a local state" className="flex">
                 <Button
                     enabled
@@ -131,7 +133,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                     />
                 )}
             </ToastContainer>
-        </>
+        </VaporComponent>
     );
 };
 

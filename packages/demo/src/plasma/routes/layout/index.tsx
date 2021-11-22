@@ -6,7 +6,7 @@ import {BannerExamples} from './pages/BannerExamples';
 import {BorderedLineExamples} from './pages/BorderedLineExamples';
 import {CardExample} from './pages/CardExamples';
 import {IconCardExamples} from './pages/IconCardExamples';
-import {ModalWindowExamples} from './pages/modalWindowExamples';
+import {ModalWindowExamples} from './pages/ModalWindowExamples';
 import {SimpleHeader} from './pages/PageHeader';
 import {SplitLayoutExamples} from './pages/SplitLayoutExamples';
 import {TableHOCExamples} from './pages/TableHOCExamples';
