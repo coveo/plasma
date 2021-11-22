@@ -2,6 +2,8 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {changeFacet, FacetConnected, IFacet, IFacetActionPayload, IReduxAction, Section} from 'react-vapor';
 
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 export interface ILastUpdateConnectedExamplesProps {
     onRender?: () => void;
 }
@@ -67,29 +69,31 @@ const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateCon
     }, []);
 
     return (
-        <Section level={2} title="Facets connected to store">
-            <div style={{width: 400}}>
-                <label className="form-control-label">Facet with the second row selectd</label>
-                <FacetConnected
-                    facet={facet}
-                    facetRows={facetRows}
-                    clearFacet={(): void => null}
-                    toggleFacet={(): void => null}
-                />
-            </div>
-            <div style={{width: 400}}>
-                <label className="form-control-label">
-                    Facet with exclusions, the first row selected and the second row already excluded
-                </label>
-                <FacetConnected
-                    facet={facet2}
-                    facetRows={facetRows}
-                    clearFacet={(): void => null}
-                    enableExclusions
-                    toggleFacet={(): void => null}
-                />
-            </div>
-        </Section>
+        <VaporComponent id="facet" title="Facet" usage="">
+            <Section level={2} title="Facets connected to store">
+                <div style={{width: 400}}>
+                    <label className="form-control-label">Facet with the second row selectd</label>
+                    <FacetConnected
+                        facet={facet}
+                        facetRows={facetRows}
+                        clearFacet={(): void => null}
+                        toggleFacet={(): void => null}
+                    />
+                </div>
+                <div style={{width: 400}}>
+                    <label className="form-control-label">
+                        Facet with exclusions, the first row selected and the second row already excluded
+                    </label>
+                    <FacetConnected
+                        facet={facet2}
+                        facetRows={facetRows}
+                        clearFacet={(): void => null}
+                        enableExclusions
+                        toggleFacet={(): void => null}
+                    />
+                </div>
+            </Section>
+        </VaporComponent>
     );
 };
 export const FacetConnectedExamples = connect(null, mapDispatchToProps)(FacetConnectedExamplesDisconnected);

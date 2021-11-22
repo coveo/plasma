@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {JSONEditor} from 'react-vapor';
 
-import {fakeJSON, JSONToString} from '../../input/pages/DiffViewerExmaplesCommon';
+import {fakeJSON, JSONToString} from '../../input/pages/DiffViewerExamplesCommon';
 
 export class JSONEditorExamples extends React.Component {
     render() {

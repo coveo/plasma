@@ -9,6 +9,7 @@ import {
 import {findWhere} from 'underscore';
 
 import {Store} from '../../../../Store';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 class SearchBarExample extends React.Component<React.Attributes, ISearchBarStateProps> {
     state = {
@@ -41,56 +42,58 @@ class SearchBarExample extends React.Component<React.Attributes, ISearchBarState
 export class SearchBarExamples extends React.Component<any, any> {
     render() {
         return (
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">SearchBar disabled</label>
-                    <SearchBar
-                        id="search-bar-2"
-                        disabled
-                        placeholder="Currently disabled."
-                        onSearch={() => alert('Implement your own search logic with the onSearch prop.')}
-                    />
+            <VaporComponent id="search-bar" title="Search Bar" usage="">
+                <div className="mt2">
+                    <div className="form-group">
+                        <label className="form-control-label">SearchBar disabled</label>
+                        <SearchBar
+                            id="search-bar-2"
+                            disabled
+                            placeholder="Currently disabled."
+                            onSearch={() => alert('Implement your own search logic with the onSearch prop.')}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">SearchBar searching</label>
+                        <SearchBar
+                            id="search-bar-3"
+                            searching
+                            placeholder="Searching for something"
+                            onSearch={() => alert('Implement your own search logic with the onSearch prop.')}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">SearchBar not connected but fully working</label>
+                        <SearchBarExample />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">SearchBarConnected</label>
+                        <SearchBarConnected
+                            id="search-bar-4"
+                            placeholder="Type something and press enter, or click the loupe"
+                            onSearch={(filterText: string) => {
+                                Store.dispatch(toggleSearching('search-bar-4', true));
+                                setTimeout(() => {
+                                    Store.dispatch(toggleSearching('search-bar-4', false));
+                                    (document.querySelector('#search-bar-4') as HTMLElement).focus();
+                                }, 800);
+                            }}
+                        />
+                        <button
+                            className="btn mt1"
+                            type="button"
+                            onClick={() => {
+                                const searchBar = findWhere(Store.getState().searchBars, {
+                                    id: 'search-bar-4',
+                                });
+                                Store.dispatch(toggleSearchBarDisabled('search-bar-4', !searchBar.disabled));
+                            }}
+                        >
+                            Toggle disabled state
+                        </button>
+                    </div>
                 </div>
-                <div className="form-group">
-                    <label className="form-control-label">SearchBar searching</label>
-                    <SearchBar
-                        id="search-bar-3"
-                        searching
-                        placeholder="Searching for something"
-                        onSearch={() => alert('Implement your own search logic with the onSearch prop.')}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">SearchBar not connected but fully working</label>
-                    <SearchBarExample />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">SearchBarConnected</label>
-                    <SearchBarConnected
-                        id="search-bar-4"
-                        placeholder="Type something and press enter, or click the loupe"
-                        onSearch={(filterText: string) => {
-                            Store.dispatch(toggleSearching('search-bar-4', true));
-                            setTimeout(() => {
-                                Store.dispatch(toggleSearching('search-bar-4', false));
-                                (document.querySelector('#search-bar-4') as HTMLElement).focus();
-                            }, 800);
-                        }}
-                    />
-                    <button
-                        className="btn mt1"
-                        type="button"
-                        onClick={() => {
-                            const searchBar = findWhere(Store.getState().searchBars, {
-                                id: 'search-bar-4',
-                            });
-                            Store.dispatch(toggleSearchBarDisabled('search-bar-4', !searchBar.disabled));
-                        }}
-                    >
-                        Toggle disabled state
-                    </button>
-                </div>
-            </div>
+            </VaporComponent>
         );
     }
 }

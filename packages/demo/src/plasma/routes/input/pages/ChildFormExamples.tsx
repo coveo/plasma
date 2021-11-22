@@ -2,12 +2,15 @@ import * as React from 'react';
 import {Checkbox, ChildForm, Input, Label, Radio, RadioSelect, Section, ToggleForm} from 'react-vapor';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const ChildFormExamples: ExampleComponent = () => (
-    <Section>
-        <SimpleChildFormExample />
-        <ChildFormWithRadiosExamples />
-    </Section>
+    <VaporComponent id="childform" title="Child Form" usage="">
+        <Section>
+            <SimpleChildFormExample />
+            <ChildFormWithRadiosExamples />
+        </Section>
+    </VaporComponent>
 );
 
 ChildFormExamples.description =

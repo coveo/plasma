@@ -14,7 +14,7 @@ import {
 
 import {Store} from '../../../../Store';
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
-
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export interface IRadioSelectExampleProps extends IRadioSelectProps {
     defaultValue?: string;
 }
@@ -24,12 +24,14 @@ export interface IRadioSelectExampleState {
 }
 
 export const RadioButtonExamples: ExampleComponent = () => (
-    <Section title="Radio set">
-        <RadioSelectExample />
-        <RadioSelectDisabledExample />
-        <RadioSelectWrappedExample />
-        <RadioCardSelectExample />
-    </Section>
+    <VaporComponent id="radio" title="Radio Buttons" usage="">
+        <Section title="Radio set">
+            <RadioSelectExample />
+            <RadioSelectDisabledExample />
+            <RadioSelectWrappedExample />
+            <RadioCardSelectExample />
+        </Section>
+    </VaporComponent>
 );
 
 RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';

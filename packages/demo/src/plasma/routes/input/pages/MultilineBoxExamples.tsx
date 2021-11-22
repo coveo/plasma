@@ -20,6 +20,7 @@ import {
     IMultilineBoxExamplesProps,
     WrapperExample,
 } from '../../../../components/examples/MultilineBoxExampleUtils';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const containerNodeExample = (
     child: React.ReactNode,
@@ -143,431 +144,436 @@ const ComplexMultilineBox3 = _.compose(
 export class MultilineBoxExamples extends React.PureComponent {
     render() {
         return (
-            <div className="my2">
-                <div className="form-group">
-                    <label className="form-control-label">Multiline box with initial data</label>
-                    <MultilineBox<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <div key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </div>
-                            ))
-                        }
-                        defaultProps={{
-                            name: '',
-                            displayName: '',
-                        }}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        Multiline box with initial data and a button to update data
-                    </label>
-                    <WrapperExample />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Multiline box with a default container</label>
-                    <MultilineBoxWithDefaultContainer<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <div key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </div>
-                            ))
-                        }
-                        defaultProps={{
-                            name: '',
-                            displayName: '',
-                        }}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Multiline box with default values</label>
-                    <MultilineBox<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <div key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </div>
-                            ))
-                        }
-                        defaultProps={{
-                            name: 'Patate',
-                            displayName: 'Pasdfsa',
-                        }}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Multiline box with a container</label>
-                    <MultilineBoxWithContainer<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                        defaultProps={{
-                            name: '',
-                            displayName: '',
-                        }}
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Multiline box with a default hoc remove button</label>
-                    <DefaultMultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        Multiline box with a hoc remove button wrapped in a container to style the button position right
-                    </label>
-                    <MultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        Multiline box with 2 containers to wrap a remove button
-                    </label>
-                    <MultilineBoxWithContainerAndTwoRemoveButton<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Multiline box with drag and drop</label>
-                    <MultilineBoxWithDragAndDrop<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Complex multiline box hoc</label>
-                    <ComplexMultilineBox<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => cData.props.name === value}
-                                        validateOnChange
-                                        onChange={(value: string) => {
-                                            if (value !== '' && cData.isLast) {
-                                                defaultProps.addNewBox();
-                                            }
-                                        }}
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Complex multiline box hoc without icon when dragging</label>
-                    <ComplexMultilineBox2<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => {
-                                            if (value !== '') {
-                                                if (cData.isLast) {
+            <VaporComponent id="multiline-box" title="Multiline Box" usage="">
+                <div className="my2">
+                    <div className="form-group">
+                        <label className="form-control-label">Multiline box with initial data</label>
+                        <MultilineBox<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <div key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
                                                     defaultProps.addNewBox();
                                                 }
-                                                return true;
-                                            }
-
-                                            return false;
-                                        }}
-                                        labelProps={{invalidMessage: 'Do not leave me empty'}}
-                                        validateOnChange
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">
-                        Complex multiline box hoc with a custom icon for the drag and drop
-                    </label>
-                    <ComplexMultilineBox3<IMultilineBoxExamplesProps>
-                        id={UUID.generate()}
-                        data={[
-                            {
-                                name: 'Poire',
-                                displayName: 'Pear',
-                            },
-                        ]}
-                        renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
-                            _.map(data, (cData: IExampleData) => (
-                                <React.Fragment key={cData.id}>
-                                    <InputConnected
-                                        id={`${cData.id}1`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.name}
-                                        validate={(value: string) => {
-                                            if (value !== '') {
-                                                if (cData.isLast) {
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </div>
+                                ))
+                            }
+                            defaultProps={{
+                                name: '',
+                                displayName: '',
+                            }}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            Multiline box with initial data and a button to update data
+                        </label>
+                        <WrapperExample />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Multiline box with a default container</label>
+                        <MultilineBoxWithDefaultContainer<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <div key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
                                                     defaultProps.addNewBox();
                                                 }
-                                                return true;
-                                            }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </div>
+                                ))
+                            }
+                            defaultProps={{
+                                name: '',
+                                displayName: '',
+                            }}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Multiline box with default values</label>
+                        <MultilineBox<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <div key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </div>
+                                ))
+                            }
+                            defaultProps={{
+                                name: 'Patate',
+                                displayName: 'Pasdfsa',
+                            }}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Multiline box with a container</label>
+                        <MultilineBoxWithContainer<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                            defaultProps={{
+                                name: '',
+                                displayName: '',
+                            }}
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Multiline box with a default hoc remove button</label>
+                        <DefaultMultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            Multiline box with a hoc remove button wrapped in a container to style the button position
+                            right
+                        </label>
+                        <MultilineBoxWithRemoveButton<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            Multiline box with 2 containers to wrap a remove button
+                        </label>
+                        <MultilineBoxWithContainerAndTwoRemoveButton<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Multiline box with drag and drop</label>
+                        <MultilineBoxWithDragAndDrop<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">Complex multiline box hoc</label>
+                        <ComplexMultilineBox<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => cData.props.name === value}
+                                            validateOnChange
+                                            onChange={(value: string) => {
+                                                if (value !== '' && cData.isLast) {
+                                                    defaultProps.addNewBox();
+                                                }
+                                            }}
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            Complex multiline box hoc without icon when dragging
+                        </label>
+                        <ComplexMultilineBox2<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => {
+                                                if (value !== '') {
+                                                    if (cData.isLast) {
+                                                        defaultProps.addNewBox();
+                                                    }
+                                                    return true;
+                                                }
 
-                                            return false;
-                                        }}
-                                        labelProps={{invalidMessage: 'Do not leave me empty'}}
-                                        validateOnChange
-                                    />
-                                    <InputConnected
-                                        id={`${cData.id}2`}
-                                        classes="mt0 inline-block mx1"
-                                        defaultValue={cData.props.displayName}
-                                    />
-                                </React.Fragment>
-                            ))
-                        }
-                    />
+                                                return false;
+                                            }}
+                                            labelProps={{invalidMessage: 'Do not leave me empty'}}
+                                            validateOnChange
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label className="form-control-label">
+                            Complex multiline box hoc with a custom icon for the drag and drop
+                        </label>
+                        <ComplexMultilineBox3<IMultilineBoxExamplesProps>
+                            id={UUID.generate()}
+                            data={[
+                                {
+                                    name: 'Poire',
+                                    displayName: 'Pear',
+                                },
+                            ]}
+                            renderBody={(data: IExampleData[], defaultProps: IMultilineParentProps) =>
+                                _.map(data, (cData: IExampleData) => (
+                                    <React.Fragment key={cData.id}>
+                                        <InputConnected
+                                            id={`${cData.id}1`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.name}
+                                            validate={(value: string) => {
+                                                if (value !== '') {
+                                                    if (cData.isLast) {
+                                                        defaultProps.addNewBox();
+                                                    }
+                                                    return true;
+                                                }
+
+                                                return false;
+                                            }}
+                                            labelProps={{invalidMessage: 'Do not leave me empty'}}
+                                            validateOnChange
+                                        />
+                                        <InputConnected
+                                            id={`${cData.id}2`}
+                                            classes="mt0 inline-block mx1"
+                                            defaultValue={cData.props.displayName}
+                                        />
+                                    </React.Fragment>
+                                ))
+                            }
+                        />
+                    </div>
                 </div>
-            </div>
+            </VaporComponent>
         );
     }
 }

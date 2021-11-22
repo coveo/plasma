@@ -2,11 +2,14 @@ import * as React from 'react';
 import {NumericInputConnected, Section} from 'react-vapor';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const NumericInputExamples: ExampleComponent = () => (
-    <Section title="Numeric Inputs Examples">
-        <NumericInputs />
-    </Section>
+    <VaporComponent id="numeric-inputs" title="Numeric Inputs" usage="">
+        <Section title="Numeric Inputs Examples">
+            <NumericInputs />
+        </Section>
+    </VaporComponent>
 );
 NumericInputExamples.description =
     'Numeric inputs are used to require the input of a numeric value. They can be configured in discrete jumps, when precision is not mandatory (e.g., 0, 5, 10, etc.).';
