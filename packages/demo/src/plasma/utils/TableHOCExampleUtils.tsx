@@ -2,9 +2,9 @@ import moment from 'moment';
 import * as React from 'react';
 import {DateUtils, TableRowConnected, TableRowNumberColumn} from 'react-vapor';
 
-import {SELECTION_BOXES_LONG} from '../../../../components/examples/DatePickerExamplesCommon';
-import {IExampleRowData} from '../../../../components/examples/TableHOCExamples';
-import {TableHOCServerExampleId} from './TableHOCServerExamples';
+import {IExampleRowData} from '../routes/layout/pages/TableHOCExamples';
+import {TableHOCServerExampleId} from '../routes/not-included/pages/TableHOCServerExamples';
+import {SELECTION_BOXES_LONG} from './DatePickerExamplesCommon';
 
 export interface ITableHOCServerExampleContext {
     isLoading: boolean;
