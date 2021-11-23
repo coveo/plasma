@@ -29,8 +29,8 @@ import {
 } from 'react-vapor';
 import * as _ from 'underscore';
 
-import {TableHOCExampleUtils, TableHOCServerExampleContext} from './TableHOCExampleUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {TableHOCExampleUtils, TableHOCServerExampleContext} from '../../../utils/TableHOCExampleUtils';
 
 type TableHOCServerProps = RouteComponentProps & ReturnType<typeof mapDispatchToProps>;
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import {BasicHeader, Section} from 'react-vapor';
 
-import {defaultTitle, actions} from '../../../example-utils/ExamplesUtils';
+import {defaultTitle, actions} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const SimpleHeader: React.FunctionComponent = () => (

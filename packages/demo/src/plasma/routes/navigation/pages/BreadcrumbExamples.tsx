@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {BreadcrumbHeader, Button, Section, Svg} from 'react-vapor';
 
-import {defaultBreadcrumb, link1, link2} from '../../../example-utils/ExamplesUtils';
+import {defaultBreadcrumb, link1, link2} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
