@@ -146,13 +146,18 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
 
     private getDeselectOptionButton(): React.ReactNode {
         return (
-            <Tooltip title={this.props.deselectTooltipText} placement="top" noSpanWrapper onClick={this.handleDeselect}>
-                <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon mod-12" className="btn-append center-align" />
+            <Tooltip title={this.props.deselectTooltipText} placement="top" noSpanWrapper>
+                <Svg
+                    svgName={VaporSVG.svg.clear.name}
+                    svgClass="icon mod-12"
+                    className="btn-append center-align"
+                    onClick={this.handleDeselect}
+                />
             </Tooltip>
         );
     }
 
-    private handleDeselect = (e: Event) => {
+    private handleDeselect = (e: React.MouseEvent) => {
         e.stopPropagation();
         if (!this.props.disabled) {
             this.props.deselect();

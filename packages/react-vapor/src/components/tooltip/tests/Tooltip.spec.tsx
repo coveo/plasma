@@ -1,88 +1,79 @@
-import {mountWithState} from '@helpers/enzyme-redux';
-import {shallow} from 'enzyme';
+import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
-import {OverlayTrigger} from 'react-bootstrap';
 
-import {ITooltipProps, Tooltip} from '../Tooltip';
+import {TooltipPlacement} from '../../../utils';
+import {Tooltip} from '../Tooltip';
 
 describe('Tooltip', () => {
-    const TOOLTIP_PROPS: ITooltipProps = {
-        title: 'My test tooltip!',
-    };
+    it('displays the title only when hovering over the children', async () => {
+        render(<Tooltip title="the title">hover me</Tooltip>);
 
-    it('should render without error', () => {
-        expect(() => shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>)).not.toThrow();
+        expect(screen.queryByText(/the title/i)).not.toBeInTheDocument();
+        userEvent.hover(screen.getByText(/hover me/i));
+        expect(await screen.findByText(/the title/i)).toBeInTheDocument();
     });
 
-    it('should mount and unmount/detach without error', () => {
-        expect(() => {
-            const tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>);
-            tooltipWrapper.unmount();
-        }).not.toThrow();
+    it('renders just the children when no title is specified', async () => {
+        const {container} = render(<Tooltip>hover me</Tooltip>);
+        expect(screen.getByText(/hover me/i)).toBeInTheDocument();
+        userEvent.hover(screen.getByText(/hover me/i));
+        expect(container).toHaveTextContent('hover me');
     });
 
-    describe('<Tooltip />', () => {
-        it('should display the className passed as a prop', () => {
-            const tooltipWrapper = mountWithState(
-                <Tooltip {...TOOLTIP_PROPS} className="some-class">
-                    Hover me!
-                </Tooltip>,
-                {}
-            );
+    it('render the tooltip on the top by default', async () => {
+        render(<Tooltip title="the title">hover me</Tooltip>);
 
-            expect(tooltipWrapper.html()).toContain('some-class');
-        });
-
-        it('should display an <OverlayTrigger/>', () => {
-            const tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>);
-
-            expect(tooltipWrapper.find(OverlayTrigger).length).toBe(1);
-        });
-
-        it('should pass a <BootstrapTooltip/> to the <OverlayTrigger/>', () => {
-            const tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>Hover me!</Tooltip>);
-
-            expect(tooltipWrapper.find(OverlayTrigger).props().overlay).toBeDefined();
-        });
-
-        it('should display a footer section if one is passed as a prop', () => {
-            const tooltipWrapper = shallow(
-                <Tooltip {...TOOLTIP_PROPS} footer="footer section">
-                    Hover me!
-                </Tooltip>
-            );
-
-            expect(tooltipWrapper.find(OverlayTrigger).props().overlay.props.children[1].props.className).toBe(
-                'tooltip-footer'
-            );
-        });
-
-        it('should not display the tooltip if the title is empty', () => {
-            const tooltipWrapper = shallow(
-                <Tooltip {...TOOLTIP_PROPS} title="">
-                    Hover me!
-                </Tooltip>
-            );
-
-            expect(tooltipWrapper.find(OverlayTrigger).length).toBe(0);
-        });
+        userEvent.hover(screen.getByText(/hover me/i));
+        const tooltipContent = await screen.findByText(/the title/i);
+        expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'top');
     });
 
-    it('should render with a span wrapper if noSpanWrapper prop is not passed', () => {
-        const content = <li>test</li>;
-        const tooltipWrapper = shallow(<Tooltip {...TOOLTIP_PROPS}>{content}</Tooltip>);
-
-        expect(tooltipWrapper.find('li').parent().type()).toBe('span');
-    });
-
-    it('should not render with a span wrapper if noSpanWrapper prop is passed', () => {
-        const content = <li>test</li>;
-        const tooltipWrapper = shallow(
-            <Tooltip noSpanWrapper {...TOOLTIP_PROPS}>
-                {content}
+    it('render the tooltip on the right when placement is "right"', async () => {
+        render(
+            <Tooltip title="the title" placement={TooltipPlacement.Right}>
+                hover me
             </Tooltip>
         );
 
-        expect(tooltipWrapper.find('li').parent().type()).not.toBe('span');
+        userEvent.hover(screen.getByText(/hover me/i));
+        const tooltipContent = await screen.findByText(/the title/i);
+        expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'right');
+    });
+
+    it('render the tooltip on the bottom when placement is "bottom"', async () => {
+        render(
+            <Tooltip title="the title" placement={TooltipPlacement.Bottom}>
+                hover me
+            </Tooltip>
+        );
+
+        userEvent.hover(screen.getByText(/hover me/i));
+        const tooltipContent = await screen.findByText(/the title/i);
+        expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'bottom');
+    });
+
+    it('render the tooltip on the left when placement is "left"', async () => {
+        render(
+            <Tooltip title="the title" placement={TooltipPlacement.Left}>
+                hover me
+            </Tooltip>
+        );
+
+        userEvent.hover(screen.getByText(/hover me/i));
+        const tooltipContent = await screen.findByText(/the title/i);
+        expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'left');
+    });
+
+    it('render the tooltip on the top when placement is "top"', async () => {
+        render(
+            <Tooltip title="the title" placement={TooltipPlacement.Top}>
+                hover me
+            </Tooltip>
+        );
+
+        userEvent.hover(screen.getByText(/hover me/i));
+        const tooltipContent = await screen.findByText(/the title/i);
+        expect(tooltipContent.parentElement).toHaveAttribute('data-popper-placement', 'top');
     });
 });

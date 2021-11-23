@@ -4,5 +4,6 @@
         "rootDir": "src"
     },
     "references": [],
-    "exclude": ["**/*.spec.*", "./src/utils/tests", "jest"]
+    "include": ["src"],
+    "exclude": ["**/*.spec.*", "./src/utils/tests"]
 }
