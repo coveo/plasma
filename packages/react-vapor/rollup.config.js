@@ -1,7 +1,7 @@
+import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
 import {nodeResolve} from '@rollup/plugin-node-resolve';
-import alias from '@rollup/plugin-alias';
 import replace from '@rollup/plugin-replace';
 import path from 'path';
 import externalGlobals from 'rollup-plugin-external-globals';
@@ -11,6 +11,20 @@ import {terser} from 'rollup-plugin-terser';
 
 const isJenkins = !!process.env.JENKINS_HOME;
 
+const globals = {
+    codemirror: 'CodeMirror',
+    d3: 'd3',
+    jquery: '$',
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    'react-redux': 'ReactRedux',
+    redux: 'Redux',
+    underscore: '_',
+    'coveo-styleguide': 'VaporSVG',
+    'underscore.string': 's',
+    'react-dom/server': 'ReactDOMServer',
+};
+
 export default {
     input: 'dist/Entry.js',
     output: [
@@ -18,57 +32,20 @@ export default {
             file: 'dist/bundles/react-vapor.esm.js',
             format: 'es',
             sourcemap: true,
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
-            },
         },
         {
             file: 'dist/bundles/react-vapor.js',
             format: 'umd',
             sourcemap: true,
             name: 'ReactVapor',
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
-            },
+            globals,
         },
         isJenkins && {
             file: 'dist/bundles/react-vapor.min.js',
             format: 'umd',
             sourcemap: true,
             name: 'ReactVapor',
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
-            },
+            globals,
             plugins: [terser()],
         },
     ].filter(Boolean),
@@ -87,19 +64,7 @@ export default {
     ],
     onwarn,
     plugins: [
-        externalGlobals({
-            codemirror: 'CodeMirror',
-            d3: 'd3',
-            jquery: '$',
-            react: 'React',
-            'react-dom': 'ReactDOM',
-            'react-redux': 'ReactRedux',
-            redux: 'Redux',
-            underscore: '_',
-            'coveo-styleguide': 'VaporSVG',
-            'underscore.string': 's',
-            'react-dom/server': 'ReactDOMServer',
-        }),
+        externalGlobals(globals),
         alias({entries: [{find: 'indexof', replacement: 'component-indexof'}]}),
         inject({
             jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
