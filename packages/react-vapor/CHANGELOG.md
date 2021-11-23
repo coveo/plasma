@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.3.0](https://github.com/coveo/react-vapor/compare/v28.2.1...v28.3.0) (2021-11-23)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
 ## [28.2.1](https://github.com/coveo/react-vapor/compare/v28.2.0...v28.2.1) (2021-11-19)
 
 

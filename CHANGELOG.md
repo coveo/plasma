@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [28.3.0](https://github.com/coveo/react-vapor/compare/v28.2.1...v28.3.0) (2021-11-23)
+
+
+### Features
+
+* applied review to pr ([8b3ffac](https://github.com/coveo/react-vapor/commit/8b3ffacc11faf29ffe505c54ce6846653d354b64))
+* new plasma header ([122a81d](https://github.com/coveo/react-vapor/commit/122a81de0b112b033d246cb54fe9fec3bb24a6c2))
+
+
+
+
+
 ## [28.2.1](https://github.com/coveo/react-vapor/compare/v28.2.0...v28.2.1) (2021-11-19)
 
 
