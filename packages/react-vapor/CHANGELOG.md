@@ -3,6 +3,25 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [29.0.0](https://github.com/coveo/react-vapor/compare/v28.3.0...v29.0.0) (2021-11-23)
+
+
+### Bug Fixes
+
+* **react-vapor:** bump rc-tooltip, rc-slider, react-bootstrap ([#2311](https://github.com/coveo/react-vapor/issues/2311)) ([c751484](https://github.com/coveo/react-vapor/commit/c751484c1f5bf6fbefae18d731bf5ed691fcf6d7))
+
+
+### BREAKING CHANGES
+
+* **react-vapor:** Tooltip is now placed on top if placement not specified, props might have changed
+too
+
+* build(rollup): extract externals in a const
+
+
+
+
+
 # [28.3.0](https://github.com/coveo/react-vapor/compare/v28.2.1...v28.3.0) (2021-11-23)
 
 **Note:** Version bump only for package react-vapor
