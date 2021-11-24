@@ -27,7 +27,6 @@ const DefaultExmaple: React.FunctionComponent = () => (
             <TabConnected groupId="patate" id="tab1" title="Pikachu" />
             <TabConnected groupId="patate" id="tab2" title="Gyarados" tooltip="I have a toolip!" />
             <TabConnected groupId="patate" id="tab3" title="Charmander" />
-            <TabConnected groupId="patate" id="tab4" title="Rapidash" tooltip="I'm disabled" disabled />
             <TabConnected
                 groupId="patate"
                 id="tab13"
@@ -35,6 +34,7 @@ const DefaultExmaple: React.FunctionComponent = () => (
                 tooltip="I have a badge!"
                 badge={<Badge label="Beta" extraClasses={['mod-beta mod-small ml1']} />}
             />
+            <TabConnected groupId="patate" id="tab4" title="Rapidash" tooltip="I'm disabled" disabled />
         </TabNavigation>
         <TabContent>
             <TabPaneConnected groupId="patate" id="tab1">
@@ -62,7 +62,6 @@ const WithIconsExmaple: React.FunctionComponent = () => (
             <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={'lightning'} />
             <TabConnected groupId="banane" id="tab6" title="Gyarados" icon={'crawlingBotStroked16'} iconModStroke />
             <TabConnected groupId="banane" id="tab7" title="Charmander" icon={'check'} />
-            <TabConnected groupId="banane" id="tab8" title="Rapidash" icon={'details'} disabled />
             <TabConnected
                 groupId="banane"
                 id="tab14"
@@ -71,6 +70,7 @@ const WithIconsExmaple: React.FunctionComponent = () => (
                 icon="email"
                 badge={<Badge label="Success" extraClasses={['mod-success mod-small ml1']} />}
             />
+            <TabConnected groupId="banane" id="tab8" title="Rapidash" icon={'details'} disabled />
         </TabNavigation>
         <TabContent>
             <TabPaneConnected groupId="banane" id="tab5">
