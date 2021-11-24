@@ -1,7 +1,7 @@
+import alias from '@rollup/plugin-alias';
 import commonjs from '@rollup/plugin-commonjs';
 import inject from '@rollup/plugin-inject';
-import resolve from '@rollup/plugin-node-resolve';
-import alias from '@rollup/plugin-alias';
+import {nodeResolve} from '@rollup/plugin-node-resolve';
 import replace from '@rollup/plugin-replace';
 import path from 'path';
 import externalGlobals from 'rollup-plugin-external-globals';
@@ -10,6 +10,20 @@ import scssVariable from 'rollup-plugin-sass-variables';
 import {terser} from 'rollup-plugin-terser';
 
 const isJenkins = !!process.env.JENKINS_HOME;
+
+const globals = {
+    codemirror: 'CodeMirror',
+    d3: 'd3',
+    jquery: '$',
+    react: 'React',
+    'react-dom': 'ReactDOM',
+    'react-redux': 'ReactRedux',
+    redux: 'Redux',
+    underscore: '_',
+    'coveo-styleguide': 'VaporSVG',
+    'underscore.string': 's',
+    'react-dom/server': 'ReactDOMServer',
+};
 
 export default {
     input: 'dist/Entry.js',
@@ -24,69 +38,15 @@ export default {
             format: 'umd',
             sourcemap: true,
             name: 'ReactVapor',
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
-            },
-            plugins: [
-                externalGlobals({
-                    codemirror: 'CodeMirror',
-                    d3: 'd3',
-                    jquery: '$',
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                    'react-redux': 'ReactRedux',
-                    redux: 'Redux',
-                    underscore: '_',
-                    'coveo-styleguide': 'VaporSVG',
-                    'underscore.string': 's',
-                    'react-dom/server': 'ReactDOMServer',
-                }),
-            ],
+            globals,
         },
         isJenkins && {
             file: 'dist/bundles/react-vapor.min.js',
             format: 'umd',
             sourcemap: true,
             name: 'ReactVapor',
-            globals: {
-                codemirror: 'CodeMirror',
-                d3: 'd3',
-                jquery: '$',
-                react: 'React',
-                'react-dom': 'ReactDOM',
-                'react-redux': 'ReactRedux',
-                redux: 'Redux',
-                underscore: '_',
-                'coveo-styleguide': 'VaporSVG',
-                'underscore.string': 's',
-                'react-dom/server': 'ReactDOMServer',
-            },
-            plugins: [
-                terser(),
-                externalGlobals({
-                    codemirror: 'CodeMirror',
-                    d3: 'd3',
-                    jquery: '$',
-                    react: 'React',
-                    'react-dom': 'ReactDOM',
-                    'react-redux': 'ReactRedux',
-                    redux: 'Redux',
-                    underscore: '_',
-                    'coveo-styleguide': 'VaporSVG',
-                    'underscore.string': 's',
-                    'react-dom/server': 'ReactDOMServer',
-                }),
-            ],
+            globals,
+            plugins: [terser()],
         },
     ].filter(Boolean),
     external: [
@@ -104,11 +64,15 @@ export default {
     ],
     onwarn,
     plugins: [
+        externalGlobals(globals),
         alias({entries: [{find: 'indexof', replacement: 'component-indexof'}]}),
         inject({
             jQuery: 'jquery', // chosen-js expects jQuery to be available as a global
         }),
-        replacePlugin(),
+        replace({
+            preventAssignment: true,
+            'process.env.NODE_ENV': JSON.stringify('production'),
+        }),
         postcss({
             extract: false,
             modules: {localIdentName: '[name]-[local]-[hash:base64]'},
@@ -116,25 +80,12 @@ export default {
             use: ['sass'],
         }),
         scssVariable(),
-        resolve({
+        nodeResolve({
             browser: true,
         }),
-        commonjs({
-            namedExports: {
-                'hogan.js': ['Template', 'compile'],
-                'react-modal': ['setAppElement'],
-                'react-dnd': ['DragDropContext', 'DropTarget', 'DragSource'],
-                'diff/dist/diff.js': ['diffChars', 'diffWordsWithSpace'],
-            },
-        }),
+        commonjs(),
     ],
 };
-
-function replacePlugin() {
-    return replace({
-        'process.env.NODE_ENV': JSON.stringify('production'),
-    });
-}
 
 function onwarn(warning, rollupWarn) {
     const ignoredWarnings = [

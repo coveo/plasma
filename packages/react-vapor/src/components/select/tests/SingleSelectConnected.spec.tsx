@@ -1,4 +1,4 @@
-import {fireEvent, render, screen} from '@test-utils';
+import {fireEvent, render, screen, act} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
@@ -169,9 +169,11 @@ describe('Select', () => {
 
             expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
 
-            userEvent.click(screen.queryByRole('img', {name: /clear icon/}));
+            act(() => {
+                userEvent.click(screen.getByRole('img', {name: /clear icon/}));
+            });
 
-            expect(screen.getByRole('button', {name: /select one/})).toBeVisible();
+            expect(screen.getByRole('button', {name: /select one/})).toBeInTheDocument();
         });
 
         it('should display the selectedDisplayValue if defined in the button for the selected item', () => {

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {OverlayTrigger, Tooltip as BootstrapTooltip} from 'react-bootstrap';
-import * as ReactDOM from 'react-dom';
+import {OverlayInjectedProps} from 'react-bootstrap/esm/Overlay';
+import OverlayTrigger from 'react-bootstrap/OverlayTrigger';
+import BootstrapTooltip from 'react-bootstrap/Tooltip';
 import * as _ from 'underscore';
-
-import {Defaults} from '../../Defaults';
 
 // Copy of the OverlayTriggerProps but without the overlay prop since we are building it here
 export interface IOverlayTriggerProps {
@@ -81,17 +80,6 @@ export class Tooltip extends React.Component<ITooltipProps> {
         className: '',
     };
 
-    private readonly overlay = React.createRef<BootstrapTooltip>();
-
-    componentWillUnmount() {
-        if (this.overlay.current) {
-            const node = ReactDOM.findDOMNode(this.overlay.current);
-            if (node && !document.body.contains(node)) {
-                document.body.appendChild(node);
-            }
-        }
-    }
-
     render() {
         const tooltipFooter: JSX.Element = this.props.footer ? (
             <div className="tooltip-footer">{this.props.footer}</div>
@@ -99,12 +87,11 @@ export class Tooltip extends React.Component<ITooltipProps> {
 
         const id = _.uniqueId('tooltip-');
 
-        const tooltip: JSX.Element = (
+        const tooltip = (injectedProps: OverlayInjectedProps) => (
             <BootstrapTooltip
                 id={id}
-                ref={this.overlay}
-                container={this.props.container || Defaults.TOOLTIP_ROOT}
                 {..._.omit(this.props, TOOLTIP_PROPS_TO_OMIT)}
+                {...injectedProps}
                 className="react-vapor-tooltip"
             >
                 {this.props.title}

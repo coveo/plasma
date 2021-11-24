@@ -8,7 +8,5 @@
             "@test-utils": ["jest/utils.tsx"],
             "*": ["types/*", "*"]
         }
-    },
-    "include": ["src", "jest"],
-    "exclude": ["**/*.js"]
+    }
 }
