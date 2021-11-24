@@ -23,8 +23,8 @@ import {
 } from 'react-vapor';
 import * as _ from 'underscore';
 
-import {SELECTION_BOXES_LONG} from '../../not-included/pages/DatePickerExamplesCommon';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {SELECTION_BOXES_LONG} from '../../../utils/DatePickerExamplesCommon';
 
 export interface IExampleRowData {
     city: string;

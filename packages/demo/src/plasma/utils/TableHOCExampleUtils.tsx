@@ -3,7 +3,7 @@ import * as React from 'react';
 import {DateUtils, TableRowConnected, TableRowNumberColumn} from 'react-vapor';
 
 import {IExampleRowData} from '../routes/layout/pages/TableHOCExamples';
-import {TableHOCServerExampleId} from '../routes/not-included/pages/TableHOCServerExamples';
+import {TableHOCServerExampleId} from '../routes/layout/pages/TableHOCServerExamples';
 import {SELECTION_BOXES_LONG} from './DatePickerExamplesCommon';
 
 export interface ITableHOCServerExampleContext {

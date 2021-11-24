@@ -1,8 +1,8 @@
 import * as React from 'react';
 import {JSONEditor} from 'react-vapor';
 
-import {fakeJSON, JSONToString} from '../../input/pages/DiffViewerExamplesCommon';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {fakeJSON, JSONToString} from '../../../utils/DiffViewerExmaplesCommon';
 
 export class JSONEditorExamples extends React.Component {
     render() {

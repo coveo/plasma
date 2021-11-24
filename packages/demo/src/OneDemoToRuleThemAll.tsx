@@ -14,7 +14,7 @@ import {FoundationsRoutes} from './plasma/routes/foundation';
 import {InputRoutes} from './plasma/routes/input/index';
 import {LayoutRoutes} from './plasma/routes/layout';
 import {NavigationRoutes} from './plasma/routes/navigation';
-import {NotIncludedRoutes} from './plasma/routes/not-included';
+import {NotIncludedRoutes} from './plasma/routes/legacy';
 
 const Header = () => (
     <div id="header" className="flex flex-center space-between demo-header">
@@ -35,7 +35,7 @@ const Demo = () => (
                 <Route path="/navigation" component={NavigationRoutes} />
                 <Route path="/feedback-and-info" component={FeedbackAndInfoRoutes} />
                 <Route path="/display-and-utilities" component={DisplayAndUtilitiesRoutes} />
-                <Route path="/not-included" component={NotIncludedRoutes} />
+                <Route path="/legacy" component={NotIncludedRoutes} />
                 <Route path="/brand" component={Brand} />
                 <Route exact path="/" component={Home} />
             </div>

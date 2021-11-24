@@ -11,15 +11,15 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {
     CALENDAR_ADVANCED_SELECTION_RULES,
     CALENDAR_SELECTION_RULES,
     DATE_RANGE_EXAMPLE,
     FOUR_SELECTION_BOXES,
     SELECTION_BOXES,
-} from './DatePickerExamplesCommon';
-import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
+} from '../../../utils/DatePickerExamplesCommon';
 
 export const DatePickerExamples: ExampleComponent = () => {
     const markdown = useMarkdown('ChildForm');
