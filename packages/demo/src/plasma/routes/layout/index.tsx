@@ -14,10 +14,12 @@ import {SimpleHeader} from './pages/PageHeader';
 import {SectionExamples} from './pages/SectionExamples';
 import {SplitLayoutExamples} from './pages/SplitLayoutExamples';
 import {TabsConnectedExamples} from './pages/TabConnectedExample';
+import {TabsExamples} from './pages/TabsExamples';
 import {TableHOCExamples} from './pages/TableHOCExamples';
 import {TableHocLoadingExamples} from './pages/TableHOCLoadingExamples';
 import {TableHOCServerExamples} from './pages/TableHOCServerExamples';
 import {TableHOCwithBlankSlateExamples} from './pages/TableHOCwithBlankSlateExamples';
+import {ModalWizardExamples} from './pages/ModalWizardExamples';
 
 export const LayoutRoutes: React.FunctionComponent = () => {
     const {path} = useRouteMatch();
@@ -35,10 +37,12 @@ export const LayoutRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/Footer`} component={() => <FooterExample />} />
             <Route path={`${path}/IconCard`} component={() => <IconCardExamples />} />
             <Route path={`${path}/ModalWindow`} component={() => <ModalWindowExamples />} />
+            <Route path={`${path}/ModalWizard`} component={() => <ModalWizardExamples />} />
             <Route path={`${path}/PageHeader`} component={() => <SimpleHeader />} />
             <Route path={`${path}/SearchResultCard`} component={() => <div />} />
             <Route path={`${path}/Section`} component={() => <SectionExamples />} />
             <Route path={`${path}/SplitLayout`} component={() => <SplitLayoutExamples />} />
+            <Route path={`${path}/Tabs`} component={() => <TabsExamples />} />
             <Route path={`${path}/TabsConnected`} component={() => <TabsConnectedExamples />} />
             <Route path={`${path}/TableHOC`} component={() => <TableHOCExamples />} />
             <Route path={`${path}/TableHOCwithBlankSlate`} component={() => <TableHOCwithBlankSlateExamples />} />
