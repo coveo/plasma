@@ -1,3 +1,4 @@
+// import classNames from 'classnames';
 import * as React from 'react';
 
 import {Svg, SvgNames} from '../svg';
@@ -5,21 +6,19 @@ import {Svg, SvgNames} from '../svg';
 export interface TileProps {
     title: string;
     svgName: SvgNames;
-    // badges?: IBadgeProps[];
-    description?: string;
-    onClick?: (choice?: string) => void;
-    // tooltip?: ITooltipProps;
-    // choices?: IconCardChoice[];
-    // small?: boolean;
-    animateOnHover?: boolean;
+    description: string;
 }
 
-export const Tile: React.FunctionComponent<TileProps> = ({title, description, onClick, svgName, animateOnHover}) => (
+export const Tile: React.FunctionComponent<TileProps> = ({title, description, svgName}) => (
     <>
         <div className="tile">
-            {svgName && <Svg svgName={svgName} svgClass="icon mod-info mod-5x mod-stroke" />}
-            <h6 className="tile-name-container">{title}</h6>
-            {/* pick font */}
+            <div className="tile-icon">
+                <Svg svgName={svgName} svgClass="" />
+            </div>
+            <div className="tile-information">
+                <div className="tile-title h6-subdued">{title}</div>
+                <div className="tile-description body-m-book-subdued">{description}</div>
+            </div>
         </div>
     </>
 );

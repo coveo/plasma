@@ -285,6 +285,7 @@ export const SVG_NAMES = {
     peak: 'peak',
     people: 'people',
     pin: 'pin',
+    plasmaComponentBox: 'plasmaComponentBox',
     play: 'play',
     plus: 'plus',
     plus16px: 'plus16px',

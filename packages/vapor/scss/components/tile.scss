@@ -1,19 +1,63 @@
 .tile {
     position: relative;
+    top: 20px;
+    left: 20px;
     width: 264px;
-    height: 221px;
+    height: auto;
+    min-height: 221px;
     background: var(--grey-00);
-
     border: 1px solid var(--grey-40);
     border-radius: 8px;
     box-shadow: 0px 2px 8px rgba(229, 232, 232, 0.75);
 
-    .tile-name-container {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        z-index: 1;
-        display: flex;
-        padding: 0;
+    &:hover {
+        border: 1px solid var(--digital-blue-60);
     }
+}
+
+.tile-icon {
+    width: 100%;
+    height: 173px;
+
+    & svg {
+        display: block;
+        margin: auto;
+    }
+}
+
+.tile-information {
+    position: absolute;
+    bottom: 0.25px;
+    z-index: 2;
+    width: 100%;
+    height: 51.75px;
+    padding: 12px 14px;
+
+    // animation
+    overflow: hidden;
+    background-color: var(--grey-00);
+    border-radius: 8px;
+    -moz-transition: height 450ms;
+    -webkit-transition: height 450ms;
+    transition: height 450ms;
+}
+
+.tile-information:hover {
+    height: 131.75px;
+    box-shadow: 0px -6px 41px rgba(142, 149, 157, 0.29);
+
+    .tile-title {
+        height: 27.75px;
+    }
+}
+
+.tile-title {
+    width: 100%;
+    height: 51.75px;
+    text-align: left;
+}
+
+.tile-description {
+    width: 100%;
+    height: 100%;
 }
