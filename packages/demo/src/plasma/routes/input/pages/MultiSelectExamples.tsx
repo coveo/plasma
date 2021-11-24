@@ -18,6 +18,7 @@ import {
 import * as _ from 'underscore';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {DocsMarkdownFiles} from '../../../utils/MarkdownDocs';
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
@@ -64,6 +65,7 @@ export interface IMultiSelectExamplesState {
     drag: IItemBoxProps[];
     second: IItemBoxProps[];
     hoc: IItemBoxProps[];
+    markdown?: string;
 }
 
 const MultiSelectWithInitialValues = withInitialValuesMultiSelectHOC(MultiSelectConnected);
@@ -107,12 +109,18 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
             drag: _.clone(defaultItems),
             second,
             hoc,
+            markdown: '',
         };
+    }
+
+    componentDidMount() {
+        // TODO: use hook when component converted
+        DocsMarkdownFiles.MultiSelect().then((res) => this.setState({markdown: res.default}));
     }
 
     render() {
         return (
-            <VaporComponent id="multiselect" title="Multi-select" usage="">
+            <VaporComponent id="multiselect" title="Multi-select" usage="" markdown={this.state.markdown}>
                 <div className="mb2">
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select without items</label>

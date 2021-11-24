@@ -16,6 +16,7 @@ import {Store} from '../../../../Store';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
 export const CheckboxExamples: ExampleComponent = () => (
     <Section>
@@ -34,9 +35,10 @@ const CheckboxWithDirty = withDirtyCheckboxHOC(CheckboxConnected);
 
 const Checkboxset: React.FunctionComponent = () => {
     const [checked, setChecked] = React.useState(false);
+    const markdown = useMarkdown('Checkbox');
 
     return (
-        <VaporComponent id="checkbox" title="Checkbox" usage="">
+        <VaporComponent id="checkbox" title="Checkbox" usage="" markdown={markdown}>
             <Section title="Checkbox set">
                 <Section level={2} title="Checkboxes with labels">
                     <LabeledInput label="The label of the checkbox set">

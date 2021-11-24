@@ -19,17 +19,21 @@ import {
     SELECTION_BOXES,
 } from './DatePickerExamplesCommon';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
-export const DatePickerExamples: ExampleComponent = () => (
-    <VaporComponent id="datepicker" title="Date Picker" usage="">
-        <Section>
-            <CalendarComponent />
-            <CountdownComponent />
-            <DatePickerComponents />
-            <DatesSelectionComponent />
-        </Section>
-    </VaporComponent>
-);
+export const DatePickerExamples: ExampleComponent = () => {
+    const markdown = useMarkdown('ChildForm');
+    return (
+        <VaporComponent id="datepicker" title="Date Picker" usage="" markdown={markdown}>
+            <Section>
+                <CalendarComponent />
+                <CountdownComponent />
+                <DatePickerComponents />
+                <DatesSelectionComponent />
+            </Section>
+        </VaporComponent>
+    );
+};
 DatePickerExamples.title = 'DatePicker';
 
 // start-print

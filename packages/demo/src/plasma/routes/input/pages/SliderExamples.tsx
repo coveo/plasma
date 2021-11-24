@@ -2,18 +2,22 @@ import * as React from 'react';
 import {AppendedValueSide, Section, Slider} from 'react-vapor';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
-export const SliderExamples: ExampleComponent = () => (
-    <VaporComponent id="slider" title="Slider" usage="">
-        <Section>
-            <SimpleSliderExample />
-            <SliderExample />
-            <SliderAsymetric />
-            <SliderWithPercent />
-        </Section>
-    </VaporComponent>
-);
+export const SliderExamples: ExampleComponent = () => {
+    const markdown = useMarkdown('Slider');
+    return (
+        <VaporComponent id="slider" title="Slider" usage="" markdown={markdown}>
+            <Section>
+                <SimpleSliderExample />
+                <SliderExample />
+                <SliderAsymetric />
+                <SliderWithPercent />
+            </Section>
+        </VaporComponent>
+    );
+};
 
 const SimpleSliderExample: React.FunctionComponent = () => (
     <Section level={2} title="A simple slider with marks, step, a formated tooltip and an initial value">

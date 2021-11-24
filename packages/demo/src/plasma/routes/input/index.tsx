@@ -10,9 +10,11 @@ import {DiffViewerExamples} from './pages/DiffViewerExamples';
 import {FacetConnectedExamples} from './pages/FacetConnectedExamples';
 import {FilterBoxExamples} from './pages/FilterBoxExamples';
 import {MultilineBoxExamples} from './pages/MultilineBoxExamples';
+import {MultiSelectExamples} from './pages/MultiSelectExamples';
 import {NumericInputExamples} from './pages/NumericInputExamples';
 import {RadioButtonExamples} from './pages/RadioExamples';
 import {SearchBarExamples} from './pages/SearchBarExamples';
+import {SingleSelectExample} from './pages/SingleSelectExamples';
 import {SliderExamples} from './pages/SliderExamples';
 import {TextInputExamples} from './pages/TextInputExamples';
 import ValuePopup from './pages/ValuePopup';
@@ -37,6 +39,8 @@ export const InputRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/NumericInput`} component={() => <NumericInputExamples />} />
             <Route path={`${path}/RadioButton`} component={() => <RadioButtonExamples />} />
             <Route path={`${path}/SearchBar`} component={() => <SearchBarExamples />} />
+            <Route path={`${path}/SingleSelect`} component={() => <SingleSelectExample />} />
+            <Route path={`${path}/MultiSelect`} component={MultiSelectExamples} />
             <Route path={`${path}/Slider`} component={() => <SliderExamples />} />
             <Route path={`${path}/TextInput`} component={() => <TextInputExamples />} />
             <Route path={`${path}/Toggle`} component={() => <div />} />

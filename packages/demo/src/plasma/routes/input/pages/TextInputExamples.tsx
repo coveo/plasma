@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {InputValidator, Section, TextInput, FormProvider, useTextInput, Button} from 'react-vapor';
+import {Button, FormProvider, InputValidator, Section, TextInput, useTextInput} from 'react-vapor';
 
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const nonEmptyValidation: InputValidator = (value: string) => {
@@ -15,55 +16,58 @@ const nonEmptyValidation: InputValidator = (value: string) => {
     }
 };
 
-export const TextInputExamples: React.FunctionComponent = () => (
-    <VaporComponent id="text-input" title="Text Input" usage="">
-        <FormProvider>
-            <Section>
-                <TextInput
-                    required
-                    showValidationOnBlur
-                    validate={nonEmptyValidation}
-                    type="text"
-                    label="Label"
-                    title="Title"
-                    description="Description"
-                    helpText="Help text"
-                    tooltip="Tooltip"
-                />
-                <Section level={2} title="Disabled">
-                    <TextInput type="email" label="Email" disabled />
-                    <TextInput type="email" label="Email" defaultValue="123@abc.com" disabled />
+export const TextInputExamples: React.FunctionComponent = () => {
+    const markdown = useMarkdown('TextInput');
+    return (
+        <VaporComponent id="text-input" title="Text Input" usage="" markdown={markdown}>
+            <FormProvider>
+                <Section>
+                    <TextInput
+                        required
+                        showValidationOnBlur
+                        validate={nonEmptyValidation}
+                        type="text"
+                        label="Label"
+                        title="Title"
+                        description="Description"
+                        helpText="Help text"
+                        tooltip="Tooltip"
+                    />
+                    <Section level={2} title="Disabled">
+                        <TextInput type="email" label="Email" disabled />
+                        <TextInput type="email" label="Email" defaultValue="123@abc.com" disabled />
+                    </Section>
+                    <Section level={2} title="useTextInput hook usage demo">
+                        <div className="flex space-around">
+                            <TextInput
+                                id="favorite-dish"
+                                type="text"
+                                label="Favorite Dish"
+                                defaultValue="pizza"
+                                validate={(value) =>
+                                    /pizza/i.test(value)
+                                        ? {status: 'valid'}
+                                        : {status: 'warning', message: "Pizza is best but that's okay."}
+                                }
+                                showValidationOnBlur
+                            />
+                            <TextInput
+                                id="favorite-animal"
+                                type="text"
+                                label="Favorite Animal"
+                                defaultValue="Tiger"
+                                required
+                                validate={nonEmptyValidation}
+                                showValidationOnBlur
+                            />
+                        </div>
+                        <HookUsageDemo />
+                    </Section>
                 </Section>
-                <Section level={2} title="useTextInput hook usage demo">
-                    <div className="flex space-around">
-                        <TextInput
-                            id="favorite-dish"
-                            type="text"
-                            label="Favorite Dish"
-                            defaultValue="pizza"
-                            validate={(value) =>
-                                /pizza/i.test(value)
-                                    ? {status: 'valid'}
-                                    : {status: 'warning', message: "Pizza is best but that's okay."}
-                            }
-                            showValidationOnBlur
-                        />
-                        <TextInput
-                            id="favorite-animal"
-                            type="text"
-                            label="Favorite Animal"
-                            defaultValue="Tiger"
-                            required
-                            validate={nonEmptyValidation}
-                            showValidationOnBlur
-                        />
-                    </div>
-                    <HookUsageDemo />
-                </Section>
-            </Section>
-        </FormProvider>
-    </VaporComponent>
-);
+            </FormProvider>
+        </VaporComponent>
+    );
+};
 
 const HookUsageDemo: React.FunctionComponent = () => {
     const favoriteDishInput = useTextInput('favorite-dish');

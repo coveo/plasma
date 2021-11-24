@@ -26,7 +26,6 @@ import {LinkSvgExamples} from './pages/LinkSvgExamples';
 import {ListBoxExamples} from './pages/ListBoxExamples';
 import {Member} from './pages/Member';
 import {ModalWizardExamples} from './pages/ModalWizardExamples';
-import {MultiSelectExamples} from './pages/MultiSelectExamples';
 import {PaginationConnectedExamples} from './pages/PaginationConnectedExamples';
 import {PartialStringMatchExamples} from './pages/PartialStringMatchExamples';
 import {PopoverExample} from './pages/PopoverConnectedExamples';
@@ -81,8 +80,6 @@ export const NotIncludedRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/ListBox`} component={() => <ListBoxExamples />} />
             <Route path={`${path}/Member`} component={() => <Member />} />
             <Route path={`${path}/ModalWizard`} component={() => <ModalWizardExamples />} />
-            {/* MultiSelectExamples is trickier to convert to Function component */}
-            <Route path={`${path}/MultiSelect`} component={MultiSelectExamples} />
             <Route path={`${path}/PaginationConnected`} component={() => <PaginationConnectedExamples />} />
             <Route path={`${path}/PartialstringMatch`} component={() => <PartialStringMatchExamples />} />
             <Route path={`${path}/Popover`} component={() => <PopoverExample />} />

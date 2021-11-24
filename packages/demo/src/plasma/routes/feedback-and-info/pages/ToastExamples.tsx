@@ -12,15 +12,21 @@ import {
     ToastContainerConnected,
     ToastType,
 } from 'react-vapor';
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
-export const ToastExamples = () => (
-    <Section>
-        <ToastsWithLocalState />
-        <ToastsWithReduxStore />
-    </Section>
-);
+export const ToastExamples = () => {
+    const markdown = useMarkdown('ToastConnected');
+    return (
+        <VaporComponent id="toast" title="Toasts" markdown={markdown}>
+            <Section>
+                <ToastsWithLocalState />
+                <ToastsWithReduxStore />
+            </Section>
+        </VaporComponent>
+    );
+};
 
 const ToastsWithLocalState: React.FunctionComponent = () => {
     const [state, setState] = React.useState({
@@ -34,7 +40,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
     const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit.';
 
     return (
-        <VaporComponent id="toast" title="Toasts" usage="">
+        <>
             <Section level={2} title="Toasts with a local state" className="flex">
                 <Button
                     enabled
@@ -133,7 +139,7 @@ const ToastsWithLocalState: React.FunctionComponent = () => {
                     />
                 )}
             </ToastContainer>
-        </VaporComponent>
+        </>
     );
 };
 

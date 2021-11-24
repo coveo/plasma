@@ -2,16 +2,20 @@ import * as React from 'react';
 import {Checkbox, ChildForm, Input, Label, Radio, RadioSelect, Section, ToggleForm} from 'react-vapor';
 
 import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
-export const ChildFormExamples: ExampleComponent = () => (
-    <VaporComponent id="childform" title="Child Form" usage="">
-        <Section>
-            <SimpleChildFormExample />
-            <ChildFormWithRadiosExamples />
-        </Section>
-    </VaporComponent>
-);
+export const ChildFormExamples: ExampleComponent = () => {
+    const markdown = useMarkdown('ChildForm');
+    return (
+        <VaporComponent id="childform" title="Child Form" usage="" markdown={markdown}>
+            <Section>
+                <SimpleChildFormExample />
+                <ChildFormWithRadiosExamples />
+            </Section>
+        </VaporComponent>
+    );
+};
 
 ChildFormExamples.description =
     'Child Forms are used to make more controls accessible when a parent option is selected in a form.';

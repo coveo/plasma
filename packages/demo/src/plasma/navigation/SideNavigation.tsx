@@ -116,6 +116,8 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/NumericInput')} href="/input/NumericInput" label="Numeric Input" />
                 <NavLink isActive={isActive('/RadioButton')} href="/input/RadioButton" label="Radio Button" />
                 <NavLink isActive={isActive('/SearchBar')} href="/input/SearchBar" label="Search Bar" />
+                <NavLink isActive={isActive('/SingleSelect')} href="/input/SingleSelect" label="Select - Single" />
+                <NavLink isActive={isActive('/MultiSelect')} href="/input/MultiSelect" label="Select - Multi" />
                 <NavLink isActive={isActive('/Slider')} href="/input/Slider" label="Slider" />
                 <NavLink isActive={isActive('/TextInput')} href="/input/TextInput" label="Text Input" />
                 <NavLink isActive={isActive('/Toggle')} disabled href="/input/Toggle" label="Toggle" />
@@ -266,7 +268,6 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/ListBox')} href="/not-included/ListBox" label="List Box" />
                 <NavLink isActive={isActive('/not-included/Member')} href="/not-included/Member" label="Member" />
                 <NavLink isActive={isActive('/ModalWizard')} href="/not-included/ModalWizard" label="Modal Wizard" />
-                <NavLink isActive={isActive('/MultiSelect')} href="/not-included/MultiSelect" label="Multi Select" />
                 <NavLink
                     isActive={isActive('/PaginationConnected')}
                     href="/not-included/PaginationConnected"
