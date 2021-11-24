@@ -6,8 +6,9 @@ const Home: React.FC = () => (
         <h2>Plasma</h2>
         <Tile
             title="Patate King"
-            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam."
+            description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
             svgName="plasmaComponentBox"
+            href="#/styles/icons/list"
         />
     </div>
 );
