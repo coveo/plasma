@@ -1,5 +1,12 @@
 import {Button, IBreadcrumbLinkProps, IBreadcrumbProps, IContentProps, ILinkSvgProps, ITitleProps} from 'react-vapor';
 
+export type ExampleComponent = React.ComponentType & {
+    description?: string;
+    firstTabLabel?: string;
+    deprecated?: boolean;
+    title?: string;
+};
+
 export const link1: IBreadcrumbLinkProps = {
     name: 'Pikachu',
     link: 'https://www.google.ca/?q=pikachu',

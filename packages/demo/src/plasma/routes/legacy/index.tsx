@@ -10,6 +10,7 @@ import {ColorPickerExamples} from './pages/ColorPickerExamples';
 import {Cursor} from './pages/Cursor';
 import {FacetConnectedExamples} from './pages/FacetConnectedExamples';
 import {IconBadgeExamples} from './pages/IconBadgeExamples';
+import {InputExamples} from './pages/InputExamples';
 import {ItemFilterConnectedExamples} from './pages/ItemFilterConnectedExamples';
 import {ItemFilterExamples} from './pages/ItemFilterExamples';
 import {LabeledValueExamples} from './pages/LabeledValueExamples';
@@ -47,6 +48,7 @@ export const NotIncludedRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/Cursor`} component={() => <Cursor />} />
             <Route path={`${path}/FacetConnected`} component={() => <FacetConnectedExamples />} />
             <Route path={`${path}/IconBadge`} component={() => <IconBadgeExamples />} />
+            <Route path={`${path}/InputExamples`} component={() => <InputExamples />} />
             <Route path={`${path}/ItemFilter`} component={() => <ItemFilterExamples />} />
             <Route path={`${path}/ItemFilterConnected`} component={() => <ItemFilterConnectedExamples />} />
             <Route path={`${path}/LabeledValue`} component={() => <LabeledValueExamples />} />

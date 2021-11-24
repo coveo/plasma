@@ -193,6 +193,7 @@ export const Navigation: React.FunctionComponent = () => {
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Feedback and Info">
                 <NavLink isActive={isActive('/Badge')} href="/feedback-and-info/Badge" label="Tab / Badge" />
+                <NavLink isActive={isActive('/Feedback')} href="/feedback-and-info/Feedback" label="Feedback" />
                 <NavLink isActive={isActive('/InfoBox')} href="/feedback-and-info/InfoBox" label="InfoBox" />
                 <NavLink isActive={isActive('/InfoToken')} href="/feedback-and-info/InfoToken" label="Info Token" />
                 <NavLink isActive={isActive('/Limit')} href="/feedback-and-info/Limit" label="Limit Card" />
@@ -287,6 +288,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/legacy/Cursor')} href="/legacy/Cursor" label="Cursor" />
                 <NavLink isActive={isActive('/FacetConnected')} href="/legacy/FacetConnected" label="Facet Connected" />
                 <NavLink isActive={isActive('/IconBadge')} href="/legacy/IconBadge" label="Icon Badge" />
+                <NavLink isActive={isActive('/Input')} href="/legacy/Input" label="Input (legacy)" />
                 <NavLink isActive={isActive('/ItemFilter')} href="/legacy/ItemFilter" label="Item Filter" />
                 <NavLink
                     isActive={isActive('/ItemFilterConnected')}

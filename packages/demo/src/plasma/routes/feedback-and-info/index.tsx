@@ -16,12 +16,14 @@ import {ToastConnectedExamples} from './pages/ToastConnectedExamples';
 import {ToastContentExample} from './pages/ToastContentExample';
 import {ToastExamples} from './pages/ToastExamples';
 import {TooltipExamples} from './pages/TooltipExamples';
+import {FeedBackExamples} from './pages/FeedBackExamples';
 
 export const FeedbackAndInfoRoutes: React.FunctionComponent = () => {
     const {path} = useRouteMatch();
     return (
         <Switch>
             <Route path={`${path}/Badge`} component={() => <BadgeExamples />} />
+            <Route path={`${path}/Feedback`} component={() => <FeedBackExamples />} />
             <Route path={`${path}/InfoToken`} component={() => <InfoTokenExamples />} />
             <Route path={`${path}/InfoBox`} component={() => <InfoBoxExamples />} />
             <Route path={`${path}/Limit`} component={() => <LimitExamples />} />
