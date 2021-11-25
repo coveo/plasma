@@ -10,7 +10,7 @@ import {Svg} from '../svg';
 import {FilepickerActions} from './FilepickerActions';
 import {FilepickerSelectors} from './FilepickerSelectors';
 
-export interface FilepickerProps {
+export interface FilepickerProps extends React.InputHTMLAttributes<HTMLInputElement> {
     id: string;
 }
 
@@ -26,12 +26,9 @@ const mapDispatchToProps = (dispatch: IDispatch, {id}: FilepickerProps) => ({
 });
 
 const FilepickerDisconnected: React.FunctionComponent<
-    FilepickerProps &
-        React.HTMLProps<HTMLInputElement> &
-        ReturnType<typeof mapDispatchToProps> &
-        ReturnType<typeof mapStateToProps>
+    FilepickerProps & ReturnType<typeof mapDispatchToProps> & ReturnType<typeof mapStateToProps>
 > = (props) => {
-    const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, ...inputProps} = props;
+    const {addFilepicker, setFile, clear, isEmpty, selectedFile, placeholder, capture, ...inputProps} = props;
     const input = React.useRef<HTMLInputElement>();
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setFile(FileUtils.serialize(e.target.files[0]));
@@ -53,7 +50,14 @@ const FilepickerDisconnected: React.FunctionComponent<
 
     return (
         <>
-            <input ref={input} type="file" {...inputProps} className="filepicker" onChange={handleChange} />
+            <input
+                ref={input}
+                type="file"
+                {...inputProps}
+                capture={capture as any}
+                className="filepicker"
+                onChange={handleChange}
+            />
             <label htmlFor={props.id} className={classNames('btn', {'mod-append reset-text-transform': !isEmpty})}>
                 {selectedFile?.name ?? placeholder}
                 {!isEmpty && (
