@@ -9,7 +9,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export const ChildFormExamples: ExampleComponent = () => {
     const markdown = useMarkdown('ChildForm');
     return (
-        <VaporComponent id="childform" title="Child Form" usage="" markdown={markdown} withSource>
+        <VaporComponent id="childform" title="Child Form" markdown={markdown} withSource>
             <Section>
                 <SimpleChildFormExample />
                 <ChildFormWithRadiosExamples />

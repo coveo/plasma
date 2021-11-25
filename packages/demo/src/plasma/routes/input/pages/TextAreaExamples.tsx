@@ -7,7 +7,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const TextAreaExamples = (): JSX.Element => (
-    <VaporComponent id="textarea" title="Textarea" usage="" withSource>
+    <VaporComponent id="textarea" title="Textarea" withSource>
         <div className="mt2">
             <div className="mt2">
                 <div className="form-group">

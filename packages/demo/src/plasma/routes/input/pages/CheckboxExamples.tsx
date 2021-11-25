@@ -21,7 +21,7 @@ import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 export const CheckboxExamples: ExampleComponent = () => {
     const markdown = useMarkdown('Checkbox');
     return (
-        <VaporComponent id="checkbox" title="Checkbox" usage="" markdown={markdown} withSource>
+        <VaporComponent id="checkbox" title="Checkbox" markdown={markdown} withSource>
             <Section>
                 <Checkboxset />
                 <GroupableCheckboxConnectedExamples />

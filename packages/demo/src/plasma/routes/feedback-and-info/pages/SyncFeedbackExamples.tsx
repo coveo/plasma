@@ -7,7 +7,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export class SyncFeedbackExample extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="sync-feedback" title="Sync Feedback" usage="" withSource>
+            <VaporComponent id="sync-feedback" title="Sync Feedback" withSource>
                 <div className="mt2">
                     <label className="form-control-label">SyncFeedback</label>
                     <div className="form-control">

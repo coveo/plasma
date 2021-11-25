@@ -11,7 +11,7 @@ print(PI) // 3.141592653589793
 export class CodeEditorExamples extends React.Component {
     render() {
         return (
-            <VaporComponent id="code-editor" title="Code Editor" usage="" withSource>
+            <VaporComponent id="code-editor" title="Code Editor" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">

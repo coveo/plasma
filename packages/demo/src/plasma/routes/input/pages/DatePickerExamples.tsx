@@ -24,7 +24,7 @@ import {
 export const DatePickerExamples: ExampleComponent = () => {
     const markdown = useMarkdown('ChildForm');
     return (
-        <VaporComponent id="datepicker" title="Date Picker" usage="" markdown={markdown} withSource>
+        <VaporComponent id="datepicker" title="Date Picker" markdown={markdown} withSource>
             <Section>
                 <CalendarComponent />
                 <CountdownComponent />

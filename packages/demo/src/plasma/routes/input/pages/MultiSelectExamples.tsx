@@ -121,7 +121,7 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
 
     render() {
         return (
-            <VaporComponent id="multiselect" title="Multi-select" usage="" markdown={this.state.markdown} withSource>
+            <VaporComponent id="multiselect" title="Multi-select" markdown={this.state.markdown} withSource>
                 <div className="mb2">
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select without items</label>

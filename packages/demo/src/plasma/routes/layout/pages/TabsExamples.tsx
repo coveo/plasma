@@ -3,7 +3,7 @@ import {Badge, Section, TabConnected, TabContent, TabNavigation, TabPaneConnecte
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const TabsExamples: React.FunctionComponent = () => (
-    <VaporComponent id="tab" title="Tabs" usage="" withSource>
+    <VaporComponent id="tab" title="Tabs" withSource>
         <Section>
             <Section level={3} title="Simple tab navigation">
                 <DefaultExmaple />

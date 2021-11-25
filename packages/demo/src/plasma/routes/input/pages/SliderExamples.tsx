@@ -9,7 +9,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export const SliderExamples: ExampleComponent = () => {
     const markdown = useMarkdown('Slider');
     return (
-        <VaporComponent id="slider" title="Slider" usage="" markdown={markdown} withSource>
+        <VaporComponent id="slider" title="Slider" markdown={markdown} withSource>
             <Section>
                 <SimpleSliderExample />
                 <SliderExample />

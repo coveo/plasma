@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const LoadingExamples = () => (
-    <VaporComponent id="loading" title="Loading" usage="" withSource>
+    <VaporComponent id="loading" title="Loading" withSource>
         <Section className="mb3" title="Loading examples">
             <Section level={3} title="A table loading with 4 rows">
                 <div className="form-group">

@@ -26,7 +26,7 @@ export const Collapsible: React.FunctionComponent = () => {
     const [disabled, setDisabled] = React.useState(false);
 
     return (
-        <VaporComponent id="collapsible" title="Collapsible" usage="" withSource>
+        <VaporComponent id="collapsible" title="Collapsible" withSource>
             <Section title="Collapsible Examples">
                 <Section level={2} title="Basic" description="A simple header with collapsible content underneath">
                     <CollapsibleConnected

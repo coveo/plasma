@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const BorderedLineExamples = () => (
-    <VaporComponent id="bordered-line" title="Bordered Line" usage="" withSource>
+    <VaporComponent id="bordered-line" title="Bordered Line" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Bordered Row</label>

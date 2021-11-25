@@ -9,7 +9,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export const NumericInputExamples: ExampleComponent = () => {
     const markdown = useMarkdown('NumericInput');
     return (
-        <VaporComponent id="numeric-inputs" title="Numeric Inputs" usage="" markdown={markdown} withSource>
+        <VaporComponent id="numeric-inputs" title="Numeric Inputs" markdown={markdown} withSource>
             <Section title="Numeric Inputs Examples">
                 <NumericInputs />
             </Section>

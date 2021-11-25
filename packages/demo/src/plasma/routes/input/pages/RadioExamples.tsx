@@ -25,7 +25,7 @@ export interface IRadioSelectExampleState {
 
 // start-print
 export const RadioButtonExamples: ExampleComponent = () => (
-    <VaporComponent id="radio" title="Radio Buttons" usage="" withSource>
+    <VaporComponent id="radio" title="Radio Buttons" withSource>
         <Section title="Radio set">
             <RadioSelectExample />
             <RadioSelectDisabledExample />

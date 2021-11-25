@@ -96,7 +96,7 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
 
     render() {
         return (
-            <VaporComponent id="action-bar-connected" title="Action Bar Connected" usage="" withSource>
+            <VaporComponent id="action-bar-connected" title="Action Bar Connected" withSource>
                 <Section title="Action bar examples">
                     <Section
                         level={2}

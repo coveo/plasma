@@ -141,7 +141,7 @@ const ComplexMultilineBox3 = _.compose(
 export class MultilineBoxExamples extends React.PureComponent {
     render() {
         return (
-            <VaporComponent id="multiline-box" title="Multiline Box" usage="" withSource>
+            <VaporComponent id="multiline-box" title="Multiline Box" withSource>
                 <div className="my2">
                     <div className="form-group">
                         <label className="form-control-label">Multiline box with initial data</label>

@@ -37,7 +37,7 @@ import {PhotoItem, PhotoProps, usePhotosAPIMock} from '../../../utils/ServerSide
 export const SingleSelectExample: ExampleComponent = () => {
     const markdown = useMarkdown('SingleSelect');
     return (
-        <VaporComponent id="single-select" title="Single Select" usage="" markdown={markdown} withSource>
+        <VaporComponent id="single-select" title="Single Select" markdown={markdown} withSource>
             <Section>
                 <SingleSelectConnectedExamples />
                 <ServerSideSingleSelectExample id="ServerSideSingleSelect" />

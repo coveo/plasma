@@ -22,7 +22,7 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
 const RefreshExamplesDisconnected = (props: ReturnType<typeof mapDispatchToProps>) => {
     const markdown = useMarkdown('Refresh');
     return (
-        <VaporComponent id="refresh" title="Refresh" usage="" markdown={markdown} withSource>
+        <VaporComponent id="refresh" title="Refresh" markdown={markdown} withSource>
             <Section level={2} title="Component to handle Refresh">
                 <LabeledInput label="Refresh counter">
                     <Button name="Start" className="btn mr2" onClick={() => props.start('refresh-1')} />
