@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const Borders: React.FunctionComponent = () => (
     <VaporComponent id="borders" title="Borders" usage="Clearly define the edge of components or layouts." withSource>
         <div className="flex">

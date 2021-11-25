@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {Route, Switch, useRouteMatch} from 'react-router-dom';
-import {Borders} from './pages/Borders';
+import {Borders} from './pages/BordersExamples';
 import {Collapsible} from './pages/CollapsibleExamples';
 
 export const DisplayAndUtilitiesRoutes: React.FunctionComponent = () => {

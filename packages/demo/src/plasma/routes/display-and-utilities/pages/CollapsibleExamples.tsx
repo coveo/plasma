@@ -20,12 +20,13 @@ import * as _ from 'underscore';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {Store} from '../../../../Store';
 
+// start-print
 export const Collapsible: React.FunctionComponent = () => {
     const [checked, setChecked] = React.useState(false);
     const [disabled, setDisabled] = React.useState(false);
 
     return (
-        <VaporComponent id="collapsible" title="Collapsible" usage="">
+        <VaporComponent id="collapsible" title="Collapsible" usage="" withSource>
             <Section title="Collapsible Examples">
                 <Section level={2} title="Basic" description="A simple header with collapsible content underneath">
                     <CollapsibleConnected
