@@ -12,7 +12,7 @@ const TAB22_ID = 'tab22';
 const TAB33_ID = 'tab33';
 
 export const TabsConnectedExamples: React.FunctionComponent = () => (
-    <VaporComponent id="tab-connected" title="Tabs Connected" usage="">
+    <VaporComponent id="tab-connected" title="Tabs Connected" withSource>
         <Section>
             <Section level={3} title="Basic Tabs">
                 <div>

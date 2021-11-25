@@ -6,6 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 const actionBarId = 'action-bar-connected';
 
+// start-print
 export class ActionBarConnectedExamples extends React.Component<any, any> {
     componentDidMount() {
         const actions: IActionOptions[] = [
@@ -94,7 +95,6 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
     }
 
     render() {
-        // start-print
         return (
             <VaporComponent id="action-bar-connected" title="Action Bar Connected" usage="" withSource>
                 <Section title="Action bar examples">
@@ -107,6 +107,6 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 </Section>
             </VaporComponent>
         );
-        // stop-print
     }
 }
+// stop-print

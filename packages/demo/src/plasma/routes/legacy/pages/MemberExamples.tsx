@@ -4,6 +4,8 @@ import {Svg} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const Member = () => (
     <VaporComponent
         key="member"

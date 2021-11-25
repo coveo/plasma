@@ -63,13 +63,15 @@ const mapDispatchToProps = (
     },
 });
 
+// start-print
+
 const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateConnectedExamplesProps> = ({onRender}) => {
     React.useEffect(() => {
         onRender();
     }, []);
 
     return (
-        <VaporComponent id="facet-connected" title="Facet Connected" usage="">
+        <VaporComponent id="facet-connected" title="Facet Connected" withSource>
             <Section level={2} title="Facets connected to store">
                 <div style={{width: 400}}>
                     <label className="form-control-label">Facet with the second row selectd</label>

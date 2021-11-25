@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const TransparencyExamples = () => (
     <VaporComponent id="transparency" title="Transparency" usage="Utility to modify the transparency." withSource>
         <div className="flex">

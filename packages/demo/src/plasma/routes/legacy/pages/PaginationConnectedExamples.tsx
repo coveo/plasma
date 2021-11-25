@@ -8,6 +8,8 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 const navigationConnectedExampleId = 'navigation-connected';
 const navigationConnectedExampleLoadingIds = ['loading-' + navigationConnectedExampleId];
 
+// start-print
+
 export class PaginationConnectedExamples extends React.PureComponent {
     static title: string = 'PaginationConnected';
     // Remove loading after a few seconds
@@ -29,7 +31,7 @@ export class PaginationConnectedExamples extends React.PureComponent {
             loadingIds: navigationConnectedExampleLoadingIds,
         };
         return (
-            <VaporComponent id="pagination-connected" title="Pagination Connected" usage="">
+            <VaporComponent id="pagination-connected" title="Pagination Connected" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Pagination with Redux state and loading</label>

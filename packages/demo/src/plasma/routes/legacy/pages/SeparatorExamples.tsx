@@ -3,8 +3,10 @@ import {Badge, Section, Separator} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const SeparatorExamples = () => (
-    <VaporComponent id="separator" title="Separator" usage="">
+    <VaporComponent id="separator" title="Separator" withSource>
         <Section>
             <Badge label="Badge" />
             <Separator />

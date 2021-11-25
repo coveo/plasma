@@ -7,6 +7,8 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 const ACTION_BAR_ID = 'item-filter-connected-example';
 const ITEM_FILTER_LABEL = 'Item filter';
 
+// start-print
+
 export class ItemFilterConnectedExamples extends React.Component<any, any> {
     componentDidMount() {
         Store.dispatch(filterItems(ACTION_BAR_ID, 'Item'));
@@ -16,7 +18,7 @@ export class ItemFilterConnectedExamples extends React.Component<any, any> {
 
     render() {
         return (
-            <VaporComponent id="item-filter-connected" title="Item Filter Connected" usage="">
+            <VaporComponent id="item-filter-connected" title="Item Filter Connected" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Action bar with an item filter and Redux state</label>

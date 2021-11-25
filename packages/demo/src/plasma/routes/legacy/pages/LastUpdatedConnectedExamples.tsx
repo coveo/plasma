@@ -17,6 +17,8 @@ const mapDispatchToProps = (
     },
 });
 
+// start-print
+
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateConnectedExamplesProps, any> {
     componentDidMount() {
@@ -27,7 +29,7 @@ export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateCon
 
     render() {
         return (
-            <VaporComponent id="last-updated" title="Last Updated" usage="">
+            <VaporComponent id="last-updated" title="Last Updated" withSource>
                 <div className="form-group" style={{width: 400}}>
                     <div>
                         <label className="form-control-label">

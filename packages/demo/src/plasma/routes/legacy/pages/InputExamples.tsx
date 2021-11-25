@@ -31,8 +31,10 @@ import {Store} from '../../../../Store';
 import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const InputExamples: ExampleComponent = () => (
-    <VaporComponent id="input" title="Inputs" usage="">
+    <VaporComponent id="input" title="Inputs" withSource>
         <Section title="Inputs Examples">
             <SimpleInputDisconnected />
             <InputsConnected />

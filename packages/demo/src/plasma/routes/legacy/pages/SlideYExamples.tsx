@@ -9,6 +9,8 @@ interface SlideYExamplesState {
     second: boolean;
 }
 
+// start-print
+
 export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState> {
     private first: string;
     private second: string;
@@ -27,7 +29,7 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
 
     render() {
         return (
-            <VaporComponent id="slidey" title="Slide-Y" usage="">
+            <VaporComponent id="slidey" title="Slide-Y" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Basic SlideY animation</label>

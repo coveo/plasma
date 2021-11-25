@@ -3,6 +3,8 @@ import {Section} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const ColorDots = () => (
     <VaporComponent id="color-dots" title="Color dots" usage="Display a status." withSource>
         <Section level={2} title="Standard color dots">

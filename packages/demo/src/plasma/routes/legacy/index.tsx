@@ -5,9 +5,9 @@ import {BrowserPreviewExamples} from './pages/BrowserPreviewExamples';
 import {CardRoutes} from './pages/cards';
 import {ChartExamples} from './pages/ChartExamples';
 import {ColorBarExamples} from './pages/ColorBarExamples';
-import {ColorDots} from './pages/ColorDot';
+import {ColorDots} from './pages/ColorDotExamples';
 import {ColorPickerExamples} from './pages/ColorPickerExamples';
-import {Cursor} from './pages/Cursor';
+import {Cursor} from './pages/CursorExamples';
 import {FacetConnectedExamples} from './pages/FacetConnectedExamples';
 import {IconBadgeExamples} from './pages/IconBadgeExamples';
 import {InputExamples} from './pages/InputExamples';
@@ -18,16 +18,16 @@ import {LastUpdatedConnectedExamples} from './pages/LastUpdatedConnectedExamples
 import {LastUpdatedExamples} from './pages/LastUpdatedExamples';
 import {LinkSvgExamples} from './pages/LinkSvgExamples';
 import {ListBoxExamples} from './pages/ListBoxExamples';
-import {Member} from './pages/Member';
+import {Member} from './pages/MemberExamples';
 import {PaginationConnectedExamples} from './pages/PaginationConnectedExamples';
 import {PartialStringMatchExamples} from './pages/PartialStringMatchExamples';
 import {RefreshExamples} from './pages/RefreshExamples';
 import {SeparatorExamples} from './pages/SeparatorExamples';
-import {SideNavigationLoadingExample} from './pages/SideNavigationLoadingExample';
+import {SideNavigationLoadingExample} from './pages/SideNavigationLoadingExamples';
 import {SlideYExamples} from './pages/SlideYExamples';
-import {SpacedBoxes} from './pages/SpacedBoxes';
+import {SpacedBoxes} from './pages/SpacedBoxesExamples';
 import {SvgExamples} from './pages/SvgExamples';
-import {TransparencyExamples} from './pages/transparency';
+import {TransparencyExamples} from './pages/transparencyExamples';
 
 /**
  * The aim of this component is to temporaily hold all the routes that haven't

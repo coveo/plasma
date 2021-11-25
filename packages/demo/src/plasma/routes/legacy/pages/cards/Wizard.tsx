@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 const Wizard = () => (
     <VaporComponent key="wizard" id="wizard" title="Wizard" usage="Use it with configuration wizards" withSource>
         <div className="spaced-boxes-container flex flex-wrap">

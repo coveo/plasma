@@ -5,7 +5,7 @@ import {FlatSelectExamples} from './pages/FlatSelectExamples';
 import {BreadcrumbExamples} from './pages/BreadcrumbExamples';
 import {OptionsCycleExamples} from './pages/OptionsCycleExamples';
 import {PaginationExamples} from './pages/PaginationExamples';
-import {SideNavigationExample} from './pages/SideNavigationExample';
+import {SideNavigationExample} from './pages/SideNavigationExamples';
 import {SubNavigationExamples} from './pages/SubNavigationExamples';
 
 export const NavigationRoutes: React.FunctionComponent = () => {

@@ -8,10 +8,12 @@ import {
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export class SideNavigationLoadingExample extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="side-navigation-loading" title="SideNavigation Loading" usage="">
+            <VaporComponent id="side-navigation-loading" title="SideNavigation Loading" withSource>
                 <div className="mt2">
                     <label className="form-control-label">Navigation Loading</label>
                     <div className="flex flex-row flex-stretch">

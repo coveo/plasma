@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const Cursor = () => (
     <VaporComponent id="cursor" title="Cursor" usage="Set a specific cursor style on any element." withSource>
         <p className="mb1 cursor-alias">alias</p>

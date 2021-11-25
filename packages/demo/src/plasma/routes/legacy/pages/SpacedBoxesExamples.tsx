@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const SpacedBoxes: React.FunctionComponent = () => (
     <VaporComponent
         id="spaced-box"

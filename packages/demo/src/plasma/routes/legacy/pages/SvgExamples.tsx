@@ -59,7 +59,7 @@ export const SvgExamples: React.FC = () => {
     ];
 
     return (
-        <VaporComponent id="color-bar" title="SVGs" usage="">
+        <VaporComponent id="color-bar" title="SVGs" withSource>
             <Section
                 level={1}
                 title="Size modifiers"

@@ -2,6 +2,8 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 const Material = () => (
     <VaporComponent key="material" id="material" title="Material" usage="A container to display content" withSource>
         <div className="material-card mb2">

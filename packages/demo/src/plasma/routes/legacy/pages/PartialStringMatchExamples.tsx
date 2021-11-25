@@ -4,10 +4,13 @@ import {CheckboxConnected, InfoBox, InfoBoxLink, Label, Loading, PartialStringMa
 
 import {Store} from '../../../../Store';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
+// start-print
+
 export class PartialStringMatchExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="partial-string-match" title="Partial String Match" usage="">
+            <VaporComponent id="partial-string-match" title="Partial String Match" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">PartialStringMatch without match</label>

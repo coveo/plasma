@@ -31,6 +31,8 @@ interface IListBoxExamplesProps extends Partial<IListBoxExamplesDispatchProps>, 
 
 const randomValue1To100 = () => Math.floor(Math.random() * 100 + 1);
 
+// start-print
+
 const mapStateToProps = (
     state: IReactVaporExampleState,
     ownProps: IListBoxExamplesProps
@@ -74,7 +76,7 @@ export class ListBoxExampleConnected extends React.Component<IListBoxExamplesPro
 
     render() {
         return (
-            <VaporComponent id="list-box-connected" title="List Box Connected" usage="">
+            <VaporComponent id="list-box-connected" title="List Box Connected" withSource>
                 <ListBoxConnected id={this.props.id} items={this.props.items} multi={!!this.props.multi} />
                 <Button
                     key={this.props.id + 'button'}

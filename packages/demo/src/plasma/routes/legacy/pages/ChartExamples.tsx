@@ -76,10 +76,11 @@ const ChartType = {
     Bar: 'bar',
 };
 
+// start-print
 export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
-        <VaporComponent id="charts" title="Charts" usage="">
+        <VaporComponent id="charts" title="Charts" withSource>
             <Section>
                 <Section level={3} title={`Basic ${capitalize(chartType)} Chart`}>
                     <div className="form-control" style={{height: '300px'}}>
