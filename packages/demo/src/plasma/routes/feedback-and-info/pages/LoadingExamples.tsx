@@ -3,8 +3,9 @@ import {ActionBarLoading, BasicHeaderLoading, Loading, PaginationLoading, Sectio
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const LoadingExamples = () => (
-    <VaporComponent id="loading" title="Loading" usage="">
+    <VaporComponent id="loading" title="Loading" usage="" withSource>
         <Section className="mb3" title="Loading examples">
             <Section level={3} title="A table loading with 4 rows">
                 <div className="form-group">

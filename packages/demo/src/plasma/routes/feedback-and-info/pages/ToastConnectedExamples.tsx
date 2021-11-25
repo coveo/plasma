@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {addToast as addToastAction, Section, Svg, ToastContainerConnected, ToastType} from 'react-vapor';
 
-import {ToastContentExample} from './ToastContentExample';
+import {ToastContentExample} from './ToastContentExamples';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export interface IToastConnectedExamplesProps {
@@ -12,8 +12,9 @@ const containerId = 'some-id';
 const downloadContainerId = 'download-toast-id';
 const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean sit amet accumsan ante.';
 
+// start-print
 export const ToastConnectedExamples: React.FunctionComponent<IToastConnectedExamplesProps> = ({addToast}) => (
-    <VaporComponent id="toast-connected" title="Toast Connected" usage="">
+    <VaporComponent id="toast-connected" title="Toast Connected" usage="" withSource>
         <Section>
             <div className="flex flex-wrap">
                 <button

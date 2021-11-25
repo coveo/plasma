@@ -5,6 +5,8 @@ import {DateTooltip, Tooltip} from 'react-vapor';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const TooltipExamples: React.FunctionComponent = () => {
     const markdown = useMarkdown('Tooltip');
     return (
@@ -13,6 +15,7 @@ export const TooltipExamples: React.FunctionComponent = () => {
             title="Tooltip"
             usage="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
             markdown={markdown}
+            withSource
         >
             <div className="mt2">
                 <div className="form-group">

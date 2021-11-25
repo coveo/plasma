@@ -16,10 +16,12 @@ import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const ToastExamples = () => {
     const markdown = useMarkdown('ToastConnected');
     return (
-        <VaporComponent id="toast" title="Toasts" markdown={markdown}>
+        <VaporComponent id="toast" title="Toasts" markdown={markdown} withSource>
             <Section>
                 <ToastsWithLocalState />
                 <ToastsWithReduxStore />

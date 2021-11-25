@@ -35,10 +35,12 @@ const rightContent = (
     </div>
 );
 
+// start-print
+
 const PopoverConnectedExamples = () => {
     const markdown = useMarkdown('PopoverConnected');
     return (
-        <VaporComponent id="popover-connected" title="Popover Connected" usage="" markdown={markdown}>
+        <VaporComponent id="popover-connected" title="Popover Connected" usage="" markdown={markdown} withSource>
             <div className="mb5">
                 <div className="mt2 mb3">
                     <PopoverConnected

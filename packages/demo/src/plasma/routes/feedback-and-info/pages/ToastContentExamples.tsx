@@ -1,10 +1,13 @@
 import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
+// start-print
+
 export class ToastContentExample extends React.Component {
     render() {
         return (
-            <VaporComponent id="toast-content" title="Toast Content" usage="">
+            <VaporComponent id="toast-content" title="Toast Content" usage="" withSource>
                 <ul>
                     <li style={{marginBottom: '5px'}}>
                         <a href="#">Some Link</a>

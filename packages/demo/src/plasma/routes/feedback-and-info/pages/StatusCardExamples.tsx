@@ -3,8 +3,10 @@ import {StatusCard} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const StatusCardExamples = () => (
-    <VaporComponent id="status-card" title="Status Card" usage="">
+    <VaporComponent id="status-card" title="Status Card" usage="" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Status card success</label>

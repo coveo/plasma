@@ -3,6 +3,8 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export default () => {
     const [width, setWidth] = useState(40);
     const setRandomWidth = () => setWidth(Math.floor(Math.random() * Math.floor(100)));

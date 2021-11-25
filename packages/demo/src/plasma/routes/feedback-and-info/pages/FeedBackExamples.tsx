@@ -2,15 +2,18 @@ import * as React from 'react';
 import {Button, Section, SyncFeedback, SyncFeedbackState, UserFeedback} from 'react-vapor';
 
 import {ExampleComponent} from '../../../utils/ExamplesUtils';
-
-export const FeedBackExamples: ExampleComponent = () => (
-    <Section title="FeedBack Examples">
-        <UserFeedBackExamples />
-        <SyncFeedBackExamples />
-    </Section>
-);
+import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
+
+export const FeedBackExamples: ExampleComponent = () => (
+    <VaporComponent id="feedback" title="Feedback" usage="" withSource>
+        <Section title="FeedBack Examples">
+            <UserFeedBackExamples />
+            <SyncFeedBackExamples />
+        </Section>
+    </VaporComponent>
+);
 
 const UserFeedBackExamples: React.FunctionComponent = () => (
     <Section
