@@ -1,5 +1,4 @@
-import {Handle} from 'rc-slider';
-import RCTooltip from 'rc-tooltip';
+import {Handle, SliderTooltip} from 'rc-slider';
 import * as React from 'react';
 import * as _ from 'underscore';
 
@@ -20,9 +19,9 @@ export interface HandleProps {
 const SliderHandle: React.FunctionComponent<{
     handleProps: HandleProps;
     handleCustomProps: CustomHandleProps;
-    tooltipProps?: Partial<React.ComponentProps<typeof RCTooltip>>;
+    tooltipProps?: Partial<React.ComponentProps<typeof SliderTooltip>>;
 }> = ({handleProps, handleCustomProps, tooltipProps = {}}) => (
-    <RCTooltip
+    <SliderTooltip
         prefixCls="rc-slider-tooltip"
         overlay={handleCustomProps.customTooltip ?? handleCustomProps.rangeOutput}
         placement="bottom"
@@ -30,7 +29,7 @@ const SliderHandle: React.FunctionComponent<{
         {...tooltipProps}
     >
         <Handle value={handleProps.value} {..._.omit(handleProps, ['dragging', 'index'])} />
-    </RCTooltip>
+    </SliderTooltip>
 );
 
 export default SliderHandle;

@@ -1,8 +1,7 @@
 import 'rc-slider/assets/index.css';
 
 import classNames from 'classnames';
-import {Range, SliderProps} from 'rc-slider';
-import RCTooltip from 'rc-tooltip';
+import {Range, SliderProps, SliderTooltip} from 'rc-slider';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {isBoolean} from 'underscore';
@@ -36,7 +35,7 @@ export interface SliderOwnProps extends SliderProps {
         value: number,
         side?: Exclude<AppendedValueSide, AppendedValueSide.both>
     ) => React.ReactNode;
-    tooltipStyle?: Partial<React.ComponentProps<typeof RCTooltip>>;
+    tooltipStyle?: Partial<React.ComponentProps<typeof SliderTooltip>>;
     hasTooltip?: boolean;
 }
 
