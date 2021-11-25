@@ -13,7 +13,7 @@ import {ModalWindowExamples} from './pages/ModalWindowExamples';
 import {SimpleHeader} from './pages/PageHeaderExamples';
 import {SectionExamples} from './pages/SectionExamples';
 import {SplitLayoutExamples} from './pages/SplitLayoutExamples';
-import {TabsConnectedExamples} from './pages/TabConnectedExamples';
+import {TabsConnectedExamples} from './pages/TabsConnectedExamples';
 import {TabsExamples} from './pages/TabsExamples';
 import {TableHOCExamples} from './pages/TableHOCExamples';
 import {TableHocLoadingExamples} from './pages/TableHOCLoadingExamples';

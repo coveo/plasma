@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 
-export const BreadcrumbExamples: React.FunctionComponent = () => (
+export const BreadcrumbsExamples: React.FunctionComponent = () => (
     <VaporComponent id="breadcrumb" title="Breadcrumbs" withSource>
         <Section level={2} title="Breadcrumb headers">
             <Section level={3} title="Breadcrumb with a node as action and tabs">

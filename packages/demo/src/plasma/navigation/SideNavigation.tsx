@@ -159,7 +159,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/AddRemove')} disabled href="/input/AddRemove" label="Add/Remove" />
                 <NavLink isActive={isActive('/Button')} href="/input/Button" label="Button" />
                 <NavLink isActive={isActive('/Checkbox')} href="/input/Checkbox" label="Checkbox" />
-                <NavLink isActive={isActive('/Childform')} href="/input/Childform" label="Childform" />
+                <NavLink isActive={isActive('/ChildForm')} href="/input/ChildForm" label="Child Form" />
                 <NavLink isActive={isActive('/CodeEditor')} href="/input/CodeEditor" label="Code Editor" />
                 <NavLink isActive={isActive('/DatePicker')} href="/input/DatePicker" label="Date Picker" />
                 <NavLink isActive={isActive('/DiffViewer')} href="/input/DiffViewer" label="Diff Viewer" />
@@ -192,7 +192,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/Subnavigation')} href="/navigation/Subnavigation" label="Subnavigation" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Feedback and Info">
-                <NavLink isActive={isActive('/Badge')} href="/feedback-and-info/Badge" label="Tab / Badge" />
+                <NavLink isActive={isActive('/Badge')} href="/feedback-and-info/Badge" label="Badge / Tag" />
                 <NavLink isActive={isActive('/Feedback')} href="/feedback-and-info/Feedback" label="Feedback" />
                 <NavLink isActive={isActive('/InfoBox')} href="/feedback-and-info/InfoBox" label="InfoBox" />
                 <NavLink isActive={isActive('/InfoToken')} href="/feedback-and-info/InfoToken" label="Info Token" />
@@ -247,7 +247,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/Tooltip')} href="/feedback-and-info/Tooltip" label="Tooltip" />
             </CollapsibleSideSection>
             <CollapsibleSideSection title="Display & Utilities">
-                <NavLink isActive={isActive('/borders')} href="/display-and-utilities/borders" label="Border" />
+                <NavLink isActive={isActive('/Borders')} href="/display-and-utilities/Borders" label="Border" />
                 <NavLink
                     isActive={isActive('/Collapsible')}
                     href="/display-and-utilities/Collapsible"
@@ -283,7 +283,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <NavLink isActive={isActive('/legacy/cards/wizard')} href="/legacy/cards/wizard" label="Card Wizard" />
                 <NavLink isActive={isActive('/Chart')} href="/legacy/Chart" label="Chart" />
                 <NavLink isActive={isActive('/ColorBar')} href="/legacy/ColorBar" label="Color Bar" />
-                <NavLink isActive={isActive('/legacy/ColorDots')} href="/legacy/ColorDots" label="Color Dots" />
+                <NavLink isActive={isActive('/legacy/ColorDot')} href="/legacy/ColorDot" label="Color Dot" />
                 <NavLink isActive={isActive('/ColorPicker')} href="/legacy/ColorPicker" label="Color Picker" />
                 <NavLink isActive={isActive('/legacy/Cursor')} href="/legacy/Cursor" label="Cursor" />
                 <NavLink isActive={isActive('/FacetConnected')} href="/legacy/FacetConnected" label="Facet Connected" />
@@ -313,19 +313,19 @@ export const Navigation: React.FunctionComponent = () => {
                     label="Pagination Connected"
                 />
                 <NavLink
-                    isActive={isActive('/PartialstringMatch')}
-                    href="/legacy/PartialstringMatch"
+                    isActive={isActive('/PartialStringMatch')}
+                    href="/legacy/PartialStringMatch"
                     label="Partial String Match"
                 />
                 <NavLink isActive={isActive('/Refresh')} href="/legacy/Refresh" label="Refesh" />
                 <NavLink isActive={isActive('/Separator')} href="/legacy/Separator" label="Separator" />
                 <NavLink
-                    isActive={isActive('/SidenavigationLoading')}
-                    href="/legacy/SidenavigationLoading"
-                    label="Sidenavigation Loading"
+                    isActive={isActive('/SideNavigationLoading')}
+                    href="/legacy/SideNavigationLoading"
+                    label="Side Navigation Loading"
                 />
-                <NavLink isActive={isActive('/Slidey')} href="/legacy/Slidey" label="Slidey" />
-                <NavLink isActive={isActive('/SVG')} href="/legacy/SVG" label="SVG" />
+                <NavLink isActive={isActive('/SlideY')} href="/legacy/SlideY" label="Slide Y" />
+                <NavLink isActive={isActive('/Svg')} href="/legacy/Svg" label="SVG" />
             </CollapsibleSideSection>
         </SideNavigation>
     );

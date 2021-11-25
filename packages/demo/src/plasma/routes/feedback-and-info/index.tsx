@@ -7,7 +7,7 @@ import {InfoBoxExamples} from './pages/InfoBoxExamples';
 import {InfoTokenExamples} from './pages/InfoTokenExamples';
 import {LimitExamples} from './pages/LimitExamples';
 import {LoadingExamples} from './pages/LoadingExamples';
-import {PopoverExample} from './pages/PopoverConnectedExamples';
+import {PopoverExample} from './pages/PopoverExamples';
 import ProgressBar from './pages/ProgressBarExamples';
 import {StatusCardExamples} from './pages/StatusCardExamples';
 import {StepProgressBarExamples} from './pages/StepProgressBarExamples';
@@ -16,14 +16,14 @@ import {ToastConnectedExamples} from './pages/ToastConnectedExamples';
 import {ToastContentExample} from './pages/ToastContentExamples';
 import {ToastExamples} from './pages/ToastExamples';
 import {TooltipExamples} from './pages/TooltipExamples';
-import {FeedBackExamples} from './pages/FeedBackExamples';
+import {FeedbackExamples} from './pages/FeedbackExamples';
 
 export const FeedbackAndInfoRoutes: React.FunctionComponent = () => {
     const {path} = useRouteMatch();
     return (
         <Switch>
             <Route path={`${path}/Badge`} component={() => <BadgeExamples />} />
-            <Route path={`${path}/Feedback`} component={() => <FeedBackExamples />} />
+            <Route path={`${path}/Feedback`} component={() => <FeedbackExamples />} />
             <Route path={`${path}/InfoToken`} component={() => <InfoTokenExamples />} />
             <Route path={`${path}/InfoBox`} component={() => <InfoBoxExamples />} />
             <Route path={`${path}/Limit`} component={() => <LimitExamples />} />

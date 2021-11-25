@@ -38,9 +38,7 @@ export const ActionableItemExamples = () => (
             </div>
 
             <div className="form-group">
-                <label className="form-control-label" style={{marginTop: '75vh'}}>
-                    ActionableItem without an onItemClick method
-                </label>
+                <label className="form-control-label">ActionableItem without an onItemClick method</label>
                 <div className="form-control">
                     <ActionableItem
                         id="actionable-item-3"
@@ -48,7 +46,6 @@ export const ActionableItemExamples = () => (
                             {value: 'action 1', onOptionClick: () => alert('you triggered the first action')},
                             {value: 'action 2', onOptionClick: () => alert('you triggered the second action')},
                         ]}
-                        style={{marginBottom: '50vh'}}
                     >
                         click on the dots
                     </ActionableItem>

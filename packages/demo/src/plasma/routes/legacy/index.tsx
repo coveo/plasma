@@ -25,7 +25,7 @@ import {RefreshExamples} from './pages/RefreshExamples';
 import {SeparatorExamples} from './pages/SeparatorExamples';
 import {SideNavigationLoadingExample} from './pages/SideNavigationLoadingExamples';
 import {SlideYExamples} from './pages/SlideYExamples';
-import {SpacedBoxes} from './pages/SpacedBoxesExamples';
+import {SpacedBox} from './pages/SpacedBoxExamples';
 import {SvgExamples} from './pages/SvgExamples';
 import {TransparencyExamples} from './pages/transparencyExamples';
 
@@ -42,13 +42,13 @@ export const NotIncludedRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/BrowserPreview`} component={() => <BrowserPreviewExamples />} />
             <Route path={`${path}/cards`} component={() => <CardRoutes />} />
             <Route path={`${path}/Chart`} component={() => <ChartExamples />} />
-            <Route path={`${path}/ColorDots`} component={() => <ColorDots />} />
+            <Route path={`${path}/ColorDot`} component={() => <ColorDots />} />
             <Route path={`${path}/ColorBar`} component={() => <ColorBarExamples />} />
             <Route path={`${path}/ColorPicker`} component={() => <ColorPickerExamples />} />
             <Route path={`${path}/Cursor`} component={() => <Cursor />} />
             <Route path={`${path}/FacetConnected`} component={() => <FacetConnectedExamples />} />
             <Route path={`${path}/IconBadge`} component={() => <IconBadgeExamples />} />
-            <Route path={`${path}/InputExamples`} component={() => <InputExamples />} />
+            <Route path={`${path}/Input`} component={() => <InputExamples />} />
             <Route path={`${path}/ItemFilter`} component={() => <ItemFilterExamples />} />
             <Route path={`${path}/ItemFilterConnected`} component={() => <ItemFilterConnectedExamples />} />
             <Route path={`${path}/LabeledValue`} component={() => <LabeledValueExamples />} />
@@ -61,9 +61,9 @@ export const NotIncludedRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/PartialstringMatch`} component={() => <PartialStringMatchExamples />} />
             <Route path={`${path}/Refresh`} component={() => <RefreshExamples />} />
             <Route path={`${path}/Separator`} component={() => <SeparatorExamples />} />
-            <Route path={`${path}/SidenavigationLoading`} component={() => <SideNavigationLoadingExample />} />
-            <Route path={`${path}/Slidey`} component={() => <SlideYExamples />} />
-            <Route path={`${path}/SpacedBox`} component={() => <SpacedBoxes />} />
+            <Route path={`${path}/SideNavigationLoading`} component={() => <SideNavigationLoadingExample />} />
+            <Route path={`${path}/SlideY`} component={() => <SlideYExamples />} />
+            <Route path={`${path}/SpacedBox`} component={() => <SpacedBox />} />
             <Route path={`${path}/SVG`} component={() => <SvgExamples />} />
             <Route path={`${path}/Transparency`} component={() => <TransparencyExamples />} />
         </Switch>

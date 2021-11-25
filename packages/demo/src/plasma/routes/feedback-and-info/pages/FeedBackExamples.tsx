@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 
-export const FeedBackExamples: ExampleComponent = () => (
+export const FeedbackExamples: ExampleComponent = () => (
     <VaporComponent id="feedback" title="Feedback" usage="" withSource>
         <Section title="FeedBack Examples">
             <UserFeedBackExamples />

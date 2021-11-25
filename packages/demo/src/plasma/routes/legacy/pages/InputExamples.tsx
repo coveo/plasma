@@ -34,7 +34,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const InputExamples: ExampleComponent = () => (
-    <VaporComponent id="input" title="Inputs" withSource>
+    <VaporComponent id="input" title="Inputs (legacy)" usage="Use TextInput instead" withSource>
         <Section title="Inputs Examples">
             <SimpleInputDisconnected />
             <InputsConnected />
@@ -72,8 +72,6 @@ const autoCompleteItems: IItemBoxProps[] = [
     {displayValue: 'Six', value: '6'},
     {displayValue: 'Seven', value: '7'},
 ];
-
-// start-print
 
 const SimpleInputDisconnected: React.FunctionComponent = () => {
     const [inputValue, setInputValue] = React.useState(null);
