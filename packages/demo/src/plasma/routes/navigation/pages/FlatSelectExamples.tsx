@@ -11,6 +11,8 @@ import {
 } from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
+// start-print
 export class FlatSelectExamples extends React.Component {
     render() {
         const defaultFlatSelectOption: IFlatSelectOptionProps[] = [
@@ -36,7 +38,7 @@ export class FlatSelectExamples extends React.Component {
         const append: IContentProps = {content: () => <Svg {...svg} />, classes: ['ml1']};
 
         return (
-            <VaporComponent id="flat-select" title="Flat Select" usage="">
+            <VaporComponent id="flat-select" title="Flat Select" withSource>
                 <Form>
                     <Section title="Flat Select List">
                         <Section level={2} title="Default Flat Select">

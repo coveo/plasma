@@ -3,6 +3,8 @@ import {INavigationProps, Navigation} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export class PaginationExamples extends React.PureComponent {
     static title: string = 'Pagination';
     render() {
@@ -14,7 +16,7 @@ export class PaginationExamples extends React.PureComponent {
             onPerPageClick: (newPerPage) => alert('New per page option selected: ' + newPerPage),
         };
         return (
-            <VaporComponent id="pagination" title="Pagination" usage="">
+            <VaporComponent id="pagination" title="Pagination" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Pagination</label>

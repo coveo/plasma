@@ -3,10 +3,11 @@ import {BreadcrumbHeader, Button, Section, Svg} from 'react-vapor';
 
 import {defaultBreadcrumb, link1, link2} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+
 // start-print
 
 export const BreadcrumbExamples: React.FunctionComponent = () => (
-    <VaporComponent id="breadcrumb" title="Breadcrumbs" usage="">
+    <VaporComponent id="breadcrumb" title="Breadcrumbs" withSource>
         <Section level={2} title="Breadcrumb headers">
             <Section level={3} title="Breadcrumb with a node as action and tabs">
                 <BreadcrumbHeader

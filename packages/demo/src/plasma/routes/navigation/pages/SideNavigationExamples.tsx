@@ -11,11 +11,13 @@ import {
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
+
 export const SideNavigationExample: React.FunctionComponent = () => {
     const [isExpanded, setIsExpanded] = React.useState(true);
 
     return (
-        <VaporComponent id="side-nav" title="SideNavigation" usage="">
+        <VaporComponent id="side-nav" title="SideNavigation" withSource>
             <Form>
                 <Section level={2} title="Side Navigation">
                     <SideNavigation>
