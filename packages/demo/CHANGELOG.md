@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.0.0](https://github.com/coveo/react-vapor/compare/v29.0.0...v30.0.0) (2021-11-25)
+
+
+### Build System
+
+* stop distributing bundles ([bd89a02](https://github.com/coveo/react-vapor/commit/bd89a02af217f9823a7f36d70c8d8ed2b2e37cf8))
+
+
+### BREAKING CHANGES
+
+* No more bundle will be distributed
+
+
+
+
+
 # [29.0.0](https://github.com/coveo/react-vapor/compare/v28.3.0...v29.0.0) (2021-11-23)
 
 **Note:** Version bump only for package react-vapor-demo
