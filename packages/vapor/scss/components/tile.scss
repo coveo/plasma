@@ -12,6 +12,8 @@
 
     &:hover {
         border: 2px solid var(--digital-blue-60);
+        box-shadow: var(--medium-elevation-on-light);
+        transform: translate3d(0px, -8px, 0px);
     }
 }
 
@@ -37,9 +39,7 @@
     overflow: hidden;
     background: var(--white);
     border-radius: 8px;
-    -moz-transition: height 450ms;
-    -webkit-transition: height 450ms;
-    transition: height 450ms;
+    transition: height 300ms;
 }
 
 .tile:hover > .tile-information {
@@ -48,6 +48,8 @@
 
     .tile-title {
         height: 27.75px;
+        overflow: hidden;
+        transition: height 300ms;
     }
 }
 
