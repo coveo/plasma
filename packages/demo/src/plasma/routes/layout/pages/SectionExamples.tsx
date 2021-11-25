@@ -15,11 +15,11 @@ import {
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export class SectionExamples extends React.Component<any, any> {
     render() {
         return (
-            // start-print
-            <VaporComponent id="sections" title="Sections" usage="">
+            <VaporComponent id="sections" title="Sections" usage="" withSource>
                 <Form>
                     <Section
                         title="Search panel"
@@ -234,7 +234,7 @@ export class SectionExamples extends React.Component<any, any> {
                     </Section>
                 </Form>
             </VaporComponent>
-            // stop-print
         );
     }
 }
+// stop-print

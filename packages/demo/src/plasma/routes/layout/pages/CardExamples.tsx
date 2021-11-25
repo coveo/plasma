@@ -2,6 +2,7 @@ import * as React from 'react';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const CardExample = () => (
     <VaporComponent key="card" id="card" title="Card" withSource>
         <div className="card p2" style={{width: '100px', height: '100px'}}>
@@ -9,3 +10,4 @@ export const CardExample = () => (
         </div>
     </VaporComponent>
 );
+// stop-print

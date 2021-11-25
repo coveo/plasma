@@ -20,8 +20,9 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 const lorem = loremIpsum({count: 200});
 const lorem1 = loremIpsum({count: 50});
 
+// start-print
 export const FooterExample: ExampleComponent = () => (
-    <VaporComponent id="footer" title="Footer" usage="">
+    <VaporComponent id="footer" title="Footer" usage="" withSource>
         <StickyFooterExample />
         <StickyFooterWithDirtyExample />
     </VaporComponent>
@@ -69,3 +70,4 @@ const StickyFooterWithDirtyExample: React.FunctionComponent = () => (
         />
     </Section>
 );
+// stop-print

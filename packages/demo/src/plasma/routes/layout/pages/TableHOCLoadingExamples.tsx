@@ -9,7 +9,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
-    <VaporComponent id="table-hoc-loading" title="Table HOC Loading" usage="">
+    <VaporComponent id="table-hoc-loading" title="Table HOC Loading" usage="" withSource>
         <Section>
             <Section level={2} title="Table loading with the default number of row">
                 <TableLoadingExamplesWithDataNull />
@@ -67,3 +67,5 @@ const TableLoadingComposed = _.compose(
     }),
     tableWithBlankSlate({title: 'Filter caused the table to be empty'})
 )(TableHOC);
+
+// stop-print

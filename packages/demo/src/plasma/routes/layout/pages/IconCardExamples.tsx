@@ -3,9 +3,9 @@ import {IconCard, Section, Svg} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const IconCardExamples: React.FunctionComponent = () => (
-    // start-print
-    <VaporComponent id="bordered-line" title="Bordered Line" usage="">
+    <VaporComponent id="bordered-line" title="Bordered Line" usage="" withSource>
         <Section>
             <Section level={2} title="Basic">
                 <IconCard
@@ -68,5 +68,5 @@ export const IconCardExamples: React.FunctionComponent = () => (
             </Section>
         </Section>
     </VaporComponent>
-    // stop-print
 );
+// stop-print

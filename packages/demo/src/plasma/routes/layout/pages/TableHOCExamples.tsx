@@ -35,7 +35,7 @@ export interface IExampleRowData {
 }
 
 export const TableHOCExamples = () => (
-    <VaporComponent id="table-hoc" title="Table" usage="">
+    <VaporComponent id="table-hoc" title="Table" usage="" withSource>
         <Section>
             <Section level={2} title="Table with Data">
                 <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />
@@ -215,3 +215,5 @@ const TableWithActionsAndDataFiltering = connect(
     undefined,
     mapDispatchToProps
 )(TableWithActionsAndDataFilteringDisconnected);
+
+// stop-print

@@ -3,6 +3,7 @@ import {ActionBar, ACTION_SEPARATOR, IActionOptions, Section} from 'react-vapor'
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const ActionBarExamples: React.FunctionComponent = () => {
     const actions: IActionOptions[] = [
         {
@@ -49,7 +50,7 @@ export const ActionBarExamples: React.FunctionComponent = () => {
     ];
 
     return (
-        <VaporComponent id="action-bar" title="Action Bar" usage="Different uses of the Action Bar">
+        <VaporComponent id="action-bar" title="Action Bar" usage="Different uses of the Action Bar" withSource>
             <Section level={1} title="ActionBar examples">
                 <Section level={2} title="Action bar without actions">
                     <ActionBar />
@@ -103,3 +104,4 @@ export const ActionBarExamples: React.FunctionComponent = () => {
         </VaporComponent>
     );
 };
+// stop-print

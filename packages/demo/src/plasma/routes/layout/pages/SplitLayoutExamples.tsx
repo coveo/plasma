@@ -8,8 +8,9 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 const exampleTextLeft = `I am a left child. ${loremIpsum({count: 5, sentenceUpperBound: 15})}`;
 const exampleTextRight = `I am a right child. ${loremIpsum({count: 5, sentenceUpperBound: 15})}`;
 
+// start-print
 export const SplitLayoutExamples = () => (
-    <VaporComponent id="split-layout" title="Split Layout" usage="">
+    <VaporComponent id="split-layout" title="Split Layout" usage="" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">SplitLayout with one JSX.Element on each side</label>
@@ -74,3 +75,4 @@ export const SplitLayoutExamples = () => (
         </div>
     </VaporComponent>
 );
+// stop-print

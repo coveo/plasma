@@ -4,8 +4,9 @@ import {BasicHeader, Section} from 'react-vapor';
 import {defaultTitle, actions} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const SimpleHeader: React.FunctionComponent = () => (
-    <VaporComponent id="page-header" title="Page Header" usage="">
+    <VaporComponent id="page-header" title="Page Header" usage="" withSource>
         <Section title="Simple Header">
             <Section level={2} title="Basic header with actions and tabs">
                 <BasicHeader
@@ -23,3 +24,4 @@ export const SimpleHeader: React.FunctionComponent = () => (
         </Section>
     </VaporComponent>
 );
+// stop-print

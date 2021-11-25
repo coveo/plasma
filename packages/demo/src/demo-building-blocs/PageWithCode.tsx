@@ -10,7 +10,7 @@ const START_STOP = /\/\/ start-print\s*([\s\S]*)\/\/ stop-print/;
 const START_END = /\/\/ start-print\s*([\s\S]*)$/;
 const BEGIN_STOP = /^([\s\S]*)\/\/ stop-print/;
 
-const chopDownSourceFile = (wholeFile: string): string => {
+export const chopDownSourceFile = (wholeFile: string): string => {
     const hasStartDirective = wholeFile.indexOf('// start-print') >= 0;
     const hasStopDirective = wholeFile.indexOf('// stop-print') >= 0;
 
@@ -32,7 +32,7 @@ export const DevelopmentTabContent: React.FunctionComponent<{component: any; pat
             const res: {default: string} = await import(
                 // path has format './ComponentName.js'
                 // source file is at '@examples/ComponentName.tsx'
-                '!!raw-loader!@examples/' + path.replace('./', '').replace('.js', '.tsx')
+                '!!raw-loader!/' + path.replace('./', '').replace('.js', '.tsx')
             );
             return chopDownSourceFile(res.default);
         };

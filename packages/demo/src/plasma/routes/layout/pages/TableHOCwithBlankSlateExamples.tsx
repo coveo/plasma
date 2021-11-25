@@ -7,7 +7,7 @@ import {generateDataWithFaker, generateTableRow} from '../../layout/pages/TableH
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const TableHOCwithBlankSlateExamples = () => (
-    <VaporComponent id="table-hoc-with-blank-slate" title="Table HOC with Blank Slate" usage="">
+    <VaporComponent id="table-hoc-with-blank-slate" title="Table HOC with Blank Slate" usage="" withSource>
         <Section>
             <TableWithBlankSlateExample />
         </Section>
@@ -67,3 +67,5 @@ const TableWithEmptyStateComposed = _.compose(
 )(TableHOC);
 
 const EmptyState: React.FunctionComponent = () => <div> A truly empty state </div>;
+
+// stop-print

@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {Redirect, Route, Switch, useRouteMatch} from 'react-router-dom';
 
-import {Headings} from './Headings';
-import {IconColor} from './IconColor';
-import {LineHeight} from './LineHeight';
-import {Links} from './Links';
-import {Lists} from './Lists';
-import {TextColor} from './TextColor';
-import {Utilities} from './Utilities';
-import {Whitespace} from './Whitespace';
+import {Headings} from './HeadingsExamples';
+import {IconColor} from './IconColorExamples';
+import {LineHeight} from './LineHeightExamples';
+import {Links} from './LinksExamples';
+import {Lists} from './ListsExamples';
+import {TextColor} from './TextColorExamples';
+import {Utilities} from './UtilitiesExamples';
+import {Whitespace} from './WhitespaceExamples';
 
 export const Typekit: React.FunctionComponent = () => {
     const {path} = useRouteMatch();

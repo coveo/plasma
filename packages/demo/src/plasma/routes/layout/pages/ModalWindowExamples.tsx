@@ -28,8 +28,9 @@ export interface ModalConnectedExampleProps {
 const description =
     'Modal windows appear in front of the main page and disable it while they are visible. They act as a zoom in on an element of the main page that allows additionnal interaction or configuration. They make possible for users to focus on their content whilst avoiding leaving the context from which they have been called.';
 
+// start-print
 export const ModalWindowExamples: ExampleComponent = () => (
-    <VaporComponent id="modal-window" title="Modal Window" usage={description}>
+    <VaporComponent id="modal-window" title="Modal Window" usage={description} withSource>
         <Section>
             <ModalCompositeExampleConnected />
             <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />
@@ -247,3 +248,5 @@ const ModalLoadingExampleDisconnected: React.FunctionComponent<ReturnType<typeof
 };
 
 const ModalLoadingExample = connect(null, mapDispatchToProps)(ModalLoadingExampleDisconnected);
+
+// stop-print

@@ -4,6 +4,7 @@ import {useLocation} from 'react-router';
 import {BasicHeader, Form, TabContent, TabPaneConnected} from 'react-vapor';
 
 import Code from './Code';
+import {useCodeExample} from './useCodeExample';
 
 interface VaporComponentProps {
     id: string;
@@ -23,8 +24,11 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     markdown,
 }) => {
     const {pathname} = useLocation();
+
     const page = pathname.substr(pathname.lastIndexOf('/'));
     const githubMarkdownLink = `https://github.com/coveo/react-vapor/tree/master/packages/demo/docs${page}.md`;
+
+    const code = useCodeExample();
 
     return (
         <div id={id}>
@@ -42,7 +46,7 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                         {children}
                         {withSource && (
                             <div className="mt2">
-                                <Code language="html">{children}</Code>
+                                <Code language="tsx">{code}</Code>
                             </div>
                         )}
                     </Form>

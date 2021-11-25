@@ -94,8 +94,9 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
     }
 
     render() {
+        // start-print
         return (
-            <VaporComponent id="action-bar-connected" title="Action Bar Connected" usage="">
+            <VaporComponent id="action-bar-connected" title="Action Bar Connected" usage="" withSource>
                 <Section title="Action bar examples">
                     <Section
                         level={2}
@@ -106,5 +107,6 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
                 </Section>
             </VaporComponent>
         );
+        // stop-print
     }
 }

@@ -6,15 +6,16 @@ import {
     BlankSlateWithTableInError,
     ButtonWithRefreshCallback,
 } from 'react-vapor';
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
+import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const BlankSlateExample: React.FunctionComponent = () => {
     const markdown = useMarkdown('BlankSlate');
 
     return (
-        <VaporComponent id="blank-slate" title="Blank Slate" usage="" markdown={markdown}>
+        <VaporComponent id="blank-slate" title="Blank Slate" usage="" markdown={markdown} withSource>
             <div className="mt2">
                 <div className="form-group">
                     <label className="form-control-label">Default BlankSlate</label>
@@ -142,3 +143,4 @@ export const BlankSlateExample: React.FunctionComponent = () => {
         </VaporComponent>
     );
 };
+// stop-print
