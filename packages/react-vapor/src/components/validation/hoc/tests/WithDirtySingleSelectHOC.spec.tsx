@@ -1,9 +1,10 @@
-import * as React from 'react';
-import {render, screen} from '@test-utils';
+import {act, render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
+import * as React from 'react';
+
 import {IsDirtyIndicator} from '../../../../utils/tests/TestUtils';
 import {ISingleSelectOwnProps, SingleSelectConnected} from '../../../select/SingleSelectConnected';
-import {withDirtySingleSelectHOC, IWithDirtySingleSelectHOCProps} from '../WithDirtySingleSelectHOC';
+import {IWithDirtySingleSelectHOCProps, withDirtySingleSelectHOC} from '../WithDirtySingleSelectHOC';
 
 describe('SingleSelectWithDirty', () => {
     const SingleSelectWithHOC = withDirtySingleSelectHOC(SingleSelectConnected);
@@ -63,11 +64,12 @@ describe('SingleSelectWithDirty', () => {
             </>
         );
 
-        userEvent.click(screen.getByRole('button'));
+        userEvent.click(screen.getByRole('button', {name: /old value/i}));
+        act(() => {
+            userEvent.click(screen.getByRole('option', {name: /new value/i}));
+        });
 
-        userEvent.click(screen.getByText('new value'));
-
-        expect(screen.getByText('is dirty')).toBeVisible();
+        expect(screen.getByText(/is dirty/)).toBeInTheDocument();
     });
 
     it('should not trigger the dirty state when the initial values are the same as the selected ones', () => {
