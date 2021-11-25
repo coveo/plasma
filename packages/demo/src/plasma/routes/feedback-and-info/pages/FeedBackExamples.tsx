@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Button, Section, SyncFeedback, SyncFeedbackState, UserFeedback} from 'react-vapor';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 
 export const FeedBackExamples: ExampleComponent = () => (
     <Section title="FeedBack Examples">

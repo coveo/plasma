@@ -15,12 +15,8 @@ import {
 } from 'react-vapor';
 import * as _ from 'underscore';
 
-import {
-    IExampleData,
-    IMultilineBoxExamplesProps,
-    WrapperExample,
-} from '../../../../components/examples/MultilineBoxExampleUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {IExampleData, IMultilineBoxExamplesProps, WrapperExample} from '../../../utils/MultilineBoxExampleUtils';
 
 const containerNodeExample = (
     child: React.ReactNode,

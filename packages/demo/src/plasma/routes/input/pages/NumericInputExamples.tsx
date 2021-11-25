@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {NumericInputConnected, Section} from 'react-vapor';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 

@@ -2,7 +2,7 @@ import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
 import {Button, PopoverConnected, SplitLayout} from 'react-vapor';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 

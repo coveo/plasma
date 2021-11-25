@@ -19,7 +19,7 @@ import {
 } from 'react-vapor';
 import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export interface ModalConnectedExampleProps {
     id: string;

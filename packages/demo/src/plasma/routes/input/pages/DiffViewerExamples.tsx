@@ -1,8 +1,8 @@
 import * as React from 'react';
-import {DiffViewer, Section} from 'react-vapor';
+import {DiffViewer, fakeJSON1, JSONToString, Section} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
-import {fakeJSON, fakeJSON1, JSONToString} from '../../../../components/examples/DiffViewerExmaplesCommon';
+import {fakeJSON} from '../../../utils/DiffViewerExmaplesCommon';
 
 export const DiffViewerExamples: React.FC = () => (
     <VaporComponent id="diff-viewer" title="Diff Viewer" usage="">

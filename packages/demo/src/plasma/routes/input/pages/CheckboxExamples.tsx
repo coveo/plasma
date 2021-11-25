@@ -14,7 +14,7 @@ import {
 
 import {Store} from '../../../../Store';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 

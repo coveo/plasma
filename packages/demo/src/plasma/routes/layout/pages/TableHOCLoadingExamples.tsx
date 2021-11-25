@@ -2,10 +2,11 @@ import * as React from 'react';
 import {Section, TableHOC, tableWithBlankSlate, tableWithFilter} from 'react-vapor';
 import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 // move to tablehoc example utils
-import {generateDataWithFaker, generateTableRow} from '../../../../components/examples/TableHOCExamples';
+
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
     <VaporComponent id="table-hoc-loading" title="Table HOC Loading" usage="">

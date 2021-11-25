@@ -27,7 +27,7 @@ import {
 } from 'react-vapor';
 import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {IReactVaporExampleState} from '../../../../Reducers';

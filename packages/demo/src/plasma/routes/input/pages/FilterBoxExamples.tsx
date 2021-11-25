@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Button, FilterBoxConnected, Section, Svg} from 'react-vapor';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const FilterBoxExamples: ExampleComponent = () => <FilterBoxes />;

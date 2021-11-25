@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {OptionsCycleConnected, Section} from 'react-vapor';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const OptionsCycleExamples: ExampleComponent = () => <OptionsCycles />;

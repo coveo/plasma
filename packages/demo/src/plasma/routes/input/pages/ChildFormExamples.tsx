@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Checkbox, ChildForm, Input, Label, Radio, RadioSelect, Section, ToggleForm} from 'react-vapor';
 
-import {ExampleComponent} from '../../../../components/ComponentsInterface';
+import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
