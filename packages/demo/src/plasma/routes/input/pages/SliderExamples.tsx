@@ -5,10 +5,11 @@ import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const SliderExamples: ExampleComponent = () => {
     const markdown = useMarkdown('Slider');
     return (
-        <VaporComponent id="slider" title="Slider" usage="" markdown={markdown}>
+        <VaporComponent id="slider" title="Slider" usage="" markdown={markdown} withSource>
             <Section>
                 <SimpleSliderExample />
                 <SliderExample />

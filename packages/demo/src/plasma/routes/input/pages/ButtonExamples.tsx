@@ -31,6 +31,7 @@ export const ButtonExamples: React.FunctionComponent = () => {
             title="Buttons"
             usage="Buttons communicate actions, and, when clicked, initialize those actions"
             markdown={markdown}
+            withSource
         >
             <Section>
                 <Section level={2} title="Usability">

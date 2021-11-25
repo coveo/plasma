@@ -16,10 +16,11 @@ const nonEmptyValidation: InputValidator = (value: string) => {
     }
 };
 
+// start-print
 export const TextInputExamples: React.FunctionComponent = () => {
     const markdown = useMarkdown('TextInput');
     return (
-        <VaporComponent id="text-input" title="Text Input" usage="" markdown={markdown}>
+        <VaporComponent id="text-input" title="Text Input" usage="" markdown={markdown} withSource>
             <FormProvider>
                 <Section>
                     <TextInput

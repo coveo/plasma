@@ -20,6 +20,7 @@ import * as _ from 'underscore';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {DocsMarkdownFiles} from '../../../utils/MarkdownDocs';
 
+// start-print
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
     {displayValue: 'Test One', value: '1'},
@@ -120,7 +121,7 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
 
     render() {
         return (
-            <VaporComponent id="multiselect" title="Multi-select" usage="" markdown={this.state.markdown}>
+            <VaporComponent id="multiselect" title="Multi-select" usage="" markdown={this.state.markdown} withSource>
                 <div className="mb2">
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select without items</label>

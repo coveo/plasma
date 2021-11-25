@@ -11,6 +11,7 @@ import {findWhere} from 'underscore';
 import {Store} from '../../../../Store';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 class SearchBarExample extends React.Component<React.Attributes, ISearchBarStateProps> {
     state = {
         value: '',
@@ -42,7 +43,7 @@ class SearchBarExample extends React.Component<React.Attributes, ISearchBarState
 export class SearchBarExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="search-bar" title="Search Bar" usage="">
+            <VaporComponent id="search-bar" title="Search Bar" usage="" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">SearchBar disabled</label>

@@ -5,10 +5,11 @@ import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const ChildFormExamples: ExampleComponent = () => {
     const markdown = useMarkdown('ChildForm');
     return (
-        <VaporComponent id="childform" title="Child Form" usage="" markdown={markdown}>
+        <VaporComponent id="childform" title="Child Form" usage="" markdown={markdown} withSource>
             <Section>
                 <SimpleChildFormExample />
                 <ChildFormWithRadiosExamples />
@@ -84,3 +85,4 @@ const ChildFormWithRadiosExamples: React.FunctionComponent = () => {
         </Section>
     );
 };
+// stop-print

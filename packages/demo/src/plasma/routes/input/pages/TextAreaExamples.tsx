@@ -5,8 +5,9 @@ import {findWhere} from 'underscore';
 import {Store} from '../../../../Store';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const TextAreaExamples = (): JSX.Element => (
-    <VaporComponent id="textarea" title="Textarea" usage="">
+    <VaporComponent id="textarea" title="Textarea" usage="" withSource>
         <div className="mt2">
             <div className="mt2">
                 <div className="form-group">

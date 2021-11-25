@@ -18,12 +18,17 @@ import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
-export const CheckboxExamples: ExampleComponent = () => (
-    <Section>
-        <Checkboxset />
-        <GroupableCheckboxConnectedExamples />
-    </Section>
-);
+export const CheckboxExamples: ExampleComponent = () => {
+    const markdown = useMarkdown('Checkbox');
+    return (
+        <VaporComponent id="checkbox" title="Checkbox" usage="" markdown={markdown} withSource>
+            <Section>
+                <Checkboxset />
+                <GroupableCheckboxConnectedExamples />
+            </Section>
+        </VaporComponent>
+    );
+};
 
 CheckboxExamples.description = 'Checkboxes allow users to select multiple options from a set.';
 
@@ -35,56 +40,53 @@ const CheckboxWithDirty = withDirtyCheckboxHOC(CheckboxConnected);
 
 const Checkboxset: React.FunctionComponent = () => {
     const [checked, setChecked] = React.useState(false);
-    const markdown = useMarkdown('Checkbox');
 
     return (
-        <VaporComponent id="checkbox" title="Checkbox" usage="" markdown={markdown}>
-            <Section title="Checkbox set">
-                <Section level={2} title="Checkboxes with labels">
-                    <LabeledInput label="The label of the checkbox set">
-                        <CheckboxConnected id="checkbox1" clearSides>
-                            <Label>An unchecked checkbox</Label>
-                        </CheckboxConnected>
-                        <CheckboxConnected id="checkbox2" defaultChecked clearSides>
-                            <Label>A checked checkbox</Label>
-                        </CheckboxConnected>
-                        <CheckboxConnected id="checkbox3" disabled clearSides>
-                            <Label>A force disabled checkbox</Label>
-                        </CheckboxConnected>
-                        <CheckboxConnected id="checkbox4" disabled defaultChecked clearSides>
-                            <Label>A force disabled state on a checked checkbox</Label>
-                        </CheckboxConnected>
-                        <CheckboxConnected id="checkbox5" indeterminate clearSides>
-                            <Label>A force checked and indeterminate (partially selected) checkbox</Label>
-                        </CheckboxConnected>
-                        <CheckboxConnected id="checkbox6" disabled indeterminate clearSides>
-                            <Label>A force checked and indeterminate (partially selected) checkbox disabled</Label>
-                        </CheckboxConnected>
-                        <Checkbox id="checkbox7" checked={checked} onClick={() => setChecked(!checked)} clearSides>
-                            <Label>A checkbox with local state</Label>
-                        </Checkbox>
-                    </LabeledInput>
-                    <LabeledInput label="The checkbox set with dirty management">
-                        <CheckboxWithDirty id="checkbox-dirty" clearSides>
-                            <Label>A checkbox with a validation dirty state</Label>
-                        </CheckboxWithDirty>
-                        <CheckboxWithDirty id="checkbox-dirty-true" defaultChecked>
-                            <Label>A checkbox with a validation dirty state that starts with a default value</Label>
-                        </CheckboxWithDirty>
-                        <SaveButton
-                            enabled
-                            validationIds={['checkbox-dirty', 'checkbox-dirty-true']}
-                            name="An example button bound to the checkboxes"
-                        />
-                    </LabeledInput>
-                </Section>
-                <Section level={2}>
-                    <LabeledInput label="A checkbox with no label">
-                        <CheckboxConnected id="checkbox-nolabel" />
-                    </LabeledInput>
-                </Section>
+        <Section title="Checkbox set">
+            <Section level={2} title="Checkboxes with labels">
+                <LabeledInput label="The label of the checkbox set">
+                    <CheckboxConnected id="checkbox1" clearSides>
+                        <Label>An unchecked checkbox</Label>
+                    </CheckboxConnected>
+                    <CheckboxConnected id="checkbox2" defaultChecked clearSides>
+                        <Label>A checked checkbox</Label>
+                    </CheckboxConnected>
+                    <CheckboxConnected id="checkbox3" disabled clearSides>
+                        <Label>A force disabled checkbox</Label>
+                    </CheckboxConnected>
+                    <CheckboxConnected id="checkbox4" disabled defaultChecked clearSides>
+                        <Label>A force disabled state on a checked checkbox</Label>
+                    </CheckboxConnected>
+                    <CheckboxConnected id="checkbox5" indeterminate clearSides>
+                        <Label>A force checked and indeterminate (partially selected) checkbox</Label>
+                    </CheckboxConnected>
+                    <CheckboxConnected id="checkbox6" disabled indeterminate clearSides>
+                        <Label>A force checked and indeterminate (partially selected) checkbox disabled</Label>
+                    </CheckboxConnected>
+                    <Checkbox id="checkbox7" checked={checked} onClick={() => setChecked(!checked)} clearSides>
+                        <Label>A checkbox with local state</Label>
+                    </Checkbox>
+                </LabeledInput>
+                <LabeledInput label="The checkbox set with dirty management">
+                    <CheckboxWithDirty id="checkbox-dirty" clearSides>
+                        <Label>A checkbox with a validation dirty state</Label>
+                    </CheckboxWithDirty>
+                    <CheckboxWithDirty id="checkbox-dirty-true" defaultChecked>
+                        <Label>A checkbox with a validation dirty state that starts with a default value</Label>
+                    </CheckboxWithDirty>
+                    <SaveButton
+                        enabled
+                        validationIds={['checkbox-dirty', 'checkbox-dirty-true']}
+                        name="An example button bound to the checkboxes"
+                    />
+                </LabeledInput>
             </Section>
-        </VaporComponent>
+            <Section level={2}>
+                <LabeledInput label="A checkbox with no label">
+                    <CheckboxConnected id="checkbox-nolabel" />
+                </LabeledInput>
+            </Section>
+        </Section>
     );
 };
 

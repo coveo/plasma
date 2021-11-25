@@ -33,10 +33,11 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {IReactVaporExampleState} from '../../../../Reducers';
 import {PhotoItem, PhotoProps, usePhotosAPIMock} from '../../../utils/ServerSideSelectExampleUtils';
 
+// start-print
 export const SingleSelectExample: ExampleComponent = () => {
     const markdown = useMarkdown('SingleSelect');
     return (
-        <VaporComponent id="single-select" title="Single Select" usage="" markdown={markdown}>
+        <VaporComponent id="single-select" title="Single Select" usage="" markdown={markdown} withSource>
             <Section>
                 <SingleSelectConnectedExamples />
                 <ServerSideSingleSelectExample id="ServerSideSingleSelect" />

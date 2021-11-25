@@ -21,7 +21,7 @@ import {SingleSelectExample} from './pages/SingleSelectExamples';
 import {SliderExamples} from './pages/SliderExamples';
 import {TextAreaExamples} from './pages/TextAreaExamples';
 import {TextInputExamples} from './pages/TextInputExamples';
-import ValuePopup from './pages/ValuePopup';
+import ValuePopup from './pages/ValuePopupExamples';
 
 export const InputRoutes: React.FunctionComponent = () => {
     const {path} = useRouteMatch();

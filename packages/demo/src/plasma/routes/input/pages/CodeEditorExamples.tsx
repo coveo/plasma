@@ -7,10 +7,11 @@ const defaultValue = `from math import pi as PI
 print(PI) // 3.141592653589793
 `;
 
+// start-print
 export class CodeEditorExamples extends React.Component {
     render() {
         return (
-            <VaporComponent id="code-editor" title="Code Editor" usage="">
+            <VaporComponent id="code-editor" title="Code Editor" usage="" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">
@@ -44,3 +45,4 @@ export class CodeEditorExamples extends React.Component {
         );
     }
 }
+// stop-print

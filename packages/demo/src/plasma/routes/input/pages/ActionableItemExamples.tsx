@@ -3,8 +3,9 @@ import {ActionableItem} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const ActionableItemExamples = () => (
-    <VaporComponent id="actionable-item" title="Actionable Item" usage="">
+    <VaporComponent id="actionable-item" title="Actionable Item" usage="" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">ActionableItem without an onItemClick method</label>
@@ -56,3 +57,4 @@ export const ActionableItemExamples = () => (
         </div>
     </VaporComponent>
 );
+// stop-print

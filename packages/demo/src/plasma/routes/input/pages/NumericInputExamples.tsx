@@ -5,10 +5,11 @@ import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
+// start-print
 export const NumericInputExamples: ExampleComponent = () => {
     const markdown = useMarkdown('NumericInput');
     return (
-        <VaporComponent id="numeric-inputs" title="Numeric Inputs" usage="" markdown={markdown}>
+        <VaporComponent id="numeric-inputs" title="Numeric Inputs" usage="" markdown={markdown} withSource>
             <Section title="Numeric Inputs Examples">
                 <NumericInputs />
             </Section>

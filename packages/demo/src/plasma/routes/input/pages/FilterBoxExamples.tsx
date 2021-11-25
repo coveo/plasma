@@ -10,7 +10,7 @@ FilterBoxExamples.description = 'Will be used to filter content';
 // start-print
 
 const FilterBoxes: React.FunctionComponent = () => (
-    <VaporComponent id="filter-box" title="Filter Box" usage="">
+    <VaporComponent id="filter-box" title="Filter Box" usage="" withSource>
         <Section title="FilterBox Examples">
             <Section level={3} title="A filterBox with a custom placeholder.">
                 <FilterBoxConnected id="FirstFilterBox" filterPlaceholder="Custom Placeholder" />
