@@ -3,15 +3,16 @@ import '@demo-styling/home.scss';
 import React from 'react';
 import {Section} from 'react-vapor';
 
-const MAIN_DESCRIPTION: string =
-    'Coveo’s platform design system & ionized Vapor.\n Learn more about our brand, our values and our story by visiting our brand page';
-
 const Home: React.FC = () => (
     <Section className="home flex-auto overflow-auto demo-content">
         <Section className=" section intro">
             <h5 className="welcome-to">Welcome to</h5>
             <div className="page-title">PLASMA</div>
-            <div className="body-l-book plasma-description">{MAIN_DESCRIPTION}</div>
+            <div className="body-l-book plasma-description">
+                {
+                    'Coveo’s platform design system & ionized Vapor.\n Learn more about our brand, our values and our story by visiting our brand page'
+                }
+            </div>
         </Section>
         <Section className="section">
             <h2>Fondations</h2>
