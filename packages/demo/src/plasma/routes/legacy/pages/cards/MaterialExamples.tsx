@@ -5,7 +5,13 @@ import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 const Material = () => (
-    <VaporComponent key="material" id="material" title="Material" usage="A container to display content" withSource>
+    <VaporComponent
+        key="material"
+        id="material"
+        title="Material Card"
+        usage="A container to display content"
+        withSource
+    >
         <div className="material-card mb2">
             <div className="p2">
                 <h6 className="mb2">I am a material card and you can fill me with whatever you want.</h6>

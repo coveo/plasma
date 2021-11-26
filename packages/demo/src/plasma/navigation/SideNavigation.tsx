@@ -133,10 +133,10 @@ export const Navigation: React.FunctionComponent = () => {
                 <CollapsibleSideSection title="Feedback and Info">
                     <NavLink href="/feedback-and-info/Badge" label="Badge / Tag" />
                     <NavLink href="/feedback-and-info/Feedback" label="Feedback" />
-                    <NavLink href="/feedback-and-info/InfoBox" label="InfoBox" />
+                    <NavLink href="/feedback-and-info/InfoBox" label="Info Box" />
                     <NavLink href="/feedback-and-info/InfoToken" label="Info Token" />
                     <NavLink href="/feedback-and-info/Limit" label="Limit Card" />
-                    <NavLink href="/feedback-and-info/Loading" label="Spinner / Loader" />
+                    <NavLink href="/feedback-and-info/Loading" label="Loader / Spinner" />
                     <NavLink href="/feedback-and-info/Popover" label="Popover" />
                     <NavLink href="/feedback-and-info/ProgressBar" label="Progress Bar" />
                     <NavLink disabled href="/feedback-and-info/Prompt" label="Prompt Modals" />
@@ -151,7 +151,7 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/feedback-and-info/Tooltip" label="Tooltip" />
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Display & Utilities">
-                    <NavLink href="/display-and-utilities/Borders" label="Border" />
+                    <NavLink href="/display-and-utilities/Borders" label="Borders" />
                     <NavLink href="/display-and-utilities/Collapsible" label="Collapsible" />
                     <NavLink disabled href="/display-and-utilities/CoveoExpLoader" label="Coveo Exp. Loader" />
                     <NavLink disabled href="/display-and-utilities/RichPopover" label="Rich Popover" />
@@ -159,9 +159,9 @@ export const Navigation: React.FunctionComponent = () => {
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Legacy">
                     <NavLink href="/legacy/BrowserPreview" label="Browser Preview" />
-                    <NavLink href="/legacy/cards/home" label="Card Home" />
-                    <NavLink href="/legacy/cards/material" label="Card Material" />
-                    <NavLink href="/legacy/cards/wizard" label="Card Wizard" />
+                    <NavLink href="/legacy/cards/Home" label="Card Home" />
+                    <NavLink href="/legacy/cards/Material" label="Card Material" />
+                    <NavLink href="/legacy/cards/Wizard" label="Card Wizard" />
                     <NavLink href="/legacy/Chart" label="Chart" />
                     <NavLink href="/legacy/ColorBar" label="Color Bar" />
                     <NavLink href="/legacy/ColorDot" label="Color Dot" />

@@ -21,7 +21,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export const ToastExamples = () => {
     const markdown = useMarkdown('ToastConnected');
     return (
-        <VaporComponent id="toast" title="Toasts" markdown={markdown} withSource>
+        <VaporComponent id="toast" title="Toast" markdown={markdown} withSource>
             <Section>
                 <ToastsWithLocalState />
                 <ToastsWithReduxStore />

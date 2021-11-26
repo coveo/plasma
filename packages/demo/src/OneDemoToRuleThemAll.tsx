@@ -10,7 +10,7 @@ import Home from './plasma/Home';
 import {Navigation} from './plasma/navigation/SideNavigation';
 import {DisplayAndUtilitiesRoutes} from './plasma/routes/display-and-utilities';
 import {FeedbackAndInfoRoutes} from './plasma/routes/feedback-and-info';
-import {FoundationsRoutes} from './plasma/routes/foundation';
+import {FoundationsRoutes} from './plasma/routes/foundations';
 import {InputRoutes} from './plasma/routes/input/index';
 import {LayoutRoutes} from './plasma/routes/layout';
 import {NavigationRoutes} from './plasma/routes/navigation';

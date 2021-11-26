@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const InfoTokenExamples: React.FunctionComponent = () => (
-    <VaporComponent id="infotoken" title="InfoToken" withSource>
+    <VaporComponent id="info-token" title="Info Token" withSource>
         <Section>
             <Section level={2} title="Information">
                 <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />

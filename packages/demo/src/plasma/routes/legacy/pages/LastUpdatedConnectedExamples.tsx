@@ -29,7 +29,7 @@ export class LastUpdatedConnectedExamples extends React.Component<ILastUpdateCon
 
     render() {
         return (
-            <VaporComponent id="last-updated" title="Last Updated" withSource>
+            <VaporComponent id="last-updated" title="Last Updated Connected" withSource>
                 <div className="form-group" style={{width: 400}}>
                     <div>
                         <label className="form-control-label">

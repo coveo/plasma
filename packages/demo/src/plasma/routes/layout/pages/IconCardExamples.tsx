@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const IconCardExamples: React.FunctionComponent = () => (
-    <VaporComponent id="bordered-line" title="Bordered Line" withSource>
+    <VaporComponent id="icon-card" title="Icon / Logo Card" withSource>
         <Section>
             <Section level={2} title="Basic">
                 <IconCard

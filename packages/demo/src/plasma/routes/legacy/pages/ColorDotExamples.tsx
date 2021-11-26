@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const ColorDots = () => (
-    <VaporComponent id="color-dots" title="Color dots" usage="Display a status." withSource>
+    <VaporComponent id="color-dots" title="Color Dot" usage="Display a status." withSource>
         <Section level={2} title="Standard color dots">
             <i className="color-dot mr1" />
             <i className="color-dot state-critical mr1" />

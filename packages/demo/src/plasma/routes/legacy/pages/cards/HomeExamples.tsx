@@ -5,7 +5,7 @@ import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 const Home = () => (
-    <VaporComponent key="home" id="home" title="Home" withSource>
+    <VaporComponent key="home" id="home" title="Home Card" withSource>
         <div className="home-cards">
             <div className="home-card home-card-half-size">
                 <div className="home-card-header">
