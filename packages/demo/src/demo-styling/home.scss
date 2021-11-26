@@ -1,0 +1,38 @@
+.home {
+    padding-top: 48px;
+    padding-left: 24px;
+
+    .section {
+        position: relative;
+        margin-bottom: 112px;
+        text-align: left;
+
+        .intro {
+            height: 257px;
+        }
+
+        .welcome-to {
+            width: 98px;
+            height: 28px;
+            color: var(--navy-blue-80);
+        }
+
+        .page-title {
+            height: 165px;
+            padding-top: 8px;
+            color: var(--navy-blue-60);
+
+            // hero 174 thin does not exist in typekit
+            font-weight: 200;
+            font-size: 174px;
+            line-height: 95%;
+            letter-spacing: -0.01em;
+        }
+
+        .plasma-description {
+            padding-top: 8px;
+            color: var(--grey-80);
+            white-space: pre-line;
+        }
+    }
+}
