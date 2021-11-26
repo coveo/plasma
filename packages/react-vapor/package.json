@@ -13,15 +13,15 @@
     "homepage": "https://github.com/coveo/react-vapor#readme",
     "author": "Coveo",
     "license": "Apache-2.0",
-    "main": "dist/Entry.js",
-    "types": "dist/Entry.d.ts",
+    "main": "dist/cjs/Entry.js",
+    "module": "dist/esm/Entry.js",
+    "types": "dist/definitions/Entry.d.ts",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/react-vapor.git"
     },
     "scripts": {
-        "start": "tsc --build --watch tsconfig.build.json",
-        "build": "tsc --build tsconfig.build.json",
+        "build": "tsc --build tsconfig.build.json && tsc --build tsconfig.esm.json",
         "test": "jest --clearCache && jest",
         "test:watch": "jest --watchAll",
         "test:debug": "jest --clearCache && node --inspect node_modules/jest/bin/jest --runInBand --watchAll",

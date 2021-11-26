@@ -1,0 +1,12 @@
+{
+    "extends": "./tsconfig",
+    "compilerOptions": {
+        "outDir": "dist/esm",
+        "rootDir": "src",
+        "module": "ESNext",
+        "target": "ESNext"
+    },
+    "references": [],
+    "include": ["src"],
+    "exclude": ["**/*.spec.*", "./src/utils/tests"]
+}
