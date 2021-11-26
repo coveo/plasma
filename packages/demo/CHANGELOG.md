@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.1.0](https://github.com/coveo/react-vapor/compare/v30.0.2...v30.1.0) (2021-11-26)
+
+
+### Features
+
+* **homepage:** wIP intro section ([4b90108](https://github.com/coveo/react-vapor/commit/4b90108fcc25282b6d41f9194f9d80b0f8bb356c))
+* **overview:** page layout completed ([b3cdc00](https://github.com/coveo/react-vapor/commit/b3cdc000352fa5b0ad5fe0cc27a6d4b74be50517))
+* **overview:** wIP layout ([cc77929](https://github.com/coveo/react-vapor/commit/cc77929d0d168bc58fe71d8eb5a298c35e675a63))
+
+
+
+
+
 ## [30.0.2](https://github.com/coveo/react-vapor/compare/v30.0.1...v30.0.2) (2021-11-26)
 
 **Note:** Version bump only for package react-vapor-demo
