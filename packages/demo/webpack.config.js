@@ -22,7 +22,7 @@ module.exports = {
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            'react-vapor': path.resolve(__dirname, '../react-vapor/dist/Entry.js'),
+            'react-vapor': path.resolve(__dirname, '../react-vapor/dist/cjs/Entry.js'),
             '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
             '@examples': path.resolve(__dirname, 'src/components/examples'),
         },
