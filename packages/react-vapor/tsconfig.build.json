@@ -1,7 +1,10 @@
 {
     "extends": "./tsconfig",
     "compilerOptions": {
-        "rootDir": "src"
+        "outDir": "dist/cjs",
+        "rootDir": "src",
+        "module": "CommonJS",
+        "target": "ES5"
     },
     "references": [],
     "include": ["src"],

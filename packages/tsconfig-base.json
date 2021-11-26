@@ -4,7 +4,7 @@
         "moduleResolution": "Node",
         "target": "es5",
         "jsx": "react",
-        "lib": ["es2015", "dom"],
+        "lib": ["ES2015", "DOM"],
         
         "composite": true,
         "sourceMap": true,
