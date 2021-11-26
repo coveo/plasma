@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.0.2](https://github.com/coveo/react-vapor/compare/v30.0.1...v30.0.2) (2021-11-26)
+
+
+### Bug Fixes
+
+* downgrade esm build target to es2015 ([ab0b26d](https://github.com/coveo/react-vapor/commit/ab0b26dad66376e68fb5ac25db3d6f15b77f5715))
+
+
+
+
+
 ## [30.0.1](https://github.com/coveo/react-vapor/compare/v30.0.0...v30.0.1) (2021-11-26)
 
 
