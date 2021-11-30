@@ -128,3 +128,9 @@
 .child-form-exemple-container {
     background-color: var(--grey-40);
 }
+
+#multiselect-examples {
+    .form-control-label {
+        display: block;
+    }
+}

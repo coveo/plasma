@@ -11,13 +11,14 @@ const chopDownSourceFile = (wholeFile: string): string => {
 
     if (hasStartDirective && hasStopDirective) {
         return wholeFile.match(START_STOP)[1];
-    } else if (hasStartDirective) {
-        return wholeFile.match(START_END)[1];
-    } else if (hasStopDirective) {
-        return wholeFile.match(BEGIN_STOP)[1];
-    } else {
-        return wholeFile;
     }
+    if (hasStartDirective) {
+        return wholeFile.match(START_END)[1];
+    }
+    if (hasStopDirective) {
+        return wholeFile.match(BEGIN_STOP)[1];
+    }
+    return wholeFile;
 };
 
 export const useCodeExample = () => {
@@ -30,7 +31,7 @@ export const useCodeExample = () => {
     React.useEffect(() => {
         const doImport = async () => {
             const res: {default: string} = await import(
-                '!!raw-loader!@routes/' + arrPath.join('/') + 'Examples.js'.replace('.js', '.tsx')
+                `!!raw-loader!@routes/${arrPath.join('/')}${'Examples.js'.replace('.js', '.tsx')}`
             );
             return chopDownSourceFile(res.default);
         };

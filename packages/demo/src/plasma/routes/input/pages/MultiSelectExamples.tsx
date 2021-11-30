@@ -15,7 +15,6 @@ import {
     withInitialValuesMultiSelectHOC,
     withNonEmptyMultiSelectHOC,
 } from 'react-vapor';
-import * as _ from 'underscore';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {DocsMarkdownFiles} from '../../../utils/MarkdownDocs';
@@ -56,7 +55,6 @@ const WithNonEmptyMultiSelectExample = () => (
             </div>
         }
     >
-        <br />
         <WithNonEmptyMultiSelect id="multi-select-non-empty" items={defaultItems} />
     </LabeledInput>
 );
@@ -96,18 +94,19 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
     constructor({props, state}: {props: null; state: IMultiSelectExamplesState}) {
         super(props, state);
 
-        const second = _.map(defaultItems, (item) => _.clone(item));
+        const second = [...defaultItems];
         second[0].selected = true;
 
-        const hoc = _.map(defaultItems, (item) =>
-            _.extend({}, item, {append: {content: () => <span className="append ml1">{item.value}</span>}})
-        );
+        const hoc = defaultItems.map((item) => ({
+            ...item,
+            append: {content: () => <span className="append ml1">{item.value}</span>},
+        }));
         hoc[0].selected = true;
         hoc[1].selected = true;
 
         this.state = {
-            first: _.clone(defaultItems),
-            drag: _.clone(defaultItems),
+            first: [...defaultItems],
+            drag: [...defaultItems],
             second,
             hoc,
             markdown: '',
@@ -121,26 +120,22 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
 
     render() {
         return (
-            <VaporComponent id="multiselect" title="Multi-select" markdown={this.state.markdown} withSource>
+            <VaporComponent id="multiselect-examples" title="Multi-select" markdown={this.state.markdown} withSource>
                 <div className="mb2">
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select without items</label>
-                        <br />
                         <MultiSelectConnected id={UUID.generate()} items={[]} />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select with only one items</label>
-                        <br />
                         <MultiSelectConnected id={UUID.generate()} items={[{value: 'Single Item'}]} />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select with filter, disabled</label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'Single Item'}]} disabled />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select with Custom Strings</label>
-                        <br />
                         <MultiSelectConnected
                             id={UUID.generate()}
                             items={this.state.first}
@@ -150,7 +145,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Sortable Multi Select with Custom Strings</label>
-                        <br />
                         <MultiSelectConnected
                             id={UUID.generate()}
                             items={this.state.hoc}
@@ -161,52 +155,44 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select With Filter</label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select With Filter and Custom Values</label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">
                             A Multi Select With Filter and without selected values in readonly
                         </label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues readOnly />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">
                             A Multi Select With Filter and Custom Values in readonly
                         </label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={this.state.hoc} customValues readOnly />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">
                             A Multi Select With Filter, Custom Values and no items
                         </label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={[]} customValues />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">
                             A Multi Select With Filter, Custom Values and list of items selectable
                         </label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} customValues />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">
                             A Multi Select With Filter and list of items selectable
                         </label>
-                        <br />
                         <MultiSelectWithFilter id={UUID.generate()} items={[{value: 'a'}, {value: 'b'}]} />
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select With Filter and default list</label>
-                        <br />
                         <MultiSelectWithFilter
                             id={UUID.generate()}
                             defaultCustomValues={['c', 'd']}
@@ -217,7 +203,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                         <label className="form-control-label">
                             A Multi Select With Filter, default list and Custom Values{' '}
                         </label>
-                        <br />
                         <MultiSelectWithFilter
                             id={UUID.generate()}
                             defaultCustomValues={['c', 'd']}
@@ -229,7 +214,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                         <label className="form-control-label">
                             A Multi Select With Filter that only match display value
                         </label>
-                        <br />
                         <MultiSelectWithFilter
                             id={UUID.generate()}
                             items={this.state.hoc}
@@ -240,7 +224,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select With Predicates</label>
-                        <br />
                         <MultiSelectWithPredicate
                             id={UUID.generate()}
                             items={this.state.hoc}
@@ -250,7 +233,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select With 500px width</label>
-                        <br />
                         <MultiSelectConnected
                             id={UUID.generate()}
                             items={this.state.hoc}
@@ -259,7 +241,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select with width 100%</label>
-                        <br />
                         <MultiSelectConnected
                             id={'test'}
                             items={this.state.hoc}
@@ -269,7 +250,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                     </div>
                     <div className="form-group">
                         <label className="form-control-label">A Multi Select With Filter and Predicates</label>
-                        <br />
                         <MultiSelectWithPredicateAndFilter
                             id={UUID.generate()}
                             items={this.state.hoc}
@@ -281,7 +261,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                         <label className="form-control-label">
                             A Multi Select With Filter, Predicate and Custom Values
                         </label>
-                        <br />
                         <MultiSelectWithPredicateAndFilter
                             id={UUID.generate()}
                             items={this.state.hoc}
@@ -294,7 +273,6 @@ export class MultiSelectExamples extends React.Component<null, IMultiSelectExamp
                         <label className="form-control-label">
                             A Multi Select With Filter, default list and Custom Values{' '}
                         </label>
-                        <br />
                         <MultiSelectWithFilter
                             id={UUID.generate()}
                             defaultCustomValues={['b'.repeat(100)]}

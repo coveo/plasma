@@ -15,11 +15,11 @@ export const Typekit: React.FunctionComponent = () => {
     return (
         <Switch>
             <Route path={`${path}/Headings`} component={Headings} />
-            <Route path={`${path}/IconColors`} component={IconColor} />
+            <Route path={`${path}/IconColor`} component={IconColor} />
             <Route path={`${path}/LineHeight`} component={LineHeight} />
             <Route path={`${path}/Links`} component={Links} />
             <Route path={`${path}/Lists`} component={Lists} />
-            <Route path={`${path}/TextColors`} component={TextColor} />
+            <Route path={`${path}/TextColor`} component={TextColor} />
             <Route path={`${path}/Utilities`} component={Utilities} />
             <Route path={`${path}/Whitespace`} component={Whitespace} />
             <Route exact path={`${path}/`} component={() => <Redirect to={`${path}/Headings`} />} />

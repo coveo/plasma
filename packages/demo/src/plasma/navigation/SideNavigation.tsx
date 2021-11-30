@@ -19,10 +19,14 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({href, label, disabled, 
         {(path) => (
             <SideNavigationItem disabled={disabled} href={href} isActive={isActive ?? path?.endsWith(href)}>
                 {disabled ? (
-                    <div className="navigation-menu-section">{label}</div>
+                    <div className="navigation-menu-section">
+                        <span>{label}</span>
+                    </div>
                 ) : (
                     <Link to={href}>
-                        <div className="navigation-menu-section">{label}</div>
+                        <div className="navigation-menu-section">
+                            <span>{label}</span>
+                        </div>
                     </Link>
                 )}
             </SideNavigationItem>
@@ -63,11 +67,11 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink disabled href="/foundations/Palette" label="Palette" />
                     <NavLink disabled href="/foundations/Typekit" label="Typekit" />
                     <NavLink href="/foundations/typekit/Headings" label="Typekit - Headings" />
-                    <NavLink href="/foundations/typekit/IconColors" label="Typekit - Icon Colors" />
+                    <NavLink href="/foundations/typekit/IconColor" label="Typekit - Icon Color" />
                     <NavLink href="/foundations/typekit/LineHeight" label="Typekit - Line Height" />
                     <NavLink href="/foundations/typekit/Links" label="Typekit - Links" />
                     <NavLink href="/foundations/typekit/Lists" label="Typekit - Lists" />
-                    <NavLink href="/foundations/typekit/TextColors" label="Typekit - Text Colors" />
+                    <NavLink href="/foundations/typekit/TextColor" label="Typekit - Text Color" />
                     <NavLink href="/foundations/typekit/Utilities" label="Typekit - Utilities" />
                     <NavLink href="/foundations/typekit/Whitespace" label="Typekit - Whitespace" />
                 </CollapsibleSideSection>
