@@ -1,22 +1,18 @@
 import {render, screen} from '@test-utils';
-import moment from 'moment';
 import * as React from 'react';
 
 import {Countdown} from '../Countdown';
 
 describe('Countdown', () => {
     it('should render with default props', () => {
-        const {container, getByText} = render(<Countdown />);
-
-        const todaysDate = moment().date();
-
-        const today = getByText(`${todaysDate}`);
+        // mock timer as test can be flaky on the last of the month
+        jest.useFakeTimers('modern').setSystemTime(new Date('2020-01-20T12:00:00.000Z').getTime());
+        const {container} = render(<Countdown />);
 
         expect(container.firstChild).toHaveClass('countdown-calendar');
-        expect(today).toHaveClass('todays-date');
         expect(
             screen.getByRole('heading', {
-                name: /days left/i,
+                name: /11 days left/i,
             })
         ).toBeInTheDocument();
     });
