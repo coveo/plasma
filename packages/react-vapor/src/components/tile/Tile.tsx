@@ -10,17 +10,13 @@ export interface TileProps {
 }
 
 export const Tile: React.FunctionComponent<TileProps> = ({title, description, svgName, href}) => (
-    <>
-        <a href={href}>
-            <div className="tile">
-                <div className="tile-icon">
-                    <Svg svgName={svgName} svgClass="icon" />
-                </div>
-                <div className="tile-information">
-                    <div className="tile-title h6-subdued">{title}</div>
-                    <div className="tile-description body-m-book-subdued">{description}</div>
-                </div>
-            </div>
-        </a>
-    </>
+    <a className="tile" href={href}>
+        <div className="tile-icon">
+            <Svg svgName={svgName} svgClass="icon" />
+        </div>
+        <div className="tile-information">
+            <div className="tile-title h6-subdued">{title}</div>
+            <div className="tile-description body-m-book-subdued">{description}</div>
+        </div>
+    </a>
 );

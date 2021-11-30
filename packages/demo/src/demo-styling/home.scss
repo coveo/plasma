@@ -34,10 +34,11 @@
             color: var(--grey-80);
             white-space: pre-line;
         }
+    }
 
-        .tile-position {
-            display: inline-block;
-            padding: 24px 24px 0px 0px;
-        }
+    .tile-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
     }
 }

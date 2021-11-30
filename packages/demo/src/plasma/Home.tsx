@@ -19,47 +19,59 @@ const Home: React.FC = () => (
         <Section className="section">
             <h2>Fondations</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
-            <div className="tile-position">
+            <div className="tile-grid">
                 <Tile
                     title="Patate King"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
                     svgName="plasmaComponentBox"
                     href="#/styles/icons/list"
                 />
-            </div>
-            <div className="tile-position">
                 <Tile
                     title="Patate King"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
                     svgName="plasmaComponentBox"
                     href="#/styles/icons/list"
                 />
-            </div>
-            <div className="tile-position">
                 <Tile
                     title="Patate King"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
                     svgName="plasmaComponentBox"
                     href="#/styles/icons/list"
                 />
-            </div>
-            <div className="tile-position">
                 <Tile
                     title="Patate King"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
                     svgName="plasmaComponentBox"
                     href="#/styles/icons/list"
                 />
-            </div>
-            <div className="tile-position">
                 <Tile
                     title="Patate King"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
                     svgName="plasmaComponentBox"
                     href="#/styles/icons/list"
                 />
-            </div>
-            <div className="tile-position">
+
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+
                 <Tile
                     title="Patate King"
                     description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
@@ -71,22 +83,170 @@ const Home: React.FC = () => (
         <Section className="section">
             <h2>Layout</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
+            <div className="tile-grid">
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+            </div>
         </Section>
         <Section className="section">
             <h2>Input</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
+            <div className="tile-grid">
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+            </div>
         </Section>
         <Section className="section">
             <h2>Navigation</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
+            <div className="tile-grid">
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+            </div>
         </Section>
         <Section className="section">
             <h2>Feedback & Information</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
+            <div className="tile-grid">
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+            </div>
         </Section>
         <Section className="section">
             <h2>Disply & Utilities</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
+            <div className="tile-grid">
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+                <Tile
+                    title="Patate King"
+                    description="Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec vel justo sit amet tortor aliquam. Patate King is a God. 🥔"
+                    svgName="plasmaComponentBox"
+                    href="#/styles/icons/list"
+                />
+            </div>
         </Section>
     </Section>
 );

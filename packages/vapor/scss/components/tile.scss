@@ -1,14 +1,14 @@
 .tile {
     position: relative;
     width: 264px;
-    min-height: 221px;
+    height: 221px;
     background: var(--white);
-    border: 1px solid var(--grey-40);
-    border-radius: 8px;
+    border: $default-border;
+    border-radius: $small-border-radius;
     box-shadow: var(--low-elevation-on-light);
 
     &:hover {
-        border: 2px solid var(--digital-blue-60);
+        border: $border-radius solid var(--digital-blue-60);
         box-shadow: var(--medium-elevation-on-light);
     }
 }
@@ -34,7 +34,7 @@
 
     overflow: hidden;
     background: var(--white);
-    border-radius: 8px;
+    border-radius: $small-border-radius;
     transition: height 300ms;
 }
 
