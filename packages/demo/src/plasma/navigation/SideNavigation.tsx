@@ -63,6 +63,7 @@ export const Navigation: React.FunctionComponent = () => {
                 <CollapsibleSideSection title="Foundations">
                     <NavLink disabled href="/foundations/Effects" label="Effects" />
                     <NavLink href="/foundations/Iconography" label="Iconography" />
+                    <NavLink href="/foundations/Svg" label="SVG" />
                     <NavLink disabled href="/foundations/Illustration" label="Illustration" />
                     <NavLink disabled href="/foundations/Palette" label="Palette" />
                     <NavLink disabled href="/foundations/Typekit" label="Typekit" />
@@ -132,7 +133,7 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/navigation/OptionsCycle" label="Options Cycle" />
                     <NavLink href="/navigation/Pagination" label="Pagination" />
                     <NavLink href="/navigation/SideNavigation" label="Sidebar Navigation" />
-                    <NavLink href="/navigation/Subnavigation" label="Subnavigation" />
+                    <NavLink href="/navigation/SubNavigation" label="SubNavigation" />
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Feedback and Info">
                     <NavLink href="/feedback-and-info/Badge" label="Badge / Tag" />
@@ -179,18 +180,17 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/legacy/LabeledValue" label="Labeled Value" />
                     <NavLink href="/legacy/LastUpdated" label="Last Updated" />
                     <NavLink href="/legacy/LastUpdatedConnected" label="Last Updated Connected" />
-                    <NavLink href="/legacy/Member" label="Member" />
-                    <NavLink href="/legacy/SpacedBox" label="Spaced Box" />
-                    <NavLink href="/legacy/transparency" label="Transparency" />
                     <NavLink href="/legacy/LinkSvg" label="Link Svg" />
                     <NavLink href="/legacy/ListBox" label="List Box" />
+                    <NavLink href="/legacy/Member" label="Member" />
                     <NavLink href="/legacy/PaginationConnected" label="Pagination Connected" />
                     <NavLink href="/legacy/PartialStringMatch" label="Partial String Match" />
                     <NavLink href="/legacy/Refresh" label="Refesh" />
                     <NavLink href="/legacy/Separator" label="Separator" />
                     <NavLink href="/legacy/SideNavigationLoading" label="Side Navigation Loading" />
                     <NavLink href="/legacy/SlideY" label="Slide Y" />
-                    <NavLink href="/legacy/Svg" label="SVG" />
+                    <NavLink href="/legacy/SpacedBox" label="Spaced Box" />
+                    <NavLink href="/legacy/transparency" label="Transparency" />
                 </CollapsibleSideSection>
             </SideNavigation>
         </PathnameContext.Provider>

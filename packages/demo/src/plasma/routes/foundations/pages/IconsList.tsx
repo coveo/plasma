@@ -1,11 +1,24 @@
 import * as VaporSVG from 'coveo-styleguide';
 import * as React from 'react';
+import {Link} from 'react-router-dom';
 import {LinkSvg, SvgNames} from 'react-vapor';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const IconsList = () => (
-    <VaporComponent id="list" title="Icons list" usage="List of all icons available">
+    <VaporComponent
+        id="list"
+        title="Icons list"
+        usage={
+            <p>
+                List of all icons available.{' '}
+                <Link to="/foundations/Svg" className="bolder text mod-link">
+                    See SVG
+                </Link>{' '}
+                for usage
+            </p>
+        }
+    >
         <ul className="sg-icons-list">
             {Object.keys(VaporSVG.svg)
                 .sort()

@@ -77,6 +77,7 @@ export const SvgExamples: React.FC = () => {
 
                             <FlatSelectConnected id="font-size-select-id" options={FONT_SIZE_OPTIONS} group />
                         </div>
+                        <p className="my3">svgName="{selectedSvg}"</p>
                     </Section>
                 </Section>
                 <Section level={2} title="Based on a relative size (eg mod-2x, mod-3x)">

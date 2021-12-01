@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {IItemBoxProps, ITooltipProps, ListBox, ListBoxConnected, UUID} from 'react-vapor';
 
-import {ListBoxExampleConnected} from './ListBoxConnectedExamples';
+import {ListBoxConnectedExamples} from './ListBoxConnectedExamples';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
@@ -40,7 +40,7 @@ export class ListBoxExamples extends React.Component {
 
         return (
             <VaporComponent id="list-box" title="List Box" withSource>
-                <div className="mt2">
+                <div className="mt2 mod-width-50">
                     <div className="form-group">
                         <label className="form-control-label">Default List Box</label>
                         <div className="form-control">
@@ -88,7 +88,7 @@ export class ListBoxExamples extends React.Component {
                             List Box Connected updated with new options (single)
                         </label>
                         <div className="form-control">
-                            <ListBoxExampleConnected id={this.idSingle} items={defaultItems} />
+                            <ListBoxConnectedExamples id={this.idSingle} items={defaultItems} />
                         </div>
                     </div>
                     <div className="form-group">
@@ -96,7 +96,7 @@ export class ListBoxExamples extends React.Component {
                             List Box Connected updated with new options (multi)
                         </label>
                         <div className="form-control">
-                            <ListBoxExampleConnected id={this.idMulti} items={defaultItems} multi />
+                            <ListBoxConnectedExamples id={this.idMulti} items={defaultItems} multi />
                         </div>
                     </div>
                 </div>

@@ -17,7 +17,7 @@ export const NavigationRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/Breadcrumbs`} component={() => <BreadcrumbsExamples />} />
             <Route path={`${path}/Pagination`} component={() => <PaginationExamples />} />
             <Route path={`${path}/SideNavigation`} component={() => <SideNavigationExample />} />
-            <Route path={`${path}/Subnavigation`} component={() => <SubNavigationExamples />} />
+            <Route path={`${path}/SubNavigation`} component={() => <SubNavigationExamples />} />
         </Switch>
     );
 };

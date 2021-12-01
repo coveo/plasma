@@ -9,7 +9,7 @@ import {useCodeExample} from './useCodeExample';
 interface VaporComponentProps {
     id: string;
     title: string;
-    usage?: string;
+    usage?: string | React.ReactNode;
     stylesheet?: string;
     withSource?: boolean;
     markdown?: string;
@@ -31,7 +31,7 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     const code = useCodeExample();
 
     return (
-        <div id={id}>
+        <div id={id} className="examples-page">
             <BasicHeader
                 title={{text: title}}
                 description={usage}
@@ -43,12 +43,14 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
             <TabContent className="mod-header-padding mod-form-top-bottom-padding">
                 <TabPaneConnected id="usage" groupId="page">
                     <Form className="mod-header-padding mod-form-top-bottom-padding">
-                        {children}
-                        {withSource && (
-                            <div className="mt2">
-                                <Code language="tsx">{code}</Code>
-                            </div>
-                        )}
+                        <div className="examples-section">{children}</div>
+                        <div className="code-block-section">
+                            {withSource && (
+                                <div className="mt2">
+                                    <Code language="tsx">{code}</Code>
+                                </div>
+                            )}
+                        </div>
                     </Form>
                 </TabPaneConnected>
                 <TabPaneConnected id="guide" groupId="page">

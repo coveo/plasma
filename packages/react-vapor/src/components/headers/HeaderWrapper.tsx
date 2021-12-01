@@ -6,7 +6,7 @@ import {Content, IContentProps} from '../content/Content';
 import {ITabsHeaderProps, TabsHeader} from './TabsHeader';
 
 export interface IHeaderWrapperProps extends ITabsHeaderProps {
-    description?: string;
+    description?: string | React.ReactNode;
     actions?: IContentProps[];
     classes?: string[];
     hasBorderBottom?: boolean;

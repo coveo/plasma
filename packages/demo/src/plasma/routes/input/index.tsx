@@ -15,7 +15,7 @@ import {JSONEditorExamples} from './pages/JSONEditorExamples';
 import {MultilineBoxExamples} from './pages/MultilineBoxExamples';
 import {MultiSelectExamples} from './pages/MultiSelectExamples';
 import {NumericInputExamples} from './pages/NumericInputExamples';
-import {RadioButtonExamples} from './pages/RadioExamples';
+import {RadioButtonExamples} from './pages/RadioButtonExamples';
 import {SearchBarExamples} from './pages/SearchBarExamples';
 import {SingleSelectExample} from './pages/SingleSelectExamples';
 import {SliderExamples} from './pages/SliderExamples';

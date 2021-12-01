@@ -26,7 +26,6 @@ import {SeparatorExamples} from './pages/SeparatorExamples';
 import {SideNavigationLoadingExample} from './pages/SideNavigationLoadingExamples';
 import {SlideYExamples} from './pages/SlideYExamples';
 import {SpacedBox} from './pages/SpacedBoxExamples';
-import {SvgExamples} from './pages/SvgExamples';
 import {TransparencyExamples} from './pages/transparencyExamples';
 
 /**
@@ -64,7 +63,6 @@ export const NotIncludedRoutes: React.FunctionComponent = () => {
             <Route path={`${path}/SideNavigationLoading`} component={() => <SideNavigationLoadingExample />} />
             <Route path={`${path}/SlideY`} component={() => <SlideYExamples />} />
             <Route path={`${path}/SpacedBox`} component={() => <SpacedBox />} />
-            <Route path={`${path}/SVG`} component={() => <SvgExamples />} />
             <Route path={`${path}/Transparency`} component={() => <TransparencyExamples />} />
         </Switch>
     );
