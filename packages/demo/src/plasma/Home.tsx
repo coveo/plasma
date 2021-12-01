@@ -2,8 +2,7 @@ import '@demo-styling/home.scss';
 
 import React from 'react';
 
-import {Section} from 'react-vapor';
-import {Tile} from 'react-vapor';
+import {Section, Tile} from 'react-vapor';
 
 const Home: React.FC = () => (
     <Section className="home flex-auto overflow-auto demo-content">
@@ -17,7 +16,7 @@ const Home: React.FC = () => (
             </div>
         </Section>
         <Section className="section">
-            <h2>Fondations</h2>
+            <h2>Foundations</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
             <div className="tile-grid">
                 <Tile
@@ -225,7 +224,7 @@ const Home: React.FC = () => (
             </div>
         </Section>
         <Section className="section">
-            <h2>Disply & Utilities</h2>
+            <h2>Display & Utilities</h2>
             <div className="body-l-book plasma-description">Colors, typekit, styles and effects.</div>
             <div className="tile-grid">
                 <Tile
