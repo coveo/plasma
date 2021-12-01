@@ -1,14 +1,18 @@
 import * as React from 'react';
-import {BasicHeader, Form} from 'react-vapor';
+import Markdown from 'react-markdown';
+import {useLocation} from 'react-router';
+import {BasicHeader, Form, TabContent, TabPaneConnected} from 'react-vapor';
 
 import Code from './Code';
+import {useCodeExample} from './useCodeExample';
 
 interface VaporComponentProps {
     id: string;
     title: string;
-    usage?: string;
+    usage?: string | React.ReactNode;
     stylesheet?: string;
     withSource?: boolean;
+    markdown?: string;
 }
 
 export const VaporComponent: React.FunctionComponent<VaporComponentProps & React.HTMLAttributes<HTMLDivElement>> = ({
@@ -17,18 +21,54 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     usage,
     children,
     withSource,
-}) => (
-    <div id={id}>
-        <BasicHeader title={{text: title}} description={usage} />
-        <Form className="mod-header-padding mod-form-top-bottom-padding">
-            {children}
-            {withSource && (
-                <div className="mt2">
-                    <Code language="html">{children}</Code>
-                </div>
-            )}
-        </Form>
-    </div>
-);
+    markdown,
+}) => {
+    const {pathname} = useLocation();
+
+    const page = pathname.substr(pathname.lastIndexOf('/'));
+    const githubMarkdownLink = `https://github.com/coveo/react-vapor/tree/master/packages/demo/docs${page}.md`;
+
+    const code = useCodeExample();
+
+    return (
+        <div id={id} className="examples-page">
+            <BasicHeader
+                title={{text: title}}
+                description={usage}
+                tabs={[
+                    {groupId: 'page', id: 'usage', title: 'Usage'},
+                    {groupId: 'page', id: 'guide', title: 'Guide'},
+                ]}
+            />
+            <TabContent className="mod-header-padding mod-form-top-bottom-padding">
+                <TabPaneConnected id="usage" groupId="page">
+                    <Form className="mod-header-padding mod-form-top-bottom-padding">
+                        <div className="examples-section">{children}</div>
+                        <div className="code-block-section">
+                            {withSource && (
+                                <div className="mt2">
+                                    <Code language="tsx">{code}</Code>
+                                </div>
+                            )}
+                        </div>
+                    </Form>
+                </TabPaneConnected>
+                <TabPaneConnected id="guide" groupId="page">
+                    {markdown ? (
+                        <Markdown className="markdown-documentation" source={markdown} />
+                    ) : (
+                        <div>
+                            There are no guidelines for this component yet, click{' '}
+                            <a href={githubMarkdownLink} target="_blank" rel="noopener noreferrer" className="bold">
+                                here
+                            </a>{' '}
+                            to create some.
+                        </div>
+                    )}
+                </TabPaneConnected>
+            </TabContent>
+        </div>
+    );
+};
 
 export default VaporComponent;

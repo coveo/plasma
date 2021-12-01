@@ -24,7 +24,7 @@ module.exports = {
         alias: {
             'react-vapor': path.resolve(__dirname, '../react-vapor/dist/cjs/Entry.js'),
             '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
-            '@examples': path.resolve(__dirname, 'src/components/examples'),
+            '@routes': path.resolve(__dirname, 'src/plasma/routes'),
         },
     },
     plugins: [
