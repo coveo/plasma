@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.2.0](https://github.com/coveo/react-vapor/compare/v30.1.3...v30.2.0) (2021-12-02)
+
+
+### Features
+
+* **tile:** added href props + fixed the hover for parent div ([df15bd5](https://github.com/coveo/react-vapor/commit/df15bd5a30aadc2956481b7b980333580077d6d5))
+* **tilecomponent:** wIP for the new tile component ([59a3e98](https://github.com/coveo/react-vapor/commit/59a3e987b769626ead622527049ab2c6204c8568))
+* **tile:** wIP animation + description + icon (not centered yet xD) ([f51ad38](https://github.com/coveo/react-vapor/commit/f51ad38577753537735b6a4c631f6c24d63eacfb))
+
+
+
+
+
 ## [30.1.3](https://github.com/coveo/react-vapor/compare/v30.1.2...v30.1.3) (2021-12-01)
 
 **Note:** Version bump only for package react-vapor-demo
