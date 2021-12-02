@@ -35,4 +35,12 @@
             white-space: pre-line;
         }
     }
+
+    .tile-grid {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 24px;
+        padding-top: 24px;
+        padding-right: 24px;
+    }
 }

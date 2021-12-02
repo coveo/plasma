@@ -1,0 +1,69 @@
+.tile {
+    position: relative;
+    width: 20%;
+    height: 20%;
+    min-height: 221px;
+    background: var(--white);
+    border: $default-border;
+    border-radius: $small-border-radius;
+    box-shadow: var(--low-elevation-on-light);
+
+    &:hover {
+        border: $border-radius solid var(--digital-blue-60);
+        box-shadow: var(--medium-elevation-on-light);
+    }
+}
+
+.tile-icon {
+    position: relative;
+    height: 173px;
+
+    svg {
+        position: absolute;
+        top: 53.33px;
+        left: 53px;
+    }
+}
+
+.tile-information {
+    position: absolute;
+    bottom: 0.25px;
+    width: 100%;
+    height: 51.75px;
+    padding: 12px 14px;
+
+    overflow: hidden;
+    background: var(--white);
+    border-radius: $small-border-radius;
+    transition: height 300ms;
+}
+
+.tile:hover > .tile-information {
+    height: 131.75px;
+    box-shadow: 0px -6px 41px rgba(142, 149, 157, 0.29);
+
+    .tile-title {
+        height: 27.75px;
+        overflow: hidden;
+        transition: height 300ms;
+    }
+}
+
+.tile-title {
+    width: 100%;
+    height: 51.75px;
+    text-align: left;
+}
+
+.tile-description {
+    width: 100%;
+    height: 100%;
+}
+
+// for 4k screens
+@media screen and (min-width: 160em) {
+    .tile {
+        width: 15%;
+        height: 15%;
+    }
+}
