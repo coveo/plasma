@@ -34,6 +34,14 @@ export const ButtonExamples: React.FunctionComponent = () => {
             withSource
         >
             <Section>
+                <Section level={2} title="Search bar button">
+                    <Button enabled={true} classes={['mod-search-bar']}>
+                        <Svg svgName={'search'} className="icon mod-stroke" />
+                    </Button>
+                    <Button enabled={false} classes={['mod-search-bar']}>
+                        <Svg svgName={'search'} className="icon mod-stroke" />
+                    </Button>
+                </Section>
                 <Section level={2} title="Usability">
                     <Button enabled={true} name="Enabled button" />
                     <Button enabled={false} name="Disabled button" />
