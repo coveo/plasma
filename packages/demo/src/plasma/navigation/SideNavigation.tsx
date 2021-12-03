@@ -42,7 +42,6 @@ const CollapsibleSideSection: React.FC<{title: string}> = ({title, children}) =>
             expandable
             expanded={expanded}
             onClick={() => setExpanded(!expanded)}
-            // isActive={false} stops navbar loading near bottom
             title={<NavLink label={title} isActive={false} />}
         >
             {children}

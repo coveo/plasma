@@ -23,7 +23,6 @@ import {TextAreaExamples} from './pages/TextAreaExamples';
 import {TextInputExamples} from './pages/TextInputExamples';
 import ValuePopup from './pages/ValuePopupExamples';
 
-// import {MultiSelectExamples} from './pages/MultiSelectExamples';
 export const InputRoutes: React.FunctionComponent = () => (
     <Routes>
         <Route path="ActionableItem" element={<ActionableItemExamples />} />
