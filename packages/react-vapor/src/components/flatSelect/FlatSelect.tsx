@@ -40,7 +40,7 @@ export const FlatSelect: React.FunctionComponent<IFlatSelectProps> = ({
 }) => {
     React.useEffect(() => {
         onRender?.();
-        return onDestroy;
+        return void onDestroy;
     }, []);
 
     const handleClick = (option: IFlatSelectOptionProps) => {

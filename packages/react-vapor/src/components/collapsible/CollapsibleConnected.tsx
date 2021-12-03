@@ -59,7 +59,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
 }) => {
     React.useEffect(() => {
         onMount();
-        return () => onUnmount();
+        return void onUnmount;
     }, []);
 
     const headerClassesCombine = classNames(
