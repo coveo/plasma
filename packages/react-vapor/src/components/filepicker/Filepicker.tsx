@@ -45,7 +45,7 @@ const FilepickerDisconnected: React.FunctionComponent<
 
     React.useEffect(() => {
         addFilepicker();
-        return void clear;
+        return () => void clear();
     }, []);
 
     return (
