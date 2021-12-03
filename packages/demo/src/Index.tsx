@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import {Provider} from 'react-redux';
+import {HashRouter} from 'react-router-dom';
 import {Defaults} from 'react-vapor';
 
 import {App} from './OneDemoToRuleThemAll';
@@ -11,8 +12,10 @@ Defaults.MODAL_ROOT = '#Modals';
 Defaults.DROP_ROOT = '#Drops';
 
 ReactDOM.render(
-    <Provider store={Store}>
-        <App />
-    </Provider>,
+    <HashRouter>
+        <Provider store={Store}>
+            <App />
+        </Provider>
+    </HashRouter>,
     document.getElementById('App')
 );

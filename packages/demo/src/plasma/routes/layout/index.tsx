@@ -1,5 +1,6 @@
 import * as React from 'react';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
+import {NotFound} from '../../NotFound';
 
 import {ActionBarConnectedExamples} from './pages/ActionBarConnectedExamples';
 import {ActionBarExamples} from './pages/ActionBarExamples';
@@ -10,45 +11,42 @@ import {CardExample} from './pages/CardExamples';
 import {FooterExample} from './pages/FooterExamples';
 import {IconCardExamples} from './pages/IconCardExamples';
 import {ModalWindowExamples} from './pages/ModalWindowExamples';
+import {ModalWizardExamples} from './pages/ModalWizardExamples';
 import {SimpleHeader} from './pages/PageHeaderExamples';
 import {SectionExamples} from './pages/SectionExamples';
 import {SplitLayoutExamples} from './pages/SplitLayoutExamples';
-import {TabsConnectedExamples} from './pages/TabsConnectedExamples';
-import {TabsExamples} from './pages/TabsExamples';
 import {TableHOCExamples} from './pages/TableHOCExamples';
 import {TableHocLoadingExamples} from './pages/TableHOCLoadingExamples';
 import {TableHOCServerExamples} from './pages/TableHOCServerExamples';
 import {TableHOCwithBlankSlateExamples} from './pages/TableHOCwithBlankSlateExamples';
-import {ModalWizardExamples} from './pages/ModalWizardExamples';
+import {TabsConnectedExamples} from './pages/TabsConnectedExamples';
+import {TabsExamples} from './pages/TabsExamples';
 
-export const LayoutRoutes: React.FunctionComponent = () => {
-    const {path} = useRouteMatch();
-
-    return (
-        <Switch>
-            <Route path={`${path}/ActionBar`} component={() => <ActionBarExamples />} />
-            <Route path={`${path}/ActionBarConnected`} component={() => <ActionBarConnectedExamples />} />
-            <Route path={`${path}/Banner`} component={() => <BannerExamples />} />
-            <Route path={`${path}/BlankSlate`} component={() => <BlankSlateExample />} />
-            <Route path={`${path}/BorderedLine`} component={() => <BorderedLineExamples />} />
-            <Route path={`${path}/Card`} component={() => <CardExample />} />
-            <Route path={`${path}/CommerceConfigCard`} component={() => <div />} />
-            <Route path={`${path}/Divider`} component={() => <div />} />
-            <Route path={`${path}/Footer`} component={() => <FooterExample />} />
-            <Route path={`${path}/IconCard`} component={() => <IconCardExamples />} />
-            <Route path={`${path}/ModalWindow`} component={() => <ModalWindowExamples />} />
-            <Route path={`${path}/ModalWizard`} component={() => <ModalWizardExamples />} />
-            <Route path={`${path}/PageHeader`} component={() => <SimpleHeader />} />
-            <Route path={`${path}/SearchResultCard`} component={() => <div />} />
-            <Route path={`${path}/Section`} component={() => <SectionExamples />} />
-            <Route path={`${path}/SplitLayout`} component={() => <SplitLayoutExamples />} />
-            <Route path={`${path}/Tabs`} component={() => <TabsExamples />} />
-            <Route path={`${path}/TabsConnected`} component={() => <TabsConnectedExamples />} />
-            <Route path={`${path}/TableHOC`} component={() => <TableHOCExamples />} />
-            <Route path={`${path}/TableHOCwithBlankSlate`} component={() => <TableHOCwithBlankSlateExamples />} />
-            <Route path={`${path}/TableHOCLoading`} component={() => <TableHocLoadingExamples />} />
-            <Route path={`${path}/TableHOCServer`} component={() => <TableHOCServerExamples />} />
-            <Route path={`${path}/TopBar`} component={() => <div />} />
-        </Switch>
-    );
-};
+export const LayoutRoutes: React.FunctionComponent = () => (
+    <Routes>
+        <Route path="ActionBar" element={<ActionBarExamples />} />
+        <Route path="ActionBarConnected" element={<ActionBarConnectedExamples />} />
+        <Route path="Banner" element={<BannerExamples />} />
+        <Route path="BlankSlate" element={<BlankSlateExample />} />
+        <Route path="BorderedLine" element={<BorderedLineExamples />} />
+        <Route path="Card" element={<CardExample />} />
+        <Route path="CommerceConfigCard" element={<div />} />
+        <Route path="Divider" element={<div />} />
+        <Route path="Footer" element={<FooterExample />} />
+        <Route path="IconCard" element={<IconCardExamples />} />
+        <Route path="ModalWindow" element={<ModalWindowExamples />} />
+        <Route path="ModalWizard" element={<ModalWizardExamples />} />
+        <Route path="PageHeader" element={<SimpleHeader />} />
+        <Route path="SearchResultCard" element={<div />} />
+        <Route path="Section" element={<SectionExamples />} />
+        <Route path="SplitLayout" element={<SplitLayoutExamples />} />
+        <Route path="Tabs" element={<TabsExamples />} />
+        <Route path="TabsConnected" element={<TabsConnectedExamples />} />
+        <Route path="TableHOC" element={<TableHOCExamples />} />
+        <Route path="TableHOCwithBlankSlate" element={<TableHOCwithBlankSlateExamples />} />
+        <Route path="TableHOCLoading" element={<TableHocLoadingExamples />} />
+        <Route path="TableHOCServer" element={<TableHOCServerExamples />} />
+        <Route path="TopBar" element={<div />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes>
+);

@@ -1,18 +1,16 @@
 import * as React from 'react';
-import {Redirect, Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
+import {NotFound} from '../../../../NotFound';
 import Home from './HomeExamples';
 import Material from './MaterialExamples';
 import Wizard from './WizardExamples';
 
-export const CardRoutes: React.FunctionComponent = () => {
-    const {path} = useRouteMatch();
-    return (
-        <Switch>
-            <Route path={`${path}/Home`} component={Home} />
-            <Route path={`${path}/Material`} component={Material} />
-            <Route path={`${path}/Wizard`} component={Wizard} />
-            <Route exact path={`${path}/`} component={() => <Redirect to={`${path}/card`} />} />
-        </Switch>
-    );
-};
+export const CardRoutes: React.FunctionComponent = () => (
+    <Routes>
+        <Route path="Home" element={<Home />} />
+        <Route path="Material" element={<Material />} />
+        <Route path="Wizard" element={<Wizard />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes>
+);

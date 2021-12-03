@@ -25,13 +25,13 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
 }) => {
     const {pathname} = useLocation();
 
-    const page = pathname.substr(pathname.lastIndexOf('/'));
-    const githubMarkdownLink = `https://github.com/coveo/react-vapor/tree/master/packages/demo/docs${page}.md`;
+    const page = pathname.substr(pathname.lastIndexOf('/')).replace('/', '');
+    const githubMarkdownLink = `https://github.com/coveo/react-vapor/new/master/packages/demo/docs`;
 
     const code = useCodeExample();
 
     return (
-        <div id={id} className="examples-page">
+        <div id={id}>
             <BasicHeader
                 title={{text: title}}
                 description={usage}
@@ -43,8 +43,8 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
             <TabContent className="mod-header-padding mod-form-top-bottom-padding">
                 <TabPaneConnected id="usage" groupId="page">
                     <Form className="mod-header-padding mod-form-top-bottom-padding">
-                        <div className="examples-section">{children}</div>
-                        <div className="code-block-section">
+                        <div>{children}</div>
+                        <div>
                             {withSource && (
                                 <div className="mt2">
                                     <Code language="tsx">{code}</Code>
@@ -57,12 +57,17 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                     {markdown ? (
                         <Markdown className="markdown-documentation" source={markdown} />
                     ) : (
-                        <div>
-                            There are no guidelines for this component yet, click{' '}
-                            <a href={githubMarkdownLink} target="_blank" rel="noopener noreferrer" className="bold">
+                        <div className="body-l-book">
+                            There are no guidelines for <span className="text bold">{page}</span> yet, click{' '}
+                            <a
+                                href={githubMarkdownLink}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text mod-link bold"
+                            >
                                 here
                             </a>{' '}
-                            to create some.
+                            to go to the documentation directory in Github and create it
                         </div>
                     )}
                 </TabPaneConnected>

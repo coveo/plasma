@@ -15,7 +15,7 @@ export const ValuePopup = () => {
             usage="This is the filter picker control used to define a filter on a field."
             withSource
         >
-            <Section className="demo-height">
+            <Section className="demo-height mod-height-30">
                 <button type="button" onClick={() => setShow(!show)} className="btn js-tether-target-list">
                     Form Toggle
                 </button>

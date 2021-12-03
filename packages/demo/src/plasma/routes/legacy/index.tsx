@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
+import {NotFound} from '../../NotFound';
 import {BrowserPreviewExamples} from './pages/BrowserPreviewExamples';
 import {CardRoutes} from './pages/cards';
 import {ChartExamples} from './pages/ChartExamples';
@@ -33,37 +34,34 @@ import {TransparencyExamples} from './pages/transparencyExamples';
  * been determined a place in the app yet. This component, and all of its
  * routes, are temporary
  */
-export const NotIncludedRoutes: React.FunctionComponent = () => {
-    const {path} = useRouteMatch();
-
-    return (
-        <Switch>
-            <Route path={`${path}/BrowserPreview`} component={() => <BrowserPreviewExamples />} />
-            <Route path={`${path}/cards`} component={() => <CardRoutes />} />
-            <Route path={`${path}/Chart`} component={() => <ChartExamples />} />
-            <Route path={`${path}/ColorDot`} component={() => <ColorDots />} />
-            <Route path={`${path}/ColorBar`} component={() => <ColorBarExamples />} />
-            <Route path={`${path}/ColorPicker`} component={() => <ColorPickerExamples />} />
-            <Route path={`${path}/Cursor`} component={() => <Cursor />} />
-            <Route path={`${path}/FacetConnected`} component={() => <FacetConnectedExamples />} />
-            <Route path={`${path}/IconBadge`} component={() => <IconBadgeExamples />} />
-            <Route path={`${path}/Input`} component={() => <InputExamples />} />
-            <Route path={`${path}/ItemFilter`} component={() => <ItemFilterExamples />} />
-            <Route path={`${path}/ItemFilterConnected`} component={() => <ItemFilterConnectedExamples />} />
-            <Route path={`${path}/LabeledValue`} component={() => <LabeledValueExamples />} />
-            <Route path={`${path}/LastUpdated`} component={() => <LastUpdatedExamples />} />
-            <Route path={`${path}/LastUpdatedConnected`} component={() => <LastUpdatedConnectedExamples />} />
-            <Route path={`${path}/LinkSvg`} component={() => <LinkSvgExamples />} />
-            <Route path={`${path}/ListBox`} component={() => <ListBoxExamples />} />
-            <Route path={`${path}/Member`} component={() => <Member />} />
-            <Route path={`${path}/PaginationConnected`} component={() => <PaginationConnectedExamples />} />
-            <Route path={`${path}/PartialstringMatch`} component={() => <PartialStringMatchExamples />} />
-            <Route path={`${path}/Refresh`} component={() => <RefreshExamples />} />
-            <Route path={`${path}/Separator`} component={() => <SeparatorExamples />} />
-            <Route path={`${path}/SideNavigationLoading`} component={() => <SideNavigationLoadingExample />} />
-            <Route path={`${path}/SlideY`} component={() => <SlideYExamples />} />
-            <Route path={`${path}/SpacedBox`} component={() => <SpacedBox />} />
-            <Route path={`${path}/Transparency`} component={() => <TransparencyExamples />} />
-        </Switch>
-    );
-};
+export const NotIncludedRoutes: React.FunctionComponent = () => (
+    <Routes>
+        <Route path="BrowserPreview" element={<BrowserPreviewExamples />} />
+        <Route path="cards/*" element={<CardRoutes />} />
+        <Route path="Chart" element={<ChartExamples />} />
+        <Route path="ColorDot" element={<ColorDots />} />
+        <Route path="ColorBar" element={<ColorBarExamples />} />
+        <Route path="ColorPicker" element={<ColorPickerExamples />} />
+        <Route path="Cursor" element={<Cursor />} />
+        <Route path="FacetConnected" element={<FacetConnectedExamples />} />
+        <Route path="IconBadge" element={<IconBadgeExamples />} />
+        <Route path="Input" element={<InputExamples />} />
+        <Route path="ItemFilter" element={<ItemFilterExamples />} />
+        <Route path="ItemFilterConnected" element={<ItemFilterConnectedExamples />} />
+        <Route path="LabeledValue" element={<LabeledValueExamples />} />
+        <Route path="LastUpdated" element={<LastUpdatedExamples />} />
+        <Route path="LastUpdatedConnected" element={<LastUpdatedConnectedExamples />} />
+        <Route path="LinkSvg" element={<LinkSvgExamples />} />
+        <Route path="ListBox" element={<ListBoxExamples />} />
+        <Route path="Member" element={<Member />} />
+        <Route path="PaginationConnected" element={<PaginationConnectedExamples />} />
+        <Route path="PartialstringMatch" element={<PartialStringMatchExamples />} />
+        <Route path="Refresh" element={<RefreshExamples />} />
+        <Route path="Separator" element={<SeparatorExamples />} />
+        <Route path="SideNavigationLoading" element={<SideNavigationLoadingExample />} />
+        <Route path="SlideY" element={<SlideYExamples />} />
+        <Route path="SpacedBox" element={<SpacedBox />} />
+        <Route path="Transparency" element={<TransparencyExamples />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes>
+);

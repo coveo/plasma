@@ -1,7 +1,7 @@
 import moment from 'moment';
-import * as React from 'react';
+import React, {useState, useEffect} from 'react';
 import {connect} from 'react-redux';
-import {RouteComponentProps, withRouter} from 'react-router';
+import {useNavigate} from 'react-router';
 import {
     filterThrough,
     IDispatch,
@@ -32,8 +32,6 @@ import * as _ from 'underscore';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {TableHOCExampleUtils, TableHOCServerExampleContext} from '../../../utils/TableHOCExampleUtils';
 
-type TableHOCServerProps = RouteComponentProps & ReturnType<typeof mapDispatchToProps>;
-
 export interface IExampleRowData {
     city: string;
     email: string;
@@ -44,11 +42,6 @@ export interface IExampleRowData {
 
 export interface IExampleServerTableState {
     data: IExampleRowData[];
-    isLoading: boolean;
-}
-
-interface TableHOCServerExamplesState {
-    data: {users: [any]; count: number};
     isLoading: boolean;
 }
 
@@ -92,13 +85,13 @@ const mapDispatchToProps = (dispatch: IDispatch) => ({
     resetFilter: () => dispatch(filterThrough(TableHOCServerExampleId, '')),
 });
 
-class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, TableHOCServerExamplesState> {
-    state: TableHOCServerExamplesState = {
-        data: null,
-        isLoading: true,
-    };
+const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = (props) => {
+    const [data, setData] = useState<{users: [any]; count: number}>(null);
+    const [isLoading, setIsLoading] = useState(true);
 
-    private ServerTableComposed = _.compose(
+    const navigate = useNavigate();
+
+    const ServerTableComposed = _.compose(
         withServerSideProcessing,
         tableWithUrlState,
         tableWithBlankSlate({title: 'No data fetched from the server'}),
@@ -112,73 +105,72 @@ class TableExampleDisconnected extends React.PureComponent<TableHOCServerProps, 
         tableWithActions()
     )(TableHOC);
 
-    private fetch = _.debounce(() => {
-        this.setState({...this.state, isLoading: true});
+    const fetch = _.debounce(() => {
+        setIsLoading(true);
         window.setTimeout(
             () =>
-                this.props.fetch().then((data: any) => {
-                    this.setState({data, isLoading: false});
-                }),
+                props
+                    .fetch()
+                    .then((res: any) => {
+                        setData(res);
+                    })
+                    .finally(() => setIsLoading(false)),
             500
         );
     }, 40);
 
-    private onUpdate = () => {
-        this.fetch();
+    const onUpdate = () => {
+        fetch();
     };
 
-    private updateUrl = (query: string) => {
-        this.props.history.push({search: query});
+    const updateUrl = (query: string) => {
+        navigate({search: query});
     };
 
-    componentDidMount() {
-        this.fetch();
-    }
+    useEffect(() => {
+        fetch();
+    }, []);
 
-    render() {
-        return (
-            <VaporComponent id="table-hoc-server" title="Table HOC Server" withSource>
-                <Section title="Server table with numbered rows">
-                    <span className="block my2">
-                        Please note that the backend service doesn't support dates but we still make a request for every
-                        change in the date range.
-                    </span>
-                    <TableHOCServerExampleContext.Provider
-                        value={{isLoading: this.state.isLoading, id: TableHOCServerExampleId}}
+    return (
+        <VaporComponent id="table-hoc-server" title="Table HOC Server" withSource>
+            <Section title="Server table with numbered rows">
+                <span className="block my2">
+                    Please note that the backend service doesn't support dates but we still make a request for every
+                    change in the date range.
+                </span>
+                <TableHOCServerExampleContext.Provider value={{isLoading, id: TableHOCServerExampleId}}>
+                    <ServerTableComposed
+                        id={TableHOCServerExampleId}
+                        className="table table-numbered mod-collapsible-rows"
+                        data={data?.users ?? []}
+                        renderBody={TableHOCExampleUtils.generateRows}
+                        tableHeader={renderHeader()}
+                        onUpdate={() => onUpdate()}
+                        onUpdateUrl={updateUrl}
+                        isLoading={isLoading}
+                        loading={{numberOfColumns: 6}}
+                        filterPlaceholder="Filter all"
+                        filterBlankslate={{
+                            title: 'No result match the specified filter',
+                            description: 'Try reviewing the specified filters above or clearing all filters.',
+                            buttons: [
+                                {
+                                    name: 'Clear filter',
+                                    enabled: true,
+                                    onClick: props.resetFilter,
+                                },
+                            ],
+                        }}
                     >
-                        <this.ServerTableComposed
-                            id={TableHOCServerExampleId}
-                            className="table table-numbered mod-collapsible-rows"
-                            data={this.state.data?.users ?? []}
-                            renderBody={TableHOCExampleUtils.generateRows}
-                            tableHeader={renderHeader()}
-                            onUpdate={this.onUpdate}
-                            onUpdateUrl={this.updateUrl}
-                            isLoading={this.state.isLoading}
-                            loading={{numberOfColumns: 6}}
-                            filterPlaceholder="Filter all"
-                            filterBlankslate={{
-                                title: 'No result match the specified filter',
-                                description: 'Try reviewing the specified filters above or clearing all filters.',
-                                buttons: [
-                                    {
-                                        name: 'Clear filter',
-                                        enabled: true,
-                                        onClick: this.props.resetFilter,
-                                    },
-                                ],
-                            }}
-                        >
-                            <LastUpdated time={new Date()} />
-                        </this.ServerTableComposed>
-                    </TableHOCServerExampleContext.Provider>
-                </Section>
-            </VaporComponent>
-        );
-    }
-}
+                        <LastUpdated time={new Date()} />
+                    </ServerTableComposed>
+                </TableHOCServerExampleContext.Provider>
+            </Section>
+        </VaporComponent>
+    );
+};
 
-const TableHOCServer = connect(undefined, mapDispatchToProps)(withRouter(TableExampleDisconnected));
+const TableHOCServer = connect(undefined, mapDispatchToProps)(TableExampleDisconnected);
 
 const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => IReactVaporState) => {
     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
