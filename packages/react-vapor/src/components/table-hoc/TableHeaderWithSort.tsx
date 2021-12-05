@@ -40,7 +40,7 @@ export const TableHeaderWithSort: React.FunctionComponent<
     React.useEffect(() => {
         onMount();
 
-        return onUnmount;
+        return () => void onUnmount();
     }, []);
 
     const headerCellClasses = classNames(className, 'admin-sort', {
