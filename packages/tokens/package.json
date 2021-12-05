@@ -16,7 +16,7 @@
     "license": "Apache-2.0",
     "devDependencies": {
         "@types/fs-extra": "9.0.13",
-        "@types/node": "16.11.7",
+        "@types/node": "16.11.11",
         "@types/rimraf": "3.0.2",
         "dotenv-safe": "8.2.0",
         "figma-js": "1.14.0",
