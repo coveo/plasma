@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.2.1](https://github.com/coveo/react-vapor/compare/v30.2.0...v30.2.1) (2021-12-05)
+
+
+### Bug Fixes
+
+* **fixes:** added void to some useEffect return functions ([9e87195](https://github.com/coveo/react-vapor/commit/9e87195844da6d5a0cc93979b29f6785809110ea))
+* **useeffect:** fixed return void in useeffect ([3bf0fe6](https://github.com/coveo/react-vapor/commit/3bf0fe673ca77c388262adf29f9fd41b11093312))
+
+
+
+
+
 # [30.2.0](https://github.com/coveo/react-vapor/compare/v30.1.3...v30.2.0) (2021-12-02)
 
 
