@@ -233,7 +233,7 @@ importers:
       query-string: 6.14.1
       rc-slider: 9.7.4
       react: 16.14.0
-      react-bootstrap: 2.0.2
+      react-bootstrap: 2.0.3
       react-codemirror2: 7.2.1
       react-color: 2.19.3
       react-diff-viewer: ^3.1.1
@@ -272,7 +272,7 @@ importers:
       moment: 2.29.1
       query-string: 6.14.1
       rc-slider: 9.7.4_react-dom@16.14.0+react@16.14.0
-      react-bootstrap: 2.0.2_react-dom@16.14.0+react@16.14.0
+      react-bootstrap: 2.0.3_react-dom@16.14.0+react@16.14.0
       react-codemirror2: 7.2.1_codemirror@5.63.3+react@16.14.0
       react-color: 2.19.3_react@16.14.0
       react-diff-viewer: 3.1.1_react-dom@16.14.0+react@16.14.0
@@ -14082,8 +14082,8 @@ packages:
       shallowequal: 1.1.0
     dev: false
 
-  /react-bootstrap/2.0.2_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-QuMqJ+WJmd6dUyOys6OF3nr6T/FjUVAoEMbSjsFrwVufJtvMox0SU1Dvz/cDID+Dl6Rz2RLcJzyqkdl+DEK2Gg==}
+  /react-bootstrap/2.0.3_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-gIRzQf170SGKS09azr8Cl9+8FxBf3J9jyFf/8sWNWXtRcgbRzTog9bFCS4ua5Wv1U/A7W7hRlnrKxzy+wl+5Rw==}
     peerDependencies:
       react: '>=16.14.0'
       react-dom: '>=16.14.0'
