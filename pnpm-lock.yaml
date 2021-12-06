@@ -173,7 +173,7 @@ importers:
     specifiers:
       '@helpers/enzyme-redux': ^1.0.0
       '@testing-library/dom': 8.11.1
-      '@testing-library/jest-dom': 5.15.0
+      '@testing-library/jest-dom': 5.16.0
       '@testing-library/react': 12.1.2
       '@testing-library/user-event': 12.8.3
       '@types/chosen-js': 1.8.3
@@ -290,7 +290,7 @@ importers:
     devDependencies:
       '@helpers/enzyme-redux': link:../../helpers/enzyme-redux
       '@testing-library/dom': 8.11.1
-      '@testing-library/jest-dom': 5.15.0
+      '@testing-library/jest-dom': 5.16.0
       '@testing-library/react': 12.1.2_react-dom@16.14.0+react@16.14.0
       '@testing-library/user-event': 12.8.3_@testing-library+dom@8.11.1
       '@types/chosen-js': 1.8.3
@@ -2438,13 +2438,13 @@ packages:
       pretty-format: 27.3.1
     dev: true
 
-  /@testing-library/jest-dom/5.15.0:
-    resolution: {integrity: sha512-lOMuQidnL1tWHLEWIhL6UvSZC1Qt3OkNe1khvi2h6xFiqpe5O8arYs46OU0qyUGq0cSTbroQyMktYNXu3a7sAA==}
+  /@testing-library/jest-dom/5.16.0:
+    resolution: {integrity: sha512-ECygvCL6ufPfHna4fsk7o24+3PVNhRbioDpFbfSVEZaglT6EjuRP+w8I5tzigFz1fobpvCrVRoKyR4qx2QUCxw==}
     engines: {node: '>=8', npm: '>=6', yarn: '>=1'}
     dependencies:
-      '@babel/runtime': 7.16.0
+      '@babel/runtime': 7.16.3
       '@types/testing-library__jest-dom': 5.9.5
-      aria-query: 4.2.2
+      aria-query: 5.0.0
       chalk: 3.0.0
       css: 3.0.0
       css.escape: 1.5.1
