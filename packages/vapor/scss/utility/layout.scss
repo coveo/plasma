@@ -79,6 +79,13 @@
     }
 }
 
+@for $i from 1 through 10 {
+    $size: $i * 10;
+    .mod-height-#{$size} {
+        height: $size * 1em;
+    }
+}
+
 .hidden {
     display: none;
     visibility: hidden;

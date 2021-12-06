@@ -1,9 +1,7 @@
 import React from 'react';
 
-const Brand = () => (
+export const Brand: React.FunctionComponent = () => (
     <div>
         <h2>Brand</h2>
     </div>
 );
-
-export default Brand;

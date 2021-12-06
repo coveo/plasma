@@ -14,7 +14,7 @@ interface NavLinkProps {
 // Context is more efficient than prop drilling or using useLocation() 65+ times
 const PathnameContext = React.createContext('/');
 
-const NavLink: React.FunctionComponent<NavLinkProps> = ({href, label, disabled, isActive}) => (
+const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disabled, isActive}) => (
     <PathnameContext.Consumer>
         {(path) => (
             <SideNavigationItem disabled={disabled} href={href} isActive={isActive ?? path?.endsWith(href)}>
@@ -42,7 +42,7 @@ const CollapsibleSideSection: React.FC<{title: string}> = ({title, children}) =>
             expandable
             expanded={expanded}
             onClick={() => setExpanded(!expanded)}
-            title={<NavLink label={title} />}
+            title={<NavLink label={title} isActive={false} />}
         >
             {children}
         </SideNavigationMenuSection>

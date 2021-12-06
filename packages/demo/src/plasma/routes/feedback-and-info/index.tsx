@@ -1,8 +1,10 @@
 import * as React from 'react';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 import {ToastAction} from 'react-vapor';
 
+import {NotFound} from '../../NotFound';
 import {BadgeExamples} from './pages/BadgeExamples';
+import {FeedbackExamples} from './pages/FeedbackExamples';
 import {InfoBoxExamples} from './pages/InfoBoxExamples';
 import {InfoTokenExamples} from './pages/InfoTokenExamples';
 import {LimitExamples} from './pages/LimitExamples';
@@ -16,34 +18,31 @@ import {ToastConnectedExamples} from './pages/ToastConnectedExamples';
 import {ToastContentExample} from './pages/ToastContentExamples';
 import {ToastExamples} from './pages/ToastExamples';
 import {TooltipExamples} from './pages/TooltipExamples';
-import {FeedbackExamples} from './pages/FeedbackExamples';
 
-export const FeedbackAndInfoRoutes: React.FunctionComponent = () => {
-    const {path} = useRouteMatch();
-    return (
-        <Switch>
-            <Route path={`${path}/Badge`} component={() => <BadgeExamples />} />
-            <Route path={`${path}/Feedback`} component={() => <FeedbackExamples />} />
-            <Route path={`${path}/InfoToken`} component={() => <InfoTokenExamples />} />
-            <Route path={`${path}/InfoBox`} component={() => <InfoBoxExamples />} />
-            <Route path={`${path}/Limit`} component={() => <LimitExamples />} />
-            <Route path={`${path}/Loading`} component={() => <LoadingExamples />} />
-            <Route path={`${path}/Popover`} component={() => <PopoverExample />} />
-            <Route path={`${path}/ProgressBar`} component={() => <ProgressBar />} />
-            <Route path={`${path}/Prompt`} component={() => <div />} />
-            <Route path={`${path}/StatusCard`} component={() => <StatusCardExamples />} />
-            <Route path={`${path}/StatusToken`} component={() => <div />} />
-            <Route path={`${path}/StatusWidget`} component={() => <div />} />
-            <Route path={`${path}/StepProgressBar`} component={() => <StepProgressBarExamples />} />
-            <Route path={`${path}/SyncFeedback`} component={() => <SyncFeedbackExample />} />
-            <Route path={`${path}/Toast`} component={() => <ToastExamples />} />
-            <Route
-                path={`${path}/ToastConnected`}
-                // this is just to get the demo working
-                component={() => <ToastConnectedExamples addToast={() => ({type: ToastAction.addToast})} />}
-            />
-            <Route path={`${path}/ToastContent`} component={() => <ToastContentExample />} />
-            <Route path={`${path}/Tooltip`} component={() => <TooltipExamples />} />
-        </Switch>
-    );
-};
+export const FeedbackAndInfoRoutes: React.FunctionComponent = () => (
+    <Routes>
+        <Route path="Badge" element={<BadgeExamples />} />
+        <Route path="Feedback" element={<FeedbackExamples />} />
+        <Route path="InfoToken" element={<InfoTokenExamples />} />
+        <Route path="InfoBox" element={<InfoBoxExamples />} />
+        <Route path="Limit" element={<LimitExamples />} />
+        <Route path="Loading" element={<LoadingExamples />} />
+        <Route path="Popover" element={<PopoverExample />} />
+        <Route path="ProgressBar" element={<ProgressBar />} />
+        <Route path="Prompt" element={<div />} />
+        <Route path="StatusCard" element={<StatusCardExamples />} />
+        <Route path="StatusToken" element={<div />} />
+        <Route path="StatusWidget" element={<div />} />
+        <Route path="StepProgressBar" element={<StepProgressBarExamples />} />
+        <Route path="SyncFeedback" element={<SyncFeedbackExample />} />
+        <Route path="Toast" element={<ToastExamples />} />
+        <Route
+            path="ToastConnected"
+            // this is just to get the demo working
+            element={<ToastConnectedExamples addToast={() => ({type: ToastAction.addToast})} />}
+        />
+        <Route path="ToastContent" element={<ToastContentExample />} />
+        <Route path="Tooltip" element={<TooltipExamples />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes>
+);

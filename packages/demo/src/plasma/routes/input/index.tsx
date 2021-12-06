@@ -1,6 +1,7 @@
 import * as React from 'react';
-import {Route, Switch, useRouteMatch} from 'react-router-dom';
+import {Route, Routes} from 'react-router-dom';
 
+import {NotFound} from '../../NotFound';
 import {ActionableItemExamples} from './pages/ActionableItemExamples';
 import {ButtonExamples} from './pages/ButtonExamples';
 import {CheckboxExamples} from './pages/CheckboxExamples';
@@ -13,7 +14,6 @@ import {FilepickerExamples} from './pages/FilepickerExamples';
 import {FilterBoxExamples} from './pages/FilterBoxExamples';
 import {JSONEditorExamples} from './pages/JSONEditorExamples';
 import {MultilineBoxExamples} from './pages/MultilineBoxExamples';
-import {MultiSelectExamples} from './pages/MultiSelectExamples';
 import {NumericInputExamples} from './pages/NumericInputExamples';
 import {RadioButtonExamples} from './pages/RadioButtonExamples';
 import {SearchBarExamples} from './pages/SearchBarExamples';
@@ -23,36 +23,33 @@ import {TextAreaExamples} from './pages/TextAreaExamples';
 import {TextInputExamples} from './pages/TextInputExamples';
 import ValuePopup from './pages/ValuePopupExamples';
 
-export const InputRoutes: React.FunctionComponent = () => {
-    const {path} = useRouteMatch();
-
-    return (
-        <Switch>
-            <Route path={`${path}/ActionableItem`} component={() => <ActionableItemExamples />} />
-            <Route path={`${path}/AddRemove`} component={() => <div />} />
-            <Route path={`${path}/Button`} component={() => <ButtonExamples />} />
-            <Route path={`${path}/Checkbox`} component={() => <CheckboxExamples />} />
-            <Route path={`${path}/Childform`} component={() => <ChildFormExamples />} />
-            <Route path={`${path}/CodeEditor`} component={() => <CodeEditorExamples />} />
-            <Route path={`${path}/DatePicker`} component={() => <DatePickerExamples />} />
-            <Route path={`${path}/DiffViewer`} component={() => <DiffViewerExamples />} />
-            <Route path={`${path}/Dropdown`} component={() => <div />} />
-            <Route path={`${path}/Facet`} component={() => <FacetConnectedExamples />} />
-            <Route path={`${path}/FilePicker`} component={() => <FilepickerExamples />} />
-            <Route path={`${path}/FilterBox`} component={() => <FilterBoxExamples />} />
-            <Route path={`${path}/JSONEditor`} component={() => <JSONEditorExamples />} />
-            <Route path={`${path}/links`} component={() => <div />} />
-            <Route path={`${path}/MultilineBox`} component={() => <MultilineBoxExamples />} />
-            <Route path={`${path}/MultiSelect`} component={MultiSelectExamples} />
-            <Route path={`${path}/NumericInput`} component={() => <NumericInputExamples />} />
-            <Route path={`${path}/RadioButton`} component={() => <RadioButtonExamples />} />
-            <Route path={`${path}/SearchBar`} component={() => <SearchBarExamples />} />
-            <Route path={`${path}/SingleSelect`} component={() => <SingleSelectExample />} />
-            <Route path={`${path}/Slider`} component={() => <SliderExamples />} />
-            <Route path={`${path}/TextArea`} component={() => <TextAreaExamples />} />
-            <Route path={`${path}/TextInput`} component={() => <TextInputExamples />} />
-            <Route path={`${path}/Toggle`} component={() => <div />} />
-            <Route path={`${path}/ValuePopup`} component={() => <ValuePopup />} />
-        </Switch>
-    );
-};
+export const InputRoutes: React.FunctionComponent = () => (
+    <Routes>
+        <Route path="ActionableItem" element={<ActionableItemExamples />} />
+        <Route path="AddRemove" element={<div />} />
+        <Route path="Button" element={<ButtonExamples />} />
+        <Route path="Checkbox" element={<CheckboxExamples />} />
+        <Route path="Childform" element={<ChildFormExamples />} />
+        <Route path="CodeEditor" element={<CodeEditorExamples />} />
+        <Route path="DatePicker" element={<DatePickerExamples />} />
+        <Route path="DiffViewer" element={<DiffViewerExamples />} />
+        <Route path="Dropdown" element={<div />} />
+        <Route path="Facet" element={<FacetConnectedExamples />} />
+        <Route path="FilePicker" element={<FilepickerExamples />} />
+        <Route path="FilterBox" element={<FilterBoxExamples />} />
+        <Route path="JSONEditor" element={<JSONEditorExamples />} />
+        <Route path="links" element={<div />} />
+        <Route path="MultilineBox" element={<MultilineBoxExamples />} />
+        {/* TODO - <Route path="MultiSelect" component={MultiSelectExamples} /> */}
+        <Route path="NumericInput" element={<NumericInputExamples />} />
+        <Route path="RadioButton" element={<RadioButtonExamples />} />
+        <Route path="SearchBar" element={<SearchBarExamples />} />
+        <Route path="SingleSelect" element={<SingleSelectExample />} />
+        <Route path="Slider" element={<SliderExamples />} />
+        <Route path="TextArea" element={<TextAreaExamples />} />
+        <Route path="TextInput" element={<TextInputExamples />} />
+        <Route path="Toggle" element={<div />} />
+        <Route path="ValuePopup" element={<ValuePopup />} />
+        <Route path="*" element={<NotFound />} />
+    </Routes>
+);

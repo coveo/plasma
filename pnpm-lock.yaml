@@ -87,8 +87,8 @@ importers:
       react-dom: 16.14.0
       react-markdown: 5.0.3
       react-redux: 7.2.6
-      react-router: 5.2.1
-      react-router-dom: 5.3.0
+      react-router: 6.0.2
+      react-router-dom: 6.0.2
       react-syntax-highlighter: 15.4.5
       react-vapor: ^30.2.6
       redux: 4.1.2
@@ -122,8 +122,8 @@ importers:
       react-dom: 16.14.0_react@16.14.0
       react-markdown: 5.0.3_414da64a83d07b5b28f5e74e56d85156
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
-      react-router: 5.2.1_react@16.14.0
-      react-router-dom: 5.3.0_react@16.14.0
+      react-router: 6.0.2_react@16.14.0
+      react-router-dom: 6.0.2_react-dom@16.14.0+react@16.14.0
       react-syntax-highlighter: 15.4.5_react@16.14.0
       react-vapor: link:../react-vapor
       redux: 4.1.2
@@ -8572,15 +8572,10 @@ packages:
     resolution: {integrity: sha512-oFLl873u4usRM9K63j4ME9u3etNF0PLiJhSQ8rdfuL51Wn3zkD6drf9ZW0dOzjnZI22YYG24z30JcmfCZjMgYg==}
     dev: false
 
-  /history/4.10.1:
-    resolution: {integrity: sha512-36nwAD620w12kuzPAsyINPWJqlNbij+hpK1k9XRloDtym8mxzGYl2c17LnV6IAGB2Dmg4tEa7G7DlawS0+qjew==}
+  /history/5.1.0:
+    resolution: {integrity: sha512-zPuQgPacm2vH2xdORvGGz1wQMuHSIB56yNAy5FnLuwOwgSYyPKptJtcMm6Ev+hRGeS+GzhbmRacHzvlESbFwDg==}
     dependencies:
-      '@babel/runtime': 7.16.0
-      loose-envify: 1.4.0
-      resolve-pathname: 3.0.0
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
-      value-equal: 1.0.1
+      '@babel/runtime': 7.16.3
     dev: false
 
   /hmac-drbg/1.0.1:
@@ -9665,6 +9660,7 @@ packages:
 
   /isarray/0.0.1:
     resolution: {integrity: sha1-ihis/Kmo9Bd+Cav8YDiTmwXR7t8=}
+    dev: true
 
   /isarray/1.0.0:
     resolution: {integrity: sha1-u5NdSFgsuhaMBoNJV6VKPgcSTxE=}
@@ -11452,18 +11448,6 @@ packages:
     engines: {node: '>=4'}
     dev: true
 
-  /mini-create-react-context/0.4.1_prop-types@15.7.2+react@16.14.0:
-    resolution: {integrity: sha512-YWCYEmd5CQeHGSAKrYvXgmzzkrvssZcuuQDDeqkT+PziKGMgE+0MCCtcKbROzocGBG1meBLl2FotlRwf4gAzbQ==}
-    peerDependencies:
-      prop-types: ^15.0.0
-      react: ^0.14.0 || ^15.0.0 || ^16.0.0 || ^17.0.0
-    dependencies:
-      '@babel/runtime': 7.16.0
-      prop-types: 15.7.2
-      react: 16.14.0
-      tiny-warning: 1.0.3
-    dev: false
-
   /mini-css-extract-plugin/0.12.0_webpack@4.46.0:
     resolution: {integrity: sha512-z6PQCe9rd1XUwZ8gMaEVwwRyZlrYy8Ba1gRjFP5HcV51HkXX+XlwZ+a1iAYTjSYwgNBXoNR7mhx79mDpOn5fdw==}
     engines: {node: '>= 6.9.0'}
@@ -12772,12 +12756,6 @@ packages:
   /path-to-regexp/0.1.7:
     resolution: {integrity: sha1-32BBeABfUi8V60SQ5yR6G/qmf4w=}
     dev: true
-
-  /path-to-regexp/1.8.0:
-    resolution: {integrity: sha512-n43JRhlUKUAlibEJhPeir1ncUID16QnEjNpwzNdO3Lm4ywrBpBZ5oLD0I6br9evr1Y9JTqwRtAh7JLoOzAQdVA==}
-    dependencies:
-      isarray: 0.0.1
-    dev: false
 
   /path-type/1.1.0:
     resolution: {integrity: sha1-WcRPfuSR2nBNpBXaWkBwuk+P5EE=}
@@ -14132,37 +14110,25 @@ packages:
       react-is: 17.0.2
     dev: false
 
-  /react-router-dom/5.3.0_react@16.14.0:
-    resolution: {integrity: sha512-ObVBLjUZsphUUMVycibxgMdh5jJ1e3o+KpAZBVeHcNQZ4W+uUGGWsokurzlF4YOldQYRQL4y6yFRWM4m3svmuQ==}
+  /react-router-dom/6.0.2_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-cOpJ4B6raFutr0EG8O/M2fEoyQmwvZWomf1c6W2YXBZuFBx8oTk/zqjXghwScyhfrtnt0lANXV2182NQblRxFA==}
     peerDependencies:
-      react: '>=15'
+      react: '>=16.8'
+      react-dom: '>=16.8'
     dependencies:
-      '@babel/runtime': 7.16.0
-      history: 4.10.1
-      loose-envify: 1.4.0
-      prop-types: 15.7.2
+      history: 5.1.0
       react: 16.14.0
-      react-router: 5.2.1_react@16.14.0
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
+      react-dom: 16.14.0_react@16.14.0
+      react-router: 6.0.2_react@16.14.0
     dev: false
 
-  /react-router/5.2.1_react@16.14.0:
-    resolution: {integrity: sha512-lIboRiOtDLFdg1VTemMwud9vRVuOCZmUIT/7lUoZiSpPODiiH1UQlfXy+vPLC/7IWdFYnhRwAyNqA/+I7wnvKQ==}
+  /react-router/6.0.2_react@16.14.0:
+    resolution: {integrity: sha512-8/Wm3Ed8t7TuedXjAvV39+c8j0vwrI5qVsYqjFr5WkJjsJpEvNSoLRUbtqSEYzqaTUj1IV+sbPJxvO+accvU0Q==}
     peerDependencies:
-      react: '>=15'
+      react: '>=16.8'
     dependencies:
-      '@babel/runtime': 7.16.0
-      history: 4.10.1
-      hoist-non-react-statics: 3.3.2
-      loose-envify: 1.4.0
-      mini-create-react-context: 0.4.1_prop-types@15.7.2+react@16.14.0
-      path-to-regexp: 1.8.0
-      prop-types: 15.7.2
+      history: 5.1.0
       react: 16.14.0
-      react-is: 16.13.1
-      tiny-invariant: 1.1.0
-      tiny-warning: 1.0.3
     dev: false
 
   /react-syntax-highlighter/15.4.5_react@16.14.0:
@@ -14836,10 +14802,6 @@ packages:
     dependencies:
       value-or-function: 3.0.0
     dev: true
-
-  /resolve-pathname/3.0.0:
-    resolution: {integrity: sha512-C7rARubxI8bXFNB/hqcp/4iUeIXJhJZvFPFPiSPRnhU5UPxzMFIl+2E6yY6c4k9giDJAhtV+enfA+G89N6Csng==}
-    dev: false
 
   /resolve-url-loader/3.1.4:
     resolution: {integrity: sha512-D3sQ04o0eeQEySLrcz4DsX3saHfsr8/N6tfhblxgZKXxMT2Louargg12oGNfoTRLV09GXhVUe5/qgA5vdgNigg==}
@@ -16499,14 +16461,6 @@ packages:
     dev: false
     optional: true
 
-  /tiny-invariant/1.1.0:
-    resolution: {integrity: sha512-ytxQvrb1cPc9WBEI/HSeYYoGD0kWnGEOR8RY6KomWLBVhqz0RgTwVO9dLrGz7dC+nN9llyI7OKAgRq8Vq4ZBSw==}
-    dev: false
-
-  /tiny-warning/1.0.3:
-    resolution: {integrity: sha512-lBN9zLN/oAf68o3zNXYrdCt1kP8WsiGW8Oo2ka41b2IM5JL/S1CTyX1rW0mb/zSuJun0ZUrDxx4sqvYS2FWzPA==}
-    dev: false
-
   /tinycolor2/1.4.2:
     resolution: {integrity: sha512-vJhccZPs965sV/L2sU4oRQVAos0pQXwsvTLkWYdqJ+a8Q5kPFzJTuOFwy7UniPli44NKQGAglksjvOcpo95aZA==}
     dev: false
@@ -17347,10 +17301,6 @@ packages:
     dependencies:
       builtins: 1.0.3
     dev: true
-
-  /value-equal/1.0.1:
-    resolution: {integrity: sha512-NOJ6JZCAWr0zlxZt+xqCHNTEKOsrks2HQd4MqhP1qy4z1SkbEP467eNx6TgDKXMvUOb+OENfJCZwM+16n7fRfw==}
-    dev: false
 
   /value-or-function/3.0.0:
     resolution: {integrity: sha1-HCQ6ULWVwb5Up1S/7OhWO5/42BM=}

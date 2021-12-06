@@ -4,7 +4,7 @@ import React from 'react';
 
 import {Section, Tile} from 'react-vapor';
 
-const Home: React.FC = () => (
+export const Home: React.FunctionComponent = () => (
     <Section className="home flex-auto overflow-auto demo-content">
         <Section className=" section intro">
             <h5 className="welcome-to">Welcome to</h5>
@@ -249,5 +249,3 @@ const Home: React.FC = () => (
         </Section>
     </Section>
 );
-
-export default Home;
