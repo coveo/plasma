@@ -94,7 +94,7 @@ importers:
       redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
-      redux-thunk: 2.4.0
+      redux-thunk: 2.4.1
       reselect: 4.1.5
       rimraf: 3.0.2
       sass: 1.43.4
@@ -129,7 +129,7 @@ importers:
       redux: 4.1.2
       redux-devtools-extension: 2.13.9_redux@4.1.2
       redux-promise-middleware: 6.1.2_redux@4.1.2
-      redux-thunk: 2.4.0_redux@4.1.2
+      redux-thunk: 2.4.1_redux@4.1.2
       reselect: 4.1.5
       underscore: 1.13.1
       underscore.string: 3.3.5
@@ -251,7 +251,7 @@ importers:
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2
-      redux-thunk: 2.4.0
+      redux-thunk: 2.4.1
       reselect: 4.1.5
       rimraf: 3.0.2
       snyk: 1.763.0
@@ -349,7 +349,7 @@ importers:
       redux-logger: 3.0.6
       redux-mock-store: 1.5.4
       redux-promise-middleware: 6.1.2_redux@4.1.2
-      redux-thunk: 2.4.0_redux@4.1.2
+      redux-thunk: 2.4.1_redux@4.1.2
       rimraf: 3.0.2
       snyk: 1.763.0
       ts-jest: 27.0.7_01b74691ac702485cc287326e37bd587
@@ -14663,8 +14663,8 @@ packages:
     dependencies:
       redux: 4.1.2
 
-  /redux-thunk/2.4.0_redux@4.1.2:
-    resolution: {integrity: sha512-/y6ZKQNU/0u8Bm7ROLq9Pt/7lU93cT0IucYMrubo89ENjxPa7i8pqLKu6V4X7/TvYovQ6x01unTeyeZ9lgXiTA==}
+  /redux-thunk/2.4.1_redux@4.1.2:
+    resolution: {integrity: sha512-OOYGNY5Jy2TWvTL1KgAlVy6dcx3siPJ1wTq741EPyUKfn6W6nChdICjZwCd0p8AZBs5kWpZlbkXW2nE/zjUa+Q==}
     peerDependencies:
       redux: ^4
     dependencies:
