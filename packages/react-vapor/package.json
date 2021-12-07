@@ -72,7 +72,7 @@
     "devDependencies": {
         "@helpers/enzyme-redux": "^1.0.0",
         "@testing-library/dom": "8.11.1",
-        "@testing-library/jest-dom": "5.16.0",
+        "@testing-library/jest-dom": "5.16.1",
         "@testing-library/react": "12.1.2",
         "@testing-library/user-event": "12.8.3",
         "@types/chosen-js": "1.8.3",
