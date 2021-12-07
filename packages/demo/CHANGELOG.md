@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.3.0](https://github.com/coveo/react-vapor/compare/v30.2.9...v30.3.0) (2021-12-07)
+
+
+### Features
+
+* **homepage:** set href to tiles to redirect to component page ([695f2a2](https://github.com/coveo/react-vapor/commit/695f2a217e86b1b7cbe2e2fcdebd4c6c1db78e1d))
+
+
+
+
+
 ## [30.2.9](https://github.com/coveo/react-vapor/compare/v30.2.8...v30.2.9) (2021-12-07)
 
 **Note:** Version bump only for package react-vapor-demo
