@@ -10,19 +10,18 @@ const CopyPlugin = require('copy-webpack-plugin');
  */
 module.exports = {
     entry: {
-        main: './built/Index.js',
+        main: './src/Index.tsx',
     },
     mode: isJenkins ? 'production' : 'development',
     output: {
         path: path.join(__dirname, '/dist'),
-        filename: '[name].[hash].js',
-        chunkFilename: 'assets/[name].[hash].js',
+        filename: '[name].[chunkhash].js',
+        chunkFilename: 'assets/[name].[chunkhash].js',
     },
     devtool: isJenkins ? 'source-map' : 'eval-source-map',
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', '.ts', '.tsx'],
         alias: {
-            'react-vapor': path.resolve(__dirname, '../react-vapor/dist/cjs/Entry.js'),
             '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
             '@routes': path.resolve(__dirname, 'src/plasma/routes'),
         },
@@ -41,7 +40,6 @@ module.exports = {
             template: 'src/index.html',
         }),
         new HtmlWebpackTagsPlugin({tags: ['jquery.slim.min.js', 'chosen.jquery.min.js'], append: true}),
-        new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
     ],
     stats: 'minimal',
@@ -51,6 +49,14 @@ module.exports = {
                 test: /\.js$/,
                 enforce: 'pre',
                 use: ['source-map-loader'],
+            },
+            {
+                test: /\.tsx?$/,
+                exclude: /node_modules/,
+                loader: 'ts-loader',
+                options: {
+                    transpileOnly: true,
+                },
             },
             {
                 test: /\.s?css$/,
@@ -73,16 +79,16 @@ module.exports = {
         ],
     },
     devServer: {
-        contentBase: path.join(__dirname, 'src'),
-        host: '0.0.0.0',
-        useLocalIp: true,
-        disableHostCheck: true,
+        static: {
+            directory: path.join(__dirname, 'src'),
+        },
+        client: {
+            progress: true,
+        },
+        host: 'local-ip',
         compress: true,
         hot: true,
-        progress: false,
         open: true,
-        watchOptions: {
-            aggregateTimeout: 0,
-        },
+        allowedHosts: 'all',
     },
 };

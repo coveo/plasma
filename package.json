@@ -40,7 +40,7 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "setup": "pnpm install",
-        "start": "pnpm build --stream --filter coveo-styleguide && pnpm -r start --parallel --filter coveo-styleguide --filter react-vapor-demo",
+        "start": "pnpm build --stream --filter coveo-styleguide && pnpm -r start --parallel",
         "test": "pnpm -r test --parallel",
         "clean": "pnpm -r clean --parallel",
         "build": "pnpm -r build --stream",

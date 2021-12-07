@@ -3,16 +3,13 @@
     "compilerOptions": {
         "removeComments": false,
         "rootDir": "src",
-        "outDir": "built",
+        "outDir": "dist",
         "baseUrl": ".",
-        "tsBuildInfoFile": "./built/.tsbuildinfo",
         "paths": {
-            "react-vapor": ["../react-vapor/src/Entry.ts"],
             "@demo-styling/*": ["./src/demo-styling/*"]
         },
         "lib": ["ES2020", "dom"],
         "typeRoots": ["./types", "./node_modules/@types"]
     },
-    "include": ["src", "docs"],
-    "references": [{"path": "../react-vapor/tsconfig.build.json"}]
+    "include": ["src", "docs"]
 }

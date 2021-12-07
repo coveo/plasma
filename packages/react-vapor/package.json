@@ -21,6 +21,7 @@
         "url": "git+https://github.com/coveo/react-vapor.git"
     },
     "scripts": {
+        "start": "tsc --build --watch tsconfig.esm.json",
         "build": "tsc --build tsconfig.build.json && tsc --build tsconfig.esm.json",
         "test": "jest --clearCache && jest",
         "test:watch": "jest --watchAll",
