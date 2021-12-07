@@ -270,6 +270,8 @@ export const SVG_NAMES = {
     messageAuthentification: 'messageAuthentification',
     messageError: 'messageError',
     minus: 'minus',
+    minus16px: 'minus16px',
+    minus32px: 'minus32px',
     more: 'more',
     moreAppend: 'moreAppend',
     moveNewFile: 'moveNewFile',
