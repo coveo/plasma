@@ -77,7 +77,11 @@ const ModalWizardDisconneted: React.FunctionComponent<ModalWizardProps & Connect
                             {steps.map((step: React.ReactElement, index: number) => {
                                 const hidden = index !== currentStep;
                                 return (
-                                    <div className={classNames({hidden})} hidden={hidden} key={index}>
+                                    <div
+                                        className={classNames({hidden}, modalProps.modalBodyClasses)}
+                                        hidden={hidden}
+                                        key={index}
+                                    >
                                         {step}
                                     </div>
                                 );
