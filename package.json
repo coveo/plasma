@@ -4,7 +4,7 @@
     "devDependencies": {
         "@commitlint/cli": "14.1.0",
         "@commitlint/config-conventional": "14.1.0",
-        "@sindresorhus/slugify": "0.11.0",
+        "@sindresorhus/slugify": "2.1.0",
         "aws-sdk": "2.1044.0",
         "axios": "0.24.0",
         "commitizen": "4.2.4",
