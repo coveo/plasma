@@ -66,9 +66,7 @@ describe('SingleSelectWithDirty', () => {
 
         userEvent.click(screen.getByRole('button', {name: /old value/i}));
 
-        // act(() => {
         userEvent.click(screen.getByRole('option', {name: /new value/i}));
-        // });
 
         expect(screen.getByText(/is dirty/)).toBeInTheDocument();
     });

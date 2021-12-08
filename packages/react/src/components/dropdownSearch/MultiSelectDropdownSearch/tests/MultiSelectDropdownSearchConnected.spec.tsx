@@ -54,10 +54,6 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         describe('mount and unmount', () => {
-            // beforeEach(() => {
-            //     renderMultiSelectDropdownSearchConnected(props);
-            // });
-
             it('should add a new dropdownSearch state in the store when mounted', () => {
                 renderMultiSelectDropdownSearchConnected(props);
 

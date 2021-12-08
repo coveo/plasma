@@ -22,7 +22,6 @@ describe('<ChartContainer />', () => {
 
         const renderSpy = jest.fn(() => null);
 
-        // act(() => {
         const component = mount(<ChartContainer renderChart={renderSpy} />);
 
         // Need the component to update to get the ref.current
@@ -33,7 +32,6 @@ describe('<ChartContainer />', () => {
         const resizeEvent = document.createEvent('Event');
         resizeEvent.initEvent('resize', true, true);
         window.dispatchEvent(resizeEvent);
-        // });
 
         expect(renderSpy).toHaveBeenCalledTimes(1);
     });
