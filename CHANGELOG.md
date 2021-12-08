@@ -3,6 +3,20 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.4.0](https://github.com/coveo/react-vapor/compare/v30.3.4...v30.4.0) (2021-12-08)
+
+
+### Features
+
+* **icons:** added minus icons ([5e407ac](https://github.com/coveo/react-vapor/commit/5e407ac146f3ef1a2e51857dc567c838d6c7c2ea))
+* **icons:** added to list ([57bdc76](https://github.com/coveo/react-vapor/commit/57bdc765d241f45f2672677c48e7114151890ccd))
+* **modal:** passing modalBodyClasses to actual rendered body container ([d127d88](https://github.com/coveo/react-vapor/commit/d127d880f53585ceb0ae78426d07e90d65a9712c))
+* **modal:** reverted change ([e7d5fe5](https://github.com/coveo/react-vapor/commit/e7d5fe5414b4c6634d17502563ce4e07600e8df0))
+
+
+
+
+
 ## [30.3.4](https://github.com/coveo/react-vapor/compare/v30.3.3...v30.3.4) (2021-12-08)
 
 **Note:** Version bump only for package root
