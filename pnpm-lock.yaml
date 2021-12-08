@@ -386,8 +386,8 @@ importers:
 
   packages/vapor:
     specifiers:
+      autosize: 5.0.1
       ansi-colors: 4.1.1
-      autosize: 3.0.21
       chosen-npm: 1.4.2
       codemirror: ^5.59.4
       concurrently: 5.3.0
@@ -427,8 +427,8 @@ importers:
       codemirror: 5.60.0
       rc-slider: 8.7.1
     devDependencies:
+      autosize: 5.0.1
       ansi-colors: 4.1.1
-      autosize: 3.0.21
       chosen-npm: 1.4.2
       concurrently: 5.3.0
       coveo-png-sprite: 1.0.1
@@ -3986,8 +3986,8 @@ packages:
       postcss-value-parser: 4.1.0
     dev: true
 
-  /autosize/3.0.21:
-    resolution: {integrity: sha1-8YL0DRd1fZeKE5pMnKQMTA5EhgM=}
+  /autosize/5.0.1:
+    resolution: {integrity: sha512-UIWUlE4TOVPNNj2jjrU39wI4hEYbneUypEqcyRmRFIx5CC2gNdg3rQr+Zh7/3h6egbBvm33TDQjNQKtj9Tk1HA==}
     dev: true
 
   /aws-sdk/2.1044.0:
