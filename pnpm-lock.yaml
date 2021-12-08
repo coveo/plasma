@@ -64,7 +64,7 @@ importers:
       '@types/react-router-dom': 5.3.2
       '@types/react-syntax-highlighter': 13.5.2
       '@types/redux-promise-middleware': 6.0.0
-      '@types/underscore': 1.8.10
+      '@types/underscore': 1.11.4
       '@types/webpack-env': 1.16.3
       classnames: 2.3.1
       codemirror: 5.63.3
@@ -146,7 +146,7 @@ importers:
       '@types/react-router-dom': 5.3.2
       '@types/react-syntax-highlighter': 13.5.2
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
-      '@types/underscore': 1.8.10
+      '@types/underscore': 1.11.4
       '@types/webpack-env': 1.16.3
       concurrently: 6.3.0
       copy-webpack-plugin: 6.4.1_webpack@4.46.0
@@ -201,7 +201,7 @@ importers:
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0
-      '@types/underscore': 1.8.10
+      '@types/underscore': 1.11.4
       '@types/underscore.string': 0.0.38
       ansi-colors: 4.1.1
       autoprefixer: 9.8.8
@@ -317,7 +317,7 @@ importers:
       '@types/redux-logger': 3.0.9
       '@types/redux-mock-store': 1.0.3
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
-      '@types/underscore': 1.8.10
+      '@types/underscore': 1.11.4
       '@types/underscore.string': 0.0.38
       ansi-colors: 4.1.1
       autoprefixer: 9.8.8
@@ -2932,11 +2932,11 @@ packages:
   /@types/underscore.string/0.0.38:
     resolution: {integrity: sha512-QPMttDInBYkulH/3nON0KnYpEd/RlyE5kUrhuts5d76B/stpjXpDticq+iTluoAsVnVXuGECFhPtuX+aDJdx+A==}
     dependencies:
-      '@types/underscore': 1.8.10
+      '@types/underscore': 1.11.4
     dev: true
 
-  /@types/underscore/1.8.10:
-    resolution: {integrity: sha512-2Y+qwEb3BIBfLl+PBQaZUkgj0Wdh3+8HPFgPQLh3z5KaJI6Z85Uxk+3wzrdd26TAt8CiAUdQ5nMcsTEKykgIyg==}
+  /@types/underscore/1.11.4:
+    resolution: {integrity: sha512-uO4CD2ELOjw8tasUrAhvnn2W4A0ZECOvMjCivJr4gA9pGgjv+qxKWY9GLTMVEK8ej85BxQOocUyE7hImmSQYcg==}
     dev: true
 
   /@types/unist/2.0.3:
