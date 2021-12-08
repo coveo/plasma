@@ -1,6 +1,6 @@
 {
     "name": "coveo-styleguide",
-    "version": "30.3.3",
+    "version": "30.3.4",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -31,8 +31,8 @@
         "materialize-css": "^0.98.2"
     },
     "devDependencies": {
-        "autosize": "5.0.1",
         "ansi-colors": "4.1.1",
+        "autosize": "5.0.1",
         "chosen-npm": "1.4.2",
         "concurrently": "5.3.0",
         "coveo-png-sprite": "1.0.1",
