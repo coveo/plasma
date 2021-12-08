@@ -133,7 +133,7 @@
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.4.1",
         "rimraf": "3.0.2",
-        "snyk": "1.763.0",
+        "snyk": "1.786.0",
         "ts-jest": "27.0.7",
         "tslib": "1.14.1",
         "typescript": "3.8.3",
