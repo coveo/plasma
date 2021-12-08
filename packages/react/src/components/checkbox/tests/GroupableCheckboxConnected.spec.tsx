@@ -174,14 +174,14 @@ describe('GroupableCheckbox', () => {
         describe('With child checkboxes and parent checkbox', () => {
             let wrappers: Array<ReactWrapper<any, any>>;
 
-            beforeEach(() => {
+            const getView = () => {
                 document.body.innerHTML += divTemplateForMultipleCheckbox;
 
                 wrappers = [];
                 wrappers.push(renderChildCheckbox({}, divTemplateClasses.checkbox1));
                 wrappers.push(renderChildCheckbox({id: parentId + '2'}, divTemplateClasses.checkbox2));
                 wrappers.push(renderParentCheckbox({}, divTemplateClasses.checkbox3));
-            });
+            };
 
             afterEach(() => {
                 _.each(wrappers, (currentWrapper: ReactWrapper<any, any>) => {
@@ -190,6 +190,7 @@ describe('GroupableCheckbox', () => {
             });
 
             it('should add checkboxes and the parent checkbox event if the parent is added lastly', () => {
+                getView();
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
                 groupableCheckboxState = groupableChekboxesState[0];
 
@@ -200,6 +201,8 @@ describe('GroupableCheckbox', () => {
             });
 
             it('should have total equal to the number of child checkboxes added', () => {
+                getView();
+
                 groupableCheckboxState = getFirstGroupableCheckbox(store);
 
                 expect(groupableCheckboxState.total).toBe(2);
@@ -211,6 +214,8 @@ describe('GroupableCheckbox', () => {
             });
 
             it('should have nbChecked equal to the number of child checkboxes checked added', () => {
+                getView();
+
                 wrappers.push(
                     renderChildCheckbox({id: parentId + '4', defaultChecked: true}, divTemplateClasses.checkbox4)
                 );
@@ -221,6 +226,8 @@ describe('GroupableCheckbox', () => {
             });
 
             it('should toggle all child checkbox on click parent checkbox true', () => {
+                getView();
+
                 groupableCheckbox.props().onClick({} as any);
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);
 
@@ -232,6 +239,8 @@ describe('GroupableCheckbox', () => {
             });
 
             it('should toggle all child checkbox on click parent checkbox false', () => {
+                getView();
+
                 groupableCheckbox.props().onClick({} as any);
                 groupableCheckbox.props().onClick({} as any);
                 groupableChekboxesState = getCurrentGroupableCheckboxes(store);

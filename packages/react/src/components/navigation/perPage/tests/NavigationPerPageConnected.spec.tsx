@@ -80,9 +80,9 @@ describe('<NavigationPerPageConnected />', () => {
     });
 
     it('should get what to do onRender as a prop', () => {
-        const onRenderProp = navigationPerPage.props().onRender;
+        const view = navigationPerPage.props().onRender;
 
-        expect(onRenderProp).toBeDefined();
+        expect(view).toBeDefined();
     });
 
     it('should get what to do onDestroy as a prop', () => {

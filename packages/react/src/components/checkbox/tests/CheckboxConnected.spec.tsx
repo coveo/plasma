@@ -50,9 +50,9 @@ describe('Checkbox', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = checkbox.props().onRender;
+            const view = checkbox.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {
