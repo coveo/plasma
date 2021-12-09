@@ -19,6 +19,7 @@ module.exports = {
     globals: {
         'ts-jest': {
             tsconfig: '<rootDir>/tsconfig.test.json',
+            isolatedModules: true,
         },
     },
 };
