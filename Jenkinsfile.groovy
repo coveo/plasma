@@ -126,7 +126,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm test"
+          sh "pnpm test:ci"
           sh "pnpm -r report-coverage"
         }
       }

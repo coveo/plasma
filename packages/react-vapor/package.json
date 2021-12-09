@@ -22,7 +22,8 @@
     },
     "scripts": {
         "build": "tsc --build tsconfig.build.json && tsc --build tsconfig.esm.json",
-        "test": "jest --clearCache && jest",
+        "test": "jest --maxWorkers=65%",
+        "test:ci": "jest --maxWorkers=2",
         "test:watch": "jest --watchAll",
         "test:debug": "jest --clearCache && node --inspect node_modules/jest/bin/jest --runInBand --watchAll",
         "report-coverage": "codecov -f coverage/lcov.info",
