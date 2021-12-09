@@ -2,8 +2,8 @@
     "name": "root",
     "private": true,
     "devDependencies": {
-        "@commitlint/cli": "14.1.0",
-        "@commitlint/config-conventional": "14.1.0",
+        "@commitlint/cli": "15.0.0",
+        "@commitlint/config-conventional": "15.0.0",
         "@sindresorhus/slugify": "2.1.0",
         "aws-sdk": "2.1045.0",
         "axios": "0.24.0",
