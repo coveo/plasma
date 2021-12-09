@@ -27,8 +27,8 @@
 
         &:hover,
         &.admin-active {
-            color: var(--deprecated-medium-blue);
-            background-color: var(--white);
+            color: var(--grey-80);
+            background-color: var(--grey-20);
         }
 
         .autocomplete-value {
