@@ -68,7 +68,7 @@ importers:
       '@types/webpack-env': 1.16.3
       classnames: 2.3.1
       codemirror: 5.63.3
-      concurrently: 6.3.0
+      concurrently: 6.4.0
       copy-webpack-plugin: 6.4.1
       coveo-styleguide: ^30.5.0
       css-loader: 3.6.0
@@ -148,7 +148,7 @@ importers:
       '@types/redux-promise-middleware': 6.0.0_redux@4.1.2
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.16.3
-      concurrently: 6.3.0
+      concurrently: 6.4.0
       copy-webpack-plugin: 6.4.1_webpack@4.46.0
       css-loader: 3.6.0_webpack@4.46.0
       file-loader: 5.1.0_webpack@4.46.0
@@ -390,7 +390,7 @@ importers:
       autosize: 5.0.1
       chosen-npm: 1.4.2
       codemirror: ^5.59.4
-      concurrently: 5.3.0
+      concurrently: 6.4.0
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2
       css-loader: 3.6.0
@@ -430,7 +430,7 @@ importers:
       ansi-colors: 4.1.1
       autosize: 5.0.1
       chosen-npm: 1.4.2
-      concurrently: 5.3.0
+      concurrently: 6.4.0
       coveo-png-sprite: 1.0.1
       coveo-slider: 1.0.2_jquery@3.6.0+underscore@1.13.1
       css-loader: 3.6.0_webpack@4.46.0
@@ -5183,28 +5183,12 @@ packages:
       source-map: 0.6.1
     dev: true
 
-  /concurrently/5.3.0:
-    resolution: {integrity: sha512-8MhqOB6PWlBfA2vJ8a0bSFKATOdWlHiQlk11IfmQBPaHVP8oP2gsh2MObE6UR3hqDHqvaIvLTyceNW6obVuFHQ==}
-    engines: {node: '>=6.0.0'}
-    hasBin: true
-    dependencies:
-      chalk: 2.4.2
-      date-fns: 2.21.1
-      lodash: 4.17.21
-      read-pkg: 4.0.1
-      rxjs: 6.6.7
-      spawn-command: 0.0.2-1
-      supports-color: 6.1.0
-      tree-kill: 1.2.2
-      yargs: 13.3.2
-    dev: true
-
-  /concurrently/6.3.0:
-    resolution: {integrity: sha512-k4k1jQGHHKsfbqzkUszVf29qECBrkvBKkcPJEUDTyVR7tZd1G/JOfnst4g1sYbFvJ4UjHZisj1aWQR8yLKpGPw==}
+  /concurrently/6.4.0:
+    resolution: {integrity: sha512-HZ3D0RTQMH3oS4gvtYj1P+NBc6PzE2McEra6yEFcQKrUQ9HvtTGU4Dbne083F034p+LRb7kWU0tPRNvSGs1UCQ==}
     engines: {node: '>=10.0.0'}
     hasBin: true
     dependencies:
-      chalk: 4.1.1
+      chalk: 4.1.2
       date-fns: 2.21.1
       lodash: 4.17.21
       rxjs: 6.6.7
@@ -14236,15 +14220,6 @@ packages:
       load-json-file: 4.0.0
       normalize-package-data: 2.5.0
       path-type: 3.0.0
-    dev: true
-
-  /read-pkg/4.0.1:
-    resolution: {integrity: sha1-ljYlN48+HE1IyFhytabsfV0JMjc=}
-    engines: {node: '>=6'}
-    dependencies:
-      normalize-package-data: 2.5.0
-      parse-json: 4.0.0
-      pify: 3.0.0
     dev: true
 
   /read-pkg/5.2.0:
