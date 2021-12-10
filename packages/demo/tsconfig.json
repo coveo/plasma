@@ -8,6 +8,7 @@
         "tsBuildInfoFile": "./built/.tsbuildinfo",
         "paths": {
             "react-vapor": ["../react-vapor/src/Entry.ts"],
+            "react-vapor/dist/*": ["../react-vapor/dist/*"],
             "@demo-styling/*": ["./src/demo-styling/*"]
         },
         "lib": ["ES2020", "dom"],

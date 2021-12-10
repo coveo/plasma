@@ -31,7 +31,7 @@ export const useCodeExample = () => {
     React.useEffect(() => {
         const doImport = async () => {
             const res: {default: string} = await import(
-                `!!raw-loader!@routes/${arrPath.join('/')}${'Examples.js'.replace('.js', '.tsx')}`
+                `!!raw-loader!@routes/${arrPath.join('/')}/${'Example.js'.replace('.js', '.tsx')}`
             );
             return chopDownSourceFile(res.default);
         };

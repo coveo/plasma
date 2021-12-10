@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 
 import {NotFound} from '../../NotFound';
 import {IconsList} from './pages/IconsList';
-import {SvgExamples} from './pages/SvgExamples';
+import {SvgExamples} from './pages/Svg';
 import {Typekit} from './pages/typekit';
 
 export const FoundationsRoutes: React.FunctionComponent = () => (

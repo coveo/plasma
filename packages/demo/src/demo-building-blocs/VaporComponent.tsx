@@ -3,7 +3,8 @@ import Markdown from 'react-markdown';
 import {useLocation} from 'react-router';
 import {BasicHeader, Form, TabContent, TabPaneConnected} from 'react-vapor';
 
-import Code from './Code';
+// import Code from './Code';
+import EditableCode from './EditableCode';
 import {useCodeExample} from './useCodeExample';
 
 interface VaporComponentProps {
@@ -44,13 +45,14 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                 <TabPaneConnected id="usage" groupId="page">
                     <Form className="mod-header-padding mod-form-top-bottom-padding">
                         <div>{children}</div>
-                        <div>
+                        {withSource && code && <EditableCode>{code}</EditableCode>}
+                        {/* <div>
                             {withSource && (
                                 <div className="mt2">
                                     <Code language="tsx">{code}</Code>
                                 </div>
                             )}
-                        </div>
+                        </div> */}
                     </Form>
                 </TabPaneConnected>
                 <TabPaneConnected id="guide" groupId="page">

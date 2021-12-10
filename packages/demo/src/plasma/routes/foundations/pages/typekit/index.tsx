@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Route, Routes} from 'react-router-dom';
 
-import {Headings} from './HeadingsExamples';
+import {Headings} from './Headings';
 import {IconColor} from './IconColorExamples';
 import {LineHeight} from './LineHeightExamples';
 import {Links} from './LinksExamples';

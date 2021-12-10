@@ -3,7 +3,7 @@ import {Route, Routes} from 'react-router-dom';
 import {NotFound} from '../../NotFound';
 
 import {ActionBarConnectedExamples} from './pages/ActionBarConnectedExamples';
-import {ActionBarExamples} from './pages/ActionBarExamples';
+import {ActionBarExamples} from './pages/ActionBar';
 import {BannerExamples} from './pages/BannerExamples';
 import {BlankSlateExample} from './pages/BlankSlateExamples';
 import {BorderedLineExamples} from './pages/BorderedLineExamples';

@@ -57,15 +57,19 @@ importers:
       '@types/faker': 4.1.12
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
+      '@types/lz-string': ^1.3.34
       '@types/prettier': 1.19.1
       '@types/react': 16.14.21
       '@types/react-dom': 16.9.14
+      '@types/react-redux': ^7.1.20
       '@types/react-router': 5.1.17
       '@types/react-router-dom': 5.3.2
       '@types/react-syntax-highlighter': 13.5.2
       '@types/redux-promise-middleware': 6.0.0
       '@types/underscore': 1.8.10
       '@types/webpack-env': 1.16.3
+      '@typescript/twoslash': ^3.0.0
+      '@typescript/vfs': ^1.3.4
       classnames: 2.3.1
       codemirror: 5.63.3
       concurrently: 6.3.0
@@ -80,12 +84,16 @@ importers:
       jquery: 3.6.0
       lint-staged: 9.5.0
       lorem-ipsum: 2.0.4
+      lz-string: ^1.4.4
       moment: 2.29.1
+      monaco-editor: ^0.27.0
+      monaco-editor-webpack-plugin: ^4.1.2
       node-sass: 5.0.0
       raw-loader: 4.0.2
       react: 16.14.0
       react-dom: 16.14.0
       react-markdown: 5.0.3
+      react-monaco-editor: ^0.46.0
       react-redux: 7.2.6
       react-router: 6.0.2
       react-router-dom: 6.0.2
@@ -110,6 +118,9 @@ importers:
       webpack-cli: 3.3.12
       webpack-dev-server: 3.11.3
     dependencies:
+      '@types/lz-string': 1.3.34
+      '@typescript/twoslash': 3.1.0
+      '@typescript/vfs': 1.3.5
       classnames: 2.3.1
       codemirror: 5.63.3
       coveo-styleguide: link:../vapor
@@ -117,10 +128,14 @@ importers:
       faker: 4.1.0
       jquery: 3.6.0
       lorem-ipsum: 2.0.4
+      lz-string: 1.4.4
       moment: 2.29.1
+      monaco-editor: 0.27.0
+      monaco-editor-webpack-plugin: 4.2.0_e4cd7a6a3a6838300ac23f56d2a6a698
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
       react-markdown: 5.0.3_414da64a83d07b5b28f5e74e56d85156
+      react-monaco-editor: 0.46.0_2ea920340a4c1b1790c2d8a538e5d139
       react-redux: 7.2.6_react-dom@16.14.0+react@16.14.0
       react-router: 6.0.2_react@16.14.0
       react-router-dom: 6.0.2_react-dom@16.14.0+react@16.14.0
@@ -142,6 +157,7 @@ importers:
       '@types/prettier': 1.19.1
       '@types/react': 16.14.21
       '@types/react-dom': 16.9.14
+      '@types/react-redux': 7.1.20
       '@types/react-router': 5.1.17
       '@types/react-router-dom': 5.3.2
       '@types/react-syntax-highlighter': 13.5.2
@@ -2687,6 +2703,10 @@ packages:
       lorem-ipsum: 2.0.4
     dev: true
 
+  /@types/lz-string/1.3.34:
+    resolution: {integrity: sha512-j6G1e8DULJx3ONf6NdR5JiR2ZY3K3PaaqiEuKYkLQO0Czfi1AzrtjfnfCROyWGeDd5IVMKCwsgSmMip9OWijow==}
+    dev: false
+
   /@types/mdast/3.0.10:
     resolution: {integrity: sha512-W864tg/Osz1+9f4lrGTZpCSO5/z4608eUp19tbozkq2HJK6i3z1kT0H9tlADXuYIb1YYOBByU4Jsqkk75q48qA==}
     dependencies:
@@ -3191,6 +3211,24 @@ packages:
       '@typescript-eslint/types': 4.22.0
       eslint-visitor-keys: 2.0.0
     dev: true
+
+  /@typescript/twoslash/3.1.0:
+    resolution: {integrity: sha512-kTwMUQ8xtAZaC4wb2XuLkPqFVBj2dNBueMQ89NWEuw87k2nLBbuafeG5cob/QEr6YduxIdTVUjix0MtC7mPlmg==}
+    dependencies:
+      '@typescript/vfs': 1.3.5
+      debug: 4.3.2
+      lz-string: 1.4.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
+  /@typescript/vfs/1.3.5:
+    resolution: {integrity: sha512-pI8Saqjupf9MfLw7w2+og+fmb0fZS0J6vsKXXrp4/PDXEFvntgzXmChCXC/KefZZS0YGS6AT8e0hGAJcTsdJlg==}
+    dependencies:
+      debug: 4.3.2
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
 
   /@webassemblyjs/ast/1.9.0:
     resolution: {integrity: sha512-C6wW5L+b7ogSDVqymbkkvuW9kruN//YisMED04xzeBBqjHa2FYnmvOlS6Xj68xWQRgWvI9cIglsjFowH/RJyEA==}
@@ -4196,7 +4234,6 @@ packages:
 
   /big.js/5.2.2:
     resolution: {integrity: sha512-vyL2OymJxmarO8gxMr0mhChsO9QGwhynfuu4+MHTAW6czfq9humCB7rKpUjDd9YUiDPU4mzpyupFSvOClAwbmQ==}
-    dev: true
 
   /binary-extensions/1.13.1:
     resolution: {integrity: sha512-Un7MIEDdUC5gNpcGDV97op1Ywk748MpHcFTHoYs6qnj1Z3j7I53VG3nwZhKzoBZmbdRNnb6WRdFlwl7tSDuZGw==}
@@ -6499,7 +6536,6 @@ packages:
   /emojis-list/3.0.0:
     resolution: {integrity: sha512-/kyM18EfinwXZbno9FyUGeFh87KC8HRQBQGildHZbEuRyWFOmv1U10o9BBp8XVZDVNNuQKyIGIu5ZYAAXJ0V2Q==}
     engines: {node: '>= 4'}
-    dev: true
 
   /emotion/10.0.27:
     resolution: {integrity: sha512-2xdDzdWWzue8R8lu4G76uWX5WhyQuzATon9LmNeCy/2BHVC6dsEpfhN1a0qhELgtDVdjyEA6J8Y/VlI5ZnaH0g==}
@@ -10359,7 +10395,6 @@ packages:
     hasBin: true
     dependencies:
       minimist: 1.2.5
-    dev: true
 
   /jsonfile/4.0.0:
     resolution: {integrity: sha1-h3Gq4HmbZAdrdmQPygWPnBDjPss=}
@@ -10710,7 +10745,6 @@ packages:
       big.js: 5.2.2
       emojis-list: 3.0.0
       json5: 2.2.0
-    dev: true
 
   /locate-path/2.0.0:
     resolution: {integrity: sha1-K1aLJl7slExtnA3pw9u7ygNUzY4=}
@@ -11035,7 +11069,6 @@ packages:
   /lz-string/1.4.4:
     resolution: {integrity: sha1-wNjq82BZ9wV5bh40SBHPTEmNOiY=}
     hasBin: true
-    dev: true
 
   /make-dir/2.1.0:
     resolution: {integrity: sha512-LS9X+dc8KLxXCb8dni79fLIIUA5VyZoyjSMCwTluaXA0o27cCK0bhXkpgw+sTXVpPy/lSO57ilRixqk0vDmtRA==}
@@ -11494,7 +11527,6 @@ packages:
 
   /minimist/1.2.5:
     resolution: {integrity: sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw==}
-    dev: true
 
   /minipass-collect/1.0.2:
     resolution: {integrity: sha512-6T6lH0H8OG9kITm/Jm6tdooIbogG9e0tLgpY6mphXSm/A9u8Nq1ryBG+Qspiub9LjWlBPsPS3tWQ/Botq4FdxA==}
@@ -11630,6 +11662,21 @@ packages:
 
   /moment/2.29.1:
     resolution: {integrity: sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ==}
+    dev: false
+
+  /monaco-editor-webpack-plugin/4.2.0_e4cd7a6a3a6838300ac23f56d2a6a698:
+    resolution: {integrity: sha512-/P3sFiEgBl+Y50he4mbknMhbLJVop5gBUZiPS86SuHUDOOnQiQ5rL1jU5lwt1XKAwMEkhwZbUwqaHxTPkb1Utw==}
+    peerDependencies:
+      monaco-editor: 0.25.x || 0.26.x || 0.27.x || 0.28.x
+      webpack: ^4.5.0 || 5.x
+    dependencies:
+      loader-utils: 2.0.0
+      monaco-editor: 0.27.0
+      webpack: 4.46.0_webpack-cli@3.3.12
+    dev: false
+
+  /monaco-editor/0.27.0:
+    resolution: {integrity: sha512-UhwP78Wb8w0ZSYoKXQNTV/0CHObp6NS3nCt51QfKE6sKyBo5PBsvuDOHoI2ooBakc6uIwByRLHVeT7+yXQe2fQ==}
     dev: false
 
   /moo/0.5.1:
@@ -14066,6 +14113,19 @@ packages:
       react-dom: 16.14.0_react@16.14.0
       react-lifecycles-compat: 3.0.4
       warning: 4.0.3
+    dev: false
+
+  /react-monaco-editor/0.46.0_2ea920340a4c1b1790c2d8a538e5d139:
+    resolution: {integrity: sha512-/GyQ0tQLbjHAuMUNRfKecBYN68o8TwA4fnwH9P+lHbF80ayMAo0PQ60joTQH6R6j839kMn6o9Kk/cbzOxK5DzA==}
+    peerDependencies:
+      '@types/react': ^17.x
+      monaco-editor: ^0.28.1
+      react: ^17.x
+    dependencies:
+      '@types/react': 16.14.21
+      monaco-editor: 0.27.0
+      prop-types: 15.7.2
+      react: 16.14.0
     dev: false
 
   /react-redux/7.2.6_react-dom@16.14.0+react@16.14.0:
