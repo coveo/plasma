@@ -11,7 +11,7 @@ export const OptionsCycleExamples: ExampleComponent = () => <OptionsCycles />;
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
 const OptionsCycles: React.FunctionComponent = () => (
-    <VaporComponent id="options-cycle" title="Options Cycle" withSource>
+    <VaporComponent id="OptionsCycle" title="Options Cycle" withSource>
         <Section>
             <Section level={2} title="Option cycle">
                 <OptionsCycleConnected id="Cycle-1" options={OPTIONS} />

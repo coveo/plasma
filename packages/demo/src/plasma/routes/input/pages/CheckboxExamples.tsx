@@ -16,19 +16,15 @@ import {Store} from '../../../../Store';
 
 import {ExampleComponent} from '../../../utils/ExamplesUtils';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
-export const CheckboxExamples: ExampleComponent = () => {
-    const markdown = useMarkdown('Checkbox');
-    return (
-        <VaporComponent id="checkbox" title="Checkbox" markdown={markdown} withSource>
-            <Section>
-                <Checkboxset />
-                <GroupableCheckboxConnectedExamples />
-            </Section>
-        </VaporComponent>
-    );
-};
+export const CheckboxExamples: ExampleComponent = () => (
+    <VaporComponent id="Checkbox" title="Checkbox" withSource>
+        <Section>
+            <Checkboxset />
+            <GroupableCheckboxConnectedExamples />
+        </Section>
+    </VaporComponent>
+);
 
 CheckboxExamples.description = 'Checkboxes allow users to select multiple options from a set.';
 

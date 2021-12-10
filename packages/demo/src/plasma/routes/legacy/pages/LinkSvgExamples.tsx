@@ -23,7 +23,7 @@ export class LinkSvgExamples extends React.Component<any, any> {
         };
 
         return (
-            <VaporComponent id="link-svg" title="Link SVG" withSource>
+            <VaporComponent id="LinkSvg" title="Link SVG" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Default LinkSvg</label>

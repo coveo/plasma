@@ -4,7 +4,7 @@ import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
 export const LineHeight = () => (
     <VaporComponent
-        id="line-height"
+        id="LineHeight"
         title="Line-height"
         usage="Change line-height for headings and paragraph."
         withSource

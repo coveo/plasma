@@ -39,7 +39,7 @@ export class ListBoxExamples extends React.Component {
         ]);
 
         return (
-            <VaporComponent id="list-box" title="List Box" withSource>
+            <VaporComponent id="ListBox" title="List Box" withSource>
                 <div className="mt2 mod-width-50">
                     <div className="form-group">
                         <label className="form-control-label">Default List Box</label>

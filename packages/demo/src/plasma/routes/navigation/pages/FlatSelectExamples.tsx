@@ -38,7 +38,7 @@ export class FlatSelectExamples extends React.Component {
         const append: IContentProps = {content: () => <Svg {...svg} />, classes: ['ml1']};
 
         return (
-            <VaporComponent id="flat-select" title="Flat Select" withSource>
+            <VaporComponent id="FlatSelect" title="Flat Select" withSource>
                 <Form>
                     <Section title="Flat Select List">
                         <Section level={2} title="Default Flat Select">

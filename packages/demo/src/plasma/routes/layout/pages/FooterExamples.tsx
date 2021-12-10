@@ -22,7 +22,7 @@ const lorem1 = loremIpsum({count: 50});
 
 // start-print
 export const FooterExample: ExampleComponent = () => (
-    <VaporComponent id="footer" title="Footer" withSource>
+    <VaporComponent id="Footer" title="Footer" withSource>
         <StickyFooterExample />
         <StickyFooterWithDirtyExample />
     </VaporComponent>

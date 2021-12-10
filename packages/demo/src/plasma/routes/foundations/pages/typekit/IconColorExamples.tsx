@@ -4,7 +4,7 @@ import {Section, Svg} from 'react-vapor';
 import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
 export const IconColor = () => (
-    <VaporComponent id="icon-colors" title="Icon colors" usage="Change color for icon." withSource>
+    <VaporComponent id="IconColors" title="Icon colors" usage="Change color for icon." withSource>
         <Section className="mb5">
             <Svg svgName="info" className="icon mr1 mod-3x documentation-link" />
             <Svg svgName="info" className="icon mr1 mod-3x no-link" />

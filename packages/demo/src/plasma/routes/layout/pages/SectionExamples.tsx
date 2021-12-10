@@ -19,7 +19,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export class SectionExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="sections" title="Sections" withSource>
+            <VaporComponent id="Section" title="Sections" withSource>
                 <Form>
                     <Section
                         title="Search panel"

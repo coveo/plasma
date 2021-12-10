@@ -4,7 +4,7 @@ import {Section} from 'react-vapor';
 import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
 export const TextColor = () => (
-    <VaporComponent id="text-colors" title="Text colors" usage="Change color for text." withSource>
+    <VaporComponent id="TextColors" title="Text colors" usage="Change color for text." withSource>
         <Section>
             <div className="text">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</div>
             <div className="text mod-emphasized">AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz</div>

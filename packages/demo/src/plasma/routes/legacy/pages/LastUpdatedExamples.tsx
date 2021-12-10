@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const LastUpdatedExamples: React.FunctionComponent = () => (
-    <VaporComponent id="last-updated" title="Last Updated" withSource>
+    <VaporComponent id="LastUpdated" title="Last Updated" withSource>
         <div className="mt2" style={{width: 400}}>
             <div className="form-group">
                 <label className="form-control-label">Last update</label>

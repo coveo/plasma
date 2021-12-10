@@ -7,7 +7,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const IconBadgeExamples: React.FunctionComponent = () => (
-    <VaporComponent id="icon-badge" title="Icon Badge" withSource>
+    <VaporComponent id="IconBadge" title="Icon Badge" withSource>
         <Section>
             <Section level={2} title="IconBadge without the navigation style">
                 <IconBadge

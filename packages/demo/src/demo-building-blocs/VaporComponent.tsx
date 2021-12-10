@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Markdown from 'react-markdown';
-import {useLocation} from 'react-router';
-import {BasicHeader, Form, TabContent, TabPaneConnected} from 'react-vapor';
+import {BasicHeader, Form, LinkSvg, TabContent, TabPaneConnected} from 'react-vapor';
 
 import Code from './Code';
+import {Guidelines} from './Guidelines';
 import {useCodeExample} from './useCodeExample';
 
 interface VaporComponentProps {
@@ -12,7 +12,6 @@ interface VaporComponentProps {
     usage?: string | React.ReactNode;
     stylesheet?: string;
     withSource?: boolean;
-    markdown?: string;
 }
 
 export const VaporComponent: React.FunctionComponent<VaporComponentProps & React.HTMLAttributes<HTMLDivElement>> = ({
@@ -21,13 +20,7 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     usage,
     children,
     withSource,
-    markdown,
 }) => {
-    const {pathname} = useLocation();
-
-    const page = pathname.substr(pathname.lastIndexOf('/')).replace('/', '');
-    const githubMarkdownLink = `https://github.com/coveo/react-vapor/new/master/packages/demo/docs`;
-
     const code = useCodeExample();
 
     return (
@@ -37,7 +30,7 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                 description={usage}
                 tabs={[
                     {groupId: 'page', id: 'usage', title: 'Usage'},
-                    {groupId: 'page', id: 'guide', title: 'Guide'},
+                    {groupId: 'page', id: 'guide', title: 'Guidelines'},
                 ]}
             />
             <TabContent className="mod-header-padding mod-form-top-bottom-padding">
@@ -54,21 +47,30 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                     </Form>
                 </TabPaneConnected>
                 <TabPaneConnected id="guide" groupId="page">
-                    {markdown ? (
-                        <Markdown className="markdown-documentation" source={markdown} />
-                    ) : (
-                        <div className="body-l-book">
-                            There are no guidelines for <span className="text bold">{page}</span> yet, click{' '}
-                            <a
-                                href={githubMarkdownLink}
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="text mod-link bold"
+                    {Guidelines.exists(id) ? (
+                        <>
+                            <Markdown className="markdown-documentation" source={Guidelines.get(id)} />
+                            <LinkSvg
+                                url={`https://github.com/coveo/react-vapor/edit/master/packages/demo/docs/${id}.md`}
+                                svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
+                                linkClasses={['mt5']}
                             >
-                                here
-                            </a>{' '}
-                            to go to the documentation directory in Github and create it
-                        </div>
+                                Edit guidelines
+                            </LinkSvg>
+                        </>
+                    ) : (
+                        <>
+                            <p>
+                                No guidelines exist for <span className="body-m">{id}</span> yet.
+                            </p>
+                            <LinkSvg
+                                url={`https://github.com/coveo/react-vapor/new/master/packages/demo/docs?filename=docs/${id}.md`}
+                                svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
+                                linkClasses={['mt5']}
+                            >
+                                Create guidelines
+                            </LinkSvg>
+                        </>
                     )}
                 </TabPaneConnected>
             </TabContent>

@@ -7,7 +7,7 @@ import {generateDataWithFaker, generateTableRow} from '../../layout/pages/TableH
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const TableHOCwithBlankSlateExamples = () => (
-    <VaporComponent id="table-hoc-with-blank-slate" title="Table HOC with Blank Slate" withSource>
+    <VaporComponent id="tableWithBlankSlate" title="Table HOC with Blank Slate" withSource>
         <Section>
             <TableWithBlankSlateExample />
         </Section>

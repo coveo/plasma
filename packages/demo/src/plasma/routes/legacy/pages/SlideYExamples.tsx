@@ -29,7 +29,7 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
 
     render() {
         return (
-            <VaporComponent id="slidey" title="Slide-Y" withSource>
+            <VaporComponent id="SlideY" title="Slide-Y" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Basic SlideY animation</label>

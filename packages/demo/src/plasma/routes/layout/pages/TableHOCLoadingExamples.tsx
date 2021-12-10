@@ -9,7 +9,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
-    <VaporComponent id="table-hoc-loading" title="Table HOC Loading" withSource>
+    <VaporComponent id="TableHOCLoading" title="Table HOC Loading" withSource>
         <Section>
             <Section level={2} title="Table loading with the default number of row">
                 <TableLoadingExamplesWithDataNull />

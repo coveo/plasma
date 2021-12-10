@@ -10,7 +10,7 @@ export const ValuePopup = () => {
     const [show, setShow] = useState(true);
     return (
         <VaporComponent
-            id="value-popup"
+            id="ValuePopup"
             title="Value Popup"
             usage="This is the filter picker control used to define a filter on a field."
             withSource

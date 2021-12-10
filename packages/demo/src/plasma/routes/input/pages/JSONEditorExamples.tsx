@@ -8,7 +8,7 @@ import {fakeJSON, JSONToString} from '../../../utils/DiffViewerExmaplesCommon';
 export class JSONEditorExamples extends React.Component {
     render() {
         return (
-            <VaporComponent id="json-editor" title="JSON Editor" withSource>
+            <VaporComponent id="JSONEditor" title="JSON Editor" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">JSON Editor using codemirror</label>

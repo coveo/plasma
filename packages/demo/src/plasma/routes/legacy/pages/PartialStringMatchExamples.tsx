@@ -10,7 +10,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export class PartialStringMatchExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="partial-string-match" title="Partial String Match" withSource>
+            <VaporComponent id="PartialStringMatch" title="Partial String Match" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">PartialStringMatch without match</label>

@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const BannerExamples: React.FunctionComponent = () => (
-    <VaporComponent id="banner" title="Banner" withSource>
+    <VaporComponent id="Banner" title="Banner" withSource>
         <Section level={3} title="Empty banner">
             <BannerContainer />
         </Section>

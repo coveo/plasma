@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const BrowserPreviewExamples: React.FunctionComponent = () => (
-    <VaporComponent id="browser-preview" title="Browser Preview" withSource>
+    <VaporComponent id="BrowserPreview" title="Browser Preview" withSource>
         <Section>
             <Section level={2} title="Browser Preview container">
                 <SplitLayout

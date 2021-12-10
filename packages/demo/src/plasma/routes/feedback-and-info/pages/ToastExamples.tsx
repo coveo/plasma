@@ -12,23 +12,19 @@ import {
     ToastContainerConnected,
     ToastType,
 } from 'react-vapor';
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 
-export const ToastExamples = () => {
-    const markdown = useMarkdown('ToastConnected');
-    return (
-        <VaporComponent id="toast" title="Toast" markdown={markdown} withSource>
-            <Section>
-                <ToastsWithLocalState />
-                <ToastsWithReduxStore />
-            </Section>
-        </VaporComponent>
-    );
-};
+export const ToastExamples = () => (
+    <VaporComponent id="Toast" title="Toast" withSource>
+        <Section>
+            <ToastsWithLocalState />
+            <ToastsWithReduxStore />
+        </Section>
+    </VaporComponent>
+);
 
 const ToastsWithLocalState: React.FunctionComponent = () => {
     const [state, setState] = React.useState({

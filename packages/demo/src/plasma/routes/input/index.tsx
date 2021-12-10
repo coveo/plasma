@@ -14,6 +14,7 @@ import {FilepickerExamples} from './pages/FilepickerExamples';
 import {FilterBoxExamples} from './pages/FilterBoxExamples';
 import {JSONEditorExamples} from './pages/JSONEditorExamples';
 import {MultilineBoxExamples} from './pages/MultilineBoxExamples';
+import {MultiSelectExamples} from './pages/MultiSelectExamples';
 import {NumericInputExamples} from './pages/NumericInputExamples';
 import {RadioButtonExamples} from './pages/RadioButtonExamples';
 import {SearchBarExamples} from './pages/SearchBarExamples';
@@ -40,7 +41,7 @@ export const InputRoutes: React.FunctionComponent = () => (
         <Route path="JSONEditor" element={<JSONEditorExamples />} />
         <Route path="links" element={<div />} />
         <Route path="MultilineBox" element={<MultilineBoxExamples />} />
-        {/* TODO - <Route path="MultiSelect" component={MultiSelectExamples} /> */}
+        <Route path="MultiSelect" element={<MultiSelectExamples />} />
         <Route path="NumericInput" element={<NumericInputExamples />} />
         <Route path="RadioButton" element={<RadioButtonExamples />} />
         <Route path="SearchBar" element={<SearchBarExamples />} />
