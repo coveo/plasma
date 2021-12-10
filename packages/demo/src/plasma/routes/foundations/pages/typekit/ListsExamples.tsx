@@ -4,7 +4,7 @@ import {Section} from 'react-vapor';
 import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
 export const Lists = () => (
-    <VaporComponent id="lists" title="Lists" usage="Apply styles to unordered and ordered lists" withSource>
+    <VaporComponent id="Lists" title="Lists" usage="Apply styles to unordered and ordered lists" withSource>
         <Section level={2} title="List disc">
             <ul className="list-disc body-m-subdued">
                 <li>Disc list item 1</li>

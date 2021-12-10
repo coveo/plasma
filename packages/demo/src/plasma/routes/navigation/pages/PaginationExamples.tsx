@@ -16,7 +16,7 @@ export class PaginationExamples extends React.PureComponent {
             onPerPageClick: (newPerPage) => alert('New per page option selected: ' + newPerPage),
         };
         return (
-            <VaporComponent id="pagination" title="Pagination" withSource>
+            <VaporComponent id="Pagination" title="Pagination" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Pagination</label>

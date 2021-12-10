@@ -43,7 +43,7 @@ class SearchBarExample extends React.Component<React.Attributes, ISearchBarState
 export class SearchBarExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="search-bar" title="Search Bar" withSource>
+            <VaporComponent id="SearchBar" title="Search Bar" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">SearchBar disabled</label>

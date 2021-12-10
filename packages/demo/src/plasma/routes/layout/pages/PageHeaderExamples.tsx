@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const SimpleHeader: React.FunctionComponent = () => (
-    <VaporComponent id="page-header" title="Page Header" withSource>
+    <VaporComponent id="Header" title="Page Header" withSource>
         <Section title="Simple Header">
             <Section level={2} title="Basic header with actions and tabs">
                 <BasicHeader

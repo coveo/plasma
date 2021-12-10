@@ -31,7 +31,7 @@ export class PaginationConnectedExamples extends React.PureComponent {
             loadingIds: navigationConnectedExampleLoadingIds,
         };
         return (
-            <VaporComponent id="pagination-connected" title="Pagination Connected" withSource>
+            <VaporComponent id="PaginationConnected" title="Pagination Connected" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Pagination with Redux state and loading</label>

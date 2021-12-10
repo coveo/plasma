@@ -5,7 +5,7 @@ import {Section, Svg} from 'react-vapor';
 import VaporComponent from '../demo-building-blocs/VaporComponent';
 
 export default () => (
-    <VaporComponent id="general-guidelines" title="General Guidelines">
+    <VaporComponent id="GeneralGuidelines" title="General Guidelines">
         <Section
             level={2}
             title="Content / Number"

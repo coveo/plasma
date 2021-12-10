@@ -16,7 +16,7 @@ const exampleItems = [
 ];
 
 const SubNavigationConnectedExamples: React.FunctionComponent = () => (
-    <VaporComponent id="sub-nav" title="SubNavigation" withSource>
+    <VaporComponent id="SubNavigation" title="SubNavigation" withSource>
         <Section title="Sub Navigation Examples">
             <Section level={2} title="Sub Navigation">
                 <div className="flex" style={{height: '200px'}}>

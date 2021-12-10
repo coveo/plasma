@@ -3,7 +3,7 @@ import * as React from 'react';
 import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
 export const Links = () => (
-    <VaporComponent id="links" title="Links" withSource>
+    <VaporComponent id="Links" title="Links" withSource>
         <p>
             <a className="link" href="https://www.coveo.com/en">
                 Navigating link

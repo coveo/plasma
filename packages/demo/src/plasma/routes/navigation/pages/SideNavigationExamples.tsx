@@ -17,7 +17,7 @@ export const SideNavigationExample: React.FunctionComponent = () => {
     const [isExpanded, setIsExpanded] = React.useState(true);
 
     return (
-        <VaporComponent id="side-nav" title="Sidebar Navigation" withSource>
+        <VaporComponent id="SideNavigation" title="Sidebar Navigation" withSource>
             <Form>
                 <Section level={2} title="Side Navigation">
                     <SideNavigation>

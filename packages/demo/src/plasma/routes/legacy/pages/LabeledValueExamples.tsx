@@ -6,7 +6,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const LabeledValueExamples = () => (
-    <VaporComponent id="labeled-value" title="Labeled Value" withSource>
+    <VaporComponent id="LabeledValue" title="Labeled Value" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Two Simple Labeled Values</label>

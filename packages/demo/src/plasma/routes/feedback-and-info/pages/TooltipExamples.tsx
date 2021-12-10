@@ -2,82 +2,77 @@ import moment from 'moment';
 import * as React from 'react';
 import {DateTooltip, Tooltip} from 'react-vapor';
 
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 
-export const TooltipExamples: React.FunctionComponent = () => {
-    const markdown = useMarkdown('Tooltip');
-    return (
-        <VaporComponent
-            id="tooltip"
-            title="Tooltip"
-            usage="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
-            markdown={markdown}
-            withSource
-        >
-            <div className="mt2">
-                <div className="form-group">
-                    <label className="form-control-label">Tooltip example</label>
-                    <div className="form-control">
-                        <Tooltip title="I am a tooltip!" placement="right">
-                            <button type="button" className="btn">
-                                Hover me!
-                            </button>
-                        </Tooltip>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Tooltip example with a footer</label>
-                    <div className="form-control">
-                        <Tooltip title="I am a tooltip!" footer="I have a footer" placement="right">
-                            <button type="button" className="btn">
-                                Hover me!
-                            </button>
-                        </Tooltip>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Tooltip with top with the container body</label>
-                    <div className="form-control">
-                        <Tooltip title="I am a tooltip!">
-                            <button type="button" className="btn">
-                                Hover me!
-                            </button>
-                        </Tooltip>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">No Tooltip if the title is an empty string</label>
-                    <div className="form-control">
-                        <Tooltip title="">
-                            <button type="button" className="btn">
-                                Hover me!
-                            </button>
-                        </Tooltip>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Time Tooltip example</label>
-                    <div className="form-control">
+export const TooltipExamples: React.FunctionComponent = () => (
+    <VaporComponent
+        id="Tooltip"
+        title="Tooltip"
+        usage="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
+        withSource
+    >
+        <div className="mt2">
+            <div className="form-group">
+                <label className="form-control-label">Tooltip example</label>
+                <div className="form-control">
+                    <Tooltip title="I am a tooltip!" placement="right">
                         <button type="button" className="btn">
-                            <DateTooltip
-                                date={moment('2019-12-16')}
-                                format={(currentDate: moment.Moment) => currentDate.calendar()}
-                            />
+                            Hover me!
                         </button>
-                    </div>
-                </div>
-                <div className="form-group">
-                    <label className="form-control-label">Time Tooltip with custom formating example</label>
-                    <div className="form-control">
-                        <button type="button" className="btn">
-                            <DateTooltip date={moment()} format="LLL" tooltipFormat="ddd, hA" />
-                        </button>
-                    </div>
+                    </Tooltip>
                 </div>
             </div>
-        </VaporComponent>
-    );
-};
+            <div className="form-group">
+                <label className="form-control-label">Tooltip example with a footer</label>
+                <div className="form-control">
+                    <Tooltip title="I am a tooltip!" footer="I have a footer" placement="right">
+                        <button type="button" className="btn">
+                            Hover me!
+                        </button>
+                    </Tooltip>
+                </div>
+            </div>
+            <div className="form-group">
+                <label className="form-control-label">Tooltip with top with the container body</label>
+                <div className="form-control">
+                    <Tooltip title="I am a tooltip!">
+                        <button type="button" className="btn">
+                            Hover me!
+                        </button>
+                    </Tooltip>
+                </div>
+            </div>
+            <div className="form-group">
+                <label className="form-control-label">No Tooltip if the title is an empty string</label>
+                <div className="form-control">
+                    <Tooltip title="">
+                        <button type="button" className="btn">
+                            Hover me!
+                        </button>
+                    </Tooltip>
+                </div>
+            </div>
+            <div className="form-group">
+                <label className="form-control-label">Time Tooltip example</label>
+                <div className="form-control">
+                    <button type="button" className="btn">
+                        <DateTooltip
+                            date={moment('2019-12-16')}
+                            format={(currentDate: moment.Moment) => currentDate.calendar()}
+                        />
+                    </button>
+                </div>
+            </div>
+            <div className="form-group">
+                <label className="form-control-label">Time Tooltip with custom formating example</label>
+                <div className="form-control">
+                    <button type="button" className="btn">
+                        <DateTooltip date={moment()} format="LLL" tooltipFormat="ddd, hA" />
+                    </button>
+                </div>
+            </div>
+        </div>
+    </VaporComponent>
+);

@@ -30,7 +30,7 @@ const description =
 
 // start-print
 export const ModalWindowExamples: ExampleComponent = () => (
-    <VaporComponent id="modal-window" title="Modal Window" usage={description} withSource>
+    <VaporComponent id="ModalComposite" title="Modal Window" usage={description} withSource>
         <Section>
             <ModalCompositeExampleConnected />
             <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />

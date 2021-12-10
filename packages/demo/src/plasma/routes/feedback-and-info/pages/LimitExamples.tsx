@@ -12,7 +12,7 @@ const customLimitTitle = 'Throttling limit';
 
 // start-print
 export const LimitExamples: React.FunctionComponent = () => (
-    <VaporComponent id="limit" title="Limit Card" withSource>
+    <VaporComponent id="Limit" title="Limit Card" withSource>
         <div className="coveo-form">
             <div className="form-group">
                 <label className="form-control-label">A limit card with an usage value</label>

@@ -13,7 +13,7 @@ const logColorPicked = debounce((colorPicked: any) => {
 // start-print
 
 export const ColorPickerExamples = () => (
-    <VaporComponent id="color-picker" title="Color Picker" withSource>
+    <VaporComponent id="ColorPicker" title="Color Picker" withSource>
         <div className="mt2">
             <h2 className="mb2">
                 Built using <a href="https://github.com/casesandberg/react-color/">React Color</a>

@@ -132,7 +132,7 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
     }, []);
 
     return (
-        <VaporComponent id="table-hoc-server" title="Table HOC Server" withSource>
+        <VaporComponent id="TableHOCSever" title="Table HOC Server" withSource>
             <Section title="Server table with numbered rows">
                 <span className="block my2">
                     Please note that the backend service doesn't support dates but we still make a request for every

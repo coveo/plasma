@@ -28,23 +28,19 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../../utils/ExamplesUtils';
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {IReactVaporExampleState} from '../../../../Reducers';
 import {PhotoItem, PhotoProps, usePhotosAPIMock} from '../../../utils/ServerSideSelectExampleUtils';
 
 // start-print
-export const SingleSelectExample: ExampleComponent = () => {
-    const markdown = useMarkdown('SingleSelect');
-    return (
-        <VaporComponent id="single-select" title="Single Select" markdown={markdown} withSource>
-            <Section>
-                <SingleSelectConnectedExamples />
-                <ServerSideSingleSelectExample id="ServerSideSingleSelect" />
-            </Section>
-        </VaporComponent>
-    );
-};
+export const SingleSelectExample: ExampleComponent = () => (
+    <VaporComponent id="SingleSelect" title="Single Select" withSource>
+        <Section>
+            <SingleSelectConnectedExamples />
+            <ServerSideSingleSelectExample id="ServerSideSingleSelect" />
+        </Section>
+    </VaporComponent>
+);
 
 SingleSelectExample.description =
     'A Single Select component allows users to choose a single option from a list or, if relevant, to create and select their own custom option.';

@@ -11,7 +11,6 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../../utils/ExamplesUtils';
-import {useMarkdown} from '../../../../demo-building-blocs/useMarkdown';
 import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 import {
     CALENDAR_ADVANCED_SELECTION_RULES,
@@ -21,19 +20,16 @@ import {
     SELECTION_BOXES,
 } from '../../../utils/DatePickerExamplesCommon';
 
-export const DatePickerExamples: ExampleComponent = () => {
-    const markdown = useMarkdown('ChildForm');
-    return (
-        <VaporComponent id="datepicker" title="Date Picker" markdown={markdown} withSource>
-            <Section>
-                <CalendarComponent />
-                <CountdownComponent />
-                <DatePickerComponents />
-                <DatesSelectionComponent />
-            </Section>
-        </VaporComponent>
-    );
-};
+export const DatePickerExamples: ExampleComponent = () => (
+    <VaporComponent id="DatePicker" title="Date Picker" withSource>
+        <Section>
+            <CalendarComponent />
+            <CountdownComponent />
+            <DatePickerComponents />
+            <DatesSelectionComponent />
+        </Section>
+    </VaporComponent>
+);
 DatePickerExamples.title = 'DatePicker';
 
 // start-print

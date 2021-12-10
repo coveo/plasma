@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const InfoBoxExamples: React.FunctionComponent = () => (
-    <VaporComponent id="info-box" title="Info Box" withSource>
+    <VaporComponent id="InfoBox" title="Info Box" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Empty InfoBox</label>

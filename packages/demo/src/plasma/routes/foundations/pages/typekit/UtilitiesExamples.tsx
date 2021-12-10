@@ -4,7 +4,7 @@ import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 
 export const Utilities = () => (
     <VaporComponent
-        id="utilities"
+        id="TextUtilities"
         title="Utilities"
         usage="Change typographic weights, styles, and alignment with these utility classes."
         withSource

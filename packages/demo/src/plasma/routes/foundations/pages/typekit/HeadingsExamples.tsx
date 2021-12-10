@@ -5,7 +5,7 @@ import VaporComponent from '../../../../../demo-building-blocs/VaporComponent';
 // start-print
 export const Headings = () => (
     <VaporComponent
-        id="headings"
+        id="Headings"
         title="Headings"
         usage="All HTML headings, `h1` through `h6`, are available."
         withSource

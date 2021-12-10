@@ -7,7 +7,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 export class ToastContentExample extends React.Component {
     render() {
         return (
-            <VaporComponent id="toast-content" title="Toast Content" withSource>
+            <VaporComponent id="ToastContent" title="Toast Content" withSource>
                 <ul>
                     <li style={{marginBottom: '5px'}}>
                         <a href="#">Some Link</a>

@@ -7,7 +7,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 export const IconsList = () => (
     <VaporComponent
-        id="list"
+        id="IconsList"
         title="Icons list"
         usage={
             <p>

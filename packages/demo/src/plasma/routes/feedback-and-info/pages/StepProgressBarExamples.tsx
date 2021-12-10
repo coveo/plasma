@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const StepProgressBarExamples = () => (
-    <VaporComponent id="step-progress-bar" title="Step Progress Bar" withSource>
+    <VaporComponent id="StepProgressBar" title="Step Progress Bar" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Step Progress Bar 3 steps (initial step)</label>

@@ -9,12 +9,7 @@ export default () => {
     const [width, setWidth] = useState(40);
     const setRandomWidth = () => setWidth(Math.floor(Math.random() * Math.floor(100)));
     return (
-        <VaporComponent
-            id="progress-bar"
-            title="Progress bar"
-            usage="Show a progression between 0 and 100%."
-            withSource
-        >
+        <VaporComponent id="ProgressBar" title="Progress bar" usage="Show a progression between 0 and 100%." withSource>
             <div className="progress-bar-example-container" style={{backgroundColor: '#333357'}}>
                 <div className="progress-bar" style={{width: 400}}>
                     <div className="progress">

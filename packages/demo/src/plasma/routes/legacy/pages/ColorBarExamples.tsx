@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const ColorBarExamples = () => (
-    <VaporComponent id="color-bar" title="Color Bar" withSource>
+    <VaporComponent id="ColorBar" title="Color Bar" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">ColorBar with one color full</label>

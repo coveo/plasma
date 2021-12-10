@@ -5,7 +5,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 
 // start-print
 export const BadgeExamples: React.FunctionComponent = () => (
-    <VaporComponent id="badge" title="Badge" withSource>
+    <VaporComponent id="Badge" title="Badge" withSource>
         <Section>
             <Section level={2} title="Default size">
                 <Badge label="Default" />

@@ -50,7 +50,7 @@ export const ActionBarExamples: React.FunctionComponent = () => {
     ];
 
     return (
-        <VaporComponent id="action-bar" title="Action Bar" usage="Different uses of the Action Bar" withSource>
+        <VaporComponent id="ActionBar" title="Action Bar" usage="Different uses of the Action Bar" withSource>
             <Section level={1} title="ActionBar examples">
                 <Section level={2} title="Action bar without actions">
                     <ActionBar />

@@ -34,7 +34,7 @@ import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
 // start-print
 
 export const InputExamples: ExampleComponent = () => (
-    <VaporComponent id="input" title="Inputs (legacy)" usage="Use TextInput instead" withSource>
+    <VaporComponent id="Input" title="Inputs (legacy)" usage="Use TextInput instead" withSource>
         <Section title="Inputs Examples">
             <SimpleInputDisconnected />
             <InputsConnected />

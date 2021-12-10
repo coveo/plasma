@@ -14,7 +14,7 @@ const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing eli
 
 // start-print
 export const ToastConnectedExamples: React.FunctionComponent<IToastConnectedExamplesProps> = ({addToast}) => (
-    <VaporComponent id="toast-connected" title="Toast Connected" withSource>
+    <VaporComponent id="ToastConnected" title="Toast Connected" withSource>
         <Section>
             <div className="flex flex-wrap">
                 <button
