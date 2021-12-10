@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.5.0](https://github.com/coveo/react-vapor/compare/v30.4.0...v30.5.0) (2021-12-10)
+
+
+### Performance Improvements
+
+* **jest:** change config of Jest to make uts run faster ([80b16b9](https://github.com/coveo/react-vapor/commit/80b16b9f27335b5ffeded164e568c0affff43a45))
+* **jest:** remove the clearCache for local run also ([e72d61d](https://github.com/coveo/react-vapor/commit/e72d61d4c554a0b8cf0286b932ffb08bc841d3aa))
+* **jest:** trying with 2 workers to see the differentce ([29656b5](https://github.com/coveo/react-vapor/commit/29656b5895ca3c5f05446675fe853812c96743c8))
+
+
+
+
+
 # [30.4.0](https://github.com/coveo/react-vapor/compare/v30.3.4...v30.4.0) (2021-12-08)
 
 

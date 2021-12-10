@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.5.0](https://github.com/coveo/react-vapor/compare/v30.4.0...v30.5.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **lightbox:** respect new coveo styling on hover ([39dd995](https://github.com/coveo/react-vapor/commit/39dd995d73d4c59db7547e1c600363a4ca17011d))
+
+
+
+
+
 # [30.4.0](https://github.com/coveo/react-vapor/compare/v30.3.4...v30.4.0) (2021-12-08)
 
 

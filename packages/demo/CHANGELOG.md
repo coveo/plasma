@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.5.0](https://github.com/coveo/react-vapor/compare/v30.4.0...v30.5.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **demo:** remove extraneous padding of the usage tab ([9f136bc](https://github.com/coveo/react-vapor/commit/9f136bc1e0a129dbcda02277552c2fea314d55b5))
+
+
+### Features
+
+* **demo:** implement add & edit guidelines features ([95c05c1](https://github.com/coveo/react-vapor/commit/95c05c14dc7f96c4ba93eec0d4ea16388a5518e3))
+
+
+
+
+
 # [30.4.0](https://github.com/coveo/react-vapor/compare/v30.3.4...v30.4.0) (2021-12-08)
 
 **Note:** Version bump only for package react-vapor-demo

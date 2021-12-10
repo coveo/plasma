@@ -3,6 +3,35 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.5.0](https://github.com/coveo/react-vapor/compare/v30.4.0...v30.5.0) (2021-12-10)
+
+
+### Bug Fixes
+
+* **demo:** remove extraneous padding of the usage tab ([9f136bc](https://github.com/coveo/react-vapor/commit/9f136bc1e0a129dbcda02277552c2fea314d55b5))
+* **lightbox:** respect new coveo styling on hover ([39dd995](https://github.com/coveo/react-vapor/commit/39dd995d73d4c59db7547e1c600363a4ca17011d))
+
+
+### Features
+
+* **demo:** implement add & edit guidelines features ([95c05c1](https://github.com/coveo/react-vapor/commit/95c05c14dc7f96c4ba93eec0d4ea16388a5518e3))
+
+
+### Performance Improvements
+
+* **jest:** change config of Jest to make uts run faster ([80b16b9](https://github.com/coveo/react-vapor/commit/80b16b9f27335b5ffeded164e568c0affff43a45))
+* **jest:** remove the clearCache for local run also ([e72d61d](https://github.com/coveo/react-vapor/commit/e72d61d4c554a0b8cf0286b932ffb08bc841d3aa))
+* **jest:** trying with 2 workers to see the differentce ([29656b5](https://github.com/coveo/react-vapor/commit/29656b5895ca3c5f05446675fe853812c96743c8))
+
+
+### Reverts
+
+* **deps:** revert to previous aws-sdk version ([4d6fb5c](https://github.com/coveo/react-vapor/commit/4d6fb5c12018dc1c294564a5b109e605cda3c0c0))
+
+
+
+
+
 # [30.4.0](https://github.com/coveo/react-vapor/compare/v30.3.4...v30.4.0) (2021-12-08)
 
 
