@@ -1,9 +1,10 @@
 import * as React from 'react';
 import Markdown from 'react-markdown';
 import {BasicHeader, LinkSvg, TabContent, TabPaneConnected} from 'react-vapor';
+import remarkGfm from 'remark-gfm';
 
 import Code from './Code';
-import {Guidelines} from './Guidelines';
+import {Guidelines, MarkdownOverrides} from './Guidelines';
 import {useCodeExample} from './useCodeExample';
 
 interface VaporComponentProps {
@@ -47,7 +48,9 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                 <TabPaneConnected id="guide" groupId="page">
                     {Guidelines.exists(id) ? (
                         <>
-                            <Markdown className="markdown-documentation" source={Guidelines.get(id)} />
+                            <Markdown remarkPlugins={[remarkGfm]} components={MarkdownOverrides}>
+                                {Guidelines.get(id)}
+                            </Markdown>
                             <LinkSvg
                                 url={`https://github.com/coveo/react-vapor/edit/master/packages/demo/docs/${id}.md`}
                                 svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
