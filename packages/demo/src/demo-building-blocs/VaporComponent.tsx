@@ -1,6 +1,6 @@
 import * as React from 'react';
 import Markdown from 'react-markdown';
-import {BasicHeader, Form, LinkSvg, TabContent, TabPaneConnected} from 'react-vapor';
+import {BasicHeader, LinkSvg, TabContent, TabPaneConnected} from 'react-vapor';
 
 import Code from './Code';
 import {Guidelines} from './Guidelines';
@@ -35,16 +35,14 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
             />
             <TabContent className="mod-header-padding mod-form-top-bottom-padding">
                 <TabPaneConnected id="usage" groupId="page">
-                    <Form className="mod-header-padding mod-form-top-bottom-padding">
-                        <div>{children}</div>
-                        <div>
-                            {withSource && (
-                                <div className="mt2">
-                                    <Code language="tsx">{code}</Code>
-                                </div>
-                            )}
-                        </div>
-                    </Form>
+                    <div>{children}</div>
+                    <div>
+                        {withSource && (
+                            <div className="mt2">
+                                <Code language="tsx">{code}</Code>
+                            </div>
+                        )}
+                    </div>
                 </TabPaneConnected>
                 <TabPaneConnected id="guide" groupId="page">
                     {Guidelines.exists(id) ? (
