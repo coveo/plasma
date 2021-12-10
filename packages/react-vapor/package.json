@@ -135,7 +135,7 @@
         "redux-thunk": "2.4.1",
         "rimraf": "3.0.2",
         "snyk": "1.787.0",
-        "ts-jest": "27.0.7",
+        "ts-jest": "27.1.1",
         "tslib": "1.14.1",
         "typescript": "3.8.3",
         "underscore": "1.13.1",
