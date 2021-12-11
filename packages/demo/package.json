@@ -22,7 +22,7 @@
     },
     "dependencies": {
         "classnames": "2.3.1",
-        "codemirror": "5.63.3",
+        "codemirror": "5.64.0",
         "coveo-styleguide": "^30.5.1",
         "d3": "3.5.17",
         "faker": "4.1.0",
