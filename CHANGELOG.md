@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.6.0](https://github.com/coveo/react-vapor/compare/v30.5.3...v30.6.0) (2021-12-13)
+
+
+### Features
+
+* **demo:** make markdown generate prettier guidelines ([bd879c7](https://github.com/coveo/react-vapor/commit/bd879c78b5371548dd25520a4462e5232c68f284))
+
+
+
+
+
 ## [30.5.3](https://github.com/coveo/react-vapor/compare/v30.5.2...v30.5.3) (2021-12-13)
 
 **Note:** Version bump only for package root

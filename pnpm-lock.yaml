@@ -70,7 +70,7 @@ importers:
       codemirror: 5.63.3
       concurrently: 6.4.0
       copy-webpack-plugin: 6.4.1
-      coveo-styleguide: ^30.5.3
+      coveo-styleguide: ^30.6.0
       css-loader: 3.6.0
       d3: 3.5.17
       faker: 4.1.0
@@ -90,7 +90,7 @@ importers:
       react-router: 6.0.2
       react-router-dom: 6.0.2
       react-syntax-highlighter: 15.4.5
-      react-vapor: ^30.5.3
+      react-vapor: ^30.6.0
       redux: 4.1.2
       redux-devtools-extension: 2.13.9
       redux-promise-middleware: 6.1.2
@@ -211,7 +211,7 @@ importers:
       classnames: 2.3.1
       codecov: 3.8.2
       codemirror: 5.63.3
-      coveo-styleguide: ^30.5.3
+      coveo-styleguide: ^30.6.0
       d3: 3.5.17
       del: 5.1.0
       dnd-core: 2.6.0
@@ -7613,18 +7613,6 @@ packages:
         optional: true
     dev: true
 
-  /follow-redirects/1.14.5_debug@4.3.2:
-    resolution: {integrity: sha512-wtphSXy7d4/OR+MvIFbCVBDzZ5520qV8XfPklSN5QtxuMUJZ+b0Wnst1e1lCDocfzuCkHqj8k0FpZqO+UIaKNA==}
-    engines: {node: '>=4.0'}
-    peerDependencies:
-      debug: '*'
-    peerDependenciesMeta:
-      debug:
-        optional: true
-    dependencies:
-      debug: 4.3.2_supports-color@6.1.0
-    dev: true
-
   /for-in/1.0.2:
     resolution: {integrity: sha1-gQaNKVqBQuwKxybG4iAMMPttXoA=}
     engines: {node: '>=0.10.0'}
@@ -8768,7 +8756,7 @@ packages:
     engines: {node: '>=8.0.0'}
     dependencies:
       eventemitter3: 4.0.7
-      follow-redirects: 1.14.5_debug@4.3.2
+      follow-redirects: 1.14.5
       requires-port: 1.0.0
     transitivePeerDependencies:
       - debug
