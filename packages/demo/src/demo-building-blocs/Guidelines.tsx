@@ -18,42 +18,39 @@ export const Guidelines = {
     get: (fileName: string): string => MarkdownFiles.get(fileName),
 };
 
-const Table: Components['table'] = ({children}) => React.createElement('table', {className: 'table my2'}, children);
+const Table: Components['table'] = ({children}) => <table className="table my2">{children}</table>;
 
-const OrderedList: Components['ol'] = ({children}) => React.createElement('ol', {className: 'list-decimal'}, children);
+const OrderedList: Components['ol'] = ({children}) => <ol className="list-decimal">{children}</ol>;
 
-const UnorderedList: Components['ul'] = ({children}) => React.createElement('ul', {className: 'list-disc'}, children);
+const UnorderedList: Components['ul'] = ({children}) => <ul className="list-disc">{children}</ul>;
 
-const Emphasis: Components['em'] = ({children}) =>
-    React.createElement('em', {className: 'body-m-book-italic'}, children);
+const Emphasis: Components['em'] = ({children}) => <em className="body-m-book-italic">{children}</em>;
 
-const Strong: Components['strong'] = ({children}) => React.createElement('strong', {className: 'body-m'}, children);
+const Strong: Components['strong'] = ({children}) => <strong className="body-m">{children}</strong>;
 
-const Link: Components['a'] = ({title, children, ...props}) =>
-    React.createElement(
-        Tooltip,
-        {
-            title: title || '',
-        },
-        React.createElement(
-            'a',
-            {
-                ...props,
-                // if the link is relative don't open in a new tab
-                target: props.href && props.href.match(/^http/) ? '_blank' : '',
-                rel: 'noopener noreferrer',
-                className: 'link',
-            },
-            children
-        )
-    );
+const Link: Components['a'] = ({title, href, children, ...props}) => (
+    <Tooltip title={title || ''}>
+        <a target={href && href.match(/^http/) ? '_blank' : ''} className="link" {...props}>
+            {children}
+        </a>
+    </Tooltip>
+);
 
 const Heading: Components['h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => {
     if (level < 4) {
-        return React.createElement(`h${level + 3}`, {...props, className: 'mb1'}, children);
-    } else {
-        return React.createElement('div', {...props, className: 'body-m mb1'}, children);
+        const Hx = `h${level + 3}` as 'h4' | 'h5' | 'h6';
+        return (
+            <Hx {...props} className="mb1">
+                {children}
+            </Hx>
+        );
     }
+
+    return (
+        <div {...props} className="body-m mb1">
+            {children}
+        </div>
+    );
 };
 
 export const MarkdownOverrides: Components = {
