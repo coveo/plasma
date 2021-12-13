@@ -137,11 +137,17 @@
                 background-color: var(--white);
             }
         }
+
+        &.row-disabled {
+            td {
+                color: var(--grey-60);
+            }
+        }
     }
 
     td {
         padding: $table-row-top-bottom-padding $table-cell-left-right-padding;
-        color: var(--title-text-color);
+        color: var(--grey-100);
         text-align: left;
 
         &:not(.mod-no-border-bottom) {
@@ -299,14 +305,5 @@ $row-style: (
                 fill: $color;
             }
         }
-    }
-}
-.row-disabled {
-    color: var(--deprecated-dark-medium-grey);
-    > td:first-child {
-        border-left-color: var(--deprecated-dark-medium-grey);
-    }
-    svg {
-        fill: var(--deprecated-dark-medium-grey);
     }
 }
