@@ -70,7 +70,7 @@ pipeline {
         script {
           setLastStageName();
 
-          MASTER_RELEASE_FAILURE_CHANNELS = ["admin-ui-builds", "cloudadmindev", "admin-ui-guild"]
+          MASTER_RELEASE_FAILURE_CHANNELS = ["admin-ui-builds", "cloudadmindev"]
           PR_CHANNELS = ["admin-ui-builds"]
           NEW_VERSION = ""
           SCOPE = ""
