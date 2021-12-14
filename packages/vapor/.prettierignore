@@ -4,5 +4,4 @@ tmp/*
 lib/*
 CHANGELOG.md
 scss/sprites.scss
-package-lock.json
 .ultra.cache.json
