@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [30.6.1](https://github.com/coveo/react-vapor/compare/v30.6.0...v30.6.1) (2021-12-14)
+
+
+### Bug Fixes
+
+* **table:** make disabled table rows appear greyed out ([57ce435](https://github.com/coveo/react-vapor/commit/57ce435ccaf9bc2aeff0785cf8a36552bcdcd39e))
+
+
+
+
+
 # [30.6.0](https://github.com/coveo/react-vapor/compare/v30.5.3...v30.6.0) (2021-12-13)
 
 

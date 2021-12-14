@@ -1,6 +1,6 @@
 {
     "name": "@coveord/design-tokens",
-    "version": "30.6.0",
+    "version": "30.6.1",
     "description": "Design tokens of the Vapor Design System",
     "repository": {
         "type": "git",
