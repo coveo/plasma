@@ -96,6 +96,16 @@
     letter-spacing: 0.003em;
 }
 
+%code {
+    padding: 0.25em;
+    color: #626971;
+    font-family: PTMono-Regular, monospace;
+    overflow-wrap: break-word;
+    background-color: #f6f7f9;
+    border: 1px solid #e5e8e8;
+    border-radius: 3px;
+}
+
 .hero {
     @extend %hero;
     @extend %medium;
@@ -384,4 +394,11 @@ p,
     @extend %caption;
     @extend %book;
     @extend %subdued;
+}
+
+code,
+.code {
+    @extend %body-s;
+    @extend %book;
+    @extend %code;
 }
