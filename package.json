@@ -1,6 +1,18 @@
 {
     "name": "root",
     "private": true,
+    "scripts": {
+        "preinstall": "npx only-allow pnpm",
+        "setup": "pnpm install",
+        "start": "pnpm build --stream --filter coveo-styleguide && pnpm -r start --parallel --filter coveo-styleguide --filter react-vapor-demo",
+        "test": "pnpm -r test --parallel",
+        "test:ci": "pnpm -r test:ci --parallel",
+        "clean": "pnpm -r clean --parallel",
+        "build": "ultra --recursive build",
+        "lintfix": "pnpm -r lintfix --parallel",
+        "commit-cli": "cz",
+        "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
+    },
     "devDependencies": {
         "@commitlint/cli": "15.0.0",
         "@commitlint/config-conventional": "15.0.0",
@@ -16,6 +28,7 @@
         "prettier": "2.0.5",
         "stylelint": "13.13.1",
         "tsjs": "3.0.2",
+        "ultra-runner": "3.10.5",
         "underscore": "1.13.1",
         "walkdir": "0.4.1"
     },
@@ -37,18 +50,6 @@
         "IE 11",
         "not dead"
     ],
-    "scripts": {
-        "preinstall": "npx only-allow pnpm",
-        "setup": "pnpm install",
-        "start": "pnpm build --stream --filter coveo-styleguide && pnpm -r start --parallel --filter coveo-styleguide --filter react-vapor-demo",
-        "test": "pnpm -r test --parallel",
-        "test:ci": "pnpm -r test:ci --parallel",
-        "clean": "pnpm -r clean --parallel",
-        "build": "pnpm -r build --stream",
-        "lintfix": "pnpm -r lintfix --parallel",
-        "commit-cli": "cz",
-        "reconstruct": "npx rimraf node_modules packages/*/node_modules && npm run setup && echo done"
-    },
     "config": {
         "commitizen": {
             "path": "cz-conventional-changelog"

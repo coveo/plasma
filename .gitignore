@@ -30,3 +30,6 @@ travis-deploy-key
 **/tmp
 **/.rollup.cache
 **/*.tsbuildinfo
+
+# cache
+.ultra.cache.json

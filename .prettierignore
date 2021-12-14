@@ -2,3 +2,4 @@ node_modules/*
 .github
 CHANGELOG.md
 package-lock.json
+.ultra.cache.json

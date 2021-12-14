@@ -3,3 +3,4 @@ built/*
 node_modules/*
 CHANGELOG.md
 package-lock.json
+.ultra.cache.json

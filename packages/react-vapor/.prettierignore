@@ -3,3 +3,4 @@ dist/*
 coverage/*
 CHANGELOG.md
 package-lock.json
+.ultra.cache.json
