@@ -97,12 +97,12 @@
 }
 
 %code {
-    padding: 0.25em;
-    color: #626971;
-    font-family: PTMono-Regular, monospace;
+    padding: 0 0.25em;
+    color: var(--grey-80);
+    font-family: $code-font-family;
     overflow-wrap: break-word;
-    background-color: #f6f7f9;
-    border: 1px solid #e5e8e8;
+    background-color: var(--grey-20);
+    border: 1px solid var(--grey-40);
     border-radius: 3px;
 }
 
