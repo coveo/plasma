@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.7.0](https://github.com/coveo/react-vapor/compare/v30.6.2...v30.7.0) (2021-12-15)
+
+**Note:** Version bump only for package @coveord/design-tokens
+
+
+
+
+
 ## [30.6.2](https://github.com/coveo/react-vapor/compare/v30.6.1...v30.6.2) (2021-12-14)
 
 **Note:** Version bump only for package @coveord/design-tokens

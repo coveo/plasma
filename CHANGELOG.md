@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [30.7.0](https://github.com/coveo/react-vapor/compare/v30.6.2...v30.7.0) (2021-12-15)
+
+
+### Features
+
+* **typekit:** added code class ([32c1abe](https://github.com/coveo/react-vapor/commit/32c1abe0c1ec0b043db20cfc67bd314960c35896))
+* **typekit:** only class ([2fe0bd5](https://github.com/coveo/react-vapor/commit/2fe0bd5bfc4b83b11bc64548e1d3568699a3b8d7))
+* **typekit:** using variables ([51cab62](https://github.com/coveo/react-vapor/commit/51cab6261deff5cce136b023b8f2d4c5c27ea4a9))
+
+
+
+
+
 ## [30.6.2](https://github.com/coveo/react-vapor/compare/v30.6.1...v30.6.2) (2021-12-14)
 
 **Note:** Version bump only for package root
