@@ -40,5 +40,7 @@ export const Utilities = () => (
         </p>
 
         <p className="smaller">Text that has 80% of its parent size</p>
+
+        <p className="code">Text that is code</p>
     </VaporComponent>
 );
