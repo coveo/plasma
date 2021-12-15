@@ -45,7 +45,7 @@ export const Title: React.FunctionComponent<ITitleProps> = (props) => {
 
     return (
         <div className="flex flex-center full-content-x" onMouseEnter={detection}>
-            <h4 ref={ref} className={titleClasses} id={props.htmlId}>
+            <h4 data-test={'titleComponent'} ref={ref} className={titleClasses} id={props.htmlId}>
                 <span className={prefixClasses}>{props.prefix}</span>
                 {title}
             </h4>

@@ -16,10 +16,15 @@ import {InputRoutes} from './plasma/routes/input';
 import {LayoutRoutes} from './plasma/routes/layout';
 import {NotIncludedRoutes} from './plasma/routes/legacy';
 import {NavigationRoutes} from './plasma/routes/navigation';
+import {SearchBox} from './searchBar/SearchBox';
+import {EngineProvider} from './searchBar/engine/EngineProvider';
 
 const Header = () => (
     <div id="header" className="flex flex-center space-between demo-header">
         <img src={logo} className="header-logo" />
+        <EngineProvider>
+            <SearchBox id="patateKing" />
+        </EngineProvider>
     </div>
 );
 
