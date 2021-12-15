@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.0.0](https://github.com/coveo/react-vapor/compare/v30.7.0...v31.0.0) (2021-12-15)
+
+
+### Bug Fixes
+
+* **icons:** remove deprecated open text icon ([95bfa8f](https://github.com/coveo/react-vapor/commit/95bfa8f49eda213b419e5dd00b3b7cda61f71b83))
+
+
+### BREAKING CHANGES
+
+* **icons:** removed deprecated open text icon
+
+
+
+
+
 # [30.7.0](https://github.com/coveo/react-vapor/compare/v30.6.2...v30.7.0) (2021-12-15)
 
 **Note:** Version bump only for package react-vapor

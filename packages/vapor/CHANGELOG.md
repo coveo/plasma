@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.0.0](https://github.com/coveo/react-vapor/compare/v30.7.0...v31.0.0) (2021-12-15)
+
+
+### Bug Fixes
+
+* **icons:** remove deprecated OTCS svg icon ([6470b5b](https://github.com/coveo/react-vapor/commit/6470b5b3e6db04e615a8d4818dec841dd98b09f6))
+
+
+### BREAKING CHANGES
+
+* **icons:** removed deprecated OTCS svg icon
+
+
+
+
+
 # [30.7.0](https://github.com/coveo/react-vapor/compare/v30.6.2...v30.7.0) (2021-12-15)
 
 
