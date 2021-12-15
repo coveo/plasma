@@ -57,8 +57,8 @@ export const IconCardExamples: React.FunctionComponent = () => (
                 <Section level={3} title="Disbled">
                     <IconCard
                         small
-                        title="OpenText Content Server"
-                        svgName="sourceOpentext"
+                        title="Web"
+                        svgName="sourceWeb"
                         disabled
                         badges={[{icon: 'lock', extraClasses: ['mod-small']}]}
                         tooltip={{title: 'This source is not included in your license'}}

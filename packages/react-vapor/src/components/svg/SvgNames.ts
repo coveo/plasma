@@ -379,7 +379,6 @@ export const SVG_NAMES = {
     sourceMicrosoftdynamics: 'sourceMicrosoftdynamics',
     sourceNotes: 'sourceNotes',
     sourceOneDrive: 'sourceOneDrive',
-    sourceOpentext: 'sourceOpentext',
     sourceOracleKnowledge: 'sourceOracleKnowledge',
     sourceOracleUcm: 'sourceOracleUcm',
     sourceOutlook: 'sourceOutlook',
