@@ -71,7 +71,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
         mapStateToProps,
         mapDispatchToProps
         // @ts-ignore
-    )(WrappedComponentDisconnected);
+    )(WrappedComponentDisconnected as any);
 }
 
 const getQuery = (state: IReactVaporState, tableId: string): string => {
