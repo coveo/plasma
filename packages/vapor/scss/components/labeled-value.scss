@@ -14,7 +14,7 @@
 
     .label {
         padding: 5px 0px 5px 5px;
-        font-size: var(--small-font-size);
+        font-size: $form-control-label-font-size;
     }
 
     .value {
