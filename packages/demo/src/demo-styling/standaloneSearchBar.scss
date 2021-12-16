@@ -1,0 +1,21 @@
+// variables
+$white: hsla(0, 0%, 100%, 1);
+$digitale-blue-60: hsla(214, 85%, 50%, 1);
+$digitale-blue-80: hsla(218, 74%, 39%, 1);
+$digitale-blue-100: hsla(218, 90%, 23%, 1);
+$button-border-width: 1px;
+
+.standaloneSearchBar {
+    .search-bar {
+        min-width: 648px;
+        min-height: 48px;
+        background-color: var(--white);
+
+        border: $button-border-width solid transparent;
+        border-radius: 8px 0px 0px 8px;
+
+        &:focus {
+            border: $button-border-width solid $digitale-blue-60;
+        }
+    }
+}

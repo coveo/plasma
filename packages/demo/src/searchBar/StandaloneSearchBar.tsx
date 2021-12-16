@@ -1,8 +1,9 @@
+import '@demo-styling/standaloneSearchBar.scss';
+
 import {buildSearchBox, SearchBox as HeadlessSearchBox} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
-import classNames from 'classnames';
 import * as React from 'react';
-import {ListBox, SearchBar, Svg} from 'react-vapor';
+import {Button, ListBox, Svg} from 'react-vapor';
 
 import {EngineContext} from './engine/EngineContext';
 
@@ -20,33 +21,40 @@ const SearchBoxRenderer: FunctionComponent<{
     useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
     return (
-        <div className="">
+        <div className="standaloneSearchBar">
             {/* Prevents chrome from providing autocompletions */}
-            <form autoComplete="off" className="searchbox-form" onSubmit={(e) => e.preventDefault()}>
-                <SearchBar
-                    id={id}
-                    placeholder="Search"
-                    searching={state.isLoading}
-                    value={state.value}
-                    onChange={(event) => controller.updateText(event.target.value)}
-                    onSearch={() => controller.submit()}
-                    containerClassNames={classNames({
-                        'mod-rounded-border-4': state.value === '',
-                        'mod-rounded-border-left-4': state.value !== '',
-                    })}
-                />
-            </form>
+            {/* <form autoComplete="off" onSubmit={(e) => e.preventDefault()}> */}
+            <input
+                id={id}
+                className="search-bar"
+                type="text"
+                placeholder={'Find a component...'}
+                disabled={state.isLoadingSuggestions}
+                value={state.value}
+                onChange={(event) => controller.updateText(event.target.value)}
+                onKeyUp={(event) => (event.keyCode === 13 || event.key === 'Enter') && controller.submit()}
+            />
+            {/* </form> */}
             {state.value !== '' && (
                 <button
                     onClick={() => {
                         controller.updateText('');
                         controller.submit();
                     }}
-                    className="px2 mod-border-right mod-border-top mod-border-bottom mod-rounded-border-right-4"
                 >
                     <Svg svgName="close" svgClass="icon mod-16" />
                 </button>
             )}
+
+            {/* invisible prepend? */}
+            <Button
+                onClick={() => {
+                    controller.submit();
+                }}
+                classes={['mod-search-bar']}
+            >
+                <Svg svgName={'search'} className="icon mod-stroke" />
+            </Button>
             {state.suggestions.length > 0 && (
                 <ListBox
                     isLoading={state.isLoadingSuggestions}
@@ -60,7 +68,7 @@ const SearchBoxRenderer: FunctionComponent<{
     );
 };
 
-export const SearchBox: FunctionComponent<ISearchboxProps> = ({id}) => {
+export const StandaloneSearchBar: FunctionComponent<ISearchboxProps> = ({id}) => {
     const engine = useContext(EngineContext);
     const controller = buildSearchBox(engine, {options: {id}});
     return <SearchBoxRenderer controller={controller} id={id} />;

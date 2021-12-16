@@ -2,6 +2,7 @@
     display: inline-flex;
     align-items: center;
     box-sizing: border-box;
+    width: auto;
     height: $button-height;
     padding: $button-padding-y $button-padding-x;
     color: var(--navy-blue-80);
@@ -109,6 +110,13 @@
         .icon {
             fill: var(--white);
         }
+    }
+
+    &.mod-search-bar {
+        @extend .mod-primary;
+        width: 48px;
+        height: 48px;
+        border-radius: 0px 8px 8px 0px;
     }
 
     &.mod-danger {
