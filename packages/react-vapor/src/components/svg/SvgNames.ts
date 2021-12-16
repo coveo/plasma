@@ -88,6 +88,7 @@ export const SVG_NAMES = {
     criticalStrokedLarge: 'criticalStrokedLarge',
     criticalStrokedMedium: 'criticalStrokedMedium',
     criticalStrokedSmall: 'criticalStrokedSmall',
+    cross: 'cross',
     dashboard: 'dashboard',
     dashboardAddcard: 'dashboardAddcard',
     dashboardDuplicate: 'dashboardDuplicate',

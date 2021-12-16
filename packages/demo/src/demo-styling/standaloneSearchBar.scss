@@ -17,5 +17,10 @@ $button-border-width: 1px;
         &:focus {
             border: $button-border-width solid $digitale-blue-60;
         }
+
+        ~ .close-button {
+            min-height: 48px;
+            background-color: var(--white);
+        }
     }
 }
