@@ -20,11 +20,15 @@ import {SearchBox} from './searchBar/SearchBox';
 import {EngineProvider} from './searchBar/engine/EngineProvider';
 
 const Header = () => (
-    <div id="header" className="flex flex-center space-between demo-header">
-        <img src={logo} className="header-logo" />
-        <EngineProvider>
-            <SearchBox id="patateKing" />
-        </EngineProvider>
+    <div id="header" className="flex demo-header">
+        <a href="/#">
+            <img src={logo} className="header-logo" />
+        </a>
+        <div className="flex space-around search">
+            <EngineProvider>
+                <SearchBox id="patateKing" />
+            </EngineProvider>
+        </div>
     </div>
 );
 

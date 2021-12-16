@@ -1,5 +1,3 @@
-import '@demo-styling/standaloneSearchBox.scss';
-
 import {buildSearchBox, SearchBox as HeadlessSearchBox} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import classNames from 'classnames';
@@ -22,7 +20,7 @@ const SearchBoxRenderer: FunctionComponent<{
     useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
     return (
-        <div className="standaloneSearchBox">
+        <div className="">
             {/* Prevents chrome from providing autocompletions */}
             <form autoComplete="off" className="searchbox-form" onSubmit={(e) => e.preventDefault()}>
                 <SearchBar
