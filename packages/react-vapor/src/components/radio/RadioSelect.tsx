@@ -61,7 +61,7 @@ export class RadioSelect extends React.PureComponent<IRadioSelectAllProps> {
                 name: child.props.name || this.props.name,
                 checked: this.props.value === child.props.value,
                 disabled: this.isValueDisabled(child.props.value),
-                disabledTooltip: this.props.disabledTooltip,
+                disabledTooltip: child.props.disabledTooltip || this.props.disabledTooltip,
                 outerContainerClass: child.props.outerContainerClass,
                 outerElementInContainer: child.props.outerElementInContainer,
                 onClick: (e: React.MouseEvent<HTMLElement>) => {
