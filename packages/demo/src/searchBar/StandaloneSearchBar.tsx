@@ -3,13 +3,20 @@ import '@demo-styling/standaloneSearchBar.scss';
 import {buildSearchBox, SearchBox as HeadlessSearchBox} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import * as React from 'react';
-import {Button, ListBox, Svg} from 'react-vapor';
+import {Button, IItemBoxProps, ListBox, Svg} from 'react-vapor';
 
+import classNames from 'classnames';
 import {EngineContext} from './engine/EngineContext';
 
 interface ISearchboxProps {
     id: string;
 }
+
+const dummyItem: IItemBoxProps[] = [
+    {value: 'Im a dummy result'},
+    {value: 'im bad at css'},
+    {value: 'why querySuggest not working'},
+];
 
 const SearchBoxRenderer: FunctionComponent<{
     id: string;
@@ -29,14 +36,13 @@ const SearchBoxRenderer: FunctionComponent<{
                     className="search-bar"
                     type="text"
                     placeholder={'Find a component...'}
-                    disabled={state.isLoadingSuggestions}
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyUp={(event) => (event.keyCode === 13 || event.key === 'Enter') && controller.submit()}
+                    onKeyDown={(event) => event.key === 'Enter' && controller.submit()}
                 />
                 <button
                     disabled={state.value === ''}
-                    className="close-button"
+                    className={classNames('close-button', {'search-not-empty': state.value !== ''})}
                     onClick={() => {
                         controller.updateText('');
                         controller.submit();
@@ -52,15 +58,24 @@ const SearchBoxRenderer: FunctionComponent<{
                 >
                     <Svg svgName={'search'} className="icon mod-stroke" />
                 </Button>
-                {state.suggestions.length > 0 && (
+                {state.value !== '' && (
                     <ListBox
+                        classes={['search-results-container']}
                         isLoading={state.isLoadingSuggestions}
-                        items={state.suggestions.map((s) => ({
-                            value: s.rawValue,
-                            displayValue: s.highlightedValue,
-                        }))}
+                        items={dummyItem}
                     />
                 )}
+
+                {/* {(state.suggestions.length > 0 || state.isLoadingSuggestions) && ( */}
+                {/* <ListBox
+                    classes={['search-results-container']}
+                    isLoading={state.isLoadingSuggestions}
+                    items={state.suggestions.map((s) => ({
+                        value: s.rawValue,
+                        displayValue: s.highlightedValue,
+                    }))}
+                /> */}
+                {/* )} */}
             </form>
         </div>
     );

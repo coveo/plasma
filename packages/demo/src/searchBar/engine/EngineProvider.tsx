@@ -1,10 +1,4 @@
-import {
-    SearchEngine,
-    loadDebugActions,
-    loadSearchActions,
-    loadSearchAnalyticsActions,
-    loadFieldActions,
-} from '@coveo/headless';
+import {SearchEngine, loadSearchActions, loadSearchAnalyticsActions, loadFieldActions} from '@coveo/headless';
 import * as React from 'react';
 
 import {headlessEngine} from './Engine';
@@ -23,10 +17,10 @@ export const EngineProvider: React.FunctionComponent = ({children}) => {
 
     React.useEffect(() => {
         const newEngine = headlessEngine();
-        const {enableDebug} = loadDebugActions(newEngine);
+        // const {enableDebug} = loadDebugActions(newEngine);
         const {registerFieldsToInclude} = loadFieldActions(newEngine);
-        newEngine.dispatch(enableDebug());
-        newEngine.dispatch(registerFieldsToInclude(['indexeddate']));
+        // newEngine.dispatch(enableDebug());
+        newEngine.dispatch(registerFieldsToInclude(['componentname']));
         setEngine(newEngine);
     }, []);
 

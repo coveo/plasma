@@ -19,8 +19,27 @@ $button-border-width: 1px;
         }
 
         ~ .close-button {
+            position: relative;
+            float: right;
+            width: 0;
             min-height: 48px;
-            background-color: var(--white);
+            overflow: hidden;
+            background: $white;
+            visibility: hidden;
+            cursor: pointer;
+            transition: visibility 0.3s, width 0.3s;
+
+            &.search-not-empty {
+                width: 48px;
+                visibility: visible;
+            }
+        }
+
+        ~ .search-results-container {
+            position: fixed;
+            min-width: 648px;
+            border-radius: 8px;
+            box-shadow: 0px 8px 17px rgba(142, 142, 142, 0.22);
         }
     }
 }
