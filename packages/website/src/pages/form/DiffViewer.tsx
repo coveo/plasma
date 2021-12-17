@@ -1,65 +1,9 @@
+import code from '@examples/diff-viewer/DiffViewer.example.tsx';
+import manyChanges from '@examples/diff-viewer/ManyChanges.example.tsx';
+import noChanges from '@examples/diff-viewer/NoChanges.example.tsx';
+import splitView from '@examples/diff-viewer/SplitView.example.tsx';
+
 import {PageLayout} from '../../building-blocs/PageLayout';
-
-const code = `
-import {DiffViewer} from '@coveord/plasma-react';
-
-export default () => {
-    const oldValue = JSON.stringify({
-        hello: "world",
-        those: ["are", "some", "words"]
-    }, null, 2);
-    const newValue = JSON.stringify({
-        hello: "world",
-        those: ["are", "some", "great", "words"],
-        aNewProperty: 5
-    }, null, 2);
-    return (
-        <DiffViewer oldValue={oldValue} newValue={newValue} />
-    );
-};
-`;
-
-const unified = `
-import {DiffViewer} from '@coveord/plasma-react';
-
-export default () => {
-    const oldValue = JSON.stringify({
-        hello: "world",
-        those: ["are", "some", "words"]
-    }, null, 2);
-    const newValue = JSON.stringify({
-        hello: "world",
-        those: ["are", "some", "great", "words"],
-        aNewProperty: 5
-    }, null, 2);
-    return (
-        <DiffViewer oldValue={oldValue} newValue={newValue} splitView={false} />
-    );
-};
-`;
-
-const noChanges = `
-import {DiffViewer} from '@coveord/plasma-react';
-
-export default () => {
-    const oldValue = JSON.stringify({
-        hello: "world",
-        those: ["are", "some", "words"]
-    }, null, 2);
-    const newValue = JSON.stringify({
-        hello: "world",
-        those: ["are", "some", "words"]
-    }, null, 2);
-    return (
-        <DiffViewer
-            oldValue={oldValue}
-            newValue={newValue}
-            noChangesLabel={"No changes"}
-            noChangesDescription={"There are no changes to display since oldValue and newValues are equal"}
-        />
-    );
-};
-`;
 
 export default () => (
     <PageLayout
@@ -70,8 +14,9 @@ export default () => (
         componentSourcePath="/diffViewer/DiffViewer.tsx"
         code={code}
         examples={{
-            unified: {code: unified, title: 'Unified View'},
-            noChanges: {code: noChanges, title: 'Equal Values'},
+            splitView: {code: splitView, title: 'Split view'},
+            manyChanges: {code: manyChanges, title: 'Many changes'},
+            noChanges: {code: noChanges, title: 'Equal values'},
         }}
     />
 );

@@ -64,7 +64,8 @@
     ],
     "dependencies": {
         "codemirror": "^5.59.4",
-        "rc-slider": "8.7.1"
+        "rc-slider": "8.7.1",
+        "react-diff-view": "2.4.10"
     },
     "devDependencies": {
         "ansi-colors": "4.1.1",
