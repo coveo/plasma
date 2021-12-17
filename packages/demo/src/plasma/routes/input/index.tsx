@@ -4,6 +4,7 @@ import {Route, Routes} from 'react-router-dom';
 import {NotFound} from '../../NotFound';
 import {ActionableItemExamples} from './pages/ActionableItemExamples';
 import {ButtonExamples} from './pages/ButtonExamples';
+import {ButtonV2} from './pages/ButtonV2';
 import {CheckboxExamples} from './pages/CheckboxExamples';
 import {ChildFormExamples} from './pages/ChildFormExamples';
 import {CodeEditorExamples} from './pages/CodeEditorExamples';
@@ -29,6 +30,7 @@ export const InputRoutes: React.FunctionComponent = () => (
         <Route path="ActionableItem" element={<ActionableItemExamples />} />
         <Route path="AddRemove" element={<div />} />
         <Route path="Button" element={<ButtonExamples />} />
+        <Route path="ButtonV2" element={<ButtonV2 />} />
         <Route path="Checkbox" element={<CheckboxExamples />} />
         <Route path="Childform" element={<ChildFormExamples />} />
         <Route path="CodeEditor" element={<CodeEditorExamples />} />
