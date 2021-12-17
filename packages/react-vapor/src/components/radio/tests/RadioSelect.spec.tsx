@@ -27,12 +27,13 @@ describe('<RadioSelect />', () => {
         const firstRadioValue = 'blue';
         const secondRadioValue = 'red';
         const radioName = 'Johnny the almighty magic chicken';
+        const specialDisabledTooltip = 'oh no i am disabled';
 
         const shallowRadioSelect = (props: IRadioSelectAllProps = {}) => {
             spy = jest.fn();
             radioSelect = shallow(
                 <RadioSelect {...props}>
-                    <Radio id="radio1" value={firstRadioValue} onClick={spy} />
+                    <Radio id="radio1" value={firstRadioValue} onClick={spy} disabledTooltip={specialDisabledTooltip} />
                     <Radio id="radio2" value={secondRadioValue} name={radioName} />
                 </RadioSelect>
             );
@@ -42,7 +43,12 @@ describe('<RadioSelect />', () => {
             spy = jest.fn();
             radioSelect = shallow(
                 <RadioSelect {...props}>
-                    <RadioCard id="radio1" value={firstRadioValue} onClick={spy} />
+                    <RadioCard
+                        id="radio1"
+                        value={firstRadioValue}
+                        onClick={spy}
+                        disabledTooltip={specialDisabledTooltip}
+                    />
                     <RadioCard id="radio2" value={secondRadioValue} name={radioName} />
                 </RadioSelect>
             );
@@ -114,13 +120,15 @@ describe('<RadioSelect />', () => {
                     expect(radioSelect.find(variation.radioFC).first().props().name).toBe('leaf');
                 });
 
-                it('should pass disabledTooltip prop to each child', () => {
+                it('should pass disabledTooltip prop to each option without one specified', () => {
                     const disabledTooltip = 'golf';
                     variation.creator({
                         disabledTooltip,
                     });
 
-                    expect(radioSelect.find(variation.radioFC).first().props().disabledTooltip).toBe(disabledTooltip);
+                    expect(radioSelect.find(variation.radioFC).first().props().disabledTooltip).toBe(
+                        specialDisabledTooltip
+                    );
                     expect(radioSelect.find(variation.radioFC).last().props().disabledTooltip).toBe(disabledTooltip);
                 });
 
