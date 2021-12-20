@@ -6,7 +6,7 @@ export const headlessEngine = () =>
             platformUrl: 'https://platformdev.cloud.coveo.com',
             organizationId: 'donotdeleteplasmadesignsystempxjjjimz',
             accessToken: 'xxd5ed9d85-41bb-463c-b133-d188698de758',
-            analytics: {enabled: false},
+            analytics: {enabled: true},
         },
     });
 

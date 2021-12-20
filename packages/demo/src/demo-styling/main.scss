@@ -15,7 +15,6 @@
         background-color: var(--navy-blue-80);
 
         .header-logo {
-            width: 229px;
             height: 102px;
             margin-left: 32px;
         }
@@ -23,6 +22,11 @@
         .search {
             flex: 2 0 auto;
             align-self: center;
+            width: 40%;
+        }
+
+        .right-side {
+            width: 15%;
         }
     }
 

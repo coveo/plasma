@@ -29,6 +29,7 @@ const Header = () => (
                 <StandaloneSearchBar id="patateKing" />
             </EngineProvider>
         </div>
+        <div className="right-side"></div>
     </div>
 );
 

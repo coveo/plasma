@@ -58,24 +58,24 @@ const SearchBoxRenderer: FunctionComponent<{
                 >
                     <Svg svgName={'search'} className="icon mod-stroke" />
                 </Button>
-                {state.value !== '' && (
+                {/* {state.value !== '' && (
                     <ListBox
                         classes={['search-results-container']}
                         isLoading={state.isLoadingSuggestions}
                         items={dummyItem}
                     />
-                )}
+                )} */}
 
-                {/* {(state.suggestions.length > 0 || state.isLoadingSuggestions) && ( */}
-                {/* <ListBox
-                    classes={['search-results-container']}
-                    isLoading={state.isLoadingSuggestions}
-                    items={state.suggestions.map((s) => ({
-                        value: s.rawValue,
-                        displayValue: s.highlightedValue,
-                    }))}
-                /> */}
-                {/* )} */}
+                {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
+                    <ListBox
+                        classes={['search-results-container']}
+                        isLoading={state.isLoadingSuggestions}
+                        items={state.suggestions.map((s) => ({
+                            value: s.rawValue,
+                            displayValue: s.highlightedValue,
+                        }))}
+                    />
+                )}
             </form>
         </div>
     );
