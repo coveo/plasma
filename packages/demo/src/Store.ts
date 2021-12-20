@@ -14,3 +14,6 @@ export const Store = createStore(
     Reducers,
     composeEnhancers(applyMiddleware<IDispatch<IReactVaporExampleState>>(...middlewares))
 );
+
+// Required for the dynamic examples
+(window as any).Store = Store;

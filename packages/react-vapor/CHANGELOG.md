@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.2.0](https://github.com/coveo/react-vapor/compare/v31.1.1...v31.2.0) (2021-12-20)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+## [31.1.1](https://github.com/coveo/react-vapor/compare/v31.1.0...v31.1.1) (2021-12-17)
+
+**Note:** Version bump only for package react-vapor
+
+
+
+
+
+# [31.1.0](https://github.com/coveo/react-vapor/compare/v31.0.0...v31.1.0) (2021-12-17)
+
+
+### Features
+
+* **radioselect:** allow specific tooltip ([a0e2f97](https://github.com/coveo/react-vapor/commit/a0e2f970393c68c7fb854e07c3c39b3a5b6fdc3e))
+
+
+
+
+
 # [31.0.0](https://github.com/coveo/react-vapor/compare/v30.7.0...v31.0.0) (2021-12-15)
 
 

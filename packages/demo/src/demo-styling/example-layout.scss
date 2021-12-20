@@ -1,0 +1,29 @@
+.example-layout {
+    &__header {
+        display: grid;
+        grid-gap: 24px;
+        grid-template-areas:
+            'section github'
+            'title   icon'
+            'desc    icon';
+        padding: 32px;
+
+        .tile {
+            grid-area: icon;
+            width: 264px;
+            height: 173px;
+        }
+    }
+
+    &__main-code {
+        background-color: var(--grey-20);
+    }
+
+    &__section {
+        padding: 32px 24px;
+    }
+
+    &__section + &__section {
+        margin-top: 40px;
+    }
+}

@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.2.0](https://github.com/coveo/react-vapor/compare/v31.1.1...v31.2.0) (2021-12-20)
+
+
+### Features
+
+* **code-editor:** proof of concept for a dynamic code editor ([8fe94b3](https://github.com/coveo/react-vapor/commit/8fe94b3b55dbecc3f01d3eff3a47ba55e6df0510))
+* **demo:** create new page layout for plasma components ([5dd7ff3](https://github.com/coveo/react-vapor/commit/5dd7ff338845c294091c409f84ebc24db90ddc54))
+
+
+
+
+
+## [31.1.1](https://github.com/coveo/react-vapor/compare/v31.1.0...v31.1.1) (2021-12-17)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [31.1.0](https://github.com/coveo/react-vapor/compare/v31.0.0...v31.1.0) (2021-12-17)
+
+
+### Features
+
+* **radioselect:** allow specific tooltip ([a0e2f97](https://github.com/coveo/react-vapor/commit/a0e2f970393c68c7fb854e07c3c39b3a5b6fdc3e))
+
+
+
+
+
 # [31.0.0](https://github.com/coveo/react-vapor/compare/v30.7.0...v31.0.0) (2021-12-15)
 
 
