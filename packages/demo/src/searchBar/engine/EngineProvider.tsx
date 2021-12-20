@@ -17,9 +17,7 @@ export const EngineProvider: React.FunctionComponent = ({children}) => {
 
     React.useEffect(() => {
         const newEngine = headlessEngine();
-        // const {enableDebug} = loadDebugActions(newEngine);
         const {registerFieldsToInclude} = loadFieldActions(newEngine);
-        // newEngine.dispatch(enableDebug());
         newEngine.dispatch(registerFieldsToInclude(['componentname']));
         setEngine(newEngine);
     }, []);
