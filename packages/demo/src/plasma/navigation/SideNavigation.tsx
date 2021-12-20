@@ -61,12 +61,8 @@ export const Navigation: React.FunctionComponent = () => {
                     title={<NavLink href="/brand" label="Brand" />}
                 />
                 <CollapsibleSideSection title="Foundations">
-                    <NavLink disabled href="/foundations/Effects" label="Effects" />
                     <NavLink href="/foundations/Iconography" label="Iconography" />
                     <NavLink href="/foundations/Svg" label="SVG" />
-                    <NavLink disabled href="/foundations/Illustration" label="Illustration" />
-                    <NavLink disabled href="/foundations/Palette" label="Palette" />
-                    <NavLink disabled href="/foundations/Typekit" label="Typekit" />
                     <NavLink href="/foundations/typekit/Headings" label="Typekit - Headings" />
                     <NavLink href="/foundations/typekit/IconColor" label="Typekit - Icon Color" />
                     <NavLink href="/foundations/typekit/LineHeight" label="Typekit - Line Height" />
@@ -82,15 +78,12 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/layout/Banner" label="Banner" />
                     <NavLink href="/layout/BlankSlate" label="Blankslate" />
                     <NavLink href="/layout/BorderedLine" label="Bordered Line / Row" />
-                    <NavLink disabled href="/layout/CommerceConfigCard" label="Commerce Config Card" />
-                    <NavLink disabled href="/layout/Divider" label="Divider" />
                     <NavLink href="/layout/Footer" label="Footer" />
                     <NavLink href="/layout/IconCard" label="Icon / Logo Card" />
                     <NavLink href="/layout/Card" label="Card" />
                     <NavLink href="/layout/ModalWindow" label="Modal" />
                     <NavLink href="/layout/ModalWizard" label="Modal Wizard" />
                     <NavLink href="/layout/PageHeader" label="Page Header" />
-                    <NavLink disabled href="/layout/SearchResultCard" label="Search Result Card" />
                     <NavLink href="/layout/Section" label="Section" />
                     <NavLink href="/layout/SplitLayout" label="Split Layout" />
                     <NavLink href="/layout/Tabs" label="Tabs" />
@@ -99,19 +92,15 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/layout/TableHOCLoading" label="Table Loading" />
                     <NavLink href="/layout/TableHOCServer" label="Table Server" />
                     <NavLink href="/layout/TableHOCwithBlankSlate" label="Table Blank Slate" />
-                    <NavLink disabled href="/layout/TopBar" label="Top Bar" />
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Input">
                     <NavLink href="/input/ActionableItem" label="Actionable Item" />
-                    <NavLink disabled href="/input/ActionButton" label="Action Button" />
-                    <NavLink disabled href="/input/AddRemove" label="Add/Remove" />
                     <NavLink href="/input/Button" label="Button" />
                     <NavLink href="/input/Checkbox" label="Checkbox" />
                     <NavLink href="/input/ChildForm" label="Child Form" />
                     <NavLink href="/input/CodeEditor" label="Code Editor" />
                     <NavLink href="/input/DatePicker" label="Date Picker" />
                     <NavLink href="/input/DiffViewer" label="Diff Viewer" />
-                    <NavLink disabled href="/input/Facet" label="Facet" />
                     <NavLink href="/input/Filepicker" label="File Picker" />
                     <NavLink href="/input/FilterBox" label="Filter Box" />
                     <NavLink href="/input/JSONEditor" label="JSON Editor" />
@@ -124,7 +113,6 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/input/Slider" label="Slider" />
                     <NavLink href="/input/TextArea" label="Text Area" />
                     <NavLink href="/input/TextInput" label="Text Input" />
-                    <NavLink disabled href="/input/Toggle" label="Toggle" />
                     <NavLink href="/input/ValuePopup" label="Value Popup" />
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Navigation">
@@ -144,10 +132,7 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/feedback-and-info/Loading" label="Loader / Spinner" />
                     <NavLink href="/feedback-and-info/Popover" label="Popover" />
                     <NavLink href="/feedback-and-info/ProgressBar" label="Progress Bar" />
-                    <NavLink disabled href="/feedback-and-info/Prompt" label="Prompt Modals" />
                     <NavLink href="/feedback-and-info/StatusCard" label="Status Card" />
-                    <NavLink disabled href="/feedback-and-info/StatusToken" label="Status Token" />
-                    <NavLink disabled href="/feedback-and-info/StatusWidget" label="Status Widget" />
                     <NavLink href="/feedback-and-info/StepProgressBar" label="Step / Progress Bar" />
                     <NavLink href="/feedback-and-info/SyncFeedback" label="Sync Feedback" />
                     <NavLink href="/feedback-and-info/Toast" label="Toast" />
@@ -158,9 +143,6 @@ export const Navigation: React.FunctionComponent = () => {
                 <CollapsibleSideSection title="Display & Utilities">
                     <NavLink href="/display-and-utilities/Borders" label="Borders" />
                     <NavLink href="/display-and-utilities/Collapsible" label="Collapsible" />
-                    <NavLink disabled href="/display-and-utilities/CoveoExpLoader" label="Coveo Exp. Loader" />
-                    <NavLink disabled href="/display-and-utilities/RichPopover" label="Rich Popover" />
-                    <NavLink disabled href="/display-and-utilities/SkeletonBlur" label="Skeleton Blur" />
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Legacy">
                     <NavLink href="/legacy/BrowserPreview" label="Browser Preview" />
