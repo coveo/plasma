@@ -1,12 +1,13 @@
 // variables
-$white: hsla(0, 0%, 100%, 1);
-$digitale-blue-60: hsla(214, 85%, 50%, 1);
 $button-border-width: 1px;
+$search-bar-heigh: 48px;
+$search-bar-min-width: 648px;
 
 .standaloneSearchBar {
     .search-bar {
-        min-width: 648px;
-        min-height: 48px;
+        position: relative;
+        min-width: $search-bar-min-width;
+        min-height: $search-bar-heigh;
         background-color: var(--white);
         border: $button-border-width solid transparent;
         border-radius: 8px 0px 0px 8px;
@@ -16,27 +17,55 @@ $button-border-width: 1px;
             outline: none;
         }
 
-        ~ .close-button {
-            position: relative;
-            width: 0;
-            min-height: 48px;
-            overflow: hidden;
-            background: $white;
+        ~ .clear-button {
+            position: absolute;
+            width: $search-bar-heigh;
+            min-height: $search-bar-heigh;
+            background: var(--white);
             visibility: hidden;
             cursor: pointer;
-            transition: visibility 0.3s, width 0.3s;
 
             &.search-not-empty {
-                width: 48px;
+                transform: translateX(-20px);
                 visibility: visible;
+            }
+        }
+
+        ~ .search-button {
+            position: absolute;
+            width: $search-bar-heigh;
+            min-height: $search-bar-heigh;
+            color: var(--white);
+            background-color: var(--digital-blue-60);
+            border: $button-border-width solid var(--digital-blue-60);
+            border-radius: 0px 8px 8px 0px;
+
+            & SVG {
+                fill: var(--white);
+            }
+
+            &:active {
+                background-color: var(--digital-blue-100);
+                border: $button-border-width solid var(--digital-blue-100);
+            }
+
+            &:focus {
+                background-color: var(--digital-blue-60);
+                border: $button-border-width solid var(--digital-blue-60);
+            }
+
+            &:hover {
+                background-color: var(--digital-blue-80);
+                border: $button-border-width solid var(--digital-blue-80);
+                outline-color: var(--digital-blue-80);
             }
         }
 
         ~ .search-results-container {
             position: fixed;
-            min-width: 648px;
+            min-width: $search-bar-min-width;
             border-radius: 8px;
-            box-shadow: 0px 8px 17px rgba(142, 142, 142, 0.22);
+            box-shadow: var(--medium-elevation-on-neutral);
         }
     }
 }

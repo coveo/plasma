@@ -21,6 +21,45 @@ const SearchBoxRenderer: FunctionComponent<{
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
+    const ClearButton = () => (
+        <button
+            disabled={state.value === ''}
+            className={classNames('clear-button', {'search-not-empty': state.value !== ''})}
+            onClick={() => {
+                controller.updateText('');
+                controller.submit();
+            }}
+        >
+            <Svg svgName="cross" svgClass="icon" />
+        </button>
+    );
+
+    const SearchButton = () => (
+        <Button
+            classes={['search-button']}
+            onClick={() => {
+                controller.submit();
+            }}
+        >
+            <Svg svgName={'search'} className="icon mod-stroke" />
+        </Button>
+    );
+
+    const SearchResultListBox = () => (
+        <>
+            {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
+                <ListBox
+                    classes={['search-results-container']}
+                    isLoading={state.isLoadingSuggestions}
+                    items={state.suggestions.map((s) => ({
+                        value: s.rawValue,
+                        displayValue: s.highlightedValue,
+                    }))}
+                />
+            )}
+        </>
+    );
+
     return (
         <div className="standaloneSearchBar">
             {/* Prevents chrome from providing autocompletions */}
@@ -34,34 +73,9 @@ const SearchBoxRenderer: FunctionComponent<{
                     onChange={(event) => controller.updateText(event.target.value)}
                     onKeyDown={(event) => event.key === 'Enter' && controller.submit()}
                 />
-                <button
-                    disabled={state.value === ''}
-                    className={classNames('close-button', {'search-not-empty': state.value !== ''})}
-                    onClick={() => {
-                        controller.updateText('');
-                        controller.submit();
-                    }}
-                >
-                    <Svg svgName="cross" svgClass="icon" />
-                </button>
-                <Button
-                    classes={['mod-search-bar']}
-                    onClick={() => {
-                        controller.submit();
-                    }}
-                >
-                    <Svg svgName={'search'} className="icon mod-stroke" />
-                </Button>
-                {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
-                    <ListBox
-                        classes={['search-results-container']}
-                        isLoading={state.isLoadingSuggestions}
-                        items={state.suggestions.map((s) => ({
-                            value: s.rawValue,
-                            displayValue: s.highlightedValue,
-                        }))}
-                    />
-                )}
+                <ClearButton />
+                <SearchButton />
+                <SearchResultListBox />
             </form>
         </div>
     );
