@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.2.0](https://github.com/coveo/react-vapor/compare/v31.1.1...v31.2.0) (2021-12-20)
+
+
+### Features
+
+* **code-editor:** proof of concept for a dynamic code editor ([8fe94b3](https://github.com/coveo/react-vapor/commit/8fe94b3b55dbecc3f01d3eff3a47ba55e6df0510))
+* **demo:** create new page layout for plasma components ([5dd7ff3](https://github.com/coveo/react-vapor/commit/5dd7ff338845c294091c409f84ebc24db90ddc54))
+
+
+
+
+
 ## [31.1.1](https://github.com/coveo/react-vapor/compare/v31.1.0...v31.1.1) (2021-12-17)
 
 **Note:** Version bump only for package react-vapor-demo
