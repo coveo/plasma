@@ -6,13 +6,16 @@ import lzstring from 'lz-string';
 import {twoslasher} from '@typescript/twoslash';
 import * as monaco from 'monaco-editor';
 import * as _ from 'underscore';
-import {Loading} from 'react-vapor';
 import '@demo-styling/sandbox.scss';
 import {useTypescriptServer} from './useTypescriptServer';
 // eslint-disable-next-line
 const prettierConfig = require('tsjs/prettier-config');
 
-export const Sandbox: React.FunctionComponent<{children: string; id: string}> = ({id, children}) => {
+export const Sandbox: React.FunctionComponent<{children: string; id: string; title?: string}> = ({
+    id,
+    title,
+    children,
+}) => {
     const formattedCode = format(children as string, {
         ...prettierConfig,
         plugins: [typescript],
@@ -55,22 +58,21 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string}> = 
 
     return (
         <div className="demo-sandbox">
-            <div className="demo-sandbox__preview" id={id}>
-                <Loading />
-            </div>
-            <Editor value={formattedCode} onChange={setEditedCode} />
+            <div className="demo-sandbox__preview" id={id} />
+            {title && <div className="demo-sandbox__title body-m-book">{title}</div>}
+            <Editor id={id} value={formattedCode} onChange={setEditedCode} />
         </div>
     );
 };
 
-const Editor: React.FC<{value: string; onChange: (newValue: string) => void}> = ({value, onChange}) => {
+const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
     const divEl = React.useRef<HTMLDivElement>(null);
     let editor: monaco.editor.IStandaloneCodeEditor;
     let model: monaco.editor.IModel;
     const onChangeEditor = React.useMemo(() => _.debounce(() => onChange(editor.getValue()), 500), []);
     React.useEffect(() => {
         if (divEl.current) {
-            model = monaco.editor.createModel(value, 'typescript', monaco.Uri.file('index.tsx'));
+            model = monaco.editor.createModel(value, 'typescript', monaco.Uri.file(`${id}.tsx`));
             editor = monaco.editor.create(divEl.current, {
                 model,
                 scrollBeyondLastLine: false,

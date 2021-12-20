@@ -1,10 +1,8 @@
 import * as React from 'react';
-import Markdown from 'react-markdown';
-import {BasicHeader, LinkSvg, TabContent, TabPaneConnected} from 'react-vapor';
-import remarkGfm from 'remark-gfm';
+import {BasicHeader, TabContent, TabPaneConnected} from 'react-vapor';
 
 import Code from './Code';
-import {Guidelines, MarkdownOverrides} from './Guidelines';
+import {GuidelinesTab} from './GuidelinesTab';
 import {useCodeExample} from './useCodeExample';
 
 interface VaporComponentProps {
@@ -45,35 +43,7 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
                         )}
                     </div>
                 </TabPaneConnected>
-                <TabPaneConnected id="guide" groupId="page">
-                    {Guidelines.exists(id) ? (
-                        <>
-                            <Markdown remarkPlugins={[remarkGfm]} components={MarkdownOverrides}>
-                                {Guidelines.get(id)}
-                            </Markdown>
-                            <LinkSvg
-                                url={`https://github.com/coveo/react-vapor/edit/master/packages/demo/docs/${id}.md`}
-                                svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
-                                linkClasses={['mt5']}
-                            >
-                                Edit guidelines
-                            </LinkSvg>
-                        </>
-                    ) : (
-                        <>
-                            <p>
-                                No guidelines exist for <span className="body-m">{id}</span> yet.
-                            </p>
-                            <LinkSvg
-                                url={`https://github.com/coveo/react-vapor/new/master/packages/demo/docs?filename=docs/${id}.md`}
-                                svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
-                                linkClasses={['mt5']}
-                            >
-                                Create guidelines
-                            </LinkSvg>
-                        </>
-                    )}
-                </TabPaneConnected>
+                <GuidelinesTab id={id} />
             </TabContent>
         </div>
     );
