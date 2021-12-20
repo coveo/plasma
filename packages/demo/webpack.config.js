@@ -4,6 +4,7 @@ const path = require('path');
 const isJenkins = !!process.env.JENKINS_HOME;
 const HtmlWebpackTagsPlugin = require('html-webpack-tags-plugin');
 const CopyPlugin = require('copy-webpack-plugin');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 /**
  * Config file for the documentation project
@@ -20,9 +21,9 @@ module.exports = {
     },
     devtool: isJenkins ? 'source-map' : 'eval-source-map',
     resolve: {
-        extensions: ['.js', '.jsx'],
+        extensions: ['.js', '.jsx', 'wasm'],
         alias: {
-            'react-vapor': path.resolve(__dirname, '../react-vapor/dist/cjs/Entry.js'),
+            'react-vapor$': path.resolve(__dirname, '../react-vapor/dist/cjs/Entry.js'),
             '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
             '@routes': path.resolve(__dirname, 'src/plasma/routes'),
         },
@@ -43,6 +44,9 @@ module.exports = {
         new HtmlWebpackTagsPlugin({tags: ['jquery.slim.min.js', 'chosen.jquery.min.js'], append: true}),
         new webpack.HotModuleReplacementPlugin(),
         new webpack.ContextReplacementPlugin(/moment[/\\]locale$/, /en-ca/),
+        new MonacoWebpackPlugin({
+            languages: ['javascript', 'typescript'],
+        }),
     ],
     stats: 'minimal',
     module: {
@@ -68,6 +72,11 @@ module.exports = {
             },
             {
                 test: /\.(ttf|eot|woff|svg|png|ico)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+                loader: 'file-loader',
+            },
+            {
+                test: /\.wasm$/,
+                type: 'javascript/auto',
                 loader: 'file-loader',
             },
         ],
