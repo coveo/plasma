@@ -3,7 +3,7 @@ import '@demo-styling/standaloneSearchBar.scss';
 import {buildSearchBox, SearchBox as HeadlessSearchBox} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import * as React from 'react';
-import {Button, IItemBoxProps, ListBox, Svg} from 'react-vapor';
+import {Button, ListBox, Svg} from 'react-vapor';
 
 import classNames from 'classnames';
 import {EngineContext} from './engine/EngineContext';
@@ -11,12 +11,6 @@ import {EngineContext} from './engine/EngineContext';
 interface ISearchboxProps {
     id: string;
 }
-
-const dummyItem: IItemBoxProps[] = [
-    {value: 'Im a dummy result'},
-    {value: 'im bad at css'},
-    {value: 'why querySuggest not working'},
-];
 
 const SearchBoxRenderer: FunctionComponent<{
     id: string;
@@ -58,14 +52,6 @@ const SearchBoxRenderer: FunctionComponent<{
                 >
                     <Svg svgName={'search'} className="icon mod-stroke" />
                 </Button>
-                {/* {state.value !== '' && (
-                    <ListBox
-                        classes={['search-results-container']}
-                        isLoading={state.isLoadingSuggestions}
-                        items={dummyItem}
-                    />
-                )} */}
-
                 {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
                     <ListBox
                         classes={['search-results-container']}
