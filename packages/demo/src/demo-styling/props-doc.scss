@@ -1,0 +1,36 @@
+.props-doc {
+    max-height: 500px;
+    margin-left: -24px;
+    overflow: auto;
+
+    table {
+        color: var(--grey-100);
+
+        th {
+            position: sticky;
+            top: 0;
+            height: 44px;
+            padding: 0 24px;
+            text-align: left;
+            vertical-align: middle;
+            background-color: var(--white);
+        }
+
+        td {
+            padding: 0 24px;
+            vertical-align: middle;
+        }
+
+        tr {
+            height: 44px;
+
+            &:nth-child(odd) {
+                background-color: var(--grey-20);
+            }
+        }
+
+        .code {
+            color: var(--grey-100);
+        }
+    }
+}

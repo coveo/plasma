@@ -2,6 +2,7 @@
     "extends": "../tsconfig-base",
     "compilerOptions": {
         "removeComments": false,
+        "noUnusedLocals": false,
         "rootDir": "src",
         "outDir": "built",
         "baseUrl": ".",

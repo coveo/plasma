@@ -388,7 +388,7 @@ importers:
       rimraf: 3.0.2
       ts-node: 10.4.0
       tslib: 2.3.1
-      typescript: 4.4.4
+      typescript: 3.8.3
     devDependencies:
       '@types/fs-extra': 9.0.13
       '@types/node': 16.11.12
@@ -398,9 +398,9 @@ importers:
       fs-extra: 10.0.0
       prettier: 2.4.1
       rimraf: 3.0.2
-      ts-node: 10.4.0_b7303747f27c31077eba8de44bbb9cc4
+      ts-node: 10.4.0_0885aa7ce5ba26c3ff83080fb5ee2db9
       tslib: 2.3.1
-      typescript: 4.4.4
+      typescript: 3.8.3
 
   packages/vapor:
     specifiers:
@@ -17275,7 +17275,7 @@ packages:
       yargs-parser: 20.2.9
     dev: true
 
-  /ts-node/10.4.0_b7303747f27c31077eba8de44bbb9cc4:
+  /ts-node/10.4.0_0885aa7ce5ba26c3ff83080fb5ee2db9:
     resolution: {integrity: sha512-g0FlPvvCXSIO1JDF6S232P5jPYqBkRL9qly81ZgAOSU7rwI0stphCgd2kLiCrU9DjQCrJMWEqcNSjQL02s6d8A==}
     hasBin: true
     peerDependencies:
@@ -17301,7 +17301,7 @@ packages:
       create-require: 1.1.1
       diff: 4.0.2
       make-error: 1.3.6
-      typescript: 4.4.4
+      typescript: 3.8.3
       yn: 3.1.1
     dev: true
 
@@ -17479,8 +17479,8 @@ packages:
     resolution: {integrity: sha1-hnrHTjhkGHsdPUfZlqeOxciDB3c=}
     dev: true
 
-  /typescript/4.4.4:
-    resolution: {integrity: sha512-DqGhF5IKoBl8WNf8C1gu8q0xZSInh9j1kJJMqT3a94w1JzVaBU4EXOSMrz9yDqMT0xt3selp83fuFMQ0uzv6qA==}
+  /typescript/3.8.3:
+    resolution: {integrity: sha512-MYlEfn5VrLNsgudQTVJeNaQFUAI7DkhnOjdpAp4T+ku1TfQClewlbSuTVHiA+8skNBgaf02TL/kLOvig4y3G8w==}
     engines: {node: '>=4.2.0'}
     hasBin: true
     dev: true

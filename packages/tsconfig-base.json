@@ -5,23 +5,23 @@
         "target": "es5",
         "jsx": "react",
         "lib": ["ES2015", "DOM"],
-        
+
         "composite": true,
         "sourceMap": true,
         "declaration": true,
         "declarationMap": true,
-        
+
         "allowJs": true,
         "skipLibCheck": true,
-        
+
         "noImplicitAny": true,
         "noImplicitThis": true,
         "noUnusedLocals": true,
         "strictBindCallApply": true,
-        
+
         "experimentalDecorators": true,
         "downlevelIteration": true,
-        "removeComments": true,
+        "removeComments": false,
         "emitDecoratorMetadata": true,
         "allowSyntheticDefaultImports": true,
         "esModuleInterop": true,
