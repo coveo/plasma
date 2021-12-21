@@ -80,12 +80,12 @@ pipeline {
             $class: 'GitSCM',
             branches: scm.branches,
             extensions: scm.extensions + [[$class: "CleanCheckout"]] + [[$class: "LocalBranch", localBranch: "**"]] + [[$class: 'CloneOption', noTags: false, reference: '', shallow: false]],
-            userRemoteConfigs: [[credentialsId: "github-app-dev", url: "https://github.com/coveo/react-vapor.git"]]
+            userRemoteConfigs: [[credentialsId: "github-app-dev", url: "https://github.com/coveo/plasma.git"]]
           ])
 
           sh "git config --global user.email \"jenkins@coveo.com\""
           sh "git config --global user.name \"Jenkins CI\""
-          sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GIT_PSW}@github.com/coveo/react-vapor.git\""
+          sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GIT_PSW}@github.com/coveo/plasma.git\""
 
           def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
           env.PATH = "${nodeHome}/bin:${env.PATH}"
@@ -163,7 +163,7 @@ pipeline {
             postCommentOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
             SOURCE_LINK = pullRequestURL
           } else {
-            SOURCE_LINK = "https://github.com/coveo/react-vapor/tree/${env.BRANCH_NAME}"
+            SOURCE_LINK = "https://github.com/coveo/plasma/tree/${env.BRANCH_NAME}"
           }
 
           def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html"
@@ -312,11 +312,11 @@ pipeline {
           setLastStageName();
           sh "mkdir -p veracode"
           sh "mkdir -p veracode/demo"
-          sh "mkdir -p veracode/react-vapor"
+          sh "mkdir -p veracode/react"
 
           // copy all ts and tsx files
           sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
-          sh "rsync -arvR ./packages/react-vapor/src/**/*.ts* ./veracode/react-vapor/"
+          sh "rsync -arvR ./packages/react/src/**/*.ts* ./veracode/react/"
 
           dir('veracode') {
             // remove spec and mock files
@@ -430,7 +430,7 @@ def postCommentOnGithub(demoLink="") {
   ]) {
     runPackage.call(
       "github-comment",
-      "--demoLink=${demoLink} --commitHash=${env.GIT_COMMIT} --repo=react-vapor"
+      "--demoLink=${demoLink} --commitHash=${env.GIT_COMMIT} --repo=plasma"
     )
   }
 }
@@ -442,7 +442,7 @@ def getCommitPullRequestURL() {
   ]) {
     return runPackage.call(
       "github-commit-pr-url",
-      "--commitHash=${env.GIT_COMMIT} --repo=react-vapor"
+      "--commitHash=${env.GIT_COMMIT} --repo=plasma"
     )
   }
 }
