@@ -1,8 +1,11 @@
+import '@demo-styling/example-layout.scss';
+
+import {TabContent, TabPaneConnected, TabSelectors, TabsHeader, Tile} from '@coveord/plasma-react';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
-import {TabContent, TabPaneConnected, TabSelectors, TabsHeader, Tile} from '@coveord/plasma-react';
+
 import {GuidelinesTab} from './GuidelinesTab';
-import '@demo-styling/example-layout.scss';
+import {PropsDoc} from './PropsDoc';
 import Sandbox from './Sandbox';
 
 export interface ExampleLayoutProps {
@@ -43,26 +46,30 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
             />
             <TabContent>
                 <TabPaneConnected id="implementation" groupId="page">
-                    {isShowingCode && <Content code={code} examples={examples} />}
+                    {isShowingCode && <Content id={id} code={code} examples={examples} />}
                 </TabPaneConnected>
                 <GuidelinesTab id={id} />
             </TabContent>
         </div>
     );
 };
-const Content: React.FunctionComponent<Pick<ExampleLayoutProps, 'code' | 'examples'>> = ({code, examples}) => (
+const Content: React.FunctionComponent<Pick<ExampleLayoutProps, 'code' | 'examples' | 'id'>> = ({
+    code,
+    examples,
+    id,
+}) => (
     <>
         <div className="example-layout__main-code example-layout__section">
             <Sandbox id="main-code">{code}</Sandbox>
         </div>
         <div className="example-layout__props example-layout__section">
-            <h4 className="h2 mb5">Props</h4>
-            <div>Insert table props here</div>
+            <h4 className="h2 mb1">Props</h4>
+            <PropsDoc componentName={id} />
         </div>
         <div className="example-layout__examples example-layout__section">
             <h4 className="h2 mb5">Examples</h4>
-            {Object.entries(examples).map(([id, {code: exampleCode, title}]) => (
-                <Sandbox key={id} id={id} title={title}>
+            {Object.entries(examples).map(([exampleId, {code: exampleCode, title}]) => (
+                <Sandbox key={exampleId} id={exampleId} title={title}>
                     {exampleCode}
                 </Sandbox>
             ))}
