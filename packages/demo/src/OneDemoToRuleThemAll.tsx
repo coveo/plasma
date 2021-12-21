@@ -26,7 +26,7 @@ const Header = () => (
         </a>
         <div className="flex space-around search">
             <EngineProvider>
-                <StandaloneSearchBar id="patateKing" />
+                <StandaloneSearchBar id="header" />
             </EngineProvider>
         </div>
         <div className="right-side"></div>
