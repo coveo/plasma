@@ -13,6 +13,11 @@
             width: 264px;
             height: 173px;
         }
+
+        .github-button {
+            grid-area: github;
+            justify-self: end;
+        }
     }
 
     &__main-code {

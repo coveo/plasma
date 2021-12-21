@@ -4,6 +4,7 @@ import {TabContent, TabPaneConnected, TabSelectors, TabsHeader, Tile} from '@cov
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 
+import {GithubButton} from './GithubButton';
 import {GuidelinesTab} from './GuidelinesTab';
 import {PropsDoc} from './PropsDoc';
 import Sandbox from './Sandbox';
@@ -15,6 +16,12 @@ export interface ExampleLayoutProps {
     section: string;
     code: string;
     examples: Record<string, {code: string; title: string}>;
+    /**
+     * Path to the component's source file from /packages/react/src/components
+     *
+     * @example '/button/Button.tsx'
+     */
+    componentSourcePath: string;
 }
 
 export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
@@ -22,9 +29,9 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
     title,
     description,
     section,
-    children,
     code,
     examples,
+    componentSourcePath,
 }) => {
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
@@ -33,7 +40,12 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
         <div id={id} className="example-layout">
             <div className="example-layout__header">
                 <h2 className="h4-subdued normal-white-space">{section}</h2>
-                <div>Github</div>
+                <GithubButton
+                    ariaLabel="View source code on GitHub"
+                    href={`https://github.com/coveo/plasma/blob/master/packages/react/src/components${componentSourcePath}`}
+                >
+                    View source
+                </GithubButton>
                 <h3 className="h1-light normal-white-space">{title}</h3>
                 <Tile title="" svgName="plasmaComponentBox" description="" href={undefined} />
                 <div>{description}</div>

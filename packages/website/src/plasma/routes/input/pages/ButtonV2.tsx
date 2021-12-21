@@ -28,6 +28,7 @@ export const ButtonV2: React.FunctionComponent = () => {
             description={<Description />}
             code={code}
             examples={{primary: {code: primary, title: 'Primary button'}, small: {code: small, title: 'Small button'}}}
+            componentSourcePath="/button/Button.tsx"
         />
     );
 };

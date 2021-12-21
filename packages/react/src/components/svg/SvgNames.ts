@@ -458,6 +458,7 @@ export const SVG_NAMES = {
     youtubeSourceSm: 'youtubeSourceSm',
     zoomNegative: 'zoomNegative',
     zoomPositive: 'zoomPositive',
+    githubMark: 'githubMark',
 };
 
 export type SvgNames = keyof typeof SVG_NAMES;
