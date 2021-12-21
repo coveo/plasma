@@ -27,7 +27,7 @@ import {${componentName}} from '@coveord/plasma-react';
 const props: React.ComponentProps<typeof ${componentName}> = {`;
         fsMap.set('props.ts', content);
 
-        const env = createVirtualTypeScriptEnvironment(system, [...fsMap.keys()], ts as any, compilerOptions);
+        const env = createVirtualTypeScriptEnvironment(system, [...fsMap.keys()], ts as any, compilerOptions as any);
         const checker = env.languageService.getProgram().getTypeChecker();
         const {entries} = env.languageService.getCompletionsAtPosition('props.ts', content.length, undefined);
         const accumulator: PropInfo[] = [];
