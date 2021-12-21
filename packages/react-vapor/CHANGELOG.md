@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.3.0](https://github.com/coveo/react-vapor/compare/v31.2.0...v31.3.0) (2021-12-21)
+
+
+### Features
+
+* **searchbar:** base for headless search ([a09c1b8](https://github.com/coveo/react-vapor/commit/a09c1b8f40072f2b1b4d0751469b16a6e07cba68))
+* **searchbar:** new cross SVG + ugly style + plug engine to the org ([388be76](https://github.com/coveo/react-vapor/commit/388be768be818398c3d095ccc17cd45d15d0f004))
+
+
+
+
+
 # [31.2.0](https://github.com/coveo/react-vapor/compare/v31.1.1...v31.2.0) (2021-12-20)
 
 **Note:** Version bump only for package react-vapor

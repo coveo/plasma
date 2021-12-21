@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.3.0](https://github.com/coveo/react-vapor/compare/v31.2.0...v31.3.0) (2021-12-21)
+
+
+### Bug Fixes
+
+* fix demo ([87db8ec](https://github.com/coveo/react-vapor/commit/87db8ec29a11ee56364465ba9a3dec1413a0c6cd))
+
+
+### Features
+
+* **css:** search bar somewhat centered ([da2b45a](https://github.com/coveo/react-vapor/commit/da2b45a246f5de9086df6d3a7c2a969790341ef7))
+* **plasmasearchbar:** refeactor + fix the X animation finally xD ([8d67519](https://github.com/coveo/react-vapor/commit/8d67519ad105c02b5cd67f90aa2c01ce6e7f5e22))
+* **searchbar:** base for headless search ([a09c1b8](https://github.com/coveo/react-vapor/commit/a09c1b8f40072f2b1b4d0751469b16a6e07cba68))
+* **searchbar:** new cross SVG + ugly style + plug engine to the org ([388be76](https://github.com/coveo/react-vapor/commit/388be768be818398c3d095ccc17cd45d15d0f004))
+* **searchbar:** progress on style ([1f115e0](https://github.com/coveo/react-vapor/commit/1f115e0cbc8771dc925a3c73f08bb4c9b0ea0904))
+* **standalonesearchbar:** style ok for now with btn ([17603a8](https://github.com/coveo/react-vapor/commit/17603a842fb444e391f1e99c92697e1f455f46dd))
+
+
+
+
+
 # [31.2.0](https://github.com/coveo/react-vapor/compare/v31.1.1...v31.2.0) (2021-12-20)
 
 
