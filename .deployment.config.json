@@ -39,7 +39,7 @@
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
-                "source": "packages/demo/dist",
+                "source": "packages/website/dist",
                 "rd": {
                     "disabled": false
                 }
@@ -55,7 +55,7 @@
                     "exclude": "*.min.*",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/demo/dist",
+                "source": "packages/website/dist",
                 "rd": {
                     "disabled": false
                 }
@@ -73,7 +73,7 @@
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
                     "content-encoding": "gzip"
                 },
-                "source": "packages/vapor/dist",
+                "source": "packages/style/dist",
                 "prd": {
                     "disabled": false
                 }
@@ -90,7 +90,7 @@
                     "acl": "public-read",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/vapor/dist",
+                "source": "packages/style/dist",
                 "prd": {
                     "disabled": false
                 }

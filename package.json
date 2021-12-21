@@ -4,7 +4,7 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "setup": "pnpm install",
-        "start": "pnpm build --stream --filter coveo-styleguide && pnpm --recursive start --parallel --filter coveo-styleguide --filter react-vapor-demo",
+        "start": "pnpm build --stream --filter @coveord/plasma-style && pnpm --recursive start --parallel --filter @coveord/plasma-style --filter @coveord/plasma-website",
         "test": "pnpm --recursive test --parallel",
         "test:ci": "pnpm --recursive test:ci --parallel",
         "clean": "pnpm --recursive clean --parallel",

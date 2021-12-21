@@ -1,14 +1,14 @@
-# React-Vapor
+# Plasma
 
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=flat-square&logo=appveyor)](https://conventionalcommits.org)
 
-React-Vapor is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://vapor.coveo.com/). Vapor package contains the generic style classes used across the components and react-vapor is a react implementation of multiple visual and behavioural components.
+Plasma is Coveo's design system used in Coveo Cloud Administration Console. All components and their documentation are available in [the demo page](https://vapor.coveo.com/). The `@coveord/plasma-style` package contains the generic style classes used across the components and `@coveord/plasma-react` is a react implementation of multiple visual and behavioural components.
 
 ## Usage
 
 ```bash
-npm install react-vapor coveo-styleguide
+npm install @coveord/plasma-react @coveord/plasma-style
 ```
 
 ## Contributing
@@ -43,15 +43,15 @@ Changes made to any source files in any package will make the demo rebuild and r
 
 All new unit tests for components should be written using [Jest](https://jestjs.io/) and [React Testing Library](https://testing-library.com/), and not Enzyme which is being phased out.
 
-Tests are critical in `packages/react-vapor` as this is the source of all components
+Tests are critical in `packages/react` as this is the source of all components
 
 To run all tests from the root, you can run `pnpm test`
 
-Alternatively, you can run it directly from the `packages/react-vapor` package, which also allows using two other testing methods:
+Alternatively, you can run it directly from the `packages/react` package, which also allows using two other testing methods:
 
 #### Watching and Debugging
 
-1. First, make sure you're in the `packages/react-vapor` package.
+1. First, make sure you're in the `packages/react` package.
 2. To watch your tests:
    1. run `pnpm test:watch`, wait for it to start up then hit any key. This will show you the menu. 
    2. Then, for example, to focus on a particular spec file, hit `p` to filter by a filename regex pattern, then the name of a spec file (eg `SingleSelectConnected`). 

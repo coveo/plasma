@@ -1,0 +1,20 @@
+{
+    "extends": "../tsconfig-base",
+    "compilerOptions": {
+        "removeComments": false,
+        "noUnusedLocals": false,
+        "rootDir": "src",
+        "outDir": "built",
+        "baseUrl": ".",
+        "tsBuildInfoFile": "./built/.tsbuildinfo",
+        "paths": {
+            "@coveord/plasma-react": ["../react/src/Entry.ts"],
+            "@coveord/plasma-react/dist/*": ["../react/dist/*"],
+            "@demo-styling/*": ["./src/demo-styling/*"]
+        },
+        "lib": ["ES2020", "dom"],
+        "typeRoots": ["./types", "./node_modules/@types"]
+    },
+    "include": ["src", "docs"],
+    "references": [{"path": "../react/tsconfig.build.json"}]
+}
