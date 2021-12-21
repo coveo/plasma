@@ -38,4 +38,4 @@ const IconItem = ({svgName, fileName}: {svgName: SvgNames; fileName: string}) =>
 );
 
 const getSvgURL = (fileName: string) =>
-    `https://github.com/coveo/plasma/blob/master/packages/vapor/resources/icons/svg/${fileName}`;
+    `https://github.com/coveo/plasma/blob/master/packages/style/resources/icons/svg/${fileName}`;

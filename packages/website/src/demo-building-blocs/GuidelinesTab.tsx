@@ -12,7 +12,7 @@ export const GuidelinesTab: React.FunctionComponent<{id: string}> = ({id}) => (
                     {Guidelines.get(id)}
                 </Markdown>
                 <LinkSvg
-                    url={`https://github.com/coveo/plasma/edit/master/packages/demo/docs/${id}.md`}
+                    url={`https://github.com/coveo/plasma/edit/master/packages/website/docs/${id}.md`}
                     svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
                     linkClasses={['mt5']}
                 >
@@ -25,7 +25,7 @@ export const GuidelinesTab: React.FunctionComponent<{id: string}> = ({id}) => (
                     No guidelines exist for <span className="body-m">{id}</span> yet.
                 </p>
                 <LinkSvg
-                    url={`https://github.com/coveo/plasma/new/master/packages/demo/docs?filename=docs/${id}.md`}
+                    url={`https://github.com/coveo/plasma/new/master/packages/website/docs?filename=docs/${id}.md`}
                     svg={{svgName: 'external', svgClass: 'icon mod-14 ml1'}}
                     linkClasses={['mt5']}
                 >

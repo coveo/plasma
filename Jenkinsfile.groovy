@@ -311,11 +311,11 @@ pipeline {
         script {
           setLastStageName();
           sh "mkdir -p veracode"
-          sh "mkdir -p veracode/demo"
+          sh "mkdir -p veracode/website"
           sh "mkdir -p veracode/react"
 
           // copy all ts and tsx files
-          sh "rsync -arvR ./packages/demo/src/**/*.ts* ./veracode/demo/"
+          sh "rsync -arvR ./packages/website/src/**/*.ts* ./veracode/website/"
           sh "rsync -arvR ./packages/react/src/**/*.ts* ./veracode/react/"
 
           dir('veracode') {
