@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.3.1](https://github.com/coveo/react-vapor/compare/v31.3.0...v31.3.1) (2021-12-21)
+
+**Note:** Version bump only for package react-vapor-demo
+
+
+
+
+
 # [31.3.0](https://github.com/coveo/react-vapor/compare/v31.2.0...v31.3.0) (2021-12-21)
 
 
