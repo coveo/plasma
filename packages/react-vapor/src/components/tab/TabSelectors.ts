@@ -17,7 +17,7 @@ const getSelectedTab = createSelector(
 
 const getTab = createSelector(
     getTabGroup,
-    (state, {id}: CherryPick<ITabOwnProps, 'id'>) => id,
+    (state: any, {id}: CherryPick<ITabOwnProps, 'id'>) => id,
     (tabGroup: ITabGroupState, id: string): ITabState => _.findWhere(tabGroup?.tabs, {id})
 );
 

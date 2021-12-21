@@ -16,10 +16,20 @@ import {InputRoutes} from './plasma/routes/input';
 import {LayoutRoutes} from './plasma/routes/layout';
 import {NotIncludedRoutes} from './plasma/routes/legacy';
 import {NavigationRoutes} from './plasma/routes/navigation';
+import {StandaloneSearchBar} from './searchBar/StandaloneSearchBar';
+import {EngineProvider} from './searchBar/engine/EngineProvider';
 
 const Header = () => (
-    <div id="header" className="flex flex-center space-between demo-header">
-        <img src={logo} className="header-logo" />
+    <div id="header" className="flex demo-header">
+        <a href="/#">
+            <img src={logo} className="header-logo" />
+        </a>
+        <div className="flex space-around search">
+            <EngineProvider>
+                <StandaloneSearchBar id="header" />
+            </EngineProvider>
+        </div>
+        <div className="right-side"></div>
     </div>
 );
 
