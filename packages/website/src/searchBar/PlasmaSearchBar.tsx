@@ -1,12 +1,18 @@
 import '@demo-styling/standaloneSearchBar.scss';
 
-import {buildSearchBox, SearchBox as HeadlessSearchBox} from '@coveo/headless';
+import {
+    buildResultList,
+    buildSearchBox,
+    SearchBox as HeadlessSearchBox,
+    ResultList as HeadlessResultList,
+} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import * as React from 'react';
-import {Button, ListBox, Svg} from '@coveord/plasma-react';
+import {Button, keyCode, Svg} from '@coveord/plasma-react';
 
 import classNames from 'classnames';
 import {EngineContext} from './engine/EngineContext';
+import {PlasmaSearchResultList} from './PlasmaSearchResultList';
 
 interface ISearchboxProps {
     id: string;
@@ -14,20 +20,21 @@ interface ISearchboxProps {
 
 const SearchBoxRenderer: FunctionComponent<{
     id: string;
-    controller: HeadlessSearchBox;
+    searchController: HeadlessSearchBox;
+    resultListController: HeadlessResultList;
 }> = (props) => {
-    const {id, controller} = props;
-    const [state, setState] = useState(controller.state);
+    const {id, searchController, resultListController} = props;
+    const [state, setState] = useState(searchController.state);
 
-    useEffect(() => controller.subscribe(() => setState(controller.state)), []);
+    useEffect(() => searchController.subscribe(() => setState(searchController.state)), []);
 
     const ClearButton = () => (
         <button
             disabled={state.value === ''}
             className={classNames('clear-button', {'search-not-empty': state.value !== ''})}
             onClick={() => {
-                controller.updateText('');
-                controller.submit();
+                searchController.updateText('');
+                searchController.submit();
             }}
         >
             <Svg svgName="cross" svgClass="icon" />
@@ -38,26 +45,11 @@ const SearchBoxRenderer: FunctionComponent<{
         <Button
             classes={['search-button']}
             onClick={() => {
-                controller.submit();
+                searchController.submit();
             }}
         >
             <Svg svgName={'search'} className="icon mod-stroke" />
         </Button>
-    );
-
-    const SearchResultListBox = () => (
-        <>
-            {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
-                <ListBox
-                    classes={['search-results-container']}
-                    isLoading={state.isLoadingSuggestions}
-                    items={state.suggestions.map((s) => ({
-                        value: s.rawValue,
-                        displayValue: s.highlightedValue,
-                    }))}
-                />
-            )}
-        </>
     );
 
     return (
@@ -70,19 +62,20 @@ const SearchBoxRenderer: FunctionComponent<{
                     type="text"
                     placeholder={'Find a component...'}
                     value={state.value}
-                    onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyDown={(event) => event.key === 'Enter' && controller.submit()}
+                    onChange={(event) => searchController.updateText(event.target.value)}
+                    onKeyDown={(event) => event.keyCode === keyCode.enter && searchController.submit()}
                 />
                 <ClearButton />
                 <SearchButton />
-                <SearchResultListBox />
+                <PlasmaSearchResultList controller={resultListController} />
             </form>
         </div>
     );
 };
 
-export const StandaloneSearchBar: FunctionComponent<ISearchboxProps> = ({id}) => {
+export const PlasmaSearchBar: FunctionComponent<ISearchboxProps> = ({id}) => {
     const engine = useContext(EngineContext);
     const controller = buildSearchBox(engine, {options: {id}});
-    return <SearchBoxRenderer controller={controller} id={id} />;
+    const resultListController = buildResultList(engine, {options: {fieldsToInclude: ['componentname']}});
+    return <SearchBoxRenderer searchController={controller} resultListController={resultListController} id={id} />;
 };
