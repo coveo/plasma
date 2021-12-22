@@ -33,8 +33,8 @@ const SearchBoxRenderer: FunctionComponent<{
             disabled={state.value === ''}
             className={classNames('clear-button', {'search-not-empty': state.value !== ''})}
             onClick={() => {
-                searchController.updateText('');
-                searchController.submit();
+                searchController.clear();
+                // trouver une façon de clearer la listBox en même temps xD
             }}
         >
             <Svg svgName="cross" svgClass="icon" />

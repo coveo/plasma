@@ -13,13 +13,13 @@ export const PlasmaSearchResultList: FunctionComponent<ResultListProps> = (props
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), []);
 
-    const triggerAlertFunction = (item: IItemBoxProps) => {
-        alert(`The item value triggered is ${item.value}`);
+    const navigate = (item: IItemBoxProps) => {
+        window.open(item.value, '_self');
     };
 
     const results: IItemBoxProps[] = state.results.map((s) => ({
         value: s.clickUri,
-        displayValue: s.excerpt,
+        displayValue: s.raw.componentname,
     }));
 
     return (
@@ -29,7 +29,7 @@ export const PlasmaSearchResultList: FunctionComponent<ResultListProps> = (props
                     classes={['search-results-container']}
                     isLoading={state.isLoading}
                     items={results}
-                    onOptionClick={triggerAlertFunction}
+                    onOptionClick={navigate}
                 />
             )}
         </>
