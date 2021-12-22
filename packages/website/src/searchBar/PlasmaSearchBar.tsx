@@ -1,4 +1,4 @@
-import '@demo-styling/standaloneSearchBar.scss';
+import '@demo-styling/plasmaSearchBar.scss';
 
 import {
     buildResultList,
@@ -53,7 +53,7 @@ const SearchBoxRenderer: FunctionComponent<{
     );
 
     return (
-        <div className="standaloneSearchBar">
+        <div className="plasmaSearchBar">
             {/* Prevents chrome from providing autocompletions */}
             <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
                 <input

@@ -3,7 +3,7 @@ $button-border-width: 1px;
 $search-bar-heigh: 48px;
 $search-bar-min-width: 648px;
 
-.standaloneSearchBar {
+.plasmaSearchBar {
     .search-bar {
         position: relative;
         min-width: $search-bar-min-width;
@@ -64,6 +64,7 @@ $search-bar-min-width: 648px;
         ~ .search-results-container {
             position: fixed;
             min-width: $search-bar-min-width;
+            max-width: $search-bar-min-width;
             border-radius: 8px;
             box-shadow: var(--medium-elevation-on-neutral);
         }
