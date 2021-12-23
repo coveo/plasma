@@ -5,6 +5,9 @@ import {
     buildSearchBox,
     SearchBox as HeadlessSearchBox,
     ResultList as HeadlessResultList,
+    loadSearchHubActions,
+    loadSearchActions,
+    loadSearchAnalyticsActions,
 } from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import * as React from 'react';
@@ -20,13 +23,19 @@ interface ISearchboxProps {
 
 const SearchBoxRenderer: FunctionComponent<{
     id: string;
+    setSearchHub: (searchHub: string) => void;
+    executeSearch: () => void;
     searchController: HeadlessSearchBox;
     resultListController: HeadlessResultList;
 }> = (props) => {
-    const {id, searchController, resultListController} = props;
+    const {id, setSearchHub, executeSearch, searchController, resultListController} = props;
     const [state, setState] = useState(searchController.state);
 
     useEffect(() => searchController.subscribe(() => setState(searchController.state)), []);
+
+    useEffect(() => {
+        setSearchHub('plasmaComponents');
+    }, []);
 
     const ClearButton = () => (
         <button
@@ -54,12 +63,17 @@ const SearchBoxRenderer: FunctionComponent<{
 
     return (
         <div className="plasmaSearchBar">
-            {/* Prevents chrome from providing autocompletions */}
-            <form autoComplete="off" onSubmit={(e) => e.preventDefault()}>
+            <form
+                autoComplete="off"
+                onSubmit={(e) => {
+                    e.preventDefault();
+                    executeSearch();
+                }}
+            >
                 <input
                     id={id}
                     className="search-bar"
-                    type="text"
+                    type="search"
                     placeholder={'Find a component...'}
                     value={state.value}
                     onChange={(event) => searchController.updateText(event.target.value)}
@@ -75,7 +89,19 @@ const SearchBoxRenderer: FunctionComponent<{
 
 export const PlasmaSearchBar: FunctionComponent<ISearchboxProps> = ({id}) => {
     const engine = useContext(EngineContext);
+    const {setSearchHub} = loadSearchHubActions(engine);
+    const {executeSearch} = loadSearchActions(engine);
+    const {logSearchboxSubmit} = loadSearchAnalyticsActions(engine);
     const controller = buildSearchBox(engine, {options: {id}});
     const resultListController = buildResultList(engine, {options: {fieldsToInclude: ['componentname']}});
-    return <SearchBoxRenderer searchController={controller} resultListController={resultListController} id={id} />;
+
+    return (
+        <SearchBoxRenderer
+            setSearchHub={(searchHub) => engine.dispatch(setSearchHub(searchHub))}
+            executeSearch={() => engine.dispatch(executeSearch(logSearchboxSubmit()))}
+            searchController={controller}
+            resultListController={resultListController}
+            id={id}
+        />
+    );
 };
