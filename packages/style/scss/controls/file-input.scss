@@ -2,13 +2,17 @@
     position: relative;
     display: flex;
     width: 100%;
+    margin-top: $button-margin-width;
+
+    .input-field {
+        margin-top: 0;
+    }
 
     .file-path-wrapper {
         flex-grow: 1;
     }
 
     .btn {
-        margin-top: $button-margin-width;
         margin-left: $button-margin-width;
 
         input {
