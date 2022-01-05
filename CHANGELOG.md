@@ -3,6 +3,28 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.5.1](https://github.com/coveo/plasma/compare/v31.5.0...v31.5.1) (2022-01-05)
+
+
+### Bug Fixes
+
+* the area above the file input is no longer clickable ([011ce39](https://github.com/coveo/plasma/commit/011ce39c1064afc81a9964786ae6a95f8899d87b))
+
+
+
+
+
+# [31.5.0](https://github.com/coveo/plasma/compare/v31.4.0...v31.5.0) (2021-12-22)
+
+
+### Features
+
+* **website:** implement github button ([c4a2143](https://github.com/coveo/plasma/commit/c4a2143b15e989c98992d24695e769a5e399d22b))
+
+
+
+
+
 # [31.4.0](https://github.com/coveo/plasma/compare/v31.3.1...v31.4.0) (2021-12-21)
 
 
