@@ -3,19 +3,16 @@ import '@demo-styling/plasmaSearchBar.scss';
 import {
     buildResultList,
     buildSearchBox,
-    SearchBox as HeadlessSearchBox,
     ResultList as HeadlessResultList,
+    SearchBox as HeadlessSearchBox,
     loadSearchHubActions,
-    loadSearchActions,
-    loadSearchAnalyticsActions,
 } from '@coveo/headless';
-import {FunctionComponent, useContext, useEffect, useState} from 'react';
+import {FunctionComponent, useContext, useEffect, useRef, useState} from 'react';
 import * as React from 'react';
-import {Button, keyCode, Svg} from '@coveord/plasma-react';
+import {Button, IItemBoxProps, keyCode, ListBox, Svg} from '@coveord/plasma-react';
 
 import classNames from 'classnames';
 import {EngineContext} from './engine/EngineContext';
-import {PlasmaSearchResultList} from './PlasmaSearchResultList';
 
 interface ISearchboxProps {
     id: string;
@@ -24,26 +21,36 @@ interface ISearchboxProps {
 const SearchBoxRenderer: FunctionComponent<{
     id: string;
     setSearchHub: (searchHub: string) => void;
-    executeSearch: () => void;
     searchController: HeadlessSearchBox;
     resultListController: HeadlessResultList;
 }> = (props) => {
-    const {id, setSearchHub, executeSearch, searchController, resultListController} = props;
-    const [state, setState] = useState(searchController.state);
+    const {id, setSearchHub, searchController, resultListController} = props;
+    const [stateSearchBox, setStateSearchBox] = useState(searchController.state);
+    const [stateResultList, setStateResultList] = useState(resultListController.state);
+    const previousSearchId = useRef('');
 
-    useEffect(() => searchController.subscribe(() => setState(searchController.state)), []);
-
+    useEffect(() => searchController.subscribe(() => setStateSearchBox(searchController.state)), []);
+    useEffect(() => resultListController.subscribe(() => setStateResultList(resultListController.state)), []);
     useEffect(() => {
         setSearchHub('plasmaComponents');
     }, []);
 
+    const isNewSearchEvent = () => {
+        const currentSearchId = stateResultList.searchResponseId;
+
+        if (currentSearchId !== previousSearchId.current) {
+            previousSearchId.current = currentSearchId;
+            return true;
+        }
+        return false;
+    };
+
     const ClearButton = () => (
         <button
-            disabled={state.value === ''}
-            className={classNames('clear-button', {'search-not-empty': state.value !== ''})}
+            disabled={stateSearchBox.value === ''}
+            className={classNames('clear-button', {'search-not-empty': stateSearchBox.value !== ''})}
             onClick={() => {
                 searchController.clear();
-                // trouver une façon de clearer la listBox en même temps xD
             }}
         >
             <Svg svgName="cross" svgClass="icon" />
@@ -61,13 +68,32 @@ const SearchBoxRenderer: FunctionComponent<{
         </Button>
     );
 
+    const ResultList = () => {
+        const navigate = (item: IItemBoxProps) => {
+            window.open(item.value, '_self');
+        };
+
+        const results: IItemBoxProps[] = stateResultList.results.map((result) => ({
+            value: result.clickUri,
+            displayValue: result.raw.componentname,
+        }));
+
+        return (
+            <ListBox
+                classes={['search-results-container']}
+                isLoading={stateResultList.isLoading}
+                items={results}
+                onOptionClick={navigate}
+            />
+        );
+    };
+
     return (
         <div className="plasmaSearchBar">
             <form
                 autoComplete="off"
                 onSubmit={(e) => {
                     e.preventDefault();
-                    executeSearch();
                 }}
             >
                 <input
@@ -75,13 +101,13 @@ const SearchBoxRenderer: FunctionComponent<{
                     className="search-bar"
                     type="search"
                     placeholder={'Find a component...'}
-                    value={state.value}
+                    value={stateSearchBox.value}
                     onChange={(event) => searchController.updateText(event.target.value)}
                     onKeyDown={(event) => event.keyCode === keyCode.enter && searchController.submit()}
                 />
                 <ClearButton />
                 <SearchButton />
-                <PlasmaSearchResultList controller={resultListController} />
+                {isNewSearchEvent() && (stateResultList.isLoading || stateResultList.hasResults) && <ResultList />}
             </form>
         </div>
     );
@@ -90,15 +116,12 @@ const SearchBoxRenderer: FunctionComponent<{
 export const PlasmaSearchBar: FunctionComponent<ISearchboxProps> = ({id}) => {
     const engine = useContext(EngineContext);
     const {setSearchHub} = loadSearchHubActions(engine);
-    const {executeSearch} = loadSearchActions(engine);
-    const {logSearchboxSubmit} = loadSearchAnalyticsActions(engine);
     const controller = buildSearchBox(engine, {options: {id}});
     const resultListController = buildResultList(engine, {options: {fieldsToInclude: ['componentname']}});
 
     return (
         <SearchBoxRenderer
             setSearchHub={(searchHub) => engine.dispatch(setSearchHub(searchHub))}
-            executeSearch={() => engine.dispatch(executeSearch(logSearchboxSubmit()))}
             searchController={controller}
             resultListController={resultListController}
             id={id}
