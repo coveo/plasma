@@ -63,9 +63,9 @@ describe('Option picker', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = optionPicker.props().onRender;
+            const view = optionPicker.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

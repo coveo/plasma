@@ -87,7 +87,7 @@ describe('Tab', () => {
     });
 
     describe('Navigation', () => {
-        beforeEach(() => {
+        const renderView = () =>
             render(
                 <div>
                     <TabNavigation>
@@ -104,9 +104,9 @@ describe('Tab', () => {
                     </TabContent>
                 </div>
             );
-        });
 
         it('displays the first panel by default', () => {
+            renderView();
             const tabPanel1 = screen.getByRole('tabpanel', {name: /Tab 1/i});
             expect(tabPanel1).toBeVisible();
             expect(within(tabPanel1).getByText(/content tab 1/i)).toBeVisible();
@@ -115,6 +115,7 @@ describe('Tab', () => {
         });
 
         it('displays the panel associated with the active panel', () => {
+            renderView();
             const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
             const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
             const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
@@ -139,6 +140,7 @@ describe('Tab', () => {
         });
 
         it('supports keyboard navigation between tabs', () => {
+            renderView();
             const tab1 = screen.getByRole('tab', {name: /Tab 1/i});
             const tab2 = screen.getByRole('tab', {name: /Tab 2/i});
             const tab3 = screen.getByRole('tab', {name: /Tab 3/i});
@@ -165,6 +167,7 @@ describe('Tab', () => {
         });
 
         it('does not display the panel associated with a disabled tab', () => {
+            renderView();
             userEvent.click(screen.getByRole('tab', {name: /Tab 4/i}));
             expect(screen.queryByRole('tabpanel', {name: /Tab 4/i})).not.toBeInTheDocument();
         });

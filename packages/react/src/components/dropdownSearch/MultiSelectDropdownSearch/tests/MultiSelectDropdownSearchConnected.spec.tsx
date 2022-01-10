@@ -54,11 +54,9 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         describe('mount and unmount', () => {
-            beforeEach(() => {
-                renderMultiSelectDropdownSearchConnected(props);
-            });
-
             it('should add a new dropdownSearch state in the store when mounted', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 wrapper.unmount();
                 store.dispatch(clearState());
 
@@ -70,6 +68,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should call onDestroy prop when will unmount', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 wrapper.unmount();
 
                 expect(store.getState().dropdownSearch.length).toBe(0);
@@ -77,59 +77,73 @@ describe('MultiSelectDropdownSearch', () => {
         });
 
         describe('mapDispatchToProps', () => {
-            beforeEach(() => {
-                renderMultiSelectDropdownSearchConnected(props);
-            });
-
             it('should get what to do on destroy as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onDestroyProp = multiSelectDropdownSearchConnected.props().onDestroy;
 
                 expect(onDestroyProp).toBeDefined();
             });
 
             it('should get what to do on onMount as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onMountProp = multiSelectDropdownSearchConnected.props().onMount;
 
                 expect(onMountProp).toBeDefined();
             });
 
             it('should get what to do on onBlur as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onBlurProp = multiSelectDropdownSearchConnected.props().onBlur;
 
                 expect(onBlurProp).toBeDefined();
             });
 
             it('should get what to do on onOptionClick as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onOptionClickProp = multiSelectDropdownSearchConnected.props().onOptionClick;
 
                 expect(onOptionClickProp).toBeDefined();
             });
 
             it('should get what to do on onCustomOptionClick as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onCustomOptionClickProp = multiSelectDropdownSearchConnected.props().onCustomOptionClick;
 
                 expect(onCustomOptionClickProp).toBeDefined();
             });
 
             it('should get what to do on onFilterTextChange as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onFilterClickProp = multiSelectDropdownSearchConnected.props().onFilterTextChange;
 
                 expect(onFilterClickProp).toBeDefined();
             });
 
             it('should get what to do on onKeyDownFilterBox as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onKeyDownFilterBox = multiSelectDropdownSearchConnected.props().onKeyDownFilterBox;
 
                 expect(onKeyDownFilterBox).toBeDefined();
             });
 
             it('should get what to do on onRemoveSelectedOption as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onRemoveSelectedOption = multiSelectDropdownSearchConnected.props().onRemoveSelectedOption;
 
                 expect(onRemoveSelectedOption).toBeDefined();
             });
 
             it('should get what to do on onRemoveAllSelectedOptions as a prop', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const onRemoveAllSelectedOptions = multiSelectDropdownSearchConnected.props()
                     .onRemoveAllSelectedOptions;
 
@@ -137,6 +151,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should toggle the close dropdown on blur', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const dropdown = wrapper.find('.dropdown');
 
                 store.dispatch(closeDropdownSearch(id, []));
@@ -147,6 +163,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should open the dropdown on focus', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 store.dispatch(closeDropdownSearch(id, []));
                 wrapper.update();
 
@@ -157,6 +175,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should add the selected value in the state on click an option', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 store.dispatch(updateOptionsDropdownSearch(id, [{value: 'test 1'}, {value: 'test 2'}]));
                 store.dispatch(openDropdownSearch(id));
 
@@ -169,6 +189,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should add the filterText in the state on onFilterTextChange', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const filter: string = 't';
 
                 expect(store.getState().dropdownSearch[0].filterText).toBe('');
@@ -179,6 +201,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should add a custom option on custom option click', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const filterText: string = 'filter_text';
                 multiSelectDropdownSearchConnected.props().onCustomOptionClick(filterText);
 
@@ -186,6 +210,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should update filterText on key down', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const enterKeyCode: number = keyCode.enter;
                 const filterText: string = 'custom value';
 
@@ -197,6 +223,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should remove selected option', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const selectedOptionValue = 'value';
 
                 store.dispatch(addCustomSelectedOption(id, selectedOptionValue));
@@ -209,6 +237,8 @@ describe('MultiSelectDropdownSearch', () => {
             });
 
             it('should remove all selected option', () => {
+                renderMultiSelectDropdownSearchConnected(props);
+
                 const selectedOptionValue1 = 'value_1';
                 const selectedOptionValue2 = 'value_2';
 

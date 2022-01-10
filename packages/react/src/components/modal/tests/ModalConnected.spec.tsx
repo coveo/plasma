@@ -49,9 +49,9 @@ describe('Modal', () => {
     });
 
     it('should get what to do on render as a prop', () => {
-        const onRenderProp = modal.props().onRender;
+        const view = modal.props().onRender;
 
-        expect(onRenderProp).toBeDefined();
+        expect(view).toBeDefined();
     });
 
     it('should get what to do on destroy as a prop', () => {

@@ -68,9 +68,9 @@ describe('ListBox', () => {
 
         it('should get what to do on onMount as a prop', () => {
             mountListBox();
-            const onRenderProp = listBox.props().onRender;
+            const view = listBox.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

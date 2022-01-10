@@ -41,9 +41,9 @@ describe('SubNavigation', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = subNavigation.props().onRender;
+            const view = subNavigation.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

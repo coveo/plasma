@@ -1,4 +1,4 @@
-import {act, render, screen} from '@test-utils';
+import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
@@ -65,9 +65,8 @@ describe('SingleSelectWithDirty', () => {
         );
 
         userEvent.click(screen.getByRole('button', {name: /old value/i}));
-        act(() => {
-            userEvent.click(screen.getByRole('option', {name: /new value/i}));
-        });
+
+        userEvent.click(screen.getByRole('option', {name: /new value/i}));
 
         expect(screen.getByText(/is dirty/)).toBeInTheDocument();
     });

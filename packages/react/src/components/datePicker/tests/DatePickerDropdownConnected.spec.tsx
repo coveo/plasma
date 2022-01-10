@@ -127,9 +127,9 @@ describe('Date picker', () => {
             });
 
             it('should get what to do on render as a prop', () => {
-                const onRenderProp = datePickerDropdown.props().onRender;
+                const view = datePickerDropdown.props().onRender;
 
-                expect(onRenderProp).toBeDefined();
+                expect(view).toBeDefined();
             });
 
             it('should get what to do on destroy as a prop', () => {

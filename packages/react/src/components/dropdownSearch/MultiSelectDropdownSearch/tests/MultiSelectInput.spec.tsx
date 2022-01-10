@@ -23,16 +23,14 @@ describe('MultiSelectInput', () => {
             multiSelectInput = mount(<MultiselectInput {...curentProps} />, {attachTo: document.getElementById('App')});
         };
 
-        beforeEach(() => {
-            renderMultiSelectInput(props);
-        });
-
         afterEach(() => {
             multiSelectInput?.unmount();
         });
 
         describe('render', () => {
             it('should render placeholder text', () => {
+                renderMultiSelectInput(props);
+
                 const filterPlaceholder = 'placeholdertext';
                 multiSelectInput.setProps({filterPlaceholder});
 
@@ -40,6 +38,8 @@ describe('MultiSelectInput', () => {
             });
 
             it('should render filter text', () => {
+                renderMultiSelectInput(props);
+
                 const filterText = 'text';
                 multiSelectInput.setProps({filterText});
 
@@ -47,24 +47,34 @@ describe('MultiSelectInput', () => {
             });
 
             it('should not render the remove-all button if there are no options given', () => {
+                renderMultiSelectInput(props);
+
                 expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(0);
             });
 
             it('should render all the supplied selected options', () => {
+                renderMultiSelectInput(props);
+
                 multiSelectInput.setProps({selectedOptions});
 
                 expect(multiSelectInput.find('SelectedOption').length).toBe(selectedOptions.length);
             });
 
             it('should not render any selected options if none provided', () => {
+                renderMultiSelectInput(props);
+
                 expect(multiSelectInput.find('SelectedOption').length).toBe(0);
             });
 
             it('should not render the remove-all button if there are no selected options', () => {
+                renderMultiSelectInput(props);
+
                 expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(0);
             });
 
             it('should render the remove-all button if there are selected options', () => {
+                renderMultiSelectInput(props);
+
                 multiSelectInput.setProps({selectedOptions});
 
                 expect(multiSelectInput.find('.remove-all-selected-options').length).toBe(1);
@@ -73,6 +83,8 @@ describe('MultiSelectInput', () => {
 
         describe('handle functions', () => {
             it('should handle on remove all', () => {
+                renderMultiSelectInput(props);
+
                 const onRemoveAll = jest.fn();
 
                 multiSelectInput.setProps({
@@ -86,6 +98,8 @@ describe('MultiSelectInput', () => {
             });
 
             it('should handle on input change', () => {
+                renderMultiSelectInput(props);
+
                 const onInputChange = jest.fn();
 
                 multiSelectInput.setProps({
@@ -98,6 +112,8 @@ describe('MultiSelectInput', () => {
             });
 
             it('should handle on blur', () => {
+                renderMultiSelectInput(props);
+
                 const onBlur = jest.fn();
 
                 multiSelectInput.setProps({
@@ -110,6 +126,8 @@ describe('MultiSelectInput', () => {
             });
 
             it('should handle on focus', () => {
+                renderMultiSelectInput(props);
+
                 const onFocus = jest.fn();
 
                 multiSelectInput.setProps({
@@ -122,6 +140,8 @@ describe('MultiSelectInput', () => {
             });
 
             it('should handle on key down', () => {
+                renderMultiSelectInput(props);
+
                 const onKeyDown = jest.fn();
 
                 multiSelectInput.setProps({

@@ -16,16 +16,14 @@ describe('SelectedOption', () => {
             selectedOption = mount(<SelectedOption {...currentProps} />, {attachTo: document.getElementById('App')});
         };
 
-        beforeEach(() => {
-            renderSelectedOption(props);
-        });
-
         afterEach(() => {
             selectedOption?.unmount();
         });
 
         describe('render', () => {
             it('should render the display value in the selectedOption', () => {
+                renderSelectedOption(props);
+
                 const label: string = 'displayTest';
                 selectedOption.setProps({label});
 
@@ -35,6 +33,8 @@ describe('SelectedOption', () => {
 
         describe('remove option', () => {
             it('should call remove option when click on the remove-option div', () => {
+                renderSelectedOption(props);
+
                 const onRemoveOptionClick = jest.fn();
                 selectedOption.setProps({onRemoveClick: onRemoveOptionClick});
 
@@ -44,6 +44,8 @@ describe('SelectedOption', () => {
             });
 
             it('should not call remove option when clicking anywhere else', () => {
+                renderSelectedOption(props);
+
                 const onRemoveOptionClick = jest.fn();
                 selectedOption.setProps({onRemoveClick: onRemoveOptionClick});
 
