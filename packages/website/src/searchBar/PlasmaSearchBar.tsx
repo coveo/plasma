@@ -107,7 +107,7 @@ const SearchBoxRenderer: FunctionComponent<{
                 />
                 <ClearButton />
                 <SearchButton />
-                {isNewSearchEvent() && (stateResultList.isLoading || stateResultList.hasResults) && <ResultList />}
+                {isNewSearchEvent() && <ResultList />}
             </form>
         </div>
     );
