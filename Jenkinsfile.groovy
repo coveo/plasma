@@ -107,7 +107,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm build"
+          sh "pnpm --use-beta-cli --recursive build"
         }
       }
 
