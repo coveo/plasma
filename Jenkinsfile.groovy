@@ -118,25 +118,25 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      when {
-        expression { !skipRemainingStages }
-      }
+    // stage('Test') {
+    //   when {
+    //     expression { !skipRemainingStages }
+    //   }
 
-      steps {
-        script {
-          setLastStageName();
-          sh "pnpm test:ci"
-          sh "pnpm --recursive report-coverage"
-        }
-      }
+    //   steps {
+    //     script {
+    //       setLastStageName();
+    //       sh "pnpm test:ci"
+    //       sh "pnpm --recursive report-coverage"
+    //     }
+    //   }
 
-      post {
-        failure {
-          postCommentOnGithub();
-        }
-      }
-    }
+    //   post {
+    //     failure {
+    //       postCommentOnGithub();
+    //     }
+    //   }
+    // }
 
     stage('Deploy PR demo') {
       when {
