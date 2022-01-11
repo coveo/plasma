@@ -29,9 +29,9 @@ const SearchBoxRenderer: FunctionComponent<{
     const [stateResultList, setStateResultList] = useState(resultListController.state);
     const previousSearchId = useRef('');
 
-    useEffect(() => searchController.subscribe(() => setStateSearchBox(searchController.state)), []);
-    useEffect(() => resultListController.subscribe(() => setStateResultList(resultListController.state)), []);
     useEffect(() => {
+        searchController.subscribe(() => setStateSearchBox(searchController.state));
+        resultListController.subscribe(() => setStateResultList(resultListController.state));
         setSearchHub('plasmaComponents');
     }, []);
 
@@ -107,7 +107,7 @@ const SearchBoxRenderer: FunctionComponent<{
                 />
                 <ClearButton />
                 <SearchButton />
-                {isNewSearchEvent() && (stateResultList.isLoading || stateResultList.hasResults) && <ResultList />}
+                {isNewSearchEvent() && <ResultList />}
             </form>
         </div>
     );
