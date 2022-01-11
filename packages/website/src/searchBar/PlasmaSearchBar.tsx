@@ -29,11 +29,11 @@ const SearchBoxRenderer: FunctionComponent<{
     const [stateResultList, setStateResultList] = useState(resultListController.state);
     const previousSearchId = useRef('');
 
-    useEffect(() => searchController.subscribe(() => setStateSearchBox(searchController.state)), []);
-    useEffect(() => resultListController.subscribe(() => setStateResultList(resultListController.state)), []);
-    useEffect(() => {
-        setSearchHub('plasmaComponents');
-    }, []);
+useEffect(() => {
+    searchController.subscribe(() => setStateSearchBox(searchController.state));
+    resultListController.subscribe(() => setStateResultList(resultListController.state))
+    setSearchHub('plasmaComponents');
+}), []);
 
     const isNewSearchEvent = () => {
         const currentSearchId = stateResultList.searchResponseId;
