@@ -1,4 +1,4 @@
-import {fireEvent, render, screen, act} from '@test-utils';
+import {fireEvent, render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
@@ -169,9 +169,7 @@ describe('Select', () => {
 
             expect(screen.queryByRole('button', {name: /select one/})).not.toBeInTheDocument();
 
-            act(() => {
-                userEvent.click(screen.getByRole('img', {name: /clear icon/}));
-            });
+            userEvent.click(screen.getByRole('img', {name: /clear icon/}));
 
             expect(screen.getByRole('button', {name: /select one/})).toBeInTheDocument();
         });

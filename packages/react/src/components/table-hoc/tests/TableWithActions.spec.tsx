@@ -93,6 +93,8 @@ describe('Table HOC', () => {
 
             await waitFor(() => {
                 expect(screen.getByRole('button', {name: 'first one'})).toBeVisible();
+            });
+            await waitFor(() => {
                 expect(screen.getByRole('button', {name: 'second one'})).toBeVisible();
             });
         });
@@ -135,7 +137,11 @@ describe('Table HOC', () => {
 
             await waitFor(() => {
                 expect(screen.getByRole('button', {name: 'third one'})).toBeVisible();
+            });
+            await waitFor(() => {
                 expect(screen.getByRole('button', {name: 'fourth one'})).toBeVisible();
+            });
+            await waitFor(() => {
                 expect(screen.getByRole('button', {name: 'fifth one'})).toBeVisible();
             });
         });

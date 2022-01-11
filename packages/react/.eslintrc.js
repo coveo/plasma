@@ -17,6 +17,7 @@ module.exports = {
             extends: ['plugin:jest/recommended', 'plugin:testing-library/react', 'plugin:jest-dom/recommended'],
             rules: {
                 'jest/expect-expect': ['warn', {assertFunctionNames: ['expect*', 'assert*']}],
+                'testing-library/no-node-access': ['warn'],
             },
         },
     ],

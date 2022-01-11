@@ -44,9 +44,9 @@ describe('Dropdown', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = dropdown.props().onRender;
+            const view = dropdown.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

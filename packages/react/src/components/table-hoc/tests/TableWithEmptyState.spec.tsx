@@ -35,6 +35,7 @@ describe('TableWithEmptyState', () => {
     it('renders the loading table if the table is empty after waiting 50 ms but still loading', () => {
         jest.useFakeTimers();
         let update: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => void;
+        // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
             const {rerender} = render(
                 <TableWithEmptyState id="🌶" data={[]} renderBody={() => null} emptyState={<EmptyState />} isLoading />,
@@ -55,6 +56,7 @@ describe('TableWithEmptyState', () => {
     it('renders the table if the table is not empty after waiting 50 ms', () => {
         jest.useFakeTimers();
         let update: (ui: React.ReactElement<any, string | React.JSXElementConstructor<any>>) => void;
+        // eslint-disable-next-line testing-library/no-unnecessary-act
         act(() => {
             const {rerender} = render(
                 <TableWithEmptyState id="🌶" data={['🤓']} renderBody={() => null} emptyState={<EmptyState />} />,

@@ -1,3 +1,4 @@
+/* eslint-disable testing-library/no-render-in-setup */
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';

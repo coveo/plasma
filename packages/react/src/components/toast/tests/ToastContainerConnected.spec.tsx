@@ -36,9 +36,9 @@ describe('Toasts', () => {
         });
 
         it('should get onRender as a prop', () => {
-            const onRenderProp = component.props().onRender;
+            const view = component.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get onDestroy as a prop', () => {

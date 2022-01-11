@@ -39,9 +39,9 @@ describe('Options cycle', () => {
 
         it('should get what to do on render as a prop', () => {
             optionsCycle = shallowCycleWithProps();
-            const onRenderProp = optionsCycle.props().onRender;
+            const view = optionsCycle.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

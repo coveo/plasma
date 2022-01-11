@@ -111,9 +111,9 @@ describe('Facets', () => {
         });
 
         it('should get what to do when rendering the facet as a prop', () => {
-            const onRenderProp = facetComponent.props().onRender;
+            const view = facetComponent.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do when destroying the facet as a prop', () => {

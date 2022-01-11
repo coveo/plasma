@@ -106,9 +106,9 @@ describe('Actions', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = actionBar.props().onRender;
+            const view = actionBar.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should what to do on destroy as a prop', () => {
