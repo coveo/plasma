@@ -10,7 +10,7 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
 }
 
 library(
-    identifier: "jsadmin_pipeline@UITOOL-349/better-demo-link-comment-in-prs",
+    identifier: "jsadmin_pipeline@master",
     retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
     changelog: false
 )
