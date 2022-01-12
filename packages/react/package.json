@@ -84,7 +84,7 @@
         "@types/escape-string-regexp": "1.0.0",
         "@types/faker": "4.1.12",
         "@types/jest": "27.0.3",
-        "@types/jquery": "2.0.57",
+        "@types/jquery": "3.5.13",
         "@types/loadable__component": "5.13.4",
         "@types/lorem-ipsum": "2.0.0",
         "@types/react": "16.14.21",

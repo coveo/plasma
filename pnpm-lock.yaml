@@ -69,7 +69,7 @@ importers:
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
       '@types/jest': 27.0.3
-      '@types/jquery': 2.0.57
+      '@types/jquery': 3.5.13
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.14.21
@@ -186,7 +186,7 @@ importers:
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
       '@types/jest': 27.0.3
-      '@types/jquery': 2.0.57
+      '@types/jquery': 3.5.13
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.14.21
@@ -2571,7 +2571,7 @@ packages:
   /@types/chosen-js/1.8.3:
     resolution: {integrity: sha512-HoXjB21X12y1D8x9G2qSSqea1zGelwWciZbHTh3Mm3GW4pgme3sNLM+IiGkkcwCfr2DsvskjG1qOAlFsav5ojA==}
     dependencies:
-      '@types/jquery': 2.0.57
+      '@types/jquery': 3.5.13
     dev: true
 
   /@types/classnames/2.3.0:
@@ -2689,8 +2689,10 @@ packages:
       pretty-format: 27.4.2
     dev: true
 
-  /@types/jquery/2.0.57:
-    resolution: {integrity: sha512-QUJ5wVL8iTZofgZjCfVnHxcMqqPPLfVfEKe8rfksMdmSmqEenpcpEBQO45VSSfng/tunwoLF+3I8rzEzVhYNLQ==}
+  /@types/jquery/3.5.13:
+    resolution: {integrity: sha512-ZxJrup8nz/ZxcU0vantG+TPdboMhB24jad2uSap50zE7Q9rUeYlCF25kFMSmHR33qoeOgqcdHEp3roaookC0Sg==}
+    dependencies:
+      '@types/sizzle': 2.3.3
     dev: true
 
   /@types/json-schema/7.0.7:
@@ -2936,6 +2938,10 @@ packages:
 
   /@types/scheduler/0.16.2:
     resolution: {integrity: sha512-hppQEBDmlwhFAXKJX2KnWLYu5yMfi91yazPb2l+lbJiwW+wdo1gNeRA+3RgNSO39WYX2euey41KEwnqesU2Jew==}
+
+  /@types/sizzle/2.3.3:
+    resolution: {integrity: sha512-JYM8x9EGF163bEyhdJBpR2QX1R5naCJHC8ucJylJ3w9/CVBaskdQ8WqBf8MmQrd1kRvp/a4TS8HJ+bxzR7ZJYQ==}
+    dev: true
 
   /@types/source-list-map/0.1.2:
     resolution: {integrity: sha512-K5K+yml8LTo9bWJI/rECfIPrGgxdpeNbj+d53lwN4QjW1MCwlkhUms+gtdzigTeUyBr09+u8BwOIY3MXvHdcsA==}
