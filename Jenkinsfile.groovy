@@ -10,7 +10,7 @@ if (currentBuild.rawBuild.getCauses().toString().contains('BranchIndexingCause')
 }
 
 library(
-    identifier: "jsadmin_pipeline@master",
+    identifier: "jsadmin_pipeline@UITOOL-349/better-demo-link-comment-in-prs",
     retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
     changelog: false
 )
@@ -107,13 +107,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm build"
-        }
-      }
-
-      post {
-        failure {
-          postCommentOnGithub();
+          sh "pnpm --use-beta-cli --recursive build"
         }
       }
     }
@@ -128,12 +122,6 @@ pipeline {
           setLastStageName();
           sh "pnpm test:ci"
           sh "pnpm --recursive report-coverage"
-        }
-      }
-
-      post {
-        failure {
-          postCommentOnGithub();
         }
       }
     }
@@ -160,7 +148,7 @@ pipeline {
           def SOURCE_LINK = ""
           def pullRequestURL = getCommitPullRequestURL()
           if (pullRequestURL != "") {
-            postCommentOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+            postDemoLinkOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
             SOURCE_LINK = pullRequestURL
           } else {
             SOURCE_LINK = "https://github.com/coveo/plasma/tree/${env.BRANCH_NAME}"
@@ -171,14 +159,6 @@ pipeline {
               color: "#00FF00", message: message,
               ["admin-ui-builds"]
           )
-        }
-      }
-
-      post {
-        failure {
-          script {
-            postCommentOnGithub();
-          }
         }
       }
     }
@@ -423,13 +403,13 @@ def getLastStageName() {
   return stage
 }
 
-def postCommentOnGithub(demoLink="") {
+def postDemoLinkOnGithub(demoLink="") {
   withCredentials([usernamePassword(credentialsId: 'github-app-dev',
     usernameVariable: 'GITHUB_APP',
     passwordVariable: 'GITHUB_ACCESS_TOKEN')
   ]) {
     runPackage.call(
-      "github-comment",
+      "github-demo-link",
       "--demoLink=${demoLink} --commitHash=${env.GIT_COMMIT} --repo=plasma"
     )
   }
