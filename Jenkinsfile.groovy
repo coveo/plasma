@@ -199,11 +199,13 @@ pipeline {
       steps {
         script {
           setLastStageName();
+          sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
           sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
           if (env.BRANCH_NAME ==~ /release-.*/) {
             // release
             sh "npx lerna publish patch \
+            --no-verify-access \
             --create-release github \
             --no-commit-hooks \
             --force-publish \
@@ -213,6 +215,7 @@ pipeline {
           } else if (env.BRANCH_NAME == "next") {
             // next
             sh "npx lerna publish \
+            --no-verify-access \
             --conventional-commits \
             --create-release github \
             --conventional-prerelease \
@@ -226,6 +229,7 @@ pipeline {
           } else {
             // master
             sh "npx lerna publish \
+            --no-verify-access \
             --conventional-commits \
             --create-release github \
             --no-commit-hooks \
