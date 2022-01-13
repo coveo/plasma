@@ -28,6 +28,12 @@ describe('Tile', () => {
             />
         );
 
-        expect(document.querySelector('a')).toHaveAttribute('href', '/somewhere');
+        expect(screen.getByRole('link', {name: /my component/i})).toHaveAttribute('href', '/somewhere');
+    });
+
+    it('does not render a link if no href is provided', () => {
+        render(<Tile title="My tile" description="not a link" svgName="plasmaComponentBox" />);
+
+        expect(screen.queryByRole('link')).not.toBeInTheDocument();
     });
 });
