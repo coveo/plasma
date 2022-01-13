@@ -4,6 +4,7 @@ import React from 'react';
 import * as ts from 'typescript';
 import lzstring from 'lz-string';
 import {twoslasher} from '@typescript/twoslash';
+import classNames from 'classnames';
 import * as monaco from 'monaco-editor';
 import * as _ from 'underscore';
 import '@demo-styling/sandbox.scss';
@@ -11,10 +12,11 @@ import {useTypescriptServer} from './useTypescriptServer';
 // eslint-disable-next-line
 const prettierConfig = require('tsjs/prettier-config');
 
-export const Sandbox: React.FunctionComponent<{children: string; id: string; title?: string}> = ({
+export const Sandbox: React.FunctionComponent<{children: string; id: string; title?: string; horizontal?: boolean}> = ({
     id,
     title,
     children,
+    horizontal,
 }) => {
     const formattedCode = format(children as string, {
         ...prettierConfig,
@@ -29,9 +31,9 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
             return;
         }
         const twoslash = twoslasher(editedCode, 'tsx', {
-            tsModule: ts as any,
+            tsModule: ts,
             defaultOptions: {noStaticSemanticInfo: false, showEmit: true, noErrorValidation: true},
-            defaultCompilerOptions: compilerOptions as any,
+            defaultCompilerOptions: compilerOptions,
             lzstringModule: lzstring,
             fsMap: fsMap,
         });
@@ -45,9 +47,9 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                     .replace('Object.defineProperty(exports, "__esModule", { value: true });', '')
                     .replace(/var .+ = require(.+);/g, '') // remove the require statements
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
-                    .replace(/exports\.default = (.+);/g, 'var Example = $1;') // change the default export to a component named Example
+                    .replace(/exports\.default = (.+)/g, 'var Example = $1') // change the default export to a component named Example
                     .replace(/plasma_react_\d+/g, 'PlasmaReact') + // use react-vapor from the window ReactVapor object
-                `;ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(Example)), document.getElementById('${id}'));`;
+                `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(Example)), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
@@ -57,10 +59,12 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
     }, [editedCode, fsMap]);
 
     return (
-        <div className="demo-sandbox">
+        <div className={classNames('demo-sandbox', {horizontal})}>
             <div className="demo-sandbox__preview" id={id} />
-            {title && <div className="demo-sandbox__title body-m-book">{title}</div>}
-            <Editor id={id} value={formattedCode} onChange={setEditedCode} />
+            <div>
+                {title && <div className="demo-sandbox__title body-m-book">{title}</div>}
+                <Editor id={id} value={formattedCode} onChange={setEditedCode} />
+            </div>
         </div>
     );
 };
