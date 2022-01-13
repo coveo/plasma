@@ -43,4 +43,12 @@
         padding-top: 24px;
         padding-right: 24px;
     }
+
+    // for 4k screens
+    @media screen and (min-width: 160em) {
+        .tile {
+            width: 15%;
+            height: 15%;
+        }
+    }
 }

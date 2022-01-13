@@ -1,6 +1,6 @@
 import '@demo-styling/example-layout.scss';
 
-import {TabContent, TabPaneConnected, TabSelectors, TabsHeader, Tile} from '@coveord/plasma-react';
+import {SvgNames, TabContent, TabPaneConnected, TabSelectors, TabsHeader, Tile} from '@coveord/plasma-react';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -12,6 +12,7 @@ import Sandbox from './Sandbox';
 export interface ExampleLayoutProps {
     id: string;
     title: string;
+    icon?: SvgNames;
     description?: React.ReactNode;
     section: string;
     code: string;
@@ -28,6 +29,7 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
     id,
     title,
     description,
+    icon,
     section,
     code,
     examples,
@@ -47,7 +49,7 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
                     View source
                 </GithubButton>
                 <h3 className="h1-light normal-white-space">{title}</h3>
-                <Tile title="" svgName="plasmaComponentBox" description="" href={undefined} />
+                <Tile svgName={icon || 'plasmaComponentBox'} />
                 <div>{description}</div>
             </div>
             <TabsHeader
