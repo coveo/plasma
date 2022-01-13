@@ -10,18 +10,47 @@ import {useTextInput} from './useTextInput';
 export type InputValidator = (value: string) => {status: 'valid' | 'invalid' | 'warning'; message?: string};
 
 interface TextInputProps {
+    /**
+     * Tells the browser which type of text content to expect
+     */
     type: 'email' | 'search' | 'text' | 'url' | 'password';
+    /**
+     * The text displayed inside the input box
+     */
     label: string;
+    /**
+     * The text displayed just above the input box
+     */
     description?: string;
+    /**
+     * The text displayed just underneath the input box
+     */
     helpText?: string;
+    /**
+     * Additional text to display as tooltip when hovering over a question icon
+     */
     tooltip?: string;
+    /**
+     * Provides the validation logic to the input
+     */
     validate?: InputValidator;
+    /**
+     * Whether the validation result should be visible when the input is rendered for the first time
+     */
     showValidationOnMount?: boolean;
+    /**
+     * Whether the validation result should be visible when the input value changes
+     */
     showValidationOnChange?: boolean;
+    /**
+     * Whether the validation result should be visible when the input looses the focus (recommended)
+     */
     showValidationOnBlur?: boolean;
 }
 
-export const TextInput: React.FunctionComponent<TextInputProps & React.HTMLProps<HTMLInputElement>> = ({
+export const TextInput: React.FunctionComponent<
+    TextInputProps & Omit<React.InputHTMLAttributes<HTMLInputElement>, 'type'>
+> = ({
     id: propsId,
     label,
     validate,

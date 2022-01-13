@@ -1,105 +1,105 @@
 import * as React from 'react';
-import {Button, FormProvider, InputValidator, Section, TextInput, useTextInput} from '@coveord/plasma-react';
 
-import VaporComponent from '../../../../demo-building-blocs/VaporComponent';
+import {ExampleLayout} from '../../../../demo-building-blocs/ExampleLayout';
 
-const nonEmptyValidation: InputValidator = (value: string) => {
-    const isEmpty = !value;
-    const isWhiteSpace = !isEmpty && !value.trim();
-    if (isWhiteSpace) {
-        return {status: 'warning', message: 'A white space is not empty, but is not ideal.'};
-    } else if (isEmpty) {
-        return {status: 'invalid', message: 'Cannot be empty.'};
-    } else {
+const code = `
+    import * as React from 'react';
+    import {FormProvider, InputValidator, TextInput} from "@coveord/plasma-react";
+
+    const nonEmptyValidation: InputValidator = (value: string) => {
+        const isEmpty = !value;
+        const isWhiteSpace = !isEmpty && !value.trim();
+        
+        if (isWhiteSpace) {
+            return {status: 'warning', message: 'A white space is not empty, but is not ideal.'};
+        } 
+
+        if (isEmpty) {
+            return {status: 'invalid', message: 'Cannot be empty.'};
+        } 
+        
         return {status: 'valid'};
-    }
-};
+    };
+
+    export default () => (
+        <FormProvider>
+            <TextInput
+                required
+                showValidationOnBlur
+                validate={nonEmptyValidation}
+                type="text"
+                label="Label"
+                title="Title"
+                description="Description"
+                helpText="Help text"
+                tooltip="Tooltip"
+            />
+        </FormProvider>
+    );
+`;
+
+const hookUsage = `
+    import * as React from 'react';
+    import {Button, FormProvider, TextInput, useTextInput} from "@coveord/plasma-react";
+
+    const CurrentState: React.FunctionComponent = () => {
+        const {state} = useTextInput('favorite-dish');
+        return (
+            <div className="my1" style={{whiteSpace: 'pre-wrap'}}>
+                state = {JSON.stringify(state, null, 4)}
+            </div>
+        );
+    };
+
+    const InteractiveButtons: React.FunctionComponent = () => {
+        const {state, dispatch} = useTextInput('favorite-dish');
+        return (
+            <>
+                <Button
+                    name='Change dish for "sushis"'
+                    enabled={state.value !== 'sushis'}
+                    onClick={() => dispatch({type: 'change-value', payload: 'sushis'})}
+                />
+                <Button
+                    name="Show validation"
+                    onClick={() => dispatch({type: 'show-validation'})}
+                />
+                <Button
+                    name="Hide validation"
+                    onClick={() => dispatch({type: 'hide-validation'})}
+                />
+            </>
+        );
+    };
+
+    export default () => (
+        <FormProvider>
+            <TextInput
+                id="favorite-dish"
+                type="text"
+                label="Favorite Dish"
+                defaultValue="pizza"
+                validate={(value) =>
+                    /pizza/i.test(value)
+                        ? {status: 'valid'}
+                        : {status: 'warning', message: "Pizza is best but that's okay."}
+                }
+                showValidationOnBlur
+            />
+            <CurrentState />
+            <InteractiveButtons />
+        </FormProvider>
+    );
+`;
 
 // start-print
 export const TextInputExamples: React.FunctionComponent = () => (
-    <VaporComponent id="TextInput" title="Text Input" withSource>
-        <FormProvider>
-            <Section>
-                <TextInput
-                    required
-                    showValidationOnBlur
-                    validate={nonEmptyValidation}
-                    type="text"
-                    label="Label"
-                    title="Title"
-                    description="Description"
-                    helpText="Help text"
-                    tooltip="Tooltip"
-                />
-                <Section level={2} title="Disabled">
-                    <TextInput type="email" label="Email" disabled />
-                    <TextInput type="email" label="Email" defaultValue="123@abc.com" disabled />
-                </Section>
-                <Section level={2} title="useTextInput hook usage demo">
-                    <div className="flex space-around">
-                        <TextInput
-                            id="favorite-dish"
-                            type="text"
-                            label="Favorite Dish"
-                            defaultValue="pizza"
-                            validate={(value) =>
-                                /pizza/i.test(value)
-                                    ? {status: 'valid'}
-                                    : {status: 'warning', message: "Pizza is best but that's okay."}
-                            }
-                            showValidationOnBlur
-                        />
-                        <TextInput
-                            id="favorite-animal"
-                            type="text"
-                            label="Favorite Animal"
-                            defaultValue="Tiger"
-                            required
-                            validate={nonEmptyValidation}
-                            showValidationOnBlur
-                        />
-                    </div>
-                    <HookUsageDemo />
-                </Section>
-            </Section>
-        </FormProvider>
-    </VaporComponent>
+    <ExampleLayout
+        id="TextInput"
+        title="TextInput"
+        section="inputs"
+        componentSourcePath="/textInput/TextInput.tsx"
+        code={code}
+        examples={{hookUsage: {code: hookUsage, title: 'useTextInput hook usage'}}}
+    />
 );
-
-const HookUsageDemo: React.FunctionComponent = () => {
-    const favoriteDishInput = useTextInput('favorite-dish');
-    const favoriteAnimalInput = useTextInput('favorite-animal');
-
-    return (
-        <>
-            <div className="flex space-around">
-                <p style={{whiteSpace: 'pre-wrap'}}>state = {JSON.stringify(favoriteDishInput.state, null, 4)}</p>
-                <p style={{whiteSpace: 'pre-wrap'}}>state = {JSON.stringify(favoriteAnimalInput.state, null, 4)}</p>
-            </div>
-            <p>
-                The hook gives you full access to the state of the input that has the specified id. As you can see, they
-                are both independent, one doesn't influence the state of the other. The hook also exposes dispatch,
-                which allows to interract with TextInput however we need.
-            </p>
-            <Button
-                name='Change dish for "sushis"'
-                enabled={favoriteDishInput.state.value !== 'sushis'}
-                onClick={() => favoriteDishInput.dispatch({type: 'change-value', payload: 'sushis'})}
-            />
-            <Button
-                name="Show validation"
-                onClick={() => {
-                    favoriteDishInput.dispatch({type: 'show-validation'});
-                    favoriteAnimalInput.dispatch({type: 'show-validation'});
-                }}
-            />
-            <Button
-                name="Hide validation"
-                onClick={() => {
-                    favoriteDishInput.dispatch({type: 'hide-validation'});
-                    favoriteAnimalInput.dispatch({type: 'hide-validation'});
-                }}
-            />
-        </>
-    );
-};
