@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.6.0](https://github.com/coveo/plasma/compare/v31.5.2...v31.6.0) (2022-01-14)
+
+
+### Features
+
+* **tile:** make title, description, href optional ([5aab1b5](https://github.com/coveo/plasma/commit/5aab1b5c7456e06492e5da502e3b892e13dcc305))
+
+
+
+
+
 ## [31.5.2](https://github.com/coveo/plasma/compare/v31.5.1...v31.5.2) (2022-01-13)
 
 **Note:** Version bump only for package @coveord/plasma-react
