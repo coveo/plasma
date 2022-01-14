@@ -7,6 +7,10 @@ export const headlessEngine = () =>
             organizationId: 'donotdeleteplasmadesignsystempxjjjimz',
             accessToken: 'xxd5ed9d85-41bb-463c-b133-d188698de758',
             analytics: {enabled: true},
+            search: {
+                pipeline: 'default',
+                searchHub: 'plasmaComponents',
+            },
         },
     });
 

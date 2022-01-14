@@ -16,7 +16,7 @@ import {InputRoutes} from './plasma/routes/input';
 import {LayoutRoutes} from './plasma/routes/layout';
 import {NotIncludedRoutes} from './plasma/routes/legacy';
 import {NavigationRoutes} from './plasma/routes/navigation';
-import {PlasmaSearchBar} from './searchBar/PlasmaSearchBar';
+import PlasmaSearchBar from './searchBar/PlasmaSearchBar';
 import {EngineProvider} from './searchBar/engine/EngineProvider';
 
 const Header = () => (
@@ -26,7 +26,7 @@ const Header = () => (
         </a>
         <div className="flex space-around search">
             <EngineProvider>
-                <PlasmaSearchBar id="header" />
+                <PlasmaSearchBar />
             </EngineProvider>
         </div>
         <div className="right-side"></div>

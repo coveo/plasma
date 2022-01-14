@@ -64,6 +64,7 @@ $search-bar-min-width: 648px;
         ~ .search-results-container {
             position: fixed;
             min-width: $search-bar-min-width;
+            text-transform: capitalize;
             border-radius: 8px;
             box-shadow: var(--medium-elevation-on-neutral);
         }
