@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.7.0](https://github.com/coveo/plasma/compare/v31.6.1...v31.7.0) (2022-01-14)
+
+
+### Features
+
+* **website:** improve example layout + horizontal sandbox ([6dd3f6c](https://github.com/coveo/plasma/commit/6dd3f6c0dde8950c0f4d61f75c3e0b9f54668994))
+
+
+
+
+
 ## [31.6.1](https://github.com/coveo/plasma/compare/v31.6.0...v31.6.1) (2022-01-14)
 
 **Note:** Version bump only for package @coveord/plasma-website
