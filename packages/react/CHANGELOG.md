@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.8.0](https://github.com/coveo/plasma/compare/v31.7.0...v31.8.0) (2022-01-14)
+
+
+### Features
+
+* **textinput:** apply the new example layout to the textinput examples ([eb7db6b](https://github.com/coveo/plasma/commit/eb7db6b0c0b0da0c9b8e527fd7f1d21515ab5e11))
+
+
+
+
+
 # [31.7.0](https://github.com/coveo/plasma/compare/v31.6.1...v31.7.0) (2022-01-14)
 
 **Note:** Version bump only for package @coveord/plasma-react
