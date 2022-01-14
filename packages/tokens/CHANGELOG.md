@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.5.2](https://github.com/coveo/plasma/compare/v31.5.1...v31.5.2) (2022-01-13)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
 ## [31.5.1](https://github.com/coveo/plasma/compare/v31.5.0...v31.5.1) (2022-01-05)
 
 **Note:** Version bump only for package @coveord/plasma-tokens

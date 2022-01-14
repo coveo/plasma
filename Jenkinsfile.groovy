@@ -107,13 +107,7 @@ pipeline {
       steps {
         script {
           setLastStageName();
-          sh "pnpm build"
-        }
-      }
-
-      post {
-        failure {
-          postCommentOnGithub();
+          sh "pnpm --use-beta-cli --recursive build"
         }
       }
     }
@@ -128,12 +122,6 @@ pipeline {
           setLastStageName();
           sh "pnpm test:ci"
           sh "pnpm --recursive report-coverage"
-        }
-      }
-
-      post {
-        failure {
-          postCommentOnGithub();
         }
       }
     }
@@ -160,7 +148,7 @@ pipeline {
           def SOURCE_LINK = ""
           def pullRequestURL = getCommitPullRequestURL()
           if (pullRequestURL != "") {
-            postCommentOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+            postDemoLinkOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
             SOURCE_LINK = pullRequestURL
           } else {
             SOURCE_LINK = "https://github.com/coveo/plasma/tree/${env.BRANCH_NAME}"
@@ -171,14 +159,6 @@ pipeline {
               color: "#00FF00", message: message,
               ["admin-ui-builds"]
           )
-        }
-      }
-
-      post {
-        failure {
-          script {
-            postCommentOnGithub();
-          }
         }
       }
     }
@@ -219,11 +199,13 @@ pipeline {
       steps {
         script {
           setLastStageName();
+          sh "npm config set //registry.npmjs.org/:_authToken=${env.NPM_TOKEN}"
           sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
           if (env.BRANCH_NAME ==~ /release-.*/) {
             // release
             sh "npx lerna publish patch \
+            --no-verify-access \
             --create-release github \
             --no-commit-hooks \
             --force-publish \
@@ -233,6 +215,7 @@ pipeline {
           } else if (env.BRANCH_NAME == "next") {
             // next
             sh "npx lerna publish \
+            --no-verify-access \
             --conventional-commits \
             --create-release github \
             --conventional-prerelease \
@@ -246,6 +229,7 @@ pipeline {
           } else {
             // master
             sh "npx lerna publish \
+            --no-verify-access \
             --conventional-commits \
             --create-release github \
             --no-commit-hooks \
@@ -423,13 +407,13 @@ def getLastStageName() {
   return stage
 }
 
-def postCommentOnGithub(demoLink="") {
+def postDemoLinkOnGithub(demoLink="") {
   withCredentials([usernamePassword(credentialsId: 'github-app-dev',
     usernameVariable: 'GITHUB_APP',
     passwordVariable: 'GITHUB_ACCESS_TOKEN')
   ]) {
     runPackage.call(
-      "github-comment",
+      "github-demo-link",
       "--demoLink=${demoLink} --commitHash=${env.GIT_COMMIT} --repo=plasma"
     )
   }
