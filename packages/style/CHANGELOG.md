@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.8.1](https://github.com/coveo/plasma/compare/v31.8.0...v31.8.1) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-style
+
+
+
+
+
 # [31.8.0](https://github.com/coveo/plasma/compare/v31.7.0...v31.8.0) (2022-01-14)
 
 **Note:** Version bump only for package @coveord/plasma-style
