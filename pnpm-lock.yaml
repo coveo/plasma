@@ -101,7 +101,7 @@ importers:
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6
       escape-string-regexp: 1.0.5
-      eslint-plugin-jest: 25.2.2
+      eslint-plugin-jest: 25.7.0
       eslint-plugin-jest-dom: 3.9.2
       eslint-plugin-testing-library: 5.0.0
       faker: 4.1.0
@@ -215,7 +215,7 @@ importers:
       enzyme: 3.11.0
       enzyme-adapter-react-16: 1.15.6_4f82faf5e8cab057bc46d4d95079ec42
       escape-string-regexp: 1.0.5
-      eslint-plugin-jest: 25.2.2_68e7cb0a7901dd35ed329f6a3a92fb9d
+      eslint-plugin-jest: 25.7.0_04050452c455200f8a22ce95b1568b84
       eslint-plugin-jest-dom: 3.9.2_eslint@8.4.1
       eslint-plugin-testing-library: 5.0.0_eslint@8.4.1+typescript@4.5.4
       faker: 4.1.0
@@ -830,7 +830,7 @@ packages:
       '@babel/helper-split-export-declaration': 7.16.0
       '@babel/parser': 7.16.4
       '@babel/types': 7.16.0
-      debug: 4.3.2
+      debug: 4.3.3
       globals: 11.12.0
     transitivePeerDependencies:
       - supports-color
@@ -3215,7 +3215,7 @@ packages:
     dependencies:
       '@typescript-eslint/types': 5.6.0
       '@typescript-eslint/visitor-keys': 5.6.0
-      debug: 4.3.2
+      debug: 4.3.3
       globby: 11.0.4
       is-glob: 4.0.3
       semver: 7.3.5
@@ -3502,7 +3502,7 @@ packages:
     resolution: {integrity: sha512-RZNwNclF7+MS/8bDg70amg32dyeZGZxiDuQmZxKLAlQjr3jGyLx+4Kkk58UO7D2QdgFIQCovuSuZESne6RG6XQ==}
     engines: {node: '>= 6.0.0'}
     dependencies:
-      debug: 4.3.2
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -6879,19 +6879,23 @@ packages:
       requireindex: 1.2.0
     dev: true
 
-  /eslint-plugin-jest/25.2.2_68e7cb0a7901dd35ed329f6a3a92fb9d:
-    resolution: {integrity: sha512-frn5yhOF60U4kcqozO3zKTNZQUk+mfx037XOy2iiYL8FhorEkuCuL3/flzKcY1ECDP2WYT9ydmvlO3fRW9o4mg==}
+  /eslint-plugin-jest/25.7.0_04050452c455200f8a22ce95b1568b84:
+    resolution: {integrity: sha512-PWLUEXeeF7C9QGKqvdSbzLOiLTx+bno7/HC9eefePfEb257QFHg7ye3dh80AZVkaa/RQsBB1Q/ORQvg2X7F0NQ==}
     engines: {node: ^12.13.0 || ^14.15.0 || >=16.0.0}
     peerDependencies:
       '@typescript-eslint/eslint-plugin': ^4.0.0 || ^5.0.0
       eslint: ^6.0.0 || ^7.0.0 || ^8.0.0
+      jest: '*'
     peerDependenciesMeta:
       '@typescript-eslint/eslint-plugin':
+        optional: true
+      jest:
         optional: true
     dependencies:
       '@typescript-eslint/eslint-plugin': 5.6.0_7e03ce340a3f22b98fed01a7d64a5666
       '@typescript-eslint/experimental-utils': 5.6.0_eslint@8.4.1+typescript@4.5.4
       eslint: 8.4.1
+      jest: 27.4.3
     transitivePeerDependencies:
       - supports-color
       - typescript
@@ -8874,7 +8878,7 @@ packages:
     dependencies:
       '@tootallnate/once': 1.1.2
       agent-base: 6.0.2
-      debug: 4.3.2
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -8920,7 +8924,7 @@ packages:
     engines: {node: '>= 6'}
     dependencies:
       agent-base: 6.0.2
-      debug: 4.3.2
+      debug: 4.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -12113,6 +12117,7 @@ packages:
 
   /nan/2.14.2:
     resolution: {integrity: sha512-M2ufzIiINKCuDfBSAUr1vWQ+vuVcA9kqx8JJUsbQi6yf1uGRyb7HfpdfUr5qLXf3B/t8dPvcjhKMmlfnP47EzQ==}
+    requiresBuild: true
     dev: true
     optional: true
 
