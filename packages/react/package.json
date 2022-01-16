@@ -109,7 +109,7 @@
         "codecov": "3.8.2",
         "codemirror": "5.63.3",
         "d3": "3.5.17",
-        "del": "5.1.0",
+        "del": "6.0.0",
         "enzyme": "3.11.0",
         "enzyme-adapter-react-16": "1.15.6",
         "escape-string-regexp": "1.0.5",
