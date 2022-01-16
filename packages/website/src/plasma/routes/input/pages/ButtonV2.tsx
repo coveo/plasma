@@ -6,19 +6,19 @@ export const ButtonV2: React.FunctionComponent = () => {
         import * as React from "react";
         import {Button} from "@coveord/plasma-react";
 
-        export default () => <Button>Hello World!</Button>
+        export default () => <Button>Hello World!</Button>;
     `;
     const primary = `
         import * as React from "react";
         import {Button} from "@coveord/plasma-react";
 
-        export default () => <Button primary>Hello World!</Button>
+        export default () => <Button primary>Hello World!</Button>;
     `;
     const small = `
         import * as React from "react";
         import {Button} from "@coveord/plasma-react";
 
-        export default () => <Button small>Hello World!</Button>
+        export default () => <Button small>Hello World!</Button>;
     `;
     return (
         <ExampleLayout
@@ -28,6 +28,7 @@ export const ButtonV2: React.FunctionComponent = () => {
             description={<Description />}
             code={code}
             examples={{primary: {code: primary, title: 'Primary button'}, small: {code: small, title: 'Small button'}}}
+            componentSourcePath="/button/Button.tsx"
         />
     );
 };

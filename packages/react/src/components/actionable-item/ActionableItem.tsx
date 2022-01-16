@@ -50,7 +50,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         )}
                         {...(this.props.dropProps || {})}
                     >
-                        <ListBox items={this.props.actions} />
+                        <ListBox items={this.props.actions} noActive />
                     </Drop>
                 ) : null}
             </div>

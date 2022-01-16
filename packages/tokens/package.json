@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "31.4.0",
+    "version": "31.8.2",
     "description": "Design tokens of the Vapor Design System",
     "repository": {
         "type": "git",
@@ -23,8 +23,9 @@
         "fs-extra": "10.0.0",
         "prettier": "2.4.1",
         "rimraf": "3.0.2",
+        "sass": "1.48.0",
         "ts-node": "10.4.0",
         "tslib": "2.3.1",
-        "typescript": "3.8.3"
+        "typescript": "4.5.4"
     }
 }

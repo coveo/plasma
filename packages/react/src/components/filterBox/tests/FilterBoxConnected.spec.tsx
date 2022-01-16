@@ -43,9 +43,9 @@ describe('FilterBox', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = filterBox.props().onRender;
+            const view = filterBox.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

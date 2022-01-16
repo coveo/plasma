@@ -50,9 +50,9 @@ describe('LastUpdated', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRenderProp = lastUpdated.props().onRender;
+            const view = lastUpdated.props().onRender;
 
-            expect(onRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

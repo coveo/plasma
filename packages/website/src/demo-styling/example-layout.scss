@@ -10,8 +10,14 @@
 
         .tile {
             grid-area: icon;
+            justify-self: end;
             width: 264px;
             height: 173px;
+        }
+
+        .github-button {
+            grid-area: github;
+            justify-self: end;
         }
     }
 

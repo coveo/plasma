@@ -1,6 +1,5 @@
 import {mount} from 'enzyme';
 import * as React from 'react';
-import {act} from 'react-dom/test-utils';
 
 import {ChartContainer} from '../ChartContainer';
 
@@ -23,18 +22,16 @@ describe('<ChartContainer />', () => {
 
         const renderSpy = jest.fn(() => null);
 
-        act(() => {
-            const component = mount(<ChartContainer renderChart={renderSpy} />);
+        const component = mount(<ChartContainer renderChart={renderSpy} />);
 
-            // Need the component to update to get the ref.current
-            component.setProps({renderChart: renderSpy});
+        // Need the component to update to get the ref.current
+        component.setProps({renderChart: renderSpy});
 
-            renderSpy.mockReset();
+        renderSpy.mockReset();
 
-            const resizeEvent = document.createEvent('Event');
-            resizeEvent.initEvent('resize', true, true);
-            window.dispatchEvent(resizeEvent);
-        });
+        const resizeEvent = document.createEvent('Event');
+        resizeEvent.initEvent('resize', true, true);
+        window.dispatchEvent(resizeEvent);
 
         expect(renderSpy).toHaveBeenCalledTimes(1);
     });

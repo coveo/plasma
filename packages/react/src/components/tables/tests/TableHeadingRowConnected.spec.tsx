@@ -64,9 +64,9 @@ describe('Tables', () => {
         });
 
         it('should get what to do on render as a prop', () => {
-            const onRowRenderProp = tableHeadingRow.props().onRender;
+            const view = tableHeadingRow.props().onRender;
 
-            expect(onRowRenderProp).toBeDefined();
+            expect(view).toBeDefined();
         });
 
         it('should get what to do on destroy as a prop', () => {

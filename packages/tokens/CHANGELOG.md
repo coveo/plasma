@@ -3,6 +3,81 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.8.2](https://github.com/coveo/plasma/compare/v31.8.1...v31.8.2) (2022-01-16)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [31.8.1](https://github.com/coveo/plasma/compare/v31.8.0...v31.8.1) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+# [31.8.0](https://github.com/coveo/plasma/compare/v31.7.0...v31.8.0) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+# [31.7.0](https://github.com/coveo/plasma/compare/v31.6.1...v31.7.0) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [31.6.1](https://github.com/coveo/plasma/compare/v31.6.0...v31.6.1) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+# [31.6.0](https://github.com/coveo/plasma/compare/v31.5.2...v31.6.0) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [31.5.2](https://github.com/coveo/plasma/compare/v31.5.1...v31.5.2) (2022-01-13)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [31.5.1](https://github.com/coveo/plasma/compare/v31.5.0...v31.5.1) (2022-01-05)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+# [31.5.0](https://github.com/coveo/plasma/compare/v31.4.0...v31.5.0) (2021-12-22)
+
+
+### Features
+
+* **website:** implement github button ([c4a2143](https://github.com/coveo/plasma/commit/c4a2143b15e989c98992d24695e769a5e399d22b))
+
+
+
+
+
 # [31.4.0](https://github.com/coveo/plasma/compare/v31.3.1...v31.4.0) (2021-12-21)
 
 

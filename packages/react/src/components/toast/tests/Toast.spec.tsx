@@ -290,7 +290,7 @@ describe('Toasts', () => {
 
             await waitFor(
                 () => {
-                    expect(screen.queryByText('some title')).toBeInTheDocument();
+                    expect(screen.getByText('some title')).toBeInTheDocument();
                 },
                 {
                     timeout: dismissDelay,

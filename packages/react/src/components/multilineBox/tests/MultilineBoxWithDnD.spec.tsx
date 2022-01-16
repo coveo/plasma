@@ -26,13 +26,13 @@ describe('Multiline box with drag & drop', () => {
         });
 
         it('should unmount without errors', () => {
-            const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+            const view = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                 id,
                 data: [],
             });
 
             expect(() => {
-                component.wrapper.unmount();
+                view.wrapper.unmount();
             }).not.toThrow();
         });
 
@@ -46,36 +46,36 @@ describe('Multiline box with drag & drop', () => {
         });
 
         it('should use the default renderBody if defined', () => {
-            const component = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+            const view = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                 id,
                 data: [],
                 renderBody: () => <div className="pick-me" />,
             });
 
-            expect(component.wrapper.find('.pick-me').length).toBe(1);
+            expect(view.wrapper.find('.pick-me').length).toBe(1);
         });
 
         describe('once rendered', () => {
             it('should dispatch a reorder action on onReorder', () => {
-                const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                const view: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
                 });
 
-                component.wrapper.find(MultilineBox).props().onReorder(['a']);
+                view.wrapper.find(MultilineBox).props().onReorder(['a']);
 
-                expect(component.store.getState().multilineIds[id].list).toEqual(['a']);
+                expect(view.store.getState().multilineIds[id].list).toEqual(['a']);
             });
 
             it('should call the DnDUtils move function on props move set on DnDContainer', () => {
                 const spy = jest.spyOn(DnDUtils, 'move').mockImplementation(() => []);
 
-                const component: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
+                const view: any = RTestUtils.renderComponent(DefaultMultilineBoxWithDnD, {
                     id,
                     data: [],
                 });
 
-                component.wrapper.find(DnDContainer).props().move();
+                view.wrapper.find(DnDContainer).props().move();
 
                 expect(spy).toHaveBeenCalledTimes(1);
             });
@@ -93,12 +93,12 @@ describe('Multiline box with drag & drop', () => {
             )(MultilineBox);
 
             it('should add props on DnDContainer if added in the supplier for the hoc', () => {
-                const component: any = RTestUtils.renderComponent(CustomMultilineBoxWithDnD, {
+                const view: any = RTestUtils.renderComponent(CustomMultilineBoxWithDnD, {
                     id,
                     data: [],
                 });
 
-                expect(component.wrapper.find('.select-me-plz').length).toBe(1);
+                expect(view.wrapper.find('.select-me-plz').length).toBe(1);
             });
         });
     });
