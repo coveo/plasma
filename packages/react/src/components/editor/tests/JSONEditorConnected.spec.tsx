@@ -32,6 +32,7 @@ describe('<JSONEditorConnected />', () => {
             initialState: {jsonEditors: [{id: basicProps.id, value: expectedValue, valid: true}]},
         });
 
+        // eslint-disable-next-line testing-library/no-node-access
         const container = document.querySelector('.CodeMirror-line [role="presentation"]') as HTMLElement;
 
         // the codemirror divide the text in multiple elements, by using textContent we "strip" the html
@@ -41,15 +42,18 @@ describe('<JSONEditorConnected />', () => {
     });
 
     it('should call the onChange function from props if it is provided', () => {
-        const expectedValue = '{}';
+        const expectedValue = 'hello';
         const onChangeSpy = jest.fn();
 
         render(<JSONEditorConnected id="💙" value={''} onChange={onChangeSpy} />);
 
         userEvent.type(screen.getByRole('textbox'), expectedValue);
 
-        expect(onChangeSpy).toHaveBeenCalledTimes(2);
-        expect(onChangeSpy).toHaveBeenCalledWith('{', true);
-        expect(onChangeSpy).toHaveBeenCalledWith('{}', false);
+        expect(onChangeSpy).toHaveBeenCalledTimes(5);
+        expect(onChangeSpy).toHaveBeenCalledWith('h', true);
+        expect(onChangeSpy).toHaveBeenCalledWith('he', true);
+        expect(onChangeSpy).toHaveBeenCalledWith('hel', true);
+        expect(onChangeSpy).toHaveBeenCalledWith('hell', true);
+        expect(onChangeSpy).toHaveBeenCalledWith('hello', true);
     });
 });
