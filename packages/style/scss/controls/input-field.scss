@@ -179,7 +179,7 @@
 
             &.active {
                 &:after {
-                    margin-top: $input-message-position / 2;
+                    margin-top: $input-message-position * 0.5;
                 }
             }
         }

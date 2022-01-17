@@ -1,4 +1,6 @@
-$icon-size: (4em / 3);
+@use "sass:math";
+
+$icon-size: math.div(4em, 3);
 
 // This generate classes layer-1, layer-2, ..., layer-10.
 @mixin generate-layers($nbr-layers, $base) {
