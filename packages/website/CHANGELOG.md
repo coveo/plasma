@@ -3,6 +3,71 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.8.3](https://github.com/coveo/plasma/compare/v31.8.2...v31.8.3) (2022-01-16)
+
+**Note:** Version bump only for package @coveord/plasma-website
+
+
+
+
+
+## [31.8.2](https://github.com/coveo/plasma/compare/v31.8.1...v31.8.2) (2022-01-16)
+
+**Note:** Version bump only for package @coveord/plasma-website
+
+
+
+
+
+## [31.8.1](https://github.com/coveo/plasma/compare/v31.8.0...v31.8.1) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-website
+
+
+
+
+
+# [31.8.0](https://github.com/coveo/plasma/compare/v31.7.0...v31.8.0) (2022-01-14)
+
+
+### Features
+
+* **textinput:** apply the new example layout to the textinput examples ([eb7db6b](https://github.com/coveo/plasma/commit/eb7db6b0c0b0da0c9b8e527fd7f1d21515ab5e11))
+
+
+
+
+
+# [31.7.0](https://github.com/coveo/plasma/compare/v31.6.1...v31.7.0) (2022-01-14)
+
+
+### Features
+
+* **website:** improve example layout + horizontal sandbox ([6dd3f6c](https://github.com/coveo/plasma/commit/6dd3f6c0dde8950c0f4d61f75c3e0b9f54668994))
+
+
+
+
+
+## [31.6.1](https://github.com/coveo/plasma/compare/v31.6.0...v31.6.1) (2022-01-14)
+
+**Note:** Version bump only for package @coveord/plasma-website
+
+
+
+
+
+# [31.6.0](https://github.com/coveo/plasma/compare/v31.5.2...v31.6.0) (2022-01-14)
+
+
+### Features
+
+* **tile:** make title, description, href optional ([5aab1b5](https://github.com/coveo/plasma/commit/5aab1b5c7456e06492e5da502e3b892e13dcc305))
+
+
+
+
+
 ## [31.5.2](https://github.com/coveo/plasma/compare/v31.5.1...v31.5.2) (2022-01-13)
 
 **Note:** Version bump only for package @coveord/plasma-website

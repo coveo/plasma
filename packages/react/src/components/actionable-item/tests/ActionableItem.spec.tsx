@@ -61,6 +61,13 @@ describe('ActionableItem', () => {
                 expect(screen.getByText('hello world')).toBeVisible();
             });
 
+            it('should not highlight dropdown options', () => {
+                const children = <div className="children">hello world</div>;
+                render(<ActionableItem {...basicProps}>{children}</ActionableItem>);
+
+                expect(screen.getByText('some action')).not.toHaveClass('active');
+            });
+
             it('should render the moreAppend svg in the Drop', () => {
                 shallowWithProps();
 
