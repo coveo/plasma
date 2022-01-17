@@ -22,9 +22,9 @@ $child-arrow-height: 10px;
         display: block;
         width: 0;
         height: 0;
-        border-right: $child-arrow-width / 2 solid transparent;
+        border-right: $child-arrow-width * 0.5 solid transparent;
         border-bottom: $child-arrow-height solid var(--grey-20);
-        border-left: $child-arrow-width / 2 solid transparent;
+        border-left: $child-arrow-width * 0.5 solid transparent;
         content: '';
     }
 
@@ -34,10 +34,10 @@ $child-arrow-height: 10px;
 
         &:before {
             top: calc(50% - #{$child-arrow-height});
-            left: -$child-arrow-height - ($child-arrow-width / 2);
-            border-top: $child-arrow-width / 2 solid transparent;
+            left: -$child-arrow-height - ($child-arrow-width * 0.5);
+            border-top: $child-arrow-width * 0.5 solid transparent;
             border-right: $child-arrow-height solid var(--grey-20);
-            border-bottom: $child-arrow-width / 2 solid transparent;
+            border-bottom: $child-arrow-width * 0.5 solid transparent;
         }
     }
 

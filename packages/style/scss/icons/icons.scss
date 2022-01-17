@@ -1,4 +1,6 @@
 /* stylelint-disable */
+@use "sass:math";
+
 .icon {
     display: inline-block;
     width: 0.9em;
@@ -93,15 +95,15 @@
             width: $size + px;
             height: $size + px;
             line-height: $size + px;
-            vertical-align: -0.5 * ceil($size / 4) + px;
+            vertical-align: -0.5 * ceil($size * 0.25) + px;
         }
     }
 
     /* makes the icon 33% larger relative to the icon container */
     &.mod-lg {
-        width: (4em / 3);
-        height: (4em / 3);
-        line-height: (4em / 3);
+        width: math.div(4em, 3);
+        height: math.div(4em, 3);
+        line-height: math.div(4em, 3);
         vertical-align: -0.1em;
     }
 

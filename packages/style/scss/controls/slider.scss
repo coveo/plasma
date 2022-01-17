@@ -24,7 +24,7 @@ div.slider-container {
 }
 
 .vapor-slider.rc-slider {
-    margin: 1.5rem $slider-handle-width / 2;
+    margin: 1.5rem $slider-handle-width * 0.5;
 
     .rc-slider-rail {
         height: $slider-rail-height;

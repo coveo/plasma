@@ -71,7 +71,7 @@ form {
         }
 
         @mixin section-mixin($level) {
-            $scaledSpacing: nth([6, 4, 2.5], $level) * $spacing / 2;
+            $scaledSpacing: nth([6, 4, 2.5], $level) * $spacing * 0.5;
             $scaledDescriptionFontSize: nth([$default-font-size, $small-font-size, $small-font-size], $level);
             $inputFieldLabelSpacing: 0.75rem;
             $reactVaporSliderTopSpacing: 1.75rem;

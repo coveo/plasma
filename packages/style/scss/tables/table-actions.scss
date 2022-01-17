@@ -143,15 +143,15 @@
 
 .small-actions-container {
     .coveo-table-actions {
-        padding: 0 ($table-actions-margin / 2);
+        padding: 0 ($table-actions-margin * 0.5);
 
         .action-label {
-            margin-left: $table-action-margin-left / 2;
+            margin-left: $table-action-margin-left * 0.5;
             font-size: $button-small-font-size;
         }
 
         .action + .action {
-            margin-left: ($table-actions-margin / 2);
+            margin-left: ($table-actions-margin * 0.5);
         }
     }
 }
