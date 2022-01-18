@@ -1,4 +1,4 @@
-import '@demo-styling/standaloneSearchBar.scss';
+import '@styles/standaloneSearchBar.scss';
 
 import {buildSearchBox, SearchBox as HeadlessSearchBox} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
