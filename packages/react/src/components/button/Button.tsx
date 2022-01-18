@@ -4,9 +4,14 @@ import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
 import {Tooltip} from '../tooltip/Tooltip';
-
 export interface IButtonProps extends IBaseActionOptions {
+    /**
+     * If set to true, forces the button to have a smaller size
+     */
     small?: boolean;
+    /**
+     * Additional CSS classes to set on the button element
+     */
     classes?: string[] | string;
 }
 
