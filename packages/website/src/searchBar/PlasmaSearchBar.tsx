@@ -1,4 +1,4 @@
-import '@demo-styling/plasmaSearchBar.scss';
+import '@styles/plasmaSearchBar.scss';
 
 import {buildSearchBox, SearchBox as HeadlessSearchBox, SearchBoxOptions} from '@coveo/headless';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';

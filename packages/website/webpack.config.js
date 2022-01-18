@@ -24,8 +24,8 @@ module.exports = {
         extensions: ['.js', '.jsx', 'wasm'],
         alias: {
             '@coveord/plasma-react$': path.resolve(__dirname, '../react/dist/cjs/Entry.js'),
-            '@demo-styling': path.resolve(__dirname, 'src/demo-styling'),
-            '@routes': path.resolve(__dirname, 'src/plasma/routes'),
+            '@styles': path.resolve(__dirname, 'src/styles'),
+            '@pages': path.resolve(__dirname, 'src/pages'),
         },
     },
     plugins: [
