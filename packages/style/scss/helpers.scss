@@ -1,8 +1,10 @@
+@use "sass:math";
+
 $browser-context: 13; // Default
 
 //converter
 @function pxtoem($target, $context: $browser-context) {
-    @return ($target/$context)+0em;
+    @return math.div($target, $context) + 0em;
 }
 
 //border

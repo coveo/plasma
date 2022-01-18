@@ -1,6 +1,6 @@
 @function set-white-space($halfOrDefault) {
     @if $halfOrDefault == half {
-        @return $default-margin / 2;
+        @return $default-margin * 0.5;
     } @else {
         @return $default-margin;
     }

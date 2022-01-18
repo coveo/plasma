@@ -4,10 +4,10 @@
     width: $half-input-width;
 
     &:nth-child(2n-1) {
-        margin-right: $half-input-between / 2;
+        margin-right: $half-input-between * 0.5;
     }
 
     &:nth-child(2n) {
-        margin-left: $half-input-between / 2;
+        margin-left: $half-input-between * 0.5;
     }
 }
