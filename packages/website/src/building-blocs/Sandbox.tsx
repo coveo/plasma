@@ -1,6 +1,7 @@
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
 import React from 'react';
+import * as ReactDOM from 'react-dom';
 import * as ts from 'typescript';
 import lzstring from 'lz-string';
 import {twoslasher} from '@typescript/twoslash';
@@ -30,18 +31,18 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
         if (fsMap === null) {
             return;
         }
-        const twoslash = twoslasher(editedCode, 'tsx', {
-            tsModule: ts,
-            defaultOptions: {noStaticSemanticInfo: false, showEmit: true, noErrorValidation: true},
-            defaultCompilerOptions: compilerOptions,
-            lzstringModule: lzstring,
-            fsMap: fsMap,
-        });
-        if (twoslash.errors.length) {
-            console.error(twoslash.errors);
-            return;
-        }
         try {
+            const twoslash = twoslasher(editedCode, 'tsx', {
+                tsModule: ts,
+                defaultOptions: {noStaticSemanticInfo: false, showEmit: true, noErrorValidation: true},
+                defaultCompilerOptions: compilerOptions,
+                lzstringModule: lzstring,
+                fsMap,
+            });
+            if (twoslash.errors.length) {
+                console.error(twoslash.errors);
+                return;
+            }
             const userCodeToEvaluate =
                 twoslash.code
                     .replace('Object.defineProperty(exports, "__esModule", { value: true });', '')
@@ -54,6 +55,12 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
         } catch (error) {
+            ReactDOM.render(
+                <pre className="text mod-error" style={{whiteSpace: 'pre-wrap'}}>
+                    {error.toString().trim()}
+                </pre>,
+                document.getElementById(id)
+            );
             console.error(error);
         }
     }, [editedCode, fsMap]);
@@ -69,11 +76,24 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
     );
 };
 
+const EDITOR_MAX_HEIGHT_IN_PX = 600;
+const EDITOR_MIN_HEIGHT_IN_PX = 150;
+
 const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
     const divEl = React.useRef<HTMLDivElement>(null);
     let editor: monaco.editor.IStandaloneCodeEditor;
     let model: monaco.editor.IModel;
     const onChangeEditor = React.useMemo(() => _.debounce(() => onChange(editor.getValue()), 500), []);
+
+    const updateHeight = () => {
+        const contentHeight = Math.min(
+            EDITOR_MAX_HEIGHT_IN_PX,
+            Math.max(editor.getContentHeight(), EDITOR_MIN_HEIGHT_IN_PX)
+        );
+        divEl.current.style.height = `${contentHeight}px`;
+        editor.layout();
+    };
+
     React.useEffect(() => {
         if (divEl.current) {
             model = monaco.editor.createModel(value, 'typescript', monaco.Uri.file(`${id}.tsx`));
@@ -87,6 +107,8 @@ const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) 
                 theme: 'vs-dark',
             });
             editor.onDidChangeModelContent(onChangeEditor);
+            editor.onDidContentSizeChange(updateHeight);
+            updateHeight();
         }
         return () => {
             model.dispose();
