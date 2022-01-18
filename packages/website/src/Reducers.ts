@@ -1,6 +1,6 @@
 import {IReactVaporState, ReactVaporReducers} from '@coveord/plasma-react';
 import {combineReducers, Reducer} from 'redux';
-import {IListBoxExampleCompositeState, listBoxExampleReducer} from './plasma/routes/legacy/pages/ListBoxExampleReducer';
+import {IListBoxExampleCompositeState, listBoxExampleReducer} from './pages/legacy/ListBoxExampleReducer';
 
 export interface IReactVaporExampleState extends IReactVaporState {
     listBoxExampleState: IListBoxExampleCompositeState;
