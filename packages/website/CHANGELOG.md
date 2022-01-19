@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.9.0](https://github.com/coveo/plasma/compare/v31.8.5...v31.9.0) (2022-01-19)
+
+
+### Features
+
+* **website:** make sandboxes fit their content ([42f01d3](https://github.com/coveo/plasma/commit/42f01d3a389e4de3809bf942641d6a2ae610e849))
+
+
+
+
+
 ## [31.8.5](https://github.com/coveo/plasma/compare/v31.8.4...v31.8.5) (2022-01-19)
 
 **Note:** Version bump only for package @coveord/plasma-website
