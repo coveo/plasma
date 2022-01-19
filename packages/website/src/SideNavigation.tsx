@@ -57,6 +57,7 @@ export const Navigation: React.FunctionComponent = () => {
             <SideNavigation className="navigation-menu-sections">
                 <SideNavigationMenuSection isActive={pathname === '/'} title={<NavLink href="/" label="Home" />} />
                 <CollapsibleSideSection title="Foundations">
+                    <NavLink href="/plasma-search/ResultPage" label="ResultPage" />
                     <NavLink href="/foundations/Iconography" label="Iconography" />
                     <NavLink href="/foundations/Svg" label="SVG" />
                     <NavLink href="/foundations/typekit/Headings" label="Typekit - Headings" />

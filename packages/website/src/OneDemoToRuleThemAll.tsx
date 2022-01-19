@@ -14,8 +14,10 @@ import {LayoutRoutes} from './pages/layout';
 import {NotIncludedRoutes} from './pages/legacy';
 import {NavigationRoutes} from './pages/navigation';
 import {NotFound} from './pages/NotFound';
-import PlasmaSearchBar from './searchBar/PlasmaSearchBar';
-import {EngineProvider} from './searchBar/engine/EngineProvider';
+import {PlasmaSearchRoutes} from './pages/plasma-search';
+import ResultPage from './pages/plasma-search/ResultPage';
+import {EngineProvider} from './search/engine/EngineProvider';
+import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {Navigation} from './SideNavigation';
 
 const Header = () => (
@@ -25,7 +27,7 @@ const Header = () => (
         </a>
         <div className="flex space-around search">
             <EngineProvider>
-                <PlasmaSearchBar />
+                <StandaloneSearchBar />
             </EngineProvider>
         </div>
         <div className="right-side"></div>
@@ -50,6 +52,7 @@ export const App = () => (
     <Routes>
         <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
+            <Route path="plasma-search/*" element={<PlasmaSearchRoutes />} />
             <Route path="foundations/*" element={<FoundationsRoutes />} />
             <Route path="layout/*" element={<LayoutRoutes />} />
             <Route path="input/*" element={<InputRoutes />} />
