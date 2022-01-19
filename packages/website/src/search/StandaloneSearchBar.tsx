@@ -31,23 +31,14 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
             className={classNames('clear-button', {
                 'search-not-empty': state.value !== '',
             })}
-            onClick={() => {
-                controller.updateText('');
-                controller.submit();
-            }}
+            onClick={() => controller.clear()}
         >
             <Svg svgName="cross" svgClass="icon" />
         </button>
     );
 
     const SearchButton = () => (
-        <Button
-            classes={['search-button']}
-            onClick={() => {
-                controller.submit();
-                alert(`rawValue: ${state.suggestions[0].rawValue}`);
-            }}
-        >
+        <Button classes={['search-button']} onClick={() => controller.submit()}>
             <Svg svgName={'search'} className="icon mod-stroke" />
         </Button>
     );
@@ -65,7 +56,9 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                         classes={['search-results-container']}
                         isLoading={state.isLoadingSuggestions}
                         items={results}
-                        onOptionClick={() => controller.submit()}
+                        onOptionClick={(item) => {
+                            controller.selectSuggestion(item.value);
+                        }}
                     />
                 )}
             </>

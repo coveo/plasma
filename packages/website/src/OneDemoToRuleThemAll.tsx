@@ -26,9 +26,7 @@ const Header = () => (
             <img src={logo} className="header-logo" />
         </a>
         <div className="flex space-around search">
-            <EngineProvider>
-                <StandaloneSearchBar />
-            </EngineProvider>
+            <StandaloneSearchBar />
         </div>
         <div className="right-side"></div>
     </div>
@@ -36,7 +34,7 @@ const Header = () => (
 
 // Child routes are rendered in <Outlet />
 const AppLayout = () => (
-    <>
+    <EngineProvider>
         <ScrollToTop />
         <Header />
         <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
@@ -45,7 +43,7 @@ const AppLayout = () => (
                 <Outlet />
             </div>
         </div>
-    </>
+    </EngineProvider>
 );
 
 export const App = () => (

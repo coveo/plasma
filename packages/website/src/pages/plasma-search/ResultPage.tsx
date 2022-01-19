@@ -1,14 +1,8 @@
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import React from 'react';
 
-import {
-    buildResultList,
-    ResultList as HeadlessResultList,
-    loadQueryActions,
-    Result,
-    buildUrlManager,
-} from '@coveo/headless';
-import {Tile} from '@coveord/plasma-react';
+import {buildResultList, ResultList as HeadlessResultList, loadQueryActions, Result} from '@coveo/headless';
+import {Section, Tile} from '@coveord/plasma-react';
 import {useSearchParams} from 'react-router-dom';
 import {EngineContext} from '../../search/engine/EngineContext';
 
@@ -24,10 +18,22 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
 
     return (
         <>
-            <div> COUCOU </div>
-            {state.results.map((result: Result) => (
-                <Tile title={result.title} href={result.clickUri} svgName={'search'} />
-            ))}
+            <Section className="home flex-auto overflow-auto demo-content">
+                <Section className="section">
+                    <h2>Search Results:</h2>
+                    <div className="body-l-book plasma-description">Patate King!</div>
+                    <div className="tile-grid">
+                        {state.results.map((result: Result) => (
+                            <Tile
+                                title={result.title}
+                                href={result.clickUri}
+                                description={result.excerpt}
+                                svgName={'plasmaComponentBox'}
+                            />
+                        ))}
+                    </div>
+                </Section>
+            </Section>
         </>
     );
 };
@@ -44,7 +50,6 @@ const ResultPage = () => {
     const controller = buildResultList(engine);
 
     return <ResultListRenderer controller={controller} />;
-    // return <div>It's a Me MARIIIO!!</div>;
 };
 
 export default ResultPage;
