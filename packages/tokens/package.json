@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "31.9.1",
+    "version": "31.10.0",
     "description": "Design tokens of the Vapor Design System",
     "repository": {
         "type": "git",
