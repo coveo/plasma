@@ -150,7 +150,7 @@ const FormPages: React.FC = () => (
             />
             <Tile
                 title="Multi Select"
-                description="If space allows, and there are no more than 7 options in total, consider using checkboxes instead."
+                description="Multi select dropdown allows users to select multiple options from a list. It is typically used when there is a large number of available options."
                 href="#/form/MultiSelect"
             />
             <Tile
