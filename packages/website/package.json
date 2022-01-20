@@ -2,7 +2,7 @@
     "name": "@coveord/plasma-website",
     "version": "31.8.4",
     "private": true,
-    "description": "Vapor Design System",
+    "description": "Plasma Design System",
     "main": "src/Index.ts",
     "scripts": {
         "start": "tsc --build && concurrently \"tsc --build --watch\" \"webpack-dev-server\"",

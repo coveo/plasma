@@ -15,7 +15,6 @@ import {NotIncludedRoutes} from './pages/legacy';
 import {NavigationRoutes} from './pages/navigation';
 import {NotFound} from './pages/NotFound';
 import {PlasmaSearchRoutes} from './pages/plasma-search';
-import ResultPage from './pages/plasma-search/ResultPage';
 import {EngineProvider} from './search/engine/EngineProvider';
 import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {Navigation} from './SideNavigation';

@@ -4,6 +4,7 @@ import React from 'react';
 import {buildResultList, ResultList as HeadlessResultList, loadQueryActions, Result} from '@coveo/headless';
 import {Section, Tile} from '@coveord/plasma-react';
 import {useSearchParams} from 'react-router-dom';
+import {useLocation} from 'react-router';
 import {EngineContext} from '../../search/engine/EngineContext';
 
 interface ResultListProps {
@@ -13,8 +14,19 @@ interface ResultListProps {
 const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState(controller.state);
+    const location = useLocation();
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+
+    // const isNewSearchEvent = () => {
+    //     const currentSearchId = stateResultList.searchResponseId;
+
+    //     if (currentSearchId !== previousSearchId.current) {
+    //         previousSearchId.current = currentSearchId;
+    //         return true;
+    //     }
+    //     return false;
+    // };
 
     return (
         <>
@@ -23,14 +35,16 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                     <h2>Search Results:</h2>
                     <div className="body-l-book plasma-description">Patate King!</div>
                     <div className="tile-grid">
-                        {state.results.map((result: Result) => (
-                            <Tile
-                                title={result.title}
-                                href={result.clickUri}
-                                description={result.excerpt}
-                                svgName={'plasmaComponentBox'}
-                            />
-                        ))}
+                        {state.results.map((result: Result) =>
+                            result.title !== 'Vapor Design System' ? (
+                                <Tile
+                                    title={result.title}
+                                    href={result.clickUri}
+                                    description={result.excerpt}
+                                    svgName={'plasmaComponentBox'}
+                                />
+                            ) : null
+                        )}
                     </div>
                 </Section>
             </Section>
