@@ -1,20 +1,43 @@
-## Guidelines
+[Description]: # 
+[Text inputs allow to enter and edit short texts, such as names, emails or passwords.]: # 
+>
+> ### Best Practices :bulb: 
+> Use text inputs when the user must enter one **short line of text.**
+> 
+> The width of the text input should be proportional to the expected user input and large enough to display the entire text, in most cases. 
+> The minimum width is 320px and can be incremented by multiples of 8.
+> 
+#
+### Labeling
+Keep labels short, under three words. 
 
-### Restrictions & Size
+Use descriptive labels. Avoid action verbs. (E.g. Use "Email" instead of "Write your email")
+#
+### Help text and instructions
+Help text provide extra guidance on **what** information must be provided or **how** the user should fill it in (such as restricted characters).
 
--   Users should be informed of any input restrictions, such as restrictions on character types or string length.
--   The text input area width should suggest the expected size of the user input. Try to forsee the text input length so as to avoid cutting it off. The text input area should be large enough to display the whole text input in most cases.
--   Avoid setting a character limit, or make sure to set it high enough to avoid constraining most user entries. If this is not possible, let users know how many characters are left.
--   Ensure that users with small screens can still enter all required information.
+Help text should be **short one-liner**. 
+There are two ways to provide help text guidance:
+- Written instructions : "Provide your business email."
+- Example given: "E.g.: johndoe@acme.com"
+A combination of both is also acceptable. 
 
-### Behaviour
+Text input should be self-explanatory as much as possible.
+Add a title and description when providing additional guidance is critical to the user to understand why the information is required or how the information will be used.
+#
+### Feedback and validation
+If some characters are restricted, consider indicating it in an help text instead of relying only on the validation message to inform the user about them.
 
--   Display an inline validation message when the user is done interacting with the input.
+If the provided information isn't compliant with the requirements, make sure that the validation feedback clearly indicates how to fix it in the text of the validation message.
 
----
+If the information is optional, the text input will be automatically tagged as so to indicate that it can be left blank.
+# 
+#### Related Components  :mag: 
+If your use case doesn't match these guidelines, consider using alternate component instead. 
 
-## Related Components
+- [Text Area](#/components/TextArea) when you require more than one line of characters.
+- [Numeric Input](#/components/NumericInput) when you restrict characters to only numerical values.
+- [Single Select](#/input/SingleSelect) when you instead want user to select an option from a predefined list.
 
-[Text Area](#/components/TextArea)
 
-[Numeric Input](#/components/NumericInput)
+
