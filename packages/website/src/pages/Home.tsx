@@ -161,7 +161,7 @@ const FormPages: React.FC = () => (
             <Tile title="Text Area" description="Text Area" href="#/form/TextArea" />
             <Tile
                 title="Text Input"
-                description="Display an inline validation message when the user is done interacting with the input."
+                description="Text inputs allow users to enter and edit short texts, such as names, emails, and passwords."
                 href="#/form/TextInput"
                 thumbnail="textInput"
             />

@@ -20,9 +20,9 @@ export const Guidelines = {
 
 const Table: Components['table'] = ({children}) => <table className="table my2">{children}</table>;
 
-const OrderedList: Components['ol'] = ({children}) => <ol className="list-decimal">{children}</ol>;
+const OrderedList: Components['ol'] = ({children}) => <ol className="list-decimal mt1">{children}</ol>;
 
-const UnorderedList: Components['ul'] = ({children}) => <ul className="list-disc">{children}</ul>;
+const UnorderedList: Components['ul'] = ({children}) => <ul className="list-disc mt1">{children}</ul>;
 
 const Emphasis: Components['em'] = ({children}) => <em className="body-m-book-italic">{children}</em>;
 
