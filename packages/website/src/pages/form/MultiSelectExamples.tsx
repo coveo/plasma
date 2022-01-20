@@ -87,7 +87,7 @@ const MultiSelectWithInitialValuesExample = () => (
 
 export class MultiSelectExamples extends React.Component<unknown, IMultiSelectExamplesState> {
     static description =
-        'A multi-select component allows users to select one or more options from a set of predefined options, or, if relevant, to add custom options.';
+        'Multi select dropdown allows users to select multiple options from a list. It is typically used when there is a large number of available options.';
 
     constructor({props, state}: {props: null; state: IMultiSelectExamplesState}) {
         super(props, state);

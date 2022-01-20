@@ -1,23 +1,45 @@
-## Guidelines
+## Best Practices
 
-### General
+Use a Multi select to have users **filter and select options from a long list**. A Multi select is especially appropriate when the available list of options is very long or when space is limited.
 
--   If space allows, and there are no more than 7 options in total, consider using [checkboxes](#/components/Checkbox) instead.
--   Keep option labels as short as possible in order to limit width to a minimum.
--   When an option is selected, it should be removed from the options list.
+List options in alphanumerical order unless a more suited ordering rationale applies, for example when listing size or security level options.
 
-### Options Sorting
+Always include the ability to filter options when the list contains 20 or more.
 
--   Always put the most common items at the top of the list. If no option is more common than the others, use alphanumeric or chronological order.
+## Labeling
 
-### Label
+Keep titles and labels short, preferably **under three words**.
 
--   In most cases, you should include a label to identify the component.
+### Title
+
+The title should indicate the type of information to provide.
+
+Provide a descriptive title without action verbs. For example, write "Grocery list" rather than "Select the desired items".
+
+### Labels
+
+Labels identify each option and should be self-explanatory. The width of the input should allow to fully display the label of the selected option.
+
+Use a consistent writing style for all options in the list.
+
+## Help Text and Instructions
+
+The placeholder text should indicate the type of information to select. Use an action verb. For example, write "Select an ingredient" rather than "Select an option".
+
+## Feedback and Validation
+
+Allow the addition of custom values only when it doesn't increase the risk of failure and when there's a possibility that not all available options are listed.
+
+Examples:
+-   When users select countries: do not allow custom values.
+-   When users build a grocery list: allow custom values so that users can request new products that may not be on the list yet.
 
 ---
 
 ## Related Components
 
-[Single Select](#/components/SingleSelect)
+If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
-[Checkbox](#/components/Checkbox)
+-   [Multiline box](#/form/MultilineBox) if space is not an issue or if legibility of the selected option is critical.
+-   [Checkbox](#/form/Checkbox) if there are seven options or less.
+-   [Single select](#/form/SingleSelect) if users can select only one option from the list.
