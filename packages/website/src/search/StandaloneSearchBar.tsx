@@ -3,10 +3,9 @@ import '@styles/plasmaSearchBar.scss';
 import {useEffect, useState, FunctionComponent, useContext} from 'react';
 import {buildStandaloneSearchBox, StandaloneSearchBox} from '@coveo/headless';
 import React from 'react';
-import {Button, IItemBoxProps, ListBox, Svg} from '@coveord/plasma-react';
+import {Button, IItemBoxProps, ListBox, Svg, UrlUtils} from '@coveord/plasma-react';
 
 import classNames from 'classnames';
-import {useNavigate} from 'react-router';
 import {EngineContext} from './engine/EngineContext';
 
 interface SearchBarProps {
@@ -15,16 +14,13 @@ interface SearchBarProps {
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState(controller.state);
-    const navigate = useNavigate();
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
     useEffect(() => {
         const {redirectTo, value} = controller.state;
         if (redirectTo) {
-            const data = {value};
-            const dataEncoded = new URLSearchParams(`query=${data.value}`);
-            navigate(redirectTo, {state: dataEncoded});
+            UrlUtils.redirectToUrl(`${redirectTo}?query=${value}`);
         }
     }, [state.redirectTo]);
 
@@ -61,7 +57,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                         items={results}
                         onOptionClick={(item) => {
                             controller.selectSuggestion(item.value);
-                            controller.clear();
+                            // controller.clear();
                         }}
                     />
                 )}
@@ -95,9 +91,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
-    const options = {redirectionUrl: 'plasma-search/ResultPage'}; // mettre un wildcard pour l'url
-    // https://stackoverflow.com/questions/52975289/how-can-i-redirect-from-wildcard-routes-to-the-home-page
-    //
+    const options = {redirectionUrl: '#/plasma-search/ResultPage'};
     const controller = buildStandaloneSearchBox(engine, {options});
     return <SearchBoxRerender controller={controller} />;
 };

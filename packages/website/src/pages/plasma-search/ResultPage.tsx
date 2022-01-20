@@ -1,25 +1,30 @@
-import {FunctionComponent, useContext, useEffect, useState} from 'react';
+import {FunctionComponent, useContext, useEffect, useRef, useState} from 'react';
 import React from 'react';
 
-import {buildResultList, ResultList as HeadlessResultList, loadQueryActions, Result} from '@coveo/headless';
+import {
+    buildResultList,
+    ResultList as HeadlessResultList,
+    loadQueryActions,
+    Result,
+    SearchEngine,
+} from '@coveo/headless';
 import {Section, Tile} from '@coveord/plasma-react';
 import {useSearchParams} from 'react-router-dom';
-import {useLocation} from 'react-router';
 import {EngineContext} from '../../search/engine/EngineContext';
 
 interface ResultListProps {
     controller: HeadlessResultList;
+    query: string;
+    engine: SearchEngine;
 }
 
 const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
-    const {controller} = props;
+    const {controller, engine, query} = props;
     const [state, setState] = useState(controller.state);
-    const location = useLocation();
-
-    useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+    // const previousSearchId = useRef('');
 
     // const isNewSearchEvent = () => {
-    //     const currentSearchId = stateResultList.searchResponseId;
+    //     const currentSearchId = state.searchResponseId;
 
     //     if (currentSearchId !== previousSearchId.current) {
     //         previousSearchId.current = currentSearchId;
@@ -27,6 +32,13 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
     //     }
     //     return false;
     // };
+
+    useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+    useEffect(() => {
+        const {updateQuery} = loadQueryActions(engine);
+        engine.dispatch(updateQuery({q: query}));
+        engine.executeFirstSearch();
+    }, [query]);
 
     return (
         <>
@@ -53,17 +65,11 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
 };
 
 const ResultPage = () => {
+    const engine = useContext(EngineContext);
     const [searchParams] = useSearchParams();
     const query = searchParams.get('query');
-
-    const engine = useContext(EngineContext);
-    const {updateQuery} = loadQueryActions(engine);
-    engine.dispatch(updateQuery({q: query}));
-    engine.executeFirstSearch();
-
     const controller = buildResultList(engine);
-
-    return <ResultListRenderer controller={controller} />;
+    return <ResultListRenderer controller={controller} query={query} engine={engine} />;
 };
 
 export default ResultPage;
