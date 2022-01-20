@@ -43,7 +43,10 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
                     entry.source
                 );
                 if (symbol) {
-                    const type = checker.getTypeOfSymbolAtLocation(symbol, symbol?.valueDeclaration);
+                    const type = checker.getTypeOfSymbolAtLocation(
+                        symbol,
+                        symbol.valueDeclaration || symbol.declarations[0]
+                    );
                     accumulator.push({
                         name: entry.name,
                         description: ts.displayPartsToString(symbol.getDocumentationComment(checker)),

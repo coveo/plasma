@@ -5,6 +5,8 @@ import {Outlet, Route, Routes} from 'react-router-dom';
 
 import logo from '../resources/plasma-logo.svg';
 import ScrollToTop from './building-blocs/ScrollTop';
+import {EngineProvider} from './search/engine/EngineProvider';
+import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {DisplayAndUtilitiesRoutes} from './pages/display-and-utilities';
 import {FeedbackAndInfoRoutes} from './pages/feedback-and-info';
 import {FoundationsRoutes} from './pages/foundations';
@@ -13,10 +15,8 @@ import {InputRoutes} from './pages/input';
 import {LayoutRoutes} from './pages/layout';
 import {NotIncludedRoutes} from './pages/legacy';
 import {NavigationRoutes} from './pages/navigation';
-import {NotFound} from './pages/NotFound';
 import {PlasmaSearchRoutes} from './pages/plasma-search';
-import {EngineProvider} from './search/engine/EngineProvider';
-import StandaloneSearchBar from './search/StandaloneSearchBar';
+import {NotFound} from './pages/NotFound';
 import {Navigation} from './SideNavigation';
 
 const Header = () => (
