@@ -43,7 +43,8 @@ export const SingleSelectExample: ExampleComponent = () => (
 );
 
 SingleSelectExample.description =
-    'A Single Select component allows users to choose a single option from a list or, if relevant, to create and select their own custom option.';
+    'Single select dropdown allows users to select only one option from a list. It is typically used when there is a large number of available options.';
+
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},
