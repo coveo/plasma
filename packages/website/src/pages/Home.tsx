@@ -145,7 +145,7 @@ const FormPages: React.FC = () => (
             <Tile title="Search Bar" description="Search Bar" href="#/form/SearchBar" />
             <Tile
                 title="Single Select"
-                description="If space allows, and there are no more than 7 options to choose from, consider using radio buttons instead."
+                description="Single select dropdown allows users to select only one option from a list. It is typically used when there is a large number of available options."
                 href="#/form/SingleSelect"
             />
             <Tile
