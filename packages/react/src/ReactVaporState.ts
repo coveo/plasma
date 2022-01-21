@@ -12,7 +12,7 @@ import {IDropState} from './components/drop/redux/DropReducers';
 import {IDropdownState} from './components/dropdown/DropdownReducers';
 import {IDropdownOption} from './components/dropdownSearch/DropdownSearch';
 import {IDropdownSearchState} from './components/dropdownSearch/DropdownSearchReducers';
-import {CodeEditorState} from './components/editor/CodeEditorReducers';
+import {CodeEditorsState} from './components/editor/CodeEditorReducers';
 import {JSONEditorState} from './components/editor/JSONEditorReducers';
 import {IFacet} from './components/facets/Facet';
 import {IFacetState} from './components/facets/FacetReducers';
@@ -39,7 +39,7 @@ import {IRefreshCallbackReducerState} from './components/refresh/RefreshCallback
 import {ISearchBarState} from './components/searchBar/SearchBarReducers';
 import {ISelectWithFilterCompositeState} from './components/select/hoc/SelectWithFilterReducers';
 import {ISelectState} from './components/select/SelectReducers';
-import {ISliderState} from './components/slider/SliderReducers';
+import {ISlidersState} from './components/slider/SliderReducers';
 import {ISubNavigationState} from './components/subNavigation/SubNavigationReducers';
 import {ITabGroupState} from './components/tab/TabReducers';
 import {HOCTableState} from './components/table-hoc/reducers/TableHOCReducers';
@@ -75,7 +75,7 @@ export interface IReactVaporState {
     groupableCheckboxes?: IGroupableCheckboxesState[];
     inputs?: IInputState[];
     itemFilters?: IItemFilterState[];
-    codeEditors?: CodeEditorState[];
+    codeEditors?: CodeEditorsState;
     jsonEditors?: JSONEditorState[];
     lastAction?: Redux.Action;
     lastUpdatedComposite?: ILastUpdatedState[];
@@ -98,7 +98,7 @@ export interface IReactVaporState {
     searchBars?: ISearchBarState[];
     selects?: ISelectState[];
     selectWithFilter?: ISelectWithFilterCompositeState;
-    sliders?: ISliderState[];
+    sliders?: ISlidersState;
     stringList?: IStringListCompositeState;
     subNavigations?: ISubNavigationState[];
     tabs?: ITabGroupState[];

@@ -53,9 +53,9 @@ import {IReactVaporState} from './ReactVaporState';
 import {stringListCompositeReducer} from './reusableState/customList/StringListReducers';
 import {IReduxAction} from './utils/ReduxUtils';
 
-const lastAction = (state: IReactVaporState = null, action: IReduxAction): IReduxAction => action;
+const lastAction = (state: IReduxAction = null, action: IReduxAction) => action;
 
-export const ReactVaporReducers: ReducersMapObject = {
+export const ReactVaporReducers: ReducersMapObject<IReactVaporState> = {
     actionBars: actionBarsReducer,
     autocompletes: autocompletesReducer,
     checkboxes: checkboxesReducer,

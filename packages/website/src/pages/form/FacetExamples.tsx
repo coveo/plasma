@@ -1,12 +1,8 @@
+import {changeFacet, FacetConnected, IFacet, IFacetActionPayload, IReduxAction, Section} from '@coveord/plasma-react';
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {changeFacet, FacetConnected, IFacet, IFacetActionPayload, IReduxAction, Section} from '@coveord/plasma-react';
 
 import VaporComponent from '../../building-blocs/VaporComponent';
-
-export interface ILastUpdateConnectedExamplesProps {
-    onRender?: () => void;
-}
 
 const facet: IFacet = {name: 'facetTitle1', formattedName: 'The first facet'};
 const facet2: IFacet = {name: 'facetTitle2', formattedName: 'The second facet'};
@@ -37,9 +33,7 @@ const facetRows: IFacet[] = [
     },
 ];
 
-const mapDispatchToProps = (
-    dispatch: (action: IReduxAction<IFacetActionPayload>) => void
-): ILastUpdateConnectedExamplesProps => ({
+const mapDispatchToProps = (dispatch: (action: IReduxAction<IFacetActionPayload>) => void) => ({
     onRender: () => {
         dispatch(
             changeFacet(facet.name, {
@@ -64,7 +58,7 @@ const mapDispatchToProps = (
 });
 
 // start-print
-const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateConnectedExamplesProps> = ({onRender}) => {
+const FacetExamplesDisconnected: React.FunctionComponent<ReturnType<typeof mapDispatchToProps>> = ({onRender}) => {
     React.useEffect(() => {
         onRender();
     }, []);
@@ -97,4 +91,4 @@ const FacetConnectedExamplesDisconnected: React.FunctionComponent<ILastUpdateCon
         </VaporComponent>
     );
 };
-export const FacetConnectedExamples = connect(null, mapDispatchToProps)(FacetConnectedExamplesDisconnected);
+export const FacetExamples = connect(null, mapDispatchToProps)(FacetExamplesDisconnected);

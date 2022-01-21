@@ -1,19 +1,19 @@
-import * as React from 'react';
 import {
-    ActionBarConnected,
     ACTION_SEPARATOR,
+    ActionBarConnected,
     addActionsToActionBar,
+    filterItems,
     IActionOptions,
-    Section,
 } from '@coveord/plasma-react';
+import * as React from 'react';
 
-import {Store} from '../../Store';
 import VaporComponent from '../../building-blocs/VaporComponent';
+import {Store} from '../../Store';
 
 const actionBarId = 'action-bar-connected';
 
 // start-print
-export class ActionBarConnectedExamples extends React.Component<any, any> {
+export class ActionBarExamples extends React.Component<any, any> {
     componentDidMount() {
         const actions: IActionOptions[] = [
             ACTION_SEPARATOR,
@@ -95,22 +95,14 @@ export class ActionBarConnectedExamples extends React.Component<any, any> {
             },
             ACTION_SEPARATOR,
         ];
-        setTimeout(() => {
-            Store.dispatch(addActionsToActionBar(actionBarId, actions));
-        }, 4000);
+        Store.dispatch(addActionsToActionBar(actionBarId, actions));
+        Store.dispatch(filterItems(actionBarId, 'Item'));
     }
 
     render() {
         return (
-            <VaporComponent id="ActionBarConnected" title="Action Bar Connected" withSource>
-                <Section title="Action bar examples">
-                    <Section
-                        level={2}
-                        title="Action bar with Redux state and inline prompt (actions appear after 4 seconds)"
-                    >
-                        <ActionBarConnected id={actionBarId} />
-                    </Section>
-                </Section>
+            <VaporComponent id="ActionBarConnected" title="Action Bar" withSource>
+                <ActionBarConnected id={actionBarId} itemFilterLabel="Filtered By" />
             </VaporComponent>
         );
     }

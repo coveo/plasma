@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import VaporComponent from '../../../building-blocs/VaporComponent';
+import VaporComponent from '../../building-blocs/VaporComponent';
 
 export const Links = () => (
     <VaporComponent id="Links" title="Links" withSource>
