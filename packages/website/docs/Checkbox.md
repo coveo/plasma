@@ -1,29 +1,53 @@
-## Guidelines
+# Best Practices
 
-### General
+Use checkboxes to have users select one or more options from a list, or none at all.
 
--   Whereas checkboxes can be used to toggle options on and off, using a [toggle switch](#/components/FlatSelect) or [radio buttons](#/components/Radio) is preferable.
--   A checkbox set should always have a title.
--   Always put the most common options at the top of the checkbox list.
--   If more than 7 options (checkboxes) are needed, it is preferable to group checkboxes logically under more than one set of options such that the set label represents the grouping logic.
+Use a stand-alone checkbox to toggle a single option on/off if the result is not immediately visible, e.g., when a final confirmation from the user is required to apply changes.
 
-### Label
+Conversely, if the result is applied immediately, such as a change of display, use a [Toggle](#/form/FlatSelect) instead.
 
--   Try to limit labels to one short line.
--   Add instructions that indicate how many items can be selected, as some users might not know the difference between checkboxes and radio buttons.
--   Consider listing options vertically, as horizontal listings can make it difficult to tell which label is related to which checkbox.
--   [Partially selected states](#/components/Checkbox) should only be used when sub-options can be selected as children of a checkbox. A parent checkbox being in the partially selected state indicates that only some of its sub-options are selected, not all of them. Toggling the parent checkbox toggles all its sub-options.
+Aim for seven or less options. If that's impossible, consider breaking your set of options into several smaller logical sets or using the [Multi select](#/form/MultiSelect) instead.
 
-### Behavior
+List options in alphanumerical order unless a more suited ordering rationale applies, for example when listing size or security level options. If no rationale stands out, place options in alphanumerical order.
 
--   As much as possible, preselect the recommended option. If there is none, preselect the option most likely to be selected by users.
+## Labeling
+
+Keep titles and labels short, preferably **under three words**.
+
+### Title
+
+Always use a title when offering multiple options.
+
+Provide a descriptive title without action verbs. For example, write "Grocery items" rather than "Select all grocery items".
+
+For a stand-alone checkbox, the title is optional. Use a title only if you need to dissociate the stand-alone checkbox from other adjacent checkboxes.
+
+### Labels
+
+Labels identify each option and should be self-explanatory.
+
+Use a consistent writing style for all options in the list.
+
+For a stand-alone checkbox, use a positive and active wording that clearly indicates what happens if the checkbox is selected. For example, write "Send me a text notification" rather than "Email notification".
+
+## Help Text and Instructions
+
+Instructions provide more context on the outcome of the choice to make. Use it sparingly, only when it is critical to the user's understanding.
+
+## Feedback and Validation
+
+If there is a maximum number of options that users can select, indicate it in a description.
+
+If an option is recommended or the default, indicate it in its label.
+
+The partially selected state is only allowed with checkboxes that have children options. A partially selected parent checkbox indicates that only some of its children options are selected.
 
 ---
 
 ## Related Components
 
-[Radio buttons](#/components/Radio)
+If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
-[Dropdown](#/components/DropdownSearch)
-
-[Toggle](#/components/FlatSelect)
+-   [Multi select](#/form/MultiSelect) if there are more than seven options.
+-   [Toggle](#/form/FlatSelect) if the result applies immediately, for example with a change of display.
+-   [Radio button](#/form/RadioButton) if options are mutually exclusive.
