@@ -1,11 +1,10 @@
-import * as React from 'react';
-import {connect} from 'react-redux';
 import {
     Button,
     FilterBoxSelectors,
     IDispatch,
     IFlatSelectOptionProps,
     IItemBoxProps,
+    IReactVaporState,
     ISelectButtonProps,
     ISingleSelectOwnProps,
     Section,
@@ -25,11 +24,12 @@ import {
     withServerSideProcessing,
     withValidationMessage,
 } from '@coveord/plasma-react';
+import * as React from 'react';
+import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {ExampleComponent} from '../../utils/ExamplesUtils';
 import VaporComponent from '../../building-blocs/VaporComponent';
-import {IReactVaporExampleState} from '../../Reducers';
+import {ExampleComponent} from '../../utils/ExamplesUtils';
 import {PhotoItem, PhotoProps, usePhotosAPIMock} from '../../utils/ServerSideSelectExampleUtils';
 
 // start-print
@@ -213,7 +213,7 @@ const MyCustomButton: React.FunctionComponent<ISelectButtonProps> = ({onClick, s
 
 const PER_PAGE = 10;
 
-const mapStateToProps = (state: IReactVaporExampleState, props: {id: string}) => ({
+const mapStateToProps = (state: IReactVaporState, props: {id: string}) => ({
     filterValue: FilterBoxSelectors.getFilterText(state, props),
 });
 

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../../building-blocs/VaporComponent';
+import VaporComponent from '../../building-blocs/VaporComponent';
 
 export const Whitespace = () => (
     <VaporComponent id="Whitespaces" title="Whitespace" withSource>

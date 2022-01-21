@@ -21,7 +21,7 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 import {Store} from '../../Store';
 
 // start-print
-export const Collapsible: React.FunctionComponent = () => {
+export const CollapsibleExamples: React.FunctionComponent = () => {
     const [checked, setChecked] = React.useState(false);
     const [disabled, setDisabled] = React.useState(false);
 

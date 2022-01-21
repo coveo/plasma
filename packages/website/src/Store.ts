@@ -1,18 +1,16 @@
-import {IDispatch} from '@coveord/plasma-react';
-import {applyMiddleware, createStore} from 'redux';
+import {IDispatch, ReactVaporReducers} from '@coveord/plasma-react';
+import {applyMiddleware, combineReducers, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
-
-import {IReactVaporExampleState, Reducers} from './Reducers';
 
 const middlewares = [thunk, promise];
 
 const composeEnhancers = composeWithDevTools({name: 'Vapor Design System'});
 
 export const Store = createStore(
-    Reducers,
-    composeEnhancers(applyMiddleware<IDispatch<IReactVaporExampleState>>(...middlewares))
+    combineReducers(ReactVaporReducers),
+    composeEnhancers(applyMiddleware<IDispatch>(...middlewares))
 );
 
 // Required for the dynamic examples

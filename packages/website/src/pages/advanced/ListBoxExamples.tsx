@@ -1,15 +1,11 @@
-import * as React from 'react';
 import {IItemBoxProps, ITooltipProps, ListBox, ListBoxConnected, UUID} from '@coveord/plasma-react';
+import * as React from 'react';
 
-import {ListBoxConnectedExamples} from './ListBoxConnectedExamples';
 import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 
 export class ListBoxExamples extends React.Component {
-    private idSingle: string = 'listbox_connected_updated_single';
-    private idMulti: string = 'listbox_connected_updated_multi';
-
     render() {
         const triggerAlertFunction = (item: IItemBoxProps) => {
             alert(`The item value triggered is ${item.value}`);
@@ -81,22 +77,6 @@ export class ListBoxExamples extends React.Component {
                         <label className="form-control-label">List Box Connected (multi)</label>
                         <div className="form-control">
                             <ListBoxConnected id={UUID.generate()} items={defaultItems} multi />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">
-                            List Box Connected updated with new options (single)
-                        </label>
-                        <div className="form-control">
-                            <ListBoxConnectedExamples id={this.idSingle} items={defaultItems} />
-                        </div>
-                    </div>
-                    <div className="form-group">
-                        <label className="form-control-label">
-                            List Box Connected updated with new options (multi)
-                        </label>
-                        <div className="form-control">
-                            <ListBoxConnectedExamples id={this.idMulti} items={defaultItems} multi />
                         </div>
                     </div>
                 </div>

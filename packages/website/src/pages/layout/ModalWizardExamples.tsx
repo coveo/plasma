@@ -1,5 +1,3 @@
-import * as React from 'react';
-import {connect} from 'react-redux';
 import {
     Button,
     ConnectedProps,
@@ -7,6 +5,7 @@ import {
     IDispatch,
     InputConnected,
     InputSelectors,
+    IReactVaporState,
     Label,
     ModalWizard,
     ModalWizardWithValidations,
@@ -15,22 +14,23 @@ import {
     RadioSelectConnected,
     RadioSelectSelectors,
     Section,
-    withDirtyInputHOC,
-    withNonEmptyValueInputValidationHOC,
-    withNonEmptySingleSelectHOC,
     SingleSelectConnected,
+    withDirtyInputHOC,
     withDirtySingleSelectHOC,
+    withNonEmptySingleSelectHOC,
+    withNonEmptyValueInputValidationHOC,
 } from '@coveord/plasma-react';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import * as React from 'react';
+import {connect} from 'react-redux';
 
-import {IReactVaporExampleState} from '../../Reducers';
+import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 
 const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo');
 
 const enhanceExample1 = connect(
-    (state: IReactVaporExampleState) => ({
+    (state: IReactVaporState) => ({
         selectedPath: RadioSelectSelectors.getValue(state, {id: 'radio-step-1'}),
         inputTwoValue: InputSelectors.getValue(state, {id: 'input-step-2'}) || '',
     }),

@@ -1,9 +1,8 @@
-import * as React from 'react';
-import {useSelector} from 'react-redux';
 import {
     FlatSelectConnected,
     FlatSelectSelectors,
     IItemBoxProps,
+    IReactVaporState,
     Section,
     SingleSelectConnected,
     StringUtils,
@@ -11,14 +10,15 @@ import {
     SVG_NAMES,
     SvgNames,
 } from '@coveord/plasma-react';
+import * as React from 'react';
+import {useSelector} from 'react-redux';
 
-import {IReactVaporExampleState} from '../../Reducers';
 import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 export const SvgExamples: React.FC = () => {
     const LISTBOX_ID = 'svg-name-picker';
-    const svgName = useSelector((state: IReactVaporExampleState) => {
+    const svgName = useSelector((state: IReactVaporState) => {
         const selectedBox = state.listBoxes.find((box) => box.id === LISTBOX_ID);
 
         if (!selectedBox) {

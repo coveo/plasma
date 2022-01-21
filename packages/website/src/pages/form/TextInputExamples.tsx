@@ -96,8 +96,8 @@ const hookUsage = `
 export const TextInputExamples: React.FunctionComponent = () => (
     <ExampleLayout
         id="TextInput"
-        title="TextInput"
-        section="inputs"
+        title="Text Input"
+        section="form"
         componentSourcePath="/textInput/TextInput.tsx"
         code={code}
         examples={{hookUsage: {code: hookUsage, title: 'useTextInput hook usage'}}}
