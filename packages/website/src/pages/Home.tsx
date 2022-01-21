@@ -114,7 +114,7 @@ const FormPages: React.FC = () => (
             />
             <Tile
                 title="Checkbox"
-                description="Whereas checkboxes can be used to toggle options on and off, using a toggle switch or radio buttons is preferable."
+                description="Checkboxes allow the selection of multiples options from a list. Checkboxes can also be used to turn one option on or off."
                 href="#/form/Checkbox"
             />
             <Tile

@@ -26,7 +26,8 @@ export const CheckboxExamples: ExampleComponent = () => (
     </VaporComponent>
 );
 
-CheckboxExamples.description = 'Checkboxes allow users to select multiple options from a set.';
+CheckboxExamples.description =
+    'Checkboxes allow the selection of multiples options from a list. Checkboxes can also be used to turn one option on or off.';
 
 const SaveButton = withDirtySaveButtonHOC(Button);
 
