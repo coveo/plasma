@@ -26,7 +26,7 @@ const Header = () => (
         </a>
         <div className="flex space-around search">
             {/*
-                To toggle the feature flag, copy and paste this command in the dev tool console:
+                To toggle the feature flag, copy and paste those commands in the dev tool console:
                 sessionStorage.setItem('ff_plasma-search-bar', true) to show the bar
                 sessionStorage.setItem('ff_plasma-search-bar', false) to hide the bar
                 You need to reload the page for it to take effect.
