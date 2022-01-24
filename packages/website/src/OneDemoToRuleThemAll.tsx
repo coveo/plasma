@@ -2,6 +2,7 @@ import '@styles/main.scss';
 
 import * as React from 'react';
 import {Outlet, Route, Routes} from 'react-router-dom';
+import {FeatureFlags} from './FeatureFlags';
 
 import logo from '../resources/plasma-logo.svg';
 import ScrollToTop from './building-blocs/ScrollTop';
@@ -24,9 +25,17 @@ const Header = () => (
             <img src={logo} className="header-logo" />
         </a>
         <div className="flex space-around search">
-            <EngineProvider>
-                <StandaloneSearchBar id="header" />
-            </EngineProvider>
+            {/*
+                To toggle the feature flag, copy and paste this command in the dev tool console:
+                sessionStorage.setItem('ff_plasma-search-bar', true) to show the bar
+                sessionStorage.setItem('ff_plasma-search-bar', false) to hide the bar
+                You need to reload the page for it to take effect.
+             */}
+            {FeatureFlags.get('plasma-search-bar') && (
+                <EngineProvider>
+                    <StandaloneSearchBar id="header" />
+                </EngineProvider>
+            )}
         </div>
         <div className="right-side"></div>
     </div>

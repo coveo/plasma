@@ -31,6 +31,7 @@
         "codemirror": "5.63.3",
         "d3": "3.5.17",
         "faker": "4.1.0",
+        "flagg": "1.1.2",
         "jquery": "3.6.0",
         "lorem-ipsum": "2.0.4",
         "lz-string": "^1.4.4",
