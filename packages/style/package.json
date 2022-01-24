@@ -9,7 +9,7 @@
         "front-end",
         "web"
     ],
-    "homepage": "https://vapor.coveo.com/",
+    "homepage": "https://plasma.coveo.com/",
     "author": "Coveo",
     "license": "Apache-2.0",
     "main": "dist/js/VaporSVG.js",

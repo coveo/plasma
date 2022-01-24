@@ -6,7 +6,7 @@
 
 [Coveo Administration Console](https://platform.cloud.coveo.com/admin/)'s design system.
 
-[Have a look at the demo page!](https://vapor.coveo.com/)
+[Have a look at the demo page!](https://plasma.coveo.com/)
 
 ## Getting started
 
