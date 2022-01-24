@@ -6,7 +6,7 @@
 
 ![logo](vapor.gif)
 
-`@coveord/plasma-style` is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation is [available here](https://vapor.coveo.com/)
+`@coveord/plasma-style` is Coveo's collection of UI styles used in Coveo Cloud Administration Console. All components and their documentation is [available here](https://plasma.coveo.com/)
 
 ## Usage
 

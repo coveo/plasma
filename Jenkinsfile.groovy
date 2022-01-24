@@ -148,13 +148,13 @@ pipeline {
           def SOURCE_LINK = ""
           def pullRequestURL = getCommitPullRequestURL()
           if (pullRequestURL != "") {
-            postDemoLinkOnGithub("https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html");
+            postDemoLinkOnGithub("https://plasma.coveo.com/feature/${env.BRANCH_NAME}/index.html");
             SOURCE_LINK = pullRequestURL
           } else {
             SOURCE_LINK = "https://github.com/coveo/plasma/tree/${env.BRANCH_NAME}"
           }
 
-          def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://vapor.coveo.com/feature/${env.BRANCH_NAME}/index.html"
+          def message = "Build succeeded for <${SOURCE_LINK}|${env.BRANCH_NAME}>: https://plasma.coveo.com/feature/${env.BRANCH_NAME}/index.html"
           notify.sendSlackWithThread(
               color: "#00FF00", message: message,
               ["admin-ui-builds"]

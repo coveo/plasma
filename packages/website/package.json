@@ -2,7 +2,7 @@
     "name": "@coveord/plasma-website",
     "version": "31.11.1",
     "private": true,
-    "description": "Vapor Design System",
+    "description": "Plasma Design System",
     "main": "src/Index.ts",
     "scripts": {
         "start": "tsc --build && concurrently \"tsc --build --watch\" \"webpack-dev-server\"",
@@ -15,7 +15,7 @@
     },
     "author": "Coveo",
     "license": "Apache-2.0",
-    "homepage": "https://vapor.coveo.com/",
+    "homepage": "https://plasma.coveo.com/",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/coveo/plasma.git"

@@ -10,4 +10,4 @@ BUCKET=coveo-nrd-jsadmin
 echo "Pushing new demo of ${BRANCH} to ${BUCKET}/${DESTINATION}/${BRANCH}."
 aws s3 sync ./packages/website/dist s3://${BUCKET}/${DESTINATION}/${BRANCH}
 
-echo "Branch successfully deployed to https://vapor.coveo.com/feature/${BRANCH}/"
+echo "Branch successfully deployed to https://plasma.coveo.com/feature/${BRANCH}/"
