@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "31.11.1",
+    "version": "31.11.2",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -36,7 +36,7 @@
         "postversion": "find ./dist -type f -exec sed -i '' -e 's,||||VERSION||||,'\"$npm_package_version\"',g' {} \\;"
     },
     "dependencies": {
-        "@coveord/plasma-style": "^31.11.1",
+        "@coveord/plasma-style": "^31.11.2",
         "@types/codemirror": "0.0.109",
         "chosen-js": "1.8.7",
         "classnames": "2.3.1",
