@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-style",
-    "version": "31.10.1",
+    "version": "31.11.2",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -9,7 +9,7 @@
         "front-end",
         "web"
     ],
-    "homepage": "https://vapor.coveo.com/",
+    "homepage": "https://plasma.coveo.com/",
     "author": "Coveo",
     "license": "Apache-2.0",
     "main": "dist/js/VaporSVG.js",
