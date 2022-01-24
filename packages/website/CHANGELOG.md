@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.11.0](https://github.com/coveo/plasma/compare/v31.10.1...v31.11.0) (2022-01-24)
+
+
+### Features
+
+* **feature flags:** implementation for simple feature flags ([dde4131](https://github.com/coveo/plasma/commit/dde4131a89041fe43e88737048d16109d903bcda))
+
+
+
+
+
 ## [31.10.1](https://github.com/coveo/plasma/compare/v31.10.0...v31.10.1) (2022-01-24)
 
 **Note:** Version bump only for package @coveord/plasma-website
