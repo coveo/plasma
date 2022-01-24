@@ -7,6 +7,7 @@ import {Button, IItemBoxProps, ListBox, Svg, UrlUtils} from '@coveord/plasma-rea
 
 import classNames from 'classnames';
 import {EngineContext} from './engine/EngineContext';
+import {FeatureFlags} from '../FeatureFlags';
 
 interface SearchBarProps {
     controller: StandaloneSearchBox;
@@ -57,7 +58,6 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                         items={results}
                         onOptionClick={(item) => {
                             controller.selectSuggestion(item.value);
-                            // controller.clear();
                         }}
                     />
                 )}
@@ -89,11 +89,17 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     );
 };
 
+/*
+ * To toggle the feature flag, copy and paste those commands in the dev tool console:
+ * sessionStorage.setItem('ff_plasma-search-bar', true) to show the bar
+ * sessionStorage.setItem('ff_plasma-search-bar', false) to hide the bar
+ * You need to reload the page for it to take effect.
+ */
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
     const options = {redirectionUrl: '#/plasma-search/ResultPage'};
     const controller = buildStandaloneSearchBox(engine, {options});
-    return <SearchBoxRerender controller={controller} />;
+    return FeatureFlags.get('plasma-search-bar') ? <SearchBoxRerender controller={controller} /> : null;
 };
 
 export default StandaloneSearchBar;

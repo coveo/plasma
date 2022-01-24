@@ -7,13 +7,12 @@ import logo from '../resources/plasma-logo.svg';
 import ScrollToTop from './building-blocs/ScrollTop';
 import {EngineProvider} from './search/engine/EngineProvider';
 import StandaloneSearchBar from './search/StandaloneSearchBar';
-import {DisplayAndUtilitiesRoutes} from './pages/display-and-utilities';
-import {FeedbackAndInfoRoutes} from './pages/feedback-and-info';
+import {AdvancedRoutes} from './pages/advanced';
+import {FeedbackAndInfoRoutes as FeedbackRoutes} from './pages/feedback';
+import {InputRoutes as FormRoutes} from './pages/form';
 import {FoundationsRoutes} from './pages/foundations';
 import {Home} from './pages/Home';
-import {InputRoutes} from './pages/input';
 import {LayoutRoutes} from './pages/layout';
-import {NotIncludedRoutes} from './pages/legacy';
 import {NavigationRoutes} from './pages/navigation';
 import {PlasmaSearchRoutes} from './pages/plasma-search';
 import {NotFound} from './pages/NotFound';
@@ -51,13 +50,11 @@ export const App = () => (
             <Route index element={<Home />} />
             <Route path="plasma-search/*" element={<PlasmaSearchRoutes />} />
             <Route path="foundations/*" element={<FoundationsRoutes />} />
+            <Route path="form/*" element={<FormRoutes />} />
             <Route path="layout/*" element={<LayoutRoutes />} />
-            <Route path="input/*" element={<InputRoutes />} />
             <Route path="navigation/*" element={<NavigationRoutes />} />
-            <Route path="feedback-and-info/*" element={<FeedbackAndInfoRoutes />} />
-            <Route path="display-and-utilities/*" element={<DisplayAndUtilitiesRoutes />} />
-            <Route path="legacy/*" element={<NotIncludedRoutes />} />
-            <Route path="foundations/*" element={<FoundationsRoutes />} />
+            <Route path="feedback/*" element={<FeedbackRoutes />} />
+            <Route path="advanced/*" element={<AdvancedRoutes />} />
             <Route path="*" element={<NotFound />} />
         </Route>
     </Routes>

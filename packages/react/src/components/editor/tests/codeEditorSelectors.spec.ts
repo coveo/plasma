@@ -15,7 +15,7 @@ describe('CodeEditorSelectors', () => {
             const expectedValue = '{}';
             const expectedCodeEditor: CodeEditorState = {id, value: expectedValue};
 
-            expect(CodeEditorSelectors.getValue({codeEditors: [expectedCodeEditor]}, '🥔')).toBe(expectedValue);
+            expect(CodeEditorSelectors.getValue({codeEditors: {'🥔': expectedCodeEditor}}, '🥔')).toBe(expectedValue);
         });
     });
 });

@@ -54,7 +54,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@coveord/plasma-style': ^31.9.0
+      '@coveord/plasma-style': ^31.10.1
       '@helpers/enzyme-redux': ^1.0.0
       '@testing-library/dom': 8.11.1
       '@testing-library/jest-dom': 5.16.1
@@ -355,8 +355,8 @@ importers:
   packages/website:
     specifiers:
       '@coveo/headless': ^1.32.0
-      '@coveord/plasma-react': ^31.9.0
-      '@coveord/plasma-style': ^31.9.0
+      '@coveord/plasma-react': ^31.10.1
+      '@coveord/plasma-style': ^31.10.1
       '@loadable/component': 5.15.0
       '@types/classnames': 2.3.0
       '@types/faker': 4.1.12
@@ -382,6 +382,7 @@ importers:
       d3: 3.5.17
       faker: 4.1.0
       file-loader: 5.1.0
+      flagg: 1.1.2
       html-webpack-plugin: 4.5.2
       html-webpack-tags-plugin: 2.0.17
       jquery: 3.6.0
@@ -429,6 +430,7 @@ importers:
       codemirror: 5.63.3
       d3: 3.5.17
       faker: 4.1.0
+      flagg: 1.1.2
       jquery: 3.6.0
       lorem-ipsum: 2.0.4
       lz-string: 1.4.4
@@ -7799,6 +7801,10 @@ packages:
       object.pick: 1.3.0
       parse-filepath: 1.0.2
     dev: true
+
+  /flagg/1.1.2:
+    resolution: {integrity: sha512-GxSy2SGJWlQ+ZScy7hKRQoSsIoSUIWw8YvPJhKd7AOjzZMbIE2mBRzRUUkUB3gXhrrBPLKtG8KZC68ri8omReQ==}
+    dev: false
 
   /flagged-respawn/1.0.1:
     resolution: {integrity: sha512-lNaHNVymajmk0OJMBn8fVUAU1BtDeKIqKoVhk4xAALB57aALg6b4W0MfJ/cUE0g9YBXy5XhSlPIpYIJ7HaY/3Q==}

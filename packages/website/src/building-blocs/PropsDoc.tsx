@@ -29,7 +29,9 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
 
         const env = createVirtualTypeScriptEnvironment(system, [...fsMap.keys()], ts as any, compilerOptions as any);
         const checker = env.languageService.getProgram().getTypeChecker();
-        const {entries} = env.languageService.getCompletionsAtPosition('props.ts', content.length, undefined);
+        const {entries} = env.languageService.getCompletionsAtPosition('props.ts', content.length, {
+            triggerKind: ts.CompletionTriggerKind.Invoked,
+        });
         const accumulator: PropInfo[] = [];
 
         if (!entries) {
@@ -70,7 +72,7 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
 
     return (
         <div className="props-doc">
-            <table>
+            <table className="full-content-x table-layout-fixed">
                 <thead className="body-m">
                     <tr>
                         <th>Name</th>

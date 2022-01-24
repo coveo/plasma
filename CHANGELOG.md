@@ -3,6 +3,33 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [31.10.1](https://github.com/coveo/plasma/compare/v31.10.0...v31.10.1) (2022-01-24)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [31.10.0](https://github.com/coveo/plasma/compare/v31.9.1...v31.10.0) (2022-01-20)
+
+
+### Features
+
+* **react:** add start command ([#2383](https://github.com/coveo/plasma/issues/2383)) ([a64224c](https://github.com/coveo/plasma/commit/a64224c8793ab840854732d8ed606d8701fa33d4))
+
+
+
+
+
+## [31.9.1](https://github.com/coveo/plasma/compare/v31.9.0...v31.9.1) (2022-01-20)
+
+**Note:** Version bump only for package root
+
+
+
+
+
 # [31.9.0](https://github.com/coveo/plasma/compare/v31.8.5...v31.9.0) (2022-01-19)
 
 
