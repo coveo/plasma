@@ -1,8 +1,7 @@
 import '@styles/home.scss';
 
-import React from 'react';
-
 import {Section, Tile} from '@coveord/plasma-react';
+import React from 'react';
 
 export const Home: React.FunctionComponent = () => (
     <Section className="home flex-auto overflow-auto demo-content">
@@ -20,9 +19,14 @@ const WelcomeToPlasma: React.FC = () => (
         <h5 className="welcome-to">Welcome to</h5>
         <div className="page-title">PLASMA</div>
         <div className="body-l-book plasma-description">
-            {
-                'Coveo’s platform design system & ionized Vapor.\n Learn more about our brand, our values and our story by visiting our brand page'
-            }
+            <div>Coveo’s platform design system & ionized Vapor.</div>
+            <div>
+                Learn more about our brand, our values and our story by visiting our{' '}
+                <a className="link" href="https://brand.coveo.com/" target="_blank">
+                    brand page
+                </a>
+                .
+            </div>
         </div>
     </Section>
 );
