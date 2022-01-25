@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import {SideNavigation, SideNavigationItem, SideNavigationMenuSection} from '@coveord/plasma-react';
+import {SideNavigation, SideNavigationItem, SideNavigationMenuSection, Svg} from '@coveord/plasma-react';
 import React, {useState} from 'react';
 import {useLocation} from 'react-router';
 import {Link} from 'react-router-dom';
@@ -62,8 +62,9 @@ export const Navigation: React.FunctionComponent = () => {
                 <SideNavigationMenuSection isActive={pathname === '/'} title={<NavLink href="/" label="Home" />} />
                 <SideNavigationMenuSection
                     title={
-                        <a href="https://brand.coveo.com/" target="_blank">
+                        <a href="https://brand.coveo.com/" target="_blank" className="inline-flex flex-center">
                             Brand
+                            <Svg svgName="external" svgClass="icon mod-20 pl1" />
                         </a>
                     }
                 />
