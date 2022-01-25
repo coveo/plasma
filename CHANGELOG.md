@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.14.0](https://github.com/coveo/plasma/compare/v31.13.0...v31.14.0) (2022-01-25)
+
+
+### Features
+
+* **plasmasearch:** iTS ALIVE ([42c728a](https://github.com/coveo/plasma/commit/42c728a4717c380f09981675a2eccda5c98243fa))
+* **searchbar:** add esc handle + cleanup a bit ([d1b407e](https://github.com/coveo/plasma/commit/d1b407e6cf9377dd32004979abf0e5428cbb80f4))
+* **searchbar:** hide suggestions when input is not in focus ([b1eee65](https://github.com/coveo/plasma/commit/b1eee6530ea74f4968a8d4b65d6558c258e236d5))
+
+
+
+
+
 # [31.13.0](https://github.com/coveo/plasma/compare/v31.12.0...v31.13.0) (2022-01-25)
 
 
