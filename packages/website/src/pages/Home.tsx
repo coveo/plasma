@@ -1,6 +1,6 @@
 import '@styles/home.scss';
 
-import {Section, Tile} from '@coveord/plasma-react';
+import {Section, Svg, Tile} from '@coveord/plasma-react';
 import React from 'react';
 
 export const Home: React.FunctionComponent = () => (
@@ -22,8 +22,9 @@ const WelcomeToPlasma: React.FC = () => (
             <div>Coveo’s platform design system & ionized Vapor.</div>
             <div>
                 Learn more about our brand, our values and our story by visiting our{' '}
-                <a className="link" href="https://brand.coveo.com/" target="_blank">
+                <a href="https://brand.coveo.com/" target="_blank" className="link inline-flex">
                     brand page
+                    <Svg svgName="external" svgClass="icon mod-22 pl1" />
                 </a>
                 .
             </div>
