@@ -35,7 +35,8 @@ export const RadioButtonExamples: ExampleComponent = () => (
     </VaporComponent>
 );
 
-RadioButtonExamples.description = 'Radio Buttons allow for the selection of a single option among a set of options.';
+RadioButtonExamples.description =
+    'Radio button requires the selection of exactly one option from a list of mutually exclusive options.';
 
 const radioSelectConnectedId = 'radioselectconnected';
 
