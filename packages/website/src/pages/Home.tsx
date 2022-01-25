@@ -142,7 +142,7 @@ const LayoutPages: React.FC = () => (
                 title="Table HOC with Blank Slate"
                 description="Table HOC with Blank Slate"
                 svgName="plasmaComponentBox"
-                href="#/layout/Table HOCwithBlankSlate"
+                href="#/layout/TableHOCwithBlankSlate"
             />
         </div>
     </Section>
