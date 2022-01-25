@@ -1,16 +1,16 @@
 import '@styles/plasmaSearchBar.scss';
 
 import {useEffect, useState, FunctionComponent, useContext} from 'react';
-import {buildStandaloneSearchBox, StandaloneSearchBox} from '@coveo/headless';
+import {buildSearchBox, SearchBox} from '@coveo/headless';
 import React from 'react';
-import {Button, IItemBoxProps, ListBox, Svg, UrlUtils} from '@coveord/plasma-react';
+import {Button, IItemBoxProps, ListBox, Svg} from '@coveord/plasma-react';
 
 import classNames from 'classnames';
 import {EngineContext} from './engine/EngineContext';
 import {FeatureFlags} from '../FeatureFlags';
 
 interface SearchBarProps {
-    controller: StandaloneSearchBox;
+    controller: SearchBox;
 }
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
@@ -19,12 +19,9 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
-    useEffect(() => {
-        const {redirectTo, value} = controller.state;
-        if (redirectTo) {
-            UrlUtils.redirectToUrl(`${redirectTo}?query=${value}`);
-        }
-    }, [state.redirectTo]);
+    const navigateToResultPage = () => {
+        location.assign(`#/plasma-search/ResultPage?query=${state.value}`);
+    };
 
     const ClearButton = () => (
         <button
@@ -39,7 +36,13 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     );
 
     const SearchButton = () => (
-        <Button classes={['search-button']} onClick={() => controller.submit()}>
+        <Button
+            classes={['search-button']}
+            onClick={() => {
+                controller.submit();
+                navigateToResultPage();
+            }}
+        >
             <Svg svgName={'search'} className="icon mod-stroke" />
         </Button>
     );
@@ -57,7 +60,10 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                         classes={['search-results-container']}
                         isLoading={state.isLoadingSuggestions}
                         items={results}
-                        onOptionClick={(item) => controller.selectSuggestion(item.value)}
+                        onOptionClick={(item) => {
+                            controller.selectSuggestion(item.value);
+                            location.assign(`#/plasma-search/ResultPage?query=${item.value}`);
+                        }}
                     />
                 )}
             </>
@@ -76,6 +82,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
                             controller.submit();
+                            navigateToResultPage();
                         } else if (event.key === 'Escape') {
                             controller.clear();
                             (event.target as HTMLInputElement).blur();
@@ -100,8 +107,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
  */
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
-    const options = {redirectionUrl: '#/plasma-search/ResultPage'};
-    const controller = buildStandaloneSearchBox(engine, {options});
+    const controller = buildSearchBox(engine);
     return FeatureFlags.get('plasma-search-bar') ? <SearchBoxRerender controller={controller} /> : null;
 };
 
