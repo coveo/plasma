@@ -3,6 +3,36 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.13.0](https://github.com/coveo/plasma/compare/v31.12.0...v31.13.0) (2022-01-25)
+
+
+### Features
+
+* **website:** add coveo brand links ([545bf5c](https://github.com/coveo/plasma/commit/545bf5c1b2f39df9d970cae6122db7c3507b7470))
+
+
+
+
+
+# [31.12.0](https://github.com/coveo/plasma/compare/v31.11.2...v31.12.0) (2022-01-25)
+
+
+### Features
+
+* just to keep WIP ([516d205](https://github.com/coveo/plasma/commit/516d2056138ef52651f05b1a0e6b75a587cda89d))
+* **plasmasearchbar:** put back QS in the listbox + keeping old version with resultlist ([c4018b0](https://github.com/coveo/plasma/commit/c4018b041db674018843e312f75877ab0eb86cf6))
+* **plasmasearchbar:** resultlist works now ([ee77550](https://github.com/coveo/plasma/commit/ee77550309211142daa9c0df50a921a426b96903))
+* **resultlist:** wIP for the result list ([5812d74](https://github.com/coveo/plasma/commit/5812d746da4d9c2155cf2e17a6232cf90e370dc4))
+* **searchbar:** redirect to searchpage ([24f3e1e](https://github.com/coveo/plasma/commit/24f3e1e142187b85e5fe78f1096ffc754f734fcc))
+* **searchbar:** resultPage working ([6c8b0bf](https://github.com/coveo/plasma/commit/6c8b0bf041d231a9506862a9a2e4f4970d20f2ee))
+* **search:** clean up + using react router for navigation ([29d6190](https://github.com/coveo/plasma/commit/29d6190afd7de1606278031beac2256d049b040c))
+* **searchhub:** setup for searchHub + a bit of cleanup ([14ed2e7](https://github.com/coveo/plasma/commit/14ed2e7b78fd8e0833e72aed5eeb556b8d7f7a28))
+* some tweak for the result + stop searching when click X ([e791b3d](https://github.com/coveo/plasma/commit/e791b3d11d0ef53a26acd0a160c8a6294359d1f7))
+
+
+
+
+
 ## [31.11.2](https://github.com/coveo/plasma/compare/v31.11.1...v31.11.2) (2022-01-24)
 
 **Note:** Version bump only for package root
