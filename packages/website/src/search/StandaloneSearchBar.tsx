@@ -1,7 +1,7 @@
 import '@styles/plasmaSearchBar.scss';
 
 import {useEffect, useState, FunctionComponent, useContext} from 'react';
-import {buildSearchBox, SearchBox} from '@coveo/headless';
+import {buildSearchBox, SearchBox, SearchBoxState} from '@coveo/headless';
 import React from 'react';
 import {Button, IItemBoxProps, ListBox, Svg} from '@coveord/plasma-react';
 
@@ -14,7 +14,7 @@ interface SearchBarProps {
 }
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
-    const [state, setState] = useState(controller.state);
+    const [state, setState] = useState<SearchBoxState>(controller.state);
     const [focused, setFocused] = useState(false);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
