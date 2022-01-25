@@ -60,6 +60,13 @@ export const Navigation: React.FunctionComponent = () => {
         <PathnameContext.Provider value={pathname}>
             <SideNavigation className="navigation-menu-sections">
                 <SideNavigationMenuSection isActive={pathname === '/'} title={<NavLink href="/" label="Home" />} />
+                <SideNavigationMenuSection
+                    title={
+                        <a href="https://brand.coveo.com/" target="_blank">
+                            Brand
+                        </a>
+                    }
+                />
                 <CollapsibleSideSection title="Foundations">
                     <NavLink href="/foundations/Iconography" label="Iconography" />
                     <NavLink href="/foundations/Svg" label="SVG" />
