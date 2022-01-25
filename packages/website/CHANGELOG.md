@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.13.0](https://github.com/coveo/plasma/compare/v31.12.0...v31.13.0) (2022-01-25)
+
+
+### Features
+
+* **website:** add coveo brand links ([545bf5c](https://github.com/coveo/plasma/commit/545bf5c1b2f39df9d970cae6122db7c3507b7470))
+
+
+
+
+
 # [31.12.0](https://github.com/coveo/plasma/compare/v31.11.2...v31.12.0) (2022-01-25)
 
 
