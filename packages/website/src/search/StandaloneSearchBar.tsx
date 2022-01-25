@@ -45,9 +45,9 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     );
 
     const SuggestionListBox = () => {
-        const results: IItemBoxProps[] = state.suggestions.map((s) => ({
-            value: s.rawValue,
-            displayValue: s.highlightedValue,
+        const results: IItemBoxProps[] = state.suggestions.map((result) => ({
+            value: result.rawValue,
+            displayValue: result.highlightedValue,
         }));
 
         return (
@@ -57,9 +57,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                         classes={['search-results-container']}
                         isLoading={state.isLoadingSuggestions}
                         items={results}
-                        onOptionClick={(item) => {
-                            controller.selectSuggestion(item.value);
-                        }}
+                        onOptionClick={(item) => controller.selectSuggestion(item.value)}
                     />
                 )}
             </>
@@ -68,19 +66,21 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
     return (
         <div className="plasmaSearchBar">
-            <form
-                autoComplete="off"
-                onSubmit={(e) => {
-                    e.preventDefault();
-                }}
-            >
+            <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
                 <input
                     className="search-bar"
                     type="search"
                     placeholder={'Find a component...'}
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyDown={(event) => event.key === 'Enter' && controller.submit()}
+                    onKeyDown={(event) => {
+                        if (event.key === 'Enter') {
+                            controller.submit();
+                        } else if (event.key === 'Escape') {
+                            controller.clear();
+                            (event.target as HTMLInputElement).blur();
+                        }
+                    }}
                     onFocus={() => setFocused(true)}
                     onBlur={() => setFocused(false)}
                 />
