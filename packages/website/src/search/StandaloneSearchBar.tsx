@@ -15,6 +15,7 @@ interface SearchBarProps {
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState(controller.state);
+    const [focused, setFocused] = useState(false);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
@@ -51,7 +52,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
         return (
             <>
-                {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
+                {focused && (state.suggestions.length > 0 || state.isLoadingSuggestions) && (
                     <ListBox
                         classes={['search-results-container']}
                         isLoading={state.isLoadingSuggestions}
@@ -80,6 +81,8 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
                     onKeyDown={(event) => event.key === 'Enter' && controller.submit()}
+                    onFocus={() => setFocused(true)}
+                    onBlur={() => setFocused(false)}
                 />
                 <ClearButton />
                 <SearchButton />
