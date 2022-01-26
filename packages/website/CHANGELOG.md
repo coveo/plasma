@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [31.15.0](https://github.com/coveo/plasma/compare/v31.14.0...v31.15.0) (2022-01-26)
+
+
+### Features
+
+* **favicon:** new plasma favicon ([b27edd9](https://github.com/coveo/plasma/commit/b27edd9bc848f3e14d52384d69fccf76aaeb1c95))
+
+
+
+
+
 # [31.14.0](https://github.com/coveo/plasma/compare/v31.13.0...v31.14.0) (2022-01-25)
 
 
