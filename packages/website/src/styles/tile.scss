@@ -1,28 +1,12 @@
 .tile {
     position: relative;
-    width: 20%;
-    height: 20%;
-    min-height: 221px;
+    min-width: 264px;
     background: var(--white);
-    border: $default-border;
-    border-radius: $small-border-radius;
-    box-shadow: var(--low-elevation-on-light);
 }
 
 a.tile:hover {
-    border: $border-radius solid var(--digital-blue-60);
+    border: 2px solid var(--digital-blue-60);
     box-shadow: var(--medium-elevation-on-light);
-}
-
-.tile-icon {
-    position: relative;
-    height: 173px;
-
-    svg {
-        position: absolute;
-        top: 53.33px;
-        left: 53px;
-    }
 }
 
 .tile-information {
@@ -34,7 +18,7 @@ a.tile:hover {
 
     overflow: hidden;
     background: var(--white);
-    border-radius: $small-border-radius;
+    border-radius: 8px;
     transition: height 300ms;
 }
 

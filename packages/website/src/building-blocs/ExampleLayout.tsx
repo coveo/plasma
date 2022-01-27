@@ -1,6 +1,6 @@
 import '@styles/example-layout.scss';
 
-import {SvgNames, TabContent, TabPaneConnected, TabSelectors, TabsHeader, Tile, TileProps} from '@coveord/plasma-react';
+import {SvgNames, TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -8,6 +8,7 @@ import {GithubButton} from './GithubButton';
 import {GuidelinesTab} from './GuidelinesTab';
 import {PropsDoc} from './PropsDoc';
 import Sandbox from './Sandbox';
+import {Tile, TileProps} from './Tile';
 
 interface PlaygroundProps {
     title: string;
@@ -56,7 +57,7 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
                     View source
                 </GithubButton>
                 <h3 className="h1-light normal-white-space">{title}</h3>
-                <Tile svgName={icon || 'plasmaComponentBox'} />
+                <Tile />
                 <div>{description}</div>
             </div>
             <TabsHeader
