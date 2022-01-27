@@ -2,6 +2,7 @@ import '@styles/home.scss';
 
 import {Section, Svg} from '@coveord/plasma-react';
 import React from 'react';
+
 import {Tile} from '../building-blocs/Tile';
 
 export const Home: React.FunctionComponent = () => (
@@ -41,14 +42,16 @@ const FoundationsPages: React.FC = () => (
                 title="Iconography"
                 description="List of all icons available. See SVG for usage"
                 href="#/foundations/Iconography"
+                thumbnail="iconography"
             />
             <Tile title="SVG" description="SVG usage" href="#/foundations/Svg" />
             <Tile
                 title="Headings"
                 description="All HTML headings, `h1` through `h6`, are available."
                 href="#/foundations/Headings"
+                thumbnail="typekit"
             />
-            <Tile title="Links" description="Links examples" href="#/foundations/Links" />
+            <Tile title="Links" description="Links examples" href="#/foundations/Links" thumbnail="links" />
             <Tile title="Whitespace" description="Whitespace" href="/#/foundations/Whitespace" />
         </div>
     </Section>
@@ -78,7 +81,7 @@ const LayoutPages: React.FC = () => (
                 href="#/layout/ModalWindow"
             />
             <Tile title="Modal Wizard" description="Modal Wizard" href="#/layout/ModalWizard" />
-            <Tile title="Page Header" description="Page Header" href="#/layout/PageHeader" />
+            <Tile title="Page Header" description="Page Header" href="#/layout/PageHeader" thumbnail="header" />
             <Tile title="Footer" description="Footer" href="#/layout/Footer" />
             <Tile
                 title="Section"
@@ -107,6 +110,7 @@ const FormPages: React.FC = () => (
                 title="Button"
                 description="Buttons communicate actions, and, when clicked, initialize those actions"
                 href="#/form/Button"
+                thumbnail="actionButton"
             />
             <Tile
                 title="Checkbox"
@@ -118,13 +122,13 @@ const FormPages: React.FC = () => (
                 description="Try to display only one Child Form at a time in a given option set."
                 href="#/form/ChildForm"
             />
-            <Tile title="Code Editor" description="Code Editor" href="#/form/CodeEditor" />
+            <Tile title="Code Editor" description="Code Editor" href="#/form/CodeEditor" thumbnail="codeEditor" />
             <Tile title="Color Picker" description="Code Picker" href="#/form/ColorPicker" />
             <Tile title="Date Picker" description="Date Picker" href="#/form/DatePicker" />
             <Tile title="Diff Viewer" description="Diff Viewer" href="#/form/DiffViewer" />
             <Tile title="Facet" description="Facet" href="#/form/Facet" />
             <Tile title="File Picker" description="File Picker" href="#/form/Filepicker" />
-            <Tile title="Filter Box" description="Filter Box" href="#/form/FilterBox" />
+            <Tile title="Filter Box" description="Filter Box" href="#/form/FilterBox" thumbnail="filterBox" />
             <Tile title="Flat Select" description="Flat Select" href="#/form/FlatSelect" />
             <Tile title="JSON Editor" description="JSON Editor" href="#/form/JSONEditor" />
             <Tile title="Multiline Box" description="Multiline Box" href="#/form/MultilineBox" />
@@ -159,6 +163,7 @@ const FormPages: React.FC = () => (
                 title="Text Input"
                 description="Display an inline validation message when the user is done interacting with the input."
                 href="#/form/TextInput"
+                thumbnail="textInput"
             />
             <Tile
                 title="Value Popup"
@@ -173,10 +178,20 @@ const NavigationPages: React.FC = () => (
     <Section className="section">
         <h2>Navigation</h2>
         <div className="tile-grid">
-            <Tile title="Breadcrumbs" description="Breadcrumbs" href="#/navigation/Breadcrumbs" />
-            <Tile title="Sidebar Navigation" description="Sidebar Navigation" href="#/navigation/SideNavigation" />
+            <Tile
+                title="Breadcrumbs"
+                description="Breadcrumbs"
+                href="#/navigation/Breadcrumbs"
+                thumbnail="breadcrumb"
+            />
+            <Tile
+                title="Sidebar Navigation"
+                description="Sidebar Navigation"
+                href="#/navigation/SideNavigation"
+                thumbnail="sideNav"
+            />
             <Tile title="SubNavigation" description="SubNavigation" href="#/navigation/SubNavigation" />
-            <Tile title="Tabs" description="Tabs" href="#/navigation/Tabs" />
+            <Tile title="Tabs" description="Tabs" href="#/navigation/Tabs" thumbnail="tab" />
         </div>
     </Section>
 );
@@ -185,8 +200,8 @@ const FeedbackPages: React.FC = () => (
     <Section className="section">
         <h2>Feedback</h2>
         <div className="tile-grid">
-            <Tile title="Badge" description="Badge" href="#/feedback/Badge" />
-            <Tile title="Color Bar" description="Color Bar" href="#/feedback/ColorBar" />
+            <Tile title="Badge" description="Badge" href="#/feedback/Badge" thumbnail="badge" />
+            <Tile title="Color Bar" description="Color Bar" href="#/feedback/ColorBar" thumbnail="progressBar" />
             <Tile title="Color Dot" description="Color Dot" href="#/feedback/ColorDot" />
             <Tile title="Icon Badge" description="Icon Badge" href="#/feedback/IconBadge" />
             <Tile title="Last Updated" description="Last Updated" href="#/feedback/LastUpdated" />
