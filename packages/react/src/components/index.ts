@@ -77,7 +77,6 @@ export * from './table-hoc';
 export * from './tables';
 export * from './textarea';
 export * from './textInput';
-export * from './tile';
 export * from './title';
 export * from './toast';
 export * from './tooltip';

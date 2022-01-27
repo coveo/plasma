@@ -9,9 +9,10 @@ import {
     loadSearchAnalyticsActions,
     loadSearchActions,
 } from '@coveo/headless';
-import {Section, Tile} from '@coveord/plasma-react';
+import {Section} from '@coveord/plasma-react';
 import {useSearchParams} from 'react-router-dom';
 import {EngineContext} from '../../search/engine/EngineContext';
+import {Tile} from '../../building-blocs/Tile';
 
 interface ResultListProps {
     controller: HeadlessResultList;
@@ -32,12 +33,7 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                     <div className="tile-grid">
                         {state.results.map((result: Result) =>
                             result.title !== 'Plasma Design System' ? (
-                                <Tile
-                                    title={result.title}
-                                    href={result.clickUri}
-                                    description={result.excerpt}
-                                    svgName={'plasmaComponentBox'}
-                                />
+                                <Tile title={result.title} href={result.clickUri} description={result.excerpt} />
                             ) : null
                         )}
                     </div>
