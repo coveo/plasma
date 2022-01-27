@@ -17,6 +17,7 @@ import {NavigationRoutes} from './pages/navigation';
 import {PlasmaSearchRoutes} from './pages/plasma-search';
 import {NotFound} from './pages/NotFound';
 import {Navigation} from './SideNavigation';
+import PATATE from './search/PATATE';
 
 const Header = () => (
     <div id="header" className="flex demo-header">
@@ -24,7 +25,8 @@ const Header = () => (
             <img src={logo} className="header-logo" />
         </a>
         <div className="flex space-around search">
-            <StandaloneSearchBar />
+            <PATATE />
+            {/* <StandaloneSearchBar /> */}
         </div>
         <div className="right-side"></div>
     </div>
