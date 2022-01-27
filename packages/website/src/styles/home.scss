@@ -37,18 +37,9 @@
     }
 
     .tile-grid {
-        display: flex;
-        flex-wrap: wrap;
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
         gap: 24px;
-        padding-top: 24px;
-        padding-right: 24px;
-    }
-
-    // for 4k screens
-    @media screen and (min-width: 160em) {
-        .tile {
-            width: 15%;
-            height: 15%;
-        }
+        margin-right: 24px;
     }
 }

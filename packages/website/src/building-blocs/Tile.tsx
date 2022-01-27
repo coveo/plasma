@@ -1,20 +1,16 @@
 import * as React from 'react';
+import '@styles/tile.scss';
 
-import {Svg, SvgNames} from '../svg';
+import placeholder from '../../resources/thumbnail_component.png';
 
 export interface TileProps {
     title?: string;
-    svgName: SvgNames;
     description?: string;
     href?: string;
 }
 
-export const Tile: React.FunctionComponent<TileProps> = ({title, description, svgName, href}) => {
-    const tileIcon = (
-        <div className="tile-icon">
-            <Svg svgName={svgName} svgClass="icon" />
-        </div>
-    );
+export const Tile: React.FunctionComponent<TileProps> = ({title, description, href}) => {
+    const tileIcon = <img src={placeholder} className="full-content-x" />;
     const tileInfo = (title || description) && (
         <div className="tile-information">
             {title && <div className="tile-title h6-subdued">{title}</div>}
@@ -24,7 +20,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, sv
 
     if (href && href.length > 0) {
         return (
-            <a className="tile" href={href}>
+            <a className="tile card" href={href}>
                 {tileIcon}
                 {tileInfo}
             </a>
@@ -32,7 +28,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, sv
     }
 
     return (
-        <div className="tile">
+        <div className="tile card">
             {tileIcon}
             {tileInfo}
         </div>
