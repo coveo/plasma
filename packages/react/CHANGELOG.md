@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.0.0](https://github.com/coveo/plasma/compare/v31.15.0...v32.0.0) (2022-01-27)
+
+
+### Features
+
+* **website:** move tile from react to website package ([0d6a8de](https://github.com/coveo/plasma/commit/0d6a8de92e037e7b96bb842e4c6d7e0332d6559f))
+
+
+### BREAKING CHANGES
+
+* **website:** Tile component is no longer available for usage outside of the website
+
+
+
+
+
 # [31.15.0](https://github.com/coveo/plasma/compare/v31.14.0...v31.15.0) (2022-01-26)
 
 **Note:** Version bump only for package @coveord/plasma-react
