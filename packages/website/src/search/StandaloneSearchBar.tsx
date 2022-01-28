@@ -1,27 +1,28 @@
 import '@styles/plasmaSearchBar.scss';
 
-import {useEffect, useState, FunctionComponent, useContext} from 'react';
 import {buildSearchBox, SearchBox, SearchBoxState} from '@coveo/headless';
-import React from 'react';
 import {Button, IItemBoxProps, ListBox, Svg} from '@coveord/plasma-react';
-
 import classNames from 'classnames';
-import {EngineContext} from './engine/EngineContext';
+import {FunctionComponent, useContext, useEffect, useState} from 'react';
+import React from 'react';
+
 import {FeatureFlags} from '../FeatureFlags';
+import {EngineContext} from './engine/EngineContext';
 
 interface SearchBarProps {
     controller: SearchBox;
 }
+
+const navigateToResultPage = (query: string) => {
+    location.assign(`#/search?q=${query}`);
+};
+
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState<SearchBoxState>(controller.state);
     const [focused, setFocused] = useState(false);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
-
-    const navigateToResultPage = () => {
-        location.assign(`#/plasma-search/ResultPage?query=${state.value}`);
-    };
 
     const ClearButton = () => (
         <button
@@ -39,11 +40,10 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         <Button
             classes={['search-button']}
             onClick={() => {
-                controller.submit();
-                navigateToResultPage();
+                navigateToResultPage(state.value);
             }}
         >
-            <Svg svgName={'search'} className="icon mod-stroke" />
+            <Svg svgName="search" className="icon mod-stroke" />
         </Button>
     );
 
@@ -62,7 +62,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                         items={results}
                         onOptionClick={(item) => {
                             controller.selectSuggestion(item.value);
-                            location.assign(`#/plasma-search/ResultPage?query=${item.value}`);
+                            navigateToResultPage(item.value);
                         }}
                     />
                 )}
@@ -81,8 +81,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                     onChange={(event) => controller.updateText(event.target.value)}
                     onKeyDown={(event) => {
                         if (event.key === 'Enter') {
-                            controller.submit();
-                            navigateToResultPage();
+                            navigateToResultPage(state.value);
                         } else if (event.key === 'Escape') {
                             controller.clear();
                             (event.target as HTMLInputElement).blur();
