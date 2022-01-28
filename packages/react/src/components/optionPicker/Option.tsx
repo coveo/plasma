@@ -1,8 +1,10 @@
 import * as React from 'react';
+import classNames from 'classnames';
 
 export interface IOption {
     label: string;
     value: () => string;
+    disabled?: boolean;
     [key: string]: any;
 }
 
@@ -19,7 +21,8 @@ export class Option extends React.Component<IOptionProps, any> {
         return (
             <button
                 type="button"
-                className={buttonClass}
+                className={classNames(buttonClass, {disabled: this.props.option?.disabled})}
+                disabled={this.props.option?.disabled}
                 onClick={() => this.props.onClick(this.props.option.value(), this.props.option.label)}
             >
                 {this.props.option.label}
