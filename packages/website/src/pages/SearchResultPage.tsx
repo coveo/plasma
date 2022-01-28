@@ -1,18 +1,19 @@
-import {FunctionComponent, useContext, useEffect, useState} from 'react';
-import React from 'react';
-
 import {
     buildResultList,
-    ResultList as HeadlessResultList,
+    loadPaginationActions,
     loadQueryActions,
-    Result,
-    loadSearchAnalyticsActions,
     loadSearchActions,
+    loadSearchAnalyticsActions,
+    Result,
+    ResultList as HeadlessResultList,
 } from '@coveo/headless';
 import {Section} from '@coveord/plasma-react';
+import {FunctionComponent, useContext, useEffect, useState} from 'react';
+import React from 'react';
 import {useSearchParams} from 'react-router-dom';
-import {EngineContext} from '../../search/engine/EngineContext';
-import {Tile} from '../../building-blocs/Tile';
+
+import {Tile} from '../building-blocs/Tile';
+import {EngineContext} from '../search/engine/EngineContext';
 
 interface ResultListProps {
     controller: HeadlessResultList;
@@ -31,9 +32,14 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                     <h2>Search Results:</h2>
                     <div className="body-l-book plasma-description">Patate King!</div>
                     <div className="tile-grid">
-                        {state.results.map((result: Result) =>
-                            result.title !== 'Plasma Design System' ? (
-                                <Tile title={result.title} href={result.clickUri} description={result.excerpt} />
+                        {state.results.map(({title, clickUri, excerpt, uniqueId}: Result) =>
+                            title !== 'Plasma Design System' ? (
+                                <Tile
+                                    key={uniqueId}
+                                    title={title}
+                                    href={clickUri.slice(clickUri.indexOf('#'))}
+                                    description={excerpt}
+                                />
                             ) : null
                         )}
                     </div>
@@ -43,13 +49,15 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
     );
 };
 
-const ResultPage = () => {
+const SearchResultPage = () => {
     const engine = useContext(EngineContext);
     const [searchParams] = useSearchParams();
-    const query = searchParams.get('query');
+    const query = searchParams.get('q');
     const {updateQuery} = loadQueryActions(engine);
     const {logInterfaceLoad} = loadSearchAnalyticsActions(engine);
+    const {registerNumberOfResults} = loadPaginationActions(engine);
     const {executeSearch} = loadSearchActions(engine);
+    engine.dispatch(registerNumberOfResults(1000));
     engine.dispatch(updateQuery({q: query}));
     engine.dispatch(executeSearch(logInterfaceLoad()));
     const controller = buildResultList(engine);
@@ -57,4 +65,4 @@ const ResultPage = () => {
     return <ResultListRenderer controller={controller} />;
 };
 
-export default ResultPage;
+export default SearchResultPage;
