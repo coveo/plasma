@@ -16,7 +16,7 @@ export const Home: React.FunctionComponent = () => (
 );
 
 const WelcomeToPlasma: React.FC = () => (
-    <Section className=" section intro">
+    <div className="section intro">
         <h5 className="welcome-to">Welcome to</h5>
         <div className="page-title">PLASMA</div>
         <div className="body-l-book plasma-description">
@@ -30,7 +30,7 @@ const WelcomeToPlasma: React.FC = () => (
                 .
             </div>
         </div>
-    </Section>
+    </div>
 );
 
 const FoundationsPages: React.FC = () => (
