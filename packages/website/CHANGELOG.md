@@ -3,6 +3,39 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.1.2](https://github.com/coveo/plasma/compare/v32.1.1...v32.1.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* **website:** remove invalid character for css class ([24344f6](https://github.com/coveo/plasma/commit/24344f6a90e87bb2f0e5d0eb029ed55140b1692c))
+
+
+
+
+
+## [32.1.1](https://github.com/coveo/plasma/compare/v32.1.0...v32.1.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **homepage:** fix style for page title ([5470a98](https://github.com/coveo/plasma/commit/5470a9804031ac17afa5f73f5ac8ddf940f22c1b))
+
+
+
+
+
+# [32.1.0](https://github.com/coveo/plasma/compare/v32.0.0...v32.1.0) (2022-01-31)
+
+
+### Features
+
+* **website:** multiple improvements to the search ([0bcc3a3](https://github.com/coveo/plasma/commit/0bcc3a385d1ac64d170a9d76fa76d92f5bd3172d))
+
+
+
+
+
 # [32.0.0](https://github.com/coveo/plasma/compare/v31.15.0...v32.0.0) (2022-01-27)
 
 

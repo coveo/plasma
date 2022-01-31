@@ -5,8 +5,6 @@ import {Outlet, Route, Routes} from 'react-router-dom';
 
 import logo from '../resources/plasma-logo.svg';
 import ScrollToTop from './building-blocs/ScrollTop';
-import {EngineProvider} from './search/engine/EngineProvider';
-import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {AdvancedRoutes} from './pages/advanced';
 import {FeedbackAndInfoRoutes as FeedbackRoutes} from './pages/feedback';
 import {InputRoutes as FormRoutes} from './pages/form';
@@ -14,8 +12,10 @@ import {FoundationsRoutes} from './pages/foundations';
 import {Home} from './pages/Home';
 import {LayoutRoutes} from './pages/layout';
 import {NavigationRoutes} from './pages/navigation';
-import {PlasmaSearchRoutes} from './pages/plasma-search';
 import {NotFound} from './pages/NotFound';
+import SearchResultPage from './pages/SearchResultPage';
+import {EngineProvider} from './search/engine/EngineProvider';
+import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {Navigation} from './SideNavigation';
 import PATATE from './search/PATATE';
 
@@ -50,7 +50,7 @@ export const App = () => (
     <Routes>
         <Route path="/" element={<AppLayout />}>
             <Route index element={<Home />} />
-            <Route path="plasma-search/*" element={<PlasmaSearchRoutes />} />
+            <Route path="search/*" element={<SearchResultPage />} />
             <Route path="foundations/*" element={<FoundationsRoutes />} />
             <Route path="form/*" element={<FormRoutes />} />
             <Route path="layout/*" element={<LayoutRoutes />} />
