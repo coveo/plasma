@@ -12,9 +12,11 @@ const useRoveFocus = (size: number) => {
             } else if (event.key === 'ArrowUp') {
                 event.preventDefault();
                 setCurrentFocus(currentFocus === 0 ? size - 1 : currentFocus - 1);
+            } else {
+                return;
             }
         },
-        [size, currentFocus, setCurrentFocus]
+        [currentFocus, setCurrentFocus]
     );
 
     useEffect(() => {

@@ -17,9 +17,34 @@ interface SearchBarProps {
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState<SearchBoxState>(controller.state);
-    const [rovefocus, setRoveFocus] = useRoveFocus(state.suggestions.length);
 
-    useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+    const [roveFocus, setRoveFocus] = useRoveFocus(state.suggestions.length);
+
+    const inputRef = useRef(null);
+
+    useEffect(() => {
+        controller.subscribe(() => setState(controller.state));
+        inputRef.current.focus();
+    }, [controller]);
+
+    const onKeyDown = (event: any) => {
+        const isDown = event.key === 'ArrowDown';
+        const isEnter = event.key === 'Enter';
+        const isEscape = event.key === 'Escape';
+        const inputIsFocused = document.activeElement === inputRef.current;
+
+        if (isEnter) {
+            controller.submit();
+            navigateToResultPage();
+        } else if (isEscape) {
+            controller.clear();
+            (event.target as HTMLInputElement).blur();
+        } else if (isDown) {
+            if (inputIsFocused) {
+                (document.querySelector('li.item-box') as HTMLInputElement).focus();
+            }
+        }
+    };
 
     const navigateToResultPage = () => {
         location.assign(`#/plasma-search/ResultPage?query=${state.value}`);
@@ -53,7 +78,6 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
     const CustomList = () => (
         <>
-            {/* {inputFocused && (state.suggestions.length > 0 || state.isLoadingSuggestions) && ( */}
             {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
                 <ul className="list-box relative search-results-container" role="listbox" tabIndex={0}>
                     {state.suggestions.map((suggestion, index) => {
@@ -65,7 +89,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                                 value={value}
                                 setFocus={setRoveFocus}
                                 index={index}
-                                focus={rovefocus === index}
+                                focus={document.activeElement !== inputRef.current && roveFocus === index}
                                 displayValue={highlightedValue}
 
                                 //     controller.selectSuggestion(item);
@@ -83,20 +107,13 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         <div className="plasmaSearchBar">
             <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
                 <input
+                    ref={inputRef}
                     className="search-bar"
                     type="search"
                     placeholder={'Find a component...'}
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                            controller.submit();
-                            navigateToResultPage();
-                        } else if (event.key === 'Escape') {
-                            controller.clear();
-                            (event.target as HTMLInputElement).blur();
-                        }
-                    }}
+                    onKeyDown={(event) => onKeyDown(event)}
                 />
                 <ClearButton />
                 <SearchButton />
