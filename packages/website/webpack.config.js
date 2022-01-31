@@ -36,7 +36,7 @@ module.exports = {
             ],
         }),
         new HtmlWebpackPlugin({
-            title: 'Vapor Design System',
+            title: 'Plasma Design System',
             favicon: 'src/favicon.ico',
             chunks: ['main'],
             template: 'src/index.html',
