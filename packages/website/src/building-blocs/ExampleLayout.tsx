@@ -56,9 +56,11 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
                 >
                     View source
                 </GithubButton>
-                <h3 className="h1-light normal-white-space crawled-title">{title}</h3>
+                <h3 className="h1-light normal-white-space" data-coveo-field="title">
+                    {title}
+                </h3>
                 <Tile thumbnail={thumbnail} />
-                <div>{description}</div>
+                <div data-coveo-field="description">{description}</div>
             </div>
             <TabsHeader
                 tabs={[
