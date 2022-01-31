@@ -31,14 +31,9 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
     const resetSearch = () => {
-        const {logInterfaceLoad} = loadSearchAnalyticsActions(engine);
-        const {registerNumberOfResults} = loadPaginationActions(engine);
         const {updateQuery} = loadQueryActions(engine);
-        const {executeSearch} = loadSearchActions(engine);
-
         engine.dispatch(updateQuery({q: ''}));
-        engine.dispatch(registerNumberOfResults(1000));
-        engine.dispatch(executeSearch(logInterfaceLoad()));
+        location.assign(`#/search?q=${''}`);
     };
 
     const NoResultTemplate = () => (
