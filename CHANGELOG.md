@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.1.1](https://github.com/coveo/plasma/compare/v32.1.0...v32.1.1) (2022-01-31)
+
+
+### Bug Fixes
+
+* **homepage:** fix style for page title ([5470a98](https://github.com/coveo/plasma/commit/5470a9804031ac17afa5f73f5ac8ddf940f22c1b))
+
+
+
+
+
 # [32.1.0](https://github.com/coveo/plasma/compare/v32.0.0...v32.1.0) (2022-01-31)
 
 
