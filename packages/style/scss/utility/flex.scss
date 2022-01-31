@@ -31,6 +31,14 @@
     flex-grow: 1;
 }
 
+.grid {
+    display: grid;
+}
+
+.item-center {
+    justify-items: center;
+}
+
 .center-align {
     align-items: center;
     justify-content: center;
