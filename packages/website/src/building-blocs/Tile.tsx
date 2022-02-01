@@ -41,7 +41,14 @@ export interface TileProps {
 }
 
 export const Tile: React.FunctionComponent<TileProps> = ({title, description, href, thumbnail = 'placeholder'}) => {
-    const tileIcon = <img src={thumbnails[thumbnail]} className="full-content-x" />;
+    const tileIcon = (
+        <img
+            src={thumbnails[thumbnail]}
+            className="full-content-x"
+            data-coveo-field="thumbnail"
+            data-thumbnail-name={thumbnail}
+        />
+    );
     const tileInfo = (title || description) && (
         <div className="tile-information">
             {title && <div className="tile-title h6-subdued">{title}</div>}

@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.3.1](https://github.com/coveo/plasma/compare/v32.3.0...v32.3.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* **website:** remove broken urls from home page ([40a93af](https://github.com/coveo/plasma/commit/40a93af62e384a60edf792215f22648b1d27904e))
+
+
+
+
+
 # [32.3.0](https://github.com/coveo/plasma/compare/v32.2.1...v32.3.0) (2022-02-01)
 
 

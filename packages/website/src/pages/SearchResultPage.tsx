@@ -14,7 +14,7 @@ import {useSearchParams} from 'react-router-dom';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import React from 'react';
 
-import {Tile} from '../building-blocs/Tile';
+import {Tile, TileProps} from '../building-blocs/Tile';
 import {EngineContext} from '../search/engine/EngineContext';
 import {NoSearchResultTemplate} from '../search/NoSearchResultTemplate';
 
@@ -40,13 +40,14 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                         <h2>Search Results:</h2>
                         <div className="body-l-book plasma-description">Patate King!</div>
                         <div className="tile-grid">
-                            {state.results.map(({title, clickUri, excerpt, uniqueId}: Result) =>
+                            {state.results.map(({title, raw, uniqueId, clickUri}: Result) =>
                                 title !== 'Plasma Design System' ? (
                                     <Tile
                                         key={uniqueId}
                                         title={title}
                                         href={clickUri.slice(clickUri.indexOf('#'))}
-                                        description={excerpt}
+                                        description={raw.description as string}
+                                        thumbnail={raw.thumbnail as TileProps['thumbnail']}
                                     />
                                 ) : null
                             )}
