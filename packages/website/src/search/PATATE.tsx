@@ -27,10 +27,15 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         inputRef.current.focus();
     }, [controller]);
 
+    const navigateToResultPage = () => {
+        location.assign(`#/plasma-search/ResultPage?query=${state.value}`);
+    };
+
     const onKeyDown = (event: any) => {
         const isDown = event.key === 'ArrowDown';
         const isEnter = event.key === 'Enter';
         const isEscape = event.key === 'Escape';
+        const isBackspace = event.key === 'Backspace';
         const inputIsFocused = document.activeElement === inputRef.current;
 
         if (isEnter) {
@@ -39,15 +44,12 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         } else if (isEscape) {
             controller.clear();
             (event.target as HTMLInputElement).blur();
-        } else if (isDown) {
-            if (inputIsFocused) {
-                (document.querySelector('li.item-box') as HTMLInputElement).focus();
-            }
+        } else if (inputIsFocused && isDown) {
+            (document.querySelector('li.item-box') as HTMLInputElement).focus();
+        } else if (!inputIsFocused && isBackspace) {
+            // put back focus in input on backspace
+            (document.querySelector('input.search-bar') as HTMLInputElement).focus();
         }
-    };
-
-    const navigateToResultPage = () => {
-        location.assign(`#/plasma-search/ResultPage?query=${state.value}`);
     };
 
     const ClearButton = () => (
@@ -79,7 +81,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const CustomList = () => (
         <>
             {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
-                <ul className="list-box relative search-results-container" role="listbox" tabIndex={0}>
+                <ul className="list-box relative search-results-container" role="listbox">
                     {state.suggestions.map((suggestion, index) => {
                         const value = suggestion.rawValue;
                         const highlightedValue = suggestion.highlightedValue;
