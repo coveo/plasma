@@ -1,8 +1,8 @@
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {SubNavigationSelector} from '../SubNavigationSelector';
 
 describe('SubNavigationSelector', () => {
-    const defaultState: IReactVaporState = {
+    const defaultState: PlasmaState = {
         subNavigations: [
             {
                 id: '🌻',

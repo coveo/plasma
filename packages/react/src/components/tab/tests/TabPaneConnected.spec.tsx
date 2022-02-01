@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addTab} from '../TabActions';
@@ -14,7 +14,7 @@ describe('TabPane', () => {
         let tabPane: ReactWrapper<ITabPaneProps, any>;
         let id: string;
         let wrapper: ReactWrapper<any, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             id = 'tab';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
 
@@ -10,7 +10,7 @@ export interface TableWithPrependProps extends ITableHOCOwnProps, Omit<React.HTM
 }
 
 export const tableWithPrepend = (Component: React.FunctionComponent<TableWithPrependProps>) => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: TableWithPrependProps) => ({
+    const mapStateToProps = (state: PlasmaState, ownProps: TableWithPrependProps) => ({
         isTrulyEmpty: TableSelectors.getIsTrulyEmpty(state, ownProps),
     });
 

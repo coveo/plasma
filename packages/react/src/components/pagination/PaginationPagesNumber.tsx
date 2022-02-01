@@ -3,7 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {PaginationReduxActions} from '../navigation/pagination/NavigationPaginationActions';
 import {Svg} from '../svg';
@@ -20,7 +20,7 @@ export interface IPaginationPagesNumberOwnProps {
     disabled?: boolean;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IPaginationPagesNumberOwnProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IPaginationPagesNumberOwnProps) => ({
     currentPage: PaginationSelectors.getPaginationPageNumber(state, {id: ownProps.id}),
 });
 

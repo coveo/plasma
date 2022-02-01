@@ -11,7 +11,7 @@ import {createStructuredSelector} from 'reselect';
 import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {ReactVaporReducers} from '../../ReactVaporReducers';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {CommonActions, IDispatch} from '../ReduxUtils';
 import {ValidationSelectors} from '../../components';
 
@@ -28,14 +28,14 @@ export interface IExampleServerTableState {
     isLoading: boolean;
 }
 
-export interface IReactVaporTestState extends IReactVaporState {
+export interface IReactVaporTestState extends PlasmaState {
     lastAction?: Redux.Action;
     tableHOCExample?: IExampleServerTableState;
 }
 
 export class TestUtils {
     static buildStore() {
-        const reactVaporReducers = Redux.combineReducers<IReactVaporState>({
+        const reactVaporReducers = Redux.combineReducers<PlasmaState>({
             ...ReactVaporReducers,
         });
 
@@ -132,7 +132,7 @@ export const triggerAlertFunction = () => {
     alert(`Alert function triggered`);
 };
 
-export const withSelectedValues = (id: string, ...values: string[]) => (state: IReactVaporState) => ({
+export const withSelectedValues = (id: string, ...values: string[]) => (state: PlasmaState) => ({
     ...state,
     listBoxes: [
         ...(state.listBoxes || []),
@@ -146,11 +146,10 @@ export const withSelectedValues = (id: string, ...values: string[]) => (state: I
     ],
 });
 
-export const getStoreMock = createMockStore<Partial<IReactVaporState>, IDispatch>([thunk]);
+export const getStoreMock = createMockStore<Partial<PlasmaState>, IDispatch>([thunk]);
 export type ReactVaporMockStore = ReturnType<typeof getStoreMock>;
-export const composeMockStore = (
-    ...functions: Array<(state: Partial<IReactVaporState>) => Partial<IReactVaporState>>
-) => getStoreMock(_.compose(...functions) as IReactVaporState);
+export const composeMockStore = (...functions: Array<(state: Partial<PlasmaState>) => Partial<PlasmaState>>) =>
+    getStoreMock(_.compose(...functions) as PlasmaState);
 
 export const createTestAppContainer = () => {
     const div = document.createElement('div');

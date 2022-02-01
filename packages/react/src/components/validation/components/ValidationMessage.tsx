@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {IDispatch} from '../../../utils';
 import {ValidationActions} from '../ValidationActions';
 import {ValidationSelectors} from '../ValidationSelectors';
@@ -12,7 +12,7 @@ export interface IValidationMessageProps {
     onlyShowIfDirty?: boolean;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IValidationMessageProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IValidationMessageProps) => ({
     isDirty: ValidationSelectors.getIsDirty(ownProps.id)(state),
     errors: ValidationSelectors.getErrors(ownProps.id)(state),
     warnings: ValidationSelectors.getWarnings(ownProps.id)(state),

@@ -5,7 +5,7 @@ import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
 import {shallowWithState} from '@helpers/enzyme-redux';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInputProps, Input} from '../Input';
@@ -13,7 +13,7 @@ import {InputConnected} from '../Input';
 import {inputPossibleProps, inputProps} from './InputTestCommons.mock';
 
 describe('<InputConnected />', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
     let wrapper: ReactWrapper<any, any>;
 
     beforeEach(() => {

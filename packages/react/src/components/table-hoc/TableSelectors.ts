@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {HOCTableRowState} from './reducers/TableRowReducers';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
 import {TableHOCUtils} from './utils/TableHOCUtils';
@@ -17,24 +17,24 @@ const initialTableSort: ITableWithSortState = {
     isAsc: true,
 };
 
-const isEmptyStateSet = (state: IReactVaporState, ownProps: TableSelectorsProps): boolean => {
+const isEmptyStateSet = (state: PlasmaState, ownProps: TableSelectorsProps): boolean => {
     const tablesHOC = state.tablesHOC;
     const tableHOC = tablesHOC?.find((table) => table.id === ownProps.id);
 
     return !!tableHOC?.emptyStateSet;
 };
 
-const isEmptyStateAlreadySet = (state: IReactVaporState, ownProps: TableSelectorsProps): boolean => {
+const isEmptyStateAlreadySet = (state: PlasmaState, ownProps: TableSelectorsProps): boolean => {
     const tablesHOC = state.tablesHOC;
     const tableHOC = tablesHOC?.find((table) => table.id === ownProps.id);
 
     return !_.isUndefined(tableHOC?.emptyStateSet);
 };
 
-const getIsEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean =>
+const getIsEmpty = (state: PlasmaState, props: TableSelectorsProps): boolean =>
     props.isServer ? !props.data?.length : props.data !== null && !props.data?.length;
 
-const getIsTrulyEmpty = (state: IReactVaporState, props: TableSelectorsProps): boolean => {
+const getIsTrulyEmpty = (state: PlasmaState, props: TableSelectorsProps): boolean => {
     const compositeState = TableHOCUtils.getCompositeState(props.id, state);
     const isEmpty = getIsEmpty(state, props);
 
@@ -47,21 +47,20 @@ const getIsTrulyEmpty = (state: IReactVaporState, props: TableSelectorsProps): b
     return isEmpty && hasNoAppliedFilter && hasNoAppliedDateLimits && hasNoAppliedPredicates;
 };
 
-const getDataCount = (state: IReactVaporState, props: TableSelectorsProps): number => {
+const getDataCount = (state: PlasmaState, props: TableSelectorsProps): number => {
     const tablePaginationState = _.findWhere(state.tableHOCPagination, {id: props.id});
     return props.isServer
         ? (tablePaginationState && tablePaginationState.count) || 0
         : (props.data && props.data.length) || 0;
 };
 
-const getSort = (state: IReactVaporState, props: TableSelectorsProps): ITableWithSortState =>
+const getSort = (state: PlasmaState, props: TableSelectorsProps): ITableWithSortState =>
     _.find(state.tableHOCHeader, (v: ITableWithSortState) => v.tableId === props.id && _.isBoolean(v.isAsc)) ||
     initialTableSort;
 
-const getTableRow = (state: IReactVaporState, {id}: {id: string}): HOCTableRowState =>
-    _.findWhere(state.tableHOCRow, {id});
+const getTableRow = (state: PlasmaState, {id}: {id: string}): HOCTableRowState => _.findWhere(state.tableHOCRow, {id});
 
-const getSelectedRows = (state: IReactVaporState, {id}: {id: string}): HOCTableRowState[] =>
+const getSelectedRows = (state: PlasmaState, {id}: {id: string}): HOCTableRowState[] =>
     _.where(state.tableHOCRow, {tableId: id, selected: true});
 
 export const TableSelectors = {

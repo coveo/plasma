@@ -4,7 +4,7 @@ import * as ReactDOM from 'react-dom';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {mod} from '../../utils/DataStructuresUtils';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -48,7 +48,7 @@ export interface IAutocompleteProps
         IAutocompleteStateProps,
         IAutocompleteDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IAutocompleteOwnProps): IAutocompleteStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IAutocompleteOwnProps): IAutocompleteStateProps => {
     const autocomplete: IAutocompleteState = _.findWhere(state.autocompletes, {id: ownProps.id});
     const listbox = _.findWhere(state.listBoxes, {id: ownProps.id});
     const defaultValue = listbox && listbox.selected && listbox.selected.length ? listbox.selected[0] : '';

@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addPrompt} from '../../inlinePrompt/InlinePromptActions';
@@ -18,7 +18,7 @@ describe('<TriggerActionConnected />', () => {
 
     let wrapper: ReactWrapper<any, any>;
     let triggerAction: ReactWrapper<ITriggerActionProps, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeAll(() => {
         action = {

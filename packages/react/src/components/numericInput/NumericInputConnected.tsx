@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {keyCode} from '../../utils/InputUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Svg} from '../svg/Svg';
@@ -36,7 +36,7 @@ export interface NumericInputProps
         Partial<NumericInputStateProps>,
         Partial<NumericInputDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: NumericInputOwnProps): NumericInputStateProps => ({
+const mapStateToProps = (state: PlasmaState, ownProps: NumericInputOwnProps): NumericInputStateProps => ({
     value: NumericInputSelectors.getValue(state, ownProps),
     hasError: NumericInputSelectors.getHasError(state, ownProps),
 });

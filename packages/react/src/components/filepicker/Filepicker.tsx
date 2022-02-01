@@ -3,7 +3,7 @@ import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils';
 import {FileMetadata, FileUtils} from '../../utils/FileUtils';
 import {Svg} from '../svg';
@@ -14,7 +14,7 @@ export interface FilepickerProps extends React.InputHTMLAttributes<HTMLInputElem
     id: string;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: FilepickerProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: FilepickerProps) => ({
     selectedFile: FilepickerSelectors.getFileMetadata(state, ownProps),
     isEmpty: FilepickerSelectors.isEmpty(state, ownProps),
 });

@@ -4,7 +4,7 @@ import {
     IDispatch,
     IFlatSelectOptionProps,
     IItemBoxProps,
-    IReactVaporState,
+    PlasmaState,
     ISelectButtonProps,
     ISingleSelectOwnProps,
     Section,
@@ -213,7 +213,7 @@ const MyCustomButton: React.FunctionComponent<ISelectButtonProps> = ({onClick, s
 
 const PER_PAGE = 10;
 
-const mapStateToProps = (state: IReactVaporState, props: {id: string}) => ({
+const mapStateToProps = (state: PlasmaState, props: {id: string}) => ({
     filterValue: FilterBoxSelectors.getFilterText(state, props),
 });
 

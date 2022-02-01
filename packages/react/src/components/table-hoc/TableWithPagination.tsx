@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {turnOffLoading} from '../loading/LoadingActions';
@@ -53,7 +53,7 @@ export const tableWithPagination = (supplier: ConfigSupplier<ITableWithPaginatio
 ) => {
     const config = HocUtils.supplyConfig(supplier);
     const mapStateToProps = (
-        state: IReactVaporState,
+        state: PlasmaState,
         ownProps: ITableHOCOwnProps & WithServerSideProcessingProps
     ): ITableWithPaginationStateProps | ITableHOCOwnProps => {
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});

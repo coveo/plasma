@@ -3,7 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Content, IContentProps} from '../content/Content';
 import {InlinePromptConnected} from '../inlinePrompt/InlinePrompt';
@@ -154,7 +154,7 @@ export class ActionBar extends React.PureComponent<
         ) : null;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: IActionBarProps) => {
     const actionBar: IActionBarState = _.findWhere(state.actionBars, {id: ownProps.id});
     const prompt: IPromptState = _.find(state.prompts, ({id}) => id.indexOf(ownProps.id) >= 0);
     const itemFilter: IItemFilterState = _.findWhere(state.itemFilters, {id: ownProps.id});
@@ -168,7 +168,7 @@ const mapStateToProps = (state: IReactVaporState, ownProps: IActionBarProps) => 
     };
 };
 
-const mapDispatchToProps = (dispatch: IDispatch<IReactVaporState>, ownProps: IActionBarProps) => ({
+const mapDispatchToProps = (dispatch: IDispatch<PlasmaState>, ownProps: IActionBarProps) => ({
     onRender: () => {
         dispatch(addActionBar(ownProps.id));
         if (ownProps.itemFilterLabel) {

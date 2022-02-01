@@ -14,7 +14,7 @@ import * as ReactCodeMirror from 'react-codemirror2';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils';
 import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
 import {CodeEditorActions} from './CodeEditorActions';
@@ -40,7 +40,7 @@ export interface CodeEditorState {
     numberOfRefresh: number;
 }
 
-const mapStateToProps = (state: IReactVaporState, {collapsibleId}: ICodeEditorProps) => ({
+const mapStateToProps = (state: PlasmaState, {collapsibleId}: ICodeEditorProps) => ({
     isCollapsibleExpanded: CollapsibleSelectors.isExpanded(state, collapsibleId),
 });
 

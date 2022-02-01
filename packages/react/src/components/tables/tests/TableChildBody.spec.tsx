@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IActionOptions} from '../../actions/Action';
@@ -19,7 +19,7 @@ describe('<TableChildBody />', () => {
     let spyHandleOnRowClick: jest.Mock<any, any>;
     let someActions: IActionOptions[];
     let tableChildBodyProps: ITableChildBodyProps;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeAll(() => {
         document.body.innerHTML += '<div id="App"></div>';

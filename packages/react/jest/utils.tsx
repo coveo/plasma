@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import {Defaults} from '../src/Defaults';
 import {ReactVaporReducers} from '../src/ReactVaporReducers';
-import {IReactVaporState} from '../src/ReactVaporState';
+import {PlasmaState} from '../src/ReactVaporState';
 import {IDispatch} from '../src/utils/ReduxUtils';
 
 const TEST_CONTAINER_ID = 'app';
@@ -31,16 +31,16 @@ const customRender = (
     {
         initialState,
         store = createStore(
-            combineReducers<IReactVaporState>(ReactVaporReducers),
+            combineReducers<PlasmaState>(ReactVaporReducers),
             initialState,
             applyMiddleware(thunk, promise)
         ),
         container = document.getElementById(TEST_CONTAINER_ID),
         ...renderOptions
     }: Omit<RenderOptions, 'queries'> & {
-        initialState?: IReactVaporState;
-        store?: Store<IReactVaporState, AnyAction> & {
-            dispatch: IDispatch<IReactVaporState>;
+        initialState?: PlasmaState;
+        store?: Store<PlasmaState, AnyAction> & {
+            dispatch: IDispatch<PlasmaState>;
         };
     } = {}
 ): RenderResult => {

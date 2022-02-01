@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {Dropdown, IDropdownDispatchProps, IDropdownOwnProps, IDropdownStateProps} from './Dropdown';
 import {addDropdown, closeDropdown, removeDropdown, toggleDropdown} from './DropdownActions';
 import {IDropdownState} from './DropdownReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownOwnProps): IDropdownStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IDropdownOwnProps): IDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});
 
     return {

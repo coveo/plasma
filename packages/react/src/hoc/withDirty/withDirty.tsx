@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {isBoolean} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {WithDirtyActions} from './withDirtyActions';
 import {WithDirtySelectors} from './withDirtySelectors';
@@ -28,7 +28,7 @@ export interface IWithDirtyProps
 export const withDirty = <T, R = any>(config: Partial<IWithDirty> = {}) => (
     Component: React.ComponentType<Partial<IWithDirtyProps> & T>
 ): React.ComponentClass<Partial<IWithDirtyProps> & T, R> => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: IWithDirty): IWithDirtyStateProps => ({
+    const mapStateToProps = (state: PlasmaState, ownProps: IWithDirty): IWithDirtyStateProps => ({
         isDirty: isBoolean(config.isDirty)
             ? config.isDirty
             : WithDirtySelectors.getIsDirty(state, {id: ownProps.id || config.id}),

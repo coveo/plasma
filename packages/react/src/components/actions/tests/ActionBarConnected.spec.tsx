@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
@@ -54,7 +54,7 @@ describe('Actions', () => {
     describe('<ActionBarConnected />', () => {
         let wrapper: ReactWrapper;
         let actionBar: ReactWrapper<IActionBarProps & any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             store = TestUtils.buildStore();

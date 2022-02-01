@@ -4,7 +4,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {getReactNodeTextContent} from '../../utils/JSXUtils';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Content} from '../content/Content';
@@ -49,7 +49,7 @@ export type ISingleSelectProps = ISingleSelectOwnProps &
     ReturnType<typeof mapDispatchToProps> &
     ReturnType<typeof mapStateToProps>;
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ISingleSelectOwnProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: ISingleSelectOwnProps) => {
     const customSelected = SelectSelector.getListState(state, ownProps);
     return {
         selectedOption: customSelected.length

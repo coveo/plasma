@@ -1,10 +1,9 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IPaginationState} from '../navigation/pagination';
 
-const getPaginationState = (state: IReactVaporState, {id}: {id: string}) =>
-    _.findWhere(state.paginationComposite, {id: id});
+const getPaginationState = (state: PlasmaState, {id}: {id: string}) => _.findWhere(state.paginationComposite, {id: id});
 
 const getPaginationPageNumber = createSelector(
     getPaginationState,

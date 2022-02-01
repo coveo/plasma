@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';
@@ -34,7 +34,7 @@ export const tableWithNewPagination = (
         onMount: () => dispatch(TableWithPaginationActions.add(ownProps.id)),
         onUnmount: () => dispatch(TableWithPaginationActions.remove(ownProps.id)),
     });
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableWithNewPaginationProps) => {
+    const mapStateToProps = (state: PlasmaState, ownProps: ITableWithNewPaginationProps) => {
         const pageNb = NavigationSelectors.getPaginationPage(state, {id: TableHOCUtils.getPaginationId(ownProps.id)});
 
         const perPage =

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {
     IDropdownOption,
@@ -25,7 +25,7 @@ import {
 import {IDropdownSearchState} from '../DropdownSearchReducers';
 import {MultiSelectDropdownSearch} from './MultiSelectDropdownSearch';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IDropdownSearchProps): IDropdownSearchStateProps => {
     const dropdownSearch: IDropdownSearchState = _.findWhere(state.dropdownSearch, {id: ownProps.id});
 
     if (dropdownSearch) {

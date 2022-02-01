@@ -1,7 +1,7 @@
 import moment from 'moment';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
     changeDatePickerLowerLimit,
@@ -21,7 +21,7 @@ import {
     YEAR_PICKER_ID,
 } from './Calendar';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: ICalendarOwnProps): ICalendarStateProps => {
     const selectedMonth = _.findWhere(state.optionsCycles, {id: ownProps.id + MONTH_PICKER_ID});
     const selectedYear = _.findWhere(state.optionsCycles, {id: ownProps.id + YEAR_PICKER_ID});
 

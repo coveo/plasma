@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Checkbox} from '../Checkbox';
@@ -16,7 +16,7 @@ describe('GroupableCheckbox', () => {
     describe('<GroupableCheckboxConnected />', () => {
         let groupableCheckbox: ReactWrapper<IGroupableCheckboxOwnProps, any>;
         let wrapper: ReactWrapper<any, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
         let groupableChekboxesState: IGroupableCheckboxesState[];
         let groupableCheckboxState: IGroupableCheckboxesState;
         const parentId = 'checkboxParent1';
@@ -52,12 +52,12 @@ describe('GroupableCheckbox', () => {
             return wrapper;
         };
 
-        const getCurrentGroupableCheckboxes = (currentStore: Store<IReactVaporState>): IGroupableCheckboxesState[] =>
+        const getCurrentGroupableCheckboxes = (currentStore: Store<PlasmaState>): IGroupableCheckboxesState[] =>
             currentStore
                 .getState()
                 .groupableCheckboxes.filter((currentCheckbox) => currentCheckbox.parentId === parentId);
 
-        const getFirstGroupableCheckbox = (currentStore: Store<IReactVaporState>): IGroupableCheckboxesState =>
+        const getFirstGroupableCheckbox = (currentStore: Store<PlasmaState>): IGroupableCheckboxesState =>
             currentStore
                 .getState()
                 .groupableCheckboxes.filter((currentCheckbox) => currentCheckbox.parentId === parentId)[0];

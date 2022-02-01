@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IPopoverDispatchProps, IPopoverProps, IPopoverState, Popover} from './Popover';
 import {addPopover, removePopover, setPopoverIsOpen} from './PopoverActions';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IPopoverProps): IPopoverState => {
+const mapStateToProps = (state: PlasmaState, ownProps: IPopoverProps): IPopoverState => {
     const popoverState = findWhere(state.popovers, {id: ownProps.id});
 
     return {isOpen: popoverState && popoverState.isOpen};

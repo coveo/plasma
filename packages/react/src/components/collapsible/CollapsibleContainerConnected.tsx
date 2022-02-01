@@ -3,7 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {ITooltipProps} from '../tooltip/Tooltip';
 import {CollapsibleConnected} from './CollapsibleConnected';
@@ -23,7 +23,7 @@ export interface ICollapsibleContainerOwnProps {
     disabled?: boolean;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ICollapsibleContainerOwnProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: ICollapsibleContainerOwnProps) => {
     const collapsibleState = findWhere(state.collapsibles, {id: ownProps.id});
 
     return {expanded: collapsibleState && collapsibleState.expanded};
