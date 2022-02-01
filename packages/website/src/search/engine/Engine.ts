@@ -3,13 +3,13 @@ import {buildSearchEngine} from '@coveo/headless';
 export const headlessEngine = () =>
     buildSearchEngine({
         configuration: {
-            platformUrl: 'https://platformdev.cloud.coveo.com',
-            organizationId: 'donotdeleteplasmadesignsystempxjjjimz',
-            accessToken: 'xxd5ed9d85-41bb-463c-b133-d188698de758',
+            platformUrl: 'https://platform.cloud.coveo.com',
+            organizationId: 'pwsadimtnwqkrvyrbxjuocz2g6m',
+            accessToken: 'xx4dfa233d-3c49-4ade-b07a-e85277a23e9b',
             analytics: {enabled: true},
             search: {
                 pipeline: 'default',
-                searchHub: 'plasmaComponents',
+                searchHub: 'plasma',
             },
         },
     });
