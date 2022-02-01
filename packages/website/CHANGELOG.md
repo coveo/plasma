@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.4.0](https://github.com/coveo/plasma/compare/v32.3.1...v32.4.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **loading:** add a chunk for the loading logo ([a116812](https://github.com/coveo/plasma/commit/a116812e19d1f54a8b33299934bf809e65d898d5))
+
+
+### Features
+
+* **website:** crawl thumbnails and display them in search results ([5261d57](https://github.com/coveo/plasma/commit/5261d5797a0085e74301bffbe217843e4296dddb))
+
+
+
+
+
 ## [32.3.1](https://github.com/coveo/plasma/compare/v32.3.0...v32.3.1) (2022-02-01)
 
 
