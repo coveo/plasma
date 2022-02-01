@@ -29,6 +29,11 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         controller.subscribe(() => setState(controller.state));
     }, [controller]);
 
+    const handleSearchOnClick = (suggestion: string) => {
+        controller.selectSuggestion(suggestion);
+        navigateToResultPage(suggestion);
+    };
+
     const handleKeyDown = (event: any) => {
         const isDown = event.key === 'ArrowDown';
         const isEnter = event.key === 'Enter';
@@ -36,14 +41,15 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         const isBackspace = event.key === 'Backspace';
         const inputIsFocused = document.activeElement === inputRef.current;
 
-        if (inputIsFocused && isEnter) {
-            controller.submit();
-            navigateToResultPage('');
-        } else if (isEscape) {
-            controller.clear();
-            (event.target as HTMLInputElement).blur();
-        } else if (inputIsFocused && isDown) {
-            (document.querySelector('li.item-box') as HTMLInputElement).focus();
+        if (inputIsFocused) {
+            if (isEnter) {
+                handleSearchOnClick(state.value);
+            } else if (isEscape) {
+                controller.clear();
+                (event.target as HTMLInputElement).focus();
+            } else if (isDown) {
+                (document.querySelector('li.item-box') as HTMLInputElement).focus();
+            }
         } else if (!inputIsFocused && isBackspace) {
             // put back focus in input on backspace NOT WORKING BECAUSE IM DUM this need to be handle by the item list not the input
             (document.querySelector('input.search-bar') as HTMLInputElement).focus();
@@ -66,7 +72,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         <Button
             classes={['search-button']}
             onClick={() => {
-                navigateToResultPage(state.value);
+                handleSearchOnClick(state.value);
             }}
         >
             <Svg svgName="search" className="icon mod-stroke" />
@@ -88,10 +94,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                                 index={index}
                                 focus={document.activeElement !== inputRef.current && roveFocus === index}
                                 displayValue={highlightedValue}
-                                onClick={() => {
-                                    controller.selectSuggestion(value);
-                                    location.assign(`#/search?q=${value}`);
-                                }}
+                                onClick={() => handleSearchOnClick(value)}
                             />
                         );
                     })}
