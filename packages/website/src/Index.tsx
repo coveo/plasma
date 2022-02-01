@@ -16,6 +16,10 @@ window.ReactDOM = ReactDOM;
 (window as any).ReactRedux = ReactRedux;
 (window as any).PlasmaReact = PlasmaReact;
 
+if (window.location.host === 'vapor.coveo.com') {
+    window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');
+}
+
 ReactDOM.render(
     <HashRouter>
         <ReactRedux.Provider store={Store}>
