@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {FilepickerState} from './FilepickerReducers';
 
 const getFile = (inputId: string): File => {
@@ -8,7 +8,7 @@ const getFile = (inputId: string): File => {
     return input?.files[0];
 };
 
-const getFilePicker = (state: IReactVaporState, {id}: {id: string}) => state.filepickers[id];
+const getFilePicker = (state: PlasmaState, {id}: {id: string}) => state.filepickers[id];
 
 const getFileMetadata = createSelector(
     getFilePicker,

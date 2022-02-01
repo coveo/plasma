@@ -3,7 +3,7 @@ import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {InputConnected} from '../input';
 import {changeInputValue} from '../input/InputActions';
@@ -25,7 +25,7 @@ export interface LimitOwnProps {
 
 export const Limit: React.FunctionComponent<LimitOwnProps> = (props) => {
     const {id, limit, className} = props;
-    const {currentLimit} = useSelector((state: IReactVaporState) => ({
+    const {currentLimit} = useSelector((state: PlasmaState) => ({
         currentLimit: +InputSelectors.getValue(state, {id}) || limit,
     }));
 

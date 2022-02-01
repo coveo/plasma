@@ -3,7 +3,7 @@ import {mountWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
 import {SlideY} from '../../../animations/SlideY';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {getStoreMock} from '../../../utils/tests/TestUtils';
 import {setCollapsibleExpanded} from '../CollapsibleActions';
 import {CollapsibleConnected, CollapsibleOwnProps} from '../CollapsibleConnected';
@@ -18,7 +18,7 @@ describe('<CollapsibleConnected />', () => {
     const mountComponentWithProps = (props: Partial<CollapsibleOwnProps> = {}, expanded: boolean = true) => {
         store = getStoreMock({
             collapsibles: [{id: collapsibleProps.id, expanded}],
-        } as IReactVaporState);
+        } as PlasmaState);
         wrapper = mountWithStore(
             <CollapsibleConnected {...collapsibleProps} {...props}>
                 dummy children

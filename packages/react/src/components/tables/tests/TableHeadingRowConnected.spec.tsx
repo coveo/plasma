@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableHeadingRowOwnProps, ITableHeadingRowProps, TableHeadingRow} from '../TableHeadingRow';
@@ -16,7 +16,7 @@ describe('Tables', () => {
     describe('<TableHeadingRowConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let tableHeadingRow: ReactWrapper<ITableHeadingRowProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         const mountWithProps = (props?: Partial<ITableHeadingRowOwnProps>) => {
             if (wrapper && wrapper.length) {

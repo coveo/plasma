@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
 import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
 import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';
@@ -34,7 +34,7 @@ export const tableWithFilter = (
 
     const config = HocUtils.supplyConfig(supplier);
 
-    const mapStateToProps = (state: IReactVaporState, ownProps: OwnProps) => {
+    const mapStateToProps = (state: PlasmaState, ownProps: OwnProps) => {
         const filterText = FilterBoxSelectors.getFilterText(state, ownProps);
         const matchFilter = ownProps.filterMatcher || config.matchFilter || defaultMatchFilter;
         const filterData = () =>

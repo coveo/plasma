@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Facet, IFacet, IFacetProps} from '../Facet';
 import {FacetConnected} from '../FacetConnected';
@@ -15,7 +15,7 @@ describe('Facets', () => {
     describe('<FacetConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let facetComponent: ReactWrapper<IFacetProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
         let newRow: JSX.Element;
         let facetRows: IFacet[];
         let facet: IFacet;

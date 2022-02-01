@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {createTestAppContainer, getStoreMock, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {Button} from '../../button/Button';
@@ -75,7 +75,7 @@ describe('Date picker', () => {
         describe('with Dropdown', () => {
             let wrapper: ReactWrapper<any, any>;
             let datePickerDropdown: ReactWrapper<IDatePickerDropdownProps, any>;
-            let store: Store<IReactVaporState>;
+            let store: Store<PlasmaState>;
 
             const mountWithProps = (props: IDatePickerDropdownProps) => {
                 wrapper = mount(

@@ -4,14 +4,14 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IPopoverProps, Popover} from '../Popover';
 import {PopoverConnected} from '../PopoverConnected';
 
 describe('<PopoverConnected />', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
     let basicPopoverProps: IPopoverProps;
 
     beforeEach(() => {

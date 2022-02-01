@@ -2,7 +2,7 @@ import {mount, ReactWrapper} from 'enzyme';
 import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {TableSortingOrder} from '../TableConstants';
@@ -12,7 +12,7 @@ import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
 describe('Tables', () => {
     describe('<TableHeaderCellConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
         let basicTableHeaderCellConnectedProps;
         let tableHeaderCell: ReactWrapper<ITableHeaderCellProps, any>;
 

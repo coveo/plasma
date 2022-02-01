@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IActionOptions} from '../../actions/Action';
@@ -18,7 +18,7 @@ import {getTableChildComponentId} from '../TableUtils';
 import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './TableTestCommon';
 
 describe('<TableConnected />', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();

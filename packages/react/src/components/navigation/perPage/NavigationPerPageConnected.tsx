@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../../utils/ReduxUtils';
 import {changePage} from '../pagination/NavigationPaginationActions';
 import {IPaginationState} from '../pagination/NavigationPaginationReducers';
@@ -15,10 +15,7 @@ import {
 import {addPerPage, changePerPage, removePerPage} from './NavigationPerPageActions';
 import {IPerPageState} from './NavigationPerPageReducers';
 
-const mapStateToProps = (
-    state: IReactVaporState,
-    ownProps: INavigationPerPageOwnProps
-): INavigationPerPageStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: INavigationPerPageOwnProps): INavigationPerPageStateProps => {
     const perPageNumber: number[] = ownProps.perPageNumbers || PER_PAGE_NUMBERS;
     const defaultInitialPosition: number = Math.ceil(perPageNumber.length / 2) - 1;
     const item: IPerPageState = _.findWhere(state.perPageComposite, {id: ownProps.id});

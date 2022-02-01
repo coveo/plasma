@@ -1,11 +1,11 @@
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {CollapsibleSelectors} from '../CollapsibleSelectors';
 
 describe('CollapsibleSelectors', () => {
     it('should not throw and return false when passing a falsy id', () => {
-        expect(CollapsibleSelectors.isExpanded({} as IReactVaporState, undefined)).toBe(false);
-        expect(CollapsibleSelectors.isExpanded({} as IReactVaporState, null)).toBe(false);
-        expect(CollapsibleSelectors.isExpanded({} as IReactVaporState, '')).toBe(false);
+        expect(CollapsibleSelectors.isExpanded({} as PlasmaState, undefined)).toBe(false);
+        expect(CollapsibleSelectors.isExpanded({} as PlasmaState, null)).toBe(false);
+        expect(CollapsibleSelectors.isExpanded({} as PlasmaState, '')).toBe(false);
     });
 
     it('should return the collapsible expanded status at the specified id', () => {

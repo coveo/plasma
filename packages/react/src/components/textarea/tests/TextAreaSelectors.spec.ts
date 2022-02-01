@@ -1,12 +1,12 @@
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {TextAreaSelectors} from '../TextAreaSelectors';
 
 describe('TextAreaSelectors', () => {
     describe('getValue', () => {
         it('should not throw and return an empty string when passing a falsy id', () => {
-            expect(TextAreaSelectors.getValue({} as IReactVaporState, undefined)).toBe('');
-            expect(TextAreaSelectors.getValue({} as IReactVaporState, null)).toBe('');
-            expect(TextAreaSelectors.getValue({} as IReactVaporState, '')).toBe('');
+            expect(TextAreaSelectors.getValue({} as PlasmaState, undefined)).toBe('');
+            expect(TextAreaSelectors.getValue({} as PlasmaState, null)).toBe('');
+            expect(TextAreaSelectors.getValue({} as PlasmaState, '')).toBe('');
         });
 
         it('should return the textarea value at the specified id', () => {
@@ -22,9 +22,9 @@ describe('TextAreaSelectors', () => {
 
     describe('isDisabled', () => {
         it('should not throw and return false when passing a falsy id', () => {
-            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, undefined)).toBe(false);
-            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, null)).toBe(false);
-            expect(TextAreaSelectors.isDisabled({} as IReactVaporState, '')).toBe(false);
+            expect(TextAreaSelectors.isDisabled({} as PlasmaState, undefined)).toBe(false);
+            expect(TextAreaSelectors.isDisabled({} as PlasmaState, null)).toBe(false);
+            expect(TextAreaSelectors.isDisabled({} as PlasmaState, '')).toBe(false);
         });
 
         it('should return the textarea disabled status at the specified id', () => {

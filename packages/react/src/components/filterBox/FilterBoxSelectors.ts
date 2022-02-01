@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IFilterState} from './FilterBoxReducers';
 import {defaultListBoxMatchFilter, MatchFilter} from './FilterBoxUtils';
 
@@ -8,7 +8,7 @@ export interface GetFilterTextProps {
     id: string;
 }
 
-const getFilterText = (state: IReactVaporState, props: GetFilterTextProps): string => {
+const getFilterText = (state: PlasmaState, props: GetFilterTextProps): string => {
     const filter: IFilterState = _.findWhere(state.filters, {id: props.id});
     return (filter && filter.filterText) || '';
 };
@@ -16,7 +16,7 @@ const getFilterText = (state: IReactVaporState, props: GetFilterTextProps): stri
 export interface GetMatchFilterTextProps {
     matchFilter?: MatchFilter;
 }
-const getMatchFilter = (state: IReactVaporState, props: GetMatchFilterTextProps): MatchFilter =>
+const getMatchFilter = (state: PlasmaState, props: GetMatchFilterTextProps): MatchFilter =>
     _.isUndefined(props.matchFilter) ? defaultListBoxMatchFilter : props.matchFilter;
 
 export const FilterBoxSelectors = {

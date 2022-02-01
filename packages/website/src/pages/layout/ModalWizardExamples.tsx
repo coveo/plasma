@@ -5,7 +5,7 @@ import {
     IDispatch,
     InputConnected,
     InputSelectors,
-    IReactVaporState,
+    PlasmaState,
     Label,
     ModalWizard,
     ModalWizardWithValidations,
@@ -30,7 +30,7 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo');
 
 const enhanceExample1 = connect(
-    (state: IReactVaporState) => ({
+    (state: PlasmaState) => ({
         selectedPath: RadioSelectSelectors.getValue(state, {id: 'radio-step-1'}),
         inputTwoValue: InputSelectors.getValue(state, {id: 'input-step-2'}) || '',
     }),

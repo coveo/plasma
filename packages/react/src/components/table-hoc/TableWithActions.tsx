@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {TableHOCRowActions} from './actions/TableHOCRowActions';
 import {ITableHOCOwnProps} from './TableHOC';
@@ -14,7 +14,7 @@ export interface ITableWithActionsProps extends ITableHOCOwnProps {}
 type TableWithActionsComponent = React.ComponentClass<ITableWithActionsProps>;
 
 export const tableWithActions = () => (Component: TableWithActionsComponent) => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => ({
+    const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps) => ({
         hasSelectedRow: TableSelectors.getSelectedRows(state, ownProps).length > 0,
     });
 

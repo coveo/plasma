@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {DropTarget} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {reorderStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';
@@ -43,7 +43,7 @@ export const multilineBoxWithDnD = (supplier: ConfigSupplier<IMultilineBoxWithDn
             multilineBoxIds: MultilineBoxSelectors.getIds,
         });
 
-        return (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
+        return (state: PlasmaState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
             getStateProps(state, {id: ownProps.id});
     };
 

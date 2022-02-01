@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {IReduxAction} from '../../../utils/ReduxUtils';
 import {ListBoxActions} from '../../listBox/ListBoxActions';
 import {DropReducerActions, IDropPayload} from './DropActions';
@@ -52,10 +52,10 @@ export const dropReducer = (state: IDropState = dropInitialState, action: IRedux
     }
 };
 
-const getDropByGroup = (state: IReactVaporState, {groupId}: {groupId: string}) =>
+const getDropByGroup = (state: PlasmaState, {groupId}: {groupId: string}) =>
     (state.drop && state.drop[groupId]) || undefined;
 
-const isDropOpen = (state: IReactVaporState, {id, groupId}: {id: string; groupId: string}): boolean => {
+const isDropOpen = (state: PlasmaState, {id, groupId}: {id: string; groupId: string}): boolean => {
     const drop = getDropByGroup(state, {groupId});
     return drop && drop.id === id ? drop.isOpen : false;
 };

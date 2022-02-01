@@ -5,7 +5,7 @@ import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {addStringList, addValueStringList, removeStringList} from '../../../reusableState/customList/StringListActions';
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {UUID} from '../../../utils/UUID';
@@ -45,7 +45,7 @@ export const selectWithFilter = <P extends Omit<ISelectOwnProps, 'button'> & Wit
     type OwnProps = P & ISelectWithFilterOwnProps;
     type Props = OwnProps & ReturnType<ReturnType<typeof makeMapStateToProps>> & ReturnType<typeof mapDispatchToProps>;
 
-    const makeMapStateToProps = (initialState: IReactVaporState, initialOwnProps: OwnProps) =>
+    const makeMapStateToProps = (initialState: PlasmaState, initialOwnProps: OwnProps) =>
         createStructuredSelector({
             filterValue: FilterBoxSelectors.getFilterText,
             items: initialOwnProps.isServer

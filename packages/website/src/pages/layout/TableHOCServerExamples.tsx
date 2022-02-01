@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router';
 import {
     filterThrough,
     IDispatch,
-    IReactVaporState,
+    PlasmaState,
     ITableHOCCompositeState,
     IThunkAction,
     LastUpdated,
@@ -172,7 +172,7 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
 
 const TableHOCServer = connect(undefined, mapDispatchToProps)(TableExampleDisconnected);
 
-const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => IReactVaporState) => {
+const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => PlasmaState) => {
     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
         TableHOCServerExampleId,
         getState()

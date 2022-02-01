@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {debounce, isBoolean, map, noop, omit, reduce} from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch, IThunkAction} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
 import {applyDatePicker, changeDatePickerLowerLimit, changeDatePickerUpperLimit} from '../datePicker/DatePickerActions';
@@ -39,7 +39,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
         ReturnType<typeof mapStateToProps> &
         ReturnType<typeof mapDispatchToProps>;
 
-    const mapStateToProps = (state: IReactVaporState, ownProps: P) => ({
+    const mapStateToProps = (state: PlasmaState, ownProps: P) => ({
         query: getQuery(state, ownProps.id),
     });
 
@@ -74,7 +74,7 @@ function tableWithUrlState<P extends ITableHOCOwnProps>(Component: React.Compone
     )(WrappedComponentDisconnected as any);
 }
 
-const getQuery = (state: IReactVaporState, tableId: string): string => {
+const getQuery = (state: PlasmaState, tableId: string): string => {
     let order: SortOrderValues.ascending | SortOrderValues.descending;
     const tableState = TableHOCUtils.getCompositeState(tableId, state);
     const [from, to] = map(tableState.dateLimits, (limit) => limit && limit.toISOString());

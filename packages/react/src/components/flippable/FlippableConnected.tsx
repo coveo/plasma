@@ -1,13 +1,13 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {Flippable, IFlippableDispatchProps, IFlippableOwnProps, IFlippableStateProps} from './Flippable';
 import {addFlippable, changeFlippableSide, removeFlippable} from './FlippableActions';
 import {IFlippableState} from './FlippableReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IFlippableOwnProps): IFlippableStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IFlippableOwnProps): IFlippableStateProps => {
     const flippable: IFlippableState = _.findWhere(state.flippables, {id: ownProps.id});
     return {
         isFlipped: flippable && flippable.flipped,

@@ -1,7 +1,7 @@
 import {FunctionComponent} from 'react';
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../button/Button';
 import {RefreshCallBackActions} from './RefeshCallbackActions';
@@ -13,7 +13,7 @@ export interface IButtonWithRefreshCallbackProps extends IRefreshCallbackOwnProp
     button: IButtonProps;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IButtonWithRefreshCallbackProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IButtonWithRefreshCallbackProps) => ({
     status: RefreshStatusSelectors.getRefreshStatus(state, {id: ownProps.id}),
 });
 

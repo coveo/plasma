@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
@@ -35,7 +35,7 @@ export const tableWithSort = (supplier: ConfigSupplier<ITableWithSortConfig> = {
     const config = HocUtils.supplyConfig(supplier);
 
     const mapStateToProps = (
-        state: IReactVaporState,
+        state: PlasmaState,
         ownProps: ITableWithSortProps
     ): ITableWithSortStateProps | ITableHOCOwnProps => {
         const tableSort: ITableWithSortState = TableSelectors.getSort(state, ownProps);

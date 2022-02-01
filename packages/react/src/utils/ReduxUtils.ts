@@ -3,7 +3,7 @@ import * as Redux from 'redux';
 import {ThunkAction, ThunkDispatch} from 'redux-thunk';
 import {extend} from 'underscore';
 
-import {IReactVaporState} from '../ReactVaporState';
+import {PlasmaState} from '../ReactVaporState';
 
 /**
  * use this type with an enhance function containing the connecting functions like such:
@@ -14,13 +14,8 @@ import {IReactVaporState} from '../ReactVaporState';
  */
 export type ConnectedProps<T> = T extends InferableComponentEnhancerWithProps<infer Props, infer _> ? Props : never;
 
-export type IThunkAction<R = any, S extends IReactVaporState = IReactVaporState> = ThunkAction<
-    R,
-    S,
-    any,
-    IReduxAction<any>
->;
-export type IDispatch<S extends IReactVaporState = IReactVaporState> = ThunkDispatch<S, any, IReduxAction<any>>;
+export type IThunkAction<R = any, S extends PlasmaState = PlasmaState> = ThunkAction<R, S, any, IReduxAction<any>>;
+export type IDispatch<S extends PlasmaState = PlasmaState> = ThunkDispatch<S, any, IReduxAction<any>>;
 
 export class ReduxUtils {
     static mergeProps(stateProps: any, dispatchProps: any, ownProps: any) {

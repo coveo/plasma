@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {FilterBox, IFilterBoxDispatchProps, IFilterBoxOwnProps, IFilterBoxStateProps} from './FilterBox';
 import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';
@@ -12,7 +12,7 @@ export const debouncedFilterThrough = _.debounce(
     FILTER_THROUGH_DEBOUNCE
 );
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IFilterBoxOwnProps): IFilterBoxStateProps => ({
     filterText: FilterBoxSelectors.getFilterText(state, {id: ownProps.id}),
 });
 

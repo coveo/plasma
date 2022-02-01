@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../../ReactVaporState';
+import {PlasmaState} from '../../../../ReactVaporState';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {addLoading, turnOffLoading} from '../../../loading/LoadingActions';
@@ -17,7 +17,7 @@ describe('<NavigationPaginationConnected />', () => {
     let wrapper: ReactWrapper<any, any>;
     let navigationPagination: ReactWrapper<INavigationPaginationProps, any>;
     let fewPagesNavigationPagination: ReactWrapper<INavigationPaginationProps, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
     const basicNavigationPaginationProps: INavigationPaginationProps = {
         totalPages: 20,
         id: 'navigation-pagination',

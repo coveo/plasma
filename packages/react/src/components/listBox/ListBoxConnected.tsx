@@ -1,14 +1,14 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {IListBoxDispatchProps, IListBoxOwnProps, IListBoxStateProps, ListBox} from './ListBox';
 import {addListBox, removeListBox, selectListBoxOption} from './ListBoxActions';
 import {IListBoxState} from './ListBoxReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IListBoxOwnProps): IListBoxStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IListBoxOwnProps): IListBoxStateProps => {
     const list: IListBoxState = _.findWhere(state.listBoxes, {id: ownProps.id});
     return {
         selected: list ? list.selected : [],

@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addFacet, toggleMoreFacetRows} from '../FacetActions';
@@ -15,7 +15,7 @@ describe('Facets', () => {
         const facet: string = 'facet title';
         let wrapper: ReactWrapper<any, any>;
         let facetMoreToggle: ReactWrapper<IFacetMoreToggleProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             store = TestUtils.buildStore();

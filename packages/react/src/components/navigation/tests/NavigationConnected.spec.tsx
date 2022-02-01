@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {LoadingConnected} from '../../loading/LoadingConnected';
@@ -23,7 +23,7 @@ describe('<NavigationConnected />', () => {
         perPageNumbers: [10, 100],
         initialPosition: 0,
     };
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
     let wrapper: ReactWrapper<any, any>;
     let navigation: ReactWrapper<INavigationProps, any>;
 

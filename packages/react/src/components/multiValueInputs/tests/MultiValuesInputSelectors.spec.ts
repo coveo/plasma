@@ -1,12 +1,12 @@
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {MultiValuesInputSelectors} from '../MultiValuesInputSelectors';
 
 describe('MultiValuesInputSelectors', () => {
     describe('getValues', () => {
         it('should not throw and return an empty array when the multi-value does not exists', () => {
-            expect(MultiValuesInputSelectors.getValues({} as IReactVaporState, undefined)).toEqual([]);
-            expect(MultiValuesInputSelectors.getValues({} as IReactVaporState, null)).toEqual([]);
-            expect(MultiValuesInputSelectors.getValues({} as IReactVaporState, '')).toEqual([]);
+            expect(MultiValuesInputSelectors.getValues({} as PlasmaState, undefined)).toEqual([]);
+            expect(MultiValuesInputSelectors.getValues({} as PlasmaState, null)).toEqual([]);
+            expect(MultiValuesInputSelectors.getValues({} as PlasmaState, '')).toEqual([]);
         });
 
         it('should return the values from the inputs', () => {
@@ -21,7 +21,7 @@ describe('MultiValuesInputSelectors', () => {
                     {id: '🍲', value: '🍚'},
                     {id: '🍜', value: '🍙'},
                 ],
-            } as any) as IReactVaporState;
+            } as any) as PlasmaState;
 
             expect(MultiValuesInputSelectors.getValues(testState, id)).toEqual(expectedValues);
         });
@@ -38,7 +38,7 @@ describe('MultiValuesInputSelectors', () => {
                     {id: '🍕', value: '🍝'},
                     {id: '👾', value: '🤖'},
                 ],
-            } as any) as IReactVaporState;
+            } as any) as PlasmaState;
 
             expect(MultiValuesInputSelectors.getValues(testState, id)).toEqual(expectedValues);
         });

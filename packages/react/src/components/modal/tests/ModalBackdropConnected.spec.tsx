@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addModal, openModal} from '../ModalActions';
@@ -13,7 +13,7 @@ import {ModalBackdropConnected} from '../ModalBackdropConnected';
 describe('ModalBackdrop', () => {
     let modalBackdrop: ReactWrapper<IModalBackdropProps, any>;
     let wrapper: ReactWrapper<any, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
     let modal1Id: string;
 
     beforeEach(() => {
@@ -54,7 +54,7 @@ describe('ModalBackdrop', () => {
 describe('<ModalBackdropConnected /> with displayFor', () => {
     let modalBackdrop: ReactWrapper<IModalBackdropProps, any>;
     let wrapper: ReactWrapper<any, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
     let modal1Id: string;
     let modal2Id: string;
 

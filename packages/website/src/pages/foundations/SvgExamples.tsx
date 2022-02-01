@@ -2,7 +2,7 @@ import {
     FlatSelectConnected,
     FlatSelectSelectors,
     IItemBoxProps,
-    IReactVaporState,
+    PlasmaState,
     Section,
     SingleSelectConnected,
     StringUtils,
@@ -18,7 +18,7 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 // start-print
 export const SvgExamples: React.FC = () => {
     const LISTBOX_ID = 'svg-name-picker';
-    const svgName = useSelector((state: IReactVaporState) => {
+    const svgName = useSelector((state: PlasmaState) => {
         const selectedBox = state.listBoxes.find((box) => box.id === LISTBOX_ID);
 
         if (!selectedBox) {

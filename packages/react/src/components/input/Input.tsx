@@ -9,7 +9,7 @@ import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {InputSelectors} from './InputSelectors';
 import {IDispatch, ReduxUtils} from '../../utils';
 import {addInput, removeInput, changeInputValue} from './InputActions';
@@ -249,7 +249,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
     }
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IInputProps): IInputStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IInputProps): IInputStateProps => {
     const input = InputSelectors.getInput(state, {id: ownProps.id});
     return {
         valid: input && input.valid,

@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../ReactVaporState';
 import {FilepickerSelectors} from '../FilepickerSelectors';
 
 describe('FilepickerSelectors', () => {
@@ -8,10 +8,10 @@ describe('FilepickerSelectors', () => {
 
     describe('isEmpty', () => {
         it('should return undefined if no filepicker match the specified id', () => {
-            expect(FilepickerSelectors.isEmpty({filepickers: {}} as IReactVaporState, {id: '📜'})).toBeUndefined();
+            expect(FilepickerSelectors.isEmpty({filepickers: {}} as PlasmaState, {id: '📜'})).toBeUndefined();
             expect(
                 FilepickerSelectors.isEmpty(
-                    {filepickers: {'🍩': {id: '🍩', isEmpty: true, selectedFile: null}}} as IReactVaporState,
+                    {filepickers: {'🍩': {id: '🍩', isEmpty: true, selectedFile: null}}} as PlasmaState,
                     {id: '📜'}
                 )
             ).toBeUndefined();
@@ -25,7 +25,7 @@ describe('FilepickerSelectors', () => {
                             '🍩': {id: '🍩', isEmpty: true, selectedFile: null},
                             '📜': {id: '📜', isEmpty: true, selectedFile: null},
                         },
-                    } as IReactVaporState,
+                    } as PlasmaState,
                     {id: '📜'}
                 )
             ).toBe(true);
@@ -48,7 +48,7 @@ describe('FilepickerSelectors', () => {
                                 },
                             },
                         },
-                    } as IReactVaporState,
+                    } as PlasmaState,
                     {id: '📜'}
                 )
             ).toBe(false);
@@ -57,13 +57,11 @@ describe('FilepickerSelectors', () => {
 
     describe('getFileMetadata', () => {
         it('should return undefined if no filepicker match the specified id', () => {
-            expect(
-                FilepickerSelectors.getFileMetadata({filepickers: {}} as IReactVaporState, {id: '📜'})
-            ).toBeUndefined();
+            expect(FilepickerSelectors.getFileMetadata({filepickers: {}} as PlasmaState, {id: '📜'})).toBeUndefined();
 
             expect(
                 FilepickerSelectors.getFileMetadata(
-                    {filepickers: {'🍩': {id: '🍩', isEmpty: true, selectedFile: null}}} as IReactVaporState,
+                    {filepickers: {'🍩': {id: '🍩', isEmpty: true, selectedFile: null}}} as PlasmaState,
                     {id: '📜'}
                 )
             ).toBeUndefined();
@@ -77,7 +75,7 @@ describe('FilepickerSelectors', () => {
                             '🍩': {id: '🍩', isEmpty: true, selectedFile: null},
                             '📜': {id: '📜', isEmpty: true, selectedFile: null},
                         },
-                    } as IReactVaporState,
+                    } as PlasmaState,
                     {id: '📜'}
                 )
             ).toBeNull();
@@ -102,7 +100,7 @@ describe('FilepickerSelectors', () => {
                                 selectedFile: fileMetaData,
                             },
                         },
-                    } as IReactVaporState,
+                    } as PlasmaState,
                     {id: '📜'}
                 )
             ).toEqual(fileMetaData);

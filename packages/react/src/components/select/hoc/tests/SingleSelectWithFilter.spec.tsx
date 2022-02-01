@@ -6,7 +6,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../../ReactVaporState';
+import {PlasmaState} from '../../../../ReactVaporState';
 import {keyCode} from '../../../../utils/InputUtils';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
@@ -25,7 +25,7 @@ describe('Select', () => {
     describe('<SingleSelectWithFilter/>', () => {
         let wrapper: ReactWrapper<any, any>;
         let singleSelect: ReactWrapper<ISingleSelectOwnProps, void>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         const id: string = 'single-select-with-filter';
         const basicProps: ISelectWithFilterOwnProps & ISingleSelectOwnProps = {

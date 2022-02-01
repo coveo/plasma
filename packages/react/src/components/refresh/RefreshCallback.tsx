@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {Defaults} from '../../Defaults';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {RefreshCallBackActions} from './RefeshCallbackActions';
 import {RefreshStatus, RefreshStatusSelectors} from './RefreshCallbackReducer';
@@ -17,7 +17,7 @@ export interface IRefreshCallbackState {
     count: number;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IRefreshCallbackOwnProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IRefreshCallbackOwnProps) => ({
     status: RefreshStatusSelectors.getRefreshStatus(state, {id: ownProps.id}),
 });
 

@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 import {IDispatch} from '../../utils/ReduxUtils';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../ReactVaporState';
 import {TableHOCActions} from './actions/TableHOCActions';
 import {ITableHOCOwnProps} from './TableHOC';
 import {TableSelectors} from './TableSelectors';
@@ -17,7 +17,7 @@ const UPDATE_DELAY = 50; // ms
 export const tableWithEmptyState = (
     Component: React.FunctionComponent<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement>>
 ) => {
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps) => {
+    const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps) => {
         const isTrulyEmpty = TableSelectors.getIsTrulyEmpty(state, ownProps);
         return {
             isTrulyEmpty,
