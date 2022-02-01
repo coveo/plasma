@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.2.1](https://github.com/coveo/plasma/compare/v32.2.0...v32.2.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* **website:** enable crawling of description on the new layout ([8954794](https://github.com/coveo/plasma/commit/89547947d24b1d7e2c9f032ad48d31560bbbc40e))
+
+
+
+
+
 # [32.2.0](https://github.com/coveo/plasma/compare/v32.1.2...v32.2.0) (2022-01-31)
 
 
