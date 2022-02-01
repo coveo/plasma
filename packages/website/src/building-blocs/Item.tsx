@@ -1,3 +1,4 @@
+import {event} from 'd3';
 import React, {useEffect, useRef, useCallback, FunctionComponent} from 'react';
 
 interface ItemProps {
@@ -6,10 +7,12 @@ interface ItemProps {
     focus?: boolean;
     index?: number;
     setFocus?: any;
+    onClick?: () => void;
+    // selectItem?: () => void;
 }
 
 const Item: FunctionComponent<ItemProps> = (props) => {
-    const {displayValue, focus, index, setFocus, value} = props;
+    const {displayValue, focus, index, setFocus, value, onClick} = props;
 
     const ref = useRef(null);
 
@@ -21,7 +24,6 @@ const Item: FunctionComponent<ItemProps> = (props) => {
     }, [focus]);
 
     const handleSelect = useCallback(() => {
-        alert(`${value}`);
         // setting focus to that element when it is selected
         setFocus(index);
     }, [displayValue, index, setFocus]);
@@ -34,9 +36,9 @@ const Item: FunctionComponent<ItemProps> = (props) => {
             className={'item-box'}
             tabIndex={focus ? 0 : -1}
             role="option"
-            onClick={handleSelect}
+            onClick={onClick}
             onKeyPress={handleSelect}
-            onMouseDown={(event) => event.preventDefault()}
+            // onMouseDown={(event) => event.preventDefault()}
         >
             <span dangerouslySetInnerHTML={{__html: displayValue}}></span>
         </li>

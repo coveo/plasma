@@ -1,13 +1,15 @@
 import '@styles/plasmaSearchBar.scss';
 
 import {buildSearchBox, SearchBox, SearchBoxState} from '@coveo/headless';
-import {Button, IItemBoxProps, ListBox, Svg} from '@coveord/plasma-react';
+import {Button, Svg} from '@coveord/plasma-react';
 import classNames from 'classnames';
-import {FunctionComponent, useContext, useEffect, useState} from 'react';
+import {FunctionComponent, useContext, useEffect, useRef, useState} from 'react';
 import React from 'react';
 
 import {FeatureFlags} from '../FeatureFlags';
 import {EngineContext} from './engine/EngineContext';
+import useRoveFocus from '../building-blocs/RovingFocus';
+import Item from '../building-blocs/Item';
 
 interface SearchBarProps {
     controller: SearchBox;
@@ -20,9 +22,34 @@ const navigateToResultPage = (query: string) => {
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState<SearchBoxState>(controller.state);
-    const [focused, setFocused] = useState(false);
+    const [roveFocus, setRoveFocus] = useRoveFocus(state.suggestions.length);
+    const inputRef = useRef(null);
 
-    useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+    useEffect(() => {
+        controller.subscribe(() => setState(controller.state));
+        inputRef.current.focus();
+    }, [controller]);
+
+    const onKeyDown = (event: any) => {
+        const isDown = event.key === 'ArrowDown';
+        const isEnter = event.key === 'Enter';
+        const isEscape = event.key === 'Escape';
+        const isBackspace = event.key === 'Backspace';
+        const inputIsFocused = document.activeElement === inputRef.current;
+
+        if (inputIsFocused && isEnter) {
+            controller.submit();
+            navigateToResultPage('');
+        } else if (isEscape) {
+            controller.clear();
+            (event.target as HTMLInputElement).blur();
+        } else if (inputIsFocused && isDown) {
+            (document.querySelector('li.item-box') as HTMLInputElement).focus();
+        } else if (!inputIsFocused && isBackspace) {
+            // put back focus in input on backspace
+            (document.querySelector('input.search-bar') as HTMLInputElement).focus();
+        }
+    };
 
     const ClearButton = () => (
         <button
@@ -47,52 +74,48 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         </Button>
     );
 
-    const SuggestionListBox = () => {
-        const results: IItemBoxProps[] = state.suggestions.map((result) => ({
-            value: result.rawValue,
-            displayValue: result.highlightedValue,
-        }));
-
-        return (
-            <>
-                {focused && (state.suggestions.length > 0 || state.isLoadingSuggestions) && (
-                    <ListBox
-                        classes={['search-results-container']}
-                        isLoading={state.isLoadingSuggestions}
-                        items={results}
-                        onOptionClick={(item) => {
-                            controller.selectSuggestion(item.value);
-                            navigateToResultPage(item.value);
-                        }}
-                    />
-                )}
-            </>
-        );
-    };
+    const CustomList = () => (
+        <>
+            {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
+                <ul className="list-box relative search-results-container" role="listbox">
+                    {state.suggestions.map((suggestion, index) => {
+                        const value = suggestion.rawValue;
+                        const highlightedValue = suggestion.highlightedValue;
+                        return (
+                            <Item
+                                key={value}
+                                value={value}
+                                setFocus={setRoveFocus}
+                                index={index}
+                                focus={document.activeElement !== inputRef.current && roveFocus === index}
+                                displayValue={highlightedValue}
+                                onClick={() => {
+                                    controller.selectSuggestion(value);
+                                    location.assign(`#/search?q=${value}`);
+                                }}
+                            />
+                        );
+                    })}
+                </ul>
+            )}
+        </>
+    );
 
     return (
         <div className="plasmaSearchBar">
             <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
                 <input
+                    ref={inputRef}
                     className="search-bar"
                     type="search"
                     placeholder={'Find a component...'}
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyDown={(event) => {
-                        if (event.key === 'Enter') {
-                            navigateToResultPage(state.value);
-                        } else if (event.key === 'Escape') {
-                            controller.clear();
-                            (event.target as HTMLInputElement).blur();
-                        }
-                    }}
-                    onFocus={() => setFocused(true)}
-                    onBlur={() => setFocused(false)}
+                    onKeyDown={(event) => onKeyDown(event)}
                 />
                 <ClearButton />
                 <SearchButton />
-                <SuggestionListBox />
+                <CustomList />
             </form>
         </div>
     );

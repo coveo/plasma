@@ -17,7 +17,6 @@ import SearchResultPage from './pages/SearchResultPage';
 import {EngineProvider} from './search/engine/EngineProvider';
 import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {Navigation} from './SideNavigation';
-import PATATE from './search/PATATE';
 
 const Header = () => (
     <div id="header" className="flex demo-header">
@@ -25,8 +24,7 @@ const Header = () => (
             <img src={logo} className="header-logo" />
         </a>
         <div className="flex space-around search">
-            <PATATE />
-            {/* <StandaloneSearchBar /> */}
+            <StandaloneSearchBar />
         </div>
         <div className="right-side"></div>
     </div>
