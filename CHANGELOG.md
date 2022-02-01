@@ -3,6 +3,50 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.3.0](https://github.com/coveo/plasma/compare/v32.2.1...v32.3.0) (2022-02-01)
+
+
+### Features
+
+* **optionpicker:** +disable prop on option interface ([0c6e5f0](https://github.com/coveo/plasma/commit/0c6e5f0f43cd72886b3101b8dee94a2d03ca4263))
+
+
+
+
+
+## [32.2.1](https://github.com/coveo/plasma/compare/v32.2.0...v32.2.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* **website:** enable crawling of description on the new layout ([8954794](https://github.com/coveo/plasma/commit/89547947d24b1d7e2c9f032ad48d31560bbbc40e))
+
+
+
+
+
+# [32.2.0](https://github.com/coveo/plasma/compare/v32.1.2...v32.2.0) (2022-01-31)
+
+
+### Features
+
+* **website:** add all available thumbnails to tiles ([51beb19](https://github.com/coveo/plasma/commit/51beb19758448fb43da099da4e094bd37626d2f4))
+
+
+
+
+
+## [32.1.2](https://github.com/coveo/plasma/compare/v32.1.1...v32.1.2) (2022-01-31)
+
+
+### Bug Fixes
+
+* **website:** remove invalid character for css class ([24344f6](https://github.com/coveo/plasma/commit/24344f6a90e87bb2f0e5d0eb029ed55140b1692c))
+
+
+
+
+
 ## [32.1.1](https://github.com/coveo/plasma/compare/v32.1.0...v32.1.1) (2022-01-31)
 
 

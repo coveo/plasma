@@ -1,6 +1,8 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
+import userEvent from '@testing-library/user-event';
+
+import {render, screen} from '@test-utils';
 
 import {IOptionProps, Option} from '../Option';
 
@@ -18,64 +20,40 @@ describe('Option picker', () => {
         };
     });
 
-    it('should render without errors', () => {
-        expect(() => {
-            shallow(<Option {...OPTION_BASIC_PROPS} />);
-        }).not.toThrow();
-    });
-
     describe('<Option />', () => {
-        let option: ReactWrapper<IOptionProps, any>;
-
-        beforeEach(() => {
-            option = mount(<Option {...OPTION_BASIC_PROPS} />, {attachTo: document.getElementById('App')});
-        });
-
-        afterEach(() => {
-            option?.unmount();
-        });
-
-        it('should get the value as a prop', () => {
-            const optionProp = option.props().option;
-
-            expect(optionProp).toBeDefined();
-            expect(optionProp).toEqual(OPTION_BASIC_PROPS.option);
-        });
-
-        it('should get if it is active as a prop', () => {
-            const isActiveProp = option.props().isActive;
-
-            expect(isActiveProp).toBeDefined();
-            expect(isActiveProp).toEqual(OPTION_BASIC_PROPS.isActive);
-        });
-
-        it('should get what to do on click as a prop', () => {
-            const onClickProp = option.props().onClick;
-
-            expect(onClickProp).toBeDefined();
-        });
-
         it('should display the option label', () => {
-            expect(option.html()).toContain(OPTION_BASIC_PROPS.option.label);
+            render(<Option {...OPTION_BASIC_PROPS} />);
+            expect(screen.getByText(/Option 1/i)).toBeInTheDocument();
         });
 
         it('should have the active class if isActive prop is set to true', () => {
             const activeOptionProps = _.extend({}, OPTION_BASIC_PROPS, {isActive: true});
 
-            expect(option.find('button').hasClass('active')).toBe(false);
+            render(<Option {...activeOptionProps} />);
 
-            option.setProps(activeOptionProps);
-
-            expect(option.find('button').hasClass('active')).toBe(true);
+            expect(screen.getByRole('button')).toHaveClass('active');
         });
 
         it('should call the onClick prop with the result of the option value when clicking the button', () => {
-            option.find('button').simulate('click');
+            render(<Option {...OPTION_BASIC_PROPS} />);
+            const optionButton = screen.getByRole('button', {name: /Option 1/i});
+            userEvent.click(optionButton);
 
             expect(OPTION_BASIC_PROPS.onClick).toHaveBeenCalledWith(
                 OPTION_BASIC_PROPS.option.value(),
                 OPTION_BASIC_PROPS.option.label
             );
+        });
+
+        it('is disabled if disabled prop is set to true', () => {
+            render(
+                <Option
+                    option={{label: 'Option 1', value: () => 'optionValue', disabled: true}}
+                    isActive={false}
+                    onClick={() => jest.fn()}
+                />
+            );
+            expect(screen.getByRole('button')).toBeDisabled();
         });
     });
 });

@@ -280,6 +280,13 @@
             outline: none;
 
             cursor: pointer;
+
+            &.disabled {
+                background-color: var(--grey-40);
+            }
+            &.disabled:hover {
+                background-color: var(--grey-40);
+            }
         }
 
         &:last-child:nth-child(2n + 1) {
@@ -312,11 +319,11 @@
 
         &:nth-child(1n) {
             button {
-                &:hover {
+                &:hover:not(:disabled) {
                     background-color: var(--deprecated-light-grey);
                 }
 
-                &.active {
+                &.active:not(:disabled) {
                     color: var(--white);
                     background-color: var(--digital-blue-60);
                 }

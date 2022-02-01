@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.3.0](https://github.com/coveo/plasma/compare/v32.2.1...v32.3.0) (2022-02-01)
+
+
+### Features
+
+* **optionpicker:** +disable prop on option interface ([0c6e5f0](https://github.com/coveo/plasma/commit/0c6e5f0f43cd72886b3101b8dee94a2d03ca4263))
+
+
+
+
+
+## [32.2.1](https://github.com/coveo/plasma/compare/v32.2.0...v32.2.1) (2022-02-01)
+
+**Note:** Version bump only for package @coveord/plasma-react
+
+
+
+
+
+# [32.2.0](https://github.com/coveo/plasma/compare/v32.1.2...v32.2.0) (2022-01-31)
+
+**Note:** Version bump only for package @coveord/plasma-react
+
+
+
+
+
+## [32.1.2](https://github.com/coveo/plasma/compare/v32.1.1...v32.1.2) (2022-01-31)
+
+**Note:** Version bump only for package @coveord/plasma-react
+
+
+
+
+
 ## [32.1.1](https://github.com/coveo/plasma/compare/v32.1.0...v32.1.1) (2022-01-31)
 
 **Note:** Version bump only for package @coveord/plasma-react
