@@ -98,6 +98,7 @@ export const TextInputExamples: React.FunctionComponent = () => (
         id="TextInput"
         title="Text Input"
         section="form"
+        thumbnail="textInput"
         componentSourcePath="/textInput/TextInput.tsx"
         code={code}
         examples={{hookUsage: {code: hookUsage, title: 'useTextInput hook usage'}}}

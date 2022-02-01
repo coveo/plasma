@@ -122,6 +122,7 @@ export const FOUR_SELECTION_BOXES: IDatesSelectionBox[] = [
             {
                 label: 'Last day',
                 value: () => moment().subtract(1, 'day').toDate().toString() + DATES_SEPARATOR + new Date().toString(),
+                disabled: true,
             },
         ],
         isRange: true,

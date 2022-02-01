@@ -18,7 +18,7 @@ interface PlaygroundProps {
 
 export interface ExampleLayoutProps extends PlaygroundProps {
     id: string;
-    icon?: SvgNames;
+    thumbnail?: TileProps['thumbnail'];
     description?: React.ReactNode;
     section: string;
     examples?: Record<string, PlaygroundProps>;
@@ -35,7 +35,7 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
     id,
     title,
     description,
-    icon,
+    thumbnail,
     section,
     code,
     layout = 'horizontal',
@@ -56,9 +56,11 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
                 >
                     View source
                 </GithubButton>
-                <h3 className="h1-light normal-white-space crawled-title">{title}</h3>
-                <Tile />
-                <div>{description}</div>
+                <h3 className="h1-light normal-white-space" data-coveo-field="title">
+                    {title}
+                </h3>
+                <Tile thumbnail={thumbnail} />
+                <div data-coveo-field="description">{description}</div>
             </div>
             <TabsHeader
                 tabs={[

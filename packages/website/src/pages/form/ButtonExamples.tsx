@@ -48,6 +48,7 @@ export const ButtonExamples: React.FunctionComponent = () => (
         id="Button"
         title="Button"
         section="inputs"
+        thumbnail="actionButton"
         description="Buttons communicate actions, and, when clicked, initialize those actions."
         code={code}
         examples={{

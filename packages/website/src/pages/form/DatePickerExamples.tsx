@@ -103,7 +103,10 @@ const DatePickerComponents: React.FunctionComponent = () => (
                     readonly
                 />
             </Section>
-            <Section level={3} title="Clearable date picker dropdown initially unselected with Redux state">
+            <Section
+                level={3}
+                title="Clearable date picker dropdown initially unselected with Redux state and disable option"
+            >
                 <DatePickerDropdownConnected
                     id="date-picker-dropdown-3"
                     datesSelectionBoxes={FOUR_SELECTION_BOXES}

@@ -25,7 +25,7 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     return (
         <div id={id}>
             <BasicHeader
-                title={{text: title, classes: ['crawled-title']}}
+                title={{text: title}}
                 description={usage}
                 tabs={[
                     {groupId: 'page', id: 'usage', title: 'Usage'},
