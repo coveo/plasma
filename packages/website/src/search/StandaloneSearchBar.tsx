@@ -25,6 +25,8 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const [roveFocus, setRoveFocus] = useRoveFocus(state.suggestions.length);
     const inputRef = useRef(null);
 
+    const inputIsFocused = document.activeElement === inputRef.current;
+
     useEffect(() => {
         controller.subscribe(() => setState(controller.state));
     }, [controller]);
@@ -34,12 +36,23 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         navigateToResultPage(suggestion);
     };
 
-    const handleKeyDown = (event: any) => {
+    const listHandleKeyDown = (event: any, value: string) => {
+        const isEnter = event.key === 'Enter';
+        const isBackspace = event.key === 'Backspace';
+
+        if (!inputIsFocused) {
+            if (isEnter) {
+                handleSearchOnClick(value);
+            } else if (isBackspace) {
+                (document.querySelector('input.search-bar') as HTMLInputElement).focus();
+            }
+        }
+    };
+
+    const inputHandleKeyDown = (event: any) => {
         const isDown = event.key === 'ArrowDown';
         const isEnter = event.key === 'Enter';
         const isEscape = event.key === 'Escape';
-        const isBackspace = event.key === 'Backspace';
-        const inputIsFocused = document.activeElement === inputRef.current;
 
         if (inputIsFocused) {
             if (isEnter) {
@@ -50,9 +63,6 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
             } else if (isDown) {
                 (document.querySelector('li.item-box') as HTMLInputElement).focus();
             }
-        } else if (!inputIsFocused && isBackspace) {
-            // put back focus in input on backspace NOT WORKING BECAUSE IM DUM this need to be handle by the item list not the input
-            (document.querySelector('input.search-bar') as HTMLInputElement).focus();
         }
     };
 
@@ -85,7 +95,6 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                 <ul className="list-box relative search-results-container" role="listbox">
                     {state.suggestions.map((suggestion, index) => {
                         const value = suggestion.rawValue;
-                        const highlightedValue = suggestion.highlightedValue;
                         return (
                             <Item
                                 key={value}
@@ -93,8 +102,8 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                                 setFocus={setRoveFocus}
                                 index={index}
                                 focus={document.activeElement !== inputRef.current && roveFocus === index}
-                                displayValue={highlightedValue}
                                 onClick={() => handleSearchOnClick(value)}
+                                onKeyDown={(event) => listHandleKeyDown(event, value)}
                             />
                         );
                     })}
@@ -113,7 +122,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                     placeholder={'Find a component...'}
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyDown={(event) => handleKeyDown(event)}
+                    onKeyDown={(event) => inputHandleKeyDown(event)}
                 />
                 <ClearButton />
                 <SearchButton />

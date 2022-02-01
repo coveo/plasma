@@ -1,32 +1,28 @@
-import {event} from 'd3';
 import React, {useEffect, useRef, useCallback, FunctionComponent} from 'react';
 
 interface ItemProps {
     value: string;
-    displayValue?: string;
     focus?: boolean;
     index?: number;
     setFocus?: any;
     onClick?: () => void;
-    // selectItem?: () => void;
+    onKeyDown?: (e: React.KeyboardEvent<HTMLElement>, value: string) => void;
 }
 
 const Item: FunctionComponent<ItemProps> = (props) => {
-    const {displayValue, focus, index, setFocus, value, onClick} = props;
+    const {focus, index, setFocus, value, onClick, onKeyDown} = props;
 
     const ref = useRef(null);
 
     useEffect(() => {
         if (focus) {
-            // Move element into view when it is focused
             ref.current.focus();
         }
     }, [focus]);
 
     const handleSelect = useCallback(() => {
-        // setting focus to that element when it is selected
         setFocus(index);
-    }, [displayValue, index, setFocus]);
+    }, [value, index, setFocus]);
 
     return (
         <li
@@ -38,9 +34,9 @@ const Item: FunctionComponent<ItemProps> = (props) => {
             role="option"
             onClick={onClick}
             onKeyPress={handleSelect}
-            // onMouseDown={(event) => event.preventDefault()}
+            onKeyDown={(event) => onKeyDown(event, value)}
         >
-            <span dangerouslySetInnerHTML={{__html: displayValue}}></span>
+            {value}
         </li>
     );
 };
