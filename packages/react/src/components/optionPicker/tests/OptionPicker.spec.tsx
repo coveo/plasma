@@ -1,6 +1,7 @@
-import {mount, ReactWrapper, shallow} from 'enzyme';
+import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {screen, render} from '@test-utils';
 
 import {IOptionPickerProps, OptionPicker} from '../OptionPicker';
 
@@ -18,30 +19,7 @@ describe('Option picker', () => {
         ],
     };
 
-    it('should render without errors', () => {
-        expect(() => {
-            shallow(<OptionPicker {...OPTION_PICKER_BASIC_PROPS} />);
-        }).not.toThrow();
-    });
-
     describe('<OptionPicker />', () => {
-        let optionPicker: ReactWrapper<IOptionPickerProps, any>;
-        let optionPickerInstance: OptionPicker;
-
-        beforeEach(() => {
-            optionPicker = mount(<OptionPicker {...OPTION_PICKER_BASIC_PROPS} />, {
-                attachTo: document.getElementById('App'),
-            });
-            optionPickerInstance = optionPicker.instance() as OptionPicker;
-        });
-
-        it('should get the options as a prop', () => {
-            const optionsProp = optionPicker.props().options;
-
-            expect(optionsProp).toBeDefined();
-            expect(optionsProp).toEqual(OPTION_PICKER_BASIC_PROPS.options);
-        });
-
         it('should display as many <Option /> as there are options in the options prop', () => {
             const moreOptionsProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
                 options: [
@@ -53,20 +31,30 @@ describe('Option picker', () => {
                 ],
             });
 
-            expect(optionPicker.find('Option').length).toBe(OPTION_PICKER_BASIC_PROPS.options.length);
+            render(<OptionPicker {...moreOptionsProps} />);
+            expect(screen.getAllByRole('button').length).toBe(3);
+        });
 
-            optionPicker.setProps(moreOptionsProps);
+        it('render a disabled option if disabled is set to true', () => {
+            const moreOptionsProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
+                options: [
+                    ...OPTION_PICKER_BASIC_PROPS.options,
+                    {
+                        label: 'Option 3',
+                        value: () => 'aaa',
+                        disabled: true,
+                    },
+                ],
+            });
 
-            expect(optionPicker.find('Option').length).toBe(moreOptionsProps.options.length);
+            render(<OptionPicker {...moreOptionsProps} />);
+            expect(screen.getByRole('button', {name: /Option 3/i})).toBeDisabled();
         });
 
         it('should call prop onRender on mounting if set', () => {
             const renderSpy: jest.Mock<any, any> = jest.fn();
             const withRenderProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {onRender: renderSpy});
-
-            optionPicker.setProps(withRenderProps);
-            optionPicker.unmount();
-            optionPicker.mount();
+            render(<OptionPicker {...withRenderProps} />);
 
             expect(renderSpy).toHaveBeenCalledTimes(1);
         });
@@ -77,39 +65,22 @@ describe('Option picker', () => {
                 onDestroy: destroySpy,
             });
 
-            expect(() => optionPickerInstance.componentWillUnmount()).not.toThrow();
-
-            optionPicker.setProps(withDestroyProps);
-            optionPicker.mount();
-            optionPicker.unmount();
+            const {unmount} = render(<OptionPicker {...withDestroyProps} />);
+            unmount();
 
             expect(destroySpy).toHaveBeenCalledTimes(1);
         });
 
-        it('should call prop onClick on mounting if set when calling handleClick', () => {
-            const onClickSpy: jest.Mock<any, any> = jest.fn();
-            const expectedValue: string = 'value';
-            const expectedLabel: string = 'label';
-            const withOnClickProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {onClick: onClickSpy});
+        it('should call onClick if defined when clicking an option', () => {
+            const onClickSpy: jest.SpyInstance = jest.fn();
+            const withOnClickProps: IOptionPickerProps = _.extend({}, OPTION_PICKER_BASIC_PROPS, {
+                onClick: onClickSpy,
+            });
 
-            expect(() =>
-                optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel)
-            ).not.toThrow();
-
-            expect(onClickSpy).not.toHaveBeenCalled();
-
-            optionPicker.setProps(withOnClickProps);
-            optionPickerInstance['handleClick'].call(optionPickerInstance, expectedValue, expectedLabel);
-
-            expect(onClickSpy).toHaveBeenCalledWith(expectedValue, expectedLabel);
-        });
-
-        it('should call handleClick when clicking an option', () => {
-            const handleClickSpy: jest.SpyInstance = jest.spyOn<any, string>(optionPickerInstance, 'handleClick');
-
-            optionPicker.find('Option').first().find('button').simulate('click');
-
-            expect(handleClickSpy).toHaveBeenCalledWith(
+            render(<OptionPicker {...withOnClickProps} />);
+            const optionButton = screen.getByRole('button', {name: /Option 1/i});
+            userEvent.click(optionButton);
+            expect(onClickSpy).toHaveBeenCalledWith(
                 OPTION_PICKER_BASIC_PROPS.options[0].value(),
                 OPTION_PICKER_BASIC_PROPS.options[0].label
             );
