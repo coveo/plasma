@@ -27,7 +27,6 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
     useEffect(() => {
         controller.subscribe(() => setState(controller.state));
-        inputRef.current.focus();
     }, [controller]);
 
     const handleKeyDown = (event: any) => {
@@ -46,7 +45,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         } else if (inputIsFocused && isDown) {
             (document.querySelector('li.item-box') as HTMLInputElement).focus();
         } else if (!inputIsFocused && isBackspace) {
-            // put back focus in input on backspace
+            // put back focus in input on backspace NOT WORKING BECAUSE IM DUM this need to be handle by the item list not the input
             (document.querySelector('input.search-bar') as HTMLInputElement).focus();
         }
     };
