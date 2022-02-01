@@ -73,8 +73,8 @@ const LayoutPages: React.FC = () => (
             <Tile title="Collapsible" description="Collapsible" href="#/layout/Collapsible" />
             <Tile title="Icon Card" description="Icon Card" href="#/layout/IconCard" />
             <Tile title="Info Box" description="Info Box" href="#/layout/InfoBox" />
-            <Tile title="Labelled Value" description="Labelled Value" href="#/layout/LabelledValue" />
-            <Tile title="Limit Card" description="Limit Card" href="#/layout/LimitCard" />
+            <Tile title="Labelled Value" description="Labelled Value" href="#/layout/LabeledValue" />
+            <Tile title="Limit Card" description="Limit Card" href="#/layout/Limit" />
             <Tile
                 title="Modal Window"
                 description="Modal windows appear in front of the main page and disable it while they are visible. They act as a zoom in on an element of the main page that allows additionnal interaction or configuration. They make possible for users to focus on their content whilst avoiding leaving the context from which they have been called."
@@ -89,7 +89,7 @@ const LayoutPages: React.FC = () => (
                 href="#/layout/Section"
             />
             <Tile title="Split Layout" description="Split Layout" href="#/layout/SplitLayout" />
-            <Tile title="Table" description="Table" href="#/layout/Table" />
+            <Tile title="Table" description="Table" href="#/layout/TableHOC" />
             <Tile title="Table HOC Loading" description="Table HOC Loading" href="#/layout/TableHOCLoading" />
             <Tile title="Table HOC Server" description="Table HOC Server" href="#/layout/TableHOCServer" />
             <Tile
@@ -164,11 +164,6 @@ const FormPages: React.FC = () => (
                 description="Display an inline validation message when the user is done interacting with the input."
                 href="#/form/TextInput"
                 thumbnail="textInput"
-            />
-            <Tile
-                title="Value Popup"
-                description="This is the filter picker control used to define a filter on a field."
-                href="#/form/ValuePopup"
             />
         </div>
     </Section>
