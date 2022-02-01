@@ -8,15 +8,15 @@ import {
     ResultList as HeadlessResultList,
     SearchEngine,
 } from '@coveo/headless';
-import {Button, Section} from '@coveord/plasma-react';
+import {Section} from '@coveord/plasma-react';
 
 import {useSearchParams} from 'react-router-dom';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import React from 'react';
 
-import results_empty_state from '../../resources/results_empty_state.png';
 import {Tile} from '../building-blocs/Tile';
 import {EngineContext} from '../search/engine/EngineContext';
+import {NoSearchResultTemplate} from '../search/NoSearchResultTemplate';
 
 interface ResultListProps {
     controller: HeadlessResultList;
@@ -30,33 +30,10 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
-    const resetSearch = () => {
-        const {updateQuery} = loadQueryActions(engine);
-        engine.dispatch(updateQuery({q: ''}));
-        location.assign(`#/search?q=${''}`);
-    };
-
-    const NoResultTemplate = () => (
-        <div className="grid item-center">
-            <img className="mb3" src={results_empty_state} />
-            <div className="grid item-center">
-                <span className="h4-book mb1 nowrap">
-                    We couldn’t find anything for <span className="h4"> “{query}”</span>
-                </span>
-                <span className="h6-subdued mb3 nowrap">
-                    You may want to try using different keywords, or checking for spelling mistakes.
-                </span>
-                <Button primary onClick={() => resetSearch()}>
-                    Clear search
-                </Button>
-            </div>
-        </div>
-    );
-
     return (
         <>
             {!state.hasResults ? (
-                <NoResultTemplate />
+                <NoSearchResultTemplate engine={engine} query={query} />
             ) : (
                 <Section className="home flex-auto overflow-auto demo-content">
                     <Section className="section">
