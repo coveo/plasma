@@ -30,7 +30,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         inputRef.current.focus();
     }, [controller]);
 
-    const onKeyDown = (event: any) => {
+    const handleKeyDown = (event: any) => {
         const isDown = event.key === 'ArrowDown';
         const isEnter = event.key === 'Enter';
         const isEscape = event.key === 'Escape';
@@ -111,7 +111,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                     placeholder={'Find a component...'}
                     value={state.value}
                     onChange={(event) => controller.updateText(event.target.value)}
-                    onKeyDown={(event) => onKeyDown(event)}
+                    onKeyDown={(event) => handleKeyDown(event)}
                 />
                 <ClearButton />
                 <SearchButton />
