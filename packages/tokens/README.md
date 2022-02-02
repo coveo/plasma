@@ -1,6 +1,6 @@
 # @vapor/tokens
 
-Design tokens of the Vapor Design System extracted from Figma.
+Design tokens of the Plasma Design System extracted from Figma.
 
 #### What is a design token?
 
@@ -8,7 +8,7 @@ Simply put, a design token is a stored design decision. It can be understood as 
 
 #### Objective of this package
 
-Distribute design tokens to all Coveo products that rely on the Vapor Design System through code.
+Distribute design tokens to all Coveo products that rely on the Plasma Design System through code.
 
 ## Installation
 
@@ -32,7 +32,5 @@ Coming soon.
 
 ## Internal usage
 
-- `tokens:fetch`: fetches tokens information from our tokens library in Figma
-- `tokens:build`: translates the fetched tokens into all the available output formats
-
-
+-   `tokens:fetch`: fetches tokens information from our tokens library in Figma
+-   `tokens:build`: translates the fetched tokens into all the available output formats

@@ -6,7 +6,7 @@ import thunk from 'redux-thunk';
 
 const middlewares = [thunk, promise];
 
-const composeEnhancers = composeWithDevTools({name: 'Vapor Design System'});
+const composeEnhancers = composeWithDevTools({name: 'Plasma Design System'});
 
 export const Store = createStore(
     combineReducers(ReactVaporReducers),
