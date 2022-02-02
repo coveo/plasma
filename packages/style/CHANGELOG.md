@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.5.0](https://github.com/coveo/plasma/compare/v32.4.2...v32.5.0) (2022-02-02)
+
+
+### Features
+
+* handle clear button ([908edeb](https://github.com/coveo/plasma/commit/908edebc532bf1d7ae3c4a79bb831e17115f5c90))
+
+
+
+
+
 ## [32.4.2](https://github.com/coveo/plasma/compare/v32.4.1...v32.4.2) (2022-02-02)
 
 **Note:** Version bump only for package @coveord/plasma-style
