@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [32.4.2](https://github.com/coveo/plasma/compare/v32.4.1...v32.4.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* **website:** redirect to plasma when loading vapor ([92a5679](https://github.com/coveo/plasma/commit/92a5679d2bfec451a3a1cf26a18ced18bb2af85a))
+
+
+
+
+
 ## [32.4.1](https://github.com/coveo/plasma/compare/v32.4.0...v32.4.1) (2022-02-01)
 
 **Note:** Version bump only for package root
