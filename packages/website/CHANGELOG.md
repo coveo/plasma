@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.6.0](https://github.com/coveo/plasma/compare/v32.5.0...v32.6.0) (2022-02-02)
+
+**Note:** Version bump only for package @coveord/plasma-website
+
+
+
+
+
 # [32.5.0](https://github.com/coveo/plasma/compare/v32.4.2...v32.5.0) (2022-02-02)
 
 

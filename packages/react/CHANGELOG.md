@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.6.0](https://github.com/coveo/plasma/compare/v32.5.0...v32.6.0) (2022-02-02)
+
+
+### Features
+
+* **style,react:** add new apply SVG in 3 formats ([#2414](https://github.com/coveo/plasma/issues/2414)) ([d596c53](https://github.com/coveo/plasma/commit/d596c53e33a8b4a68f5d1d8e1877a0d11600cb14))
+
+
+
+
+
 # [32.5.0](https://github.com/coveo/plasma/compare/v32.4.2...v32.5.0) (2022-02-02)
 
 **Note:** Version bump only for package @coveord/plasma-react
