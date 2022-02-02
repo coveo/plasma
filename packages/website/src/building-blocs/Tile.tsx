@@ -1,15 +1,16 @@
 import '@styles/tile.scss';
 
+import classNames from 'classnames';
 import * as React from 'react';
 
 import actionButtonPng from '../../resources/thumbnail_ActionButton.png';
 import codeEditorPng from '../../resources/thumbnail_CodeEditor.png';
-import placeholderPng from '../../resources/thumbnail_Placeholder.png';
 import filterBoxPng from '../../resources/thumbnail_FilterBox.png';
 import iconographyPng from '../../resources/thumbnail_Iconography.png';
 import linksPng from '../../resources/thumbnail_Link.png';
 import headerPng from '../../resources/thumbnail_PageHeader.png';
 import breadcrumbPng from '../../resources/thumbnail_PageTitle.png';
+import placeholderPng from '../../resources/thumbnail_Placeholder.png';
 import progressBarPng from '../../resources/thumbnail_ProgressBar.png';
 import sideNavPng from '../../resources/thumbnail_SideNav.png';
 import tabPng from '../../resources/thumbnail_Tab.png';
@@ -55,10 +56,11 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, hr
             {description && <div className="tile-description body-m-book-subdued">{description}</div>}
         </div>
     );
+    const className = classNames('tile card', {'mod-drawer': description});
 
     if (href && href.length > 0) {
         return (
-            <a className="tile card" href={href}>
+            <a className={className} href={href}>
                 {tileIcon}
                 {tileInfo}
             </a>
@@ -66,7 +68,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, hr
     }
 
     return (
-        <div className="tile card">
+        <div className={className}>
             {tileIcon}
             {tileInfo}
         </div>
