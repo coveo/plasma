@@ -2,13 +2,13 @@ import {render, screen} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {TableHeaderActions} from '../actions/TableHeaderActions';
 import {TableHeaderWithSort} from '../TableHeaderWithSort';
 
 describe('Table HOC', () => {
     describe('TableHeaderWithSort', () => {
-        let store: ReactVaporMockStore;
+        let store: PlasmaMockStore;
 
         const defaultProps = {
             id: 'a',

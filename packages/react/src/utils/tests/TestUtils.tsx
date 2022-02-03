@@ -28,7 +28,7 @@ export interface IExampleServerTableState {
     isLoading: boolean;
 }
 
-export interface IReactVaporTestState extends PlasmaState {
+export interface PlasmaTestState extends PlasmaState {
     lastAction?: Redux.Action;
     tableHOCExample?: IExampleServerTableState;
 }
@@ -39,12 +39,12 @@ export class TestUtils {
             ...PlasmaReducers,
         });
 
-        const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
+        const plasma = (state: PlasmaTestState, action: Redux.Action) => {
             state = action.type === CommonActions.clearState ? undefined : state;
             return plasmaReducers(state, action as any);
         };
 
-        return Redux.createStore(reactVapor, Redux.applyMiddleware(thunk));
+        return Redux.createStore(plasma, Redux.applyMiddleware(thunk));
     }
 
     static randomDate() {
@@ -147,7 +147,7 @@ export const withSelectedValues = (id: string, ...values: string[]) => (state: P
 });
 
 export const getStoreMock = createMockStore<Partial<PlasmaState>, IDispatch>([thunk]);
-export type ReactVaporMockStore = ReturnType<typeof getStoreMock>;
+export type PlasmaMockStore = ReturnType<typeof getStoreMock>;
 export const composeMockStore = (...functions: Array<(state: Partial<PlasmaState>) => Partial<PlasmaState>>) =>
     getStoreMock(_.compose(...functions) as PlasmaState);
 

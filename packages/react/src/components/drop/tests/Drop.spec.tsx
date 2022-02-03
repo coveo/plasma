@@ -5,7 +5,7 @@ import userEvent from '@testing-library/user-event';
 import {render, screen, waitFor} from '@test-utils';
 
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {Drop, IDropProps} from '../Drop';
 import {DropPod} from '../DropPod';
 import {DefaultGroupIds, DropActions} from '../redux/DropActions';
@@ -65,7 +65,7 @@ describe('Drop', () => {
 
             const mountDropWithStore = (
                 props?: Partial<IDropProps>,
-                store?: ReactVaporMockStore,
+                store?: PlasmaMockStore,
                 child: React.ReactNode = null
             ) => {
                 wrapper = mountWithStore(

@@ -2,7 +2,7 @@ import {ShallowWrapper} from 'enzyme';
 import {shallowWithState, shallowWithStore} from '@helpers/enzyme-redux';
 import * as React from 'react';
 
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {RefreshCallBackActions} from '../RefeshCallbackActions';
 import {IRefreshCallbackProps, IRefreshCallbackState, RefreshCallback} from '../RefreshCallback';
 import {RefreshStatus} from '../RefreshCallbackReducer';
@@ -90,7 +90,7 @@ describe('RefreshCallback tests', () => {
             });
 
             describe('dispatch', () => {
-                let store: ReactVaporMockStore;
+                let store: PlasmaMockStore;
 
                 it('should dispatch a inProgress on mount', () => {
                     store = getStoreMock({});
