@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {toggleMoreFacetRows} from './FacetActions';
 import {
@@ -11,7 +11,7 @@ import {
 } from './FacetMoreToggle';
 import {IFacetState} from './FacetReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreToggleOwnProps): IFacetMoreToggleStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IFacetMoreToggleOwnProps): IFacetMoreToggleStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet});
 
     return {

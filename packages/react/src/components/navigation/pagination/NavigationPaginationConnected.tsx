@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../../utils/ReduxUtils';
 import {
     INavigationPaginationDispatchProps,
@@ -12,7 +12,7 @@ import {addPagination, changePage, removePagination} from './NavigationPaginatio
 import {IPaginationState} from './NavigationPaginationReducers';
 
 const mapStateToProps = (
-    state: IReactVaporState,
+    state: PlasmaState,
     ownProps: INavigationPaginationOwnProps
 ): INavigationPaginationStateProps => {
     const item: IPaginationState = _.findWhere(state.paginationComposite, {id: ownProps.id});

@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
@@ -14,7 +14,7 @@ describe('Menu', () => {
     describe('<MenuConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let menuWrapper: ReactWrapper<IMenuProps, void>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         const id: string = 'menu-test';
 

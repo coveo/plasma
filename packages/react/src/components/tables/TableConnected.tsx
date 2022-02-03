@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';
@@ -22,7 +22,7 @@ import {ITableHeaderCellState} from './TableHeaderCellReducers';
 import {ITableById, ITableCompositeState, ITableData, ITableState} from './TableReducers';
 import {getTableChildComponentId} from './TableUtils';
 
-export const getTableCompositeState = (state: IReactVaporState, id: string): ITableCompositeState => {
+export const getTableCompositeState = (state: PlasmaState, id: string): ITableCompositeState => {
     const tableState: ITableState = state.tables[id] || ({} as ITableState);
     const filterState: IFilterState = tableState && _.findWhere(state.filters, {id: tableState.filterId});
     const paginationState: IPaginationState =
@@ -96,7 +96,7 @@ const actionsSelector = createSelector(
     getFinalActions
 );
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: ITableOwnProps): ITableCompositeStateProps => {
     const table: ITableState = state.tables && state.tables[ownProps.id];
     return {
         tableCompositeState: getTableCompositeState(state, ownProps.id),

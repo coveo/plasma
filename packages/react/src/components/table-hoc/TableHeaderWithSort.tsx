@@ -3,7 +3,7 @@ import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {Svg, SvgNames} from '../svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';
@@ -26,7 +26,7 @@ export const TableHeaderWithSort: React.FunctionComponent<
     ITableHeaderWithSortProps & React.HTMLAttributes<HTMLTableHeaderCellElement>
 > = ({className, isLoading, id, tableId, isDefault, children}) => {
     const dispatch = useDispatch();
-    const sorted = useSelector((state: IReactVaporState) => {
+    const sorted = useSelector((state: PlasmaState) => {
         const tableSort: ITableWithSortState = _.findWhere(state.tableHOCHeader, {id});
         return tableSort && tableSort.isAsc;
     });

@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {IInputDispatchProps, IInputStateProps} from '../input/Input';
 import {Checkbox, ICheckboxProps} from './Checkbox';
@@ -18,7 +18,7 @@ export interface IGroupableCheckboxOwnProps extends ICheckboxProps {
     parentId?: string;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IGroupableCheckboxOwnProps): IInputStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IGroupableCheckboxOwnProps): IInputStateProps => {
     const groupableCheckboxesState: IGroupableCheckboxesState = _.findWhere(state.groupableCheckboxes, {
         parentId: ownProps.parentId || ownProps.id,
     });

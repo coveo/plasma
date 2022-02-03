@@ -4,7 +4,7 @@ import * as React from 'react';
 
 import {closeModal} from '../../../components/modal/ModalActions';
 import {ModalCompositeConnected} from '../../../components/modal/ModalComposite';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {
     IWithPreventNavigationConfig,
     IWithPreventNavigationInjectedProps,
@@ -14,7 +14,7 @@ import {
 import {PreventNavigationPrompt, PreventNavigationPromptProps} from '../PreventNavigationPrompt';
 
 describe('Modal with Prevent Navigation', () => {
-    let store: ReactVaporMockStore;
+    let store: PlasmaMockStore;
     let component: ShallowWrapper<any, any>;
 
     class SomeModal extends React.Component<IWithPreventNavigationInjectedProps> {

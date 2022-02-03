@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {UrlUtils} from '../../utils';
 import {EventUtils} from '../../utils/EventUtils';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
@@ -63,7 +63,7 @@ const isCollapsible = (props: ITableRowOwnProps): boolean =>
         _.isString(props.collapsible.content) ||
         _.isNull(props.collapsible.content));
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableRowOwnProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: ITableRowOwnProps) => {
     const {selected, opened} = TableSelectors.getTableRow(state, {id: ownProps.id}) || {selected: false, opened: false};
     return {
         selected,

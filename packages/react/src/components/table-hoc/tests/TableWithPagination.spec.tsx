@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {withServerSideProcessing} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {turnOffLoading} from '../../loading/LoadingActions';
 import {NavigationConnected} from '../../navigation/NavigationConnected';
 import {TableWithPaginationActions} from '../actions/TableWithPaginationActions';
@@ -13,7 +13,7 @@ import {TableHOCUtils} from '../utils/TableHOCUtils';
 
 describe('Table HOC', () => {
     describe('TableWithPagination', () => {
-        let store: ReactVaporMockStore;
+        let store: PlasmaMockStore;
 
         const TableWithPagination = _.compose(tableWithPagination())(TableHOC);
 

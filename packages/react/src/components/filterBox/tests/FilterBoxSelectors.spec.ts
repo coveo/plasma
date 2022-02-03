@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {ISelectWithFilterOwnProps, ISingleSelectOwnProps} from '../../select';
 import {IFilterState} from '../FilterBoxReducers';
 import {FilterBoxSelectors} from '../FilterBoxSelectors';
@@ -7,7 +7,7 @@ import {defaultListBoxMatchFilter, MatchFilter} from '../FilterBoxUtils';
 describe('FilterBox', () => {
     describe('FilterBox Selectors', () => {
         const id: string = 'a';
-        const defaultState: IReactVaporState = {
+        const defaultState: PlasmaState = {
             filters: [],
             selectWithFilter: {},
             listBoxes: [],

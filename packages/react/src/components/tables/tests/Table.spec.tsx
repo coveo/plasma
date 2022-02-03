@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableProps, ITableRowData, Table} from '../Table';
@@ -19,7 +19,7 @@ import {tablePossibleProps, tablePropsMock, tablePropsMockWithData} from './Tabl
 const perPageNumbers = [5, 10, 20];
 
 describe('<Table />', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();

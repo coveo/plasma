@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {IReduxActionsPayload} from '../../ReactVaporState';
+import {IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {ILoadingDispatchProps, ILoadingOwnProps, Loading} from './Loading';
 import {addLoading, removeLoading} from './LoadingActions';

@@ -1,6 +1,6 @@
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 
-const getValue = (state: IReactVaporState, id: string): string => state.codeEditors?.[id]?.value ?? '';
+const getValue = (state: PlasmaState, id: string): string => state.codeEditors?.[id]?.value ?? '';
 
 export const CodeEditorSelectors = {
     getValue,

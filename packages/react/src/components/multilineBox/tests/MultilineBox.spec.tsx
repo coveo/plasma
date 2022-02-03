@@ -4,12 +4,12 @@ import * as _ from 'underscore';
 
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {IMultilineBoxOwnProps, IMultilineParentProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 
 describe('MultilineBox', () => {
     describe('<MultilineBox/>', () => {
-        let store: ReactVaporMockStore;
+        let store: PlasmaMockStore;
         const id = 'multiline-box';
         const defaultProps: IMultilineBoxOwnProps = {
             id,

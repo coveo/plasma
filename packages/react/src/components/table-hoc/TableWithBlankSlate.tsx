@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {IBlankSlateWithTableProps} from '../blankSlate';
 import {BlankSlateWithTable} from '../blankSlate/BlankSlatesHOC';
@@ -26,7 +26,7 @@ export const tableWithBlankSlate = (supplier: ConfigSupplier<IBlankSlateWithTabl
 ): React.ComponentType<ITableHOCOwnProps & React.HTMLAttributes<HTMLTableElement> & ITableWithBlankSlateProps> => {
     const config = HocUtils.supplyConfig(supplier);
     const defaultRenderBlankSlateMethod = <BlankSlateWithTable {...config} />;
-    const mapStateToProps = (state: IReactVaporState, ownProps: ITableHOCOwnProps & ITableWithBlankSlateProps) => {
+    const mapStateToProps = (state: PlasmaState, ownProps: ITableHOCOwnProps & ITableWithBlankSlateProps) => {
         const isEmpty = TableSelectors.getIsEmpty(state, ownProps);
         return {
             isEmpty,

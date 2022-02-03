@@ -5,9 +5,9 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
-import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore, TestUtils} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions';
 import {IActionOptions} from '../Action';
@@ -54,7 +54,7 @@ describe('Actions', () => {
     describe('<ActionBarConnected />', () => {
         let wrapper: ReactWrapper;
         let actionBar: ReactWrapper<IActionBarProps & any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             store = TestUtils.buildStore();
@@ -209,7 +209,7 @@ describe('Actions', () => {
         });
 
         describe('dispatch onDestroy', () => {
-            let RStore: ReactVaporMockStore;
+            let RStore: PlasmaMockStore;
             const ownProps = {
                 id: 'id',
             };

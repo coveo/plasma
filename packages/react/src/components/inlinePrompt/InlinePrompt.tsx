@@ -3,7 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {removePrompt} from './InlinePromptActions';
 
@@ -61,7 +61,7 @@ export const InlinePrompt: React.FunctionComponent<
     );
 };
 
-const mapDispatchToProps = (dispatch: IDispatch<IReactVaporState>, ownProps: IInlinePromptProps) => ({
+const mapDispatchToProps = (dispatch: IDispatch<PlasmaState>, ownProps: IInlinePromptProps) => ({
     onCancel: () => dispatch(removePrompt(ownProps.id)),
 });
 

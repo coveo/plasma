@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {
     addStringList,
     addValueStringList,
@@ -62,7 +62,7 @@ const makeMapStateToProps = () => {
         multilineBoxIds: MultilineBoxSelectors.getIds,
     });
 
-    return (state: IReactVaporState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
+    return (state: PlasmaState, ownProps: IMultiSelectOwnProps): IMultilineBoxStateProps =>
         getStateProps(state, {id: ownProps.id});
 };
 

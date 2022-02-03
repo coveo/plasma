@@ -5,7 +5,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 import {render, screen} from '@test-utils';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Drop} from '../../drop/Drop';
@@ -21,7 +21,7 @@ describe('ActionableItem', () => {
     let actionableItem: ShallowWrapper<IActionableItemProps>;
 
     describe('<ActionableItem />', () => {
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             store = TestUtils.buildStore();

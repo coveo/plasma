@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IActionOptions} from '../Action';
 import {IPrimaryActionProps, PrimaryAction} from '../PrimaryAction';
@@ -15,7 +15,7 @@ describe('Actions', () => {
         let action: IActionOptions;
         let wrapper: ReactWrapper<any, any>;
         let primaryAction: ReactWrapper<IPrimaryActionProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeAll(() => {
             action = {

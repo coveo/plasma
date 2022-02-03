@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {filterThrough} from '../filterBox/FilterBoxActions';
 import {IFilterState} from '../filterBox/FilterBoxReducers';
@@ -13,7 +13,7 @@ import {
 } from './FacetMoreRows';
 import {IFacetState} from './FacetReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IFacetMoreRowsOwnProps): IFacetMoreRowsStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet});
     const filterItem: IFilterState = _.findWhere(state.filters, {id: 'filter-' + ownProps.facet});
 

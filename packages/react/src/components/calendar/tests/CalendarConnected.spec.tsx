@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {DateUtils} from '../../../utils/DateUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -32,7 +32,7 @@ describe('Calendar', () => {
     describe('<CalendarConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let calendar: ReactWrapper<ICalendarProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         const mountComponent = (props = {}) => {
             if (wrapper && wrapper.length) {

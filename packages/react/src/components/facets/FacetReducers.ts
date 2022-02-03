@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {IReduxActionsPayload} from '../../ReactVaporState';
+import {IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {IFacet} from './Facet';
 import {FacetActions} from './FacetActions';

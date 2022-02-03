@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {MatchFilter} from '../../filterBox/FilterBoxUtils';
 import {IItemBoxProps} from '../../itemBox/ItemBox';
 import {IListBoxState} from '../../listBox/ListBoxReducers';
@@ -10,7 +10,7 @@ import {ISingleSelectOwnProps} from '../SingleSelectConnected';
 describe('Select', () => {
     describe('Select Selector', () => {
         const id: string = 'a';
-        const defaultState: IReactVaporState = {
+        const defaultState: PlasmaState = {
             filters: [],
             selectWithFilter: {},
             listBoxes: [],
