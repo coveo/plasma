@@ -22,7 +22,7 @@ a.tile:hover {
     transition: height 300ms;
 }
 
-.tile:hover > .tile-information {
+.tile.mod-drawer:hover > .tile-information {
     height: 131.75px;
     box-shadow: 0px -6px 41px rgba(142, 149, 157, 0.29);
 
