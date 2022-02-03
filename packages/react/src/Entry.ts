@@ -1,7 +1,6 @@
 export * from './Defaults';
 export * from './PlasmaState';
 export * from './PlasmaReducers';
-export * from './Version';
 export * from './animations';
 export * from './components';
 export * from './hoc';
