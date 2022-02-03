@@ -11,7 +11,7 @@ import {createStructuredSelector} from 'reselect';
 import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
 import {PlasmaReducers} from '../../PlasmaReducers';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {CommonActions, IDispatch} from '../ReduxUtils';
 import {ValidationSelectors} from '../../components';
 

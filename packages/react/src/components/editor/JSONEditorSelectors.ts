@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {JSONEditorState} from './JSONEditorReducers';
 
 const getValue = (state: PlasmaState, id: string): string => {

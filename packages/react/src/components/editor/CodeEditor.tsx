@@ -14,7 +14,7 @@ import * as ReactCodeMirror from 'react-codemirror2';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
 import {CodeEditorActions} from './CodeEditorActions';

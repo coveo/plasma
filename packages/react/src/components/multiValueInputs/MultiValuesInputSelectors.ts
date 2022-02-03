@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {InputSelectors} from '../input/InputSelectors';
 import {MultilineBoxSelectors} from '../multilineBox/MultilineBoxSelector';
 

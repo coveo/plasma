@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
 import {RefreshCallbackActionType} from './RefeshCallbackActions';
 

@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {ITableHeaderCellDispatchProps, ITableHeaderCellOwnProps, TableHeaderCell} from './TableHeaderCell';
 import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from './TableHeaderCellActions';

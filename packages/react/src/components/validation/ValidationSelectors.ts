@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ValidationState} from './ValidationState';
 
 const getErrors = (id: string) => (state: PlasmaState) =>

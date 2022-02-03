@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetStateProps} from './Facet';
 import {addFacet, changeFacet, emptyFacet, removeFacet} from './FacetActions';

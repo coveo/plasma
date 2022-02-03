@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IInputState} from './InputReducers';
 
 const getInput = (state: PlasmaState, props: {id: string}): IInputState => _.findWhere(state.inputs, {id: props.id});

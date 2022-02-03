@@ -3,7 +3,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils, UrlUtils} from '../../utils';
 import {BlankSlateWithTable, IBlankSlateWithTableProps} from '../blankSlate';
 import {FilterBoxConnected, FilterBoxSelectors} from '../filterBox';

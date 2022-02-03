@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {IStickyFooterProps} from '../../stickyFooter/StickyFooter';
 import {ValidationSelectors} from '../ValidationSelectors';
 

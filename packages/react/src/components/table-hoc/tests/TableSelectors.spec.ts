@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {TableSelectors, TableSelectorsProps} from '../TableSelectors';
 import {ITableHOCCompositeState, TableHOCUtils} from '../utils/TableHOCUtils';
 

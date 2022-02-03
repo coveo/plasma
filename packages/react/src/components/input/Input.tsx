@@ -9,7 +9,7 @@ import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {Tooltip} from '../tooltip/Tooltip';
 import {IInputState} from './InputReducers';
 import {ILabelProps, Label} from './Label';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {InputSelectors} from './InputSelectors';
 import {IDispatch, ReduxUtils} from '../../utils';
 import {addInput, removeInput, changeInputValue} from './InputActions';

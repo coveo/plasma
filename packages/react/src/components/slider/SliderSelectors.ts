@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ISliderState} from './SliderReducers';
 
 const getSlider = (state: PlasmaState, {id}: {id: string}): ISliderState => state.sliders[id];

@@ -2,7 +2,7 @@ import {connect} from 'react-redux';
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 import {contains} from 'underscore.string';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {IActionOptions} from '../actions/Action';

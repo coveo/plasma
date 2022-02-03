@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {IInputDispatchProps, IInputOwnProps, IInputStateProps} from '../input/Input';
 import {Checkbox} from './Checkbox';

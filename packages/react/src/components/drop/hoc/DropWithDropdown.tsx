@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {SlideY} from '../../../animations/SlideY';
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {DropPodPosition} from '../DomPositionCalculator';

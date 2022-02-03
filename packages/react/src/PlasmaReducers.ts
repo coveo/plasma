@@ -49,7 +49,7 @@ import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
 import {validationReducer} from './components/validation/ValidationReducer';
 import {withDirtyReducer} from './hoc/withDirty/withDirtyReducers';
-import {PlasmaState} from './ReactVaporState';
+import {PlasmaState} from './PlasmaState';
 import {stringListCompositeReducer} from './reusableState/customList/StringListReducers';
 import {IReduxAction} from './utils/ReduxUtils';
 

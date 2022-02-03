@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {IRadioSelectDispatchProps, IRadioSelectProps, IRadioSelectStateProps, RadioSelect} from './RadioSelect';
 import {removeRadioSelect, setRadioSelect} from './RadioSelectActions';

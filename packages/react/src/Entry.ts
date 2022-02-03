@@ -1,5 +1,5 @@
 export * from './Defaults';
-export * from './ReactVaporState';
+export * from './PlasmaState';
 export * from './PlasmaReducers';
 export * from './Version';
 export * from './animations';

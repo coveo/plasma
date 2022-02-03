@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {CodeEditorState} from '../CodeEditorReducers';
 import {CodeEditorSelectors} from '../CodeEditorSelectors';
 
