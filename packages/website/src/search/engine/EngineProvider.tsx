@@ -10,7 +10,7 @@ export const EngineProvider: React.FunctionComponent = ({children}) => {
     React.useEffect(() => {
         const newEngine = headlessEngine();
         const {registerFieldsToInclude} = loadFieldActions(newEngine);
-        newEngine.dispatch(registerFieldsToInclude(['componentname']));
+        newEngine.dispatch(registerFieldsToInclude(['description', 'thumbnail']));
         setEngine(newEngine);
     }, []);
 

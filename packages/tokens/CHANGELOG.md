@@ -3,6 +3,54 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.6.0](https://github.com/coveo/plasma/compare/v32.5.0...v32.6.0) (2022-02-02)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+# [32.5.0](https://github.com/coveo/plasma/compare/v32.4.2...v32.5.0) (2022-02-02)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [32.4.2](https://github.com/coveo/plasma/compare/v32.4.1...v32.4.2) (2022-02-02)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [32.4.1](https://github.com/coveo/plasma/compare/v32.4.0...v32.4.1) (2022-02-01)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+# [32.4.0](https://github.com/coveo/plasma/compare/v32.3.1...v32.4.0) (2022-02-01)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
+## [32.3.1](https://github.com/coveo/plasma/compare/v32.3.0...v32.3.1) (2022-02-01)
+
+**Note:** Version bump only for package @coveord/plasma-tokens
+
+
+
+
+
 # [32.3.0](https://github.com/coveo/plasma/compare/v32.2.1...v32.3.0) (2022-02-01)
 
 **Note:** Version bump only for package @coveord/plasma-tokens

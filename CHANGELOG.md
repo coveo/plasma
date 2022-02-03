@@ -3,6 +3,75 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [32.6.0](https://github.com/coveo/plasma/compare/v32.5.0...v32.6.0) (2022-02-02)
+
+
+### Features
+
+* **style,react:** add new apply SVG in 3 formats ([#2414](https://github.com/coveo/plasma/issues/2414)) ([d596c53](https://github.com/coveo/plasma/commit/d596c53e33a8b4a68f5d1d8e1877a0d11600cb14))
+
+
+
+
+
+# [32.5.0](https://github.com/coveo/plasma/compare/v32.4.2...v32.5.0) (2022-02-02)
+
+
+### Features
+
+* handle clear button ([908edeb](https://github.com/coveo/plasma/commit/908edebc532bf1d7ae3c4a79bb831e17115f5c90))
+* simplify the resetSearch ([3d18b8a](https://github.com/coveo/plasma/commit/3d18b8a33393d1e12ad5c1ed0abd40978b5f5fd7))
+
+
+
+
+
+## [32.4.2](https://github.com/coveo/plasma/compare/v32.4.1...v32.4.2) (2022-02-02)
+
+
+### Bug Fixes
+
+* **website:** redirect to plasma when loading vapor ([92a5679](https://github.com/coveo/plasma/commit/92a5679d2bfec451a3a1cf26a18ced18bb2af85a))
+
+
+
+
+
+## [32.4.1](https://github.com/coveo/plasma/compare/v32.4.0...v32.4.1) (2022-02-01)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+# [32.4.0](https://github.com/coveo/plasma/compare/v32.3.1...v32.4.0) (2022-02-01)
+
+
+### Bug Fixes
+
+* **loading:** add a chunk for the loading logo ([a116812](https://github.com/coveo/plasma/commit/a116812e19d1f54a8b33299934bf809e65d898d5))
+
+
+### Features
+
+* **website:** crawl thumbnails and display them in search results ([5261d57](https://github.com/coveo/plasma/commit/5261d5797a0085e74301bffbe217843e4296dddb))
+
+
+
+
+
+## [32.3.1](https://github.com/coveo/plasma/compare/v32.3.0...v32.3.1) (2022-02-01)
+
+
+### Bug Fixes
+
+* **website:** remove broken urls from home page ([40a93af](https://github.com/coveo/plasma/commit/40a93af62e384a60edf792215f22648b1d27904e))
+
+
+
+
+
 # [32.3.0](https://github.com/coveo/plasma/compare/v32.2.1...v32.3.0) (2022-02-01)
 
 

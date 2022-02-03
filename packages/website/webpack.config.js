@@ -11,6 +11,7 @@ const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
  */
 module.exports = {
     entry: {
+        loading: './src/styles/loading-screen.css',
         main: './built/Index.js',
     },
     mode: isJenkins ? 'production' : 'development',
@@ -36,9 +37,9 @@ module.exports = {
             ],
         }),
         new HtmlWebpackPlugin({
-            title: 'Vapor Design System',
+            title: 'Plasma Design System',
             favicon: 'src/favicon.ico',
-            chunks: ['main'],
+            chunks: ['loading', 'main'],
             template: 'src/index.html',
         }),
         new HtmlWebpackTagsPlugin({tags: ['jquery.slim.min.js', 'chosen.jquery.min.js'], append: true}),
