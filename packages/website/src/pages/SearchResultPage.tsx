@@ -41,7 +41,8 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                             Showing results for <span className="h4">{query}</span>
                         </h4>
                         <p>
-                            <span className="body-m">{state.results.length}</span> results
+                            <span className="body-m">{state.results.length}</span>
+                            {state.results.length === 1 ? ' result' : ' results'}
                         </p>
                         <div className="tile-grid">
                             {state.results.map(({title, raw, uniqueId, clickUri}: Result) => (
