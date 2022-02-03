@@ -6,7 +6,7 @@ import promise from 'redux-promise-middleware';
 import thunk from 'redux-thunk';
 
 import {Defaults} from '../src/Defaults';
-import {ReactVaporReducers} from '../src/ReactVaporReducers';
+import {PlasmaReducers} from '../src/PlasmaReducers';
 import {PlasmaState} from '../src/ReactVaporState';
 import {IDispatch} from '../src/utils/ReduxUtils';
 
@@ -31,7 +31,7 @@ const customRender = (
     {
         initialState,
         store = createStore(
-            combineReducers<PlasmaState>(ReactVaporReducers),
+            combineReducers<PlasmaState>(PlasmaReducers),
             initialState,
             applyMiddleware(thunk, promise)
         ),

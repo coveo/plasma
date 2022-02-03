@@ -1,4 +1,4 @@
-import {IDispatch, ReactVaporReducers} from '@coveord/plasma-react';
+import {IDispatch, PlasmaReducers} from '@coveord/plasma-react';
 import {applyMiddleware, combineReducers, createStore} from 'redux';
 import {composeWithDevTools} from 'redux-devtools-extension';
 import promise from 'redux-promise-middleware';
@@ -9,7 +9,7 @@ const middlewares = [thunk, promise];
 const composeEnhancers = composeWithDevTools({name: 'Vapor Design System'});
 
 export const Store = createStore(
-    combineReducers(ReactVaporReducers),
+    combineReducers(PlasmaReducers),
     composeEnhancers(applyMiddleware<IDispatch>(...middlewares))
 );
 
