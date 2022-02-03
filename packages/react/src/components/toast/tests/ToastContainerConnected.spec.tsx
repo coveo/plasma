@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Toast, ToastType} from '../Toast';
 import {addToast} from '../ToastActions';
@@ -14,7 +14,7 @@ describe('Toasts', () => {
     describe('<ToastContainerConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let component: ReactWrapper<IToastContainerProps, void>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
         const containerId = 'toast-container-id';
 
         beforeEach(() => {

@@ -1,13 +1,13 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {CherryPick} from '../../utils';
 import {ITabOwnProps} from './Tab';
 import {TabConstants} from './TabConstants';
 import {ITabGroupState, ITabState} from './TabReducers';
 
-const getTabGroup = (state: IReactVaporState, {groupId}: CherryPick<ITabOwnProps, 'groupId'>): ITabGroupState =>
+const getTabGroup = (state: PlasmaState, {groupId}: CherryPick<ITabOwnProps, 'groupId'>): ITabGroupState =>
     _.findWhere(state.tabs, {id: groupId ?? TabConstants.DefaultGroupId});
 
 const getSelectedTab = createSelector(

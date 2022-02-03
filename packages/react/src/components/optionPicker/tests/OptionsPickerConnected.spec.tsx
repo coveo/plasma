@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IOptionPickerProps, OptionPicker} from '../OptionPicker';
@@ -30,7 +30,7 @@ describe('Option picker', () => {
     describe('<OptionPickerConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let optionPicker: ReactWrapper<IOptionPickerProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             store = TestUtils.buildStore();

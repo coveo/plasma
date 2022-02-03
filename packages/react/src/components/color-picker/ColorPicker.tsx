@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ChromePicker, ChromePickerProps, ColorResult} from 'react-color';
 import {connect} from 'react-redux';
 import {isString, noop, uniqueId} from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {changeInputValue} from '../input/InputActions';
 import {InputConnected} from '../input/Input';
@@ -13,7 +13,7 @@ export interface IColorPickerProps extends ChromePickerProps {
     defaultColor?: string;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IColorPickerProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: IColorPickerProps) => {
     const color = InputSelectors.getValue(state, {id: ownProps.id}) || ownProps.defaultColor;
     return {
         color,

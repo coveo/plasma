@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {defaultDropPodPosition, DropPod, IDropPodProps} from './DropPod';
 import {DefaultGroupIds, DropActions} from './redux/DropActions';
@@ -23,7 +23,7 @@ export type IDropDispatchProps = ReturnType<typeof mapDispatchToProps>;
 
 export interface IDropProps extends IDropOwnProps, Partial<IDropStateProps>, Partial<IDropDispatchProps> {}
 
-const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps) => ({
+const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps) => ({
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 

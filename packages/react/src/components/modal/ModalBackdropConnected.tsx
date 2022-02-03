@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {closeModals} from './ModalActions';
 import {
@@ -10,7 +10,7 @@ import {
     ModalBackdrop,
 } from './ModalBackdrop';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IModalBackdropOwnProps): IModalBackdropStateProps => {
     let modals = state.modals;
     if (ownProps.displayFor && ownProps.displayFor.length > 0) {
         modals = modals.filter((modal) => _.contains(ownProps.displayFor, modal.id));

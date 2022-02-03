@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {ILastUpdatedDispatchProps, ILastUpdatedOwnProps, ILastUpdatedStateProps, LastUpdated} from './LastUpdated';
 import {addLastUpdated, removeLastUpdated} from './LastUpdatedActions';
 import {ILastUpdatedState} from './LastUpdatedReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ILastUpdatedOwnProps): ILastUpdatedStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: ILastUpdatedOwnProps): ILastUpdatedStateProps => {
     const item: ILastUpdatedState = _.findWhere(state.lastUpdatedComposite, {id: ownProps.id});
 
     return {

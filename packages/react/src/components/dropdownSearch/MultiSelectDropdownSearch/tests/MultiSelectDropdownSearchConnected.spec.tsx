@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../../ReactVaporState';
+import {PlasmaState} from '../../../../PlasmaState';
 import {keyCode} from '../../../../utils/InputUtils';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
@@ -27,7 +27,7 @@ describe('MultiSelectDropdownSearch', () => {
     describe('<MultiSelectDropdownSearchConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let multiSelectDropdownSearchConnected: ReactWrapper<IDropdownSearchProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         const defaultOptions = [{value: 'a'}, {value: 'b'}];
 

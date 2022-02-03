@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ISingleValidation, ValidationSelectors} from '../validation';
 import {ModalWizard, ModalWizardProps} from './ModalWizard';
 
@@ -10,7 +10,7 @@ export interface ModalWithValdiationsProps extends Omit<ModalWizardProps, 'valid
     validationIdsByStep?: string[][];
 }
 
-const mapStateToProps = (state: IReactVaporState, {validationIdsByStep}: ModalWithValdiationsProps) => ({
+const mapStateToProps = (state: PlasmaState, {validationIdsByStep}: ModalWithValdiationsProps) => ({
     isDirty: ValidationSelectors.isDirty(_.flatten(validationIdsByStep))(state),
     isInError: (stepNumber: number): boolean =>
         ValidationSelectors.isInError(validationIdsByStep[stepNumber] ?? [])(state),

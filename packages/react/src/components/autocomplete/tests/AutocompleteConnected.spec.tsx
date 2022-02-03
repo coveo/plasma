@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
@@ -15,7 +15,7 @@ describe('Autocomplete', () => {
     describe('<AutocompleteConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let autocomplete: ReactWrapper<IAutocompleteProps, void>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         const id: string = 'autocomplete-connected';
 

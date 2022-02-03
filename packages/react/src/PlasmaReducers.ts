@@ -49,13 +49,13 @@ import {textAreasReducer} from './components/textarea/TextAreaReducers';
 import {toastsContainerReducer} from './components/toast/ToastReducers';
 import {validationReducer} from './components/validation/ValidationReducer';
 import {withDirtyReducer} from './hoc/withDirty/withDirtyReducers';
-import {IReactVaporState} from './ReactVaporState';
+import {PlasmaState} from './PlasmaState';
 import {stringListCompositeReducer} from './reusableState/customList/StringListReducers';
 import {IReduxAction} from './utils/ReduxUtils';
 
 const lastAction = (state: IReduxAction = null, action: IReduxAction) => action;
 
-export const ReactVaporReducers: ReducersMapObject<IReactVaporState> = {
+export const PlasmaReducers: ReducersMapObject<PlasmaState> = {
     actionBars: actionBarsReducer,
     autocompletes: autocompletesReducer,
     checkboxes: checkboxesReducer,

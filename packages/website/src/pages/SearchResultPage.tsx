@@ -37,20 +37,23 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
             ) : (
                 <Section className="home flex-auto overflow-auto demo-content">
                     <Section className="section">
-                        <h2>Search Results:</h2>
-                        <div className="body-l-book plasma-description">Patate King!</div>
+                        <h4 className="h4-book">
+                            Showing results for <span className="h4">{query}</span>
+                        </h4>
+                        <p>
+                            <span className="body-m">{state.results.length}</span>
+                            {state.results.length === 1 ? ' result' : ' results'}
+                        </p>
                         <div className="tile-grid">
-                            {state.results.map(({title, raw, uniqueId, clickUri}: Result) =>
-                                title !== 'Plasma Design System' ? (
-                                    <Tile
-                                        key={uniqueId}
-                                        title={title}
-                                        href={clickUri.slice(clickUri.indexOf('#'))}
-                                        description={raw.description as string}
-                                        thumbnail={raw.thumbnail as TileProps['thumbnail']}
-                                    />
-                                ) : null
-                            )}
+                            {state.results.map(({title, raw, uniqueId, clickUri}: Result) => (
+                                <Tile
+                                    key={uniqueId}
+                                    title={title}
+                                    href={clickUri.slice(clickUri.indexOf('#'))}
+                                    description={raw.description as string}
+                                    thumbnail={raw.thumbnail as TileProps['thumbnail']}
+                                />
+                            ))}
                         </div>
                     </Section>
                 </Section>

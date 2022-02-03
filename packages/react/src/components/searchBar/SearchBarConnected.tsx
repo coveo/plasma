@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {ISearchBarDispatchProps, ISearchBarOwnProps, ISearchBarStateProps, SearchBar} from './SearchBar';
 import {addSearchBar, removeSearchBar, setSearchBarValue} from './SearchBarActions';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ISearchBarOwnProps): ISearchBarStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: ISearchBarOwnProps): ISearchBarStateProps => {
     const searchBar = findWhere(state.searchBars, {id: ownProps.id});
 
     return {

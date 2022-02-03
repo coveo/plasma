@@ -1,11 +1,11 @@
 import {connect} from 'react-redux';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {ITableHeaderCellDispatchProps, ITableHeaderCellOwnProps, TableHeaderCell} from './TableHeaderCell';
 import {addHeaderCell, removeHeaderCell, sortFromHeaderCell} from './TableHeaderCellActions';
 import {ITableHeaderCellState} from './TableHeaderCellReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeaderCellOwnProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: ITableHeaderCellOwnProps) => {
     const headerCell: ITableHeaderCellState = state.tableHeaderCells[ownProps.id];
 
     return {

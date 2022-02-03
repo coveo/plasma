@@ -1,10 +1,10 @@
 import {connect} from 'react-redux';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps, Modal} from './Modal';
 import {addModal, removeModal} from './ModalActions';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IModalOwnProps): IModalStateProps => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IModalOwnProps): IModalStateProps => ({
     isOpened: state.modals.some((modal) => modal.id === ownProps.id && modal.isOpened),
 });
 

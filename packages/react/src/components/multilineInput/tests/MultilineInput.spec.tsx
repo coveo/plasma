@@ -2,7 +2,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ILabelProps} from '../../input';
 import {validateInputValue} from '../../input/InputActions';
@@ -18,7 +18,7 @@ describe('MultilineInput', () => {
     });
 
     describe('<MultilineInput />', () => {
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         let multilineInput: ReactWrapper<IMultilineInputProps, any>;
         const valueId = 'an-id';

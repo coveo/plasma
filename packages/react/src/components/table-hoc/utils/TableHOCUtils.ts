@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {DatePickerSelectors} from '../../datePicker/DatePickerSelectors';
 import {IFilterState} from '../../filterBox/FilterBoxReducers';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
@@ -25,7 +25,7 @@ export interface ITableHOCCompositeState {
 
 const PREDICATE_SEPARATOR = '--';
 
-const getCompositeState = (id: string, state: IReactVaporState): ITableHOCCompositeState => {
+const getCompositeState = (id: string, state: PlasmaState): ITableHOCCompositeState => {
     const tableSort: ITableWithSortState = _.find(
         state.tableHOCHeader,
         (v: ITableWithSortState) => v.tableId === id && _.isBoolean(v.isAsc)
@@ -70,7 +70,7 @@ const getComponentIdFromPredicateId = (predicateId: string) => predicateId.split
 
 const getPredicateId = (tableId: string, componentId: string) => `${tableId}${PREDICATE_SEPARATOR}${componentId}`;
 
-const getPredicateIds = (tableId: string, state: IReactVaporState): string[] =>
+const getPredicateIds = (tableId: string, state: PlasmaState): string[] =>
     _.chain(state.listBoxes)
         .filter(filterTablePredicate.bind(null, tableId))
         .pluck('id')
@@ -79,7 +79,7 @@ const getPredicateIds = (tableId: string, state: IReactVaporState): string[] =>
 
 const getPaginationId = (tableId: string) => `pagination-${tableId}`;
 
-const getTablePredicates = (tableId: string, state: IReactVaporState): ITableHOCPredicateValue[] =>
+const getTablePredicates = (tableId: string, state: PlasmaState): ITableHOCPredicateValue[] =>
     _.chain(state.listBoxes)
         .filter(filterTablePredicate.bind(null, tableId))
         .filter((list: IListBoxState) => list.selected && list.selected[0] !== '')

@@ -4,7 +4,7 @@ import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 import classNames from 'classnames';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils';
 import {ILabelProps} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';
@@ -47,7 +47,7 @@ export interface ITextAreaDispatchProps {
 
 export interface ITextAreaProps extends ITextAreaOwnProps, ITextAreaStateProps, ITextAreaDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITextAreaOwnProps): ITextAreaStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: ITextAreaOwnProps): ITextAreaStateProps => {
     const {value, disabled} = _.findWhere(state.textAreas, {id: ownProps.id}) || {value: '', disabled: false};
     return {value, disabled};
 };

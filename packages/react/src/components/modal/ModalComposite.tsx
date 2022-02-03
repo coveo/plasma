@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
 import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {IDispatch, IReduxStatePossibleProps, ReduxUtils} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';
@@ -183,7 +183,7 @@ export class ModalComposite extends React.PureComponent<
     private getParent = (): HTMLElement => document.querySelector(Defaults.MODAL_ROOT);
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IModalCompositeOwnProps): IModalCompositeStateProps => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IModalCompositeOwnProps): IModalCompositeStateProps => ({
     withReduxState: true,
     isOpened: state.modals && state.modals.some((modal) => modal.id === ownProps.id && modal.isOpened),
     layer: state.openModals ? state.openModals.indexOf(ownProps.id) + 1 : 0,

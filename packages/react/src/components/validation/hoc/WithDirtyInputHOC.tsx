@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 
 import {IDispatch} from '../../../utils/ReduxUtils';
 import {IInputOwnProps} from '../../input/Input';
@@ -13,7 +13,7 @@ export interface IWithDirtyInputOwnProps {
     resetDirtyOnUnmount?: boolean;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IWithDirtyInputOwnProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IWithDirtyInputOwnProps) => ({
     wasDirty: ValidationSelectors.isDirty([ownProps.id ?? ''])(state),
 });
 

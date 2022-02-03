@@ -49,7 +49,7 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
                     .replace(/var .+ = require(.+);/g, '') // remove the require statements
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
                     .replace(/exports\.default = (.+)/g, 'var Example = $1') // change the default export to a component named Example
-                    .replace(/plasma_react_\d+/g, 'PlasmaReact') + // use react-vapor from the window ReactVapor object
+                    .replace(/plasma_react_\d+/g, 'PlasmaReact') + // use react-vapor from the window Plasma object
                 `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(Example)), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval

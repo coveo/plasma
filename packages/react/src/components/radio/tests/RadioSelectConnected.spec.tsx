@@ -3,14 +3,14 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IRadioSelectAllProps, RadioSelect} from '../RadioSelect';
 import {RadioSelectConnected} from '../RadioSelectConnected';
 
 describe('RadioSelectConnected', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();

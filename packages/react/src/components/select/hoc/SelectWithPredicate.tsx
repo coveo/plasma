@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {FlatSelectConnected} from '../../flatSelect';
 import {IFlatSelectOptionProps} from '../../flatSelect/FlatSelectOption';
 import {FlatSelectSelectors} from '../../flatSelect/FlatSelectSelectors';
@@ -30,7 +30,7 @@ export const selectWithPredicate = <P extends Omit<ISelectOwnProps, 'button'> & 
     type OwnProps = P & ISelectWithPredicateOwnProps;
     type Props = OwnProps & ReturnType<typeof mapStateToProps>;
 
-    const mapStateToProps = (state: IReactVaporState, ownProps: OwnProps) => {
+    const mapStateToProps = (state: PlasmaState, ownProps: OwnProps) => {
         const predicate = FlatSelectSelectors.getSelectedOptionId(state, {id: ownProps.id});
 
         const items = ownProps.isServer

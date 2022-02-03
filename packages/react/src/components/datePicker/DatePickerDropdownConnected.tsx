@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {MONTH_PICKER_ID, YEAR_PICKER_ID} from '../calendar/Calendar';
 import {DefaultGroupIds, DropActions} from '../drop/redux/DropActions';
@@ -19,10 +19,7 @@ import {
 import {IDatePickerState} from './DatePickerReducers';
 import {DatePickerSelectors} from './DatePickerSelectors';
 
-const mapStateToProps = (
-    state: IReactVaporState,
-    ownProps: IDatePickerDropdownOwnProps
-): IDatePickerDropdownStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IDatePickerDropdownOwnProps): IDatePickerDropdownStateProps => {
     const item: IDropdownState = _.findWhere(state.dropdowns, {id: ownProps.id});
 
     let isOpened = item?.opened;

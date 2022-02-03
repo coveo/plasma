@@ -6,7 +6,7 @@ import {
     closeModal,
     IDispatch,
     Input,
-    IReactVaporState,
+    PlasmaState,
     ModalCompositeConnected,
     ModalLoading,
     openModal,
@@ -183,7 +183,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
 
 const ModalCompositeExampleConnected = connect(null, mapDispatchToProps)(ModalExampleDisconnected);
 
-const mapStateToProps = (state: IReactVaporState, ownProps: any) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: any) => ({
     isDirty: WithDirtySelectors.getIsDirty(state, {id: ownProps.id}),
 });
 

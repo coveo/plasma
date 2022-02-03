@@ -1,28 +1,28 @@
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ValidationState} from './ValidationState';
 
-const getErrors = (id: string) => (state: IReactVaporState) =>
+const getErrors = (id: string) => (state: PlasmaState) =>
     state.validation?.[id]?.error?.filter((error) => !!error.value) || [];
-const getWarnings = (id: string) => (state: IReactVaporState) =>
+const getWarnings = (id: string) => (state: PlasmaState) =>
     state.validation?.[id]?.warning?.filter((warning) => !!warning.value) || [];
-const getIsDirty = (id: string) => (state: IReactVaporState) => state.validation?.[id]?.isDirty || [];
+const getIsDirty = (id: string) => (state: PlasmaState) => state.validation?.[id]?.isDirty || [];
 
-const getAnyError = (ids: string[]) => (state: IReactVaporState) =>
+const getAnyError = (ids: string[]) => (state: PlasmaState) =>
     ids
         .reduce((all, id) => all.concat(getErrors(id)(state)), [] as ValidationState['error'])
         .filter((error) => !!error.value);
-const getAnyWarning = (ids: string[]) => (state: IReactVaporState) =>
+const getAnyWarning = (ids: string[]) => (state: PlasmaState) =>
     ids
         .reduce((all, id) => all.concat(getWarnings(id)(state)), [] as ValidationState['warning'])
         .filter((warning) => !!warning.value);
-const getAnyDirty = (ids: string[]) => (state: IReactVaporState) =>
+const getAnyDirty = (ids: string[]) => (state: PlasmaState) =>
     ids
         .reduce((all, id) => all.concat(getIsDirty(id)(state)), [] as ValidationState['isDirty'])
         .filter((dirty) => dirty.value);
 
-const isInError = (ids: string[]) => (state: IReactVaporState) => getAnyError(ids)(state).length > 0;
-const isInWarning = (ids: string[]) => (state: IReactVaporState) => getAnyWarning(ids)(state).length > 0;
-const isDirty = (ids: string[]) => (state: IReactVaporState) => getAnyDirty(ids)(state).length > 0;
+const isInError = (ids: string[]) => (state: PlasmaState) => getAnyError(ids)(state).length > 0;
+const isInWarning = (ids: string[]) => (state: PlasmaState) => getAnyWarning(ids)(state).length > 0;
+const isDirty = (ids: string[]) => (state: PlasmaState) => getAnyDirty(ids)(state).length > 0;
 
 export const ValidationSelectors = {
     getErrors,

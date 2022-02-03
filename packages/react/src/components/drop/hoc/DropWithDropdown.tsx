@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as _ from 'underscore';
 import {SlideY} from '../../../animations/SlideY';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {PropsToOmitUtils} from '../../../utils/PropsToOmitUtils';
 import {ReduxConnect} from '../../../utils/ReduxUtils';
 import {DropPodPosition} from '../DomPositionCalculator';
@@ -11,7 +11,7 @@ import {DropSelectors} from '../redux/DropReducers';
 
 export type DropWithDropdownComponent<T = IDropProps> = React.ComponentClass<IDropProps>;
 
-const mapStateToProps = (state: IReactVaporState, {id, groupId}: IDropOwnProps): IDropStateProps => ({
+const mapStateToProps = (state: PlasmaState, {id, groupId}: IDropOwnProps): IDropStateProps => ({
     isOpen: DropSelectors.isOpen(state, {id, groupId}),
 });
 

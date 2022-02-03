@@ -1,6 +1,6 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {IButtonProps} from '../../button/Button';
 import {ValidationSelectors} from '../ValidationSelectors';
 
@@ -12,7 +12,7 @@ export interface IWithDirtySaveButtonHOCProps {
     dirtyMessage?: (dirty: boolean[]) => string | undefined;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IWithDirtySaveButtonHOCProps) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IWithDirtySaveButtonHOCProps) => ({
     dirty: ValidationSelectors.getAnyDirty(ownProps.validationIds)(state),
     errors: ValidationSelectors.getAnyError(ownProps.validationIds)(state),
     warnings: ValidationSelectors.getAnyWarning(ownProps.validationIds)(state),

@@ -1,14 +1,14 @@
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ITextAreaState} from './TextAreaReducers';
 
-const getValue = (state: IReactVaporState, id: string): string => {
+const getValue = (state: PlasmaState, id: string): string => {
     const textArea: ITextAreaState = _.findWhere(state.textAreas, {id});
     return textArea?.value ?? '';
 };
 
-const isDisabled = (state: IReactVaporState, id: string): boolean => {
+const isDisabled = (state: PlasmaState, id: string): boolean => {
     const textArea: ITextAreaState = _.findWhere(state.textAreas, {id});
     return !!textArea?.disabled;
 };
