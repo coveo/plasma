@@ -36,7 +36,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         navigateToResultPage(suggestion);
     };
 
-    const listHandleKeyDown = (event: any, value: string) => {
+    const listHandleKeyDown = (event: React.KeyboardEvent<HTMLElement>, value: string) => {
         const isEnter = event.key === 'Enter';
         const isBackspace = event.key === 'Backspace';
 
@@ -49,7 +49,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
         }
     };
 
-    const inputHandleKeyDown = (event: any) => {
+    const inputHandleKeyDown = (event: React.KeyboardEvent<HTMLElement>) => {
         const isDown = event.key === 'ArrowDown';
         const isEnter = event.key === 'Enter';
         const isEscape = event.key === 'Escape';
@@ -60,7 +60,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
             } else if (isEscape) {
                 controller.clear();
                 (event.target as HTMLInputElement).focus();
-            } else if (isDown) {
+            } else if (isDown && state.suggestions.length > 0) {
                 (document.querySelector('li.item-box') as HTMLInputElement).focus();
             }
         }
@@ -72,7 +72,10 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
             className={classNames('clear-button', {
                 'search-not-empty': state.value !== '',
             })}
-            onClick={() => controller.clear()}
+            onClick={() => {
+                controller.clear();
+                (document.querySelector('input.search-bar') as HTMLInputElement).focus();
+            }}
         >
             <Svg svgName="cross" svgClass="icon" />
         </button>
@@ -91,7 +94,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
 
     const CustomList = () => (
         <>
-            {(state.suggestions.length > 0 || state.isLoadingSuggestions) && (
+            {state.suggestions.length > 0 && (
                 <ul className="list-box relative search-results-container" role="listbox">
                     {state.suggestions.map((suggestion, index) => {
                         const value = suggestion.rawValue;

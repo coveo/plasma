@@ -1,98 +1,63 @@
 Iconography
 SVG
 Headings
-Icon colors
-Line-height
 Links
-Lists
-Text colors
-Utilities
 Whitespace
-Action Bar
-Action Bar Connected
 Banner
 Blank Slate
 Bordered Line
-Footer
-Icon / Logo Card
-Card
+Browser Preview
+Chart
+Collapsible
+Icon Card
+Info Box 
+Labelled Value
+Limit Card
 Modal Window
 Modal Wizard
 Page Header
-Sections
+Footer
+Section
 Split Layout
-Tabs
-Tabs Connected
 Table
 Table HOC Loading
 Table HOC Server
 Table HOC with Blank Slate
 Actionable Item
-Buttons
+Button              
 Checkbox
-Child Form
-Code Editor
-Date Picker
-Diff Viewer
-File Picker
+Child Form       
+Code Editor 
+Color Picker 
+Date Picker           
+Diff Viewer            
+Facet       
+File Picker            
 Filter Box
-JSON Editor
-Multiline Box
+Flat Select            
+JSON Editor            
+Multiline Box 
 Numeric Inputs
-Radio Buttons
-Search Bar
+Radio Button
+Search Bar           
 Single Select
 Multi Select
 Slider
-Text Area
+Text Area          
 Text Input
-Value Popup
 Breadcrumbs
-Flat Select
-Options Cycle
-Pagination
 Sidebar Navigation
 SubNavigation
+Tabs
 Badge
-Feedback
-Info Box
-Info Token
-Limit Card
-Loading
-Popover Connected
-Progress bar
-Status Card
-Step Progress Bar
-Toast
-Toast Connected
-Toast Content
-Tooltip
-Borders
-Collapsible
-Browser Preview
-Home Card
-Material Card
-Wizard Card
-Charts
 Color Bar
 Color Dot
-Color Picker
-Cursor
-Facet Connected
 Icon Badge
-Inputs (legacy)
-Item Filter
-Item Filter Connected
-Labeled Value
 Last Updated
-Last Updated Connected
-Link SVG
-Member
-Pagination Connected
-Partial String Match
-Refresh
-Separator
-SideNavigation Loading
-Slide-Y
-Spaced box
-Transparency
+Loading Spinner 
+Step Progress Bar
+Sync Feedback
+Toast
+Toast Connected
+Toast Content 
+Tooltip
