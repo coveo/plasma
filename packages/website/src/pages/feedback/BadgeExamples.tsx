@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {Badge, Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BadgeExamples: React.FunctionComponent = () => (
-    <VaporComponent id="Badge" title="Badge" withSource>
+    <PlasmaComponent id="Badge" title="Badge" withSource>
         <Section>
             <Section level={2} title="Default size">
                 <Badge label="Default" />
@@ -30,5 +30,5 @@ export const BadgeExamples: React.FunctionComponent = () => (
                 <Badge icon="lock" label="tag" extraClasses={['mod-small mod-tag ml1']} />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

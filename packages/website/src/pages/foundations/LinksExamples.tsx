@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const Links = () => (
-    <VaporComponent id="Links" title="Links" withSource>
+    <PlasmaComponent id="Links" title="Links" withSource>
         <p>
             <a className="link" href="https://www.coveo.com/en">
                 Navigating link
@@ -31,5 +31,5 @@ export const Links = () => (
                 Disabled action triggering link
             </button>
         </p>
-    </VaporComponent>
+    </PlasmaComponent>
 );

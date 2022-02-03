@@ -15,7 +15,7 @@ import {
 } from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {IExampleData, IMultilineBoxExamplesProps, WrapperExample} from '../../utils/MultilineBoxExampleUtils';
 
 const containerNodeExample = (
@@ -141,7 +141,7 @@ const ComplexMultilineBox3 = _.compose(
 export class MultilineBoxExamples extends React.PureComponent {
     render() {
         return (
-            <VaporComponent id="MultilineBox" title="Multiline Box" withSource>
+            <PlasmaComponent id="MultilineBox" title="Multiline Box" withSource>
                 <div className="my2">
                     <div className="form-group">
                         <label className="form-control-label">Multiline box with initial data</label>
@@ -570,7 +570,7 @@ export class MultilineBoxExamples extends React.PureComponent {
                         />
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

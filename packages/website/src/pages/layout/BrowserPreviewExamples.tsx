@@ -8,11 +8,11 @@ import {
     Svg,
 } from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BrowserPreviewExamples: React.FunctionComponent = () => (
-    <VaporComponent id="BrowserPreview" title="Browser Preview" withSource>
+    <PlasmaComponent id="BrowserPreview" title="Browser Preview" withSource>
         <Section>
             <Section level={2} title="Browser Preview container">
                 <SplitLayout
@@ -94,5 +94,5 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                 />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

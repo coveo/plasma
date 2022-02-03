@@ -2,7 +2,7 @@ import {loremIpsum} from 'lorem-ipsum';
 import * as React from 'react';
 import {Button, SlideY} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 interface SlideYExamplesState {
     first: boolean;
@@ -29,7 +29,7 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
 
     render() {
         return (
-            <VaporComponent id="SlideY" title="Slide-Y" withSource>
+            <PlasmaComponent id="SlideY" title="Slide-Y" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Basic SlideY animation</label>
@@ -58,7 +58,7 @@ export class SlideYExamples extends React.PureComponent<any, SlideYExamplesState
                         </div>
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

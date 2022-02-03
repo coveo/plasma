@@ -3,14 +3,14 @@ import * as React from 'react';
 import {SplitLayout, StepProgressBar} from '@coveord/plasma-react';
 import {range} from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const exampleTextLeft = `I am a left child. ${loremIpsum({count: 5, sentenceUpperBound: 15})}`;
 const exampleTextRight = `I am a right child. ${loremIpsum({count: 5, sentenceUpperBound: 15})}`;
 
 // start-print
 export const SplitLayoutExamples = () => (
-    <VaporComponent id="SplitLayout" title="Split Layout" withSource>
+    <PlasmaComponent id="SplitLayout" title="Split Layout" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">SplitLayout with one JSX.Element on each side</label>
@@ -73,6 +73,6 @@ export const SplitLayoutExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

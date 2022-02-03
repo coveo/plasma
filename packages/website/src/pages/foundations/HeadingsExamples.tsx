@@ -1,10 +1,10 @@
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const Headings = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="Headings"
         title="Headings"
         usage="All HTML headings, `h1` through `h6`, are available."
@@ -18,6 +18,6 @@ export const Headings = () => (
             <h5>Admin heading 5</h5>
             <h6>Admin heading 6</h6>
         </>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

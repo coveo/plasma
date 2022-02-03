@@ -1,9 +1,9 @@
 import * as React from 'react';
 import {Badge, Section, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const TabsExamples: React.FunctionComponent = () => (
-    <VaporComponent id="Tab" title="Tabs" withSource>
+    <PlasmaComponent id="Tab" title="Tabs" withSource>
         <Section>
             <Section level={3} title="Simple tab navigation">
                 <DefaultExmaple />
@@ -16,7 +16,7 @@ export const TabsExamples: React.FunctionComponent = () => (
                 <WithIconsExmaple />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 // start-print

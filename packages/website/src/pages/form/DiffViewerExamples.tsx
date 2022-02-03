@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {DiffViewer, fakeJSON1, JSONToString, Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {fakeJSON} from '../../utils/DiffViewerExmaplesCommon';
 
 // start-print
 export const DiffViewerExamples: React.FC = () => (
-    <VaporComponent id="DiffViewer" title="Diff Viewer" withSource>
+    <PlasmaComponent id="DiffViewer" title="Diff Viewer" withSource>
         <Section>
             <Section level={2} title="DiffViewer with split view">
                 <DiffViewer oldValue={JSONToString(fakeJSON)} newValue={JSONToString(fakeJSON1)} />
@@ -22,5 +22,5 @@ export const DiffViewerExamples: React.FC = () => (
                 />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

@@ -2,12 +2,12 @@ import moment from 'moment';
 import * as React from 'react';
 import {DateTooltip, Tooltip} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const TooltipExamples: React.FunctionComponent = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="Tooltip"
         title="Tooltip"
         usage="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
@@ -74,5 +74,5 @@ export const TooltipExamples: React.FunctionComponent = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

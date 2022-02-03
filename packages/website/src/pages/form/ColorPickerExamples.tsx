@@ -3,7 +3,7 @@ import {Button, ColorPicker, InputSelectors} from '@coveord/plasma-react';
 import {debounce} from 'underscore';
 
 import {Store} from '../../Store';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const logColorPicked = debounce((colorPicked: any) => {
     // eslint-disable-next-line no-console
@@ -13,7 +13,7 @@ const logColorPicked = debounce((colorPicked: any) => {
 // start-print
 
 export const ColorPickerExamples = () => (
-    <VaporComponent id="ColorPicker" title="Color Picker" withSource>
+    <PlasmaComponent id="ColorPicker" title="Color Picker" withSource>
         <div className="mt2">
             <h2 className="mb2">
                 Built using <a href="https://github.com/casesandberg/react-color/">React Color</a>
@@ -51,5 +51,5 @@ export const ColorPickerExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

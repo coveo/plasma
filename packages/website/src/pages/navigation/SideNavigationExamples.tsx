@@ -9,7 +9,7 @@ import {
     SideNavigationMenuSection,
 } from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
@@ -17,7 +17,7 @@ export const SideNavigationExample: React.FunctionComponent = () => {
     const [isExpanded, setIsExpanded] = React.useState(true);
 
     return (
-        <VaporComponent id="SideNavigation" title="Sidebar Navigation" withSource>
+        <PlasmaComponent id="SideNavigation" title="Sidebar Navigation" withSource>
             <Form>
                 <Section level={2} title="Side Navigation">
                     <SideNavigation>
@@ -60,6 +60,6 @@ export const SideNavigationExample: React.FunctionComponent = () => {
                     </SideNavigation>
                 </Section>
             </Form>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };

@@ -5,11 +5,11 @@ import * as _ from 'underscore';
 import {ExampleComponent} from '../../utils/ExamplesUtils';
 // move to tablehoc example utils
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
 
 export const TableHocLoadingExamples: ExampleComponent = () => (
-    <VaporComponent id="TableHOCLoading" title="Table HOC Loading" withSource>
+    <PlasmaComponent id="TableHOCLoading" title="Table HOC Loading" withSource>
         <Section>
             <Section level={2} title="Table loading with the default number of row">
                 <TableLoadingExamplesWithDataNull />
@@ -21,7 +21,7 @@ export const TableHocLoadingExamples: ExampleComponent = () => (
                 <BigTableLoadingExample />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 TableHocLoadingExamples.title = 'TableHOC loading';
 

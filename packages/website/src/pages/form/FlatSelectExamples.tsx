@@ -10,7 +10,7 @@ import {
 } from '@coveord/plasma-react';
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export class FlatSelectExamples extends React.Component {
@@ -38,7 +38,7 @@ export class FlatSelectExamples extends React.Component {
         const append: IContentProps = {content: () => <Svg {...svg} />, classes: ['ml1']};
 
         return (
-            <VaporComponent id="FlatSelect" title="Flat Select" withSource>
+            <PlasmaComponent id="FlatSelect" title="Flat Select" withSource>
                 <Form>
                     <Section title="Flat Select List">
                         <Section level={2} title="Default Flat Select">
@@ -169,7 +169,7 @@ export class FlatSelectExamples extends React.Component {
                         </Section>
                     </Section>
                 </Form>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

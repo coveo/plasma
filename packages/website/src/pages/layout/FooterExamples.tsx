@@ -15,17 +15,17 @@ import {
 } from '@coveord/plasma-react';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const lorem = loremIpsum({count: 200});
 const lorem1 = loremIpsum({count: 50});
 
 // start-print
 export const FooterExample: ExampleComponent = () => (
-    <VaporComponent id="Footer" title="Footer" withSource>
+    <PlasmaComponent id="Footer" title="Footer" withSource>
         <StickyFooterExample />
         <StickyFooterWithDirtyExample />
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 const StickyFooterExample: React.FunctionComponent = () => {

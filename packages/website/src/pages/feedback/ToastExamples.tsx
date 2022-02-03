@@ -13,17 +13,17 @@ import {
     ToastType,
 } from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const ToastExamples = () => (
-    <VaporComponent id="Toast" title="Toast" withSource>
+    <PlasmaComponent id="Toast" title="Toast" withSource>
         <Section>
             <ToastsWithLocalState />
             <ToastsWithReduxStore />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 const ToastsWithLocalState: React.FunctionComponent = () => {

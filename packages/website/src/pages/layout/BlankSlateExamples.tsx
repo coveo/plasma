@@ -7,11 +7,11 @@ import {
     ButtonWithRefreshCallback,
 } from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BlankSlateExample: React.FunctionComponent = () => (
-    <VaporComponent id="BlankSlate" title="Blank Slate" withSource>
+    <PlasmaComponent id="BlankSlate" title="Blank Slate" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Default BlankSlate</label>
@@ -136,6 +136,6 @@ export const BlankSlateExample: React.FunctionComponent = () => (
                 </table>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

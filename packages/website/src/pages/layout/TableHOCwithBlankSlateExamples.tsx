@@ -4,14 +4,14 @@ import * as _ from 'underscore';
 
 // move to table example utils
 import {generateDataWithFaker, generateTableRow} from './TableHOCExamples';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const TableHOCwithBlankSlateExamples = () => (
-    <VaporComponent id="tableWithBlankSlate" title="Table HOC with Blank Slate" withSource>
+    <PlasmaComponent id="tableWithBlankSlate" title="Table HOC with Blank Slate" withSource>
         <Section>
             <TableWithBlankSlateExample />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 TableHOCwithBlankSlateExamples.title = 'TableHOC blankSlate';
 

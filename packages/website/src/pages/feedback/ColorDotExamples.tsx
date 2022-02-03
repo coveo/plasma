@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const ColorDotsExamples = () => (
-    <VaporComponent id="ColorDot" title="Color Dot" usage="Display a status." withSource>
+    <PlasmaComponent id="ColorDot" title="Color Dot" usage="Display a status." withSource>
         <Section level={2} title="Standard color dots">
             <i className="color-dot mr1" />
             <i className="color-dot state-critical mr1" />
@@ -52,5 +52,5 @@ export const ColorDotsExamples = () => (
                 Success
             </span>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

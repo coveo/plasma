@@ -3,14 +3,14 @@ import {Provider} from 'react-redux';
 import {CheckboxConnected, InfoBox, InfoBoxLink, Label, Loading, PartialStringMatch} from '@coveord/plasma-react';
 
 import {Store} from '../../Store';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export class PartialStringMatchExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="PartialStringMatch" title="Partial String Match" withSource>
+            <PlasmaComponent id="PartialStringMatch" title="Partial String Match" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">PartialStringMatch without match</label>
@@ -99,7 +99,7 @@ export class PartialStringMatchExamples extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

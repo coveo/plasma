@@ -5,7 +5,7 @@ import Code from './Code';
 import {GuidelinesTab} from './GuidelinesTab';
 import {useCodeExample} from './useCodeExample';
 
-interface VaporComponentProps {
+interface PlasmaComponentProps {
     id: string;
     title: string;
     usage?: string | React.ReactNode;
@@ -13,7 +13,7 @@ interface VaporComponentProps {
     withSource?: boolean;
 }
 
-export const VaporComponent: React.FunctionComponent<VaporComponentProps & React.HTMLAttributes<HTMLDivElement>> = ({
+export const PlasmaComponent: React.FunctionComponent<PlasmaComponentProps & React.HTMLAttributes<HTMLDivElement>> = ({
     id,
     title,
     usage,
@@ -49,4 +49,4 @@ export const VaporComponent: React.FunctionComponent<VaporComponentProps & React
     );
 };
 
-export default VaporComponent;
+export default PlasmaComponent;

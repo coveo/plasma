@@ -28,23 +28,22 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {ExampleComponent} from '../../utils/ExamplesUtils';
 import {PhotoItem, PhotoProps, usePhotosAPIMock} from '../../utils/ServerSideSelectExampleUtils';
 
 // start-print
 export const SingleSelectExample: ExampleComponent = () => (
-    <VaporComponent id="SingleSelect" title="Single Select" withSource>
+    <PlasmaComponent id="SingleSelect" title="Single Select" withSource>
         <Section>
             <SingleSelectConnectedExamples />
             <ServerSideSingleSelectExample id="ServerSideSingleSelect" />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 SingleSelectExample.description =
     'Single select dropdown allows users to select only one option from a list. It is typically used when there is a large number of available options.';
-
 
 const defaultItems: IItemBoxProps[] = [
     {displayValue: 'Test', value: '0'},

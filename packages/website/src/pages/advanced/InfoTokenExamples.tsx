@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType, Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const InfoTokenExamples: React.FunctionComponent = () => (
-    <VaporComponent id="InfoToken" title="Info Token" withSource>
+    <PlasmaComponent id="InfoToken" title="Info Token" withSource>
         <Section>
             <Section level={2} title="Information">
                 <InfoToken type={InfoTokenType.Information} size={InfoTokenSize.Small} mode={InfoTokenMode.Filled} />
@@ -57,5 +57,5 @@ export const InfoTokenExamples: React.FunctionComponent = () => (
                 <InfoToken type={InfoTokenType.Question} size={InfoTokenSize.Large} mode={InfoTokenMode.Stroked} />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
