@@ -1,6 +1,6 @@
 export * from './Defaults';
 export * from './ReactVaporState';
-export * from './ReactVaporReducers';
+export * from './PlasmaReducers';
 export * from './Version';
 export * from './animations';
 export * from './components';

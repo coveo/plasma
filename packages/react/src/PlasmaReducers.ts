@@ -55,7 +55,7 @@ import {IReduxAction} from './utils/ReduxUtils';
 
 const lastAction = (state: IReduxAction = null, action: IReduxAction) => action;
 
-export const ReactVaporReducers: ReducersMapObject<PlasmaState> = {
+export const PlasmaReducers: ReducersMapObject<PlasmaState> = {
     actionBars: actionBarsReducer,
     autocompletes: autocompletesReducer,
     checkboxes: checkboxesReducer,

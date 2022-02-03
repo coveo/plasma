@@ -10,7 +10,7 @@ import {useSelector} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {ISvgProps} from '../../components/svg/Svg';
 import {ITooltipProps} from '../../components/tooltip/Tooltip';
-import {ReactVaporReducers} from '../../ReactVaporReducers';
+import {PlasmaReducers} from '../../PlasmaReducers';
 import {PlasmaState} from '../../ReactVaporState';
 import {CommonActions, IDispatch} from '../ReduxUtils';
 import {ValidationSelectors} from '../../components';
@@ -35,13 +35,13 @@ export interface IReactVaporTestState extends PlasmaState {
 
 export class TestUtils {
     static buildStore() {
-        const reactVaporReducers = Redux.combineReducers<PlasmaState>({
-            ...ReactVaporReducers,
+        const plasmaReducers = Redux.combineReducers<PlasmaState>({
+            ...PlasmaReducers,
         });
 
         const reactVapor = (state: IReactVaporTestState, action: Redux.Action) => {
             state = action.type === CommonActions.clearState ? undefined : state;
-            return reactVaporReducers(state, action as any);
+            return plasmaReducers(state, action as any);
         };
 
         return Redux.createStore(reactVapor, Redux.applyMiddleware(thunk));
