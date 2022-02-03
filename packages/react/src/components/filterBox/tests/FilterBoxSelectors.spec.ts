@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {ISelectWithFilterOwnProps, ISingleSelectOwnProps} from '../../select';
 import {IFilterState} from '../FilterBoxReducers';
 import {FilterBoxSelectors} from '../FilterBoxSelectors';

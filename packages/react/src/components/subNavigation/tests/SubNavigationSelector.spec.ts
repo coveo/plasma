@@ -1,4 +1,4 @@
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {SubNavigationSelector} from '../SubNavigationSelector';
 
 describe('SubNavigationSelector', () => {

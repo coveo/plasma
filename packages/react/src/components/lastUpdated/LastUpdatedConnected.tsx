@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {ILastUpdatedDispatchProps, ILastUpdatedOwnProps, ILastUpdatedStateProps, LastUpdated} from './LastUpdated';
 import {addLastUpdated, removeLastUpdated} from './LastUpdatedActions';

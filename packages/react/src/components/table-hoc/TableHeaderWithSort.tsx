@@ -3,7 +3,7 @@ import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {Svg, SvgNames} from '../svg';
 import {TableHeaderActions} from './actions/TableHeaderActions';
 import {ITableWithSortState} from './reducers/TableWithSortReducers';

@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {FlatSelectSelectors} from '../flatSelect/FlatSelectSelectors';

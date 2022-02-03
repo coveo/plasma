@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {IReduxActionsPayload} from '../../ReactVaporState';
+import {IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 import {FlippableAction, IFlippableChangeSidePayload, IFlippablePayload} from './FlippableActions';
 

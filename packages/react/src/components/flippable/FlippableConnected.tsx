@@ -1,7 +1,7 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {Flippable, IFlippableDispatchProps, IFlippableOwnProps, IFlippableStateProps} from './Flippable';
 import {addFlippable, changeFlippableSide, removeFlippable} from './FlippableActions';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {DropTarget} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {reorderStringList} from '../../../reusableState/customList/StringListActions';
 import {ConfigSupplier, HocUtils} from '../../../utils/HocUtils';
 import {IDispatch, ReduxConnect} from '../../../utils/ReduxUtils';

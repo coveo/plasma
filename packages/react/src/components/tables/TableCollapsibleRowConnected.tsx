@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {ITableCollapsibleRowOwnProps, TableCollapsibleRow} from './TableCollapsibleRow';
 import {ITableRowState} from './TableRowReducers';

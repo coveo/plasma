@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {
     addStringList,
     addValueStringList,

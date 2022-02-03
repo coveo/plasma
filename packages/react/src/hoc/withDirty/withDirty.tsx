@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {isBoolean} from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {WithDirtyActions} from './withDirtyActions';
 import {WithDirtySelectors} from './withDirtySelectors';

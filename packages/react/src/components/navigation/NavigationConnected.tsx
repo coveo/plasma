@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ReduxUtils} from '../../utils/ReduxUtils';
 import {ILoadingState} from '../loading/LoadingReducers';
 import {INavigationOwnProps, INavigationStateProps, Navigation} from './Navigation';

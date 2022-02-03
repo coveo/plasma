@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {convertStringListToItemsBox} from '../../reusableState/customList/StringListReducers';
 import {CherryPick} from '../../utils';
 import {DropSelectors} from '../drop/redux/DropReducers';

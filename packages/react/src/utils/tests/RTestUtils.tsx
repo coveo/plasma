@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {UUID} from '../UUID';
 import {TestUtils} from './TestUtils';
 

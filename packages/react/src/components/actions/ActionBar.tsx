@@ -3,7 +3,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils/ReduxUtils';
 import {Content, IContentProps} from '../content/Content';
 import {InlinePromptConnected} from '../inlinePrompt/InlinePrompt';

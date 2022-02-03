@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ISubNavigationState} from './SubNavigationReducers';
 
 const getSubNavigation = (state: PlasmaState, subNavigationId: string): ISubNavigationState =>

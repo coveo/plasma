@@ -1,6 +1,6 @@
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {CollapsibleState} from './CollapsibleReducers';
 
 const isExpanded = (state: PlasmaState, id: string): boolean => {

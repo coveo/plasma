@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {FilterBox, IFilterBoxDispatchProps, IFilterBoxOwnProps, IFilterBoxStateProps} from './FilterBox';
 import {addFilter, filterThrough, removeFilter} from './FilterBoxActions';

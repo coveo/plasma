@@ -4,7 +4,7 @@ import TextareaAutosize, {TextareaAutosizeProps} from 'react-textarea-autosize';
 import * as _ from 'underscore';
 import classNames from 'classnames';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils';
 import {ILabelProps} from '../input';
 import {addTextArea, changeTextAreaValue, removeTextArea} from './TextAreaActions';

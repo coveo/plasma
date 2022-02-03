@@ -7,7 +7,7 @@ import thunk from 'redux-thunk';
 
 import {Defaults} from '../src/Defaults';
 import {PlasmaReducers} from '../src/PlasmaReducers';
-import {PlasmaState} from '../src/ReactVaporState';
+import {PlasmaState} from '../src/PlasmaState';
 import {IDispatch} from '../src/utils/ReduxUtils';
 
 const TEST_CONTAINER_ID = 'app';

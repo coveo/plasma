@@ -1,5 +1,5 @@
 import * as _ from 'underscore';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {PER_PAGE_NUMBERS} from './perPage/NavigationPerPage';
 
 export interface GetPaginationProps {

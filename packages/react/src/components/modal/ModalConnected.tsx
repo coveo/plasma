@@ -1,5 +1,5 @@
 import {connect} from 'react-redux';
-import {PlasmaState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps, Modal} from './Modal';
 import {addModal, removeModal} from './ModalActions';

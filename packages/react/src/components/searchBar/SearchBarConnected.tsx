@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {ISearchBarDispatchProps, ISearchBarOwnProps, ISearchBarStateProps, SearchBar} from './SearchBar';
 import {addSearchBar, removeSearchBar, setSearchBarValue} from './SearchBarActions';

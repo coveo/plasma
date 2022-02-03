@@ -1,6 +1,6 @@
 import {createSelector} from 'reselect';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {FilepickerState} from './FilepickerReducers';
 
 const getFile = (inputId: string): File => {

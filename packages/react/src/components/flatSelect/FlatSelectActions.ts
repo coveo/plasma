@@ -1,4 +1,4 @@
-import {IReduxActionsPayload} from '../../ReactVaporState';
+import {IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction} from '../../utils/ReduxUtils';
 
 export interface IFlatSelectActionPayload extends IReduxActionsPayload {

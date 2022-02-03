@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {Defaults} from '../../Defaults';
 import {IWithDirtyProps} from '../../hoc/withDirty/withDirty';
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IClassName} from '../../utils/ClassNameUtils';
 import {IDispatch, IReduxStatePossibleProps, ReduxUtils} from '../../utils/ReduxUtils';
 import {IModalDispatchProps, IModalOwnProps, IModalStateProps} from './Modal';

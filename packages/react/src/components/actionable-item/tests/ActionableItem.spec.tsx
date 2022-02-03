@@ -5,7 +5,7 @@ import {Store} from 'redux';
 import * as _ from 'underscore';
 import {render, screen} from '@test-utils';
 
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Drop} from '../../drop/Drop';

@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {flatSelectInitialState, IFlatSelectState} from './FlatSelectReducers';
 
 const getInput = (state: PlasmaState, ownProps: {id: string}): IFlatSelectState =>

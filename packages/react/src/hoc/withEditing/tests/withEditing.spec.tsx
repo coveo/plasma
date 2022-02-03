@@ -6,7 +6,7 @@ import {Store} from 'redux';
 import {Button} from '../../../components/button/Button';
 import {Input} from '../../../components/input/Input';
 import {StickyFooter} from '../../../components/stickyFooter/StickyFooter';
-import {PlasmaState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IWithDirtyProps} from '../../withDirty/withDirty';

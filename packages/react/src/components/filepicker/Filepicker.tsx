@@ -3,7 +3,7 @@ import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
 import {FileMetadata, FileUtils} from '../../utils/FileUtils';
 import {Svg} from '../svg';

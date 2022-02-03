@@ -1,7 +1,7 @@
 import {createSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import {PlasmaState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IRadioSelectState, radioSelectInitialState} from './RadioSelectReducers';
 
 const get = (state: PlasmaState, {id}: {id: string}): IRadioSelectState =>
