@@ -74,7 +74,7 @@ form {
             $scaledSpacing: nth([6, 4, 2.5], $level) * $spacing * 0.5;
             $scaledDescriptionFontSize: nth([$default-font-size, $small-font-size, $small-font-size], $level);
             $inputFieldLabelSpacing: 0.75rem;
-            $reactVaporSliderTopSpacing: 1.75rem;
+            $plasmaSliderTopSpacing: 1.75rem;
 
             > :not(:first-child) {
                 margin-top: $scaledSpacing;
@@ -94,7 +94,7 @@ form {
                 }
             }
             > .vapor-slider.input-field {
-                margin-top: $scaledSpacing + $reactVaporSliderTopSpacing;
+                margin-top: $scaledSpacing + $plasmaSliderTopSpacing;
                 margin-bottom: 0.75rem;
             }
             > .input-field {

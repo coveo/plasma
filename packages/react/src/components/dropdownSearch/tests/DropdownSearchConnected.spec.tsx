@@ -6,7 +6,7 @@ import * as _ from 'underscore';
 
 import {keyCode} from '../../../utils/InputUtils';
 import {clearState} from '../../../utils/ReduxUtils';
-import {IReactVaporTestState, TestUtils} from '../../../utils/tests/TestUtils';
+import {PlasmaTestState, TestUtils} from '../../../utils/tests/TestUtils';
 import {UUID} from '../../../utils/UUID';
 import {DropdownSearch, IDropdownSearchProps} from '../DropdownSearch';
 import {
@@ -24,7 +24,7 @@ describe('DropdownSearch', () => {
     describe('<DropdownSearchConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let dropdownSearch: ReactWrapper<IDropdownSearchProps, any>;
-        let store: Store<IReactVaporTestState>;
+        let store: Store<PlasmaTestState>;
 
         const defaultOptions = [{value: 'a'}, {value: 'b'}];
 

@@ -7,7 +7,7 @@ import * as _ from 'underscore';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
-import {getStoreMock, ReactVaporMockStore, TestUtils} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore, TestUtils} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions} from '../../inlinePrompt/InlinePrompt';
 import {addPrompt, removePrompt} from '../../inlinePrompt/InlinePromptActions';
 import {IActionOptions} from '../Action';
@@ -209,7 +209,7 @@ describe('Actions', () => {
         });
 
         describe('dispatch onDestroy', () => {
-            let RStore: ReactVaporMockStore;
+            let RStore: PlasmaMockStore;
             const ownProps = {
                 id: 'id',
             };
