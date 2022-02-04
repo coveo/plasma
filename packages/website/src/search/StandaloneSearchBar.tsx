@@ -24,12 +24,27 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const [state, setState] = useState<SearchBoxState>(controller.state);
     const [roveFocus, setRoveFocus] = useRoveFocus(state.suggestions.length);
     const inputRef = useRef(null);
-
     const inputIsFocused = document.activeElement === inputRef.current;
 
+    useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+
+    const clearSearchOnClick = (event: any) => {
+        const suggestionsListExist = document.body.contains(
+            document.querySelector('.search-results-container') as HTMLElement
+        );
+        const searchBarWasClicked = (document.querySelector('.plasmaSearchBar') as HTMLElement).contains(event.target);
+
+        if (suggestionsListExist && !searchBarWasClicked) {
+            controller.clear();
+        }
+    };
+
     useEffect(() => {
-        controller.subscribe(() => setState(controller.state));
-    }, [controller]);
+        document.addEventListener('click', clearSearchOnClick, false);
+        return () => {
+            document.removeEventListener('click', clearSearchOnClick, false);
+        };
+    }, [clearSearchOnClick]);
 
     const handleSearchOnClick = (suggestion: string) => {
         controller.selectSuggestion(suggestion);
