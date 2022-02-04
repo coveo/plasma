@@ -32,9 +32,9 @@ export const TablePagination: FunctionComponent<ITablePaginationProps> = ({
         <div className="flex-auto" />
         <PaginationPagesNumber
             id={TableHOCUtils.getPaginationId(id)}
-            totalPages={totalPages || 1}
+            totalPages={totalPages}
             disabled={disabled}
-            hidden={totalPages === 1}
+            hidden={!totalPages || totalPages === 1}
         />
     </div>
 );
