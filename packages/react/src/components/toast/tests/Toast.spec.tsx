@@ -4,7 +4,7 @@ import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {IToastProps, Toast, ToastType} from '../Toast';
+import {IToastProps, Toast} from '../Toast';
 
 describe('Toasts', () => {
     let toastComponent: ReactWrapper<IToastProps>;
@@ -51,13 +51,13 @@ describe('Toasts', () => {
         });
 
         it('should have class "mod-info" when type is Info', () => {
-            toastComponent.setProps({type: ToastType.Info});
+            toastComponent.setProps({type: 'info'});
 
             expect(toastComponent.children().hasClass('mod-info')).toBe(true);
         });
 
         it('should have class "mod-success" when type is Success', () => {
-            toastComponent.setProps({type: ToastType.Success});
+            toastComponent.setProps({type: 'success'});
 
             expect(toastComponent.children().hasClass('mod-success')).toBe(true);
         });
@@ -67,13 +67,13 @@ describe('Toasts', () => {
         });
 
         it('should have class "mod-warning" if the type is Warning', () => {
-            toastComponent.setProps({type: ToastType.Warning});
+            toastComponent.setProps({type: 'warning'});
 
             expect(toastComponent.children().hasClass('mod-warning')).toBe(true);
         });
 
         it('should have class "mod-error" if the type is Error', () => {
-            toastComponent.setProps({type: ToastType.Error});
+            toastComponent.setProps({type: 'error'});
 
             expect(toastComponent.children().hasClass('mod-error')).toBe(true);
         });
@@ -300,21 +300,15 @@ describe('Toasts', () => {
     });
 
     describe('<Toast /> with download section', () => {
-        it('should have class "toast-download" if the download prop is true', () => {
-            const expectedClass = '.toast-download';
-            toastComponent = mount(<Toast title="a" isDownload />);
+        it('should have class "mod-download" if the download prop is true', () => {
+            const expectedClass = '.mod-download';
+            toastComponent = mount(<Toast title="a" type="download" />);
             expect(toastComponent.find(expectedClass).length).toBe(1);
-        });
-
-        it('should not have the class "toast-download" if the download prop is false', () => {
-            const expectedClass = '.toast-download';
-            toastComponent = mount(<Toast title="a" isDownload={false} />);
-            expect(toastComponent.find(expectedClass).length).toBe(0);
         });
 
         it('should load "Preparing file for download..." as a title', () => {
             toastComponent = mount(
-                <Toast title="Preparing file for download..." isDownload>
+                <Toast title="Preparing file for download..." type="download">
                     <div>Some file.csv</div>
                 </Toast>
             );
@@ -324,7 +318,7 @@ describe('Toasts', () => {
 
         it('should have a loading icon in the description', () => {
             toastComponent = mount(
-                <Toast title="a" isDownload>
+                <Toast title="a" type="download">
                     <div>Some file.csv</div>
                 </Toast>
             );
@@ -339,16 +333,6 @@ describe('Toasts', () => {
                     name: /checkstrokedlarge icon/i,
                 })
             ).toBeInTheDocument();
-        });
-
-        it('should not render the infoToken Svg when showInfoToken is false', () => {
-            render(<Toast title="admin-ui" showInfoToken={false} />);
-
-            expect(
-                screen.queryByRole('img', {
-                    name: /checkstrokedlarge icon/i,
-                })
-            ).not.toBeInTheDocument();
         });
     });
 });

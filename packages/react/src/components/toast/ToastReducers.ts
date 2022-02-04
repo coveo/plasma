@@ -1,7 +1,7 @@
 import * as _ from 'underscore';
 
 import {IReduxAction} from '../../utils/ReduxUtils';
-import {IToastProps, ToastType} from './Toast';
+import {IToastProps} from './Toast';
 import {IToastActionPayload, IToastAddPayload, IToastContainerActionPayload, ToastAction} from './ToastActions';
 
 export interface IToastsState {
@@ -22,7 +22,7 @@ export const toastContainerInitialState: IToastsState = {
 export const toastInitialState: IToastState = {
     id: undefined,
     title: '',
-    type: ToastType.Success,
+    type: 'success',
     dismiss: 0,
     dismissible: true,
     animate: true,

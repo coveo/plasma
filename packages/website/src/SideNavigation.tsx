@@ -137,8 +137,6 @@ export const Navigation: React.FunctionComponent = () => {
                     <NavLink href="/feedback/StepProgressBar" label="Step progress bar" />
                     <NavLink href="/feedback/SyncFeedback" label="Sync feedback" />
                     <NavLink href="/feedback/Toast" label="Toast" />
-                    <NavLink href="/feedback/ToastConnected" label="Toast connected" />
-                    <NavLink href="/feedback/ToastContent" label="Toast content" />
                     <NavLink href="/feedback/Tooltip" label="Tooltip" />
                 </CollapsibleSideSection>
                 <CollapsibleSideSection title="Advanced" initiallyClosed>

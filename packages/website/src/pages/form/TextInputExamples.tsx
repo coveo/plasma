@@ -97,7 +97,7 @@ export const TextInputExamples: React.FunctionComponent = () => (
     <ExampleLayout
         id="TextInput"
         title="Text Input"
-        section="form"
+        section="Form"
         thumbnail="textInput"
         description="Text inputs allow users to enter and edit short texts, such as names, emails, and passwords."
         componentSourcePath="/textInput/TextInput.tsx"

@@ -1,4 +1,3 @@
-import {ToastAction} from '@coveord/plasma-react';
 import * as React from 'react';
 import {Route, Routes} from 'react-router-dom';
 
@@ -13,8 +12,6 @@ import ProgressBarExamples from './ProgressBarExamples';
 import {StatusCardExamples} from './StatusCardExamples';
 import {StepProgressBarExamples} from './StepProgressBarExamples';
 import {SyncFeedbackExample} from './SyncFeedbackExamples';
-import {ToastConnectedExamples} from './ToastConnectedExamples';
-import {ToastContentExample} from './ToastContentExamples';
 import {ToastExamples} from './ToastExamples';
 import {TooltipExamples} from './TooltipExamples';
 
@@ -31,12 +28,6 @@ export const FeedbackRoutes: React.FunctionComponent = () => (
         <Route path="StepProgressBar" element={<StepProgressBarExamples />} />
         <Route path="SyncFeedback" element={<SyncFeedbackExample />} />
         <Route path="Toast" element={<ToastExamples />} />
-        <Route
-            path="ToastConnected"
-            // this is just to get the demo working
-            element={<ToastConnectedExamples addToast={() => ({type: ToastAction.addToast})} />}
-        />
-        <Route path="ToastContent" element={<ToastContentExample />} />
         <Route path="Tooltip" element={<TooltipExamples />} />
         <Route path="*" element={<NotFound />} />
     </Routes>
