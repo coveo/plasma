@@ -5,7 +5,7 @@ import {Store} from 'redux';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Toast, ToastType} from '../Toast';
+import {Toast} from '../Toast';
 import {addToast} from '../ToastActions';
 import {IToastContainerProps, ToastContainer} from '../ToastContainer';
 import {ToastContainerConnected} from '../ToastContainerConnected';
@@ -57,7 +57,7 @@ describe('Toasts', () => {
             expect(component.props().toasts.length).toBe(0);
             expect(wrapper.find(Toast).length).toBe(0);
 
-            store.dispatch(addToast(containerId, 'toast title', {type: ToastType.Error}));
+            store.dispatch(addToast(containerId, 'toast title', {type: 'error'}));
             wrapper.update();
 
             expect(wrapper.find(ToastContainer).props().toasts.length).toBe(1);

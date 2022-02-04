@@ -1,22 +1,46 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
-import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 
+import {InfoToken, InfoTokenMode, InfoTokenSize, InfoTokenType} from '../info-token';
 import {Svg} from '../svg/Svg';
 
 export interface IToastProps {
+    /**
+     * Unique identifier of the toast. Usefull to retrieve a specific toast in the redux state.
+     */
     id?: string;
+    /**
+     * The content of the toast
+     */
     title?: React.ReactNode;
-    isOpened?: boolean;
-    type?: string;
+    /**
+     * The type of the toast (default is "success")
+     */
+    type?: 'success' | 'warning' | 'error' | 'info' | 'download';
+    /**
+     * Timeout in ms after which the toast should disappear by itself
+     */
     dismiss?: number;
+    /**
+     * Whether the toast can be dismissed manually
+     */
     dismissible?: boolean;
+    /**
+     * Whether the toast has an animation upon entry
+     */
     animate?: boolean;
-    isDownload?: boolean;
+    /**
+     * The toast will be smaller in size when true
+     */
     isSmall?: boolean;
+    /**
+     * Additional css classes that the toast should have
+     */
     className?: string;
-    showInfoToken?: boolean;
+    /**
+     * Callback function that will run after the toast is dismissed
+     */
     onClose?: () => void;
     /**
      * @deprecated use children instead
@@ -32,18 +56,12 @@ export interface IToastProps {
     onDestroy?: () => void;
 }
 
-export const ToastType = {
-    Success: 'Success',
-    Warning: 'Warning',
-    Error: 'Error',
-    Info: 'Info',
-};
-
-const InfoTokenTypeMapping: Record<string, InfoTokenType> = {
-    [ToastType.Info]: InfoTokenType.Information,
-    [ToastType.Success]: InfoTokenType.Success,
-    [ToastType.Warning]: InfoTokenType.Warning,
-    [ToastType.Error]: InfoTokenType.Critical,
+const InfoTokenTypeMapping: Record<IToastProps['type'], InfoTokenType> = {
+    info: InfoTokenType.Information,
+    success: InfoTokenType.Success,
+    warning: InfoTokenType.Warning,
+    error: InfoTokenType.Critical,
+    download: null,
 };
 
 /**
@@ -53,14 +71,12 @@ const InfoTokenTypeMapping: Record<string, InfoTokenType> = {
 
 export const Toast: React.FC<IToastProps> = ({
     title,
-    type = ToastType.Success,
+    type = 'success',
     dismiss,
     dismissible = true,
-    animate,
-    isDownload,
+    animate = true,
     isSmall,
     className,
-    showInfoToken = true,
     children,
     onClose,
     content,
@@ -92,17 +108,15 @@ export const Toast: React.FC<IToastProps> = ({
     const classes = classNames(
         'toast',
         {
-            'mod-success': type === ToastType.Success || (!className && !type),
-            'mod-warning': type === ToastType.Warning,
-            'mod-error': type === ToastType.Error,
-            'mod-info': type === ToastType.Info,
-            'mod-animated': _.isUndefined(animate) || animate === true,
+            'mod-success': type === 'success' || (!className && !type),
+            'mod-warning': type === 'warning',
+            'mod-error': type === 'error',
+            'mod-info': type === 'info',
+            'mod-download': type === 'download',
+            'mod-animated': animate,
             'mod-small': isSmall,
         },
-        className,
-        {
-            'toast-download': isDownload,
-        }
+        className
     );
 
     const closeButton = dismissible && !isSmall && (
@@ -111,7 +125,7 @@ export const Toast: React.FC<IToastProps> = ({
         </span>
     );
 
-    const infoToken = !isSmall && !isDownload && (
+    const infoToken = !isSmall && type !== 'download' && (
         <InfoToken type={InfoTokenTypeMapping[type]} size={InfoTokenSize.Large} mode={InfoTokenMode.Filled} />
     );
 
@@ -140,11 +154,11 @@ export const Toast: React.FC<IToastProps> = ({
 
     return (
         <div className={classes} onMouseEnter={() => handleClearTimeout()} onMouseLeave={() => handleSetTimeout()}>
-            {isDownload ? (
+            {type === 'download' ? (
                 downloadToast
             ) : (
                 <>
-                    {showInfoToken ? infoToken : null}
+                    {infoToken}
                     <div className="toast-content-container">
                         {title && <div className="toast-title">{title}</div>}
                         {toastContent}
