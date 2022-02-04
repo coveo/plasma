@@ -4,7 +4,7 @@
     "scripts": {
         "preinstall": "npx only-allow pnpm",
         "setup": "pnpm install",
-        "start": "pnpm build --stream --filter @coveord/plasma-style && pnpm --recursive start --parallel --filter @coveord/plasma-style --filter @coveord/plasma-website",
+        "start": "pnpm build && pnpm --recursive start --parallel",
         "test": "pnpm --recursive test",
         "test:ci": "pnpm --recursive test:ci",
         "clean": "pnpm --recursive clean --parallel",

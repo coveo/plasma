@@ -18,7 +18,7 @@ import {ToastContentExample} from './ToastContentExamples';
 import {ToastExamples} from './ToastExamples';
 import {TooltipExamples} from './TooltipExamples';
 
-export const FeedbackAndInfoRoutes: React.FunctionComponent = () => (
+export const FeedbackRoutes: React.FunctionComponent = () => (
     <Routes>
         <Route path="Badge" element={<BadgeExamples />} />
         <Route path="ColorBar" element={<ColorBarExamples />} />
@@ -41,3 +41,4 @@ export const FeedbackAndInfoRoutes: React.FunctionComponent = () => (
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
+export default FeedbackRoutes;

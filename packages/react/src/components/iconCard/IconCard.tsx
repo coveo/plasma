@@ -102,7 +102,7 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
                     {badgeComponents.length > 0 || React.Children.count(children) > 0 ? (
                         <div className="flex center-align">
                             {children}
-                            {...badgeComponents}
+                            {badgeComponents}
                         </div>
                     ) : null}
                 </button>

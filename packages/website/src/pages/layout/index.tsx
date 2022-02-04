@@ -48,3 +48,4 @@ export const LayoutRoutes: React.FunctionComponent = () => (
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
+export default LayoutRoutes;
