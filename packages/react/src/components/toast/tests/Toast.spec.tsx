@@ -180,19 +180,14 @@ describe('Toasts', () => {
             expect(toastComponent.find(closeSelector).length).toBe(0);
         });
 
-        it('should call onClose when the user clicks on .toast-close', () => {
-            const closeSelector = '.toast-close';
-            const newToastAttributes = _.extend({}, toastBasicAttributes, {onClose: jest.fn()});
+        it('calls the onClose prop when the toast is dismissed', () => {
+            const onCloseSpy = jest.fn();
+            render(<Toast title="hello world!" onClose={onCloseSpy} />);
 
-            toastComponent.find(closeSelector).simulate('click');
-
-            expect(newToastAttributes.onClose).not.toHaveBeenCalled();
-
-            toastComponent.setProps(newToastAttributes).mount();
-
-            toastComponent.find(closeSelector).simulate('click');
-
-            expect(newToastAttributes.onClose).toHaveBeenCalledTimes(1);
+            expect(screen.getByText(/hello world!/i)).toBeInTheDocument();
+            userEvent.click(screen.getByRole('img', {name: /close icon/i}));
+            expect(screen.queryByText(/hello world!/i)).not.toBeInTheDocument();
+            expect(onCloseSpy).toHaveBeenCalledTimes(1);
         });
 
         it('should not contain a toast-close when the toast is not dismissible', () => {

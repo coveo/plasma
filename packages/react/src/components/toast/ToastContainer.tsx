@@ -60,7 +60,6 @@ export class ToastContainer extends React.Component<IToastContainerProps> {
                       {...toast}
                       onClose={() => {
                           this.onCloseToast(toast.id);
-                          toast.onClose?.();
                       }}
                   />
               ))
