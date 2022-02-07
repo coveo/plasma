@@ -135,28 +135,53 @@ const FormPages: React.FC = () => (
     <Section className="section">
         <h2>Form</h2>
         <div className="tile-grid">
-            <Tile title="Actionable Item" href="#/form/ActionableItem" />
+            <Tile
+                title="Actionable Item"
+                description="An actionable item is a dropdown menu listing actions associated with an element."
+                href="#/form/ActionableItem"
+            />
             <Tile
                 title="Button"
-                description="Buttons communicate actions, and, when clicked, initialize those actions"
+                description="A button draws attention to an important action and initializes this action when clicked."
                 href="#/form/Button"
                 thumbnail="actionButton"
             />
             <Tile
                 title="Checkbox"
-                description="Checkboxes allow the selection of multiples options from a list. Checkboxes can also be used to turn one option on or off."
+                description="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option."
                 href="#/form/Checkbox"
             />
             <Tile
                 title="Child Form"
-                description="Try to display only one Child Form at a time in a given option set."
+                description="A child form associates a subset of options or content to its parent option."
                 href="#/form/ChildForm"
             />
-            <Tile title="Code Editor" href="#/form/CodeEditor" thumbnail="codeEditor" />
-            <Tile title="Color Picker" href="#/form/ColorPicker" />
-            <Tile title="Date Picker" href="#/form/DatePicker" />
-            <Tile title="Diff Viewer" href="#/form/DiffViewer" />
-            <Tile title="Facet" href="#/form/Facet" />
+            <Tile
+                title="Code Editor"
+                description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
+                href="#/form/CodeEditor"
+                thumbnail="codeEditor"
+            />
+            <Tile
+                title="Color Picker"
+                description="A color picker is a visual interface that allows users to select a color."
+                href="#/form/ColorPicker"
+            />
+            <Tile
+                title="Date Picker"
+                description="A date picker is a calendar interface that allows users to select a single date or a date range."
+                href="#/form/DatePicker"
+            />
+            <Tile
+                title="Diff Viewer"
+                description="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
+                href="#/form/DiffViewer"
+            />
+            <Tile
+                title="Facet"
+                description="A facet is a set of options used to filter a list of content items."
+                href="#/form/Facet"
+            />
             <Tile title="File Picker" href="#/form/Filepicker" />
             <Tile title="Filter Box" href="#/form/FilterBox" thumbnail="filterBox" />
             <Tile title="Flat Select" href="#/form/FlatSelect" />

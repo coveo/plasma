@@ -18,7 +18,13 @@ import {ExampleComponent} from '../../utils/ExamplesUtils';
 import VaporComponent from '../../building-blocs/VaporComponent';
 
 export const CheckboxExamples: ExampleComponent = () => (
-    <VaporComponent id="Checkbox" title="Checkbox" withSource>
+    <VaporComponent
+        id="Checkbox"
+        title="Checkbox"
+        usage="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option.
+"
+        withSource
+    >
         <Section>
             <Checkboxset />
             <GroupableCheckboxConnectedExamples />

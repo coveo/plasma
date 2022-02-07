@@ -49,7 +49,7 @@ export const ButtonExamples: React.FunctionComponent = () => (
         title="Button"
         section="inputs"
         thumbnail="actionButton"
-        description="Buttons communicate actions, and, when clicked, initialize those actions."
+        description="A button draws attention to an important action and initializes this action when clicked."
         code={code}
         examples={{
             primary: {code: primary, title: 'Primary, Default size'},

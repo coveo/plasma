@@ -6,7 +6,12 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 export const ChildFormExamples: ExampleComponent = () => (
-    <VaporComponent id="ChildForm" title="Child Form" withSource>
+    <VaporComponent
+        id="ChildForm"
+        title="Child Form"
+        usage="A child form associates a subset of options or content to its parent option."
+        withSource
+    >
         <Section>
             <SimpleChildFormExample />
             <ChildFormWithRadiosExamples />

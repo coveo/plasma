@@ -5,7 +5,12 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 export const ActionableItemExamples = () => (
-    <VaporComponent id="ActionableItem" title="Actionable Item" withSource>
+    <VaporComponent
+        id="ActionableItem"
+        title="Actionable Item"
+        usage="An actionable item is a dropdown menu listing actions associated with an element."
+        withSource
+    >
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">ActionableItem without an onItemClick method</label>
