@@ -25,7 +25,7 @@ import {SliderExamples} from './SliderExamples';
 import {TextAreaExamples} from './TextAreaExamples';
 import {TextInputExamples} from './TextInputExamples';
 
-export const InputRoutes: React.FunctionComponent = () => (
+export const FormRoutes: React.FunctionComponent = () => (
     <Routes>
         <Route path="ActionableItem" element={<ActionableItemExamples />} />
         <Route path="Button" element={<ButtonExamples />} />
@@ -52,3 +52,4 @@ export const InputRoutes: React.FunctionComponent = () => (
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
+export default FormRoutes;

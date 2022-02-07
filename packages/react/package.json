@@ -21,8 +21,8 @@
         "url": "git+https://github.com/coveo/plasma.git"
     },
     "scripts": {
-        "start": "tsc --build --watch tsconfig.esm.json",
-        "build": "tsc --build tsconfig.build.json && tsc --build tsconfig.esm.json",
+        "start": "node scripts/start",
+        "build": "node scripts/build",
         "test": "jest --maxWorkers=65%",
         "test:ci": "jest --maxWorkers=2",
         "test:watch": "jest --watchAll",
@@ -72,6 +72,10 @@
     },
     "devDependencies": {
         "@helpers/enzyme-redux": "^1.0.0",
+        "@hot-loader/react-dom": "17.0.2",
+        "@swc/cli": "0.1.55",
+        "@swc/core": "1.2.136",
+        "@swc/helpers": "0.3.2",
         "@testing-library/dom": "8.11.1",
         "@testing-library/jest-dom": "5.16.1",
         "@testing-library/react": "12.1.2",
@@ -134,6 +138,7 @@
         "redux-mock-store": "1.5.4",
         "redux-promise-middleware": "6.1.2",
         "redux-thunk": "2.4.1",
+        "regenerator-runtime": "0.13.9",
         "rimraf": "3.0.2",
         "sass": "1.48.0",
         "snyk": "1.787.0",

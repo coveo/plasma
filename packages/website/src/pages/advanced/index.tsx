@@ -22,3 +22,4 @@ export const AdvancedRoutes: React.FunctionComponent = () => (
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
+export default AdvancedRoutes;

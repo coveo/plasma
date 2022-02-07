@@ -16,3 +16,4 @@ export const NavigationRoutes: React.FunctionComponent = () => (
         <Route path="*" element={<NotFound />} />
     </Routes>
 );
+export default NavigationRoutes;

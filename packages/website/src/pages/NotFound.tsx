@@ -11,3 +11,4 @@ export const NotFound: React.FunctionComponent = () => {
         </div>
     );
 };
+export default NotFound;
