@@ -195,12 +195,6 @@ const FeedbackPages: React.FC = () => (
                 href="#/feedback/Toast"
             />
             <Tile
-                title="Toast Connected"
-                description="Only include information that is relevant to the performed action."
-                href="#/feedback/ToastConnected"
-            />
-            <Tile title="Toast Content" href="#/feedback/ToastContent" />
-            <Tile
                 title="Tooltip"
                 description="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
                 href="#/feedback/Tooltip"

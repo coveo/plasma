@@ -15,7 +15,9 @@ export interface IToastProps {
      */
     title?: React.ReactNode;
     /**
-     * The type of the toast (default is "success")
+     * The type of the toast
+     *
+     * @default "success"
      */
     type?: 'success' | 'warning' | 'error' | 'info' | 'download';
     /**
@@ -43,7 +45,7 @@ export interface IToastProps {
      */
     onClose?: () => void;
     /**
-     * @deprecated use children instead
+     * @deprecated Use children instead
      */
     content?: React.ReactNode;
     /**
@@ -51,7 +53,7 @@ export interface IToastProps {
      */
     onRender?: () => void;
     /**
-     * @deprecated - Use onClose instead
+     * @deprecated Use onClose instead
      */
     onDestroy?: () => void;
 }

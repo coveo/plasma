@@ -11,6 +11,8 @@ interface PropInfo {
     description: string;
     type: string;
     optional: boolean;
+    defaultValue: string | null;
+    deprecation: string | null;
 }
 
 export const PropsDoc: React.FunctionComponent<{componentName: string}> = ({componentName}) => {
@@ -49,11 +51,27 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
                         symbol,
                         symbol.valueDeclaration || symbol.declarations[0]
                     );
+                    const jsDocTags = symbol.getJsDocTags(checker);
+
+                    let defaultValue: string | null = null;
+                    const defaultTag = jsDocTags.find((tag) => tag.name === 'default');
+                    if (defaultTag) {
+                        defaultValue = ts.displayPartsToString(defaultTag.text);
+                    }
+
+                    let deprecation: string | null = null;
+                    if (entry.kindModifiers.includes('deprecated')) {
+                        const deprecatedTag = jsDocTags.find((tag) => tag.name === 'deprecated');
+                        deprecation = ts.displayPartsToString(deprecatedTag?.text) || '';
+                    }
+
                     accumulator.push({
                         name: entry.name,
                         description: ts.displayPartsToString(symbol.getDocumentationComment(checker)),
                         type: checker.typeToString(type),
                         optional: entry.kindModifiers.includes('optional'),
+                        defaultValue,
+                        deprecation,
                     });
                 }
             });
@@ -72,27 +90,37 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
 
     return (
         <div className="props-doc">
-            <table className="full-content-x table-layout-fixed">
+            <table className="full-content-x">
                 <thead className="body-m">
                     <tr>
                         <th>Name</th>
                         <th>Type</th>
+                        <th>Default</th>
                         <th>Description</th>
                     </tr>
                 </thead>
                 <tbody>
-                    {propsList.sort(requiredFirst).map(({name, type, description, optional}) => (
-                        <tr key={name}>
-                            <td>
-                                <span className="code">{name}</span>
-                                {optional ? null : <span className="body-s-book-italic-subdued ml2">required</span>}
-                            </td>
-                            <td>
-                                <span className="code">{type}</span>
-                            </td>
-                            <td>{description}</td>
-                        </tr>
-                    ))}
+                    {propsList
+                        .sort(requiredFirst)
+                        .map(({name, type, description, optional, deprecation, defaultValue}) => (
+                            <tr key={name}>
+                                <td>
+                                    <span className="code">{name}</span>
+                                    {optional ? null : <span className="body-s-book-italic-subdued ml2">required</span>}
+                                    {deprecation !== null ? (
+                                        <span className="body-s-book-italic-subdued ml2">deprecated</span>
+                                    ) : null}
+                                </td>
+                                <td>
+                                    <span className="code">{type}</span>
+                                </td>
+                                <td>{defaultValue}</td>
+                                <td>
+                                    {deprecation !== null && <div>{deprecation}</div>}
+                                    <div>{description}</div>
+                                </td>
+                            </tr>
+                        ))}
                 </tbody>
             </table>
         </div>
