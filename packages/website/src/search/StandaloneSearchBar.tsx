@@ -92,22 +92,24 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                 />
                 <ClearButton />
                 <SearchButton />
-                <SuggestionListBox />
+                {/* 
+                    To toggle the feature flag, copy and paste those commands in the dev tool console: *
+                        
+                        sessionStorage.setItem('query-suggestions', true) to show the query suggestions *
+                        sessionStorage.setItem('query-suggestions', false) to hide the query suggestions * 
+
+                    You need to reload the page for it to take effect.  
+                */}
+                {FeatureFlags.get('query-suggestions') ? <SuggestionListBox /> : null}
             </form>
         </div>
     );
 };
 
-/*
- * To toggle the feature flag, copy and paste those commands in the dev tool console:
- * sessionStorage.setItem('ff_plasma-search-bar', true) to show the bar
- * sessionStorage.setItem('ff_plasma-search-bar', false) to hide the bar
- * You need to reload the page for it to take effect.
- */
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
     const controller = buildSearchBox(engine);
-    return FeatureFlags.get('plasma-search-bar') ? <SearchBoxRerender controller={controller} /> : null;
+    return <SearchBoxRerender controller={controller} />;
 };
 
 export default StandaloneSearchBar;
