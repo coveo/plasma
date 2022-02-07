@@ -1,13 +1,13 @@
 import * as React from 'react';
 import {SyncFeedback, SyncFeedbackState} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export class SyncFeedbackExample extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="SyncFeedback" title="Sync Feedback" withSource>
+            <PlasmaComponent id="SyncFeedback" title="Sync Feedback" withSource>
                 <div className="mt2">
                     <label className="form-control-label">SyncFeedback</label>
                     <div className="form-control">
@@ -38,7 +38,7 @@ export class SyncFeedbackExample extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

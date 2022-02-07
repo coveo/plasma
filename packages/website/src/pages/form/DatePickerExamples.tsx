@@ -11,7 +11,7 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {
     CALENDAR_ADVANCED_SELECTION_RULES,
     CALENDAR_SELECTION_RULES,
@@ -21,14 +21,14 @@ import {
 } from '../../utils/DatePickerExamplesCommon';
 
 export const DatePickerExamples: ExampleComponent = () => (
-    <VaporComponent id="DatePicker" title="Date Picker" withSource>
+    <PlasmaComponent id="DatePicker" title="Date Picker" withSource>
         <Section>
             <CalendarComponent />
             <CountdownComponent />
             <DatePickerComponents />
             <DatesSelectionComponent />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 DatePickerExamples.title = 'DatePicker';
 

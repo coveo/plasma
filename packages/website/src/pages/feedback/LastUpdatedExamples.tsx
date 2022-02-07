@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {LastUpdated} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const LastUpdatedExamples: React.FunctionComponent = () => (
-    <VaporComponent id="LastUpdated" title="Last Updated" withSource>
+    <PlasmaComponent id="LastUpdated" title="Last Updated" withSource>
         <div className="mt2" style={{width: 400}}>
             <div className="form-group">
                 <label className="form-control-label">Last update</label>
@@ -24,5 +24,5 @@ export const LastUpdatedExamples: React.FunctionComponent = () => (
                 <LastUpdated id="LastUpdatedExampleComponentWithLabel" label="Dernière modification à" />
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

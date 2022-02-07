@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {LabeledValue, TooltipPlacement} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const LabeledValueExamples = () => (
-    <VaporComponent id="LabeledValue" title="Labeled Value" withSource>
+    <PlasmaComponent id="LabeledValue" title="Labeled Value" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Two Simple Labeled Values</label>
@@ -72,5 +72,5 @@ export const LabeledValueExamples = () => (
                 />
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

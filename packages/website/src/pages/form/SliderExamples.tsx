@@ -2,18 +2,18 @@ import * as React from 'react';
 import {AppendedValueSide, Section, Slider} from '@coveord/plasma-react';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SliderExamples: ExampleComponent = () => (
-    <VaporComponent id="Slider" title="Slider" withSource>
+    <PlasmaComponent id="Slider" title="Slider" withSource>
         <Section>
             <SimpleSliderExample />
             <SliderExample />
             <SliderAsymetric />
             <SliderWithPercent />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 const SimpleSliderExample: React.FunctionComponent = () => (

@@ -2,7 +2,7 @@ import {changeFacet, FacetConnected, IFacet, IFacetActionPayload, IReduxAction, 
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const facet: IFacet = {name: 'facetTitle1', formattedName: 'The first facet'};
 const facet2: IFacet = {name: 'facetTitle2', formattedName: 'The second facet'};
@@ -64,7 +64,7 @@ const FacetExamplesDisconnected: React.FunctionComponent<ReturnType<typeof mapDi
     }, []);
 
     return (
-        <VaporComponent id="Facet" title="Facet" withSource>
+        <PlasmaComponent id="Facet" title="Facet" withSource>
             <Section level={2} title="Facets connected to store">
                 <div style={{width: 400}}>
                     <label className="form-control-label">Facet with the second row selectd</label>
@@ -88,7 +88,7 @@ const FacetExamplesDisconnected: React.FunctionComponent<ReturnType<typeof mapDi
                     />
                 </div>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };
 export const FacetExamples = connect(null, mapDispatchToProps)(FacetExamplesDisconnected);

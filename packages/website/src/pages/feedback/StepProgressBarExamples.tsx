@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {StepProgressBar} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const StepProgressBarExamples = () => (
-    <VaporComponent id="StepProgressBar" title="Step Progress Bar" withSource>
+    <PlasmaComponent id="StepProgressBar" title="Step Progress Bar" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Step Progress Bar 3 steps (initial step)</label>
@@ -60,5 +60,5 @@ export const StepProgressBarExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

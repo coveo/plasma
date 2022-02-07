@@ -2,10 +2,10 @@ import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {Section, Svg} from '@coveord/plasma-react';
 
-import VaporComponent from '../building-blocs/VaporComponent';
+import PlasmaComponent from '../building-blocs/PlasmaComponent';
 
 export default () => (
-    <VaporComponent id="GeneralGuidelines" title="General Guidelines">
+    <PlasmaComponent id="GeneralGuidelines" title="General Guidelines">
         <Section
             level={2}
             title="Content / Number"
@@ -176,5 +176,5 @@ export default () => (
                 <span className="bolder">54px by 54px non-clickable space required for any hit zone.</span>
             </p>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

@@ -2,11 +2,11 @@ import React from 'react';
 import {BasicHeader, Section} from '@coveord/plasma-react';
 
 import {defaultTitle, actions} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SimpleHeader: React.FunctionComponent = () => (
-    <VaporComponent id="Header" title="Page Header" withSource>
+    <PlasmaComponent id="Header" title="Page Header" withSource>
         <Section title="Simple Header">
             <Section level={2} title="Basic header with actions and tabs">
                 <BasicHeader
@@ -22,6 +22,6 @@ export const SimpleHeader: React.FunctionComponent = () => (
                 />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

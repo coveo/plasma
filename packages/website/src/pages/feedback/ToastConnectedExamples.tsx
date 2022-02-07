@@ -2,7 +2,7 @@ import * as React from 'react';
 import {addToast as addToastAction, Section, Svg, ToastContainerConnected, ToastType} from '@coveord/plasma-react';
 
 import {ToastContentExample} from './ToastContentExamples';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export interface IToastConnectedExamplesProps {
     addToast: typeof addToastAction;
@@ -14,7 +14,7 @@ const toastDescription = 'Lorem ipsum dolor sit amet, consectetur adipiscing eli
 
 // start-print
 export const ToastConnectedExamples: React.FunctionComponent<IToastConnectedExamplesProps> = ({addToast}) => (
-    <VaporComponent id="ToastConnected" title="Toast Connected" withSource>
+    <PlasmaComponent id="ToastConnected" title="Toast Connected" withSource>
         <Section>
             <div className="flex flex-wrap">
                 <button
@@ -129,7 +129,7 @@ export const ToastConnectedExamples: React.FunctionComponent<IToastConnectedExam
                 <ToastContainerConnected id={downloadContainerId} bottom left />
             </div>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 // @ts-ignore

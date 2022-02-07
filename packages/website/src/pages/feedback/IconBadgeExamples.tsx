@@ -2,12 +2,12 @@ import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {IconBadge, IconBadgeType, Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const IconBadgeExamples: React.FunctionComponent = () => (
-    <VaporComponent id="IconBadge" title="Icon Badge" withSource>
+    <PlasmaComponent id="IconBadge" title="Icon Badge" withSource>
         <Section>
             <Section level={2} title="IconBadge without the navigation style">
                 <IconBadge
@@ -63,5 +63,5 @@ export const IconBadgeExamples: React.FunctionComponent = () => (
                 </div>
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

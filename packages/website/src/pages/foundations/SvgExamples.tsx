@@ -13,7 +13,7 @@ import {
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SvgExamples: React.FC = () => {
@@ -59,7 +59,7 @@ export const SvgExamples: React.FC = () => {
     ];
 
     return (
-        <VaporComponent id="ColorBar" title="SVG" withSource>
+        <PlasmaComponent id="ColorBar" title="SVG" withSource>
             <Section
                 level={1}
                 title="Size modifiers"
@@ -111,6 +111,6 @@ export const SvgExamples: React.FC = () => {
                     </div>
                 </Section>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };

@@ -18,7 +18,7 @@ import {
 import * as _ from 'underscore';
 import {capitalize} from 'underscore.string';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const data = [
     {
@@ -80,7 +80,7 @@ const ChartType = {
 export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
-        <VaporComponent id="Charts" title="Charts" withSource>
+        <PlasmaComponent id="Charts" title="Charts" withSource>
             <Section>
                 <Section level={3} title={`Basic ${capitalize(chartType)} Chart`}>
                     <div className="form-control" style={{height: '300px'}}>
@@ -213,6 +213,6 @@ export const ChartExamples: React.FunctionComponent = () => {
                     </div>
                 </Section>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };

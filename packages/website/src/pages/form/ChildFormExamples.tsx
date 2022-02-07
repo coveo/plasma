@@ -2,16 +2,16 @@ import * as React from 'react';
 import {Checkbox, ChildForm, Input, Label, Radio, RadioSelect, Section, ToggleForm} from '@coveord/plasma-react';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const ChildFormExamples: ExampleComponent = () => (
-    <VaporComponent id="ChildForm" title="Child Form" withSource>
+    <PlasmaComponent id="ChildForm" title="Child Form" withSource>
         <Section>
             <SimpleChildFormExample />
             <ChildFormWithRadiosExamples />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 ChildFormExamples.description =

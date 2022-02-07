@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {CollapsibleConnected, InfoBox, InfoBoxFooter, InfoBoxLink} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const InfoBoxExamples: React.FunctionComponent = () => (
-    <VaporComponent id="InfoBox" title="Info Box" withSource>
+    <PlasmaComponent id="InfoBox" title="Info Box" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Empty InfoBox</label>
@@ -49,5 +49,5 @@ export const InfoBoxExamples: React.FunctionComponent = () => (
                 </InfoBox>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

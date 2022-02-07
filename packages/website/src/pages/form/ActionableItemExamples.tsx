@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {ActionableItem} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const ActionableItemExamples = () => (
-    <VaporComponent id="ActionableItem" title="Actionable Item" withSource>
+    <PlasmaComponent id="ActionableItem" title="Actionable Item" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">ActionableItem without an onItemClick method</label>
@@ -52,6 +52,6 @@ export const ActionableItemExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

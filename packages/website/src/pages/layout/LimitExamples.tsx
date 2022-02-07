@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Limit} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const title = 'Limit example';
 const usage = 42;
@@ -12,7 +12,7 @@ const customLimitTitle = 'Throttling limit';
 
 // start-print
 export const LimitExamples: React.FunctionComponent = () => (
-    <VaporComponent id="Limit" title="Limit Card" withSource>
+    <PlasmaComponent id="Limit" title="Limit Card" withSource>
         <div className="coveo-form">
             <div className="form-group">
                 <label className="form-control-label">A limit card with an usage value</label>
@@ -76,5 +76,5 @@ export const LimitExamples: React.FunctionComponent = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

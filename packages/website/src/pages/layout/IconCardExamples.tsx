@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {IconCard, Section, Svg} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const IconCardExamples: React.FunctionComponent = () => (
-    <VaporComponent id="IconCard" title="Icon / Logo Card" withSource>
+    <PlasmaComponent id="IconCard" title="Icon / Logo Card" withSource>
         <Section>
             <Section level={2} title="Basic">
                 <IconCard
@@ -67,6 +67,6 @@ export const IconCardExamples: React.FunctionComponent = () => (
                 </Section>
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

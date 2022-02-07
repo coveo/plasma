@@ -15,15 +15,15 @@ import {
 import {Store} from '../../Store';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const CheckboxExamples: ExampleComponent = () => (
-    <VaporComponent id="Checkbox" title="Checkbox" withSource>
+    <PlasmaComponent id="Checkbox" title="Checkbox" withSource>
         <Section>
             <Checkboxset />
             <GroupableCheckboxConnectedExamples />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 CheckboxExamples.description =

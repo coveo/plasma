@@ -20,7 +20,7 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 export interface ModalConnectedExampleProps {
     id: string;
 }
@@ -30,13 +30,13 @@ const description =
 
 // start-print
 export const ModalWindowExamples: ExampleComponent = () => (
-    <VaporComponent id="ModalComposite" title="Modal Window" usage={description} withSource>
+    <PlasmaComponent id="ModalComposite" title="Modal Window" usage={description} withSource>
         <Section>
             <ModalCompositeExampleConnected />
             <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />
             <ModalLoadingExample />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 ModalWindowExamples.title = 'Modal Window';

@@ -2,15 +2,15 @@ import * as React from 'react';
 import {NumericInputConnected, Section} from '@coveord/plasma-react';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const NumericInputExamples: ExampleComponent = () => (
-    <VaporComponent id="NumericInput" title="Numeric Inputs" withSource>
+    <PlasmaComponent id="NumericInput" title="Numeric Inputs" withSource>
         <Section title="Numeric Inputs Examples">
             <NumericInputs />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 NumericInputExamples.description =
     'Numeric inputs are used to require the input of a numeric value. They can be configured in discrete jumps, when precision is not mandatory (e.g., 0, 5, 10, etc.).';

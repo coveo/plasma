@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {BannerContainer, Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BannerExamples: React.FunctionComponent = () => (
-    <VaporComponent id="Banner" title="Banner" withSource>
+    <PlasmaComponent id="Banner" title="Banner" withSource>
         <Section level={3} title="Empty banner">
             <BannerContainer />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

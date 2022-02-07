@@ -1,13 +1,13 @@
 import {BreadcrumbHeader, Button, Section, Svg} from '@coveord/plasma-react';
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {defaultBreadcrumb, link1, link2} from '../../utils/ExamplesUtils';
 
 // start-print
 
 export const BreadcrumbsExamples: React.FunctionComponent = () => (
-    <VaporComponent id="breadcrumb" title="Breadcrumbs" withSource>
+    <PlasmaComponent id="breadcrumb" title="Breadcrumbs" withSource>
         <Section level={2} title="Breadcrumb headers">
             <Section level={3} title="Breadcrumb with a node as action and tabs">
                 <BreadcrumbHeader
@@ -47,5 +47,5 @@ export const BreadcrumbsExamples: React.FunctionComponent = () => (
                 </BreadcrumbHeader>
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

@@ -23,7 +23,7 @@ import {
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
@@ -172,11 +172,11 @@ const ModalWizardWithValidationIdsDisconnected: React.FunctionComponent<Connecte
 const ModalWizardWithValidationIds = enhanceExample2(ModalWizardWithValidationIdsDisconnected);
 
 export const ModalWizardExamples = () => (
-    <VaporComponent id="ModalWizard" title="Modal Wizard" withSource>
+    <PlasmaComponent id="ModalWizard" title="Modal Wizard" withSource>
         <Section>
             <StandardModalWizard />
             <ModalWizardWithValidationIds />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

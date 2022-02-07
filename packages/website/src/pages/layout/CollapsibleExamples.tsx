@@ -17,7 +17,7 @@ import {
 } from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {Store} from '../../Store';
 
 // start-print
@@ -26,7 +26,7 @@ export const CollapsibleExamples: React.FunctionComponent = () => {
     const [disabled, setDisabled] = React.useState(false);
 
     return (
-        <VaporComponent id="Collapsible" title="Collapsible" withSource>
+        <PlasmaComponent id="Collapsible" title="Collapsible" withSource>
             <Section title="Collapsible Examples">
                 <Section level={2} title="Basic" description="A simple header with collapsible content underneath">
                     <CollapsibleConnected
@@ -209,6 +209,6 @@ export const CollapsibleExamples: React.FunctionComponent = () => {
                     </Section>
                 </Section>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };

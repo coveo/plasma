@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const Whitespace = () => (
-    <VaporComponent id="Whitespaces" title="Whitespace" withSource>
+    <PlasmaComponent id="Whitespaces" title="Whitespace" withSource>
         <Section level={2} title="Paddings" description="Give custom padding to your element">
             <div className="p2" style={{backgroundColor: '#e5e8e8'}}>
                 Use <span className="bolder">p0[..n]</span> to add a uniform padding around the box.
@@ -43,5 +43,5 @@ export const Whitespace = () => (
                 Use <span className="bolder">mx-auto</span> to have a auto margin-left and margin-right.
             </div>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

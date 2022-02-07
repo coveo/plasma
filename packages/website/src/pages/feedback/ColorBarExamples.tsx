@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {ColorBar} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const ColorBarExamples = () => (
-    <VaporComponent id="ColorBar" title="Color Bar" withSource>
+    <PlasmaComponent id="ColorBar" title="Color Bar" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">ColorBar with one color full</label>
@@ -73,5 +73,5 @@ export const ColorBarExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );
