@@ -25,7 +25,7 @@ export const PlasmaComponent: React.FunctionComponent<PlasmaComponentProps & Rea
     return (
         <div id={id}>
             <BasicHeader
-                title={{text: title}}
+                title={{text: title, classes: ['sentence-case']}}
                 description={usage}
                 tabs={[
                     {groupId: 'page', id: 'usage', title: 'Usage'},

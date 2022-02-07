@@ -57,7 +57,7 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
             <>
                 {focused && (state.suggestions.length > 0 || state.isLoadingSuggestions) && (
                     <ListBox
-                        classes={['search-results-container']}
+                        classes={['search-results-container sentence-case']}
                         isLoading={state.isLoadingSuggestions}
                         items={results}
                         onOptionClick={(item) => {
