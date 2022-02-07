@@ -3,6 +3,18 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.0.0](https://github.com/coveo/plasma/compare/v32.6.0...v34.0.0) (2022-02-07)
+
+
+### Bug Fixes
+
+* **build:** bump versions ([9e9a779](https://github.com/coveo/plasma/commit/9e9a7792f2c7d1e18ac139dcada1958ea9866165))
+* **tooltip:** add back css rules that were removed ([ed169c4](https://github.com/coveo/plasma/commit/ed169c4005872212ba48b9d08c4e3ab5dc5388b3))
+
+
+
+
+
 # [32.6.0](https://github.com/coveo/plasma/compare/v32.5.0...v32.6.0) (2022-02-02)
 
 

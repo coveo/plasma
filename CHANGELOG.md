@@ -3,6 +3,41 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.0.0](https://github.com/coveo/plasma/compare/v32.6.0...v34.0.0) (2022-02-07)
+
+
+### Bug Fixes
+
+* **build:** bump versions ([9e9a779](https://github.com/coveo/plasma/commit/9e9a7792f2c7d1e18ac139dcada1958ea9866165))
+* **tablepagination:** -default value of totalPages ([96a8c78](https://github.com/coveo/plasma/commit/96a8c7863e9ec9b03af0f1655a632b60dcdecadf))
+* **tooltip:** add back css rules that were removed ([ed169c4](https://github.com/coveo/plasma/commit/ed169c4005872212ba48b9d08c4e3ab5dc5388b3))
+* **website:** handle singular in search results page number of results ([c9b252c](https://github.com/coveo/plasma/commit/c9b252ca47f4f3a07c9e9fa6e2708e2874ba0e69))
+
+
+* refactor!: rename IReactVaporState ([218e820](https://github.com/coveo/plasma/commit/218e8209c5f696e32e10603723f914c673b20b15))
+
+
+### Features
+
+* **tokens:** create a jenkins job for tokens extraction ([655221f](https://github.com/coveo/plasma/commit/655221f54a388b44378e807de07280411a6527c4))
+* **version:** remove version ([1f405d0](https://github.com/coveo/plasma/commit/1f405d0b046fa0ef97e072cc6ae97c5d9e8257f9))
+* **website:** update checkbox guidelines ([e8dab93](https://github.com/coveo/plasma/commit/e8dab936851288855f69ece6f6a3b1580f600ec7))
+* **website:** update MultiSelect guidelines ([fd3ed64](https://github.com/coveo/plasma/commit/fd3ed6475d91df4f377979a63298a99fec76ccf7))
+* **website:** update RadioButtons guidelines ([2b8a3c1](https://github.com/coveo/plasma/commit/2b8a3c10de247ea061ead80dc19773dfc6fed960))
+* **website:** update SingleSelect guidelines ([2c0ca44](https://github.com/coveo/plasma/commit/2c0ca44a363302afb35b8e24e11855cc502f63ee))
+* **website:** update TextInput guidelines ([fa6f180](https://github.com/coveo/plasma/commit/fa6f180805823a3d3f2c911f2dcb384af8ffd678))
+
+
+### BREAKING CHANGES
+
+* **version:** The version variable will cease to exist, go look in the package.json to know what
+is your current version
+* IReactVaporState is renamed PlasmaState
+
+
+
+
+
 # [32.6.0](https://github.com/coveo/plasma/compare/v32.5.0...v32.6.0) (2022-02-02)
 
 
