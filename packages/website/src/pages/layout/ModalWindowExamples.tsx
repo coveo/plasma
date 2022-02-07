@@ -30,7 +30,12 @@ const description =
 
 // start-print
 export const ModalWindowExamples: ExampleComponent = () => (
-    <VaporComponent id="ModalComposite" title="Modal Window" usage={description} withSource>
+    <VaporComponent
+        id="ModalComposite"
+        title="Modal Window"
+        usage="A modal appears over the current context to have users focus on a particular task or information."
+        withSource
+    >
         <Section>
             <ModalCompositeExampleConnected />
             <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />

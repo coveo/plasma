@@ -73,32 +73,57 @@ const LayoutPages: React.FC = () => (
             <Tile title="Banner" href="#/layout/Banner" />
             <Tile
                 title="Blank Slate"
-                description="Use blankSlate to show information and some actions after an event."
+                description="A blank slate informs users that a section doesn’t contain any data and provides a way to address it."
                 href="#/layout/BlankSlate"
             />
             <Tile title="Bordered Line" href="#/layout/BorderedLine" />
-            <Tile title="Browser Preview" href="#/layout/BrowserPreview" />
-            <Tile title="Chart" href="#/layout/Chart" />
+            <Tile
+                title="Browser Preview"
+                description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
+                href="#/layout/BrowserPreview"
+            />
+            <Tile
+                title="Chart"
+                description="A chart compares sets of complex data to provide insights on their relationship and status."
+                href="#/layout/Chart"
+            />
             <Tile title="Collapsible" href="#/layout/Collapsible" />
-            <Tile title="Icon Card" href="#/layout/IconCard" />
+            <Tile
+                title="Icon Card"
+                description="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
+                href="#/layout/IconCard"
+            />
             <Tile title="Info Box" href="#/layout/InfoBox" />
             <Tile title="Labelled Value" href="#/layout/LabeledValue" />
             <Tile title="Limit Card" href="#/layout/Limit" />
             <Tile
-                title="Modal Window"
-                description="Modal windows appear in front of the main page and disable it while they are visible. They act as a zoom in on an element of the main page that allows additionnal interaction or configuration. They make possible for users to focus on their content whilst avoiding leaving the context from which they have been called."
+                title="Modal"
+                description="A modal appears over the current context to have users focus on a particular task or information."
                 href="#/layout/ModalWindow"
             />
-            <Tile title="Modal Wizard" href="#/layout/ModalWizard" />
-            <Tile title="Page Header" href="#/layout/PageHeader" thumbnail="header" />
-            <Tile title="Footer" href="#/layout/Footer" />
             <Tile
-                title="Section"
-                description="Customizing the display and behavior of the interface displayed."
-                href="#/layout/Section"
+                title="Modal Wizard"
+                description="A modal wizard guides users through a task by presenting a succession of actions to complete."
+                href="#/layout/ModalWizard"
             />
-            <Tile title="Split Layout" href="#/layout/SplitLayout" />
-            <Tile title="Table" href="#/layout/TableHOC" />
+            <Tile
+                title="Page Header"
+                description="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional tabs."
+                href="#/layout/PageHeader"
+                thumbnail="header"
+            />
+            <Tile title="Footer" href="#/layout/Footer" />
+            <Tile title="Section" href="#/layout/Section" />
+            <Tile
+                title="Split Layout"
+                description="A split layout organizes information in two vertical columns."
+                href="#/layout/SplitLayout"
+            />
+            <Tile
+                title="Table"
+                description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
+                href="#/layout/TableHOC"
+            />
             <Tile title="Table HOC Loading" href="#/layout/TableHOCLoading" />
             <Tile title="Table HOC Server" href="#/layout/TableHOCServer" />
             <Tile title="Table HOC with Blank Slate" href="#/layout/TableHOCwithBlankSlate" />

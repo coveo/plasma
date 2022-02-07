@@ -5,7 +5,12 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 export const IconCardExamples: React.FunctionComponent = () => (
-    <VaporComponent id="IconCard" title="Icon / Logo Card" withSource>
+    <VaporComponent
+        id="IconCard"
+        title="Icon / Logo Card"
+        usage="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
+        withSource
+    >
         <Section>
             <Section level={2} title="Basic">
                 <IconCard

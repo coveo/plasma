@@ -10,7 +10,12 @@ const exampleTextRight = `I am a right child. ${loremIpsum({count: 5, sentenceUp
 
 // start-print
 export const SplitLayoutExamples = () => (
-    <VaporComponent id="SplitLayout" title="Split Layout" withSource>
+    <VaporComponent
+        id="SplitLayout"
+        title="Split Layout"
+        usage="A split layout organizes information in two vertical columns."
+        withSource
+    >
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">SplitLayout with one JSX.Element on each side</label>

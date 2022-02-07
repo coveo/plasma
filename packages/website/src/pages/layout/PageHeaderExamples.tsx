@@ -6,7 +6,12 @@ import VaporComponent from '../../building-blocs/VaporComponent';
 
 // start-print
 export const SimpleHeader: React.FunctionComponent = () => (
-    <VaporComponent id="Header" title="Page Header" withSource>
+    <VaporComponent
+        id="Header"
+        title="Page Header"
+        usage="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional tabs."
+        withSource
+    >
         <Section title="Simple Header">
             <Section level={2} title="Basic header with actions and tabs">
                 <BasicHeader
