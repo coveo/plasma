@@ -59,7 +59,7 @@ export const tableWithNewPagination = (
             pageNb,
             perPage,
             totalEntries: length,
-            totalPages: Math.max(Math.ceil(length / perPage), 1),
+            totalPages: length ? Math.max(Math.ceil(length / perPage), 1) : undefined,
             data: isServer ? ownProps.data : ownProps.data && sliceData(ownProps.data, startingIndex, endingIndex),
         };
     };
