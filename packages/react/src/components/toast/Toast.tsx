@@ -85,6 +85,8 @@ export const Toast: React.FC<IToastProps> = ({
 }) => {
     let timeout: number;
 
+    const [isOpened, setIsOpened] = React.useState(true);
+
     React.useEffect(() => {
         onRender?.();
         handleSetTimeout();
@@ -95,9 +97,18 @@ export const Toast: React.FC<IToastProps> = ({
         };
     }, []);
 
+    if (!isOpened) {
+        return null;
+    }
+
+    const handleClose = () => {
+        setIsOpened(false);
+        onClose?.();
+    };
+
     const handleSetTimeout = () => {
         if (dismissible && dismiss > 0) {
-            timeout = setTimeout(() => onClose?.(), dismiss) as any;
+            timeout = window.setTimeout(handleClose, dismiss);
         }
     };
 
@@ -120,7 +131,7 @@ export const Toast: React.FC<IToastProps> = ({
     );
 
     const closeButton = dismissible && !isSmall && (
-        <span className="toast-close" onClick={() => onClose?.()}>
+        <span className="toast-close" onClick={handleClose}>
             <Svg svgName="close" className="icon mod-lg" />
         </span>
     );
@@ -153,7 +164,7 @@ export const Toast: React.FC<IToastProps> = ({
     );
 
     return (
-        <div className={classes} onMouseEnter={() => handleClearTimeout()} onMouseLeave={() => handleSetTimeout()}>
+        <div className={classes} onMouseEnter={handleClearTimeout} onMouseLeave={handleSetTimeout}>
             {type === 'download' ? (
                 downloadToast
             ) : (

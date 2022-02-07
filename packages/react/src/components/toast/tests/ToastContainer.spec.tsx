@@ -101,16 +101,5 @@ describe('Toasts', () => {
 
             expect(() => component.find(Toast).props().onClose()).not.toThrow();
         });
-
-        it('should call toast method onClose when defined', () => {
-            const onCloseSpy = jest.fn();
-            const newToastAttributes = _.extend({}, basicProps, {
-                toasts: [{id: 'toast-id', title: 'some toast title', onClose: onCloseSpy}],
-            });
-            component.setProps(newToastAttributes).mount();
-            component.find(Toast).props().onClose();
-
-            expect(onCloseSpy).toHaveBeenCalledTimes(1);
-        });
     });
 });
