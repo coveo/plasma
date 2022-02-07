@@ -40,19 +40,28 @@ const FoundationsPages: React.FC = () => (
         <div className="tile-grid">
             <Tile
                 title="Iconography"
-                description="List of all icons available. See SVG for usage"
+                description="Icons are used to visually represent actions, functionalities, and features."
                 href="#/foundations/Iconography"
                 thumbnail="iconography"
             />
-            <Tile title="SVG" description="SVG usage" href="#/foundations/Svg" />
+            <Tile title="SVG" href="#/foundations/Svg" />
             <Tile
                 title="Headings"
-                description="All HTML headings, `h1` through `h6`, are available."
+                description="A heading is a title at the top of a page or section. Its distinctive font helps visualize the hierarchy of information."
                 href="#/foundations/Headings"
                 thumbnail="typekit"
             />
-            <Tile title="Links" href="#/foundations/Links" thumbnail="links" />
-            <Tile title="Whitespace" href="/#/foundations/Whitespace" />
+            <Tile
+                title="Links"
+                description="A link is a navigational element that guides users to external resources or other sections of the product."
+                href="#/foundations/Links"
+                thumbnail="links"
+            />
+            <Tile
+                title="Whitespace"
+                description="Whitespace is the standard padding and margin size that one can adjust to customize the layout of an interface."
+                href="/#/foundations/Whitespace"
+            />
         </div>
     </Section>
 );

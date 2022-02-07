@@ -1,6 +1,5 @@
 import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
-import {Link} from 'react-router-dom';
 import {LinkSvg, SvgNames} from '@coveord/plasma-react';
 
 import VaporComponent from '../../building-blocs/VaporComponent';
@@ -9,15 +8,7 @@ export const IconsList = () => (
     <VaporComponent
         id="IconsList"
         title="Icons list"
-        usage={
-            <p>
-                List of all icons available.{' '}
-                <Link to="/foundations/Svg" className="bolder text mod-link">
-                    See SVG
-                </Link>{' '}
-                for usage
-            </p>
-        }
+        usage={<p>Icons are used to visually represent actions, functionalities, and features.</p>}
     >
         <ul className="sg-icons-list">
             {Object.keys(VaporSVG.svg)
