@@ -1,39 +1,43 @@
-## Guidelines
+## Best Practices
 
-### General
+Button label should allow users to **foresee what will happen** when clicking them. 
 
--   **To redirect** users to another page of the current website or app, or to another website, **use links** rather than buttons.
--   Avoid multiplying buttons within a given page. If you need several buttons, less popular or **less important actions may be grouped** in a ["more" Menu button](../#/components/Menu) (dropdown list) or visually styled as isolated actions or links.
+Avoid multiplying buttons within a page. A page should have **only one primary action button**. If several secondary action buttons are required, consider using [Actionable items](#/form/ActionableItem) instead.
 
-### Labels
+When using button groups, such as for "Save" and "Cancel" actions, always put the action that move the user forward through his journey **to the right**. For instance, order buttons as "Cancel" then "Save".
 
--   The button label should allow users to **foresee what will happen** when clicking it.
--   Button labels should be **short** and use **trigger words**.
--   As much as possible, the **first word** of the label should be an **action verb** (e.g., the label for a button that allows the user to add a filter could be "Add Filter").
 
-### Alterative Texts
+## Labeling
 
--   When a button includes **only an icon** (i.e., no label), **label information** should be **added in the alternative text** element in the HTML and appear **in a tooltip** when hovering the button.
--   When a button contains a **text as well as an icon**, the icon is a visual help to identify the purpose faster. Providing an **alternative text is not recommended** as it would only repeat the information when using a **screenreader**.
+Keep labels short, preferably **under three words**.
+Use **trigger words** to clearly indicate the action performed by the button.
 
-## Variations
+Write labels so **the first word is a verb**. Use noun without article, to specify the context when required. For example, write "Add filter" rather than "Add a filter" but only write "Save" and "Cancel".
 
-The button type choice depends on the function of the button (e.g., primary action, secondary action), the number of actions available in the screen (e.g., one, two, several), and its location (e.g., header, action bar, page, footer).
+When using button to confirm an action that will be executed, always use an active word to **clearly state the resulting action**. For instance, if user must confirm the deletion of a file, write "Delete" and "Cancel" rather than "Yes" and "No".
 
-| Type      | Purpose                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       |
-| --------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Primary   | Used to enable the most important actions, i.e., those that lead to the completion of the main task (e.g., Save, Continue, Submit), or strong calls to action. Ideally, there should be only one Primary Button per screen to avoid diluting user attention.                                                                                                                                                                                                                                  |
-| Secondary | Used for main actions that users might want to execute but that are not in direct relation to the main task that is to be done in the screen or interface.                                                                                                                                                                                                                                                                                                                                    |
-| Combo     | These buttons have an attached drop menu where a choice between multiple actions has to be made (2 or more). They are useful when one single action allows users to create, delete or modify many different elements, which can be selected in the dropdown list that appears upon clicking. While using a combo button prevents adding an extra step in the process, it can add friction to the user decision making process when the options in the dropdown list are not intuitive enough. |
-| Isolated  | Used for extra actions which are, as the name suggests, isolated in an interface. Those button do not have borders and background colors, in order to reduce noise and to make them less conspicuous. Icons are optional and may help users identify actions faster. However, keep in mind that too many icons can be as distracting and confusing as too few.                                                                                                                                |
-| Icon Only | Used when there is a lack of space and a high density of content. This button type is preferably used to represent labels that are easily represented iconically, such as an icon "..." for "more items" (see [Menu button](../#/components/Menu) for an example).                                                                                                                                                                                                                            |
+
+## Variants
+
+| **Type** | **Purpose** |
+| **Primary** | Use primary buttons for the main action you want to draw the user attention to. There should be only one primary action in a section or page. |
+| **Secondary** | Use secondary buttons to display action of lesser importance or to display multiple actions of similar importance. |
+| **Left icon + label** | Add a left icon to add quick and visual clarity to what the action is or draw attention to the button. Make sure the icon is highly recognizable. |
+| **Left icon + label** | Use the right icon to indicate that additional options are available upon selecting the button. This means that the action will not be carried right away upon clicking the button, but a menu overlay would be displayed where the user can select the exact action to be performed. For instance, when the action is "Create" and options are to create from a template or a blank file. |
+| **Right icon + label** | Use only an icon when space is an issue or when the icon is highly and instantly recognizable. For instance, the "Setting" button is commonly presented only using a cog icon. Never use icon only button for primary actions. |
+| **Append and prepend separator** | Adding a separator is an aesthetic choice especially used when two or more buttons are stacked vertically. Use a separator to align the icon to the right or left or the button. Note that all buttons must have the same width when vertically stacked. |
+
+
+## Feedback and Validation
+
+Add a tooltip when the label is hidden to display the name of the related action.
 
 ---
 
 ## Related Components
 
-["More" Menu Button](#/components/Menu)
+If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
-[Tabs](#/components/Tabs)
+-   [Link](#/foundations/Links) when you need to redirect a user to another section or website
+-   [Actionable items](#/form/ActionableItem) when you want to regroup several less important action together.
 
-[Action Bar](#/components/ActionBar)
