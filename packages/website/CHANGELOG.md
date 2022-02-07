@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [34.1.0](https://github.com/coveo/plasma/compare/v34.0.0...v34.1.0) (2022-02-07)
+
+
+### Features
+
+* **featureflag:** put FF on query suggestions + remove from search bar ([16e2ec7](https://github.com/coveo/plasma/commit/16e2ec763922fdc1901c1d113522fee2213feb72))
+
+
+
+
+
 # [34.0.0](https://github.com/coveo/plasma/compare/v32.6.0...v34.0.0) (2022-02-07)
 
 
