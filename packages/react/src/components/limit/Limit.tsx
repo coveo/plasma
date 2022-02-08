@@ -1,5 +1,5 @@
+import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 
@@ -50,7 +50,7 @@ const HeaderDivision: React.FunctionComponent<LimitOwnProps> = ({title, isHistor
 const HistoryIcon: React.FunctionComponent<Omit<LimitOwnProps, 'title'>> = ({isHistoryIncluded, onHistoryIconClick}) =>
     isHistoryIncluded ? (
         <span className="icon limit-history-button documentation-link" onClick={onHistoryIconClick}>
-            <Svg svgName={VaporSVG.svg.menuAnalytics.name} />
+            <Svg svgName={svg.menuAnalytics.name} />
         </span>
     ) : null;
 

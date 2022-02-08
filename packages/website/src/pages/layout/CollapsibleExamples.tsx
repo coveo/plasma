@@ -1,4 +1,4 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {
     Badge,
@@ -136,7 +136,7 @@ export const CollapsibleExamples: React.FunctionComponent = () => {
                             }}
                             collapsibleToggleIcon={
                                 <span className="flex space-between center-align">
-                                    <Svg svgName={VaporSVG.svg.add.name} svgClass="icon" />
+                                    <Svg svgName={svg.add.name} svgClass="icon" />
                                 </span>
                             }
                         >

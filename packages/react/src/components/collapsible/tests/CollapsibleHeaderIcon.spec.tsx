@@ -1,6 +1,7 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import {shallow, ShallowWrapper} from 'enzyme';
 import * as React from 'react';
+
 import {LinkSvg} from '../../svg/LinkSvg';
 import {Svg} from '../../svg/Svg';
 import {CollapsibleHeaderIcon, CollapsibleHeaderIconProps} from '../CollapsibleHeaderIcon';
@@ -56,13 +57,13 @@ describe('CollapsibleHeaderIcon', () => {
                 },
             } as CollapsibleHeaderIconProps);
 
-            expect(wrapper.find(Svg).props().svgName).toBe(VaporSVG.svg.info.name);
+            expect(wrapper.find(Svg).props().svgName).toBe(svg.info.name);
         });
 
         it('should set the svg name for help if informationUrl is defined', () => {
             wrapper = shallowCollapsibleHeaderIcon();
 
-            expect(wrapper.find(LinkSvg).props().svg.svgName).toBe(VaporSVG.svg.help.name);
+            expect(wrapper.find(LinkSvg).props().svg.svgName).toBe(svg.help.name);
         });
     });
 });

@@ -1,10 +1,11 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
 import {Button} from '../button/Button';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     title?: React.ReactNode;
@@ -16,7 +17,7 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     containerClasses?: string[];
     descriptionClassName?: string;
     buttonClasses?: string[];
-    svgName?: SvgNames;
+    svgName?: SvgName;
     svgClass?: string;
 }
 

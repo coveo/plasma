@@ -123,11 +123,18 @@ function Dictionary(from) {
         this.json = _.extend(this.json, dict.json);
     };
 
+    this.svgNames = Object.keys(this.json).map(s.camelize).sort();
+
+    this.generateSvgNamesTypescriptType = (to) => {
+        const code = `export type SvgName =\n\t| '${this.svgNames.join("'\n\t| '")}';\n`;
+        fs.writeFileSync(to, code);
+    };
+
     this.writeSvgEnumFile = (to) => {
         let code = 'import {svgWrapper} from "../svgWrapper.js";\n';
         code += 'export var svg = {';
         const that = this;
-        _.each(_.keys(this.json), (key) => {
+        Object.keys(this.json).forEach((key) => {
             const camelizedKey = s.camelize(key);
             const svgString = JSON.stringify(that.json[key]);
             const unformattedKey = key.startsWith('ft-') ? key.replace('ft-', 'coveo-search-ui-filetypes/') : key;
@@ -204,6 +211,7 @@ gulp.task(
         }
 
         dict.writeSvgEnumFile('tmp/svg.js');
+        dict.generateSvgNamesTypescriptType('SvgName.d.ts');
 
         done();
     })

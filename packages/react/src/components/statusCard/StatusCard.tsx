@@ -1,13 +1,14 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 
 import {Loading} from '../loading/Loading';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 
 export interface StatusCardProps {
     title: string;
     className?: string;
-    icon?: SvgNames;
+    icon?: SvgName;
     simple?: boolean;
     loading?: boolean;
 }
