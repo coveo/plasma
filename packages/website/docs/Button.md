@@ -20,6 +20,7 @@ When using button to confirm an action that will be executed, always use an acti
 ## Variants
 
 | **Type** | **Purpose** |
+| ---- | --- | ---- |
 | **Primary** | Use primary buttons for the main action you want to draw the user attention to. There should be only one primary action in a section or page. |
 | **Secondary** | Use secondary buttons to display action of lesser importance or to display multiple actions of similar importance. |
 | **Left icon + label** | Add a left icon to add quick and visual clarity to what the action is or draw attention to the button. Make sure the icon is highly recognizable. |
