@@ -9,6 +9,7 @@ import classNames from 'classnames';
 import * as monaco from 'monaco-editor';
 import * as _ from 'underscore';
 import '@styles/sandbox.scss';
+import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 // eslint-disable-next-line
 const prettierConfig = require('tsjs/prettier-config');
@@ -68,11 +69,17 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
 
     return (
         <div className={classNames('demo-sandbox', {horizontal})}>
-            <div className="demo-sandbox__preview" id={id} />
-            <div>
-                {title && <div className="demo-sandbox__title body-m-book">{title}</div>}
-                <Editor id={id} value={formattedCode} onChange={setEditedCode} />
-            </div>
+            {fsMap === null ? (
+                <PlasmaLoading />
+            ) : (
+                <>
+                    <div className="demo-sandbox__preview" id={id} />
+                    <div>
+                        {title && <div className="demo-sandbox__title body-m-book">{title}</div>}
+                        <Editor id={id} value={formattedCode} onChange={setEditedCode} />
+                    </div>
+                </>
+            )}
         </div>
     );
 };

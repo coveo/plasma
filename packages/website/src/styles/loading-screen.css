@@ -1,10 +1,16 @@
 .plasma-spinner {
-    height: 90vh;
-    width: 100vw;
+    height: 100%;
+    width: 100%;
     display: flex;
     align-items: center;
     justify-content: center;
 }
+
+.plasma-spinner.full-page {
+    height: 90vh;
+    width: 100vw;
+}
+
 .plasma-spinner > div {
     display: inline-block;
     border-radius: 10% 100% 100% 10%;

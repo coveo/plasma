@@ -37,25 +37,27 @@ const load = async (path: string, ctx: any, root: string) => {
     }
     return {path: newPath, content};
 };
-const loadAll = () =>
-    Promise.all([
-        ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
-        ...typescriptLibs.keys().map((path) => load(path, typescriptLibs, '')),
-        ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
-    ]);
+
+const loadAll: Promise<Map<string, string>> = Promise.all([
+    ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
+    ...typescriptLibs.keys().map((path) => load(path, typescriptLibs, '')),
+    ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
+]).then((mappedTypes) =>
+    createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring).then((map) => {
+        mappedTypes.forEach(({path, content}) => {
+            monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
+            map.set(path, content);
+        });
+        return map;
+    })
+);
 
 export const useTypescriptServer = () => {
     const [fsMap, setFsMap] = React.useState<Map<string, string> | null>(null);
+
     React.useEffect(() => {
-        loadAll().then((mappedTypes) => {
-            createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring).then((map) => {
-                mappedTypes.forEach(({path, content}) => {
-                    monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
-                    map.set(path, content);
-                });
-                setFsMap(map);
-            });
-        });
+        loadAll.then((defaultMap) => setFsMap(new Map(defaultMap)));
     }, []);
+
     return {fsMap, setFsMap, compilerOptions};
 };

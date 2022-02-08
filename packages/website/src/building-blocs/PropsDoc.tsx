@@ -1,9 +1,10 @@
-import {Loading} from '@coveord/plasma-react';
 import {createSystem, createVirtualTypeScriptEnvironment} from '@typescript/vfs';
 import * as React from 'react';
 import * as ts from 'typescript';
+
 import '@styles/props-doc.scss';
 
+import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 
 interface PropInfo {
@@ -81,7 +82,7 @@ const props: React.ComponentProps<typeof ${componentName}> = {`;
     }, [componentName, fsMap]);
 
     if (!propsList) {
-        return <Loading />;
+        return <PlasmaLoading />;
     }
 
     if (propsList.length < 1) {
