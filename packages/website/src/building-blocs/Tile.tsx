@@ -39,9 +39,16 @@ export interface TileProps {
     description?: string;
     href?: string;
     thumbnail?: keyof typeof thumbnails;
+    sendAnalytics?: () => void;
 }
 
-export const Tile: React.FunctionComponent<TileProps> = ({title, description, href, thumbnail = 'placeholder'}) => {
+export const Tile: React.FunctionComponent<TileProps> = ({
+    title,
+    description,
+    href,
+    thumbnail = 'placeholder',
+    sendAnalytics,
+}) => {
     const tileIcon = (
         <img
             src={thumbnails[thumbnail]}
@@ -60,7 +67,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, hr
 
     if (href && href.length > 0) {
         return (
-            <a className={className} href={href}>
+            <a className={className} href={href} onClick={sendAnalytics}>
                 {tileIcon}
                 {tileInfo}
             </a>
@@ -68,7 +75,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, hr
     }
 
     return (
-        <div className={className}>
+        <div className={className} onClick={sendAnalytics}>
             {tileIcon}
             {tileInfo}
         </div>

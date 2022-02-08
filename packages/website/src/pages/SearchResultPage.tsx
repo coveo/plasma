@@ -1,5 +1,6 @@
 import {
     buildResultList,
+    loadClickAnalyticsActions,
     loadPaginationActions,
     loadQueryActions,
     loadSearchActions,
@@ -27,6 +28,7 @@ interface ResultListProps {
 const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
     const {controller, engine, query} = props;
     const [state, setState] = useState(controller.state);
+    const {logDocumentOpen} = loadClickAnalyticsActions(engine);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
@@ -45,13 +47,14 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                             {state.results.length === 1 ? ' result' : ' results'}
                         </p>
                         <div className="tile-grid">
-                            {state.results.map(({title, raw, uniqueId, clickUri}: Result) => (
+                            {state.results.map((result) => (
                                 <Tile
-                                    key={uniqueId}
-                                    title={title}
-                                    href={clickUri.slice(clickUri.indexOf('#'))}
-                                    description={raw.description as string}
-                                    thumbnail={raw.thumbnail as TileProps['thumbnail']}
+                                    key={result.uniqueId}
+                                    title={result.title}
+                                    href={result.clickUri.slice(result.clickUri.indexOf('#'))}
+                                    description={result.raw.description as string}
+                                    thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
+                                    sendAnalytics={() => engine.dispatch(logDocumentOpen(result))}
                                 />
                             ))}
                         </div>
@@ -67,12 +70,12 @@ const SearchResultPage = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
     const {updateQuery} = loadQueryActions(engine);
-    const {logInterfaceLoad} = loadSearchAnalyticsActions(engine);
+    const {logNoResultsBack} = loadSearchAnalyticsActions(engine);
     const {registerNumberOfResults} = loadPaginationActions(engine);
     const {executeSearch} = loadSearchActions(engine);
     engine.dispatch(registerNumberOfResults(1000));
     engine.dispatch(updateQuery({q: query}));
-    engine.dispatch(executeSearch(logInterfaceLoad()));
+    engine.dispatch(executeSearch(logNoResultsBack()));
     const controller = buildResultList(engine);
     return <ResultListRenderer controller={controller} engine={engine} query={query} />;
 };
