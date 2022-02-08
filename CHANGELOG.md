@@ -3,6 +3,19 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.2.0](https://github.com/coveo/plasma/compare/v35.1.1...v35.2.0) (2022-02-08)
+
+
+### Features
+
+* add description for layout components ([72d867a](https://github.com/coveo/plasma/commit/72d867a4ed7a794184429b5859c4b507e019caaf))
+* add description form component part 1 ([a14240f](https://github.com/coveo/plasma/commit/a14240f2dca34390252aefcfb46acd45c31a3baf))
+* description for foundation components ([4e5aaad](https://github.com/coveo/plasma/commit/4e5aaada043be3d20dbc4d5049466d57f5bac14d))
+
+
+
+
+
 ## [35.1.1](https://github.com/coveo/plasma/compare/v35.1.0...v35.1.1) (2022-02-08)
 
 
