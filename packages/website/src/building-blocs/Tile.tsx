@@ -52,7 +52,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({title, description, hr
     );
     const tileInfo = (title || description) && (
         <div className="tile-information">
-            {title && <div className="tile-title h6-subdued">{title}</div>}
+            {title && <div className="tile-title h6-subdued sentence-case">{title}</div>}
             {description && <div className="tile-description body-m-book-subdued">{description}</div>}
         </div>
     );
