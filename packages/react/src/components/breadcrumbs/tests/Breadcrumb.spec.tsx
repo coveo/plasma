@@ -71,14 +71,5 @@ describe('<Breadcrumb/>', () => {
 
             expect(breadcrumbComponent.find(BreadcrumbLink).length).toBe(2);
         });
-
-        it('should render the BreadcrumbLink link with the defaultLinkPath before', () => {
-            renderBreadcrumb({
-                links: [defaultLink],
-                defaultLinkPath: 'test/',
-            });
-
-            expect(breadcrumbComponent.find(BreadcrumbLink).props().link).toContain('test/');
-        });
     });
 });
