@@ -6,10 +6,29 @@ import {Content, IContentProps} from '../content/Content';
 import {ITabsHeaderProps, TabsHeader} from './TabsHeader';
 
 export interface IHeaderWrapperProps extends ITabsHeaderProps {
+    /**
+     * Text that appears above the tabs in the header wrapper
+     */
     description?: string | React.ReactNode;
+    /**
+     * Add an action bar/ action button
+     */
     actions?: IContentProps[];
+    /**
+     * Additional CSS classes to set on the HeaderWrapper element
+     */
     classes?: string[];
+    /**
+     * If set to false, the line at the bottom of the HeaderWrapper disapear (only if there's no tabs)
+     *
+     * @default true
+     */
     hasBorderBottom?: boolean;
+    /**
+     * If set to false, the padding of the HeaderWrapper is removed
+     *
+     * @default true
+     */
     hasPadding?: boolean;
 }
 

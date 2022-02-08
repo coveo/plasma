@@ -6,11 +6,11 @@ import {BreadcrumbLink, IBreadcrumbLinkProps} from './BreadcrumbLink';
 
 export interface IBreadcrumbProps extends React.ClassAttributes<Breadcrumb> {
     /**
-     * Array of links to navigate when clicking on a breadcrumbs
+     * Array of breadcrumb links to navigate to previous pages
      */
     links?: IBreadcrumbLinkProps[];
     /**
-     * The content of the breadcrumb
+     * The content of the current breadcrumb
      */
     title: ITitleProps;
 }

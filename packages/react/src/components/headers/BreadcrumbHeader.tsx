@@ -5,6 +5,9 @@ import {Breadcrumb, IBreadcrumbProps} from '../breadcrumbs/Breadcrumb';
 import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
 
 export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
+    /**
+     * See Breadcrumb Component for details
+     */
     breadcrumb: IBreadcrumbProps;
 }
 
