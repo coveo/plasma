@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.1.0](https://github.com/coveo/plasma/compare/v35.0.0...v35.1.0) (2022-02-08)
+
+
+### Features
+
+* **props:** display deprecated and default props ([900d251](https://github.com/coveo/plasma/commit/900d2519ea4e1c276b7fdff564827693be2a7d24))
+
+
+
+
+
 # [35.0.0](https://github.com/coveo/plasma/compare/v34.1.4...v35.0.0) (2022-02-08)
 
 

@@ -3,6 +3,27 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [35.1.0](https://github.com/coveo/plasma/compare/v35.0.0...v35.1.0) (2022-02-08)
+
+
+### Features
+
+* **props:** display deprecated and default props ([900d251](https://github.com/coveo/plasma/commit/900d2519ea4e1c276b7fdff564827693be2a7d24))
+* **toast:** cleanup props and examples ([0780cce](https://github.com/coveo/plasma/commit/0780cce76191b94d38d7436c8d7a45d1d2da254c))
+
+
+### BREAKING CHANGES
+
+* **toast:** Some props of the Toast component changed
+- type is now a string union type instead of just string
+- isDownload prop was removed, it is now one of the types
+- isOpened prop was removed (wasn't used)
+- showInfoToken prop was removed (wasn't used)
+
+
+
+
+
 # [35.0.0](https://github.com/coveo/plasma/compare/v34.1.4...v35.0.0) (2022-02-08)
 
 
