@@ -1,5 +1,6 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
+
 import {Svg} from '../svg/Svg';
 import {IBlankSlateProps} from './BlankSlate';
 
@@ -13,7 +14,7 @@ export const blankSlateWithError = (
                     {...this.props}
                     title={
                         <div className="flex center-align">
-                            <Svg svgName={VaporSVG.svg.info.name} className="icon mr1 flex center-align" />
+                            <Svg svgName={svg.info.name} className="icon mr1 flex center-align" />
                             {this.props.title}
                         </div>
                     }

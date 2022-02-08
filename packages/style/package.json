@@ -12,7 +12,7 @@
     "homepage": "https://plasma.coveo.com/",
     "author": "Coveo",
     "license": "Apache-2.0",
-    "main": "dist/js/VaporSVG.js",
+    "main": "dist/js/PlasmaStyle.js",
     "types": "index.d.ts",
     "scripts": {
         "build": "gulp clean && gulp && webpack",

@@ -1,10 +1,10 @@
+import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 import {DropTarget, IDropTargetProps} from 'react-dnd';
 import {createStructuredSelector} from 'reselect';
 import * as _ from 'underscore';
 
-import * as VaporSVG from '@coveord/plasma-style';
 import {convertItemsBoxToStringList, convertStringListToItemsBox} from '../../reusableState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {DnDUtils} from '../dragAndDrop/DnDUtils';
@@ -172,7 +172,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                     role="button"
                     aria-label={this.props.deselectAllTooltipText}
                 >
-                    <Svg svgName={VaporSVG.svg.clear.name} svgClass="icon" />
+                    <Svg svgName={svg.clear.name} svgClass="icon" />
                 </div>
             </Tooltip>
         ) : null;
@@ -216,7 +216,7 @@ class MultiSelect extends React.PureComponent<IMultiSelectProps> {
                     >
                         <span className="dropdown-no-value">{this.props.placeholder}</span>
                         <Svg
-                            svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                            svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
                             svgClass="icon dropdown-toggle-arrow-style"
                         />
                     </button>

@@ -1,6 +1,7 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
@@ -12,7 +13,7 @@ interface BadgeWithLabelProps extends BadgeBasicProps {
     label: string;
 }
 interface BadgeWithIconProps extends BadgeBasicProps {
-    icon: SvgNames;
+    icon: SvgName;
 }
 
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);

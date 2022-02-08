@@ -1,6 +1,6 @@
 import '@styles/example-layout.scss';
 
-import {SvgNames, TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
+import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 

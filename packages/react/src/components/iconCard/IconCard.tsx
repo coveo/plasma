@@ -1,3 +1,4 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 import {slugify} from 'underscore.string';
@@ -5,19 +6,19 @@ import {slugify} from 'underscore.string';
 import {SlideY} from '../../animations';
 import {TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 import {ITooltipProps, Tooltip} from '../tooltip';
 
 export interface IconCardChoice {
     value: string;
     label: string;
-    icon?: SvgNames;
+    icon?: SvgName;
     disabled?: boolean;
 }
 
 export interface IconCardProps {
     title: string;
-    svgName: SvgNames;
+    svgName: SvgName;
     badges?: IBadgeProps[];
     description?: string;
     onClick?: (choice?: string) => void;

@@ -1,8 +1,8 @@
 import classNames from 'classnames';
-import {svg} from '@coveord/plasma-style';
+import {svg, SvgName} from '@coveord/plasma-style';
 import * as React from 'react';
 
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 
 export enum InfoTokenType {
     Information,
@@ -31,7 +31,7 @@ export interface InfoTokenProps {
     className?: string;
 }
 
-const SvgMapping: Record<InfoTokenType, Record<InfoTokenSize, SvgNames>> = {
+const SvgMapping: Record<InfoTokenType, Record<InfoTokenSize, SvgName>> = {
     [InfoTokenType.Information]: {
         [InfoTokenSize.Small]: svg.infoStrokedSmall.name,
         [InfoTokenSize.Medium]: svg.infoStrokedMedium.name,

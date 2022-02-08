@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {removeValueStringList} from '../../../reusableState/customList/StringListActions';
@@ -78,7 +78,7 @@ export const multilineBoxWithRemoveButton = (
                     {...props}
                 >
                     <Svg
-                        svgName={VaporSVG.svg.remove.name}
+                        svgName={svg.remove.name}
                         className="icon mod-18"
                         style={{
                             visibility: data.length > 1 ? 'visible' : 'hidden',

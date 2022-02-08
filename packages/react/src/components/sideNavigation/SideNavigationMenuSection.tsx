@@ -1,14 +1,15 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
 
 import {Collapsible} from '../collapsible/Collapsible';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 import {ISideNavigationHeaderProps} from './SideNavigationHeader';
 
 export interface SideNavigationHeaderProps {
     title?: React.ReactNode;
-    svgName?: SvgNames;
+    svgName?: SvgName;
     svgClass?: string;
     customIcon?: React.ReactNode;
     onClick?: (event: React.MouseEvent) => void;
