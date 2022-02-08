@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [34.1.4](https://github.com/coveo/plasma/compare/v34.1.3...v34.1.4) (2022-02-08)
+
+
+### Bug Fixes
+
+* **slider:** prevent slider selectors to throw when sliders is not defined ([cc39f8b](https://github.com/coveo/plasma/commit/cc39f8b795edfbd9b9ea02236060b03298cba511))
+
+
+
+
+
 ## [34.1.3](https://github.com/coveo/plasma/compare/v34.1.2...v34.1.3) (2022-02-08)
 
 **Note:** Version bump only for package root
