@@ -19,14 +19,16 @@ When using button to confirm an action that will be executed, always use an acti
 
 ## Variants
 
-| **Type** | **Purpose** |
-| ---- | --- | ---- |
+| **Type**      | **Purpose** |
+| --------- | --------- |
 | **Primary** | Use primary buttons for the main action you want to draw the user attention to. There should be only one primary action in a section or page. |
 | **Secondary** | Use secondary buttons to display action of lesser importance or to display multiple actions of similar importance. |
 | **Left icon + label** | Add a left icon to add quick and visual clarity to what the action is or draw attention to the button. Make sure the icon is highly recognizable. |
-| **Left icon + label** | Use the right icon to indicate that additional options are available upon selecting the button. This means that the action will not be carried right away upon clicking the button, but a menu overlay would be displayed where the user can select the exact action to be performed. For instance, when the action is "Create" and options are to create from a template or a blank file. |
-| **Right icon + label** | Use only an icon when space is an issue or when the icon is highly and instantly recognizable. For instance, the "Setting" button is commonly presented only using a cog icon. Never use icon only button for primary actions. |
+| **Right icon + label** | Use the right icon to indicate that additional options are available upon selecting the button. This means that the action will not be carried right away upon clicking the button, but a menu overlay would be displayed where the user can select the exact action to be performed. For instance, when the action is "Create" and options are to create from a template or a blank file. |
+| **Icon only** | Use only an icon when space is an issue or when the icon is highly and instantly recognizable. For instance, the "Setting" button is commonly presented only using a cog icon. Never use icon only button for primary actions. |
 | **Append and prepend separator** | Adding a separator is an aesthetic choice especially used when two or more buttons are stacked vertically. Use a separator to align the icon to the right or left or the button. Note that all buttons must have the same width when vertically stacked. |
+
+
 
 
 ## Feedback and Validation
