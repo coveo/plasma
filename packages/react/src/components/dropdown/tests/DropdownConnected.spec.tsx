@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {createTestAppContainer, removeTestAppContainer, TestUtils} from '../../../utils/tests/TestUtils';
 import {Dropdown, IDropdownProps} from '../Dropdown';
 import {toggleDropdown} from '../DropdownActions';
@@ -14,7 +14,7 @@ describe('Dropdown', () => {
     describe('<DropdownConnected />', () => {
         let wrapper: ReactWrapper<any, any>;
         let dropdown: ReactWrapper<IDropdownProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
         const basicDropdownProps: IDropdownProps = {
             id: 'dropdown-id',
             toggleContent: [<span key="toggle">Toggle</span>],

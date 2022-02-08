@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../../ReactVaporState';
+import {PlasmaState} from '../../../../PlasmaState';
 import {clearState} from '../../../../utils/ReduxUtils';
 import {TestUtils} from '../../../../utils/tests/TestUtils';
 import {UUID} from '../../../../utils/UUID';
@@ -13,7 +13,7 @@ import {MultiSelectWithPredicateAndFilter} from '../SelectComponents';
 
 describe('MultiSelectWithPredicateAndFilter', () => {
     let wrapper: ReactWrapper<any, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     const id: string = 'multi-select-with-predicate-and-filter';
 

@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {IconCard, Section, Svg} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const IconCardExamples: React.FunctionComponent = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="IconCard"
         title="Icon / Logo Card"
         usage="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
@@ -72,6 +72,6 @@ export const IconCardExamples: React.FunctionComponent = () => (
                 </Section>
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

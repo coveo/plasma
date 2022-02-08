@@ -14,7 +14,7 @@ import {
 
 import {Store} from '../../Store';
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 export interface IRadioSelectExampleProps extends IRadioSelectProps {
     defaultValue?: string;
 }
@@ -25,14 +25,14 @@ export interface IRadioSelectExampleState {
 
 // start-print
 export const RadioButtonExamples: ExampleComponent = () => (
-    <VaporComponent id="RadioButtons" title="Radio Buttons" withSource>
+    <PlasmaComponent id="RadioButtons" title="Radio Buttons" withSource>
         <Section title="Radio set">
             <RadioSelectExample />
             <RadioSelectDisabledExample />
             <RadioSelectWrappedExample />
             <RadioCardSelectExample />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 RadioButtonExamples.description =

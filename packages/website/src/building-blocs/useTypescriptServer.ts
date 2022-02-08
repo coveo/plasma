@@ -28,12 +28,7 @@ export const compilerOptions: ts.CompilerOptions = {
 
 const typesFiles = require.context('!!raw-loader!@types', true, /\.d\.ts$/i, 'lazy');
 const typescriptLibs = require.context('!!raw-loader!typescript/lib', false, /\.d\.ts$/i, 'lazy');
-const reactVaporTypes = require.context(
-    '!!raw-loader!@coveord/plasma-react/dist/definitions',
-    true,
-    /\.d\.ts$/i,
-    'lazy'
-);
+const plasmaTypes = require.context('!!raw-loader!@coveord/plasma-react/dist/definitions', true, /\.d\.ts$/i, 'lazy');
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
@@ -46,7 +41,7 @@ const loadAll = () =>
     Promise.all([
         ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
         ...typescriptLibs.keys().map((path) => load(path, typescriptLibs, '')),
-        ...reactVaporTypes.keys().map((path) => load(path, reactVaporTypes, '/node_modules/@coveord/plasma-react')),
+        ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
     ]);
 
 export const useTypescriptServer = () => {

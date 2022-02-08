@@ -13,13 +13,13 @@ import {
     Tooltip,
 } from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export class SectionExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="Section" title="Sections" withSource>
+            <PlasmaComponent id="Section" title="Sections" withSource>
                 <Form>
                     <Section
                         title="Search panel"
@@ -233,7 +233,7 @@ export class SectionExamples extends React.Component<any, any> {
                         </LabeledInput>
                     </Section>
                 </Form>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

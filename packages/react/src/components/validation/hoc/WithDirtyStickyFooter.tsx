@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {IStickyFooterProps} from '../../stickyFooter/StickyFooter';
 import {ValidationSelectors} from '../ValidationSelectors';
 
@@ -10,7 +10,7 @@ export interface IWithDirtyStickyFooterOwnProps {
     isOpened?: boolean;
 }
 
-const mapStateToProps = (state: IReactVaporState, {validationIds}: IWithDirtyStickyFooterOwnProps) => ({
+const mapStateToProps = (state: PlasmaState, {validationIds}: IWithDirtyStickyFooterOwnProps) => ({
     isDirty: ValidationSelectors.isDirty(validationIds)(state),
 });
 

@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ActionBarConnected} from '../../actions/ActionBar';
@@ -18,7 +18,7 @@ import {TABLE_PREDICATE_DEFAULT_VALUE} from '../TableConstants';
 import {SELECTION_BOXES, tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildActionBar />', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();

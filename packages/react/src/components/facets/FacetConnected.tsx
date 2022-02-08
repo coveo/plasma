@@ -1,12 +1,12 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {Facet, IFacet, IFacetDispatchProps, IFacetOwnProps, IFacetStateProps} from './Facet';
 import {addFacet, changeFacet, emptyFacet, removeFacet} from './FacetActions';
 import {IFacetState} from './FacetReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IFacetOwnProps): IFacetStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IFacetOwnProps): IFacetStateProps => {
     const item: IFacetState = _.findWhere(state.facets, {facet: ownProps.facet.name});
     const selectedFacetRows: IFacet[] = item ? getSelectedRows(ownProps.facetRows, item.selected) : [];
 

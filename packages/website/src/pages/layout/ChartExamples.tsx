@@ -18,7 +18,7 @@ import {
 import * as _ from 'underscore';
 import {capitalize} from 'underscore.string';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const data = [
     {
@@ -80,7 +80,7 @@ const ChartType = {
 export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
-        <VaporComponent
+        <PlasmaComponent
             id="Charts"
             title="Charts"
             usage="A chart compares sets of complex data to provide insights on their relationship and status."
@@ -218,6 +218,6 @@ export const ChartExamples: React.FunctionComponent = () => {
                     </div>
                 </Section>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };

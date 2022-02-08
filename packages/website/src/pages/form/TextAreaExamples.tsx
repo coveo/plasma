@@ -3,11 +3,11 @@ import {Label, setDisabledTextArea, TextAreaConnected} from '@coveord/plasma-rea
 import {findWhere} from 'underscore';
 
 import {Store} from '../../Store';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const TextAreaExamples = (): JSX.Element => (
-    <VaporComponent id="TextArea" title="Text Area" withSource>
+    <PlasmaComponent id="TextArea" title="Text Area" withSource>
         <div className="mt2">
             <div className="mt2">
                 <div className="form-group">
@@ -100,5 +100,5 @@ export const TextAreaExamples = (): JSX.Element => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

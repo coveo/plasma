@@ -6,14 +6,14 @@ import {Store} from 'redux';
 import {Button} from '../../../components/button/Button';
 import {Input} from '../../../components/input/Input';
 import {StickyFooter} from '../../../components/stickyFooter/StickyFooter';
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IWithDirtyProps} from '../../withDirty/withDirty';
 import {IWithEditing, withEditing} from '../withEditing';
 
 describe('Component with editing', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();

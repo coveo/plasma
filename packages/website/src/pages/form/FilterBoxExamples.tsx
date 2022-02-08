@@ -2,7 +2,7 @@ import * as React from 'react';
 import {Button, FilterBoxConnected, Section, Svg} from '@coveord/plasma-react';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const FilterBoxExamples: ExampleComponent = () => <FilterBoxes />;
 FilterBoxExamples.description = 'Will be used to filter content';
@@ -10,7 +10,7 @@ FilterBoxExamples.description = 'Will be used to filter content';
 // start-print
 
 const FilterBoxes: React.FunctionComponent = () => (
-    <VaporComponent id="FilterBox" title="Filter Box" withSource>
+    <PlasmaComponent id="FilterBox" title="Filter Box" withSource>
         <Section title="FilterBox Examples">
             <Section level={3} title="A filterBox with a custom placeholder.">
                 <FilterBoxConnected id="FirstFilterBox" filterPlaceholder="Custom Placeholder" />
@@ -30,5 +30,5 @@ const FilterBoxes: React.FunctionComponent = () => (
                 </FilterBoxConnected>
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

@@ -2,7 +2,7 @@ import {changeFacet, FacetConnected, IFacet, IFacetActionPayload, IReduxAction, 
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const facet: IFacet = {name: 'facetTitle1', formattedName: 'The first facet'};
 const facet2: IFacet = {name: 'facetTitle2', formattedName: 'The second facet'};
@@ -64,7 +64,7 @@ const FacetExamplesDisconnected: React.FunctionComponent<ReturnType<typeof mapDi
     }, []);
 
     return (
-        <VaporComponent
+        <PlasmaComponent
             id="Facet"
             title="Facet"
             usage="A facet is a set of options used to filter a list of content items."
@@ -93,7 +93,7 @@ const FacetExamplesDisconnected: React.FunctionComponent<ReturnType<typeof mapDi
                     />
                 </div>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };
 export const FacetExamples = connect(null, mapDispatchToProps)(FacetExamplesDisconnected);

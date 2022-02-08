@@ -2,10 +2,10 @@ import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {LinkSvg, SvgNames} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const IconsList = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="IconsList"
         title="Icons list"
         usage={<p>Icons are used to visually represent actions, functionalities, and features.</p>}
@@ -17,7 +17,7 @@ export const IconsList = () => (
                     <IconItem key={svgName} svgName={svgName as SvgNames} fileName={VaporSVG.svg[svgName].fileName} />
                 ))}
         </ul>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 const IconItem = ({svgName, fileName}: {svgName: SvgNames; fileName: string}) => (

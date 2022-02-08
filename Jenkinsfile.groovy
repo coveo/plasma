@@ -28,7 +28,7 @@ pipeline {
   agent { label "build && docker && linux" }
 
   environment {
-    NPM_TOKEN = credentials("npmjs_com_token")
+    NPM_TOKEN = credentials("NPM_TOKEN")
     GIT = credentials("github-commit-token")
     GH_TOKEN = credentials("github-commit-token")
     SNYK_TOKEN = credentials("snyk_token")

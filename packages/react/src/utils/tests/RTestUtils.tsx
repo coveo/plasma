@@ -6,7 +6,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
 import {DnDUtils} from '../../components/dragAndDrop/DnDUtils';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {UUID} from '../UUID';
 import {TestUtils} from './TestUtils';
 
@@ -21,7 +21,7 @@ const mockTagContext = () => {
 const DD = DragDropContext(TestBackend);
 
 const renderComponent = (ComponentClass: any, props = {}, child: React.ReactNode = null) => {
-    const store: Store<IReactVaporState> = TestUtils.buildStore();
+    const store: Store<PlasmaState> = TestUtils.buildStore();
 
     class Tester extends React.Component {
         render() {

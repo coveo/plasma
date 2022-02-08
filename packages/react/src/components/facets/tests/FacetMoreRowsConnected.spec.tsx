@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {addFilter, filterThrough} from '../../filterBox/FilterBoxActions';
@@ -20,7 +20,7 @@ describe('Facets', () => {
         let facetRows: JSX.Element[];
         let wrapper: ReactWrapper<any, any>;
         let facetMoreRows: ReactWrapper<IFacetMoreRowsProps, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             const onToggleFacet = jest.fn();

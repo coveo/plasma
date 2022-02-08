@@ -6,14 +6,14 @@ import * as _ from 'underscore';
 
 import {StringListActions} from '../../../reusableState/customList/StringListActions';
 import {RTestUtils} from '../../../utils/tests/RTestUtils';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {Button, IButtonProps} from '../../button/Button';
 import {multilineBoxWithRemoveButton} from '../hoc/MultilineBoxWithRemoveButton';
 import {IMultilineBoxOwnProps, IMultilineSingleBoxProps, MultilineBox} from '../MultilineBox';
 
 describe('Multiline box with remove button', () => {
     describe('<MultilineBoxWithRemoveButton/>', () => {
-        let store: ReactVaporMockStore;
+        let store: PlasmaMockStore;
 
         const id = 'multiline-box';
         const DefaultMultilineBoxWithRemoveButton = _.compose(multilineBoxWithRemoveButton())(MultilineBox);

@@ -4,14 +4,14 @@ import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 
 import {keyCode} from '../../../utils/InputUtils';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {NumericInputActions} from '../NumericInputActions';
 import {NumericInputConnected} from '../NumericInputConnected';
 import {initialNumericInputState} from '../NumericInputReducers';
 
 describe('Numeric Input', () => {
     describe('<NumericInputConnected />', () => {
-        let store: ReactVaporMockStore;
+        let store: PlasmaMockStore;
         const id = 'numeric-input';
         const initialValue = 50;
 

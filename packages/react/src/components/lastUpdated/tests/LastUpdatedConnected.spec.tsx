@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {contains} from 'underscore.string';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ILastUpdatedProps, LastUpdated} from '../LastUpdated';
@@ -16,7 +16,7 @@ describe('LastUpdated', () => {
         let lastUpdated: ReactWrapper<ILastUpdatedProps, any>;
         let id: string;
         let wrapper: ReactWrapper<any, any>;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             id = 'last-update';

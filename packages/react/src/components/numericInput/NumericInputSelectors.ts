@@ -1,18 +1,18 @@
 import * as React from 'react';
 import {createSelector} from 'reselect';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {initialNumericInputState, INumericInputState} from './NumericInputReducers';
 
-const getNumericInput = (state: IReactVaporState, ownProps: {id: string}): INumericInputState =>
+const getNumericInput = (state: PlasmaState, ownProps: {id: string}): INumericInputState =>
     state?.numericInputs?.[ownProps.id] || initialNumericInputState;
 
-const getValue: (state: IReactVaporState, ownProps: {id: string}) => React.ReactText = createSelector(
+const getValue: (state: PlasmaState, ownProps: {id: string}) => React.ReactText = createSelector(
     getNumericInput,
     (numericInput: INumericInputState) => numericInput.value
 );
 
-const getHasError: (state: IReactVaporState, ownProps: {id: string}) => boolean = createSelector(
+const getHasError: (state: PlasmaState, ownProps: {id: string}) => boolean = createSelector(
     getNumericInput,
     (numericInput: INumericInputState) => numericInput.hasError
 );

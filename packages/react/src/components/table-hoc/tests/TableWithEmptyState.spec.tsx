@@ -1,7 +1,7 @@
 import {act, render, screen} from '@test-utils';
 import * as React from 'react';
 
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {TableHOCActions} from '../actions/TableHOCActions';
 import {TableHOC} from '../TableHOC';
 import {TableSelectors} from '../TableSelectors';
@@ -10,7 +10,7 @@ import {tableWithEmptyState} from '../TableWithEmptyState';
 describe('TableWithEmptyState', () => {
     const TableWithEmptyState = tableWithEmptyState(TableHOC);
     const EmptyState: React.FunctionComponent = () => <div>No data!</div>;
-    let store: ReactVaporMockStore;
+    let store: PlasmaMockStore;
 
     beforeEach(() => {
         store = getStoreMock();

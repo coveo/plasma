@@ -2,7 +2,7 @@ import * as React from 'react';
 import {OptionsCycleConnected, Section} from '@coveord/plasma-react';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const OptionsCycleExamples: ExampleComponent = () => <OptionsCycles />;
 
@@ -11,7 +11,7 @@ export const OptionsCycleExamples: ExampleComponent = () => <OptionsCycles />;
 const OPTIONS = ['Option 1', 'Option 2', 'Option 3', 'Option 4'];
 
 const OptionsCycles: React.FunctionComponent = () => (
-    <VaporComponent id="OptionsCycle" title="Options Cycle" withSource>
+    <PlasmaComponent id="OptionsCycle" title="Options Cycle" withSource>
         <Section>
             <Section level={2} title="Option cycle">
                 <OptionsCycleConnected id="Cycle-1" options={OPTIONS} />
@@ -31,5 +31,5 @@ const OptionsCycles: React.FunctionComponent = () => (
                 />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

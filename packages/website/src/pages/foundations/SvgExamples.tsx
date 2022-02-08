@@ -2,7 +2,7 @@ import {
     FlatSelectConnected,
     FlatSelectSelectors,
     IItemBoxProps,
-    IReactVaporState,
+    PlasmaState,
     Section,
     SingleSelectConnected,
     StringUtils,
@@ -13,12 +13,12 @@ import {
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SvgExamples: React.FC = () => {
     const LISTBOX_ID = 'svg-name-picker';
-    const svgName = useSelector((state: IReactVaporState) => {
+    const svgName = useSelector((state: PlasmaState) => {
         const selectedBox = state.listBoxes.find((box) => box.id === LISTBOX_ID);
 
         if (!selectedBox) {
@@ -59,7 +59,7 @@ export const SvgExamples: React.FC = () => {
     ];
 
     return (
-        <VaporComponent id="ColorBar" title="SVG" withSource>
+        <PlasmaComponent id="ColorBar" title="SVG" withSource>
             <Section
                 level={1}
                 title="Size modifiers"
@@ -111,6 +111,6 @@ export const SvgExamples: React.FC = () => {
                     </div>
                 </Section>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };

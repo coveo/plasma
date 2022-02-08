@@ -1,14 +1,14 @@
 import * as React from 'react';
 import {Filepicker} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const inputId = 'file-input-example';
 
 // start-print
 export const FilepickerExamples: React.FunctionComponent = () => (
-    <VaporComponent id="Filepicker" title="File Picker" withSource>
+    <PlasmaComponent id="Filepicker" title="File Picker" withSource>
         <Filepicker id={inputId} accept=".jpg,.png,.csv,.txt" placeholder="Choose a file..." />
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

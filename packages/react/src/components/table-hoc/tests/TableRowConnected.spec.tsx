@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event';
 
 import {HOCTableRowState} from '..';
 import {UrlUtils} from '../../../utils';
-import {getStoreMock, ReactVaporMockStore} from '../../../utils/tests/TestUtils';
+import {getStoreMock, PlasmaMockStore} from '../../../utils/tests/TestUtils';
 import {addActionsToActionBar} from '../../actions/ActionBarActions';
 import {CollapsibleToggle} from '../../collapsible/CollapsibleToggle';
 import {TableHOCRowActions} from '../actions/TableHOCRowActions';
@@ -15,7 +15,7 @@ import {TableSelectors} from '../TableSelectors';
 
 describe('Table HOC', () => {
     describe('TableRowConnected', () => {
-        let store: ReactVaporMockStore;
+        let store: PlasmaMockStore;
         const defaultProps = {
             id: 'a',
             tableId: 'b',

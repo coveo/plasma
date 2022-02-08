@@ -3,7 +3,7 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 import {Store} from 'redux';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ITableProps} from '../Table';
@@ -14,7 +14,7 @@ import {TableHeaderCellConnected} from '../TableHeaderCellConnected';
 import {tablePropsMock} from './TableTestCommon';
 
 describe('<TableChildHeader />', () => {
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     beforeEach(() => {
         store = TestUtils.buildStore();

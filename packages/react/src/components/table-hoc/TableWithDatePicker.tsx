@@ -3,7 +3,7 @@ import * as React from 'react';
 import * as _ from 'underscore';
 
 import {WithServerSideProcessingProps} from '../../hoc/withServerSideProcessing/withServerSideProcessing';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {ConfigSupplier, HocUtils} from '../../utils/HocUtils';
 import {ReduxConnect} from '../../utils/ReduxUtils';
 import {UrlUtils} from '../../utils/UrlUtils';
@@ -47,7 +47,7 @@ export const tableWithDatePicker = (supplier: ConfigSupplier<ITableWithDatePicke
     const config = HocUtils.supplyConfig(supplier);
 
     const mapStateToProps = (
-        state: IReactVaporState,
+        state: PlasmaState,
         ownProps: ITableWithDatePickerProps
     ): ITableWithDatePickerStateProps | ITableHOCOwnProps => {
         const [lowerLimit, upperLimit] = DatePickerSelectors.getDatePickerLimits(state, {id: ownProps.id});

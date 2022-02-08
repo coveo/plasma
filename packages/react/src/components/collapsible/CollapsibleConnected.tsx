@@ -4,7 +4,7 @@ import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
 
 import {SlideY} from '../../animations/SlideY';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
 import {CollapsibleToggle} from './CollapsibleToggle';
@@ -22,7 +22,7 @@ export interface CollapsibleOwnProps {
     onClick?: () => void;
 }
 
-const mapStateToProps = (state: IReactVaporState, ownProps: CollapsibleOwnProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: CollapsibleOwnProps) => {
     const collapsibleState = findWhere(state.collapsibles, {id: ownProps.id});
     if (collapsibleState) {
         return {expanded: collapsibleState.expanded};

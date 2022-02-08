@@ -4,7 +4,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import * as _ from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {IInlinePromptOptions, InlinePrompt, InlinePromptConnected} from '../InlinePrompt';
@@ -17,7 +17,7 @@ describe('InlinePrompt', () => {
     describe('InlinePromptView', () => {
         let wrapper: ReactWrapper<any, any>;
         let inlinePrompt: ReactWrapper;
-        let store: Store<IReactVaporState>;
+        let store: Store<PlasmaState>;
 
         beforeEach(() => {
             id = 'filter-box';

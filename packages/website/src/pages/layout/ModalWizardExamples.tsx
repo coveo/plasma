@@ -5,7 +5,7 @@ import {
     IDispatch,
     InputConnected,
     InputSelectors,
-    IReactVaporState,
+    PlasmaState,
     Label,
     ModalWizard,
     ModalWizardWithValidations,
@@ -23,14 +23,14 @@ import {
 import * as React from 'react';
 import {connect} from 'react-redux';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 const containsCoveo = (str: string) => str.trim().toLowerCase().includes('coveo');
 
 const enhanceExample1 = connect(
-    (state: IReactVaporState) => ({
+    (state: PlasmaState) => ({
         selectedPath: RadioSelectSelectors.getValue(state, {id: 'radio-step-1'}),
         inputTwoValue: InputSelectors.getValue(state, {id: 'input-step-2'}) || '',
     }),
@@ -172,7 +172,7 @@ const ModalWizardWithValidationIdsDisconnected: React.FunctionComponent<Connecte
 const ModalWizardWithValidationIds = enhanceExample2(ModalWizardWithValidationIdsDisconnected);
 
 export const ModalWizardExamples = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="ModalWizard"
         title="Modal Wizard"
         usage="A modal wizard guides users through a task by presenting a succession of actions to complete."
@@ -182,6 +182,6 @@ export const ModalWizardExamples = () => (
             <StandardModalWizard />
             <ModalWizardWithValidationIds />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

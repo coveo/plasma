@@ -1,7 +1,7 @@
 import {IItemBoxProps, ITooltipProps, ListBox, ListBoxConnected, UUID} from '@coveord/plasma-react';
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
@@ -35,7 +35,7 @@ export class ListBoxExamples extends React.Component {
         ]);
 
         return (
-            <VaporComponent id="ListBox" title="List Box" withSource>
+            <PlasmaComponent id="ListBox" title="List Box" withSource>
                 <div className="mt2 mod-width-50">
                     <div className="form-group">
                         <label className="form-control-label">Default List Box</label>
@@ -80,7 +80,7 @@ export class ListBoxExamples extends React.Component {
                         </div>
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

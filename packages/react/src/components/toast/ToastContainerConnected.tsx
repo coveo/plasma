@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addToastContainer, removeToast, removeToastContainer} from './ToastActions';
 import {
@@ -10,7 +10,7 @@ import {
     ToastContainer,
 } from './ToastContainer';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IToastContainerOwnProps): IToastContainerStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IToastContainerOwnProps): IToastContainerStateProps => {
     const container = _.findWhere(state.toastContainers, {id: ownProps.id}) || {id: null, toasts: []};
     return {
         toasts: container.toasts,

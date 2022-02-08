@@ -1,10 +1,10 @@
 import * as React from 'react';
 import {Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const Whitespace = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="Whitespaces"
         title="Whitespace"
         usage="Whitespace is the standard padding and margin size that one can adjust to customize the layout of an interface."
@@ -48,5 +48,5 @@ export const Whitespace = () => (
                 Use <span className="bolder">mx-auto</span> to have a auto margin-left and margin-right.
             </div>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

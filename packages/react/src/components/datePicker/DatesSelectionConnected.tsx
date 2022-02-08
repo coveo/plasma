@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {changeOptionPicker} from '../optionPicker/OptionPickerActions';
 import {IOptionPickerState} from '../optionPicker/OptionPickerReducers';
@@ -20,7 +20,7 @@ import {
     IDatesSelectionStateProps,
 } from './DatesSelection';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IDatesSelectionOwnProps): IDatesSelectionStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IDatesSelectionOwnProps): IDatesSelectionStateProps => {
     const item: IDatePickerState = _.findWhere(state.datePickers, {id: ownProps.id});
     const optionPicker: IOptionPickerState = _.findWhere(state.optionPickers, {id: ownProps.id});
 

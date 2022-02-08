@@ -9,7 +9,7 @@ import {
 import {findWhere} from 'underscore';
 
 import {Store} from '../../Store';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 class SearchBarExample extends React.Component<React.Attributes, ISearchBarStateProps> {
@@ -43,7 +43,7 @@ class SearchBarExample extends React.Component<React.Attributes, ISearchBarState
 export class SearchBarExamples extends React.Component<any, any> {
     render() {
         return (
-            <VaporComponent id="SearchBar" title="Search Bar" withSource>
+            <PlasmaComponent id="SearchBar" title="Search Bar" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">SearchBar disabled</label>
@@ -94,7 +94,7 @@ export class SearchBarExamples extends React.Component<any, any> {
                         </button>
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

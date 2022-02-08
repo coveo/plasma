@@ -2,7 +2,7 @@ import classNames from 'classnames';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxConnect} from '../../utils/ReduxUtils';
 import {Button, IButtonProps} from '../button/Button';
 import {Svg} from '../svg/Svg';
@@ -34,7 +34,7 @@ export interface IMenuDispatchProps {
 
 export interface IMenuProps extends IMenuOwnProps, IMenuStateProps, IMenuDispatchProps {}
 
-const mapStateToProps = (state: IReactVaporState, ownProps: IMenuOwnProps): IMenuStateProps => {
+const mapStateToProps = (state: PlasmaState, ownProps: IMenuOwnProps): IMenuStateProps => {
     const menu: IMenuState = state.menus[ownProps.id];
 
     return {

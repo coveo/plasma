@@ -6,7 +6,8 @@
         "jsx": "react",
         "lib": ["ES2015", "DOM"],
 
-        "composite": true,
+        "composite": false,
+        "incremental": true,
         "sourceMap": true,
         "declaration": true,
         "declarationMap": true,

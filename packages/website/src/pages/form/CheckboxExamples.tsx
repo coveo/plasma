@@ -15,10 +15,10 @@ import {
 import {Store} from '../../Store';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const CheckboxExamples: ExampleComponent = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="Checkbox"
         title="Checkbox"
         usage="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option.
@@ -29,7 +29,7 @@ export const CheckboxExamples: ExampleComponent = () => (
             <Checkboxset />
             <GroupableCheckboxConnectedExamples />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 CheckboxExamples.description =

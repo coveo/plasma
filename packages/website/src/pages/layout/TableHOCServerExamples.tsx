@@ -5,7 +5,7 @@ import {useNavigate} from 'react-router';
 import {
     filterThrough,
     IDispatch,
-    IReactVaporState,
+    PlasmaState,
     ITableHOCCompositeState,
     IThunkAction,
     LastUpdated,
@@ -29,7 +29,7 @@ import {
 } from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {TableHOCExampleUtils, TableHOCServerExampleContext} from '../../utils/TableHOCExampleUtils';
 
 export interface IExampleRowData {
@@ -132,7 +132,7 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
     }, []);
 
     return (
-        <VaporComponent id="TableHOCSever" title="Table HOC Server" withSource>
+        <PlasmaComponent id="TableHOCSever" title="Table HOC Server" withSource>
             <Section title="Server table with numbered rows">
                 <span className="block my2">
                     Please note that the backend service doesn't support dates but we still make a request for every
@@ -166,13 +166,13 @@ const TableExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
                     </ServerTableComposed>
                 </TableHOCServerExampleContext.Provider>
             </Section>
-        </VaporComponent>
+        </PlasmaComponent>
     );
 };
 
 const TableHOCServer = connect(undefined, mapDispatchToProps)(TableExampleDisconnected);
 
-const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => IReactVaporState) => {
+const fetchData = (): IThunkAction => async (dispatch: IDispatch, getState: () => PlasmaState) => {
     const compositeState: ITableHOCCompositeState = TableHOCUtils.getCompositeState(
         TableHOCServerExampleId,
         getState()

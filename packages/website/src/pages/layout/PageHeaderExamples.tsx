@@ -2,11 +2,11 @@ import React from 'react';
 import {BasicHeader, Section} from '@coveord/plasma-react';
 
 import {defaultTitle, actions} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SimpleHeader: React.FunctionComponent = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="Header"
         title="Page Header"
         usage="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional tabs."
@@ -27,6 +27,6 @@ export const SimpleHeader: React.FunctionComponent = () => (
                 />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

@@ -11,7 +11,7 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {
     CALENDAR_ADVANCED_SELECTION_RULES,
     CALENDAR_SELECTION_RULES,
@@ -21,7 +21,7 @@ import {
 } from '../../utils/DatePickerExamplesCommon';
 
 export const DatePickerExamples: ExampleComponent = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="DatePicker"
         title="Date Picker"
         usage="A date picker is a calendar interface that allows users to select a single date or a date range."
@@ -33,7 +33,7 @@ export const DatePickerExamples: ExampleComponent = () => (
             <DatePickerComponents />
             <DatesSelectionComponent />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 DatePickerExamples.title = 'DatePicker';
 

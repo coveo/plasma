@@ -23,7 +23,7 @@ import {
 } from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {SELECTION_BOXES_LONG} from '../../utils/DatePickerExamplesCommon';
 
 export interface IExampleRowData {
@@ -35,7 +35,7 @@ export interface IExampleRowData {
 }
 
 export const TableHOCExamples = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="TableHOC"
         title="Table"
         usage="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
@@ -49,7 +49,7 @@ export const TableHOCExamples = () => (
                 <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering2" data={[]} />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 // https://github.com/marak/Faker.js/

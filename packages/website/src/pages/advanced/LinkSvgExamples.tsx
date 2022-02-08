@@ -2,7 +2,7 @@ import * as React from 'react';
 import {ILinkSvgProps, ISvgProps, ITooltipProps, LinkSvg} from '@coveord/plasma-react';
 import * as _ from 'underscore';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const defaultSvgProps: ISvgProps = {
     svgName: 'domainGoogle',
@@ -23,7 +23,7 @@ export class LinkSvgExamples extends React.Component<any, any> {
         };
 
         return (
-            <VaporComponent id="LinkSvg" title="Link SVG" withSource>
+            <PlasmaComponent id="LinkSvg" title="Link SVG" withSource>
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">Default LinkSvg</label>
@@ -62,7 +62,7 @@ export class LinkSvgExamples extends React.Component<any, any> {
                         </div>
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

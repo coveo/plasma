@@ -57,7 +57,7 @@ import {ValidationsState} from './components/validation/ValidationState';
 import {IStringListCompositeState} from './reusableState/customList/StringListReducers';
 import {ComponentId} from './utils/ComponentUtils';
 
-export interface IReactVaporState {
+export interface PlasmaState {
     actionBars?: IActionBarState[];
     autocompletes?: IAutocompleteState[];
     checkboxes?: ICheckboxState[];

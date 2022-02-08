@@ -1,11 +1,11 @@
 import * as React from 'react';
 import {ActionableItem} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const ActionableItemExamples = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="ActionableItem"
         title="Actionable Item"
         usage="An actionable item is a dropdown menu listing actions associated with an element."
@@ -57,6 +57,6 @@ export const ActionableItemExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 // stop-print

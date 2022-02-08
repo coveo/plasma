@@ -1,4 +1,4 @@
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {BasePayload, IReduxAction} from '../../utils/ReduxUtils';
 import {RefreshCallbackActionType} from './RefeshCallbackActions';
 
@@ -39,7 +39,7 @@ export const refreshCallBackReducer = (
     }
 };
 
-const getRefreshStatus = (state: IReactVaporState, {id}: {id: string}): string => state.refreshCallback?.[id];
+const getRefreshStatus = (state: PlasmaState, {id}: {id: string}): string => state.refreshCallback?.[id];
 
 export const RefreshStatusSelectors = {
     getRefreshStatus,

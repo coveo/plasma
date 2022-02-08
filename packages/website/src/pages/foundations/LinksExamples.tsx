@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const Links = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="Links"
         title="Links"
         usage="A link is a navigational element that guides users to external resources or other sections of the product."
@@ -36,5 +36,5 @@ export const Links = () => (
                 Disabled action triggering link
             </button>
         </p>
-    </VaporComponent>
+    </PlasmaComponent>
 );

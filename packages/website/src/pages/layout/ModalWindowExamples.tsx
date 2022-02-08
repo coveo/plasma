@@ -6,7 +6,7 @@ import {
     closeModal,
     IDispatch,
     Input,
-    IReactVaporState,
+    PlasmaState,
     ModalCompositeConnected,
     ModalLoading,
     openModal,
@@ -20,7 +20,7 @@ import {
 import * as _ from 'underscore';
 
 import {ExampleComponent} from '../../utils/ExamplesUtils';
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 export interface ModalConnectedExampleProps {
     id: string;
 }
@@ -30,7 +30,7 @@ const description =
 
 // start-print
 export const ModalWindowExamples: ExampleComponent = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="ModalComposite"
         title="Modal Window"
         usage="A modal appears over the current context to have users focus on a particular task or information."
@@ -41,7 +41,7 @@ export const ModalWindowExamples: ExampleComponent = () => (
             <ModalWithDirtyChangeDiscardPrevention id="UnsavedChangeModal" />
             <ModalLoadingExample />
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );
 
 ModalWindowExamples.title = 'Modal Window';
@@ -188,7 +188,7 @@ const ModalExampleDisconnected: React.FunctionComponent<ReturnType<typeof mapDis
 
 const ModalCompositeExampleConnected = connect(null, mapDispatchToProps)(ModalExampleDisconnected);
 
-const mapStateToProps = (state: IReactVaporState, ownProps: any) => ({
+const mapStateToProps = (state: PlasmaState, ownProps: any) => ({
     isDirty: WithDirtySelectors.getIsDirty(state, {id: ownProps.id}),
 });
 

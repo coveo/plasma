@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 
-import {IReactVaporState, IReduxActionsPayload} from '../../ReactVaporState';
+import {PlasmaState, IReduxActionsPayload} from '../../PlasmaState';
 import {IReduxAction, ReduxUtils} from '../../utils/ReduxUtils';
 import {
     IOptionsCycleConnectedOwnProps,
@@ -11,10 +11,7 @@ import {
 import {addOptionsCycle, changeOptionsCycle, removeOptionsCycle} from './OptionsCycleActions';
 import {OptionsCycleSelectors} from './OptionsCycleSelectors';
 
-const mapStateToProps = (
-    state: IReactVaporState,
-    ownProps: IOptionsCycleConnectedOwnProps
-): IOptionsCycleStateProps => ({
+const mapStateToProps = (state: PlasmaState, ownProps: IOptionsCycleConnectedOwnProps): IOptionsCycleStateProps => ({
     currentOption: OptionsCycleSelectors.getCurrentOption(state, {id: ownProps.id, startAt: ownProps.startAt}),
 });
 

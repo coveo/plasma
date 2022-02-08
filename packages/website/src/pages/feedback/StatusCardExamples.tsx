@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {StatusCard} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 
 export const StatusCardExamples = () => (
-    <VaporComponent id="StatusCard" title="Status Card" withSource>
+    <PlasmaComponent id="StatusCard" title="Status Card" withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Status card success</label>
@@ -71,5 +71,5 @@ export const StatusCardExamples = () => (
                 </div>
             </div>
         </div>
-    </VaporComponent>
+    </PlasmaComponent>
 );

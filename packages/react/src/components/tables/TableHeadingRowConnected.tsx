@@ -1,6 +1,6 @@
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
-import {IReactVaporState} from '../../ReactVaporState';
+import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {updateSelectedRows} from './TableActions';
 import {ITableHeadingRowOwnProps, TableHeadingRow} from './TableHeadingRow';
@@ -8,7 +8,7 @@ import {ITableState} from './TableReducers';
 import {addRow, removeRow, selectRow, toggleRowOpened} from './TableRowActions';
 import {ITableRowState} from './TableRowReducers';
 
-const mapStateToProps = (state: IReactVaporState, ownProps: ITableHeadingRowOwnProps) => {
+const mapStateToProps = (state: PlasmaState, ownProps: ITableHeadingRowOwnProps) => {
     const item: ITableRowState = _.findWhere(state.rows, {id: ownProps.id});
     const table: ITableState = state.tables && state.tables[ownProps.tableId];
 

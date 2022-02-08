@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {CodeEditor, CodeMirrorModes} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 const defaultValue = `from math import pi as PI
 print(PI) // 3.141592653589793
@@ -11,7 +11,7 @@ print(PI) // 3.141592653589793
 export class CodeEditorExamples extends React.Component {
     render() {
         return (
-            <VaporComponent
+            <PlasmaComponent
                 id="CodeEditor"
                 title="Code Editor"
                 usage="A code editor is a text area that allows users to edit code. A coding syntax is built in."
@@ -46,7 +46,7 @@ export class CodeEditorExamples extends React.Component {
                         <CodeEditor value={defaultValue} mode={CodeMirrorModes.Python} options={{lineWrapping: true}} />
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

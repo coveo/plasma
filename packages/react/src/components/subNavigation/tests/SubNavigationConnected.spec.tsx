@@ -5,7 +5,7 @@ import {Provider} from 'react-redux';
 import {Store} from 'redux';
 import {findWhere} from 'underscore';
 
-import {IReactVaporState} from '../../../ReactVaporState';
+import {PlasmaState} from '../../../PlasmaState';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {ISubNavigationProps, SubNavigation} from '../SubNavigation';
 import {SubNavigationConnected} from '../SubNavigationConnected';
@@ -13,7 +13,7 @@ import {SubNavigationConnected} from '../SubNavigationConnected';
 describe('SubNavigation', () => {
     let wrapper: ReactWrapper<any, any>;
     let subNavigation: ReactWrapper<ISubNavigationProps, any>;
-    let store: Store<IReactVaporState>;
+    let store: Store<PlasmaState>;
 
     describe('<SubNavigationConnected />', () => {
         const basicProps: ISubNavigationProps = {

@@ -7,7 +7,7 @@ import {
 } from '@coveord/plasma-react';
 import * as React from 'react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {Store} from '../../Store';
 
 const actionBarId = 'action-bar-connected';
@@ -101,9 +101,9 @@ export class ActionBarExamples extends React.Component<any, any> {
 
     render() {
         return (
-            <VaporComponent id="ActionBarConnected" title="Action Bar" withSource>
+            <PlasmaComponent id="ActionBarConnected" title="Action Bar" withSource>
                 <ActionBarConnected id={actionBarId} itemFilterLabel="Filtered By" />
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 }

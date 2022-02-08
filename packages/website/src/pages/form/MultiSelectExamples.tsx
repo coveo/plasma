@@ -16,7 +16,7 @@ import {
     withNonEmptyMultiSelectHOC,
 } from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 const defaultItems: IItemBoxProps[] = [
@@ -112,7 +112,7 @@ export class MultiSelectExamples extends React.Component<unknown, IMultiSelectEx
 
     render() {
         return (
-            <VaporComponent id="MultiSelect" title="Multi-select" withSource>
+            <PlasmaComponent id="MultiSelect" title="Multi-select" withSource>
                 <div className="mb2">
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select without items</label>
@@ -277,7 +277,7 @@ export class MultiSelectExamples extends React.Component<unknown, IMultiSelectEx
                         <WithNonEmptyMultiSelectExample />
                     </div>
                 </div>
-            </VaporComponent>
+            </PlasmaComponent>
         );
     }
 

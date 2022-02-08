@@ -1,12 +1,12 @@
 import * as React from 'react';
 import {DiffViewer, fakeJSON1, JSONToString, Section} from '@coveord/plasma-react';
 
-import VaporComponent from '../../building-blocs/VaporComponent';
+import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 import {fakeJSON} from '../../utils/DiffViewerExmaplesCommon';
 
 // start-print
 export const DiffViewerExamples: React.FC = () => (
-    <VaporComponent
+    <PlasmaComponent
         id="DiffViewer"
         title="Diff Viewer"
         usage="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
@@ -27,5 +27,5 @@ export const DiffViewerExamples: React.FC = () => (
                 />
             </Section>
         </Section>
-    </VaporComponent>
+    </PlasmaComponent>
 );

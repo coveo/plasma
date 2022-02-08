@@ -15,6 +15,7 @@
         background-color: var(--navy-blue-80);
 
         .header-logo {
+            width: 229px;
             height: 102px;
             margin-left: 32px;
         }
@@ -142,5 +143,13 @@
 #multiselect-examples {
     .form-control-label {
         display: block;
+    }
+}
+
+.sentence-case {
+    text-transform: lowercase;
+
+    &::first-letter {
+        text-transform: uppercase;
     }
 }
