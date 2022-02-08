@@ -19,7 +19,7 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps {
      */
     classes?: string[];
     /**
-     * If set to false, the line at the bottom of the HeaderWrapper disapear (only if there's no tabs)
+     * If set to false, the line at the bottom of the HeaderWrapper disappears (only if there's no tabs)
      *
      * @default true
      */
