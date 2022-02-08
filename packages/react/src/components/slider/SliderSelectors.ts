@@ -3,7 +3,7 @@ import {createSelector} from 'reselect';
 import {PlasmaState} from '../../PlasmaState';
 import {ISliderState} from './SliderReducers';
 
-const getSlider = (state: PlasmaState, {id}: {id: string}): ISliderState => state.sliders[id];
+const getSlider = (state: PlasmaState, {id}: {id: string}): ISliderState => state.sliders?.[id];
 
 const getSliderValue = createSelector(getSlider, (slider: ISliderState): number => slider?.value);
 
