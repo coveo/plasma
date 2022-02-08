@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.1.1](https://github.com/coveo/plasma/compare/v35.1.0...v35.1.1) (2022-02-08)
+
+
+### Bug Fixes
+
+* **website:** improve UX when switching between sandbox pages ([1d89ff4](https://github.com/coveo/plasma/commit/1d89ff4d7fe29bac45d40ca2f7effc24d9258257))
+
+
+
+
+
 # [35.1.0](https://github.com/coveo/plasma/compare/v35.0.0...v35.1.0) (2022-02-08)
 
 

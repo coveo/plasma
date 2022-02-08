@@ -54,7 +54,7 @@ importers:
 
   packages/react:
     specifiers:
-      '@coveord/plasma-style': ^35.1.0
+      '@coveord/plasma-style': ^35.1.1
       '@helpers/enzyme-redux': ^1.0.0
       '@hot-loader/react-dom': 17.0.2
       '@swc/cli': 0.1.55
@@ -365,8 +365,8 @@ importers:
   packages/website:
     specifiers:
       '@coveo/headless': ^1.32.0
-      '@coveord/plasma-react': ^35.1.0
-      '@coveord/plasma-style': ^35.1.0
+      '@coveord/plasma-react': ^35.1.1
+      '@coveord/plasma-style': ^35.1.1
       '@hot-loader/react-dom': 17.0.2
       '@loadable/component': 5.15.0
       '@swc/helpers': 0.3.2

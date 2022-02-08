@@ -3,6 +3,14 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [35.1.1](https://github.com/coveo/plasma/compare/v35.1.0...v35.1.1) (2022-02-08)
+
+**Note:** Version bump only for package @coveord/plasma-react
+
+
+
+
+
 # [35.1.0](https://github.com/coveo/plasma/compare/v35.0.0...v35.1.0) (2022-02-08)
 
 
