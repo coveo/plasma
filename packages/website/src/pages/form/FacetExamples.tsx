@@ -64,7 +64,12 @@ const FacetExamplesDisconnected: React.FunctionComponent<ReturnType<typeof mapDi
     }, []);
 
     return (
-        <PlasmaComponent id="Facet" title="Facet" withSource>
+        <PlasmaComponent
+            id="Facet"
+            title="Facet"
+            usage="A facet is a set of options used to filter a list of content items."
+            withSource
+        >
             <Section level={2} title="Facets connected to store">
                 <div style={{width: 400}}>
                     <label className="form-control-label">Facet with the second row selectd</label>

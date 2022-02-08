@@ -5,7 +5,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const ActionableItemExamples = () => (
-    <PlasmaComponent id="ActionableItem" title="Actionable Item" withSource>
+    <PlasmaComponent
+        id="ActionableItem"
+        title="Actionable Item"
+        usage="An actionable item is a dropdown menu listing actions associated with an element."
+        withSource
+    >
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">ActionableItem without an onItemClick method</label>

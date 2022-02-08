@@ -40,19 +40,28 @@ const FoundationsPages: React.FC = () => (
         <div className="tile-grid">
             <Tile
                 title="Iconography"
-                description="List of all icons available. See SVG for usage"
+                description="Icons are used to visually represent actions, functionalities, and features."
                 href="#/foundations/Iconography"
                 thumbnail="iconography"
             />
-            <Tile title="SVG" description="SVG usage" href="#/foundations/Svg" />
+            <Tile title="SVG" href="#/foundations/Svg" />
             <Tile
                 title="Headings"
-                description="All HTML headings, `h1` through `h6`, are available."
+                description="A heading is a title at the top of a page or section. Its distinctive font helps visualize the hierarchy of information."
                 href="#/foundations/Headings"
                 thumbnail="typekit"
             />
-            <Tile title="Links" href="#/foundations/Links" thumbnail="links" />
-            <Tile title="Whitespace" href="/#/foundations/Whitespace" />
+            <Tile
+                title="Links"
+                description="A link is a navigational element that guides users to external resources or other sections of the product."
+                href="#/foundations/Links"
+                thumbnail="links"
+            />
+            <Tile
+                title="Whitespace"
+                description="Whitespace is the standard padding and margin size that one can adjust to customize the layout of an interface."
+                href="/#/foundations/Whitespace"
+            />
         </div>
     </Section>
 );
@@ -64,32 +73,57 @@ const LayoutPages: React.FC = () => (
             <Tile title="Banner" href="#/layout/Banner" />
             <Tile
                 title="Blank Slate"
-                description="Use blankSlate to show information and some actions after an event."
+                description="A blank slate informs users that a section doesn’t contain any data and provides a way to address it."
                 href="#/layout/BlankSlate"
             />
             <Tile title="Bordered Line" href="#/layout/BorderedLine" />
-            <Tile title="Browser Preview" href="#/layout/BrowserPreview" />
-            <Tile title="Chart" href="#/layout/Chart" />
+            <Tile
+                title="Browser Preview"
+                description="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
+                href="#/layout/BrowserPreview"
+            />
+            <Tile
+                title="Chart"
+                description="A chart compares sets of complex data to provide insights on their relationship and status."
+                href="#/layout/Chart"
+            />
             <Tile title="Collapsible" href="#/layout/Collapsible" />
-            <Tile title="Icon Card" href="#/layout/IconCard" />
+            <Tile
+                title="Icon Card"
+                description="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
+                href="#/layout/IconCard"
+            />
             <Tile title="Info Box" href="#/layout/InfoBox" />
             <Tile title="Labelled Value" href="#/layout/LabeledValue" />
             <Tile title="Limit Card" href="#/layout/Limit" />
             <Tile
-                title="Modal Window"
-                description="Modal windows appear in front of the main page and disable it while they are visible. They act as a zoom in on an element of the main page that allows additionnal interaction or configuration. They make possible for users to focus on their content whilst avoiding leaving the context from which they have been called."
+                title="Modal"
+                description="A modal appears over the current context to have users focus on a particular task or information."
                 href="#/layout/ModalWindow"
             />
-            <Tile title="Modal Wizard" href="#/layout/ModalWizard" />
-            <Tile title="Page Header" href="#/layout/PageHeader" thumbnail="header" />
-            <Tile title="Footer" href="#/layout/Footer" />
             <Tile
-                title="Section"
-                description="Customizing the display and behavior of the interface displayed."
-                href="#/layout/Section"
+                title="Modal Wizard"
+                description="A modal wizard guides users through a task by presenting a succession of actions to complete."
+                href="#/layout/ModalWizard"
             />
-            <Tile title="Split Layout" href="#/layout/SplitLayout" />
-            <Tile title="Table" href="#/layout/TableHOC" />
+            <Tile
+                title="Page Header"
+                description="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional tabs."
+                href="#/layout/PageHeader"
+                thumbnail="header"
+            />
+            <Tile title="Footer" href="#/layout/Footer" />
+            <Tile title="Section" href="#/layout/Section" />
+            <Tile
+                title="Split Layout"
+                description="A split layout organizes information in two vertical columns."
+                href="#/layout/SplitLayout"
+            />
+            <Tile
+                title="Table"
+                description="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
+                href="#/layout/TableHOC"
+            />
             <Tile title="Table HOC Loading" href="#/layout/TableHOCLoading" />
             <Tile title="Table HOC Server" href="#/layout/TableHOCServer" />
             <Tile title="Table HOC with Blank Slate" href="#/layout/TableHOCwithBlankSlate" />
@@ -101,28 +135,53 @@ const FormPages: React.FC = () => (
     <Section className="section">
         <h2>Form</h2>
         <div className="tile-grid">
-            <Tile title="Actionable Item" href="#/form/ActionableItem" />
+            <Tile
+                title="Actionable Item"
+                description="An actionable item is a dropdown menu listing actions associated with an element."
+                href="#/form/ActionableItem"
+            />
             <Tile
                 title="Button"
-                description="Buttons communicate actions, and, when clicked, initialize those actions"
+                description="A button draws attention to an important action and initializes this action when clicked."
                 href="#/form/Button"
                 thumbnail="actionButton"
             />
             <Tile
                 title="Checkbox"
-                description="Checkboxes allow the selection of multiples options from a list. Checkboxes can also be used to turn one option on or off."
+                description="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option."
                 href="#/form/Checkbox"
             />
             <Tile
                 title="Child Form"
-                description="Try to display only one Child Form at a time in a given option set."
+                description="A child form associates a subset of options or content to its parent option."
                 href="#/form/ChildForm"
             />
-            <Tile title="Code Editor" href="#/form/CodeEditor" thumbnail="codeEditor" />
-            <Tile title="Color Picker" href="#/form/ColorPicker" />
-            <Tile title="Date Picker" href="#/form/DatePicker" />
-            <Tile title="Diff Viewer" href="#/form/DiffViewer" />
-            <Tile title="Facet" href="#/form/Facet" />
+            <Tile
+                title="Code Editor"
+                description="A code editor is a text area that allows users to edit code. A coding syntax is built in."
+                href="#/form/CodeEditor"
+                thumbnail="codeEditor"
+            />
+            <Tile
+                title="Color Picker"
+                description="A color picker is a visual interface that allows users to select a color."
+                href="#/form/ColorPicker"
+            />
+            <Tile
+                title="Date Picker"
+                description="A date picker is a calendar interface that allows users to select a single date or a date range."
+                href="#/form/DatePicker"
+            />
+            <Tile
+                title="Diff Viewer"
+                description="A diff viewer allows users to compare code files by showing them side by side and highlighting differences between them."
+                href="#/form/DiffViewer"
+            />
+            <Tile
+                title="Facet"
+                description="A facet is a set of options used to filter a list of content items."
+                href="#/form/Facet"
+            />
             <Tile title="File Picker" href="#/form/Filepicker" />
             <Tile title="Filter Box" href="#/form/FilterBox" thumbnail="filterBox" />
             <Tile title="Flat Select" href="#/form/FlatSelect" />

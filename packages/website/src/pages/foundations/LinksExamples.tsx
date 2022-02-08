@@ -3,7 +3,12 @@ import * as React from 'react';
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const Links = () => (
-    <PlasmaComponent id="Links" title="Links" withSource>
+    <PlasmaComponent
+        id="Links"
+        title="Links"
+        usage="A link is a navigational element that guides users to external resources or other sections of the product."
+        withSource
+    >
         <p>
             <a className="link" href="https://www.coveo.com/en">
                 Navigating link

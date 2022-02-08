@@ -11,7 +11,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BlankSlateExample: React.FunctionComponent = () => (
-    <PlasmaComponent id="BlankSlate" title="Blank Slate" withSource>
+    <PlasmaComponent
+        id="BlankSlate"
+        title="Blank Slate"
+        usage="A blank slate informs users that a section doesn’t contain any data and provides a way to address it."
+        withSource
+    >
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Default BlankSlate</label>

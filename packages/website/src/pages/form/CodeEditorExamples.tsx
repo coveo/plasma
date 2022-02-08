@@ -11,7 +11,12 @@ print(PI) // 3.141592653589793
 export class CodeEditorExamples extends React.Component {
     render() {
         return (
-            <PlasmaComponent id="CodeEditor" title="Code Editor" withSource>
+            <PlasmaComponent
+                id="CodeEditor"
+                title="Code Editor"
+                usage="A code editor is a text area that allows users to edit code. A coding syntax is built in."
+                withSource
+            >
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">

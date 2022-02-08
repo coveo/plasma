@@ -4,7 +4,12 @@ import {Section} from '@coveord/plasma-react';
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const Whitespace = () => (
-    <PlasmaComponent id="Whitespaces" title="Whitespace" withSource>
+    <PlasmaComponent
+        id="Whitespaces"
+        title="Whitespace"
+        usage="Whitespace is the standard padding and margin size that one can adjust to customize the layout of an interface."
+        withSource
+    >
         <Section level={2} title="Paddings" description="Give custom padding to your element">
             <div className="p2" style={{backgroundColor: '#e5e8e8'}}>
                 Use <span className="bolder">p0[..n]</span> to add a uniform padding around the box.

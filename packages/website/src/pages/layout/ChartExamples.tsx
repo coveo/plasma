@@ -80,7 +80,12 @@ const ChartType = {
 export const ChartExamples: React.FunctionComponent = () => {
     const [chartType, setChartType] = React.useState(ChartType.Scatter);
     return (
-        <PlasmaComponent id="Charts" title="Charts" withSource>
+        <PlasmaComponent
+            id="Charts"
+            title="Charts"
+            usage="A chart compares sets of complex data to provide insights on their relationship and status."
+            withSource
+        >
             <Section>
                 <Section level={3} title={`Basic ${capitalize(chartType)} Chart`}>
                     <div className="form-control" style={{height: '300px'}}>

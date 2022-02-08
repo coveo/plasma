@@ -21,7 +21,12 @@ import {
 } from '../../utils/DatePickerExamplesCommon';
 
 export const DatePickerExamples: ExampleComponent = () => (
-    <PlasmaComponent id="DatePicker" title="Date Picker" withSource>
+    <PlasmaComponent
+        id="DatePicker"
+        title="Date Picker"
+        usage="A date picker is a calendar interface that allows users to select a single date or a date range."
+        withSource
+    >
         <Section>
             <CalendarComponent />
             <CountdownComponent />

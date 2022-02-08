@@ -13,7 +13,12 @@ const logColorPicked = debounce((colorPicked: any) => {
 // start-print
 
 export const ColorPickerExamples = () => (
-    <PlasmaComponent id="ColorPicker" title="Color Picker" withSource>
+    <PlasmaComponent
+        id="ColorPicker"
+        title="Color Picker"
+        usage="A color picker is a visual interface that allows users to select a color."
+        withSource
+    >
         <div className="mt2">
             <h2 className="mb2">
                 Built using <a href="https://github.com/casesandberg/react-color/">React Color</a>

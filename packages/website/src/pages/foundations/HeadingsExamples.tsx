@@ -7,7 +7,7 @@ export const Headings = () => (
     <PlasmaComponent
         id="Headings"
         title="Headings"
-        usage="All HTML headings, `h1` through `h6`, are available."
+        usage="A heading is a title at the top of a page or section. Its distinctive font helps visualize the hierarchy of information."
         withSource
     >
         <>

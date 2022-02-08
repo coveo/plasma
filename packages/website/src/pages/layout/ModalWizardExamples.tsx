@@ -172,7 +172,12 @@ const ModalWizardWithValidationIdsDisconnected: React.FunctionComponent<Connecte
 const ModalWizardWithValidationIds = enhanceExample2(ModalWizardWithValidationIdsDisconnected);
 
 export const ModalWizardExamples = () => (
-    <PlasmaComponent id="ModalWizard" title="Modal Wizard" withSource>
+    <PlasmaComponent
+        id="ModalWizard"
+        title="Modal Wizard"
+        usage="A modal wizard guides users through a task by presenting a succession of actions to complete."
+        withSource
+    >
         <Section>
             <StandardModalWizard />
             <ModalWizardWithValidationIds />

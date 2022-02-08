@@ -35,7 +35,12 @@ export interface IExampleRowData {
 }
 
 export const TableHOCExamples = () => (
-    <PlasmaComponent id="TableHOC" title="Table" withSource>
+    <PlasmaComponent
+        id="TableHOC"
+        title="Table"
+        usage="A table displays large quantities of items or data in a list format. Filtering features and actions may be added."
+        withSource
+    >
         <Section>
             <Section level={2} title="Table with Data">
                 <TableWithActionsAndDataFiltering id="TableWithActionsAndDataFiltering" data={twoHundredRowsOfData} />

@@ -5,7 +5,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const IconCardExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="IconCard" title="Icon / Logo Card" withSource>
+    <PlasmaComponent
+        id="IconCard"
+        title="Icon / Logo Card"
+        usage="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
+        withSource
+    >
         <Section>
             <Section level={2} title="Basic">
                 <IconCard

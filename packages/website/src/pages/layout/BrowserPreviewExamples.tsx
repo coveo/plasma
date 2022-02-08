@@ -12,7 +12,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BrowserPreviewExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="BrowserPreview" title="Browser Preview" withSource>
+    <PlasmaComponent
+        id="BrowserPreview"
+        title="Browser Preview"
+        usage="A browser preview shows the result of configuration changes in a simplified representation of a browser interface."
+        withSource
+    >
         <Section>
             <Section level={2} title="Browser Preview container">
                 <SplitLayout

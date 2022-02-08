@@ -6,7 +6,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SimpleHeader: React.FunctionComponent = () => (
-    <PlasmaComponent id="Header" title="Page Header" withSource>
+    <PlasmaComponent
+        id="Header"
+        title="Page Header"
+        usage="A page header informs a user of the section of the product they are currently in. It includes a breadcrumb and optional tabs."
+        withSource
+    >
         <Section title="Simple Header">
             <Section level={2} title="Basic header with actions and tabs">
                 <BasicHeader

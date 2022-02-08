@@ -6,7 +6,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const ChildFormExamples: ExampleComponent = () => (
-    <PlasmaComponent id="ChildForm" title="Child Form" withSource>
+    <PlasmaComponent
+        id="ChildForm"
+        title="Child Form"
+        usage="A child form associates a subset of options or content to its parent option."
+        withSource
+    >
         <Section>
             <SimpleChildFormExample />
             <ChildFormWithRadiosExamples />

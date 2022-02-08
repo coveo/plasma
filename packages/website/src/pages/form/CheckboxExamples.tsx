@@ -18,7 +18,13 @@ import {ExampleComponent} from '../../utils/ExamplesUtils';
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const CheckboxExamples: ExampleComponent = () => (
-    <PlasmaComponent id="Checkbox" title="Checkbox" withSource>
+    <PlasmaComponent
+        id="Checkbox"
+        title="Checkbox"
+        usage="A set of checkboxes allow users to select multiple options from a list. A single checkbox can be used to enable/disable an option.
+"
+        withSource
+    >
         <Section>
             <Checkboxset />
             <GroupableCheckboxConnectedExamples />
