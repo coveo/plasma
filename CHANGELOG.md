@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.0.1](https://github.com/coveo/plasma/compare/v37.0.0...v37.0.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **plasma-style:** expose d.ts files in the npm packages ([96c7b7d](https://github.com/coveo/plasma/commit/96c7b7db79cbb75d7a9d5a11c291c44d2cc9fbfb))
+
+
+
+
+
 # [37.0.0](https://github.com/coveo/plasma/compare/v35.2.0...v37.0.0) (2022-02-09)
 
 
