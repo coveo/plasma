@@ -1,12 +1,22 @@
 // variables
 $button-border-width: 1px;
 $search-bar-heigh: 48px;
-$search-bar-min-width: 648px;
+$search-bar-min-width: 248px;
+$search-bar-max-width: 648px;
 
 .plasmaSearchBar {
+    width: 100%;
+
+    form {
+        width: 100%;
+        min-width: $search-bar-min-width;
+        max-width: $search-bar-max-width;
+        margin: 0 auto;
+    }
+
     .search-bar {
         position: relative;
-        min-width: $search-bar-min-width;
+        width: 100%;
         min-height: $search-bar-heigh;
         background-color: var(--white);
         border: $button-border-width solid transparent;
