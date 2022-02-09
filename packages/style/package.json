@@ -78,7 +78,9 @@
         "lib",
         "resources",
         "gulpfile.js",
-        "LICENSE"
+        "LICENSE",
+        "index.d.ts",
+        "SvgName.d.ts"
     ],
     "browserslist": [
         "cover 90%",
