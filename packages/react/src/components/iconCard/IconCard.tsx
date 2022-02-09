@@ -6,10 +6,10 @@ import {slugify} from 'underscore.string';
 import {SlideY} from '../../animations';
 import {TooltipPlacement} from '../../utils';
 import {Badge, IBadgeProps} from '../badge/Badge';
-import {Svg} from '../svg';
+import {SvgChild, SvgChildCustomProps, SvgChildProps} from '../svg/SvgChild';
 import {ITooltipProps, Tooltip} from '../tooltip';
 
-export interface IconCardChoice {
+export interface IconCardChoice extends Partial<SvgChildCustomProps> {
     value: string;
     label: string;
     icon?: SvgName;
@@ -18,7 +18,6 @@ export interface IconCardChoice {
 
 export interface IconCardProps {
     title: string;
-    svgName: SvgName;
     badges?: IBadgeProps[];
     description?: string;
     onClick?: (choice?: string) => void;
@@ -28,13 +27,17 @@ export interface IconCardProps {
     animateOnHover?: boolean;
 }
 
-export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLProps<HTMLDivElement>, 'onClick'>> = ({
+export const IconCard: React.FunctionComponent<
+    IconCardProps & SvgChildProps & Omit<React.HTMLProps<HTMLDivElement>, 'onClick'>
+> = ({
     title,
     badges = [],
     description,
     disabled = false,
     onClick,
     svgName,
+    svgClass,
+    svgChild,
     tooltip,
     choices,
     animateOnHover,
@@ -88,12 +91,17 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
                     onClick={handleCardClick}
                     aria-expanded={isOpen}
                 >
-                    <Svg
+                    <SvgChild
+                        svgChild={svgChild}
                         svgName={svgName}
-                        svgClass={classNames('logo overflow-hidden mod-rounded-border-4 icon mr3', {
-                            'mod-72': !small,
-                            'mod-40': !!small,
-                        })}
+                        svgClass={classNames(
+                            'logo overflow-hidden mod-rounded-border-4 icon mr3',
+                            {
+                                'mod-72': !small,
+                                'mod-40': !!small,
+                            },
+                            svgClass
+                        )}
                     />
                     <div className="flex flex-column flex-auto justify-center">
                         <h6 className="title">{title}</h6>
@@ -115,18 +123,32 @@ export const IconCard: React.FunctionComponent<IconCardProps & Omit<React.HTMLPr
                             'mod-small': !!small,
                         })}
                     >
-                        {choices.map(({icon, label, value, disabled: choiceDisabled}: IconCardChoice) => (
-                            <li key={value} className="icon-card-drawer-choice">
-                                <button
-                                    className={classNames('inline-flex center-align link', {disabled: choiceDisabled})}
-                                    onClick={() => onClick?.(value)}
-                                    disabled={choiceDisabled}
-                                >
-                                    {icon ? <Svg svgClass="icon mod-24 mod-stroke mr1" svgName={icon} /> : null}
-                                    {label}
-                                </button>
-                            </li>
-                        ))}
+                        {choices.map(
+                            ({
+                                icon,
+                                svgChild: choiceSvgChild,
+                                label,
+                                value,
+                                disabled: choiceDisabled,
+                            }: IconCardChoice) => (
+                                <li key={value} className="icon-card-drawer-choice">
+                                    <button
+                                        className={classNames('inline-flex center-align link', {
+                                            disabled: choiceDisabled,
+                                        })}
+                                        onClick={() => onClick?.(value)}
+                                        disabled={choiceDisabled}
+                                    >
+                                        <SvgChild
+                                            svgChild={choiceSvgChild}
+                                            svgName={icon}
+                                            svgClass={'icon mod-24 mod-stroke mr1'}
+                                        />
+                                        {label}
+                                    </button>
+                                </li>
+                            )
+                        )}
                     </ul>
                 </SlideY>
             ) : null}
