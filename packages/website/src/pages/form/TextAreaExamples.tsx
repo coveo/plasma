@@ -7,7 +7,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const TextAreaExamples = (): JSX.Element => (
-    <PlasmaComponent id="TextArea" title="Text Area" withSource>
+    <PlasmaComponent
+        id="TextArea"
+        title="Text Area"
+        usage="A text area allows users to enter and edit longer text, often on multiple lines or in a paragraph."
+        withSource
+    >
         <div className="mt2">
             <div className="mt2">
                 <div className="form-group">

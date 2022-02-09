@@ -112,7 +112,12 @@ export class MultiSelectExamples extends React.Component<unknown, IMultiSelectEx
 
     render() {
         return (
-            <PlasmaComponent id="MultiSelect" title="Multi-select" withSource>
+            <PlasmaComponent
+                id="MultiSelect"
+                title="Multi-select"
+                usage="A multi select allows users to select multiple options from a list. It is typically used when there are a large number of options."
+                withSource
+            >
                 <div className="mb2">
                     <div className="form-group">
                         <label className="form-control-label">A Simple Multi Select without items</label>

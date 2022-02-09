@@ -38,7 +38,12 @@ export class FlatSelectExamples extends React.Component {
         const append: IContentProps = {content: () => <Svg {...svg} />, classes: ['ml1']};
 
         return (
-            <PlasmaComponent id="FlatSelect" title="Flat Select" withSource>
+            <PlasmaComponent
+                id="FlatSelect"
+                title="Flat Select"
+                usage="A flat select is a group of mutually exclusive buttons aligned horizontally. It is used to allow users to switch between interface displays or binary options."
+                withSource
+            >
                 <Form>
                     <Section title="Flat Select List">
                         <Section level={2} title="Default Flat Select">

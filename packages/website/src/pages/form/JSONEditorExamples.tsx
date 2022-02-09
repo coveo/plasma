@@ -8,7 +8,12 @@ import {fakeJSON, JSONToString} from '../../utils/DiffViewerExmaplesCommon';
 export class JSONEditorExamples extends React.Component {
     render() {
         return (
-            <PlasmaComponent id="JSONEditor" title="JSON Editor" withSource>
+            <PlasmaComponent
+                id="JSONEditor"
+                title="JSON Editor"
+                usage="A JSON editor is a text area where users can enter and edit data in JSON format."
+                withSource
+            >
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">JSON Editor using codemirror</label>

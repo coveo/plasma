@@ -3,7 +3,12 @@ import {Badge, Section, TabConnected, TabContent, TabNavigation, TabPaneConnecte
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 export const TabsExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="Tab" title="Tabs" withSource>
+    <PlasmaComponent
+        id="Tab"
+        title="Tabs"
+        usage="A set of tabs allows users to navigate between sections of the same interface."
+        withSource
+    >
         <Section>
             <Section level={3} title="Simple tab navigation">
                 <DefaultExmaple />

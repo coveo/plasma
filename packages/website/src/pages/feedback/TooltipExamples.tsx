@@ -10,7 +10,7 @@ export const TooltipExamples: React.FunctionComponent = () => (
     <PlasmaComponent
         id="Tooltip"
         title="Tooltip"
-        usage="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
+        usage="A tooltip is a floating label that provides brief additional information about an interface component."
         withSource
     >
         <div className="mt2">

@@ -71,7 +71,7 @@ export const BreadcrumbsExamples = () => (
         componentSourcePath="/breadcrumbs/BreadcrumbHeader.tsx"
         title="Breadcrumbs"
         section="Navigation"
-
+        description="A breadcrumb is a secondary navigation that helps users to understand the hierarchy of interfaces and navigate through them."
         thumbnail="breadcrumb"
         code={code}
         examples={{complex: {code: complex, title: 'With documentation link and tabs'}}}

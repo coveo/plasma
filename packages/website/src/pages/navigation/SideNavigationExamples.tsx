@@ -17,7 +17,12 @@ export const SideNavigationExample: React.FunctionComponent = () => {
     const [isExpanded, setIsExpanded] = React.useState(true);
 
     return (
-        <PlasmaComponent id="SideNavigation" title="Sidebar Navigation" withSource>
+        <PlasmaComponent
+            id="SideNavigation"
+            title="Sidebar Navigation"
+            usage="A sidebar navigation is a primary navigation element that displays the architecture of the product’s features."
+            withSource
+        >
             <Form>
                 <Section level={2} title="Side Navigation">
                     <SideNavigation>

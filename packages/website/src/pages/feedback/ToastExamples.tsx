@@ -55,6 +55,7 @@ export const ToastExamples = () => (
         componentSourcePath="/toast/Toast.tsx"
         title="Toast"
         section="Feedback"
+        description="A toast displays a short message related to an action performed by a user."
         code={code}
         examples={{
             download: {code: downloadToast, title: 'Download Toast'},

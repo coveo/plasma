@@ -6,7 +6,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const SliderExamples: ExampleComponent = () => (
-    <PlasmaComponent id="Slider" title="Slider" withSource>
+    <PlasmaComponent
+        id="Slider"
+        title="Slider"
+        usage="A slider offers a quick and visual way for users to select a value within a given range."
+        withSource
+    >
         <Section>
             <SimpleSliderExample />
             <SliderExample />

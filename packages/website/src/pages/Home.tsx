@@ -87,15 +87,23 @@ const LayoutPages: React.FC = () => (
                 description="A chart compares sets of complex data to provide insights on their relationship and status."
                 href="#/layout/Chart"
             />
-            <Tile title="Collapsible" href="#/layout/Collapsible" />
+            <Tile
+                title="Collapsible"
+                description="A collapsible allows users to hide or display a section of content."
+                href="#/layout/Collapsible"
+            />
             <Tile
                 title="Icon Card"
                 description="An icon card is an element that regroups related pieces of information together. It can be either static or interactive."
                 href="#/layout/IconCard"
             />
-            <Tile title="Info Box" href="#/layout/InfoBox" />
+            <Tile title="Info Box" description="An info box displays contextual information." href="#/layout/InfoBox" />
             <Tile title="Labelled Value" href="#/layout/LabeledValue" />
-            <Tile title="Limit Card" href="#/layout/Limit" />
+            <Tile
+                title="Limit Card"
+                description="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
+                href="#/layout/Limit"
+            />
             <Tile
                 title="Modal"
                 description="A modal appears over the current context to have users focus on a particular task or information."
@@ -182,41 +190,70 @@ const FormPages: React.FC = () => (
                 description="A facet is a set of options used to filter a list of content items."
                 href="#/form/Facet"
             />
-            <Tile title="File Picker" href="#/form/Filepicker" />
-            <Tile title="Filter Box" href="#/form/FilterBox" thumbnail="filterBox" />
-            <Tile title="Flat Select" href="#/form/FlatSelect" />
-            <Tile title="JSON Editor" href="#/form/JSONEditor" />
-            <Tile title="Multiline Box" href="#/form/MultilineBox" />
+            <Tile
+                title="File Picker"
+                description="A file picker is a dialog that allows users to upload a file."
+                href="#/form/Filepicker"
+            />
+            <Tile
+                title="Filter Box"
+                description="A filter box allows users to enter text to filter data. It is frequently used with tables and dropdown menus."
+                href="#/form/FilterBox"
+                thumbnail="filterBox"
+            />
+            <Tile
+                title="Flat Select"
+                description="A flat select is a group of mutually exclusive buttons aligned horizontally. It is used to allow users to switch between interface displays or binary options."
+                href="#/form/FlatSelect"
+            />
+            <Tile
+                title="JSON Editor"
+                description="A JSON editor is a text area where users can enter and edit data in JSON format."
+                href="#/form/JSONEditor"
+            />
+            <Tile
+                title="Multiline Box"
+                description="A multiline box allows users to provide multiple inputs for the same parameter. Each input appears on a different line."
+                href="#/form/MultilineBox"
+            />
+            <Tile
+                title="Multi Select"
+                description="A multi select allows users to select multiple options from a list. It is typically used when there are a large number of options."
+                href="#/form/MultiSelect"
+            />
             <Tile
                 title="Numeric Inputs"
-                description="The input field should be large enough to display all the user input in most cases."
+                description="A numeric input allows users to enter and edit numerical values, either manually or using an input stepper."
                 href="#/form/NumericInput"
             />
             <Tile
                 title="Radio Button"
-                description="Radio button requires the selection of exactly one option from a list of mutually exclusive options."
+                description="A radio button allows users to select exactly one option from a list of mutually exclusive options."
                 href="#/form/RadioButton"
             />
-            <Tile title="Search Bar" href="#/form/SearchBar" />
+            <Tile
+                title="Search Bar"
+                description="A search bar allows users to search a large set of data by entering keywords. A list of matching items is then returned."
+                href="#/form/SearchBar"
+            />
             <Tile
                 title="Single Select"
-                description="Single select dropdown allows users to select only one option from a list. It is typically used when there is a large number of available options."
+                description="A single select allows users to select only one option from a list. It is typically used when there are a large number of options."
                 href="#/form/SingleSelect"
             />
             <Tile
-                title="Multi Select"
-                description="Multi select dropdown allows users to select multiple options from a list. It is typically used when there is a large number of available options."
-                href="#/form/MultiSelect"
-            />
-            <Tile
                 title="Slider"
-                description="For binary settings, use a slide toggle, toggle, or checkbox instead."
+                description="A slider offers a quick and visual way for users to select a value within a given range."
                 href="#/form/Slider"
             />
-            <Tile title="Text Area" href="#/form/TextArea" />
+            <Tile
+                title="Text Area"
+                description="A text area allows users to enter and edit longer text, often on multiple lines or in a paragraph."
+                href="#/form/TextArea"
+            />
             <Tile
                 title="Text Input"
-                description="Text inputs allow users to enter and edit short texts, such as names, emails, and passwords."
+                description="A text input allows users to enter and edit short texts, such as names, emails, and passwords."
                 href="#/form/TextInput"
                 thumbnail="textInput"
             />
@@ -228,10 +265,29 @@ const NavigationPages: React.FC = () => (
     <Section className="section">
         <h2>Navigation</h2>
         <div className="tile-grid">
-            <Tile title="Breadcrumbs" href="#/navigation/Breadcrumbs" thumbnail="breadcrumb" />
-            <Tile title="Sidebar Navigation" href="#/navigation/SideNavigation" thumbnail="sideNav" />
-            <Tile title="SubNavigation" href="#/navigation/SubNavigation" />
-            <Tile title="Tabs" href="#/navigation/Tabs" thumbnail="tab" />
+            <Tile
+                title="Breadcrumbs"
+                description="A breadcrumb is a secondary navigation that helps users to understand the hierarchy of interfaces and navigate through them."
+                href="#/navigation/Breadcrumbs"
+                thumbnail="breadcrumb"
+            />
+            <Tile
+                title="Sidebar Navigation"
+                description="A sidebar navigation is a primary navigation element that displays the architecture of the product’s features."
+                href="#/navigation/SideNavigation"
+                thumbnail="sideNav"
+            />
+            <Tile
+                title="SubNavigation"
+                description="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."
+                href="#/navigation/SubNavigation"
+            />
+            <Tile
+                title="Tabs"
+                description="A set of tabs allows users to navigate between sections of the same interface."
+                href="#/navigation/Tabs"
+                thumbnail="tab"
+            />
         </div>
     </Section>
 );
@@ -240,22 +296,43 @@ const FeedbackPages: React.FC = () => (
     <Section className="section">
         <h2>Feedback</h2>
         <div className="tile-grid">
-            <Tile title="Badge" href="#/feedback/Badge" thumbnail="badge" />
+            <Tile
+                title="Badge"
+                description="A badge is a small label that displays a short yet important piece of information."
+                href="#/feedback/Badge"
+                thumbnail="badge"
+            />
             <Tile title="Color Bar" href="#/feedback/ColorBar" thumbnail="progressBar" />
-            <Tile title="Color Dot" href="#/feedback/ColorDot" />
+            <Tile
+                title="Color Dot"
+                description="A color dot indicates the status of an item."
+                href="#/feedback/ColorDot"
+            />
             <Tile title="Icon Badge" href="#/feedback/IconBadge" />
-            <Tile title="Last Updated" href="#/feedback/LastUpdated" />
-            <Tile title="Loading Spinner" description="Animated loading spinner" href="#/feedback/Loading" />
-            <Tile title="Step Progress Bar" href="#/feedback/StepProgressBar" />
+            <Tile
+                title="Last Updated"
+                description="A “last updated” string displays the time a set of data has been last updated by a system."
+                href="#/feedback/LastUpdated"
+            />
+            <Tile
+                title="Loading Spinner"
+                description="A loading spinner indicates that content or data is actively being loaded."
+                href="#/feedback/Loading"
+            />
+            <Tile
+                title="Step Progress Bar"
+                description="A step progress bar visualizes a user’s progress as they complete a task by representing the number of steps left to complete the task."
+                href="#/feedback/StepProgressBar"
+            />
             <Tile title="Sync Feedback" href="#/feedback/SyncFeedback" />
             <Tile
                 title="Toast"
-                description="Only include information that is relevant to the performed action."
+                description="A toast displays a short message related to an action performed by a user."
                 href="#/feedback/Toast"
             />
             <Tile
                 title="Tooltip"
-                description="Tooltips are short descriptions that appear when hovering an element. They are used to provide explanations that do not require nor allow user interaction, like tips and tricks."
+                description="A tooltip is a floating label that provides brief additional information about an interface component."
                 href="#/feedback/Tooltip"
             />
         </div>

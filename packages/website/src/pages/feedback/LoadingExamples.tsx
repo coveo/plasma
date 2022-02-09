@@ -12,7 +12,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const LoadingExamples = () => (
-    <PlasmaComponent id="Loading" title="Loading" withSource>
+    <PlasmaComponent
+        id="Loading"
+        title="Loading"
+        usage="A loading spinner indicates that content or data is actively being loaded."
+        withSource
+    >
         <Section className="mb3" title="Loading examples">
             <Section level={3} title="A table loading with 4 rows">
                 <div className="form-group">

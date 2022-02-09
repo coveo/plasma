@@ -12,7 +12,12 @@ const customLimitTitle = 'Throttling limit';
 
 // start-print
 export const LimitExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="Limit" title="Limit Card" withSource>
+    <PlasmaComponent
+        id="Limit"
+        title="Limit Card"
+        usage="A limit card displays the limit and usage of a resource. It includes a bar illustrating the usage against the limit."
+        withSource
+    >
         <div className="coveo-form">
             <div className="form-group">
                 <label className="form-control-label">A limit card with an usage value</label>

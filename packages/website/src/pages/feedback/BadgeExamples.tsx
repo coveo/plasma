@@ -5,7 +5,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const BadgeExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="Badge" title="Badge" withSource>
+    <PlasmaComponent
+        id="Badge"
+        title="Badge"
+        usage="A badge is a small label that displays a short yet important piece of information."
+        withSource
+    >
         <Section>
             <Section level={2} title="Default size">
                 <Badge label="Default" />

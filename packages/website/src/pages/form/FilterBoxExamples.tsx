@@ -10,7 +10,12 @@ FilterBoxExamples.description = 'Will be used to filter content';
 // start-print
 
 const FilterBoxes: React.FunctionComponent = () => (
-    <PlasmaComponent id="FilterBox" title="Filter Box" withSource>
+    <PlasmaComponent
+        id="FilterBox"
+        title="Filter Box"
+        usage="A filter box allows users to enter text to filter data. It is frequently used with tables and dropdown menus."
+        withSource
+    >
         <Section title="FilterBox Examples">
             <Section level={3} title="A filterBox with a custom placeholder.">
                 <FilterBoxConnected id="FirstFilterBox" filterPlaceholder="Custom Placeholder" />

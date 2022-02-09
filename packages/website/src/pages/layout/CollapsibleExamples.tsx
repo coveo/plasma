@@ -26,7 +26,12 @@ export const CollapsibleExamples: React.FunctionComponent = () => {
     const [disabled, setDisabled] = React.useState(false);
 
     return (
-        <PlasmaComponent id="Collapsible" title="Collapsible" withSource>
+        <PlasmaComponent
+            id="Collapsible"
+            title="Collapsible"
+            usage="A collapsible allows users to hide or display a section of content."
+            withSource
+        >
             <Section title="Collapsible Examples">
                 <Section level={2} title="Basic" description="A simple header with collapsible content underneath">
                     <CollapsibleConnected
