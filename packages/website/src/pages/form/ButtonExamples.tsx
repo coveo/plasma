@@ -31,14 +31,12 @@ const disabled = `
 
 const prepend = `
     import * as React from 'react';
-    import {Button, Svg} from '@coveord/plasma-react';
+    import { Button, Svg } from '@coveord/plasma-react';
 
     export default () => (
         <Button classes={['mod-prepend']}>
-            <span className="btn-prepend">
-                <Svg svgName="copy" svgClass="icon mod-14" />
-            </span>
-            Copy to clipboard
+            <span className="btn-prepend">P</span>
+            Hello World!
         </Button>
     );
 `;
