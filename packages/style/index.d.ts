@@ -9,7 +9,7 @@ export declare const svg: Record<
         name: SvgName;
         fileName: string;
         svgString: string;
-        render: (svgClass: string, spanClass: string, title: string, attr: Record<string, string>) => string;
+        render: (svgClass?: string, spanClass?: string, title?: string, attr?: Record<string, string>) => string;
     }
 >;
 export declare const version: string;
