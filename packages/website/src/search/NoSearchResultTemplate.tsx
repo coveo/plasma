@@ -1,7 +1,7 @@
-import {loadQueryActions, SearchEngine} from '@coveo/headless';
+import {buildHistoryManager, HistoryManager, loadQueryActions, SearchEngine} from '@coveo/headless';
 import {Button} from '@coveord/plasma-react';
 
-import {FunctionComponent} from 'react';
+import {FunctionComponent, useEffect, useState} from 'react';
 import React from 'react';
 
 import results_empty_state from '../../resources/results_empty_state.png';
@@ -13,6 +13,11 @@ interface NoResultTemplateProps {
 
 export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = (props) => {
     const {engine, query} = props;
+
+    const historyManager: HistoryManager = buildHistoryManager(engine);
+    const [state, setState] = useState(historyManager.state);
+
+    useEffect(() => historyManager.subscribe(() => setState(historyManager.state)), []);
 
     const resetSearch = () => {
         const {updateQuery} = loadQueryActions(engine);
@@ -30,7 +35,16 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
                 <span className="h6-subdued mb3 nowrap">
                     You may want to try using different keywords, or checking for spelling mistakes.
                 </span>
-                <Button primary onClick={() => resetSearch()}>
+                <Button
+                    primary
+                    onClick={() => {
+                        if (state.past.length !== 0) {
+                            historyManager.backOnNoResults();
+                        } else {
+                            resetSearch();
+                        }
+                    }}
+                >
                     Clear search
                 </Button>
             </div>

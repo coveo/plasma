@@ -5,7 +5,6 @@ import {
     loadQueryActions,
     loadSearchActions,
     loadSearchAnalyticsActions,
-    Result,
     ResultList as HeadlessResultList,
     SearchEngine,
 } from '@coveo/headless';
@@ -70,12 +69,12 @@ const SearchResultPage = () => {
     const [searchParams] = useSearchParams();
     const query = searchParams.get('q');
     const {updateQuery} = loadQueryActions(engine);
-    const {logNoResultsBack} = loadSearchAnalyticsActions(engine);
+    const {logInterfaceLoad} = loadSearchAnalyticsActions(engine);
     const {registerNumberOfResults} = loadPaginationActions(engine);
     const {executeSearch} = loadSearchActions(engine);
     engine.dispatch(registerNumberOfResults(1000));
     engine.dispatch(updateQuery({q: query}));
-    engine.dispatch(executeSearch(logNoResultsBack()));
+    engine.dispatch(executeSearch(logInterfaceLoad()));
     const controller = buildResultList(engine);
     return <ResultListRenderer controller={controller} engine={engine} query={query} />;
 };
