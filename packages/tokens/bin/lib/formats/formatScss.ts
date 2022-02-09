@@ -1,0 +1,61 @@
+import {kebabCase} from 'lodash';
+
+import {isTokenGroup, Token, TokenGroup, TokenList} from './token';
+
+const formatScssVariableName = (name: string): string => kebabCase(name);
+
+export const getCssVariable = (name: string): string => `var(--${formatScssVariableName(name)})`;
+
+const formatVariable = (name: string, value: string | number): string => `--${name}: ${value};`;
+
+const formatClass = (name: string, value: Record<string, string | number>): string => {
+    const styles = Object.entries(value).map(
+        ([propertyName, propertyValue]) => `${kebabCase(propertyName)}: ${propertyValue};`
+    );
+    return `.${name} {\n\t${styles.join('\n\t')}\n}`;
+};
+
+const formatScssToken = (token: Token): string | null => {
+    const name = formatScssVariableName(token.name);
+
+    switch (token.type) {
+        case 'variable':
+            return formatVariable(name, token.value);
+        case 'class':
+            return formatClass(name, token.value);
+        default:
+            return null;
+    }
+};
+
+const filterTokens = (tokens: TokenList, type: Token['type']): Token[] => {
+    const filteredTokens: Token[] = [];
+
+    const filterToken = (token: Token | TokenGroup) => {
+        if (isTokenGroup(token)) {
+            token.children.forEach(filterToken);
+        } else if (token.type === type) {
+            filteredTokens.push(token);
+        }
+    };
+
+    tokens.forEach(filterToken);
+
+    return filteredTokens;
+};
+
+export const formatScss = (tokens: TokenList): string => {
+    const variables = filterTokens(tokens, 'variable').map(formatScssToken) as string[];
+    const classes = filterTokens(tokens, 'class').map(formatScssToken) as string[];
+    let output = '';
+
+    if (variables.length > 0) {
+        output += `:root {\n\t${variables.join('\n\t')}\n}\n`;
+    }
+
+    if (classes.length > 0) {
+        output += classes.join('\n\n') + '\n';
+    }
+
+    return output;
+};
