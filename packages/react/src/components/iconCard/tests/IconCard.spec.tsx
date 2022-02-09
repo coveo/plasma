@@ -13,6 +13,17 @@ describe('IconCard', () => {
         expect(screen.getByRole('heading', {name: /the title/i})).toBeVisible();
     });
 
+    it('renders custom icons', () => {
+        const svgChild = (
+            <div role="img" aria-label="shrug icon">
+                🤷
+            </div>
+        );
+        render(<IconCard title="The Title" svgChild={svgChild} />);
+
+        expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();
+    });
+
     it('renders a description underneath the title when specified', () => {
         render(<IconCard title="Title" svgName="home" description="the description" />);
 
@@ -77,7 +88,7 @@ describe('IconCard', () => {
             />
         );
 
-        const card = screen.getByRole('button', {name: /title/i});
+        const card = screen.getByRole('button', {name: /home icon title/i});
         expect(card).toHaveClass('cursor-pointer');
         userEvent.click(card);
         expect(card).not.toHaveClass('cursor-pointer');
@@ -99,6 +110,30 @@ describe('IconCard', () => {
         expect(card).toHaveAttribute('aria-expanded', 'false');
         userEvent.click(card);
         expect(card).toHaveAttribute('aria-expanded', 'true');
+    });
+
+    it('shows icons in the drawer when clicking on it', () => {
+        const svgChild = (
+            <div role="img" aria-label="shrug icon">
+                🤷
+            </div>
+        );
+        render(
+            <IconCard
+                title="Title"
+                svgName="home"
+                choices={[
+                    {label: '🍌', value: 'banana', svgChild},
+                    {label: '🍎', value: 'apple', icon: 'add'},
+                ]}
+            />
+        );
+
+        const card = screen.getByRole('button', {name: /title/i});
+        userEvent.click(card);
+
+        expect(screen.getByRole('img', {name: /add icon/i})).toBeVisible();
+        expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();
     });
 
     it('collapses the drawer when the mouse leaves the icon card', () => {
