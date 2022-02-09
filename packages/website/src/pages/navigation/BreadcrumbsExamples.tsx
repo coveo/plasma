@@ -3,26 +3,26 @@ import * as React from 'react';
 import {ExampleLayout} from '../../building-blocs/ExampleLayout';
 
 const code = `
-    import * as React from "react";
-    import {BreadcrumbHeader, IBreadcrumbProps} from '@coveord/plasma-react';
+    import * as React from 'react';
+    import {BreadcrumbHeader} from '@coveord/plasma-react';
 
-    const defaultBreadcrumb: IBreadcrumbProps = {
-        title: {
-            text: 'Charmeleon',
-        },
-        links: [{
-          name: 'Pikachu',
-          link: 'https://www.google.ca/?q=pikachu',
-        }],
-    };
-
-
-    export default () => 
-      <BreadcrumbHeader
-          breadcrumb={defaultBreadcrumb}
-          description="Simple description for the title"
-          hasBorderBottom={false}
-      />;
+    export default () => (
+        <BreadcrumbHeader
+            breadcrumb={{
+                title: {
+                    text: 'Charmeleon',
+                },
+                links: [
+                    {
+                        name: 'Pikachu',
+                        link: 'https://www.google.ca/?q=pikachu',
+                    },
+                ],
+            }}
+            description="Simple description for the title"
+            hasBorderBottom={false}
+        />
+    );
 `;
 
 const complex = `
@@ -70,7 +70,8 @@ export const BreadcrumbsExamples = () => (
         id="BreadcrumbHeader"
         componentSourcePath="/breadcrumbs/BreadcrumbHeader.tsx"
         title="Breadcrumbs"
-        section="navigation"
+        section="Navigation"
+
         thumbnail="breadcrumb"
         code={code}
         examples={{complex: {code: complex, title: 'With documentation link and tabs'}}}

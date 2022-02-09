@@ -6,7 +6,7 @@ import {HeaderWrapper, IHeaderWrapperProps} from './HeaderWrapper';
 
 export interface IBreadcrumbHeaderProps extends IHeaderWrapperProps {
     /**
-     * See Breadcrumb Component for details
+     * Allows to configure the breadcrumb shown in the header
      */
     breadcrumb: IBreadcrumbProps;
 }

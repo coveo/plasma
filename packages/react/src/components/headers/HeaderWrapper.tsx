@@ -11,7 +11,7 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps {
      */
     description?: string | React.ReactNode;
     /**
-     * Add an action bar/ action button
+     * Action buttons displayed in the right portion of the header
      */
     actions?: IContentProps[];
     /**
@@ -19,13 +19,13 @@ export interface IHeaderWrapperProps extends ITabsHeaderProps {
      */
     classes?: string[];
     /**
-     * If set to false, the line at the bottom of the HeaderWrapper disappears (only if there's no tabs)
+     * Whether the header displays a border on the bottom
      *
      * @default true
      */
     hasBorderBottom?: boolean;
     /**
-     * If set to false, the padding of the HeaderWrapper is removed
+     * Whether the header has padding
      *
      * @default true
      */
