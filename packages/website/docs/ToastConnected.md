@@ -1,35 +1,29 @@
-## Guidelines
-
-### Content
+## Best Practices
 
 -   Only include information that is relevant to the performed action.
 
--   Toasts may contain action buttons. Try to include no more than one action button besides the one to dismiss the Toast.
+-   Toasts may contain actions or links. Try to include no more than one.
 
-### Behavior
-
--   Only one Toast should be displayed at a time. If two consecutive Toasts have to be shown, the first one should be removed before the second one is shown.
-
--   Toasts should not prevent users from interacting with page content. If preventing users from interacting with page content is unavoidable, consider using a [Prompt](#/components/ModalPrompt) instead.
+-   Toasts do not prevent users from interacting with the page content. If preventing users from interacting with page content is unavoidable, consider using [Prompt modals](#/layout/ModalWindow) instead.
 
 ## Variations
 
-The Toast type choice depends on the status of the operation to which the toast refers.
+The toast type choice depends on the status of the operation to which the toast refers.
 
-| Type    | Purpose                                                                                                                                                                                                                                            |
+| **Type**    | **Purpose**                                                                                                                                                                                                                                            |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| Success | Used to confirm that an operation was successfully executed. If the Toast contains a link or action, it has to me manually dismissed by the user. If not, it is self-dismissible.                                                                  |
-| Warning | Used to notify users that the operation they have launched may not yet be completed, or may not have had the expected result. If the Toast contains a link or action, it has to me manually dismissed by the user. If not, it is self-dismissible. |
-| Error   | Used to notify users about an operation that was not successful. Users must interact with the Toast to dismiss it (i.e., it is not self-dismissible) to ensure they do not miss critical information.                                              |
+| **Success** | Used to confirm that an operation was successfully executed. If the toast contains a link or action, it has to be manually dismissed by the user. If not, it is self-dismissible.                                                                  |
+| **Warning** | Used to notify users that the operation they have launched may not yet be completed, or may not have had the expected result. If the toast contains a link or action, it has to be manually dismissed by the user. If not, it is self-dismissible. |
+| **Error**   | Used to notify users about an operation that was not successful. Users **must** dismiss the toast manually to ensure they do not miss critical information.                                              |
 
 ---
 
 ## Related Components
 
-[Prompt](#/components/ModalPrompt)
+If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
-[Info Box](#/components/InfoBox)
+- [Prompt modals](#/layout/ModalWindow) if the user must not interact with the page content while the message is displayed.
 
-[Popover](#/components/Popover)
+- [Info Box](#/layout/InfoBox) if the message is not related to an action the user has performed.
 
-[Tooltip](#/components/Tooltip)
+- [Tooltip](#/feedback/Tooltip) if you want to provide additional information about an element on screen.
