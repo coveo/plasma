@@ -4,6 +4,7 @@ import {BasicHeader, TabContent, TabPaneConnected} from '@coveord/plasma-react';
 import Code from './Code';
 import {GuidelinesTab} from './GuidelinesTab';
 import {useCodeExample} from './useCodeExample';
+import {useTitle} from './useTitle';
 
 interface PlasmaComponentProps {
     id: string;
@@ -20,6 +21,7 @@ export const PlasmaComponent: React.FunctionComponent<PlasmaComponentProps & Rea
     children,
     withSource,
 }) => {
+    useTitle(title);
     const code = useCodeExample();
 
     return (

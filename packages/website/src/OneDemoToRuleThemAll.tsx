@@ -1,25 +1,21 @@
 import '@styles/main.scss';
 
 import * as React from 'react';
-import loadable from '@loadable/component';
 import {Outlet, Route, Routes} from 'react-router-dom';
 
 import logo from '../resources/plasma-logo.svg';
-import {PlasmaLoading} from './building-blocs/PlasmaLoading';
 import ScrollToTop from './building-blocs/ScrollTop';
+import AdvancedRoutes from './pages/advanced';
+import FeedbackRoutes from './pages/feedback';
+import FormRoutes from './pages/form';
+import FoundationsRoutes from './pages/foundations';
 import {Home} from './pages/Home';
+import LayoutRoutes from './pages/layout';
+import NavigationRoutes from './pages/navigation';
+import NotFound from './pages/NotFound';
 import SearchResultPage from './pages/SearchResultPage';
-import {EngineProvider} from './search/engine/EngineProvider';
 import StandaloneSearchBar from './search/StandaloneSearchBar';
 import {Navigation} from './SideNavigation';
-
-const FoundationsRoutes = loadable(() => import('./pages/foundations'), {fallback: <PlasmaLoading />});
-const LayoutRoutes = loadable(() => import('./pages/layout'), {fallback: <PlasmaLoading />});
-const NavigationRoutes = loadable(() => import('./pages/navigation'), {fallback: <PlasmaLoading />});
-const FormRoutes = loadable(() => import('./pages/form'), {fallback: <PlasmaLoading />});
-const FeedbackRoutes = loadable(() => import('./pages/feedback'), {fallback: <PlasmaLoading />});
-const AdvancedRoutes = loadable(() => import('./pages/advanced'), {fallback: <PlasmaLoading />});
-const NotFound = loadable(() => import('./pages/NotFound'), {fallback: <PlasmaLoading />});
 
 const Header = () => (
     <div id="header" className="demo-header">
@@ -33,7 +29,7 @@ const Header = () => (
 
 // Child routes are rendered in <Outlet />
 const AppLayout = () => (
-    <EngineProvider>
+    <>
         <ScrollToTop />
         <Header />
         <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>
@@ -42,7 +38,7 @@ const AppLayout = () => (
                 <Outlet />
             </div>
         </div>
-    </EngineProvider>
+    </>
 );
 
 export const App = () => (

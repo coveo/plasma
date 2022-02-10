@@ -9,6 +9,7 @@ import {GuidelinesTab} from './GuidelinesTab';
 import {PropsDoc} from './PropsDoc';
 import Sandbox from './Sandbox';
 import {Tile, TileProps} from './Tile';
+import {useTitle} from './useTitle';
 
 interface PlaygroundProps {
     title: string;
@@ -43,6 +44,7 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
     componentSourcePath,
     relatedComponents,
 }) => {
+    useTitle(title);
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
     );

@@ -1,10 +1,11 @@
+import * as PlasmaReact from '@coveord/plasma-react';
 import React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
 import {HashRouter} from 'react-router-dom';
-import * as PlasmaReact from '@coveord/plasma-react';
 
 import {App} from './OneDemoToRuleThemAll';
+import {EngineProvider} from './search/engine/EngineProvider';
 import {Store} from './Store';
 
 PlasmaReact.Defaults.APP_ELEMENT = '#App';
@@ -22,9 +23,11 @@ if (window.location.host === 'vapor.coveo.com') {
 
 ReactDOM.render(
     <HashRouter>
-        <ReactRedux.Provider store={Store}>
-            <App />
-        </ReactRedux.Provider>
+        <EngineProvider>
+            <ReactRedux.Provider store={Store}>
+                <App />
+            </ReactRedux.Provider>
+        </EngineProvider>
     </HashRouter>,
     document.getElementById('App')
 );
