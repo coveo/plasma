@@ -23,8 +23,8 @@ const NotFound = loadable(() => import('./pages/NotFound'), {fallback: <PlasmaLo
 
 const Header = () => (
     <div id="header" className="demo-header">
-        <a href="/#">
-            <img src={logo} className="header-logo" />
+        <a href="/#" className="header-logo-link">
+            <img src={logo} className="header-logo" alt="Plasma Design System" />
         </a>
         <StandaloneSearchBar />
         <div className="right-side" />
