@@ -75,7 +75,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({
     }
 
     return (
-        <div className={className} onClick={sendAnalytics}>
+        <div className={className}>
             {tileIcon}
             {tileInfo}
         </div>

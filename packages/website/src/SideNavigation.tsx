@@ -1,20 +1,23 @@
 /* eslint-disable arrow-body-style */
+import {loadGenericAnalyticsActions} from '@coveo/headless';
 import {SideNavigation, SideNavigationItem, SideNavigationMenuSection, Svg} from '@coveord/plasma-react';
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import {useLocation} from 'react-router';
 import {Link} from 'react-router-dom';
+import {EngineContext} from './search/engine/EngineContext';
 
 interface NavLinkProps {
     href?: string;
     label: string;
     disabled?: boolean;
     isActive?: boolean;
+    sendAnalytics?: () => void;
 }
 
 // Context is more efficient than prop drilling or using useLocation() 65+ times
 const PathnameContext = React.createContext('/');
 
-const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disabled, isActive}) => (
+const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disabled, isActive, sendAnalytics}) => (
     <PathnameContext.Consumer>
         {(path) => (
             <SideNavigationItem disabled={disabled} href={href} isActive={isActive ?? path?.endsWith(href)}>
@@ -23,7 +26,7 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disab
                         <span>{label}</span>
                     </div>
                 ) : (
-                    <Link to={href}>
+                    <Link to={href} onClick={() => sendAnalytics()}>
                         <div className="navigation-menu-section">
                             <span>{label}</span>
                         </div>
@@ -56,6 +59,22 @@ const CollapsibleSideSection: React.FC<{title: string; initiallyClosed?: boolean
 export const Navigation: React.FunctionComponent = () => {
     const {pathname} = useLocation();
 
+    const engine = useContext(EngineContext);
+    const {logCustomEvent} = loadGenericAnalyticsActions(engine);
+
+    const clickEvent = (documentTitle: string, documentURL: string) => {
+        engine.dispatch(
+            logCustomEvent({
+                evt: 'click',
+                type: 'page_view',
+                meta: {
+                    documentTitle: documentTitle,
+                    documentURL: documentURL,
+                },
+            })
+        );
+    };
+
     return (
         <PathnameContext.Provider value={pathname}>
             <SideNavigation className="navigation-menu-sections">
@@ -69,7 +88,11 @@ export const Navigation: React.FunctionComponent = () => {
                     }
                 />
                 <CollapsibleSideSection title="Foundations">
-                    <NavLink href="/foundations/Iconography" label="Iconography" />
+                    <NavLink
+                        href="/foundations/Iconography"
+                        label="Iconography"
+                        sendAnalytics={() => clickEvent('Iconography', '/foundations/Iconography')}
+                    />
                     <NavLink href="/foundations/Svg" label="SVG" />
                     <NavLink href="/foundations/Headings" label="Headings" />
                     <NavLink href="/foundations/Links" label="Links" />
