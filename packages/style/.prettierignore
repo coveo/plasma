@@ -5,3 +5,4 @@ lib/*
 CHANGELOG.md
 scss/sprites.scss
 .ultra.cache.json
+SvgName.d.ts

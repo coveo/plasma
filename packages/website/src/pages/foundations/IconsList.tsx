@@ -1,6 +1,6 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg as Icons, SvgName} from '@coveord/plasma-style';
 import * as React from 'react';
-import {LinkSvg, SvgNames} from '@coveord/plasma-react';
+import {LinkSvg} from '@coveord/plasma-react';
 
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
@@ -11,16 +11,16 @@ export const IconsList = () => (
         usage={<p>Icons are used to visually represent actions, functionalities, and features.</p>}
     >
         <ul className="sg-icons-list">
-            {Object.keys(VaporSVG.svg)
+            {Object.keys(Icons)
                 .sort()
-                .map((svgName) => (
-                    <IconItem key={svgName} svgName={svgName as SvgNames} fileName={VaporSVG.svg[svgName].fileName} />
+                .map((svgName: SvgName) => (
+                    <IconItem key={svgName} svgName={svgName} fileName={Icons[svgName].fileName} />
                 ))}
         </ul>
     </PlasmaComponent>
 );
 
-const IconItem = ({svgName, fileName}: {svgName: SvgNames; fileName: string}) => (
+const IconItem = ({svgName, fileName}: {svgName: SvgName; fileName: string}) => (
     <li className="cursor-pointer">
         <LinkSvg svg={{svgName}} url={getSvgURL(fileName)}>
             <label className="icon-name cursor-pointer">{svgName}</label>

@@ -1,7 +1,8 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 
 export enum IconBadgeSize {
     Medium,
@@ -15,7 +16,7 @@ export enum IconBadgeType {
 }
 
 export interface IconBadgeProps {
-    svgName: SvgNames;
+    svgName: SvgName;
     type: IconBadgeType;
     size?: IconBadgeSize;
     svgClass?: string;

@@ -1,4 +1,4 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {Section, Svg} from '@coveord/plasma-react';
 
@@ -160,7 +160,7 @@ export default () => (
         </Section>
         <Section level={1} title="Hit Zones">
             <p className="bold">
-                <Svg svgName={VaporSVG.svg.tips.name} svgClass="icon mr1 mod-2x mod-success" />
+                <Svg svgName={svg.tips.name} svgClass="icon mr1 mod-2x mod-success" />
                 44px x 44px + 10px clearance around hit zones (54px total)
             </p>
             <p className="body-m-book-subdued">

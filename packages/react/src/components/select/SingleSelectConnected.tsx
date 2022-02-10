@@ -1,5 +1,5 @@
+import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import * as _ from 'underscore';
@@ -14,6 +14,7 @@ import {Svg} from '../svg/Svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {ISelectButtonProps, ISelectOwnProps, SelectConnected} from './SelectConnected';
 import {SelectSelector} from './SelectSelector';
+
 export interface ISingleSelectOwnProps extends Omit<ISelectOwnProps, 'button'> {
     onSelectOptionCallback?: (option: string) => void;
     buttonPrepend?: React.ReactNode;
@@ -115,7 +116,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
                 {this.getSelectedOptionElement(option)}
                 {option?.append ? <Content {...option.append} /> : null}
                 <Svg
-                    svgName={isOpen ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                    svgName={isOpen ? svg.chartUp.name : svg.chartDown.name}
                     svgClass={classNames('icon dropdown-toggle-arrow-size', {
                         'dropdown-toggle-arrow-style': !showClear,
                     })}
@@ -148,7 +149,7 @@ class SingleSelect extends React.PureComponent<ISingleSelectProps> {
         return (
             <Tooltip title={this.props.deselectTooltipText} placement="top" noSpanWrapper>
                 <Svg
-                    svgName={VaporSVG.svg.clear.name}
+                    svgName={svg.clear.name}
                     svgClass="icon mod-12"
                     className="btn-append center-align"
                     onClick={this.handleDeselect}

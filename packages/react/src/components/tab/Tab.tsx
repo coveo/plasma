@@ -1,3 +1,4 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
@@ -5,7 +6,7 @@ import {createStructuredSelector} from 'reselect';
 
 import {ConnectedProps, IDispatch, UrlUtils} from '../../utils';
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 import {TabActions} from './TabActions';
 import {TabSelectors} from './TabSelectors';
@@ -16,7 +17,7 @@ export interface ITabOwnProps {
     title: string;
     disabled?: boolean;
     tooltip?: string;
-    icon?: SvgNames;
+    icon?: SvgName;
     iconModStroke?: boolean;
     badge?: React.ReactNode;
     url?: string;

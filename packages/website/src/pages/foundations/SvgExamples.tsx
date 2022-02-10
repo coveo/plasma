@@ -4,12 +4,11 @@ import {
     IItemBoxProps,
     PlasmaState,
     Section,
-    SingleSelectConnected,
+    SingleSelectWithFilter,
     StringUtils,
     Svg,
-    SVG_NAMES,
-    SvgNames,
 } from '@coveord/plasma-react';
+import {svg as Icons, SvgName} from '@coveord/plasma-style';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
 
@@ -27,7 +26,7 @@ export const SvgExamples: React.FC = () => {
 
         return {
             ...selectedBox,
-            selected: selectedBox.selected as SvgNames[],
+            selected: selectedBox.selected as SvgName[],
         };
     });
 
@@ -37,11 +36,13 @@ export const SvgExamples: React.FC = () => {
 
     const selectedSvg = svgName?.selected[0];
 
-    const defaultItems: IItemBoxProps[] = Object.values(SVG_NAMES).map((name, i) => ({
-        value: name,
-        displayValue: StringUtils.separateCamelCase(name),
-        selected: i === 0,
-    }));
+    const defaultItems: IItemBoxProps[] = Object.values(Icons)
+        .sort((a, b) => a.name.localeCompare(b.name))
+        .map(({name}, i) => ({
+            value: name,
+            displayValue: StringUtils.separateCamelCase(name),
+            selected: i === 0,
+        }));
 
     const FONT_SIZE_OPTIONS = [
         {
@@ -68,7 +69,7 @@ export const SvgExamples: React.FC = () => {
                 <Section level={2} title="Select an icon and font size for the parent element">
                     <Section level={3} title="A list of all our icons">
                         <div className="flex flex-center space-between">
-                            <SingleSelectConnected
+                            <SingleSelectWithFilter
                                 id={LISTBOX_ID}
                                 items={defaultItems}
                                 placeholder="Select something"

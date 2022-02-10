@@ -18,6 +18,7 @@
         }
 
         .page-title {
+            display: inline-block;
             height: 133px;
             padding-top: 8px;
             color: var(--navy-blue-60);
@@ -27,6 +28,22 @@
             font-size: 140px;
             line-height: 95%;
             letter-spacing: -0.01em;
+            background: none;
+            background: linear-gradient(
+                260deg,
+                #f9463a 0%,
+                #fadf4a 19.235%,
+                #03dec8 33.245%,
+                #08b7ea 45.86%,
+                #f9463a 50%,
+                #fadf4a 69.235%,
+                #03dec8 83.245%,
+                #08b7ea 100%
+            );
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            animation: moveBackground 12s linear infinite;
+            -webkit-text-fill-color: transparent;
         }
 
         .plasma-description {
@@ -41,5 +58,14 @@
         grid-template-columns: repeat(auto-fill, minmax(264px, 1fr));
         gap: 24px;
         margin-right: 24px;
+    }
+}
+
+@keyframes moveBackground {
+    0% {
+        background-position: 100% 0%;
+    }
+    100% {
+        background-position: 33% 100%;
     }
 }

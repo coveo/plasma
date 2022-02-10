@@ -1,6 +1,7 @@
+import {svg} from '@coveord/plasma-style';
 import classNames from 'classnames';
-import * as VaporSVG from '@coveord/plasma-style';
 import * as React from 'react';
+
 import {TooltipPlacement} from '../../utils/TooltipUtils';
 import {LinkSvg} from '../svg/LinkSvg';
 import {Svg} from '../svg/Svg';
@@ -22,7 +23,7 @@ export const CollapsibleHeaderIcon: React.FunctionComponent<CollapsibleHeaderIco
     }
     const tooltipProps = {placement: TooltipPlacement.Right, ...informationTooltip};
     const svgProps = {
-        svgName: informationUrl ? VaporSVG.svg.help.name : VaporSVG.svg.info.name,
+        svgName: informationUrl ? svg.help.name : svg.info.name,
         svgClass: classNames('icon mod-lg', {
             'documentation-link': !!informationUrl,
             'no-link': !informationUrl,

@@ -3,6 +3,68 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.0.3](https://github.com/coveo/plasma/compare/v37.0.2...v37.0.3) (2022-02-10)
+
+**Note:** Version bump only for package root
+
+
+
+
+
+## [37.0.2](https://github.com/coveo/plasma/compare/v37.0.1...v37.0.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **plasma-style:** render function parameters are all optional ([cff53a5](https://github.com/coveo/plasma/commit/cff53a52c5be91089c303ffec60784855ce183d2))
+
+
+
+
+
+## [37.0.1](https://github.com/coveo/plasma/compare/v37.0.0...v37.0.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **plasma-style:** expose d.ts files in the npm packages ([96c7b7d](https://github.com/coveo/plasma/commit/96c7b7db79cbb75d7a9d5a11c291c44d2cc9fbfb))
+
+
+
+
+
+# [37.0.0](https://github.com/coveo/plasma/compare/v35.2.0...v37.0.0) (2022-02-09)
+
+
+### Bug Fixes
+
+* **button:** remove bad copy to clipboard example ([bb4da40](https://github.com/coveo/plasma/commit/bb4da40351c63724abce84f2d92112f180d52274))
+
+
+### Code Refactoring
+
+* **breadcrumb:** removed defaultLinkPath prop + added jsdoc ([2aa79bf](https://github.com/coveo/plasma/commit/2aa79bfc902c40a516cf8bbaaf12a2fdbb2b43fa))
+
+
+### Features
+
+* **blankslate, icon-card:** allow usage of custom svgs ([88f8d4f](https://github.com/coveo/plasma/commit/88f8d4f326a142edcdedf45a9d415ca3914d3360))
+* **svg:** auto generate svg names type ([a3bc9c6](https://github.com/coveo/plasma/commit/a3bc9c6c68dba2c40d889f9e29f101e4ee9b626d))
+* **website:** tweak the css a bit to have a responsive search bar ([0e0e066](https://github.com/coveo/plasma/commit/0e0e066fd79794e190ef2e86e7265cf16d07e779))
+
+
+### BREAKING CHANGES
+
+* **svg:** Svg prop svgName's type changed
+- SvgNames type from plasma-react is replaced by SvgName type from plasma-style
+- svgName prop now is typed to SvgName instead of SvgNames
+- plasma-style UMD library named changed from VaporSVG to PlasmaStyle
+* **breadcrumb:** defaultLinkPath prop has been removed from the Breadcrumb component
+
+
+
+
+
 # [35.2.0](https://github.com/coveo/plasma/compare/v35.1.1...v35.2.0) (2022-02-08)
 
 

@@ -1,4 +1,4 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {
     defaultMultilineBoxRemoveButtonClasses,
@@ -128,7 +128,7 @@ const ComplexMultilineBox3 = _.compose(
             draggableContainerProps: {
                 className: 'inline-flex center-align',
             },
-            icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon mod-lg" />,
+            icon: <Svg svgName={svg.dragDrop.name} svgClass="icon mod-lg" />,
         },
     }),
     multilineBoxWithRemoveButton(),

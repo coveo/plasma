@@ -1,8 +1,9 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 
 import {TooltipPlacement} from '../../utils/TooltipUtils';
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 import {Tooltip} from '../tooltip/Tooltip';
 
 export interface IConfirmButtonLabel {
@@ -29,7 +30,7 @@ export interface IBaseActionOptions {
 }
 
 export interface IActionOptions extends IBaseActionOptions {
-    icon?: SvgNames;
+    icon?: SvgName;
     iconClass?: string;
     id?: string;
     trigger?: () => void;

@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-style",
-    "version": "35.2.0",
+    "version": "37.0.3",
     "description": "Yet another CSS framework - but it's awesome & built by Coveo.",
     "keywords": [
         "coveo",
@@ -12,7 +12,7 @@
     "homepage": "https://plasma.coveo.com/",
     "author": "Coveo",
     "license": "Apache-2.0",
-    "main": "dist/js/VaporSVG.js",
+    "main": "dist/js/PlasmaStyle.js",
     "types": "index.d.ts",
     "scripts": {
         "build": "gulp clean && gulp && webpack",
@@ -78,7 +78,9 @@
         "lib",
         "resources",
         "gulpfile.js",
-        "LICENSE"
+        "LICENSE",
+        "index.d.ts",
+        "SvgName.d.ts"
     ],
     "browserslist": [
         "cover 90%",

@@ -5,15 +5,19 @@ import {ITitleProps, Title} from '../title/Title';
 import {BreadcrumbLink, IBreadcrumbLinkProps} from './BreadcrumbLink';
 
 export interface IBreadcrumbProps extends React.ClassAttributes<Breadcrumb> {
+    /**
+     * Array of breadcrumb links to navigate to previous pages
+     */
     links?: IBreadcrumbLinkProps[];
-    defaultLinkPath?: string;
+    /**
+     * The content of the current breadcrumb
+     */
     title: ITitleProps;
 }
 
 export class Breadcrumb extends React.Component<IBreadcrumbProps> {
     static defaultProps: Partial<IBreadcrumbProps> = {
         links: [],
-        defaultLinkPath: '',
     };
 
     private getLinks(): JSX.Element[] {
@@ -21,7 +25,7 @@ export class Breadcrumb extends React.Component<IBreadcrumbProps> {
             <BreadcrumbLink
                 key={link.name}
                 {..._.extend(link, {
-                    link: link?.link ? `${this.props.defaultLinkPath}${link.link}` : undefined,
+                    link: link?.link ? `${link.link}` : undefined,
                 })}
             />
         ));

@@ -1,4 +1,4 @@
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {DragSource, DropTarget} from 'react-dnd';
 import {Svg} from '../svg/Svg';
@@ -39,7 +39,7 @@ export class DnDContainer extends React.Component<IDraggableContainerOwnProps & 
             className: 'flex flex-center',
         },
         draggableIconProps: {},
-        icon: <Svg svgName={VaporSVG.svg.dragDrop.name} svgClass="icon" />,
+        icon: <Svg svgName={svg.dragDrop.name} svgClass="icon" />,
     };
 
     private getIcon() {

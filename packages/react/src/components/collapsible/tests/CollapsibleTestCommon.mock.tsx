@@ -13,7 +13,7 @@ export const collapsibleContainerPossibleProps: ICollapsibleContainerOwnProps[] 
     {
         id: `collapsible-${_.uniqueId()}`,
         title: loremIpsum(),
-        informationUrl: 'http://coveo.github.io/vapor/',
+        informationUrl: 'https://plasma.coveo.com',
     },
     {
         id: `collapsible-${_.uniqueId()}`,
@@ -23,20 +23,20 @@ export const collapsibleContainerPossibleProps: ICollapsibleContainerOwnProps[] 
     {
         id: `collapsible-${_.uniqueId()}`,
         title: loremIpsum(),
-        informationUrl: 'http://coveo.github.io/vapor/',
+        informationUrl: 'https://plasma.coveo.com',
         informationTooltip: {title: 'whatever', placement: 'top'},
     },
     {
         id: `collapsible-${_.uniqueId()}`,
         title: loremIpsum(),
-        informationUrl: 'http://coveo.github.io/vapor/',
+        informationUrl: 'https://plasma.coveo.com',
         informationTooltip: {title: 'whatever', placement: 'top'},
         expandedOnMount: true,
     },
     {
         id: `collapsible-${_.uniqueId()}`,
         title: loremIpsum(),
-        informationUrl: 'http://coveo.github.io/vapor/',
+        informationUrl: 'https://plasma.coveo.com',
         informationTooltip: {title: 'whatever', placement: 'top'},
         expandedOnMount: true,
         className: 'some classes mr1',
@@ -44,7 +44,7 @@ export const collapsibleContainerPossibleProps: ICollapsibleContainerOwnProps[] 
     {
         id: `collapsible-${_.uniqueId()}`,
         title: loremIpsum(),
-        informationUrl: 'http://coveo.github.io/vapor/',
+        informationUrl: 'https://plasma.coveo.com',
         informationTooltip: {title: 'whatever', placement: 'top'},
         expandedOnMount: true,
         className: ['some', 'classes', 'mr1'],
@@ -53,7 +53,7 @@ export const collapsibleContainerPossibleProps: ICollapsibleContainerOwnProps[] 
     {
         id: `collapsible-${_.uniqueId()}`,
         title: loremIpsum(),
-        informationUrl: 'http://coveo.github.io/vapor/',
+        informationUrl: 'https://plasma.coveo.com',
         informationTooltip: {title: 'whatever', placement: 'top'},
         expandedOnMount: true,
         className: ['some', 'classes', 'mr1'],

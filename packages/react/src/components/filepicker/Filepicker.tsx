@@ -1,5 +1,5 @@
 import classNames from 'classnames';
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import * as React from 'react';
 import {connect} from 'react-redux';
 
@@ -63,7 +63,7 @@ const FilepickerDisconnected: React.FunctionComponent<
                 {!isEmpty && (
                     <Svg
                         className="btn-append mod-icon"
-                        svgName={VaporSVG.svg.clear.name}
+                        svgName={svg.clear.name}
                         svgClass="icon mod-16"
                         onClick={handleClear}
                     />

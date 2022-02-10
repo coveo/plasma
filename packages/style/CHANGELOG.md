@@ -3,6 +3,55 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.0.3](https://github.com/coveo/plasma/compare/v37.0.2...v37.0.3) (2022-02-10)
+
+**Note:** Version bump only for package @coveord/plasma-style
+
+
+
+
+
+## [37.0.2](https://github.com/coveo/plasma/compare/v37.0.1...v37.0.2) (2022-02-09)
+
+
+### Bug Fixes
+
+* **plasma-style:** render function parameters are all optional ([cff53a5](https://github.com/coveo/plasma/commit/cff53a52c5be91089c303ffec60784855ce183d2))
+
+
+
+
+
+## [37.0.1](https://github.com/coveo/plasma/compare/v37.0.0...v37.0.1) (2022-02-09)
+
+
+### Bug Fixes
+
+* **plasma-style:** expose d.ts files in the npm packages ([96c7b7d](https://github.com/coveo/plasma/commit/96c7b7db79cbb75d7a9d5a11c291c44d2cc9fbfb))
+
+
+
+
+
+# [37.0.0](https://github.com/coveo/plasma/compare/v35.2.0...v37.0.0) (2022-02-09)
+
+
+### Features
+
+* **svg:** auto generate svg names type ([a3bc9c6](https://github.com/coveo/plasma/commit/a3bc9c6c68dba2c40d889f9e29f101e4ee9b626d))
+
+
+### BREAKING CHANGES
+
+* **svg:** Svg prop svgName's type changed
+- SvgNames type from plasma-react is replaced by SvgName type from plasma-style
+- svgName prop now is typed to SvgName instead of SvgNames
+- plasma-style UMD library named changed from VaporSVG to PlasmaStyle
+
+
+
+
+
 # [35.2.0](https://github.com/coveo/plasma/compare/v35.1.1...v35.2.0) (2022-02-08)
 
 **Note:** Version bump only for package @coveord/plasma-style

@@ -4,13 +4,13 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = {
     entry: {
-        VaporSVG: './index.js',
+        PlasmaStyle: './index.js',
     },
     mode: 'production',
     output: {
         path: path.join(__dirname, '/dist/'),
         filename: 'js/[name].js',
-        library: 'VaporSVG',
+        library: 'PlasmaStyle',
         libraryTarget: 'umd',
         globalObject: 'this',
     },

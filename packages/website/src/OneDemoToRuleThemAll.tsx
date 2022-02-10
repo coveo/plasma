@@ -22,14 +22,12 @@ const AdvancedRoutes = loadable(() => import('./pages/advanced'), {fallback: <Pl
 const NotFound = loadable(() => import('./pages/NotFound'), {fallback: <PlasmaLoading />});
 
 const Header = () => (
-    <div id="header" className="flex demo-header">
+    <div id="header" className="demo-header">
         <a href="/#">
             <img src={logo} className="header-logo" />
         </a>
-        <div className="flex space-around search">
-            <StandaloneSearchBar />
-        </div>
-        <div className="right-side"></div>
+        <StandaloneSearchBar />
+        <div className="right-side" />
     </div>
 );
 

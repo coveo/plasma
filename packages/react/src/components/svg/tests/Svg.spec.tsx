@@ -1,8 +1,8 @@
+import {SvgName} from '@coveord/plasma-style';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 
 import {ISvgProps, Svg} from '../Svg';
-import {SvgNames} from '../SvgNames';
 
 describe('Svg', () => {
     let svg: ReactWrapper<ISvgProps, any>;
@@ -14,7 +14,7 @@ describe('Svg', () => {
     };
 
     const INVALID_SVG_NAME: ISvgProps = {
-        svgName: 'someInvalidSvgName' as SvgNames,
+        svgName: 'someInvalidSvgName' as SvgName,
         className: 'icon',
         svgClass: '🎩',
     };

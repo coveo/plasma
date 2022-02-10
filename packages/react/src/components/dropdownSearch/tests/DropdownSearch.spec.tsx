@@ -1,4 +1,5 @@
 /* eslint-disable testing-library/no-render-in-setup */
+import {SvgName} from '@coveord/plasma-style';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import {InfiniteScrollProps} from 'react-infinite-scroll-component';
@@ -8,7 +9,6 @@ import {keyCode} from '../../../utils/InputUtils';
 import {UUID} from '../../../utils/UUID';
 import {Content} from '../../content/Content';
 import {FilterBox} from '../../filterBox/FilterBox';
-import {SvgNames} from '../../svg';
 import {Tooltip} from '../../tooltip/Tooltip';
 import {DropdownSearch, IDropdownOption, IDropdownSearchProps} from '../DropdownSearch';
 import {
@@ -22,7 +22,7 @@ describe('DropdownSearch', () => {
     const id: string = UUID.generate();
     const options: IDropdownOption[] = [
         {value: 'test a', displayValue: 'test a', prefix: 'test'},
-        {value: 'test b', displayValue: 'test b', svg: {svgClass: 'svg-class', svgName: 'svgName' as SvgNames}},
+        {value: 'test b', displayValue: 'test b', svg: {svgClass: 'svg-class', svgName: 'svgName' as SvgName}},
         {value: 'test c', displayValue: 'test c'},
     ];
 

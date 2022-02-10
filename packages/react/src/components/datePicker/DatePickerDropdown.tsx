@@ -3,7 +3,7 @@ import moment from 'moment';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 
-import * as VaporSVG from '@coveord/plasma-style';
+import {svg} from '@coveord/plasma-style';
 import {TooltipPlacement} from '../../utils';
 import {DateUtils} from '../../utils/DateUtils';
 import {IReduxStatePossibleProps} from '../../utils/ReduxUtils';
@@ -183,11 +183,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                                         </label>
                                     </span>
                                     <Svg
-                                        svgName={
-                                            this.props.isOpened
-                                                ? VaporSVG.svg.chartUp.name
-                                                : VaporSVG.svg.chartDown.name
-                                        }
+                                        svgName={this.props.isOpened ? svg.chartUp.name : svg.chartDown.name}
                                         svgClass="icon dropdown-toggle-arrow-style"
                                     />
                                 </button>
@@ -214,7 +210,7 @@ export class DatePickerDropdown extends React.Component<IDatePickerDropdownProps
                             </label>
                         </span>
                         <Svg
-                            svgName={this.props.isOpened ? VaporSVG.svg.chartUp.name : VaporSVG.svg.chartDown.name}
+                            svgName={this.props.isOpened ? svg.chartUp.name : svg.chartDown.name}
                             svgClass="icon dropdown-toggle-arrow-style"
                         />
                     </button>

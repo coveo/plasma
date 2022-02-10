@@ -1,14 +1,15 @@
+import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
 
-import {Svg, SvgNames} from '../svg';
+import {Svg} from '../svg';
 
 /**
  * @deprecated Use SideNavigationHeaderProps instead
  */
 export interface ISideNavigationHeaderProps {
     title: string;
-    svgName?: SvgNames;
+    svgName?: SvgName;
     svgClass?: string;
     onClick?: () => void;
 }

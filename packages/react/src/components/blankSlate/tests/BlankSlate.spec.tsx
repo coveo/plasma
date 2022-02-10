@@ -1,8 +1,8 @@
+import {render, screen} from '@test-utils';
 import {mount, ReactWrapper, shallow} from 'enzyme';
 import * as React from 'react';
 import * as _ from 'underscore';
 
-import {Svg} from '../../svg/Svg';
 import {BlankSlate, IBlankSlateProps} from '../BlankSlate';
 
 describe('BlankSlate', () => {
@@ -115,10 +115,49 @@ describe('BlankSlate', () => {
             expect(blankSlateComponent.find('button').length).toBe(2);
         });
 
-        it('should render the icon', () => {
-            renderBlankSlate();
+        it('should render the svg', () => {
+            render(
+                <BlankSlate
+                    title="title"
+                    description="description test"
+                    buttons={[
+                        {
+                            name: 'test',
+                            primary: true,
+                            enabled: true,
+                        },
+                    ]}
+                    withModal={false}
+                    svgName="tips"
+                />
+            );
 
-            expect(blankSlateComponent.find(Svg).length).toBe(1);
+            expect(screen.getByRole('img', {name: /tips icon/i})).toBeVisible();
+        });
+
+        it('should render custom svg', () => {
+            const svgChild = (
+                <div role="img" aria-label="shrug icon">
+                    🤷
+                </div>
+            );
+            render(
+                <BlankSlate
+                    title="title"
+                    description="description test"
+                    buttons={[
+                        {
+                            name: 'test',
+                            primary: true,
+                            enabled: true,
+                        },
+                    ]}
+                    withModal={false}
+                    svgChild={svgChild}
+                />
+            );
+
+            expect(screen.getByRole('img', {name: /shrug icon/i})).toBeVisible();
         });
     });
 });

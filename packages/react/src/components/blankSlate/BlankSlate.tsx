@@ -4,9 +4,9 @@ import * as _ from 'underscore';
 
 import {IBaseActionOptions} from '../actions/Action';
 import {Button} from '../button/Button';
-import {Svg, SvgNames} from '../svg';
+import {OptionalSvgChildProps, SvgChild} from '../svg/SvgChild';
 
-export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
+export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate>, Omit<OptionalSvgChildProps, 'title'> {
     title?: React.ReactNode;
     description?: React.ReactNode;
     additionalSection?: React.ReactNode;
@@ -16,8 +16,6 @@ export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate> {
     containerClasses?: string[];
     descriptionClassName?: string;
     buttonClasses?: string[];
-    svgName?: SvgNames;
-    svgClass?: string;
 }
 
 export class BlankSlate extends React.Component<IBlankSlateProps> {
@@ -30,13 +28,16 @@ export class BlankSlate extends React.Component<IBlankSlateProps> {
         classes: [],
         containerClasses: [],
         descriptionClassName: '',
-        svgClass: '',
     };
 
     private getSvgTemplate() {
-        return this.props.svgName ? (
-            <Svg svgName={this.props.svgName} svgClass={`icon mod-4x ${this.props.svgClass}`} />
-        ) : null;
+        return (
+            <SvgChild
+                svgName={this.props.svgName}
+                svgClass={`icon mod-4x ${this.props.svgClass}`}
+                svgChild={this.props.svgChild}
+            />
+        );
     }
 
     private getDescriptionTemplate(): JSX.Element {
