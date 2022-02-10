@@ -59,7 +59,7 @@ export const IconCardExamples: React.FunctionComponent = () => (
                         <Svg svgName="cloud" svgClass="icon mod-24 mod-stroke mod-black" />
                     </IconCard>
                 </Section>
-                <Section level={3} title="Disbled">
+                <Section level={3} title="Disabled">
                     <IconCard
                         small
                         title="Web"
