@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [37.1.0](https://github.com/coveo/plasma/compare/v37.0.3...v37.1.0) (2022-02-10)
+
+
+### Features
+
+* **website:** small css tweaks ([35d64e0](https://github.com/coveo/plasma/commit/35d64e0af1501ff898a84d7a1f5174d38fb12fbb))
+
+
+
+
+
 ## [37.0.3](https://github.com/coveo/plasma/compare/v37.0.2...v37.0.3) (2022-02-10)
 
 **Note:** Version bump only for package root
