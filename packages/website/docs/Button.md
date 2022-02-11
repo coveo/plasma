@@ -1,39 +1,39 @@
 ## Best Practices
 
-Button label should allow users to **foresee what will happen** when clicking them. 
+The button label should allow users to **foresee what will happen** when clicking them. 
 
-Avoid multiplying buttons within a page. A page should have **only one primary action button**. If several secondary action buttons are required, consider using [Actionable items](#/form/ActionableItem) instead.
+Avoid multiplying buttons within a page. A page should have **only one primary action button**. If several secondary action buttons are required, consider using [actionable items](#/form/ActionableItem) instead.
 
-When using button groups, such as for "Save" and "Cancel" actions, always put the action that move the user forward through his journey **to the right**. For instance, order buttons as "Cancel" then "Save".
+When using a group of related buttons, such as for the "Save" and "Cancel" actions, always put the action that moves users forward through their journey **to the right**. For example, "Save" would be the rightmost button and "Cancel" would appear left of it.
 
 
 ## Labeling
 
 Keep labels short, preferably **under three words**.
-Use **trigger words** to clearly indicate the action performed by the button.
+Use **trigger words** to clearly indicate the action performed by the button. A trigger word is typically a verb that influences users into clicking due to its specificity. For example, use "View profile" rather than "Open profile", and "Create playlist" rather than "Save".
 
-Write labels so **the first word is a verb**. Use noun without article, to specify the context when required. For example, write "Add filter" rather than "Add a filter" but only write "Save" and "Cancel".
+The first word of the label should be a verb. If adding a noun is required for context, avoid including an article. For example, write "Add filter" rather than "Add a filter", but write "Save" and "Cancel".
 
-When using button to confirm an action that will be executed, always use an active word to **clearly state the resulting action**. For instance, if user must confirm the deletion of a file, write "Delete" and "Cancel" rather than "Yes" and "No".
+When using a button to have users confirm the action to execute, use an active word to **clearly state the resulting action**. For instance, if users must confirm the deletion of a file, write "Delete" and "Cancel" rather than "Yes" and "No".
 
 
 ## Variants
 
 | **Type**      | **Purpose** |
 | --------- | --------- |
-| **Primary** | Use primary buttons for the main action you want to draw the user attention to. There should be only one primary action in a section or page. |
-| **Secondary** | Use secondary buttons to display action of lesser importance or to display multiple actions of similar importance. |
-| **Left icon + label** | Add a left icon to add quick and visual clarity to what the action is or draw attention to the button. Make sure the icon is highly recognizable. |
-| **Right icon + label** | Use the right icon to indicate that additional options are available upon selecting the button. This means that the action will not be carried right away upon clicking the button, but a menu overlay would be displayed where the user can select the exact action to be performed. For instance, when the action is "Create" and options are to create from a template or a blank file. |
-| **Icon only** | Use only an icon when space is an issue or when the icon is highly and instantly recognizable. For instance, the "Setting" button is commonly presented only using a cog icon. Never use icon only button for primary actions. |
-| **Append and prepend separator** | Adding a separator is an aesthetic choice especially used when two or more buttons are stacked vertically. Use a separator to align the icon to the right or left or the button. Note that all buttons must have the same width when vertically stacked. |
+| **Primary** | A primary button draws the users' attention to the main action. There should be only one primary button per section or page. |
+| **Secondary** | A secondary button triggers an action of lesser importance. Multiple secondary buttons may trigger actions of similar importance. |
+| **Icon + label** | Add a icon left of the label to clarify the action or draw attention to the button. Ensure the icon is highly recognizable. |
+| **Label + icon** | Add an icon right of the label to indicate that additional options are available when clicking the button. This indicates that clicking the button doesn't immediately trigger the action. Instead, a menu overlay is displayed, allowing users to select the exact action to be performed. For example, use a label and an icon on the right when the action is "Create" and options are to create from a template or a blank file. |
+| **Icon only** | When space is an issue or when the icon is highly and instantly recognizable, an icon alone may suffice. For instance, the "Setting" button is commonly presented only using a cog icon. However, you should never use an icon-only button for primary actions. |
+| **Append and prepend separator** | Adding a separator is an aesthetic choice typically made when multiple buttons are stacked vertically. Use a separator to align the icon to the right or left of the button. All buttons must have the same width when vertically stacked. |
 
 
 
 
 ## Feedback and Validation
 
-Add a tooltip when the label is hidden to display the name of the related action.
+When the label is hidden, add a tooltip displaying the action.
 
 ---
 
@@ -41,6 +41,6 @@ Add a tooltip when the label is hidden to display the name of the related action
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Link](#/foundations/Links) when you need to redirect a user to another section or website
--   [Actionable items](#/form/ActionableItem) when you want to regroup several less important action together.
+-   [Link](#/foundations/Links) to redirect users to another section or website.
+-   [Actionable items](#/form/ActionableItem) to group several less important action together.
 
