@@ -8,7 +8,7 @@
 
 ## Variations
 
-The toast type choice depends on the status of the operation to which the toast refers.
+The result of the operation triggering the toast determines the type of toast to display.
 
 | **Type**    | **Purpose**                                                                                                                                                                                                                                            |
 | ------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
