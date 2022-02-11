@@ -1,8 +1,8 @@
-## Guidelines
+# Guidelines
 
 Whenever possible, provide ready-made selections of the most contextually relevant values (e.g., last week, last month, etc.).
 
-## Variations
+# Variations
 
 The date picker type choice depends on the input to submit and on the precision required.
 

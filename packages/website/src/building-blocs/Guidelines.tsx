@@ -1,6 +1,6 @@
+import {Tooltip} from '@coveord/plasma-react';
 import * as React from 'react';
 import {Components} from 'react-markdown';
-import {Tooltip} from '@coveord/plasma-react';
 
 const MarkdownFiles = new Map();
 
@@ -36,26 +36,24 @@ const Link: Components['a'] = ({title, href, children, ...props}) => (
     </Tooltip>
 );
 
-const Heading: Components['h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => {
-    if (level < 4) {
-        const Hx = `h${level + 3}` as 'h4' | 'h5' | 'h6';
-        return (
-            <Hx {...props} className="mb1">
-                {children}
-            </Hx>
-        );
-    }
+const Heading1: Components['h1'] = ({children}) => <h1 className="h4-book mt5 mb1">{children}</h1>;
 
+const Heading2: Components['h2'] = ({children}) => <h2 className="h6 mt2 mb1">{children}</h2>;
+
+const Heading: Components['h3' | 'h4' | 'h5' | 'h6'] = ({level, children, ...props}) => {
+    const Hx = `h${level + 3}` as 'h3' | 'h4' | 'h5' | 'h6';
     return (
-        <div {...props} className="body-m mb1">
+        <Hx {...props} className="body-m my1">
             {children}
-        </div>
+        </Hx>
     );
 };
 
+const Divider: Components['hr'] = () => <hr className="my3" />;
+
 export const MarkdownOverrides: Components = {
-    h1: Heading,
-    h2: Heading,
+    h1: Heading1,
+    h2: Heading2,
     h3: Heading,
     h4: Heading,
     h5: Heading,
@@ -66,4 +64,5 @@ export const MarkdownOverrides: Components = {
     a: Link,
     strong: Strong,
     em: Emphasis,
+    hr: Divider,
 };
