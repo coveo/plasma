@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.1.2](https://github.com/coveo/plasma/compare/v37.1.1...v37.1.2) (2022-02-11)
+
+
+### Bug Fixes
+
+* **website, tableHOC:** cannot spread a function ([d492918](https://github.com/coveo/plasma/commit/d4929180e50ef6ed2b9120e61dcdc47e34a331dd))
+
+
+
+
+
 ## [37.1.1](https://github.com/coveo/plasma/compare/v37.1.0...v37.1.1) (2022-02-11)
 
 **Note:** Version bump only for package @coveord/plasma-website
