@@ -49,7 +49,7 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                                 <Tile
                                     key={uniqueId}
                                     title={title}
-                                    href={clickUri.slice(clickUri.indexOf('#'))}
+                                    href={clickUri.slice(clickUri.indexOf('PR-2454')).replace('PR-2454', '#')}
                                     description={raw.description as string}
                                     thumbnail={raw.thumbnail as TileProps['thumbnail']}
                                 />
