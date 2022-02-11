@@ -1,4 +1,4 @@
-## Best Practices
+# Best Practices
 
 The button label should allow users to **foresee what will happen** when clicking them. 
 
@@ -6,8 +6,7 @@ Avoid multiplying buttons within a page. A page should have **only one primary a
 
 When using a group of related buttons, such as for the "Save" and "Cancel" actions, always put the action that moves users forward through their journey **to the right**. For example, "Save" would be the rightmost button and "Cancel" would appear left of it.
 
-
-## Labeling
+# Labeling
 
 Keep labels short, preferably **under three words**.
 Use **trigger words** to clearly indicate the action performed by the button. A trigger word is typically a verb that influences users into clicking due to its specificity. For example, use "View profile" rather than "Open profile", and "Create playlist" rather than "Save".
@@ -16,8 +15,7 @@ The first word of the label should be a verb. If adding a noun is required for c
 
 When using a button to have users confirm the action to execute, use an active word to **clearly state the resulting action**. For instance, if users must confirm the deletion of a file, write "Delete" and "Cancel" rather than "Yes" and "No".
 
-
-## Variants
+# Variants
 
 | **Type**      | **Purpose** |
 | --------- | --------- |
@@ -28,16 +26,11 @@ When using a button to have users confirm the action to execute, use an active w
 | **Icon only** | When space is an issue or when the icon is highly and instantly recognizable, an icon alone may suffice. For instance, the "Setting" button is commonly presented only using a cog icon. However, you should never use an icon-only button for primary actions. |
 | **Append and prepend separator** | Adding a separator is an aesthetic choice typically made when multiple buttons are stacked vertically. Use a separator to align the icon to the right or left of the button. All buttons must have the same width when vertically stacked. |
 
-
-
-
-## Feedback and Validation
+# Feedback and Validation
 
 When the label is hidden, add a tooltip displaying the action.
 
----
-
-## Related Components
+# Related Components
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 

@@ -32,8 +32,8 @@ export const PlasmaComponent: React.FunctionComponent<PlasmaComponentProps & Rea
                     {groupId: 'page', id: 'guide', title: 'Guidelines'},
                 ]}
             />
-            <TabContent className="mod-header-padding mod-form-top-bottom-padding">
-                <TabPaneConnected id="usage" groupId="page">
+            <TabContent className="mod-header-padding">
+                <TabPaneConnected id="usage" groupId="page" className="mod-form-top-bottom-padding">
                     <div>{children}</div>
                     <div>
                         {withSource && (

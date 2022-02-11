@@ -80,7 +80,7 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
                         />
                     )}
                 </TabPaneConnected>
-                <div className="mod-header-padding mod-form-top-bottom-padding">
+                <div className="mod-header-padding">
                     <GuidelinesTab id={id} />
                 </div>
             </TabContent>
