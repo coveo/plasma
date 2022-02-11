@@ -26,6 +26,10 @@
         }
     }
 
+    .right-side {
+        justify-self: end;
+    }
+
     @media (max-width: 1240px) {
         .demo-header {
             grid-template-columns: 261px 1fr 2rem;

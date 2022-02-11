@@ -1,7 +1,8 @@
 import '@styles/main.scss';
 
-import * as React from 'react';
+import {Svg} from '@coveord/plasma-react';
 import loadable from '@loadable/component';
+import * as React from 'react';
 import {Outlet, Route, Routes} from 'react-router-dom';
 
 import logo from '../resources/plasma-logo.svg';
@@ -27,7 +28,11 @@ const Header = () => (
             <img src={logo} className="header-logo" alt="Plasma Design System" />
         </a>
         <StandaloneSearchBar />
-        <div className="right-side" />
+        <div className="right-side">
+            <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
+                <Svg svgName="githubMark" svgClass="icon mod-32 mod-white" />
+            </a>
+        </div>
     </div>
 );
 

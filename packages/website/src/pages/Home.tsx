@@ -26,7 +26,15 @@ const WelcomeToPlasma: React.FC = () => (
                 Learn more about our brand, our values and our story by visiting our{' '}
                 <a href="https://brand.coveo.com/" target="_blank" className="link inline-flex">
                     brand page
-                    <Svg svgName="external" svgClass="icon mod-22 pl1" />
+                    <Svg svgName="external" svgClass="icon mod-14" style={{marginLeft: '4px'}} />
+                </a>
+                .
+            </div>
+            <div>
+                Be part of the progress! Contribute to Plasma on{' '}
+                <a href="https://github.com/coveo/plasma#readme" target="_blank" className="link inline-flex">
+                    GitHub
+                    <Svg svgName="external" svgClass="icon mod-14" style={{marginLeft: '4px'}} />
                 </a>
                 .
             </div>
