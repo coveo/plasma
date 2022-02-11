@@ -22,7 +22,7 @@ export const GuidelinesTab: React.FunctionComponent<{id: string}> = ({id}) => (
                 </GithubButton>
             </>
         ) : (
-            <>
+            <div className="mt5">
                 <p>
                     No guidelines exist for <span className="body-m">{id}</span> yet.
                 </p>
@@ -33,7 +33,7 @@ export const GuidelinesTab: React.FunctionComponent<{id: string}> = ({id}) => (
                 >
                     Create guidelines
                 </GithubButton>
-            </>
+            </div>
         )}
     </TabPaneConnected>
 );
