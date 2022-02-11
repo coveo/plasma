@@ -1,5 +1,3 @@
-import 'rc-slider/assets/index.css';
-
 import classNames from 'classnames';
 import {Range, SliderProps, SliderTooltip} from 'rc-slider';
 import * as React from 'react';

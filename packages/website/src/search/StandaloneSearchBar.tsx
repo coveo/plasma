@@ -1,8 +1,7 @@
-import '@styles/plasmaSearchBar.scss';
-
 import {buildSearchBox, SearchBox, SearchBoxState} from '@coveo/headless';
 import {Button, IItemBoxProps, ListBox, Svg} from '@coveord/plasma-react';
 import classNames from 'classnames';
+import {useRouter} from 'next/router';
 import {FunctionComponent, useContext, useEffect, useState} from 'react';
 import React from 'react';
 
@@ -13,14 +12,20 @@ interface SearchBarProps {
     controller: SearchBox;
 }
 
-const navigateToResultPage = (query: string) => {
-    location.assign(`#/search?q=${query}`);
-};
-
 const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
     const {controller} = props;
     const [state, setState] = useState<SearchBoxState>(controller.state);
     const [focused, setFocused] = useState(false);
+    const [showQuerySuggesttions, setShowQuerySuggesttions] = useState(false);
+    const router = useRouter();
+
+    const navigateToResultPage = (query: string) => {
+        router.push(`/Search?q=${query}`);
+    };
+
+    useEffect(() => {
+        setShowQuerySuggesttions(FeatureFlags.get('query-suggestions') as boolean);
+    }, []);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
 
@@ -95,12 +100,12 @@ const SearchBoxRerender: FunctionComponent<SearchBarProps> = (props) => {
                 {/* 
                     To toggle the feature flag, copy and paste those commands in the dev tool console: *
                         
-                        sessionStorage.setItem('query-suggestions', true) to show the query suggestions *
-                        sessionStorage.setItem('query-suggestions', false) to hide the query suggestions * 
+                        localStorage.setItem('query-suggestions', true) to show the query suggestions *
+                        localStorage.setItem('query-suggestions', false) to hide the query suggestions *
 
                     You need to reload the page for it to take effect.  
                 */}
-                {FeatureFlags.get('query-suggestions') ? <SuggestionListBox /> : null}
+                {showQuerySuggesttions ? <SuggestionListBox /> : null}
             </form>
         </div>
     );

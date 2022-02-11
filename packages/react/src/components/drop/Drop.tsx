@@ -34,12 +34,14 @@ const mapDispatchToProps = (dispatch: IDispatch, {id, groupId}: IDropOwnProps) =
 @ReduxConnect(mapStateToProps, mapDispatchToProps)
 export class Drop extends React.PureComponent<IDropProps> {
     private readonly button: React.RefObject<HTMLDivElement>;
-    private dropRef: React.RefObject<HTMLDivElement>;
+    private dropContent: HTMLDivElement | null;
 
     static defaultProps: Partial<IDropProps>;
 
     constructor(props: IDropProps) {
         super(props);
+
+        this.dropContent = null;
 
         this.button = React.createRef();
         this.handleDocumentClick = this.handleDocumentClick.bind(this);
@@ -79,11 +81,15 @@ export class Drop extends React.PureComponent<IDropProps> {
     }
 
     private setEventOnClickOnDocument() {
-        document.addEventListener('click', this.handleDocumentClick);
+        if (typeof document !== 'undefined') {
+            document.addEventListener('click', this.handleDocumentClick);
+        }
     }
 
     private removeEventOnClickOnDocument() {
-        document.removeEventListener('click', this.handleDocumentClick);
+        if (typeof document !== 'undefined') {
+            document.removeEventListener('click', this.handleDocumentClick);
+        }
     }
 
     private createPortalMenu() {
@@ -97,11 +103,11 @@ export class Drop extends React.PureComponent<IDropProps> {
                 hasSameWidth={this.props.hasSameWidth}
                 selector={this.props.selector}
                 parentSelector={this.props.parentSelector}
-                renderDrop={(style: React.CSSProperties, dropRef: React.RefObject<HTMLDivElement>): React.ReactNode => (
+                renderDrop={(style: React.CSSProperties): React.ReactNode => (
                     // Use dropRef as a reference of the drop element because we need to calculate later if the click is inside or not the drop container
                     <div
                         style={style}
-                        ref={(this.dropRef = dropRef)}
+                        ref={(ref) => (this.dropContent = ref)}
                         className={classNames('drop', this.props.listContainerProps.className)}
                         {...this.props.listContainerProps}
                         data-open={this.props.isOpen}
@@ -126,7 +132,7 @@ export class Drop extends React.PureComponent<IDropProps> {
         if (this.props.isOpen && document.body.contains(e.target as HTMLElement)) {
             const button: Element | Text = ReactDOM.findDOMNode(this.button.current);
 
-            if (this.dropRef.current.contains(e.target as Node)) {
+            if (this.dropContent?.contains(e.target as Node)) {
                 if (this.props.closeOnClickDrop) {
                     this.onClickOutside();
                 }

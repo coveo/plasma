@@ -1,20 +1,8 @@
 import {createDefaultMapFromCDN} from '@typescript/vfs';
 import lzstring from 'lz-string';
-import * as monaco from 'monaco-editor';
 import React from 'react';
 import * as ts from 'typescript';
-
-monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
-    jsx: monaco.languages.typescript.JsxEmit.React,
-    jsxFactory: 'React.createElement',
-    jsxFragmentFactory: 'React.Fragment',
-    reactNamespace: 'React',
-});
-monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-    noSemanticValidation: false,
-    noSyntaxValidation: false,
-});
-monaco.languages.typescript.typescriptDefaults.setEagerModelSync(true);
+import {loader} from '@monaco-editor/react';
 
 export const compilerOptions: ts.CompilerOptions = {
     jsx: ts.JsxEmit.React,
@@ -27,7 +15,6 @@ export const compilerOptions: ts.CompilerOptions = {
 };
 
 const typesFiles = require.context('!!raw-loader!@types', true, /\.d\.ts$/i, 'lazy');
-const typescriptLibs = require.context('!!raw-loader!typescript/lib', false, /\.d\.ts$/i, 'lazy');
 const plasmaTypes = require.context('!!raw-loader!@coveord/plasma-react/dist/definitions', true, /\.d\.ts$/i, 'lazy');
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
@@ -39,24 +26,33 @@ const load = async (path: string, ctx: any, root: string) => {
 };
 
 const loadAll: Promise<Map<string, string>> = Promise.all([
+    createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring),
     ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
-    ...typescriptLibs.keys().map((path) => load(path, typescriptLibs, '')),
     ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
-]).then((mappedTypes) =>
-    createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring).then((map) => {
-        mappedTypes.forEach(({path, content}) => {
-            monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
-            map.set(path, content);
-        });
-        return map;
-    })
-);
+]).then(([map, ...mappedTypes]) => {
+    mappedTypes.forEach(({path, content}) => {
+        map.set(path, content);
+    });
+    return map;
+});
 
 export const useTypescriptServer = () => {
     const [fsMap, setFsMap] = React.useState<Map<string, string> | null>(null);
 
     React.useEffect(() => {
-        loadAll.then((defaultMap) => setFsMap(new Map(defaultMap)));
+        Promise.all([loadAll, loader.init()]).then(([defaultMap, monaco]) => {
+            monaco.languages.typescript.typescriptDefaults.setCompilerOptions({
+                jsx: monaco.languages.typescript.JsxEmit.React,
+                jsxFactory: 'React.createElement',
+                jsxFragmentFactory: 'React.Fragment',
+                reactNamespace: 'React',
+            });
+
+            defaultMap.forEach((content, path) => {
+                monaco.languages.typescript.typescriptDefaults.addExtraLib(content, `file://${path}`);
+            });
+            setFsMap(new Map(defaultMap));
+        });
     }, []);
 
     return {fsMap, setFsMap, compilerOptions};

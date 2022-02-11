@@ -37,7 +37,7 @@
                 "parameters": {
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
-                "source": "packages/website/dist",
+                "source": "packages/website/out",
                 "rd": {
                     "disabled": false
                 }

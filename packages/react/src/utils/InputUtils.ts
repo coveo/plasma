@@ -25,7 +25,11 @@ export const keyCode = {
  * taken from https://stackoverflow.com/a/7394787
  */
 export const decodeHtml = (html: string) => {
-    const txt = document.createElement('textarea');
-    txt.innerHTML = html;
-    return txt.value;
+    if (typeof document !== 'undefined') {
+        const txt = document.createElement('textarea');
+        txt.innerHTML = html;
+        return txt.value;
+    } else {
+        return html.replace(/&#(\d+);/g, (match, dec) => String.fromCharCode(dec));
+    }
 };

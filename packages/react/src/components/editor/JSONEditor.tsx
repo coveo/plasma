@@ -1,5 +1,3 @@
-import 'codemirror/mode/javascript/javascript';
-
 import classNames from 'classnames';
 import * as React from 'react';
 

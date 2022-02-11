@@ -2,8 +2,6 @@ import {createSystem, createVirtualTypeScriptEnvironment} from '@typescript/vfs'
 import * as React from 'react';
 import * as ts from 'typescript';
 
-import '@styles/props-doc.scss';
-
 import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 

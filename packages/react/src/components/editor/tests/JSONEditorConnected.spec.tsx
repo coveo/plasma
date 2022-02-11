@@ -1,4 +1,4 @@
-import {render, screen, within} from '@test-utils';
+import {render, screen, within, waitFor} from '@test-utils';
 import userEvent from '@testing-library/user-event';
 import * as React from 'react';
 
@@ -18,34 +18,40 @@ describe('<JSONEditorConnected />', () => {
         }).not.toThrow();
     });
 
-    it('should not throw when content changes', () => {
+    it('should not throw when content changes', async () => {
         render(<JSONEditorConnected id="💙" value={'{}'} />);
+
+        await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
         expect(() => {
             userEvent.type(screen.getByRole('textbox'), 'hello');
         }).not.toThrow();
     });
 
-    it('should render value from store', () => {
+    it('should render value from store', async () => {
         const expectedValue = '{"test": "asdf"}';
-        render(<JSONEditorConnected id="💙" value={'{}'} />, {
+        const {container} = render(<JSONEditorConnected id="💙" value={'{}'} />, {
             initialState: {jsonEditors: [{id: basicProps.id, value: expectedValue, valid: true}]},
         });
 
-        // eslint-disable-next-line testing-library/no-node-access
-        const container = document.querySelector('.CodeMirror-line [role="presentation"]') as HTMLElement;
+        await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
+
+        // eslint-disable-next-line testing-library/no-node-access,testing-library/no-container
+        const line = container.querySelector('.CodeMirror-line [role="presentation"]') as HTMLElement;
 
         // the codemirror divide the text in multiple elements, by using textContent we "strip" the html
         const matcher = (_: string, element: HTMLElement) => element?.textContent === '{"test": "asdf"}';
 
-        expect(within(container).getByText(matcher)).toBeVisible();
+        expect(within(line).getByText(matcher)).toBeVisible();
     });
 
-    it('should call the onChange function from props if it is provided', () => {
+    it('should call the onChange function from props if it is provided', async () => {
         const expectedValue = 'hello';
         const onChangeSpy = jest.fn();
 
         render(<JSONEditorConnected id="💙" value={''} onChange={onChangeSpy} />);
+
+        await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
         userEvent.type(screen.getByRole('textbox'), expectedValue);
 

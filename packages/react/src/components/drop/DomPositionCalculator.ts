@@ -5,12 +5,12 @@ export interface IDropUIPosition {
     orientation: string;
 }
 
-export const DropPodPosition = {
-    bottom: 'bottom',
-    top: 'top',
-    left: 'left',
-    right: 'right',
-};
+export enum DropPodPosition {
+    bottom = 'bottom',
+    top = 'top',
+    left = 'left',
+    right = 'right',
+}
 
 export const OrientationByPosition = {
     [DropPodPosition.bottom]: [DropPodPosition.left, DropPodPosition.right],

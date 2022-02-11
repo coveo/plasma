@@ -112,19 +112,6 @@ pipeline {
       }
     }
 
-    stage('Test') {
-      when {
-        expression { !skipRemainingStages }
-      }
-
-      steps {
-        script {
-          setLastStageName();
-          sh "pnpm test:ci"
-        }
-      }
-    }
-
     stage('Deploy PR demo') {
       when {
         allOf {
@@ -158,6 +145,19 @@ pipeline {
               color: "#00FF00", message: message,
               ["admin-ui-builds"]
           )
+        }
+      }
+    }
+
+    stage('Test') {
+      when {
+        expression { !skipRemainingStages }
+      }
+
+      steps {
+        script {
+          setLastStageName();
+          sh "pnpm test:ci"
         }
       }
     }

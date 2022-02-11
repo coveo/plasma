@@ -2,8 +2,8 @@ import {DateUtils, TableRowConnected, TableRowNumberColumn} from '@coveord/plasm
 import moment from 'moment';
 import * as React from 'react';
 
-import {IExampleRowData} from '../pages/layout/TableHOCExamples';
-import {TableHOCServerExampleId} from '../pages/layout/TableHOCServerExamples';
+import {IExampleRowData} from '../pages/layout/TableHOC';
+import {TableHOCServerExampleId} from '../pages/layout/TableHOCServer';
 import {SELECTION_BOXES_LONG} from './DatePickerExamplesCommon';
 
 export interface ITableHOCServerExampleContext {

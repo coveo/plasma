@@ -1,5 +1,3 @@
-import '@styles/github-button.scss';
-
 import {Svg} from '@coveord/plasma-react';
 import classNames from 'classnames';
 import * as React from 'react';

@@ -1,123 +1,101 @@
 import userEvent from '@testing-library/user-event';
-import * as CodeMirror from 'codemirror';
-import {ShallowWrapper} from 'enzyme';
-import {mountWithState, shallowWithState} from '@helpers/enzyme-redux';
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror2';
 import {render, waitFor, screen} from '@test-utils';
-import * as _ from 'underscore';
 
 import {CollapsibleSelectors} from '../../collapsible/CollapsibleSelectors';
-import {CodeEditor, CodeEditorState, ICodeEditorProps} from '../CodeEditor';
+import {CodeEditor} from '../CodeEditor';
 import {CodeEditorActions} from '../CodeEditorActions';
 import {CodeMirrorModes} from '../EditorConstants';
 
 describe('CodeEditor', () => {
-    const basicProps: ICodeEditorProps = {
-        value: 'any string',
-        mode: CodeMirrorModes.Python,
-    };
-    let codeEditorInstance: typeof CodeEditor;
-
-    it('should render without errors', () => {
-        expect(() => {
-            shallowWithState(<CodeEditor {...basicProps} />, {})
-                .dive()
-                .dive();
-        }).not.toThrow();
-    });
-
     describe('<CodeEditor />', () => {
-        let wrapper: ShallowWrapper<any, any>;
-        let codeEditor: ShallowWrapper<ICodeEditorProps, CodeEditorState>;
-
-        const mountWithProps = (props: Partial<ICodeEditorProps> = {}) => {
-            wrapper = shallowWithState(<CodeEditor {..._.defaults(props, basicProps)} />, {});
-            codeEditor = wrapper.dive().dive();
-        };
-
         beforeEach(() => {
             jest.spyOn(CollapsibleSelectors, 'isExpanded').mockReturnValue(false);
-            mountWithProps();
         });
 
-        it('should get the value as a prop', () => {
-            const valueProp: string = codeEditor.props().value;
+        it('should get the value as a prop', async () => {
+            render(<CodeEditor id="anId" value="aValue" mode={CodeMirrorModes.Python} />);
 
-            expect(valueProp).toBe(basicProps.value);
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
+
+            expect(screen.getByText('aValue')).toBeVisible();
         });
 
-        it('should set the code-editor-no-cursor className when in readOnly to hide the cursor', () => {
-            mountWithProps({readOnly: true});
-
-            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('code-editor-no-cursor');
-
-            mountWithProps();
-
-            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).not.toContain(
-                'code-editor-no-cursor'
+        it('does not set the code-editor-no-cursor class when readOnly is false', async () => {
+            const {container} = render(
+                <CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} readOnly={false} />
             );
+
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
+
+            // eslint-disable-next-line testing-library/no-container
+            expect(container.querySelector('.code-editor-no-cursor')).not.toBeInTheDocument();
         });
 
-        it('should display a <CodeMirror /> component', () => {
-            expect(codeEditor.find(ReactCodeMirror.Controlled).length).toBe(1);
+        it('should set the code-editor-no-cursor className when in readOnly to hide the cursor', async () => {
+            const {container} = render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} readOnly />);
+
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
+
+            // eslint-disable-next-line testing-library/no-container
+            expect(container.querySelector('.code-editor-no-cursor')).toBeVisible();
         });
 
-        it('should call onChange prop when its value prop changes', () => {
-            const onChangeSpy: jest.Mock<any, any> = jest.fn();
+        it('should call onChange prop when its value prop changes', async () => {
+            const onChangeSpy = jest.fn();
             const expectedValue: string = 'the expected value';
 
-            mountWithProps({onChange: onChangeSpy});
+            render(<CodeEditor id="anId" value="" mode={CodeMirrorModes.Python} onChange={onChangeSpy} />);
 
-            codeEditor
-                .find(ReactCodeMirror.Controlled)
-                .first()
-                .props()
-                .onChange({} as CodeMirror.Editor, undefined, expectedValue);
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
-            expect(onChangeSpy).toHaveBeenCalledTimes(1);
+            userEvent.type(screen.getByRole('textbox'), expectedValue);
+
             expect(onChangeSpy).toHaveBeenCalledWith(expectedValue);
         });
 
-        it(`should clear codemirror's history if we set a new value`, () => {
-            codeEditorInstance = codeEditor.dive().instance() as any;
-            const clearHistorySpy: jest.SpyInstance = jest.spyOn(
-                (codeEditorInstance as any).editor.getDoc(),
-                'clearHistory'
-            );
+        it(`should clear codemirror's history if we set a new value`, async () => {
+            const {rerender} = render(<CodeEditor id="anId" value="firstValue" mode={CodeMirrorModes.Python} />);
 
-            codeEditor.setProps({value: 'a new value'});
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
-            expect(clearHistorySpy).toHaveBeenCalledTimes(1);
+            rerender(<CodeEditor id="anId" value="newValue" mode={CodeMirrorModes.Python} />);
+
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
+
+            userEvent.type(screen.getByRole('textbox'), '{ctrl}z');
+
+            expect(screen.queryByText('newValue')).toBeVisible();
+            expect(screen.queryByText('firstValue')).not.toBeInTheDocument();
         });
 
-        it('should add any extra keywords for the autocompletion if there are some in the props', () => {
-            const currentKeywords: string[] = [...(CodeMirror as any).helpers.hintWords[basicProps.mode]];
-            const expectedNewKeywords = ['one', 'two'];
+        it('should add any extra keywords for the autocompletion if there are some in the props', async () => {
+            const expectedNewKeywords = ['📈', '📉'];
 
-            const codeEditorMounted = mountWithState(
-                <CodeEditor {..._.extend({}, basicProps, {extraKeywords: expectedNewKeywords})} />,
-                {
-                    attachTo: document.getElementById('App'),
-                }
-            );
+            render(<CodeEditor id="anId" value="" mode={CodeMirrorModes.Python} extraKeywords={expectedNewKeywords} />);
 
-            mountWithProps(_.extend({}, basicProps, {extraKeywords: expectedNewKeywords}));
-            codeEditorMounted.find(ReactCodeMirror.Controlled).first().props().editorDidMount;
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
-            const newList: string[] = (CodeMirror as any).helpers.hintWords[basicProps.mode];
+            userEvent.type(screen.getByRole('textbox'), '{ctrl}{space}');
 
-            expect(newList).not.toEqual(currentKeywords);
-            expect(newList).toEqual(currentKeywords.concat(expectedNewKeywords));
+            expect(screen.getByText('📈')).toBeVisible();
+            expect(screen.getByText('📉')).toBeVisible();
         });
 
-        it('should have a border by default', () => {
-            expect(codeEditor.find(ReactCodeMirror.Controlled).props().className).toContain('mod-border');
+        it('should have a border by default', async () => {
+            const {container} = render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
+
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
+
+            // eslint-disable-next-line testing-library/no-container
+            expect(container.querySelector('.mod-border')).toBeVisible();
         });
 
         it('updates the value in the store on mount and on change if mounted with an id', async () => {
             const updateSpy = jest.spyOn(CodeEditorActions, 'updateValue');
             render(<CodeEditor id="anId" value="a value" mode={CodeMirrorModes.Python} />);
+
+            await waitFor(() => expect(screen.getByRole('textbox')).toBeVisible());
 
             expect(updateSpy).toHaveBeenCalledTimes(1);
 

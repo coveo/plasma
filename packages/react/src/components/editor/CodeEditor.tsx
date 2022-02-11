@@ -1,18 +1,9 @@
-import 'codemirror/addon/dialog/dialog';
-import 'codemirror/addon/fold/foldgutter';
-import 'codemirror/addon/hint/anyword-hint';
-import 'codemirror/addon/hint/show-hint';
-import 'codemirror/addon/search/jump-to-line';
-import 'codemirror/addon/search/matchesonscrollbar';
-import 'codemirror/addon/search/search';
-import 'codemirror/mode/python/python';
-
+import loadable from '@loadable/component';
 import classNames from 'classnames';
-import * as CodeMirror from 'codemirror';
+import type {Editor, EditorConfiguration} from 'codemirror';
 import * as React from 'react';
-import * as ReactCodeMirror from 'react-codemirror2';
+import type {Controlled} from 'react-codemirror2';
 import {connect} from 'react-redux';
-import * as _ from 'underscore';
 
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch} from '../../utils';
@@ -20,17 +11,22 @@ import {CollapsibleSelectors} from '../collapsible/CollapsibleSelectors';
 import {CodeEditorActions} from './CodeEditorActions';
 import {CodeMirrorGutters} from './EditorConstants';
 
+const ReactCodeMirror = loadable(() => import('./CodeMirror'), {
+    ssr: false,
+    resolveComponent: (mod: typeof import('./CodeMirror')) => mod.Controlled,
+});
+
 export interface ICodeEditorProps {
     id?: string;
     value: string;
     mode: any;
     readOnly?: boolean;
     onChange?: (code: string) => void;
-    onMount?: (codemirror: ReactCodeMirror.Controlled) => void;
+    onMount?: (codemirror: Controlled) => void;
     errorMessage?: string;
     extraKeywords?: string[];
     className?: string;
-    options?: CodeMirror.EditorConfiguration;
+    options?: EditorConfiguration;
     collapsibleId?: string;
     ref?: React.Ref<CodeEditorDisconnect>;
 }
@@ -58,7 +54,7 @@ class CodeEditorDisconnect extends React.Component<
         value: '{}',
     };
 
-    static defaultOptions: CodeMirror.EditorConfiguration = {
+    static defaultOptions = {
         lineNumbers: true,
         foldGutter: true,
         lint: true,
@@ -69,8 +65,8 @@ class CodeEditorDisconnect extends React.Component<
         },
     };
 
-    private codemirror = React.createRef<ReactCodeMirror.Controlled>();
-    private editor: CodeMirror.Editor;
+    private codemirror = React.createRef<Controlled>();
+    private editor: Editor;
 
     state = {
         value: this.props.value,
@@ -111,9 +107,12 @@ class CodeEditorDisconnect extends React.Component<
 
     render() {
         return (
-            <ReactCodeMirror.Controlled
-                ref={this.codemirror}
-                editorDidMount={(editor: CodeMirror.Editor) => {
+            <ReactCodeMirror
+                {
+                    // here we must spread the object otherwise typesript throws a tantrum about ref not existing
+                    ...{ref: this.codemirror}
+                }
+                editorDidMount={(editor: Editor) => {
                     this.editor = editor;
                     this.addExtraKeywords();
                 }}
@@ -144,11 +143,11 @@ class CodeEditorDisconnect extends React.Component<
     }
 
     private addExtraKeywords() {
-        if (this.props.extraKeywords) {
+        if (this.props.extraKeywords && this.props.extraKeywords.length > 0) {
             const mode: string = this.props.mode.name || this.props.mode;
-            (CodeMirror as any).helpers.hintWords[mode] = (CodeMirror as any).helpers.hintWords[mode].concat(
-                this.props.extraKeywords
-            );
+            import('codemirror').then((mod) => {
+                mod.default.registerHelper('hintWords', mode, this.props.extraKeywords);
+            });
         }
     }
 }

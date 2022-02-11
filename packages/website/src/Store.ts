@@ -13,5 +13,7 @@ export const Store = createStore(
     composeEnhancers(applyMiddleware<IDispatch>(...middlewares))
 );
 
-// Required for the dynamic examples
-(window as any).Store = Store;
+if (typeof window !== 'undefined') {
+    // Required for the dynamic examples
+    (window as any).Store = Store;
+}
