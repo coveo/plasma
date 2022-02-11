@@ -4,10 +4,12 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import {
     Badge,
+    ConfigSupplier,
     DateUtils,
     filterThrough,
     IActionOptions,
     IDispatch,
+    ITableWithDatePickerConfig,
     Section,
     TableHeaderWithSort,
     TableHOC,
@@ -128,7 +130,7 @@ export const generateTableRow = (allData: IExampleRowData[], tableId: string) =>
         </TableRowConnected>
     ));
 
-const tableDatePickerConfig = () => ({
+const tableDatePickerConfig: ConfigSupplier<ITableWithDatePickerConfig> = () => ({
     datesSelectionBoxes: SELECTION_BOXES_LONG,
     matchDates: (data: IExampleRowData, lowerLimit: Date, upperLimit?: Date) =>
         _.isUndefined(upperLimit) || (lowerLimit <= data.dateOfBirth && data.dateOfBirth <= upperLimit),
@@ -198,7 +200,7 @@ const TableWithActionsAndDataFilteringDisconnected: React.FunctionComponent<
             ],
         }),
         tableWithSort({sort}),
-        tableWithDatePicker(...(tableDatePickerConfig as any)),
+        tableWithDatePicker(tableDatePickerConfig),
         tableWithPagination({perPageNumbers: [3, 5, 10]}),
         tableWithActions()
     )(TableHOC);
