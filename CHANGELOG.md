@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [37.3.0](https://github.com/coveo/plasma/compare/v37.2.0...v37.3.0) (2022-02-14)
+
+
+### Bug Fixes
+
+* **website:** add margin top on empty guidelines tab ([e47c127](https://github.com/coveo/plasma/commit/e47c127c45b204fecc8f0f44242c381149f0d31a))
+* **website:** make sure links in guidelines work ([0a74184](https://github.com/coveo/plasma/commit/0a7418433bf3b0cde685be62ec130763f74af9f5))
+
+
+### Features
+
+* **website:** add root repo link in header and home ([9ab1c54](https://github.com/coveo/plasma/commit/9ab1c540a4c4e7a0943150ed107566c090f9125d))
+* **website:** improve guidelines look n feel ([b51980f](https://github.com/coveo/plasma/commit/b51980fa9f69ac2875279913cbbd70dd8eede0b7))
+
+
+
+
+
 # [37.2.0](https://github.com/coveo/plasma/compare/v37.1.4...v37.2.0) (2022-02-14)
 
 

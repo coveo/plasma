@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [37.3.0](https://github.com/coveo/plasma/compare/v37.2.0...v37.3.0) (2022-02-14)
+
+
+### Features
+
+* **website:** add root repo link in header and home ([9ab1c54](https://github.com/coveo/plasma/commit/9ab1c540a4c4e7a0943150ed107566c090f9125d))
+
+
+
+
+
 # [37.2.0](https://github.com/coveo/plasma/compare/v37.1.4...v37.2.0) (2022-02-14)
 
 **Note:** Version bump only for package @coveord/plasma-style
