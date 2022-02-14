@@ -49,18 +49,20 @@ export const ExampleLayout: React.FunctionComponent<ExampleLayoutProps> = ({
     return (
         <div id={id} className="example-layout">
             <div className="example-layout__header">
-                <h2 className="h4-subdued normal-white-space">{section}</h2>
+                <h2 className="h5-subdued normal-white-space">{section}</h2>
+                <h1 className="h1-light normal-white-space" data-coveo-field="title">
+                    {title}
+                </h1>
+                <h3 className="h4-book-subdued" data-coveo-field="description">
+                    {description}
+                </h3>
                 <GithubButton
                     ariaLabel="View source code on GitHub"
                     href={`https://github.com/coveo/plasma/blob/master/packages/react/src/components${componentSourcePath}`}
                 >
                     View source
                 </GithubButton>
-                <h3 className="h1-light normal-white-space" data-coveo-field="title">
-                    {title}
-                </h3>
                 <Tile thumbnail={thumbnail} />
-                <div data-coveo-field="description">{description}</div>
             </div>
             <TabsHeader
                 tabs={[
