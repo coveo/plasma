@@ -29,30 +29,12 @@
     },
     "ordered_phases": [
         {
-            "id": "deploy-minified-files",
+            "id": "deploy-plasma-website",
             "s3": {
                 "disabled": true,
                 "bucket": "coveo-nrd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
-                    "include": "*.min.*",
-                    "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff",
-                    "content-encoding": "gzip"
-                },
-                "source": "packages/website/dist",
-                "rd": {
-                    "disabled": false
-                }
-            }
-        },
-        {
-            "id": "deploy-non-minified-files",
-            "s3": {
-                "disabled": true,
-                "bucket": "coveo-nrd-jsadmin",
-                "directory": "react-vapor",
-                "parameters": {
-                    "exclude": "*.min.*",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
                 "source": "packages/website/dist",
