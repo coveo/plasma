@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.4.1](https://github.com/coveo/plasma/compare/v37.4.0...v37.4.1) (2022-02-14)
+
+
+### Bug Fixes
+
+* **deploy:** remove gzip content enconding phase ([ee8ed5b](https://github.com/coveo/plasma/commit/ee8ed5b1873aea8ca632600e3c44843619711da2))
+
+
+
+
+
 # [37.4.0](https://github.com/coveo/plasma/compare/v37.3.0...v37.4.0) (2022-02-14)
 
 
