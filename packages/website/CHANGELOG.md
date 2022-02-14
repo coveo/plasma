@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [37.2.0](https://github.com/coveo/plasma/compare/v37.1.4...v37.2.0) (2022-02-14)
+
+
+### Features
+
+* **descriptions:** adding last descriptions for components ([34d4aef](https://github.com/coveo/plasma/commit/34d4aef6a71a57a46acbacb02e7028dec4f3bd75))
+
+
+
+
+
 ## [37.1.4](https://github.com/coveo/plasma/compare/v37.1.3...v37.1.4) (2022-02-11)
 
 
