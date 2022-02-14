@@ -121,7 +121,6 @@ pipeline {
         script {
           setLastStageName();
           sh "pnpm test:ci"
-          sh "pnpm --recursive report-coverage"
         }
       }
     }
