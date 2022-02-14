@@ -5,7 +5,7 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const InfoBoxExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="InfoBox" title="Info Box" withSource>
+    <PlasmaComponent id="InfoBox" title="Info Box" usage="An info box displays contextual information." withSource>
         <div className="mt2">
             <div className="form-group">
                 <label className="form-control-label">Empty InfoBox</label>

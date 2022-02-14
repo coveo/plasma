@@ -25,7 +25,12 @@ export interface IRadioSelectExampleState {
 
 // start-print
 export const RadioButtonExamples: ExampleComponent = () => (
-    <PlasmaComponent id="RadioButtons" title="Radio Buttons" withSource>
+    <PlasmaComponent
+        id="RadioButtons"
+        title="Radio Buttons"
+        usage="A radio button allows users to select exactly one option from a list of mutually exclusive options."
+        withSource
+    >
         <Section title="Radio set">
             <RadioSelectExample />
             <RadioSelectDisabledExample />

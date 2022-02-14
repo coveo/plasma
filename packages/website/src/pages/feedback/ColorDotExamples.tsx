@@ -6,7 +6,7 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 // start-print
 
 export const ColorDotsExamples = () => (
-    <PlasmaComponent id="ColorDot" title="Color Dot" usage="Display a status." withSource>
+    <PlasmaComponent id="ColorDot" title="Color Dot" usage="A color dot indicates the status of an item." withSource>
         <Section level={2} title="Standard color dots">
             <i className="color-dot mr1" />
             <i className="color-dot state-critical mr1" />

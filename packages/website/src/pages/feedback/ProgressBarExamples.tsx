@@ -12,7 +12,7 @@ export default () => {
         <PlasmaComponent
             id="ProgressBar"
             title="Progress bar"
-            usage="Show a progression between 0 and 100%."
+            usage="A step progress bar visualizes a user’s progress as they complete a task by representing the number of steps left to complete the task."
             withSource
         >
             <div className="progress-bar-example-container" style={{backgroundColor: '#333357'}}>

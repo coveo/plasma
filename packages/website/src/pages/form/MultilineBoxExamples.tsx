@@ -141,7 +141,12 @@ const ComplexMultilineBox3 = _.compose(
 export class MultilineBoxExamples extends React.PureComponent {
     render() {
         return (
-            <PlasmaComponent id="MultilineBox" title="Multiline Box" withSource>
+            <PlasmaComponent
+                id="MultilineBox"
+                title="Multiline Box"
+                usage="A multiline box allows users to provide multiple inputs for the same parameter. Each input appears on a different line."
+                withSource
+            >
                 <div className="my2">
                     <div className="form-group">
                         <label className="form-control-label">Multiline box with initial data</label>

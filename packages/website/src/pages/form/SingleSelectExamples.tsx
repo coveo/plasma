@@ -34,7 +34,12 @@ import {PhotoItem, PhotoProps, usePhotosAPIMock} from '../../utils/ServerSideSel
 
 // start-print
 export const SingleSelectExample: ExampleComponent = () => (
-    <PlasmaComponent id="SingleSelect" title="Single Select" withSource>
+    <PlasmaComponent
+        id="SingleSelect"
+        title="Single Select"
+        usage="A single select allows users to select only one option from a list. It is typically used when there are a large number of options."
+        withSource
+    >
         <Section>
             <SingleSelectConnectedExamples />
             <ServerSideSingleSelectExample id="ServerSideSingleSelect" />

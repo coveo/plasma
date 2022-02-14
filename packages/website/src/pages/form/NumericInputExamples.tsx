@@ -6,7 +6,12 @@ import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
 // start-print
 export const NumericInputExamples: ExampleComponent = () => (
-    <PlasmaComponent id="NumericInput" title="Numeric Inputs" withSource>
+    <PlasmaComponent
+        id="NumericInput"
+        title="Numeric Inputs"
+        usage="A numeric input allows users to enter and edit numerical values, either manually or using an input stepper."
+        withSource
+    >
         <Section title="Numeric Inputs Examples">
             <NumericInputs />
         </Section>

@@ -99,7 +99,7 @@ export const TextInputExamples: React.FunctionComponent = () => (
         title="Text Input"
         section="Form"
         thumbnail="textInput"
-        description="Text inputs allow users to enter and edit short texts, such as names, emails, and passwords."
+        description="A text input allows users to enter and edit short texts, such as names, emails, and passwords."
         componentSourcePath="/textInput/TextInput.tsx"
         code={code}
         examples={{hookUsage: {code: hookUsage, title: 'useTextInput hook usage'}}}

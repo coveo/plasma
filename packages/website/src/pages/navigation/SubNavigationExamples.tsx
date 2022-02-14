@@ -16,7 +16,12 @@ const exampleItems = [
 ];
 
 const SubNavigationConnectedExamples: React.FunctionComponent = () => (
-    <PlasmaComponent id="SubNavigation" title="SubNavigation" withSource>
+    <PlasmaComponent
+        id="SubNavigation"
+        title="SubNavigation"
+        usage="A subnavigation is a secondary vertical navigation component that allows users to navigate between sections of the same interface."
+        withSource
+    >
         <Section title="Sub Navigation Examples">
             <Section level={2} title="Sub Navigation">
                 <div className="flex" style={{height: '200px'}}>

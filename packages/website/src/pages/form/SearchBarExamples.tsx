@@ -43,7 +43,12 @@ class SearchBarExample extends React.Component<React.Attributes, ISearchBarState
 export class SearchBarExamples extends React.Component<any, any> {
     render() {
         return (
-            <PlasmaComponent id="SearchBar" title="Search Bar" withSource>
+            <PlasmaComponent
+                id="SearchBar"
+                title="Search Bar"
+                usage="A search bar allows users to search a large set of data by entering keywords. A list of matching items is then returned."
+                withSource
+            >
                 <div className="mt2">
                     <div className="form-group">
                         <label className="form-control-label">SearchBar disabled</label>
