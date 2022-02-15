@@ -32,7 +32,7 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
 
     return (
         <>
-            {!state.hasResults ? (
+            {!state.hasResults && !state.isLoading ? (
                 <NoSearchResultTemplate engine={engine} query={query} />
             ) : (
                 <Section className="home flex-auto overflow-auto demo-content">
