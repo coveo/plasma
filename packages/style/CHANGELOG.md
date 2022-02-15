@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [37.5.0](https://github.com/coveo/plasma/compare/v37.4.2...v37.5.0) (2022-02-15)
+
+
+### Features
+
+* **icons:** add the paint bucket icons ([3acd7f7](https://github.com/coveo/plasma/commit/3acd7f716003ed9c1b0bcf24cf841be90fddd5e8))
+
+
+
+
+
 ## [37.4.2](https://github.com/coveo/plasma/compare/v37.4.1...v37.4.2) (2022-02-15)
 
 **Note:** Version bump only for package @coveord/plasma-style
