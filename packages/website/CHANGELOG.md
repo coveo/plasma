@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [37.4.2](https://github.com/coveo/plasma/compare/v37.4.1...v37.4.2) (2022-02-15)
+
+
+### Bug Fixes
+
+* remove loading glitch ([c443ad3](https://github.com/coveo/plasma/commit/c443ad3955ce91d5119312bce1fcb28779a6d531))
+
+
+
+
+
 ## [37.4.1](https://github.com/coveo/plasma/compare/v37.4.0...v37.4.1) (2022-02-14)
 
 **Note:** Version bump only for package @coveord/plasma-website
