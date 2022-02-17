@@ -3,6 +3,24 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [38.0.0](https://github.com/coveo/plasma/compare/v37.5.0...v38.0.0) (2022-02-17)
+
+
+### Features
+
+* **website:** compile with nextjs ([4b5a7cc](https://github.com/coveo/plasma/commit/4b5a7cc1d67352f4490f53296b6d5bde91c6eb8f))
+
+
+### BREAKING CHANGES
+
+* **website:** CodeEditor now load codemirror using a dynamic import
+* **website:** DropPod now use an enum of positions instead of a string array
+* **website:** DropPod does not return a ref anymore
+
+
+
+
+
 # [37.5.0](https://github.com/coveo/plasma/compare/v37.4.2...v37.5.0) (2022-02-15)
 
 **Note:** Version bump only for package @coveord/plasma-react

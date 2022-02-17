@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "37.5.0",
+    "version": "38.0.0",
     "private": true,
     "description": "Plasma Design System",
     "main": "src/Index.ts",
@@ -23,8 +23,8 @@
     },
     "dependencies": {
         "@coveo/headless": "^1.32.0",
-        "@coveord/plasma-react": "^37.5.0",
-        "@coveord/plasma-style": "^37.5.0",
+        "@coveord/plasma-react": "^38.0.0",
+        "@coveord/plasma-style": "^38.0.0",
         "@monaco-editor/react": "4.3.1",
         "@swc/wasm-web": "1.2.138",
         "@types/lz-string": "1.3.34",
