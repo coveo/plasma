@@ -43,5 +43,10 @@
             "git add"
         ]
     },
-    "prettier": "tsjs/prettier-config"
+    "prettier": "tsjs/prettier-config",
+    "files": [
+        "dist",
+        "icons",
+        "scss"
+    ]
 }
