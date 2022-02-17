@@ -29,12 +29,29 @@
     },
     "ordered_phases": [
         {
-            "id": "deploy-plasma-website",
+            "id": "deploy-plasma-website-assets",
             "s3": {
                 "disabled": true,
                 "bucket": "coveo-nrd-jsadmin",
                 "directory": "react-vapor",
                 "parameters": {
+                    "exclude": "*.html",
+                    "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
+                },
+                "source": "packages/website/out",
+                "rd": {
+                    "disabled": false
+                }
+            }
+        },
+        {
+            "id": "deploy-plasma-website-html",
+            "s3": {
+                "disabled": true,
+                "bucket": "coveo-nrd-jsadmin",
+                "directory": "react-vapor",
+                "parameters": {
+                    "include": "*.html",
                     "metadata": "X-Frame-Options=deny,X-Content-Type-Options=nosniff"
                 },
                 "source": "packages/website/out",
