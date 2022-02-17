@@ -1,6 +1,6 @@
 import {kebabCase} from 'lodash';
 
-import {isTokenGroup, Token, TokenGroup, TokenList} from './token';
+import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
 
 const formatScssVariableName = (name: string): string => kebabCase(name);
 
@@ -31,10 +31,10 @@ const formatScssToken = (token: Token): string | null => {
 const filterTokens = (tokens: TokenList, type: Token['type']): Token[] => {
     const filteredTokens: Token[] = [];
 
-    const filterToken = (token: Token | TokenGroup) => {
+    const filterToken = (token: Token | TokenGroup | TokenEnum) => {
         if (isTokenGroup(token)) {
             token.children.forEach(filterToken);
-        } else if (token.type === type) {
+        } else if (!isTokenEnum(token) && token.type === type) {
             filteredTokens.push(token);
         }
     };
