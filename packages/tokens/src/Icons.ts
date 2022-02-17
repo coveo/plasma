@@ -1,4 +1,4 @@
-export type SvgNames =
+export type SvgName =
     | 'zoomOut.size16Px'
     | 'zoomOut.size24Px'
     | 'zoomOut.size32Px'

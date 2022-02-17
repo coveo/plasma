@@ -33,7 +33,7 @@ const generateIconsTokens = (tokenLibrary: FileNodesResponse, iconsMarkup: Recor
 
     generateTokens(name, [
         {name: 'icons', children: iconSvgTokens},
-        {name: 'SvgNames', members: SvgNames},
+        {name: 'SvgName', members: SvgNames},
     ]);
 };
 
