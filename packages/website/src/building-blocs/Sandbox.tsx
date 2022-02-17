@@ -1,3 +1,4 @@
+import MonacoEditor from '@monaco-editor/react';
 import * as typescript from 'prettier/parser-typescript';
 import {format} from 'prettier/standalone';
 import React from 'react';
@@ -6,9 +7,10 @@ import * as ts from 'typescript';
 import lzstring from 'lz-string';
 import {twoslasher} from '@typescript/twoslash';
 import classNames from 'classnames';
-import * as monaco from 'monaco-editor';
+import * as monaco from 'monaco-editor/esm/vs/editor/editor.api';
 import * as _ from 'underscore';
-import '@styles/sandbox.scss';
+import initSwc, {transformSync} from '@swc/wasm-web';
+
 import {PlasmaLoading} from './PlasmaLoading';
 import {useTypescriptServer} from './useTypescriptServer';
 // eslint-disable-next-line
@@ -27,32 +29,53 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
     });
     const [editedCode, setEditedCode] = React.useState(formattedCode);
     const {fsMap, compilerOptions} = useTypescriptServer();
+    const [initialized, setInitialized] = React.useState(false);
 
     React.useEffect(() => {
-        if (fsMap === null) {
+        const importAndRunSwcOnMount = async () => {
+            await initSwc();
+            setInitialized(true);
+        };
+        importAndRunSwcOnMount();
+    }, []);
+
+    React.useEffect(() => {
+        if (fsMap === null || !initialized) {
             return;
         }
         try {
-            const twoslash = twoslasher(editedCode, 'tsx', {
-                tsModule: ts,
-                defaultOptions: {noStaticSemanticInfo: false, showEmit: true, noErrorValidation: true},
-                defaultCompilerOptions: compilerOptions,
-                lzstringModule: lzstring,
-                fsMap,
+            const swc = transformSync(editedCode, {
+                jsc: {
+                    target: 'es5',
+                    keepClassNames: true,
+                    loose: true,
+                    parser: {
+                        syntax: 'typescript',
+                        tsx: true,
+                        decorators: true,
+                        dynamicImport: true,
+                        classPrivateProperty: true,
+                    },
+                },
+                module: {
+                    type: 'commonjs',
+                    strict: true,
+                    strictMode: false,
+                    lazy: false,
+                    noInterop: true,
+                    ignoreDynamic: false,
+                },
+                sourceMaps: false,
             });
-            if (twoslash.errors.length) {
-                console.error(twoslash.errors);
-                return;
-            }
             const userCodeToEvaluate =
-                twoslash.code
-                    .replace('Object.defineProperty(exports, "__esModule", { value: true });', '')
+                swc.code
+                    .replace('exports.default = void 0;', '')
+                    .replace('exports.default = _default;', '')
                     .replace(/var .+ = require(.+);/g, '') // remove the require statements
                     .replace(/var .+ = __importStar\(require(.+)\);/g, '') // remove the import statements
-                    .replace(/exports\.default = (.+)/g, 'var Example = $1') // change the default export to a component named Example
-                    .replace(/plasma_react_\d+/g, 'PlasmaReact') // use plasma-react from the window Plasma object
-                    .replace(/react_redux_\d+/g, 'ReactRedux') + // use react-redux from the window ReactRedux object
-                `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(Example)), document.getElementById('${id}'));`;
+                    .replace(/_plasmaReact/g, 'PlasmaReact') // use plasma-react from the window Plasma object
+                    .replace(/_reactRedux/g, 'ReactRedux') + // use react-redux from the window ReactRedux object
+                `ReactDOM.render(React.createElement(ReactRedux.Provider, {store: Store}, React.createElement(_default)), document.getElementById('${id}'));`;
 
             // eslint-disable-next-line no-eval
             eval(userCodeToEvaluate);
@@ -65,7 +88,7 @@ export const Sandbox: React.FunctionComponent<{children: string; id: string; tit
             );
             console.error(error);
         }
-    }, [editedCode, fsMap]);
+    }, [editedCode, fsMap, initialized]);
 
     return (
         <div className={classNames('demo-sandbox', {horizontal})}>
@@ -88,42 +111,49 @@ const EDITOR_MAX_HEIGHT_IN_PX = 600;
 const EDITOR_MIN_HEIGHT_IN_PX = 150;
 
 const Editor: React.FC<{id: string; value: string; onChange: (newValue: string) => void}> = ({id, value, onChange}) => {
-    const divEl = React.useRef<HTMLDivElement>(null);
-    let editor: monaco.editor.IStandaloneCodeEditor;
-    let model: monaco.editor.IModel;
-    const onChangeEditor = React.useMemo(() => _.debounce(() => onChange(editor.getValue()), 500), []);
+    const editorRef = React.useRef(null);
+    const [height, setHeight] = React.useState<number>(200);
 
     const updateHeight = () => {
+        const editor = editorRef.current!;
         const contentHeight = Math.min(
             EDITOR_MAX_HEIGHT_IN_PX,
             Math.max(editor.getContentHeight(), EDITOR_MIN_HEIGHT_IN_PX)
         );
-        divEl.current.style.height = `${contentHeight}px`;
+        setHeight(contentHeight);
         editor.layout();
     };
 
-    React.useEffect(() => {
-        if (divEl.current) {
-            model = monaco.editor.createModel(value, 'typescript', monaco.Uri.file(`${id}.tsx`));
-            editor = monaco.editor.create(divEl.current, {
-                model,
+    const debounceChangeEditor = React.useMemo(() => _.debounce(() => onChange(editorRef.current.getValue()), 33), []);
+    const onChangeEditor = () => {
+        debounceChangeEditor();
+        updateHeight();
+    };
+
+    const handleEditorDidMount = (editor: monaco.editor.IStandaloneCodeEditor) => {
+        editorRef.current = editor;
+        editor.onDidChangeModelContent(onChangeEditor);
+        editor.onDidContentSizeChange(updateHeight);
+        updateHeight();
+    };
+
+    return (
+        <MonacoEditor
+            height={`${height}px`}
+            theme="vs-dark"
+            path={`${id}.tsx`}
+            defaultLanguage="typescript"
+            defaultValue={value}
+            onMount={handleEditorDidMount}
+            onChange={onChangeEditor}
+            options={{
                 scrollBeyondLastLine: false,
                 minimap: {
                     enabled: false,
                 },
-                readOnly: false,
-                theme: 'vs-dark',
-            });
-            editor.onDidChangeModelContent(onChangeEditor);
-            editor.onDidContentSizeChange(updateHeight);
-            updateHeight();
-        }
-        return () => {
-            model.dispose();
-            editor.dispose();
-        };
-    }, []);
-    return <div className="demo-sandbox__editor" ref={divEl} />;
+            }}
+        />
+    );
 };
 
 export default Sandbox;

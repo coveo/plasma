@@ -1,5 +1,5 @@
+import {useRouter} from 'next/router';
 import React from 'react';
-import {useLocation} from 'react-router-dom';
 
 const START_STOP = /\/\/ start-print\s*([\s\S]*)\/\/ stop-print/;
 const START_END = /\/\/ start-print\s*([\s\S]*)$/;
@@ -22,17 +22,17 @@ const chopDownSourceFile = (wholeFile: string): string => {
 };
 
 const cache: any = {};
-const req = require.context('!!raw-loader!@pages/', true, /Examples\.tsx$/, 'lazy');
+const req = require.context('!!raw-loader!../pages', true, /\.tsx$/, 'lazy');
 req.keys().forEach((key) => (cache[key] = req(key)));
 
 export const useCodeExample = () => {
     const [code, setCode] = React.useState('');
-    const {pathname} = useLocation();
+    const {pathname} = useRouter();
 
     const doImport = async (path: string) => {
         // path has format "/input/TextInput"
         // cache keys have format "./input/TextInputExamples.tsx"
-        const res = await cache[`.${path}Examples.tsx`];
+        const res = await cache[`.${path}.tsx`];
         return chopDownSourceFile(res.default);
     };
 

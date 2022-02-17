@@ -1,5 +1,3 @@
-import '@styles/tile.scss';
-
 import classNames from 'classnames';
 import * as React from 'react';
 

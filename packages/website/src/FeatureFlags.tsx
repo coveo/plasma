@@ -1,7 +1,7 @@
-import {flagg, sessionStore} from 'flagg';
+import {flagg, localStore} from 'flagg';
 
 export const FeatureFlags = flagg({
-    store: sessionStore(),
+    store: localStore(),
     definitions: {
         'query-suggestions': {
             default: false,

@@ -1,22 +1,16 @@
-import {SearchEngine, loadFieldActions} from '@coveo/headless';
+import {loadFieldActions} from '@coveo/headless';
 import * as React from 'react';
 
 import {headlessEngine} from './Engine';
 import {EngineContext} from './EngineContext';
 
+const engine = headlessEngine();
+
 export const EngineProvider: React.FunctionComponent = ({children}) => {
-    const [engine, setEngine] = React.useState<SearchEngine | null>(null);
-
     React.useEffect(() => {
-        const newEngine = headlessEngine();
-        const {registerFieldsToInclude} = loadFieldActions(newEngine);
-        newEngine.dispatch(registerFieldsToInclude(['description', 'thumbnail']));
-        setEngine(newEngine);
+        const {registerFieldsToInclude} = loadFieldActions(engine);
+        engine.dispatch(registerFieldsToInclude(['description', 'thumbnail']));
     }, []);
-
-    if (!engine) {
-        return <main>Waiting for engine</main>;
-    }
 
     return <EngineContext.Provider value={engine}>{children}</EngineContext.Provider>;
 };

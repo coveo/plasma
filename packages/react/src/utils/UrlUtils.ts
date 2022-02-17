@@ -2,15 +2,22 @@ import * as QueryString from 'query-string';
 
 /* istanbul ignore next */
 const getQuery = () => {
-    const queryPosition = window.location.hash.lastIndexOf('?');
-    return queryPosition >= 0 ? window.location.hash.substring(queryPosition, window.location.hash.length) : '';
+    if (typeof window !== 'undefined') {
+        const queryPosition = window.location.hash.lastIndexOf('?');
+        return queryPosition >= 0 ? window.location.hash.substring(queryPosition, window.location.hash.length) : '';
+    }
+    return '';
 };
 
 /* istanbul ignore next */
-const getPathName = () =>
-    window.location.hash.indexOf('?') >= 0
-        ? window.location.href.substring(0, window.location.href.lastIndexOf('?'))
-        : window.location.href;
+const getPathName = () => {
+    if (typeof window !== 'undefined') {
+        return window.location.hash.indexOf('?') >= 0
+            ? window.location.href.substring(0, window.location.href.lastIndexOf('?'))
+            : window.location.href;
+    }
+    return '';
+};
 
 const toObject = (query: string) => ({
     ...QueryString.parse(query, {parseBooleans: true, parseNumbers: true, sort: false}),

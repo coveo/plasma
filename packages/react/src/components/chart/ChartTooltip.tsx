@@ -12,14 +12,19 @@ export interface ChartTooltipProps {
 
 export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
     const {series, xScale, yScale, xDomain, yDomain, width, height} = React.useContext(XYChartContext);
-    const [position, setPosition] = React.useState({x: 0, y: 0, index: 0, position: '', pointX: null});
-    const dropRoot = React.useRef<any>(null);
+    const [position, setPosition] = React.useState({
+        x: 0,
+        y: 0,
+        index: 0,
+        position: null,
+        pointX: null,
+    });
 
     const onMouseMove = (index: number, pointX: number, x: number) => {
-        const dropPodPosition: string = x < width / 2 ? DropPodPosition.right : DropPodPosition.left;
+        const dropPodPosition = x < width / 2 ? DropPodPosition.right : DropPodPosition.left;
         setPosition({x, y: height / 2, index, pointX, position: dropPodPosition});
     };
-    const onMouseLeave = () => setPosition({...position, position: ''});
+    const onMouseLeave = () => setPosition({...position, position: null});
 
     const barWidth =
         series[0].data.length > 1
@@ -62,18 +67,12 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
                     fill={'var(--deprecated-orange)'}
                 />
             )}
-            <circle cx={position.x} cy={position.y} r="1" fill="transparent" ref={dropRoot} />
+            <circle cx={position.x} cy={position.y} r="1" fill="transparent" />
             <DropPod
-                ref={dropRoot}
                 isOpen={!!position.position}
                 positions={[position.position, DropPodPosition.left, DropPodPosition.right]}
-                renderDrop={(
-                    style: React.CSSProperties,
-                    dropRef: React.RefObject<HTMLDivElement>,
-                    dropPosition: IDropUIPosition
-                ): React.ReactNode => (
+                renderDrop={(style: React.CSSProperties, dropPosition: IDropUIPosition): React.ReactNode => (
                     <div
-                        ref={dropRef}
                         style={{...style, pointerEvents: 'none'}}
                         className={classNames('show-on-top', {
                             'ml-2': dropPosition.position === DropPodPosition.left,

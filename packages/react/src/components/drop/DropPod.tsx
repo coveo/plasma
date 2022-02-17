@@ -14,13 +14,9 @@ import {
 } from './DomPositionCalculator';
 
 export interface IDropPodProps {
-    renderDrop: (
-        style: React.CSSProperties,
-        dropRef: React.RefObject<HTMLElement>,
-        position: IDropUIPosition
-    ) => React.ReactNode;
+    renderDrop: (style: React.CSSProperties, position: IDropUIPosition) => React.ReactNode;
     isOpen?: boolean;
-    positions?: string[];
+    positions?: Array<'bottom' | 'top' | 'left' | 'right'>;
     selector?: string;
     parentSelector?: string;
     minWidth?: number;
@@ -32,10 +28,6 @@ export interface IRDropPodProps extends IDropPodProps {
     buttonRef?: React.RefObject<HTMLElement>;
 }
 
-export interface IDropPodState {
-    offset: ClientRect | DOMRect;
-}
-
 export const defaultDropPodPosition = [
     DropPodPosition.right,
     DropPodPosition.bottom,
@@ -43,119 +35,89 @@ export const defaultDropPodPosition = [
     DropPodPosition.left,
 ];
 
-class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
-    readonly dropRef: React.RefObject<HTMLElement>;
+const RDropPod: React.FunctionComponent<IRDropPodProps> = ({
+    isOpen = false,
+    positions = defaultDropPodPosition,
+    minWidth = 0,
+    minHeight = 0,
+    hasSameWidth = false,
+    buttonRef,
+    selector,
+    renderDrop,
+    parentSelector,
+}) => {
+    const [offset, setOffset] = React.useState(undefined);
+    const [lastPosition, setLastPosition] = React.useState<IDropUIPosition>({
+        position: positions?.[0] ?? DropPodPosition.bottom,
+        orientation: OrientationByPosition[positions?.[0] ?? DropPodPosition.bottom][0],
+    });
+    const [computedStyle, setComputedStyle] = React.useState<React.CSSProperties>({});
+    const [dropElement, setDropElement] = React.useState<HTMLDivElement>(null);
 
-    private lastPosition: IDropUIPosition;
-    private dropElement: HTMLDivElement;
-    private portalRoot: Element;
-
-    static defaultProps: Partial<IDropPodProps> = {
-        isOpen: false,
-        positions: defaultDropPodPosition,
-        minWidth: 0,
-        minHeight: 0,
-        hasSameWidth: false,
+    const updateOffset = () => {
+        if (buttonRef?.current) {
+            setOffset(buttonRef?.current?.getBoundingClientRect());
+        }
     };
-    private parentMutationObserver: MutationObserver;
 
-    constructor(props: IDropPodProps, state: IDropPodState) {
-        super(props, state);
+    const setEventsOnDocument = () => {
+        window.addEventListener('resize', updateOffset, true);
+        window.addEventListener('scroll', updateOffset, true);
+    };
 
-        this.dropRef = React.createRef();
-        this.state = {
-            offset: undefined,
-        };
+    const removeEventsOnDocument = () => {
+        window.removeEventListener('scroll', updateOffset, true);
+        window.removeEventListener('resize', updateOffset, true);
+    };
 
-        this.dropElement = document.createElement('div');
-        this.portalRoot = document.querySelector(this.props.selector ?? Defaults.DROP_ROOT);
-
-        this.updateOffset = this.updateOffset.bind(this);
-        if (
-            this.props.positions &&
-            !!this.props.positions.length &&
-            _.contains(DropPodPosition, this.props.positions[0])
-        ) {
-            this.lastPosition = {
-                position: this.props.positions && this.props.positions[0],
-                orientation: OrientationByPosition[this.props.positions[0]][0],
-            };
-        } else {
-            this.lastPosition = {
-                position: DropPodPosition.bottom,
-                orientation: DropPodPosition.left,
-            };
-        }
-    }
-
-    componentDidMount() {
-        if (this.props.isOpen) {
-            this.setEventsOnDocument();
-        }
-        this.portalRoot.appendChild(this.dropElement);
-    }
-
-    componentWillUnmount() {
-        this.removeEventsOnDocument();
-        this.portalRoot.removeChild(this.dropElement);
-    }
-
-    componentDidUpdate(prevProps: Readonly<IRDropPodProps>) {
-        if (!prevProps.isOpen && this.props.isOpen) {
-            this.setEventsOnDocument();
-        } else if (prevProps.isOpen && !this.props.isOpen) {
-            this.removeEventsOnDocument();
-        }
-    }
-
-    private setEventsOnDocument() {
-        window.addEventListener('resize', this.updateOffset, true);
-        window.addEventListener('scroll', this.updateOffset, true);
-
-        if (this.dropRef && this.dropRef.current) {
+    React.useEffect(() => {
+        let parentMutationObserver: MutationObserver;
+        if (dropElement && dropElement.firstElementChild) {
             const config = {attributes: false, childList: true, subtree: true};
-            this.parentMutationObserver = new MutationObserver(this.updateOffset);
-            this.parentMutationObserver.observe(this.dropRef.current, config);
+            parentMutationObserver = new MutationObserver(updateOffset);
+            parentMutationObserver.observe(dropElement.firstElementChild, config);
         }
-    }
+        return () => {
+            parentMutationObserver?.disconnect();
+        };
+    }, [dropElement]);
 
-    private removeEventsOnDocument() {
-        window.removeEventListener('scroll', this.updateOffset, true);
-        window.removeEventListener('resize', this.updateOffset, true);
-
-        if (this.parentMutationObserver) {
-            this.parentMutationObserver.disconnect();
+    React.useEffect(() => {
+        if (isOpen) {
+            setEventsOnDocument();
         }
-    }
+        return () => {
+            removeEventsOnDocument();
+        };
+    }, [isOpen]);
 
-    private updateOffset() {
-        if (this.props.buttonRef?.current) {
-            this.setState({
-                offset: this.props.buttonRef?.current?.getBoundingClientRect(),
-            });
-        }
-    }
+    React.useEffect(() => {
+        const element = document.createElement('div');
+        const portalRoot = document.querySelector(selector ?? Defaults.DROP_ROOT);
 
-    private canRenderDrop() {
-        return !!this.dropRef.current && this.props.isOpen && !!this.props.positions.length;
-    }
+        portalRoot.appendChild(element);
 
-    private getRelativeParent = () => {
-        const closestCurrentRef = this.props.buttonRef.current?.closest(
-            this.props.parentSelector ?? Defaults.DROP_PARENT_ROOT
-        );
-        return closestCurrentRef ?? this.props.buttonRef.current?.parentElement;
+        setDropElement(element);
+        return () => {
+            portalRoot.removeChild(element);
+        };
+    }, [selector, Defaults.DROP_ROOT]);
+
+    const canRenderDrop = () => !!dropElement && isOpen;
+
+    const getRelativeParent = () => {
+        const closestCurrentRef = buttonRef?.current?.closest(parentSelector ?? Defaults.DROP_PARENT_ROOT);
+        return closestCurrentRef ?? buttonRef?.current?.parentElement;
     };
 
-    private calculateStyleOffset(): React.CSSProperties {
+    const calculateStyleOffset = (): React.CSSProperties => {
         let newDomPosition: IDomPositionCalculatorReturn = {};
-        if (this.canRenderDrop()) {
-            const buttonOffset: ClientRect | DOMRect =
-                this.props.buttonRef.current?.getBoundingClientRect() ?? this.state.offset;
-            const dropOffset: ClientRect | DOMRect = this.dropRef.current.getBoundingClientRect();
+        if (canRenderDrop()) {
+            const buttonOffset: ClientRect | DOMRect = buttonRef?.current?.getBoundingClientRect() ?? offset;
+            const dropOffset: ClientRect | DOMRect = dropElement?.firstElementChild?.getBoundingClientRect();
 
-            const relativeParent = this.getRelativeParent();
-            const parentOffset = relativeParent.getBoundingClientRect();
+            const relativeParent = getRelativeParent();
+            const parentOffset = relativeParent?.getBoundingClientRect();
 
             const boundingLimit: IBoundingLimit = {
                 maxY: Math.min(parentOffset?.bottom, window.innerHeight),
@@ -168,22 +130,22 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             let index = 0;
             const dropOffsetPrime = {
                 ...dropOffset,
-                width: Math.max(dropOffset.width, this.props.minWidth),
-                height: Math.max(dropOffset.height, this.props.minHeight),
+                width: Math.max(dropOffset?.width ?? 0, minWidth),
+                height: Math.max(dropOffset?.height ?? 0, minHeight),
             };
 
-            while (_.isEmpty(newDomPosition) && index < this.props.positions.length) {
-                const validator = DomPositionCalculator[this.props.positions[index]];
+            while (_.isEmpty(newDomPosition) && index < positions.length) {
+                const validator = DomPositionCalculator[positions[index]];
                 newDomPosition = (validator && validator(buttonOffset, dropOffsetPrime, boundingLimit, {})) || {};
                 index += 1;
             }
 
             if (_.isEmpty(newDomPosition)) {
-                newDomPosition = DomPositionCalculator[this.lastPosition.position](
+                newDomPosition = DomPositionCalculator[lastPosition.position](
                     buttonOffset,
                     dropOffsetPrime,
                     boundingLimit,
-                    this.lastPosition
+                    lastPosition
                 );
             }
 
@@ -204,7 +166,7 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
             }
 
             // Set drop size same as the container
-            if (this.props.hasSameWidth) {
+            if (hasSameWidth) {
                 newDomPosition.style = {
                     ...style,
                     left: buttonOffset.left,
@@ -225,31 +187,29 @@ class RDropPod extends React.PureComponent<IRDropPodProps, IDropPodState> {
                     return {};
                 }
 
-                this.lastPosition = newDomPosition.lastPosition;
+                setLastPosition(newDomPosition.lastPosition);
                 return newDomPosition.style;
             }
         }
-    }
+    };
 
-    render() {
-        const style: React.CSSProperties = {
-            display: 'inline-block',
+    React.useEffect(() => {
+        setComputedStyle({
+            // set the display none for IE11 which does not handle position absolute and visibility hidden like other browser
+            display: !canRenderDrop() && BrowserUtils.isIE() ? 'none' : 'inline-block',
             position: 'absolute',
-            visibility: this.canRenderDrop() ? 'visible' : 'hidden',
-            ...this.calculateStyleOffset(),
-        };
+            visibility: canRenderDrop() ? 'visible' : 'hidden',
+            ...calculateStyleOffset(),
+        });
+    }, [dropElement, isOpen, offset, buttonRef?.current]);
 
-        // set the display none for ei 11
-        // this browser dont handle position absolute and visibility hidden like other browser
-        if (!this.canRenderDrop() && BrowserUtils.isIE()) {
-            style.display = 'none';
-        }
-
-        const drop: React.ReactNode = this.props.renderDrop(style, this.dropRef, this.lastPosition);
-
-        return ReactDOM.createPortal(drop, this.dropElement);
+    if (!dropElement) {
+        return null;
     }
-}
+
+    const drop: React.ReactNode = renderDrop(computedStyle, lastPosition);
+    return ReactDOM.createPortal(drop, dropElement);
+};
 
 export const DropPod: React.ForwardRefExoticComponent<
     IDropPodProps & React.RefAttributes<HTMLElement>

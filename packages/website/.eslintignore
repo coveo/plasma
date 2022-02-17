@@ -2,3 +2,4 @@ node_modules/*
 dist/*
 resources/*
 *.js
+next-env.d.ts

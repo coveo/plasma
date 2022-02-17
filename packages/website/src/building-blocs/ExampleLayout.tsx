@@ -1,14 +1,21 @@
-import '@styles/example-layout.scss';
-
 import {TabContent, TabPaneConnected, TabSelectors, TabsHeader} from '@coveord/plasma-react';
 import * as React from 'react';
 import {useSelector} from 'react-redux';
+import dynamic from 'next/dynamic';
 
 import {GithubButton} from './GithubButton';
 import {GuidelinesTab} from './GuidelinesTab';
-import {PropsDoc} from './PropsDoc';
-import Sandbox from './Sandbox';
+import {PlasmaLoading} from './PlasmaLoading';
 import {Tile, TileProps} from './Tile';
+
+const Sandbox = dynamic(
+    import('./Sandbox').then((mod) => mod.Sandbox),
+    {ssr: false, loading: () => <PlasmaLoading />}
+);
+const PropsDoc = dynamic(
+    import('./PropsDoc').then((mod) => mod.PropsDoc),
+    {ssr: false, loading: () => <PlasmaLoading />}
+);
 
 interface PlaygroundProps {
     title: string;
