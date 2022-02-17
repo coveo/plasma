@@ -10,6 +10,12 @@ library(
     changelog: false
 )
 
+library(
+    identifier: "jsadmin_pipeline@master",
+    retriever: modernSCM(github(credentialsId: "github-app-dev", repository: "jsadmin_pipeline", repoOwner: "coveo")),
+    changelog: false
+)
+
 pipeline {
 
   agent { label "build && docker && linux" }
@@ -69,7 +75,6 @@ pipeline {
       steps {
         script {
           sh "pnpm run tokens:build --filter @coveord/plasma-tokens"
-          sh "git status"
         }
       }
     }
@@ -77,7 +82,24 @@ pipeline {
     stage('Open pull request') {
       steps {
         script {
-          echo "PR creation not implemented yet (will be done in UITOOL-238)."
+          def prBranch = "design-token-extraction"
+          def prTitle = "Design tokens extraction"
+          def prbody = "This PR was created by the automatic design tokens extraction process, review with caution 🎁"
+
+          sh "git checkout -B ${prBranch}"
+          sh "git add ."
+          sh "git commit -m \"feat(tokens): extract design tokens from figma libraries\""
+          sh "git push -u -f origin ${prBranch}:${prBranch}"
+
+          withCredentials([usernamePassword(credentialsId: 'github-app-dev',
+            usernameVariable: 'GITHUB_APP',
+            passwordVariable: 'GITHUB_ACCESS_TOKEN')
+          ]) {
+            runPackage.call(
+              "github-create-or-update-pr",
+              "--repo=plasma --head=${prBranch} --title=\"${prTitle}\" --body=\"${prbody}\""
+            )
+          }
         }
       }
     }
