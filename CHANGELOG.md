@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.0.1](https://github.com/coveo/plasma/compare/v38.0.0...v38.0.1) (2022-02-17)
+
+
+### Bug Fixes
+
+* **website:** deploy of nextjs on master ([e4ae693](https://github.com/coveo/plasma/commit/e4ae693df8c0d92104e16db83451c5c68de3ec4b))
+
+
+
+
+
 # [38.0.0](https://github.com/coveo/plasma/compare/v37.5.0...v38.0.0) (2022-02-17)
 
 
