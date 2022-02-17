@@ -41,7 +41,7 @@ const formatSvgToken = (token: Token | TokenGroup | TokenEnum, parentPrefix?: st
     if (isTokenGroup(token)) {
         return token.children.reduce<SvgFormatOutput[]>((memo, child) => memo.concat(formatSvgToken(child, name)), []);
     } else if (!isTokenEnum(token) && token.type === 'svg') {
-        return [{fileName: name, svgMarkup: cleanSvgMarkup(name, token.value)}];
+        return [{fileName: name, svgMarkup: cleanSvgMarkup(name, token.value) + '\n'}];
     } else {
         return [];
     }
