@@ -25,6 +25,7 @@
         "build": "node scripts/build",
         "test": "jest --maxWorkers=65%",
         "test:ci": "jest --maxWorkers=2",
+        "test:changed": "jest --maxWorkers=65% --changedSince master",
         "test:watch": "jest --watchAll",
         "test:debug": "jest --clearCache && node --inspect node_modules/jest/bin/jest --runInBand --watchAll",
         "report-coverage": "codecov -f coverage/lcov.info",
