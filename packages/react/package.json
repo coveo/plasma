@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react",
-    "version": "38.0.1",
+    "version": "38.0.2",
     "description": "Plasma components implemented with React!",
     "keywords": [
         "coveo",
@@ -36,7 +36,7 @@
         "lintfix": "../../node_modules/.bin/prettier --write \"**/*.{scss,ts,tsx,js,jsx,json,md,yml,html}\" && ../../node_modules/.bin/eslint -c ./.eslintrc.js \"src/**/*.{ts,tsx}\" --fix"
     },
     "dependencies": {
-        "@coveord/plasma-style": "^38.0.1",
+        "@coveord/plasma-style": "^38.0.2",
         "@loadable/component": "5.15.2",
         "@types/codemirror": "0.0.109",
         "chosen-js": "1.8.7",
