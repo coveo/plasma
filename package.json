@@ -7,6 +7,7 @@
         "start": "pnpm build && pnpm --recursive start --parallel",
         "test": "pnpm --recursive test",
         "test:ci": "pnpm --recursive test:ci",
+        "test:changed": "pnpm --recursive test:changed",
         "clean": "pnpm --recursive clean --parallel",
         "build": "ultra --recursive build",
         "lintfix": "pnpm --recursive lintfix --parallel",
