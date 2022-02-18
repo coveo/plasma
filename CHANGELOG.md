@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.0.4](https://github.com/coveo/plasma/compare/v38.0.3...v38.0.4) (2022-02-18)
+
+
+### Features
+
+* **tokens:** create a github PR from jenkins job ([822ddc6](https://github.com/coveo/plasma/commit/822ddc613a0ba3d5b1b6d3850a8dbdb0aaac6e92))
+
+
+
+
+
 ## [38.0.3](https://github.com/coveo/plasma/compare/v38.0.2...v38.0.3) (2022-02-18)
 
 **Note:** Version bump only for package root
