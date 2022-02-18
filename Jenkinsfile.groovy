@@ -202,54 +202,24 @@ pipeline {
           sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
           if (env.BRANCH_NAME ==~ /release-.*/) {
-            // release
-            sh "npx lerna publish patch \
-            --no-verify-access \
-            --create-release github \
-            --no-commit-hooks \
-            --force-publish \
-            --no-push \
-            --no-git-reset \
-            --yes"
+            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs \
+            --bump patch \
+            --tag release \
+            --branch ${env.BRANCH_NAME}"
           } else if (env.BRANCH_NAME == "next") {
-            // next
-            sh "npx lerna publish \
-            --no-verify-access \
-            --conventional-commits \
-            --create-release github \
-            --conventional-prerelease \
-            --preid next \
-            --dist-tag next \
-            --no-commit-hooks \
-            --force-publish \
-            --no-push \
-            --no-git-reset \
-            --yes"
+            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs \
+            --bump prerelease \
+            --tag next \
+            --branch next"
           } else {
             // master
-            sh "npx lerna publish \
-            --no-verify-access \
-            --conventional-commits \
-            --create-release github \
-            --no-commit-hooks \
-            --force-publish \
-            --no-push \
-            --no-git-reset \
-            --yes"
+            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs"
           }
 
           NEW_VERSION = sh(
-            script: "node -p -e 'require(`./lerna.json`).version;'",
+            script: "node -p -e 'require(`./package.json`).version;'",
             returnStdout: true
           ).trim()
-
-          sh "git tag -d v${NEW_VERSION}" // delete tag created by lerna publish
-          sh "pnpm install --lockfile-only"
-          sh "git add pnpm-lock.yaml"
-          sh "git commit --amend --no-edit"
-          sh "git tag -a -m \"v${NEW_VERSION}\" v${NEW_VERSION}" // create new tag on the amended commit
-          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags --force" // push everything along with new tag
-          sh "git reset --hard"
         }
       }
     }
