@@ -1,12 +1,5 @@
 const withImages = require('next-images');
-
-const isJenkins = !!process.env.JENKINS_HOME;
-const branchName = process.env.BRANCH_NAME;
-
-let basePath = '/';
-if (isJenkins && branchName !== 'master') {
-    basePath = `/feature/${branchName}/`;
-}
+const basePath = require('./build/getBasePath');
 
 module.exports = withImages({
     basePath: basePath.replace(/\/$/, ''), // remove last slash
