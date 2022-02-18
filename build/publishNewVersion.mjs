@@ -46,7 +46,7 @@ if (!options.force.includes('root')){
     console.log('Last tag: %s', lastTag);
 
     const remote = getRemoteName();
-    const since = [remote, lastTag].filter(Boolean).join('/');
+    const since = lastTag;
 
     console.log('Since: %s', since);
 
