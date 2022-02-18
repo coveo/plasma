@@ -1,24 +1,40 @@
 {
-    "extends": "../tsconfig-base",
-    "compilerOptions": {
-        "removeComments": false,
-        "noUnusedLocals": false,
-        "rootDir": "src",
-        "outDir": "built",
-        "baseUrl": ".",
-        "tsBuildInfoFile": "./built/.tsbuildinfo",
-        "paths": {
-            "@coveord/plasma-react/dist/*": ["../react/dist/*"],
-            "@styles/*": ["./src/styles/*"]
-        },
-        "lib": ["ES2020", "dom"],
-        "typeRoots": ["./types", "./node_modules/@types"],
-        "strict": false,
-        "forceConsistentCasingInFileNames": true,
-        "noEmit": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve"
+  "extends": "../tsconfig-base",
+  "compilerOptions": {
+    "removeComments": false,
+    "noUnusedLocals": false,
+    "rootDir": "src",
+    "outDir": "built",
+    "baseUrl": ".",
+    "tsBuildInfoFile": "./built/.tsbuildinfo",
+    "paths": {
+      "@coveord/plasma-react/dist/*": [
+        "../react/dist/*"
+      ],
+      "@styles/*": [
+        "./src/styles/*"
+      ]
     },
-    "include": ["src", "docs"]
+    "lib": [
+      "ES2020",
+      "dom"
+    ],
+    "typeRoots": [
+      "./types",
+      "./node_modules/@types"
+    ],
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "preserve"
+  },
+  "include": [
+    "src",
+    "docs"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
