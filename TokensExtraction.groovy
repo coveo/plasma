@@ -66,7 +66,11 @@ pipeline {
     stage('Fetch tokens') {
       steps {
         script {
-          sh "pnpm run tokens:fetch --filter @coveord/plasma-tokens"
+          if (params.LIBRARIES.length() > 0) {
+            sh "pnpm run tokens:fetch --filter @coveord/plasma-tokens -- --libraries ${params.LIBRARIES}"
+          } else {
+            sh "pnpm run tokens:fetch --filter @coveord/plasma-tokens"
+          }
         }
       }
     }
