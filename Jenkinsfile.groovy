@@ -216,6 +216,8 @@ pipeline {
             sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs"
           }
 
+          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags" // push everything along with new tag
+
           NEW_VERSION = sh(
             script: "node -p -e 'require(`./package.json`).version;'",
             returnStdout: true
