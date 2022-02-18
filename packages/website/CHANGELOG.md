@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [38.0.5](https://github.com/coveo/plasma/compare/v38.0.4...v38.0.5) (2022-02-18)
+
+
+### Bug Fixes
+
+* **website:** changed the sitemap base url on master ([1d15cc3](https://github.com/coveo/plasma/commit/1d15cc3d0d0e642cddb28003aa173d5ed6a5711f))
+
+
+
+
+
 ## [38.0.4](https://github.com/coveo/plasma/compare/v38.0.3...v38.0.4) (2022-02-18)
 
 **Note:** Version bump only for package @coveord/plasma-website
