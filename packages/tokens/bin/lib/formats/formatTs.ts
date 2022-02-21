@@ -2,8 +2,9 @@ import {camelCase} from 'lodash';
 
 import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from './token';
 
-export const valueIncludesUnit = (value: string | number) => /px$|%$/.test(value.toString());
-export const valueIsVariable = (value: string | number) => /^var\(--(.+)\)$/.test(value.toString());
+const valueIncludesUnit = (value: string | number) => /px$|%$/.test(value.toString());
+
+const valueIsVariable = (value: string | number) => /^var\(--(.+)\)$/.test(value.toString());
 
 const formatTsVariableName = (name: string): string => camelCase(name);
 
@@ -34,10 +35,10 @@ const formatTsToken = (token: Token | TokenGroup | TokenEnum): string => {
     if (isTokenEnum(token)) {
         const type = formatTsType(token);
         return type === '' ? type : `export type ${token.name} = ${type};\n`;
-    } else {
-        const value = formatTsVariableValue(token);
-        return value === '' ? value : `export const ${token.name} = ${value};\n`;
     }
+
+    const value = formatTsVariableValue(token);
+    return value === '' ? value : `export const ${token.name} = ${value};\n`;
 };
 
 export const formatTs = (tokens: TokenList): string => tokens.reduce((memo, token) => memo + formatTsToken(token), '');
