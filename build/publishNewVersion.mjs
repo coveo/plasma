@@ -91,7 +91,7 @@ if (!options.force.includes('root')){
 
             const versionTag = `${VERSION_PREFIX}${newVersion}`;
             if (!options.dry) {
-                gitCommit(`[version bump]: publish version ${versionTag}`, '.');
+                gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
                 gitTag(versionTag);
                 if (remote) {
                     gitPush();
