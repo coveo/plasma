@@ -4,8 +4,6 @@ import {isTokenEnum, isTokenGroup, Token, TokenEnum, TokenGroup, TokenList} from
 
 const formatScssVariableName = (name: string): string => kebabCase(name);
 
-export const getCssVariable = (name: string): string => `var(--${formatScssVariableName(name)})`;
-
 const formatVariable = (name: string, value: string | number): string => `--${name}: ${value};`;
 
 const formatClass = (name: string, value: Record<string, string | number>): string => {
