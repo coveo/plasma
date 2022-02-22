@@ -5,7 +5,7 @@
     "description": "Plasma Design System",
     "main": "src/Index.ts",
     "scripts": {
-        "start": "next dev",
+        "start": "open http://localhost:3000/ && next dev",
         "build": "next build && next export && next-sitemap",
         "prod:server": "next start",
         "precommit": "lint-staged",
