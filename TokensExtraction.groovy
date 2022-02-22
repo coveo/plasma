@@ -20,6 +20,19 @@ pipeline {
 
   agent { label "build && docker && linux" }
 
+   parameters {
+      extendedChoice(
+        name: 'LIBRARIES', 
+        description: 'Name of the Figma libraries to extract tokens from (leave all unchecked to extract them all)', 
+        type: 'PT_CHECKBOX', 
+        value: 'ICONS', 
+        multiSelectDelimiter: ' ', 
+        quoteValue: false, 
+        saveJSONParameterToFile: false, 
+        visibleItemCount: 50
+      )
+  }
+
   environment {
     NPM_TOKEN = credentials("npmjs_com_token")
     GIT = credentials("github-commit-token")
