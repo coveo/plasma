@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ExampleLayout} from '../../building-blocs/ExampleLayout';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import * as React from "react";
@@ -50,7 +50,7 @@ const notifier = `
 `;
 
 export const ToastExamples = () => (
-    <ExampleLayout
+    <PageLayout
         id="Toast"
         componentSourcePath="/toast/Toast.tsx"
         title="Toast"

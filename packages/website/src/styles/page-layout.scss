@@ -1,0 +1,13 @@
+.plasma-page-layout {
+    &__main-code {
+        background-color: var(--grey-20);
+    }
+
+    &__section {
+        padding: 32px 24px;
+    }
+
+    &__section + &__section {
+        margin-top: 40px;
+    }
+}

@@ -1,5 +1,5 @@
 import '../styles/main.scss';
-import '../styles/example-layout.scss';
+import '../styles/page-layout.scss';
 import '../styles/github-button.scss';
 import '../styles/home.scss';
 import '../styles/plasmaSearchBar.scss';
@@ -7,6 +7,7 @@ import '../styles/tile.scss';
 import '../styles/sandbox.scss';
 import '../styles/props-doc.scss';
 import '../styles/loading-screen.css';
+import '../styles/page-header.scss';
 import {Svg} from '@coveord/plasma-react';
 
 import * as PlasmaReact from '@coveord/plasma-react';
