@@ -1,3 +1,17 @@
+# 38.1.0 (2022-02-22)
+
+
+### Bug Fixes
+
+* **tokens:** icons extraction post duplicates removal ([9905efe](https://github.com/coveo/plasma/commits/9905efef1d60685adb4f4affea954f624508d56f))
+
+
+### Features
+
+* **tokens:** extract icons library ([7d58130](https://github.com/coveo/plasma/commits/7d5813039c26c88c64f3e712cb22ea0900193201))
+
+
+
 ## 38.0.7 (2022-02-21)
 
 
