@@ -1,3 +1,12 @@
+# 38.3.0 (2022-02-22)
+
+
+### Features
+
+* **tokens:** handle jenkins job parameter for libraries ([c720ccc](https://github.com/coveo/plasma/commits/c720ccca04c543f130e246ecf6770f47febcf6a2))
+
+
+
 # 38.2.0 (2022-02-22)
 
 
