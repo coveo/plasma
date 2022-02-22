@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ExampleLayout} from '../../building-blocs/ExampleLayout';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import * as React from 'react';
@@ -94,7 +94,7 @@ const hookUsage = `
 
 // start-print
 export const TextInputExamples: React.FunctionComponent = () => (
-    <ExampleLayout
+    <PageLayout
         id="TextInput"
         title="Text Input"
         section="Form"

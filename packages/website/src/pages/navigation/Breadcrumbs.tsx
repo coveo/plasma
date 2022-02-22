@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import {ExampleLayout} from '../../building-blocs/ExampleLayout';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
 const code = `
     import * as React from 'react';
@@ -66,7 +66,7 @@ const complex = `
 `;
 
 export const BreadcrumbsExamples = () => (
-    <ExampleLayout
+    <PageLayout
         id="BreadcrumbHeader"
         componentSourcePath="/breadcrumbs/BreadcrumbHeader.tsx"
         title="Breadcrumbs"
