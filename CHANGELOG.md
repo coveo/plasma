@@ -1,3 +1,12 @@
+# 38.2.0 (2022-02-22)
+
+
+### Features
+
+* **website:** update slider guidelines ([ea5064e](https://github.com/coveo/plasma/commits/ea5064e9f7f49bd6a80c07de587b57f63bb94405))
+
+
+
 # 38.1.0 (2022-02-22)
 
 
