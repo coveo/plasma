@@ -31,11 +31,13 @@
     },
     "snyk_code": {
         "no_scan": false,
-        "configurations": {
-            "org": "coveo-admin-ui",
-            "path": "./",
-            "project_name": "plasma"
-        }
+        "configurations": [
+            {
+                "org": "coveo-admin-ui",
+                "path": "./",
+                "project_name": "plasma"
+            }
+        ]
     },
     "ordered_phases": [
         {
