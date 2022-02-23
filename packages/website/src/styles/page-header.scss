@@ -19,4 +19,12 @@
         grid-area: github;
         justify-self: end;
     }
+
+    [data-coveo-field='title'] {
+        grid-area: title;
+    }
+
+    [data-coveo-field='description'] {
+        grid-area: desc;
+    }
 }

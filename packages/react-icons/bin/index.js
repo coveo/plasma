@@ -7,24 +7,39 @@ const {rmSync} = require('fs-extra');
 
 const iconsSourceDirPath = 'node_modules/@coveord/plasma-tokens/icons';
 
-const convertIcon = async ([iconName, variants]) =>
-    Promise.all([
-        fs.appendFile('./generated/index.ts', `export * from './${iconName}';\n`),
+const findIconName = (filename) => filename.replace(iconsSourceDirPath, '').substring(1).split('/')[0];
+const findVariantName = (filename) => filename.replace(iconsSourceDirPath, '').split('/').pop().replace('.svg', '');
+const getComponentName = (file) => {
+    const iconName = findIconName(file);
+    const variantName = findVariantName(file);
+    return `${upperFirst(iconName)}${upperFirst(variantName)}`;
+};
+
+const convertIcon = async ([iconName, variants]) => {
+    await fs.ensureDir(`./generated/${iconName}`);
+    return Promise.all([
         ...variants.map(convertVariant),
+        fs.appendFile('./generated/index.ts', `export * from './${iconName}';\n`),
     ]);
+};
 
 const convertVariant = async (file) => {
     try {
         const iconName = findIconName(file);
         const variantName = findVariantName(file);
-        const componentName = `${upperFirst(iconName)}${upperFirst(variantName)}`;
+        const componentName = getComponentName(file);
         const fileContent = await fs.readFile(file);
         const tsCode = await svgr.transform(
             fileContent.toString('utf8'),
-            {typescript: true, exportType: 'named', namedExport: componentName},
+            {
+                typescript: true,
+                exportType: 'named',
+                namedExport: componentName,
+                svgProps: {className: '{"icon mod-stroke " + props.className}', },
+                expandProps: 'start',
+            },
             {componentName}
         );
-        await fs.ensureDir(`./generated/${iconName}`);
         return Promise.all([
             fs.appendFile(`./generated/${iconName}/index.ts`, `export * from './${variantName}';\n`),
             fs.outputFile(`./generated/${iconName}/${variantName}.tsx`, tsCode),
@@ -35,8 +50,13 @@ const convertVariant = async (file) => {
     }
 };
 
-const findIconName = (filename) => filename.replace(iconsSourceDirPath, '').substring(1).split('/')[0];
-const findVariantName = (filename) => filename.replace(iconsSourceDirPath, '').split('/').pop().replace('.svg', '');
+const listIconVariants = async (grouped) => {
+    const list = Object.entries(grouped).map(([iconName, variantsPaths]) => ({
+        iconName,
+        variants: variantsPaths.map(getComponentName),
+    }));
+    fs.appendFile(`./generated/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
+};
 
 const handleSvgFiles = (err, files) => {
     if (err) {
@@ -44,7 +64,7 @@ const handleSvgFiles = (err, files) => {
     }
 
     const grouped = groupBy(files, findIconName);
-    Promise.all(Object.entries(grouped).map(convertIcon));
+    Promise.all([...Object.entries(grouped).map(convertIcon), listIconVariants(grouped)]);
 };
 
 rmSync('./generated', {recursive: true, force: true});

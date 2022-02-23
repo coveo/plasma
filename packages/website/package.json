@@ -24,6 +24,7 @@
     "dependencies": {
         "@coveo/headless": "^1.32.0",
         "@coveord/plasma-react": "workspace:*",
+        "@coveord/plasma-react-icons": "workspace:*",
         "@coveord/plasma-style": "workspace:*",
         "@monaco-editor/react": "4.3.1",
         "@swc/wasm-web": "1.2.138",

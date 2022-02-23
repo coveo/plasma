@@ -8,9 +8,11 @@ import '../styles/sandbox.scss';
 import '../styles/props-doc.scss';
 import '../styles/loading-screen.css';
 import '../styles/page-header.scss';
+import '../styles/iconography.scss';
 import {Svg} from '@coveord/plasma-react';
 
 import * as PlasmaReact from '@coveord/plasma-react';
+import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
 import * as React from 'react';
@@ -48,6 +50,7 @@ const MyApp = ({Component, pageProps}: AppProps) => {
         window.ReactDOM = ReactDOM;
         (window as any).ReactRedux = ReactRedux;
         (window as any).PlasmaReact = PlasmaReact;
+        (window as any).PlasmaReactIcons = PlasmaReactIcons;
 
         if (window.location.host === 'vapor.coveo.com') {
             window.location.href = window.location.href.replace('vapor.coveo.com', 'plasma.coveo.com');
