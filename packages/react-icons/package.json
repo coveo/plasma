@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-react-icons",
-    "version": "1.0.0",
+    "version": "38.5.0",
     "description": "Plasma iconography exposed as react components",
     "main": "./dist/index.js",
     "types": "./dist/index.d.ts",

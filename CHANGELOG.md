@@ -1,3 +1,12 @@
+# 38.5.0 (2022-02-23)
+
+
+### Features
+
+* **react-icons:** create the react-icons package ([4ce319a](https://github.com/coveo/plasma/commits/4ce319a96bdad909baf6774bff0867bfc0dad211))
+
+
+
 ## 38.4.2 (2022-02-23)
 
 
