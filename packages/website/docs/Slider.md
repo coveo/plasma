@@ -20,7 +20,7 @@ The track represents the value range. It should be divided into equal steps usin
 
 When exposing a numeric value is unimportant, name markers using adjectives. For instance, use “small” and “big” when making users choose the size of a thumbnail.
 
-When using numeric values to label markers, display the unit to provide context. For instance, show "90%" when making users select a percentage. 
+When using numeric values to label markers, display the unit to provide context. For instance, show "90%" when making users select a percentage.
 
 Use plus and minus signs when the range allows negative values.
 
@@ -35,4 +35,3 @@ If users can select a numeric value between two markers, display this value abov
 ## Related Components
 
 If setting a precise value is important, consider using a [numeric input](#/form/NumericInput) instead.
-
