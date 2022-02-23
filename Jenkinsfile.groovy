@@ -254,34 +254,6 @@ pipeline {
       }
     }
 
-    stage('Veracode') {
-      when {
-        allOf {
-          expression { !skipRemainingStages }
-          expression { env.BRANCH_NAME ==~ /(master|release-.*)/ }
-        }
-      }
-
-      steps {
-        script {
-          setLastStageName();
-          sh "mkdir -p veracode"
-          sh "mkdir -p veracode/website"
-          sh "mkdir -p veracode/react"
-
-          // copy all ts and tsx files
-          sh "rsync -arvR ./packages/website/src/**/*.ts* ./veracode/website/"
-          sh "rsync -arvR ./packages/react/src/**/*.ts* ./veracode/react/"
-
-          dir('veracode') {
-            // remove spec and mock files
-            sh "find . -name '*.spec.*' -delete"
-            sh "find . -name '*.mock.*' -delete"
-          }
-        }
-      }
-    }
-
     stage('Deployment pipeline') {
       when {
         allOf {

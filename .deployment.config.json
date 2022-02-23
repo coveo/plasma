@@ -11,13 +11,15 @@
         "team_jenkins": "jsadminbuilds",
         "start_environment_automatically": true
     },
+    "certifiers": {
+        "rd": [
+            {
+                "system_certifier": "snyk-code"
+            }
+        ]
+    },
     "veracode": {
-        "sandbox_name": "AdminUI - ReactVapor",
-        "prescan_timeout_minutes": 240,
-        "scan_timeout_minutes": 480,
-        "source": "veracode",
-        "scan_include_patterns": "*",
-        "app_name": "Admin UI"
+        "no_scan": true
     },
     "observatory": {
         "no_endpoint": true
@@ -26,6 +28,14 @@
         "org": "coveo-adminui",
         "no_container_images": true,
         "configurations": []
+    },
+    "snyk_code": {
+        "no_scan": false,
+        "configurations": {
+            "org": "coveo-admin-ui",
+            "path": "./",
+            "project_name": "plasma"
+        }
     },
     "ordered_phases": [
         {

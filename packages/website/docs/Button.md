@@ -1,6 +1,6 @@
 # Best Practices
 
-The button label should allow users to **foresee what will happen** when clicking them. 
+The button label should allow users to **foresee what will happen** when clicking them.
 
 Avoid multiplying buttons within a page. A page should have **only one primary action button**. If several secondary action buttons are required, consider using [actionable items](#/form/ActionableItem) instead.
 
@@ -17,14 +17,14 @@ When using a button to have users confirm the action to execute, use an active w
 
 # Variants
 
-| **Type**      | **Purpose** |
-| --------- | --------- |
-| **Primary** | A primary button draws the users' attention to the main action. There should be only one primary button per section or page. |
-| **Secondary** | A secondary button triggers an action of lesser importance. Multiple secondary buttons may trigger actions of similar importance. |
-| **Icon + label** | Add a icon left of the label to clarify the action or draw attention to the button. Ensure the icon is highly recognizable. |
-| **Label + icon** | Add an icon right of the label to indicate that additional options are available when clicking the button. This indicates that clicking the button doesn't immediately trigger the action. Instead, a menu overlay is displayed, allowing users to select the exact action to be performed. For example, use a label and an icon on the right when the action is "Create" and options are to create from a template or a blank file. |
-| **Icon only** | When space is an issue or when the icon is highly and instantly recognizable, an icon alone may suffice. For instance, the "Setting" button is commonly presented only using a cog icon. However, you should never use an icon-only button for primary actions. |
-| **Append and prepend separator** | Adding a separator is an aesthetic choice typically made when multiple buttons are stacked vertically. Use a separator to align the icon to the right or left of the button. All buttons must have the same width when vertically stacked. |
+| **Type**                         | **Purpose**                                                                                                                                                                                                                                                                                                                                                                                                                          |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| **Primary**                      | A primary button draws the users' attention to the main action. There should be only one primary button per section or page.                                                                                                                                                                                                                                                                                                         |
+| **Secondary**                    | A secondary button triggers an action of lesser importance. Multiple secondary buttons may trigger actions of similar importance.                                                                                                                                                                                                                                                                                                    |
+| **Icon + label**                 | Add a icon left of the label to clarify the action or draw attention to the button. Ensure the icon is highly recognizable.                                                                                                                                                                                                                                                                                                          |
+| **Label + icon**                 | Add an icon right of the label to indicate that additional options are available when clicking the button. This indicates that clicking the button doesn't immediately trigger the action. Instead, a menu overlay is displayed, allowing users to select the exact action to be performed. For example, use a label and an icon on the right when the action is "Create" and options are to create from a template or a blank file. |
+| **Icon only**                    | When space is an issue or when the icon is highly and instantly recognizable, an icon alone may suffice. For instance, the "Setting" button is commonly presented only using a cog icon. However, you should never use an icon-only button for primary actions.                                                                                                                                                                      |
+| **Append and prepend separator** | Adding a separator is an aesthetic choice typically made when multiple buttons are stacked vertically. Use a separator to align the icon to the right or left of the button. All buttons must have the same width when vertically stacked.                                                                                                                                                                                           |
 
 # Feedback and Validation
 
@@ -36,4 +36,3 @@ If your use case doesn't match the guidelines above, consider using one of the f
 
 -   [Link](#/foundations/Links) to redirect users to another section or website.
 -   [Actionable items](#/form/ActionableItem) to group several less important action together.
-
