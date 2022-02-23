@@ -1,3 +1,12 @@
+# 38.4.0 (2022-02-23)
+
+
+### Features
+
+* **website:** automatically open the browser on start ([dfc9d5a](https://github.com/coveo/plasma/commits/dfc9d5ad48afb0c11691b5e5dff2f1b57de57f63))
+
+
+
 # 38.3.0 (2022-02-22)
 
 
