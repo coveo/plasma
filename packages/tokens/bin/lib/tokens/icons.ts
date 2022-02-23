@@ -31,10 +31,7 @@ const generateIconsTokens = (tokenLibrary: FileNodesResponse, iconsMarkup: Recor
         []
     );
 
-    generateTokens(name, [
-        {name: 'icons', children: iconSvgTokens},
-        {name: 'SvgName', members: SvgNames},
-    ]);
+    generateTokens(name, [{name: 'icons', children: iconSvgTokens}]);
 };
 
 export const buildIconsTokens = async () => {

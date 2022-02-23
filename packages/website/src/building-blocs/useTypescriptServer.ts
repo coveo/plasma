@@ -16,6 +16,12 @@ export const compilerOptions: ts.CompilerOptions = {
 
 const typesFiles = require.context('!!raw-loader!@types', true, /\.d\.ts$/i, 'lazy');
 const plasmaTypes = require.context('!!raw-loader!@coveord/plasma-react/dist/definitions', true, /\.d\.ts$/i, 'lazy');
+const plasmaReactIconsTypes = require.context(
+    '!!raw-loader!@coveord/plasma-react-icons/dist',
+    true,
+    /\.d\.ts$/i,
+    'lazy'
+);
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
@@ -29,6 +35,9 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     createDefaultMapFromCDN(compilerOptions as any, ts.version!, true, ts as any, lzstring),
     ...typesFiles.keys().map((path) => load(path, typesFiles, '/node_modules/@types')),
     ...plasmaTypes.keys().map((path) => load(path, plasmaTypes, '/node_modules/@coveord/plasma-react')),
+    ...plasmaReactIconsTypes
+        .keys()
+        .map((path) => load(path, plasmaReactIconsTypes, '/node_modules/@coveord/plasma-react-icons')),
 ]).then(([map, ...mappedTypes]) => {
     mappedTypes.forEach(({path, content}) => {
         map.set(path, content);

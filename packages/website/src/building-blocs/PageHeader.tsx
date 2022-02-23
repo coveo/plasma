@@ -13,7 +13,7 @@ export interface PageHeaderProps {
      *
      * @example '/button/Button.tsx'
      */
-    componentSourcePath: string;
+    componentSourcePath?: string;
 }
 
 export const PageHeader: React.FunctionComponent<PageHeaderProps> = ({
