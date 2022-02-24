@@ -36,16 +36,7 @@ const IconSetCard: React.FunctionComponent<IconSet> = ({iconName, variants}) => 
                     return SvgComponent ? (
                         <tr key={svgName}>
                             <td className="mod-no-border-bottom">
-                                <SvgComponent
-                                    className={classNames('mod-black', {
-                                        'mod-16': svgName.includes('16Px'),
-                                        'mod-24': svgName.includes('24Px'),
-                                        'mod-32': svgName.includes('32Px'),
-                                        'mod-48': svgName.includes('48Px'),
-                                        'mod-56': svgName.includes('56Px'),
-                                        'mod-64': svgName.includes('64Px'),
-                                    })}
-                                />
+                                <SvgComponent height={parseInt(/(\d+)px/i.exec(svgName)[0], 10)} />
                             </td>
                             <td className="mod-no-border-bottom">{svgName}</td>
                         </tr>
@@ -75,9 +66,16 @@ const IconsTable: React.FunctionComponent = () => (
 
 const code = `
     import * as React from 'react';
-    import { InfoSize32Px } from '@coveord/plasma-react-icons';
+    import { DollarsSize64Px } from '@coveord/plasma-react-icons';
+    
+    // Control the size using "height" or "width" attributes (defaults to 1em)
+    // The icon takes the same color as the text around it
 
-    export default () => <InfoSize32Px className="mod-info mod-72" />;
+    export default () => (
+        <div style={{color: 'green'}}>
+            <DollarsSize64Px height={64} />
+        </div>
+    );
 `;
 
 export const IconographyExamples = () => (
@@ -88,7 +86,7 @@ export const IconographyExamples = () => (
             thumbnail="iconography"
             description="Icons are used to visually represent actions, functionalities, and features."
         />
-        <div className="palsma-page-layout">
+        <div className="plasma-page-layout">
             <div className="plasma-page-layout__main-code plasma-page-layout__section">
                 <Sandbox id="main-code" horizontal>
                     {code}

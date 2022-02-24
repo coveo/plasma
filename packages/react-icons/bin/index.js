@@ -35,8 +35,10 @@ const convertVariant = async (file) => {
                 typescript: true,
                 exportType: 'named',
                 namedExport: componentName,
-                svgProps: {className: '{"icon mod-stroke " + props.className}', },
-                expandProps: 'start',
+                svgProps: {
+                    height: '{props.height || props.width || "1em"}',
+                    width: '{props.width || props.height || "1em"}',
+                },
             },
             {componentName}
         );
