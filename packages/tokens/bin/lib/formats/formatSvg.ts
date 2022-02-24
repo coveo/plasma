@@ -19,7 +19,7 @@ const cleanSvgMarkup = (name: string, svgMarkup: string): string => {
             {
                 name: 'addAttributesToSVGElement',
                 active: true,
-                params: {attribute: {stroke: 'currentColor'}} as any,
+                params: {attributes: [{stroke: 'currentColor'}, {width: '1em'}, {height: '1em'}]},
             },
         ],
     });

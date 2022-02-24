@@ -1,4 +1,4 @@
-import {ensureDirSync} from 'fs-extra';
+import {ensureDirSync, outputFileSync} from 'fs-extra';
 import rimraf from 'rimraf';
 
 import {buildIconsTokens} from './lib/tokens/icons';
@@ -15,6 +15,7 @@ const cleanOutputDirectories = () => {
 const build = async () => {
     try {
         cleanOutputDirectories();
+        outputFileSync('./src/index.ts', '');
         await buildIconsTokens();
     } catch (err) {
         console.error('An error occured while building tokens\n', err);
