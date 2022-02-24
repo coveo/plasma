@@ -1,6 +1,5 @@
 import {FileNodesResponse, Frame} from 'figma-js';
 import {readJson} from 'fs-extra';
-import {camelCase} from 'lodash';
 
 import {getPage} from '../figma';
 import {Token, TokenGroup} from '../formats/token';
@@ -21,14 +20,6 @@ const generateIconsTokens = (tokenLibrary: FileNodesResponse, iconsMarkup: Recor
                 })
             ),
         })
-    );
-
-    const SvgNames = (children as Frame[]).reduce<string[]>(
-        (memo, iconSet): string[] =>
-            memo.concat(
-                iconSet.children.map((iconVariant) => `${camelCase(iconSet.name)}.${camelCase(iconVariant.name)}`)
-            ),
-        []
     );
 
     generateTokens(name, [{name: 'icons', children: iconSvgTokens}]);
