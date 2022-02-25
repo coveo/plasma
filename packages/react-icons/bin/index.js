@@ -4,6 +4,7 @@ const svgr = require('@svgr/core');
 const groupBy = require('lodash.groupby');
 const upperFirst = require('lodash.upperfirst');
 const {rmSync} = require('fs-extra');
+const template = require('./template');
 
 const iconsSourceDirPath = 'node_modules/@coveord/plasma-tokens/icons';
 
@@ -35,9 +36,11 @@ const convertVariant = async (file) => {
                 typescript: true,
                 exportType: 'named',
                 namedExport: componentName,
+                template,
+                expandProps: false,
                 svgProps: {
-                    height: '{props.height || props.width || "1em"}',
-                    width: '{props.width || props.height || "1em"}',
+                    height: '{height || width || "1em"}',
+                    width: '{width || height || "1em"}',
                 },
             },
             {componentName}
