@@ -1,11 +1,11 @@
 # Best Practices
 
-Code editor displays code snippets that users can consult or edit.
+A code editor displays code snippets that users can review or edit.
 
-Be **extremely careful** when providing editable code as it greatly increases the risk of errors. Only use code editors when the expected users are well informed developers.
+Be **extremely careful** when allowing users to edit code, as it greatly increases the risk of errors. Provide a code editor only when its expected users are well-informed developers.
 
 The code editor should preferably take the full width of the section it appears in to reduce line wrap friction.
-Make sure the height of the code editor is comfortable enough for users to understand its content.
+Ensure the code editor is long enough to display a significant portion of the code and allow users to review it comfortably.
 
 ## Labeling
 
@@ -14,19 +14,19 @@ Provide a descriptive title without action verbs. For example, write "Plugin scr
 
 ## Help Text and Instructions
 
-Help text should explain how or where this information can be used or to provide external references about the syntax to use. 
+Help text should explain how or where the code is used, or provide external references regarding the programming language to use. 
 Help text should be **short, preferably on one line**.
 
-Placeholder provides a **temporary example** of the syntax when the input is empty. Only use a placeholder if a short example can prevent the user from having to refer to the external resources to get started.
+A placeholder should provide a **temporary example** when the code editor is empty. Add a placeholder only if a short example can allow users to get started without referring to external resources.
 
 ## Feedback and Validation
 
-Code editor supports syntax formatting and basic validation of their associated language.
+Code editors support syntax formatting and basic programming language validation.
 
 Most of the error validation on edited code only occurs once the user saves, using the proper error messaging method is important to help users troubleshoot their own errors.
-Consider providing links to troubleshooting documentation in the external references in error messages when appropriate.
+Consider providing links to troubleshooting documentation in error messages.
 
-If possible, consider adding a way for the user to test his code before moving on through his journey. For instance, adding a button to test a script before saving it is a good practice.
+If possible, consider adding a way for users to test their code before moving on through their journey. For instance, adding a button to test a script before saving it is a good practice.
 
 ## Related Components
 
