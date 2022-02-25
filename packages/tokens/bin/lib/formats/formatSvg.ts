@@ -12,15 +12,26 @@ const cleanSvgMarkup = (name: string, svgMarkup: string): string => {
             {name: 'removeViewBox', active: false},
             {name: 'removeDimensions', active: true},
             {
-                name: 'removeAttributesBySelector',
-                active: true,
-                params: {selector: '[stroke]', attributes: ['stroke']} as any,
-            },
-            {
                 name: 'addAttributesToSVGElement',
                 active: true,
-                params: {attributes: [{stroke: 'currentColor'}, {width: '1em'}, {height: '1em'}]},
+                params: {attributes: [{width: '1em'}, {height: '1em'}]},
             },
+            {
+                type: 'visitor',
+                name: 'replace-values',
+                fn: () => ({
+                    element: {
+                        enter: (node: any) => {
+                            if (node.attributes.fill && node.attributes.fill !== 'none') {
+                                node.attributes.fill = 'currentColor';
+                            }
+                            if (node.attributes.stroke && node.attributes.stroke !== 'none') {
+                                node.attributes.stroke = 'currentColor';
+                            }
+                        },
+                    },
+                }),
+            } as any,
         ],
     });
 
