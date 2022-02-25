@@ -1,3 +1,12 @@
+## 38.5.1 (2022-02-25)
+
+
+### Bug Fixes
+
+* **svg:** export SvgChild ([#2481](https://github.com/coveo/plasma/issues/2481)) ([9856f61](https://github.com/coveo/plasma/commits/9856f61b7364ed9b47a3217ecb7d7875dcf5d61a))
+
+
+
 # 38.5.0 (2022-02-23)
 
 
