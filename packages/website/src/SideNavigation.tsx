@@ -66,7 +66,6 @@ export const Navigation: React.FunctionComponent = () => {
             />
             <CollapsibleSideSection title="Foundations">
                 <NavLink href="/foundations/Iconography" label="Iconography" />
-                <NavLink href="/foundations/Svg" label="SVG" />
                 <NavLink href="/foundations/Headings" label="Headings" />
                 <NavLink href="/foundations/Links" label="Links" />
                 <NavLink href="/foundations/Whitespace" label="Whitespace" />

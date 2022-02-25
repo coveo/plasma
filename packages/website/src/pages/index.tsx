@@ -56,7 +56,6 @@ const FoundationsPages: React.FC = () => (
                 href="foundations/Iconography"
                 thumbnail="iconography"
             />
-            <Tile title="SVG" href="foundations/Svg" />
             <Tile
                 title="Headings"
                 description="A heading is a title at the top of a page or section. Its distinctive font helps visualize the hierarchy of information."
