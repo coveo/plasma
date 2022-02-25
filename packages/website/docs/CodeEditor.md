@@ -32,4 +32,4 @@ If possible, consider adding a way for users to test their code before moving on
 
 If your use case doesn't match the guidelines above, consider using one of the following components instead:
 
--   [Code editor](#/form/JSONEditor) if the user needs to input code using JSON syntax.
+-   [JSON editor](#/form/JSONEditor) if the user needs to input code using JSON syntax.
