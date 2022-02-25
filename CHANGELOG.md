@@ -1,3 +1,18 @@
+# 38.6.0 (2022-02-25)
+
+
+### Bug Fixes
+
+* **react-icons:** remove default classes icon and mod-stroke ([f19590c](https://github.com/coveo/plasma/commits/f19590cdb2b7739b1e7e09da0723c1628492b0dd))
+
+
+### Features
+
+* **react-icons:** add verticalAlign text-bottom to all icons ([4faefdb](https://github.com/coveo/plasma/commits/4faefdb406187a3f87c131c666f1523da2617375))
+* **website:** update the iconography page ([b206a16](https://github.com/coveo/plasma/commits/b206a16a896d8212557e468dad0a773f7abff130))
+
+
+
 ## 38.5.1 (2022-02-25)
 
 
