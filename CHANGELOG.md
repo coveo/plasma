@@ -1,3 +1,12 @@
+# 38.9.0 (2022-02-28)
+
+
+### Features
+
+* **analytics:** add analytics on noResult and documentOpen in search result ([69735cb](https://github.com/coveo/plasma/commits/69735cb004645fc6212008280a86f039c06a894a))
+
+
+
 ## 38.8.1 (2022-02-28)
 
 

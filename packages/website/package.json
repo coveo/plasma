@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-website",
-    "version": "38.8.1",
+    "version": "38.9.0",
     "private": true,
     "description": "Plasma Design System",
     "main": "src/Index.ts",
