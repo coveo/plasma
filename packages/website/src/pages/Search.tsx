@@ -48,8 +48,7 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                                 <Tile
                                     key={uniqueId}
                                     title={title}
-                                    // href={clickUri.replace(/.+plasma\.coveo\.com\//, process.env.basePath)}
-                                    href={clickUri.replace(/.+\/PR-2454\//, process.env.basePath)}
+                                    href={clickUri.replace(/.+plasma\.coveo\.com\//, process.env.basePath)}
                                     description={raw.description as string}
                                     thumbnail={raw.thumbnail as TileProps['thumbnail']}
                                 />
