@@ -1,3 +1,12 @@
+# 38.8.0 (2022-02-28)
+
+
+### Features
+
+* **webstie:** updates Textarea guidelines ([b949446](https://github.com/coveo/plasma/commits/b94944652740b190e2e6e7f41c34b7a55771ec81))
+
+
+
 # 38.7.0 (2022-02-28)
 
 
