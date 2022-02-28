@@ -1,3 +1,17 @@
+# 38.7.0 (2022-02-28)
+
+
+### Bug Fixes
+
+* **react-icons:** make sure currentColor is repected for fills ([1fd1b67](https://github.com/coveo/plasma/commits/1fd1b67114758c106afa79c4cfb3f497f869ffd1))
+
+
+### Features
+
+* **website:** remove SVG section ([d76c059](https://github.com/coveo/plasma/commits/d76c0590ab7562eaef432b76fd3f7046ca10ed5c))
+
+
+
 # 38.6.0 (2022-02-25)
 
 
