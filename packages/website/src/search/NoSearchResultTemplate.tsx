@@ -1,4 +1,10 @@
-import {buildHistoryManager, HistoryManager, loadQueryActions, SearchEngine} from '@coveo/headless';
+import {
+    buildHistoryManager,
+    HistoryManager,
+    HistoryManagerState,
+    loadQueryActions,
+    SearchEngine,
+} from '@coveo/headless';
 import {Button} from '@coveord/plasma-react';
 
 import {FunctionComponent, useEffect, useState} from 'react';
@@ -15,7 +21,7 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
     const {engine, query} = props;
 
     const historyManager: HistoryManager = buildHistoryManager(engine);
-    const [state, setState] = useState(historyManager.state);
+    const [state, setState] = useState<HistoryManagerState>(historyManager.state);
 
     useEffect(() => historyManager.subscribe(() => setState(historyManager.state)), []);
 
