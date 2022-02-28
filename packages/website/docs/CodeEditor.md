@@ -23,7 +23,7 @@ A placeholder should provide a **temporary example** when the code editor is emp
 
 Code editors support syntax formatting and basic programming language validation.
 
-Most of the error validation on edited code only occurs once the user saves, using the proper error messaging method is important to help users troubleshoot their own errors.
+Most of the code validation takes place once changes are saved. Writing proper error messages is important to help users troubleshoot their own errors.
 Consider providing links to troubleshooting documentation in error messages.
 
 If possible, consider adding a way for users to test their code before moving on through their journey. For instance, adding a button to test a script before saving it is a good practice.
