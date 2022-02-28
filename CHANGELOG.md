@@ -1,3 +1,12 @@
+## 38.8.1 (2022-02-28)
+
+
+### Bug Fixes
+
+* **website:** remove click uri workaround on search results ([aa7c448](https://github.com/coveo/plasma/commits/aa7c44826820960dd4357fc54a1509c4952bd8b7))
+
+
+
 # 38.8.0 (2022-02-28)
 
 
