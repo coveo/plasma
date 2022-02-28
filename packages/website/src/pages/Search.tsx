@@ -1,10 +1,10 @@
 import {
     buildResultList,
+    loadClickAnalyticsActions,
     loadPaginationActions,
     loadQueryActions,
     loadSearchActions,
     loadSearchAnalyticsActions,
-    Result,
     ResultList as HeadlessResultList,
     SearchEngine,
 } from '@coveo/headless';
@@ -27,8 +27,10 @@ interface ResultListProps {
 const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
     const {controller, engine, query} = props;
     const [state, setState] = useState(controller.state);
+    const {logDocumentOpen} = loadClickAnalyticsActions(engine);
 
     useEffect(() => controller.subscribe(() => setState(controller.state)), [controller]);
+
     return (
         <>
             {!state.hasResults && !state.isLoading ? (
@@ -44,13 +46,14 @@ const ResultListRenderer: FunctionComponent<ResultListProps> = (props) => {
                             {state.results.length === 1 ? ' result' : ' results'}
                         </p>
                         <div className="tile-grid">
-                            {state.results.map(({title, raw, uniqueId, clickUri}: Result) => (
+                            {state.results.map((result) => (
                                 <Tile
-                                    key={uniqueId}
-                                    title={title}
-                                    href={clickUri.replace(/.+plasma\.coveo\.com\//, process.env.basePath)}
-                                    description={raw.description as string}
-                                    thumbnail={raw.thumbnail as TileProps['thumbnail']}
+                                    key={result.uniqueId}
+                                    title={result.title}
+                                    href={result.clickUri.replace(/.+plasma\.coveo\.com\//, process.env.basePath)}
+                                    description={result.raw.description as string}
+                                    thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
+                                    sendAnalytics={() => engine.dispatch(logDocumentOpen(result))}
                                 />
                             ))}
                         </div>
