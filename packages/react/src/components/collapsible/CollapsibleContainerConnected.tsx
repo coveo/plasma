@@ -21,6 +21,7 @@ export interface ICollapsibleContainerOwnProps {
     collapsibleBodyClassName?: IClassName;
     withoutContentPadding?: boolean;
     disabled?: boolean;
+    onClick?: () => void;
 }
 
 const mapStateToProps = (state: PlasmaState, ownProps: ICollapsibleContainerOwnProps) => {
@@ -45,6 +46,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
     expandedOnMount,
     collapsibleToggleIcon,
     disabled,
+    onClick,
 }) => {
     const contentClasses = classNames(
         {'collapsible-container content': !withoutContentPadding},
@@ -74,6 +76,7 @@ export const CollapsibleContainerDisconnected: React.FunctionComponent<
             collapsibleToggleIcon={collapsibleToggleIcon}
             withBorders
             disabled={disabled}
+            onClick={onClick}
         >
             <div className={contentClasses}>{children}</div>
         </CollapsibleConnected>
