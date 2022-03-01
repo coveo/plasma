@@ -1,3 +1,12 @@
+# 38.10.0 (2022-03-01)
+
+
+### Features
+
+* **website:** update NumericInput guidelines ([7b3d783](https://github.com/coveo/plasma/commits/7b3d7831c2b8eadf2ebe3cd57d5882b1fa1aa342))
+
+
+
 # 38.9.0 (2022-02-28)
 
 
