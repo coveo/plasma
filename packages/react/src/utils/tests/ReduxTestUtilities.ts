@@ -21,7 +21,7 @@ const createTableHOCCompositeState = <T extends PlasmaState>(
                   tableId,
                   isAsc: state.sortAscending,
               },
-              ...(currentState.tableHOCHeader || {}),
+              {...(currentState.tableHOCHeader || {})},
           ]
         : [],
     flatSelect: state.perPage
@@ -30,7 +30,7 @@ const createTableHOCCompositeState = <T extends PlasmaState>(
                   id: PaginationUtils.getPaginationPerPageId(tableId),
                   selectedOptionId: state?.perPage?.toString(),
               },
-              ...(currentState.flatSelect || {}),
+              {...(currentState.flatSelect || {})},
           ]
         : [],
     filters: state.filter
@@ -39,7 +39,7 @@ const createTableHOCCompositeState = <T extends PlasmaState>(
                   id: tableId,
                   filterText: state.filter,
               },
-              ...(currentState.filters || {}),
+              {...(currentState.filters || {})},
           ]
         : [],
     paginationComposite: state.pageNb
@@ -48,7 +48,7 @@ const createTableHOCCompositeState = <T extends PlasmaState>(
                   id: TableHOCUtils.getPaginationId(tableId),
                   pageNb: state.pageNb,
               },
-              ...(currentState.paginationComposite || {}),
+              {...(currentState.paginationComposite || {})},
           ]
         : [],
     listBoxes: state.predicates?.length
