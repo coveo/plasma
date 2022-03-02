@@ -1,3 +1,12 @@
+# 38.11.0 (2022-03-02)
+
+
+### Features
+
+* **collapsible-container-connected:** add optional onClick prop ([67776ef](https://github.com/coveo/plasma/commits/67776efa34a1c39e924ea4981c6fd18df13bac14))
+
+
+
 # 38.10.0 (2022-03-01)
 
 
