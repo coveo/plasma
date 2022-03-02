@@ -1,5 +1,6 @@
 import * as React from 'react';
 import {render, screen} from '@test-utils';
+import userEvent from '@testing-library/user-event';
 
 import {CollapsibleContainerConnected} from '../CollapsibleContainerConnected';
 
@@ -35,5 +36,19 @@ describe('CollapsibleContainerConnected', () => {
         );
 
         expect(screen.getByRole('img', {name: /info icon/i})).toBeInTheDocument();
+    });
+
+    it('calls the onClick event when the collapsible is clicked if the prop is set', () => {
+        const functionToBeCalled = jest.fn();
+
+        render(
+            <CollapsibleContainerConnected id="🆔" title="the title" onClick={functionToBeCalled}>
+                content
+            </CollapsibleContainerConnected>
+        );
+
+        userEvent.click(screen.getByText(/the title/i));
+
+        expect(functionToBeCalled).toHaveBeenCalledTimes(1);
     });
 });
