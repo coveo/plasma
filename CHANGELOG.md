@@ -1,3 +1,12 @@
+## 38.11.2 (2022-03-02)
+
+
+### Bug Fixes
+
+* **website:** do not preload pages with Nextjs ([019dd2a](https://github.com/coveo/plasma/commits/019dd2ac2deab2729a1841c507112aabfa79cf0c))
+
+
+
 ## 38.11.1 (2022-03-02)
 
 
