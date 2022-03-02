@@ -1,4 +1,5 @@
 import classNames from 'classnames';
+import Link from 'next/link';
 import * as React from 'react';
 
 import actionButtonPng from '../../resources/thumbnail_ActionButton.png';
@@ -65,10 +66,12 @@ export const Tile: React.FunctionComponent<TileProps> = ({
 
     if (href && href.length > 0) {
         return (
-            <a className={className} href={href} onClick={sendAnalytics}>
-                {tileIcon}
-                {tileInfo}
-            </a>
+            <Link href={href} prefetch={false}>
+                <a className={className} onClick={sendAnalytics}>
+                    {tileIcon}
+                    {tileInfo}
+                </a>
+            </Link>
         );
     }
 

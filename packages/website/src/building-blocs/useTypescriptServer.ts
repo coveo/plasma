@@ -14,13 +14,18 @@ export const compilerOptions: ts.CompilerOptions = {
     strict: false,
 };
 
-const typesFiles = require.context('!!raw-loader!@types', true, /\.d\.ts$/i, 'lazy');
-const plasmaTypes = require.context('!!raw-loader!@coveord/plasma-react/dist/definitions', true, /\.d\.ts$/i, 'lazy');
+const typesFiles = require.context('!!raw-loader!@types', true, /\.d\.ts$/i, 'lazy-once');
+const plasmaTypes = require.context(
+    '!!raw-loader!@coveord/plasma-react/dist/definitions',
+    true,
+    /\.d\.ts$/i,
+    'lazy-once'
+);
 const plasmaReactIconsTypes = require.context(
     '!!raw-loader!@coveord/plasma-react-icons/dist',
     true,
     /\.d\.ts$/i,
-    'lazy'
+    'lazy-once'
 );
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);

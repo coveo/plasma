@@ -15,6 +15,7 @@ import * as PlasmaReact from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
 import type {AppProps} from 'next/app';
 import Head from 'next/head';
+import Link from 'next/link';
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactRedux from 'react-redux';
@@ -28,9 +29,11 @@ import {Store} from '../Store';
 
 const Header = () => (
     <div id="header" className="demo-header">
-        <a href="/#" className="header-logo-link">
-            <img src={logo} className="header-logo" alt="Plasma Design System" />
-        </a>
+        <Link href="/">
+            <a className="header-logo-link">
+                <img src={logo} className="header-logo" alt="Plasma Design System" />
+            </a>
+        </Link>
         <StandaloneSearchBar />
         <div className="right-side">
             <a href="https://github.com/coveo/plasma#readme" aria-label="README" target="_blank">
