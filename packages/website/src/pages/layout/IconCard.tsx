@@ -1,5 +1,6 @@
-import * as React from 'react';
 import {IconCard, Section, Svg} from '@coveord/plasma-react';
+import {LockSize16Px} from '@coveord/plasma-react-icons';
+import * as React from 'react';
 
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
@@ -65,7 +66,7 @@ export const IconCardExamples: React.FunctionComponent = () => (
                         title="Web"
                         svgName="sourceWeb"
                         disabled
-                        badges={[{icon: 'lock', extraClasses: ['mod-small']}]}
+                        badges={[{icon: LockSize16Px, extraClasses: ['mod-small']}]}
                         tooltip={{title: 'This source is not included in your license'}}
                         style={{width: '368px'}}
                     />
