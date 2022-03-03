@@ -1,5 +1,6 @@
-import * as React from 'react';
 import {Badge, Section} from '@coveord/plasma-react';
+import {LockSize16Px} from '@coveord/plasma-react-icons';
+import * as React from 'react';
 
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
@@ -19,9 +20,9 @@ export const BadgeExamples: React.FunctionComponent = () => (
                 <Badge label="Critical" extraClasses={['mod-critical ml1']} />
                 <Badge label="New" extraClasses={['mod-warning ml1']} />
                 <Badge label="Beta" extraClasses={['mod-beta ml1']} />
-                <Badge icon="lock" extraClasses={['ml1']} />
-                <Badge icon="lock" label="Label" extraClasses={['ml1']} />
-                <Badge icon="lock" label="tag" extraClasses={['mod-tag ml1']} />
+                <Badge icon={LockSize16Px} extraClasses={['ml1']} />
+                <Badge icon={LockSize16Px} label="Label" extraClasses={['ml1']} />
+                <Badge icon={LockSize16Px} label="tag" extraClasses={['mod-tag ml1']} />
             </Section>
             <Section level={2} title="Small">
                 <Badge label="Default" extraClasses={['mod-small']} />
@@ -30,9 +31,9 @@ export const BadgeExamples: React.FunctionComponent = () => (
                 <Badge label="Critical" extraClasses={['mod-small mod-critical ml1']} />
                 <Badge label="New" extraClasses={['mod-small mod-warning ml1']} />
                 <Badge label="Beta" extraClasses={['mod-small mod-beta ml1']} />
-                <Badge icon="lock" extraClasses={['mod-small ml1']} />
-                <Badge icon="lock" label="Label" extraClasses={['mod-small ml1']} />
-                <Badge icon="lock" label="tag" extraClasses={['mod-small mod-tag ml1']} />
+                <Badge icon={LockSize16Px} extraClasses={['mod-small ml1']} />
+                <Badge icon={LockSize16Px} label="Label" extraClasses={['mod-small ml1']} />
+                <Badge icon={LockSize16Px} label="tag" extraClasses={['mod-small mod-tag ml1']} />
             </Section>
         </Section>
     </PlasmaComponent>

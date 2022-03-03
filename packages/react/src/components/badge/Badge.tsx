@@ -1,7 +1,7 @@
-import {SvgName} from '@coveord/plasma-style';
 import classNames from 'classnames';
 import * as React from 'react';
-import {Svg} from '../svg';
+
+import {Icon} from '@coveord/plasma-react-icons';
 
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
@@ -13,7 +13,7 @@ interface BadgeWithLabelProps extends BadgeBasicProps {
     label: string;
 }
 interface BadgeWithIconProps extends BadgeBasicProps {
-    icon: SvgName;
+    icon: Icon;
 }
 
 export type IBadgeProps = BadgeWithLabelProps | BadgeWithIconProps | (BadgeWithLabelProps & BadgeWithIconProps);
@@ -35,9 +35,8 @@ export class Badge extends React.Component<IBadgeProps> {
         return (
             <span className={this.className} aria-label="badge">
                 {'icon' in this.props ? (
-                    <Svg
-                        svgName={this.props.icon}
-                        svgClass={classNames('icon', {'mod-16': !this.isSmall, 'mod-12': this.isSmall})}
+                    <this.props.icon
+                        height={this.isSmall ? 14 : 18}
                         className={classNames({mr1: 'label' in this.props && this.props.label})}
                     />
                 ) : null}

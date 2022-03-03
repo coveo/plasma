@@ -58,6 +58,7 @@ importers:
 
   packages/react:
     specifiers:
+      '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
       '@helpers/enzyme-redux': workspace:*
       '@hot-loader/react-dom': 17.0.2
@@ -160,6 +161,7 @@ importers:
       underscore.string: 3.3.5
       unidiff: 0.0.4
     dependencies:
+      '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
       '@loadable/component': 5.15.2_react@16.14.0
       '@types/codemirror': 0.0.109
