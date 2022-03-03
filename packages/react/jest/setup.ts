@@ -4,8 +4,6 @@ import _ from 'underscore';
 import $ from 'jquery';
 global.$ = global.jQuery = $;
 
-import 'chosen-js';
-
 global._ = _;
 
 document.createRange = () => {
