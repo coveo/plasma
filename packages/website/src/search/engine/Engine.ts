@@ -1,4 +1,4 @@
-import {buildSearchEngine} from '@coveo/headless';
+import {buildSearchEngine} from '@coveo/atomic-react';
 
 export const headlessEngine = () =>
     buildSearchEngine({

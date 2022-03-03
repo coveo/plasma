@@ -73,7 +73,7 @@ const Search = () => {
     const {executeSearch} = loadSearchActions(engine);
     engine.dispatch(registerNumberOfResults(1000));
     engine.dispatch(updateQuery({q: query.q as string}));
-    engine.dispatch(executeSearch(logInterfaceLoad()));
+    // engine.dispatch(executeSearch(logInterfaceLoad()));
     const controller = buildResultList(engine);
     return <ResultListRenderer controller={controller} engine={engine} query={(query?.q as string) ?? ''} />;
 };
