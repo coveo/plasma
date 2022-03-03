@@ -16,6 +16,8 @@ const getComponentName = (file) => {
     return `${upperFirst(iconName)}${upperFirst(variantName)}`;
 };
 
+const convertIcons = async (grouped) => Promise.all(Object.entries(grouped).map(convertIcon));
+
 const convertIcon = async ([iconName, variants]) => {
     await fs.ensureDir(`./generated/${iconName}`);
     return Promise.all([
@@ -60,7 +62,16 @@ const listIconVariants = async (grouped) => {
         iconName,
         variants: variantsPaths.map(getComponentName),
     }));
-    fs.appendFile(`./generated/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
+    return fs.appendFile(`./generated/index.ts`, `export const iconsList = ${JSON.stringify(list)};\n`);
+};
+
+const generateIconType = async (grouped) => {
+    const [iconSet, variants] = Object.entries(grouped)[0];
+    const iconComponent = getComponentName(variants[0]);
+    const output = `import {${iconComponent}} from './${iconSet}';
+export type Icon = typeof ${iconComponent};
+`;
+    return fs.appendFile(`./generated/index.ts`, output);
 };
 
 const handleSvgFiles = (err, files) => {
@@ -69,7 +80,7 @@ const handleSvgFiles = (err, files) => {
     }
 
     const grouped = groupBy(files, findIconName);
-    Promise.all([...Object.entries(grouped).map(convertIcon), listIconVariants(grouped)]);
+    Promise.all([convertIcons(grouped), generateIconType(grouped), listIconVariants(grouped)]);
 };
 
 rmSync('./generated', {recursive: true, force: true});
