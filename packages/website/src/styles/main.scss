@@ -82,54 +82,6 @@
     }
 }
 
-// Icons
-.sg-icons-html {
-    code {
-        white-space: pre-line;
-    }
-}
-
-.sg-icons-list {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    font-family: var(--main-font);
-
-    li {
-        display: inline-flex;
-        justify-content: center;
-        width: 100px;
-        height: 120px;
-        margin: 2px;
-        word-break: break-all;
-
-        &:hover {
-            background-color: var(--deprecated-grey-3);
-        }
-
-        a {
-            display: flex;
-            flex-direction: column-reverse;
-            justify-content: center;
-            height: 100%;
-            text-align: center;
-
-            svg {
-                width: 45px;
-                height: 45px;
-            }
-        }
-
-        label {
-            display: block;
-            margin-top: 10px;
-            font-size: 12px;
-            text-align: center;
-            word-wrap: break-word;
-        }
-    }
-}
-
 .progress-bar-example-container {
     display: flex;
     padding: 30px 0;

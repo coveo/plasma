@@ -1,5 +1,3 @@
-import {svg} from '@coveord/plasma-style';
-import * as React from 'react';
 import {
     Badge,
     Button,
@@ -13,8 +11,9 @@ import {
     Label,
     Section,
     setCollapsibleExpanded,
-    Svg,
 } from '@coveord/plasma-react';
+import {AddSize16Px} from '@coveord/plasma-react-icons';
+import * as React from 'react';
 import * as _ from 'underscore';
 
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
@@ -141,7 +140,7 @@ export const CollapsibleExamples: React.FunctionComponent = () => {
                             }}
                             collapsibleToggleIcon={
                                 <span className="flex space-between center-align">
-                                    <Svg svgName={svg.add.name} svgClass="icon" />
+                                    <AddSize16Px height={16} />
                                 </span>
                             }
                         >

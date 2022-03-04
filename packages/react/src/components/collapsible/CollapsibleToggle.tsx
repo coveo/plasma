@@ -1,24 +1,14 @@
-import classNames from 'classnames';
+import {ArrowHeadDownSize16Px, ArrowHeadUpSize16Px} from '@coveord/plasma-react-icons';
 import * as React from 'react';
-
-import {Svg} from '../svg/Svg';
 
 export interface CollapsibleToggleProps {
     expanded: boolean;
-    className?: string;
-    svgClassName?: string;
 }
 
-export const CollapsibleToggle: React.SFC<CollapsibleToggleProps & React.HTMLAttributes<HTMLSpanElement>> = ({
+export const CollapsibleToggle: React.FunctionComponent<CollapsibleToggleProps & React.SVGProps<SVGSVGElement>> = ({
     expanded,
-    className,
-    svgClassName,
-    ...rest
-}) => (
-    <Svg
-        svgName={expanded ? 'arrowTopRounded' : 'arrowBottomRounded'}
-        svgClass={classNames('icon', svgClassName)}
-        className={className}
-        {...rest}
-    />
-);
+    ...svgProps
+}) => {
+    const Icon = expanded ? ArrowHeadUpSize16Px : ArrowHeadDownSize16Px;
+    return Icon ? <Icon height={16} {...svgProps} /> : null;
+};
