@@ -1,6 +1,7 @@
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
+import {Button} from '../button/Button';
 
 import {SlideY} from '../../animations/SlideY';
 import {PlasmaState} from '../../PlasmaState';
@@ -166,12 +167,9 @@ class TableRowConnected extends React.PureComponent<
                             'mod-no-border-bottom': this.props.collapsible.noBorderBottom,
                         })}
                     >
-                        <CollapsibleToggle
-                            onClick={this.onToggleCollapsible}
-                            expanded={this.props.opened}
-                            svgClassName="mod-12"
-                            className={'btn mod-no-border right px1'}
-                        />
+                        <Button onClick={this.onToggleCollapsible} classes="mod-no-border right px1">
+                            <CollapsibleToggle expanded={this.props.opened} />
+                        </Button>
                     </td>
                 );
             }
@@ -228,10 +226,7 @@ class TableRowConnected extends React.PureComponent<
             });
     };
 
-    private onToggleCollapsible = (e: React.MouseEvent<HTMLElement>) => {
-        e.preventDefault();
-        e.stopPropagation();
-
+    private onToggleCollapsible = () => {
         this.props.onCollapsibleClick(this.props.opened);
     };
 }

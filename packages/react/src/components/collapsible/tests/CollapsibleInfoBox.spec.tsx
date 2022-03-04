@@ -41,13 +41,13 @@ describe('CollapsibleInfoBox', () => {
 
         it('should render a <h6 /> and <svg /> in header', () => {
             expect(component.find('h6').exists()).toBe(true);
-            expect(component.find(Svg).length).toBe(2);
+            expect(component.find(Svg).length).toBe(1);
         });
 
         it('should not render a <svg /> in header if isSection', () => {
             mountComponent({isSection: true});
             expect(component.find('h6').exists()).toBe(true);
-            expect(component.find(Svg).length).toBe(1);
+            expect(component.find(Svg).length).toBe(0);
         });
 
         it('should display the sectionAdditionalContent if there is any and it is a section', () => {
