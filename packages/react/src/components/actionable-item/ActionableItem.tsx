@@ -1,3 +1,4 @@
+import {DotsSize16Px} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
 import * as React from 'react';
 import * as _ from 'underscore';
@@ -6,7 +7,6 @@ import {DropPodPosition} from '../drop/DomPositionCalculator';
 import {Drop, IDropOwnProps} from '../drop/Drop';
 import {IItemBoxProps} from '../itemBox/ItemBox';
 import {ListBox} from '../listBox/ListBox';
-import {Svg} from '../svg';
 
 export interface IActionableItemProps {
     id: string;
@@ -45,7 +45,7 @@ export class ActionableItem extends React.Component<IActionableItemProps & React
                         buttonContainerProps={{className: 'inline-block'}}
                         renderOpenButton={(onClick: () => void) => (
                             <div onClick={onClick} className={dropPodClasses}>
-                                <Svg svgName="moreAppend" svgClass="icon mod-12 flex" />
+                                <DotsSize16Px />
                             </div>
                         )}
                         {...(this.props.dropProps || {})}

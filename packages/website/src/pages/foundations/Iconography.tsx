@@ -1,6 +1,5 @@
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
-import classNames from 'classnames';
 import dynamic from 'next/dynamic';
 import * as React from 'react';
 
