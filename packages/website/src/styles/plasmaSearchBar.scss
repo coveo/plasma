@@ -14,68 +14,14 @@ $search-bar-max-width: 648px;
         margin: 0 auto;
     }
 
-    .search-bar {
+    .search-bar-patate {
         position: relative;
         width: 100%;
         min-height: $search-bar-heigh;
-        background-color: var(--white);
-        border: $button-border-width solid transparent;
-        border-radius: 8px 0px 0px 8px;
 
         &:focus-visible {
             // remove default blue border on click in the shadow input
             outline: none;
-        }
-
-        ~ .clear-button {
-            position: absolute;
-            width: $search-bar-heigh;
-            min-height: $search-bar-heigh;
-            background: var(--white);
-            visibility: hidden;
-            cursor: pointer;
-
-            &.search-not-empty {
-                transform: translateX(-20px);
-                visibility: visible;
-            }
-        }
-
-        ~ .search-button {
-            position: absolute;
-            width: $search-bar-heigh;
-            min-height: $search-bar-heigh;
-            color: var(--white);
-            background-color: var(--digital-blue-60);
-            border: $button-border-width solid var(--digital-blue-60);
-            border-radius: 0px 8px 8px 0px;
-
-            & svg {
-                fill: var(--white);
-            }
-
-            &:active {
-                background-color: var(--digital-blue-100);
-                border: $button-border-width solid var(--digital-blue-100);
-            }
-
-            &:focus {
-                background-color: var(--digital-blue-60);
-                border: $button-border-width solid var(--digital-blue-60);
-            }
-
-            &:hover {
-                background-color: var(--digital-blue-80);
-                border: $button-border-width solid var(--digital-blue-80);
-                outline-color: var(--digital-blue-80);
-            }
-        }
-
-        ~ .search-results-container {
-            position: fixed;
-            min-width: $search-bar-min-width;
-            border-radius: 8px;
-            box-shadow: var(--medium-elevation-on-neutral);
         }
     }
 }
