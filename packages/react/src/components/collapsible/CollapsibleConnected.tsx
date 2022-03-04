@@ -2,12 +2,12 @@ import classNames from 'classnames';
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {findWhere} from 'underscore';
+import {CollapsibleToggle} from './CollapsibleToggle';
 
 import {SlideY} from '../../animations/SlideY';
 import {PlasmaState} from '../../PlasmaState';
 import {IDispatch, ReduxUtils} from '../../utils/ReduxUtils';
 import {addCollapsible, removeCollapsible, setCollapsibleExpanded} from './CollapsibleActions';
-import {CollapsibleToggle} from './CollapsibleToggle';
 
 export interface CollapsibleOwnProps {
     id: string;
@@ -86,8 +86,7 @@ export const CollapsibleDisconnected: React.FunctionComponent<
                 {collapsibleToggleIcon || (
                     <CollapsibleToggle
                         expanded={expanded}
-                        svgClassName={classNames(toggleIconClassName, {disabled})}
-                        className="mr2"
+                        className={classNames('mr2', toggleIconClassName, {disabled})}
                     />
                 )}
             </div>
