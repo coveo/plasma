@@ -37,6 +37,7 @@
     "dependencies": {
         "@coveord/plasma-style": "workspace:*",
         "@loadable/component": "5.15.2",
+        "@swc/helpers": "0.3.3",
         "@types/codemirror": "0.0.109",
         "chosen-js": "1.8.7",
         "classnames": "2.3.1",
@@ -76,7 +77,6 @@
         "@hot-loader/react-dom": "17.0.2",
         "@swc/cli": "0.1.55",
         "@swc/core": "1.2.136",
-        "@swc/helpers": "0.3.3",
         "@swc/jest": "0.2.20",
         "@testing-library/dom": "8.11.1",
         "@testing-library/jest-dom": "5.16.1",
