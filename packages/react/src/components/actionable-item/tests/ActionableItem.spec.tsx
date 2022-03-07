@@ -1,16 +1,15 @@
-import {shallow, ShallowWrapper} from 'enzyme';
 import {shallowWithStore} from '@helpers/enzyme-redux';
+import {render, screen} from '@test-utils';
+import {ShallowWrapper} from 'enzyme';
 import * as React from 'react';
 import {Store} from 'redux';
 import * as _ from 'underscore';
-import {render, screen} from '@test-utils';
 
 import {PlasmaState} from '../../../PlasmaState';
 import {clearState} from '../../../utils/ReduxUtils';
 import {TestUtils} from '../../../utils/tests/TestUtils';
 import {Drop} from '../../drop/Drop';
 import {ListBox} from '../../listBox/ListBox';
-import {Svg} from '../../svg/Svg';
 import {ActionableItem, IActionableItemProps} from '../ActionableItem';
 
 describe('ActionableItem', () => {
@@ -69,14 +68,9 @@ describe('ActionableItem', () => {
             });
 
             it('should render the moreAppend svg in the Drop', () => {
-                shallowWithProps();
+                render(<ActionableItem {...basicProps}>click on the dots</ActionableItem>);
 
-                const renderButton: () => React.ReactElement = actionableItem
-                    .find(Drop)
-                    .prop('renderOpenButton') as any;
-                const button = shallow(renderButton());
-
-                expect(button.find(Svg).prop('svgName')).toBe('moreAppend');
+                expect(screen.getByRole('img', {name: 'dots'})).toBeInTheDocument();
             });
 
             it('should not render a Drop if there is no actions', () => {
