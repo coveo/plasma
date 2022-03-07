@@ -13,6 +13,24 @@
 
 * **deps:** pin dependencies ([2b518cd](https://github.com/coveo/plasma/commits/2b518cd25e07a451a0a33235d74d3ebf28d6bcf1))
 
+## 38.11.4-next.1 (2022-03-04)
+
+
+### Features
+
+* **react-icons:** add accessible role to all icons ([b5dfd59](https://github.com/coveo/plasma/commits/b5dfd5931214e82dffee1129c13d4a723f3bf7af))
+* **react-icons:** implement Icon type ([cb10a12](https://github.com/coveo/plasma/commits/cb10a1211388e66402ce995fbb5820f534dc42b1))
+* **react:** use plasma-react-icons in badge component ([1c56382](https://github.com/coveo/plasma/commits/1c56382083157f20156805a8af417e50345cd919))
+* **react:** use react-icons in CollapsibleToggle ([1e55008](https://github.com/coveo/plasma/commits/1e5500841f752d693396d894276077560b160cc8))
+
+
+### BREAKING CHANGES
+
+* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
+* **react:** Badge icon prop now expects an icon from plasma-react-icons
+
+fix(react): fix badge tests
+
 
 
 ## 38.11.3 (2022-03-03)
