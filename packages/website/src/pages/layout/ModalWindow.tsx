@@ -255,4 +255,4 @@ const ModalLoadingExampleDisconnected: React.FunctionComponent<ReturnType<typeof
 const ModalLoadingExample = connect(null, mapDispatchToProps)(ModalLoadingExampleDisconnected);
 
 // stop-print
-export default ModalLoadingExample;
+export default ModalWindowExamples;
