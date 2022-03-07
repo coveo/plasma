@@ -1,3 +1,12 @@
+## 38.12.1 (2022-03-07)
+
+
+### Bug Fixes
+
+* **website:** two pages are exporting the wrong components ([ef8681d](https://github.com/coveo/plasma/commits/ef8681dd5b7f4fadefdc99928b3116d1ae91d51b))
+
+
+
 # 38.12.0 (2022-03-07)
 
 
