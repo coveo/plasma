@@ -1,3 +1,12 @@
+## 38.11.4 (2022-03-07)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([2b518cd](https://github.com/coveo/plasma/commits/2b518cd25e07a451a0a33235d74d3ebf28d6bcf1))
+
+
+
 ## 38.11.3 (2022-03-03)
 
 
