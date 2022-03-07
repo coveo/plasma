@@ -202,18 +202,18 @@ pipeline {
           sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
           if (env.BRANCH_NAME ==~ /release-.*/) {
-            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs \
+            sh "node build/publishNewVersion.mjs \
             --bump patch \
             --tag release \
             --branch ${env.BRANCH_NAME}"
           } else if (env.BRANCH_NAME == "next") {
-            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs \
+            sh "node build/publishNewVersion.mjs \
             --bump prerelease \
             --tag next \
             --branch next"
           } else {
             // master
-            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs"
+            sh "node build/publishNewVersion.mjs"
           }
 
           sh "git push -u origin ${env.BRANCH_NAME} --follow-tags" // push everything along with new tag

@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.1.0
+      '@coveo/semantic-monorepo-tools': 0.1.1
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.1.0
+      '@coveo/semantic-monorepo-tools': 0.1.1
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -164,6 +164,7 @@ importers:
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
       '@loadable/component': 5.15.2_react@16.14.0
+      '@swc/helpers': 0.3.3
       '@types/codemirror': 0.0.109
       chosen-js: 1.8.7
       classnames: 2.3.1
@@ -191,7 +192,6 @@ importers:
       '@hot-loader/react-dom': 17.0.2_react@16.14.0
       '@swc/cli': 0.1.55_@swc+core@1.2.136
       '@swc/core': 1.2.136
-      '@swc/helpers': 0.3.3
       '@swc/jest': 0.2.20_@swc+core@1.2.136
       '@testing-library/dom': 8.11.1
       '@testing-library/jest-dom': 5.16.1
@@ -410,7 +410,7 @@ importers:
 
   packages/website:
     specifiers:
-      '@coveo/headless': ^1.32.0
+      '@coveo/headless': 1.48.1
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -445,9 +445,9 @@ importers:
       moment: 2.29.1
       monaco-editor: 0.27.0
       next: 12.1.0
-      next-fonts: ^1.5.1
-      next-images: ^1.8.4
-      next-sitemap: ^2.1.14
+      next-fonts: 1.5.1
+      next-images: 1.8.4
+      next-sitemap: 2.5.4
       open-cli: 7.0.1
       raw-loader: 4.0.2
       react: 16.14.0
@@ -471,7 +471,7 @@ importers:
       underscore: 1.13.1
       underscore.string: 3.3.5
     dependencies:
-      '@coveo/headless': 1.32.0_react-redux@7.2.6+react@16.14.0
+      '@coveo/headless': 1.48.1_react-redux@7.2.6+react@16.14.0
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -493,7 +493,7 @@ importers:
       next: 12.1.0_7565a49c63a94df787d8686b58d1133a
       next-fonts: 1.5.1
       next-images: 1.8.4
-      next-sitemap: 2.4.5_next@12.1.0
+      next-sitemap: 2.5.4_next@12.1.0
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
       react-markdown: 7.1.1_414da64a83d07b5b28f5e74e56d85156
@@ -1075,22 +1075,22 @@ packages:
     resolution: {integrity: sha512-6QMz0/2h5C3ua51iAnXMPWFbb1QOU1UvSM4bKBw5mzdT+WtLgjbETBBIQZ+Sh9WvEcGwlAt/DEdRpIC3XlDBMA==}
     dev: false
 
-  /@coveo/bueno/0.33.0:
-    resolution: {integrity: sha512-C+aik0Vr9qq0gG8qgMWZZT4MVDowkhBWVUgf7C4xKqxZb1Rdl2joUKoR9m2r2womL6aVsOiUWXdXgs/iKVvFIQ==}
+  /@coveo/bueno/0.34.3:
+    resolution: {integrity: sha512-J+Nzw0QqcA7yh87PSzLhsz8tq4Iq0T/b+NesoHYDJSI2Cjfwj33VMgXTakb7QynLTLG5VaplxeLZ4xwkENqELQ==}
     dev: false
 
-  /@coveo/headless/1.32.0_react-redux@7.2.6+react@16.14.0:
-    resolution: {integrity: sha512-AZD4lO6Gbbx2ycOHZYUgtLT43kRQEkNHAmhqNqztMr96XNJzJQcVCCl4FA601cmavXE6hjIscEN8bIwXtyjfIg==}
+  /@coveo/headless/1.48.1_react-redux@7.2.6+react@16.14.0:
+    resolution: {integrity: sha512-f2+J0kOf/+X9cEIrmW6eFEBVQ9Zx7nvj58UUvOwJFLjGVid4rK8IBQBG7IvM6YPiBIulydgXM6W8SOQEYvK/tw==}
     peerDependencies:
       encoding: ^0.1.13
       pino-pretty: ^6.0.0
     dependencies:
-      '@coveo/bueno': 0.33.0
+      '@coveo/bueno': 0.34.3
       '@reduxjs/toolkit': 1.7.0_react-redux@7.2.6+react@16.14.0
       '@types/pino': 6.3.12
       '@types/redux-mock-store': 1.0.3
-      coveo.analytics: 2.18.55
-      cross-fetch: 3.1.4
+      coveo.analytics: 2.18.65
+      cross-fetch: 3.1.5
       dayjs: 1.10.7
       exponential-backoff: 3.1.0
       fast-equals: 2.0.4
@@ -1107,8 +1107,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools/0.1.0:
-    resolution: {integrity: sha512-plvWzwNjB4TBWibCrnsyqCUnwpOFoF5KBqi3qw7EjyE8jpEuoK0ZGfsRY/RYzTmhpEmh1WyfG5VNHoVSn5jjbQ==}
+  /@coveo/semantic-monorepo-tools/0.1.1:
+    resolution: {integrity: sha512-2gonvqU+gql2Nm34s4rBlCeJGC5v2L8AHz/Ownxp+VpsDOHc3YhrYulK6njab0vUW3e94VI9NhnpRBWgbTYKjw==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
@@ -1680,10 +1680,10 @@ packages:
       react: 16.14.0
     dev: false
 
-  /@react-native-async-storage/async-storage/1.15.14:
-    resolution: {integrity: sha512-eJF2horabXazwszCyyXDe4w7sBSWlB0WPA8akKXuN2n7WXKHYeQJPN41lS9OahrhSZuZwqftNFE9VWgPXA8wyA==}
+  /@react-native-async-storage/async-storage/1.16.1:
+    resolution: {integrity: sha512-aQ7ka+Ii1e/q+7AVFIZPt4kDeSH8b784wMDtz19Kf4A7hf+OgCHBlUQpOXsrv8XxhlBxu0hv4tfrDO15ChnV0Q==}
     peerDependencies:
-      react-native: ^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0
+      react-native: ^0.0.0-0 || 0.60 - 0.67 || 1000.0.0
     dependencies:
       merge-options: 3.0.4
     dev: false
@@ -2104,7 +2104,7 @@ packages:
 
   /@swc/helpers/0.3.3:
     resolution: {integrity: sha512-NdRQSjcceaXsQDNYyK0wWyRvrn5rsvugK8vnTiRB2i0UCaD2slUFUq28tmojILW5A04oF+sZRMxd0Cy7xS/y0A==}
-    dev: true
+    dev: false
 
   /@swc/jest/0.2.20_@swc+core@1.2.136:
     resolution: {integrity: sha512-5qSUBYY1wyIMn7p0Vl9qqV4hMI69oJwZCIPUpBsTFWN2wlwn6RDugzdgCn+bLXVYh+Cxi8bJcZ1uumDgsoL+FA==}
@@ -4952,12 +4952,13 @@ packages:
       underscore: 1.13.1
     dev: true
 
-  /coveo.analytics/2.18.55:
-    resolution: {integrity: sha512-vK+KBFHQbgwaY3YdYAq9/lHzv6qBQNosYJvdZX0yugE30B8ceg3Mwvm9ZuL5oEzzMMlPVIFJv1FpujBbdGUOTg==}
+  /coveo.analytics/2.18.65:
+    resolution: {integrity: sha512-NszWIqIYhq5GD7yZofxdd95lNP2puR1RlPoRY6Ojkh73rITkpcrOe3vj51C3GU2Kofi4a3u6Tq7vuyjuFGuGSQ==}
     dependencies:
-      '@react-native-async-storage/async-storage': 1.15.14
-      cross-fetch: 3.1.4
+      '@react-native-async-storage/async-storage': 1.16.1
+      cross-fetch: 3.1.5
     transitivePeerDependencies:
+      - encoding
       - react-native
     dev: false
 
@@ -5002,19 +5003,12 @@ packages:
     resolution: {integrity: sha512-dcKFX3jn0MpIaXjisoRvexIJVEKzaq7z2rZKxf+MSr9TkdmHmsU4m2lcLojrj/FHl8mk5VxMmYA+ftRkP/3oKQ==}
     dev: true
 
-  /cross-fetch/3.1.4:
-    resolution: {integrity: sha512-1eAtFWdIubi6T4XPy6ei9iUFoKpUkIF971QLN8lIvvvwueI65+Nw5haMNKUwfJxabqlIIDODJKGrQ66gxC0PbQ==}
-    dependencies:
-      node-fetch: 2.6.1
-    dev: false
-
   /cross-fetch/3.1.5:
     resolution: {integrity: sha512-lvb1SBsI0Z7GDwmuid+mU3kWVBwTVUbe7S0H52yaaAdQOXq2YktTCZdlAcNKFzE6QtRz0snpw9bNiPeOIkkQvw==}
     dependencies:
       node-fetch: 2.6.7
     transitivePeerDependencies:
       - encoding
-    dev: true
 
   /cross-spawn/6.0.5:
     resolution: {integrity: sha512-eTVLrBSt7fjbDygz805pMnstIs2VTBNkRm0qxZd+M7A5XDdxVRWO5MxGBXZhjY4cqLYLdtrGqRf8mBPmzwSpWQ==}
@@ -6691,6 +6685,7 @@ packages:
 
   /fastify-warning/0.2.0:
     resolution: {integrity: sha512-s1EQguBw/9qtc1p/WTY4eq9WMRIACkj+HTcOIK1in4MV5aFaQC9ZCIt0dJ7pr5bIf4lPpHvAtP2ywpTNgs7hqw==}
+    deprecated: This module renamed to process-warning
     dev: false
 
   /fastq/1.13.0:
@@ -10692,8 +10687,8 @@ packages:
       url-loader: 4.1.1_file-loader@6.2.0
     dev: false
 
-  /next-sitemap/2.4.5_next@12.1.0:
-    resolution: {integrity: sha512-wfDpK8STTR66dWptdhVFBqsI1+2w82CtchI9jsxm2D+8yWFnDDnuobh6tTFiaWyX9VQFmsVJAyfBvKytO4h5AA==}
+  /next-sitemap/2.5.4_next@12.1.0:
+    resolution: {integrity: sha512-ftFqQQk74V+9+WkyAQLi98vaoLHisarP9VpsFTlAje3HOPzSQ33GrURDY8dRiguhFps4S4lQApXH5AgKByubvg==}
     engines: {node: '>=14.18.3'}
     hasBin: true
     peerDependencies:
@@ -10766,11 +10761,6 @@ packages:
       tar: 2.2.2
     dev: true
 
-  /node-fetch/2.6.1:
-    resolution: {integrity: sha512-V4aYg89jEoVRxRb2fJdAg8FHvI7cEyYdVAh94HH0UIK8oJxUfkjlDQN9RbMx+bEjP7+ggMiFRprSti032Oipxw==}
-    engines: {node: 4.x || >=6.0.0}
-    dev: false
-
   /node-fetch/2.6.6:
     resolution: {integrity: sha512-Z8/6vRlTUChSdIgMa51jxQ4lrw/Jy5SOW10ObaA47/RElsAN2c5Pn8bTgFGWn/ibwzXTE8qwr1Yzx28vsecXEA==}
     engines: {node: 4.x || >=6.0.0}
@@ -10788,7 +10778,6 @@ packages:
         optional: true
     dependencies:
       whatwg-url: 5.0.0
-    dev: true
 
   /node-int64/0.4.0:
     resolution: {integrity: sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=}
@@ -14828,7 +14817,6 @@ packages:
 
   /tr46/0.0.3:
     resolution: {integrity: sha1-gYT9NH2snNwYWZLzpmIuFLnZq2o=}
-    dev: true
 
   /tr46/2.1.0:
     resolution: {integrity: sha512-15Ih7phfcdP5YxqiB+iDtLoaTz4Nd35+IiAv0kQ5FNKHzXgdWqPoTIqEDDJmXceQt4JZk6lVPT8lnDlPpGDppw==}
@@ -15801,7 +15789,6 @@ packages:
 
   /webidl-conversions/3.0.1:
     resolution: {integrity: sha1-JFNCdeKnvGvnvIZhHMFq4KVlSHE=}
-    dev: true
 
   /webidl-conversions/5.0.0:
     resolution: {integrity: sha512-VlZwKPCkYKxQgeSbH5EyngOmRp7Ww7I9rQLERETtf5ofd9pGeswWiOtogpEO850jziPRarreGxn5QIiTqpb2wA==}
@@ -15895,7 +15882,6 @@ packages:
     dependencies:
       tr46: 0.0.3
       webidl-conversions: 3.0.1
-    dev: true
 
   /whatwg-url/8.7.0:
     resolution: {integrity: sha512-gAojqb/m9Q8a5IV96E3fHJM70AzCkgt4uXYX2O7EmuyOnLrViCQlsEBmF9UQIu3/aeAIp2U17rtbpZWNntQqdg==}
