@@ -13,11 +13,12 @@ const StandaloneSearchBar = () => {
                 <AtomicSearchInterface
                     engine={engine}
                     reflectStateInUrl={true}
-                    onReady={async () => console.log('chuis ready bitch')} // cancel first search here
+                    // eslint-disable-next-line no-console
+                    onReady={async () => console.log('chuis ready')} // cancel first search here
                 >
                     <AtomicSearchBox
                         numberOfQueries={5}
-                        redirectionUrl={'/Search'}
+                        redirectionUrl={'/Search'} // always redirect to real website
                         placeholder={'coucou'}
                     ></AtomicSearchBox>
                 </AtomicSearchInterface>
