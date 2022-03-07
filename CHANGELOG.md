@@ -1,3 +1,12 @@
+## 38.11.4-next.3 (2022-03-07)
+
+
+### Features
+
+* **react:** remove Svg from ActionableItem ([e11a8ca](https://github.com/coveo/plasma/commits/e11a8ca13c285a7eec70e381c9f751e4f8d4cdc6))
+
+
+
 ## 38.11.4-next.2 (2022-03-07)
 
 
