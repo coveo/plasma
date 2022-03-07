@@ -15,12 +15,12 @@ import {
     pnpmPublish,
     writeChangelog,
 } from '@coveo/semantic-monorepo-tools';
-import { Command, Option } from 'commander';
+import {Command, Option} from 'commander';
 import angularChangelogConvention from 'conventional-changelog-angular';
 
 const VERSION_PREFIX = 'v';
 const PATH = '.';
-const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease']
+const BUMP_TYPES = ['major', 'minor', 'patch', 'prerelease'];
 
 const program = new Command();
 program
@@ -28,37 +28,46 @@ program
     .option('--tag', 'tag to use on NPM', 'latest')
     .option('--branch', 'allow deploy on branch', 'master')
     .option('--force <packages...>', 'force a bump on specified package', ['root'])
-    .addOption(new Option('--bump <type>', 'bump a <type> version instead of reliying on commit messages').choices(BUMP_TYPES))
+    .addOption(
+        new Option('--bump <type>', 'bump a <type> version instead of reliying on commit messages').choices(BUMP_TYPES)
+    );
 
 program.parse();
 
 const options = program.opts();
 
 // We consider that root always changes, we always want to bump a version
-if (!options.force.includes('root')){
+if (!options.force.includes('root')) {
     options.force.push('root');
 }
+
+const outputProcess = (process) => {
+    console.log(process.stdout.trim());
+    if (process.status !== 0) {
+        console.error(process.stderr.trim());
+    }
+};
 
 (async () => {
     const convention = await angularChangelogConvention;
 
-    const lastTag = getLastTag(VERSION_PREFIX);
+    const [lastTag] = getLastTag(VERSION_PREFIX);
     console.log('Last tag: %s', lastTag);
 
-    const remote = getRemoteName();
+    const [remote] = getRemoteName();
     const since = lastTag;
 
     console.log('Since: %s', since);
 
     const changedPackages = pnpmGetChangedPackages(since);
-    options.force.forEach(packageName => {
+    options.force.forEach((packageName) => {
         if (!changedPackages.includes(packageName)) {
             changedPackages.push(packageName);
         }
     });
 
     if (changedPackages.length > 0) {
-        const commits = getCommits(PATH, lastTag);
+        const [commits] = getCommits(PATH, lastTag);
 
         const parsedCommits = parseCommits(commits, convention.parserOpts);
         let bumpInfo;
@@ -72,7 +81,7 @@ if (!options.force.includes('root')){
         const newVersion = getNextVersion(currentVersion, bumpInfo);
 
         if (newVersion !== currentVersion) {
-            console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion)
+            console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion);
             pnpmBumpVersion(newVersion, since, options.force);
 
             if (parsedCommits.length > 0) {
@@ -94,11 +103,13 @@ if (!options.force.includes('root')){
                 gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
                 gitTag(versionTag);
                 if (remote) {
-                    gitPush();
-                    gitPushTags();
+                    console.log(`Pushing version ${versionTag}`);
+                    outputProcess(gitPush());
+                    outputProcess(gitPushTags());
 
-                    const forcePackagesWithoutRoot = options.force.filter(packageName => packageName !== 'root');
-                    pnpmPublish(since, options.tag, options.branch, forcePackagesWithoutRoot, ['root']);
+                    console.log(`Publishing version ${versionTag}`);
+                    const forcePackagesWithoutRoot = options.force.filter((packageName) => packageName !== 'root');
+                    outputProcess(pnpmPublish(since, options.tag, options.branch, forcePackagesWithoutRoot, ['root']));
                 }
             }
         }
