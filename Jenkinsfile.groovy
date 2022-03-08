@@ -86,6 +86,7 @@ pipeline {
           sh "git config --global user.email \"jenkins@coveo.com\""
           sh "git config --global user.name \"Jenkins CI\""
           sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GIT_PSW}@github.com/coveo/plasma.git\""
+          sh "git branch --set-upstream-to origin/${env.BRANCH_NAME}"
 
           def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
           env.PATH = "${nodeHome}/bin:${env.PATH}"
@@ -215,8 +216,6 @@ pipeline {
             // master
             sh "node build/publishNewVersion.mjs"
           }
-
-          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags" // push everything along with new tag
 
           NEW_VERSION = sh(
             script: "node -p -e 'require(`./package.json`).version;'",

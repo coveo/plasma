@@ -1,8 +1,8 @@
 {
     "extends": "../tsconfig-base.json",
     "compilerOptions": {
-        "module": "es6",
         "outDir": "./dist",
+        "declarationDir": "./dist/definitions"
     },
     "include": ["generated"]
 }

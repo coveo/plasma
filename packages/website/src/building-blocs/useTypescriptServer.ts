@@ -22,7 +22,7 @@ const plasmaTypes = require.context(
     'lazy-once'
 );
 const plasmaReactIconsTypes = require.context(
-    '!!raw-loader!@coveord/plasma-react-icons/dist',
+    '!!raw-loader!@coveord/plasma-react-icons/dist/definitions',
     true,
     /\.d\.ts$/i,
     'lazy-once'
