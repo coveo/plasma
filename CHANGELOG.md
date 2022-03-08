@@ -1,3 +1,12 @@
+## 38.13.2 (2022-03-08)
+
+
+### Bug Fixes
+
+* autofocus for filterbox ([47e75c9](https://github.com/coveo/plasma/commits/47e75c987b5c276f46f1e2552b8f9f4fd87eec4b))
+
+
+
 ## 38.13.1 (2022-03-08)
 
 
