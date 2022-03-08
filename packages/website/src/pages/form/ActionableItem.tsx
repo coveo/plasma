@@ -1,15 +1,7 @@
-import dynamic from 'next/dynamic';
+import {ActionableItem} from '@coveord/plasma-react';
 import * as React from 'react';
 
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
-
-const ActionableItem = dynamic(
-    async () => {
-        const mod = await import('@coveord/plasma-react');
-        return mod.ActionableItem;
-    },
-    {ssr: false}
-);
 
 // start-print
 export const ActionableItemExamples = () => (

@@ -10,5 +10,5 @@ export const CollapsibleToggle: React.FunctionComponent<CollapsibleToggleProps &
     ...svgProps
 }) => {
     const Icon = expanded ? ArrowHeadUpSize16Px : ArrowHeadDownSize16Px;
-    return Icon ? <Icon height={16} {...svgProps} /> : null;
+    return <Icon height={16} {...svgProps} />;
 };
