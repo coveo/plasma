@@ -67,7 +67,7 @@ export const Tile: React.FunctionComponent<TileProps> = ({
     if (href && href.length > 0) {
         return (
             <Link href={href} prefetch={false}>
-                <a className={className} onClick={sendAnalytics}>
+                <a href={href} className={className} onClick={sendAnalytics}>
                     {tileIcon}
                     {tileInfo}
                 </a>
