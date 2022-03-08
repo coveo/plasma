@@ -37,7 +37,7 @@
     "dependencies": {
         "@coveord/plasma-style": "workspace:*",
         "@loadable/component": "5.15.2",
-        "@swc/helpers": "0.3.3",
+        "@swc/helpers": "0.3.6",
         "@types/codemirror": "0.0.109",
         "chosen-js": "1.8.7",
         "classnames": "2.3.1",
