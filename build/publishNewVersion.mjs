@@ -108,8 +108,10 @@ const outputProcess = (process) => {
                     outputProcess(gitPushTags());
 
                     console.log(`Publishing version ${versionTag}`);
-                    const forcePackagesWithoutRoot = options.force.filter((packageName) => packageName !== 'root');
-                    outputProcess(pnpmPublish(since, options.tag, options.branch, forcePackagesWithoutRoot, ['root']));
+                    const changedPackagesWithoutRoot = changedPackages.filter((packageName) => packageName !== 'root');
+                    outputProcess(
+                        pnpmPublish(since, options.tag, options.branch, changedPackagesWithoutRoot, ['root'])
+                    );
                 }
             }
         }
