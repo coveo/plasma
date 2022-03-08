@@ -1,0 +1,10 @@
+{
+    "jsc": {
+        "externalHelpers": true,
+        "parser": {
+            "syntax": "typescript",
+            "tsx": true
+        }
+    },
+    "sourceMaps": true
+}
