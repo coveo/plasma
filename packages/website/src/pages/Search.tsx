@@ -13,11 +13,13 @@ const Search = () => {
     const engine = useContext(EngineContext);
     return (
         <Section className="home flex-auto overflow-auto demo-content">
-            <AtomicSearchInterface engine={engine}>
-                <Section className="section">
+            <AtomicSearchInterface engine={engine} reflectStateInUrl={true}>
+                <Section className="section flex-auto overflow-auto demo-content">
                     <AtomicQuerySummary></AtomicQuerySummary>
                 </Section>
-                <AtomicNoResults enableCancelLastAction={true}></AtomicNoResults>
+                <Section className="section">
+                    <AtomicNoResults enableCancelLastAction={true}></AtomicNoResults>
+                </Section>
 
                 <AtomicResultList
                     display={'grid'}

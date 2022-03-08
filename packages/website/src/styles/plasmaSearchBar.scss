@@ -1,27 +1,20 @@
 // variables
-$button-border-width: 1px;
-$search-bar-heigh: 48px;
 $search-bar-min-width: 248px;
 $search-bar-max-width: 648px;
 
 .plasmaSearchBar {
     width: 100%;
+    min-width: $search-bar-min-width;
+    max-width: $search-bar-max-width;
 
-    form {
-        width: 100%;
-        min-width: $search-bar-min-width;
-        max-width: $search-bar-max-width;
-        margin: 0 auto;
-    }
+    // .search-bar-patate {
+    //     position: relative;
+    //     width: 100%;
+    //     min-height: $search-bar-heigh;
 
-    .search-bar-patate {
-        position: relative;
-        width: 100%;
-        min-height: $search-bar-heigh;
-
-        &:focus-visible {
-            // remove default blue border on click in the shadow input
-            outline: none;
-        }
-    }
+    // &:focus-visible {
+    //     // remove default blue border on click in the shadow input
+    //     outline: none;
+    // }
+    // }
 }
