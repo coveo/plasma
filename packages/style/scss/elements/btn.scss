@@ -1,10 +1,11 @@
 .btn {
     display: inline-flex;
+    gap: 10px;
     align-items: center;
     box-sizing: border-box;
     height: $button-height;
     padding: $button-padding-y $button-padding-x;
-    color: var(--navy-blue-80);
+    color: var(--digital-blue-80);
     font-weight: var(--main-font-bold);
     font-size: $button-font-size;
     font-family: var(--main-font);
@@ -15,13 +16,13 @@
     text-overflow: ellipsis;
     vertical-align: middle;
     background-color: var(--white);
-    border: $button-border-width solid var(--navy-blue-80);
-    border-radius: $border-radius;
+    border: $button-border-width solid var(--digital-blue-80);
+    border-radius: $button-border-radius;
 
     cursor: pointer;
 
     .icon:not(.documentation-link) {
-        fill: var(--navy-blue-80);
+        fill: var(--digital-blue-80);
     }
 
     &:active {
@@ -34,26 +35,25 @@
     }
 
     &:focus {
-        @include focus-border(var(--white), $border-radius, $button-border-width);
-        color: var(--navy-blue-80);
+        @include focus-border(var(--white), $button-border-radius, $button-border-width);
         text-decoration: none;
         background-color: var(--white);
+        border-color: var(--digital-blue-60);
     }
 
     &:hover {
-        color: var(--digital-blue-80);
-        border-color: var(--digital-blue-80);
-        outline-color: var(--digital-blue-80);
+        color: var(--digital-blue-100);
+        border-color: var(--digital-blue-100);
+        outline-color: var(--digital-blue-100);
 
         .icon {
-            fill: var(--digital-blue-80);
+            fill: var(--digital-blue-100);
         }
     }
 
     &:disabled,
     &.state-disabled {
         color: var(--grey-60);
-        background-color: var(--grey-20);
         border-color: var(--grey-40);
         cursor: default;
         pointer-events: none;
@@ -64,6 +64,7 @@
     }
 
     &.mod-small {
+        gap: 9px;
         height: $button-small-height;
         padding: $button-small-padding-y $button-small-padding-x;
         font-size: $button-small-font-size;
@@ -85,8 +86,8 @@
         }
 
         &:focus {
-            background-color: var(--digital-blue-60);
-            border: $button-border-width solid var(--digital-blue-60);
+            background-color: var(--digital-blue-40);
+            border: $button-border-width solid var(--digital-blue-40);
         }
 
         &:hover {
@@ -122,8 +123,9 @@
         }
 
         &:focus {
-            background-color: var(--critical-70);
-            border: $button-border-width solid var(--critical-70);
+            background-color: var(--pomegranate-red-60);
+            border: $button-border-width solid var(--pomegranate-red-60);
+            box-shadow: 0 0 0 4px rgba(var(--pomegranate-red-70-rgb), 0.2);
         }
 
         &:hover {
