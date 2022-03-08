@@ -1,3 +1,18 @@
+# 38.13.0 (2022-03-08)
+
+
+### Bug Fixes
+
+* fix the lockfile ([d6b3771](https://github.com/coveo/plasma/commits/d6b3771911dd836c39376d6f4dce69530cec39e7))
+* **website:** adjust path to plasma-react-icons declarations ([e472de8](https://github.com/coveo/plasma/commits/e472de847d40fd451b15edc79351b80b753f2c0f))
+
+
+### Features
+
+* **react-icons:** add module field to package.json ([d7eade4](https://github.com/coveo/plasma/commits/d7eade465f434f8326381af8758ee7c000932e21))
+
+
+
 ## 38.12.5 (2022-03-08)
 
 
