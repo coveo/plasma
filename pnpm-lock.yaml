@@ -6,7 +6,7 @@ importers:
     specifiers:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.1.0
+      '@coveo/semantic-monorepo-tools': 0.1.1
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -26,7 +26,7 @@ importers:
     devDependencies:
       '@commitlint/cli': 15.0.0
       '@commitlint/config-conventional': 15.0.0
-      '@coveo/semantic-monorepo-tools': 0.1.0
+      '@coveo/semantic-monorepo-tools': 0.1.1
       '@sindresorhus/slugify': 2.1.0
       aws-sdk: 2.1044.0
       axios: 0.24.0
@@ -63,8 +63,8 @@ importers:
       '@hot-loader/react-dom': 17.0.2
       '@loadable/component': 5.15.2
       '@swc/cli': 0.1.55
-      '@swc/core': 1.2.136
-      '@swc/helpers': 0.3.3
+      '@swc/core': 1.2.151
+      '@swc/helpers': 0.3.6
       '@swc/jest': 0.2.20
       '@testing-library/dom': 8.11.1
       '@testing-library/jest-dom': 5.16.1
@@ -162,6 +162,7 @@ importers:
     dependencies:
       '@coveord/plasma-style': link:../style
       '@loadable/component': 5.15.2_react@16.14.0
+      '@swc/helpers': 0.3.6
       '@types/codemirror': 0.0.109
       chosen-js: 1.8.7
       classnames: 2.3.1
@@ -187,10 +188,9 @@ importers:
     devDependencies:
       '@helpers/enzyme-redux': link:../../helpers/enzyme-redux
       '@hot-loader/react-dom': 17.0.2_react@16.14.0
-      '@swc/cli': 0.1.55_@swc+core@1.2.136
-      '@swc/core': 1.2.136
-      '@swc/helpers': 0.3.3
-      '@swc/jest': 0.2.20_@swc+core@1.2.136
+      '@swc/cli': 0.1.55_@swc+core@1.2.151
+      '@swc/core': 1.2.151
+      '@swc/jest': 0.2.20_@swc+core@1.2.151
       '@testing-library/dom': 8.11.1
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/react': 12.1.2_react-dom@16.14.0+react@16.14.0
@@ -409,7 +409,7 @@ importers:
   packages/website:
     specifiers:
       '@coveo/atomic-react': 0.5.8
-      '@coveo/headless': 1.32.0
+      '@coveo/headless': 1.48.1
       '@coveord/plasma-react': workspace:*
       '@coveord/plasma-react-icons': workspace:*
       '@coveord/plasma-style': workspace:*
@@ -445,10 +445,10 @@ importers:
       monaco-editor: 0.27.0
       next: 12.1.0
       next-compose-plugins: 2.2.1
-      next-fonts: ^1.5.1
+      next-fonts: 1.5.1
       next-global-css: 1.3.0
-      next-images: ^1.8.4
-      next-sitemap: ^2.1.14
+      next-images: 1.8.4
+      next-sitemap: 2.5.4
       next-transpile-modules: 9.0.0
       open-cli: 7.0.1
       raw-loader: 4.0.2
@@ -474,7 +474,7 @@ importers:
       underscore.string: 3.3.5
     dependencies:
       '@coveo/atomic-react': 0.5.8_0eb633c203f8ccadcaadf18e5e4385b1
-      '@coveo/headless': 1.32.0_react-redux@7.2.6+react@16.14.0
+      '@coveo/headless': 1.48.1_react-redux@7.2.6+react@16.14.0
       '@coveord/plasma-react': link:../react
       '@coveord/plasma-react-icons': link:../react-icons
       '@coveord/plasma-style': link:../style
@@ -498,7 +498,7 @@ importers:
       next-fonts: 1.5.1
       next-global-css: 1.3.0
       next-images: 1.8.4
-      next-sitemap: 2.4.5_next@12.1.0
+      next-sitemap: 2.5.4_next@12.1.0
       next-transpile-modules: 9.0.0
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
@@ -1132,40 +1132,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/bueno/0.33.0:
-    resolution: {integrity: sha512-C+aik0Vr9qq0gG8qgMWZZT4MVDowkhBWVUgf7C4xKqxZb1Rdl2joUKoR9m2r2womL6aVsOiUWXdXgs/iKVvFIQ==}
-    dev: false
-
   /@coveo/bueno/0.34.3:
     resolution: {integrity: sha512-J+Nzw0QqcA7yh87PSzLhsz8tq4Iq0T/b+NesoHYDJSI2Cjfwj33VMgXTakb7QynLTLG5VaplxeLZ4xwkENqELQ==}
-    dev: false
-
-  /@coveo/headless/1.32.0_react-redux@7.2.6+react@16.14.0:
-    resolution: {integrity: sha512-AZD4lO6Gbbx2ycOHZYUgtLT43kRQEkNHAmhqNqztMr96XNJzJQcVCCl4FA601cmavXE6hjIscEN8bIwXtyjfIg==}
-    peerDependencies:
-      encoding: ^0.1.13
-      pino-pretty: ^6.0.0
-    dependencies:
-      '@coveo/bueno': 0.33.0
-      '@reduxjs/toolkit': 1.7.0_react-redux@7.2.6+react@16.14.0
-      '@types/pino': 6.3.12
-      '@types/redux-mock-store': 1.0.3
-      coveo.analytics: 2.18.55
-      cross-fetch: 3.1.5
-      dayjs: 1.10.7
-      exponential-backoff: 3.1.0
-      fast-equals: 2.0.4
-      node-abort-controller: 1.2.1
-      pino: 6.13.3
-      redux: 4.1.2
-      redux-mock-store: 1.5.4
-      redux-thunk: 2.4.1_redux@4.1.2
-      ts-debounce: 3.0.0
-      web-encoding: 1.1.5
-    transitivePeerDependencies:
-      - react
-      - react-native
-      - react-redux
     dev: false
 
   /@coveo/headless/1.48.1_react-redux@7.2.6+react@16.14.0:
@@ -1196,8 +1164,8 @@ packages:
       - react-redux
     dev: false
 
-  /@coveo/semantic-monorepo-tools/0.1.0:
-    resolution: {integrity: sha512-plvWzwNjB4TBWibCrnsyqCUnwpOFoF5KBqi3qw7EjyE8jpEuoK0ZGfsRY/RYzTmhpEmh1WyfG5VNHoVSn5jjbQ==}
+  /@coveo/semantic-monorepo-tools/0.1.1:
+    resolution: {integrity: sha512-2gonvqU+gql2Nm34s4rBlCeJGC5v2L8AHz/Ownxp+VpsDOHc3YhrYulK6njab0vUW3e94VI9NhnpRBWgbTYKjw==}
     dependencies:
       conventional-changelog-writer: 5.0.1
       conventional-commits-parser: 3.2.4
@@ -1769,14 +1737,6 @@ packages:
       react: 16.14.0
     dev: false
 
-  /@react-native-async-storage/async-storage/1.15.14:
-    resolution: {integrity: sha512-eJF2horabXazwszCyyXDe4w7sBSWlB0WPA8akKXuN2n7WXKHYeQJPN41lS9OahrhSZuZwqftNFE9VWgPXA8wyA==}
-    peerDependencies:
-      react-native: ^0.0.0-0 || ^0.60.6 || ^0.61.5 || ^0.62.2 || ^0.63.2 || ^0.64.0 || ^0.65.0 || ^0.66.0 || 1000.0.0
-    dependencies:
-      merge-options: 3.0.4
-    dev: false
-
   /@react-native-async-storage/async-storage/1.16.1:
     resolution: {integrity: sha512-aQ7ka+Ii1e/q+7AVFIZPt4kDeSH8b784wMDtz19Kf4A7hf+OgCHBlUQpOXsrv8XxhlBxu0hv4tfrDO15ChnV0Q==}
     peerDependencies:
@@ -2057,7 +2017,7 @@ packages:
       - supports-color
     dev: true
 
-  /@swc/cli/0.1.55_@swc+core@1.2.136:
+  /@swc/cli/0.1.55_@swc+core@1.2.151:
     resolution: {integrity: sha512-akkLuRexFq8XTi6JNZ27mXD4wcKXLDSLj4g7YMU+/upFM8IeD1IEp1Mxtre7MzCZn+QOQgPF8N8IReJoHuSn3g==}
     engines: {node: '>= 12.13'}
     hasBin: true
@@ -2068,15 +2028,15 @@ packages:
       chokidar:
         optional: true
     dependencies:
-      '@swc/core': 1.2.136
+      '@swc/core': 1.2.151
       commander: 7.2.0
       fast-glob: 3.2.7
       slash: 3.0.0
       source-map: 0.7.3
     dev: true
 
-  /@swc/core-android-arm-eabi/1.2.136:
-    resolution: {integrity: sha512-4K4e6S7yxHCxpjMmkAEyA+2uKD2cqywC6/KET8XGSr7Oe/wEJr4Pmybfnm4JyaL+f8LYoYyabfZsQhByL5W7/A==}
+  /@swc/core-android-arm-eabi/1.2.151:
+    resolution: {integrity: sha512-Suk3IcHdha33K4hq9tfBCwkXJsENh7kjXCseLqL8Yvy8QobqkXjf1fcoJxX9BdCmPwsKmIw0ZgCBYR+Hl83M2w==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [android]
@@ -2084,8 +2044,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-android-arm64/1.2.136:
-    resolution: {integrity: sha512-SLc2/xGwoBI8fqMke7dXsXp2EaHViL6kCD3W9WhNsKsLNvF+eHQGmW6ACPWn8LqQeOO2UkuCSGJbXlx2MuvOOw==}
+  /@swc/core-android-arm64/1.2.151:
+    resolution: {integrity: sha512-HZVy69dVWT5RgrMJMRK5aiicPmhzkyCHAexApYAHYLgAIhsxL7uoAIPmuRKRkrKNJjrwsWL7H27bBH5bddRDvg==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [android]
@@ -2093,8 +2053,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-darwin-arm64/1.2.136:
-    resolution: {integrity: sha512-TzWDniAD/+gO4Yp9QHrxN/q4+zT+DysLCJ0G+b5wxKI5h/PrAHkAyWLMARupA9QPKLxJuR3lbsZ5opJrtxI8gw==}
+  /@swc/core-darwin-arm64/1.2.151:
+    resolution: {integrity: sha512-Ql7rXMu+IC76TemRtkt+opl5iSpX2ApAXVSfvf6afNVTrfTKLpDwiR3ySRRlG0FnNIv6TfOCJpHf655xp01S/g==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [darwin]
@@ -2102,8 +2062,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-darwin-x64/1.2.136:
-    resolution: {integrity: sha512-ZyfjXU5mtLURBuxJUlIXZI0I4zyDDgQ4EMF4zDn6EQWUFx5pLvzeG0PXZZIc58vuo0vCxVt4MJXWWVHx6vyGUw==}
+  /@swc/core-darwin-x64/1.2.151:
+    resolution: {integrity: sha512-N1OBIB7xatR5eybLo91ZhvMJMxT0zxRQURV/a9I8o5CyP4iLd1k8gmrYvBbtj08ohS8F9z7k/dFjxk/9ve5Drw==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [darwin]
@@ -2111,8 +2071,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-freebsd-x64/1.2.136:
-    resolution: {integrity: sha512-KDZYuuwN8m0eXw96M1StisNORDFyZm54+INYNo8ciRfFE2ri+PImx/evuTxAeOM6mMYJG9z69w0uQU+u4+LsIA==}
+  /@swc/core-freebsd-x64/1.2.151:
+    resolution: {integrity: sha512-WVIRiDzuz+/W7BMjVtg1Cmk1+zmDT18Qq+Ygr9J6aFQ1JQUkLEE1pvtkGD3JIEa6Jhz/VwM6AFHtY5o1CrZ21w==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [freebsd]
@@ -2120,8 +2080,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-arm-gnueabihf/1.2.136:
-    resolution: {integrity: sha512-n0WgdxIT3h3WobdfZ7XYmg+vEpgTDv5O+0HIBUBSm1OahUau07NQgw4H4KNTfK2XbYl0+mpRIMLCadxechbNlQ==}
+  /@swc/core-linux-arm-gnueabihf/1.2.151:
+    resolution: {integrity: sha512-pfBrIUwu3cR/M7DzDCUJAw9jFKXvJ/Ge8auFk07lRb+JcDnPm0XxLyrLqGvNQWdcHgXeXfmnS4fMQxdb9GUN1w==}
     engines: {node: '>=10'}
     cpu: [arm]
     os: [linux]
@@ -2129,8 +2089,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-arm64-gnu/1.2.136:
-    resolution: {integrity: sha512-B9vuahX64AYMID6MY6B2OpYiEUytcXIJCrdJwviQxF+29+xQippygrzkqq+lw2O8K0EsSXf7UvfZrz2M1DHcmA==}
+  /@swc/core-linux-arm64-gnu/1.2.151:
+    resolution: {integrity: sha512-M+BTkTdPY7gteM+0dYz9wrU/j9taL4ccqPEHkDEKP21lS24y99UtuKsvdBLzDm/6ShBVLFAkgIBPu5cEb7y6ig==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
@@ -2138,8 +2098,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-arm64-musl/1.2.136:
-    resolution: {integrity: sha512-XxRIa3kMXlekFGQ5VDqJ4CsBmk4v61kt2rgPLjposxehuXBXXO80OiIgd/iRbEmbhwLveE8Ar+zGAMYjUp1YjQ==}
+  /@swc/core-linux-arm64-musl/1.2.151:
+    resolution: {integrity: sha512-7A+yTtSvPJVwO8X1cxUbD/PVCx8G9MKn83G9pH/r+9sQMBXqxyw6/NR0DG6nMMiyOmJkmYWgh5mO47BN7WC4dQ==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [linux]
@@ -2147,8 +2107,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-x64-gnu/1.2.136:
-    resolution: {integrity: sha512-lTyh8d7xGcReOnA7R/hj8jtkLs67U9ut1d9sc/ogyD6FXcGuYoHcLsBn2A4cp2Q5fMtRfTZQyZznpYz9RrLoIw==}
+  /@swc/core-linux-x64-gnu/1.2.151:
+    resolution: {integrity: sha512-ORlbN3wf1w0IQGjGToYYC/hV/Vwfcs88Ohfxc4X+IQaw/VxKG6/XT65c0btK640F2TVhvhH1MbYFJJlsycsW7g==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
@@ -2156,8 +2116,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-linux-x64-musl/1.2.136:
-    resolution: {integrity: sha512-mzX8eqsjEUr7rRZx2QWIqyBcd3/OEcDn/R7xO7HBM7OyzzdF+lbDYimZDiyvuw+uxTbHEUcBV975vSkcEEUNQw==}
+  /@swc/core-linux-x64-musl/1.2.151:
+    resolution: {integrity: sha512-r6odKE3+9+ReVdnNTZnICt5tscyFFtP4GFcmPQzBSlVoD9LZX6O4WeOlFXn77rVK/+205n2ag/KkKgZH+vdPuQ==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [linux]
@@ -2165,8 +2125,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-win32-arm64-msvc/1.2.136:
-    resolution: {integrity: sha512-87VOZVwOy8qLQPFisajPq7Y6iGzi/LM2bA9rFgi1MQvfyRV+vasUlN42z4OnPb2DjSprNcce+Hci3KswZbytAA==}
+  /@swc/core-win32-arm64-msvc/1.2.151:
+    resolution: {integrity: sha512-jnjJTNHpLhBaPwRgiKv1TdrMljL88ePqMCdVMantyd7yl4lP0D2e5/xR9ysR9S4EGcUnOyo9w8WUYhx/TioMZw==}
     engines: {node: '>=10'}
     cpu: [arm64]
     os: [win32]
@@ -2174,8 +2134,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-win32-ia32-msvc/1.2.136:
-    resolution: {integrity: sha512-MHHp90G2Y5MT7ewqr6f4sGZxyHoazKyq/2fvIESyFUVUzPZQW2vLIX8VBwkB1FDdaUkAL0FJYPfP2lBEUEfCaw==}
+  /@swc/core-win32-ia32-msvc/1.2.151:
+    resolution: {integrity: sha512-hSCxAiyDDXKvdUExj4jSIhzWFePqoqak1qdNUjlhEhEinDG8T8PTRCLalyW6fqZDcLf6Tqde7H79AqbfhRlYGQ==}
     engines: {node: '>=10'}
     cpu: [ia32]
     os: [win32]
@@ -2183,8 +2143,8 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core-win32-x64-msvc/1.2.136:
-    resolution: {integrity: sha512-67HHUWyqI91H4yRFNx03ByTHn9lkGZ19IEzF9GxfGpG7SYjip08hhs6ksbvlQeecHIz/V5undouEIHRwBQJCUA==}
+  /@swc/core-win32-x64-msvc/1.2.151:
+    resolution: {integrity: sha512-HOkqcJWCChps83Maj0M5kifPDuZ2sGPqpLM67poawspTFkBh0QJ9TMmxW1doQw+74cqsTpRi1ewr/KhsN18i5g==}
     engines: {node: '>=10'}
     cpu: [x64]
     os: [win32]
@@ -2192,37 +2152,38 @@ packages:
     dev: true
     optional: true
 
-  /@swc/core/1.2.136:
-    resolution: {integrity: sha512-7B3Tyxqn2LHmKhRtUe1FvwEHoQpVCNWhf39KirHIlTs8DMjNKllVws/v5wXXAkKxU9M1Wo/RTpZMJZb40bxn3g==}
+  /@swc/core/1.2.151:
+    resolution: {integrity: sha512-oHgqKwK/Djv765zUHPiGqfMCaKIxXTgQyyCUBKLBQfAJwe/7FVobQ2fghBp4FsZA/NE1LZBmMPpRZNQwlGjeHw==}
     engines: {node: '>=10'}
+    hasBin: true
     optionalDependencies:
-      '@swc/core-android-arm-eabi': 1.2.136
-      '@swc/core-android-arm64': 1.2.136
-      '@swc/core-darwin-arm64': 1.2.136
-      '@swc/core-darwin-x64': 1.2.136
-      '@swc/core-freebsd-x64': 1.2.136
-      '@swc/core-linux-arm-gnueabihf': 1.2.136
-      '@swc/core-linux-arm64-gnu': 1.2.136
-      '@swc/core-linux-arm64-musl': 1.2.136
-      '@swc/core-linux-x64-gnu': 1.2.136
-      '@swc/core-linux-x64-musl': 1.2.136
-      '@swc/core-win32-arm64-msvc': 1.2.136
-      '@swc/core-win32-ia32-msvc': 1.2.136
-      '@swc/core-win32-x64-msvc': 1.2.136
+      '@swc/core-android-arm-eabi': 1.2.151
+      '@swc/core-android-arm64': 1.2.151
+      '@swc/core-darwin-arm64': 1.2.151
+      '@swc/core-darwin-x64': 1.2.151
+      '@swc/core-freebsd-x64': 1.2.151
+      '@swc/core-linux-arm-gnueabihf': 1.2.151
+      '@swc/core-linux-arm64-gnu': 1.2.151
+      '@swc/core-linux-arm64-musl': 1.2.151
+      '@swc/core-linux-x64-gnu': 1.2.151
+      '@swc/core-linux-x64-musl': 1.2.151
+      '@swc/core-win32-arm64-msvc': 1.2.151
+      '@swc/core-win32-ia32-msvc': 1.2.151
+      '@swc/core-win32-x64-msvc': 1.2.151
     dev: true
 
-  /@swc/helpers/0.3.3:
-    resolution: {integrity: sha512-NdRQSjcceaXsQDNYyK0wWyRvrn5rsvugK8vnTiRB2i0UCaD2slUFUq28tmojILW5A04oF+sZRMxd0Cy7xS/y0A==}
-    dev: true
+  /@swc/helpers/0.3.6:
+    resolution: {integrity: sha512-xVl7Sddrl9/eMjEMqkH9lT8fLOGCuWHH9VmR2IBKQ8xTcjA6UQw4O3/4oS3xnyZHLtL9vC3P+C0kLneHpiqeEg==}
+    dev: false
 
-  /@swc/jest/0.2.20_@swc+core@1.2.136:
+  /@swc/jest/0.2.20_@swc+core@1.2.151:
     resolution: {integrity: sha512-5qSUBYY1wyIMn7p0Vl9qqV4hMI69oJwZCIPUpBsTFWN2wlwn6RDugzdgCn+bLXVYh+Cxi8bJcZ1uumDgsoL+FA==}
     engines: {npm: '>= 7.0.0'}
     peerDependencies:
       '@swc/core': '*'
     dependencies:
       '@jest/create-cache-key-function': 27.5.1
-      '@swc/core': 1.2.136
+      '@swc/core': 1.2.151
     dev: true
 
   /@swc/wasm-web/1.2.138:
@@ -5073,16 +5034,6 @@ packages:
     dependencies:
       codemirror: 5.59.2
       rc-slider: 8.7.1
-    dev: false
-
-  /coveo.analytics/2.18.55:
-    resolution: {integrity: sha512-vK+KBFHQbgwaY3YdYAq9/lHzv6qBQNosYJvdZX0yugE30B8ceg3Mwvm9ZuL5oEzzMMlPVIFJv1FpujBbdGUOTg==}
-    dependencies:
-      '@react-native-async-storage/async-storage': 1.15.14
-      cross-fetch: 3.1.5
-    transitivePeerDependencies:
-      - encoding
-      - react-native
     dev: false
 
   /coveo.analytics/2.18.65:
@@ -10876,8 +10827,8 @@ packages:
       url-loader: 4.1.1_file-loader@6.2.0
     dev: false
 
-  /next-sitemap/2.4.5_next@12.1.0:
-    resolution: {integrity: sha512-wfDpK8STTR66dWptdhVFBqsI1+2w82CtchI9jsxm2D+8yWFnDDnuobh6tTFiaWyX9VQFmsVJAyfBvKytO4h5AA==}
+  /next-sitemap/2.5.4_next@12.1.0:
+    resolution: {integrity: sha512-ftFqQQk74V+9+WkyAQLi98vaoLHisarP9VpsFTlAje3HOPzSQ33GrURDY8dRiguhFps4S4lQApXH5AgKByubvg==}
     engines: {node: '>=14.18.3'}
     hasBin: true
     peerDependencies:

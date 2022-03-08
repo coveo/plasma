@@ -86,6 +86,7 @@ pipeline {
           sh "git config --global user.email \"jenkins@coveo.com\""
           sh "git config --global user.name \"Jenkins CI\""
           sh "git remote set-url origin \"https://${env.GIT_USR}:${env.GIT_PSW}@github.com/coveo/plasma.git\""
+          sh "git branch --set-upstream-to origin/${env.BRANCH_NAME}"
 
           def nodeHome = tool name: env.BUILD_NODE_VERSION, type: "nodejs"
           env.PATH = "${nodeHome}/bin:${env.PATH}"
@@ -202,21 +203,19 @@ pipeline {
           sh "git fetch --tags origin ${env.BRANCH_NAME}"
 
           if (env.BRANCH_NAME ==~ /release-.*/) {
-            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs \
+            sh "node build/publishNewVersion.mjs \
             --bump patch \
             --tag release \
             --branch ${env.BRANCH_NAME}"
           } else if (env.BRANCH_NAME == "next") {
-            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs \
+            sh "node build/publishNewVersion.mjs \
             --bump prerelease \
             --tag next \
             --branch next"
           } else {
             // master
-            sh "node --experimental-specifier-resolution=node build/publishNewVersion.mjs"
+            sh "node build/publishNewVersion.mjs"
           }
-
-          sh "git push -u origin ${env.BRANCH_NAME} --follow-tags" // push everything along with new tag
 
           NEW_VERSION = sh(
             script: "node -p -e 'require(`./package.json`).version;'",

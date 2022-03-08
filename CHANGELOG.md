@@ -1,3 +1,50 @@
+## 38.12.5 (2022-03-08)
+
+
+
+## 38.12.4 (2022-03-08)
+
+
+
+## 38.12.3 (2022-03-08)
+
+
+
+## 38.12.1 (2022-03-07)
+
+
+### Bug Fixes
+
+* **website:** two pages are exporting the wrong components ([ef8681d](https://github.com/coveo/plasma/commits/ef8681dd5b7f4fadefdc99928b3116d1ae91d51b))
+
+
+
+# 38.12.0 (2022-03-07)
+
+
+### Features
+
+* **tokens:** extract design tokens from figma libraries ([907f9b5](https://github.com/coveo/plasma/commits/907f9b5579a743b83310d27e4f9051d67000ecdd))
+
+
+
+## 38.11.6 (2022-03-07)
+
+
+
+## 38.11.5 (2022-03-07)
+
+
+
+## 38.11.4 (2022-03-07)
+
+
+### Bug Fixes
+
+* **deps:** pin dependencies ([2b518cd](https://github.com/coveo/plasma/commits/2b518cd25e07a451a0a33235d74d3ebf28d6bcf1))
+
+
+
 ## 38.11.3 (2022-03-03)
 
 
