@@ -97,7 +97,7 @@ const outputProcess = (process) => {
                 if (remote) {
                     console.log(`Publishing version ${versionTag} on NPM`);
                     outputProcess(
-                        pnpmPublish(since, options.tag, options.branch, [], ['root'])
+                        pnpmPublish(since, options.tag, options.branch)
                     );
 
                     console.log(`Pushing version ${versionTag} on git`);
