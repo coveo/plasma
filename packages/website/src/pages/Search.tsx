@@ -3,7 +3,14 @@ import {Section} from '@coveord/plasma-react';
 import {useContext} from 'react';
 import React from 'react';
 
-import {AtomicNoResults, AtomicQuerySummary, AtomicResultList, AtomicSearchInterface} from '@coveo/atomic-react';
+import {
+    AtomicPager,
+    AtomicNoResults,
+    AtomicQuerySummary,
+    AtomicResultList,
+    AtomicResultsPerPage,
+    AtomicSearchInterface,
+} from '@coveo/atomic-react';
 import {Tile, TileProps} from '../building-blocs/Tile';
 import {EngineContext} from '../search/engine/EngineContext';
 
@@ -35,7 +42,9 @@ const Search = () => {
                             />
                         </>
                     )}
-                />
+                ></AtomicResultList>
+                <AtomicResultsPerPage choicesDisplayed={'5,10,15'}></AtomicResultsPerPage>
+                <AtomicPager numberOfPages={3}></AtomicPager>
             </AtomicSearchInterface>
         </Section>
     );

@@ -1,6 +1,6 @@
 import {buildSearchEngine} from '@coveo/atomic-react';
 
-export const headlessEngine = () =>
+export const searchEngine = () =>
     buildSearchEngine({
         configuration: {
             platformUrl: 'https://platform.cloud.coveo.com',
