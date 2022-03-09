@@ -8,11 +8,7 @@ describe('BrowserPreview', () => {
     it('renders the specified header description as tooltip title', async () => {
         const headerDescription = '🥰';
         render(<BrowserPreview headerDescription={headerDescription} />);
-        userEvent.hover(
-            screen.getByRole('img', {
-                name: /info icon/i,
-            })
-        );
+        userEvent.hover(screen.getByRole('img', {name: /info/i}));
 
         expect(await screen.findByText(headerDescription)).toBeVisible();
     });

@@ -15,7 +15,7 @@ export const BrowserPreviewEmpty: React.FunctionComponent<BrowserPreviewEmptyPro
             'cursor-pointer': onClick,
         })}
     >
-        {image ?? <Svg svgName="arrowLeftReturn" className="block" />}
+        {image ?? <Svg svgName="arrowLeftReturn" svgClass="icon mod-info" className="block" />}
         <p className="medium-title-text mt2 flex flex-column center-align center">{children}</p>
     </div>
 );
