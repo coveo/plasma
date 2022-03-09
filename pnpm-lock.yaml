@@ -66,7 +66,7 @@ importers:
       '@swc/core': 1.2.151
       '@swc/helpers': 0.3.6
       '@swc/jest': 0.2.20
-      '@testing-library/dom': 8.11.1
+      '@testing-library/dom': 8.11.3
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/react': 12.1.2
       '@testing-library/user-event': 13.5.0
@@ -191,10 +191,10 @@ importers:
       '@swc/cli': 0.1.55_@swc+core@1.2.151
       '@swc/core': 1.2.151
       '@swc/jest': 0.2.20_@swc+core@1.2.151
-      '@testing-library/dom': 8.11.1
+      '@testing-library/dom': 8.11.3
       '@testing-library/jest-dom': 5.16.1
       '@testing-library/react': 12.1.2_react-dom@16.14.0+react@16.14.0
-      '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.1
+      '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.3
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
       '@types/d3': 3.5.46
@@ -2300,11 +2300,11 @@ packages:
       pretty-format: 26.6.2
     dev: true
 
-  /@testing-library/dom/8.11.1:
-    resolution: {integrity: sha512-3KQDyx9r0RKYailW2MiYrSSKEfH0GTkI51UGEvJenvcoDoeRYs0PZpi2SXqtnMClQvCqdtTTpOfFETDTVADpAg==}
+  /@testing-library/dom/8.11.3:
+    resolution: {integrity: sha512-9LId28I+lx70wUiZjLvi1DB/WT2zGOxUh46glrSNMaWVx849kKAluezVzZrXJfTKKoQTmEOutLes/bHg4Bj3aA==}
     engines: {node: '>=12'}
     dependencies:
-      '@babel/code-frame': 7.16.0
+      '@babel/code-frame': 7.16.7
       '@babel/runtime': 7.16.3
       '@types/aria-query': 4.2.1
       aria-query: 5.0.0
@@ -2337,19 +2337,19 @@ packages:
       react-dom: '*'
     dependencies:
       '@babel/runtime': 7.16.3
-      '@testing-library/dom': 8.11.1
+      '@testing-library/dom': 8.11.3
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
     dev: true
 
-  /@testing-library/user-event/13.5.0_@testing-library+dom@8.11.1:
+  /@testing-library/user-event/13.5.0_@testing-library+dom@8.11.3:
     resolution: {integrity: sha512-5Kwtbo3Y/NowpkbRuSepbyMFkZmHgD+vPzYB/RJ4oxt5Gj/avFFBYjhw27cqSVPVw/3a67NK1PbiIr9k4Gwmdg==}
     engines: {node: '>=10', npm: '>=6'}
     peerDependencies:
       '@testing-library/dom': '>=7.21.4'
     dependencies:
       '@babel/runtime': 7.16.3
-      '@testing-library/dom': 8.11.1
+      '@testing-library/dom': 8.11.3
     dev: true
 
   /@tokenizer/token/0.3.0:
@@ -9000,7 +9000,7 @@ packages:
     resolution: {integrity: sha512-OMRqRNd9E0DkBLZpFtZkAGYOXl6ZpoMtQJWTAREJKDOFa0M6ptB7L67tp+cszMBkvSgKOhNtQp2Vbcz3ZZKo/w==}
     engines: {node: ^10.13.0 || ^12.13.0 || ^14.15.0 || >=15.0.0}
     dependencies:
-      '@babel/code-frame': 7.16.0
+      '@babel/code-frame': 7.16.7
       '@jest/types': 27.5.1
       '@types/stack-utils': 2.0.0
       chalk: 4.1.2
