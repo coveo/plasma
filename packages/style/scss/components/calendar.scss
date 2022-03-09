@@ -89,6 +89,10 @@
             background-color: var(--digital-blue-60);
         }
 
+        .selected-date.comparison-date {
+            background-color: var(--digital-blue-80);
+        }
+
         .lower-limit,
         .upper-limit {
             width: calc(#{$calendar-cell-dimensions} - #{$selected-date-offset} - #{$calendar-limit-border-width});
