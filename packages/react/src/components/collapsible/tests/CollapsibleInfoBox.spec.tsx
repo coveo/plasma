@@ -3,7 +3,6 @@ import * as React from 'react';
 import {Provider} from 'react-redux';
 
 import {TestUtils} from '../../../utils/tests/TestUtils';
-import {Svg} from '../../svg/Svg';
 import {CollapsibleConnected} from '../CollapsibleConnected';
 import {CollapsibleInfoBox, CollapsibleInfoBoxProps} from '../CollapsibleInfoBox';
 
@@ -41,13 +40,13 @@ describe('CollapsibleInfoBox', () => {
 
         it('should render a <h6 /> and <svg /> in header', () => {
             expect(component.find('h6').exists()).toBe(true);
-            expect(component.find(Svg).length).toBe(1);
+            expect(component.find('svg').length).toBe(2);
         });
 
         it('should not render a <svg /> in header if isSection', () => {
             mountComponent({isSection: true});
             expect(component.find('h6').exists()).toBe(true);
-            expect(component.find(Svg).length).toBe(0);
+            expect(component.find('svg').length).toBe(1);
         });
 
         it('should display the sectionAdditionalContent if there is any and it is a section', () => {
