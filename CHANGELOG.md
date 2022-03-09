@@ -1,3 +1,12 @@
+# 38.14.0 (2022-03-09)
+
+
+### Features
+
+* **style:** update the look and feel of buttons ([ef11f99](https://github.com/coveo/plasma/commits/ef11f99771433d12ba34c34368e6715f818d3ffb))
+
+
+
 ## 38.13.5 (2022-03-09)
 
 
