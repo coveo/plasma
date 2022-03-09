@@ -14,18 +14,18 @@ describe('CollapsibleContainerConnected', () => {
 
         expect(screen.getByText('the title')).toBeVisible();
         expect(screen.getByText('content')).toBeVisible();
-        expect(screen.queryByRole('img', {name: /help icon/i})).not.toBeInTheDocument();
-        expect(screen.queryByRole('img', {name: /info icon/i})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: /question/i})).not.toBeInTheDocument();
+        expect(screen.queryByRole('img', {name: /info/i})).not.toBeInTheDocument();
     });
 
-    it('displays a help icon next to the title if informationUrl prop was provided', () => {
+    it('displays a question icon next to the title if informationUrl prop was provided', () => {
         render(
             <CollapsibleContainerConnected id="🆔" title="the title" informationUrl="http://perdu.com">
                 content
             </CollapsibleContainerConnected>
         );
 
-        expect(screen.getByRole('img', {name: /help icon/i})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: /question/i})).toBeInTheDocument();
     });
 
     it('displays an info icon next to the title if informationTooltip prop was provided alone', () => {
@@ -35,7 +35,7 @@ describe('CollapsibleContainerConnected', () => {
             </CollapsibleContainerConnected>
         );
 
-        expect(screen.getByRole('img', {name: /info icon/i})).toBeInTheDocument();
+        expect(screen.getByRole('img', {name: /info/i})).toBeInTheDocument();
     });
 
     it('calls the onClick event when the collapsible is clicked if the prop is set', () => {
