@@ -171,7 +171,7 @@ export const Toast: React.FC<IToastProps> = ({
                 downloadToast
             ) : (
                 <>
-                    {infoToken}
+                    <span className="info-token-container">{infoToken}</span>
                     <div className="toast-content-container">
                         {title && <div className="toast-title">{title}</div>}
                         {toastContent}
