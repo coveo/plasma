@@ -1,12 +1,6 @@
+import {BrowserPreview, BrowserPreviewEmpty, BrowserPreviewError, Section, SplitLayout} from '@coveord/plasma-react';
+import {ArrowUpSize32Px} from '@coveord/plasma-react-icons';
 import * as React from 'react';
-import {
-    BrowserPreview,
-    BrowserPreviewEmpty,
-    BrowserPreviewError,
-    Section,
-    SplitLayout,
-    Svg,
-} from '@coveord/plasma-react';
 
 import PlasmaComponent from '../../building-blocs/PlasmaComponent';
 
@@ -87,10 +81,7 @@ export const BrowserPreviewExamples: React.FunctionComponent = () => (
                     rightChildren={
                         <div className="p3">
                             <BrowserPreview>
-                                <BrowserPreviewEmpty
-                                    onClick={() => alert('Wow!')}
-                                    image={<Svg svgName="arrowTopSlim" className="block" />}
-                                >
+                                <BrowserPreviewEmpty onClick={() => alert('Wow!')} image={<ArrowUpSize32Px />}>
                                     <span>Look at this browser-like header!</span>
                                 </BrowserPreviewEmpty>
                             </BrowserPreview>
