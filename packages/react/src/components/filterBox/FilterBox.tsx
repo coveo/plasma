@@ -89,7 +89,13 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                     title={this.filterInput && this.props.withTitleOnInput ? this.filterInput.value : undefined}
                 >
                     <input
-                        ref={(filterInput: HTMLInputElement) => (this.filterInput = filterInput)}
+                        ref={(filterInput: HTMLInputElement) => {
+                            this.filterInput = filterInput;
+
+                            if (this.props.isAutoFocus) {
+                                this.filterInput?.focus?.();
+                            }
+                        }}
                         type="text"
                         className={filterInputClasses}
                         placeholder={filterPlaceholder}
@@ -101,7 +107,6 @@ export class FilterBox extends React.Component<IFilterBoxProps, any> {
                         onKeyDown={this.props.onKeyDown}
                         onKeyUp={this.props.onKeyUp}
                         style={inputMaxWidth}
-                        autoFocus={this.props.isAutoFocus}
                     />
                     <Svg
                         svgName="clear"

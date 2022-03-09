@@ -1,46 +1,58 @@
-## 38.11.4-next.4 (2022-03-08)
+## 38.13.2 (2022-03-08)
+
+
+### Bug Fixes
+
+* autofocus for filterbox ([47e75c9](https://github.com/coveo/plasma/commits/47e75c987b5c276f46f1e2552b8f9f4fd87eec4b))
+
+
+
+## 38.13.1 (2022-03-08)
+
+
+
+# 38.13.0 (2022-03-08)
+
+
+### Bug Fixes
+
+* fix the lockfile ([d6b3771](https://github.com/coveo/plasma/commits/d6b3771911dd836c39376d6f4dce69530cec39e7))
+* **website:** adjust path to plasma-react-icons declarations ([e472de8](https://github.com/coveo/plasma/commits/e472de847d40fd451b15edc79351b80b753f2c0f))
 
 
 ### Features
 
-* **tokens:** extract design tokens from figma libraries ([ebe3918](https://github.com/coveo/plasma/commits/ebe39185eb94977f595bedbf88afa74943df2efc))
+* **react-icons:** add module field to package.json ([d7eade4](https://github.com/coveo/plasma/commits/d7eade465f434f8326381af8758ee7c000932e21))
 
 
 
-## 38.11.4-next.3 (2022-03-07)
+## 38.12.5 (2022-03-08)
+
+
+
+## 38.12.4 (2022-03-08)
+
+
+
+## 38.12.3 (2022-03-08)
+
+
+
+## 38.12.1 (2022-03-07)
+
+
+### Bug Fixes
+
+* **website:** two pages are exporting the wrong components ([ef8681d](https://github.com/coveo/plasma/commits/ef8681dd5b7f4fadefdc99928b3116d1ae91d51b))
+
+
+
+# 38.12.0 (2022-03-07)
 
 
 ### Features
 
-* **react:** remove Svg from ActionableItem ([e11a8ca](https://github.com/coveo/plasma/commits/e11a8ca13c285a7eec70e381c9f751e4f8d4cdc6))
-
-
-
-## 38.11.4-next.2 (2022-03-07)
-
-
-### Features
-
-* **react-icons:** add accessible role to all icons ([c5bece6](https://github.com/coveo/plasma/commits/c5bece62080a07129e2a1225130a94567c9c63f8))
-* **react-icons:** add accessible role to all icons ([b5dfd59](https://github.com/coveo/plasma/commits/b5dfd5931214e82dffee1129c13d4a723f3bf7af))
-* **react-icons:** implement Icon type ([1891313](https://github.com/coveo/plasma/commits/1891313451de484d6142aedc2097451bf5f18db3))
-* **react-icons:** implement Icon type ([cb10a12](https://github.com/coveo/plasma/commits/cb10a1211388e66402ce995fbb5820f534dc42b1))
-* **react:** use plasma-react-icons in badge component ([0e33de1](https://github.com/coveo/plasma/commits/0e33de1c3d0bd3b54c3f47707d1ee8f1bdc02ad8))
-* **react:** use plasma-react-icons in badge component ([1c56382](https://github.com/coveo/plasma/commits/1c56382083157f20156805a8af417e50345cd919))
-* **react:** use react-icons in CollapsibleToggle ([8706144](https://github.com/coveo/plasma/commits/870614490e03c1b5f79e582c908101990bad53a7))
-* **react:** use react-icons in CollapsibleToggle ([1e55008](https://github.com/coveo/plasma/commits/1e5500841f752d693396d894276077560b160cc8))
-
-
-### BREAKING CHANGES
-
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
-
-fix(react): fix badge tests
-* **react:** CollapsibleToggleProps changed, svgClassName is no longer a prop
-* **react:** Badge icon prop now expects an icon from plasma-react-icons
-
-fix(react): fix badge tests
+* **tokens:** extract design tokens from figma libraries ([907f9b5](https://github.com/coveo/plasma/commits/907f9b5579a743b83310d27e4f9051d67000ecdd))
 
 
 

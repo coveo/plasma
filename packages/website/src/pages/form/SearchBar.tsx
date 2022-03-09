@@ -103,4 +103,4 @@ export class SearchBarExamples extends React.Component<any, any> {
         );
     }
 }
-export default SearchBarExample;
+export default SearchBarExamples;
