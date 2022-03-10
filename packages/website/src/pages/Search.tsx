@@ -1,53 +1,49 @@
-import {Section} from '@coveord/plasma-react';
+import {
+    buildResultList,
+    loadPaginationActions,
+    loadQueryActions,
+    loadSearchActions,
+    loadSearchAnalyticsActions,
+} from '@coveo/headless';
 
 import {useContext} from 'react';
 import React from 'react';
 
-import {
-    AtomicPager,
-    AtomicNoResults,
-    AtomicQuerySummary,
-    AtomicResultList,
-    AtomicResultsPerPage,
-    AtomicSearchInterface,
-} from '@coveo/atomic-react';
-import {Tile, TileProps} from '../building-blocs/Tile';
+import dynamic from 'next/dynamic';
 import {EngineContext} from '../search/engine/EngineContext';
+import {PlasmaLoading} from '../building-blocs/PlasmaLoading';
 
-const customStyle = ``;
+const isServer = () => typeof window === `undefined`;
 
-const Search = () => {
+const ResultListRenderer = dynamic(
+    import('./../building-blocs/ResultList').then((mod) => mod.ResultList),
+    {
+        ssr: false,
+        loading: () => <PlasmaLoading />,
+    }
+);
+
+const ResultList = () => {
     const engine = useContext(EngineContext);
-    return (
-        <Section className="home flex-auto overflow-auto demo-content">
-            <AtomicSearchInterface engine={engine} reflectStateInUrl={true}>
-                <Section className="section flex-auto overflow-auto demo-content">
-                    <AtomicQuerySummary></AtomicQuerySummary>
-                </Section>
-                <Section className="section">
-                    <AtomicNoResults enableCancelLastAction={true}></AtomicNoResults>
-                </Section>
 
-                <AtomicResultList
-                    display={'grid'}
-                    template={(result) => (
-                        <>
-                            <style>{customStyle}</style>
-                            <Tile
-                                key={result.uniqueId}
-                                title={result.title}
-                                href={result.clickUri.replace(/.+plasma\.coveo\.com\//, '')}
-                                description={result.raw.description as string}
-                                thumbnail={result.raw.thumbnail as TileProps['thumbnail']}
-                            />
-                        </>
-                    )}
-                ></AtomicResultList>
-                <AtomicResultsPerPage choicesDisplayed={'5,10,15'}></AtomicResultsPerPage>
-                <AtomicPager numberOfPages={3}></AtomicPager>
-            </AtomicSearchInterface>
-        </Section>
-    );
+    const data = localStorage.getItem('coveo-standalone-search-box-data');
+    const {value, analytics} = JSON.parse(data);
+    const {cause, metadata} = analytics;
+
+    const {updateQuery} = loadQueryActions(engine);
+    const {logOmniboxFromLink, logSearchFromLink} = loadSearchAnalyticsActions(engine);
+    const {registerNumberOfResults} = loadPaginationActions(engine);
+    const {executeSearch} = loadSearchActions(engine);
+    const event = cause === 'searchFromLink' ? logSearchFromLink() : logOmniboxFromLink(metadata);
+
+    engine.dispatch(registerNumberOfResults(1000));
+    engine.dispatch(updateQuery({q: value}));
+    engine.dispatch(executeSearch(event));
+
+    const controller = buildResultList(engine);
+    return <ResultListRenderer controller={controller} engine={engine} />;
 };
+
+const Search = () => (isServer() ? <PlasmaLoading /> : ResultList());
 
 export default Search;

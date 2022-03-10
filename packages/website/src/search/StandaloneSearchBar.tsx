@@ -8,9 +8,6 @@ import {EngineContext} from './engine/EngineContext';
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
 
-    // <button class="btn-primary w-12 h-auto rounded-r-md rounded-l-none -my-px"
-    // ajouter margin-right: -1px à -my-px pour enlever la barre blanche à droit du bouton search;
-
     return (
         <div className="plasmaSearchBar">
             <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
