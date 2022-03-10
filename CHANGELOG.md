@@ -1,3 +1,12 @@
+## 38.14.2 (2022-03-10)
+
+
+### Bug Fixes
+
+* **react:** fix the date picker SetToNow button ([1aad84c](https://github.com/coveo/plasma/commits/1aad84cc4c46ab97206d89b1aa9006884111f8fe))
+
+
+
 ## 38.14.1 (2022-03-09)
 
 
