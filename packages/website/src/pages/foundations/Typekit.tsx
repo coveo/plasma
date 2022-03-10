@@ -259,6 +259,7 @@ export const Typekit = () => (
             title="Typekit"
             thumbnail="typekit"
             description="The Typekit covers the entire spectrum of typography styles designed specifically to work in harmony with the Plasma ecosystem."
+            sourcePath="packages/style/scss/typekit.scss"
         />
         <div className="plasma-page-layout">
             <div className="plasma-page-layout__main-code plasma-page-layout__section">
@@ -283,7 +284,9 @@ export const Typekit = () => (
                                         <td className="mod-no-border-bottom">
                                             {selectors.map((selector, i) => (
                                                 <span
-                                                    className={classNames('code', {mr1: i + 1 !== selectors.length})}
+                                                    className={classNames('code', {
+                                                        mr1: i + 1 !== selectors.length,
+                                                    })}
                                                     key={selector}
                                                 >
                                                     {selector}
