@@ -387,16 +387,7 @@
     box-sizing: border-box;
     width: $date-picker-dimension;
     height: $date-picker-dimension;
-    padding: $button-small-padding-x;
-    background: none;
-    border: $default-border;
-    border-radius: $border-radius;
-
-    cursor: pointer;
-
-    &:hover {
-        background-color: $date-picker-button-hover-bg;
-    }
+    padding: 7px 8px;
 }
 
 .clear-selection-button {
