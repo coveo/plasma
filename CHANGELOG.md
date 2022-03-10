@@ -1,3 +1,65 @@
+## 38.14.2 (2022-03-10)
+
+
+### Bug Fixes
+
+* **react:** fix the date picker SetToNow button ([1aad84c](https://github.com/coveo/plasma/commits/1aad84cc4c46ab97206d89b1aa9006884111f8fe))
+
+
+
+## 38.14.1 (2022-03-09)
+
+
+
+# 38.14.0 (2022-03-09)
+
+
+### Features
+
+* **style:** update the look and feel of buttons ([ef11f99](https://github.com/coveo/plasma/commits/ef11f99771433d12ba34c34368e6715f818d3ffb))
+
+
+
+## 38.13.5 (2022-03-09)
+
+
+
+## 38.13.4 (2022-03-09)
+
+
+
+## 38.13.3 (2022-03-09)
+
+
+
+## 38.13.2 (2022-03-08)
+
+
+### Bug Fixes
+
+* autofocus for filterbox ([47e75c9](https://github.com/coveo/plasma/commits/47e75c987b5c276f46f1e2552b8f9f4fd87eec4b))
+
+
+
+## 38.13.1 (2022-03-08)
+
+
+
+# 38.13.0 (2022-03-08)
+
+
+### Bug Fixes
+
+* fix the lockfile ([d6b3771](https://github.com/coveo/plasma/commits/d6b3771911dd836c39376d6f4dce69530cec39e7))
+* **website:** adjust path to plasma-react-icons declarations ([e472de8](https://github.com/coveo/plasma/commits/e472de847d40fd451b15edc79351b80b753f2c0f))
+
+
+### Features
+
+* **react-icons:** add module field to package.json ([d7eade4](https://github.com/coveo/plasma/commits/d7eade465f434f8326381af8758ee7c000932e21))
+
+
+
 ## 38.12.5 (2022-03-08)
 
 

@@ -1,23 +1,26 @@
 import * as React from 'react';
+import {TooltipPlacement} from '../../utils';
 
+import {Button} from '../button';
 import {Svg} from '../svg';
-import {Tooltip} from '../tooltip/Tooltip';
 
-export interface ISetToNowProps extends React.ClassAttributes<SetToNowButton> {
+export interface ISetToNowProps {
     onClick: () => void;
     tooltip?: string;
 }
 
 export const SET_TO_NOW_DEFAULT_TOOLTIP: string = 'Set to now';
 
-export class SetToNowButton extends React.Component<ISetToNowProps, any> {
-    render() {
-        return (
-            <Tooltip title={this.props.tooltip || SET_TO_NOW_DEFAULT_TOOLTIP} placement="top">
-                <button type="button" onClick={() => this.props.onClick()} className="date-button">
-                    <Svg svgName="setToNow" />
-                </button>
-            </Tooltip>
-        );
-    }
-}
+export const SetToNowButton: React.FunctionComponent<ISetToNowProps> = ({
+    onClick,
+    tooltip = SET_TO_NOW_DEFAULT_TOOLTIP,
+}) => (
+    <Button
+        onClick={onClick}
+        tooltip={tooltip || SET_TO_NOW_DEFAULT_TOOLTIP}
+        tooltipPlacement={TooltipPlacement.Top}
+        classes="date-button"
+    >
+        <Svg svgName="setToNow" svgClass="icon mod-18" />
+    </Button>
+);

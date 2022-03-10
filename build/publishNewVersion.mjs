@@ -27,7 +27,6 @@ program
     .option('--dry', 'dry run', false)
     .option('--tag', 'tag to use on NPM', 'latest')
     .option('--branch', 'allow deploy on branch', 'master')
-    .option('--force <packages...>', 'force a bump on specified package', ['root'])
     .addOption(
         new Option('--bump <type>', 'bump a <type> version instead of reliying on commit messages').choices(BUMP_TYPES)
     );
@@ -35,11 +34,6 @@ program
 program.parse();
 
 const options = program.opts();
-
-// We consider that root always changes, we always want to bump a version
-if (!options.force.includes('root')) {
-    options.force.push('root');
-}
 
 const outputProcess = (process) => {
     console.log(process.stdout.trim());
@@ -60,11 +54,9 @@ const outputProcess = (process) => {
     console.log('Since: %s', since);
 
     const changedPackages = pnpmGetChangedPackages(since);
-    options.force.forEach((packageName) => {
-        if (!changedPackages.includes(packageName)) {
-            changedPackages.push(packageName);
-        }
-    });
+    if (!changedPackages.includes('root')) {
+        changedPackages.push('root');
+    }
 
     if (changedPackages.length > 0) {
         const [commits] = getCommits(PATH, lastTag);
@@ -82,7 +74,7 @@ const outputProcess = (process) => {
 
         if (newVersion !== currentVersion) {
             console.log('Bumping %s to version %s', changedPackages.join(', '), newVersion);
-            pnpmBumpVersion(newVersion, since, options.force);
+            pnpmBumpVersion(newVersion, since, ['root']);
 
             if (parsedCommits.length > 0) {
                 const changelog = await generateChangelog(
@@ -103,13 +95,14 @@ const outputProcess = (process) => {
                 gitCommit(`chore(release): publish version ${versionTag} [version bump]`, '.');
                 gitTag(versionTag);
                 if (remote) {
-                    console.log(`Pushing version ${versionTag}`);
+                    console.log(`Publishing version ${versionTag} on NPM`);
+                    outputProcess(
+                        pnpmPublish(since, options.tag, options.branch)
+                    );
+
+                    console.log(`Pushing version ${versionTag} on git`);
                     outputProcess(gitPush());
                     outputProcess(gitPushTags());
-
-                    console.log(`Publishing version ${versionTag}`);
-                    const forcePackagesWithoutRoot = options.force.filter((packageName) => packageName !== 'root');
-                    outputProcess(pnpmPublish(since, options.tag, options.branch, forcePackagesWithoutRoot, ['root']));
                 }
             }
         }
