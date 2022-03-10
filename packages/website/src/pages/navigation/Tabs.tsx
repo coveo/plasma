@@ -1,67 +1,11 @@
 import * as React from 'react';
-import {Badge, Section, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
-import PlasmaComponent from '../../building-blocs/PlasmaComponent';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
-export const TabsExamples: React.FunctionComponent = () => (
-    <PlasmaComponent
-        id="Tab"
-        title="Tabs"
-        usage="A set of tabs allows users to navigate between sections of the same interface."
-        withSource
-    >
-        <Section>
-            <Section level={3} title="Simple tab navigation">
-                <DefaultExmaple />
-            </Section>
-            <Section
-                level={3}
-                title="Tab with icons"
-                description="Icons on tabs are an optional elements usually added for illustrative purposes. If used in an instance, they should be considered for every tab item or none at all."
-            >
-                <WithIconsExmaple />
-            </Section>
-        </Section>
-    </PlasmaComponent>
-);
-
-// start-print
-
-const DefaultExmaple: React.FunctionComponent = () => (
-    <>
-        <TabNavigation>
-            <TabConnected groupId="patate" id="tab1" title="Pikachu" />
-            <TabConnected groupId="patate" id="tab2" title="Gyarados" tooltip="I have a toolip!" />
-            <TabConnected groupId="patate" id="tab3" title="Charmander" />
-            <TabConnected
-                groupId="patate"
-                id="tab13"
-                title="Mr. Mime"
-                tooltip="I have a badge!"
-                badge={<Badge label="Beta" extraClasses={['mod-beta mod-small ml1']} />}
-            />
-            <TabConnected groupId="patate" id="tab4" title="Rapidash" tooltip="I'm disabled" disabled />
-        </TabNavigation>
-        <TabContent>
-            <TabPaneConnected groupId="patate" id="tab1">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the first tab.</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="patate" id="tab2">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the second tab.</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="patate" id="tab3">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the third tab .</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="patate" id="tab4">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fourth tab.</div>
-            </TabPaneConnected>
-            <TabPaneConnected groupId="patate" id="tab13">
-                <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fifth tab.</div>
-            </TabPaneConnected>
-        </TabContent>
-    </>
-);
-
-const WithIconsExmaple: React.FunctionComponent = () => (
+const withIcons = `
+    import * as React from 'react';
+    import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
+    
+    export default () => (
     <>
         <TabNavigation>
             <TabConnected groupId="banane" id="tab5" title="Pikachu" icon={'lightning'} />
@@ -95,7 +39,60 @@ const WithIconsExmaple: React.FunctionComponent = () => (
             </TabPaneConnected>
         </TabContent>
     </>
+    );
+`;
+
+const code = `
+    import * as React from 'react';
+    import {Badge, TabConnected, TabContent, TabNavigation, TabPaneConnected} from '@coveord/plasma-react';
+
+    export default () => (
+        <>
+            <TabNavigation>
+                <TabConnected groupId="patate" id="tab1" title="Pikachu" />
+                <TabConnected groupId="patate" id="tab2" title="Gyarados" tooltip="I have a toolip!" />
+                <TabConnected groupId="patate" id="tab3" title="Charmander" />
+                <TabConnected
+                    groupId="patate"
+                    id="tab13"
+                    title="Mr. Mime"
+                    tooltip="I have a badge!"
+                    badge={<Badge label="Beta" extraClasses={['mod-beta mod-small ml1']} />}
+                />
+                <TabConnected groupId="patate" id="tab4" title="Rapidash" tooltip="I'm disabled" disabled />
+            </TabNavigation>
+            <TabContent>
+                <TabPaneConnected groupId="patate" id="tab1">
+                    <div className="mod-header-padding mod-form-top-bottom-padding">Content of the first tab.</div>
+                </TabPaneConnected>
+                <TabPaneConnected groupId="patate" id="tab2">
+                    <div className="mod-header-padding mod-form-top-bottom-padding">Content of the second tab.</div>
+                </TabPaneConnected>
+                <TabPaneConnected groupId="patate" id="tab3">
+                    <div className="mod-header-padding mod-form-top-bottom-padding">Content of the third tab .</div>
+                </TabPaneConnected>
+                <TabPaneConnected groupId="patate" id="tab4">
+                    <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fourth tab.</div>
+                </TabPaneConnected>
+                <TabPaneConnected groupId="patate" id="tab13">
+                    <div className="mod-header-padding mod-form-top-bottom-padding">Content of the fifth tab.</div>
+                </TabPaneConnected>
+            </TabContent>
+        </>
+    );
+`;
+
+export const TabsExamples = () => (
+    <PageLayout
+        id="Tab"
+        componentSourcePath="/tab/Tab.tsx"
+        title="Tab"
+        section="Navigation"
+        description="A set of tabs allows users to navigate between sections of the same interface."
+        thumbnail="tab"
+        code={code}
+        examples={{withIcons: {code: withIcons, title: 'Tab with icons'}}}
+    />
 );
 
-// stop-print
 export default TabsExamples;
