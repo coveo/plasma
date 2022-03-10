@@ -1,8 +1,26 @@
+import {
+    CheckmarkSize16Px,
+    CheckmarkSize24Px,
+    CheckmarkSize32Px,
+    CriticalSize16Px,
+    CriticalSize24Px,
+    CriticalSize32Px,
+    Icon,
+    InfoSize16Px,
+    InfoSize24Px,
+    InfoSize32Px,
+    QuestionSize16Px,
+    QuestionSize24Px,
+    QuestionSize32Px,
+    TipSize16Px,
+    TipSize24Px,
+    TipSize32Px,
+    WarningSize16Px,
+    WarningSize24Px,
+    WarningSize32Px,
+} from '@coveord/plasma-react-icons';
 import classNames from 'classnames';
-import {svg, SvgName} from '@coveord/plasma-style';
 import * as React from 'react';
-
-import {Svg} from '../svg';
 
 export enum InfoTokenType {
     Information,
@@ -31,40 +49,46 @@ export interface InfoTokenProps {
     className?: string;
 }
 
-const SvgMapping: Record<InfoTokenType, Record<InfoTokenSize, SvgName>> = {
+const IconMapping: Record<InfoTokenType, Record<InfoTokenSize, Icon>> = {
     [InfoTokenType.Information]: {
-        [InfoTokenSize.Small]: svg.infoStrokedSmall.name,
-        [InfoTokenSize.Medium]: svg.infoStrokedMedium.name,
-        [InfoTokenSize.Large]: svg.infoStrokedLarge.name,
+        [InfoTokenSize.Small]: InfoSize16Px,
+        [InfoTokenSize.Medium]: InfoSize24Px,
+        [InfoTokenSize.Large]: InfoSize32Px,
     },
     [InfoTokenType.Success]: {
-        [InfoTokenSize.Small]: svg.checkStrokedSmall.name,
-        [InfoTokenSize.Medium]: svg.checkStrokedMedium.name,
-        [InfoTokenSize.Large]: svg.checkStrokedLarge.name,
+        [InfoTokenSize.Small]: CheckmarkSize16Px,
+        [InfoTokenSize.Medium]: CheckmarkSize24Px,
+        [InfoTokenSize.Large]: CheckmarkSize32Px,
     },
     [InfoTokenType.Warning]: {
-        [InfoTokenSize.Small]: svg.warningStrokedSmall.name,
-        [InfoTokenSize.Medium]: svg.warningStrokedMedium.name,
-        [InfoTokenSize.Large]: svg.warningStrokedLarge.name,
+        [InfoTokenSize.Small]: WarningSize16Px,
+        [InfoTokenSize.Medium]: WarningSize24Px,
+        [InfoTokenSize.Large]: WarningSize32Px,
     },
     [InfoTokenType.Critical]: {
-        [InfoTokenSize.Small]: svg.criticalStrokedSmall.name,
-        [InfoTokenSize.Medium]: svg.criticalStrokedMedium.name,
-        [InfoTokenSize.Large]: svg.criticalStrokedLarge.name,
+        [InfoTokenSize.Small]: CriticalSize16Px,
+        [InfoTokenSize.Medium]: CriticalSize24Px,
+        [InfoTokenSize.Large]: CriticalSize32Px,
     },
     [InfoTokenType.Tip]: {
-        [InfoTokenSize.Small]: svg.ideaStrokedSmall.name,
-        [InfoTokenSize.Medium]: svg.ideaStrokedMedium.name,
-        [InfoTokenSize.Large]: svg.ideaStrokedLarge.name,
+        [InfoTokenSize.Small]: TipSize16Px,
+        [InfoTokenSize.Medium]: TipSize24Px,
+        [InfoTokenSize.Large]: TipSize32Px,
     },
     [InfoTokenType.Question]: {
-        [InfoTokenSize.Small]: svg.questionStrokedSmall.name,
-        [InfoTokenSize.Medium]: svg.questionStrokedMedium.name,
-        [InfoTokenSize.Large]: svg.questionStrokedLarge.name,
+        [InfoTokenSize.Small]: QuestionSize16Px,
+        [InfoTokenSize.Medium]: QuestionSize24Px,
+        [InfoTokenSize.Large]: QuestionSize32Px,
     },
 };
 
-const TypeColorMapping: Record<InfoTokenType, string> = {
+const SizeMapping: Record<InfoTokenSize, number> = {
+    [InfoTokenSize.Small]: 16,
+    [InfoTokenSize.Medium]: 24,
+    [InfoTokenSize.Large]: 32,
+};
+
+const ColorMapping: Record<InfoTokenType, string> = {
     [InfoTokenType.Information]: 'mod-info',
     [InfoTokenType.Success]: 'mod-success',
     [InfoTokenType.Warning]: 'mod-warning',
@@ -73,21 +97,17 @@ const TypeColorMapping: Record<InfoTokenType, string> = {
     [InfoTokenType.Question]: 'mod-info',
 };
 
-const SizeClassMapping: Record<InfoTokenSize, string> = {
-    [InfoTokenSize.Small]: 'mod-16',
-    [InfoTokenSize.Medium]: 'mod-24',
-    [InfoTokenSize.Large]: 'mod-32',
-};
-
-const ModeClassMapping: Record<InfoTokenMode, string> = {
+const ModeMapping: Record<InfoTokenMode, string> = {
     [InfoTokenMode.Stroked]: 'stroked',
     [InfoTokenMode.Filled]: 'filled',
 };
 
-export const InfoToken: React.FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => (
-    <Svg
-        className={classNames('info-token', ModeClassMapping[mode], SizeClassMapping[size], className)}
-        svgName={SvgMapping[type][size]}
-        svgClass={classNames('icon mod-stroke', SizeClassMapping[size], TypeColorMapping[type])}
-    />
-);
+export const InfoToken: React.FunctionComponent<InfoTokenProps> = ({mode, size, type, className}) => {
+    const IconComponent = IconMapping[type][size];
+    return (
+        <IconComponent
+            height={SizeMapping[size]}
+            className={classNames('info-token', ModeMapping[mode], ColorMapping[type], className)}
+        />
+    );
+};

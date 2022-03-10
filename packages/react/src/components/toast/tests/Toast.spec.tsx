@@ -320,14 +320,11 @@ describe('Toasts', () => {
 
             expect(toastComponent.find('.search-bar-spinner').length).toBe(1);
         });
-        it('should render the by default infoToken Svg', () => {
+
+        it('should render the success infoToken by default', () => {
             render(<Toast title="admin-ui" />);
 
-            expect(
-                screen.getByRole('img', {
-                    name: /checkstrokedlarge icon/i,
-                })
-            ).toBeInTheDocument();
+            expect(screen.getByRole('img', {name: /checkmark/i})).toBeInTheDocument();
         });
     });
 });
