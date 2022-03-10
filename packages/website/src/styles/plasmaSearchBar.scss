@@ -6,15 +6,4 @@ $search-bar-max-width: 648px;
     width: 100%;
     min-width: $search-bar-min-width;
     max-width: $search-bar-max-width;
-
-    // .search-bar-patate {
-    //     position: relative;
-    //     width: 100%;
-    //     min-height: $search-bar-heigh;
-
-    // &:focus-visible {
-    //     // remove default blue border on click in the shadow input
-    //     outline: none;
-    // }
-    // }
 }

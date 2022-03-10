@@ -1,10 +1,9 @@
+import {AtomicNoResults, AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-react';
 import {loadClickAnalyticsActions, ResultList as HeadlessResultList, SearchEngine} from '@coveo/headless';
 import {Section} from '@coveord/plasma-react';
-
 import {FunctionComponent, useEffect, useState} from 'react';
 import React from 'react';
 
-import {AtomicNoResults, AtomicQuerySummary, AtomicSearchInterface, Result} from '@coveo/atomic-react';
 import {Tile, TileProps} from '../building-blocs/Tile';
 
 interface ResultListProps {
@@ -12,8 +11,7 @@ interface ResultListProps {
     engine: SearchEngine;
 }
 
-export const ResultList: FunctionComponent<ResultListProps> = (props) => {
-    const {controller, engine} = props;
+export const ResultList: FunctionComponent<ResultListProps> = ({controller, engine}) => {
     const [state, setState] = useState(controller.state);
     const {logDocumentOpen} = loadClickAnalyticsActions(engine);
 
@@ -24,14 +22,14 @@ export const ResultList: FunctionComponent<ResultListProps> = (props) => {
             {!state.hasResults && !state.isLoading ? (
                 <AtomicSearchInterface engine={engine}>
                     <Section className="section">
-                        <AtomicNoResults></AtomicNoResults>
+                        <AtomicNoResults />
                     </Section>
                 </AtomicSearchInterface>
             ) : (
                 <Section className="home flex-auto overflow-auto demo-content">
                     <Section className="section">
                         <AtomicSearchInterface engine={engine}>
-                            <AtomicQuerySummary></AtomicQuerySummary>
+                            <AtomicQuerySummary />
                         </AtomicSearchInterface>
                         <div className="tile-grid">
                             {state.results.map((result: Result) => (

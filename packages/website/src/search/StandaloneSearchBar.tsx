@@ -20,7 +20,7 @@ const StandaloneSearchBar = () => {
                     <AtomicSearchBox
                         numberOfQueries={5}
                         redirectionUrl={'/Search'} // always redirect to real website
-                    ></AtomicSearchBox>
+                    />
                 </AtomicSearchInterface>
             </form>
         </div>
