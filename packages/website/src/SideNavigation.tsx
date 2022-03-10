@@ -66,7 +66,7 @@ export const Navigation: React.FunctionComponent = () => {
             />
             <CollapsibleSideSection title="Foundations">
                 <NavLink href="/foundations/Iconography" label="Iconography" />
-                <NavLink href="/foundations/Headings" label="Headings" />
+                <NavLink href="/foundations/Typekit" label="Typekit" />
                 <NavLink href="/foundations/Links" label="Links" />
                 <NavLink href="/foundations/Whitespace" label="Whitespace" />
             </CollapsibleSideSection>
