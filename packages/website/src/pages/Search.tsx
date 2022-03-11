@@ -25,20 +25,26 @@ const ResultListRenderer = dynamic(
 
 const ResultList = () => {
     const engine = useContext(EngineContext);
-
     const data = localStorage.getItem('coveo-standalone-search-box-data');
-    const {value, analytics} = JSON.parse(data);
-    const {cause, metadata} = analytics;
-
-    const {updateQuery} = loadQueryActions(engine);
-    const {logOmniboxFromLink, logSearchFromLink} = loadSearchAnalyticsActions(engine);
     const {registerNumberOfResults} = loadPaginationActions(engine);
-    const {executeSearch} = loadSearchActions(engine);
-    const event = cause === 'searchFromLink' ? logSearchFromLink() : logOmniboxFromLink(metadata);
 
-    engine.dispatch(registerNumberOfResults(1000));
-    engine.dispatch(updateQuery({q: value}));
-    engine.dispatch(executeSearch(event));
+    if (data) {
+        localStorage.removeItem('coveo-standalone-search-box-data');
+        const {value, analytics} = JSON.parse(data);
+        const {cause, metadata} = analytics;
+
+        const {updateQuery} = loadQueryActions(engine);
+        const {logOmniboxFromLink, logSearchFromLink} = loadSearchAnalyticsActions(engine);
+        const {executeSearch} = loadSearchActions(engine);
+        const event = cause === 'searchFromLink' ? logSearchFromLink() : logOmniboxFromLink(metadata);
+
+        engine.dispatch(registerNumberOfResults(1000));
+        engine.dispatch(updateQuery({q: value}));
+        engine.dispatch(executeSearch(event));
+    } else {
+        engine.dispatch(registerNumberOfResults(1000));
+        engine.executeFirstSearch();
+    }
 
     const controller = buildResultList(engine);
     return <ResultListRenderer controller={controller} engine={engine} />;

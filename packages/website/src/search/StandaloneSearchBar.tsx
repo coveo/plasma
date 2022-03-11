@@ -2,11 +2,13 @@ import {AtomicSearchBox, AtomicSearchInterface} from '@coveo/atomic-react';
 
 import {useContext} from 'react';
 import React from 'react';
+import {useRouter} from 'next/router';
 
 import {EngineContext} from './engine/EngineContext';
 
 const StandaloneSearchBar = () => {
     const engine = useContext(EngineContext);
+    const router = useRouter();
 
     return (
         <div className="plasmaSearchBar">
@@ -17,10 +19,7 @@ const StandaloneSearchBar = () => {
                     // eslint-disable-next-line @typescript-eslint/no-empty-function
                     onReady={async () => {}} // noop
                 >
-                    <AtomicSearchBox
-                        numberOfQueries={5}
-                        redirectionUrl={'/Search'} // always redirect to real website
-                    />
+                    <AtomicSearchBox numberOfQueries={5} redirectionUrl={`${router.basePath}/Search`} />
                 </AtomicSearchInterface>
             </form>
         </div>
