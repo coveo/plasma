@@ -26,6 +26,12 @@ interface PlaygroundProps {
 export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
+    /**
+     * Whether to show the props section or not
+     *
+     * @default true
+     */
+    showPropsSection?: boolean;
     relatedComponents?: TileProps[];
 }
 
@@ -37,6 +43,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
     section,
     code,
     layout = 'horizontal',
+    showPropsSection = true,
     examples,
     componentSourcePath,
     relatedComponents,
@@ -64,6 +71,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
                     {isShowingCode && (
                         <Content
                             id={id}
+                            showPropsSection={showPropsSection}
                             code={code}
                             examples={examples}
                             relatedComponents={relatedComponents}
@@ -80,18 +88,20 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
 };
 const Content: React.FunctionComponent<Pick<
     PageLayoutProps,
-    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout'
->> = ({code, examples, id, relatedComponents, layout}) => (
+    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'showPropsSection'
+>> = ({code, examples, id, relatedComponents, layout, showPropsSection}) => (
     <>
         <div className="plasma-page-layout__main-code plasma-page-layout__section">
             <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
                 {code}
             </Sandbox>
         </div>
-        <div className="plasma-page-layout__section">
-            <h4 className="h2 mb1">Props</h4>
-            <PropsDoc componentName={id} />
-        </div>
+        {showPropsSection && (
+            <div className="plasma-page-layout__section">
+                <h4 className="h2 mb1">Props</h4>
+                <PropsDoc componentName={id} />
+            </div>
+        )}
         {examples && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb5">Examples</h4>
