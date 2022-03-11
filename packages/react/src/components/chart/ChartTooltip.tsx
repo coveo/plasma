@@ -11,6 +11,7 @@ export interface ChartTooltipProps {
 }
 
 export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort = false}) => {
+    const ref = React.useRef<HTMLElement>(null);
     const {series, xScale, yScale, xDomain, yDomain, width, height} = React.useContext(XYChartContext);
     const [position, setPosition] = React.useState({
         x: 0,
@@ -59,6 +60,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
         <g className="chart-tooltip-zones">
             {!!position.position && (
                 <rect
+                    ref={ref as any}
                     className="chart-tooltip-line"
                     width={2}
                     x={xScale(position.pointX) - 1}
@@ -69,6 +71,7 @@ export const ChartTooltip: React.FunctionComponent<ChartTooltipProps> = ({sort =
             )}
             <circle cx={position.x} cy={position.y} r="1" fill="transparent" />
             <DropPod
+                ref={ref}
                 isOpen={!!position.position}
                 positions={[position.position, DropPodPosition.left, DropPodPosition.right]}
                 renderDrop={(style: React.CSSProperties, dropPosition: IDropUIPosition): React.ReactNode => (
