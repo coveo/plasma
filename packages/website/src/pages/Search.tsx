@@ -24,6 +24,7 @@ const ResultListRenderer = dynamic(
 );
 
 const ResultList = () => {
+    let query: string;
     const engine = useContext(EngineContext);
     const data = localStorage.getItem('coveo-standalone-search-box-data');
     const {registerNumberOfResults} = loadPaginationActions(engine);
@@ -32,6 +33,7 @@ const ResultList = () => {
         localStorage.removeItem('coveo-standalone-search-box-data');
         const {value, analytics} = JSON.parse(data);
         const {cause, metadata} = analytics;
+        query = value;
 
         const {updateQuery} = loadQueryActions(engine);
         const {logOmniboxFromLink, logSearchFromLink} = loadSearchAnalyticsActions(engine);
@@ -47,7 +49,7 @@ const ResultList = () => {
     }
 
     const controller = buildResultList(engine);
-    return <ResultListRenderer controller={controller} engine={engine} />;
+    return <ResultListRenderer controller={controller} engine={engine} query={query} />;
 };
 
 const Search = () => (isServer() ? <PlasmaLoading /> : ResultList());

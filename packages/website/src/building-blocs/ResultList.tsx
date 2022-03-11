@@ -5,13 +5,15 @@ import {FunctionComponent, useEffect, useState} from 'react';
 import React from 'react';
 
 import {Tile, TileProps} from '../building-blocs/Tile';
+import {NoSearchResultTemplate} from '../search/NoSearchResult';
 
 interface ResultListProps {
     controller: HeadlessResultList;
     engine: SearchEngine;
+    query: string;
 }
 
-export const ResultList: FunctionComponent<ResultListProps> = ({controller, engine}) => {
+export const ResultList: FunctionComponent<ResultListProps> = ({controller, engine, query}) => {
     const [state, setState] = useState(controller.state);
     const {logDocumentOpen} = loadClickAnalyticsActions(engine);
 
@@ -22,7 +24,7 @@ export const ResultList: FunctionComponent<ResultListProps> = ({controller, engi
             {!state.hasResults && !state.isLoading ? (
                 <AtomicSearchInterface engine={engine}>
                     <Section className="section">
-                        <AtomicNoResults />
+                        <NoSearchResultTemplate engine={engine} query={query} />
                     </Section>
                 </AtomicSearchInterface>
             ) : (
