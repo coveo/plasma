@@ -1,3 +1,13 @@
+# 38.15.0 (2022-03-11)
+
+
+### Features
+
+* **website:** add github link to typekit demo page ([e829806](https://github.com/coveo/plasma/commits/e8298064a681f427b3e39040b5e7efdffa7ad279))
+* **website:** add typekit demo page ([23b270b](https://github.com/coveo/plasma/commits/23b270b48b44a5ff98be4fa27a6d3c417fe1d47f))
+
+
+
 ## 38.14.3 (2022-03-11)
 
 
