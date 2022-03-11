@@ -58,7 +58,7 @@ const FoundationsPages: React.FC = () => (
             />
             <Tile
                 title="Typekit"
-                description="The Typekit covers the entire spectrum of typography styles designed specifically to work in harmony with the Plasma ecosystem."
+                description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
                 href="foundations/Typekit"
                 thumbnail="typekit"
             />

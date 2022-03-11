@@ -17,7 +17,7 @@ export interface PageHeaderProps {
     /**
      * Path to a relevant source file in the repo
      *
-     * @example '/packages/style/scss/typekit.scss'
+     * @example 'packages/style/scss/typekit.scss'
      */
     sourcePath?: string;
 }

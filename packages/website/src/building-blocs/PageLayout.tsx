@@ -39,6 +39,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
     layout = 'horizontal',
     examples,
     componentSourcePath,
+    sourcePath,
     relatedComponents,
 }) => {
     const isShowingCode = useSelector((state) =>
@@ -48,6 +49,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
         <div id={id} className="plasma-page-layout">
             <PageHeader
                 componentSourcePath={componentSourcePath}
+                sourcePath={sourcePath}
                 section={section}
                 thumbnail={thumbnail}
                 title={title}

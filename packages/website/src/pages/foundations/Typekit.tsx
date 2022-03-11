@@ -258,7 +258,7 @@ export const Typekit = () => (
             section="Foundations"
             title="Typekit"
             thumbnail="typekit"
-            description="The Typekit covers the entire spectrum of typography styles designed specifically to work in harmony with the Plasma ecosystem."
+            description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
             sourcePath="packages/style/scss/typekit.scss"
         />
         <div className="plasma-page-layout">
