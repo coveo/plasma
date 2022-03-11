@@ -1,3 +1,12 @@
+## 38.14.3 (2022-03-11)
+
+
+### Bug Fixes
+
+* **chart:** dropPod throws an error when there is no ref ([524dd55](https://github.com/coveo/plasma/commits/524dd55932fecb607bc395a6253966256bd7064b))
+
+
+
 ## 38.14.2 (2022-03-10)
 
 
