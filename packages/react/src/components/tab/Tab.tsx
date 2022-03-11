@@ -41,7 +41,8 @@ export interface ITabOwnProps {
      */
     iconModStroke?: boolean;
     /**
-     * Add to add a Badge to the Tab
+     * Set to add a Badge to the Tab
+
      */
     badge?: React.ReactNode;
     /**
