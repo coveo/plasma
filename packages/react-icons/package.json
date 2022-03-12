@@ -37,7 +37,7 @@
         "@coveord/plasma-tokens": "workspace:*",
         "@svgr/core": "6.2.1",
         "@swc/cli": "0.1.55",
-        "@swc/core": "1.2.136",
+        "@swc/core": "1.2.153",
         "fs-extra": "10.0.0",
         "glob": "7.2.0",
         "lodash.groupby": "4.6.0",
