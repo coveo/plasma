@@ -74,7 +74,7 @@ importers:
       '@types/classnames': 2.3.0
       '@types/codemirror': 0.0.109
       '@types/d3': 3.5.46
-      '@types/enzyme': 3.10.10
+      '@types/enzyme': 3.10.11
       '@types/enzyme-adapter-react-16': 1.0.6
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
@@ -198,7 +198,7 @@ importers:
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
       '@types/d3': 3.5.46
-      '@types/enzyme': 3.10.10
+      '@types/enzyme': 3.10.11
       '@types/enzyme-adapter-react-16': 1.0.6
       '@types/escape-string-regexp': 1.0.0
       '@types/faker': 4.1.12
@@ -2298,11 +2298,11 @@ packages:
   /@types/enzyme-adapter-react-16/1.0.6:
     resolution: {integrity: sha512-VonDkZ15jzqDWL8mPFIQnnLtjwebuL9YnDkqeCDYnB4IVgwUm0mwKkqhrxLL6mb05xm7qqa3IE95m8CZE9imCg==}
     dependencies:
-      '@types/enzyme': 3.10.10
+      '@types/enzyme': 3.10.11
     dev: true
 
-  /@types/enzyme/3.10.10:
-    resolution: {integrity: sha512-/D4wFhiEjUDfPu+j5FVK0g/jf7rqeEIpNfAI+kyxzLpw5CKO0drnW3W5NC38alIjsWgnyQ8pbuPF5+UD+vhVyg==}
+  /@types/enzyme/3.10.11:
+    resolution: {integrity: sha512-LEtC7zXsQlbGXWGcnnmOI7rTyP+i1QzQv4Va91RKXDEukLDaNyxu0rXlfMiGEhJwfgTPCTb0R+Pnlj//oM9e/w==}
     dependencies:
       '@types/cheerio': 0.22.28
       '@types/react': 17.0.37
