@@ -68,7 +68,7 @@ importers:
       '@swc/jest': 0.2.20
       '@testing-library/dom': 8.11.3
       '@testing-library/jest-dom': 5.16.2
-      '@testing-library/react': 12.1.2
+      '@testing-library/react': 12.1.4
       '@testing-library/user-event': 13.5.0
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
@@ -193,7 +193,7 @@ importers:
       '@swc/jest': 0.2.20_@swc+core@1.2.154
       '@testing-library/dom': 8.11.3
       '@testing-library/jest-dom': 5.16.2
-      '@testing-library/react': 12.1.2_react-dom@16.14.0+react@16.14.0
+      '@testing-library/react': 12.1.4_react-dom@16.14.0+react@16.14.0
       '@testing-library/user-event': 13.5.0_@testing-library+dom@8.11.3
       '@types/chosen-js': 1.8.3
       '@types/classnames': 2.3.0
@@ -2175,8 +2175,8 @@ packages:
       redent: 3.0.0
     dev: true
 
-  /@testing-library/react/12.1.2_react-dom@16.14.0+react@16.14.0:
-    resolution: {integrity: sha512-ihQiEOklNyHIpo2Y8FREkyD1QAea054U0MVbwH1m8N9TxeFz+KoJ9LkqoKqJlzx2JDm56DVwaJ1r36JYxZM05g==}
+  /@testing-library/react/12.1.4_react-dom@16.14.0+react@16.14.0:
+    resolution: {integrity: sha512-jiPKOm7vyUw311Hn/HlNQ9P8/lHNtArAx0PisXyFixDDvfl8DbD6EUdbshK5eqauvBSvzZd19itqQ9j3nferJA==}
     engines: {node: '>=12'}
     peerDependencies:
       react: '*'
@@ -2184,6 +2184,7 @@ packages:
     dependencies:
       '@babel/runtime': 7.16.3
       '@testing-library/dom': 8.11.3
+      '@types/react-dom': 16.9.14
       react: 16.14.0
       react-dom: 16.14.0_react@16.14.0
     dev: true
