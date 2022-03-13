@@ -84,7 +84,7 @@ importers:
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.14.24
       '@types/react-bootstrap': 0.32.29
-      '@types/react-codemirror': 1.0.6
+      '@types/react-codemirror': 1.0.7
       '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-infinite-scroll-component': 4.2.5
@@ -208,7 +208,7 @@ importers:
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.14.24
       '@types/react-bootstrap': 0.32.29
-      '@types/react-codemirror': 1.0.6
+      '@types/react-codemirror': 1.0.7
       '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
       '@types/react-infinite-scroll-component': 4.2.5
@@ -2503,8 +2503,8 @@ packages:
       '@types/react': 17.0.37
     dev: true
 
-  /@types/react-codemirror/1.0.6:
-    resolution: {integrity: sha512-WwKBqe6+9P3xlmYQckcDIa7kySh1ByhLmi8x/oHKwuXF3HKyKq/bOeW+nUM6dXa3NuWd9/OlCtI79koxYkFHKg==}
+  /@types/react-codemirror/1.0.7:
+    resolution: {integrity: sha512-1TgVrVyw24YVHovXUCSbGOklh/ERwRAXaFhRD1UuzednOF3Ms1kSMCsYKRJPM536dYqpUqaCw+vAE7/xUFhXiQ==}
     dependencies:
       '@types/codemirror': 0.0.109
       '@types/react': 17.0.37
