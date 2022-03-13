@@ -83,7 +83,7 @@ importers:
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.14.24
-      '@types/react-bootstrap': 0.32.28
+      '@types/react-bootstrap': 0.32.29
       '@types/react-codemirror': 1.0.6
       '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
@@ -207,7 +207,7 @@ importers:
       '@types/loadable__component': 5.13.4
       '@types/lorem-ipsum': 2.0.0
       '@types/react': 16.14.24
-      '@types/react-bootstrap': 0.32.28
+      '@types/react-bootstrap': 0.32.29
       '@types/react-codemirror': 1.0.6
       '@types/react-color': 3.0.6
       '@types/react-dom': 16.9.14
@@ -2497,8 +2497,8 @@ packages:
     resolution: {integrity: sha512-1HcDas8SEj4z1Wc696tH56G8OlRaH/sqZOynNNB+HF0WOeXPaxTtbYzJY2oEfiUxjSKjhCKr+MvR7dCHcEelug==}
     dev: true
 
-  /@types/react-bootstrap/0.32.28:
-    resolution: {integrity: sha512-+cGcRsnKZrmBhb1wV/fg/gC5LxgcP33O1QhQD/G5HtV0D2nID8tU6nU1M8bM6k72uc2X/0fHezt9Cdv8qBmG3A==}
+  /@types/react-bootstrap/0.32.29:
+    resolution: {integrity: sha512-ynKNFi1lvLLOCC+/G3HMQ2hGE6dzfgCOt6S2+sQy6Y6jVYh2m5Qrc/e1OQN5B2DkUsQAtxr908OpW9lOup6Pgw==}
     dependencies:
       '@types/react': 17.0.37
     dev: true
