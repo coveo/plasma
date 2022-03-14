@@ -71,7 +71,7 @@ const FoundationsPages: React.FC = () => (
             <Tile
                 title="Spacing"
                 description="Spacing is the standard padding and margin size that one can adjust to customize the layout of an interface."
-                href="/#/foundations/Spacing"
+                href="foundations/Spacing"
             />
         </div>
     </Section>
