@@ -25,14 +25,41 @@ export interface IOverlayTriggerProps {
 }
 
 export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttributes<Tooltip> {
+    /**
+     * Title of the tooltip
+     */
     title: React.ReactNode;
+    /**
+     * Additionnal CSS class the tooltip should have
+     */
     className?: string;
+    /**
+     * @deprecated Do not use
+     */
     arrowOffsetLeft?: React.ReactText;
+    /**
+     * @deprecated Do not use
+     */
     arrowOffsetTop?: React.ReactText;
+    /**
+     * @deprecated Do not use
+     */
     bsStyle?: string;
+    /**
+     * The position of the tooltip should have - Use the TooltipPlacement enum from TooltipUtils
+     */
     placement?: string;
+    /**
+     * @deprecated Do not use
+     */
     positionLeft?: number;
+    /**
+     * @deprecated Do not use
+     */
     positionTop?: number;
+    /**
+     * Add a footer to the tooltip
+     */
     footer?: string;
     /**
      * By default, <Tooltip /> wraps children inside a span element to make sure the tooltip is applied on one html element only.
