@@ -33,7 +33,7 @@ export interface ITabOwnProps {
      */
     tooltip?: string;
     /**
-     * Set to add a icon to the Tab
+     * Add an icon to the Tab
      */
     icon?: SvgName;
     /**
@@ -41,8 +41,7 @@ export interface ITabOwnProps {
      */
     iconModStroke?: boolean;
     /**
-     * Set to add a Badge to the Tab
-
+     * Add a Badge to the Tab
      */
     badge?: React.ReactNode;
     /**
