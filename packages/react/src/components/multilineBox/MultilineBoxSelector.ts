@@ -3,10 +3,11 @@ import {PlasmaState} from '../../PlasmaState';
 import {IStringListState} from '../../reusableState/customList/StringListReducers';
 
 const initialMultiBoxIDs: IStringListState = {id: undefined, list: []};
-const getMultiBoxIDs = (state: Partial<PlasmaState>, props: {id: string}): IStringListState =>
-    (state && state.multilineIds && state.multilineIds[props.id]) || initialMultiBoxIDs;
 
-const multiBoxIDsCombiner = (multiBoxState: IStringListState): string[] => (multiBoxState && multiBoxState.list) || [];
+const getMultiBoxIDs = (state: Partial<PlasmaState>, {id}: {id: string}): IStringListState =>
+    state?.multilineIds?.[id] ?? initialMultiBoxIDs;
+
+const multiBoxIDsCombiner = (multiBoxState: IStringListState): string[] => multiBoxState?.list ?? [];
 
 const getMultiBoxIDsList: (state: Partial<PlasmaState>, props: {id: string}) => string[] = createSelector(
     getMultiBoxIDs,

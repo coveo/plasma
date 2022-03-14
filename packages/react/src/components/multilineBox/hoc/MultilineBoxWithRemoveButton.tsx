@@ -63,25 +63,23 @@ export const multilineBoxWithRemoveButton = (
             props: Partial<IButtonProps> = {},
             index: number
         ) {
+            const isLastMeaningfulEntry = data.length <= 1;
+            const isDisabled = this.props.disabled || isLastMeaningfulEntry || data[index].isLast;
             return (
                 <Button
-                    classes={[
-                        classNames(defaultMultilineBoxRemoveButtonClasses, {
-                            'cursor-pointer': !data[index]?.isLast,
-                        }),
-                    ]}
+                    classes={[classNames(defaultMultilineBoxRemoveButtonClasses)]}
                     style={{
-                        visibility: data.length > 1 ? 'visible' : 'hidden',
+                        visibility: isDisabled ? 'hidden' : 'visible',
                     }}
-                    onClick={() => !this.props.disabled && this.props.removeBox(data[index].id)}
-                    enabled={!this.props.disabled}
+                    onClick={() => this.props.removeBox(data[index].id)}
+                    enabled={!isDisabled}
                     {...props}
                 >
                     <Svg
                         svgName={svg.remove.name}
                         className="icon mod-18"
                         style={{
-                            visibility: data.length > 1 ? 'visible' : 'hidden',
+                            visibility: isDisabled ? 'hidden' : 'visible',
                         }}
                     />
                 </Button>
