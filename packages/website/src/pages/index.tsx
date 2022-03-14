@@ -57,9 +57,9 @@ const FoundationsPages: React.FC = () => (
                 thumbnail="iconography"
             />
             <Tile
-                title="Headings"
-                description="A heading is a title at the top of a page or section. Its distinctive font helps visualize the hierarchy of information."
-                href="foundations/Headings"
+                title="Typekit"
+                description="The Typekit covers all typography styles designed specifically to work with the Plasma ecosystem."
+                href="foundations/Typekit"
                 thumbnail="typekit"
             />
             <Tile

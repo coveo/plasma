@@ -1,3 +1,111 @@
+# 38.17.0 (2022-03-14)
+
+
+### Features
+
+* **demo:** revamp badge page ([43eef69](https://github.com/coveo/plasma/commits/43eef696077315f91ae3f64d92d1ec0727354140))
+
+
+
+# 38.16.0 (2022-03-14)
+
+
+### Bug Fixes
+
+* fix console warnings ([d06139c](https://github.com/coveo/plasma/commits/d06139c94a6b37098cfedc36faf412b4c0f6eccd))
+
+
+### Features
+
+* **atomic:** applied review + fixing openini Search page from url ([4693d05](https://github.com/coveo/plasma/commits/4693d058d1cecba2ccf4089eaf958902fc0daec0))
+* **atomic:** cp the en.json in public folder to fix texts ([40a213d](https://github.com/coveo/plasma/commits/40a213d5af29eda8d374a467058853a4badd1c9e))
+* **atomic:** remove headless + add pager and result per page ([64c4e15](https://github.com/coveo/plasma/commits/64c4e155af0d3c4ce70e1daf86e85e0090178ac1))
+* **atomic:** result page works! ([9c49e5e](https://github.com/coveo/plasma/commits/9c49e5e2b2fd1da2cb15aaa73c1ab5fbd46d7dd3))
+* **atomic:** wIP - cancel first search + setup for custom style ([4c24490](https://github.com/coveo/plasma/commits/4c244902479dff832b607e43fd5667b490626c44))
+* **atomic:** wIP conditional redirection url ([4330724](https://github.com/coveo/plasma/commits/43307244ffd85080d6b774360f91b2b4f5c4bb15))
+* **atomic:** wIP progress for search + styling ([b98af42](https://github.com/coveo/plasma/commits/b98af427f01aa9a9e59d15555070981491b66627))
+* **atomic:** wIP search is working but everything is ugly ([4977894](https://github.com/coveo/plasma/commits/497789400d460ff31a3560f013db70657e941c2e))
+* **atomic:** wIP setup for atomic-react ([fd6b4f9](https://github.com/coveo/plasma/commits/fd6b4f9d39624de7d99d6dd231881afb37264175))
+* putting back our custome no result page ([88962cc](https://github.com/coveo/plasma/commits/88962cc3ee77764fe8f85436b236a2dd410c2a8e))
+
+
+### Performance Improvements
+
+* **nextjs:** add watchOptions to improve hot reload ([6a99db2](https://github.com/coveo/plasma/commits/6a99db2683cdac35e9ab1dd70b27a0ffa6bdaf04))
+
+
+
+## 38.15.13 (2022-03-13)
+
+
+
+## 38.15.12 (2022-03-13)
+
+
+
+## 38.15.11 (2022-03-13)
+
+
+
+## 38.15.10 (2022-03-13)
+
+
+
+## 38.15.9 (2022-03-12)
+
+
+
+## 38.15.8 (2022-03-12)
+
+
+
+## 38.15.7 (2022-03-12)
+
+
+
+## 38.15.6 (2022-03-12)
+
+
+
+## 38.15.5 (2022-03-12)
+
+
+
+## 38.15.4 (2022-03-12)
+
+
+
+## 38.15.3 (2022-03-12)
+
+
+
+## 38.15.2 (2022-03-12)
+
+
+
+## 38.15.1 (2022-03-11)
+
+
+
+# 38.15.0 (2022-03-11)
+
+
+### Features
+
+* **website:** add github link to typekit demo page ([e829806](https://github.com/coveo/plasma/commits/e8298064a681f427b3e39040b5e7efdffa7ad279))
+* **website:** add typekit demo page ([23b270b](https://github.com/coveo/plasma/commits/23b270b48b44a5ff98be4fa27a6d3c417fe1d47f))
+
+
+
+## 38.14.3 (2022-03-11)
+
+
+### Bug Fixes
+
+* **chart:** dropPod throws an error when there is no ref ([524dd55](https://github.com/coveo/plasma/commits/524dd55932fecb607bc395a6253966256bd7064b))
+
+
+
 ## 38.14.2 (2022-03-10)
 
 

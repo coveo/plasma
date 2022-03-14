@@ -6,13 +6,23 @@ import {Svg} from '../svg';
 export const DEFAULT_BADGE_CLASSNAME = 'badge';
 
 interface BadgeBasicProps {
+    /**
+     * CSS class for the badge
+     *
+     */
     extraClasses?: string[];
 }
 
 interface BadgeWithLabelProps extends BadgeBasicProps {
+    /**
+     * The label of the badge (Required if no icon)
+     */
     label: string;
 }
 interface BadgeWithIconProps extends BadgeBasicProps {
+    /**
+     * Add an icon to the badge (Required if no label)
+     */
     icon: SvgName;
 }
 

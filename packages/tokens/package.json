@@ -1,6 +1,6 @@
 {
     "name": "@coveord/plasma-tokens",
-    "version": "38.12.0",
+    "version": "38.15.10",
     "description": "Design tokens of the Plasma Design System",
     "repository": {
         "type": "git",
@@ -18,8 +18,8 @@
     "license": "Apache-2.0",
     "devDependencies": {
         "@types/fs-extra": "9.0.13",
-        "@types/lodash": "4.14.178",
-        "@types/node": "16.11.12",
+        "@types/lodash": "4.14.179",
+        "@types/node": "16.11.26",
         "@types/rimraf": "3.0.2",
         "@types/svgo": "2.6.2",
         "commander": "9.0.0",

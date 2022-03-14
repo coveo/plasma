@@ -26,13 +26,13 @@ interface PlaygroundProps {
 export interface PageLayoutProps extends PageHeaderProps, PlaygroundProps {
     id: string;
     examples?: Record<string, PlaygroundProps>;
+    relatedComponents?: TileProps[];
     /**
      * Whether to show the props section or not
      *
      * @default true
      */
-    showPropsSection?: boolean;
-    relatedComponents?: TileProps[];
+    withPropsTable?: boolean;
 }
 
 export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
@@ -43,10 +43,11 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
     section,
     code,
     layout = 'horizontal',
-    showPropsSection = true,
     examples,
     componentSourcePath,
+    sourcePath,
     relatedComponents,
+    withPropsTable = true,
 }) => {
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
@@ -55,6 +56,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
         <div id={id} className="plasma-page-layout">
             <PageHeader
                 componentSourcePath={componentSourcePath}
+                sourcePath={sourcePath}
                 section={section}
                 thumbnail={thumbnail}
                 title={title}
@@ -71,11 +73,11 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
                     {isShowingCode && (
                         <Content
                             id={id}
-                            showPropsSection={showPropsSection}
                             code={code}
                             examples={examples}
                             relatedComponents={relatedComponents}
                             layout={layout}
+                            withPropsTable={withPropsTable}
                         />
                     )}
                 </TabPaneConnected>
@@ -88,15 +90,16 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
 };
 const Content: React.FunctionComponent<Pick<
     PageLayoutProps,
-    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'showPropsSection'
->> = ({code, examples, id, relatedComponents, layout, showPropsSection}) => (
+    'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
+>> = ({code, examples, id, relatedComponents, layout, withPropsTable}) => (
     <>
         <div className="plasma-page-layout__main-code plasma-page-layout__section">
             <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
                 {code}
             </Sandbox>
         </div>
-        {showPropsSection && (
+
+        {withPropsTable && (
             <div className="plasma-page-layout__section">
                 <h4 className="h2 mb1">Props</h4>
                 <PropsDoc componentName={id} />

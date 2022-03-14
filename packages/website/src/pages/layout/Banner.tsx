@@ -15,7 +15,7 @@ export const BannerExamples = () => (
         id="BannerContainer"
         componentSourcePath="/banner/BannerContainer.tsx"
         title="Banner"
-        showPropsSection={false}
+        withPropsTable={false}
         section="Layout"
         thumbnail="placeholder"
         code={code}

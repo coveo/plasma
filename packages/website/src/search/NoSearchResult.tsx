@@ -1,15 +1,10 @@
-import {
-    buildHistoryManager,
-    HistoryManager,
-    HistoryManagerState,
-    loadQueryActions,
-    SearchEngine,
-} from '@coveo/headless';
+import {buildHistoryManager, HistoryManager, HistoryManagerState, SearchEngine} from '@coveo/headless';
 import {Button} from '@coveord/plasma-react';
 
 import {FunctionComponent, useEffect, useState} from 'react';
 import React from 'react';
 
+import {useRouter} from 'next/router';
 import results_empty_state from '../../resources/results_empty_state.png';
 
 interface NoResultTemplateProps {
@@ -19,6 +14,7 @@ interface NoResultTemplateProps {
 
 export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = (props) => {
     const {engine, query} = props;
+    const router = useRouter();
 
     const historyManager: HistoryManager = buildHistoryManager(engine);
     const [state, setState] = useState<HistoryManagerState>(historyManager.state);
@@ -26,9 +22,7 @@ export const NoSearchResultTemplate: FunctionComponent<NoResultTemplateProps> = 
     useEffect(() => historyManager.subscribe(() => setState(historyManager.state)), []);
 
     const resetSearch = () => {
-        const {updateQuery} = loadQueryActions(engine);
-        engine.dispatch(updateQuery({q: ''}));
-        location.assign(`#/search?q=${''}`);
+        router.push(`/`);
     };
 
     return (

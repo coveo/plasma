@@ -74,10 +74,10 @@ const withLabel = `
 export const ColorDotsExamples = () => (
     <PageLayout
         id="ColorDot"
-        // componentSourcePath="packages/style/scss/elements/color-dot.scss"
+        sourcePath="packages/style/scss/elements/color-dot.scss"
         title="Color dot"
         section="Feedback"
-        showPropsSection={false}
+        withPropsTable={false}
         description="A color dot indicates the status of an item."
         thumbnail="placeholder"
         code={code}
