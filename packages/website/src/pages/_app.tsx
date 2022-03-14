@@ -66,7 +66,6 @@ const MyApp = ({Component, pageProps}: AppProps) => {
                 <Head>
                     <title>Plasma Design System</title>
                     <meta property="og:title" content="Plasma Design System" key="title" />
-                    <link rel="stylesheet" href="https://use.typekit.net/wqe4zqp.css" />
                 </Head>
                 <Header />
                 <div className="flex flex-auto pb4" style={{height: 'calc(100vh - 90px)'}}>

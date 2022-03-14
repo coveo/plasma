@@ -20,7 +20,7 @@ const NavLink: React.FunctionComponent<NavLinkProps> = ({href = '', label, disab
                 </div>
             ) : (
                 <Link href={href} prefetch={false}>
-                    <a className="navigation-menu-section-item-link">
+                    <a href={href} className="navigation-menu-section-item-link">
                         <div className="navigation-menu-section">
                             <span>{label}</span>
                         </div>
