@@ -1,3 +1,12 @@
+# 38.17.0 (2022-03-14)
+
+
+### Features
+
+* **demo:** revamp badge page ([43eef69](https://github.com/coveo/plasma/commits/43eef696077315f91ae3f64d92d1ec0727354140))
+
+
+
 # 38.16.0 (2022-03-14)
 
 
