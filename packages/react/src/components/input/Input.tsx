@@ -35,6 +35,7 @@ export interface IInputAdditionalOwnProps {
     minimum?: number /* @deprecated use min instead */;
     maximum?: number /* @deprecated use max instead */;
     onBlur?: (value: string) => void;
+    onChangeHandler?: React.ChangeEventHandler<HTMLInputElement>;
     defaultValue?: string;
     isReadOnly?: boolean;
 }
@@ -166,13 +167,14 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
         }
     }
 
-    private handleChange() {
+    private handleChange: React.ChangeEventHandler<HTMLInputElement> = (e) => {
         if (this.props.onChange) {
             const validOnChange =
                 this.props.validateOnChange && this.props.validate && this.props.validate(this.getInnerValue());
             this.props.onChange(this.getInnerValue(), validOnChange);
         }
-    }
+        this.props.onChangeHandler?.(e);
+    };
 
     private handleClick(e: React.MouseEvent<HTMLElement>) {
         if (this.props.onClick) {
@@ -227,7 +229,7 @@ export class Input extends React.Component<IInputProps, IInputComponentState> {
                 defaultValue={!isUndefined(this.props.value) ? this.props.value : this.props.defaultValue}
                 ref={(innerInput: HTMLInputElement) => (this.innerInput = innerInput)}
                 onBlur={() => this.handleBlur()}
-                onChange={() => this.handleChange()}
+                onChange={this.handleChange}
                 onKeyUp={(event: React.KeyboardEvent<HTMLInputElement>) => this.handleKeyUp(event)}
                 min={this.props.minimum}
                 max={this.props.maximum}
