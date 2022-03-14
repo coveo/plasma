@@ -1,17 +1,10 @@
 import {ITableHOCProps, TableHOC, tableWithFilter, TableWithFilterProps} from '@coveord/plasma-react';
 import * as PlasmaReactIcons from '@coveord/plasma-react-icons';
-import dynamic from 'next/dynamic';
 import * as React from 'react';
 
-import {PageHeader} from '../../building-blocs/PageHeader';
-import {PlasmaLoading} from '../../building-blocs/PlasmaLoading';
+import {PageLayout} from '../../building-blocs/PageLayout';
 
 const {iconsList, ...Icons} = PlasmaReactIcons;
-
-const Sandbox = dynamic(
-    import('../../building-blocs/Sandbox').then((mod) => mod.Sandbox),
-    {ssr: false, loading: () => <PlasmaLoading />}
-);
 
 const TableWithFilter: React.ComponentType<
     TableWithFilterProps & ITableHOCProps & React.HTMLAttributes<HTMLTableElement>
@@ -78,22 +71,17 @@ const code = `
 `;
 
 export const IconographyExamples = () => (
-    <>
-        <PageHeader
-            section="Foundations"
-            title="Iconography"
-            thumbnail="iconography"
-            description="Icons are used to visually represent actions, functionalities, and features."
-        />
-        <div className="plasma-page-layout">
-            <div className="plasma-page-layout__main-code plasma-page-layout__section">
-                <Sandbox id="main-code" horizontal>
-                    {code}
-                </Sandbox>
-            </div>
-            <IconsTable />
-        </div>
-    </>
+    <PageLayout
+        id="Iconography"
+        section="Foundations"
+        title="Iconography"
+        thumbnail="iconography"
+        description="Icons are used to visually represent actions, functionalities, and features."
+        code={code}
+        withPropsTable={false}
+    >
+        <IconsTable />
+    </PageLayout>
 );
 
 export default IconographyExamples;
