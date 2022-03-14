@@ -43,6 +43,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
     sourcePath,
     relatedComponents,
     withPropsTable = true,
+    children,
 }) => {
     const isShowingCode = useSelector((state) =>
         TabSelectors.getIsTabSelected(state, {groupId: 'page', id: 'implementation'})
@@ -73,7 +74,9 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
                             relatedComponents={relatedComponents}
                             layout={layout}
                             withPropsTable={withPropsTable}
-                        />
+                        >
+                            {children}
+                        </Content>
                     )}
                 </TabPaneConnected>
                 <div className="mod-header-padding">
@@ -86,7 +89,7 @@ export const PageLayout: React.FunctionComponent<PageLayoutProps> = ({
 const Content: React.FunctionComponent<Pick<
     PageLayoutProps,
     'code' | 'examples' | 'id' | 'relatedComponents' | 'layout' | 'withPropsTable'
->> = ({code, examples, id, relatedComponents, layout, withPropsTable}) => (
+>> = ({code, examples, id, relatedComponents, layout, withPropsTable, children}) => (
     <>
         <div className="plasma-page-layout__main-code plasma-page-layout__section">
             <Sandbox id="main-code" horizontal={layout === 'horizontal'}>
@@ -124,5 +127,6 @@ const Content: React.FunctionComponent<Pick<
                 ))}
             </div>
         )}
+        {children}
     </>
 );
