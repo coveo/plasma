@@ -12,7 +12,7 @@ const code = `
             description={
                 <span>
                     This is a description with a link to{' '}
-                    <a target="_blank" href="http://www.perdu.com/" style={{"color": "blue"}}>
+                    <a target="_blank" href="http://www.perdu.com/" className="link">
                         this website
                     </a>
                 </span>
