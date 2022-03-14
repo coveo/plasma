@@ -98,6 +98,9 @@ export interface IInputComponentState {
     valid: boolean;
 }
 
+/**
+ * @deprecated Use TextInput instead
+ */
 export class Input extends React.Component<IInputProps, IInputComponentState> {
     private innerInput: HTMLInputElement;
 
@@ -268,4 +271,7 @@ const mapDispatchToProps = (dispatch: IDispatch, ownProps: IInputProps): IInputD
     },
 });
 
+/**
+ * @deprecated use TextInput instead
+ */
 export const InputConnected = connect(mapStateToProps, mapDispatchToProps, ReduxUtils.mergeProps)(Input);
