@@ -1,3 +1,14 @@
+# 38.19.0 (2022-03-14)
+
+
+### Features
+
+* **demo:** revamp subNavigation page ([0e4e9c2](https://github.com/coveo/plasma/commits/0e4e9c2c167581ec016ce926f21ff3d897a9c1e7))
+* **demo:** revamp Tab page ([cfd7b34](https://github.com/coveo/plasma/commits/cfd7b3466a59bb9d9f32084f52da117b18215836))
+* **demo:** revamped sideNavigation page ([a5269ed](https://github.com/coveo/plasma/commits/a5269ed6395535c7e87662d5dc2c7b78e296e17c))
+
+
+
 # 38.18.0 (2022-03-14)
 
 
