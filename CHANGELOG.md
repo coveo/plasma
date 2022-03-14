@@ -1,3 +1,18 @@
+# 38.18.0 (2022-03-14)
+
+
+### Bug Fixes
+
+* **website:** adjust href on spacing home page tile ([85017d5](https://github.com/coveo/plasma/commits/85017d54aca94a1a0d8e3c5c6832b4ea45864a05))
+
+
+### Features
+
+* **react-icons:** add accessible role to all icons ([acf3e6c](https://github.com/coveo/plasma/commits/acf3e6c622acf44b42b9302db7695e9b1ca6944d))
+* **website:** redo whitespaces demo page ([f60538f](https://github.com/coveo/plasma/commits/f60538f1434ff46b26b86f99922f80d33d8fa307))
+
+
+
 # 38.17.0 (2022-03-14)
 
 
