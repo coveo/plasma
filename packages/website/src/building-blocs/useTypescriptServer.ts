@@ -27,6 +27,8 @@ const plasmaReactIconsTypes = require.context(
     /\.d\.ts$/i,
     'lazy-once'
 );
+const momentJsTypes = require.context('!!raw-loader!moment', true, /\.d\.ts$/i, 'lazy-once');
+
 const load = async (path: string, ctx: any, root: string) => {
     const {default: content} = await ctx(path);
     let newPath = `${root}/${path.replace('./', '')}`;
@@ -43,6 +45,7 @@ const loadAll: Promise<Map<string, string>> = Promise.all([
     ...plasmaReactIconsTypes
         .keys()
         .map((path) => load(path, plasmaReactIconsTypes, '/node_modules/@coveord/plasma-react-icons')),
+    ...momentJsTypes.keys().map((path) => load(path, momentJsTypes, '/node_modules/moment')),
 ]).then(([map, ...mappedTypes]) => {
     mappedTypes.forEach(({path, content}) => {
         map.set(path, content);
