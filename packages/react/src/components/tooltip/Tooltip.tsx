@@ -26,7 +26,7 @@ export interface IOverlayTriggerProps {
 
 export interface ITooltipProps extends IOverlayTriggerProps, React.ClassAttributes<Tooltip> {
     /**
-     * Title of the tooltip
+     * The text displayed inside the tooltip
      */
     title: React.ReactNode;
     /**
