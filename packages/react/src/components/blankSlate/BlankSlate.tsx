@@ -7,14 +7,45 @@ import {Button} from '../button/Button';
 import {OptionalSvgChildProps, SvgChild} from '../svg/SvgChild';
 
 export interface IBlankSlateProps extends React.ClassAttributes<BlankSlate>, Omit<OptionalSvgChildProps, 'title'> {
+    /**
+     * Title of the blank slate
+     */
     title?: React.ReactNode;
+    /**
+     * Description template to add to the blank slate
+     */
     description?: React.ReactNode;
+    /**
+     * Additionnal child to add to the blank slate
+
+     */
     additionalSection?: React.ReactNode;
+    /**
+     * Array of buttons to add to the blank slate
+     */
     buttons?: IBaseActionOptions[];
+    /**
+     * Whether the blank slate should have the css style to fit a modal
+     *
+     * @default false
+     *
+     */
     withModal?: boolean;
+    /**
+     * Additional css classes that the blank slate should have
+     */
     classes?: string[];
+    /**
+     * Additional css classes the container should have
+     */
     containerClasses?: string[];
+    /**
+     * Additional css classes the description should have
+     */
     descriptionClassName?: string;
+    /**
+     * Additional css classes the buttons should have
+     */
     buttonClasses?: string[];
 }
 
